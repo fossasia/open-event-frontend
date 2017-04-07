@@ -1,0 +1,36 @@
+<div class="ui menu">
+  {{#link-to 'index' class="header item"}}
+    <h3 class="">{{config.appName}} </h3>
+  {{/link-to}}
+  <div class="ui category search item" style="width: 20%">
+    <div class="ui transparent icon input">
+      <input class="prompt" type="text" placeholder="Search Events..." style="border-radius: 0;">
+      <i class="search link icon"></i>
+    </div>
+    <div class="results"></div>
+  </div>
+  <div class="right menu">
+    {{#if (or 1 session.isAuthenticated)}}
+      {{#ui-dropdown class="item" action='hide'}}
+        Niranjan Rajendran
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">My Tickets</div>
+          <div class="item">My Sessions</div>
+          <div class="item">Manage Events</div>
+          <div class="divider"></div>
+          <div class="item">Profile</div>
+          <div class="item">Settings</div>
+          <div class="item">Admin</div>
+          <div class="divider"></div>
+          <a class="item" {{action 'logout'}}>Logout</a>
+        </div>
+      {{/ui-dropdown}}
+    {{else}}
+      {{#link-to 'login' class="item"}}Login / Register{{/link-to}}
+    {{/if}}
+    <div class="item">
+      <div class="ui green button" style="text-transform: uppercase; font-weight: 400">Create an Event</div>
+    </div>
+  </div>
+</div>

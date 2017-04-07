@@ -2,9 +2,10 @@
 
 module.exports = function(environment) {
   var ENV = {
+    appName      : 'Open Event',
     modulePrefix : 'open-event-frontend',
     environment,
-    rootURL      : '/open-event-frontend',
+    rootURL      : '/',
     locationType : 'auto',
     EmberENV     : {
       FEATURES: {
