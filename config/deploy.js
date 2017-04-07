@@ -6,6 +6,18 @@ module.exports = function(deployTarget) {
     // include other plugin configuration that applies to all deploy targets here
   };
 
+  ENV['html-manifest'] = {
+    filename     : 'manifest.appcache',
+    prependPath  : '/',
+    excludePaths : ['index.html'],
+    includePaths : ['/'],
+    network      : ['*'],
+
+    manifestRoot(context) {
+      return context.config['html-manifest'].prependPath;
+    }
+  };
+
   if (deployTarget === 'development') {
     ENV.build.environment = 'development';
     // configure other plugins for development deploy target here
@@ -28,6 +40,7 @@ module.exports = function(deployTarget) {
       branch        : 'gh-pages',
       commitMessage : 'Deployed %@'
     };
+    ENV['html-manifest'].prependPath = '/open-event-frontend/';
   }
 
   // Note: if you need to build some configuration asynchronously, you can return

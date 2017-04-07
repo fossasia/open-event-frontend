@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{rootURL}}assets/open-event-frontend.css">
 
     {{content-for "head-footer"}}
+
+    <script type='text/javascript'>window.addEventListener('load',function(e){window.applicationCache.addEventListener('updateready',function(e){if (window.applicationCache.status==window.applicationCache.UPDATEREADY){window.applicationCache.swapCache();window.location.reload();}},false);},false);</script>
+
   </head>
   <body>
     {{content-for "body"}}
