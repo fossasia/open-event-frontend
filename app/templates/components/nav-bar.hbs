@@ -1,5 +1,5 @@
 <div class="ui menu">
-  {{#link-to 'index' class="header item"}}
+  {{#link-to 'index' class="header item" activeClass=''}}
     <h3 class="">{{config.appName}} </h3>
   {{/link-to}}
   <div class="ui category search item" style="width: 20%">
@@ -10,9 +10,9 @@
     <div class="results"></div>
   </div>
   <div class="right menu">
-    {{#if (or 1 session.isAuthenticated)}}
+    {{#if session.isAuthenticated}}
       {{#ui-dropdown class="item" action='hide'}}
-        Niranjan Rajendran
+        {{if authManager.currentUser authManager.currentUser.user_detail.firstname 'Welcome'}}
         <i class="dropdown icon"></i>
         <div class="menu">
           <div class="item">My Tickets</div>
@@ -27,7 +27,7 @@
         </div>
       {{/ui-dropdown}}
     {{else}}
-      {{#link-to 'login' class="item"}}Login / Register{{/link-to}}
+      {{#link-to 'login' class="item"}}Login{{/link-to}}
     {{/if}}
     <div class="item">
       <div class="ui green button" style="text-transform: uppercase; font-weight: 400">Create an Event</div>

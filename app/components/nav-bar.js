@@ -5,7 +5,8 @@ const { Component } = Ember;
 export default Component.extend({
   actions: {
     logout() {
-      this.get('session').invalidate();
+      this.get('authManager').logout();
+      this.get('router').transitionTo('index');
     }
   }
 });

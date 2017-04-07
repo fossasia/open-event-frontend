@@ -1,17 +1,13 @@
 import Ember from 'ember';
 
-const { Service, computed, observer, on, inject: { service } } = Ember;
+const { Service, computed: { alias }, observer, on, inject: { service } } = Ember;
 
 export default Service.extend({
 
   session : service(),
   metrics : service(),
 
-  currentUser: computed('session.session.content.authenticated.token', function() {
-    if (this.get('session.isAuthenticated')) {
-      return this.get('session.session.content.authenticated');
-    }
-  }),
+  currentUser: alias('session.data.currentUser'),
 
   userAuthenticatedStatusChange: observer('session.isAuthenticated', function() {
     if (this.get('session.isAuthenticated')) {
@@ -21,7 +17,13 @@ export default Service.extend({
     }
   }),
 
+  logout() {
+    this.get('session').invalidate();
+    this.get('session').set('data.currentUser', null);
+  },
+
   identify() {
+    /**
     let currentUser = this.get('currentUser');
     this.get('metrics').identify({
       distinctId : currentUser.id,
@@ -29,6 +31,7 @@ export default Service.extend({
       mobile     : currentUser.mobile,
       name       : currentUser.name
     });
+     **/
   },
 
   identifyStranger() {

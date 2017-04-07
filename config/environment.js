@@ -19,8 +19,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      apiHost      : 'https://open-event-dev.herokuapp.com',
+      apiNamespace : 'api/v1'
     },
 
     contentSecurityPolicy: {
@@ -33,6 +33,22 @@ module.exports = function(environment) {
       'frame-src'   : '*',
       'media-src'   : '\'none\''
     }
+  };
+
+  ENV['ember-simple-auth'] = {
+    authorizer: 'authorizer:jwt'
+  };
+
+  ENV['ember-simple-auth-token'] = {
+    refreshAccessTokens      : false,
+    serverTokenEndpoint      : `${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/login`,
+    identificationField      : 'email',
+    passwordField            : 'password',
+    tokenPropertyName        : 'access_token',
+    refreshTokenPropertyName : 'refresh_token',
+    authorizationPrefix      : 'JWT ',
+    authorizationHeaderName  : 'Authorization',
+    headers                  : {}
   };
 
   if (environment === 'development') {

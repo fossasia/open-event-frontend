@@ -13,6 +13,7 @@ router.map(function() {
   this.route('not-found-catch', { path: '/*path' });
   this.route('login');
   this.route('register');
+  this.route('logout');
 });
 
 export default router;

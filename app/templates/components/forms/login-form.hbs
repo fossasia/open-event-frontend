@@ -5,11 +5,16 @@
         <h3 class="weight-400">Login</h3>
       </div>
       <div class="ui segments">
-        <div class="ui segment">
+        <div class="ui segment {{if isLoading 'loading' ''}}">
+          {{#if errorMessage}}
+            <div class="ui negative message">
+              <p>{{errorMessage}}</p>
+            </div>
+          {{/if}}
           <div class="field">
             <div class="ui left icon input">
               <i class="mail icon"></i>
-              {{input name="email" placeholder="Email ID" value=email}}
+              {{input name="email" placeholder="Email ID" value=identification}}
             </div>
           </div>
           <div class="field">

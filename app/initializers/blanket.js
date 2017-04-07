@@ -12,6 +12,9 @@ export function initialize(application) {
   inject('authManager', 'service:auth-manager');
   inject('store', 'service:store');
   inject('metrics', 'service:metrics');
+  inject('loader', 'service:loader');
+
+  application.inject('component', 'router', 'service:-routing');
 }
 
 export default {
