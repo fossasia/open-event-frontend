@@ -1,0 +1,5 @@
+{{#if (eq model.errors.0.status '404')}}
+  {{errors/not-found}}
+{{else}}
+  {{errors/server-error}}
+{{/if}}

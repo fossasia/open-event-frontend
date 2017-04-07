@@ -1,0 +1,47 @@
+$fontWeights: 100 200 300 400 500 600 700 800 900;
+@each $fontWight in $fontWeights {
+  .weight-#{$fontWight} {
+    font-weight: $fontWight !important;
+  }
+}
+
+.text.muted {
+  color: #aeaeae;
+}
+
+.text.center.aligned {
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .mobile.hidden,
+  .tablet.only,
+  .small.monitor.only,
+  .large.monitor.only {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .mobile.only,
+  .tablet.hidden,
+  .small.monitor.only,
+  .large.monitor.only {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .mobile.only,
+  .tablet.only,
+  .small.monitor.hidden,
+  .large.monitor.only {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .mobile.only,
+  .tablet.only,
+  .small.monitor.only,
+  .large.monitor.hidden {
+    display: none !important;
+  }
+}

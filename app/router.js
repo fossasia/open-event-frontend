@@ -9,7 +9,8 @@ const router = Router.extend({
 });
 
 router.map(function() {
-
+  this.route('not-found');
+  this.route('not-found-catch', { path: '/*path' });
 });
 
 export default router;
