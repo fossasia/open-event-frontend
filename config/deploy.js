@@ -27,15 +27,11 @@ module.exports = function(deployTarget) {
     ENV.rootURL = '/open-event-frontend';
 
     ENV.git = {
-      repo          : 'git@github.com:fossasia/open-event-frontend.git',
+      repo          : `https://niranjan94:${process.env.GIT_ACCESS_KEY}@github.com/fossasia/open-event-frontend`,
       branch        : 'gh-pages',
       commitMessage : 'Deployed %@'
     };
   }
-
-  ENV.ghpages = {
-    gitRemoteUrl: 'https://github.com/fossasia/open-event-frontend.git'
-  };
 
   // Note: if you need to build some configuration asynchronously, you can return
   // a promise that resolves with the ENV object instead of returning the
