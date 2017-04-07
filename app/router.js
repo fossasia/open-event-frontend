@@ -11,6 +11,8 @@ const router = Router.extend({
 router.map(function() {
   this.route('not-found');
   this.route('not-found-catch', { path: '/*path' });
+  this.route('login');
+  this.route('register');
 });
 
 export default router;
