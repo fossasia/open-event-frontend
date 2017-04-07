@@ -54,8 +54,10 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  var deployTarget = process.env.DEPLOY_TARGET;
+
   if (environment === 'production') {
-    if (ENV.deployTarget && ENV.deployTarget === 'gh-pages') {
+    if (deployTarget && deployTarget === 'gh-pages') {
       ENV.locationType = 'hash';
       ENV.rootURL = '/open-event-frontend';
     }
