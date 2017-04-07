@@ -8,7 +8,7 @@ sudo: false
 cache:
   directories:
     - $HOME/.npm
-    - $HOME/.cache # includes bowers cache
+    - $HOME/.cache
 
 before_install:
   - npm config set spin false
@@ -21,4 +21,8 @@ install:
   - bower install
 
 script:
-  - npm test
+  # - npm test
+  - node_modules/.bin/eslint app
+
+after_success:
+  - bash scripts/deploy.sh

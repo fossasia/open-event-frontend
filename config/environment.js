@@ -2,11 +2,11 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'open-event-frontend',
-    environment: environment,
-    rootURL: '/',
-    locationType: 'auto',
-    EmberENV: {
+    modulePrefix : 'open-event-frontend',
+    environment,
+    rootURL      : '/open-event-frontend',
+    locationType : 'auto',
+    EmberENV     : {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -43,7 +43,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    // Production config
   }
 
   return ENV;
