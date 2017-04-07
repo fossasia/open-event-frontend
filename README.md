@@ -5,6 +5,8 @@
 
 > The front end for the Open Event API Server
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
