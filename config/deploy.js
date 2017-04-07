@@ -2,7 +2,8 @@
 
 module.exports = function(deployTarget) {
   var ENV = {
-    build: {}
+    build: {},
+    deployTarget
     // include other plugin configuration that applies to all deploy targets here
   };
 
@@ -23,9 +24,6 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'gh-pages') {
     ENV.build.environment = 'production';
-    ENV.locationType = 'hash';
-    ENV.rootURL = '/open-event-frontend';
-
     ENV.git = {
       repo          : `https://niranjan94:${process.env.GIT_ACCESS_KEY}@github.com/fossasia/open-event-frontend`,
       branch        : 'gh-pages',

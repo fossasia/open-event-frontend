@@ -55,7 +55,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // Production config
+    if (ENV.deployTarget && ENV.deployTarget === 'gh-pages') {
+      ENV.locationType = 'hash';
+      ENV.rootURL = '/open-event-frontend';
+    }
   }
 
   return ENV;
