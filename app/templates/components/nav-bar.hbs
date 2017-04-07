@@ -12,7 +12,7 @@
   <div class="right menu">
     {{#if session.isAuthenticated}}
       {{#ui-dropdown class="item" action='hide'}}
-        {{if authManager.currentUser authManager.currentUser.user_detail.firstname 'Welcome'}}
+        {{if authManager.currentUser (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email) 'Welcome'}}
         <i class="dropdown icon"></i>
         <div class="menu">
           <div class="item">My Tickets</div>

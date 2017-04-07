@@ -11,6 +11,12 @@
               <p>{{errorMessage}}</p>
             </div>
           {{/if}}
+          {{#if newUser}}
+            <div class="ui info message">
+              <p>You have been registered successfully. Please login to continue.</p>
+            </div>
+          {{/if}}
+
           <div class="field">
             <div class="ui left icon input">
               <i class="mail icon"></i>

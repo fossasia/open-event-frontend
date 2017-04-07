@@ -4,26 +4,26 @@ const { Component } = Ember;
 
 export default Component.extend({
 
-  identification : '',
-  password       : '',
-  isLoading      : false,
+  email     : '',
+  password  : '',
+  isLoading : false,
 
   actions: {
-
     submit() {
-      let credentials = this.getProperties('identification', 'password'),
-          authenticator = 'authenticator:jwt';
-
       this.set('errorMessage', null);
       this.set('isLoading', true);
 
-      this.get('session')
-        .authenticate(authenticator, credentials)
-        .then(() => {
-          this.get('loader').get('/users/me').then(data => {
-            this.get('session').set('data.currentUser', data);
-            this.get('router').transitionTo('index');
-          });
+      let email = this.get('email');
+      let password = this.get('password');
+
+      this.get('loader')
+        .post('/users', {
+          email,
+          password
+        })
+        .then(data => {
+          this.set('session.newUser', data.email);
+          this.get('router').transitionTo('login');
         })
         .catch(reason => {
           if (reason.hasOwnProperty('code') && reason.code === 401) {
@@ -33,6 +33,7 @@ export default Component.extend({
           }
           this.set('isLoading', false);
         });
+
     }
   },
 
@@ -42,16 +43,12 @@ export default Component.extend({
         inline : true,
         delay  : false,
         fields : {
-          mobile: {
+          email: {
             identifier : 'email',
             rules      : [
               {
-                type   : 'empty',
-                prompt : 'Please enter your email ID'
-              },
-              {
                 type   : 'email',
-                prompt : 'Please enter a valid email ID'
+                prompt : 'Please enter a valid email address'
               }
             ]
           },
@@ -60,17 +57,25 @@ export default Component.extend({
             rules      : [
               {
                 type   : 'empty',
-                prompt : 'Please enter your password'
+                prompt : 'Please enter a password'
+              },
+              {
+                type   : 'minLength[6]',
+                prompt : 'Your password must have at least {ruleValue} characters'
+              }
+            ]
+          },
+          password_repeat: {
+            identifier : 'password_repeat',
+            rules      : [
+              {
+                type   : 'match[password]',
+                prompt : 'Passwords do not match'
               }
             ]
           }
         }
-      });
-
-    if (this.get('session.newUser')) {
-      this.set('newUser', this.get('session.newUser'));
-      this.set('identification', this.get('session.newUser'));
-      this.set('session.newUser', null);
-    }
+      })
+    ;
   }
 });
