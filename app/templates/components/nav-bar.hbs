@@ -10,6 +10,7 @@
     <div class="results"></div>
   </div>
   <div class="right menu">
+    {{#link-to 'index' class="item" activeClass=''}}Browse Events{{/link-to}}
     {{#if session.isAuthenticated}}
       {{#ui-dropdown class="item" action='hide'}}
         {{if authManager.currentUser (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email) 'Welcome'}}
@@ -27,10 +28,10 @@
         </div>
       {{/ui-dropdown}}
     {{else}}
-      {{#link-to 'login' class="item"}}Login{{/link-to}}
+      {{#link-to 'login' class="item" activeClass=''}}Login{{/link-to}}
     {{/if}}
     <div class="item">
-      <div class="ui green button" style="text-transform: uppercase; font-weight: 400">Create an Event</div>
+      <div class="ui blue button" style="text-transform: uppercase; font-weight: 400">Create an Event</div>
     </div>
   </div>
 </div>
