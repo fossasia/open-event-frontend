@@ -18,6 +18,12 @@ module.exports = function(deployTarget) {
     }
   };
 
+  ENV.pipeline = {
+    disabled: {
+      git: true
+    }
+  };
+
   if (deployTarget === 'development') {
     ENV.build.environment = 'development';
     // configure other plugins for development deploy target here
@@ -34,7 +40,10 @@ module.exports = function(deployTarget) {
   }
 
   if (deployTarget === 'gh-pages') {
-    ENV.build.environment = 'production';
+    ENV.pipeline = {
+      disabled: {}
+    };
+
     ENV.git = {
       repo          : `https://niranjan94:${process.env.GIT_ACCESS_KEY}@github.com/fossasia/open-event-frontend`,
       branch        : 'gh-pages',
