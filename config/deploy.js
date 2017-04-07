@@ -6,6 +6,11 @@ module.exports = function(deployTarget) {
     // include other plugin configuration that applies to all deploy targets here
   };
 
+  ENV['revision-data'] = {
+    type : 'file-hash',
+    scm  : null
+  };
+
   ENV['html-manifest'] = {
     filename     : 'manifest.appcache',
     prependPath  : '/',
