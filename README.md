@@ -43,9 +43,16 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+## Deployments
 
-> W.I.P.
+#### eventyay staging deployment (`master` branch)
+- Frontend: http://nextgen.eventyay.com
+- API server: https://eventyay.com
+
+#### Development deployment (`master` branch)
+- Frontend (History API): https://open-event-frontend.herokuapp.com
+- Frontend (Hashbang): https://fossasia.github.io/open-event-frontend
+- API server: https://open-event-dev.herokuapp.com
 
 ## Further Reading / Useful Links
 
