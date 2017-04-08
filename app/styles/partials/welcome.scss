@@ -1,0 +1,26 @@
+.welcome-header {
+  height: 500px;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/landing.jpg');
+  background-position: center;
+  color: white;
+  position: relative;
+
+  .content {
+
+    position: absolute;
+    right: 20%;
+    left: 20%;
+    top: 260px;
+
+    .lead {
+      font-size: 50px;
+      text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    }
+
+    .button {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  }
+}
