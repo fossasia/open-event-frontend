@@ -1,5 +1,7 @@
 /* eslint-env node */
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var MergeTrees = require('broccoli-merge-trees');
+var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
@@ -21,5 +23,12 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  var appTree = app.toTree();
+  return new MergeTrees([appTree, new Funnel(appTree, {
+    files: ['index.html'],
+
+    getDestinationPath() {
+      return '404.html';
+    }
+  })]);
 };
