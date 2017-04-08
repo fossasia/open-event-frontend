@@ -10,4 +10,6 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_REPO_SLUG" != "fossasia/open-
     exit 0
 fi
 
-# ember deploy gh-pages
+export API_HOST=${DEPLOY_API_HOST};
+export APP_NAME=${DEPLOY_APP_NAME};
+ember deploy gh-pages-with-domain

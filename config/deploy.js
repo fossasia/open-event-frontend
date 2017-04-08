@@ -44,16 +44,18 @@ module.exports = function(deployTarget) {
     // configure other plugins for production deploy target here
   }
 
-  if (deployTarget === 'gh-pages') {
+  if (deployTarget === 'gh-pages-with-domain' || deployTarget === 'gh-pages') {
     ENV.pipeline = {
       disabled: {}
     };
-
     ENV.git = {
       repo          : `https://niranjan94:${process.env.GIT_ACCESS_KEY}@github.com/fossasia/open-event-frontend`,
       branch        : 'gh-pages',
       commitMessage : 'Deployed %@'
     };
+  }
+
+  if (deployTarget === 'gh-pages') {
     ENV['html-manifest'].prependPath = '/' + (process.env.REPO_SLUG || 'open-event-frontend') + '/';
   }
 
