@@ -10,4 +10,4 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_REPO_SLUG" != "fossasia/open-
     exit 0
 fi
 
-ember deploy gh-pages
+# ember deploy gh-pages
