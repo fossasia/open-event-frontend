@@ -17,8 +17,10 @@ export default Component.extend({
 
   didInsertElement() {
     const defaultOptions = {
-      duration : 300,
-      onHide   : () => {
+      dimmerSettings: {
+        variation: 'inverted'
+      },
+      onHide: () => {
         this.set('isOpen', false);
         if (this.get('onHide')) {
           this.get('onHide')();
