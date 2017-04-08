@@ -14,7 +14,7 @@ export function initialize(application) {
   inject('metrics', 'service:metrics');
   inject('loader', 'service:loader');
 
-  application.inject('component', 'router', 'service:-routing');
+  application.inject('component', 'routing', 'service:-routing');
 }
 
 export default {

@@ -2,9 +2,11 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 const { Model, attr } = DS;
-const { computed } = Ember;
+const { computed, inject: { service } } = Ember;
 
 export default Model.extend({
+
+  routing: service('-routing'),
 
   identifier             : attr('string'),
   name                   : attr('string'),
@@ -47,6 +49,10 @@ export default Model.extend({
       return '';
     }
     return this.get('locationName').split(',')[0];
+  }),
+
+  url: computed('identifier', function() {
+    return `${location.protocol}//${location.hostname}${this.get('routing.router').generate('public', this.get('identifier'))}`;
   })
 
 });

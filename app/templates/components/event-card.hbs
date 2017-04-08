@@ -1,9 +1,9 @@
 <div class="ui fluid event card">
-  <div class="image">
+  <a class="image" href="{{href-to 'public' event.identifier}}">
     <img src="{{event.large}}">
-  </div>
+  </a>
   <div class="content">
-    <a class="header">
+    <a class="header" href="{{href-to 'public' event.identifier}}">
       <span>{{event.name}}</span></a>
     <div class="meta">
       <span class="date">{{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}</span>
@@ -12,11 +12,14 @@
       {{event.shortLocationName}}
     </div>
   </div>
-  {{#if tags}}
-  <div class="extra content">
-    {{#each tags as |tag|}}
-      <a>{{tag}}</a>
-    {{/each}}
+  <div class="extra content small text">
+      <span class="right floated">
+        <i class="share alternate link icon" {{action shareEvent event}}></i>
+      </span>
+    <span>
+      {{#each tags as |tag|}}
+        <a>{{tag}}</a>
+      {{/each}}
+    </span>
   </div>
-  {{/if}}
 </div>

@@ -23,7 +23,7 @@ export default Component.extend({
         })
         .then(data => {
           this.set('session.newUser', data.email);
-          this.get('router').transitionTo('login');
+          this.get('routing').transitionTo('login');
         })
         .catch(reason => {
           if (reason.hasOwnProperty('code') && reason.code === 401) {

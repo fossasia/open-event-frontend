@@ -20,10 +20,15 @@ export default Component.extend({
 
   didInsertElement() {
     const $innerSpan = this.$('.header > span');
-    const $header = this.$('.header').height();
-    while ($innerSpan.outerHeight() > $header) {
+    const $header = this.$('.header');
+    while ($innerSpan.outerHeight() > $header.height()) {
+      $header.attr('data-content', $innerSpan.text());
+      $header.attr('data-variation', 'tiny');
       $innerSpan.text((index, text) => {
         return text.replace(/\W*\s(\S)*$/, '...');
+      });
+      $header.popup({
+        position: 'top center'
       });
     }
   }

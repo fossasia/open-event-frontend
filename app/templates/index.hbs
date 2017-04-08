@@ -1,12 +1,13 @@
 <h2>Upcoming Events</h2>
 <div class="ui stackable three column grid">
   {{#each model as |event|}}
-    {{event-card event=event}}
+    {{event-card event=event shareEvent=(action 'shareEvent')}}
   {{/each}}
 </div>
 <h2>Call for speakers</h2>
 <div class="ui stackable three column grid">
   {{#each (filter-by "callForPapers" model) as |event|}}
-    {{event-card event=event}}
+    {{event-card event=event shareEvent=(action 'shareEvent')}}
   {{/each}}
 </div>
+{{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}

@@ -14,6 +14,10 @@ router.map(function() {
   this.route('login');
   this.route('register');
   this.route('logout');
+
+  this.route('public', { path: '/e/:identifier' }, function() {
+
+  });
 });
 
 export default router;

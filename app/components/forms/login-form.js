@@ -22,7 +22,7 @@ export default Component.extend({
         .then(() => {
           this.get('loader').get('/users/me').then(data => {
             this.get('session').set('data.currentUser', data);
-            this.get('router').transitionTo('index');
+            this.get('routing').transitionTo('index');
           });
         })
         .catch(reason => {
