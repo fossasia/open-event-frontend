@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    appName      : 'Open Event',
+    appName      : process.env.APP_NAME || 'Open Event',
     modulePrefix : 'open-event-frontend',
     environment,
     rootURL      : '/',
@@ -19,8 +19,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : 'https://open-event-dev.herokuapp.com',
-      apiNamespace : 'api/v1'
+      apiHost      : process.env.API_HOST || 'https://open-event-dev.herokuapp.com',
+      apiNamespace : process.env.API_NAMESPACE || 'api/v1'
     },
 
     contentSecurityPolicy: {
@@ -75,7 +75,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     if (deployTarget && deployTarget === 'gh-pages') {
       ENV.locationType = 'hash';
-      ENV.rootURL = '/open-event-frontend';
+      ENV.rootURL = '/' + (process.env.REPO_SLUG || 'open-event-frontend');
     }
   }
 

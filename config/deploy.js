@@ -54,7 +54,7 @@ module.exports = function(deployTarget) {
       branch        : 'gh-pages',
       commitMessage : 'Deployed %@'
     };
-    ENV['html-manifest'].prependPath = '/open-event-frontend/';
+    ENV['html-manifest'].prependPath = '/' + (process.env.REPO_SLUG || 'open-event-frontend') + '/';
   }
 
   // Note: if you need to build some configuration asynchronously, you can return
