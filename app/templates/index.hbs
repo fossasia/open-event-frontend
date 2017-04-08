@@ -1,0 +1,12 @@
+<h2>Upcoming Events</h2>
+<div class="ui stackable three column grid">
+  {{#each model as |event|}}
+    {{event-card event=event}}
+  {{/each}}
+</div>
+<h2>Call for speakers</h2>
+<div class="ui stackable three column grid">
+  {{#each (filter-by "callForPapers" model) as |event|}}
+    {{event-card event=event}}
+  {{/each}}
+</div>

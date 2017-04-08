@@ -37,7 +37,7 @@ export default Component.extend({
     }
   },
 
-  didRender() {
+  didInsertElement() {
     this.$('.ui.form')
       .form({
         inline : true,

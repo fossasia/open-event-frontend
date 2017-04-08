@@ -1,0 +1,22 @@
+<div class="ui fluid event card">
+  <div class="image">
+    <img src="{{event.large}}">
+  </div>
+  <div class="content">
+    <a class="header">
+      <span>{{event.name}}</span></a>
+    <div class="meta">
+      <span class="date">{{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}</span>
+    </div>
+    <div class="description">
+      {{event.shortLocationName}}
+    </div>
+  </div>
+  {{#if tags}}
+  <div class="extra content">
+    {{#each tags as |tag|}}
+      <a>{{tag}}</a>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
