@@ -52,7 +52,7 @@ export default Model.extend({
   }),
 
   url: computed('identifier', function() {
-    return `${location.protocol}//${location.hostname}${this.get('routing.router').generate('public', this.get('identifier'))}`;
+    return `${location.protocol}//${location.hostname}${this.get('routing.router').generate('public', this.get('id'))}`;
   })
 
 });

@@ -15,9 +15,10 @@ router.map(function() {
   this.route('register');
   this.route('logout');
 
-  this.route('public', { path: '/e/:identifier' }, function() {
+  this.route('public', { path: '/e/:event_id' }, function() {
 
   });
+  this.route('create');
 });
 
 export default router;

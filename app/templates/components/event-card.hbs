@@ -1,9 +1,9 @@
 <div class="ui fluid event card">
-  <a class="image" href="{{href-to 'public' event.identifier}}">
+  <a class="image" href="{{href-to 'public' event.id}}">
     <img src="{{event.large}}">
   </a>
   <div class="content">
-    <a class="header" href="{{href-to 'public' event.identifier}}">
+    <a class="header" href="{{href-to 'public' event.id}}">
       <span>{{event.name}}</span></a>
     <div class="meta">
       <span class="date">{{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}</span>
