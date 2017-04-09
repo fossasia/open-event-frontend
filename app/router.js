@@ -9,16 +9,16 @@ const router = Router.extend({
 });
 
 router.map(function() {
-  this.route('not-found');
-  this.route('not-found-catch', { path: '/*path' });
   this.route('login');
   this.route('register');
+  this.route('forgot-password');
   this.route('logout');
-
   this.route('public', { path: '/e/:event_id' }, function() {
 
   });
   this.route('create');
+  this.route('not-found');
+  this.route('not-found-catch', { path: '/*path' });
 });
 
 export default router;

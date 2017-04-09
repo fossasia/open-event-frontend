@@ -11,18 +11,15 @@ export default Component.extend({
   actions: {
 
     submit() {
-      let credentials = this.getProperties('identification', 'password'),
-          authenticator = 'authenticator:jwt';
+      let payload = this.getProperties('identification');
 
       this.set('errorMessage', null);
       this.set('isLoading', true);
 
-      this.get('session')
-        .authenticate(authenticator, credentials)
+      this.get('loader')
+        .post('/forgot-password', payload)
         .then(() => {
-          this.get('loader').get('/users/me').then(data => {
-            this.get('session').set('data.currentUser', data);
-          });
+
         })
         .catch(reason => {
           if (reason.hasOwnProperty('code') && reason.code === 401) {
@@ -31,9 +28,6 @@ export default Component.extend({
             this.set('errorMessage', 'An unexpected error occurred.');
           }
           this.set('isLoading', false);
-        })
-        .finally(() => {
-          this.set('password', '');
         });
     }
   },
@@ -54,15 +48,6 @@ export default Component.extend({
               {
                 type   : 'email',
                 prompt : 'Please enter a valid email ID'
-              }
-            ]
-          },
-          password: {
-            identifier : 'password',
-            rules      : [
-              {
-                type   : 'empty',
-                prompt : 'Please enter your password'
               }
             ]
           }
