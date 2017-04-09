@@ -11,8 +11,5 @@ export default Component.extend({
 
   didRender() {
     this.$('.ui.checkbox').checkbox();
-    tinymce.init({
-      selector: '.editable.textarea'
-    });
   }
 });
