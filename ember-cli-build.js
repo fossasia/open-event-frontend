@@ -1,7 +1,7 @@
 /* eslint-env node */
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-var MergeTrees = require('broccoli-merge-trees');
-var Funnel = require('broccoli-funnel');
+const MergeTrees = require('broccoli-merge-trees');
+const Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {

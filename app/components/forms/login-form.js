@@ -22,7 +22,6 @@ export default Component.extend({
         .then(() => {
           this.get('loader').get('/users/me').then(data => {
             this.get('session').set('data.currentUser', data);
-            this.get('routing').transitionTo('index');
           });
         })
         .catch(reason => {
@@ -32,6 +31,9 @@ export default Component.extend({
             this.set('errorMessage', 'An unexpected error occurred.');
           }
           this.set('isLoading', false);
+        })
+        .finally(() => {
+          this.set('password', '');
         });
     }
   },
