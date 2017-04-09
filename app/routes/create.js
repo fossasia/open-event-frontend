@@ -4,5 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 const { Route } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  titleToken: 'Create an event'
+  titleToken() {
+    return this.i18n.t('Create an Event');
+  }
 });

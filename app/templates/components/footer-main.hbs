@@ -51,13 +51,17 @@
     </div>
   </div>
   <div class="ui inverted section divider"></div>
-  <div class="ui horizontal inverted small divided link list" style="margin-top: 0;">
-    <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
-    <a class="item" href="#">Imprint</a>
-    <a class="item" href="#">Terms and Conditions</a>
-    <a class="item" href="#">Privacy Policy</a>
-    <a class="item" href="#">Cookie Policy</a>
-    <div class="item">
+  <div class="ui stackable grid">
+    <div class="fourteen wide column left aligned">
+      <div class="ui horizontal inverted small divided link list" style="margin-top: 0;">
+        <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
+        <a class="item" href="#">Imprint</a>
+        <a class="item" href="#">Terms and Conditions</a>
+        <a class="item" href="#">Privacy Policy</a>
+        <a class="item" href="#">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="two wide column right aligned">
       <div class="ui floating dropdown labeled grey search icon mini button">
         <i class="world icon"></i>
         <span class="text">English</span>
@@ -85,7 +89,6 @@
           <div class="item">Vietnamese</div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

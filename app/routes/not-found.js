@@ -3,5 +3,7 @@ import Ember from 'ember';
 const { Route } = Ember;
 
 export default Route.extend({
-  titleToken: 'Page not found'
+  titleToken() {
+    return this.i18n.t('Page Not Found');
+  }
 });

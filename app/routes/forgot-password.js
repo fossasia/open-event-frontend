@@ -4,5 +4,7 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 const { Route } = Ember;
 
 export default Route.extend(UnauthenticatedRouteMixin, {
-  titleToken: 'Forgot password'
+  titleToken() {
+    return this.i18n.t('Forgot Password');
+  }
 });
