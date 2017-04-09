@@ -23,7 +23,6 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  app.import('bower_components/tinymce/tinymce.js');
   var appTree = app.toTree();
   return new MergeTrees([appTree, new Funnel(appTree, {
     files: ['index.html'],
