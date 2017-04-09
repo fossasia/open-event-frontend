@@ -58,19 +58,19 @@
   <div class="ten fields">
     <div class="five wide field">
       <label class="required">{{t 'Starts'}}</label>
-      {{input type='text' placeholder='MM/DD/YYYY'}}
+      {{widgets/forms/date-picker type='text' placeholder='MM/DD/YYYY' rangePosition='start'}}
     </div>
     <div class="two wide field">
       <label>&nbsp;</label>
-      {{input type='text' placeholder='HH:MM'}}
+      {{widgets/forms/time-picker type='text' placeholder='HH:MM' rangePosition='start'}}
     </div>
     <div class="five wide field">
       <label class="required">{{t 'Ends'}}</label>
-      {{input type='text' placeholder='MM/DD/YYYY'}}
+      {{widgets/forms/date-picker type='text' placeholder='MM/DD/YYYY' rangePosition='end'}}
     </div>
     <div class="two wide field">
       <label>&nbsp;</label>
-      {{input type='text' placeholder='HH:MM'}}
+      {{widgets/forms/time-picker type='text' placeholder='HH:MM' rangePosition='end'}}
     </div>
     <div class="five wide field">
       <label class="required">{{t 'Timezone'}}</label>

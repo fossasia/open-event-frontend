@@ -7,8 +7,8 @@ export default Component.extend({
   classNames : ['ui', 'inverted', 'vertical', 'footer', 'segment'],
 
   didInsertElement() {
-    this.$('.ui.dropdown')
-      .dropdown()
-    ;
+    this.$('.ui.dropdown').dropdown({
+      forceSelection: false
+    });
   }
 });

@@ -18,6 +18,8 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this.$('select.dropdown').dropdown();
+    this.$('select.dropdown').dropdown({
+      forceSelection: false
+    });
   }
 });
