@@ -2,7 +2,7 @@
   <div class="column">
     <form class="ui large form" autocomplete="off" {{action 'submit' on='submit'}}>
       <div class="ui aligned segment basic" style="margin: 0; padding: 0;">
-        <h3 class="weight-400">Login</h3>
+        <h3 class="weight-400">{{t 'Login'}}</h3>
       </div>
       <div class="ui segments">
         <div class="ui segment {{if isLoading 'loading' ''}}">
@@ -13,29 +13,29 @@
           {{/if}}
           {{#if newUser}}
             <div class="ui info message">
-              <p>You have been registered successfully. Please login to continue.</p>
+              <p>{{t 'You have been registered successfully. Please login to continue.'}}</p>
             </div>
           {{/if}}
           <div class="field">
             <div class="ui left icon input">
               <i class="mail icon"></i>
-              {{input name="email" placeholder="Email ID" value=identification}}
+              {{input name='email' placeholder=(t 'Email ID') value=identification}}
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              {{input type="password" name="password" placeholder="Password" value=password}}
+              {{input type='password' name='password' placeholder=(t 'Password') value=password}}
             </div>
           </div>
           <div class="ui center aligned segment basic">
             <button type="submit" class="ui fluid large teal submit button" style="margin-bottom: 10px;">Login
             </button>
-            <a href="{{href-to 'forgot-password'}}" class="text muted"> Forgot your password ?</a>
+            <a href="{{href-to 'forgot-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
           </div>
         </div>
         <div class="ui secondary segment center aligned">
-          <a href="{{href-to 'register'}}" class="text muted weight-800">New to site? Create Account</a>
+          <a href="{{href-to 'register'}}" class="text muted weight-800">{{t 'New to site? Create Account'}}</a>
         </div>
       </div>
     </form>
@@ -47,15 +47,15 @@
         <div class="ui vertical buttons">
           <button type="button" class="ui facebook button">
             <i class="facebook icon"></i>
-            Login with Facebook
+            {{t 'Login with Facebook'}}
           </button>
           <button type="button" class="ui twitter button">
             <i class="twitter icon"></i>
-            Login with Twitter
+            {{t 'Login with Twitter'}}
           </button>
           <button type="button" class="ui google plus button">
             <i class="google plus icon"></i>
-            Login with Google Plus
+            {{t 'Login with Google Plus'}}
           </button>
         </div>
       </div>

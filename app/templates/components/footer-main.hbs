@@ -2,13 +2,13 @@
   <div class="ui stackable inverted divided grid">
     <div class="three wide column">
       <div class="ui inverted link list">
-        <strong class="item">Use eventyay</strong>
+        <strong class="item">{{t 'Use'}} eventyay</strong>
         <a class="item" href="#" target="_blank">Sitemap</a>
       </div>
     </div>
     <div class="three wide column">
       <div class="ui inverted link list">
-        <strong class="item">Categories</strong>
+        <strong class="item">{{t 'Categories'}}</strong>
         <a class="item" href="#">Appearance or Signing</a>
         <a class="item" href="#">Attraction</a>
         <a class="item" href="#">Camp, Trip, or Retreat</a>
@@ -23,7 +23,7 @@
     </div>
     <div class="three wide column">
       <div class="ui inverted link list">
-        <strong class="item">Locations</strong>
+        <strong class="item">{{t 'Locations'}}</strong>
         <a class="item" href="#">India</a>
         <a class="item" href="#">Singapore</a>
         <a class="item" href="#">Berlin</a>
@@ -34,7 +34,7 @@
     </div>
     <div class="three wide column">
       <div class="ui inverted link list">
-        <strong class="item">Nearby Events</strong>
+        <strong class="item">{{t 'Nearby Events'}}</strong>
         <a class="item" href="#">FOSSASIA</a>
         <a class="item" href="#">Science Meet</a>
         <a class="item" href="#">Tech Meet</a>
@@ -43,7 +43,7 @@
 
     <div class="three wide column">
       <div class="ui inverted link list">
-        <strong class="item">Follow us on</strong>
+        <strong class="item">{{t 'Follow us on'}}</strong>
         <a class="item" href="#" target="_blank"><i class="facebook f icon"></i> Facebook</a>
         <a class="item" href="#" target="_blank"><i class="twitter icon"></i> Twitter</a>
         <a class="item" href="#" target="_blank"><i class="github icon"></i> Github</a>
@@ -52,10 +52,40 @@
   </div>
   <div class="ui inverted section divider"></div>
   <div class="ui horizontal inverted small divided link list" style="margin-top: 0;">
-    <span class="item">Copyright &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
+    <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
     <a class="item" href="#">Imprint</a>
     <a class="item" href="#">Terms and Conditions</a>
     <a class="item" href="#">Privacy Policy</a>
     <a class="item" href="#">Cookie Policy</a>
+    <div class="item">
+      <div class="ui floating dropdown labeled grey search icon mini button">
+        <i class="world icon"></i>
+        <span class="text">English</span>
+        <div class="ui language menu">
+          <div class="item">Arabic</div>
+          <div class="item">Chinese</div>
+          <div class="item">Danish</div>
+          <div class="item">Dutch</div>
+          <div class="item active">English</div>
+          <div class="item">French</div>
+          <div class="item">German</div>
+          <div class="item">Greek</div>
+          <div class="item">Hungarian</div>
+          <div class="item">Italian</div>
+          <div class="item">Japanese</div>
+          <div class="item">Korean</div>
+          <div class="item">Lithuanian</div>
+          <div class="item">Persian</div>
+          <div class="item">Polish</div>
+          <div class="item">Portuguese</div>
+          <div class="item">Russian</div>
+          <div class="item">Spanish</div>
+          <div class="item">Swedish</div>
+          <div class="item">Turkish</div>
+          <div class="item">Vietnamese</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

@@ -1,0 +1,87 @@
+<form class="ui form">
+  <div class="field">
+    <label>{{t 'Name'}}</label>
+    {{input type='text'}}
+  </div>
+  <div class="field">
+    <label>{{t 'Location'}}</label>
+    {{#liquid-unless addressViewIsShown}}
+      <div class="ui action input">
+        {{input type='text' placeholder=(t 'Location is required to make this event live')}}
+        <button class="ui left labeled icon button" type="button" {{action 'showAddressView'}}>
+          <i class="marker icon"></i>
+          {{t 'Enter address'}}
+        </button>
+      </div>
+    {{else}}
+      <div class="ui two column grid stackable">
+        <div class="column">
+          <div class="field">
+            {{input type='text' placeholder=(t 'Street Address Line 1')}}
+          </div>
+          <div class="field">
+            {{input type='text' placeholder=(t 'Street Address Line 2')}}
+          </div>
+          <div class="field">
+            {{input type='text' placeholder=(t 'City')}}
+          </div>
+          <div class="field">
+            {{input type='text' placeholder=(t 'State')}}
+          </div>
+          <div class="field">
+            {{input type='text' placeholder=(t 'Zip Code')}}
+          </div>
+          <div class="field">
+            {{input type='text' placeholder=(t 'Country')}}
+          </div>
+          <div class="ui two column grid">
+              <div class="left floated column">
+                <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
+              </div>
+              <div class="right floated column" style="text-align: right">
+                <div class="inline field">
+                  <div class="ui slider checkbox">
+                    <input type="checkbox" tabindex="0" class="hidden">
+                    <label>{{t 'Show map on event page'}}</label>
+                  </div>
+                  <label></label>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="column" style="">
+          {{g-map lat=37.7833 lng=-122.4167 zoom=12 class='google-maps'}}
+        </div>
+      </div>
+    {{/liquid-unless}}
+  </div>
+  <div class="ten fields">
+    <div class="five wide field">
+      <label>{{t 'Starts'}}</label>
+      {{input type='text' placeholder='MM/DD/YYYY'}}
+    </div>
+    <div class="two wide field">
+      <label>&nbsp;</label>
+      {{input type='text' placeholder='HH:MM'}}
+    </div>
+    <div class="five wide field">
+      <label>{{t 'Ends'}}</label>
+      {{input type='text' placeholder='MM/DD/YYYY'}}
+    </div>
+    <div class="two wide field">
+      <label>&nbsp;</label>
+      {{input type='text' placeholder='HH:MM'}}
+    </div>
+    <div class="five wide field">
+      <label>{{t 'Timezone'}}</label>
+      {{input type='text' placeholder='HH:MM'}}
+    </div>
+
+  </div>
+  <div class="field">
+    <label>{{t 'Description'}}</label>
+    {{textarea class='editable textarea'}}
+  </div>
+
+</form>
+

@@ -13,4 +13,5 @@ fi
 export API_HOST=${DEPLOY_API_HOST};
 export APP_NAME=${DEPLOY_APP_NAME};
 echo $DEPLOY_DOMAIN >> public/CNAME
+ember l10n:convert -f false
 ember deploy gh-pages-with-domain

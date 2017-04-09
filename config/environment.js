@@ -51,6 +51,12 @@ module.exports = function(environment) {
     headers                  : {}
   };
 
+  ENV['g-map'] = {
+    libraries : ['places'],
+    key       : process.env.GOOGLE_API_KEY,
+    protocol  : 'https'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

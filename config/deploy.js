@@ -14,7 +14,7 @@ module.exports = function(deployTarget) {
   ENV['html-manifest'] = {
     filename     : 'manifest.appcache',
     prependPath  : '/',
-    excludePaths : ['index.html'],
+    excludePaths : ['index.html', 'assets/locales'],
     includePaths : ['/'],
     network      : ['*'],
 
