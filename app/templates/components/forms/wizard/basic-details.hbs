@@ -74,14 +74,17 @@
     </div>
     <div class="five wide field">
       <label class="required">{{t 'Timezone'}}</label>
-      <select class="ui search dropdown">
-        <option value="">Select timezone</option>
+      <select class="ui search dropdown" title="{{t 'Select timezone'}}">
+        <option value="">{{t 'Select timezone'}}</option>
         {{#each timezones as |timezone|}}
-          <option value="{{timezone}}">{{timezone}}</option>
+          {{#if (eq timezone currentTimezone)}}
+            <option value="{{timezone}}" selected>{{timezone}}</option>
+          {{else}}
+            <option value="{{timezone}}">{{timezone}}</option>
+          {{/if}}
         {{/each}}
       </select>
     </div>
-
   </div>
   <div class="field">
     <label>{{t 'Description'}}</label>

@@ -5,7 +5,8 @@ const { Component } = Ember;
 
 export default Component.extend({
 
-  timezones: moment.tz.names(),
+  timezones       : moment.tz.names(),
+  currentTimezone : moment.tz.guess(),
 
   actions: {
     showAddressView(show = true) {
