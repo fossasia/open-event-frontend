@@ -1,6 +1,6 @@
 <form class="ui form">
   <div class="field">
-    <label>{{t 'Name'}}</label>
+    <label class="required">{{t 'Name'}}</label>
     {{input type='text'}}
   </div>
   <div class="field">
@@ -57,7 +57,7 @@
   </div>
   <div class="ten fields">
     <div class="five wide field">
-      <label>{{t 'Starts'}}</label>
+      <label class="required">{{t 'Starts'}}</label>
       {{input type='text' placeholder='MM/DD/YYYY'}}
     </div>
     <div class="two wide field">
@@ -65,7 +65,7 @@
       {{input type='text' placeholder='HH:MM'}}
     </div>
     <div class="five wide field">
-      <label>{{t 'Ends'}}</label>
+      <label class="required">{{t 'Ends'}}</label>
       {{input type='text' placeholder='MM/DD/YYYY'}}
     </div>
     <div class="two wide field">
@@ -73,14 +73,46 @@
       {{input type='text' placeholder='HH:MM'}}
     </div>
     <div class="five wide field">
-      <label>{{t 'Timezone'}}</label>
-      {{input type='text' placeholder='HH:MM'}}
+      <label class="required">{{t 'Timezone'}}</label>
+      <select class="ui search dropdown">
+        <option value="">Select timezone</option>
+        {{#each timezones as |timezone|}}
+          <option value="{{timezone}}">{{timezone}}</option>
+        {{/each}}
+      </select>
     </div>
 
   </div>
   <div class="field">
     <label>{{t 'Description'}}</label>
     {{textarea class='editable textarea'}}
+  </div>
+
+  <div class="fields">
+    <div class="ten wide field">
+      <label>{{t 'Event Image'}}</label>
+      <div class="ui center aligned piled upload segment text muted">
+        <i class="big camera icon"></i>
+        <br><br>
+        Select Event Image
+      </div>
+      <span class="text muted">
+        We recommend using at least a 2160x1080px (2:1 ratio) image<br>
+        (No larger than 10 MB)
+      </span>
+    </div>
+    <div class="ten wide field">
+      <label>{{t 'Logo'}}</label>
+      <div class="ui center aligned piled upload segment text muted">
+        <i class="big image icon"></i>
+        <br><br>
+        Select Logo
+      </div>
+      <span class="text muted">
+        (No larger than 1 MB)
+      </span>
+    </div>
+
   </div>
 
 </form>

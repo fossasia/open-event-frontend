@@ -32,6 +32,11 @@ module.exports = function(environment) {
       'style-src'   : '\'self\' \'unsafe-inline\' https://fonts.googleapis.com',
       'frame-src'   : '*',
       'media-src'   : '\'none\''
+    },
+
+    moment: {
+      includeTimezone  : 'subset',
+      localeOutputPath : 'assets/moment-locales'
     }
   };
 
