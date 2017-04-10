@@ -22,7 +22,7 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this.$('select.dropdown').dropdown({
+    this.$('.dropdown').dropdown({
       forceSelection: false
     });
   }

@@ -1,0 +1,15 @@
+<label>{{label}}</label>
+{{input type='file' id=inputId class='styled input'}}
+<label for="{{inputId}}">
+  <div class="ui center aligned piled upload segment text muted">
+    <i class="big {{icon}} icon"></i>
+    <br><br>
+    {{hint}}
+  </div>
+  <span class="text muted">
+  {{#if helpText}}
+    {{helpText}}<br>
+  {{/if}}
+    (No larger than {{maxSize}})
+</span>
+</label>

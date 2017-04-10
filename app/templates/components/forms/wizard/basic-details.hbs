@@ -38,18 +38,18 @@
             {{input type='text' placeholder=(t 'Country')}}
           </div>
           <div class="ui two column grid">
-              <div class="left floated column">
-                <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
-              </div>
-              <div class="right floated column" style="text-align: right">
-                <div class="inline field">
-                  <div class="ui slider checkbox">
-                    <input type="checkbox" tabindex="0" class="hidden">
-                    <label>{{t 'Show map on event page'}}</label>
-                  </div>
-                  <label></label>
+            <div class="left floated column">
+              <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
+            </div>
+            <div class="right floated column" style="text-align: right">
+              <div class="inline field">
+                <div class="ui slider checkbox">
+                  {{input type='checkbox'}}
+                  <label>{{t 'Show map on event page'}}</label>
                 </div>
+                <label></label>
               </div>
+            </div>
           </div>
         </div>
         <div class="column" style="">
@@ -96,30 +96,107 @@
 
   <div class="fields">
     <div class="ten wide field">
-      <label>{{t 'Event Image'}}</label>
-      <div class="ui center aligned piled upload segment text muted">
-        <i class="big camera icon"></i>
-        <br><br>
-        Select Event Image
-      </div>
-      <span class="text muted">
-        We recommend using at least a 2160x1080px (2:1 ratio) image<br>
-        (No larger than 10 MB)
-      </span>
+      {{widgets/forms/image-upload
+        label=(t 'Event Image')
+        icon='camera'
+        hint=(t 'Select Event Image')
+        maxSizeInKb=10000
+        helpText='We recommend using at least a 2160x1080px (2:1 ratio) image'}}
     </div>
     <div class="ten wide field">
-      <label>{{t 'Logo'}}</label>
-      <div class="ui center aligned piled upload segment text muted">
-        <i class="big image icon"></i>
-        <br><br>
-        Select Logo
-      </div>
-      <span class="text muted">
-        (No larger than 1 MB)
-      </span>
+      {{widgets/forms/image-upload
+        label=(t 'Logo')
+        icon='image'
+        hint=(t 'Select Logo')
+        maxSizeInKb=1000}}
     </div>
-
   </div>
 
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui slider checkbox">
+      {{input type='checkbox' checked=organizerInfoVisible}}
+      <label>{{t 'Add organizer information'}}</label>
+    </div>
+  </div>
+
+  {{#if organizerInfoVisible}}
+    <div class="field">
+      <label>{{t 'Organizer Name'}}</label>
+      {{input type='text'}}
+    </div>
+    <div class="field">
+      <label>{{t 'Organizer Description'}}</label>
+      {{textarea class='editable textarea'}}
+    </div>
+  {{/if}}
+  <div class="ui section divider"></div>
+  <div class="field">
+    <label>{{t 'Links & Social Media'}}</label>
+    <div class="fields">
+      <div class="three wide field">
+        {{input type='text' value=(t 'External Link')}}
+      </div>
+      <div class="six wide field">
+        <div class="ui labeled action input">
+          {{#ui-dropdown class="label" selected='https'}}
+            <div class="text">https://</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="http">http://</div>
+              <div class="item" data-value="https">https://</div>
+            </div>
+          {{/ui-dropdown}}
+          {{input type='text'}}
+          <div class="ui icon buttons">
+            <button type="button" class="ui sharp button red"><i class="minus icon"></i></button>
+            <button type="button" class="ui button teal"><i class="plus icon"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui slider checkbox">
+      {{input type='checkbox' checked=ticketingSystemEnabled}}
+      <label>{{t 'Use ticketing system'}}</label>
+    </div>
+  </div>
+  {{#if ticketingSystemEnabled}}
+
+  {{else}}
+    <div class="field">
+      <label class="required">{{t 'Ticket URL'}}</label>
+      <div class="ui labeled input">
+        {{#ui-dropdown class="label" selected='https'}}
+          <div class="text">https://</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item" data-value="http">http://</div>
+            <div class="item" data-value="https">https://</div>
+          </div>
+        {{/ui-dropdown}}
+        {{input type='text'}}
+      </div>
+    </div>
+  {{/if}}
+  <div class="ui section divider"></div>
+  <div class="field">
+    <label>{{t 'Listing Privacy'}}</label>
+    {{input type='text'}}
+  </div>
+  <div class="field">
+    <label>{{t 'Event Type'}}</label>
+    {{input type='text'}}
+  </div>
+  <div class="field">
+    <label>{{t 'Event Topic'}}</label>
+    {{input type='text'}}
+  </div>
+  <div class="field">
+    <label>{{t 'Event Sub-topic'}}</label>
+    {{input type='text'}}
+  </div>
 </form>
 
