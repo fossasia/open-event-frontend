@@ -6,7 +6,7 @@ const { Component, computed } = Ember;
 
 export default Component.extend({
 
-  inputId: computed(function () {
+  inputId: computed(function() {
     return v4();
   }),
 
