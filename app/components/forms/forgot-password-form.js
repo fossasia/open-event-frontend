@@ -37,6 +37,7 @@ export default Component.extend({
       .form({
         inline : true,
         delay  : false,
+        on     : 'blur',
         fields : {
           identification: {
             identifier : 'email',
