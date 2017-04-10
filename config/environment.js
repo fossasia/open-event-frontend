@@ -28,13 +28,19 @@ module.exports = function(environment) {
       'connect-src' : [
         '\'self\'',
         'ws://eventyay.dev:49153',
-        'https://maps.gstatic.com'
+        'https://maps.gstatic.com',
+        'https://*.eventyay.com',
+        'https://eventyay.com',
+        'https://open-event-dev.herokuapp.com',
+        'https://open-event.herokuapp.com'
       ],
       'script-src': [
         '\'self\'',
         '\'unsafe-inline\'',
         'https://*.googleapis.com',
         'https://maps.gstatic.com',
+        'https://eventyay.com',
+        'https://*.eventyay.com',
         'http://eventyay.dev:49153'
       ],
       'font-src': [
