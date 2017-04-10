@@ -24,19 +24,41 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
-      'connect-src' : '*',
-      'script-src'  : '* \'unsafe-inline\'',
       'default-src' : '\'none\'',
-      'font-src'    : '\'self\' data: https://fonts.gstatic.com',
-      'img-src'     : '* data:',
-      'style-src'   : '\'self\' \'unsafe-inline\' https://fonts.googleapis.com',
-      'frame-src'   : '*',
-      'media-src'   : '\'none\''
+      'connect-src' : [
+        '\'self\'',
+        'ws://eventyay.dev:49153',
+        'https://maps.gstatic.com'
+      ],
+      'script-src': [
+        '\'self\'',
+        '\'unsafe-inline\'',
+        'https://*.googleapis.com',
+        'https://maps.gstatic.com',
+        'http://eventyay.dev:49153'
+      ],
+      'font-src': [
+        '\'self\'',
+        'data:',
+        'https://fonts.gstatic.com'
+      ],
+      'img-src': [
+        '*',
+        'data:'
+      ],
+      'style-src': [
+        '\'self\'',
+        '\'unsafe-inline\'',
+        'https://fonts.googleapis.com',
+        'https://maps.gstatic.com'
+      ],
+      'frame-src' : '*',
+      'media-src' : '\'none\''
     },
 
     moment: {
-      includeTimezone  : 'subset',
-      localeOutputPath : 'assets/moment-locales'
+      includeTimezone: 'subset' /* ,
+      localeOutputPath : 'assets/moment-locales'*/
     }
   };
 

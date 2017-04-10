@@ -7,7 +7,10 @@
     <label>{{t 'Location'}}</label>
     {{#liquid-unless addressViewIsShown}}
       <div class="ui action input">
-        {{input type='text' placeholder=(t 'Location is required to make this event live')}}
+        {{widgets/forms/places-autocomplete
+          placeChangedCallback=(action 'placeChanged')
+          type='text'
+          placeholder=(t 'Location is required to make this event live')}}
         <button class="ui left labeled icon button" type="button" {{action 'showAddressView'}}>
           <i class="marker icon"></i>
           {{t 'Enter address'}}

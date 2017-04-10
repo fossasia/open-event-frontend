@@ -11,6 +11,9 @@ export default Component.extend({
   actions: {
     showAddressView(show = true) {
       this.set('addressViewIsShown', show);
+    },
+    placeChanged(place) {
+      console.log(place);
     }
   },
 
