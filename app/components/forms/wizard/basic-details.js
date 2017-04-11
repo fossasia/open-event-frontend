@@ -1,12 +1,47 @@
 import Ember from 'ember';
 import moment from 'moment';
+import { licenses, timezones } from 'open-event-frontend/utils/dictionary';
+import FormMixin from 'open-event-frontend/mixins/form';
+import { orderBy } from 'lodash';
 
-const { Component } = Ember;
+const { Component, computed } = Ember;
 
-export default Component.extend({
+export default Component.extend(FormMixin, {
 
-  timezones       : moment.tz.names(),
-  currentTimezone : moment.tz.guess(),
+  currentTimezone: moment.tz.guess(),
+
+  validationRules: {
+    inline : true,
+    delay  : false,
+    fields : {
+      identification: {
+        identifier : 'license',
+        rules      : [
+          {
+            type   : 'empty',
+            prompt : 'Please enter your email ID'
+          }
+        ]
+      },
+      password: {
+        identifier : 'topic',
+        rules      : [
+          {
+            type   : 'empty',
+            prompt : 'Please enter your password'
+          }
+        ]
+      }
+    }
+  },
+
+  timezones: computed(function() {
+    return timezones;
+  }),
+
+  licenses: computed(function() {
+    return orderBy(licenses, 'name');
+  }),
 
   actions: {
     showAddressView(show = true) {
@@ -15,15 +50,5 @@ export default Component.extend({
     placeChanged(place) {
       console.log(place);
     }
-  },
-
-  didRender() {
-    this.$('.ui.checkbox').checkbox();
-  },
-
-  didInsertElement() {
-    this.$('.dropdown').dropdown({
-      forceSelection: false
-    });
   }
 });

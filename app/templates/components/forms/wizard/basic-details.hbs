@@ -77,16 +77,12 @@
     </div>
     <div class="five wide field">
       <label class="required">{{t 'Timezone'}}</label>
-      <select class="ui search dropdown" title="{{t 'Select timezone'}}">
+      {{#ui-dropdown class='search' id='timezone' tagName='select' selected=currentTimezone forceSelection=false}}
         <option value="">{{t 'Select timezone'}}</option>
         {{#each timezones as |timezone|}}
-          {{#if (eq timezone currentTimezone)}}
-            <option value="{{timezone}}" selected>{{timezone}}</option>
-          {{else}}
-            <option value="{{timezone}}">{{timezone}}</option>
-          {{/if}}
+          <option value="{{timezone}}">{{timezone}}</option>
         {{/each}}
-      </select>
+      {{/ui-dropdown}}
     </div>
   </div>
   <div class="field">
@@ -192,11 +188,57 @@
   </div>
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
-    {{input type='text'}}
+    {{input type='text' id='topic'}}
   </div>
   <div class="field">
     <label>{{t 'Event Sub-topic'}}</label>
     {{input type='text'}}
   </div>
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui slider checkbox">
+      {{input type='checkbox' checked=codeOfConductVisible}}
+      <label>{{t 'Add Code of Conduct'}}</label>
+    </div>
+  </div>
+
+  {{#if codeOfConductVisible}}
+    <div class="field">
+      <label>{{t 'Code of Conduct'}}</label>
+      {{widgets/forms/rich-text-editor}}
+    </div>
+  {{/if}}
+  <div class="ui section divider"></div>
+  <div class="field">
+    <label>
+      {{t 'License of Event Data & Content'}}
+      ( <i class="fitted help icon link has popup"></i> )
+      <div class="ui flowing popup top left transition hidden">
+        <div class="ui one column divided grid">
+          <div class="column">
+            <strong>Common Licenses</strong>
+            <div class="ui bulleted list">
+              {{#each licenses as |license|}}
+                <div class="item">
+                  <a href="{{license.link}}" target="_blank">
+                    {{license.name}}
+                  </a>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </label>
+
+    {{#ui-dropdown class='search' id='license' tagName='select' selected='' forceSelection=false}}
+      <option value="">{{t 'Select License'}}</option>
+      {{#each licenses as |license|}}
+        <option value="{{license.name}}">{{license.name}}</option>
+      {{/each}}
+    {{/ui-dropdown}}
+  </div>
+
 </form>
 
