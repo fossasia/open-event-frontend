@@ -1,84 +1,44 @@
 <form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
   <div class="field">
-    <label class="required">{{t 'Name'}}</label>
-    {{input type='text' name='name'}}
+    <label class="required" for="name">{{t 'Name'}}</label>
+    {{input type='text' id='name'}}
   </div>
   <div class="field">
-    <label>{{t 'Location'}}</label>
-    {{#liquid-unless addressViewIsShown}}
-      <div class="ui action input">
-        {{widgets/forms/places-autocomplete
-          name='location'
-          placeChangedCallback=(action 'placeChanged')
-          type='text'
-          placeholder=(t 'Location is required to make this event live')}}
-        <button class="ui left labeled icon button" type="button" {{action 'showAddressView'}}>
-          <i class="marker icon"></i>
-          {{t 'Enter address'}}
-        </button>
-      </div>
-    {{else}}
-      <div class="ui two column grid stackable">
-        <div class="column">
-          <div class="field">
-            {{input type='text' name='address_line_1' placeholder=(t 'Street Address Line 1')}}
-          </div>
-          <div class="field">
-            {{input type='text' name='address_line_2' placeholder=(t 'Street Address Line 2')}}
-          </div>
-          <div class="field">
-            {{input type='text' name='address_city' placeholder=(t 'City')}}
-          </div>
-          <div class="field">
-            {{input type='text' name='address_state' placeholder=(t 'State')}}
-          </div>
-          <div class="field">
-            {{input type='text' name='address_zip_code' placeholder=(t 'Zip Code')}}
-          </div>
-          <div class="field">
-            {{input type='text' name='address_country' placeholder=(t 'Country')}}
-          </div>
-          <div class="ui two column grid">
-            <div class="left floated column">
-              <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
-            </div>
-            <div class="right floated column" style="text-align: right">
-              <div class="inline field">
-                <div class="ui slider checkbox">
-                  {{input name='show_map' type='checkbox'}}
-                  <label>{{t 'Show map on event page'}}</label>
-                </div>
-                <label></label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column" style="">
-          {{g-map lat=37.7833 lng=-122.4167 zoom=12 class='google-maps'}}
+    <label for="location">{{t 'Location'}}</label>
+    {{#widgets/forms/location-input
+      inputId='location'
+      lat=lat
+      lng=lng
+      zoom=1
+      placeholder=(t 'Location is required to make this event live')}}
+      <div class="inline field">
+        <div class="ui slider checkbox">
+          {{input id='show_map' type='checkbox' id='show_map'}}
+          <label for="show_map">{{t 'Show map on event page'}}</label>
         </div>
       </div>
-    {{/liquid-unless}}
+    {{/widgets/forms/location-input}}
   </div>
   <div class="ten fields">
     <div class="five wide field">
-      <label class="required">{{t 'Starts'}}</label>
-      {{widgets/forms/date-picker type='text' name='start_date' placeholder='MM/DD/YYYY' rangePosition='start'}}
+      <label class="required" for="start_date">{{t 'Starts'}}</label>
+      {{widgets/forms/date-picker type='text' inputId='start_date' placeholder='MM/DD/YYYY' rangePosition='start'}}
     </div>
     <div class="two wide field">
-      <label>&nbsp;</label>
-      {{widgets/forms/time-picker type='text' name='start_time' placeholder='HH:MM' rangePosition='start'}}
+      <label for="start_time">&nbsp;</label>
+      {{widgets/forms/time-picker type='text' inputId='start_time' placeholder='HH:MM' rangePosition='start'}}
     </div>
     <div class="five wide field">
-      <label class="required">{{t 'Ends'}}</label>
-      {{widgets/forms/date-picker type='text' name='end_date' placeholder='MM/DD/YYYY' rangePosition='end'}}
+      <label class="required" for="end_date">{{t 'Ends'}}</label>
+      {{widgets/forms/date-picker type='text' inputId='end_date' placeholder='MM/DD/YYYY' rangePosition='end'}}
     </div>
     <div class="two wide field">
-      <label>&nbsp;</label>
-      {{widgets/forms/time-picker type='text' name='end_time' placeholder='HH:MM' rangePosition='end'}}
+      <label for="end_time">&nbsp;</label>
+      {{widgets/forms/time-picker type='text' inputId='end_time' placeholder='HH:MM' rangePosition='end'}}
     </div>
     <div class="five wide field">
-      <label class="required">{{t 'Timezone'}}</label>
-      {{#ui-dropdown class='search' tagName='select' name='timezome' selected=currentTimezone forceSelection=false}}
+      <label class="required" for="timezone">{{t 'Timezone'}}</label>
+      {{#ui-dropdown class='search' tagName='select' id='timezone' selected=currentTimezone forceSelection=false}}
         <option value="">{{t 'Select timezone'}}</option>
         {{#each timezones as |timezone|}}
           <option value="{{timezone}}">{{timezone}}</option>
@@ -87,15 +47,15 @@
     </div>
   </div>
   <div class="field">
-    <label>{{t 'Description'}}</label>
-    {{widgets/forms/rich-text-editor name='description'}}
+    <label for="description">{{t 'Description'}}</label>
+    {{widgets/forms/rich-text-editor textareaId='description'}}
   </div>
 
   <div class="fields">
     <div class="ten wide field">
       {{widgets/forms/image-upload
         label=(t 'Event Image')
-        name='event_image'
+        id='event_image'
         icon='camera'
         hint=(t 'Select Event Image')
         maxSizeInKb=10000
@@ -104,7 +64,7 @@
     <div class="ten wide field">
       {{widgets/forms/image-upload
         label=(t 'Logo')
-        name='event_logo'
+        id='event_logo'
         icon='image'
         hint=(t 'Select Logo')
         maxSizeInKb=1000}}
@@ -114,19 +74,19 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=organizerInfoVisible}}
-      <label>{{t 'Add organizer information'}}</label>
+      {{input type='checkbox' checked=organizerInfoVisible id='add_organizer_information'}}
+      <label for="add_organizer_information">{{t 'Add organizer information'}}</label>
     </div>
   </div>
 
   {{#if organizerInfoVisible}}
     <div class="field">
-      <label>{{t 'Organizer Name'}}</label>
-      {{input type='text' name='organizer_name'}}
+      <label for="organizer_name">{{t 'Organizer Name'}}</label>
+      {{input type='text' id='organizer_name'}}
     </div>
     <div class="field">
-      <label>{{t 'Organizer Description'}}</label>
-      {{widgets/forms/rich-text-editor name='organizer_description'}}
+      <label for="organizer_description">{{t 'Organizer Description'}}</label>
+      {{widgets/forms/rich-text-editor id='organizer_description'}}
     </div>
   {{/if}}
   <div class="ui section divider"></div>
@@ -158,15 +118,15 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=ticketingSystemEnabled}}
-      <label>{{t 'Use ticketing system'}}</label>
+      {{input type='checkbox' checked=ticketingSystemEnabled id='use_ticketing_system'}}
+      <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
     </div>
   </div>
   {{#if ticketingSystemEnabled}}
 
   {{else}}
     <div class="field">
-      <label class="required">{{t 'Ticket URL'}}</label>
+      <label class="required" for="ticket_url">{{t 'Ticket URL'}}</label>
       <div class="ui labeled input">
         {{#ui-dropdown class="label" selected='https'}}
           <div class="text">https://</div>
@@ -176,23 +136,23 @@
             <div class="item" data-value="https">https://</div>
           </div>
         {{/ui-dropdown}}
-        {{input type='text' name='ticket_url'}}
+        {{input type='text' id='ticket_url'}}
       </div>
     </div>
   {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields">
-    <label>{{t 'Listing Privacy'}}</label>
+    <label for="privacy">{{t 'Listing Privacy'}}</label>
     <div class="field">
       <div class="ui radio checkbox">
-        {{widgets/forms/radio-button value name='privacy' value='public' checked='public'}}
-        <label><strong>{{t 'Public event'}}:</strong> {{t 'list this event on this site and search engines'}}</label>
+        {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public' checked='public'}}
+        <label for="privacy_public"><strong>{{t 'Public event'}}:</strong> {{t 'list this event on this site and search engines'}}</label>
       </div>
     </div>
     <div class="field">
       <div class="ui radio checkbox">
-        {{widgets/forms/radio-button value name='privacy' value='private' checked='public'}}
-        <label><strong>{{t 'Private event'}}:</strong> {{t 'do not list this event publicly'}}</label>
+        {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private' checked='public'}}
+        <label for="privacy_private"><strong>{{t 'Private event'}}:</strong> {{t 'do not list this event publicly'}}</label>
       </div>
     </div>
   </div>
@@ -212,20 +172,20 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=codeOfConductVisible}}
-      <label>{{t 'Add Code of Conduct'}}</label>
+      {{input type='checkbox' checked=codeOfConductVisible id='add_code_of_conduct'}}
+      <label for="add_code_of_conduct">{{t 'Add Code of Conduct'}}</label>
     </div>
   </div>
 
   {{#if codeOfConductVisible}}
     <div class="field">
-      <label>{{t 'Code of Conduct'}}</label>
-      {{widgets/forms/rich-text-editor}}
+      <label for="code_of_conduct">{{t 'Code of Conduct'}}</label>
+      {{widgets/forms/rich-text-editor textareaId='code_of_conduct'}}
     </div>
   {{/if}}
   <div class="ui section divider"></div>
   <div class="field">
-    <label>
+    <label for="license">
       {{t 'License of Event Data & Content'}}
       ( <i class="fitted help icon link has popup"></i> )
       <div class="ui flowing popup top left transition hidden">
@@ -245,7 +205,7 @@
         </div>
       </div>
     </label>
-    {{#ui-dropdown class='search' name='license' tagName='select' selected='All rights reserved' forceSelection=false}}
+    {{#ui-dropdown class='search' id='license' tagName='select' selected='All rights reserved' forceSelection=false}}
       {{#each licenses as |license|}}
         <option value="{{license.name}}">{{license.name}}</option>
       {{/each}}

@@ -5,6 +5,8 @@ const { Component, computed, run: { debounce }, on } = Ember;
 
 export default Component.extend({
 
+  editor: null,
+
   standardParserRules: {
     tags: {
       'b'      : 1,
@@ -27,8 +29,8 @@ export default Component.extend({
     }
   },
 
-  textareaId: computed(function() {
-    return v4();
+  textareaIdGenerated: computed('textareaId', function() {
+    return this.get('textareaId') ? this.get('textareaId') : v4();
   }),
 
   _didInsertElement: on('didInsertElement', function() {
@@ -37,19 +39,25 @@ export default Component.extend({
         inline    : true,
         variation : 'tiny'
       });
-    const editor = new wysihtml5.Editor(this.$(`#${this.get('textareaId')}`)[0], {
-      toolbar     : this.$(`#${this.get('textareaId')}-toolbar`)[0],
+
+    this.editor = new wysihtml5.Editor(this.$(`#${this.get('textareaIdGenerated')}`)[0], {
+      toolbar     : this.$(`#${this.get('textareaIdGenerated')}-toolbar`)[0],
       parserRules : this.get('standardParserRules')
     });
-    this.set('editor');
 
     const updateValue = () => {
       debounce(this, () => {
-        this.set('value', editor.getValue());
+        this.set('value', this.editor.getValue());
       }, 400);
     };
 
-    editor.on('interaction', updateValue);
-    editor.on('aftercommand:composer', updateValue);
+    this.editor.on('interaction', updateValue);
+    this.editor.on('aftercommand:composer', updateValue);
+  }),
+
+  _willDestroyElement: on('willDestroyElement', function() {
+    if (this.editor) {
+      this.editor.destroy();
+    }
   })
 });

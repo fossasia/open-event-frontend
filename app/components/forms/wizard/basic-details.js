@@ -79,12 +79,6 @@ export default Component.extend(FormMixin, {
   }),
 
   actions: {
-    showAddressView(show = true) {
-      this.set('addressViewIsShown', show);
-    },
-    placeChanged(place) {
-      console.log(place);
-    },
     saveDraft() {
       this.$('form').form('validate form');
     },

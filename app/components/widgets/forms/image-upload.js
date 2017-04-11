@@ -6,8 +6,8 @@ const { Component, computed } = Ember;
 
 export default Component.extend({
 
-  inputId: computed(function() {
-    return v4();
+  inputIdGenerated: computed('inputId', function() {
+    return this.get('inputId') ? this.get('inputId') : v4();
   }),
 
   maxSize: computed('maxSizeInKb', function() {

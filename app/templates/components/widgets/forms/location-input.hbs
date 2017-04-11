@@ -1,0 +1,50 @@
+{{#liquid-unless addressViewIsShown}}
+  <div class="ui action input">
+    {{widgets/forms/places-autocomplete
+      id=inputId
+      name=name
+      placeChangedCallback=(action 'placeChanged')
+      type='text'
+      placeholder=placeholder}}
+    <button class="ui left labeled icon button" type="button" {{action 'showAddressView'}}>
+      <i class="marker icon"></i>
+      {{t 'Enter address'}}
+    </button>
+  </div>
+{{else}}
+  <div class="ui two column grid stackable">
+    <div class="column">
+      <div class="field">
+        {{input type='text' name='address_vaue' value=address.venue placeholder=(t 'Venue Name')}}
+      </div>
+      <div class="field">
+        {{input type='text' name='address_line' value=address.line placeholder=(t 'Street Address')}}
+      </div>
+      <div class="field">
+        {{input type='text' name='address_city' value=address.city placeholder=(t 'City')}}
+      </div>
+      <div class="field">
+        {{input type='text' name='address_state' value=address.state placeholder=(t 'State')}}
+      </div>
+      <div class="field">
+        {{input type='text' name='address_zip_code' value=address.zipCode placeholder=(t 'Zip Code')}}
+      </div>
+      <div class="field">
+        {{input type='text' name='address_country' value=address.country placeholder=(t 'Country')}}
+      </div>
+      <div class="ui two column grid">
+        <div class="left floated column">
+          <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
+        </div>
+        <div class="right floated column" style="text-align: right">
+          {{yield}}
+        </div>
+      </div>
+    </div>
+    <div class="column" style="">
+      {{#g-map lat=lat lng=lng zoom=zoom class='google-maps' address=combinedAddress as |context|}}
+        {{g-map-address-marker context address=combinedAddress onLocationChange=(action "onLocationChangeHandler")}}
+      {{/g-map}}
+    </div>
+  </div>
+{{/liquid-unless}}
