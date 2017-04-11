@@ -14,22 +14,55 @@ export default Component.extend(FormMixin, {
     return {
       inline : true,
       delay  : false,
+      on     : 'blur',
       fields : {
-        identification: {
-          identifier : 'license',
-          rules      : [
+        name: {
+          rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter your email ID'
+              prompt : 'Please give your event a name'
             }
           ]
         },
-        password: {
-          identifier : 'topic',
-          rules      : [
+        start_date: {
+          rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter your password'
+              prompt : 'Please tell us when your event starts'
+            },
+            {
+              type   : 'date',
+              prompt : 'Please give an valid start date'
+            }
+          ]
+        },
+        end_date: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please tell us when your event ends'
+            },
+            {
+              type   : 'date',
+              prompt : 'Please give an valid end date'
+            }
+          ]
+        },
+        start_time: {
+          depends : 'start_date',
+          rules   : [
+            {
+              type   : 'empty',
+              prompt : 'Please give a start time'
+            }
+          ]
+        },
+        end_time: {
+          depends : 'end_date',
+          rules   : [
+            {
+              type   : 'empty',
+              prompt : 'Please give an end time'
             }
           ]
         }
@@ -51,6 +84,12 @@ export default Component.extend(FormMixin, {
     },
     placeChanged(place) {
       console.log(place);
+    },
+    saveDraft() {
+      this.$('form').form('validate form');
+    },
+    moveForward() {
+      this.$('form').form('validate form');
     }
   }
 });

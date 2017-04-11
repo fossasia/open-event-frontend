@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 const { Component, merge, on } = Ember;
 
@@ -8,13 +9,20 @@ export default Component.extend({
 
   today         : true,
   rangePosition : 'none',
+  format        : 'MM/DD/YYYY',
 
   options: {},
 
   _didInsertElement: on('didInsertElement', function() {
     const defaultOptions = {
-      type  : 'date',
-      today : this.get('today')
+      type      : 'date',
+      today     : this.get('today'),
+      formatter : {
+        date: date => {
+          if (!date) {return ''}
+          return moment(date).format(this.get('format'));
+        }
+      }
     };
 
     switch (this.get('rangePosition')) {

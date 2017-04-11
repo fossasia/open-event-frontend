@@ -1,4 +1,4 @@
-<form class="ui form">
+<form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
   <div class="field">
     <label class="required">{{t 'Name'}}</label>
     {{input type='text' name='name'}}
@@ -254,11 +254,11 @@
   <br>
 
   <div class="large ui buttons right floated">
-    <button class="ui right labeled icon button" type="button">
+    <button class="ui right labeled icon button" type="button" {{action 'moveForward'}}>
       Forward
       <i class="right chevron icon"></i>
     </button>
-    <button class="primary ui right labeled icon button" type="button">
+    <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
       Save draft
       <i class="save icon"></i>
     </button>

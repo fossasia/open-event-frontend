@@ -10,7 +10,7 @@ export default Component.extend({
 
   _elementUpdateObserver: observer('radioChecked', function() {
     next(this, () => {
-      this.$().prop('checked', this.get('radioChecked'));
+      this.$().prop('checked', this.get('radioChecked')).trigger('change');
     });
   }),
 

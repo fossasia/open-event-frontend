@@ -13,9 +13,13 @@
     {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
     {{#if session.isAuthenticated}}
       {{#ui-dropdown class='item' action='hide'}}
-        <img class="ui avatar image" src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar '/images/placeholders/avatar.png'}}">
-        &nbsp;
-        {{if authManager.currentUser (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email) 'Welcome'}}
+        <img class="ui avatar image"
+             style="margin-right: 10px;"
+             src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar
+                       '/images/placeholders/avatar.png'}}">
+        {{if authManager.currentUser
+             (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email)
+             'Welcome'}}
         <i class="dropdown icon"></i>
         <div class="menu">
           <div class="item">{{t 'My Tickets'}}</div>
@@ -32,8 +36,11 @@
     {{else}}
       <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
     {{/if}}
-    <div class="item">
-      <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">{{t 'Create Event'}}</a>
-    </div>
+    {{#unless (eq routing.currentRouteName 'create')}}
+      <div class="item">
+        <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">{{t
+          'Create Event'}}</a>
+      </div>
+    {{/unless}}
   </div>
 </div>
