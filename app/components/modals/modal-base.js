@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, observer, merge } = Ember;
+const { Component, observer, merge, on } = Ember;
 
 export default Component.extend({
   tagName           : 'div',
@@ -15,7 +15,7 @@ export default Component.extend({
     }
   }),
 
-  didInsertElement() {
+  _didInsertElement: on('didInsertElement', function() {
     const defaultOptions = {
       dimmerSettings: {
         variation: 'inverted'
@@ -43,5 +43,5 @@ export default Component.extend({
     if (this.get('isOpen')) {
       this.$().modal('show');
     }
-  }
+  })
 });

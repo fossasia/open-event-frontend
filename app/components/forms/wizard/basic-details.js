@@ -10,29 +10,31 @@ export default Component.extend(FormMixin, {
 
   currentTimezone: moment.tz.guess(),
 
-  validationRules: {
-    inline : true,
-    delay  : false,
-    fields : {
-      identification: {
-        identifier : 'license',
-        rules      : [
-          {
-            type   : 'empty',
-            prompt : 'Please enter your email ID'
-          }
-        ]
-      },
-      password: {
-        identifier : 'topic',
-        rules      : [
-          {
-            type   : 'empty',
-            prompt : 'Please enter your password'
-          }
-        ]
+  getValidationRules() {
+    return {
+      inline : true,
+      delay  : false,
+      fields : {
+        identification: {
+          identifier : 'license',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : 'Please enter your email ID'
+            }
+          ]
+        },
+        password: {
+          identifier : 'topic',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : 'Please enter your password'
+            }
+          ]
+        }
       }
-    }
+    };
   },
 
   timezones: computed(function() {

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, merge } = Ember;
+const { Component, merge, on } = Ember;
 
 export default Component.extend({
 
@@ -11,7 +11,7 @@ export default Component.extend({
 
   options: {},
 
-  didInsertElement() {
+  _didInsertElement: on('didInsertElement', function() {
     const defaultOptions = {
       type  : 'date',
       today : this.get('today')
@@ -27,5 +27,5 @@ export default Component.extend({
     }
 
     this.$().calendar(merge(defaultOptions, this.get('options')));
-  }
+  })
 });

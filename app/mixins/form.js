@@ -9,13 +9,13 @@ export default Mixin.create({
     }
   },
 
-  _didInsertElement: on('didInsertElement', function() {
+  _didInsertElement_: on('didInsertElement', function() {
     this.$('.has.popup').popup({
       hoverable: true
     });
     this.$('.ui.checkbox').checkbox();
-    if (this.get('validationRules')) {
-      this.$('.ui.form').form(this.get('validationRules'));
+    if (this.get('getValidationRules')) {
+      this.$('.ui.form').form(this.get('getValidationRules')());
     }
   })
 });

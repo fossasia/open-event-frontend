@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { v4 } from 'ember-uuid';
 
-const { Component, computed, run: { debounce } } = Ember;
+const { Component, computed, run: { debounce }, on } = Ember;
 
 export default Component.extend({
 
@@ -31,7 +31,7 @@ export default Component.extend({
     return v4();
   }),
 
-  didInsertElement() {
+  _didInsertElement: on('didInsertElement', function() {
     this.$('.button')
       .popup({
         inline    : true,
@@ -51,5 +51,5 @@ export default Component.extend({
 
     editor.on('interaction', updateValue);
     editor.on('aftercommand:composer', updateValue);
-  }
+  })
 });
