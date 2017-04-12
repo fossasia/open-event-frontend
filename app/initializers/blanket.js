@@ -14,6 +14,7 @@ export function initialize(application) {
   inject('metrics', 'service:metrics');
   inject('loader', 'service:loader');
   inject('i18n', 'service:l10n');
+  inject('device', 'service:device');
 
   application.inject('component', 'routing', 'service:-routing');
 }

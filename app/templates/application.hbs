@@ -3,7 +3,7 @@
   {{#if (eq routing.currentRouteName 'index')}}
     {{welcome-header}}
   {{/if}}
-  <div class="ui container main-container">
+  <div id="main-container" class="ui container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
     {{outlet}}
   </div>
   {{footer-main}}
