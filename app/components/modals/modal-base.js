@@ -15,7 +15,7 @@ export default Component.extend({
     }
   }),
 
-  _didInsertElement: on('didInsertElement', function() {
+  __didInsertElement: on('didInsertElement', function() {
     const defaultOptions = {
       dimmerSettings: {
         variation: 'inverted'
@@ -23,16 +23,17 @@ export default Component.extend({
       onHide: () => {
         this.set('isOpen', false);
         if (this.get('onHide')) {
-          this.get('onHide')();
+          this.onHide();
         }
       },
       onVisible: () => {
         this.set('isOpen', true);
+        this.$().modal('refresh');
         this.$('[data-content]').popup({
           inline: true
         });
         if (this.get('onVisible')) {
-          this.get('onVisible')();
+          this.onVisible();
         }
       }
     };

@@ -1,15 +1,41 @@
 <label>{{label}}</label>
-{{input type='file' id=inputIdGenerated class='styled input' name=name}}
-<label for="{{inputIdGenerated}}">
-  <div class="ui center aligned piled upload segment text muted">
-    <i class="big {{icon}} icon"></i>
-    <br><br>
-    {{hint}}
+{{#if selectedImage}}
+  <div class="ui card">
+    <div class="image">
+      <img src="{{selectedImage}}">
+    </div>
+    <div class="ui bottom attached buttons">
+      {{#if needsCropper}}
+        <div class="ui teal button" {{action 'reCrop'}}>
+          <i class="trash icon"></i>
+          Re-crop
+        </div>
+      {{/if}}
+      <div class="ui red button" {{action 'removeSelection'}}>
+        <i class="trash icon"></i>
+        Remove
+      </div>
+    </div>
   </div>
-  <span class="text muted">
+{{else}}
+  {{input type='file'
+          id=inputIdGenerated
+          class='styled input' name=name change=(action 'fileSelected')}}
+  <label for="{{inputIdGenerated}}">
+    <div class="ui center aligned piled upload segment text muted">
+      <i class="big {{icon}} icon"></i>
+      <br><br>
+      {{hint}}
+    </div>
+    <span class="text muted">
   {{#if helpText}}
     {{helpText}}<br>
   {{/if}}
-    (No larger than {{maxSize}})
+      (No larger than {{maxSize}})
 </span>
-</label>
+  </label>
+{{/if}}
+{{#if needsCropper}}
+  {{modals/cropper-modal isOpen=cropperModalIsShown imgData=imgData onImageCrop=(action 'imageCropped')}}
+{{/if}}
+
