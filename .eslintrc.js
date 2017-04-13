@@ -66,6 +66,7 @@ module.exports = {
   globals: {
     module    : true,
     process   : true,
-    wysihtml5 : true
+    wysihtml5 : true,
+    palette   : true
   }
 };

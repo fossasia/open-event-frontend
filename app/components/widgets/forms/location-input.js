@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { keys, values } from 'lodash';
 
-const { Component, computed } = Ember;
+const { Component, computed, observer } = Ember;
 
 export default Component.extend({
 
@@ -16,6 +16,10 @@ export default Component.extend({
 
   combinedAddress: computed('address.{venue,line,city,state,zipCode,country}', function() {
     return values(this.get('address')).join(' ').trim();
+  }),
+
+  placeNameChanger: observer('combinedAddress', function() {
+    this.set('placeName', this.get('combinedAddress'));
   }),
 
   actions: {

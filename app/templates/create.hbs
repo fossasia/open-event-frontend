@@ -1,3 +1,8 @@
+{{#unless eventName}}
+  <h2 class="weight-300">{{t 'Create an Event'}}</h2>
+{{else}}
+  <h2 class="weight-300">{{t 'Creating'}} <span class="weight-500">{{eventName}}</span></h2>
+{{/unless}}
 <div class="ui one column centered stacked grid event wizard">
   <div class="column mobile hidden">
     <div class="ui three steps">
@@ -25,6 +30,6 @@
     </div>
   </div>
   <div class="column">
-    {{forms/wizard/basic-details}}
+    {{forms/wizard/basic-details eventName=(mut eventName)}}
   </div>
 </div>

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import moment from 'moment';
+import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary';
 
 const { Component, merge, on } = Ember;
 
@@ -9,7 +10,7 @@ export default Component.extend({
 
   today         : true,
   rangePosition : 'none',
-  format        : 'MM/DD/YYYY',
+  format        : FORM_DATE_FORMAT,
 
   options: {},
 

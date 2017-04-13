@@ -2,11 +2,12 @@ import Ember from 'ember';
 import moment from 'moment';
 import { licenses, timezones } from 'open-event-frontend/utils/dictionary';
 import FormMixin from 'open-event-frontend/mixins/form';
+import EventWizard from 'open-event-frontend/mixins/event-wizard';
 import { orderBy } from 'lodash';
 
-const { Component, computed } = Ember;
+const { Component, computed, on } = Ember;
 
-export default Component.extend(FormMixin, {
+export default Component.extend(FormMixin, EventWizard, {
 
   currentTimezone: moment.tz.guess(),
 
@@ -84,6 +85,17 @@ export default Component.extend(FormMixin, {
     },
     moveForward() {
       this.$('form').form('validate form');
+    },
+    addItem(type, model) {
+      this.get(`data.${type}`).pushObject(this.store.createRecord(model));
+    },
+    removeItem(item, type) {
+      item.unloadRecord();
+      this.get(`data.${type}`).removeObject(item);
     }
-  }
+  },
+
+  _init: on('init', function() {
+    this.set('data', this.getBasicDetails());
+  })
 });

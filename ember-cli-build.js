@@ -13,6 +13,7 @@ module.exports = function(defaults) {
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.js');
   app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js');
+  app.import('bower_components/google-material-color/dist/palette.js');
 
   const appTree = app.toTree();
   return new MergeTrees([appTree, new Funnel(appTree, {

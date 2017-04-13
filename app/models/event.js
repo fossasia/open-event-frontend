@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import moment from 'moment';
 
 const { Model, attr } = DS;
 const { computed, inject: { service } } = Ember;
@@ -11,8 +12,8 @@ export default Model.extend({
   identifier             : attr('string'),
   name                   : attr('string'),
   description            : attr('string'),
-  startTime              : attr('date'),
-  endTime                : attr('date'),
+  startTime              : attr('date', { defaultValue: () => moment().add(1, 'months').startOf('day').toDate() }),
+  endTime                : attr('date', { defaultValue: () => moment().add(1, 'months').hour(17).minute(0).toDate() }),
   locationName           : attr('string'),
   searchableLocationName : attr('string'),
 
@@ -54,5 +55,15 @@ export default Model.extend({
   url: computed('identifier', function() {
     return `${location.protocol}//${location.hostname}${this.get('routing.router').generate('public', this.get('id'))}`;
   })
+
+/*
+  sessions        : hasMany('session'),
+  sponsors        : hasMany('sponsor'),
+  microlocations  : hasMany('microlocation'),
+  tracks          : hasMany('track'),
+  tickets         : hasMany('ticket'),
+  socialLinks     : hasMany('social-link'),
+  callForSpeakers : belongsTo('call-for-speakers')
+*/
 
 });

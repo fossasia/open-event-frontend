@@ -8,6 +8,7 @@ export default Route.extend(ApplicationRouteMixin, {
     if (!tokens) {
       tokens = [];
     }
+
     tokens.push(this.get('config.appName'));
     return tokens.join(' | ');
   },

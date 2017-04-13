@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import moment from 'moment';
+import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary';
 
 const { $, Mixin, on, merge } = Ember;
 
@@ -12,7 +13,7 @@ export default Mixin.create({
 
   _didInsertElement_: on('didInsertElement', function() {
 
-    $.fn.form.settings.rules.date = (value, format = 'MM/DD/YYYY') => {
+    $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
       return moment(value, format).isValid();
     };
 
