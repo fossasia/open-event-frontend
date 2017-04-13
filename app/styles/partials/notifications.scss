@@ -1,0 +1,164 @@
+$white: #fff;
+$icon_color: rgba(255, 255, 255, 0.74);
+$error_background: #e74c3c;
+$error_color: #ba2c1d;
+$success_background: #64ce83;
+$success_color: #3da95c;
+$info_background: #3ea2ff;
+$info_color: #067cea;
+$warning_background: #ff7f48;
+$warning_color: #f44e06;
+
+.notification-container {
+  position: fixed;
+  z-index: 5000;
+  bottom: 10px;
+  right: 10px;
+
+  .ember-notify-show {
+    animation: notification-show 180ms cubic-bezier(0.175, 0.885, 0.32, 1.27499);
+  }
+
+  .ember-notify-hide {
+    animation: notification-hide 250ms cubic-bezier(0.33859, -0.42, 1, -0.22), notification-shrink 250ms 250ms cubic-bezier(0.5, 0, 0, 1);
+    -webkit-animation: notification-hide 250ms cubic-bezier(0.33859, -0.42, 1, -0.22), notification-shrink 250ms 250ms cubic-bezier(0.5, 0, 0, 1);
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  .custom-notify-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    color: $icon_color;
+    text-align: center;
+    span {
+      position: relative;
+      top: 10px;
+    }
+  }
+
+  .message {
+    min-width: 250px;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 15px;
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: .3;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+    &:focus {
+      opacity: 1;
+    }
+  }
+  .error {
+    background-color: $error_background;
+    .custom-notify-icon {
+      background-color: $error_color;
+    }
+    .close {
+      color: $error_color;
+    }
+  }
+  .success {
+    background-color: $success_background;
+    .custom-notify-icon {
+      background-color: $success_color;
+    }
+    .close {
+      color: $success_color;
+    }
+  }
+  .info {
+    background-color: $info_background;
+    .custom-notify-icon {
+      background-color: $info_color;
+    }
+    .close {
+      color: $info_color;
+    }
+  }
+  .warning {
+    background-color: $warning_background;
+    .custom-notify-icon {
+      background-color: $warning_color;
+    }
+    .close {
+      color: $warning_color;
+    }
+  }
+}
+
+@keyframes notification-show {
+  0% {
+    opacity: 0;
+    transform: perspective(450px) translate(0, -30px) rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(450px) translate(0, 0) rotateX(0deg);
+  }
+}
+@-webkit-keyframes notification-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes notification-shrink {
+  0% {
+    opacity: 0;
+    max-height: 800px;
+    margin-bottom: 2px;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+    transform: scale(0.8);
+  }
+}
+@-webkit-keyframes notification-shrink {
+  0% {
+    opacity: 0;
+    max-height: 800px;
+    margin-bottom: 2px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+  }
+}
+@keyframes notification-hide {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+@-webkit-keyframes notification-hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

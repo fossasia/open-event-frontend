@@ -15,6 +15,7 @@ export function initialize(application) {
   inject('loader', 'service:loader');
   inject('i18n', 'service:l10n');
   inject('device', 'service:device');
+  inject('notify', 'service:notify');
 
   application.inject('component', 'routing', 'service:-routing');
 }
