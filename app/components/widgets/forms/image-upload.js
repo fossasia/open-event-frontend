@@ -3,7 +3,7 @@ import { humanReadableBytes } from 'open-event-frontend/utils/size';
 import { resetFormElement } from 'open-event-frontend/utils/form';
 import { v4 } from 'ember-uuid';
 
-const { Component, computed } = Ember;
+const { Component, computed, on } = Ember;
 
 export default Component.extend({
 
@@ -15,6 +15,10 @@ export default Component.extend({
 
   maxSize: computed('maxSizeInKb', function() {
     return humanReadableBytes(this.get('maxSizeInKb'));
+  }),
+
+  allowReCrop: computed('selectedImage', 'needsCropper', function() {
+    return this.get('needsCropper') && !this.get('selectedImage').includes('http');
   }),
 
   actions: {
@@ -33,6 +37,7 @@ export default Component.extend({
               this.set('cropperModalIsShown', true);
             } else {
               this.set('selectedImage', untouchedImageData);
+              this.set('needsConfirmation', false);
             }
           };
           reader.readAsDataURL(input.files[0]);
@@ -45,14 +50,26 @@ export default Component.extend({
     imageCropped(croppedImageData) {
       this.set('cropperModalIsShown', false);
       this.set('selectedImage', croppedImageData);
+      this.set('needsConfirmation', false);
     },
 
     removeSelection() {
-      this.set('selectedImage', null);
+      if (!this.get('needsConfirmation')) {
+        this.set('selectedImage', null);
+      } else {
+        this.set('needsConfirmation', false);
+      }
     },
 
     reCrop() {
       this.set('cropperModalIsShown', true);
     }
-  }
+  },
+
+  _init: on('init', function() {
+    this.set('selectedImage', this.get('imageUrl'));
+    if (this.get('selectedImage')) {
+      this.set('needsConfirmation', true);
+    }
+  })
 });

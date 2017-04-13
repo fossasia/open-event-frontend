@@ -1,11 +1,16 @@
 <label>{{label}}</label>
 {{#if selectedImage}}
   <div class="ui card">
+    {{#if uploadingImage}}
+      <div class="ui active dimmer">
+        <div class="ui text loader">Image Uploading</div>
+      </div>
+    {{/if}}
     <div class="image">
       <img src="{{selectedImage}}">
     </div>
-    <div class="ui bottom attached buttons">
-      {{#if needsCropper}}
+    <div class="ui bottom attached mini buttons">
+      {{#if allowReCrop}}
         <div class="ui teal button" {{action 'reCrop'}}>
           <i class="trash icon"></i>
           Re-crop
@@ -13,7 +18,7 @@
       {{/if}}
       <div class="ui red button" {{action 'removeSelection'}}>
         <i class="trash icon"></i>
-        Remove
+        {{if needsConfirmation 'Delete' 'Confirm Delete'}}
       </div>
     </div>
   </div>
