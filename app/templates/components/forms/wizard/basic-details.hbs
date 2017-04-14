@@ -105,7 +105,9 @@
       hasLinkName=true
       linkName=data.externalEventUrl.name
       segmentedLink=data.externalEventUrl.segmentedLink
-      isChild=false
+      isChild=(unless data.socialLinks true)
+      canRemoveItem=false
+      addItem=(action 'addItem' 'socialLinks' 'social-link')
     }}
 
     {{#each data.socialLinks as |socialLink|}}
@@ -122,17 +124,200 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=ticketingSystemEnabled id='use_ticketing_system'}}
+      {{input type='checkbox' checked=data.ticketingSystemEnabled id='use_ticketing_system'}}
       <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
     </div>
   </div>
-  {{#if ticketingSystemEnabled}}
-
+  {{#if data.ticketingSystemEnabled}}
+    <div class="ui attached segment {{unless data.tickets 'center aligned'}}">
+      {{#if data.tickets}}
+        <div class="ui stackable celled five column grid">
+          <div class="row weight-600">
+            <div class="six wide column">
+              <label class="required">Ticket Name</label>
+            </div>
+            <div class="column">
+              <label>Price</label>
+            </div>
+            <div class="column">
+              <label class="required">Quantity</label>
+            </div>
+            <div class="column">
+              <label>Options</label>
+            </div>
+          </div>
+        </div>
+        {{#each data.tickets as |ticket|}}
+          {{widgets/forms/ticket-input ticket=ticket removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
+        {{/each}}
+      {{else}}
+        <h3 class="text muted weight-500">
+          {{t 'You don\'t have any tickets added. Add one of your choice.'}}
+        </h3>
+      {{/if}}
+    </div>
+    <div class="ui two bottom attached buttons">
+      <button class="ui button" {{action 'addTicket' 'free'}}>
+        <i class="large icons" style="margin-right: 6px;">
+          <i class="smile icon"></i>
+          <i class="inverted corner add icon"></i>
+        </i>
+        {{t 'Free Ticket'}}
+      </button>
+      <button class="ui button" {{action 'addTicket' 'paid'}}>
+        <i class="large icons" style="margin-right: 6px;">
+          <i class="dollar icon"></i>
+          <i class="inverted corner add icon"></i>
+        </i>
+        {{t 'Paid Ticket'}}
+      </button>
+    </div>
   {{else}}
     <div class="field">
       <label class="required" for="ticket_url">{{t 'Ticket URL'}}</label>
       {{widgets/forms/link-input inputId='ticket_url'}}
     </div>
+  {{/if}}
+  {{#if hasPaidTickets}}
+    <div class="ui section divider"></div>
+    <div class="field">
+      <label>{{t 'Redeem Discount Code'}}</label>
+      <div class="ui action input">
+        {{input type='text' placeholder=(t 'Discount code')}}
+        <button type="button" class="ui teal right labeled icon button">
+          <i class="check icon"></i>
+          {{t 'Redeem'}}
+        </button>
+      </div>
+    </div>
+    <div class="ui section divider"></div>
+    <div class="field">
+      <h4>{{t 'Add Payment Details'}}</h4>
+      <div class="two fields">
+        <div class="field">
+          <label class="required">Choose country</label>
+          {{#ui-dropdown class='search' id='payment_country' tagName='select' selected='' forceSelection=false}}
+            <option value="">Select country</option>
+          {{/ui-dropdown}}
+
+        </div>
+        <div class="field">
+          <label class="required">Choose currency</label>
+          {{#ui-dropdown class='search' id='payment_currency' tagName='select' selected='' forceSelection=false}}
+            <option value="">Select currency</option>
+          {{/ui-dropdown}}
+        </div>
+      </div>
+    </div>
+    <div class="ui section divider"></div>
+    <div class="field">
+      <h4>{{t 'Choose payment methods'}}</h4>
+      <label>Payment by PayPal</label>
+      <div class="field" style="margin-top: 10px;">
+        <div class="ui checkbox">
+          {{input type='checkbox' id='payment_by_paypal' checked=data.payByPayPal}}
+          <label for="payment_by_paypal">
+            <span>{{t 'YES, accept payment through PayPal'}}</span>
+            <br>
+            <span class="text muted">
+              {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works '}}
+              <a href="https://www.paypal.com/us/webapps/mpp/popup/about-payment-methods" target="_blank">{{t 'click here'}}</a>.
+            </span>
+          </label>
+        </div>
+      </div>
+      {{#if data.payByPayPal}}
+        <div class="field">
+          <label class="required">PayPal Email</label>
+          {{input type='email'}}
+        </div>
+      {{/if}}
+
+      <label>Payment by Stripe</label>
+      <div class="field" style="margin-top: 10px;">
+        <div class="ui checkbox">
+          {{input type='checkbox' id='payment_by_stripe' checked=data.payByStripe}}
+          <label for="payment_by_stripe">
+            <span>{{t 'YES, accept payment through Stripe'}}</span>
+            <br>
+            <span class="text muted">
+              {{t 'Stripe accepts Visa, Master and Amex. Find out more about Stripe '}}
+              <a href="https://stripe.com/docs" target="_blank">{{t 'here'}}</a>.
+            </span>
+          </label>
+        </div>
+      </div>
+      {{#if data.payByStripe}}
+        <div class="field">
+          <label class="required">Connect to your Stripe account</label>
+          <a href="#" class="stripe-connect"><span>Connect with Stripe</span></a>
+        </div>
+      {{/if}}
+
+      <label>Offline Payments</label>
+      <div class="field" style="margin-top: 10px;">
+        <div class="ui checkbox">
+          {{input type='checkbox' id='payment_by_cheque' checked=data.payByCheque}}
+          <label for="payment_by_cheque">
+            {{t 'YES, accept payment by Cheque'}}
+          </label>
+        </div>
+      </div>
+      {{#if data.payByCheque}}
+        <div class="field">
+          <label class="required">{{t 'Enter you account name and other required details/instructions to ticket buyers'}}</label>
+          {{textarea}}
+        </div>
+      {{/if}}
+
+      <div class="field" style="margin-top: 10px;">
+        <div class="ui checkbox">
+          {{input type='checkbox' id='payment_by_bank' checked=data.payByBank}}
+          <label for="payment_by_bank">
+            {{t 'YES, accept payment by Telegraphic Transfer(TT) / Bank Transfer '}}
+          </label>
+        </div>
+      </div>
+
+      {{#if data.payByBank}}
+        <div class="field">
+          <label class="required">{{t 'Enter your bank details and other required details/instructions to ticket buyers'}}</label>
+          {{textarea}}
+        </div>
+      {{/if}}
+
+      <div class="field" style="margin-top: 10px;">
+        <div class="ui checkbox">
+          {{input type='checkbox' id='payment_onsite' checked=data.payOnSite}}
+          <label for="payment_onsite">
+            {{t 'YES, accept payment at the event (on site) '}}
+          </label>
+        </div>
+      </div>
+
+      {{#if data.payOnSite}}
+        <div class="field">
+          <label class="required">{{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}</label>
+          {{textarea}}
+        </div>
+      {{/if}}
+
+      <div class="ui section divider"></div>
+
+      <div class="field">
+        {{#if data.hasTaxInfo}}
+
+        {{else}}
+          <button type="button" class="ui right labeled icon button">
+            <i class="percent icon"></i>
+            Add Tax Information
+          </button>
+
+        {{/if}}
+      </div>
+
+    </div>
+
   {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields">
@@ -221,3 +406,4 @@
   </div>
 </form>
 
+{{modals/tax-info-modal isOpen=false}}

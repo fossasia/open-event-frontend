@@ -11,15 +11,13 @@ export default Mixin.create({
     }
   },
 
-  _didInsertElement_: on('didInsertElement', function() {
+  _didRender_: on('didRender', function() {
+  }),
 
+  _didInsertElement_: on('didInsertElement', function() {
     $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
       return moment(value, format).isValid();
     };
-
-    this.$('.has.popup').popup({
-      hoverable: true
-    });
 
     const defaultFormRules = {
       onFailure: formErrors => {
@@ -32,7 +30,13 @@ export default Mixin.create({
       }
     };
 
+    this.$('.has.popup').popup({
+      hoverable: true
+    });
+
     this.$('.ui.checkbox').checkbox();
+
+
     if (this.get('getValidationRules')) {
       this.$('.ui.form').form(merge(defaultFormRules, this.get('getValidationRules')()));
     }

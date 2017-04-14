@@ -9,7 +9,8 @@ const { Model, attr } = DS;
 export default Model.extend({
   name               : attr('string'),
   type               : attr('string'),
-  price              : attr('boolean'),
+  price              : attr('number'),
+  quantity           : attr('number', { defaultValue: 100 }),
   description        : attr('string'),
   descriptionVisible : attr('boolean', { defaultValue: true }),
   ticketVisible      : attr('boolean', { defaultValue: true }),

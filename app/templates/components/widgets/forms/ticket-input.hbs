@@ -1,0 +1,42 @@
+<div class="five column row">
+  <div class="six wide column">
+    <div class="field">
+      {{input type='text' placeholder=(t 'Ticket Name') value=ticket.name}}
+    </div>
+  </div>
+  <div class="column">
+    {{#if (eq ticket.type 'paid')}}
+      <div class="field">
+        {{input type='number' placeholder=(t 'Price') value=ticket.price}}
+      </div>
+    {{else}}
+      <span class="text muted" style="line-height: 35px;">
+        {{t 'This is a'}} {{ticket.type}} {{t 'Ticket'}}
+      </span>
+    {{/if}}
+  </div>
+  <div class="column">
+    <div class="field">
+      {{input type='number' placeholder=(t 'Quantity') value=ticket.quantity}}
+    </div>
+  </div>
+  <div class="column">
+    <div class="field">
+      <div class="ui icon buttons">
+        <button class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
+        <button class="ui button" {{action removeTicket}} data-content="Delete"><i class="trash icon"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+{{#if isExpanded}}
+  <div class="one column row">
+    <div class="column">
+      <h4>Settings</h4>
+      <div class="field">
+        <label>{{t 'Ticket Description'}}</label>
+        {{textarea placeholder=(t 'This description would be available to the attendees when ordering tickets.') maxlength=160}}
+      </div>
+    </div>
+  </div>
+{{/if}}

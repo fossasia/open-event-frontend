@@ -3,7 +3,7 @@ import moment from 'moment';
 import { licenses, timezones } from 'open-event-frontend/utils/dictionary';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizard from 'open-event-frontend/mixins/event-wizard';
-import { orderBy } from 'lodash';
+import { orderBy, filter } from 'lodash';
 
 const { Component, computed, on } = Ember;
 
@@ -79,12 +79,23 @@ export default Component.extend(FormMixin, EventWizard, {
     return orderBy(licenses, 'name');
   }),
 
+  hasPaidTickets: computed('data.tickets.[]', function() {
+    return filter(this.get('data.tickets'), ticket => ticket.get('type') === 'paid').length > 0;
+  }),
+
   actions: {
     saveDraft() {
       this.$('form').form('validate form');
     },
     moveForward() {
       this.$('form').form('validate form');
+    },
+    addTicket(type) {
+      this.get('data.tickets').pushObject(this.store.createRecord('ticket', { type }));
+    },
+    removeTicket(ticket) {
+      ticket.unloadRecord();
+      this.get('data.tickets').removeObject(ticket);
     },
     addItem(type, model) {
       this.get(`data.${type}`).pushObject(this.store.createRecord(model));

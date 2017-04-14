@@ -15,6 +15,13 @@ export default Component.extend({
     }
   }),
 
+  __didRender: on('didRender', function() {
+    try {
+      this.$().modal('refresh');
+    } catch (ignored) { /* ignored exception */ }
+  }),
+
+
   __didInsertElement: on('didInsertElement', function() {
     const defaultOptions = {
       dimmerSettings: {
@@ -26,6 +33,19 @@ export default Component.extend({
           this.onHide();
         }
       },
+      onDeny: () => {
+        if (this.get('onDeny')) {
+          this.onDeny();
+        }
+        return true;
+      },
+      onApprove: () => {
+        if (this.get('onApprove')) {
+          this.onApprove();
+        }
+        return true;
+      },
+
       onVisible: () => {
         this.set('isOpen', true);
         this.$().modal('refresh');

@@ -1,0 +1,87 @@
+<div class="header">
+  {{t 'Add tax information'}}
+</div>
+<div class="content">
+  <form class="ui form" autocomplete="off">
+    <div class="field">
+      <label class="required">{{t 'Choose country'}}</label>
+      {{#ui-dropdown class='search' id='tax_country' tagName='select' selected='' forceSelection=false}}
+        <option value="">Select country</option>
+      {{/ui-dropdown}}
+    </div>
+    <div class="field">
+      <label class="required">{{t 'Tax name'}}</label>
+      {{input type='text'}}
+    </div>
+    <div class="field">
+      <label class="required">{{t 'Tax rate'}}</label>
+      {{input type='number'}}
+    </div>
+    <div class="field">
+      <label class="required">{{t 'Tax ID'}}</label>
+      {{input type='text'}}
+    </div>
+    <div class="field">
+      <label>{{t 'Tax Invoices'}}</label>
+      <div class="ui checkbox">
+        {{input type='checkbox' id='send_tax_invoices' checked=sendInvoices}}
+        <label for="send_tax_invoices">
+          <strong>{{t 'Send tax invoice to attendees'}} : </strong>
+          <span class="text muted">
+              {{t 'Tax Invoices are sent to your attendees when you select this feature. Enter your registered business company name and address to be included on the tax invoice.'}}
+            </span>
+        </label>
+      </div>
+    </div>
+    {{#if sendInvoices}}
+      <div class="field">
+        <label class="required">{{t 'Registered Company'}}</label>
+        {{input type='text'}}
+      </div>
+      <div class="field">
+        <label class="required">{{t 'Business Address'}}</label>
+        {{textarea rows=3}}
+      </div>
+      <div class="field">
+        <label class="required">{{t 'City'}}</label>
+        {{input type='text'}}
+      </div>
+      <div class="field">
+        <label class="required">{{t 'State'}}</label>
+        {{input type='text'}}
+      </div>
+      <div class="field">
+        <label class="required">{{t 'Zipcode'}}</label>
+        {{input type='text'}}
+      </div>
+      <div class="field">
+        <label>{{t 'Text for invoice footer (optional)'}}</label>
+        {{textarea rows=3}}
+      </div>
+    {{/if}}
+    <div class="grouped fields">
+      <label for="privacy">{{t 'Add or Include Tax Fee'}}</label>
+      <div class="field">
+        <div class="ui radio checkbox">
+          {{widgets/forms/radio-button name='tax_add_include' id='add_tax' value='add' checked='public'}}
+          <label for="add_tax">{{t 'Add tax as separate fee on top of the price'}}</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          {{widgets/forms/radio-button name='tax_add_include' id='include_tax' value='include' checked='public'}}
+          <label for="include_tax">{{t 'Include tax in ticket price'}}</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <div class="ui black deny button">
+    Cancel
+  </div>
+  <div class="ui positive right labeled icon button">
+    Add tax information
+    <i class="checkmark icon"></i>
+  </div>
+</div>
