@@ -65,7 +65,13 @@ module.exports = function(environment) {
     moment: {
       includeTimezone: 'subset' /* ,
       localeOutputPath : 'assets/moment-locales'*/
+    },
+
+    pace: {
+      theme: 'minimal',
+      color: 'blue',
     }
+
   };
 
   ENV['ember-simple-auth'] = {

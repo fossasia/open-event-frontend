@@ -7,6 +7,10 @@ module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     flexibility: {
       enabled: true
+    },
+    minifyHTML: {
+      enabled   : true,
+      htmlFiles : ['index.html', '404.html']
     }
   });
 
