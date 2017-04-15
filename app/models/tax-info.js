@@ -4,6 +4,7 @@ const { Model, attr, belongsTo } = DS;
 
 export default Model.extend({
   name              : attr('string'),
+  taxId             : attr('string'),
   rate              : attr('number'),
   sendInvoice       : attr('boolean'),
   country           : attr('string'),
@@ -11,9 +12,9 @@ export default Model.extend({
   address           : attr('string'),
   city              : attr('string'),
   state             : attr('string'),
-  zip               : attr('string'),
+  zipcode           : attr('string'),
   invoiceFooter     : attr('string'),
-  includeTaxInPrice : attr('boolean', { defaultValue: true }),
+  includeTaxInPrice : attr('boolean', { defaultValue: false }),
 
   event: belongsTo('event')
 });

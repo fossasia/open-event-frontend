@@ -33,7 +33,7 @@ export default Component.extend(FormMixin, EventWizard, {
             },
             {
               type   : 'date',
-              prompt : 'Please give an valid start date'
+              prompt : 'Please give a valid start date'
             }
           ]
         },
@@ -45,7 +45,7 @@ export default Component.extend(FormMixin, EventWizard, {
             },
             {
               type   : 'date',
-              prompt : 'Please give an valid end date'
+              prompt : 'Please give a valid end date'
             }
           ]
         },
@@ -103,6 +103,15 @@ export default Component.extend(FormMixin, EventWizard, {
     removeItem(item, type) {
       item.unloadRecord();
       this.get(`data.${type}`).removeObject(item);
+    },
+    openTaxModal() {
+      this.set('taxModelIsOpen', true);
+    },
+    deleteTaxInformation() {
+      console.log('deleteTaxInformation');
+      this.set('data.hasTaxInfo', false);
+      this.get('data.taxInfo').unloadRecord();
+      this.set('data.taxInfo', this.store.createRecord('tax-info'));
     }
   },
 

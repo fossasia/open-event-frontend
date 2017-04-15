@@ -15,6 +15,20 @@ export default Component.extend({
     }
   }),
 
+  close() {
+    this.set('isOpen', false);
+  },
+
+  open() {
+    this.set('isOpen', true);
+  },
+
+  actions: {
+    close() {
+      this.close();
+    }
+  },
+
   __didRender: on('didRender', function() {
     try {
       this.$().modal('refresh');
@@ -57,6 +71,7 @@ export default Component.extend({
         }
       }
     };
+
     const options = this.get('options') ? merge(defaultOptions, this.get('options')) : defaultOptions;
 
     this.$().modal(options);

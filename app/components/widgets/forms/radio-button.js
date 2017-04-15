@@ -1,24 +1,30 @@
 import Ember from 'ember';
 
-const { Component, run: { next }, observer, computed } = Ember;
+const { Component, run: { once }, observer, computed } = Ember;
 
 export default Component.extend({
 
   tagName           : 'input',
   type              : 'radio',
-  attributeBindings : ['type', 'radioChecked:checked', 'value', 'name', 'disabled'],
+  attributeBindings : ['type', 'htmlChecked:checked', 'value', 'name', 'disabled'],
 
-  _elementUpdateObserver: observer('radioChecked', function() {
-    next(this, () => {
-      this.$().prop('checked', this.get('radioChecked')).trigger('change');
-    });
-  }),
+  value   : null,
+  checked : null,
 
-  radioChecked: computed('value', 'checked', function() {
+  htmlChecked: computed('value', 'checked', function() {
     return this.get('value') === this.get('checked');
   }),
 
   change() {
     this.set('checked', this.get('value'));
-  }
+  },
+
+  _setCheckedProp() {
+    if (!this.$()) { return }
+    this.$().prop('checked', this.get('htmlChecked'));
+  },
+
+  _updateElementValue: observer('htmlChecked', function() {
+    once(this, '_setCheckedProp');
+  })
 });
