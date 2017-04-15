@@ -1,9 +1,11 @@
 # Open Event Frontend
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fossasia/open-event-frontend.svg)](https://greenkeeper.io/)
 [![Travis](https://img.shields.io/travis/fossasia/open-event-frontend.svg?style=flat-square)](https://travis.org/fossasia/open-event-frontend)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
 [![Codacy grade](https://img.shields.io/codacy/grade/0d51cf60fc734d3699fd6eff6054e483.svg?style=flat-square)](https://www.codacy.com/app/niranjan94/open-event-frontend)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/fossasia/open-event-frontend.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
 
 > The front end for the Open Event API Server
 
