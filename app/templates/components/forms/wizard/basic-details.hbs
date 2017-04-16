@@ -23,22 +23,34 @@
   <div class="ten fields">
     <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
-      {{widgets/forms/date-picker type='text' inputId='start_date' placeholder='MM/DD/YYYY' rangePosition='start'
+      {{widgets/forms/date-picker type='text'
+                                  inputId='start_date'
+                                  placeholder='MM/DD/YYYY'
+                                  rangePosition='start'
                                   value=data.startDate}}
     </div>
     <div class="two wide field">
       <label for="start_time">&nbsp;</label>
-      {{widgets/forms/time-picker type='text' inputId='start_time' placeholder='HH:MM' rangePosition='start'
+      {{widgets/forms/time-picker type='text'
+                                  inputId='start_time'
+                                  placeholder='HH:MM'
+                                  rangePosition='start'
                                   value=data.startTime}}
     </div>
     <div class="five wide field">
       <label class="required" for="end_date">{{t 'Ends'}}</label>
-      {{widgets/forms/date-picker type='text' inputId='end_date' placeholder='MM/DD/YYYY' rangePosition='end'
+      {{widgets/forms/date-picker type='text'
+                                  inputId='end_date'
+                                  placeholder='MM/DD/YYYY'
+                                  rangePosition='end'
                                   value=data.endDate}}
     </div>
     <div class="two wide field">
       <label for="end_time">&nbsp;</label>
-      {{widgets/forms/time-picker type='text' inputId='end_time' placeholder='HH:MM' rangePosition='end'
+      {{widgets/forms/time-picker type='text'
+                                  inputId='end_time'
+                                  placeholder='HH:MM'
+                                  rangePosition='end'
                                   value=data.endTime}}
     </div>
     <div class="five wide field">
@@ -83,19 +95,19 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=hasOrganizerInfo id='add_organizer_information'}}
+      {{input type='checkbox' checked=data.hasOrganizerInfo id='add_organizer_information'}}
       <label for="add_organizer_information">{{t 'Add organizer information'}}</label>
     </div>
   </div>
 
-  {{#if hasOrganizerInfo}}
+  {{#if data.hasOrganizerInfo}}
     <div class="field">
       <label for="organizer_name">{{t 'Organizer Name'}}</label>
-      {{input type='text' id='organizer_name'}}
+      {{input type='text' id='organizer_name' value=data.organizerName}}
     </div>
     <div class="field">
       <label for="organizer_description">{{t 'Organizer Description'}}</label>
-      {{widgets/forms/rich-text-editor id='organizer_description'}}
+      {{widgets/forms/rich-text-editor id='organizer_description' value=data.organizerDescription}}
     </div>
   {{/if}}
   <div class="ui section divider"></div>
@@ -137,7 +149,7 @@
               <label class="required">Ticket Name</label>
             </div>
             <div class="column">
-              <label>Price</label>
+              <label class="required">Price</label>
             </div>
             <div class="column">
               <label class="required">Quantity</label>
@@ -148,7 +160,9 @@
           </div>
         </div>
         {{#each data.tickets as |ticket|}}
-          {{widgets/forms/ticket-input ticket=ticket removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
+          {{widgets/forms/ticket-input ticket=ticket
+                                       timezone=data.timezone
+                                       removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
         {{/each}}
       {{else}}
         <h3 class="text muted weight-500">

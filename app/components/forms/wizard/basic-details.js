@@ -4,6 +4,7 @@ import { licenses, timezones } from 'open-event-frontend/utils/dictionary';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizard from 'open-event-frontend/mixins/event-wizard';
 import { orderBy, filter } from 'lodash';
+import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary';
 
 const { Component, computed, on } = Ember;
 
@@ -66,7 +67,40 @@ export default Component.extend(FormMixin, EventWizard, {
               prompt : 'Please give an end time'
             }
           ]
+        },
+        ticket_name: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please give your ticket a name'
+            }
+          ]
+        },
+        ticket_price: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please give your ticket a price'
+            },
+            {
+              type   : 'number',
+              prompt : 'Please give a proper price for you ticket'
+            }
+          ]
+        },
+        ticket_quantity: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please specify how many tickets of this type are available'
+            },
+            {
+              type   : 'number',
+              prompt : 'Please give a proper quantity for you ticket'
+            }
+          ]
         }
+
       }
     };
   },
@@ -91,7 +125,13 @@ export default Component.extend(FormMixin, EventWizard, {
       this.$('form').form('validate form');
     },
     addTicket(type) {
-      this.get('data.tickets').pushObject(this.store.createRecord('ticket', { type }));
+      const salesStartDateTime = moment(this.get('data.startDate'), FORM_DATE_FORMAT).subtract(1, 'months');
+      const salesEndDateTime = salesStartDateTime.clone().add(10, 'days');
+      this.get('data.tickets').pushObject(this.store.createRecord('ticket', {
+        type,
+        salesStartDateTime : salesStartDateTime.toDate(),
+        salesEndDateTime   : salesEndDateTime.toDate()
+      }));
     },
     removeTicket(ticket) {
       ticket.unloadRecord();

@@ -1,13 +1,13 @@
 <div class="five column row">
   <div class="six wide column">
     <div class="field">
-      {{input type='text' placeholder=(t 'Ticket Name') value=ticket.name}}
+      {{input type='text' name='ticket_name' placeholder=(t 'Ticket Name') value=ticket.name}}
     </div>
   </div>
   <div class="column">
     {{#if (eq ticket.type 'paid')}}
       <div class="field">
-        {{input type='number' placeholder=(t 'Price') value=ticket.price}}
+        {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price}}
       </div>
     {{else}}
       <span class="text muted" style="line-height: 35px;">
@@ -17,14 +17,14 @@
   </div>
   <div class="column">
     <div class="field">
-      {{input type='number' placeholder=(t 'Quantity') value=ticket.quantity}}
+      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity}}
     </div>
   </div>
   <div class="column">
     <div class="field">
       <div class="ui icon buttons">
-        <button class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
-        <button class="ui button" {{action removeTicket}} data-content="Delete"><i class="trash icon"></i></button>
+        <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
+        <button type="button" class="ui button" {{action removeTicket}} data-content="Delete"><i class="trash icon"></i></button>
       </div>
     </div>
   </div>
@@ -37,6 +37,69 @@
         <label>{{t 'Ticket Description'}}</label>
         {{textarea placeholder=(t 'This description would be available to the attendees when ordering tickets.') maxlength=160}}
       </div>
+      <div class="field">
+        <div class="ui checkbox">
+          {{input type='checkbox' checked=ticket.descriptionVisible id='description_visible'}}
+          <label for="description_visible">{{t 'Display Ticket description on Public Events page'}}</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui checkbox">
+          {{input type='checkbox' checked=ticket.ticketHidden id='ticket_hidden'}}
+          <label for="description_visible">
+            {{t 'Hide Ticket from the Public Events page'}}<br>
+            <span class="text muted">{{t 'Ticket would still be available for sale to Organizers.'}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui checkbox">
+          {{input type='checkbox' checked=ticket.absorbFees id='absorb_fees'}}
+          <label for="absorb_fees">
+            {{t 'Absorb Fees'}} <br>
+            <span class="text muted">{{t 'If unchecked fees will be passed on to the buyer.'}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="ten fields">
+        <div class="five wide field">
+          <label class="required" for="ticket_start_date">{{t 'Starts'}}</label>
+          {{widgets/forms/date-picker type='text'
+                                      inputId='ticket_start_date'
+                                      placeholder='MM/DD/YYYY'
+                                      rangePosition='start'
+                                      value=ticket.startDate}}
+        </div>
+        <div class="two wide field">
+          <label for="ticket_start_time">&nbsp;</label>
+          {{widgets/forms/time-picker type='text'
+                                      inputId='ticket_start_time'
+                                      placeholder='HH:MM'
+                                      rangePosition='start'
+                                      value=ticket.startTime}}
+        </div>
+        <div class="five wide field">
+          <label class="required" for="ticket_end_date">{{t 'Ends'}}</label>
+          {{widgets/forms/date-picker type='text'
+                                      inputId='ticket_end_date'
+                                      placeholder='MM/DD/YYYY'
+                                      rangePosition='end'
+                                      value=ticket.endDate}}
+        </div>
+        <div class="two wide field">
+          <label for="ticket_end_time">&nbsp;</label>
+          {{widgets/forms/time-picker type='text'
+                                      inputId='ticket_end_time'
+                                      placeholder='HH:MM'
+                                      rangePosition='end'
+                                      value=ticket.endTime}}
+        </div>
+        <div class="five wide field has popup" data-content="Uses the timezone of the event.">
+          <label class="required" for="ticket_timezone">{{t 'Timezone'}}</label>
+          {{input type='text' disabled=true value=timezone id='ticket_timezone' }}
+        </div>
+      </div>
+
     </div>
   </div>
 {{/if}}

@@ -22,7 +22,7 @@ export default Mixin.create(MutableArray, {
       description          : '',
       backgroundUrl        : '',
       logoUrl              : '',
-      hasOrganizerInfo     : true,
+      hasOrganizerInfo     : false,
       organizerName        : '',
       organizerDescription : '',
       externalEventUrl     : this.store.createRecord('social-link', { name: 'External Link' }),

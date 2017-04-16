@@ -13,7 +13,7 @@ export default Model.extend({
   quantity           : attr('number', { defaultValue: 100 }),
   description        : attr('string'),
   descriptionVisible : attr('boolean', { defaultValue: true }),
-  ticketVisible      : attr('boolean', { defaultValue: true }),
+  ticketHidden       : attr('boolean', { defaultValue: false }),
   salesStartDateTime : attr('date', { defaultValue: () => moment().startOf('day').toDate() }),
   salesEndDateTime   : attr('date', { defaultValue: () => moment().add(10, 'days').startOf('day').toDate() }),
   minOrder           : attr('number', { defaultValue: 1 }),
@@ -33,7 +33,7 @@ export default Model.extend({
       oldDate.date(newDate.date());
       oldDate.month(newDate.month());
       oldDate.year(newDate.year());
-      this.set('salesStartDateTime', oldDate);
+      this.set('salesStartDateTime', oldDate.toDate());
       return value;
     }
   }),
@@ -47,7 +47,7 @@ export default Model.extend({
       const oldDate = moment(this.get('salesStartDateTime'));
       oldDate.hour(newDate.hour());
       oldDate.minute(newDate.minute());
-      this.set('salesStartDateTime', oldDate);
+      this.set('salesStartDateTime', oldDate.toDate());
       return value;
     }
   }),
@@ -62,7 +62,7 @@ export default Model.extend({
       oldDate.date(newDate.date());
       oldDate.month(newDate.month());
       oldDate.year(newDate.year());
-      this.set('salesEndDateTime', oldDate);
+      this.set('salesEndDateTime', oldDate.toDate());
       return value;
     }
   }),
@@ -76,7 +76,7 @@ export default Model.extend({
       const oldDate = moment(this.get('salesEndDateTime'));
       oldDate.hour(newDate.hour());
       oldDate.minute(newDate.minute());
-      this.set('salesEndDateTime', oldDate);
+      this.set('salesEndDateTime', oldDate.toDate());
       return value;
     }
   })
