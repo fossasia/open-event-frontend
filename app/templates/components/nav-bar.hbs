@@ -13,7 +13,7 @@
     {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
     {{#if session.isAuthenticated}}
       {{#ui-dropdown class='item' action='hide'}}
-        <img class="ui avatar image"
+        <img class="ui avatar round image"
              style="margin-right: 10px;"
              src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar
                        '/images/placeholders/avatar.png'}}">
