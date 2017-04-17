@@ -30,7 +30,10 @@
     <div class="ui center aligned piled upload segment text muted">
       <i class="big {{icon}} icon"></i>
       <br><br>
-      {{hint}}
+      {{hint}}<br>
+      {{#if allowDragDrop}}
+        <small>({{t 'click or drag-and-drop'}})</small>
+      {{/if}}
     </div>
     <span class="text muted">
   {{#if helpText}}

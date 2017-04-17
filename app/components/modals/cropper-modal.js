@@ -1,22 +1,20 @@
-import Ember from 'ember';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
-
-const { run: { later } } = Ember;
 
 export default ModalBase.extend({
   onVisible() {
-    later(this, () => {
-      const imageHeight = this.$('img').height();
-      this.$('.content').css('height', `${imageHeight}px`);
-      this.$('img').croppie({
-        customClass : 'croppie',
-        viewport    : {
-          width  : 600,
-          height : 300,
-          type   : 'square'
-        }
-      });
-    }, 200);
+    this.$('.content').css('height', '300px');
+    this.$('img').croppie({
+      customClass : 'croppie',
+      viewport    : {
+        width  : 400,
+        height : 200,
+        type   : 'square'
+      },
+      boundary: {
+        width  : 600,
+        height : 300
+      }
+    });
   },
 
   onHide() {

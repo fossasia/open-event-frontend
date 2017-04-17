@@ -7,7 +7,8 @@ const { Component, computed, on, run: { later } } = Ember;
 
 export default Component.extend({
 
-  selectedImage: null,
+  selectedImage : null,
+  allowDragDrop : true,
 
   inputIdGenerated: computed('inputId', function() {
     return this.get('inputId') ? this.get('inputId') : v4();
@@ -31,29 +32,36 @@ export default Component.extend({
     }, 6000);
   },
 
-  actions: {
-    fileSelected(event) {
-      const input = event.target;
-      this.errorMessage = '';
-      if (input.files && input.files[0]) {
-        if (input.files[0].size > (this.maxSizeInMb * 1024 * 1024)) {
+  processFiles(files, input = null) {
+    this.errorMessage = '';
+    if (files && files[0]) {
+      if (files[0].size > (this.maxSizeInMb * 1024 * 1024)) {
+        if (input) {
           resetFormElement(input);
-        } else {
-          const reader = new FileReader();
-          reader.onload = e => {
-            const untouchedImageData = e.target.result;
-            if (this.get('needsCropper')) {
-              this.set('imgData', untouchedImageData);
-              this.set('cropperModalIsShown', true);
-            } else {
-              this.uploadImage(untouchedImageData);
-            }
-          };
-          reader.readAsDataURL(input.files[0]);
         }
       } else {
-        this.errorMessage = 'No FileReader support. Please use a more latest browser';
+        const reader = new FileReader();
+        reader.onload = e => {
+          const untouchedImageData = e.target.result;
+          if (this.get('needsCropper')) {
+            this.set('imgData', untouchedImageData);
+            this.set('cropperModalIsShown', true);
+          } else {
+            this.uploadImage(untouchedImageData);
+          }
+        };
+        reader.readAsDataURL(files[0]);
       }
+    } else {
+      this.errorMessage = 'No FileReader support. Please use a more latest browser';
+    }
+
+  },
+
+  actions: {
+
+    fileSelected(event) {
+      this.processFiles(event.target.files);
     },
 
     imageCropped(croppedImageData) {
@@ -81,5 +89,27 @@ export default Component.extend({
     if (this.get('selectedImage')) {
       this.set('needsConfirmation', true);
     }
+  }),
+
+  _didInsertElement: on('didInsertElement', function() {
+    this.$()
+      .on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      })
+      .on('dragover dragenter', () => {
+        this.$('.upload.segment').addClass('drag-hover');
+      })
+      .on('dragleave dragend drop', () => {
+        this.$('.upload.segment').removeClass('drag-hover');
+      })
+      .on('drop', e => {
+        this.processFiles(e.originalEvent.dataTransfer.files);
+      });
+  }),
+
+  _willDestroyElement: on('willDestroyElement', function() {
+    this.$().off('drag dragstart dragend dragover dragenter dragleave drop');
   })
+
 });

@@ -6,8 +6,15 @@
   cursor: pointer;
   transition: color 0.3s;
 
+  &.drag-hover {
+    background-color: #fffcf4;
+  }
+
   &:hover {
     color: #2a2a2a !important;
   }
 
+  small {
+    font-size: 14px;
+  }
 }
