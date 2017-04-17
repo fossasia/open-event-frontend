@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import palette from 'npm:google-material-color';
 
 const { Model, attr, hasMany, belongsTo } = DS;
 

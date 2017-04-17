@@ -43,7 +43,10 @@ export default Mixin.create({
 
   _didInsertElement_: on('didInsertElement', function() {
     $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
-      return moment(value, format).isValid();
+      if (value && value.length > 0 && format) {
+        return moment(value, format).isValid();
+      }
+      return true;
     };
   })
 });

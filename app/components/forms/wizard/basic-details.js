@@ -17,7 +17,7 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        code_groups: {
+        name: {
           rules: [
             {
               type   : 'empty',
@@ -144,8 +144,8 @@ export default Component.extend(FormMixin, {
     return orderBy(licenses, 'name');
   }),
 
-  hasPaidTickets: computed('data.tickets.[]', function() {
-    return filter(this.get('data.tickets'), ticket => ticket.get('type') === 'paid').length > 0;
+  hasPaidTickets: computed('data.event.tickets.[]', function() {
+    return filter(this.get('data.event.tickets'), ticket => ticket.get('type') === 'paid').length > 0;
   }),
 
   actions: {
@@ -156,9 +156,9 @@ export default Component.extend(FormMixin, {
       this.$('form').form('validate form');
     },
     addTicket(type) {
-      const salesStartDateTime = moment(this.get('data.startDate'), FORM_DATE_FORMAT).subtract(1, 'months');
+      const salesStartDateTime = moment(this.get('data.event.startDate'), FORM_DATE_FORMAT).subtract(1, 'months');
       const salesEndDateTime = salesStartDateTime.clone().add(10, 'days');
-      this.get('data.tickets').pushObject(this.store.createRecord('ticket', {
+      this.get('data.event.tickets').pushObject(this.store.createRecord('ticket', {
         type,
         salesStartDateTime : salesStartDateTime.toDate(),
         salesEndDateTime   : salesEndDateTime.toDate()
@@ -166,23 +166,22 @@ export default Component.extend(FormMixin, {
     },
     removeTicket(ticket) {
       ticket.unloadRecord();
-      this.get('data.tickets').removeObject(ticket);
+      this.get('data.event.tickets').removeObject(ticket);
     },
     addItem(type, model) {
-      this.get(`data.${type}`).pushObject(this.store.createRecord(model));
+      this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));
     },
     removeItem(item, type) {
       item.unloadRecord();
-      this.get(`data.${type}`).removeObject(item);
+      this.get(`data.event.${type}`).removeObject(item);
     },
     openTaxModal() {
       this.set('taxModelIsOpen', true);
     },
     deleteTaxInformation() {
-      console.log('deleteTaxInformation');
-      this.set('data.hasTaxInfo', false);
-      this.get('data.taxInfo').unloadRecord();
-      this.set('data.taxInfo', this.store.createRecord('tax-info'));
+      this.set('data.event.hasTaxInfo', false);
+      this.get('data.event.taxInfo').unloadRecord();
+      this.set('data.event.taxInfo', this.store.createRecord('tax-info'));
     }
   }
 });

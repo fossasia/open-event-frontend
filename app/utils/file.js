@@ -23,6 +23,8 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
     if (file.size > (maxSizeInMb * 1024)) {
       return reject(`File size larger than ${humanReadableBytes(maxSizeInMb)}`);
     }
+
+    // If Uint8Array support is available, get the actual file type using file header. (Preferred way)
     if ('Uint8Array' in window) {
       let fileReader = new FileReader();
       fileReader.onloadend = function(e) {
@@ -32,6 +34,8 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
           header += arr[i].toString(16);
         }
         let type;
+
+        // Magic number reference: from http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html
         switch (header) {
           case '89504e47':
             type = 'image/png';
@@ -57,6 +61,7 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
       fileReader.readAsArrayBuffer(file);
 
     } else {
+      // If no support for Uint8Array, get the mime from the blob directly (Easily spoof-able)
       if (fileTypes.includes(file.type)) {
         return resolve();
       } else {
