@@ -436,10 +436,17 @@
       Forward
       <i class="right chevron icon"></i>
     </button>
-    <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
-      Save draft
-      <i class="save icon"></i>
-    </button>
+    {{#unless data.event.locationName}}
+      <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
+        Save draft
+        <i class="save icon"></i>
+      </button>
+    {{else}}
+      <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
+        Publish
+        <i class="check icon"></i>
+      </button>
+    {{/unless}}
   </div>
 </form>
 

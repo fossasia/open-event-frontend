@@ -155,6 +155,9 @@ export default Component.extend(FormMixin, {
     moveForward() {
       this.$('form').form('validate form');
     },
+    publish() {
+      this.$('form').form('validate form');
+    },
     addTicket(type) {
       const salesStartDateTime = moment(this.get('data.event.startDate'), FORM_DATE_FORMAT).subtract(1, 'months');
       const salesEndDateTime = salesStartDateTime.clone().add(10, 'days');
