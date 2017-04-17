@@ -1,15 +1,15 @@
 <form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
   <div class="field">
     <label class="required" for="name">{{t 'Name'}}</label>
-    {{input type='text' id='name' value=data.name}}
+    {{input type='text' id='name' value=data.event.name}}
   </div>
   <div class="field">
     <label for="location">{{t 'Location'}}</label>
     {{#widgets/forms/location-input
       inputId='location'
-      lat=data.latitude
-      lng=data.longitude
-      placeName=data.locationName
+      lat=data.event.latitude
+      lng=data.event.longitude
+      placeName=data.event.locationName
       zoom=1
       placeholder=(t 'Location is required to make this event live')}}
       <div class="inline field">
@@ -27,7 +27,7 @@
                                   inputId='start_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='start'
-                                  value=data.startDate}}
+                                  value=data.event.startDate}}
     </div>
     <div class="two wide field">
       <label for="start_time">&nbsp;</label>
@@ -35,7 +35,7 @@
                                   inputId='start_time'
                                   placeholder='HH:MM'
                                   rangePosition='start'
-                                  value=data.startTime}}
+                                  value=data.event.startTime}}
     </div>
     <div class="five wide field">
       <label class="required" for="end_date">{{t 'Ends'}}</label>
@@ -43,7 +43,7 @@
                                   inputId='end_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='end'
-                                  value=data.endDate}}
+                                  value=data.event.endDate}}
     </div>
     <div class="two wide field">
       <label for="end_time">&nbsp;</label>
@@ -51,12 +51,12 @@
                                   inputId='end_time'
                                   placeholder='HH:MM'
                                   rangePosition='end'
-                                  value=data.endTime}}
+                                  value=data.event.endTime}}
     </div>
     <div class="five wide field">
       <label class="required" for="timezone">{{t 'Timezone'}}</label>
-      {{#ui-dropdown class='search' tagName='select' id='timezone' selected=data.timezone forceSelection=false
-                     onChange=(action (mut data.timezone))}}
+      {{#ui-dropdown class='search' tagName='select' id='timezone' selected=data.event.timezone forceSelection=false
+                     onChange=(action (mut data.event.timezone))}}
         <option value="">{{t 'Select timezone'}}</option>
         {{#each timezones as |timezone|}}
           <option value="{{timezone}}">{{timezone}}</option>
@@ -66,13 +66,13 @@
   </div>
   <div class="field">
     <label for="description">{{t 'Description'}}</label>
-    {{widgets/forms/rich-text-editor textareaId='description' value=data.description}}
+    {{widgets/forms/rich-text-editor textareaId='description' value=data.event.description}}
   </div>
 
   <div class="fields">
     <div class="ten wide field">
       {{widgets/forms/image-upload
-        imageUrl=data.backgroundUrl
+        imageUrl=data.event.backgroundUrl
         needsCropper=true
         label=(t 'Event Image')
         id='event_image'
@@ -83,7 +83,7 @@
     </div>
     <div class="ten wide field">
       {{widgets/forms/image-upload
-        imageUrl=data.logoUrl
+        imageUrl=data.event.logoUrl
         label=(t 'Logo')
         id='event_logo'
         icon='image'
@@ -95,19 +95,19 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=data.hasOrganizerInfo id='add_organizer_information'}}
+      {{input type='checkbox' checked=data.event.hasOrganizerInfo id='add_organizer_information'}}
       <label for="add_organizer_information">{{t 'Add organizer information'}}</label>
     </div>
   </div>
 
-  {{#if data.hasOrganizerInfo}}
+  {{#if data.event.hasOrganizerInfo}}
     <div class="field">
       <label for="organizer_name">{{t 'Organizer Name'}}</label>
-      {{input type='text' id='organizer_name' value=data.organizerName}}
+      {{input type='text' id='organizer_name' value=data.event.organizerName}}
     </div>
     <div class="field">
       <label for="organizer_description">{{t 'Organizer Description'}}</label>
-      {{widgets/forms/rich-text-editor id='organizer_description' value=data.organizerDescription}}
+      {{widgets/forms/rich-text-editor id='organizer_description' value=data.event.organizerDescription}}
     </div>
   {{/if}}
   <div class="ui section divider"></div>
@@ -115,14 +115,14 @@
     <label>{{t 'Links & Social Media'}}</label>
     {{widgets/forms/link-input
       hasLinkName=true
-      linkName=data.externalEventUrl.name
-      segmentedLink=data.externalEventUrl.segmentedLink
-      isChild=(unless data.socialLinks true)
+      linkName=data.event.externalEventUrl.name
+      segmentedLink=data.event.externalEventUrl.segmentedLink
+      isChild=(unless data.event.socialLinks true)
       canRemoveItem=false
       addItem=(action 'addItem' 'socialLinks' 'social-link')
     }}
 
-    {{#each data.socialLinks as |socialLink|}}
+    {{#each data.event.socialLinks as |socialLink|}}
       {{widgets/forms/link-input
         hasLinkName=true
         linkName=socialLink.name
@@ -136,13 +136,13 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=data.ticketingSystemEnabled id='use_ticketing_system'}}
+      {{input type='checkbox' checked=data.event.ticketingSystemEnabled id='use_ticketing_system'}}
       <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
     </div>
   </div>
-  {{#if data.ticketingSystemEnabled}}
-    <div class="ui attached segment {{unless data.tickets 'center aligned'}}">
-      {{#if data.tickets}}
+  {{#if data.event.ticketingSystemEnabled}}
+    <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
+      {{#if data.event.tickets}}
         <div class="ui stackable celled five column grid ticket-header">
           <div class="row weight-600">
             <div class="six wide column">
@@ -159,9 +159,9 @@
             </div>
           </div>
         </div>
-        {{#each data.tickets as |ticket|}}
+        {{#each data.event.tickets as |ticket|}}
           {{widgets/forms/ticket-input ticket=ticket
-                                       timezone=data.timezone
+                                       timezone=data.event.timezone
                                        removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
         {{/each}}
       {{else}}
@@ -229,7 +229,7 @@
       <label>Payment by PayPal</label>
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_paypal' checked=data.payByPayPal}}
+          {{input type='checkbox' id='payment_by_paypal' checked=data.event.payByPayPal}}
           <label for="payment_by_paypal">
             <span>{{t 'YES, accept payment through PayPal'}}</span>
             <br>
@@ -240,7 +240,7 @@
           </label>
         </div>
       </div>
-      {{#if data.payByPayPal}}
+      {{#if data.event.payByPayPal}}
         <div class="field">
           <label class="required">PayPal Email</label>
           {{input type='email'}}
@@ -250,7 +250,7 @@
       <label>Payment by Stripe</label>
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_stripe' checked=data.payByStripe}}
+          {{input type='checkbox' id='payment_by_stripe' checked=data.event.payByStripe}}
           <label for="payment_by_stripe">
             <span>{{t 'YES, accept payment through Stripe'}}</span>
             <br>
@@ -261,7 +261,7 @@
           </label>
         </div>
       </div>
-      {{#if data.payByStripe}}
+      {{#if data.event.payByStripe}}
         <div class="field">
           <label class="required">Connect to your Stripe account</label>
           <a href="#" class="stripe-connect"><span>Connect with Stripe</span></a>
@@ -271,13 +271,13 @@
       <label>Offline Payments</label>
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_cheque' checked=data.payByCheque}}
+          {{input type='checkbox' id='payment_by_cheque' checked=data.event.payByCheque}}
           <label for="payment_by_cheque">
             {{t 'YES, accept payment by Cheque'}}
           </label>
         </div>
       </div>
-      {{#if data.payByCheque}}
+      {{#if data.event.payByCheque}}
         <div class="field">
           <label class="required">{{t 'Enter you account name and other required details/instructions to ticket buyers'}}</label>
           {{textarea}}
@@ -286,14 +286,14 @@
 
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_bank' checked=data.payByBank}}
+          {{input type='checkbox' id='payment_by_bank' checked=data.event.payByBank}}
           <label for="payment_by_bank">
             {{t 'YES, accept payment by Telegraphic Transfer(TT) / Bank Transfer '}}
           </label>
         </div>
       </div>
 
-      {{#if data.payByBank}}
+      {{#if data.event.payByBank}}
         <div class="field">
           <label class="required">{{t 'Enter your bank details and other required details/instructions to ticket buyers'}}</label>
           {{textarea}}
@@ -302,14 +302,14 @@
 
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_onsite' checked=data.payOnSite}}
+          {{input type='checkbox' id='payment_onsite' checked=data.event.payOnSite}}
           <label for="payment_onsite">
             {{t 'YES, accept payment at the event (on site) '}}
           </label>
         </div>
       </div>
 
-      {{#if data.payOnSite}}
+      {{#if data.event.payOnSite}}
         <div class="field">
           <label class="required">{{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}</label>
           {{textarea}}
@@ -319,7 +319,7 @@
       <div class="ui section divider"></div>
 
       <div class="field">
-        {{#if data.hasTaxInfo}}
+        {{#if data.event.hasTaxInfo}}
           <div class="ui card">
             <div class="content" style="padding: 0.5em 1em;">
               <div class="meta">
@@ -327,10 +327,10 @@
               </div>
             </div>
             <div class="content">
-              <div class="header">{{data.taxInfo.name}}</div>
+              <div class="header">{{data.event.taxInfo.name}}</div>
               <div class="description">
-                {{data.taxInfo.taxId}}<br>
-                {{data.taxInfo.rate}}% - {{if data.taxInfo.includeTaxInPrice 'Included in ticket price' 'Extra fee on ticket price'}}
+                {{data.event.taxInfo.taxId}}<br>
+                {{data.event.taxInfo.rate}}% - {{if data.event.taxInfo.includeTaxInPrice 'Included in ticket price' 'Extra fee on ticket price'}}
               </div>
             </div>
             <div class="ui bottom attached small buttons">
@@ -443,4 +443,4 @@
   </div>
 </form>
 
-{{modals/tax-info-modal isOpen=taxModelIsOpen taxInfo=data.taxInfo hasTaxInfo=data.hasTaxInfo}}
+{{modals/tax-info-modal isOpen=taxModelIsOpen taxInfo=data.event.taxInfo hasTaxInfo=data.event.hasTaxInfo}}

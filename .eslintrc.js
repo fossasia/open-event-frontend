@@ -64,9 +64,10 @@ module.exports = {
     'ember-suave/require-access-in-comments': 'off'
   },
   globals: {
-    module    : true,
-    process   : true,
-    wysihtml5 : true,
-    palette   : true
+    module     : true,
+    process    : true,
+    wysihtml5  : true,
+    palette    : true,
+    Uint8Array : true
   }
 };

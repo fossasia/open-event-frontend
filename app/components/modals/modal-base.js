@@ -76,8 +76,6 @@ export default Component.extend({
 
     const options = this.get('options') ? merge(defaultOptions, this.get('options')) : defaultOptions;
 
-    console.log(options);
-
     this.$().modal(options);
 
     if (this.get('isOpen')) {

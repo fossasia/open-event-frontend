@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { humanReadableBytes } from 'open-event-frontend/utils/size';
+import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { resetFormElement } from 'open-event-frontend/utils/form';
 import { v4 } from 'ember-uuid';
 
@@ -33,13 +33,8 @@ export default Component.extend({
   },
 
   processFiles(files, input = null) {
-    this.errorMessage = '';
     if (files && files[0]) {
-      if (files[0].size > (this.maxSizeInMb * 1024 * 1024)) {
-        if (input) {
-          resetFormElement(input);
-        }
-      } else {
+      isFileValid(files[0], this.maxSizeInKb, ['image/jpeg']).then(() => {
         const reader = new FileReader();
         reader.onload = e => {
           const untouchedImageData = e.target.result;
@@ -51,9 +46,13 @@ export default Component.extend({
           }
         };
         reader.readAsDataURL(files[0]);
-      }
+
+      }).catch(error => {
+        resetFormElement(input);
+        this.notify.error(error);
+      });
     } else {
-      this.errorMessage = 'No FileReader support. Please use a more latest browser';
+      this.notify.error('No FileReader support. Please use a more latest browser');
     }
 
   },
