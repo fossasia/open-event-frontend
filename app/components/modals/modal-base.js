@@ -35,11 +35,12 @@ export default Component.extend({
     } catch (ignored) { /* ignored exception */ }
   }),
 
-
   __didInsertElement: on('didInsertElement', function() {
     const defaultOptions = {
-      dimmerSettings: {
-        variation: 'inverted'
+      detachable     : false,
+      dimmerSettings : {
+        dimmerName : `${this.get('elementId')}-modal-dimmer`,
+        variation  : 'inverted'
       },
       onHide: () => {
         this.set('isOpen', false);
@@ -73,6 +74,8 @@ export default Component.extend({
     };
 
     const options = this.get('options') ? merge(defaultOptions, this.get('options')) : defaultOptions;
+
+    console.log(options);
 
     this.$().modal(options);
 
