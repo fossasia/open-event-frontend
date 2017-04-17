@@ -5,4 +5,23 @@
       height: 340px;
     }
   }
+
+  .ticket-header {
+    margin-bottom: 0;
+    box-shadow: none;
+    border: 1px solid #D4D4D5;
+    background-color: #f4f4f4;
+  }
+
+  .ticket-row {
+    margin: 0;
+    box-shadow: none;
+    border: 1px solid #D4D4D5;
+    border-top: none;
+
+    > div.one.column.row {
+      background-color: #fbfbfb;
+    }
+  }
 }
+

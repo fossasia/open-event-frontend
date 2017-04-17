@@ -38,6 +38,7 @@ export default Component.extend({
   __didInsertElement: on('didInsertElement', function() {
     const defaultOptions = {
       detachable     : false,
+      duration       : 200,
       dimmerSettings : {
         dimmerName : `${this.get('elementId')}-modal-dimmer`,
         variation  : 'inverted'
