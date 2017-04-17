@@ -11,7 +11,8 @@ export default Mixin.create({
     }
   },
 
-  autoScrollToErrors: true,
+  autoScrollToErrors : true,
+  autoScrollSpeed    : 200,
 
   _didRender_: on('didRender', function() {
     debounce(this, () => {
@@ -22,7 +23,7 @@ export default Mixin.create({
             if (formErrors.length > 0) {
               $('html,body').animate({
                 scrollTop: this.$(`div:contains('${formErrors[0]}')`).offset().top
-              }, 400);
+              }, this.autoScrollSpeed);
             }
           }
         }
@@ -34,14 +35,13 @@ export default Mixin.create({
 
       this.$('.ui.checkbox').checkbox();
 
-
       if (this.get('getValidationRules')) {
         this.$('.ui.form').form(merge(defaultFormRules, this.getValidationRules()));
       }
     }, 400);
   }),
 
-  _didInsertElement_: on('didRender', function() {
+  _didInsertElement_: on('didInsertElement', function() {
     $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
       return moment(value, format).isValid();
     };

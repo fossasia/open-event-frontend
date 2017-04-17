@@ -28,6 +28,8 @@ module.exports = function(environment) {
       'connect-src' : [
         '\'self\'',
         'ws://eventyay.dev:49153',
+        'ws://eventyay.dev:65520',
+        'ws://localhost:49153',
         'https://maps.gstatic.com',
         'https://*.eventyay.com',
         'https://eventyay.com',
@@ -41,7 +43,9 @@ module.exports = function(environment) {
         'https://maps.gstatic.com',
         'https://eventyay.com',
         'https://*.eventyay.com',
-        'http://eventyay.dev:49153'
+        'http://eventyay.dev:49153',
+        'http://eventyay.dev:65520',
+        'http://localhost:49153'
       ],
       'font-src': [
         '\'self\'',
@@ -68,8 +72,8 @@ module.exports = function(environment) {
     },
 
     pace: {
-      theme: 'minimal',
-      color: 'blue',
+      theme : 'minimal',
+      color : 'blue'
     }
 
   };

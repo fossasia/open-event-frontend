@@ -18,7 +18,7 @@ export default Model.extend({
   salesEndDateTime   : attr('date', { defaultValue: () => moment().add(10, 'days').startOf('day').toDate() }),
   minOrder           : attr('number', { defaultValue: 1 }),
   maxOrder           : attr('number', { defaultValue: 10 }),
-  tags               : attr('strings', { defaultValue: '' }),
+  groups             : attr('strings', { defaultValue: '' }),
   absorbFees         : attr('boolean', { defaultValue: true }),
 
   hasOrders: false,

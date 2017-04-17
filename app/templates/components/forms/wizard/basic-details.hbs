@@ -1,7 +1,7 @@
 <form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
   <div class="field">
     <label class="required" for="name">{{t 'Name'}}</label>
-    {{input type='text' id='name' value=name.name}}
+    {{input type='text' id='name' value=data.name}}
   </div>
   <div class="field">
     <label for="location">{{t 'Location'}}</label>
@@ -20,7 +20,7 @@
       </div>
     {{/widgets/forms/location-input}}
   </div>
-  <div class="ten fields">
+  <div class="fields">
     <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
       {{widgets/forms/date-picker type='text'
@@ -171,14 +171,14 @@
       {{/if}}
     </div>
     <div class="ui two bottom attached buttons">
-      <button class="ui button" {{action 'addTicket' 'free'}}>
+      <button type="button" class="ui button" {{action 'addTicket' 'free'}}>
         <i class="large icons" style="margin-right: 6px;">
           <i class="smile icon"></i>
           <i class="inverted corner add icon"></i>
         </i>
         {{t 'Free Ticket'}}
       </button>
-      <button class="ui button" {{action 'addTicket' 'paid'}}>
+      <button type="button" class="ui button" {{action 'addTicket' 'paid'}}>
         <i class="large icons" style="margin-right: 6px;">
           <i class="dollar icon"></i>
           <i class="inverted corner add icon"></i>

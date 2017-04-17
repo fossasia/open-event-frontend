@@ -18,7 +18,7 @@ export default Component.extend(FormMixin, EventWizard, {
       delay  : false,
       on     : 'blur',
       fields : {
-        name: {
+        code_groups: {
           rules: [
             {
               type   : 'empty',
@@ -76,6 +76,15 @@ export default Component.extend(FormMixin, EventWizard, {
             }
           ]
         },
+        ticket_description: {
+          optional : true,
+          rules    : [
+            {
+              type   : 'maxLength[160]',
+              prompt : 'Ticket description shouldn\'t contain more than {ruleValue} characters'
+            }
+          ]
+        },
         ticket_price: {
           rules: [
             {
@@ -99,8 +108,31 @@ export default Component.extend(FormMixin, EventWizard, {
               prompt : 'Please give a proper quantity for you ticket'
             }
           ]
+        },
+        ticket_min_order: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Minimum tickets per order required'
+            },
+            {
+              type   : 'number',
+              prompt : 'Invalid number'
+            }
+          ]
+        },
+        ticket_max_order: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Maximum tickets per order required'
+            },
+            {
+              type   : 'number',
+              prompt : 'Invalid number'
+            }
+          ]
         }
-
       }
     };
   },
