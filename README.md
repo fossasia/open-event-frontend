@@ -51,11 +51,11 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ## Deployments
 
-#### eventyay staging deployment (`master` branch)
+#### eventyay staging deployment (`development` branch)
 - Frontend: http://nextgen.eventyay.com
 - API server: https://eventyay.com
 
-#### Development deployment (`master` branch)
+#### Development deployment (`development` branch)
 - Frontend: https://open-event-frontend.herokuapp.com
 - API server: https://open-event-dev.herokuapp.com
 
