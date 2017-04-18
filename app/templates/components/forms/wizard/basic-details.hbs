@@ -162,9 +162,13 @@
             </div>
           </div>
         </div>
-        {{#each data.event.tickets as |ticket|}}
+        {{#each data.event.tickets as |ticket index|}}
           {{widgets/forms/ticket-input ticket=ticket
                                        timezone=data.event.timezone
+                                       canMoveUp=(not-eq index 0)
+                                       canMoveDown=(not-eq ticket data.event.tickets.lastObject)
+                                       moveTicketUp=(action 'moveTicket' ticket 'up')
+                                       moveTicketDown=(action 'moveTicket' ticket 'down')
                                        removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
         {{/each}}
       {{else}}

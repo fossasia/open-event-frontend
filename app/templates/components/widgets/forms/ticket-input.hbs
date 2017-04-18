@@ -26,6 +26,14 @@
         <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
         <button type="button" class="ui button" {{action removeTicket}} data-content="Delete"><i class="trash icon"></i></button>
       </div>
+      <div class="ui icon buttons right floated">
+        {{#if canMoveUp}}
+          <button type="button" class="ui button" {{action moveTicketUp}} data-content="Move ticket up"><i class="up arrow icon"></i></button>
+        {{/if}}
+        {{#if canMoveDown}}
+          <button type="button" class="ui button" {{action moveTicketDown}} data-content="Move ticket down"><i class="down arrow icon"></i></button>
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>

@@ -11,7 +11,7 @@ export default Component.extend({
     }
   },
 
-  _didInsertElement: on('didInsertElement', function() {
+  _didRender: on('didRender', function() {
     this.$('.icon.buttons').find('.button').popup();
   })
 });

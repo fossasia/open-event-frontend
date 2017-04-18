@@ -215,6 +215,17 @@ export default Component.extend(FormMixin, {
       ticket.unloadRecord();
       this.get('data.event.tickets').removeObject(ticket);
     },
+    moveTicket(ticket, direction) {
+      const index = this.get('data.event.tickets').indexOf(ticket);
+      this.get('data.event.tickets').removeAt(index);
+      let moveToIndex = index;
+      if (direction === 'up') {
+        moveToIndex = index - 1;
+      } else {
+        moveToIndex = index + 1;
+      }
+      this.get('data.event.tickets').insertAt(moveToIndex, ticket);
+    },
     addItem(type, model) {
       this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));
     },
