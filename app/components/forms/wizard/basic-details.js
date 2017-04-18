@@ -1,9 +1,11 @@
 import Ember from 'ember';
 import moment from 'moment';
-import { licenses, timezones, eventTopics, paymentCountries, eventTypes } from 'open-event-frontend/utils/dictionary';
+import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
+import { FORM_DATE_FORMAT, timezones } from 'open-event-frontend/utils/dictionary/date-time';
+import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
+import { eventTopics, eventTypes } from 'open-event-frontend/utils/dictionary/event';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { orderBy, filter, keys } from 'lodash';
-import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary';
+import { orderBy, filter, keys, find } from 'lodash';
 
 const { Component, computed, run: { later } } = Ember;
 
@@ -157,11 +159,23 @@ export default Component.extend(FormMixin, {
   }),
 
   paymentCountries: computed(function() {
-    return orderBy(paymentCountries);
+    return orderBy(paymentCountries, 'name');
+  }),
+
+  paymentCurrencies: computed(function() {
+    return orderBy(paymentCurrencies, 'name');
   }),
 
   topics: computed(function() {
     return orderBy(keys(eventTopics));
+  }),
+
+  canAcceptPayPal: computed('data.event.paymentCurrency', function() {
+    return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
+  }),
+
+  canAcceptStripe: computed('data.event.paymentCurrency', function() {
+    return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
   subTopics: computed('data.event.topic', function() {

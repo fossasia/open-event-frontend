@@ -213,23 +213,32 @@
       <div class="two fields">
         <div class="field">
           <label class="required">Choose country</label>
-          {{#ui-dropdown class='search selection' selected='' forceSelection=false fullTextSearch=true}}
-            {{input type='hidden' id='payment_country' value=''}}
+          {{#ui-dropdown class='search selection' selected=data.event.paymentCountry forceSelection=false
+                         fullTextSearch=true}}
+            {{input type='hidden' id='payment_country' value=data.event.paymentCountry}}
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select country'}}</div>
             <div class="menu">
-
+              {{#each paymentCountries as |paymentCountry|}}
+                <div class="item" data-value="{{paymentCountry.name}}"><i
+                  class="{{lowercase paymentCountry.code}} flag"></i>{{paymentCountry.name}}</div>
+              {{/each}}
             </div>
           {{/ui-dropdown}}
         </div>
         <div class="field">
           <label class="required">Choose currency</label>
-          {{#ui-dropdown class='search selection' selected='' forceSelection=false fullTextSearch=true}}
-            {{input type='hidden' id='payment_currency' value=''}}
+          {{#ui-dropdown class='search selection' selected=data.event.paymentCurrency forceSelection=false
+                         fullTextSearch=true}}
+            {{input type='hidden' id='payment_currency' value=data.event.paymentCurrency}}
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select currency'}}</div>
             <div class="menu">
-
+              {{#each paymentCurrencies as |paymentCurrency|}}
+                <div class="item" data-value="{{paymentCurrency.code}}">{{paymentCurrency.name}}
+                  ({{paymentCurrency.symbol}})
+                </div>
+              {{/each}}
             </div>
           {{/ui-dropdown}}
         </div>
@@ -238,48 +247,51 @@
     <div class="ui section divider"></div>
     <div class="field">
       <h4>{{t 'Choose payment methods'}}</h4>
-      <label>Payment by PayPal</label>
-      <div class="field" style="margin-top: 10px;">
-        <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_paypal' checked=data.event.payByPayPal}}
-          <label for="payment_by_paypal">
-            <span>{{t 'YES, accept payment through PayPal'}}</span>
-            <br>
-            <span class="text muted">
+      {{#if canAcceptPayPal}}
+        <label>Payment by PayPal</label>
+        <div class="field" style="margin-top: 10px;">
+          <div class="ui checkbox">
+            {{input type='checkbox' id='payment_by_paypal' checked=data.event.payByPayPal}}
+            <label for="payment_by_paypal">
+              <span>{{t 'YES, accept payment through PayPal'}}</span>
+              <br>
+              <span class="text muted">
               {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works '}}
-              <a href="https://www.paypal.com/us/webapps/mpp/popup/about-payment-methods" target="_blank">{{t 'click here'}}</a>.
+                <a href="https://www.paypal.com/us/webapps/mpp/popup/about-payment-methods" target="_blank">{{t
+                  'click here'}}</a>.
             </span>
-          </label>
+            </label>
+          </div>
         </div>
-      </div>
-      {{#if data.event.payByPayPal}}
-        <div class="field">
-          <label class="required">PayPal Email</label>
-          {{input type='email'}}
-        </div>
+        {{#if data.event.payByPayPal}}
+          <div class="field">
+            <label class="required">PayPal Email</label>
+            {{input type='email'}}
+          </div>
+        {{/if}}
       {{/if}}
-
-      <label>Payment by Stripe</label>
-      <div class="field" style="margin-top: 10px;">
-        <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_stripe' checked=data.event.payByStripe}}
-          <label for="payment_by_stripe">
-            <span>{{t 'YES, accept payment through Stripe'}}</span>
-            <br>
-            <span class="text muted">
+      {{#if canAcceptStripe}}
+        <label>Payment by Stripe</label>
+        <div class="field" style="margin-top: 10px;">
+          <div class="ui checkbox">
+            {{input type='checkbox' id='payment_by_stripe' checked=data.event.payByStripe}}
+            <label for="payment_by_stripe">
+              <span>{{t 'YES, accept payment through Stripe'}}</span>
+              <br>
+              <span class="text muted">
               {{t 'Stripe accepts Visa, Master and Amex. Find out more about Stripe '}}
-              <a href="https://stripe.com/docs" target="_blank">{{t 'here'}}</a>.
+                <a href="https://stripe.com/docs" target="_blank">{{t 'here'}}</a>.
             </span>
-          </label>
+            </label>
+          </div>
         </div>
-      </div>
-      {{#if data.event.payByStripe}}
-        <div class="field">
-          <label class="required">Connect to your Stripe account</label>
-          <a href="#" class="stripe-connect"><span>Connect with Stripe</span></a>
-        </div>
+        {{#if data.event.payByStripe}}
+          <div class="field">
+            <label class="required">Connect to your Stripe account</label>
+            <a href="#" class="stripe-connect"><span>Connect with Stripe</span></a>
+          </div>
+        {{/if}}
       {{/if}}
-
       <label>Offline Payments</label>
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
@@ -291,7 +303,8 @@
       </div>
       {{#if data.event.payByCheque}}
         <div class="field">
-          <label class="required">{{t 'Enter you account name and other required details/instructions to ticket buyers'}}</label>
+          <label class="required">{{t
+            'Enter you account name and other required details/instructions to ticket buyers'}}</label>
           {{textarea}}
         </div>
       {{/if}}
@@ -307,7 +320,8 @@
 
       {{#if data.event.payByBank}}
         <div class="field">
-          <label class="required">{{t 'Enter your bank details and other required details/instructions to ticket buyers'}}</label>
+          <label class="required">{{t
+            'Enter your bank details and other required details/instructions to ticket buyers'}}</label>
           {{textarea}}
         </div>
       {{/if}}
@@ -323,7 +337,8 @@
 
       {{#if data.event.payOnSite}}
         <div class="field">
-          <label class="required">{{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}</label>
+          <label class="required">{{t
+            'Enter your payment instructions and other required details/instructions to ticket buyers'}}</label>
           {{textarea}}
         </div>
       {{/if}}
@@ -342,7 +357,8 @@
               <div class="header">{{data.event.taxInfo.name}}</div>
               <div class="description">
                 {{data.event.taxInfo.taxId}}<br>
-                {{data.event.taxInfo.rate}}% - {{if data.event.taxInfo.includeTaxInPrice 'Included in ticket price' 'Extra fee on ticket price'}}
+                {{data.event.taxInfo.rate}}% - {{if data.event.taxInfo.includeTaxInPrice 'Included in ticket price'
+                                                    'Extra fee on ticket price'}}
               </div>
             </div>
             <div class="ui bottom attached small buttons">
@@ -373,14 +389,16 @@
     <label for="privacy">{{t 'Listing Privacy'}}</label>
     <div class="field">
       <div class="ui radio checkbox">
-        {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public' checked=data.event.privacy}}
+        {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public'
+                                     checked=data.event.privacy}}
         <label for="privacy_public"><strong>{{t 'Public event'}}:</strong> {{t
           'list this event on this site and search engines'}}</label>
       </div>
     </div>
     <div class="field">
       <div class="ui radio checkbox">
-        {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private' checked=data.event.privacy}}
+        {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private'
+                                     checked=data.event.privacy}}
         <label for="privacy_private"><strong>{{t 'Private event'}}:</strong> {{t 'do not list this event publicly'}}
         </label>
       </div>

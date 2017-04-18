@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 import moment from 'moment';
-import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary';
+import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
 const { computed } = Ember;
 const { Model, attr } = DS;
