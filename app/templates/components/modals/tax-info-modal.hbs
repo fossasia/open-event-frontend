@@ -6,7 +6,7 @@
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
       {{#ui-dropdown class='search' id='tax_country' tagName='select' selected='' forceSelection=false onChange=(action (mut taxInfo.country))}}
-        <option value="">Select country</option>
+        <option value="">{{t 'Select country'}}</option>
       {{/ui-dropdown}}
     </div>
     <div class="field">
@@ -78,7 +78,7 @@
 </div>
 <div class="actions">
   <button class="ui black button" {{action 'close'}}>
-    Cancel
+    {{t 'Cancel'}}
   </button>
   <button class="ui green right labeled icon button" {{action 'updateTaxInfo'}}>
     {{t 'Update tax information'}}

@@ -23,9 +23,9 @@ export default Component.extend({
         })
         .catch(reason => {
           if (reason.hasOwnProperty('code') && reason.code === 401) {
-            this.set('errorMessage', 'Your credentials were incorrect.');
+            this.set('errorMessage', this.i18n.t('Your credentials were incorrect.'));
           } else {
-            this.set('errorMessage', 'An unexpected error occurred.');
+            this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
           }
           this.set('isLoading', false);
         });
@@ -44,11 +44,11 @@ export default Component.extend({
             rules      : [
               {
                 type   : 'empty',
-                prompt : 'Please enter your email ID'
+                prompt : this.i18n.t('Please enter your email ID')
               },
               {
                 type   : 'email',
-                prompt : 'Please enter a valid email ID'
+                prompt : this.i18n.t('Please enter a valid email ID')
               }
             ]
           }

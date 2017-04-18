@@ -3,7 +3,7 @@
   <div class="ui card">
     {{#if uploadingImage}}
       <div class="ui active dimmer">
-        <div class="ui text loader">Image Uploading</div>
+        <div class="ui text loader">{{t 'Image Uploading'}}</div>
       </div>
     {{/if}}
     <div class="image">
@@ -39,7 +39,7 @@
   {{#if helpText}}
     {{helpText}}<br>
   {{/if}}
-      (No larger than {{maxSize}})
+      ({{t 'No larger than'}} {{maxSize}})
 </span>
   </label>
 {{/if}}

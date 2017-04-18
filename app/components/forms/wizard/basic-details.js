@@ -23,7 +23,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please give your event a name'
+              prompt : this.i18n.t('Please give your event a name')
             }
           ]
         },
@@ -31,7 +31,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Choose a timezone for your event'
+              prompt : this.i18n.t('Choose a timezone for your event')
             }
           ]
         },
@@ -39,11 +39,11 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please tell us when your event starts'
+              prompt : this.i18n.t('Please tell us when your event starts')
             },
             {
               type   : 'date',
-              prompt : 'Please give a valid start date'
+              prompt : this.i18n.t('Please give a valid start date')
             }
           ]
         },
@@ -51,11 +51,11 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please tell us when your event ends'
+              prompt : this.i18n.t('Please tell us when your event ends')
             },
             {
               type   : 'date',
-              prompt : 'Please give a valid end date'
+              prompt : this.i18n.t('Please give a valid end date')
             }
           ]
         },
@@ -64,7 +64,7 @@ export default Component.extend(FormMixin, {
           rules   : [
             {
               type   : 'empty',
-              prompt : 'Please give a start time'
+              prompt : this.i18n.t('Please give a start time')
             }
           ]
         },
@@ -73,7 +73,7 @@ export default Component.extend(FormMixin, {
           rules   : [
             {
               type   : 'empty',
-              prompt : 'Please give an end time'
+              prompt : this.i18n.t('Please give an end time')
             }
           ]
         },
@@ -81,7 +81,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please give your ticket a name'
+              prompt : this.i18n.t('Please give your ticket a name')
             }
           ]
         },
@@ -90,7 +90,7 @@ export default Component.extend(FormMixin, {
           rules    : [
             {
               type   : 'maxLength[160]',
-              prompt : 'Ticket description shouldn\'t contain more than {ruleValue} characters'
+              prompt : this.i18n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
             }
           ]
         },
@@ -98,11 +98,11 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please give your ticket a price'
+              prompt : this.i18n.t('Please give your ticket a price')
             },
             {
               type   : 'number',
-              prompt : 'Please give a proper price for you ticket'
+              prompt : this.i18n.t('Please give a proper price for you ticket')
             }
           ]
         },
@@ -110,11 +110,11 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please specify how many tickets of this type are available'
+              prompt : this.i18n.t('Please specify how many tickets of this type are available')
             },
             {
               type   : 'number',
-              prompt : 'Please give a proper quantity for you ticket'
+              prompt : this.i18n.t('Please give a proper quantity for you ticket')
             }
           ]
         },
@@ -122,11 +122,11 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Minimum tickets per order required'
+              prompt : this.i18n.t('Minimum tickets per order required')
             },
             {
               type   : 'number',
-              prompt : 'Invalid number'
+              prompt : this.i18n.t('Invalid number')
             }
           ]
         },
@@ -134,11 +134,11 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : 'Maximum tickets per order required'
+              prompt : this.i18n.t('Maximum tickets per order required')
             },
             {
               type   : 'number',
-              prompt : 'Invalid number'
+              prompt : this.i18n.t('Invalid number')
             }
           ]
         }
@@ -218,13 +218,7 @@ export default Component.extend(FormMixin, {
     moveTicket(ticket, direction) {
       const index = this.get('data.event.tickets').indexOf(ticket);
       this.get('data.event.tickets').removeAt(index);
-      let moveToIndex = index;
-      if (direction === 'up') {
-        moveToIndex = index - 1;
-      } else {
-        moveToIndex = index + 1;
-      }
-      this.get('data.event.tickets').insertAt(moveToIndex, ticket);
+      this.get('data.event.tickets').insertAt(direction === 'up' ? (index - 1) : (index + 1), ticket);
     },
     addItem(type, model) {
       this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));

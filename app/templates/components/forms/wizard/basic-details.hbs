@@ -14,7 +14,7 @@
       placeholder=(t 'Location is required to make this event live')}}
       <div class="inline field">
         <div class="ui slider checkbox">
-          {{input id='show_map' type='checkbox' id='show_map' checked=showMap}}
+          {{input id='show_map' type='checkbox' id='show_map' checked=data.event.showMap}}
           <label for="show_map">{{t 'Show map on event page'}}</label>
         </div>
       </div>
@@ -82,7 +82,7 @@
         icon='camera'
         hint=(t 'Select Event Image')
         maxSizeInKb=10000
-        helpText='We recommend using at least a 2160x1080px (2:1 ratio) image'}}
+        helpText=(t 'We recommend using at least a 2160x1080px (2:1 ratio) image')}}
     </div>
     <div class="ten wide field">
       {{widgets/forms/image-upload
@@ -149,16 +149,16 @@
         <div class="ui stackable celled five column grid ticket-header">
           <div class="row weight-600">
             <div class="six wide column">
-              <label class="required">Ticket Name</label>
+              <label class="required">{{t 'Ticket Name'}}</label>
             </div>
             <div class="column">
-              <label class="required">Price</label>
+              <label class="required">{{t 'Price'}}</label>
             </div>
             <div class="column">
-              <label class="required">Quantity</label>
+              <label class="required">{{t 'Quantity'}}</label>
             </div>
             <div class="column">
-              <label>Options</label>
+              <label>{{t 'Options'}}</label>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@
       <h4>{{t 'Add Payment Details'}}</h4>
       <div class="two fields">
         <div class="field">
-          <label class="required">Choose country</label>
+          <label class="required">{{t 'Select country'}}</label>
           {{#ui-dropdown class='search selection' selected=data.event.paymentCountry forceSelection=false
                          fullTextSearch=true}}
             {{input type='hidden' id='payment_country' value=data.event.paymentCountry}}
@@ -231,7 +231,7 @@
           {{/ui-dropdown}}
         </div>
         <div class="field">
-          <label class="required">Choose currency</label>
+          <label class="required">{{t 'Select currency'}}</label>
           {{#ui-dropdown class='search selection' selected=data.event.paymentCurrency forceSelection=false
                          fullTextSearch=true}}
             {{input type='hidden' id='payment_currency' value=data.event.paymentCurrency}}
@@ -239,7 +239,9 @@
             <div class="default text">{{t 'Select currency'}}</div>
             <div class="menu">
               {{#each paymentCurrencies as |paymentCurrency|}}
-                <div class="item" data-value="{{paymentCurrency.code}}">{{paymentCurrency.name}}
+                <div class="item" data-value="{{paymentCurrency.code}}">
+                  {{paymentCurrency.code}} -
+                  {{paymentCurrency.name}}
                   ({{paymentCurrency.symbol}})
                 </div>
               {{/each}}
@@ -252,7 +254,7 @@
     <div class="field">
       <h4>{{t 'Choose payment methods'}}</h4>
       {{#if canAcceptPayPal}}
-        <label>Payment by PayPal</label>
+        <label>{{t 'Payment by PayPal'}}</label>
         <div class="field" style="margin-top: 10px;">
           <div class="ui checkbox">
             {{input type='checkbox' id='payment_by_paypal' checked=data.event.payByPayPal}}
@@ -275,7 +277,7 @@
         {{/if}}
       {{/if}}
       {{#if canAcceptStripe}}
-        <label>Payment by Stripe</label>
+        <label>{{t 'Payment by Stripe'}}</label>
         <div class="field" style="margin-top: 10px;">
           <div class="ui checkbox">
             {{input type='checkbox' id='payment_by_stripe' checked=data.event.payByStripe}}
@@ -291,12 +293,12 @@
         </div>
         {{#if data.event.payByStripe}}
           <div class="field">
-            <label class="required">Connect to your Stripe account</label>
-            <a href="#" class="stripe-connect"><span>Connect with Stripe</span></a>
+            <label class="required">{{t 'Connect to your Stripe account'}}</label>
+            <a href="#" class="stripe-connect"><span>{{t 'Connect with Stripe'}}</span></a>
           </div>
         {{/if}}
       {{/if}}
-      <label>Offline Payments</label>
+      <label>{{t 'Offline Payments'}}</label>
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
           {{input type='checkbox' id='payment_by_cheque' checked=data.event.payByCheque}}
@@ -354,7 +356,7 @@
           <div class="ui card">
             <div class="content" style="padding: 0.5em 1em;">
               <div class="meta">
-                Tax Information
+                {{t 'Tax Information'}}
               </div>
             </div>
             <div class="content">
@@ -368,19 +370,19 @@
             <div class="ui bottom attached small buttons">
               <button class="ui button" type="button" {{action 'openTaxModal'}}>
                 <i class="pencil icon"></i>
-                Edit
+                {{t 'Edit'}}
               </button>
 
               <button class="ui red button" type="button" {{action 'deleteTaxInformation'}}>
                 <i class="trash icon"></i>
-                Remove
+                {{t 'Remove'}}
               </button>
             </div>
           </div>
         {{else}}
           <button type="button" class="ui right labeled icon button" {{action 'openTaxModal'}}>
             <i class="percent icon"></i>
-            Add Tax Information
+            {{t 'Add Tax Information'}}
           </button>
         {{/if}}
       </div>
@@ -470,7 +472,7 @@
       <div class="ui flowing popup top left transition hidden">
         <div class="ui one column divided grid">
           <div class="column">
-            <strong>Licenses</strong>
+            <strong>{{t 'Licenses'}}</strong>
             <div class="ui bulleted list">
               {{#each licenses as |license|}}
                 <div class="item">
@@ -496,20 +498,19 @@
     {{/ui-dropdown}}
   </div>
   <br>
-
   <div class="large ui buttons right floated">
     <button class="ui right labeled icon button" type="button" {{action 'moveForward'}}>
-      Forward
+      {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
     {{#unless data.event.locationName}}
       <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
-        Save draft
+        {{t 'Save draft'}}
         <i class="save icon"></i>
       </button>
     {{else}}
       <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
-        Publish
+        {{t 'Publish'}}
         <i class="check icon"></i>
       </button>
     {{/unless}}

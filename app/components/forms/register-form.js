@@ -27,9 +27,9 @@ export default Component.extend({
         })
         .catch(reason => {
           if (reason.hasOwnProperty('code') && reason.code === 401) {
-            this.set('errorMessage', 'Your credentials were incorrect.');
+            this.set('errorMessage', this.i18n.t('Your credentials were incorrect.'));
           } else {
-            this.set('errorMessage', 'An unexpected error occurred.');
+            this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
           }
           this.set('isLoading', false);
         });
@@ -49,7 +49,7 @@ export default Component.extend({
             rules      : [
               {
                 type   : 'email',
-                prompt : 'Please enter a valid email address'
+                prompt : this.i18n.t('Please enter a valid email address')
               }
             ]
           },
@@ -58,11 +58,11 @@ export default Component.extend({
             rules      : [
               {
                 type   : 'empty',
-                prompt : 'Please enter a password'
+                prompt : this.i18n.t('Please enter a password')
               },
               {
                 type   : 'minLength[6]',
-                prompt : 'Your password must have at least {ruleValue} characters'
+                prompt : this.i18n.t('Your password must have at least {ruleValue} characters')
               }
             ]
           },
@@ -71,7 +71,7 @@ export default Component.extend({
             rules      : [
               {
                 type   : 'match[password]',
-                prompt : 'Passwords do not match'
+                prompt : this.i18n.t('Passwords do not match')
               }
             ]
           }

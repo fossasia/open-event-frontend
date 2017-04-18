@@ -1,5 +1,5 @@
 <div class="header">
-  {{if confirm.promptText confirm.promptText 'Are you sure ?'}}
+  {{if confirm.promptText confirm.promptText (t 'Are you sure ?')}}
 </div>
 {{#if confirm.options.extra}}
   <div class="content">
@@ -8,9 +8,9 @@
 {{/if}}
 <div class="actions">
   <div class="ui {{if confirm.options.denyText confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
-    {{if confirm.options.denyText confirm.options.denyText 'No'}}
+    {{if confirm.options.denyText confirm.options.denyText (t 'No')}}
   </div>
   <div class="ui {{if confirm.options.denyText confirm.options.approveColor 'green'}} button" {{action 'confirm'}}>
-    {{if confirm.options.approveText confirm.options.approveText 'Yes'}}
+    {{if confirm.options.approveText confirm.options.approveText (t 'Yes')}}
   </div>
 </div>
