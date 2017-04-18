@@ -55,12 +55,15 @@
     </div>
     <div class="five wide field">
       <label class="required" for="timezone">{{t 'Timezone'}}</label>
-      {{#ui-dropdown class='search' tagName='select' id='timezone' selected=data.event.timezone forceSelection=false
-                     onChange=(action (mut data.event.timezone))}}
-        <option value="">{{t 'Select timezone'}}</option>
-        {{#each timezones as |timezone|}}
-          <option value="{{timezone}}">{{timezone}}</option>
-        {{/each}}
+      {{#ui-dropdown class='search selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
+        {{input type='hidden' id='timezone' value=data.event.timezone}}
+        <i class="dropdown icon"></i>
+        <div class="default text">{{t 'Select timezone'}}</div>
+        <div class="menu">
+          {{#each timezones as |timezone|}}
+            <div class="item" data-value="{{timezone}}">{{timezone}}</div>
+          {{/each}}
+        </div>
       {{/ui-dropdown}}
     </div>
   </div>
@@ -210,15 +213,24 @@
       <div class="two fields">
         <div class="field">
           <label class="required">Choose country</label>
-          {{#ui-dropdown class='search' id='payment_country' tagName='select' selected='' forceSelection=false}}
-            <option value="">Select country</option>
-          {{/ui-dropdown}}
+          {{#ui-dropdown class='search selection' selected='' forceSelection=false fullTextSearch=true}}
+            {{input type='hidden' id='payment_country' value=''}}
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select country'}}</div>
+            <div class="menu">
 
+            </div>
+          {{/ui-dropdown}}
         </div>
         <div class="field">
           <label class="required">Choose currency</label>
-          {{#ui-dropdown class='search' id='payment_currency' tagName='select' selected='' forceSelection=false}}
-            <option value="">Select currency</option>
+          {{#ui-dropdown class='search selection' selected='' forceSelection=false fullTextSearch=true}}
+            {{input type='hidden' id='payment_currency' value=''}}
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select currency'}}</div>
+            <div class="menu">
+
+            </div>
           {{/ui-dropdown}}
         </div>
       </div>
@@ -361,14 +373,14 @@
     <label for="privacy">{{t 'Listing Privacy'}}</label>
     <div class="field">
       <div class="ui radio checkbox">
-        {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public' checked='public'}}
+        {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public' checked=data.event.privacy}}
         <label for="privacy_public"><strong>{{t 'Public event'}}:</strong> {{t
           'list this event on this site and search engines'}}</label>
       </div>
     </div>
     <div class="field">
       <div class="ui radio checkbox">
-        {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private' checked='public'}}
+        {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private' checked=data.event.privacy}}
         <label for="privacy_private"><strong>{{t 'Private event'}}:</strong> {{t 'do not list this event publicly'}}
         </label>
       </div>
@@ -377,15 +389,42 @@
 
   <div class="field">
     <label>{{t 'Event Type'}}</label>
-    {{input type='text'}}
+    {{#ui-dropdown class='search selection' selected=data.event.type forceSelection=false fullTextSearch=true}}
+      {{input type='hidden' id='type' value=data.event.type}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select Event Type'}}</div>
+      <div class="menu">
+        {{#each types as |type|}}
+          <div class="item" data-value="{{type}}">{{type}}</div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
   </div>
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
-    {{input type='text' id='topic'}}
+    {{#ui-dropdown class='search selection' selected=data.event.topic forceSelection=false fullTextSearch=true}}
+      {{input type='hidden' id='topic' value=data.event.topic}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select Event Topic'}}</div>
+      <div class="menu">
+        {{#each topics as |topic|}}
+          <div class="item" data-value="{{topic}}">{{topic}}</div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
   </div>
   <div class="field">
     <label>{{t 'Event Sub-topic'}}</label>
-    {{input type='text'}}
+    {{#ui-dropdown class='search selection' selected=data.event.subTopic forceSelection=false fullTextSearch=true}}
+      {{input type='hidden' id='sub_topic' value=data.event.subTopic}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select Event Sub-Topic'}}</div>
+      <div class="menu">
+        {{#each subTopics as |subTopic|}}
+          <div class="item" data-value="{{subTopic}}">{{subTopic}}</div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
   </div>
   <div class="ui section divider"></div>
   <div class="field">
@@ -423,10 +462,15 @@
         </div>
       </div>
     </label>
-    {{#ui-dropdown class='search' id='license' tagName='select' selected='All rights reserved' forceSelection=false}}
-      {{#each licenses as |license|}}
-        <option value="{{license.name}}">{{license.name}}</option>
-      {{/each}}
+    {{#ui-dropdown class='search selection' selected=data.event.copyright forceSelection=false fullTextSearch=true}}
+      {{input type='hidden' id='license' value=data.event.copyright}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select License'}}</div>
+      <div class="menu">
+        {{#each licenses as |license|}}
+          <div class="item" data-value="{{license.name}}">{{license.name}}</div>
+        {{/each}}
+      </div>
     {{/ui-dropdown}}
   </div>
   <br>

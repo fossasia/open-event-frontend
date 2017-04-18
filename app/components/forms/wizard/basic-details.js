@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import moment from 'moment';
-import { licenses, timezones } from 'open-event-frontend/utils/dictionary';
+import { licenses, timezones, eventTopics, paymentCountries, eventTypes } from 'open-event-frontend/utils/dictionary';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { orderBy, filter } from 'lodash';
+import { orderBy, filter, keys } from 'lodash';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary';
 
-const { Component, computed } = Ember;
+const { Component, computed, run: { later } } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -22,6 +22,14 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : 'Please give your event a name'
+            }
+          ]
+        },
+        timezone: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Choose a timezone for your event'
             }
           ]
         },
@@ -142,6 +150,28 @@ export default Component.extend(FormMixin, {
 
   licenses: computed(function() {
     return orderBy(licenses, 'name');
+  }),
+
+  types: computed(function() {
+    return orderBy(eventTypes);
+  }),
+
+  paymentCountries: computed(function() {
+    return orderBy(paymentCountries);
+  }),
+
+  topics: computed(function() {
+    return orderBy(keys(eventTopics));
+  }),
+
+  subTopics: computed('data.event.topic', function() {
+    later(this, () => {
+      this.set('data.event.subTopic', null);
+    }, 50);
+    if (!this.get('data.event.topic')) {
+      return [];
+    }
+    return orderBy(eventTopics[this.get('data.event.topic')]);
   }),
 
   hasPaidTickets: computed('data.event.tickets.[]', function() {
