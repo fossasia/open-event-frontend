@@ -1,25 +1,10 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('errors/not-found', 'Integration | Component | errors/not found', {
-  integration: true
-});
+moduleForComponent('errors/not-found', 'Integration | Component | errors/not found');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{errors/not-found}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#errors/not-found}}
-      template block text
-    {{/errors/not-found}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().html().trim().includes('404'));
 });

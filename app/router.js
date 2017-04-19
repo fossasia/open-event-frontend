@@ -19,6 +19,11 @@ router.map(function() {
   this.route('create');
   this.route('not-found');
   this.route('not-found-catch', { path: '/*path' });
+  this.route('events', { path: '/events/:event_id' }, function() {
+    this.route('view', { path: '/' }, function() {
+      this.route('edit', { path: '/edit/:step' });
+    });
+  });
 });
 
 export default router;

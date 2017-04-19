@@ -11,7 +11,7 @@ export default Component.extend({
     const tagsOriginal = this.get('event').getProperties('type', 'topic', 'subTopic');
     let tags = [];
     forOwn(tagsOriginal, value => {
-      if (value.trim() !== '') {
+      if (value && value.trim() !== '') {
         tags.push('#' + pascalCase(value));
       }
     });

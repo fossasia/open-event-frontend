@@ -6,6 +6,26 @@ const { Mixin, MutableArray } = Ember;
 
 export default Mixin.create(MutableArray, {
 
+  getSteps() {
+    return [
+      {
+        title       : this.i18n.t('Basic Details'),
+        description : this.i18n.t('Tell about your event'),
+        icon        : 'info icon'
+      },
+      {
+        title       : this.i18n.t('Sponsors'),
+        description : this.i18n.t('Advertise your sponsors'),
+        icon        : 'dollar icon'
+      },
+      {
+        title       : this.i18n.t('Sessions & Speakers'),
+        description : this.i18n.t('Expand your event'),
+        icon        : 'list icon'
+      }
+    ];
+  },
+
   getBasicDetails() {
     return {
       id                   : null,

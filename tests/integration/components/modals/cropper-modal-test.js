@@ -1,25 +1,13 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('modals/cropper-modal', 'Integration | Component | modals/cropper modal', {
-  integration: true
-});
+moduleForComponent('modals/cropper-modal', 'Integration | Component | modals/cropper modal');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{modals/cropper-modal}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#modals/cropper-modal}}
-      template block text
-    {{/modals/cropper-modal}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.set('isOpen', true);
+  this.set('imgData', '');
+  this.on('imageCropped', function() { });
+  this.render(hbs`{{modals/cropper-modal isOpen=isOpen imgData=imgData onImageCrop=(action 'imageCropped')}}`);
+  assert.ok(this.$().html().trim().includes('Crop Image'));
 });

@@ -1,25 +1,22 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/ticket-input', 'Integration | Component | widgets/forms/ticket input', {
-  integration: true
-});
+moduleForComponent('widgets/forms/ticket-input', 'Integration | Component | widgets/forms/ticket input');
 
 test('it renders', function(assert) {
 
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{widgets/forms/ticket-input}}`);
+  this.on('moveTicket', function() { });
+  this.on('removeTicket', function() { });
+  this.set('ticket', {});
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{widgets/forms/ticket-input ticket=ticket moveTicketUp=(action 'moveTicket' 'up')
+                                       moveTicketDown=(action 'moveTicket' 'down')
+                                       removeTicket=(action 'removeTicket')}}`);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#widgets/forms/ticket-input}}
-      template block text
-    {{/widgets/forms/ticket-input}}
-  `);
+  assert.ok(this.$().html().trim().includes('ticket_name'));
 
-  assert.equal(this.$().text().trim(), 'template block text');
 });

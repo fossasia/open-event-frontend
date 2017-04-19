@@ -6,7 +6,7 @@ module('Unit | Helper | confirm');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  let result = confirm([42]);
+  let result = confirm(['Do you want to confirm']);
   assert.ok(result);
 });
 

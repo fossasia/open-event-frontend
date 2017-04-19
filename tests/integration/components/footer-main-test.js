@@ -1,25 +1,10 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('footer-main', 'Integration | Component | footer main', {
-  integration: true
-});
+moduleForComponent('footer-main', 'Integration | Component | footer main');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{footer-main}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#footer-main}}
-      template block text
-    {{/footer-main}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().html().trim().includes('footer'));
 });

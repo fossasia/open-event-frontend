@@ -9,5 +9,6 @@ export default Controller.extend(EventWizardMixin, {
 
   _init: on('init', function() {
     this.set('data.event', this.getBasicDetails());
+    this.set('steps', this.getSteps());
   })
 });

@@ -1,25 +1,18 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('modals/event-share-modal', 'Integration | Component | modals/event share modal', {
-  integration: true
-});
+moduleForComponent('modals/event-share-modal', 'Integration | Component | modals/event share modal');
 
 test('it renders', function(assert) {
 
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{modals/event-share-modal}}`);
+  this.set('isOpen', true);
+  this.set('event', {});
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{modals/event-share-modal isOpen=isOpen event=event}}`);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#modals/event-share-modal}}
-      template block text
-    {{/modals/event-share-modal}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().html().trim().includes('Crop Image'));
 });

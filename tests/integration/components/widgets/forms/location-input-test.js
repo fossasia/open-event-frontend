@@ -1,25 +1,10 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/location-input', 'Integration | Component | widgets/forms/location input', {
-  integration: true
-});
+moduleForComponent('widgets/forms/location-input', 'Integration | Component | widgets/forms/location input');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{widgets/forms/location-input}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#widgets/forms/location-input}}
-      template block text
-    {{/widgets/forms/location-input}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().html().trim().includes('Enter address'));
 });

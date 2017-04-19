@@ -5,29 +5,7 @@
 {{/unless}}
 <div class="ui one column centered stacked grid event wizard">
   <div class="column mobile hidden">
-    <div class="ui three steps">
-      <a class="active step">
-        <i class="info icon"></i>
-        <div class="content">
-          <div class="title">Basic Details</div>
-          <div class="description">Tell about your event</div>
-        </div>
-      </a>
-      <a class="disabled step">
-        <i class="dollar icon"></i>
-        <div class="content">
-          <div class="title">Sponsors</div>
-          <div class="description">Advertise your sponsors</div>
-        </div>
-      </a>
-      <a class="disabled step">
-        <i class="list icon"></i>
-        <div class="content">
-          <div class="title">Sessions & Speakers</div>
-          <div class="description">Expand your event</div>
-        </div>
-      </a>
-    </div>
+    {{widgets/steps-indicator steps=steps currentStep=1 enableAll=false}}
   </div>
   <div class="column">
     {{forms/wizard/basic-details data=data}}

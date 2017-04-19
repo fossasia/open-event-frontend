@@ -1,6 +1,9 @@
 import Ember from 'ember';
 const { Helper, inject: { service } } = Ember;
 
+/**
+ * Helper to execute an action after a confirmation dialog
+ */
 export default Helper.extend({
   confirm: service(),
 

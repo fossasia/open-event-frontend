@@ -1,25 +1,16 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('modals/tax-info-modal', 'Integration | Component | modals/tax info modal', {
-  integration: true
-});
+moduleForComponent('modals/tax-info-modal', 'Integration | Component | modals/tax info modal');
 
 test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.set('isOpen', true);
+  this.set('taxInfo', {});
+  this.set('hasTaxInfo', false);
 
-  this.render(hbs`{{modals/tax-info-modal}}`);
+  this.render(hbs`{{modals/tax-info-modal isOpen=isOpen taxInfo=taxInfo hasTaxInfo=hasTaxInfo}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#modals/tax-info-modal}}
-      template block text
-    {{/modals/tax-info-modal}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().html().trim().includes('Add tax information'));
 });

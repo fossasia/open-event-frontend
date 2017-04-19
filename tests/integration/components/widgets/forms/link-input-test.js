@@ -1,25 +1,10 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/link-input', 'Integration | Component | widgets/forms/link input', {
-  integration: true
-});
+moduleForComponent('widgets/forms/link-input', 'Integration | Component | widgets/forms/link input');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{widgets/forms/link-input}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#widgets/forms/link-input}}
-      template block text
-    {{/widgets/forms/link-input}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().html().trim().includes('http'));
 });

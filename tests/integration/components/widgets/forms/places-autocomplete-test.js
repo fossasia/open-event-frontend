@@ -1,25 +1,11 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/places-autocomplete', 'Integration | Component | widgets/forms/places autocomplete', {
-  integration: true
-});
+moduleForComponent('widgets/forms/places-autocomplete', 'Integration | Component | widgets/forms/places autocomplete');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{widgets/forms/places-autocomplete}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#widgets/forms/places-autocomplete}}
-      template block text
-    {{/widgets/forms/places-autocomplete}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.on('placeChanged', function() { });
+  this.render(hbs`{{widgets/forms/places-autocomplete placeChangedCallback=(action 'placeChanged')}}`);
+  assert.ok(this.$().html().trim().includes('place-autocomplete--input'));
 });

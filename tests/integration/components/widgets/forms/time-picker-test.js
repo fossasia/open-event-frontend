@@ -1,25 +1,10 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/time-picker', 'Integration | Component | widgets/forms/time picker', {
-  integration: true
-});
+moduleForComponent('widgets/forms/time-picker', 'Integration | Component | widgets/forms/time picker');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{widgets/forms/time-picker}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#widgets/forms/time-picker}}
-      template block text
-    {{/widgets/forms/time-picker}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().html().trim().includes('calendar'));
 });

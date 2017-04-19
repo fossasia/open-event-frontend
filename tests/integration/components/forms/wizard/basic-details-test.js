@@ -1,25 +1,16 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from '../../../../helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('forms/wizard/basic-details', 'Integration | Component | forms/wizard/basic details', {
-  integration: true
-});
+moduleForComponent('forms/wizard/basic-details', 'Integration | Component | forms/wizard/basic details');
 
 test('it renders', function(assert) {
 
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{forms/wizard/basic-details}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#forms/wizard/basic-details}}
-      template block text
-    {{/forms/wizard/basic-details}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.set('data', {
+    event: {}
+  });
+  this.render(hbs`{{forms/wizard/basic-details data=data}}`);
+  assert.ok(this.$().html().trim().includes('Create'));
 });
