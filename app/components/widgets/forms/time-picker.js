@@ -2,7 +2,7 @@ import Ember from 'ember';
 import moment from 'moment';
 import { FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
-const { Component, merge, on } = Ember;
+const { Component, merge } = Ember;
 
 export default Component.extend({
 
@@ -14,7 +14,8 @@ export default Component.extend({
 
   options: {},
 
-  _didInsertElement: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     const defaultOptions = {
       type      : 'time',
       formatter : {
@@ -35,5 +36,6 @@ export default Component.extend({
     }
 
     this.$().calendar(merge(defaultOptions, this.get('options')));
-  })
+  }
+
 });

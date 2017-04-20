@@ -1,14 +1,16 @@
 import Ember from 'ember';
 
-const { Component, on } = Ember;
+const { Component } = Ember;
 
 export default Component.extend({
   tagName    : 'footer',
   classNames : ['ui', 'inverted', 'vertical', 'footer', 'segment'],
 
-  _didInsertElement: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     this.$('.ui.dropdown').dropdown({
       forceSelection: false
     });
-  })
+  }
+
 });

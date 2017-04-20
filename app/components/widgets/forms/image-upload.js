@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { v4 } from 'ember-uuid';
 
-const { Component, computed, on, run: { later } } = Ember;
+const { Component, computed, run: { later } } = Ember;
 
 export default Component.extend({
 
@@ -81,14 +81,16 @@ export default Component.extend({
     }
   },
 
-  _init: on('init', function() {
+  init() {
+    this._super.call(this);
     this.set('selectedImage', this.get('imageUrl'));
     if (this.get('selectedImage')) {
       this.set('needsConfirmation', true);
     }
-  }),
+  },
 
-  _didInsertElement: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     this.$()
       .on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
         e.preventDefault();
@@ -103,10 +105,11 @@ export default Component.extend({
       .on('drop', e => {
         this.processFiles(e.originalEvent.dataTransfer.files);
       });
-  }),
+  },
 
-  _willDestroyElement: on('willDestroyElement', function() {
+  willDestroyElement() {
+    this._super.call(this);
     this.$().off('drag dragstart dragend dragover dragenter dragleave drop');
-  })
+  }
 
 });

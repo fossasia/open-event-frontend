@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Service, computed: { alias }, observer, on, inject: { service } } = Ember;
+const { Service, computed: { alias }, observer, inject: { service } } = Ember;
 
 export default Service.extend({
 
@@ -38,11 +38,13 @@ export default Service.extend({
     this.get('metrics').identify(null);
   },
 
-  _init: on('init', function() {
+  init() {
+    this._super.call(this);
     if (this.get('session.isAuthenticated')) {
       this.identify();
     } else {
       this.identifyStranger();
     }
-  })
+  }
+
 });

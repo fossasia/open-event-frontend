@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { forOwn } from 'lodash';
 import { pascalCase } from 'open-event-frontend/utils/string';
 
-const { Component, computed, on } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend({
   classNames: ['column'],
@@ -18,7 +18,8 @@ export default Component.extend({
     return tags;
   }),
 
-  _didInsertElement: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     const $innerSpan = this.$('.header > span');
     const $header = this.$('.header');
     while ($innerSpan.outerHeight() > $header.height()) {
@@ -31,5 +32,6 @@ export default Component.extend({
         position: 'top center'
       });
     }
-  })
+  }
+
 });

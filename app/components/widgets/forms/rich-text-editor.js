@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { v4 } from 'ember-uuid';
 
-const { Component, computed, run: { debounce }, on } = Ember;
+const { Component, computed, run: { debounce } } = Ember;
 
 export default Component.extend({
 
@@ -33,7 +33,8 @@ export default Component.extend({
     return this.get('textareaId') ? this.get('textareaId') : v4();
   }),
 
-  _didInsertElement: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     this.$('.button')
       .popup({
         inline    : true,
@@ -53,11 +54,12 @@ export default Component.extend({
 
     this.editor.on('interaction', updateValue);
     this.editor.on('aftercommand:composer', updateValue);
-  }),
+  },
 
-  _willDestroyElement: on('willDestroyElement', function() {
+  willDestroyElement() {
+    this._super.call(this);
     if (this.editor) {
       this.editor.destroy();
     }
-  })
+  }
 });

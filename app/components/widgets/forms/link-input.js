@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, observer, on } = Ember;
+const { Component, observer } = Ember;
 
 export default Component.extend({
   classNameBindings : ['hasLinkName:fields', 'hasLinkName::ui', 'hasLinkName::labeled', 'hasLinkName::input:'],
@@ -25,10 +25,11 @@ export default Component.extend({
     });
   }),
 
-  _didInsertElement: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     this.setProperties({
       protocol : this.get('segmentedLink.protocol'),
       address  : this.get('segmentedLink.address')
     });
-  })
+  }
 });

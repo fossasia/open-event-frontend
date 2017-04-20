@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, observer, merge, on } = Ember;
+const { Component, observer, merge } = Ember;
 
 export default Component.extend({
   tagName           : 'div',
@@ -29,13 +29,15 @@ export default Component.extend({
     }
   },
 
-  __didRender: on('didRender', function() {
+  didRender()  {
+    this._super.call(this);
     try {
       this.$().modal('refresh');
     } catch (ignored) { /* ignored exception */ }
-  }),
+  },
 
-  __didInsertElement: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     const defaultOptions = {
       detachable     : false,
       duration       : 200,
@@ -81,5 +83,6 @@ export default Component.extend({
     if (this.get('isOpen')) {
       this.$().modal('show');
     }
-  })
+  }
+
 });

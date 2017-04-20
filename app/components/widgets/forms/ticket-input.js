@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, on } = Ember;
+const { Component } = Ember;
 
 export default Component.extend({
   classNames: ['ui', 'celled', 'stackable', 'grid', 'ticket-row'],
@@ -11,7 +11,8 @@ export default Component.extend({
     }
   },
 
-  _didRender: on('didRender', function() {
+  didRender() {
+    this._super.call(this);
     this.$('.icon.buttons').find('.button').popup();
-  })
+  }
 });

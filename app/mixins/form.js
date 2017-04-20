@@ -2,7 +2,7 @@ import Ember from 'ember';
 import moment from 'moment';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
-const { $, Mixin, on, merge, run: { debounce } } = Ember;
+const { $, Mixin, merge, run: { debounce } } = Ember;
 
 export default Mixin.create({
   actions: {
@@ -14,7 +14,9 @@ export default Mixin.create({
   autoScrollToErrors : true,
   autoScrollSpeed    : 200,
 
-  _didRender_: on('didRender', function() {
+
+  didRender() {
+    this._super.call(this);
     debounce(this, () => {
       const defaultFormRules = {
         onFailure: formErrors => {
@@ -39,14 +41,16 @@ export default Mixin.create({
         this.$('.ui.form').form(merge(defaultFormRules, this.getValidationRules()));
       }
     }, 400);
-  }),
+  },
 
-  _didInsertElement_: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super.call(this);
     $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
       if (value && value.length > 0 && format) {
         return moment(value, format).isValid();
       }
       return true;
     };
-  })
+  }
+
 });
