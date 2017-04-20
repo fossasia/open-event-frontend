@@ -5,7 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('modals/cropper-modal', 'Integration | Component | modals/cropper modal');
 
 test('it renders', function(assert) {
-  this.set('isOpen', true);
+  this.set('isOpen', false);
   this.set('imgData', '');
   this.on('imageCropped', function() { });
   this.render(hbs`{{modals/cropper-modal isOpen=isOpen imgData=imgData onImageCrop=(action 'imageCropped')}}`);

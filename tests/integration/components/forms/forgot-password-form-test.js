@@ -1,19 +1,10 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import destroyApp from '../../../helpers/destroy-app';
-import startApp from '../../../helpers/start-app';
+import moduleForComponent from '../../../helpers/component-helper';
 
-moduleForComponent('forms/forgot-password-form', 'Integration | Component | forms/forgot password form', {
-  integration: true,
-  beforeEach() {
-    this.application = startApp();
-  },
-  afterEach() {
-    destroyApp(this.application);
-  }
-});
+moduleForComponent('forms/forgot-password-form', 'Integration | Component | forms/forgot password form');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{forms/forgot-password-form}}`);
+  this.render(hbs`{{forms/forgot-password-form i18n=i18n}}`);
   assert.ok(this.$().html().trim().includes('Forgot Password'));
 });

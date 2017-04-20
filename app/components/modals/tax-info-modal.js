@@ -1,8 +1,5 @@
-import Ember from 'ember';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import FormMixin from 'open-event-frontend/mixins/form';
-
-const { on } = Ember;
 
 export default ModalBase.extend(FormMixin, {
   isSmall : true,
@@ -82,10 +79,6 @@ export default ModalBase.extend(FormMixin, {
         this.set('hasTaxInfo', true);
       }
     }
-  },
-
-  _didInsertElement: on('didInsertElement', function() {
-
-  })
+  }
 
 });

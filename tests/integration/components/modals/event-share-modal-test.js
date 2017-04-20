@@ -9,10 +9,8 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.set('isOpen', true);
+  this.set('isOpen', false);
   this.set('event', {});
-
   this.render(hbs`{{modals/event-share-modal isOpen=isOpen event=event}}`);
-
-  assert.ok(this.$().html().trim().includes('Crop Image'));
+  assert.ok(this.$().html().trim().includes('Share this event'));
 });

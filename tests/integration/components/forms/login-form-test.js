@@ -5,6 +5,6 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('forms/login-form', 'Integration | Component | forms/login form');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{forms/login-form}}`);
+  this.render(hbs`{{forms/login-form i18n=i18n}}`);
   assert.ok(this.$().html().trim().includes('Login'));
 });

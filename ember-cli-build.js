@@ -5,6 +5,9 @@ const Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
+    'ember-cli-babel': {
+      includePolyfill: true
+    },
     storeConfigInMeta : false,
     flexibility       : {
       enabled: true
@@ -20,7 +23,6 @@ module.exports = function(defaults) {
   app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js');
   app.import('bower_components/Croppie/croppie.css');
   app.import('bower_components/Croppie/croppie.min.js');
-  app.import('vendor/shims/includes.js');
 
   const appTree = app.toTree([]);
   return new MergeTrees([appTree, new Funnel(appTree, {

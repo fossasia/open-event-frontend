@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('social-link', 'Unit | Model | social link', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:event']
 });
 
 test('it exists', function(assert) {
