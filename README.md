@@ -42,8 +42,10 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Running Tests
 
-* `ember test`
-* `ember test --server`
+This project has acceptance, integration and unit tests located inside the `tests/` folder.
+
+* `ember test` - CLI output
+* `ember test --server` - Live browser preview and console access
 
 ### Building
 
