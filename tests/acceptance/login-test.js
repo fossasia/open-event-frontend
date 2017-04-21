@@ -48,3 +48,13 @@ test('logout via navbar', function(assert) {
     });
   });
 });
+
+test('visiting /login after login', function(assert) {
+  login(assert);
+  andThen(function() {
+    visit('/login');
+    andThen(function() {
+      assert.equal(currentURL(), '/');
+    });
+  });
+});
