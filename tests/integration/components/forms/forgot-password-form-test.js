@@ -1,6 +1,6 @@
 import { test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import moduleForComponent from '../../../helpers/component-helper';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 
 moduleForComponent('forms/forgot-password-form', 'Integration | Component | forms/forgot password form');
 
