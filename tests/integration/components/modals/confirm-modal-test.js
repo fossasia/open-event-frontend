@@ -1,5 +1,5 @@
 import { test } from 'ember-qunit';
-import moduleForComponent from '../../../helpers/component-helper';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('modals/confirm-modal', 'Integration | Component | modals/confirm modal');

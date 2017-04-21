@@ -1,5 +1,6 @@
 import { test } from 'ember-qunit';
-import moduleForComponent from '../../../helpers/component-helper';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('errors/not-found', 'Integration | Component | errors/not found');
