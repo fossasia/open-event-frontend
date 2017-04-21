@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, observer, merge } = Ember;
+const { Component, observer, merge, testing } = Ember;
 
 export default Component.extend({
   tagName           : 'div',
@@ -40,7 +40,7 @@ export default Component.extend({
     this._super.call(this);
     const defaultOptions = {
       detachable     : false,
-      duration       : 200,
+      duration       : testing ? 0 : 200,
       dimmerSettings : {
         dimmerName : `${this.get('elementId')}-modal-dimmer`,
         variation  : 'inverted'
