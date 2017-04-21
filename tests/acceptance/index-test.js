@@ -9,3 +9,27 @@ test('visiting /', function(assert) {
     assert.equal(currentURL(), '/');
   });
 });
+
+test('visiting / and opening an event', function(assert) {
+  visit('/');
+  andThen(function() {
+    click('div.event.card:first > div.content:first > a');
+    andThen(function() {
+      assert.equal(currentRouteName(), 'public.index');
+    });
+  });
+});
+
+test('visiting / and opening an event share modal', function(assert) {
+  visit('/');
+  andThen(function() {
+    click('div.event.card:first > div.extra.content > span > i');
+    andThen(function() {
+      const $shareModalCopyButton = findWithAssert('.ui.modal button.copy.button');
+      assert.ok($shareModalCopyButton.first().data('clipboard-text') !== null);
+      andThen(function() {
+        click('.ui.modal > i.black.close.icon');
+      });
+    });
+  });
+});
