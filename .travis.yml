@@ -20,7 +20,7 @@ cache:
 
 before_install:
   - npm config set spin false
-  - npm install -g bower phantomjs-prebuilt
+  - npm install -g bower phantomjs-prebuilt codecov
   - bower --version
   - phantomjs --version
 
@@ -29,8 +29,8 @@ install:
   - bower install
 
 script:
-  # - npm test
-  - node_modules/.bin/eslint app
+  - COVERAGE=true ember exam --random
+  - bash < (curl -s https://codecov.io/bash)
 
 after_success:
   - bash scripts/deploy.sh

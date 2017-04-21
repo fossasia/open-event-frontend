@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { v4 } from 'ember-uuid';
 
-const { Component, computed, run: { debounce } } = Ember;
+const { Component, computed, run: { debounce }, testing } = Ember;
 
 export default Component.extend({
 
@@ -41,19 +41,22 @@ export default Component.extend({
         variation : 'tiny'
       });
 
-    this.editor = new wysihtml5.Editor(this.$(`#${this.get('textareaIdGenerated')}`)[0], {
-      toolbar     : this.$(`#${this.get('textareaIdGenerated')}-toolbar`)[0],
-      parserRules : this.get('standardParserRules')
-    });
+    // Don't initialize wysihtml5 when app is in testing mode
+    if (!testing) {
+      this.editor = new wysihtml5.Editor(this.$(`#${this.get('textareaIdGenerated')}`)[0], {
+        toolbar     : this.$(`#${this.get('textareaIdGenerated')}-toolbar`)[0],
+        parserRules : this.get('standardParserRules')
+      });
 
-    const updateValue = () => {
-      debounce(this, () => {
-        this.set('value', this.editor.getValue());
-      }, 400);
-    };
+      const updateValue = () => {
+        debounce(this, () => {
+          this.set('value', this.editor.getValue());
+        }, 400);
+      };
 
-    this.editor.on('interaction', updateValue);
-    this.editor.on('aftercommand:composer', updateValue);
+      this.editor.on('interaction', updateValue);
+      this.editor.on('aftercommand:composer', updateValue);
+    }
   },
 
   willDestroyElement() {

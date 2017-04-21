@@ -1,15 +1,10 @@
 import Ember from 'ember';
-import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-const { Controller } = Ember;
+const { Controller, computed: { alias } } = Ember;
 
-export default Controller.extend(EventWizardMixin, {
+export default Controller.extend({
 
-  data: {},
+  data  : alias('model.data'),
+  steps : alias('model.steps')
 
-  init() {
-    this._super.call(this);
-    this.set('data.event', this.getBasicDetails());
-    this.set('steps', this.getSteps());
-  }
 });

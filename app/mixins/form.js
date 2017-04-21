@@ -31,14 +31,21 @@ export default Mixin.create({
         }
       };
 
-      this.$('.has.popup').popup({
-        hoverable: true
-      });
+      const $popUps = this.$('.has.popup');
+      if ($popUps) {
+        $popUps.popup({
+          hoverable: true
+        });
+      }
 
-      this.$('.ui.checkbox').checkbox();
+      const $checkBoxes = this.$('.ui.checkbox');
+      if ($checkBoxes) {
+        $checkBoxes.checkbox();
+      }
 
-      if (this.get('getValidationRules')) {
-        this.$('.ui.form').form(merge(defaultFormRules, this.getValidationRules()));
+      const $form = this.$('.ui.form');
+      if (this.get('getValidationRules') && $form) {
+        $form.form(merge(defaultFormRules, this.getValidationRules()));
       }
     }, 400);
   },
