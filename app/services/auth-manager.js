@@ -10,10 +10,14 @@ export default Service.extend({
   currentUser: alias('session.data.currentUser'),
 
   userAuthenticatedStatusChange: observer('session.isAuthenticated', function() {
-    if (this.get('session.isAuthenticated')) {
-      this.identify();
-    } else {
+    if (!this.get('session.isAuthenticated')) {
       this.identifyStranger();
+    }
+  }),
+
+  currentUserChangeListener: observer('currentUser', function() {
+    if (this.get('currentUser') && this.get('session.isAuthenticated')) {
+      this.identify();
     }
   }),
 
@@ -23,15 +27,11 @@ export default Service.extend({
   },
 
   identify() {
-    /**
     let currentUser = this.get('currentUser');
     this.get('metrics').identify({
       distinctId : currentUser.id,
-      email      : currentUser.email,
-      mobile     : currentUser.mobile,
-      name       : currentUser.name
+      email      : currentUser.email
     });
-     **/
   },
 
   identifyStranger() {

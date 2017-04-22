@@ -23,6 +23,19 @@ module.exports = function(environment) {
       apiNamespace : process.env.API_NAMESPACE || 'api/v1'
     },
 
+    metricsAdapters: [
+      {
+        name         : 'GoogleAnalytics',
+        environments : ['development', 'production'],
+        config       : {
+          id          : process.env.GOOGLE_ANALYTICS_PROPERTY_ID || 'UA-XXXX-Y',
+          debug       : environment === 'development',
+          trace       : environment === 'development',
+          sendHitTask : environment !== 'development'
+        }
+      }
+    ],
+
     contentSecurityPolicy: {
       'default-src' : '\'none\'',
       'connect-src' : [
@@ -34,7 +47,8 @@ module.exports = function(environment) {
         'https://*.eventyay.com',
         'https://eventyay.com',
         'https://open-event-dev.herokuapp.com',
-        'https://open-event.herokuapp.com'
+        'https://open-event.herokuapp.com',
+        'www.google-analytics.com'
       ],
       'script-src': [
         '\'self\'',
@@ -45,7 +59,8 @@ module.exports = function(environment) {
         'https://*.eventyay.com',
         'http://eventyay.dev:49153',
         'http://eventyay.dev:65520',
-        'http://localhost:49153'
+        'http://localhost:49153',
+        'www.google-analytics.com'
       ],
       'font-src': [
         '\'self\'',
