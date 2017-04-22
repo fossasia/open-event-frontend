@@ -20,6 +20,7 @@ export default Model.extend({
   thumbnail       : attr('string'),
   large           : attr('string'),
   backgroundImage : attr('string'),
+  placeholderUrl  : attr('string'),
 
   longitude : attr('number'),
   latitude  : attr('number'),

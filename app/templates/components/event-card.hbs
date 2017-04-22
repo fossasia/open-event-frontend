@@ -1,6 +1,6 @@
 <div class="ui fluid event card">
   <a class="image" href="{{href-to 'public' event.identifier}}">
-    <img src="{{event.large}}">
+    <img src="{{if event.large event.large event.placeholderUrl}}">
   </a>
   <div class="content">
     <a class="header" href="{{href-to 'public' event.identifier}}">
