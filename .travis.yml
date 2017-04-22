@@ -29,6 +29,7 @@ install:
   - bower install
 
 script:
+  - ember l10n:convert -f false
   - COVERAGE=true ember exam --random
 
 after_success:
