@@ -1,9 +1,7 @@
-import { moduleFor, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
 
-moduleFor('route:not-found', 'Unit | Route | not found', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
-});
+moduleFor('route:not-found', 'Unit | Route | not found', []);
 
 test('it exists', function(assert) {
   let route = this.subject();

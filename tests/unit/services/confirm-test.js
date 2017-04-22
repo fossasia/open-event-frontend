@@ -1,8 +1,7 @@
-import { moduleFor, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
 
-moduleFor('service:confirm', 'Unit | Service | confirm', {
-
-});
+moduleFor('service:confirm', 'Unit | Service | confirm', []);
 
 // Replace this with your real tests.
 test('it exists', function(assert) {

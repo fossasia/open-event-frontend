@@ -1,7 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('session-type', 'Unit | Model | session type', {
-  // Specify the other units that are required for this test.
   needs: ['model:event', 'model:session']
 });
 

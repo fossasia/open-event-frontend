@@ -6,7 +6,6 @@ const { Object } = Ember;
 
 module('Unit | Mixin | form');
 
-// Replace this with your real tests.
 test('it works', function(assert) {
   let FormObject = Object.extend(FormMixin);
   let subject = FormObject.create();

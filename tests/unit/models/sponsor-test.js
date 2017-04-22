@@ -1,7 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('sponsor', 'Unit | Model | sponsor', {
-  // Specify the other units that are required for this test.
   needs: ['model:event']
 });
 

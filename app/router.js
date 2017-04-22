@@ -1,11 +1,25 @@
 import Ember from 'ember';
 import config from 'open-event-frontend/config/environment';
 
-const { Router } = Ember;
+const { Router, run: { scheduleOnce }, inject: { service } } = Ember;
 
 const router = Router.extend({
   location : config.locationType,
-  rootURL  : config.rootURL
+  rootURL  : config.rootURL,
+  metrics  : service(),
+
+  didTransition() {
+    this._super(...arguments);
+    this._trackPage();
+  },
+
+  _trackPage() {
+    scheduleOnce('afterRender', this, () => {
+      const page = this.get('url');
+      const title = this.getWithDefault('currentRouteName', 'unknown');
+      this.get('metrics').trackPage({ page, title });
+    });
+  }
 });
 
 router.map(function() {

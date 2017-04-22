@@ -1,8 +1,7 @@
-import { moduleFor, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
 
-moduleFor('service:l10n', 'Unit | Service | l10n', {
-  needs: ['service:l10n-ajax']
-});
+moduleFor('service:l10n', 'Unit | Service | l10n', ['service:l10n-ajax']);
 
 // Replace this with your real tests.
 test('it exists', function(assert) {

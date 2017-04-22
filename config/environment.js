@@ -26,7 +26,7 @@ module.exports = function(environment) {
     metricsAdapters: [
       {
         name         : 'GoogleAnalytics',
-        environments : ['development', 'production'],
+        environments : ['production'],
         config       : {
           id          : process.env.GOOGLE_ANALYTICS_PROPERTY_ID || 'UA-XXXX-Y',
           debug       : environment === 'development',
@@ -97,6 +97,10 @@ module.exports = function(environment) {
     authorizer: 'authorizer:jwt'
   };
 
+  ENV['ember-cli-mirage'] = {
+    enabled: false
+  };
+
   ENV['ember-simple-auth-token'] = {
     refreshAccessTokens      : false,
     serverTokenEndpoint      : `${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/login`,
@@ -121,6 +125,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
   }
 
   if (environment === 'test') {
@@ -138,10 +145,8 @@ module.exports = function(environment) {
     };
   }
 
-  var deployTarget = process.env.DEPLOY_TARGET;
-
   if (environment === 'production') {
-    if (deployTarget && deployTarget === 'gh-pages') {
+    if (process.env.DEPLOY_TARGET && process.env.DEPLOY_TARGET === 'gh-pages') {
       ENV.locationType = 'hash';
       ENV.rootURL = '/' + (process.env.REPO_SLUG || 'open-event-frontend');
     }
