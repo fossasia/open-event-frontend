@@ -1,13 +1,24 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 import { values } from 'lodash';
+import Fragment from 'ember-data-model-fragments/fragment';
 
-const { Model, attr } = DS;
+const { attr } = DS;
 const { computed } = Ember;
 
-export default Model.extend({
+export default Fragment.extend({
   name : attr('string'),
   link : attr('string'),
+
+  normalizedName: computed('name', function() {
+    return this.get('name').trim().toLowerCase();
+  }),
+
+  isFacebook   : computed.equal('normalizedName', 'facebook'),
+  isTwitter    : computed.equal('normalizedName', 'twitter'),
+  isLinkedin   : computed.equal('normalizedName', 'linkedin'),
+  isGooglePlus : computed.equal('normalizedName', 'google plus'),
+  isReddit     : computed.equal('normalizedName', 'reddit'),
 
   segmentedLink: computed('link', {
     get() {

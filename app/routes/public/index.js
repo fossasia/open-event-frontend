@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
+const { Route, RSVP } = Ember;
 
 export default Route.extend({
   model() {
-    return this._super(...arguments);
+    return RSVP.hash({
+      event: this._super(...arguments)
+    });
   }
 });

@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 import moment from 'moment';
+import { fragmentArray, fragment } from 'ember-data-model-fragments/attributes';
 
 const { Model, attr } = DS;
 const { computed, inject: { service } } = Ember;
@@ -43,8 +44,12 @@ export default Model.extend({
   privacy : attr('string'),
 
   callForPapers  : attr(),
-  licenseDetails : attr(),
-  version        : attr(),
+  licenceDetails : attr(),
+  copyright      : attr(),
+
+  version     : fragment('version'),
+  socialLinks : fragmentArray('social-link'),
+
 
   shortLocationName: computed('locationName', function() {
     if (!this.get('locationName')) {

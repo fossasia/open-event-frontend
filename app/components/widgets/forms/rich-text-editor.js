@@ -7,12 +7,14 @@ export default Component.extend({
 
   editor: null,
 
+  // Ensure any changes to the parser rules are set in the sanitizer @ services/sanitizer.js
   standardParserRules: {
     tags: {
-      'b'      : 1,
-      'strong' : { 'rename_tag': 'b' },
-      'i'      : 1,
-      'em'     : { 'rename_tag': 'i' },
+      'p'      : 1,
+      'b'      : { 'rename_tag': 'string' },
+      'strong' : 1,
+      'i'      : { 'rename_tag': 'em' },
+      'em'     : 1,
       'u'      : 1,
       'ol'     : 1,
       'li'     : 1,

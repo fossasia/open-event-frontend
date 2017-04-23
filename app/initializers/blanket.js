@@ -1,5 +1,8 @@
+import FragmentSerializer from '../serializers/fragment';
 
 export function initialize(application) {
+
+  application.register('serializer:-fragment', FragmentSerializer);
 
   const inject = (property, what) => {
     application.inject('controller', property, what);
@@ -17,8 +20,10 @@ export function initialize(application) {
   inject('device', 'service:device');
   inject('notify', 'service:notify');
   inject('confirm', 'service:confirm');
+  inject('sanitizer', 'service:sanitizer');
 
   application.inject('component', 'routing', 'service:-routing');
+
 }
 
 export default {

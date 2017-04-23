@@ -7,7 +7,7 @@ export default Service.extend({
 
   makePromise(url, type, data = null, autoPrefix = true) {
     const adapter = getOwner(this).lookup('adapter:application');
-    const options = adapter.ajaxOptions();
+    const options = autoPrefix ? adapter.ajaxOptions() : {};
     options.url = autoPrefix ? `${adapter.urlPrefix()}${url}` : url;
     options.type = type;
 

@@ -68,6 +68,7 @@ module.exports = {
     process    : true,
     wysihtml5  : true,
     palette    : true,
-    Uint8Array : true
+    Uint8Array : true,
+    require    : true
   }
 };

@@ -1,1 +1,48 @@
-{{outlet}}
+<div class="public-event">
+  <div class="lead {{if smallLead 'small'}}">
+    <img src="{{model.large}}">
+    <div class="content">
+      <div class="ui container">
+        <div class="ui grid">
+          <div class="one wide column"></div>
+          <div class="fifteen wide column info">
+            <h4 class="event time">{{moment-format model.startTime 'ddd, MMM DD \at HH:mm A'}}</h4>
+            <h1 class="event name">{{model.name}}</h1>
+            <h4 class="event location"><i class="marker icon"></i> {{model.locationName}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content {{if smallLead 'with small lead'}}">
+    <div class="ui basic segment" id="public-event-content">
+      <div class="left ui rail">
+        <div class="ui basic segment">
+          {{#ui-sticky context='#public-event-content' observeChanges=true}}
+            <div class="ui vertical pointing menu">
+              <a class="item active">
+                Info
+              </a>
+              <a class="item">
+                Tickets
+              </a>
+              <a class="item">
+                Speakers
+              </a>
+              <a class="item">
+                Call for Speakers
+              </a>
+              <a class="item">
+                Getting here
+              </a>
+            </div>
+          {{/ui-sticky}}
+        </div>
+      </div>
+      {{outlet}}
+      <div class="right ui rail">
+        {{public/social-links eventUrl=model.eventUrl socialLinks=model.socialLinks}}
+      </div>
+    </div>
+  </div>
+</div>

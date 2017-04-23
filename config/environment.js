@@ -60,7 +60,9 @@ module.exports = function(environment) {
         'http://eventyay.dev:49153',
         'http://eventyay.dev:65520',
         'http://localhost:49153',
-        'www.google-analytics.com'
+        'www.google-analytics.com',
+        'https://platform.twitter.com',
+        'https://cdn.syndication.twimg.com'
       ],
       'font-src': [
         '\'self\'',
@@ -75,7 +77,9 @@ module.exports = function(environment) {
         '\'self\'',
         '\'unsafe-inline\'',
         'https://fonts.googleapis.com',
-        'https://maps.gstatic.com'
+        'https://maps.gstatic.com',
+        'platform.twitter.com',
+        'https://ton.twimg.com'
       ],
       'frame-src' : '*',
       'media-src' : '\'none\''

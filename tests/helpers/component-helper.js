@@ -3,8 +3,9 @@ import destroyApp from './destroy-app';
 import startApp from './start-app';
 import Ember from 'ember';
 import l10nTestHelper from 'ember-l10n/test-helpers';
+import fragmentTransformInitializer from 'open-event-frontend/initializers/model-fragments';
 
-const { Service } = Ember;
+const { Service, run, getOwner } = Ember;
 
 const i18nStub = Service.extend({
   t(val) {
@@ -21,6 +22,7 @@ export default function(path, name, testCase = null) {
       this.inject.service('l10n', { as: 'i18n' });
       this.application = startApp();
       l10nTestHelper(this);
+      run(() => fragmentTransformInitializer.initialize(getOwner(this)));
     },
 
     afterEach() {

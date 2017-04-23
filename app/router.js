@@ -7,6 +7,7 @@ const router = Router.extend({
   location : config.locationType,
   rootURL  : config.rootURL,
   metrics  : service(),
+  session  : service(),
 
   didTransition() {
     this._super(...arguments);
@@ -18,6 +19,7 @@ const router = Router.extend({
       const page = this.get('url');
       const title = this.getWithDefault('currentRouteName', 'unknown');
       this.get('metrics').trackPage({ page, title });
+      this.set('session.currentRouteName', title);
     });
   }
 });
