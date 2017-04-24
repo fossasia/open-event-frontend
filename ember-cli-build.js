@@ -15,14 +15,6 @@ module.exports = function(defaults) {
     minifyHTML: {
       enabled   : true,
       htmlFiles : ['index.html', '404.html']
-    },
-    SemanticUI: {
-      source: {
-        css        : 'bower_components/open-event-theme/dist',
-        javascript : 'bower_components/open-event-theme/dist',
-        images     : 'bower_components/open-event-theme/dist/themes/default/assets/images',
-        fonts      : 'bower_components/open-event-theme/dist/themes/default/assets/fonts'
-      }
     }
   });
 
