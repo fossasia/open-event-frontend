@@ -18,10 +18,10 @@ module.exports = function(defaults) {
     },
     SemanticUI: {
       source: {
-        css        : 'bower_components/open-event-frontend-theme/dist',
-        javascript : 'bower_components/open-event-frontend-theme/dist',
-        images     : 'bower_components/open-event-frontend-theme/dist/themes/default/assets/images',
-        fonts      : 'bower_components/open-event-frontend-theme/dist/themes/default/assets/fonts'
+        css        : 'bower_components/open-event-theme/dist',
+        javascript : 'bower_components/open-event-theme/dist',
+        images     : 'bower_components/open-event-theme/dist/themes/default/assets/images',
+        fonts      : 'bower_components/open-event-theme/dist/themes/default/assets/fonts'
       }
     }
   });
