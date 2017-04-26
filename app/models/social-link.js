@@ -14,11 +14,7 @@ export default Fragment.extend({
     return this.get('name').trim().toLowerCase();
   }),
 
-  isFacebook   : computed.equal('normalizedName', 'facebook'),
-  isTwitter    : computed.equal('normalizedName', 'twitter'),
-  isLinkedin   : computed.equal('normalizedName', 'linkedin'),
-  isGooglePlus : computed.equal('normalizedName', 'google plus'),
-  isReddit     : computed.equal('normalizedName', 'reddit'),
+  isTwitter: computed.equal('normalizedName', 'twitter'),
 
   segmentedLink: computed('link', {
     get() {
