@@ -1,4 +1,6 @@
+<!-- 
 (Thanks for sending a pull request! Please make sure you click the link above to view the contribution guidelines, then fill out the blanks below.)
+-->
 
 #### Checklist
 
