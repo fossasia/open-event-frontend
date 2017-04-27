@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     appName      : process.env.APP_NAME || 'Open Event',
     modulePrefix : 'open-event-frontend',
     environment,
