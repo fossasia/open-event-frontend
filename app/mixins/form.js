@@ -14,6 +14,9 @@ export default Mixin.create({
   autoScrollToErrors : true,
   autoScrollSpeed    : 200,
 
+  getForm() {
+    return this.get('$form');
+  },
 
   didRender() {
     this._super.call(this);
@@ -46,6 +49,10 @@ export default Mixin.create({
       const $form = this.$('.ui.form');
       if (this.get('getValidationRules') && $form) {
         $form.form(merge(defaultFormRules, this.getValidationRules()));
+      }
+
+      if ($form && this) {
+        this.set('$form', $form);
       }
     }, 400);
   },
