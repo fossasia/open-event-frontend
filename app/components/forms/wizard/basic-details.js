@@ -5,9 +5,9 @@ import { FORM_DATE_FORMAT, timezones } from 'open-event-frontend/utils/dictionar
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { eventTopics, eventTypes } from 'open-event-frontend/utils/dictionary/event';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { orderBy, filter, keys, find } from 'lodash';
+import { orderBy, filter, keys, find, values } from 'lodash';
 
-const { Component, computed, run: { later } } = Ember;
+const { Component, computed, run: { later }, observer } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -146,6 +146,26 @@ export default Component.extend(FormMixin, {
     };
   },
 
+  segmentedExternalTicketUrl: computed('data.event.externalTicketUrl', {
+    get() {
+      const splitted = this.get('data.event.externalTicketUrl') ? this.get('data.event.externalTicketUrl').split('://') : [];
+      if (!splitted || splitted.length === 0 || (splitted.length === 1 && splitted[0].includes('http'))) {
+        return {
+          protocol : 'https',
+          address  : ''
+        };
+      }
+      return {
+        protocol : splitted[0],
+        address  : splitted[1]
+      };
+    },
+    set(key, value) {
+      this.set('data.event.externalTicketUrl', values(value).join('://'));
+      return value;
+    }
+  }),
+
   timezones: computed(function() {
     return timezones;
   }),
@@ -192,6 +212,10 @@ export default Component.extend(FormMixin, {
     return filter(this.get('data.event.tickets'), ticket => ticket.get('type') === 'paid').length > 0;
   }),
 
+  discountCodeObserver: observer('data.event.discountCode', function() {
+    this.getForm().form('remove prompt', 'discount_code');
+  }),
+
   actions: {
     saveDraft() {
       this.$('form').form('validate form');
@@ -234,6 +258,30 @@ export default Component.extend(FormMixin, {
       this.set('data.event.hasTaxInfo', false);
       this.get('data.event.taxInfo').unloadRecord();
       this.set('data.event.taxInfo', this.store.createRecord('tax-info'));
+    },
+    redeemDiscountCode() {
+      this.set('validatingDiscountCode', true);
+      // TODO do proper checks. Simulating now.
+      later(this, () => {
+        if (this.get('data.event.discountCode') !== 'AIYPWZQP') {
+          this.getForm().form('add prompt', 'discount_code', this.i18n.t('This discount code is invalid. Please try again.'));
+        } else {
+          this.set('data.event.discountCodeId', 42);
+          this.set('discountCodeDescription', 'Tester special discount');
+          this.set('discountCodeValue', '25%');
+          this.set('discountCodePeriod', '5');
+        }
+        this.set('validatingDiscountCode', false);
+      }, 1000);
+    },
+    removeDiscountCode() {
+      this.setProperties({
+        'data.event.discountCode'   : '',
+        'data.event.discountCodeId' : null,
+        'discountCodeDescription'   : null,
+        'discountCodeValue'         : null,
+        'discountCodePeriod'        : null
+      });
     }
   }
 });

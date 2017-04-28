@@ -43,13 +43,12 @@ export default Model.extend({
   state   : attr('string'),
   privacy : attr('string'),
 
-  callForPapers  : attr(),
   licenceDetails : attr(),
   copyright      : attr(),
 
-  version     : fragment('version'),
-  socialLinks : fragmentArray('social-link'),
-
+  callForPapers : fragment('call-for-speakers'),
+  version       : fragment('version'),
+  socialLinks   : fragmentArray('social-link'),
 
   shortLocationName: computed('locationName', function() {
     if (!this.get('locationName')) {

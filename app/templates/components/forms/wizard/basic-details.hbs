@@ -196,20 +196,43 @@
   {{else}}
     <div class="field">
       <label class="required" for="ticket_url">{{t 'Ticket URL'}}</label>
-      {{widgets/forms/link-input inputId='ticket_url' protocol='https'}}
+      {{widgets/forms/link-input inputId='ticket_url' segmentedLink=segmentedExternalTicketUrl}}
     </div>
   {{/if}}
   {{#if hasPaidTickets}}
     <div class="ui section divider"></div>
     <div class="field">
-      <label>{{t 'Redeem Discount Code'}}</label>
-      <div class="ui action input">
-        {{input type='text' placeholder=(t 'Discount code')}}
-        <button type="button" class="ui teal right labeled icon button">
-          <i class="check icon"></i>
-          {{t 'Redeem'}}
-        </button>
-      </div>
+      <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
+      {{#unless data.event.discountCodeId}}
+        <div class="ui action input">
+          {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode
+                  disabled=validatingDiscountCode}}
+          <button type="button"
+                  class="ui teal right labeled icon button {{if validatingDiscountCode 'loading'}}" {{action
+            'redeemDiscountCode'}}>
+            <i class="check icon"></i>
+            {{t 'Redeem'}}
+          </button>
+        </div>
+      {{else}}
+        <div class="ui labeled action input">
+          <a class="ui right pointing teal basic label">
+            {{t 'Code Applied'}}
+          </a>
+          <input title="applied"
+                 value="{{discountCodeDescription}}: {{t 'Discount of'}} {{discountCodeValue}} {{t
+                   'over a period of'}} {{discountCodePeriod}} {{t 'month(s)'}}"
+                 readonly>
+          <button
+            type="button"
+            class="ui red right labeled icon button"
+            {{action
+              (confirm (t 'Are you sure you wish to remove the discount applied ?') (action 'removeDiscountCode'))}}>
+            <i class="remove icon"></i>
+            {{t 'Remove'}}
+          </button>
+        </div>
+      {{/unless}}
     </div>
     <div class="ui section divider"></div>
     <div class="field">

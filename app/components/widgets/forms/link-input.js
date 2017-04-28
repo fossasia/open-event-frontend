@@ -27,9 +27,11 @@ export default Component.extend({
 
   didInsertElement() {
     this._super.call(this);
-    this.setProperties({
-      protocol : this.get('segmentedLink.protocol'),
-      address  : this.get('segmentedLink.address')
-    });
+    if (this.get('segmentedLink')) {
+      this.setProperties({
+        protocol : this.get('segmentedLink.protocol'),
+        address  : this.get('segmentedLink.address')
+      });
+    }
   }
 });

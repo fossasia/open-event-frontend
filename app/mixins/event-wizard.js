@@ -52,7 +52,7 @@ export default Mixin.create(MutableArray, {
       ],
       ticketingSystemEnabled : true,
       tickets                : [],
-      externalTicketUrl      : '',
+      externalTicketUrl      : 'http://hola.com',
       discountCodeId         : null,
       discountCode           : '',
       paymentCountry         : 'United States',

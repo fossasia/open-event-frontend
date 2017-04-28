@@ -8,11 +8,11 @@ export default Controller.extend({
   callForSpeakersEvents: computed('model.[]', function() {
     return this.get('model').filter(event => {
       const callForPapers = event.get('callForPapers');
-      if (callForPapers === null) {
+      if (callForPapers === null || !callForPapers.get('startDate') || !callForPapers.get('timezone') || !callForPapers.get('endDate')) {
         return false;
       }
-      const startDateTime = moment.tz(callForPapers.startDate, callForPapers.timezone);
-      const endDateTime = moment.tz(callForPapers.endDate, callForPapers.timezone);
+      const startDateTime = moment.tz(callForPapers.get('startDate'), callForPapers.get('timezone'));
+      const endDateTime = moment.tz(callForPapers.get('endDate'), callForPapers.get('timezone'));
       return moment().isBetween(startDateTime, endDateTime);
     });
   }),
