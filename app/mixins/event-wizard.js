@@ -11,17 +11,20 @@ export default Mixin.create(MutableArray, {
       {
         title       : this.i18n.t('Basic Details'),
         description : this.i18n.t('Tell about your event'),
-        icon        : 'info icon'
+        icon        : 'info icon',
+        route       : 'events.view.edit.basic-details'
       },
       {
         title       : this.i18n.t('Sponsors'),
         description : this.i18n.t('Advertise your sponsors'),
-        icon        : 'dollar icon'
+        icon        : 'dollar icon',
+        route       : 'events.view.edit.sponsors'
       },
       {
         title       : this.i18n.t('Sessions & Speakers'),
         description : this.i18n.t('Expand your event'),
-        icon        : 'list icon'
+        icon        : 'list icon',
+        route       : 'events.view.edit.sessions-speakers'
       }
     ];
   },

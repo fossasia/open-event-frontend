@@ -5,7 +5,7 @@
 {{/unless}}
 <div class="ui one column centered stacked grid event wizard">
   <div class="column mobile hidden">
-    {{widgets/steps-indicator steps=steps currentStep=1 enableAll=false}}
+    {{widgets/steps-indicator steps=steps currentStep=1 enableAll=false disableLinks=true}}
   </div>
   <div class="column">
     {{forms/wizard/basic-details data=data}}

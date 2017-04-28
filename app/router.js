@@ -37,9 +37,13 @@ router.map(function() {
   this.route('create');
   this.route('not-found');
   this.route('not-found-catch', { path: '/*path' });
-  this.route('events', { path: '/events/:event_id' }, function() {
-    this.route('view', { path: '/' }, function() {
-      this.route('edit', { path: '/edit/:step' });
+  this.route('events', function() {
+    this.route('view', { path: '/:event_id' }, function() {
+      this.route('edit', function() {
+        this.route('basic-details');
+        this.route('sponsors');
+        this.route('sessions-speakers');
+      });
     });
   });
 });

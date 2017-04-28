@@ -9,7 +9,7 @@ export default Route.extend(ApplicationRouteMixin, {
       tokens = [];
     }
 
-    tokens.push(this.get('config.appName'));
+    tokens.reverse().push(this.get('config.appName'));
     return tokens.join(' | ');
   },
 
