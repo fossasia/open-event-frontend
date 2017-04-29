@@ -7,6 +7,10 @@ export default Component.extend({
     logout() {
       this.get('authManager').logout();
       this.get('routing').transitionTo('index');
+    },
+    expand() {
+      // this.$('.ui.sidebar.menu').sidebar({context:this.$('')});
+      this.$('.ui.sidebar.menu').sidebar('show');
     }
   }
 });

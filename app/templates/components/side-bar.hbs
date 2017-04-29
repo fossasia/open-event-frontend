@@ -1,16 +1,11 @@
-<div class="computer only row">
-  <div class="ui menu">
-  {{#link-to 'index' class='header item' activeClass=''}}
-    <h3 class="">{{config.appName}} </h3>
-  {{/link-to}}
-  <div class="ui category search item" style="width: 20%">
-    <div class="ui transparent icon input">
+<div class="ui  left sidebar inverted vertical menu ">  
+  <div class="ui  item">
+    <div class="ui transparent inverted icon input">
       <input class="prompt" type="text" placeholder="{{t 'Search Events...'}}" style="border-radius: 0;">
       <i class="search link icon"></i>
     </div>
     <div class="results"></div>
   </div>
-  <div class="right menu">
     {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
     {{#if session.isAuthenticated}}
       {{#ui-dropdown class='item' action='hide'}}
@@ -43,19 +38,5 @@
           'Create Event'}}</a>
       </div>
     {{/unless}}
-  </div>
-  </div>
-</div>
-<div class="mobile only narrow row">
-    <div class="ui navbar menu">
-      {{#link-to 'index' class='header item' activeClass=''}}
-        <h3 class="">{{config.appName}} </h3>
-      {{/link-to}}
-       <div class="right menu open">
-          <a {{action "expand"}} class="menu item">
-            <i class="large content icon"></i>
-          </a>
-      </div>
-   </div>
-      {{side-bar}}
+  
 </div>
