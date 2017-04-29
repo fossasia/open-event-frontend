@@ -6,7 +6,7 @@ import Ember from 'ember';
 
 const { Object, run } = Ember;
 
-moduleForComponent('forms/wizard/basic-details', 'Integration | Component | forms/wizard/basic details');
+moduleForComponent('forms/wizard/basic-details-step', 'Integration | Component | forms/wizard/basic details step');
 
 test('it renders', function(assert) {
 
@@ -21,6 +21,6 @@ test('it renders', function(assert) {
   this.set('data', {
     event: run(() => eventWizard.getBasicDetails())
   });
-  this.render(hbs`{{forms/wizard/basic-details data=data}}`);
+  this.render(hbs`{{forms/wizard/basic-details-step data=data}}`);
   assert.ok(this.$().html().trim().includes('location'));
 });

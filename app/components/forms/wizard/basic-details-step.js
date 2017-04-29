@@ -218,13 +218,19 @@ export default Component.extend(FormMixin, {
 
   actions: {
     saveDraft() {
-      this.$('form').form('validate form');
+      this.onValid(() => {
+        this.get('save')('draft');
+      });
     },
     moveForward() {
-      this.$('form').form('validate form');
+      this.onValid(() => {
+        this.get('move')();
+      });
     },
     publish() {
-      this.$('form').form('validate form');
+      this.onValid(() => {
+        this.get('save')('publish');
+      });
     },
     addTicket(type) {
       const salesStartDateTime = moment(this.get('data.event.startDate'), FORM_DATE_FORMAT).subtract(1, 'months');

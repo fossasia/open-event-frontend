@@ -21,5 +21,14 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
       event : this._super(...arguments),
       steps : this.getSteps()
     };
+  },
+
+  actions: {
+    save() {
+      console.log('save');
+    },
+    move() {
+      console.log('move');
+    }
   }
 });

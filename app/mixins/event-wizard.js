@@ -81,8 +81,8 @@ export default Mixin.create(MutableArray, {
 
   getSponsors() {
     return {
-      enabled  : false,
-      sponsors : []
+      enabled : true,
+      items   : [this.store.createRecord('sponsor')]
     };
   },
 

@@ -13,5 +13,13 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
       data  : { event: this.getBasicDetails() },
       steps : this.getSteps()
     };
+  },
+  actions: {
+    save() {
+      console.log('save');
+    },
+    move() {
+      console.log('move');
+    }
   }
 });

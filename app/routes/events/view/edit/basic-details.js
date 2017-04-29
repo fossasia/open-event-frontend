@@ -9,7 +9,8 @@ export default Route.extend(EventWizardMixin, {
   },
   model() {
     return {
-      event: this.getBasicDetails()
+      parentData : this._super(...arguments),
+      event      : this.getBasicDetails()
     };
   }
 });

@@ -18,6 +18,13 @@ export default Mixin.create({
     return this.get('$form');
   },
 
+  onValid(callback) {
+    this.getForm().form('validate form');
+    if (this.getForm().form('is valid')) {
+      callback();
+    }
+  },
+
   didRender() {
     this._super.call(this);
     debounce(this, () => {
@@ -46,13 +53,16 @@ export default Mixin.create({
         $checkBoxes.checkbox();
       }
 
-      const $form = this.$('.ui.form');
-      if (this.get('getValidationRules') && $form) {
-        $form.form(merge(defaultFormRules, this.getValidationRules()));
-      }
+      let $form = this.$('.ui.form');
+      if ($form) {
+        $form = $form.first();
+        if (this.get('getValidationRules') && $form) {
+          $form.form(merge(defaultFormRules, this.getValidationRules()));
+        }
 
-      if ($form && this) {
-        this.set('$form', $form);
+        if ($form && this) {
+          this.set('$form', $form);
+        }
       }
     }, 400);
   },
