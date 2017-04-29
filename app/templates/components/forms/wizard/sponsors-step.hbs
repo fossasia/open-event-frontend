@@ -2,13 +2,14 @@
 
   <div class="ui four column centered grid">
     <div class="column">
-      <div class="ui segment">
+      <div class="ui {{if data.sponsors.enabled 'basic'}} segment">
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
               {{input type='checkbox' checked=data.sponsors.enabled}}
-              <label class="weight-300" style="font-size: large">turn {{if data.sponsors.enabled 'off' 'on'}}
-                sponsors</label>
+              <label class="weight-300" style="font-size: large">{{if data.sponsors.enabled (t 'turn off')
+                                                                      (t 'turn on')}}
+                {{t 'Sponsors'}}</label>
             </div>
           </div>
         </div>
@@ -19,9 +20,10 @@
   {{#if data.sponsors.enabled}}
     {{#each data.sponsors.items as |sponsor index|}}
       <h4>
-        Sponsor #{{increment index}}
+        {{t 'Sponsor'}} #{{increment index}}
         {{#if (gt data.sponsors.items.length 1)}}
-          <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}><i class="trash icon"></i> Remove</button>
+          <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}><i
+            class="trash icon"></i> {{t 'Remove'}}</button>
         {{/if}}
       </h4>
       <br>
@@ -39,13 +41,13 @@
           {{input type='text' value=sponsor.type name='type'}}
         </div>
         <div class="six wide field">
-          <label>URL</label>
+          <label>{{t 'URL'}}</label>
           {{widgets/forms/link-input segmentedLink=sponsor.segmentedLink name='url'}}
         </div>
       </div>
       <div class="fields">
         <div class="five wide field" style="">
-          <label>Description</label>
+          <label>{{t 'Description'}}</label>
           {{widgets/forms/rich-text-editor value=sponsor.description name='description'}}
         </div>
         <div class="eleven wide field" style="padding-top: 58px;">
@@ -72,16 +74,15 @@
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    {{#unless parentData.event.locationName}}
-      <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{else}}
+    <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
+      {{t 'Save draft'}}
+      <i class="save icon"></i>
+    </button>
+    {{#if data.parentData.event.locationName}}
       <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>
-    {{/unless}}
+    {{/if}}
   </div>
 </form>

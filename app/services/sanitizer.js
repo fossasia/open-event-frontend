@@ -26,5 +26,12 @@ export default Service.extend({
 
   purify(string) {
     return sanitizeHtml(string, this.options);
+  },
+
+  strip(string) {
+    return sanitizeHtml(string, {
+      allowedTags       : [],
+      allowedAttributes : []
+    });
   }
 });

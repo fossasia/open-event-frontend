@@ -6,8 +6,10 @@ const { Component, merge } = Ember;
 
 export default Component.extend({
 
-  classNames: ['ui', 'calendar', 'date', 'picker'],
+  classNames        : ['ui', 'calendar', 'date', 'picker', 'input', 'fluid'],
+  classNameBindings : ['icon:left', 'icon'],
 
+  icon          : true,
   today         : true,
   rangePosition : 'none',
   format        : FORM_DATE_FORMAT,

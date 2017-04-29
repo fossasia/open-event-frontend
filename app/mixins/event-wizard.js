@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import moment from 'moment';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
+import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
 
 const { Mixin, MutableArray } = Ember;
 
-export default Mixin.create(MutableArray, {
+export default Mixin.create(MutableArray, CustomFormMixin, {
 
   getSteps() {
     return [
@@ -88,12 +89,15 @@ export default Mixin.create(MutableArray, {
 
   getSessionSpeakers() {
     return {
-      enabled           : [],
-      tracks            : [],
-      sessionTypes      : [],
-      microlocations    : [],
-      call_for_speakers : this.store.createRecord('call-for-speakers')
+      enabled         : true,
+      tracks          : [this.store.createRecord('track', { name: 'Main Track' })],
+      sessionTypes    : [this.store.createRecord('session-type', { name: 'Talk' })],
+      microlocations  : [this.store.createRecord('microlocation', { name: 'Room 1' })],
+      callForSpeakers : this.store.createRecord('call-for-speakers'),
+      customForm      : {
+        session : this.getSessionFormFields(),
+        speaker : this.getSpeakerFormFields()
+      }
     };
   }
-
 });
