@@ -1,12 +1,15 @@
-<div class="pusher">
-  {{nav-bar}}
-  {{#if (eq routing.currentRouteName 'index')}}
-    {{welcome-header}}
-  {{/if}}
-  <div id="main-container" class="ui container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
-    {{outlet}}
+{{#side-bar}}
+  <div class="footer-pusher">
+    {{nav-bar}}
+    {{#if (eq routing.currentRouteName 'index')}}
+      {{welcome-header}}
+    {{/if}}
+    <div id="main-container"
+         class="ui container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
+      {{outlet}}
+    </div>
+    {{footer-main}}
   </div>
-  {{footer-main}}
-</div>
+{{/side-bar}}
 {{modals/confirm-modal isOpen=confirm.isOpen}}
 {{ember-notify messageStyle='semantic-ui' classPrefix='notification-container'}}
