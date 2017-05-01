@@ -3,6 +3,7 @@ import moment from 'moment';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { FORM_DATE_FORMAT, timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
+import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { eventTopics, eventTypes } from 'open-event-frontend/utils/dictionary/event';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { orderBy, filter, keys, find, values } from 'lodash';
@@ -178,8 +179,12 @@ export default Component.extend(FormMixin, {
     return orderBy(eventTypes);
   }),
 
+  countries: computed(function() {
+    return orderBy(countries, 'name');
+  }),
+
   paymentCountries: computed(function() {
-    return orderBy(paymentCountries, 'name');
+    return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
   }),
 
   paymentCurrencies: computed(function() {

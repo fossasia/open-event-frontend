@@ -5,8 +5,16 @@
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
-      {{#ui-dropdown class='search' id='tax_country' tagName='select' selected='' forceSelection=false onChange=(action (mut taxInfo.country))}}
-        <option value="">{{t 'Select country'}}</option>
+      {{#ui-dropdown class='search selection' selected=taxInfo.country forceSelection=false fullTextSearch=true}}
+        {{input type='hidden' id='tax_country' value=taxInfo.country}}
+        <i class="dropdown icon"></i>
+        <div class="default text">{{t 'Select country'}}</div>
+        <div class="menu">
+          {{#each countries as |country|}}
+            <div class="item" data-value="{{country.name}}"><i
+              class="{{lowercase country.code}} flag"></i>{{country.name}}</div>
+          {{/each}}
+        </div>
       {{/ui-dropdown}}
     </div>
     <div class="field">
