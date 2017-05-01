@@ -18,4 +18,7 @@
 -
 -
 
-**Fixes**: #
+
+<!-- Add the issue number that is fixed by this PR (In the form Fixes #123) -->
+
+Fixes #
