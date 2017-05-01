@@ -8,3 +8,13 @@
 .ui.active.search.dropdown input.search:focus + .text {
   color: rgba(177, 176, 176, 0.87) !important;
 }
+
+body.dimmable.undetached.dimmed {
+  .pushable {
+    transform: none;
+  }
+
+  .pusher {
+    position: static;
+  }
+}
