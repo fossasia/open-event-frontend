@@ -2,9 +2,11 @@ import Ember from 'ember';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 
-const { Component, computed } = Ember;
+const { Component, computed, computed: { alias } } = Ember;
 
 export default Component.extend(FormMixin, {
+
+  event: alias('data.parentData.event'),
 
   getValidationRules() {
     return {

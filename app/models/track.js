@@ -1,17 +1,11 @@
 import DS from 'ember-data';
-import palette from 'npm:google-material-color';
-import { random } from 'lodash';
+import { getColor } from 'open-event-frontend/utils/colors';
 
 const { Model, attr, hasMany, belongsTo } = DS;
 
 export default Model.extend({
-  name  : attr('string'),
-  color : attr('string', {
-    defaultValue: () => {
-      const shades = ['600', '700', '800', '900'];
-      return palette.random(shades[random(0, 3)]);
-    }
-  }),
+  name        : attr('string'),
+  color       : attr('string', { defaultValue: () => getColor() }),
   description : attr('string'),
   imageUrl    : attr('string'),
 
