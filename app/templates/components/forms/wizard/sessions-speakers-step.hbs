@@ -2,14 +2,15 @@
 
   <div class="ui three column centered grid">
     <div class="column">
-      <div class="ui {{if data.sessionsSpeakers.enabled 'basic'}} segment">
+      <div class="ui {{if sessionsSpeakers.enabled 'basic'}} segment">
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
-              {{input type='checkbox' checked=data.sessionsSpeakers.enabled}}
-              <label class="weight-300" style="font-size: large">{{if data.sessionsSpeakers.enabled (t 'turn off')
-                                                                      (t 'turn on')}}
-                {{t 'Sessions & Speakers'}}</label>
+              {{input type='checkbox' checked=sessionsSpeakers.enabled}}
+              <label class="weight-300" style="font-size: large">
+                {{if sessionsSpeakers.enabled (t 'turn off') (t 'turn on')}}
+                {{t 'Sessions & Speakers'}}
+              </label>
             </div>
           </div>
         </div>
@@ -17,7 +18,7 @@
     </div>
   </div>
 
-  {{#if data.sessionsSpeakers.enabled}}
+  {{#if sessionsSpeakers.enabled}}
     <br>
     <h3 class="ui dividing header">
       <i class="ordered list icon"></i>
@@ -27,23 +28,29 @@
     </h3>
     <div class="field">
       <label>Tracks</label>
-      {{#each data.sessionsSpeakers.tracks as |track index|}}
+      {{#each sessionsSpeakers.tracks as |track|}}
         <div class="fields">
           <div class="three wide field">
             {{input type='text' value=track.name placeholder='Name'}}
           </div>
           <div class="four wide field">
             {{#widgets/forms/color-picker value=track.color}}
-              {{#if (gt data.sessionsSpeakers.tracks.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' track 'track'}}><i
-                  class="minus icon"></i></button>
+              {{#if (gt sessionsSpeakers.tracks.length 1)}}
+                <button class="ui icon red button" type="button" {{action 'removeItem' track 'track'}}>
+                  <i class="minus icon"></i>
+                </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'track'}}><i
-                class="plus icon"></i></button>
+              <button class="ui icon primary button" type="button" {{action 'addItem' 'track'}}>
+                <i class="plus icon"></i>
+              </button>
             {{/widgets/forms/color-picker}}
           </div>
           <div class="two wide field">
-            <input title="Preview" class="preview" value="{{if track.name track.name (t 'Preview Text')}}" readonly style={{css background-color=track.color color=(text-color track.color)}}>
+            <input title="Preview"
+                   class="preview"
+                   value="{{if track.name track.name (t 'Preview Text')}}"
+                   readonly
+                   style={{css background-color=track.color color=(text-color track.color)}}>
           </div>
         </div>
       {{/each}}
@@ -51,7 +58,7 @@
 
     <div class="field">
       <label>{{t 'Microlocations'}}</label>
-      {{#each data.sessionsSpeakers.microlocations as |microlocation|}}
+      {{#each sessionsSpeakers.microlocations as |microlocation|}}
         <div class="fields">
           <div class="three wide field">
             {{input type='text' value=microlocation.name placeholder='Name'}}
@@ -59,12 +66,14 @@
           <div class="four wide field">
             <div class="ui action input fluid">
               {{input type='text' value=microlocation.floor placeholder='Floor'}}
-              {{#if (gt data.sessionsSpeakers.microlocations.length 1)}}
+              {{#if (gt sessionsSpeakers.microlocations.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' microlocation 'microlocation'}}>
-                  <i class="minus icon"></i></button>
+                  <i class="minus icon"></i>
+                </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'microlocation'}}><i
-                class="plus icon"></i></button>
+              <button class="ui icon primary button" type="button" {{action 'addItem' 'microlocation'}}>
+                <i class="plus icon"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -72,7 +81,7 @@
     </div>
     <div class="field">
       <label>{{t 'Session Types'}}</label>
-      {{#each data.sessionsSpeakers.sessionTypes as |sessionType|}}
+      {{#each sessionsSpeakers.sessionTypes as |sessionType|}}
         <div class="fields">
           <div class="three wide field">
             {{input type='text' value=sessionType.name placeholder='Name'}}
@@ -80,12 +89,14 @@
           <div class="four wide field">
             <div class="ui action input fluid">
               {{widgets/forms/time-picker value=sessionType.length placeholder='HH:MM' icon=false}}
-              {{#if (gt data.sessionsSpeakers.sessionTypes.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' sessionType 'sessionType'}}><i
-                  class="minus icon"></i></button>
+              {{#if (gt sessionsSpeakers.sessionTypes.length 1)}}
+                <button class="ui icon red button" type="button" {{action 'removeItem' sessionType 'sessionType'}}>
+                  <i class="minus icon"></i>
+                </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'sessionType'}}><i
-                class="plus icon"></i></button>
+              <button class="ui icon primary button" type="button" {{action 'addItem' 'sessionType'}}>
+                <i class="plus icon"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -110,7 +121,7 @@
                                     inputId='start_date'
                                     placeholder='MM/DD/YYYY'
                                     rangePosition='start'
-                                    value=data.sessionsSpeakers.callForSpeakers.startDate}}
+                                    value=sessionsSpeakers.callForSpeakers.startDate}}
       </div>
       <div class="two wide field">
         <label for="start_time">&nbsp;</label>
@@ -118,7 +129,7 @@
                                     inputId='start_time'
                                     placeholder='HH:MM'
                                     rangePosition='start'
-                                    value=data.sessionsSpeakers.callForSpeakers.startTime}}
+                                    value=sessionsSpeakers.callForSpeakers.startTime}}
       </div>
       <div class="five wide field">
         <label class="required" for="end_date">{{t 'Ends'}}</label>
@@ -126,7 +137,7 @@
                                     inputId='end_date'
                                     placeholder='MM/DD/YYYY'
                                     rangePosition='end'
-                                    value=data.sessionsSpeakers.callForSpeakers.endDate}}
+                                    value=sessionsSpeakers.callForSpeakers.endDate}}
       </div>
       <div class="two wide field">
         <label for="end_time">&nbsp;</label>
@@ -134,12 +145,12 @@
                                     inputId='end_time'
                                     placeholder='HH:MM'
                                     rangePosition='end'
-                                    value=data.sessionsSpeakers.callForSpeakers.endTime}}
+                                    value=sessionsSpeakers.callForSpeakers.endTime}}
       </div>
       <div class="five wide field">
         <label class="required" for="timezone">{{t 'Timezone'}}</label>
-        {{#ui-dropdown class='search selection' selected=data.sessionsSpeakers.callForSpeakers.timezone forceSelection=false fullTextSearch=true}}
-          {{input type='hidden' id='timezone' value=data.sessionsSpeakers.callForSpeakers.timezone}}
+        {{#ui-dropdown class='search selection' selected=sessionsSpeakers.callForSpeakers.timezone forceSelection=false fullTextSearch=true}}
+          {{input type='hidden' id='timezone' value=sessionsSpeakers.callForSpeakers.timezone}}
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Select timezone'}}</div>
           <div class="menu">
@@ -153,17 +164,16 @@
     <div class="field">
       <label>{{t 'Private Link'}}</label>
       <div class="ui action input fluid">
-        <input type="text" value="{{concat event.url '/cfs/' data.sessionsSpeakers.callForSpeakers.hash}}" placeholder="{{concat event '/cfs/' data.sessionsSpeakers.callForSpeakers.hash}}" readonly>
+        <input type="text" value="{{concat event.url '/cfs/' sessionsSpeakers.callForSpeakers.hash}}" placeholder="{{concat event '/cfs/' sessionsSpeakers.callForSpeakers.hash}}" readonly>
         {{#copy-button
-          clipboardText=(concat event.url '/cfs/' data.sessionsSpeakers.callForSpeakers.hash)
+          clipboardText=(concat event.url '/cfs/' sessionsSpeakers.callForSpeakers.hash)
           class='ui black right labeled icon copy button'}}
           <i class="copy icon"></i>
           {{t 'Copy'}}
         {{/copy-button}}
       </div>
       <span class="text muted">
-        {{t
-          'Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)'}}
+        {{t 'Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)'}}
       </span>
     </div>
     <div class="grouped fields">
@@ -171,18 +181,20 @@
       <div class="field">
         <div class="ui radio checkbox">
           {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public'
-                                       checked=data.event.privacy}}
-          <label for="privacy_public"><strong>{{t 'Public'}}:</strong> {{t
-            'Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published.'}}
+                                       checked=sessionsSpeakers.callForSpeakers.privacy}}
+          <label for="privacy_public">
+            <strong>{{t 'Public'}}:</strong>
+            {{t 'Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published.'}}
           </label>
         </div>
       </div>
       <div class="field">
         <div class="ui radio checkbox">
           {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private'
-                                       checked=data.event.privacy}}
-          <label for="privacy_private"><strong>{{t 'Private'}}:</strong> {{t
-            'Do not display this publicly. Proposals can be submitted only using the private link.'}}
+                                       checked=sessionsSpeakers.callForSpeakers.privacy}}
+          <label for="privacy_private">
+            <strong>{{t 'Private'}}:</strong>
+            {{t 'Do not display this publicly. Proposals can be submitted only using the private link.'}}
           </label>
         </div>
       </div>
@@ -200,33 +212,33 @@
       <div class="column">
         <table class="ui selectable celled table">
           <thead>
-          <tr>
-            <th colspan="3" class="text center aligned">
-              {{t 'Collect Speaker Details'}}
-            </th>
-          </tr>
-          <tr>
-            <th class="right aligned">{{t 'Option'}}</th>
-            <th class="center aligned">{{t 'Include'}}</th>
-            <th class="center aligned">{{t 'Require'}}</th>
-          </tr>
+            <tr>
+              <th colspan="3" class="text center aligned">
+                {{t 'Collect Speaker Details'}}
+              </th>
+            </tr>
+            <tr>
+              <th class="right aligned">{{t 'Option'}}</th>
+              <th class="center aligned">{{t 'Include'}}</th>
+              <th class="center aligned">{{t 'Require'}}</th>
+            </tr>
           </thead>
           <tbody>
-          {{#each data.sessionsSpeakers.customForm.speaker as |field|}}
-            <tr class="{{if field.isIncluded 'positive'}}">
-              <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
-              <td class="center aligned">
-                <div class="ui slider checkbox">
-                  {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
-                </div>
-              </td>
-              <td class="center aligned">
-                <div class="ui slider checkbox">
-                  {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
-                </div>
-              </td>
-            </tr>
-          {{/each}}
+            {{#each sessionsSpeakers.customForm.speaker as |field|}}
+              <tr class="{{if field.isIncluded 'positive'}}">
+                <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
+                <td class="center aligned">
+                  <div class="ui slider checkbox">
+                    {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
+                  </div>
+                </td>
+                <td class="center aligned">
+                  <div class="ui slider checkbox">
+                    {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
 
@@ -234,38 +246,36 @@
       <div class="column">
         <table class="ui selectable celled table">
           <thead>
-          <tr>
-            <th colspan="3" class="text center aligned">
-              {{t 'Collect Session Details'}}
-            </th>
-          </tr>
-          <tr>
-            <th class="right aligned">{{t 'Option'}}</th>
-            <th class="center aligned">{{t 'Include'}}</th>
-            <th class="center aligned">{{t 'Require'}}</th>
-          </tr>
+            <tr>
+              <th colspan="3" class="text center aligned">
+                {{t 'Collect Session Details'}}
+              </th>
+            </tr>
+            <tr>
+              <th class="right aligned">{{t 'Option'}}</th>
+              <th class="center aligned">{{t 'Include'}}</th>
+              <th class="center aligned">{{t 'Require'}}</th>
+            </tr>
           </thead>
           <tbody>
-          {{#each data.sessionsSpeakers.customForm.session as |field|}}
-            <tr class="{{if field.isIncluded 'positive'}}">
-              <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
-              <td class="center aligned">
-                <div class="ui slider checkbox">
-                  {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
-                </div>
-              </td>
-              <td class="center aligned">
-                <div class="ui slider checkbox">
-                  {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
-                </div>
-              </td>
-            </tr>
-          {{/each}}
+            {{#each sessionsSpeakers.customForm.session as |field|}}
+              <tr class="{{if field.isIncluded 'positive'}}">
+                <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
+                <td class="center aligned">
+                  <div class="ui slider checkbox">
+                    {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
+                  </div>
+                </td>
+                <td class="center aligned">
+                  <div class="ui slider checkbox">
+                    {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
-
       </div>
-
     </div>
     <div class="spacer-50"></div>
   {{else}}
@@ -277,7 +287,7 @@
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
-    {{#if data.parentData.event.locationName}}
+    {{#if event.locationName}}
       <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>

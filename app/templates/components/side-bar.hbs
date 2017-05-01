@@ -11,6 +11,7 @@
     <div class="item">
       <img class="ui avatar round image"
            style="margin-right: 10px;"
+           alt="{{authManager.currentUser.email}}"
            src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar
                      '/images/placeholders/avatar.png'}}">
       {{if authManager.currentUser

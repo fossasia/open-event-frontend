@@ -6,19 +6,19 @@
       </div>
     {{/if}}
     <div class="image">
-      <img src="{{selectedImage}}">
+      <img src="{{selectedImage}}" alt="Selected image">
     </div>
     <div class="ui bottom attached mini buttons">
       {{#if allowReCrop}}
-        <div class="ui teal button" {{action 'reCrop'}}>
+        <button type="button" class="ui teal button" {{action 'reCrop'}}>
           <i class="trash icon"></i>
           Re-crop
-        </div>
+        </button>
       {{/if}}
-      <div class="ui red button" {{action 'removeSelection'}}>
+      <button type="button" class="ui red button" {{action 'removeSelection'}}>
         <i class="trash icon"></i>
         {{if needsConfirmation 'Delete' 'Confirm Delete'}}
-      </div>
+      </button>
     </div>
   </div>
 {{else}}
@@ -35,11 +35,11 @@
       {{/if}}
     </div>
     <span class="text muted">
-  {{#if helpText}}
-    {{helpText}}<br>
-  {{/if}}
+      {{#if helpText}}
+        {{helpText}}<br>
+      {{/if}}
       ({{t 'No larger than'}} {{maxSize}})
-</span>
+    </span>
   </label>
 {{/if}}
 {{#if needsCropper}}

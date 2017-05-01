@@ -4,18 +4,21 @@
   </a>
   <div class="content">
     <a class="header" href="{{href-to 'public' event.identifier}}">
-      <span>{{event.name}}</span></a>
+      <span>{{event.name}}</span>
+    </a>
     <div class="meta">
-      <span class="date">{{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}</span>
+      <span class="date">
+        {{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}
+      </span>
     </div>
     <div class="description">
       {{event.shortLocationName}}
     </div>
   </div>
   <div class="extra content small text">
-      <span class="right floated">
-        <i class="share alternate link icon" {{action shareEvent event}}></i>
-      </span>
+    <span class="right floated">
+      <i role="button" class="share alternate link icon" {{action shareEvent event}}></i>
+    </span>
     <span>
       {{#each tags as |tag|}}
         <a>{{tag}}</a>

@@ -11,8 +11,10 @@
         <div class="default text">{{t 'Select country'}}</div>
         <div class="menu">
           {{#each countries as |country|}}
-            <div class="item" data-value="{{country.name}}"><i
-              class="{{lowercase country.code}} flag"></i>{{country.name}}</div>
+            <div class="item" data-value="{{country.name}}">
+              <i class="{{lowercase country.code}} flag"></i>
+              {{country.name}}
+            </div>
           {{/each}}
         </div>
       {{/ui-dropdown}}
@@ -36,8 +38,9 @@
         <label for="send_tax_invoices">
           <strong>{{t 'Send tax invoice to attendees'}} : </strong>
           <span class="text muted">
-              {{t 'Tax Invoices are sent to your attendees when you select this feature. Enter your registered business company name and address to be included on the tax invoice.'}}
-            </span>
+            {{t 'Tax Invoices are sent to your attendees when you select this feature.
+            Enter your registered business company name and address to be included on the tax invoice.'}}
+          </span>
         </label>
       </div>
     </div>
@@ -85,10 +88,10 @@
   </form>
 </div>
 <div class="actions">
-  <button class="ui black button" {{action 'close'}}>
+  <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  <button class="ui green right labeled icon button" {{action 'updateTaxInfo'}}>
+  <button type="button" class="ui green right labeled icon button" {{action 'updateTaxInfo'}}>
     {{t 'Update tax information'}}
     <i class="checkmark icon"></i>
   </button>

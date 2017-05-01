@@ -5,7 +5,8 @@
 #### Checklist
 
 - [ ] I have read the [Contribution & Best practices Guide](https://blog.fossasia.org/open-source-developer-guide-and-best-practices-at-fossasia).
-- [ ] The acceptance, integration and unit tests pass locally with my changes
+- [ ] My branch is up-to-date with the Upstream `development` branch.
+- [ ] The acceptance, integration, unit tests and linter pass locally with my changes <!-- use `ember test` to run all the tests -->
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] I have added necessary documentation (if appropriate)
 

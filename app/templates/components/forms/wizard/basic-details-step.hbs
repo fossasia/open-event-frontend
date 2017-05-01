@@ -247,8 +247,10 @@
             <div class="default text">{{t 'Select country'}}</div>
             <div class="menu">
               {{#each paymentCountries as |paymentCountry|}}
-                <div class="item" data-value="{{paymentCountry.name}}"><i
-                  class="{{lowercase paymentCountry.code}} flag"></i>{{paymentCountry.name}}</div>
+                <div class="item" data-value="{{paymentCountry.name}}">
+                  <i class="{{lowercase paymentCountry.code}} flag"></i>
+                  {{paymentCountry.name}}
+                </div>
               {{/each}}
             </div>
           {{/ui-dropdown}}
@@ -285,10 +287,11 @@
               <span>{{t 'YES, accept payment through PayPal'}}</span>
               <br>
               <span class="text muted">
-              {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works '}}
-                <a href="https://www.paypal.com/us/webapps/mpp/popup/about-payment-methods" target="_blank">{{t
-                  'click here'}}</a>.
-            </span>
+                {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works '}}
+                <a href="https://www.paypal.com/us/webapps/mpp/popup/about-payment-methods" target="_blank" rel="noopener noreferrer">
+                  {{t 'click here'}}
+                </a>.
+              </span>
             </label>
           </div>
         </div>
@@ -308,9 +311,9 @@
               <span>{{t 'YES, accept payment through Stripe'}}</span>
               <br>
               <span class="text muted">
-              {{t 'Stripe accepts Visa, Master and Amex. Find out more about Stripe '}}
-                <a href="https://stripe.com/docs" target="_blank">{{t 'here'}}</a>.
-            </span>
+                {{t 'Stripe accepts Visa, Master and Amex. Find out more about Stripe '}}
+                <a href="https://stripe.com/docs" target="_blank" rel="noopener noreferrer">{{t 'here'}}</a>.
+              </span>
             </label>
           </div>
         </div>
@@ -332,8 +335,9 @@
       </div>
       {{#if data.event.payByCheque}}
         <div class="field">
-          <label class="required">{{t
-            'Enter you account name and other required details/instructions to ticket buyers'}}</label>
+          <label class="required">
+            {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
+          </label>
           {{textarea}}
         </div>
       {{/if}}
@@ -349,8 +353,9 @@
 
       {{#if data.event.payByBank}}
         <div class="field">
-          <label class="required">{{t
-            'Enter your bank details and other required details/instructions to ticket buyers'}}</label>
+          <label class="required">
+            {{t 'Enter your bank details and other required details/instructions to ticket buyers'}}
+          </label>
           {{textarea}}
         </div>
       {{/if}}
@@ -366,8 +371,9 @@
 
       {{#if data.event.payOnSite}}
         <div class="field">
-          <label class="required">{{t
-            'Enter your payment instructions and other required details/instructions to ticket buyers'}}</label>
+          <label class="required">
+            {{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}
+          </label>
           {{textarea}}
         </div>
       {{/if}}
@@ -420,15 +426,19 @@
       <div class="ui radio checkbox">
         {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public'
                                      checked=data.event.privacy}}
-        <label for="privacy_public"><strong>{{t 'Public event'}}:</strong> {{t
-          'list this event on this site and search engines'}}</label>
+        <label for="privacy_public">
+          <strong>{{t 'Public event'}}:</strong>
+          {{t 'list this event on this site and search engines'}}
+        </label>
       </div>
     </div>
     <div class="field">
       <div class="ui radio checkbox">
         {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private'
                                      checked=data.event.privacy}}
-        <label for="privacy_private"><strong>{{t 'Private event'}}:</strong> {{t 'do not list this event publicly'}}
+        <label for="privacy_private">
+          <strong>{{t 'Private event'}}:</strong>
+          {{t 'do not list this event publicly'}}
         </label>
       </div>
     </div>
@@ -499,7 +509,7 @@
             <div class="ui bulleted list">
               {{#each licenses as |license|}}
                 <div class="item">
-                  <a href="{{license.link}}" target="_blank">
+                  <a href="{{license.link}}" target="_blank" rel="noopener noreferrer">
                     {{license.name}}
                   </a>
                 </div>

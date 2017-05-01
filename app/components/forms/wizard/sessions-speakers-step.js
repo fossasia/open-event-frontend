@@ -6,7 +6,8 @@ const { Component, computed, computed: { alias } } = Ember;
 
 export default Component.extend(FormMixin, {
 
-  event: alias('data.parentData.event'),
+  event            : alias('data.parentData.event'),
+  sessionsSpeakers : alias('data.sessionsSpeakers'),
 
   getValidationRules() {
     return {
