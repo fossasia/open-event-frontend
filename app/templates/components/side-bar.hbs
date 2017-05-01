@@ -8,7 +8,7 @@
   </div>
   {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
   {{#if session.isAuthenticated}}
-    {{#ui-dropdown class='item' action='hide'}}
+    <div class="item">
       <img class="ui avatar round image"
            style="margin-right: 10px;"
            src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar
@@ -16,27 +16,19 @@
       {{if authManager.currentUser
            (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email)
            'Welcome'}}
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <div class="item">{{t 'My Tickets'}}</div>
-        <div class="item">{{t 'My Sessions'}}</div>
-        <div class="item">{{t 'Manage Events'}}</div>
-        <div class="divider"></div>
-        <div class="item">{{t 'Profile'}}</div>
-        <div class="item">{{t 'Settings'}}</div>
-        <div class="item">{{t 'Admin'}}</div>
-        <div class="divider"></div>
-        <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
-      </div>
-    {{/ui-dropdown}}
+    </div>
+    <div class="item">{{t 'My Tickets'}}</div>
+    <div class="item">{{t 'My Sessions'}}</div>
+    <div class="item">{{t 'Manage Events'}}</div>
+    <div class="divider"></div>
+    <div class="item">{{t 'Profile'}}</div>
+    <div class="item">{{t 'Settings'}}</div>
+    <div class="item">{{t 'Admin'}}</div>
+    <div class="divider"></div>
+    <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
   {{else}}
     <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
   {{/if}}
-  {{#unless (eq routing.currentRouteName 'create')}}
-    <div class="item">
-      <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">{{t 'Create Event'}}</a>
-    </div>
-  {{/unless}}
 </div>
 <div class="pusher">
   {{yield}}
