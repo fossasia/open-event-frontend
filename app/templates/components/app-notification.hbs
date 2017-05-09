@@ -1,0 +1,22 @@
+<div class="some-wrapping-div">
+  <i class="ui par mail outline icon notif-i" {{action 'showPop'}} ></i>{{#if countShow}}<span class="notif-count">{{notifications.length}}</span>{{/if}}
+</div>
+<div class="ui popup top right transition hidden">
+  <div class="ui  notify" >
+    <div class="ui two column very relaxed grid">
+      <div class="column">
+        <p style="color: #6B6464; font-weight: bold; ">Notifications</p>
+      </div>
+
+      <div class="column" >
+        <a href="#" role="button" class="markread" {{action 'setCountShow'}} >Mark all as read</a>
+      </div>
+    </div>
+    <br>
+    {{#each notifications as |notification-list|}}
+
+      <li class="notif-li"><a href="#">{{notification-list}}</a></li>
+    {{/each}}
+  </div>
+</div>
+

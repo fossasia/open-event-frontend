@@ -162,3 +162,43 @@ $warning_color: #f44e06;
     opacity: 0;
   }
 }
+
+.notif-i{
+  padding: 20px 30px 34px 19px;
+  border-left:2px solid rgb(246,246,246);
+}
+.notif-count{
+  color: white;
+  font-size:0.9em;
+  font-weight: bold ;
+  margin: 10px 10px 30px -27px !important;
+  padding: 1px 6px 0px 6px;
+  background: #3ea2ff;
+  border-radius: 12px;
+  position: absolute;
+}
+.notif-li{
+  margin:5px 0 5px 0;
+  background: #f2efef;
+  padding:2px 0 0 10px;
+  list-style: none;
+  border-radius: 4px;
+
+}
+.notifi-li a{
+  color: inherit;
+}
+.notifi-li a:hover{
+  color: inherit;
+}
+.markread{
+  font-size: 0.7em;
+  font-weight: bold;
+}
+@media only screen and (max-width: 700px) {
+  .popup{
+    margin-right: 20%;
+    padding-right: 100px;
+    background: blue;
+  }
+}
