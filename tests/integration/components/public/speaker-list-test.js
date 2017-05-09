@@ -5,8 +5,8 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('public/speaker-list', 'Integration | Component | public/speaker list');
 
 const speakers = [
-  { name: 'USER 1', organisation: 'FOSSASIA', socialLinks: [{ name: 'facebook', url: '#' }] },
-  { name: 'USER 2', organisation: 'FOSSASIA', socialLinks: [{ name: 'linkedin', url: '#' }] }
+  { name: 'Speaker 3', organisation: 'FOSSASIA', socialLinks: [{ name: 'linkedin', url: '#' }] },
+  { name: 'Speaker 4', organisation: 'FOSSASIA', socialLinks: [{ name: 'twitter', url: '#' }] }
 ];
 
 test('it renders', function(assert) {
