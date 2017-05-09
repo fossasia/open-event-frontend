@@ -14,3 +14,23 @@
     }
   }
 }
+
+.speaker-description {
+  padding-right: 0;
+  word-wrap: break-word;
+  max-height: 240px;
+  overflow: hidden;
+  display: none;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
+
+.show {
+  display: block;
+}
+
+.featured-speaker {
+  margin-bottom: 10px;
+}

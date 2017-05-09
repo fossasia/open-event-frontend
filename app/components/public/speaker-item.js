@@ -1,7 +1,12 @@
 import Ember from 'ember';
 
-const { Component } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend({
-  classNames: ['column', 'four', 'wide']
+  classNameBindings: ['style'],
+
+  style: computed('isFeatured', function() {
+    const allClasses = this.get('isFeatured') ? 'column eight wide' : 'column four wide';
+    return allClasses;
+  })
 });

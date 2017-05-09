@@ -2,9 +2,14 @@
   <div class='description'>
     {{sanitize model.event.description}}
   </div>
+  <div class='featured-speakers'>
+    <div class="row">
+      {{public/featured-speaker-list speakers=featuredSpeakers}}
+    </div>
+  </div>
   <div class='speakers'>
     <div class="row">
-      {{public/speaker-list speakers=speakers}}
+      {{public/speaker-list speakers=nonFeaturedSpeakers}}
     </div>
   </div>
 </div>
