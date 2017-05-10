@@ -1,0 +1,11 @@
+<div class="ui grid fluid">
+  <div class="eight wide column">
+    {{#g-map lat=location.latitude lng=location.longitude zoom=12 as |context|}}
+      {{g-map-marker context lat=location.latitude lng=location.longitude}}
+    {{/g-map}}
+  </div>
+  <div class="eight wide column">
+    <h1>Address</h1>
+    <p>{{location.locationName}}</p>
+  </div>
+</div>

@@ -10,6 +10,8 @@ export default Controller.extend({
   { name: 'Speaker 4', organisation: 'Org 4', socialLinks: [{ name: 'twitter', url: '#' }] },
   { name: 'Speaker 5', organisation: 'Org 5', socialLinks: [{ name: 'home', url: '#' }] }],
 
+  location: [{ latitude: 'latitude', longitude: 'longitude', locationName: 'locationName' }],
+
   htmlSafeDescription: computed('model.event.description', function() {
     return String.htmlSafe(this.get('model.event.description'));
   })
