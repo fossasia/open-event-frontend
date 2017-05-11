@@ -45,6 +45,10 @@ router.map(function() {
         this.route('sessions-speakers');
       });
     });
+    this.route('live');
+    this.route('draft');
+    this.route('past');
+    this.route('import');
   });
   this.route('profile');
 });
