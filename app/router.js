@@ -46,6 +46,7 @@ router.map(function() {
       });
     });
   });
+  this.route('profile');
 });
 
 export default router;
