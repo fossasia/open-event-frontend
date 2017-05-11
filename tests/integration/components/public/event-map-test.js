@@ -1,9 +1,12 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('public/event-map', 'Integration | Component | public/event map', {
   integration: true
 });
+
+const location= { latitude: 37.7833, longitude: -122.4167, locationName: 'sample event location address' };
 
 test('it renders', function(assert) {
 
@@ -12,14 +15,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{public/event-map}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#public/event-map}}
-      template block text
-    {{/public/event-map}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'location');
 });
