@@ -10,7 +10,6 @@ export default Component.extend({
       this.set('countShow', false);
     },
     showPop() {
-      console.log('hurr');
       this.$(' .notif-i').popup({
         popup : '.popup',
         on    : 'click'
