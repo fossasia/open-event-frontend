@@ -22,3 +22,15 @@ body.dimmable.undetached.dimmed {
 .ui.fluid.container {
   padding: 0 20px;
 }
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .ui.fluid.container {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ui.fluid.container {
+    padding: 0 0;
+  }
+}

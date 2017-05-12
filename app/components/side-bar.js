@@ -3,14 +3,41 @@ import Ember from 'ember';
 const { Component } = Ember;
 
 export default Component.extend({
+
+  toggleSidebar() {
+    this.$('.ui.sidebar').toggleClass('visible');
+  },
+
+  hideSidebar() {
+    this.$('.ui.sidebar').removeClass('visible');
+  },
+
   didInsertElement() {
-    this._super.call(this);
-    this.$('.ui.sidebar')
-      .sidebar({ context: this.$() })
-      .sidebar('setting', 'transition', 'push')
-      .sidebar('attach events', '.ui.sidebar .item')
-      .sidebar('attach events', '.ui.sidebar .link')
-      .sidebar('attach events', '.open.sidebar')
-      .sidebar('attach events', '.ui.sidebar a');
+    this._super(...arguments);
+
+    /**
+     * Not proud of myself for doing this. But, gets the job done.
+     *
+     * Sometimes, css does drive me nuts. -_-
+     *
+     * - @niranjan94
+     */
+
+    this.set('$sidebarOpener', this.$('.open.sidebar'));
+    this.set('$sidebarClosers', this.$('.ui.sidebar').find('.item,a,.link,button'));
+    this.get('$sidebarClosers').push(this.$('.main-container')[0]);
+
+    this.get('$sidebarOpener').on('click', this.toggleSidebar.bind(this));
+    this.get('$sidebarClosers').on('click', this.hideSidebar.bind(this));
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+    if (this.get('$sidebarOpener')) {
+      this.get('$sidebarOpener').off('click', this.toggleSidebar.bind(this));
+    }
+    if (this.get('$sidebarClosers')) {
+      this.get('$sidebarClosers').off('click', this.hideSidebar.bind(this));
+    }
   }
 });
