@@ -1,7 +1,7 @@
-<div class="some-wrapping-div">
-  <i class="ui par mail outline icon notif-i" {{action 'showPop'}} ></i>{{#if countShow}}<span class="notif-count">{{notifications.length}}</span>{{/if}}
-</div>
-<div class="ui popup top right transition hidden">
+
+<i class="ui mail outline icon notif-i" {{action 'showPop'}} ></i>{{#if countShow}}<span class="notif-count">{{notifications.length}}</span>{{/if}}
+
+<div class="ui popup top left transition hidden" data-position="bottom center">
   <div class="ui  notify" >
     <div class="ui two column very relaxed grid">
       <div class="column">
