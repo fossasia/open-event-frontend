@@ -7,8 +7,12 @@ moduleForComponent('side-bar', 'Integration | Component | side bar');
 test('it renders', function(assert) {
   this.render(hbs`
     {{#side-bar}}
-      template block text
+      <div class="ui sidebar">
+        <div class="item"></div>
+      </div>
+      <div class="open sidebar"></div>
+      <div class="main-container">Search text</div>
     {{/side-bar}}
   `);
-  assert.ok(this.$().text().trim().includes('template block text'));
+  assert.ok(this.$().text().trim().includes('Search text'));
 });
