@@ -22,7 +22,7 @@ This will document all the code-style requirements that will **not** cause an es
 
 - Use single-quotes (`'`) for any string representation.
 - Use Hex or `rgb` or `rgba` values. Do not use named colors.
-  - `color: #FFFFFF;` - :check:
-  - `color: rgb(255, 255, 255)` - :check:
-  - `color: rgba(255, 255, 255, 1)` - :check:
+  - `color: #FFFFFF;` - :white_check_mark:
+  - `color: rgb(255, 255, 255)` - :white_check_mark:
+  - `color: rgba(255, 255, 255, 1)` - :white_check_mark:
   - `color: white` - :x:
