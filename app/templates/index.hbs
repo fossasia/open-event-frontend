@@ -1,15 +1,17 @@
-<h2>{{t 'Upcoming Events'}}</h2>
-<div class="ui stackable three column grid">
-  {{#each model as |event|}}
-    {{event-card event=event shareEvent=(action 'shareEvent')}}
-  {{/each}}
-</div>
-{{#if callForSpeakersEvents}}
-  <h2>{{t 'Call for speakers'}}</h2>
+<div class="ui container">
+  <h2>{{t 'Upcoming Events'}}</h2>
   <div class="ui stackable three column grid">
-    {{#each callForSpeakersEvents as |event|}}
+    {{#each model as |event|}}
       {{event-card event=event shareEvent=(action 'shareEvent')}}
     {{/each}}
   </div>
-{{/if}}
-{{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
+  {{#if callForSpeakersEvents}}
+    <h2>{{t 'Call for speakers'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each callForSpeakersEvents as |event|}}
+        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{/each}}
+    </div>
+  {{/if}}
+  {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
+</div>

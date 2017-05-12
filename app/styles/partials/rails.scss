@@ -1,0 +1,56 @@
+@media screen and (min-width: 1200px) and (max-width: 1600px) {
+  .ui .rail.left {
+    left: auto;
+    right: 80%;
+    padding: 0 2rem 0 0;
+    margin: 0 2rem 0 0;
+  }
+  .rail.left + div {
+    width: 65%;
+    margin-left: 20%;
+  }
+  .rail.left + div + .rail.right {
+    left: auto;
+    left: 85%;
+    padding: 0 2rem 0 0;
+    margin: 0 2rem 0 0;
+  }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .ui .rail.left {
+    width: 20%;
+    left: auto;
+    right: 80%;
+    padding: 0 2rem 0 0;
+    margin: 0 2rem 0 0;
+  }
+  .rail.left + div {
+    width: 55%;
+    margin-left: 25%;
+  }
+  .rail.left + div + .rail.right {
+    left: auto;
+    left: 80%;
+    padding: 0 2rem 0 0;
+    margin: 0 2rem 0 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .ui .rail.left {
+    left: auto;
+    right: 70%;
+    padding: 0 2rem 0 0;
+    margin: 0 2rem 0 0;
+  }
+  .rail.left + div {
+    width: 50%;
+    margin-left: 30%;
+  }
+  .rail.left + div + .rail.right {
+    left: 80%;
+    padding: 0 2rem 0 0;
+    margin: 0 2rem 0 0;
+  }
+}
