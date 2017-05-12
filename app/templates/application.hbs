@@ -5,7 +5,7 @@
       {{welcome-header}}
     {{/if}}
     <div id="main-container"
-         class="ui container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
+         class="ui fluid container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
     {{footer-main}}
