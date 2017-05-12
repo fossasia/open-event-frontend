@@ -1,3 +1,10 @@
-<div class="event description">
-  {{sanitize model.event.description}}
+<div class='event'>
+  <div class='description'>
+    {{sanitize model.event.description}}
+  </div>
+  <div class='speakers'>
+    <div class="row">
+      {{public/speaker-list speakers=speakers}}
+    </div>
+  </div>
 </div>

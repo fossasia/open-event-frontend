@@ -1,0 +1,12 @@
+<div class="speaker-item">
+
+  <img alt="{{speaker.name}}" class="ui image" src="{{if speaker.image speaker.image '/images/placeholders/avatar.png'}}">
+  <br>
+  <div class="speaker-name">{{speaker.name}}</div>
+  <div class="speaker-organisation">{{speaker.organisation}}</div>
+  <div class="social-links">
+    {{#each speaker.socialLinks as |link|}}
+      <a href="{{link.url}}" target="_blank" rel="noopener noreferrer"><i class="bordered {{link.name}} colored inverted icon"></i></a>
+    {{/each}}
+  </div>
+</div>
