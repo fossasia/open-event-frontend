@@ -3,13 +3,13 @@
     <table class="ui tablet stackable celled table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Date</th>
-          <th>Roles</th>
-          <th>Sessions</th>
-          <th>Speakers</th>
-          <th>Tickets</th>
-          <th>Public Url</th>
+          <th>{{t 'Name'}}</th>
+          <th>{{t 'Date'}}</th>
+          <th>{{t 'Roles'}}</th>
+          <th>{{t 'Sessions'}}</th>
+          <th>{{t 'Speakers'}}</th>
+          <th>{{t 'Tickets'}}</th>
+          <th>{{t 'Public URL'}}</th>
           <th></th>
         </tr>
       </thead>
@@ -62,13 +62,13 @@
           </td>
           <td class="center aligned">
             <div class="ui vertical compact basic buttons">
-              {{#ui-popup content='Edit event details' class='ui icon button'}}
+              {{#ui-popup content=(t 'Edit event details') class='ui icon button'}}
                 <i class="edit icon"></i>
               {{/ui-popup}}
-              {{#ui-popup content='View event details' class='ui icon button'}}
+              {{#ui-popup content=(t 'View event details') class='ui icon button'}}
                 <i class="unhide icon"></i>
               {{/ui-popup}}
-              {{#ui-popup content='Delete event' class='ui icon button'}}
+              {{#ui-popup content=(t 'Delete event') class='ui icon button'}}
                 <i class="trash outline icon"></i>
               {{/ui-popup}}
             </div>
