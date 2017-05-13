@@ -7,5 +7,10 @@ export default Controller.extend({
     if (this.get('session.currentRouteName')) {
       return this.get('session.currentRouteName') !== 'public.index';
     }
-  })
+  }),
+  actions: {
+    toggleMenu() {
+      this.toggleProperty('isMenuOpen');
+    }
+  }
 });

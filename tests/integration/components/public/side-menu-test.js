@@ -6,6 +6,6 @@ moduleForComponent('public/side-menu', 'Integration | Component | public/side me
 
 test('it renders', function(assert) {
   this.render(hbs`{{public/side-menu}}`);
-  assert.ok(this.$().html().trim().includes('ui vertical pointing menu'));
+  assert.ok(this.$().html().trim().includes('ui fluid vertical pointing menu'));
   assert.ok(this.$().html().trim().includes('Getting here'));
 });
