@@ -1,23 +1,23 @@
 <div class="ui vertical pointing menu">
   <a class="item {{if (eq session.currentRouteName 'public.index') 'active'}}" href="{{href-to 'public.index'}}">
-    Info
+    {{t 'Info'}}
   </a>
   <a class="item" href="{{href-to 'public.index'}}#tickets">
-    Tickets
+    {{t 'Tickets'}}
   </a>
   <a class="item" href="{{href-to 'public.index'}}#speakers">
-    Speakers
+    {{t 'Speakers'}}
   </a>
   {{#link-to 'public.sessions' class='item'}}
-    Sessions
+    {{t 'Sessions'}}
   {{/link-to}}
   {{#link-to 'public.schedule' class='item'}}
-    Schedule
+    {{t 'Schedule'}}
   {{/link-to}}
   {{#link-to 'public.cfs' class='item'}}
-    Call for Speakers
+    {{t 'Call for Speakers'}}
   {{/link-to}}
   <a class="item" href="{{href-to 'public.index'}}#getting-here">
-    Getting here
+    {{t 'Getting here'}}
   </a>
 </div>
