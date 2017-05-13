@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="two wide column right aligned">
-      <div class="ui floating dropdown labeled grey search icon mini button">
+      {{#ui-dropdown class="floating labeled grey search icon mini button" selected="en" forceSelection=false}}
         <i class="world icon"></i>
         <span class="text">English</span>
         <div class="ui language menu">
@@ -70,7 +70,7 @@
           <div class="item">Chinese</div>
           <div class="item">Danish</div>
           <div class="item">Dutch</div>
-          <div class="item active">English</div>
+          <div data-value="en" class="item">English</div>
           <div class="item">French</div>
           <div class="item">German</div>
           <div class="item">Greek</div>
@@ -88,7 +88,7 @@
           <div class="item">Turkish</div>
           <div class="item">Vietnamese</div>
         </div>
-      </div>
+      {{/ui-dropdown}}
     </div>
   </div>
 </div>

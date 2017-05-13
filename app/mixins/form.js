@@ -26,7 +26,7 @@ export default Mixin.create({
   },
 
   didRender() {
-    this._super.call(this);
+    this._super(...arguments);
     debounce(this, () => {
       const defaultFormRules = {
         onFailure: formErrors => {
@@ -68,13 +68,20 @@ export default Mixin.create({
   },
 
   didInsertElement() {
-    this._super.call(this);
+    this._super(...arguments);
     $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
       if (value && value.length > 0 && format) {
         return moment(value, format).isValid();
       }
       return true;
     };
-  }
+  },
 
+  willDestroyElement() {
+    this._super(...arguments);
+    const $popUps = this.$('.has.popup');
+    if ($popUps) {
+      $popUps.popup('destroy');
+    }
+  }
 });

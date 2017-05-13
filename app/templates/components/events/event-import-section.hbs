@@ -2,12 +2,12 @@
   <div class="sixteen wide column">
     <form class="ui form">
       <div class="field">
-        <label class='required section-heading'> Select event source file to import</label>
+        <label class='required'> {{t 'Select event source file to import'}}</label>
         {{input type='file'}}
         <br>
         <b>{{t 'Supported formats:'}}</b> {{t 'Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical)'}}
       </div>
-      <button class="ui primary button" type="submit">{{t 'Import Event'}}</button>
+      <button class="ui small primary button" type="submit">{{t 'Import Event'}}</button>
     </form>
   </div>
 </div>

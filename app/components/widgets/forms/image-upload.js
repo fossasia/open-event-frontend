@@ -82,7 +82,7 @@ export default Component.extend({
   },
 
   init() {
-    this._super.call(this);
+    this._super(...arguments);
     this.set('selectedImage', this.get('imageUrl'));
     if (this.get('selectedImage')) {
       this.set('needsConfirmation', true);
@@ -90,7 +90,7 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this._super.call(this);
+    this._super(...arguments);
     this.$()
       .on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
         e.preventDefault();
@@ -108,7 +108,7 @@ export default Component.extend({
   },
 
   willDestroyElement() {
-    this._super.call(this);
+    this._super(...arguments);
     this.$().off('drag dragstart dragend dragover dragenter dragleave drop');
   }
 

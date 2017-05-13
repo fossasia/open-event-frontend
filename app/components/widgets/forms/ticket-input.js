@@ -12,7 +12,12 @@ export default Component.extend({
   },
 
   didRender() {
-    this._super.call(this);
+    this._super(...arguments);
     this.$('.icon.buttons').find('.button').popup();
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+    this.$('.icon.buttons').find('.button').popup('destroy');
   }
 });

@@ -30,14 +30,14 @@ export default Component.extend({
   },
 
   didRender()  {
-    this._super.call(this);
+    this._super(...arguments);
     try {
       this.$().modal('refresh');
     } catch (ignored) { /* ignored exception */ }
   },
 
   didInsertElement() {
-    this._super.call(this);
+    this._super(...arguments);
     const defaultOptions = {
       detachable     : false,
       duration       : testing ? 0 : 200,
@@ -84,5 +84,4 @@ export default Component.extend({
       this.$().modal('show');
     }
   }
-
 });

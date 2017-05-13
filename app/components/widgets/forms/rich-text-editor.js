@@ -36,7 +36,7 @@ export default Component.extend({
   }),
 
   didInsertElement() {
-    this._super.call(this);
+    this._super(...arguments);
     this.$('.button')
       .popup({
         inline    : true,
@@ -62,9 +62,10 @@ export default Component.extend({
   },
 
   willDestroyElement() {
-    this._super.call(this);
+    this._super(...arguments);
     if (this.editor) {
       this.editor.destroy();
     }
+    this.$('.button').popup('destroy');
   }
 });

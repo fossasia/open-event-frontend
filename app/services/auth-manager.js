@@ -39,7 +39,7 @@ export default Service.extend({
   },
 
   init() {
-    this._super.call(this);
+    this._super(...arguments);
     if (this.get('session.isAuthenticated')) {
       this.identify();
     } else {

@@ -17,7 +17,7 @@ export default Component.extend({
   options: {},
 
   didInsertElement() {
-    this._super.call(this);
+    this._super(...arguments);
     const defaultOptions = {
       type      : 'date',
       today     : this.get('today'),

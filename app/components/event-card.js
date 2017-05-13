@@ -19,7 +19,7 @@ export default Component.extend({
   }),
 
   didInsertElement() {
-    this._super.call(this);
+    this._super(...arguments);
     const $innerSpan = this.$('.header > span');
     const $header = this.$('.header');
     while ($innerSpan.outerHeight() > $header.height()) {
@@ -31,6 +31,14 @@ export default Component.extend({
       $header.popup({
         position: 'top center'
       });
+      this.set('$header', $header);
+    }
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+    if (this.get('$header')) {
+      this.get('$header').popup('destroy');
     }
   }
 });

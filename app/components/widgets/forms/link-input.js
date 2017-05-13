@@ -26,7 +26,7 @@ export default Component.extend({
   }),
 
   didInsertElement() {
-    this._super.call(this);
+    this._super(...arguments);
     if (this.get('segmentedLink')) {
       this.setProperties({
         protocol : this.get('segmentedLink.protocol'),
