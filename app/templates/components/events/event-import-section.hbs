@@ -1,13 +1,14 @@
-<div class="ui stackable centered grid">
-  <div class="sixteen wide column">
-    <form class="ui form">
-      <div class="field">
-        <label class='required'> {{t 'Select event source file to import'}}</label>
-        {{input type='file'}}
-        <br>
-        <b>{{t 'Supported formats:'}}</b> {{t 'Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical)'}}
-      </div>
-      <button class="ui small primary button" type="submit">{{t 'Import Event'}}</button>
-    </form>
-  </div>
+<div class="sixteen wide column">
+  <form class="ui form">
+    <div class="field five wide column">
+      <label class='required'> {{t 'Select event source file to import'}}</label>
+      {{input type='file'}}
+      <br>
+      <span class="text muted">
+        <b>{{t 'Supported formats:'}}</b>
+        {{t 'Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical)'}}
+      </span>
+    </div>
+    <button class="ui small primary button" type="submit">{{t 'Import Event'}}</button>
+  </form>
 </div>
