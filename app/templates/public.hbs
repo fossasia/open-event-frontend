@@ -1,4 +1,4 @@
-<div class="public-event ui container">
+<div class="public-event">
   <div class="lead {{if smallLead 'small'}}">
     {{widgets/safe-image src=(if model.large model.large model.placeholderUrl)}}
     <div class="content">
@@ -15,18 +15,25 @@
     </div>
   </div>
   <div class="content {{if smallLead 'with small lead'}}">
-    <div class="ui basic segment" id="public-event-content">
-      <div class="left ui rail">
-        <div class="ui basic segment">
+    <div class="ui stackable grid " id="public-event-content">
+      <div class="three wide column">
+        {{#if device.isMobile}}
+          <button {{action "toggleMenu"}} class="ui basic icon button mobile only">
+            <i class="content icon"></i>
+          </button>
+          {{#if isMenuOpen}}
+            {{public/side-menu class='toggle menu'}}
+          {{/if}}
+        {{else}}
           {{#ui-sticky context='#public-event-content' observeChanges=true}}
             {{public/side-menu}}
           {{/ui-sticky}}
-        </div>
+        {{/if}}
       </div>
-      <div>
+      <div class="ten wide column">
         {{outlet}}
       </div>
-      <div class="right ui rail">
+      <div class="three wide column" style="height:100vh;overflow: hidden; !important">
         {{public/social-links eventUrl=model.eventUrl socialLinks=model.socialLinks}}
       </div>
     </div>
