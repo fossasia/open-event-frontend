@@ -12,7 +12,7 @@ export default Component.extend({
     let tags = [];
     forOwn(tagsOriginal, value => {
       if (value && value.trim() !== '') {
-        tags.push('#' + pascalCase(value));
+        tags.push(`#${pascalCase(value)}`);
       }
     });
     return tags;

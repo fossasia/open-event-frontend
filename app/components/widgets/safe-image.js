@@ -7,7 +7,7 @@ export default Component.extend({
   tagName           : 'img',
   attributeBindings : ['src'],
 
-  fallback: ENV.APP.apiHost + '/static/placeholders/Other.jpg',
+  fallback: `${ENV.APP.apiHost}/static/placeholders/Other.jpg`,
 
   didInsertElement() {
     this.$().on('error', () => {

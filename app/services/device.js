@@ -46,12 +46,10 @@ export default Service.extend({
   init() {
     this._super(...arguments);
     next(this, () => {
-      console.log(this.getDeviceType());
       this.set('deviceType', this.getDeviceType());
     });
     $(window).resize(() => {
       debounce(this, () => {
-        console.log(this.getDeviceType());
         this.set('deviceType', this.getDeviceType());
       }, 200);
     });
