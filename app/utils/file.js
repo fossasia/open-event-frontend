@@ -5,7 +5,7 @@ export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
   const thresh = si ? 1000 : 1024;
   let bytes = sizeInKb * thresh;
   if (Math.abs(bytes) < thresh) {
-    return bytes + ' B';
+    return `${bytes} B`;
   }
   const units = si
     ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
@@ -15,7 +15,7 @@ export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
     bytes /= thresh;
     ++u;
   } while (Math.abs(bytes) >= thresh && u < units.length - 1);
-  return bytes.toFixed(absolute ? 0 : 1) + ' ' + units[u];
+  return `${bytes.toFixed(absolute ? 0 : 1)} ${units[u]}`;
 };
 
 export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {

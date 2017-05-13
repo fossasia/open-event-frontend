@@ -16,10 +16,10 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   },
   actions: {
     save() {
-      console.log('save');
+
     },
     move() {
-      console.log('move');
+
     }
   }
 });

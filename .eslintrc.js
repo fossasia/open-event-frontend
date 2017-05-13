@@ -55,10 +55,11 @@ module.exports = {
       }
     ],
     'max-len': 'off',
-    'no-console': 'off',
-    'prefer-template': 'off',
+    'no-console': 'error',
+    'prefer-template': 'error',
     'camelcase': 'off',
     'new-cap': 'off',
+    'eqeqeq': ['error', 'smart'],
     'one-var': 'off',
     'ember-suave/no-const-outside-module-scope': 'off',
     'ember-suave/require-access-in-comments': 'off'
