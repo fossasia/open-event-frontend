@@ -51,6 +51,13 @@ router.map(function() {
     this.route('import');
   });
   this.route('profile');
+
+  this.route('settings', function() {
+    this.route('contact-info');
+    this.route('password');
+    this.route('email-preferences');
+    this.route('applications');
+  });
 });
 
 export default router;

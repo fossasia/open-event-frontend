@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="sixteen wide column">
+    <div class="ui fluid pointing secondary menu">
+      {{#link-to 'settings.contact-info' class='item'}}
+        {{t 'Contact Info'}}
+      {{/link-to}}
+      {{#link-to 'settings.password' class='item'}}
+        {{t 'Password'}}
+      {{/link-to}}
+      {{#link-to 'settings.email-preferences' class='item'}}
+        {{t 'Email-Preferences'}}
+      {{/link-to}}
+      {{#link-to 'settings.applications' class='item'}}
+        {{t 'Applications'}}
+      {{/link-to}}
+    </div>
+  </div>
+</div>
+<div class="ui segment">
+  {{outlet}}
+</div>

@@ -1,0 +1,11 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  <div class="field">
+    <label>{{t 'Email'}}</label>
+    {{input type='email' name='email' value=email}}
+  </div>
+  <div class="field">
+    <label>{{t 'Phone'}}</label>
+    {{input type='text' name='phone' value=phone}}
+  </div>
+  <button class="ui primary button" type="submit">{{t 'Save'}}</button>
+</form>
