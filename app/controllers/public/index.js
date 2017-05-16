@@ -14,6 +14,8 @@ export default Controller.extend({
 
   nonFeaturedSpeakers: computed.filterBy('speakers', 'isFeatured', false),
 
+  location: { latitude: 37.7833, longitude: -122.4167, locationName: 'Sample event location address' },
+
   htmlSafeDescription: computed('model.event.description', function() {
     return String.htmlSafe(this.get('model.event.description'));
   })
