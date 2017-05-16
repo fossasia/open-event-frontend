@@ -4,12 +4,14 @@ const { Component } = Ember;
 
 export default Component.extend({
 
+  sidebarVisible: false,
+
   toggleSidebar() {
-    this.$('.ui.sidebar').toggleClass('visible');
+    this.toggleProperty('sidebarVisible');
   },
 
   hideSidebar() {
-    this.$('.ui.sidebar').removeClass('visible');
+    this.set('sidebarVisible', false);
   },
 
   didInsertElement() {
