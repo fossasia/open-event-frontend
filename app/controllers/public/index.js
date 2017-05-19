@@ -15,9 +15,9 @@ export default Controller.extend({
     { name: 'Sponsor 3', url: '#', logoUrl: 'http://placehold.it/150x60', level: 1, type: 'Silver Sponsor', description: '' }
   ],
 
-  tickets: [{ description: 'Community ticket', date: 'Mon, May 22', price: 2.50, name: 'Community Ticket', type: 'paid', id: 1, quantity: 10, orderQuantity: 0, min: 0, max: 5 },
-    { description: 'Standard ticket', date: 'Mon, May 22', price: 3.05, name: 'Standard Ticket', type: 'paid', id: 2, quantity: 10, orderQuantity: 0, min: 0, max: 5 },
-    { description: 'Super ticket', date: 'Mon, May 22', price: 5.00, name: 'Super Ticket', type: 'paid', id: 3, quantity: 10, orderQuantity: 0, min: 0, max: 5 }
+  tickets: [{ description: 'Discounted ticket for all community members', date: 'Mon, May 22', price: 40.50, name: 'Community Ticket', type: 'paid', id: 1, quantity: 10, orderQuantity: 0, min: 0, max: 5 },
+    { description: 'The usual ticket', date: 'Mon, May 22', price: 80, name: 'Standard Ticket', type: 'paid', id: 2, quantity: 10, orderQuantity: 0, min: 0, max: 20 },
+    { description: 'The best ticket in the world. You must get this.', date: 'Mon, May 22', price: 120.00, name: 'Super Ticket', type: 'paid', id: 3, quantity: 100, orderQuantity: 0, min: 0, max: 5 }
   ],
 
   featuredSpeakers: computed.filterBy('speakers', 'isFeatured', true),
