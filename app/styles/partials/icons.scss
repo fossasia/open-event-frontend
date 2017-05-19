@@ -1,3 +1,27 @@
 .compact.icon {
   margin: 0 !important;
 }
+
+.colored:not(.inverted) {
+  &.american.express {
+    color: #002663;
+  }
+  &.credit.card {
+
+  }
+  &.diners.club {
+    color: #0069aa;
+  }
+  &.discover {
+    color: #f16821;
+  }
+  &.mastercard {
+    color: #cc0000;
+  }
+  &.paypal.card {
+    color: #003087;
+  }
+  &.visa {
+    color: #1a1f71;
+  }
+}

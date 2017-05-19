@@ -2,20 +2,23 @@
   <div class='description'>
     {{sanitize model.event.description}}
   </div>
+  <div class="ui hidden divider"></div>
   <div class="tickets">
     {{public/ticket-list tickets=tickets}}
   </div>
+  <div class="ui hidden divider"></div>
   <div class='featured-speakers'>
     <div class="row">
       {{public/featured-speaker-list speakers=featuredSpeakers}}
     </div>
   </div>
+  <div class="ui hidden divider"></div>
   <div class='speakers'>
     <div class="row">
       {{public/speaker-list speakers=nonFeaturedSpeakers}}
     </div>
   </div>
-  <br>
+  <div class="ui hidden divider"></div>
   <div class="sponsors">
     <div class="row">
       {{public/sponsor-list sponsors=sponsors}}
