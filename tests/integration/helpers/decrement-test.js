@@ -13,4 +13,3 @@ test('it renders', function(assert) {
   this.render(hbs`{{decrement 'bb'}}`);
   assert.equal(this.$().text().trim(), 'bb');
 });
-
