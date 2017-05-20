@@ -1,0 +1,28 @@
+.ui.notification.popup {
+  padding: 2px;
+  .list {
+    width: auto;
+    max-height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0;
+    margin: 0;
+    .item .content {
+      .header {
+        color: rgba(0, 0, 0, 0.87);;
+        font-weight: 300;
+      }
+      b {
+        color: rgba(0, 0, 0, 0.87) !important;
+      }
+    }
+  }
+  .segments {
+    margin: 5px;
+  }
+  .segment {
+    border: none;
+    padding: 0 2px;
+    margin: 0;
+  }
+}
