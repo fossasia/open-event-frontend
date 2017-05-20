@@ -1,0 +1,28 @@
+<i class="mail outline icon">
+</i>
+<div class="floating ui teal circular mini label">{{notifications.length}}</div>
+<div class="ui wide notification popup bottom left transition ">
+  <div class="ui basic inverted horizontal segments">
+    <div class="ui basic left aligned segment weight-800">
+      <p>{{t 'Notifications'}}</p>
+    </div>
+    <div class="ui basic right aligned segment weight-400">
+      <a href="#">{{t 'Mark all as Read'}}</a>
+    </div>
+  </div>
+  <div class="ui fluid link celled selection list">
+    {{#each notifications as |notification|}}
+      <div class="item">
+        <div class="header">
+          {{notification.title}}
+        </div>
+        <div class="content weight-600">
+          {{notification.description}}
+        </div>
+        <div class="left floated content">
+          {{moment-from-now notification.createdAt}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div id='device-type-identifier'></div>
 {{#side-bar}}
   <div class="footer-pusher">
-    {{nav-bar}}
+    {{nav-bar notifications=unreadNotifications}}
     {{#if (eq routing.currentRouteName 'index')}}
       {{welcome-header}}
     {{/if}}

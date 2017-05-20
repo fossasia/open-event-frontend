@@ -11,6 +11,11 @@
       <div class="results"></div>
     </div>
     <div class="right menu">
+      {{#if session.isAuthenticated}}
+        <a class="notification item">
+          {{notification-dropdown notifications=notifications}}
+        </a>
+      {{/if}}
       {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}
         {{#ui-dropdown class='item' action='hide'}}
@@ -56,10 +61,17 @@
     {{#link-to 'index' class='header item' activeClass=''}}
       <h3 class="">{{config.appName}} </h3>
     {{/link-to}}
-    <div class="item right floated">
-      <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">
-        {{t 'Create Event'}}
-      </a>
+    <div class="right menu">
+      {{#if session.isAuthenticated}}
+        <a class="notification item">
+          {{notification-dropdown notifications=notifications}}
+        </a>
+      {{/if}}
+      <div class="item">
+        <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">
+          {{t 'Create Event'}}
+        </a>
+      </div>
     </div>
   </div>
 </div>
