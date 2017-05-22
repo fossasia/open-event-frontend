@@ -17,6 +17,12 @@
         </a>
       {{/if}}
       {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
+      <div>
+        {{#if session.isAuthenticated}}
+          {{app-notification}}
+        {{/if}}
+      </div>
+
       {{#if session.isAuthenticated}}
         {{#ui-dropdown class='item' action='hide'}}
           <img class="ui avatar round image"
