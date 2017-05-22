@@ -10,4 +10,8 @@ RUN mkdir $WEB_ROOT
 
 COPY deploy-dist/ $WEB_ROOT
 
-CMD ["nginx"]
+COPY start-container.sh /usr/local/bin/start-container
+
+ENTRYPOINT ["start-container"]
+
+CMD ["nginx -g 'daemon off;'"]
