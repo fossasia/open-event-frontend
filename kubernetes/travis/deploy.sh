@@ -36,4 +36,4 @@ docker build --no-cache -t eventyay/frontend:$TRAVIS_COMMIT .
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 docker tag eventyay/frontend:$TRAVIS_COMMIT eventyay/frontend:latest
 docker push eventyay/frontend
-kubectl set image deployment/frontend frontend=eventyay/frontend:$TRAVIS_COMMIT
+kubectl set image deployment/frontend --namespace=web frontend=eventyay/frontend:$TRAVIS_COMMIT
