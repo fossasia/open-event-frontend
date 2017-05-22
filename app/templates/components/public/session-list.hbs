@@ -1,0 +1,15 @@
+<div class="ui session-container">
+  {{#if (is-array sessions)}}
+    <h3 class="ui header">{{track}}</h3>
+    {{#each sessions as |session|}}
+      {{public/session-item session=session}}
+    {{/each}}
+  {{else}}
+    {{#each-in sessions as |track trackSession|}}
+      <h3 class="ui header">{{track}}</h3>
+      {{#each trackSession as |session|}}
+        {{public/session-item session=session}}
+      {{/each}}
+    {{/each-in}}
+  {{/if}}
+</div>
