@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend-redirector
+  namespace: web
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: frontend-redirector

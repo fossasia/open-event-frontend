@@ -160,7 +160,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     if (process.env.DEPLOY_TARGET && process.env.DEPLOY_TARGET === 'gh-pages') {
       ENV.locationType = 'hash';
-      ENV.rootURL = '/' + (process.env.REPO_SLUG || 'open-event-frontend');
+      ENV.rootURL = `/${  process.env.REPO_SLUG || 'open-event-frontend'}`;
     }
   }
 

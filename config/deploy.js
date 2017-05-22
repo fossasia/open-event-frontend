@@ -44,6 +44,10 @@ module.exports = function(deployTarget) {
     // configure other plugins for production deploy target here
   }
 
+  if (deployTarget !== 'production-docker') {
+    ENV.build.environment = 'production';
+  }
+
   if (deployTarget === 'gh-pages-with-domain' || deployTarget === 'gh-pages') {
     ENV.pipeline = {
       disabled: {}
@@ -56,7 +60,7 @@ module.exports = function(deployTarget) {
   }
 
   if (deployTarget === 'gh-pages') {
-    ENV['html-manifest'].prependPath = '/' + (process.env.REPO_SLUG || 'open-event-frontend') + '/';
+    ENV['html-manifest'].prependPath = `/${process.env.REPO_SLUG || 'open-event-frontend'}/`;
   }
 
   // Note: if you need to build some configuration asynchronously, you can return
