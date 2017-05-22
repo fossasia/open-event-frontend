@@ -1,5 +1,4 @@
 #!/bin/bash
-
-# Initializers in future can be added here before starting nginx
-
-exec "$@"
+echo "Starting nginx";
+nginx -g 'daemon off;'
+echo "Nginx stopped. Quitting.";
