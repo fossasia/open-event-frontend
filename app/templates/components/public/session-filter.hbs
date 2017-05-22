@@ -1,0 +1,10 @@
+<div class="ui secondary menu">
+  <a href="#" class="item {{unless selectedTrackId 'active'}}" {{action 'filter'}}>
+    All
+  </a>
+  {{#each-in tracks as |id track|}}
+    <a href="#" class="item {{if (eq selectedTrackId track.id) 'active'}}" {{action 'filter' track.id}}>
+      {{track.name}}
+    </a>
+  {{/each-in}}
+</div>
