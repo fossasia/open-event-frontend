@@ -1,18 +1,23 @@
----
 language: node_js
+
 node_js:
   - "6"
 
-sudo: false
+sudo: required
+
+services:
+  - docker
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+
 cache:
   directories:
     - $HOME/.npm
@@ -35,3 +40,4 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - bash scripts/deploy.sh
+  - bash kubernetes/travis/deploy.sh
