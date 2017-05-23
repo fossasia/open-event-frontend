@@ -58,6 +58,7 @@ router.map(function() {
     this.route('email-preferences');
     this.route('applications');
   });
+  this.route('explore');
 });
 
 export default router;

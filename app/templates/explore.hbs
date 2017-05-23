@@ -1,0 +1,13 @@
+<div class="ui stackable grid">
+  <div class="four wide column">
+    {{explore/side-bar}}
+  </div>
+  <div class="twelve wide column">
+    <h1 class="ui header">{{t 'Events'}}</h1>
+    {{#each model as |event|}}
+      {{event-card event=event isWide=true shareEvent=(action 'shareEvent')}}
+      <div class="ui hidden divider"></div>
+    {{/each}}
+    {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
+  </div>
+</div>
