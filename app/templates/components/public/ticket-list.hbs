@@ -22,7 +22,7 @@
             <small class="ui gray-text tiny">{{ticket.description}}</small>
           </td>
           <td>Thu, May 25</td>
-          <td id="{{ticket.id}}_price" class="ui right aligned">{{format-currency ticket.price '$'}}</td>
+          <td id="{{ticket.id}}_price" class="ui right aligned">$ {{number-format ticket.price}}</td>
           <td>
             {{#ui-dropdown class='compact selection' forceSelection=false}}
               {{input type='hidden' id=(concat ticket.id '_quantity') value=ticket.orderQuantity}}
@@ -36,7 +36,7 @@
             {{/ui-dropdown}}
           </td>
           <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-            {{format-currency (mult ticket.orderQuantity ticket.price) '$'}}
+            $ {{number-format (mult ticket.orderQuantity ticket.price)}}
           </td>
         </tr>
       {{/each}}
@@ -49,7 +49,7 @@
         <th></th>
         <th colspan="4">
           <div class="ui right aligned small primary icon">
-            {{t 'Total'}}: {{format-currency total '$'}}
+            {{t 'Total'}}: $ {{number-format total}}
           </div>
         </th>
       </tr>

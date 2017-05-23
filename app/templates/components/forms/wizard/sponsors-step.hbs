@@ -21,7 +21,7 @@
   {{#if data.sponsors.enabled}}
     {{#each data.sponsors.items as |sponsor index|}}
       <h4>
-        {{t 'Sponsor'}} #{{increment index}}
+        {{t 'Sponsor'}} #{{inc index}}
         {{#if (gt data.sponsors.items.length 1)}}
           <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}>
             <i class="trash icon"></i>
@@ -62,7 +62,7 @@
             maxSizeInKb=1000}}
         </div>
       </div>
-      {{#unless (eq (increment index) data.sponsors.items.length)}}
+      {{#unless (eq (inc index) data.sponsors.items.length)}}
         <div class="ui section divider"></div>
       {{/unless}}
     {{/each}}

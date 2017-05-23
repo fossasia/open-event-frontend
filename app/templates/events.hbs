@@ -1,21 +1,25 @@
-<div class="row">
-  <div class="sixteen wide column">
-    <div class="ui fluid pointing secondary menu">
-      {{#link-to 'events.live' class='item'}}
-        {{t 'Live'}}
-      {{/link-to}}
-      {{#link-to 'events.draft' class='item'}}
-        {{t 'Draft'}}
-      {{/link-to}}
-      {{#link-to 'events.past' class='item'}}
-        {{t 'Past'}}
-      {{/link-to}}
-      {{#link-to 'events.import' class='item'}}
-        {{t 'Import'}}
-      {{/link-to}}
+{{#if (contains session.currentRouteName (w 'events.live events.draft events.import events.past')) 'view' 'noview'}}
+  <div class="row">
+    <div class="sixteen wide column">
+      <div class="ui fluid pointing secondary menu">
+        {{#link-to 'events.live' class='item'}}
+          {{t 'Live'}}
+        {{/link-to}}
+        {{#link-to 'events.draft' class='item'}}
+          {{t 'Draft'}}
+        {{/link-to}}
+        {{#link-to 'events.past' class='item'}}
+          {{t 'Past'}}
+        {{/link-to}}
+        {{#link-to 'events.import' class='item'}}
+          {{t 'Import'}}
+        {{/link-to}}
+      </div>
     </div>
   </div>
-</div>
-<div class="ui segment">
+  <div class="ui segment">
+    {{outlet}}
+  </div>
+{{else}}
   {{outlet}}
-</div>
+{{/if}}
