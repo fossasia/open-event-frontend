@@ -1,0 +1,78 @@
+<div class="ui fluid vertical menu">
+  <div class="map item">
+    {{g-map lat=37.7833 lng=-122.4167 zoom=2 class="explore"}}
+  </div>
+  <div class="item">
+    <div class="ui input">
+      <input type="text" placeholder="enter location">
+    </div>
+  </div>
+  <div class="item">
+    {{t 'Categories'}}
+    <div class="menu">
+      {{#each-in categories as |category sub-categories| }}
+        <div class="active item">
+          {{category}}
+          <div class="explore sub menu">
+            {{#each sub-categories as |sub-category|}}
+              <a class="item">
+                {{sub-category }}
+              </a>
+            {{/each}}
+          </div>
+        </div>
+      {{/each-in}}
+    </div>
+  </div>
+  <div class="item">
+    {{t 'Event Type' }}
+    <div class="menu">
+      {{#each types as |event-type|}}
+        <a class="item">
+          {{event-type}}
+        </a>
+      {{/each}}
+    </div>
+  </div>
+  <div class="item">
+    {{t 'Date'}}
+    <div class="menu">
+      <a class="item">
+        {{t 'All Dates'}}
+      </a>
+      <a class="item">
+        {{t 'Today'}}
+      </a>
+      <a class="item">
+        {{t 'Tomorrow'}}
+      </a>
+      <a class="item">
+        {{t 'This week'}}
+      </a>
+      <a class="item">
+        {{t 'This Weekend'}}
+      </a>
+      <a class="item">
+        {{t 'Next week'}}
+      </a>
+      <a class="item">
+        {{t 'This Month'}}
+      </a>
+      <div class="item">
+        {{t 'Custom dates'}}
+        <div class="explore sub menu">
+          <div class="ui form">
+            <div class="item field">
+              <label class="required" for="start_date">{{t 'Starts'}}</label>
+              {{widgets/forms/date-picker type='text'inputId='start_date'}}
+            </div>
+            <div class="item field">
+              <label class="required" for="end_date">{{t 'Ends'}}</label>
+              {{widgets/forms/date-picker type='text'inputId='end_date'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

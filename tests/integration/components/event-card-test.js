@@ -15,7 +15,7 @@ test('it renders', function(assert) {
   this.set('event', Object.create({}));
   this.on('shareEvent', function() { });
 
-  this.render(hbs`{{event-card event=event shareEvent=(action 'shareEvent')}}`);
+  this.render(hbs`{{event-card event=event isWide=false shareEvent=(action 'shareEvent')}}`);
 
-  assert.ok(this.$().html().trim().includes('event card'));
+  assert.ok(this.$().html().trim().includes('event'));
 });
