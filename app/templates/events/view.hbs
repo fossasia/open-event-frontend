@@ -1,1 +1,7 @@
-{{outlet}}
+{{#unless (includes session.currentRouteName 'events.view.edit')}}
+  {{!-- Tabs for the event view page will come here --}}
+  {{outlet}}
+{{else}}
+  {{!-- the edit page will be rendered without any of the above tabs --}}
+  {{outlet}}
+{{/unless}}

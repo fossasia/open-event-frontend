@@ -205,7 +205,9 @@ export default Component.extend(FormMixin, {
 
   subTopics: computed('data.event.topic', function() {
     later(this, () => {
-      this.set('data.event.subTopic', null);
+      try {
+        this.set('data.event.subTopic', null);
+      } catch (ignored) { /* To suppress error thrown in-case this gets executed after component gets destroy */ }
     }, 50);
     if (!this.get('data.event.topic')) {
       return [];
