@@ -72,9 +72,9 @@
         <i class="colored visa link icon"></i>
       </div>
       <div class="ui padding less two wide computer four wide tablet column right aligned floated">
-        <div id="total" class="ui primary button">
+        <button type="button" id="total" class="ui primary button" disabled={{not hasTicketsInOrder}}>
           {{t 'Order Now'}}
-        </div>
+        </button>
       </div>
     </div>
   </div>
