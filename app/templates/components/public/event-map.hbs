@@ -1,0 +1,9 @@
+<div class="eight wide column event-map">
+  {{#g-map lat=event.latitude lng=event.longitude zoom=12 gestureHandling='cooperative' streetView='StreetViewPanorama' as |context|}}
+    {{g-map-marker context lat=event.latitude lng=event.longitude}}
+  {{/g-map}}
+</div>
+<div class="eight wide column address">
+  <h1>{{t 'Address'}}</h1>
+  <p>{{event.locationName}}</p>
+</div>
