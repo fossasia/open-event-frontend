@@ -1,0 +1,16 @@
+<div class="btn-toolbar pull-right" role="toolbar">
+  <div class="btn-group" role="group">
+    <a href="#" {{action "gotoFirst"}} class="{{if gotoBackEnabled "enabled" "disabled"}} btn btn-default">
+      <span class="{{icons.nav-first}}"></span>
+    </a>&nbsp;
+    <a href="#" {{action "gotoPrev"}} class="{{if gotoBackEnabled "enabled" "disabled"}} btn btn-default">
+      <span class="{{icons.nav-prev}}"></span>
+    </a>&nbsp;
+    <a href="#" {{action "gotoNext"}} class="{{if gotoForwardEnabled "enabled" "disabled"}} btn btn-default">
+      <span class="{{icons.nav-next}}"></span>
+    </a>&nbsp;
+    <a href="#" {{action "gotoLast"}} class="{{if gotoForwardEnabled "enabled" "disabled"}} btn btn-default">
+      <span class="{{icons.nav-last}}"></span>
+    </a>
+  </div>
+</div>

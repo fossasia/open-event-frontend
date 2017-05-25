@@ -1,0 +1,26 @@
+<div class="{{classes.tfooterWrapper}}">
+  {{! table summary start }}
+  <div class="{{if useNumericPagination classes.footerSummaryNumericPagination classes.footerSummaryDefaultPagination}} {{classes.footerSummary}}">
+    {{summary}}
+    <a href="#" {{action "clearFilters"}} class="btn btn-link clearFilters {{unless anyFilterUsed "invisible"}}">
+      <span class="{{classes.clearAllFiltersIcon}}"></span>
+    </a>
+  </div>
+  {{! table summary end }}
+  {{! pagesize selection start }}
+  {{#if showPageSize}}
+    {{partial pageSizeTemplate}}
+  {{/if}}
+  {{! pagesize selection end }}
+  {{! pagination start }}
+  {{#if useNumericPagination}}
+    <div class="{{classes.paginationWrapper}} {{classes.paginationWrapperNumeric}}">
+      {{partial numericPaginationTemplate}}
+    </div>
+  {{else}}
+    <div class="{{classes.paginationWrapper}} {{classes.paginationWrapperDefault}}">
+      {{partial simplePaginationTemplate}}
+    </div>
+  {{/if}}
+  {{! pagination end }}
+</div>

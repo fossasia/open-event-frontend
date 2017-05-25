@@ -1,0 +1,32 @@
+<tr>
+  {{#each processedColumns as |column|}}
+    {{#if column.isVisible}}
+      {{#if column.useSorting}}
+        <th class="{{classes.theadCell}}" {{action "sort" column}}>
+          {{#if column.templateForSortCell}}
+            {{partial column.templateForSortCell}}
+          {{else}}
+            {{#if column.componentForSortCell}}
+              {{component column.componentForSortCell data=data column=column row=record table=this}}
+            {{else}}
+              {{column.title}}
+              {{partial headerSortingIconsTemplate}}
+            {{/if}}
+          {{/if}}
+        </th>
+      {{else}}
+        <th class="{{classes.theadCell}} {{classes.theadCellNoSorting}}">
+          {{#if column.templateForSortCell}}
+            {{partial column.templateForSortCell}}
+          {{else}}
+            {{#if column.componentForSortCell}}
+              {{component column.componentName data=data column=column record=record}}
+            {{else}}
+              {{column.title}}
+            {{/if}}
+          {{/if}}
+        </th>
+      {{/if}}
+    {{/if}}
+  {{/each}}
+</tr>
