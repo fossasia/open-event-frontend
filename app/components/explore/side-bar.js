@@ -7,6 +7,9 @@ import { orderBy } from 'lodash';
 const { Component, computed } = Ember;
 
 export default Component.extend({
+
+  classNames: ['ui', 'fluid', 'explore', 'vertical', 'menu'],
+
   types: computed(function() {
     return orderBy(eventTypes);
   }),

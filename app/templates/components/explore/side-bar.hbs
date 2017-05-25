@@ -1,78 +1,81 @@
-<div class="ui fluid vertical menu">
-  <div class="map item">
-    {{g-map lat=37.7833 lng=-122.4167 zoom=2 class="explore"}}
+<div class="map item">
+  {{g-map lat=37.7833 lng=-122.4167 zoom=2 class="explore"}}
+</div>
+<div class="item">
+  <div class="ui input">
+    <input type="text" placeholder="enter location">
   </div>
-  <div class="item">
-    <div class="ui input">
-      <input type="text" placeholder="enter location">
+</div>
+<div class="item">
+  {{#ui-accordion}}
+    <span class="title">
+      <i class="right floated dropdown icon"></i>
+      {{t 'Categories'}}
+    </span>
+    <div class="content menu">
+      {{#each-in categories as |category subCategories| }}
+        <a href="#"
+           class="link item {{if (eq filters.category category) 'active'}}" {{action 'selectCategory' category}}>
+          <i class="caret {{if (eq filters.category category) 'down' 'right'}} icon"></i>
+          {{category}}
+        </a>
+        {{#if (eq filters.category category)}}
+          {{#each subCategories as |subCategory|}}
+            <a href="#"
+               class="link inner item {{if (eq filters.subCategory subCategory) 'active'}}"
+              {{action 'selectCategory' category subCategory}}>
+              {{subCategory}}
+            </a>
+          {{/each}}
+        {{/if}}
+      {{/each-in}}
     </div>
-  </div>
-  <div class="item">
-    {{#ui-accordion}}
-      <span class="title">
-        <i class="dropdown icon"></i>
-        {{t 'Categories'}}
-      </span>
-      <div class="content menu">
-        {{#each-in categories as |category subCategories| }}
-          <div class="link item {{if (eq filters.category category) 'active'}}">
-            <span role="button" {{action 'selectCategory' category}}>{{category}}</span>
-            {{#if (eq filters.category category)}}
-              <div class="explore sub menu">
-                {{#each subCategories as |subCategory|}}
-                  <a href="#" class="link inner item {{if (eq filters.subCategory subCategory) 'active'}}" {{action 'selectCategory' category subCategory}}>
-                    {{subCategory}}
-                  </a>
-                {{/each}}
-              </div>
-            {{/if}}
-          </div>
-        {{/each-in}}
-      </div>
-    {{/ui-accordion}}
-  </div>
-  <div class="item">
-    {{#ui-accordion}}
-      <span class="title">
-        <i class="dropdown icon"></i>
-        {{t 'Event Type' }}
-      </span>
-      <div class="content menu">
-        {{#each types as |eventType|}}
-          <a href="#" class="link item {{if (eq filters.eventType eventType) 'active'}}" {{action 'selectEventType' eventType}}>
-            {{eventType}}
-          </a>
-        {{/each}}
-      </div>
-    {{/ui-accordion}}
-  </div>
-  <div class="item">
-    {{#ui-accordion}}
-      <span class="title">
-        <i class="dropdown icon"></i>
-        {{t 'Date'}}
-      </span>
-      <div class="content menu">
-        {{#each dateRanges as |dateRange|}}
-          <a href="#" class="link item {{if (eq filters.dateRange dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
-            {{dateRange.name}}
-            {{#if (and (eq dateRange.key 'custom_dates') (eq filters.dateRange 'custom_dates'))}}
-              <div class="explore sub menu">
-                <div class="ui form">
-                  <div class="item field">
-                    <label class="required" for="start_date">{{t 'Starts'}}</label>
-                    {{widgets/forms/date-picker type='text'inputId='start_date'}}
-                  </div>
-                  <div class="item field">
-                    <label class="required" for="end_date">{{t 'Ends'}}</label>
-                    {{widgets/forms/date-picker type='text'inputId='end_date'}}
-                  </div>
+  {{/ui-accordion}}
+</div>
+<div class="item">
+  {{#ui-accordion}}
+    <span class="title">
+      <i class="dropdown icon"></i>
+      {{t 'Event Type' }}
+    </span>
+    <div class="content menu">
+      {{#each types as |eventType|}}
+        <a href="#"
+           class="link item {{if (eq filters.eventType eventType) 'active'}}"
+          {{action 'selectEventType' eventType}}>
+          {{eventType}}
+        </a>
+      {{/each}}
+    </div>
+  {{/ui-accordion}}
+</div>
+<div class="item">
+  {{#ui-accordion}}
+    <span class="title">
+      <i class="dropdown icon"></i>
+      {{t 'Date'}}
+    </span>
+    <div class="content menu">
+      {{#each dateRanges as |dateRange|}}
+        <a href="#" class="link item {{if (eq filters.dateRange dateRange.key) 'active'}}" {{action 'selectDateRange'
+                                                                                                    dateRange.key}}>
+          {{dateRange.name}}
+          {{#if (and (eq dateRange.key 'custom_dates') (eq filters.dateRange 'custom_dates'))}}
+            <div class="explore sub menu">
+              <div class="ui form">
+                <div class="item field">
+                  <label class="required" for="start_date">{{t 'Starts'}}</label>
+                  {{widgets/forms/date-picker type='text'inputId='start_date'}}
+                </div>
+                <div class="item field">
+                  <label class="required" for="end_date">{{t 'Ends'}}</label>
+                  {{widgets/forms/date-picker type='text'inputId='end_date'}}
                 </div>
               </div>
-            {{/if}}
-          </a>
-        {{/each}}
-      </div>
-    {{/ui-accordion}}
-  </div>
+            </div>
+          {{/if}}
+        </a>
+      {{/each}}
+    </div>
+  {{/ui-accordion}}
 </div>
