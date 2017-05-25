@@ -1,6 +1,5 @@
-import Ember from 'ember';
+import uiTable from '../ui-table';
 
-const { Component } = Ember;
-
-export default Component.extend({
+export default uiTable.extend({
+  classNames: ['ui', 'segment']
 });

@@ -1,11 +1,7 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
-
-export default Route.extend({
-  titleToken() {
-    return 'Live';
-  },
+const { Controller } = Ember;
+export default Controller.extend({
   columns: [
     {
       propertyName: 'id',
@@ -22,6 +18,20 @@ export default Route.extend({
     {
       propertyName: 'city',
       title: 'City'
+    }
+  ],
+  data: [
+    {
+      id: '1',
+      firstName: 'Dilpreet',
+      lastName: 'Singh',
+      city: 'Chandigarh'
+    },
+    {
+      id: '2',
+      firstName: 'Manpreet',
+      lastName: 'Singh',
+      city: 'Chandigarh'
     }
   ]
 });

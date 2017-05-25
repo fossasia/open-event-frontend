@@ -1,0 +1,61 @@
+<div class="models-table-wrapper {{classes.outerTableWrapper}}">
+  <div class="{{classes.globalFilterDropdownWrapper}}">
+    {{! global filter start }}
+    {{#if showGlobalFilter}}
+      {{partial globalFilterTemplate}}
+    {{/if}}
+    {{! global filter end }}
+    {{! columns dropdown start }}
+    {{#if showColumnsDropdown}}
+      {{partial columnsDropdownTemplate}}
+    {{/if}}
+    {{! columns dropdown end }}
+  </div>
+
+  <!-- Div needed by Firefox to reset floating positioning -->
+  <div class='models-table-clear'></div>
+
+  <div class="{{classes.innerTableWrapper}}">
+    <table class="{{classes.table}}">
+      {{! table header start }}
+      <thead class="{{if noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{classes.thead}}">
+        {{#if groupedHeaders.length}}
+          {{partial headerGroupedRowsTemplate}}
+        {{/if}}
+        {{partial headerSortingRowTemplate}}
+        {{#if useFilteringByColumns}}
+          {{partial headerFilteringRowTemplate}}
+        {{/if}}
+      </thead>
+      {{! table header end }}
+      {{! table body start }}
+      <tbody>
+        {{#if allColumnsAreHidden}}
+          {{partial allColumnsHiddenTemplate}}
+        {{else}}
+          {{#if visibleContent.length}}
+            {{! template-lint-disable unused-block-params}}
+            {{#each visibleContent as |record index|}}
+              {{partial rowTemplate}}
+            {{/each}}
+            {{! template-lint-enable unused-block-params}}
+          {{else}}
+            {{partial noDataShowTemplate}}
+          {{/if}}
+        {{/if}}
+      </tbody>
+      {{! table body end }}
+      {{! table footer start }}
+      <tfoot>
+        {{partial tableFooterTemplate}}
+      </tfoot>
+      {{! table footer end }}
+    </table>
+  </div>
+  {{! table footer start }}
+  {{#if showComponentFooter}}
+    {{partial componentFooterTemplate}}
+  {{/if}}
+  {{! table footer end }}
+</div>
+{{yield}}
