@@ -1,0 +1,9 @@
+<div class="ui right floated pagination menu">
+  {{#each visiblePageNumbers as |page|}}
+    {{#if page.isLink}}
+      <a href="" class="item {{if page.isActive "active"}}" {{action "gotoCustomPage" page.label}}>{{page.label}}</a>
+    {{else}}
+      <a href="" class="item disabled" {{action "gotoCustomPage" page.label}}>{{page.label}}</a>
+    {{/if}}
+  {{/each}}
+</div>
