@@ -1,0 +1,14 @@
+<div class="ui stackable very relaxed container grid">
+  <div class="eight wide column">
+    {{events/view/export/download-zip}}
+    <div class="ui divider"></div>
+    {{events/view/export/download-common downloadType='Pentabarf XML' downloadUrl='pentabarf.xml'}}
+    <div class="ui divider"></div>
+    {{events/view/export/download-common downloadType='iCalendar' downloadUrl='calendar.ics'}}
+    <div class="ui divider"></div>
+    {{events/view/export/download-common downloadType='iCalendar XML (xCal)' downloadUrl='calendar.xcs'}}
+  </div>
+  <div class="eight wide column">
+    {{events/view/export/api-response}}
+  </div>
+</div>
