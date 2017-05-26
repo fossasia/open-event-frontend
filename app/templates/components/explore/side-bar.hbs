@@ -3,7 +3,11 @@
 </div>
 <div class="item">
   <div class="ui input">
-    <input type="text" placeholder="enter location">
+    {{widgets/forms/places-autocomplete
+      name='location'
+      value=placeName
+      type='text'
+      placeholder='Enter Location'}}
   </div>
 </div>
 <div class="item">
