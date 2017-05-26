@@ -1,0 +1,103 @@
+<div class="ui {{if device.isMobile 'horizontal'}} three statistics">
+  <div class="statistic"><div class="value">4343</div><div class="label">{{t 'Orders'}}</div></div>
+  <div class="statistic"><div class="value">0.00</div><div class="label">{{t 'Sales(US $)'}}</div></div>
+  <div class="statistic"><div class="value">1</div><div class="label">{{t 'Tickets sold'}}</div></div>
+</div>
+<br>
+<div class="row">
+  <div class="ui header">
+    {{t 'Order Summary'}}
+    <span class="sub header">
+      {{t 'By order status'}}
+    </span>
+  </div>
+  <table class="ui stackable celled table">
+    <thead>
+      <tr>
+        <th>{{t 'Order Status'}}</th>
+        <th class="right aligned">{{t 'Total Tickets'}}</th>
+        <th class="right aligned">{{t 'Total Orders'}}</th>
+        <th class="right aligned">{{t 'Total Sales'}} (US$)</th>
+        <th>{{t 'View Reports'}}</th>
+      </tr>
+      <tr>
+        <td class="ui grey inverted segment">
+          <span>{{t 'Cancelled'}}</span>
+        </td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td>{{t 'View orders / View attendees'}}</td>
+      </tr>
+      <tr>
+        <td class="ui yellow inverted segment">
+          <span>{{t 'Pending'}}</span>
+        </td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td>{{t 'View orders / View attendees'}}</td>
+      </tr>
+      <tr>
+        <td class="ui red inverted segment">
+          <span>{{t 'Expired'}}</span>
+        </td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td>{{t 'View orders / View attendees'}}</td>
+      </tr>
+      <tr>
+        <td class="ui blue inverted segment">
+          <span>{{t 'Placed'}}</span>
+        </td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td>{{t 'View orders / View attendees'}}</td>
+      </tr>
+      <tr>
+        <td class="ui green inverted segment"><span>{{t 'Completed'}}</span></td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td class="right aligned">0</td>
+        <td>{{t 'View orders / View attendees'}}</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+<br>
+<div class="row">
+  <table class="ui stackable structured celled table">
+    <thead>
+      <tr>
+        <th rowspan="2" class="left aligned">{{t 'Ticket Type'}}</th>
+        <th rowspan="2" class="left aligned">{{t 'Tickets Capacity Set'}}</th>
+
+        <th colspan="2" class="ui green inverted segment center aligned">{{t 'Completed Orders '}}</th>
+        <th colspan="2" class="ui blue inverted segment center aligned">{{t 'Placed Orders'}}</th>
+        <th colspan="2" class="ui yellow inverted segment center aligned">{{t 'Pending Orders '}}</th>
+      </tr>
+      <tr>
+        <th class="right aligned">{{t 'Tickets'}}</th>
+        <th class="right aligned">{{t 'Sales'}}</th>
+        <th class="right aligned">{{t 'Tickets'}}</th>
+        <th class="right aligned">{{t 'Sales'}}</th>
+        <th class="right aligned">{{t 'Tickets'}}</th>
+        <th class="right aligned">{{t 'Sales'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Early bird</td>
+        <td>100</td>
+        <td class="right aligned">1</td>
+        <td class="right aligned">0.00</td>
+        <td class="right aligned">1</td>
+        <td class="right aligned">0.00</td>
+        <td class="right aligned">1</td>
+        <td class="right aligned">0.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
