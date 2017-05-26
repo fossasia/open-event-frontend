@@ -46,6 +46,7 @@ router.map(function() {
       });
       this.route('export');
       this.route('sessions');
+      this.route('tickets', function() {});
     });
     this.route('live');
     this.route('draft');
