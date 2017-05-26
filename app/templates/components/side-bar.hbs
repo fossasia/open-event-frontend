@@ -1,11 +1,4 @@
 <div class="ui left inverted vertical menu sidebar {{if sidebarVisible 'visible'}}">
-  <div class="ui item">
-    <div class="ui transparent inverted icon input">
-      <input class="prompt" type="text" placeholder="{{t 'Search Events...'}}" style="border-radius: 0;">
-      <i class="search link icon"></i>
-    </div>
-    <div class="results"></div>
-  </div>
   {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
   {{#if session.isAuthenticated}}
     <div class="item">

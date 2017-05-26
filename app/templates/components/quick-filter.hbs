@@ -1,17 +1,19 @@
 {{input type='text' placeholder='Search for events'}}
-{{input type='text' placeholder='United States'}}
-{{#ui-dropdown class='search selection' selected=filterDate forceSelection=false}}
-  {{input type='hidden' id='filter_date' value=filterDate}}
-  <i class="dropdown icon"></i>
-  <div class="default text">{{t 'All Dates'}}</div>
-  <div class="menu">
-    <div class="item" data-value="all-dates">{{t 'All Dates'}}</div>
-    <div class="item" data-value="today">{{t 'Today'}}</div>
-    <div class="item" data-value="tomorrow">{{t 'Tomorrow'}}</div>
-    <div class="item" data-value="this-week">{{t 'This Week'}}</div>
-    <div class="item" data-value="this-weekend">{{t 'This Weekend'}}</div>
-    <div class="item" data-value="next-week">{{t 'Next Week'}}</div>
-    <div class="item" data-value="this-month">{{t 'This Month'}}</div>
-  </div>
-{{/ui-dropdown}}
+{{#unless device.isMobile }}
+  {{input type='text' placeholder='Location'}}
+  {{#ui-dropdown class='search selection' selected=filterDate forceSelection=false}}
+    {{input type='hidden' id='filter_date' value=filterDate}}
+    <i class="dropdown icon"></i>
+    <div class="default text">{{t 'All Dates'}}</div>
+    <div class="menu">
+      <div class="item" data-value="all-dates">{{t 'All Dates'}}</div>
+      <div class="item" data-value="today">{{t 'Today'}}</div>
+      <div class="item" data-value="tomorrow">{{t 'Tomorrow'}}</div>
+      <div class="item" data-value="this-week">{{t 'This Week'}}</div>
+      <div class="item" data-value="this-weekend">{{t 'This Weekend'}}</div>
+      <div class="item" data-value="next-week">{{t 'Next Week'}}</div>
+      <div class="item" data-value="this-month">{{t 'This Month'}}</div>
+    </div>
+  {{/ui-dropdown}}
+{{/unless}}
 <button class="ui blue button large" type="button">{{t 'Search'}}</button>
