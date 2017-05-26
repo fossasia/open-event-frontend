@@ -44,6 +44,7 @@ router.map(function() {
         this.route('sponsors');
         this.route('sessions-speakers');
       });
+      this.route('export');
     });
     this.route('live');
     this.route('draft');

@@ -1,0 +1,42 @@
+<h3 class="ui header">
+  <div class="content">
+    {{t 'Access event information via REST API'}}
+  </div>
+</h3>
+<div class="ui hidden divider">
+</div>
+<div class="ui form">
+  <div class="field">
+    {{ui-checkbox class="toggle" label=(t 'Basic Event Details')}}
+  </div>
+  <div class="field">
+    {{ui-checkbox class="toggle" label=(t 'Sessions')}}
+  </div>
+  <div class="field">
+    {{ui-checkbox class="toggle" label=(t 'Microlocations')}}
+  </div>
+  <div class="field">
+    {{ui-checkbox class="toggle" label=(t 'Tracks')}}
+  </div>
+  <div class="field">
+    {{ui-checkbox class="toggle" label=(t 'Speakers')}}
+  </div>
+  <div class="field">
+    {{ui-checkbox class="toggle" label=(t 'Sponsors')}}
+  </div>
+  <div class="field">
+    {{ui-checkbox class="toggle" label=(t 'Tickets')}}
+  </div>
+</div>
+<div class="ui secondary header">
+  {{t 'You can make a GET request to the following endpoint to access the selected information'}}
+</div>
+<div class="ui secondary segment url">
+  <pre>http://localhost:5000/api/v1/events/7?include=sessions</pre>
+</div>
+<div class="ui secondry header">
+  {{t 'Response'}}
+</div>
+<div class="ui secondry segment json response">
+  <pre>{{json}}</pre>
+</div>
