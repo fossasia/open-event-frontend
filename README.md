@@ -1,4 +1,4 @@
-# Open Event Frontend
+![Open Event Frontend](https://storage.googleapis.com/eventyay.com/assets/branding/frontend_branding.png)
 
 [![Travis](https://img.shields.io/travis/fossasia/open-event-frontend/development.svg?style=flat-square)](https://travis.org/fossasia/open-event-frontend)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
