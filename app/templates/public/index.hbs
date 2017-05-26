@@ -1,13 +1,13 @@
 <div class='event'>
-  <div class='description'>
+  <div class='description' id="info">
     {{sanitize model.event.description}}
   </div>
   <div class="ui hidden divider"></div>
-  <div class="tickets">
+  <div class="tickets" id="tickets">
     {{public/ticket-list tickets=tickets}}
   </div>
   <div class="ui hidden divider"></div>
-  <div class='featured-speakers'>
+  <div class='featured-speakers' id="speakers">
     <div class="row">
       {{public/featured-speaker-list speakers=featuredSpeakers}}
     </div>
@@ -18,14 +18,14 @@
       {{public/speaker-list speakers=nonFeaturedSpeakers}}
     </div>
   </div>
-  <div class="ui hidden divider"></div>
+  <div class="ui hidden divider" id="sponsors"></div>
   <div class="sponsors">
     <div class="row">
       {{public/sponsor-list sponsors=sponsors}}
     </div>
   </div>
   <div class="ui hidden divider"></div>
-  <h1>{{t 'Getting Here'}}</h1>
+  <h1 id="getting-here">{{t 'Getting Here'}}</h1>
   <div class="location">
     {{public/event-map event=model.event}}
   </div>
