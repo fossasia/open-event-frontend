@@ -22,10 +22,10 @@
           <img class="ui avatar round image"
                style="margin-right: 10px;"
                alt="{{authManager.currentUser.email}}"
-               src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar
+               src="{{if authManager.currentUser.userDetail.avatar authManager.currentUser.userDetail.avatar
                          '/images/placeholders/avatar.png'}}">
           {{if authManager.currentUser
-               (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email)
+               (if authManager.currentUser.userDetail.firstname authManager.currentUser.userDetail.firstname authManager.currentUser.email)
                'Welcome'}}
           <i class="dropdown icon"></i>
           <div class="menu">
