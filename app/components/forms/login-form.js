@@ -53,9 +53,12 @@ export default Component.extend(FormMixin, {
         this.get('session')
           .authenticate(authenticator, credentials)
           .then(() => {
-            this.get('loader').get('/users/me').then(data => {
-              this.get('session').set('data.currentUser', data);
-            });
+            const tokenPayload = this.get('authManager').getTokenPayload();
+            if (tokenPayload) {
+              this.get('store').findRecord('user', tokenPayload.identity).then(user => {
+                this.get('session').set('data.currentUser', user);
+              });
+            }
           })
           .catch(reason => {
             if (reason.hasOwnProperty('code') && reason.code === 401) {

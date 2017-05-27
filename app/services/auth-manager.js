@@ -21,6 +21,14 @@ export default Service.extend({
     }
   }),
 
+  getTokenPayload() {
+    const token = this.get('session.session.content.authenticated.access_token');
+    if (token && token !== '') {
+      return JSON.parse(atob(token.split('.')[1]));
+    }
+    return null;
+  },
+
   logout() {
     this.get('session').invalidate();
     this.get('session').set('data.currentUser', null);
