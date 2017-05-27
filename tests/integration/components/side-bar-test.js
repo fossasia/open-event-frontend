@@ -14,5 +14,5 @@ test('it renders', function(assert) {
       <div class="main-container">Search text</div>
     {{/side-bar}}
   `);
-  assert.ok(this.$().text().trim().includes('Search text'));
+  assert.ok(this.$().text().trim().includes('Browse Events'));
 });

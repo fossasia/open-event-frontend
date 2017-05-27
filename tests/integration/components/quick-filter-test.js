@@ -6,5 +6,5 @@ moduleForComponent('quick-filter', 'Integration | Component | quick-filter');
 
 test('it renders', function(assert) {
   this.render(hbs`{{quick-filter}}`);
-  assert.ok(this.$().html().trim().includes('All Dates'));
+  assert.ok(this.$().html().trim().includes('Search'));
 });
