@@ -66,6 +66,9 @@ router.map(function() {
     this.route('saved');
     this.route('past');
   });
+  this.route('notifications', function() {
+    this.route('all');
+  });
 });
 
 export default router;

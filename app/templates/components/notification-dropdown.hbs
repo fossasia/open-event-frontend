@@ -4,7 +4,9 @@
 <div class="ui wide notification popup bottom left transition ">
   <div class="ui basic inverted horizontal segments">
     <div class="ui basic left aligned segment weight-800">
-      <p>{{t 'Notifications'}}</p>
+      {{#link-to 'notifications'}}
+        {{t 'Notifications'}}
+      {{/link-to}}
     </div>
     <div class="ui basic right aligned segment weight-400">
       <a href="#">{{t 'Mark all as Read'}}</a>
