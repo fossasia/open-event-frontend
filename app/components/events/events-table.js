@@ -1,5 +1,5 @@
-import uiTable from '../ui-table';
+import uiTable from '../ui-table-server';
 
 export default uiTable.extend({
-  classNames: ['ui', 'segment']
+  classNames: ['ui']
 });

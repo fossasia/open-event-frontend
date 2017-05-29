@@ -1,9 +1,8 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/header-row-filtering', 'Integration | Component | ui table/header row filtering', {
-  integration: true
-});
+moduleForComponent('ui-table/header-row-filtering', 'Integration | Component | ui table/header row filtering');
 
 test('it renders', function(assert) {
 

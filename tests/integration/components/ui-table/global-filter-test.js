@@ -1,9 +1,8 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/global-filter', 'Integration | Component | ui table/global filter', {
-  integration: true
-});
+moduleForComponent('ui-table/global-filter', 'Integration | Component | ui table/global filter');
 
 test('it renders', function(assert) {
 
