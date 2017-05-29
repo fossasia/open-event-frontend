@@ -1,0 +1,14 @@
+<h1 class="ui header">{{t 'Notifications'}}</h1>
+<div class="ui divider"></div>
+<div class="row">
+  {{#link-to 'notifications'}}
+    <button class="ui button">{{t 'Unread'}}</button>
+  {{/link-to}}
+  {{#link-to 'notifications.all'}}
+    <button class="ui button">{{t 'All'}}</button>
+  {{/link-to}}
+  {{#unless (includes session.currentRouteName 'notifications.all')}}
+    <button class="ui button right floated">{{t 'Mark all read'}}</button>
+  {{/unless}}
+</div>
+{{outlet}}
