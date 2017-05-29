@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import TableComponent from './models-table';
+import TableComponent from 'ember-models-table/components/models-table';
+import layout from '../templates/components/ui-table';
 
 const {
   set,
@@ -9,77 +10,74 @@ const {
 } = Ember;
 
 const defaultMessages = {
-  searchLabel: 'Search:',
-  searchPlaceholder: '',
-  'columns-title': 'Columns',
-  'columns-showAll': 'Show All',
-  'columns-hideAll': 'Hide All',
-  'columns-restoreDefaults': 'Restore Defaults',
-  tableSummary: 'Show %@ - %@ of %@',
-  allColumnsAreHidden: 'All columns are hidden. Use <strong>columns</strong>-dropdown to show some of them',
-  noDataToShow: 'No records to show'
+  searchLabel            : 'Search:',
+  searchPlaceholder      : 'Search',
+  columnsTitle           : 'Columns',
+  columnsShowAll         : 'Show All',
+  columnsHideAll         : 'Hide All',
+  columnsRestoreDefaults : 'Restore Defaults',
+  tableSummary           : 'Show %@ - %@ of %@',
+  allColumnsAreHidden    : 'All columns are hidden. Use <strong>columns</strong>-dropdown to show some of them',
+  noDataToShow           : 'No records to show'
 };
 
 const defaultIcons = {
-  'sort-asc': 'caret down icon',
-  'sort-desc': 'caret up icon',
-  'column-visible': 'checkmark box icon',
-  'column-hidden': 'square outline icon',
-  'nav-first': 'chevron left icon',
-  'nav-prev': 'chevron left icon',
-  'nav-next': 'chevron right icon',
-  'nav-last': 'chevron right icon',
-  'caret': 'caret',
-  'expand-row': 'plus icon',
-  'expand-all-rows': 'plus icon',
-  'collapse-row': 'minus icon',
-  'collapse-all-rows': 'minus icon',
-  'select-all-rows': 'glyphicon glyphicon-check',
-  'deselect-all-rows': 'glyphicon glyphicon-unchecked',
-  'select-row': 'glyphicon glyphicon-check',
-  'deselect-row': 'glyphicon glyphicon-unchecked'
+  sortAsc         : 'caret down icon',
+  sortDesc        : 'caret up icon',
+  columnVisible   : 'checkmark box icon',
+  columnHidden    : 'square outline icon',
+  navFirst        : 'chevron left icon',
+  navPrev         : 'chevron left icon',
+  navNext         : 'chevron right icon',
+  navLast         : 'chevron right icon',
+  caret           : 'caret',
+  expandRow       : 'plus icon',
+  expandAllRows   : 'plus icon',
+  collapseRow     : 'minus icon',
+  collapseAllRows : 'minus icon',
+  selectAllRows   : 'glyphicon glyphicon-check',
+  deselectAllRows : 'glyphicon glyphicon-unchecked',
+  selectRow       : 'glyphicon glyphicon-check',
+  deselectRow     : 'glyphicon glyphicon-unchecked'
 };
 
 const defaultCssClasses = {
-  outerTableWrapper: '',
-  innerTableWrapper: 'inner-table-wrapper',
-  table: 'ui tablet stackable very basic table',
-  globalFilterWrapper: 'right floated',
-  columnsDropdownWrapper: 'right floated columns-dropdown',
-  columnsDropdownButtonWrapper: 'buttons',
-  columnsDropdown: 'ui dropdown right floated',
-  theadCell: 'ui',
-  theadCellNoSorting: 'table-header-no-sorting',
-  theadCellNoFiltering: 'table-header-no-filtering',
-  tfooterWrapper: 'table-footer ui grid',
-  footerSummary: 'table-summary',
-  footerSummaryNumericPagination: 'column four wide',
-  footerSummaryDefaultPagination: 'column four wide',
-  pageSizeWrapper: 'column two wide',
-  pageSizeSelectWrapper: 'right floated',
-  paginationWrapper: 'ui right floated pagination menu',
-  paginationWrapperNumeric: 'column four wide',
-  paginationWrapperDefault: 'column four wide',
-  buttonDefault: 'ui basic button',
-  noDataCell: '',
-  collapseRow: 'collapse-row',
-  collapseAllRows: 'collapse-all-rows',
-  expandRow: 'expand-row',
-  expandAllRows: 'expand-all-rows',
-  thead: '',
-  input: 'form-control',
-  clearFilterIcon: 'glyphicon glyphicon-remove-sign form-control-feedback',
-  clearAllFiltersIcon: 'glyphicon glyphicon-remove-circle',
-  globalFilterDropdownWrapper: ''
+  outerTableWrapper              : '',
+  innerTableWrapper              : 'ui segment column sixteen wide inner-table-wrapper',
+  table                          : 'ui tablet stackable very basic table',
+  globalFilterWrapper            : 'right floated',
+  columnsDropdownWrapper         : 'right floated columns-dropdown',
+  columnsDropdownButtonWrapper   : 'buttons',
+  columnsDropdown                : 'ui dropdown right floated',
+  theadCell                      : 'ui',
+  theadCellNoSorting             : 'table-header-no-sorting',
+  theadCellNoFiltering           : 'table-header-no-filtering',
+  tfooterWrapper                 : 'table-footer ui grid',
+  footerSummary                  : 'table-summary',
+  footerSummaryNumericPagination : 'column four wide',
+  footerSummaryDefaultPagination : 'column four wide',
+  pageSizeWrapper                : 'ui column two wide',
+  pageSizeSelectWrapper          : '',
+  paginationWrapper              : 'ui right floated',
+  paginationWrapperNumeric       : 'column four wide',
+  paginationWrapperDefault       : 'column four wide',
+  buttonDefault                  : 'ui basic button',
+  noDataCell                     : '',
+  collapseRow                    : 'collapse-row',
+  collapseAllRows                : 'collapse-all-rows',
+  expandRow                      : 'expand-row',
+  expandAllRows                  : 'expand-all-rows',
+  thead                          : '',
+  input                          : 'form-control',
+  clearFilterIcon                : 'glyphicon glyphicon-remove-sign form-control-feedback',
+  clearAllFiltersIcon            : 'glyphicon glyphicon-remove-circle',
+  globalFilterDropdownWrapper    : 'ui row grid'
 };
 
-const assign = Object.assign || Ember.assign;
+const assign = Object.assign || assign;
 
 export default TableComponent.extend({
-  useFilteringByColumns: false,
-  showTableFooter: false,
-  showGlobalFilter: false,
-  showColumnsDropdown: false,
+  layout,
 
   _setupMessages: observer('customMessages', function() {
     const customIcons = getWithDefault(this, 'customMessages', {});
@@ -112,7 +110,15 @@ export default TableComponent.extend({
 
   pageSizeTemplate: 'components/ui-table/page-size',
 
+  showColumnsDropdown: false,
+
+  showGlobalFilter: true,
+
   showPageSize: true,
+
+  useNumericPagination: true,
+
+  useFilteringByColumns: false,
 
   globalFilterTemplate: 'components/ui-table/global-filter',
 

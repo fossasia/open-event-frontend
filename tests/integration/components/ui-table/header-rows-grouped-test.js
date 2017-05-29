@@ -1,9 +1,8 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/header-rows-grouped', 'Integration | Component | ui table/header rows grouped', {
-  integration: true
-});
+moduleForComponent('ui-table/header-rows-grouped', 'Integration | Component | ui table/header rows grouped');
 
 test('it renders', function(assert) {
 
