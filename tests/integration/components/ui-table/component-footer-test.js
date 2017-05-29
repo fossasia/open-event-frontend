@@ -1,9 +1,8 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/component-footer', 'Integration | Component | ui table/component footer', {
-  integration: true
-});
+moduleForComponent('ui-table/component-footer', 'Integration | Component | ui table/component footer');
 
 test('it renders', function(assert) {
 

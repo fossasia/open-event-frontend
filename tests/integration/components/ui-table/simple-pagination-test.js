@@ -1,9 +1,8 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/simple-pagination', 'Integration | Component | ui table/simple pagination', {
-  integration: true
-});
+moduleForComponent('ui-table/simple-pagination', 'Integration | Component | ui table/simple pagination');
 
 test('it renders', function(assert) {
 

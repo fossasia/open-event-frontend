@@ -4,15 +4,12 @@
             aria-expanded="false">
       {{messages.columns-title}} <span class="{{icons.caret}}"></span>
     </button>
-
     <div class="ui custom popup {{classes.columnsDropdown}}">
-
       <div class="ui secondary vertical menu">
         <a class="item" {{action "showAllColumns" column bubbles=false}} href="#">{{messages.columns-showAll}}</a>
         <a class="item" {{action "hideAllColumns" column bubbles=false}} href="#">{{messages.columns-hideAll}}</a>
         <a class="item" {{action "restoreDefaultVisibility" column bubbles=false}} href="#">{{messages.columns-restoreDefaults}}</a>
         <a class="item">&nbsp;</a>
-
         {{#each processedColumns as |column|}}
           {{#if column.mayBeHidden}}
               <a class='item' {{action "toggleHidden" column bubbles=false}} href="#">
@@ -21,9 +18,7 @@
               </a>
           {{/if}}
         {{/each}}
-
       </div>
-
     </div>
   </div>
 </div>
