@@ -5,20 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('ui-table/component-footer', 'Integration | Component | ui table/component footer');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{ui-table/component-footer}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#ui-table/component-footer}}
-      template block text
-    {{/ui-table/component-footer}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.set('footer', 'footer');
+  this.render(hbs `{{ui-table/component-footer summary=footer}}`);
+  assert.ok(this.$().html().trim().includes('footer'));
 });
