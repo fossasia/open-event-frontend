@@ -2,17 +2,19 @@
   {{#each processedColumns as |column|}}
     {{#if column.isVisible}}
       {{#if column.useSorting}}
-        <th class="{{classes.theadCell}}" {{action "sort" column}}>
-          {{#if column.templateForSortCell}}
-            {{partial column.templateForSortCell}}
-          {{else}}
-            {{#if column.componentForSortCell}}
-              {{component column.componentForSortCell data=data column=column row=record table=this}}
+        <th class="{{classes.theadCell}}">
+          <a class="ui" href="#" {{action "sort" column}}>
+            {{#if column.templateForSortCell}}
+              {{partial column.templateForSortCell}}
             {{else}}
-              {{column.title}}
-              {{partial headerSortingIconsTemplate}}
+              {{#if column.componentForSortCell}}
+                {{component column.componentForSortCell data=data column=column row=record table=this}}
+              {{else}}
+                {{column.title}}
+                {{partial headerSortingIconsTemplate}}
+              {{/if}}
             {{/if}}
-          {{/if}}
+          </a>
         </th>
       {{else}}
         <th class="{{classes.theadCell}} {{classes.theadCellNoSorting}}">

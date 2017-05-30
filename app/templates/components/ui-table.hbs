@@ -22,7 +22,11 @@
           {{else}}
             {{#if visibleContent.length}}
               {{#each visibleContent as |record index|}}
-                {{partial rowTemplate}}
+                {{#if record}}
+                  {{#if index}}
+                    {{partial rowTemplate}}
+                  {{/if}}
+                {{/if}}
               {{/each}}
             {{else}}
               {{partial noDataShowTemplate}}

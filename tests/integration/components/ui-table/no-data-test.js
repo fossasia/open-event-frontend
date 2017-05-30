@@ -3,12 +3,9 @@ import moduleForComponent from 'open-event-frontend/tests/helpers/component-help
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('ui-table/no-data', 'Integration | Component | ui table/no data');
-
+const messages = { noDataToShow: 'No' };
 test('it renders', function(assert) {
-  this.render(hbs`
-    {{#ui-table/no-data}}
-      template block text
-    {{/ui-table/no-data}}
-  `);
-  assert.ok(this.$().text().trim().includes('template block text'));
+  this.set('messages', messages);
+  this.render(hbs `{{ui-table/no-data messages=messages}}`);
+  assert.ok(this.$().html().trim().includes('No'));
 });

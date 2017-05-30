@@ -5,20 +5,6 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('ui-table/cell/cell-roles', 'Integration | Component | ui table/cell/cell roles');
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{ui-table/cell/cell-roles}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#ui-table/cell/cell-roles}}
-      template block text
-    {{/ui-table/cell/cell-roles}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.render(hbs `{{ui-table/cell/cell-roles}}`);
+  assert.ok(this.$().html().trim().includes('sample@gmail.com (Organizer)'));
 });

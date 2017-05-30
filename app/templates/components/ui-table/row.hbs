@@ -1,4 +1,4 @@
-<tr class="{{if (exists-in _selectedItems record) "selected-row"}}" {{action "clickOnRow" index record on="click"}}>
+<tr class="{{if (exists-in _selectedItems record) "selected-row"}}">
   {{#each processedColumns as |column|}}
     {{#if column.isVisible}}
       <td class={{column.className}}>
@@ -26,7 +26,7 @@
   {{/each}}
 </tr>
 {{#if (exists-in _expandedRowIndexes index)}}
-  <tr class="expandRow {{concat "expand-" index}} {{if (exists-in _selectedItems record) "selected-expand"}}" {{action "clickOnRow" index record on="click"}}>
+  <tr class="expandRow {{concat "expand-" index}} {{if (exists-in _selectedItems record) "selected-expand"}}">
     <td colspan="{{visibleProcessedColumns.length}}">
       {{partial expandedRowTemplate}}
     </td>
