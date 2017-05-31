@@ -94,6 +94,9 @@ router.map(function() {
     this.route('modules');
     this.route('content');
   });
+  this.route('orders', function() {
+    this.route('new');
+  });
 });
 
 export default router;
