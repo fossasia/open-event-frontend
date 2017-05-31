@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import ModelsTable from './ui-table';
-import layout from '../templates/components/ui-table';
+import ModelsTable from 'open-event-frontend/components/ui-table';
+import layout from 'open-event-frontend/templates/components/ui-table';
 
 const {
   get,

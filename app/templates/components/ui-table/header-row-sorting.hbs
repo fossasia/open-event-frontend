@@ -3,7 +3,7 @@
     {{#if column.isVisible}}
       {{#if column.useSorting}}
         <th class="{{classes.theadCell}}">
-          <a class="ui" href="#" {{action "sort" column}}>
+          <div role="button" class="ui" {{action 'sort' column}}>
             {{#if column.templateForSortCell}}
               {{partial column.templateForSortCell}}
             {{else}}
@@ -14,7 +14,7 @@
                 {{partial headerSortingIconsTemplate}}
               {{/if}}
             {{/if}}
-          </a>
+          </div>
         </th>
       {{else}}
         <th class="{{classes.theadCell}} {{classes.theadCellNoSorting}}">

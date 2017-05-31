@@ -1,5 +1,5 @@
 {{#if (exists-in _expandedRowIndexes index)}}
-  <a href="#" {{action "collapseRow" index bubbles=false}} class={{classes.collapseRow}}><i class="{{icons.collapseRow}}"></i></a>
+  <a href="#" {{action 'collapseRow' index bubbles=false}} class={{classes.collapseRow}}><i class="{{icons.collapseRow}}"></i></a>
 {{else}}
-  <a href="#" {{action "expandRow" index bubbles=false}} class={{classes.expandRow}}><i class="{{icons.expandRow}}"></i></a>
+  <a href="#" {{action 'expandRow' index bubbles=false}} class={{classes.expandRow}}><i class="{{icons.expandRow}}"></i></a>
 {{/if}}
