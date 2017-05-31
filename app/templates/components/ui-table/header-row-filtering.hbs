@@ -9,7 +9,7 @@
             {{component column.componentForFilterCell data=data column=column row=record table=this}}
           {{else}}
             {{#if column.useFilter}}
-              <div class="ui input {{if column.filterUsed "has-feedback"}}">
+              <div class="ui input {{if column.filterUsed 'has-feedback'}}">
                 {{#if column.filterWithSelect}}
                   {{models-select options=column.filterOptions cssPropertyName=column.cssPropertyName value=column.filterString class=(concat classes.input " changeFilterForColumn")}}
                 {{else}}

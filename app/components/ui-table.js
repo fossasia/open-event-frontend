@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import TableComponent from 'ember-models-table/components/models-table';
-import layout from '../templates/components/ui-table';
+import layout from 'open-event-frontend/templates/components/ui-table';
 
 const {
   set,
@@ -35,10 +35,10 @@ const defaultIcons = {
   expandAllRows   : 'plus icon',
   collapseRow     : 'minus icon',
   collapseAllRows : 'minus icon',
-  selectAllRows   : 'glyphicon glyphicon-check',
-  deselectAllRows : 'glyphicon glyphicon-unchecked',
-  selectRow       : 'glyphicon glyphicon-check',
-  deselectRow     : 'glyphicon glyphicon-unchecked'
+  selectAllRows   : 'checkmark box icon',
+  deselectAllRows : 'square outline icon',
+  selectRow       : 'checkmark box icon',
+  deselectRow     : 'square outline icon'
 };
 
 const defaultCssClasses = {
@@ -68,9 +68,9 @@ const defaultCssClasses = {
   expandRow                      : 'expand-row',
   expandAllRows                  : 'expand-all-rows',
   thead                          : '',
-  input                          : 'form-control',
-  clearFilterIcon                : 'glyphicon glyphicon-remove-sign form-control-feedback',
-  clearAllFiltersIcon            : 'glyphicon glyphicon-remove-circle',
+  input                          : '',
+  clearFilterIcon                : 'remove circle icon',
+  clearAllFiltersIcon            : 'remove circle outline icon',
   globalFilterDropdownWrapper    : 'ui row grid'
 };
 
