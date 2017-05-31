@@ -61,6 +61,10 @@ router.map(function() {
     this.route('applications');
   });
   this.route('explore');
+  this.route('my-tickets', function() {
+    this.route('saved');
+    this.route('past');
+  });
 });
 
 export default router;

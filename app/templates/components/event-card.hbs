@@ -32,9 +32,13 @@
         <i role="button" class="share alternate link icon" {{action shareEvent event}}></i>
       </span>
       <span>
-        {{#each tags as |tag|}}
-          <a>{{tag}}</a>
-        {{/each}}
+        {{#if hasBlock}}
+          {{yield}}
+        {{else}}
+          {{#each tags as |tag|}}
+            <a>{{tag}}</a>
+          {{/each}}
+        {{/if}}
       </span>
     </div>
   </div>
