@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return 'Past';
+    return this.i18n.t('Past');
   }
 });
