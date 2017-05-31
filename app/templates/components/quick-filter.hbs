@@ -1,6 +1,6 @@
-{{input type='text' placeholder='Search for events'}}
+{{input type='text' placeholder=(t 'Search for events')}}
 {{#unless device.isMobile }}
-  {{input type='text' placeholder='Location'}}
+  {{input type='text' placeholder=(t 'Location')}}
   {{#ui-dropdown class='search selection' selected=filterDate forceSelection=false}}
     {{input type='hidden' id='filter_date' value=filterDate}}
     <i class="dropdown icon"></i>
