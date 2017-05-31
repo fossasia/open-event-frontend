@@ -1,5 +1,5 @@
-import uiTable from '../ui-table-server';
+import UiTable from 'open-event-frontend/components/ui-table-server';
 
-export default uiTable.extend({
+export default UiTable.extend({
   classNames: ['ui', 'main-container']
 });

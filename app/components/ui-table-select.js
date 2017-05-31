@@ -1,6 +1,6 @@
-import uiSelect from './models-select';
+import UiSelect from 'ember-models-table/components/models-select';
 
-export default uiSelect.extend({
+export default UiSelect.extend({
   tagName: 'div',
 
   classNameBindings: ['cssPropertyName'],
