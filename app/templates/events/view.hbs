@@ -38,16 +38,22 @@
 
   <div class="row" style="padding-top: 15px">
     <div class="sixteen wide column">
-      <div class="ui fluid pointing stackable menu {{unless device.isMobile 'secondary'}}">
+      {{#tabbed-navigation}}
         {{#link-to 'events.view.index' class='item'}}
           {{t 'Overview'}}
         {{/link-to}}
-        <a href="#" class='item'>{{t 'Tickets'}}</a>
+        {{#link-to 'events.view.tickets' class='item'}}
+          {{t 'Tickets'}}
+        {{/link-to}}
         <a href="#" class='item'>{{t 'Scheduler'}}</a>
-        <a href="#" class='item'>{{t 'Sessions'}}</a>
+        {{#link-to 'events.view.sessions' class='item'}}
+          {{t 'Sessions'}}
+        {{/link-to}}
         <a href="#" class='item'>{{t 'Speakers'}}</a>
-        <a href="#" class='item'>{{t 'Export'}}</a>
-      </div>
+        {{#link-to 'events.view.export' class='item'}}
+          {{t 'Export'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
     </div>
   </div>
 
