@@ -49,6 +49,7 @@ router.map(function() {
       this.route('tickets', function() {
         this.route('orders');
         this.route('attendees');
+        this.route('add-order');
       });
       this.route('speakers');
     });

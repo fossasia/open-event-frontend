@@ -2,12 +2,14 @@
   <div class="row">
     <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
       <div class="ui vertical fluid pointing menu">
-        <a class="active item">{{t 'Overview'}}</a>
+        <a class="item">{{t 'Overview'}}</a>
         <a class="item">{{t 'Orders'}}</a>
         <a class="item">{{t 'Attendees'}}</a>
         <a class="item">{{t 'Discount Codes'}}</a>
         <a class="item">{{t 'Access Codes'}}</a>
-        <a class="item">{{t 'Add order'}}</a>
+        {{#link-to 'events.view.tickets.add-order' class='item'}}
+          {{t 'Add order'}}
+        {{/link-to}}
       </div>
     </div>
     <div class="{{if device.isMobile 'sixteen' 'thirteen'}} wide column">
