@@ -1,6 +1,5 @@
-import Ember from 'ember';
+import UiTable from 'open-event-frontend/components/ui-table-server';
 
-const { Component } = Ember;
-
-export default Component.extend({
+export default UiTable.extend({
+  classNames: ['ui', 'main-container']
 });
