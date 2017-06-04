@@ -6,5 +6,5 @@ moduleForComponent('settings/password-section', 'Integration | Component | setti
 
 test('it renders', function(assert) {
   this.render(hbs`{{settings/password-section}}`);
-  assert.ok(this.$().html().trim().includes('Password page'));
+  assert.ok(this.$().html().trim().includes('Current Password'));
 });
