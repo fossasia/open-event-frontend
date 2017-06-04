@@ -50,6 +50,7 @@ router.map(function() {
         this.route('orders');
         this.route('attendees');
       });
+      this.route('speakers');
     });
     this.route('live');
     this.route('draft');
