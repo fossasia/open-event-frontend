@@ -11,12 +11,12 @@
            (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email)
            'Welcome'}}
     </div>
-    <div class="item">{{t 'My Tickets'}}</div>
+    <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
     <div class="item">{{t 'My Sessions'}}</div>
-    <div class="item">{{t 'Manage Events'}}</div>
+    <a href="{{href-to 'events'}}" class="item">{{t 'Manage Events'}}</a>
     <div class="divider"></div>
-    <div class="item">{{t 'Profile'}}</div>
-    <div class="item">{{t 'Settings'}}</div>
+    <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
+    <a href="{{href-to 'settings'}}" class="item">{{t 'Settings'}}</a>
     <div class="item">{{t 'Admin'}}</div>
     <div class="divider"></div>
     <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
