@@ -50,6 +50,7 @@ router.map(function() {
         this.route('orders');
         this.route('attendees');
         this.route('add-order');
+        this.route('access', { path: 'access-codes' });
       });
       this.route('speakers');
     });
