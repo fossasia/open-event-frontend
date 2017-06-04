@@ -29,12 +29,12 @@
                'Welcome'}}
           <i class="dropdown icon"></i>
           <div class="menu">
-            <div class="item">{{t 'My Tickets'}}</div>
+            <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
             <div class="item">{{t 'My Sessions'}}</div>
             <a href="{{href-to 'events'}}" class="item">{{t 'Manage Events'}}</a>
             <div class="divider"></div>
             <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
-            <div class="item">{{t 'Settings'}}</div>
+            <a href="{{href-to 'settings'}}" class="item">{{t 'Settings'}}</a>
             <div class="item">{{t 'Admin'}}</div>
             <div class="divider"></div>
             <a role="button" class="item logout-button" {{action 'logout'}}>{{t 'Logout'}}</a>
