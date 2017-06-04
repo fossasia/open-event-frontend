@@ -12,7 +12,9 @@
           {{t 'Attendees'}}
         {{/link-to}}
         <a class="item">{{t 'Discount Codes'}}</a>
-        <a class="item">{{t 'Access Codes'}}</a>
+        {{#link-to 'events.view.tickets.access' class='item'}}
+          {{t 'Access Codes'}}
+        {{/link-to}}
         {{#link-to 'events.view.tickets.add-order' class='item'}}
           {{t 'Add order'}}
         {{/link-to}}
