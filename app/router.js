@@ -46,7 +46,9 @@ router.map(function() {
       });
       this.route('export');
       this.route('sessions');
-      this.route('tickets', function() {});
+      this.route('tickets', function() {
+        this.route('orders');
+      });
     });
     this.route('live');
     this.route('draft');

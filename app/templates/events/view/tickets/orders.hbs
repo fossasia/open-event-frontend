@@ -1,0 +1,142 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="eight wide column">
+      <h2 class="ui header">
+        {{t 'View Orders'}}
+      </h2>
+    </div>
+    <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
+      {{#ui-dropdown class='compact selection'}}
+        <div class="default text">
+          {{t 'Export As'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="PDF">
+            <i class="file pdf outline icon"></i>
+            {{t 'PDF'}}
+          </div>
+          <div class="item" data-value="CSV">
+            <i class="file excel outline icon"></i>
+            {{t 'CSV'}}
+          </div>
+        </div>
+      {{/ui-dropdown}}
+      {{#ui-dropdown class='compact selection'}}
+        <div class="default text">
+          {{t 'Showing all the records'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="date">
+            <i class="calendar outline icon"></i>
+            {{t 'Filter by Date'}}
+          </div>
+          <div class="item" data-value="discount">
+            <i class="dollar icon"></i>
+            {{t 'Filter by Discount'}}
+          </div>
+          <div class="item" data-value="remove">
+            <i class="ban icon"></i>
+            {{t 'Remove Filters'}}
+          </div>
+        </div>
+      {{/ui-dropdown}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="ui hidden divider"></div>
+    <div class="ui {{if device.isMobile 'vertical'}} basic buttons">
+      <div class="ui button active">
+        {{t 'Completed'}}
+      </div>
+      <div class="ui button">
+        {{t 'Placed'}}
+      </div>
+      <div class="ui button">
+        {{t 'Pending'}}
+      </div>
+      <div class="ui button">
+        {{t 'Expired'}}
+      </div>
+      <div class="ui button">
+        {{t 'Cancelled'}}
+      </div>
+      <div class="ui button">
+        {{t 'All'}}
+      </div>
+    </div>
+    <table class="ui very basic table">
+      <thead>
+        <tr>
+          <th>
+            #
+          </th>
+          <th>
+            {{t 'Order'}}
+          </th>
+          <th>
+            {{t 'Total Amount'}}
+          </th>
+          <th>
+            {{t 'Quantity'}}
+          </th>
+          <th>
+            {{t 'Buyer/Registration Contact '}}
+          </th>
+          <th>
+            {{t 'Action'}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |order|}}
+          <tr>
+            <td>
+              {{order.id}}
+            </td>
+            <td>
+              <div class="ui tiny header">
+                {{order.invoice_number}}
+                <span class="weight-400">
+                  {{t 'by'}} {{order.buyer_name}}
+                </span>
+                <div class="ui basic mini green label">
+                  {{order.status}}
+                </div>
+                <div class="sub header">
+                  <span class="weight-800">
+                    {{t 'Payment via'}} {{order.paid_via}}
+                  </span>
+                  {{moment-from-now order.completed_at}}
+                </div>
+              </div>
+            </td>
+            <td>
+              US $ {{order.amount}}
+            </td>
+            <td>
+              {{order.quantity}}
+            </td>
+            <td>
+              {{order.buyer}}
+            </td>
+            <td class="centre aligned">
+              <div class="ui vertical compact basic buttons">
+                {{#ui-popup content=(t 'Cancel order') class='ui icon button'}}
+                  <i class="delete icon"></i>
+                {{/ui-popup}}
+                {{#ui-popup content=(t 'Delete order') class='ui icon button'}}
+                  <i class="trash icon"></i>
+                {{/ui-popup}}
+                {{#ui-popup content=(t 'Resend order confirmation') class='ui icon button'}}
+                  <i class="mail outline icon"></i>
+                {{/ui-popup}}
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

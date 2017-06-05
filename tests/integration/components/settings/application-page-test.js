@@ -6,5 +6,5 @@ moduleForComponent('settings/application-section', 'Integration | Component | se
 
 test('it renders', function(assert) {
   this.render(hbs`{{settings/application-section}}`);
-  assert.ok(this.$().html().trim().includes('Applications'));
+  assert.ok(this.$().html().trim().includes('Connect'));
 });
