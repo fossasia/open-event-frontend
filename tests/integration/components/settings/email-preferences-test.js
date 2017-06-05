@@ -6,5 +6,5 @@ moduleForComponent('settings/email-preferences-section', 'Integration | Componen
 
 test('it renders', function(assert) {
   this.render(hbs`{{settings/email-preferences-section}}`);
-  assert.ok(this.$().html().trim().includes('Email preferences'));
+  assert.ok(this.$().html().trim().includes('Email'));
 });

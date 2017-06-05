@@ -1,1 +1,66 @@
-<p>Email preferences</p>
+<div class="ui grid">
+  <div class="ui row">
+    <div class="ui column eight wide">
+      <h4 class="ui header">
+        {{t 'Email Updates are '}}
+      </h4>
+    </div>
+    <div class="ui column eight wide right aligned">
+      {{ui-checkbox class='toggle checked'}}
+    </div>
+  </div>
+  <div class="ui divider"></div>
+  <div class="ui row">
+    <div class="ui column sixteen wide">
+      <h3 class="ui header">
+        {{t 'Updates about events'}}
+      </h3>
+    </div>
+  </div>
+</div>
+{{#each preferences as |event|}}
+  {{#ui-accordion class='ui segment'}}
+    <div class="ui grid title">
+      <div class="ui column eight wide">
+        <h4 class="ui header">{{event.name}}</h4>
+      </div>
+      <div class="ui column eight wide right aligned">
+        <a class="ui circular label {{if (or event.isNewPaper event.isChangeSchedule event.isNewEvent) 'green' 'yellow'}}">
+          {{#if (or event.isNewPaper event.isChangeSchedule event.isNewEvent)}}
+            {{t 'On'}}
+          {{else}}
+            {{t 'Off'}}
+          {{/if}}
+        </a>
+      </div>
+    </div>
+    <div class="ui grid content">
+      <h4 class="ui header">{{event.role}} {{t 'Notifications'}}</h4>
+      <div class="ui divided"></div>
+      <div class="row">
+        <div class="column eight wide">
+          {{t 'New Paper is Submitted to your Event'}}
+        </div>
+        <div class="ui column eight wide right aligned">
+          {{ui-checkbox class='toggle' checked=event.isNewPaper}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="column eight wide">
+          {{t 'Change in Schedule of Sessions in your Event'}}
+        </div>
+        <div class="ui column eight wide right aligned">
+          {{ui-checkbox class='toggle' checked=event.isChangeSchedule}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="column eight wide">
+          {{t 'Reminder for Next Event'}}
+        </div>
+        <div class="ui column eight wide right aligned">
+          {{ui-checkbox class='toggle' checked=event.isNewEvent}}
+        </div>
+      </div>
+    </div>
+  {{/ui-accordion}}
+{{/each}}
