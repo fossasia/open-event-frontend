@@ -1,5 +1,5 @@
 <div class="map item">
-  {{g-map lat=37.7833 lng=-122.4167 zoom=2 class="explore"}}
+  {{g-map lat=37.7833 lng=-122.4167 zoom=2 class='explore'}}
 </div>
 <div class="item">
   <div class="ui input">
@@ -61,8 +61,7 @@
     </span>
     <div class="content menu">
       {{#each dateRanges as |dateRange|}}
-        <a href="#" class="link item {{if (eq filters.dateRange dateRange.key) 'active'}}" {{action 'selectDateRange'
-                                                                                                    dateRange.key}}>
+        <a href="#" class="link item {{if (eq filters.dateRange dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
           {{dateRange.name}}
           {{#if (and (eq dateRange.key 'custom_dates') (eq filters.dateRange 'custom_dates'))}}
             <div class="explore sub menu">
