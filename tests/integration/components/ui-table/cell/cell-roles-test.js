@@ -6,5 +6,5 @@ moduleForComponent('ui-table/cell/cell-roles', 'Integration | Component | ui tab
 
 test('it renders', function(assert) {
   this.render(hbs `{{ui-table/cell/cell-roles}}`);
-  assert.ok(this.$().html().trim().includes('sample@gmail.com (Organizer)'));
+  assert.ok(this.$().html().trim().includes('(Organizer)'));
 });
