@@ -1,5 +1,5 @@
-<div class='event'>
-  <div class='description' id="info">
+<div class="event">
+  <div class="description" id="info">
     {{sanitize model.event.description}}
   </div>
   <div class="ui hidden divider"></div>
@@ -7,13 +7,13 @@
     {{public/ticket-list tickets=model.tickets}}
   </div>
   <div class="ui hidden divider"></div>
-  <div class='featured-speakers' id="speakers">
+  <div class="featured-speakers" id="speakers">
     <div class="row">
       {{public/featured-speaker-list speakers=featuredSpeakers}}
     </div>
   </div>
   <div class="ui hidden divider"></div>
-  <div class='speakers'>
+  <div class="speakers">
     <div class="row">
       {{public/speaker-list speakers=nonFeaturedSpeakers}}
     </div>
