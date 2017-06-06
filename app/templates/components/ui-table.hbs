@@ -23,7 +23,7 @@
             {{#if visibleContent.length}}
               {{#each visibleContent as |record index|}}
                 {{#if record}}
-                  {{#if index}}
+                  {{#if (gte index 0)}}
                     {{partial rowTemplate}}
                   {{/if}}
                 {{/if}}
