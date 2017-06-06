@@ -4,7 +4,7 @@
       <h1>
         {{t 'My tickets'}}
       </h1>
-      <div class="ui fluid pointing secondary menu">
+      {{#tabbed-navigation}}
         {{#link-to 'my-tickets.index' class='item'}}
           {{t 'Upcoming Events'}}
         {{/link-to}}
@@ -14,7 +14,7 @@
         {{#link-to 'my-tickets.past' class='item'}}
           {{t 'Past Events'}}
         {{/link-to}}
-      </div>
+      {{/tabbed-navigation}}
     </div>
   </div>
   {{outlet}}
