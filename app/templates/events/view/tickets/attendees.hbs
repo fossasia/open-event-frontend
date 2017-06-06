@@ -1,0 +1,150 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="eight wide column">
+      <h2 class="ui header">
+        {{t 'View Attendees'}}
+      </h2>
+    </div>
+    <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
+      {{#ui-dropdown class='compact selection'}}
+        <div class="default text">
+          {{t 'Export As'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="PDF">
+            <i class="file pdf outline icon"></i>
+            {{t 'PDF'}}
+          </div>
+          <div class="item" data-value="CSV">
+            <i class="file excel outline icon"></i>
+            {{t 'CSV'}}
+          </div>
+        </div>
+      {{/ui-dropdown}}
+      {{#ui-dropdown class='compact selection'}}
+        <div class="default text">
+          {{t 'Showing all the records'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="date">
+            <i class="calendar outline icon"></i>
+            {{t 'Filter by Date'}}
+          </div>
+          <div class="item" data-value="discount">
+            <i class="dollar icon"></i>
+            {{t 'Filter by Discount'}}
+          </div>
+          <div class="item" data-value="remove">
+            <i class="ban icon"></i>
+            {{t 'Remove Filters'}}
+          </div>
+        </div>
+      {{/ui-dropdown}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="ui hidden divider"></div>
+    <div class="ui {{if device.isMobile 'vertical'}} basic buttons">
+      <div class="ui button active">
+        {{t 'Completed'}}
+      </div>
+      <div class="ui button">
+        {{t 'Placed'}}
+      </div>
+      <div class="ui button">
+        {{t 'Pending'}}
+      </div>
+      <div class="ui button">
+        {{t 'Expired'}}
+      </div>
+      <div class="ui button">
+        {{t 'Cancelled'}}
+      </div>
+      <div class="ui button">
+        {{t 'Checked In'}}
+      </div>
+      <div class="ui button">
+        {{t 'Not Checked In'}}
+      </div>
+      <div class="ui button">
+        {{t 'All'}}
+      </div>
+    </div>
+    <table class="ui very basic table">
+      <thead>
+        <tr>
+          <th>
+            #
+          </th>
+          <th>
+            {{t 'Order'}}
+          </th>
+          <th>
+            {{t 'Ticket Name'}}
+          </th>
+          <th>
+            {{t 'Ticket Price'}}
+          </th>
+          <th>
+            {{t 'First Name'}}
+          </th>
+          <th>
+            {{t 'Last Name'}}
+          </th>
+          <th>
+            {{t 'Email'}}
+          </th>
+          <th>
+            {{t 'Action'}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |attendees|}}
+          <tr>
+            <td>
+              {{attendees.id}}
+            </td>
+            <td>
+              <div class="ui tiny header">
+                {{attendees.invoice_number}}
+                <span class="weight-400">
+                  {{t 'by'}} {{attendees.buyer_name}}
+                </span>
+                <div class="ui basic mini green label">
+                  {{attendees.status}}
+                </div>
+                <div class="sub header">
+                  <span class="weight-800">
+                    {{t 'Payment via'}} {{attendees.paid_via}}
+                  </span>
+                  {{moment-from-now attendees.completed_at}}
+                </div>
+              </div>
+            </td>
+            <td>
+              {{attendees.ticket_name}}
+            </td>
+            <td>
+              US $ {{attendees.amount}}
+            </td>
+            <td>
+              {{attendees.first_name}}
+            </td>
+            <td>
+              {{attendees.last_name}}
+            </td>
+            <td>
+              {{attendees.buyer}}
+            </td>
+            <td class="centre aligned">
+              <a class="ui green label"><i class="checkmark icon"></i>{{t 'Check In'}}</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
