@@ -48,6 +48,7 @@ router.map(function() {
       this.route('sessions');
       this.route('tickets', function() {
         this.route('orders');
+        this.route('attendees');
       });
     });
     this.route('live');
