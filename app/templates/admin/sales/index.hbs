@@ -1,0 +1,42 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h1 class="ui header six wide column">{{t 'Tickets Summary'}}</h1>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <table class="ui stackable structured celled table">
+        <thead>
+          <tr>
+            <th rowspan="2">{{t 'Events'}}</th>
+            <th rowspan="2">{{t 'Event Date'}}</th>
+            <th colspan="2" class="ui green inverted segment center aligned">{{t 'Completed Orders '}}</th>
+            <th colspan="2" class="ui blue inverted segment center aligned">{{t 'Placed Orders'}}</th>
+            <th colspan="2" class="ui yellow inverted segment center aligned">{{t 'Pending Orders '}}</th>
+          </tr>
+          <tr>
+            <th class="right aligned">{{t 'Tickets'}}</th>
+            <th class="right aligned">{{t 'Sales'}}</th>
+            <th class="right aligned">{{t 'Tickets'}}</th>
+            <th class="right aligned">{{t 'Sales'}}</th>
+            <th class="right aligned">{{t 'Tickets'}}</th>
+            <th class="right aligned">{{t 'Sales'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |entry|}}
+            <tr>
+              <td>{{entry.events}}</td>
+              <td>{{moment-format entry.eventDate 'ddd, MMM DD \at HH:mm A'}}</td>
+              <td class="right aligned">{{number-format entry.completedTickets}}</td>
+              <td class="right aligned">{{number-format entry.completedSales}}</td>
+              <td class="right aligned">{{number-format entry.placedTickets}}</td>
+              <td class="right aligned">{{number-format entry.placedSales}}</td>
+              <td class="right aligned">{{number-format entry.pendingTickets}}</td>
+              <td class="right aligned">{{number-format entry.pendingSales}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

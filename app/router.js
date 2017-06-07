@@ -76,7 +76,14 @@ router.map(function() {
   });
   this.route('admin', function() {
     this.route('events');
-    this.route('sales');
+    this.route('sales', function() {
+      this.route('organizers');
+      this.route('marketer');
+      this.route('locations');
+      this.route('fees');
+      this.route('status');
+      this.route('discounted-events');
+    });
     this.route('sessions');
     this.route('users');
     this.route('permissions');
