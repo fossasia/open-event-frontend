@@ -3,6 +3,6 @@
     {{currentRoute}}
   </div>
 {{/if}}
-<div class="mobile hidden ui fluid stackable {{unless device.isMobile 'pointing secondary'}} menu">
+<div class="mobile hidden ui fluid stackable {{unless device.isMobile (if isVertical 'pointing vertical' 'pointing secondary')}} menu">
   {{yield}}
 </div>
