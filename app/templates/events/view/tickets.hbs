@@ -2,9 +2,15 @@
   <div class="row">
     <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
       <div class="ui vertical fluid pointing menu">
-        <a class="item">{{t 'Overview'}}</a>
-        <a class="item">{{t 'Orders'}}</a>
-        <a class="item">{{t 'Attendees'}}</a>
+        {{#link-to 'events.view.tickets.index' class='item'}}
+          {{t 'Overview'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders' class='item'}}
+          {{t 'Orders'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees' class='item'}}
+          {{t 'Attendees'}}
+        {{/link-to}}
         <a class="item">{{t 'Discount Codes'}}</a>
         <a class="item">{{t 'Access Codes'}}</a>
         {{#link-to 'events.view.tickets.add-order' class='item'}}
