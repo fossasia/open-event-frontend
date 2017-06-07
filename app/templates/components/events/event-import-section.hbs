@@ -1,6 +1,6 @@
 <div class="sixteen wide column">
   <form class="ui form">
-    <div class="field five wide column">
+    <div class="field {{if device.isMobile 'sixteen' 'five'}} wide column">
       <label class='required'> {{t 'Select event source file to import'}}</label>
       {{input type='file'}}
       <br>
