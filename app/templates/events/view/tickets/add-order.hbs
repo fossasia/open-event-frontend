@@ -39,7 +39,9 @@
       {{/ui-dropdown}}
     </div>
     <div class="eight wide column right aligned">
-      <button class="ui teal button">{{t 'Continue'}}</button>
+      <button class="ui teal button" disabled={{not hasTicketsInOrder}}>
+        {{t 'Continue'}}
+      </button>
     </div>
   </div>
 </div>
