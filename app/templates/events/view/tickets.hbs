@@ -1,7 +1,7 @@
 <div class="ui grid">
   <div class="row">
     <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
-      <div class="ui vertical fluid pointing menu">
+      {{#tabbed-navigation isVertical=true}}
         {{#link-to 'events.view.tickets.index' class='item'}}
           {{t 'Overview'}}
         {{/link-to}}
@@ -16,7 +16,7 @@
         {{#link-to 'events.view.tickets.add-order' class='item'}}
           {{t 'Add order'}}
         {{/link-to}}
-      </div>
+      {{/tabbed-navigation}}
     </div>
     <div class="{{if device.isMobile 'sixteen' 'thirteen'}} wide column">
       {{outlet}}
