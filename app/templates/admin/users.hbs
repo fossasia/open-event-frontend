@@ -1,1 +1,98 @@
-{{outlet}}
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="twelve wide column">
+      <div class="ui basic buttons">
+        <button class="ui button">{{t 'All Users'}}</button>
+        <button class="ui button">{{t 'Active Users'}}</button>
+        <button class="ui button">{{t 'Deleted Users'}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <table class="ui stackable very basic table">
+        <thead>
+          <tr>
+            <th>{{t 'Name'}}</th>
+            <th>{{t 'Email'}}</th>
+            <th>{{t 'Status'}}</th>
+            <th>{{t 'System Roles'}}</th>
+            <th>{{t 'Event Roles'}}</th>
+            <th>{{t 'User Links'}}</th>
+            <th>{{t 'Member Since'}}</th>
+            <th>{{t 'Last Access'}}</th>
+            <th>{{t 'Options'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |user|}}
+            <tr>
+              <td>
+                {{user.name}}
+              </td>
+              <td>
+                {{user.email}}
+              </td>
+              <td>
+                {{#if (eq user.status "active")}}
+                  <div class="ui green label">{{t 'Active'}}</div>
+                {{else}}
+                  <div class="ui red label">{{t 'Inactive'}}</div>
+                {{/if}}
+              </td>
+              <td>
+                <div class="ui ordered list">
+                  {{#each user.systemRoles as |systemRoles|}}
+                    <div class="item">{{systemRoles}}</div>
+                  {{/each}}
+                </div>
+              </td>
+              <td>
+                <div class="ui ordered list">
+                  {{#each user.eventRoles as |eventRoles|}}
+                    <div class="item">{{eventRoles.name}}({{eventRoles.event.name}})</div>
+                  {{/each}}
+                </div>
+              </td>
+              <td>
+                <div class="ui ordered list">
+                  <div class="item">
+                    <a href="#">{{t 'Sessions'}}</a>
+                  </div>
+                  <div class="item">
+                    <a href="#">{{t 'Events'}}</a>
+                  </div>
+                  <div class="item">
+                    <a href="#">{{t 'Tickets'}}</a>
+                  </div>
+                  <div class="item">
+                    <a href="#">{{t 'Settings'}}</a>
+                  </div>
+                </div>
+              </td>
+              <td>
+                {{moment-from-now user.createdAt}}
+              </td>
+              <td>
+                {{moment-from-now user.lastAccessedAt}}
+              </td>
+              <td>
+                <div class="ui vertical compact basic buttons">
+                  {{#ui-popup content=(t 'View') class='ui icon button'}}
+                    <i class="unhide icon"></i>
+                  {{/ui-popup}}
+                  {{#ui-popup content=(t 'Edit') class='ui icon button'}}
+                    <i class="edit icon"></i>
+                  {{/ui-popup}}
+                  {{#ui-popup content=(t 'Delete') class='ui icon button'}}
+                    <i class="trash outline icon"></i>
+                  {{/ui-popup}}
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
