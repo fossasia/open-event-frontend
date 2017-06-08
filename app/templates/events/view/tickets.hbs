@@ -1,14 +1,22 @@
 <div class="ui grid">
   <div class="row">
     <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
-      <div class="ui vertical fluid pointing menu">
-        <a class="active item">{{t 'Overview'}}</a>
-        <a class="item">{{t 'Orders'}}</a>
-        <a class="item">{{t 'Attendees'}}</a>
+      {{#tabbed-navigation isVertical=true}}
+        {{#link-to 'events.view.tickets.index' class='item'}}
+          {{t 'Overview'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders' class='item'}}
+          {{t 'Orders'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees' class='item'}}
+          {{t 'Attendees'}}
+        {{/link-to}}
         <a class="item">{{t 'Discount Codes'}}</a>
         <a class="item">{{t 'Access Codes'}}</a>
-        <a class="item">{{t 'Add order'}}</a>
-      </div>
+        {{#link-to 'events.view.tickets.add-order' class='item'}}
+          {{t 'Add order'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
     </div>
     <div class="{{if device.isMobile 'sixteen' 'thirteen'}} wide column">
       {{outlet}}

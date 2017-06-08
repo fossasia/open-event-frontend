@@ -1,0 +1,33 @@
+<form class="ui form">
+  <div class="ui basic segment grid">
+    <div class="ui row segment">
+      <div class="column eight wide">
+        {{t 'Ticketing'}}
+      </div>
+      <div class="ui column eight wide field right aligned">
+        {{ui-checkbox class='toggle' checked=model.ticketing onChange=(action (mut model.ticketing))}}
+      </div>
+    </div>
+    <div class="ui row segment">
+      <div class="column eight wide">
+        {{t 'Payments'}}
+      </div>
+      <div class="ui column eight wide field right aligned">
+        {{ui-checkbox class='toggle' checked=model.payments onChange=(action (mut model.payments))}}
+      </div>
+    </div>
+    <div class="ui row segment">
+      <div class="column eight wide">
+        {{t 'Donations'}}
+      </div>
+      <div class="ui eight column wide field right aligned">
+        {{ui-checkbox class='toggle' checked=model.donations onChange=(action (mut model.donations))}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen column wide right aligned">
+        <button class="ui blue button">{{t 'Save'}}</button>
+      </div>
+    </div>
+  </div>
+</form>

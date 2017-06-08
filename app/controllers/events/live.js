@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Controller, String } = Ember;
+const { Controller } = Ember;
 export default Controller.extend({
   columns: [
     {
@@ -41,32 +41,5 @@ export default Controller.extend({
       template : 'components/ui-table/cell/cell-buttons',
       title    : ''
     }
-
-  ],
-  data: [{
-    name     : 'Event_Name',
-    date     : String.htmlSafe('<span>March 20, 2016 - 05:30 PM <br> To  <br>\n March 20, 2016 - 05:30 PM</span>'),
-    startAt  : 'March 20, 2016 - 05:30 PM',
-    endAt    : 'March 20, 2016 - 05:30 PM',
-    roles    : 'sample@gmail.com (Organizer)',
-    tickets  : String.htmlSafe(''),
-    sessions : String.htmlSafe(''),
-    speakers : '2',
-    url      : String.htmlSafe('<a href="">url here</a>'),
-    links    : String.htmlSafe('HELLO'),
-    image    : 'http://placehold.it/200x200'
-  },
-  {
-    name     : 'Event_Name2',
-    date     : String.htmlSafe('<span>March 20, 2016 - 05:30 PM <br> To  <br>\n March 20, 2016 - 05:30 PM</span>'),
-    startAt  : 'March 20, 2015 - 05:30 PM',
-    endAt    : 'March 20, 2016 - 05:30 PM',
-    roles    : 'sample@gmail.com (Organizer)',
-    tickets  : String.htmlSafe(''),
-    sessions : String.htmlSafe(''),
-    speakers : '2',
-    url      : String.htmlSafe('<a href="">url here</a>'),
-    links    : String.htmlSafe('HELLO'),
-    image    : 'http://placehold.it/200x200'
-  }]
+  ]
 });

@@ -49,7 +49,9 @@ router.map(function() {
       this.route('tickets', function() {
         this.route('orders');
         this.route('attendees');
+        this.route('add-order');
       });
+      this.route('speakers');
     });
     this.route('live');
     this.route('draft');
@@ -71,6 +73,18 @@ router.map(function() {
   });
   this.route('notifications', function() {
     this.route('all');
+  });
+  this.route('admin', function() {
+    this.route('events');
+    this.route('sales');
+    this.route('sessions');
+    this.route('users');
+    this.route('permissions');
+    this.route('reports');
+    this.route('messages');
+    this.route('settings');
+    this.route('modules');
+    this.route('content');
   });
 });
 

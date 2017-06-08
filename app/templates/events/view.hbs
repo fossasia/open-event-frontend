@@ -49,14 +49,16 @@
         {{#link-to 'events.view.sessions' class='item'}}
           {{t 'Sessions'}}
         {{/link-to}}
-        <a href="#" class='item'>{{t 'Speakers'}}</a>
+        {{#link-to 'events.view.speakers' class='item'}}
+          {{t 'Speakers'}}
+        {{/link-to}}
         {{#link-to 'events.view.export' class='item'}}
           {{t 'Export'}}
         {{/link-to}}
       {{/tabbed-navigation}}
     </div>
   </div>
-
+  
   <div class="ui segment">
     {{outlet}}
   </div>
