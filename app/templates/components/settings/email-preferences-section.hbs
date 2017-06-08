@@ -42,7 +42,7 @@
           {{t 'New Paper is Submitted to your Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=event.isNewPaper}}
+          {{ui-checkbox class='toggle' checked=event.isNewPaper onChange=(action (mut event.isNewPaper))}}
         </div>
       </div>
       <div class="row">
@@ -50,7 +50,7 @@
           {{t 'Change in Schedule of Sessions in your Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=event.isChangeSchedule}}
+          {{ui-checkbox class='toggle' checked=event.isChangeSchedule onChange=(action (mut event.isChangeSchedule))}}
         </div>
       </div>
       <div class="row">
@@ -58,7 +58,7 @@
           {{t 'Reminder for Next Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=event.isNewEvent}}
+          {{ui-checkbox class='toggle' checked=event.isNewEvent onChange=(action (mut event.isNewEvent))}}
         </div>
       </div>
     </div>
