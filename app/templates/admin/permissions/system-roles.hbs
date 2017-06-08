@@ -1,0 +1,125 @@
+<div class="hidden ui divider"></div>
+<div>
+  <h3 class="ui left aligned header">
+    {{t 'System Roles'}}
+  </h3>
+  <div class="ui divider"></div>
+</div>
+<div>
+  <h3 class="ui left aligned header">
+    {{t 'Pannel Permissions'}}
+  </h3>
+</div>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>{{t 'System Role'}}</th>
+      <th>{{t 'Panels'}}</th>
+      <th>{{t 'Actions'}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        {{t 'Admin'}}
+        <br>
+        {{t '(Built-in-Role)'}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        {{t 'Super Admin'}}
+        <br>
+        {{t '(Built-in-Role)'}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>{{t 'Sales Admin'}}</td>
+      <td>
+        <div class="ui bulleted list">
+          <div class="item">Sales Panel</div>
+        </div>
+      </td>
+      <td>
+        <div class="ui horizontal compact basic buttons">
+          {{#ui-popup content=(t 'Edit') class='ui icon button'}}
+            <i class="edit icon"></i>
+          {{/ui-popup}}
+          {{#ui-popup content=(t 'Delete') class='ui icon button'}}
+            <i class="trash outline icon"></i>
+          {{/ui-popup}}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>{{t 'Marketer'}}</td>
+      <td>
+        <div class="ui bulleted list">
+          <div class="item">Sales Panel</div>
+        </div>
+      </td>
+      <td>
+        <div class="ui horizontal compact basic buttons">
+          {{#ui-popup content=(t 'Edit') class='ui icon button'}}
+            <i class="edit icon"></i>
+          {{/ui-popup}}
+          {{#ui-popup content=(t 'Delete') class='ui icon button'}}
+            <i class="trash outline icon"></i>
+          {{/ui-popup}}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button class="ui basic button">{{t 'Add new Role'}}</button>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<div class="ui divider"></div>
+<div>
+  <h3 class="ui left aligned header">
+    {{t 'User Permissions'}}
+  </h3>
+</div>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>{{t 'Permission'}}</th>
+      <th>{{t 'Verified User'}}</th>
+      <th>{{t 'Unverified User'}}</th>
+      <th>{{t 'Anonymous User'}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{t 'Publish event (make event live)'}}</td>
+      <td>{{ui-checkbox label=(t 'Verified User')}}</td>
+      <td>{{ui-checkbox label=(t 'Unverified User')}}</td>
+      <td>
+        {{ui-checkbox label=(t 'Anonymous User')}}
+        <br>
+        {{t 'Account Creation is necessary.'}}
+      </td>
+    </tr>
+    <tr>
+      <td>{{t 'Create Event'}}</td>
+      <td>{{ui-checkbox label=(t 'Verified User')}}</td>
+      <td>{{ui-checkbox label=(t 'Unverified User')}}</td>
+      <td>
+        {{ui-checkbox label=(t 'Anonymous User')}}
+        <br>
+        {{t 'Account Creation is necessary.'}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <button class="ui teal button">{{t 'Save'}}</button>
+</div>

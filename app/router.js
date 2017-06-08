@@ -86,7 +86,10 @@ router.map(function() {
     });
     this.route('sessions');
     this.route('users');
-    this.route('permissions');
+    this.route('permissions', function() {
+      this.route('event-roles');
+      this.route('system-roles');
+    });
     this.route('reports');
     this.route('messages');
     this.route('settings', function() {
