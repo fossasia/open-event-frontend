@@ -52,6 +52,14 @@ export default ModelsTable.extend({
   pagesCount: computed('filteredContent.meta', function() {
     let pagesCountProperty = get(this, 'metaPagesCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
+    if ((get(meta, pagesCountProperty) || 1) === 1) {
+      this.$('.pagination').css({
+        display: 'none'
+      });
+      this.$('.page-size-dropdown').css({
+        display: 'none'
+      });
+    }
     return get(meta, pagesCountProperty) || 1;
   }),
 
