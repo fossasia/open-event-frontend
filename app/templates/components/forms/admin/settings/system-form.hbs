@@ -1,0 +1,76 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  <h3 class="ui header">
+    {{t 'App Environment'}}
+    <div class="sub header">
+      {{t 'Where is the application running ?'}}
+    </div>
+  </h3>
+  <div class="field">
+    {{ui-radio label=(t 'Development') current='development' name='environment' value='development'}}
+  </div>
+  <div class="field">
+    {{ui-radio label=(t 'Staging') name='environment' value='staging'}}
+  </div>
+  <div class="field">
+    {{ui-radio label=(t 'Production') name='environment' value='production'}}
+  </div>
+  <h3 class="ui header">
+    {{t 'App Name'}}
+    <div class="sub header">
+      {{t 'The name of your deployment. This will be used throughout this application.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'App Name'}}
+    </label>
+    {{input type='text' name='app_name'}}
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Tagline'}}
+    </label>
+    {{input type='text' name='tagline'}}
+  </div>
+  <div class="ui hidden divider"></div>
+
+  {{forms/admin/settings/system/social-media-token platform='Google' platformUrl='https://auth0.com/docs/connections/social/google'}}
+  {{forms/admin/settings/system/social-media-token platform='Facebook' platformUrl='https://developers.facebook.com/docs/apps/register'}}
+  {{forms/admin/settings/system/social-media-token platform='Twitter' platformUrl='https://dev.twitter.com/docs'}}
+  {{forms/admin/settings/system/social-media-token platform='Instagram' platformUrl='https://www.instagram.com/developer/authentication/'}}
+
+  <div class="ui hidden divider"></div>
+  {{forms/admin/settings/system/storage-option}}
+  <div class="ui hidden divider"></div>
+  {{forms/admin/settings/system/mail-settings}}
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'App secret key'}}
+    <div class="sub header">
+      {{t 'Secret key for the application. Recommended is a random string minimum 20 characters in length.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Secret'}}
+    </label>
+    {{input type='text' name='secret_key'}}
+  </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Super Admin Email ID'}}
+    <div class="sub header">
+      {{t 'The email ID of the super admin user created during initial deployment.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Email'}}
+    </label>
+    {{input type='text' name='super_admin_email'}}
+  </div>
+  <div class="ui divider"></div>
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>
