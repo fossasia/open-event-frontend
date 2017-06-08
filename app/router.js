@@ -82,7 +82,14 @@ router.map(function() {
     this.route('permissions');
     this.route('reports');
     this.route('messages');
-    this.route('settings');
+    this.route('settings', function() {
+      this.route('microlocations');
+      this.route('microservices');
+      this.route('images');
+      this.route('analytics');
+      this.route('payment-gateway');
+      this.route('ticket-fees');
+    });
     this.route('modules');
     this.route('content');
   });

@@ -1,1 +1,31 @@
-{{outlet}}
+<div class="ui container grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'admin.settings.index' class='item'}}
+          {{t 'System'}}
+        {{/link-to}}
+        {{#link-to 'admin.settings.microservices' class='item'}}
+          {{t 'Microservices'}}
+        {{/link-to}}
+        {{#link-to 'admin.settings.images' class='item'}}
+          {{t 'Images'}}
+        {{/link-to}}
+        {{#link-to 'admin.settings.analytics' class='item'}}
+          {{t 'Analytics'}}
+        {{/link-to}}
+        {{#link-to 'admin.settings.payment-gateway' class='item'}}
+          {{t 'Payment Gateways'}}
+        {{/link-to}}
+        {{#link-to 'admin.settings.ticket-fees' class='item'}}
+          {{t 'Ticket Fees'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>
