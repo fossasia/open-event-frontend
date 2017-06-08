@@ -1,0 +1,40 @@
+<div class="hidden ui divider"></div>
+<div>
+  <h3 class="ui left aligned header">
+    {{t 'Event Roles'}}
+  </h3>
+  <div class="ui divider"></div>
+</div>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>{{t 'Event Role/Service'}}</th>
+      <th>{{t 'Track'}}</th>
+      <th>{{t 'Session'}}</th>
+      <th>{{t 'Speaker'}}</th>
+      <th>{{t 'Sponsor'}}</th>
+      <th>{{t 'Microlocation'}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.roles as |item|}}
+      <tr>
+        <td>{{item}}</td>
+        {{#each (range 1 6) as |number|}}
+          <td>
+            {{ui-checkbox label=(t 'Create') id=(concat 'create_' number)}}
+            <br>
+            {{ui-checkbox label=(t 'Read') id=(concat 'read_' number)}}
+            <br>
+            {{ui-checkbox label=(t 'Update') id=(concat 'update_' number)}}
+            <br>
+            {{ui-checkbox label=(t 'Delete') id=(concat 'delete_' number)}}
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<div>
+  <button class="ui teal button">{{t 'Save'}}</button>
+</div>
