@@ -1,5 +1,8 @@
 <div class="{{classes.outerTableWrapper}}">
   <div class="{{classes.globalFilterDropdownWrapper}}">
+    {{#if showPageSize}}
+      {{partial pageSizeTemplate}}
+    {{/if}}
     {{#if showGlobalFilter}}
       {{partial globalFilterTemplate}}
     {{/if}}

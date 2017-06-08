@@ -42,23 +42,23 @@ const defaultIcons = {
 };
 
 const defaultCssClasses = {
-  outerTableWrapper              : '',
+  outerTableWrapper              : 'ui ui-table',
   innerTableWrapper              : 'ui segment column sixteen wide inner-table-wrapper',
   table                          : 'ui tablet stackable very basic table',
-  globalFilterWrapper            : 'right floated',
+  globalFilterWrapper            : 'ui row',
   columnsDropdownWrapper         : 'right floated columns-dropdown',
   columnsDropdownButtonWrapper   : 'buttons',
   columnsDropdown                : 'ui dropdown right floated',
   theadCell                      : 'ui',
   theadCellNoSorting             : 'table-header-no-sorting',
   theadCellNoFiltering           : 'table-header-no-filtering',
-  tfooterWrapper                 : 'table-footer ui grid',
-  footerSummary                  : 'table-summary',
+  tfooterWrapper                 : 'table-footer ui stackable grid',
+  footerSummary                  : 'text muted table-summary',
   footerSummaryNumericPagination : 'column four wide',
   footerSummaryDefaultPagination : 'column four wide',
-  pageSizeWrapper                : 'ui column two wide',
-  pageSizeSelectWrapper          : '',
-  paginationWrapper              : 'ui right floated',
+  pageSizeWrapper                : 'ui column eight wide grid',
+  pageSizeSelectWrapper          : 'left aligned',
+  paginationWrapper              : 'ui column right floated',
   paginationWrapperNumeric       : 'column four wide',
   paginationWrapperDefault       : 'column four wide',
   buttonDefault                  : 'ui basic button',
@@ -71,7 +71,7 @@ const defaultCssClasses = {
   input                          : '',
   clearFilterIcon                : 'remove circle icon',
   clearAllFiltersIcon            : 'remove circle outline icon',
-  globalFilterDropdownWrapper    : 'ui row grid'
+  globalFilterDropdownWrapper    : 'ui row stackable grid'
 };
 
 const assign = Object.assign || assign;
@@ -112,12 +112,6 @@ export default TableComponent.extend({
 
   showColumnsDropdown: false,
 
-  showGlobalFilter: true,
-
-  showPageSize: true,
-
-  useNumericPagination: true,
-
   useFilteringByColumns: false,
 
   globalFilterTemplate: 'components/ui-table/global-filter',
@@ -139,4 +133,5 @@ export default TableComponent.extend({
   noDataShowTemplate: 'components/ui-table/no-data',
 
   allColumnsHiddenTemplate: 'components/ui-table/all-columns-hidden'
+
 });
