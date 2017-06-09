@@ -55,9 +55,7 @@ router.map(function() {
       });
       this.route('speakers');
     });
-    this.route('live');
-    this.route('draft');
-    this.route('past');
+    this.route('list', { path: '/:event_state' });
     this.route('import');
   });
   this.route('profile');
