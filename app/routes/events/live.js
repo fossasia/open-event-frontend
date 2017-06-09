@@ -8,14 +8,54 @@ export default Route.extend({
   },
   model() {
     return [{
-      name     : 'Event_Name2',
-      startAt  : 'March 20, 2015 - 05:30 PM',
-      endAt    : 'March 20, 2016 - 05:30 PM',
-      roles    : 'sample@gmail.com (Organizer)',
-      tickets  : '',
-      sessions : '',
-      speakers : '2',
-      url      : 'url here',
+      name    : 'Event_Name2',
+      startAt : new Date(),
+      endAt   : new Date(),
+      roles   : [{
+        type  : 'Organiser',
+        email : 'sample@sample.com'
+      },
+      {
+        type  : 'Organiser',
+        email : 'sample2@sample.com'
+      }
+      ],
+      tickets: [{
+        type  : 'Premium',
+        order : 12,
+        total : 100
+      },
+      {
+        type  : 'VIP',
+        order : 10,
+        total : 10
+      }],
+      sessions: [{
+        type   : 'Drafts',
+        number : 1
+      },
+      {
+        type   : 'Submitted',
+        number : 40
+      },
+      {
+        type   : 'Accepted',
+        number : 10
+      },
+      {
+        type   : 'Confirmed',
+        number : 19
+      },
+      {
+        type   : 'Pending',
+        number : 1
+      },
+      {
+        type   : 'Rejected',
+        number : 15
+      }],
+      speakers : 2,
+      url      : 'http://127.0.0.1:4200/events/live',
       links    : '',
       image    : 'http://placehold.it/200x200'
     }];
