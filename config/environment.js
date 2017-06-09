@@ -20,8 +20,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || 'https://open-event-dev.herokuapp.com',
-      apiNamespace : process.env.API_NAMESPACE || 'api/v1'
+      apiHost      : process.env.API_HOST || 'https://open-event-api.herokuapp.com',
+      apiNamespace : process.env.API_NAMESPACE || 'v1'
     },
 
     metricsAdapters: [
@@ -116,7 +116,7 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth-token'] = {
     refreshAccessTokens      : false,
-    serverTokenEndpoint      : `${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/login`,
+    serverTokenEndpoint      : `${ENV.APP.apiHost}/auth/session`,
     identificationField      : 'email',
     passwordField            : 'password',
     tokenPropertyName        : 'access_token',
@@ -161,7 +161,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     if (process.env.DEPLOY_TARGET && process.env.DEPLOY_TARGET === 'gh-pages') {
       ENV.locationType = 'hash';
-      ENV.rootURL = `/${  process.env.REPO_SLUG || 'open-event-frontend'}`;
+      ENV.rootURL = `/${process.env.REPO_SLUG || 'open-event-frontend'}`;
     }
   }
 
