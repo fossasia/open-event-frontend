@@ -48,7 +48,7 @@ export default Mixin.create({
         });
       }
 
-      const $checkBoxes = this.$('.ui.checkbox');
+      const $checkBoxes = this.$('.ui.checkbox:not(.ember-view)');
       if ($checkBoxes) {
         $checkBoxes.checkbox();
       }
