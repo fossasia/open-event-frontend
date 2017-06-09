@@ -93,7 +93,12 @@ router.map(function() {
       this.route('ticket-fees');
     });
     this.route('modules');
-    this.route('content');
+    this.route('content', function() {
+      this.route('social-links');
+      this.route('pages');
+      this.route('system-images');
+      this.route('translations');
+    });
   });
 });
 
