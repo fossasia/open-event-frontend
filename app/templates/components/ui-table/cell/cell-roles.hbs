@@ -1,1 +1,5 @@
-<span>sample@gmail.com (Organizer)</span>
+<div class="ui list">
+  {{#each record.roles as |role|}}
+    <div class="item">{{role.email}} ({{role.type}})</div>
+  {{/each}}
+</div>

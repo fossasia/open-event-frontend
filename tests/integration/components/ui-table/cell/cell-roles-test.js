@@ -4,7 +4,10 @@ import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('ui-table/cell/cell-roles', 'Integration | Component | ui table/cell/cell roles');
 
+const record = { roles: [{ type: 'Organiser', email: 'sample@sample.com' }] };
+
 test('it renders', function(assert) {
-  this.render(hbs `{{ui-table/cell/cell-roles}}`);
-  assert.ok(this.$().html().trim().includes('sample@gmail.com (Organizer)'));
+  this.set('record', record);
+  this.render(hbs `{{ui-table/cell/cell-roles record=record}}`);
+  assert.ok(this.$().html().trim().includes('Organiser'));
 });
