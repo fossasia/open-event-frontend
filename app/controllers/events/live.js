@@ -34,8 +34,8 @@ export default Controller.extend({
     },
     {
       propertyName : 'url',
-      title        : 'Public URL',
-      class        : 'hide'
+      template     : 'components/ui-table/cell/cell-link',
+      title        : 'Public URL'
     },
     {
       template : 'components/ui-table/cell/cell-buttons',

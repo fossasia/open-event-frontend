@@ -1,8 +1,5 @@
 <div class="ui list">
-  <div class="item">Drafts: 0</div>
-  <div class="item">Submitted: 0</div>
-  <div class="item">Accepted: 0</div>
-  <div class="item">Confirmed: 0</div>
-  <div class="item">Pending: 0</div>
-  <div class="item">Rejected: 0</div>
+  {{#each record.sessions as |session|}}
+    <div class="item">{{session.type}}: {{session.number}}</div>
+  {{/each}}
 </div>

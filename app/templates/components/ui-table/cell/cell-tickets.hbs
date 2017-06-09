@@ -1,1 +1,5 @@
-<div class="ui bulleted list"><div class="item">Premium (12/100)</div><div class="item">VIP (10/15)</div><div class="item">Normal (100/200)</div><div class="item">Free (100/500)</div></div>
+<div class="ui bulleted list">
+  {{#each record.tickets as |ticket|}}
+    <div class="item">{{ticket.type}} ({{ticket.order}}/{{ticket.total}})</div>
+  {{/each}}
+</div>
