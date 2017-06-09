@@ -24,13 +24,13 @@
     <label>
       {{t 'App Name'}}
     </label>
-    {{input type='text' name='app_name'}}
+    {{input type='text' name='app_name' required=true}}
   </div>
   <div class="field">
     <label>
       {{t 'Tagline'}}
     </label>
-    {{input type='text' name='tagline'}}
+    {{input type='text' name='tag_line' required=true}}
   </div>
   <div class="ui hidden divider"></div>
 
@@ -54,7 +54,7 @@
     <label>
       {{t 'Secret'}}
     </label>
-    {{input type='text' name='secret_key'}}
+    {{input type='text' name='secret_key' required=true}}
   </div>
   <div class="ui hidden divider"></div>
   <h3 class="ui header">
@@ -67,7 +67,7 @@
     <label>
       {{t 'Email'}}
     </label>
-    {{input type='text' name='super_admin_email'}}
+    {{input type='email' name='super_admin_email' required=true}}
   </div>
   <div class="ui divider"></div>
   <button class="ui teal wide button" type="submit">
