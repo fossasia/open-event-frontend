@@ -69,8 +69,7 @@ router.map(function() {
   });
   this.route('explore');
   this.route('my-tickets', function() {
-    this.route('saved');
-    this.route('past');
+    this.route('list', { path: '/:tickets_state' });
   });
   this.route('notifications', function() {
     this.route('all');
