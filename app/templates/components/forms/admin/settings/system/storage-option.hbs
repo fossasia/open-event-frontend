@@ -25,19 +25,19 @@
     <label>
       {{t 'Bucket name'}}
     </label>
-    {{input type='text' name='google_storage_bucket_name' required=true}}
+    {{input type='text' name='google_storage_bucket_name'}}
   </div>
   <div class="field">
     <label>
       {{t 'Interoperable access key'}}
     </label>
-    {{input type='text' name='google_storage_access_key' required=true}}
+    {{input type='text' name='google_storage_access_key'}}
   </div>
   <div class="field">
     <label>
       {{t 'Interoperable access secret'}}
     </label>
-    {{input type='text' name='google_storage_access_secret' required=true}}
+    {{input type='text' name='google_storage_access_secret'}}
   </div>
   <div class="ui hidden divider"></div>
 {{/if}}
@@ -57,7 +57,7 @@
       {{t 'Region'}}
     </label>
     {{#ui-dropdown class='fluid selection'}}
-      {{input type='hidden' name='amazon_s3_region' required=true}}
+      {{input type='hidden' name='amazon_s3_region'}}
       <div class="default text">
         {{t 'Select S3 Region'}}
       </div>
@@ -75,18 +75,18 @@
     <label>
       {{t 'Bucket name'}}
     </label>
-    {{input type='text' name='amazon_s3_bucket_name' required=true}}
+    {{input type='text' name='amazon_s3_bucket_name'}}
   </div>
   <div class="field">
     <label>
       {{t 'Key'}}
     </label>
-    {{input type='text' name='amazon_s3_key' required=true}}
+    {{input type='text' name='amazon_s3_key'}}
   </div>
   <div class="field">
     <label>
       {{t 'Secret'}}
     </label>
-    {{input type='text' name='amazon_s3_secret' required=true}}
+    {{input type='text' name='amazon_s3_secret'}}
   </div>
 {{/if}}

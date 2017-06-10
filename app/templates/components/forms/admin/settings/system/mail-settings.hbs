@@ -5,13 +5,13 @@
   <label>
     {{t 'From Email'}}
   </label>
-  {{input type='text' name='email_from' required=true}}
+  {{input type='email' name='email_from'}}
 </div>
 <div class="field">
   <label>
     {{t 'From Name'}}
   </label>
-  {{input type='text' name='email_from_name' required=true}}
+  {{input type='text' name='email_from_name'}}
 </div>
 <div class="ui hidden divider"></div>
 <div class="field">
@@ -25,13 +25,13 @@
     <label>
       {{t 'Host'}}
     </label>
-    {{input type='text' name='smtp_host' required=true}}
+    {{input type='text' name='smtp_host'}}
   </div>
   <div class="field">
     <label>
       {{t 'Port'}}
     </label>
-    {{input type='number' name='smtp_port' required=true}}
+    {{input type='number' name='smtp_port'}}
   </div>
   <div class="less padding field">
     <label>{{t 'Encryption'}}</label>
@@ -61,13 +61,13 @@
     <label>
       {{t 'Username'}}
     </label>
-    {{input type='text' name='smtp_username' required=true}}
+    {{input type='text' name='smtp_username'}}
   </div>
   <div class="field">
     <label>
       {{t 'Password'}}
     </label>
-    {{input type='password' name='smtp_password' required=true}}
+    {{input type='password' name='smtp_password'}}
   </div>
   <div class="ui hidden divider"></div>
 {{/if}}
@@ -86,6 +86,6 @@
     <label>
       {{t 'Sendgrid Token'}}
     </label>
-    {{input type='text' name='sendgrid_token' required=true}}
+    {{input type='text' name='sendgrid_token'}}
   </div>
 {{/if}}
