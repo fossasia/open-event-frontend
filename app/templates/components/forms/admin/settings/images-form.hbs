@@ -1,0 +1,144 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  {{#each-in images as |index image|}}
+    {{#if (eq image.type 'event')}}
+      <h2 class="ui header">{{t 'Event Images'}}</h2>
+      <h3 class="ui header">{{t 'Large Size'}}</h3>
+      <div class="three fields">
+        <div class="field">
+          <label>{{t 'Width (in px)'}}</label>
+          {{input type='number' name='large_width' value=image.fullWidth}}
+        </div>
+        <div class="field">
+          <label>{{t 'Height (in px)'}}</label>
+          {{input type='number' name='large_height' value=image.fullHeight}}
+        </div>
+        <div class="field">
+          <label>{{t 'Quality (in %)'}}</label>
+          {{input type='number' name='large_quality' value=image.fullQuality}}
+        </div>
+      </div>
+      <div class="field">
+        {{ui-checkbox label='Standard aspect ratio is 13:5. Tick to maintain aspect ratio.' class='checkbox' name='large_ratio' checked=image.fullAspect onChange=(action (mut image.fullAspect))}}
+      </div>
+      {{t 'Standard Size of the available area is 1300px X 500px'}}
+      <p>{{t 'Found in :'}}</p>
+      <div class="ui bulleted list">
+        <div class="item">{{t 'Background Header Image in Public Event Page'}}</div>
+      </div>
+
+      <h3 class="ui header">{{t 'Thumbnail Size'}}</h3>
+      <div class="three fields">
+        <div class="field">
+          <label>{{t 'Width (in px)'}}</label>
+          {{input type='number' name='thumb_width' value=image.thumbnailWidth}}
+        </div>
+        <div class="field">
+          <label>{{t 'Height (in px)'}}</label>
+          {{input type='number' name='thumb_height' value=image.thumbnailHeight}}
+        </div>
+        <div class="field">
+          <label>{{t 'Quality (in %)'}}</label>
+          {{input type='number' name='thumb_quality' value=image.thumbnailQuality}}
+        </div>
+      </div>
+      <div class="field">
+        {{ui-checkbox label='Standard aspect ratio is 5:2. Tick to maintain aspect ratio.' class='checkbox' name='thumb_ratio' checked=image.thumbnailAspect onChange=(action (mut image.thumbnailAspect))}}
+      </div>
+      {{t 'Standard Size of the available area is 500px X 200px'}}
+      {{t 'Found in :'}}
+      <div class="ui bulleted list">
+        <div class="item">{{t 'Home Page Event Images'}}</div>
+        <div class="item">{{t 'My Session Page Event Images'}}</div>
+        <div class="item">{{t 'My Ticket Page Event Images'}}</div>
+      </div>
+
+      <h3 class="ui header">{{t 'Icon Size'}}</h3>
+      <div class="three fields">
+        <div class="field">
+          <label>{{t 'Width (in px)'}}</label>
+          {{input type='number' name='event_icon_width' value=image.iconWidth}}
+        </div>
+        <div class="field">
+          <label>{{t 'Height (in px)'}}</label>
+          {{input type='number' name='event_icon_height' value=image.iconHeight}}
+        </div>
+        <div class="field">
+          <label>{{t 'Quality (in %)'}}</label>
+          {{input type='number' name='event_icon_quality' value=image.iconQuality}}
+        </div>
+      </div>
+      <div class="field">
+        {{ui-checkbox label='Standard aspect ratio is 5:2. Tick to maintain aspect ratio.' class='checkbox' name='icon_ratio' checked=image.iconAspect onChange=(action (mut image.iconAspect))}}
+      </div>
+      {{t 'Standard Size of the available area is 75px X 30px'}}
+
+
+      <h3 class="ui header">{{t 'Logo Size (Event Wizard)'}}</h3>
+      <div class="three fields">
+        <div class="field">
+          <label>{{t 'Width (in px)'}}</label>
+          {{input type='number' name='logo_width' value=image.logoWidth}}
+        </div>
+        <div class="field">
+          <label>{{t 'Height (in px)'}}</label>
+          {{input type='number' name='logo_height' value=image.logoHeight}}
+        </div>
+      </div>
+      {{t 'Standard Size of the available area is 500px X 200px'}}
+
+    {{else}}
+      <h2 class="ui header">{{t 'Profile/Speaker Images'}}</h2>
+      <h3 class="ui header">{{t 'Thumbnail Size'}}</h3>
+      <div class="two fields">
+        <div class="field">
+          <label>{{t 'Width & Height(in px)'}}</label>
+          {{input type='number' name='profile_thumb_size' value=image.thumbnailWidth}}
+        </div>
+        <div class="field">
+          <label>{{t 'Quality (in %)'}}</label>
+          {{input type='number' name='profile_thumb_quality' value=image.thumbnailQuality}}
+        </div>
+      </div>
+      {{t 'Standard Size of the available area is 150px X 150px'}}
+      <p>{{t 'Found in :'}}</p>
+      <div class="ui bulleted list">
+        <div class="item">{{t 'Event Public Page'}}</div>
+      </div>
+
+      <h3 class="ui header">{{t 'Small Size'}}</h3>
+      <div class="two fields">
+        <div class="field">
+          <label>{{t 'Width & Height(in px)'}}</label>
+          {{input type='number' name='profile_small_size' value=image.smallWidth}}
+        </div>
+        <div class="field">
+          <label>{{t 'Quality (in %)'}}</label>
+          {{input type='number' name='profile_small_quality' value=image.smallQuality}}
+        </div>
+      </div>
+      {{t 'Standard Size of the available area is 50px X 50px'}}
+      <p>{{t 'Found in :'}}</p>
+      <div class="ui bulleted list">
+        <div class="item">{{t 'Speaker Tab in Event Dashboard'}}</div>
+      </div>
+
+      <h3 class="ui header">{{t 'Icon Size'}}</h3>
+      <div class="two fields">
+        <div class="field">
+          <label>{{t 'Width & Height(in px)'}}</label>
+          {{input type='number' name='profile_icon_size' value=image.iconWidth}}
+        </div>
+        <div class="field">
+          <label>{{t 'Quality (in %)'}}</label>
+          {{input type='number' name='profile_icon_quality' value=image.iconQuality}}
+        </div>
+      </div>
+      {{t 'Standard Size of the available area is 35px X 35px'}}
+      <p>{{t 'Found in :'}}</p>
+      <div class="ui bulleted list">
+        <div class="item">{{t 'Top Bar Right Corner'}}</div>
+      </div>
+    {{/if}}
+  {{/each-in}}
+  <button class="column ui teal button" type="submit" name="submit" style="margin-top: 10px">{{t 'Save'}}</button>
+</form>
