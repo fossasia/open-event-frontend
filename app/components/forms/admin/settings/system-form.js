@@ -100,6 +100,30 @@ export default Component.extend(FormMixin, {
           ]
         },
 
+        email_from: {
+          identifier : 'email_from',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.i18n.t('Please enter the from email')
+            },
+            {
+              type   : 'email',
+              prompt : this.i18n.t('Please enter a valid  email address')
+            }
+          ]
+        },
+
+        email_from_name: {
+          identifier : 'email_from_name',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.i18n.t('Please enter name for from email')
+            }
+          ]
+        },
+
         smtp_host: {
           identifier : 'smtp_host',
           rules      : [
