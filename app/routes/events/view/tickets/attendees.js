@@ -15,7 +15,7 @@ export default Route.extend({
         'invoice_number' : '#O1496523209-306',
         'amount'         : 0,
         'paid_via'       : 'Free',
-        'buyer'          : 'sample@gmail.com',
+        'buyer_name'     : 'sample@gmail.com',
         'first_name'     : 'john',
         'last_name'      : 'Doe',
         'ticket_name'    : 'A'
@@ -27,7 +27,7 @@ export default Route.extend({
         'invoice_number' : '#O1496523209-306',
         'amount'         : 0,
         'paid_via'       : 'Free',
-        'buyer'          : 'sample@gmail.com',
+        'buyer_name'     : 'sample@gmail.com',
         'first_name'     : 'aajohn',
         'last_name'      : 'bbDoe',
         'ticket_name'    : 'A'
