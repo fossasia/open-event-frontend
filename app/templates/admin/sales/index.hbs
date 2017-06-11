@@ -27,11 +27,11 @@
             <tr>
               <td>{{entry.events}}</td>
               <td>{{moment-format entry.eventDate 'ddd, MMM DD \at HH:mm A'}}</td>
-              <td class="right aligned">{{number-format entry.completedTickets}}</td>
+              <td class="right aligned">{{entry.completedTickets}}</td>
               <td class="right aligned">{{number-format entry.completedSales}}</td>
-              <td class="right aligned">{{number-format entry.placedTickets}}</td>
+              <td class="right aligned">{{entry.placedTickets}}</td>
               <td class="right aligned">{{number-format entry.placedSales}}</td>
-              <td class="right aligned">{{number-format entry.pendingTickets}}</td>
+              <td class="right aligned">{{entry.pendingTickets}}</td>
               <td class="right aligned">{{number-format entry.pendingSales}}</td>
             </tr>
           {{/each}}
