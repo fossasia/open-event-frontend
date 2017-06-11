@@ -1,0 +1,48 @@
+<div class="ui segments">
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'Order Summary'}}</h3>
+  </div>
+  <table class="ui very basic tablet stackable table" style="padding:10px">
+    <thead>
+      <tr>
+        <th class="four wide">{{t 'Ticket Type'}}</th>
+        <th class="four wide">{{t 'Price'}}</th>
+        <th class="ui aligned two wide">{{t 'Fee'}}</th>
+        <th class="one wide">{{t 'Quantity'}}</th>
+        <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="ui small">
+            {{t 'Student/In'}}
+          </div>
+        </td>
+        <td>Thu, May 25</td>
+        <td>$ {{number-format 4.0}}</td>
+        <td>1</td>
+        <td>
+          $ {{number-format 4.0}}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot class="full-width">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>
+          <div class="ui aligned small primary icon">
+            {{t 'Order Total'}}:
+          </div>
+        </th>
+        <th colspan="4">
+          <div class="ui aligned small primary icon">
+            $ {{number-format 4.0}}
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

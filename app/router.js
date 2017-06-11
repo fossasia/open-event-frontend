@@ -108,6 +108,9 @@ router.map(function() {
       this.route('translations');
     });
   });
+  this.route('orders', function() {
+    this.route('new');
+  });
 });
 
 export default router;
