@@ -1,0 +1,116 @@
+<form class="ui form" {{action 'submit' on='submit' }}>
+  <div class="ui segments">
+    <div class="ui aligned secondary segment">
+      <h3 class="weight-400">{{t 'Registration Information'}}</h3>
+    </div>
+    <div class="ui yellow inverted segment">
+      <div class="ui inverted small horizontal statistic">
+        <div class="value">
+          8:48
+        </div>
+        <div class="label">
+          {{t 'Please complete registration within 10:00 minutes.'}}
+          <br>
+          {{t 'After 10:00 minutes, the reservation we\'re holding will be released to others.'}}
+        </div>
+      </div>
+    </div>
+    <div class="ui padded segment">
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Ticket Buyer'}}
+      </h4>
+      <div class="field">
+        <label class="required" for="firstname">{{t 'First Name'}}</label>
+        {{input type='text' name='first_name' value=buyer.firstName}}
+      </div>
+      <div class="field">
+        <label class="required" for="lastname">{{t 'Last Name'}}</label>
+        {{input type='text' name='last_name' value=buyer.lastName}}
+      </div>
+      <div class="field">
+        <label class="required" for="email">{{t 'Email'}}</label>
+        {{input type='text' name='email' value=buyer.email}}
+      </div>
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Ticket Holder\'s Information'}}
+      </h4>
+      {{#each holders as |holder index|}}
+        <div class="inline field">
+          <i class="user icon"></i>
+          <label>{{t 'Ticket Holder '}}{{inc index}}</label>
+        </div>
+        <div class="field">
+          <label class="required" for="firstname">{{t 'First Name'}}</label>
+          {{input type='text' name=(concat 'first_name_' index) value=holder.firstName}}
+        </div>
+        <div class="field">
+          <label class="required" for="lastname">{{t 'Last Name'}}</label>
+          {{input type='text' name=(concat 'last_name_' index) value=holder.lastName}}
+        </div>
+        <div class="field">
+          <label class="required" for="email">{{t 'Email'}}</label>
+          {{input type='text' name=(concat 'email_' index) value=holder.email}}
+        </div>
+        <div class="field">
+          {{ui-checkbox label=(t 'Same as Ticket Buyer') checked=holder.sameAsBuyer onChange=(action 'fillHolderData' holder)}}
+        </div>
+      {{/each}}
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Billing Information'}}
+      </h4>
+      <div class="field">
+        <label class="required">{{t 'Select country'}}</label>
+        {{#ui-dropdown class='search selection'}}
+          {{input type='hidden' id='country'}}
+          <i class="dropdown icon"></i>
+          <div class="default text">{{t 'Select country'}}</div>
+          <div class="menu">
+            {{#each countries as |country|}}
+              <div class="item">
+                {{country.name}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
+      </div>
+      <div class="field">
+        <label class="required" for="address">{{t 'Address'}}</label>
+        {{textarea rows='2' id='address'}}
+      </div>
+      <div class="field">
+        <label class="required" for="city">{{t 'City'}}</label>
+        {{input type='text' id='city'}}
+      </div>
+      <div class="field">
+        <label class="required" for="state">{{t 'State/Province'}}</label>
+        {{input type='text' id='state'}}
+      </div>
+      <div class="field">
+        <label class="required" for="zipcode">{{t 'Zip Code'}}</label>
+        {{input type='text' id='zip_code'}}
+      </div>
+      <div class="field">
+        <label class="required" for="pay_via">{{t 'Pay Via'}}</label>
+        <div class="grouped inline fields">
+          <div class="field">
+            {{ui-radio name='pay_via' value='stripe'}}
+            <label for="pay_via"><img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe"></label>
+          </div>
+          <div class="field">
+            {{ui-radio name='pay_via' value='paypal'}}
+            <label for="pay_via"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
+          </div>
+        </div>
+      </div>
+      <p>
+        {{t 'By clicking "Pay Now", I acknowledge that I have read and agree with the Open Event terms of services and privacy policy.'}}
+      </p>
+      <div class="center aligned">
+        <button type="submit" class="ui teal submit button">{{t 'Pay Now'}}</button>
+      </div>
+    </div>
+  </div>
+</form>
