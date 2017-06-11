@@ -50,13 +50,12 @@ router.map(function() {
         this.route('orders');
         this.route('attendees');
         this.route('add-order');
+        this.route('discount-codes');
         this.route('access', { path: 'access-codes' });
       });
       this.route('speakers');
     });
-    this.route('live');
-    this.route('draft');
-    this.route('past');
+    this.route('list', { path: '/:event_state' });
     this.route('import');
   });
   this.route('profile');
@@ -77,10 +76,20 @@ router.map(function() {
   });
   this.route('admin', function() {
     this.route('events');
-    this.route('sales');
+    this.route('sales', function() {
+      this.route('organizers');
+      this.route('marketer');
+      this.route('locations');
+      this.route('fees');
+      this.route('status');
+      this.route('discounted-events');
+    });
     this.route('sessions');
     this.route('users');
-    this.route('permissions');
+    this.route('permissions', function() {
+      this.route('event-roles');
+      this.route('system-roles');
+    });
     this.route('reports');
     this.route('messages');
     this.route('settings', function() {
@@ -92,7 +101,12 @@ router.map(function() {
       this.route('ticket-fees');
     });
     this.route('modules');
-    this.route('content');
+    this.route('content', function() {
+      this.route('social-links');
+      this.route('pages');
+      this.route('system-images');
+      this.route('translations');
+    });
   });
   this.route('orders', function() {
     this.route('new');

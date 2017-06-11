@@ -1,1 +1,25 @@
-{{outlet}}
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'admin.content.index' class='item'}}
+          {{t 'Social Links'}}
+        {{/link-to}}
+        {{#link-to 'admin.content.social-links' class='item'}}
+          {{t 'Pages'}}
+        {{/link-to}}
+        {{#link-to 'admin.content.system-images' class='item'}}
+          {{t 'System Images'}}
+        {{/link-to}}
+        {{#link-to 'admin.content.translations' class='item'}}
+          {{t 'Translations'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>

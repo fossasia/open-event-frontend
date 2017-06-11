@@ -1,1 +1,71 @@
-{{outlet}}
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="twelve wide column">
+      <div class="ui basic buttons">
+        <button class="ui button">{{t 'All Sessions'}}</button>
+        <button class="ui button">{{t 'All Pending'}}</button>
+        <button class="ui button">{{t 'All Accepted'}}</button>
+        <button class="ui button">{{t 'All Rejected'}}</button>
+        <button class="ui button">{{t 'All Deleted'}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <table class="ui stackable very basic table">
+        <thead>
+          <tr>
+            <th>{{t 'Event'}}</th>
+            <th>{{t 'Title'}}</th>
+            <th>{{t 'Speaker'}}</th>
+            <th>{{t 'Date of Submission'}}</th>
+            <th>{{t 'Start Date'}}</th>
+            <th>{{t 'End Date'}}</th>
+            <th>{{t 'options'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |sessions|}}
+            <tr>
+              <td>
+                {{sessions.event.name}}
+              </td>
+              <td>
+                {{sessions.title}}
+              </td>
+              <td>
+                <div class="ui ordered list">
+                  {{#each sessions.speakers as |speaker|}}
+                    <div class="item">{{speaker.name}}</div>
+                  {{/each}}
+                </div>
+              </td>
+              <td>
+                {{moment-format speaker.submittedAt 'dddd, DD MMMM YYYY'}}
+              </td>
+              <td>
+                {{moment-format speaker.startsAt 'MM/DD/YYYY'}}
+              </td>
+              <td>
+                {{moment-format speaker.endsAt 'MM/DD/YYYY'}}
+              </td>
+              <td>
+                <div class="ui vertical compact basic buttons">
+                  {{#ui-popup content=(t 'View') class='ui icon button'}}
+                    <i class="unhide icon"></i>
+                  {{/ui-popup}}
+                  {{#ui-popup content=(t 'Edit') class='ui icon button'}}
+                    <i class="edit icon"></i>
+                  {{/ui-popup}}
+                  {{#ui-popup content=(t 'Delete') class='ui icon button'}}
+                    <i class="trash outline icon"></i>
+                  {{/ui-popup}}
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
