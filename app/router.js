@@ -84,7 +84,9 @@ router.map(function() {
       this.route('status');
       this.route('discounted-events');
     });
-    this.route('sessions');
+    this.route('sessions',  function() {
+      this.route('list', { path: '/:sessions_state' });
+    });
     this.route('users');
     this.route('permissions', function() {
       this.route('event-roles');
