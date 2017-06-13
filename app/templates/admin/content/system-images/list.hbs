@@ -1,0 +1,9 @@
+<div class="ui segment">
+  {{#each model as |subTopic|}}
+    <h4>{{subTopic.name}}</h4>
+    <img src="{{subTopic.placeholder.originalImageUrl}}" class="ui fluid image" alt={{subTopic.name}}>
+    <div class="ui hidden divider"></div>
+    <button class="ui button primary" {{action 'openModal' subTopic}} id="changebutton">{{t 'Change'}}</button>
+  {{/each}}
+</div>
+{{modals/change-image-modal isOpen=isModalOpen subTopic=selectedSubTopic}}
