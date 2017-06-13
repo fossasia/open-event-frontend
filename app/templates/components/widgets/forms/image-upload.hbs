@@ -43,6 +43,5 @@
   </label>
 {{/if}}
 {{#if needsCropper}}
-  {{modals/cropper-modal isOpen=cropperModalIsShown imgData=imgData onImageCrop=(action 'imageCropped')}}
+  {{modals/cropper-modal isOpen=cropperModalIsShown imgData=imgData onImageCrop=(action 'imageCropped') aspectRatio=aspectRatio}}
 {{/if}}
-
