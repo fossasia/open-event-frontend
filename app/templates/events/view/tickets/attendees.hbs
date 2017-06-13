@@ -72,7 +72,7 @@
         {{t 'All'}}
       </div>
     </div>
-    <table class="ui very basic table">
+    <table class="ui very basic compact table">
       <thead>
         <tr>
           <th>
@@ -102,10 +102,10 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model as |attendees|}}
+        {{#each model as |attendees index|}}
           <tr>
             <td>
-              {{attendees.id}}
+              {{inc index}}
             </td>
             <td>
               <div class="ui tiny header">
