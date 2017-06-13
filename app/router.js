@@ -136,7 +136,9 @@ router.map(function() {
     this.route('content', function() {
       this.route('social-links');
       this.route('pages');
-      this.route('system-images');
+      this.route('system-images', function() {
+        this.route('list', { path: '/:topic_id' });
+      });
       this.route('translations');
     });
   });
