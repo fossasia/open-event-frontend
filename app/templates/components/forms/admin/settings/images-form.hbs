@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="field">
-        {{ui-checkbox label='Standard aspect ratio is 13:5. Tick to maintain aspect ratio.' class='checkbox' name='large_ratio' checked=image.fullAspect onChange=(action (mut image.fullAspect))}}
+        {{ui-checkbox label=(t 'Standard aspect ratio is 13:5. Tick to maintain aspect ratio.') class='checkbox' name='large_ratio' checked=image.fullAspect onChange=(action (mut image.fullAspect))}}
       </div>
       {{t 'Standard Size of the available area is 1300px X 500px'}}
       <p>{{t 'Found in :'}}</p>
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="field">
-        {{ui-checkbox label='Standard aspect ratio is 5:2. Tick to maintain aspect ratio.' class='checkbox' name='thumb_ratio' checked=image.thumbnailAspect onChange=(action (mut image.thumbnailAspect))}}
+        {{ui-checkbox label=(t 'Standard aspect ratio is 5:2. Tick to maintain aspect ratio.') class='checkbox' name='thumb_ratio' checked=image.thumbnailAspect onChange=(action (mut image.thumbnailAspect))}}
       </div>
       {{t 'Standard Size of the available area is 500px X 200px'}}
       {{t 'Found in :'}}
@@ -68,10 +68,9 @@
         </div>
       </div>
       <div class="field">
-        {{ui-checkbox label='Standard aspect ratio is 5:2. Tick to maintain aspect ratio.' class='checkbox' name='icon_ratio' checked=image.iconAspect onChange=(action (mut image.iconAspect))}}
+        {{ui-checkbox label=(t 'Standard aspect ratio is 5:2. Tick to maintain aspect ratio.') class='checkbox' name='icon_ratio' checked=image.iconAspect onChange=(action (mut image.iconAspect))}}
       </div>
       {{t 'Standard Size of the available area is 75px X 30px'}}
-
 
       <h3 class="ui header">{{t 'Logo Size (Event Wizard)'}}</h3>
       <div class="three fields">
@@ -140,5 +139,6 @@
       </div>
     {{/if}}
   {{/each-in}}
-  <button class="column ui teal button" type="submit" name="submit" style="margin-top: 10px">{{t 'Save'}}</button>
+  <div class="ui hidden divided"></div>
+  <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
 </form>
