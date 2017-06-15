@@ -11,7 +11,7 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        large_width: {
+        largeWidth: {
           identifier : 'large_width',
           rules      : [
             {
@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        large_height: {
+        largeHeight: {
           identifier : 'large_height',
           rules      : [
             {
@@ -29,7 +29,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        large_quality: {
+        largeQuality: {
           identifier : 'large_quality',
           rules      : [
             {
@@ -38,7 +38,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        thumb_width: {
+        thumbWidth: {
           identifier : 'thumb_width',
           rules      : [
             {
@@ -47,7 +47,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        thumb_height: {
+        thumbHeight: {
           identifier : 'thumb_height',
           rules      : [
             {
@@ -56,7 +56,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        thumb_quality: {
+        thumbQuality: {
           identifier : 'thumb_quality',
           rules      : [
             {
@@ -65,7 +65,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        event_icon_width: {
+        eventIconWidth: {
           identifier : 'event_icon_width',
           rules      : [
             {
@@ -74,7 +74,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        event_icon_height: {
+        eventIconHeight: {
           identifier : 'event_icon_height',
           rules      : [
             {
@@ -83,7 +83,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        event_icon_quality: {
+        eventIconQuality: {
           identifier : 'event_icon_quality',
           rules      : [
             {
@@ -92,7 +92,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        logo_width: {
+        logoWidth: {
           identifier : 'logo_width',
           rules      : [
             {
@@ -101,7 +101,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        logo_height: {
+        logoHeight: {
           identifier : 'logo_height',
           rules      : [
             {
@@ -110,7 +110,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        profile_thumb_size: {
+        profileThumbSize: {
           identifier : 'profile_thumb_size',
           rules      : [
             {
@@ -119,7 +119,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        profile_thumb_quality: {
+        profileThumbQuality: {
           identifier : 'profile_thumb_quality',
           rules      : [
             {
@@ -128,7 +128,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        profile_small_size: {
+        profileSmallSize: {
           identifier : 'profile_small_size',
           rules      : [
             {
@@ -137,7 +137,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        profile_small_quality: {
+        profileSmallQuality: {
           identifier : 'profile_small_quality',
           rules      : [
             {
@@ -146,7 +146,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        profile_icon_size: {
+        profileIconSize: {
           identifier : 'profile_icon_size',
           rules      : [
             {
@@ -155,7 +155,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        profile_icon_quality: {
+        profileIconQuality: {
           identifier : 'profile_icon_quality',
           rules      : [
             {

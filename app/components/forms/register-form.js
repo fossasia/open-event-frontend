@@ -37,7 +37,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        password_repeat: {
+        passwordRepeat: {
           identifier : 'password_repeat',
           rules      : [
             {

@@ -10,7 +10,7 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        app_name: {
+        appName: {
           identifier : 'app_name',
           rules      : [
             {
@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        tag_line: {
+        tagLine: {
           identifier : 'tag_line',
           rules      : [
             {
@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        google_storage_bucket_name: {
+        googleStorageBucketName: {
           identifier : 'google_storage_bucket_name',
           rules      : [
             {
@@ -40,7 +40,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        google_storage_access_key: {
+        googleStorageAccessKey: {
           identifier : 'google_storage_access_key',
           rules      : [
             {
@@ -50,7 +50,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        google_storage_access_secret: {
+        googleStorageAccessSecret: {
           identifier : 'google_storage_access_secret',
           rules      : [
             {
@@ -60,7 +60,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        amazon_s3_region: {
+        amazonS3Region: {
           identifier : 'amazon_s3_region',
           rules      : [
             {
@@ -70,7 +70,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        amazon_s3_bucket_name: {
+        amazonS3BucketName: {
           identifier : 'amazon_s3_bucket_name',
           rules      : [
             {
@@ -80,7 +80,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        amazon_s3_key: {
+        amazonS3Key: {
           identifier : 'amazon_s3_key',
           rules      : [
             {
@@ -90,7 +90,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        amazon_s3_secret: {
+        amazonS3Secret: {
           identifier : 'amazon_s3_secret',
           rules      : [
             {
@@ -100,7 +100,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        email_from: {
+        emailFrom: {
           identifier : 'email_from',
           rules      : [
             {
@@ -114,7 +114,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        email_from_name: {
+        emailFromName: {
           identifier : 'email_from_name',
           rules      : [
             {
@@ -124,7 +124,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        smtp_host: {
+        smtpHost: {
           identifier : 'smtp_host',
           rules      : [
             {
@@ -134,7 +134,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        smtp_port: {
+        smtpPort: {
           identifier : 'smtp_port',
           rules      : [
             {
@@ -148,7 +148,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        smtp_username: {
+        smtpUsername: {
           identifier : 'smtp_username',
           rules      : [
             {
@@ -158,7 +158,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        smtp_password: {
+        smtpPassword: {
           identifier : 'smtp_password',
           rules      : [
             {
@@ -168,7 +168,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        sendgrid_token: {
+        sendgridToken: {
           identifier : 'sendgrid_token',
           rules      : [
             {
@@ -178,7 +178,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        super_admin_email: {
+        superAdminEmail: {
           identifier : 'super_admin_email',
           rules      : [
             {
@@ -188,7 +188,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        secret_key: {
+        secretKey: {
           identifier : 'secret_key',
           rules      : [
             {
