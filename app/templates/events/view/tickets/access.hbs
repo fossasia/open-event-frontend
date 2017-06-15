@@ -3,7 +3,7 @@
 {{/if}}
 <div class="ui stackable grid">
   <div class="row">
-    <h1 class="ui header eight wide column left floated {{if device.isMobile 'center' 'left'}} aligned">{{t 'Access Codes'}}</h1>
+    <h2 class="ui header eight wide column left floated {{if device.isMobile 'center' 'left'}} aligned">{{t 'Access Codes'}}</h2>
     <div class="eight wide column {{if device.isMobile 'center' 'right'}} aligned"><button class="ui button primary">{{t 'Create an access code'}}</button></div>
   </div>
   <div class="row">
@@ -37,9 +37,9 @@
             <td>{{entry.accessibleTicket}}</td>
             <td>{{entry.validity}}</td>
             {{#if entry.isActive}}
-              <td><div class="ui basic mini green label center aligned">{{t 'Active'}}</div></td>
+              <td><div class="ui green label center aligned">{{t 'Active'}}</div></td>
             {{else}}
-              <td><div class="ui basic mini red label center aligned">{{t 'Inactive'}}</div></td>
+              <td><div class="ui red label center aligned">{{t 'Inactive'}}</div></td>
             {{/if}}
             <td>
               <div class="ui vertical compact basic buttons">

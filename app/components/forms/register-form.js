@@ -37,7 +37,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        password_repeat: {
+        passwordRepeat: {
           identifier : 'password_repeat',
           rules      : [
             {
@@ -68,12 +68,8 @@ export default Component.extend(FormMixin, {
             this.set('session.newUser', data.email);
             this.get('routing').transitionTo('login');
           })
-          .catch(reason => {
-            if (reason.hasOwnProperty('code') && reason.code === 401) {
-              this.set('errorMessage', this.i18n.t('Your credentials were incorrect.'));
-            } else {
-              this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
-            }
+          .catch(() => {
+            this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
             this.set('isLoading', false);
           });
       });

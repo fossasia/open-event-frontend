@@ -1,0 +1,23 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  <h3 class="ui header">
+    {{t 'Android App Generator'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Server'}}
+    </label>
+    {{input type='url' name='android_app' placeholder='http://droidgen.eventyay.com/api/v2/'}}
+  </div>
+  <h3 class="ui header">
+    {{t 'Web App Generator'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Server'}}
+    </label>
+    {{input type='url' name='web_app' placeholder='https://opev-webgen-dev.herokuapp.com'}}
+  </div>
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>
