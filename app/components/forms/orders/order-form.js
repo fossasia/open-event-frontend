@@ -60,7 +60,7 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        firstname: {
+        firstName: {
           identifier : 'first_name',
           rules      : [
             {
@@ -69,7 +69,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        lastname: {
+        lastName: {
           identifier : 'last_name',
           rules      : [
             {
@@ -123,7 +123,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        zipcode: {
+        zipCode: {
           identifier : 'zip_code',
           rules      : [
             {
@@ -132,7 +132,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        payvia: {
+        payVia: {
           identifier : 'pay_via',
           rules      : [
             {

@@ -21,7 +21,8 @@ export default Component.extend(FormMixin, {
       on     : 'blur',
       fields : {
         name: {
-          rules: [
+          identifier : 'name',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please give your event a name')
@@ -29,15 +30,17 @@ export default Component.extend(FormMixin, {
           ]
         },
         timezone: {
-          rules: [
+          identifier : 'timezone',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Choose a timezone for your event')
             }
           ]
         },
-        start_date: {
-          rules: [
+        startDate: {
+          identifier : 'start_date',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please tell us when your event starts')
@@ -48,8 +51,9 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        end_date: {
-          rules: [
+        endDate: {
+          identifier : 'end_date',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please tell us when your event ends')
@@ -60,43 +64,48 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        start_time: {
-          depends : 'start_date',
-          rules   : [
+        startTime: {
+          identifier : 'start_time',
+          depends    : 'start_date',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please give a start time')
             }
           ]
         },
-        end_time: {
-          depends : 'end_date',
-          rules   : [
+        endTime: {
+          identifier : 'end_time',
+          depends    : 'end_date',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please give an end time')
             }
           ]
         },
-        ticket_name: {
-          rules: [
+        ticketName: {
+          identifier : 'ticket_name',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please give your ticket a name')
             }
           ]
         },
-        ticket_description: {
-          optional : true,
-          rules    : [
+        ticketDescription: {
+          identifier : 'ticket_description',
+          optional   : true,
+          rules      : [
             {
               type   : 'maxLength[160]',
               prompt : this.i18n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
             }
           ]
         },
-        ticket_price: {
-          rules: [
+        ticketPrice: {
+          identifier : 'ticket_price',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please give your ticket a price')
@@ -107,8 +116,9 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        ticket_quantity: {
-          rules: [
+        ticketQuantity: {
+          identifier : 'ticket_quantity',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Please specify how many tickets of this type are available')
@@ -119,8 +129,9 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        ticket_min_order: {
-          rules: [
+        ticketMinOrder: {
+          identifier : 'ticket_min_order',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Minimum tickets per order required')
@@ -131,8 +142,9 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        ticket_max_order: {
-          rules: [
+        ticketMaxOrder: {
+          identifier : 'ticket_max_order',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.i18n.t('Maximum tickets per order required')
