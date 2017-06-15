@@ -15,17 +15,17 @@
       </a>
     {{/unless}}
     <a class="main content" href="{{href-to 'public' event.identifier}}">
-      <div class="header">
-        <span>{{event.name}}</span>
-      </div>
+      {{#smart-overflow class='header'}}
+        {{event.name}}
+      {{/smart-overflow}}
       <div class="meta">
         <span class="date">
           {{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}
         </span>
       </div>
-      <div class="description">
+      {{#smart-overflow class='description'}}
         {{event.shortLocationName}}
-      </div>
+      {{/smart-overflow}}
     </a>
     <div class="extra content small text">
       <span class="right floated">
