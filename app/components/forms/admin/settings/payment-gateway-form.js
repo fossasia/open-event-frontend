@@ -10,7 +10,7 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        stripe_client_id: {
+        stripeClientId: {
           identifier : 'stripe_client_id',
           rules      : [
             {
@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        stripe_secret_key: {
+        stripeSecretKey: {
           identifier : 'stripe_secret_key',
           rules      : [
             {
@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        stripe_publishable_key: {
+        stripePublishableKey: {
           identifier : 'stripe_publishable_key',
           rules      : [
             {
@@ -40,7 +40,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        sandbox_username: {
+        sandboxUsername: {
           identifier : 'sandbox_username',
           rules      : [
             {
@@ -50,7 +50,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        sandbox_password: {
+        sandboxPassword: {
           identifier : 'sandbox_password',
           rules      : [
             {
@@ -60,7 +60,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        sandbox_signature: {
+        sandboxSignature: {
           identifier : 'sandbox_signature',
           rules      : [
             {
@@ -70,7 +70,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        live_username: {
+        liveUsername: {
           identifier : 'live_username',
           rules      : [
             {
@@ -80,7 +80,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        live_password: {
+        livePassword: {
           identifier : 'live_password',
           rules      : [
             {
@@ -90,7 +90,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        live_signature: {
+        liveSignature: {
           identifier : 'live_signature',
           rules      : [
             {

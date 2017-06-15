@@ -10,7 +10,7 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        android_app: {
+        androidApp: {
           optional   : true,
           identifier : 'android_app',
           rules      : [
@@ -21,7 +21,7 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        web_app: {
+        webApp: {
           optional   : true,
           identifier : 'web_app',
           rules      : [
