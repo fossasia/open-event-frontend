@@ -1,0 +1,8 @@
+{{#if device.isMobile}}
+  <button {{action 'toggleMenu'}} class="ui basic icon button mobile only full-width">
+    <i class="content icon"></i>{{currentButton}}
+  </button>
+{{/if}}
+<div class="mobile hidden ui {{if device.isMobile 'stackable compact menu' 'basic buttons'}}">
+  {{yield}}
+</div>
