@@ -1,106 +1,37 @@
-<div class="ui basic buttons">
-  <button class="ui button">{{t 'All'}}</button>
-  <button class="ui button">{{t 'Pending'}}</button>
-  <button class="ui button">{{t 'Accepted'}}</button>
-  <button class="ui button">{{t 'Confirmed'}}</button>
-  <button class="ui button">{{t 'Rejected'}}</button>
-</div>
-<button class="ui teal button">{{t 'Create Session'}}</button>
-{{#ui-dropdown class='ui icon top right pointing dropdown button'}}
-  {{t 'Export'}}
-  <i class="download icon"></i>
-  <div class="menu">
-    <div class="item">CSV</div>
-    <div class="item">PDF</div>
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="eight wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'events.view.sessions.index' class='item'}}
+          {{t 'All'}}
+        {{/link-to}}
+        {{#link-to 'events.view.sessions.list' 'pending' class='item'}}
+          {{t 'Pending'}}
+        {{/link-to}}
+        {{#link-to 'events.view.sessions.list' 'accepted' class='item'}}
+          {{t 'Accepted'}}
+        {{/link-to}}
+        {{#link-to 'events.view.sessions.list' 'confirmed' class='item'}}
+          {{t 'Confirmed'}}
+        {{/link-to}}
+        {{#link-to 'events.view.sessions.list' 'rejected' class='item'}}
+          {{t 'Rejected'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+    <div class="eight wide column">
+      <button class="ui teal button right floated">{{t 'Create Session'}}</button>
+      {{#ui-dropdown class='ui right floated icon top right pointing dropdown button'}}
+        {{t 'Export'}}
+        <i class="download icon"></i>
+        <div class="menu">
+          <div class="item">{{t 'CSV'}}</div>
+          <div class="item">{{t 'PDF'}}</div>
+        </div>
+      {{/ui-dropdown}}
+    </div>
   </div>
-{{/ui-dropdown}}
-<br><br>
-<div class="row">
-  <div class="sixteen wide column">
-    <table class="ui tablet stackable very basic table">
-      <thead>
-        <tr>
-          <th>{{t 'State'}}</th>
-          <th>{{t 'Title'}}</th>
-          <th>{{t 'Speakers'}}</th>
-          <th>{{t 'Track'}}</th>
-          <th>{{t 'Short Abstract'}}</th>
-          <th>{{t 'Submission Date'}}</th>
-          <th>{{t 'Last Modified'}}</th>
-          <th>{{t 'Email Sent'}}</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div>
-              <div class="ui green label">{{t 'Confirmed'}}</div>
-            </div>
-          </td>
-          <td>
-            Test Session
-          </td>
-          <td>
-            <div class="ui ordered list">
-              <div class="item">Mario Behling</div>
-              <div class="item">Test</div>
-            </div>
-          </td>
-          <td>
-            Blockchain
-          </td>
-          <td>
-            Get an outlook of the awesome program of the weekend from track organizers and the content team.
-          </td>
-          <td>
-            March 18, 2017
-            <br> 09:30 AM
-          </td>
-          <td>
-            March 25,
-            <br> 09:30 PM
-          </td>
-          <td>
-            No
-          </td>
-          <td>
-            <div class="ui vertical compact basic buttons">
-              {{#ui-popup content=(t 'View') class='ui icon button' position='left center'}}
-                <i class="unhide icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Edit') class='ui icon button' position='left center'}}
-                <i class="edit icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Delete') class='ui icon button' position='left center'}}
-                <i class="trash outline icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Browse edit history') class='ui icon button' position='left center'}}
-                <i class="history icon"></i>
-              {{/ui-popup}}
-            </div>
-          </td>
-          <td>
-            <div class="ui vertical compact basic buttons">
-              {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
-                <i class="green checkmark icon"></i>
-                <div class="menu">
-                  <div class="item">{{t 'With email'}}</div>
-                  <div class="item">{{t 'Without email'}}</div>
-                </div>
-              {{/ui-dropdown}}
-              {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
-                <i class="red remove icon"></i>
-                <div class="menu">
-                  <div class="item">{{t 'With email'}}</div>
-                  <div class="item">{{t 'Without email'}}</div>
-                </div>
-              {{/ui-dropdown}}
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row">
+    {{outlet}}
   </div>
 </div>
