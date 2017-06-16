@@ -1,10 +1,10 @@
-<div class="ui basic buttons">
-  <button class="ui button">{{t 'All'}}</button>
-  <button class="ui button">{{t 'Pending'}}</button>
-  <button class="ui button">{{t 'Accepted'}}</button>
-  <button class="ui button">{{t 'Confirmed'}}</button>
-  <button class="ui button">{{t 'Rejected'}}</button>
-</div>
+{{#mobile-buttons}}
+  <div class="ui button">{{t 'All'}}</div>
+  <div class="ui button">{{t 'Pending'}}</div>
+  <div class="ui button">{{t 'Accepted'}}</div>
+  <div class="ui button">{{t 'Confirmed'}}</div>
+  <div class="ui button">{{t 'Rejected'}}</div>
+{{/mobile-buttons}}
 <button class="ui teal button">{{t 'Create Session'}}</button>
 {{#ui-dropdown class='ui icon top right pointing dropdown button'}}
   {{t 'Export'}}
