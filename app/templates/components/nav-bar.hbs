@@ -54,12 +54,12 @@
   </div>
 </div>
 <div class="mobile only row">
-  <div class="ui navbar menu">
+  <div class="ui navbar {{if device.isMobile 'tiny'}} menu">
     <a class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
-    {{#link-to 'index' class='header item' activeClass=''}}
-      <h3>{{config.appName}} </h3>
+    {{#link-to 'index' class='item' activeClass=''}}
+      <div class="ui header {{if device.isMobile 'small text'}}">{{config.appName}}</div>
     {{/link-to}}
     <div class="right menu">
       {{#if session.isAuthenticated}}
@@ -68,7 +68,7 @@
         </a>
       {{/if}}
       <div class="item">
-        <a class="ui blue button" style="text-transform: uppercase; font-weight: 400;" href="{{href-to 'create'}}">
+        <a class="ui blue button button-text {{if device.isMobile 'small text'}}" style="text-transform: uppercase; font-weight: 400;" href="{{href-to 'create'}}">
           {{t 'Create Event'}}
         </a>
       </div>
