@@ -94,7 +94,14 @@ router.map(function() {
       this.route('event-roles');
       this.route('system-roles');
     });
-    this.route('reports');
+    this.route('reports', function() {
+      this.route('kubernetes-server-logs');
+      this.route('system-logs', function() {
+        this.route('activity-logs');
+        this.route('mail-logs');
+        this.route('notification-logs');
+      });
+    });
     this.route('messages');
     this.route('settings', function() {
       this.route('microlocations');
