@@ -45,7 +45,9 @@ router.map(function() {
         this.route('sessions-speakers');
       });
       this.route('export');
-      this.route('sessions');
+      this.route('sessions', function() {
+        this.route('list', { path: '/:session_status' });
+      });
       this.route('tickets', function() {
         this.route('orders');
         this.route('attendees');
