@@ -77,7 +77,10 @@ router.map(function() {
     this.route('all');
   });
   this.route('admin', function() {
-    this.route('events');
+    this.route('events', function() {
+      this.route('list', { path: '/:events_status' });
+      this.route('import');
+    });
     this.route('sales', function() {
       this.route('organizers');
       this.route('marketer');
