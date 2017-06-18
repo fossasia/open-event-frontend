@@ -1,0 +1,79 @@
+<div class="sixteen column wide">
+  <table class="ui stackable very basic table compact">
+    <thead>
+      <tr>
+        <th>{{t 'Name'}}</th>
+        <th>{{t 'State'}}</th>
+        <th>{{t 'Public URL'}}</th>
+        <th>{{t 'Start Date'}}</th>
+        <th>{{t 'End Date'}}</th>
+        <th>{{t 'Roles'}}</th>
+        <th>{{t 'Sessions'}}</th>
+        <th>{{t 'Speakers'}}</th>
+        <th>{{t 'Tickets'}}</th>
+        <th>{{t 'Options'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model as |event|}}
+        <tr>
+          <td>
+            {{event.name}}
+          </td>
+          <td>
+            {{event.state}}
+          </td>
+          <td>
+            {{event.publicUrl}}
+          </td>
+          <td>
+            {{moment-format event.startDate 'MM/DD/YYYY'}}
+          </td>
+          <td>
+            {{moment-format event.endDate 'MM/DD/YYYY'}}
+          </td>
+          <td>
+            <div class="ui ordered list">
+              {{#each event.roles as |roles|}}
+                <div class="item">{{roles.name}}({{roles.event.name}})</div>
+              {{/each}}
+            </div>
+          </td>
+          <td>
+            <div class="ui ordered list">
+              <div class="item">{{t 'draft'}} : {{event.sessions.draft}}</div>
+              <div class="item">{{t 'Submitted'}} : {{event.sessions.submitted}}</div>
+              <div class="item">{{t 'Accepted'}} : {{event.sessions.accepted}}</div>
+              <div class="item">{{t 'Confirmed'}} : {{event.sessions.confirmed}}</div>
+              <div class="item">{{t 'Pending'}} : {{event.sessions.pending}}</div>
+              <div class="item">{{t 'Rejected'}} : {{event.sessions.rejected}}</div>
+            </div>
+          </td>
+          <td class="{{unless device.isMobile 'center aligned'}}">
+            {{event.speaker}}
+          </td>
+          <td>
+            <div class="ui ordered list">
+              {{#each event.tickets as |ticket|}}
+                <div class="item">{{ticket.name}} ({{ticket.order}}/{{ticket.total}})</div>
+              {{/each}}
+            </div>
+          </td>
+          <td>
+            <div class="ui vertical compact basic buttons">
+              {{#ui-popup content=(t 'View') class='ui icon button' position='left center'}}
+                <i class="unhide icon"></i>
+              {{/ui-popup}}
+              {{#ui-popup content=(t 'Edit') class='ui icon button' position='left center'}}
+                <i class="edit icon"></i>
+              {{/ui-popup}}
+              {{#ui-popup content=(t 'Delete') class='ui icon button' position='left center'}}
+                <i class="trash outline icon"></i>
+              {{/ui-popup}}
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
