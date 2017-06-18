@@ -55,7 +55,9 @@ router.map(function() {
         this.route('discount-codes');
         this.route('access', { path: 'access-codes' });
       });
-      this.route('speakers');
+      this.route('speakers', function() {
+        this.route('list', { path: '/:speakers_status' });
+      });
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
