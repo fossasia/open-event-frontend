@@ -1,1 +1,49 @@
-{{outlet}}
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="column">
+      <h2 class="ui header">
+        {{t 'Invoices'}}
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <table class="ui stackable structured celled table">
+        <thead>
+          <tr>
+            <th>{{t 'Invoice#'}}</th>
+            <th>{{t 'Event'}}</th>
+            <th>{{t 'Dated'}}</th>
+            <th>{{t 'Amount'}}</th>
+            <th>{{t 'Sent To'}}</th>
+            <th>{{t 'Status'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |invoiceDetail|}}
+            <tr>
+              <td>
+                {{invoiceDetail.invoice}}
+              </td>
+              <td>
+                {{invoiceDetail.event}}
+              </td>
+              <td>
+                {{moment-format invoiceDetail.date 'ddd, MMM DD \at HH:mm A'}}
+              </td>
+              <td>
+                US$ {{number-format invoiceDetail.amount}}
+              </td>
+              <td>
+                {{invoiceDetail.sentTo}}
+              </td>
+              <td>
+                {{invoiceDetail.status}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
