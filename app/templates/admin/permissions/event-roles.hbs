@@ -17,20 +17,20 @@
     </tr>
   </thead>
   <tbody>
-    {{#each model.roles as |item|}}
+    {{#each model.roles as |role|}}
       <tr>
-        <td>{{item}}</td>
-        {{#each (range 1 6) as |number|}}
+        <td>{{role}}</td>
+        {{#n-times times=5}}
           <td>
-            {{ui-checkbox label=(t 'Create') id=(concat 'create_' number)}}
+            {{ui-checkbox label=(t 'Create')}}
             <br>
-            {{ui-checkbox label=(t 'Read') id=(concat 'read_' number)}}
+            {{ui-checkbox label=(t 'Read')}}
             <br>
-            {{ui-checkbox label=(t 'Update') id=(concat 'update_' number)}}
+            {{ui-checkbox label=(t 'Update')}}
             <br>
-            {{ui-checkbox label=(t 'Delete') id=(concat 'delete_' number)}}
+            {{ui-checkbox label=(t 'Delete')}}
           </td>
-        {{/each}}
+        {{/n-times}}
       </tr>
     {{/each}}
   </tbody>
