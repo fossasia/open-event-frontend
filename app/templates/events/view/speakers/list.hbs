@@ -2,39 +2,44 @@
   <table class="ui stackable very basic table">
     <thead>
       <tr>
-        <th>{{t 'Event'}}</th>
-        <th>{{t 'Title'}}</th>
-        <th>{{t 'Speaker'}}</th>
-        <th>{{t 'Date of Submission'}}</th>
-        <th>{{t 'Start Date'}}</th>
-        <th>{{t 'End Date'}}</th>
-        <th>{{t 'Options'}}</th>
+        <th>{{t 'Name'}}</th>
+        <th>{{t 'Email'}}</th>
+        <th>{{t 'Phone'}}</th>
+        <th>{{t 'Submitted Sessions'}}</th>
+        <th>{{t 'State'}}</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      {{#each model as |session|}}
+      {{#each model as |speaker|}}
         <tr>
           <td>
-            {{session.event.name}}
+            <a class="ui avatar round image">
+              {{widgets/safe-image src=speaker.image}}
+            </a>
+            {{speaker.name}}
           </td>
           <td>
-            {{session.title}}
+            {{speaker.email}}
+          </td>
+          <td>
+            {{speaker.phone}}
           </td>
           <td>
             <div class="ui ordered list">
-              {{#each session.speakers as |speaker|}}
-                <div class="item">{{speaker.name}}</div>
+              {{#each speaker.submitted_session as |session|}}
+                <div class="item">{{session}}</div>
               {{/each}}
             </div>
           </td>
           <td>
-            {{moment-format session.submittedAt 'dddd, DD MMMM YYYY'}}
-          </td>
-          <td>
-            {{moment-format session.startsAt 'MM/DD/YYYY'}}
-          </td>
-          <td>
-            {{moment-format session.endsAt 'MM/DD/YYYY'}}
+            <div>
+              {{#if (eq speaker.state 'confirmed')}}
+                <div class="ui green label">{{t 'Confirmed'}}</div>
+              {{else}}
+                <div class="ui red label">{{t 'Canceled'}}</div>
+              {{/if}}
+            </div>
           </td>
           <td>
             <div class="ui vertical compact basic buttons">
