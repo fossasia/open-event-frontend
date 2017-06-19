@@ -1,1 +1,69 @@
-{{outlet}}
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="column">
+      <h2 class="ui header">
+        {{t 'Fee Summary'}}
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <table class="ui stackable structured celled table">
+        <thead>
+          <tr>
+            <th rowspan="2">
+              {{t 'Events'}}
+            </th>
+            <th colspan="3" class="ui green inverted segment center aligned">
+              {{t 'Completed Orders '}}
+            </th>
+          </tr>
+          <tr>
+            <th class="right aligned">
+              {{t 'Tickets'}}
+            </th>
+            <th class="right aligned">
+              {{t 'Fee'}}
+            </th>
+            <th class="right aligned">
+              {{t 'Revenue'}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |order|}}
+            <tr>
+              <td>
+                {{order.event}}
+              </td>
+              <td class="right aligned">
+                {{order.tickets}}
+              </td>
+              <td class="right aligned">
+                {{number-format order.fee}}%
+              </td>
+              <td class="right aligned">
+                US$ {{number-format order.revenue}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>
+              <span class="weight-600">
+                {{t 'Total'}}
+              </span>
+            </th>
+            <th class="right aligned">
+              {{ticketsTotal}}
+            </th>
+            <th colspan="2" class="right aligned">
+              US$ {{number-format revenueTotal}}
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
