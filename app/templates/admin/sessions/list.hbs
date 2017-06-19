@@ -12,29 +12,29 @@
       </tr>
     </thead>
     <tbody>
-      {{#each model as |sessions|}}
+      {{#each model as |session|}}
         <tr>
           <td>
-            {{sessions.event.name}}
+            {{session.event.name}}
           </td>
           <td>
-            {{sessions.title}}
+            {{session.title}}
           </td>
           <td>
             <div class="ui ordered list">
-              {{#each sessions.speakers as |speaker|}}
+              {{#each session.speakers as |speaker|}}
                 <div class="item">{{speaker.name}}</div>
               {{/each}}
             </div>
           </td>
           <td>
-            {{moment-format speaker.submittedAt 'dddd, DD MMMM YYYY'}}
+            {{moment-format session.submittedAt 'dddd, DD MMMM YYYY'}}
           </td>
           <td>
-            {{moment-format speaker.startsAt 'MM/DD/YYYY'}}
+            {{moment-format session.startsAt 'MM/DD/YYYY'}}
           </td>
           <td>
-            {{moment-format speaker.endsAt 'MM/DD/YYYY'}}
+            {{moment-format session.endsAt 'MM/DD/YYYY'}}
           </td>
           <td>
             <div class="ui vertical compact basic buttons">
