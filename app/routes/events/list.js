@@ -4,9 +4,17 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Live');
+    switch (this.get('params.event_state')) {
+      case 'live':
+        return this.i18n.t('Live');
+      case 'draft':
+        return this.i18n.t('Draft');
+      case 'past':
+        return this.i18n.t('Past');
+    }
   },
-  model() {
+  model(params) {
+    this.set('params', params);
     return [{
       name    : 'Event_Name2',
       startAt : new Date(),
