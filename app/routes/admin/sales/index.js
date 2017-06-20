@@ -11,11 +11,11 @@ export default Route.extend({
       events           : 'Sample Event',
       eventDate        : new Date(),
       completedTickets : 1,
-      completedSales   : 0.00,
+      completedSales   : 2.00,
       placedTickets    : 1,
-      placedSales      : 0.00,
+      placedSales      : 4.40,
       pendingTickets   : 1,
-      pendingSales     : 0.00
+      pendingSales     : 5.00
     }, {
       events           : 'Sample Event',
       eventDate        : new Date(),
