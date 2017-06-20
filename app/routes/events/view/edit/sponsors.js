@@ -5,7 +5,7 @@ const { Route } = Ember;
 
 export default Route.extend(EventWizardMixin, {
   titleToken() {
-    return this.i18n.t('Sponsors');
+    return this.l10n.t('Sponsors');
   },
   model() {
     return {

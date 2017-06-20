@@ -1,3 +1,6 @@
+/**
+ * Auto-generated file
+ */
 export default {
-  'en': 'default'
+  "en": "en"
 };

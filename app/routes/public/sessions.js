@@ -5,7 +5,7 @@ const { Route, RSVP } = Ember;
 
 export default Route.extend(ResetScrollPositionMixin, {
   titleToken() {
-    return this.i18n.t('Sessions');
+    return this.l10n.t('Sessions');
   },
 
   model() {

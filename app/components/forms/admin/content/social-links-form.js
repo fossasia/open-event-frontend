@@ -17,7 +17,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'url',
-              prompt : this.i18n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -27,7 +27,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'url',
-              prompt : this.i18n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -37,7 +37,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'url',
-              prompt : this.i18n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -47,7 +47,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'url',
-              prompt : this.i18n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -57,7 +57,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'url',
-              prompt : this.i18n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -67,7 +67,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'url',
-              prompt : this.i18n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         }

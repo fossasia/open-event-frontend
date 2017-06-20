@@ -25,7 +25,7 @@ export default ModalBase.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please give a name')
+              prompt : this.l10n.t('Please give a name')
             }
           ]
         },
@@ -33,11 +33,11 @@ export default ModalBase.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please tell us your tax rate (in %)')
+              prompt : this.l10n.t('Please tell us your tax rate (in %)')
             },
             {
               type   : 'number',
-              prompt : this.i18n.t('Please give a valid tax rate')
+              prompt : this.l10n.t('Please give a valid tax rate')
             }
           ]
         },
@@ -45,7 +45,7 @@ export default ModalBase.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please give us your tax ID')
+              prompt : this.l10n.t('Please give us your tax ID')
             }
           ]
         },
@@ -54,7 +54,7 @@ export default ModalBase.extend(FormMixin, {
           rules   : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please give us your company name')
+              prompt : this.l10n.t('Please give us your company name')
             }
           ]
         },
@@ -63,7 +63,7 @@ export default ModalBase.extend(FormMixin, {
           rules   : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please give us your address')
+              prompt : this.l10n.t('Please give us your address')
             }
           ]
         }

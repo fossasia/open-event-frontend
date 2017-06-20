@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('New Order');
+    return this.l10n.t('New Order');
   }
 });

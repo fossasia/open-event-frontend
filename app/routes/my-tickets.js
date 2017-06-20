@@ -6,7 +6,7 @@ const { Route } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return this.i18n.t('My Tickets');
+    return this.l10n.t('My Tickets');
   },
 
   model() {

@@ -4,6 +4,6 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 const { Route } = Ember;
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return this.i18n.t('Administration');
+    return this.l10n.t('Administration');
   }
 });

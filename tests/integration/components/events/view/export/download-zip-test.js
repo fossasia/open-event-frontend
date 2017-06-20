@@ -5,6 +5,6 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('events/view/export/download-zip', 'Integration | Component | events/view/export/download zip');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{events/view/export/download-zip i18n=i18n}}`);
+  this.render(hbs`{{events/view/export/download-zip l10n=l10n}}`);
   assert.ok(this.$().html().trim().includes('Zip'));
 });
