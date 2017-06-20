@@ -14,7 +14,7 @@
             <th>{{t 'Invoice#'}}</th>
             <th>{{t 'Event'}}</th>
             <th>{{t 'Dated'}}</th>
-            <th>{{t 'Amount'}}</th>
+            <th class="right aligned">{{t 'Amount'}}</th>
             <th>{{t 'Sent To'}}</th>
             <th>{{t 'Status'}}</th>
           </tr>
@@ -31,7 +31,7 @@
               <td>
                 {{moment-format invoiceDetail.date 'ddd, MMM DD \at HH:mm A'}}
               </td>
-              <td>
+              <td class="right aligned">
                 US$ {{number-format invoiceDetail.amount}}
               </td>
               <td>
