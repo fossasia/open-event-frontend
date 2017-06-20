@@ -6,7 +6,7 @@ moduleForAcceptance('Acceptance | public/sessions');
 test('visiting / and opening an event and going to sessions', function(assert) {
   visit('/');
   andThen(function() {
-    click('div.event.card:first > div.content:first > a');
+    click('div.event.card:first > a.content:first');
     andThen(function() {
       assert.equal(currentRouteName(), 'public.index');
       click('div.ui.vertical.pointing.menu > a:contains(\'Sessions\')');

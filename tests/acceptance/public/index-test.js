@@ -6,7 +6,7 @@ moduleForAcceptance('Acceptance | public/index');
 test('visiting / and opening an event', function(assert) {
   visit('/');
   andThen(function() {
-    click('div.event.card:first > div.content:first > a');
+    click('div.event.card:first > a.content:first');
     andThen(function() {
       assert.equal(currentRouteName(), 'public.index');
     });
