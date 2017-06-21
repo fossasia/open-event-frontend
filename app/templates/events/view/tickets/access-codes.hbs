@@ -1,31 +1,32 @@
-<div class="ui stackable grid">
-  <div class="row">
-    <h2 class="ui header eight wide column left floated {{if device.isMobile 'center' 'left'}} aligned">
-      {{t 'Access Codes'}}
-    </h2>
-    <div class="eight wide column {{if device.isMobile 'center' 'right'}} aligned">
-      <button class="ui button blue">
-        <i class="plus icon"></i>
-        {{t 'Create an access code'}}
-      </button>
+{{#if (not-includes session.currentRouteName 'events.view.tickets.access-codes.create')}}
+  {{#if device.isMobile }}
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  <div class="ui stackable grid">
+    <div class="row">
+      <h2 class="ui header eight wide column left floated {{if device.isMobile 'center' 'left'}} aligned">{{t 'Access Codes'}}</h2>
+      <div class="eight wide column {{if device.isMobile 'center' 'right'}} aligned">
+        {{#link-to 'events.view.tickets.access-codes.create'}}
+          <button class="ui button blue">
+            <i class="plus icon"></i>
+            {{t 'Create an access code'}}
+          </button>
+        {{/link-to}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="{{if device.isMobile 'eight wide column center' 'left'}} aligned">
+        <div class="ui very basic buttons">
+          <button class="ui button active">{{t 'All'}}</button>
+          <button class="ui button">{{t 'Active'}}</button>
+          <button class="ui button">{{t 'Inactive'}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {{outlet}}
     </div>
   </div>
-  <div class="row">
-    <div class="sixteen wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'events.view.tickets.access-codes.index' class='item'}}
-          {{t 'All'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.access-codes.list' 'active' class='item'}}
-          {{t 'Active'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.access-codes.list' 'inactive' class='item'}}
-          {{t 'Inactive'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
-    </div>
-  </div>
-  <div class="row">
-    {{outlet}}
-  </div>
-</div>
+{{else}}
+  {{outlet}}
+{{/if}}
