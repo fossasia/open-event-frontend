@@ -7,7 +7,7 @@ import { orderBy } from 'lodash';
 const { computed } = Ember;
 
 export default ModalBase.extend(FormMixin, {
-  isSmall : true,
+  isSmall : false,
   options : {
     closable: false
   },
@@ -21,16 +21,18 @@ export default ModalBase.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        tax_name: {
-          rules: [
+        taxName: {
+          identifier : 'tax_name',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a name')
             }
           ]
         },
-        tax_rate: {
-          rules: [
+        taxRate: {
+          identifier : 'tax_rate',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.l10n.t('Please tell us your tax rate (in %)')
@@ -41,29 +43,62 @@ export default ModalBase.extend(FormMixin, {
             }
           ]
         },
-        tax_id: {
-          rules: [
+        taxId: {
+          identifier : 'tax_id',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give us your tax ID')
             }
           ]
         },
-        tax_invoice_company: {
-          depends : 'send_tax_invoices',
-          rules   : [
+        taxInvoiceCompany: {
+          identifier : 'tax_invoice_company',
+          depends    : 'send_tax_invoices',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give us your company name')
             }
           ]
         },
-        tax_invoice_address: {
-          depends : 'send_tax_invoices',
-          rules   : [
+        taxInvoiceAddress: {
+          identifier : 'tax_invoice_address',
+          depends    : 'send_tax_invoices',
+          rules      : [
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give us your address')
+            }
+          ]
+        },
+
+        taxInvoiceCity: {
+          identifier : 'tax_invoice_city',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give a city')
+            }
+          ]
+        },
+
+        taxInvoiceState: {
+          identifier : 'tax_invoice_state',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give a state')
+            }
+          ]
+        },
+
+        taxInvoiceZipCode: {
+          identifier : 'tax_invoice_zipcode',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please provide a zip code')
             }
           ]
         }
