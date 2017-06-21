@@ -94,7 +94,9 @@ router.map(function() {
     this.route('sessions',  function() {
       this.route('list', { path: '/:sessions_state' });
     });
-    this.route('users');
+    this.route('users', function() {
+      this.route('list', { path: '/:users_status' });
+    });
     this.route('permissions', function() {
       this.route('event-roles');
       this.route('system-roles');
