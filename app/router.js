@@ -50,9 +50,11 @@ router.map(function() {
       });
       this.route('tickets', function() {
         this.route('orders', function() {
-          this.route('list', { path: '/:orders_state' });
+          this.route('list', { path: '/:orders_status' });
         });
-        this.route('attendees');
+        this.route('attendees', function() {
+          this.route('list', { path: '/:attendees_status' });
+        });
         this.route('add-order');
         this.route('discount-codes');
         this.route('access', { path: 'access-codes' });
