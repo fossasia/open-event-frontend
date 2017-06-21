@@ -8,27 +8,27 @@ export default Route.extend({
   model() {
     return [
       {
-        'status'         : 'Completed',
-        'completed_at'   : '2016-04-06',
-        'id'             : 1,
-        'quantity'       : 2,
-        'invoice_number' : '#O1496523209-306',
-        'amount'         : 0,
-        'paid_via'       : 'Free',
-        'buyer'          : 'sample@gmail.com',
-        'buyer_name'     : 'Sample Buyer'
+        'status'        : 'Completed',
+        'completedAt'   : '2016-04-06',
+        'id'            : 1,
+        'quantity'      : 2,
+        'invoiceNumber' : '#O1496523209-306',
+        'amount'        : 0,
+        'paidVia'       : 'Free',
+        'buyer'         : 'sample@gmail.com',
+        'buyerName'     : 'Sample Buyer'
       },
 
       {
-        'status'         : 'Completed',
-        'completed_at'   : '2017-06-02T11:22:33+05:30',
-        'id'             : 2,
-        'quantity'       : 1,
-        'invoice_number' : '#O1345883292-302',
-        'amount'         : 50,
-        'paid_via'       : 'Paypal',
-        'buyer'          : 'sample@gmail.com',
-        'buyer_name'     : 'Sample Buyer2'
+        'status'        : 'Completed',
+        'completedAt'   : '2017-06-02T11:22:33+05:30',
+        'id'            : 2,
+        'quantity'      : 1,
+        'invoiceNumber' : '#O1345883292-302',
+        'amount'        : 50,
+        'paidVia'       : 'Paypal',
+        'buyer'         : 'sample@gmail.com',
+        'buyerName'     : 'Sample Buyer2'
       }
     ];
   }
