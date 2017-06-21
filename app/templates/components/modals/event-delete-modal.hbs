@@ -1,0 +1,24 @@
+<div class="header">
+  {{t 'Are you sure you would like to delete this event?'}}
+  <div class="muted small text">
+    {{t 'Deleting the event will delete all the data associated with it.'}}
+  </div>
+</div>
+<div class="content">
+  <form class="ui form" autocomplete="off" {{action (optional formSubmit) on='submit' preventDefault=true}}>
+    <div class="field">
+      <div class="label">
+        {{t 'Please enter the full name of the event to continue'}}
+      </div>
+      {{input type='text' name='confirm_name' value=confirmName required=true}}
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" class="ui red button" disabled={{isNameDifferent}} {{action deleteEvent}}>
+    {{t 'Delete Event'}}
+  </button>
+</div>
