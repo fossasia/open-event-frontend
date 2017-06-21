@@ -14,10 +14,10 @@
         {{widgets/safe-image src=(if event.large event.large event.placeholderUrl)}}
       </a>
     {{/unless}}
-    <div class="main content">
-      <a class="header" href="{{href-to 'public' event.identifier}}">
+    <a class="main content" href="{{href-to 'public' event.identifier}}">
+      <div class="header">
         <span>{{event.name}}</span>
-      </a>
+      </div>
       <div class="meta">
         <span class="date">
           {{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}
@@ -26,7 +26,7 @@
       <div class="description">
         {{event.shortLocationName}}
       </div>
-    </div>
+    </a>
     <div class="extra content small text">
       <span class="right floated">
         <i role="button" class="share alternate link icon" {{action shareEvent event}}></i>
