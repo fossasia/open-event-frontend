@@ -2,7 +2,9 @@
   <div class="ui grid stackable">
     <div class="row">
       <div class="four wide column">
-        <h2 class="ui header">Fossasia Test</h2>
+        <h2 class="ui header">
+          {{model.name}}
+        </h2>
       </div>
       <div class="twelve wide column {{unless device.isMobile 'right aligned'}}">
         {{#if device.isMobile}}
@@ -10,7 +12,7 @@
             <button class="ui button"><i class="unhide icon"></i></button>
             <button class="ui button"><i class="check icon"></i></button>
             <button class="ui button"><i class="copy icon"></i></button>
-            <button class="ui red button"><i class="trash icon"></i></button>
+            <button class="ui red button" {{action 'openDeleteEventModal'}}><i class="trash icon"></i></button>
           </div>
         {{else}}
             <button class="ui button labeled icon small">
@@ -27,7 +29,7 @@
                 {{t 'Copy'}}
               </button>
             </div>
-            <button class="ui red button labeled icon small">
+            <button class="ui red button labeled icon small" {{action 'openDeleteEventModal'}}>
               <i class="trash icon"></i>
               {{t 'Delete'}}
             </button>
@@ -58,7 +60,9 @@
       {{/tabbed-navigation}}
     </div>
   </div>
-  
+
+  {{modals/event-delete-modal isOpen=isEventDeleteModalOpen eventName=model.name deleteEvent=(action 'deleteEvent')}}
+
   <div class="ui segment">
     {{outlet}}
   </div>
