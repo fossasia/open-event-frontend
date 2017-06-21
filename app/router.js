@@ -49,7 +49,9 @@ router.map(function() {
         this.route('list', { path: '/:session_status' });
       });
       this.route('tickets', function() {
-        this.route('orders');
+        this.route('orders', function() {
+          this.route('list', { path: '/:orders_state' });
+        });
         this.route('attendees');
         this.route('add-order');
         this.route('discount-codes');
