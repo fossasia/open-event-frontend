@@ -277,7 +277,7 @@ export default Component.extend(FormMixin, {
       this.get(`data.event.${type}`).removeObject(item);
     },
     openTaxModal() {
-      this.set('taxModelIsOpen', true);
+      this.set('taxModalIsOpen', true);
     },
     deleteTaxInformation() {
       this.set('data.event.hasTaxInfo', false);

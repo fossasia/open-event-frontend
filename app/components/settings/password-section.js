@@ -10,7 +10,7 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        password_current: {
+        currentPassword: {
           identifier : 'password_current',
           rules      : [
             {
@@ -19,7 +19,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        password_new: {
+        newPassword: {
           identifier : 'password_new',
           rules      : [
             {
@@ -32,7 +32,7 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        password_repeat: {
+        repeatPassword: {
           identifier : 'password_repeat',
           rules      : [
             {
