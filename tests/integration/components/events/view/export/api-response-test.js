@@ -5,6 +5,6 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('events/view/export/api-response', 'Integration | Component | events/view/export/api response');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{events/view/export/api-response i18n=i18n}}`);
+  this.render(hbs`{{events/view/export/api-response l10n=l10n}}`);
   assert.ok(this.$().html().trim().includes('Access event information'));
 });

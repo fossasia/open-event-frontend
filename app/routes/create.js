@@ -6,7 +6,7 @@ const { Route } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   titleToken() {
-    return this.i18n.t('Create an Event');
+    return this.l10n.t('Create an Event');
   },
   model() {
     return {

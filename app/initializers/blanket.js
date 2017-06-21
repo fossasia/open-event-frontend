@@ -16,7 +16,7 @@ export function initialize(application) {
   inject('store', 'service:store');
   inject('metrics', 'service:metrics');
   inject('loader', 'service:loader');
-  inject('i18n', 'service:l10n');
+  inject('l10n', 'service:l10n');
   inject('device', 'service:device');
   inject('notify', 'service:notify');
   inject('confirm', 'service:confirm');

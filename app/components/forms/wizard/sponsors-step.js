@@ -15,7 +15,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please give your sponsor a name')
+              prompt : this.l10n.t('Please give your sponsor a name')
             }
           ]
         }

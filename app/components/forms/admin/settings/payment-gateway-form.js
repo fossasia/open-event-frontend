@@ -15,7 +15,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the client ID')
+              prompt : this.l10n.t('Please enter the client ID')
             }
           ]
         },
@@ -25,7 +25,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the secret key')
+              prompt : this.l10n.t('Please enter the secret key')
             }
           ]
         },
@@ -35,7 +35,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the publishable key')
+              prompt : this.l10n.t('Please enter the publishable key')
             }
           ]
         },
@@ -45,7 +45,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the sadnbox username')
+              prompt : this.l10n.t('Please enter the sadnbox username')
             }
           ]
         },
@@ -55,7 +55,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the sandbox password')
+              prompt : this.l10n.t('Please enter the sandbox password')
             }
           ]
         },
@@ -65,7 +65,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the sandbox signature')
+              prompt : this.l10n.t('Please enter the sandbox signature')
             }
           ]
         },
@@ -75,7 +75,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the live username')
+              prompt : this.l10n.t('Please enter the live username')
             }
           ]
         },
@@ -85,7 +85,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the live password')
+              prompt : this.l10n.t('Please enter the live password')
             }
           ]
         },
@@ -95,7 +95,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the live signature')
+              prompt : this.l10n.t('Please enter the live signature')
             }
           ]
         }

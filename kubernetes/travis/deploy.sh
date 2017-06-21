@@ -32,7 +32,7 @@ gcloud container clusters get-credentials nextgen-cluster
 ##
 export API_HOST=${DEPLOY_API_HOST};
 export APP_NAME=${DEPLOY_APP_NAME};
-ember l10n:convert -f false
+node scripts/l10n.js generate
 ember deploy production-docker
 cp -Rf tmp/deploy-dist kubernetes/images/frontend
 

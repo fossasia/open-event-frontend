@@ -1,35 +1,35 @@
 export const getDateRanges = function() {
   return [
     {
-      name : this.i18n.t('All Dates'),
+      name : this.l10n.t('All Dates'),
       key  : 'all_dates'
     },
     {
-      name : this.i18n.t('Today'),
+      name : this.l10n.t('Today'),
       key  : 'today'
     },
     {
-      name : this.i18n.t('Tomorrow'),
+      name : this.l10n.t('Tomorrow'),
       key  : 'tomorrow'
     },
     {
-      name : this.i18n.t('This week'),
+      name : this.l10n.t('This week'),
       key  : 'this_week'
     },
     {
-      name : this.i18n.t('This Weekend'),
+      name : this.l10n.t('This Weekend'),
       key  : 'this_weekend'
     },
     {
-      name : this.i18n.t('Next week'),
+      name : this.l10n.t('Next week'),
       key  : 'next_week'
     },
     {
-      name : this.i18n.t('This Month'),
+      name : this.l10n.t('This Month'),
       key  : 'this_month'
     },
     {
-      name : this.i18n.t('Custom dates'),
+      name : this.l10n.t('Custom dates'),
       key  : 'custom_dates'
     }
   ];

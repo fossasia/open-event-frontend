@@ -5,6 +5,6 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('forms/user-profile-form', 'Integration | Component | forms/user profile form');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{forms/user-profile-form i18n=i18n}}`);
+  this.render(hbs`{{forms/user-profile-form l10n=l10n}}`);
   assert.ok(this.$().html().trim().includes('Name'));
 });

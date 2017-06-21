@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.i18n.t('Please enter a valid email address')
+              prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
         },
@@ -29,11 +29,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter a password')
+              prompt : this.l10n.t('Please enter a password')
             },
             {
               type   : 'minLength[6]',
-              prompt : this.i18n.t('Your password must have at least {ruleValue} characters')
+              prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
             }
           ]
         },
@@ -42,7 +42,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'match[password]',
-              prompt : this.i18n.t('Passwords do not match')
+              prompt : this.l10n.t('Passwords do not match')
             }
           ]
         }
@@ -69,7 +69,7 @@ export default Component.extend(FormMixin, {
             this.get('routing').transitionTo('login');
           })
           .catch(() => {
-            this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
+            this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
             this.set('isLoading', false);
           });
       });

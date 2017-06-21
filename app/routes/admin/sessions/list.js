@@ -6,15 +6,15 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.sessions_state')) {
       case 'pending':
-        return this.i18n.t('Pending');
+        return this.l10n.t('Pending');
       case 'accepted':
-        return this.i18n.t('Accepted');
+        return this.l10n.t('Accepted');
       case 'rejected':
-        return this.i18n.t('Rejected');
+        return this.l10n.t('Rejected');
       case 'deleted':
-        return this.i18n.t('Deleted');
+        return this.l10n.t('Deleted');
       default:
-        return this.i18n.t('Session');
+        return this.l10n.t('Session');
     }
   },
   model(params) {

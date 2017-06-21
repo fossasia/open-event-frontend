@@ -57,6 +57,6 @@ const notifications = [
 
 test('it renders', function(assert) {
   this.set('notifications', notifications);
-  this.render(hbs`{{notification-dropdown notifications=notifications i18n=i18n}}`);
+  this.render(hbs`{{notification-dropdown notifications=notifications l10n=l10n}}`);
   assert.ok(this.$().text().trim().includes('New Session Proposal for event1 by  user1'));
 });

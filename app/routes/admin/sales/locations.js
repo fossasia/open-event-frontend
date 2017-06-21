@@ -4,7 +4,7 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Location');
+    return this.l10n.t('Location');
   },
   model() {
     return [{
