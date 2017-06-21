@@ -30,18 +30,18 @@
           </td>
           <td>
             <div class="ui tiny header">
-              {{order.invoice_number}}
+              {{order.invoiceNumber}}
               <span class="weight-400">
-                {{t 'by'}} {{order.buyer_name}}
+                {{t 'by'}} {{order.buyerName}}
               </span>
               <div class="ui basic mini green label">
                 {{order.status}}
               </div>
               <div class="sub header">
                 <span class="weight-800">
-                  {{t 'Payment via'}} {{order.paid_via}}
+                  {{t 'Payment via'}} {{order.paidVia}}
                 </span>
-                {{moment-from-now order.completed_at}}
+                {{moment-from-now order.completedAt}}
               </div>
             </div>
           </td>
@@ -52,7 +52,7 @@
             {{order.quantity}}
           </td>
           <td>
-            {{order.buyer}}
+            {{order.buyerName}}
           </td>
           <td class="centre aligned">
             <div class="ui vertical compact basic buttons">
