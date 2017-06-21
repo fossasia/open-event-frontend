@@ -45,98 +45,30 @@
     </div>
   </div>
   <div class="row">
-    <div class="ui hidden divider"></div>
-    <div class="ui {{if device.isMobile 'vertical'}} basic buttons">
-      <div class="ui button active">
-        {{t 'Completed'}}
-      </div>
-      <div class="ui button">
-        {{t 'Placed'}}
-      </div>
-      <div class="ui button">
-        {{t 'Pending'}}
-      </div>
-      <div class="ui button">
-        {{t 'Expired'}}
-      </div>
-      <div class="ui button">
-        {{t 'Cancelled'}}
-      </div>
-      <div class="ui button">
-        {{t 'All'}}
-      </div>
+    <div class="eight wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'events.view.tickets.orders.index' class='item'}}
+          {{t 'Completed'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders.list' 'placed' class='item'}}
+          {{t 'Placed'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders.list' 'pending' class='item'}}
+          {{t 'Pending'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders.list' 'expired' class='item'}}
+          {{t 'Expired'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders.list' 'cancelled' class='item'}}
+          {{t 'Cancelled'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders.list' 'all' class='item'}}
+          {{t 'All'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
     </div>
-    <table class="ui very basic compact table">
-      <thead>
-        <tr>
-          <th>
-            #
-          </th>
-          <th>
-            {{t 'Order'}}
-          </th>
-          <th>
-            {{t 'Total Amount'}}
-          </th>
-          <th>
-            {{t 'Quantity'}}
-          </th>
-          <th>
-            {{t 'Buyer/Registration Contact '}}
-          </th>
-          <th>
-            {{t 'Action'}}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model as |order index|}}
-          <tr>
-            <td>
-              {{inc index}}
-            </td>
-            <td>
-              <div class="ui tiny header">
-                {{order.invoice_number}}
-                <span class="weight-400">
-                  {{t 'by'}} {{order.buyer_name}}
-                </span>
-                <div class="ui basic mini green label">
-                  {{order.status}}
-                </div>
-                <div class="sub header">
-                  <span class="weight-800">
-                    {{t 'Payment via'}} {{order.paid_via}}
-                  </span>
-                  {{moment-from-now order.completed_at}}
-                </div>
-              </div>
-            </td>
-            <td>
-              US $ {{number-format order.amount}}
-            </td>
-            <td>
-              {{order.quantity}}
-            </td>
-            <td>
-              {{order.buyer}}
-            </td>
-            <td class="centre aligned">
-              <div class="ui vertical compact basic buttons">
-                {{#ui-popup content=(t 'Cancel order') class='ui icon button' position='left center'}}
-                  <i class="delete icon"></i>
-                {{/ui-popup}}
-                {{#ui-popup content=(t 'Delete order') class='ui icon button' position='left center'}}
-                  <i class="trash icon"></i>
-                {{/ui-popup}}
-                {{#ui-popup content=(t 'Resend order confirmation') class='ui icon button' position='left center'}}
-                  <i class="mail outline icon"></i>
-                {{/ui-popup}}
-              </div>
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+  </div>
+  <div class="row">
+    {{outlet}}
   </div>
 </div>
