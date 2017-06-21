@@ -10,20 +10,20 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   getSteps() {
     return [
       {
-        title       : this.i18n.t('Basic Details'),
-        description : this.i18n.t('Tell about your event'),
+        title       : this.l10n.t('Basic Details'),
+        description : this.l10n.t('Tell about your event'),
         icon        : 'info icon',
         route       : 'events.view.edit.basic-details'
       },
       {
-        title       : this.i18n.t('Sponsors'),
-        description : this.i18n.t('Advertise your sponsors'),
+        title       : this.l10n.t('Sponsors'),
+        description : this.l10n.t('Advertise your sponsors'),
         icon        : 'dollar icon',
         route       : 'events.view.edit.sponsors'
       },
       {
-        title       : this.i18n.t('Sessions & Speakers'),
-        description : this.i18n.t('Expand your event'),
+        title       : this.l10n.t('Sessions & Speakers'),
+        description : this.l10n.t('Expand your event'),
         icon        : 'list icon',
         route       : 'events.view.edit.sessions-speakers'
       }

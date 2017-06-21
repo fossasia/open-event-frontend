@@ -62,31 +62,13 @@
       </div>
     </div>
     <div class="two wide column right aligned">
-      {{#ui-dropdown class="floating labeled grey search icon mini button" selected="en" forceSelection=false}}
+      {{#ui-dropdown class='floating labeled grey search icon mini button' selected=currentLocale forceSelection=false onChange=(action 'switchLanguage')}}
         <i class="world icon"></i>
         <span class="text">English</span>
         <div class="ui language menu">
-          <div class="item">Arabic</div>
-          <div class="item">Chinese</div>
-          <div class="item">Danish</div>
-          <div class="item">Dutch</div>
-          <div data-value="en" class="item">English</div>
-          <div class="item">French</div>
-          <div class="item">German</div>
-          <div class="item">Greek</div>
-          <div class="item">Hungarian</div>
-          <div class="item">Italian</div>
-          <div class="item">Japanese</div>
-          <div class="item">Korean</div>
-          <div class="item">Lithuanian</div>
-          <div class="item">Persian</div>
-          <div class="item">Polish</div>
-          <div class="item">Portuguese</div>
-          <div class="item">Russian</div>
-          <div class="item">Spanish</div>
-          <div class="item">Swedish</div>
-          <div class="item">Turkish</div>
-          <div class="item">Vietnamese</div>
+          {{#each-in l10n.availableLocales as |key value|}}
+            <div class="item" data-value="{{key}}">{{value}}</div>
+          {{/each-in}}
         </div>
       {{/ui-dropdown}}
     </div>

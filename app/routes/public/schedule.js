@@ -4,7 +4,7 @@ const { Route, RSVP } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Schedule');
+    return this.l10n.t('Schedule');
   },
 
   model() {

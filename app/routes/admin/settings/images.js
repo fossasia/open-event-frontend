@@ -4,7 +4,7 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Images');
+    return this.l10n.t('Images');
   },
 
   model() {

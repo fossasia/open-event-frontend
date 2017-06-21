@@ -6,11 +6,11 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.event_state')) {
       case 'live':
-        return this.i18n.t('Live');
+        return this.l10n.t('Live');
       case 'draft':
-        return this.i18n.t('Draft');
+        return this.l10n.t('Draft');
       case 'past':
-        return this.i18n.t('Past');
+        return this.l10n.t('Past');
     }
   },
   model(params) {

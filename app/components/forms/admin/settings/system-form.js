@@ -15,7 +15,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the App name')
+              prompt : this.l10n.t('Please enter the App name')
             }
           ]
         },
@@ -25,7 +25,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter a tag line')
+              prompt : this.l10n.t('Please enter a tag line')
             }
           ]
         },
@@ -35,7 +35,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the Bucket name')
+              prompt : this.l10n.t('Please enter the Bucket name')
             }
           ]
         },
@@ -45,7 +45,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the access key')
+              prompt : this.l10n.t('Please enter the access key')
             }
           ]
         },
@@ -55,7 +55,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the access secret')
+              prompt : this.l10n.t('Please enter the access secret')
             }
           ]
         },
@@ -65,7 +65,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please select a region')
+              prompt : this.l10n.t('Please select a region')
             }
           ]
         },
@@ -75,7 +75,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the Bucket name')
+              prompt : this.l10n.t('Please enter the Bucket name')
             }
           ]
         },
@@ -85,7 +85,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the key')
+              prompt : this.l10n.t('Please enter the key')
             }
           ]
         },
@@ -95,7 +95,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the secret')
+              prompt : this.l10n.t('Please enter the secret')
             }
           ]
         },
@@ -105,11 +105,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the from email')
+              prompt : this.l10n.t('Please enter the from email')
             },
             {
               type   : 'email',
-              prompt : this.i18n.t('Please enter a valid  email address')
+              prompt : this.l10n.t('Please enter a valid  email address')
             }
           ]
         },
@@ -119,7 +119,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter name for from email')
+              prompt : this.l10n.t('Please enter name for from email')
             }
           ]
         },
@@ -129,7 +129,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the SMTP host')
+              prompt : this.l10n.t('Please enter the SMTP host')
             }
           ]
         },
@@ -139,11 +139,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the SMTP port number')
+              prompt : this.l10n.t('Please enter the SMTP port number')
             },
             {
               type   : 'integer',
-              prompt : this.i18n.t('Please enter a valid port number')
+              prompt : this.l10n.t('Please enter a valid port number')
             }
           ]
         },
@@ -153,7 +153,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the username for SMTP')
+              prompt : this.l10n.t('Please enter the username for SMTP')
             }
           ]
         },
@@ -163,7 +163,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the password for SMTP')
+              prompt : this.l10n.t('Please enter the password for SMTP')
             }
           ]
         },
@@ -173,7 +173,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the token for Sendgrid')
+              prompt : this.l10n.t('Please enter the token for Sendgrid')
             }
           ]
         },
@@ -183,7 +183,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.i18n.t('Please enter a valid email address for super admin')
+              prompt : this.l10n.t('Please enter a valid email address for super admin')
             }
           ]
         },
@@ -193,11 +193,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the application secret key')
+              prompt : this.l10n.t('Please enter the application secret key')
             },
             {
               type   : 'minLength[16]',
-              prompt : this.i18n.t('Your application secret key must have at least {ruleValue} characters')
+              prompt : this.l10n.t('Your application secret key must have at least {ruleValue} characters')
             }
           ]
         }

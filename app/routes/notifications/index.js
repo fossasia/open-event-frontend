@@ -4,7 +4,7 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Unread');
+    return this.l10n.t('Unread');
   },
   templateName: 'notifications/all',
   model() {

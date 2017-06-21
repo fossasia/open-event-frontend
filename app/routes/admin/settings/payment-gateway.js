@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Payment Gateway');
+    return this.l10n.t('Payment Gateway');
   }
 });
