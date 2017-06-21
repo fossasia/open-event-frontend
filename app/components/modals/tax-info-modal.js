@@ -7,7 +7,7 @@ import { orderBy } from 'lodash';
 const { computed } = Ember;
 
 export default ModalBase.extend(FormMixin, {
-  isSmall : true,
+  isSmall : false,
   options : {
     closable: false
   },
@@ -69,6 +69,36 @@ export default ModalBase.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give us your address')
+            }
+          ]
+        },
+
+        taxInvoiceCity: {
+          identifier : 'tax_invoice_city',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give a city')
+            }
+          ]
+        },
+
+        taxInvoiceState: {
+          identifier : 'tax_invoice_state',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give a state')
+            }
+          ]
+        },
+
+        taxInvoiceZipCode: {
+          identifier : 'tax_invoice_zipcode',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please provide a zip code')
             }
           ]
         }
