@@ -24,7 +24,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter select a language')
+              prompt : this.l10n.t('Please select a language')
             }
           ]
         }
