@@ -1,0 +1,52 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  <div class="field">
+    <label>{{t 'Name'}}</label>
+    {{input name='name' type='text' value=data.name}}
+  </div>
+  <div class="field">
+    <label>{{t 'Title'}}</label>
+    {{input type='text' name='title' value=data.title}}
+  </div>
+  <div class="field">
+    <label>{{t 'URL'}}</label>
+    {{input type='text' name='url' value=data.path}}
+  </div>
+  <div class="field">
+    <label>{{t 'Description'}}</label>
+    {{widgets/forms/rich-text-editor value=data.description}}
+  </div>
+  <div class="field">
+    <label>{{t 'Places'}}</label>
+    {{#ui-dropdown class='selection' selected=data.menu}}
+      {{input type='hidden' name='place' value=data.menu}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{data.menu}}</div>
+      <div class="menu">
+        {{#each places as |place|}}
+          <div class="item" data-value="{{place}}">{{place}}</div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="field">
+    <label>{{t 'Position'}}</label>
+    {{input type='number' name='position' value=data.position min=1}}
+  </div>
+  <div class="field">
+    <label>{{t 'Language'}}</label>
+    {{#ui-dropdown class='selection' selected=data.language}}
+      {{input type='hidden' name='language'}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{get l10n.availableLocales data.language}}</div>
+      <div class="menu">
+        {{#each-in l10n.availableLocales as |code language|}}
+          <div class="item" data-value="{{code}}">{{language}}</div>
+        {{/each-in}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="ui buttons">
+    <button class="ui teal button" type="submit">{{t 'Update Page'}}</button>
+    <button class="ui red button">{{t 'Delete Page'}}</button>
+  </div>
+</form>
