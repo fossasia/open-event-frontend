@@ -52,7 +52,7 @@
   </div>
   <div class="ui inverted section divider"></div>
   <div class="ui stackable grid">
-    <div class="fourteen wide column left aligned">
+    <div class="thirteen wide computer twelve wide tablet column left aligned">
       <div class="ui horizontal inverted small divided link list" style="margin-top: 0;">
         <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
         <a class="item" href="#">Imprint</a>
@@ -61,7 +61,7 @@
         <a class="item" href="#">Cookie Policy</a>
       </div>
     </div>
-    <div class="two wide column right aligned">
+    <div class="three wide computer four wide tablet column right aligned">
       {{#ui-dropdown class='floating labeled grey search icon mini button' selected=currentLocale forceSelection=false onChange=(action 'switchLanguage')}}
         <i class="world icon"></i>
         <span class="text">English</span>
