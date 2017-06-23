@@ -13,6 +13,12 @@ export default Route.extend({
         return this.l10n.t('Past');
     }
   },
+  beforeModel(transition) {
+    const eventState = transition.params[transition.targetName].event_state;
+    if (!['live', 'draft', 'past'].includes(eventState)) {
+      this.replaceWith('events.view', eventState);
+    }
+  },
   model(params) {
     this.set('params', params);
     return [{

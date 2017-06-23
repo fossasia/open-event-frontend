@@ -1,4 +1,4 @@
-{{#unless (includes session.currentRouteName 'events.view')}}
+{{#if (not-includes session.currentRouteName 'events.view')}}
   <div class="row">
     <div class="sixteen wide column">
       {{#tabbed-navigation}}
@@ -23,4 +23,4 @@
 {{else}}
   {{!-- the event specific view pages will be rendered without any of the above tabs --}}
   {{outlet}}
-{{/unless}}
+{{/if}}
