@@ -1,18 +1,4 @@
-{{#unless addressViewIsShown}}
-  <div class="ui action input">
-    {{widgets/forms/places-autocomplete
-      id=inputId
-      name=name
-      value=placeName
-      placeChangedCallback=(action 'placeChanged')
-      type='text'
-      placeholder=placeholder}}
-    <button class="ui left labeled icon button" type="button" {{action 'showAddressView'}}>
-      <i class="marker icon"></i>
-      {{t 'Enter address'}}
-    </button>
-  </div>
-{{else}}
+{{#if addressViewIsShown}}
   <div class="ui two column grid stackable">
     <div class="column">
       <div class="field">
@@ -48,4 +34,18 @@
       {{/g-map}}
     </div>
   </div>
-{{/unless}}
+{{else}}
+  <div class="ui action input">
+    {{widgets/forms/places-autocomplete
+      id=inputId
+      name=name
+      value=placeName
+      placeChangedCallback=(action 'placeChanged')
+      type='text'
+      placeholder=placeholder}}
+    <button class="ui left labeled icon button" type="button" {{action 'showAddressView'}}>
+      <i class="marker icon"></i>
+      {{t 'Enter address'}}
+    </button>
+  </div>
+{{/if}}
