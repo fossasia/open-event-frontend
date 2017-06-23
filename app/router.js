@@ -77,6 +77,9 @@ router.map(function() {
     this.route('saved');
     this.route('past');
   });
+  this.route('my-sessions', function() {
+    this.route('past');
+  });
   this.route('notifications', function() {
     this.route('all');
   });

@@ -1,4 +1,4 @@
-{{#if (not-includes session.currentRouteName 'events.view')}}
+{{#if (and (not-includes session.currentRouteName 'events.view') (not-includes session.currentRouteName 'events.my-sessions'))}}
   <div class="row">
     <div class="sixteen wide column">
       {{#tabbed-navigation}}
