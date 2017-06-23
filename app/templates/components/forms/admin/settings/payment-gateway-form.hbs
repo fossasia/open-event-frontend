@@ -59,7 +59,7 @@
     <div class="field">
       {{ui-radio label=(t 'Sandbox mode - Used during development and testing') name='paypal_integration_mode'  value='sandbox'  current='sandbox' onChange=(action (mut selectedMode))}}
     </div>
-    {{#unless (eq selectedMode 'live')}}
+    {{#if (not-eq selectedMode 'live')}}
       <div class="field">
         <label>
           {{t 'Sandbox username'}}
@@ -78,7 +78,7 @@
         </label>
         {{input type='text' name='sandbox_signature'}}
       </div>
-    {{/unless}}
+    {{/if}}
     <div class="field">
       {{ui-radio label=(t 'Live mode - Used during production') name='paypal_integration_mode' value='live' onChange=(action (mut selectedMode))}}
     </div>

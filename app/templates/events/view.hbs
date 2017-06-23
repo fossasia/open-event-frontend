@@ -1,4 +1,4 @@
-{{#unless (includes session.currentRouteName 'events.view.edit')}}
+{{#if (not-includes session.currentRouteName 'events.view.edit')}}
   <div class="ui grid stackable">
     <div class="row">
       <div class="four wide column">
@@ -69,4 +69,4 @@
 {{else}}
   {{!-- the edit page will be rendered without any of the above tabs --}}
   {{outlet}}
-{{/unless}}
+{{/if}}
