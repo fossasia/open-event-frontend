@@ -3,13 +3,15 @@
     {{#link-to 'index' class='header item' activeClass=''}}
       <h3>{{config.appName}}</h3>
     {{/link-to}}
-    <div class="ui category search item" style="width: 20%">
-      <div class="ui transparent icon input">
-        <input class="prompt" type="text" placeholder="{{t 'Search Events...'}}" style="border-radius: 0;">
-        <i class="search link icon"></i>
+    {{#unless device.isTablet}}
+      <div class="ui category search item" style="width: 20%">
+        <div class="ui transparent icon input">
+          <input class="prompt" type="text" placeholder="{{t 'Search Events...'}}" style="border-radius: 0;">
+          <i class="search link icon"></i>
+        </div>
+        <div class="results"></div>
       </div>
-      <div class="results"></div>
-    </div>
+    {{/unless}}
     <div class="right menu">
       {{#if session.isAuthenticated}}
         <a class="notification item">
@@ -43,13 +45,13 @@
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#unless (eq routing.currentRouteName 'create')}}
+      {{#if (not-eq routing.currentRouteName 'create')}}
         <div class="item">
           <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">
             {{t 'Create Event'}}
           </a>
         </div>
-      {{/unless}}
+      {{/if}}
     </div>
   </div>
 </div>

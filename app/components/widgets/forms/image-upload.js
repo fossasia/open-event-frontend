@@ -50,7 +50,7 @@ export default Component.extend({
         this.notify.error(error);
       });
     } else {
-      this.notify.error(this.i18n.t('No FileReader support. Please use a more latest browser'));
+      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'));
     }
 
   },

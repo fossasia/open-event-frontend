@@ -5,7 +5,7 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Explore');
+    return this.l10n.t('Explore');
   },
 
   model() {

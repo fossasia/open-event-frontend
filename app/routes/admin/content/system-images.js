@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('System Images');
+    return this.l10n.t('System Images');
   }
 });

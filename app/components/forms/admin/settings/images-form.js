@@ -16,7 +16,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter width')
+              prompt : this.l10n.t('Please enter width')
             }
           ]
         },
@@ -25,7 +25,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter height')
+              prompt : this.l10n.t('Please enter height')
             }
           ]
         },
@@ -34,7 +34,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter quality')
+              prompt : this.l10n.t('Please enter quality')
             }
           ]
         },
@@ -43,7 +43,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter width')
+              prompt : this.l10n.t('Please enter width')
             }
           ]
         },
@@ -52,7 +52,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter height')
+              prompt : this.l10n.t('Please enter height')
             }
           ]
         },
@@ -61,7 +61,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter quality')
+              prompt : this.l10n.t('Please enter quality')
             }
           ]
         },
@@ -70,7 +70,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter width')
+              prompt : this.l10n.t('Please enter width')
             }
           ]
         },
@@ -79,7 +79,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter height')
+              prompt : this.l10n.t('Please enter height')
             }
           ]
         },
@@ -88,7 +88,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter quality')
+              prompt : this.l10n.t('Please enter quality')
             }
           ]
         },
@@ -97,7 +97,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter width')
+              prompt : this.l10n.t('Please enter width')
             }
           ]
         },
@@ -106,7 +106,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter height')
+              prompt : this.l10n.t('Please enter height')
             }
           ]
         },
@@ -115,7 +115,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter size')
+              prompt : this.l10n.t('Please enter size')
             }
           ]
         },
@@ -124,7 +124,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter quality')
+              prompt : this.l10n.t('Please enter quality')
             }
           ]
         },
@@ -133,7 +133,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter size')
+              prompt : this.l10n.t('Please enter size')
             }
           ]
         },
@@ -142,7 +142,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter quality')
+              prompt : this.l10n.t('Please enter quality')
             }
           ]
         },
@@ -151,7 +151,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter size')
+              prompt : this.l10n.t('Please enter size')
             }
           ]
         },
@@ -160,7 +160,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter quality')
+              prompt : this.l10n.t('Please enter quality')
             }
           ]
         }

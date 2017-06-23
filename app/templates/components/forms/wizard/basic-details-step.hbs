@@ -203,18 +203,7 @@
     <div class="ui section divider"></div>
     <div class="field">
       <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
-      {{#unless data.event.discountCodeId}}
-        <div class="ui action input">
-          {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode
-                  disabled=validatingDiscountCode}}
-          <button type="button"
-                  class="ui teal right labeled icon button {{if validatingDiscountCode 'loading'}}" {{action
-            'redeemDiscountCode'}}>
-            <i class="check icon"></i>
-            {{t 'Redeem'}}
-          </button>
-        </div>
-      {{else}}
+      {{#if data.event.discountCodeId}}
         <div class="ui labeled action input">
           <a class="ui right pointing teal basic label">
             {{t 'Code Applied'}}
@@ -232,7 +221,18 @@
             {{t 'Remove'}}
           </button>
         </div>
-      {{/unless}}
+      {{else}}
+        <div class="ui action input">
+          {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode
+                  disabled=validatingDiscountCode}}
+          <button type="button"
+                  class="ui teal right labeled icon button {{if validatingDiscountCode 'loading'}}" {{action
+            'redeemDiscountCode'}}>
+            <i class="check icon"></i>
+            {{t 'Redeem'}}
+          </button>
+        </div>
+      {{/if}}
     </div>
     <div class="ui section divider"></div>
     <div class="field">
@@ -549,4 +549,4 @@
   </div>
 </form>
 
-{{modals/tax-info-modal isOpen=taxModelIsOpen taxInfo=data.event.taxInfo hasTaxInfo=data.event.hasTaxInfo}}
+{{modals/tax-info-modal isOpen=taxModalIsOpen taxInfo=data.event.taxInfo hasTaxInfo=data.event.hasTaxInfo}}

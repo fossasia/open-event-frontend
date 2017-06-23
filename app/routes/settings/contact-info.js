@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Contact Info');
+    return this.l10n.t('Contact Info');
   }
 });

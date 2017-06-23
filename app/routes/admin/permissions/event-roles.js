@@ -7,6 +7,6 @@ export default Route.extend({
     return { roles: ['Attendee', 'Co-Organizer', 'Moderator', 'Organizer', 'Track Organizer'] };
   },
   titleToken() {
-    return this.i18n.t('Event Roles');
+    return this.l10n.t('Event Roles');
   }
 });

@@ -62,9 +62,9 @@
             maxSizeInKb=1000}}
         </div>
       </div>
-      {{#unless (eq (inc index) data.sponsors.items.length)}}
+      {{#if (not-eq (inc index) data.sponsors.items.length)}}
         <div class="ui section divider"></div>
-      {{/unless}}
+      {{/if}}
     {{/each}}
     <button type="button" class="ui primary button" {{action 'addSponsor'}}>{{t 'Add another sponsor'}}</button>
     <div class="spacer-50"></div>

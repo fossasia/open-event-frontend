@@ -5,6 +5,6 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('explore-side-bar', 'Integration | Component | explore side bar');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{explore/side-bar i18n=i18n}}`);
+  this.render(hbs`{{explore/side-bar l10n=l10n}}`);
   assert.ok(this.$().html().trim().includes('Categories'));
 });

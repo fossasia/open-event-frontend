@@ -10,34 +10,34 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        password_current: {
+        currentPassword: {
           identifier : 'password_current',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter the current password')
+              prompt : this.l10n.t('Please enter the current password')
             }
           ]
         },
-        password_new: {
+        newPassword: {
           identifier : 'password_new',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter a new password')
+              prompt : this.l10n.t('Please enter a new password')
             },
             {
               type   : 'minLength[6]',
-              prompt : this.i18n.t('Your password must have at least {ruleValue} characters')
+              prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
             }
           ]
         },
-        password_repeat: {
+        repeatPassword: {
           identifier : 'password_repeat',
           rules      : [
             {
               type   : 'match[password_new]',
-              prompt : this.i18n.t('Passwords do not match')
+              prompt : this.l10n.t('Passwords do not match')
             }
           ]
         }

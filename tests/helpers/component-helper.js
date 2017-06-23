@@ -4,22 +4,16 @@ import startApp from './start-app';
 import Ember from 'ember';
 import l10nTestHelper from 'ember-l10n/test-helpers';
 import fragmentTransformInitializer from 'open-event-frontend/initializers/model-fragments';
-
-const { Service, run, getOwner } = Ember;
-
-const i18nStub = Service.extend({
-  t(val) {
-    return val;
-  }
-});
+import L10n from 'ember-l10n/services/l10n';
+const { run, getOwner } = Ember;
 
 export default function(path, name, testCase = null) {
   moduleForComponent(path, name, {
     integration: true,
 
     beforeEach() {
-      this.register('service:l10n', i18nStub);
-      this.inject.service('l10n', { as: 'i18n' });
+      this.register('service:l10n', L10n);
+      this.inject.service('l10n', { as: 'l10n' });
       this.application = startApp();
       l10nTestHelper(this);
       run(() => fragmentTransformInitializer.initialize(getOwner(this)));

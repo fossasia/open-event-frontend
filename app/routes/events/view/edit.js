@@ -6,7 +6,7 @@ const { Route } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   titleToken() {
-    return this.i18n.t('Edit Event');
+    return this.l10n.t('Edit Event');
   },
 
   beforeModel(transition) {

@@ -8,7 +8,7 @@
     {{t 'on how to obtain these tokens.'}}
   </div>
 </h3>
-{{#unless (eq platform 'Twitter')}}
+{{#if (not-eq platform 'Twitter')}}
   <div class="field">
     <label>
       {{t 'Client ID'}}
@@ -34,5 +34,5 @@
     </label>
     {{input type='text' name=(concat (lowercase platform) '_consumer_secret')}}
   </div>
-{{/unless}}
+{{/if}}
 <div class="ui hidden divider"></div>
