@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ENV from 'open-event-frontend/config/environment';
 
-const { Component } = Ember;
+const { Component, run } = Ember;
 
 export default Component.extend({
   tagName           : 'img',
@@ -11,7 +11,9 @@ export default Component.extend({
 
   didInsertElement() {
     this.$().on('error', () => {
-      this.set('src', this.get('fallback'));
+      run(this, () => {
+        this.set('src', this.get('fallback'));
+      });
     });
   },
 
