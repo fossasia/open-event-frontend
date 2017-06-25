@@ -3,10 +3,7 @@ import Ember from 'ember';
 const { Route } = Ember;
 
 export default Route.extend({
-  titleToken() {
-    return this.l10n.t('Access codes');
-  },
-
+  templateName: 'events/view/tickets/access-codes/list',
   model() {
     return [
       {
