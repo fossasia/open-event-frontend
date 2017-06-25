@@ -1,1 +1,8 @@
-{{outlet}}
+<div class="row">
+  <div class="sixteen column wide">
+    {{#each model as |session|}}
+      {{session-card session=session}}
+      <div class="ui hidden divider"></div>
+    {{/each}}
+  </div>
+</div>
