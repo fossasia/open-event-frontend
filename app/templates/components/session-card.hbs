@@ -1,0 +1,36 @@
+<div class="event wide ui grid row">
+  {{#unless device.isMobile}}
+    <div class="ui card three wide computer six wide tablet column">
+      <a class="image" href="#">
+        {{widgets/safe-image src='assets/images/landing.jpg'}}
+      </a>
+    </div>
+  {{/unless}}
+  <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
+    <a class="main content" href="#">
+      <div class="header">
+        <span>{{session.title}}</span>
+        <div class="right floated author">
+          <div class="ui {{if (eq session.state 'accepted') 'green' (if (eq session.state 'rejected') 'red' 'yellow')}}
+          large label">
+            {{session.status}}
+          </div>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="time">
+          {{#if session.startsAt}}
+            {{moment-format session.startsAt 'ddd, MMM DD HH:mm A'}}
+          {{else}}
+            {{t 'Session Not Yet Scheduled'}}
+          {{/if}}
+        </span>
+      </div>
+    </a>
+    <div class="extra content">
+      <div class="weight-600">
+        {{session.event}}
+      </div>
+    </div>
+  </div>
+</div>
