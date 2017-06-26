@@ -1,10 +1,48 @@
 import Ember from 'ember';
+import { forOwn } from 'lodash';
 
-const { $, Service, computed, computed: { equal }, run: { next, debounce } } = Ember;
+const { $, Service, computed, computed: { equal }, run: { debounce } } = Ember;
+
+/**
+ * Keeping this outside the service object to keep it lean and faster to loop over
+ * @type {{mobile: {max: number}, tablet: {max: number, min: number}, computer: {max: number, min: number}, largeMonitor: {max: number, min: number}, widescreen: {min: number}}}
+ */
+const breakpoints = {
+  mobile: {
+    max : 767,
+    min : 0
+  },
+  tablet: {
+    max : 991,
+    min : 768
+  },
+  computer: {
+    max : 1199,
+    min : 992
+  },
+  largeMonitor: {
+    max : 1919,
+    min : 1200
+  },
+  widescreen: {
+    min: 1920
+  }
+};
 
 export default Service.extend({
 
-  deviceType: 'computer',
+  currentWidth: document.body.clientWidth,
+
+  deviceType: computed('currentWidth', function() {
+    let deviceType = 'computer';
+    const currentWidth = this.get('currentWidth');
+    forOwn(breakpoints, (value, key) => {
+      if (currentWidth >= value.min && (!value.hasOwnProperty('max') || currentWidth <= value.max)) {
+        deviceType = key;
+      }
+    });
+    return deviceType;
+  }),
 
   isMobile       : equal('deviceType', 'mobile'),
   isComputer     : equal('deviceType', 'computer'),
@@ -30,27 +68,11 @@ export default Service.extend({
     return rv !== -1;
   }),
 
-  getDeviceType() {
-    try {
-      return document.defaultView
-        .getComputedStyle(
-          document.querySelector('#device-type-identifier'), '::after'
-        )
-        .getPropertyValue('content')
-        .replace(/['"]+/g, '');
-    } catch (e) {
-      return 'computer';
-    }
-  },
-
   init() {
     this._super(...arguments);
-    next(this, () => {
-      this.set('deviceType', this.getDeviceType());
-    });
     $(window).resize(() => {
       debounce(this, () => {
-        this.set('deviceType', this.getDeviceType());
+        this.set('currentWidth', document.body.clientWidth);
       }, 200);
     });
   }
