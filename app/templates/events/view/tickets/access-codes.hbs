@@ -1,0 +1,31 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h2 class="ui header eight wide column left floated {{if device.isMobile 'center' 'left'}} aligned">
+      {{t 'Access Codes'}}
+    </h2>
+    <div class="eight wide column {{if device.isMobile 'center' 'right'}} aligned">
+      <button class="ui button blue">
+        <i class="plus icon"></i>
+        {{t 'Create an access code'}}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'events.view.tickets.access-codes.index' class='item'}}
+          {{t 'All'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.access-codes.list' 'active' class='item'}}
+          {{t 'Active'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.access-codes.list' 'inactive' class='item'}}
+          {{t 'Inactive'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+  </div>
+  <div class="row">
+    {{outlet}}
+  </div>
+</div>

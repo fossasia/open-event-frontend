@@ -57,7 +57,9 @@ router.map(function() {
         });
         this.route('add-order');
         this.route('discount-codes');
-        this.route('access', { path: 'access-codes' });
+        this.route('access-codes', function() {
+          this.route('list', { path: '/:access_status' });
+        });
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
@@ -79,6 +81,9 @@ router.map(function() {
     this.route('saved');
     this.route('past');
   });
+  this.route('my-sessions', function() {
+    this.route('past');
+  });
   this.route('notifications', function() {
     this.route('all');
   });
@@ -98,7 +103,9 @@ router.map(function() {
     this.route('sessions',  function() {
       this.route('list', { path: '/:sessions_state' });
     });
-    this.route('users');
+    this.route('users', function() {
+      this.route('list', { path: '/:users_status' });
+    });
     this.route('permissions', function() {
       this.route('event-roles');
       this.route('system-roles');
