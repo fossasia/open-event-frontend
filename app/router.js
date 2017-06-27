@@ -56,7 +56,9 @@ router.map(function() {
           this.route('list', { path: '/:attendees_status' });
         });
         this.route('add-order');
-        this.route('discount-codes');
+        this.route('discount-codes', function() {
+          this.route('list', { path: '/:discount_status' });
+        });
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });
         });
