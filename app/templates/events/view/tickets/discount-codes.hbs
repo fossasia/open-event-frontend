@@ -1,93 +1,33 @@
-<div class="ui stackable grid">
+<div class="ui grid stackable">
   <div class="row">
-    <div class="eight wide column">
-      <h2 class="ui header">
-        {{t 'Discount Codes'}}
-      </h2>
-    </div>
-    <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
-      <button class="ui blue button">
+    <h2 class="ui header eight wide column left floated
+              {{if device.isMobile 'center' 'left'}} aligned">
+      {{t 'Discount Codes'}}
+    </h2>
+    <div class="eight wide column
+                {{if device.isMobile 'center' 'right'}} aligned">
+      <button class="ui button blue">
         <i class="plus icon"></i>
         {{t 'Create a discount'}}
       </button>
     </div>
   </div>
   <div class="row">
-    <div class="ui hidden divider"></div>
-    <div class="ui {{if device.isMobile 'vertical'}} basic buttons">
-      <div class="ui button active">
-        {{t 'All'}}
-      </div>
-      <div class="ui button">
-        {{t 'Active'}}
-      </div>
-      <div class="ui button">
-        {{t 'Inactive'}}
-      </div>
+    <div class="eight wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'events.view.tickets.discount-codes.index' class='item'}}
+          {{t 'All'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.discount-codes.list' 'active' class='item'}}
+          {{t 'Active'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.discount-codes.list' 'inactive' class='item'}}
+          {{t 'Inactive'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
     </div>
-    <table class="ui very basic compact table">
-      <thead>
-        <tr>
-          <th>
-            #
-          </th>
-          <th>
-            {{t 'Discount code'}}
-          </th>
-          <th>
-            {{t 'Discount code URL'}}
-          </th>
-          <th>
-            {{t 'Discount Per Ticket'}}
-          </th>
-          <th>
-            {{t 'Validity'}}
-          </th>
-          <th>
-            {{t 'Status'}}
-          </th>
-          <th>
-            {{t 'Action'}}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model as |discount index|}}
-          <tr>
-            <td>
-              {{inc index}}
-            </td>
-            <td>
-              {{discount.code}}
-            </td>
-            <td>
-              <a href='{{discount.url}}' target='_blank' rel="noopener"> {{discount.url}} </a>
-            </td>
-            <td>
-              {{number-format discount.value}}
-            </td>
-            <td>
-              {{discount.validity}}
-            </td>
-            <td>
-              <a class="ui green label">{{discount.status}}</a>
-            </td>
-            <td class="centre aligned">
-              <div class="ui vertical compact basic buttons">
-                {{#ui-popup content=(t 'Edit') class='ui icon button' position='left center'}}
-                  <i class="edit icon"></i>
-                {{/ui-popup}}
-                {{#ui-popup content=(t 'Deactivate') class='ui icon button' position='left center'}}
-                  <i class="remove icon"></i>
-                {{/ui-popup}}
-                {{#ui-popup content=(t 'Delete') class='ui icon button' position='left center'}}
-                  <i class="trash icon"></i>
-                {{/ui-popup}}
-              </div>
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+  </div>
+  <div class="row">
+    {{outlet}}
   </div>
 </div>
