@@ -14,7 +14,7 @@
       placeholder=(t 'Location is required to make this event live')}}
       <div class="inline field">
         <div class="ui slider checkbox">
-          {{input id='show_map' type='checkbox' id='show_map' checked=data.event.showMap}}
+          {{input id='show_map' type='checkbox' id='show_map' checked=data.event.isMapShown}}
           <label for="show_map">{{t 'Show map on event page'}}</label>
         </div>
       </div>
@@ -27,7 +27,7 @@
                                   inputId='start_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='start'
-                                  value=data.event.startDate}}
+                                  value=data.event.startsAtDate}}
     </div>
     <div class="three wide field">
       <label for="start_time">&nbsp;</label>
@@ -35,7 +35,7 @@
                                   inputId='start_time'
                                   placeholder='HH:MM'
                                   rangePosition='start'
-                                  value=data.event.startTime}}
+                                  value=data.event.startsAtTime}}
     </div>
     <div class="{{if device.isTablet 'four' 'five'}} wide field">
       <label class="required" for="end_date">{{t 'Ends'}}</label>
@@ -43,7 +43,7 @@
                                   inputId='end_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='end'
-                                  value=data.event.endDate}}
+                                  value=data.event.endsAtDate}}
     </div>
     <div class="three wide field">
       <label for="end_time">&nbsp;</label>
@@ -51,7 +51,7 @@
                                   inputId='end_time'
                                   placeholder='HH:MM'
                                   rangePosition='end'
-                                  value=data.event.endTime}}
+                                  value=data.event.endsAtTime}}
     </div>
     <div class="five wide field">
       <label class="required" for="timezone">{{t 'Timezone'}}</label>
@@ -75,7 +75,7 @@
   <div class="fields">
     <div class="ten wide field">
       {{widgets/forms/image-upload
-        imageUrl=data.event.backgroundUrl
+        imageUrl=data.event.originalImageUrl
         needsCropper=true
         label=(t 'Event Image')
         id='event_image'
@@ -118,8 +118,9 @@
     <label>{{t 'Links & Social Media'}}</label>
     {{widgets/forms/link-input
       hasLinkName=true
-      linkName=data.event.externalEventUrl.name
-      segmentedLink=data.event.externalEventUrl.segmentedLink
+      fixedName=true
+      linkName=(t 'External event URL')
+      segmentedLink=data.event.segmentedExternalEventUrl
       isChild=(unless data.event.socialLinks true)
       canRemoveItem=false
       addItem=(action 'addItem' 'socialLinks' 'social-link')
@@ -139,11 +140,11 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=data.event.ticketingSystemEnabled id='use_ticketing_system'}}
+      {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
       <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
     </div>
   </div>
-  {{#if data.event.ticketingSystemEnabled}}
+  {{#if data.event.isTicketingEnabled}}
     <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
       {{#if data.event.tickets}}
         <div class="ui stackable celled five column grid ticket-header">
@@ -196,21 +197,21 @@
   {{else}}
     <div class="field">
       <label class="required" for="ticket_url">{{t 'Ticket URL'}}</label>
-      {{widgets/forms/link-input inputId='ticket_url' segmentedLink=segmentedExternalTicketUrl}}
+      {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
     </div>
   {{/if}}
   {{#if hasPaidTickets}}
     <div class="ui section divider"></div>
     <div class="field">
       <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
-      {{#if data.event.discountCodeId}}
+      {{#if data.event.discountCode}}
         <div class="ui labeled action input">
           <a class="ui right pointing teal basic label">
             {{t 'Code Applied'}}
           </a>
           <input title="applied"
-                 value="{{discountCodeDescription}}: {{t 'Discount of'}} {{discountCodeValue}} {{t
-                   'over a period of'}} {{discountCodePeriod}} {{t 'month(s)'}}"
+                 value="{{discountCode.type}}: {{t 'Discount of'}} {{discountCode.value}} {{t
+                   'over a period of'}} {{discountCode.maxQuantity}} {{t 'month(s)'}}"
                  readonly>
           <button
             type="button"
@@ -223,8 +224,7 @@
         </div>
       {{else}}
         <div class="ui action input">
-          {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode
-                  disabled=validatingDiscountCode}}
+          {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode disabled=validatingDiscountCode}}
           <button type="button"
                   class="ui teal {{unless device.isMobile 'right labeled'}} icon button {{if validatingDiscountCode 'loading'}}" {{action
             'redeemDiscountCode'}}>
@@ -392,7 +392,7 @@
               <div class="header">{{data.event.taxInfo.name}}</div>
               <div class="description">
                 {{data.event.taxInfo.taxId}}<br>
-                {{data.event.taxInfo.rate}}% - {{if data.event.taxInfo.includeTaxInPrice 'Included in ticket price'
+                {{data.event.taxInfo.rate}}% - {{if data.event.tax.isTaxIncludedInPrice 'Included in ticket price'
                                                     'Extra fee on ticket price'}}
               </div>
             </div>
@@ -549,4 +549,4 @@
   </div>
 </form>
 
-{{modals/tax-info-modal isOpen=taxModalIsOpen taxInfo=data.event.taxInfo hasTaxInfo=data.event.hasTaxInfo}}
+{{modals/tax-info-modal isOpen=taxModelIsOpen tax=data.event.tax hasTaxInfo=data.event.hasTaxInfo}}

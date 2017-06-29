@@ -12,8 +12,8 @@ export default ModalBase.extend(FormMixin, {
     closable: false
   },
 
-  autoScrollToErrors : false,
-  includeTaxInPrice  : 'include',
+  autoScrollToErrors   : false,
+  isTaxIncludedInPrice : 'include',
 
   getValidationRules() {
     return {
@@ -111,14 +111,14 @@ export default ModalBase.extend(FormMixin, {
   }),
 
   onVisible() {
-    this.set('includeTaxInPrice', this.get('taxInfo.includeTaxInPrice') ? 'include' : 'add');
+    this.set('isTaxIncludedInPrice', this.get('tax.isTaxIncludedInPrice') ? 'include' : 'add');
   },
 
   actions: {
     updateTaxInfo() {
       this.$('.ui.form').form('validate form');
       if (this.$('.ui.form').form('is valid')) {
-        this.set('taxInfo.includeTaxInPrice', this.get('includeTaxInPrice') === 'include');
+        this.set('tax.isTaxIncludedInPrice', this.get('isTaxIncludedInPrice') === 'include');
         this.close();
         this.set('hasTaxInfo', true);
       }
