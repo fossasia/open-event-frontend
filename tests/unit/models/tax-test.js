@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('user', 'Unit | Model | user', {
+moduleForModel('tax', 'Unit | Model | tax', {
   needs: ['model:event']
 });
 

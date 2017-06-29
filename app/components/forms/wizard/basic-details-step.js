@@ -282,7 +282,7 @@ export default Component.extend(FormMixin, {
     deleteTaxInformation() {
       this.set('data.event.hasTaxInfo', false);
       this.get('data.event.taxInfo').unloadRecord();
-      this.set('data.event.taxInfo', this.store.createRecord('tax-info'));
+      this.set('data.event.taxInfo', this.store.createRecord('tax'));
     },
     redeemDiscountCode() {
       this.set('validatingDiscountCode', true);

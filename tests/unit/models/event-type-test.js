@@ -1,7 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('tax-info', 'Unit | Model | tax info', {
-  needs: ['model:event']
+moduleForModel('event-type', 'Unit | Model | event type', {
+  // Specify the other units that are required for this test.
+  needs: []
 });
 
 test('it exists', function(assert) {

@@ -1,9 +1,8 @@
 import ENV from 'open-event-frontend/config/environment';
-import DS from 'ember-data';
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
 import Ember from 'ember';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
-const { JSONAPIAdapter } = DS;
 const { inject: { service } } = Ember;
 
 export default JSONAPIAdapter.extend(DataAdapterMixin, {
@@ -13,10 +12,32 @@ export default JSONAPIAdapter.extend(DataAdapterMixin, {
 
   notify: service(),
 
-
   isInvalid() {
     this.get('notify').error('An unexpected error occurred. Please try again later.', {
       closeAfter: 5000
     });
+  },
+
+  /**
+   * The backend server expects the filter in a serialized string format.
+   *
+   * @param query
+   * @return {*}
+   */
+  fixFilterQuery(query) {
+    if (query.hasOwnProperty('filter')) {
+      query.filter = JSON.stringify(query.filter);
+    }
+    return query;
+  },
+
+  query(store, type, query) {
+    query = this.fixFilterQuery(query);
+    return this._super(store, type, query);
+  },
+
+  queryRecord(store, type, query) {
+    query = this.fixFilterQuery(query);
+    return this._super(store, type, query);
   }
 });
