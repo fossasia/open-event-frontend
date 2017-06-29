@@ -1,7 +1,6 @@
-import DS from 'ember-data';
+import attr from 'ember-data/attr';
+import Model from 'ember-data/model';
 import Ember from 'ember';
-
-const { Model, attr } = DS;
 
 const { observer } = Ember;
 

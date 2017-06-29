@@ -10,7 +10,7 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   },
   model() {
     return {
-      data  : { event: this.getBasicDetails() },
+      data  : { event: this.store.createRecord('event') },
       steps : this.getSteps()
     };
   },

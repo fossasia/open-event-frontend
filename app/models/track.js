@@ -1,13 +1,13 @@
-import DS from 'ember-data';
+import attr from 'ember-data/attr';
+import Model from 'ember-data/model';
+import { hasMany, belongsTo } from 'ember-data/relationships';
 import { getColor } from 'open-event-frontend/utils/colors';
-
-const { Model, attr, hasMany, belongsTo } = DS;
 
 export default Model.extend({
   name        : attr('string'),
   color       : attr('string', { defaultValue: () => getColor() }),
   description : attr('string'),
-  imageUrl    : attr('string'),
+  fontColor   : attr('string'),
 
   sessions : hasMany('session'),
   event    : belongsTo('event')
