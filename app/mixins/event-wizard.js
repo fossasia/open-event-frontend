@@ -75,7 +75,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       codeOfConduct          : '',
       copyright              : 'All rights reserved',
       hasTaxInfo             : false,
-      taxInfo                : this.store.createRecord('tax-info'),
+      taxInfo                : this.store.createRecord('tax'),
       stripe                 : this.store.createRecord('stripe')
     };
   },
@@ -93,7 +93,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       tracks          : [this.store.createRecord('track', { name: 'Main Track' })],
       sessionTypes    : [this.store.createRecord('session-type', { name: 'Talk' })],
       microlocations  : [this.store.createRecord('microlocation', { name: 'Room 1' })],
-      callForSpeakers : this.store.createRecord('call-for-speakers'),
+      callForSpeakers : this.store.createRecord('speakers-call'),
       customForm      : {
         session : this.getSessionFormFields(),
         speaker : this.getSpeakerFormFields()

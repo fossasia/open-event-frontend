@@ -1,8 +1,4 @@
-import FragmentSerializer from '../serializers/fragment';
-
 export function initialize(application) {
-
-  application.register('serializer:-fragment', FragmentSerializer);
 
   const inject = (property, what) => {
     application.inject('controller', property, what);
