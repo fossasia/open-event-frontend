@@ -2,12 +2,13 @@
 
 module.exports = function(environment) {
   let ENV = {
-    appName      : process.env.APP_NAME || 'Open Event',
-    modulePrefix : 'open-event-frontend',
+    appName                  : process.env.APP_NAME || 'Open Event',
+    modulePrefix             : 'open-event-frontend',
     environment,
-    rootURL      : '/',
-    locationType : 'auto',
-    EmberENV     : {
+    rootURL                  : '/',
+    locationType             : 'router-scroll',
+    historySupportMiddleware : true,
+    EmberENV                 : {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
