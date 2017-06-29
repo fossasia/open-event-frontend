@@ -218,24 +218,44 @@
               </th>
             </tr>
             <tr>
-              <th class="right aligned">{{t 'Option'}}</th>
-              <th class="center aligned">{{t 'Include'}}</th>
-              <th class="center aligned">{{t 'Require'}}</th>
+              {{#if device.isMobile}}
+                <th class="center aligned">
+                  {{t 'Options'}}
+                </th>
+              {{else}}
+                <th class="right aligned">
+                  {{t 'Option'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Include'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Require'}}
+                </th>
+              {{/if}}
             </tr>
           </thead>
           <tbody>
             {{#each sessionsSpeakers.customForm.speaker as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
-                <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
-                  </div>
+                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                  <label class="{{if field.isFixed 'required'}}">
+                    {{field.name}}
+                  </label>
                 </td>
                 <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
-                  </div>
+                  {{ui-checkbox class='slider'
+                                checked=field.isIncluded
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isIncluded))
+                                label=(if device.isMobile (t 'Include'))}}
+                </td>
+                <td class="center aligned">
+                  {{ui-checkbox class='slider'
+                                checked=field.isRequired
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isRequired))
+                                label=(if device.isMobile (t 'Require'))}}
                 </td>
               </tr>
             {{/each}}
@@ -252,24 +272,44 @@
               </th>
             </tr>
             <tr>
-              <th class="right aligned">{{t 'Option'}}</th>
-              <th class="center aligned">{{t 'Include'}}</th>
-              <th class="center aligned">{{t 'Require'}}</th>
+              {{#if device.isMobile}}
+                <th class="center aligned">
+                  {{t 'Options'}}
+                </th>
+              {{else}}
+                <th class="right aligned">
+                  {{t 'Option'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Include'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Require'}}
+                </th>
+              {{/if}}
             </tr>
           </thead>
           <tbody>
             {{#each sessionsSpeakers.customForm.session as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
-                <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
-                  </div>
+                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                  <label class="{{if field.isFixed 'required'}}">
+                    {{field.name}}
+                  </label>
                 </td>
                 <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
-                  </div>
+                  {{ui-checkbox class='slider'
+                                checked=field.isIncluded
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isIncluded))
+                                label=(if device.isMobile (t 'Include'))}}
+                </td>
+                <td class="center aligned">
+                  {{ui-checkbox class='slider'
+                                checked=field.isRequired
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isRequired))
+                                label=(if device.isMobile (t 'Require'))}}
                 </td>
               </tr>
             {{/each}}
@@ -282,7 +322,7 @@
     <div class="spacer-50"></div>
   {{/if}}
 
-  <div class="large ui buttons right floated">
+  <div class="ui buttons {{if device.isMobile 'fluid' 'large right floated'}}">
     <button class="blue ui right labeled icon button" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
