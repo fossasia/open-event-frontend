@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import config from 'open-event-frontend/config/environment';
+import RouterScroll from 'ember-router-scroll';
 
 const { Router, run: { scheduleOnce }, inject: { service } } = Ember;
 
-const router = Router.extend({
+const router = Router.extend(RouterScroll, {
   location : config.locationType,
   rootURL  : config.rootURL,
   metrics  : service(),
