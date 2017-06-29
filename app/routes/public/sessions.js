@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import ResetScrollPositionMixin from 'open-event-frontend/mixins/reset-scroll-position';
 
 const { Route, RSVP } = Ember;
 
-export default Route.extend(ResetScrollPositionMixin, {
+export default Route.extend({
   titleToken() {
     return this.l10n.t('Sessions');
   },
