@@ -53,7 +53,13 @@ export default Mixin.create({
         $checkBoxes.checkbox();
       }
 
-      let $form = this.$('.ui.form');
+      let $form;
+      if (this.get('tagName') === 'form' || this.$().prop('tagName') === 'form') {
+        $form = this.$();
+        $form.addClass('ui form');
+      } else {
+        $form = this.$('.ui.form');
+      }
       if ($form) {
         $form = $form.first();
         if (this.get('getValidationRules') && $form) {

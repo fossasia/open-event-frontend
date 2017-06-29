@@ -1,25 +1,37 @@
-import DS from 'ember-data';
-
-const { Model, attr, belongsTo } = DS;
+import attr from 'ember-data/attr';
+import Model from 'ember-data/model';
+import { hasMany, belongsTo } from 'ember-data/relationships';
+import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 
 export default Model.extend({
   title         : attr('string'),
   subtitle      : attr('string'),
-  startDateTime : attr('date'),
-  endDateTime   : attr('date'),
+  startsAt      : attr('date'),
+  endsAt        : attr('date'),
   shortAbstract : attr('string'),
   longAbstract  : attr('string'),
   language      : attr('string'),
   level         : attr('string'),
   comments      : attr('string'),
-  slides        : attr('string'),
   state         : attr('string'),
-  video         : attr('string'),
-  audio         : attr('string'),
+  slidesUrl     : attr('string'),
+  videoUrl      : attr('string'),
+  audioUrl      : attr('string'),
   signupUrl     : attr('string'),
 
-  session_type  : belongsTo('session-type'),
+  isMailSent: attr('boolean', { defaultValue: false }),
+
+  createdAt   : attr('string'),
+  deletedAt   : attr('string'),
+  submittedAt : attr('string'),
+
+  sessionType   : belongsTo('session-type'),
   microlocation : belongsTo('microlocation'),
-  track         : belongsTo('track')
-  // speakers      : hasMany('speaker')
+  track         : belongsTo('track'),
+  speakers      : hasMany('speaker'),
+
+  startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
+  startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
+  endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
+  endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'date')
 });

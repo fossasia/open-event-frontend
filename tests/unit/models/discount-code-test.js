@@ -1,7 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('user', 'Unit | Model | user', {
-  needs: ['model:event']
+moduleForModel('discount-code', 'Unit | Model | discount code', {
+  needs: ['model:ticket', 'model:event']
 });
 
 test('it exists', function(assert) {
