@@ -1,8 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('version', 'Unit | Model | version', {
-  // Specify the other units that are required for this test.
-  needs: []
+moduleForModel('speakers-call', 'Unit | Model | speakers call', {
+  needs: ['model:event']
 });
 
 test('it exists', function(assert) {

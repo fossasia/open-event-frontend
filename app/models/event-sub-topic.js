@@ -3,9 +3,9 @@ import Model from 'ember-data/model';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
-  name   : attr('string'),
-  length : attr('string', { defaultValue: '00:30' }),
+  name : attr('string'),
+  slug : attr('string'),
 
-  event    : belongsTo('event'),
-  sessions : hasMany('session')
+  topic  : belongsTo('event-topic'),
+  events : hasMany('event')
 });

@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('user', 'Unit | Model | user', {
+moduleForModel('event-copyright', 'Unit | Model | event copyright', {
   needs: ['model:event']
 });
 
