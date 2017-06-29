@@ -7,7 +7,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/fossasia/open-event-frontend.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](https://translate.eventyay.com/project/open-event-frontend)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
 
 > The front end for the Open Event API Server
 
