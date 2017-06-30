@@ -20,13 +20,13 @@
       {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity}}
     </div>
   </div>
-  <div class="column">
+  <div class="column {{unless device.isLargeMonitor 'padding-right less'}}">
     <div class="field">
       <div class="ui icon buttons">
         <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
         <button type="button" class="ui button" {{action removeTicket}} data-content="Delete"><i class="trash icon"></i></button>
       </div>
-      <div class="ui icon buttons right floated">
+      <div class="ui icon buttons {{if device.isLargeMonitor 'right floated'}}">
         {{#if canMoveUp}}
           <button type="button" class="ui button" {{action moveTicketUp}} data-content="Move ticket up"><i class="up arrow icon"></i></button>
         {{/if}}
