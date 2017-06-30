@@ -46,14 +46,11 @@ export const computedSegmentedLink = function(property) {
  */
 export const computedDateTimeSplit = function(property, segmentFormat) {
   return computed(property, {
-    getFormat() {
-      return segmentFormat === 'time' ? FORM_TIME_FORMAT : (segmentFormat === 'date' ? FORM_DATE_FORMAT : segmentFormat);
-    },
     get() {
-      return moment(this.get(property)).format(this.getFormat());
+      return moment(this.get(property)).format(getFormat(segmentFormat));
     },
     set(key, value) {
-      const newDate = moment(value, this.getFormat());
+      const newDate = moment(value, getFormat(segmentFormat));
       let oldDate = moment(this.get(property));
       if (segmentFormat === 'time') {
         oldDate.hour(newDate.hour());
@@ -70,3 +67,7 @@ export const computedDateTimeSplit = function(property, segmentFormat) {
     }
   });
 };
+
+function getFormat(segmentFormat) {
+  return segmentFormat === 'time' ? FORM_TIME_FORMAT : (segmentFormat === 'date' ? FORM_DATE_FORMAT : segmentFormat);
+}
