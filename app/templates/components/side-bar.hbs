@@ -5,10 +5,10 @@
       <img class="ui avatar round image"
            style="margin-right: 10px;"
            alt="{{authManager.currentUser.email}}"
-           src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar
+           src="{{if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
                      '/images/placeholders/avatar.png'}}">
       {{if authManager.currentUser
-           (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email)
+           (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
            'Welcome'}}
     </div>
     <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
