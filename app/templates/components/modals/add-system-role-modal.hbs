@@ -1,0 +1,66 @@
+<div class="header">
+  {{t 'Add New System Role'}}
+</div>
+<div class="content">
+  <form class="ui form" id="add-system-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
+    <div class="field">
+      <label class="required">
+        {{t 'Name'}}
+      </label>
+      {{input type='text' name='role_name' placeholder=(t 'Enter Role name')}}
+    </div>
+    <div class="field">
+      <label class="required">
+        {{t 'Panels'}}
+      </label>
+      {{#ui-dropdown class="fluid multiple selection" selected=selectedPanels}}
+        {{input type='hidden' name='selected_panels' value=selectedPanels}}
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          {{t 'Please select Panel(s)'}}
+        </div>
+        <div class="menu">
+          <div class="item" data-value="admin">
+            {{t 'Admin Panel'}}
+          </div>
+          <div class="item" data-value="events">
+            {{t 'Events Panel'}}
+          </div>
+          <div class="item" data-value="sales">
+            {{t 'Sales Panel'}}
+          </div>
+          <div class="item" data-value="sessions">
+            {{t 'Sessions Panel'}}
+          </div>
+          <div class="item" data-value="users">
+            {{t 'Users Panel'}}
+          </div>
+          <div class="item" data-value="permissions">
+            {{t 'Permissions Panel'}}
+          </div>
+          <div class="item" data-value="messages">
+            {{t 'Messages Panel'}}
+          </div>
+          <div class="item" data-value="reports">
+            {{t 'Reports Panel'}}
+          </div>
+          <div class="item" data-value="settings">
+            {{t 'Settings Panel'}}
+          </div>
+          <div class="item" data-value="content">
+            {{t 'Content Panel'}}
+          </div>
+        </div>
+      {{/ui-dropdown}}
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="add-system-role-form" class="ui green right labeled icon button">
+    {{t 'Add Role'}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>
