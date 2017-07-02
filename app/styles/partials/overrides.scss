@@ -39,6 +39,12 @@ body.dimmable.undetached.dimmed {
   padding: 0 !important;
 }
 
-.padding.less {
-  padding: 0 !important;
+.less {
+  &.padding {
+    padding: 0 !important;
+  }
+  
+  &.padding-right {
+    padding-right: 0 !important;
+  }
 }
