@@ -75,7 +75,7 @@
     </tr>
     <tr>
       <td>
-        <button class="ui basic button">{{t 'Add new Role'}}</button>
+        <button class="ui basic button" {{action 'openAddSystemrRoleModal'}}>{{t 'Add new Role'}}</button>
       </td>
       <td></td>
       <td></td>
@@ -123,3 +123,5 @@
 <div>
   <button class="ui teal button">{{t 'Save'}}</button>
 </div>
+
+{{modals/add-system-role-modal  isOpen=isAddSystemRoleModalOpen addSystemRole=(action 'addSystemRole')}}
