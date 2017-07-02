@@ -16,7 +16,9 @@
         <tr>
           <td>{{inc index}}</td>
           <td>{{entry.accessCode}}</td>
-          <td>{{entry.accessCodeUrl}}</td>
+          <td>
+            <a href='{{entry.accessCodeUrl}}' target='_blank' rel='noopener'>{{entry.accessCodeUrl}}</a>
+          </td>
           <td>{{entry.accessibleTicket}}</td>
           <td>{{entry.validity}}</td>
           {{#if entry.isActive}}
