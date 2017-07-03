@@ -55,23 +55,7 @@ export default Component.extend(FormMixin, {
       this.onValid(() => {
         this.set('errorMessage', null);
         this.set('isLoading', true);
-
-        let email = this.get('email');
-        let password = this.get('password');
-
-        this.get('loader')
-          .post('/users', {
-            email,
-            password
-          })
-          .then(data => {
-            this.set('session.newUser', data.email);
-            this.get('routing').transitionTo('login');
-          })
-          .catch(() => {
-            this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
-            this.set('isLoading', false);
-          });
+        this.sendAction('submit');
       });
     }
   }
