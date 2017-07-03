@@ -5,6 +5,20 @@ const { Route } = Ember;
 
 export default Route.extend({
   model() {
-    return this.store.query('event', { end_time_gt: moment.utc().format('YYYY-MM-DDTHH:mm:ss'), state: 'Published' });
+    return this.store.query('event', {
+      include : 'event_topic,event_sub_topic,event_type',
+      filter  : [
+        {
+          name : 'starts_at',
+          op   : 'ge',
+          val  : moment().toISOString()
+        },
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'Published'
+        }
+      ]
+    });
   }
 });
