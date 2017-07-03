@@ -6,5 +6,8 @@ const { Route } = Ember;
 export default Route.extend(UnauthenticatedRouteMixin, {
   titleToken() {
     return this.l10n.t('Register');
+  },
+  model() {
+    return this.store.createRecord('user');
   }
 });
