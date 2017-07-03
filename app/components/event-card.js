@@ -8,7 +8,7 @@ export default Component.extend({
   classNames: ['column'],
 
   tags: computed('event.type', 'event.topic', 'event.subTopic', function() {
-    const tagsOriginal = this.get('event').getProperties('type', 'topic', 'subTopic');
+    const tagsOriginal = this.getProperties('event.topic.name', 'event.type.name', 'event.subTopic.name');
     let tags = [];
     forOwn(tagsOriginal, value => {
       if (value && value.trim() !== '') {
