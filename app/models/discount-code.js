@@ -24,7 +24,11 @@ export default Model.extend({
   createdAt     : attr('date'),
 
   tickets : hasMany('ticket'),
-  event   : belongsTo('event'), // The event that this discount code belongs to [Form (2)]
-  events  : hasMany('event')    // The events that this discount code has been applied to [Form (1)]
+  event   : belongsTo('event', {
+    inverse: 'discountCodes'
+  }), // The event that this discount code belongs to [Form (2)]
+  events: hasMany('event', {
+    inverse: 'discountCode'
+  })    // The events that this discount code has been applied to [Form (1)]
 });
 
