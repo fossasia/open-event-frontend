@@ -33,5 +33,10 @@ export default Component.extend({
       }
       return step;
     });
-  })
+  }),
+
+  didInsertElement() {
+    this._super(...arguments);
+    this.notifyPropertyChange('autoSteps');
+  }
 });
