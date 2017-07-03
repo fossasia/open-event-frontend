@@ -7,7 +7,15 @@ export default JSONAPISerializer.extend({
   modelNameFromPayloadKey(key) {
     return singularize(normalizeModelName(key));
   },
+
   payloadKeyFromModelName(modelName) {
     return singularize(modelName);
+  },
+
+  serializeAttribute(snapshot, json, key, attribute) {
+    if (attribute.options && attribute.options.readOnly) {
+      return;
+    }
+    this._super(...arguments);
   }
 });
