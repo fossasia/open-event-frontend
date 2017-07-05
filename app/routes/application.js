@@ -12,6 +12,11 @@ export default Route.extend(ApplicationRouteMixin, {
     tokens.reverse().push(this.get('config.appName'));
     return tokens.join(' | ');
   },
+
+  beforeModel() {
+    this._super(...arguments);
+    this.get('authManager').initialize();
+  },
   model() {
     return RSVP.hash({
       notifications: [
