@@ -4,9 +4,8 @@ import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { FORM_DATE_FORMAT, timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { eventTopics, eventTypes } from 'open-event-frontend/utils/dictionary/event';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { orderBy, filter, keys, find, values } from 'lodash';
+import { orderBy, filter, find, values } from 'lodash';
 
 const { Component, computed, run: { later }, observer } = Ember;
 
@@ -187,10 +186,6 @@ export default Component.extend(FormMixin, {
     return orderBy(licenses, 'name');
   }),
 
-  types: computed(function() {
-    return orderBy(eventTypes);
-  }),
-
   countries: computed(function() {
     return orderBy(countries, 'name');
   }),
@@ -203,10 +198,6 @@ export default Component.extend(FormMixin, {
     return orderBy(paymentCurrencies, 'name');
   }),
 
-  topics: computed(function() {
-    return orderBy(keys(eventTopics));
-  }),
-
   canAcceptPayPal: computed('data.event.paymentCurrency', function() {
     return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
   }),
@@ -215,20 +206,24 @@ export default Component.extend(FormMixin, {
     return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
-  subTopics: computed('data.event.topic', function() {
+  subTopics: computed('topic', function() {
     later(this, () => {
       try {
-        this.set('data.event.subTopic', null);
+        this.set('subTopic', null);
       } catch (ignored) { /* To suppress error thrown in-case this gets executed after component gets destroy */ }
     }, 50);
-    if (!this.get('data.event.topic')) {
+    if (!this.get('topic')) {
       return [];
     }
-    return orderBy(eventTopics[this.get('data.event.topic')]);
+    return this.get('topic.subTopics');
   }),
 
   hasPaidTickets: computed('data.event.tickets.[]', function() {
-    return filter(this.get('data.event.tickets'), ticket => ticket.get('type') === 'paid').length > 0;
+    return filter(this.get('data.event.tickets').toArray(), ticket => ticket.get('type') === 'paid').length > 0;
+  }),
+
+  hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
+    return this.get('data.event.codeOfConduct') ? true : false;
   }),
 
   discountCodeObserver: observer('data.event.discountCode', function() {
@@ -280,18 +275,18 @@ export default Component.extend(FormMixin, {
       this.set('taxModalIsOpen', true);
     },
     deleteTaxInformation() {
-      this.set('data.event.hasTaxInfo', false);
-      this.get('data.event.taxInfo').unloadRecord();
-      this.set('data.event.taxInfo', this.store.createRecord('tax'));
+      this.set('data.event.isTaxEnabled', false);
+      this.get('data.event.tax').unloadRecord();
+      this.set('data.event.tax', this.store.createRecord('tax'));
     },
     redeemDiscountCode() {
       this.set('validatingDiscountCode', true);
       // TODO do proper checks. Simulating now.
       later(this, () => {
-        if (this.get('data.event.discountCode') !== 'AIYPWZQP') {
+        if (this.get('data.event.discountCode.code') !== 'AIYPWZQP') {
           this.getForm().form('add prompt', 'discount_code', this.l10n.t('This discount code is invalid. Please try again.'));
         } else {
-          this.set('data.event.discountCodeId', 42);
+          this.set('data.event.discountCode.code', 42);
           this.set('discountCodeDescription', 'Tester special discount');
           this.set('discountCodeValue', '25%');
           this.set('discountCodePeriod', '5');
@@ -301,11 +296,11 @@ export default Component.extend(FormMixin, {
     },
     removeDiscountCode() {
       this.setProperties({
-        'data.event.discountCode'   : '',
-        'data.event.discountCodeId' : null,
-        'discountCodeDescription'   : null,
-        'discountCodeValue'         : null,
-        'discountCodePeriod'        : null
+        'data.event.discountCode'      : '',
+        'data.event.discountCode.code' : null,
+        'discountCodeDescription'      : null,
+        'discountCodeValue'            : null,
+        'discountCodePeriod'           : null
       });
     }
   }
