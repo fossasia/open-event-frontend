@@ -9,6 +9,6 @@ export default Route.extend({
   },
 
   model(params) {
-    return this.store.findRecord('event', params.event_id);
+    return this.store.findRecord('event', params.event_id, { include: 'social-links' });
   }
 });

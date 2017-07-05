@@ -5,7 +5,7 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
 
   primaryKey : 'attributes.identifier',
   attrs      : {
-    typev     : 'event-type',
+    type      : 'event-type',
     topic     : 'event-topic',
     subTopic  : 'event-sub-topic',
     copyright : 'event-copyright'
