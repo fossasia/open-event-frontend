@@ -10,8 +10,21 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   },
   model() {
     return {
-      data  : { event: this.store.createRecord('event') },
-      steps : this.getSteps()
+      data: {
+        event: this.store.createRecord('event', {
+          socialLinks : [],
+          tax         : this.store.createRecord('tax'),
+          copyright   : this.store.createRecord('event-copyright')
+        }),
+        types: this.store.query('event-type', {
+          sort: 'name'
+        }),
+        topics: this.store.query('event-topic', {
+          sort    : 'name',
+          include : 'event-sub-topics'
+        })
+      },
+      steps: this.getSteps()
     };
   },
   actions: {

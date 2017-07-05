@@ -21,7 +21,7 @@
     {{/widgets/forms/location-input}}
   </div>
   <div class="fields">
-    <div class="{{if device.isTablet 'four' 'five'}} wide field">
+    <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
       {{widgets/forms/date-picker type='text'
                                   inputId='start_date'
@@ -37,7 +37,7 @@
                                   rangePosition='start'
                                   value=data.event.startsAtTime}}
     </div>
-    <div class="{{if device.isTablet 'four' 'five'}} wide field">
+    <div class="five wide field">
       <label class="required" for="end_date">{{t 'Ends'}}</label>
       {{widgets/forms/date-picker type='text'
                                   inputId='end_date'
@@ -55,7 +55,7 @@
     </div>
     <div class="five wide field">
       <label class="required" for="timezone">{{t 'Timezone'}}</label>
-      {{#ui-dropdown class='search compact selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
+      {{#ui-dropdown class='search selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
         {{input type='hidden' id='timezone' value=data.event.timezone}}
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select timezone'}}</div>
@@ -224,7 +224,7 @@
         </div>
       {{else}}
         <div class="ui action input">
-          {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode disabled=validatingDiscountCode}}
+          {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode.code disabled=validatingDiscountCode}}
           <button type="button"
                   class="ui teal {{unless device.isMobile 'right labeled'}} icon button {{if validatingDiscountCode 'loading'}}" {{action
             'redeemDiscountCode'}}>
@@ -282,7 +282,7 @@
         <label>{{t 'Payment by PayPal'}}</label>
         <div class="field" style="margin-top: 10px;">
           <div class="ui checkbox">
-            {{input type='checkbox' id='payment_by_paypal' checked=data.event.payByPayPal}}
+            {{input type='checkbox' id='payment_by_paypal' checked=data.event.canPayByPapal}}
             <label for="payment_by_paypal">
               <span>{{t 'YES, accept payment through PayPal'}}</span>
               <br>
@@ -295,7 +295,7 @@
             </label>
           </div>
         </div>
-        {{#if data.event.payByPayPal}}
+        {{#if data.event.canPayByPapal}}
           <div class="field">
             <label class="required">PayPal Email</label>
             {{input type='email'}}
@@ -306,7 +306,7 @@
         <label>{{t 'Payment by Stripe'}}</label>
         <div class="field" style="margin-top: 10px;">
           <div class="ui checkbox">
-            {{input type='checkbox' id='payment_by_stripe' checked=data.event.payByStripe}}
+            {{input type='checkbox' id='payment_by_stripe' checked=data.event.canPayByStripe}}
             <label for="payment_by_stripe">
               <span>{{t 'YES, accept payment through Stripe'}}</span>
               <br>
@@ -317,7 +317,7 @@
             </label>
           </div>
         </div>
-        {{#if data.event.payByStripe}}
+        {{#if data.event.canPayByStripe}}
           <div class="field">
             <label class="required">{{t 'Connect to your Stripe account'}}</label>
             <a href="#" class="stripe-connect"><span>{{t 'Connect with Stripe'}}</span></a>
@@ -327,13 +327,13 @@
       <label>{{t 'Offline Payments'}}</label>
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_cheque' checked=data.event.payByCheque}}
+          {{input type='checkbox' id='payment_by_cheque' checked=data.event.canPayByCheque}}
           <label for="payment_by_cheque">
             {{t 'YES, accept payment by Cheque'}}
           </label>
         </div>
       </div>
-      {{#if data.event.payByCheque}}
+      {{#if data.event.canPayByCheque}}
         <div class="field">
           <label class="required">
             {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
@@ -344,14 +344,14 @@
 
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_by_bank' checked=data.event.payByBank}}
+          {{input type='checkbox' id='payment_by_bank' checked=data.event.canPayByBank}}
           <label for="payment_by_bank">
             {{t 'YES, accept payment by Telegraphic Transfer(TT) / Bank Transfer '}}
           </label>
         </div>
       </div>
 
-      {{#if data.event.payByBank}}
+      {{#if data.event.canPayByBank}}
         <div class="field">
           <label class="required">
             {{t 'Enter your bank details and other required details/instructions to ticket buyers'}}
@@ -362,14 +362,14 @@
 
       <div class="field" style="margin-top: 10px;">
         <div class="ui checkbox">
-          {{input type='checkbox' id='payment_onsite' checked=data.event.payOnSite}}
+          {{input type='checkbox' id='payment_onsite' checked=data.event.canPayOnsite}}
           <label for="payment_onsite">
             {{t 'YES, accept payment at the event (on site) '}}
           </label>
         </div>
       </div>
 
-      {{#if data.event.payOnSite}}
+      {{#if data.event.canPayOnsite}}
         <div class="field">
           <label class="required">
             {{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}
@@ -381,7 +381,7 @@
       <div class="ui section divider"></div>
 
       <div class="field">
-        {{#if data.event.hasTaxInfo}}
+        {{#if data.event.isTaxEnabled}}
           <div class="ui card">
             <div class="content" style="padding: 0.5em 1em;">
               <div class="meta">
@@ -389,10 +389,10 @@
               </div>
             </div>
             <div class="content">
-              <div class="header">{{data.event.taxInfo.name}}</div>
+              <div class="header">{{data.event.tax.name}}</div>
               <div class="description">
-                {{data.event.taxInfo.taxId}}<br>
-                {{data.event.taxInfo.rate}}% - {{if data.event.tax.isTaxIncludedInPrice 'Included in ticket price'
+                {{data.event.tax.taxId}}<br>
+                {{data.event.tax.rate}}% - {{if data.event.tax.isTaxIncludedInPrice 'Included in ticket price'
                                                     'Extra fee on ticket price'}}
               </div>
             </div>
@@ -446,39 +446,39 @@
 
   <div class="field">
     <label>{{t 'Event Type'}}</label>
-    {{#ui-dropdown class='search selection' selected=data.event.type forceSelection=false fullTextSearch=true}}
-      {{input type='hidden' id='type' value=data.event.type}}
+    {{#ui-dropdown class='search selection' selected=type onChange=(action (mut type)) as |execute mapper|}}
+      {{input type='hidden' id='type' value=type}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select Event Type'}}</div>
       <div class="menu">
-        {{#each types as |type|}}
-          <div class="item" data-value="{{type}}">{{type}}</div>
+        {{#each data.types as |type|}}
+          <div class="item" data-value="{{map-value mapper type}}">{{type.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}
   </div>
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
-    {{#ui-dropdown class='search selection' selected=data.event.topic forceSelection=false fullTextSearch=true}}
-      {{input type='hidden' id='topic' value=data.event.topic}}
+    {{#ui-dropdown class='search selection' selected=topic onChange=(action (mut topic)) as |execute mapper|}}
+      {{input type='hidden' id='topic' value=topic}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select Event Topic'}}</div>
       <div class="menu">
-        {{#each topics as |topic|}}
-          <div class="item" data-value="{{topic}}">{{topic}}</div>
+        {{#each data.topics as |topic|}}
+          <div class="item" data-value="{{map-value mapper topic}}">{{topic.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}
   </div>
   <div class="field">
     <label>{{t 'Event Sub-topic'}}</label>
-    {{#ui-dropdown class='search selection' selected=data.event.subTopic forceSelection=false fullTextSearch=true}}
-      {{input type='hidden' id='sub_topic' value=data.event.subTopic}}
+    {{#ui-dropdown class='search selection' selected=subTopic onChange=(action (mut subTopic)) as |execute mapper|}}
+      {{input type='hidden' id='sub_topic' value=subTopic}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select Event Sub-Topic'}}</div>
       <div class="menu">
         {{#each subTopics as |subTopic|}}
-          <div class="item" data-value="{{subTopic}}">{{subTopic}}</div>
+          <div class="item" data-value="{{map-value mapper subTopic}}">{{subTopic.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}
@@ -519,8 +519,8 @@
         </div>
       </div>
     </label>
-    {{#ui-dropdown class='search selection' selected=data.event.copyright forceSelection=false fullTextSearch=true}}
-      {{input type='hidden' id='license' value=data.event.copyright}}
+    {{#ui-dropdown class='search selection' selected=data.event.copyright.licence forceSelection=false fullTextSearch=true}}
+      {{input type='hidden' id='license' value=data.event.copyright.licence}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select License'}}</div>
       <div class="menu">
@@ -549,4 +549,4 @@
   </div>
 </form>
 
-{{modals/tax-info-modal isOpen=taxModelIsOpen tax=data.event.tax hasTaxInfo=data.event.hasTaxInfo}}
+{{modals/tax-info-modal isOpen=taxModalIsOpen tax=data.event.tax hasTaxInfo=data.event.isTaxEnabled}}
