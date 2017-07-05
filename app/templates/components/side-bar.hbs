@@ -2,8 +2,7 @@
   {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
   {{#if session.isAuthenticated}}
     <div class="item">
-      <img class="ui avatar round image"
-           style="margin-right: 10px;"
+      <img class="ui avatar round image side-bar"
            alt="{{authManager.currentUser.email}}"
            src="{{if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
                      '/images/placeholders/avatar.png'}}">

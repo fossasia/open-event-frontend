@@ -10,7 +10,7 @@
         {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price}}
       </div>
     {{else}}
-      <span class="text muted" style="line-height: 35px;">
+      <span class="text muted ticket-input">
         {{t 'This is a'}} {{ticket.type}} {{t 'Ticket'}}
       </span>
     {{/if}}
