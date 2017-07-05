@@ -6,10 +6,10 @@ const { Route } = Ember;
 export default Route.extend({
   model() {
     return this.store.query('event', {
-      include : 'event_topic,event_sub_topic,event_type',
+      include : 'event-topic,event-sub-topic,event-type,speakers-call',
       filter  : [
         {
-          name : 'starts_at',
+          name : 'starts-at',
           op   : 'ge',
           val  : moment().toISOString()
         },
