@@ -4,9 +4,9 @@
       <h3>{{config.appName}}</h3>
     {{/link-to}}
     {{#unless device.isTablet}}
-      <div class="ui category search item" style="width: 20%">
+      <div class="ui category search item nav-bar-search-item">
         <div class="ui transparent icon input">
-          <input class="prompt" type="text" placeholder="{{t 'Search Events...'}}" style="border-radius: 0;">
+          <input class="prompt nav-bar-prompt" type="text" placeholder="{{t 'Search Events...'}}">
           <i class="search link icon"></i>
         </div>
         <div class="results"></div>
@@ -21,8 +21,7 @@
       {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}
         {{#ui-dropdown class='item' action='hide'}}
-          <img class="ui avatar round image"
-               style="margin-right: 10px;"
+          <img class="ui avatar round image nav-bar-image"
                alt="{{authManager.currentUser.email}}"
                src="{{if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
                          '/images/placeholders/avatar.png'}}">
