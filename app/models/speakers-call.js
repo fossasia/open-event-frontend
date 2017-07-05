@@ -13,8 +13,8 @@ export default Model.extend({
 
   event: belongsTo('event'),
 
-  startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
-  startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
-  endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
-  endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'date')
+  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
+  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
+  endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
+  endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'date')
 });
