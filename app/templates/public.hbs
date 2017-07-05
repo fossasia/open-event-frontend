@@ -1,12 +1,12 @@
 <div class="public-event">
   <div class="lead {{if smallLead 'small'}}">
-    {{widgets/safe-image src=(if model.large model.large model.placeholderUrl)}}
+    {{widgets/safe-image src=(if model.largeImageUrl model.largeImageUrl model.originalImageUrl)}}
     <div class="content">
       <div class="ui container">
         <div class="ui grid">
           <div class="one wide column"></div>
           <div class="fifteen wide column info">
-            <h4 class="event time">{{moment-format model.startTime 'ddd, MMM DD \at HH:mm A'}}</h4>
+            <h4 class="event time">{{moment-format model.startsAt 'ddd, MMM DD \at HH:mm A'}}</h4>
             <h1 class="event name">{{model.name}}</h1>
             <h4 class="event location"><i class="marker icon"></i>{{model.locationName}}</h4>
           </div>
@@ -34,7 +34,7 @@
         {{outlet}}
       </div>
       <div class="three wide column" style="height: 100vh; overflow: hidden; !important">
-        {{public/social-links eventUrl=model.eventUrl socialLinks=model.socialLinks}}
+        {{public/social-links eventUrl=model.url socialLinks=model.socialLinks}}
       </div>
     </div>
   </div>
