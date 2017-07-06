@@ -21,7 +21,7 @@
     {{/widgets/forms/location-input}}
   </div>
   <div class="fields">
-    <div class="five wide field">
+    <div class="{{if device.isTablet 'four' 'five'}} wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
       {{widgets/forms/date-picker type='text'
                                   inputId='start_date'
@@ -29,7 +29,7 @@
                                   rangePosition='start'
                                   value=data.event.startDate}}
     </div>
-    <div class="two wide field">
+    <div class="{{if device.isTablet 'three' 'two'}} wide field">
       <label for="start_time">&nbsp;</label>
       {{widgets/forms/time-picker type='text'
                                   inputId='start_time'
@@ -37,7 +37,7 @@
                                   rangePosition='start'
                                   value=data.event.startTime}}
     </div>
-    <div class="five wide field">
+    <div class="{{if device.isTablet 'four' 'five'}} wide field">
       <label class="required" for="end_date">{{t 'Ends'}}</label>
       {{widgets/forms/date-picker type='text'
                                   inputId='end_date'
@@ -45,7 +45,7 @@
                                   rangePosition='end'
                                   value=data.event.endDate}}
     </div>
-    <div class="two wide field">
+    <div class="{{if device.isTablet 'three' 'two'}} wide field">
       <label for="end_time">&nbsp;</label>
       {{widgets/forms/time-picker type='text'
                                   inputId='end_time'
@@ -55,7 +55,7 @@
     </div>
     <div class="five wide field">
       <label class="required" for="timezone">{{t 'Timezone'}}</label>
-      {{#ui-dropdown class='search selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
+      {{#ui-dropdown class='search compact selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
         {{input type='hidden' id='timezone' value=data.event.timezone}}
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select timezone'}}</div>
