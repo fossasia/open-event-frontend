@@ -38,7 +38,11 @@ export default Component.extend({
       this.set('filters.eventType', eventType === this.get('filters.eventType') ? null : eventType);
     },
     selectDateRange(dateRange) {
-      this.set('filters.dateRange', dateRange === this.get('filters.dateRange') ? null : dateRange);
+      let isCustomDate = null;
+      if (dateRange === 'custom_dates') {
+        isCustomDate = dateRange;
+      }
+      this.set('filters.dateRange', dateRange === this.get('filters.dateRange') ?  isCustomDate : dateRange);
     }
   }
 });
