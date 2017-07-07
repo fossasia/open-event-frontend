@@ -6,15 +6,15 @@
       <div class="three fields">
         <div class="field">
           <label>{{t 'Width (in px)'}}</label>
-          {{input type='number' name='large_width' value=image.fullWidth}}
+          {{input type='number' name='large_width' value=image.fullWidth min=1}}
         </div>
         <div class="field">
           <label>{{t 'Height (in px)'}}</label>
-          {{input type='number' name='large_height' value=image.fullHeight}}
+          {{input type='number' name='large_height' value=image.fullHeight min=1}}
         </div>
         <div class="field">
           <label>{{t 'Quality (in %)'}}</label>
-          {{input type='number' name='large_quality' value=image.fullQuality}}
+          {{input type='number' name='large_quality' value=image.fullQuality min=1}}
         </div>
       </div>
       <div class="field">
@@ -30,15 +30,15 @@
       <div class="three fields">
         <div class="field">
           <label>{{t 'Width (in px)'}}</label>
-          {{input type='number' name='thumb_width' value=image.thumbnailWidth}}
+          {{input type='number' name='thumb_width' value=image.thumbnailWidth min=1}}
         </div>
         <div class="field">
           <label>{{t 'Height (in px)'}}</label>
-          {{input type='number' name='thumb_height' value=image.thumbnailHeight}}
+          {{input type='number' name='thumb_height' value=image.thumbnailHeight min=1}}
         </div>
         <div class="field">
           <label>{{t 'Quality (in %)'}}</label>
-          {{input type='number' name='thumb_quality' value=image.thumbnailQuality}}
+          {{input type='number' name='thumb_quality' value=image.thumbnailQuality min=1}}
         </div>
       </div>
       <div class="field">
@@ -56,15 +56,15 @@
       <div class="three fields">
         <div class="field">
           <label>{{t 'Width (in px)'}}</label>
-          {{input type='number' name='event_icon_width' value=image.iconWidth}}
+          {{input type='number' name='event_icon_width' value=image.iconWidth min=1}}
         </div>
         <div class="field">
           <label>{{t 'Height (in px)'}}</label>
-          {{input type='number' name='event_icon_height' value=image.iconHeight}}
+          {{input type='number' name='event_icon_height' value=image.iconHeight min=1}}
         </div>
         <div class="field">
           <label>{{t 'Quality (in %)'}}</label>
-          {{input type='number' name='event_icon_quality' value=image.iconQuality}}
+          {{input type='number' name='event_icon_quality' value=image.iconQuality min=1}}
         </div>
       </div>
       <div class="field">
@@ -76,11 +76,11 @@
       <div class="three fields">
         <div class="field">
           <label>{{t 'Width (in px)'}}</label>
-          {{input type='number' name='logo_width' value=image.logoWidth}}
+          {{input type='number' name='logo_width' value=image.logoWidth min=1}}
         </div>
         <div class="field">
           <label>{{t 'Height (in px)'}}</label>
-          {{input type='number' name='logo_height' value=image.logoHeight}}
+          {{input type='number' name='logo_height' value=image.logoHeight min=1}}
         </div>
       </div>
       {{t 'Standard Size of the available area is 500px X 200px'}}
@@ -91,11 +91,11 @@
       <div class="two fields">
         <div class="field">
           <label>{{t 'Width & Height(in px)'}}</label>
-          {{input type='number' name='profile_thumb_size' value=image.thumbnailWidth}}
+          {{input type='number' name='profile_thumb_size' value=image.thumbnailWidth min=1}}
         </div>
         <div class="field">
           <label>{{t 'Quality (in %)'}}</label>
-          {{input type='number' name='profile_thumb_quality' value=image.thumbnailQuality}}
+          {{input type='number' name='profile_thumb_quality' value=image.thumbnailQuality min=1}}
         </div>
       </div>
       {{t 'Standard Size of the available area is 150px X 150px'}}
@@ -108,11 +108,11 @@
       <div class="two fields">
         <div class="field">
           <label>{{t 'Width & Height(in px)'}}</label>
-          {{input type='number' name='profile_small_size' value=image.smallWidth}}
+          {{input type='number' name='profile_small_size' value=image.smallWidth min=1}}
         </div>
         <div class="field">
           <label>{{t 'Quality (in %)'}}</label>
-          {{input type='number' name='profile_small_quality' value=image.smallQuality}}
+          {{input type='number' name='profile_small_quality' value=image.smallQuality min=1}}
         </div>
       </div>
       {{t 'Standard Size of the available area is 50px X 50px'}}
@@ -125,11 +125,11 @@
       <div class="two fields">
         <div class="field">
           <label>{{t 'Width & Height(in px)'}}</label>
-          {{input type='number' name='profile_icon_size' value=image.iconWidth}}
+          {{input type='number' name='profile_icon_size' value=image.iconWidth min=1}}
         </div>
         <div class="field">
           <label>{{t 'Quality (in %)'}}</label>
-          {{input type='number' name='profile_icon_quality' value=image.iconQuality}}
+          {{input type='number' name='profile_icon_quality' value=image.iconQuality min=1}}
         </div>
       </div>
       {{t 'Standard Size of the available area is 35px X 35px'}}
