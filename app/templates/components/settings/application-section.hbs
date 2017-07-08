@@ -4,7 +4,13 @@
     {{t 'facebook.com/'}}
   </div>
   {{input type='text' name='facebook'}}
-  <button class="ui blue button">{{t 'Connect'}}</button>
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
 </div>
 <h4>{{t 'Twitter'}}</h4>
 <div class="ui fluid labeled action input">
@@ -12,7 +18,13 @@
     {{t 'twitter.com/'}}
   </div>
   {{input type='text' name='twitter'}}
-  <button class="ui blue button">{{t 'Connect'}}</button>
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
 </div>
 <h4>{{t 'Instagram'}}</h4>
 <div class="ui fluid labeled action input">
@@ -20,7 +32,13 @@
     {{t 'instagram.com/'}}
   </div>
   {{input type='text' name='instagram'}}
-  <button class="ui blue button">{{t 'Connect'}}</button>
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
 </div>
 <h4>{{t 'Google+'}}</h4>
 <div class="ui fluid labeled action input">
@@ -28,5 +46,11 @@
     {{t 'plus.google.com/'}}
   </div>
   {{input type='text' name='google'}}
-  <button class="ui blue button">{{t 'Connect'}}</button>
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
 </div>
