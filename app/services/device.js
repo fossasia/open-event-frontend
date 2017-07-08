@@ -43,12 +43,13 @@ export default Service.extend({
     });
     return deviceType;
   }),
+  isMobile           : equal('deviceType', 'mobile'),
+  isComputer         : equal('deviceType', 'computer'),
+  isTablet           : equal('deviceType', 'tablet'),
+  isLargeMonitor     : equal('deviceType', 'largeMonitor'),
+  isWideScreen       : equal('deviceType', 'widescreen'),
+  isBiggerThanTablet : computed.or('isComputer', 'isLargeMonitor', 'isWideScreen'),
 
-  isMobile       : equal('deviceType', 'mobile'),
-  isComputer     : equal('deviceType', 'computer'),
-  isTablet       : equal('deviceType', 'tablet'),
-  isLargeMonitor : equal('deviceType', 'largeMonitor'),
-  isWideScreen   : equal('deviceType', 'widescreen'),
 
   isInternetExplorer: computed(function() {
     let rv = -1;

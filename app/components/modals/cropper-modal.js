@@ -6,13 +6,12 @@ export default ModalBase.extend({
     this.$('img').croppie({
       customClass : 'croppie',
       viewport    : {
-        width  : 400,
-        height : 200,
+        width  : 300,
+        height : 150,
         type   : 'square'
       },
       boundary: {
-        width  : 600,
-        height : 300
+        height: 250
       }
     });
   },

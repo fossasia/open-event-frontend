@@ -11,7 +11,7 @@
         <th>
           {{t 'Ticket Name'}}
         </th>
-        <th>
+        <th class="right aligned">
           {{t 'Ticket Price'}}
         </th>
         <th>
@@ -54,8 +54,8 @@
           <td>
             {{attendees.ticketName}}
           </td>
-          <td>
-            US $ {{number-format attendees.amount}}
+          <td class="right aligned">
+            US$ {{number-format attendees.amount}}
           </td>
           <td>
             {{attendees.firstName}}

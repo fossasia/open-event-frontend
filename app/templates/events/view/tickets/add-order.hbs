@@ -22,7 +22,7 @@
             </div>
           </td>
           <td class="right aligned">
-            $ {{number-format (mult ticket.quantity ticket.price)}}
+            US$ {{number-format (mult ticket.quantity ticket.price)}}
           </td>
         </tr>
       {{/each}}
@@ -31,7 +31,7 @@
   <div class="ui grid stackable">
     <div class="row">
       <div class="sixteen wide column right aligned">
-        <h5 class="ui header">{{t 'Grand Total'}}: $ {{number-format total}}</h5>
+        <h5 class="ui header">{{t 'Grand Total'}}: US$ {{number-format total}}</h5>
       </div>
     </div>
     <div class="row" style="padding-top: 20px">

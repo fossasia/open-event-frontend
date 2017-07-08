@@ -7,8 +7,7 @@ export default Component.extend({
 
   currentRoute: computed('session.currentRouteName', 'item', function() {
     var path = this.get('session.currentRouteName');
-    var item = this.get('item');
-    if (path && item) {
+    if (path) {
       this.set('item', this.$('a.active'));
       this.$('a').addClass('vertical-item');
       return this.$('a.active').text().trim();
@@ -22,9 +21,13 @@ export default Component.extend({
     this.set('item', this.$('a.active'));
   },
   actions: {
-    toggleMenu() {
+    toggleMenu(mode) {
       var menu = this.$('div.menu');
       menu.toggleClass('hidden');
+
+      if (mode === 'reset') {
+        this.set('item', this.$('a.active'));
+      }
     }
   }
 });
