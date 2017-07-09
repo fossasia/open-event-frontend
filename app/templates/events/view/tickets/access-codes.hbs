@@ -6,11 +6,10 @@
     <div class="row">
       <h2 class="ui header eight wide column left floated {{if device.isMobile 'center' 'left'}} aligned">{{t 'Access Codes'}}</h2>
       <div class="eight wide column {{if device.isMobile 'center' 'right'}} aligned">
-        {{#link-to 'events.view.tickets.access-codes.create'}}
-          <button class="ui button blue">
-            <i class="plus icon"></i>
-            {{t 'Create an access code'}}
-          </button>
+        {{#link-to 'events.view.tickets.access-codes.create'
+        tagName='button' class='ui button blue'}}
+          <i class="plus icon"></i>
+          {{t 'Create an access code'}}
         {{/link-to}}
       </div>
     </div>

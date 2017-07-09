@@ -6,10 +6,11 @@
     </h2>
     <div class="eight wide column
                 {{if device.isMobile 'center' 'right'}} aligned">
-      <button class="ui button blue">
+      {{#link-to 'events.view.tickets.discount-codes.create' tagName='button'
+      class='ui blue button'}}
         <i class="plus icon"></i>
         {{t 'Create a discount'}}
-      </button>
+      {{/link-to}}
     </div>
   </div>
   <div class="row">

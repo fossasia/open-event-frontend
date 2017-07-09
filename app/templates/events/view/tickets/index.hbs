@@ -21,47 +21,94 @@
         <th>{{t 'View Reports'}}</th>
       </tr>
       <tr>
-        <td class="ui grey inverted segment">
+        {{#link-to 'events.view.tickets.orders.list' 'cancelled' tagName='td'
+        class='ui grey inverted segment'}}
           <span>{{t 'Cancelled'}}</span>
-        </td>
+        {{/link-to}}
         <td class="right aligned">0</td>
         <td class="right aligned">0</td>
         <td class="right aligned">{{number-format 0.00}}</td>
-        <td>{{t 'View orders / View attendees'}}</td>
+        <td>
+          {{#link-to 'events.view.tickets.orders.list' 'cancelled'}}
+            {{t 'View orders'}}
+          {{/link-to}}
+          /
+          {{#link-to 'events.view.tickets.attendees.list' 'cancelled'}}
+            {{t 'View attendees'}}
+          {{/link-to}}
+        </td>
       </tr>
       <tr>
-        <td class="ui yellow inverted segment">
+        {{#link-to 'events.view.tickets.orders.list' 'pending' tagName='td'
+        class='ui yellow inverted segment'}}
           <span>{{t 'Pending'}}</span>
-        </td>
+        {{/link-to}}
         <td class="right aligned">0</td>
         <td class="right aligned">0</td>
         <td class="right aligned">{{number-format 0.00}}</td>
-        <td>{{t 'View orders / View attendees'}}</td>
+        <td>
+          {{#link-to 'events.view.tickets.orders.list' 'pending'}}
+            {{t 'View orders'}}
+          {{/link-to}}
+          /
+          {{#link-to 'events.view.tickets.attendees.list' 'pending'}}
+            {{t 'View attendees'}}
+          {{/link-to}}
+        </td>
       </tr>
       <tr>
-        <td class="ui red inverted segment">
+        {{#link-to 'events.view.tickets.orders.list' 'expired' tagName='td'
+        class='ui red inverted segment'}}
           <span>{{t 'Expired'}}</span>
-        </td>
+        {{/link-to}}
         <td class="right aligned">0</td>
         <td class="right aligned">0</td>
         <td class="right aligned">{{number-format 0.00}}</td>
-        <td>{{t 'View orders / View attendees'}}</td>
+        <td>
+          {{#link-to 'events.view.tickets.orders.list' 'expired'}}
+            {{t 'View orders'}}
+          {{/link-to}}
+          /
+          {{#link-to 'events.view.tickets.attendees.list' 'expired'}}
+            {{t 'View attendees'}}
+          {{/link-to}}
+        </td>
       </tr>
       <tr>
-        <td class="ui blue inverted segment">
+        {{#link-to 'events.view.tickets.orders.list' 'placed' tagName='td'
+        class='ui blue inverted segment'}}
           <span>{{t 'Placed'}}</span>
-        </td>
+        {{/link-to}}
         <td class="right aligned">0</td>
         <td class="right aligned">0</td>
         <td class="right aligned">{{number-format 0.00}}</td>
-        <td>{{t 'View orders / View attendees'}}</td>
+        <td>
+          {{#link-to 'events.view.tickets.orders.list' 'placed'}}
+            {{t 'View orders'}}
+          {{/link-to}}
+          /
+          {{#link-to 'events.view.tickets.attendees.list' 'placed'}}
+            {{t 'View attendees'}}
+          {{/link-to}}
+        </td>
       </tr>
       <tr>
-        <td class="ui green inverted segment"><span>{{t 'Completed'}}</span></td>
+        {{#link-to 'events.view.tickets.orders.index' tagName='td'
+        class='ui green inverted segment'}}
+          <span>{{t 'Completed'}}</span>
+        {{/link-to}}
         <td class="right aligned">0</td>
         <td class="right aligned">0</td>
         <td class="right aligned">{{number-format 0.00}}</td>
-        <td>{{t 'View orders / View attendees'}}</td>
+        <td>
+          {{#link-to 'events.view.tickets.orders.index'}}
+            {{t 'View orders'}}
+          {{/link-to}}
+          /
+          {{#link-to 'events.view.tickets.attendees.index'}}
+            {{t 'View attendees'}}
+          {{/link-to}}
+        </td>
       </tr>
     </thead>
   </table>
