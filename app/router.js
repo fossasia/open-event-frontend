@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import config from 'open-event-frontend/config/environment';
+import RouterScroll from 'ember-router-scroll';
 
 const { Router, run: { scheduleOnce }, inject: { service } } = Ember;
 
-const router = Router.extend({
+const router = Router.extend(RouterScroll, {
   location : config.locationType,
   rootURL  : config.rootURL,
   metrics  : service(),
@@ -49,10 +50,16 @@ router.map(function() {
         this.route('list', { path: '/:session_status' });
       });
       this.route('tickets', function() {
-        this.route('orders');
-        this.route('attendees');
+        this.route('orders', function() {
+          this.route('list', { path: '/:orders_status' });
+        });
+        this.route('attendees', function() {
+          this.route('list', { path: '/:attendees_status' });
+        });
         this.route('add-order');
-        this.route('discount-codes');
+        this.route('discount-codes', function() {
+          this.route('list', { path: '/:discount_status' });
+        });
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });
           this.route('create');
@@ -76,6 +83,9 @@ router.map(function() {
   this.route('explore');
   this.route('my-tickets', function() {
     this.route('saved');
+    this.route('past');
+  });
+  this.route('my-sessions', function() {
     this.route('past');
   });
   this.route('notifications', function() {

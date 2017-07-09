@@ -43,9 +43,9 @@
       placeChangedCallback=(action 'placeChanged')
       type='text'
       placeholder=placeholder}}
-    <button class="ui left labeled icon button" type="button" {{action 'showAddressView'}}>
+    <button class="ui left {{unless device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>
       <i class="marker icon"></i>
-      {{t 'Enter address'}}
+      {{unless device.isMobile (t 'Enter address')}}
     </button>
   </div>
 {{/if}}

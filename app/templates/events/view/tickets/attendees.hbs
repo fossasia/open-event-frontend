@@ -45,106 +45,36 @@
     </div>
   </div>
   <div class="row">
-    <div class="ui hidden divider"></div>
-    <div class="ui {{if device.isMobile 'vertical'}} basic buttons">
-      <div class="ui button active">
-        {{t 'Completed'}}
-      </div>
-      <div class="ui button">
-        {{t 'Placed'}}
-      </div>
-      <div class="ui button">
-        {{t 'Pending'}}
-      </div>
-      <div class="ui button">
-        {{t 'Expired'}}
-      </div>
-      <div class="ui button">
-        {{t 'Cancelled'}}
-      </div>
-      <div class="ui button">
-        {{t 'Checked In'}}
-      </div>
-      <div class="ui button">
-        {{t 'Not Checked In'}}
-      </div>
-      <div class="ui button">
-        {{t 'All'}}
-      </div>
+    <div class="x-scrollable sixteen wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'events.view.tickets.attendees.index' class='item'}}
+          {{t 'Completed'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'placed' class='item'}}
+          {{t 'Placed'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'pending' class='item'}}
+          {{t 'Pending'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'expired' class='item'}}
+          {{t 'Expired'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'cancelled' class='item'}}
+          {{t 'Cancelled'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'checkedIn' class='item'}}
+          {{t 'Checked In'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'notCheckedIn' class='item'}}
+          {{t 'Not Checked In'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'all' class='item'}}
+          {{t 'All'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
     </div>
-    <table class="ui very basic compact table">
-      <thead>
-        <tr>
-          <th>
-            #
-          </th>
-          <th>
-            {{t 'Order'}}
-          </th>
-          <th>
-            {{t 'Ticket Name'}}
-          </th>
-          <th>
-            {{t 'Ticket Price'}}
-          </th>
-          <th>
-            {{t 'First Name'}}
-          </th>
-          <th>
-            {{t 'Last Name'}}
-          </th>
-          <th>
-            {{t 'Email'}}
-          </th>
-          <th>
-            {{t 'Action'}}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model as |attendees index|}}
-          <tr>
-            <td>
-              {{inc index}}
-            </td>
-            <td>
-              <div class="ui tiny header">
-                {{attendees.invoice_number}}
-                <span class="weight-400">
-                  {{t 'by'}} {{attendees.buyer_name}}
-                </span>
-                <div class="ui basic mini green label">
-                  {{attendees.status}}
-                </div>
-                <div class="sub header">
-                  <span class="weight-800">
-                    {{t 'Payment via'}} {{attendees.paid_via}}
-                  </span>
-                  {{moment-from-now attendees.completed_at}}
-                </div>
-              </div>
-            </td>
-            <td>
-              {{attendees.ticket_name}}
-            </td>
-            <td>
-              US $ {{number-format attendees.amount}}
-            </td>
-            <td>
-              {{attendees.first_name}}
-            </td>
-            <td>
-              {{attendees.last_name}}
-            </td>
-            <td>
-              {{attendees.buyer_name}}
-            </td>
-            <td class="centre aligned">
-              <a class="ui green label"><i class="checkmark icon"></i>{{t 'Check In'}}</a>
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+  </div>
+  <div class="row">
+    {{outlet}}
   </div>
 </div>

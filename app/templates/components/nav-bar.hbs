@@ -12,7 +12,7 @@
         <div class="results"></div>
       </div>
     {{/unless}}
-    <div class="right menu">
+    <div class="right menu nav-bar">
       {{#if session.isAuthenticated}}
         <a class="notification item">
           {{notification-dropdown notifications=notifications}}
@@ -32,7 +32,7 @@
           <i class="dropdown icon"></i>
           <div class="menu">
             <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
-            <div class="item">{{t 'My Sessions'}}</div>
+            <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
             <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
             <div class="divider"></div>
             <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
@@ -47,32 +47,32 @@
       {{/if}}
       {{#if (not-eq routing.currentRouteName 'create')}}
         <div class="item">
-          <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">
+          {{#link-to 'create' class='ui blue button'}}
             {{t 'Create Event'}}
-          </a>
+          {{/link-to}}
         </div>
       {{/if}}
     </div>
   </div>
 </div>
 <div class="mobile only row">
-  <div class="ui navbar {{if device.isMobile 'tiny'}} menu">
+  <div class="ui navbar tiny menu">
     <a class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
     {{#link-to 'index' class='item' activeClass=''}}
-      <div class="ui header {{if device.isMobile 'small text'}}">{{config.appName}}</div>
+      <div class="ui header small text">{{config.appName}}</div>
     {{/link-to}}
-    <div class="right menu">
+    <div class="right menu nav-bar">
       {{#if session.isAuthenticated}}
         <a class="notification item">
           {{notification-dropdown notifications=notifications}}
         </a>
       {{/if}}
       <div class="item">
-        <a class="ui blue button button-text {{if device.isMobile 'small text'}}" style="text-transform: uppercase; font-weight: 400;" href="{{href-to 'create'}}">
+        {{#link-to 'create' class='ui blue button button-text small text'}}
           {{t 'Create Event'}}
-        </a>
+        {{/link-to}}
       </div>
     </div>
   </div>

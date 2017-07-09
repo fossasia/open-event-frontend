@@ -5,7 +5,6 @@ const { observer, merge, assign, testing } = Ember;
 
 export default UiModal.extend({
   tagName           : 'div',
-  classNames        : ['ui', 'modal'],
   classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
 
   openObserver: observer('isOpen', function() {

@@ -1,5 +1,5 @@
 <div class="content">
-  <button class="ui right floated blue button">{{t 'Add People'}}</button>
+  <button class="ui right floated blue button" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
   <div class="header">{{t 'Manage roles'}}</div>
 </div>
 <div class="content">
@@ -33,3 +33,5 @@
     </tbody>
   </table>
 </div>
+
+{{modals/add-user-role-modal  isOpen=isAddUserRoleModalOpen addUserRole=(action 'addUserRole')}}
