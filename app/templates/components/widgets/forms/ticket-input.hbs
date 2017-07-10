@@ -72,7 +72,7 @@
         </div>
       {{/if}}
       <div class="fields">
-        <div class="five wide field">
+        <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_start_date">{{t 'Starts'}}</label>
           {{widgets/forms/date-picker type='text'
                                       inputId='ticket_start_date'
@@ -80,7 +80,7 @@
                                       rangePosition='start'
                                       value=ticket.startDate}}
         </div>
-        <div class="two wide field">
+        <div class="three wide field">
           <label for="ticket_start_time">&nbsp;</label>
           {{widgets/forms/time-picker type='text'
                                       inputId='ticket_start_time'
@@ -88,7 +88,7 @@
                                       rangePosition='start'
                                       value=ticket.startTime}}
         </div>
-        <div class="five wide field">
+        <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_end_date">{{t 'Ends'}}</label>
           {{widgets/forms/date-picker type='text'
                                       inputId='ticket_end_date'
@@ -96,7 +96,7 @@
                                       rangePosition='end'
                                       value=ticket.endDate}}
         </div>
-        <div class="two wide field">
+        <div class="three wide field">
           <label for="ticket_end_time">&nbsp;</label>
           {{widgets/forms/time-picker type='text'
                                       inputId='ticket_end_time'
@@ -124,7 +124,7 @@
         </div>
       </div>
 
-      <div class="six wide field">
+      <div class="{{unless device.isMobile 'six wide'}} field">
         <label for="code_groups">{{t 'Ticket Code Group'}}</label>
         {{#ui-dropdown class="fluid multiple search selection" allowAdditions=true}}
           {{input type='hidden' id='ticket_code_groups' value=ticket.groups}}
