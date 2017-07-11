@@ -19,16 +19,26 @@
         {{/link-to}}
       {{/tabbed-navigation}}
     </div>
-    <div class="eight wide column">
-      <button class="ui blue button right floated">{{t 'Create Session'}}</button>
-      {{#ui-dropdown class='ui right floated icon top right pointing dropdown button'}}
-        {{t 'Export'}}
-        <i class="download icon"></i>
-        <div class="menu">
-          <div class="item">{{t 'CSV'}}</div>
-          <div class="item">{{t 'PDF'}}</div>
-        </div>
-      {{/ui-dropdown}}
+    <div class="eight wide right aligned column">
+      <div class="ui labeled input">
+        {{#ui-dropdown class='compact selection'}}
+          <div class="default text">
+            {{t 'Export As'}}
+          </div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item" data-value="pdf">
+              <i class="file pdf outline icon"></i>
+              {{t 'PDF'}}
+            </div>
+            <div class="item" data-value="csv">
+              <i class="file excel outline icon"></i>
+              {{t 'CSV'}}
+            </div>
+          </div>
+        {{/ui-dropdown}}
+        <button class="ui blue button right floated">{{t 'Create Session'}}</button>
+      </div>
     </div>
   </div>
   <div class="row">
