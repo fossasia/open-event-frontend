@@ -1,7 +1,25 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('event', 'Unit | Serializer | application', {
-  needs: ['serializer:application']
+  needs: [
+    'serializer:application',
+    'model:event',
+    'model:event-type',
+    'model:event-topic',
+    'model:event-sub-topic',
+    'model:session',
+    'model:sponsor',
+    'model:microlocation',
+    'model:track',
+    'model:ticket',
+    'model:social-link',
+    'model:speakers-call',
+    'model:tax',
+    'model:event-copyright',
+    'model:session-type',
+    'model:user',
+    'model:discount-code'
+  ]
 });
 
 test('it serializes records', function(assert) {
