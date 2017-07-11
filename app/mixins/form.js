@@ -54,7 +54,7 @@ export default Mixin.create({
       }
 
       let $form;
-      if (this.get('tagName') === 'form' || this.$().prop('tagName') === 'form') {
+      if (this.get('tagName') === 'form' || (this.$() && this.$().prop('tagName'))) {
         $form = this.$();
         $form.addClass('ui form');
       } else {
