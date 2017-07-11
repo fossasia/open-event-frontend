@@ -12,10 +12,12 @@ export default JSONAPIAdapter.extend(DataAdapterMixin, {
 
   notify: service(),
 
-  isInvalid() {
-    this.get('notify').error('An unexpected error occurred. Please try again later.', {
-      closeAfter: 5000
-    });
+  isInvalid(statusCode) {
+    if (statusCode !== 404) {
+      this.get('notify').error('An unexpected error occurred.', {
+        closeAfter: 5000
+      });
+    }
   },
 
   /**
