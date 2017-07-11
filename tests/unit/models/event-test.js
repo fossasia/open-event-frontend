@@ -2,7 +2,6 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('event', 'Unit | Model | event', {
   needs: [
-    'model:event',
     'model:event-type',
     'model:event-topic',
     'model:event-sub-topic',
@@ -15,7 +14,9 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:speakers-call',
     'model:tax',
     'model:event-copyright',
-    'model:session-type'
+    'model:session-type',
+    'model:user',
+    'model:discount-code'
   ]
 });
 
