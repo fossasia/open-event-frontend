@@ -5,7 +5,9 @@ const { Controller } = Ember;
 export default Controller.extend({
   willDestroy() {
     var user = this.get('model');
-    this.store.unloadRecord(user);
+    if (user) {
+      this.store.unloadRecord(user);
+    }
   },
 
   actions: {
