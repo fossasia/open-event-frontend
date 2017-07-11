@@ -1,7 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('event', 'Unit | Serializer | event', {
-  needs: ['serializer:event']
+  needs: ['serializer:event', 'model:user']
 });
 
 test('it serializes records', function(assert) {
