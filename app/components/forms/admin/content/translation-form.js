@@ -16,6 +16,11 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please upload a file')
+            },
+            {
+              type   : 'regExp',
+              value  : '/^(.*.((po)$))?[^.]*$/i',
+              prompt : this.l10n.t('Please upload a file in suggested format')
             }
           ]
         },
