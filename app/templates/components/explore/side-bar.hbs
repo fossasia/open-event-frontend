@@ -66,13 +66,19 @@
           {{#if (and (eq dateRange.key 'custom_dates') (eq filters.dateRange 'custom_dates'))}}
             <div class="explore sub menu">
               <div class="ui form">
-                <div class="item field">
-                  <label class="required" for="start_date">{{t 'Starts'}}</label>
-                  {{widgets/forms/date-picker type='text'inputId='start_date'}}
-                </div>
-                <div class="item field">
-                  <label class="required" for="end_date">{{t 'Ends'}}</label>
-                  {{widgets/forms/date-picker type='text'inputId='end_date'}}
+                <div class="grouped fields">
+                  <div class="item field">
+                    <label class="required" for="start_date">{{t 'Starts'}}</label>
+                    {{widgets/forms/date-picker type='text'
+                                                rangePosition='start'
+                                                inputId='start_date'}}
+                  </div>
+                  <div class="item field">
+                    <label class="required" for="end_date">{{t 'Ends'}}</label>
+                    {{widgets/forms/date-picker type='text'
+                                                rangePosition='end'
+                                                inputId='end_date'}}
+                  </div>
                 </div>
               </div>
             </div>

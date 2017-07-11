@@ -8,10 +8,10 @@
         <th>
           {{t 'Order'}}
         </th>
-        <th>
+        <th class="right aligned">
           {{t 'Total Amount'}}
         </th>
-        <th>
+        <th class="right aligned">
           {{t 'Quantity'}}
         </th>
         <th>
@@ -45,10 +45,10 @@
               </div>
             </div>
           </td>
-          <td>
-            US $ {{number-format order.amount}}
+          <td class="right aligned">
+            US$ {{number-format order.amount}}
           </td>
-          <td>
+          <td class="right aligned">
             {{order.quantity}}
           </td>
           <td>

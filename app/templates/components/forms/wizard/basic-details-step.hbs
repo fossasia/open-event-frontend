@@ -21,7 +21,7 @@
     {{/widgets/forms/location-input}}
   </div>
   <div class="fields">
-    <div class="five wide field">
+    <div class="{{if device.isTablet 'four' 'five'}} wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
       {{widgets/forms/date-picker type='text'
                                   inputId='start_date'
@@ -29,7 +29,7 @@
                                   rangePosition='start'
                                   value=data.event.startDate}}
     </div>
-    <div class="two wide field">
+    <div class="three wide field">
       <label for="start_time">&nbsp;</label>
       {{widgets/forms/time-picker type='text'
                                   inputId='start_time'
@@ -37,7 +37,7 @@
                                   rangePosition='start'
                                   value=data.event.startTime}}
     </div>
-    <div class="five wide field">
+    <div class="{{if device.isTablet 'four' 'five'}} wide field">
       <label class="required" for="end_date">{{t 'Ends'}}</label>
       {{widgets/forms/date-picker type='text'
                                   inputId='end_date'
@@ -45,7 +45,7 @@
                                   rangePosition='end'
                                   value=data.event.endDate}}
     </div>
-    <div class="two wide field">
+    <div class="three wide field">
       <label for="end_time">&nbsp;</label>
       {{widgets/forms/time-picker type='text'
                                   inputId='end_time'
@@ -55,7 +55,7 @@
     </div>
     <div class="five wide field">
       <label class="required" for="timezone">{{t 'Timezone'}}</label>
-      {{#ui-dropdown class='search selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
+      {{#ui-dropdown class='search compact selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
         {{input type='hidden' id='timezone' value=data.event.timezone}}
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select timezone'}}</div>
@@ -114,7 +114,7 @@
     </div>
   {{/if}}
   <div class="ui section divider"></div>
-  <div class="field">
+  <div class="grouped fields">
     <label>{{t 'Links & Social Media'}}</label>
     {{widgets/forms/link-input
       hasLinkName=true
@@ -214,11 +214,11 @@
                  readonly>
           <button
             type="button"
-            class="ui red right labeled icon button"
+            class="ui red {{unless device.isMobile 'right labeled'}} icon button"
             {{action
               (confirm (t 'Are you sure you wish to remove the discount applied ?') (action 'removeDiscountCode'))}}>
             <i class="remove icon"></i>
-            {{t 'Remove'}}
+            {{unless device.isMobile (t 'Remove')}}
           </button>
         </div>
       {{else}}
@@ -226,10 +226,10 @@
           {{input type='text' id='discount_code' placeholder=(t 'Discount code') value=data.event.discountCode
                   disabled=validatingDiscountCode}}
           <button type="button"
-                  class="ui teal right labeled icon button {{if validatingDiscountCode 'loading'}}" {{action
+                  class="ui teal {{unless device.isMobile 'right labeled'}} icon button {{if validatingDiscountCode 'loading'}}" {{action
             'redeemDiscountCode'}}>
             <i class="check icon"></i>
-            {{t 'Redeem'}}
+            {{unless device.isMobile (t 'Redeem')}}
           </button>
         </div>
       {{/if}}
@@ -531,7 +531,7 @@
     {{/ui-dropdown}}
   </div>
   <br>
-  <div class="large ui buttons right floated">
+  <div class="{{unless device.isMobile 'large right floated'}} ui buttons">
     <button class="ui right labeled icon button" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
