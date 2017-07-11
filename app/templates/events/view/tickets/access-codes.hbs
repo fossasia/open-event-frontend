@@ -14,12 +14,18 @@
       </div>
     </div>
     <div class="row">
-      <div class="{{if device.isMobile 'eight wide column center' 'left'}} aligned">
-        <div class="ui very basic buttons">
-          <button class="ui button active">{{t 'All'}}</button>
-          <button class="ui button">{{t 'Active'}}</button>
-          <button class="ui button">{{t 'Inactive'}}</button>
-        </div>
+      <div class="sixteen wide column">
+        {{#tabbed-navigation isNonPointing=true}}
+          {{#link-to 'events.view.tickets.access-codes.index' class='item'}}
+            {{t 'All'}}
+          {{/link-to}}
+          {{#link-to 'events.view.tickets.access-codes.list' 'active' class='item'}}
+            {{t 'Active'}}
+          {{/link-to}}
+          {{#link-to 'events.view.tickets.access-codes.list' 'inactive' class='item'}}
+            {{t 'Inactive'}}
+          {{/link-to}}
+        {{/tabbed-navigation}}
       </div>
     </div>
     <div class="row">
