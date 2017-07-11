@@ -95,6 +95,7 @@ export default Model.extend(CustomPrimaryKeyMixin, {
   tax            : belongsTo('tax'),
   copyright      : belongsTo('event-copyright'),
   sessionTypes   : hasMany('session-type'),
+  user           : belongsTo('user'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]
