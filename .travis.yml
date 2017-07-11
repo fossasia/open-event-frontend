@@ -29,6 +29,8 @@ before_install:
   - npm install -g npm@5
   - npm install -g greenkeeper-lockfile@1
   - npm config set spin false
+  - npm --version
+  - npm cache verify
   - npm install -g bower phantomjs-prebuilt
   - bower --version
   - phantomjs --version
