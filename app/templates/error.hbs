@@ -1,6 +1,6 @@
 {{! This will be automatically rendered if any model fetch fails }}
 <div class="ui container">
-  {{#if (eq model.errors.0.status '404')}}
+  {{#if (eq model.errors.0.status 404)}}
     {{errors/not-found}}
   {{else}}
     {{errors/server-error}}
