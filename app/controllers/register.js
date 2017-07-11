@@ -5,7 +5,9 @@ const { Controller } = Ember;
 export default Controller.extend({
   willDestroy() {
     var user = this.get('model');
-    this.store.unloadRecord(user);
+    if (user) {
+      this.store.unloadRecord(user);
+    }
   },
 
   actions: {
@@ -16,10 +18,9 @@ export default Controller.extend({
           this.get('notify').success(`Welcome ${user.get('email')}. Please login to continue.`);
           this.transitionToRoute('login');
         })
-        .catch(data => {
-          const statusCode = data.errors[0].status;
+        .catch(reason => {
           this.set('isLoading', false);
-          if (statusCode === 409) {
+          if (reason.hasOwnProperty('errors') && reason.errors[0].status === 409) {
             this.set('errorMessage', this.l10n.t('User already exists.'));
           } else {
             this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
