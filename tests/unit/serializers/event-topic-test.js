@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('event-topic', 'Unit | Serializer | event topic', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:event-topic', 'model:event-sub-topics']
+  needs: ['serializer:event-topic']
 });
 
 // Replace this with your real tests.
