@@ -58,10 +58,33 @@
         </tr>
       </tfoot>
     </table>
-    <div class="ui row grid">
-      <div class="column right aligned">
-        <a href="#">{{t 'Enter promotional code'}}</a>
-      </div>
+    <div class="ui grid">
+      {{#if enterPromotionalCode}}
+        <div class="ui row">
+          <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
+            <div class="field">
+              <div class="ui action fluid input">
+                {{input type='text' name='promotional_code' placeholder=(t 'Promotional Code')}}
+                <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
+                  <i class="checkmark icon"></i>
+                </div>
+                <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
+                  <i class="remove icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{else}}
+        <div class="ui row">
+          <div class="column right aligned">
+            {{#if device.isMobile}}
+              <div class="ui hidden divider"></div>
+            {{/if}}
+            <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+          </div>
+        </div>
+      {{/if}}
     </div>
     <div class="ui row">
       <div class="ui grid">
@@ -76,7 +99,7 @@
             <i class="colored visa link icon"></i>
           </div>
           <div class="ui padding less two wide computer four wide tablet column right aligned floated">
-            <button id="total" class="ui primary button" disabled={{not hasTicketsInOrder}}>
+            <button id="total" class="ui primary button less margin-right" disabled={{not hasTicketsInOrder}}>
               {{t 'Order Now'}}
             </button>
           </div>
