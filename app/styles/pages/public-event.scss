@@ -2,12 +2,37 @@
 
   margin-top: -$page-top-margin;
 
+  @mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: ($height / $width) * 100%;
+    }
+    > .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
   div.lead:not(.with) {
+    @include aspect-ratio(2, 1);
     position: absolute;
     left: 0;
     right: 0;
     width: 100%;
-    height: $event-lead-image-height;
+    max-height: $event-lead-image-height;
     overflow: hidden;
 
     img {
@@ -23,51 +48,70 @@
       left: 0;
       right: 0;
       width: 100%;
-      height: 100%;
       color: #ffffff;
       text-shadow: 0 1px 2px rgba(0,0,0,.6);
 
       .info {
-        position: relative;
-        top: $event-lead-image-height - 270px;
+        position: absolute;
+        bottom: 20%;
 
         .event {
           font-weight: 300;
         }
 
         .event.name {
-          font-size: 50px;
+          font-size: 4.5vh;
           margin-top: 0;
-          margin-bottom: 10px;
+          margin-bottom: 1vh;
         }
         .event.time {
-          font-size: 18px;
+          font-size: 1.5vh;
           margin: 0;
         }
         .event.location {
-          font-size: 18px;
+          font-size: 1.5vh;
           margin: 0;
         }
       }
 
+      @media (max-width: 959px) and (orientation: landscape) {
+        .info {
+          position: absolute;
+          bottom: 20%;
+
+          .event {
+            font-weight: 300;
+          }
+
+          .event.name {
+            font-size: 8.5vh;
+            margin-top: 0;
+            margin-bottom: 1vh;
+          }
+          .event.time {
+            font-size: 3.5vh;
+            margin: 0;
+          }
+          .event.location {
+            font-size: 3.5vh;
+            margin: 0;
+          }
+        }
+      }
     }
   }
 
   div.lead.small:not(.with) {
-    height: $event-lead-image-height-minimum;
+    max-height: $event-lead-image-height-minimum;
     .content {
       .info {
-        top: $event-lead-image-height-minimum - 270px;
+        position: absolute;
+        bottom: 20%;
       }
     }
   }
 
   > .content {
-    padding-top: $event-lead-image-height + 16px;
-
-    &.with.small.lead {
-      padding-top: $event-lead-image-height-minimum + 16px;
-    }
 
     .ui.rail {
       width: 15rem;
