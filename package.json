@@ -10,6 +10,7 @@
   },
   "repository": "https://github.com/fossasia/open-event-frontend",
   "scripts": {
+    "preinstall": "check-node-version --node '>= 4 <8' --npm '>= 5.2 <6'",
     "build": "ember build",
     "start": "ember server",
     "test": "ember test"
@@ -84,7 +85,8 @@
     "xgettext-template": "^3.3.0"
   },
   "engines": {
-    "node": ">= 4 <8"
+    "node": ">= 4 <8",
+    "npm": ">= 5.2 <6"
   },
   "private": true,
   "dependencies": {
