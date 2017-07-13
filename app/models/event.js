@@ -118,7 +118,7 @@ export default Model.extend(CustomPrimaryKeyMixin, {
   startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
   startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
-  endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
+  endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
   segmentedExternalEventUrl : computedSegmentedLink.bind(this)('externalEventUrl'),
   segmentedTicketUrl        : computedSegmentedLink.bind(this)('ticketUrl'),
