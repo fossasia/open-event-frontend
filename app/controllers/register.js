@@ -15,7 +15,7 @@ export default Controller.extend({
       var user = this.get('model');
       user.save()
         .then(() => {
-          this.get('notify').success(`Welcome ${user.get('email')}. Please login to continue.`);
+          this.set('session.newUser', user.get('email'));
           this.transitionToRoute('login');
         })
         .catch(reason => {
