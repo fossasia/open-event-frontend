@@ -11,7 +11,7 @@
   "repository": "https://github.com/fossasia/open-event-frontend",
   "scripts": {
     "heroku-prebuild": "npm install -g check-node-version",
-    "preinstall": "check-node-version --node '>= 4 <8' --npm '>= 5.2 <6'",
+    "preinstall": "check-node-version --node '>= 4 <8' --npm '>= 5.3 <6'",
     "build": "ember build",
     "start": "ember server",
     "test": "ember test"
@@ -88,7 +88,7 @@
   },
   "engines": {
     "node": ">= 4 <8",
-    "npm": ">= 5.2 <6"
+    "npm": ">= 5.3 <6"
   },
   "private": true,
   "dependencies": {
