@@ -6,8 +6,8 @@ import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helper
 export default Model.extend({
   title         : attr('string'),
   subtitle      : attr('string'),
-  startsAt      : attr('date'),
-  endsAt        : attr('date'),
+  startsAt      : attr('moment'),
+  endsAt        : attr('moment'),
   shortAbstract : attr('string'),
   longAbstract  : attr('string'),
   language      : attr('string'),

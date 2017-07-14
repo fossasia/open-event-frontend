@@ -62,7 +62,7 @@ export const computedDateTimeSplit = function(property, segmentFormat) {
       } else {
         oldDate = newDate;
       }
-      this.set(property, oldDate.toDate());
+      this.set(property, oldDate);
       return value;
     }
   });

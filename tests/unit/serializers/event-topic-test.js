@@ -5,7 +5,8 @@ moduleForModel('event-topic', 'Unit | Serializer | event topic', {
     'serializer:event-topic',
     'serializer:event',
     'model:event',
-    'model:event-sub-topic'
+    'model:event-sub-topic',
+    'transform:moment'
   ]
 });
 

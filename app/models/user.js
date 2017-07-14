@@ -28,9 +28,9 @@ export default Model.extend({
   twitterUrl    : attr('string'),
   googlePlusUrl : attr('string'),
 
-  createdAt      : attr('date'),
-  deletedAt      : attr('date'),
-  lastAccessedAt : attr('date'),
+  createdAt      : attr('moment'),
+  deletedAt      : attr('moment'),
+  lastAccessedAt : attr('moment'),
 
   isAnAdmin: computed.or('isSuperAdmin', 'isAdmin'),
 
