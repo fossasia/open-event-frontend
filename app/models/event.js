@@ -5,12 +5,13 @@ import Model from 'ember-data/model';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
+import ModelMixin from 'ember-data-has-many-query/mixins/model';
 
 const { computed, inject: { service }, on } = Ember;
 
 const detectedTimezone = moment.tz.guess();
 
-export default Model.extend(CustomPrimaryKeyMixin, {
+export default Model.extend(ModelMixin, CustomPrimaryKeyMixin, {
 
   /**
    * Service Injection
