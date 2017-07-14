@@ -5,18 +5,16 @@ import { sumBy } from 'lodash';
 const { Component, computed } = Ember;
 
 export default Component.extend(FormMixin, {
-  classNames: ['ui', 'segments', 'ticket-list'],
-
   hasTicketsInOrder: computed('tickets.@each.orderQuantity', function() {
-    return sumBy(this.get('tickets'), 'orderQuantity') > 0;
+    return sumBy(this.get('tickets').toArray(),
+      ticket => ticket.getWithDefault('orderQuantity', 0)
+    ) > 0;
   }),
 
   total: computed('tickets.@each.orderQuantity', function() {
-    let sum = 0.0;
-    this.get('tickets').forEach(ticket => {
-      sum += (ticket.price * ticket.orderQuantity);
-    });
-    return sum;
+    return sumBy(this.get('tickets').toArray(),
+      ticket => ticket.getWithDefault('price', 0) * ticket.getWithDefault('orderQuantity', 0)
+    );
   }),
   actions: {
     togglePromotionalCode() {

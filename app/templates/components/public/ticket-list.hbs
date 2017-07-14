@@ -1,110 +1,105 @@
-<div class="ui segment">
-  <h3 class="ui header">{{t 'Tickets'}}</h3>
-</div>
-<div class="ui segment">
-  <form class="ui form">
-    <table class="ui very basic compact table" style="margin-bottom: 0">
-      <thead class="full-width">
+<form class="ui form">
+  <table class="ui very basic compact table" style="margin-bottom: 0">
+    <thead class="full-width">
+      <tr>
+        <th>{{t 'Type'}}</th>
+        <th class="four wide">{{t 'Sales Ends'}}</th>
+        <th class="ui two wide">{{t 'Price'}}</th>
+        <th class="one wide">{{t 'Quantity'}}</th>
+        <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each tickets as |ticket|}}
         <tr>
-          <th>{{t 'Type'}}</th>
-          <th class="four wide">{{t 'Sales Ends'}}</th>
-          <th class="ui two wide">{{t 'Price'}}</th>
-          <th class="one wide">{{t 'Quantity'}}</th>
-          <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each tickets as |ticket|}}
-          <tr>
-            <td>
-              <div class="ui small">
-                {{ticket.name}}
-              </div>
-              <small class="ui gray-text tiny">{{ticket.description}}</small>
-            </td>
-            <td>Thu, May 25</td>
-            <td id="{{ticket.id}}_price">$ {{number-format ticket.price}}</td>
-            <td>
-              <div class="field">
-                {{#ui-dropdown class='compact selection' forceSelection=false}}
-                  {{input type='hidden' id=(concat ticket.id '_quantity') value=ticket.orderQuantity}}
-                  <i class="dropdown icon"></i>
-                  <div class="default text">{{ticket.min}}</div>
-                  <div class="menu">
-                    {{#each (range ticket.min ticket.max) as |count|}}
-                      <div class="item" data-value="{{count}}">{{count}}</div>
-                    {{/each}}
-                  </div>
-                {{/ui-dropdown}}
-              </div>
-            </td>
-            <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              $ {{number-format (mult ticket.orderQuantity ticket.price)}}
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-      <tfoot class="full-width">
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th colspan="4">
-            <div class="ui right aligned small primary icon">
-              {{t 'Total'}}: $ {{number-format total}}
+          <td>
+            <div class="ui small">
+              {{ticket.name}}
             </div>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
-    <div class="ui grid">
-      {{#if enterPromotionalCode}}
-        <div class="ui row">
-          <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
+            <small class="ui gray-text tiny">{{ticket.description}}</small>
+          </td>
+          <td>{{moment-format ticket.salesEndsAt 'dddd, DD MMMM'}}</td>
+          <td id="{{ticket.id}}_price">$ {{number-format ticket.price}}</td>
+          <td>
             <div class="field">
-              <div class="ui action fluid input">
-                {{input type='text' name='promotional_code' placeholder=(t 'Promotional Code')}}
-                <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
-                  <i class="checkmark icon"></i>
+              {{#ui-dropdown class='compact selection' forceSelection=false}}
+                {{input type='hidden' id=(concat ticket.id '_quantity') value=ticket.orderQuantity}}
+                <i class="dropdown icon"></i>
+                <div class="default text">0</div>
+                <div class="menu">
+                  {{#each (range ticket.minOrder ticket.maxOrder) as |count|}}
+                    <div class="item" data-value="{{count}}">{{count}}</div>
+                  {{/each}}
                 </div>
-                <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
-                  <i class="remove icon"></i>
-                </div>
+              {{/ui-dropdown}}
+            </div>
+          </td>
+          <td id='{{ticket.id}}_subtotal' class="ui right aligned">
+            $ {{number-format (mult ticket.orderQuantity ticket.price)}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+    <tfoot class="full-width">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th colspan="4">
+          <div class="ui right aligned small primary icon">
+            {{t 'Total'}}: $ {{number-format total}}
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="ui grid">
+    {{#if enterPromotionalCode}}
+      <div class="ui row">
+        <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
+          <div class="field">
+            <div class="ui action fluid input">
+              {{input type='text' name='promotional_code' placeholder=(t 'Promotional Code')}}
+              <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
+                <i class="checkmark icon"></i>
+              </div>
+              <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
+                <i class="remove icon"></i>
               </div>
             </div>
-          </div>
-        </div>
-      {{else}}
-        <div class="ui row">
-          <div class="column right aligned">
-            {{#if device.isMobile}}
-              <div class="ui hidden divider"></div>
-            {{/if}}
-            <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
-          </div>
-        </div>
-      {{/if}}
-    </div>
-    <div class="ui row">
-      <div class="ui grid">
-        <div class="ui row stackable grid">
-          <div class="ui padding less fourteen wide computer twelve wide tablet column right aligned floated payment icons">
-            <i class="colored american express link icon"></i>
-            <i class="colored credit card alternative link icon"></i>
-            <i class="colored diners club link icon"></i>
-            <i class="colored discover link icon"></i>
-            <i class="colored mastercard link icon"></i>
-            <i class="colored paypal card link icon"></i>
-            <i class="colored visa link icon"></i>
-          </div>
-          <div class="ui padding less two wide computer four wide tablet column right aligned floated">
-            <button id="total" class="ui primary button less margin-right" disabled={{not hasTicketsInOrder}}>
-              {{t 'Order Now'}}
-            </button>
           </div>
         </div>
       </div>
+    {{else}}
+      <div class="ui row">
+        <div class="column right aligned">
+          {{#if device.isMobile}}
+            <div class="ui hidden divider"></div>
+          {{/if}}
+          <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+  <div class="ui row">
+    <div class="ui grid">
+      <div class="ui row stackable grid">
+        <div class="ui padding less fourteen wide computer twelve wide tablet column right aligned floated payment icons">
+          <i class="colored american express link icon"></i>
+          <i class="colored credit card alternative link icon"></i>
+          <i class="colored diners club link icon"></i>
+          <i class="colored discover link icon"></i>
+          <i class="colored mastercard link icon"></i>
+          <i class="colored paypal card link icon"></i>
+          <i class="colored visa link icon"></i>
+        </div>
+        <div class="ui padding less two wide computer four wide tablet column right aligned floated">
+          <button id="total" class="ui primary button less margin-right" disabled={{not hasTicketsInOrder}}>
+            {{t 'Order Now'}}
+          </button>
+        </div>
+      </div>
     </div>
-  </form>
-</div>
+  </div>
+</form>
