@@ -20,11 +20,6 @@ addons:
     packages:
       - g++-4.8
 
-cache:
-  directories:
-    - $HOME/.npm
-    - $HOME/.cache
-
 before_install:
   - npm install -g npm@5
   - npm install -g greenkeeper-lockfile@1
