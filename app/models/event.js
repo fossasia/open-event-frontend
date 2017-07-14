@@ -25,8 +25,8 @@ export default Model.extend(CustomPrimaryKeyMixin, {
   identifier             : attr('string'),
   name                   : attr('string'),
   description            : attr('string'),
-  startsAt               : attr('date', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day').toDate() }),
-  endsAt                 : attr('date', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0).toDate() }),
+  startsAt               : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
+  endsAt                 : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
   timezone               : attr('string', { defaultValue: detectedTimezone }),
   locationName           : attr('string'),
   searchableLocationName : attr('string'),
@@ -58,7 +58,7 @@ export default Model.extend(CustomPrimaryKeyMixin, {
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
 
-  schedulePublishedOn: attr('date'),
+  schedulePublishedOn: attr('moment'),
 
   hasOrganizerInfo: attr('boolean',  { defaultValue: false }),
 
@@ -76,8 +76,8 @@ export default Model.extend(CustomPrimaryKeyMixin, {
   xcalUrl      : attr('string'),
   icalUrl      : attr('string'),
 
-  createdAt : attr('date'),
-  deletedAt : attr('date'),
+  createdAt : attr('moment'),
+  deletedAt : attr('moment'),
 
   /**
    * Relationships

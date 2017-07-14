@@ -4,7 +4,8 @@ moduleForModel('user', 'Unit | Serializer | user', {
   needs: [
     'serializer:user',
     'serializer:event',
-    'model:event'
+    'model:event',
+    'transform:moment'
   ]
 });
 

@@ -17,11 +17,11 @@ export default Model.extend({
   ticketsNumber : attr('number'), // For form (1) this holds the max. times this can be used for events
   minQuantity   : attr('number'), // Not of any significance for form (1)
   maxQuantity   : attr('number'), // For form (1) this holds the number of months this code is valid for events
-  validFrom     : attr('date'),
-  validTill     : attr('date'),
+  validFrom     : attr('moment'),
+  validTill     : attr('moment'),
   usedFor       : attr('string'),
   isActive      : attr('boolean', { defaultValue: true }),
-  createdAt     : attr('date'),
+  createdAt     : attr('moment'),
 
   tickets : hasMany('ticket'),
   event   : belongsTo('event', {

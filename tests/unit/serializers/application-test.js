@@ -18,7 +18,8 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:event-copyright',
     'model:session-type',
     'model:user',
-    'model:discount-code'
+    'model:discount-code',
+    'transform:moment'
   ]
 });
 
