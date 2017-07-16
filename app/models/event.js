@@ -22,7 +22,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * Attributes
    */
 
-  identifier             : attr('string'),
+  identifier             : attr('string', { readOnly: true }),
   name                   : attr('string'),
   description            : attr('string'),
   startsAt               : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
@@ -35,10 +35,10 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   latitude  : attr('number', { defaultValue: 0.0 }),
 
   logoUrl           : attr('string'),
-  thumbnailImageUrl : attr('string'),
-  largeImageUrl     : attr('string'),
+  thumbnailImageUrl : attr('string', { readOnly: true }),
+  largeImageUrl     : attr('string', { readOnly: true }),
   originalImageUrl  : attr('string'),
-  iconImageUrl      : attr('string'),
+  iconImageUrl      : attr('string', { readOnly: true }),
 
   isMapShown                : attr('boolean', { defaultValue: true }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
@@ -46,7 +46,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
-  canPayByPapal   : attr('boolean', { defaultValue: false }),
+  canPayByPaypal  : attr('boolean', { defaultValue: false }),
   canPayByStripe  : attr('boolean', { defaultValue: false }),
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
@@ -58,7 +58,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
 
-  schedulePublishedOn: attr('moment'),
+  schedulePublishedOn: attr('moment', { readOnly: true }),
 
   hasOrganizerInfo: attr('boolean',  { defaultValue: false }),
 
@@ -72,12 +72,12 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   state   : attr('string', { defaultValue: 'draft' }),
   privacy : attr('string', { defaultValue: 'public' }),
 
-  pentabarfUrl : attr('string'),
-  xcalUrl      : attr('string'),
-  icalUrl      : attr('string'),
+  pentabarfUrl : attr('string', { readOnly: true }),
+  xcalUrl      : attr('string', { readOnly: true }),
+  icalUrl      : attr('string', { readOnly: true }),
 
-  createdAt : attr('moment'),
-  deletedAt : attr('moment'),
+  createdAt : attr('moment', { readOnly: true }),
+  deletedAt : attr('moment', { readOnly: true }),
 
   /**
    * Relationships
