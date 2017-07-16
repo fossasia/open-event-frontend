@@ -16,6 +16,7 @@ export default Controller.extend({
       user.save()
         .then(() => {
           this.set('session.newUser', user.get('email'));
+          this.set('isLoading', false);
           this.transitionToRoute('login');
         })
         .catch(reason => {
