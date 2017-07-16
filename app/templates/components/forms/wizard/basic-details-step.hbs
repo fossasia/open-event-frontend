@@ -1,4 +1,4 @@
-<form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
   <div class="field">
     <label class="required" for="name">{{t 'Name'}}</label>
     {{input type='text' id='name' value=data.event.name}}

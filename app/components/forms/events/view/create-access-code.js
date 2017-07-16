@@ -12,7 +12,7 @@ export default Component.extend(FormMixin, {
       return true;
     };
     $.fn.form.settings.rules.checkMaxTotal = () => {
-      if (this.get('data.maxQuantity') > this.get('ticketsNumber')) {
+      if (this.get('data.maxQuantity') > this.get('data.ticketsNumber')) {
         return false;
       }
       return true;

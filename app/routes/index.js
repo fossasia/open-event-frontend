@@ -16,7 +16,7 @@ export default Route.extend({
         {
           name : 'state',
           op   : 'eq',
-          val  : 'Published'
+          val  : 'published'
         }
       ]
     });
