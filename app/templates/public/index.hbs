@@ -4,7 +4,32 @@
   </div>
   <div class="ui hidden divider"></div>
   <div class="tickets" id="tickets">
-    {{public/ticket-list tickets=model.tickets}}
+    <div class="ui segments ticket-list">
+      <div class="ui segment">
+        <h3 class="ui header">{{t 'Tickets'}}</h3>
+      </div>
+      <div class="ui segment">
+        {{#if model.event.isTicketingEnabled}}
+          {{public/ticket-list ticketUrl=model.event.ticketUrl isTicketingEnabled=model.event.isTicketingEnabled tickets=model.tickets}}
+        {{else}}
+          <div class="ui grid">
+            <div class="ui row">
+              <div class="column">
+                <a target="_blank" rel="noopener noreferrer" href="{{ticketUrl}}" class="ui right labeled blue icon button">
+                  <i class="ticket icon"></i>
+                  {{t 'Order tickets'}}
+                </a>
+              </div>
+            </div>
+            <div class="ui row muted text">
+              <div class="column">
+                {{t 'You will be taken to '}} {{ticketUrl}} {{t ' to complete the purchase of tickets'}}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
   </div>
   <div class="ui hidden divider"></div>
   <div class="featured-speakers" id="speakers">
