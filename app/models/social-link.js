@@ -1,12 +1,12 @@
 import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
+import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
 import Ember from 'ember';
 import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 
 const { computed } = Ember;
 
-export default Model.extend({
+export default ModelBase.extend({
   name : attr('string'),
   link : attr('string'),
 
