@@ -7,13 +7,91 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { orderBy, filter, find, values } from 'lodash';
 
-const { Component, computed, run: { later }, observer } = Ember;
+const { Component, computed, run: { later }, observer, $ } = Ember;
 
 export default Component.extend(FormMixin, {
 
   currentTimezone: moment.tz.guess(),
 
   getValidationRules() {
+    $('.ui.button.add').on('click', function() {
+      $('.ui.form.bdetails')
+        .form('add rule', {
+          fields: {
+            ticketName: {
+              identifier : 'ticket_name',
+              rules      : [
+                {
+                  type   : 'empty',
+                  prompt : this.l10n.t('Please give your ticket a name')
+                }
+              ]
+            },
+            ticketDescription: {
+              identifier : 'ticket_description',
+              optional   : true,
+              rules      : [
+                {
+                  type   : 'maxLength[160]',
+                  prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
+                }
+              ]
+            },
+            ticketPrice: {
+              identifier : 'ticket_price',
+              rules      : [
+                {
+                  type   : 'empty',
+                  prompt : this.l10n.t('Please give your ticket a price')
+                },
+                {
+                  type   : 'number',
+                  prompt : this.l10n.t('Please give a proper price for you ticket')
+                }
+              ]
+            },
+            ticketQuantity: {
+              identifier : 'ticket_quantity',
+              rules      : [
+                {
+                  type   : 'empty',
+                  prompt : this.l10n.t('Please specify how many tickets of this type are available')
+                },
+                {
+                  type   : 'number',
+                  prompt : this.l10n.t('Please give a proper quantity for you ticket')
+                }
+              ]
+            },
+            ticketMinOrder: {
+              identifier : 'ticket_min_order',
+              rules      : [
+                {
+                  type   : 'empty',
+                  prompt : this.l10n.t('Minimum tickets per order required')
+                },
+                {
+                  type   : 'number',
+                  prompt : this.l10n.t('Invalid number')
+                }
+              ]
+            },
+            ticketMaxOrder: {
+              identifier : 'ticket_max_order',
+              rules      : [
+                {
+                  type   : 'empty',
+                  prompt : this.l10n.t('Maximum tickets per order required')
+                },
+                {
+                  type   : 'number',
+                  prompt : this.l10n.t('Invalid number')
+                }
+              ]
+            }
+          }
+        });
+    });
     return {
       inline : true,
       delay  : false,
@@ -80,77 +158,6 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
-            }
-          ]
-        },
-        ticketName: {
-          identifier : 'ticket_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a name')
-            }
-          ]
-        },
-        ticketDescription: {
-          identifier : 'ticket_description',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'maxLength[160]',
-              prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
-            }
-          ]
-        },
-        ticketPrice: {
-          identifier : 'ticket_price',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a price')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Please give a proper price for you ticket')
-            }
-          ]
-        },
-        ticketQuantity: {
-          identifier : 'ticket_quantity',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please specify how many tickets of this type are available')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Please give a proper quantity for you ticket')
-            }
-          ]
-        },
-        ticketMinOrder: {
-          identifier : 'ticket_min_order',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Minimum tickets per order required')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Invalid number')
-            }
-          ]
-        },
-        ticketMaxOrder: {
-          identifier : 'ticket_max_order',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Maximum tickets per order required')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Invalid number')
             }
           ]
         }
