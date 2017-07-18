@@ -6,6 +6,19 @@ import RESTAdapterMixin from 'ember-data-has-many-query/mixins/rest-adapter';
 
 const { inject: { service } } = Ember;
 
+/**
+ * The backend server expects the filter in a serialized string format.
+ *
+ * @param query
+ * @return {*}
+ */
+export const fixFilterQuery = query  => {
+  if (query.hasOwnProperty('filter')) {
+    query.filter = JSON.stringify(query.filter);
+  }
+  return query;
+};
+
 export default JSONAPIAdapter.extend(DataAdapterMixin, RESTAdapterMixin, {
   host       : ENV.APP.apiHost,
   namespace  : ENV.APP.apiNamespace,
@@ -21,26 +34,13 @@ export default JSONAPIAdapter.extend(DataAdapterMixin, RESTAdapterMixin, {
     }
   },
 
-  /**
-   * The backend server expects the filter in a serialized string format.
-   *
-   * @param query
-   * @return {*}
-   */
-  fixFilterQuery(query) {
-    if (query.hasOwnProperty('filter')) {
-      query.filter = JSON.stringify(query.filter);
-    }
-    return query;
-  },
-
   query(store, type, query) {
-    query = this.fixFilterQuery(query);
+    query = fixFilterQuery(query);
     return this._super(store, type, query);
   },
 
   queryRecord(store, type, query) {
-    query = this.fixFilterQuery(query);
+    query = fixFilterQuery(query);
     return this._super(store, type, query);
   }
 });
