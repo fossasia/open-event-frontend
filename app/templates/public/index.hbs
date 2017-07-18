@@ -55,7 +55,9 @@
     {{public/event-map event=model.event}}
   </div>
   <div class="ui hidden divider"></div>
-  <div class="copyright">
-    {{public/copyright-item licenseName='Attribution'}}
-  </div>
+  {{#if model.event.copyright}}
+    <div class="copyright">
+      {{public/copyright-item copyright=model.event.copyright}}
+    </div>
+  {{/if}}
 </div>
