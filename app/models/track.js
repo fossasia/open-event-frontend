@@ -1,9 +1,9 @@
 import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
+import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { getColor } from 'open-event-frontend/utils/colors';
 
-export default Model.extend({
+export default ModelBase.extend({
   name        : attr('string'),
   color       : attr('string', { defaultValue: () => getColor() }),
   description : attr('string'),
