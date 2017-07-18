@@ -1,8 +1,8 @@
 import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
+import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
 
-export default Model.extend({
+export default ModelBase.extend({
   stripeSecretKey      : attr('string'),
   stripeRefreshToken   : attr('string'),
   stripePublishableKey : attr('string'),

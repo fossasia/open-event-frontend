@@ -1,5 +1,5 @@
 import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
+import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 
 /**
@@ -10,7 +10,7 @@ import { hasMany, belongsTo } from 'ember-data/relationships';
  *
  * 2. Created by an event's organizer to be used on that event's tickets
  */
-export default Model.extend({
+export default ModelBase.extend({
   code          : attr('string'),
   type          : attr('string'),
   value         : attr('number'),
