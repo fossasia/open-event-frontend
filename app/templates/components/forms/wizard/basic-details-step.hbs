@@ -180,14 +180,14 @@
     </div>
     <div class="ui two bottom attached buttons">
       <button type="button" class="ui button" {{action 'addTicket' 'free'}}>
-        <i class="large icons" style="margin-right: 6px;">
+        <i class="large icons basic-details">
           <i class="smile icon"></i>
           <i class="inverted corner add icon"></i>
         </i>
         {{t 'Free Ticket'}}
       </button>
       <button type="button" class="ui button" {{action 'addTicket' 'paid'}}>
-        <i class="large icons" style="margin-right: 6px;">
+        <i class="large icons basic-details">
           <i class="dollar icon"></i>
           <i class="inverted corner add icon"></i>
         </i>
@@ -280,7 +280,7 @@
       <h4>{{t 'Choose payment methods'}}</h4>
       {{#if canAcceptPayPal}}
         <label>{{t 'Payment by PayPal'}}</label>
-        <div class="field" style="margin-top: 10px;">
+        <div class="field payments">
           <div class="ui checkbox">
             {{input type='checkbox' id='payment_by_paypal' checked=data.event.canPayByPapal}}
             <label for="payment_by_paypal">
@@ -304,7 +304,7 @@
       {{/if}}
       {{#if canAcceptStripe}}
         <label>{{t 'Payment by Stripe'}}</label>
-        <div class="field" style="margin-top: 10px;">
+        <div class="field payments">
           <div class="ui checkbox">
             {{input type='checkbox' id='payment_by_stripe' checked=data.event.canPayByStripe}}
             <label for="payment_by_stripe">
@@ -325,7 +325,7 @@
         {{/if}}
       {{/if}}
       <label>{{t 'Offline Payments'}}</label>
-      <div class="field" style="margin-top: 10px;">
+      <div class="field payments">
         <div class="ui checkbox">
           {{input type='checkbox' id='payment_by_cheque' checked=data.event.canPayByCheque}}
           <label for="payment_by_cheque">
@@ -334,7 +334,7 @@
         </div>
       </div>
       {{#if data.event.canPayByCheque}}
-        <div class="field">
+        <div class="field payments">
           <label class="required">
             {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
           </label>
@@ -342,7 +342,7 @@
         </div>
       {{/if}}
 
-      <div class="field" style="margin-top: 10px;">
+      <div class="field payments">
         <div class="ui checkbox">
           {{input type='checkbox' id='payment_by_bank' checked=data.event.canPayByBank}}
           <label for="payment_by_bank">
@@ -360,7 +360,7 @@
         </div>
       {{/if}}
 
-      <div class="field" style="margin-top: 10px;">
+      <div class="field payments">
         <div class="ui checkbox">
           {{input type='checkbox' id='payment_onsite' checked=data.event.canPayOnsite}}
           <label for="payment_onsite">
@@ -383,7 +383,7 @@
       <div class="field">
         {{#if data.event.isTaxEnabled}}
           <div class="ui card">
-            <div class="content" style="padding: 0.5em 1em;">
+            <div class="content tax-info">
               <div class="meta">
                 {{t 'Tax Information'}}
               </div>
