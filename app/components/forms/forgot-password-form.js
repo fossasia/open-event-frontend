@@ -46,7 +46,7 @@ export default Component.extend(FormMixin, {
 
           })
           .catch(reason => {
-            if (reason.hasOwnProperty('code') && reason.code === 401) {
+            if (reason && reason.hasOwnProperty('code') && reason.code === 401) {
               this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));

@@ -14,7 +14,7 @@ export default JSONAPIAdapter.extend(DataAdapterMixin, RESTAdapterMixin, {
   notify: service(),
 
   isInvalid(statusCode) {
-    if (statusCode !== 404) {
+    if (statusCode !== 404 && statusCode !== 422) {
       this.get('notify').error('An unexpected error occurred.', {
         closeAfter: 5000
       });
