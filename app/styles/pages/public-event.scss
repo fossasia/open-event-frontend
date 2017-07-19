@@ -65,17 +65,17 @@
 
           .event.name {
             font-size: 4.5vh;
-            margin-bottom: 1vh;
+            margin-bottom: .5vh;
             margin-top: 0;
           }
 
           .event.time {
-            font-size: 1.5vh;
+            font-size: 2.25vh;
             margin: 0;
           }
 
           .event.location {
-            font-size: 1.5vh;
+            font-size: 2.25vh;
             margin: 0;
           }
         }
@@ -83,27 +83,17 @@
         @media (max-width: 959px) and (orientation: landscape) {
 
           .info {
-            bottom: 20%;
-            position: absolute;
-
-            .event {
-              font-weight: 300;
-            }
 
             .event.name {
-              font-size: 8.5vh;
-              margin-bottom: 1vh;
-              margin-top: 0;
+              font-size: 7vh;
             }
 
             .event.time {
               font-size: 3.5vh;
-              margin: 0;
             }
 
             .event.location {
               font-size: 3.5vh;
-              margin: 0;
             }
           }
         }
