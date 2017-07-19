@@ -14,7 +14,9 @@
     "preinstall": "check-node-version --node '>= 4 <8' --npm '>= 5.3 <6'",
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "eslint": "eslint --fix app ember-cli-build.js testem.js tests",
+    "sass-lint": "sass-lint -c .sass-lint.yml --verbose"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -22,6 +24,7 @@
     "ember-browserify": "^1.1.13",
     "ember-cli": "^2.12.2",
     "ember-cli-app-version": "^3.0.0",
+    "ember-cli-autoprefixer": "^0.7.0",
     "ember-cli-babel": "^5.1.7",
     "ember-cli-clipboard": "^0.8.0",
     "ember-cli-code-coverage": "^0.3.12",
@@ -47,6 +50,7 @@
     "ember-cli-pace": "^0.1.0",
     "ember-cli-qunit": "^3.1.0",
     "ember-cli-sass": "^6.1.2",
+    "ember-cli-scss-lint": "^2.2.0",
     "ember-cli-sentry": "^2.4.4",
     "ember-cli-shims": "^1.0.2",
     "ember-cli-sri": "^2.1.0",
