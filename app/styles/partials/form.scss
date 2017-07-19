@@ -1,17 +1,16 @@
 label.required {
-
-  &:after {
-    content: ' *';
+  &::after {
     color: #db2828;
+    content: ' *';
   }
 }
 
 .styled.input {
-  width: 0.1px;
-  height: 0.1px;
+  height: .1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
+  width: .1px;
   z-index: -1;
 }
 

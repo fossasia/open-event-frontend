@@ -12,6 +12,10 @@ module.exports = function(defaults) {
     flexibility       : {
       enabled: true
     },
+    autoprefixer: {
+      browsers : ['Firefox >= 20', 'Chrome >=20', 'Explorer >= 10', 'Android >= 4.0', 'Safari >= 7', 'iOS >= 5'],
+      cascade  : false
+    },
     minifyHTML: {
       enabled   : true,
       htmlFiles : ['index.html', '404.html']
