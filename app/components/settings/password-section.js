@@ -36,6 +36,10 @@ export default Component.extend(FormMixin, {
           identifier : 'password_repeat',
           rules      : [
             {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter your new password again')
+            },
+            {
               type   : 'match[password_new]',
               prompt : this.l10n.t('Passwords do not match')
             }
