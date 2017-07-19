@@ -82,23 +82,21 @@
       </div>
     {{/if}}
   </div>
-  <div class="ui row">
-    <div class="ui grid">
-      <div class="ui row stackable grid">
-        <div class="ui less padding fourteen wide computer twelve wide tablet column right aligned floated payment icons">
-          <i class="colored american express link icon"></i>
-          <i class="colored credit card alternative link icon"></i>
-          <i class="colored diners club link icon"></i>
-          <i class="colored discover link icon"></i>
-          <i class="colored mastercard link icon"></i>
-          <i class="colored paypal card link icon"></i>
-          <i class="colored visa link icon"></i>
-        </div>
-        <div class="ui less padding two wide computer four wide tablet column right aligned floated">
-          <button id="total" class="ui primary button less right margin" disabled={{not hasTicketsInOrder}}>
-            {{t 'Order Now'}}
-          </button>
-        </div>
+  <div class="ui grid">
+    <div class="ui row stackable grid">
+      <div class="ui less padding thirteen wide computer twelve wide tablet column right aligned floated payment icons">
+        <i class="colored american express link icon"></i>
+        <i class="colored credit card alternative link icon"></i>
+        <i class="colored diners club link icon"></i>
+        <i class="colored discover link icon"></i>
+        <i class="colored mastercard link icon"></i>
+        <i class="colored paypal card link icon"></i>
+        <i class="colored visa link icon"></i>
+      </div>
+      <div class="ui less padding three wide computer four wide tablet column right aligned floated">
+        <button id="total" class="ui primary small button less right margin" disabled={{not hasTicketsInOrder}}>
+          {{t 'Order Now'}}
+        </button>
       </div>
     </div>
   </div>
