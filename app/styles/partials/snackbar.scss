@@ -1,46 +1,46 @@
 .paper-snackbar {
-  transition-property: opacity, bottom, left, right, width, margin, border-radius;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-  font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  min-height: 14px;
-  background-color: #323232;
-  position: fixed;
-  z-index: 99999999;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  color: white;
-  line-height: 22px;
-  padding: 18px 24px;
+  background-color: #323232;
   bottom: 0;
-  opacity: 0;
+  color: #fff;
+  display: flex;
+  font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  justify-content: space-between;
   left: 0;
+  line-height: 22px;
+  min-height: 14px;
+  opacity: 0;
+  padding: 18px 24px;
+  position: fixed;
+  transition-duration: .5s;
+  transition-property: opacity, bottom, left, right, width, margin, border-radius;
+  transition-timing-function: ease;
+  z-index: 99999999;
 
   .action {
     background: inherit;
-    display: inline-block;
-    border: none;
-    font-size: inherit;
-    text-transform: uppercase;
+    border: 0;
     color: #ffeb3b;
+    display: inline-block;
+    font-size: inherit;
     margin: 0 0 0 24px;
-    padding: 0;
     min-width: min-content;
+    padding: 0;
+    text-transform: uppercase;
   }
 
 }
 
 @media (min-width: 640px) {
   .paper-snackbar {
-    min-width: 288px;
-    max-width: 568px;
-    display: inline-flex;
     border-radius: 2px;
-    margin: 24px;
     bottom: -100px;
+    display: inline-flex;
+    margin: 24px;
+    max-width: 568px;
+    min-width: 288px;
   }
 }
 
