@@ -20,7 +20,7 @@
       {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity}}
     </div>
   </div>
-  <div class="column {{unless device.isLargeMonitor 'padding-right less'}}">
+  <div class="column {{unless device.isLargeMonitor 'less right padding'}}">
     <div class="field">
       <div class="ui icon buttons">
         <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
