@@ -4,10 +4,10 @@
   {{/if}}
   <div class="ui stackable grid">
     <div class="row">
-      <h2 class="ui header eight wide column left floated {{if device.isMobile 'center' 'left'}} aligned">{{t 'Access Codes'}}</h2>
-      <div class="eight wide column {{if device.isMobile 'center' 'right'}} aligned">
+      <h2 class="ui header {{if device.isMobile 'eight' 'thirteen'}} wide column left floated">{{t 'Access Codes'}}</h2>
+      <div class="{{if device.isMobile 'eight' 'three'}} wide column right floated">
         {{#link-to 'events.view.tickets.access-codes.create'
-        tagName='button' class='ui button blue'}}
+        tagName='button' class='ui button blue fluid'}}
           <i class="plus icon"></i>
           {{t 'Create an access code'}}
         {{/link-to}}

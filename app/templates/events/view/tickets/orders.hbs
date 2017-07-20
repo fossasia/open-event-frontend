@@ -6,42 +6,46 @@
       </h2>
     </div>
     <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
-      {{#ui-dropdown class='compact selection'}}
-        <div class="default text">
-          {{t 'Export As'}}
+      <div class="{{if device.isMobile 'ui padded grid'}}">
+        <div class="row">
+          {{#ui-dropdown class='compact selection eight wide column'}}
+            <div class="default text">
+              {{t 'Export As'}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="pdf">
+                <i class="file pdf outline icon"></i>
+                {{t 'PDF'}}
+              </div>
+              <div class="item" data-value="csv">
+                <i class="file excel outline icon"></i>
+                {{t 'CSV'}}
+              </div>
+            </div>
+          {{/ui-dropdown}}
+          {{#ui-dropdown class='compact selection eight wide column'}}
+            <div class="default text">
+              {{t 'Showing all the records'}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="date">
+                <i class="calendar outline icon"></i>
+                {{t 'Filter by Date'}}
+              </div>
+              <div class="item" data-value="discount">
+                <i class="dollar icon"></i>
+                {{t 'Filter by Discount'}}
+              </div>
+              <div class="item" data-value="remove">
+                <i class="ban icon"></i>
+                {{t 'Remove Filters'}}
+              </div>
+            </div>
+          {{/ui-dropdown}}
         </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item" data-value="pdf">
-            <i class="file pdf outline icon"></i>
-            {{t 'PDF'}}
-          </div>
-          <div class="item" data-value="csv">
-            <i class="file excel outline icon"></i>
-            {{t 'CSV'}}
-          </div>
-        </div>
-      {{/ui-dropdown}}
-      {{#ui-dropdown class='compact selection'}}
-        <div class="default text">
-          {{t 'Showing all the records'}}
-        </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item" data-value="date">
-            <i class="calendar outline icon"></i>
-            {{t 'Filter by Date'}}
-          </div>
-          <div class="item" data-value="discount">
-            <i class="dollar icon"></i>
-            {{t 'Filter by Discount'}}
-          </div>
-          <div class="item" data-value="remove">
-            <i class="ban icon"></i>
-            {{t 'Remove Filters'}}
-          </div>
-        </div>
-      {{/ui-dropdown}}
+      </div>
     </div>
   </div>
   <div class="row">
