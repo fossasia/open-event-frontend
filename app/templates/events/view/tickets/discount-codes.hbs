@@ -3,14 +3,10 @@
 {{else}}
   <div class="ui grid stackable">
     <div class="row">
-      <h2 class="ui header eight wide column left floated
-                {{if device.isMobile 'center' 'left'}} aligned">
-        {{t 'Discount Codes'}}
-      </h2>
-      <div class="eight wide column
-                  {{if device.isMobile 'center' 'right'}} aligned">
+      <h2 class="ui header {{if device.isMobile 'eight' 'thirteen'}} wide column left floated">{{t 'Discount Codes'}}</h2>
+      <div class="{{if device.isMobile 'eight' 'three'}} wide column right floated">
         {{#link-to 'events.view.tickets.discount-codes.create' tagName='button'
-        class='ui blue button'}}
+        class='ui blue button fluid'}}
           <i class="plus icon"></i>
           {{t 'Create a discount'}}
         {{/link-to}}
