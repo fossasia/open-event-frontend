@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { v4 } from 'ember-uuid';
 
-const { Component, computed, run: { debounce }, testing } = Ember;
+const { Component, computed, run: { debounce }, testing, observer } = Ember;
 
 export default Component.extend({
 
@@ -31,12 +31,19 @@ export default Component.extend({
     }
   },
 
+  valueObserver: observer('value', function() {
+    if (this.get('editor') && this.get('value') !== this.get('_value')) {
+      this.get('editor').setValue(this.get('value'));
+    }
+  }),
+
   textareaIdGenerated: computed('textareaId', function() {
     return this.get('textareaId') ? this.get('textareaId') : v4();
   }),
 
   didInsertElement() {
     this._super(...arguments);
+    this.set('_value', this.get('value'));
     this.$('.button')
       .popup({
         inline    : true,
@@ -52,8 +59,9 @@ export default Component.extend({
 
       const updateValue = () => {
         debounce(this, () => {
-          this.set('value', this.editor.getValue());
-        }, 400);
+          const value = this.editor.getValue();
+          this.setProperties({ _value: value, value });
+        }, 200);
       };
 
       this.editor.on('interaction', updateValue);
