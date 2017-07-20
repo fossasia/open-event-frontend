@@ -1,25 +1,27 @@
-.response .string {
-  color: green;
-}
+.response {
+  .string {
+    color: #008000;
+  }
 
-.response .number {
-  color: darkorange;
-}
+  .number {
+    color: #ff8c00;
+  }
 
-.response .boolean {
-  color: blue;
-}
+  .boolean {
+    color: #00f;
+  }
 
-.response .null {
-  color: magenta;
-}
+  .null {
+    color: #f0f;
+  }
 
-.response .key {
-  color: red;
-}
+  .key {
+    color: #f00;
+  }
 
-.json.response {
-  max-height: 650px;
+  &.json {
+    max-height: 650px;
+  }
 }
 
 .url {

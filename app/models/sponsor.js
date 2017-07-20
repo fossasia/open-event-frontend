@@ -1,9 +1,9 @@
 import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
+import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
 import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 
-export default Model.extend({
+export default ModelBase.extend({
   name        : attr('string'),
   level       : attr('number'),
   type        : attr('string'),

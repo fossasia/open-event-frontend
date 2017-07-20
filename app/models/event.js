@@ -1,17 +1,16 @@
 import Ember from 'ember';
 import moment from 'moment';
 import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
+import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
-import ModelMixin from 'ember-data-has-many-query/mixins/model';
 
 const { computed, inject: { service }, on } = Ember;
 
 const detectedTimezone = moment.tz.guess();
 
-export default Model.extend(ModelMixin, CustomPrimaryKeyMixin, {
+export default ModelBase.extend(CustomPrimaryKeyMixin, {
 
   /**
    * Service Injection

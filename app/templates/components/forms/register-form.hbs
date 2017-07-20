@@ -1,9 +1,8 @@
 <form class="ui large form" autocomplete="off" {{action 'submit' on='submit'}} novalidate>
-  <div class="ui aligned segment basic less margin padding">
+  <div class="ui aligned segment basic less margin less padding">
     <h3 class="weight-400">{{t 'Register'}}</h3>
   </div>
   <div class="ui segments">
-
     <div class="ui segment {{if isLoading 'loading' ''}}">
       {{#if errorMessage}}
         <div class="ui negative message">
