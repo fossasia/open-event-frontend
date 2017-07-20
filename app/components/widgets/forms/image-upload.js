@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { v4 } from 'ember-uuid';
 
-const { Component, computed, run: { later } } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend({
 
@@ -25,10 +25,18 @@ export default Component.extend({
     this.set('selectedImage', imageData);
     this.set('needsConfirmation', false);
     this.set('uploadingImage', true);
-    // TODO-PENDING-API Implement actual upload once API is ready
-    later(this, () => {
-      this.set('uploadingImage', false);
-    }, 6000);
+    this.get('loader')
+      .post('/upload/image', {
+        data: imageData
+      })
+      .then(image => {
+        this.set('uploadingImage', false);
+        this.set('imageUrl', image.url);
+      })
+      .catch(() => {
+        this.set('uploadingImage', false);
+        this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
+      });
   },
 
   processFiles(files) {
@@ -68,7 +76,6 @@ export default Component.extend({
 
     removeSelection() {
       if (!this.get('needsConfirmation')) {
-        // TODO-PENDING-API Delete image from server once API ready
         this.set('selectedImage', null);
         this.set('imageUrl', null);
       } else {
