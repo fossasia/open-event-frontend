@@ -34,18 +34,22 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  <div class="featured-speakers" id="speakers">
-    <div class="row">
-      {{public/featured-speaker-list speakers=featuredSpeakers}}
+  {{#if featuredSpeakers}}
+    <div class="featured-speakers" id="speakers">
+      <div class="row">
+        {{public/featured-speaker-list speakers=featuredSpeakers}}
+      </div>
     </div>
-  </div>
-  <div class="ui hidden divider"></div>
-  <div class="speakers">
-    <div class="row">
-      {{public/speaker-list speakers=nonFeaturedSpeakers}}
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if nonFeaturedSpeakers}}
+    <div class="speakers">
+      <div class="row">
+        {{public/speaker-list speakers=nonFeaturedSpeakers}}
+      </div>
     </div>
-  </div>
-  <div class="ui hidden divider" id="sponsors"></div>
+    <div class="ui hidden divider" id="sponsors"></div>
+  {{/if}}
   <div class="sponsors">
     <div class="row">
       {{public/sponsor-list sponsors=model.sponsors}}

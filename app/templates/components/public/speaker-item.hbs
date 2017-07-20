@@ -1,16 +1,18 @@
 <div class="speaker-item {{if speaker.isFeatured 'ui grid stackable'}} ">
   <div class="speaker-image column eight wide">
-    <img alt="{{speaker.name}}" class="ui image" src="{{if speaker.image speaker.image '/images/placeholders/avatar.png'}}">
+    <img alt="{{speaker.name}}" class="ui image" src="{{if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png'}}">
     <br>
     <div class="speaker-name">{{speaker.name}}</div>
     <div class="speaker-organisation">{{speaker.organisation}}</div>
     <div class="social-links">
-      {{#each speaker.socialLinks as |link|}}
-        <a href="{{link.url}}" target="_blank" rel="noopener noreferrer"><i class="bordered {{link.name}} colored inverted icon"></i></a>
-      {{/each}}
+      {{#each-in socialLinks as |name link|}}
+        {{#if link}}
+          <a href="{{link}}" target="_blank" rel="noopener noreferrer"><i class="bordered {{name}} colored inverted icon"></i></a>
+        {{/if}}
+      {{/each-in}}
     </div>
   </div>
   <div class="column seven wide speaker-description {{if speaker.isFeatured show}}">
-    {{speaker.short_biography}}
+    {{speaker.shortBiography}}
   </div>
 </div>
