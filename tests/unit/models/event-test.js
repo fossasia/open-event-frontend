@@ -11,6 +11,7 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:track',
     'model:ticket',
     'model:social-link',
+    'model:speaker',
     'model:speakers-call',
     'model:tax',
     'model:event-copyright',

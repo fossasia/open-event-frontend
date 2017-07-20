@@ -91,6 +91,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   tracks         : hasMany('track'),
   tickets        : hasMany('ticket'),
   socialLinks    : hasMany('social-link'),
+  speakers       : hasMany('speaker'),
   speakersCall   : belongsTo('speakers-call'),
   tax            : belongsTo('tax'),
   copyright      : belongsTo('event-copyright'),
