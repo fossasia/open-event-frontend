@@ -178,16 +178,6 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        superAdminEmail: {
-          identifier : 'super_admin_email',
-          rules      : [
-            {
-              type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email address for super admin')
-            }
-          ]
-        },
-
         secretKey: {
           identifier : 'secret_key',
           rules      : [
@@ -208,6 +198,7 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
+        this.sendAction('save');
       });
     }
   }
