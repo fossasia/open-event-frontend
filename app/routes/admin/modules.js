@@ -7,10 +7,6 @@ export default Route.extend({
     return this.l10n.t('Modules');
   },
   model() {
-    return {
-      ticketing : false,
-      payments  : false,
-      donations : false
-    };
+    return this.get('store').queryRecord('module', {});
   }
 });
