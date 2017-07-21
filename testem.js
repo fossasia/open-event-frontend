@@ -8,5 +8,8 @@ module.exports = {
   'launch_in_dev': [
     'PhantomJS',
     'Chrome'
-  ]
+  ],
+  browser_args: {
+    'Chrome': ['--headless', '--disable-gpu', '--remote-debugging-port=9222']
+  }
 };
