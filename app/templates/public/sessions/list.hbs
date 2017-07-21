@@ -1,0 +1,4 @@
+<h3 class="ui header">{{model.name}}</h3>
+{{#each model.sessions as |session|}}
+  {{public/session-item session=session}}
+{{/each}}

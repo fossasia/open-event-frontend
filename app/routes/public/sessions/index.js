@@ -7,10 +7,10 @@ export default Route.extend({
     return this.l10n.t('Sessions');
   },
   model() {
-    const eventDetails = this._super(...arguments);
+    const eventDetails = this._super(...arguments).event;
     return RSVP.hash({
       event  : eventDetails,
-      tracks : eventDetails.query('tracks', {})
+      tracks : eventDetails.query('tracks', { include: 'sessions' })
     });
   }
 });

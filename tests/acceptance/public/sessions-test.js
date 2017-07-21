@@ -11,7 +11,7 @@ test('visiting / and opening an event and going to sessions', function(assert) {
       assert.equal(currentRouteName(), 'public.index');
       click('div.ui.vertical.pointing.menu > a:contains(\'Sessions\')');
       andThen(function() {
-        assert.equal(currentRouteName(), 'public.sessions');
+        assert.equal(currentRouteName(), 'public.sessions.index');
       });
     });
   });
