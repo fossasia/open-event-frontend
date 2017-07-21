@@ -31,7 +31,9 @@ router.map(function() {
   this.route('forgot-password');
   this.route('logout');
   this.route('public', { path: '/e/:event_id' }, function() {
-    this.route('sessions');
+    this.route('sessions', function() {
+      this.route('list', { path: '/:track_id' });
+    });
     this.route('cfs');
     this.route('schedule');
   });
