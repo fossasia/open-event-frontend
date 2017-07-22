@@ -20,19 +20,19 @@
       <label>
         {{t 'Client ID'}}
       </label>
-      {{input type='text' name='stripe_client_id'}}
+      {{input type='text' name='stripe_client_id' value=settings.stripeClientId}}
     </div>
     <div class="field">
       <label>
         {{t 'Secret Key'}}
       </label>
-      {{input type='text' name='stripe_secret_key'}}
+      {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
     </div>
     <div class="field">
       <label>
         {{t 'Publishable Key'}}
       </label>
-      {{input type='text' name='stripe_publishable_key'}}
+      {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
@@ -57,49 +57,57 @@
       {{t 'PayPal Integration Mode'}}
     </h5>
     <div class="field">
-      {{ui-radio label=(t 'Sandbox mode - Used during development and testing') name='paypal_integration_mode'  value='sandbox'  current='sandbox' onChange=(action (mut selectedMode))}}
+      {{ui-radio label=(t 'Sandbox mode - Used during development and testing')
+                 name='paypal_integration_mode'
+                 value='sandbox'
+                 current=settings.paypalMode
+                 onChange=(action (mut settings.paypalMode))}}
     </div>
-    {{#if (not-eq selectedMode 'live')}}
+    {{#if (eq settings.paypalMode 'sandbox')}}
       <div class="field">
         <label>
           {{t 'Sandbox username'}}
         </label>
-        {{input type='text' name='sandbox_username'}}
+        {{input type='text' name='sandbox_username' value=settings.paypalSandboxUsername}}
       </div>
       <div class="field">
         <label>
           {{t 'Sandbox password'}}
         </label>
-        {{input type='password' name='sandbox_password'}}
+        {{input type='password' name='sandbox_password' value=settings.paypalSandboxPassword}}
       </div>
       <div class="field">
         <label>
           {{t 'Sandbox signature'}}
         </label>
-        {{input type='text' name='sandbox_signature'}}
+        {{input type='text' name='sandbox_signature' value=settings.paypalSandboxSignature}}
       </div>
     {{/if}}
     <div class="field">
-      {{ui-radio label=(t 'Live mode - Used during production') name='paypal_integration_mode' value='live' onChange=(action (mut selectedMode))}}
+      {{ui-radio label=(t 'Live mode - Used during production')
+                 name='paypal_integration_mode'
+                 value='live'
+                 current=settings.paypalMode
+                 onChange=(action (mut settings.paypalMode))}}
     </div>
-    {{#if (eq selectedMode 'live')}}
+    {{#if (eq settings.paypalMode 'live')}}
       <div class="field">
         <label>
           {{t 'Live username'}}
         </label>
-        {{input type='text' name='live_username'}}
+        {{input type='text' name='live_username' value=settings.paypalLiveUsername}}
       </div>
       <div class="field">
         <label>
           {{t 'Live password'}}
         </label>
-        {{input type='password' name='live_password'}}
+        {{input type='password' name='live_password' value=settings.paypalLivePassword}}
       </div>
       <div class="field">
         <label>
           {{t 'Live signature'}}
         </label>
-        {{input type='text' name='live_signature'}}
+        {{input type='text' name='live_signature' value=settings.paypalLiveSignature}}
       </div>
     {{/if}}
   {{/if}}

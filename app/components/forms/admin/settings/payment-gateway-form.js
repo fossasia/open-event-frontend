@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import FormMixin from 'open-event-frontend/mixins/form';
 
-const { Component } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
@@ -103,9 +103,36 @@ export default Component.extend(FormMixin, {
     };
   },
 
+  isCheckedStripe: computed(function() {
+    return this.get('settings.stripeClientId');
+  }),
+
+  isCheckedPaypal: computed(function() {
+    return this.get('settings.paypalSandboxUsername') || this.get('settings.paypalLiveUsername');
+  }),
+
   actions: {
     submit() {
       this.onValid(() => {
+        if (this.get('isCheckedStripe') === false) {
+          this.get('settings').setProperties({
+            'stripeClientId'       : null,
+            'stripeSecretKey'      : null,
+            'stripePublishableKey' : null
+          });
+        }
+        if (this.get('isCheckedPaypal') === false)  {
+          this.get('settings').setProperties({
+            'paypalSandboxUsername'  : null,
+            'paypalSandboxPassword'  : null,
+            'paypalSandboxSignature' : null,
+            'paypalLiveUsername'     : null,
+            'paypalLivePassword'     : null,
+            'paypalMode'             : null,
+            'paypalLiveSignature'    : null
+          });
+        }
+        this.sendAction('save');
       });
     }
   }
