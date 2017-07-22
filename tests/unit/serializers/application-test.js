@@ -14,6 +14,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:ticket',
     'model:social-link',
     'model:speakers-call',
+    'model:email-notification',
     'model:tax',
     'model:event-copyright',
     'model:session-type',

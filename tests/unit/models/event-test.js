@@ -17,7 +17,8 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:event-copyright',
     'model:session-type',
     'model:user',
-    'model:discount-code'
+    'model:discount-code',
+    'model:email-notification'
   ]
 });
 
