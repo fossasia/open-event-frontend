@@ -1,5 +1,5 @@
-<form class="ui form" {{action 'submit' on='submit'}}>
-  {{#each-in images as |index image|}}
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+  {{#each images as |image|}}
     {{#if (eq image.type 'event')}}
       <h2 class="ui header">{{t 'Event Images'}}</h2>
       <h3 class="ui header">{{t 'Large Size'}}</h3>
@@ -87,6 +87,23 @@
 
     {{else}}
       <h2 class="ui header">{{t 'Profile/Speaker Images'}}</h2>
+      <h3 class="ui header">{{t 'Large Size'}}</h3>
+      <div class="two fields">
+        <div class="field">
+          <label>{{t 'Width & Height(in px)'}}</label>
+          {{input type='number' name='profile_small_size' value=image.fullWidth min=1}}
+        </div>
+        <div class="field">
+          <label>{{t 'Quality (in %)'}}</label>
+          {{input type='number' name='profile_small_quality' value=image.fullQuality min=1}}
+        </div>
+      </div>
+      {{t 'Standard Size of the available area is 500px X 500px'}}
+      <p>{{t 'Found in :'}}</p>
+      <div class="ui bulleted list">
+        <div class="item">{{t 'Speaker Tab in Event Dashboard'}}</div>
+      </div>
+
       <h3 class="ui header">{{t 'Thumbnail Size'}}</h3>
       <div class="two fields">
         <div class="field">
@@ -102,23 +119,6 @@
       <p>{{t 'Found in :'}}</p>
       <div class="ui bulleted list">
         <div class="item">{{t 'Event Public Page'}}</div>
-      </div>
-
-      <h3 class="ui header">{{t 'Small Size'}}</h3>
-      <div class="two fields">
-        <div class="field">
-          <label>{{t 'Width & Height(in px)'}}</label>
-          {{input type='number' name='profile_small_size' value=image.smallWidth min=1}}
-        </div>
-        <div class="field">
-          <label>{{t 'Quality (in %)'}}</label>
-          {{input type='number' name='profile_small_quality' value=image.smallQuality min=1}}
-        </div>
-      </div>
-      {{t 'Standard Size of the available area is 50px X 50px'}}
-      <p>{{t 'Found in :'}}</p>
-      <div class="ui bulleted list">
-        <div class="item">{{t 'Speaker Tab in Event Dashboard'}}</div>
       </div>
 
       <h3 class="ui header">{{t 'Icon Size'}}</h3>
@@ -138,7 +138,7 @@
         <div class="item">{{t 'Top Bar Right Corner'}}</div>
       </div>
     {{/if}}
-  {{/each-in}}
+  {{/each}}
   <div class="ui hidden divided"></div>
   <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
 </form>

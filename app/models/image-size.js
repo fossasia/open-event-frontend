@@ -1,7 +1,8 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
+import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 
-export default ModelBase.extend({
+export default ModelBase.extend(CustomPrimaryKeyMixin, {
   fullAspect       : attr('boolean'),
   thumbnailHeight  : attr('number'),
   thumbnailAspect  : attr('boolean'),
