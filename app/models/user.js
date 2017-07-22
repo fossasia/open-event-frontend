@@ -8,9 +8,9 @@ const { computed } = Ember;
 export default ModelBase.extend({
   email        : attr('string'),
   password     : attr('string'),
-  isVerified   : attr('boolean'),
-  isSuperAdmin : attr('boolean'),
-  isAdmin      : attr('boolean'),
+  isVerified   : attr('boolean', { readOnly: true }),
+  isSuperAdmin : attr('boolean', { readOnly: true }),
+  isAdmin      : attr('boolean', { readOnly: true }),
 
   firstName : attr('string'),
   lastName  : attr('string'),
@@ -27,9 +27,9 @@ export default ModelBase.extend({
   twitterUrl    : attr('string'),
   googlePlusUrl : attr('string'),
 
-  createdAt      : attr('moment'),
-  deletedAt      : attr('moment'),
-  lastAccessedAt : attr('moment'),
+  createdAt      : attr('moment', { readOnly: true }),
+  deletedAt      : attr('moment', { readOnly: true }),
+  lastAccessedAt : attr('moment', { readOnly: true }),
 
   isAnAdmin: computed.or('isSuperAdmin', 'isAdmin'),
 

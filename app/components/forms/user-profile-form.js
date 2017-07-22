@@ -17,7 +17,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your name ')
+              prompt : this.l10n.t('Please enter your name')
             }
           ]
         },
@@ -26,7 +26,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your family name ')
+              prompt : this.l10n.t('Please enter your family name')
             }
           ]
         }
@@ -37,7 +37,8 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
-
+        this.set('isLoading', true);
+        this.sendAction('submit');
       });
     }
   }
