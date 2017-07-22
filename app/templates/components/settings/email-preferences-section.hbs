@@ -18,15 +18,15 @@
     </div>
   </div>
 </div>
-{{#each preferences as |event|}}
+{{#each preferences as |preference|}}
   {{#ui-accordion class='ui segment'}}
     <div class="ui grid title">
       <div class="ui column eight wide">
-        <h4 class="ui header">{{event.name}}</h4>
+        <h4 class="ui header">{{preference.event.name}}</h4>
       </div>
       <div class="ui column eight wide right aligned">
-        <a class="ui circular label {{if (or event.isNewPaper event.isChangeSchedule event.isNewEvent) 'green' 'yellow'}}">
-          {{#if (or event.isNewPaper event.isChangeSchedule event.isNewEvent)}}
+        <a class="ui circular label {{if (or preference.newPaper preference.sessionSchedule preference.nextEvent) 'green' 'yellow'}}">
+          {{#if (or preference.newPaper preference.sessionSchedule preference.nextEvent)}}
             {{t 'On'}}
           {{else}}
             {{t 'Off'}}
@@ -35,14 +35,14 @@
       </div>
     </div>
     <div class="ui grid content">
-      <h4 class="ui header">{{event.role}} {{t 'Notifications'}}</h4>
+      <h4 class="ui header">{{t 'Notifications'}}</h4>
       <div class="ui divided"></div>
       <div class="row">
         <div class="column eight wide">
           {{t 'New Paper is Submitted to your Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=event.isNewPaper onChange=(action (mut event.isNewPaper))}}
+          {{ui-checkbox class='toggle' checked=preference.newPaper onChange=(pipe-action (action (mut preference.newPaper)) (action 'savePreference' preference))}}
         </div>
       </div>
       <div class="row">
@@ -50,7 +50,7 @@
           {{t 'Change in Schedule of Sessions in your Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=event.isChangeSchedule onChange=(action (mut event.isChangeSchedule))}}
+          {{ui-checkbox class='toggle' checked=preference.sessionSchedule onChange=(pipe-action (action (mut preference.sessionSchedule)) (action 'savePreference' preference))}}
         </div>
       </div>
       <div class="row">
@@ -58,7 +58,7 @@
           {{t 'Reminder for Next Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=event.isNewEvent onChange=(action (mut event.isNewEvent))}}
+          {{ui-checkbox class='toggle' checked=preference.nextEvent onChange=(pipe-action (action (mut preference.nextEvent)) (action 'savePreference' preference))}}
         </div>
       </div>
     </div>
