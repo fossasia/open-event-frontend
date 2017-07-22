@@ -1,7 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('user', 'Unit | Model | user', {
-  needs: ['model:event', 'model:email-notification', 'service:auth-manager']
+moduleForModel('email-notification', 'Unit | Model | email notification', {
+  needs: ['model:event', 'model:user']
 });
 
 test('it exists', function(assert) {
