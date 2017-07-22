@@ -1,27 +1,27 @@
-<form class="ui form" {{action 'submit' on='submit'}}>
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
   <div class="field">
     <label>{{t 'Support'}}</label>
-    {{input type='url' name='support'}}
+    {{input type='url' name='support' value=socials.supportUrl}}
   </div>
   <div class="field">
     <label>{{t 'Twitter'}}</label>
-    {{input type='url' name='twitter'}}
+    {{input type='url' name='twitter' value=socials.twitterUrl}}
   </div>
   <div class="field">
     <label>{{t 'Facebook'}}</label>
-    {{input type='url' name='facebook'}}
+    {{input type='url' name='facebook' value=socials.facebookUrl}}
   </div>
   <div class="field">
     <label>{{t 'Google +'}}</label>
-    {{input type='url' name='google_plus'}}
+    {{input type='url' name='google_plus' value=socials.googleUrl}}
   </div>
   <div class="field">
     <label>{{t 'Youtube'}}</label>
-    {{input type='url' name='youtube'}}
+    {{input type='url' name='youtube' value=socials.youtubeUrl}}
   </div>
   <div class="field">
     <label>{{t 'Github'}}</label>
-    {{input type='url' name='github'}}
+    {{input type='url' name='github' value=socials.githubUrl}}
   </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>
 </form>
