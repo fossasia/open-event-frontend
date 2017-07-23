@@ -18,5 +18,19 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
       return;
     }
     this._super(...arguments);
+  },
+
+  serializeHasMany(snapshot, json, relationship) {
+    if (!snapshot.hasMany(relationship.key) || (snapshot.hasMany(relationship.key) && !snapshot.hasMany(relationship.key).id)) {
+      return;
+    }
+    this._super(...arguments);
+  },
+
+  serializeBelongsTo(snapshot, json, relationship) {
+    if (!snapshot.belongsTo(relationship.key) || (snapshot.belongsTo(relationship.key) && !snapshot.belongsTo(relationship.key).id)) {
+      return;
+    }
+    this._super(...arguments);
   }
 });

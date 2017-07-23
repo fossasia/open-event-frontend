@@ -206,16 +206,16 @@ export default Component.extend(FormMixin, {
     return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
-  subTopics: computed('topic', function() {
+  subTopics: computed('data.event.topic', function() {
     later(this, () => {
       try {
         this.set('subTopic', null);
       } catch (ignored) { /* To suppress error thrown in-case this gets executed after component gets destroy */ }
     }, 50);
-    if (!this.get('topic')) {
+    if (!this.get('data.event.topic')) {
       return [];
     }
-    return this.get('topic.subTopics');
+    return this.get('data.event.topic.subTopics');
   }),
 
   hasPaidTickets: computed('data.event.tickets.[]', function() {
@@ -229,7 +229,6 @@ export default Component.extend(FormMixin, {
   discountCodeObserver: observer('data.event.discountCode', function() {
     this.getForm().form('remove prompt', 'discount_code');
   }),
-
   actions: {
     saveDraft() {
       this.onValid(() => {
@@ -243,6 +242,7 @@ export default Component.extend(FormMixin, {
     },
     publish() {
       this.onValid(() => {
+        this.set('data.event.state', 'published');
         this.get('save')('publish');
       });
     },
@@ -302,6 +302,13 @@ export default Component.extend(FormMixin, {
         'discountCodeValue'            : null,
         'discountCodePeriod'           : null
       });
+    },
+    updateDates() {
+      const timezone = this.get('data.event.timezone');
+      var startDate = this.get('data.event.startsAt');
+      var endDate = this.get('data.event.endsAt');
+      this.set('data.event.startsAt', moment.tz(startDate, timezone));
+      this.set('data.event.endsAt', moment.tz(endDate, timezone));
     }
   }
 });
