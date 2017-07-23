@@ -1,7 +1,13 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
+import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 
 export default ModelBase.extend({
+
+  /**
+   * Attributes
+   */
+
   appEnvironment         : attr('string'),
   appName                : attr('string'),
   tagline                : attr('string'),
@@ -50,5 +56,16 @@ export default ModelBase.extend({
   youtubeUrl             : attr('string'),
   androidAppUrl          : attr('string'),
   webAppUrl              : attr('string'),
-  staticDomain           : attr('string')
+  staticDomain           : attr('string'),
+
+  /**
+   * Computed properties
+   */
+
+  segmentedSupportUrl  : computedSegmentedLink.bind(this)('supportUrl'),
+  segmentedFacebookUrl : computedSegmentedLink.bind(this)('facebookUrl'),
+  segmentedTwitterUrl  : computedSegmentedLink.bind(this)('twitterUrl'),
+  segmentedGoogleUrl   : computedSegmentedLink.bind(this)('googleUrl'),
+  segmentedYoutubeUrl  : computedSegmentedLink.bind(this)('youtubeUrl'),
+  segmentedGithubUrl   : computedSegmentedLink.bind(this)('githubUrl')
 });
