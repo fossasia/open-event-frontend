@@ -11,23 +11,13 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        support: {
-          identifier : 'support',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'url',
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
         twitter: {
           identifier : 'twitter',
           optional   : true,
           rules      : [
             {
-              type   : 'url',
-              prompt : this.l10n.t('Please enter a valid url')
+              type   : 'containsExactly[twitter.com]',
+              prompt : this.l10n.t('Please enter a valid twitter url')
             }
           ]
         },
@@ -36,8 +26,8 @@ export default Component.extend(FormMixin, {
           optional   : true,
           rules      : [
             {
-              type   : 'url',
-              prompt : this.l10n.t('Please enter a valid url')
+              type   : 'containsExactly[facebook.com]',
+              prompt : this.l10n.t('Please enter a valid facebook url')
             }
           ]
         },
@@ -46,8 +36,8 @@ export default Component.extend(FormMixin, {
           optional   : true,
           rules      : [
             {
-              type   : 'url',
-              prompt : this.l10n.t('Please enter a valid url')
+              type   : 'containsExactly[plus.google.com]',
+              prompt : this.l10n.t('Please enter a valid google plus url')
             }
           ]
         },
@@ -56,8 +46,8 @@ export default Component.extend(FormMixin, {
           optional   : true,
           rules      : [
             {
-              type   : 'url',
-              prompt : this.l10n.t('Please enter a valid url')
+              type   : 'containsExactly[youtube.com]',
+              prompt : this.l10n.t('Please enter a valid youtube url')
             }
           ]
         },
@@ -66,8 +56,8 @@ export default Component.extend(FormMixin, {
           optional   : true,
           rules      : [
             {
-              type   : 'url',
-              prompt : this.l10n.t('Please enter a valid url')
+              type   : 'containsExactly[github.com]',
+              prompt : this.l10n.t('Please enter a valid github url')
             }
           ]
         }

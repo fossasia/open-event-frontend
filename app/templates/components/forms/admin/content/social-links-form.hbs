@@ -1,27 +1,45 @@
 <form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
   <div class="field">
     <label>{{t 'Support'}}</label>
-    {{input type='url' name='support' value=socials.supportUrl}}
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedSupportUrl
+      inputId='support'
+    }}
   </div>
   <div class="field">
     <label>{{t 'Twitter'}}</label>
-    {{input type='url' name='twitter' value=socials.twitterUrl}}
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedTwitterUrl
+      inputId='twitter'
+    }}
   </div>
   <div class="field">
     <label>{{t 'Facebook'}}</label>
-    {{input type='url' name='facebook' value=socials.facebookUrl}}
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedFacebookUrl
+      inputId='facebook'
+    }}
   </div>
   <div class="field">
     <label>{{t 'Google +'}}</label>
-    {{input type='url' name='google_plus' value=socials.googleUrl}}
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedGoogleUrl
+      inputId='google_plus'
+    }}
   </div>
   <div class="field">
     <label>{{t 'Youtube'}}</label>
-    {{input type='url' name='youtube' value=socials.youtubeUrl}}
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedYoutubeUrl
+      inputId='youtube'
+    }}
   </div>
   <div class="field">
     <label>{{t 'Github'}}</label>
-    {{input type='url' name='github' value=socials.githubUrl}}
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedGithubUrl
+      inputId='github'
+    }}
   </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>
 </form>
