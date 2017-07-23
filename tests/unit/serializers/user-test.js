@@ -5,7 +5,8 @@ moduleForModel('user', 'Unit | Serializer | user', {
     'serializer:user',
     'serializer:event',
     'model:event',
-    'transform:moment'
+    'transform:moment',
+    'service:auth-manager'
   ]
 });
 
