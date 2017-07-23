@@ -10,7 +10,7 @@ export default Controller.extend({
       currentUser.save()
         .then(() => {
           this.set('isLoading', false);
-          this.get('notify', 'Updated information successfully');
+          this.get('notify').success('Your Contact Info has been updated');
         })
         .catch(() => {
           this.set('isLoading', false);
