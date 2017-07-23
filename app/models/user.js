@@ -2,10 +2,14 @@ import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany } from 'ember-data/relationships';
 import Ember from 'ember';
+import { toString } from 'lodash';
 
-const { computed } = Ember;
+const { computed, on, inject: { service } } = Ember;
 
 export default ModelBase.extend({
+
+  authManager: service(),
+
   email        : attr('string'),
   password     : attr('string'),
   isVerified   : attr('boolean', { readOnly: true }),
@@ -33,5 +37,12 @@ export default ModelBase.extend({
 
   isAnAdmin: computed.or('isSuperAdmin', 'isAdmin'),
 
-  events: hasMany('event')
+  events: hasMany('event'),
+
+  _didUpdate: on('didUpdate', function(user) {
+    if (toString(user.id) === toString(this.get('authManager.currentUser.id'))) {
+      user = this.get('store').peekRecord('user', user.id);
+      this.get('authManager').persistCurrentUser(user);
+    }
+  })
 });

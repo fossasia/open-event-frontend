@@ -56,10 +56,7 @@ export default Component.extend(FormMixin, {
             const tokenPayload = this.get('authManager').getTokenPayload();
             if (tokenPayload) {
               this.get('store').findRecord('user', tokenPayload.identity).then(user => {
-                let userData = user.serialize(false).data.attributes;
-                userData.id = user.get('id');
-                this.get('authManager').set('currentUserModel', user);
-                this.get('session').set('data.currentUserFallback', userData);
+                this.get('authManager').persistCurrentUser(user);
               });
             }
           })

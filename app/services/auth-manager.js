@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import { mapKeys } from 'lodash';
 
-const { Service, computed, observer, inject: { service } } = Ember;
+const { Service, computed, observer, inject: { service }, String: { camelize } } = Ember;
 
 export default Service.extend({
 
@@ -15,8 +16,7 @@ export default Service.extend({
     if (this.get('session.data.currentUserFallback')) {
       let userModel = this.get('store').peekRecord('user', this.get('session.data.currentUserFallback.id'));
       if (!userModel) {
-        userModel = this.get('store').createRecord('user', this.get('session.data.currentUserFallback'));
-        userModel.set('id', this.get('session.data.currentUserFallback.id'));
+        return this.restoreCurrentUser();
       }
       return userModel;
     }
@@ -61,6 +61,39 @@ export default Service.extend({
 
   identifyStranger() {
     this.get('metrics').identify(null);
+  },
+
+  persistCurrentUser(user = null) {
+    if (!user) {
+      user = this.get('currentUserModel');
+    } else {
+      this.set('currentUserModel', user);
+    }
+    let userData = user.serialize(false).data.attributes;
+    userData.id = user.get('id');
+    this.get('session').set('data.currentUserFallback', userData);
+  },
+
+  restoreCurrentUser(data = null) {
+    if (!data) {
+      data = this.get('session.data.currentUserFallback', {});
+    }
+    const userId = data.id;
+    delete data.id;
+    data = mapKeys(data, (value, key) => camelize(key));
+    if (!data.email) {
+      data.email = null;
+    }
+    this.get('store').push({
+      data: {
+        id         : userId,
+        type       : 'user',
+        attributes : data
+      }
+    });
+    let userModel = this.get('store').peekRecord('user', userId);
+    this.set('currentUserModel', userModel);
+    return userModel;
   },
 
   initialize() {
