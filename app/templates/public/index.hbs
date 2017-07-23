@@ -50,12 +50,14 @@
     </div>
     <div class="ui hidden divider" id="sponsors"></div>
   {{/if}}
-  <div class="sponsors">
-    <div class="row">
-      {{public/sponsor-list sponsors=model.sponsors}}
+  {{#if model.sponsors}}
+    <div class="sponsors">
+      <div class="row">
+        {{public/sponsor-list sponsors=model.sponsors}}
+      </div>
     </div>
-  </div>
-  <div class="ui hidden divider"></div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
   <div class="location">
     <h1 id="getting-here">{{t 'Getting Here'}}</h1>
     {{public/event-map event=model.event}}
