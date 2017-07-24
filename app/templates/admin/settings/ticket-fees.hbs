@@ -1,1 +1,3 @@
-{{forms/admin/settings/ticket-fees-form model=model}}
+<div class="ui basic {{if isLoading 'loading' ''}} segment">
+  {{forms/admin/settings/ticket-fees-form save=(action 'updateSettings') model=model}}
+</div>
