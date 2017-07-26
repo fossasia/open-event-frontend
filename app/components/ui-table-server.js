@@ -22,18 +22,17 @@ export default ModelsTable.extend({
 
   isError: false,
 
-  metaPagesCountProperty: 'pagesCount',
+  metaPagesCountProperty: 'page[size]',
 
-  metaItemsCountProperty: 'itemsCount',
+  metaItemsCountProperty: 'count',
 
   debounceDataLoadTime: 500,
 
   filterQueryParameters: {
-    globalFilter  : 'contains',
-    sort          : 'sort',
-    sortDirection : 'sortDirection',
-    page          : 'page',
-    pageSize      : 'pageSize'
+    globalFilter : 'contains',
+    sort         : 'sort',
+    page         : 'page[number]',
+    pageSize     : 'page[size]'
   },
 
   observedProperties: ['currentPageNumber', 'sortProperties.[]', 'pageSize', 'filterString', 'processedColumns.@each.filterString'],
@@ -49,18 +48,25 @@ export default ModelsTable.extend({
     return get(meta, itemsCountProperty) || 0;
   }),
 
-  pagesCount: computed('filteredContent.meta', function() {
-    let pagesCountProperty = get(this, 'metaPagesCountProperty');
+  pagesCount: computed('session.currentRouteName', 'currentPageNumber', 'pageSize', function() {
+    let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
-    if ((get(meta, pagesCountProperty) || 1) === 1) {
+    let items = (get(meta, itemsCountProperty));
+    let pageSize = get(this, 'pageSize');
+    let pages = 0;
+    if (pageSize > items) {
       this.$('.pagination').css({
         display: 'none'
       });
-      this.$('.page-size-dropdown').css({
-        display: 'none'
-      });
+    } else {
+      this.$('.pagination').removeAttr('style');
+      pages = parseInt((items / pageSize));
+      if (items % pageSize) {
+        pages = pages + 1;
+      }
     }
-    return get(meta, pagesCountProperty) || 1;
+    console.log(pages + '' + items);
+    return pages;
   }),
 
   lastIndex: computed('pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
@@ -84,6 +90,7 @@ export default ModelsTable.extend({
     let query = extend({}, get(data, 'query'));
     let store = get(data, 'store');
     let modelName = get(data, 'type.modelName');
+    query.filter = JSON.parse(query.filter);
 
     query[get(this, 'filterQueryParameters.page')] = currentPageNumber;
     query[get(this, 'filterQueryParameters.pageSize')] = pageSize;
@@ -135,6 +142,7 @@ export default ModelsTable.extend({
   pageSizeValues: computed(function() {
     return A([10, 25, 50]);
   }),
+
   actions: {
 
     gotoNext() {
@@ -162,6 +170,11 @@ export default ModelsTable.extend({
         asc  : 'desc',
         desc : 'none'
       };
+      const sortSign = {
+        none : '',
+        asc  : '-',
+        desc : ''
+      };
       let sortedBy = get(column, 'sortedBy');
       if (typeOf(sortedBy) === 'undefined') {
         sortedBy = get(column, 'propertyName');
@@ -171,6 +184,7 @@ export default ModelsTable.extend({
       }
 
       let currentSorting = get(column, 'sorting');
+      sortedBy = `${sortSign[currentSorting]}${sortedBy}`;
       let newSorting = sortMap[currentSorting.toLowerCase()];
       let sortingArgs = [column, sortedBy, newSorting];
       this._singleColumnSorting(...sortingArgs);
@@ -180,6 +194,14 @@ export default ModelsTable.extend({
 
   didReceiveAttrs() {
     set(this, 'filteredContent', get(this, 'data'));
+  },
+
+  didInsertElement() {
+    this._super(...arguments);
+
+    if (!get(this, 'pageSize')) {
+      set(this, 'pageSize', 10);
+    }
   },
 
   _addPropertyObserver() {
