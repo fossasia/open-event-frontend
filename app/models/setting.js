@@ -62,10 +62,12 @@ export default ModelBase.extend({
    * Computed properties
    */
 
-  segmentedSupportUrl  : computedSegmentedLink.bind(this)('supportUrl'),
-  segmentedFacebookUrl : computedSegmentedLink.bind(this)('facebookUrl'),
-  segmentedTwitterUrl  : computedSegmentedLink.bind(this)('twitterUrl'),
-  segmentedGoogleUrl   : computedSegmentedLink.bind(this)('googleUrl'),
-  segmentedYoutubeUrl  : computedSegmentedLink.bind(this)('youtubeUrl'),
-  segmentedGithubUrl   : computedSegmentedLink.bind(this)('githubUrl')
+  segmentedSupportUrl    : computedSegmentedLink.bind(this)('supportUrl'),
+  segmentedFacebookUrl   : computedSegmentedLink.bind(this)('facebookUrl'),
+  segmentedTwitterUrl    : computedSegmentedLink.bind(this)('twitterUrl'),
+  segmentedGoogleUrl     : computedSegmentedLink.bind(this)('googleUrl'),
+  segmentedYoutubeUrl    : computedSegmentedLink.bind(this)('youtubeUrl'),
+  segmentedGithubUrl     : computedSegmentedLink.bind(this)('githubUrl'),
+  segmentedAndroidAppUrl : computedSegmentedLink.bind(this)('androidAppUrl'),
+  segmentedWebAppUrl     : computedSegmentedLink.bind(this)('webAppUrl')
 });
