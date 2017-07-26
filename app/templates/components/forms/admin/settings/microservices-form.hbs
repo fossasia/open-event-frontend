@@ -6,7 +6,7 @@
     <label>
       {{t 'API Server'}}
     </label>
-    {{input type='url' name='android_app' placeholder='http://droidgen.eventyay.com/api/v2/'}}
+    {{widgets/forms/link-input segmentedLink=settings.segmentedAndroidAppUrl inputId='android_app'}}
   </div>
   <h3 class="ui header">
     {{t 'Web App Generator'}}
@@ -15,7 +15,7 @@
     <label>
       {{t 'API Server'}}
     </label>
-    {{input type='url' name='web_app' placeholder='https://opev-webgen-dev.herokuapp.com'}}
+    {{widgets/forms/link-input segmentedLink=settings.segmentedWebAppUrl inputId='web_app'}}
   </div>
   <button class="ui teal wide button" type="submit">
     {{t 'Save'}}
