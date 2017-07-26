@@ -1,4 +1,4 @@
-<div class="{{classes.outerTableWrapper}}">
+<div class="{{classes.outerTableWrapper}} {{if isLoading 'loading'}}">
   <div class="{{classes.globalFilterDropdownWrapper}}">
     {{#if showPageSize}}
       {{partial pageSizeTemplate}}
