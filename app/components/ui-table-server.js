@@ -65,7 +65,6 @@ export default ModelsTable.extend({
         pages = pages + 1;
       }
     }
-    console.log(pages + '' + items);
     return pages;
   }),
 
