@@ -9,7 +9,7 @@ export default Controller.extend({
       title        : 'Name'
     },
     {
-      propertyName : 'startTime',
+      propertyName : 'starts-at',
       template     : 'components/ui-table/cell/cell-date',
       title        : 'Date'
     },
