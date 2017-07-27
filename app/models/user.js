@@ -39,6 +39,8 @@ export default ModelBase.extend({
 
   emailNotifications: hasMany('email-notification'),
 
+  notifications: hasMany('notification'),
+
   events: hasMany('event'),
 
   _didUpdate: on('didUpdate', function(user) {

@@ -1,31 +1,39 @@
-<i class="mail outline icon {{unless notifications.length 'ui less right margin'}}"></i>
-{{#if notifications.length}}
-  <div class="floating ui teal circular mini label {{if device.isMobile 'tiny text'}}">{{notifications.length}}</div>
+<i class="mail outline icon {{unless unreadNotifications.length 'ui less right margin'}}"></i>
+{{#if unreadNotifications.length}}
+  <div class="floating ui teal circular mini label {{if device.isMobile 'tiny text'}}">{{unreadNotifications.length}}</div>
 {{/if}}
 <div class="ui wide notification popup bottom left transition">
-  <div class="ui basic inverted horizontal segments">
-    <div class="ui basic left aligned segment weight-800">
-      {{#link-to 'notifications'}}
-        {{t 'Notifications'}}
-      {{/link-to}}
-    </div>
-    <div class="ui basic right aligned segment weight-400">
-      <a href="#">{{t 'Mark all as Read'}}</a>
-    </div>
-  </div>
-  <div class="ui fluid link celled selection list">
-    {{#each notifications as |notification|}}
-      <div class="item">
-        <div class="header">
-          {{notification.title}}
-        </div>
-        <div class="content weight-600">
-          {{notification.description}}
-        </div>
-        <div class="left floated content">
-          {{moment-from-now notification.createdAt}}
-        </div>
+  {{#if unreadNotifications}}
+    <div class="ui basic inverted horizontal segments">
+      <div class="ui basic left aligned segment weight-800">
+        {{#link-to 'notifications'}}
+          {{t 'Notifications'}}
+        {{/link-to}}
       </div>
-    {{/each}}
-  </div>
+      <div class="ui basic right aligned segment weight-400">
+        <a href="#" {{action 'markAllRead'}}>{{t 'Mark all as Read'}}</a>
+      </div>
+    </div>
+    <div class="ui fluid link celled selection list">
+      {{#each unreadNotifications as |notification|}}
+        <div class="item {{unless notification.isRead 'active'}}">
+          <div class="header">
+            {{#link-to 'notifications' invokeAction=(action 'markRead' notification)}}
+              {{notification.title}}
+            {{/link-to}}
+          </div>
+          <div class="content weight-600">
+            {{notification.message}}
+          </div>
+          <div class="left floated content">
+            {{moment-from-now notification.receivedAt}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="ui segment empty-message">
+      <a href="{{href-to 'notifications'}}">{{t 'Go to notifications panel.'}}</a>
+    </div>
+  {{/if}}
 </div>

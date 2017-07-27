@@ -4,7 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('notification-dropdown', 'Integration | Component | notification dropdown');
 
-const notifications = [
+const unreadNotifications = [
   {
     title       : 'New Session Proposal for event1 by  user1',
     description : 'Title of proposal',
@@ -56,7 +56,7 @@ const notifications = [
 ];
 
 test('it renders', function(assert) {
-  this.set('notifications', notifications);
-  this.render(hbs`{{notification-dropdown notifications=notifications l10n=l10n}}`);
+  this.set('unreadNotifications', unreadNotifications);
+  this.render(hbs`{{notification-dropdown unreadNotifications=unreadNotifications l10n=l10n}}`);
   assert.ok(this.$().text().trim().includes('New Session Proposal for event1 by  user1'));
 });
