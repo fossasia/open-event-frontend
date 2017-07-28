@@ -9,7 +9,7 @@ export default Route.extend({
 
   model() {
     return RSVP.hash({
-      event: this._super(...arguments)
+      event: this.modelFor('public')
     });
   }
 });

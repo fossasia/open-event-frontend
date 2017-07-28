@@ -9,7 +9,7 @@ export default Route.extend(EventWizardMixin, {
   },
   model() {
     return {
-      parentData : this._super(...arguments),
+      parentData : this.modelFor('events.view.edit'),
       sponsors   : this.getSponsors()
     };
   }

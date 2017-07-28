@@ -18,7 +18,7 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
 
   model() {
     return {
-      event : this._super(...arguments),
+      event : this.modelFor('events.view'),
       steps : this.getSteps(),
       types : this.store.query('event-type', {
         sort: 'name'
