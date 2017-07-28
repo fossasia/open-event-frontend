@@ -5,7 +5,7 @@ const { Route, RSVP } = Ember;
 
 export default Route.extend({
   model() {
-    const eventDetails = this._super(...arguments);
+    const eventDetails = this.modelFor('public');
     return RSVP.hash({
       event   : eventDetails,
       tickets : eventDetails.query('tickets', {
