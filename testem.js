@@ -1,4 +1,13 @@
 /* eslint-env node */
+
+let browserArgs = {
+  'Chrome': ['--headless', '--disable-gpu', '--remote-debugging-port=9222']
+};
+
+if (process.env.NO_BROWSER_ARGS && process.env.NO_BROWSER_ARGS === 'true') {
+  browserArgs = {};
+}
+
 module.exports = {
   'test_page'        : 'tests/index.html?hidepassed',
   'disable_watching' : true,
@@ -9,7 +18,5 @@ module.exports = {
     'PhantomJS',
     'Chrome'
   ],
-  browser_args: {
-    'Chrome': ['--headless', '--disable-gpu', '--remote-debugging-port=9222']
-  }
+  browser_args: browserArgs
 };
