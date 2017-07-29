@@ -42,13 +42,13 @@ export default ModelsTable.extend({
   visibleContent  : computed.alias('arrangedContent'),
   arrangedContent : computed.alias('filteredContent'),
 
-  arrangedContentLength: computed('filteredContent.meta', function() {
+  arrangedContentLength: computed('routing.router.currentURL', 'filteredContent.meta', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     return get(meta, itemsCountProperty) || 0;
   }),
 
-  pagesCount: computed('session.currentRouteName', 'currentPageNumber', 'pageSize', function() {
+  pagesCount: computed('routing.router.currentURL', 'currentPageNumber', 'pageSize', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     let items = (get(meta, itemsCountProperty));
@@ -68,7 +68,7 @@ export default ModelsTable.extend({
     return pages;
   }),
 
-  lastIndex: computed('pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
+  lastIndex: computed('routing.router.currentURL', 'pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
     let pageMax = get(this, 'pageSize') * get(this, 'currentPageNumber');
     let itemsCount = get(this, 'arrangedContentLength');
     return Math.min(pageMax, itemsCount);
@@ -115,9 +115,17 @@ export default ModelsTable.extend({
       let filterTitle = this.getCustomFilterTitle(column);
 
       if (filter) {
-        query[filterTitle] = filter;
+        query.filter.pushObject({
+          name : filterTitle,
+          op   : 'ilike',
+          val  : `%${filter}%`
+        });
       } else {
-        delete query[filterTitle];
+        query.filter.removeObject({
+          name : filterTitle,
+          op   : 'ilike',
+          val  : `%${filter}%`
+        });
       }
     });
 
@@ -192,6 +200,8 @@ export default ModelsTable.extend({
   },
 
   didReceiveAttrs() {
+    set(this, 'pageSize', 10);
+    set(this, 'currentPageNumber', 1);
     set(this, 'filteredContent', get(this, 'data'));
   },
 
