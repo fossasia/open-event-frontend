@@ -2,13 +2,13 @@
 
   <div class="ui centered grid">
     <div class="column">
-      <div class="ui {{if data.sponsors.enabled 'basic'}} segment">
+      <div class="ui {{if data.event.isSponsorsEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
-              {{input type='checkbox' checked=data.sponsors.enabled}}
+              {{input type='checkbox' checked=data.event.isSponsorsEnabled}}
               <label class="weight-300" style="font-size: large">
-                {{if data.sponsors.enabled (t 'Turn off') (t 'Turn on')}}
+                {{if data.event.isSponsorsEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sponsors'}}
               </label>
             </div>
@@ -18,11 +18,11 @@
     </div>
   </div>
 
-  {{#if data.sponsors.enabled}}
-    {{#each data.sponsors.items as |sponsor index|}}
+  {{#if data.event.isSponsorsEnabled}}
+    {{#each data.event.sponsors as |sponsor index|}}
       <h4>
         {{t 'Sponsor'}} #{{inc index}}
-        {{#if (gt data.sponsors.items.length 1)}}
+        {{#if data.event.sponsors.length}}
           <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}>
             <i class="trash icon"></i>
             {{t 'Remove'}}
@@ -62,7 +62,7 @@
             maxSizeInKb=1000}}
         </div>
       </div>
-      {{#if (not-eq (inc index) data.sponsors.items.length)}}
+      {{#if (not-eq (inc index) data.event.sponsors.length)}}
         <div class="ui section divider"></div>
       {{/if}}
     {{/each}}
@@ -81,7 +81,7 @@
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
-    {{#if data.parentData.event.locationName}}
+    {{#if data.event.locationName}}
       <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
