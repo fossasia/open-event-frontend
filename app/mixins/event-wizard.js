@@ -28,13 +28,6 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     ];
   },
 
-  getSponsors() {
-    return {
-      enabled : true,
-      items   : [this.store.createRecord('sponsor')]
-    };
-  },
-
   getSessionSpeakers() {
     return {
       enabled         : true,
