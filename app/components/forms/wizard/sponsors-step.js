@@ -25,14 +25,15 @@ export default Component.extend(FormMixin, {
 
   actions: {
     addSponsor() {
-      this.get('data.sponsors.items').addObject(this.store.createRecord('sponsor'));
+      this.get('data.event.sponsors').addObject(this.store.createRecord('sponsor'));
     },
     removeSponsor(sponsor) {
+      this.get('data.event.sponsors').removeObject(sponsor);
       sponsor.unloadRecord();
-      this.get('data.sponsors.items').removeObject(sponsor);
     },
     saveDraft() {
       this.onValid(() => {
+        this.set('data.event.state', 'draft');
         this.get('save')('draft');
       });
     },
@@ -43,8 +44,15 @@ export default Component.extend(FormMixin, {
     },
     publish() {
       this.onValid(() => {
+        this.set('data.event.state', 'published');
         this.get('save')('publish');
       });
+    }
+  },
+
+  didInsertElement() {
+    if (this.get('data.event.sponsors') && !this.get('data.event.sponsors').toArray().length) {
+      this.get('data.event.sponsors').addObject(this.store.createRecord('sponsor'));
     }
   }
 });
