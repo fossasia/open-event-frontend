@@ -8,5 +8,12 @@ export default Route.extend({
   },
   model() {
     return this.get('store').query('ticket-fee', {});
+  },
+  actions: {
+    willTransition() {
+      this.get('controller.model').forEach(ticketFee => {
+        ticketFee.rollbackAttributes();
+      });
+    }
   }
 });

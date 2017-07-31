@@ -11,5 +11,12 @@ export default Route.extend({
     return this.get('store').query('image-size', {
       sort: 'id'
     });
+  },
+  actions: {
+    willTransition() {
+      this.get('controller.model').forEach(image => {
+        image.rollbackAttributes();
+      });
+    }
   }
 });
