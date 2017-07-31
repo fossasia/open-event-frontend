@@ -1,8 +1,8 @@
 <div class="ui vertical compact basic buttons">
-  {{#ui-popup content=(t 'Edit event details') class='ui icon button'}}
+  {{#ui-popup content=(t 'Edit event details') click=(action 'editEvent' record.identifier) class='ui icon button'}}
     <i class="edit icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'View event details') class='ui icon button'}}
+  {{#ui-popup tagName='a' click=(action 'moveToDetails' record.identifier) content=(t 'View event details') class='ui icon button'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
   {{#ui-popup content=(t 'Delete event') class='ui icon button'}}
