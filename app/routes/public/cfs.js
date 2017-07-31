@@ -8,8 +8,10 @@ export default Route.extend({
   },
 
   model() {
+    const eventDetails = this.modelFor('public');
     return RSVP.hash({
-      event: this.modelFor('public')
+      event        : eventDetails,
+      speakersCall : eventDetails.get('speakersCall')
     });
   }
 });
