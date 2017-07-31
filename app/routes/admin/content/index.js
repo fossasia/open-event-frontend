@@ -8,5 +8,10 @@ export default Route.extend({
   },
   model() {
     return this.get('store').queryRecord('setting', {});
+  },
+  actions: {
+    willTransition() {
+      this.get('controller.model').rollbackAttributes();
+    }
   }
 });
