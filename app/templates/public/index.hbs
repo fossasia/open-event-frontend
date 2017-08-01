@@ -1,8 +1,10 @@
 <div class="event">
-  <div class="description" id="info">
-    {{sanitize model.event.description}}
-  </div>
-  <div class="ui hidden divider"></div>
+  {{#if model.event.description}}
+    <div class="description" id="info">
+      {{sanitize model.event.description}}
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
   {{#if (or ticketUrl model.tickets)}}
     <div class="tickets" id="tickets">
       <div class="ui segments ticket-list">
@@ -58,8 +60,7 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  <div class="location">
-    <h1 id="getting-here">{{t 'Getting Here'}}</h1>
+  <div class="location" id="getting-here">
     {{public/event-map event=model.event}}
   </div>
   <div class="ui hidden divider"></div>
