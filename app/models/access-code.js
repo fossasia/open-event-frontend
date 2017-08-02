@@ -16,5 +16,5 @@ export default ModelBase.extend({
   tickets       : attr('string'),
   usedFor       : attr('string'),
 
-  event : belongsTo('event')
+  event: belongsTo('event')
 });
