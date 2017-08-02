@@ -1,24 +1,36 @@
 <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
   {{#if (eq session.currentRouteName 'public.index')}}
-    {{#scroll-to href='#info' class='item active'}}
-      {{t 'Info'}}
-    {{/scroll-to}}
-    {{#scroll-to href='#tickets' class='item'}}
-      {{t 'Tickets'}}
-    {{/scroll-to}}
-    {{#scroll-to href='#speakers' class='item'}}
-      {{t 'Speakers'}}
-    {{/scroll-to}}
+    {{#if event.description}}
+      {{#scroll-to href='#info' class='item active'}}
+        {{t 'Info'}}
+      {{/scroll-to}}
+    {{/if}}
+    {{#if event.tickets}}
+      {{#scroll-to href='#tickets' class='item'}}
+        {{t 'Tickets'}}
+      {{/scroll-to}}
+    {{/if}}
+    {{#if event.speakers}}
+      {{#scroll-to href='#speakers' class='item'}}
+        {{t 'Speakers'}}
+      {{/scroll-to}}
+    {{/if}}
   {{else}}
+  {{#if event.description}}
     <a class="item" href="{{href-to 'public.index'}}">
       {{t 'Info'}}
     </a>
+  {{/if}}
+  {{#if event.tickets}}
     <a class="item" href="{{href-to 'public.index'}}#tickets">
       {{t 'Tickets'}}
     </a>
+  {{/if}}
+  {{#if event.speakers}}
     <a class="item" href="{{href-to 'public.index'}}#speakers">
       {{t 'Speakers'}}
     </a>
+  {{/if}}
   {{/if}}
   {{#link-to 'public.sessions' class='item'}}
     {{t 'Sessions'}}
