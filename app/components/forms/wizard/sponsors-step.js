@@ -51,7 +51,7 @@ export default Component.extend(FormMixin, {
   },
 
   didInsertElement() {
-    if (this.get('data.event.sponsors') && !this.get('data.event.sponsors').toArray().length) {
+    if (this.get('data.event.sponsors') && !this.get('data.event.sponsors.length')) {
       this.get('data.event.sponsors').addObject(this.store.createRecord('sponsor'));
     }
   }
