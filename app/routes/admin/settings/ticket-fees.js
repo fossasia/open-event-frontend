@@ -7,7 +7,7 @@ export default Route.extend({
     return this.l10n.t('Ticket Fees');
   },
   model() {
-    return this.get('store').query('ticket-fee', {});
+    return this.get('store').findAll('ticket-fee');
   },
   actions: {
     willTransition() {
