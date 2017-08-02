@@ -12,21 +12,29 @@ export default Route.extend({
     }
   },
   model(params) {
-    this.set('params', params);
-    return [
-      {
-        'accessCode'       : '#386',
-        'accessCodeUrl'    : 'https://github.com',
-        'accessibleTicket' : 'Early bird',
-        'validity'         : '3 months',
-        'isActive'         : true
-      }, {
-        'accessCode'       : '#386',
-        'accessCodeUrl'    : 'https://github.com',
-        'accessibleTicket' : 'Early bird',
-        'validity'         : '3 months',
-        'isActive'         : false
-      }
-    ];
+    let filterOptions = [];
+    if (params.access_status === 'active') {
+      filterOptions = [
+        {
+          name : 'is-active',
+          op   : 'eq',
+          val  : true
+        }
+      ];
+    } else if (params.access_status === 'inactive') {
+      filterOptions = [
+        {
+          name : 'is-active',
+          op   : 'eq',
+          val  : false
+        }
+      ];
+    } else {
+      filterOptions = [];
+    }
+    return this.modelFor('events.view').query('accessCodes', {
+      filter       : filterOptions,
+      'page[size]' : 10
+    });
   }
 });
