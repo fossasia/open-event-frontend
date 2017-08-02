@@ -22,11 +22,11 @@
             <i class="content icon"></i>
           </button>
           {{#if isMenuOpen}}
-            {{public/side-menu class='toggle menu'}}
+            {{public/side-menu class='toggle menu' event=model}}
           {{/if}}
         {{else}}
           {{#ui-sticky context='#public-event-content' observeChanges=true}}
-            {{public/side-menu}}
+            {{public/side-menu event=model}}
           {{/ui-sticky}}
         {{/if}}
       </div>
