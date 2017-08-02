@@ -1,22 +1,11 @@
 import Ember from 'ember';
-import { eventTypes, eventTopics } from 'open-event-frontend/utils/dictionary/event';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
-import { orderBy } from 'lodash';
-
 
 const { Component, computed } = Ember;
 
 export default Component.extend({
 
   classNames: ['ui', 'fluid', 'explore', 'vertical', 'menu'],
-
-  types: computed(function() {
-    return orderBy(eventTypes);
-  }),
-
-  categories: computed(function() {
-    return (eventTopics);
-  }),
 
   dateRanges: computed(function() {
     return getDateRanges.bind(this)();
