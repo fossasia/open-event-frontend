@@ -1,46 +1,46 @@
 <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
   {{#if (eq session.currentRouteName 'public.index')}}
-    {{#if event.description}}
-      {{#scroll-to href='#info' class='item active'}}
-        {{t 'Info'}}
-      {{/scroll-to}}
-    {{/if}}
-    {{#if event.tickets}}
+    {{#scroll-to href='#info' class='item active'}}
+      {{t 'Info'}}
+    {{/scroll-to}}
+    {{#if event.isTicketingEnabled}}
       {{#scroll-to href='#tickets' class='item'}}
         {{t 'Tickets'}}
       {{/scroll-to}}
     {{/if}}
-    {{#if event.speakers}}
+    {{#if event.isSessionsSpeakersEnabled}}
       {{#scroll-to href='#speakers' class='item'}}
         {{t 'Speakers'}}
       {{/scroll-to}}
     {{/if}}
   {{else}}
-  {{#if event.description}}
-    <a class="item" href="{{href-to 'public.index'}}">
-      {{t 'Info'}}
-    </a>
-  {{/if}}
-  {{#if event.tickets}}
+  <a class="item" href="{{href-to 'public.index'}}">
+    {{t 'Info'}}
+  </a>
+  {{#if event.isTicketingEnabled}}
     <a class="item" href="{{href-to 'public.index'}}#tickets">
       {{t 'Tickets'}}
     </a>
   {{/if}}
-  {{#if event.speakers}}
+  {{#if event.isSessionsSpeakersEnabled}}
     <a class="item" href="{{href-to 'public.index'}}#speakers">
       {{t 'Speakers'}}
     </a>
   {{/if}}
   {{/if}}
-  {{#link-to 'public.sessions' class='item'}}
-    {{t 'Sessions'}}
-  {{/link-to}}
+  {{#if event.isSessionsSpeakersEnabled}}
+    {{#link-to 'public.sessions' class='item'}}
+      {{t 'Sessions'}}
+    {{/link-to}}
+  {{/if}}
   {{#link-to 'public.schedule' class='item'}}
     {{t 'Schedule'}}
   {{/link-to}}
-  {{#link-to 'public.cfs' class='item'}}
-    {{t 'Call for Speakers'}}
-  {{/link-to}}
+  {{#if event.isSessionsSpeakersEnabled}}
+    {{#link-to 'public.cfs' class='item'}}
+      {{t 'Call for Speakers'}}
+    {{/link-to}}
+  {{/if}}
   {{#if (eq session.currentRouteName 'public.index')}}
     {{#scroll-to href='#getting-here' class='item'}}
       {{t 'Getting here'}}
