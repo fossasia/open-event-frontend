@@ -19,7 +19,7 @@
   </div>
 
   {{#if data.event.isSponsorsEnabled}}
-    {{#each data.event.sponsors as |sponsor index|}}
+    {{#each sponsors as |sponsor index|}}
       <h4>
         {{t 'Sponsor'}} #{{inc index}}
         {{#if data.event.sponsors.length}}
