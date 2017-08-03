@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import FormMixin from 'open-event-frontend/mixins/form';
 
-const { Component } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -23,13 +23,16 @@ export default Component.extend(FormMixin, {
     };
   },
 
+  sponsors: computed('data.event.sponsors.@each.isDeleted', function() {
+    return this.get('data.event.sponsors').filterBy('isDeleted', false);
+  }),
+
   actions: {
     addSponsor() {
       this.get('data.event.sponsors').addObject(this.store.createRecord('sponsor'));
     },
     removeSponsor(sponsor) {
-      this.get('data.event.sponsors').removeObject(sponsor);
-      sponsor.unloadRecord();
+      sponsor.deleteRecord();
     },
     saveDraft() {
       this.onValid(() => {
