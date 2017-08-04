@@ -5,6 +5,7 @@ import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
+import { groupBy } from 'lodash';
 
 const { computed, inject: { service }, on } = Ember;
 
@@ -82,21 +83,22 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   /**
    * Relationships
    */
-  type           : belongsTo('event-type'),
-  topic          : belongsTo('event-topic'),
-  subTopic       : belongsTo('event-sub-topic'),
-  sessions       : hasMany('session'),
-  sponsors       : hasMany('sponsor'),
-  microlocations : hasMany('microlocation'),
-  tracks         : hasMany('track'),
-  tickets        : hasMany('ticket'),
-  socialLinks    : hasMany('social-link'),
-  speakers       : hasMany('speaker'),
-  speakersCall   : belongsTo('speakers-call'),
-  tax            : belongsTo('tax'),
-  copyright      : belongsTo('event-copyright'),
-  sessionTypes   : hasMany('session-type'),
-  user           : belongsTo('user'),
+  type               : belongsTo('event-type'),
+  topic              : belongsTo('event-topic'),
+  subTopic           : belongsTo('event-sub-topic'),
+  sessions           : hasMany('session'),
+  sponsors           : hasMany('sponsor'),
+  microlocations     : hasMany('microlocation'),
+  tracks             : hasMany('track'),
+  tickets            : hasMany('ticket'),
+  socialLinks        : hasMany('social-link'),
+  emailNotifications : hasMany('email-notification'),
+  speakers           : hasMany('speaker'),
+  speakersCall       : belongsTo('speakers-call'),
+  tax                : belongsTo('tax'),
+  copyright          : belongsTo('event-copyright'),
+  sessionTypes       : hasMany('session-type'),
+  user               : belongsTo('user'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]
@@ -133,6 +135,10 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
 
   url: computed('identifier', function() {
     return `${location.protocol}//${location.hostname}${this.get('routing.router').generate('public', this.get('id'))}`;
+  }),
+
+  sessionsByState: computed('sessions', function() {
+    return groupBy(this.get('sessions').toArray(), 'data.state');
   }),
 
   _ready: on('ready', function() {

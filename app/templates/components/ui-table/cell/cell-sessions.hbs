@@ -1,5 +1,5 @@
 <div class="ui list">
-  {{#each record.sessions as |session|}}
-    <div class="item">{{session.type}}: {{session.number}}</div>
-  {{/each}}
+  {{#each-in record.sessionsByState as |state sessions|}}
+    <div class="item">{{state}}: {{sessions.length}}</div>
+  {{/each-in}}
 </div>

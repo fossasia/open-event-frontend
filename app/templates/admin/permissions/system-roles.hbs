@@ -83,45 +83,39 @@
   </tbody>
 </table>
 <div class="ui hidden divider"></div>
-<div>
+<form class="ui form {{if isLoading 'loading'}}" {{action 'updatePermissions' on='submit'}}>
   <h3 class="ui left aligned header">
     {{t 'User Permissions'}}
   </h3>
-</div>
-<table class="ui celled table">
-  <thead>
-    <tr>
-      <th>{{t 'Permission'}}</th>
-      <th>{{t 'Verified User'}}</th>
-      <th>{{t 'Unverified User'}}</th>
-      <th>{{t 'Anonymous User'}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{t 'Publish event (make event live)'}}</td>
-      <td>{{ui-checkbox label=(t 'Verified User')}}</td>
-      <td>{{ui-checkbox label=(t 'Unverified User')}}</td>
-      <td>
-        {{ui-checkbox label=(t 'Anonymous User')}}
-        <br>
-        {{t 'Account Creation is necessary.'}}
-      </td>
-    </tr>
-    <tr>
-      <td>{{t 'Create Event'}}</td>
-      <td>{{ui-checkbox label=(t 'Verified User')}}</td>
-      <td>{{ui-checkbox label=(t 'Unverified User')}}</td>
-      <td>
-        {{ui-checkbox label=(t 'Anonymous User')}}
-        <br>
-        {{t 'Account Creation is necessary.'}}
-      </td>
-    </tr>
-  </tbody>
-</table>
-<div>
-  <button class="ui teal button">{{t 'Save'}}</button>
-</div>
-
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>{{t 'Permission'}}</th>
+        <th>{{t 'Unverified User'}}</th>
+        <th>{{t 'Anonymous User'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model as |userPermission|}}
+        <tr>
+          <td>
+            {{userPermission.name}}
+            <div class="muted text">
+              {{userPermission.description}}
+            </div>
+          </td>
+          <td>{{ui-checkbox label=(t 'Unverified User') checked=userPermission.unverifiedUser onChange=(action (mut userPermission.unverifiedUser))}}</td>
+          <td>
+            {{ui-checkbox label=(t 'Anonymous User') checked=userPermission.anonymousUser onChange=(action (mut userPermission.anonymousUser))}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <div>
+    <button class="ui teal button" type="submit">
+      {{t 'Save'}}
+    </button>
+  </div>
+</form>
 {{modals/add-system-role-modal  isOpen=isAddSystemRoleModalOpen addSystemRole=(action 'addSystemRole')}}

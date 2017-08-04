@@ -23,7 +23,7 @@ export default Component.extend({
     let proto = this.get('protocol');
     if (add.includes('http://') || add.includes('https://')) {
       let temp = add.split('://');
-      proto = `${temp[0]}://`;
+      proto = temp[0];
       add = temp[1];
     }
     if (add.includes('www.')) {

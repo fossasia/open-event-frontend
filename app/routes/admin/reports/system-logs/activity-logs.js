@@ -8,6 +8,6 @@ export default Route.extend({
   },
 
   model() {
-    return this.get('store').query('activity', {});
+    return this.get('store').findAll('activity');
   }
 });

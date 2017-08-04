@@ -1,3 +1,8 @@
+{{#if isLoading}}
+  <div class="ui active inverted dimmer">
+    <div class="ui small text loader">Loading</div>
+  </div>
+{{/if}}
 <div class="{{classes.outerTableWrapper}}">
   <div class="{{classes.globalFilterDropdownWrapper}}">
     {{#if showPageSize}}

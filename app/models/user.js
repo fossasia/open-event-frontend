@@ -37,6 +37,8 @@ export default ModelBase.extend({
 
   isAnAdmin: computed.or('isSuperAdmin', 'isAdmin'),
 
+  emailNotifications: hasMany('email-notification'),
+
   events: hasMany('event'),
 
   _didUpdate: on('didUpdate', function(user) {
