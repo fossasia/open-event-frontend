@@ -27,21 +27,39 @@ export default Route.extend({
     if (params.event_state === 'live') {
       filterOptions = [
         {
-          name : 'starts-at',
-          op   : 'ge',
-          val  : moment().toISOString()
-        },
-        {
           name : 'state',
           op   : 'eq',
           val  : 'published'
+        },
+        {
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            },
+            {
+              and: [
+                {
+                  name : 'starts-at',
+                  op   : 'le',
+                  val  : moment().toISOString()
+                },
+                {
+                  name : 'ends-at',
+                  op   : 'gt',
+                  val  : moment().toISOString()
+                }
+              ]
+            }
+          ]
         }
       ];
     } else if (params.event_state === 'past') {
       filterOptions = [
         {
-          name : 'starts-at',
-          op   : 'le',
+          name : 'ends-at',
+          op   : 'lt',
           val  : moment().toISOString()
         },
         {
