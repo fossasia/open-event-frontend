@@ -12,24 +12,22 @@ export default Component.extend(FormMixin, {
   },
   holders: [
     {
-      firstName   : '',
-      lastName    : '',
-      email       : '',
-      sameAsBuyer : ''
+      firstName : '',
+      lastName  : '',
+      email     : ''
     },
     {
-      firstName   : '',
-      lastName    : '',
-      email       : '',
-      sameAsBuyer : ''
+      firstName : '',
+      lastName  : '',
+      email     : ''
     },
     {
-      firstName   : '',
-      lastName    : '',
-      email       : '',
-      sameAsBuyer : ''
+      firstName : '',
+      lastName  : '',
+      email     : ''
     }
   ],
+  sameAsBuyer: true,
   getValidationRules() {
     let firstNameValidation = {
       rules: [
@@ -158,12 +156,11 @@ export default Component.extend(FormMixin, {
       this.onValid(() => {
       });
     },
-    fillHolderData(holder, isCheckboxChecked) {
-      if (isCheckboxChecked) {
-        set(holder, 'firstName', this.get('buyer.firstName'));
-        set(holder, 'lastName', this.get('buyer.lastName'));
-        set(holder, 'email', this.get('buyer.email'));
-        set(holder, 'sameAsBuyer', true);
+    removeHolderData(holder) {
+      if (this.get('sameAsBuyer')) {
+        set(holder, 'firstName', null);
+        set(holder, 'lastName', null);
+        set(holder, 'email', null);
       }
     }
   }
