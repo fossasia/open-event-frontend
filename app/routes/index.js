@@ -18,7 +18,8 @@ export default Route.extend({
           op   : 'eq',
           val  : 'published'
         }
-      ]
+      ],
+      sort: 'starts-at'
     });
   }
 });
