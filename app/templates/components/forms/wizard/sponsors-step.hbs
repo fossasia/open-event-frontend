@@ -22,7 +22,7 @@
     {{#each sponsors as |sponsor index|}}
       <h4>
         {{t 'Sponsor'}} #{{inc index}}
-        {{#if data.event.sponsors.length}}
+        {{#if sponsors.length}}
           <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}>
             <i class="trash icon"></i>
             {{t 'Remove'}}
