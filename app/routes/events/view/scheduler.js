@@ -28,10 +28,19 @@ export default Route.extend({
         resourceId : 'd'
       }],
       rooms: [
-        { id: 'a', title: 'Room A', eventColor: 'red' },
-        { id: 'b', title: 'Room B', eventColor: 'blue' },
-        { id: 'c', title: 'Room C' },
-        { id: 'd', title: 'Room D', eventColor: 'green' }
+        { id: 'a', title: 'Auditorium A' },
+        { id: 'b', title: 'Auditorium B', eventColor: 'green' },
+        { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
+        { id       : 'd', title    : 'Auditorium D', children : [
+          { id: 'd1', title: 'Room D1' },
+          { id: 'd2', title: 'Room D2' }
+        ] },
+        { id: 'e', title: 'Auditorium E' },
+        { id: 'f', title: 'Auditorium F', eventColor: 'red' },
+        { id: 'g', title: 'Auditorium G' },
+        { id: 'h', title: 'Auditorium H' },
+        { id: 'y', title: 'Auditorium Y' },
+        { id: 'z', title: 'Auditorium Z' }
       ]
     });
   }
