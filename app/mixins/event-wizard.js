@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
 
-const { Mixin, MutableArray } = Ember;
+const { Mixin, MutableArray, RSVP } = Ember;
 
 export default Mixin.create(MutableArray, CustomFormMixin, {
 
@@ -26,6 +26,21 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         route       : 'events.view.edit.sessions-speakers'
       }
     ];
+  },
+
+  getOrCreate(event, relationship, modelName) {
+    return new RSVP.Promise(resolve => {
+      event
+        .get(relationship)
+        .then(relationshipRecord => {
+          resolve(relationshipRecord);
+        })
+        .catch(() => {
+          let record = this.store.createRecord(modelName);
+          record.set('event', event);
+          resolve(record);
+        });
+    });
   },
 
   getSessionSpeakers() {
