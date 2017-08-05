@@ -12,6 +12,7 @@ export default Route.extend(EventWizardMixin, {
     data.tracks = data.event.get('tracks');
     data.microlocations = data.event.get('microlocations');
     data.sessionTypes = data.event.get('sessionTypes');
+    data.speakersCall = this.getOrCreate(data.event, 'speakersCall', 'speakers-call');
     return RSVP.hash(data);
   }
 });

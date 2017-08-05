@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 
@@ -74,14 +75,17 @@ export default Component.extend(FormMixin, {
       }
     },
     removeItem(item) {
-      item.destroyRecord();
+      item.deleteRecord();
+    },
+    updateDates() {
+      const timezone = this.get('data.event.timezone');
+      var startDate = this.get('data.event.startsAt');
+      var endDate = this.get('data.event.endsAt');
+      this.set('data.event.startsAt', moment.tz(startDate, timezone));
+      this.set('data.event.endsAt', moment.tz(endDate, timezone));
     }
   },
   didInsertElement() {
-    if (this.get('data.event.speakersCall.content')) {
-      this.set('data.event.speakersCall', this.store.createRecord('speakers-call'));
-    }
-
     if (this.get('data.event.sessionTypes') && !this.get('data.event.sessionTypes.length')) {
       this.get('data.event.sessionTypes').addObject(this.store.createRecord('session-type'));
     }
