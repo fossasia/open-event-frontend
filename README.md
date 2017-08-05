@@ -70,8 +70,8 @@ This project has acceptance, integration and unit tests located inside the `test
 * [Semantic UI](https://semantic-ui.com/)
 * [Semantic-UI-Ember](https://semantic-org.github.io/Semantic-UI-Ember/)
 * Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+    * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+    * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
 ## Contributions Best Practices
 
