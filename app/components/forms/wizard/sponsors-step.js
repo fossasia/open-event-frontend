@@ -23,13 +23,13 @@ export default Component.extend(FormMixin, {
     };
   },
 
-  sponsors: computed('data.event.sponsors.@each.isDeleted', function() {
-    return this.get('data.event.sponsors').filterBy('isDeleted', false);
+  sponsors: computed('data.sponsors.@each.isDeleted', function() {
+    return this.get('data.sponsors').filterBy('isDeleted', false);
   }),
 
   actions: {
     addSponsor() {
-      this.get('data.event.sponsors').addObject(this.store.createRecord('sponsor'));
+      this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
     },
     removeSponsor(sponsor) {
       sponsor.deleteRecord();
@@ -37,25 +37,25 @@ export default Component.extend(FormMixin, {
     saveDraft() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
-        this.get('save')('draft');
+        this.sendAction('save');
       });
     },
     moveForward() {
       this.onValid(() => {
-        this.get('move')();
+        this.sendAction('move');
       });
     },
     publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
-        this.get('save')('publish');
+        this.sendAction('save');
       });
     }
   },
 
   didInsertElement() {
-    if (this.get('data.event.sponsors') && !this.get('data.event.sponsors.length')) {
-      this.get('data.event.sponsors').addObject(this.store.createRecord('sponsor'));
+    if (this.get('data.sponsors') && !this.get('data.sponsors.length')) {
+      this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
     }
   }
 });
