@@ -28,6 +28,5 @@ export default Route.extend({
       eventTypes  : this.store.findAll('event-type'),
       eventTopics : this.store.findAll('event-topic', { include: 'event-sub-topics' })
     });
-
   }
 });
