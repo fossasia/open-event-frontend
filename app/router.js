@@ -71,6 +71,7 @@ router.map(function() {
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
       });
+      this.route('scheduler');
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
