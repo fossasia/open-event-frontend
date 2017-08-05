@@ -11,7 +11,8 @@ export default Route.extend({
   model() {
     return RSVP.hash({
       events: this.store.query('event', {
-        filter: [
+        sort   : 'starts-at',
+        filter : [
           {
             name : 'starts-at',
             op   : 'ge',
@@ -27,6 +28,5 @@ export default Route.extend({
       eventTypes  : this.store.findAll('event-type'),
       eventTopics : this.store.findAll('event-topic', { include: 'event-sub-topics' })
     });
-
   }
 });
