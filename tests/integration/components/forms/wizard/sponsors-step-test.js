@@ -6,9 +6,16 @@ import Ember from 'ember';
 const { Object: EmberObject, A } = Ember;
 
 const data = EmberObject.create({
-  isSponsorsEnabled : false,
-  sponsors          : A([])
+  parentData: EmberObject.create({
+    event: EmberObject.create({
+      isSponsorsEnabled: false
+    })
+  }),
+  sponsors: A([EmberObject.create({
+    name: 'TEST'
+  })])
 });
+
 moduleForComponent('forms/wizard/sponsors-step', 'Integration | Component | forms/wizard/sponsors step');
 
 test('it renders', function(assert) {
