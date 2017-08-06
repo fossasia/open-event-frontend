@@ -4,7 +4,7 @@
       <div class="row">
         <div class="eight wide column">
           <h4 class="ui header">{{notification.title}}</h4>
-          <p>{{notification.description}}</p>
+          <p>{{notification.message}}</p>
         </div>
         <div class="eight wide column right aligned">
           <i class="checkmark box icon"></i>
@@ -15,7 +15,7 @@
           <button class="ui blue button">{{t 'View Session'}}</button>
         </div>
         <div class="six wide column right aligned">
-          <p>{{moment-from-now notification.createdAt}}</p>
+          <p>{{moment-from-now notification.receivedAt}}</p>
         </div>
       </div>
     </div>
