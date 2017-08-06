@@ -18,40 +18,23 @@ export default Route.extend(ApplicationRouteMixin, {
     this.get('authManager').initialize();
   },
   model() {
-    return RSVP.hash({
-      notifications: [
-        {
-          title       : 'New Session Proposal for event1 by  user1',
-          description : 'Title of proposal',
-          createdAt   : new Date(),
-          isRead      : false
-        },
-        {
-          title       : 'New Session Proposal for event2 by  user2',
-          description : 'Title of proposal',
-          createdAt   : new Date(),
-          isRead      : true
-        },
-        {
-          title       : 'New Session Proposal for event3 by  user3',
-          description : 'Title of proposal',
-          createdAt   : new Date(),
-          isRead      : false
-        },
-        {
-          title       : 'New Session Proposal for event4 by  user4',
-          description : 'Title of proposal',
-          createdAt   : new Date(),
-          isRead      : true
-        },
-        {
-          title       : 'New Session Proposal for event5 by  user5',
-          description : 'Title of proposal',
-          createdAt   : new Date(),
-          isRead      : false
-        }
-      ]
-    });
+    if (this.get('session.isAuthenticated')) {
+      return new RSVP.Promise((resolve, reject) => {
+        this.store.findRecord('user', this.get('authManager.currentUser.id'), { reload: true })
+          .then(user => {
+            user.query('notifications', {
+              filter: [
+                {
+                  name : 'is-read',
+                  op   : 'eq',
+                  val  : false
+                }
+              ]
+            }).then(resolve).catch(reject);
+          })
+          .catch(reject);
+      });
+    }
   },
   sessionInvalidated() {
     if (!this.get('session.skipRedirectOnInvalidation')) {

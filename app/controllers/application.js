@@ -4,5 +4,5 @@ const { Controller, inject: { service }, computed } = Ember;
 
 export default Controller.extend({
   routing             : service('-routing'),
-  unreadNotifications : computed.filterBy('model.notifications', 'isRead', false)
+  unreadNotifications : computed.filterBy('model', 'isRead', false)
 });

@@ -17,7 +17,7 @@
     max-height: 50vh;
     overflow: hidden;
     overflow-y: auto;
-    padding: 0;
+    padding: 5px;
     width: auto;
 
     .header {
@@ -31,6 +31,7 @@
 
   .segments {
     margin: 5px;
+    width: 200px;
   }
 
   .segment {
@@ -38,4 +39,9 @@
     margin: 0;
     padding: 0 2px;
   }
+
+  .empty-message {
+    width: 200px !important;
+  }
+
 }

@@ -15,7 +15,7 @@
     <div class="right menu nav-bar">
       {{#if session.isAuthenticated}}
         <a class="notification item">
-          {{notification-dropdown notifications=notifications}}
+          {{notification-dropdown unreadNotifications=unreadNotifications}}
         </a>
       {{/if}}
       {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
