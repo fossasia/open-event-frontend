@@ -1,0 +1,24 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="three wide column">
+      {{scheduler/external-event-list}}
+    </div>
+    <div class="thirteen wide column">
+      {{full-calendar events=model.events
+                      weekends=false
+                      aspectRatio=1.8
+                      editable=true
+                      droppable=true
+                      draggable=true
+                      resources=model.rooms
+                      header=header
+                      ondragover="{{action 'allowDrop' event}}"
+                      views=views
+                      viewName='timelineDay'
+                      drop=(action 'drop')
+                      eventReceive=(action 'eventReceive')
+                      ondragover=(action 'eventDrop')
+      }}
+    </div>
+  </div>
+</div>

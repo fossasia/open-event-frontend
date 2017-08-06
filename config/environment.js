@@ -68,6 +68,10 @@ module.exports = function(environment) {
       dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
       debug       : !!process.env.SENTRY_DSN,
       development : !process.env.SENTRY_DSN
+    },
+
+    emberFullCalendar: {
+      includeScheduler: true
     }
   };
 
