@@ -13,7 +13,33 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-
+        microlocation: {
+          identifier : 'microlocation',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter name for microlocation')
+            }
+          ]
+        },
+        sessionType: {
+          identifier : 'session',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter name for session-type')
+            }
+          ]
+        },
+        track: {
+          identifier : 'track',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter name for track')
+            }
+          ]
+        }
       }
     };
   },
