@@ -9,9 +9,27 @@ export default Route.extend({
       include : 'event-topic,event-sub-topic,event-type,speakers-call',
       filter  : [
         {
-          name : 'starts-at',
-          op   : 'ge',
-          val  : moment().toISOString()
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            },
+            {
+              and: [
+                {
+                  name : 'starts-at',
+                  op   : 'le',
+                  val  : moment().toISOString()
+                },
+                {
+                  name : 'ends-at',
+                  op   : 'gt',
+                  val  : moment().toISOString()
+                }
+              ]
+            }
+          ]
         },
         {
           name : 'state',
