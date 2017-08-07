@@ -1,39 +1,5 @@
-<table class="ui very basic compact table">
-  <thead>
-    <tr>
-      <th>
-        {{t 'For'}}
-      </th>
-      <th>
-        {{t 'Time'}}
-      </th>
-      <th>
-        {{t 'Action'}}
-      </th>
-      <th>
-        {{t 'Message'}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model as |notification|}}
-      <tr>
-        <td>
-          {{notification.user.name}}
-        </td>
-        <td>
-          {{moment-from-now  notification.receivedAt}}
-        </td>
-        <td>
-          {{notification.action}}
-        </td>
-        <td>
-          <h5 class="ui header">
-            {{notification.title}}
-          </h5>
-          {{notification.message}}
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{events/events-table columns=columns data=model
+                      useNumericPagination=true
+                      showGlobalFilter=true
+                      showPageSize=true
+}}
