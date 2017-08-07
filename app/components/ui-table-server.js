@@ -89,7 +89,7 @@ export default ModelsTable.extend({
     let query = extend({}, get(data, 'query'));
     let store = get(data, 'store');
     let modelName = get(data, 'type.modelName');
-    query.filter = JSON.parse(query.filter);
+    query.filter = JSON.parse(query.filter || '[]');
 
     query[get(this, 'filterQueryParameters.page')] = currentPageNumber;
     query[get(this, 'filterQueryParameters.pageSize')] = pageSize;
