@@ -9,7 +9,7 @@ test('it exists and works', function(assert) {
   assert.ok(service);
 
   const getDone = assert.async();
-  service.get('https://httpbin.org/get?test=string&foo=bar', false).then(response => {
+  service.load('https://httpbin.org/get?test=string&foo=bar', false).then(response => {
     assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, response);
   }).finally(() => {
     getDone();
