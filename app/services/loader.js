@@ -30,7 +30,7 @@ export default Service.extend({
     });
   },
 
-  get(url, autoPrefix = true) {
+  load(url, autoPrefix = true) {
     return this.makePromise(url, 'GET', null, autoPrefix);
   },
 
