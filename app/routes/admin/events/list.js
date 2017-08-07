@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 const { Route } = Ember;
 
@@ -17,205 +18,75 @@ export default Route.extend({
   },
   model(params) {
     this.set('params', params);
-    return [{
-      name      : 'Testname 1',
-      state     : 'Published',
-      publicUrl : 'Testname1@fossasia.com',
-      startAt   : new Date(),
-      endAt     : new Date(),
-      roles     : [
+    let filterOptions = [];
+    if (params.events_status === 'live') {
+      filterOptions = [
         {
-          name  : 'Organizer',
-          event : {
-            name: 'Event One'
-          }
+          name : 'state',
+          op   : 'eq',
+          val  : 'published'
         },
         {
-          name  : 'Organizer',
-          event : {
-            name: 'Event Two'
-          }
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            },
+            {
+              and: [
+                {
+                  name : 'starts-at',
+                  op   : 'le',
+                  val  : moment().toISOString()
+                },
+                {
+                  name : 'ends-at',
+                  op   : 'gt',
+                  val  : moment().toISOString()
+                }
+              ]
+            }
+          ]
         }
-      ],
-      sessions: {
-        draft     : 1,
-        submitted : 0,
-        accepted  : 1,
-        confirmed : 0,
-        pending   : 1,
-        rejected  : 0
-      },
-      speaker : 3,
-      tickets : [{
-        name  : 'Premium',
-        order : 12,
-        total : 100
-      },
-      {
-        name  : 'VIP',
-        order : 10,
-        total : 10
-      }]
-    },
-    {
-      name      : 'Testname 2',
-      state     : 'Published',
-      publicUrl : 'Testname2@fossasia.com',
-      startAt   : new Date(),
-      endAt     : new Date(),
-      roles     : [
+      ];
+    } else if (params.events_status === 'past') {
+      filterOptions = [
         {
-          name  : 'Organizer',
-          event : {
-            name: 'Event One'
-          }
+          name : 'ends-at',
+          op   : 'lt',
+          val  : moment().toISOString()
         },
         {
-          name  : 'Organizer',
-          event : {
-            name: 'Event Two'
-          }
+          name : 'state',
+          op   : 'eq',
+          val  : 'published'
         }
-      ],
-      sessions: {
-        draft     : 1,
-        submitted : 0,
-        accepted  : 1,
-        confirmed : 0,
-        pending   : 1,
-        rejected  : 0
-      },
-      speaker : 3,
-      tickets : [{
-        name  : 'Premium',
-        order : 12,
-        total : 100
-      },
-      {
-        name  : 'VIP',
-        order : 10,
-        total : 10
-      }]
-    },
-    {
-      name      : 'Testname 3',
-      state     : 'Published',
-      publicUrl : 'Testname3@fossasia.com',
-      startAt   : new Date(),
-      endAt     : new Date(),
-      roles     : [
+      ];
+    } else if (params.events_status === 'draft') {
+      filterOptions = [
         {
-          name  : 'Organizer',
-          event : {
-            name: 'Event One'
-          }
-        },
-        {
-          name  : 'Organizer',
-          event : {
-            name: 'Event Two'
-          }
+          name : 'state',
+          op   : 'eq',
+          val  : 'draft'
         }
-      ],
-      sessions: {
-        draft     : 1,
-        submitted : 0,
-        accepted  : 1,
-        confirmed : 0,
-        pending   : 1,
-        rejected  : 0
-      },
-      speaker : 3,
-      tickets : [{
-        name  : 'Premium',
-        order : 12,
-        total : 100
-      },
-      {
-        name  : 'VIP',
-        order : 10,
-        total : 10
-      }]
-    },
-    {
-      name      : 'Testname 1',
-      state     : 'Published',
-      publicUrl : 'Testname1@fossasia.com',
-      startAt   : new Date(),
-      endAt     : new Date(),
-      roles     : [
+      ];
+    } else if (params.events_status === 'deleted') {
+      filterOptions = [
         {
-          name  : 'Organizer',
-          event : {
-            name: 'Event One'
-          }
-        },
-        {
-          name  : 'Organizer',
-          event : {
-            name: 'Event Two'
-          }
+          name : 'state',
+          op   : 'eq',
+          val  : 'deleted'
         }
-      ],
-      sessions: {
-        draft     : 1,
-        submitted : 0,
-        accepted  : 1,
-        confirmed : 0,
-        pending   : 1,
-        rejected  : 0
-      },
-      speaker : 3,
-      tickets : [{
-        name  : 'Premium',
-        order : 12,
-        total : 100
-      },
-      {
-        name  : 'VIP',
-        order : 10,
-        total : 10
-      }]
-    },
-    {
-      name      : 'Testname 1',
-      state     : 'Published',
-      publicUrl : 'Testname1@fossasia.com',
-      startAt   : new Date(),
-      endAt     : new Date(),
-      roles     : [
-        {
-          name  : 'Organizer',
-          event : {
-            name: 'Event One'
-          }
-        },
-        {
-          name  : 'Organizer',
-          event : {
-            name: 'Event Two'
-          }
-        }
-      ],
-      sessions: {
-        draft     : 1,
-        submitted : 0,
-        accepted  : 1,
-        confirmed : 0,
-        pending   : 1,
-        rejected  : 0
-      },
-      speaker : 3,
-      tickets : [{
-        name  : 'Premium',
-        order : 12,
-        total : 100
-      },
-      {
-        name  : 'VIP',
-        order : 10,
-        total : 10
-      }]
-    }];
+      ];
+    } else {
+      filterOptions = [];
+    }
+
+    return this.store.query('event', {
+      include      : 'tickets,sessions,speakers',
+      filter       : filterOptions,
+      'page[size]' : 10
+    });
   }
 });
