@@ -6,33 +6,11 @@
   <div class="header">{{t 'Event sponsors'}}</div>
 </div>
 <div class="content">
-  <table class="ui very basic compact table">
-    <thead>
-      <tr>
-        <th>{{t 'Logo'}}</th>
-        <th>{{t 'Name'}}</th>
-        <th>{{t 'type'}}</th>
-        <th>{{t 'Level'}}</th>
-        <th>{{t 'Options'}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><img src="http://placehold.it/100x100" alt="Event logo" class="ui image"></td>
-        <td>XYZ</td>
-        <td>ABC</td>
-        <td>1</td>
-        <td>
-          <div class="ui vertical compact basic buttons">
-            {{#ui-popup content=(t 'Edit') class='ui icon button' position='left center'}}
-              <i class="edit icon"></i>
-            {{/ui-popup}}
-            {{#ui-popup content=(t 'Delete') class='ui icon button' position='left center'}}
-              <i class="trash outline icon"></i>
-            {{/ui-popup}}
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  {{events/events-table columns=columns data=data
+    useNumericPagination=true
+    showGlobalFilter=true
+    showPageSize=true
+    moveToDetails='moveToDetails'
+    editEvent='editEvent'
+  }}
 </div>
