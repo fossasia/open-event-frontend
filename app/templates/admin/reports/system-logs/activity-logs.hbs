@@ -1,30 +1,5 @@
-<table class="ui  very basic compact table">
-  <thead>
-    <tr>
-      <th>
-        {{t 'Actor'}}
-      </th>
-      <th>
-        {{t 'Time'}}
-      </th>
-      <th>
-        {{t 'Action'}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model as |activity|}}
-      <tr>
-        <td>
-          {{activity.actor}}
-        </td>
-        <td>
-          {{moment-from-now activity.time}}
-        </td>
-        <td>
-          {{activity.action}}
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{events/events-table columns=columns data=model
+                      useNumericPagination=true
+                      showGlobalFilter=true
+                      showPageSize=true
+}}
