@@ -19,90 +19,46 @@ export default Route.extend({
   },
   model(params) {
     this.set('params', params);
-    return [{
-      event: {
-        name: 'Event1'
-      },
-      title    : 'Title1',
-      speakers : [
+    let filterOptions = [];
+    if (params.sessions_state === 'pending') {
+      filterOptions = [
         {
-          name: 'Speaker1'
-        },
-        {
-          name: 'Speaker2'
+          name : 'state',
+          op   : 'eq',
+          val  : 'pending'
         }
-      ],
-      submittedAt : new Date(),
-      startsAt    : new Date(),
-      endsAt      : new Date()
-    },
-    {
-      event: {
-        name: 'Event1'
-      },
-      title    : 'Title1',
-      speakers : [
+      ];
+    } else if (params.sessions_state === 'accepted') {
+      filterOptions = [
         {
-          name: 'Speaker1'
-        },
-        {
-          name: 'Speaker2'
+          name : 'state',
+          op   : 'eq',
+          val  : 'accepted'
         }
-      ],
-      submittedAt : new Date(),
-      startsAt    : new Date(),
-      endsAt      : new Date()
-    },
-    {
-      event: {
-        name: 'Event1'
-      },
-      title    : 'Title1',
-      speakers : [
+      ];
+    } else if (params.sessions_state === 'rejected') {
+      filterOptions = [
         {
-          name: 'Speaker1'
-        },
-        {
-          name: 'Speaker2'
+          name : 'state',
+          op   : 'eq',
+          val  : 'rejected'
         }
-      ],
-      submittedAt : new Date(),
-      startsAt    : new Date(),
-      endsAt      : new Date()
-    },
-    {
-      event: {
-        name: 'Event1'
-      },
-      title    : 'Title1',
-      speakers : [
+      ];
+    } else if (params.sessions_state === 'deleted') {
+      filterOptions = [
         {
-          name: 'Speaker1'
-        },
-        {
-          name: 'Speaker2'
+          name : 'state',
+          op   : 'eq',
+          val  : 'deleted'
         }
-      ],
-      submittedAt : new Date(),
-      startsAt    : new Date(),
-      endsAt      : new Date()
-    },
-    {
-      event: {
-        name: 'Event1'
-      },
-      title    : 'Title1',
-      speakers : [
-        {
-          name: 'Speaker1'
-        },
-        {
-          name: 'Speaker2'
-        }
-      ],
-      submittedAt : new Date(),
-      startsAt    : new Date(),
-      endsAt      : new Date()
-    }];
+      ];
+    } else {
+      filterOptions = [];
+    }
+    return this.get('store').query('session', {
+      include      : 'event,speakers',
+      filter       : filterOptions,
+      'page[size]' : 10
+    });
   }
 });

@@ -1,0 +1,9 @@
+{{#if record.submittedAt}}
+  <span>
+    {{moment-format record.submittedAt 'MMMM DD, YYYY - HH:mm A'}}
+  </span>
+{{else}}
+  <span>
+    {{t 'No dates available.'}}
+  </span>
+{{/if}}
