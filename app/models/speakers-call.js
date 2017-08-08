@@ -8,10 +8,12 @@ import moment from 'moment';
 
 const { computed } = Ember;
 
+const detectedTimezone = moment.tz.guess();
+
 export default ModelBase.extend({
   announcement : attr('string'),
-  startsAt     : attr('moment'),
-  endsAt       : attr('moment'),
+  startsAt     : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
+  endsAt       : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
   privacy      : attr('string', { defaultValue: 'public' }),
   hash         : attr('string', { defaultValue: v4() }),
 
@@ -20,7 +22,7 @@ export default ModelBase.extend({
   startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
   startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
-  endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
+  endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
   isOpen: computed('startsAt', 'endsAt', function() {
     return moment().isAfter(this.get('startsAt')) && moment().isBefore(this.get('endsAt'));
