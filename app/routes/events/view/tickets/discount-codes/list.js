@@ -13,23 +13,29 @@ export default Route.extend({
   },
   model(params) {
     this.set('params', params);
-    return [
-      {
-        'id'       : 1,
-        'code'     : 'ABC',
-        'url'      : 'https://eventyay.com/e/9ba7ea20/?code=ABC',
-        'value'    : 1,
-        'validity' : 'N/A',
-        'status'   : 'Active'
-      },
-      {
-        'id'       : 2,
-        'code'     : 'FIRST50',
-        'url'      : 'https://eventyay.com/e/9ba7ea20/?code=FIRST50',
-        'value'    : 3,
-        'validity' : 'N/A',
-        'status'   : 'Active'
-      }
-    ];
+    let filterOptions = [];
+    if (params.discount_status === 'active') {
+      filterOptions = [
+        {
+          name : 'is-active',
+          op   : 'eq',
+          val  : true
+        }
+      ];
+    } else if (params.discount_status === 'inactive') {
+      filterOptions = [
+        {
+          name : 'is-active',
+          op   : 'eq',
+          val  : false
+        }
+      ];
+    } else {
+      filterOptions = [];
+    }
+    return this.modelFor('events.view').query('discountCodes', {
+      filter       : filterOptions,
+      'page[size]' : 10
+    });
   }
 });
