@@ -21,6 +21,7 @@ moduleForModel('event', 'Unit | Serializer | event', {
     'model:event-copyright',
     'model:session-type',
     'model:user',
+    'model:event-invoice',
     'model:discount-code',
     'transform:moment'
   ]

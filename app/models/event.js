@@ -94,6 +94,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   socialLinks        : hasMany('social-link'),
   emailNotifications : hasMany('email-notification'),
   speakers           : hasMany('speaker'),
+  invoice            : hasMany('event-invoice'),
   speakersCall       : belongsTo('speakers-call'),
   tax                : belongsTo('tax'),
   copyright          : belongsTo('event-copyright'),
