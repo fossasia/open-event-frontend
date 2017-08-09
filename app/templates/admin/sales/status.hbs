@@ -8,42 +8,11 @@
   </div>
   <div class="row">
     <div class="column">
-      <table class="ui stackable structured celled compact table">
-        <thead>
-          <tr>
-            <th>{{t 'Invoice#'}}</th>
-            <th>{{t 'Event'}}</th>
-            <th>{{t 'Dated'}}</th>
-            <th class="right aligned">{{t 'Amount'}}</th>
-            <th>{{t 'Sent To'}}</th>
-            <th>{{t 'Status'}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each model as |invoiceDetail|}}
-            <tr>
-              <td>
-                {{invoiceDetail.invoice}}
-              </td>
-              <td>
-                {{invoiceDetail.event}}
-              </td>
-              <td>
-                {{moment-format invoiceDetail.date 'ddd, MMM DD \at HH:mm A'}}
-              </td>
-              <td class="right aligned">
-                US$ {{number-format invoiceDetail.amount}}
-              </td>
-              <td>
-                {{invoiceDetail.sentTo}}
-              </td>
-              <td>
-                {{invoiceDetail.status}}
-              </td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
+      {{events/events-table columns=columns data=model
+                            useNumericPagination=true
+                            showGlobalFilter=true
+                            showPageSize=true
+      }}
     </div>
   </div>
 </div>
