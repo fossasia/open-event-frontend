@@ -10,6 +10,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:session',
     'model:sponsor',
     'model:microlocation',
+    'model:event-invoice',
     'model:track',
     'model:ticket',
     'model:social-link',
