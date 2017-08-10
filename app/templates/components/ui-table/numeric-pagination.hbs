@@ -3,7 +3,7 @@
     {{#if page.isLink}}
       <a href="#" class="item text muted {{if page.isActive 'active'}}" {{action 'gotoCustomPage' page.label}}>{{page.label}}</a>
     {{else}}
-      <a href="#" class="item text muted disabled" {{action 'gotoCustomPage' page.label}}>{{page.label}}</a>
+      <a href="#" class="item text muted disabled">{{page.label}}</a>
     {{/if}}
   {{/each}}
 </div>
