@@ -1,39 +1,5 @@
-<table class="ui very basic compact table">
-  <thead>
-    <tr>
-      <th>
-        {{t 'To'}}
-      </th>
-      <th>
-        {{t 'Time'}}
-      </th>
-      <th>
-        {{t 'Action'}}
-      </th>
-      <th>
-        {{t 'Message'}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model as |mail|}}
-      <tr>
-        <td>
-          {{mail.recipient}}
-        </td>
-        <td>
-          {{moment-from-now mail.time}}
-        </td>
-        <td>
-          {{mail.action}}
-        </td>
-        <td>
-          <h5 class="ui header">
-            {{mail.subject}}
-          </h5>
-          {{mail.message}}
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{events/events-table columns=columns data=model
+                      useNumericPagination=true
+                      showGlobalFilter=true
+                      showPageSize=true
+}}
