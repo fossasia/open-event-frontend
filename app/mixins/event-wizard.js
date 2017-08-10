@@ -28,6 +28,11 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     ];
   },
 
+  setRelationship(record, event) {
+    record.set('event', event);
+    return record;
+  },
+
   getOrCreate(event, relationship, modelName) {
     return new RSVP.Promise(resolve => {
       event
