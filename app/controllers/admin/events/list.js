@@ -44,7 +44,7 @@ export default Controller.extend({
     },
     {
       template       : 'components/ui-table/cell/cell-buttons',
-      title          : '',
+      title          : 'Action',
       disableSorting : true
     }
   ],
