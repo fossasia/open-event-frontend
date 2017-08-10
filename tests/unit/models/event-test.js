@@ -17,6 +17,7 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:event-copyright',
     'model:session-type',
     'model:user',
+    'model:event-invoice',
     'model:discount-code',
     'model:email-notification'
   ]
