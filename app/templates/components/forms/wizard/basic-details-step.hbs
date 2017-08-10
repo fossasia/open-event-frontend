@@ -126,7 +126,7 @@
       addItem=(action 'addItem' 'socialLinks' 'social-link')
     }}
 
-    {{#each data.event.socialLinks as |socialLink|}}
+    {{#each socialLinks as |socialLink|}}
       {{widgets/forms/link-input
         hasLinkName=true
         linkName=socialLink.name
@@ -163,7 +163,7 @@
             </div>
           </div>
         </div>
-        {{#each data.event.tickets as |ticket index|}}
+        {{#each tickets as |ticket index|}}
           {{widgets/forms/ticket-input ticket=ticket
                                        timezone=data.event.timezone
                                        canMoveUp=(not-eq index 0)
@@ -492,7 +492,7 @@
   {{#if hasCodeOfConduct}}
     <div class="field">
       <label for="code_of_conduct">{{t 'Code of Conduct'}}</label>
-      {{widgets/forms/rich-text-editor textareaId='code_of_conduct'}}
+      {{widgets/forms/rich-text-editor textareaId='code_of_conduct' value=data.event.codeOfConduct}}
     </div>
   {{/if}}
   <div class="ui section divider"></div>
