@@ -41,7 +41,8 @@ export default ModelBase.extend({
 
   notifications: hasMany('notification'),
 
-  events: hasMany('event'),
+  events  : hasMany('event'),
+  invoice : hasMany('event-invoice'),
 
   _didUpdate: on('didUpdate', function(user) {
     if (toString(user.id) === toString(this.get('authManager.currentUser.id'))) {
