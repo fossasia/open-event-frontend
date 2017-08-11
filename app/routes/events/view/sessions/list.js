@@ -7,35 +7,58 @@ export default Route.extend({
     switch (this.get('params.session_status')) {
       case 'pending':
         return this.l10n.t('Pending');
-      case 'accepted':
-        return this.l10n.t('Accepted');
       case 'confirmed':
         return this.l10n.t('Confirmed');
+      case 'accepted':
+        return this.l10n.t('Accepted');
       case 'rejected':
         return this.l10n.t('Rejected');
+      default:
+        return this.l10n.t('Session');
     }
   },
   model(params) {
     this.set('params', params);
-    return [{
-      title         : 'Test Session 1',
-      speakers      : [{ name: 'speaker 1', id: 1, organization: 'fossasia' }, { name: 'speaker 2', id: 1, organization: 'fossasia' }],
-      track         : 'sample track',
-      shortAbstract : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      submittedAt   : new Date(),
-      modifiedAt    : new Date(),
-      emailSent     : 'No',
-      state         : 'confirmed'
-    },
-    {
-      title         : 'Test Session 2',
-      speakers      : [{ name: 'speaker 3', id: 1, organization: 'fossasia' }, { name: 'speaker 4', id: 1, organization: 'fossasia' }],
-      track         : 'sample track',
-      shortAbstract : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      submittedAt   : new Date(),
-      modifiedAt    : new Date(),
-      emailSent     : 'Yes',
-      state         : 'confirmed'
-    }];
+    let filterOptions = [];
+    if (params.session_status === 'pending') {
+      filterOptions = [
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'pending'
+        }
+      ];
+    } else if (params.session_status === 'accepted') {
+      filterOptions = [
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'accepted'
+        }
+      ];
+    } else if (params.session_status === 'rejected') {
+      filterOptions = [
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'rejected'
+        }
+      ];
+    } else if (params.session_status === 'confirmed') {
+      filterOptions = [
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'confirmed'
+        }
+      ];
+    } else {
+      filterOptions = [];
+    }
+    return this.modelFor('events.view').query('sessions', {
+      include      : 'event,speakers',
+      filter       : filterOptions,
+      'page[size]' : 10
+    });
   }
 });
