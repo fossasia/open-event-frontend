@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('admin-event-statistic', 'Unit | Model | admin event statistic', {
+moduleForModel('admin-statistics-event', 'Unit | Model | admin event statistics event', {
   // Specify the other units that are required for this test.
   needs: []
 });
