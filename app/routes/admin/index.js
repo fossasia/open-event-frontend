@@ -18,6 +18,20 @@ export default Route.extend({
           op   : 'eq',
           val  : 1
         }
+      }),
+      mails: this.get('store').queryRecord('admin-statistics-mail', {
+        filter: {
+          name : 'id',
+          op   : 'eq',
+          val  : 1
+        }
+      }),
+      sessions: this.get('store').queryRecord('admin-statistics-session', {
+        filter: {
+          name : 'id',
+          op   : 'eq',
+          val  : 1
+        }
       })
     });
   }
