@@ -2,7 +2,7 @@
 
   <div class="ui centered grid">
     <div class="column">
-      <div class="ui {{if sessionsSpeakers.enabled 'basic'}} segment">
+      <div class="ui {{if data.event.isSessionsSpeakersEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class="field">
             <div class="ui slider checkbox">
@@ -236,11 +236,11 @@
             </tr>
           </thead>
           <tbody>
-            {{#each sessionsSpeakers.customForm.speaker as |field|}}
+            {{#each customForm.speaker as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
                 <td class="{{if device.isMobile 'center' 'right'}} aligned">
                   <label class="{{if field.isFixed 'required'}}">
-                    {{field.name}}
+                    {{field.fieldIdentifier}}
                   </label>
                 </td>
                 <td class="center aligned">
@@ -290,11 +290,11 @@
             </tr>
           </thead>
           <tbody>
-            {{#each sessionsSpeakers.customForm.session as |field|}}
+            {{#each customForm.session as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
                 <td class="{{if device.isMobile 'center' 'right'}} aligned">
                   <label class="{{if field.isFixed 'required'}}">
-                    {{field.name}}
+                    {{field.fieldIdentifier}}
                   </label>
                 </td>
                 <td class="center aligned">

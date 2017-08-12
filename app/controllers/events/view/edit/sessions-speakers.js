@@ -12,22 +12,24 @@ export default Controller.extend({
             promises.push(this.get('model.event.tracks').toArray().map(track => track.save()));
             promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.save()));
             promises.push(this.get('model.event.microlocations').toArray().map(location => location.save()));
+            promises.push(this.get('model.event.customForms').toArray().map(form => form.save()));
             promises.push(this.get('model.speakersCall').save());
           } else {
             promises.push(this.get('model.event.tracks').toArray().map(track => track.destroyRecord()));
             promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.destroyRecord()));
             promises.push(this.get('model.event.microlocations').toArray().map(location => location.destroyRecord()));
+            promises.push(this.get('model.customForms').toArray().map(form => form.destroyRecord()));
             promises.push(this.get('model.speakersCall').destroyRecord());
           }
           RSVP.Promise.all(promises)
             .then(() => {
               this.transitionToRoute('index');
             }, function() {
-              this.get('notify').error(this.l10n.t('Sponsors data did not save. Please try again'));
+              this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
             });
         })
         .catch(() => {
-          this.get('notify').error(this.l10n.t('Sponsors data did not save. Please try again'));
+          this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
         });
     },
     move() {
@@ -38,22 +40,24 @@ export default Controller.extend({
             promises.push(this.get('model.event.tracks').toArray().map(track => track.save()));
             promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.save()));
             promises.push(this.get('model.event.microlocations').toArray().map(location => location.save()));
+            promises.push(this.get('model.event.customForms').toArray().map(form => form.save()));
             promises.push(this.get('model.speakersCall').save());
           } else {
             promises.push(this.get('model.event.tracks').toArray().map(track => track.destroyRecord()));
             promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.destroyRecord()));
             promises.push(this.get('model.event.microlocations').toArray().map(location => location.destroyRecord()));
+            promises.push(this.get('model.customForms').toArray().map(form => form.destroyRecord()));
             promises.push(this.get('model.speakersCall').destroyRecord());
           }
           RSVP.Promise.all(promises)
             .then(() => {
               this.transitionToRoute('index');
             }, function() {
-              this.get('notify').error(this.l10n.t('Sponsors data did not save. Please try again'));
+              this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
             });
         })
         .catch(() => {
-          this.get('notify').error(this.l10n.t('Sponsors data did not save. Please try again'));
+          this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
         });
     }
   }

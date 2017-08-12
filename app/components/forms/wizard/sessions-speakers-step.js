@@ -2,10 +2,12 @@ import Ember from 'ember';
 import moment from 'moment';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
+import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
+import { groupBy } from 'lodash';
 
 const { Component, computed } = Ember;
 
-export default Component.extend(FormMixin, {
+export default Component.extend(EventWizardMixin, FormMixin, {
 
   getValidationRules() {
     return {
@@ -54,6 +56,10 @@ export default Component.extend(FormMixin, {
 
   sessionTypes: computed('data.sessionTypes.@each.isDeleted', function() {
     return this.get('data.sessionTypes').filterBy('isDeleted', false);
+  }),
+
+  customForm: computed('data.customForms.[]', function() {
+    return groupBy(this.get('data.customForms').toArray(), customForm => customForm.get('form'));
   }),
 
   microlocations: computed('data.microlocations.@each.isDeleted', function() {
@@ -112,6 +118,10 @@ export default Component.extend(FormMixin, {
     }
   },
   didInsertElement() {
+    if (this.get('data.event.customForms') && !this.get('data.event.customForms.length')) {
+      this.set('data.event.customForms', this.getCustomForm(this.get('data.event')));
+    }
+
     if (this.get('data.event.sessionTypes') && !this.get('data.event.sessionTypes.length')) {
       this.get('data.event.sessionTypes').addObject(this.store.createRecord('session-type'));
     }
