@@ -18,6 +18,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:speaker',
     'model:speakers-call',
     'model:email-notification',
+    'model:admin-statistics-mail',
     'model:tax',
     'model:event-copyright',
     'model:session-type',
