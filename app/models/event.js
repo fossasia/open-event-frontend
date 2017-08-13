@@ -91,6 +91,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   microlocations     : hasMany('microlocation'),
   tracks             : hasMany('track'),
   tickets            : hasMany('ticket'),
+  orders             : hasMany('order'),
   socialLinks        : hasMany('social-link'),
   emailNotifications : hasMany('email-notification'),
   speakers           : hasMany('speaker'),

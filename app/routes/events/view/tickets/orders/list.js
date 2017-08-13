@@ -20,30 +20,20 @@ export default Route.extend({
 
   model(params) {
     this.set('params', params);
-    return [
-      {
-        'status'        : 'Completed',
-        'completedAt'   : '2016-04-06',
-        'id'            : 1,
-        'quantity'      : 2,
-        'invoiceNumber' : '#O1496523209-306',
-        'amount'        : 0,
-        'paidVia'       : 'Free',
-        'buyer'         : 'sample@gmail.com',
-        'buyerName'     : 'Sample Buyer'
-      },
-
-      {
-        'status'        : 'Completed',
-        'completedAt'   : '2017-06-02T11:22:33+05:30',
-        'id'            : 2,
-        'quantity'      : 1,
-        'invoiceNumber' : '#O1345883292-302',
-        'amount'        : 50,
-        'paidVia'       : 'Paypal',
-        'buyer'         : 'sample@gmail.com',
-        'buyerName'     : 'Sample Buyer2'
-      }
-    ];
+    let filterOptions = [];
+    if (params.orders_status !== 'all') {
+      filterOptions = [
+        {
+          name : 'status',
+          op   : 'eq',
+          val  : params.orders_status
+        }
+      ];
+    }
+    return this.modelFor('events.view').query('orders', {
+      include      : 'tickets,user',
+      filter       : filterOptions,
+      'page[size]' : 10
+    });
   }
 });

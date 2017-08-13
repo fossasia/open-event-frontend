@@ -21,7 +21,8 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:event-invoice',
     'model:discount-code',
     'model:access-code',
-    'model:email-notification'
+    'model:email-notification',
+    'model:order'
   ]
 });
 

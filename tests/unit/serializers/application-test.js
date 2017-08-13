@@ -27,6 +27,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:user',
     'model:discount-code',
     'model:access-code',
+    'model:order',
     'transform:moment'
   ]
 });

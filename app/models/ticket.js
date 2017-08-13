@@ -21,7 +21,8 @@ export default ModelBase.extend({
 
   hasOrders: false,
 
-  event: belongsTo('event'),
+  event : belongsTo('event'),
+  order : belongsTo('order'),
 
   salesStartAtDate : computedDateTimeSplit.bind(this)('salesStartsAt', 'date'),
   salesStartAtTime : computedDateTimeSplit.bind(this)('salesStartsAt', 'time'),
