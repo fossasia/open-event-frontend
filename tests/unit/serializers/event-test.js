@@ -25,6 +25,7 @@ moduleForModel('event', 'Unit | Serializer | event', {
     'model:event-invoice',
     'model:discount-code',
     'model:access-code',
+    'model:order',
     'transform:moment'
   ]
 });

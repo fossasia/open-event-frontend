@@ -37,13 +37,15 @@ export default ModelBase.extend({
 
   isAnAdmin: computed.or('isSuperAdmin', 'isAdmin'),
 
-  emailNotifications: hasMany('email-notification'),
-
-  notifications: hasMany('notification'),
-
-  events   : hasMany('event'),
-  sessions : hasMany('session'),
-  invoice  : hasMany('event-invoice'),
+  /**
+   * Relationships
+   */
+  emailNotifications : hasMany('email-notification'),
+  notifications      : hasMany('notification'),
+  orders             : hasMany('order'),
+  events             : hasMany('event'),
+  sessions           : hasMany('session'),
+  invoice            : hasMany('event-invoice'),
 
   _didUpdate: on('didUpdate', function(user) {
     if (toString(user.id) === toString(this.get('authManager.currentUser.id'))) {
