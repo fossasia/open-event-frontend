@@ -5,6 +5,7 @@ moduleForModel('user', 'Unit | Serializer | user', {
     'serializer:user',
     'serializer:event',
     'model:event',
+    'model:session',
     'model:email-notification',
     'model:event-invoice',
     'model:notification',
