@@ -13,7 +13,7 @@
         <div class="right floated author">
           <div class="ui {{if (eq session.state 'accepted') 'green' (if (eq session.state 'rejected') 'red' 'yellow')}}
           large label">
-            {{session.status}}
+            {{session.state}}
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
     </a>
     <div class="extra content">
       <div class="weight-600">
-        {{session.event}}
+        {{session.event.name}}
       </div>
     </div>
   </div>

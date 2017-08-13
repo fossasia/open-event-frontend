@@ -30,6 +30,7 @@ export default ModelBase.extend({
   track         : belongsTo('track'),
   speakers      : hasMany('speaker'),
   event         : belongsTo('event'), // temporary
+  user          : belongsTo('user'),
 
   startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
   startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
