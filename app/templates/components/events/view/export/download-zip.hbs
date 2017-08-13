@@ -8,25 +8,27 @@
 </h3>
 <div class="ui hidden divider"></div>
 <div class="ui container"></div>
-<div class="ui form">
+<div class="ui form {{if isLoading 'loading'}}">
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Image')}}
+    {{ui-checkbox class='toggle' label=(t 'Image') checked=data.image onChange=(action (mut data.image))}}
   </div>
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Video')}}
+    {{ui-checkbox class='toggle' label=(t 'Video') checked=data.video onChange=(action (mut data.video))}}
   </div>
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Audio')}}
+    {{ui-checkbox class='toggle' label=(t 'Audio') checked=data.audio onChange=(action (mut data.audio))}}
   </div>
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Document')}}
+    {{ui-checkbox class='toggle' label=(t 'Document') checked=data.document onChange=(action (mut data.document))}}
   </div>
   <div class="ui basic segment less left padding">
-    <button class="ui blue button">
+    <button class="ui blue button" {{action startGeneration}}>
       {{t 'Start'}}
     </button>
-    <button class="ui button">
+    <a href="{{eventDownloadUrl}}" class="ui button {{if isDownloadDisabled 'disabled' ''}}">
       {{t 'Download'}}
-    </button>
+    </a>
+    <div class="hidden divider"></div>
+    <h4 class="ui header">Status: {{eventExportStatus}}</h4>
   </div>
 </div>
