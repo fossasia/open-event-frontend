@@ -19,6 +19,8 @@
 <div class="ui divider"></div>
 {{sanitize speakersCall.announcement}}
 <div class="ui hidden divider"></div>
-<button type="submit" class="ui teal submit button">
-  {{t 'Submit Proposal'}}
-</button>
+{{#if speakersCall.isOpen}}
+  <button type="submit" class="ui teal submit button">
+    {{t 'Submit Proposal'}}
+  </button>
+{{/if}}
