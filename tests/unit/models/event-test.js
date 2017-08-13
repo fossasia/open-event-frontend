@@ -14,6 +14,7 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:speaker',
     'model:speakers-call',
     'model:tax',
+    'model:custom-form',
     'model:event-copyright',
     'model:session-type',
     'model:user',

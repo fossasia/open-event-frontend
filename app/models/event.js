@@ -100,6 +100,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   copyright          : belongsTo('event-copyright'),
   sessionTypes       : hasMany('session-type'),
   user               : belongsTo('user'),
+  customForms        : hasMany('custom-form'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]
