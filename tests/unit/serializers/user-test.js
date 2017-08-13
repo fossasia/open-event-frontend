@@ -8,6 +8,8 @@ moduleForModel('user', 'Unit | Serializer | user', {
     'model:email-notification',
     'model:event-invoice',
     'model:notification',
+    'model:user',
+    'model:order',
     'transform:moment',
     'service:auth-manager'
   ]
