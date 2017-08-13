@@ -11,7 +11,7 @@ export default Component.extend({
   standardParserRules: {
     tags: {
       'p'      : 1,
-      'b'      : { 'rename_tag': 'string' },
+      'b'      : { 'rename_tag': 'strong' },
       'strong' : 1,
       'i'      : { 'rename_tag': 'em' },
       'em'     : 1,

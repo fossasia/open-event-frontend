@@ -115,6 +115,8 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    */
   discountCodes: hasMany('discount-code'),
 
+  accessCodes: hasMany('access-code'),
+
   /**
    * Computed properties
    */

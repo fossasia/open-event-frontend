@@ -1,46 +1,7 @@
 <div class="sixteen wide column">
-  <table class="ui very basic stackable compact table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>{{t 'Access Code'}}</th>
-        <th>{{t 'Access Code URL'}}</th>
-        <th>{{t 'Accessible Ticket'}}</th>
-        <th>{{t 'Validity'}}</th>
-        <th>{{t 'Status'}}</th>
-        <th>{{t 'Action'}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model as |entry index|}}
-        <tr>
-          <td>{{inc index}}</td>
-          <td>{{entry.accessCode}}</td>
-          <td>
-            <a href='{{entry.accessCodeUrl}}' target='_blank' rel='noopener'>{{entry.accessCodeUrl}}</a>
-          </td>
-          <td>{{entry.accessibleTicket}}</td>
-          <td>{{entry.validity}}</td>
-          {{#if entry.isActive}}
-            <td><div class="ui green label center aligned">{{t 'Active'}}</div></td>
-          {{else}}
-            <td><div class="ui red label center aligned">{{t 'Inactive'}}</div></td>
-          {{/if}}
-          <td>
-            <div class="ui vertical compact basic buttons">
-              {{#ui-popup content=(t 'Edit') class='ui icon button' position='left center'}}
-                <i class="edit icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Deactivate') class='ui icon button' position='left center'}}
-                <i class="remove outline icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Delete') class='ui icon button' position='left center'}}
-                <i class="trash icon"></i>
-              {{/ui-popup}}
-            </div>
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  {{events/events-table columns=columns data=model
+    useNumericPagination=true
+    showGlobalFilter=true
+    showPageSize=true
+  }}
 </div>
