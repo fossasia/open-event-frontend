@@ -90,7 +90,8 @@ router.map(function() {
     this.route('past');
   });
   this.route('my-sessions', function() {
-    this.route('past');
+    this.route('list', { path: '/:session_status' });
+
   });
   this.route('notifications', function() {
     this.route('all');
