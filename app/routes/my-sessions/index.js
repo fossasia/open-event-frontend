@@ -7,6 +7,6 @@ export default Route.extend({
   },
   beforeModel() {
     this._super(...arguments);
-    this.transitionTo('my-sessions.list', 'all');
+    this.transitionTo('my-sessions.list', 'upcoming');
   }
 });
