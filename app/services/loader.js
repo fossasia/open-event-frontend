@@ -13,7 +13,8 @@ export default Service.extend({
     if (config.isExternal) {
       options.url = url;
     } else {
-      options.url = config.withoutPrefix ? `${adapter.host}/${url}` : `${adapter.urlPrefix()}${url}`;
+      url = `${url[0] !== '/' ? '/' :  ''}${url}`;
+      options.url = config.withoutPrefix ? `${adapter.host}${url}` : `${adapter.urlPrefix()}${url}`;
     }
 
     if (data) {
