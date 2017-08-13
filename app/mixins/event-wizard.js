@@ -41,19 +41,5 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
           resolve(record);
         });
     });
-  },
-
-  getSessionSpeakers() {
-    return {
-      enabled         : true,
-      tracks          : [this.store.createRecord('track', { name: 'Main Track' })],
-      sessionTypes    : [this.store.createRecord('session-type', { name: 'Talk' })],
-      microlocations  : [this.store.createRecord('microlocation', { name: 'Room 1' })],
-      callForSpeakers : this.store.createRecord('speakers-call'),
-      customForm      : {
-        session : this.getSessionFormFields(),
-        speaker : this.getSpeakerFormFields()
-      }
-    };
   }
 });
