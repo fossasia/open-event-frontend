@@ -164,7 +164,7 @@
     <div class="field">
       <label>{{t 'Private Link'}}</label>
       <div class="ui action input fluid">
-        <input type="text" value="{{concat event.url '/cfs/' data.speakersCall.hash}}" placeholder="{{concat event '/cfs/' data.speakersCall.hash}}" readonly>
+        <input type="text" value="{{concat data.event.url '/cfs/' data.speakersCall.hash}}" placeholder="{{concat data.event '/cfs/' data.speakersCall.hash}}" readonly>
         {{#copy-button
           clipboardText=(concat event.url '/cfs/' data.speakersCall.hash)
           class='ui black right labeled icon copy button'}}
