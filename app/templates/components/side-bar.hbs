@@ -16,7 +16,9 @@
     <div class="divider"></div>
     <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
     <a href="{{href-to 'settings.contact-info'}}" class="item">{{t 'Settings'}}</a>
-    <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+    {{#if authManager.currentUser.isAnAdmin}}
+      <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+    {{/if}}
     <div class="divider"></div>
     <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
   {{else}}
