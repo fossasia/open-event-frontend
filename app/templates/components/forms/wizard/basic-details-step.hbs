@@ -178,22 +178,20 @@
         </h3>
       {{/if}}
     </div>
-    <div class="ui two bottom attached buttons">
-      <button type="button" class="ui button" {{action 'addTicket' 'free'}}>
-        <i class="large icons basic-details">
-          <i class="smile icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Free Ticket'}}
-      </button>
-      <button type="button" class="ui button" {{action 'addTicket' 'paid'}}>
-        <i class="large icons basic-details">
-          <i class="dollar icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Paid Ticket'}}
-      </button>
-    </div>
+    <button type="button" class="ui blue small button" {{action 'addTicket' 'free'}}>
+      <i class="large icons basic-details">
+        <i class="smile icon"></i>
+        <i class="inverted corner add icon"></i>
+      </i>
+      {{t 'Free Ticket'}}
+    </button>
+    <button type="button" class="ui blue small button" {{action 'addTicket' 'paid'}}>
+      <i class="large icons basic-details">
+        <i class="dollar icon"></i>
+        <i class="inverted corner add icon"></i>
+      </i>
+      {{t 'Paid Ticket'}}
+    </button>
   {{else}}
     <div class="field">
       <label class="required" for="ticket_url">{{t 'Ticket URL'}}</label>
