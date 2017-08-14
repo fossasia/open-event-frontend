@@ -1,6 +1,6 @@
 {{#if hasLinkName}}
   <div class="three wide field">
-    {{input type='text' value=linkName}}
+    {{input type='text' value=linkName disabled=fixedName}}
   </div>
   <div class="six wide field">
     <div class="ui labeled {{if isChild 'action'}} input">
@@ -12,7 +12,7 @@
           <div class="item" data-value="https">https://</div>
         </div>
       {{/ui-dropdown}}
-      {{input type='text' value=address name=name id=inputId disabled=fixedName}}
+      {{input type='text' value=address name=name id=inputId}}
       {{#if isChild}}
         <div class="ui icon buttons">
           {{#if canRemoveItem}}
