@@ -21,6 +21,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:admin-statistics-mail',
     'model:admin-statistics-session',
     'model:tax',
+    'model:custom-form',
     'model:event-copyright',
     'model:session-type',
     'model:user',
