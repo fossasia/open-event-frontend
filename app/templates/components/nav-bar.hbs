@@ -13,12 +13,12 @@
       </div>
     {{/unless}}
     <div class="right menu nav-bar">
+      {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}
         <a class="notification item">
           {{notification-dropdown unreadNotifications=unreadNotifications}}
         </a>
       {{/if}}
-      {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}
         {{#ui-dropdown class='item' action='hide'}}
           <img class="ui avatar round image nav-bar-image"
