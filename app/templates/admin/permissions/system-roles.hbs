@@ -96,7 +96,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each model as |userPermission|}}
+      {{#each model.userPermissions as |userPermission|}}
         <tr>
           <td>
             {{userPermission.name}}
@@ -118,4 +118,4 @@
     </button>
   </div>
 </form>
-{{modals/add-system-role-modal  isOpen=isAddSystemRoleModalOpen addSystemRole=(action 'addSystemRole')}}
+{{modals/add-system-role-modal  isOpen=isAddSystemRoleModalOpen isLoading=isLoading name=name titleName=titleName addSystemRole=(action 'addSystemRole')}}
