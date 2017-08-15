@@ -19,14 +19,14 @@
     <div class="content menu">
       {{#each model.eventTopics as |category| }}
         <a href="#"
-           class="link item {{if (eq filters.category category.name) 'active'}}" {{action 'selectCategory' category.name}}>
-          <i class="caret {{if (eq filters.category category.name) 'down' 'right'}} icon"></i>
+           class="link item {{if (eq category category.name) 'active'}}" {{action 'selectCategory' category.name}}>
+          <i class="caret {{if (eq category category.name) 'down' 'right'}} icon"></i>
           {{category.name}}
         </a>
-        {{#if (eq filters.category category.name)}}
+        {{#if (eq category category.name)}}
           {{#each category.subTopics as |subCategory|}}
             <a href="#"
-               class="link inner item {{if (eq filters.subCategory subCategory.name) 'active'}}"
+               class="link inner item {{if (eq sub_category subCategory.name) 'active'}}"
               {{action 'selectCategory' category.name subCategory.name}}>
               {{subCategory.name}}
             </a>
@@ -45,7 +45,7 @@
     <div class="content menu">
       {{#each model.eventTypes as |eventType|}}
         <a href="#"
-           class="link item {{if (eq filters.eventType eventType.name) 'active'}}"
+           class="link item {{if (eq event_type eventType.name) 'active'}}"
           {{action 'selectEventType' eventType.name}}>
           {{eventType.name}}
         </a>
@@ -61,9 +61,9 @@
     </span>
     <div class="content menu">
       {{#each dateRanges as |dateRange|}}
-        <a href="#" class="link item {{if (eq filters.dateRange dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
+        <a href="#" class="link item {{if (eq date_range dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
           {{dateRange.name}}
-          {{#if (and (eq dateRange.key 'custom_dates') (eq filters.dateRange 'custom_dates'))}}
+          {{#if (and (eq dateRange.key 'custom_dates') (eq date_range 'custom_dates'))}}
             <div class="explore sub menu">
               <div class="ui form">
                 <div class="grouped fields">

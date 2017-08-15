@@ -11,27 +11,20 @@ export default Component.extend({
     return getDateRanges.bind(this)();
   }),
 
-  filters: {
-    category    : null,
-    subCategory : null,
-    eventType   : null,
-    dateRange   : null
-  },
-
   actions: {
     selectCategory(category, subCategory) {
-      this.set('filters.category', (category === this.get('filters.category') && !subCategory) ? null : category);
-      this.set('filters.subCategory', (!subCategory || subCategory === this.get('filters.subCategory')) ? null : subCategory);
+      this.set('category', (category === this.get('category') && !subCategory) ? null : category);
+      this.set('sub_category', (!subCategory || subCategory === this.get('sub_category')) ? null : subCategory);
     },
     selectEventType(eventType) {
-      this.set('filters.eventType', eventType === this.get('filters.eventType') ? null : eventType);
+      this.set('event_type', eventType === this.get('event_type') ? null : eventType);
     },
     selectDateRange(dateRange) {
       let isCustomDate = null;
       if (dateRange === 'custom_dates') {
         isCustomDate = dateRange;
       }
-      this.set('filters.dateRange', dateRange === this.get('filters.dateRange') ?  isCustomDate : dateRange);
+      this.set('date_range', dateRange === this.get('date_range') ?  isCustomDate : dateRange);
     }
   }
 });
