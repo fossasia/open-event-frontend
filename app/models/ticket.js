@@ -31,10 +31,14 @@ export default ModelBase.extend({
   /**
    * Relationships
    */
-  event    : belongsTo('event'),
-  order    : belongsTo('order'),
-  attendee : belongsTo('attendee'),
+  event           : belongsTo('event'),
+  order           : belongsTo('order'),
+  attendee        : belongsTo('attendee'),
+  orderStatistics : belongsTo('order-statistics-ticket'),
 
+  /**
+   * Computed properties
+   */
   salesStartAtDate : computedDateTimeSplit.bind(this)('salesStartsAt', 'date'),
   salesStartAtTime : computedDateTimeSplit.bind(this)('salesStartsAt', 'time'),
   salesEndsAtDate  : computedDateTimeSplit.bind(this)('salesEndsAt', 'date'),
