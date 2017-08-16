@@ -1,74 +1,7 @@
 <div class="sixteen column wide">
-  <table class="ui very basic compact table">
-    <thead>
-      <tr>
-        <th>
-          #
-        </th>
-        <th>
-          {{t 'Order'}}
-        </th>
-        <th class="right aligned">
-          {{t 'Total Amount'}}
-        </th>
-        <th class="right aligned">
-          {{t 'Quantity'}}
-        </th>
-        <th>
-          {{t 'Buyer/Registration Contact '}}
-        </th>
-        <th>
-          {{t 'Action'}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model as |order index|}}
-        <tr>
-          <td>
-            {{inc index}}
-          </td>
-          <td>
-            <div class="ui tiny header">
-              {{order.invoiceNumber}}
-              <span class="weight-400">
-                {{t 'by'}} {{order.buyerName}}
-              </span>
-              <div class="ui basic mini green label">
-                {{order.status}}
-              </div>
-              <div class="sub header">
-                <span class="weight-800">
-                  {{t 'Payment via'}} {{order.paidVia}}
-                </span>
-                {{moment-from-now order.completedAt}}
-              </div>
-            </div>
-          </td>
-          <td class="right aligned">
-            US$ {{number-format order.amount}}
-          </td>
-          <td class="right aligned">
-            {{order.quantity}}
-          </td>
-          <td>
-            {{order.buyerName}}
-          </td>
-          <td class="centre aligned">
-            <div class="ui vertical compact basic buttons">
-              {{#ui-popup content=(t 'Cancel order') class='ui icon button' position='left center'}}
-                <i class="delete icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Delete order') class='ui icon button' position='left center'}}
-                <i class="trash icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Resend order confirmation') class='ui icon button' position='left center'}}
-                <i class="mail outline icon"></i>
-              {{/ui-popup}}
-            </div>
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  {{events/events-table columns=columns data=model
+                        useNumericPagination=true
+                        showGlobalFilter=true
+                        showPageSize=true
+  }}
 </div>

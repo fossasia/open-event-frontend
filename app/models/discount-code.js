@@ -25,6 +25,7 @@ export default ModelBase.extend({
   createdAt     : attr('moment'),
 
   tickets : hasMany('ticket'),
+  orders  : hasMany('order'),
   event   : belongsTo('event', {
     inverse: 'discountCodes'
   }), // The event that this discount code belongs to [Form (2)]
