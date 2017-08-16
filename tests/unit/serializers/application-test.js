@@ -23,6 +23,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:admin-statistics-mail',
     'model:admin-statistics-session',
     'model:event-statistics-general',
+    'model:order-statistics-event',
     'model:attendee',
     'model:tax',
     'model:custom-form',
