@@ -12,7 +12,9 @@ export default Route.extend({
       }),
       sessionTypes : eventDetails.query('sessionTypes', {}),
       socialLinks  : eventDetails.query('socialLinks', {}),
-      statistics   : eventDetails.query('eventStatisticsGeneral', {})
+      statistics   : eventDetails.query('eventStatisticsGeneral', {}),
+      orderStat    : eventDetails.query('orderStatistics', {}),
+      ticketStat   : eventDetails.query('tickets', {})
     });
   }
 });

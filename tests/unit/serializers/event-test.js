@@ -23,6 +23,7 @@ moduleForModel('event', 'Unit | Serializer | event', {
     'model:event-copyright',
     'model:session-type',
     'model:user',
+    'model:order-statistics-event',
     'model:event-invoice',
     'model:discount-code',
     'model:access-code',

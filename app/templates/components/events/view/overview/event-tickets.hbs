@@ -7,15 +7,15 @@
     <tbody>
       <tr>
         <td>{{t 'Total tickets sold'}}</td>
-        <td>0</td>
+        <td>{{data.tickets.total}}</td>
       </tr>
       <tr>
         <td>{{t 'No. of orders'}}</td>
-        <td>0</td>
+        <td>{{data.orders.total}}</td>
       </tr>
       <tr>
         <td>{{t 'Sales (amount)'}}</td>
-        <td>US$ {{number-format 0.0}}</td>
+        <td>US$ {{number-format data.sales.total}}</td>
       </tr>
     </tbody>
   </table>
