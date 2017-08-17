@@ -1,42 +1,19 @@
 <h2 class="ui header">{{t 'Add Order'}}</h2>
 <form class="ui form">
-  <table class="ui very basic table">
-    <thead>
-      <tr>
-        <th>{{t 'Ticket Type'}}</th>
-        <th class="right aligned">{{t 'Price '}}(US$)</th>
-        <th class="right aligned">{{t 'Quantity'}}</th>
-        <th class="right aligned">{{t 'Item Total'}}</th>
-      </tr>
-      {{#each model as |ticket|}}
-        <tr>
-          <td>
-            {{ticket.ticketType}}
-          </td>
-          <td class="right aligned">
-            US$ {{number-format ticket.price}}
-          </td>
-          <td class="right aligned">
-            <div class="inline field">
-              {{input value=ticket.quantity type='number' min='0'}}
-            </div>
-          </td>
-          <td class="right aligned">
-            US$ {{number-format (mult ticket.quantity ticket.price)}}
-          </td>
-        </tr>
-      {{/each}}
-    </thead>
-  </table>
+  {{events/events-table columns=columns data=model
+    useNumericPagination=true
+    showGlobalFilter=true
+    showPageSize=true
+  }}
   <div class="ui grid stackable">
     <div class="row">
       <div class="sixteen wide column right aligned">
-        <h5 class="ui header">{{t 'Grand Total'}}: US$ {{number-format total}}</h5>
+        <h5 class="ui header">{{t 'Grand Total'}}: US$ {{total}}</h5>
       </div>
     </div>
     <div class="row add-order">
       <div class="eight wide column">
-        {{#ui-dropdown class='labeled icon button'}}
+        {{#ui-dropdown class='labeled icon button' }}
           <i class="payment icon"></i>
           <div class="default text">{{t 'Select Payment Type'}}</div>
           <div class="menu">
@@ -48,7 +25,7 @@
         {{/ui-dropdown}}
       </div>
       <div class="eight wide column right aligned">
-        <button class="ui blue button" disabled={{not hasTicketsInOrder}}>
+        <button class="ui blue button" disabled= {{not hasTicketsInOrder}}>
           {{t 'Continue'}}
         </button>
       </div>
