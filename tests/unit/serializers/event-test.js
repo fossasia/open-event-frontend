@@ -14,6 +14,7 @@ moduleForModel('event', 'Unit | Serializer | event', {
     'model:track',
     'model:ticket',
     'model:social-link',
+    'model:attendee',
     'model:speaker',
     'model:speakers-call',
     'model:email-notification',

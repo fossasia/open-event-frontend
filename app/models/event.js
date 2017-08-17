@@ -103,7 +103,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   sessionTypes           : hasMany('session-type'),
   user                   : belongsTo('user'),
   customForms            : hasMany('custom-form'),
-
+  attendee               : hasMany('attendee'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

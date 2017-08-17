@@ -1,6 +1,6 @@
 import { test } from 'ember-qunit';
 import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
-moduleFor('controller:my-tickets/index', 'Unit | Controller | my tickets/index');
+moduleFor('controller:my-tickets/list', 'Unit | Controller | my tickets/list');
 
 test('it exists', function(assert) {
   let controller = this.subject();

@@ -1,6 +1,6 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import { hasMany } from 'ember-data/relationships';
 import Ember from 'ember';
 import { toString } from 'lodash';
 
