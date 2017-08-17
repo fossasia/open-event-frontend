@@ -7,19 +7,6 @@ export default Route.extend({
     return this.l10n.t('Add Order');
   },
   model() {
-    return [{
-      _id        : 1,
-      ticketType : 'Free',
-      price      : 10,
-      quantity   : 0,
-      itemTotal  : 0
-    },
-    {
-      _id        : 2,
-      ticketType : 'Paid',
-      price      : 10,
-      quantity   : 0,
-      itemTotal  : 0
-    }];
+    return this.modelFor('events.view').query('tickets', {});
   }
 });
