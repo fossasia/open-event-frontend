@@ -9,6 +9,7 @@ moduleForModel('user', 'Unit | Serializer | user', {
     'model:event-invoice',
     'model:notification',
     'model:user',
+    'model:session',
     'model:order',
     'transform:moment',
     'service:auth-manager'
