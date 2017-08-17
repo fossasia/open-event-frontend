@@ -20,6 +20,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:email-notification',
     'model:admin-statistics-mail',
     'model:admin-statistics-session',
+    'model:event-statistics-general',
     'model:tax',
     'model:custom-form',
     'model:event-copyright',
