@@ -2,7 +2,13 @@
   <div class="header">{{t 'General info'}}</div>
 </div>
 <div class="content">
-  <div class="header"> {{t 'Your event is not live yet.  Make it live now'}}</div>
+  <div class="header">
+    {{#if (eq data.event.state 'published')}}
+      {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
+    {{else}}
+      {{t 'Your event is not live yet. Make it live now'}}
+    {{/if}}
+  </div>
 </div>
 <div class="content">
   <table class="ui very basic table">
@@ -17,11 +23,11 @@
       </tr>
       <tr>
         <td><strong>{{t 'Start time'}}</strong></td>
-        <td>{{moment-format data.event.startsAt 'MMMM Do YYYY, h:mm:ss A'}}</td>
+        <td>{{moment-format data.event.startsAt 'h:mm A, MMMM Do YYYY'}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'End time'}}</strong></td>
-        <td>{{moment-format data.event.endsAt 'MMMM Do YYYY, h:mm:ss A'}}</td>
+        <td>{{moment-format data.event.endsAt 'h:mm A, MMMM Do YYYY'}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'Session types'}}</strong></td>
