@@ -1,6 +1,6 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
-import { hasMany } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 import Ember from 'ember';
 import { toString } from 'lodash';
 
@@ -46,6 +46,7 @@ export default ModelBase.extend({
   events             : hasMany('event'),
   sessions           : hasMany('session'),
   invoice            : hasMany('event-invoice'),
+  attendees          : hasMany('attendee'),
 
   _didUpdate: on('didUpdate', function(user) {
     if (toString(user.id) === toString(this.get('authManager.currentUser.id'))) {
