@@ -11,6 +11,7 @@ moduleForModel('user', 'Unit | Serializer | user', {
     'model:user',
     'model:session',
     'model:order',
+    'model:attendee',
     'transform:moment',
     'service:auth-manager'
   ]
