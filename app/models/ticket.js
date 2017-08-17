@@ -1,14 +1,17 @@
+import Ember from 'ember';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import moment from 'moment';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import { belongsTo } from 'ember-data/relationships';
 
+const { computed } = Ember;
+
 export default ModelBase.extend({
   name                 : attr('string'),
   type                 : attr('string'),
   price                : attr('number'),
-  quantity             : attr('number', { defaultValue: 100 }),
+  quantity             : attr('number'),
   description          : attr('string'),
   isDescriptionVisible : attr('boolean', { defaultValue: true }),
   isHidden             : attr('boolean', { defaultValue: false }),
@@ -27,5 +30,9 @@ export default ModelBase.extend({
   salesStartAtDate : computedDateTimeSplit.bind(this)('salesStartsAt', 'date'),
   salesStartAtTime : computedDateTimeSplit.bind(this)('salesStartsAt', 'time'),
   salesEndsAtDate  : computedDateTimeSplit.bind(this)('salesEndsAt', 'date'),
-  salesEndsAtTime  : computedDateTimeSplit.bind(this)('salesEndsAt', 'date')
+  salesEndsAtTime  : computedDateTimeSplit.bind(this)('salesEndsAt', 'date'),
+
+  itemTotal: computed('price', 'quantity', function() {
+    return this.get('price') * this.get('quantity');
+  })
 });

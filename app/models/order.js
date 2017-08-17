@@ -16,5 +16,4 @@ export default ModelBase.extend({
   event          : belongsTo('event'),
   discountCode   : belongsTo('discount-code'),
   tickets        : hasMany('ticket')
-
 });
