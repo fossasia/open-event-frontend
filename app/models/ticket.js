@@ -8,6 +8,10 @@ import { belongsTo } from 'ember-data/relationships';
 const { computed } = Ember;
 
 export default ModelBase.extend({
+
+  /**
+   * Attributes
+   */
   name                 : attr('string'),
   type                 : attr('string'),
   price                : attr('number'),
@@ -24,8 +28,12 @@ export default ModelBase.extend({
 
   hasOrders: false,
 
-  event : belongsTo('event'),
-  order : belongsTo('order'),
+  /**
+   * Relationships
+   */
+  event    : belongsTo('event'),
+  order    : belongsTo('order'),
+  attendee : belongsTo('attendee'),
 
   salesStartAtDate : computedDateTimeSplit.bind(this)('salesStartsAt', 'date'),
   salesStartAtTime : computedDateTimeSplit.bind(this)('salesStartsAt', 'time'),

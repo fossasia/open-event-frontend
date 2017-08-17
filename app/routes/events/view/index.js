@@ -9,7 +9,10 @@ export default Route.extend({
       event    : eventDetails,
       sponsors : eventDetails.query('sponsors', {
         'page[size]': 10
-      })
+      }),
+      sessionTypes : eventDetails.query('sessionTypes', {}),
+      socialLinks  : eventDetails.query('socialLinks', {}),
+      statistics   : eventDetails.query('eventStatisticsGeneral', {})
     });
   }
 });
