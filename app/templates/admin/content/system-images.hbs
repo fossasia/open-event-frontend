@@ -2,14 +2,11 @@
   <div class="row">
     <div class="three wide column">
       {{#tabbed-navigation isVertical=true}}
-        {{#each model.topics as |topic|}}
+        {{#each model as |topic|}}
           {{#link-to 'admin.content.system-images.list' topic.id  class='link item'}}
             {{topic.name}}
           {{/link-to}}
         {{/each}}
-        {{#link-to 'admin.content.system-images.list' 'other'  class='link item'}}
-          {{t 'Other'}}
-        {{/link-to}}
       {{/tabbed-navigation}}
     </div>
     <div class="thirteen wide column">
