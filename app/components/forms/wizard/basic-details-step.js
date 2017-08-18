@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import moment from 'moment';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
-import { FORM_DATE_FORMAT, timezones } from 'open-event-frontend/utils/dictionary/date-time';
+import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import FormMixin from 'open-event-frontend/mixins/form';
@@ -236,12 +236,12 @@ export default Component.extend(FormMixin, {
       });
     },
     addTicket(type) {
-      const salesStartDateTime = moment(this.get('data.event.startDate'), FORM_DATE_FORMAT).subtract(1, 'months');
-      const salesEndDateTime = salesStartDateTime.clone().add(10, 'days');
+      const salesStartDateTime = this.get('data.event.startsAt');
+      const salesEndDateTime = this.get('data.event.endsAt');
       this.get('data.event.tickets').pushObject(this.store.createRecord('ticket', {
         type,
-        salesStartDateTime : salesStartDateTime.toDate(),
-        salesEndDateTime   : salesEndDateTime.toDate()
+        salesStartsAt : salesStartDateTime,
+        salesEndsAt   : salesEndDateTime
       }));
     },
     removeTicket(ticket) {
@@ -297,10 +297,10 @@ export default Component.extend(FormMixin, {
     }
   },
   didInsertElement() {
-    if (this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
+    if (!this.get('isCreate') && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
     }
-    if (this.get('data.event.tax') && !this.get('data.event.tax.content')) {
+    if (!this.get('isCreate') && this.get('data.event.tax') && !this.get('data.event.tax.content')) {
       this.set('data.event.tax', this.store.createRecord('tax'));
     }
   }

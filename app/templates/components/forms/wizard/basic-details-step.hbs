@@ -10,7 +10,7 @@
       lat=data.event.latitude
       lng=data.event.longitude
       placeName=data.event.locationName
-      zoom=1
+      zoom=15
       placeholder=(t 'Location is required to make this event live')}}
       <div class="inline field">
         <div class="ui slider checkbox">
@@ -75,6 +75,15 @@
   <div class="fields">
     <div class="ten wide field">
       {{widgets/forms/image-upload
+        imageUrl=data.event.logoUrl
+        label=(t 'Logo')
+        id='event_logo'
+        icon='image'
+        hint=(t 'Select Logo')
+        maxSizeInKb=1000}}
+    </div>
+    <div class="ten wide field">
+      {{widgets/forms/image-upload
         imageUrl=data.event.originalImageUrl
         needsCropper=true
         label=(t 'Event Image')
@@ -83,15 +92,6 @@
         hint=(t 'Select Event Image')
         maxSizeInKb=10000
         helpText=(t 'We recommend using at least a 2160x1080px (2:1 ratio) image')}}
-    </div>
-    <div class="ten wide field">
-      {{widgets/forms/image-upload
-        imageUrl=data.event.logoUrl
-        label=(t 'Logo')
-        id='event_logo'
-        icon='image'
-        hint=(t 'Select Logo')
-        maxSizeInKb=1000}}
     </div>
   </div>
 
