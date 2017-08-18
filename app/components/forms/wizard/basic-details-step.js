@@ -294,6 +294,11 @@ export default Component.extend(FormMixin, {
       var endDate = this.get('data.event.endsAt');
       this.set('data.event.startsAt', moment.tz(startDate, timezone));
       this.set('data.event.endsAt', moment.tz(endDate, timezone));
+    },
+    updateCopyright() {
+      let license = find(licenses, { name: this.get('data.event.copyright.licence') });
+      this.set('data.event.copyright.logoUrl', license.logoUrl);
+      this.set('data.event.copyright.licenceUrl', license.link);
     }
   },
   didInsertElement() {
