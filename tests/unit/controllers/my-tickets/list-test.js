@@ -1,9 +1,8 @@
 import { test } from 'ember-qunit';
 import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
-
-moduleFor('route:my-sessions/past', 'Unit | Route | my sessions/past', []);
+moduleFor('controller:my-tickets/list', 'Unit | Controller | my tickets/list');
 
 test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+  let controller = this.subject();
+  assert.ok(controller);
 });

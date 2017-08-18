@@ -2,7 +2,13 @@
   <div class="header">{{t 'General info'}}</div>
 </div>
 <div class="content">
-  <div class="header"> {{t 'Your event is not live yet. Make it live now'}}</div>
+  <div class="header">
+    {{#if (eq data.event.state 'published')}}
+      {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
+    {{else}}
+      {{t 'Your event is not live yet. Make it live now'}}
+    {{/if}}
+  </div>
 </div>
 <div class="content">
   <table class="ui very basic table">
@@ -13,35 +19,43 @@
       </tr>
       <tr>
         <td><strong>{{t 'Location'}}</strong></td>
-        <td>asdad</td>
+        <td>{{data.event.locationName}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'Start time'}}</strong></td>
-        <td>12:30 PM May 11, 2014</td>
+        <td>{{moment-format data.event.startsAt 'h:mm A, MMMM Do YYYY'}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'End time'}}</strong></td>
-        <td>5:00 PM May 11, 2014</td>
+        <td>{{moment-format data.event.endsAt 'h:mm A, MMMM Do YYYY'}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'Session types'}}</strong></td>
-        <td>Tech</td>
+        <td>
+          {{#each data.sessionTypes as |sessionType index|}}
+            {{if (not-eq index 0) ','}} {{sessionType.name}}
+          {{/each}}
+        </td>
       </tr>
       <tr>
         <td><strong>{{t 'Links and Social Media'}}</strong></td>
-        <td><a href="https://facebook.com/fossasia">fossasia</a></td>
+        <td>
+          {{#each data.socialLinks as |socialLink index|}}
+            {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
+          {{/each}}
+        </td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Speakers'}}</strong></td>
-        <td>14</td>
+        <td>{{data.statistics.speakers}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sessions'}}</strong></td>
-        <td>14</td>
+        <td>{{data.statistics.sessions}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sponsors'}}</strong></td>
-        <td>4</td>
+        <td>{{data.statistics.sponsors}}</td>
       </tr>
     </tbody>
   </table>

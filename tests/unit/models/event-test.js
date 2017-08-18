@@ -14,6 +14,7 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:speaker',
     'model:speakers-call',
     'model:tax',
+    'model:attendee',
     'model:custom-form',
     'model:event-copyright',
     'model:session-type',
@@ -21,7 +22,8 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:event-invoice',
     'model:discount-code',
     'model:access-code',
-    'model:email-notification'
+    'model:email-notification',
+    'model:order'
   ]
 });
 

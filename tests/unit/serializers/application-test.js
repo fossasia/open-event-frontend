@@ -18,8 +18,12 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:speaker',
     'model:speakers-call',
     'model:email-notification',
+    'model:admin-statistics-event',
+    'model:admin-statistics-user',
     'model:admin-statistics-mail',
     'model:admin-statistics-session',
+    'model:event-statistics-general',
+    'model:attendee',
     'model:tax',
     'model:custom-form',
     'model:event-copyright',
@@ -27,6 +31,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:user',
     'model:discount-code',
     'model:access-code',
+    'model:order',
     'transform:moment'
   ]
 });

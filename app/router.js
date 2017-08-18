@@ -86,11 +86,10 @@ router.map(function() {
   });
   this.route('explore');
   this.route('my-tickets', function() {
-    this.route('saved');
-    this.route('past');
+    this.route('list', { path: '/:ticket_status' });
   });
   this.route('my-sessions', function() {
-    this.route('past');
+    this.route('list', { path: '/:session_status' });
   });
   this.route('notifications', function() {
     this.route('all');

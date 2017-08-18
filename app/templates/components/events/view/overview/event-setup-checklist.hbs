@@ -2,46 +2,81 @@
   <div class="header">{{t 'Event setup checklist'}}</div>
 </div>
 <div class= "content">
-  <div class="ui vertical steps fluid">
-    {{#link-to 'events.view.edit.basic-details'
-    class='link completed step'}}
-      <i class="info icon"></i>
-      <div class="content">
-        <div class="title">{{t 'Basic Details'}}</div>
-        <div class="description">{{t 'Basic information including title, date, venue, ticketing'}}</div>
+  <div class="ui fluid segments">
+    <a href="{{href-to 'events.view.edit.basic-details'}}" class="ui segment {{unless data.event.name 'secondary'}} grid less margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if data.event.name 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Basic Details'}}
+            <div class="sub header">
+              {{t 'Basic information including title, date, venue, ticketing'}}
+            </div>
+          </h4>
+        </div>
       </div>
-    {{/link-to}}
-    {{#link-to 'events.view.edit.sponsors'
-    class='link completed step'}}
-      <i class="money icon"></i>
-      <div class="content">
-        <div class="title">{{t 'Sponsors'}}</div>
-        <div class="description">{{t 'Details and logos of sponsors'}}</div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sponsors'}}" class="ui {{unless data.event.isSponsorsEnabled 'secondary'}} segment grid less margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if data.event.isSponsorsEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Sponsors'}}
+            <div class="sub header">
+              {{t 'Details and logos of sponsors'}}
+            </div>
+          </h4>
+        </div>
       </div>
-    {{/link-to}}
-    {{#link-to 'events.view.edit.sessions-speakers'
-    class='link completed step'}}
-      <i class="map icon"></i>
-      <div class="content">
-        <div class="title">{{t 'Session, Tracks & Microlocations'}}</div>
-        <div class="description">{{t 'Tracks details and colors, session lengths, room locations'}}</div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid less margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Session, Tracks & Microlocations'}}
+            <div class="sub header">
+              {{t 'Tracks details and colors, session lengths, room locations'}}
+            </div>
+          </h4>
+        </div>
       </div>
-    {{/link-to}}
-    {{#link-to 'events.view.edit.sessions-speakers'
-    class='link completed step'}}
-      <i class="announcement icon"></i>
-      <div class="content">
-        <div class="title">{{t 'Call For Speakers'}}</div>
-        <div class="description">{{t 'Call for speakers announcement and dates'}}</div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless data.event.speakersCall.announcement 'secondary'}} segment grid less margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if data.event.speakersCall.announcement 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Call For Speakers'}}
+            <div class="sub header">
+              {{t 'Call for speakers announcement and dates'}}
+            </div>
+          </h4>
+        </div>
       </div>
-    {{/link-to}}
-    {{#link-to 'events.view.edit.sessions-speakers'
-    class='link completed step'}}
-      <i class="sticky note icon"></i>
-      <div class="content">
-        <div class="title">{{t 'Session & Speaker forms customization'}}</div>
-        <div class="description">{{t 'Customize the session and speaker registration forms'}}</div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid less margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Session & Speaker forms customization'}}
+            <div class="sub header">
+              {{t 'Customize the session and speaker registration forms'}}
+            </div>
+          </h4>
+        </div>
       </div>
-    {{/link-to}}
+    </a>
   </div>
 </div>

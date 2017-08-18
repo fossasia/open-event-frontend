@@ -5,13 +5,13 @@
         {{t 'My tickets'}}
       </h1>
       {{#tabbed-navigation}}
-        {{#link-to 'my-tickets.index' class='item'}}
+        {{#link-to 'my-tickets.list' 'upcoming' class='item'}}
           {{t 'Upcoming Events'}}
         {{/link-to}}
-        {{#link-to 'my-tickets.saved' class='item'}}
+        {{#link-to 'my-tickets.list' 'saved' class='item'}}
           {{t 'Saved Events'}}
         {{/link-to}}
-        {{#link-to 'my-tickets.past' class='item'}}
+        {{#link-to 'my-tickets.list' 'past' class='item'}}
           {{t 'Past Events'}}
         {{/link-to}}
       {{/tabbed-navigation}}
