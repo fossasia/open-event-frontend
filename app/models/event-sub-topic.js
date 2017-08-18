@@ -6,6 +6,7 @@ export default ModelBase.extend({
   name : attr('string'),
   slug : attr('string'),
 
-  topic  : belongsTo('event-topic'),
-  events : hasMany('event')
+  topic       : belongsTo('event-topic'),
+  events      : hasMany('event'),
+  placeholder : belongsTo('custom-placeholder')
 });
