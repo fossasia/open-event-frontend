@@ -6,7 +6,7 @@
           <h3 class="ui header">{{t 'Pages'}}</h3>
         </div>
         <div class="column eight wide right aligned">
-          <button class="ui blue button" name="button">{{t 'Create Page'}}</button>
+          <button class="ui blue button" name="button" {{action 'updateCurrentPage' page 'create'}}>{{t 'Create Page'}}</button>
         </div>
       </div>
       <div class="row">
@@ -17,7 +17,7 @@
       {{#each eventPages as |page|}}
         <div class="row">
           <div class="column">
-            <div role="button" class="ui segment" {{action 'updateCurrentPage' page.path}}>
+            <div role="button" class="ui segment" {{action 'updateCurrentPage' page 'update'}}>
               {{page.name}}
             </div>
           </div>
@@ -31,7 +31,7 @@
       {{#each footerPages as |page|}}
         <div class="row">
           <div class="column">
-            <div role="button" class="ui segment" {{action 'updateCurrentPage' page.path}}>
+            <div role="button" class="ui segment" {{action 'updateCurrentPage' page 'update'}}>
               {{page.name}}
             </div>
           </div>
@@ -40,7 +40,7 @@
     </div>
     <div class="column eleven wide">
       {{#if isFormOpen}}
-        {{forms/admin/content/pages-form data=currentForm places=places}}
+        {{forms/admin/content/pages-form data=currentForm save='savePage' isCreate=isCreate isFormOpen=isFormOpen}}
       {{/if}}
     </div>
   </div>

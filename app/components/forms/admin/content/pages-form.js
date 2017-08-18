@@ -70,9 +70,21 @@ export default Component.extend(FormMixin, {
   },
 
   actions: {
-    submit() {
+    submit(data) {
       this.onValid(() => {
+        this.sendAction('save', data);
       });
+    },
+    deletePage(data) {
+      if (!this.get('isCreate')) {
+        data.destroyRecord();
+        this.set('isFormOpen', false);
+      }
+    },
+    close() {
+      if (this.get('isCreate')) {
+        this.set('isFormOpen', false);
+      }
     }
   }
 });
