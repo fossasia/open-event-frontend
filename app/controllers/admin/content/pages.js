@@ -1,23 +1,31 @@
 import Ember from 'ember';
-import { find, map, uniqBy } from 'lodash';
 
 const { Controller, computed } = Ember;
 
 export default Controller.extend({
-  footerPages: computed.filterBy('model', 'menu', 'footer'),
+  footerPages: computed.filterBy('model', 'place', 'footer'),
 
-  eventPages: computed.filterBy('model', 'menu', 'event'),
-
-  places: computed('model', function() {
-    const data = this.get('model');
-    return map(uniqBy(data, 'menu'), 'menu');
-  }),
+  eventPages: computed.filterBy('model', 'place', 'event'),
 
   actions: {
-    updateCurrentPage(url) {
-      var form = find(this.get('model'), { path: url });
+    updateCurrentPage(page, type) {
+      if (type === 'create') {
+        this.set('isCreate', true);
+        this.set('currentForm', this.get('store').createRecord('page'));
+      } else {
+        this.set('isCreate', false);
+        this.set('currentForm', page);
+      }
       this.set('isFormOpen', true);
-      this.set('currentForm', form);
+    },
+    savePage(page) {
+      page.save()
+        .then(() => {
+          this.notify.success(this.l10n.t('Page details have been saved successfully.'));
+        })
+        .catch(()=> {
+          this.notify.error(this.l10n.t('An unexpected error has occured. Page Details not saved.'));
+        });
     }
   }
 });
