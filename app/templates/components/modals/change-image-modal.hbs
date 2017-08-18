@@ -7,27 +7,28 @@
     <div class="row">
       <div class="sixteen wide column">
         {{widgets/forms/image-upload
+          imageUrl=placeholder.originalImageUrl
+          selectedImage=placeholder.originalImageUrl 
           needsCropper=true
           label=(t 'Update Image')
           id='user_image'
-          aspectRatio=(if (eq subTopic.name 'avatar') (array 1 1))
+          aspectRatio=(if (eq placeholder.name 'avatar') (array 1 1) (array 2 1))
           icon='photo'
           hint=(t 'Select Image')
           maxSizeInKb=10000
           helpText=(t 'For Cover Photos : 300x150px (2:1 ratio) image.
                     For Avatar Photos : 150x150px (1:1 ratio) image.')}}
-
         <form class="ui form">
           <div class="field">
             <label class="ui label">{{t 'Copyright information'}}</label>
             <div class="ui input">
-              {{input type="text"}}
+              {{input type="text" value=placeholder.copyright}}
             </div>
           </div>
           <div class="field">
             <label class="ui label">{{t 'Origin information'}}</label>
             <div class="ui input">
-              {{input type="text"}}
+              {{input type="text" value=placeholder.origin}}
             </div>
           </div>
         </form>
@@ -36,8 +37,8 @@
     </div>
     <div class="row">
       <div class="sixteen wide column right floated right aligned">
-        <button class="ui primary button">{{t 'Update'}}</button>
-        <button class="ui button">{{t 'Cancel'}}</button>
+        <button class="ui primary button" {{action 'updatePlaceholder'}}>{{t 'Update'}}</button>
+        <button class="ui button" {{action (mut isOpen)}}>{{t 'Cancel'}}</button>
       </div>
     </div>
   </div>

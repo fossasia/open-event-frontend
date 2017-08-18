@@ -7,32 +7,15 @@ export default Route.extend({
     return this.l10n.t('System Images');
   },
   model() {
-    return ({
-      topics: [
-        {
-          id   : 1,
-          name : 'Automobiles'
-        },
-        {
-          id   : 2,
-          name : 'Yoga'
-        },
-        {
-          id   : 3,
-          name : 'charity'
-
-        },
-        {
-          id   : 4,
-          name : 'Travel'
-        }
-      ]
+    return this.store.query('event-topic', {
+      include : 'event-sub-topics',
+      sort    : 'name'
     });
   },
   afterModel(model, transition) {
     this._super(...arguments);
     if (transition.targetName === 'admin.content.system-images.index') {
-      this.replaceWith('admin.content.system-images.list', model.topics[0].id);
+      this.replaceWith('admin.content.system-images.list', model.toArray()[0].id);
     }
   }
 });

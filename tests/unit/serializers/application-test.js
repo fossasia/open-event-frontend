@@ -25,6 +25,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:event-statistics-general',
     'model:order-statistics-event',
     'model:attendee',
+    'model:custom-placeholder',
     'model:tax',
     'model:custom-form',
     'model:event-copyright',
