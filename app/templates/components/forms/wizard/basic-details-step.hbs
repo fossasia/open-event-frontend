@@ -517,7 +517,7 @@
         </div>
       </div>
     </label>
-    {{#ui-dropdown class='search selection' selected=data.event.copyright.licence forceSelection=false fullTextSearch=true}}
+    {{#ui-dropdown class='search selection' selected=data.event.copyright.licence onChange=(action 'updateCopyright') forceSelection=false fullTextSearch=true}}
       {{input type='hidden' id='license' value=data.event.copyright.licence}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select License'}}</div>
