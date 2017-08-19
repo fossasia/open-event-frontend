@@ -103,7 +103,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   sessionTypes           : hasMany('session-type'),
   user                   : belongsTo('user'),
   customForms            : hasMany('custom-form'),
-  attendee               : hasMany('attendee'),
+  attendees              : hasMany('attendee'),
   orderStatistics        : belongsTo('order-statistics-event'),
 
   /**

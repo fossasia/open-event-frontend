@@ -1,0 +1,5 @@
+{{#if (eq record.status 'checkedIn')}}
+  <a class="ui red label"><i class="remove icon"></i>{{t 'Cancel'}}</a>
+{{else}}
+  <a class="ui green label"><i class="checkmark icon"></i>{{t 'Check In'}}</a>
+{{/if}}

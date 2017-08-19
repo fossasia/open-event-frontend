@@ -1,0 +1,18 @@
+<div class="ui tiny header">
+  {{record.order.identifier}}
+  <span class="weight-400">
+    {{t 'by'}} {{record.order.user.firstName}} {{record.order.user.lastName}}
+  </span>
+  <div class="ui basic mini {{if (eq record.order.status 'completed') 'green'
+                                 (if (or (eq record.order.status 'placed')
+                                 (eq record.order.status 'pending')) 'yellow' 'red')}}
+                                  label attendees-margin">
+    {{record.order.state}}
+  </div>
+  <div class="sub header">
+    <span class="weight-800">
+      {{t 'Payment via'}} {{record.order.paymentMode}}
+    </span>
+    {{moment-from-now record.order.createdAt}}
+  </div>
+</div>
