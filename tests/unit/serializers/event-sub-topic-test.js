@@ -5,6 +5,7 @@ moduleForModel('event-sub-topic', 'Unit | Serializer | event sub topic', {
     'serializer:event-sub-topic',
     'serializer:event',
     'model:event-topic',
+    'model:event',
     'model:custom-placeholder'
   ]
 });
