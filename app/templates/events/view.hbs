@@ -9,20 +9,29 @@
       <div class="twelve wide column {{unless device.isMobile 'right aligned'}}">
         {{#if device.isMobile}}
           <div class="ui icon fluid buttons">
-            <button class="ui button"><i class="unhide icon"></i></button>
-            <button class="ui button"><i class="check icon"></i></button>
+            <a href="{{href-to 'public' model.id}}" class="ui button">
+              <i class="unhide icon"></i>
+            </a>
+            <button class="ui button" {{action 'togglePublishState'}}>
+              <i class="{{if (eq model.state 'published') 'ban' 'check'}} icon"></i>
+            </button>
             <button class="ui button"><i class="copy icon"></i></button>
             <button class="ui red button" {{action 'openDeleteEventModal'}}><i class="trash icon"></i></button>
           </div>
         {{else}}
-            <button class="ui button labeled icon small">
+            <a href="{{href-to 'public' model.id}}" class="ui button labeled icon small">
               <i class="unhide icon"></i>
               {{t 'Preview'}}
-            </button>
+            </a>
             <div class="ui small labeled icon buttons">
-              <button class="ui button ">
-                <i class="check icon"></i>
-                {{t 'Publish'}}
+              <button class="ui button " {{action 'togglePublishState'}}>
+                {{#if (eq model.state 'published')}}
+                  <i class="ban icon"></i>
+                  {{t 'Unpublish'}}
+                {{else}}
+                  <i class="check icon"></i>
+                  {{t 'Publish'}}
+                {{/if}}
               </button>
               <button class="ui button ">
                 <i class="copy icon"></i>
@@ -65,7 +74,7 @@
 
   {{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen eventName=model.name deleteEvent=(action 'deleteEvent')}}
 
-  <div class="ui segment">
+  <div class="ui {{if isLoading 'loading'}} segment">
     {{outlet}}
   </div>
 {{else}}
