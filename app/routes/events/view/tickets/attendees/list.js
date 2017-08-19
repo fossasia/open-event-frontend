@@ -23,31 +23,43 @@ export default Route.extend({
   },
   model(params) {
     this.set('params', params);
-    return [
-      {
-        'status'        : 'Completed',
-        'completedAt'   : '2016-04-06',
-        'id'            : 1,
-        'invoiceNumber' : '#O1496523209-306',
-        'amount'        : 0,
-        'paidVia'       : 'Free',
-        'buyerName'     : 'sample@gmail.com',
-        'firstName'     : 'john',
-        'lastName'      : 'Doe',
-        'ticketName'    : 'A'
-      },
-      {
-        'status'        : 'Completed',
-        'completedAt'   : '2016-04-06',
-        'id'            : 1,
-        'invoiceNumber' : '#O1496523209-306',
-        'amount'        : 0,
-        'paidVia'       : 'Free',
-        'buyerName'     : 'sample@gmail.com',
-        'firstName'     : 'aajohn',
-        'lastName'      : 'bbDoe',
-        'ticketName'    : 'A'
-      }
-    ];
+    let filterOptions = [];
+    if (params.attendees_status === 'checkedIn') {
+      filterOptions = [
+        {
+          name : 'is-checked-in',
+          op   : 'eq',
+          val  : true
+        }
+      ];
+    } else if (params.attendees_status === 'notCheckedIn') {
+      filterOptions = [
+        {
+          name : 'is-checked-in',
+          op   : 'eq',
+          val  : false
+        }
+      ];
+    } else if (params.attendees_status === 'all') {
+      filterOptions = [];
+    } else {
+      filterOptions = [
+        {
+          name : 'order',
+          op   : 'has',
+          val  : {
+            name : 'status',
+            op   : 'eq',
+            val  : params.attendees_status
+          }
+        }
+      ];
+    }
+
+    return this.modelFor('events.view').query('attendees', {
+      include      : 'order,user',
+      filter       : filterOptions,
+      'page[size]' : 10
+    });
   }
 });

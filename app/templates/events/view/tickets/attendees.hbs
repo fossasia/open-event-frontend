@@ -51,7 +51,10 @@
   <div class="row">
     <div class="x-scrollable sixteen wide column">
       {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'events.view.tickets.attendees.index' class='item'}}
+        {{#link-to 'events.view.tickets.attendees.list' 'all' class='item'}}
+          {{t 'All'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'completed' class='item'}}
           {{t 'Completed'}}
         {{/link-to}}
         {{#link-to 'events.view.tickets.attendees.list' 'placed' class='item'}}
@@ -71,9 +74,6 @@
         {{/link-to}}
         {{#link-to 'events.view.tickets.attendees.list' 'notCheckedIn' class='item'}}
           {{t 'Not Checked In'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.attendees.list' 'all' class='item'}}
-          {{t 'All'}}
         {{/link-to}}
       {{/tabbed-navigation}}
     </div>
