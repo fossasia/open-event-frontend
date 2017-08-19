@@ -63,7 +63,7 @@
     </div>
   </div>
 
-  {{modals/event-delete-modal isOpen=isEventDeleteModalOpen eventName=model.name deleteEvent=(action 'deleteEvent')}}
+  {{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen eventName=model.name deleteEvent=(action 'deleteEvent')}}
 
   <div class="ui segment">
     {{outlet}}
