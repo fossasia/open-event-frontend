@@ -24,6 +24,7 @@ moduleForModel('event', 'Unit | Serializer | event', {
     'model:session-type',
     'model:user',
     'model:order-statistics-event',
+    'model:event-statistics-general',
     'model:event-invoice',
     'model:discount-code',
     'model:access-code',
