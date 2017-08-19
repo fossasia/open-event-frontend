@@ -1,7 +1,7 @@
 {{#if event.isMapShown}}
   <div class="eight wide column event-map">
     <h1>{{t 'Getting Here'}}</h1>
-    {{#g-map lat=event.latitude lng=event.longitude zoom=12 gestureHandling='cooperative' streetView='StreetViewPanorama' as |context|}}
+    {{#g-map lat=event.latitude lng=event.longitude zoom=15 gestureHandling='cooperative' streetView='StreetViewPanorama' as |context|}}
       {{g-map-marker context lat=event.latitude lng=event.longitude}}
     {{/g-map}}
   </div>
