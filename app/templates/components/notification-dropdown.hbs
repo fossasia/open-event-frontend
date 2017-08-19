@@ -23,7 +23,7 @@
             {{/link-to}}
           </div>
           <div class="content weight-600">
-            {{notification.message}}
+            {{sanitize notification.message}}
           </div>
           <div class="left floated content">
             {{moment-from-now notification.receivedAt}}

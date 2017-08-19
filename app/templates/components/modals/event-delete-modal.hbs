@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="content">
-  <form class="ui form" autocomplete="off" {{action (optional formSubmit) on='submit' preventDefault=true}}>
+  <form class="ui {{if isLoading 'loading'}} form" autocomplete="off" {{action (optional formSubmit) on='submit' preventDefault=true}}>
     <div class="field">
       <div class="label">
         {{t 'Please enter the full name of the event to continue'}}
