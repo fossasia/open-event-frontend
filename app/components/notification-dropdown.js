@@ -3,6 +3,8 @@ import Ember from 'ember';
 const { Component } = Ember;
 
 export default Component.extend({
+  classNames : ['notification item'],
+  tagName    : 'a',
   didInsertElement() {
     this._super.call(this);
     this.$().popup({
