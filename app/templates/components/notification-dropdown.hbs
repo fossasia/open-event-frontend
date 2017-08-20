@@ -5,7 +5,7 @@
 <div class="ui wide notification popup bottom left transition">
   {{#if unreadNotifications}}
     <div class="ui basic inverted horizontal segments">
-      <div class="ui basic left aligned segment weight-800">
+      <div class="ui basic left aligned segment weight-600">
         {{#link-to 'notifications'}}
           {{t 'Notifications'}}
         {{/link-to}}
@@ -33,7 +33,12 @@
     </div>
   {{else}}
     <div class="ui segment empty-message">
-      <a href="{{href-to 'notifications'}}">{{t 'Go to notifications panel.'}}</a>
+      <a href="{{href-to 'notifications'}}">{{t 'Go to notifications panel'}}</a>
+    </div>
+    <div class="ui fluid link celled selection list">
+      <div class="item active">
+        {{t 'No new notifications'}}
+      </div>
     </div>
   {{/if}}
 </div>
