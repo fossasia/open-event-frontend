@@ -28,6 +28,7 @@ module.exports = function(defaults) {
   app.import('bower_components/Croppie/croppie.css');
   app.import('bower_components/Croppie/croppie.min.js');
   app.import('bower_components/tinyColorPicker/jqColorPicker.min.js');
+  app.import('bower_components/js-polyfills/xhr.js');
 
   const appTree = app.toTree([]);
   return new MergeTrees([appTree, new Funnel(appTree, {
