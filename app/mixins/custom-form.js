@@ -7,7 +7,7 @@ export default Mixin.create(MutableArray, {
   getCustomForm(parent) {
     return [
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Title',
+        fieldIdentifier : 'title',
         form            : 'session',
         type            : 'text',
         isRequired      : true,
@@ -16,7 +16,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Subtitle',
+        fieldIdentifier : 'subtitle',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -24,7 +24,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Short abstract',
+        fieldIdentifier : 'shortAbstract',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -32,7 +32,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Long abstract',
+        fieldIdentifier : 'longAbstract',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -40,7 +40,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Comments',
+        fieldIdentifier : 'comments',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -48,16 +48,40 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Track',
+        fieldIdentifier : 'track',
         form            : 'session',
-        type            : 'text',
+        type            : 'select',
         isRequired      : true,
         isIncluded      : true,
         isFixed         : true,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Session type',
+        fieldIdentifier : 'sessionType',
+        form            : 'session',
+        type            : 'select',
+        isRequired      : false,
+        isIncluded      : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'level',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'language',
+        form            : 'session',
+        type            : 'select',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'slidesUrl',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -65,7 +89,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Level',
+        fieldIdentifier : 'videoUrl',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -73,7 +97,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Language',
+        fieldIdentifier : 'audioUrl',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -81,31 +105,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Slides',
-        form            : 'session',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : true,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Video',
-        form            : 'session',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Audio',
-        form            : 'session',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Form',
+        fieldIdentifier : 'name',
         form            : 'speaker',
         type            : 'text',
         isRequired      : true,
@@ -114,7 +114,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Email',
+        fieldIdentifier : 'email',
         form            : 'speaker',
         type            : 'email',
         isRequired      : true,
@@ -123,7 +123,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Photo',
+        fieldIdentifier : 'photoUrl',
         form            : 'speaker',
         type            : 'image',
         isRequired      : false,
@@ -131,7 +131,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Organisation',
+        fieldIdentifier : 'organisation',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -139,7 +139,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Position',
+        fieldIdentifier : 'position',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -147,7 +147,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Country',
+        fieldIdentifier : 'country',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -155,7 +155,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'City',
+        fieldIdentifier : 'city',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -163,7 +163,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Short biography',
+        fieldIdentifier : 'shortBiography',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -171,7 +171,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Long biography',
+        fieldIdentifier : 'longBiography',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -179,7 +179,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Speaking experience',
+        fieldIdentifier : 'speakingExperience',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -187,7 +187,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Sponsorship required',
+        fieldIdentifier : 'sponsorshipRequired',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -195,7 +195,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Gender',
+        fieldIdentifier : 'gender',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -203,7 +203,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Heard from',
+        fieldIdentifier : 'heardFrom',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -211,7 +211,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Mobile',
+        fieldIdentifier : 'mobile',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -219,7 +219,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Website',
+        fieldIdentifier : 'website',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -227,7 +227,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Facebook',
+        fieldIdentifier : 'facebook',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -235,7 +235,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Twitter',
+        fieldIdentifier : 'twitter',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -243,7 +243,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Github',
+        fieldIdentifier : 'github',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
@@ -251,7 +251,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'Linkedin',
+        fieldIdentifier : 'linkedin',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,

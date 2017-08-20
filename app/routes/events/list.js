@@ -77,7 +77,6 @@ export default Route.extend({
         }
       ];
     }
-
     return this.get('authManager.currentUser').query('events', {
       include      : 'event-topic,event-sub-topic,event-type,tickets,sessions,speakers',
       filter       : filterOptions,
