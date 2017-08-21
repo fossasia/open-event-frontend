@@ -20,7 +20,9 @@
 {{sanitize speakersCall.announcement}}
 <div class="ui hidden divider"></div>
 {{#if speakersCall.isOpen}}
-  <button type="submit" class="ui teal submit button">
+  <button type="submit" class="ui teal submit button" {{action 'openProposalModal'}}>
     {{t 'Submit Proposal'}}
   </button>
 {{/if}}
+
+{{modals/cfs-proposal-modal isOpen=isCfsModalOpen}}
