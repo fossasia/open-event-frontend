@@ -54,6 +54,27 @@ export default Controller.extend({
     },
     editEvent(id) {
       this.transitionToRoute('events.view.edit.basic-details', id);
+    },
+    openDeleteEventModal(id, name) {
+      this.set('isEventDeleteModalOpen', true);
+      this.set('confirmName', '');
+      this.set('eventName', name);
+      this.set('eventId', id);
+    },
+    deleteEvent() {
+      this.set('isLoading', true);
+      this.store.findRecord('event', this.get('eventId'), { backgroundReload: false }).then(function(event) {
+        event.destroyRecord();
+      })
+        .then(() => {
+          this.set('isLoading', false);
+          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+        })
+        .catch(()=> {
+          this.set('isLoading', false);
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        });
+      this.set('isEventDeleteModalOpen', false);
     }
   }
 });
