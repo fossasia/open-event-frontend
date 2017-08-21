@@ -8,6 +8,9 @@ export default UiTable.extend({
     },
     editEvent(id) {
       this.sendAction('editEvent', id);
+    },
+    openDeleteEventModal(id, name) {
+      this.sendAction('openDeleteEventModal', id, name);
     }
   }
 });

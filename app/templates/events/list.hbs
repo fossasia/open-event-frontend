@@ -5,4 +5,6 @@
   useFilteringByColumns=true
   moveToDetails='moveToDetails'
   editEvent='editEvent'
+  openDeleteEventModal='openDeleteEventModal'
 }}
+{{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen confirmName=confirmName eventName=eventName deleteEvent=(action 'deleteEvent')}}
