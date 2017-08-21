@@ -8,6 +8,9 @@ export default Component.extend({
     },
     editEvent(id) {
       this.sendAction('editEvent', id);
+    },
+    openDeleteEventModal(id, name) {
+      this.sendAction('openDeleteEventModal', id, name);
     }
   }
 });
