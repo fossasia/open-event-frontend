@@ -48,7 +48,7 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
-        this.sendAction('submit', this.getProperties('passwordCurrent', 'passwordNew'));
+        this.sendAction('changePassword', this.getProperties('passwordCurrent', 'passwordNew'));
       });
     }
   }
