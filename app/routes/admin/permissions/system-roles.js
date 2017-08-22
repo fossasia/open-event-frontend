@@ -8,7 +8,8 @@ export default Route.extend({
   },
   model() {
     return RSVP.hash({
-      userPermissions: this.get('store').findAll('user-permission')
+      userPermissions : this.get('store').findAll('user-permission'),
+      roles           : this.get('store').findAll('role')
     });
   },
   actions: {
