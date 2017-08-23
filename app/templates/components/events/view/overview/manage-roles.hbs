@@ -3,8 +3,8 @@
   <div class="header">{{t 'Manage roles'}}</div>
 </div>
 <div class="content">
-  <button class="ui button">{{t 'Accepted'}}</button>
-  <button class="ui button">{{t 'Invited'}}</button>
+  <button class="ui {{if (eq roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
+  <button class="ui {{if (eq roleType 'pending') 'active'}} button" {{action 'filter' 'pending'}}>{{t 'Invited'}}</button>
 </div>
 <div class="content">
   <table class="ui very basic table">
@@ -16,20 +16,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John@doe.com</td>
-        <td>xyz</td>
-        <td>
-          <div class="ui horizontal compact basic buttons">
-            {{#ui-popup content=(t 'Edit') class='ui icon button'}}
-              <i class="edit icon"></i>
-            {{/ui-popup}}
-            {{#ui-popup content=(t 'Delete') class='ui icon button'}}
-              <i class="trash outline icon"></i>
-            {{/ui-popup}}
-          </div>
-        </td>
-      </tr>
+      {{#each roleInvites as |roleInvite|}}
+        <tr>
+          <td>{{roleInvite.email}}</td>
+          <td>{{roleInvite.roleName}}</td>
+          <td>
+            <div class="ui horizontal compact basic buttons">
+              {{#ui-popup content=(t 'Edit') class='ui icon button'}}
+                <i class="edit icon"></i>
+              {{/ui-popup}}
+              {{#ui-popup content=(t 'Delete') class='ui icon button'}}
+                <i class="trash outline icon"></i>
+              {{/ui-popup}}
+            </div>
+          </td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
 </div>
