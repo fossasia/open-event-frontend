@@ -23,7 +23,8 @@ moduleForModel('event', 'Unit | Model | event', {
     'model:discount-code',
     'model:access-code',
     'model:email-notification',
-    'model:order'
+    'model:order',
+    'model:role-invite'
   ]
 });
 
