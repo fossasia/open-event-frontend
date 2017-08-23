@@ -16,43 +16,43 @@ export default ModelBase.extend({
   event: belongsTo('event'),
 
   session: {
-    title         : 'TITLE',
-    subtitle      : 'SUBTITLE',
-    shortAbstract : 'SHORT ABSTRACT',
-    longAbstract  : 'LONG ABSTRACT',
-    comments      : 'COMMENT',
-    track         : 'TRACK',
-    sessionType   : 'SESSION TYPE',
-    level         : 'LEVEL',
-    language      : 'LANGUAGE',
-    slidesUrl     : 'SLIDES URL',
-    videoUrl      : 'VIDEO URL',
-    audioUrl      : 'AUDIO URL'
+    title         : 'Title',
+    subtitle      : 'Ssubtitle',
+    shortAbstract : 'Short Abstract',
+    longAbstract  : 'Long Abstract',
+    comments      : 'Comment',
+    track         : 'Track',
+    sessionType   : 'Session Type',
+    level         : 'Level',
+    language      : 'Language',
+    slidesUrl     : 'Slide',
+    videoUrl      : 'Video',
+    audioUrl      : 'Audio'
   },
 
   speaker: {
-    name                : 'NAME',
-    email               : 'EMAIL',
-    photoUrl            : 'PHOTO',
-    organisation        : 'ORGANISATION',
-    position            : 'POSITION',
-    country             : 'COUNTRY',
-    city                : 'CITY',
-    longBiography       : 'LONG BIOGRAPHY',
-    shortBiography      : 'SHORT BIOGRAPHY',
-    speakingExperience  : 'SPEAKING EXPERIENCE',
-    sponsorshipRequired : 'SPONSORSHIP REQUIRED',
-    gender              : 'GENDER',
-    heardFrom           : 'HEARD FROM',
-    mobile              : 'MOBILE',
-    website             : 'WEBSITE',
-    facebook            : 'FACEBOOK',
-    twitter             : 'TWITTER',
-    github              : 'GITHUB',
-    linkedin            : 'LINKEDIN'
+    name                : 'Name',
+    email               : 'Email',
+    photoUrl            : 'Photo',
+    organisation        : 'Organisation',
+    position            : 'Position',
+    country             : 'Country',
+    city                : 'City',
+    longBiography       : 'Long Biography',
+    shortBiography      : 'Short Biography',
+    speakingExperience  : 'Speaking Experience',
+    sponsorshipRequired : 'Sponsorship Required',
+    gender              : 'Gender',
+    heardFrom           : 'Heard From',
+    mobile              : 'Mobile',
+    website             : 'Website',
+    facebook            : 'Facebook',
+    twitter             : 'Twitter',
+    github              : 'Github',
+    linkedin            : 'Linkedin'
   },
 
-  name: computed('fieldIdentifier', function() {
+  name: computed('fieldIdentifier', 'form', function() {
     let name = this.get('fieldIdentifier');
     if (this.get('form') === 'session') {
       name = this.get(`session.${name}`);
