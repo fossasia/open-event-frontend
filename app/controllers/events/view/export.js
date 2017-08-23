@@ -17,7 +17,6 @@ export default Controller.extend({
         .load(exportJobInfo.task_url, { withoutPrefix: true })
         .then(exportJobStatus => {
           if (exportJobStatus.state === 'SUCCESS') {
-            this.set('isLoading', false);
             this.set('isDownloadDisabled', false);
             this.set('eventDownloadUrl', exportJobStatus.result.download_url);
             this.set('eventExportStatus', exportJobStatus.state);
@@ -27,15 +26,16 @@ export default Controller.extend({
             this.set('eventExportStatus', exportJobStatus.state);
             this.get('notify').alert(this.l10n.t('Event export is going on.'));
           } else {
-            this.set('isLoading', false);
             this.set('eventExportStatus', exportJobStatus.state);
             this.get('notify').error(this.l10n.t('Event export failed.'));
           }
         })
         .catch(() => {
-          this.set('isLoading', false);
           this.set('eventExportStatus', 'FAILURE');
           this.get('notify').error(this.l10n.t('Event export failed.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     }, 3000);
   },
