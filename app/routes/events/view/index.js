@@ -14,7 +14,8 @@ export default Route.extend({
       socialLinks  : eventDetails.query('socialLinks', {}),
       statistics   : eventDetails.query('eventStatisticsGeneral', {}),
       orderStat    : eventDetails.query('orderStatistics', {}),
-      ticketStat   : eventDetails.query('tickets', {})
+      ticketStat   : eventDetails.query('tickets', {}),
+      settings     : this.get('store').queryRecord('setting', {})
     });
   }
 });

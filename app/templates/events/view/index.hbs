@@ -3,7 +3,7 @@
     {{events/view/overview/event-setup-checklist data=model}}
   </div>
   <div class="eight wide column">
-    {{events/view/overview/general-info data=model}}
+    {{events/view/overview/general-info data=model call=model.call}}
   </div>
   <div class="eight wide column">
     {{events/view/overview/manage-roles}}
@@ -12,7 +12,7 @@
     {{events/view/overview/event-sponsors data=model.sponsors columns=sponsorsColumns}}
   </div>
   <div class="eight wide column">
-    {{events/view/overview/event-apps}}
+    {{events/view/overview/event-apps settings=model.settings}}
   </div>
   <div class="eight wide column">
     {{events/view/overview/event-tickets data=model.orderStat}}
