@@ -5,11 +5,10 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
 
   primaryKey : 'attributes.identifier',
   attrs      : {
-    type        : 'event-type',
-    topic       : 'event-topic',
-    subTopic    : 'event-sub-topic',
-    copyright   : 'event-copyright',
-    customForms : 'custom-form'
+    type      : 'event-type',
+    topic     : 'event-topic',
+    subTopic  : 'event-sub-topic',
+    copyright : 'event-copyright'
   },
   normalize() {
     const payload = this._super(...arguments);
