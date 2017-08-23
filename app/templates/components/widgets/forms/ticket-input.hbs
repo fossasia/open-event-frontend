@@ -7,7 +7,7 @@
   <div class="column">
     {{#if (eq ticket.type 'paid')}}
       <div class="field">
-        {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price}}
+        {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price min=1}}
       </div>
     {{else}}
       <span class="text muted ticket-input">
@@ -17,7 +17,7 @@
   </div>
   <div class="column">
     <div class="field">
-      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity}}
+      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity min=1}}
     </div>
   </div>
   <div class="column {{unless device.isLargeMonitor 'less right padding'}}">
