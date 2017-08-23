@@ -15,16 +15,17 @@ export default Controller.extend({
       this.get('model').save()
         .then(user => {
           this.set('session.newUser', user.get('email'));
-          this.set('isLoading', false);
           this.transitionToRoute('login');
         })
         .catch(reason => {
-          this.set('isLoading', false);
           if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 409) {
             this.set('errorMessage', this.l10n.t('User already exists.'));
           } else {
             this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
           }
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     }
   }

@@ -15,12 +15,13 @@ export default Controller.extend({
       this.set('isLoading', true);
       role.destroyRecord()
         .then(() => {
-          this.set('isLoading', false);
           this.notify.success(this.l10n.t('System role has been deleted successfully.'));
         })
         .catch(()=> {
-          this.set('isLoading', false);
           this.notify.error(this.l10n.t('An unexpected error has occurred. System role was not deleted.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     },
     addSystemRole() {
@@ -28,24 +29,26 @@ export default Controller.extend({
       this.get('role').save()
         .then(() => {
           this.set('isAddSystemRoleModalOpen', false);
-          this.set('isLoading', false);
           this.notify.success(this.l10n.t('System role have been saved successfully.'));
         })
         .catch(()=> {
-          this.set('isLoading', false);
           this.notify.error(this.l10n.t('An unexpected error has occurred. System role not saved.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     },
     updatePermissions() {
       this.set('isLoading', true);
       this.get('model.userPermissions').save()
         .then(() => {
-          this.set('isLoading', false);
           this.notify.success(this.l10n.t('User permissions have been saved successfully.'));
         })
         .catch(()=> {
-          this.set('isLoading', false);
           this.notify.error(this.l10n.t('An unexpected error has occurred. User permissions not saved.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     }
   }
