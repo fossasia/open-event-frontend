@@ -40,14 +40,18 @@ export default Controller.extend({
       this.set('isEventDeleteModalOpen', false);
     },
     copyEvent() {
+      this.set('isCopying', true);
       this.get('loader')
-        .post(`events/${this.get('model').id}/copy`, {})
+        .post(`events/${this.get('model.id')}/copy`, {})
         .then(copiedEvent => {
           this.transitionToRoute('events.view.edit', copiedEvent.identifier);
           this.get('notify').success(this.l10n.t('Event copied successfully'));
         })
         .catch(() => {
           this.get('notify').error(this.l10n.t('Copying of event failed'));
+        })
+        .finally(() => {
+          this.set('isCopying', false);
         });
     }
   }
