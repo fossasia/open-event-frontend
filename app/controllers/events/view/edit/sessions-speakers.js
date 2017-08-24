@@ -5,8 +5,9 @@ const { Controller, RSVP } = Ember;
 export default Controller.extend({
   actions: {
     save() {
+      this.set('isLoading', true);
       this.get('model.event').save()
-        .then(() => {
+        .then(data => {
           let promises = [];
           if (this.get('model.event.isSessionsSpeakersEnabled')) {
             promises.push(this.get('model.event.tracks').toArray().map(track => track.save()));
@@ -23,18 +24,22 @@ export default Controller.extend({
           }
           RSVP.Promise.all(promises)
             .then(() => {
-              this.transitionToRoute('index');
+              this.set('isLoading', false);
+              this.get('notify').success(this.l10n.t('Your event has been saved'));
+              this.transitionToRoute('events.view.index', data.id);
             }, function() {
               this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
             });
         })
         .catch(() => {
+          this.set('isLoading', false);
           this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
         });
     },
     move() {
+      this.set('isLoading', true);
       this.get('model.event').save()
-        .then(() => {
+        .then(data => {
           let promises = [];
           if (this.get('model.event.isSessionsSpeakersEnabled')) {
             promises.push(this.get('model.event.tracks').toArray().map(track => track.save()));
@@ -51,12 +56,15 @@ export default Controller.extend({
           }
           RSVP.Promise.all(promises)
             .then(() => {
-              this.transitionToRoute('index');
+              this.get('notify').success(this.l10n.t('Your event has been saved'));
+              this.set('isLoading', false);
+              this.transitionToRoute('events.view.index', data.id);
             }, function() {
               this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
             });
         })
         .catch(() => {
+          this.set('isLoading', false);
           this.get('notify').error(this.l10n.t('Event data did not save. Please try again'));
         });
     }
