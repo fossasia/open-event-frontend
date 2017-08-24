@@ -13,7 +13,7 @@
         </div>
         <div class="ui segment">
           {{#if model.event.isTicketingEnabled}}
-            {{public/ticket-list ticketUrl=model.event.ticketUrl isTicketingEnabled=model.event.isTicketingEnabled tickets=model.tickets}}
+            {{public/ticket-list ticketUrl=model.event.ticketUrl isTicketingEnabled=model.event.isTicketingEnabled data=model.tickets}}
           {{else}}
             <div class="ui grid">
               <div class="ui row">
