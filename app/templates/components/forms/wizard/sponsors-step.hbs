@@ -1,4 +1,4 @@
-<form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
 
   <div class="ui centered grid">
     <div class="column">
@@ -73,16 +73,16 @@
   {{/if}}
 
   <div class="{{if device.isMobile 'mini three' 'right floated large'}} ui buttons">
-    <button class="ui right labeled icon button" type="button" {{action 'moveForward'}}>
+    <button class="ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="blue ui right labeled icon button" type="button" {{action 'saveDraft'}}>
+    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
     {{#if data.event.locationName}}
-      <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
+      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>
