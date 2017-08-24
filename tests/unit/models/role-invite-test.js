@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('role', 'Unit | Model | role', {
+moduleForModel('role-invite', 'Unit | Model | role invite', {
   // Specify the other units that are required for this test.
-  needs: ['model:role-invite']
+  needs: ['model:role', 'model:event']
 });
 
 test('it exists', function(assert) {

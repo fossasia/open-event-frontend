@@ -10,6 +10,7 @@ export default Route.extend({
       sponsors : eventDetails.query('sponsors', {
         'page[size]': 10
       }),
+      roleInvites  : eventDetails.query('roleInvites', {}),
       sessionTypes : eventDetails.query('sessionTypes', {}),
       socialLinks  : eventDetails.query('socialLinks', {}),
       statistics   : eventDetails.query('eventStatisticsGeneral', {}),
