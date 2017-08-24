@@ -5,7 +5,7 @@
   {{#ui-popup tagName='a' click=(action 'moveToDetails' record.identifier) content=(t 'View') class='ui icon button'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'Delete') class='ui icon button'}}
+  {{#ui-popup content=(t 'Delete') click=(action 'openDeleteEventModal' record.identifier record.name) class='ui icon button'}}
     <i class="trash outline icon"></i>
   {{/ui-popup}}
 </div>
