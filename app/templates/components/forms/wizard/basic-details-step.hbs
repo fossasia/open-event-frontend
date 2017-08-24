@@ -167,7 +167,7 @@
           {{widgets/forms/ticket-input ticket=ticket
                                        timezone=data.event.timezone
                                        canMoveUp=(not-eq index 0)
-                                       canMoveDown=(not-eq ticket data.event.tickets.lastObject)
+                                       canMoveDown=(not-eq ticket.position (dec data.event.tickets.length))
                                        moveTicketUp=(action 'moveTicket' ticket 'up')
                                        moveTicketDown=(action 'moveTicket' ticket 'down')
                                        removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
@@ -178,14 +178,14 @@
         </h3>
       {{/if}}
     </div>
-    <button type="button" class="ui blue small button" {{action 'addTicket' 'free'}}>
+    <button type="button" class="ui blue small button" {{action 'addTicket' 'free' data.event.tickets.length}}>
       <i class="large icons basic-details">
         <i class="smile icon"></i>
         <i class="inverted corner add icon"></i>
       </i>
       {{t 'Free Ticket'}}
     </button>
-    <button type="button" class="ui blue small button" {{action 'addTicket' 'paid'}}>
+    <button type="button" class="ui blue small button" {{action 'addTicket' 'paid' data.event.tickets.length}}>
       <i class="large icons basic-details">
         <i class="dollar icon"></i>
         <i class="inverted corner add icon"></i>
