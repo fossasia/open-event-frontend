@@ -34,6 +34,7 @@ moduleForModel('event', 'Unit | Serializer | application', {
     'model:discount-code',
     'model:access-code',
     'model:order',
+    'model:role-invite',
     'transform:moment'
   ]
 });

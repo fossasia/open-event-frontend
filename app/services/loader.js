@@ -36,7 +36,7 @@ export default Service.extend({
           resolve(data);
         },
         jqXHR => {
-          reject(`Could not make ${options.type} request to ${options.url}`);
+          reject(jqXHR.responseJSON ? jqXHR.responseJSON : jqXHR.responseText ? jqXHR.responseText : `Could not make ${options.type} request to ${options.url}`);
           jqXHR.then = null;
         }
       );

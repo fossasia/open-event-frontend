@@ -5,6 +5,9 @@ import { sumBy } from 'lodash';
 const { Component, computed } = Ember;
 
 export default Component.extend(FormMixin, {
+  tickets: computed(function() {
+    return this.get('data').sortBy('position');
+  }),
   hasTicketsInOrder: computed('tickets.@each.orderQuantity', function() {
     return sumBy(this.get('tickets').toArray(),
       ticket => ticket.getWithDefault('orderQuantity', 0)
