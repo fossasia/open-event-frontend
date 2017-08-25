@@ -1,28 +1,28 @@
 <h1 class="ui header">
   {{t 'Call for Speakers'}}
-  {{#if speakersCall.isOpen}}
+  {{#if data.speakersCall.isOpen}}
     <a class="ui basic green label">{{t 'Open'}}</a>
     <div class="sub header">
-      {{t 'Call for Speakers Open until'}} {{moment-format speakersCall.endsAt 'ddd, MMM DD HH:mm A'}}
+      {{t 'Call for Speakers Open until'}} {{moment-format data.speakersCall.endsAt 'ddd, MMM DD HH:mm A'}}
     </div>
   {{else}}
     <a class="ui basic red label">{{t 'Closed'}}</a>
     <div class="sub header">
-      {{#if speakersCall.isInFuture}}
-        {{t 'Call for Speakers will open at'}} {{moment-format speakersCall.startsAt 'ddd, MMM DD HH:mm A'}}
+      {{#if data.speakersCall.isInFuture}}
+        {{t 'Call for Speakers will open at'}} {{moment-format data.speakersCall.startsAt 'ddd, MMM DD HH:mm A'}}
       {{else}}
-        {{t 'Call for Speakers closed at'}} {{moment-format speakersCall.endsAt 'ddd, MMM DD HH:mm A'}}
+        {{t 'Call for Speakers closed at'}} {{moment-format data.speakersCall.endsAt 'ddd, MMM DD HH:mm A'}}
       {{/if}}
     </div>
   {{/if}}
 </h1>
 <div class="ui divider"></div>
-{{sanitize speakersCall.announcement}}
+{{sanitize data.speakersCall.announcement}}
 <div class="ui hidden divider"></div>
-{{#if speakersCall.isOpen}}
+{{#if data.speakersCall.isOpen}}
   <button type="submit" class="ui teal submit button" {{action 'openProposalModal'}}>
     {{t 'Submit Proposal'}}
   </button>
 {{/if}}
 
-{{modals/cfs-proposal-modal isOpen=isCfsModalOpen}}
+{{modals/cfs-proposal-modal isOpen=isCfsModalOpen isNew=isNew}}
