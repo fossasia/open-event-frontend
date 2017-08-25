@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-const { Route } = Ember;
+const { Route, RSVP } = Ember;
 
 export default Route.extend(ApplicationRouteMixin, {
   title(tokens) {
@@ -21,15 +21,18 @@ export default Route.extend(ApplicationRouteMixin, {
 
   model() {
     if (this.get('session.isAuthenticated')) {
-      return this.get('authManager.currentUser').query('notifications', {
-        filter: [
-          {
-            name : 'is-read',
-            op   : 'eq',
-            val  : false
-          }
-        ],
-        sort: '-received-at'
+      return RSVP.hash({
+        notifications: this.get('authManager.currentUser').query('notifications', {
+          filter: [
+            {
+              name : 'is-read',
+              op   : 'eq',
+              val  : false
+            }
+          ],
+          sort: '-received-at'
+        }),
+        pages: this.get('store').findAll('page')
       });
     }
   },
