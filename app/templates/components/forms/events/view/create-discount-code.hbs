@@ -1,23 +1,23 @@
-<form class="ui form" {{action 'submit' on='submit'}}>
+<form class="ui form" {{action 'submit' data on='submit'}}>
   <div class="field">
     <label class="required">{{t 'Discount Code'}}</label>
     {{input type='text' name='discount_code' value=data.code}}
   </div>
   <div class="field">
     <label class="required">{{t 'Enter Discount'}}</label>
-    {{ui-radio label=(t 'Amount (US$)') name='discount_type'  value='amount' current='amount' onChange=(action (mut selectedMode))}}
+    {{ui-radio label=(t 'Amount (US$)') name='discount_type'  value='amount' current=data.type onChange=(action (mut data.type))}}
   </div>
-  {{#if (not-eq selectedMode 'percent')}}
+  {{#if (not-eq data.type 'percent')}}
     <div class="field">
-      {{input type='number' name='discount_amount' min=1 step=0.1}}
+      {{input type='number' name='discount_amount' min=1 step=0.1 value=data.value}}
     </div>
   {{/if}}
   <div class="field">
-    {{ui-radio label=(t 'Percent (%)') name='discount_type'  value='percent' onChange=(action (mut selectedMode))}}
+    {{ui-radio label=(t 'Percent (%)') name='discount_type'  value='percent' current=data.type onChange=(action (mut data.type))}}
   </div>
-  {{#if (eq selectedMode 'percent')}}
+  {{#if (eq data.type 'percent')}}
     <div class="field">
-      {{input type='number' name='discount_percent' min=1 max=100 step=0.1}}
+      {{input type='number' name='discount_percent' min=1 max=100 step=0.1 value=data.value}}
     </div>
   {{/if}}
   <div class="field">
@@ -27,16 +27,16 @@
   <div class="grouped inline fields">
     <label class="required">{{t 'Status'}}</label>
     <div class="field">
-      {{ui-radio name='status' label=(t 'Active') current='active' value='active'}}
+      {{ui-radio name='status' label=(t 'Active') current=data.isActive value='true' onChange=(action (mut data.isActive))}}
     </div>
     <div class="field">
-      {{ui-radio name='status' label=(t 'Inactive') value='inactive'}}
+      {{ui-radio name='status' label=(t 'Inactive') value='false' current=data.isActive onChange=(action (mut data.isActive))}}
     </div>
   </div>
   <div class="inline field">
     <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
     <div class="ui hidden divider"></div>
-    {{ui-checkbox name= 'all_ticket_types' label=(t 'Select all Ticket types') checked=allTicketsChecked onChange=(action (mut allTicketsChecked))}}
+    {{ui-checkbox name= 'all_ticket_types' label=(t 'Select all Ticket types') value='tickets' checked=allTicketsChecked onChange=(action (mut allTicketsChecked))}}
   </div>
   {{#if allTicketsChecked}}
     <div class="ui list">
