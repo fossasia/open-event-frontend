@@ -8,9 +8,7 @@ export default Component.extend({
   currentRoute: computed('session.currentRouteName', 'item', function() {
     var path = this.get('session.currentRouteName');
     if (path) {
-      this.set('item', this.$('a.active'));
-      this.$('a').addClass('vertical-item');
-      return this.$('a.active').text().trim();
+      return this.get('item');
     }
   }),
   didInsertElement() {
@@ -18,15 +16,21 @@ export default Component.extend({
     if (isMobile) {
       this.$('a').addClass('vertical-item');
     }
-    this.set('item', this.$('a.active'));
+    this.set('item', this.$('a.active').text().trim());
+  },
+  didUpdate() {
+    var isMobile = this.get('device.isMobile');
+    if (isMobile) {
+      this.$('a').addClass('vertical-item');
+    }
   },
   actions: {
     toggleMenu(mode) {
       var menu = this.$('div.menu');
       menu.toggleClass('hidden');
-
       if (mode === 'reset') {
-        this.set('item', this.$('a.active'));
+        this.$('a.item').addClass('vertical-item');
+        this.set('item', event.srcElement.text);
       }
     }
   }
