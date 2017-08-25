@@ -10,8 +10,21 @@ export default Route.extend({
   model() {
     const eventDetails = this.modelFor('public');
     return RSVP.hash({
-      event        : eventDetails,
-      speakersCall : eventDetails.get('speakersCall')
+      event       : eventDetails,
+      userSpeaker : this.get('authManager.currentUser').query('speakers', {
+        filter: [
+          {
+            name : 'event',
+            op   : 'has',
+            val  : {
+              name : 'identifier',
+              op   : 'eq',
+              val  : eventDetails.id
+            }
+          }
+        ]
+      }),
+      speakersCall: eventDetails.get('speakersCall')
     });
   }
 });

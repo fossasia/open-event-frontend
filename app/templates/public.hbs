@@ -34,7 +34,9 @@
         {{outlet}}
       </div>
       <div class="three wide column public">
-        {{public/social-links eventUrl=model.url socialLinks=model.socialLinks}}
+        {{#unless session.currentRouteName 'public.cfs.new-speaker'}}
+          {{public/social-links eventUrl=model.url socialLinks=model.socialLinks}}
+        {{/unless}}
       </div>
     </div>
   </div>
