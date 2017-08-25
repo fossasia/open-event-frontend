@@ -32,7 +32,9 @@ export default Route.extend(ApplicationRouteMixin, {
           ],
           sort: '-received-at'
         }),
-        pages: this.get('store').findAll('page')
+        pages: this.get('store').query('page', {
+          sort: 'index'
+        })
       });
     }
   },
