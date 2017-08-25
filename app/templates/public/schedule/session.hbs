@@ -1,1 +1,11 @@
-{{t 'Session'}}
+{{#tabbed-navigation isNonPointing=true}}
+  {{#link-to 'public.schedule.session.index' class='item'}}
+    {{t 'All'}}
+  {{/link-to}}
+  {{#each model.tracks as |track|}}
+    {{#link-to 'public.schedule.session.list' track.id class='item'}}
+      {{track.name}}
+    {{/link-to}}
+  {{/each}}
+{{/tabbed-navigation}}
+{{outlet}}
