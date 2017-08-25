@@ -7,7 +7,7 @@ moduleForComponent('events/overview/manage-roles', 'Integration | Component | ev
 
 const { Object: EmberObject, A } = Ember;
 
-let roleInvites = A(
+let invites = A(
   [
     EmberObject.create({
       email    : 'test@test.com',
@@ -21,9 +21,12 @@ let roleInvites = A(
     })
   ]
 );
+let data = EmberObject.create({
+  roleInvites: invites
+});
 
 test('it renders', function(assert) {
-  this.set('roleInvites', roleInvites);
-  this.render(hbs`{{events/view/overview/manage-roles data=roleInvites}}`);
+  this.set('data', data);
+  this.render(hbs`{{events/view/overview/manage-roles data=data}}`);
   assert.ok(this.$().html().trim().includes('Manage roles'));
 });
