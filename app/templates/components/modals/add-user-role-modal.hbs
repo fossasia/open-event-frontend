@@ -7,14 +7,14 @@
       <label class="required">
         {{t 'User Email'}}
       </label>
-      {{input type='text' name='user_email'}}
+      {{input type='text' name='user_email' value=email}}
     </div>
     <div class="field">
       <label class="required">
         {{t 'User role'}}
       </label>
       {{#ui-dropdown class='fluid selection' required=true}}
-        {{input type='hidden' name='user_role' required=true}}
+        {{input type='hidden' name='user_role' value=roleName required=true}}
         <i class="dropdown icon"></i>
         <div class="default text">
           {{t 'Select a role'}}

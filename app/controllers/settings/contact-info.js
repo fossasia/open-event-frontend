@@ -9,12 +9,13 @@ export default Controller.extend({
       let currentUser = this.get('model');
       currentUser.save()
         .then(() => {
-          this.set('isLoading', false);
           this.get('notify').success(this.l10n.t('Your Contact Info has been updated'));
         })
         .catch(() => {
-          this.set('isLoading', false);
           this.get('notify').error(this.l10n.t('An unexpected error occurred'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     }
   }

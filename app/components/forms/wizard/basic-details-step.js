@@ -186,8 +186,8 @@ export default Component.extend(FormMixin, {
     return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
-  tickets: computed('data.event.tickets.@each.isDeleted', function() {
-    return this.get('data.event.tickets').filterBy('isDeleted', false);
+  tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
+    return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
   }),
 
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
@@ -235,22 +235,30 @@ export default Component.extend(FormMixin, {
         this.sendAction('save');
       });
     },
-    addTicket(type) {
+    addTicket(type, position) {
       const salesStartDateTime = this.get('data.event.startsAt');
       const salesEndDateTime = this.get('data.event.endsAt');
       this.get('data.event.tickets').pushObject(this.store.createRecord('ticket', {
         type,
+        position,
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
       }));
     },
-    removeTicket(ticket) {
-      ticket.deleteRecord();
+    removeTicket(deleteTicket) {
+      const index = deleteTicket.get('position');
+      this.get('data.event.tickets').forEach(ticket => {
+        if (ticket.get('position') > index) {
+          ticket.set('position', ticket.get('position') - 1);
+        }
+      });
+      deleteTicket.deleteRecord();
     },
     moveTicket(ticket, direction) {
-      const index = this.get('data.event.tickets').indexOf(ticket);
-      this.get('data.event.tickets').removeAt(index);
-      this.get('data.event.tickets').insertAt(direction === 'up' ? (index - 1) : (index + 1), ticket);
+      const index = ticket.get('position');
+      const otherTicket = this.get('data.event.tickets').find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
+      otherTicket.set('position', index);
+      ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
     addItem(type, model) {
       this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));

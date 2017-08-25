@@ -1,4 +1,4 @@
-<form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
   <div class="field">
     <label class="required" for="name">{{t 'Name'}}</label>
     {{input type='text' id='name' value=data.event.name}}
@@ -167,7 +167,7 @@
           {{widgets/forms/ticket-input ticket=ticket
                                        timezone=data.event.timezone
                                        canMoveUp=(not-eq index 0)
-                                       canMoveDown=(not-eq ticket data.event.tickets.lastObject)
+                                       canMoveDown=(not-eq ticket.position (dec data.event.tickets.length))
                                        moveTicketUp=(action 'moveTicket' ticket 'up')
                                        moveTicketDown=(action 'moveTicket' ticket 'down')
                                        removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
@@ -178,14 +178,14 @@
         </h3>
       {{/if}}
     </div>
-    <button type="button" class="ui blue small button" {{action 'addTicket' 'free'}}>
+    <button type="button" class="ui blue small button" {{action 'addTicket' 'free' data.event.tickets.length}}>
       <i class="large icons basic-details">
         <i class="smile icon"></i>
         <i class="inverted corner add icon"></i>
       </i>
       {{t 'Free Ticket'}}
     </button>
-    <button type="button" class="ui blue small button" {{action 'addTicket' 'paid'}}>
+    <button type="button" class="ui blue small button" {{action 'addTicket' 'paid' data.event.tickets.length}}>
       <i class="large icons basic-details">
         <i class="dollar icon"></i>
         <i class="inverted corner add icon"></i>
@@ -528,16 +528,16 @@
   </div>
   <br>
   <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui buttons">
-    <button class="ui right labeled icon button" type="button" {{action 'moveForward'}}>
+    <button class="ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="blue ui right labeled icon button" type="button" {{action 'saveDraft'}}>
+    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
     {{#if data.event.locationName}}
-      <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
+      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

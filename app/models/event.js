@@ -105,6 +105,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   customForms            : hasMany('custom-form'),
   attendees              : hasMany('attendee'),
   orderStatistics        : belongsTo('order-statistics-event'),
+  roleInvites            : hasMany('role-invite'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

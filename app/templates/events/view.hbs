@@ -33,7 +33,7 @@
                   {{t 'Publish'}}
                 {{/if}}
               </button>
-              <button class="ui button ">
+              <button class="ui button {{if isCopying 'loading'}}" {{action 'copyEvent'}} disabled={{isCopying}}>
                 <i class="copy icon"></i>
                 {{t 'Copy'}}
               </button>
