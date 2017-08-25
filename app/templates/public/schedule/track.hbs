@@ -1,1 +1,6 @@
-{{t 'Tracks'}}
+{{#each model.tracks as |track|}}
+  <h3 class="ui header">{{track.name}}</h3>
+  {{#each track.sessions as |session|}}
+    {{public/session-item session=session}}
+  {{/each}}
+{{/each}}
