@@ -14,6 +14,19 @@ export default Route.extend({
       forms : eventDetails.query('customForms', {
         sort         : 'id',
         'page[size]' : 50
+      }),
+      speaker: this.get('authManager.currentUser').query('speakers', {
+        filter: [
+          {
+            name : 'event',
+            op   : 'has',
+            val  : {
+              name : 'identifier',
+              op   : 'eq',
+              val  : eventDetails.id
+            }
+          }
+        ]
       })
     });
   }
