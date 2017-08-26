@@ -13,6 +13,12 @@
   </label>
   {{input type='text' name='email_from_name' value=settings.emailFromName}}
 </div>
+<div class="field">
+  <label>
+    {{t 'Frontend Url'}}
+  </label>
+  {{widgets/forms/link-input segmentedLink=settings.segmentedFrontendUrl inputId='frontend_url'}}
+</div>
 <div class="ui hidden divider"></div>
 <div class="field">
   {{ui-radio label=(t 'Disable email') name='mail_setting' value='disable' current=settings.emailService	 onChange=(action (mut settings.emailService))}}
