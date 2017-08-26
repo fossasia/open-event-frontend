@@ -7,6 +7,8 @@ export default Route.extend({
     return this.l10n.t('All');
   },
   model() {
-    return this.get('authManager.currentUser').query('notifications', {});
+    return this.get('authManager.currentUser').query('notifications', {
+      sort: '-received-at'
+    });
   }
 });
