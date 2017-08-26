@@ -28,7 +28,8 @@ export default Route.extend(ApplicationRouteMixin, {
             op   : 'eq',
             val  : false
           }
-        ]
+        ],
+        sort: '-received-at'
       });
     }
   },
