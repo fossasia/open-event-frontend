@@ -19,10 +19,8 @@
       {{/if}}
       {{#if session.isAuthenticated}}
         {{#ui-dropdown class='item' action='hide'}}
-          <img class="ui avatar round image nav-bar-image"
-               alt="{{authManager.currentUser.email}}"
-               src="{{if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
-                         '/images/placeholders/avatar.png'}}">
+          {{widgets/safe-image class='ui avatar round image nav-bar-image' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
+                    '/images/placeholders/avatar.png')}}
           {{if authManager.currentUser
                (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
                'Welcome'}}
