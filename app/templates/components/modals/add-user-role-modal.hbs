@@ -2,36 +2,28 @@
   {{t 'Add Role'}}
 </div>
 <div class="content">
-  <form class="ui form" id="add-user-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
+  <form class="ui {{if isLoading 'loading'}} form" id="add-user-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">
         {{t 'User Email'}}
       </label>
-      {{input type='text' name='user_email' value=email}}
+      {{input type='text' name='user_email' value=currentInvite.email}}
     </div>
     <div class="field">
       <label class="required">
         {{t 'User role'}}
       </label>
-      {{#ui-dropdown class='fluid selection' required=true}}
-        {{input type='hidden' name='user_role' value=roleName required=true}}
+      {{#ui-dropdown class='fluid selection' onChange=(action (mut currentInvite.role)) as |execute mapper|}}
         <i class="dropdown icon"></i>
         <div class="default text">
           {{t 'Select a role'}}
         </div>
         <div class="menu">
-          <div class="item" data-value="track_organizer">
-            {{t 'Track Organizer'}}
-          </div>
-          <div class="item" data-value="coorganizer">
-            {{t 'Co-organizer'}}
-          </div>
-          <div class="item" data-value="moderator">
-            {{t 'Moderator'}}
-          </div>
-          <div class="item" data-value="registrar">
-            {{t 'Registrar'}}
-          </div>
+          {{#each data.roles as |role|}}
+            <div class="item" data-value="{{map-value mapper role}}">
+              {{role.name}}
+            </div>
+          {{/each}}
         </div>
       {{/ui-dropdown}}
     </div>
