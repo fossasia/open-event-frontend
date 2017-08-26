@@ -56,7 +56,7 @@
       <div class="ui horizontal inverted small divided link list less top margin">
         <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
         {{#each footerPages as |page|}}
-          {{#link-to 'pages' page.id page.title class='item'}}
+          {{#link-to 'pages' page.url class='item'}}
             {{page.name}}
           {{/link-to}}
         {{/each}}

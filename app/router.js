@@ -1,4 +1,3 @@
-
 import Ember from 'ember';
 import config from 'open-event-frontend/config/environment';
 import RouterScroll from 'ember-router-scroll';
@@ -43,7 +42,7 @@ router.map(function() {
   });
   this.route('create');
   this.route('not-found');
-  this.route('not-found-catch', { path: '/*path' });
+  this.route('pages', { path: '/*path' });
   this.route('events', function() {
     this.route('view', { path: '/:event_id' }, function() {
       this.route('edit', function() {
@@ -152,7 +151,6 @@ router.map(function() {
   this.route('orders', function() {
     this.route('new');
   });
-  this.route('pages', { path: 'pages/:page_id/:page_title' });
 });
 
 export default router;

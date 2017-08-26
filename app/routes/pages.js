@@ -7,6 +7,13 @@ export default Route.extend({
     return this.l10n.t('Pages');
   },
   model(params) {
-    return this.get('store').findRecord('page', params.page_id);
+    return this.modelFor('application').pages.findBy('url', params.path);
+  },
+  renderTemplate(model) {
+    if (model.model) {
+      this.render('pages');
+    } else {
+      this.render('not-found');
+    }
   }
 });
