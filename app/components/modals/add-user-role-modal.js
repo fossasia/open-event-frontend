@@ -8,7 +8,7 @@ export default ModalBase.extend(FormMixin, {
   actions: {
     addRole() {
       this.onValid(() => {
-        this.sendAction('addUserRole');
+        this.sendAction('updateUserRoles');
       });
     }
   },
