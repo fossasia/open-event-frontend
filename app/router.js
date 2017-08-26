@@ -36,6 +36,7 @@ router.map(function() {
     });
     this.route('cfs');
     this.route('schedule');
+    this.route('coc');
   });
   this.route('create');
   this.route('not-found');

@@ -50,4 +50,9 @@
       {{t 'Getting here'}}
     </a>
   {{/if}}
+  {{#if event.codeOfConduct}}
+    {{#link-to 'public.coc' class='item'}}
+      {{t 'Code of Conduct'}}
+    {{/link-to}}
+  {{/if}}
 </div>
