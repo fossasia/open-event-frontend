@@ -41,6 +41,17 @@
       {{t 'Call for Speakers'}}
     {{/link-to}}
   {{/if}}
+  {{#if event.hasOrganizerInfo}}
+    {{#if (eq session.currentRouteName 'public.index')}}
+      {{#scroll-to href='#organizer' class='item'}}
+        {{t 'Organizer'}}
+      {{/scroll-to}}
+    {{else}}
+      <a class="item" href="{{href-to 'public.index'}}#organizer">
+        {{t 'Organizer'}}
+      </a>
+    {{/if}}
+  {{/if}}
   {{#if (eq session.currentRouteName 'public.index')}}
     {{#scroll-to href='#getting-here' class='item'}}
       {{t 'Getting here'}}
