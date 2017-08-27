@@ -1,5 +1,9 @@
-<div class="ui bulleted list">
-  {{#each record.tickets as |ticket|}}
-    <div class="item">{{ticket.type}} ({{ticket.order}}/{{ticket.quantity}})</div>
-  {{/each}}
-</div>
+{{#if record.tickets}}
+  <div class="ui bulleted list">
+    {{#each record.tickets as |ticket|}}
+      <div class="item">{{ticket.type}} ({{ticket.orderStatistics.tickets.total}}/{{ticket.quantity}})</div>
+    {{/each}}
+  </div>
+{{else}}
+  <div>{{t 'No Ticket Information'}}</div>
+{{/if}}

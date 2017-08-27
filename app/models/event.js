@@ -101,11 +101,18 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   tax                    : belongsTo('tax'),
   copyright              : belongsTo('event-copyright'),
   sessionTypes           : hasMany('session-type'),
-  user                   : belongsTo('user'),
-  customForms            : hasMany('custom-form'),
-  attendees              : hasMany('attendee'),
-  orderStatistics        : belongsTo('order-statistics-event'),
-  roleInvites            : hasMany('role-invite'),
+  user                   : belongsTo('user', {
+    inverse: 'events'
+  }),
+  customForms     : hasMany('custom-form'),
+  attendees       : hasMany('attendee'),
+  orderStatistics : belongsTo('order-statistics-event'),
+  roleInvites     : hasMany('role-invite'),
+  organizers      : hasMany('user'),
+  coorganizers    : hasMany('user'),
+  trackOrganizers : hasMany('user'),
+  registrars      : hasMany('user'),
+  moderators      : hasMany('user'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

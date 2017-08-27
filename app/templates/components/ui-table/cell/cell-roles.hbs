@@ -1,5 +1,17 @@
 <div class="ui list">
-  {{#each record.roles as |role|}}
-    <div class="item">{{role.email}} ({{role.type}})</div>
+  {{#each record.organizers as |role|}}
+    <div class="item">{{role.email}} ({{t 'Organizer'}})</div>
+  {{/each}}
+  {{#each record.coorganizers as |role|}}
+    <div class="item">{{role.email}} ({{t 'Co-organizers'}})</div>
+  {{/each}}
+  {{#each record.trackOrganizers as |role|}}
+    <div class="item">{{role.email}} ({{t 'Track-organizers'}})</div>
+  {{/each}}
+  {{#each record.registrars as |role|}}
+    <div class="item">{{role.email}} ({{t 'Registrars'}})</div>
+  {{/each}}
+  {{#each record.moderators as |role|}}
+    <div class="item">{{role.email}} ({{t 'Moderators'}})</div>
   {{/each}}
 </div>

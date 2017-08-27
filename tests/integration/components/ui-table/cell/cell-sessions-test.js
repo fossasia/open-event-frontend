@@ -4,10 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('ui-table/cell/cell-sessions', 'Integration | Component | ui table/cell/cell sessions');
 
-const record = { sessionsByState: {} };
-
 test('it renders', function(assert) {
-  this.set('record', record);
-  this.render(hbs `{{ui-table/cell/cell-sessions record=record}}`);
-  assert.ok(this.$().html().trim().includes(''));
+  this.render(hbs `{{ui-table/cell/cell-sessions}}`);
+  assert.ok(this.$().html().trim().includes('Draft'));
 });
