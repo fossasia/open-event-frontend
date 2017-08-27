@@ -6,7 +6,9 @@ moduleForModel('ticket', 'Unit | Serializer | ticket', {
     'model:order-statistics-ticket',
     'model:event',
     'model:user',
-    'model:order'
+    'model:order',
+    'model:attendee',
+    'transform:moment'
   ]
 });
 

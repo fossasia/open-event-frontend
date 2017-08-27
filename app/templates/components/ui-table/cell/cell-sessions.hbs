@@ -1,5 +1,8 @@
-<div class="ui list">
-  {{#each-in record.sessionsByState as |state sessions|}}
-    <div class="item">{{state}}: {{sessions.length}}</div>
-  {{/each-in}}
+<div class="ui ordered list">
+  <div class="item">{{t 'Draft'}}: {{record.eventStatisticsGeneral.sessionsDraft}}</div>
+  <div class="item">{{t 'Submitted'}}: {{record.eventStatisticsGeneral.sessionsSubmited}}</div>
+  <div class="item">{{t 'Accepted'}}: {{record.eventStatisticsGeneral.sessionsAccepted}}</div>
+  <div class="item">{{t 'Confirmed'}}: {{record.eventStatisticsGeneral.sessionsConfirmed}}</div>
+  <div class="item">{{t 'Pending'}}: {{record.eventStatisticsGeneral.sessionsPending}}</div>
+  <div class="item">{{t 'Rejected'}}: {{record.eventStatisticsGeneral.sessionsRejected}}</div>
 </div>
