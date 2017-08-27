@@ -78,7 +78,7 @@ export default Route.extend({
       ];
     }
     return this.get('authManager.currentUser').query('events', {
-      include      : 'event-topic,event-sub-topic,event-type,tickets,sessions,speakers',
+      include      : 'tickets,sessions,speakers,organizers,coorganizers,track-organizers,registrars,moderators',
       filter       : filterOptions,
       'page[size]' : 10
     });
