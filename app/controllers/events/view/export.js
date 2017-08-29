@@ -49,6 +49,7 @@ export default Controller.extend({
           this.requestLoop(exportJobInfo);
         })
         .catch(() => {
+          this.set('isLoading', false);
           this.get('notify').error(this.l10n.t('Unexpected error occurred.'));
         });
     }
