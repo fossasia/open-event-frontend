@@ -55,6 +55,7 @@ export default ModelBase.extend({
   facebookUrl            : attr('string'),
   youtubeUrl             : attr('string'),
   androidAppUrl          : attr('string'),
+  frontendUrl            : attr('string'),
   webAppUrl              : attr('string'),
   staticDomain           : attr('string'),
 
@@ -69,5 +70,6 @@ export default ModelBase.extend({
   segmentedYoutubeUrl    : computedSegmentedLink.bind(this)('youtubeUrl'),
   segmentedGithubUrl     : computedSegmentedLink.bind(this)('githubUrl'),
   segmentedAndroidAppUrl : computedSegmentedLink.bind(this)('androidAppUrl'),
-  segmentedWebAppUrl     : computedSegmentedLink.bind(this)('webAppUrl')
+  segmentedWebAppUrl     : computedSegmentedLink.bind(this)('webAppUrl'),
+  segmentedFrontendUrl   : computedSegmentedLink.bind(this)('frontendUrl')
 });
