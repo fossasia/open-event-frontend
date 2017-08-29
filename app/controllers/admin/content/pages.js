@@ -21,6 +21,9 @@ export default Controller.extend({
     savePage(page) {
       page.save()
         .then(() => {
+          if (this.get('isCreate')) {
+            this.set('isFormOpen', false);
+          }
           this.notify.success(this.l10n.t('Page details have been saved successfully.'));
         })
         .catch(()=> {
