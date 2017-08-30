@@ -33,7 +33,7 @@ export default Controller.extend({
       this.get('model.event').save()
         .then(data => {
           let savedSponsorsPromises = [];
-          if (this.get('model.isSponsorsEnabled')) {
+          if (this.get('model.event.isSponsorsEnabled')) {
             savedSponsorsPromises = this.get('model.sponsors').toArray().map(sponsor => sponsor.save());
           } else {
             savedSponsorsPromises = this.get('model.sponsors').toArray().map(sponsor => sponsor.destroyRecord());
