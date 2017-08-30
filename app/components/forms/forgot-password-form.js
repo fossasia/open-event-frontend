@@ -35,15 +35,19 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
-        let payload = this.getProperties('identification');
-
+        let payload = {
+          'data': {
+            'email': this.get('identification')
+          }
+        };
         this.set('errorMessage', null);
+        this.set('successMessage', null);
         this.set('isLoading', true);
 
         this.get('loader')
-          .post('/forgot-password', payload)
+          .post('auth/reset-password', payload)
           .then(() => {
-
+            this.set('successMessage', this.l10n.t('Please go to the link sent to your email to reset your password'));
           })
           .catch(reason => {
             if (reason && reason.hasOwnProperty('code') && reason.code === 401) {
@@ -51,8 +55,11 @@ export default Component.extend(FormMixin, {
             } else {
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
             }
+          })
+          .finally(()=> {
             this.set('isLoading', false);
-          });
+          }
+          );
       });
     }
   },
