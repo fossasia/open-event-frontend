@@ -20,23 +20,25 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   model() {
+    let notifications = [];
     if (this.get('session.isAuthenticated')) {
-      return RSVP.hash({
-        notifications: this.get('authManager.currentUser').query('notifications', {
-          filter: [
-            {
-              name : 'is-read',
-              op   : 'eq',
-              val  : false
-            }
-          ],
-          sort: '-received-at'
-        }),
-        pages: this.get('store').query('page', {
-          sort: 'index'
-        })
+      notifications = this.get('authManager.currentUser').query('notifications', {
+        filter: [
+          {
+            name : 'is-read',
+            op   : 'eq',
+            val  : false
+          }
+        ],
+        sort: '-received-at'
       });
     }
+    return RSVP.hash({
+      notifications,
+      pages: this.get('store').query('page', {
+        sort: 'index'
+      })
+    });
   },
 
   sessionInvalidated() {
