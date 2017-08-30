@@ -236,8 +236,8 @@ export default Component.extend(FormMixin, {
       });
     },
     addTicket(type, position) {
-      const salesStartDateTime = this.get('data.event.startsAt');
-      const salesEndDateTime = this.get('data.event.endsAt');
+      const salesStartDateTime = moment();
+      const salesEndDateTime = this.get('data.event.startsAt');
       this.get('data.event.tickets').pushObject(this.store.createRecord('ticket', {
         type,
         position,
