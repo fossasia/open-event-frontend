@@ -294,7 +294,27 @@ export default Component.extend(FormMixin, {
       }
     };
   },
+
   allFields: computed('fields', function() {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
-  })
+  }),
+
+  actions: {
+    submit() {
+      this.onValid(() => {
+        this.sendAction('save');
+      });
+    }
+  },
+  didInsertElement() {
+    if (this.get('data.speaker') && this.get('data.speaker').length) {
+      this.set('data.speaker', this.get('data.speaker').toArray()[0]);
+    } else if (this.get('isCFS')) {
+      this.set('data.speaker', this.get('store').createRecord('speaker', {
+        email : this.get('data.currentUser.email'),
+        event : this.get('data.event'),
+        user  : this.get('authManager.currentUser')
+      }));
+    }
+  }
 });
