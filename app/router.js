@@ -116,6 +116,7 @@ router.map(function() {
     });
     this.route('users', function() {
       this.route('list', { path: '/:users_status' });
+      this.route('user', { path: '/u/:user_id' });
     });
     this.route('permissions', function() {
       this.route('event-roles');
