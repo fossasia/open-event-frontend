@@ -25,6 +25,7 @@ export default Controller.extend({
     {
       propertyName     : 'message',
       title            : 'Message',
+      template         : 'components/ui-table/cell/admin/reports/system-logs/notification-logs/cell-sanitize',
       disableSorting   : true,
       disableFiltering : true
     }
