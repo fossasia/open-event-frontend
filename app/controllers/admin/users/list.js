@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 const { Controller } = Ember;
+
 export default Controller.extend({
   columns: [
     {
@@ -57,10 +58,28 @@ export default Controller.extend({
       disableFiltering : true
     },
     {
-      template         : 'components/ui-table/cell/cell-buttons',
+      template         : 'components/ui-table/cell/admin/users/cell-actions',
       title            : 'Actions',
       disableSorting   : true,
       disableFiltering : true
     }
-  ]
+  ],
+  actions: {
+    moveToUserDetails(id) {
+      this.transitionToRoute('admin.users.user', id);
+    },
+    deleteUser(user) {
+      this.set('isLoading', true);
+      user.destroyRecord()
+        .then(() => {
+          this.notify.success(this.l10n.t('User has been deleted successfully.'));
+        })
+        .catch(()=> {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        })
+        .finally(()=>{
+          this.set('isLoading', false);
+        });
+    }
+  }
 });
