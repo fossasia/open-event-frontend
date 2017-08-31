@@ -38,8 +38,7 @@ export default Component.extend(FormMixin, {
     submit() {
       this.onValid(() => {
         this.set('isLoading', true);
-        let user = this.get('user');
-        user.save()
+        this.get('user').save()
           .then(() => {
             this.get('notify').success(this.l10n.t('Your profile has been updated'));
           })
