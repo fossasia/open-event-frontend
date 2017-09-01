@@ -55,10 +55,11 @@
     <div class="thirteen wide computer twelve wide tablet column left aligned">
       <div class="ui horizontal inverted small divided link list less top margin">
         <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
-        <a class="item" href="#">Imprint</a>
-        <a class="item" href="#">Terms and Conditions</a>
-        <a class="item" href="#">Privacy Policy</a>
-        <a class="item" href="#">Cookie Policy</a>
+        {{#each footerPages as |page|}}
+          {{#link-to 'pages' page.url class='item'}}
+            {{page.name}}
+          {{/link-to}}
+        {{/each}}
       </div>
     </div>
     <div class="three wide computer four wide tablet column right aligned">
