@@ -2,10 +2,8 @@
   {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
   {{#if session.isAuthenticated}}
     <div class="item">
-      <img class="ui avatar round image side-bar"
-           alt="{{authManager.currentUser.email}}"
-           src="{{if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
-                     '/images/placeholders/avatar.png'}}">
+      {{widgets/safe-image isAvatar=true class='ui avatar round image side-bar' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
+                '/images/placeholders/avatar.png')}}
       {{if authManager.currentUser
            (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
            'Welcome'}}
