@@ -11,6 +11,7 @@ moduleForModel('user', 'Unit | Serializer | user', {
     'model:notification',
     'model:user',
     'model:session',
+    'model:speaker',
     'model:order',
     'model:attendee',
     'transform:moment',

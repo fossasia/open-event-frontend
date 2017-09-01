@@ -42,7 +42,7 @@ router.map(function() {
   });
   this.route('create');
   this.route('not-found');
-  this.route('not-found-catch', { path: '/*path' });
+  this.route('pages', { path: '/*path' });
   this.route('events', function() {
     this.route('view', { path: '/:event_id' }, function() {
       this.route('edit', function() {
