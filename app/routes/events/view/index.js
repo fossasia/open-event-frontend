@@ -15,7 +15,7 @@ export default Route.extend({
       socialLinks  : eventDetails.query('socialLinks', {}),
       statistics   : eventDetails.query('eventStatisticsGeneral', {}),
       orderStat    : eventDetails.query('orderStatistics', {}),
-      ticketStat   : eventDetails.query('tickets', {}),
+      tickets      : eventDetails.query('tickets', {}),
       roles        : this.store.findAll('role')
     });
   }
