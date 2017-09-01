@@ -13,6 +13,12 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+## Communication
+
+Please join our mailing list to discuss questions regarding the project: https://groups.google.com/forum/#!forum/open-event
+
+Our chat channel is on Gitter here: [gitter.im/fossasia/open-event-frontend](https://gitter.im/fossasia/open-event-frontend)
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
@@ -24,7 +30,7 @@ You will need the following things properly installed on your computer.
 * [PhantomJS](http://phantomjs.org/) - `npm install -g phantomjs-prebuilt`
 * [check-node-version](https://www.npmjs.com/package/check-node-version) - `npm install -g check-node-version`
 
-It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speedup the file-watcher/auto-build service of the ember build server. 
+It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speedup the file-watcher/auto-build service of the ember build server.
 
 ## Installation
 
