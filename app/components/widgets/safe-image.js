@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ENV from 'open-event-frontend/config/environment';
 
 const { Component, run } = Ember;
 
@@ -7,12 +6,16 @@ export default Component.extend({
   tagName           : 'img',
   attributeBindings : ['src'],
 
-  fallback: `${ENV.APP.apiHost}/static/placeholders/Other.jpg`,
+  fallback       : '/images/placeholders/Other.jpg',
+  fallbackAvatar : '/images/placeholders/avatar.png',
 
   didInsertElement() {
+    if (!this.get('src')) {
+      this.set('src', this.get('isAvatar') ? this.get('fallbackAvatar') : this.get('fallback'));
+    }
     this.$().on('error', () => {
       run(this, () => {
-        this.set('src', this.get('fallback'));
+        this.set('src', this.get('isAvatar') ? this.get('fallbackAvatar') : this.get('fallback'));
       });
     });
   },
