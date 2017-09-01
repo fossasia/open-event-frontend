@@ -19,7 +19,7 @@
       {{/if}}
       {{#if session.isAuthenticated}}
         {{#ui-dropdown class='item' action='hide'}}
-          {{widgets/safe-image class='ui avatar round image nav-bar-image' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
+          {{widgets/safe-image isAvatar=true class='ui avatar round image nav-bar-image' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
                     '/images/placeholders/avatar.png')}}
           {{if authManager.currentUser
                (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
