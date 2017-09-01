@@ -84,7 +84,7 @@ export default Route.extend({
     }
 
     return this.store.query('event', {
-      include      : 'tickets,sessions,speakers',
+      include      : 'tickets,sessions,speakers,organizers,coorganizers,track-organizers,registrars,moderators',
       filter       : filterOptions,
       'page[size]' : 10
     });

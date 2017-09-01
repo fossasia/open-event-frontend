@@ -20,7 +20,7 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName   : 'sessionsByState',
+      propertyName   : 'eventStatisticsGeneral.sessions',
       template       : 'components/ui-table/cell/cell-sessions',
       title          : 'Sessions',
       disableSorting : true

@@ -6,6 +6,7 @@ export default Controller.extend({
     {
       propertyName     : 'first-name',
       title            : 'Name',
+      template         : 'components/ui-table/cell/admin/users/cell-first-name',
       disableSorting   : true,
       disableFiltering : true
     },
