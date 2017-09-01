@@ -5,6 +5,9 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('ui-table/cell/cell-buttons', 'Integration | Component | ui table/cell/cell buttons');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{ui-table/cell/cell-buttons}}`);
+  this.set('editEvent', () => {});
+  this.set('moveToDetails', () => {});
+  this.set('openDeleteEventModal', () => {});
+  this.render(hbs`{{ui-table/cell/cell-buttons editEvent=(action editEvent) moveToDetails=(action moveToDetails) openDeleteEventModal=(action openDeleteEventModal)}}`);
   assert.ok(this.$().text().trim().includes(''));
 });
