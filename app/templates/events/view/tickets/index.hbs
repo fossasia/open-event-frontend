@@ -1,7 +1,7 @@
 <div class="ui {{if device.isMobile 'horizontal'}} three statistics">
-  <div class="statistic"><div class="value">{{model.orders.total}}</div><div class="label">{{t 'Orders'}}</div></div>
-  <div class="statistic"><div class="value">{{number-format model.sales.total}}</div><div class="label">{{t 'Sales(US $)'}}</div></div>
-  <div class="statistic"><div class="value">{{model.tickets.total}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
+  <div class="statistic"><div class="value">{{model.orderStats.orders.total}}</div><div class="label">{{t 'Orders'}}</div></div>
+  <div class="statistic"><div class="value">{{number-format model.orderStats.sales.total}}</div><div class="label">{{t 'Sales(US $)'}}</div></div>
+  <div class="statistic"><div class="value">{{model.orderStats.tickets.total}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
 </div>
 <br>
 <div class="row">
@@ -25,9 +25,9 @@
         class='ui grey inverted segment link'}}
           <span>{{t 'Cancelled'}}</span>
         {{/link-to}}
-        <td class="right aligned">{{model.tickets.cancelled}}</td>
-        <td class="right aligned">{{model.orders.cancelled}}</td>
-        <td class="right aligned">{{number-format model.sales.cancelled}}</td>
+        <td class="right aligned">{{model.orderStats.tickets.cancelled}}</td>
+        <td class="right aligned">{{model.orderStats.orders.cancelled}}</td>
+        <td class="right aligned">{{number-format model.orderStats.sales.cancelled}}</td>
         <td>
           {{#link-to 'events.view.tickets.orders.list' 'cancelled'}}
             {{t 'View orders'}}
@@ -43,9 +43,9 @@
         class='ui yellow inverted segment link'}}
           <span>{{t 'Pending'}}</span>
         {{/link-to}}
-        <td class="right aligned">{{model.tickets.pending}}</td>
-        <td class="right aligned">{{model.orders.pending}}</td>
-        <td class="right aligned">{{number-format model.sales.pending}}</td>
+        <td class="right aligned">{{model.orderStats.tickets.pending}}</td>
+        <td class="right aligned">{{model.orderStats.orders.pending}}</td>
+        <td class="right aligned">{{number-format model.orderStats.sales.pending}}</td>
         <td>
           {{#link-to 'events.view.tickets.orders.list' 'pending'}}
             {{t 'View orders'}}
@@ -61,9 +61,9 @@
         class='ui red inverted segment link'}}
           <span>{{t 'Expired'}}</span>
         {{/link-to}}
-        <td class="right aligned">{{model.tickets.expired}}</td>
-        <td class="right aligned">{{model.orders.expired}}</td>
-        <td class="right aligned">{{number-format model.sales.expired}}</td>
+        <td class="right aligned">{{model.orderStats.tickets.expired}}</td>
+        <td class="right aligned">{{model.orderStats.orders.expired}}</td>
+        <td class="right aligned">{{number-format model.orderStats.sales.expired}}</td>
         <td>
           {{#link-to 'events.view.tickets.orders.list' 'expired'}}
             {{t 'View orders'}}
@@ -79,9 +79,9 @@
         class='ui blue inverted segment link'}}
           <span>{{t 'Placed'}}</span>
         {{/link-to}}
-        <td class="right aligned">{{model.tickets.placed}}</td>
-        <td class="right aligned">{{model.orders.placed}}</td>
-        <td class="right aligned">{{number-format model.sales.placed}}</td>
+        <td class="right aligned">{{model.orderStats.tickets.placed}}</td>
+        <td class="right aligned">{{model.orderStats.orders.placed}}</td>
+        <td class="right aligned">{{number-format model.orderStats.sales.placed}}</td>
         <td>
           {{#link-to 'events.view.tickets.orders.list' 'placed'}}
             {{t 'View orders'}}
@@ -97,9 +97,9 @@
         class='ui green inverted segment link'}}
           <span>{{t 'Completed'}}</span>
         {{/link-to}}
-        <td class="right aligned">{{model.tickets.completed}}</td>
-        <td class="right aligned">{{model.orders.completed}}</td>
-        <td class="right aligned">{{number-format model.sales.completed}}</td>
+        <td class="right aligned">{{model.orderStats.tickets.completed}}</td>
+        <td class="right aligned">{{model.orderStats.orders.completed}}</td>
+        <td class="right aligned">{{number-format model.orderStats.sales.completed}}</td>
         <td>
           {{#link-to 'events.view.tickets.orders.index'}}
             {{t 'View orders'}}
@@ -134,16 +134,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Early bird</td>
-        <td>100</td>
-        <td class="right aligned">1</td>
-        <td class="right aligned">{{number-format 0.00}}</td>
-        <td class="right aligned">1</td>
-        <td class="right aligned">{{number-format 0.00}}</td>
-        <td class="right aligned">1</td>
-        <td class="right aligned">{{number-format 0.00}}</td>
-      </tr>
+      {{#each model.tickets as |ticket|}}
+        <tr>
+          <td>{{ticket.name}}</td>
+          <td>{{ticket.quantity}}</td>
+          <td class="right aligned">{{ticket.orderStatistics.tickets.total}}</td>
+          <td class="right aligned">{{number-format ticket.orderStatistics.sales.total}}</td>
+          <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
+          <td class="right aligned">{{number-format ticket.orderStatistics.sales.placed}}</td>
+          <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
+          <td class="right aligned">{{number-format ticket.orderStatistics.sales.pending}}</td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
 </div>
