@@ -43,11 +43,11 @@
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
       {{#if (not-eq routing.currentRouteName 'create')}}
-        <div class="item">
-          {{#link-to 'create' class='ui blue button'}}
+        {{#link-to 'create' class='item ui blue text'}}
+          <div>
             {{t 'Create Event'}}
-          {{/link-to}}
-        </div>
+          </div>  
+        {{/link-to}}
       {{/if}}
     </div>
   </div>
@@ -66,11 +66,11 @@
           {{notification-dropdown notifications=notifications}}
         </a>
       {{/if}}
-      <div class="item">
-        {{#link-to 'create' class='ui blue button button-text small text'}}
+      {{#link-to 'create' class='item ui blue button-text small text'}}
+        <div>
           {{t 'Create Event'}}
-        {{/link-to}}
-      </div>
+        </div>
+      {{/link-to}}
     </div>
   </div>
 </div>
