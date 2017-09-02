@@ -46,6 +46,7 @@ export default Controller.extend({
     },
     {
       template         : 'components/ui-table/cell/events/view/sessions/cell-buttons',
+      title            : 'Actions',
       disableSorting   : true,
       disableFiltering : true
     }
