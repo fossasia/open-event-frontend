@@ -5,6 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('ui-table/cell/cell-simple-buttons', 'Integration | Component | ui table/cell/cell simple buttons');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{ui-table/cell/cell-simple-buttons}}`);
+  this.set('deleteSession', () => {});
+  this.render(hbs`{{ui-table/cell/cell-simple-buttons deleteSession=(action deleteSession)}}`);
   assert.ok(this.$().html().trim().includes(''));
 });
