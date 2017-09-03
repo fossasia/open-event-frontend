@@ -3,8 +3,8 @@
   <div class="ui label">
     {{t 'facebook.com/'}}
   </div>
-  {{input type='text' name='facebook'}}
-  <button class="ui {{if device.isMobile 'icon'}} blue button">
+  {{input type='text' name='facebook' value=data.facebookUrl}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button" {{action 'saveUrl'}}>
     {{#if device.isMobile}}
       <i class="linkify icon"></i>
     {{else}}
@@ -17,8 +17,8 @@
   <div class="ui label">
     {{t 'twitter.com/'}}
   </div>
-  {{input type='text' name='twitter'}}
-  <button class="ui {{if device.isMobile 'icon'}} blue button">
+  {{input type='text' name='twitter' value=data.twitterUrl}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button" {{action 'saveUrl'}}>
     {{#if device.isMobile}}
       <i class="linkify icon"></i>
     {{else}}
@@ -31,8 +31,8 @@
   <div class="ui label">
     {{t 'instagram.com/'}}
   </div>
-  {{input type='text' name='instagram'}}
-  <button class="ui {{if device.isMobile 'icon'}} blue button">
+  {{input type='text' name='instagram' value=data.instagramUrl}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button" {{action 'saveUrl'}}>
     {{#if device.isMobile}}
       <i class="linkify icon"></i>
     {{else}}
@@ -45,8 +45,8 @@
   <div class="ui label">
     {{t 'plus.google.com/'}}
   </div>
-  {{input type='text' name='google'}}
-  <button class="ui {{if device.isMobile 'icon'}} blue button">
+  {{input type='text' name='google' value=data.googlePlusUrl}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button" {{action 'saveUrl'}}>
     {{#if device.isMobile}}
       <i class="linkify icon"></i>
     {{else}}
