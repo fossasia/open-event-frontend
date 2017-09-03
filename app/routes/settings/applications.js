@@ -6,5 +6,8 @@ const { Route } = Ember;
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
     return this.l10n.t('Applications');
+  },
+  model() {
+    return this.get('authManager.currentUser');
   }
 });
