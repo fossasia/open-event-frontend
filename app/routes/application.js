@@ -37,7 +37,8 @@ export default Route.extend(ApplicationRouteMixin, {
       notifications,
       pages: this.get('store').query('page', {
         sort: 'index'
-      })
+      }),
+      socialLinks: this.get('store').queryRecord('setting', {})
     });
   },
 
