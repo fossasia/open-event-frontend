@@ -9,7 +9,7 @@
          class="ui fluid container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
-    {{footer-main footerPages=footerPages}}
+    {{footer-main socialLinks=model.socialLinks footerPages=footerPages}}
   </div>
 {{/side-bar}}
 {{modals/confirm-modal isOpen=confirm.isOpen}}
