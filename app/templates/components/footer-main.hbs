@@ -43,10 +43,37 @@
 
     <div class="three wide column">
       <div class="ui inverted link list">
-        <strong class="item">{{t 'Follow us on'}}</strong>
-        <a class="item" href="#" target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i> Facebook</a>
-        <a class="item" href="#" target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i> Twitter</a>
-        <a class="item" href="#" target="_blank" rel="noopener noreferrer"><i class="github icon"></i> Github</a>
+        <strong class="item">{{t 'Connect with us'}}</strong>
+        {{#if socialLinks.supportUrl}}
+          <a class="item" href="{{socialLinks.supportUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="info icon"></i> {{t 'Support'}}
+          </a>
+        {{/if}}
+        {{#if socialLinks.facebookUrl}}
+          <a class="item" href="{{socialLinks.facebookUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="facebook f icon"></i> {{t 'Facebook'}}
+          </a>
+        {{/if}}
+        {{#if socialLinks.twitterUrl}}
+          <a class="item" href="{{socialLinks.twitterUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="twitter icon"></i> {{t 'Twitter'}}
+          </a>
+        {{/if}}
+        {{#if socialLinks.githubUrl}}
+          <a class="item" href="{{socialLinks.githubUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="github icon"></i> {{t 'Github'}}
+          </a>
+        {{/if}}
+        {{#if socialLinks.youtubeUrl}}
+          <a class="item" ref="{{socialLinks.youtubeUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="youtube icon"></i> {{t 'Youtube'}}
+          </a>
+        {{/if}}
+        {{#if socialLinks.googleUrl}}
+          <a class="item" href="{{socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="google plus icon"></i> {{t 'Google +'}}
+          </a>
+        {{/if}}
       </div>
     </div>
   </div>
