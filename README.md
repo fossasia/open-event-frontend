@@ -30,7 +30,7 @@ You will need the following things properly installed on your computer.
 * [PhantomJS](http://phantomjs.org/) - `npm install -g phantomjs-prebuilt`
 * [check-node-version](https://www.npmjs.com/package/check-node-version) - `npm install -g check-node-version`
 
-It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speedup the file-watcher/auto-build service of the ember build server.
+It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the file-watcher/auto-build service of the ember build server.
 
 ## Installation
 
