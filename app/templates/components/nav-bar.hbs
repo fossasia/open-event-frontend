@@ -46,7 +46,7 @@
         {{#link-to 'create' class='item ui blue text'}}
           <div>
             {{t 'Create Event'}}
-          </div>  
+          </div>
         {{/link-to}}
       {{/if}}
     </div>
@@ -62,9 +62,7 @@
     {{/link-to}}
     <div class="right menu nav-bar">
       {{#if session.isAuthenticated}}
-        <a class="notification item">
-          {{notification-dropdown notifications=notifications}}
-        </a>
+        {{notification-dropdown notifications=notifications}}
       {{/if}}
       {{#link-to 'create' class='item ui blue button-text small text'}}
         <div>
