@@ -8,7 +8,8 @@ export default Route.extend({
   },
   model() {
     return this.modelFor('events.view').query('customForms', {
-      'page[size]': 50
+      'page[size]' : 50,
+      sort         : 'id'
     });
   }
 });
