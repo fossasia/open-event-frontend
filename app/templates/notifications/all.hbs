@@ -7,7 +7,9 @@
           <p>{{sanitize notification.message}}</p>
         </div>
         <div class="eight wide column right aligned">
-          <i class="checkmark box icon"></i>
+          {{#if notification.isRead}}
+            <i class="checkmark box icon"></i>
+          {{/if}}
         </div>
       </div>
       <div class="row">
