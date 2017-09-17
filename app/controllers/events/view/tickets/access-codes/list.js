@@ -24,7 +24,7 @@ export default Controller.extend({
       template     : 'components/ui-table/cell/cell-label'
     },
     {
-      title            : 'Action',
+      title            : 'Actions',
       template         : 'components/ui-table/cell/cell-code-buttons',
       disableSorting   : true,
       disableFiltering : true
