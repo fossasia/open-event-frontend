@@ -35,7 +35,7 @@ export default Controller.extend({
     },
     {
       template         : 'components/ui-table/cell/cell-simple-buttons',
-      title            : 'Action',
+      title            : 'Actions',
       disableSorting   : true,
       disableFiltering : true
     }

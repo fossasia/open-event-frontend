@@ -25,7 +25,7 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      title          : 'Action',
+      title          : 'Actions',
       template       : 'components/ui-table/cell/events/view/tickets/orders/cell-actions',
       disableSorting : true
     }

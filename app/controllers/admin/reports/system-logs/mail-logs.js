@@ -17,7 +17,7 @@ export default Controller.extend({
     },
     {
       propertyName     : 'action',
-      title            : 'Action',
+      title            : 'Actions',
       disableSorting   : true,
       disableFiltering : true
     },
