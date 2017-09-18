@@ -3,6 +3,7 @@
     {{t 'Create Session'}}
   </h2>
   <div class="ui container">
-    {{forms/session-speaker-form fields=model includeSpeaker=true includeSession=true isSessionSpeaker=true}}
+    {{forms/session-speaker-form fields=model.form data=model save=(action 'save')
+      includeSpeaker=true includeSession=true isSessionSpeaker=true isLoading=isLoading}}
   </div>
 </div>

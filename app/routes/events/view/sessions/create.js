@@ -1,15 +1,28 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
+const { Route, RSVP } = Ember;
 
 export default Route.extend({
   titleToken() {
     return this.l10n.t('Create session');
   },
   model() {
-    return this.modelFor('events.view').query('customForms', {
-      'page[size]' : 50,
-      sort         : 'id'
+    var eventDetails = this.modelFor('events.view');
+    return RSVP.hash({
+      event : eventDetails,
+      form  : eventDetails.query('customForms', {
+        'page[size]' : 50,
+        sort         : 'id'
+      }),
+      session: this.get('store').createRecord('session', {
+        event: eventDetails
+      }),
+      speaker: this.get('store').createRecord('speaker', {
+        event : eventDetails,
+        user  : this.get('authManager.currentUser')
+      }),
+      tracks       : eventDetails.query('tracks', {}),
+      sessionTypes : eventDetails.query('sessionTypes', {})
     });
   }
 });
