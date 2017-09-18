@@ -32,7 +32,7 @@ export default Controller.extend({
       title        : 'Email'
     },
     {
-      title          : 'Action',
+      title          : 'Actions',
       template       : 'components/ui-table/cell/events/view/tickets/attendees/cell-action',
       disableSorting : true
     }

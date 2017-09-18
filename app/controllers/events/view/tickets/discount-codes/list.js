@@ -30,7 +30,7 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      title          : 'Action',
+      title          : 'Actions',
       template       : 'components/ui-table/cell/events/view/tickets/discount-codes/cell-actions',
       disableSorting : true
     }
