@@ -21,7 +21,9 @@
       {{#if device.isMobile}}
         <div class="ui hidden fitted divider"></div>
       {{/if}}
-      <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Add Speaker'}}</button>
+      {{#link-to 'events.view.sessions.create' class='ui blue button right floated'}}
+        {{t 'Add Speaker'}}
+      {{/link-to}}
     </div>
   </div>
   <div class="row">
