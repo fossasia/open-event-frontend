@@ -40,8 +40,10 @@
           {{#if (eq field.type 'select')}}
             {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
               <i class="dropdown icon"></i>
-              <div class="default text">{{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
-                (concat 'Select a ' field.name)}}</div>
+              <div class="default text">
+                {{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
+                  (concat 'Select a ' field.name)}}
+              </div>
               <div class="menu">
                 {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
                   <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
@@ -84,8 +86,10 @@
           {{#if (eq field.type 'select')}}
             {{#ui-dropdown class='search selection' onChange=(action (mut (get data.speaker field.fieldIdentifier))) as |execute mapper|}}
               <i class="dropdown icon"></i>
-              <div class="default text">{{if (get data.speaker field.fieldIdentifier) (get data.speaker field.fieldIdentifier)
-                (concat 'Select a ' field.name)}}</div>
+              <div class="default text">
+                {{if (get data.speaker field.fieldIdentifier) (get data.speaker field.fieldIdentifier)
+                  (concat 'Select a ' field.name)}}
+              </div>
               <div class="menu">
                 {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
                   <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
