@@ -12,7 +12,7 @@ export default Controller.extend({
           this.notify.success(this.l10n.t('Settings have been saved successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occured. Settings not saved.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'));
         })
         .finally(() => {
           this.set('isLoading', false);
