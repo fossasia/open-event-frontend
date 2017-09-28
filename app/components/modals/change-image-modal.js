@@ -11,7 +11,7 @@ export default ModalBase.extend({
             this.notify.success(this.l10n.t('Placeholder has been saved successfully.'));
           })
           .catch(()=> {
-            this.notify.error(this.l10n.t('An unexpected error has occured. Placeholder not saved.'));
+            this.notify.error(this.l10n.t('An unexpected error has occurred. Placeholder not saved.'));
           });
       });
     }

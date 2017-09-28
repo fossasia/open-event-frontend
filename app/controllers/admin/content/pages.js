@@ -27,7 +27,7 @@ export default Controller.extend({
           this.notify.success(this.l10n.t('Page details have been saved successfully.'));
         })
         .catch(()=> {
-          this.notify.error(this.l10n.t('An unexpected error has occured. Page Details not saved.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Page Details not saved.'));
         });
     }
   }

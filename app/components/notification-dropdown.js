@@ -24,7 +24,7 @@ export default Component.extend({
           this.get('notify').success(this.l10n.t('Marked as Read successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.l10n.t('An unexpected error occured.'));
+          this.get('notify').error(this.l10n.t('An unexpected error occurred.'));
         });
     },
     markAllRead() {

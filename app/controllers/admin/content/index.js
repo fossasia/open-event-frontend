@@ -12,7 +12,7 @@ export default Controller.extend({
           this.notify.success(this.l10n.t('Social links have been saved successfully.'));
         })
         .catch(()=> {
-          this.notify.error(this.l10n.t('An unexpected error has occured. Social links not saved.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Social links not saved.'));
         })
         .finally(()=> {
           this.set('isLoading', false);
