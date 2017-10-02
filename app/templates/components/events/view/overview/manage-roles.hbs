@@ -33,9 +33,12 @@
             </div>
           </td>
         </tr>
+      {{else}}
+        <div class="ui basic segment">
+          {{t 'No records to show'}}
+        </div>
       {{/each}}
     </tbody>
   </table>
 </div>
-
 {{modals/add-user-role-modal currentInvite=currentInvite isLoading=isLoading data=data isOpen=isAddUserRoleModalOpen updateUserRoles=(action 'updateUserRoles')}}
