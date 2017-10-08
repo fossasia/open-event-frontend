@@ -17,7 +17,7 @@ export default ModelBase.extend({
 
   session: {
     title         : 'Title',
-    subtitle      : 'Ssubtitle',
+    subtitle      : 'Subtitle',
     shortAbstract : 'Short Abstract',
     longAbstract  : 'Long Abstract',
     comments      : 'Comment',
