@@ -1,76 +1,76 @@
 <div class="ui center aligned container">
   <div class="ui stackable inverted divided grid">
     <div class="three wide column">
-      <div class="ui inverted link list">
+      <div class="ui inverted list">
         <strong class="item">{{t 'Use'}} eventyay</strong>
-        <a class="item" href="#" target="_blank" rel="noopener noreferrer">{{t 'Sitemap'}}</a>
+        <a class="item link" href="#" target="_blank" rel="noopener noreferrer">{{t 'Sitemap'}}</a>
       </div>
     </div>
     <div class="three wide column">
-      <div class="ui inverted link list">
+      <div class="ui inverted list">
         <strong class="item">{{t 'Categories'}}</strong>
-        <a class="item" href="#">Appearance or Signing</a>
-        <a class="item" href="#">Attraction</a>
-        <a class="item" href="#">Camp, Trip, or Retreat</a>
-        <a class="item" href="#">Class, Training, or Workshop</a>
-        <a class="item" href="#">Concert or Performance</a>
-        <a class="item" href="#">Conference</a>
-        <a class="item" href="#">Convention</a>
-        <a class="item" href="#">Dinner or Gala</a>
-        <a class="item" href="#">Festival or Fair</a>
-        <a class="item" href="#">Game or Competition</a>
+        <a class="item link" href="#">Appearance or Signing</a>
+        <a class="item link" href="#">Attraction</a>
+        <a class="item link" href="#">Camp, Trip, or Retreat</a>
+        <a class="item link" href="#">Class, Training, or Workshop</a>
+        <a class="item link" href="#">Concert or Performance</a>
+        <a class="item link" href="#">Conference</a>
+        <a class="item link" href="#">Convention</a>
+        <a class="item link" href="#">Dinner or Gala</a>
+        <a class="item link" href="#">Festival or Fair</a>
+        <a class="item link" href="#">Game or Competition</a>
       </div>
     </div>
     <div class="three wide column">
-      <div class="ui inverted link list">
+      <div class="ui inverted list">
         <strong class="item">{{t 'Locations'}}</strong>
-        <a class="item" href="#">India</a>
-        <a class="item" href="#">Singapore</a>
-        <a class="item" href="#">Berlin</a>
-        <a class="item" href="#">Mexico</a>
-        <a class="item" href="#">New York</a>
-        <a class="item" href="#">Hong Kong</a>
+        <a class="item link" href="#">India</a>
+        <a class="item link" href="#">Singapore</a>
+        <a class="item link" href="#">Berlin</a>
+        <a class="item link" href="#">Mexico</a>
+        <a class="item link" href="#">New York</a>
+        <a class="item link" href="#">Hong Kong</a>
       </div>
     </div>
     <div class="three wide column">
-      <div class="ui inverted link list">
+      <div class="ui inverted list">
         <strong class="item">{{t 'Nearby Events'}}</strong>
-        <a class="item" href="#">FOSSASIA</a>
-        <a class="item" href="#">Science Meet</a>
-        <a class="item" href="#">Tech Meet</a>
+        <a class="item link" href="#">FOSSASIA</a>
+        <a class="item link" href="#">Science Meet</a>
+        <a class="item link" href="#">Tech Meet</a>
       </div>
     </div>
 
     <div class="three wide column">
-      <div class="ui inverted link list">
+      <div class="ui inverted list">
         <strong class="item">{{t 'Connect with us'}}</strong>
         {{#if socialLinks.supportUrl}}
-          <a class="item" href="{{socialLinks.supportUrl}}" target="_blank" rel="noopener noreferrer">
+          <a class="item link" href="{{socialLinks.supportUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="info icon"></i> {{t 'Support'}}
           </a>
         {{/if}}
         {{#if socialLinks.facebookUrl}}
-          <a class="item" href="{{socialLinks.facebookUrl}}" target="_blank" rel="noopener noreferrer">
+          <a class="item link" href="{{socialLinks.facebookUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="facebook f icon"></i> {{t 'Facebook'}}
           </a>
         {{/if}}
         {{#if socialLinks.twitterUrl}}
-          <a class="item" href="{{socialLinks.twitterUrl}}" target="_blank" rel="noopener noreferrer">
+          <a class="item link" href="{{socialLinks.twitterUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="twitter icon"></i> {{t 'Twitter'}}
           </a>
         {{/if}}
         {{#if socialLinks.githubUrl}}
-          <a class="item" href="{{socialLinks.githubUrl}}" target="_blank" rel="noopener noreferrer">
+          <a class="item link" href="{{socialLinks.githubUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="github icon"></i> {{t 'Github'}}
           </a>
         {{/if}}
         {{#if socialLinks.youtubeUrl}}
-          <a class="item" href="{{socialLinks.youtubeUrl}}" target="_blank" rel="noopener noreferrer">
+          <a class="item link" href="{{socialLinks.youtubeUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="youtube icon"></i> {{t 'Youtube'}}
           </a>
         {{/if}}
         {{#if socialLinks.googleUrl}}
-          <a class="item" href="{{socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
+          <a class="item link" href="{{socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="google plus icon"></i> {{t 'Google +'}}
           </a>
         {{/if}}
@@ -80,10 +80,10 @@
   <div class="ui inverted section divider"></div>
   <div class="ui stackable grid">
     <div class="thirteen wide computer twelve wide tablet column left aligned">
-      <div class="ui horizontal inverted small divided link list less top margin">
+      <div class="ui horizontal inverted small divided list less top margin">
         <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
         {{#each footerPages as |page|}}
-          {{#link-to 'pages' page.url class='item'}}
+          {{#link-to 'pages' page.url class='item link'}}
             {{page.name}}
           {{/link-to}}
         {{/each}}
