@@ -13,6 +13,10 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+**API Documentation:**
+- Every installation of the Open Event API Server project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
+- A hosted version of the API docs is available in the `gh-pages` branch of the Open Event API Server repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
+
 ## Communication
 
 Please join our mailing list to discuss questions regarding the project: https://groups.google.com/forum/#!forum/open-event
