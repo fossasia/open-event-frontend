@@ -112,8 +112,9 @@ export default Component.extend(FormMixin, {
     return location.origin + this.get('routing.router').generate('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
   }),
   actions: {
-    submit() {
+    submit(data) {
       this.onValid(() => {
+        this.sendAction('save', data);
       });
     }
   }
