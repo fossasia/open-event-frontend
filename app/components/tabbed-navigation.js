@@ -15,6 +15,8 @@ export default Component.extend({
     var isMobile = this.get('device.isMobile');
     if (isMobile) {
       this.$('a').addClass('vertical-item');
+    } else {
+      this.$('a').removeClass('vertical-item');
     }
     this.set('item', this.$('a.active').text().trim());
   },
@@ -22,6 +24,8 @@ export default Component.extend({
     var isMobile = this.get('device.isMobile');
     if (isMobile) {
       this.$('a').addClass('vertical-item');
+    } else {
+      this.$('a').removeClass('vertical-item');
     }
   },
   actions: {
@@ -29,7 +33,6 @@ export default Component.extend({
       var menu = this.$('div.menu');
       menu.toggleClass('hidden');
       if (mode === 'reset') {
-        this.$('a.item').addClass('vertical-item');
         this.set('item', event.srcElement.text);
       }
     }
