@@ -35,7 +35,7 @@
     <div class="ui segment empty-message">
       <a href="{{href-to 'notifications'}}">{{t 'Go to notifications panel'}}</a>
     </div>
-    <div class="ui fluid link celled selection list">
+    <div class="ui fluid list {{if unreadNotifications 'link celled selection' ''}}">
       <div class="item active">
         {{t 'No new notifications'}}
       </div>
