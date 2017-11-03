@@ -8,7 +8,7 @@
   {{#link-to 'notifications.all'}}
     <button class="ui button">{{t 'All'}}</button>
   {{/link-to}}
-  {{#if (not-includes session.currentRouteName 'notifications.all')}}
+  {{#if (and (not-includes session.currentRouteName 'notifications.all') model)}}
     <button class="ui button right floated" {{action 'markAllRead'}}>{{t 'Mark all read'}}</button>
   {{/if}}
 </div>
