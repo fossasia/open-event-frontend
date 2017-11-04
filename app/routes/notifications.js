@@ -7,6 +7,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
     return this.l10n.t('Notifications');
   },
+  model() {
+    return this.get('authManager.currentUser').get('notifications').filterBy('isRead', false);
+  },
   actions: {
     markAllRead() {
       this.get('authManager.currentUser').get('notifications')
