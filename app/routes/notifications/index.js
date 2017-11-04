@@ -8,6 +8,6 @@ export default Route.extend({
   },
   templateName: 'notifications/all',
   model() {
-    return this.get('authManager.currentUser').get('notifications').filterBy('isRead', false);
+    return this.modelFor('notifications');
   }
 });
