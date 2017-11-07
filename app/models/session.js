@@ -38,5 +38,5 @@ export default ModelBase.extend({
   startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
   startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
   endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
-  endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'date')
+  endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'time')
 });
