@@ -9,13 +9,13 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
 
-> The front end for the **Open Event API Server**
+> The front end for the **Open Event Server**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 **API Documentation:**
-- Every installation of the **Open Event API Server** project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
-- A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event API Server** repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
+- Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
+- A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
 
 ## Communication
 
