@@ -5,6 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('ui-table/cell/cell-sponsor-options', 'Integration | Component | ui table/cell/cell sponsor options');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{ui-table/cell/cell-sponsor-options}}`);
+  this.set('deleteSponsor', () => {});
+  this.render(hbs`{{ui-table/cell/cell-sponsor-options deleteSponsor=(action deleteSponsor)}}`);
   assert.ok(this.$().text().trim().includes(''));
 });
