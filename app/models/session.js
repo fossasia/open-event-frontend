@@ -24,16 +24,16 @@ export default ModelBase.extend({
 
   isMailSent: attr('boolean', { defaultValue: false }),
 
-  createdAt   : attr('string'),
-  deletedAt   : attr('string'),
-  submittedAt : attr('string', { defaultValue: () => moment() }),
-
-  sessionType   : belongsTo('session-type'),
-  microlocation : belongsTo('microlocation'),
-  track         : belongsTo('track'),
-  speakers      : hasMany('speaker'),
-  event         : belongsTo('event'), // temporary
-  user          : belongsTo('user'),
+  createdAt      : attr('string'),
+  deletedAt      : attr('string'),
+  submittedAt    : attr('string', { defaultValue: () => moment() }),
+  lastModifiedAt : attr('string'),
+  sessionType    : belongsTo('session-type'),
+  microlocation  : belongsTo('microlocation'),
+  track          : belongsTo('track'),
+  speakers       : hasMany('speaker'),
+  event          : belongsTo('event'), // temporary
+  user           : belongsTo('user'),
 
   startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
   startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
