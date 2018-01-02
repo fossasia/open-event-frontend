@@ -42,6 +42,9 @@ export default Controller.extend({
         .finally(()=>{
           this.set('isLoading', false);
         });
+    },
+    editSponsor() {
+      this.transitionToRoute('events.view.edit.sponsors');
     }
   }
 });

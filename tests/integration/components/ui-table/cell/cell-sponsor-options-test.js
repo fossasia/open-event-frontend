@@ -6,6 +6,7 @@ moduleForComponent('ui-table/cell/cell-sponsor-options', 'Integration | Componen
 
 test('it renders', function(assert) {
   this.set('deleteSponsor', () => {});
-  this.render(hbs`{{ui-table/cell/cell-sponsor-options deleteSponsor=(action deleteSponsor)}}`);
+  this.set('editSponsor', () => {});
+  this.render(hbs`{{ui-table/cell/cell-sponsor-options deleteSponsor=(action deleteSponsor) editSponsor=(action editSponsor)}}`);
   assert.ok(this.$().text().trim().includes(''));
 });
