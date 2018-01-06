@@ -31,6 +31,7 @@ export default Controller.extend({
     },
     {
       propertyName : 'last-modified',
+      template     : 'components/ui-table/cell/cell-simple-date',
       title        : 'Last Modified'
     },
     {
