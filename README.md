@@ -1,40 +1,44 @@
+# Open Event Frontend
 ![Open Event Frontend](https://storage.googleapis.com/eventyay.com/assets/branding/frontend_branding.png)
 
 [![Travis](https://img.shields.io/travis/fossasia/open-event-frontend/development.svg?style=flat-square)](https://travis-ci.org/fossasia/open-event-frontend)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
 [![Codacy grade](https://img.shields.io/codacy/grade/0d51cf60fc734d3699fd6eff6054e483.svg?style=flat-square)](https://www.codacy.com/app/niranjan94/open-event-frontend)
 [![codecov](https://img.shields.io/codecov/c/github/fossasia/open-event-frontend/development.svg?style=flat-square)](https://codecov.io/gh/fossasia/open-event-frontend)
-
 [![Greenkeeper badge](https://badges.greenkeeper.io/fossasia/open-event-frontend.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
 
-> The front end for the Open Event API Server
+> The front end for the **Open Event Server**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 **API Documentation:**
-- Every installation of the Open Event API Server project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
-- A hosted version of the API docs is available in the `gh-pages` branch of the Open Event API Server repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
+- Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
+- A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
 
 ## Communication
 
-Please join our mailing list to discuss questions regarding the project: https://groups.google.com/forum/#!forum/open-event
+Please join our mailing list to discuss questions regarding the project :
+ 
+> *https://groups.google.com/forum/#!forum/open-event*
 
-Our chat channel is on Gitter here: [gitter.im/fossasia/open-event-frontend](https://gitter.im/fossasia/open-event-frontend)
+Our chat channel is on Gitter here :
+
+> *[gitter.im/fossasia/open-event-frontend](https://gitter.im/fossasia/open-event-frontend)*
 
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM v5.2x)
-* [Bower](https://bower.io/) - `npm install -g bower`
-* [Ember CLI](https://ember-cli.com/) - `npm install -g ember-cli`
-* [PhantomJS](http://phantomjs.org/) - `npm install -g phantomjs-prebuilt`
-* [check-node-version](https://www.npmjs.com/package/check-node-version) - `npm install -g check-node-version`
+* **[Git](https://git-scm.com/)**
+* **[Node.js](https://nodejs.org/)** *(with NPM v5.2x)*
+* **[Bower](https://bower.io/)** - `npm install -g bower`
+* **[Ember CLI](https://ember-cli.com/)** - `npm install -g ember-cli`
+* **[PhantomJS](http://phantomjs.org/)** - `npm install -g phantomjs-prebuilt`
+* **[check-node-version](https://www.npmjs.com/package/check-node-version)** - `npm install -g check-node-version`
 
-It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the file-watcher/auto-build service of the ember build server.
+It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the `file-watcher/auto-build` service of the ember build server.
 
 ## Installation
 
@@ -50,7 +54,7 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 
 ### Code Generators
 
-Make use of the many generators for code, try `ember help generate` for more details
+Make use of the many generators for code, try `ember help generate` for more details.
 
 ### Running Tests
 
@@ -67,21 +71,21 @@ This project has acceptance, integration and unit tests located inside the `test
 ## Deployments
 
 #### eventyay staging deployment (`development` branch via Kubernetes)
-- Frontend: https://nextgen.eventyay.com
-- API server: https://eventyay.com
+- **Frontend:** *https://nextgen.eventyay.com*
+- **API server:** *https://eventyay.com*
 
 #### Development deployment (`development` branch)
-- Frontend: https://open-event-frontend.herokuapp.com
-- API server: https://open-event-dev.herokuapp.com
+- **Frontend:** *https://open-event-frontend.herokuapp.com*
+- **API server:** *https://open-event-dev.herokuapp.com*
 
 ## Further Reading / Useful Links
-* [ember.js](http://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* [Semantic UI](https://semantic-ui.com/)
-* [Semantic-UI-Ember](https://semantic-org.github.io/Semantic-UI-Ember/)
+* **[ember.js](http://emberjs.com/)**
+* **[ember-cli](https://ember-cli.com/)**
+* **[Semantic UI](https://semantic-ui.com/)**
+* **[Semantic-UI-Ember](https://semantic-org.github.io/Semantic-UI-Ember/)**
 * Development Browser Extensions
-    * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-    * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+    * **[ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)**
+    * **[ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)**
 
 ## Contributions Best Practices
 
@@ -103,4 +107,6 @@ This project has acceptance, integration and unit tests located inside the `test
 
 ## License
 
-This project is currently licensed under the Apache License version 2.0. A copy of `LICENSE` should be present along with the source code. To obtain the software under a different license, please contact [FOSSASIA](http://blog.fossasia.org/contact/).
+**This project is currently licensed under the [Apache License version 2.0](LICENSE).**
+
+> To obtain the software under a different license, Please contact **[FOSSASIA](http://blog.fossasia.org/contact/)**.
