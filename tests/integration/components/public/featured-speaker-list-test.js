@@ -12,7 +12,7 @@ const speakers = A(
     EmberObject.create({
       name           : 'Non featured Jane',
       email          : 'John@Doe.com',
-      photoUrl       : 'http://image.ibb.co/ffRqs5/avatar.png',
+      photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
       website        : 'https://johndoe.com',
       city           : 'Delhi',
       gender         : 'female',
@@ -29,7 +29,7 @@ const speakers = A(
     EmberObject.create({
       name           : 'John Doe',
       email          : 'John@Doe.com',
-      photoUrl       : 'http://image.ibb.co/ffRqs5/avatar.png',
+      photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
       website        : 'https://johndoe.com',
       city           : 'Mumbai',
       gender         : 'male',

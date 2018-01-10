@@ -83,7 +83,7 @@ export default ModelsTable.extend({
     let filterString = get(this, 'filterString');
 
     if (!get(data, 'query')) {
-      warn('You must use http://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
+      warn('You must use https://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
       return;
     }
     let query = extend({}, get(data, 'query'));
