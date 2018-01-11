@@ -1,7 +1,7 @@
 /**
- * Rule borrowed from http://forums.devshed.com/javascript-development/493764-regexp-match-url-pattern-post1944160.html#post1944160
+ * Rule borrowed from https://forums.devshed.com/javascript-development/493764-regexp-match-url-pattern-post1944160.html#post1944160
  *
- * @author Kravvitz (http://forums.devshed.com/author/kravvitz)
+ * @author Kravvitz (https://forums.devshed.com/author/kravvitz)
  * @type {RegExp}
  */
 const validUrlPattern = new RegExp('^(https?:\\/\\/)?' // protocol
