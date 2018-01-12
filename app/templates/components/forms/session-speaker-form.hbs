@@ -72,17 +72,7 @@
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
             {{else}}
-              {{#if (not (mut (get data.speaker field.fieldIdentifier)))}}
-                {{#if (eq field.fieldIdentifier 'email')}}
-                  {{input type=field.type value=data.speaker.user.email id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
-                {{else if (eq field.fieldIdentifier 'name')}}
-                  {{input type=field.type value=(concat data.speaker.user.firstName ' ' data.speaker.user.lastName) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
-                {{else}}
-                  {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
-                {{/if}}
-              {{else}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
-              {{/if}}
+              {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
