@@ -5,7 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('sponsor-item', 'Integration | Component | sponsor item');
 
 const sponsor = [
-  { name: 'Sponsor 1', url: '#', logoUrl: 'http://placehold.it/150x60' }
+  { name: 'Sponsor 1', url: '#', logoUrl: 'https://placehold.it/150x60' }
 ];
 
 test('it renders', function(assert) {
