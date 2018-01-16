@@ -311,11 +311,11 @@ export default Component.extend(FormMixin, {
       this.set('data.speaker', this.get('data.speaker').toArray()[0]);
     } else if (this.get('isCFS')) {
       this.set('data.speaker', this.get('store').createRecord('speaker', {
-        email : this.get('authManager.currentUser.email'),
-        name : this.get('authManager.currentUser.firstName')+' '+this.get('authManager.currentUser.lastName'),
+        email    : this.get('authManager.currentUser.email'),
+        name     : `${this.get('authManager.currentUser.firstName')} ${this.get('authManager.currentUser.lastName')}`,
         photoUrl : this.get('authManager.currentUser.avatarUrl'),
-        event : this.get('data.event'),
-        user  : this.get('authManager.currentUser')
+        event    : this.get('data.event'),
+        user     : this.get('authManager.currentUser')
       }));
     }
   }
