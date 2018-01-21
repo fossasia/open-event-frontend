@@ -13,7 +13,7 @@ const copyright = EmberObject.create({
   licence    : 'Public Domain Dedication (CC0)',
   licenceUrl : 'https://creativecommons.org/publicdomain/zero/1.0/',
   year       : 2007,
-  logoUrl    : 'http://image.ibb.co/gt7q7v/pdd.png'
+  logoUrl    : 'https://image.ibb.co/gt7q7v/pdd.png'
 });
 
 test('it renders', function(assert) {
