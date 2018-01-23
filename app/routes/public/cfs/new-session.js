@@ -4,14 +4,18 @@ const { Route, RSVP } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.l10n.t('Call for Speakers');
+    return this.l10n.t('New Speaker');
   },
 
   model() {
     const eventDetails = this.modelFor('public');
     return RSVP.hash({
-      event       : eventDetails,
-      userSpeaker : this.get('authManager.currentUser').query('speakers', {
+      event : eventDetails,
+      forms : eventDetails.query('customForms', {
+        sort         : 'id',
+        'page[size]' : 50
+      }),
+      speaker: this.get('authManager.currentUser').query('speakers', {
         filter: [
           {
             name : 'event',
@@ -24,7 +28,7 @@ export default Route.extend({
           }
         ]
       }),
-      userSession: this.get('authManager.currentUser').query('sessions', {
+      session: this.get('authManager.currentUser').query('sessions', {
         filter: [
           {
             name : 'event',
@@ -37,7 +41,8 @@ export default Route.extend({
           }
         ]
       }),
-      speakersCall: eventDetails.get('speakersCall')
+      tracks       : eventDetails.query('tracks', {}),
+      sessionTypes : eventDetails.query('sessionTypes', {})
     });
   }
 });

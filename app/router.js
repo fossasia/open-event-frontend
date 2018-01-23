@@ -36,6 +36,7 @@ router.map(function() {
     });
     this.route('cfs', function() {
       this.route('new-speaker');
+      this.route('new-session');
     });
     this.route('schedule');
     this.route('coc');
