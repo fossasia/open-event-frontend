@@ -12,7 +12,7 @@ const sponsors = A(
     EmberObject.create({
       name        : 'Sponsor 1',
       url         : '#',
-      logoUrl     : 'http://placehold.it/150x60',
+      logoUrl     : 'https://placehold.it/150x60',
       level       : 2,
       type        : 'Gold Sponsor',
       description : ''
@@ -20,7 +20,7 @@ const sponsors = A(
     EmberObject.create({
       name        : 'Sponsor 2',
       url         : '#',
-      logoUrl     : 'http://placehold.it/150x60',
+      logoUrl     : 'https://placehold.it/150x60',
       level       : 1,
       type        : 'Gold Sponsor',
       description : ''
@@ -28,7 +28,7 @@ const sponsors = A(
     EmberObject.create({
       name        : 'Sponsor 3',
       url         : '#',
-      logoUrl     : 'http://placehold.it/150x60',
+      logoUrl     : 'https://placehold.it/150x60',
       level       : 1,
       type        : 'Silver Sponsor',
       description : ''
