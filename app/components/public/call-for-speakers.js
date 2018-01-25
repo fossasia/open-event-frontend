@@ -8,7 +8,10 @@ export default Component.extend({
       this.set('isCfsModalOpen', true);
     }
   },
-  isNew: computed('data.userSpeaker', function() {
+  isNewSpeaker: computed('data.userSpeaker', function() {
     return this.get('data.userSpeaker') && this.get('data.userSpeaker').toArray().length ? false : true;
+  }),
+  isNewSession: computed('data.userSession', function() {
+    return this.get('data.userSession') && this.get('data.userSession').toArray().length ? false : true;
   })
 });

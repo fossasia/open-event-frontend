@@ -4,15 +4,23 @@
 </div>
 <div class="content">
   <h4 class="ui header">{{t 'Existing Sessions'}}</h4>
-  <p>{{t 'No existing sessions'}}</p>
+  {{#if isNewSession}}
+    <p>{{t 'No existing sessions'}}</p>
+  {{/if}}
   <div>
     {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
-      {{#if isNew}}
+      {{#if isNewSpeaker}}
         {{t 'Add Speaker Details'}}
       {{else}}
         {{t 'Edit Speaker Details'}}
       {{/if}}
     {{/link-to}}
-    <button type="button" class="ui blue button">{{t 'Add Session Proposal'}}</button>
+    {{#link-to 'public.cfs.new-session' class='ui blue button' invokeAction=(action 'toggleView')}}
+      {{#if isNewSession}}
+        {{t 'Add Session Proposal'}}
+      {{else}}
+        {{t 'Edit Session Proposal'}}
+      {{/if}}
+    {{/link-to}}
   </div>
 </div>
