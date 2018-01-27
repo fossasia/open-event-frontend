@@ -70,13 +70,11 @@ This project has acceptance, integration and unit tests located inside the `test
 
 ## Deployments
 
-#### eventyay staging deployment (`development` branch via Kubernetes)
-- **Frontend:** *https://nextgen.eventyay.com*
-- **API server:** *https://eventyay.com*
-
-#### Development deployment (`development` branch)
+#### Master (Staging Test) (`master` branch)
 - **Frontend:** *https://open-event-frontend.herokuapp.com*
-- **API server:** *https://open-event-dev.herokuapp.com*
+
+#### Development (`development` branch)
+- **Dev  server:** *https://open-event-frontend-dev.herokuapp.com*
 
 ## Further Reading / Useful Links
 * **[ember.js](https://emberjs.com/)**
