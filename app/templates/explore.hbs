@@ -1,10 +1,10 @@
 <div class="ui stackable grid">
   <div class="four wide column">
-    {{explore/side-bar model=model}}
+    {{explore/side-bar model=model category=category sub_category=sub_category event_type=event_type date_range=dateRange}}
   </div>
   <div class="twelve wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
-    {{#each model.events as |event|}}
+    {{#each filteredEvents as |event|}}
       {{event-card event=event isWide=true shareEvent=(action 'shareEvent')}}
       <div class="ui hidden divider"></div>
     {{/each}}
