@@ -27,6 +27,16 @@ export default Component.extend(FormMixin, {
               prompt : this.l10n.t('Please enter a valid email ID')
             }
           ]
+        },
+
+        password: {
+          identifier : 'password',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter your new password')
+            }
+          ]
         }
       }
     };
@@ -35,31 +45,53 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
-        let payload = {
-          'data': {
-            'email': this.get('identification')
-          }
-        };
+        let payload = {};
+        if (this.get('token')) {
+          payload = {
+            'data': {
+              'token'    : this.get('token'),
+              'password' : this.get('password')
+            }
+          };
+          this.get('loader')
+            .patch('auth/reset-password', payload)
+            .then(() => {
+              this.set('successMessage', this.l10n.t('Your password has been reset successfully. Please log in to continue'));
+            })
+            .catch(() => {
+              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+            })
+            .finally(()=> {
+              this.set('isLoading', false);
+              this.set('token', null);
+            }
+            );
+        } else {
+          payload = {
+            'data': {
+              'email': this.get('identification')
+            }
+          };
+          this.get('loader')
+            .post('auth/reset-password', payload)
+            .then(() => {
+              this.set('successMessage', this.l10n.t('Please go to the link sent to your email to reset your password'));
+            })
+            .catch(reason => {
+              if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 422) {
+                this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
+              } else {
+                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+              }
+            })
+            .finally(()=> {
+              this.set('isLoading', false);
+            }
+            );
+        }
         this.set('errorMessage', null);
         this.set('successMessage', null);
         this.set('isLoading', true);
-
-        this.get('loader')
-          .post('auth/reset-password', payload)
-          .then(() => {
-            this.set('successMessage', this.l10n.t('Please go to the link sent to your email to reset your password'));
-          })
-          .catch(reason => {
-            if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 422) {
-              this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
-            } else {
-              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
-            }
-          })
-          .finally(()=> {
-            this.set('isLoading', false);
-          }
-          );
       });
     }
   },
