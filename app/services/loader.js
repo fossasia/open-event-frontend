@@ -55,6 +55,10 @@ export default Service.extend({
     return this.makePromise(url, 'PUT', data, config);
   },
 
+  patch(url, data = null, config = {}) {
+    return this.makePromise(url, 'PATCH', data, config);
+  },
+
   delete(url, config = {}) {
     return this.makePromise(url, 'DELETE', null, config);
   },
