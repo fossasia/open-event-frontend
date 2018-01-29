@@ -28,7 +28,7 @@ const router = Router.extend(RouterScroll, {
 router.map(function() {
   this.route('login');
   this.route('register');
-  this.route('forgot-password');
+  this.route('reset-password');
   this.route('logout');
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
