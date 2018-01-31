@@ -32,7 +32,7 @@ Our chat channel is on Gitter here :
 You will need the following things properly installed on your computer.
 
 * **[Git](https://git-scm.com/)**
-* **[Node.js](https://nodejs.org/)** *(with NPM v5.2x)*
+* **[Node.js](https://nodejs.org/)** *(with NPM v5.3.x)*
 * **[Bower](https://bower.io/)** - `npm install -g bower`
 * **[Ember CLI](https://ember-cli.com/)** - `npm install -g ember-cli`
 * **[PhantomJS](http://phantomjs.org/)** - `npm install -g phantomjs-prebuilt`
@@ -46,6 +46,8 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 * `cd open-event-frontend`
 * `npm install`
 * `bower install`
+### Note:
+If you face error in `npm install` for node and npm version, then install node version: v7.10.1 (npm version: 5.3.0 gets installed with it), which satisfies check-node-version and project runs perfectly on this configuration.
 
 ## Running / Development
 
