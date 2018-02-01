@@ -38,7 +38,13 @@ router.map(function() {
       this.route('new-speaker');
       this.route('new-session');
     });
-    this.route('schedule');
+    this.route('schedule', function() {
+      this.route('session', function() {
+        this.route('list', { path: '/:track_id' });
+      });
+      this.route('room');
+      this.route('track');
+    });
     this.route('coc');
   });
   this.route('create');
@@ -54,7 +60,6 @@ router.map(function() {
       this.route('export');
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
-        this.route('create');
       });
       this.route('tickets', function() {
         this.route('orders', function() {

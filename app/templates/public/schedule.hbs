@@ -1,1 +1,26 @@
-{{outlet}}
+<h2 class="ui header">
+  {{model.event.name}} {{t 'Schedule'}}
+</h2>
+<div class="ui tablet stackable grid">
+  <div class="row">
+    <div class="{{if (or device.isTablet device.isComputer) 'six' 'three'}} wide column">
+      <button class="ui small button">{{moment-format model.event.startsAt 'DD MMM YYYY'}}</button>
+    </div>
+    <div class="{{if (or device.isTablet device.isComputer) 'eight' 'five'}} wide column">
+      <div class="ui right aligned category search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search sessions">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+    </div>
+    <div class="{{if device.isTablet 'ten' 'eight'}} wide right aligned column">
+      {{public/schedule/view-schedule}}
+    </div>
+  </div>
+  <div class ="ui hidden divider"></div>
+</div>
+<div>
+  {{outlet}}
+</div>
