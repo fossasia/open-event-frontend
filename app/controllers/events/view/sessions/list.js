@@ -65,6 +65,9 @@ export default Controller.extend({
         .finally(()=>{
           this.set('isLoading', false);
         });
+    },
+    editSession(id) {
+      this.transitionToRoute('public.cfs.new-session', id);
     }
   }
 });

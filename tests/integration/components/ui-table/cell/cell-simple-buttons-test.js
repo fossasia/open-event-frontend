@@ -6,6 +6,7 @@ moduleForComponent('ui-table/cell/cell-simple-buttons', 'Integration | Component
 
 test('it renders', function(assert) {
   this.set('deleteSession', () => {});
-  this.render(hbs`{{ui-table/cell/cell-simple-buttons deleteSession=(action deleteSession)}}`);
+  this.set('editSession', () => {});
+  this.render(hbs`{{ui-table/cell/cell-simple-buttons deleteSession=(action deleteSession) editSession=(action editSession)}}`);
   assert.ok(this.$().html().trim().includes(''));
 });
