@@ -7,6 +7,8 @@
     {{#each filteredEvents as |event|}}
       {{event-card event=event isWide=true shareEvent=(action 'shareEvent')}}
       <div class="ui hidden divider"></div>
+    {{else}}
+      <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
     {{/each}}
     {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
   </div>
