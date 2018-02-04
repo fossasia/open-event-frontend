@@ -33,4 +33,3 @@ export default ModelBase.extend({
     inverse: 'discountCode'
   })    // The events that this discount code has been applied to [Form (1)]
 });
-
