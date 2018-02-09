@@ -2,84 +2,131 @@
 
   margin-top: -$page-top-margin;
 
-  div.lead:not(.with) {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: $event-lead-image-height;
-    overflow: hidden;
+  @mixin aspect-ratio($width, $height) {
+    position: relative;
 
-    img {
-      position: absolute;
-      left: 0;
-      right: 0;
+    &::before {
+      content: '';
+      display: block;
+      padding-top: ($height / $width) * 100%;
       width: 100%;
     }
 
-    .content {
-      background-color: rgba(0,0,0,0.7);
-      position: absolute;
+    > .content {
+      bottom: 0;
       left: 0;
+      position: absolute;
       right: 0;
-      width: 100%;
-      height: 100%;
-      color: #ffffff;
-      text-shadow: 0 1px 2px rgba(0,0,0,.6);
+      top: 0;
+    }
 
-      .info {
-        position: relative;
-        top: $event-lead-image-height - 270px;
-
-        .event {
-          font-weight: 300;
-        }
-
-        .event.name {
-          font-size: 50px;
-          margin-top: 0;
-          margin-bottom: 10px;
-        }
-        .event.time {
-          font-size: 18px;
-          margin: 0;
-        }
-        .event.location {
-          font-size: 18px;
-          margin: 0;
-        }
-      }
-
+    > img {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 
-  div.lead.small:not(.with) {
-    height: $event-lead-image-height-minimum;
-    .content {
-      .info {
-        top: $event-lead-image-height-minimum - 270px;
+  div.lead {
+    &:not(.with) {
+      @include aspect-ratio(2, 1);
+      left: 0;
+      max-height: $event-lead-image-height;
+      overflow: hidden;
+      position: absolute;
+      right: 0;
+      width: 100%;
+
+      img {
+        left: 0;
+        position: absolute;
+        right: 0;
+        width: 100%;
+      }
+
+      .content {
+        background-color: rgba(0, 0, 0, .7);
+        color: #fff;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+        width: 100%;
+
+        .info {
+          bottom: 20%;
+          position: absolute;
+
+          .event {
+            font-weight: 300;
+          }
+
+          .event.name {
+            font-size: 3rem;
+            margin: 0;
+          }
+
+          .event.time {
+            font-size: 1.5rem;
+            margin: 0;
+          }
+
+          .event.location {
+            font-size: 1.5rem;
+            margin: 0;
+          }
+        }
+
+        @media (max-width: 959px) {
+
+          .info {
+
+            .event.name {
+              font-size: 2.15rem;
+            }
+
+            .event.time {
+              font-size: 1.25rem;
+            }
+
+            .event.location {
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div.lead.small {
+    &:not(.with) {
+      max-height: $event-lead-image-height-minimum;
+
+      .content {
+
+        .info {
+          bottom: 20%;
+          position: absolute;
+        }
       }
     }
   }
 
   > .content {
-    padding-top: $event-lead-image-height + 16px;
-
-    &.with.small.lead {
-      padding-top: $event-lead-image-height-minimum + 16px;
-    }
 
     .ui.rail {
       width: 15rem;
 
       &.right {
-        padding-left: 0;
         margin-left: 0;
         overflow: hidden;
+        padding-left: 0;
       }
     }
 
-    #public-event-content {
+    > div {
       min-height: 400px;
     }
   }
@@ -106,10 +153,10 @@
 }
 
 .event-map > .g-map {
-    height: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .event-map > .g-map > .g-map-canvas {
-   width: 500px;
-   height: 400px;
+  height: 300px;
 }

@@ -9,7 +9,7 @@ test('it exists and works', function(assert) {
   assert.ok(service);
 
   const getDone = assert.async();
-  service.get('https://httpbin.org/get?test=string&foo=bar', false).then(response => {
+  service.load('https://httpbin.org/get?test=string&foo=bar', { isExternal: true }).then(response => {
     assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, response);
   }).finally(() => {
     getDone();
@@ -21,7 +21,7 @@ test('it exists and works', function(assert) {
   };
 
   const postDone = assert.async();
-  service.post('https://httpbin.org/post', testPayload, false).then(response => {
+  service.post('https://httpbin.org/post', testPayload, { isExternal: true }).then(response => {
     assert.deepEqual(JSON.parse(response.data), testPayload, response);
     assert.deepEqual(response.json, testPayload, response);
   }).finally(() => {
@@ -29,7 +29,7 @@ test('it exists and works', function(assert) {
   });
 
   const putDone = assert.async();
-  service.put('https://httpbin.org/put', testPayload, false).then(response => {
+  service.put('https://httpbin.org/put', testPayload, { isExternal: true }).then(response => {
     assert.deepEqual(JSON.parse(response.data), testPayload, response);
     assert.deepEqual(response.json, testPayload, response);
   }).finally(() => {
@@ -37,7 +37,7 @@ test('it exists and works', function(assert) {
   });
 
   const deleteDone = assert.async();
-  service.delete('https://httpbin.org/delete', false).then(() => {
+  service.delete('https://httpbin.org/delete', { isExternal: true }).then(() => {
     assert.ok(true);
   }).finally(() => {
     deleteDone();

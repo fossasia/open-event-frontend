@@ -1,40 +1,42 @@
-<div class="public-event">
-  <div class="lead {{if smallLead 'small'}}">
-    {{widgets/safe-image src=(if model.large model.large model.placeholderUrl)}}
+<div class="public-event ui relaxed grid">
+  <div class="sixteen wide column lead {{if smallLead 'small'}}">
+    {{widgets/safe-image src=(if model.largeImageUrl model.largeImageUrl model.originalImageUrl)}}
     <div class="content">
       <div class="ui container">
-        <div class="ui grid">
+        <div class="ui grid info">
           <div class="one wide column"></div>
-          <div class="fifteen wide column info">
-            <h4 class="event time">{{moment-format model.startTime 'ddd, MMM DD \at HH:mm A'}}</h4>
+          <div class="fifteen wide column">
+            <h4 class="event time">{{moment-format model.startsAt 'ddd, MMM DD \at HH:mm A'}}</h4>
             <h1 class="event name">{{model.name}}</h1>
-            <h4 class="event location"><i class="marker icon"></i> {{model.locationName}}</h4>
+            <h4 class="event location"><i class="marker icon"></i>{{model.locationName}}</h4>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="content {{if smallLead 'with small lead'}}">
-    <div class="ui stackable grid " id="public-event-content">
+  <div class="sixteen wide column content {{if smallLead 'with small lead'}}">
+    <div class="ui stackable grid" id="public-event-content">
       <div class="three wide column">
         {{#if device.isMobile}}
-          <button {{action "toggleMenu"}} class="ui basic icon button mobile only">
+          <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
             <i class="content icon"></i>
           </button>
           {{#if isMenuOpen}}
-            {{public/side-menu class='toggle menu'}}
+            {{public/side-menu class='toggle menu' event=model}}
           {{/if}}
         {{else}}
           {{#ui-sticky context='#public-event-content' observeChanges=true}}
-            {{public/side-menu}}
+            {{public/side-menu event=model}}
           {{/ui-sticky}}
         {{/if}}
       </div>
       <div class="ten wide column">
         {{outlet}}
       </div>
-      <div class="three wide column" style="height:100vh;overflow: hidden; !important">
-        {{public/social-links eventUrl=model.eventUrl socialLinks=model.socialLinks}}
+      <div class="three wide column public">
+        {{#unless session.currentRouteName 'public.cfs.new-speaker'}}
+          {{public/social-links eventUrl=model.url socialLinks=model.socialLinks}}
+        {{/unless}}
       </div>
     </div>
   </div>

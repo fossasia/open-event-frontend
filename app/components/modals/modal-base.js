@@ -1,10 +1,10 @@
 import Ember from 'ember';
+import UiModal from 'semantic-ui-ember/components/ui-modal';
 
-const { Component, observer, merge, testing } = Ember;
+const { observer, merge, assign, testing } = Ember;
 
-export default Component.extend({
+export default UiModal.extend({
   tagName           : 'div',
-  classNames        : ['ui', 'modal'],
   classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
 
   openObserver: observer('isOpen', function() {
@@ -36,8 +36,10 @@ export default Component.extend({
     } catch (ignored) { /* ignored exception */ }
   },
 
-  didInsertElement() {
+
+  willInitSemantic(settings) {
     this._super(...arguments);
+
     const defaultOptions = {
       detachable     : false,
       duration       : testing ? 0 : 200,
@@ -77,9 +79,10 @@ export default Component.extend({
     };
 
     const options = this.get('options') ? merge(defaultOptions, this.get('options')) : defaultOptions;
+    assign(settings, options);
+  },
 
-    this.$().modal(options);
-
+  didInitSemantic() {
     if (this.get('isOpen')) {
       this.$().modal('show');
     }

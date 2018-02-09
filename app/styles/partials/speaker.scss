@@ -9,18 +9,18 @@
   .social-links {
     margin-top: 5px;
 
-    i{
+    i {
       margin: 0;
     }
   }
 }
 
 .speaker-description {
-  padding-right: 0;
-  word-wrap: break-word;
+  display: none;
   max-height: 240px;
   overflow: hidden;
-  display: none;
+  padding-right: 0;
+  word-wrap: break-word;
 
   &:hover {
     overflow-y: auto;

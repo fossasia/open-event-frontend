@@ -12,10 +12,10 @@ test('it renders', function(assert) {
   const store = this.container.lookup('service:store');
 
   this.set('isOpen', false);
-  this.set('taxInfo', run(() => store.createRecord('tax-info')));
+  this.set('taxInfo', run(() => store.createRecord('tax')));
   this.set('hasTaxInfo', false);
 
-  this.render(hbs`{{modals/tax-info-modal isOpen=isOpen taxInfo=taxInfo hasTaxInfo=hasTaxInfo}}`);
+  this.render(hbs`{{modals/tax-info-modal isOpen=isOpen tax=taxInfo hasTaxInfo=hasTaxInfo}}`);
 
   assert.ok(this.$().html().trim().includes('Add tax information'));
 });

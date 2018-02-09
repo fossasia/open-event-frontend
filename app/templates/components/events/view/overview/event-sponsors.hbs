@@ -1,0 +1,16 @@
+<div class="content">
+  {{#link-to 'events.view.edit.sponsors' tagName='button'
+  class='ui right floated blue button'}}
+    {{t 'Add Sponsors'}}
+  {{/link-to}}
+  <div class="header">{{t 'Event sponsors'}}</div>
+</div>
+<div class="content">
+  {{events/events-table columns=columns data=data
+    useNumericPagination=true
+    showGlobalFilter=true
+    showPageSize=true
+    moveToDetails='moveToDetails'
+    editEvent='editEvent'
+  }}
+</div>

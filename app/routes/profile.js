@@ -5,6 +5,16 @@ const { Route } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return 'Profile';
+    return this.l10n.t('Profile');
+  },
+
+  model() {
+    return this.get('authManager.currentUser');
+  },
+
+  actions: {
+    willTransition() {
+      this.get('authManager.currentUser').rollbackAttributes();
+    }
   }
 });

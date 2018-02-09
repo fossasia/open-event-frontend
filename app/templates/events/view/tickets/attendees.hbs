@@ -1,0 +1,84 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="eight wide column">
+      <h2 class="ui header">
+        {{t 'View Attendees'}}
+      </h2>
+    </div>
+    <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
+      <div class="{{if device.isMobile 'ui padded grid'}}">
+        <div class="row">
+          {{#ui-dropdown class='compact selection eight wide column'}}
+            <div class="default text">
+              {{t 'Export As'}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="pdf">
+                <i class="file pdf outline icon"></i>
+                {{t 'PDF'}}
+              </div>
+              <div class="item" data-value="csv">
+                <i class="file excel outline icon"></i>
+                {{t 'CSV'}}
+              </div>
+            </div>
+          {{/ui-dropdown}}
+          {{#ui-dropdown class='compact selection eight wide column'}}
+            <div class="default text">
+              {{t 'Showing all the records'}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="date">
+                <i class="calendar outline icon"></i>
+                {{t 'Filter by Date'}}
+              </div>
+              <div class="item" data-value="discount">
+                <i class="dollar icon"></i>
+                {{t 'Filter by Discount'}}
+              </div>
+              <div class="item" data-value="remove">
+                <i class="ban icon"></i>
+                {{t 'Remove Filters'}}
+              </div>
+            </div>
+          {{/ui-dropdown}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="x-scrollable sixteen wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'events.view.tickets.attendees.list' 'all' class='item'}}
+          {{t 'All'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'completed' class='item'}}
+          {{t 'Completed'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'placed' class='item'}}
+          {{t 'Placed'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'pending' class='item'}}
+          {{t 'Pending'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'expired' class='item'}}
+          {{t 'Expired'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'cancelled' class='item'}}
+          {{t 'Cancelled'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'checkedIn' class='item'}}
+          {{t 'Checked In'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.attendees.list' 'notCheckedIn' class='item'}}
+          {{t 'Not Checked In'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+  </div>
+  <div class="row">
+    {{outlet}}
+  </div>
+</div>

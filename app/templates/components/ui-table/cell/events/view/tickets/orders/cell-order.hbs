@@ -1,0 +1,14 @@
+<div class="ui tiny header">
+  {{record.identifier}}
+  <span class="weight-400">
+    {{t 'by'}} {{record.user.firstName}}
+  </span>
+  <div class="ui basic mini {{if (eq record.status 'completed') 'green' (if (or (eq record.status 'placed') (eq record.status 'pending')) 'yellow' 'red')}} label">
+    {{record.status}}
+  </div>
+  <div class="sub header">
+    <span class="weight-800">
+      {{t 'Payment via'}} {{record.paymentMode}}
+    </span>
+  </div>
+</div>

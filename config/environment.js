@@ -1,13 +1,22 @@
 /* eslint-env node */
 
+// https://dummy@getsentry.com/dummy
+function getSentryServer(dsn, withProtocol = true) {
+  const dsnArray = dsn.split('/');
+  dsnArray.pop();
+  return `${withProtocol ? `${dsnArray[0]}//` : ''}${dsnArray[2].split('@')[1]}`;
+}
+
+
 module.exports = function(environment) {
   let ENV = {
-    appName      : process.env.APP_NAME || 'Open Event',
-    modulePrefix : 'open-event-frontend',
+    appName                  : process.env.APP_NAME || 'Open Event',
+    modulePrefix             : 'open-event-frontend',
     environment,
-    rootURL      : '/',
-    locationType : 'auto',
-    EmberENV     : {
+    rootURL                  : '/',
+    locationType             : 'router-scroll',
+    historySupportMiddleware : true,
+    EmberENV                 : {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -19,8 +28,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || 'https://open-event-dev.herokuapp.com',
-      apiNamespace : process.env.API_NAMESPACE || 'api/v1'
+      apiHost      : process.env.API_HOST || 'https://open-event-api.herokuapp.com',
+      apiNamespace : process.env.API_NAMESPACE || 'v1'
     },
 
     metricsAdapters: [
@@ -35,55 +44,6 @@ module.exports = function(environment) {
         }
       }
     ],
-
-    contentSecurityPolicy: {
-      'default-src' : '\'none\'',
-      'connect-src' : [
-        '\'self\'',
-        'ws://eventyay.dev:49153',
-        'ws://eventyay.dev:65520',
-        'ws://localhost:49153',
-        'https://maps.gstatic.com',
-        'https://*.eventyay.com',
-        'https://eventyay.com',
-        'https://open-event-dev.herokuapp.com',
-        'https://open-event.herokuapp.com',
-        'www.google-analytics.com'
-      ],
-      'script-src': [
-        '\'self\'',
-        '\'unsafe-inline\'',
-        'https://*.googleapis.com',
-        'https://maps.gstatic.com',
-        'https://eventyay.com',
-        'https://*.eventyay.com',
-        'http://eventyay.dev:49153',
-        'http://eventyay.dev:65520',
-        'http://localhost:49153',
-        'www.google-analytics.com',
-        'https://platform.twitter.com',
-        'https://cdn.syndication.twimg.com'
-      ],
-      'font-src': [
-        '\'self\'',
-        'data:',
-        'https://fonts.gstatic.com'
-      ],
-      'img-src': [
-        '*',
-        'data:'
-      ],
-      'style-src': [
-        '\'self\'',
-        '\'unsafe-inline\'',
-        'https://fonts.googleapis.com',
-        'https://maps.gstatic.com',
-        'platform.twitter.com',
-        'https://ton.twimg.com'
-      ],
-      'frame-src' : '*',
-      'media-src' : '\'none\''
-    },
 
     moment: {
       includeTimezone: 'subset' /* ,
@@ -102,6 +62,16 @@ module.exports = function(environment) {
         images     : 'bower_components/open-event-theme/dist/themes/default/assets/images',
         fonts      : 'bower_components/open-event-theme/dist/themes/default/assets/fonts'
       }
+    },
+
+    sentry: {
+      dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
+      debug       : !!process.env.SENTRY_DSN,
+      development : !process.env.SENTRY_DSN
+    },
+
+    emberFullCalendar: {
+      includeScheduler: true
     }
   };
 
@@ -115,7 +85,7 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth-token'] = {
     refreshAccessTokens      : false,
-    serverTokenEndpoint      : `${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/login`,
+    serverTokenEndpoint      : `${ENV.APP.apiHost}/auth/session`,
     identificationField      : 'email',
     passwordField            : 'password',
     tokenPropertyName        : 'access_token',
@@ -131,6 +101,59 @@ module.exports = function(environment) {
     protocol  : 'https'
   };
 
+  ENV.sentry.hostname = getSentryServer(ENV.sentry.dsn, false);
+  ENV.sentry.server = getSentryServer(ENV.sentry.dsn, true);
+
+  ENV.contentSecurityPolicy = {
+    'default-src' : '\'none\'',
+    'connect-src' : [
+      '\'self\'',
+      'ws://eventyay.dev:65520',
+      'ws://localhost:49153',
+      'https://maps.gstatic.com',
+      'https://*.eventyay.com',
+      'https://eventyay.com',
+      'https://open-event-api.herokuapp.com',
+      'www.google-analytics.com',
+      ENV.sentry.hostname
+    ],
+    'script-src': [
+      '\'self\'',
+      '\'unsafe-inline\'',
+      'https://*.googleapis.com',
+      'https://maps.gstatic.com',
+      'https://eventyay.com',
+      'https://*.eventyay.com',
+      'http://eventyay.dev:65520',
+      'http://localhost:49153',
+      'www.google-analytics.com',
+      'https://platform.twitter.com',
+      'https://cdn.syndication.twimg.com',
+      'cdn.ravenjs.com'
+    ],
+    'font-src': [
+      '\'self\'',
+      'data:',
+      'https://fonts.gstatic.com'
+    ],
+    'img-src': [
+      '*',
+      'data:',
+      'app.getsentry.com',
+      ENV.sentry.hostname
+    ],
+    'style-src': [
+      '\'self\'',
+      '\'unsafe-inline\'',
+      'https://fonts.googleapis.com',
+      'https://maps.gstatic.com',
+      'platform.twitter.com',
+      'https://ton.twimg.com'
+    ],
+    'frame-src' : '*',
+    'media-src' : '\'none\''
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -141,6 +164,7 @@ module.exports = function(environment) {
       enabled: true
     };
   }
+
 
   if (environment === 'test') {
     // Testem prefers this...
@@ -160,7 +184,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     if (process.env.DEPLOY_TARGET && process.env.DEPLOY_TARGET === 'gh-pages') {
       ENV.locationType = 'hash';
-      ENV.rootURL = `/${  process.env.REPO_SLUG || 'open-event-frontend'}`;
+      ENV.rootURL = `/${process.env.REPO_SLUG || 'open-event-frontend'}`;
     }
   }
 

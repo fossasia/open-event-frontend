@@ -1,0 +1,107 @@
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'submit' on='submit'}}>
+  {{#if includeSession}}
+    {{#if isSessionSpeaker}}
+      <h3 class="ui header">
+        {{t 'Session detail'}}
+      </h3>
+    {{/if}}
+    {{#each allFields.session as |field|}}
+      {{#if field.isIncluded}}
+        <div class="field">
+          <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+          {{#if (or (eq field.type 'text') (eq field.type 'email'))}}
+            {{#if field.isLongText}}
+              {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
+                textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+            {{else}}
+              {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+            {{/if}}
+          {{/if}}
+          {{#if (eq field.type 'image')}}
+            {{widgets/forms/image-upload
+              imageUrl=(mut (get data.session field.fieldIdentifier))
+              label=(t 'Logo')
+              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+              icon='image'
+              hint=(t 'Select an image')
+              maxSizeInKb=1000}}
+          {{/if}}
+          {{#if (eq field.type 'file')}}
+            {{widgets/forms/file-upload
+              fileUrl=(mut (get data.session field.fieldIdentifier))
+              label=(t 'File')
+              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+              icon='file'
+              fileUrl=''
+              hint=(t 'Select a file')
+              maxSizeInKb=10000}}
+          {{/if}}
+          {{#if (eq field.type 'select')}}
+            {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
+              <i class="dropdown icon"></i>
+              <div class="default text">
+                {{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
+                  (concat 'Select a ' field.name)}}
+              </div>
+              <div class="menu">
+                {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
+                  <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/each}}
+  {{/if}}
+
+  {{#if includeSpeaker}}
+    {{#if isSessionSpeaker}}
+      <div class="ui divider"></div>
+      <h3 class="ui header">
+        {{t 'Speaker detail'}}
+      </h3>
+    {{/if}}
+    {{#each allFields.speaker as |field|}}
+      {{#if field.isIncluded}}
+        <div class="field">
+          <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+          {{#if (or (eq field.type 'text') (eq field.type 'email'))}}
+            {{#if field.isLongText}}
+              {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
+                textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+            {{else}}
+              {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+            {{/if}}
+          {{/if}}
+          {{#if (eq field.type 'image')}}
+            {{widgets/forms/image-upload
+              label=(t 'Logo')
+              id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))
+              icon='image'
+              hint=(t 'Select an image')
+              maxSizeInKb=1000}}
+          {{/if}}
+          {{#if (eq field.type 'select')}}
+            {{#ui-dropdown class='search selection' onChange=(action (mut (get data.speaker field.fieldIdentifier))) as |execute mapper|}}
+              <i class="dropdown icon"></i>
+              <div class="default text">
+                {{if (get data.speaker field.fieldIdentifier) (get data.speaker field.fieldIdentifier)
+                  (concat 'Select a ' field.name)}}
+              </div>
+              <div class="menu">
+                {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
+                  <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/each}}
+  {{/if}}
+  <button type="submit" class="ui teal submit button update-changes">
+    {{t 'Submit'}}
+  </button>
+</form>

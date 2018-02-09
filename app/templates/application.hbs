@@ -1,7 +1,7 @@
 <div id='device-type-identifier'></div>
 {{#side-bar}}
   <div class="footer-pusher">
-    {{nav-bar notifications=unreadNotifications}}
+    {{nav-bar unreadNotifications=unreadNotifications}}
     {{#if (eq routing.currentRouteName 'index')}}
       {{welcome-header}}
     {{/if}}
@@ -9,7 +9,7 @@
          class="ui fluid container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
-    {{footer-main}}
+    {{footer-main socialLinks=model.socialLinks footerPages=footerPages}}
   </div>
 {{/side-bar}}
 {{modals/confirm-modal isOpen=confirm.isOpen}}

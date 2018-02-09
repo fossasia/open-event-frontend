@@ -1,20 +1,20 @@
-{{#unless (includes session.currentRouteName 'events.view')}}
+{{#if (and (not-includes session.currentRouteName 'events.view') (not-includes session.currentRouteName 'events.my-sessions'))}}
   <div class="row">
     <div class="sixteen wide column">
-      <div class="ui fluid pointing secondary menu">
-        {{#link-to 'events.live' class='item'}}
+      {{#tabbed-navigation}}
+        {{#link-to 'events.list' 'live' class='item'}}
           {{t 'Live'}}
         {{/link-to}}
-        {{#link-to 'events.draft' class='item'}}
+        {{#link-to 'events.list' 'draft' class='item'}}
           {{t 'Draft'}}
         {{/link-to}}
-        {{#link-to 'events.past' class='item'}}
+        {{#link-to 'events.list' 'past' class='item'}}
           {{t 'Past'}}
         {{/link-to}}
         {{#link-to 'events.import' class='item'}}
           {{t 'Import'}}
         {{/link-to}}
-      </div>
+      {{/tabbed-navigation}}
     </div>
   </div>
   <div class="ui segment">
@@ -23,4 +23,4 @@
 {{else}}
   {{!-- the event specific view pages will be rendered without any of the above tabs --}}
   {{outlet}}
-{{/unless}}
+{{/if}}

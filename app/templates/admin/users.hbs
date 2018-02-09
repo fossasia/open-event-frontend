@@ -1,0 +1,22 @@
+<div class="ui grid stackable">
+  {{#if (not-includes session.currentRouteName 'admin.users.user')}}
+    <div class="row">
+      <div class="sixteen wide column">
+        {{#tabbed-navigation isNonPointing=true}}
+          {{#link-to 'admin.users.list' 'all' class='item'}}
+            {{t 'All Users'}}
+          {{/link-to}}
+          {{#link-to 'admin.users.list' 'active' class='item'}}
+            {{t 'Active Users'}}
+          {{/link-to}}
+          {{#link-to 'admin.users.list' 'deleted' class='item'}}
+            {{t 'Deleted Users'}}
+          {{/link-to}}
+        {{/tabbed-navigation}}
+      </div>
+    </div>
+  {{/if}}
+  <div class="row">
+    {{outlet}}
+  </div>
+</div>

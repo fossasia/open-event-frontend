@@ -3,32 +3,55 @@
     {{#scroll-to href='#info' class='item active'}}
       {{t 'Info'}}
     {{/scroll-to}}
-    {{#scroll-to href='#tickets' class='item'}}
-      {{t 'Tickets'}}
-    {{/scroll-to}}
-    {{#scroll-to href='#speakers' class='item'}}
-      {{t 'Speakers'}}
-    {{/scroll-to}}
+    {{#if event.isTicketingEnabled}}
+      {{#scroll-to href='#tickets' class='item'}}
+        {{t 'Tickets'}}
+      {{/scroll-to}}
+    {{/if}}
+    {{#if event.isSessionsSpeakersEnabled}}
+      {{#scroll-to href='#speakers' class='item'}}
+        {{t 'Speakers'}}
+      {{/scroll-to}}
+    {{/if}}
   {{else}}
-    <a class="item" href="{{href-to 'public.index'}}">
-      {{t 'Info'}}
-    </a>
+  <a class="item" href="{{href-to 'public.index'}}">
+    {{t 'Info'}}
+  </a>
+  {{#if event.isTicketingEnabled}}
     <a class="item" href="{{href-to 'public.index'}}#tickets">
       {{t 'Tickets'}}
     </a>
+  {{/if}}
+  {{#if event.isSessionsSpeakersEnabled}}
     <a class="item" href="{{href-to 'public.index'}}#speakers">
       {{t 'Speakers'}}
     </a>
   {{/if}}
-  {{#link-to 'public.sessions' class='item'}}
-    {{t 'Sessions'}}
-  {{/link-to}}
+  {{/if}}
+  {{#if event.isSessionsSpeakersEnabled}}
+    {{#link-to 'public.sessions' class='item'}}
+      {{t 'Sessions'}}
+    {{/link-to}}
+  {{/if}}
   {{#link-to 'public.schedule' class='item'}}
     {{t 'Schedule'}}
   {{/link-to}}
-  {{#link-to 'public.cfs' class='item'}}
-    {{t 'Call for Speakers'}}
-  {{/link-to}}
+  {{#if event.isSessionsSpeakersEnabled}}
+    {{#link-to 'public.cfs' class='item'}}
+      {{t 'Call for Speakers'}}
+    {{/link-to}}
+  {{/if}}
+  {{#if event.hasOrganizerInfo}}
+    {{#if (eq session.currentRouteName 'public.index')}}
+      {{#scroll-to href='#organizer' class='item'}}
+        {{t 'Organizer'}}
+      {{/scroll-to}}
+    {{else}}
+      <a class="item" href="{{href-to 'public.index'}}#organizer">
+        {{t 'Organizer'}}
+      </a>
+    {{/if}}
+  {{/if}}
   {{#if (eq session.currentRouteName 'public.index')}}
     {{#scroll-to href='#getting-here' class='item'}}
       {{t 'Getting here'}}
@@ -37,5 +60,10 @@
     <a class="item" href="{{href-to 'public.index'}}#getting-here">
       {{t 'Getting here'}}
     </a>
+  {{/if}}
+  {{#if event.codeOfConduct}}
+    {{#link-to 'public.coc' class='item'}}
+      {{t 'Code of Conduct'}}
+    {{/link-to}}
   {{/if}}
 </div>

@@ -12,7 +12,7 @@
       {{#if allowReCrop}}
         <button type="button" class="ui teal button" {{action 'reCrop'}}>
           <i class="trash icon"></i>
-          Re-crop
+          {{t 'Re-crop'}}
         </button>
       {{/if}}
       <button type="button" class="ui red button" {{action 'removeSelection'}}>
@@ -43,6 +43,5 @@
   </label>
 {{/if}}
 {{#if needsCropper}}
-  {{modals/cropper-modal isOpen=cropperModalIsShown imgData=imgData onImageCrop=(action 'imageCropped')}}
+  {{modals/cropper-modal isOpen=cropperModalIsShown imgData=imgData onImageCrop=(action 'imageCropped') aspectRatio=aspectRatio}}
 {{/if}}
-

@@ -1,7 +1,7 @@
 .footer-pusher {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .main-container {
@@ -13,23 +13,23 @@
 }
 
 footer {
-  padding-top: 30px !important;
   padding-bottom: 30px !important;
+  padding-top: 30px !important;
 
   .language.menu > div {
-    color:rgba(0, 0, 0, 0.87) !important;
+    color: rgba(0, 0, 0, .87) !important;
   }
 }
 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
   .main-container {
-    margin: 20px 0;
+    margin: $page-top-margin 0;
     min-height: 50vh;
   }
 
   footer {
-    position: absolute !important;
     left: 0 !important;
+    position: absolute !important;
     right: 0 !important;
   }
 }

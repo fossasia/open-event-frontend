@@ -1,1 +1,56 @@
-<p>Applications</p>
+<h4>{{t 'Facebook'}}</h4>
+<div class="ui fluid labeled action input">
+  <div class="ui label">
+    {{t 'facebook.com/'}}
+  </div>
+  {{input type='text' name='facebook'}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
+</div>
+<h4>{{t 'Twitter'}}</h4>
+<div class="ui fluid labeled action input">
+  <div class="ui label">
+    {{t 'twitter.com/'}}
+  </div>
+  {{input type='text' name='twitter'}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
+</div>
+<h4>{{t 'Instagram'}}</h4>
+<div class="ui fluid labeled action input">
+  <div class="ui label">
+    {{t 'instagram.com/'}}
+  </div>
+  {{input type='text' name='instagram'}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
+</div>
+<h4>{{t 'Google+'}}</h4>
+<div class="ui fluid labeled action input">
+  <div class="ui label">
+    {{t 'plus.google.com/'}}
+  </div>
+  {{input type='text' name='google'}}
+  <button class="ui {{if device.isMobile 'icon'}} blue button">
+    {{#if device.isMobile}}
+      <i class="linkify icon"></i>
+    {{else}}
+      {{t 'Connect'}}
+    {{/if}}
+  </button>
+</div>

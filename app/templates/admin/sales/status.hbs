@@ -1,0 +1,18 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="column">
+      <h2 class="ui header">
+        {{t 'Invoices'}}
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      {{events/events-table columns=columns data=model
+                            useNumericPagination=true
+                            showGlobalFilter=true
+                            showPageSize=true
+      }}
+    </div>
+  </div>
+</div>

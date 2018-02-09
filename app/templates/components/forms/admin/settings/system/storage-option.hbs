@@ -1,0 +1,92 @@
+<h3 class="ui header">
+  {{t 'Storage'}}
+  <div class="sub header">
+    {{t 'Where to store data ?'}}
+  </div>
+</h3>
+<div class="field">
+  {{ui-radio label=(t 'Local') current=settings.storagePlace name='storage' value='local' onChange=(action (mut settings.storagePlace))}}
+  <span class="small text">
+    ({{t 'stored in'}} /static/media/folder)
+  </span>
+</div>
+<div class="field">
+  {{ui-radio label=(t 'Google Storage') name='storage' value='google' onChange=(action  (mut settings.storagePlace))}}
+  <span class="small text">
+    ({{t 'See'}}
+    <a href="https://cloud.google.com/storage/docs/migrating#defaultproj" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these keys.'}})
+  </span>
+</div>
+{{#if (eq settings.storagePlace 'google')}}
+  <div class="field">
+    <label>
+      {{t 'Bucket name'}}
+    </label>
+    {{input type='text' name='google_storage_bucket_name' value=settings.gsBucketName}}
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Interoperable access key'}}
+    </label>
+    {{input type='text' name='google_storage_access_key' value=settings.gsKey}}
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Interoperable access secret'}}
+    </label>
+    {{input type='text' name='google_storage_access_secret' value=settings.gsSecret}}
+  </div>
+  <div class="ui hidden divider"></div>
+{{/if}}
+<div class="field">
+  {{ui-radio label=(t 'Amazon S3') name='storage' value='S3' current=settings.storagePlace onChange=(action (mut settings.storagePlace))}}
+  <span class="small text">
+    ({{t 'See'}}
+    <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-getting-started.html" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these keys.'}})
+  </span>
+</div>
+{{#if (eq settings.storagePlace 'S3')}}
+  <div class="less padding field">
+    <label>
+      {{t 'Region'}}
+    </label>
+    {{#ui-dropdown class='fluid selection' selected=settings.awsRegion onChange=(action (mut settings.awsRegion))}}
+      {{input type='hidden' name='amazon_s3_region' value=settings.awsRegion}}
+      <div class="default text">
+        {{t 'Select S3 Region'}}
+      </div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {{#each regions as |region|}}
+          <div class="item" data-value="{{region}}">
+            {{region}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Bucket name'}}
+    </label>
+    {{input type='text' name='amazon_s3_bucket_name' value=settings.awsBucketName}}
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Key'}}
+    </label>
+    {{input type='text' name='amazon_s3_key' value=settings.awsKey}}
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Secret'}}
+    </label>
+    {{input type='text' name='amazon_s3_secret' value=settings.awsSecret}}
+  </div>
+{{/if}}

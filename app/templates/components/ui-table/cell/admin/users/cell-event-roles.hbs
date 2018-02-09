@@ -1,0 +1,5 @@
+<div class="ui ordered list">
+  {{#each record.eventRoles as |eventRole|}}
+    <div class="item">{{eventRole.name}} ({{eventRole.event.name}})</div>
+  {{/each}}
+</div>

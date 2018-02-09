@@ -7,12 +7,12 @@ export default Controller.extend({
 
   callForSpeakersEvents: computed('model.[]', function() {
     return this.get('model').filter(event => {
-      const callForPapers = event.get('callForPapers');
-      if (callForPapers === null || !callForPapers.get('startDate') || !callForPapers.get('timezone') || !callForPapers.get('endDate')) {
+      const callForPapers = event.get('speakersCall');
+      if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
         return false;
       }
-      const startDateTime = moment.tz(callForPapers.get('startDate'), callForPapers.get('timezone'));
-      const endDateTime = moment.tz(callForPapers.get('endDate'), callForPapers.get('timezone'));
+      const startDateTime = callForPapers.get('startsAt');
+      const endDateTime = callForPapers.get('endsAt');
       return moment().isBetween(startDateTime, endDateTime);
     });
   }),

@@ -1,0 +1,45 @@
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
+  <div class="field">
+    <label>{{t 'Support'}}</label>
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedSupportUrl
+      inputId='support'
+    }}
+  </div>
+  <div class="field">
+    <label>{{t 'Twitter'}}</label>
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedTwitterUrl
+      inputId='twitter'
+    }}
+  </div>
+  <div class="field">
+    <label>{{t 'Facebook'}}</label>
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedFacebookUrl
+      inputId='facebook'
+    }}
+  </div>
+  <div class="field">
+    <label>{{t 'Google +'}}</label>
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedGoogleUrl
+      inputId='google_plus'
+    }}
+  </div>
+  <div class="field">
+    <label>{{t 'Youtube'}}</label>
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedYoutubeUrl
+      inputId='youtube'
+    }}
+  </div>
+  <div class="field">
+    <label>{{t 'Github'}}</label>
+    {{widgets/forms/link-input
+      segmentedLink=socials.segmentedGithubUrl
+      inputId='github'
+    }}
+  </div>
+  <button class="ui teal button" type="submit">{{t 'Save'}}</button>
+</form>

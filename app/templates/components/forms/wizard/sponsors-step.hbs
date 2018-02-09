@@ -1,14 +1,14 @@
-<form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
 
-  <div class="ui four column centered grid">
+  <div class="ui centered grid">
     <div class="column">
-      <div class="ui {{if data.sponsors.enabled 'basic'}} segment">
+      <div class="ui {{if data.event.isSponsorsEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
-              {{input type='checkbox' checked=data.sponsors.enabled}}
+              {{input type='checkbox' checked=data.event.isSponsorsEnabled}}
               <label class="weight-300" style="font-size: large">
-                {{if data.sponsors.enabled (t 'turn off') (t 'turn on')}}
+                {{if data.event.isSponsorsEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sponsors'}}
               </label>
             </div>
@@ -18,11 +18,11 @@
     </div>
   </div>
 
-  {{#if data.sponsors.enabled}}
-    {{#each data.sponsors.items as |sponsor index|}}
+  {{#if data.event.isSponsorsEnabled}}
+    {{#each sponsors as |sponsor index|}}
       <h4>
         {{t 'Sponsor'}} #{{inc index}}
-        {{#if (gt data.sponsors.items.length 1)}}
+        {{#if sponsors.length}}
           <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}>
             <i class="trash icon"></i>
             {{t 'Remove'}}
@@ -37,7 +37,7 @@
         </div>
         <div class="two wide field">
           <label>{{t 'Level'}}</label>
-          {{input type='number' value=sponsor.level name='level'}}
+          {{input type='number' value=sponsor.level name='level' min=0}}
         </div>
         <div class="three wide field">
           <label>{{t 'Type'}}</label>
@@ -49,11 +49,11 @@
         </div>
       </div>
       <div class="fields">
-        <div class="five wide field" style="">
+        <div class="five wide computer eight wide tablet field">
           <label>{{t 'Description'}}</label>
           {{widgets/forms/rich-text-editor value=sponsor.description name='description'}}
         </div>
-        <div class="eleven wide field" style="padding-top: 58px;">
+        <div class="sponsors-step eleven wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
           {{widgets/forms/image-upload
             label=(t 'Logo')
             imageUrl=sponsor.logoUrl
@@ -62,27 +62,27 @@
             maxSizeInKb=1000}}
         </div>
       </div>
-      {{#unless (eq (inc index) data.sponsors.items.length)}}
+      {{#if (not-eq (inc index) data.event.sponsors.length)}}
         <div class="ui section divider"></div>
-      {{/unless}}
+      {{/if}}
     {{/each}}
-    <button type="button" class="ui primary button" {{action 'addSponsor'}}>{{t 'Add another sponsor'}}</button>
+    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t 'Add another sponsor'}}</button>
     <div class="spacer-50"></div>
   {{else}}
     <div class="spacer-50"></div>
   {{/if}}
 
-  <div class="large ui buttons right floated">
-    <button class="ui right labeled icon button" type="button" {{action 'moveForward'}}>
+  <div class="{{if device.isMobile 'mini three' 'right floated large'}} ui buttons">
+    <button class="ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
+    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
-    {{#if data.parentData.event.locationName}}
-      <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
+    {{#if data.event.locationName}}
+      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

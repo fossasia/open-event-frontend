@@ -1,14 +1,14 @@
-<form class="ui form" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
 
-  <div class="ui three column centered grid">
+  <div class="ui centered grid">
     <div class="column">
-      <div class="ui {{if sessionsSpeakers.enabled 'basic'}} segment">
+      <div class="ui {{if data.event.isSessionsSpeakersEnabled 'basic'}} segment">
         <div class="center aligned text">
-          <div class=" field">
+          <div class="field">
             <div class="ui slider checkbox">
-              {{input type='checkbox' checked=sessionsSpeakers.enabled}}
+              {{input type='checkbox' checked=data.event.isSessionsSpeakersEnabled}}
               <label class="weight-300" style="font-size: large">
-                {{if sessionsSpeakers.enabled (t 'turn off') (t 'turn on')}}
+                {{if data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sessions & Speakers'}}
               </label>
             </div>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  {{#if sessionsSpeakers.enabled}}
+  {{#if data.event.isSessionsSpeakersEnabled}}
     <br>
     <h3 class="ui dividing header">
       <i class="ordered list icon"></i>
@@ -28,15 +28,15 @@
     </h3>
     <div class="field">
       <label>Tracks</label>
-      {{#each sessionsSpeakers.tracks as |track|}}
-        <div class="fields">
-          <div class="three wide field">
-            {{input type='text' value=track.name placeholder='Name'}}
+      {{#each tracks as |track|}}
+        <div class="{{if device.isMobile 'grouped'}} fields">
+          <div class="{{unless device.isMobile 'three wide'}} field">
+            {{input type='text' name='track' value=track.name placeholder='Name'}}
           </div>
-          <div class="four wide field">
-            {{#widgets/forms/color-picker value=track.color}}
-              {{#if (gt sessionsSpeakers.tracks.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' track 'track'}}>
+          <div class="{{unless device.isMobile 'four wide'}} field">
+            {{#widgets/forms/color-picker value=track.color fontColor=track.fontColor}}
+              {{#if (gt tracks.length 1)}}
+                <button class="ui icon red button" type="button" {{action 'removeItem' track}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
@@ -45,7 +45,7 @@
               </button>
             {{/widgets/forms/color-picker}}
           </div>
-          <div class="two wide field">
+          <div class="{{unless device.isMobile 'two wide'}} field">
             <input title="Preview"
                    class="preview"
                    value="{{if track.name track.name (t 'Preview Text')}}"
@@ -58,16 +58,16 @@
 
     <div class="field">
       <label>{{t 'Microlocations'}}</label>
-      {{#each sessionsSpeakers.microlocations as |microlocation|}}
-        <div class="fields">
-          <div class="three wide field">
+      {{#each microlocations as |microlocation|}}
+        <div class="{{if device.isMobile 'grouped'}} fields">
+          <div class="{{unless device.isMobile 'three wide'}} field">
             {{input type='text' value=microlocation.name placeholder='Name'}}
           </div>
-          <div class="four wide field">
+          <div class="{{unless device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              {{input type='text' value=microlocation.floor placeholder='Floor'}}
-              {{#if (gt sessionsSpeakers.microlocations.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' microlocation 'microlocation'}}>
+              {{input type='text' name='microlocation' value=microlocation.floor placeholder='Floor'}}
+              {{#if (gt microlocations.length 1)}}
+                <button class="ui icon red button" type="button" {{action 'removeItem' microlocation}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
@@ -81,16 +81,16 @@
     </div>
     <div class="field">
       <label>{{t 'Session Types'}}</label>
-      {{#each sessionsSpeakers.sessionTypes as |sessionType|}}
-        <div class="fields">
-          <div class="three wide field">
-            {{input type='text' value=sessionType.name placeholder='Name'}}
+      {{#each sessionTypes as |sessionType|}}
+        <div class="{{if device.isMobile 'grouped'}} fields">
+          <div class="{{unless device.isMobile 'three wide'}} field">
+            {{input type='text' name='session' value=sessionType.name placeholder='Name'}}
           </div>
-          <div class="four wide field">
+          <div class="{{unless device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
               {{widgets/forms/time-picker value=sessionType.length placeholder='HH:MM' icon=false}}
-              {{#if (gt sessionsSpeakers.sessionTypes.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' sessionType 'sessionType'}}>
+              {{#if (gt sessionTypes.length 1)}}
+                <button class="ui icon red button" type="button" {{action 'removeItem' sessionType}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
@@ -112,7 +112,7 @@
     </h3>
     <div class="field">
       <label>{{t 'Announcement'}}</label>
-      {{widgets/forms/rich-text-editor}}
+      {{widgets/forms/rich-text-editor textareaId='announcement' value=data.speakersCall.announcement}}
     </div>
     <div class="fields">
       <div class="five wide field">
@@ -121,7 +121,7 @@
                                     inputId='start_date'
                                     placeholder='MM/DD/YYYY'
                                     rangePosition='start'
-                                    value=sessionsSpeakers.callForSpeakers.startDate}}
+                                    value=data.speakersCall.startsAtDate}}
       </div>
       <div class="two wide field">
         <label for="start_time">&nbsp;</label>
@@ -129,7 +129,7 @@
                                     inputId='start_time'
                                     placeholder='HH:MM'
                                     rangePosition='start'
-                                    value=sessionsSpeakers.callForSpeakers.startTime}}
+                                    value=data.speakersCall.startsAtTime}}
       </div>
       <div class="five wide field">
         <label class="required" for="end_date">{{t 'Ends'}}</label>
@@ -137,7 +137,7 @@
                                     inputId='end_date'
                                     placeholder='MM/DD/YYYY'
                                     rangePosition='end'
-                                    value=sessionsSpeakers.callForSpeakers.endDate}}
+                                    value=data.speakersCall.endsAtDate}}
       </div>
       <div class="two wide field">
         <label for="end_time">&nbsp;</label>
@@ -145,28 +145,19 @@
                                     inputId='end_time'
                                     placeholder='HH:MM'
                                     rangePosition='end'
-                                    value=sessionsSpeakers.callForSpeakers.endTime}}
+                                    value=data.speakersCall.endsAtTime}}
       </div>
       <div class="five wide field">
         <label class="required" for="timezone">{{t 'Timezone'}}</label>
-        {{#ui-dropdown class='search selection' selected=sessionsSpeakers.callForSpeakers.timezone forceSelection=false fullTextSearch=true}}
-          {{input type='hidden' id='timezone' value=sessionsSpeakers.callForSpeakers.timezone}}
-          <i class="dropdown icon"></i>
-          <div class="default text">{{t 'Select timezone'}}</div>
-          <div class="menu">
-            {{#each timezones as |timezone|}}
-              <div class="item" data-value="{{timezone}}">{{timezone}}</div>
-            {{/each}}
-          </div>
-        {{/ui-dropdown}}
+        {{input type='text' disabled=true value=data.event.timezone}}
       </div>
     </div>
     <div class="field">
       <label>{{t 'Private Link'}}</label>
       <div class="ui action input fluid">
-        <input type="text" value="{{concat event.url '/cfs/' sessionsSpeakers.callForSpeakers.hash}}" placeholder="{{concat event '/cfs/' sessionsSpeakers.callForSpeakers.hash}}" readonly>
+        <input type="text" value="{{concat data.event.url '/cfs/' data.speakersCall.hash}}" placeholder="{{concat data.event '/cfs/' data.speakersCall.hash}}" readonly>
         {{#copy-button
-          clipboardText=(concat event.url '/cfs/' sessionsSpeakers.callForSpeakers.hash)
+          clipboardText=(concat data.event.url '/cfs/' data.speakersCall.hash)
           class='ui black right labeled icon copy button'}}
           <i class="copy icon"></i>
           {{t 'Copy'}}
@@ -181,7 +172,7 @@
       <div class="field">
         <div class="ui radio checkbox">
           {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public'
-                                       checked=sessionsSpeakers.callForSpeakers.privacy}}
+                                       checked=data.speakersCall.privacy}}
           <label for="privacy_public">
             <strong>{{t 'Public'}}:</strong>
             {{t 'Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published.'}}
@@ -191,7 +182,7 @@
       <div class="field">
         <div class="ui radio checkbox">
           {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private'
-                                       checked=sessionsSpeakers.callForSpeakers.privacy}}
+                                       checked=data.speakersCall.privacy}}
           <label for="privacy_private">
             <strong>{{t 'Private'}}:</strong>
             {{t 'Do not display this publicly. Proposals can be submitted only using the private link.'}}
@@ -218,24 +209,44 @@
               </th>
             </tr>
             <tr>
-              <th class="right aligned">{{t 'Option'}}</th>
-              <th class="center aligned">{{t 'Include'}}</th>
-              <th class="center aligned">{{t 'Require'}}</th>
+              {{#if device.isMobile}}
+                <th class="center aligned">
+                  {{t 'Options'}}
+                </th>
+              {{else}}
+                <th class="right aligned">
+                  {{t 'Option'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Include'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Require'}}
+                </th>
+              {{/if}}
             </tr>
           </thead>
           <tbody>
-            {{#each sessionsSpeakers.customForm.speaker as |field|}}
+            {{#each customForm.speaker as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
-                <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
-                  </div>
+                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                  <label class="{{if field.isFixed 'required'}}">
+                    {{field.name}}
+                  </label>
                 </td>
                 <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
-                  </div>
+                  {{ui-checkbox class='slider'
+                                checked=field.isIncluded
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isIncluded))
+                                label=(if device.isMobile (t 'Include'))}}
+                </td>
+                <td class="center aligned">
+                  {{ui-checkbox class='slider'
+                                checked=field.isRequired
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isRequired))
+                                label=(if device.isMobile (t 'Require'))}}
                 </td>
               </tr>
             {{/each}}
@@ -252,24 +263,44 @@
               </th>
             </tr>
             <tr>
-              <th class="right aligned">{{t 'Option'}}</th>
-              <th class="center aligned">{{t 'Include'}}</th>
-              <th class="center aligned">{{t 'Require'}}</th>
+              {{#if device.isMobile}}
+                <th class="center aligned">
+                  {{t 'Options'}}
+                </th>
+              {{else}}
+                <th class="right aligned">
+                  {{t 'Option'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Include'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Require'}}
+                </th>
+              {{/if}}
             </tr>
           </thead>
           <tbody>
-            {{#each sessionsSpeakers.customForm.session as |field|}}
+            {{#each customForm.session as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="right aligned"><label class="{{if field.isFixed 'required'}}">{{field.name}}</label></td>
-                <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isIncluded disabled=field.isFixed}}
-                  </div>
+                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                  <label class="{{if field.isFixed 'required'}}">
+                    {{field.name}}
+                  </label>
                 </td>
                 <td class="center aligned">
-                  <div class="ui slider checkbox">
-                    {{input type='checkbox' checked=field.isRequired disabled=field.isFixed}}
-                  </div>
+                  {{ui-checkbox class='slider'
+                                checked=field.isIncluded
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isIncluded))
+                                label=(if device.isMobile (t 'Include'))}}
+                </td>
+                <td class="center aligned">
+                  {{ui-checkbox class='slider'
+                                checked=field.isRequired
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isRequired))
+                                label=(if device.isMobile (t 'Require'))}}
                 </td>
               </tr>
             {{/each}}
@@ -282,13 +313,13 @@
     <div class="spacer-50"></div>
   {{/if}}
 
-  <div class="large ui buttons right floated">
-    <button class="primary ui right labeled icon button" type="button" {{action 'saveDraft'}}>
+  <div class="ui buttons {{if device.isMobile 'fluid' 'right floated large'}}">
+    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
-    {{#if event.locationName}}
-      <button class="green ui right labeled icon button" type="button" {{action 'publish'}}>
+    {{#if data.event.locationName}}
+      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

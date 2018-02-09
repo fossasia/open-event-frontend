@@ -1,0 +1,40 @@
+<div class="header">
+  {{t 'Add Role'}}
+</div>
+<div class="content">
+  <form class="ui {{if isLoading 'loading'}} form" id="add-user-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
+    <div class="field">
+      <label class="required">
+        {{t 'User Email'}}
+      </label>
+      {{input type='text' name='user_email' value=currentInvite.email}}
+    </div>
+    <div class="field">
+      <label class="required">
+        {{t 'User role'}}
+      </label>
+      {{#ui-dropdown class='fluid selection' onChange=(action (mut currentInvite.role)) as |execute mapper|}}
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          {{t 'Select a role'}}
+        </div>
+        <div class="menu">
+          {{#each data.roles as |role|}}
+            <div class="item" data-value="{{map-value mapper role}}">
+              {{role.name}}
+            </div>
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="add-user-role-form" class="ui green right labeled icon button">
+    {{t 'Add Role'}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>

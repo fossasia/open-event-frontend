@@ -20,11 +20,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter your email ID')
+              prompt : this.l10n.t('Please enter your email ID')
             },
             {
               type   : 'email',
-              prompt : this.i18n.t('Please enter a valid email ID')
+              prompt : this.l10n.t('Please enter a valid email ID')
             }
           ]
         },
@@ -33,7 +33,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter your password')
+              prompt : this.l10n.t('Please enter your password')
             }
           ]
         }
@@ -53,15 +53,18 @@ export default Component.extend(FormMixin, {
         this.get('session')
           .authenticate(authenticator, credentials)
           .then(() => {
-            this.get('loader').get('/users/me').then(data => {
-              this.get('session').set('data.currentUser', data);
-            });
+            const tokenPayload = this.get('authManager').getTokenPayload();
+            if (tokenPayload) {
+              this.get('store').findRecord('user', tokenPayload.identity).then(user => {
+                this.get('authManager').persistCurrentUser(user);
+              });
+            }
           })
           .catch(reason => {
-            if (reason.hasOwnProperty('code') && reason.code === 401) {
-              this.set('errorMessage', this.i18n.t('Your credentials were incorrect.'));
+            if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+              this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
-              this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
+              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
             }
             this.set('isLoading', false);
           })

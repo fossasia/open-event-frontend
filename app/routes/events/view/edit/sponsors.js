@@ -1,16 +1,15 @@
 import Ember from 'ember';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-const { Route } = Ember;
+const { Route, RSVP } = Ember;
 
 export default Route.extend(EventWizardMixin, {
   titleToken() {
-    return this.i18n.t('Sponsors');
+    return this.l10n.t('Sponsors');
   },
   model() {
-    return {
-      parentData : this._super(...arguments),
-      sponsors   : this.getSponsors()
-    };
+    let data = this.modelFor('events.view.edit');
+    data.sponsors = data.event.get('sponsors');
+    return RSVP.hash(data);
   }
 });

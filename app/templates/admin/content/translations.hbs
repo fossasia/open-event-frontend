@@ -1,0 +1,30 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="column eight wide">
+      <div class="column eight wide ui grid">
+        <div class="row">
+          <div class="column eight wide">
+            <h4 class="ui header">{{t 'Language'}}</h4>
+          </div>
+          <div class="column eight wide">
+            <h4 class="ui header">{{t 'Download .PO files'}}</h4>
+          </div>
+        </div>
+        {{#each model as |language|}}
+          <div class="row">
+            <div class="column eight wide">
+              {{get l10n.availableLocales language.code}}
+            </div>
+            <div class="column eight wide">
+              <a href="{{language.sourceUrl}}">{{t 'Download'}}</a>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="column eight wide ui grid center aligned">
+      <h4 class="ui header">{{t 'Update .PO files :'}}</h4>
+      {{forms/admin/content/translation-form languages=model}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+  <div class="ui basic segment grid">
+    <div class="ui row segment">
+      <div class="column eight wide">
+        {{t 'Ticketing'}}
+      </div>
+      <div class="ui column eight wide field right aligned">
+        {{ui-checkbox class='toggle' checked=model.ticketInclude onChange=(action (mut model.ticketInclude))}}
+      </div>
+    </div>
+    <div class="ui row segment">
+      <div class="column eight wide">
+        {{t 'Payments'}}
+      </div>
+      <div class="ui column eight wide field right aligned">
+        {{ui-checkbox class='toggle' checked=model.paymentInclude onChange=(action (mut model.paymentInclude))}}
+      </div>
+    </div>
+    <div class="ui row segment">
+      <div class="column eight wide">
+        {{t 'Donations'}}
+      </div>
+      <div class="ui eight column wide field right aligned">
+        {{ui-checkbox class='toggle' checked=model.donationInclude onChange=(action (mut model.donationInclude))}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen column wide right aligned">
+        <button class="ui teal button">{{t 'Save'}}</button>
+      </div>
+    </div>
+  </div>
+</form>

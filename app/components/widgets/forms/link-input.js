@@ -19,9 +19,19 @@ export default Component.extend({
   }),
 
   protocolAddressObserver: observer('protocol', 'address', function() {
+    let add = this.get('address');
+    let proto = this.get('protocol');
+    if (add.includes('http://') || add.includes('https://')) {
+      let temp = add.split('://');
+      proto = temp[0];
+      add = temp[1];
+    }
+    if (add.includes('www.')) {
+      add = add.substring(add.indexOf('.') + 1);
+    }
     this.set('segmentedLink', {
-      protocol : this.get('protocol'),
-      address  : this.get('address')
+      protocol : proto,
+      address  : add
     });
   }),
 

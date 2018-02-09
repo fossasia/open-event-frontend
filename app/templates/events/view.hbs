@@ -1,7 +1,83 @@
-{{#unless (includes session.currentRouteName 'events.view.edit')}}
-  {{!-- Tabs for the event view page will come here --}}
-  {{outlet}}
+{{#if (not-includes session.currentRouteName 'events.view.edit')}}
+  <div class="ui grid stackable">
+    <div class="row">
+      <div class="four wide column">
+        <h2 class="ui header">
+          {{model.name}}
+        </h2>
+      </div>
+      <div class="twelve wide column {{unless device.isMobile 'right aligned'}}">
+        {{#if device.isMobile}}
+          <div class="ui icon fluid buttons">
+            <a href="{{href-to 'public' model.id}}" class="ui button">
+              <i class="unhide icon"></i>
+            </a>
+            <button class="ui button" {{action 'togglePublishState'}}>
+              <i class="{{if (eq model.state 'published') 'ban' 'check'}} icon"></i>
+            </button>
+            <button class="ui button"><i class="copy icon"></i></button>
+            <button class="ui red button" {{action 'openDeleteEventModal'}}><i class="trash icon"></i></button>
+          </div>
+        {{else}}
+            <a href="{{href-to 'public' model.id}}" class="ui button labeled icon small">
+              <i class="unhide icon"></i>
+              {{t 'Preview'}}
+            </a>
+            <div class="ui small labeled icon buttons">
+              <button class="ui button " {{action 'togglePublishState'}}>
+                {{#if (eq model.state 'published')}}
+                  <i class="ban icon"></i>
+                  {{t 'Unpublish'}}
+                {{else}}
+                  <i class="check icon"></i>
+                  {{t 'Publish'}}
+                {{/if}}
+              </button>
+              <button class="ui button {{if isCopying 'loading'}}" {{action 'copyEvent'}} disabled={{isCopying}}>
+                <i class="copy icon"></i>
+                {{t 'Copy'}}
+              </button>
+            </div>
+            <button class="ui red button labeled icon small" {{action 'openDeleteEventModal'}}>
+              <i class="trash icon"></i>
+              {{t 'Delete'}}
+            </button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top: 15px">
+    <div class="sixteen wide column">
+      {{#tabbed-navigation}}
+        {{#link-to 'events.view.index' class='item'}}
+          {{t 'Overview'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets' class='item'}}
+          {{t 'Tickets'}}
+        {{/link-to}}
+        {{#link-to 'events.view.scheduler' class='item'}}
+          {{t 'Scheduler'}}
+        {{/link-to}}
+        {{#link-to 'events.view.sessions' class='item'}}
+          {{t 'Sessions'}}
+        {{/link-to}}
+        {{#link-to 'events.view.speakers' class='item'}}
+          {{t 'Speakers'}}
+        {{/link-to}}
+        {{#link-to 'events.view.export' class='item'}}
+          {{t 'Export'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+  </div>
+
+  {{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen eventName=model.name deleteEvent=(action 'deleteEvent')}}
+
+  <div class="ui {{if isLoading 'loading'}} segment">
+    {{outlet}}
+  </div>
 {{else}}
   {{!-- the edit page will be rendered without any of the above tabs --}}
   {{outlet}}
-{{/unless}}
+{{/if}}

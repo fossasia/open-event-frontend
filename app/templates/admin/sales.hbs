@@ -1,0 +1,32 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="three wide column">
+      {{#tabbed-navigation isVertical=true}}
+        {{#link-to 'admin.sales.index'  class='item'}}
+          {{t 'By Events'}}
+        {{/link-to}}
+        {{#link-to 'admin.sales.organizers' class='item'}}
+          {{t 'By Organizer'}}
+        {{/link-to}}
+        {{#link-to 'admin.sales.locations' class='item'}}
+          {{t 'By Location'}}
+        {{/link-to}}
+        {{#link-to 'admin.sales.marketer' class='item'}}
+          {{t 'By Marketer'}}
+        {{/link-to}}
+        {{#link-to 'admin.sales.discounted-events' class='item'}}
+          {{t 'Discounted events'}}
+        {{/link-to}}
+        {{#link-to 'admin.sales.fees' class='item'}}
+          {{t 'Fees'}}
+        {{/link-to}}
+        {{#link-to 'admin.sales.status' class='item'}}
+          {{t 'Invoices'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+    <div class="thirteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>

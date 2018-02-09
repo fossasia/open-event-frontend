@@ -1,0 +1,54 @@
+{{#if isLoading}}
+  <div class="ui active inverted dimmer">
+    <div class="ui small text loader">Loading</div>
+  </div>
+{{/if}}
+<div class="{{classes.outerTableWrapper}}">
+  <div class="{{classes.globalFilterDropdownWrapper}}">
+    {{#if showPageSize}}
+      {{partial pageSizeTemplate}}
+    {{/if}}
+    {{#if showGlobalFilter}}
+      {{partial globalFilterTemplate}}
+    {{/if}}
+  </div>
+  <div class="ui row">
+    <div class="{{classes.innerTableWrapper}}">
+      <table class="{{classes.table}}">
+        <thead class="{{if noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{classes.thead}}">
+          {{#if groupedHeaders.length}}
+            {{partial headerGroupedRowsTemplate}}
+          {{/if}}
+          {{partial headerSortingRowTemplate}}
+          {{#if useFilteringByColumns}}
+            {{partial headerFilteringRowTemplate}}
+          {{/if}}
+        </thead>
+        <tbody>
+          {{#if allColumnsAreHidden}}
+            {{partial allColumnsHiddenTemplate}}
+          {{else}}
+            {{#if visibleContent.length}}
+              {{#each visibleContent as |record index|}}
+                {{#if record}}
+                  {{#if (gte index 0)}}
+                    {{partial rowTemplate}}
+                  {{/if}}
+                {{/if}}
+              {{/each}}
+            {{else}}
+              {{partial noDataShowTemplate}}
+            {{/if}}
+          {{/if}}
+        </tbody>
+        <tfoot>
+          {{partial tableFooterTemplate}}
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  {{#if showComponentFooter}}
+    {{partial componentFooterTemplate}}
+  {{/if}}
+</div>
+{{yield}}

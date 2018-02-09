@@ -1,0 +1,19 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'admin.reports.system-logs' class='item'}}
+          {{t 'System Logs'}}
+        {{/link-to}}
+        {{#link-to 'admin.reports.kubernetes-server-logs' class='item'}}
+          {{t 'Kubernetes Server Logs'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="ui vertical compact basic buttons">
+  {{#ui-popup content=(t 'Edit') class='ui icon button'}}
+    <i class="edit icon"></i>
+  {{/ui-popup}}
+  {{#ui-popup tagName='a' click=(action moveToUserDetails record.id) content=(t 'View') class='ui icon button'}}
+    <i class="unhide icon"></i>
+  {{/ui-popup}}
+  {{#ui-popup content=(t 'Delete') click=(action (confirm (t 'Are you sure you would like to delete this user?') (action deleteUser record))) class='ui icon button'}}
+    <i class="trash outline icon"></i>
+  {{/ui-popup}}
+</div>

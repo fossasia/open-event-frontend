@@ -7,26 +7,26 @@
   <div class="column">
     {{#if (eq ticket.type 'paid')}}
       <div class="field">
-        {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price}}
+        {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price min=1}}
       </div>
     {{else}}
-      <span class="text muted" style="line-height: 35px;">
+      <span class="text muted ticket-input">
         {{t 'This is a'}} {{ticket.type}} {{t 'Ticket'}}
       </span>
     {{/if}}
   </div>
   <div class="column">
     <div class="field">
-      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity}}
+      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity min=1}}
     </div>
   </div>
-  <div class="column">
+  <div class="column {{unless device.isLargeMonitor 'less right padding'}}">
     <div class="field">
       <div class="ui icon buttons">
         <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
         <button type="button" class="ui button" {{action removeTicket}} data-content="Delete"><i class="trash icon"></i></button>
       </div>
-      <div class="ui icon buttons right floated">
+      <div class="ui icon buttons {{if device.isLargeMonitor 'right floated'}}">
         {{#if canMoveUp}}
           <button type="button" class="ui button" {{action moveTicketUp}} data-content="Move ticket up"><i class="up arrow icon"></i></button>
         {{/if}}
@@ -72,37 +72,37 @@
         </div>
       {{/if}}
       <div class="fields">
-        <div class="five wide field">
+        <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_start_date">{{t 'Starts'}}</label>
           {{widgets/forms/date-picker type='text'
                                       inputId='ticket_start_date'
                                       placeholder='MM/DD/YYYY'
                                       rangePosition='start'
-                                      value=ticket.startDate}}
+                                      value=ticket.salesStartAtDate}}
         </div>
-        <div class="two wide field">
+        <div class="three wide field">
           <label for="ticket_start_time">&nbsp;</label>
           {{widgets/forms/time-picker type='text'
                                       inputId='ticket_start_time'
                                       placeholder='HH:MM'
                                       rangePosition='start'
-                                      value=ticket.startTime}}
+                                      value=ticket.salesStartAtTime}}
         </div>
-        <div class="five wide field">
+        <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_end_date">{{t 'Ends'}}</label>
           {{widgets/forms/date-picker type='text'
                                       inputId='ticket_end_date'
                                       placeholder='MM/DD/YYYY'
                                       rangePosition='end'
-                                      value=ticket.endDate}}
+                                      value=ticket.salesEndsAtDate}}
         </div>
-        <div class="two wide field">
+        <div class="three wide field">
           <label for="ticket_end_time">&nbsp;</label>
           {{widgets/forms/time-picker type='text'
                                       inputId='ticket_end_time'
                                       placeholder='HH:MM'
                                       rangePosition='end'
-                                      value=ticket.endTime}}
+                                      value=ticket.salesEndsAtTime}}
         </div>
         <div class="five wide field has popup" data-content="Uses the timezone of the event.">
           <label class="required" for="ticket_timezone">{{t 'Timezone'}}</label>
@@ -124,9 +124,9 @@
         </div>
       </div>
 
-      <div class="six wide field">
+      <div class="{{unless device.isMobile 'six wide'}} field">
         <label for="code_groups">{{t 'Ticket Code Group'}}</label>
-        {{#ui-dropdown class="fluid multiple search selection" allowAdditions=true}}
+        {{#ui-dropdown class='fluid multiple search selection' allowAdditions=true}}
           {{input type='hidden' id='ticket_code_groups' value=ticket.groups}}
           <div class="default text">{{t 'Add Code Groups'}}</div>
           <div class="menu">

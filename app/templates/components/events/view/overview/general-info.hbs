@@ -1,0 +1,82 @@
+<div class="content">
+  <div class="header">{{t 'General info'}}</div>
+</div>
+<div class="content">
+  <div class="header">
+    {{#if (eq data.event.state 'published')}}
+      {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
+    {{else}}
+      {{t 'Your event is not live yet. Make it live now'}}
+    {{/if}}
+  </div>
+</div>
+<div class="content">
+  <table class="ui very basic table">
+    <tbody>
+      <tr>
+        <td><strong>{{t 'No. of Revisions'}}</strong></td>
+        <td>6 {{t '(view revisions)'}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Location'}}</strong></td>
+        <td>
+          {{#if data.event.locationName}}
+            {{data.event.locationName}}
+          {{else}}
+            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Start time'}}</strong></td>
+        <td>{{moment-format data.event.startsAt 'h:mm A, MMMM Do YYYY'}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'End time'}}</strong></td>
+        <td>{{moment-format data.event.endsAt 'h:mm A, MMMM Do YYYY'}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Session types'}}</strong></td>
+        <td>
+          {{#if data.sessionTypes}}
+            {{#each data.sessionTypes as |sessionType index|}}
+              {{if (not-eq index 0) ','}} {{sessionType.name}}
+            {{/each}}
+          {{else}}
+            {{t 'No Session Type present. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Links and Social Media'}}</strong></td>
+        <td>
+          {{#if data.socialLinks}}
+            {{#each data.socialLinks as |socialLink index|}}
+              {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
+            {{/each}}
+          {{else}}
+            {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'No. of Speakers'}}</strong></td>
+        <td>{{data.statistics.speakers}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'No. of Sessions'}}</strong></td>
+        <td>
+          {{t 'All'}}: {{data.statistics.sessions}}
+          | {{t 'Accepted'}}: {{data.statistics.sessionsAccepted}}
+          | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
+          | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
+          | {{t 'Draft'}}: {{data.statistics.sessionsDraft}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'No. of Sponsors'}}</strong></td>
+        <td>{{data.statistics.sponsors}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

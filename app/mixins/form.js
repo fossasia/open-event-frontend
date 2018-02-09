@@ -48,12 +48,18 @@ export default Mixin.create({
         });
       }
 
-      const $checkBoxes = this.$('.ui.checkbox');
+      const $checkBoxes = this.$('.ui.checkbox:not(.ember-view)');
       if ($checkBoxes) {
         $checkBoxes.checkbox();
       }
 
-      let $form = this.$('.ui.form');
+      let $form;
+      if ((this.get('tagName') && this.get('tagName').toLowerCase() === 'form') || (this.$() && this.$().prop('tagName').toLowerCase() === 'form')) {
+        $form = this.$();
+        $form.addClass('ui form');
+      } else {
+        $form = this.$('.ui.form');
+      }
       if ($form) {
         $form = $form.first();
         if (this.get('getValidationRules') && $form) {

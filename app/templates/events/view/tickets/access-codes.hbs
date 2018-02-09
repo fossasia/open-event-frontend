@@ -1,0 +1,37 @@
+{{#if (not-includes session.currentRouteName 'events.view.tickets.access-codes.create')}}
+  {{#if device.isMobile }}
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  <div class="ui stackable grid">
+    <div class="row">
+      <h2 class="ui header {{if device.isTablet 'nine' 'eleven'}} wide column left floated">{{t 'Access Codes'}}</h2>
+      <div class="{{if device.isTablet 'seven' 'five'}} wide column right floated">
+        {{#link-to 'events.view.tickets.access-codes.create'
+        tagName='button' class='ui button blue fluid'}}
+          <i class="plus icon"></i>
+          {{t 'Create an access code'}}
+        {{/link-to}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen wide column">
+        {{#tabbed-navigation isNonPointing=true}}
+          {{#link-to 'events.view.tickets.access-codes.list' 'all' class='item'}}
+            {{t 'All'}}
+          {{/link-to}}
+          {{#link-to 'events.view.tickets.access-codes.list' 'active' class='item'}}
+            {{t 'Active'}}
+          {{/link-to}}
+          {{#link-to 'events.view.tickets.access-codes.list' 'inactive' class='item'}}
+            {{t 'Inactive'}}
+          {{/link-to}}
+        {{/tabbed-navigation}}
+      </div>
+    </div>
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  {{outlet}}
+{{/if}}

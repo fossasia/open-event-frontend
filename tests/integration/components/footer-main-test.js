@@ -5,6 +5,6 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('footer-main', 'Integration | Component | footer main');
 
 test('it renders', function(assert) {
-  this.render(hbs`{{footer-main}}`);
+  this.render(hbs`{{footer-main l10n=l10n}}`);
   assert.ok(this.$().html().trim().includes('footer'));
 });

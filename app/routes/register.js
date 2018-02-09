@@ -4,5 +4,10 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 const { Route } = Ember;
 
 export default Route.extend(UnauthenticatedRouteMixin, {
-  titleToken: 'Register'
+  titleToken() {
+    return this.l10n.t('Register');
+  },
+  model() {
+    return this.store.createRecord('user');
+  }
 });

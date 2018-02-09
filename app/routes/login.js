@@ -5,6 +5,6 @@ const { Route } = Ember;
 
 export default Route.extend(UnauthenticatedRouteMixin, {
   titleToken() {
-    return this.i18n.t('Login');
+    return this.l10n.t('Login');
   }
 });

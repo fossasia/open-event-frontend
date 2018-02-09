@@ -4,12 +4,15 @@ const { Route, RSVP } = Ember;
 
 export default Route.extend({
   titleToken() {
-    return this.i18n.t('Sessions');
+    return this.l10n.t('Sessions');
   },
-
   model() {
+    const eventDetails = this.modelFor('public');
     return RSVP.hash({
-      event: this._super(...arguments)
+      event  : eventDetails,
+      tracks : eventDetails.query('tracks', {
+        'fields[track]': 'name,id'
+      })
     });
   }
 });

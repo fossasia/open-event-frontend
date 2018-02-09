@@ -1,7 +1,7 @@
 <div class="ui stackable {{unless noSocial 'three' 'one'}} column doubling centered grid">
   <div class="column">
     <form class="ui large form" autocomplete="off" {{action 'submit' on='submit'}}>
-      <div class="ui aligned segment basic" style="margin: 0; padding: 0;">
+      <div class="ui aligned segment basic less margin less padding">
         <h3 class="weight-400">{{t 'Login'}}</h3>
       </div>
       <div class="ui segments">
@@ -29,22 +29,22 @@
             </div>
           </div>
           <div class="ui center aligned segment basic">
-            <button type="submit" class="ui fluid large teal submit button" style="margin-bottom: 10px;">
-              Login
+            <button type="submit" class="ui fluid large teal submit button register">
+              {{t 'Login'}}
             </button>
             <a href="{{href-to 'forgot-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
           </div>
         </div>
-        <div class="ui secondary segment center aligned">
-          <a href="{{href-to 'register'}}" class="text muted weight-800">{{t 'New to site? Create Account'}}</a>
-        </div>
+        <a href="{{href-to 'register'}}" class="ui secondary segment center aligned text muted weight-800">
+          {{t 'New to site? Create Account'}}
+        </a>
       </div>
     </form>
   </div>
   {{#unless noSocial}}
     <div class="column">
       <div class="ui segment basic center aligned">
-        <div class="mobile hidden" style="height: 30px;"> </div>
+        <div class="mobile hidden login-with-fb"> </div>
         <div class="ui vertical buttons">
           <button type="button" class="ui facebook button">
             <i class="facebook icon"></i>
@@ -63,5 +63,3 @@
     </div>
   {{/unless}}
 </div>
-
-

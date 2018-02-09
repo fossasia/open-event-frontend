@@ -1,0 +1,53 @@
+<form class="ui form" {{action 'submit' data on='submit'}}>
+  <div class="field">
+    <label>{{t 'Name'}}</label>
+    {{input name='name' type='text' value=data.name}}
+  </div>
+  <div class="field">
+    <label>{{t 'Title'}}</label>
+    {{input type='text' name='title' value=data.title}}
+  </div>
+  <div class="field">
+    <label>{{t 'Path'}}</label>
+    {{input type='text' name='url' value=data.url}}
+  </div>
+  <div class="field">
+    <label>{{t 'Description'}}</label>
+    {{widgets/forms/rich-text-editor value=data.description}}
+  </div>
+  <div class="field">
+    <label>{{t 'Place'}}</label>
+    {{#ui-dropdown class='selection' selected=data.place onChange=(action (mut data.place))}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{data.place}}</div>
+      <div class="menu">
+        <div class="item" data-value="event">{{t 'Event'}}</div>
+        <div class="item" data-value="footer">{{t 'Footer'}}</div>
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="field">
+    <label>{{t 'Position'}}</label>
+    {{input type='number' name='position' value=data.index min=1}}
+  </div>
+  <div class="field">
+    <label>{{t 'Language'}}</label>
+    {{#ui-dropdown class='selection' selected=data.language onChange=(action (mut data.language))}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{get l10n.availableLocales data.language}}</div>
+      <div class="menu">
+        {{#each-in l10n.availableLocales as |code language|}}
+          <div class="item" data-value="{{code}}">{{language}}</div>
+        {{/each-in}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="ui buttons">
+    <button class="ui teal button" type="submit">{{if isCreate 'Save' 'Update'}}</button>
+    {{#if isCreate}}
+      <button class="ui red button" {{action 'close'}}>{{t 'Cancel'}}</button>
+    {{else}}
+      <button class="ui red button" {{action (confirm (t 'Are you sure you would like to delete this page?') (action 'deletePage' data))}}>{{t 'Delete'}}</button>
+    {{/if}}
+  </div>
+</form>

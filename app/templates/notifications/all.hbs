@@ -1,0 +1,27 @@
+{{#each model as |notification|}}
+  <div class="ui segment {{unless notification.isRead 'blue'}}">
+    <div class="ui grid">
+      <div class="row">
+        <div class="eight wide column">
+          <h4 class="ui header">{{notification.title}}</h4>
+          <p>{{sanitize notification.message}}</p>
+        </div>
+        <div class="eight wide column right aligned">
+          {{#if notification.isRead}}
+            <i class="checkmark box icon"></i>
+          {{/if}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="ten wide column">
+          <button class="ui blue button">{{t 'View Session'}}</button>
+        </div>
+        <div class="six wide column right aligned">
+          <p>{{moment-from-now notification.receivedAt}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="ui disabled header">{{t 'No Unread Notifications'}}</div>
+{{/each}}

@@ -1,5 +1,5 @@
 <div class="map item">
-  {{g-map lat=37.7833 lng=-122.4167 zoom=2 class="explore"}}
+  {{g-map lat=37.7833 lng=-122.4167 zoom=2 class='explore'}}
 </div>
 <div class="item">
   <div class="ui input">
@@ -7,7 +7,7 @@
       name='location'
       value=placeName
       type='text'
-      placeholder='Enter Location'}}
+      placeholder=(t 'Enter Location')}}
   </div>
 </div>
 <div class="item">
@@ -17,22 +17,22 @@
       {{t 'Categories'}}
     </span>
     <div class="content menu">
-      {{#each-in categories as |category subCategories| }}
+      {{#each model.eventTopics as |category| }}
         <a href="#"
-           class="link item {{if (eq filters.category category) 'active'}}" {{action 'selectCategory' category}}>
-          <i class="caret {{if (eq filters.category category) 'down' 'right'}} icon"></i>
-          {{category}}
+           class="link item {{if (eq filters.category category.name) 'active'}}" {{action 'selectCategory' category.name}}>
+          <i class="caret {{if (eq filters.category category.name) 'down' 'right'}} icon"></i>
+          {{category.name}}
         </a>
-        {{#if (eq filters.category category)}}
-          {{#each subCategories as |subCategory|}}
+        {{#if (eq filters.category category.name)}}
+          {{#each category.subTopics as |subCategory|}}
             <a href="#"
-               class="link inner item {{if (eq filters.subCategory subCategory) 'active'}}"
-              {{action 'selectCategory' category subCategory}}>
-              {{subCategory}}
+               class="link inner item {{if (eq filters.subCategory subCategory.name) 'active'}}"
+              {{action 'selectCategory' category.name subCategory.name}}>
+              {{subCategory.name}}
             </a>
           {{/each}}
         {{/if}}
-      {{/each-in}}
+      {{/each}}
     </div>
   {{/ui-accordion}}
 </div>
@@ -43,11 +43,11 @@
       {{t 'Event Type' }}
     </span>
     <div class="content menu">
-      {{#each types as |eventType|}}
+      {{#each model.eventTypes as |eventType|}}
         <a href="#"
-           class="link item {{if (eq filters.eventType eventType) 'active'}}"
-          {{action 'selectEventType' eventType}}>
-          {{eventType}}
+           class="link item {{if (eq filters.eventType eventType.name) 'active'}}"
+          {{action 'selectEventType' eventType.name}}>
+          {{eventType.name}}
         </a>
       {{/each}}
     </div>
@@ -61,19 +61,24 @@
     </span>
     <div class="content menu">
       {{#each dateRanges as |dateRange|}}
-        <a href="#" class="link item {{if (eq filters.dateRange dateRange.key) 'active'}}" {{action 'selectDateRange'
-                                                                                                    dateRange.key}}>
+        <a href="#" class="link item {{if (eq filters.dateRange dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
           {{dateRange.name}}
           {{#if (and (eq dateRange.key 'custom_dates') (eq filters.dateRange 'custom_dates'))}}
             <div class="explore sub menu">
               <div class="ui form">
-                <div class="item field">
-                  <label class="required" for="start_date">{{t 'Starts'}}</label>
-                  {{widgets/forms/date-picker type='text'inputId='start_date'}}
-                </div>
-                <div class="item field">
-                  <label class="required" for="end_date">{{t 'Ends'}}</label>
-                  {{widgets/forms/date-picker type='text'inputId='end_date'}}
+                <div class="grouped fields">
+                  <div class="item field">
+                    <label class="required" for="start_date">{{t 'Starts'}}</label>
+                    {{widgets/forms/date-picker type='text'
+                                                rangePosition='start'
+                                                inputId='start_date'}}
+                  </div>
+                  <div class="item field">
+                    <label class="required" for="end_date">{{t 'Ends'}}</label>
+                    {{widgets/forms/date-picker type='text'
+                                                rangePosition='end'
+                                                inputId='end_date'}}
+                  </div>
                 </div>
               </div>
             </div>

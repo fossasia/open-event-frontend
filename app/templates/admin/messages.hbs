@@ -1,0 +1,65 @@
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="sixteen wide column">
+      <form class="ui form">
+        <table class="ui stackable very basic table compact">
+          <thead>
+            <tr>
+              <th>{{t 'Recipient'}}</th>
+              <th>{{t 'Trigger'}}</th>
+              <th>{{t 'Email Message'}}</th>
+              <th>{{t 'Notification Message'}}</th>
+              <th>{{t 'Options'}}</th>
+              <th>{{t 'Sent At'}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each model as |message|}}
+              <tr>
+                <td>
+                  <div class="ui ordered list">
+                    {{#each message.recipient as |recipient|}}
+                      <div class="item">{{recipient.name}}</div>
+                    {{/each}}
+                  </div>
+                </td>
+                <td>
+                  {{message.trigger}}
+                </td>
+                <td>
+                  <h5 class="ui header">{{message.emailMessage.subject}}</h5>
+                  {{message.emailMessage.message}}
+                </td>
+                <td>
+                  <h5 class="ui header">{{message.notificationMessage.subject}}</h5>
+                  {{message.notificationMessage.message}}
+                </td>
+                <td>
+                  <div class="grouped fields">
+                    <div class="field">
+                      {{ui-checkbox checked=message.option.mail label=(t 'Mail') onChange=(action (mut message.option.mail))}}
+                    </div>
+                    <div class="field">
+                      {{ui-checkbox checked=message.option.notification label=(t 'Notification') onChange=(action (mut message.option.notification))}}
+                    </div>
+                    <div class="field">
+                      {{ui-checkbox checked=message.option.userControl label=(t 'User Control') onChange=(action (mut message.option.userControl))}}
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  {{moment-format message.sentAt 'dddd, DD MMMM YYYY'}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen column wide">
+      <button class="ui button teal right floated">{{t 'Save'}}</button>
+    </div>
+  </div>
+</div>

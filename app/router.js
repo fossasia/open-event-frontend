@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import config from 'open-event-frontend/config/environment';
+import RouterScroll from 'ember-router-scroll';
 
 const { Router, run: { scheduleOnce }, inject: { service } } = Ember;
 
-const router = Router.extend({
+const router = Router.extend(RouterScroll, {
   location : config.locationType,
   rootURL  : config.rootURL,
   metrics  : service(),
@@ -30,13 +31,18 @@ router.map(function() {
   this.route('forgot-password');
   this.route('logout');
   this.route('public', { path: '/e/:event_id' }, function() {
-    this.route('sessions');
-    this.route('cfs');
+    this.route('sessions', function() {
+      this.route('list', { path: '/:track_id' });
+    });
+    this.route('cfs', function() {
+      this.route('new-speaker');
+    });
     this.route('schedule');
+    this.route('coc');
   });
   this.route('create');
   this.route('not-found');
-  this.route('not-found-catch', { path: '/*path' });
+  this.route('pages', { path: '/*path' });
   this.route('events', function() {
     this.route('view', { path: '/:event_id' }, function() {
       this.route('edit', function() {
@@ -45,10 +51,33 @@ router.map(function() {
         this.route('sessions-speakers');
       });
       this.route('export');
+      this.route('sessions', function() {
+        this.route('list', { path: '/:session_status' });
+        this.route('create');
+      });
+      this.route('tickets', function() {
+        this.route('orders', function() {
+          this.route('list', { path: '/:orders_status' });
+        });
+        this.route('attendees', function() {
+          this.route('list', { path: '/:attendees_status' });
+        });
+        this.route('add-order');
+        this.route('discount-codes', function() {
+          this.route('list', { path: '/:discount_status' });
+          this.route('create');
+        });
+        this.route('access-codes', function() {
+          this.route('list', { path: '/:access_status' });
+          this.route('create');
+        });
+      });
+      this.route('speakers', function() {
+        this.route('list', { path: '/:speakers_status' });
+      });
+      this.route('scheduler');
     });
-    this.route('live');
-    this.route('draft');
-    this.route('past');
+    this.route('list', { path: '/:event_state' });
     this.route('import');
   });
   this.route('profile');
@@ -60,6 +89,69 @@ router.map(function() {
     this.route('applications');
   });
   this.route('explore');
+  this.route('my-tickets', function() {
+    this.route('list', { path: '/:ticket_status' });
+  });
+  this.route('my-sessions', function() {
+    this.route('list', { path: '/:session_status' });
+  });
+  this.route('notifications', function() {
+    this.route('all');
+  });
+  this.route('admin', function() {
+    this.route('events', function() {
+      this.route('list', { path: '/:events_status' });
+      this.route('import');
+    });
+    this.route('sales', function() {
+      this.route('organizers');
+      this.route('marketer');
+      this.route('locations');
+      this.route('fees');
+      this.route('status');
+      this.route('discounted-events');
+    });
+    this.route('sessions',  function() {
+      this.route('list', { path: '/:sessions_state' });
+    });
+    this.route('users', function() {
+      this.route('list', { path: '/:users_status' });
+      this.route('user', { path: '/u/:user_id' });
+    });
+    this.route('permissions', function() {
+      this.route('event-roles');
+      this.route('system-roles');
+    });
+    this.route('reports', function() {
+      this.route('kubernetes-server-logs');
+      this.route('system-logs', function() {
+        this.route('activity-logs');
+        this.route('mail-logs');
+        this.route('notification-logs');
+      });
+    });
+    this.route('messages');
+    this.route('settings', function() {
+      this.route('microlocations');
+      this.route('microservices');
+      this.route('images');
+      this.route('analytics');
+      this.route('payment-gateway');
+      this.route('ticket-fees');
+    });
+    this.route('modules');
+    this.route('content', function() {
+      this.route('social-links');
+      this.route('pages');
+      this.route('system-images', function() {
+        this.route('list', { path: '/:topic_id' });
+      });
+      this.route('translations');
+    });
+  });
+  this.route('orders', function() {
+    this.route('new');
+  });
 });
 
 export default router;

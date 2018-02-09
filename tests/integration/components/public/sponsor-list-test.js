@@ -1,13 +1,40 @@
 import { test } from 'ember-qunit';
+import Ember from 'ember';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
+const { Object: EmberObject, A } = Ember;
+
 moduleForComponent('sponsor-list', 'Integration | Component | sponsor list');
 
-const sponsors = [{ name: 'Sponsor 2', url: '#', logoUrl: 'http://placehold.it/150x60', level: 2, type: 'Gold Sponsor', description: '' },
-  { name: 'Sponsor 1', url: '#', logoUrl: 'http://placehold.it/150x60', level: 1, type: 'Gold Sponsor', description: '' },
-  { name: 'Sponsor 3', url: '#', logoUrl: 'http://placehold.it/150x60', level: 1, type: 'Silver Sponsor', description: '' }
-];
+const sponsors = A(
+  [
+    EmberObject.create({
+      name        : 'Sponsor 1',
+      url         : '#',
+      logoUrl     : 'http://placehold.it/150x60',
+      level       : 2,
+      type        : 'Gold Sponsor',
+      description : ''
+    }),
+    EmberObject.create({
+      name        : 'Sponsor 2',
+      url         : '#',
+      logoUrl     : 'http://placehold.it/150x60',
+      level       : 1,
+      type        : 'Gold Sponsor',
+      description : ''
+    }),
+    EmberObject.create({
+      name        : 'Sponsor 3',
+      url         : '#',
+      logoUrl     : 'http://placehold.it/150x60',
+      level       : 1,
+      type        : 'Silver Sponsor',
+      description : ''
+    })
+  ]
+);
 
 test('it renders', function(assert) {
 

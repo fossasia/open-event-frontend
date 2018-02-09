@@ -19,9 +19,9 @@
             {{/each}}
           </div>
         </div>
-        <div class="ui right aligned column four wide" style="padding-left: 0">
-          <div class="">{{session.microlocation.name}} <i class="marker icon"></i></div>
-          <div class="">{{moment-format session.startAt 'hh:mm a / DD-MM-YYYY'}} <i class="wait icon"></i></div>
+        <div class="ui right aligned column four wide less left padding">
+          <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+          <div class=""><i class="wait icon"></i>{{moment-format session.startAt 'hh:mm a / DD-MM-YYYY'}}</div>
         </div>
       </div>
       <div class="row">

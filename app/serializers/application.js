@@ -1,14 +1,36 @@
-import Ember from 'ember';
-import JSONSerializer from 'ember-data/serializers/json';
+import JSONAPISerializer from 'ember-data/serializers/json-api';
+import DS from 'ember-data';
+const { normalizeModelName } = DS;
+import { singularize } from 'ember-inflector';
+import EventRelationMixin  from 'open-event-frontend/mixins/event-relation';
 
-const { String: { underscore } } = Ember;
-
-export default JSONSerializer.extend({
-  keyForAttribute(attr) {
-    return underscore(attr);
+export default JSONAPISerializer.extend(EventRelationMixin, {
+  modelNameFromPayloadKey(key) {
+    return singularize(normalizeModelName(key));
   },
 
-  keyForRelationship(rawKey) {
-    return underscore(rawKey);
+  payloadKeyFromModelName(modelName) {
+    return singularize(modelName);
+  },
+
+  serializeAttribute(snapshot, json, key, attribute) {
+    if (attribute.options && attribute.options.readOnly) {
+      return;
+    }
+    this._super(...arguments);
+  },
+
+  serializeHasMany(snapshot, json, relationship) {
+    if (!snapshot.hasMany(relationship.key) || (snapshot.hasMany(relationship.key) && !snapshot.hasMany(relationship.key).id)) {
+      return;
+    }
+    this._super(...arguments);
+  },
+
+  serializeBelongsTo(snapshot, json, relationship) {
+    if (!snapshot.belongsTo(relationship.key) || (snapshot.belongsTo(relationship.key) && !snapshot.belongsTo(relationship.key).id)) {
+      return;
+    }
+    this._super(...arguments);
   }
 });

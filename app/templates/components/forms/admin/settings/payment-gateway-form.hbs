@@ -1,0 +1,117 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  <div class="inline field">
+    <label>
+      {{t 'Enable Stripe'}}
+    </label>
+    {{ui-checkbox class='toggle' checked=isCheckedStripe onChange=(action (mut isCheckedStripe))}}
+  </div>
+  {{#if isCheckedStripe}}
+    <h3 class="ui header">
+      {{t 'Stripe Keys'}}
+      <div class="sub header">
+        {{t 'See'}}
+        <a href="https://stripe.com/docs/dashboard" target="_blank" rel="noopener nofollow">
+          {{t 'here'}}
+        </a>
+        {{t 'on how to obtain these keys.'}}
+      </div>
+    </h3>
+    <div class="field">
+      <label>
+        {{t 'Client ID'}}
+      </label>
+      {{input type='text' name='stripe_client_id' value=settings.stripeClientId}}
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Secret Key'}}
+      </label>
+      {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Publishable Key'}}
+      </label>
+      {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  <div class="inline field">
+    <label>
+      {{t 'Enable PayPal'}}
+    </label>
+    {{ui-checkbox class='toggle' checked=isCheckedPaypal onChange=(action (mut isCheckedPaypal))}}
+  </div>
+  {{#if isCheckedPaypal}}
+    <h3 class="ui header">
+      {{t 'PayPal Credentials'}}
+      <div class="sub header">
+        {{t 'See'}}
+        <a href="https://developer.paypal.com/docs/classic/express-checkout/integration-guide/ECAPICredentials/?mark=lifecycle%20credentials" target="_blank" rel="noopener nofollow">
+          {{t 'here'}}
+        </a>
+        {{t 'on how to obtain these keys.'}}
+      </div>
+    </h3>
+    <h5 class="ui header">
+      {{t 'PayPal Integration Mode'}}
+    </h5>
+    <div class="field">
+      {{ui-radio label=(t 'Sandbox mode - Used during development and testing')
+                 name='paypal_integration_mode'
+                 value='sandbox'
+                 current=settings.paypalMode
+                 onChange=(action (mut settings.paypalMode))}}
+    </div>
+    {{#if (eq settings.paypalMode 'sandbox')}}
+      <div class="field">
+        <label>
+          {{t 'Sandbox username'}}
+        </label>
+        {{input type='text' name='sandbox_username' value=settings.paypalSandboxUsername}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Sandbox password'}}
+        </label>
+        {{input type='password' name='sandbox_password' value=settings.paypalSandboxPassword}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Sandbox signature'}}
+        </label>
+        {{input type='text' name='sandbox_signature' value=settings.paypalSandboxSignature}}
+      </div>
+    {{/if}}
+    <div class="field">
+      {{ui-radio label=(t 'Live mode - Used during production')
+                 name='paypal_integration_mode'
+                 value='live'
+                 current=settings.paypalMode
+                 onChange=(action (mut settings.paypalMode))}}
+    </div>
+    {{#if (eq settings.paypalMode 'live')}}
+      <div class="field">
+        <label>
+          {{t 'Live username'}}
+        </label>
+        {{input type='text' name='live_username' value=settings.paypalLiveUsername}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Live password'}}
+        </label>
+        {{input type='password' name='live_password' value=settings.paypalLivePassword}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Live signature'}}
+        </label>
+        {{input type='text' name='live_signature' value=settings.paypalLiveSignature}}
+      </div>
+    {{/if}}
+  {{/if}}
+  <button class="ui teal button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

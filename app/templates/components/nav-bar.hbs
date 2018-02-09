@@ -1,77 +1,74 @@
 <div class="mobile hidden row">
   <div class="ui menu">
     {{#link-to 'index' class='header item' activeClass=''}}
-      <h3 class="">{{config.appName}} </h3>
+      <h3>{{config.appName}}</h3>
     {{/link-to}}
-    <div class="ui category search item" style="width: 20%">
-      <div class="ui transparent icon input">
-        <input class="prompt" type="text" placeholder="{{t 'Search Events...'}}" style="border-radius: 0;">
-        <i class="search link icon"></i>
+    {{#unless device.isTablet}}
+      <div class="ui category search item nav-bar-search-item">
+        <div class="ui transparent icon input">
+          <input class="prompt nav-bar-prompt" type="text" placeholder="{{t 'Search Events...'}}">
+          <i class="search link icon"></i>
+        </div>
+        <div class="results"></div>
       </div>
-      <div class="results"></div>
-    </div>
-    <div class="right menu">
-      {{#if session.isAuthenticated}}
-        <a class="notification item">
-          {{notification-dropdown notifications=notifications}}
-        </a>
-      {{/if}}
+    {{/unless}}
+    <div class="right menu nav-bar">
       {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}
+        {{notification-dropdown unreadNotifications=unreadNotifications}}
+      {{/if}}
+      {{#if session.isAuthenticated}}
         {{#ui-dropdown class='item' action='hide'}}
-          <img class="ui avatar round image"
-               style="margin-right: 10px;"
-               alt="{{authManager.currentUser.email}}"
-               src="{{if authManager.currentUser.user_detail.avatar authManager.currentUser.user_detail.avatar
-                         '/images/placeholders/avatar.png'}}">
+          {{widgets/safe-image isAvatar=true class='ui avatar round image nav-bar-image' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
+                    '/images/placeholders/avatar.png')}}
           {{if authManager.currentUser
-               (if authManager.currentUser.user_detail.firstname authManager.currentUser.user_detail.firstname authManager.currentUser.email)
+               (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
                'Welcome'}}
           <i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="item">{{t 'My Tickets'}}</div>
-            <div class="item">{{t 'My Sessions'}}</div>
-            <a href="{{href-to 'events'}}" class="item">{{t 'Manage Events'}}</a>
+          <div class="menu profile-dropdown-menu">
+            <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
+            <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
+            <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
             <div class="divider"></div>
             <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
-            <div class="item">{{t 'Settings'}}</div>
-            <div class="item">{{t 'Admin'}}</div>
+            <a href="{{href-to 'settings.contact-info'}}" class="item">{{t 'Settings'}}</a>
+            {{#if authManager.currentUser.isAnAdmin}}
+              <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+            {{/if}}
             <div class="divider"></div>
-            <a role="button" class="item logout-button" {{action 'logout'}}>{{t 'Logout'}}</a>
+            <a role="button" class="item logout-button" {{action 'logout'}}>{{t 'Logout'}}<i class="ui right floated large sign out icon"></i></a>
           </div>
         {{/ui-dropdown}}
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#unless (eq routing.currentRouteName 'create')}}
-        <div class="item">
-          <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">
+      {{#if (not-eq routing.currentRouteName 'create')}}
+        {{#link-to 'create' class='item ui blue text'}}
+          <div>
             {{t 'Create Event'}}
-          </a>
-        </div>
-      {{/unless}}
+          </div>
+        {{/link-to}}
+      {{/if}}
     </div>
   </div>
 </div>
 <div class="mobile only row">
-  <div class="ui navbar menu">
+  <div class="ui navbar tiny menu">
     <a class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
-    {{#link-to 'index' class='header item' activeClass=''}}
-      <h3 class="">{{config.appName}} </h3>
+    {{#link-to 'index' class='item' activeClass=''}}
+      <div class="ui header small text">{{config.appName}}</div>
     {{/link-to}}
-    <div class="right menu">
+    <div class="right menu nav-bar">
       {{#if session.isAuthenticated}}
-        <a class="notification item">
-          {{notification-dropdown notifications=notifications}}
-        </a>
+        {{notification-dropdown notifications=notifications}}
       {{/if}}
-      <div class="item">
-        <a class="ui blue button" style="text-transform: uppercase; font-weight: 400" href="{{href-to 'create'}}">
+      {{#link-to 'create' class='item ui blue button-text small text'}}
+        <div>
           {{t 'Create Event'}}
-        </a>
-      </div>
+        </div>
+      {{/link-to}}
     </div>
   </div>
 </div>

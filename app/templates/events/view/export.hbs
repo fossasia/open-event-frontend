@@ -1,6 +1,6 @@
 <div class="ui stackable very relaxed container grid">
   <div class="eight wide column">
-    {{events/view/export/download-zip}}
+    {{events/view/export/download-zip startGeneration=(action 'startGeneration') isDownloadDisabled=isDownloadDisabled eventExportStatus=eventExportStatus eventDownloadUrl=eventDownloadUrl data=data isLoading=isLoading}}
     <div class="ui divider"></div>
     {{events/view/export/download-common downloadType='Pentabarf XML' downloadUrl='pentabarf.xml'}}
     <div class="ui divider"></div>

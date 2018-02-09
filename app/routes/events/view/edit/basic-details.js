@@ -5,12 +5,9 @@ const { Route } = Ember;
 
 export default Route.extend(EventWizardMixin, {
   titleToken() {
-    return this.i18n.t('Basic Details');
+    return this.l10n.t('Basic Details');
   },
   model() {
-    return {
-      parentData : this._super(...arguments),
-      event      : this.getBasicDetails()
-    };
+    return this.modelFor('events.view.edit');
   }
 });

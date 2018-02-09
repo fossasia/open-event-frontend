@@ -1,5 +1,5 @@
 <div class="ui three column container stackable doubling centered grid">
   <div class="column">
-    {{forms/register-form}}
+    {{forms/register-form data=model submit='createUser' isLoading=isLoading errorMessage=errorMessage}}
   </div>
 </div>

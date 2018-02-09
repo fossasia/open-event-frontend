@@ -1,22 +1,11 @@
 import Ember from 'ember';
-import { eventTypes, eventTopics } from 'open-event-frontend/utils/dictionary/event';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
-import { orderBy } from 'lodash';
-
 
 const { Component, computed } = Ember;
 
 export default Component.extend({
 
   classNames: ['ui', 'fluid', 'explore', 'vertical', 'menu'],
-
-  types: computed(function() {
-    return orderBy(eventTypes);
-  }),
-
-  categories: computed(function() {
-    return (eventTopics);
-  }),
 
   dateRanges: computed(function() {
     return getDateRanges.bind(this)();
@@ -38,7 +27,11 @@ export default Component.extend({
       this.set('filters.eventType', eventType === this.get('filters.eventType') ? null : eventType);
     },
     selectDateRange(dateRange) {
-      this.set('filters.dateRange', dateRange === this.get('filters.dateRange') ? null : dateRange);
+      let isCustomDate = null;
+      if (dateRange === 'custom_dates') {
+        isCustomDate = dateRange;
+      }
+      this.set('filters.dateRange', dateRange === this.get('filters.dateRange') ?  isCustomDate : dateRange);
     }
   }
 });

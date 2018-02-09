@@ -12,6 +12,10 @@ module.exports = function(defaults) {
     flexibility       : {
       enabled: true
     },
+    autoprefixer: {
+      browsers : ['Firefox >= 20', 'Chrome >=20', 'Explorer >= 10', 'Android >= 4.0', 'Safari >= 7', 'iOS >= 5'],
+      cascade  : false
+    },
     minifyHTML: {
       enabled   : true,
       htmlFiles : ['index.html', '404.html']
@@ -24,6 +28,7 @@ module.exports = function(defaults) {
   app.import('bower_components/Croppie/croppie.css');
   app.import('bower_components/Croppie/croppie.min.js');
   app.import('bower_components/tinyColorPicker/jqColorPicker.min.js');
+  app.import('bower_components/js-polyfills/xhr.js');
 
   const appTree = app.toTree([]);
   return new MergeTrees([appTree, new Funnel(appTree, {

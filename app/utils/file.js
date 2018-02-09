@@ -52,7 +52,7 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
             type = 'unknown';
             break;
         }
-        if (fileTypes.includes(type)) {
+        if (type === 'unknown' && fileTypes.includes(file.type)) {
           return resolve();
         } else {
           return reject('File type not supported.');

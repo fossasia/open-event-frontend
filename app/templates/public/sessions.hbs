@@ -1,4 +1,12 @@
-<h2 class="ui header">Sessions</h2>
-{{public/session-filter selectedTrackId=selectedTrackId tracks=tracks}}
-
-{{public/session-list sessions=sessionsByTracks}}
+<h2 class="ui header">{{t 'Sessions'}}</h2>
+{{#tabbed-navigation isNonPointing=true}}
+  {{#link-to 'public.sessions.index' class='item'}}
+    {{t 'All'}}
+  {{/link-to}}
+  {{#each model.tracks as |track|}}
+    {{#link-to 'public.sessions.list' track.id class='item'}}
+      {{track.name}}
+    {{/link-to}}
+  {{/each}}
+{{/tabbed-navigation}}
+{{outlet}}

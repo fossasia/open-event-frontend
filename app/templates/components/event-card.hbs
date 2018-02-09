@@ -3,7 +3,7 @@
     {{#unless device.isMobile}}
       <div class="ui card three wide computer six wide tablet column">
         <a class="image" href="{{href-to 'public' event.identifier}}">
-          {{widgets/safe-image src=(if event.large event.large event.placeholderUrl)}}
+          {{widgets/safe-image src=(if event.originalImageUrl event.originalImageUrl event.originalImageUrl)}}
         </a>
       </div>
     {{/unless}}
@@ -11,30 +11,34 @@
   <div class="ui card {{unless isWide 'event fluid' 'thirteen wide computer ten wide tablet sixteen wide mobile column'}}">
     {{#unless isWide}}
       <a class="image" href="{{href-to 'public' event.identifier}}">
-        {{widgets/safe-image src=(if event.large event.large event.placeholderUrl)}}
+        {{widgets/safe-image src=(if event.originalImageUrl event.originalImageUrl event.originalImageUr)}}
       </a>
     {{/unless}}
-    <div class="main content">
-      <a class="header" href="{{href-to 'public' event.identifier}}">
-        <span>{{event.name}}</span>
-      </a>
+    <a class="main content" href="{{href-to 'public' event.identifier}}">
+      {{#smart-overflow class='header'}}
+        {{event.name}}
+      {{/smart-overflow}}
       <div class="meta">
         <span class="date">
-          {{moment-format event.startTime 'ddd, MMM DD HH:mm A'}}
+          {{moment-format event.startsAt 'ddd, MMM DD HH:mm A'}}
         </span>
       </div>
-      <div class="description">
+      {{#smart-overflow class='description'}}
         {{event.shortLocationName}}
-      </div>
-    </div>
+      {{/smart-overflow}}
+    </a>
     <div class="extra content small text">
       <span class="right floated">
         <i role="button" class="share alternate link icon" {{action shareEvent event}}></i>
       </span>
       <span>
-        {{#each tags as |tag|}}
-          <a>{{tag}}</a>
-        {{/each}}
+        {{#if hasBlock}}
+          {{yield}}
+        {{else}}
+          {{#each tags as |tag|}}
+            <a>{{tag}}</a>
+          {{/each}}
+        {{/if}}
       </span>
     </div>
   </div>

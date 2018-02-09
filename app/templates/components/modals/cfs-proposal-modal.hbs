@@ -1,0 +1,18 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Submit Proposal'}}
+</div>
+<div class="content">
+  <h4 class="ui header">{{t 'Existing Sessions'}}</h4>
+  <p>{{t 'No existing sessions'}}</p>
+  <div>
+    {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
+      {{#if isNew}}
+        {{t 'Add Speaker Details'}}
+      {{else}}
+        {{t 'Edit Speaker Details'}}
+      {{/if}}
+    {{/link-to}}
+    <button type="button" class="ui blue button">{{t 'Add Session Proposal'}}</button>
+  </div>
+</div>

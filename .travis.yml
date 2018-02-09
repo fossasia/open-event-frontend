@@ -1,5 +1,7 @@
 language: node_js
 
+group: edge
+
 node_js:
   - "6"
 
@@ -12,31 +14,35 @@ env:
   - CXX=g++-4.8 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 addons:
+  chrome: stable
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
 
-cache:
-  directories:
-    - $HOME/.npm
-    - $HOME/.cache
-
 before_install:
+  - npm install -g npm@5
+  - npm install -g greenkeeper-lockfile@1
   - npm config set spin false
-  - npm install -g bower phantomjs-prebuilt
+  - npm --version
+  - npm cache verify
+  - npm install -g bower phantomjs-prebuilt check-node-version
   - bower --version
   - phantomjs --version
+
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
 
 install:
   - npm install
   - bower install
 
 script:
-  - ember l10n:convert -f false
-  - COVERAGE=true ember exam --random
+  - node scripts/l10n.js generate
+  - COVERAGE=true ember exam --launch=chrome --random
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - bash scripts/pr_deploy.sh
   - bash kubernetes/travis/deploy.sh

@@ -20,11 +20,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.i18n.t('Please enter your email ID')
+              prompt : this.l10n.t('Please enter your email ID')
             },
             {
               type   : 'email',
-              prompt : this.i18n.t('Please enter a valid email ID')
+              prompt : this.l10n.t('Please enter a valid email ID')
             }
           ]
         }
@@ -35,24 +35,31 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
-        let payload = this.getProperties('identification');
-
+        let payload = {
+          'data': {
+            'email': this.get('identification')
+          }
+        };
         this.set('errorMessage', null);
+        this.set('successMessage', null);
         this.set('isLoading', true);
 
         this.get('loader')
-          .post('/forgot-password', payload)
+          .post('auth/reset-password', payload)
           .then(() => {
-
+            this.set('successMessage', this.l10n.t('Please go to the link sent to your email to reset your password'));
           })
           .catch(reason => {
-            if (reason.hasOwnProperty('code') && reason.code === 401) {
-              this.set('errorMessage', this.i18n.t('Your credentials were incorrect.'));
+            if (reason && reason.hasOwnProperty('code') && reason.code === 401) {
+              this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
-              this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
+              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
             }
+          })
+          .finally(()=> {
             this.set('isLoading', false);
-          });
+          }
+          );
       });
     }
   },

@@ -1,28 +1,40 @@
 ![Open Event Frontend](https://storage.googleapis.com/eventyay.com/assets/branding/frontend_branding.png)
 
-[![Travis](https://img.shields.io/travis/fossasia/open-event-frontend/development.svg?style=flat-square)](https://travis.org/fossasia/open-event-frontend)
+[![Travis](https://img.shields.io/travis/fossasia/open-event-frontend/development.svg?style=flat-square)](https://travis-ci.org/fossasia/open-event-frontend)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
 [![Codacy grade](https://img.shields.io/codacy/grade/0d51cf60fc734d3699fd6eff6054e483.svg?style=flat-square)](https://www.codacy.com/app/niranjan94/open-event-frontend)
 [![codecov](https://img.shields.io/codecov/c/github/fossasia/open-event-frontend/development.svg?style=flat-square)](https://codecov.io/gh/fossasia/open-event-frontend)
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/fossasia/open-event-frontend.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
 
 > The front end for the Open Event API Server
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+**API Documentation:**
+- Every installation of the Open Event API Server project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
+- A hosted version of the API docs is available in the `gh-pages` branch of the Open Event API Server repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
+
+## Communication
+
+Please join our mailing list to discuss questions regarding the project: https://groups.google.com/forum/#!forum/open-event
+
+Our chat channel is on Gitter here: [gitter.im/fossasia/open-event-frontend](https://gitter.im/fossasia/open-event-frontend)
 
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
+* [Node.js](https://nodejs.org/) (with NPM v5.2x)
 * [Bower](https://bower.io/) - `npm install -g bower`
 * [Ember CLI](https://ember-cli.com/) - `npm install -g ember-cli`
 * [PhantomJS](http://phantomjs.org/) - `npm install -g phantomjs-prebuilt`
+* [check-node-version](https://www.npmjs.com/package/check-node-version) - `npm install -g check-node-version`
 
-It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speedup the file-watcher/auto-build service of the ember build server. 
+It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the file-watcher/auto-build service of the ember build server.
 
 ## Installation
 
@@ -68,8 +80,8 @@ This project has acceptance, integration and unit tests located inside the `test
 * [Semantic UI](https://semantic-ui.com/)
 * [Semantic-UI-Ember](https://semantic-org.github.io/Semantic-UI-Ember/)
 * Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+    * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+    * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
 ## Contributions Best Practices
 
@@ -77,7 +89,7 @@ This project has acceptance, integration and unit tests located inside the `test
 
 * Write clear meaningful git commit messages (Do read http://chris.beams.io/posts/git-commit/)
 * Make sure your PR's description contains GitHub's special keyword references that automatically close the related issue when the PR is merged. (More info at https://github.com/blog/1506-closing-issues-via-pull-requests )
-* When you make very very minor changes to a PR of yours (like for example fixing a failing travis build or some small style corrections or minor changes requested by reviewers) make sure you squash your commits afterwards so that you don't have an absurd number of commits for a very small fix. (Learn how to squash at https://davidwalsh.name/squash-commits-git )
+* When you make very very minor changes to a PR of yours (like for example fixing a failing Travis build or some small style corrections or minor changes requested by reviewers) make sure you squash your commits afterward so that you don't have an absurd number of commits for a very small fix. (Learn how to squash at https://davidwalsh.name/squash-commits-git )
 * When you're submitting a PR for a UI-related issue, it would be really awesome if you add a screenshot of your change or a link to a deployment where it can be tested out along with your PR. It makes it very easy for the reviewers and you'll also get reviews quicker.
 
 **Feature Requests and Bug Reports**
@@ -87,7 +99,7 @@ This project has acceptance, integration and unit tests located inside the `test
 **Join the development**
 
 * Before you join development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.)
-* If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
+* If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please feel free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
 
 ## License
 

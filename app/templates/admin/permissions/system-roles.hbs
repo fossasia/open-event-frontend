@@ -1,0 +1,109 @@
+<div class="ui basic segment less padding">
+  <div class="ui {{if isLoading 'active'}} inverted dimmer">
+    <div class="ui loader"></div>
+  </div>
+  <div>
+    <h3 class="ui left aligned header">
+      {{t 'System Roles'}}
+    </h3>
+    <div class="ui divider"></div>
+  </div>
+  <div>
+    <h3 class="ui left aligned header">
+      {{t 'Pannel Permissions'}}
+    </h3>
+  </div>
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>{{t 'System Role'}}</th>
+        <th>{{t 'Panels'}}</th>
+        <th>{{t 'Actions'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          {{t 'Admin'}}
+          <br>
+          {{t '(Built-in-Role)'}}
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          {{t 'Super Admin'}}
+          <br>
+          {{t '(Built-in-Role)'}}
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      {{#each model.roles as |role|}}
+        <tr>
+          <td>{{role.titleName}}</td>
+          <td>
+            <div class="ui bulleted list">
+              <div class="item">{{role.name}}</div>
+            </div>
+          </td>
+          <td>
+            <div class="ui horizontal compact basic buttons">
+              {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openAddSystemRoleModal' role)}}
+                <i class="edit icon"></i>
+              {{/ui-popup}}
+              {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this role?') (action 'deleteSystemRole' role)))}}
+                <i class="trash outline icon"></i>
+              {{/ui-popup}}
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+      <tr>
+        <td>
+          <button class="ui basic button" {{action 'openAddSystemRoleModal'}}>{{t 'Add new Role'}}</button>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="ui hidden divider"></div>
+  <form class="ui form" {{action 'updatePermissions' on='submit'}}>
+    <h3 class="ui left aligned header">
+      {{t 'User Permissions'}}
+    </h3>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>{{t 'Permission'}}</th>
+          <th>{{t 'Unverified User'}}</th>
+          <th>{{t 'Anonymous User'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model.userPermissions as |userPermission|}}
+          <tr>
+            <td>
+              {{userPermission.name}}
+              <div class="muted text">
+                {{userPermission.description}}
+              </div>
+            </td>
+            <td>{{ui-checkbox label=(t 'Unverified User') checked=userPermission.unverifiedUser onChange=(action (mut userPermission.unverifiedUser))}}</td>
+            <td>
+              {{ui-checkbox label=(t 'Anonymous User') checked=userPermission.anonymousUser onChange=(action (mut userPermission.anonymousUser))}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div>
+      <button class="ui teal button" type="submit">
+        {{t 'Save'}}
+      </button>
+    </div>
+  </form>
+</div>
+{{modals/add-system-role-modal isOpen=isAddSystemRoleModalOpen roles=roles isLoading=isLoading name=role.name titleName=role.titleName addSystemRole=(action 'addSystemRole')}}
