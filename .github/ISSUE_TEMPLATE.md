@@ -18,6 +18,8 @@
 ```
 insert any relevant code here else remove this section
 ```
+**Screenshot:**
+<!-- Add screenshot of the issue where-ever possible -->
 
 **Other information:**
 <!-- List any other information that is relevant to your issue. Stack traces, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc. -->
@@ -38,3 +40,6 @@ output of `node -v`
 ```
 output of `npm ls ember-cli`
 ```
+
+**Would you like to work on the issue?**
+<!--Let us know if this issue should be assigned to you or tell us who you think could help to solve this issue.-->
