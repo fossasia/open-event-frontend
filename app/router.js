@@ -95,6 +95,7 @@ router.map(function() {
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
+    this.route('view', { path: '/s/:session_id' });
   });
   this.route('notifications', function() {
     this.route('all');
