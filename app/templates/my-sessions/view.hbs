@@ -1,0 +1,57 @@
+<div class="ui container">
+  <div class="ui row">
+    <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
+    {{#if device.isMobile}}
+      <div class="ui hidden fitted divider"></div>
+    {{/if}}
+    <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker Details'}}</button>
+    {{#if device.isMobile}}
+      <div class="ui hidden fitted divider"></div>
+    {{/if}}
+    <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Withdraw Proposal'}}</button>
+    {{#if device.isMobile}}
+      <div class="ui hidden fitted divider"></div>
+    {{/if}}
+  </div>
+  <div class="ui row">
+    <h2 class="ui header left aligned">
+      {{t 'Session Details'}}
+    </h2>
+    <div class="ui segment">
+      <h3 class="ui header">
+        <div>
+          {{#if (eq model.state 'accepted')}}
+            <div class="ui green large label">{{t 'Accepted'}}</div>
+          {{else if (eq model.state 'pending')}}
+            <div class="ui yellow large label">{{t 'Pending'}}</div>
+          {{else if (eq model.state 'rejected')}}
+            <div class="ui red large label">{{t 'Rejected'}}</div>
+          {{/if}}
+        </div>
+      </h3>
+      <div class="field">
+        <div class="ui divider"></div>
+        <h1 class="ui header"> {{model.title}} </h1>
+        <h2 class="ui header"> {{model.speaker.name}} </h2>
+        <h2 class="ui sub header"> <div class="ui gray-text">{{t 'From '}}{{moment-format model.startAt 'ddd, MMM DD HH:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD HH:mm A'}}</div> </h2>
+      </div>
+      <div class="ui divider"></div>
+      {{#if model.shortAbstract}}
+        <h3 class="ui left aligned header">Short Abstract</h3>
+        <p> <i>{{model.shortAbstract}}</i> </p>
+      {{/if}}
+      {{#if model.sessionType.name}}
+        <h3 class="ui left aligned header">Session Type</h3>
+        <p>{{model.sessionType.name}}</p>
+      {{/if}}
+      {{#if model.track.name}}
+        <h3 class="ui left aligned header">Track</h3>
+        <p>{{model.track.name}}</p>
+      {{/if}}
+      {{#if model.slidesUrl}}
+        <h3 class="ui left aligned header">Slide</h3>
+        <a href="{{model.slidesUrl}}">{{t 'Download'}}</a>
+      {{/if}}
+    </div>
+  </div>
+</div>
