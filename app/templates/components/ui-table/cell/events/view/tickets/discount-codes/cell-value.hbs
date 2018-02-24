@@ -1,3 +1,7 @@
 <span>
-  {{number-format record.value}}
+  {{#if (eq record.type 'percent')}}
+    {{number-format record.value}}{{t '%'}}
+  {{else if (eq record.type 'amount')}}
+    {{t 'US$ '}}{{number-format record.value}}
+  {{/if}}
 </span>

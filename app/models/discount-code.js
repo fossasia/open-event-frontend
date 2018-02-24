@@ -1,6 +1,7 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
+import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 
 /**
  * Two different forms of discount code can exist. (Both use the same model)
@@ -31,5 +32,10 @@ export default ModelBase.extend({
   }), // The event that this discount code belongs to [Form (2)]
   events: hasMany('event', {
     inverse: 'discountCode'
-  })    // The events that this discount code has been applied to [Form (1)]
+  }), // The events that this discount code has been applied to [Form (1)]
+
+  validFromDate : computedDateTimeSplit.bind(this)('validFrom', 'date'),
+  validFromTime : computedDateTimeSplit.bind(this)('validFrom', 'time'),
+  validTillDate : computedDateTimeSplit.bind(this)('validTill', 'date'),
+  validTillTime : computedDateTimeSplit.bind(this)('validTill', 'time')
 });
