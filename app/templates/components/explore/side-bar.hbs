@@ -63,7 +63,7 @@
       {{#each dateRanges as |dateRange|}}
         <a href="#" class="link item {{if (eq date_range dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
           {{dateRange.name}}
-          {{#if (and (eq dateRange.key 'custom_dates') (eq dateRange 'custom_dates'))}}
+          {{#if (and (eq dateRange.key 'custom_dates') (eq date_range 'custom_dates'))}}
             <div class="explore sub menu">
               <div class="ui form">
                 <div class="grouped fields">
