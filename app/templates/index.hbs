@@ -1,11 +1,17 @@
 <div class="ui container">
   {{quick-filter}}
-  <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
-  <div class="ui stackable three column grid">
-    {{#each model as |event|}}
-      {{event-card event=event shareEvent=(action 'shareEvent')}}
-    {{/each}}
-  </div>
+
+  {{#if model}}
+    <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each model as |event|}}
+        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{/each}}
+    </div>
+  {{else}}
+    <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
+  {{/if}}
+
   {{#if callForSpeakersEvents}}
     <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">
