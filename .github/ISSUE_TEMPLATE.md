@@ -5,10 +5,12 @@
 - [ ] support request => Please do not submit support requests here, instead ask your query in out Gitter channel at https://gitter.im/fossasia/open-event-frontend
 
 **Current behavior:**
-<!-- Describe how the bug manifests. -->
+<!-- Describe how the bug manifests.
+       Add screenshot (If any).-->
 
 **Expected behavior:**
-<!-- Describe what the behavior would be without the bug. -->
+<!-- Describe what the behavior would be without the bug.
+       Add screenshot (If any).-->
 
 **Steps to reproduce:**
 <!-- If you are able to illustrate the bug or feature request with an example, please provide steps to reproduce -->
@@ -18,8 +20,6 @@
 ```
 insert any relevant code here else remove this section
 ```
-**Screenshot:**
-<!-- Add screenshot of the issue where-ever possible -->
 
 **Other information:**
 <!-- List any other information that is relevant to your issue. Stack traces, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc. -->
