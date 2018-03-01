@@ -24,7 +24,7 @@ export default Component.extend({
       if (dateRange === 'custom_dates') {
         isCustomDate = dateRange;
       }
-      this.set('dateRange', dateRange === this.get('dateRange') ?  isCustomDate : dateRange);
+      this.set('date_range', dateRange === this.get('date_range') ?  isCustomDate : dateRange);
     }
   }
 });
