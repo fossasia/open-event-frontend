@@ -1,5 +1,5 @@
 <div class="ui vertical compact basic buttons">
-  {{#ui-popup content=(t 'View') class='ui icon button' position='left center'}}
+  {{#ui-popup content=(t 'View') class='ui icon button'  click=(action viewSession record.id) position='left center'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
   {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action editSession record.event.id) position='left center'}}
