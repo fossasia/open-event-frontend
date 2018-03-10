@@ -41,6 +41,33 @@ export default Component.extend(EventWizardMixin, FormMixin, {
               prompt : this.l10n.t('Please enter name for track')
             }
           ]
+        },
+        announcement: {
+          identifier : 'announcement',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter an Announcement')
+            }
+          ]
+        },
+        privateLink: {
+          identifier : 'private_link',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter a Private link')
+            }
+          ]
+        },
+        privacy: {
+          identifier : 'privacy',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please select the Privacy')
+            }
+          ]
         }
       }
     };
