@@ -19,6 +19,7 @@ export function initialize(application) {
   inject('sanitizer', 'service:sanitizer');
 
   application.inject('component', 'routing', 'service:-routing');
+  application.inject('component', 'router', 'service:router');
 
 }
 

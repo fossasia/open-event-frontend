@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import EmberObject, { computed } from '@ember/object';
 import moment from 'moment';
-
-const { Controller, computed, Object: EmberObject } = Ember;
 
 export default Controller.extend({
   queryParams  : ['category', 'sub_category', 'event_type', 'date_range'],

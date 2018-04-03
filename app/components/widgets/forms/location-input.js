@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { observer, computed } from '@ember/object';
 import { keys, values } from 'lodash';
-
-const { Component, computed, observer } = Ember;
 
 export default Component.extend({
 

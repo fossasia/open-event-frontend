@@ -1,9 +1,8 @@
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
 import { test } from 'ember-qunit';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
-
-const { Object: EmberObject, A } = Ember;
 
 moduleForComponent('public/speaker-list', 'Integration | Component | public/speaker list');
 

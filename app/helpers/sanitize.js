@@ -1,5 +1,6 @@
-import Ember from 'ember';
-const { Helper, inject: { service }, String } = Ember;
+import Helper from '@ember/component/helper';
+import { inject as service } from '@ember/service';
+import { htmlSafe } from '@ember/string';
 
 /**
  * Helper to sanitize a HTML string
@@ -8,6 +9,6 @@ export default Helper.extend({
   sanitizer: service(),
 
   compute(params) {
-    return String.htmlSafe(this.get('sanitizer').purify(params[0]));
+    return htmlSafe(this.get('sanitizer').purify(params[0]));
   }
 });

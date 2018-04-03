@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-
-const { Route, RSVP } = Ember;
 
 export default Route.extend(ApplicationRouteMixin, {
   title(tokens) {

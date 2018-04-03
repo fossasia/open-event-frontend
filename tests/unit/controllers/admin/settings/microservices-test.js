@@ -1,4 +1,4 @@
-import {  test } from 'ember-qunit';
+import { test } from 'ember-qunit';
 import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
 
 moduleFor('controller:admin/settings/microservices', 'Unit | Controller | admin/settings/microservices', []);

@@ -1,9 +1,8 @@
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
 import { test } from 'ember-qunit';
-import Ember from 'ember';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
-
-const { Object: EmberObject, A } = Ember;
 
 moduleForComponent('forms/session-speaker-form', 'Integration | Component | forms/session speaker form');
 

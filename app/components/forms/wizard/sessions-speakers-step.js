@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import moment from 'moment';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash';
-
-const { Component, computed } = Ember;
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 

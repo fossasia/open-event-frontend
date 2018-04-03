@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
 import EventRelationMixin from 'open-event-frontend/mixins/event-relation';
 import { module, test } from 'qunit';
-
-const { Object: EmberObject } = Ember;
 
 module('Unit | Mixin | event relation');
 

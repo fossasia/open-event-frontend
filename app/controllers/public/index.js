@@ -1,15 +1,16 @@
-import Ember from 'ember';
-
-const { Controller, computed, String } = Ember;
+import { filterBy } from '@ember/object/computed';
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 
 export default Controller.extend({
 
-  featuredSpeakers: computed.filterBy('model.speakers', 'isFeatured', true),
+  featuredSpeakers: filterBy('model.speakers', 'isFeatured', true),
 
-  nonFeaturedSpeakers: computed.filterBy('model.speakers', 'isFeatured', false),
+  nonFeaturedSpeakers: filterBy('model.speakers', 'isFeatured', false),
 
   htmlSafeDescription: computed('model.event.description', function() {
-    return String.htmlSafe(this.get('model.event.description'));
+    return htmlSafe(this.get('model.event.description'));
   })
 
 });

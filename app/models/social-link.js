@@ -1,10 +1,9 @@
+import { equal } from '@ember/object/computed';
+import { computed } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
-import Ember from 'ember';
 import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
-
-const { computed } = Ember;
 
 export default ModelBase.extend({
   name : attr('string'),
@@ -16,7 +15,7 @@ export default ModelBase.extend({
     return this.get('name').trim().toLowerCase();
   }),
 
-  isTwitter: computed.equal('normalizedName', 'twitter'),
+  isTwitter: equal('normalizedName', 'twitter'),
 
   segmentedLink: computedSegmentedLink.bind(this)('link')
 });

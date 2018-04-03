@@ -1,9 +1,7 @@
+import Object from '@ember/object';
 import { test } from 'ember-qunit';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
-
-const { Object } = Ember;
 
 moduleForComponent('event-card', 'Integration | Component | event card');
 

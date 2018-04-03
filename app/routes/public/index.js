@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 import moment from 'moment';
-
-const { Route, RSVP } = Ember;
 
 export default Route.extend({
   model() {

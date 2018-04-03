@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { Mixin } = Ember;
+import Mixin from '@ember/object/mixin';
 
 /**
  * A mixin that will replace event identifier with the event's original id while saving relationships

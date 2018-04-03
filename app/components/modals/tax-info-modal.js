@@ -1,10 +1,8 @@
+import { computed } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import FormMixin from 'open-event-frontend/mixins/form';
-import Ember from 'ember';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { orderBy } from 'lodash';
-
-const { computed } = Ember;
 
 export default ModalBase.extend(FormMixin, {
   isSmall : false,

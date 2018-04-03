@@ -1,11 +1,9 @@
+import EmberObject from '@ember/object';
 import { test } from 'ember-qunit';
-import Ember from 'ember';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('forms/user-profile-form', 'Integration | Component | forms/user profile form');
-
-const { Object: EmberObject } = Ember;
 
 var user = EmberObject.create({
   firstName : 'Test',

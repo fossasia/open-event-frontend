@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import Object from '@ember/object';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
 import { module, test } from 'qunit';
-
-const { Object } = Ember;
 
 module('Unit | Mixin | custom form');
 

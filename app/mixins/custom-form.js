@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { Mixin, MutableArray } = Ember;
+import Mixin from '@ember/object/mixin';
+import MutableArray from '@ember/array/mutable';
 
 export default Mixin.create(MutableArray, {
 

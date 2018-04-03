@@ -1,11 +1,10 @@
-import Ember from 'ember';
-
-const { Controller, computed } = Ember;
+import { filterBy } from '@ember/object/computed';
+import Controller from '@ember/controller';
 
 export default Controller.extend({
-  footerPages: computed.filterBy('model', 'place', 'footer'),
+  footerPages: filterBy('model', 'place', 'footer'),
 
-  eventPages: computed.filterBy('model', 'place', 'event'),
+  eventPages: filterBy('model', 'place', 'event'),
 
   actions: {
     updateCurrentPage(page, type) {

@@ -1,13 +1,6 @@
-import Ember from 'ember';
+import O, { observer, getWithDefault, set } from '@ember/object';
 import TableComponent from 'ember-models-table/components/models-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
-
-const {
-  set,
-  getWithDefault,
-  observer,
-  Object: O
-} = Ember;
 
 const defaultMessages = {
   searchLabel            : 'Search:',

@@ -1,11 +1,9 @@
+import EmberObject from '@ember/object';
 import { test } from 'ember-qunit';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 
 moduleForComponent('settings/contact-info-section', 'Integration | Component | settings/contact info section');
-
-const { Object: EmberObject } = Ember;
 
 var user = EmberObject.create({
   email   : 'xyz@xyz.com',

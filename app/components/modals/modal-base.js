@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import { observer } from '@ember/object';
+import { assign, merge } from '@ember/polyfills';
 import UiModal from 'semantic-ui-ember/components/ui-modal';
-
-const { observer, merge, assign, testing } = Ember;
+import { isTesting } from 'open-event-frontend/utils/testing';
 
 export default UiModal.extend({
   tagName           : 'div',
@@ -42,7 +42,7 @@ export default UiModal.extend({
 
     const defaultOptions = {
       detachable     : false,
-      duration       : testing ? 0 : 200,
+      duration       : isTesting ? 0 : 200,
       dimmerSettings : {
         dimmerName : `${this.get('elementId')}-modal-dimmer`,
         variation  : 'inverted'

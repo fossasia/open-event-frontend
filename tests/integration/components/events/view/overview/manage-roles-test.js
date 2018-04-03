@@ -1,11 +1,10 @@
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
 import { test } from 'ember-qunit';
-import Ember from 'ember';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('events/overview/manage-roles', 'Integration | Component | events/overview/manage roles');
-
-const { Object: EmberObject, A } = Ember;
 
 let invites = A(
   [

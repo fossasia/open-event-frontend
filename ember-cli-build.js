@@ -17,7 +17,7 @@ module.exports = function(defaults) {
       cascade  : false
     },
     minifyHTML: {
-      enabled   : true,
+      enabled   : false,
       htmlFiles : ['index.html', '404.html']
     }
   });

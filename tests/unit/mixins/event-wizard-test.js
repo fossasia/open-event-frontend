@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import Object from '@ember/object';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { module, test } from 'qunit';
-
-const { Object } = Ember;
 
 module('Unit | Mixin | event wizard');
 

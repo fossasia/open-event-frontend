@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { set, computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-
-const { Component, computed, set } = Ember;
 
 export default Component.extend(FormMixin, {
   buyer: {

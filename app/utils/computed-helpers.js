@@ -1,9 +1,8 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import moment from 'moment';
 import { values } from 'lodash';
 import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
-const { computed } = Ember;
 
 /**
  * Get/set a splitted URL from/to a string URL field

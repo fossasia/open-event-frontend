@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { Component, observer } = Ember;
+import Component from '@ember/component';
+import { observer } from '@ember/object';
 
 export default Component.extend({
   classNameBindings : ['hasLinkName:fields', 'hasLinkName::ui', 'hasLinkName::labeled', 'hasLinkName::input:'],

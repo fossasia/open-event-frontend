@@ -1,10 +1,8 @@
+import { inject as service } from '@ember/service';
 import ENV from 'open-event-frontend/config/environment';
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
-import Ember from 'ember';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import RESTAdapterMixin from 'ember-data-has-many-query/mixins/rest-adapter';
-
-const { inject: { service } } = Ember;
 
 /**
  * The backend server expects the filter in a serialized string format.

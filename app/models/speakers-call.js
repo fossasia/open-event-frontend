@@ -1,12 +1,10 @@
+import { computed } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
 import { v4 } from 'ember-uuid';
-import Ember from 'ember';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import moment from 'moment';
-
-const { computed } = Ember;
 
 const detectedTimezone = moment.tz.guess();
 
