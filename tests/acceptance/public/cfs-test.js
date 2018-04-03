@@ -10,7 +10,7 @@ File commented untill we have our mock server where we can control API response.
 //
 // moduleForAcceptance('Acceptance | public/cfs');
 //
-// test('visiting / and opening an event and going to call for speakers', function(assert) {
+// test('visiting / and opening an event and going to call for speakers', async function(assert) {
 //   visit('/');
 //   andThen(function() {
 //     click('div.event.card:first > a.content:first');

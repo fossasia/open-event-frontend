@@ -9,7 +9,7 @@ File commented untill we have our mock server where we can control API response.
 //
 // moduleForAcceptance('Acceptance | public/sessions');
 //
-// test('visiting / and opening an event and going to sessions', function(assert) {
+// test('visiting / and opening an event and going to sessions', async function(assert) {
 //   visit('/');
 //   andThen(function() {
 //     click('div.event.card:first > a.content:first');

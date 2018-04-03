@@ -5,14 +5,14 @@
 //
 // moduleForAcceptance('Acceptance | index');
 //
-// test('visiting /', function(assert) {
+// test('visiting /', async function(assert) {
 //   visit('/');
 //   andThen(function() {
 //     assert.equal(currentURL(), '/');
 //   });
 // });
 //
-// test('visiting / and opening an event', function(assert) {
+// test('visiting / and opening an event', async function(assert) {
 //   visit('/');
 //   andThen(function() {
 //     click('div.event.card:first > a.content:first');
@@ -22,7 +22,7 @@
 //   });
 // });
 //
-// test('visiting / and opening an event share modal', function(assert) {
+// test('visiting / and opening an event share modal', async function(assert) {
 //   visit('/');
 //   andThen(function() {
 //     click('div.event.card:first > div.extra.content > span > i');

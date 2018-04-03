@@ -3,7 +3,7 @@ import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-ac
 
 moduleForAcceptance('Acceptance | profile');
 
-test('visiting /profile without login', function(assert) {
+test('visiting /profile without login', async function(assert) {
   visit('/profile');
 
   andThen(function() {
@@ -11,7 +11,7 @@ test('visiting /profile without login', function(assert) {
   });
 });
 
-test('visiting /profile with login', function(assert) {
+test('visiting /profile with login', async function(assert) {
   login(assert);
   andThen(function() {
     visit('/profile');
