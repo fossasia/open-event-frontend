@@ -1,6 +1,9 @@
-import Ember from 'ember';
+import Service from '@ember/service';
+import { getOwner } from '@ember/application';
+import $ from 'jquery';
+import { Promise as RSVPPromise } from 'rsvp';
 
-const { Service, getOwner, $, $: { ajax }, RSVP: { Promise: RSVPPromise } } = Ember;
+const { ajax } = $;
 const { stringify } = JSON;
 
 export default Service.extend({

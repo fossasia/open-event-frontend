@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
+import MutableArray from '@ember/array/mutable';
+import RSVP from 'rsvp';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
-
-const { Mixin, MutableArray, RSVP } = Ember;
 
 export default Mixin.create(MutableArray, CustomFormMixin, {
 

@@ -1,10 +1,9 @@
+import Service from '@ember/service';
 import { moduleForComponent, test } from 'ember-qunit';
 import destroyApp from './destroy-app';
 import startApp from './start-app';
 import l10nTestHelper from 'ember-l10n/test-helpers';
 import L10n from 'ember-l10n/services/l10n';
-import Ember from 'ember';
-const { Service } = Ember;
 
 const routingStub = Service.extend({
   router: {

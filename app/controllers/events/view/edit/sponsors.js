@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { Controller, RSVP } = Ember;
+import Controller from '@ember/controller';
+import RSVP from 'rsvp';
 
 export default Controller.extend({
   actions: {

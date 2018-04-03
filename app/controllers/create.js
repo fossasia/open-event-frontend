@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import RSVP from 'rsvp';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-
-const { Controller, RSVP } = Ember;
 
 export default Controller.extend(EventWizardMixin, {
   actions: {

@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { observer, computed } from '@ember/object';
+import Service, { inject as service } from '@ember/service';
+import { camelize } from '@ember/string';
+import RSVP from 'rsvp';
 import { mapKeys } from 'lodash';
-
-const { Service, computed, observer, inject: { service }, String: { camelize }, RSVP } = Ember;
 
 export default Service.extend({
 

@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import Object from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { module, test } from 'qunit';
-
-const { Object } = Ember;
 
 module('Unit | Mixin | form');
 

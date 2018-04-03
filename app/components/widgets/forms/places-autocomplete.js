@@ -6,9 +6,10 @@
  *
  */
 
-import Ember from 'ember';
+import TextField from '@ember/component/text-field';
 
-const { TextField, isEmpty, isPresent, run } = Ember;
+import { isPresent, isEmpty } from '@ember/utils';
+import { run } from '@ember/runloop';
 
 export default TextField.extend({
   classNames           : ['place-autocomplete--input'],

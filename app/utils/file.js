@@ -1,5 +1,4 @@
-import Ember from 'ember';
-const { RSVP: { Promise: RSVPPromise } } = Ember;
+import { Promise as RSVPPromise } from 'rsvp';
 
 export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
   const thresh = si ? 1000 : 1024;

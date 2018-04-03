@@ -1,13 +1,16 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { later } from '@ember/runloop';
+import { observer, computed } from '@ember/object';
 import moment from 'moment';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
-import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
+import {
+  paymentCountries,
+  paymentCurrencies
+} from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { orderBy, filter, find } from 'lodash';
-
-const { Component, computed, run: { later }, observer } = Ember;
 
 export default Component.extend(FormMixin, {
 

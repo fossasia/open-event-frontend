@@ -1,9 +1,8 @@
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
 import { test } from 'ember-qunit';
 import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
-
-const { Object: EmberObject, A } = Ember;
 
 moduleForComponent('forms/admin/settings/ticket-fees-form', 'Integration | Component | forms/admin/settings/ticket fees form');
 

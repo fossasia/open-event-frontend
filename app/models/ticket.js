@@ -1,11 +1,9 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import moment from 'moment';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import { belongsTo } from 'ember-data/relationships';
-
-const { computed } = Ember;
 
 export default ModelBase.extend({
 

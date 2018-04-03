@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
-
-const { Component } = Ember;
 
 export default Component.extend(FormMixin, {
 

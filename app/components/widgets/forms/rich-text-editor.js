@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { debounce } from '@ember/runloop';
+import { observer, computed } from '@ember/object';
 import { v4 } from 'ember-uuid';
-
-const { Component, computed, run: { debounce }, testing, observer } = Ember;
+import { isTesting } from 'open-event-frontend/utils/testing';
 
 export default Component.extend({
 
@@ -51,7 +52,7 @@ export default Component.extend({
       });
 
     // Don't initialize wysihtml5 when app is in testing mode
-    if (!testing) {
+    if (!isTesting) {
       this.editor = new wysihtml5.Editor(this.$(`#${this.get('textareaIdGenerated')}`)[0], {
         toolbar     : this.$(`#${this.get('textareaIdGenerated')}-toolbar`)[0],
         parserRules : this.get('standardParserRules')

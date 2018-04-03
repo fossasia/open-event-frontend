@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import { registerAsyncHelper } from '@ember/test';
 
-const { Test } = Ember;
-
-export default Test.registerAsyncHelper('login', function(app, assert, email = null, password = null, gotoLoginPage = true) {
+export default registerAsyncHelper('login', function(app, assert, email = null, password = null, gotoLoginPage = true) {
   if (gotoLoginPage) {
     visit('/login');
   }

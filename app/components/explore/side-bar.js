@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
-
-const { Component, computed } = Ember;
 
 export default Component.extend({
 

@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-
-const { Route, RSVP } = Ember;
 
 export default Route.extend(EventWizardMixin, {
   titleToken() {

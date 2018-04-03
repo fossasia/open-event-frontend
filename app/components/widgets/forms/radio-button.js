@@ -1,6 +1,6 @@
-import Ember from 'ember';
-
-const { Component, run: { once }, observer, computed } = Ember;
+import Component from '@ember/component';
+import { once } from '@ember/runloop';
+import { computed, observer } from '@ember/object';
 
 export default Component.extend({
 

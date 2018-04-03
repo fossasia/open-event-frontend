@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { merge } from '@ember/polyfills';
 import moment from 'moment';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
-
-const { Component, merge } = Ember;
 
 export default Component.extend({
 

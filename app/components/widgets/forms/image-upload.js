@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { v4 } from 'ember-uuid';
-
-const { Component, computed } = Ember;
 
 export default Component.extend({
 

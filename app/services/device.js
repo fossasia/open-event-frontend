@@ -1,7 +1,9 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import Service from '@ember/service';
+import { computed } from '@ember/object';
+import { equal, or } from '@ember/object/computed';
+import { debounce } from '@ember/runloop';
 import { forOwn } from 'lodash';
-
-const { $, Service, computed, computed: { equal }, run: { debounce } } = Ember;
 
 /**
  * Keeping this outside the service object to keep it lean and faster to loop over
@@ -48,7 +50,7 @@ export default Service.extend({
   isTablet           : equal('deviceType', 'tablet'),
   isLargeMonitor     : equal('deviceType', 'largeMonitor'),
   isWideScreen       : equal('deviceType', 'widescreen'),
-  isBiggerThanTablet : computed.or('isComputer', 'isLargeMonitor', 'isWideScreen'),
+  isBiggerThanTablet : or('isComputer', 'isLargeMonitor', 'isWideScreen'),
 
 
   isInternetExplorer: computed(function() {

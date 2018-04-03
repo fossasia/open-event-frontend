@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import Object from '@ember/object';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 import { module, test } from 'qunit';
-
-const { Object } = Ember;
 
 module('Unit | Mixin | custom primary key');
 

@@ -1,5 +1,5 @@
-import Ember from 'ember';
-const { Helper, inject: { service } } = Ember;
+import Helper from '@ember/component/helper';
+import { inject as service } from '@ember/service';
 
 /**
  * Helper to execute an action after a confirmation dialog
