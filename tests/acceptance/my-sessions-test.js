@@ -3,6 +3,36 @@ import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-ac
 
 moduleForAcceptance('Acceptance | my-sessions');
 
+test('visiting /my-sessions without login', function(assert) {
+  login(assert);
+  andThen(function() {
+    visit('/my-sessions');
+    andThen(function() {
+      assert.equal(currentURL(), '/login');
+    });
+  });
+});
+
+test('visiting /my-sessions/upcoming without login', function(assert) {
+  login(assert);
+  andThen(function() {
+    visit('/my-sessions/upcoming');
+    andThen(function() {
+      assert.equal(currentURL(), '/login');
+    });
+  });
+});
+
+test('visiting /my-sessions/past without login', function(assert) {
+  login(assert);
+  andThen(function() {
+    visit('/my-sessions/past');
+    andThen(function() {
+      assert.equal(currentURL(), '/login');
+    });
+  });
+});
+
 test('visiting /my-sessions with login', function(assert) {
   login(assert);
   andThen(function() {
