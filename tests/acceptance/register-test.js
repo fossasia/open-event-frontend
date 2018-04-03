@@ -3,7 +3,7 @@ import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-ac
 
 moduleForAcceptance('Acceptance | register');
 
-test('visiting /register', function(assert) {
+test('visiting /register', async function(assert) {
   visit('/register');
 
   andThen(function() {
@@ -11,7 +11,7 @@ test('visiting /register', function(assert) {
   });
 });
 
-test('visiting /register and registering with existing user', function(assert) {
+test('visiting /register and registering with existing user', async function(assert) {
   visit('/register');
   andThen(function() {
     assert.equal(currentURL(), '/register');
@@ -27,7 +27,7 @@ test('visiting /register and registering with existing user', function(assert) {
   });
 });
 
-test('visiting /register after login', function(assert) {
+test('visiting /register after login', async function(assert) {
   login(assert);
   andThen(function() {
     visit('/register');

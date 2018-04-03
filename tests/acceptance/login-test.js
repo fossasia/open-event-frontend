@@ -1,60 +1,45 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-acceptance';
 import { currentSession } from 'open-event-frontend/tests/helpers/ember-simple-auth';
+import { click, currentURL, visit, findWithAssert } from '@ember/test-helpers';
 
 moduleForAcceptance('Acceptance | login');
 
-test('visiting /login', function(assert) {
-  visit('/login');
-  andThen(function() {
-    assert.equal(currentURL(), '/login');
-  });
+test('visiting /login', async function(assert) {
+  await visit('/login');
+  assert.equal(currentURL(), '/login');
 });
 
-test('correct login at /login', function(assert) {
-  login(assert);
-  andThen(function() {
-    assert.equal(currentURL(), '/');
-  });
+test('correct login at /login', async function(assert) {
+  await login(assert);
+  assert.equal(currentURL(), '/');
 });
 
-test('incorrect login at /login', function(assert) {
-  login(assert, 'wrong_user@gmail.com', 'wrong_password');
-  andThen(function() {
-    assert.equal(currentURL(), '/login');
-    const errorMessageDiv = findWithAssert('.ui.negative.message');
-    assert.equal(errorMessageDiv[0].textContent.trim(), 'Your credentials were incorrect.');
-  });
+test('incorrect login at /login', async function(assert) {
+  await login(assert, 'wrong_user@gmail.com', 'wrong_password');
+  assert.equal(currentURL(), '/login');
+  const errorMessageDiv = findWithAssert('.ui.negative.message');
+  assert.equal(errorMessageDiv[0].textContent.trim(), 'Your credentials were incorrect.');
 });
 
-test('logout at /logout', function(assert) {
-  login(assert);
-  andThen(() => {
-    assert.equal(currentURL(), '/');
-    assert.ok(currentSession(this.application).session.isAuthenticated);
-    logout(assert);
-  });
+test('logout at /logout', async function(assert) {
+  await login(assert);
+  assert.equal(currentURL(), '/');
+  assert.ok(currentSession(this.application).session.isAuthenticated);
+  await logout(assert);
 });
 
-test('logout via navbar', function(assert) {
-  login(assert);
-  andThen(() => {
-    assert.equal(currentURL(), '/');
-    assert.ok(currentSession(this.application).session.isAuthenticated);
-    click('a.logout-button');
-    andThen(() => {
-      assert.equal(currentURL(), '/');
-      assert.ok(currentSession(this.application).session.isAuthenticated !== true);
-    });
-  });
+test('logout via navbar', async function(assert) {
+  await login(assert);
+  assert.equal(currentURL(), '/');
+  assert.ok(currentSession(this.application).session.isAuthenticated);
+  await click('a.logout-button');
+  assert.equal(currentURL(), '/');
+  assert.ok(currentSession(this.application).session.isAuthenticated !== true);
 });
 
-test('visiting /login after login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/login');
-    andThen(function() {
-      assert.equal(currentURL(), '/');
-    });
-  });
+test('visiting /login after login', async function(assert) {
+  await login(assert);
+  await visit('/login');
+  assert.equal(currentURL(), '/');
 });

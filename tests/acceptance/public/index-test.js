@@ -5,7 +5,7 @@
 //
 // moduleForAcceptance('Acceptance | public/index');
 //
-// test('visiting / and opening an event', function(assert) {
+// test('visiting / and opening an event', async function(assert) {
 //   visit('/');
 //   andThen(function() {
 //     click('div.event.card:first > a.content:first');

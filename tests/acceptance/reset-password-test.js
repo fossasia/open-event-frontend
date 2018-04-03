@@ -3,7 +3,7 @@ import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-ac
 
 moduleForAcceptance('Acceptance | reset password');
 
-test('visiting /reset-password', function(assert) {
+test('visiting /reset-password', async function(assert) {
   visit('/reset-password');
 
   andThen(function() {
@@ -11,7 +11,7 @@ test('visiting /reset-password', function(assert) {
   });
 });
 
-test('visiting /reset-password after login', function(assert) {
+test('visiting /reset-password after login', async function(assert) {
   login(assert);
   andThen(function() {
     visit('/reset-password');

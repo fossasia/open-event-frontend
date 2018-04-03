@@ -3,7 +3,7 @@ import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-ac
 
 moduleForAcceptance('Acceptance | settings');
 
-test('visiting /settings/applications without login', function(assert) {
+test('visiting /settings/applications without login', async function(assert) {
   visit('/settings/applications');
 
   andThen(function() {
@@ -11,7 +11,7 @@ test('visiting /settings/applications without login', function(assert) {
   });
 });
 
-test('visiting /settings/contact-info with login', function(assert) {
+test('visiting /settings/contact-info with login', async function(assert) {
   login(assert);
   andThen(function() {
     visit('/settings/contact-info');
@@ -21,7 +21,7 @@ test('visiting /settings/contact-info with login', function(assert) {
   });
 });
 
-test('visiting /settings/password with login', function(assert) {
+test('visiting /settings/password with login', async function(assert) {
   login(assert);
   andThen(function() {
     visit('/settings/password');
@@ -31,7 +31,7 @@ test('visiting /settings/password with login', function(assert) {
   });
 });
 
-test('visiting /settings/email-preferences with login', function(assert) {
+test('visiting /settings/email-preferences with login', async function(assert) {
   login(assert);
   andThen(function() {
     visit('/settings/email-preferences');
@@ -41,7 +41,7 @@ test('visiting /settings/email-preferences with login', function(assert) {
   });
 });
 
-test('visiting /settings/applications with login', function(assert) {
+test('visiting /settings/applications with login', async function(assert) {
   login(assert);
   andThen(function() {
     visit('/settings/applications');

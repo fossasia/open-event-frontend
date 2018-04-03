@@ -2,12 +2,12 @@ import { Promise } from 'rsvp';
 import { module } from 'qunit';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
+import { setupApplicationTest } from 'ember-qunit';
 
 export default function(name, options = {}) {
   module(name, {
     beforeEach() {
       this.application = startApp();
-
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }

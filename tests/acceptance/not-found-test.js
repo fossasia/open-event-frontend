@@ -5,14 +5,14 @@
 //
 // moduleForAcceptance('Acceptance | not found');
 //
-// test('visiting /not-found', function(assert) {
+// test('visiting /not-found', async function(assert) {
 //   visit('/not-found');
 //   andThen(function() {
 //     assert.equal(currentURL(), '/not-found');
 //   });
 // });
 //
-// test('visiting /random-url', function(assert) {
+// test('visiting /random-url', async function(assert) {
 //   visit('/random-url');
 //   andThen(function() {
 //     const errorMessage = findWithAssert('h1.text.muted.weight-300');
