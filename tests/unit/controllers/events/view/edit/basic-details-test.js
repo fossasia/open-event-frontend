@@ -1,9 +1,11 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:events/view/edit/basic-details', 'Unit | Controller | events/view/edit/basic details', []);
+module('Unit | Controller | events/view/edit/basic details', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
+  test('it exists', function(assert) {
+    let controller = this.owner.lookup('controller:events/view/edit/basic-details');
+    assert.ok(controller);
+  });
 });

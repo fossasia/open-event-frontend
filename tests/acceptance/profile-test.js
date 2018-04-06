@@ -1,22 +1,20 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-acceptance';
+import { currentURL, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { login } from 'open-event-frontend/tests/helpers/custom-helpers';
 
-moduleForAcceptance('Acceptance | profile');
+module('Acceptance | profile', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /profile without login', async function(assert) {
-  visit('/profile');
+  test('visiting /profile without login', async function(assert) {
+    await visit('/profile');
 
-  andThen(function() {
     assert.equal(currentURL(), '/login');
   });
-});
 
-test('visiting /profile with login', async function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/profile');
-    andThen(function() {
-      assert.equal(currentURL(), '/profile');
-    });
+  test('visiting /profile with login', async function(assert) {
+    await login(assert);
+    await visit('/profile');
+    assert.equal(currentURL(), '/profile');
   });
 });

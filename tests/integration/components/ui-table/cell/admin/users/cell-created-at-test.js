@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/cell/admin/users/cell-created-at', 'Integration | Component | ui table/cell/admin/users/cell created at');
+module('Integration | Component | ui table/cell/admin/users/cell created at', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', function(assert) {
 
-  this.render(hbs`{{ui-table/cell/admin/users/cell-created-at}}`);
-  assert.ok(this.$().html().trim().includes(''));
+    this.render(hbs`{{ui-table/cell/admin/users/cell-created-at}}`);
+    assert.ok(find('*').innerHTML.trim().includes(''));
+  });
 });

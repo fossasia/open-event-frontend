@@ -1,18 +1,20 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('service:l10n', 'Unit | Service | l10n', ['service:l10n-ajax']);
+module('Unit | Service | l10n', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
 
-  service.setLocale('en');
-  assert.equal('en', service.getLocale());
+  test('it exists', function(assert) {
+    let service = this.owner.lookup('service:l10n');
+    assert.ok(service);
 
-  assert.equal('Submit', service.t('Submit'));
+    service.setLocale('en');
+    assert.equal('en', service.getLocale());
 
-  const testString = 'Register';
-  assert.equal(testString, service.tVar(testString));
+    assert.equal('Submit', service.t('Submit'));
+
+    const testString = 'Register';
+    assert.equal(testString, service.tVar(testString));
+  });
 });

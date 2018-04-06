@@ -1,15 +1,18 @@
 
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('currency-symbol', 'helper:currency-symbol');
+module('Integration | Helper | currency-symbol', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('inputValue', 'USD');
+  test('it renders', function(assert) {
+    this.set('inputValue', 'USD');
 
-  this.render(hbs`{{currency-symbol inputValue}}`);
+    this.render(hbs`{{currency-symbol inputValue}}`);
 
-  assert.equal(this.$().text().trim(), 'US$');
+    assert.equal(find('*').textContent.trim(), 'US$');
+  });
 });
 

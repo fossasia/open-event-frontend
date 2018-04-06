@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('forms/login-form', 'Integration | Component | forms/login form');
+module('Integration | Component | forms/login form', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{forms/login-form l10n=l10n}}`);
-  assert.ok(this.$().html().trim().includes('Login'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{forms/login-form l10n=l10n}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Login'));
+  });
 });

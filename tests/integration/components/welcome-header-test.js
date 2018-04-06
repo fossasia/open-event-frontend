@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('welcome-header', 'Integration | Component | welcome header');
+module('Integration | Component | welcome header', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{welcome-header}}`);
-  assert.ok(this.$().html().trim().includes('Create Event'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{welcome-header}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Create Event'));
+  });
 });

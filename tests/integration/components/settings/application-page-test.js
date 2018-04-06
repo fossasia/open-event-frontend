@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('settings/application-section', 'Integration | Component | settings/application section');
+module('Integration | Component | settings/application section', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{settings/application-section}}`);
-  assert.ok(this.$().html().trim().includes('Connect'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{settings/application-section}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Connect'));
+  });
 });

@@ -1,15 +1,18 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('sponsor-item', 'Integration | Component | sponsor item');
+module('Integration | Component | sponsor item', function(hooks) {
+  setupRenderingTest(hooks);
 
-const sponsor = [
-  { name: 'Sponsor 1', url: '#', logoUrl: 'https://placehold.it/150x60' }
-];
+  const sponsor = [
+    { name: 'Sponsor 1', url: '#', logoUrl: 'https://placehold.it/150x60' }
+  ];
 
-test('it renders', function(assert) {
-  this.set('sponsor', sponsor);
-  this.render(hbs `{{public/sponsor-item sponsor=sponsor}}`);
-  assert.ok(this.$().html().trim().includes('img'));
+  test('it renders', function(assert) {
+    this.set('sponsor', sponsor);
+    this.render(hbs `{{public/sponsor-item sponsor=sponsor}}`);
+    assert.ok(find('*').innerHTML.trim().includes('img'));
+  });
 });

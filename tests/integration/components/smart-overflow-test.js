@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('smart-overflow', 'Integration | Component | smart overflow');
+module('Integration | Component | smart overflow', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{smart-overflow}}`);
-  assert.ok(this.$().html().trim().includes('smart-overflow'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{smart-overflow}}`);
+    assert.ok(find('*').innerHTML.trim().includes('smart-overflow'));
+  });
 });

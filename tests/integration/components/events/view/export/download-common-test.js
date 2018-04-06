@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('events/view/export/download-common', 'Integration | Component | events/view/export/download common');
+module('Integration | Component | events/view/export/download common', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{events/view/export/download-common l10n=l10n}}`);
-  assert.ok(this.$().html().trim().includes('Download Event'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{events/view/export/download-common l10n=l10n}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Download Event'));
+  });
 });

@@ -1,10 +1,12 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('service:auth-manager', 'Unit | Service | auth manager', []);
+module('Unit | Service | auth manager', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
+
+  test('it exists', function(assert) {
+    let service = this.owner.lookup('service:auth-manager');
+    assert.ok(service);
+  });
 });

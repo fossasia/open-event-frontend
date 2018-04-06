@@ -1,13 +1,16 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('modals/event-delete-modal', 'Integration | Component | modals/event delete modal');
+module('Integration | Component | modals/event delete modal', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('isOpen', false);
-  this.set('eventName', 'sample');
-  this.set('deleteEvent', () => {});
-  this.render(hbs`{{modals/event-delete-modal isOpen=isOpen eventName=eventName deleteEvent=(action deleteEvent)}}`);
-  assert.ok(this.$().html().trim().includes('Are you sure'));
+  test('it renders', function(assert) {
+    this.set('isOpen', false);
+    this.set('eventName', 'sample');
+    this.set('deleteEvent', () => {});
+    this.render(hbs`{{modals/event-delete-modal isOpen=isOpen eventName=eventName deleteEvent=(action deleteEvent)}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Are you sure'));
+  });
 });

@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
+import { find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
-moduleForComponent('public/side-menu', 'Integration | Component | public/side menu');
+module('Integration | Component | public/side menu', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{public/side-menu}}`);
-  assert.ok(this.$().html().trim().includes('ui fluid vertical pointing menu'));
-  assert.ok(this.$().html().trim().includes('Getting here'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{public/side-menu}}`);
+    assert.ok(find('*').innerHTML.trim().includes('ui fluid vertical pointing menu'));
+    assert.ok(find('*').innerHTML.trim().includes('Getting here'));
+  });
 });

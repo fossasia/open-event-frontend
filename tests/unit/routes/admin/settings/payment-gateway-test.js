@@ -1,9 +1,11 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('route:admin/settings/payment-gateway', 'Unit | Route | admin/settings/payment gateway', []);
+module('Unit | Route | admin/settings/payment gateway', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+  test('it exists', function(assert) {
+    let route = this.owner.lookup('route:admin/settings/payment-gateway');
+    assert.ok(route);
+  });
 });

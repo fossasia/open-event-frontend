@@ -1,19 +1,27 @@
+import { find } from '@ember/test-helpers';
 import Object from '@ember/object';
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('event-card', 'Integration | Component | event card');
+module('Integration | Component | event card', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
+  hooks.beforeEach(function() {
+    this.actions = {};
+    this.send = (actionName, ...args) => this.actions[actionName].apply(this, args);
+  });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  test('it renders', function(assert) {
 
-  this.set('event', Object.create({}));
-  this.on('shareEvent', function() { });
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{event-card event=event isWide=false shareEvent=(action 'shareEvent')}}`);
+    this.set('event', Object.create({}));
+    this.actions.shareEvent = function() { };
 
-  assert.ok(this.$().html().trim().includes('event'));
+    this.render(hbs`{{event-card event=event isWide=false shareEvent=(action 'shareEvent')}}`);
+
+    assert.ok(find('*').innerHTML.trim().includes('event'));
+  });
 });

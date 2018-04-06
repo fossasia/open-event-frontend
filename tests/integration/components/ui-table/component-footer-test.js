@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/component-footer', 'Integration | Component | ui table/component footer');
+module('Integration | Component | ui table/component footer', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('footer', 'footer');
-  this.render(hbs `{{ui-table/component-footer summary=footer}}`);
-  assert.ok(this.$().html().trim().includes('footer'));
+  test('it renders', function(assert) {
+    this.set('footer', 'footer');
+    this.render(hbs `{{ui-table/component-footer summary=footer}}`);
+    assert.ok(find('*').innerHTML.trim().includes('footer'));
+  });
 });

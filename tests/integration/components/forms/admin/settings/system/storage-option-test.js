@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('forms/admin/settings/system/storage-option', 'Integration | Component | forms/admin/settings/system/storage option');
+module('Integration | Component | forms/admin/settings/system/storage option', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{forms/admin/settings/system/storage-option}}`);
-  assert.ok(this.$().html().trim().includes('Storage'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{forms/admin/settings/system/storage-option}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Storage'));
+  });
 });

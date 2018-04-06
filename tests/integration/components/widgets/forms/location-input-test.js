@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/location-input', 'Integration | Component | widgets/forms/location input');
+module('Integration | Component | widgets/forms/location input', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/forms/location-input}}`);
-  assert.ok(this.$().html().trim().includes('Enter address'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{widgets/forms/location-input}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Enter address'));
+  });
 });

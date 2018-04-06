@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/image-upload', 'Integration | Component | widgets/forms/image upload');
+module('Integration | Component | widgets/forms/image upload', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/forms/image-upload maxSizeInKb=10000}}`);
-  assert.ok(this.$().html().trim().includes('click or drag-and-drop'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{widgets/forms/image-upload maxSizeInKb=10000}}`);
+    assert.ok(find('*').innerHTML.trim().includes('click or drag-and-drop'));
+  });
 });

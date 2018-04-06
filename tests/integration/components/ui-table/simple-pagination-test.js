@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/simple-pagination', 'Integration | Component | ui table/simple pagination');
+module('Integration | Component | ui table/simple pagination', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs `{{ui-table/simple-pagination}}`);
-  assert.ok(this.$().html().trim().includes('toolbar'));
+  test('it renders', function(assert) {
+    this.render(hbs `{{ui-table/simple-pagination}}`);
+    assert.ok(find('*').innerHTML.trim().includes('toolbar'));
+  });
 });

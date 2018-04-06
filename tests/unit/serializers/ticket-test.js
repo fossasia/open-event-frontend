@@ -1,21 +1,16 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleForModel('ticket', 'Unit | Serializer | ticket', {
-  needs: [
-    'serializer:ticket',
-    'model:order-statistics-ticket',
-    'model:event',
-    'model:user',
-    'model:order',
-    'model:attendee',
-    'transform:moment'
-  ]
-});
+import { run } from '@ember/runloop';
 
-test('it serializes records', function(assert) {
-  let record = this.subject();
+module('Unit | Serializer | ticket', function(hooks) {
+  setupTest(hooks);
 
-  let serializedRecord = record.serialize();
+  test('it serializes records', function(assert) {
+    let record = run(() => this.owner.lookup('service:store').createRecord('ticket'));
 
-  assert.ok(serializedRecord);
+    let serializedRecord = record.serialize();
+
+    assert.ok(serializedRecord);
+  });
 });

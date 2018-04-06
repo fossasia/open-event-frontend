@@ -1,10 +1,13 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleForModel('email-notification', 'Unit | Model | email notification', {
-  needs: ['model:event', 'model:user']
-});
+import { run } from '@ember/runloop';
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  assert.ok(!!model);
+module('Unit | Model | email notification', function(hooks) {
+  setupTest(hooks);
+
+  test('it exists', function(assert) {
+    let model = run(() => this.owner.lookup('service:store').createRecord('email-notification'));
+    assert.ok(!!model);
+  });
 });

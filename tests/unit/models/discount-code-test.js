@@ -1,10 +1,13 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleForModel('discount-code', 'Unit | Model | discount code', {
-  needs: ['model:ticket', 'model:event', 'model:order']
-});
+import { run } from '@ember/runloop';
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  assert.ok(!!model);
+module('Unit | Model | discount code', function(hooks) {
+  setupTest(hooks);
+
+  test('it exists', function(assert) {
+    let model = run(() => this.owner.lookup('service:store').createRecord('discount-code'));
+    assert.ok(!!model);
+  });
 });

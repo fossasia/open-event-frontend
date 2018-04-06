@@ -1,12 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('service:device', 'Unit | Service | device', []);
+module('Unit | Service | device', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
 
-  assert.ok(service.isInternetExplorer !== true);
+  test('it exists', function(assert) {
+    let service = this.owner.lookup('service:device');
+    assert.ok(service);
+
+    assert.ok(service.isInternetExplorer !== true);
+  });
 });

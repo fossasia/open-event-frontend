@@ -1,12 +1,14 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleForModel('attendee', 'Unit | Model | attendee', {
-  // Specify the other units that are required for this test.
-  needs: ['model:ticket', 'model:event', 'model:user',  'model:order']
-});
+import { run } from '@ember/runloop';
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
+module('Unit | Model | attendee', function(hooks) {
+  setupTest(hooks);
+
+  test('it exists', function(assert) {
+    let model = run(() => this.owner.lookup('service:store').createRecord('attendee'));
+    // let store = this.store();
+    assert.ok(!!model);
+  });
 });
