@@ -50,24 +50,30 @@ export default Component.extend(FormMixin, {
 
         this.get('session')
           .authenticate(authenticator, credentials)
-          .then(() => {
+          .then(async() => {
             const tokenPayload = this.get('authManager').getTokenPayload();
             if (tokenPayload) {
-              this.get('store').findRecord('user', tokenPayload.identity).then(user => {
-                this.get('authManager').persistCurrentUser(user);
-              });
+              this.get('authManager').persistCurrentUser(
+                await this.get('store').findRecord('user', tokenPayload.identity)
+              );
             }
           })
           .catch(reason => {
-            if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
-              this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
+            if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+              if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+                this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
+              } else {
+                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+              }
+              this.set('isLoading', false);
             } else {
-              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+              console.warn(reason);
             }
-            this.set('isLoading', false);
           })
           .finally(() => {
-            this.set('password', '');
+            if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+              this.set('password', '');
+            }
           });
       });
     }
