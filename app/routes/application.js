@@ -12,10 +12,9 @@ export default Route.extend(ApplicationRouteMixin, {
     return tokens.join(' | ');
   },
 
-  beforeModel() {
+  async beforeModel() {
     this._super(...arguments);
-    // Returning a promise here will cause ember to wait until the promise is resolved before moving on to the model
-    return this.get('authManager').initialize();
+    await this.get('authManager').initialize();
   },
 
   model() {
