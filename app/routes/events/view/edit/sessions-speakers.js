@@ -1,21 +1,20 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 export default Route.extend(EventWizardMixin, {
   titleToken() {
     return this.l10n.t('Sessions & Speakers');
   },
-  model() {
+  async model() {
     let data = this.modelFor('events.view.edit');
-    data.tracks = data.event.get('tracks');
-    data.microlocations = data.event.get('microlocations');
-    data.sessionTypes = data.event.get('sessionTypes');
-    data.speakersCall = this.getOrCreate(data.event, 'speakersCall', 'speakers-call');
-    data.customForms = data.event.query('customForms', {
+    data.tracks = await data.event.get('tracks');
+    data.microlocations = await data.event.get('microlocations');
+    data.sessionTypes = await data.event.get('sessionTypes');
+    data.speakersCall = await this.getOrCreate(data.event, 'speakersCall', 'speakers-call');
+    data.customForms = await data.event.query('customForms', {
       sort         : 'field-identifier',
       'page[size]' : 50
     });
-    return RSVP.hash(data);
+    return data;
   }
 });

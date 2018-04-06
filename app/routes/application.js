@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Route.extend(ApplicationRouteMixin, {
@@ -17,10 +16,10 @@ export default Route.extend(ApplicationRouteMixin, {
     await this.get('authManager').initialize();
   },
 
-  model() {
+  async model() {
     let notifications = [];
     if (this.get('session.isAuthenticated')) {
-      notifications = this.get('authManager.currentUser').query('notifications', {
+      notifications = await this.get('authManager.currentUser').query('notifications', {
         filter: [
           {
             name : 'is-read',
@@ -31,13 +30,13 @@ export default Route.extend(ApplicationRouteMixin, {
         sort: '-received-at'
       });
     }
-    return RSVP.hash({
+    return {
       notifications,
-      pages: this.get('store').query('page', {
+      pages: await this.get('store').query('page', {
         sort: 'index'
       }),
-      socialLinks: this.get('store').queryRecord('setting', {})
-    });
+      socialLinks: await this.get('store').queryRecord('setting', {})
+    };
   },
 
   sessionInvalidated() {

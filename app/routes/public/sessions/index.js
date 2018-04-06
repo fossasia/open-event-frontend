@@ -1,15 +1,14 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 
 export default Route.extend({
   titleToken() {
     return this.l10n.t('Sessions');
   },
-  model() {
+  async model() {
     const eventDetails = this.modelFor('public');
-    return RSVP.hash({
+    return {
       event  : eventDetails,
-      tracks : eventDetails.query('tracks', { include: 'sessions' })
-    });
+      tracks : await eventDetails.query('tracks', { include: 'sessions' })
+    };
   }
 });

@@ -1,28 +1,27 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 
 export default Route.extend({
   titleToken() {
     return this.l10n.t('Create session');
   },
-  model() {
-    var eventDetails = this.modelFor('events.view');
-    return RSVP.hash({
+  async model() {
+    const eventDetails = this.modelFor('events.view');
+    return {
       event : eventDetails,
-      form  : eventDetails.query('customForms', {
+      form  : await eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
       }),
-      session: this.get('store').createRecord('session', {
+      session: await this.get('store').createRecord('session', {
         event : eventDetails,
         user  : this.get('authManager.currentUser')
       }),
-      speaker: this.get('store').createRecord('speaker', {
+      speaker: await this.get('store').createRecord('speaker', {
         event : eventDetails,
         user  : this.get('authManager.currentUser')
       }),
-      tracks       : eventDetails.query('tracks', {}),
-      sessionTypes : eventDetails.query('sessionTypes', {})
-    });
+      tracks       : await eventDetails.query('tracks', {}),
+      sessionTypes : await eventDetails.query('sessionTypes', {})
+    };
   }
 });
