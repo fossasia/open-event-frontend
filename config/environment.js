@@ -108,7 +108,7 @@ module.exports = function(environment) {
     'default-src' : '\'none\'',
     'connect-src' : [
       '\'self\'',
-      'ws://eventyay.dev:65520',
+      'ws://eventyay.local:65520',
       'ws://localhost:49153',
       'https://maps.gstatic.com',
       'https://*.eventyay.com',
@@ -124,7 +124,7 @@ module.exports = function(environment) {
       'https://maps.gstatic.com',
       'https://eventyay.com',
       'https://*.eventyay.com',
-      'http://eventyay.dev:65520',
+      'http://eventyay.local:65520',
       'http://localhost:49153',
       'www.google-analytics.com',
       'https://platform.twitter.com',
