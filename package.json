@@ -13,8 +13,9 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember test",
-    "eslint": "eslint --fix app ember-cli-build.js testem.js tests",
-    "sass-lint": "sass-lint -c .sass-lint.yml --verbose",
+    "exam": "ember exam --launch=chrome --random",
+    "lint:js": "eslint --fix app ember-cli-build.js testem.js tests",
+    "lint:scss": "sass-lint -c .sass-lint.yml --verbose",
     "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'bower_components', 'junction') } catch (e) { }\""
   },
   "devDependencies": {
