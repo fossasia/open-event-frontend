@@ -1,16 +1,15 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 
 export default Route.extend({
   titleToken() {
     return this.l10n.t('Call for Speakers');
   },
 
-  model() {
+  async model() {
     const eventDetails = this.modelFor('public');
-    return RSVP.hash({
+    return {
       event       : eventDetails,
-      userSpeaker : this.get('authManager.currentUser').query('speakers', {
+      userSpeaker : await this.get('authManager.currentUser').query('speakers', {
         filter: [
           {
             name : 'event',
@@ -23,7 +22,7 @@ export default Route.extend({
           }
         ]
       }),
-      userSession: this.get('authManager.currentUser').query('sessions', {
+      userSession: await this.get('authManager.currentUser').query('sessions', {
         filter: [
           {
             name : 'event',
@@ -36,7 +35,7 @@ export default Route.extend({
           }
         ]
       }),
-      speakersCall: eventDetails.get('speakersCall')
-    });
+      speakersCall: await eventDetails.get('speakersCall')
+    };
   }
 });

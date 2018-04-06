@@ -1,12 +1,11 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 
 export default Route.extend({
   titleToken() {
     return this.l10n.t('Scheduler');
   },
-  model() {
-    return RSVP.hash({
+  async model() {
+    return {
       events: [{
         title      : 'Session 1',
         start      : '2017-07-26T07:08:08',
@@ -43,6 +42,6 @@ export default Route.extend({
         { id: 'y', title: 'Auditorium Y' },
         { id: 'z', title: 'Auditorium Z' }
       ]
-    });
+    };
   }
 });
