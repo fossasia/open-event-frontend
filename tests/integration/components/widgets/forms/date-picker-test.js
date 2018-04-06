@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/date-picker', 'Integration | Component | widgets/forms/date picker');
+module('Integration | Component | widgets/forms/date picker', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/forms/date-picker}}`);
-  assert.ok(this.$().html().trim().includes('calendar'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{widgets/forms/date-picker}}`);
+    assert.ok(find('*').innerHTML.trim().includes('calendar'));
+  });
 });

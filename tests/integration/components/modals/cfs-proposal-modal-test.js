@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('modals/cfs-proposal-modal', 'Integration | Component | modals/cfs proposal modal');
+module('Integration | Component | modals/cfs proposal modal', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('isOpen', false);
-  this.render(hbs`{{modals/cfs-proposal-modal isOpen=isOpen}}`);
-  assert.ok(this.$().html().trim().includes(''));
+  test('it renders', function(assert) {
+    this.set('isOpen', false);
+    this.render(hbs`{{modals/cfs-proposal-modal isOpen=isOpen}}`);
+    assert.ok(find('*').innerHTML.trim().includes(''));
+  });
 });

@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('settings/email-preferences-section', 'Integration | Component | settings/email preferences section');
+module('Integration | Component | settings/email preferences section', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{settings/email-preferences-section}}`);
-  assert.ok(this.$().html().trim().includes('Email'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{settings/email-preferences-section}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Email'));
+  });
 });

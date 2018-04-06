@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('public/call-for-speakers', 'Integration | Component | public/call for speakers');
+module('Integration | Component | public/call for speakers', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{public/call-for-speakers}}`);
-  assert.ok(this.$().html().trim().includes('Call for Speakers'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{public/call-for-speakers}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Call for Speakers'));
+  });
 });

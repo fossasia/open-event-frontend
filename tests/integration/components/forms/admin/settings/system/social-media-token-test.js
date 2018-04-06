@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('forms/admin/settings/system/social-media-token', 'Integration | Component | forms/admin/settings/system/social media token');
+module('Integration | Component | forms/admin/settings/system/social media token', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{forms/admin/settings/system/social-media-token}}`);
-  assert.ok(this.$().html().trim().includes('Tokens'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{forms/admin/settings/system/social-media-token}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Tokens'));
+  });
 });

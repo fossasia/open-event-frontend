@@ -1,16 +1,19 @@
-import { test } from 'ember-qunit';
+import { find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
-moduleForComponent('widgets/twitter-timeline', 'Integration | Component | widgets/twitter timeline');
+module('Integration | Component | widgets/twitter timeline', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/twitter-timeline handleOrProfile='https://twitter.com/fossasia'}}`);
-  assert.ok(this.$().html().trim().includes('@fossasia'), this.$().html().trim());
+  test('it renders', function(assert) {
+    this.render(hbs`{{widgets/twitter-timeline handleOrProfile='https://twitter.com/fossasia'}}`);
+    assert.ok(find('*').innerHTML.trim().includes('@fossasia'), find('*').innerHTML.trim());
 
-  this.render(hbs`{{widgets/twitter-timeline handleOrProfile='https://twitter.com/hashtag/xyzzy'}}`);
-  assert.ok(this.$().text().trim() === '', this.$().text().trim());
+    this.render(hbs`{{widgets/twitter-timeline handleOrProfile='https://twitter.com/hashtag/xyzzy'}}`);
+    assert.ok(find('*').textContent.trim() === '', find('*').textContent.trim());
 
-  this.render(hbs`{{widgets/twitter-timeline handleOrProfile='holamola'}}`);
-  assert.ok(this.$().html().trim().includes('https://twitter.com/holamola'), this.$().html().trim());
+    this.render(hbs`{{widgets/twitter-timeline handleOrProfile='holamola'}}`);
+    assert.ok(find('*').innerHTML.trim().includes('https://twitter.com/holamola'), find('*').innerHTML.trim());
+  });
 });

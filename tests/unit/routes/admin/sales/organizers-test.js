@@ -1,8 +1,10 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('route:admin/sales/organizers', 'Unit | Route | admin/sales/organizers', []);
-test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+module('Unit | Route | admin/sales/organizers', function(hooks) {
+  setupTest(hooks);
+  test('it exists', function(assert) {
+    let route = this.owner.lookup('route:admin/sales/organizers');
+    assert.ok(route);
+  });
 });

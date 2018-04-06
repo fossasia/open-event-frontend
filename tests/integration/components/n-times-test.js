@@ -1,16 +1,19 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('n-times', 'Integration | Component | n times');
+module('Integration | Component | n times', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', function(assert) {
 
-  this.render(hbs`
-    {{#n-times times=1}}
-      test
-    {{/n-times}}
-  `);
+    this.render(hbs`
+      {{#n-times times=1}}
+        test
+      {{/n-times}}
+    `);
 
-  assert.equal(this.$().text().trim(), 'test');
+    assert.equal(find('*').textContent.trim(), 'test');
+  });
 });

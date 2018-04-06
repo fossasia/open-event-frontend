@@ -1,9 +1,11 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('route:events/view/edit/basic-details', 'Unit | Route | events/view/edit/basic details', []);
+module('Unit | Route | events/view/edit/basic details', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+  test('it exists', function(assert) {
+    let route = this.owner.lookup('route:events/view/edit/basic-details');
+    assert.ok(route);
+  });
 });

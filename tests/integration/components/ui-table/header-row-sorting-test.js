@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/header-row-sorting', 'Integration | Component | ui table/header row sorting');
+module('Integration | Component | ui table/header row sorting', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs `{{ui-table/header-row-sorting}}`);
-  assert.ok(this.$().html().trim().includes('tr'));
+  test('it renders', function(assert) {
+    this.render(hbs `{{ui-table/header-row-sorting}}`);
+    assert.ok(find('*').innerHTML.trim().includes('tr'));
+  });
 });

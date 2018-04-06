@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/steps-indicator', 'Integration | Component | widgets/steps indicator');
+module('Integration | Component | widgets/steps indicator', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('steps', []);
-  this.render(hbs`{{widgets/steps-indicator steps=steps currentStep=1 enableAll=false}}`);
-  assert.ok(this.$().html().trim().includes('steps'));
+  test('it renders', function(assert) {
+    this.set('steps', []);
+    this.render(hbs`{{widgets/steps-indicator steps=steps currentStep=1 enableAll=false}}`);
+    assert.ok(find('*').innerHTML.trim().includes('steps'));
+  });
 });

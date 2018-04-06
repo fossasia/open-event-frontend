@@ -1,10 +1,12 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('adapter:admin-statistics-event', 'Unit | Adapter | admin statistics event', []);
+module('Unit | Adapter | admin statistics event', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let adapter = this.subject();
-  assert.ok(adapter);
+
+  test('it exists', function(assert) {
+    let adapter = this.owner.lookup('adapter:admin-statistics-event');
+    assert.ok(adapter);
+  });
 });

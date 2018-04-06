@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ui-table/cell/cell-sessions', 'Integration | Component | ui table/cell/cell sessions');
+module('Integration | Component | ui table/cell/cell sessions', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs `{{ui-table/cell/cell-sessions}}`);
-  assert.ok(this.$().html().trim().includes('Draft'));
+  test('it renders', function(assert) {
+    this.render(hbs `{{ui-table/cell/cell-sessions}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Draft'));
+  });
 });

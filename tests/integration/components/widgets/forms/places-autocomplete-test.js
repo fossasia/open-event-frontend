@@ -1,11 +1,19 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/places-autocomplete', 'Integration | Component | widgets/forms/places autocomplete');
+module('Integration | Component | widgets/forms/places autocomplete', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.on('placeChanged', function() { });
-  this.render(hbs`{{widgets/forms/places-autocomplete placeChangedCallback=(action 'placeChanged')}}`);
-  assert.ok(this.$().html().trim().includes('place-autocomplete--input'));
+  hooks.beforeEach(function() {
+    this.actions = {};
+    this.send = (actionName, ...args) => this.actions[actionName].apply(this, args);
+  });
+
+  test('it renders', function(assert) {
+    this.actions.placeChanged = function() { };
+    this.render(hbs`{{widgets/forms/places-autocomplete placeChangedCallback=(action 'placeChanged')}}`);
+    assert.ok(find('*').innerHTML.trim().includes('place-autocomplete--input'));
+  });
 });

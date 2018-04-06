@@ -1,15 +1,18 @@
 
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('text-color', 'helper:text-color');
+module('Integration | Helper | text-color', function(hooks) {
+  setupRenderingTest(hooks);
 
-// Replace this with your real tests.
-test('it renders', function(assert) {
-  this.render(hbs`{{text-color '#000000'}}`);
-  assert.equal(this.$().text().trim(), '#FFFFFF');
-  this.render(hbs`{{text-color '#FFFFFF'}}`);
-  assert.equal(this.$().text().trim(), '#000000');
+
+  test('it renders', function(assert) {
+    this.render(hbs`{{text-color '#000000'}}`);
+    assert.equal(find('*').textContent.trim(), '#FFFFFF');
+    this.render(hbs`{{text-color '#FFFFFF'}}`);
+    assert.equal(find('*').textContent.trim(), '#000000');
+  });
 });
 

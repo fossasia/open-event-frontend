@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('events/view/export/api-response', 'Integration | Component | events/view/export/api response');
+module('Integration | Component | events/view/export/api response', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{events/view/export/api-response l10n=l10n}}`);
-  assert.ok(this.$().html().trim().includes('Access event information'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{events/view/export/api-response l10n=l10n}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Access event information'));
+  });
 });

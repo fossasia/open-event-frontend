@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
 
-moduleForComponent('forms/reset-password-form', 'Integration | Component | forms/reset password form');
+module('Integration | Component | forms/reset password form', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{forms/reset-password-form l10n=l10n}}`);
-  assert.ok(this.$().html().trim().includes('Reset Password'));
+  test('it renders', function(assert) {
+    this.render(hbs`{{forms/reset-password-form l10n=l10n}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Reset Password'));
+  });
 });

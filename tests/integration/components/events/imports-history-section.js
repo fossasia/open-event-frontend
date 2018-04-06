@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { find } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('events/imports-history-section', 'Integration | Component | events/imports history section');
+module('Integration | Component | events/imports history section', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs `{{events/imports-history-section}}`);
-  assert.ok(this.$().html().trim().includes('Previous Events'));
+  test('it renders', function(assert) {
+    this.render(hbs `{{events/imports-history-section}}`);
+    assert.ok(find('*').innerHTML.trim().includes('Previous Events'));
+  });
 });

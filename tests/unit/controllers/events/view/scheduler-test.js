@@ -1,10 +1,12 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:events/view/scheduler', 'Unit | Controller | events/view/scheduler', []);
+module('Unit | Controller | events/view/scheduler', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
+
+  test('it exists', function(assert) {
+    let controller = this.owner.lookup('controller:events/view/scheduler');
+    assert.ok(controller);
+  });
 });
