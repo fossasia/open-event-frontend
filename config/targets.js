@@ -1,7 +1,5 @@
 const browsers = [
-  'last 1 Chrome versions',
-  'last 1 Firefox versions',
-  'last 1 Safari versions'
+  'Firefox >= 20', 'Chrome >=20', 'Android >= 4.0', 'Safari >= 7', 'iOS >= 5'
 ];
 
 const isCI = !!process.env.CI;
