@@ -14,19 +14,19 @@
       {{/scroll-to}}
     {{/if}}
   {{else}}
-  <a class="item" href="{{href-to 'public.index'}}">
-    {{t 'Info'}}
-  </a>
-  {{#if event.isTicketingEnabled}}
-    <a class="item" href="{{href-to 'public.index'}}#tickets">
-      {{t 'Tickets'}}
+    <a class="item" href="{{href-to 'public.index'}}">
+      {{t 'Info'}}
     </a>
-  {{/if}}
-  {{#if event.isSessionsSpeakersEnabled}}
-    <a class="item" href="{{href-to 'public.index'}}#speakers">
-      {{t 'Speakers'}}
-    </a>
-  {{/if}}
+    {{#if event.isTicketingEnabled}}
+      <a class="item" href="{{href-to 'public.index'}}#tickets">
+        {{t 'Tickets'}}
+      </a>
+    {{/if}}
+    {{#if event.isSessionsSpeakersEnabled}}
+      <a class="item" href="{{href-to 'public.index'}}#speakers">
+        {{t 'Speakers'}}
+      </a>
+    {{/if}}
   {{/if}}
   {{#if event.isSessionsSpeakersEnabled}}
     {{#link-to 'public.sessions' class='item'}}

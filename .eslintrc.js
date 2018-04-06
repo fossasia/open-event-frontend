@@ -71,6 +71,7 @@ module.exports = {
     wysihtml5  : true,
     palette    : true,
     Uint8Array : true,
-    require    : true
+    require    : true,
+    Promise    : true
   }
 };
