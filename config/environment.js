@@ -72,8 +72,17 @@ module.exports = function(environment) {
 
     emberFullCalendar: {
       includeScheduler: true
+    },
+
+    ifa: {
+      enabled : false,
+      inline  : false
     }
   };
+
+  if (environment === 'production') {
+    ENV.ifa.enabled = true;
+  }
 
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:jwt'

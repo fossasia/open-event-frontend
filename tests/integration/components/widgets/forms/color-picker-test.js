@@ -1,10 +1,10 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | widgets/forms/color picker', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
 
@@ -13,7 +13,7 @@ module('Integration | Component | widgets/forms/color picker', function(hooks) {
 
     await render(hbs`{{widgets/forms/color-picker}}`);
 
-    assert.equal(find('*').textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
@@ -22,6 +22,6 @@ module('Integration | Component | widgets/forms/color picker', function(hooks) {
       {{/widgets/forms/color-picker}}
     `);
 
-    assert.equal(find('*').textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.l10n.t('Create session');
+    return this.get('l10n').t('Create session');
   },
   async model() {
     const eventDetails = this.modelFor('events.view');

@@ -1,13 +1,13 @@
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | ui table/cell/cell date', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
-  test('it renders', function(assert) {
-    this.render(hbs `{{ui-table/cell/cell-date}}`);
-    assert.ok(find('*').innerHTML.trim().includes('To'));
+  test('it renders', async function(assert) {
+    await render(hbs `{{ui-table/cell/cell-date}}`);
+    assert.ok(this.element.innerHTML.trim().includes('To'));
   });
 });

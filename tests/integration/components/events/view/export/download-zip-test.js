@@ -1,10 +1,10 @@
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | events/view/export/download zip', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   hooks.beforeEach(function() {
     this.actions = {};
@@ -12,11 +12,11 @@ module('Integration | Component | events/view/export/download zip', function(hoo
   });
 
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.actions.startGeneration = function() { };
     this.set('eventExportStatus', '');
     this.set('eventDownloadUrl', '');
-    this.render(hbs`{{events/view/export/download-zip startGeneration=(action 'startGeneration') eventExportStatus=eventExportStatus eventDownloadUrl=eventDownloadUrl l10n=l10n}}`);
-    assert.ok(find('*').innerHTML.trim().includes('Zip'));
+    await render(hbs`{{events/view/export/download-zip startGeneration=(action 'startGeneration') eventExportStatus=eventExportStatus eventDownloadUrl=eventDownloadUrl l10n=l10n}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Zip'));
   });
 });

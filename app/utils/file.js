@@ -33,7 +33,6 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
           header += arr[i].toString(16);
         }
         let type;
-
         // Magic number reference: from http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html
         switch (header) {
           case '89504e47':

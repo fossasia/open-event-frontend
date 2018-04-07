@@ -6,9 +6,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
     switch (this.get('params.session_status')) {
       case 'upcoming':
-        return this.l10n.t('Upcoming');
+        return this.get('l10n').t('Upcoming');
       case 'past':
-        return this.l10n.t('Past');
+        return this.get('l10n').t('Past');
     }
   },
   model(params) {

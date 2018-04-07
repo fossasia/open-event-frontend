@@ -1,11 +1,11 @@
-import { find } from '@ember/test-helpers';
 import EmberObject from '@ember/object';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | forms/admin/settings/payment gateway form', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   const settings = EmberObject.create({
     stripeClientId         : 'ca_8x1ebxrl8eOwOSqRTVLUJkWtcfP92YJE',
@@ -20,9 +20,9 @@ module('Integration | Component | forms/admin/settings/payment gateway form', fu
     paypalLiveSignature    : 'signature-sandbox'
   });
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('settings', settings);
-    this.render(hbs`{{forms/admin/settings/payment-gateway-form settings=settings}}`);
-    assert.ok(find('*').innerHTML.trim().includes('Stripe'));
+    await render(hbs`{{forms/admin/settings/payment-gateway-form settings=settings}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Stripe'));
   });
 });

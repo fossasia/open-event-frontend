@@ -1,13 +1,13 @@
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | ui table/cell/admin/reports/system logs/notification logs/cell sanitize', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
-  test('it renders', function(assert) {
-    this.render(hbs`{{ui-table/cell/admin/reports/system-logs/notification-logs/cell-sanitize}}`);
-    assert.ok(find('*').textContent.trim().includes(''));
+  test('it renders', async function(assert) {
+    await render(hbs`{{ui-table/cell/admin/reports/system-logs/notification-logs/cell-sanitize}}`);
+    assert.ok(this.element.textContent.trim().includes(''));
   });
 });

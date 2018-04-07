@@ -19,19 +19,19 @@ export default Controller.extend({
             this.set('isDownloadDisabled', false);
             this.set('eventDownloadUrl', exportJobStatus.result.download_url);
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').success(this.l10n.t('Event exported.'));
+            this.get('notify').success(this.get('l10n').t('Event exported.'));
           } else if (exportJobStatus.state === 'WAITING') {
             this.requestLoop(exportJobInfo);
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').alert(this.l10n.t('Event export is going on.'));
+            this.get('notify').alert(this.get('l10n').t('Event export is going on.'));
           } else {
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').error(this.l10n.t('Event export failed.'));
+            this.get('notify').error(this.get('l10n').t('Event export failed.'));
           }
         })
         .catch(() => {
           this.set('eventExportStatus', 'FAILURE');
-          this.get('notify').error(this.l10n.t('Event export failed.'));
+          this.get('notify').error(this.get('l10n').t('Event export failed.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -49,7 +49,7 @@ export default Controller.extend({
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.get('notify').error(this.l10n.t('Unexpected error occurred.'));
+          this.get('notify').error(this.get('l10n').t('Unexpected error occurred.'));
         });
     }
   }

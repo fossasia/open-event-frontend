@@ -1,19 +1,18 @@
-
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Helper | sanitize', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('inputValue', '<p>hello</p>');
-    this.render(hbs`{{sanitize inputValue}}`);
-    assert.equal(find('*').innerHTML.trim(), '<p>hello</p>');
+    await render(hbs`{{sanitize inputValue}}`);
+    assert.equal(this.element.innerHTML.trim(), '<p>hello</p>');
     this.set('inputValue', '<script>alert("xss");</script>');
-    this.render(hbs`{{sanitize inputValue}}`);
-    assert.equal(find('*').innerHTML.trim(), '');
+    await render(hbs`{{sanitize inputValue}}`);
+    assert.equal(this.element.innerHTML.trim(), '');
   });
 });
 

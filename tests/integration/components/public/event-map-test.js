@@ -1,16 +1,16 @@
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | public/event map', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   let event = Object.create({ latitude: 37.7833, longitude: -122.4167, locationName: 'Sample event location address' });
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('event', event);
-    this.render(hbs `{{public/event-map event=event}}`);
-    assert.equal(find('.address p').textContent, 'Sample event location address');
+    await render(hbs `{{public/event-map event=event}}`);
+    assert.dom('.address p').hasText('Sample event location address');
   });
 });

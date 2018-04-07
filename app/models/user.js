@@ -47,7 +47,7 @@ export default ModelBase.extend({
   emailNotifications : hasMany('email-notification'),
   notifications      : hasMany('notification'),
   orders             : hasMany('order'),
-  events             : hasMany('event', { inverse: 'organizers' }),
+  events             : hasMany('event', { inverse: 'user' }),
   sessions           : hasMany('session'),
   invoice            : hasMany('event-invoice'),
   attendees          : hasMany('attendee'),

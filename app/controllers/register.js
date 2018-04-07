@@ -17,9 +17,9 @@ export default Controller.extend({
         })
         .catch(reason => {
           if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 409) {
-            this.set('errorMessage', this.l10n.t('User already exists.'));
+            this.set('errorMessage', this.get('l10n').t('User already exists.'));
           } else {
-            this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+            this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
           }
         })
         .finally(() => {

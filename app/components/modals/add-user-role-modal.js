@@ -25,11 +25,11 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter an email for user')
+              prompt : this.get('l10n').t('Please enter an email for user')
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email address  for user')
+              prompt : this.get('l10n').t('Please enter a valid email address  for user')
             }
           ]
         },
@@ -38,7 +38,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select a role')
+              prompt : this.get('l10n').t('Please select a role')
             }
           ]
         }

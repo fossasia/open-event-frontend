@@ -1,13 +1,13 @@
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | forms/wizard/sessions speakers step', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
-  test('it renders', function(assert) {
-    this.render(hbs`{{forms/wizard/sessions-speakers-step}}`);
-    assert.ok(find('*').innerHTML.trim().includes('Session'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{forms/wizard/sessions-speakers-step}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Session'));
   });
 });

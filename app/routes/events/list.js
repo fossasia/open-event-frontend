@@ -5,11 +5,11 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.event_state')) {
       case 'live':
-        return this.l10n.t('Live');
+        return this.get('l10n').t('Live');
       case 'draft':
-        return this.l10n.t('Draft');
+        return this.get('l10n').t('Draft');
       case 'past':
-        return this.l10n.t('Past');
+        return this.get('l10n').t('Past');
     }
   },
   beforeModel(transition) {

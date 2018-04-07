@@ -20,7 +20,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * Service Injection
    */
 
-  routing: service('-routing'),
+  router: service(),
 
   /**
    * Attributes
@@ -104,15 +104,14 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   tax                    : belongsTo('tax'),
   copyright              : belongsTo('event-copyright'),
   sessionTypes           : hasMany('session-type'),
-  user                   : belongsTo('user', {
-    inverse: 'events'
-  }),
+  user                   : belongsTo('user', { inverse: 'events' }),
+
   customForms     : hasMany('custom-form'),
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
 
-  organizers      : hasMany('user', { inverse: 'events' }),
+  organizers      : hasMany('user', { inverse: null }),
   coorganizers    : hasMany('user', { inverse: null }),
   trackOrganizers : hasMany('user', { inverse: null }),
   registrars      : hasMany('user', { inverse: null }),
@@ -154,7 +153,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   url: computed('identifier', function() {
-    return `${location.protocol}//${location.hostname}${this.get('routing.router').generate('public', this.get('id'))}`;
+    return `${location.protocol}//${location.hostname}${this.get('router').urlFor('public', this.get('id'))}`;
   }),
 
   sessionsByState: computed('sessions', function() {

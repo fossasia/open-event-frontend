@@ -35,13 +35,13 @@ export default ModelsTable.extend({
   visibleContent  : alias('arrangedContent'),
   arrangedContent : alias('filteredContent'),
 
-  arrangedContentLength: computed('routing.router.currentURL', 'filteredContent.meta', function() {
+  arrangedContentLength: computed('router.currentURL', 'filteredContent.meta', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     return get(meta, itemsCountProperty) || 0;
   }),
 
-  pagesCount: computed('routing.router.currentURL', 'currentPageNumber', 'pageSize', function() {
+  pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     let items = (get(meta, itemsCountProperty));
@@ -61,7 +61,7 @@ export default ModelsTable.extend({
     return pages;
   }),
 
-  lastIndex: computed('routing.router.currentURL', 'pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
+  lastIndex: computed('router.currentURL', 'pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
     let pageMax = get(this, 'pageSize') * get(this, 'currentPageNumber');
     let itemsCount = get(this, 'arrangedContentLength');
     return Math.min(pageMax, itemsCount);

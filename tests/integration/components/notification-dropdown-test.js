@@ -1,10 +1,10 @@
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | notification dropdown', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   const unreadNotifications = [
     {
@@ -57,9 +57,9 @@ module('Integration | Component | notification dropdown', function(hooks) {
     }
   ];
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('unreadNotifications', unreadNotifications);
-    this.render(hbs`{{notification-dropdown unreadNotifications=unreadNotifications l10n=l10n}}`);
-    assert.ok(find('*').textContent.trim().includes('New Session Proposal for event1 by  user1'));
+    await render(hbs`{{notification-dropdown unreadNotifications=unreadNotifications l10n=l10n}}`);
+    assert.ok(this.element.textContent.trim().includes('New Session Proposal for event1 by  user1'));
   });
 });

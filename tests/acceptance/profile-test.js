@@ -8,7 +8,6 @@ module('Acceptance | profile', function(hooks) {
 
   test('visiting /profile without login', async function(assert) {
     await visit('/profile');
-
     assert.equal(currentURL(), '/login');
   });
 

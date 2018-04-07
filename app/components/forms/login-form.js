@@ -18,11 +18,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your email ID')
+              prompt : this.get('l10n').t('Please enter your email ID')
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email ID')
+              prompt : this.get('l10n').t('Please enter a valid email ID')
             }
           ]
         },
@@ -31,7 +31,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your password')
+              prompt : this.get('l10n').t('Please enter your password')
             }
           ]
         }
@@ -61,9 +61,9 @@ export default Component.extend(FormMixin, {
           .catch(reason => {
             if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
               if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
-                this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
+                this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
               } else {
-                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+                this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
               }
               this.set('isLoading', false);
             } else {
