@@ -30,7 +30,7 @@ install: yarn
 script:
   - node scripts/l10n.js generate
   - yarn lint:scss
-  - COVERAGE=true yarn exam
+  - COVERAGE=true yarn test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
