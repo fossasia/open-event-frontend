@@ -5,44 +5,25 @@ module('Unit | Service | loader', function(hooks) {
   setupTest(hooks);
 
 
-  test('it exists and works', function(assert) {
+  test('it exists and works', async function(assert) {
     let service = this.owner.lookup('service:loader');
     assert.ok(service);
 
-    const getDone = assert.async();
-    service.load('https://httpbin.org/get?test=string&foo=bar', { isExternal: true }).then(response => {
-      assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, response);
-    }).finally(() => {
-      getDone();
-    });
+    let response;
+    response = await service.load('https://httpbin.org/get?test=string&foo=bar', { isExternal: true });
+    assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, `Received response: ${JSON.stringify(response)}`);
 
     const testPayload = {
       foo  : 'bar',
       test : 'payload'
     };
 
-    const postDone = assert.async();
-    service.post('https://httpbin.org/post', testPayload, { isExternal: true }).then(response => {
-      assert.deepEqual(JSON.parse(response.data), testPayload, response);
-      assert.deepEqual(response.json, testPayload, response);
-    }).finally(() => {
-      postDone();
-    });
+    response = await service.post('https://httpbin.org/post', testPayload, { isExternal: true });
+    assert.deepEqual(response.json, testPayload, `Received response: ${JSON.stringify(response)}`);
 
-    const putDone = assert.async();
-    service.put('https://httpbin.org/put', testPayload, { isExternal: true }).then(response => {
-      assert.deepEqual(JSON.parse(response.data), testPayload, response);
-      assert.deepEqual(response.json, testPayload, response);
-    }).finally(() => {
-      putDone();
-    });
+    response = await service.put('https://httpbin.org/put', testPayload, { isExternal: true });
+    assert.deepEqual(response.json, testPayload, `Received response: ${JSON.stringify(response)}`);
 
-    const deleteDone = assert.async();
-    service.delete('https://httpbin.org/delete', { isExternal: true }).then(() => {
-      assert.ok(true);
-    }).finally(() => {
-      deleteDone();
-    });
-
+    await service.delete('https://httpbin.org/delete', { isExternal: true });
   });
 });

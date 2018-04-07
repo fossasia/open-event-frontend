@@ -8,9 +8,9 @@ export default Component.extend({
     }
   },
   isNewSpeaker: computed('data.userSpeaker', function() {
-    return this.get('data.userSpeaker') && this.get('data.userSpeaker').toArray().length ? false : true;
+    return !(this.get('data.userSpeaker') && this.get('data.userSpeaker').toArray().length);
   }),
   isNewSession: computed('data.userSession', function() {
-    return this.get('data.userSession') && this.get('data.userSession').toArray().length ? false : true;
+    return !(this.get('data.userSession') && this.get('data.userSession').toArray().length);
   })
 });

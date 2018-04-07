@@ -1,8 +1,13 @@
 import Application from '../app';
+import QUnit from 'qunit';
 import config from '../config/environment';
 import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
+import loadEmberExam from 'ember-exam/test-support/load';
+
+QUnit.config.testTimeout = 300000;
 
 setApplication(Application.create(config.APP));
 
+loadEmberExam();
 start();
