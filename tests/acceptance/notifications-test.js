@@ -8,7 +8,6 @@ module('Acceptance | notifications', function(hooks) {
 
   test('visiting /notifications without login', async function(assert) {
     await visit('/notifications');
-
     assert.equal(currentURL(), '/login');
   });
 

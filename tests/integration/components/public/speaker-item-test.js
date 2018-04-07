@@ -1,11 +1,11 @@
-import { find } from '@ember/test-helpers';
 import EmberObject from '@ember/object';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | public/speaker item', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   const speaker = EmberObject.create({
     name           : 'Non featured Jane',
@@ -25,11 +25,11 @@ module('Integration | Component | public/speaker item', function(hooks) {
     facebook       : 'https://www.facebook.com'
   });
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
     this.set('speaker', speaker);
-    this.render(hbs `{{public/speaker-item speaker=speaker}}`);
+    await render(hbs `{{public/speaker-item speaker=speaker}}`);
 
-    assert.ok(find('*').innerHTML.trim().includes('FOSSASIA'));
+    assert.ok(this.element.innerHTML.trim().includes('FOSSASIA'));
   });
 });

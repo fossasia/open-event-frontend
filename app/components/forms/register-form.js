@@ -18,7 +18,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email address')
+              prompt : this.get('l10n').t('Please enter a valid email address')
             }
           ]
         },
@@ -27,11 +27,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a password')
+              prompt : this.get('l10n').t('Please enter a password')
             },
             {
               type   : 'minLength[6]',
-              prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
+              prompt : this.get('l10n').t('Your password must have at least {ruleValue} characters')
             }
           ]
         },
@@ -40,7 +40,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'match[password]',
-              prompt : this.l10n.t('Passwords do not match')
+              prompt : this.get('l10n').t('Passwords do not match')
             }
           ]
         }

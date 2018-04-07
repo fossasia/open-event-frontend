@@ -29,10 +29,10 @@ export default Component.extend({
             this.get('data.roleInvites').addObject(currentInvite);
           }
           this.set('isAddUserRoleModalOpen', false);
-          this.get('notify').success(this.get('isNewInvite') ? this.l10n.t('Role Invite sent successfully') : this.l10n.t('Role Invite updated successfully'));
+          this.get('notify').success(this.get('isNewInvite') ? this.get('l10n').t('Role Invite sent successfully') : this.get('l10n').t('Role Invite updated successfully'));
         })
         .catch(()=> {
-          this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
         })
         .finally(()=> {
           this.set('isLoading', false);
@@ -43,10 +43,10 @@ export default Component.extend({
       this.get('data.roleInvites').removeObject(invite);
       invite.destroyRecord()
         .then(()=>{
-          this.get('notify').success(this.l10n.t('Role Invite deleted successfully'));
+          this.get('notify').success(this.get('l10n').t('Role Invite deleted successfully'));
         })
         .catch(()=> {
-          this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
         })
         .finally(()=> {
           this.set('isLoading', false);

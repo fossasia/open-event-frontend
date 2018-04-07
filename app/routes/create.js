@@ -4,7 +4,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   titleToken() {
-    return this.l10n.t('Create an Event');
+    return this.get('l10n').t('Create an Event');
   },
   model() {
     return {

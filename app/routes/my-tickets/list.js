@@ -5,11 +5,11 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.ticket_status')) {
       case 'upcoming':
-        return this.l10n.t('Upcoming');
+        return this.get('l10n').t('Upcoming');
       case 'past':
-        return this.l10n.t('Past');
+        return this.get('l10n').t('Past');
       case 'saved':
-        return this.l10n.t('Saved');
+        return this.get('l10n').t('Saved');
     }
   },
   model(params) {

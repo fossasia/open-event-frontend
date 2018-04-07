@@ -4,9 +4,9 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.users_status')) {
       case 'active':
-        return this.l10n.t('Active');
+        return this.get('l10n').t('Active');
       case 'deleted':
-        return this.l10n.t('Deleted');
+        return this.get('l10n').t('Deleted');
     }
   },
   model(params) {

@@ -72,10 +72,10 @@ export default Controller.extend({
         event.destroyRecord();
       })
         .then(() => {
-          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+          this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
         })
         .catch(()=> {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

@@ -1,9 +1,9 @@
-import { find } from '@ember/test-helpers';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 const data = EmberObject.create({
   parentData: EmberObject.create({
@@ -17,11 +17,11 @@ const data = EmberObject.create({
 });
 
 module('Integration | Component | forms/wizard/sponsors step', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('data', data);
-    this.render(hbs`{{forms/wizard/sponsors-step data=data}}`);
-    assert.ok(find('*').innerHTML.trim().includes('Sponsors'));
+    await render(hbs`{{forms/wizard/sponsors-step data=data}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Sponsors'));
   });
 });

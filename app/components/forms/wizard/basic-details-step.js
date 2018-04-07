@@ -27,7 +27,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give your event a name')
+              prompt : this.get('l10n').t('Please give your event a name')
             }
           ]
         },
@@ -36,7 +36,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Choose a timezone for your event')
+              prompt : this.get('l10n').t('Choose a timezone for your event')
             }
           ]
         },
@@ -45,11 +45,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event starts')
+              prompt : this.get('l10n').t('Please tell us when your event starts')
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please give a valid start date')
+              prompt : this.get('l10n').t('Please give a valid start date')
             }
           ]
         },
@@ -58,11 +58,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event ends')
+              prompt : this.get('l10n').t('Please tell us when your event ends')
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please give a valid end date')
+              prompt : this.get('l10n').t('Please give a valid end date')
             }
           ]
         },
@@ -72,7 +72,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a start time')
+              prompt : this.get('l10n').t('Please give a start time')
             }
           ]
         },
@@ -82,7 +82,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give an end time')
+              prompt : this.get('l10n').t('Please give an end time')
             }
           ]
         },
@@ -91,7 +91,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a name')
+              prompt : this.get('l10n').t('Please give your ticket a name')
             }
           ]
         },
@@ -101,7 +101,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'maxLength[160]',
-              prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
+              prompt : this.get('l10n').t('Ticket description shouldn\'t contain more than {ruleValue} characters')
             }
           ]
         },
@@ -110,11 +110,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a price')
+              prompt : this.get('l10n').t('Please give your ticket a price')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please give a proper price for you ticket')
+              prompt : this.get('l10n').t('Please give a proper price for you ticket')
             }
           ]
         },
@@ -123,11 +123,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please specify how many tickets of this type are available')
+              prompt : this.get('l10n').t('Please specify how many tickets of this type are available')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please give a proper quantity for you ticket')
+              prompt : this.get('l10n').t('Please give a proper quantity for you ticket')
             }
           ]
         },
@@ -136,11 +136,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Minimum tickets per order required')
+              prompt : this.get('l10n').t('Minimum tickets per order required')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Invalid number')
+              prompt : this.get('l10n').t('Invalid number')
             }
           ]
         },
@@ -149,11 +149,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Maximum tickets per order required')
+              prompt : this.get('l10n').t('Maximum tickets per order required')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Invalid number')
+              prompt : this.get('l10n').t('Invalid number')
             }
           ]
         }
@@ -280,7 +280,7 @@ export default Component.extend(FormMixin, {
       // TODO do proper checks. Simulating now.
       later(this, () => {
         if (this.get('data.event.discountCode.code') !== 'AIYPWZQP') {
-          this.getForm().form('add prompt', 'discount_code', this.l10n.t('This discount code is invalid. Please try again.'));
+          this.getForm().form('add prompt', 'discount_code', this.get('l10n').t('This discount code is invalid. Please try again.'));
         } else {
           this.set('data.event.discountCode.code', 42);
           this.set('discountCodeDescription', 'Tester special discount');

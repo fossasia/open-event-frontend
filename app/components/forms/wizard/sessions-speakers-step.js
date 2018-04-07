@@ -19,7 +19,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for microlocation')
+              prompt : this.get('l10n').t('Please enter name for microlocation')
             }
           ]
         },
@@ -28,7 +28,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for session-type')
+              prompt : this.get('l10n').t('Please enter name for session-type')
             }
           ]
         },
@@ -37,7 +37,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for track')
+              prompt : this.get('l10n').t('Please enter name for track')
             }
           ]
         },
@@ -46,7 +46,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter an Announcement')
+              prompt : this.get('l10n').t('Please enter an Announcement')
             }
           ]
         },
@@ -55,7 +55,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a Private link')
+              prompt : this.get('l10n').t('Please enter a Private link')
             }
           ]
         },
@@ -64,7 +64,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select the Privacy')
+              prompt : this.get('l10n').t('Please select the Privacy')
             }
           ]
         }

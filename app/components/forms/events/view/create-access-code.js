@@ -6,16 +6,10 @@ import FormMixin from 'open-event-frontend/mixins/form';
 export default Component.extend(FormMixin, {
   getValidationRules() {
     $.fn.form.settings.rules.checkMaxMin = () => {
-      if (this.get('data.minQuantity') > this.get('data.maxQuantity')) {
-        return false;
-      }
-      return true;
+      return this.get('data.minQuantity') <= this.get('data.maxQuantity');
     };
     $.fn.form.settings.rules.checkMaxTotal = () => {
-      if (this.get('data.maxQuantity') > this.get('data.ticketsNumber')) {
-        return false;
-      }
-      return true;
+      return this.get('data.maxQuantity') <= this.get('data.ticketsNumber');
     };
     return {
       inline : true,
@@ -28,7 +22,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter access code')
+              prompt : this.get('l10n').t('Please enter access code')
             },
             {
               type  : 'regExp',
@@ -41,11 +35,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter number of tickets')
+              prompt : this.get('l10n').t('Please enter number of tickets')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please enter proper number of tickets')
+              prompt : this.get('l10n').t('Please enter proper number of tickets')
             }
           ]
         },
@@ -54,7 +48,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'checked',
-              prompt : this.l10n.t('Please select the appropriate choices')
+              prompt : this.get('l10n').t('Please select the appropriate choices')
             }
           ]
         },
@@ -64,11 +58,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'number',
-              prompt : this.l10n.t('Please enter the proper number')
+              prompt : this.get('l10n').t('Please enter the proper number')
             },
             {
               type   : 'checkMaxMin',
-              prompt : this.l10n.t('Minimum value should not be greater than maximum')
+              prompt : this.get('l10n').t('Minimum value should not be greater than maximum')
             }
           ]
         },
@@ -78,15 +72,15 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'number',
-              prompt : this.l10n.t('Please enter the proper number')
+              prompt : this.get('l10n').t('Please enter the proper number')
             },
             {
               type   : 'checkMaxMin',
-              prompt : this.l10n.t('Maximum value should not be less than minimum')
+              prompt : this.get('l10n').t('Maximum value should not be less than minimum')
             },
             {
               type   : 'checkMaxTotal',
-              prompt : this.l10n.t('Maximum value should not be greater than number of tickets')
+              prompt : this.get('l10n').t('Maximum value should not be greater than number of tickets')
             }
           ]
         },
@@ -96,11 +90,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the proper date')
+              prompt : this.get('l10n').t('Please enter the proper date')
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please enter the proper date')
+              prompt : this.get('l10n').t('Please enter the proper date')
             }
           ]
         },
@@ -110,11 +104,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the proper date')
+              prompt : this.get('l10n').t('Please enter the proper date')
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please enter the proper date')
+              prompt : this.get('l10n').t('Please enter the proper date')
             }
           ]
         },
@@ -124,7 +118,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a start time')
+              prompt : this.get('l10n').t('Please give a start time')
             }
           ]
         },
@@ -134,7 +128,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give an end time')
+              prompt : this.get('l10n').t('Please give an end time')
             }
           ]
         }
@@ -144,7 +138,7 @@ export default Component.extend(FormMixin, {
   accessCode : '',
   accessUrl  : computed('data.code', function() {
     const params = this.get('routing.router.router.state.params');
-    return location.origin + this.get('routing.router').generate('public', params['events.view'].event_id, { queryParams: { access_code: this.get('data.code') } });
+    return location.origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { access_code: this.get('data.code') } });
   }),
   actions: {
     submit() {

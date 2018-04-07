@@ -1,12 +1,12 @@
-import { find } from '@ember/test-helpers';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | public/featured speaker list', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   const speakers = A(
     [
@@ -47,10 +47,10 @@ module('Integration | Component | public/featured speaker list', function(hooks)
     ]
   );
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
     this.set('speakers', speakers);
-    this.render(hbs `{{public/featured-speaker-list speakers=speakers}}`);
-    assert.ok(find('*').innerHTML.trim().includes('FOSSASIA'));
+    await render(hbs `{{public/featured-speaker-list speakers=speakers}}`);
+    assert.ok(this.element.innerHTML.trim().includes('FOSSASIA'));
   });
 });

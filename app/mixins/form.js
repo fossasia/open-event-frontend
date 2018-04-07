@@ -4,6 +4,7 @@ import { merge } from '@ember/polyfills';
 import { debounce } from '@ember/runloop';
 import moment from 'moment';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
+import { isTesting } from 'open-event-frontend/utils/testing';
 
 export default Mixin.create({
   actions: {
@@ -28,6 +29,7 @@ export default Mixin.create({
 
   didRender() {
     this._super(...arguments);
+    if (isTesting) { return }
     debounce(this, () => {
       const defaultFormRules = {
         onFailure: formErrors => {
@@ -66,7 +68,6 @@ export default Mixin.create({
         if (this.get('getValidationRules') && $form) {
           $form.form(merge(defaultFormRules, this.getValidationRules()));
         }
-
         if ($form && this) {
           this.set('$form', $form);
         }
@@ -76,6 +77,8 @@ export default Mixin.create({
 
   didInsertElement() {
     this._super(...arguments);
+    console.warn('isTesting', isTesting ? 'true' : 'false');
+    if (isTesting) { return }
     $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
       if (value && value.length > 0 && format) {
         return moment(value, format).isValid();
@@ -86,6 +89,7 @@ export default Mixin.create({
 
   willDestroyElement() {
     this._super(...arguments);
+    if (isTesting) { return }
     const $popUps = this.$('.has.popup');
     if ($popUps) {
       $popUps.popup('destroy');

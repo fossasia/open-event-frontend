@@ -5,6 +5,6 @@ export default Route.extend({
     return { roles: ['Attendee', 'Co-Organizer', 'Moderator', 'Organizer', 'Track Organizer'] };
   },
   titleToken() {
-    return this.l10n.t('Event Roles');
+    return this.get('l10n').t('Event Roles');
   }
 });

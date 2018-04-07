@@ -1,18 +1,17 @@
-
-import { find } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Helper | text-color', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
 
-  test('it renders', function(assert) {
-    this.render(hbs`{{text-color '#000000'}}`);
-    assert.equal(find('*').textContent.trim(), '#FFFFFF');
-    this.render(hbs`{{text-color '#FFFFFF'}}`);
-    assert.equal(find('*').textContent.trim(), '#000000');
+  test('it renders', async function(assert) {
+    await render(hbs`{{text-color '#000000'}}`);
+    assert.equal(this.element.textContent.trim(), '#FFFFFF');
+    await render(hbs`{{text-color '#FFFFFF'}}`);
+    assert.equal(this.element.textContent.trim(), '#000000');
   });
 });
 

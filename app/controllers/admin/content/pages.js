@@ -23,10 +23,10 @@ export default Controller.extend({
           if (this.get('isCreate')) {
             this.set('isFormOpen', false);
           }
-          this.notify.success(this.l10n.t('Page details have been saved successfully.'));
+          this.notify.success(this.get('l10n').t('Page details have been saved successfully.'));
         })
         .catch(()=> {
-          this.notify.error(this.l10n.t('An unexpected error has occurred. Page Details not saved.'));
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred. Page Details not saved.'));
         });
     }
   }

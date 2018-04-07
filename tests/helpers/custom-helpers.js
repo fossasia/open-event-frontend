@@ -6,10 +6,9 @@ export async function login(assert, email = null, password = null, gotoLoginPage
     await visit('/login');
   }
   assert.equal(currentURL(), '/login');
-  fillIn('input[name=email]', email !== null ? email : 'opev_test_user@nada.email');
-  fillIn('input[name=password]', password !== null ? password : 'opev_test_user');
-  click('button[type=submit]');
-
+  await fillIn('input[name=email]', email !== null ? email : 'opev_test_user@nada.email');
+  await fillIn('input[name=password]', password !== null ? password : 'opev_test_user');
+  await click('button[type=submit]');
 }
 
 export async function logout(assert) {

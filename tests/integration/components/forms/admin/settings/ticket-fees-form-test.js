@@ -1,12 +1,12 @@
-import { find } from '@ember/test-helpers';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | forms/admin/settings/ticket fees form', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   hooks.beforeEach(function() {
     this.actions = {};
@@ -33,10 +33,10 @@ module('Integration | Component | forms/admin/settings/ticket fees form', functi
     ]
   );
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('model', model);
     this.actions.updateSettings = function() {};
-    this.render(hbs`{{forms/admin/settings/ticket-fees-form model=model save=(action 'updateSettings')}}`);
-    assert.ok(find('*').innerHTML.trim().includes('currencies'));
+    await render(hbs`{{forms/admin/settings/ticket-fees-form model=model save=(action 'updateSettings')}}`);
+    assert.ok(this.element.innerHTML.trim().includes('currencies'));
   });
 });

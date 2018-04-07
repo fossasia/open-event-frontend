@@ -1,12 +1,12 @@
-import { find } from '@ember/test-helpers';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | public/ticket list', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   const tickets =  A(
     [
@@ -45,11 +45,11 @@ module('Integration | Component | public/ticket list', function(hooks) {
       })
     ]
   );
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
     this.set('tickets', tickets);
-    this.render(hbs `{{public/ticket-list tickets=tickets}}`);
+    await render(hbs `{{public/ticket-list tickets=tickets}}`);
 
-    assert.ok(find('*').innerHTML.trim().includes('Standard Ticket'));
+    assert.ok(this.element.innerHTML.trim().includes('Standard Ticket'));
   });
 });

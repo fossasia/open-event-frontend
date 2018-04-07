@@ -7,19 +7,16 @@ module('Acceptance | my-sessions', function(hooks) {
   setupApplicationTest(hooks);
 
   test('visiting /my-sessions without login', async function(assert) {
-    await login(assert);
     await visit('/my-sessions');
     assert.equal(currentURL(), '/login');
   });
 
   test('visiting /my-sessions/upcoming without login', async function(assert) {
-    await login(assert);
     await visit('/my-sessions/upcoming');
     assert.equal(currentURL(), '/login');
   });
 
   test('visiting /my-sessions/past without login', async function(assert) {
-    await login(assert);
     await visit('/my-sessions/past');
     assert.equal(currentURL(), '/login');
   });

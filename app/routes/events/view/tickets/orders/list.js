@@ -4,15 +4,15 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.orders_status')) {
       case 'placed':
-        return this.l10n.t('Placed');
+        return this.get('l10n').t('Placed');
       case 'pending':
-        return this.l10n.t('Pending');
+        return this.get('l10n').t('Pending');
       case 'expired':
-        return this.l10n.t('Expired');
+        return this.get('l10n').t('Expired');
       case 'cancelled':
-        return this.l10n.t('Cancelled');
+        return this.get('l10n').t('Cancelled');
       case 'all':
-        return this.l10n.t('All');
+        return this.get('l10n').t('All');
     }
   },
 

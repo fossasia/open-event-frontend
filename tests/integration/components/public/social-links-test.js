@@ -1,14 +1,14 @@
-import { find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 
 module('Integration | Component | public/social links', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('eventUrl', 'https://example.com');
-    this.render(hbs`{{public/social-links eventUrl=eventUrl}}`);
-    assert.ok(find('*').innerHTML.trim().includes('https://example.com'));
+    await render(hbs`{{public/social-links eventUrl=eventUrl}}`);
+    assert.ok(this.element.innerHTML.trim().includes('https://example.com'));
   });
 });

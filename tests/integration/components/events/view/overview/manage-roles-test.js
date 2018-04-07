@@ -1,12 +1,12 @@
-import { find } from '@ember/test-helpers';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | events/overview/manage roles', function(hooks) {
-  setupRenderingTest(hooks);
+  setupIntegrationTest(hooks);
 
   let invites = A(
     [
@@ -26,9 +26,9 @@ module('Integration | Component | events/overview/manage roles', function(hooks)
     roleInvites: invites
   });
 
-  test('it renders', function(assert) {
+  test('it renders', async function(assert) {
     this.set('data', data);
-    this.render(hbs`{{events/view/overview/manage-roles data=data}}`);
-    assert.ok(find('*').innerHTML.trim().includes('Manage roles'));
+    await render(hbs`{{events/view/overview/manage-roles data=data}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Manage roles'));
   });
 });

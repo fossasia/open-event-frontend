@@ -23,7 +23,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a role name')
+              prompt : this.get('l10n').t('Please enter a role name')
             }
           ]
         },
@@ -32,7 +32,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select atleast one panel')
+              prompt : this.get('l10n').t('Please select atleast one panel')
             }
           ]
         }

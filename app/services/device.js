@@ -74,8 +74,10 @@ export default Service.extend({
   init() {
     this._super(...arguments);
     $(window).resize(() => {
-      debounce(this, () => {
-        this.set('currentWidth', document.body.clientWidth);
+      debounce(() => {
+        if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+          this.set('currentWidth', document.body.clientWidth);
+        }
       }, 200);
     });
   }

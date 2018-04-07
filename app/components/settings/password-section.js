@@ -13,7 +13,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the current password')
+              prompt : this.get('l10n').t('Please enter the current password')
             }
           ]
         },
@@ -22,11 +22,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a new password')
+              prompt : this.get('l10n').t('Please enter a new password')
             },
             {
               type   : 'minLength[6]',
-              prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
+              prompt : this.get('l10n').t('Your password must have at least {ruleValue} characters')
             }
           ]
         },
@@ -35,7 +35,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'match[password_new]',
-              prompt : this.l10n.t('Passwords do not match')
+              prompt : this.get('l10n').t('Passwords do not match')
             }
           ]
         }
