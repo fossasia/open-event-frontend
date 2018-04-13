@@ -32,11 +32,9 @@ Our chat channel is on Gitter here :
 You will need the following things properly installed on your computer.
 
 * **[Git](https://git-scm.com/)**
-* **[Node.js](https://nodejs.org/)** *(with NPM v5.3.x)*
-* **[Bower](https://bower.io/)** - `npm install -g bower`
-* **[Ember CLI](https://ember-cli.com/)** - `npm install -g ember-cli`
-* **[PhantomJS](http://phantomjs.org/)** - `npm install -g phantomjs-prebuilt`
-* **[check-node-version](https://www.npmjs.com/package/check-node-version)** - `npm install -g check-node-version`
+* **[Node.js 8.x LTS](https://nodejs.org/)**
+* **[Yarn](https://yarnpkg.com/en/docs/install)
+* **[Ember CLI](https://ember-cli.com/)** - `yarn gloabl add ember-cli`
 
 It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the `file-watcher/auto-build` service of the ember build server.
 
@@ -44,8 +42,7 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 
 * `git clone <repository-url>` this repository
 * `cd open-event-frontend`
-* `npm install`
-* `bower install`
+* `yarn`
 ### Note:
 If you face error in `npm install` for node and npm version, then install node version: v7.10.1 (npm version: 5.3.0 gets installed with it), which satisfies check-node-version and project runs perfectly on this configuration.
 
