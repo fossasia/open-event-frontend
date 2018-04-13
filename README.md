@@ -1,10 +1,10 @@
 # Open Event Frontend
 ![Open Event Frontend](https://storage.googleapis.com/eventyay.com/assets/branding/frontend_branding.png)
 
-[![Travis](https://img.shields.io/travis/fossasia/open-event-frontend/development.svg?style=flat-square)](https://travis-ci.org/fossasia/open-event-frontend)
+[![Build Status](https://travis-ci.org/fossasia/open-event-frontend.svg?branch=development)](https://travis-ci.org/fossasia/open-event-frontend)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
-[![Codacy grade](https://img.shields.io/codacy/grade/0d51cf60fc734d3699fd6eff6054e483.svg?style=flat-square)](https://www.codacy.com/app/niranjan94/open-event-frontend)
-[![codecov](https://img.shields.io/codecov/c/github/fossasia/open-event-frontend/development.svg?style=flat-square)](https://codecov.io/gh/fossasia/open-event-frontend)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d51cf60fc734d3699fd6eff6054e483)](https://www.codacy.com/app/fossasia/open-event-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fossasia/open-event-frontend&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/fossasia/open-event-frontend/branch/development/graph/badge.svg)](https://codecov.io/gh/fossasia/open-event-frontend)
 [![Greenkeeper badge](https://badges.greenkeeper.io/fossasia/open-event-frontend.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
@@ -33,7 +33,7 @@ You will need the following things properly installed on your computer.
 
 * **[Git](https://git-scm.com/)**
 * **[Node.js 8.x LTS](https://nodejs.org/)**
-* **[Yarn](https://yarnpkg.com/en/docs/install)
+* **[Yarn](https://yarnpkg.com/en/docs/install)**
 * **[Ember CLI](https://ember-cli.com/)** - `yarn gloabl add ember-cli`
 
 It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the `file-watcher/auto-build` service of the ember build server.
