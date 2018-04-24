@@ -1,15 +1,13 @@
-import Ember from 'ember';
-
-const { Route, RSVP } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.l10n.t('Overview');
+    return this.get('l10n').t('Overview');
   },
-  model() {
-    return RSVP.hash({
-      orderStats : this.modelFor('events.view').query('orderStatistics', {}),
-      tickets    : this.modelFor('events.view').query('tickets', {})
-    });
+  async model() {
+    return {
+      orderStats : await this.modelFor('events.view').query('orderStatistics', {}),
+      tickets    : await this.modelFor('events.view').query('tickets', {})
+    };
   }
 });

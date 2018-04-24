@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { Controller } = Ember;
+import Controller from '@ember/controller';
 export default Controller.extend({
   columns: [
     {
@@ -68,11 +66,11 @@ export default Controller.extend({
       })
         .then(() => {
           this.set('isLoading', false);
-          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+          this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
         })
         .catch(()=> {
           this.set('isLoading', false);
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });
       this.set('isEventDeleteModalOpen', false);
     }

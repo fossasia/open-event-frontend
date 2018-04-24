@@ -1,9 +1,12 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/row', 'Integration | Component | ui table/row');
-test('it renders', function(assert) {
-  this.render(hbs `{{partial ui-table/row}}`);
-  assert.ok(this.$().html().trim().includes(''));
+module('Integration | Component | ui table/row', function(hooks) {
+  setupIntegrationTest(hooks);
+  test('it renders', async function(assert) {
+    await render(hbs `{{partial ui-table/row}}`);
+    assert.ok(this.element.innerHTML.trim().includes(''));
+  });
 });

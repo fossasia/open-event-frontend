@@ -1,16 +1,19 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('tabbed-navigation', 'Integration | Component | tabbed navigation');
+module('Integration | Component | tabbed navigation', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(
-    hbs `{{#tabbed-navigation}}
-      {{#link-to 'events.view.index' class='item'}}
-        {{t 'Overview'}}
-      {{/link-to}}
-    {{/tabbed-navigation}}`);
+  test('it renders', async function(assert) {
+    await render(
+      hbs `{{#tabbed-navigation}}
+        {{#link-to 'events.view.index' 122 class='item'}}
+          {{t 'Overview'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}`);
 
-  assert.ok(this.$().html().trim().includes('Overview'));
+    assert.ok(this.element.innerHTML.trim().includes('Overview'));
+  });
 });

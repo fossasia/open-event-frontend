@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import moment from 'moment';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash';
-
-const { Component, computed } = Ember;
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 
@@ -20,7 +19,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for microlocation')
+              prompt : this.get('l10n').t('Please enter name for microlocation')
             }
           ]
         },
@@ -29,7 +28,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for session-type')
+              prompt : this.get('l10n').t('Please enter name for session-type')
             }
           ]
         },
@@ -38,7 +37,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for track')
+              prompt : this.get('l10n').t('Please enter name for track')
             }
           ]
         },
@@ -47,7 +46,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter an Announcement')
+              prompt : this.get('l10n').t('Please enter an Announcement')
             }
           ]
         },
@@ -56,7 +55,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a Private link')
+              prompt : this.get('l10n').t('Please enter a Private link')
             }
           ]
         },
@@ -65,7 +64,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select the Privacy')
+              prompt : this.get('l10n').t('Please select the Privacy')
             }
           ]
         }

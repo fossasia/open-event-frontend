@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('modals/confirm-modal', 'Integration | Component | modals/confirm modal');
+module('Integration | Component | modals/confirm modal', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('isOpen', false);
-  this.render(hbs`{{modals/confirm-modal isOpen=isOpen}}`);
-  assert.ok(this.$().html().trim().includes('Are you sure ?'));
+  test('it renders', async function(assert) {
+    this.set('isOpen', false);
+    await render(hbs`{{modals/confirm-modal isOpen=isOpen}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Are you sure ?'));
+  });
 });

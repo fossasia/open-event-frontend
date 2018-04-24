@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/cell/cell-input-number', 'Integration | Component | ui table/cell/cell input number');
+module('Integration | Component | ui table/cell/cell input number', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{ui-table/cell/cell-input-number}}`);
-  assert.ok(this.$().html().trim().includes(''));
+  test('it renders', async function(assert) {
+    await render(hbs`{{ui-table/cell/cell-input-number}}`);
+    assert.ok(this.element.innerHTML.trim().includes(''));
+  });
 });

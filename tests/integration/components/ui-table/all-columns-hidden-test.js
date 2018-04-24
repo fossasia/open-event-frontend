@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/all-columns-hidden', 'Integration | Component | ui table/all columns hidden');
+module('Integration | Component | ui table/all columns hidden', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs `{{ui-table/all-columns-hidden}}`);
-  assert.ok(this.$().html().trim().includes('tr'));
+  test('it renders', async function(assert) {
+    await render(hbs `{{ui-table/all-columns-hidden}}`);
+    assert.ok(this.element.innerHTML.trim().includes('tr'));
+  });
 });

@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import { groupBy } from 'lodash';
 import FormMixin from 'open-event-frontend/mixins/form';
-
-const { Component, computed } = Ember;
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
@@ -17,7 +16,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a title')
+              prompt : this.get('l10n').t('Please enter a title')
             }
           ]
         },
@@ -26,7 +25,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a subtitle')
+              prompt : this.get('l10n').t('Please enter a subtitle')
             }
           ]
         },
@@ -35,7 +34,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter short abstract')
+              prompt : this.get('l10n').t('Please enter short abstract')
             }
           ]
         },
@@ -44,7 +43,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a long abstract')
+              prompt : this.get('l10n').t('Please enter a long abstract')
             }
           ]
         },
@@ -53,7 +52,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter comments')
+              prompt : this.get('l10n').t('Please enter comments')
             }
           ]
         },
@@ -62,7 +61,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select a track')
+              prompt : this.get('l10n').t('Please select a track')
             }
           ]
         },
@@ -71,7 +70,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select a session type')
+              prompt : this.get('l10n').t('Please select a session type')
             }
           ]
         },
@@ -80,7 +79,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a level')
+              prompt : this.get('l10n').t('Please enter a level')
             }
           ]
         },
@@ -89,7 +88,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a language')
+              prompt : this.get('l10n').t('Please enter a language')
             }
           ]
         },
@@ -98,7 +97,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a url')
+              prompt : this.get('l10n').t('Please enter a url')
             }
           ]
         },
@@ -107,7 +106,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a url')
+              prompt : this.get('l10n').t('Please enter a url')
             }
           ]
         },
@@ -116,7 +115,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a url')
+              prompt : this.get('l10n').t('Please enter a url')
             }
           ]
         },
@@ -125,7 +124,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a name')
+              prompt : this.get('l10n').t('Please enter a name')
             }
           ]
         },
@@ -134,7 +133,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter an email')
+              prompt : this.get('l10n').t('Please enter an email')
             }
           ]
         },
@@ -143,7 +142,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select an image')
+              prompt : this.get('l10n').t('Please select an image')
             }
           ]
         },
@@ -152,7 +151,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter an organisation')
+              prompt : this.get('l10n').t('Please enter an organisation')
             }
           ]
         },
@@ -161,7 +160,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a position')
+              prompt : this.get('l10n').t('Please enter a position')
             }
           ]
         },
@@ -170,7 +169,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a country')
+              prompt : this.get('l10n').t('Please enter a country')
             }
           ]
         },
@@ -179,7 +178,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a city')
+              prompt : this.get('l10n').t('Please enter a city')
             }
           ]
         },
@@ -188,7 +187,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter long biography')
+              prompt : this.get('l10n').t('Please enter long biography')
             }
           ]
         },
@@ -197,7 +196,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter short biography')
+              prompt : this.get('l10n').t('Please enter short biography')
             }
           ]
         },
@@ -206,7 +205,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter speaking experience')
+              prompt : this.get('l10n').t('Please enter speaking experience')
             }
           ]
         },
@@ -215,7 +214,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter select sponsorship')
+              prompt : this.get('l10n').t('Please enter select sponsorship')
             }
           ]
         },
@@ -224,7 +223,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select a gender')
+              prompt : this.get('l10n').t('Please select a gender')
             }
           ]
         },
@@ -233,7 +232,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter where you heard about the event')
+              prompt : this.get('l10n').t('Please enter where you heard about the event')
             }
           ]
         },
@@ -242,7 +241,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a mobile number')
+              prompt : this.get('l10n').t('Please enter a mobile number')
             }
           ]
         },
@@ -251,7 +250,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter url of website')
+              prompt : this.get('l10n').t('Please enter url of website')
             }
           ]
         },
@@ -260,7 +259,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter facebook link')
+              prompt : this.get('l10n').t('Please enter facebook link')
             }
           ]
         },
@@ -269,7 +268,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter twitter link')
+              prompt : this.get('l10n').t('Please enter twitter link')
             }
           ]
         },
@@ -278,7 +277,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter github link')
+              prompt : this.get('l10n').t('Please enter github link')
             }
           ]
         },
@@ -287,7 +286,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter linkedin link')
+              prompt : this.get('l10n').t('Please enter linkedin link')
             }
           ]
         }

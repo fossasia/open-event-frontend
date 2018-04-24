@@ -1,13 +1,16 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/cell/cell-roles', 'Integration | Component | ui table/cell/cell roles');
+module('Integration | Component | ui table/cell/cell roles', function(hooks) {
+  setupIntegrationTest(hooks);
 
-const record = { roles: [{ type: 'Organiser', email: 'sample@sample.com' }] };
+  const record = { roles: [{ type: 'Organiser', email: 'sample@sample.com' }] };
 
-test('it renders', function(assert) {
-  this.set('record', record);
-  this.render(hbs `{{ui-table/cell/cell-roles record=record}}`);
-  assert.ok(this.$().html().trim().includes(''));
+  test('it renders', async function(assert) {
+    this.set('record', record);
+    await render(hbs `{{ui-table/cell/cell-roles record=record}}`);
+    assert.ok(this.element.innerHTML.trim().includes(''));
+  });
 });

@@ -1,12 +1,15 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/cell/cell-tickets', 'Integration | Component | ui table/cell/cell tickets');
+module('Integration | Component | ui table/cell/cell tickets', function(hooks) {
+  setupIntegrationTest(hooks);
 
-const record = { tickets: [{ type: 'Premium', order: 12, total: 100 }] };
-test('it renders', function(assert) {
-  this.set('record', record);
-  this.render(hbs `{{ui-table/cell/cell-tickets record=record}}`);
-  assert.ok(this.$().html().trim().includes('Premium'));
+  const record = { tickets: [{ type: 'Premium', order: 12, total: 100 }] };
+  test('it renders', async function(assert) {
+    this.set('record', record);
+    await render(hbs `{{ui-table/cell/cell-tickets record=record}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Premium'));
+  });
 });

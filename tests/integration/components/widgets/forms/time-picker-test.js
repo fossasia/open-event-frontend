@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('widgets/forms/time-picker', 'Integration | Component | widgets/forms/time picker');
+module('Integration | Component | widgets/forms/time picker', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/forms/time-picker}}`);
-  assert.ok(this.$().html().trim().includes('calendar'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{widgets/forms/time-picker}}`);
+    assert.ok(this.element.innerHTML.trim().includes('calendar'));
+  });
 });

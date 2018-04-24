@@ -1,12 +1,15 @@
-import { test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { render } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 
-moduleForComponent('ui-table/cell/events/view/tickets/discount-codes/cell-value', 'Integration | Component | ui table/cell/events/view/tickets/discount codes/cell value');
+module('Integration | Component | ui table/cell/events/view/tickets/discount codes/cell value', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
-  this.render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-value}}`);
-  assert.ok(this.$().text().trim().includes(''));
+    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-value}}`);
+    assert.ok(this.element.textContent.trim().includes(''));
 
+  });
 });

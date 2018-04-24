@@ -1,52 +1,37 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-acceptance';
+import { currentURL, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { login } from 'open-event-frontend/tests/helpers/custom-helpers';
 
-moduleForAcceptance('Acceptance | settings');
+module('Acceptance | settings', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /settings/applications without login', function(assert) {
-  visit('/settings/applications');
-
-  andThen(function() {
+  test('visiting /settings/applications without login', async function(assert) {
+    await visit('/settings/applications');
     assert.equal(currentURL(), '/login');
   });
-});
 
-test('visiting /settings/contact-info with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/settings/contact-info');
-    andThen(function() {
-      assert.equal(currentURL(), '/settings/contact-info');
-    });
+  test('visiting /settings/contact-info with login', async function(assert) {
+    await login(assert);
+    await visit('/settings/contact-info');
+    assert.equal(currentURL(), '/settings/contact-info');
   });
-});
 
-test('visiting /settings/password with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/settings/password');
-    andThen(function() {
-      assert.equal(currentURL(), '/settings/password');
-    });
+  test('visiting /settings/password with login', async function(assert) {
+    await login(assert);
+    await visit('/settings/password');
+    assert.equal(currentURL(), '/settings/password');
   });
-});
 
-test('visiting /settings/email-preferences with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/settings/email-preferences');
-    andThen(function() {
-      assert.equal(currentURL(), '/settings/email-preferences');
-    });
+  test('visiting /settings/email-preferences with login', async function(assert) {
+    await login(assert);
+    await visit('/settings/email-preferences');
+    assert.equal(currentURL(), '/settings/email-preferences');
   });
-});
 
-test('visiting /settings/applications with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/settings/applications');
-    andThen(function() {
-      assert.equal(currentURL(), '/settings/applications');
-    });
+  test('visiting /settings/applications with login', async function(assert) {
+    await login(assert);
+    await visit('/settings/applications');
+    assert.equal(currentURL(), '/settings/applications');
   });
 });

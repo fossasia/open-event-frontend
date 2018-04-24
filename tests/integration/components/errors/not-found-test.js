@@ -1,11 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
-
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('errors/not-found', 'Integration | Component | errors/not found');
+module('Integration | Component | errors/not found', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{errors/not-found}}`);
-  assert.ok(this.$().html().trim().includes('404'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{errors/not-found}}`);
+    assert.ok(this.element.innerHTML.trim().includes('404'));
+  });
 });

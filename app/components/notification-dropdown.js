@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { Component } = Ember;
+import Component from '@ember/component';
 
 export default Component.extend({
   classNames : ['notification item'],
@@ -21,10 +19,10 @@ export default Component.extend({
       notification.set('isRead', true);
       notification.save()
         .then(() => {
-          this.get('notify').success(this.l10n.t('Marked as Read successfully'));
+          this.get('notify').success(this.get('l10n').t('Marked as Read successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.l10n.t('An unexpected error occurred.'));
+          this.get('notify').error(this.get('l10n').t('An unexpected error occurred.'));
         });
     },
     markAllRead() {

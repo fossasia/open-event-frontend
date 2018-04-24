@@ -1,12 +1,15 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/header-sorting-icons', 'Integration | Component | ui table/header sorting icons');
+module('Integration | Component | ui table/header sorting icons', function(hooks) {
+  setupIntegrationTest(hooks);
 
-const column = { sortAsc: true };
-test('it renders', function(assert) {
-  this.set('column', column);
-  this.render(hbs `{{ui-table/header-sorting-icons column=column}}`);
-  assert.ok(this.$().html().trim().includes('caret'));
+  const column = { sortAsc: true };
+  test('it renders', async function(assert) {
+    this.set('column', column);
+    await render(hbs `{{ui-table/header-sorting-icons column=column}}`);
+    assert.ok(this.element.innerHTML.trim().includes('caret'));
+  });
 });

@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('modals/add-user-role-modal', 'Integration | Component | modals/add user role modal');
+module('Integration | Component | modals/add user role modal', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('isOpen', false);
-  this.render(hbs`{{modals/add-user-role-modal isOpen=isOpen}}`);
-  assert.ok(this.$().html().trim().includes('Add Role'));
+  test('it renders', async function(assert) {
+    this.set('isOpen', false);
+    await render(hbs`{{modals/add-user-role-modal isOpen=isOpen}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Add Role'));
+  });
 });

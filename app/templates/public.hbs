@@ -34,9 +34,9 @@
         {{outlet}}
       </div>
       <div class="three wide column public">
-        {{#unless session.currentRouteName 'public.cfs.new-speaker'}}
+        {{#if (not-eq session.currentRouteName 'public.cfs.new-speaker')}}
           {{public/social-links eventUrl=model.url socialLinks=model.socialLinks}}
-        {{/unless}}
+        {{/if}}
       </div>
     </div>
   </div>

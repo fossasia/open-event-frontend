@@ -1,12 +1,15 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/cell/admin/reports/system-logs/notification-logs/cell-time', 'Integration | Component | ui table/cell/admin/reports/system logs/notification logs/cell time');
+module('Integration | Component | ui table/cell/admin/reports/system logs/notification logs/cell time', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
-  this.render(hbs`{{ui-table/cell/admin/reports/system-logs/notification-logs/cell-time}}`);
-  assert.ok(this.$().text().trim().includes(''));
+    await render(hbs`{{ui-table/cell/admin/reports/system-logs/notification-logs/cell-time}}`);
+    assert.ok(this.element.textContent.trim().includes(''));
 
+  });
 });

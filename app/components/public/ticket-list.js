@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { sumBy } from 'lodash';
-
-const { Component, computed } = Ember;
 
 export default Component.extend(FormMixin, {
   tickets: computed(function() {
@@ -39,7 +38,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the promotional Code')
+              prompt : this.get('l10n').t('Please enter the promotional Code')
             }
           ]
         }

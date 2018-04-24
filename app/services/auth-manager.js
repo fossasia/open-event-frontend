@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import { observer, computed } from '@ember/object';
+import Service, { inject as service } from '@ember/service';
+import { camelize } from '@ember/string';
 import { mapKeys } from 'lodash';
-
-const { Service, computed, observer, inject: { service }, String: { camelize }, RSVP } = Ember;
 
 export default Service.extend({
 
@@ -96,26 +96,17 @@ export default Service.extend({
     return userModel;
   },
 
-  initialize() {
-    return new RSVP.Promise((resolve, reject) => {
-      if (this.get('session.isAuthenticated')) {
-        if (this.get('session.data.currentUserFallback.id')) {
-          this.get('store')
-            .findRecord('user', this.get('session.data.currentUserFallback.id'))
-            .then(user => {
-              this.set('currentUserModel', user);
-              this.identify();
-              resolve(user);
-            })
-            .catch(reject);
-        } else {
-          this.identifyStranger();
-          resolve();
-        }
+  async initialize() {
+    if (this.get('session.isAuthenticated')) {
+      if (this.get('session.data.currentUserFallback.id')) {
+        const user = await this.get('store').findRecord('user', this.get('session.data.currentUserFallback.id'));
+        this.set('currentUserModel', user);
+        this.identify();
       } else {
         this.identifyStranger();
-        resolve();
       }
-    });
+    } else {
+      this.identifyStranger();
+    }
   }
 });

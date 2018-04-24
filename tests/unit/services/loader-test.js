@@ -1,46 +1,29 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('service:loader', 'Unit | Service | loader', ['adapter:application']);
+module('Unit | Service | loader', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists and works', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
 
-  const getDone = assert.async();
-  service.load('https://httpbin.org/get?test=string&foo=bar', { isExternal: true }).then(response => {
-    assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, response);
-  }).finally(() => {
-    getDone();
+  test('it exists and works', async function(assert) {
+    let service = this.owner.lookup('service:loader');
+    assert.ok(service);
+
+    let response;
+    response = await service.load('https://httpbin.org/get?test=string&foo=bar', { isExternal: true });
+    assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, `Received response: ${JSON.stringify(response)}`);
+
+    const testPayload = {
+      foo  : 'bar',
+      test : 'payload'
+    };
+
+    response = await service.post('https://httpbin.org/post', testPayload, { isExternal: true });
+    assert.deepEqual(response.json, testPayload, `Received response: ${JSON.stringify(response)}`);
+
+    response = await service.put('https://httpbin.org/put', testPayload, { isExternal: true });
+    assert.deepEqual(response.json, testPayload, `Received response: ${JSON.stringify(response)}`);
+
+    await service.delete('https://httpbin.org/delete', { isExternal: true });
   });
-
-  const testPayload = {
-    foo  : 'bar',
-    test : 'payload'
-  };
-
-  const postDone = assert.async();
-  service.post('https://httpbin.org/post', testPayload, { isExternal: true }).then(response => {
-    assert.deepEqual(JSON.parse(response.data), testPayload, response);
-    assert.deepEqual(response.json, testPayload, response);
-  }).finally(() => {
-    postDone();
-  });
-
-  const putDone = assert.async();
-  service.put('https://httpbin.org/put', testPayload, { isExternal: true }).then(response => {
-    assert.deepEqual(JSON.parse(response.data), testPayload, response);
-    assert.deepEqual(response.json, testPayload, response);
-  }).finally(() => {
-    putDone();
-  });
-
-  const deleteDone = assert.async();
-  service.delete('https://httpbin.org/delete', { isExternal: true }).then(() => {
-    assert.ok(true);
-  }).finally(() => {
-    deleteDone();
-  });
-
 });

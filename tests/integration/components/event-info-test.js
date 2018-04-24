@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('event-info', 'Integration | Component | event info');
+module('Integration | Component | event info', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{event-info}}`);
-  assert.ok(this.$().text().trim(), 'event-info');
+  test('it renders', async function(assert) {
+    await render(hbs`{{event-info}}`);
+    assert.ok(this.element.textContent.trim(), 'event-info');
+  });
 });

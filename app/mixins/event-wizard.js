@@ -1,27 +1,27 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
+import MutableArray from '@ember/array/mutable';
+import RSVP from 'rsvp';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
-
-const { Mixin, MutableArray, RSVP } = Ember;
 
 export default Mixin.create(MutableArray, CustomFormMixin, {
 
   getSteps() {
     return [
       {
-        title       : this.l10n.t('Basic Details'),
-        description : this.l10n.t('Tell about your event'),
+        title       : this.get('l10n').t('Basic Details'),
+        description : this.get('l10n').t('Tell about your event'),
         icon        : 'info icon',
         route       : 'events.view.edit.basic-details'
       },
       {
-        title       : this.l10n.t('Sponsors'),
-        description : this.l10n.t('Advertise your sponsors'),
+        title       : this.get('l10n').t('Sponsors'),
+        description : this.get('l10n').t('Advertise your sponsors'),
         icon        : 'dollar icon',
         route       : 'events.view.edit.sponsors'
       },
       {
-        title       : this.l10n.t('Sessions & Speakers'),
-        description : this.l10n.t('Expand your event'),
+        title       : this.get('l10n').t('Sessions & Speakers'),
+        description : this.get('l10n').t('Expand your event'),
         icon        : 'list icon',
         route       : 'events.view.edit.sessions-speakers'
       }

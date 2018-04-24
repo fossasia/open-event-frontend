@@ -1,25 +1,27 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('widgets/forms/color-picker', 'Integration | Component | widgets/forms/color picker', {
-  integration: true
-});
+module('Integration | Component | widgets/forms/color picker', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{widgets/forms/color-picker}}`);
+    await render(hbs`{{widgets/forms/color-picker}}`);
 
-  assert.equal(this.$().text().trim(), '');
+    assert.equal(this.element.textContent.trim(), '');
 
-  // Template block usage:
-  this.render(hbs`
-    {{#widgets/forms/color-picker}}
-      template block text
-    {{/widgets/forms/color-picker}}
-  `);
+    // Template block usage:
+    await render(hbs`
+      {{#widgets/forms/color-picker}}
+        template block text
+      {{/widgets/forms/color-picker}}
+    `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'template block text');
+  });
 });

@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { render } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 
-moduleForComponent('scheduler/external-event-list', 'Integration | Component | scheduler/external event list');
+module('Integration | Component | scheduler/external event list', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{scheduler/external-event-list}}`);
-  assert.ok(this.$().html().trim().includes('Events'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{scheduler/external-event-list}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Events'));
+  });
 });

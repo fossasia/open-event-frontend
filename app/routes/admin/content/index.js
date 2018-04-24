@@ -1,10 +1,8 @@
-import Ember from 'ember';
-
-const { Route } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.l10n.t('Social Links');
+    return this.get('l10n').t('Social Links');
   },
   model() {
     return this.get('store').queryRecord('setting', {});

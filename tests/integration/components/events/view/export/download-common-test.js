@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('events/view/export/download-common', 'Integration | Component | events/view/export/download common');
+module('Integration | Component | events/view/export/download common', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{events/view/export/download-common l10n=l10n}}`);
-  assert.ok(this.$().html().trim().includes('Download Event'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{events/view/export/download-common l10n=l10n}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Download Event'));
+  });
 });

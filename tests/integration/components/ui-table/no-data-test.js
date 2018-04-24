@@ -1,11 +1,14 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/no-data', 'Integration | Component | ui table/no data');
-const messages = { noDataToShow: 'No' };
-test('it renders', function(assert) {
-  this.set('messages', messages);
-  this.render(hbs `{{ui-table/no-data messages=messages}}`);
-  assert.ok(this.$().html().trim().includes('No'));
+module('Integration | Component | ui table/no data', function(hooks) {
+  setupIntegrationTest(hooks);
+  const messages = { noDataToShow: 'No' };
+  test('it renders', async function(assert) {
+    this.set('messages', messages);
+    await render(hbs `{{ui-table/no-data messages=messages}}`);
+    assert.ok(this.element.innerHTML.trim().includes('No'));
+  });
 });

@@ -1,13 +1,15 @@
-
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('url-encode', 'helper:url-encode');
+module('Integration | Helper | url-encode', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('inputValue', 'hello world');
-  this.render(hbs`{{url-encode inputValue}}`);
-  assert.equal(this.$().text().trim(), 'hello%20world');
+  test('it renders', async function(assert) {
+    this.set('inputValue', 'hello world');
+    await render(hbs`{{url-encode inputValue}}`);
+    assert.equal(this.element.textContent.trim(), 'hello%20world');
+  });
 });
 

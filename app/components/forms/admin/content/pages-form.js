@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
-
-const { Component } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -16,7 +14,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a name')
+              prompt : this.get('l10n').t('Please enter a name')
             }
           ]
         },
@@ -25,7 +23,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a title')
+              prompt : this.get('l10n').t('Please enter a title')
             }
           ]
         },
@@ -34,16 +32,16 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the path')
+              prompt : this.get('l10n').t('Please enter the path')
             },
             {
               type   : 'regExp',
               value  : '/[^/](.*)/',
-              prompt : this.l10n.t('Path should not contain leading slash.')
+              prompt : this.get('l10n').t('Path should not contain leading slash.')
             },
             {
               type   : 'doesntContain[ ]',
-              prompt : this.l10n.t('Path should not contain whitespaces.')
+              prompt : this.get('l10n').t('Path should not contain whitespaces.')
             }
           ]
         },
@@ -52,7 +50,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select a place')
+              prompt : this.get('l10n').t('Please select a place')
             }
           ]
         },
@@ -61,7 +59,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a position')
+              prompt : this.get('l10n').t('Please enter a position')
             }
           ]
         },
@@ -70,7 +68,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a language')
+              prompt : this.get('l10n').t('Please enter a language')
             }
           ]
         }

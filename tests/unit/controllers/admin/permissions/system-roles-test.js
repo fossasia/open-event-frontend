@@ -1,9 +1,11 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:admin/permissions/system-roles', 'Unit | Controller | admin/permissions/system roles', []);
+module('Unit | Controller | admin/permissions/system roles', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
+  test('it exists', function(assert) {
+    let controller = this.owner.lookup('controller:admin/permissions/system-roles');
+    assert.ok(controller);
+  });
 });

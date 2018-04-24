@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 
-const { Component } = Ember;
 export default Component.extend(FormMixin, {
 
   getValidationRules() {
@@ -15,12 +14,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please upload a file')
+              prompt : this.get('l10n').t('Please upload a file')
             },
             {
               type   : 'regExp',
               value  : '/^(.*.((po)$))?[^.]*$/i',
-              prompt : this.l10n.t('Please upload a file in suggested format')
+              prompt : this.get('l10n').t('Please upload a file in suggested format')
             }
           ]
         },
@@ -29,7 +28,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select a language')
+              prompt : this.get('l10n').t('Please select a language')
             }
           ]
         }

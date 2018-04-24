@@ -1,13 +1,16 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('public/session-filter', 'Integration | Component | public/session filter');
+module('Integration | Component | public/session filter', function(hooks) {
+  setupIntegrationTest(hooks);
 
-const tracks = { '1': { name: 'Track 1', id: '1' } };
+  const tracks = { '1': { name: 'Track 1', id: '1' } };
 
-test('it renders', function(assert) {
-  this.set('tracks', tracks);
-  this.render(hbs `{{public/session-filter tracks=tracks}}`);
-  assert.ok(this.$().html().trim().includes('Track'));
+  test('it renders', async function(assert) {
+    this.set('tracks', tracks);
+    await render(hbs `{{public/session-filter tracks=tracks}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Track'));
+  });
 });

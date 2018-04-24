@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { v4 } from 'ember-uuid';
-
-const { Component, computed } = Ember;
 
 export default Component.extend({
 
@@ -24,10 +23,10 @@ export default Component.extend({
       .uploadFile('/upload/files', this.$(`#${this.get('inputIdGenerated')}`))
       .then(file => {
         this.set('fileUrl', file.url);
-        this.get('notify').success(this.l10n.t('File uploaded successfully'));
+        this.get('notify').success(this.get('l10n').t('File uploaded successfully'));
       })
       .catch(() => {
-        this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
       })
       .finally(() => {
         this.set('uploadingFile', false);
@@ -46,7 +45,7 @@ export default Component.extend({
         this.notify.error(error);
       });
     } else {
-      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'));
+      this.notify.error(this.get('l10n').t('No FileReader support. Please use a more latest browser'));
     }
   },
 

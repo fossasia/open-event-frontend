@@ -1,10 +1,12 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:admin/content/system-images/list', 'Unit | Controller | admin/content/system images/list', []);
+module('Unit | Controller | admin/content/system images/list', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
+
+  test('it exists', function(assert) {
+    let controller = this.owner.lookup('controller:admin/content/system-images/list');
+    assert.ok(controller);
+  });
 });

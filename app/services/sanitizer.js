@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Service from '@ember/service';
 import sanitizeHtml from 'npm:sanitize-html';
-
-const { Service } = Ember;
 
 export default Service.extend({
 

@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { Controller } = Ember;
+import Controller from '@ember/controller';
 
 export default Controller.extend({
   actions: {
@@ -14,13 +12,13 @@ export default Controller.extend({
       this.get('model').save()
         .then(() => {
           if (state === 'draft') {
-            this.notify.success(this.l10n.t('Your event has been published successfully.'));
+            this.notify.success(this.get('l10n').t('Your event has been published successfully.'));
           } else {
-            this.notify.success(this.l10n.t('Your event has been unpublished.'));
+            this.notify.success(this.get('l10n').t('Your event has been unpublished.'));
           }
         })
         .catch(()=> {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -31,10 +29,10 @@ export default Controller.extend({
       this.get('model').destroyRecord()
         .then(() => {
           this.transitionToRoute('events');
-          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+          this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
         })
         .catch(()=> {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -47,10 +45,10 @@ export default Controller.extend({
         .post(`events/${this.get('model.id')}/copy`, {})
         .then(copiedEvent => {
           this.transitionToRoute('events.view.edit', copiedEvent.identifier);
-          this.get('notify').success(this.l10n.t('Event copied successfully'));
+          this.get('notify').success(this.get('l10n').t('Event copied successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.l10n.t('Copying of event failed'));
+          this.get('notify').error(this.get('l10n').t('Copying of event failed'));
         })
         .finally(() => {
           this.set('isCopying', false);

@@ -1,11 +1,14 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleForModel('session', 'Unit | Model | session', {
-  needs: ['model:session-type', 'model:microlocation', 'model:event', 'model:track', 'model:speaker']
-});
+import { run } from '@ember/runloop';
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
+module('Unit | Model | session', function(hooks) {
+  setupTest(hooks);
+
+  test('it exists', function(assert) {
+    let model = run(() => this.owner.lookup('service:store').createRecord('session'));
+    // let store = this.store();
+    assert.ok(!!model);
+  });
 });

@@ -1,18 +1,16 @@
-import Ember from 'ember';
-
-const { Route, RSVP } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.l10n.t('Sessions');
+    return this.get('l10n').t('Sessions');
   },
-  model() {
+  async model() {
     const eventDetails = this.modelFor('public');
-    return RSVP.hash({
+    return {
       event  : eventDetails,
-      tracks : eventDetails.query('tracks', {
+      tracks : await eventDetails.query('tracks', {
         'fields[track]': 'name,id'
       })
-    });
+    };
   }
 });

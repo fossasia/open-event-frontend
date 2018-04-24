@@ -1,21 +1,22 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { run } from '@ember/runloop';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
+import { render } from '@ember/test-helpers';
 
-const { run } = Ember;
+module('Integration | Component | modals/tax info modal', function(hooks) {
+  setupIntegrationTest(hooks);
 
-moduleForComponent('modals/tax-info-modal', 'Integration | Component | modals/tax info modal');
+  test('it renders', async function(assert) {
 
-test('it renders', function(assert) {
+    const store = this.owner.lookup('service:store');
 
-  const store = this.container.lookup('service:store');
+    this.set('isOpen', false);
+    this.set('taxInfo', run(() => store.createRecord('tax')));
+    this.set('hasTaxInfo', false);
 
-  this.set('isOpen', false);
-  this.set('taxInfo', run(() => store.createRecord('tax')));
-  this.set('hasTaxInfo', false);
+    await render(hbs`{{modals/tax-info-modal isOpen=isOpen tax=taxInfo hasTaxInfo=hasTaxInfo}}`);
 
-  this.render(hbs`{{modals/tax-info-modal isOpen=isOpen tax=taxInfo hasTaxInfo=hasTaxInfo}}`);
-
-  assert.ok(this.$().html().trim().includes('Add tax information'));
+    assert.ok(this.element.innerHTML.trim().includes('Add tax information'));
+  });
 });

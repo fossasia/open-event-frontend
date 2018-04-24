@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { set, computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-
-const { Component, computed, set } = Ember;
 
 export default Component.extend(FormMixin, {
   buyer: {
@@ -33,7 +32,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter your first name')
+          prompt : this.get('l10n').t('Please enter your first name')
         }
       ]
     };
@@ -41,7 +40,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter your last name')
+          prompt : this.get('l10n').t('Please enter your last name')
         }
       ]
     };
@@ -49,7 +48,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter your email')
+          prompt : this.get('l10n').t('Please enter your email')
         }
       ]
     };
@@ -63,7 +62,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your first name')
+              prompt : this.get('l10n').t('Please enter your first name')
             }
           ]
         },
@@ -72,7 +71,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your last name')
+              prompt : this.get('l10n').t('Please enter your last name')
             }
           ]
         },
@@ -81,7 +80,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email address')
+              prompt : this.get('l10n').t('Please enter a valid email address')
             }
           ]
         },
@@ -90,7 +89,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your country')
+              prompt : this.get('l10n').t('Please enter your country')
             }
           ]
         },
@@ -99,7 +98,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your address')
+              prompt : this.get('l10n').t('Please enter your address')
             }
           ]
         },
@@ -108,7 +107,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your city ')
+              prompt : this.get('l10n').t('Please enter your city ')
             }
           ]
         },
@@ -117,7 +116,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your state')
+              prompt : this.get('l10n').t('Please enter your state')
             }
           ]
         },
@@ -126,7 +125,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your zip code')
+              prompt : this.get('l10n').t('Please enter your zip code')
             }
           ]
         },
@@ -135,7 +134,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'checked',
-              prompt : this.l10n.t('Please specify your choice of payment method ')
+              prompt : this.get('l10n').t('Please specify your choice of payment method ')
             }
           ]
         }

@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('widgets/forms/file-upload', 'Integration | Component | widgets/forms/file upload');
+module('Integration | Component | widgets/forms/file upload', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/forms/file-upload maxSizeInKb=10000 hint=(t 'Select a file')}}`);
-  assert.ok(this.$().html().trim().includes('Select'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{widgets/forms/file-upload maxSizeInKb=10000 hint=(t 'Select a file')}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Select'));
+  });
 });

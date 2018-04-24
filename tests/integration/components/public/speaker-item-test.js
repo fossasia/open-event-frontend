@@ -1,34 +1,35 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import EmberObject from '@ember/object';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
+import { render } from '@ember/test-helpers';
 
-const { Object: EmberObject } = Ember;
+module('Integration | Component | public/speaker item', function(hooks) {
+  setupIntegrationTest(hooks);
 
-moduleForComponent('public/speaker-item', 'Integration | Component | public/speaker item');
+  const speaker = EmberObject.create({
+    name           : 'Non featured Jane',
+    email          : 'John@Doe.com',
+    photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
+    website        : 'https://johndoe.com',
+    city           : 'Delhi',
+    gender         : 'female',
+    country        : 'India',
+    organisation   : 'FOSSASIA',
+    isFeatured     : false,
+    shortBiography : 'iOS developer, deep learning enthusiast.',
+    linkedin       : 'https://www.linkedin.com',
+    longBiography  : 'iOs developer, deep learning enthusiast',
+    mobile         : '888794238',
+    github         : 'https://www.github.com',
+    facebook       : 'https://www.facebook.com'
+  });
 
-const speaker = EmberObject.create({
-  name           : 'Non featured Jane',
-  email          : 'John@Doe.com',
-  photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
-  website        : 'https://johndoe.com',
-  city           : 'Delhi',
-  gender         : 'female',
-  country        : 'India',
-  organisation   : 'FOSSASIA',
-  isFeatured     : false,
-  shortBiography : 'iOS developer, deep learning enthusiast.',
-  linkedin       : 'https://www.linkedin.com',
-  longBiography  : 'iOs developer, deep learning enthusiast',
-  mobile         : '888794238',
-  github         : 'https://www.github.com',
-  facebook       : 'https://www.facebook.com'
-});
+  test('it renders', async function(assert) {
 
-test('it renders', function(assert) {
+    this.set('speaker', speaker);
+    await render(hbs `{{public/speaker-item speaker=speaker}}`);
 
-  this.set('speaker', speaker);
-  this.render(hbs `{{public/speaker-item speaker=speaker}}`);
-
-  assert.ok(this.$().html().trim().includes('FOSSASIA'));
+    assert.ok(this.element.innerHTML.trim().includes('FOSSASIA'));
+  });
 });

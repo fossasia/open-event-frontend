@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-const { Route } = Ember;
-export default Route.extend({
+export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return this.l10n.t('Upcoming');
+    return this.get('l10n').t('Upcoming');
   },
   beforeModel() {
     this._super(...arguments);

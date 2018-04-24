@@ -18,8 +18,7 @@ export function initialize(application) {
   inject('confirm', 'service:confirm');
   inject('sanitizer', 'service:sanitizer');
 
-  application.inject('component', 'routing', 'service:-routing');
-
+  application.inject('component', 'router', 'service:router');
 }
 
 export default {

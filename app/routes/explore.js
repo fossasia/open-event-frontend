@@ -1,16 +1,14 @@
-import Ember from 'ember';
-
-const { Route, RSVP } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.l10n.t('Explore');
+    return this.get('l10n').t('Explore');
   },
 
-  model() {
-    return RSVP.hash({
-      eventTypes  : this.store.findAll('event-type'),
-      eventTopics : this.store.findAll('event-topic', { include: 'event-sub-topics' })
-    });
+  async model() {
+    return {
+      eventTypes  : await this.store.findAll('event-type'),
+      eventTopics : await this.store.findAll('event-topic', { include: 'event-sub-topics' })
+    };
   }
 });

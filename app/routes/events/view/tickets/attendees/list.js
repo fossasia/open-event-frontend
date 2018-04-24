@@ -1,24 +1,22 @@
-import Ember from 'ember';
-
-const { Route } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
     switch (this.get('params.attendees_status')) {
       case 'placed':
-        return this.l10n.t('Placed');
+        return this.get('l10n').t('Placed');
       case 'pending':
-        return this.l10n.t('Pending');
+        return this.get('l10n').t('Pending');
       case 'expired':
-        return this.l10n.t('Expired');
+        return this.get('l10n').t('Expired');
       case 'cancelled':
-        return this.l10n.t('Cancelled');
+        return this.get('l10n').t('Cancelled');
       case 'checkedIn':
-        return this.l10n.t('Checked In');
+        return this.get('l10n').t('Checked In');
       case 'notCheckedIn':
-        return this.l10n.t('Not Checked In');
+        return this.get('l10n').t('Not Checked In');
       case 'all':
-        return this.l10n.t('All');
+        return this.get('l10n').t('All');
     }
   },
   model(params) {

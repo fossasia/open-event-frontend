@@ -1,8 +1,10 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:admin/sessions/list', 'Unit | Controller | admin/sessions/list', []);
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
+module('Unit | Controller | admin/sessions/list', function(hooks) {
+  setupTest(hooks);
+  test('it exists', function(assert) {
+    let controller = this.owner.lookup('controller:admin/sessions/list');
+    assert.ok(controller);
+  });
 });

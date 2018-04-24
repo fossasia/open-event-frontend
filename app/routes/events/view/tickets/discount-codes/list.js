@@ -1,14 +1,12 @@
-import Ember from 'ember';
-
-const { Route } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
     switch (this.get('params.discount_status')) {
       case 'active':
-        return this.l10n.t('Active');
+        return this.get('l10n').t('Active');
       case 'inactive':
-        return this.l10n.t('Inactive');
+        return this.get('l10n').t('Inactive');
     }
   },
   model(params) {

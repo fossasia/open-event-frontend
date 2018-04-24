@@ -1,11 +1,11 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:application', 'Unit | Controller | application', []);
+module('Unit | Controller | application', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  const done = assert.async();
-  let controller = this.subject();
-  assert.ok(controller);
-  done();
+  test('it exists', async function(assert) {
+    let controller = this.owner.lookup('controller:application');
+    assert.ok(controller);
+  });
 });

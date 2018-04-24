@@ -1,5 +1,4 @@
-import Ember from 'ember';
-const { RSVP: { Promise: RSVPPromise } } = Ember;
+import { Promise as RSVPPromise } from 'rsvp';
 
 export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
   const thresh = si ? 1000 : 1024;
@@ -34,7 +33,6 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
           header += arr[i].toString(16);
         }
         let type;
-
         // Magic number reference: from http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html
         switch (header) {
           case '89504e47':

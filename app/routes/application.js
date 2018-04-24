@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-
-const { Route, RSVP } = Ember;
 
 export default Route.extend(ApplicationRouteMixin, {
   title(tokens) {
@@ -13,16 +11,15 @@ export default Route.extend(ApplicationRouteMixin, {
     return tokens.join(' | ');
   },
 
-  beforeModel() {
+  async beforeModel() {
     this._super(...arguments);
-    // Returning a promise here will cause ember to wait until the promise is resolved before moving on to the model
-    return this.get('authManager').initialize();
+    await this.get('authManager').initialize();
   },
 
-  model() {
+  async model() {
     let notifications = [];
     if (this.get('session.isAuthenticated')) {
-      notifications = this.get('authManager.currentUser').query('notifications', {
+      notifications = await this.get('authManager.currentUser').query('notifications', {
         filter: [
           {
             name : 'is-read',
@@ -33,13 +30,13 @@ export default Route.extend(ApplicationRouteMixin, {
         sort: '-received-at'
       });
     }
-    return RSVP.hash({
+    return {
       notifications,
-      pages: this.get('store').query('page', {
+      pages: await this.get('store').query('page', {
         sort: 'index'
       }),
-      socialLinks: this.get('store').queryRecord('setting', {})
-    });
+      socialLinks: await this.get('store').queryRecord('setting', {})
+    };
   },
 
   sessionInvalidated() {

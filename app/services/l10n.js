@@ -1,6 +1,5 @@
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
-import l10nFingerprintMap from './../utils/l10n-fingerprint-map';
 
 export default L10n.extend({
 
@@ -29,9 +28,6 @@ export default L10n.extend({
   autoInitialize: false,
 
   jsonPath: '/assets/locales',
-
-  // Make this return null if you do not want to use fingerprinting
-  fingerprintMap: l10nFingerprintMap,
 
   switchLanguage(locale) {
     this.setLocale(locale);

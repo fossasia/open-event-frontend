@@ -1,17 +1,18 @@
 language: node_js
 
-group: edge
-
 node_js:
-  - "6"
+  - "8"
 
-sudo: required
+# sudo: required
 
-services:
-  - docker
+# services:
+#  - docker
 
 env:
-  - CXX=g++-4.8 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - CXX=g++-4.8 JOBS=1 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+cache:
+  yarn: true
 
 addons:
   chrome: stable
@@ -21,26 +22,15 @@ addons:
     packages:
       - g++-4.8
 
-before_install:
-  - npm install -g npm@5
-  - npm install -g greenkeeper-lockfile@1
-  - npm config set spin false
-  - npm --version
-  - npm cache verify
-  - npm install -g bower phantomjs-prebuilt check-node-version
-  - bower --version
-  - phantomjs --version
-
+before_install: yarn global add greenkeeper-lockfile@1
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
-
-install:
-  - npm install
-  - bower install
+install: yarn
 
 script:
   - node scripts/l10n.js generate
-  - COVERAGE=true ember exam --launch=chrome --random
+  - yarn lint:scss
+  - COVERAGE=true yarn test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

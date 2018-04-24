@@ -1,9 +1,11 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('route:public/cfs/new-session', 'Unit | Route | public/cfs/new session', []);
+module('Unit | Route | public/cfs/new session', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+  test('it exists', function(assert) {
+    let route = this.owner.lookup('route:public/cfs/new-session');
+    assert.ok(route);
+  });
 });

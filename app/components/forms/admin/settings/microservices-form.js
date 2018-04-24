@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
-
-const { Component } = Ember;
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
@@ -18,7 +16,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid URL for Android app')
+              prompt : this.get('l10n').t('Please enter a valid URL for Android app')
             }
           ]
         },
@@ -30,7 +28,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid URL for web app')
+              prompt : this.get('l10n').t('Please enter a valid URL for web app')
             }
           ]
         }

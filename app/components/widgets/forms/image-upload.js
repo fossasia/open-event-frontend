@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { v4 } from 'ember-uuid';
-
-const { Component, computed } = Ember;
 
 export default Component.extend({
 
@@ -58,7 +57,7 @@ export default Component.extend({
         this.notify.error(error);
       });
     } else {
-      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'));
+      this.notify.error(this.get('l10n').t('No FileReader support. Please use a more latest browser'));
     }
 
   },

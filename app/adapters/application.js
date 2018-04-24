@@ -1,10 +1,9 @@
+import { inject as service } from '@ember/service';
+import { computed } from '@ember/object';
 import ENV from 'open-event-frontend/config/environment';
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
-import Ember from 'ember';
-import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
-import RESTAdapterMixin from 'ember-data-has-many-query/mixins/rest-adapter';
-
-const { inject: { service } } = Ember;
+import HasManyQueryAdapterMixin from 'ember-data-has-many-query/mixins/rest-adapter';
+import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
 /**
  * The backend server expects the filter in a serialized string format.
@@ -19,12 +18,23 @@ export const fixFilterQuery = query  => {
   return query;
 };
 
-export default JSONAPIAdapter.extend(DataAdapterMixin, RESTAdapterMixin, {
-  host       : ENV.APP.apiHost,
-  namespace  : ENV.APP.apiNamespace,
-  authorizer : 'authorizer:token',
+export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, {
+  host      : ENV.APP.apiHost,
+  namespace : ENV.APP.apiNamespace,
 
-  notify: service(),
+  notify  : service(),
+  session : service(),
+
+  headers: computed('session.data.authenticated', function() {
+    const headers = {
+      'Content-Type': 'application/vnd.api+json'
+    };
+    const { access_token } = this.get('session.data.authenticated');
+    if (access_token) {
+      headers[ENV['ember-simple-auth-token'].authorizationHeaderName] = ENV['ember-simple-auth-token'].authorizationPrefix + access_token;
+    }
+    return headers;
+  }),
 
   isInvalid(statusCode) {
     if (statusCode !== 404 && statusCode !== 422) {
@@ -42,5 +52,37 @@ export default JSONAPIAdapter.extend(DataAdapterMixin, RESTAdapterMixin, {
   queryRecord(store, type, query) {
     query = fixFilterQuery(query);
     return this._super(store, type, query);
+  },
+
+  /**
+   This method is called for every response that the adapter receives from the
+   API. If the response has a 401 status code it invalidates the session (see
+   {{#crossLink "SessionService/invalidate:method"}}{{/crossLink}}).
+
+   @method handleResponse
+   @param {Number} status The response status as received from the API
+   @param  {Object} headers HTTP headers as received from the API
+   @param {any} payload The response body as received from the API
+   @param {Object} requestData the original request information
+   @protected
+   */
+  handleResponse(status, headers, payload, requestData) {
+    this.ensureResponseAuthorized(status, headers, payload, requestData);
+    return this._super(...arguments);
+  },
+
+  /**
+   The default implementation for handleResponse.
+   If the response has a 401 status code it invalidates the session (see
+   {{#crossLink "SessionService/invalidate:method"}}{{/crossLink}}).
+
+   Override this method if you want custom invalidation logic for incoming responses.
+   @method ensureResponseAuthorized
+   @param {Number} status The response status as received from the API
+   */
+  ensureResponseAuthorized(status) {
+    if (status === 401 && this.get('session.isAuthenticated')) {
+      this.get('session').invalidate();
+    }
   }
 });

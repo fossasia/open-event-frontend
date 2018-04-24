@@ -72,8 +72,17 @@ module.exports = function(environment) {
 
     emberFullCalendar: {
       includeScheduler: true
+    },
+
+    ifa: {
+      enabled : false,
+      inline  : false
     }
   };
+
+  if (environment === 'production') {
+    ENV.ifa.enabled = true;
+  }
 
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:jwt'
@@ -108,7 +117,7 @@ module.exports = function(environment) {
     'default-src' : '\'none\'',
     'connect-src' : [
       '\'self\'',
-      'ws://eventyay.dev:65520',
+      'ws://eventyay.local:65520',
       'ws://localhost:49153',
       'https://maps.gstatic.com',
       'https://*.eventyay.com',
@@ -124,7 +133,7 @@ module.exports = function(environment) {
       'https://maps.gstatic.com',
       'https://eventyay.com',
       'https://*.eventyay.com',
-      'http://eventyay.dev:65520',
+      'http://eventyay.local:65520',
       'http://localhost:49153',
       'www.google-analytics.com',
       'https://platform.twitter.com',
@@ -175,6 +184,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
 
     ENV['simple-auth'] = {
       store: 'simple-auth-session-store:ephemeral'

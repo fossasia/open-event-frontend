@@ -1,16 +1,19 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('modals/event-share-modal', 'Integration | Component | modals/event share modal');
+module('Integration | Component | modals/event share modal', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.set('isOpen', false);
-  this.set('event', {});
-  this.render(hbs`{{modals/event-share-modal isOpen=isOpen event=event}}`);
-  assert.ok(this.$().html().trim().includes('Share this event'));
+    this.set('isOpen', false);
+    this.set('event', {});
+    await render(hbs`{{modals/event-share-modal isOpen=isOpen event=event}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Share this event'));
+  });
 });

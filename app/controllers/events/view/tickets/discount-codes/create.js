@@ -1,16 +1,14 @@
-import Ember from 'ember';
-
-const { Controller } = Ember;
+import Controller from '@ember/controller';
 
 export default Controller.extend({
   actions: {
     saveCode(code) {
       code.save()
         .then(() => {
-          this.get('notify').success(this.l10n.t('Discount code has been successfully created.'));
+          this.get('notify').success(this.get('l10n').t('Discount code has been successfully created.'));
         })
         .catch(()=> {
-          this.get('notify').error(this.l10n.t('An unexpected error has occured. Discount code cannot be created.'));
+          this.get('notify').error(this.get('l10n').t('An unexpected error has occured. Discount code cannot be created.'));
         });
     }
   }

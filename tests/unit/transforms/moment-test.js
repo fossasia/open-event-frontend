@@ -1,9 +1,11 @@
-import { test } from 'ember-qunit';
-import moduleFor from 'open-event-frontend/tests/helpers/unit-helper';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('transform:moment', 'Unit | Transform | moment', []);
+module('Unit | Transform | moment', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  let transform = this.subject();
-  assert.ok(transform);
+  test('it exists', function(assert) {
+    let transform = this.owner.lookup('transform:moment');
+    assert.ok(transform);
+  });
 });

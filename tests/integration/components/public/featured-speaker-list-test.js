@@ -1,54 +1,56 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
+import { render } from '@ember/test-helpers';
 
-const { Object: EmberObject, A } = Ember;
+module('Integration | Component | public/featured speaker list', function(hooks) {
+  setupIntegrationTest(hooks);
 
-moduleForComponent('public/featured-speaker-list', 'Integration | Component | public/featured speaker list');
+  const speakers = A(
+    [
+      EmberObject.create({
+        name           : 'Non featured Jane',
+        email          : 'John@Doe.com',
+        photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
+        website        : 'https://johndoe.com',
+        city           : 'Delhi',
+        gender         : 'female',
+        country        : 'India',
+        organisation   : 'FOSSASIA',
+        isFeatured     : true,
+        shortBiography : 'iOS developer, deep learning enthusiast.',
+        linkedin       : 'https://www.linkedin.com',
+        longBiography  : 'iOs developer, deep learning enthusiast',
+        mobile         : '888794238',
+        github         : 'https://www.github.com',
+        facebook       : 'https://www.facebook.com'
+      }),
+      EmberObject.create({
+        name           : 'John Doe',
+        email          : 'John@Doe.com',
+        photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
+        website        : 'https://johndoe.com',
+        city           : 'Mumbai',
+        gender         : 'male',
+        country        : 'India',
+        organisation   : 'FOSSASIA',
+        isFeatured     : true,
+        shortBiography : 'iOS developer, deep learning enthusiast.',
+        linkedin       : 'https://www.linkedin.com',
+        longBiography  : 'kubernetes pro, deep learning enthusiast',
+        mobile         : '888794238',
+        github         : 'https://www.github.com',
+        facebook       : 'https://www.facebook.com'
+      })
+    ]
+  );
 
-const speakers = A(
-  [
-    EmberObject.create({
-      name           : 'Non featured Jane',
-      email          : 'John@Doe.com',
-      photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
-      website        : 'https://johndoe.com',
-      city           : 'Delhi',
-      gender         : 'female',
-      country        : 'India',
-      organisation   : 'FOSSASIA',
-      isFeatured     : true,
-      shortBiography : 'iOS developer, deep learning enthusiast.',
-      linkedin       : 'https://www.linkedin.com',
-      longBiography  : 'iOs developer, deep learning enthusiast',
-      mobile         : '888794238',
-      github         : 'https://www.github.com',
-      facebook       : 'https://www.facebook.com'
-    }),
-    EmberObject.create({
-      name           : 'John Doe',
-      email          : 'John@Doe.com',
-      photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
-      website        : 'https://johndoe.com',
-      city           : 'Mumbai',
-      gender         : 'male',
-      country        : 'India',
-      organisation   : 'FOSSASIA',
-      isFeatured     : true,
-      shortBiography : 'iOS developer, deep learning enthusiast.',
-      linkedin       : 'https://www.linkedin.com',
-      longBiography  : 'kubernetes pro, deep learning enthusiast',
-      mobile         : '888794238',
-      github         : 'https://www.github.com',
-      facebook       : 'https://www.facebook.com'
-    })
-  ]
-);
+  test('it renders', async function(assert) {
 
-test('it renders', function(assert) {
-
-  this.set('speakers', speakers);
-  this.render(hbs `{{public/featured-speaker-list speakers=speakers}}`);
-  assert.ok(this.$().html().trim().includes('FOSSASIA'));
+    this.set('speakers', speakers);
+    await render(hbs `{{public/featured-speaker-list speakers=speakers}}`);
+    assert.ok(this.element.innerHTML.trim().includes('FOSSASIA'));
+  });
 });

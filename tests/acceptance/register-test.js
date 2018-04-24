@@ -1,38 +1,29 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-acceptance';
+import { click, fillIn, currentURL, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { login } from 'open-event-frontend/tests/helpers/custom-helpers';
 
-moduleForAcceptance('Acceptance | register');
+module('Acceptance | register', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /register', function(assert) {
-  visit('/register');
-
-  andThen(function() {
+  test('visiting /register', async function(assert) {
+    await visit('/register');
     assert.equal(currentURL(), '/register');
   });
-});
 
-test('visiting /register and registering with existing user', function(assert) {
-  visit('/register');
-  andThen(function() {
+  test('visiting /register and registering with existing user', async function(assert) {
+    await visit('/register');
     assert.equal(currentURL(), '/register');
-    fillIn('input[name=email]', 'opev_test_user@nada.email');
-    fillIn('input[name=password]', 'opev_test_user');
-    fillIn('input[name=password_repeat]', 'opev_test_user');
-    click('button[type=submit]');
-    andThen(function() {
-      assert.equal(currentURL(), '/register');
-      // const errorMessageDiv = findWithAssert('.ui.negative.message');
-      // assert.equal(errorMessageDiv[0].textContent.trim(), 'An unexpected error occurred.');
-    });
+    await fillIn('input[name=email]', 'opev_test_user@nada.email');
+    await fillIn('input[name=password]', 'opev_test_user');
+    await fillIn('input[name=password_repeat]', 'opev_test_user');
+    await click('button[type=submit]');
+    assert.equal(currentURL(), '/register');
   });
-});
 
-test('visiting /register after login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/register');
-    andThen(function() {
-      assert.equal(currentURL(), '/');
-    });
+  test('visiting /register after login', async function(assert) {
+    await login(assert);
+    await visit('/register');
+    assert.equal(currentURL(), '/');
   });
 });

@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('events/view/export/api-response', 'Integration | Component | events/view/export/api response');
+module('Integration | Component | events/view/export/api response', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{events/view/export/api-response l10n=l10n}}`);
-  assert.ok(this.$().html().trim().includes('Access event information'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{events/view/export/api-response l10n=l10n}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Access event information'));
+  });
 });

@@ -1,22 +1,24 @@
-/* eslint-env node */
-
-let browserArgs = {
-  'Chrome': ['--headless', '--disable-gpu', '--remote-debugging-port=9222']
-};
-
-if (process.env.NO_BROWSER_ARGS && process.env.NO_BROWSER_ARGS === 'true') {
-  browserArgs = {};
-}
-
 module.exports = {
-  'test_page'        : 'tests/index.html?hidepassed',
-  'disable_watching' : true,
-  'launch_in_ci'     : [
-    'PhantomJS'
-  ],
-  'launch_in_dev': [
-    'PhantomJS',
+  test_page        : 'tests/index.html?hidepassed',
+  disable_watching : true,
+  launch_in_ci     : [
     'Chrome'
   ],
-  browser_args: browserArgs
+  launch_in_dev: [
+    'Chrome'
+  ],
+  browser_args: {
+    Chrome: {
+      mode : 'ci',
+      args : [
+        // --no-sandbox is needed when running Chrome inside a container
+        process.env.TRAVIS ? '--no-sandbox' : null,
+        '--disable-gpu',
+        '--headless',
+        '--remote-debugging-port=0',
+        '--window-size=1440,900'
+      ].filter(Boolean)
+    }
+  },
+  browser_disconnect_timeout: 120
 };

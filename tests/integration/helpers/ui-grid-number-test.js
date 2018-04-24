@@ -1,13 +1,15 @@
-
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-grid-number', 'helper:ui-grid-number');
+module('Integration | Helper | ui-grid-number', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('inputValue', 2);
-  this.render(hbs`{{ui-grid-number inputValue}}`);
-  assert.equal(this.$().text().trim(), 'two');
+  test('it renders', async function(assert) {
+    this.set('inputValue', 2);
+    await render(hbs`{{ui-grid-number inputValue}}`);
+    assert.equal(this.element.textContent.trim(), 'two');
+  });
 });
 

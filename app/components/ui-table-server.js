@@ -1,18 +1,11 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import { computed, setProperties, set, get } from '@ember/object';
+import { typeOf } from '@ember/utils';
+import { run } from '@ember/runloop';
+import { A } from '@ember/array';
 import ModelsTable from 'open-event-frontend/components/ui-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
-
-const {
-  get,
-  set,
-  setProperties,
-  computed,
-  typeOf,
-  run,
-  A,
-  $: { extend },
-  Logger: { warn }
-} = Ember;
+import { merge } from 'lodash';
 
 export default ModelsTable.extend({
 
@@ -39,16 +32,16 @@ export default ModelsTable.extend({
 
   filteredContent: [],
 
-  visibleContent  : computed.alias('arrangedContent'),
-  arrangedContent : computed.alias('filteredContent'),
+  visibleContent  : alias('arrangedContent'),
+  arrangedContent : alias('filteredContent'),
 
-  arrangedContentLength: computed('routing.router.currentURL', 'filteredContent.meta', function() {
+  arrangedContentLength: computed('router.currentURL', 'filteredContent.meta', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     return get(meta, itemsCountProperty) || 0;
   }),
 
-  pagesCount: computed('routing.router.currentURL', 'currentPageNumber', 'pageSize', function() {
+  pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     let items = (get(meta, itemsCountProperty));
@@ -68,7 +61,7 @@ export default ModelsTable.extend({
     return pages;
   }),
 
-  lastIndex: computed('routing.router.currentURL', 'pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
+  lastIndex: computed('router.currentURL', 'pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
     let pageMax = get(this, 'pageSize') * get(this, 'currentPageNumber');
     let itemsCount = get(this, 'arrangedContentLength');
     return Math.min(pageMax, itemsCount);
@@ -83,10 +76,10 @@ export default ModelsTable.extend({
     let filterString = get(this, 'filterString');
 
     if (!get(data, 'query')) {
-      warn('You must use https://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
+      console.warn('You must use https://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
       return;
     }
-    let query = extend({}, get(data, 'query'));
+    let query = merge({}, get(data, 'query'));
     let store = get(data, 'store');
     let modelName = get(data, 'type.modelName');
     query.filter = JSON.parse(query.filter || '[]');

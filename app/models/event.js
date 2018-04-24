@@ -1,13 +1,16 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { on } from '@ember/object/evented';
 import moment from 'moment';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
-import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
+import {
+  computedDateTimeSplit,
+  computedSegmentedLink
+} from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 import { groupBy } from 'lodash';
-
-const { computed, inject: { service }, on } = Ember;
 
 const detectedTimezone = moment.tz.guess();
 
@@ -17,7 +20,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * Service Injection
    */
 
-  routing: service('-routing'),
+  router: service(),
 
   /**
    * Attributes
@@ -101,18 +104,18 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   tax                    : belongsTo('tax'),
   copyright              : belongsTo('event-copyright'),
   sessionTypes           : hasMany('session-type'),
-  user                   : belongsTo('user', {
-    inverse: 'events'
-  }),
+  user                   : belongsTo('user', { inverse: 'events' }),
+
   customForms     : hasMany('custom-form'),
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
-  organizers      : hasMany('user'),
-  coorganizers    : hasMany('user'),
-  trackOrganizers : hasMany('user'),
-  registrars      : hasMany('user'),
-  moderators      : hasMany('user'),
+
+  organizers      : hasMany('user', { inverse: null }),
+  coorganizers    : hasMany('user', { inverse: null }),
+  trackOrganizers : hasMany('user', { inverse: null }),
+  registrars      : hasMany('user', { inverse: null }),
+  moderators      : hasMany('user', { inverse: null }),
 
   /**
    * The discount code applied to this event [Form(1) discount code]
@@ -150,7 +153,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   url: computed('identifier', function() {
-    return `${location.protocol}//${location.hostname}${this.get('routing.router').generate('public', this.get('id'))}`;
+    return `${location.protocol}//${location.hostname}${this.get('router').urlFor('public', this.get('id'))}`;
   }),
 
   sessionsByState: computed('sessions', function() {

@@ -1,19 +1,17 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import moment from 'moment';
-
-const { Route } = Ember;
 
 export default Route.extend({
   titleToken() {
     switch (this.get('params.events_status')) {
       case 'live':
-        return this.l10n.t('Live');
+        return this.get('l10n').t('Live');
       case 'draft':
-        return this.l10n.t('Draft');
+        return this.get('l10n').t('Draft');
       case 'past':
-        return this.l10n.t('Past');
+        return this.get('l10n').t('Past');
       case 'deleted':
-        return this.l10n.t('Deleted');
+        return this.get('l10n').t('Deleted');
     }
   },
   model(params) {

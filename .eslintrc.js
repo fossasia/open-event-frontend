@@ -56,7 +56,7 @@ module.exports = {
       }
     ],
     'max-len': 'off',
-    'no-console': 'error',
+    'no-console': ["error", { allow: ["warn"] }],
     'prefer-template': 'error',
     'camelcase': 'off',
     'new-cap': 'off',
@@ -71,6 +71,7 @@ module.exports = {
     wysihtml5  : true,
     palette    : true,
     Uint8Array : true,
-    require    : true
+    require    : true,
+    Promise    : true
   }
 };

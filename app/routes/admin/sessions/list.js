@@ -1,20 +1,18 @@
-import Ember from 'ember';
-
-const { Route } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
     switch (this.get('params.sessions_state')) {
       case 'pending':
-        return this.l10n.t('Pending');
+        return this.get('l10n').t('Pending');
       case 'accepted':
-        return this.l10n.t('Accepted');
+        return this.get('l10n').t('Accepted');
       case 'rejected':
-        return this.l10n.t('Rejected');
+        return this.get('l10n').t('Rejected');
       case 'deleted':
-        return this.l10n.t('Deleted');
+        return this.get('l10n').t('Deleted');
       default:
-        return this.l10n.t('Session');
+        return this.get('l10n').t('Session');
     }
   },
   model(params) {

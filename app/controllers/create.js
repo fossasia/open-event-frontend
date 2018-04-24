@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import RSVP from 'rsvp';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-
-const { Controller, RSVP } = Ember;
 
 export default Controller.extend(EventWizardMixin, {
   actions: {
@@ -27,15 +26,15 @@ export default Controller.extend(EventWizardMixin, {
           RSVP.Promise.all(promises)
             .then(() => {
               this.set('isLoading', false);
-              this.get('notify').success(this.l10n.t('Your event has been saved'));
+              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
               this.transitionToRoute('events.view.index', data.id);
             }, function() {
-              this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+              this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
             });
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
         });
     },
     move() {
@@ -60,15 +59,15 @@ export default Controller.extend(EventWizardMixin, {
           RSVP.Promise.all(promises)
             .then(() => {
               this.set('isLoading', false);
-              this.get('notify').success(this.l10n.t('Your event has been saved'));
+              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
               this.transitionToRoute('events.view.edit.sponsors', data.id);
             }, function() {
-              this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+              this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
             });
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
         });
     }
   }

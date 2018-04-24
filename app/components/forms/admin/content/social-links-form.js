@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
-
-const { Component } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -19,7 +17,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -29,12 +27,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'containsExactly[twitter.com]',
-              prompt : this.l10n.t('Please enter a valid twitter url')
+              prompt : this.get('l10n').t('Please enter a valid twitter url')
             },
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -44,12 +42,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'containsExactly[facebook.com]',
-              prompt : this.l10n.t('Please enter a valid facebook url')
+              prompt : this.get('l10n').t('Please enter a valid facebook url')
             },
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -59,12 +57,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'containsExactly[plus.google.com]',
-              prompt : this.l10n.t('Please enter a valid google plus url')
+              prompt : this.get('l10n').t('Please enter a valid google plus url')
             },
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -74,12 +72,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'containsExactly[youtube.com]',
-              prompt : this.l10n.t('Please enter a valid youtube url')
+              prompt : this.get('l10n').t('Please enter a valid youtube url')
             },
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -89,12 +87,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'containsExactly[github.com]',
-              prompt : this.l10n.t('Please enter a valid github url')
+              prompt : this.get('l10n').t('Please enter a valid github url')
             },
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         }

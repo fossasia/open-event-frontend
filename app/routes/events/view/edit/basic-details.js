@@ -1,11 +1,9 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-
-const { Route } = Ember;
 
 export default Route.extend(EventWizardMixin, {
   titleToken() {
-    return this.l10n.t('Basic Details');
+    return this.get('l10n').t('Basic Details');
   },
   model() {
     return this.modelFor('events.view.edit');

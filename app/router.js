@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Router from '@ember/routing/router';
+import { scheduleOnce } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 import config from 'open-event-frontend/config/environment';
 import RouterScroll from 'ember-router-scroll';
-
-const { Router, run: { scheduleOnce }, inject: { service } } = Ember;
 
 const router = Router.extend(RouterScroll, {
   location : config.locationType,

@@ -1,12 +1,15 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/cell/cell-sponsor-options', 'Integration | Component | ui table/cell/cell sponsor options');
+module('Integration | Component | ui table/cell/cell sponsor options', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.set('deleteSponsor', () => {});
-  this.set('editSponsor', () => {});
-  this.render(hbs`{{ui-table/cell/cell-sponsor-options deleteSponsor=(action deleteSponsor) editSponsor=(action editSponsor)}}`);
-  assert.ok(this.$().text().trim().includes(''));
+  test('it renders', async function(assert) {
+    this.set('deleteSponsor', () => {});
+    this.set('editSponsor', () => {});
+    await render(hbs`{{ui-table/cell/cell-sponsor-options deleteSponsor=(action deleteSponsor) editSponsor=(action editSponsor)}}`);
+    assert.ok(this.element.textContent.trim().includes(''));
+  });
 });

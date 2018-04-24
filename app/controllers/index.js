@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 import moment from 'moment';
-
-const { Controller, computed } = Ember;
 
 export default Controller.extend({
 

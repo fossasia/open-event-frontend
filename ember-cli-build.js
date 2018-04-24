@@ -2,6 +2,9 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
+const { browsers } = require('./config/targets');
+
+let env = process.env.EMBER_ENV || 'development';
 
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
@@ -13,12 +16,18 @@ module.exports = function(defaults) {
       enabled: true
     },
     autoprefixer: {
-      browsers : ['Firefox >= 20', 'Chrome >=20', 'Explorer >= 10', 'Android >= 4.0', 'Safari >= 7', 'iOS >= 5'],
-      cascade  : false
+      browsers,
+      cascade: false
     },
     minifyHTML: {
-      enabled   : true,
+      enabled   : false,
       htmlFiles : ['index.html', '404.html']
+    },
+    fingerprint: {
+      enabled             : env === 'production',
+      generateAssetMap    : true,
+      extensions          : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json'],
+      fingerprintAssetMap : true
     }
   });
 

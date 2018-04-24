@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { Service, RSVP: { Promise: RSVPPromise } } = Ember;
+import Service from '@ember/service';
+import { Promise as RSVPPromise } from 'rsvp';
 
 export default Service.extend({
   isOpen         : false,

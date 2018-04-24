@@ -1,21 +1,19 @@
-import Ember from 'ember';
-
-const { Route, RSVP } = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.l10n.t('New Speaker');
+    return this.get('l10n').t('New Speaker');
   },
 
-  model() {
+  async model() {
     const eventDetails = this.modelFor('public');
-    return RSVP.hash({
+    return {
       event : eventDetails,
-      forms : eventDetails.query('customForms', {
+      forms : await eventDetails.query('customForms', {
         sort         : 'id',
         'page[size]' : 50
       }),
-      speaker: this.get('authManager.currentUser').query('speakers', {
+      speaker: await this.get('authManager.currentUser').query('speakers', {
         filter: [
           {
             name : 'event',
@@ -28,6 +26,6 @@ export default Route.extend({
           }
         ]
       })
-    });
+    };
   }
 });

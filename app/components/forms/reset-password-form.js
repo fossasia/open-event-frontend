@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
-
-const { Component } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -20,11 +18,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your email ID')
+              prompt : this.get('l10n').t('Please enter your email ID')
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email ID')
+              prompt : this.get('l10n').t('Please enter a valid email ID')
             }
           ]
         },
@@ -34,7 +32,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your new password')
+              prompt : this.get('l10n').t('Please enter your new password')
             }
           ]
         }
@@ -56,10 +54,10 @@ export default Component.extend(FormMixin, {
           this.get('loader')
             .patch('auth/reset-password', payload)
             .then(() => {
-              this.set('successMessage', this.l10n.t('Your password has been reset successfully. Please log in to continue'));
+              this.set('successMessage', this.get('l10n').t('Your password has been reset successfully. Please log in to continue'));
             })
             .catch(() => {
-              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+              this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
             })
             .finally(()=> {
               this.set('isLoading', false);
@@ -75,13 +73,13 @@ export default Component.extend(FormMixin, {
           this.get('loader')
             .post('auth/reset-password', payload)
             .then(() => {
-              this.set('successMessage', this.l10n.t('Please go to the link sent to your email to reset your password'));
+              this.set('successMessage', this.get('l10n').t('Please go to the link sent to your email to reset your password'));
             })
             .catch(reason => {
               if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 422) {
-                this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
+                this.set('errorMessage', this.get('l10n').t('No account is registered with this email address.'));
               } else {
-                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+                this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
               }
             })
             .finally(()=> {

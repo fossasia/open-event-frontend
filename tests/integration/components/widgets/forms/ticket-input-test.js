@@ -1,22 +1,30 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('widgets/forms/ticket-input', 'Integration | Component | widgets/forms/ticket input');
+module('Integration | Component | widgets/forms/ticket input', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
+  hooks.beforeEach(function() {
+    this.actions = {};
+    this.send = (actionName, ...args) => this.actions[actionName].apply(this, args);
+  });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  test('it renders', async function(assert) {
 
-  this.on('moveTicket', function() { });
-  this.on('removeTicket', function() { });
-  this.set('ticket', {});
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{widgets/forms/ticket-input ticket=ticket moveTicketUp=(action 'moveTicket' 'up')
-                                       moveTicketDown=(action 'moveTicket' 'down')
-                                       removeTicket=(action 'removeTicket')}}`);
+    this.actions.moveTicket = function() { };
+    this.actions.removeTicket = function() { };
+    this.set('ticket', {});
 
-  assert.ok(this.$().html().trim().includes('ticket_name'));
+    await render(hbs`{{widgets/forms/ticket-input ticket=ticket moveTicketUp=(action 'moveTicket' 'up')
+                                         moveTicketDown=(action 'moveTicket' 'down')
+                                         removeTicket=(action 'removeTicket')}}`);
 
+    assert.ok(this.element.innerHTML.trim().includes('ticket_name'));
+
+  });
 });

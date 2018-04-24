@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('widgets/safe-image', 'Integration | Component | widgets/safe image');
+module('Integration | Component | widgets/safe image', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/safe-image}}`);
-  assert.ok(this.$().html().trim().includes('img'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{widgets/safe-image}}`);
+    assert.ok(this.element.innerHTML.trim().includes('img'));
+  });
 });

@@ -1,11 +1,9 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-
-const { Route } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return this.l10n.t('Notifications');
+    return this.get('l10n').t('Notifications');
   },
   model() {
     return this.get('authManager.currentUser').get('notifications').filterBy('isRead', false);
@@ -20,10 +18,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
               item.save();
             }
           });
-          this.get('notify').success(this.l10n.t('All notifications marked read successfully'));
+          this.get('notify').success(this.get('l10n').t('All notifications marked read successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.l10n.t('An unexpected error occurred.'));
+          this.get('notify').error(this.get('l10n').t('An unexpected error occurred.'));
         });
     }
   }

@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
-
-const { Component } = Ember;
 
 export default Component.extend(FormMixin, {
   classNames: ['ui', 'stackable', 'centered', 'grid'],
@@ -16,12 +14,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please upload a file')
+              prompt : this.get('l10n').t('Please upload a file')
             },
             {
               type   : 'regExp',
               value  : '/^(.*.((zip|xml|ical|ics|xcal)$))?[^.]*$/i',
-              prompt : this.l10n.t('Please upload a file in suggested format')
+              prompt : this.get('l10n').t('Please upload a file in suggested format')
             }
           ]
         }

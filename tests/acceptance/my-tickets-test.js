@@ -1,76 +1,52 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'open-event-frontend/tests/helpers/module-for-acceptance';
+import { currentURL, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { login } from 'open-event-frontend/tests/helpers/custom-helpers';
 
-moduleForAcceptance('Acceptance | my-tickets');
+module('Acceptance | my-tickets', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /my-tickets without login', function(assert) {
-  visit('/my-tickets');
-
-  andThen(function() {
+  test('visiting /my-tickets without login', async function(assert) {
+    await visit('/my-tickets');
     assert.equal(currentURL(), '/login');
   });
-});
 
-test('visiting /my-tickets/upcoming without login', function(assert) {
-  visit('/my-tickets/upcoming');
-
-  andThen(function() {
+  test('visiting /my-tickets/upcoming without login', async function(assert) {
+    await visit('/my-tickets/upcoming');
     assert.equal(currentURL(), '/login');
   });
-});
 
-test('visiting /my-tickets/saved without login', function(assert) {
-  visit('/my-tickets/saved');
-
-  andThen(function() {
+  test('visiting /my-tickets/saved without login', async function(assert) {
+    await visit('/my-tickets/saved');
     assert.equal(currentURL(), '/login');
   });
-});
 
-test('visiting /my-tickets/past without login', function(assert) {
-  visit('/my-tickets/past');
-
-  andThen(function() {
+  test('visiting /my-tickets/past without login', async function(assert) {
+    await visit('/my-tickets/past');
     assert.equal(currentURL(), '/login');
   });
-});
 
-test('visiting /my-tickets with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/my-tickets');
-    andThen(function() {
-      assert.equal(currentURL(), '/my-tickets/upcoming');
-    });
+  test('visiting /my-tickets with login', async function(assert) {
+    await login(assert);
+    await visit('/my-tickets');
+    assert.equal(currentURL(), '/my-tickets/upcoming');
   });
-});
 
-test('visiting /my-tickets/upcoming with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/my-tickets/upcoming');
-    andThen(function() {
-      assert.equal(currentURL(), '/my-tickets/upcoming');
-    });
+  test('visiting /my-tickets/upcoming with login', async function(assert) {
+    await login(assert);
+    await visit('/my-tickets/upcoming');
+    assert.equal(currentURL(), '/my-tickets/upcoming');
   });
-});
 
-test('visiting /my-tickets/saved with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/my-tickets/saved');
-    andThen(function() {
-      assert.equal(currentURL(), '/my-tickets/saved');
-    });
+  test('visiting /my-tickets/saved with login', async function(assert) {
+    await login(assert);
+    await visit('/my-tickets/saved');
+    assert.equal(currentURL(), '/my-tickets/saved');
   });
-});
 
-test('visiting /my-tickets/past with login', function(assert) {
-  login(assert);
-  andThen(function() {
-    visit('/my-tickets/past');
-    andThen(function() {
-      assert.equal(currentURL(), '/my-tickets/past');
-    });
+  test('visiting /my-tickets/past with login', async function(assert) {
+    await login(assert);
+    await visit('/my-tickets/past');
+    assert.equal(currentURL(), '/my-tickets/past');
   });
 });

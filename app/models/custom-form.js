@@ -1,9 +1,7 @@
+import { computed, observer } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
-import Ember from 'ember';
 import { belongsTo } from 'ember-data/relationships';
-
-const { observer, computed } = Ember;
 
 export default ModelBase.extend({
   fieldIdentifier : attr('string'),

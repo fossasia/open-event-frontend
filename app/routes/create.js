@@ -1,12 +1,10 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-const { Route } = Ember;
-
 export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   titleToken() {
-    return this.l10n.t('Create an Event');
+    return this.get('l10n').t('Create an Event');
   },
   model() {
     return {

@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/cell/admin/users/cell-first-name', 'Integration | Component | ui table/cell/admin/users/cell first name');
+module('Integration | Component | ui table/cell/admin/users/cell first name', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{ui-table/cell/admin/users/cell-first-name}}`);
-  assert.ok(this.$().html().trim().includes(''));
+  test('it renders', async function(assert) {
+    await render(hbs`{{ui-table/cell/admin/users/cell-first-name}}`);
+    assert.ok(this.element.innerHTML.trim().includes(''));
+  });
 });

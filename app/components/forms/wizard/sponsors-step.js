@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
-
-const { Component, computed } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -15,7 +14,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give your sponsor a name')
+              prompt : this.get('l10n').t('Please give your sponsor a name')
             }
           ]
         }

@@ -1,9 +1,7 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
 import { get, unset } from 'lodash';
 import { coerceId } from 'open-event-frontend/utils/internal';
 import attr from 'ember-data/attr';
-
-const { Mixin } = Ember;
 
 export default Mixin.create({
 

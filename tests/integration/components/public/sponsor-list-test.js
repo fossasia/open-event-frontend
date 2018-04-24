@@ -1,45 +1,47 @@
-import { test } from 'ember-qunit';
-import Ember from 'ember';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-const { Object: EmberObject, A } = Ember;
+module('Integration | Component | sponsor list', function(hooks) {
+  setupIntegrationTest(hooks);
 
-moduleForComponent('sponsor-list', 'Integration | Component | sponsor list');
+  const sponsors = A(
+    [
+      EmberObject.create({
+        name        : 'Sponsor 1',
+        url         : '#',
+        logoUrl     : 'https://placehold.it/150x60',
+        level       : 2,
+        type        : 'Gold Sponsor',
+        description : ''
+      }),
+      EmberObject.create({
+        name        : 'Sponsor 2',
+        url         : '#',
+        logoUrl     : 'https://placehold.it/150x60',
+        level       : 1,
+        type        : 'Gold Sponsor',
+        description : ''
+      }),
+      EmberObject.create({
+        name        : 'Sponsor 3',
+        url         : '#',
+        logoUrl     : 'https://placehold.it/150x60',
+        level       : 1,
+        type        : 'Silver Sponsor',
+        description : ''
+      })
+    ]
+  );
 
-const sponsors = A(
-  [
-    EmberObject.create({
-      name        : 'Sponsor 1',
-      url         : '#',
-      logoUrl     : 'https://placehold.it/150x60',
-      level       : 2,
-      type        : 'Gold Sponsor',
-      description : ''
-    }),
-    EmberObject.create({
-      name        : 'Sponsor 2',
-      url         : '#',
-      logoUrl     : 'https://placehold.it/150x60',
-      level       : 1,
-      type        : 'Gold Sponsor',
-      description : ''
-    }),
-    EmberObject.create({
-      name        : 'Sponsor 3',
-      url         : '#',
-      logoUrl     : 'https://placehold.it/150x60',
-      level       : 1,
-      type        : 'Silver Sponsor',
-      description : ''
-    })
-  ]
-);
+  test('it renders', async function(assert) {
 
-test('it renders', function(assert) {
+    this.set('sponsors', sponsors);
+    await render(hbs `{{public/sponsor-list sponsors=sponsors}}`);
 
-  this.set('sponsors', sponsors);
-  this.render(hbs `{{public/sponsor-list sponsors=sponsors}}`);
-
-  assert.ok(this.$().html().trim().includes('Sponsors'));
+    assert.ok(this.element.innerHTML.trim().includes('Sponsors'));
+  });
 });

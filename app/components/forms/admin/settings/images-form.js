@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
-
-const { Component } = Ember;
 
 export default Component.extend(FormMixin, {
 
@@ -16,7 +14,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter width')
+              prompt : this.get('l10n').t('Please enter width')
             }
           ]
         },
@@ -25,7 +23,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter height')
+              prompt : this.get('l10n').t('Please enter height')
             }
           ]
         },
@@ -34,7 +32,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter quality')
+              prompt : this.get('l10n').t('Please enter quality')
             }
           ]
         },
@@ -43,7 +41,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter width')
+              prompt : this.get('l10n').t('Please enter width')
             }
           ]
         },
@@ -52,7 +50,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter height')
+              prompt : this.get('l10n').t('Please enter height')
             }
           ]
         },
@@ -61,7 +59,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter quality')
+              prompt : this.get('l10n').t('Please enter quality')
             }
           ]
         },
@@ -70,7 +68,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter width')
+              prompt : this.get('l10n').t('Please enter width')
             }
           ]
         },
@@ -79,7 +77,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter height')
+              prompt : this.get('l10n').t('Please enter height')
             }
           ]
         },
@@ -88,7 +86,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter quality')
+              prompt : this.get('l10n').t('Please enter quality')
             }
           ]
         },
@@ -97,7 +95,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter width')
+              prompt : this.get('l10n').t('Please enter width')
             }
           ]
         },
@@ -106,7 +104,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter height')
+              prompt : this.get('l10n').t('Please enter height')
             }
           ]
         },
@@ -115,7 +113,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter size')
+              prompt : this.get('l10n').t('Please enter size')
             }
           ]
         },
@@ -124,7 +122,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter quality')
+              prompt : this.get('l10n').t('Please enter quality')
             }
           ]
         },
@@ -133,7 +131,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter size')
+              prompt : this.get('l10n').t('Please enter size')
             }
           ]
         },
@@ -142,7 +140,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter quality')
+              prompt : this.get('l10n').t('Please enter quality')
             }
           ]
         },
@@ -151,7 +149,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter size')
+              prompt : this.get('l10n').t('Please enter size')
             }
           ]
         },
@@ -160,7 +158,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter quality')
+              prompt : this.get('l10n').t('Please enter quality')
             }
           ]
         }

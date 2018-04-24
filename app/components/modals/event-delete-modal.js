@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
-
-const { computed } = Ember;
 
 export default ModalBase.extend({
   isSmall         : true,

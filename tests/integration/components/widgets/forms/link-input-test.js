@@ -1,10 +1,13 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('widgets/forms/link-input', 'Integration | Component | widgets/forms/link input');
+module('Integration | Component | widgets/forms/link input', function(hooks) {
+  setupIntegrationTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{widgets/forms/link-input}}`);
-  assert.ok(this.$().html().trim().includes('http'));
+  test('it renders', async function(assert) {
+    await render(hbs`{{widgets/forms/link-input}}`);
+    assert.ok(this.element.innerHTML.trim().includes('http'));
+  });
 });

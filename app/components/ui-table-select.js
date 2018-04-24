@@ -1,6 +1,5 @@
+import { computed } from '@ember/object';
 import UiSelect from 'ember-models-table/components/models-select';
-import Ember from 'ember';
-const { computed } = Ember;
 
 export default UiSelect.extend({
   tagName: 'div',

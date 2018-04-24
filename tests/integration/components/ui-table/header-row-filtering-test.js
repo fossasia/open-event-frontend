@@ -1,12 +1,15 @@
-import { test } from 'ember-qunit';
-import moduleForComponent from 'open-event-frontend/tests/helpers/component-helper';
+import { module, test } from 'qunit';
+import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
+import { render } from '@ember/test-helpers';
 
-moduleForComponent('ui-table/header-row-filtering', 'Integration | Component | ui table/header row filtering');
+module('Integration | Component | ui table/header row filtering', function(hooks) {
+  setupIntegrationTest(hooks);
 
-const processedColumns = [{ isVisible: true, templateForFilterCell: '', componentForFilterCell: '', useFilter: true, filterWithSelect: '' }];
-test('it renders', function(assert) {
-  this.set('processedColumns', processedColumns);
-  this.render(hbs `{{ui-table/header-row-filtering}} processedColumns=processedColumns`);
-  assert.ok(this.$().html().trim().includes(''));
+  const processedColumns = [{ isVisible: true, templateForFilterCell: '', componentForFilterCell: '', useFilter: true, filterWithSelect: '' }];
+  test('it renders', async function(assert) {
+    this.set('processedColumns', processedColumns);
+    await render(hbs `{{ui-table/header-row-filtering}} processedColumns=processedColumns`);
+    assert.ok(this.element.innerHTML.trim().includes(''));
+  });
 });

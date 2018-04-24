@@ -1,14 +1,12 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import moment from 'moment';
 
-const { Route, RSVP } = Ember;
-
 export default Route.extend({
-  model() {
+  async model() {
     const eventDetails = this.modelFor('public');
-    return RSVP.hash({
+    return {
       event   : eventDetails,
-      tickets : eventDetails.query('tickets', {
+      tickets : await eventDetails.query('tickets', {
         filter: [
           {
             and: [
@@ -26,7 +24,7 @@ export default Route.extend({
           }
         ]
       }),
-      speakers: eventDetails.query('speakers', {
+      speakers: await eventDetails.query('speakers', {
         filter: [
           {
             name : 'sessions',
@@ -40,7 +38,7 @@ export default Route.extend({
         ]
       }),
 
-      sponsors: eventDetails.get('sponsors')
-    });
+      sponsors: await eventDetails.get('sponsors')
+    };
   }
 });

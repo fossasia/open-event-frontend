@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { Controller } = Ember;
+import Controller from '@ember/controller';
 
 export default Controller.extend({
   actions: {
@@ -9,10 +7,10 @@ export default Controller.extend({
       let modules = this.get('model');
       modules.save()
         .then(() => {
-          this.notify.success(this.l10n.t('Settings have been saved successfully.'));
+          this.notify.success(this.get('l10n').t('Settings have been saved successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'));
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred. Settings not saved.'));
         })
         .finally(() => {
           this.set('isLoading', false);
