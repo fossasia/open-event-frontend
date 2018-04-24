@@ -46,6 +46,8 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 ### Note:
 If you face error in `npm install` for node and npm version, then install node version: v7.10.1 (npm version: 5.3.0 gets installed with it), which satisfies check-node-version and project runs perfectly on this configuration.
 
+* `nvm use 7.10.1
+* `npm i -g npm@5
 ## Running / Development
 
 * `ember serve`
