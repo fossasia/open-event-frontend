@@ -1,5 +1,5 @@
 import { computed } from '@ember/object';
-import UiSelect from 'ember-models-table/components/models-select';
+import UiSelect from 'ember-models-table/components/models-table/select';
 
 export default UiSelect.extend({
   tagName: 'div',
