@@ -43,9 +43,10 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 * `git clone <repository-url>` this repository
 * `cd open-event-frontend`
 * `yarn`
+
 Set Environment variable API_HOST which is running as backend at http://localhost:5000 (Open Event Server)
 * `export API_HOST=http://localhost:5000`
-* `cp .env.example .env
+* `cp .env.example .env`
 
 ### Note:
 If you face error in `npm install` for node and npm version, then install node version: v7.10.1 (npm version: 5.3.0 gets installed with it), which satisfies check-node-version and project runs perfectly on this configuration.
