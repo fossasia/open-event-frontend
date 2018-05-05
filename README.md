@@ -43,9 +43,6 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 * `git clone <repository-url>` this repository
 * `cd open-event-frontend`
 * `yarn`
-
-Set Environment variable API_HOST which is running as backend at http://localhost:5000 (Open Event Server)
-* `export API_HOST=http://localhost:5000`
 * `cp .env.example .env`
 
 ### Note:
