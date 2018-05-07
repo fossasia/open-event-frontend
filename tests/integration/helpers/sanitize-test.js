@@ -10,8 +10,8 @@ module('Integration | Helper | sanitize', function(hooks) {
     this.set('inputValue', '<p>hello</p>');
     await render(hbs`{{sanitize inputValue}}`);
     assert.equal(this.element.innerHTML.trim(), '<p>hello</p>');
-    this.set('inputValue', '<script>alert("xss");</script>');
-    await render(hbs`{{sanitize inputValue}}`);
+    this.set('inputValue1', '<script>alert("xss");</script>');
+    await render(hbs`{{sanitize inputValue1}}`);
     assert.equal(this.element.innerHTML.trim(), '');
   });
 });
