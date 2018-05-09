@@ -1,6 +1,7 @@
 import O, { observer, getWithDefault, set } from '@ember/object';
 import TableComponent from 'ember-models-table/components/models-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
+import Semantic from 'ember-models-table/themes/semanticui';
 
 const defaultMessages = {
   searchLabel            : 'Search:',
@@ -34,43 +35,12 @@ const defaultIcons = {
   deselectRow     : 'square outline icon'
 };
 
-const defaultCssClasses = {
-  outerTableWrapper              : 'ui ui-table',
-  innerTableWrapper              : 'ui segment column sixteen wide inner-table-wrapper',
-  table                          : 'ui tablet stackable very basic table',
-  globalFilterWrapper            : 'ui row',
-  columnsDropdownWrapper         : 'right floated columns-dropdown',
-  columnsDropdownButtonWrapper   : 'buttons',
-  columnsDropdown                : 'ui dropdown right floated',
-  theadCell                      : 'ui',
-  theadCellNoSorting             : 'table-header-no-sorting',
-  theadCellNoFiltering           : 'table-header-no-filtering',
-  tfooterWrapper                 : 'table-footer ui stackable grid',
-  footerSummary                  : 'text muted table-summary',
-  footerSummaryNumericPagination : 'column four wide',
-  footerSummaryDefaultPagination : 'column four wide',
-  pageSizeWrapper                : 'ui column eight wide grid',
-  pageSizeSelectWrapper          : 'left aligned',
-  paginationWrapper              : 'ui column right floated',
-  paginationWrapperNumeric       : 'column four wide',
-  paginationWrapperDefault       : 'column four wide',
-  buttonDefault                  : 'ui basic button',
-  noDataCell                     : '',
-  collapseRow                    : 'collapse-row',
-  collapseAllRows                : 'collapse-all-rows',
-  expandRow                      : 'expand-row',
-  expandAllRows                  : 'expand-all-rows',
-  thead                          : '',
-  input                          : '',
-  clearFilterIcon                : 'remove circle icon',
-  clearAllFiltersIcon            : 'remove circle outline icon',
-  globalFilterDropdownWrapper    : 'ui row stackable grid'
-};
-
 const assign = Object.assign || assign;
 
 export default TableComponent.extend({
   layout,
+
+  themeInstance: Semantic,
 
   _setupMessages: observer('customMessages', function() {
     const customIcons = getWithDefault(this, 'customMessages', {});
@@ -84,13 +54,6 @@ export default TableComponent.extend({
     let newIcons = {};
     assign(newIcons, defaultIcons, customIcons);
     set(this, 'icons', O.create(newIcons));
-  },
-
-  _setupClasses() {
-    const customClasses = getWithDefault(this, 'customClasses', {});
-    let newClasses = {};
-    assign(newClasses, defaultCssClasses, customClasses);
-    set(this, 'classes', O.create(newClasses));
   },
 
   simplePaginationTemplate: 'components/ui-table/simple-pagination',
