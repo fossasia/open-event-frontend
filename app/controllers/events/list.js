@@ -1,7 +1,9 @@
 import Controller from '@ember/controller';
+import Semantic from 'ember-models-table/themes/semanticui';
 
 export default Controller.extend({
-  columns: [
+  themeInstance : Semantic,
+  columns       : [
     {
       propertyName : 'name',
       template     : 'components/ui-table/cell/cell-event',

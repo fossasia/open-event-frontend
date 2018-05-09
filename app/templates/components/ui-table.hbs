@@ -3,8 +3,8 @@
     <div class="ui small text loader">Loading</div>
   </div>
 {{/if}}
-<div class="{{classes.outerTableWrapper}}">
-  <div class="{{classes.globalFilterDropdownWrapper}}">
+<div class="{{themeInstance.outerTableWrapper}}">
+  <div class="{{themeInstance.globalFilterDropdownWrapper}}">
     {{#if showPageSize}}
       {{partial pageSizeTemplate}}
     {{/if}}
@@ -13,9 +13,9 @@
     {{/if}}
   </div>
   <div class="ui row">
-    <div class="{{classes.innerTableWrapper}}">
-      <table class="{{classes.table}}">
-        <thead class="{{if noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{classes.thead}}">
+    <div class="{{themeInstance.innerTableWrapper}}">
+      <table class="{{themeInstance.table}}">
+        <thead class="{{if noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{themeInstance.thead}}">
           {{#if groupedHeaders.length}}
             {{partial headerGroupedRowsTemplate}}
           {{/if}}
