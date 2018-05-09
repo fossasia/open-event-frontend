@@ -2929,7 +2929,7 @@ ember-cli-autoprefixer@0.8.1:
     broccoli-autoprefixer "^5.0.0"
     lodash "^4.0.0"
 
-ember-cli-babel@6.12.0, ember-cli-babel@6.6.0, ember-cli-babel@^5.0.0, ember-cli-babel@^5.1.5, ember-cli-babel@^5.1.6, ember-cli-babel@^5.1.7, ember-cli-babel@^5.2.4, ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0, ember-cli-babel@^6.10.0, ember-cli-babel@^6.11.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.2, ember-cli-babel@^6.8.0, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
+ember-cli-babel@6.12.0, ember-cli-babel@^5.0.0, ember-cli-babel@^5.1.5, ember-cli-babel@^5.1.6, ember-cli-babel@^5.1.7, ember-cli-babel@^5.2.4, ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0, ember-cli-babel@^6.10.0, ember-cli-babel@^6.11.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.2, ember-cli-babel@^6.8.0, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.12.0.tgz#3adcdbe1278da1fcd0b9038f1360cb4ac5d4414c"
   dependencies:
@@ -3160,7 +3160,7 @@ ember-cli-htmlbars@^1.0.3, ember-cli-htmlbars@^1.1.1:
     json-stable-stringify "^1.0.0"
     strip-bom "^2.0.0"
 
-ember-cli-htmlbars@^2.0.1, ember-cli-htmlbars@^2.0.2:
+ember-cli-htmlbars@^2.0.1, ember-cli-htmlbars@^2.0.2, ember-cli-htmlbars@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-2.0.3.tgz#e116e1500dba12f29c94b05b9ec90f52cb8bb042"
   dependencies:
@@ -3763,11 +3763,11 @@ ember-notify@^5.2.1:
     ember-string-ishtmlsafe-polyfill "^1.1.0"
     object-assign "^4.1.0"
 
-ember-promise-tools@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ember-promise-tools/-/ember-promise-tools-1.0.0.tgz#0f3d5bd1cb2b7da4f02abd4cb5cf9bd5399af754"
+ember-promise-utils@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ember-promise-utils/-/ember-promise-utils-0.1.1.tgz#2a8bd863450cfa4c5e7511e805d0943f76ba6635"
   dependencies:
-    ember-cli-babel "^5.1.6"
+    ember-cli-babel "^6.6.0"
 
 ember-qunit@^3.3.2:
   version "3.4.0"
@@ -3899,12 +3899,6 @@ ember-string-ishtmlsafe-polyfill@^1.1.0:
   resolved "https://registry.yarnpkg.com/ember-string-ishtmlsafe-polyfill/-/ember-string-ishtmlsafe-polyfill-1.1.0.tgz#ecde33419ff912b91dd8acf0640eb74b9758408e"
   dependencies:
     ember-cli-babel "^5.1.7"
-    ember-cli-version-checker "^1.2.0"
-
-ember-string-ishtmlsafe-polyfill@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ember-string-ishtmlsafe-polyfill/-/ember-string-ishtmlsafe-polyfill-2.0.0.tgz#38f17038c3451999e9f1db748e424d8831e85863"
-  dependencies:
     ember-cli-version-checker "^1.2.0"
 
 ember-template-lint@^0.8.1:
@@ -8207,14 +8201,14 @@ semantic-ui-css@^2.2.14:
   dependencies:
     jquery x.*
 
-semantic-ui-ember@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/semantic-ui-ember/-/semantic-ui-ember-2.1.0.tgz#cf905d1b7eabe5a859fd066fa575ba5f381a98c5"
+semantic-ui-ember@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/semantic-ui-ember/-/semantic-ui-ember-3.0.1.tgz#97acaeb67f45958137f5abe4ee63239d4d192f86"
   dependencies:
-    ember-cli-babel "6.6.0"
-    ember-promise-tools "1.0.0"
+    ember-cli-babel "^6.11.0"
+    ember-cli-htmlbars "^2.0.3"
+    ember-promise-utils "^0.1.1"
     ember-runtime-enumerable-includes-polyfill "2.0.0"
-    ember-string-ishtmlsafe-polyfill "^2.0.0"
     semantic-ui-css "^2.2.14"
 
 "semver@2 || 3 || 4 || 5", semver@^5.1.0, semver@^5.1.1, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
