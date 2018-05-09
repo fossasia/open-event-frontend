@@ -11,6 +11,21 @@ module('Acceptance | settings', function(hooks) {
     assert.equal(currentURL(), '/login');
   });
 
+  test('visiting /settings/contact-info without login', async function(assert) {
+    await visit('/settings/contact-info');
+    assert.equal(currentURL(), '/login');
+  });
+
+  test('visiting /settings/password without login', async function(assert) {
+    await visit('/settings/password');
+    assert.equal(currentURL(), '/login');
+  });
+
+  test('visiting /settings/email-preferences without login', async function(assert) {
+    await visit('/settings/email-preferences');
+    assert.equal(currentURL(), '/login');
+  });
+
   test('visiting /settings/contact-info with login', async function(assert) {
     await login(assert);
     await visit('/settings/contact-info');
