@@ -1,7 +1,6 @@
 import O, { observer, getWithDefault, set } from '@ember/object';
 import TableComponent from 'ember-models-table/components/models-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
-import Semantic from 'ember-models-table/themes/semanticui';
 
 const defaultMessages = {
   searchLabel            : 'Search:',
@@ -39,8 +38,6 @@ const assign = Object.assign || assign;
 
 export default TableComponent.extend({
   layout,
-
-  themeInstance: Semantic,
 
   _setupMessages: observer('customMessages', function() {
     const customIcons = getWithDefault(this, 'customMessages', {});

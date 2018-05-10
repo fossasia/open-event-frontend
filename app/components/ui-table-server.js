@@ -5,14 +5,11 @@ import { run } from '@ember/runloop';
 import { A } from '@ember/array';
 import ModelsTable from 'open-event-frontend/components/ui-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
-import Semantic from 'ember-models-table/themes/semanticui';
 import { merge } from 'lodash';
 
 export default ModelsTable.extend({
 
   layout,
-
-  themeInstance: Semantic,
 
   isLoading: false,
 
