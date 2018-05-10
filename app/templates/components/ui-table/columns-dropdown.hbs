@@ -1,9 +1,9 @@
-<div class="{{classes.columnsDropdownWrapper}}">
-  <div class="{{classes.columnsDropdownButtonWrapper}}">
+<div class="{{themeInstance.columnsDropdownWrapper}}">
+  <div class="{{themeInstance.columnsDropdownButtonWrapper}}">
     <button claNameed="false">
-      {{messages.columnTitle}} <span class="{{icons.caret}}"></span>
+      {{messages.columnTitle}} <span class="{{themeInstance.icons.caret}}"></span>
     </button>
-    <div class="ui custom popup {{classes.columnsDropdown}}">
+    <div class="ui custom popup {{themeInstance.columnsDropdown}}">
       <div class="ui secondary vertical menu">
         <a class="item" {{action 'showAllColumns' column bubbles=false}} href="#">{{messages.columnsShowAll}}</a>
         <a class="item" {{action 'hideAllColumns' column bubbles=false}} href="#">{{messages.columnsHideAll}}</a>
