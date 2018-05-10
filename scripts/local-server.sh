@@ -1,4 +1,5 @@
 #!/bin/bash
+cp .env.example .env
 git clone -b development https://github.com/fossasia/open-event-server.git
 cd open-event-server
 sudo -H pip install -r requirements.txt
@@ -14,4 +15,5 @@ sudo apt-get install expect
 expect ../scripts/create.expect
 python manage.py db stamp head
 python manage.py runserver &
+cd ..
 export API_HOST="http://localhost:5000"
