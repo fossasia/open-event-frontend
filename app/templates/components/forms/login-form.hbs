@@ -34,6 +34,28 @@
             </button>
             <a href="{{href-to 'reset-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
           </div>
+          <hr width="45%" align="left" style="width:45%;float:left;"><span style="display:inline-block;width:10%;text-align:center;">OR</span><hr width="45%" align="right" style="width:45%;float:right;">
+          {{#unless noSocial}}
+            <div class="column">
+              <div class="ui segment basic center aligned">
+                <div class="mobile hidden login-with-fb"> </div>
+                <div class="ui vertical buttons" style="width:100%;">
+                  <button type="button" class="ui facebook button">
+                    <i class="facebook icon"></i>
+                    {{t 'Login with Facebook'}}
+                  </button>
+                  <button type="button" class="ui twitter button">
+                    <i class="twitter icon"></i>
+                    {{t 'Login with Twitter'}}
+                  </button>
+                  <button type="button" class="ui google plus button">
+                    <i class="google plus icon"></i>
+                    {{t 'Login with Google Plus'}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          {{/unless}}
         </div>
         <a href="{{href-to 'register'}}" class="ui secondary segment center aligned text muted weight-800">
           {{t 'New to site? Create Account'}}
@@ -41,25 +63,4 @@
       </div>
     </form>
   </div>
-  {{#unless noSocial}}
-    <div class="column">
-      <div class="ui segment basic center aligned">
-        <div class="mobile hidden login-with-fb"> </div>
-        <div class="ui vertical buttons">
-          <button type="button" class="ui facebook button">
-            <i class="facebook icon"></i>
-            {{t 'Login with Facebook'}}
-          </button>
-          <button type="button" class="ui twitter button">
-            <i class="twitter icon"></i>
-            {{t 'Login with Twitter'}}
-          </button>
-          <button type="button" class="ui google plus button">
-            <i class="google plus icon"></i>
-            {{t 'Login with Google Plus'}}
-          </button>
-        </div>
-      </div>
-    </div>
-  {{/unless}}
 </div>
