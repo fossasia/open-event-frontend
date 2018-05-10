@@ -1,7 +1,7 @@
 <tr>
   {{#each processedColumns as |column|}}
     {{#if column.isVisible}}
-      <th class="header-filter {{classes.theadCell}} {{unless column.useFilter classes.theadCellNoFiltering}}">
+      <th class="header-filter {{themeInstance.theadCell}} {{unless column.useFilter themeInstance.theadCellNoFiltering}}">
         {{#if column.templateForFilterCell}}
           {{partial column.templateForFilterCell}}
         {{else}}
@@ -11,9 +11,9 @@
             {{#if column.useFilter}}
               <div class="ui input {{if column.filterUsed 'has-feedback'}}">
                 {{#if column.filterWithSelect}}
-                  {{models-select options=column.filterOptions cssPropertyName=column.cssPropertyName value=column.filterString class=(concat classes.input 'changeFilterForColumn')}}
+                  {{models-select options=column.filterOptions cssPropertyName=column.cssPropertyName value=column.filterString class=(concat themeInstance.input 'changeFilterForColumn')}}
                 {{else}}
-                  {{input type='text' value=column.filterString class=classes.input placeholder=''}}
+                  {{input type='text' value=column.filterString class=themeInstance.input placeholder=''}}
                 {{/if}}
               </div>
             {{else}}

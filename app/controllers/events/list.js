@@ -1,13 +1,6 @@
 import Controller from '@ember/controller';
-import Semantic from 'ember-models-table/themes/semanticui';
-import { computed } from '@ember/object';
 
 export default Controller.extend({
-
-  themeInstance: computed(function() {
-    return  Semantic.create();
-  }),
-
   columns: [
     {
       propertyName : 'name',

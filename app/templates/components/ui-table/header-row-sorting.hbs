@@ -2,7 +2,7 @@
   {{#each processedColumns as |column|}}
     {{#if column.isVisible}}
       {{#if column.useSorting}}
-        <th class="{{classes.theadCell}}">
+        <th class="{{themeInstance.classes.theadCell}}">
           <div role="button" class="ui" {{action 'sort' column}}>
             {{#if column.templateForSortCell}}
               {{partial column.templateForSortCell}}
@@ -11,13 +11,13 @@
                 {{component column.componentForSortCell data=data column=column row=record table=this}}
               {{else}}
                 {{column.title}}
-                {{partial headerSortingIconsTemplate}}
+                <i class="{{if column.sortAsc 'caret up icon'}} {{if column.sortDesc 'caret down icon'}}"></i>
               {{/if}}
             {{/if}}
           </div>
         </th>
       {{else}}
-        <th class="{{classes.theadCell}} {{classes.theadCellNoSorting}}">
+        <th class="{{themeInstance.classes.theadCell}} {{themeInstance.classes.theadCellNoSorting}}">
           {{#if column.templateForSortCell}}
             {{partial column.templateForSortCell}}
           {{else}}
