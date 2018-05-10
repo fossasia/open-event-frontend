@@ -1,3 +1,4 @@
+#!/bin/bash
 git clone -b development https://github.com/fossasia/open-event-server.git
 cd open-event-server
 sudo -H pip install -r requirements.txt
