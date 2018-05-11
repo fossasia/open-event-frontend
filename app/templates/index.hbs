@@ -4,9 +4,13 @@
   {{#if model}}
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
+      <div class="ui link cards">
       {{#each model as |event|}}
+        <div class="card">
         {{event-card event=event shareEvent=(action 'shareEvent')}}
+        </div>
       {{/each}}
+      </div>
     </div>
   {{else}}
     <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
