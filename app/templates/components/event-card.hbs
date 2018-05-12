@@ -11,7 +11,7 @@
   <div class="ui card {{unless isWide 'event fluid' 'thirteen wide computer ten wide tablet sixteen wide mobile column'}}">
     {{#unless isWide}}
       <a class="image" href="{{href-to 'public' event.identifier}}">
-        {{widgets/safe-image src=(if event.originalImageUrl event.originalImageUrl event.originalImageUr)}}
+        {{widgets/safe-image src=(if event.originalImageUrl event.originalImageUrl event.originalImageUrl)}}
       </a>
     {{/unless}}
     <a class="main content" href="{{href-to 'public' event.identifier}}">
