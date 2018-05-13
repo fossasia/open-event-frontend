@@ -1,0 +1,6 @@
+#!/usr/bin/expect
+set timeout 60
+spawn python create_db.py
+expect "Enter email for super_admin    : " {send -- "admin@admin.com\r"}
+expect "Enter password for super_admin : " {send -- "password\r"}
+expect eof

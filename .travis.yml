@@ -2,9 +2,9 @@ language: node_js
 
 node_js:
   - "8"
-  - "10"
+#  - "10"
 
-# sudo: required
+sudo: required
 
 # services:
 #  - docker
@@ -29,6 +29,7 @@ after_script: greenkeeper-lockfile-upload
 install: yarn
 
 script:
+  - bash scripts/local-server.sh
   - node scripts/l10n.js generate
   - yarn lint:scss
   - COVERAGE=true yarn test
