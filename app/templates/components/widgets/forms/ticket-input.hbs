@@ -43,17 +43,17 @@
       <h4>Settings</h4>
       <div class="field">
         <label for="ticket_description">{{t 'Ticket Description'}}</label>
-        {{textarea rows=3 id='ticket_description' placeholder=(t 'This description would be available to the attendees when ordering tickets.') maxlength=160}}
+        {{textarea rows=3 name='ticket_description' placeholder=(t 'This description would be available to the attendees when ordering tickets.') maxlength=160}}
       </div>
       <div class="field">
         <div class="ui checkbox">
-          {{input type='checkbox' checked=ticket.descriptionVisible id='description_visible'}}
+          {{input type='checkbox' checked=ticket.descriptionVisible name='description_visible'}}
           <label for="description_visible">{{t 'Display Ticket description on Public Events page'}}</label>
         </div>
       </div>
       <div class="field">
         <div class="ui checkbox">
-          {{input type='checkbox' checked=ticket.ticketHidden id='ticket_hidden'}}
+          {{input type='checkbox' checked=ticket.ticketHidden name='ticket_hidden'}}
           <label for="description_visible">
             {{t 'Hide Ticket from the Public Events page'}}<br>
             <span class="text muted">{{t 'Ticket would still be available for sale to Organizers.'}}</span>
@@ -63,7 +63,7 @@
       {{#if (eq ticket.type 'paid')}}
         <div class="field">
           <div class="ui checkbox">
-            {{input type='checkbox' checked=ticket.absorbFees id='absorb_fees'}}
+            {{input type='checkbox' checked=ticket.absorbFees name='absorb_fees'}}
             <label for="absorb_fees">
               {{t 'Absorb Fees'}} <br>
               <span class="text muted">{{t 'If unchecked fees will be passed on to the buyer.'}}</span>
@@ -75,7 +75,7 @@
         <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_start_date">{{t 'Starts'}}</label>
           {{widgets/forms/date-picker type='text'
-                                      inputId='ticket_start_date'
+                                      name='ticket_start_date'
                                       placeholder='MM/DD/YYYY'
                                       rangePosition='start'
                                       value=ticket.salesStartAtDate}}
@@ -83,7 +83,7 @@
         <div class="three wide field">
           <label for="ticket_start_time">&nbsp;</label>
           {{widgets/forms/time-picker type='text'
-                                      inputId='ticket_start_time'
+                                      name='ticket_start_time'
                                       placeholder='HH:MM'
                                       rangePosition='start'
                                       value=ticket.salesStartAtTime}}
@@ -91,7 +91,7 @@
         <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_end_date">{{t 'Ends'}}</label>
           {{widgets/forms/date-picker type='text'
-                                      inputId='ticket_end_date'
+                                      name='ticket_end_date'
                                       placeholder='MM/DD/YYYY'
                                       rangePosition='end'
                                       value=ticket.salesEndsAtDate}}
@@ -99,14 +99,14 @@
         <div class="three wide field">
           <label for="ticket_end_time">&nbsp;</label>
           {{widgets/forms/time-picker type='text'
-                                      inputId='ticket_end_time'
+                                      name='ticket_end_time'
                                       placeholder='HH:MM'
                                       rangePosition='end'
                                       value=ticket.salesEndsAtTime}}
         </div>
         <div class="five wide field has popup" data-content="Uses the timezone of the event.">
           <label class="required" for="ticket_timezone">{{t 'Timezone'}}</label>
-          {{input type='text' disabled=true value=timezone id='ticket_timezone' }}
+          {{input type='text' disabled=true value=timezone name='ticket_timezone' }}
         </div>
       </div>
 
@@ -115,11 +115,11 @@
         <div class="fields">
           <div class="three wide field">
             <label class="required text muted" for="ticket_min_order">{{t 'Minimum Order'}}</label>
-            {{input type='number' value=ticket.minOrder id='ticket_min_order'}}
+            {{input type='number' value=ticket.minOrder name='ticket_min_order'}}
           </div>
           <div class="three wide field">
             <label class="required text muted" for="ticket_max_order">{{t 'Maximum Order'}}</label>
-            {{input type='number' value=ticket.maxOrder id='ticket_max_order'}}
+            {{input type='number' value=ticket.maxOrder name='ticket_max_order'}}
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@
       <div class="{{unless device.isMobile 'six wide'}} field">
         <label for="code_groups">{{t 'Ticket Code Group'}}</label>
         {{#ui-dropdown class='fluid multiple search selection' allowAdditions=true}}
-          {{input type='hidden' id='ticket_code_groups' value=ticket.groups}}
+          {{input type='hidden' name='ticket_code_groups' value=ticket.groups}}
           <div class="default text">{{t 'Add Code Groups'}}</div>
           <div class="menu">
           </div>
