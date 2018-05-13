@@ -9,6 +9,10 @@
         <div class="eight wide column right aligned">
           {{#if notification.isRead}}
             <i class="checkmark box icon"></i>
+          {{else}}
+            <button class="tiny ui button" {{action 'markAsRead' notification}}>
+              {{t 'Mark as read'}}
+            </button>
           {{/if}}
         </div>
       </div>
