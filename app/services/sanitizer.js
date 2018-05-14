@@ -9,7 +9,7 @@ export default Service.extend({
   options: {
     allowedTags       : ['b', 'strong', 'i', 'em', 'u', 'ol', 'ul', 'li', 'a', 'p'],
     allowedAttributes : {
-      a: ['href', 'rel', 'target']
+      'a': ['href', 'rel', 'target']
     },
     selfClosing           : ['br'],
     allowedSchemes        : ['http', 'https', 'ftp', 'mailto'],
