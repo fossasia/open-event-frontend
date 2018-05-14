@@ -4,7 +4,7 @@ import { sumBy } from 'lodash';
 
 export default Controller.extend({
   hasTicketsInOrder: computed('model.@each.quantity', function() {
-    return sumBy(this.get('model'), 'quantity') > 0;
+    return sumBy(this.get('model'), item => item.get('quantity')) > 0;
   }),
   total: computed('model.@each.itemTotal', function() {
     let sum = 0.0;
