@@ -8,9 +8,11 @@
     {{#if device.isMobile}}
       <div class="ui hidden fitted divider"></div>
     {{/if}}
-    <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Withdraw Proposal'}}</button>
-    {{#if device.isMobile}}
-      <div class="ui hidden fitted divider"></div>
+    {{#if isUpcoming}}
+      <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Withdraw Proposal'}}</button>
+      {{#if device.isMobile}}
+        <div class="ui hidden fitted divider"></div>
+      {{/if}}
     {{/if}}
   </div>
   <div class="ui row">
