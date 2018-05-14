@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import moment from 'moment';
 
 export default Controller.extend({
   isUpcoming: computed('model.endsAt', function() {
