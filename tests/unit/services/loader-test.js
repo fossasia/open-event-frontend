@@ -27,3 +27,4 @@ module('Unit | Service | loader', function(hooks) {
     await service.delete('https://httpbin.org/delete', { isExternal: true });
   });
 });
+
