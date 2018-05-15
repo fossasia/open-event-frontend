@@ -9,7 +9,7 @@ export default Default.extend({
     'footer'               : 'components/ui-table/component-footer',
     'pageSizeSelect'       : 'components/ui-table/page-size',
     'global-filter'        : 'components/ui-table/global-filter',
-    'columns-dropdown'     : 'open-event-frontend/components/ui-table/columns-dropdown',
+    'columns-dropdown'     : 'components/ui-table/columns-dropdown',
     'row-sorting'          : 'components/ui-table/header-row-sorting',
     'row-filtering'        : 'components/ui-table/header-row-filtering',
     'grouped-header'       : 'components/ui-table/header-grouped-row',
