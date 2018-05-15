@@ -5,5 +5,7 @@ import Semantic from 'open-event-frontend/themes/semantic';
 export default TableComponent.extend({
   layout,
 
-  themeInstance: Semantic.create()
+  themeInstance: Semantic.create(),
+
+  useFilteringByColumns: false
 });
