@@ -1,0 +1,15 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Login or Signup'}}
+</div>
+<div class="content">
+  <h4 class="ui header">{{t 'Login or Signup before you can access this'}}</h4>
+  <div>
+    {{#link-to 'login' class='ui teal button' invokeAction=(action 'toggleView')}}
+      {{t 'Login'}}
+    {{/link-to}}
+    {{#link-to 'register' class='ui blue button' invokeAction=(action 'toggleView')}}
+      {{t 'Signup'}}
+    {{/link-to}}
+  </div>
+</div>
