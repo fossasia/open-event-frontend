@@ -1,4 +1,4 @@
-export const paymentCountries = ['US', 'AL', 'AR', 'AU', 'AT', 'BE', 'BR', 'CA', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HK', 'HU', 'IE', 'IL', 'IT', 'JP', 'LV', 'LT', 'LU', 'MY', 'MT', 'MX', 'NL', 'NZ', 'NO', 'PH', 'PL', 'PT', 'SG', 'SK', 'SI', 'ES', 'SE', 'CH', 'TW', 'GB'];
+export const paymentCountries = ['US', 'AL', 'AR', 'AU', 'AT', 'BE', 'BR', 'CA', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HK', 'HU', 'IE', 'IL', 'IN', 'IT', 'JP', 'LV', 'LT', 'LU', 'MY', 'MT', 'MX', 'NL', 'NZ', 'NO', 'PH', 'PL', 'PT', 'SG', 'SK', 'SI', 'ES', 'SE', 'CH', 'TW', 'GB'];
 
 export const paymentCurrencies = [
   {

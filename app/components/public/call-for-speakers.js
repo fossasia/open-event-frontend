@@ -5,6 +5,9 @@ export default Component.extend({
   actions: {
     openProposalModal() {
       this.set('isCfsModalOpen', true);
+    },
+    openLoginModal() {
+      this.set('isLoginModalOpen', true);
     }
   },
   isNewSpeaker: computed('data.userSpeaker', function() {
