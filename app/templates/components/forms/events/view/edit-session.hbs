@@ -1,0 +1,21 @@
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+  <div class="field">
+    <label>{{t 'Title'}}</label>
+    {{input type='text' id='title' value=data.title}}
+  </div>
+  <div class="field">
+    <label>{{t 'Short Abstract'}}</label>
+    {{widgets/forms/rich-text-editor value=data.shortAbstract name='shortAbstract'}}
+  </div>
+  <div class="field">
+    <label>{{t 'Comments'}}</label>
+    {{widgets/forms/rich-text-editor value=data.comments name='comments'}}
+  </div>
+  <div class="field">
+    <label>{{t 'Slides'}}</label>
+    {{input type='text' value=data.slidesUrl}}
+  </div>
+  <button type="submit" class="ui teal submit button update-changes">
+    {{t 'Save Session'}}
+  </button>
+</form>
