@@ -7,7 +7,7 @@ module('Integration | Component | events/view/export/api response', function(hoo
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{events/view/export/api-response l10n=l10n}}`);
+    await render(hbs`{{events/view/export/api-response l10n=l10n eventId=modelId}}`);
     assert.ok(this.element.innerHTML.trim().includes('Access event information'));
   });
 });

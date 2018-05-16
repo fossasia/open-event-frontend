@@ -1,14 +1,74 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { htmlSafe } from '@ember/string';
-
+import { buildUrl } from 'open-event-frontend/utils/url';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Component.extend({
-  json: computed(function() {
-    return htmlSafe(syntaxHighlight(
-      '{\n "name": "Sample event",\n "starts_at" : "2017-03-10T17:00:0",\n "ends_at":"2017-03-12T17:00:0"\n}'
-    ));
-  })
+
+  didInsertElement() {
+    this._super(...arguments);
+    this.makeRequest();
+  },
+
+  isLoading: false,
+
+  baseUrl: computed('eventId', function() {
+    return `${`${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/`}${this.get('eventId')}`;
+  }),
+
+  displayUrl: computed('eventId', function() {
+    return `${`${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/`}${this.get('eventId')}`;
+  }),
+
+  toggleSwitches: {
+    sessions       : false,
+    microlocations : false,
+    tracks         : false,
+    speakers       : false,
+    sponsors       : false,
+    tickets        : false
+  },
+
+  makeRequest() {
+    this.set('isLoading', true);
+    this.get('loader')
+      .load(this.get('displayUrl'), { isExternal: true })
+      .then(json => {
+        json = JSON.stringify(json, null, 2);
+        this.set('json', htmlSafe(syntaxHighlight(json)));
+      })
+      .catch(() => {
+        this.get('notify').error(this.get('l10n').t('Could not fetch from the server'));
+        this.set('json', 'Could not fetch from the server');
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+  },
+
+  buildDisplayUrl() {
+    let newUrl = this.get('baseUrl');
+    const include = [];
+
+    for (const key in this.get('toggleSwitches')) {
+      if (this.get('toggleSwitches').hasOwnProperty(key)) {
+        this.get('toggleSwitches')[key] && include.push(key);
+      }
+    }
+
+    this.set('displayUrl', buildUrl(newUrl, {
+      include: include.length > 0 ? include : undefined
+    }, true));
+  },
+
+  actions: {
+    checkboxChange(data) {
+      this.set(`toggleSwitches.${data}`, !this.get(`toggleSwitches.${data}`));
+      this.buildDisplayUrl();
+      this.makeRequest();
+    }
+  }
 });
 
 function syntaxHighlight(json) {
