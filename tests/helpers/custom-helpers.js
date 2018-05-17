@@ -6,8 +6,8 @@ export async function login(assert, email = null, password = null, gotoLoginPage
     await visit('/login');
   }
   assert.equal(currentURL(), '/login');
-  await fillIn('input[name=email]', email !== null ? email : 'opev_test_user@nada.email');
-  await fillIn('input[name=password]', password !== null ? password : 'opev_test_user');
+  await fillIn('input[name=email]', email !== null ? email : 'opev-fe@test.com');
+  await fillIn('input[name=password]', password !== null ? password : 'test-fe-user');
   await click('button[type=submit]');
 }
 
