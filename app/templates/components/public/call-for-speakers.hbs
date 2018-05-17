@@ -20,15 +20,9 @@
 {{sanitize data.speakersCall.announcement}}
 <div class="ui hidden divider"></div>
 {{#if data.speakersCall.isOpen}}
-  {{#if session.isAuthenticated}}
-    <button type="submit" class="ui teal submit button" {{action 'openProposalModal'}}>
-      {{t 'Submit Proposal'}}
-    </button>
-  {{else}}
-    <button type="submit" class="ui teal submit button" {{action 'openLoginModal'}}>
-      {{t 'Submit Proposal'}}
-    </button>
-  {{/if}}
+  <button type="submit" class="ui teal submit button" {{action 'openModal'}}>
+    {{t 'Submit Proposal'}}
+  </button>
 {{/if}}
 
 {{modals/cfs-proposal-modal isOpen=isCfsModalOpen isNewSpeaker=isNewSpeaker isNewSession=isNewSession}}
