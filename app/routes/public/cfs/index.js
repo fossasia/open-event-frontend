@@ -7,9 +7,8 @@ export default Route.extend({
 
   async model() {
     const eventDetails = this.modelFor('public');
-    return {
-      event       : eventDetails,
-      userSpeaker : await this.get('authManager.currentUser').query('speakers', {
+    if (this.get('session.isAuthenticated')) {
+      const userSpeaker = await this.get('authManager.currentUser').query('speakers', {
         filter: [
           {
             name : 'event',
@@ -21,8 +20,8 @@ export default Route.extend({
             }
           }
         ]
-      }),
-      userSession: await this.get('authManager.currentUser').query('sessions', {
+      });
+      const userSession = await this.get('authManager.currentUser').query('sessions', {
         filter: [
           {
             name : 'event',
@@ -34,8 +33,18 @@ export default Route.extend({
             }
           }
         ]
-      }),
-      speakersCall: await eventDetails.get('speakersCall')
-    };
+      });
+      return {
+        event        : eventDetails,
+        userSpeaker,
+        userSession,
+        speakersCall : await eventDetails.get('speakersCall')
+      };
+    } else {
+      return {
+        event        : eventDetails,
+        speakersCall : await eventDetails.get('speakersCall')
+      };
+    }
   }
 });
