@@ -9,5 +9,26 @@ export default Controller.extend({
       return false;
     }
     return true;
-  })
+  }),
+
+  actions: {
+    openProposalDeleteModal() {
+      this.set('isProposalDeleteModalOpen', true);
+    },
+    deleteProposal() {
+      this.set('isLoading', true);
+      this.get('model').destroyRecord()
+        .then(() => {
+          this.transitionToRoute('my-sessions.index');
+          this.notify.success(this.get('l10n').t('Proposal has been deleted successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+          this.set('isProposalDeleteModalOpen', false);
+        });
+    }
+  }
 });

@@ -9,7 +9,7 @@
       <div class="ui hidden fitted divider"></div>
     {{/if}}
     {{#if isUpcoming}}
-      <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Withdraw Proposal'}}</button>
+      <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}" {{action 'openProposalDeleteModal'}}>{{t 'Withdraw Proposal'}}</button>
       {{#if device.isMobile}}
         <div class="ui hidden fitted divider"></div>
       {{/if}}
@@ -57,3 +57,7 @@
     </div>
   </div>
 </div>
+
+{{modals/proposal-delete-modal isOpen=isProposalDeleteModalOpen
+                              proposalName=model.title
+                              deleteProposal=(action 'deleteProposal')}}
