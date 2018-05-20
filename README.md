@@ -53,6 +53,16 @@ If you face error in `npm install` for node and npm version, then install node v
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
+### Note:
+If someone finds problem to run the app decoupled with [backend](https://github.com/fossasia/open-event-server) locally.
+Follow the steps:
+1. `sudo gedit /etc/environment`
+2. Edit this file with line `API_HOST="http://localhost:5000"`
+3. Close the file
+4. Run `source /etc/environment`
+
+This will add System Wide environment variable `API_HOST`
+
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details.
