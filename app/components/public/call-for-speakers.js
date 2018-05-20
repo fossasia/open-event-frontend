@@ -3,8 +3,12 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   actions: {
-    openProposalModal() {
-      this.set('isCfsModalOpen', true);
+    openModal() {
+      if (this.get('session.isAuthenticated')) {
+        this.set('isCfsModalOpen', true);
+      } else {
+        this.set('isLoginModalOpen', true);
+      }
     }
   },
   isNewSpeaker: computed('data.userSpeaker', function() {

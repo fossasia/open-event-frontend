@@ -28,7 +28,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || 'https://open-event-api.herokuapp.com',
+      apiHost      : process.env.API_HOST || 'https://open-event-api-dev.herokuapp.com',
       apiNamespace : process.env.API_NAMESPACE || 'v1'
     },
 
@@ -122,7 +122,7 @@ module.exports = function(environment) {
       'https://maps.gstatic.com',
       'https://*.eventyay.com',
       'https://eventyay.com',
-      'https://open-event-api.herokuapp.com',
+      'https://open-event-api-dev.herokuapp.com',
       'www.google-analytics.com',
       ENV.sentry.hostname
     ],

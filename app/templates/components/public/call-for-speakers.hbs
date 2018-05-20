@@ -20,9 +20,10 @@
 {{sanitize data.speakersCall.announcement}}
 <div class="ui hidden divider"></div>
 {{#if data.speakersCall.isOpen}}
-  <button type="submit" class="ui teal submit button" {{action 'openProposalModal'}}>
+  <button type="submit" class="ui teal submit button" {{action 'openModal'}}>
     {{t 'Submit Proposal'}}
   </button>
 {{/if}}
 
 {{modals/cfs-proposal-modal isOpen=isCfsModalOpen isNewSpeaker=isNewSpeaker isNewSession=isNewSession}}
+{{modals/login-signup-modal isOpen=isLoginModalOpen}}

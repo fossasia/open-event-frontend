@@ -15,12 +15,14 @@
         {{t 'Edit Speaker Details'}}
       {{/if}}
     {{/link-to}}
-    {{#link-to 'public.cfs.new-session' class='ui blue button' invokeAction=(action 'toggleView')}}
-      {{#if isNewSession}}
-        {{t 'Add Session Proposal'}}
-      {{else}}
-        {{t 'Edit Session Proposal'}}
-      {{/if}}
-    {{/link-to}}
+    {{#unless isNewSpeaker}}
+      {{#link-to 'public.cfs.new-session' class='ui blue button' invokeAction=(action 'toggleView')}}
+        {{#if isNewSession}}
+          {{t 'Add Session Proposal'}}
+        {{else}}
+          {{t 'Edit Session Proposal'}}
+        {{/if}}
+      {{/link-to}}
+    {{/unless}}
   </div>
 </div>
