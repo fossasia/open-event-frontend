@@ -53,6 +53,18 @@ If you face error in `npm install` for node and npm version, then install node v
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
+### Note:
+For using the local deployment of server along with the frontend, the environment variable API_HOST must be passed accordingly. Follow the steps:
+1. `sudo <text_editor> /etc/environment`
+
+> Text editors like `gedit`, `nano`, `subl` etc.
+
+2. Edit this file with line `API_HOST="http://localhost:5000"`
+3. Close the file
+4. Run `source /etc/environment`
+
+This will add System Wide environment variable `API_HOST`
+
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details.
