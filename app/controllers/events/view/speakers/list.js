@@ -25,5 +25,20 @@ export default Controller.extend({
       title        : 'Actions',
       template     : 'components/ui-table/cell/events/view/speakers/cell-buttons'
     }
-  ]
+  ],
+  actions: {
+    deleteSpeaker(speaker) {
+      this.set('isLoading', true);
+      speaker.destroyRecord()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Speaker has been deleted successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    }
+  }
 });
