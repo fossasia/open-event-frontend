@@ -54,9 +54,11 @@ If you face error in `npm install` for node and npm version, then install node v
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Note:
-If someone finds problem to run the app decoupled with [backend](https://github.com/fossasia/open-event-server) locally.
-Follow the steps:
-1. `sudo gedit /etc/environment`
+For using the local deployment of server along with the frontend, the environment variable API_HOST must be passed accordingly. Follow the steps:
+1. `sudo <text_editor> /etc/environment`
+
+> Text editors like `gedit`, `nano`, `subl` etc.
+
 2. Edit this file with line `API_HOST="http://localhost:5000"`
 3. Close the file
 4. Run `source /etc/environment`
