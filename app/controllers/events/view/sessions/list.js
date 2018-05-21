@@ -65,7 +65,7 @@ export default Controller.extend({
         });
     },
     editSession(id) {
-      this.transitionToRoute('public.cfs.new-session', id);
+      this.transitionToRoute('events.view.sessions.edit', id);
     },
     viewSession(id) {
       this.transitionToRoute('my-sessions.view', id);
