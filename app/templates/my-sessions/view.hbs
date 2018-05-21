@@ -1,6 +1,6 @@
 <div class="ui container">
   <div class="ui row">
-    <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
+    <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}" {{action 'editSession' model.event.id model.id}}>{{t 'Edit Session Proposal'}}</button>
     {{#if device.isMobile}}
       <div class="ui hidden fitted divider"></div>
     {{/if}}

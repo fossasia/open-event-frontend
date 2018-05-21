@@ -7,7 +7,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
   },
   model(params) {
     return this.store.findRecord('session', params.session_id, {
-      include: 'session-type,speakers,track'
+      include: 'session-type,speakers,track,event'
     });
   }
 });
