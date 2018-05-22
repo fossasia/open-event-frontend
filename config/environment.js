@@ -124,6 +124,7 @@ module.exports = function(environment) {
       'https://eventyay.com',
       'https://open-event-api-dev.herokuapp.com',
       'www.google-analytics.com',
+      'http://127.0.0.1:5000',
       ENV.sentry.hostname
     ],
     'script-src': [
@@ -138,6 +139,7 @@ module.exports = function(environment) {
       'www.google-analytics.com',
       'https://platform.twitter.com',
       'https://cdn.syndication.twimg.com',
+      'http://127.0.0.1:5000',
       'cdn.ravenjs.com'
     ],
     'font-src': [
