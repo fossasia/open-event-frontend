@@ -27,26 +27,12 @@ Our chat channel is on Gitter here :
 
 > *[gitter.im/fossasia/open-event-frontend](https://gitter.im/fossasia/open-event-frontend)*
 
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* **[Git](https://git-scm.com/)**
-* **[Node.js 8.x LTS](https://nodejs.org/)**
-* **[Yarn](https://yarnpkg.com/en/docs/install)**
-* **[Ember CLI](https://ember-cli.com/)** - `yarn global add ember-cli`
-
-It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the `file-watcher/auto-build` service of the ember build server.
-
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd open-event-frontend`
-* `yarn`
-* `cp .env.example .env`
+The Open Event Frontend can be easily deployed on a variety of platforms. Detailed platform specific instructions have been provided below.
 
-### Note:
-If you face error in `npm install` for node and npm version, then install node version: v7.10.1 (npm version: 5.3.0 gets installed with it), which satisfies check-node-version and project runs perfectly on this configuration.
+1. [Local Installation](/docs/installation/local.md)
+1. [Publish to GitHub Pages](/docs/installation/Publish-to-GitHub-Pages.md)
 
 ## Running / Development
 
