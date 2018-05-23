@@ -153,7 +153,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   url: computed('identifier', function() {
-    return `${location.protocol}//${location.hostname}${this.get('router').urlFor('public', this.get('id'))}`;
+    return location.origin + this.get('router').urlFor('public', this.get('id'));
   }),
 
   sessionsByState: computed('sessions', function() {
