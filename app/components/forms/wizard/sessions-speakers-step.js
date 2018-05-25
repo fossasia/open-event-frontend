@@ -14,15 +14,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        microlocation: {
-          identifier : 'microlocation',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter name for microlocation')
-            }
-          ]
-        },
         sessionType: {
           identifier : 'session',
           rules      : [
@@ -38,15 +29,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter name for track')
-            }
-          ]
-        },
-        announcement: {
-          identifier : 'announcement',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter an Announcement')
             }
           ]
         },
