@@ -212,7 +212,7 @@ export default Mixin.create(MutableArray, {
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'mobile',
         form            : 'speaker',
-        type            : 'text',
+        type            : 'number',
         isRequired      : false,
         isIncluded      : false,
         event           : parent
