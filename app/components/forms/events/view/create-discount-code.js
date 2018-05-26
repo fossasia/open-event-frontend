@@ -102,7 +102,7 @@ export default Component.extend(FormMixin, {
     };
   },
   discountLink: computed('data.code', function() {
-    const params = this.get('routing.router.router.state.params');
+    const params = this.get('router._router.currentState.routerJsState.params');
     return location.origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
   }),
   actions: {
