@@ -17,18 +17,21 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName : 'submitted-at',
+      propertyName : 'submittedAt',
       template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Submitted At'
     },
     {
-      propertyName : 'starts-at',
-      template     : 'components/ui-table/cell/cell-date',
+      propertyName : 'startsAt',
+      template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Starts At'
     },
     {
-      propertyName : 'ends-at',
-      template     : 'components/ui-table/cell/cell-date',
+      propertyName : 'endsAt',
+      template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Ends At'
     },
     {
