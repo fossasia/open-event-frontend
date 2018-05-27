@@ -23,13 +23,15 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName : 'submitted-at',
+      propertyName : 'submittedAt',
       template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Submission Date'
     },
     {
-      propertyName : 'last-modified',
+      propertyName : 'lastModifiedAt',
       template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Last Modified'
     },
     {

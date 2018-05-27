@@ -1,4 +1,5 @@
-{{events/events-table columns=columns data=model
+{{events/events-table
+  columns=columns data=model
   useNumericPagination=true
   showGlobalFilter=true
   showPageSize=true
@@ -7,4 +8,5 @@
   editEvent=(action 'editEvent')
   openDeleteEventModal=(action 'openDeleteEventModal')
 }}
-{{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen confirmName=confirmName eventName=eventName deleteEvent=(action 'deleteEvent')}}
+{{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen confirmName=confirmName
+                            eventName=eventName deleteEvent=(action 'deleteEvent')}}
