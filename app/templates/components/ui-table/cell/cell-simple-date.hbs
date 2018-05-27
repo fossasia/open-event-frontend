@@ -1,6 +1,6 @@
-{{#if record.submittedAt}}
+{{#if (get record column.propertyName)}}
   <span>
-    {{moment-format record.submittedAt 'MMMM DD, YYYY - HH:mm A'}}
+    {{moment-format (get record column.propertyName) (if column.dateFormat column.dateFormat 'MMMM DD, YYYY - HH:mm A')}}
   </span>
 {{else}}
   <span>
