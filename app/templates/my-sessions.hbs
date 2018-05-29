@@ -1,4 +1,5 @@
 {{#if (and (not-includes session.currentRouteName 'my-sessions.view'))}}
+  {{unverified-user-message}}
   <h1 class="ui header">{{t 'My Sessions'}}</h1>
   <div class="ui grid">
     <div class="row">
