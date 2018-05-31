@@ -150,6 +150,7 @@ router.map(function() {
         this.route('list', { path: '/:topic_id' });
       });
       this.route('translations');
+      this.route('events');
     });
   });
   this.route('orders', function() {
