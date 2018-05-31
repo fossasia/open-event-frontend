@@ -40,10 +40,10 @@ export default Component.extend({
     },
     deleteUserRole(invite) {
       this.set('isLoading', true);
-      this.get('data.roleInvites').removeObject(invite);
       invite.destroyRecord()
         .then(()=>{
           this.get('notify').success(this.get('l10n').t('Role Invite deleted successfully'));
+          this.get('data.roleInvites').removeObject(invite);
         })
         .catch(()=> {
           this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
