@@ -26,7 +26,7 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('This Event Property has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred. Event Type was not deleted.'));
         })
         .finally(() => {

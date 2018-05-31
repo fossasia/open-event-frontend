@@ -9,10 +9,10 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('Social links have been saved successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred. Social links not saved.'));
         })
-        .finally(()=> {
+        .finally(() => {
           this.set('isLoading', false);
         });
     }

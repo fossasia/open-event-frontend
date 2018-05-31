@@ -17,7 +17,7 @@ export default Controller.extend({
             this.notify.success(this.get('l10n').t('Your event has been unpublished.'));
           }
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {
@@ -31,7 +31,7 @@ export default Controller.extend({
           this.transitionToRoute('events');
           this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {

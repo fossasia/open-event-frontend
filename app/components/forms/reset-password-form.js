@@ -59,7 +59,7 @@ export default Component.extend(FormMixin, {
             .catch(() => {
               this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
             })
-            .finally(()=> {
+            .finally(() => {
               this.set('isLoading', false);
               this.set('token', null);
             }
@@ -82,7 +82,7 @@ export default Component.extend(FormMixin, {
                 this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
               }
             })
-            .finally(()=> {
+            .finally(() => {
               this.set('isLoading', false);
             }
             );

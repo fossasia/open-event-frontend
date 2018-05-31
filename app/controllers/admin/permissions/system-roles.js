@@ -15,7 +15,7 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('System role has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred. System role was not deleted.'));
         })
         .finally(() => {
@@ -29,7 +29,7 @@ export default Controller.extend({
           this.set('isAddSystemRoleModalOpen', false);
           this.notify.success(this.get('l10n').t('System role have been saved successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred. System role not saved.'));
         })
         .finally(() => {
@@ -42,7 +42,7 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('User permissions have been saved successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred. User permissions not saved.'));
         })
         .finally(() => {

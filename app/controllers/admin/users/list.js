@@ -72,10 +72,10 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('User has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
-        .finally(()=>{
+        .finally(() => {
           this.set('isLoading', false);
         });
     }
