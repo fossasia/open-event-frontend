@@ -75,7 +75,7 @@ export default Controller.extend({
           this.set('isLoading', false);
           this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.set('isLoading', false);
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });
