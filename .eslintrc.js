@@ -13,6 +13,7 @@ module.exports = {
     'browser': true
   },
   rules: {
+    'arrow-spacing': 'error',
     'no-useless-escape': 'off',
     'space-before-blocks': 'error',
     'comma-dangle': ['error', 'never'],

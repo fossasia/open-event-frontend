@@ -9,7 +9,7 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('Image sizes have been saved successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred. Image sizes not saved.'));
         })
         .finally(() => {

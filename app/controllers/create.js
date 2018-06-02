@@ -9,7 +9,10 @@ export default Controller.extend(EventWizardMixin, {
       this.get('model.data.event').save()
         .then(data => {
           let promises = [];
-          promises.push(this.get('model.data.event.tickets').toArray().map(ticket => ticket.save()));
+          promises.push(this.get('model.data.event.tickets').toArray().map(ticket => {
+            ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
+            ticket.save();
+          }));
           promises.push(this.get('model.data.event.socialLinks').toArray().map(link => link.save()));
           if (this.get('model.data.event.copyright.licence')) {
             let copyright = this.setRelationship(this.get('model.data.event.copyright.content'), data);
@@ -42,7 +45,10 @@ export default Controller.extend(EventWizardMixin, {
       this.get('model.data.event').save()
         .then(data => {
           let promises = [];
-          promises.push(this.get('model.data.event.tickets').toArray().map(ticket => ticket.save()));
+          promises.push(this.get('model.data.event.tickets').toArray().map(ticket => {
+            ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
+            ticket.save();
+          }));
           promises.push(this.get('model.data.event.socialLinks').toArray().map(link => link.save()));
           if (this.get('model.data.event.copyright.licence')) {
             let copyright = this.setRelationship(this.get('model.data.event.copyright.content'), data);

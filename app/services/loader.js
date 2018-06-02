@@ -126,7 +126,7 @@ export default Service.extend({
   },
 
   uploadFile(urlPath, source, onProgressUpdate = null, config = {}, method = 'POST') {
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
       if (
         !((window.File && source instanceof window.File)
           || (window.Blob && source instanceof window.Blob)

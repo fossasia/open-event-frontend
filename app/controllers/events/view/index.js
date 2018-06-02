@@ -33,11 +33,12 @@ export default Controller.extend({
       sponsor.destroyRecord()
         .then(() => {
           this.notify.success(this.get('l10n').t('Sponsor has been deleted successfully.'));
+          this.get('model.sponsors').removeObject(sponsor);
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
-        .finally(()=>{
+        .finally(() => {
           this.set('isLoading', false);
         });
     },

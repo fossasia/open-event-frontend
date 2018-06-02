@@ -3,52 +3,52 @@
     <div class="ui small text loader">Loading</div>
   </div>
 {{/if}}
-<div class="{{classes.outerTableWrapper}}">
-  <div class="{{classes.globalFilterDropdownWrapper}}">
+<div class="{{themeInstance.classes.outerTableWrapper}}">
+  <div class="{{themeInstance.classes.globalFilterDropdownWrapper}}">
     {{#if showPageSize}}
-      {{partial pageSizeTemplate}}
+      {{partial themeInstance.components.pageSizeSelect}}
     {{/if}}
     {{#if showGlobalFilter}}
-      {{partial globalFilterTemplate}}
+      {{partial themeInstance.components.global-filter}}
     {{/if}}
   </div>
   <div class="ui row">
-    <div class="{{classes.innerTableWrapper}}">
-      <table class="{{classes.table}}">
-        <thead class="{{if noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{classes.thead}}">
+    <div class="{{themeInstance.classes.innerTableWrapper}}">
+      <table class="{{themeInstance.classes.table}}">
+        <thead class="{{if noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{themeInstance.classes.thead}}">
           {{#if groupedHeaders.length}}
-            {{partial headerGroupedRowsTemplate}}
+            {{partial themeInstance.components.grouped-header}}
           {{/if}}
-          {{partial headerSortingRowTemplate}}
+          {{partial themeInstance.components.row-sorting}}
           {{#if useFilteringByColumns}}
-            {{partial headerFilteringRowTemplate}}
+            {{partial themeInstance.components.row-filtering}}
           {{/if}}
         </thead>
         <tbody>
           {{#if allColumnsAreHidden}}
-            {{partial allColumnsHiddenTemplate}}
+            {{partial themeInstance.components.columns-hidden}}
           {{else}}
             {{#if visibleContent.length}}
               {{#each visibleContent as |record index|}}
                 {{#if record}}
                   {{#if (gte index 0)}}
-                    {{partial rowTemplate}}
+                    {{partial themeInstance.components.row}}
                   {{/if}}
                 {{/if}}
               {{/each}}
             {{else}}
-              {{partial noDataShowTemplate}}
+              {{partial themeInstance.components.no-data}}
             {{/if}}
           {{/if}}
         </tbody>
         <tfoot>
-          {{partial tableFooterTemplate}}
+          {{partial themeInstance.components.table-footer}}
         </tfoot>
       </table>
     </div>
   </div>
   {{#if showComponentFooter}}
-    {{partial componentFooterTemplate}}
+    {{partial themeInstance.components.footer}}
   {{/if}}
 </div>
 {{yield}}

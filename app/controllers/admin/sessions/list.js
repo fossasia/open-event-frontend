@@ -17,18 +17,21 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName : 'submitted-at',
+      propertyName : 'submittedAt',
       template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Submitted At'
     },
     {
-      propertyName : 'starts-at',
-      template     : 'components/ui-table/cell/cell-date',
+      propertyName : 'startsAt',
+      template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Starts At'
     },
     {
-      propertyName : 'ends-at',
-      template     : 'components/ui-table/cell/cell-date',
+      propertyName : 'endsAt',
+      template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Ends At'
     },
     {
@@ -45,15 +48,15 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('Session has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
-        .finally(()=>{
+        .finally(() => {
           this.set('isLoading', false);
         });
     },
-    editSession(id) {
-      this.transitionToRoute('public.cfs.new-session', id);
+    editSession(session_id, event_id) {
+      this.transitionToRoute('events.view.sessions.edit', event_id, session_id);
     },
     viewSession(id) {
       this.transitionToRoute('my-sessions.view', id);

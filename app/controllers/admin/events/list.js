@@ -7,9 +7,16 @@ export default Controller.extend({
       title        : 'Name'
     },
     {
-      propertyName : 'starts-at',
-      template     : 'components/ui-table/cell/cell-date',
-      title        : 'Date'
+      propertyName : 'startsAt',
+      template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      title        : 'Starts At'
+    },
+    {
+      propertyName : 'endsAt',
+      template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      title        : 'Ends At'
     },
     {
       propertyName   : 'roles',
@@ -68,7 +75,7 @@ export default Controller.extend({
           this.set('isLoading', false);
           this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.set('isLoading', false);
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });

@@ -8,8 +8,9 @@ export default Controller.extend({
       title        : 'Name'
     },
     {
-      propertyName : 'starts-at',
-      template     : 'components/ui-table/cell/cell-date',
+      propertyName : 'startsAt',
+      template     : 'components/ui-table/cell/cell-simple-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Date'
     },
     {
@@ -74,7 +75,7 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {
