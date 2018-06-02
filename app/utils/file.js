@@ -46,6 +46,15 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
           case 'ffd8ffe2':
             type = 'image/jpeg';
             break;
+          case '25504446':
+            type = 'application/pdf';
+            break;
+          case 'd0cf11e0':
+            type = 'application/vnd.ms-powerpoint';
+            break;
+          case '66747970':
+            type = 'video/mp4';
+            break;
           default:
             type = 'unknown';
             break;
