@@ -12,6 +12,9 @@ export default Controller.extend({
             .then(() => {
               this.get('notify').success(this.get('l10n').t('Your session has been saved'));
               this.transitionToRoute('events.view.sessions', this.get('model.event.id'));
+            })
+            .catch(() => {
+              this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
             });
         })
         .catch(() => {
