@@ -314,6 +314,10 @@
   {{/if}}
 
   <div class="ui buttons {{if device.isMobile 'fluid' 'right floated large'}}">
+    <button class="ui left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+      {{t 'Previous'}}
+      <i class="left chevron icon"></i>
+    </button>
     <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
