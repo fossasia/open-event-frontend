@@ -49,9 +49,10 @@ export default Controller.extend({
       template     : 'components/ui-table/cell/admin/users/cell-created-at'
     },
     {
-      propertyName     : 'last-accessed-at',
+      propertyName     : 'lastAccessedAt',
       title            : 'Last Accessed',
-      template         : 'components/ui-table/cell/admin/users/cell-last-accessed-at',
+      template         : 'components/ui-table/cell/cell-simple-date',
+      dateFormat       : 'MMMM DD, YYYY - HH:mm A',
       disableSorting   : true,
       disableFiltering : true
     },
