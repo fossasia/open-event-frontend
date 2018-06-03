@@ -43,7 +43,7 @@
       <h4>Settings</h4>
       <div class="field">
         <label for="ticket_description">{{t 'Ticket Description'}}</label>
-        {{textarea rows=3 name='ticket_description' placeholder=(t 'This description would be available to the attendees when ordering tickets.') maxlength=160}}
+        {{textarea rows=3 name='ticket_description' value=ticket.description placeholder=(t 'This description would be available to the attendees when ordering tickets.') maxlength=160}}
       </div>
       <div class="field">
         <div class="ui checkbox">
