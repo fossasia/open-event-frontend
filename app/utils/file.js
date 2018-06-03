@@ -55,6 +55,9 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
           case '66747970':
             type = 'video/mp4';
             break;
+          case '504b34':
+            type = 'application/vnd.oasis.opendocument.presentation';
+            break;
           default:
             type = 'unknown';
             break;

@@ -35,7 +35,7 @@ export default Component.extend({
 
   processFiles(files) {
     if (files && files[0]) {
-      isFileValid(files[0], this.get('maxSizeInKb'), ['application/pdf', 'application/vnd.ms-powerpoint', 'video/mp4']).then(() => {
+      isFileValid(files[0], this.get('maxSizeInKb'), ['application/pdf', 'application/vnd.ms-powerpoint', 'video/mp4', 'application/vnd.oasis.opendocument.presentation']).then(() => {
         const reader = new FileReader();
         reader.onload = () => {
           this.uploadFile();
