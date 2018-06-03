@@ -39,9 +39,9 @@ export default Component.extend(FormMixin, {
         this.sendAction('save');
       });
     },
-    moveForward() {
+    move(direction) {
       this.onValid(() => {
-        this.sendAction('move');
+        this.sendAction('move', direction);
       });
     },
     publish() {

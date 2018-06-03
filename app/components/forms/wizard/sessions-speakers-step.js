@@ -95,6 +95,11 @@ export default Component.extend(EventWizardMixin, FormMixin, {
         this.sendAction('save');
       });
     },
+    move(direction) {
+      this.onValid(() => {
+        this.sendAction('move', direction);
+      });
+    },
     publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
