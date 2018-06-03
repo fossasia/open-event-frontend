@@ -47,13 +47,13 @@
       </div>
       <div class="field">
         <div class="ui checkbox">
-          {{input type='checkbox' checked=ticket.descriptionVisible name='description_visible'}}
+          {{input type='checkbox' checked=ticket.isDescriptionVisible name='description_visible'}}
           <label for="description_visible">{{t 'Display Ticket description on Public Events page'}}</label>
         </div>
       </div>
       <div class="field">
         <div class="ui checkbox">
-          {{input type='checkbox' checked=ticket.ticketHidden name='ticket_hidden'}}
+          {{input type='checkbox' checked=ticket.isHidden name='ticket_hidden'}}
           <label for="description_visible">
             {{t 'Hide Ticket from the Public Events page'}}<br>
             <span class="text muted">{{t 'Ticket would still be available for sale to Organizers.'}}</span>
@@ -63,7 +63,7 @@
       {{#if (eq ticket.type 'paid')}}
         <div class="field">
           <div class="ui checkbox">
-            {{input type='checkbox' checked=ticket.absorbFees name='absorb_fees'}}
+            {{input type='checkbox' checked=ticket.isFeeAbsorbed name='absorb_fees'}}
             <label for="absorb_fees">
               {{t 'Absorb Fees'}} <br>
               <span class="text muted">{{t 'If unchecked fees will be passed on to the buyer.'}}</span>

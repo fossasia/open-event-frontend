@@ -27,7 +27,7 @@ export default Controller.extend({
           this.get('notify').error(this.get('l10n').t('Sponsors data did not save. Please try again'));
         });
     },
-    move() {
+    move(direction) {
       this.set('isLoading', true);
       this.get('model.event').save()
         .then(data => {
@@ -41,7 +41,10 @@ export default Controller.extend({
             .then(() => {
               this.set('isLoading', false);
               this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              this.transitionToRoute('events.view.edit.sessions-speakers', data.id);
+              if (direction === 'forwards')
+                this.transitionToRoute('events.view.edit.sessions-speakers', data.id)
+              else if (direction === 'backwards')
+                this.transitionToRoute('events.view.edit.basic-details', data.id);
             }, function() {
               this.get('notify').error(this.get('l10n').t('Sponsors data did not save. Please try again'));
             });
