@@ -16,7 +16,9 @@
             <div class="ui small">
               {{ticket.name}}
             </div>
-            <small class="ui gray-text tiny">{{ticket.description}}</small>
+            {{#if ticket.isDescriptionVisible}}
+              <small class="ui gray-text tiny">{{ticket.description}}</small>
+            {{/if}}
           </td>
           <td>{{moment-format ticket.salesEndsAt 'dddd, DD MMMM'}}</td>
           <td id="{{ticket.id}}_price">$ {{number-format ticket.price}}</td>
