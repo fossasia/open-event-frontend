@@ -42,7 +42,7 @@ export default Controller.extend({
               this.set('isLoading', false);
               this.get('notify').success(this.get('l10n').t('Your event has been saved'));
               if (direction === 'forwards')
-                this.transitionToRoute('events.view.edit.sessions-speakers', data.id)
+                this.transitionToRoute('events.view.edit.sessions-speakers', data.id);
               else if (direction === 'backwards')
                 this.transitionToRoute('events.view.edit.basic-details', data.id);
             }, function() {
