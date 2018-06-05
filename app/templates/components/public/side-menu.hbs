@@ -36,7 +36,7 @@
   {{#link-to 'public.schedule' class='item'}}
     {{t 'Schedule'}}
   {{/link-to}}
-  {{#if event.isSessionsSpeakersEnabled}}
+  {{#if shouldShowCallforSpeakers }}
     {{#link-to 'public.cfs' class='item'}}
       {{t 'Call for Speakers'}}
     {{/link-to}}
