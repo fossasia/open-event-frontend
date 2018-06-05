@@ -41,10 +41,11 @@ export default Controller.extend({
             .then(() => {
               this.set('isLoading', false);
               this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              if (direction === 'forwards')
+              if (direction === 'forwards') {
                 this.transitionToRoute('events.view.edit.sessions-speakers', data.id);
-              else if (direction === 'backwards')
+              } else if (direction === 'backwards') {
                 this.transitionToRoute('events.view.edit.basic-details', data.id);
+              }
             }, function() {
               this.get('notify').error(this.get('l10n').t('Sponsors data did not save. Please try again'));
             });
