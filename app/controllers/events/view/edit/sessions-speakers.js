@@ -57,10 +57,11 @@ export default Controller.extend({
             .then(() => {
               this.get('notify').success(this.get('l10n').t('Your event has been saved'));
               this.set('isLoading', false);
-              if (direction === 'forwards')
+              if (direction === 'forwards') {
                 this.transitionToRoute('events.view.index', data.id);
-              else if (direction === 'backwards')
+              } else if (direction === 'backwards') {
                 this.transitionToRoute('events.view.edit.sponsors', data.id);
+              }
             }, function() {
               this.get('notify').error(this.get('l10n').t('Event data did not save. Please try again'));
             });
