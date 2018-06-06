@@ -4,7 +4,7 @@
     {{#if device.isMobile}}
       <div class="ui hidden fitted divider"></div>
     {{/if}}
-    <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker Details'}}</button>
+    <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}" {{action 'editSpeaker' model.event.id model.speaker.id}}>{{t 'Edit Speaker Details'}}</button>
     {{#if device.isMobile}}
       <div class="ui hidden fitted divider"></div>
     {{/if}}
