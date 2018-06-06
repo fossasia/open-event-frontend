@@ -15,6 +15,9 @@ export default Controller.extend({
     editSession(event_id, session_id) {
       this.transitionToRoute('events.view.sessions.edit', event_id, session_id);
     },
+    editSpeaker(event_id, speaker_id) {
+      this.transitionToRoute('events.view.speakers.edit', event_id, speaker_id);
+    },
     openProposalDeleteModal() {
       this.set('isProposalDeleteModalOpen', true);
     },
