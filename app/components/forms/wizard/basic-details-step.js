@@ -11,10 +11,13 @@ import {
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { orderBy, filter, find } from 'lodash';
+import { inject as service } from '@ember/service';
 
 export default Component.extend(FormMixin, {
 
   currentTimezone: moment.tz.guess(),
+
+  torii: service('torii'),
 
   getValidationRules() {
     return {
@@ -221,6 +224,19 @@ export default Component.extend(FormMixin, {
     this.getForm().form('remove prompt', 'discount_code');
   }),
   actions: {
+    connectStripe() {
+      this.get('data.event.stripeAuthorization.content') ? '' : this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
+      this.get('torii').open('stripe')
+        .then(authorization => {
+          this.set('data.event.stripeAuthorization.stripeAuthCode', authorization.authorizationCode);
+        })
+        .catch(error => {
+          this.get('notify').error(this.get('l10n').t(`${error.message}. Please try again`));
+        });
+    },
+    disconnectStripe() {
+      this.get('data.event.stripeAuthorization.content').destroyRecord();
+    },
     saveDraft() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
@@ -318,6 +334,9 @@ export default Component.extend(FormMixin, {
     }
     if (!this.get('isCreate') && this.get('data.event.tax') && !this.get('data.event.tax.content')) {
       this.set('data.event.tax', this.store.createRecord('tax'));
+    }
+    if (!this.get('isCreate') && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
+      this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
     }
   }
 });

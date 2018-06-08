@@ -10,9 +10,10 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
     return {
       data: {
         event: this.store.createRecord('event', {
-          socialLinks : [],
-          tax         : this.store.createRecord('tax'),
-          copyright   : this.store.createRecord('event-copyright')
+          socialLinks         : [],
+          tax                 : this.store.createRecord('tax'),
+          copyright           : this.store.createRecord('event-copyright'),
+          stripeAuthorization : this.store.createRecord('stripe-authorization')
         }),
         types: this.store.query('event-type', {
           sort: 'name'
