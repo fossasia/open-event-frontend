@@ -100,6 +100,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   speakers               : hasMany('speaker'),
   invoice                : hasMany('event-invoice'),
   speakersCall           : belongsTo('speakers-call'),
+  stripeAuthorization    : belongsTo('stripe-authorization'),
   eventStatisticsGeneral : belongsTo('event-statistics-general'),
   tax                    : belongsTo('tax'),
   copyright              : belongsTo('event-copyright'),

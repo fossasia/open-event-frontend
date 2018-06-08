@@ -3,6 +3,7 @@ import RSVP from 'rsvp';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 export default Controller.extend(EventWizardMixin, {
+
   actions: {
     save() {
       this.set('isLoading', true);
@@ -20,10 +21,18 @@ export default Controller.extend(EventWizardMixin, {
           }
           if (this.get('model.data.event.tax.name')) {
             let tax = this.setRelationship(this.get('model.data.event.tax.content'), data);
-            if (this.get('model.event.isTaxEnabled')) {
+            if (this.get('model.data.event.isTaxEnabled')) {
               promises.push(tax.save());
             } else {
               promises.push(tax.destroyRecord());
+            }
+          }
+          if (this.get('model.data.event.stripeAuthorization.stripeAuthCode')) {
+            let stripeAuthorization = this.setRelationship(this.get('model.data.event.stripeAuthorization.content'), data);
+            if (this.get('model.data.event.canPayByStripe')) {
+              promises.push(stripeAuthorization.save());
+            } else {
+              promises.push(stripeAuthorization.destroyRecord());
             }
           }
           RSVP.Promise.all(promises)
@@ -56,10 +65,18 @@ export default Controller.extend(EventWizardMixin, {
           }
           if (this.get('model.data.event.tax.name')) {
             let tax = this.setRelationship(this.get('model.data.event.tax.content'), data);
-            if (this.get('model.event.isTaxEnabled')) {
+            if (this.get('model.data.event.isTaxEnabled')) {
               promises.push(tax.save());
             } else {
               promises.push(tax.destroyRecord());
+            }
+          }
+          if (this.get('model.data.event.stripeAuthorization.stripeAuthCode')) {
+            let stripeAuthorization = this.setRelationship(this.get('model.data.event.stripeAuthorization.content'), data);
+            if (this.get('model.data.event.canPayByStripe')) {
+              promises.push(stripeAuthorization.save());
+            } else {
+              promises.push(stripeAuthorization.destroyRecord());
             }
           }
           RSVP.Promise.all(promises)

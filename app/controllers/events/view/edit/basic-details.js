@@ -20,6 +20,13 @@ export default Controller.extend({
               promises.push(this.get('model.event.tax').then(tax => tax.destroyRecord()));
             }
           }
+          if (this.get('model.event.stripeAuthorization.stripeAuthCode')) {
+            if (this.get('model.event.canPayByStripe')) {
+              promises.push(this.get('model.event.stripeAuthorization.content').save());
+            } else {
+              promises.push(this.get('model.event.stripeAuthorization.content').destroyRecord());
+            }
+          }
           RSVP.Promise.all(promises)
             .then(() => {
               this.set('isLoading', false);
@@ -49,6 +56,13 @@ export default Controller.extend({
               promises.push(this.get('model.event.tax').then(tax => tax.save()));
             } else {
               promises.push(this.get('model.event.tax').then(tax => tax.destroyRecord()));
+            }
+          }
+          if (this.get('model.event.stripeAuthorization.stripeAuthCode')) {
+            if (this.get('model.event.canPayByStripe')) {
+              promises.push(this.get('model.event.stripeAuthorization.content').save());
+            } else {
+              promises.push(this.get('model.event.stripeAuthorization.content').destroyRecord());
             }
           }
           RSVP.Promise.all(promises)
