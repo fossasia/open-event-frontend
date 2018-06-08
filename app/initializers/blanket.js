@@ -17,6 +17,7 @@ export function initialize(application) {
   inject('notify', 'service:notify');
   inject('confirm', 'service:confirm');
   inject('sanitizer', 'service:sanitizer');
+  inject('settings', 'service:settings');
 
   application.inject('component', 'router', 'service:router');
 }
