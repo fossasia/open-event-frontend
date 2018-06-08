@@ -14,6 +14,7 @@ export default Route.extend(ApplicationRouteMixin, {
   async beforeModel() {
     this._super(...arguments);
     await this.get('authManager').initialize();
+    await this.get('settings').initialize();
   },
 
   async model() {
