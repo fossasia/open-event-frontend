@@ -35,7 +35,7 @@
         <div class="ui divider"></div>
         <h1 class="ui header"> {{model.title}} </h1>
         <h2 class="ui header"> {{model.speaker.name}} </h2>
-        <h2 class="ui sub header"> <div class="ui gray-text">{{t 'From '}}{{moment-format model.startAt 'ddd, MMM DD HH:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD HH:mm A'}}</div> </h2>
+        <h2 class="ui sub header"> <div class="ui gray-text">{{t 'From '}}{{moment-format model.startAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD h:mm A'}}</div> </h2>
       </div>
       <div class="ui divider"></div>
       {{#if model.shortAbstract}}
