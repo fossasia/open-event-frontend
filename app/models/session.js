@@ -21,6 +21,7 @@ export default ModelBase.extend({
   videoUrl      : attr('string'),
   audioUrl      : attr('string'),
   signupUrl     : attr('string'),
+  sendEmail     : attr('boolean'),
 
   isMailSent: attr('boolean', { defaultValue: false }),
 
@@ -33,7 +34,7 @@ export default ModelBase.extend({
   track          : belongsTo('track'),
   speakers       : hasMany('speaker'),
   event          : belongsTo('event'), // temporary
-  user           : belongsTo('user'),
+  creator        : belongsTo('user'),
 
   startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
   startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),

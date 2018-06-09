@@ -1,16 +1,20 @@
 <div class="ui vertical compact basic buttons">
-  {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
-    <i class="green checkmark icon"></i>
-    <div class="menu">
-      <div class="item">{{t 'With email'}}</div>
-      <div class="item">{{t 'Without email'}}</div>
-    </div>
-  {{/ui-dropdown}}
-  {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
-    <i class="red remove icon"></i>
-    <div class="menu">
-      <div class="item">{{t 'With email'}}</div>
-      <div class="item">{{t 'Without email'}}</div>
-    </div>
-  {{/ui-dropdown}}
+  {{#unless (eq record.state 'accepted')}}
+    {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
+      <i class="green checkmark icon"></i>
+      <div class="menu">
+        <div class="item" {{action acceptProposal record true}}>{{t 'With email'}}</div>
+        <div class="item" {{action acceptProposal record false}}>{{t 'Without email'}}</div>
+      </div>
+    {{/ui-dropdown}}
+  {{/unless}}
+  {{#unless (eq record.state 'rejected')}}
+    {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
+      <i class="red remove icon"></i>
+      <div class="menu">
+        <div class="item" {{action rejectProposal record true}}>{{t 'With email'}}</div>
+        <div class="item" {{action rejectProposal record false}}>{{t 'Without email'}}</div>
+      </div>
+    {{/ui-dropdown}}
+  {{/unless}}
 </div>
