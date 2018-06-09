@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { run } from '@ember/runloop';
-import ENV from 'open-event-frontend/config/environment';
 
 export default Component.extend({
   isDownloadDisabled : true,
