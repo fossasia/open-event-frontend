@@ -42,6 +42,9 @@ export default Controller.extend({
     },
     editSpeaker(id) {
       this.transitionToRoute('events.view.speakers.edit', id);
+    },
+    viewSpeaker(id) {
+      this.transitionToRoute('events.view.speakers.edit', id);
     }
   }
 });
