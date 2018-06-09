@@ -43,6 +43,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         .catch(() => {
           let record = this.store.createRecord(modelName);
           record.set('event', event);
+          event.set(relationship, record);
           resolve(record);
         });
     });
