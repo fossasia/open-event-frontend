@@ -5,6 +5,21 @@ export default Route.extend({
     return this.get('l10n').t('Call for Speakers');
   },
 
+  async beforeModel(transition) {
+    let hash = transition.params['public.cfs'].speaker_call_hash;
+    const eventDetails = this.modelFor('public');
+    const speakersCall = await eventDetails.get('speakersCall');
+    /*
+    The following should show the CFS page to the user:
+     - CFS is public and no hash is entered
+     - CFS is public and a valid hash is entered
+     - CFS is private and a valid hash is entered
+    */
+    if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {
+      this.transitionTo('not-found');
+    }
+  },
+
   async model() {
     const eventDetails = this.modelFor('public');
     if (this.get('session.isAuthenticated')) {

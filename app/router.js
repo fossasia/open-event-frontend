@@ -39,6 +39,10 @@ router.map(function() {
     this.route('sessions', function() {
       this.route('list', { path: '/:track_id' });
     });
+    this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
+      this.route('new-speaker');
+      this.route('new-session');
+    });
     this.route('cfs', function() {
       this.route('new-speaker');
       this.route('new-session');
