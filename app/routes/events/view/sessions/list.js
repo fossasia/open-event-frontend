@@ -54,7 +54,7 @@ export default Route.extend({
       filterOptions = [];
     }
     return this.modelFor('events.view').query('sessions', {
-      include      : 'event,speakers',
+      include      : 'speakers',
       filter       : filterOptions,
       'page[size]' : 10
     });

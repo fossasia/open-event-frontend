@@ -323,7 +323,7 @@ export default Component.extend(FormMixin, {
     } else if (this.get('isCFS')) {
       this.set('data.session', this.get('store').createRecord('session', {
         event   : this.get('data.event'),
-        user    : this.get('authManager.currentUser'),
+        creator : this.get('authManager.currentUser'),
         speaker : this.get('data.speaker')
       }));
     }

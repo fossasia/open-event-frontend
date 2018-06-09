@@ -13,8 +13,8 @@ export default Route.extend({
         sort         : 'id'
       }),
       session: await this.get('store').createRecord('session', {
-        event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        event   : eventDetails,
+        creator : this.get('authManager.currentUser')
       }),
       speaker: await this.get('store').createRecord('speaker', {
         event : eventDetails,
