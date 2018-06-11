@@ -77,6 +77,7 @@
           {{/if}}
           {{#if (eq field.type 'image')}}
             {{widgets/forms/image-upload
+              imageUrl=(mut (get data.speaker field.fieldIdentifier))
               label=(t 'Logo')
               id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))
               icon='image'
