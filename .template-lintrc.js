@@ -4,7 +4,7 @@
 module.exports = {
   extends: 'recommended',
   rules: {
-    'nested-interactive': {
+    'no-nested-interactive': {
       ignoredTags: ['label'] // Allow label tag inside a or any other interactive element
     }
   }
