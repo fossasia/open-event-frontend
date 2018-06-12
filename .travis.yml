@@ -29,6 +29,7 @@ after_script: greenkeeper-lockfile-upload
 install: yarn
 
 script:
+  - touch .env
   - node scripts/l10n.js generate
   - yarn lint:scss
   - COVERAGE=true yarn test
