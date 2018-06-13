@@ -119,8 +119,12 @@ router.map(function() {
       this.route('list', { path: '/:sessions_state' });
     });
     this.route('users', function() {
+      this.route('view', { path: '/:user_id' }, function() {
+        this.route('sessions', function() {
+          this.route('list', { path: '/:session_status' });
+        });
+      });
       this.route('list', { path: '/:users_status' });
-      this.route('user', { path: '/u/:user_id' });
     });
     this.route('permissions', function() {
       this.route('event-roles');

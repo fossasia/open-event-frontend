@@ -1,5 +1,5 @@
 <div class="ui grid stackable">
-  {{#if (not-includes session.currentRouteName 'admin.users.user')}}
+  {{#if (and (not-includes session.currentRouteName 'admin.users.user') (not-includes session.currentRouteName 'admin.users.view.sessions.list'))}}
     <div class="row">
       <div class="sixteen wide column">
         {{#tabbed-navigation isNonPointing=true}}

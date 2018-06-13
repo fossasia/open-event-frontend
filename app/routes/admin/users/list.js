@@ -9,8 +9,14 @@ export default Route.extend({
         return this.get('l10n').t('Deleted');
     }
   },
-  model(params) {
-    this.set('params', params);
+  beforeModel(transition) {
+    this._super(...arguments);
+    const userState = transition.params[transition.targetName].users_status;
+    if (!['all', 'deleted', 'active'].includes(userState)) {
+      this.replaceWith('admin.users.view', userState);
+    }
+  },
+  model() {
     return this.get('store').query('user', {
       'page[size]': 10
     });

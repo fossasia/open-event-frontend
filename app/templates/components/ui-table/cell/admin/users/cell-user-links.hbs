@@ -1,6 +1,6 @@
 <div class="ui ordered list">
   <div class="item">
-    <a href='#' target='_blank' rel='noopener'>{{t 'Sessions'}}</a>
+    {{#link-to 'admin.users.view.sessions.list' record.id 'upcoming'}} {{t 'Sessions'}} {{/link-to}}
   </div>
   <div class="item">
     <a href='#' target='_blank' rel='noopener'>{{t 'Events'}}</a>

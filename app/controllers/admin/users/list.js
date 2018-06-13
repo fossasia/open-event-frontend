@@ -65,7 +65,7 @@ export default Controller.extend({
   ],
   actions: {
     moveToUserDetails(id) {
-      this.transitionToRoute('admin.users.user', id);
+      this.transitionToRoute('admin.users.view', id);
     },
     deleteUser(user) {
       this.set('isLoading', true);
