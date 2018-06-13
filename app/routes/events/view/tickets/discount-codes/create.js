@@ -9,5 +9,9 @@ export default Route.extend({
       event   : this.modelFor('events.view'),
       usedFor : 'ticket'
     });
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    controller.get('model').unloadRecord();
   }
 });

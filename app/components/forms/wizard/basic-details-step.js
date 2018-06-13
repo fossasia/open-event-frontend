@@ -181,12 +181,12 @@ export default Component.extend(FormMixin, {
     return orderBy(paymentCurrencies, 'name');
   }),
 
-  canAcceptPayPal: computed('data.event.paymentCurrency', function() {
-    return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
+  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.paypalSandboxUsername', 'settings.paypalLiveUsername', function() {
+    return (this.get('settings.paypalSandboxUsername') || this.get('settings.paypalLiveUsername')) && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
   }),
 
-  canAcceptStripe: computed('data.event.paymentCurrency', function() {
-    return find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
+  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.stripeClientId', function() {
+    return this.get('settings.stripeClientId') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
@@ -301,8 +301,8 @@ export default Component.extend(FormMixin, {
     },
     updateDates() {
       const timezone = this.get('data.event.timezone');
-      var startDate = this.get('data.event.startsAt');
-      var endDate = this.get('data.event.endsAt');
+      let startDate = this.get('data.event.startsAt');
+      let endDate = this.get('data.event.endsAt');
       this.set('data.event.startsAt', moment.tz(startDate, timezone));
       this.set('data.event.endsAt', moment.tz(endDate, timezone));
     },

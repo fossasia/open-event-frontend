@@ -35,7 +35,7 @@ export default Controller.extend({
           this.get('notify').error(this.get('l10n').t('Event data did not save. Please try again'));
         });
     },
-    move() {
+    move(direction) {
       this.set('isLoading', true);
       this.get('model.event').save()
         .then(data => {
@@ -57,7 +57,11 @@ export default Controller.extend({
             .then(() => {
               this.get('notify').success(this.get('l10n').t('Your event has been saved'));
               this.set('isLoading', false);
-              this.transitionToRoute('events.view.index', data.id);
+              if (direction === 'forwards') {
+                this.transitionToRoute('events.view.index', data.id);
+              } else if (direction === 'backwards') {
+                this.transitionToRoute('events.view.edit.sponsors', data.id);
+              }
             }, function() {
               this.get('notify').error(this.get('l10n').t('Event data did not save. Please try again'));
             });

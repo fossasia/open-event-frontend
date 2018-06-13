@@ -71,6 +71,40 @@ export default Controller.extend({
     },
     viewSession(id) {
       this.transitionToRoute('my-sessions.view', id);
+    },
+    acceptProposal(session, sendEmail) {
+      session.set('sendEmail', sendEmail);
+      session.set('state', 'accepted');
+      session.set('isMailSent', sendEmail);
+      this.set('isLoading', true);
+      session.save()
+        .then(() => {
+          sendEmail ? this.notify.success(this.get('l10n').t('Session has been accepted and speaker has been notified via email.'))
+            : this.notify.success(this.get('l10n').t('Session has been accepted'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
+    rejectProposal(session, sendEmail) {
+      session.set('sendEmail', sendEmail);
+      session.set('state', 'rejected');
+      session.set('isMailSent', sendEmail);
+      this.set('isLoading', true);
+      session.save()
+        .then(() => {
+          sendEmail ? this.notify.success(this.get('l10n').t('Session has been rejected and speaker has been notified via email.'))
+            : this.notify.success(this.get('l10n').t('Session has been rejected'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
     }
   }
 });

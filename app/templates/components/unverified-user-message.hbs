@@ -1,0 +1,16 @@
+{{#if shouldShowMessage}}
+  <div class="ui icon error message eight wide column center aligned">
+    <i class="close icon" onclick={{action (mut isMessageVisible) false}} role="button"></i>
+    <i class="info icon"></i>
+    <div class="content">
+      <div class="header">
+        {{#if (eq session.currentRouteName 'events.view.index')}} 
+          To make your event live, please verify your account by clicking on the confirmation link that has been emailed to you. 
+        {{else}}
+          Your account is unverified. Please verify by clicking on the confirmation link that has been emailed to you.
+        {{/if}}
+      </div>
+      <p>Did not get the email? <a href="#">Please click here to resend the confirmation mail.</a></p>
+    </div>
+  </div>
+{{/if}}

@@ -29,11 +29,22 @@ after_script: greenkeeper-lockfile-upload
 install: yarn
 
 script:
+  - touch .env
   - node scripts/l10n.js generate
   - yarn lint:scss
   - COVERAGE=true yarn test
+  - ROOT_URL=open-event-frontend ember build -prod
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
  # - bash scripts/pr_deploy.sh
  # - bash kubernetes/travis/deploy.sh
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: false
+  local-dir: dist/
+  on:
+    branch: development

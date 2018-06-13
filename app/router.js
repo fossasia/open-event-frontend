@@ -76,6 +76,7 @@ router.map(function() {
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
+        this.route('edit', { path: '/edit/:speaker_id' });
       });
       this.route('scheduler');
     });

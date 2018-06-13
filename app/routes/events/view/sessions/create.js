@@ -13,8 +13,8 @@ export default Route.extend({
         sort         : 'id'
       }),
       session: await this.get('store').createRecord('session', {
-        event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        event   : eventDetails,
+        creator : this.get('authManager.currentUser')
       }),
       speaker: await this.get('store').createRecord('speaker', {
         event : eventDetails,
@@ -23,5 +23,11 @@ export default Route.extend({
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})
     };
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model');
+    model.speaker.unloadRecord();
+    model.session.unloadRecord();
   }
 });

@@ -5,7 +5,7 @@
         {{#event-card event=attendee.event isWide=true shareEvent=(action 'shareEvent') isTicket=true}}
           <span>{{attendee.ticket.type}} {{t 'ticket'}}</span>
           <span>{{attendee.order.identifier}}</span>
-          <span>{{t 'on'}} {{moment-format attendee.order.completedA 'MMMM DD, YYYY HH:mm A'}}</span>
+          <span>{{t 'on'}} {{moment-format attendee.order.completedA 'MMMM DD, YYYY h:mm A'}}</span>
         {{/event-card}}
         <div class="ui hidden divider"></div>
       {{/each}}
