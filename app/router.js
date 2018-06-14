@@ -9,10 +9,15 @@ const router = Router.extend(RouterScroll, {
   rootURL  : config.rootURL,
   metrics  : service(),
   session  : service(),
+  headData : service(),
 
   didTransition() {
     this._super(...arguments);
     this._trackPage();
+  },
+
+  setTitle(title) {
+    this.get('headData').set('title', title);
   },
 
   _trackPage() {

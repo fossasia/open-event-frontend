@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 import { equal, or } from '@ember/object/computed';
 import { debounce } from '@ember/runloop';
 import { forOwn } from 'lodash';
+import { inject as service } from '@ember/service';
 
 /**
  * Keeping this outside the service object to keep it lean and faster to loop over
@@ -33,7 +34,7 @@ const breakpoints = {
 
 export default Service.extend({
 
-  currentWidth: document.body.clientWidth,
+  fastboot: service(),
 
   deviceType: computed('currentWidth', function() {
     let deviceType = 'computer';
@@ -45,6 +46,7 @@ export default Service.extend({
     });
     return deviceType;
   }),
+
   isMobile           : equal('deviceType', 'mobile'),
   isComputer         : equal('deviceType', 'computer'),
   isTablet           : equal('deviceType', 'tablet'),
@@ -54,6 +56,11 @@ export default Service.extend({
 
 
   isInternetExplorer: computed(function() {
+
+    if (this.get('fastboot.isFastBoot')) {
+      return false;
+    }
+
     let rv = -1;
     if (navigator.appName === 'Microsoft Internet Explorer') {
       let ua = navigator.userAgent;
@@ -73,6 +80,14 @@ export default Service.extend({
 
   init() {
     this._super(...arguments);
+
+    if (this.get('fastboot.isFastBoot')) {
+      this.currentWidth = 1024;
+      return;
+    }
+
+    this.currentWidth = document.body.clientWidth;
+
     $(window).resize(() => {
       debounce(() => {
         if (!(this.get('isDestroyed') || this.get('isDestroying'))) {

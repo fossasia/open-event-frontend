@@ -20,7 +20,8 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * Service Injection
    */
 
-  router: service(),
+  router   : service(),
+  fastboot : service(),
 
   /**
    * Attributes
@@ -154,7 +155,8 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   url: computed('identifier', function() {
-    return location.origin + this.get('router').urlFor('public', this.get('id'));
+    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
+    return origin + this.get('router').urlFor('public', this.get('id'));
   }),
 
   sessionsByState: computed('sessions', function() {

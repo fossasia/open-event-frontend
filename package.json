@@ -25,6 +25,7 @@
     "broccoli-persistent-filter": "^1.3.1",
     "ember-ajax": "^3.0.0",
     "ember-browserify": "^1.1.13",
+    "ember-cached-shoe": "^0.1.1",
     "ember-cli": "~3.1.4",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-autoprefixer": "0.8.1",
@@ -42,8 +43,9 @@
     "ember-cli-document-title": "^0.4.0",
     "ember-cli-dotenv": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
-    "ember-cli-flexibility": "^2.0.2",
+    "ember-cli-fastboot": "^1.1.4-beta.1",
     "ember-cli-geo": "^4.0.0",
+    "ember-cli-head": "^0.4.1",
     "ember-cli-html-minifier": "^0.2.0",
     "ember-cli-htmlbars": "^2.0.2",
     "ember-cli-htmlbars-inline-precompile": "^1.0.3",
@@ -62,6 +64,7 @@
     "ember-cli-uglify": "^2.0.0",
     "ember-composable-helpers": "^2.0.0",
     "ember-config-service": "^0.2.0",
+    "ember-cookies": "^0.3.0",
     "ember-data": "~3.1.1",
     "ember-data-has-many-query": "^0.2.0",
     "ember-exam": "^1.0.0",
@@ -130,5 +133,8 @@
       "lib/cache-updater",
       "lib/start-title"
     ]
-  }
+  },
+  "fastbootDependencies": [
+    "node-fetch"
+  ]
 }
