@@ -4,20 +4,19 @@ import { observer, computed } from '@ember/object';
 import moment from 'moment';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
-import {
-  paymentCountries,
-  paymentCurrencies
-} from 'open-event-frontend/utils/dictionary/payment';
+import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { orderBy, filter, find } from 'lodash';
 import { inject as service } from '@ember/service';
+import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Component.extend(FormMixin, {
+export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone: moment.tz.guess(),
+  timezones,
 
-  torii: service('torii'),
+  torii: service(),
 
   getValidationRules() {
     return {
@@ -164,10 +163,6 @@ export default Component.extend(FormMixin, {
     };
   },
 
-  timezones: computed(function() {
-    return timezones;
-  }),
-
   licenses: computed(function() {
     return orderBy(licenses, 'name');
   }),
@@ -217,12 +212,25 @@ export default Component.extend(FormMixin, {
   }),
 
   hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
-    return this.get('data.event.codeOfConduct') ? true : false;
+    return !!this.get('data.event.codeOfConduct');
   }),
 
   discountCodeObserver: observer('data.event.discountCode', function() {
     this.getForm().form('remove prompt', 'discount_code');
   }),
+
+  didInsertElement() {
+    if (!this.get('isCreate') && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
+      this.set('data.event.copyright', this.store.createRecord('event-copyright'));
+    }
+    if (!this.get('isCreate') && this.get('data.event.tax') && !this.get('data.event.tax.content')) {
+      this.set('data.event.tax', this.store.createRecord('tax'));
+    }
+    if (!this.get('isCreate') && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
+      this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
+    }
+  },
+
   actions: {
     connectStripe() {
       this.get('data.event.stripeAuthorization.content') ? '' : this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
@@ -237,33 +245,19 @@ export default Component.extend(FormMixin, {
     disconnectStripe() {
       this.get('data.event.stripeAuthorization.content').destroyRecord();
     },
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      });
-    },
-    moveForward() {
-      this.onValid(() => {
-        this.sendAction('move');
-      });
-    },
-    publish() {
-      this.onValid(() => {
-        this.set('data.event.state', 'published');
-        this.sendAction('save');
-      });
-    },
     addTicket(type, position) {
+      const event = this.get('data.event');
       const salesStartDateTime = moment();
       const salesEndDateTime = this.get('data.event.startsAt');
       this.get('data.event.tickets').pushObject(this.store.createRecord('ticket', {
+        event,
         type,
         position,
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
       }));
     },
+
     removeTicket(deleteTicket) {
       const index = deleteTicket.get('position');
       this.get('data.event.tickets').forEach(ticket => {
@@ -273,24 +267,22 @@ export default Component.extend(FormMixin, {
       });
       deleteTicket.deleteRecord();
     },
+
     moveTicket(ticket, direction) {
       const index = ticket.get('position');
       const otherTicket = this.get('data.event.tickets').find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
       otherTicket.set('position', index);
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
-    addItem(type, model) {
-      this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));
-    },
-    removeItem(item) {
-      item.deleteRecord();
-    },
+
     openTaxModal() {
       this.set('taxModalIsOpen', true);
     },
+
     deleteTaxInformation() {
       this.set('data.event.isTaxEnabled', false);
     },
+
     redeemDiscountCode() {
       this.set('validatingDiscountCode', true);
       // TODO do proper checks. Simulating now.
@@ -306,6 +298,7 @@ export default Component.extend(FormMixin, {
         this.set('validatingDiscountCode', false);
       }, 1000);
     },
+
     removeDiscountCode() {
       this.setProperties({
         'data.event.discountCode'      : '',
@@ -315,28 +308,24 @@ export default Component.extend(FormMixin, {
         'discountCodePeriod'           : null
       });
     },
+
     updateDates() {
-      const timezone = this.get('data.event.timezone');
-      let startDate = this.get('data.event.startsAt');
-      let endDate = this.get('data.event.endsAt');
-      this.set('data.event.startsAt', moment.tz(startDate, timezone));
-      this.set('data.event.endsAt', moment.tz(endDate, timezone));
+      const { timezone, startsAt, endsAt } = this.get('data.event').getProperties('timezone', 'startsAt', 'endsAt');
+      this.get('data.event').setProperties({
+        startsAt : moment.tz(startsAt, timezone),
+        endsAt   : moment.tz(endsAt, timezone)
+      });
     },
-    updateCopyright() {
-      let license = find(licenses, { name: this.get('data.event.copyright.licence') });
-      this.set('data.event.copyright.logoUrl', license.logoUrl);
-      this.set('data.event.copyright.licenceUrl', license.link);
-    }
-  },
-  didInsertElement() {
-    if (!this.get('isCreate') && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
-      this.set('data.event.copyright', this.store.createRecord('event-copyright'));
-    }
-    if (!this.get('isCreate') && this.get('data.event.tax') && !this.get('data.event.tax.content')) {
-      this.set('data.event.tax', this.store.createRecord('tax'));
-    }
-    if (!this.get('isCreate') && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
-      this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
+
+    async updateCopyright(name) {
+      const event = this.get('data.event');
+      const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
+      let license = find(licenses, { name });
+      copyright.setProperties({
+        licence    : name,
+        logoUrl    : license.logoUrl,
+        licenceUrl : license.link
+      });
     }
   }
 });

@@ -1,75 +1,31 @@
 import Controller from '@ember/controller';
-import RSVP from 'rsvp';
+import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Controller.extend({
+export default Controller.extend(EventWizardMixin, {
+
+  async saveEventData() {
+    const event = await this._super(...arguments);
+
+    event.get('isSessionsSpeakersEnabled')
+      ? await this.get('model.speakersCall').save()
+      : await this.get('model.speakersCall').destroyRecord();
+
+    return event;
+  },
+
+
   actions: {
     save() {
-      this.set('isLoading', true);
-      this.get('model.event').save()
-        .then(data => {
-          let promises = [];
-          if (this.get('model.event.isSessionsSpeakersEnabled')) {
-            promises.push(this.get('model.event.tracks').toArray().map(track => track.save()));
-            promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.save()));
-            promises.push(this.get('model.event.microlocations').toArray().map(location => location.save()));
-            promises.push(this.get('model.event.customForms').toArray().map(form => form.save()));
-            promises.push(this.get('model.speakersCall').save());
-          } else {
-            promises.push(this.get('model.event.tracks').toArray().map(track => track.destroyRecord()));
-            promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.destroyRecord()));
-            promises.push(this.get('model.event.microlocations').toArray().map(location => location.destroyRecord()));
-            promises.push(this.get('model.customForms').toArray().map(form => form.destroyRecord()));
-            promises.push(this.get('model.speakersCall').destroyRecord());
-          }
-          RSVP.Promise.all(promises)
-            .then(() => {
-              this.set('isLoading', false);
-              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              this.transitionToRoute('events.view.index', data.id);
-            }, function() {
-              this.get('notify').error(this.get('l10n').t('Event data did not save. Please try again'));
-            });
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Event data did not save. Please try again'));
-        });
+      this.saveEventDataAndRedirectTo(
+        'events.view.index',
+        ['tracks', 'sessionTypes', 'microlocations', 'customForms']
+      );
     },
     move(direction) {
-      this.set('isLoading', true);
-      this.get('model.event').save()
-        .then(data => {
-          let promises = [];
-          if (this.get('model.event.isSessionsSpeakersEnabled')) {
-            promises.push(this.get('model.event.tracks').toArray().map(track => track.save()));
-            promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.save()));
-            promises.push(this.get('model.event.microlocations').toArray().map(location => location.save()));
-            promises.push(this.get('model.event.customForms').toArray().map(form => form.save()));
-            promises.push(this.get('model.speakersCall').save());
-          } else {
-            promises.push(this.get('model.event.tracks').toArray().map(track => track.destroyRecord()));
-            promises.push(this.get('model.event.sessionTypes').toArray().map(type => type.destroyRecord()));
-            promises.push(this.get('model.event.microlocations').toArray().map(location => location.destroyRecord()));
-            promises.push(this.get('model.customForms').toArray().map(form => form.destroyRecord()));
-            promises.push(this.get('model.speakersCall').destroyRecord());
-          }
-          RSVP.Promise.all(promises)
-            .then(() => {
-              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              this.set('isLoading', false);
-              if (direction === 'forwards') {
-                this.transitionToRoute('events.view.index', data.id);
-              } else if (direction === 'backwards') {
-                this.transitionToRoute('events.view.edit.sponsors', data.id);
-              }
-            }, function() {
-              this.get('notify').error(this.get('l10n').t('Event data did not save. Please try again'));
-            });
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Event data did not save. Please try again'));
-        });
+      this.saveEventDataAndRedirectTo(
+        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.sponsors',
+        ['tracks', 'sessionTypes', 'microlocations', 'customForms']
+      );
     }
   }
 });

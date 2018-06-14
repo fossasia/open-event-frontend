@@ -14,26 +14,17 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
     }
   },
 
-  model() {
+  async model() {
     return {
       event : this.modelFor('events.view'),
       steps : this.getSteps(),
-      types : this.store.query('event-type', {
+      types : await this.store.query('event-type', {
         sort: 'name'
       }),
-      topics: this.store.query('event-topic', {
+      topics: await this.store.query('event-topic', {
         sort    : 'name',
         include : 'event-sub-topics'
       })
     };
-  },
-
-  actions: {
-    save() {
-
-    },
-    move() {
-
-    }
   }
 });
