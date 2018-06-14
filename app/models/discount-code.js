@@ -33,6 +33,7 @@ export default ModelBase.extend({
   events: hasMany('event', {
     inverse: 'discountCode'
   }), // The events that this discount code has been applied to [Form (1)]
+  marketer: belongsTo('user'),
 
   validFromDate : computedDateTimeSplit.bind(this)('validFrom', 'date'),
   validFromTime : computedDateTimeSplit.bind(this)('validFrom', 'time'),

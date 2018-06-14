@@ -36,15 +36,17 @@
   <div class="inline field">
     <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
     <div class="ui hidden divider"></div>
-    {{ui-checkbox name= 'all_ticket_types' label=(t 'Select all Ticket types') value='tickets' checked=allTicketsChecked onChange=(action (mut allTicketsChecked))}}
+    {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
   </div>
-  {{#if allTicketsChecked}}
-    <div class="ui list">
-      {{#each data.tickets as |ticket|}}
-        <div class="item">{{ticket.name}}</div>
-      {{/each}}
-    </div>
-  {{/if}}
+  <div class="ui list">
+    {{#multiselect-checkboxes options=data.event.tickets selection=data.tickets onchange=(action 'updateTicketSelections') as |ticket isSelected|}}
+      <label>
+        {{input type="checkbox" checked=isSelected}}
+        {{ticket.name}}
+        <br>
+      </label>
+    {{/multiselect-checkboxes}}
+  </div>
   <div>
     <div class="inline field">
       {{ui-checkbox label=(t 'Show more options') class='toggle' checked=showMoreOptions onChange=(action (mut showMoreOptions))}}

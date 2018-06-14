@@ -57,15 +57,6 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        allTicketTypes: {
-          identifier : 'all_ticket_types',
-          rules      : [
-            {
-              type   : 'checked',
-              prompt : this.get('l10n').t('Please select the appropriate choices')
-            }
-          ]
-        },
         minOrder: {
           identifier : 'min_order',
           optional   : true,
@@ -104,9 +95,24 @@ export default Component.extend(FormMixin, {
   discountLink: computed('data.code', function() {
     const params = this.get('router._router.currentState.routerJsState.params');
     const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
-    return origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
+    let link = origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
+    this.set('data.discountUrl', link);
+    return link;
   }),
   actions: {
+    toggleAllSelection(allTicketTypesChecked) {
+      this.set('allTicketTypesChecked', allTicketTypesChecked);
+      if (allTicketTypesChecked) {
+        this.set('data.tickets', this.get('data.event.tickets').slice());
+      }
+    },
+    updateTicketSelections(newSelection) {
+      if (newSelection.length === this.get('data.event.tickets').length) {
+        this.set('allTicketTypesChecked', true);
+      } else {
+        this.set('allTicketTypesChecked', false);
+      }
+    },
     submit(data) {
       this.onValid(() => {
         this.sendAction('save', data);
