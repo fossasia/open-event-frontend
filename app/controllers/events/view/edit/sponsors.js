@@ -1,59 +1,21 @@
 import Controller from '@ember/controller';
-import RSVP from 'rsvp';
+import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Controller.extend({
+export default Controller.extend(EventWizardMixin, {
+
   actions: {
     save() {
-      this.set('isLoading', true);
-      this.get('model.event').save()
-        .then(data => {
-          let savedSponsorsPromises = [];
-          if (this.get('model.event.isSponsorsEnabled')) {
-            savedSponsorsPromises = this.get('model.sponsors').toArray().map(sponsor => sponsor.save());
-          } else {
-            savedSponsorsPromises = this.get('model.sponsors').toArray().map(sponsor => sponsor.destroyRecord());
-          }
-          RSVP.Promise.all(savedSponsorsPromises)
-            .then(() => {
-              this.set('isLoading', false);
-              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              this.transitionToRoute('events.view.index', data.id);
-            }, function() {
-              this.get('notify').error(this.get('l10n').t('Sponsors data did not save. Please try again'));
-            });
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Sponsors data did not save. Please try again'));
-        });
+      this.saveEventDataAndRedirectTo(
+        'events.view.index',
+        ['sponsors']
+      );
     },
     move(direction) {
-      this.set('isLoading', true);
-      this.get('model.event').save()
-        .then(data => {
-          let savedSponsorsPromises = [];
-          if (this.get('model.event.isSponsorsEnabled')) {
-            savedSponsorsPromises = this.get('model.sponsors').toArray().map(sponsor => sponsor.save());
-          } else {
-            savedSponsorsPromises = this.get('model.sponsors').toArray().map(sponsor => sponsor.destroyRecord());
-          }
-          RSVP.Promise.all(savedSponsorsPromises)
-            .then(() => {
-              this.set('isLoading', false);
-              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              if (direction === 'forwards') {
-                this.transitionToRoute('events.view.edit.sessions-speakers', data.id);
-              } else if (direction === 'backwards') {
-                this.transitionToRoute('events.view.edit.basic-details', data.id);
-              }
-            }, function() {
-              this.get('notify').error(this.get('l10n').t('Sponsors data did not save. Please try again'));
-            });
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Sponsors data did not save. Please try again'));
-        });
+      this.saveEventDataAndRedirectTo(
+        direction === 'forwards' ? 'events.view.edit.sessions-speakers' : 'events.view.edit.basic-details',
+        ['sponsors']
+      );
     }
   }
+
 });
