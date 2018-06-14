@@ -103,7 +103,8 @@ export default Component.extend(FormMixin, {
   },
   discountLink: computed('data.code', function() {
     const params = this.get('router._router.currentState.routerJsState.params');
-    return location.origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
+    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
+    return origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
   }),
   actions: {
     submit(data) {

@@ -77,7 +77,13 @@ module.exports = function(environment) {
     ifa: {
       enabled : false,
       inline  : false
-    }
+    },
+
+    fastboot: {
+      hostWhitelist: [/.+/]
+    },
+
+    torii: { }
   };
 
   if (environment === 'production') {
