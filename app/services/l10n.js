@@ -1,7 +1,11 @@
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
+import { inject as service } from '@ember/service';
 
 export default L10n.extend({
+
+  cookies  : service(),
+  fastboot : service(),
 
   availableLocales: computed(function() {
     return {
@@ -31,13 +35,15 @@ export default L10n.extend({
 
   switchLanguage(locale) {
     this.setLocale(locale);
-    localStorage.setItem(this.localStorageKey, locale);
-    location.reload();
+    this.get('cookies').write(this.localStorageKey, locale);
+    if (!this.get('fastboot.isFastBoot')) {
+      location.reload();
+    }
   },
 
   init() {
     this._super(...arguments);
-    const currentLocale = localStorage.getItem(this.localStorageKey);
+    const currentLocale = this.get('cookies').read(this.localStorageKey);
     const detectedLocale = this.detectLocale();
     if (currentLocale) {
       this.setLocale(currentLocale);

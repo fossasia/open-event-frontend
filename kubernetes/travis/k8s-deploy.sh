@@ -28,25 +28,6 @@ gcloud config set project eventyay
 gcloud container clusters get-credentials nextgen-cluster
 
 ##
-## Build frontend
-##
-export API_HOST=${DEPLOY_API_HOST};
-export APP_NAME=${DEPLOY_APP_NAME};
-export SENTRY_DSN=${DEPLOY_SENTRY_DSN}
-node scripts/l10n.js generate
-ember deploy production-docker
-cp -Rf tmp/deploy-dist kubernetes/images/frontend
-
-##
-## Build docker image and deploy
-##
-cd kubernetes/images/frontend
-docker build --no-cache -t eventyay/frontend:$TRAVIS_COMMIT .
-docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-docker tag eventyay/frontend:$TRAVIS_COMMIT eventyay/frontend:latest
-docker push eventyay/frontend
-
-##
 ## Start rolling update of Kubernetes pod
 ##
 kubectl set image deployment/frontend --namespace=web frontend=eventyay/frontend:$TRAVIS_COMMIT

@@ -1,8 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import moment from 'moment';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash';
 
@@ -54,10 +52,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     };
   },
 
-  timezones: computed(function() {
-    return timezones;
-  }),
-
   tracks: computed('data.tracks.@each.isDeleted', function() {
     return this.get('data.tracks').filterBy('isDeleted', false);
   }),
@@ -83,53 +77,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     }
   },
 
-  actions: {
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      });
-    },
-    moveForward() {
-      this.onValid(() => {
-        this.sendAction('save');
-      });
-    },
-    move(direction) {
-      this.onValid(() => {
-        this.sendAction('move', direction);
-      });
-    },
-    publish() {
-      this.onValid(() => {
-        this.set('data.event.state', 'published');
-        this.sendAction('save');
-      });
-    },
-    addItem(type) {
-      switch (type) {
-        case 'sessionType':
-          this.get('data.sessionTypes').addObject(this.store.createRecord('session-type'));
-          break;
-        case 'track':
-          this.get('data.tracks').addObject(this.store.createRecord('track'));
-          break;
-        case 'microlocation':
-          this.get('data.microlocations').addObject(this.store.createRecord('microlocation'));
-          break;
-      }
-    },
-    removeItem(item) {
-      item.deleteRecord();
-    },
-    updateDates() {
-      const timezone = this.get('data.event.timezone');
-      var startDate = this.get('data.event.startsAt');
-      var endDate = this.get('data.event.endsAt');
-      this.set('data.event.startsAt', moment.tz(startDate, timezone));
-      this.set('data.event.endsAt', moment.tz(endDate, timezone));
-    }
-  },
   didInsertElement() {
     if (this.get('data.event.customForms') && !this.get('data.event.customForms.length')) {
       this.set('data.event.customForms', this.getCustomForm(this.get('data.event')));
@@ -145,6 +92,27 @@ export default Component.extend(EventWizardMixin, FormMixin, {
 
     if (this.get('data.event.microlocations') && !this.get('data.event.microlocations.length')) {
       this.get('data.event.microlocations').addObject(this.store.createRecord('microlocation'));
+    }
+  },
+
+  actions: {
+    move(direction) {
+      this.onValid(() => {
+        this.sendAction('move', direction);
+      });
+    },
+    addItem(type) {
+      switch (type) {
+        case 'sessionType':
+          this.get('data.sessionTypes').addObject(this.store.createRecord('session-type'));
+          break;
+        case 'track':
+          this.get('data.tracks').addObject(this.store.createRecord('track'));
+          break;
+        case 'microlocation':
+          this.get('data.microlocations').addObject(this.store.createRecord('microlocation'));
+          break;
+      }
     }
   }
 });

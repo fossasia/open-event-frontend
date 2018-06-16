@@ -1,15 +1,12 @@
-FROM nginx
+FROM node:8-alpine
 MAINTAINER Niranjan Rajendran <niranjan94@yahoo.com>
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY conf/frontend.conf /etc/nginx/conf.d/default.conf
-COPY conf/gzip.conf /etc/nginx/conf.d/gzip.conf
+COPY server /server
+COPY deploy-dist/ /server/app
 
-RUN mkdir /var/www
+WORKDIR /server
 
-COPY deploy-dist/ /var/www
+RUN npm install --no-save && cd app && npm install --no-save
 
-COPY docker-entrypoint.sh /usr/local/bin
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "fastboot-server.js"]
