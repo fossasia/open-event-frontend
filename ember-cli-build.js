@@ -21,10 +21,9 @@ module.exports = function(defaults) {
       htmlFiles : ['index.html', '404.html']
     },
     fingerprint: {
-      enabled             : env === 'production',
-      generateAssetMap    : true,
-      extensions          : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json'],
-      fingerprintAssetMap : true
+      enabled          : env === 'production',
+      generateAssetMap : true,
+      extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
     }
   });
 
