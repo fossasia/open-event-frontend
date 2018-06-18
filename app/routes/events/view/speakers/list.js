@@ -14,36 +14,52 @@ export default Route.extend({
   model(params) {
     this.set('params', params);
     let filterOptions = [];
-    if (params.session_status === 'pending') {
+    if (params.speakers_status === 'pending') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'pending'
+          name : 'sessions',
+          op   : 'any',
+          val  : {
+            name : 'state',
+            op   : 'eq',
+            val  : 'pending'
+          }
         }
       ];
-    } else if (params.session_status === 'accepted') {
+    } else if (params.speakers_status === 'accepted') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'accepted'
+          name : 'sessions',
+          op   : 'any',
+          val  : {
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
+          }
         }
       ];
-    } else if (params.session_status === 'rejected') {
+    } else if (params.speakers_status === 'rejected') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'rejected'
+          name : 'sessions',
+          op   : 'any',
+          val  : {
+            name : 'state',
+            op   : 'eq',
+            val  : 'rejected'
+          }
         }
       ];
-    } else if (params.session_status === 'confirmed') {
+    } else if (params.speakers_status === 'confirmed') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
+          name : 'sessions',
+          op   : 'any',
+          val  : {
+            name : 'state',
+            op   : 'eq',
+            val  : 'confirmed'
+          }
         }
       ];
     } else {
