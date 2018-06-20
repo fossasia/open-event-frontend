@@ -39,12 +39,21 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
    * @return {Promise<*>}
    */
   async saveEventData(propsToSave = []) {
-    const event = await this.get('model.event').save();
+    const event = this.get('model.event');
     const data = {};
 
     for (const property of propsToSave) {
-      data[property] = await event.get(property);
+      try {
+        data[property] = await event.get(property);
+      } catch (e) {
+        if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[status] === 404)) {
+          // Lets just ignore any 404s that might occur. And throw the rest for the caller fn to catch
+          throw e;
+        }
+      }
     }
+
+    await event.save();
 
     for (const ticket of data.tickets ? data.tickets.toArray() : []) {
       ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
