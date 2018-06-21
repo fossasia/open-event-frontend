@@ -9,27 +9,17 @@
     <div class="three wide column">
       <div class="ui inverted link list">
         <strong class="item">{{t 'Categories'}}</strong>
-        <a class="item" href="#">Appearance or Signing</a>
-        <a class="item" href="#">Attraction</a>
-        <a class="item" href="#">Camp, Trip, or Retreat</a>
-        <a class="item" href="#">Class, Training, or Workshop</a>
-        <a class="item" href="#">Concert or Performance</a>
-        <a class="item" href="#">Conference</a>
-        <a class="item" href="#">Convention</a>
-        <a class="item" href="#">Dinner or Gala</a>
-        <a class="item" href="#">Festival or Fair</a>
-        <a class="item" href="#">Game or Competition</a>
+        {{#each events as |event|}}
+          <a class="item" href="{{concat '/explore?event_type=' (url-encode event)}}">{{event}}</a>
+        {{/each}}
       </div>
     </div>
     <div class="three wide column">
       <div class="ui inverted link list">
         <strong class="item">{{t 'Locations'}}</strong>
-        <a class="item" href="#">India</a>
-        <a class="item" href="#">Singapore</a>
-        <a class="item" href="#">Berlin</a>
-        <a class="item" href="#">Mexico</a>
-        <a class="item" href="#">New York</a>
-        <a class="item" href="#">Hong Kong</a>
+        {{#each places as |place|}}
+          <a class="item" href="{{concat '/explore/' (spaces-to-hyphens place) '/events'}}">{{place}}</a>
+        {{/each}}
       </div>
     </div>
     <div class="three wide column">
