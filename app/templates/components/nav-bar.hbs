@@ -13,7 +13,7 @@
       </div>
     {{/unless}}
     <div class="right menu nav-bar">
-      {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
+      {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}
         {{notification-dropdown unreadNotifications=unreadNotifications}}
       {{/if}}
