@@ -22,7 +22,7 @@ export default Component.extend({
     this.get('loader')
       .uploadFile('/upload/files', this.$(`#${this.get('inputIdGenerated')}`))
       .then(file => {
-        this.set('fileUrl', file.url);
+        this.set('fileUrl', JSON.parse(file).url);
         this.get('notify').success(this.get('l10n').t('File uploaded successfully'));
       })
       .catch(() => {
