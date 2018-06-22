@@ -6,6 +6,10 @@ export default Controller.extend({
       this.set('isEventDeleteModalOpen', true);
     },
     togglePublishState() {
+      if (this.get('model.locationName') === undefined) {
+        this.notify.error(this.get('l10n').t('Your event must have a location before it can be published.'));
+        return;
+      }
       this.set('isLoading', true);
       const state = this.get('model.state');
       this.set('model.state', state === 'draft' ? 'published' : 'draft');
