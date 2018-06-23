@@ -101,15 +101,27 @@ export default Component.extend(FormMixin, {
   }),
   actions: {
     toggleAllSelection(allTicketTypesChecked) {
-      this.set('allTicketTypesChecked', allTicketTypesChecked);
+      this.toggleProperty('allTicketTypesChecked');
+      let tickets = this.get('data.event.tickets');
       if (allTicketTypesChecked) {
-        this.set('data.tickets', this.get('data.event.tickets').slice());
-      }
-    },
-    updateTicketSelections(newSelection) {
-      if (newSelection.length === this.get('data.event.tickets').length) {
-        this.set('allTicketTypesChecked', true);
+        this.set('data.tickets', tickets.slice());
       } else {
+        this.get('data.tickets').clear();
+      }
+      tickets.forEach(ticket => {
+        ticket.set('isChecked', allTicketTypesChecked);
+      });
+    },
+    updateTicketsSelection(ticket) {
+      if (!ticket.get('isChecked')) {
+        this.get('data.tickets').pushObject(ticket);
+        ticket.set('isChecked', true);
+        if (this.get('data.tickets').length === this.get('data.event.tickets').length) {
+          this.set('allTicketTypesChecked', true);
+        }
+      } else {
+        this.get('data.tickets').removeObject(ticket);
+        ticket.set('isChecked', false);
         this.set('allTicketTypesChecked', false);
       }
     },

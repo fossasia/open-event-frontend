@@ -39,13 +39,10 @@
     {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
   </div>
   <div class="ui list">
-    {{#multiselect-checkboxes options=data.event.tickets selection=data.tickets onchange=(action 'updateTicketSelections') as |ticket isSelected|}}
-      <label>
-        {{input type="checkbox" checked=isSelected}}
-        {{ticket.name}}
-        <br>
-      </label>
-    {{/multiselect-checkboxes}}
+    {{#each data.event.tickets as |ticket|}}
+      {{ui-checkbox label=ticket.name checked=ticket.isChecked onChange=(action 'updateTicketsSelection' ticket)}}
+      <br>
+    {{/each}}
   </div>
   <div>
     <div class="inline field">
@@ -68,13 +65,13 @@
           <label>{{t 'Valid from'}}</label>
           {{widgets/forms/date-picker id='start_date' value=data.validFromDate rangePosition='start'}}
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker id='start_time' value=data.validFromTime rangePosition='start'}}
+          {{widgets/forms/time-picker id='start_time' value=data.validFromTime}}
         </div>
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Expires on'}}</label>
           {{widgets/forms/date-picker id='end_date' value=data.validTillDate rangePosition='end'}}
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker id='end_time' value=data.validTillTime rangePosition='end'}}
+          {{widgets/forms/time-picker id='end_time' value=data.validTillTime}}
         </div>
       </div>
     {{/if}}

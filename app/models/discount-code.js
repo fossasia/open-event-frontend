@@ -1,7 +1,10 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
+import moment from 'moment';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
+
+const detectedTimezone = moment.tz.guess();
 
 /**
  * Two different forms of discount code can exist. (Both use the same model)
@@ -13,14 +16,14 @@ import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helper
  */
 export default ModelBase.extend({
   code          : attr('string'),
-  type          : attr('string'),
+  type          : attr('string', { defaultValue: 'amount' }),
   value         : attr('number'),
   ticketsNumber : attr('number'), // For form (1) this holds the max. times this can be used for events
-  minQuantity   : attr('number'), // Not of any significance for form (1)
+  minQuantity   : attr('number', { defaultValue: 0 }), // Not of any significance for form (1)
   maxQuantity   : attr('number'), // For form (1) this holds the number of months this code is valid for events
   validFrom     : attr('moment'),
   discountUrl   : attr('string'),
-  validTill     : attr('moment'),
+  validTill     : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
   usedFor       : attr('string'),
   isActive      : attr('boolean', { defaultValue: true }),
   createdAt     : attr('moment'),
