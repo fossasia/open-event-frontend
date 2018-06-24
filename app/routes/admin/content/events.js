@@ -13,5 +13,10 @@ export default Route.extend({
 
       'eventTypes': await this.get('store').query('event-type', {})
     };
+  },
+  setupController(controller, model) {
+    this._super(...arguments);
+    controller.set('model.eventTypes', model.eventTypes.toArray());
+    controller.set('model.eventTopics', model.eventTopics.toArray());
   }
 });

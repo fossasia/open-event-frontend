@@ -14,7 +14,9 @@ export default Route.extend({
   },
   resetController(controller) {
     this._super(...arguments);
-    controller.get('model').unloadRecord();
+    if (!controller.get('model.id')) {
+      controller.get('model').unloadRecord();
+    }
   },
   afterModel(model) {
     let allTickets = model.event.get('tickets');
