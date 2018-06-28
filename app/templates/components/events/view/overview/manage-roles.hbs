@@ -25,11 +25,19 @@
               {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openAddUserRoleModal' roleInvite)}}
                 <i class="edit icon"></i>
               {{/ui-popup}}
-              {{#ui-popup content=(t 'Delete')
-                          class='ui icon button'
-                          click=(action (confirm (t 'Are you sure you would like to delete this role?') (action 'deleteUserRole' roleInvite)))}}
-                <i class="trash outline icon"></i>
-              {{/ui-popup}}
+              {{#if (eq roleType 'accepted')}}
+                {{#ui-popup content=(t 'Delete')
+                            class='ui icon button'
+                            click=(action (confirm (t 'Are you sure you would like to delete this role?') (action 'deleteUserRole' roleInvite)))}}
+                  <i class="trash outline icon"></i>
+                {{/ui-popup}}
+              {{else}}
+                {{#ui-popup content=(t 'Delete')
+                            class='ui icon button'
+                            click=(action (confirm (t 'Are you sure you would like to cancel this invite?') (action 'deleteUserRole' roleInvite)))}}
+                  <i class="trash outline icon"></i>
+                {{/ui-popup}}
+              {{/if}}
             </div>
           </td>
         </tr>

@@ -148,9 +148,8 @@ export default Service.extend({
         source = files[0];
       }
 
-      const formData = new FormData();
+      let formData = new FormData();
       formData.append(config.fileName, source);
-
       config.skipDataTransform = true;
 
       const { url, fetchOptions } = this.getFetchOptions(urlPath, method, formData, config);
@@ -158,7 +157,8 @@ export default Service.extend({
       xhr.open(fetchOptions.method || 'get', url);
       let headers = fetchOptions.headers || {};
       for (let k in headers) {
-        if (headers.hasOwnProperty(k)) {
+        // https://stackoverflow.com/a/39281156/6870128
+        if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }

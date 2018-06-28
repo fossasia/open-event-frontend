@@ -233,7 +233,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   actions: {
     connectStripe() {
-      this.get('data.event.stripeAuthorization.content') ? '' : this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
+      this.get('data.event.stripeAuthorization.content') || this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
       this.get('torii').open('stripe')
         .then(authorization => {
           this.set('data.event.stripeAuthorization.stripeAuthCode', authorization.authorizationCode);

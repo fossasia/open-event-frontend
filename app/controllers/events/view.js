@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import { isEmpty } from '@ember/utils';
 
 export default Controller.extend({
   actions: {
@@ -6,6 +7,10 @@ export default Controller.extend({
       this.set('isEventDeleteModalOpen', true);
     },
     togglePublishState() {
+      if (isEmpty(this.get('model.locationName'))) {
+        this.notify.error(this.get('l10n').t('Your event must have a location before it can be published.'));
+        return;
+      }
       this.set('isLoading', true);
       const state = this.get('model.state');
       this.set('model.state', state === 'draft' ? 'published' : 'draft');
