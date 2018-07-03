@@ -6,8 +6,10 @@ export default Route.extend({
   },
   model() {
     return this.get('store').createRecord('discount-code', {
-      event   : this.modelFor('events.view'),
-      usedFor : 'ticket'
+      event    : this.modelFor('events.view'),
+      tickets  : [],
+      usedFor  : 'ticket',
+      marketer : this.get('authManager.currentUser')
     });
   },
   resetController(controller) {
