@@ -6,26 +6,23 @@ export default Route.extend({
     return this.get('l10n').t('Create');
   },
   model() {
-    return {
-      code          : '',
-      isActive      : true,
-      ticketsNumber : 10,
-      minQuantity   : 1,
-      maxQuantity   : 10,
+    return this.get('store').createRecord('access-code', {
+      event         : this.modelFor('events.view'),
+      tickets       : [],
+      marketer      : this.get('authManager.currentUser'),
       validFromDate : moment(),
       validFromTime : '12:00',
-      validTillDate : moment().add(20, 'days'),
+      validTillDate : moment().add(7, 'days'),
       validTillTime : '16:00',
-      tickets       : [
-        {
-          name : 'Early bird',
-          id   : 1
-        },
-        {
-          name : 'Late entry',
-          id   : 2
-        }
-      ]
-    };
+      minQuantity   : 1,
+      maxQuantity   : 1
+    });
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model');
+    if (!model.id) {
+      model.unloadRecord();
+    }
   }
 });
