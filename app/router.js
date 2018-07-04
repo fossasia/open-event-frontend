@@ -169,7 +169,7 @@ router.map(function() {
     });
   });
   this.route('orders', function() {
-    this.route('new');
+    this.route('new', { path: '/:order_id/new' });
   });
 });
 

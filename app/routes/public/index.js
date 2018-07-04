@@ -38,7 +38,16 @@ export default Route.extend({
         ]
       }),
 
-      sponsors: await eventDetails.get('sponsors')
+      sponsors: await eventDetails.get('sponsors'),
+
+      order: this.store.createRecord('order', {
+        event     : eventDetails,
+        user      : this.get('authManager.currentUser'),
+        tickets   : [],
+        attendees : []
+      }),
+
+      attendees: []
     };
   }
 });
