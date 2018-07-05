@@ -1,4 +1,4 @@
-<form class="ui form" {{action 'submit' on='submit'}}>
+<form class="ui form" {{action 'submit' data on='submit'}}>
   <div class="field">
     <label class="required">{{t 'Access Code'}}</label>
     {{input type='text' name='access_code' value=data.code}}
@@ -10,24 +10,23 @@
   <div class="grouped inline fields">
     <label class="required">{{t 'Status'}}</label>
     <div class="field">
-      {{ui-radio current='active' name='status' label='Active' value='active'}}
+      {{ui-radio current=data.isActive name='status' label='Active' value='true' onChange=(action (mut data.isActive))}}
     </div>
     <div class="field">
-      {{ui-radio name='status' label='Inactive' value='inactive'}}
+      {{ui-radio name='status' label='Inactive' value='false' current=data.isActive onChange=(action (mut data.isActive))}}
     </div>
   </div>
   <div class="inline field">
     <label class="required">{{t 'Select Tickets applied to the access code'}}</label>
     <div class="ui hidden divider"></div>
-    {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' checked=allTicketTypesChecked onChange=(action (mut allTicketTypesChecked))}}
+    {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
   </div>
-  {{#if allTicketTypesChecked}}
-    <div class="ui list">
-      {{#each data.tickets as |ticket|}}
-        <div class="item">{{ticket.name}}</div>
-      {{/each}}
-    </div>
-  {{/if}}
+  <div class="ui list">
+    {{#each hiddenTickets as |ticket|}}
+      {{ui-checkbox label=ticket.name checked=ticket.isChecked onChange=(action 'updateTicketsSelection' ticket)}}
+      <br>
+    {{/each}}
+  </div>
   <div>
     <div class="inline field">
       {{ui-checkbox class='toggle' label=(t 'Show more options') checked=showMoreOptions onChange=(action (mut showMoreOptions))}}
@@ -67,9 +66,9 @@
     <div class="field">
       <label>{{t 'Access Link'}}</label>
       <div class="ui action input fluid">
-        <input type="text" value="{{accessUrl}}" readonly>
+        <input type="text" value="{{accessLink}}" placeholder="{{accessLink}}" readonly>
         {{#copy-button
-          clipboardText=accessUrl
+          clipboardText=accessLink
           class='ui black right labeled icon copy button'}}
           <i class="copy icon"></i>
           {{t 'Copy'}}
@@ -78,5 +77,5 @@
     </div>
   </div>
   <div class="ui hidden divider"></div>
-  <button type="submit" class="ui teal button">{{t 'Save'}}</button>
+  <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
 </form>
