@@ -3,10 +3,14 @@ LABEL maintainer="Max Lorenz <max-lorenz@gmx.net>"
 
 WORKDIR /app
 
-# RUN git config --global url.'https://'.insteadOf git://
+RUN yarn global add ember-cli
 
 # Get deps
-COPY . .
+COPY package.json .
 RUN yarn
-RUN yarn global add ember-cli
+
+# Copy all files for the build
+COPY . .
+
+# Run ember server
 CMD ember server
