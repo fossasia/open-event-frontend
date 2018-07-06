@@ -8,17 +8,17 @@
     <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
       <div class="{{if device.isMobile 'ui padded grid'}}">
         <div class="row">
-          {{#ui-dropdown class='compact selection eight wide column'}}
+          {{#ui-dropdown class='blue compact selection eight wide column'}}
             <div class="default text">
               {{t 'Export As'}}
             </div>
             <i class="dropdown icon"></i>
             <div class="menu">
-              <div class="item" data-value="pdf">
+              <div class="item {{if isLoadingpdf 'loading'}}" role="button" data-value="pdf" {{action 'export' 'pdf'}}>
                 <i class="file pdf outline icon"></i>
                 {{t 'PDF'}}
               </div>
-              <div class="item" data-value="csv">
+              <div class="item {{if isLoadingcsv 'loading'}}" role="button" data-value="csv" {{action 'export' 'csv'}}>
                 <i class="file excel outline icon"></i>
                 {{t 'CSV'}}
               </div>
