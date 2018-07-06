@@ -43,15 +43,6 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        allTicketTypes: {
-          identifier : 'all_ticket_types',
-          rules      : [
-            {
-              type   : 'checked',
-              prompt : this.get('l10n').t('Please select the appropriate choices')
-            }
-          ]
-        },
         min: {
           identifier : 'min',
           optional   : true,
@@ -86,12 +77,8 @@ export default Component.extend(FormMixin, {
         },
         accessCodeStartDate: {
           identifier : 'start_date',
-          optional   : false,
+          optional   : true,
           rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the proper date')
-            },
             {
               type   : 'date',
               prompt : this.get('l10n').t('Please enter the proper date')
@@ -100,35 +87,11 @@ export default Component.extend(FormMixin, {
         },
         accessCodeEndDate: {
           identifier : 'end_date',
-          optional   : false,
+          optional   : true,
           rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the proper date')
-            },
             {
               type   : 'date',
               prompt : this.get('l10n').t('Please enter the proper date')
-            }
-          ]
-        },
-        startTime: {
-          identifier : 'start_time',
-          depends    : 'start_date',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please give a start time')
-            }
-          ]
-        },
-        endTime: {
-          identifier : 'end_time',
-          depends    : 'end_date',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please give an end time')
             }
           ]
         }
@@ -136,14 +99,50 @@ export default Component.extend(FormMixin, {
     };
   },
   accessCode : '',
-  accessUrl  : computed('data.code', function() {
+  accessLink : computed('data.code', function() {
     const params = this.get('router._router.currentState.routerJsState.params');
     const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
-    return origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { access_code: this.get('data.code') } });
+    let link = origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { access_code: this.get('data.code') } });
+    this.set('data.accessUrl', link);
+    return link;
   }),
-  actions: {
-    submit() {
+  hiddenTickets : computed.filterBy('data.event.tickets', 'isHidden', true),
+  actions       : {
+    toggleAllSelection(allTicketTypesChecked) {
+      this.toggleProperty('allTicketTypesChecked');
+      let tickets = this.hiddenTickets;
+      if (allTicketTypesChecked) {
+        this.set('data.tickets', tickets.slice());
+      } else {
+        this.get('data.tickets').clear();
+      }
+      tickets.forEach(ticket => {
+        ticket.set('isChecked', allTicketTypesChecked);
+      });
+    },
+    updateTicketsSelection(ticket) {
+      if (!ticket.get('isChecked')) {
+        this.get('data.tickets').pushObject(ticket);
+        ticket.set('isChecked', true);
+        if (this.get('data.tickets').length === this.hiddenTickets.length) {
+          this.set('allTicketTypesChecked', true);
+        }
+      } else {
+        this.get('data.tickets').removeObject(ticket);
+        ticket.set('isChecked', false);
+        this.set('allTicketTypesChecked', false);
+      }
+    },
+    submit(data) {
       this.onValid(() => {
+        data.save()
+          .then(() => {
+            this.get('notify').success(this.get('l10n').t('Access code has been successfully created.'));
+            this.get('router').transitionTo('events.view.tickets.access-codes');
+          })
+          .catch(() => {
+            this.get('notify').error(this.get('l10n').t('An unexpected error has occurred. Access code cannot be created.'));
+          });
       });
     }
   }
