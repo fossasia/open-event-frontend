@@ -8,10 +8,6 @@ export default Component.extend({
   currentLocale : computed(function() {
     return this.get('l10n').getLocale();
   }),
-  init() {
-    this._super(...arguments);
-    this.set('events', this.store.findAll('event-type'));
-  },
   actions: {
     switchLanguage(locale) {
       this.get('l10n').switchLanguage(locale);
