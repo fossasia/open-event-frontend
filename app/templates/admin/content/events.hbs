@@ -55,7 +55,7 @@
               <i class="icon plus"></i>
             </button>
           </div>
-        </div>        
+        </div>
         <div class="ui divider"></div>
         <table class="ui celled table">
           <tbody>
@@ -76,7 +76,7 @@
                         {{/ui-popup}}
                       </div>
                     </div>
-                  </div>                  
+                  </div>
                 </td>
               </tr>
             {{/each}}
@@ -93,11 +93,11 @@
             </h4>
           </div>
           <div class="eight wide column right aligned">
-            <button class="ui icon circular blue button {{if device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-sub-topic'}}>
+            <button class="ui icon circular blue {{if disableEventSubtopic 'disabled'}} button {{if device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-sub-topic'}}>
               <i class="icon plus"></i>
             </button>
           </div>
-        </div>   
+        </div>
         <div class="ui divider"></div>
         <div class="field">
           <label>{{t 'Event Topic'}}</label>
@@ -154,4 +154,5 @@
 {{modals/admin/content/new-event-sub-topic-modal isOpen=eventSubTopic.openModal
                               model=model
                               eventSubTopic=eventSubTopic
+                              eventTopic=currentTopicSelected
                               addEventProperty=(action 'addEventProperty' eventSubTopic)}}

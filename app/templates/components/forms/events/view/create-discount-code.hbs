@@ -36,15 +36,14 @@
   <div class="inline field">
     <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
     <div class="ui hidden divider"></div>
-    {{ui-checkbox name= 'all_ticket_types' label=(t 'Select all Ticket types') value='tickets' checked=allTicketsChecked onChange=(action (mut allTicketsChecked))}}
+    {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
   </div>
-  {{#if allTicketsChecked}}
-    <div class="ui list">
-      {{#each data.tickets as |ticket|}}
-        <div class="item">{{ticket.name}}</div>
-      {{/each}}
-    </div>
-  {{/if}}
+  <div class="ui list">
+    {{#each data.event.tickets as |ticket|}}
+      {{ui-checkbox label=ticket.name checked=ticket.isChecked onChange=(action 'updateTicketsSelection' ticket)}}
+      <br>
+    {{/each}}
+  </div>
   <div>
     <div class="inline field">
       {{ui-checkbox label=(t 'Show more options') class='toggle' checked=showMoreOptions onChange=(action (mut showMoreOptions))}}
@@ -66,13 +65,13 @@
           <label>{{t 'Valid from'}}</label>
           {{widgets/forms/date-picker id='start_date' value=data.validFromDate rangePosition='start'}}
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker id='start_time' value=data.validFromTime rangePosition='start'}}
+          {{widgets/forms/time-picker id='start_time' value=data.validFromTime}}
         </div>
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Expires on'}}</label>
           {{widgets/forms/date-picker id='end_date' value=data.validTillDate rangePosition='end'}}
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker id='end_time' value=data.validTillTime rangePosition='end'}}
+          {{widgets/forms/time-picker id='end_time' value=data.validTillTime}}
         </div>
       </div>
     {{/if}}

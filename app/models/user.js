@@ -52,6 +52,8 @@ export default ModelBase.extend({
   invoice            : hasMany('event-invoice'),
   attendees          : hasMany('attendee'),
   speakers           : hasMany('speaker'),
+  discountCodes      : hasMany('discount-code'),
+  accessCodes        : hasMany('access-code'),
 
   _didUpdate: on('didUpdate', function(user) {
     if (toString(user.id) === toString(this.get('authManager.currentUser.id'))) {

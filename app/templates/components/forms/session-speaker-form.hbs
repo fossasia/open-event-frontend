@@ -2,7 +2,7 @@
   {{#if includeSession}}
     {{#if isSessionSpeaker}}
       <h3 class="ui header">
-        {{t 'Session detail'}}
+        {{t 'Session details'}}
       </h3>
     {{/if}}
     {{#each allFields.session as |field|}}
@@ -59,7 +59,7 @@
     {{#if isSessionSpeaker}}
       <div class="ui divider"></div>
       <h3 class="ui header">
-        {{t 'Speaker detail'}}
+        {{t 'Speaker details'}}
       </h3>
     {{/if}}
     {{#each allFields.speaker as |field|}}
@@ -100,6 +100,79 @@
         </div>
       {{/if}}
     {{/each}}
+  {{/if}}
+  {{#if sessions}}
+    <div class="ui divider"></div>
+    <h2 class="ui header">
+      {{t 'Session details'}}
+    </h2>
+    <h4>
+      {{t 'Choose from an existing session'}}
+    </h4>
+    {{#each sessions as |session|}}
+      <div class="field">
+        {{#if session.id}}
+          {{ui-radio name="sessionDetails" label=session.title value=session onChange=(action (mut sessionDetails))}}
+        {{/if}}
+      </div>
+    {{/each}}
+    <div class="ui horizontal divider">
+      Or
+    </div>
+    <div class="field">
+      {{ui-radio name="sessionDetails" label="Add a new Proposal" value=false onChange=(action (mut sessionDetails))}}
+    </div>
+    {{#if (not sessionDetails)}}
+      {{#each allFields.session as |field|}}
+        {{#if field.isIncluded}}
+          <div class="field">
+            <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+            {{#if (is-input-field field.type) }}
+              {{#if field.isLongText}}
+                {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
+                                               textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+              {{else}}
+                {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
+                      id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+              {{/if}}
+            {{/if}}
+            {{#if (eq field.type 'image')}}
+              {{widgets/forms/image-upload
+                imageUrl=(mut (get data.session field.fieldIdentifier))
+                label=(t 'Logo')
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+                icon='image'
+                hint=(t 'Select an image')
+                maxSizeInKb=1000}}
+            {{/if}}
+            {{#if (eq field.type 'file')}}
+              {{widgets/forms/file-upload
+                fileUrl=(mut (get data.session field.fieldIdentifier))
+                label=(t 'File')
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+                icon='file'
+                fileUrl=''
+                hint=(t 'Select a file')
+                maxSizeInKb=10000}}
+            {{/if}}
+            {{#if (eq field.type 'select')}}
+              {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
+                <i class="dropdown icon"></i>
+                <div class="default text">
+                  {{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
+                      (concat 'Select a ' field.name)}}
+                </div>
+                <div class="menu">
+                  {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
+                    <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+                  {{/each}}
+                </div>
+              {{/ui-dropdown}}
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/if}}
   {{/if}}
   <button type="submit" class="ui teal submit button update-changes">
     {{t 'Submit'}}
