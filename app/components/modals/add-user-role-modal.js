@@ -10,6 +10,12 @@ export default ModalBase.extend(FormMixin, {
       this.onValid(() => {
         this.sendAction('updateUserRoles');
       });
+    },
+    close() {
+      if (!this.get('currentInvite').get('id')) {
+        this.get('currentInvite').unloadRecord();
+      }
+      this.set('isOpen', false);
     }
   },
 
