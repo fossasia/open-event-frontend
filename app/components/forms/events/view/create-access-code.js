@@ -106,8 +106,9 @@ export default Component.extend(FormMixin, {
     this.set('data.accessUrl', link);
     return link;
   }),
-  hiddenTickets : computed.filterBy('data.event.tickets', 'isHidden', true),
-  actions       : {
+  hiddenTickets: computed.filterBy('data.event.tickets', 'isHidden', true),
+
+  actions: {
     toggleAllSelection(allTicketTypesChecked) {
       this.toggleProperty('allTicketTypesChecked');
       let tickets = this.hiddenTickets;
@@ -135,14 +136,7 @@ export default Component.extend(FormMixin, {
     },
     submit(data) {
       this.onValid(() => {
-        data.save()
-          .then(() => {
-            this.get('notify').success(this.get('l10n').t('Access code has been successfully created.'));
-            this.get('router').transitionTo('events.view.tickets.access-codes');
-          })
-          .catch(() => {
-            this.get('notify').error(this.get('l10n').t('An unexpected error has occurred. Access code cannot be created.'));
-          });
+        this.sendAction('save', data);
       });
     }
   }
