@@ -21,7 +21,7 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
   },
 
   serializeHasMany(snapshot, json, relationship) {
-    if (!snapshot.hasMany(relationship.key)) {
+    if (!snapshot.hasMany(relationship.key) || (snapshot.hasMany(relationship.key) && relationship.options.readOnly)) {
       return;
     }
     this._super(...arguments);
