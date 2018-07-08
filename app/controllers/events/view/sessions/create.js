@@ -1,13 +1,20 @@
 import Controller from '@ember/controller';
 export default Controller.extend({
   actions: {
-    async save() {
+    async save(speakerDetails) {
       try {
         this.set('isLoading', true);
-        await this.get('model.speaker').save();
-        this.get('model.speaker.sessions').pushObject(this.get('model.session'));
+        if (!speakerDetails) {
+          await this.get('model.speaker').save();
+        }
         await this.get('model.session').save();
-        await this.get('model.speaker').save();
+        if (!speakerDetails) {
+          this.get('model.speaker.sessions').pushObject(this.get('model.session'));
+          await this.get('model.session').save();
+        } else {
+          speakerDetails.sessions.pushObject(this.get('model.session'));
+        }
+        await this.get('model.session').save();
         this.get('notify').success(this.get('l10n').t('Your session has been saved'));
         this.transitionToRoute('events.view.sessions', this.get('model.event.id'));
       } catch (e) {
