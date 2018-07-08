@@ -25,6 +25,35 @@ export default Component.extend(FormMixin, {
     applyPromotionalCode() {
       this.onValid(() => {
       });
+    },
+    updateOrder(ticket, count) {
+      let order = this.get('order');
+      ticket.set('orderQuantity', count);
+      order.set('amount', this.get('total'));
+      if (count > 0) {
+        order.tickets.addObject(ticket);
+      } else {
+        if (order.tickets.includes(ticket)) {
+          order.tickets.removeObject(ticket);
+        }
+      }
+    },
+    placeOrder() {
+      let order = this.get('order');
+      let event = order.get('event');
+      order.tickets.forEach(ticket => {
+        let numberOfAttendees = ticket.orderQuantity;
+        while (numberOfAttendees--) {
+          this.get('attendees').addObject(this.store.createRecord('attendee', {
+            firstname : 'John',
+            lastname  : 'Doe',
+            email     : 'johndoe@example.com',
+            event,
+            ticket
+          }));
+        }
+      });
+      this.sendAction('save');
     }
   },
   getValidationRules() {

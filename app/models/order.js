@@ -12,8 +12,8 @@ export default ModelBase.extend({
   state          : attr('string'),
   country        : attr('string'),
   zipcode        : attr('string'),
-  paymentMode    : attr('string'),
-  status         : attr('string'),
+  paymentMode    : attr('string', { defaultValue: 'free' }),
+  status         : attr('string', { defaultValue: 'pending' }),
   transactionId  : attr('string', { readOnly: true }),
   expMonth       : attr('string'),
   expYear        : attr('string'),
@@ -29,5 +29,6 @@ export default ModelBase.extend({
   user           : belongsTo('user'),
   event          : belongsTo('event'),
   discountCode   : belongsTo('discount-code'),
-  tickets        : hasMany('ticket')
+  tickets        : hasMany('ticket', { readOnly: true }),
+  attendees      : hasMany('attendee')
 });
