@@ -57,6 +57,9 @@ export default Controller.extend({
         .finally(() => {
           this.set('isLoading', false);
         });
+    },
+    editAccessCode(id) {
+      this.transitionToRoute('events.view.tickets.access-codes.edit', id);
     }
   }
 

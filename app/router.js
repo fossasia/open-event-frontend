@@ -81,6 +81,7 @@ router.map(function() {
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });
           this.route('create');
+          this.route('edit', { path: '/edit/:access_code_id' });
         });
       });
       this.route('speakers', function() {
