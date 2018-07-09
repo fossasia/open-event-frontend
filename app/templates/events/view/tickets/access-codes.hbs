@@ -1,4 +1,4 @@
-{{#if (not-includes session.currentRouteName 'events.view.tickets.access-codes.create')}}
+{{#if (and (not-eq session.currentRouteName 'events.view.tickets.access-codes.create') (not-eq session.currentRouteName 'events.view.tickets.access-codes.edit'))}}
   {{#if device.isMobile }}
     <div class="ui hidden divider"></div>
   {{/if}}

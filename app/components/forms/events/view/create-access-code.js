@@ -106,7 +106,14 @@ export default Component.extend(FormMixin, {
     this.set('data.accessUrl', link);
     return link;
   }),
-  hiddenTickets: computed.filterBy('data.event.tickets', 'isHidden', true),
+  hiddenTickets: computed.filterBy('tickets', 'isHidden', true),
+
+  allTicketTypesChecked: computed('tickets', function() {
+    if (this.get('data.tickets').length === this.hiddenTickets.length) {
+      return true;
+    }
+    return false;
+  }),
 
   actions: {
     toggleAllSelection(allTicketTypesChecked) {
