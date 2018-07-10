@@ -109,7 +109,7 @@ export default Component.extend(FormMixin, {
   hiddenTickets: computed.filterBy('tickets', 'isHidden', true),
 
   allTicketTypesChecked: computed('tickets', function() {
-    if (this.get('data.tickets').length === this.hiddenTickets.length) {
+    if (this.hiddenTickets.length && this.get('data.tickets').length === this.hiddenTickets.length) {
       return true;
     }
     return false;
