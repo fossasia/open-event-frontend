@@ -23,9 +23,44 @@ export default Controller.extend({
     },
     {
       title            : 'Actions',
-      template         : 'components/ui-table/cell/cell-code-buttons',
+      template         : 'components/ui-table/cell/events/view/tickets/access-codes/cell-actions',
       disableSorting   : true,
       disableFiltering : true
     }
-  ]
+  ],
+
+  actions: {
+    deleteAccessCode(accessCode) {
+      this.set('isLoading', true);
+      accessCode.destroyRecord()
+        .then(() => {
+          this.get('model').reload();
+          this.notify.success(this.get('l10n').t('Access Code has been deleted successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
+    toggleStatus(accessCode) {
+      this.set('isLoading', true);
+      accessCode.toggleProperty('isActive');
+      accessCode.save()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Access Code has been updated successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
+    editAccessCode(id) {
+      this.transitionToRoute('events.view.tickets.access-codes.edit', id);
+    }
+  }
+
 });

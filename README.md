@@ -33,6 +33,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 1. [Local Installation](/docs/installation/local.md)
 1. [Publish to GitHub Pages](/docs/installation/Publish-to-GitHub-Pages.md)
+1. [Running in Docker](/docs/installation/docker.md)
 
 ## Running / Development
 

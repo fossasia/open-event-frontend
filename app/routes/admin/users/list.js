@@ -16,9 +16,30 @@ export default Route.extend({
       this.replaceWith('admin.users.view', userState);
     }
   },
-  model() {
+  model(params) {
+    this.set('params', params);
+    let filterOptions = [];
+    if (params.users_status === 'active') {
+      filterOptions = [
+        {
+          name : 'deleted-at',
+          op   : 'eq',
+          val  : null
+        }
+      ];
+    } else if (params.users_status === 'deleted') {
+      filterOptions = [
+        {
+          name : 'deleted-at',
+          op   : 'ne',
+          val  : null
+        }
+      ];
+    }
     return this.get('store').query('user', {
-      'page[size]': 10
+      get_trashed  : true,
+      filter       : filterOptions,
+      'page[size]' : 10
     });
   }
 });

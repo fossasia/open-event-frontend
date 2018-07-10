@@ -7,8 +7,8 @@ module('Integration | Component | ui table/cell/events/view/tickets/discount cod
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-
-    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions}}`);
+    this.set('deleteDiscountCode', () => {});
+    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions deleteDiscountCode=(action deleteDiscountCode)}}`);
     assert.ok(this.element.textContent.trim().includes(''));
 
   });
