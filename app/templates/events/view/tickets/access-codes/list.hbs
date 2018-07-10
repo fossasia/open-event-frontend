@@ -1,7 +1,10 @@
 <div class="sixteen wide column">
   {{events/events-table columns=columns data=model
-    useNumericPagination=true
-    showGlobalFilter=true
-    showPageSize=true
+                        useNumericPagination=true
+                        showGlobalFilter=true
+                        showPageSize=true
+                        deleteAccessCode=(action 'deleteAccessCode')
+                        toggleStatus=(action 'toggleStatus')
+                        editAccessCode=(action 'editAccessCode')
   }}
 </div>
