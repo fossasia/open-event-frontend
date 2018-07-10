@@ -16,11 +16,17 @@
       {{ui-radio name='status' label='Inactive' value='false' current=data.isActive onChange=(action (mut data.isActive))}}
     </div>
   </div>
-  <div class="inline field">
-    <label class="required">{{t 'Select Tickets applied to the access code'}}</label>
-    <div class="ui hidden divider"></div>
-    {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
-  </div>
+  {{#if hiddenTickets}}
+    <div class="inline field">
+      <label class="required">{{t 'Select Tickets applied to the access code'}}</label>
+      <div class="ui hidden divider"></div>
+      {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
+    </div>
+  {{else}}
+    <div class="inline field">
+      <label>{{t 'No hidden tickets available for this event to select from'}}</label>
+    </div>
+  {{/if}}
   <div class="ui list">
     {{#each hiddenTickets as |ticket|}}
       {{ui-checkbox label=ticket.name checked=ticket.isChecked onChange=(action 'updateTicketsSelection' ticket)}}

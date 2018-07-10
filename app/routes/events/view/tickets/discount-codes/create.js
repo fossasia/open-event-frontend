@@ -15,5 +15,11 @@ export default Route.extend({
   resetController(controller) {
     this._super(...arguments);
     controller.get('model').unloadRecord();
+  },
+  afterModel(model) {
+    let allTickets = model.event.get('tickets');
+    allTickets.forEach(ticket => {
+      ticket.set('isChecked', false);
+    });
   }
 });

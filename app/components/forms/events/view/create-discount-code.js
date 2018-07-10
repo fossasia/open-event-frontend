@@ -99,6 +99,17 @@ export default Component.extend(FormMixin, {
     this.set('data.discountUrl', link);
     return link;
   }),
+  eventTickets: computed('data.event.tickets', function() {
+    return this.get('data.event.tickets');
+  }),
+
+  allTicketTypesChecked: computed('data.event.tickets', function() {
+    if (this.eventTickets.length && this.get('data.tickets').length === this.eventTickets.length) {
+      return true;
+    }
+    return false;
+  }),
+
   actions: {
     toggleAllSelection(allTicketTypesChecked) {
       this.toggleProperty('allTicketTypesChecked');
