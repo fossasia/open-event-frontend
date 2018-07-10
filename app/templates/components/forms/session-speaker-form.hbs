@@ -73,9 +73,9 @@
       Or
     </div>
     <div class="field">
-      {{ui-radio name="speakerDetails" label="Add a new Speaker" value=false onChange=(action (mut speakerDetails))}}
+      {{ui-radio name="speakerDetails" label="Add a new Speaker" value=false onChange=(action 'toggleNewSpeakerSelected' true)}}
     </div>
-    {{#if (not speakerDetails)}}
+    {{#if shouldShowNewSpeakerDetails}}
       {{#each allFields.speaker as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
@@ -181,9 +181,9 @@
       Or
     </div>
     <div class="field">
-      {{ui-radio name="sessionDetails" label="Add a new Proposal" value=false onChange=(action (mut sessionDetails))}}
+      {{ui-radio name="sessionDetails" label="Add a new Proposal" value=false onChange=(action 'toggleNewSessionSelected' true)}}
     </div>
-    {{#if (not sessionDetails)}}
+    {{#if shouldShowNewSessionDetails}}
       {{#each allFields.session as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
