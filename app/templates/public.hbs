@@ -6,7 +6,7 @@
         <div class="ui grid info">
           <div class="one wide column"></div>
           <div class="fifteen wide column">
-            <h4 class="event time">{{moment-format model.startsAt 'ddd, MMM DD \at h:mm A'}}</h4>
+            <h4 class="event time">{{header-date model.startsAt 'dddd, MMMM DD \at h:mm A z'}}</h4>
             <h1 class="event name">{{model.name}}</h1>
             <h4 class="event location"><i class="marker icon"></i>{{model.locationName}}</h4>
           </div>

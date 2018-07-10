@@ -20,7 +20,7 @@
               <small class="ui gray-text tiny">{{ticket.description}}</small>
             {{/if}}
           </td>
-          <td>{{moment-format ticket.salesEndsAt 'dddd, DD MMMM'}}</td>
+          <td>{{moment-format ticket.salesEndsAt 'ddd, DD MMMM YY, h:mm A'}}</td>
           <td id="{{ticket.id}}_price">$ {{number-format ticket.price}}</td>
           <td>
             <div class="field">
