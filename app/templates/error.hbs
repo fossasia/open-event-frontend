@@ -2,6 +2,8 @@
 <div class="ui container">
   {{#if (eq model.errors.0.status 404)}}
     {{errors/not-found}}
+  {{else if (eq model.errors.0.status 403)}}
+    {{errors/forbidden-error}}
   {{else}}
     {{errors/server-error}}
   {{/if}}
