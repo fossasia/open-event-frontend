@@ -4,7 +4,9 @@
     {{errors/not-found}}
   {{else if (eq model.errors.0.status 403)}}
     {{errors/forbidden-error}}
-  {{else}}
+  {{else if (eq model.errors.0.status 500)}}
     {{errors/server-error}}
+  {{else}}
+    {{errors/generic-error}}
   {{/if}}
 </div>
