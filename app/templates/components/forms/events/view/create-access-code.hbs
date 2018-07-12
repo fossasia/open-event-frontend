@@ -10,7 +10,7 @@
   <div class="grouped inline fields">
     <label class="required">{{t 'Status'}}</label>
     <div class="field">
-      {{ui-radio current=data.isActive name='status' label='Active' value='true' onChange=(action (mut data.isActive))}}
+      {{ui-radio current=data.isActive name='status' label=(t 'Active') value='true' onChange=(action (mut data.isActive))}}
     </div>
     <div class="field">
       {{ui-radio name='status' label='Inactive' value='false' current=data.isActive onChange=(action (mut data.isActive))}}
@@ -20,7 +20,7 @@
     <div class="inline field">
       <label class="required">{{t 'Select Tickets applied to the access code'}}</label>
       <div class="ui hidden divider"></div>
-      {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
+      {{ui-checkbox label=(t 'Select all Ticket types') name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
     </div>
   {{else}}
     <div class="inline field">
