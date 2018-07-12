@@ -19,6 +19,11 @@ export default Controller.extend({
       title        : 'Ends At'
     },
     {
+      propertyName : 'state',
+      template     : 'components/ui-table/cell/cell-event-state',
+      title        : 'State'
+    },
+    {
       propertyName   : 'roles',
       template       : 'components/ui-table/cell/cell-roles',
       title          : 'Roles',
