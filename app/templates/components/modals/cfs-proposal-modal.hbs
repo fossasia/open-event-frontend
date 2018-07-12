@@ -8,13 +8,17 @@
     <p>{{t 'No existing sessions'}}</p>
   {{/if}}
   <div>
-    {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
-      {{#if isNewSpeaker}}
+    {{#if isNewSpeaker}}
+      {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
         {{t 'Add Speaker Details'}}
-      {{else}}
-        {{t 'Edit Speaker Details'}}
-      {{/if}}
-    {{/link-to}}
+      {{/link-to}}
+    {{else}}
+      {{#each data.userSpeaker as |speaker|}}
+        {{#link-to 'public.cfs.edit-speaker' speaker.id class='ui teal button' invokeAction=(action 'toggleView')}}
+          {{t 'Edit Speaker Details'}}
+        {{/link-to}}
+      {{/each}}
+    {{/if}}
     {{#unless isNewSpeaker}}
       {{#link-to 'public.cfs.new-session' class='ui blue button' invokeAction=(action 'toggleView')}}
         {{#if isNewSession}}
