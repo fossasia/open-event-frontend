@@ -12,7 +12,7 @@ export default ModelBase.extend({
   state          : attr('string'),
   country        : attr('string'),
   zipcode        : attr('string'),
-  paymentMode    : attr('string', { defaultValue: 'free' }),
+  paymentMode    : attr('string'),
   status         : attr('string', { defaultValue: 'pending' }),
   transactionId  : attr('string', { readOnly: true }),
   expMonth       : attr('string'),
