@@ -78,6 +78,7 @@ router.map(function() {
         this.route('discount-codes', function() {
           this.route('list', { path: '/:discount_status' });
           this.route('create');
+          this.route('edit', { path: '/edit/:discount_code_id' });
         });
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });

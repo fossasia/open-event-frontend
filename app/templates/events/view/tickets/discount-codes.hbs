@@ -1,4 +1,4 @@
-{{#if (eq session.currentRouteName 'events.view.tickets.discount-codes.create')}}
+{{#if (or (eq session.currentRouteName 'events.view.tickets.discount-codes.create') (eq session.currentRouteName 'events.view.tickets.discount-codes.edit'))}}
   {{outlet}}
 {{else}}
   <div class="ui grid stackable">
