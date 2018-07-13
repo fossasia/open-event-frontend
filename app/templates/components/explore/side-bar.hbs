@@ -54,37 +54,30 @@
   {{/ui-accordion}}
 </div>
 <div class="item">
-  {{#ui-accordion}}
-    <span class="title">
-      <i class="dropdown icon"></i>
-      {{t 'Date'}}
-    </span>
-    <div class="content menu">
-      {{#each dateRanges as |dateRange|}}
-        <a href="#" class="link item {{if (eq date_range dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
-          {{dateRange.name}}
-          {{#if (and (eq dateRange.key 'custom_dates') (eq date_range 'custom_dates'))}}
-            <div class="explore sub menu">
-              <div class="ui form">
-                <div class="grouped fields">
-                  <div class="item field">
-                    <label class="required" for="start_date">{{t 'Starts'}}</label>
-                    {{widgets/forms/date-picker type='text'
-                                                rangePosition='start'
-                                                inputId='start_date'}}
-                  </div>
-                  <div class="item field">
-                    <label class="required" for="end_date">{{t 'Ends'}}</label>
-                    {{widgets/forms/date-picker type='text'
-                                                rangePosition='end'
-                                                inputId='end_date'}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          {{/if}}
-        </a>
-      {{/each}}
+  <span class="title">
+    {{t 'Date'}}
+  </span>
+  <div class="content menu">
+    <div class="explore sub menu">
+      <div class="ui form">
+        <div class="grouped fields">
+          <div class="item field">
+            <label class="required" for="startDate">{{t 'Starts'}}</label>
+            {{widgets/forms/date-picker type='text'
+                                        rangePosition='start'
+                                        value=startDate
+                                        onChange=(action 'dateValidate')
+            }}
+          </div>
+          <div class="item field">
+            <label class="required" for="endDate">{{t 'Ends'}}</label>
+            {{widgets/forms/date-picker type='text'
+                                        rangePosition='end'
+                                        value=endDate
+            }}
+          </div>
+        </div>
+      </div>
     </div>
-  {{/ui-accordion}}
+  </div>
 </div>

@@ -4,6 +4,10 @@ import { groupBy } from 'lodash';
 import FormMixin from 'open-event-frontend/mixins/form';
 
 export default Component.extend(FormMixin, {
+
+  newSpeakerSelected : false,
+  newSessionSelected : false,
+
   getValidationRules() {
     return {
       inline : true,
@@ -298,11 +302,29 @@ export default Component.extend(FormMixin, {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
   }),
 
+  shouldShowNewSpeakerDetails: computed('speakerDetails', 'newSpeakerSelected', function() {
+    return this.get('newSpeakerSelected') && !this.get('speakerDetails');
+  }),
+
+  shouldShowNewSessionDetails: computed('sessionDetails', 'newSessionSelected', function() {
+    return this.get('newSessionSelected') && !this.get('sessionDetails');
+  }),
+
   actions: {
     submit() {
       this.onValid(() => {
         this.sendAction('save');
       });
+    },
+
+    toggleNewSpeakerSelected(value) {
+      this.set('speakerDetails', false);
+      this.set('newSpeakerSelected', value);
+    },
+
+    toggleNewSessionSelected(value) {
+      this.set('sessionDetails', false);
+      this.set('newSessionSelected', value);
     }
   },
   didInsertElement() {

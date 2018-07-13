@@ -1,8 +1,10 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 
 export default Component.extend({
-  shouldShowCallforSpeakers: computed(function() {
-    return this.get('event.isSessionsSpeakersEnabled') && (this.get('event.speakersCall.privacy') === 'public');
-  })
+  async didInsertElement() {
+    this._super(...arguments);
+    let speakersCall = await this.get('event.speakersCall');
+    this.set('shouldShowCallforSpeakers',
+      this.get('event.isSessionsSpeakersEnabled') && (speakersCall.privacy === 'public'));
+  }
 });
