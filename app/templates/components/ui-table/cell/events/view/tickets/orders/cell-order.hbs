@@ -7,8 +7,10 @@
     {{record.status}}
   </div>
   <div class="sub header">
-    <span class="weight-800">
-      {{t 'Payment via'}} {{record.paymentMode}}
-    </span>
+    {{#if record.paidVia}}
+      <span class="weight-800">
+        {{t 'Payment via'}} {{record.paidVia}}
+      </span>
+    {{/if}}
   </div>
 </div>
