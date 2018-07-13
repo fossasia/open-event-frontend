@@ -5,7 +5,7 @@ import { hasMany } from 'ember-data/relationships';
 export default ModelBase.extend({
       events           : attr('string'),
       eventDate        : attr('string'),
-      completedTickets : attr('number'),--
+      completedTickets : attr('number'),
       completedSales   : attr('number'),
       placedTickets    : attr('number'),
       placedSales      : attr('number'),
