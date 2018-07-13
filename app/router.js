@@ -47,6 +47,7 @@ router.map(function() {
       this.route('new-speaker');
       this.route('new-session');
       this.route('edit-speaker', { path: '/edit/:speaker_id' });
+      this.route('edit-session', { path: '/edit/:session_id' });
     });
     this.route('schedule');
     this.route('coc');

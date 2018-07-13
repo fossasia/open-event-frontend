@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('New Session');
+    return this.get('l10n').t('New Speaker');
   },
 
   async model() {
@@ -13,29 +13,16 @@ export default Route.extend({
         sort         : 'id',
         'page[size]' : 50
       }),
-      speaker: await this.get('authManager.currentUser').query('speakers', {
-        filter: [
-          {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
-          }
-        ]
+      session: await this.get('store').createRecord('session', {
+        event   : eventDetails,
+        creator : this.get('authManager.currentUser')
       }),
-      session: await this.get('authManager.currentUser').query('sessions', {
+      speaker: await eventDetails.query('speakers', {
         filter: [
           {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
+            name : 'email',
+            op   : 'eq',
+            val  : this.get('authManager.currentUser').email
           }
         ]
       }),
