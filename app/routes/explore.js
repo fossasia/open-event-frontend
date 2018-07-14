@@ -5,10 +5,148 @@ export default Route.extend({
     return this.get('l10n').t('Explore');
   },
 
-  async model() {
+  /**
+   * Load filtered events based on the given params
+   *
+   * @param params
+   * @return {*}
+   * @private
+   */
+  _loadEvents(params) {
+    let filterOptions = [
+      {
+        name : 'state',
+        op   : 'eq',
+        val  : 'published'
+      }
+    ];
+
+    if (params.category) {
+      filterOptions.push({
+        name : 'event-topic',
+        op   : 'has',
+        val  : {
+          name : 'name',
+          op   : 'eq',
+          val  : params.category
+        }
+      });
+    }
+
+    if (params.sub_category) {
+      filterOptions.push({
+        name : 'event-sub-topic',
+        op   : 'has',
+        val  : {
+          name : 'slug',
+          op   : 'eq',
+          val  : params.sub_category
+        }
+      });
+    }
+
+    if (params.event_type) {
+      filterOptions.push({
+        name : 'event-type',
+        op   : 'has',
+        val  : {
+          name : 'name',
+          op   : 'eq',
+          val  : params.event_type
+        }
+      });
+    }
+
+    if (params.start_date && params.end_date) {
+      filterOptions.push({
+        or:
+          [
+            {
+              and: [
+                {
+                  name : 'starts-at',
+                  op   : 'ge',
+                  val  : params.start_date
+                },
+                {
+                  name : 'starts-at',
+                  op   : 'le',
+                  val  : params.end_date
+                }
+              ]
+            },
+            {
+              and: [
+                {
+                  name : 'ends-at',
+                  op   : 'ge',
+                  val  : params.start_date
+                },
+                {
+                  name : 'ends-at',
+                  op   : 'le',
+                  val  : params.end_date
+                }
+              ]
+            },
+            {
+              and: [
+                {
+                  name : 'starts-at',
+                  op   : 'le',
+                  val  : params.start_date
+                },
+                {
+                  name : 'ends-at',
+                  op   : 'ge',
+                  val  : params.end_date
+                }
+              ]
+            }
+          ]
+      });
+    } else if (params.start_date) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'starts-at',
+            op   : 'ge',
+            val  : params.start_date
+          },
+          {
+            name : 'ends-at',
+            op   : 'ge',
+            val  : params.start_date
+          }
+        ]
+      });
+    }
+
+    return this.store.query('event', {
+      sort   : 'starts-at',
+      filter : filterOptions
+    });
+  },
+
+  async model(params) {
     return {
-      eventTypes  : await this.store.findAll('event-type'),
-      eventTopics : await this.store.findAll('event-topic', { include: 'event-sub-topics' })
+      eventTypes     : await this.store.findAll('event-type'),
+      eventTopics    : await this.store.findAll('event-topic', { include: 'event-sub-topics' }),
+      filteredEvents : await this._loadEvents(params)
     };
+  },
+
+  setupController(controller, model) {
+    this._super(...arguments);
+    controller.set('filteredEvents', model.filteredEvents);
+    this.set('controller', controller);
+  },
+
+  actions: {
+    async queryParamsDidChange(change, params) {
+      if (this.get('controller')) {
+        this.get('controller').set('filteredEvents', await this._loadEvents(params));
+      }
+    }
   }
 });

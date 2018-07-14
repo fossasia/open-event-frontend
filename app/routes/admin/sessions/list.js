@@ -21,39 +21,131 @@ export default Route.extend({
     if (params.sessions_state === 'pending') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'pending'
+          and:
+            [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'deleted-at',
+                  op   : 'eq',
+                  val  : null
+                }
+              },
+              {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'pending'
+              }
+            ]
         }
       ];
     } else if (params.sessions_state === 'accepted') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'accepted'
+          and:
+            [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'deleted-at',
+                  op   : 'eq',
+                  val  : null
+                }
+              },
+              {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
+              }
+            ]
         }
       ];
     } else if (params.sessions_state === 'rejected') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'rejected'
+          and:
+            [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'deleted-at',
+                  op   : 'eq',
+                  val  : null
+                }
+              },
+              {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'rejected'
+              }
+            ]
         }
       ];
     } else if (params.sessions_state === 'deleted') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'deleted'
+          or:
+            [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'deleted-at',
+                  op   : 'ne',
+                  val  : null
+                }
+              },
+              {
+                name : 'deleted-at',
+                op   : 'ne',
+                val  : null
+              }
+            ]
         }
       ];
     } else {
-      filterOptions = [];
+      filterOptions = [
+        {
+          and:
+            [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'deleted-at',
+                  op   : 'eq',
+                  val  : null
+                }
+              },
+              {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              }
+            ]
+        }
+      ];
     }
     return this.get('store').query('session', {
+      get_trashed  : true,
       include      : 'event,speakers',
       filter       : filterOptions,
       'page[size]' : 10

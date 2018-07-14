@@ -26,13 +26,22 @@ export default Route.extend({
       const userSpeaker = await this.get('authManager.currentUser').query('speakers', {
         filter: [
           {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
+            and: [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'identifier',
+                  op   : 'eq',
+                  val  : eventDetails.id
+                }
+              },
+              {
+                name : 'email',
+                op   : 'eq',
+                val  : this.get('authManager.currentUser').email
+              }
+            ]
           }
         ]
       });
@@ -51,6 +60,7 @@ export default Route.extend({
       });
       return {
         event        : eventDetails,
+        user         : this.get('authManager.currentUser'),
         userSpeaker,
         userSession,
         speakersCall : await eventDetails.get('speakersCall')
