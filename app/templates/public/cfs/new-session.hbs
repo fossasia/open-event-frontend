@@ -1,2 +1,15 @@
-{{forms/session-speaker-form fields=model.forms data=model isLoading=isLoading
-  save=(action 'save') isSession=true includeSession=true isCFS=true}}
+<div class="ui container">
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'Session Details'}}
+    </h2>
+    <div class="ui container">
+      {{#each model.speaker as |speaker|}}
+        {{#if speaker.id}}
+          {{forms/session-speaker-form fields=model.forms data=model isLoading=isLoading
+            save=(action 'save' speaker) isSession=true includeSession=true}}
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>

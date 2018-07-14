@@ -8,7 +8,10 @@ module('Integration | Component | ui table/cell/events/view/tickets/discount cod
 
   test('it renders', async function(assert) {
     this.set('deleteDiscountCode', () => {});
-    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions deleteDiscountCode=(action deleteDiscountCode)}}`);
+    this.set('editDiscountCode', () => {});
+    this.set('toggleStatus', () => {});
+    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions
+       deleteDiscountCode=(action deleteDiscountCode) editDiscountCode=(action editDiscountCode) toggleStatus=(action toggleStatus)}}`);
     assert.ok(this.element.textContent.trim().includes(''));
 
   });
