@@ -13,19 +13,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <div class="ui small">
-            {{t 'Student/In'}}
-          </div>
-        </td>
-        <td>Thu, May 25</td>
-        <td>$ {{number-format 4.0}}</td>
-        <td>1</td>
-        <td>
-          $ {{number-format 4.0}}
-        </td>
-      </tr>
+      {{#each data.tickets as |ticket|}}
+        <tr>
+          <td>
+            <div class="ui small">
+              {{ticket.name}}
+            </div>
+          </td>
+          <td>$ {{number-format ticket.price}}</td>
+          <td>$ {{number-format ticket.price}}</td>
+          <td>{{ticket.attendees.length}}</td>
+          <td>
+            $ $ {{number-format (mult ticket.attendees.length ticket.price)}}
+          </td>
+        </tr>
+      {{/each}}
     </tbody>
     <tfoot class="full-width">
       <tr>
@@ -39,7 +41,7 @@
         </th>
         <th colspan="4">
           <div class="ui aligned small primary icon">
-            $ {{number-format 4.0}}
+            $ $ {{number-format total}}
           </div>
         </th>
       </tr>

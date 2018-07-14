@@ -2,30 +2,18 @@ import Component from '@ember/component';
 import { set, computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
+import { orderBy } from 'lodash';
 
 export default Component.extend(FormMixin, {
-  buyer: {
-    firstName : '',
-    lastName  : '',
-    email     : ''
-  },
-  holders: [
-    {
-      firstName : '',
-      lastName  : '',
-      email     : ''
-    },
-    {
-      firstName : '',
-      lastName  : '',
-      email     : ''
-    },
-    {
-      firstName : '',
-      lastName  : '',
-      email     : ''
-    }
-  ],
+  buyer: computed('data.user', function() {
+    return this.get('data.user');
+  }),
+  holders: computed('data.attendees', function() {
+    return this.get('data.attendees');
+  }),
+  isPaidOrder: computed('data', function() {
+    return this.get('data.amount') !== 0;
+  }),
   sameAsBuyer: true,
   getValidationRules() {
     let firstNameValidation = {
@@ -148,7 +136,7 @@ export default Component.extend(FormMixin, {
     return validationRules;
   },
   countries: computed(function() {
-    return countries;
+    return orderBy(countries, 'name');
   }),
   actions: {
     submit() {
