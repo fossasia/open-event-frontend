@@ -7,6 +7,11 @@ export default Route.extend({
 
   async model() {
     const eventDetails = this.modelFor('public');
+    const currentUser = this.get('authManager.currentUser');
+    let userName;
+    if (currentUser.firstName || currentUser.lastName) {
+      userName = `${currentUser.firstName} ${currentUser.lastName}`;
+    }
     return {
       event : eventDetails,
       forms : await eventDetails.query('customForms', {
@@ -14,9 +19,19 @@ export default Route.extend({
         'page[size]' : 50
       }),
       speaker: await this.get('store').createRecord('speaker', {
-        event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        email    : currentUser.email,
+        name     : userName,
+        photoUrl : currentUser.avatarUrl,
+        event    : eventDetails,
+        user     : currentUser
       })
     };
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model.speaker');
+    if (!model.id) {
+      controller.get('model.speaker').unloadRecord();
+    }
   }
 });

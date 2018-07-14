@@ -31,6 +31,7 @@ export default Controller.extend({
       this.set('isLoading', true);
       speaker.destroyRecord()
         .then(() => {
+          this.get('model').reload();
           this.notify.success(this.get('l10n').t('Speaker has been deleted successfully.'));
         })
         .catch(() => {
