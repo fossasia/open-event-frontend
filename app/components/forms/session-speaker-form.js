@@ -302,6 +302,16 @@ export default Component.extend(FormMixin, {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
   }),
 
+  // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
+  noSpeakerExists: computed('speakers', function() {
+    return (this.get('speakers').length === 1);
+  }),
+
+  // Clicking on the add speaker button creates a blank record which increases the length of the session's list by 1.
+  noSessionExists: computed('sessions', function() {
+    return (this.get('sessions').length === 1);
+  }),
+
   shouldShowNewSpeakerDetails: computed('speakerDetails', 'newSpeakerSelected', function() {
     return this.get('newSpeakerSelected') && !this.get('speakerDetails');
   }),
