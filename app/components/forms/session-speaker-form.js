@@ -340,24 +340,10 @@ export default Component.extend(FormMixin, {
   didInsertElement() {
     if (this.get('isSpeaker') && this.get('data.speaker') && this.get('data.speaker').length) {
       this.set('data.speaker', this.get('data.speaker').toArray()[0]);
-    } else if (this.get('isCFS')) {
-      this.set('data.speaker', this.get('store').createRecord('speaker', {
-        email    : this.get('authManager.currentUser.email'),
-        name     : `${this.get('authManager.currentUser.firstName')} ${this.get('authManager.currentUser.lastName')}`,
-        photoUrl : this.get('authManager.currentUser.avatarUrl'),
-        event    : this.get('data.event'),
-        user     : this.get('authManager.currentUser')
-      }));
     }
 
     if (this.get('isSession') && this.get('data.session') && this.get('data.session').length) {
       this.set('data.session', this.get('data.session').toArray()[0]);
-    } else if (this.get('isCFS')) {
-      this.set('data.session', this.get('store').createRecord('session', {
-        event   : this.get('data.event'),
-        creator : this.get('authManager.currentUser'),
-        speaker : this.get('data.speaker')
-      }));
     }
   }
 });

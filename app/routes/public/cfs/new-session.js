@@ -29,5 +29,12 @@ export default Route.extend({
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})
     };
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model.session');
+    if (!model.id) {
+      controller.get('model.session').unloadRecord();
+    }
   }
 });
