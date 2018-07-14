@@ -22,8 +22,9 @@ export default Route.extend({
 
   async model() {
     const eventDetails = this.modelFor('public');
+    const currentUser  = this.get('authManager.currentUser');
     if (this.get('session.isAuthenticated')) {
-      const userSpeaker = await this.get('authManager.currentUser').query('speakers', {
+      const userSpeaker = await currentUser.query('speakers', {
         filter: [
           {
             and: [
@@ -39,28 +40,41 @@ export default Route.extend({
               {
                 name : 'email',
                 op   : 'eq',
-                val  : this.get('authManager.currentUser').email
+                val  : currentUser.email
               }
             ]
           }
         ]
       });
-      const userSession = await this.get('authManager.currentUser').query('sessions', {
+      const userSession = await currentUser.query('sessions', {
         filter: [
           {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
+            and: [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'identifier',
+                  op   : 'eq',
+                  val  : eventDetails.id
+                }
+              },
+              {
+                name : 'speakers',
+                op   : 'any',
+                val  : {
+                  name : 'email',
+                  op   : 'eq',
+                  val  : currentUser.email
+                }
+              }
+            ]
           }
         ]
       });
       return {
         event        : eventDetails,
-        user         : this.get('authManager.currentUser'),
+        user         : currentUser,
         userSpeaker,
         userSession,
         speakersCall : await eventDetails.get('speakersCall')
