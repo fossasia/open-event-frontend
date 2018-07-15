@@ -46,6 +46,8 @@ router.map(function() {
     this.route('cfs', function() {
       this.route('new-speaker');
       this.route('new-session');
+      this.route('edit-speaker', { path: '/edit/:speaker_id' });
+      this.route('edit-session', { path: '/edit/:session_id' });
     });
     this.route('schedule');
     this.route('coc');
@@ -77,15 +79,18 @@ router.map(function() {
         this.route('discount-codes', function() {
           this.route('list', { path: '/:discount_status' });
           this.route('create');
+          this.route('edit', { path: '/edit/:discount_code_id' });
         });
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });
           this.route('create');
+          this.route('edit', { path: '/edit/:access_code_id' });
         });
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
         this.route('edit', { path: '/edit/:speaker_id' });
+        this.route('create');
       });
       this.route('scheduler');
     });
@@ -168,7 +173,7 @@ router.map(function() {
     });
   });
   this.route('orders', function() {
-    this.route('new');
+    this.route('new', { path: '/:order_id/new' });
   });
 });
 

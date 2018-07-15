@@ -10,9 +10,11 @@
     {{record.order.state}}
   </div>
   <div class="sub header">
-    <span class="weight-800">
-      {{t 'Payment via'}} {{record.order.paymentMode}}
-    </span>
+    {{#if record.order.paidVia}}
+      <span class="weight-800">
+        {{t 'Payment via'}} {{record.order.paidVia}}
+      </span>
+    {{/if}}
     {{moment-from-now record.order.createdAt}}
   </div>
 </div>

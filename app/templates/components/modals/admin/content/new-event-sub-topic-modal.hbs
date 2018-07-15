@@ -2,19 +2,12 @@
   {{t 'Add New Event Sub Topic'}}
 </div>
 <div class="content">
-  <div class="field">
-    <label>{{t 'Event Sub-topic'}}</label>
-    {{#ui-dropdown class='search selection' onChange=(action (mut eventSubTopic.eventTopic)) as |execute mapper|}}
-      <i class="dropdown icon"></i>
-      <div class="default text">{{t 'Select Event Sub-Topic'}}</div>
-      <div class="menu">
-        {{#each model.eventTopics as |topic|}}
-          <div class="item" data-value="{{map-value mapper topic}}">{{topic.name}}</div>
-        {{/each}}
-      </div>
-    {{/ui-dropdown}}
-  </div>
-  <form class="ui {{if isLoading 'loading'}} form" id="add-event-sub-topic-form" autocomplete="off" {{action 'addEventProperty' eventSubTopic on='submit' preventDefault=true}}>
+  <form class="ui {{if isLoading 'loading'}} form" id="add-event-sub-topic-form" autocomplete="off" {{action
+    'addEventProperty' eventSubTopic eventTopic on='submit' preventDefault=true}}>
+    <div class="field">
+      <label>{{t 'Event Topic'}}</label>
+      <div class="text">{{eventTopic.name}}</div>
+    </div>
     <div class="field">
       <label class="required">
         {{t 'New Event Sub Topic'}}

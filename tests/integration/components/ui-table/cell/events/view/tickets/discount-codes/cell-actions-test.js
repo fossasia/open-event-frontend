@@ -7,8 +7,11 @@ module('Integration | Component | ui table/cell/events/view/tickets/discount cod
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-
-    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions}}`);
+    this.set('deleteDiscountCode', () => {});
+    this.set('editDiscountCode', () => {});
+    this.set('toggleStatus', () => {});
+    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions
+       deleteDiscountCode=(action deleteDiscountCode) editDiscountCode=(action editDiscountCode) toggleStatus=(action toggleStatus)}}`);
     assert.ok(this.element.textContent.trim().includes(''));
 
   });

@@ -12,6 +12,8 @@ export default Route.extend({
         'page[size]' : 50,
         sort         : 'id'
       }),
+      speakers: await eventDetails.query('speakers', {
+      }),
       session: await this.get('store').createRecord('session', {
         event   : eventDetails,
         creator : this.get('authManager.currentUser')
@@ -27,7 +29,11 @@ export default Route.extend({
   resetController(controller) {
     this._super(...arguments);
     const model = controller.get('model');
-    model.speaker.unloadRecord();
-    model.session.unloadRecord();
+    if (!model.speaker.id) {
+      model.speaker.unloadRecord();
+    }
+    if (!model.session.id) {
+      model.session.unloadRecord();
+    }
   }
 });

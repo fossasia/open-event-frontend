@@ -1,0 +1,11 @@
+version: '3'
+services:
+
+  web:
+    build: .
+    environment:
+      GOOGLE_API_KEY: 'Sample Key'
+      API_HOST: http://localhost:5000
+    network_mode: "host"
+    ports:
+      - 127.0.0.1:4200:4200

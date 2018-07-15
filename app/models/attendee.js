@@ -10,7 +10,7 @@ export default ModelBase.extend({
   city        : attr('string'),
   firstname   : attr('string'),
   lastname    : attr('string'),
-  isCheckedIn : attr('boolean'),
+  isCheckedIn : attr('boolean', { defaultValue: false }),
   state       : attr('string'),
   address     : attr('string'),
   pdfUrl      : attr('string'),
@@ -22,6 +22,5 @@ export default ModelBase.extend({
    */
   event  : belongsTo('event'),
   ticket : belongsTo('ticket'),
-  order  : belongsTo('order'),
   user   : belongsTo('user')
 });
