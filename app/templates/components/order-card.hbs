@@ -1,0 +1,38 @@
+<div class="event wide ui grid row">
+  {{#unless device.isMobile}}
+    <div class="ui card three wide computer six wide tablet column">
+      <a class="image" href="#">
+        {{widgets/safe-image src=(if order.event.originalImageUrl order.event.originalImageUrl order.event.originalImageUrl)}}
+      </a>
+    </div>
+  {{/unless}}
+  <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
+    <a class="main content" href="#">
+      {{#smart-overflow class='header'}}
+        {{order.event.name}}
+      {{/smart-overflow}}
+      <div class="meta">
+        <span class="date">
+          {{moment-format order.event.startsAt 'ddd, DD MMMM YYYY, h:mm A'}}
+        </span>
+      </div>
+      {{#smart-overflow class='description'}}
+        {{order.event.shortLocationName}}
+      {{/smart-overflow}}
+    </a>
+    <div class="extra content small text">
+      <span>
+        <span>
+          {{#if isFreeOrder}}
+            {{t 'Free'}}
+          {{else}}
+            {{order.event.paymentCurrency}}{{order.amount}}
+          {{/if}}
+          {{t 'order'}}
+        </span>
+        <span>#{{order.identifier}}</span>
+        <span>{{t 'on'}} {{moment-format order.completedAt 'MMMM DD, YYYY h:mm A'}}</span>
+      </span>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@ export default ModelBase.extend({
   /**
    * attributes
    */
-  amount         : attr('string'),
+  amount         : attr('number'),
   address        : attr('string'),
   city           : attr('string'),
   state          : attr('string'),
