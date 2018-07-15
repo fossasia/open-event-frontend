@@ -69,6 +69,9 @@
         {{/if}}
       </div>
     {{/each}}
+    {{#if noSpeakerExists}}
+      <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
+    {{/if}}
     <div class="ui horizontal divider">
       Or
     </div>
@@ -177,6 +180,9 @@
         {{/if}}
       </div>
     {{/each}}
+    {{#if noSessionExists}}
+      <div class="ui small disabled header">{{t 'No session exists. Add a new session proposal.'}}</div>
+    {{/if}}
     <div class="ui horizontal divider">
       Or
     </div>

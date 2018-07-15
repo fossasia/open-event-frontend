@@ -1,7 +1,9 @@
 <div class="ui unordered list">
   {{#each record.sessions as |session|}}
-    <div class="item">
-      {{session.title}}
-    </div>
+    {{#if (not eq session.deletedAt)}}
+      <div class="item">
+        {{session.title}}
+      </div>
+    {{/if}}
   {{/each}}
 </div>

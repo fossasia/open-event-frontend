@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
@@ -58,11 +57,7 @@ export default Route.extend({
       });
     }
 
-    if (!params.start_date) {
-      params.start_date =  moment().toISOString();
-    }
-
-    if (params.end_date) {
+    if (params.start_date && params.end_date) {
       filterOptions.push({
         or:
           [
@@ -110,8 +105,7 @@ export default Route.extend({
             }
           ]
       });
-    } else {
-
+    } else if (params.start_date) {
       filterOptions.push({
         or: [
           {
