@@ -99,9 +99,7 @@ export default Component.extend(FormMixin, {
     this.set('data.discountUrl', link);
     return link;
   }),
-  eventTickets: computed('tickets', function() {
-    return this.get('tickets');
-  }),
+  eventTickets: computed.filterBy('tickets', 'type', 'paid'),
 
   allTicketTypesChecked: computed('tickets', function() {
     if (this.eventTickets.length && this.get('data.tickets').length === this.eventTickets.length) {
