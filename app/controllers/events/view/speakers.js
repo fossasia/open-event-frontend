@@ -1,21 +1,15 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
 import { run } from '@ember/runloop';
 
 export default Controller.extend({
 
   isLoading: false,
 
-  onSessionRoute: computed('session.currentRouteName', function() {
-    let currentRouteName = this.get('session.currentRouteName');
-    return currentRouteName !== 'events.view.sessions.create' && currentRouteName !== 'events.view.sessions.edit';
-  }),
-
   actions: {
     export() {
       this.set('isLoading', true);
       this.get('loader')
-        .load(`/events/${this.get('model.id')}/export/sessions/csv`)
+        .load(`/events/${this.get('model.id')}/export/speakers/csv`)
         .then(exportJobInfo => {
           this.requestLoop(exportJobInfo);
         })

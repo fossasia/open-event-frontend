@@ -23,22 +23,7 @@
         </div>
         <div class="eight wide right aligned column">
           <div class="ui labeled input">
-            {{#ui-dropdown class='compact selection'}}
-              <div class="default text">
-                {{t 'Export As'}}
-              </div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item" data-value="pdf">
-                  <i class="file pdf outline icon"></i>
-                  {{t 'PDF'}}
-                </div>
-                <div class="item" data-value="csv">
-                  <i class="file excel outline icon"></i>
-                  {{t 'CSV'}}
-                </div>
-              </div>
-            {{/ui-dropdown}}
+            <button class="ui blue button right-floated {{if isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
             {{#link-to 'events.view.sessions.create' class='ui blue button right floated'}}
               {{t 'Create Session'}}
             {{/link-to}}
