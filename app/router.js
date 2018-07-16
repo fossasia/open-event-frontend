@@ -137,9 +137,6 @@ router.map(function() {
         this.route('sessions', function() {
           this.route('list', { path: '/:session_status' });
         });
-        this.route('events', function() {
-          this.route('list', { path: '/:event_status' });
-        });
       });
       this.route('list', { path: '/:users_status' });
     });
