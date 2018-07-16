@@ -8,9 +8,9 @@ export default Component.extend(FormMixin, {
     return this.get('data.tickets').sortBy('position');
   }),
 
-  total: computed('data.tickets.@each.orderQuantity', function() {
-    return sumBy(this.get('tickets').toArray(),
-      ticket => ticket.getWithDefault('price', 0) * ticket.getWithDefault('orderQuantity', 0)
+  total: computed('data.tickets.@each.attendees', function() {
+    return sumBy(this.get('data.tickets').toArray(),
+      ticket => ticket.getWithDefault('price', 0) * ticket.getWithDefault('attendees.length', 0)
     );
   })
 });

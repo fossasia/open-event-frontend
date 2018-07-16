@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { set, computed } from '@ember/object';
+import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { orderBy } from 'lodash';
@@ -9,12 +9,21 @@ export default Component.extend(FormMixin, {
     return this.get('data.user');
   }),
   holders: computed('data.attendees', function() {
+    this.get('data.attendees').forEach(attendee => {
+      attendee.set('firstname', '');
+      attendee.set('lastname', '');
+      attendee.set('email', '');
+    });
     return this.get('data.attendees');
   }),
   isPaidOrder: computed('data', function() {
-    return this.get('data.amount') !== 0;
+    if (!this.get('data.amount')) {
+      this.get('data').set('paymentMode', 'free');
+      return false;
+    }
+    return true;
   }),
-  sameAsBuyer: true,
+  sameAsBuyer: false,
   getValidationRules() {
     let firstNameValidation = {
       rules: [
@@ -118,7 +127,7 @@ export default Component.extend(FormMixin, {
           ]
         },
         payVia: {
-          identifier : 'pay_via',
+          identifier : 'payment_mode',
           rules      : [
             {
               type   : 'checked',
@@ -139,15 +148,21 @@ export default Component.extend(FormMixin, {
     return orderBy(countries, 'name');
   }),
   actions: {
-    submit() {
+    submit(data) {
       this.onValid(() => {
+        this.sendAction('save', data);
       });
     },
-    removeHolderData(holder) {
+    modifyHolder(holder) {
+      let buyer = this.get('buyer');
       if (this.get('sameAsBuyer')) {
-        set(holder, 'firstName', null);
-        set(holder, 'lastName', null);
-        set(holder, 'email', null);
+        holder.set('firstname', buyer.content.firstName);
+        holder.set('lastname', buyer.content.lastName);
+        holder.set('email', buyer.content.email);
+      } else {
+        holder.set('firstname', '');
+        holder.set('lastname', '');
+        holder.set('email', '');
       }
     }
   }

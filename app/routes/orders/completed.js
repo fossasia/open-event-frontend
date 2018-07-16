@@ -3,7 +3,7 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   titleToken(model) {
     var order = model.get('identifier');
-    return this.get('l10n').t(`New Order -${order}`);
+    return this.get('l10n').t(`Completed Order -${order}`);
   },
 
   model(params) {
@@ -15,8 +15,8 @@ export default Route.extend({
   afterModel(model) {
     if (model.get('status') === 'expired') {
       this.transitionTo('orders.expired', model.get('identifier'));
-    } else if (model.get('status') === 'completed') {
-      this.transitionTo('orders.completed', model.get('identifier'));
+    } else if (model.get('status') === 'pending') {
+      this.transitionTo('orders.new', model.get('identifier'));
     }
   }
 });
