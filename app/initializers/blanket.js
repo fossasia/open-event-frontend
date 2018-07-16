@@ -19,7 +19,6 @@ export function initialize(application) {
   inject('sanitizer', 'service:sanitizer');
   inject('settings', 'service:settings');
   inject('fastboot', 'service:fastboot');
-  inject('routing', 'service:-routing');
 
   application.inject('component', 'router', 'service:router');
 }
