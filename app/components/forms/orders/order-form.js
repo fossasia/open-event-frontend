@@ -24,6 +24,7 @@ export default Component.extend(FormMixin, {
     return true;
   }),
   sameAsBuyer: false,
+
   getValidationRules() {
     let firstNameValidation = {
       rules: [
@@ -147,6 +148,7 @@ export default Component.extend(FormMixin, {
   countries: computed(function() {
     return orderBy(countries, 'name');
   }),
+
   actions: {
     submit(data) {
       this.onValid(() => {

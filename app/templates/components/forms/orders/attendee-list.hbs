@@ -1,0 +1,88 @@
+<form class="ui form">
+  <div class="ui segments">
+    <div class="ui aligned secondary segment">
+      <h3 class="weight-400">{{t 'Registration Information'}}</h3>
+    </div>
+    <div class="ui padded segment">
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Ticket Buyer'}}
+      </h4>
+      <div class="field disabled">
+        <label for="firstname">{{t 'First Name'}}</label>
+        {{input type='text' name='first_name' value=buyer.firstName}}
+      </div>
+      <div class="field disabled">
+        <label for="lastname">{{t 'Last Name'}}</label>
+        {{input type='text' name='last_name' value=buyer.lastName}}
+      </div>
+      <div class="field disabled">
+        <label for="email">{{t 'Email'}}</label>
+        {{input type='text' name='email' value=buyer.email}}
+      </div>
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Ticket Holder\'s Information'}}
+      </h4>
+      {{#each holders as |holder index|}}
+        <div class="field">
+          <div class="inline field">
+            <i class="user icon"></i>
+            <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+          </div>
+          <div class="field disabled">
+            <label for="firstname">{{t 'First Name'}}</label>
+            {{input type='text' name=(concat 'first_name_' index) value=holder.firstname}}
+          </div>
+          <div class="field disabled">
+            <label for="lastname">{{t 'Last Name'}}</label>
+            {{input type='text' name=(concat 'last_name_' index) value=holder.lastname}}
+          </div>
+          <div class="field disabled">
+            <label for="email">{{t 'Email'}}</label>
+            {{input type='text' name=(concat 'email_' index) value=holder.email}}
+          </div>
+        </div>
+      {{/each}}
+      {{#if isPaidOrder}}
+        <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          {{t 'Billing Information'}}
+        </h4>
+        <div class="field disabled">
+          <label for="country">{{t 'Country'}}</label>
+          {{input type='text' id='country' value=data.country}}
+        </div>
+        <div class="field disabled">
+          <label for="address">{{t 'Address'}}</label>
+          {{textarea rows='2' id='address' value=data.address}}
+        </div>
+        <div class="field disabled">
+          <label for="city">{{t 'City'}}</label>
+          {{input type='text' id='city' value=data.city}}
+        </div>
+        <div class="field disabled">
+          <label for="state">{{t 'State/Province'}}</label>
+          {{input type='text' id='state' value=data.state}}
+        </div>
+        <div class="field disabled">
+          <label for="zipcode">{{t 'Zip Code'}}</label>
+          {{input type='text' id='zip_code' value=data.zipcode}}
+        </div>
+        <div class="field disabled">
+          <label for="payment_mode">{{t 'Payment Mode'}}</label>
+          <div class="grouped inline fields">
+            <div class="field disabled">
+              {{ui-radio name='payment_mode' label='stripe' value='stripe' current=data.paymentMode onChange=(action (mut data.paymentMode))}}
+              <label for="payment_mode"><img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe"></label>
+            </div>
+            <div class="field disabled">
+              {{ui-radio name='payment_mode' label='paypal' value='paypal' current=data.paymantMode onChange=(action (mut data.paymentMode))}}
+              <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</form>

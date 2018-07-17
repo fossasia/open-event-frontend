@@ -20,15 +20,15 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
-      <div class="field">
+      <div class="field disabled">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
         {{input type='text' name='first_name' value=buyer.firstName}}
       </div>
-      <div class="field">
+      <div class="field disabled">
         <label class="required" for="lastname">{{t 'Last Name'}}</label>
         {{input type='text' name='last_name' value=buyer.lastName}}
       </div>
-      <div class="field">
+      <div class="field disabled">
         <label class="required" for="email">{{t 'Email'}}</label>
         {{input type='text' name='email' value=buyer.email}}
       </div>
@@ -42,7 +42,7 @@
             {{#unless sameAsBuyer}}
               <div class="inline field">
                 <i class="user icon"></i>
-                <label>{{t 'Ticket Holder '}}</label>
+                <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
               </div>
               <div class="field">
                 <label class="required" for="firstname">{{t 'First Name'}}</label>
@@ -62,17 +62,17 @@
         {{else}}
           <div class="inline field">
             <i class="user icon"></i>
-            <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' for - '}}{{holder.ticket.name}}</label>
+            <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
           </div>
-          <div class="field">
+          <div class="field {{if (and sameAsBuyer (eq index 0)) 'disabled'}}">
             <label class="required" for="firstname">{{t 'First Name'}}</label>
             {{input type='text' name=(concat 'first_name_' index) value=holder.firstname}}
           </div>
-          <div class="field">
+          <div class="field {{if (and sameAsBuyer (eq index 0)) 'disabled'}}">
             <label class="required" for="lastname">{{t 'Last Name'}}</label>
             {{input type='text' name=(concat 'last_name_' index) value=holder.lastname}}
           </div>
-          <div class="field">
+          <div class="field {{if (and sameAsBuyer (eq index 0)) 'disabled'}}">
             <label class="required" for="email">{{t 'Email'}}</label>
             {{input type='text' name=(concat 'email_' index) value=holder.email}}
           </div>

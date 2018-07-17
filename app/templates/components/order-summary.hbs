@@ -1,8 +1,5 @@
 <div class="ui segments">
-  <div class="ui secondary segment">
-    <h3 class="weight-400">{{t 'Order Summary'}}</h3>
-  </div>
-  {{#if (eq session.currentRouteName 'orders.completed')}}
+  {{#if (eq session.currentRouteName 'orders.view')}}
     <div class="ui green inverted segment">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
@@ -16,7 +13,10 @@
       </div>
     </div>
   {{/if}}
-  {{#unless (eq session.currentRouteName 'orders.expired')}}
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'Order Summary'}}</h3>
+  </div>
+  {{#if (or (eq session.currentRouteName 'orders.new') (eq session.currentRouteName 'orders.view'))}}
     <table class="ui very basic tablet stackable table order-summary">
       <thead>
         <tr>
@@ -62,7 +62,7 @@
         </tr>
       </tfoot>
     </table>
-  {{/unless}}
+  {{/if}}
 </div>
 {{#if (eq session.currentRouteName 'orders.expired')}}
   <div class="ui orange inverted segment">

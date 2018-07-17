@@ -10,13 +10,15 @@ export default Controller.extend({
         for (const attendee of attendees ? attendees.toArray() : []) {
           await attendee.save();
         }
+        order.set('status', 'completed');
         await order.save()
           .then(() => {
             this.get('notify').success(this.get('l10n').t('Order details saved. Your order is successful'));
-            this.transitionToRoute('orders.completed', order.identifier);
+            this.transitionToRoute('orders.view', order.identifier);
           })
-          .catch(async() => {
-            this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+          .catch(e => {
+            order.set('status', 'pending');
+            this.get('notify').error(this.get('l10n').t(` ${e} Oops something went wrong. Please try again`));
           })
           .finally(() => {
             this.set('isLoading', false);
