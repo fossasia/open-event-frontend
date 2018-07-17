@@ -4,7 +4,7 @@ export default Component.extend({
   actions: {
     logout() {
       this.get('authManager').logout();
-      this.get('routing').transitionTo('index');
+      this.get('router').transitionTo('index');
     }
   }
 });
