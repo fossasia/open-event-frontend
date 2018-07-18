@@ -111,10 +111,10 @@
             </div>
           {{/ui-dropdown}}
         </div>
-        {{#if subTopics}}
+        {{#if model.eventSubTopics}}
           <table class="ui celled table">
             <tbody>
-              {{#each subTopics as |subTopic|}}
+              {{#each model.eventSubTopics as |subTopic|}}
                 <tr>
                   <td>
                     <div class="ui grid">
