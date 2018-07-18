@@ -37,6 +37,7 @@ export default Route.extend({
       ];
     }
     return this.get('store').query('user', {
+      include      : 'events',
       get_trashed  : true,
       filter       : filterOptions,
       'page[size]' : 10
