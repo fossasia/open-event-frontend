@@ -1,5 +1,57 @@
 <div class="ui ordered list">
-  {{#each record.eventRoles as |eventRole|}}
-    <div class="item">{{eventRole.name}} ({{eventRole.event.name}})</div>
-  {{/each}}
+  {{#if record.isUserOrganizer}}
+    {{#each record.events as |event|}}
+      {{#each event.organizers as |organizer|}}
+        {{#if (eq organizer.email record.email)}}
+          <div class="field">
+            {{event.name}}{{t ' - Organizer'}}
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+  {{/if}}
+  {{#if record.isUserCoorganizer}}
+    {{#each record.events as |event|}}
+      {{#each event.coorganizers as |coorganizer|}}
+        {{#if (eq coorganizer.email record.email)}}
+          <div class="field">
+            {{event.name}}{{t ' - Co organizer'}}
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+  {{/if}}
+  {{#if record.isUserTrackOrganizer}}
+    {{#each record.events as |event|}}
+      {{#each event.trackOrganizers as |trackOrganizer|}}
+        {{#if (eq trackOrganizer.email record.email)}}
+          <div class="field">
+            {{event.name}}{{t ' - Track Organizer'}}
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+  {{/if}}
+  {{#if record.isUserRegistrar}}
+    {{#each record.events as |event|}}
+      {{#each event.registrars as |registrar|}}
+        {{#if (eq registrar.email record.email)}}
+          <div class="field">
+            {{event.name}}{{t ' - Registrar'}}
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+  {{/if}}
+  {{#if record.isUserModerator}}
+    {{#each record.events as |event|}}
+      {{#each event.moderators as |moderator|}}
+        {{#if (eq moderator.email record.email)}}
+          <div class="field">
+            {{event.name}}{{t ' - Moderator'}}
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+  {{/if}}
 </div>

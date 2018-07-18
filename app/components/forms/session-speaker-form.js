@@ -302,6 +302,16 @@ export default Component.extend(FormMixin, {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
   }),
 
+  // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
+  noSpeakerExists: computed('speakers', function() {
+    return (this.get('speakers').length === 1);
+  }),
+
+  // Clicking on the add speaker button creates a blank record which increases the length of the session's list by 1.
+  noSessionExists: computed('sessions', function() {
+    return (this.get('sessions').length === 1);
+  }),
+
   shouldShowNewSpeakerDetails: computed('speakerDetails', 'newSpeakerSelected', function() {
     return this.get('newSpeakerSelected') && !this.get('speakerDetails');
   }),
@@ -330,24 +340,10 @@ export default Component.extend(FormMixin, {
   didInsertElement() {
     if (this.get('isSpeaker') && this.get('data.speaker') && this.get('data.speaker').length) {
       this.set('data.speaker', this.get('data.speaker').toArray()[0]);
-    } else if (this.get('isCFS')) {
-      this.set('data.speaker', this.get('store').createRecord('speaker', {
-        email    : this.get('authManager.currentUser.email'),
-        name     : `${this.get('authManager.currentUser.firstName')} ${this.get('authManager.currentUser.lastName')}`,
-        photoUrl : this.get('authManager.currentUser.avatarUrl'),
-        event    : this.get('data.event'),
-        user     : this.get('authManager.currentUser')
-      }));
     }
 
     if (this.get('isSession') && this.get('data.session') && this.get('data.session').length) {
       this.set('data.session', this.get('data.session').toArray()[0]);
-    } else if (this.get('isCFS')) {
-      this.set('data.session', this.get('store').createRecord('session', {
-        event   : this.get('data.event'),
-        creator : this.get('authManager.currentUser'),
-        speaker : this.get('data.speaker')
-      }));
     }
   }
 });

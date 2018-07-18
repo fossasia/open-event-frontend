@@ -5,7 +5,7 @@
   <div class="ui input">
     {{widgets/forms/places-autocomplete
       name='location'
-      value=placeName
+      value=location
       type='text'
       placeholder=(t 'Enter Location')}}
   </div>
@@ -61,23 +61,28 @@
     </span>
     <div class="content menu">
       {{#each dateRanges as |dateRange|}}
-        <a href="#" class="link item {{if (eq date_range dateRange.key) 'active'}}" {{action 'selectDateRange' dateRange.key}}>
+        <a href="#" class="link item {{if (eq dateType dateRange.key) 'active'}}" {{action 'selectDateFilter'
+                                                                                             dateRange.key}}>
           {{dateRange.name}}
-          {{#if (and (eq dateRange.key 'custom_dates') (eq date_range 'custom_dates'))}}
+          {{#if (and (eq dateRange.key 'custom_dates') (eq dateType 'custom_dates'))}}
             <div class="explore sub menu">
               <div class="ui form">
                 <div class="grouped fields">
                   <div class="item field">
                     <label class="required" for="start_date">{{t 'Starts'}}</label>
                     {{widgets/forms/date-picker type='text'
+                                                value=customStartDate
                                                 rangePosition='start'
-                                                inputId='start_date'}}
+                                                onChange=(action 'dateValidate')
+                    }}
                   </div>
                   <div class="item field">
                     <label class="required" for="end_date">{{t 'Ends'}}</label>
                     {{widgets/forms/date-picker type='text'
+                                                value=customEndDate
                                                 rangePosition='end'
-                                                inputId='end_date'}}
+                                                onChange=(action 'onDateChange')
+                    }}
                   </div>
                 </div>
               </div>

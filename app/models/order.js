@@ -1,12 +1,13 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
+import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 
-export default ModelBase.extend({
+export default ModelBase.extend(CustomPrimaryKeyMixin, {
   /**
    * attributes
    */
-  amount         : attr('string'),
+  amount         : attr('number'),
   address        : attr('string'),
   city           : attr('string'),
   state          : attr('string'),

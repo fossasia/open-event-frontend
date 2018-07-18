@@ -38,6 +38,13 @@ export default Component.extend({
     }
 
     this.$().calendar(merge(defaultOptions, this.get('options')));
-  }
+  },
 
+  actions: {
+    onChange() {
+      if (this.get('onChange')) {
+        this.sendAction('onChange', this.get('value'));
+      }
+    }
+  }
 });

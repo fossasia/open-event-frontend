@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
+import { merge } from '@ember/polyfills';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
@@ -10,6 +11,7 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { orderBy, filter, find } from 'lodash';
 import { inject as service } from '@ember/service';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
+import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
@@ -18,8 +20,100 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
+  licenses: computed(function() {
+    return orderBy(licenses, 'name');
+  }),
+
+  countries: computed(function() {
+    return orderBy(countries, 'name');
+  }),
+
+  paymentCountries: computed(function() {
+    return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
+  }),
+
+  paymentCurrencies: computed(function() {
+    return orderBy(paymentCurrencies, 'name');
+  }),
+
+  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.paypalSandboxUsername', 'settings.paypalLiveUsername', function() {
+    return (this.get('settings.paypalSandboxUsername') || this.get('settings.paypalLiveUsername')) && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
+  }),
+
+  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.stripeClientId', function() {
+    return this.get('settings.stripeClientId') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
+  }),
+
+  tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
+    return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
+  }),
+
+  socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
+    return this.get('data.event.socialLinks').filterBy('isDeleted', false);
+  }),
+
+  /**
+   * returns the validation rules for the social links.
+   */
+  socialLinksValidationRules: computed('socialLinks', function() {
+    const socialLinks = this.get('socialLinks');
+    let validationRules = {};
+    for (let i = 0; i < socialLinks.length; i++) {
+      validationRules = merge(validationRules, {
+        [socialLinks.get(i).identifier]: {
+          identifier : socialLinks.get(i).identifier,
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        }
+      });
+    }
+    return validationRules;
+  }),
+
+  subTopics: computed('data.event.topic', function() {
+    later(this, () => {
+      try {
+        this.set('subTopic', null);
+      } catch (ignored) { /* To suppress error thrown in-case this gets executed after component gets destroy */ }
+    }, 50);
+    if (!this.get('data.event.topic')) {
+      return [];
+    }
+    return this.get('data.event.topic.subTopics');
+  }),
+
+  hasPaidTickets: computed('data.event.tickets.[]', function() {
+    return filter(this.get('data.event.tickets').toArray(), ticket => ticket.get('type') === 'paid').length > 0;
+  }),
+
+  hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
+    return !!this.get('data.event.codeOfConduct');
+  }),
+
+  discountCodeObserver: observer('data.event.discountCode', function() {
+    this.getForm().form('remove prompt', 'discount_code');
+  }),
+
+  didInsertElement() {
+    if (!this.get('isCreate') && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
+      this.set('data.event.copyright', this.store.createRecord('event-copyright'));
+    }
+    if (!this.get('isCreate') && this.get('data.event.tax') && !this.get('data.event.tax.content')) {
+      this.set('data.event.tax', this.store.createRecord('tax'));
+    }
+    if (!this.get('isCreate') && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
+      this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
+    }
+  },
+
   getValidationRules() {
-    return {
+    let validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
@@ -158,77 +252,23 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.get('l10n').t('Invalid number')
             }
           ]
+        },
+        externalEventIdentifier: {
+          identifier : 'external_event_url',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
         }
       }
     };
-  },
-
-  licenses: computed(function() {
-    return orderBy(licenses, 'name');
-  }),
-
-  countries: computed(function() {
-    return orderBy(countries, 'name');
-  }),
-
-  paymentCountries: computed(function() {
-    return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
-  }),
-
-  paymentCurrencies: computed(function() {
-    return orderBy(paymentCurrencies, 'name');
-  }),
-
-  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.paypalSandboxUsername', 'settings.paypalLiveUsername', function() {
-    return (this.get('settings.paypalSandboxUsername') || this.get('settings.paypalLiveUsername')) && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
-  }),
-
-  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.stripeClientId', function() {
-    return this.get('settings.stripeClientId') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
-  }),
-
-  tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
-    return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
-  }),
-
-  socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
-    return this.get('data.event.socialLinks').filterBy('isDeleted', false);
-  }),
-
-  subTopics: computed('data.event.topic', function() {
-    later(this, () => {
-      try {
-        this.set('subTopic', null);
-      } catch (ignored) { /* To suppress error thrown in-case this gets executed after component gets destroy */ }
-    }, 50);
-    if (!this.get('data.event.topic')) {
-      return [];
-    }
-    return this.get('data.event.topic.subTopics');
-  }),
-
-  hasPaidTickets: computed('data.event.tickets.[]', function() {
-    return filter(this.get('data.event.tickets').toArray(), ticket => ticket.get('type') === 'paid').length > 0;
-  }),
-
-  hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
-    return !!this.get('data.event.codeOfConduct');
-  }),
-
-  discountCodeObserver: observer('data.event.discountCode', function() {
-    this.getForm().form('remove prompt', 'discount_code');
-  }),
-
-  didInsertElement() {
-    if (!this.get('isCreate') && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
-      this.set('data.event.copyright', this.store.createRecord('event-copyright'));
-    }
-    if (!this.get('isCreate') && this.get('data.event.tax') && !this.get('data.event.tax.content')) {
-      this.set('data.event.tax', this.store.createRecord('tax'));
-    }
-    if (!this.get('isCreate') && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
-      this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
-    }
+    // Merging the predetermined rules with the rules for social links.
+    validationRules.fields = merge(validationRules.fields, this.get('socialLinksValidationRules'));
+    return validationRules;
   },
 
   actions: {

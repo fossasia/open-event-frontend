@@ -37,7 +37,7 @@
     <div class="inline field">
       <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
       <div class="ui hidden divider"></div>
-      {{ui-checkbox label='Select all Ticket types' name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
+      {{ui-checkbox label=(t 'Select all Ticket types') name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
     </div>
   {{else}}
     <div class="inline field">

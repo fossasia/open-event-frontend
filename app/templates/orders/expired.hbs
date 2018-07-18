@@ -1,0 +1,24 @@
+<div class="ui one column container stackable doubling left grid">
+  <div class="row">
+    <div class="column">
+      <h2>{{model.event.name}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <div class="ui small gray-text">
+        {{header-date model.event.startsAt}} - {{header-date model.event.endsAt}}
+        <br>
+        {{model.event.locationName}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ten wide column">
+      {{order-summary data=model}}
+    </div>
+    <div class="mobile hidden six wide column">
+      {{event-info data=model}}
+    </div>
+  </div>
+</div>

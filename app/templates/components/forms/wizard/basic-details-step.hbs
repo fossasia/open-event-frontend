@@ -120,6 +120,7 @@
       hasLinkName=true
       fixedName=true
       linkName=(t 'External event URL')
+      inputId='external_event_url'
       segmentedLink=data.event.segmentedExternalEventUrl
       isChild=(unless data.event.socialLinks true)
       canRemoveItem=false
@@ -130,6 +131,7 @@
       {{widgets/forms/link-input
         hasLinkName=true
         linkName=socialLink.name
+        inputId=socialLink.identifier
         segmentedLink=socialLink.segmentedLink
         isChild=true
         addItem=(action 'addItem' 'socialLinks' 'social-link')
@@ -199,9 +201,9 @@
     </div>
   {{/if}}
   {{#if hasPaidTickets}}
-    
+
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
-    
+
     <div class="ui section divider"></div>
     <div class="field">
       <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
@@ -234,7 +236,7 @@
           </button>
         </div>
       {{/if}}
-    </div> 
+    </div>
     --}}
 
     <div class="ui section divider"></div>
@@ -328,7 +330,7 @@
             {{else}}
               <label class="required">{{t 'Connect to your Stripe account'}}</label>
               <a class="stripe-connect" role="button" {{action 'connectStripe'}}><span>{{t 'Connect with Stripe'}}</span></a>
-            {{/if}}              
+            {{/if}}
           </div>
         {{/if}}
       {{/if}}
