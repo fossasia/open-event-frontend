@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { groupBy } from 'lodash';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { compulsoryProtocolValidUrlPattern, validEmailPattern } from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, {
 
@@ -96,30 +97,78 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        slidesUrl: {
+        slidesUrlRequired: {
           identifier : 'session_slidesUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter a url')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
-        videoUrl: {
+        slidesUrl: {
+          identifier : 'session_slidesUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        videoUrlRequired: {
           identifier : 'session_videoUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter a url')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
-        audioUrl: {
+        videoUrl: {
+          identifier : 'session_videoUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        audioUrlRequired: {
           identifier : 'session_audioUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter a url')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        audioUrl: {
+          identifier : 'session_audioUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -132,21 +181,57 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        email: {
+        emailRequired: {
           identifier : 'speaker_email_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter an email')
+            },
+            {
+              type   : 'regExp',
+              value  : validEmailPattern,
+              prompt : this.get('l10n').t('Please enter a valid email')
             }
           ]
         },
-        photoUrl: {
+        email: {
+          identifier : 'speaker_email',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter an email')
+            },
+            {
+              type   : 'regExp',
+              value  : validEmailPattern,
+              prompt : this.get('l10n').t('Please enter a valid email')
+            }
+          ]
+        },
+        photoUrlRequired: {
           identifier : 'speaker_photoUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please select an image')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        photoUrl: {
+          identifier : 'speaker_photoUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -249,48 +334,160 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        website: {
+        websiteRequired: {
           identifier : 'speaker_website_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter url of website')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
-        facebook: {
+        website: {
+          identifier : 'speaker_website',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        facebookRequired: {
           identifier : 'speaker_facebook_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter facebook link')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[facebook.com]',
+              prompt : this.get('l10n').t('Please enter a valid facebook url')
             }
           ]
         },
-        twitter: {
+        facebook: {
+          identifier : 'speaker_facebook',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[facebook.com]',
+              prompt : this.get('l10n').t('Please enter a valid facebook url')
+            }
+          ]
+        },
+        twitterRequired: {
           identifier : 'speaker_twitter_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter twitter link')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[twitter.com]',
+              prompt : this.get('l10n').t('Please enter a valid twitter url')
             }
           ]
         },
-        github: {
+        twitter: {
+          identifier : 'speaker_twitter',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[twitter.com]',
+              prompt : this.get('l10n').t('Please enter a valid twitter url')
+            }
+          ]
+        },
+        githubRequired: {
           identifier : 'speaker_github_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter github link')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[github.com]',
+              prompt : this.get('l10n').t('Please enter a valid github url')
             }
           ]
         },
-        linkedin: {
+        github: {
+          identifier : 'speaker_github',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[github.com]',
+              prompt : this.get('l10n').t('Please enter a valid github url')
+            }
+          ]
+        },
+        linkedinRequired: {
           identifier : 'speaker_linkedin_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter linkedin link')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[linkedin.com]',
+              prompt : this.get('l10n').t('Please enter a valid linkedin url')
+            }
+          ]
+        },
+        linkedin: {
+          identifier : 'speaker_linkedin',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            },
+            {
+              type   : 'containsExactly[linkedin.com]',
+              prompt : this.get('l10n').t('Please enter a valid linkedin url')
             }
           ]
         }

@@ -12,17 +12,17 @@
           {{#if (is-input-field field.type) }}
             {{#if field.isLongText}}
               {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
-                textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
             {{else}}
               {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
             {{widgets/forms/image-upload
               imageUrl=(mut (get data.session field.fieldIdentifier))
               label=(t 'Logo')
-              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
               icon='image'
               hint=(t 'Select an image')
               maxSizeInKb=1000}}
@@ -31,7 +31,7 @@
             {{widgets/forms/file-upload
               fileUrl=(mut (get data.session field.fieldIdentifier))
               label=(t 'File')
-              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
               icon='file'
               hint=(t 'Select a file')
               maxSizeInKb=10000}}
@@ -86,16 +86,16 @@
             {{#if (is-input-field field.type) }}
               {{#if field.isLongText}}
                 {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
-                                                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+                                                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{else}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
             {{/if}}
             {{#if (eq field.type 'image')}}
               {{widgets/forms/image-upload
                 imageUrl=(mut (get data.speaker field.fieldIdentifier))
                 label=(t 'Logo')
-                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))
+                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
                 icon='image'
                 hint=(t 'Select an image')
                 maxSizeInKb=1000}}
@@ -133,16 +133,16 @@
           {{#if (is-input-field field.type) }}
             {{#if field.isLongText}}
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
-                textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+                textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{else}}
-              {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+              {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
             {{widgets/forms/image-upload
               imageUrl=(mut (get data.speaker field.fieldIdentifier))
               label=(t 'Logo')
-              id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))
+              id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
               icon='image'
               hint=(t 'Select an image')
               maxSizeInKb=1000}}
@@ -197,17 +197,17 @@
             {{#if (is-input-field field.type) }}
               {{#if field.isLongText}}
                 {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
-                                               textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                                               textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
               {{else}}
                 {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
-                      id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                      id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
               {{/if}}
             {{/if}}
             {{#if (eq field.type 'image')}}
               {{widgets/forms/image-upload
                 imageUrl=(mut (get data.session field.fieldIdentifier))
                 label=(t 'Logo')
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
                 icon='image'
                 hint=(t 'Select an image')
                 maxSizeInKb=1000}}
@@ -216,7 +216,7 @@
               {{widgets/forms/file-upload
                 fileUrl=(mut (get data.session field.fieldIdentifier))
                 label=(t 'File')
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
                 icon='file'
                 fileUrl=''
                 hint=(t 'Select a file')
