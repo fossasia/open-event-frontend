@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import { inject as service } from '@ember/service';
+import { merge, values, isEmpty } from 'lodash';
 
 export default Route.extend(ApplicationRouteMixin, {
+  session: service(),
   title(tokens) {
     if (!tokens) {
       tokens = [];
@@ -45,6 +48,45 @@ export default Route.extend(ApplicationRouteMixin, {
   sessionInvalidated() {
     if (!this.get('session.skipRedirectOnInvalidation')) {
       this._super(...arguments);
+    }
+  },
+
+  sessionAuthenticated() {
+    if (this.get('session.previousRouteName')) {
+      this.transitionTo(this.get('session.previousRouteName'));
+    } else {
+      this._super(...arguments);
+    }
+  },
+
+  /**
+   * Merge all params into one param.
+   *
+   * @param params
+   * @return {*}
+   * @private
+   */
+  _mergeParams(params) {
+    return merge({}, ...values(params));
+  },
+
+  actions: {
+    willTransition(transition) {
+      transition.then(() => {
+        let params = this._mergeParams(transition.params);
+        let url;
+
+        // generate doesn't like empty params.
+        if (isEmpty(params)) {
+          url = transition.router.generate(transition.targetName);
+        } else {
+          url = transition.router.generate(transition.targetName, params);
+        }
+        // Do not save the url of the transition to login route.
+        if (!url.includes('login')) {
+          this.set('session.previousRouteName', url);
+        }
+      });
     }
   }
 });
