@@ -47,6 +47,10 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.get('l10n').t('Please enter your email')
+        },
+        {
+          type   : 'email',
+          prompt : this.get('l10n').t('Please enter a valid email')
         }
       ]
     };
