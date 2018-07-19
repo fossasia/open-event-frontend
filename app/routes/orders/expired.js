@@ -3,18 +3,18 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   titleToken(model) {
     var order = model.get('identifier');
-    return this.get('l10n').t(`New Order -${order}`);
+    return this.get('l10n').t(`Expired Order -${order}`);
   },
 
   model(params) {
     return this.store.findRecord('order', params.order_id, {
-      include: 'attendees,tickets,event'
+      include: 'event'
     });
   },
 
   afterModel(model) {
-    if (model.get('status') === 'expired') {
-      this.transitionTo('orders.expired', model.get('identifier'));
+    if (model.get('status') === 'pending') {
+      this.transitionTo('orders.new', model.get('identifier'));
     } else if (model.get('status') === 'completed') {
       this.transitionTo('orders.view', model.get('identifier'));
     }

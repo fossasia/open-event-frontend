@@ -10,7 +10,7 @@ export default Controller.extend({
     async loadSubTopics(topic) {
       this.set('isLoading', true);
       try {
-        this.set('subTopics', await topic.get('subTopics'));
+        this.set('model.eventSubTopics', await topic.get('subTopics').toArray());
         this.set('disableEventSubtopic', false);
         this.set('currentTopicSelected', topic);
       } catch (e) {
@@ -28,8 +28,10 @@ export default Controller.extend({
     },
     deleteEventProperty(eventProp) {
       this.set('isLoading', true);
+      const modelName = camelCase(eventProp.constructor.modelName);
       eventProp.destroyRecord()
         .then(() => {
+          this.get(`model.${modelName}s`).removeObject(eventProp);
           this.notify.success(this.get('l10n').t('This Event Property has been deleted successfully.'));
         })
         .catch(() => {
@@ -44,6 +46,7 @@ export default Controller.extend({
       this.set('isLoading', true);
       modelInstance.save()
         .then(() => {
+          this.get(`model.${camelCasedValue}s`).addObject(modelInstance);
           this.notify.success(this.get('l10n').t(`${startCase(camelCasedValue)} has been added successfully.`));
         })
         .catch(() => {
