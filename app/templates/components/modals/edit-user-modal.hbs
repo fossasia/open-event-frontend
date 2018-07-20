@@ -1,0 +1,23 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Update System Roles'}}
+</div>
+<div class="content">
+  <div class="ui form">
+    <h4 class="ui header">{{t 'Provide admin access?'}}</h4>
+    <div class="grouped inline fields">
+      <div class="field">
+        {{ui-radio name="isAdmin" label="Yes" value=true onChange=(action (mut isAdmin))}}
+        {{ui-radio name="isAdmin" label="No" value=false onChange=(action (mut isAdmin))}}
+      </div>
+    </div>
+    <h4 class="ui header">{{t 'Custom system roles'}}</h4>
+    <div class="field">
+      {{ui-checkbox label="Sales Admin" onChange=(action (mut checked))}}
+      {{ui-checkbox label="Marketer" onChange=(action (mut checked))}}
+    </div>
+    <button class="ui teal right floated submit button update-changes">
+      {{t 'Save'}}
+    </button>
+  </div>
+</div>
