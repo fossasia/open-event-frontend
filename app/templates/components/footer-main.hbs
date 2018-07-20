@@ -17,8 +17,8 @@
     <div class="three wide column">
       <div class="ui inverted link list">
         <strong class="item">{{t 'Locations'}}</strong>
-        {{#each places as |place|}}
-          <a class="item" href="{{concat '/explore/' (spaces-to-hyphens place) '/events'}}">{{place}}</a>
+        {{#each eventLocations as |place|}}
+          <a class="item" href="{{concat '/explore/' place.slug '/events'}}">{{place.name}}</a>
         {{/each}}
       </div>
     </div>

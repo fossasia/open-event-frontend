@@ -39,9 +39,9 @@ export default Route.extend(ApplicationRouteMixin, {
       pages: await this.get('store').query('page', {
         sort: 'index'
       }),
-      socialLinks : await this.get('store').queryRecord('setting', {}),
-      eventTypes  : await this.get('store').findAll('event-type')
-      // eventLocations: await this.get('store').query('event-location', {}),
+      socialLinks    : await this.get('store').queryRecord('setting', {}),
+      eventTypes     : await this.get('store').findAll('event-type'),
+      eventLocations : await this.get('store').findAll('event-location')
     };
   },
 
