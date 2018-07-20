@@ -34,13 +34,16 @@ export default Route.extend(ApplicationRouteMixin, {
         sort: '-received-at'
       });
     }
+
     return {
       notifications,
       pages: await this.get('store').query('page', {
         sort: 'index'
       }),
-      socialLinks : await this.get('store').queryRecord('setting', {}),
-      eventTypes  : await this.get('store').findAll('event-type')
+      socialLinks      : await this.get('store').queryRecord('setting', {}),
+      eventTypes       : await this.get('store').findAll('event-type'),
+      cookiePolicy     : this.get('settings.cookiePolicy'),
+      cookiePolicyLink : this.get('settings.cookiePolicyLink')
       // eventLocations: await this.get('store').query('event-location', {}),
     };
   },
