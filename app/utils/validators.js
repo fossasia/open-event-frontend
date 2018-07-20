@@ -53,13 +53,26 @@ export const protocolLessValidUrlPattern = new RegExp(
   + '$', 'i'
 );
 
-/**
- * Source: https://stackoverflow.com/a/46181/6748052
- * @type {RegExp}
- */
-export const validEmailPattern = new RegExp(
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+export const validTwitterProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'twitter\\.com\\/([a-zA-Z0-9_]+)$'
 );
+
+export const validFacebookProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'facebook\\.com\\/([a-zA-Z0-9_]+)$'
+);
+
+export const validGithubProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'github\\.com\\/([a-zA-Z0-9_]+)$'
+);
+
+export const validLinkedinProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'linkedin\\.com\\/([a-zA-Z0-9_]+)$'
+);
+
 
 export const isValidUrl = str => {
   return validUrlPattern.test(str);
