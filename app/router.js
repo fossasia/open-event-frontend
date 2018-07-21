@@ -37,7 +37,7 @@ router.map(function() {
   this.route('logout');
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
-      this.route('list', { path: '/:track_id' });
+      this.route('list', { path: '/s/:session_status' });
     });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
       this.route('new-speaker');
