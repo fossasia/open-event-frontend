@@ -2,7 +2,8 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { groupBy } from 'lodash';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { compulsoryProtocolValidUrlPattern, validEmailPattern } from 'open-event-frontend/utils/validators';
+import { compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
+  validGithubProfileUrlPattern, validLinkedinProfileUrlPattern } from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, {
 
@@ -189,8 +190,7 @@ export default Component.extend(FormMixin, {
               prompt : this.get('l10n').t('Please enter an email')
             },
             {
-              type   : 'regExp',
-              value  : validEmailPattern,
+              type   : 'email',
               prompt : this.get('l10n').t('Please enter a valid email')
             }
           ]
@@ -204,8 +204,7 @@ export default Component.extend(FormMixin, {
               prompt : this.get('l10n').t('Please enter an email')
             },
             {
-              type   : 'regExp',
-              value  : validEmailPattern,
+              type   : 'email',
               prompt : this.get('l10n').t('Please enter a valid email')
             }
           ]
@@ -368,12 +367,8 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[facebook.com]',
-              prompt : this.get('l10n').t('Please enter a valid facebook url')
+              value  : validFacebookProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid facebook account url')
             }
           ]
         },
@@ -383,12 +378,8 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[facebook.com]',
-              prompt : this.get('l10n').t('Please enter a valid facebook url')
+              value  : validFacebookProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid facebook account url')
             }
           ]
         },
@@ -401,12 +392,8 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[twitter.com]',
-              prompt : this.get('l10n').t('Please enter a valid twitter url')
+              value  : validTwitterProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid twitter profile url')
             }
           ]
         },
@@ -416,12 +403,8 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[twitter.com]',
-              prompt : this.get('l10n').t('Please enter a valid twitter url')
+              value  : validTwitterProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid twitter profile url')
             }
           ]
         },
@@ -434,12 +417,8 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[github.com]',
-              prompt : this.get('l10n').t('Please enter a valid github url')
+              value  : validGithubProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid github profile url')
             }
           ]
         },
@@ -449,12 +428,8 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[github.com]',
-              prompt : this.get('l10n').t('Please enter a valid github url')
+              value  : validGithubProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid github profile url')
             }
           ]
         },
@@ -467,12 +442,8 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[linkedin.com]',
-              prompt : this.get('l10n').t('Please enter a valid linkedin url')
+              value  : validLinkedinProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid linkedin profile url')
             }
           ]
         },
@@ -482,12 +453,8 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
-            },
-            {
-              type   : 'containsExactly[linkedin.com]',
-              prompt : this.get('l10n').t('Please enter a valid linkedin url')
+              value  : validLinkedinProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid linkedin profile url')
             }
           ]
         }

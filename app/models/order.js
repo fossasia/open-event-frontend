@@ -22,6 +22,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   brand          : attr('string'),
   last4          : attr('string'),
   paidVia        : attr('string'),
+  createdAt      : attr('moment', { readOnly: true }),
   completedAt    : attr('moment', { readOnly: true }),
   discountCodeId : attr('string'),
   /**
