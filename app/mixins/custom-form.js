@@ -258,5 +258,193 @@ export default Mixin.create(MutableArray, {
         event           : parent
       })
     ];
+  },
+
+  /**
+   * Custom forms for attendee details in order form.
+   * @param parent - event associated with the forms.
+   * @returns {*[]}
+   */
+  getCustomAttendeeForm(parent) {
+    return [
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'firstName',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : true,
+        isIncluded      : true,
+        isFixed         : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'lastName',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : true,
+        isIncluded      : true,
+        isFixed         : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'gender',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'email',
+        form            : 'attendee',
+        type            : 'email',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'address',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'city',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'state',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'country',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'jobTitle',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'phone',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'taxBusinessInfo',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'billingAddress',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'homeAddress',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'shippingAddress',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'company',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'workAddress',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'workPhone',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'website',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'blog',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'twitter',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'facebook',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'github',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      })
+    ];
   }
 });
