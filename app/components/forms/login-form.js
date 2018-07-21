@@ -76,6 +76,19 @@ export default Component.extend(FormMixin, {
             }
           });
       });
+    },
+
+    async auth(provider) {
+      try {
+        let response = await this.get('loader').load(`/auth/oauth/${  provider}`);
+        if (response.url.length > 0) {
+          this.get('notify').success(this.get('l10n').t('URL received'));
+        } else {
+          this.get('notify').error(this.get('l10n').t('URL not received'));
+        }
+      } catch (error) {
+        this.get('notify').error(this.get('l10n').t(error.message));
+      }
     }
   },
 

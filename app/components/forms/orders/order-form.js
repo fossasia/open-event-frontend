@@ -1,10 +1,15 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { run } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
+import moment from 'moment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { orderBy } from 'lodash';
 
 export default Component.extend(FormMixin, {
+  router: service(),
+
   buyer: computed('data.user', function() {
     return this.get('data.user');
   }),
@@ -24,6 +29,25 @@ export default Component.extend(FormMixin, {
     return true;
   }),
   sameAsBuyer: false,
+
+  getRemainingTime: computed('data', function() {
+    let willExpireAt = this.get('data.createdAt').add(10, 'minutes');
+    this.timer(willExpireAt, this.get('data.identifier'));
+  }),
+
+  timer(willExpireAt, orderIdentifier) {
+    run.later(() => {
+      let currentTime = moment();
+      let diff = moment.duration(willExpireAt.diff(currentTime));
+      this.set('getRemainingTime', moment.utc(diff.asMilliseconds()).format('mm:ss'));
+      if (diff > 0) {
+        this.timer(willExpireAt, orderIdentifier);
+      } else {
+        this.get('data').reload();
+        this.get('router').transitionTo('orders.expired', orderIdentifier);
+      }
+    }, 1000);
+  },
 
   getValidationRules() {
     let firstNameValidation = {
@@ -47,6 +71,10 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.get('l10n').t('Please enter your email')
+        },
+        {
+          type   : 'email',
+          prompt : this.get('l10n').t('Please enter a valid email')
         }
       ]
     };

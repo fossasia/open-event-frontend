@@ -49,5 +49,12 @@ export default Route.extend({
 
       attendees: []
     };
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model.order');
+    if (!model.id) {
+      model.unloadRecord();
+    }
   }
 });
