@@ -25,6 +25,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   createdAt      : attr('moment', { readOnly: true }),
   completedAt    : attr('moment', { readOnly: true }),
   discountCodeId : attr('string'),
+  ticketsPdfUrl  : attr('string'),
   /**
    * Relationships
    */
