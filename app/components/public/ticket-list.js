@@ -42,6 +42,10 @@ export default Component.extend(FormMixin, {
       }
     },
     placeOrder() {
+      if (!this.get('session.isAuthenticated')) {
+        this.set('isLoginModalOpen', true);
+        return;
+      }
       let order = this.get('order');
       let event = order.get('event');
       order.tickets.forEach(ticket => {
