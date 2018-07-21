@@ -90,6 +90,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   type                   : belongsTo('event-type'),
   topic                  : belongsTo('event-topic'),
   subTopic               : belongsTo('event-sub-topic'),
+  location               : belongsTo('event-location'),
   sessions               : hasMany('session'),
   sponsors               : hasMany('sponsor'),
   microlocations         : hasMany('microlocation'),

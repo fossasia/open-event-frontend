@@ -58,6 +58,8 @@ export default ModelBase.extend({
   frontendUrl            : attr('string'),
   webAppUrl              : attr('string'),
   staticDomain           : attr('string'),
+  cookiePolicy           : attr('string'),
+  cookiePolicyLink       : attr('string'),
 
   /**
    * Computed properties

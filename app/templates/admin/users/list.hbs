@@ -6,6 +6,8 @@
                         showPageSize=true
                         moveToUserDetails=(action 'moveToUserDetails')
                         deleteUser=(action 'deleteUser')
+                        openEditModal=(action 'openEditModal')
                         isLoading=isLoading
   }}
 </div>
+{{modals/edit-user-modal isOpen=isEditUserModalOpen}}
