@@ -80,8 +80,9 @@ export default Controller.extend({
           this.set('isLoading', false);
         });
     },
-    openEditModal() {
+    openEditModal(user) {
       this.set('isEditUserModalOpen', true);
+      this.set('data', user);
     }
   }
 });
