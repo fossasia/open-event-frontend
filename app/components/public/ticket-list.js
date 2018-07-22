@@ -30,6 +30,9 @@ export default Component.extend(FormMixin, {
       let order = this.get('order');
       ticket.set('orderQuantity', count);
       order.set('amount', this.get('total'));
+      if (!this.get('total')) {
+        order.set('amount', null);
+      }
       if (count > 0) {
         order.tickets.addObject(ticket);
       } else {
@@ -39,6 +42,10 @@ export default Component.extend(FormMixin, {
       }
     },
     placeOrder() {
+      if (!this.get('session.isAuthenticated')) {
+        this.set('isLoginModalOpen', true);
+        return;
+      }
       let order = this.get('order');
       let event = order.get('event');
       order.tickets.forEach(ticket => {

@@ -37,7 +37,7 @@ router.map(function() {
   this.route('logout');
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
-      this.route('list', { path: '/:track_id' });
+      this.route('list', { path: '/s/:session_status' });
     });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
       this.route('new-speaker');
@@ -86,6 +86,7 @@ router.map(function() {
           this.route('create');
           this.route('edit', { path: '/edit/:access_code_id' });
         });
+        this.route('order-form');
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
@@ -177,6 +178,8 @@ router.map(function() {
   });
   this.route('orders', function() {
     this.route('new', { path: '/:order_id/new' });
+    this.route('expired', { path: '/:order_id/expired' });
+    this.route('view', { path: '/:order_id/view' });
   });
 });
 

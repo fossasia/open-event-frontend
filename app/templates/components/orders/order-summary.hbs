@@ -1,0 +1,80 @@
+<div class="ui segments">
+  {{#if (eq session.currentRouteName 'orders.view')}}
+    <div class="ui green inverted segment">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          Success
+        </div>
+        <div class="label">
+          {{t 'Your order completed successfully.'}}
+          <br>
+          {{t 'Find all the details related to your order below.'}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'Order Summary'}}</h3>
+  </div>
+  {{#if (or (eq session.currentRouteName 'orders.new') (eq session.currentRouteName 'orders.view'))}}
+    <table class="ui very basic tablet stackable table order-summary">
+      <thead>
+        <tr>
+          <th class="four wide">{{t 'Ticket Type'}}</th>
+          <th class="four wide">{{t 'Price'}}</th>
+          <th class="ui aligned two wide">{{t 'Fee'}}</th>
+          <th class="one wide">{{t 'Quantity'}}</th>
+          <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data.tickets as |ticket|}}
+          <tr>
+            <td>
+              <div class="ui small">
+                {{ticket.name}}
+              </div>
+            </td>
+            <td>$ {{number-format ticket.price}}</td>
+            <td>$ {{number-format ticket.price}}</td>
+            <td>{{ticket.attendees.length}}</td>
+            <td>
+              $ {{number-format (mult ticket.attendees.length ticket.price)}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+      <tfoot class="full-width">
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>
+            <div class="ui aligned small primary icon">
+              {{t 'Order Total'}}:
+            </div>
+          </th>
+          <th colspan="4">
+            <div class="ui aligned small primary icon">
+              $ {{number-format total}}
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  {{/if}}
+</div>
+{{#if (eq session.currentRouteName 'orders.expired')}}
+  <div class="ui orange inverted segment">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        Expired
+      </div>
+      <div class="label">
+        {{t 'Your order expired because you did not complete regsitration in time.'}}
+        <br>
+        {{t 'Please click on event link given right to order your tickets again.'}}
+      </div>
+    </div>
+  </div>
+{{/if}}

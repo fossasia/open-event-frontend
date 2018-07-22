@@ -1,8 +1,9 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
+import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 
-export default ModelBase.extend({
+export default ModelBase.extend(CustomPrimaryKeyMixin, {
   /**
    * attributes
    */
@@ -12,7 +13,7 @@ export default ModelBase.extend({
   state          : attr('string'),
   country        : attr('string'),
   zipcode        : attr('string'),
-  paymentMode    : attr('string'),
+  paymentMode    : attr('string', { defaultValue: 'free' }),
   status         : attr('string', { defaultValue: 'pending' }),
   transactionId  : attr('string', { readOnly: true }),
   expMonth       : attr('string'),
@@ -21,8 +22,10 @@ export default ModelBase.extend({
   brand          : attr('string'),
   last4          : attr('string'),
   paidVia        : attr('string'),
+  createdAt      : attr('moment', { readOnly: true }),
   completedAt    : attr('moment', { readOnly: true }),
   discountCodeId : attr('string'),
+  ticketsPdfUrl  : attr('string'),
   /**
    * Relationships
    */

@@ -1,32 +1,54 @@
 import Component from '@ember/component';
-import { set, computed } from '@ember/object';
+import { computed } from '@ember/object';
+import { run } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
+import moment from 'moment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
+import { orderBy } from 'lodash';
 
 export default Component.extend(FormMixin, {
-  buyer: {
-    firstName : '',
-    lastName  : '',
-    email     : ''
-  },
-  holders: [
-    {
-      firstName : '',
-      lastName  : '',
-      email     : ''
-    },
-    {
-      firstName : '',
-      lastName  : '',
-      email     : ''
-    },
-    {
-      firstName : '',
-      lastName  : '',
-      email     : ''
+  router: service(),
+
+  buyer: computed('data.user', function() {
+    return this.get('data.user');
+  }),
+  holders: computed('data.attendees', function() {
+    this.get('data.attendees').forEach(attendee => {
+      attendee.set('firstname', '');
+      attendee.set('lastname', '');
+      attendee.set('email', '');
+    });
+    return this.get('data.attendees');
+  }),
+  isPaidOrder: computed('data', function() {
+    if (!this.get('data.amount')) {
+      this.get('data').set('paymentMode', 'free');
+      return false;
     }
-  ],
-  sameAsBuyer: true,
+    return true;
+  }),
+  sameAsBuyer: false,
+
+  getRemainingTime: computed('data', function() {
+    let willExpireAt = this.get('data.createdAt').add(10, 'minutes');
+    this.timer(willExpireAt, this.get('data.identifier'));
+  }),
+
+  timer(willExpireAt, orderIdentifier) {
+    run.later(() => {
+      let currentTime = moment();
+      let diff = moment.duration(willExpireAt.diff(currentTime));
+      this.set('getRemainingTime', moment.utc(diff.asMilliseconds()).format('mm:ss'));
+      if (diff > 0) {
+        this.timer(willExpireAt, orderIdentifier);
+      } else {
+        this.get('data').reload();
+        this.get('router').transitionTo('orders.expired', orderIdentifier);
+      }
+    }, 1000);
+  },
+
   getValidationRules() {
     let firstNameValidation = {
       rules: [
@@ -49,6 +71,10 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.get('l10n').t('Please enter your email')
+        },
+        {
+          type   : 'email',
+          prompt : this.get('l10n').t('Please enter a valid email')
         }
       ]
     };
@@ -130,7 +156,7 @@ export default Component.extend(FormMixin, {
           ]
         },
         payVia: {
-          identifier : 'pay_via',
+          identifier : 'payment_mode',
           rules      : [
             {
               type   : 'checked',
@@ -148,18 +174,25 @@ export default Component.extend(FormMixin, {
     return validationRules;
   },
   countries: computed(function() {
-    return countries;
+    return orderBy(countries, 'name');
   }),
+
   actions: {
-    submit() {
+    submit(data) {
       this.onValid(() => {
+        this.sendAction('save', data);
       });
     },
-    removeHolderData(holder) {
+    modifyHolder(holder) {
+      let buyer = this.get('buyer');
       if (this.get('sameAsBuyer')) {
-        set(holder, 'firstName', null);
-        set(holder, 'lastName', null);
-        set(holder, 'email', null);
+        holder.set('firstname', buyer.content.firstName);
+        holder.set('lastname', buyer.content.lastName);
+        holder.set('email', buyer.content.email);
+      } else {
+        holder.set('firstname', '');
+        holder.set('lastname', '');
+        holder.set('email', '');
       }
     }
   }
