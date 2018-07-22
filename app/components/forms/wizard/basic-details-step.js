@@ -36,8 +36,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return orderBy(paymentCurrencies, 'name');
   }),
 
-  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.paypalSandboxUsername', 'settings.paypalLiveUsername', function() {
-    return (this.get('settings.paypalSandboxUsername') || this.get('settings.paypalLiveUsername')) && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
+  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.paypalBraintreeSandboxAccessToken', 'settings.paypalBraintreeAccessToken', function() {
+    return (this.get('settings.paypalBraintreeSandboxAccessToken') || this.get('settings.paypalBraintreeAccessToken')) && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
   }),
 
   canAcceptStripe: computed('data.event.paymentCurrency', 'settings.stripeClientId', function() {
