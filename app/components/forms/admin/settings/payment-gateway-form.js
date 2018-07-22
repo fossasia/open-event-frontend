@@ -39,62 +39,22 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        sandboxUsername: {
-          identifier : 'sandbox_username',
+        paypalBraintreeSandboxAccessToken: {
+          identifier : 'sandbox_access_token',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sadnbox username')
+              prompt : this.get('l10n').t('Please enter the sandbox braintree paypal access token')
             }
           ]
         },
 
-        sandboxPassword: {
-          identifier : 'sandbox_password',
+        paypalBraintreeAccessToken: {
+          identifier : 'live_access_token',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sandbox password')
-            }
-          ]
-        },
-
-        sandboxSignature: {
-          identifier : 'sandbox_signature',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sandbox signature')
-            }
-          ]
-        },
-
-        liveUsername: {
-          identifier : 'live_username',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live username')
-            }
-          ]
-        },
-
-        livePassword: {
-          identifier : 'live_password',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live password')
-            }
-          ]
-        },
-
-        liveSignature: {
-          identifier : 'live_signature',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live signature')
+              prompt : this.get('l10n').t('Please enter the live braintree paypal access token')
             }
           ]
         }
@@ -107,7 +67,7 @@ export default Component.extend(FormMixin, {
   }),
 
   isCheckedPaypal: computed(function() {
-    return this.get('settings.paypalSandboxUsername') || this.get('settings.paypalLiveUsername');
+    return this.get('settings.paypalBraintreeSandboxAccessToken') || this.get('settings.paypalBraintreeAccessToken');
   }),
 
   actions: {
@@ -122,13 +82,8 @@ export default Component.extend(FormMixin, {
         }
         if (this.get('isCheckedPaypal') === false)  {
           this.get('settings').setProperties({
-            'paypalSandboxUsername'  : null,
-            'paypalSandboxPassword'  : null,
-            'paypalSandboxSignature' : null,
-            'paypalLiveUsername'     : null,
-            'paypalLivePassword'     : null,
-            'paypalMode'             : null,
-            'paypalLiveSignature'    : null
+            'paypalBraintreeSandboxAccessToken' : null,
+            'paypalBraintreeAccessToken'        : null
           });
         }
         this.sendAction('save');
