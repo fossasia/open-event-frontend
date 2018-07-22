@@ -40,11 +40,11 @@ export default Route.extend(ApplicationRouteMixin, {
       pages: await this.get('store').query('page', {
         sort: 'index'
       }),
+      cookiePolicy     : this.get('settings.cookiePolicy'),
+      cookiePolicyLink : this.get('settings.cookiePolicyLink'),
       socialLinks      : await this.get('store').queryRecord('setting', {}),
       eventTypes       : await this.get('store').findAll('event-type'),
-      cookiePolicy     : this.get('settings.cookiePolicy'),
-      cookiePolicyLink : this.get('settings.cookiePolicyLink')
-      // eventLocations: await this.get('store').query('event-location', {}),
+      eventLocations   : await this.get('store').findAll('event-location')
     };
   },
 
