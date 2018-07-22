@@ -7,8 +7,11 @@
     <h4 class="ui header">{{t 'Provide admin access?'}}</h4>
     <div class="grouped inline fields">
       <div class="field">
-        {{ui-radio name="isAdmin" label="Yes" value=true onChange=(action (mut isAdmin))}}
-        {{ui-radio name="isAdmin" label="No" value=false onChange=(action (mut isAdmin))}}
+        {{#if data.isAdmin}}
+          {{ui-radio name="isAdmin" label="No" value=false onChange=(action (mut isAdmin))}}
+        {{else}}
+          {{ui-radio name="isAdmin" label="Yes" value=true onChange=(action (mut isAdmin))}}
+        {{/if}}
       </div>
     </div>
     <h4 class="ui header">{{t 'Custom system roles'}}</h4>
@@ -16,7 +19,7 @@
       {{ui-checkbox label="Sales Admin" onChange=(action (mut checked))}}
       {{ui-checkbox label="Marketer" onChange=(action (mut checked))}}
     </div>
-    <button class="ui teal right floated submit button update-changes">
+    <button class="ui teal right floated submit button update-changes" {{action 'saveRole' data.id isAdmin}}>
       {{t 'Save'}}
     </button>
   </div>
