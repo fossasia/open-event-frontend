@@ -4,12 +4,12 @@
       {{#scroll-to href='#info' class='item active'}}
         {{t 'Info'}}
       {{/scroll-to}}
-      {{#if event.isTicketingEnabled}}
+      {{#if event.tickets.length}}
         {{#scroll-to href='#tickets' class='item'}}
           {{t 'Tickets'}}
         {{/scroll-to}}
       {{/if}}
-      {{#if event.isSessionsSpeakersEnabled}}
+      {{#if event.speakers.length}}
         {{#scroll-to href='#speakers' class='item'}}
           {{t 'Speakers'}}
         {{/scroll-to}}
@@ -18,18 +18,18 @@
       <a class="item" href="{{href-to 'public.index'}}">
         {{t 'Info'}}
       </a>
-      {{#if event.isTicketingEnabled}}
+      {{#if event.tickets.length}}
         <a class="item" href="{{href-to 'public.index'}}#tickets">
           {{t 'Tickets'}}
         </a>
       {{/if}}
-      {{#if event.isSessionsSpeakersEnabled}}
+      {{#if event.speakers.length}}
         <a class="item" href="{{href-to 'public.index'}}#speakers">
           {{t 'Speakers'}}
         </a>
       {{/if}}
     {{/if}}
-    {{#if event.isSessionsSpeakersEnabled}}
+    {{#if event.sessions.length}}
       {{#link-to 'public.sessions' class='item'}}
         {{t 'Sessions'}}
       {{/link-to}}
