@@ -10,7 +10,6 @@ export default Component.extend({
   }),
   isPaidOrder: computed('data', function() {
     if (!this.get('data.amount')) {
-      this.get('data').set('paymentMode', 'free');
       return false;
     }
     return true;
