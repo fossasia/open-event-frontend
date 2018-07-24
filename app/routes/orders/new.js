@@ -17,6 +17,8 @@ export default Route.extend({
       this.transitionTo('orders.expired', model.get('identifier'));
     } else if (model.get('status') === 'completed') {
       this.transitionTo('orders.view', model.get('identifier'));
+    } else if (model.get('status') === 'placed') {
+      this.transitionTo('orders.placed', model.get('identifier'));
     }
   }
 });
