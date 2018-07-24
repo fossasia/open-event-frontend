@@ -57,7 +57,7 @@
     </table>
 
     <div class="ui buttons {{if device.isMobile 'fluid' 'right floated large'}}">
-      <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'save'}}>
+      <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'save' model}}>
         {{t 'Save'}}
         <i class="save icon"></i>
       </button>

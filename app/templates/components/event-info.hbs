@@ -1,0 +1,13 @@
+<div class="ui segments">
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'When & Where'}}</h3>
+  </div>
+  <div class="ui padded segment">
+    {{data.event.locationName}}
+    <br>
+    {{header-date model.event.startsAt}} - {{header-date model.event.endsAt}}
+  </div>
+  <div class="ui padded segment">
+    <a href="{{data.event.url}}">{{t 'Go to event'}}</a>
+  </div>
+</div>
