@@ -268,35 +268,9 @@ export default Mixin.create(MutableArray, {
   getCustomAttendeeForm(parent) {
     return [
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'firstName',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : true,
-        isIncluded      : true,
-        isFixed         : true,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'lastName',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : true,
-        isIncluded      : true,
-        isFixed         : true,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
         fieldIdentifier : 'gender',
         form            : 'attendee',
         type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'email',
-        form            : 'attendee',
-        type            : 'email',
         isRequired      : false,
         isIncluded      : false,
         event           : parent

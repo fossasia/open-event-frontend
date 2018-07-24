@@ -1,0 +1,8 @@
+{{#each model.tracks as |track|}}
+  <h3 class="ui header">{{track.name}}</h3>
+  {{#each track.sessions as |session|}}
+    {{public/session-item session=session}}
+  {{else}}
+    <div class="ui disabled header">{{t 'No sessions exist for this track'}}</div>
+  {{/each}}
+{{/each}}
