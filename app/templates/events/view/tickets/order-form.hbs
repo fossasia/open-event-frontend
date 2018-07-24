@@ -1,7 +1,7 @@
 {{#if device.isMobile }}
   <div class="ui hidden divider"></div>
 {{/if}}
-<div class="ui stackable grid">
+<div class="ui stackable grid {{if isLoading 'loading'}}">
   <div class="row">
     <h2 class="ui header {{if device.isTablet 'nine' 'eleven'}} wide column left floated">{{t 'Order Form'}}</h2>
   </div>
