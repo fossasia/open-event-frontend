@@ -48,6 +48,9 @@
           onOpened=(action "checkoutOpened")
         }}
       {{/if}}
+      {{#if isPaypal}}
+        {{paypal-button data=model}}
+      {{/if}}
     </div>
   </div>
 </div>
