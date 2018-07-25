@@ -9,6 +9,10 @@ export default Controller.extend({
     return this.get('model.paymentMode') === 'stripe';
   }),
 
+  isPaypal: computed('model', function() {
+    return this.get('model.paymentMode') === 'paypal';
+  }),
+
   paymentAmount: computed('model', function() {
     return this.get('model.amount') * 100;
   }),
