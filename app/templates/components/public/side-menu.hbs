@@ -1,4 +1,4 @@
-{{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session') (not-eq session.currentRouteName 'public.sessions.list'))}}
+{{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session') (not-eq session.currentRouteName 'public.sessions.list') (not-eq session.currentRouteName 'public.speakers'))}}
   <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
     {{#if (eq session.currentRouteName 'public.index')}}
       {{#scroll-to href='#info' class='item active'}}
@@ -10,9 +10,9 @@
         {{/scroll-to}}
       {{/if}}
       {{#if event.speakers.length}}
-        {{#scroll-to href='#speakers' class='item'}}
+        {{#link-to 'public.speakers' class='item'}}
           {{t 'Speakers'}}
-        {{/scroll-to}}
+        {{/link-to}}
       {{/if}}
     {{else}}
       <a class="item" href="{{href-to 'public.index'}}">
@@ -24,9 +24,9 @@
         </a>
       {{/if}}
       {{#if event.speakers.length}}
-        <a class="item" href="{{href-to 'public.index'}}#speakers">
-          {{t 'Speakers'}}
-        </a>
+        {{#link-to 'public.sessions' class='item'}}
+          {{t 'Sessions'}}
+        {{/link-to}}
       {{/if}}
     {{/if}}
     {{#if event.sessions.length}}
