@@ -11,6 +11,12 @@ export default Controller.extend({
       title        : 'Title'
     },
     {
+      propertyName   : 'state',
+      template       : 'components/ui-table/cell/events/view/sessions/cell-session-state',
+      title          : 'State',
+      disableSorting : true
+    },
+    {
       propertyName   : 'speakers',
       template       : 'components/ui-table/cell/cell-speakers',
       title          : 'Speakers',
