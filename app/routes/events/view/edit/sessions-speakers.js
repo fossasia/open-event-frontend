@@ -13,7 +13,23 @@ export default Route.extend(EventWizardMixin, {
     data.microlocations = await data.event.get('microlocations');
     data.sessionTypes = await data.event.get('sessionTypes');
     data.speakersCall = await this.getOrCreate(data.event, 'speakersCall', 'speakers-call');
+    // Only get session/speaker custom forms.
+    let customFormFilterOptions = [{
+      or: [
+        {
+          name : 'form',
+          op   : 'eq',
+          val  : 'speaker'
+        },
+        {
+          name : 'form',
+          op   : 'eq',
+          val  : 'session'
+        }
+      ]
+    }];
     data.customForms = await data.event.query('customForms', {
+      filter       : customFormFilterOptions,
       sort         : 'field-identifier',
       'page[size]' : 50
     });

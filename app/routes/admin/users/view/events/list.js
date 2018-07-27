@@ -15,7 +15,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
   model() {
     const userDetails = this.modelFor('admin.users.view');
     return this.store.findRecord('user', userDetails.id, {
-      include: 'events, sessions, speakers'
+      include: 'events'
     });
   }
 });

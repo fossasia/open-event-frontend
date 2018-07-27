@@ -79,6 +79,10 @@ export default Controller.extend({
         .finally(() => {
           this.set('isLoading', false);
         });
+    },
+    openEditModal(user) {
+      this.set('isEditUserModalOpen', true);
+      this.set('data', user);
     }
   }
 });

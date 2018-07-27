@@ -57,6 +57,14 @@ export default Route.extend({
       });
     }
 
+    if (params.location) {
+      filterOptions.push({
+        name : 'location_name',
+        op   : 'ilike',
+        val  : `%${params.location}%`
+      });
+    }
+
     if (params.start_date && params.end_date) {
       filterOptions.push({
         or:

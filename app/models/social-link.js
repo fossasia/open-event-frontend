@@ -6,8 +6,9 @@ import { belongsTo } from 'ember-data/relationships';
 import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 
 export default ModelBase.extend({
-  name : attr('string'),
-  link : attr('string'),
+  name       : attr('string'),
+  link       : attr('string'),
+  identifier : attr('string'), // used for providing css id for URL validations.
 
   event: belongsTo('event'),
 
