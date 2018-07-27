@@ -18,6 +18,8 @@ export default Route.extend({
       this.transitionTo('orders.new', model.get('identifier'));
     } else if (model.get('status') === 'completed') {
       this.transitionTo('orders.view', model.get('identifier'));
+    } else if (model.get('status') === 'placed') {
+      this.transitionTo('orders.placed', model.get('identifier'));
     }
   }
 });

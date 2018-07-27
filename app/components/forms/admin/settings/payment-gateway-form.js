@@ -39,22 +39,42 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        paypalBraintreeSandboxAccessToken: {
-          identifier : 'sandbox_access_token',
+        paypalSandboxClient: {
+          identifier : 'sandbox_client_id',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sandbox braintree paypal access token')
+              prompt : this.get('l10n').t('Please enter the sandbox client id')
             }
           ]
         },
 
-        paypalBraintreeAccessToken: {
-          identifier : 'live_access_token',
+        paypalSandboxSecret: {
+          identifier : 'sandbox_secret_token',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live braintree paypal access token')
+              prompt : this.get('l10n').t('Please enter the sandbox secret token')
+            }
+          ]
+        },
+
+        paypalClient: {
+          identifier : 'client_id',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter the live client token')
+            }
+          ]
+        },
+
+        paypalSecret: {
+          identifier : 'secret_token',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter the live secret token')
             }
           ]
         }
@@ -67,7 +87,7 @@ export default Component.extend(FormMixin, {
   }),
 
   isCheckedPaypal: computed(function() {
-    return this.get('settings.paypalBraintreeSandboxAccessToken') || this.get('settings.paypalBraintreeAccessToken');
+    return this.get('settings.paypalSandboxClient') || this.get('settings.paypalClient');
   }),
 
   actions: {
@@ -82,8 +102,10 @@ export default Component.extend(FormMixin, {
         }
         if (this.get('isCheckedPaypal') === false)  {
           this.get('settings').setProperties({
-            'paypalBraintreeSandboxAccessToken' : null,
-            'paypalBraintreeAccessToken'        : null
+            'paypalSandboxClient' : null,
+            'paypalSandboxSecret' : null,
+            'paypalSecret'        : null,
+            'paypalClient'        : null
           });
         }
         this.sendAction('save');

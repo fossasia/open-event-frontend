@@ -36,12 +36,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return orderBy(paymentCurrencies, 'name');
   }),
 
-  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.paypalBraintreeSandboxAccessToken', 'settings.paypalBraintreeAccessToken', function() {
-    return (this.get('settings.paypalBraintreeSandboxAccessToken') || this.get('settings.paypalBraintreeAccessToken')) && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
+  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.isPaypalActivated', function() {
+    return this.get('settings.isPaypalActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
   }),
 
-  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.stripeClientId', function() {
-    return this.get('settings.stripeClientId') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
+  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
+    return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {

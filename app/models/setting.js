@@ -28,9 +28,16 @@ export default ModelBase.extend({
   twConsumerSecret     : attr('string'),
   inClientId           : attr('string'),
   inClientSecret       : attr('string'),
+  paypalMode           : attr('string'),
+  paypalClient         : attr('string'),
+  paypalSecret         : attr('string'),
+  paypalSandboxClient  : attr('string'),
+  paypalSandboxSecret  : attr('string'),
   stripeClientId       : attr('string'),
   stripeSecretKey      : attr('string'),
   stripePublishableKey : attr('string'),
+  isPaypalActivated    : attr('boolean'),
+  isStripeActivated    : attr('boolean'),
   emailService         : attr('string'),
   emailFrom            : attr('string'),
   emailFromName        : attr('string'),
@@ -53,10 +60,6 @@ export default ModelBase.extend({
   staticDomain         : attr('string'),
   cookiePolicy         : attr('string'),
   cookiePolicyLink     : attr('string'),
-
-  paypalMode                        : attr('string'),
-  paypalBraintreeSandboxAccessToken : attr('string'),
-  paypalBraintreeAccessToken        : attr('string'),
 
   /**
    * Computed properties

@@ -66,10 +66,17 @@
     {{#if (eq settings.paypalMode 'sandbox')}}
       <div class="field">
         <label>
-          {{t 'Paypal Braintree Sandbox Access Token'}}
-          {{ui-popup tagName="i" class="info icon" content="This access token will be used during testing mode"}}
+          {{t 'Paypal Sandbox Client Id'}}
+          {{ui-popup tagName="i" class="info icon" content="This client id will be used for testing mode"}}
         </label>
-        {{input type='text' name='sandbox_access_token' value=settings.paypalBraintreeSandboxAccessToken}}
+        {{input type='text' name='sandbox_client_id' value=settings.paypalSandboxClient}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Paypal Sandbox Secret Token'}}
+          {{ui-popup tagName="i" class="info icon" content="This secret token will be used during testing mode"}}
+        </label>
+        {{input type='text' name='sandbox_secret_token' value=settings.paypalSandboxSecret}}
       </div>
     {{/if}}
     <div class="field">
@@ -82,10 +89,17 @@
     {{#if (eq settings.paypalMode 'live')}}
       <div class="field">
         <label>
-          {{t 'Paypal Braintree Live Access Token'}}
-          {{ui-popup tagName="i" class="info icon" content="This access tocken will be used during live (production) mode"}}
+          {{t 'Paypal Client Id'}}
+          {{ui-popup tagName="i" class="info icon" content="This client id will be used during live (production) mode"}}
         </label>
-        {{input type='text' name='live_access_token' value=settings.paypalBraintreeAccessToken}}
+        {{input type='text' name='client_id' value=settings.paypalClient}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Paypal Secret Token'}}
+          {{ui-popup tagName="i" class="info icon" content="This secret tocken will be used during live (production) mode"}}
+        </label>
+        {{input type='text' name='secret_token' value=settings.paypalSecret}}
       </div>
     {{/if}}
   {{/if}}
