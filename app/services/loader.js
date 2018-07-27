@@ -7,7 +7,7 @@ import httpStatus from 'npm:http-status';
 import objectToFormData from 'npm:object-to-formdata';
 import fetch from 'fetch';
 import { clone, assign, merge } from 'lodash';
-const bodyAllowedIn = ['POST', 'PUT'];
+const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
 
 export default Service.extend({
 
