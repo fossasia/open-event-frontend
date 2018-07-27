@@ -8,7 +8,8 @@ export default Route.extend({
 
   model(params) {
     return this.store.findRecord('order', params.order_id, {
-      include: 'attendees,tickets,event'
+      include : 'attendees,tickets,event',
+      reload  : true
     });
   },
 
