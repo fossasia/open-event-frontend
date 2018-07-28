@@ -2,9 +2,10 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
   /**
-   * Save the forms.
+   * Save the event and the forms.
    */
   async saveForms(data) {
+    await data.event.save();
     for (const customForm of data.customForms ? data.customForms.toArray() : []) {
       await customForm.save();
     }

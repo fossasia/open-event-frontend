@@ -62,6 +62,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
+  orderExpiryTime : attr('number', { defaultValue: 10 }),
 
   schedulePublishedOn: attr('moment', { readOnly: true }),
 

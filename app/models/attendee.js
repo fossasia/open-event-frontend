@@ -20,6 +20,7 @@ export default ModelBase.extend({
   /**
    * Relationships
    */
+  order  : belongsTo('order'),
   event  : belongsTo('event'),
   ticket : belongsTo('ticket'),
   user   : belongsTo('user')
