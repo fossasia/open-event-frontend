@@ -9,6 +9,8 @@ export default stripeConnect.extend({
   clientId: alias('settings.stripeClientId'),
 
   redirectUri: configurable('redirectUri', function() {
-    return `${window.location.origin}/torii/redirect.html`;
+    let { pathname } = window.location;
+    pathname = pathname.substr(0, pathname.lastIndexOf('/'));
+    return `${window.location.origin}${pathname}/torii/redirect.html`;
   })
 });
