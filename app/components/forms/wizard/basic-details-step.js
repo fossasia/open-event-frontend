@@ -211,6 +211,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'number',
               prompt : this.get('l10n').t('Please give a proper price for you ticket')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.get('l10n').t('Ticket price should be greater than 0')
             }
           ]
         },
@@ -250,6 +254,46 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'number',
               prompt : this.get('l10n').t('Invalid number')
+            }
+          ]
+        },
+        paypalEmail: {
+          identifier : 'paypal_email',
+          rules      : [
+            {
+              type   : 'email',
+              prompt : this.get('l10n').t('Please enter a valid email')
+            },
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please fill your paypal email for payment of tickets.')
+            }
+          ]
+        },
+        onSiteDetails: {
+          identifier : 'on_site_details',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please fill the details for payment of tickets.')
+            }
+          ]
+        },
+        bankDetails: {
+          identifier : 'bank_details',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please fill the bank details for payment of tickets.')
+            }
+          ]
+        },
+        chequeDetails: {
+          identifier : 'cheque_details',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please fill the cheque details for payment of tickets.')
             }
           ]
         },

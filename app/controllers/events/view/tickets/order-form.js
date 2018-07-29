@@ -2,9 +2,10 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
   /**
-   * Save the forms.
+   * Save the event and the forms.
    */
   async saveForms(data) {
+    await data.event.save();
     for (const customForm of data.customForms ? data.customForms.toArray() : []) {
       await customForm.save();
     }
@@ -20,7 +21,7 @@ export default Controller.extend({
         })
         .catch(e => {
           console.error(e);
-          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+          this.get('notify').error(this.get('l10n').t(e.errors[0].detail));
         })
         .finally(() => {
           this.set('isLoading', false);

@@ -147,6 +147,9 @@ router.map(function() {
           this.route('contact-info');
           this.route('email-preferences');
         });
+        this.route('tickets', function() {
+          this.route('list', { path: '/:tickets_status' });
+        });
       });
       this.route('list', { path: '/:users_status' });
     });

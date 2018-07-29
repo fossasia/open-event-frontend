@@ -6,11 +6,6 @@ export default Route.extend(CustomFormMixin, {
   titleToken() {
     return this.get('l10n').t('Order Form');
   },
-  actions: {
-    async save(data) {
-      this.sendAction('save', data);
-    }
-  },
   async model() {
     let filterOptions = [{
       name : 'form',
