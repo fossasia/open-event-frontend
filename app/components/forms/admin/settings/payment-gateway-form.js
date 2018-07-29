@@ -39,62 +39,42 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        sandboxUsername: {
-          identifier : 'sandbox_username',
+        paypalSandboxClient: {
+          identifier : 'sandbox_client_id',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sadnbox username')
+              prompt : this.get('l10n').t('Please enter the sandbox client id')
             }
           ]
         },
 
-        sandboxPassword: {
-          identifier : 'sandbox_password',
+        paypalSandboxSecret: {
+          identifier : 'sandbox_secret_token',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sandbox password')
+              prompt : this.get('l10n').t('Please enter the sandbox secret token')
             }
           ]
         },
 
-        sandboxSignature: {
-          identifier : 'sandbox_signature',
+        paypalClient: {
+          identifier : 'client_id',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sandbox signature')
+              prompt : this.get('l10n').t('Please enter the live client token')
             }
           ]
         },
 
-        liveUsername: {
-          identifier : 'live_username',
+        paypalSecret: {
+          identifier : 'secret_token',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live username')
-            }
-          ]
-        },
-
-        livePassword: {
-          identifier : 'live_password',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live password')
-            }
-          ]
-        },
-
-        liveSignature: {
-          identifier : 'live_signature',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live signature')
+              prompt : this.get('l10n').t('Please enter the live secret token')
             }
           ]
         }
@@ -107,7 +87,7 @@ export default Component.extend(FormMixin, {
   }),
 
   isCheckedPaypal: computed(function() {
-    return this.get('settings.paypalSandboxUsername') || this.get('settings.paypalLiveUsername');
+    return this.get('settings.paypalSandboxClient') || this.get('settings.paypalClient');
   }),
 
   actions: {
@@ -122,13 +102,10 @@ export default Component.extend(FormMixin, {
         }
         if (this.get('isCheckedPaypal') === false)  {
           this.get('settings').setProperties({
-            'paypalSandboxUsername'  : null,
-            'paypalSandboxPassword'  : null,
-            'paypalSandboxSignature' : null,
-            'paypalLiveUsername'     : null,
-            'paypalLivePassword'     : null,
-            'paypalMode'             : null,
-            'paypalLiveSignature'    : null
+            'paypalSandboxClient' : null,
+            'paypalSandboxSecret' : null,
+            'paypalSecret'        : null,
+            'paypalClient'        : null
           });
         }
         this.sendAction('save');

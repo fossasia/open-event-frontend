@@ -15,15 +15,27 @@
   </div>
   <div class="row">
     <div class="ten wide column">
-      {{order-summary data=model}}
+      {{orders/order-summary data=model}}
     </div>
     <div class="mobile hidden six wide column">
-      {{event-info data=model}}
+      {{orders/event-info data=model}}
     </div>
   </div>
   <div class="row">
     <div class="ten wide column">
       {{forms/orders/attendee-list save='save' data=model}}
+    </div>
+    <div class="six wide column">
+      {{#if model.event.organizerName}}
+        <div class="mobile hidden row">
+          {{orders/organizer-info data=model}}
+        </div>
+      {{/if}}
+      <br>
+      <a class="ui labeled icon button" href="{{model.ticketsPdfUrl}}" target="_blank" rel="noopener nofollow">
+        <i class="ticket alternate icon"></i>
+        Download Tickets
+      </a>
     </div>
   </div>
 </div>

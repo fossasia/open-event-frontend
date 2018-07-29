@@ -8,7 +8,8 @@ export default Route.extend({
 
   model(params) {
     return this.store.findRecord('order', params.order_id, {
-      include: 'attendees,tickets,event'
+      include : 'attendees,tickets,event',
+      reload  : true
     });
   },
 
@@ -17,6 +18,8 @@ export default Route.extend({
       this.transitionTo('orders.expired', model.get('identifier'));
     } else if (model.get('status') === 'pending') {
       this.transitionTo('orders.new', model.get('identifier'));
+    } else if (model.get('status') === 'placed') {
+      this.transitionTo('orders.placed', model.get('identifier'));
     }
   }
 });

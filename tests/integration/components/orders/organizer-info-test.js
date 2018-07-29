@@ -3,11 +3,11 @@ import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-in
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
-module('Integration | Component | event info', function(hooks) {
+module('Integration | Component | orders/organizer info', function(hooks) {
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{event-info}}`);
-    assert.ok(this.element.textContent.trim(), 'event-info');
+    await render(hbs`{{orders/organizer-info}}`);
+    assert.ok(this.element.textContent.trim(), 'organizer-info');
   });
 });

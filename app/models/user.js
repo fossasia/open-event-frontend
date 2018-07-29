@@ -21,6 +21,8 @@ export default ModelBase.extend({
   isUserTrackOrganizer : attr('boolean'),
   isUserModerator      : attr('boolean'),
   isUserRegistrar      : attr('boolean'),
+  isSalesAdmin         : attr('boolean'),
+  isMarketer           : attr('boolean'),
 
   firstName : attr('string'),
   lastName  : attr('string'),
