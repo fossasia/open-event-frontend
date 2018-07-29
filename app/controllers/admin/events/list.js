@@ -9,13 +9,13 @@ export default Controller.extend({
     {
       propertyName : 'startsAt',
       template     : 'components/ui-table/cell/cell-simple-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      dateFormat   : 'MMMM DD, YYYY - hh:mm A',
       title        : 'Starts At'
     },
     {
       propertyName : 'endsAt',
       template     : 'components/ui-table/cell/cell-simple-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      dateFormat   : 'MMMM DD, YYYY - hh:mm A',
       title        : 'Ends At'
     },
     {
