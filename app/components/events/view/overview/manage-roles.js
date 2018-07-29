@@ -13,7 +13,7 @@ export default Component.extend({
         this.set('currentInvite', invite);
         this.set('isNewInvite', false);
       } else {
-        const currentInvite = this.get('data.roleInvites').createRecord({});
+        const currentInvite = this.get('data').roleInvites.createRecord({});
         this.set('currentInvite', currentInvite);
         this.set('isNewInvite', true);
       }
