@@ -7,14 +7,14 @@ export default ApplicationSerializer.extend({
       var a = b.attributes, c = {};
       Object.assign(c, b);
       c.attributes = {
-        events           : a.name,
-        eventDate        : a.starts_at,
-        completedTickets : a.sales.completed.ticket_count,
-        completedSales   : a.sales.completed.sales_total,
-        placedTickets    : a.sales.placed.ticket_count,
-        placedSales      : a.sales.placed.sales_total,
-        pendingTickets   : a.sales.pending.ticket_count,
-        pendingSales     : a.sales.pending.sales_total
+        'events'            : a.name,
+        'event-date'        : a.starts_at,
+        'completed-tickets' : a.sales.completed.ticket_count,
+        'completeds-sales'  : a.sales.completed.sales_total,
+        'placed-tickets'    : a.sales.placed.ticket_count,
+        'placed-sales'      : a.sales.placed.sales_total,
+        'pending-tickets'   : a.sales.pending.ticket_count,
+        'pending-sales'     : a.sales.pending.sales_total
 
       }; return c;
     });
