@@ -52,7 +52,7 @@ export default Controller.extend({
       propertyName     : 'lastAccessedAt',
       title            : 'Last Accessed',
       template         : 'components/ui-table/cell/cell-simple-date',
-      dateFormat       : 'MMMM DD, YYYY - HH:mm A',
+      dateFormat       : 'MMMM DD, YYYY - hh:mm A',
       disableSorting   : true,
       disableFiltering : true
     },
