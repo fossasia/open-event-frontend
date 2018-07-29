@@ -3,7 +3,7 @@ import ApplicationSerializer from './application';
 export default ApplicationSerializer.extend({
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
     console.log(store, primaryModelClass, payload, id, requestType); /* eslint-disable-line no-console */
-    arguments[2] = payload.data.map(function(b) {
+    arguments[2].data = payload.data.map(function(b) {
       var a = b.attributes, c = {};
       Object.assign(c, b);
       c.attributes = {
