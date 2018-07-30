@@ -1,9 +1,10 @@
 <h2 class="ui header">{{t 'Add Order'}}</h2>
 <form class="ui form">
-  {{events/events-table columns=columns data=model
+  {{events/events-table columns=columns data=model.tickets
     useNumericPagination=true
     showGlobalFilter=true
     showPageSize=true
+    updateOrder=(action 'updateOrder')
   }}
   <div class="ui grid stackable">
     <div class="row">
@@ -25,7 +26,7 @@
         {{/ui-dropdown}}
       </div>
       <div class="eight wide column right aligned">
-        <button class="ui blue button" disabled= {{not hasTicketsInOrder}}>
+        <button class="ui blue button" disabled={{not hasTicketsInOrder}}>
           {{t 'Continue'}}
         </button>
       </div>
