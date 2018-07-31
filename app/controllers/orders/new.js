@@ -6,11 +6,11 @@ export default Controller.extend({
       try {
         this.set('isLoading', true);
         let order = data;
-        let { attendees } = data;
+        let { attendees, paymentMode } = data;
         for (const attendee of attendees ? attendees.toArray() : []) {
           await attendee.save();
         }
-        if (order.get('paymentMode') === 'free') {
+        if (paymentMode === 'free' || paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite') {
           order.set('status', 'completed');
         } else {
           order.set('status', 'placed');

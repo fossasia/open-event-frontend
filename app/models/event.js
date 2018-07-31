@@ -53,6 +53,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
   canPayByStripe  : attr('boolean', { defaultValue: false }),
+  isStripeLinked  : attr('boolean'),
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
   canPayOnsite    : attr('boolean', { defaultValue: false }),
