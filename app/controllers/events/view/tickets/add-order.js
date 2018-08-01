@@ -54,6 +54,7 @@ export default Controller.extend({
       }
     },
     async placeOrder() {
+      this.set('isLoading', true);
       let order = this.get('model.order');
       let event = order.get('event');
       order.tickets.forEach(ticket => {
@@ -69,7 +70,6 @@ export default Controller.extend({
         }
       });
       try {
-        this.set('isLoading', true);
         let order = this.get('model.order');
         let attendees = this.get('model.attendees');
         for (const attendee of attendees ? attendees.toArray() : []) {
