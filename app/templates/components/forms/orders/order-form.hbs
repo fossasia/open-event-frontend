@@ -37,50 +37,33 @@
         {{t 'Ticket Holder\'s Information'}}
       </h4>
       {{#each holders as |holder index|}}
-        {{#if (eq holders.length 1)}}
-          <div class="field">
-            {{#unless sameAsBuyer}}
-              <div class="inline field">
-                <i class="user icon"></i>
-                <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
-              </div>
-              <div class="field">
-                <label class="required" for="firstname">{{t 'First Name'}}</label>
-                {{input type='text' name=(concat 'first_name_' index) value=holder.firstname}}
-              </div>
-              <div class="field">
-                <label class="required" for="lastname">{{t 'Last Name'}}</label>
-                {{input type='text' name=(concat 'last_name_' index) value=holder.lastname}}
-              </div>
-              <div class="field">
-                <label class="required" for="email">{{t 'Email'}}</label>
-                {{input type='text' name=(concat 'email_' index) value=holder.email}}
-              </div>
-            {{/unless}}
-            {{ui-checkbox label=(t 'Ticket holder is the same person as ticket buyer') checked=sameAsBuyer onChange=(pipe-action (action (mut sameAsBuyer)) (action 'modifyHolder' holder))}}
-          </div>
-        {{else}}
-          <div class="inline field">
-            <i class="user icon"></i>
-            <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
-          </div>
-          <div class="field {{if (and sameAsBuyer (eq index 0)) 'disabled'}}">
-            <label class="required" for="firstname">{{t 'First Name'}}</label>
-            {{input type='text' name=(concat 'first_name_' index) value=holder.firstname}}
-          </div>
-          <div class="field {{if (and sameAsBuyer (eq index 0)) 'disabled'}}">
-            <label class="required" for="lastname">{{t 'Last Name'}}</label>
-            {{input type='text' name=(concat 'last_name_' index) value=holder.lastname}}
-          </div>
-          <div class="field {{if (and sameAsBuyer (eq index 0)) 'disabled'}}">
-            <label class="required" for="email">{{t 'Email'}}</label>
-            {{input type='text' name=(concat 'email_' index) value=holder.email}}
-          </div>
-          {{#if (eq index 0)}}
-            <div class="field">
-              {{ui-checkbox label=(t 'Ticket holder is the same person as ticket buyer') checked=sameAsBuyer onChange=(pipe-action (action (mut sameAsBuyer)) (action 'modifyHolder' holder))}}
+        <div class="inline field">
+          <i class="user icon"></i>
+          <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+        </div>
+        {{# each allFields.attendee as |field|}}
+          {{#if field.isIncluded}}
+            <div class="field {{if
+              (and sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))
+              'disabled'}}">
+              <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+              {{#if (is-input-field field.type) }}
+                {{#if field.isLongText}}
+                  {{widgets/forms/rich-text-editor value=(mut (get holder field.fieldIdentifier))
+                                                   name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                {{else}}
+                  {{input type=field.type value=(mut (get holder field.fieldIdentifier))
+                          name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                {{/if}}
+              {{/if}}
             </div>
           {{/if}}
+        {{/each}}
+        {{#if (eq index 0)}}
+          <div class="field">
+            {{ui-checkbox label=(t 'Ticket holder is the same person as ticket buyer') checked=sameAsBuyer
+                          onChange=(pipe-action (action (mut sameAsBuyer)) (action 'modifyHolder' holder))}}
+          </div>
         {{/if}}
       {{/each}}
       {{#if isPaidOrder}}
@@ -90,7 +73,8 @@
         </h4>
         <div class="field">
           <label class="required">{{t 'Select country'}}</label>
-          {{#ui-dropdown class="selection" selected=data.country onChange=(action (mut data.country)) as |execute mapper|}}
+          {{#ui-dropdown class="selection" selected=data.country
+                         onChange=(action (mut data.country)) as |execute mapper|}}
             <div class="default text">{{t 'Select country'}}</div>
             <i class="dropdown icon"></i>
             <div class="menu">
@@ -123,29 +107,36 @@
           <div class="grouped inline fields">
             {{#if data.event.isStripeLinked}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Stripe') value='stripe' current=data.paymentMode onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode"><img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe"></label>
+                {{ui-radio name='payment_mode' label=(t 'Stripe') value='stripe' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+                <label for="payment_mode">
+                  <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
+                </label>
               </div>
             {{/if}}
             {{#if data.event.canPayByPaypal}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Paypal') value='paypal' current=data.paymentMode onChange=(action (mut data.paymentMode))}}
+                {{ui-radio name='payment_mode' label=(t 'Paypal') value='paypal' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
                 <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
               </div>
             {{/if}}
             {{#if data.event.canPayByCheque}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Cheque') value='cheque' current=data.paymentMode onChange=(action (mut data.paymentMode))}}
+                {{ui-radio name='payment_mode' label=(t 'Cheque') value='cheque' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
               </div>
             {{/if}}
             {{#if data.event.canPayByBank}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Bank') value='bank' current=data.paymentMode onChange=(action (mut data.paymentMode))}}
+                {{ui-radio name='payment_mode' label=(t 'Bank') value='bank' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
               </div>
             {{/if}}
             {{#if data.event.canPayOnsite}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Onsite') value='onsite' current=data.paymentMode onChange=(action (mut data.paymentMode))}}
+                {{ui-radio name='payment_mode' label=(t 'Onsite') value='onsite' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
               </div>
             {{/if}}
           </div>
@@ -165,7 +156,8 @@
         {{t 'Acknowledgement'}}
       </h4>
       <p>
-        {{t 'By clicking "Pay Now", I acknowledge that I have read and agree with the Open Event terms of services and privacy policy.'}}
+        {{t
+          'By clicking "Pay Now", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event.'}}
       </p>
       <div class="center aligned">
         <button type="submit" class="ui teal submit button">{{t 'Pay Now'}}</button>
