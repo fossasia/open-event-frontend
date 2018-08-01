@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import moment from 'moment';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Route.extend(AuthenticatedRouteMixin, {
@@ -10,10 +11,56 @@ export default Route.extend(AuthenticatedRouteMixin, {
         return this.get('l10n').t('Past');
     }
   },
-  model() {
+  model(params) {
     const userDetails = this.modelFor('admin.users.view');
-    return this.store.findRecord('user', userDetails.id, {
-      include: 'sessions'
+    this.set('params', params);
+    let filterOptions = [];
+    if (params.session_status === 'upcoming') {
+      filterOptions = [
+        {
+          and: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'creator',
+              op   : 'has',
+              val  : {
+                name : 'email',
+                op   : 'eq',
+                val  : userDetails.email
+              }
+            }
+          ]
+        }
+      ];
+    } else {
+      filterOptions = [
+        {
+          and: [
+            {
+              name : 'ends-at',
+              op   : 'lt',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'creator',
+              op   : 'has',
+              val  : {
+                name : 'email',
+                op   : 'eq',
+                val  : userDetails.email
+              }
+            }
+          ]
+        }
+      ];
+    }
+    return this.store.query('session', {
+      filter : filterOptions,
+      sort   : 'starts-at'
     });
   }
 });
