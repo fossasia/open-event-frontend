@@ -5,7 +5,11 @@ import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
 import moment from 'moment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { orderBy } from 'lodash';
+import { groupBy, orderBy } from 'lodash';
+import {
+  compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
+  validGithubProfileUrlPattern
+} from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, {
   router: service(),
@@ -78,6 +82,258 @@ export default Component.extend(FormMixin, {
         }
       ]
     };
+
+    let genderValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please select a gender')
+        }
+      ]
+    };
+
+    let addressValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your address')
+        }
+      ]
+    };
+
+    let cityValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your city')
+        }
+      ]
+    };
+
+    let stateValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your state')
+        }
+      ]
+    };
+
+    let countryValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your country')
+        }
+      ]
+    };
+
+    let jobTitleValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your job title')
+        }
+      ]
+    };
+
+    let phoneValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter a mobile number')
+        }
+      ]
+    };
+
+    let taxBusinessInfoValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your tax business info')
+        }
+      ]
+    };
+
+    let billingAddressValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your billing address')
+        }
+      ]
+    };
+
+    let homeAddressValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your home address')
+        }
+      ]
+    };
+
+    let shippingAddressValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your shipping address')
+        }
+      ]
+    };
+
+    let companyValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your company')
+        }
+      ]
+    };
+
+    let workAddressValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your work address')
+        }
+      ]
+    };
+
+    let workPhoneValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter your work phone')
+        }
+      ]
+    };
+
+    let websiteValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : compulsoryProtocolValidUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid url')
+        }
+      ]
+    };
+
+    let websiteRequiredValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter url of website')
+        },
+        {
+          type   : 'regExp',
+          value  : compulsoryProtocolValidUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid url')
+        }
+      ]
+    };
+
+    let blogValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : compulsoryProtocolValidUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid url')
+        }
+      ]
+    };
+
+    let blogRequiredValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter url of website')
+        },
+        {
+          type   : 'regExp',
+          value  : compulsoryProtocolValidUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid url')
+        }
+      ]
+    };
+
+    let twitterValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : validTwitterProfileUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid twitter profile url')
+        }
+      ]
+    };
+
+    let twitterRequiredValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter twitter link')
+        },
+        {
+          type   : 'regExp',
+          value  : validTwitterProfileUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid twitter profile url')
+        }
+      ]
+    };
+
+    let facebookValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : validFacebookProfileUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid facebook account url')
+        }
+      ]
+    };
+
+    let facebookRequiredValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter facebook link')
+        },
+        {
+          type   : 'regExp',
+          value  : validFacebookProfileUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid facebook account url')
+        }
+      ]
+    };
+
+    let githubValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : validGithubProfileUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid github profile url')
+        }
+      ]
+    };
+
+    let githubRequiredValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.get('l10n').t('Please enter github link')
+        },
+        {
+          type   : 'regExp',
+          value  : validGithubProfileUrlPattern,
+          prompt : this.get('l10n').t('Please enter a valid github profile url')
+        }
+      ]
+    };
+
     let validationRules = {
       inline : true,
       delay  : false,
@@ -167,12 +423,41 @@ export default Component.extend(FormMixin, {
       }
     };
     this.holders.forEach((value, index) => {
-      validationRules.fields[`first_name_${index}`] = firstNameValidation;
-      validationRules.fields[`last_name_${index}`] = lastNameValidation;
-      validationRules.fields[`email_${index}`] = emailValidation;
+      validationRules.fields[`firstname_required_${index}`] = firstNameValidation;
+      validationRules.fields[`lastname_required_${index}`] = lastNameValidation;
+      validationRules.fields[`email_required_${index}`] = emailValidation;
+      validationRules.fields[`gender_required_${  index}`] = genderValidation;
+      validationRules.fields[`address_required_${  index}`] = addressValidation;
+      validationRules.fields[`city_required_${  index}`] = cityValidation;
+      validationRules.fields[`state_required_${  index}`] = stateValidation;
+      validationRules.fields[`country_required_${  index}`] = countryValidation;
+      validationRules.fields[`jobTitle_required_${  index}`] = jobTitleValidation;
+      validationRules.fields[`phone_required_${  index}`] = phoneValidation;
+      validationRules.fields[`taxBusinessInfo_required_${  index}`] = taxBusinessInfoValidation;
+      validationRules.fields[`billingAddress_required_${  index}`] = billingAddressValidation;
+      validationRules.fields[`homeAddress_required_${  index}`] = homeAddressValidation;
+      validationRules.fields[`shippingAddress_required_${  index}`] = shippingAddressValidation;
+      validationRules.fields[`company_required_${  index}`] = companyValidation;
+      validationRules.fields[`workAddress_required_${  index}`] = workAddressValidation;
+      validationRules.fields[`workPhone_required_${  index}`] = workPhoneValidation;
+      validationRules.fields[`website_${  index}`] = websiteValidation;
+      validationRules.fields[`website_required_${  index}`] = websiteRequiredValidation;
+      validationRules.fields[`blog_${  index}`] = blogValidation;
+      validationRules.fields[`blog_required_${  index}`] = blogRequiredValidation;
+      validationRules.fields[`twitter_${  index}`] = twitterValidation;
+      validationRules.fields[`twitter_required_${  index}`] = twitterRequiredValidation;
+      validationRules.fields[`facebook_${  index}`] = facebookValidation;
+      validationRules.fields[`facebook_required_${  index}`] = facebookRequiredValidation;
+      validationRules.fields[`github_${  index}`] = githubValidation;
+      validationRules.fields[`github_required_${  index}`] = githubRequiredValidation;
     });
     return validationRules;
   },
+
+  allFields: computed('fields', function() {
+    return groupBy(this.get('fields').toArray(), field => field.get('form'));
+  }),
+
   countries: computed(function() {
     return orderBy(countries, 'name');
   }),
