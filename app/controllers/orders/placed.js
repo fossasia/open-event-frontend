@@ -5,22 +5,22 @@ export default Controller.extend({
 
   paymentDescription: 'Please fill your card details to proceed',
 
-  isStripe: computed('model', function() {
-    return this.get('model.paymentMode') === 'stripe';
+  isStripe: computed('model.order', function() {
+    return this.get('model.order.paymentMode') === 'stripe';
   }),
 
-  isPaypal: computed('model', function() {
-    return this.get('model.paymentMode') === 'paypal';
+  isPaypal: computed('model.order', function() {
+    return this.get('model.order.paymentMode') === 'paypal';
   }),
 
-  paymentAmount: computed('model', function() {
-    return this.get('model.amount') * 100;
+  paymentAmount: computed('model.order', function() {
+    return this.get('model.order.amount') * 100;
   }),
 
   actions: {
     processStripeToken(token) {
       // Send this token to server to process payment
-      let order = this.get('model');
+      let order = this.get('model.order');
       let chargePayload = {
         'data': {
           'attributes': {
