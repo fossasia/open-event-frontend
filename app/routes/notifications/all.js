@@ -6,7 +6,8 @@ export default Route.extend({
   },
   model() {
     return this.get('authManager.currentUser').query('notifications', {
-      sort: '-received-at'
+      include : 'actions',
+      sort    : '-received-at'
     });
   }
 });
