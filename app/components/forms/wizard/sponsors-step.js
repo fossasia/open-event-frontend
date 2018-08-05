@@ -28,15 +28,33 @@ export default Component.extend(FormMixin, {
 
   actions: {
     addSponsor() {
-      this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
+      let sponsors = this.get('data.sponsors');
+      let incorrect_sponsors = sponsors.filter(function(sponsor) {
+        return (!sponsor.get('name'));
+      });
+      if (incorrect_sponsors.length > 0) {
+        this.notify.error(this.get('l10n').t('Please fill the required fields for existing sponsor items'));
+        this.set('isLoading', false);
+      } else {
+        this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
+      }
     },
     removeSponsor(sponsor) {
       sponsor.deleteRecord();
     },
     saveDraft() {
       this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
+        let sponsors = this.get('data.sponsors');
+        let incorrect_sponsors = sponsors.filter(function(sponsor) {
+          return (!sponsor.get('name'));
+        });
+        if (incorrect_sponsors.length > 0) {
+          this.notify.error(this.get('l10n').t('Please fill the required fields.'));
+          this.set('isLoading', false);
+        } else {
+          this.set('data.event.state', 'draft');
+          this.sendAction('save');
+        }
       });
     },
     move(direction) {
