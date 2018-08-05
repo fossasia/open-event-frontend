@@ -10,7 +10,7 @@ module('Integration | Component | ui table/cell/events/view/tickets/orders/cell 
   test('it renders', async function(assert) {
 
     let record = EmberObject.create({
-      identifier: 'identifier_order',
+      identifier: 'identifier_order'
     });
     this.set('record', record);
     await render(hbs`{{ui-table/cell/events/view/tickets/orders/cell-order record=record}}`);
