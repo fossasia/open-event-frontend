@@ -10,6 +10,12 @@ export default ModalBase.extend(FormMixin, {
       this.onValid(() => {
         this.sendAction('addSystemRole');
       });
+    },
+    close() {
+      if (!this.get('role.id')) {
+        this.get('role').unloadRecord();
+      }
+      this.set('isOpen', false);
     }
   },
   getValidationRules() {
