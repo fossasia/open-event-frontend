@@ -194,6 +194,7 @@ router.map(function() {
     this.route('view', { path: '/:order_id/view' });
     this.route('placed', { path: '/:order_id/placed' });
   });
+  this.route('verify');
 });
 
 export default router;

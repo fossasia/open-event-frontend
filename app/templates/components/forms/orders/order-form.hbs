@@ -9,9 +9,9 @@
           {{getRemainingTime}}
         </div>
         <div class="label">
-          {{t 'Please complete registration within 10:00 minutes.'}}
+          {{t 'Please complete registration within '}} {{data.event.orderExpiryTime}} {{t 'minutes.'}}
           <br>
-          {{t 'After 10:00 minutes, the reservation we\'re holding will be released to others.'}}
+          {{t 'After '}} {{data.event.orderExpiryTime}} {{t 'minutes, the reservation we\'re holding will be released to others.'}}
         </div>
       </div>
     </div>
