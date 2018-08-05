@@ -6,6 +6,16 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return this.get('l10n').t('Notifications');
   },
   model() {
-    return this.get('authManager.currentUser').get('notifications').filterBy('isRead', false);
+    let filterOptions = [
+      {
+        name : 'is-read',
+        op   : 'eq',
+        val  : false
+      }
+    ];
+    return this.get('authManager.currentUser').query('notifications', {
+      include : 'actions',
+      filter  : filterOptions
+    });
   }
 });
