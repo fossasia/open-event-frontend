@@ -35,7 +35,8 @@ export default Component.extend(FormMixin, {
   sameAsBuyer: false,
 
   getRemainingTime: computed('data', function() {
-    let willExpireAt = this.get('data.createdAt').add(10, 'minutes');
+    let orderExpiryTime = this.get('data.event.orderExpiryTime');
+    let willExpireAt = this.get('data.createdAt').add(orderExpiryTime, 'minutes');
     this.timer(willExpireAt, this.get('data.identifier'));
   }),
 
