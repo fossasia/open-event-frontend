@@ -6,41 +6,37 @@ export default Route.extend({
   },
   async model() {
     return {
-      events: [{
+      defaultView     : 'agendaDay',
+      groupByResource : true,
+      events          : [{
         title      : 'Session 1',
-        start      : '2017-07-26T07:08:08',
-        end        : '2017-07-26T09:08:08',
+        start      : '2018-08-06T07:08:08',
+        end        : '2017-08-06T09:08:08',
         resourceId : 'a'
       }, {
         title      : 'Session 2',
-        start      : '2017-05-26T07:08:08',
-        end        : '2017-07-26T09:08:08',
+        start      : '2018-08-06T10:08:08',
+        end        : '2018-08-06T13:08:08',
         resourceId : 'b'
       }, {
         title      : 'Session 3',
-        start      : '2017-07-26T07:08:08',
-        end        : '2017-07-26T09:48:08',
+        start      : '2018-08-06T07:08:08',
+        end        : '2018-08-06T09:48:08',
         resourceId : 'c'
       }, {
         title      : 'Session 4',
-        start      : '2017-07-26T07:15:08',
-        end        : '2017-07-26T09:08:08',
+        start      : '2018-08-06T09:15:08',
+        end        : '2018-08-06T11:08:08',
         resourceId : 'd'
       }],
-      rooms: [
-        { id: 'a', title: 'Auditorium A' },
+      resources: [
+        { id: 'a', title: 'Auditorium A', eventColor: 'yellow' },
         { id: 'b', title: 'Auditorium B', eventColor: 'green' },
         { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
-        { id       : 'd', title    : 'Auditorium D', children : [
+        { id         : 'd', title      : 'Auditorium D', eventColor : 'blue', children   : [
           { id: 'd1', title: 'Room D1' },
           { id: 'd2', title: 'Room D2' }
-        ] },
-        { id: 'e', title: 'Auditorium E' },
-        { id: 'f', title: 'Auditorium F', eventColor: 'red' },
-        { id: 'g', title: 'Auditorium G' },
-        { id: 'h', title: 'Auditorium H' },
-        { id: 'y', title: 'Auditorium Y' },
-        { id: 'z', title: 'Auditorium Z' }
+        ] }
       ]
     };
   }
