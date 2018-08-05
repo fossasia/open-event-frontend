@@ -11,5 +11,19 @@ export default Component.extend({
     switchLanguage(locale) {
       this.get('l10n').switchLanguage(locale);
     }
+  },
+
+  didInsertElement() {
+    this.set('eventLocations', this.get('eventLocations').sortBy('name'));
+
+    let eventTypes = this.get('eventTypes').sortBy('name').toArray();
+    eventTypes.forEach(eventType => {
+      if (eventType.name === 'Other') {
+        let other = eventType;
+        eventTypes.splice(eventTypes.indexOf(eventType), 1);
+        eventTypes.push(other);
+      }
+    });
+    this.set('eventTypes', eventTypes);
   }
 });

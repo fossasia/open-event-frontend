@@ -303,7 +303,7 @@
         {{#if data.event.canPayByPaypal}}
           <div class="field">
             <label class="required">PayPal Email</label>
-            {{input type='email' value=data.event.paypalEmail}}
+            {{input type='email' id='paypal_email' value=data.event.paypalEmail}}
           </div>
         {{/if}}
       {{/if}}
@@ -348,7 +348,7 @@
           <label class="required">
             {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
           </label>
-          {{textarea value=data.event.chequeDetails}}
+          {{textarea id='cheque_details' value=data.event.chequeDetails}}
         </div>
       {{/if}}
 
@@ -366,7 +366,7 @@
           <label class="required">
             {{t 'Enter your bank details and other required details/instructions to ticket buyers'}}
           </label>
-          {{textarea value=data.event.bankDetails}}
+          {{textarea id='bank_details' value=data.event.bankDetails}}
         </div>
       {{/if}}
 
@@ -384,7 +384,7 @@
           <label class="required">
             {{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}
           </label>
-          {{textarea value=data.event.onsiteDetails}}
+          {{textarea id='on_site_details' value=data.event.onsiteDetails}}
         </div>
       {{/if}}
 

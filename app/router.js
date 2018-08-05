@@ -51,6 +51,7 @@ router.map(function() {
     });
     this.route('schedule');
     this.route('coc');
+    this.route('speakers');
   });
   this.route('create');
   this.route('not-found');
@@ -118,6 +119,9 @@ router.map(function() {
     this.route('all');
   });
   this.route('admin', function() {
+    this.route('messages', function() {
+      this.route('list');
+    });
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });
       this.route('import');
@@ -140,6 +144,14 @@ router.map(function() {
         });
         this.route('events', function() {
           this.route('list', { path: '/:event_status' });
+        });
+        this.route('settings', function() {
+          this.route('applications');
+          this.route('contact-info');
+          this.route('email-preferences');
+        });
+        this.route('tickets', function() {
+          this.route('list', { path: '/:tickets_status' });
         });
       });
       this.route('list', { path: '/:users_status' });
@@ -182,6 +194,7 @@ router.map(function() {
     this.route('view', { path: '/:order_id/view' });
     this.route('placed', { path: '/:order_id/placed' });
   });
+  this.route('verify');
 });
 
 export default router;

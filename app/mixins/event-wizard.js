@@ -123,7 +123,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       })
       .catch(e => {
         console.error(e);
-        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+        this.get('notify').error(this.get('l10n').t(e.errors[0].detail));
       })
       .finally(() => {
         this.set('isLoading', false);

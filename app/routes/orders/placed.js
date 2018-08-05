@@ -2,23 +2,32 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken(model) {
-    var order = model.get('identifier');
+    var order = model.order.get('identifier');
     return this.get('l10n').t(`Placed Order -${order}`);
   },
 
-  model(params) {
-    return this.store.findRecord('order', params.order_id, {
-      include: 'attendees,tickets,event'
+  async model(params) {
+    const order = await this.store.findRecord('order', params.order_id, {
+      include : 'attendees,tickets,event',
+      reload  : true
     });
+    const eventDetails = await order.query('event', {});
+    return {
+      order,
+      form: await eventDetails.query('customForms', {
+        'page[size]' : 50,
+        sort         : 'id'
+      })
+    };
   },
 
   afterModel(model) {
-    if (model.get('status') === 'expired') {
-      this.transitionTo('orders.expired', model.get('identifier'));
-    } else if (model.get('status') === 'completed') {
-      this.transitionTo('orders.view', model.get('identifier'));
-    } else if (model.get('status') === 'pending') {
-      this.transitionTo('orders.new', model.get('identifier'));
+    if (model.order.get('status') === 'expired') {
+      this.transitionTo('orders.expired', model.order.get('identifier'));
+    } else if (model.order.get('status') === 'completed') {
+      this.transitionTo('orders.view', model.order.get('identifier'));
+    } else if (model.order.get('status') === 'placed') {
+      this.transitionTo('orders.placed', model.order.get('identifier'));
     }
   }
 });

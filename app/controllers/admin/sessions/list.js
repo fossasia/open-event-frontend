@@ -11,6 +11,12 @@ export default Controller.extend({
       title        : 'Title'
     },
     {
+      propertyName   : 'state',
+      template       : 'components/ui-table/cell/events/view/sessions/cell-session-state',
+      title          : 'State',
+      disableSorting : true
+    },
+    {
       propertyName   : 'speakers',
       template       : 'components/ui-table/cell/cell-speakers',
       title          : 'Speakers',
@@ -19,19 +25,19 @@ export default Controller.extend({
     {
       propertyName : 'submittedAt',
       template     : 'components/ui-table/cell/cell-simple-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      dateFormat   : 'MMMM DD, YYYY - hh:mm A',
       title        : 'Submitted At'
     },
     {
       propertyName : 'startsAt',
       template     : 'components/ui-table/cell/cell-simple-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      dateFormat   : 'MMMM DD, YYYY - hh:mm A',
       title        : 'Starts At'
     },
     {
       propertyName : 'endsAt',
       template     : 'components/ui-table/cell/cell-simple-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      dateFormat   : 'MMMM DD, YYYY - hh:mm A',
       title        : 'Ends At'
     },
     {

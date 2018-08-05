@@ -1,66 +1,10 @@
-{{#if device.isMobile }}
-  <div class="ui hidden divider"></div>
-{{/if}}
 <div class="ui stackable grid">
   <div class="row">
-    <h2 class="ui header {{if device.isTablet 'nine' 'eleven'}} wide column left floated">{{t 'Order Form'}}</h2>
-  </div>
-  <div class="ui header">
-    {{t 'Information to collect'}}
+    <h2 class="ui header column">{{t 'Order Form'}}</h2>
   </div>
   <div class="row">
-    <table class="ui selectable celled table">
-      <thead>
-        <tr>
-          {{#if device.isMobile}}
-            <th class="center aligned">
-              {{t 'Options'}}
-            </th>
-          {{else}}
-            <th class="right aligned">
-              {{t 'Option'}}
-            </th>
-            <th class="center aligned">
-              {{t 'Include'}}
-            </th>
-            <th class="center aligned">
-              {{t 'Require'}}
-            </th>
-          {{/if}}
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model.customForms as |field|}}
-          <tr class="{{if field.isIncluded 'positive'}}">
-            <td class="{{if device.isMobile 'center' 'right'}} aligned">
-              <label class="{{if field.isFixed 'required'}}">
-                {{field.name}}
-              </label>
-            </td>
-            <td class="center aligned">
-              {{ui-checkbox class='slider'
-                            checked=field.isIncluded
-                            disabled=field.isFixed
-                            onChange=(action (mut field.isIncluded))
-                            label=(if device.isMobile (t 'Include'))}}
-            </td>
-            <td class="center aligned">
-              {{ui-checkbox class='slider'
-                            checked=field.isRequired
-                            disabled=field.isFixed
-                            onChange=(action (mut field.isRequired))
-                            label=(if device.isMobile (t 'Require'))}}
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-
-    <div class="ui buttons {{if device.isMobile 'fluid' 'right floated large'}}">
-      <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'save'}}>
-        {{t 'Save'}}
-        <i class="save icon"></i>
-      </button>
+    <div class="sixteen wide column">
+      {{forms/events/view/order-form save=(action 'save') data=model}}
     </div>
   </div>
 </div>

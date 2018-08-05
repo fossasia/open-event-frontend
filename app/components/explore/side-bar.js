@@ -11,6 +11,10 @@ export default Component.extend({
 
   customEndDate: null,
 
+  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', function() {
+    return !(this.get('category') || this.get('sub_category') || this.get('event_type') || this.get('startDate') || this.get('endDate'));
+  }),
+
   dateRanges: computed(function() {
     return getDateRanges.bind(this)();
   }),
@@ -90,6 +94,15 @@ export default Component.extend({
 
     onDateChange() {
       this.send('selectDateFilter', 'custom_dates');
+    },
+
+    clearFilters() {
+      this.set('startDate', null);
+      this.set('endDate', null);
+      this.set('dateType', null);
+      this.set('category', null);
+      this.set('sub_category', null);
+      this.set('event_type', null);
     }
   }
 });

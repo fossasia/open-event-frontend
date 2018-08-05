@@ -1,5 +1,7 @@
 <div class="ui tiny header">
-  {{record.identifier}}
+  <a class="main content" href="{{href-to 'orders.view' record.identifier}}">
+    {{record.identifier}}
+  </a>
   <span class="weight-400">
     {{t 'by'}} {{record.user.firstName}}
   </span>

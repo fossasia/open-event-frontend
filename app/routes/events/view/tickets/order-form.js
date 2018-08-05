@@ -1,17 +1,10 @@
 import Route from '@ember/routing/route';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
+import { A } from '@ember/array';
 
 export default Route.extend(CustomFormMixin, {
   titleToken() {
     return this.get('l10n').t('Order Form');
-  },
-  actions: {
-    /**
-     * Save the forms.
-     */
-    save() {
-      // save the forms.
-    }
   },
   async model() {
     let filterOptions = [{
@@ -19,20 +12,35 @@ export default Route.extend(CustomFormMixin, {
       op   : 'eq',
       val  : 'attendee'
     }];
-    return {
-      customForms: await this.modelFor('events.view').query('customForms', {
-        filter       : filterOptions,
-        sort         : 'field-identifier',
-        'page[size]' : 50
-      })
+
+    let data = {
+      event: this.modelFor('events.view')
     };
+    data.customForms = await data.event.query('customForms', {
+      filter       : filterOptions,
+      sort         : 'id',
+      'page[size]' : 50
+    });
+
+    return data;
   },
-  afterModel(model) {
+  afterModel(data) {
     /**
-     * Create the custom forms if no form exists.
+     * Create the additional custom forms if only the compulsory forms exist.
      */
-    if (model.customForms.length === 0) {
-      model.customForms = this.getCustomAttendeeForm(this.modelFor('events.view').get('event'));
+    if (data.customForms.length === 3) {
+      let customForms = A();
+      for (const customForm of data.customForms ? data.customForms.toArray() : []) {
+        customForms.pushObject(customForm);
+      }
+
+      const createdCustomForms = this.getCustomAttendeeForm(data.event);
+
+      for (const customForm of createdCustomForms ? createdCustomForms : []) {
+        customForms.pushObject(customForm);
+      }
+
+      data.customForms = customForms;
     }
   }
 });
