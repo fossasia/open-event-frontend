@@ -93,7 +93,10 @@
             </td>
             <td>{{ui-checkbox label=(t 'Unverified User') checked=userPermission.unverifiedUser onChange=(action (mut userPermission.unverifiedUser))}}</td>
             <td>
-              {{ui-checkbox label=(t 'Anonymous User') checked=userPermission.anonymousUser onChange=(action (mut userPermission.anonymousUser))}}
+              {{ui-checkbox label=(t 'Anonymous User') disabled=true}}
+              <p>
+                Account creation is necessary.
+              </p>
             </td>
           </tr>
         {{/each}}
