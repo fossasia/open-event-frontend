@@ -12,6 +12,6 @@ export default ModelBase.extend({
   /*
   * Relationships
   */
-  user    : belongsTo('user'),
-  actions : hasMany('notification-action')
+  user                : belongsTo('user'),
+  notificationActions : hasMany('notification-action', { inverse: 'notification' })
 });
