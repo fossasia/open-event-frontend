@@ -11,10 +11,15 @@ export default Route.extend({
     const speakersCall = await eventDetails.get('speakersCall');
     /*
     The following should show the CFS page to the user:
+     - CFS is not issued by the event organiser
      - CFS is public and no hash is entered
      - CFS is public and a valid hash is entered
      - CFS is private and a valid hash is entered
     */
+    if (!speakersCall.announcement) {
+      this.get('notify').error(this.get('l10n').t('Call For Speakers has not been issued yet.'));
+      this.transitionTo('public', eventDetails.identifier);
+    }
     if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {
       this.transitionTo('not-found');
     }
