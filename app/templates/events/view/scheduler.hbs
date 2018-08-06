@@ -10,14 +10,16 @@
                       editable=true
                       droppable=true
                       draggable=true
-                      resources=model.rooms
+                      resources=model.resources
                       header=header
                       ondragover="{{action 'allowDrop' event}}"
                       views=views
-                      viewName='timelineDay'
+                      viewName='agendaDay'
                       drop=(action 'drop')
                       eventReceive=(action 'eventReceive')
                       ondragover=(action 'eventDrop')
+                      defaultView=model.defaultView
+                      groupByResource=model.groupByResource
       }}
     </div>
   </div>
