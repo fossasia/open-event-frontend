@@ -5,6 +5,28 @@ export default Route.extend({
     return this.get('l10n').t('Scheduler');
   },
   async model() {
+    let unscheduledFilterOptions = [
+      {
+        and: [
+          {
+            name : 'starts-at',
+            op   : 'eq',
+            val  : null
+          },
+          {
+            name : 'ends-at',
+            op   : 'eq',
+            val  : null
+          }
+        ]
+      }
+    ];
+
+    let unscheduledSessions = await this.modelFor('events.view').query('sessions', {
+      include : 'speakers',
+      filter  : unscheduledFilterOptions
+    });
+
     return {
       defaultView     : 'agendaDay',
       groupByResource : true,
@@ -37,7 +59,8 @@ export default Route.extend({
           { id: 'd1', title: 'Room D1' },
           { id: 'd2', title: 'Room D2' }
         ] }
-      ]
+      ],
+      unscheduled: unscheduledSessions
     };
   }
 });
