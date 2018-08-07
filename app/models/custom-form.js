@@ -51,8 +51,8 @@ export default ModelBase.extend({
   },
 
   attendee: {
-    firstName       : 'First Name',
-    lastName        : 'Last Name',
+    firstname       : 'First Name',
+    lastname        : 'Last Name',
     email           : 'Email',
     address         : 'Address',
     city            : 'City',

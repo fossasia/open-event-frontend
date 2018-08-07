@@ -18,6 +18,7 @@ export default ModelBase.extend({
   event    : belongsTo('event', {
     inverse: 'accessCodes'
   }), // The event that this access code belongs to
+  orders: hasMany('order'),
 
   /**
    * Computed properties

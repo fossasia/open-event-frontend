@@ -1,9 +1,17 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { inject as service } from '@ember/service';
 import { sumBy } from 'lodash';
+import { A } from '@ember/array';
 
 export default Component.extend(FormMixin, {
+  store: service(),
+
+  promotionalCodeApplied: false,
+
+  accessCodeTickets: A(),
+
   tickets: computed(function() {
     return this.get('data').sortBy('position');
   }),
@@ -21,9 +29,38 @@ export default Component.extend(FormMixin, {
   actions: {
     togglePromotionalCode() {
       this.toggleProperty('enterPromotionalCode');
+      if (this.get('enterPromotionalCode')) {
+        this.set('promotionalCode', '');
+      } else {
+        this.set('promotionalCodeApplied', false);
+        this.get('accessCodeTickets').forEach(ticket => {
+          ticket.set('isHidden', true);
+          this.get('tickets').removeObject(ticket);
+        });
+        this.get('accessCodeTickets').clear();
+      }
     },
     applyPromotionalCode() {
-      this.onValid(() => {
+      this.onValid(async() => {
+        let promotionalCode = this.get('promotionalCode');
+        await this.get('store').findRecord('access-code', promotionalCode)
+          .then(accessCode => {
+            accessCode.get('tickets')
+              .then(tickets => {
+                tickets.forEach(ticket => {
+                  ticket.set('isHidden', false);
+                  this.get('tickets').addObject(ticket);
+                  this.get('accessCodeTickets').addObject(ticket);
+                });
+              })
+              .catch(e => {
+                this.get('notify').error(e);
+              })
+              .finally(() => {
+                this.set('promotionalCodeApplied', true);
+                this.set('promotionalCode', 'Promotional code applied successfully');
+              });
+          });
       });
     },
     updateOrder(ticket, count) {

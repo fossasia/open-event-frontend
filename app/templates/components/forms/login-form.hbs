@@ -29,9 +29,20 @@
             </div>
           </div>
           <div class="ui center aligned segment basic">
-            <button type="submit" class="ui fluid large teal submit button register">
-              {{t 'Login'}}
-            </button>
+            <div class="ui vertical buttons">
+              <button type="submit" class="ui fluid large teal submit button register">
+                {{t 'Login'}}
+              </button>
+              {{#unless noSocial}}
+                <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
+                  <i class="facebook icon"></i>
+                  {{t 'Login with Facebook'}}
+                </button>
+              {{/unless}}
+            </div>
+
+          </div>
+          <div class="ui center aligned segment basic">
             <a href="{{href-to 'reset-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
           </div>
         </div>
@@ -41,25 +52,4 @@
       </div>
     </form>
   </div>
-  {{#unless noSocial}}
-    <div class="column">
-      <div class="ui segment basic center aligned">
-        <div class="mobile hidden login-with-fb"> </div>
-        <div class="ui vertical buttons">
-          <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
-            <i class="facebook icon"></i>
-            {{t 'Login with Facebook'}}
-          </button>
-          <button type="button" class="ui twitter button">
-            <i class="twitter icon"></i>
-            {{t 'Login with Twitter'}}
-          </button>
-          <button type="button" class="ui google plus button">
-            <i class="google plus icon"></i>
-            {{t 'Login with Google Plus'}}
-          </button>
-        </div>
-      </div>
-    </div>
-  {{/unless}}
 </div>
