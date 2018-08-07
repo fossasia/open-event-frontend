@@ -6,7 +6,7 @@ import { belongsTo } from 'ember-data/relationships';
 export default ModelBase.extend({
   subject        : attr('string'),
   actionType     : attr('string'),
-  subjectId      : attr('number'),
+  subjectId      : attr('string'),
   link           : attr('string'),
   notificationId : attr('string'),
 
@@ -75,5 +75,33 @@ export default ModelBase.extend({
     }
 
     return action + buttonSubject;
+  }),
+  /**
+   * The route name to which the action button will direct the user to.
+   */
+  buttonRoute: computed('subject', function() {
+    const subject = this.get('subject');
+    let routeName;
+    switch (subject) {
+      case 'event-export':
+        routeName = 'events.view';
+        break;
+
+      case 'event':
+        routeName = 'events.view';
+        break;
+
+      case 'invoice':
+        routeName = 'orders.view';
+        break;
+
+      case 'order':
+        routeName = 'orders.view';
+        break;
+
+      default:
+      // Nothing here.
+    }
+    return routeName;
   })
 });
