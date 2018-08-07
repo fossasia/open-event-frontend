@@ -65,10 +65,12 @@
         <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
           <div class="field">
             <div class="ui action fluid input">
-              {{input type='text' name='promotional_code' placeholder=(t 'Promotional Code')}}
-              <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
-                <i class="checkmark icon"></i>
-              </div>
+              {{input type='text' name='promotional_code' value=promotionalCode placeholder=(t 'Promotional Code') readonly=promotionalCodeApplied}}
+              {{#unless promotionalCodeApplied}}
+                <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
+                  <i class="checkmark icon"></i>
+                </div>
+              {{/unless}}
               <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
                 <i class="remove icon"></i>
               </div>
