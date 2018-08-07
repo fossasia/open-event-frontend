@@ -2,7 +2,7 @@
   {{#if fileUrl}}
     <div class="ui action input">
       {{input type='url' readonly="" value=fileUrl}}
-      <button class="ui icon red button" {{action 'removeSelection'}}>
+      <button class="ui icon red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' edit))}}>
         <i class="remove icon"></i>
         {{t 'Remove file'}}
       </button>
