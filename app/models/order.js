@@ -32,6 +32,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   user           : belongsTo('user'),
   event          : belongsTo('event'),
   discountCode   : belongsTo('discount-code'),
+  accessCode     : belongsTo('access-code'),
   tickets        : hasMany('ticket', { readOnly: true }),
   attendees      : hasMany('attendee')
 });

@@ -1,4 +1,4 @@
-{{#each model as |notification|}}
+{{#each model.notifications as |notification|}}
   <div class="ui segment {{unless notification.isRead 'blue'}}">
     <div class="ui grid">
       <div class="row">
@@ -18,7 +18,17 @@
       </div>
       <div class="row">
         <div class="ten wide column">
-          <button class="ui blue button">{{t 'View Session'}}</button>
+          {{#each notification.actions as |action|}}
+            {{#if action.link}}
+              {{#link-to action.link tagName='button' class='ui blue button'}}
+                {{t action.buttonTitle}}
+              {{/link-to}}
+            {{else}}
+              {{#link-to action.buttonRoute action.subjectId tagName='button' class='ui blue button'}}
+                {{t action.buttonTitle}}
+              {{/link-to}}
+            {{/if}}
+          {{/each}}
         </div>
         <div class="six wide column right aligned">
           <p>{{moment-from-now notification.receivedAt}}</p>

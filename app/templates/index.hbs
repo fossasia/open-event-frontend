@@ -1,10 +1,10 @@
 <div class="ui container">
-  {{quick-filter}}
+  {{quick-filter eventName=event_name startDate=start_date endDate=end_date location=location filterDate=filterDate}}
 
-  {{#if model}}
+  {{#if filteredEvents}}
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each model as |event|}}
+      {{#each filteredEvents as |event|}}
         {{event-card event=event shareEvent=(action 'shareEvent')}}
       {{/each}}
     </div>
