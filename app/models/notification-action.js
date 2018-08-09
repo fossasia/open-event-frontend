@@ -99,6 +99,10 @@ export default ModelBase.extend({
         routeName = 'orders.view';
         break;
 
+      case 'session':
+        routeName = 'my-sessions.view';
+        break;
+
       default:
       // Nothing here.
     }
