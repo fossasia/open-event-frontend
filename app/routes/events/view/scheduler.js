@@ -22,9 +22,17 @@ export default Route.extend({
       }
     ];
 
-    let unscheduledSessions = await this.modelFor('events.view').query('sessions', {
+    let eventDetails = this.modelFor('events.view');
+
+    let unscheduledSessions = await eventDetails.query('sessions', {
       include : 'speakers',
       filter  : unscheduledFilterOptions
+    });
+
+    let microlocations = await eventDetails.query('microlocations', {});
+    let resources = [];
+    microlocations.forEach(function(element) {
+      resources.push({ id: element.id, title: element.name });
     });
 
     return {
@@ -51,15 +59,7 @@ export default Route.extend({
         end        : '2018-08-06T11:08:08',
         resourceId : 'd'
       }],
-      resources: [
-        { id: 'a', title: 'Auditorium A', eventColor: 'yellow' },
-        { id: 'b', title: 'Auditorium B', eventColor: 'green' },
-        { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
-        { id         : 'd', title      : 'Auditorium D', eventColor : 'blue', children   : [
-          { id: 'd1', title: 'Room D1' },
-          { id: 'd2', title: 'Room D2' }
-        ] }
-      ],
+      resources,
       unscheduled: unscheduledSessions
     };
   }
