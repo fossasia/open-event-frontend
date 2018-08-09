@@ -1,26 +1,28 @@
 <div class="ui grid">
   <div class="row">
     <div class="three wide column">
-      {{scheduler/external-event-list}}
+      {{scheduler/unscheduled-list unscheduled=model.unscheduled}}
     </div>
     <div class="thirteen wide column">
-      {{full-calendar events=model.events
-                      weekends=false
-                      aspectRatio=1.8
-                      editable=true
-                      droppable=true
-                      draggable=true
-                      resources=model.resources
-                      header=header
-                      ondragover="{{action 'allowDrop' event}}"
-                      views=views
-                      viewName='agendaDay'
-                      drop=(action 'drop')
-                      eventReceive=(action 'eventReceive')
-                      ondragover=(action 'eventDrop')
-                      defaultView=model.defaultView
-                      groupByResource=model.groupByResource
-      }}
+      {{#draggable-object-target}}
+        {{full-calendar events=model.events
+                        weekends=false
+                        aspectRatio=1.8
+                        editable=true
+                        droppable=true
+                        draggable=true
+                        resources=model.resources
+                        header=header
+                        ondragover="{{action 'allowDrop' event}}"
+                        views=views
+                        viewName='agendaDay'
+                        drop=(action 'drop')
+                        eventReceive=(action 'eventReceive')
+                        ondragover=(action 'eventDrop')
+                        defaultView=model.defaultView
+                        groupByResource=model.groupByResource
+        }}
+      {{/draggable-object-target}}
     </div>
   </div>
 </div>

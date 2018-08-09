@@ -1,0 +1,17 @@
+<h2 style="margin-top: 20px" class="ui header">{{t 'Unscheduled Sessions'}}</h2>
+<div id="sessions-list">
+  {{#each unscheduled as |session|}}
+    {{#draggable-object content=session}}
+      <div class="unscheduled" data-toggle="tooltip" data-animation="false" data-placement="top" draggable="true">
+        <div class="text">
+          {{session.title}} | 
+        </div>
+        {{#each session.speakers as |speaker|}}
+          <div class="text speaker">
+            {{speaker.name}}
+          </div>
+        {{/each}}
+      </div>
+    {{/draggable-object}}
+  {{/each}}
+</div>
