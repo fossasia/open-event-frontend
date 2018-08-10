@@ -22,7 +22,44 @@ export default Route.extend({
       }
     ];
 
+    let scheduledFilterOptions = [
+      {
+        and: [
+          {
+            name : 'starts-at',
+            op   : 'ne',
+            val  : null
+          },
+          {
+            name : 'ends-at',
+            op   : 'ne',
+            val  : null
+          }
+        ]
+      }
+    ];
+
     let eventDetails = this.modelFor('events.view');
+
+    let scheduledSessions = await eventDetails.query('sessions', {
+      include : 'speakers,microlocation',
+      filter  : scheduledFilterOptions
+    });
+
+    let scheduled = []; // to convert sessions data to fullcalendar's requirements
+    scheduledSessions.forEach(function(session) {
+      let speakerNames = [];
+      session.speakers.forEach(function(speaker) {
+        speakerNames.push(speaker.name);
+      });
+
+      scheduled.push({
+        title      : `${session.title} | ${speakerNames.join(', ')}`,
+        start      : session.startsAt.format('YYYY-MM-DDTHH:mm:SS'),
+        end        : session.endsAt.format('YYYY-MM-DDTHH:mm:SS'),
+        resourceId : session.microlocation.get('id')
+      });
+    });
 
     let unscheduledSessions = await eventDetails.query('sessions', {
       include : 'speakers',
@@ -36,31 +73,11 @@ export default Route.extend({
     });
 
     return {
-      defaultView     : 'agendaDay',
+      defaultView     : 'agendaDay', // also change buttons on top right to allow switching to agendaDay and timeline view
       groupByResource : true,
-      events          : [{
-        title      : 'Session 1',
-        start      : '2018-08-06T07:08:08',
-        end        : '2017-08-06T09:08:08',
-        resourceId : 'a'
-      }, {
-        title      : 'Session 2',
-        start      : '2018-08-06T10:08:08',
-        end        : '2018-08-06T13:08:08',
-        resourceId : 'b'
-      }, {
-        title      : 'Session 3',
-        start      : '2018-08-06T07:08:08',
-        end        : '2018-08-06T09:48:08',
-        resourceId : 'c'
-      }, {
-        title      : 'Session 4',
-        start      : '2018-08-06T09:15:08',
-        end        : '2018-08-06T11:08:08',
-        resourceId : 'd'
-      }],
+      events          : scheduled,
       resources,
-      unscheduled: unscheduledSessions
+      unscheduled     : unscheduledSessions
     };
   }
 });
