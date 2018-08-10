@@ -14,6 +14,6 @@ module('Acceptance | notifications', function(hooks) {
   test('visiting /notifications with login', async function(assert) {
     await login(assert);
     await visit('/notifications');
-    assert.equal(currentURL(), '/notifications');
+    assert.equal(currentURL(), '/notifications/unread');
   });
 });
