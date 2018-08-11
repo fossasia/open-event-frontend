@@ -6,21 +6,25 @@
     <div class="thirteen wide column">
       {{#draggable-object-target}}
         {{full-calendar events=model.events
-                        weekends=false
                         aspectRatio=1.8
                         editable=true
                         droppable=true
                         draggable=true
                         resources=model.resources
-                        header=header
+                        header=model.header
                         ondragover="{{action 'allowDrop' event}}"
-                        views=views
+                        views=model.views
                         viewName='agendaDay'
                         drop=(action 'drop')
                         eventReceive=(action 'eventReceive')
                         ondragover=(action 'eventDrop')
                         defaultView=model.defaultView
                         groupByResource=model.groupByResource
+                        minTime=model.minTime
+                        maxTime=model.maxTime
+                        slotDuration='00:15:00'
+                        slotLabelFormat='HH:mm'
+                        validRange=model.validRange
         }}
       {{/draggable-object-target}}
     </div>
