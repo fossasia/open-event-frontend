@@ -3,13 +3,13 @@
   {{#each unscheduled as |session|}}
     {{#draggable-object content=session}}
       <div class="unscheduled" data-toggle="tooltip" data-animation="false" data-placement="top" draggable="true">
-        <div class="text">
+        <span class="text">
           {{session.title}} | 
-        </div>
+        </span>
         {{#each session.speakers as |speaker|}}
-          <div class="text speaker">
+          <span class="text speaker">
             {{speaker.name}}
-          </div>
+          </span>
         {{/each}}
       </div>
     {{/draggable-object}}
