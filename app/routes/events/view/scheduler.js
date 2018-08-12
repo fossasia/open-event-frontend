@@ -41,6 +41,26 @@ export default Route.extend({
 
     let eventDetails = this.modelFor('events.view');
 
+    let validRange = {
+      start : eventDetails.startsAt.format('YYYY-MM-DD'),
+      end   : eventDetails.endsAt.clone().add(1, 'day').format('YYYY-MM-DD')
+    };
+
+    let durationDays = eventDetails.endsAt.diff(eventDetails.startsAt, 'days') + 1;
+    let views = {
+      agendaEvent: {
+        type       : 'agenda',
+        duration   : { days: durationDays },
+        buttonText : `${durationDays} day`
+      }
+    };
+
+    let header = {
+      left   : 'prev,next',
+      center : 'title',
+      right  : 'agendaDay,agendaEvent'
+    };
+
     let scheduledSessions = await eventDetails.query('sessions', {
       include : 'speakers,microlocation',
       filter  : scheduledFilterOptions
@@ -72,12 +92,22 @@ export default Route.extend({
       resources.push({ id: element.id, title: element.name });
     });
 
+    /*
+    The start hour of the start day is considered the start hour for remaining days as well.
+    The end hour of the last day is considered the end hour for remaining days as well.
+    */
+
     return {
-      defaultView     : 'agendaDay', // also change buttons on top right to allow switching to agendaDay and timeline view
+      header,
+      defaultView     : 'agendaDay',
       groupByResource : true,
       events          : scheduled,
       resources,
-      unscheduled     : unscheduledSessions
+      unscheduled     : unscheduledSessions,
+      minTime         : eventDetails.startsAt.format('HH:mm:ss'),
+      maxTime         : eventDetails.endsAt.format('HH:mm:ss'),
+      validRange,
+      views
     };
   }
 });
