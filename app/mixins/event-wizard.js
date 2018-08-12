@@ -165,11 +165,28 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     });
   },
 
+  validateEventDate(eventEndsAt, speakerCallStartsAt, speakerCallEndsAt) {
+    if (eventEndsAt && speakerCallStartsAt && eventEndsAt < speakerCallStartsAt) { return false }
+    if (eventEndsAt && speakerCallEndsAt && eventEndsAt < speakerCallEndsAt) { return false }
+    return true;
+  },
+
   actions: {
     saveDraft() {
       this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
+        var isValidDate = true;
+        var eventEndsAt = this.get('data.event').get('endsAt');
+        if (this.get('data.speakersCall')) {
+          var speakerCallStartsAt = this.get('data.speakersCall').get('startsAt');
+          var speakerCallEndsAt = this.get('data.speakersCall').get('endsAt');
+          isValidDate = this.validateEventDate(eventEndsAt, speakerCallStartsAt, speakerCallEndsAt);
+        }
+        if (isValidDate) {
+          this.set('data.event.state', 'draft');
+          this.sendAction('save');
+        } else {
+          this.get('notify').error('Invalid Start or End Date');
+        }
       });
     },
     moveForward() {
