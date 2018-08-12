@@ -60,6 +60,9 @@ export default Component.extend(FormMixin, {
                 this.set('promotionalCodeApplied', true);
                 this.set('promotionalCode', 'Promotional code applied successfully');
               });
+          })
+          .catch(() => {
+            this.get('notify').error('Invalid Promotional Code');
           });
       });
     },
