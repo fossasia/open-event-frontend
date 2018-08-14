@@ -8,7 +8,7 @@ module('Integration | Component | modals/add system role modal', function(hooks)
 
   test('it renders', async function(assert) {
     this.set('isOpen', false);
-    await render(hbs`{{modals/add-system-role-modal isOpen=isOpen}}`);
+    await render(hbs`{{modals/add-system-role-modal isOpen=isOpen isNew=true}}`);
     assert.ok(this.element.innerHTML.trim().includes('Add New System Role'));
   });
 });

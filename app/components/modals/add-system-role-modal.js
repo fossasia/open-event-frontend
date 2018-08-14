@@ -11,6 +11,9 @@ export default ModalBase.extend(FormMixin, {
         this.sendAction('addSystemRole');
       });
     },
+    toggleCheckbox(permission) {
+      permission.toggleProperty('isChecked');
+    },
     close() {
       if (!this.get('role.id')) {
         this.get('role').unloadRecord();
@@ -30,15 +33,6 @@ export default ModalBase.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter a role name')
-            }
-          ]
-        },
-        selectedPanels: {
-          identifier : 'selected_panels',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please select atleast one panel')
             }
           ]
         }
