@@ -45,6 +45,12 @@ module.exports = function(defaults) {
   app.import('bower_components/js-polyfills/xhr.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
+  app.import('bower_components/jquery-ui/jquery-ui.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
+  app.import('bower_components/jquery-ui/ui/widgets/draggable.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
 
   const appTree = app.toTree([]);
   return new MergeTrees([appTree, new Funnel(appTree, {

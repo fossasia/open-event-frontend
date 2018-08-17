@@ -62,7 +62,7 @@ export default Route.extend({
     };
 
     let scheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers,microlocation',
+      include : 'speakers,microlocation,track',
       filter  : scheduledFilterOptions
     });
 
@@ -77,12 +77,14 @@ export default Route.extend({
         title      : `${session.title} | ${speakerNames.join(', ')}`,
         start      : session.startsAt.format('YYYY-MM-DDTHH:mm:SS'),
         end        : session.endsAt.format('YYYY-MM-DDTHH:mm:SS'),
-        resourceId : session.microlocation.get('id')
+        resourceId : session.microlocation.get('id'),
+        color      : session.track.get('color'),
+        serverId   : session.get('id') // id of the session on BE
       });
     });
 
     let unscheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers',
+      include : 'speakers,track',
       filter  : unscheduledFilterOptions
     });
 
@@ -107,7 +109,8 @@ export default Route.extend({
       minTime         : eventDetails.startsAt.format('HH:mm:ss'),
       maxTime         : eventDetails.endsAt.format('HH:mm:ss'),
       validRange,
-      views
+      views,
+      defaultDuration : '01:00' // default duration when sessions are scheduled for the first time
     };
   }
 });
