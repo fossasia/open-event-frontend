@@ -1,5 +1,9 @@
 <div class="header">
-  {{t 'Add New System Role'}}
+  {{#if isNew}}
+    {{t 'Add New System Role'}}
+  {{else}}
+    {{t 'Edit System Role'}}
+  {{/if}}
 </div>
 <div class="content">
   <form class="ui {{if isLoading 'loading'}} form" id="add-system-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
@@ -7,51 +11,23 @@
       <label class="required">
         {{t 'Name'}}
       </label>
-      {{input type='text' name='role_name' value=role.titleName placeholder=(t 'Enter Role name')}}
+      {{input type='text' name='role_name' value=role.name placeholder=(t 'Enter Role name')}}
     </div>
     <div class="field">
       <label class="required">
         {{t 'Panels'}}
       </label>
-      {{#ui-dropdown class='fluid multiple selection' selected=role.name}}
-        {{input type='hidden' name='selected_panels' value=role.name}}
-        <i class="dropdown icon"></i>
-        <div class="default text">
-          {{t 'Please select Panel(s)'}}
+      <div class="inline field">
+        <div class="ui stackable grid container">
+          {{#each panelPermissions as |permission|}}
+            <div class="five wide column">
+              <div class="item" data-value={{permission}}>
+                {{ui-checkbox label=(concat permission.panelName ' panel') checked=permission.isChecked onChange=(action 'toggleCheckbox' permission)}}
+              </div>
+            </div>
+          {{/each}}
         </div>
-        <div class="menu">
-          <div class="item" data-value="admin">
-            {{t 'Admin Panel'}}
-          </div>
-          <div class="item" data-value="events">
-            {{t 'Events Panel'}}
-          </div>
-          <div class="item" data-value="sales">
-            {{t 'Sales Panel'}}
-          </div>
-          <div class="item" data-value="sessions">
-            {{t 'Sessions Panel'}}
-          </div>
-          <div class="item" data-value="users">
-            {{t 'Users Panel'}}
-          </div>
-          <div class="item" data-value="permissions">
-            {{t 'Permissions Panel'}}
-          </div>
-          <div class="item" data-value="messages">
-            {{t 'Messages Panel'}}
-          </div>
-          <div class="item" data-value="reports">
-            {{t 'Reports Panel'}}
-          </div>
-          <div class="item" data-value="settings">
-            {{t 'Settings Panel'}}
-          </div>
-          <div class="item" data-value="content">
-            {{t 'Content Panel'}}
-          </div>
-        </div>
-      {{/ui-dropdown}}
+      </div>
     </div>
   </form>
 </div>
@@ -60,7 +36,11 @@
     {{t 'Cancel'}}
   </button>
   <button type="submit" form="add-system-role-form" class="ui green right labeled icon button">
-    {{t 'Add Role'}}
+    {{#if isNew}}
+      {{t 'Add Role'}}
+    {{else}}
+      {{t 'Edit Role'}}
+    {{/if}}
     <i class="checkmark icon"></i>
   </button>
 </div>

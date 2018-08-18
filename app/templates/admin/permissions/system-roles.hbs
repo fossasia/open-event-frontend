@@ -40,12 +40,14 @@
         <td></td>
         <td></td>
       </tr>
-      {{#each model.roles as |role|}}
+      {{#each model.systemRoles as |role|}}
         <tr>
-          <td>{{role.titleName}}</td>
+          <td>{{role.name}}</td>
           <td>
             <div class="ui bulleted list">
-              <div class="item">{{role.name}}</div>
+              {{#each role.panelPermissions as |permission|}}
+                <div class="item">{{concat permission.panelName ' panel'}}</div>
+              {{/each}}
             </div>
           </td>
           <td>
@@ -109,4 +111,4 @@
     </div>
   </form>
 </div>
-{{modals/add-system-role-modal isOpen=isAddSystemRoleModalOpen role=role model=model isLoading=isLoading addSystemRole=(action 'addSystemRole')}}
+{{modals/add-system-role-modal isOpen=isAddSystemRoleModalOpen isNew=isNew role=role panelPermissions=panelPermissions isLoading=isLoading addSystemRole=(action 'addSystemRole')}}
