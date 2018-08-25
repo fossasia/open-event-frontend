@@ -7,6 +7,8 @@ export default Route.extend({
     return {
       event   : eventDetails,
       tickets : await eventDetails.query('tickets', {
+        reload: true,
+
         filter: [
           {
             and: [

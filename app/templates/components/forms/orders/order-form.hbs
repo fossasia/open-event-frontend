@@ -9,9 +9,9 @@
           {{getRemainingTime}}
         </div>
         <div class="label">
-          {{t 'Please complete registration within 10:00 minutes.'}}
+          {{t 'Please complete registration within '}} {{data.event.orderExpiryTime}} {{t 'minutes.'}}
           <br>
-          {{t 'After 10:00 minutes, the reservation we\'re holding will be released to others.'}}
+          {{t 'After '}} {{data.event.orderExpiryTime}} {{t 'minutes, the reservation we\'re holding will be released to others.'}}
         </div>
       </div>
     </div>
@@ -20,11 +20,11 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
-      <div class="field disabled">
+      <div class="field {{if buyer.firstName 'disabled'}}">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
         {{input type='text' name='first_name' value=buyer.firstName}}
       </div>
-      <div class="field disabled">
+      <div class="field {{if buyer.lastName 'disabled'}}">
         <label class="required" for="lastname">{{t 'Last Name'}}</label>
         {{input type='text' name='last_name' value=buyer.lastName}}
       </div>

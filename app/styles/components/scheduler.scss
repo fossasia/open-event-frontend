@@ -1,5 +1,27 @@
-.fc-event {
-  background-color: inherit;
-  border-radius: 0 !important;
-  color: inherit !important;
+.unscheduled {
+  background-color: rgb(0, 131, 143);
+  color: #fff;
+  cursor: all-scroll !important;
+  margin-bottom: 3px;
+  padding: 5px;
+}
+
+.unscheduled > .remove-btn {
+  display: none;
+}
+
+.unscheduled > .edit-btn {
+  display: none;
+}
+
+.speaker {
+  &:after {
+    content: ', ';
+  }
+
+  &:last-of-type {
+    &:after {
+      content: '';
+    }
+  }
 }

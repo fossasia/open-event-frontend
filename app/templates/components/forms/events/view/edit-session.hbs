@@ -13,7 +13,13 @@
   </div>
   <div class="field">
     <label>{{t 'Slides'}}</label>
-    {{input type='text' value=data.slidesUrl}}
+    {{widgets/forms/file-upload
+      fileUrl=(mut data.slidesUrl)
+      label=(t 'File')
+      icon='file'
+      hint=(t 'Select a file')
+      maxSizeInKb=10000
+      edit=true}}
   </div>
   <button type="submit" class="ui teal submit button update-changes">
     {{t 'Save Session'}}

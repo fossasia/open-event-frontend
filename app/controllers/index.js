@@ -3,9 +3,15 @@ import { computed } from '@ember/object';
 import moment from 'moment';
 
 export default Controller.extend({
+  queryParams : ['event_name', 'start_date', 'end_date', 'location'],
+  start_date  : null,
+  end_date    : null,
+  location    : null,
+  name        : null,
+  filterDate  : null,
 
-  callForSpeakersEvents: computed('model.[]', function() {
-    return this.get('model').filter(event => {
+  callForSpeakersEvents: computed('filteredEvents.[]', function() {
+    return this.get('filteredEvents').filter(event => {
       const callForPapers = event.get('speakersCall');
       if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
         return false;

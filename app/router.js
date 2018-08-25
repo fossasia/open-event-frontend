@@ -116,7 +116,7 @@ router.map(function() {
     this.route('view', { path: '/s/:session_id' });
   });
   this.route('notifications', function() {
-    this.route('all');
+    this.route('all', { path: '/:notification_state' });
   });
   this.route('admin', function() {
     this.route('messages', function() {
@@ -194,6 +194,7 @@ router.map(function() {
     this.route('view', { path: '/:order_id/view' });
     this.route('placed', { path: '/:order_id/placed' });
   });
+  this.route('verify');
 });
 
 export default router;
