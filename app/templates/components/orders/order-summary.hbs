@@ -1,6 +1,6 @@
 <div class="ui segments">
   {{#if (eq session.currentRouteName 'orders.view')}}
-    <div class="ui green inverted segment">
+    <div class="ui green inverted segment center aligned">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
           Success
@@ -31,7 +31,7 @@
     <h3 class="weight-400">{{t 'Order Summary'}}</h3>
   </div>
   {{#if (or (eq session.currentRouteName 'orders.new') (eq session.currentRouteName 'orders.view') (eq session.currentRouteName 'orders.placed'))}}
-    <table class="ui very basic tablet stackable table order-summary">
+    <table class="ui very basic tablet stackable table order-summary center aligned">
       <thead>
         <tr>
           <th class="four wide">{{t 'Ticket Type'}}</th>
