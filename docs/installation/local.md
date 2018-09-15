@@ -13,8 +13,8 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 ## Steps
 * `git clone <repository-url>` this repository
 * `cd open-event-frontend`
-* `yarn`
 * `sudo npm i ember-cli-babel@latest`
+* `yarn`
 * `cp .env.example .env`
 
 ## Running / Development
