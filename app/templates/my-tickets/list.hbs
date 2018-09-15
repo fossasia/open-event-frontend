@@ -1,17 +1,11 @@
 <div class="row">
   <div class="sixteen wide column">
-    {{#if model}}
-      {{#each model as |attendee|}}
-        {{#event-card event=attendee.event isWide=true shareEvent=(action 'shareEvent') isTicket=true}}
-          <span>{{attendee.ticket.type}} {{t 'ticket'}}</span>
-          <span>{{attendee.order.identifier}}</span>
-          <span>{{t 'on'}} {{moment-format attendee.order.completedA 'MMMM DD, YYYY h:mm A'}}</span>
-        {{/event-card}}
-        <div class="ui hidden divider"></div>
-      {{/each}}
-      {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
+    {{#each model as |order|}}
+      {{#order-card order=order}}
+      {{/order-card}}
+      <div class="ui hidden divider"></div>
     {{else}}
-      <div class="ui disabled header">{{t 'No tickets found for the upcoming events'}}</div>
-    {{/if}}
+      <div class="ui disabled header">{{t 'No tickets found'}}</div>
+    {{/each}}
   </div>
 </div>

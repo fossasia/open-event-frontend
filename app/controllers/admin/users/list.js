@@ -52,7 +52,7 @@ export default Controller.extend({
       propertyName     : 'lastAccessedAt',
       title            : 'Last Accessed',
       template         : 'components/ui-table/cell/cell-simple-date',
-      dateFormat       : 'MMMM DD, YYYY - HH:mm A',
+      dateFormat       : 'MMMM DD, YYYY - hh:mm A',
       disableSorting   : true,
       disableFiltering : true
     },
@@ -79,6 +79,10 @@ export default Controller.extend({
         .finally(() => {
           this.set('isLoading', false);
         });
+    },
+    openEditModal(user) {
+      this.set('isEditUserModalOpen', true);
+      this.set('data', user);
     }
   }
 });

@@ -1,3 +1,8 @@
+<div class="ui stackable grid">
+  <div class="sixteen wide column">
+    {{unverified-user-message}}
+  </div>
+</div>
 <div class="public-event ui relaxed grid">
   <div class="sixteen wide column lead {{if smallLead 'small'}}">
     {{widgets/safe-image src=(if model.largeImageUrl model.largeImageUrl model.originalImageUrl)}}
@@ -6,7 +11,7 @@
         <div class="ui grid info">
           <div class="one wide column"></div>
           <div class="fifteen wide column">
-            <h4 class="event time">{{moment-format model.startsAt 'ddd, MMM DD \at h:mm A'}}</h4>
+            <h4 class="event time">{{header-date model.startsAt}}</h4>
             <h1 class="event name">{{model.name}}</h1>
             <h4 class="event location"><i class="marker icon"></i>{{model.locationName}}</h4>
           </div>

@@ -99,10 +99,19 @@ export default Component.extend(FormMixin, {
     this.set('data.discountUrl', link);
     return link;
   }),
+  eventTickets: computed.filterBy('tickets', 'type', 'paid'),
+
+  allTicketTypesChecked: computed('tickets', function() {
+    if (this.eventTickets.length && this.get('data.tickets').length === this.eventTickets.length) {
+      return true;
+    }
+    return false;
+  }),
+
   actions: {
     toggleAllSelection(allTicketTypesChecked) {
       this.toggleProperty('allTicketTypesChecked');
-      let tickets = this.get('data.event.tickets');
+      let tickets = this.eventTickets;
       if (allTicketTypesChecked) {
         this.set('data.tickets', tickets.slice());
       } else {
@@ -116,7 +125,7 @@ export default Component.extend(FormMixin, {
       if (!ticket.get('isChecked')) {
         this.get('data.tickets').pushObject(ticket);
         ticket.set('isChecked', true);
-        if (this.get('data.tickets').length === this.get('data.event.tickets').length) {
+        if (this.get('data.tickets').length === this.eventTickets.length) {
           this.set('allTicketTypesChecked', true);
         }
       } else {

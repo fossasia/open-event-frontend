@@ -1,6 +1,7 @@
 import Mixin from '@ember/object/mixin';
 import MutableArray from '@ember/array/mutable';
 import RSVP from 'rsvp';
+import { v1 } from 'ember-uuid';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
 
 export default Mixin.create(MutableArray, CustomFormMixin, {
@@ -122,7 +123,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       })
       .catch(e => {
         console.error(e);
-        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+        this.get('notify').error(this.get('l10n').t(e.errors[0].detail));
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -183,7 +184,13 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       });
     },
     addItem(type, model) {
-      this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));
+      if (type === 'socialLinks') {
+        this.get(`data.event.${type}`).pushObject(this.store.createRecord(model, {
+          identifier: v1()
+        }));
+      } else {
+        this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));
+      }
     },
     removeItem(item) {
       item.deleteRecord();

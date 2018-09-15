@@ -76,7 +76,7 @@ export default Component.extend(FormMixin, {
               this.set('successMessage', this.get('l10n').t('Please go to the link sent to your email to reset your password'));
             })
             .catch(reason => {
-              if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 422) {
+              if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 404) {
                 this.set('errorMessage', this.get('l10n').t('No account is registered with this email address.'));
               } else {
                 this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));

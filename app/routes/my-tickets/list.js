@@ -14,9 +14,13 @@ export default Route.extend({
   },
   model(params) {
     this.set('params', params);
-    let filterOptions = [];
+    let filterOptions = [{
+      name : 'completed-at',
+      op   : 'ne',
+      val  : null
+    }];
     if (params.ticket_status === 'upcoming') {
-      filterOptions = [
+      filterOptions.push(
         {
           name : 'event',
           op   : 'has',
@@ -25,10 +29,9 @@ export default Route.extend({
             op   : 'ge',
             val  : moment().toISOString()
           }
-        }
-      ];
+        });
     } else if (params.ticket_status === 'past') {
-      filterOptions = [
+      filterOptions.push(
         {
           name : 'event',
           op   : 'has',
@@ -38,12 +41,11 @@ export default Route.extend({
             val  : moment().toISOString()
           }
         }
-      ];
-    } else {
-      filterOptions = [];
+      );
     }
-    return this.get('authManager.currentUser').query('attendees', {
-      include : 'ticket,event,order',
+
+    return this.get('authManager.currentUser').query('orders', {
+      include : 'event',
       filter  : filterOptions
     });
   }

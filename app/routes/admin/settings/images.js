@@ -13,9 +13,8 @@ export default Route.extend({
   },
   actions: {
     willTransition() {
-      this.get('controller.model').forEach(image => {
-        image.rollbackAttributes();
-      });
+      this.get('controller.model.speakerImageSize').rollbackAttributes();
+      this.get('controller.model.eventImageSize').rollbackAttributes();
     }
   }
 });

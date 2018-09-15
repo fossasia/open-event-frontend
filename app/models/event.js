@@ -53,6 +53,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
   canPayByStripe  : attr('boolean', { defaultValue: false }),
+  isStripeLinked  : attr('boolean'),
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
   canPayOnsite    : attr('boolean', { defaultValue: false }),
@@ -62,6 +63,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
+  orderExpiryTime : attr('number', { defaultValue: 10 }),
 
   schedulePublishedOn: attr('moment', { readOnly: true }),
 
@@ -90,6 +92,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   type                   : belongsTo('event-type'),
   topic                  : belongsTo('event-topic'),
   subTopic               : belongsTo('event-sub-topic'),
+  location               : belongsTo('event-location'),
   sessions               : hasMany('session'),
   sponsors               : hasMany('sponsor'),
   microlocations         : hasMany('microlocation'),

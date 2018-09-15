@@ -21,6 +21,12 @@ export default Controller.extend({
       disableSorting : true
     },
     {
+      propertyName   : 'is-featured',
+      title          : 'Featured speaker',
+      template       : 'components/ui-table/cell/events/view/speakers/cell-is-featured',
+      disableSorting : true
+    },
+    {
       propertyName : '',
       title        : 'Actions',
       template     : 'components/ui-table/cell/events/view/speakers/cell-buttons'
@@ -31,6 +37,7 @@ export default Controller.extend({
       this.set('isLoading', true);
       speaker.destroyRecord()
         .then(() => {
+          this.get('model').reload();
           this.notify.success(this.get('l10n').t('Speaker has been deleted successfully.'));
         })
         .catch(() => {
@@ -45,6 +52,16 @@ export default Controller.extend({
     },
     viewSpeaker(id) {
       this.transitionToRoute('events.view.speakers.edit', id);
+    },
+    toggleFeatured(speaker) {
+      speaker.toggleProperty('isFeatured');
+      speaker.save()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Speaker details modified successfully'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        });
     }
   }
 });

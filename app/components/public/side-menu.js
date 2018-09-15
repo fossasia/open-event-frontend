@@ -5,6 +5,6 @@ export default Component.extend({
     this._super(...arguments);
     let speakersCall = await this.get('event.speakersCall');
     this.set('shouldShowCallforSpeakers',
-      this.get('event.isSessionsSpeakersEnabled') && (speakersCall.privacy === 'public'));
+      speakersCall.announcement && (speakersCall.privacy === 'public'));
   }
 });

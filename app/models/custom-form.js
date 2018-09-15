@@ -50,12 +50,39 @@ export default ModelBase.extend({
     linkedin            : 'Linkedin'
   },
 
+  attendee: {
+    firstname       : 'First Name',
+    lastname        : 'Last Name',
+    email           : 'Email',
+    address         : 'Address',
+    city            : 'City',
+    state           : 'State',
+    country         : 'Country',
+    jobTitle        : 'Job Title',
+    phone           : 'Phone',
+    taxBusinessInfo : 'Tax Business Info',
+    billingAddress  : 'Billing Address',
+    homeAddress     : 'Home Address',
+    shippingAddress : 'Shipping Address',
+    company         : 'Company',
+    workAddress     : 'Work Address',
+    workPhone       : 'Work Phone',
+    website         : 'Website',
+    blog            : 'Blog',
+    twitter         : 'Twitter',
+    facebook        : 'Facebook',
+    github          : 'Github',
+    gender          : 'Gender'
+  },
+
   name: computed('fieldIdentifier', 'form', function() {
     let name = this.get('fieldIdentifier');
     if (this.get('form') === 'session') {
       name = this.get(`session.${name}`);
-    } else {
+    } else if (this.get('form') === 'speaker') {
       name = this.get(`speaker.${name}`);
+    } else {
+      name = this.get(`attendee.${name}`);
     }
     return name;
   }),

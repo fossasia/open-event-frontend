@@ -20,28 +20,37 @@ export default Route.extend({
     if (params.events_status === 'live') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'published'
-        },
-        {
-          or: [
+          and: [
             {
-              name : 'starts-at',
-              op   : 'ge',
-              val  : moment().toISOString()
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
             },
             {
-              and: [
+              name : 'state',
+              op   : 'eq',
+              val  : 'published'
+            },
+            {
+              or: [
                 {
                   name : 'starts-at',
-                  op   : 'le',
+                  op   : 'ge',
                   val  : moment().toISOString()
                 },
                 {
-                  name : 'ends-at',
-                  op   : 'gt',
-                  val  : moment().toISOString()
+                  and: [
+                    {
+                      name : 'starts-at',
+                      op   : 'le',
+                      val  : moment().toISOString()
+                    },
+                    {
+                      name : 'ends-at',
+                      op   : 'gt',
+                      val  : moment().toISOString()
+                    }
+                  ]
                 }
               ]
             }
@@ -51,30 +60,50 @@ export default Route.extend({
     } else if (params.events_status === 'past') {
       filterOptions = [
         {
-          name : 'ends-at',
-          op   : 'lt',
-          val  : moment().toISOString()
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'published'
+          and: [
+            {
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
+            },
+            {
+              name : 'ends-at',
+              op   : 'lt',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'state',
+              op   : 'eq',
+              val  : 'published'
+            }
+          ]
         }
       ];
     } else if (params.events_status === 'draft') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'draft'
+          and:
+            [
+              {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'draft'
+              }
+            ]
+
         }
       ];
     } else if (params.events_status === 'deleted') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'deleted'
+          name : 'deleted-at',
+          op   : 'ne',
+          val  : null
         }
       ];
     } else {
@@ -82,6 +111,7 @@ export default Route.extend({
     }
 
     return this.store.query('event', {
+      get_trashed  : true,
       include      : 'tickets,sessions,speakers,organizers,coorganizers,track-organizers,registrars,moderators',
       filter       : filterOptions,
       'page[size]' : 10

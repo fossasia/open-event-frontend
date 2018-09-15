@@ -2,8 +2,14 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { groupBy } from 'lodash';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
+  validGithubProfileUrlPattern, validLinkedinProfileUrlPattern } from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, {
+
+  newSpeakerSelected : false,
+  newSessionSelected : false,
+
   getValidationRules() {
     return {
       inline : true,
@@ -92,30 +98,78 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        slidesUrl: {
+        slidesUrlRequired: {
           identifier : 'session_slidesUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter a url')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
-        videoUrl: {
+        slidesUrl: {
+          identifier : 'session_slidesUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        videoUrlRequired: {
           identifier : 'session_videoUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter a url')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
-        audioUrl: {
+        videoUrl: {
+          identifier : 'session_videoUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        audioUrlRequired: {
           identifier : 'session_audioUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter a url')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        audioUrl: {
+          identifier : 'session_audioUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -128,21 +182,55 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        email: {
+        emailRequired: {
           identifier : 'speaker_email_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter an email')
+            },
+            {
+              type   : 'email',
+              prompt : this.get('l10n').t('Please enter a valid email')
             }
           ]
         },
-        photoUrl: {
+        email: {
+          identifier : 'speaker_email',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter an email')
+            },
+            {
+              type   : 'email',
+              prompt : this.get('l10n').t('Please enter a valid email')
+            }
+          ]
+        },
+        photoUrlRequired: {
           identifier : 'speaker_photoUrl_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please select an image')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        photoUrl: {
+          identifier : 'speaker_photoUrl',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
@@ -245,48 +333,128 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        website: {
+        websiteRequired: {
           identifier : 'speaker_website_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter url of website')
+            },
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
         },
-        facebook: {
+        website: {
+          identifier : 'speaker_website',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : compulsoryProtocolValidUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid url')
+            }
+          ]
+        },
+        facebookRequired: {
           identifier : 'speaker_facebook_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter facebook link')
+            },
+            {
+              type   : 'regExp',
+              value  : validFacebookProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid facebook account url')
             }
           ]
         },
-        twitter: {
+        facebook: {
+          identifier : 'speaker_facebook',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validFacebookProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid facebook account url')
+            }
+          ]
+        },
+        twitterRequired: {
           identifier : 'speaker_twitter_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter twitter link')
+            },
+            {
+              type   : 'regExp',
+              value  : validTwitterProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid twitter profile url')
             }
           ]
         },
-        github: {
+        twitter: {
+          identifier : 'speaker_twitter',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validTwitterProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid twitter profile url')
+            }
+          ]
+        },
+        githubRequired: {
           identifier : 'speaker_github_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter github link')
+            },
+            {
+              type   : 'regExp',
+              value  : validGithubProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid github profile url')
             }
           ]
         },
-        linkedin: {
+        github: {
+          identifier : 'speaker_github',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validGithubProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid github profile url')
+            }
+          ]
+        },
+        linkedinRequired: {
           identifier : 'speaker_linkedin_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter linkedin link')
+            },
+            {
+              type   : 'regExp',
+              value  : validLinkedinProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid linkedin profile url')
+            }
+          ]
+        },
+        linkedin: {
+          identifier : 'speaker_linkedin',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validLinkedinProfileUrlPattern,
+              prompt : this.get('l10n').t('Please enter a valid linkedin profile url')
             }
           ]
         }
@@ -298,34 +466,48 @@ export default Component.extend(FormMixin, {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
   }),
 
+  // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
+  noSpeakerExists: computed('speakers', function() {
+    return (this.get('speakers').length === 1);
+  }),
+
+  // Clicking on the add speaker button creates a blank record which increases the length of the session's list by 1.
+  noSessionExists: computed('sessions', function() {
+    return (this.get('sessions').length === 1);
+  }),
+
+  shouldShowNewSpeakerDetails: computed('speakerDetails', 'newSpeakerSelected', function() {
+    return this.get('newSpeakerSelected') && !this.get('speakerDetails');
+  }),
+
+  shouldShowNewSessionDetails: computed('sessionDetails', 'newSessionSelected', function() {
+    return this.get('newSessionSelected') && !this.get('sessionDetails');
+  }),
+
   actions: {
     submit() {
       this.onValid(() => {
         this.sendAction('save');
       });
+    },
+
+    toggleNewSpeakerSelected(value) {
+      this.set('speakerDetails', false);
+      this.set('newSpeakerSelected', value);
+    },
+
+    toggleNewSessionSelected(value) {
+      this.set('sessionDetails', false);
+      this.set('newSessionSelected', value);
     }
   },
   didInsertElement() {
     if (this.get('isSpeaker') && this.get('data.speaker') && this.get('data.speaker').length) {
       this.set('data.speaker', this.get('data.speaker').toArray()[0]);
-    } else if (this.get('isCFS')) {
-      this.set('data.speaker', this.get('store').createRecord('speaker', {
-        email    : this.get('authManager.currentUser.email'),
-        name     : `${this.get('authManager.currentUser.firstName')} ${this.get('authManager.currentUser.lastName')}`,
-        photoUrl : this.get('authManager.currentUser.avatarUrl'),
-        event    : this.get('data.event'),
-        user     : this.get('authManager.currentUser')
-      }));
     }
 
     if (this.get('isSession') && this.get('data.session') && this.get('data.session').length) {
       this.set('data.session', this.get('data.session').toArray()[0]);
-    } else if (this.get('isCFS')) {
-      this.set('data.session', this.get('store').createRecord('session', {
-        event   : this.get('data.event'),
-        creator : this.get('authManager.currentUser'),
-        speaker : this.get('data.speaker')
-      }));
     }
   }
 });

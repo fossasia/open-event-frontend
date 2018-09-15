@@ -11,11 +11,18 @@ export default ModelBase.extend({
 
   authManager: service(),
 
-  email        : attr('string'),
-  password     : attr('string'),
-  isVerified   : attr('boolean', { readOnly: true }),
-  isSuperAdmin : attr('boolean', { readOnly: true }),
-  isAdmin      : attr('boolean', { readOnly: true }),
+  email                : attr('string'),
+  password             : attr('string'),
+  isVerified           : attr('boolean', { readOnly: true }),
+  isSuperAdmin         : attr('boolean', { readOnly: true }),
+  isAdmin              : attr('boolean', { readOnly: true }),
+  isUserOrganizer      : attr('boolean'),
+  isUserCoorganizer    : attr('boolean'),
+  isUserTrackOrganizer : attr('boolean'),
+  isUserModerator      : attr('boolean'),
+  isUserRegistrar      : attr('boolean'),
+  isSalesAdmin         : attr('boolean'),
+  isMarketer           : attr('boolean'),
 
   firstName : attr('string'),
   lastName  : attr('string'),
@@ -31,6 +38,8 @@ export default ModelBase.extend({
   instagramUrl  : attr('string'),
   twitterUrl    : attr('string'),
   googlePlusUrl : attr('string'),
+
+  facebookId: attr('string', { readOnly: true }),
 
   createdAt      : attr('moment', { readOnly: true }),
   deletedAt      : attr('moment', { readOnly: true }),

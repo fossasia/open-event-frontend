@@ -11,10 +11,15 @@ export default Route.extend({
     const speakersCall = await eventDetails.get('speakersCall');
     /*
     The following should show the CFS page to the user:
+     - CFS is not issued by the event organiser
      - CFS is public and no hash is entered
      - CFS is public and a valid hash is entered
      - CFS is private and a valid hash is entered
     */
+    if (!speakersCall.announcement) {
+      this.get('notify').error(this.get('l10n').t('Call For Speakers has not been issued yet.'));
+      this.transitionTo('public', eventDetails.identifier);
+    }
     if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {
       this.transitionTo('not-found');
     }
@@ -22,35 +27,59 @@ export default Route.extend({
 
   async model() {
     const eventDetails = this.modelFor('public');
+    const currentUser  = this.get('authManager.currentUser');
     if (this.get('session.isAuthenticated')) {
-      const userSpeaker = await this.get('authManager.currentUser').query('speakers', {
+      const userSpeaker = await currentUser.query('speakers', {
         filter: [
           {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
+            and: [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'identifier',
+                  op   : 'eq',
+                  val  : eventDetails.id
+                }
+              },
+              {
+                name : 'email',
+                op   : 'eq',
+                val  : currentUser.email
+              }
+            ]
           }
         ]
       });
-      const userSession = await this.get('authManager.currentUser').query('sessions', {
+      const userSession = await currentUser.query('sessions', {
         filter: [
           {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
+            and: [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'identifier',
+                  op   : 'eq',
+                  val  : eventDetails.id
+                }
+              },
+              {
+                name : 'speakers',
+                op   : 'any',
+                val  : {
+                  name : 'email',
+                  op   : 'eq',
+                  val  : currentUser.email
+                }
+              }
+            ]
           }
         ]
       });
       return {
         event        : eventDetails,
+        user         : currentUser,
         userSpeaker,
         userSession,
         speakersCall : await eventDetails.get('speakersCall')

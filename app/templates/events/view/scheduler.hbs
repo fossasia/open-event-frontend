@@ -1,24 +1,32 @@
 <div class="ui grid">
   <div class="row">
     <div class="three wide column">
-      {{scheduler/external-event-list}}
+      {{scheduler/unscheduled-list unscheduled=model.unscheduled}}
     </div>
     <div class="thirteen wide column">
-      {{full-calendar events=model.events
-                      weekends=false
-                      aspectRatio=1.8
-                      editable=true
-                      droppable=true
-                      draggable=true
-                      resources=model.rooms
-                      header=header
-                      ondragover="{{action 'allowDrop' event}}"
-                      views=views
-                      viewName='timelineDay'
-                      drop=(action 'drop')
-                      eventReceive=(action 'eventReceive')
-                      ondragover=(action 'eventDrop')
-      }}
+      {{#draggable-object-target}}
+        {{full-calendar events=model.events
+                        aspectRatio=1.8
+                        editable=true
+                        droppable=true
+                        draggable=true
+                        resources=model.resources
+                        header=model.header
+                        ondragover="{{action 'allowDrop' event}}"
+                        views=model.views
+                        viewName='agendaDay'
+                        drop=(action 'drop')
+                        eventReceive=(action 'eventReceive')
+                        ondragover=(action 'eventDrop')
+                        defaultView=model.defaultView
+                        groupByResource=model.groupByResource
+                        minTime=model.minTime
+                        maxTime=model.maxTime
+                        slotDuration='00:15:00'
+                        slotLabelFormat='HH:mm'
+                        validRange=model.validRange
+        }}
+      {{/draggable-object-target}}
     </div>
   </div>
 </div>

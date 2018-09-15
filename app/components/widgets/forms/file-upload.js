@@ -58,7 +58,7 @@ export default Component.extend({
       }
     },
     removeSelection() {
-      if (!this.get('needsConfirmation')) {
+      if (!this.get('needsConfirmation') || this.get('edit') === true) {
         this.set('selectedFile', null);
         this.set('fileUrl', null);
       } else {

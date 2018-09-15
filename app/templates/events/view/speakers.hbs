@@ -1,6 +1,6 @@
 {{#if model.isSessionsSpeakersEnabled}}
   <div class="ui grid stackable">
-    {{#if (and (not-eq session.currentRouteName 'events.view.speakers.edit') (not-eq session.currentRouteName 'events.view. speakers.create'))}}
+    {{#if (and (not-eq session.currentRouteName 'events.view.speakers.edit') (not-eq session.currentRouteName 'events.view.speakers.create'))}}
       <div class="row">
         <div class="six wide column">
           {{#tabbed-navigation isNonPointing=true}}
@@ -19,7 +19,7 @@
           {{/tabbed-navigation}}
         </div>
         <div class="ten wide {{if device.isMobile 'center aligned'}} column">
-          <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Export as CSV'}}</button>
+          <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}} {{if isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
           {{#if device.isMobile}}
             <div class="ui hidden fitted divider"></div>
           {{/if}}

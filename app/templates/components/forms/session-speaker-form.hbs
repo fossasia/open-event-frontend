@@ -12,17 +12,17 @@
           {{#if (is-input-field field.type) }}
             {{#if field.isLongText}}
               {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
-                textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
             {{else}}
               {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
             {{widgets/forms/image-upload
               imageUrl=(mut (get data.session field.fieldIdentifier))
               label=(t 'Logo')
-              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
               icon='image'
               hint=(t 'Select an image')
               maxSizeInKb=1000}}
@@ -31,7 +31,7 @@
             {{widgets/forms/file-upload
               fileUrl=(mut (get data.session field.fieldIdentifier))
               label=(t 'File')
-              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
               icon='file'
               hint=(t 'Select a file')
               maxSizeInKb=10000}}
@@ -65,17 +65,20 @@
     {{#each speakers as |speaker|}}
       <div class="field">
         {{#if speaker.id}}
-          {{ui-radio name="speakerDetails" label=speaker.name value=speaker onChange=(action (mut speakerDetails))}}
+          {{ui-radio name='speakerDetails' label=speaker.name value=speaker onChange=(action (mut speakerDetails))}}
         {{/if}}
       </div>
     {{/each}}
+    {{#if noSpeakerExists}}
+      <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
+    {{/if}}
     <div class="ui horizontal divider">
       Or
     </div>
     <div class="field">
-      {{ui-radio name="speakerDetails" label="Add a new Speaker" value=false onChange=(action (mut speakerDetails))}}
+      {{ui-radio name='speakerDetails' label=(t 'Add a new Speaker') value=false onChange=(action 'toggleNewSpeakerSelected' true)}}
     </div>
-    {{#if (not speakerDetails)}}
+    {{#if shouldShowNewSpeakerDetails}}
       {{#each allFields.speaker as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
@@ -83,16 +86,16 @@
             {{#if (is-input-field field.type) }}
               {{#if field.isLongText}}
                 {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
-                                                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+                                                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{else}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
             {{/if}}
             {{#if (eq field.type 'image')}}
               {{widgets/forms/image-upload
                 imageUrl=(mut (get data.speaker field.fieldIdentifier))
                 label=(t 'Logo')
-                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))
+                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
                 icon='image'
                 hint=(t 'Select an image')
                 maxSizeInKb=1000}}
@@ -130,16 +133,16 @@
           {{#if (is-input-field field.type) }}
             {{#if field.isLongText}}
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
-                textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+                textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{else}}
-              {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))}}
+              {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
             {{widgets/forms/image-upload
               imageUrl=(mut (get data.speaker field.fieldIdentifier))
               label=(t 'Logo')
-              id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required'))
+              id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
               icon='image'
               hint=(t 'Select an image')
               maxSizeInKb=1000}}
@@ -173,17 +176,20 @@
     {{#each sessions as |session|}}
       <div class="field">
         {{#if session.id}}
-          {{ui-radio name="sessionDetails" label=session.title value=session onChange=(action (mut sessionDetails))}}
+          {{ui-radio name='sessionDetails' label=session.title value=session onChange=(action (mut sessionDetails))}}
         {{/if}}
       </div>
     {{/each}}
+    {{#if noSessionExists}}
+      <div class="ui small disabled header">{{t 'No session exists. Add a new session proposal.'}}</div>
+    {{/if}}
     <div class="ui horizontal divider">
       Or
     </div>
     <div class="field">
-      {{ui-radio name="sessionDetails" label="Add a new Proposal" value=false onChange=(action (mut sessionDetails))}}
+      {{ui-radio name='sessionDetails' label=(t 'Add a new Proposal') value=false onChange=(action 'toggleNewSessionSelected' true)}}
     </div>
-    {{#if (not sessionDetails)}}
+    {{#if shouldShowNewSessionDetails}}
       {{#each allFields.session as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
@@ -191,17 +197,17 @@
             {{#if (is-input-field field.type) }}
               {{#if field.isLongText}}
                 {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
-                                               textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                                               textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
               {{else}}
                 {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
-                      id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))}}
+                      id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
               {{/if}}
             {{/if}}
             {{#if (eq field.type 'image')}}
               {{widgets/forms/image-upload
                 imageUrl=(mut (get data.session field.fieldIdentifier))
                 label=(t 'Logo')
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
                 icon='image'
                 hint=(t 'Select an image')
                 maxSizeInKb=1000}}
@@ -210,9 +216,8 @@
               {{widgets/forms/file-upload
                 fileUrl=(mut (get data.session field.fieldIdentifier))
                 label=(t 'File')
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required'))
+                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
                 icon='file'
-                fileUrl=''
                 hint=(t 'Select a file')
                 maxSizeInKb=10000}}
             {{/if}}
