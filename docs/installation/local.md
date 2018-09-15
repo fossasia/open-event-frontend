@@ -14,6 +14,7 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 * `git clone <repository-url>` this repository
 * `cd open-event-frontend`
 * `yarn`
+* `sudo npm i ember-cli-babel@latest`
 * `cp .env.example .env`
 
 ## Running / Development
