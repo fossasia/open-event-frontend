@@ -9,7 +9,7 @@ export default Controller.extend({
           this.transitionToRoute('events.view.tickets.discount-codes');
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('An unexpected error has occured. Discount code cannot be updated.'));
+          this.get('notify').error(this.get('l10n').t('An unexpected error has occurred. Discount code cannot be updated.'));
         });
     }
   }
