@@ -179,7 +179,6 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     },
     publish() {
       this.onValid(() => {
-        console.log('Published');
         this.set('data.event.state', 'published');
         this.sendAction('save');
       });
