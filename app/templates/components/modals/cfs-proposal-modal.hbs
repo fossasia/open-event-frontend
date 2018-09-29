@@ -4,24 +4,39 @@
 </div>
 <div class="content">
   <h4 class="ui header">{{t 'Existing Sessions'}}</h4>
+  {{#unless isNewSpeaker}}
+    {{#unless isNewSession}}
+      {{#each data.userSession as |session|}}
+        {{#if session.id}}
+          {{#link-to 'public.cfs.edit-session' session.id invokeAction=(action 'toggleView')}}
+            <div class="item">
+              {{t 'Edit Session - '}}{{session.title}}
+            </div>
+          {{/link-to}}
+        {{/if}}
+      {{/each}}
+    {{/unless}}
+  {{/unless}}
   {{#if isNewSession}}
     <p>{{t 'No existing sessions'}}</p>
   {{/if}}
   <div>
-    {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
-      {{#if isNewSpeaker}}
+    {{#if isNewSpeaker}}
+      {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
         {{t 'Add Speaker Details'}}
-      {{else}}
-        {{t 'Edit Speaker Details'}}
-      {{/if}}
-    {{/link-to}}
-    {{#unless isNewSpeaker}}
-      {{#link-to 'public.cfs.new-session' class='ui blue button' invokeAction=(action 'toggleView')}}
-        {{#if isNewSession}}
-          {{t 'Add Session Proposal'}}
-        {{else}}
-          {{t 'Edit Session Proposal'}}
+      {{/link-to}}
+    {{else}}
+      {{#each data.userSpeaker as |speaker|}}
+        {{#if speaker.id}}
+          {{#link-to 'public.cfs.edit-speaker' speaker.id class='ui teal button' invokeAction=(action 'toggleView')}}
+            {{t 'Edit Speaker Details'}}
+          {{/link-to}}
         {{/if}}
+      {{/each}}
+    {{/if}}
+    {{#unless isNewSpeaker}}
+      {{#link-to 'public.cfs.new-session' class='ui teal button' invokeAction=(action 'toggleView')}}
+        {{t 'Add Session Details'}}
       {{/link-to}}
     {{/unless}}
   </div>

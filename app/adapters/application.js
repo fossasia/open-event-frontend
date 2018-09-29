@@ -4,6 +4,7 @@ import ENV from 'open-event-frontend/config/environment';
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
 import HasManyQueryAdapterMixin from 'ember-data-has-many-query/mixins/rest-adapter';
 import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
+import CachedShoe   from 'ember-cached-shoe';
 
 /**
  * The backend server expects the filter in a serialized string format.
@@ -18,7 +19,7 @@ export const fixFilterQuery = query  => {
   return query;
 };
 
-export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, {
+export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, CachedShoe, {
   host      : ENV.APP.apiHost,
   namespace : ENV.APP.apiNamespace,
 
@@ -37,7 +38,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, {
   }),
 
   isInvalid(statusCode) {
-    if (statusCode !== 404 && statusCode !== 422) {
+    if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403) {
       this.get('notify').error('An unexpected error occurred.', {
         closeAfter: 5000
       });

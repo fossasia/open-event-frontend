@@ -40,12 +40,14 @@
         <td></td>
         <td></td>
       </tr>
-      {{#each model.roles as |role|}}
+      {{#each model.systemRoles as |role|}}
         <tr>
-          <td>{{role.titleName}}</td>
+          <td>{{role.name}}</td>
           <td>
             <div class="ui bulleted list">
-              <div class="item">{{role.name}}</div>
+              {{#each role.panelPermissions as |permission|}}
+                <div class="item">{{concat permission.panelName ' panel'}}</div>
+              {{/each}}
             </div>
           </td>
           <td>
@@ -93,7 +95,10 @@
             </td>
             <td>{{ui-checkbox label=(t 'Unverified User') checked=userPermission.unverifiedUser onChange=(action (mut userPermission.unverifiedUser))}}</td>
             <td>
-              {{ui-checkbox label=(t 'Anonymous User') checked=userPermission.anonymousUser onChange=(action (mut userPermission.anonymousUser))}}
+              {{ui-checkbox label=(t 'Anonymous User') disabled=true}}
+              <p>
+                Account creation is necessary.
+              </p>
             </td>
           </tr>
         {{/each}}
@@ -106,4 +111,4 @@
     </div>
   </form>
 </div>
-{{modals/add-system-role-modal isOpen=isAddSystemRoleModalOpen roles=roles isLoading=isLoading name=role.name titleName=role.titleName addSystemRole=(action 'addSystemRole')}}
+{{modals/add-system-role-modal isOpen=isAddSystemRoleModalOpen isNew=isNew role=role panelPermissions=panelPermissions isLoading=isLoading addSystemRole=(action 'addSystemRole')}}

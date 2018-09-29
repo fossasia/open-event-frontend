@@ -32,5 +32,41 @@ export default Controller.extend({
       template       : 'components/ui-table/cell/events/view/tickets/discount-codes/cell-actions',
       disableSorting : true
     }
-  ]
+  ],
+
+  actions: {
+    deleteDiscountCode(discountCode) {
+      this.set('isLoading', true);
+      discountCode.destroyRecord()
+        .then(() => {
+          this.get('model').reload();
+          this.notify.success(this.get('l10n').t('Discount Code has been deleted successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
+    toggleStatus(discountCode) {
+      this.set('isLoading', true);
+      discountCode.toggleProperty('isActive');
+      discountCode.save()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Discount Code has been updated successfully.'));
+        })
+        .catch(() => {
+          discountCode.toggleProperty('isActive');
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
+    editDiscountCode(id) {
+      this.transitionToRoute('events.view.tickets.discount-codes.edit', id);
+    }
+  }
+
 });

@@ -7,6 +7,8 @@ export default Route.extend({
     return {
       event   : eventDetails,
       tickets : await eventDetails.query('tickets', {
+        reload: true,
+
         filter: [
           {
             and: [
@@ -38,7 +40,23 @@ export default Route.extend({
         ]
       }),
 
-      sponsors: await eventDetails.get('sponsors')
+      sponsors: await eventDetails.get('sponsors'),
+
+      order: this.store.createRecord('order', {
+        event     : eventDetails,
+        user      : this.get('authManager.currentUser'),
+        tickets   : [],
+        attendees : []
+      }),
+
+      attendees: []
     };
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model.order');
+    if (!model.id) {
+      model.unloadRecord();
+    }
   }
 });

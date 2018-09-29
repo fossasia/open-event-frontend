@@ -1,69 +1,19 @@
 import Controller from '@ember/controller';
-import RSVP from 'rsvp';
+import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Controller.extend({
+export default Controller.extend(EventWizardMixin, {
   actions: {
     save() {
-      this.set('isLoading', true);
-      this.get('model.event').save()
-        .then(data => {
-          let promises = [];
-          promises.push(this.get('model.event.tickets').toArray().map(ticket => ticket.save()));
-          promises.push(this.get('model.event.socialLinks').toArray().map(link => link.save()));
-          if (this.get('model.event.copyright.licence')) {
-            promises.push(this.get('model.event.copyright').then(copyright => copyright.save()));
-          }
-          if (this.get('model.event.tax.name')) {
-            if (this.get('model.event.isTaxEnabled')) {
-              promises.push(this.get('model.event.tax').then(tax => tax.save()));
-            } else {
-              promises.push(this.get('model.event.tax').then(tax => tax.destroyRecord()));
-            }
-          }
-          RSVP.Promise.all(promises)
-            .then(() => {
-              this.set('isLoading', false);
-              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              this.transitionToRoute('events.view.index', data.id);
-            }, function() {
-              this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
-            });
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
-        });
+      this.saveEventDataAndRedirectTo(
+        'events.view.index',
+        ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
+      );
     },
     move() {
-      this.set('isLoading', true);
-      this.get('model.event').save()
-        .then(data => {
-          let promises = [];
-          promises.push(this.get('model.event.tickets').toArray().map(ticket => ticket.save()));
-          promises.push(this.get('model.event.socialLinks').toArray().map(link => link.save()));
-          if (this.get('model.event.copyright.licence')) {
-            promises.push(this.get('model.event.copyright').then(copyright => copyright.save()));
-          }
-          if (this.get('model.event.tax.name')) {
-            if (this.get('model.event.isTaxEnabled')) {
-              promises.push(this.get('model.event.tax').then(tax => tax.save()));
-            } else {
-              promises.push(this.get('model.event.tax').then(tax => tax.destroyRecord()));
-            }
-          }
-          RSVP.Promise.all(promises)
-            .then(() => {
-              this.set('isLoading', false);
-              this.get('notify').success(this.get('l10n').t('Your event has been saved'));
-              this.transitionToRoute('events.view.edit.sponsors', data.id);
-            }, function() {
-              this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
-            });
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
-        });
+      this.saveEventDataAndRedirectTo(
+        'events.view.edit.sponsors',
+        ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
+      );
     }
   }
 });

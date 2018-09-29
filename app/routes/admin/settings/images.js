@@ -5,16 +5,16 @@ export default Route.extend({
     return this.get('l10n').t('Images');
   },
 
-  model() {
-    return this.get('store').query('image-size', {
-      sort: 'id'
-    });
+  async model() {
+    return {
+      speakerImageSize : await this.get('store').queryRecord('speaker-image-size', 1),
+      eventImageSize   : await this.get('store').queryRecord('event-image-size', 1)
+    };
   },
   actions: {
     willTransition() {
-      this.get('controller.model').forEach(image => {
-        image.rollbackAttributes();
-      });
+      this.get('controller.model.speakerImageSize').rollbackAttributes();
+      this.get('controller.model.eventImageSize').rollbackAttributes();
     }
   }
 });

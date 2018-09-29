@@ -7,7 +7,7 @@ import httpStatus from 'npm:http-status';
 import objectToFormData from 'npm:object-to-formdata';
 import fetch from 'fetch';
 import { clone, assign, merge } from 'lodash';
-const bodyAllowedIn = ['POST', 'PUT'];
+const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
 
 export default Service.extend({
 
@@ -126,7 +126,7 @@ export default Service.extend({
   },
 
   uploadFile(urlPath, source, onProgressUpdate = null, config = {}, method = 'POST') {
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
       if (
         !((window.File && source instanceof window.File)
           || (window.Blob && source instanceof window.Blob)
@@ -148,9 +148,8 @@ export default Service.extend({
         source = files[0];
       }
 
-      const formData = new FormData();
+      let formData = new FormData();
       formData.append(config.fileName, source);
-
       config.skipDataTransform = true;
 
       const { url, fetchOptions } = this.getFetchOptions(urlPath, method, formData, config);
@@ -158,7 +157,8 @@ export default Service.extend({
       xhr.open(fetchOptions.method || 'get', url);
       let headers = fetchOptions.headers || {};
       for (let k in headers) {
-        if (headers.hasOwnProperty(k)) {
+        // https://stackoverflow.com/a/39281156/6870128
+        if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }

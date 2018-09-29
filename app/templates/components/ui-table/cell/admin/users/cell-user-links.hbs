@@ -1,14 +1,14 @@
 <div class="ui ordered list">
   <div class="item">
-    <a href='#' target='_blank' rel='noopener'>{{t 'Sessions'}}</a>
+    {{#link-to 'admin.users.view.sessions.list' record.id 'upcoming'}} {{t 'Sessions'}} {{/link-to}}
   </div>
   <div class="item">
-    <a href='#' target='_blank' rel='noopener'>{{t 'Events'}}</a>
+    {{#link-to 'admin.users.view.events' record.id}} {{t 'Events'}} {{/link-to}}
   </div>
   <div class="item">
-    <a href='#' target='_blank' rel='noopener'>{{t 'Tickets'}}</a>
+    {{#link-to 'admin.users.view.tickets' record.id}} {{t 'Tickets'}} {{/link-to}}
   </div>
   <div class="item">
-    <a href='#' target='_blank' rel='noopener'>{{t 'Settings'}}</a>
+    {{#link-to 'admin.users.view.settings.contact-info' record.id}} {{t 'Settings'}} {{/link-to}}
   </div>
 </div>

@@ -1,4 +1,17 @@
-{{#each model as |notification|}}
+<h1 class="ui header">{{t 'Notifications'}}</h1>
+<div class="ui divider"></div>
+<div class="row">
+  {{#link-to 'notifications.all' 'unread'}}
+    <button class="ui button">{{t 'Unread'}}</button>
+  {{/link-to}}
+  {{#link-to 'notifications.all' 'all'}}
+    <button class="ui button">{{t 'All'}}</button>
+  {{/link-to}}
+  {{#if showMarkAllRead}}
+    <button class="ui button right floated" {{action 'markAllAsRead' model.notifications}}>{{t 'Mark all as read'}}</button>
+  {{/if}}
+</div>
+{{#each model.notifications as |notification|}}
   <div class="ui segment {{unless notification.isRead 'blue'}}">
     <div class="ui grid">
       <div class="row">
@@ -18,7 +31,17 @@
       </div>
       <div class="row">
         <div class="ten wide column">
-          <button class="ui blue button">{{t 'View Session'}}</button>
+          {{#each notification.notificationActions as |action|}}
+            {{#if action.link}}
+              {{#link-to action.link tagName='button' class='ui blue button'}}
+                {{t action.buttonTitle}}
+              {{/link-to}}
+            {{else}}
+              {{#link-to action.buttonRoute action.subjectId tagName='button' class='ui blue button'}}
+                {{t action.buttonTitle}}
+              {{/link-to}}
+            {{/if}}
+          {{/each}}
         </div>
         <div class="six wide column right aligned">
           <p>{{moment-from-now notification.receivedAt}}</p>
@@ -27,5 +50,9 @@
     </div>
   </div>
 {{else}}
-  <div class="ui disabled header">{{t 'No Unread Notifications'}}</div>
+  {{#if model.unread}}
+    <div class="ui disabled header">{{t 'No Unread Notifications'}}</div>
+  {{else}}
+    <div class="ui disabled header">{{t 'No Notifications'}}</div>
+  {{/if}}
 {{/each}}

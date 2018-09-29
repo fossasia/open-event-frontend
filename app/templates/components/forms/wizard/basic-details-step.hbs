@@ -120,6 +120,7 @@
       hasLinkName=true
       fixedName=true
       linkName=(t 'External event URL')
+      inputId='external_event_url'
       segmentedLink=data.event.segmentedExternalEventUrl
       isChild=(unless data.event.socialLinks true)
       canRemoveItem=false
@@ -130,6 +131,7 @@
       {{widgets/forms/link-input
         hasLinkName=true
         linkName=socialLink.name
+        inputId=socialLink.identifier
         segmentedLink=socialLink.segmentedLink
         isChild=true
         addItem=(action 'addItem' 'socialLinks' 'social-link')
@@ -199,6 +201,9 @@
     </div>
   {{/if}}
   {{#if hasPaidTickets}}
+
+    {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
+
     <div class="ui section divider"></div>
     <div class="field">
       <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
@@ -232,6 +237,8 @@
         </div>
       {{/if}}
     </div>
+    --}}
+
     <div class="ui section divider"></div>
     <div class="field">
       <h4>{{t 'Add Payment Details'}}</h4>
@@ -280,7 +287,7 @@
         <label>{{t 'Payment by PayPal'}}</label>
         <div class="field payments">
           <div class="ui checkbox">
-            {{input type='checkbox' id='payment_by_paypal' checked=data.event.canPayByPapal}}
+            {{input type='checkbox' id='payment_by_paypal' checked=data.event.canPayByPaypal}}
             <label for="payment_by_paypal">
               <span>{{t 'YES, accept payment through PayPal'}}</span>
               <br>
@@ -293,10 +300,10 @@
             </label>
           </div>
         </div>
-        {{#if data.event.canPayByPapal}}
+        {{#if data.event.canPayByPaypal}}
           <div class="field">
             <label class="required">PayPal Email</label>
-            {{input type='email'}}
+            {{input type='email' id='paypal_email' value=data.event.paypalEmail}}
           </div>
         {{/if}}
       {{/if}}
@@ -317,8 +324,13 @@
         </div>
         {{#if data.event.canPayByStripe}}
           <div class="field">
-            <label class="required">{{t 'Connect to your Stripe account'}}</label>
-            <a href="#" class="stripe-connect"><span>{{t 'Connect with Stripe'}}</span></a>
+            {{#if (or data.event.stripeAuthorization.stripeAuthCode data.event.stripeAuthorization.stripePublishableKey)}}
+              <label class="required">{{t 'You have linked your Stripe account successfully. Click Here to Disconnect you account.'}}</label>
+              <a class="stripe-connect" role="button" {{action 'disconnectStripe'}}><span>{{t 'Disconnect Stripe Account'}}</span></a>
+            {{else}}
+              <label class="required">{{t 'Connect to your Stripe account'}}</label>
+              <a class="stripe-connect" role="button" {{action 'connectStripe'}}><span>{{t 'Connect with Stripe'}}</span></a>
+            {{/if}}
           </div>
         {{/if}}
       {{/if}}
@@ -336,7 +348,7 @@
           <label class="required">
             {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
           </label>
-          {{textarea}}
+          {{textarea id='cheque_details' value=data.event.chequeDetails}}
         </div>
       {{/if}}
 
@@ -354,7 +366,7 @@
           <label class="required">
             {{t 'Enter your bank details and other required details/instructions to ticket buyers'}}
           </label>
-          {{textarea}}
+          {{textarea id='bank_details' value=data.event.bankDetails}}
         </div>
       {{/if}}
 
@@ -372,7 +384,7 @@
           <label class="required">
             {{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}
           </label>
-          {{textarea}}
+          {{textarea id='on_site_details' value=data.event.onsiteDetails}}
         </div>
       {{/if}}
 

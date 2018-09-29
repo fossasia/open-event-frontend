@@ -3,7 +3,11 @@
   {{t 'Login or Signup'}}
 </div>
 <div class="content">
-  <h4 class="ui header">{{t 'Login or Signup before you can access this'}}</h4>
+  {{#if (eq session.currentRouteName 'public.cfs.index')}}
+    <h4 class="ui header">{{t 'Please Login or Signup before you can submit a proposal.'}}</h4>
+  {{else if (eq session.currentRouteName 'public.index')}}
+    <h4 class="ui header">{{t 'Please Login or Signup before you can place an order.'}}</h4>
+  {{/if}}
   <div>
     {{#link-to 'login' class='ui teal button' invokeAction=(action 'toggleView')}}
       {{t 'Login'}}

@@ -57,15 +57,6 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        allTicketTypes: {
-          identifier : 'all_ticket_types',
-          rules      : [
-            {
-              type   : 'checked',
-              prompt : this.get('l10n').t('Please select the appropriate choices')
-            }
-          ]
-        },
         minOrder: {
           identifier : 'min_order',
           optional   : true,
@@ -103,9 +94,46 @@ export default Component.extend(FormMixin, {
   },
   discountLink: computed('data.code', function() {
     const params = this.get('router._router.currentState.routerJsState.params');
-    return location.origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
+    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
+    let link = origin + this.get('router').urlFor('public', params['events.view'].event_id, { queryParams: { discount_code: this.get('data.code') } });
+    this.set('data.discountUrl', link);
+    return link;
   }),
+  eventTickets: computed.filterBy('tickets', 'type', 'paid'),
+
+  allTicketTypesChecked: computed('tickets', function() {
+    if (this.eventTickets.length && this.get('data.tickets').length === this.eventTickets.length) {
+      return true;
+    }
+    return false;
+  }),
+
   actions: {
+    toggleAllSelection(allTicketTypesChecked) {
+      this.toggleProperty('allTicketTypesChecked');
+      let tickets = this.eventTickets;
+      if (allTicketTypesChecked) {
+        this.set('data.tickets', tickets.slice());
+      } else {
+        this.get('data.tickets').clear();
+      }
+      tickets.forEach(ticket => {
+        ticket.set('isChecked', allTicketTypesChecked);
+      });
+    },
+    updateTicketsSelection(ticket) {
+      if (!ticket.get('isChecked')) {
+        this.get('data.tickets').pushObject(ticket);
+        ticket.set('isChecked', true);
+        if (this.get('data.tickets').length === this.eventTickets.length) {
+          this.set('allTicketTypesChecked', true);
+        }
+      } else {
+        this.get('data.tickets').removeObject(ticket);
+        ticket.set('isChecked', false);
+        this.set('allTicketTypesChecked', false);
+      }
+    },
     submit(data) {
       this.onValid(() => {
         this.sendAction('save', data);

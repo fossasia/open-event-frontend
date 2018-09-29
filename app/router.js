@@ -9,10 +9,15 @@ const router = Router.extend(RouterScroll, {
   rootURL  : config.rootURL,
   metrics  : service(),
   session  : service(),
+  headData : service(),
 
   didTransition() {
     this._super(...arguments);
     this._trackPage();
+  },
+
+  setTitle(title) {
+    this.get('headData').set('title', title);
   },
 
   _trackPage() {
@@ -32,14 +37,21 @@ router.map(function() {
   this.route('logout');
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
-      this.route('list', { path: '/:track_id' });
+      this.route('list', { path: '/s/:session_status' });
+    });
+    this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
+      this.route('new-speaker');
+      this.route('new-session');
     });
     this.route('cfs', function() {
       this.route('new-speaker');
       this.route('new-session');
+      this.route('edit-speaker', { path: '/edit/:speaker_id' });
+      this.route('edit-session', { path: '/edit/:session_id' });
     });
     this.route('schedule');
     this.route('coc');
+    this.route('speakers');
   });
   this.route('create');
   this.route('not-found');
@@ -68,14 +80,19 @@ router.map(function() {
         this.route('discount-codes', function() {
           this.route('list', { path: '/:discount_status' });
           this.route('create');
+          this.route('edit', { path: '/edit/:discount_code_id' });
         });
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });
           this.route('create');
+          this.route('edit', { path: '/edit/:access_code_id' });
         });
+        this.route('order-form');
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
+        this.route('edit', { path: '/edit/:speaker_id' });
+        this.route('create');
       });
       this.route('scheduler');
     });
@@ -99,9 +116,12 @@ router.map(function() {
     this.route('view', { path: '/s/:session_id' });
   });
   this.route('notifications', function() {
-    this.route('all');
+    this.route('all', { path: '/:notification_state' });
   });
   this.route('admin', function() {
+    this.route('messages', function() {
+      this.route('list');
+    });
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });
       this.route('import');
@@ -118,8 +138,23 @@ router.map(function() {
       this.route('list', { path: '/:sessions_state' });
     });
     this.route('users', function() {
+      this.route('view', { path: '/:user_id' }, function() {
+        this.route('sessions', function() {
+          this.route('list', { path: '/:session_status' });
+        });
+        this.route('events', function() {
+          this.route('list', { path: '/:event_status' });
+        });
+        this.route('settings', function() {
+          this.route('applications');
+          this.route('contact-info');
+          this.route('email-preferences');
+        });
+        this.route('tickets', function() {
+          this.route('list', { path: '/:tickets_status' });
+        });
+      });
       this.route('list', { path: '/:users_status' });
-      this.route('user', { path: '/u/:user_id' });
     });
     this.route('permissions', function() {
       this.route('event-roles');
@@ -150,11 +185,16 @@ router.map(function() {
         this.route('list', { path: '/:topic_id' });
       });
       this.route('translations');
+      this.route('events');
     });
   });
   this.route('orders', function() {
-    this.route('new');
+    this.route('new', { path: '/:order_id/new' });
+    this.route('expired', { path: '/:order_id/expired' });
+    this.route('view', { path: '/:order_id/view' });
+    this.route('placed', { path: '/:order_id/placed' });
   });
+  this.route('verify');
 });
 
 export default router;

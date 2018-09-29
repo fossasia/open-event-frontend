@@ -10,7 +10,7 @@ export default ModalBase.extend({
             this.set('isOpen', false);
             this.notify.success(this.get('l10n').t('Placeholder has been saved successfully.'));
           })
-          .catch(()=> {
+          .catch(() => {
             this.notify.error(this.get('l10n').t('An unexpected error has occurred. Placeholder not saved.'));
           });
       });
