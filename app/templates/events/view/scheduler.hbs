@@ -1,32 +1,39 @@
 <div class="ui grid">
   <div class="row">
     <div class="three wide column">
-      {{scheduler/unscheduled-list unscheduled=model.unscheduled}}
+      <h2 style="margin-top: 20px" class="ui header">{{t 'Unscheduled Sessions'}}</h2>
+      <div id="sessions-list">
+        {{#each model.unscheduled as |session|}}
+          {{scheduler/unscheduled-session session=session}}
+        {{/each}}
+      </div>
     </div>
     <div class="thirteen wide column">
-      {{#draggable-object-target}}
-        {{full-calendar events=model.events
-                        aspectRatio=1.8
-                        editable=true
-                        droppable=true
-                        draggable=true
-                        resources=model.resources
-                        header=model.header
-                        ondragover="{{action 'allowDrop' event}}"
-                        views=model.views
-                        viewName='agendaDay'
-                        drop=(action 'drop')
-                        eventReceive=(action 'eventReceive')
-                        ondragover=(action 'eventDrop')
-                        defaultView=model.defaultView
-                        groupByResource=model.groupByResource
-                        minTime=model.minTime
-                        maxTime=model.maxTime
-                        slotDuration='00:15:00'
-                        slotLabelFormat='HH:mm'
-                        validRange=model.validRange
-        }}
-      {{/draggable-object-target}}
+      {{full-calendar events=model.events
+                      aspectRatio=1.8
+                      editable=true
+                      droppable=true
+                      draggable=true
+                      resources=model.resources
+                      header=model.header
+                      ondragover="{{action 'allowDrop' event}}"
+                      views=model.views
+                      viewName='agendaDay'
+                      drop=(action 'drop')
+                      eventReceive=(action 'eventReceive')
+                      eventResize=(action 'eventResize')
+                      eventRender=(action 'eventRender')
+                      eventDrop=(action 'eventDrop')
+                      defaultTimedEventDuration=model.defaultDuration
+                      forceEventDuration=true
+                      defaultView=model.defaultView
+                      groupByResource=model.groupByResource
+                      minTime=model.minTime
+                      maxTime=model.maxTime
+                      slotDuration='00:15:00'
+                      slotLabelFormat='HH:mm'
+                      validRange=model.validRange
+      }}
     </div>
   </div>
 </div>

@@ -1,0 +1,8 @@
+<span class="text">
+  {{session.title}} | 
+</span>
+{{#each session.speakers as |speaker|}}
+  <span class="text speaker">
+    {{speaker.name}}
+  </span>
+{{/each}}

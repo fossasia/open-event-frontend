@@ -1,13 +1,23 @@
 .unscheduled {
-  background-color: rgb(0, 131, 143);
   color: #fff;
   cursor: all-scroll !important;
   margin-bottom: 3px;
   padding: 5px;
 }
 
-.unscheduled > .remove-btn {
-  display: none;
+.remove-btn {
+  background-color: #fff;
+  border-radius: 50%;
+  color: #000;
+  cursor: pointer;
+  font-size: 10px;
+  height: 13px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 13px;
+  z-index: 33;
 }
 
 .unscheduled > .edit-btn {

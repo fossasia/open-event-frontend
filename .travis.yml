@@ -12,8 +12,8 @@ node_js:
 env:
   - CXX=g++-4.8 JOBS=1 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
-cache:
-  yarn: true
+# cache:
+#  yarn: true
 
 addons:
   chrome: stable
@@ -28,7 +28,9 @@ before_install:
   - yarn global add greenkeeper-lockfile@1
 
 before_script: greenkeeper-lockfile-update
+
 after_script: greenkeeper-lockfile-upload
+
 install: yarn
 
 script:
