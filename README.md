@@ -20,7 +20,7 @@ The front end for the **Open Event Server**
 
 ## Communication
 
-Please join our [Mailing list](https://groups.google.com/forum/#!forum/open-event) or [chat channel] (https://gitter.im/fossasia/open-event-frontend) to get in touch with the developers.
+Please join our [Mailing list](https://groups.google.com/forum/#!forum/open-event) or [chat channel](https://gitter.im/fossasia/open-event-frontend) to get in touch with the developers.
 
 ## Installation
 
