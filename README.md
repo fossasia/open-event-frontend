@@ -3,13 +3,14 @@
 
 [![Build Status](https://travis-ci.org/fossasia/open-event-frontend.svg?branch=development)](https://travis-ci.org/fossasia/open-event-frontend)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
+[![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d51cf60fc734d3699fd6eff6054e483)](https://www.codacy.com/app/fossasia/open-event-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fossasia/open-event-frontend&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/fossasia/open-event-frontend/branch/development/graph/badge.svg)](https://codecov.io/gh/fossasia/open-event-frontend)
 [![Greenkeeper badge](https://badges.greenkeeper.io/fossasia/open-event-frontend.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
 
-> The front end for the **Open Event Server**
+The front end for the **Open Event Server**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -19,13 +20,7 @@
 
 ## Communication
 
-Please join our mailing list to discuss questions regarding the project :
- 
-> *https://groups.google.com/forum/#!forum/open-event*
-
-Our chat channel is on Gitter here :
-
-> *[gitter.im/fossasia/open-event-frontend](https://gitter.im/fossasia/open-event-frontend)*
+Please join our [Mailing list](https://groups.google.com/forum/#!forum/open-event) or [chat channel] (https://gitter.im/fossasia/open-event-frontend) to get in touch with the developers.
 
 ## Installation
 
@@ -58,20 +53,20 @@ This project has acceptance, integration and unit tests located inside the `test
 
 ## Deployments
 
-#### Master (Staging Test) (`master` branch)
-- **Frontend:** *https://open-event-frontend.herokuapp.com*
+#### Master Branch
+- **Heroku:** https://open-event-frontend.herokuapp.com
 
-#### Development (`development` branch)
-- **Dev  server:** *https://open-event-frontend-dev.herokuapp.com*
+#### Development Branch
+- **Heroku:** https://open-event-frontend-dev.herokuapp.com
 
 ## Further Reading / Useful Links
-* **[ember.js](https://emberjs.com/)**
-* **[ember-cli](https://ember-cli.com/)**
-* **[Semantic UI](https://semantic-ui.com/)**
-* **[Semantic-UI-Ember](https://semantic-org.github.io/Semantic-UI-Ember/)**
+* [ember.js](https://emberjs.com/)
+* [ember-cli](https://ember-cli.com/)
+* [Semantic UI](https://semantic-ui.com/)
+* [Semantic-UI-Ember](https://semantic-org.github.io/Semantic-UI-Ember/)
 * Development Browser Extensions
-    * **[ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)**
-    * **[ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)**
+    * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+    * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
 ## Contributions Best Practices
 
@@ -84,7 +79,7 @@ This project has acceptance, integration and unit tests located inside the `test
 
 **Feature Requests and Bug Reports**
 
-* When you file a feature request or when you are submitting a bug report to the [issue tracker](https://github.com/fossasia/open-event-frontend/issues), make sure you add steps to reproduce it. Especially if that bug is some weird/rare one.
+When you file a feature request or when you are submitting a bug report to the [issue tracker](https://github.com/fossasia/open-event-frontend/issues), make sure you add steps to reproduce it. Especially if that bug is some weird/rare one.
 
 **Join the development**
 
@@ -93,6 +88,6 @@ This project has acceptance, integration and unit tests located inside the `test
 
 ## License
 
-**This project is currently licensed under the [Apache License version 2.0](LICENSE).**
+This project is currently licensed under the [Apache License version 2.0](LICENSE).
 
-> To obtain the software under a different license, Please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
+To obtain the software under a different license, Please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
