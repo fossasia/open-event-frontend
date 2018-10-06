@@ -5,9 +5,9 @@
   <div class="ui segments">
     <div class="ui segment {{if isLoading 'loading' ''}}">
       {{#if errorMessage}}
-      <div class="ui negative message">
-        <p>{{errorMessage}}</p>
-      </div>
+        <div class="ui negative message">
+          <p>{{errorMessage}}</p>
+        </div>
       {{/if}}
       <div class="field">
         <div class="ui left icon input">
@@ -20,7 +20,7 @@
           <i class="lock icon"></i>
           {{input type='password' id="pwd1" name='password' placeholder=(t 'Password') value=data.password}}
           <button type="button" id="eye1">
-            <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+            <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" >
           </button>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <i class="lock icon"></i>
           {{input type='password' id="pwd2" name='password_repeat' placeholder=(t 'Re-enter Password')}}
           <button type="button" id="eye2">
-            <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+            <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye">
           </button>
         </div>
       </div>
@@ -44,9 +44,8 @@
     </a>
   </div>
 </form>
-
-  <script>
-    function show1() {
+<script>
+  function show1() {
     var p = document.getElementById('pwd2');
     p.setAttribute('type', 'text');
   }
@@ -67,9 +66,9 @@
       hide1();
     }
   }, false);
-</script>
-<script> 
-   function show() {
+</script>         
+         <script>
+           function show() {
     var p = document.getElementById('pwd1');
     p.setAttribute('type', 'text');
   }
@@ -90,4 +89,4 @@
       hide();
     }
   }, false);
-  </script>
+         </script>

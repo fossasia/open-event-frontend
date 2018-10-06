@@ -7,13 +7,14 @@
       <div class="ui segments">
         <div class="ui segment {{if isLoading 'loading' ''}}">
           {{#if errorMessage}}
-          <div class="ui negative message">
-            <p>{{errorMessage}}</p>
-          </div>
-          {{/if}} {{#if newUser}}
-          <div class="ui info message">
-            <p>{{t 'You have been registered successfully. Please login to continue.'}}</p>
-          </div>
+            <div class="ui negative message">
+              <p>{{errorMessage}}</p>
+            </div>
+          {{/if}} 
+          {{#if newUser}}
+            <div class="ui info message">
+              <p>{{t 'You have been registered successfully. Please login to continue.'}}</p>
+            </div>
           {{/if}}
           <div class="field">
             <div class="ui left icon input">
@@ -26,7 +27,7 @@
               <i class="lock icon"></i>
               {{input type='password' id="pwd" name='password' placeholder=(t 'Password') value=password}}
               <button type="button" id="eye">
-                <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+                <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye">
               </button>
             </div>
           </div>
@@ -39,13 +40,14 @@
                 <a href="{{href-to 'reset-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
               </div>
               {{#unless noSocial}}
-              <div class="ui horizontal divider">
-                Or
-              </div>
-              <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
-                <i class="facebook icon"></i>
-                {{t 'Login with Facebook'}}
-              </button>
+                <div class="ui horizontal divider">
+                  Or
+                </div>
+              1
+                <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
+                  <i class="facebook icon"></i>
+                  {{t 'Login with Facebook'}}
+                </button>
               {{/unless}}
             </div>
           </div>
