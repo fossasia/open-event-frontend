@@ -1,13 +1,13 @@
-<form class="ui large form" autocomplete="off" {{action 'submit' on='submit'}} novalidate>
+<form class="ui large form" autocomplete="off" {{action 'submit' on='submit' }} novalidate>
   <div class="ui aligned segment basic less margin less padding">
     <h3 class="weight-400">{{t 'Register'}}</h3>
   </div>
   <div class="ui segments">
     <div class="ui segment {{if isLoading 'loading' ''}}">
       {{#if errorMessage}}
-        <div class="ui negative message">
-          <p>{{errorMessage}}</p>
-        </div>
+      <div class="ui negative message">
+        <p>{{errorMessage}}</p>
+      </div>
       {{/if}}
       <div class="field">
         <div class="ui left icon input">
@@ -18,13 +18,19 @@
       <div class="field required">
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          {{input type='password' name='password' placeholder=(t 'Password') value=data.password}}
+          {{input type='password' id="pwd1" name='password' placeholder=(t 'Password') value=data.password}}
+          <button type="button" id="eye1">
+            <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+          </button>
         </div>
       </div>
       <div class="field required">
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          {{input type='password' name='password_repeat' placeholder=(t 'Re-enter Password')}}
+          {{input type='password' id="pwd2" name='password_repeat' placeholder=(t 'Re-enter Password')}}
+          <button type="button" id="eye2">
+            <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+          </button>
         </div>
       </div>
       <div class="ui center aligned segment basic">
@@ -38,3 +44,50 @@
     </a>
   </div>
 </form>
+
+  <script>
+    function show1() {
+    var p = document.getElementById('pwd2');
+    p.setAttribute('type', 'text');
+  }
+
+  function hide1() {
+    var p = document.getElementById('pwd2');
+    p.setAttribute('type', 'password');
+  }
+
+  var pwShown = 0;
+
+  document.getElementById("eye2").addEventListener("click", function () {
+    if (pwShown == 0) {
+      pwShown = 1;
+      show1();
+    } else {
+      pwShown = 0;
+      hide1();
+    }
+  }, false);
+</script>
+<script> 
+   function show() {
+    var p = document.getElementById('pwd1');
+    p.setAttribute('type', 'text');
+  }
+
+  function hide() {
+    var p = document.getElementById('pwd1');
+    p.setAttribute('type', 'password');
+  }
+
+  var pwShown1 = 0;
+
+  document.getElementById("eye1").addEventListener("click", function () {
+    if (pwShown1 == 0) {
+      pwShown1 = 1;
+      show();
+    } else {
+      pwShown1 = 0;
+      hide();
+    }
+  }, false);
+  </script>
