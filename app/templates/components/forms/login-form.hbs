@@ -10,7 +10,7 @@
             <div class="ui negative message">
               <p>{{errorMessage}}</p>
             </div>
-          {{/if}} 
+          {{/if}}
           {{#if newUser}}
             <div class="ui info message">
               <p>{{t 'You have been registered successfully. Please login to continue.'}}</p>
@@ -26,9 +26,11 @@
             <div class="ui left icon input">
               <i class="lock icon"></i>
               {{input type='password' id="pwd" name='password' placeholder=(t 'Password') value=password}}
-              <button type="button" id="eye">
-                <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye">
-              </button>
+              <div class="ui small basic icon buttons">
+                <button class="ui button" id="eye" {{ action 'showPasswordLogin'}}>
+                  <i class="eye icon"></i>
+                </button>
+              </div>
             </div>
           </div>
           <div class="ui center aligned segment basic">
@@ -43,7 +45,7 @@
                 <div class="ui horizontal divider">
                   Or
                 </div>
-              1
+                  1
                 <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
                   <i class="facebook icon"></i>
                   {{t 'Login with Facebook'}}
@@ -59,26 +61,3 @@
     </form>
   </div>
 </div>
-<script>
-  function show() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'text');
-  }
-
-  function hide() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'password');
-  }
-
-  var pwShown = 0;
-
-  document.getElementById("eye").addEventListener("click", function () {
-    if (pwShown == 0) {
-      pwShown = 1;
-      show();
-    } else {
-      pwShown = 0;
-      hide();
-    }
-  }, false);
-</script>

@@ -1,5 +1,9 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import $ from 'jquery';
+
+var pwShownConfirm = 0;
+var pwShown = 0;
 
 export default Component.extend(FormMixin, {
 
@@ -55,6 +59,39 @@ export default Component.extend(FormMixin, {
         this.set('isLoading', true);
         this.sendAction('submit');
       });
+    },
+
+    showPasswordSignupConfirm() {
+      function show() {
+        $('#pwdConfirm').attr('type',  'text');
+      }
+      function hide() {
+        $('#pwdConfirm').attr('type', 'password');
+      }
+      if (pwShownConfirm === 0) {
+        pwShownConfirm = 1;
+        show();
+      } else {
+        pwShownConfirm = 0;
+        hide();
+      }
+    },
+    showPasswordSignup() {
+      function show() {
+        $('#pwd').attr('type', 'text');
+      }
+
+      function hide() {
+        $('#pwd').attr('type', 'password');
+
+      }
+      if (pwShown === 0) {
+        pwShown = 1;
+        show();
+      } else {
+        pwShown = 0;
+        hide();
+      }
     }
   }
 });

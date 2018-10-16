@@ -1,6 +1,9 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
+import $ from 'jquery';
+
+var pwShown = 0;
 
 export default Component.extend(FormMixin, {
 
@@ -109,6 +112,24 @@ export default Component.extend(FormMixin, {
       } catch (error) {
         this.get('notify').error(this.get('l10n').t(error.message));
       }
+    },
+    showPasswordLogin() {
+      if (pwShown === 0) {
+        pwShown = 1;
+        show();
+      } else {
+        pwShown = 0;
+        hide();
+      }
+      function show() {
+        $('#pwd').attr('type', 'text');
+      }
+
+      function hide() {
+        $('#pwd').attr('type', 'password');
+
+      }
+
     }
   },
 
