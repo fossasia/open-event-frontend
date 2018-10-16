@@ -15,12 +15,12 @@
 }
 
 .speaker {
-  &:after {
+  &::after {
     content: ', ';
   }
 
   &:last-of-type {
-    &:after {
+    &::after {
       content: '';
     }
   }

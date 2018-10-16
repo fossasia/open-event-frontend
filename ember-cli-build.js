@@ -23,6 +23,7 @@ module.exports = function(defaults) {
     fingerprint: {
       enabled          : env === 'production',
       generateAssetMap : true,
+      exclude          : ['package.json'],
       extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
     }
   });

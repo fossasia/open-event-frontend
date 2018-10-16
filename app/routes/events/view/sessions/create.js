@@ -15,8 +15,10 @@ export default Route.extend({
       speakers: await eventDetails.query('speakers', {
       }),
       session: await this.get('store').createRecord('session', {
-        event   : eventDetails,
-        creator : this.get('authManager.currentUser')
+        event    : eventDetails,
+        creator  : this.get('authManager.currentUser'),
+        startsAt : null,
+        endsAt   : null
       }),
       speaker: await this.get('store').createRecord('speaker', {
         event : eventDetails,
