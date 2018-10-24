@@ -46,6 +46,9 @@ export const computedSegmentedLink = function(property) {
 export const computedDateTimeSplit = function(property, segmentFormat) {
   return computed(property, {
     get() {
+      if (property === 'endsAt' && segmentFormat === 'date') {
+        return moment(this.get(property)).add(1, 'days').format(getFormat(segmentFormat));
+      }
       return moment(this.get(property)).format(getFormat(segmentFormat));
     },
     set(key, value) {
@@ -62,6 +65,7 @@ export const computedDateTimeSplit = function(property, segmentFormat) {
         oldDate = newDate;
       }
       this.set(property, oldDate);
+      this.set('endsAt', oldDate);
       return value;
     }
   });
