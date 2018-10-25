@@ -4,6 +4,11 @@ export default Route.extend({
   titleToken() {
     return this.get('l10n').t('Scheduler');
   },
+  actions: {
+    refresh() {
+      this.refresh();
+    }
+  },
   async model() {
     let unscheduledFilterOptions = [
       {
@@ -58,7 +63,7 @@ export default Route.extend({
     let header = {
       left   : 'today,prev,next',
       center : 'title',
-      right  : 'timelineDay,timelineThreeDays,agendaWeek,month'
+      right  : 'timelineDay,timelineThreeDays,agendaWeek'
     };
 
     let scheduledSessions = await eventDetails.query('sessions', {
