@@ -15,10 +15,11 @@
                       header=model.header
                       ondragover="{{action 'allowDrop' event}}"
                       views=model.views
-                      viewName='month'
+                      viewName='agendaDay'
                       drop=(action 'drop')
                       eventResize=(action 'eventResize')
                       eventDrop=(action 'eventDrop')
+                      eventRender=(action 'eventRender')
                       defaultView='timelineDay'
                       validRange=model.validRange
                       now=(moment-format (now) 'YYYY-MM-DD')

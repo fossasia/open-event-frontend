@@ -45,6 +45,12 @@ export default Controller.extend({
         this.get('notify').error(`Error: ${reason}`);
       });
   },
+  unscheduleSession(session) {
+    $('.full-calendar').fullCalendar('removeEvents', session._id);
+    this.updateSession(null, null, session.resourceId, session.serverId);
+    this.get('target').send('refresh');
+
+  },
   actions: {
     drop(date, jsEvent, ui, resourceId) {
       let start = date;
@@ -58,6 +64,13 @@ export default Controller.extend({
     },
     eventResize(session) {
       this.updateSession(session.start, session.end, session.resourceId, session.serverId);
+    },
+    eventRender(session, element) {
+      element.append('<span class="scheduled-close-btn"><i class="x icon"></i></span>');
+      let controller = this;
+      element.find('.scheduled-close-btn').on('click', function() {
+        controller.unscheduleSession(session);
+      });
     }
   }
 });
