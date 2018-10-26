@@ -1,9 +1,12 @@
 <div class="ui grid">
   <div class="row">
     <div class="three wide column">
-      {{#each model.unscheduled as |session|}}
-        {{scheduler/unscheduled-session session=session}}
-      {{/each}}
+      <h3 class="ui header">Unscheduled Sessions</h3>
+      <div class="ui raised segments">
+        {{#each model.unscheduled as |session|}}
+          {{scheduler/unscheduled-session session=session}}
+        {{/each}}
+      </div>
     </div>
     <div class="thirteen wide column">
       {{full-calendar events=model.events

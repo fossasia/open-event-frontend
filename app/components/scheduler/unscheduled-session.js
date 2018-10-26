@@ -1,6 +1,9 @@
 import Component from '@ember/component';
 
 export default Component.extend({
+  classNames        : ['unscheduled-session'],
+  classNameBindings : ['isDragActive'],
+  isDragActive      : false,
   didInsertElement() {
     this._super(...arguments);
     this.$().data('event', {
@@ -16,7 +19,15 @@ export default Component.extend({
       revert         : true,      // will cause the event to go back to its
       revertDuration : 0  //  original position after the drag
     });
-    this.$().css('background-color', this.get('session.track.color'));
     this.$().data('serverId', this.get('session.id'));
+    this.$().css('border-color', this.get('session.track.color'));
+
+  },
+  dragStart() {
+    this.set('isDragActive', true);
+
+  },
+  mouseUp() {
+    this.set('isDragActive', false);
   }
 });
