@@ -1,7 +1,7 @@
 <div class="ui grid">
   <div class="row">
     <div class="three wide column">
-      <h3 class="ui header">Unscheduled Sessions</h3>
+      <h3 class="ui header">{{t 'Unscheduled Sessions'}}</h3>
       <div class="ui raised segments">
         {{#each model.unscheduled as |session|}}
           {{scheduler/unscheduled-session session=session}}
