@@ -25,3 +25,19 @@
     }
   }
 }
+
+.scheduled-close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+
+.unscheduled-session {
+  border-top: 2px solid #000;
+  cursor: grab;
+
+  &.is-drag-active {
+    cursor: grabbing;
+  }
+}
