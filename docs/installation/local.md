@@ -12,6 +12,7 @@ It is also recommended to have [watchman](https://facebook.github.io/watchman/do
 
 ## Steps
 * `git clone <repository-url>` this repository
+![git clone](https://raw.githubusercontent.com/fossasia/open-event-frontend/development/public/images/openEventClone.png)
 * `cd open-event-frontend`
 
 **Note :** If you want to contribute, first fork the original repository and clone the forked repository into your local machine followed by ```cd``` into the directory
@@ -21,11 +22,14 @@ cd open-event-frontend
 ```
 
 * `yarn`
+
+![yarn](https://raw.githubusercontent.com/fossasia/open-event-frontend/development/public/images/openEventYarn.png)
 * `cp .env.example .env`
 
 **Note:**  Open Event Frontend supports [FastBoot](https://github.com/ember-fastboot/ember-cli-fastboot) which is disabled for the development environment and is controlled by the flag `FASTBOOT_DISABLED` in the `.env` file.  
 ## Running / Development
 
 * `ember serve`
+![yarn](https://raw.githubusercontent.com/fossasia/open-event-frontend/de elopment/public/images/openEventEmber.png)
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
