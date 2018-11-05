@@ -5,10 +5,8 @@ import moment from 'moment';
 
 export default Controller.extend({
   isSchedulePublished: computed('model.eventDetails.schedulePublishedOn', function() {
-    if (this.get('model.eventDetails.schedulePublishedOn').toISOString() !== moment(0).toISOString()) {
-      return true;
-    }
-    return false;
+    return this.get('model.eventDetails.schedulePublishedOn').toISOString() !== moment(0).toISOString();
+
   }),
   isLoading : false,
   header    : {
@@ -81,36 +79,24 @@ export default Controller.extend({
         controller.unscheduleSession(session);
       });
     },
-    changePublishState(action) {
+    togglePublishState() {
       this.set('isLoading', true);
+      let isSchedulePublished = this.get('isSchedulePublished');
+      let action = isSchedulePublished ? 'published' : 'unpublished';
+      let publishedAt = isSchedulePublished ? moment(0) : moment();
       let event = this.get('model.eventDetails');
-      if (action === 'publish') {
-        event.set('schedulePublishedOn', moment());
-        event.save()
-          .then(() => {
-            this.get('notify').success('The schedule has been published successfully');
-          })
-          .catch(reason => {
-            this.set('error', reason);
-            this.get('notify').error(`Error: ${reason}`);
-          })
-          .finally(() => {
-            this.set('isLoading', false);
-          });
-      } else {
-        event.set('schedulePublishedOn', moment(0));
-        event.save()
-          .then(() => {
-            this.get('notify').success('The schedule has been unpublished successfully');
-          })
-          .catch(reason => {
-            this.set('error', reason);
-            this.get('notify').error(`Error: ${reason}`);
-          })
-          .finally(() => {
-            this.set('isLoading', false);
-          });
-      }
+      event.set('schedulePublishedOn', publishedAt);
+      event.save()
+        .then(() => {
+          this.get('notify').success(`The schedule has been ${action} successfully`);
+        })
+        .catch(reason => {
+          this.set('error', reason);
+          this.get('notify').error(`Error: ${reason}`);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
     }
   }
 });
