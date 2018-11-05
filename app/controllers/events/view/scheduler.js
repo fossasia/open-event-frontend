@@ -82,7 +82,7 @@ export default Controller.extend({
     togglePublishState() {
       this.set('isLoading', true);
       let isSchedulePublished = this.get('isSchedulePublished');
-      let action = isSchedulePublished ? 'published' : 'unpublished';
+      let action = isSchedulePublished ? 'unpublished' : 'published';
       let publishedAt = isSchedulePublished ? moment(0) : moment();
       let event = this.get('model.eventDetails');
       event.set('schedulePublishedOn', publishedAt);
