@@ -55,7 +55,7 @@ export default Route.extend({
     }
 
     return this.modelFor('events.view').query('attendees', {
-      include      : 'order,user',
+      include      : 'order.user,user',
       filter       : filterOptions,
       'page[size]' : 10
     });

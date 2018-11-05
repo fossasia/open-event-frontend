@@ -1,7 +1,8 @@
 <div class="ui tiny header">
   {{#link-to 'orders.view' record.order.identifier}}{{record.order.identifier}}{{/link-to}}
   <span class="weight-400">
-    {{t 'by'}} {{record.order.user.firstName}} {{record.order.user.lastName}}
+    {{t 'by'}}
+    {{record.user.email}}
   </span>
   <div class="ui basic mini {{if (eq record.order.status 'completed') 'green'
                                  (if (or (eq record.order.status 'placed')
