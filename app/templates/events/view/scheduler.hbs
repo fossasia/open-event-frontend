@@ -2,9 +2,9 @@
   <div class="row">
     <div class="three wide column">
       {{#if isSchedulePublished}}
-        <button class="ui orange {{if isLoading 'loading'}} fluid button" {{action 'changePublishState' 'unpublish'}}>{{t 'Unpublish Schedule'}}</button>
+        <button class="ui orange {{if isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Unpublish Schedule'}}</button>
       {{else}}
-        <button class="ui green {{if isLoading 'loading'}} fluid button" {{action 'changePublishState' 'publish'}}>{{t 'Publish Schedule'}}</button>
+        <button class="ui green {{if isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Publish Schedule'}}</button>
       {{/if}}
       <h3 class="ui header">{{t 'Unscheduled Sessions'}}</h3>
       <div class="ui raised segments">
