@@ -1,8 +1,17 @@
 import Controller from '@ember/controller';
 import $ from 'jquery';
+import { computed } from '@ember/object';
+import moment from 'moment';
 
 export default Controller.extend({
-  header: {
+  isSchedulePublished: computed('model.eventDetails.schedulePublishedOn', function() {
+    if (this.get('model.eventDetails.schedulePublishedOn').toISOString() !== moment(0).toISOString()) {
+      return true;
+    }
+    return false;
+  }),
+  isLoading : false,
+  header    : {
     left   : 'today prev,next',
     center : 'title',
     right  : 'timelineDay,timelineThreeDays,agendaWeek,month'
@@ -71,6 +80,37 @@ export default Controller.extend({
       element.find('.scheduled-close-btn').on('click', function() {
         controller.unscheduleSession(session);
       });
+    },
+    changePublishState(action) {
+      this.set('isLoading', true);
+      let event = this.get('model.eventDetails');
+      if (action === 'publish') {
+        event.set('schedulePublishedOn', moment());
+        event.save()
+          .then(() => {
+            this.get('notify').success('The schedule has been published successfully');
+          })
+          .catch(reason => {
+            this.set('error', reason);
+            this.get('notify').error(`Error: ${reason}`);
+          })
+          .finally(() => {
+            this.set('isLoading', false);
+          });
+      } else {
+        event.set('schedulePublishedOn', moment(0));
+        event.save()
+          .then(() => {
+            this.get('notify').success('The schedule has been unpublished successfully');
+          })
+          .catch(reason => {
+            this.set('error', reason);
+            this.get('notify').error(`Error: ${reason}`);
+          })
+          .finally(() => {
+            this.set('isLoading', false);
+          });
+      }
     }
   }
 });

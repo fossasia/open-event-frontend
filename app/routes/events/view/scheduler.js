@@ -109,6 +109,7 @@ export default Route.extend({
       defaultView     : 'agendaDay',
       groupByResource : true,
       events          : scheduled,
+      eventDetails,
       resources,
       unscheduled     : unscheduledSessions,
       minTime         : eventDetails.startsAt.format('HH:mm:ss'),
