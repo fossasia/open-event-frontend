@@ -37,6 +37,7 @@ export default ModelBase.extend({
    * Relationships
    */
   event  : belongsTo('event'),
+  order  : belongsTo('order'),
   ticket : belongsTo('ticket'),
   user   : belongsTo('user')
 });
