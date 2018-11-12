@@ -1,32 +1,42 @@
 <div class="ui grid">
   <div class="row">
     <div class="three wide column">
-      {{scheduler/unscheduled-list unscheduled=model.unscheduled}}
+      {{#if isSchedulePublished}}
+        <button class="ui orange {{if isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Unpublish Schedule'}}</button>
+      {{else}}
+        <button class="ui green {{if isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Publish Schedule'}}</button>
+      {{/if}}
+      <h3 class="ui header">{{t 'Unscheduled Sessions'}}</h3>
+      <div class="ui raised segments">
+        {{#each model.unscheduled as |session|}}
+          {{scheduler/unscheduled-session session=session}}
+        {{/each}}
+      </div>
     </div>
     <div class="thirteen wide column">
-      {{#draggable-object-target}}
-        {{full-calendar events=model.events
-                        aspectRatio=1.8
-                        editable=true
-                        droppable=true
-                        draggable=true
-                        resources=model.resources
-                        header=model.header
-                        ondragover="{{action 'allowDrop' event}}"
-                        views=model.views
-                        viewName='agendaDay'
-                        drop=(action 'drop')
-                        eventReceive=(action 'eventReceive')
-                        ondragover=(action 'eventDrop')
-                        defaultView=model.defaultView
-                        groupByResource=model.groupByResource
-                        minTime=model.minTime
-                        maxTime=model.maxTime
-                        slotDuration='00:15:00'
-                        slotLabelFormat='HH:mm'
-                        validRange=model.validRange
-        }}
-      {{/draggable-object-target}}
+      {{full-calendar events=model.events
+                      aspectRatio=1.8
+                      editable=true
+                      droppable=true
+                      resources=model.resources
+                      resourceLabelText= 'Rooms'
+                      header=model.header
+                      ondragover="{{action 'allowDrop' event}}"
+                      views=model.views
+                      viewName='agendaDay'
+                      drop=(action 'drop')
+                      eventResize=(action 'eventResize')
+                      eventDrop=(action 'eventDrop')
+                      eventRender=(action 'eventRender')
+                      defaultView='timelineDay'
+                      validRange=model.validRange
+                      now=(moment-format (now) 'YYYY-MM-DD')
+                      scrollTime= '00:00'
+                      minTime=model.minTime
+                      slotDuration='00:30:00'
+                      slotLabelFormat='HH:mm'
+      }}
     </div>
   </div>
 </div>
+

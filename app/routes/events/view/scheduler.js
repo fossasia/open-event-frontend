@@ -4,6 +4,11 @@ export default Route.extend({
   titleToken() {
     return this.get('l10n').t('Scheduler');
   },
+  actions: {
+    refresh() {
+      this.refresh();
+    }
+  },
   async model() {
     let unscheduledFilterOptions = [
       {
@@ -48,7 +53,7 @@ export default Route.extend({
 
     let durationDays = eventDetails.endsAt.diff(eventDetails.startsAt, 'days') + 1;
     let views = {
-      agendaEvent: {
+      timelineThreeDays: {
         type       : 'agenda',
         duration   : { days: durationDays },
         buttonText : `${durationDays} day`
@@ -56,13 +61,13 @@ export default Route.extend({
     };
 
     let header = {
-      left   : 'prev,next',
+      left   : 'today,prev,next',
       center : 'title',
-      right  : 'agendaDay,agendaEvent'
+      right  : 'timelineDay,timelineThreeDays,agendaWeek'
     };
 
     let scheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers,microlocation',
+      include : 'speakers,microlocation,track',
       filter  : scheduledFilterOptions
     });
 
@@ -77,12 +82,14 @@ export default Route.extend({
         title      : `${session.title} | ${speakerNames.join(', ')}`,
         start      : session.startsAt.format('YYYY-MM-DDTHH:mm:SS'),
         end        : session.endsAt.format('YYYY-MM-DDTHH:mm:SS'),
-        resourceId : session.microlocation.get('id')
+        resourceId : session.microlocation.get('id'),
+        color      : session.track.get('color'),
+        serverId   : session.get('id') // id of the session on BE
       });
     });
 
     let unscheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers',
+      include : 'speakers,track',
       filter  : unscheduledFilterOptions
     });
 
@@ -102,12 +109,14 @@ export default Route.extend({
       defaultView     : 'agendaDay',
       groupByResource : true,
       events          : scheduled,
+      eventDetails,
       resources,
       unscheduled     : unscheduledSessions,
       minTime         : eventDetails.startsAt.format('HH:mm:ss'),
       maxTime         : eventDetails.endsAt.format('HH:mm:ss'),
       validRange,
-      views
+      views,
+      defaultDuration : '01:00'
     };
   }
 });

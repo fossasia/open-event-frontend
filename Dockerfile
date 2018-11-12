@@ -1,16 +1,20 @@
-FROM node:8-stretch
-LABEL maintainer="Max Lorenz <max-lorenz@gmx.net>"
+FROM danlynn/ember-cli:3.3.0 as builder
+LABEL maintainer="Niranjan Rajendran <me@niranjan.io>"
 
 WORKDIR /app
+ADD package.json yarn.lock ./
+RUN yarn install
 
-RUN yarn global add ember-cli
+ADD . .
+RUN touch .env && ember build -prod
 
-# Get deps
-COPY package.json .
-RUN yarn
+##
+##
 
-# Copy all files for the build
-COPY . .
+FROM steebchen/nginx-spa:stable
 
-# Run ember server
-CMD ember server
+COPY --from=builder /app/dist /app
+
+EXPOSE 80
+
+CMD ["nginx"]

@@ -65,7 +65,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   onsiteDetails   : attr('string'),
   orderExpiryTime : attr('number', { defaultValue: 10 }),
 
-  schedulePublishedOn: attr('moment', { readOnly: true }),
+  schedulePublishedOn: attr('moment'),
 
   hasOrganizerInfo: attr('boolean',  { defaultValue: false }),
 
