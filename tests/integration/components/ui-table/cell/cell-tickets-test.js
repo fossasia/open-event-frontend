@@ -12,4 +12,9 @@ module('Integration | Component | ui table/cell/cell tickets', function(hooks) {
     await render(hbs `{{ui-table/cell/cell-tickets record=record}}`);
     assert.ok(this.element.innerHTML.trim().includes('Premium'));
   });
+
+  test('it renders', async function(assert) {
+    await render(hbs `{{ui-table/cell/cell-tickets record=record}}`);
+    assert.ok(this.element.innerHTML.trim().includes('No Ticket Information'));
+  });
 });

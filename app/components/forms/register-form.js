@@ -55,6 +55,14 @@ export default Component.extend(FormMixin, {
         this.set('isLoading', true);
         this.sendAction('submit');
       });
+    },
+
+    showSignupPassword() {
+      this.toggleProperty('showSignupPass');
+    },
+
+    showConfirmPassword() {
+      this.toggleProperty('showConfirmPass');
     }
   }
 });

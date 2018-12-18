@@ -18,13 +18,31 @@
       <div class="field required">
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          {{input type='password' name='password' placeholder=(t 'Password') value=data.password}}
+          {{#if showSignupPass}}
+            {{input type='text' name='password' placeholder=(t 'Password') value=data.password}}
+          {{else}}
+            {{input type='password' name='password' placeholder=(t 'Password') value=data.password}}
+          {{/if}}
+          <div class="ui small basic icon buttons">
+            <button class="ui button" id="eye2" {{ action 'showSignupPassword'}}>
+              <i class="eye icon"></i>
+            </button>
+          </div>
         </div>
       </div>
       <div class="field required">
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          {{input type='password' name='password_repeat' placeholder=(t 'Re-enter Password')}}
+          {{#if showConfirmPass}}
+            {{input type='text' name='password_repeat' placeholder=(t 'Re-enter Password') value=password_repeat}}
+          {{else}}
+            {{input type='password' name='password_repeat' placeholder=(t 'Re-enter Password') value=password_repeat}}
+          {{/if}}
+          <div class="ui small basic icon buttons">
+            <button class="ui button" id="eye3" {{ action 'showConfirmPassword'}}>
+              <i class="eye icon"></i>
+            </button>
+          </div>
         </div>
       </div>
       <div class="ui center aligned segment basic">
