@@ -25,7 +25,16 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              {{input type='password' name='password' placeholder=(t 'Password') value=password}}
+              {{#if showPass}}
+                {{input type="text" name='password' placeholder=(t 'Password') value=password}}
+              {{else}}
+                {{input type="password" name='password' placeholder=(t 'Password') value=password}}
+              {{/if}}
+              <div class="ui small basic icon buttons">
+                <button class="ui button" id="eye1" {{action 'showPassword'}}>
+                  <i class="eye icon"></i>
+                </button>
+              </div>
             </div>
           </div>
           <div class="ui center aligned segment basic">
