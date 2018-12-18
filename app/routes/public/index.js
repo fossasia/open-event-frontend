@@ -1,7 +1,12 @@
 import Route from '@ember/routing/route';
 import moment from 'moment';
+import Ember from 'ember';
+import { inject as service } from '@ember/service';
+
+const { set } = Ember;
 
 export default Route.extend({
+  headData: service(),
   async model() {
     const eventDetails = this.modelFor('public');
     return {
@@ -51,6 +56,9 @@ export default Route.extend({
 
       attendees: []
     };
+  },
+  afterModel(model) {
+    set(this, 'headData.description', model.event.description);
   },
   resetController(controller) {
     this._super(...arguments);
