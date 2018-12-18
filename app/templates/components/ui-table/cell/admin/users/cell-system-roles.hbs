@@ -1,5 +1,19 @@
-<div class="ui ordered list">
-  {{#each record.systemRoles as |systemRole|}}
-    <div class="item">{{systemRole}}</div>
-  {{/each}}
+<div class="ui unordered list">
+  {{#if record.isSuperAdmin}}
+    <div class="item">
+      {{t 'Super Admin'}}
+    </div>
+  {{/if}}
+  {{#if record.isAdmin}}
+    <div class="item">
+      {{t 'Admin'}}
+    </div>
+  {{/if}}
+  <div class="item">
+    {{#if record.isVerified}}
+      {{t 'Verified User'}}
+    {{else}}
+      {{t 'Unverified User'}}
+    {{/if}}
+  </div>
 </div>

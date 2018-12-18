@@ -1,19 +1,10 @@
 <div class="mobile hidden row">
   <div class="ui menu">
     {{#link-to 'index' class='header item' activeClass=''}}
-      <h3>{{config.appName}}</h3>
+      <h3>{{settings.appName}}</h3>
     {{/link-to}}
-    {{#unless device.isTablet}}
-      <div class="ui category search item nav-bar-search-item">
-        <div class="ui transparent icon input">
-          <input class="prompt nav-bar-prompt" type="text" placeholder="{{t 'Search Events...'}}">
-          <i class="search link icon"></i>
-        </div>
-        <div class="results"></div>
-      </div>
-    {{/unless}}
     <div class="right menu nav-bar">
-      {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
+      {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}
         {{notification-dropdown unreadNotifications=unreadNotifications}}
       {{/if}}

@@ -1,0 +1,7 @@
+<div class="ui stackable grid container">
+  {{#each model.speakers as |speaker|}}
+    <div class="five wide column speaker-column">
+      {{public/speaker-item speaker=speaker}}
+    </div>
+  {{/each}}
+</div>

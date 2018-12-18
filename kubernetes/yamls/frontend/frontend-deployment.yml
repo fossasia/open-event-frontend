@@ -16,10 +16,10 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 4000
           initialDelaySeconds: 5
           timeoutSeconds: 1
         ports:
-        - containerPort: 80
+        - containerPort: 4000
           protocol: TCP
       restartPolicy: Always

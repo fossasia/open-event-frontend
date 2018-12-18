@@ -1,6 +1,13 @@
-<h3 class="ui header">{{model.track.name}}</h3>
-{{#each model.track.sessions as |session|}}
-  {{public/session-item session=session}}
-{{else}}
-  <div class="ui disabled header">{{t 'No sessions exist for this track'}}</div>
-{{/each}}
+<div class="ui buttons">
+  {{#link-to 'public.sessions.list' model.event.id 'all' class="ui button"}}{{t 'All'}}{{/link-to}}
+  {{#link-to 'public.sessions.list' model.event.id 'today' class="ui button"}}{{t 'Today'}}{{/link-to}}
+  {{#link-to 'public.sessions.list' model.event.id 'week' class="ui button"}}{{t 'Week'}}{{/link-to}}
+  {{#link-to 'public.sessions.list' model.event.id 'month' class="ui button"}}{{t 'Month'}}{{/link-to}}
+</div>
+<div class="ui raised very padded text container segment">
+  {{#each model.session as |session|}}
+    {{public/session-item session=session}}
+  {{else}}
+    <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
+  {{/each}}
+</div>

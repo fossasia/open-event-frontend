@@ -21,6 +21,9 @@ export default TextField.extend({
 
   // @see https://developers.google.com/maps/documentation/javascript/places-autocomplete#set_search_area
   geolocate() {
+    if (this.get('fastboot.isFastboot')) {
+      return;
+    }
     let navigator = this.get('navigator') || ((window) ? window.navigator : null);
     if (navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {

@@ -6,22 +6,21 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   titleToken() {
     return this.get('l10n').t('Create an Event');
   },
-  model() {
+  async model() {
     return {
-      data: {
-        event: this.store.createRecord('event', {
-          socialLinks : [],
-          tax         : this.store.createRecord('tax'),
-          copyright   : this.store.createRecord('event-copyright')
-        }),
-        types: this.store.query('event-type', {
-          sort: 'name'
-        }),
-        topics: this.store.query('event-topic', {
-          sort    : 'name',
-          include : 'event-sub-topics'
-        })
-      },
+      event: this.store.createRecord('event', {
+        socialLinks         : [],
+        tax                 : this.store.createRecord('tax'),
+        copyright           : this.store.createRecord('event-copyright'),
+        stripeAuthorization : this.store.createRecord('stripe-authorization')
+      }),
+      types: await this.store.query('event-type', {
+        sort: 'name'
+      }),
+      topics: await this.store.query('event-topic', {
+        sort    : 'name',
+        include : 'event-sub-topics'
+      }),
       steps: this.getSteps()
     };
   }

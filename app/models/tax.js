@@ -14,6 +14,7 @@ export default ModelBase.extend({
   state                : attr('string'),
   zip                  : attr('string'),
   invoiceFooter        : attr('string'),
+  isInvoiceSent        : attr('boolean', { defaultValue: false }),
   isTaxIncludedInPrice : attr('boolean', { defaultValue: false }),
 
   event: belongsTo('event')

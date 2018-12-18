@@ -1,4 +1,4 @@
-<form class="ui form" {{action 'submit' on='submit' }}>
+<form class="ui form" {{action 'submit' data on='submit' }}>
   <div class="ui segments">
     <div class="ui aligned secondary segment">
       <h3 class="weight-400">{{t 'Registration Information'}}</h3>
@@ -6,12 +6,12 @@
     <div class="ui yellow inverted segment">
       <div class="ui inverted small horizontal statistic">
         <div class="value">
-          8:48
+          {{getRemainingTime}}
         </div>
         <div class="label">
-          {{t 'Please complete registration within 10:00 minutes.'}}
+          {{t 'Please complete registration within '}} {{data.event.orderExpiryTime}} {{t 'minutes.'}}
           <br>
-          {{t 'After 10:00 minutes, the reservation we\'re holding will be released to others.'}}
+          {{t 'After '}} {{data.event.orderExpiryTime}} {{t 'minutes, the reservation we\'re holding will be released to others.'}}
         </div>
       </div>
     </div>
@@ -20,15 +20,15 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
-      <div class="field">
+      <div class="field {{if buyer.firstName 'disabled'}}">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
         {{input type='text' name='first_name' value=buyer.firstName}}
       </div>
-      <div class="field">
+      <div class="field {{if buyer.lastName 'disabled'}}">
         <label class="required" for="lastname">{{t 'Last Name'}}</label>
         {{input type='text' name='last_name' value=buyer.lastName}}
       </div>
-      <div class="field">
+      <div class="field disabled">
         <label class="required" for="email">{{t 'Email'}}</label>
         {{input type='text' name='email' value=buyer.email}}
       </div>
@@ -37,102 +37,127 @@
         {{t 'Ticket Holder\'s Information'}}
       </h4>
       {{#each holders as |holder index|}}
-        {{#if (eq holders.length 1)}}
-          <div class="field">
-            {{#unless sameAsBuyer}}
-              <div class="inline field">
-                <i class="user icon"></i>
-                <label>{{t 'Ticket Holder '}}</label>
-              </div>
-              <div class="field">
-                <label class="required" for="firstname">{{t 'First Name'}}</label>
-                {{input type='text' name=(concat 'first_name_' index) value=holder.firstName}}
-              </div>
-              <div class="field">
-                <label class="required" for="lastname">{{t 'Last Name'}}</label>
-                {{input type='text' name=(concat 'last_name_' index) value=holder.lastName}}
-              </div>
-              <div class="field">
-                <label class="required" for="email">{{t 'Email'}}</label>
-                {{input type='text' name=(concat 'email_' index) value=holder.email}}
-              </div>
-            {{/unless}}
-            {{ui-checkbox label=(t 'Ticket holder is the same person as ticket buyer') checked=sameAsBuyer onChange=(action (mut sameAsBuyer))}}
-          </div>
-        {{else}}
-          <div class="inline field">
-            <i class="user icon"></i>
-            <label>{{t 'Ticket Holder '}}{{inc index}}</label>
-          </div>
-          <div class="field">
-            <label class="required" for="firstname">{{t 'First Name'}}</label>
-            {{input type='text' name=(concat 'first_name_' index) value=(if (and sameAsBuyer (eq index 0)) buyer.firstName holder.firstName)}}
-          </div>
-          <div class="field">
-            <label class="required" for="lastname">{{t 'Last Name'}}</label>
-            {{input type='text' name=(concat 'last_name_' index) value=(if (and sameAsBuyer (eq index 0)) buyer.lastName holder.lastName)}}
-          </div>
-          <div class="field">
-            <label class="required" for="email">{{t 'Email'}}</label>
-            {{input type='text' name=(concat 'email_' index) value=(if (and sameAsBuyer (eq index 0)) buyer.email holder.email)}}
-          </div>
-          {{#if (eq index 0)}}
-            <div class="field">
-              {{ui-checkbox label=(t 'Ticket holder is the same person as ticket buyer') checked=sameAsBuyer onChange=(pipe-action (action (mut sameAsBuyer)) (action 'removeHolderData' holder))}}
+        <div class="inline field">
+          <i class="user icon"></i>
+          <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+        </div>
+        {{# each allFields.attendee as |field|}}
+          {{#if field.isIncluded}}
+            <div class="field {{if
+              (and sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))
+              'disabled'}}">
+              <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+              {{#if (is-input-field field.type) }}
+                {{#if field.isLongText}}
+                  {{widgets/forms/rich-text-editor value=(mut (get holder field.fieldIdentifier))
+                                                   name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                {{else}}
+                  {{input type=field.type value=(mut (get holder field.fieldIdentifier))
+                          name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                {{/if}}
+              {{/if}}
             </div>
           {{/if}}
+        {{/each}}
+        {{#if (eq index 0)}}
+          <div class="field">
+            {{ui-checkbox label=(t 'Ticket holder is the same person as ticket buyer') checked=sameAsBuyer
+                          onChange=(pipe-action (action (mut sameAsBuyer)) (action 'modifyHolder' holder))}}
+          </div>
         {{/if}}
       {{/each}}
-      <h4 class="ui horizontal divider header">
-        <i class="ticket icon"></i>
-        {{t 'Billing Information'}}
-      </h4>
-      <div class="field">
-        <label class="required">{{t 'Select country'}}</label>
-        {{#ui-dropdown class='search selection'}}
-          {{input type='hidden' id='country'}}
-          <i class="dropdown icon"></i>
-          <div class="default text">{{t 'Select country'}}</div>
-          <div class="menu">
-            {{#each countries as |country|}}
-              <div class="item">
-                {{country.name}}
+      {{#if isPaidOrder}}
+        <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          {{t 'Billing Information'}}
+        </h4>
+        <div class="field">
+          <label class="required">{{t 'Select country'}}</label>
+          {{#ui-dropdown class="selection" selected=data.country
+                         onChange=(action (mut data.country)) as |execute mapper|}}
+            <div class="default text">{{t 'Select country'}}</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              {{#each countries as |country|}}
+                <div data-value="{{map-value mapper country.name}}" class="item">
+                  {{country.name}}
+                </div>
+              {{/each}}
+            </div>
+          {{/ui-dropdown}}
+        </div>
+        <div class="field">
+          <label class="required" for="address">{{t 'Address'}}</label>
+          {{textarea rows='2' id='address' value=data.address}}
+        </div>
+        <div class="field">
+          <label class="required" for="city">{{t 'City'}}</label>
+          {{input type='text' id='city' value=data.city}}
+        </div>
+        <div class="field">
+          <label class="required" for="state">{{t 'State/Province'}}</label>
+          {{input type='text' id='state' value=data.state}}
+        </div>
+        <div class="field">
+          <label class="required" for="zipcode">{{t 'Zip Code'}}</label>
+          {{input type='text' id='zip_code' value=data.zipcode}}
+        </div>
+        <div class="field">
+          <label class="required" for="payment_mode">{{t 'Payment Mode'}}</label>
+          <div class="grouped inline fields">
+            {{#if data.event.isStripeLinked}}
+              <div class="field">
+                {{ui-radio name='payment_mode' label=(t 'Stripe') value='stripe' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+                <label for="payment_mode">
+                  <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
+                </label>
               </div>
-            {{/each}}
-          </div>
-        {{/ui-dropdown}}
-      </div>
-      <div class="field">
-        <label class="required" for="address">{{t 'Address'}}</label>
-        {{textarea rows='2' id='address'}}
-      </div>
-      <div class="field">
-        <label class="required" for="city">{{t 'City'}}</label>
-        {{input type='text' id='city'}}
-      </div>
-      <div class="field">
-        <label class="required" for="state">{{t 'State/Province'}}</label>
-        {{input type='text' id='state'}}
-      </div>
-      <div class="field">
-        <label class="required" for="zipcode">{{t 'Zip Code'}}</label>
-        {{input type='text' id='zip_code'}}
-      </div>
-      <div class="field">
-        <label class="required" for="pay_via">{{t 'Pay Via'}}</label>
-        <div class="grouped inline fields">
-          <div class="field">
-            {{ui-radio name='pay_via' value='stripe'}}
-            <label for="pay_via"><img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe"></label>
-          </div>
-          <div class="field">
-            {{ui-radio name='pay_via' value='paypal'}}
-            <label for="pay_via"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
+            {{/if}}
+            {{#if data.event.canPayByPaypal}}
+              <div class="field">
+                {{ui-radio name='payment_mode' label=(t 'Paypal') value='paypal' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+                <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
+              </div>
+            {{/if}}
+            {{#if data.event.canPayByCheque}}
+              <div class="field">
+                {{ui-radio name='payment_mode' label=(t 'Cheque') value='cheque' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+              </div>
+            {{/if}}
+            {{#if data.event.canPayByBank}}
+              <div class="field">
+                {{ui-radio name='payment_mode' label=(t 'Bank') value='bank' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+              </div>
+            {{/if}}
+            {{#if data.event.canPayOnsite}}
+              <div class="field">
+                {{ui-radio name='payment_mode' label=(t 'Onsite') value='onsite' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+              </div>
+            {{/if}}
           </div>
         </div>
-      </div>
+        <div class="field">
+          {{#if (eq data.paymentMode 'bank')}}
+            {{textarea name="payment_details" value=data.event.bankDetails readonly=""}}
+          {{else if (eq data.paymentMode 'cheque')}}
+            {{textarea name="payment_details" value=data.event.chequeDetails readonly=""}}
+          {{else if (eq data.paymentMode 'onsite')}}
+            {{textarea name="payment_details" value=data.event.onsiteDetails readonly=""}}
+          {{/if}}
+        </div>
+      {{/if}}
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Acknowledgement'}}
+      </h4>
       <p>
-        {{t 'By clicking "Pay Now", I acknowledge that I have read and agree with the Open Event terms of services and privacy policy.'}}
+        {{t
+          'By clicking "Pay Now", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event.'}}
       </p>
       <div class="center aligned">
         <button type="submit" class="ui teal submit button">{{t 'Pay Now'}}</button>

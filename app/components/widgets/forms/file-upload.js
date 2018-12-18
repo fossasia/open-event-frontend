@@ -22,7 +22,7 @@ export default Component.extend({
     this.get('loader')
       .uploadFile('/upload/files', this.$(`#${this.get('inputIdGenerated')}`))
       .then(file => {
-        this.set('fileUrl', file.url);
+        this.set('fileUrl', JSON.parse(file).url);
         this.get('notify').success(this.get('l10n').t('File uploaded successfully'));
       })
       .catch(() => {
@@ -35,7 +35,7 @@ export default Component.extend({
 
   processFiles(files) {
     if (files && files[0]) {
-      isFileValid(files[0], this.get('maxSizeInKb'), ['application/pdf', 'application/vnd.ms-powerpoint', 'video/mp4']).then(() => {
+      isFileValid(files[0], this.get('maxSizeInKb'), ['application/pdf', 'application/vnd.ms-powerpoint', 'video/mp4', 'application/vnd.oasis.opendocument.presentation']).then(() => {
         const reader = new FileReader();
         reader.onload = () => {
           this.uploadFile();
@@ -58,7 +58,7 @@ export default Component.extend({
       }
     },
     removeSelection() {
-      if (!this.get('needsConfirmation')) {
+      if (!this.get('needsConfirmation') || this.get('edit') === true) {
         this.set('selectedFile', null);
         this.set('fileUrl', null);
       } else {

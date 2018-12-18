@@ -3,7 +3,7 @@ import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import moment from 'moment';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
-import { belongsTo } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default ModelBase.extend({
 
@@ -30,8 +30,8 @@ export default ModelBase.extend({
    * Relationships
    */
   event           : belongsTo('event'),
-  order           : belongsTo('order'),
-  attendee        : belongsTo('attendee'),
+  orders          : hasMany('order'),
+  attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-ticket'),
 
   /**

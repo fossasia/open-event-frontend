@@ -11,6 +11,13 @@ const validUrlPattern = new RegExp('^(https?:\\/\\/)?' // protocol
   + '(\\?[;&a-z\\d%_.~+=-]*)?' // query string
   + '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
 
+export const compulsoryProtocolValidUrlPattern = new RegExp('^(https?:\\/\\/)' // compulsory protocol
+  + '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' // domain name
+  + '((\\d{1,3}\.){3}\\d{1,3}))' // OR ip (v4) address
+  + '(\\:\\d+)?(\/[-a-z\\d%_.~+]*)*' // port and path
+  + '(\\?[;&a-z\\d%_.~+=-]*)?' // query string
+  + '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+
 export const protocolLessValidUrlPattern = new RegExp(
   '^'
   // user:pass authentication
@@ -45,6 +52,27 @@ export const protocolLessValidUrlPattern = new RegExp(
   + '(?:[/?#]\\S*)?'
   + '$', 'i'
 );
+
+export const validTwitterProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'twitter\\.com\\/([a-zA-Z0-9_]+)$'
+);
+
+export const validFacebookProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'facebook\\.com\\/([a-zA-Z0-9_]+)$'
+);
+
+export const validGithubProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'github\\.com\\/([a-zA-Z0-9_]+)$'
+);
+
+export const validLinkedinProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + 'linkedin\\.com\\/([a-zA-Z0-9_]+)$'
+);
+
 
 export const isValidUrl = str => {
   return validUrlPattern.test(str);

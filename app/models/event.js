@@ -20,7 +20,8 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * Service Injection
    */
 
-  router: service(),
+  router   : service(),
+  fastboot : service(),
 
   /**
    * Attributes
@@ -52,6 +53,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
   canPayByStripe  : attr('boolean', { defaultValue: false }),
+  isStripeLinked  : attr('boolean'),
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
   canPayOnsite    : attr('boolean', { defaultValue: false }),
@@ -61,8 +63,9 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
+  orderExpiryTime : attr('number', { defaultValue: 10 }),
 
-  schedulePublishedOn: attr('moment', { readOnly: true }),
+  schedulePublishedOn: attr('moment'),
 
   hasOrganizerInfo: attr('boolean',  { defaultValue: false }),
 
@@ -89,6 +92,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   type                   : belongsTo('event-type'),
   topic                  : belongsTo('event-topic'),
   subTopic               : belongsTo('event-sub-topic'),
+  location               : belongsTo('event-location'),
   sessions               : hasMany('session'),
   sponsors               : hasMany('sponsor'),
   microlocations         : hasMany('microlocation'),
@@ -100,6 +104,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   speakers               : hasMany('speaker'),
   invoice                : hasMany('event-invoice'),
   speakersCall           : belongsTo('speakers-call'),
+  stripeAuthorization    : belongsTo('stripe-authorization'),
   eventStatisticsGeneral : belongsTo('event-statistics-general'),
   tax                    : belongsTo('tax'),
   copyright              : belongsTo('event-copyright'),
@@ -153,7 +158,8 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   url: computed('identifier', function() {
-    return location.origin + this.get('router').urlFor('public', this.get('id'));
+    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
+    return origin + this.get('router').urlFor('public', this.get('id'));
   }),
 
   sessionsByState: computed('sessions', function() {

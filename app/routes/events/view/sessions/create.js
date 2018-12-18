@@ -12,9 +12,13 @@ export default Route.extend({
         'page[size]' : 50,
         sort         : 'id'
       }),
+      speakers: await eventDetails.query('speakers', {
+      }),
       session: await this.get('store').createRecord('session', {
-        event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        event    : eventDetails,
+        creator  : this.get('authManager.currentUser'),
+        startsAt : null,
+        endsAt   : null
       }),
       speaker: await this.get('store').createRecord('speaker', {
         event : eventDetails,
@@ -23,5 +27,15 @@ export default Route.extend({
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})
     };
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model');
+    if (!model.speaker.id) {
+      model.speaker.unloadRecord();
+    }
+    if (!model.session.id) {
+      model.session.unloadRecord();
+    }
   }
 });

@@ -1,7 +1,12 @@
-<div class="ui {{if device.isMobile 'horizontal'}} three statistics">
-  <div class="statistic"><div class="value">{{model.orderStats.orders.total}}</div><div class="label">{{t 'Orders'}}</div></div>
-  <div class="statistic"><div class="value">{{number-format model.orderStats.sales.total}}</div><div class="label">{{t 'Sales(US $)'}}</div></div>
-  <div class="statistic"><div class="value">{{model.orderStats.tickets.total}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
+<div class="row">
+  <div class="ui header">
+    {{t 'Completed Orders'}}
+  </div>
+  <div class="ui {{if device.isMobile 'horizontal'}} three statistics">
+    <div class="statistic"><div class="value">{{model.orderStats.orders.completed}}</div><div class="label">{{t 'Orders'}}</div></div>
+    <div class="statistic"><div class="value">{{number-format model.orderStats.sales.completed}}</div><div class="label">{{t 'Sales(US $)'}}</div></div>
+    <div class="statistic"><div class="value">{{model.orderStats.tickets.completed}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
+  </div>
 </div>
 <br>
 <div class="row">
@@ -138,8 +143,8 @@
         <tr>
           <td>{{ticket.name}}</td>
           <td>{{ticket.quantity}}</td>
-          <td class="right aligned">{{ticket.orderStatistics.tickets.total}}</td>
-          <td class="right aligned">{{number-format ticket.orderStatistics.sales.total}}</td>
+          <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
+          <td class="right aligned">{{number-format ticket.orderStatistics.sales.completed}}</td>
           <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           <td class="right aligned">{{number-format ticket.orderStatistics.sales.placed}}</td>
           <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>

@@ -49,9 +49,10 @@ export default Controller.extend({
       template     : 'components/ui-table/cell/admin/users/cell-created-at'
     },
     {
-      propertyName     : 'last-accessed-at',
+      propertyName     : 'lastAccessedAt',
       title            : 'Last Accessed',
-      template         : 'components/ui-table/cell/admin/users/cell-last-accessed-at',
+      template         : 'components/ui-table/cell/cell-simple-date',
+      dateFormat       : 'MMMM DD, YYYY - hh:mm A',
       disableSorting   : true,
       disableFiltering : true
     },
@@ -64,7 +65,7 @@ export default Controller.extend({
   ],
   actions: {
     moveToUserDetails(id) {
-      this.transitionToRoute('admin.users.user', id);
+      this.transitionToRoute('admin.users.view', id);
     },
     deleteUser(user) {
       this.set('isLoading', true);
@@ -72,12 +73,16 @@ export default Controller.extend({
         .then(() => {
           this.notify.success(this.get('l10n').t('User has been deleted successfully.'));
         })
-        .catch(()=> {
+        .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
-        .finally(()=>{
+        .finally(() => {
           this.set('isLoading', false);
         });
+    },
+    openEditModal(user) {
+      this.set('isEditUserModalOpen', true);
+      this.set('data', user);
     }
   }
 });

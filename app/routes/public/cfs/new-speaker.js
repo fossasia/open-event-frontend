@@ -7,25 +7,31 @@ export default Route.extend({
 
   async model() {
     const eventDetails = this.modelFor('public');
+    const currentUser = this.get('authManager.currentUser');
+    let userName;
+    if (currentUser.firstName || currentUser.lastName) {
+      userName = `${currentUser.firstName} ${currentUser.lastName}`;
+    }
     return {
       event : eventDetails,
       forms : await eventDetails.query('customForms', {
         sort         : 'id',
         'page[size]' : 50
       }),
-      speaker: await this.get('authManager.currentUser').query('speakers', {
-        filter: [
-          {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
-          }
-        ]
+      speaker: await this.get('store').createRecord('speaker', {
+        email    : currentUser.email,
+        name     : userName,
+        photoUrl : currentUser.avatarUrl,
+        event    : eventDetails,
+        user     : currentUser
       })
     };
+  },
+  resetController(controller) {
+    this._super(...arguments);
+    const model = controller.get('model.speaker');
+    if (!model.id) {
+      controller.get('model.speaker').unloadRecord();
+    }
   }
 });

@@ -46,10 +46,8 @@ module('Integration | Component | public/ticket list', function(hooks) {
     ]
   );
   test('it renders', async function(assert) {
-
-    this.set('tickets', tickets);
-    await render(hbs `{{public/ticket-list tickets=tickets}}`);
-
+    this.set('data', tickets);
+    await render(hbs `{{public/ticket-list data=data}}`);
     assert.ok(this.element.innerHTML.trim().includes('Standard Ticket'));
   });
 });

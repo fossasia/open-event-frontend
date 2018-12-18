@@ -12,10 +12,7 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     storeConfigInMeta : false,
-    flexibility       : {
-      enabled: true
-    },
-    autoprefixer: {
+    autoprefixer      : {
       browsers,
       cascade: false
     },
@@ -24,20 +21,34 @@ module.exports = function(defaults) {
       htmlFiles : ['index.html', '404.html']
     },
     fingerprint: {
-      enabled             : env === 'production',
-      generateAssetMap    : true,
-      extensions          : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json'],
-      fingerprintAssetMap : true
+      enabled          : env === 'production',
+      generateAssetMap : true,
+      exclude          : ['package.json'],
+      extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
     }
   });
 
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');
-  app.import('bower_components/semantic-ui-calendar/dist/calendar.min.js');
-  app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js');
   app.import('bower_components/Croppie/croppie.css');
-  app.import('bower_components/Croppie/croppie.min.js');
-  app.import('bower_components/tinyColorPicker/jqColorPicker.min.js');
-  app.import('bower_components/js-polyfills/xhr.js');
+
+  app.import('bower_components/semantic-ui-calendar/dist/calendar.min.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
+  app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
+  app.import('bower_components/Croppie/croppie.min.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
+  app.import('bower_components/tinyColorPicker/jqColorPicker.min.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
+  app.import('bower_components/js-polyfills/xhr.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
+  app.import('vendor/jquery-ui.min.js', {
+    using: [{ transformation: 'fastbootShim' }]
+  });
 
   const appTree = app.toTree([]);
   return new MergeTrees([appTree, new Funnel(appTree, {
