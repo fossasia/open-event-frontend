@@ -24,7 +24,7 @@
 {{else}}
   {{input type='file'
           id=inputIdGenerated
-          class='styled input' name=name change=(action 'fileSelected')}}
+          class='styled input' accept="image/*" name=name change=(action 'fileSelected')}}
   <label for="{{inputIdGenerated}}">
     <div class="ui center aligned piled upload segment text muted">
       <i class="big {{icon}} icon"></i>
