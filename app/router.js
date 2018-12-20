@@ -100,6 +100,8 @@ router.map(function() {
     this.route('import');
   });
   this.route('profile');
+  this.route('sitemap');
+
 
   this.route('settings', function() {
     this.route('contact-info');
