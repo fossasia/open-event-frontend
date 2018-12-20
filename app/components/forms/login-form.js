@@ -109,6 +109,10 @@ export default Component.extend(FormMixin, {
       } catch (error) {
         this.get('notify').error(this.get('l10n').t(error.message));
       }
+    },
+
+    showPassword() {
+      this.toggleProperty('showPass');
     }
   },
 
