@@ -1,6 +1,10 @@
 import Route from '@ember/routing/route';
+import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
+const { set } = Ember;
 export default Route.extend({
+  headData: service(),
   titleToken(model) {
     return model.get('name');
   },
@@ -9,5 +13,9 @@ export default Route.extend({
     return this.store.findRecord('event', params.event_id, {
       include: 'event-topic,event-sub-topic,event-type,event-copyright,tax,stripe-authorization'
     });
+  },
+
+  afterModel(model) {
+    set(this, 'headData.description', model.description);
   }
 });

@@ -17,6 +17,14 @@ export default Component.extend(FormMixin, {
   buyer: computed('data.user', function() {
     return this.get('data.user');
   }),
+
+  buyerHasFirstName: computed('data.user', function() {
+    return this.get('data.user.firstName') !== null;
+  }),
+
+  buyerHasLastName: computed('data.user', function() {
+    return this.get('data.user.lastName') !== null;
+  }),
   holders: computed('data.attendees', function() {
     this.get('data.attendees').forEach(attendee => {
       attendee.set('firstname', '');
