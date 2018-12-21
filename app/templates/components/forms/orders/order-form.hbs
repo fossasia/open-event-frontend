@@ -20,11 +20,11 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
-      <div class="field {{if buyer.firstName 'disabled'}}">
+      <div class="field {{if buyerHasFirstName 'disabled'}}">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
         {{input type='text' name='first_name' value=buyer.firstName}}
       </div>
-      <div class="field {{if buyer.lastName 'disabled'}}">
+      <div class="field {{if buyerHasLastName 'disabled'}}">
         <label class="required" for="lastname">{{t 'Last Name'}}</label>
         {{input type='text' name='last_name' value=buyer.lastName}}
       </div>
