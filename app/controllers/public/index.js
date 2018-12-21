@@ -22,7 +22,7 @@ export default Controller.extend({
         for (const attendee of attendees ? attendees.toArray() : []) {
           await attendee.save();
         }
-        order.set('attendees', attendees.slice());
+        order.set('attendees', attendees);
         await order.save()
           .then(order => {
             this.get('notify').success(this.get('l10n').t('Order details saved. Please fill further details within 10 minutes.'));
@@ -38,7 +38,7 @@ export default Controller.extend({
             this.set('isLoading', false);
           });
       } catch (e) {
-        this.get('notify').error(this.get('l10n').t(e.errors[0].detail));
+        this.get('notify').error(this.get('l10n').t(e));
       }
     }
   }
