@@ -1,15 +1,15 @@
 <div class="right floated" role="toolbar">
   <div class="ui right floated pagination menu" role="group">
-    <a href="#" {{action 'gotoFirst'}} class="item">
+    <a href="#" {{action 'gotoFirst'}} class="{{if gotoBackwardEnabled '' 'disabled' }} item">
       <i class="{{themeInstance.icons.navFirst}}"></i>
     </a>&nbsp;
-    <a href="#" {{action 'gotoPrev'}} class="item">
+    <a href="#" {{action 'gotoPrev'}} class="{{if gotoBackwardEnabled '' 'disabled' }} item">
       <i class="{{themeInstance.icons.navPrev}}"></i>
     </a>&nbsp;
-    <a href="#" {{action 'gotoNext'}} class="item">
+    <a href="#" {{action 'gotoNext'}} class="{{if gotoForwardEnabled '' 'disabled' }} item">
       <i class="{{themeInstance.icons.navNext}}"></i>
     </a>&nbsp;
-    <a href="#" {{action 'gotoLast'}} class="item">
+    <a href="#" {{action 'gotoLast'}} class="{{if gotoForwardEnabled '' 'disabled' }} item">
       <i class="{{themeInstance.icons.navLast}}"></i>
     </a>
   </div>
