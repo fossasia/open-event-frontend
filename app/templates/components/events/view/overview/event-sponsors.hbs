@@ -6,14 +6,19 @@
   <div class="header">{{t 'Event sponsors'}}</div>
 </div>
 <div class="content">
-  {{events/events-table columns=columns data=data
+  {{events/events-table
+    columns=columns
+    data=data
+    store=store
+    query=query
+    isNotStoreQuery = true
+    modelName = modelName
     useNumericPagination=true
     showGlobalFilter=true
     showPageSize=true
     moveToDetails='moveToDetails'
     editEvent='editEvent'
     deleteSponsor=deleteSponsor
-    isLoading=isLoading
     editSponsor=editSponsor
   }}
 </div>
