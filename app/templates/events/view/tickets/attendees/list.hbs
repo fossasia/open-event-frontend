@@ -1,5 +1,10 @@
 <div class="sixteen column wide">
-  {{events/events-table columns=columns data=model
+  {{events/events-table columns=columns
+                        data=model.data
+                        store=model.store
+                        query=model.query
+                        isNotStoreQuery = true
+                        modelName = model.objectType
                         useNumericPagination=true
                         showGlobalFilter=true
                         showPageSize=true
