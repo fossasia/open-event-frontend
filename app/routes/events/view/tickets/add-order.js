@@ -6,8 +6,12 @@ export default Route.extend({
   },
   async model() {
     const eventDetails = this.modelFor('events.view');
+    let queryObject = {};
     return {
-      tickets: await eventDetails.query('tickets', {}),
+      tickets    : await eventDetails.query('tickets', queryObject),
+      query      : queryObject,
+      store      : eventDetails,
+      objectType : 'tickets',
 
       order: await this.store.createRecord('order', {
         event     : eventDetails,
