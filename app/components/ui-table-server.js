@@ -28,7 +28,7 @@ export default ModelsTable.extend({
     pageSize     : 'page[size]'
   },
 
-  observedProperties: ['currentPageNumber', 'sortProperties.[]', 'pageSize', 'filterString', 'processedColumns.@each.filterString'],
+  observedProperties: ['currentPageNumber', 'pagesCount', 'sortProperties.[]', 'pageSize', 'filterString', 'processedColumns.@each.filterString'],
 
   filteredContent: [],
 
@@ -59,6 +59,17 @@ export default ModelsTable.extend({
       }
     }
     return pages;
+  }),
+
+  gotoForwardEnabled: computed('currentPageNumber', 'pagesCount', function() {
+    let currentPageNumber = get(this, 'currentPageNumber');
+    let pagesCount = get(this, 'pagesCount');
+    return currentPageNumber < pagesCount;
+  }),
+
+  gotoBackwardEnabled: computed('currentPageNumber', function() {
+    let currentPageNumber = get(this, 'currentPageNumber');
+    return currentPageNumber > 1;
   }),
 
   lastIndex: computed('router.currentURL', 'pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
@@ -156,8 +167,25 @@ export default ModelsTable.extend({
       }
     },
 
-    gotoLast() {
+    gotoPrev() {
+      if (!get(this, 'gotoBackwardEnabled')) {
+        return;
+      }
+      let pagesCount = get(this, 'pagesCount');
+      if (pagesCount > 1) {
+        this.decrementProperty('currentPageNumber');
+      }
+    },
+
+    gotoFirst() {
       if (!get(this, 'gotoForwardEnabled')) {
+        return;
+      }
+      set(this, 'currentPageNumber', 1);
+    },
+
+    gotoLast() {
+      if (!get(this, 'gotoBackwardEnabled')) {
         return;
       }
       let pagesCount = get(this, 'pagesCount');
