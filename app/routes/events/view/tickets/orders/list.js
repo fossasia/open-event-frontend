@@ -16,7 +16,7 @@ export default Route.extend({
     }
   },
 
-  model(params) {
+  async model(params) {
     this.set('params', params);
     let filterOptions = [];
     if (params.orders_status !== 'all') {
@@ -28,10 +28,22 @@ export default Route.extend({
         }
       ];
     }
-    return this.modelFor('events.view').query('orders', {
+
+    let queryObject = {
       include      : 'tickets,user',
       filter       : filterOptions,
       'page[size]' : 10
-    });
+    };
+
+    let store = this.modelFor('events.view');
+
+    let data = await store.query('orders', queryObject);
+
+    return {
+      data,
+      store,
+      query      : queryObject,
+      objectType : 'orders'
+    };
   }
 });

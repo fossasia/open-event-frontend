@@ -9,7 +9,7 @@ export default Route.extend({
         return this.get('l10n').t('Inactive');
     }
   },
-  model(params) {
+  async model(params) {
     let filterOptions = [];
     if (params.access_status === 'active') {
       filterOptions = [
@@ -30,9 +30,21 @@ export default Route.extend({
     } else {
       filterOptions = [];
     }
-    return this.modelFor('events.view').query('accessCodes', {
+
+    let queryObject = {
       filter       : filterOptions,
       'page[size]' : 10
-    });
+    };
+
+    let store = this.modelFor('events.view');
+
+    let data = await store.query('accessCodes', queryObject);
+
+    return {
+      data,
+      store,
+      query      : queryObject,
+      objectType : 'accessCodes'
+    };
   }
 });
