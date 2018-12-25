@@ -17,17 +17,17 @@
                'Welcome'}}
           <i class="dropdown icon"></i>
           <div class="menu profile-dropdown-menu">
-            <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
+            <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}<i class="ticket alternate icon"></i></a>
             <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
             <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
             <div class="divider"></div>
-            <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
-            <a href="{{href-to 'settings.contact-info'}}" class="item">{{t 'Settings'}}</a>
+            <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}<i class="address alternate card icon"></i></a>
+            <a href="{{href-to 'settings.contact-info'}}" class="item">{{t 'Settings'}}<i class="sun alternate icon"></i></a>
             {{#if authManager.currentUser.isAnAdmin}}
-              <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+              <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}<i class="user secret alternate icon"></i></a>
             {{/if}}
             <div class="divider"></div>
-            <a role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i class="ui right floated large signout sign out icon"></i></span></a>
+            <a role="button" class="item logout-button" {{action 'logout'}}>{{t 'Logout'}}<i class="sign out alternate icon"></i></a>
           </div>
         {{/ui-dropdown}}
       {{else}}
