@@ -19,7 +19,7 @@ export default Route.extend({
       this.replaceWith('events.view', eventState);
     }
   },
-  model(params) {
+  async model(params) {
     this.set('params', params);
     let filterOptions = [];
     if (params.event_state === 'live') {
@@ -75,10 +75,23 @@ export default Route.extend({
         }
       ];
     }
-    return this.get('authManager.currentUser').query('events', {
+
+    let queryObject =  {
       include      : 'tickets,sessions,speakers,organizers,coorganizers,track-organizers,registrars,moderators',
       filter       : filterOptions,
       'page[size]' : 10
-    });
+    };
+
+    let store = this.get('authManager.currentUser');
+
+    const data = await store.query('events', queryObject);
+
+    return {
+      data,
+      store,
+      query      : queryObject,
+      objectType : 'events'
+    };
+
   }
 });

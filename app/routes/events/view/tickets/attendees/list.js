@@ -19,7 +19,7 @@ export default Route.extend({
         return this.get('l10n').t('All');
     }
   },
-  model(params) {
+  async model(params) {
     this.set('params', params);
     let filterOptions = [];
     if (params.attendees_status === 'checkedIn') {
@@ -54,10 +54,21 @@ export default Route.extend({
       ];
     }
 
-    return this.modelFor('events.view').query('attendees', {
+    let queryObject = {
       include      : 'order.user,user',
       filter       : filterOptions,
       'page[size]' : 10
-    });
+    };
+
+    let store = this.modelFor('events.view');
+
+    let data = await store.query('attendees', queryObject);
+
+    return {
+      data,
+      store,
+      query      : queryObject,
+      objectType : 'attendees'
+    };
   }
 });

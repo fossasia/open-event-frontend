@@ -48,7 +48,11 @@
     </div>
   </div>
   {{#if showComponentFooter}}
-    {{partial themeInstance.components.footer}}
+    <div class="{{themeInstance.classes.tfooter-wrapper}}">
+      <div class="{{themeInstance.classes.pagination-wrapper}}">
+        {{partial themeInstance.components.pagination-simple}}
+      </div>
+    </div>
   {{/if}}
 </div>
 {{yield}}

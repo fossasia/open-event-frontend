@@ -14,6 +14,12 @@ export default ApplicationSerializer.extend({
         self    : `/v1/tickets/${ticket.id}/order-statistics`
       }
     };
+    ticket.relationships.attendees = {
+      links: {
+        related : `/v1/tickets/${ticket.id}/attendees`,
+        self    : `/v1/tickets/${ticket.id}/attendees`
+      }
+    };
     return ticket;
   }
 });

@@ -1,6 +1,12 @@
 <h2 class="ui header">{{t 'Add Order'}}</h2>
 <form class="ui form">
-  {{events/events-table columns=columns data=model.tickets
+  {{events/events-table
+    columns=columns
+    data=model.tickets
+    store=model.store
+    query=model.query
+    isNotStoreQuery = true
+    modelName = model.objectType
     useNumericPagination=true
     showGlobalFilter=true
     showPageSize=true

@@ -5,7 +5,11 @@ import moment from 'moment';
 
 export default Controller.extend({
   isSchedulePublished: computed('model.eventDetails.schedulePublishedOn', function() {
-    return this.get('model.eventDetails.schedulePublishedOn').toISOString() !== moment(0).toISOString();
+    const schedulePublishStatus = this.get('model.eventDetails.schedulePublishedOn');
+    if (schedulePublishStatus != null) {
+      return schedulePublishStatus.toISOString() !== moment(0).toISOString();
+    }
+    return false;
 
   }),
   isLoading : false,
