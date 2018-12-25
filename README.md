@@ -51,13 +51,6 @@ This project has acceptance, integration and unit tests located inside the `test
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-## Deployments
-
-#### Master Branch
-- **Heroku:** https://open-event-frontend.herokuapp.com
-
-#### Development Branch
-- **Heroku:** https://open-event-frontend-dev.herokuapp.com
 
 ## Further Reading / Useful Links
 * [ember.js](https://emberjs.com/)
