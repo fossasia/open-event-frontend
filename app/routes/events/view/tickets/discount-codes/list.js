@@ -9,7 +9,7 @@ export default Route.extend({
         return this.get('l10n').t('Inactive');
     }
   },
-  model(params) {
+  async model(params) {
     this.set('params', params);
     let filterOptions = [];
     if (params.discount_status === 'active') {
@@ -31,9 +31,21 @@ export default Route.extend({
     } else {
       filterOptions = [];
     }
-    return this.modelFor('events.view').query('discountCodes', {
+
+    let queryObject = {
       filter       : filterOptions,
       'page[size]' : 10
-    });
+    };
+
+    let store = this.modelFor('events.view');
+
+    let data = await store.query('discountCodes', queryObject);
+
+    return {
+      data,
+      store,
+      query      : queryObject,
+      objectType : 'discountCodes'
+    };
   }
 });

@@ -11,7 +11,7 @@ export default Route.extend({
         return this.get('l10n').t('Rejected');
     }
   },
-  model(params) {
+  async model(params) {
     this.set('params', params);
     let filterOptions = [];
     if (params.speakers_status === 'pending') {
@@ -65,10 +65,21 @@ export default Route.extend({
     } else {
       filterOptions = [];
     }
-    return this.modelFor('events.view').query('speakers', {
+    let queryObject = {
       include      : 'sessions',
       filter       : filterOptions,
       'page[size]' : 10
-    });
+    };
+
+    let store = this.modelFor('events.view');
+
+    let data = await store.query('speakers', queryObject);
+
+    return {
+      data,
+      store,
+      query      : queryObject,
+      objectType : 'speakers'
+    };
   }
 });
