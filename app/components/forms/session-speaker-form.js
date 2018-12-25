@@ -1,9 +1,10 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { groupBy } from 'lodash';
+import { groupBy, orderBy } from 'lodash';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
   validGithubProfileUrlPattern, validLinkedinProfileUrlPattern } from 'open-event-frontend/utils/validators';
+import { countries } from 'open-event-frontend/utils/dictionary/demography';
 
 export default Component.extend(FormMixin, {
 
@@ -461,6 +462,10 @@ export default Component.extend(FormMixin, {
       }
     };
   },
+
+  countries: computed(function() {
+    return orderBy(countries, 'name');
+  }),
 
   allFields: computed('fields', function() {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
