@@ -51,9 +51,9 @@
             </td>
             <td>$ {{number-format ticket.price}}</td>
             <td>$ {{number-format ticket.discount}}</td>
-            <td>{{ticket.attendees.length}}</td>
+            <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
             <td>
-              $ {{number-format (mult (sub ticket.price ticket.discount) ticket.attendees.length)}}
+              $ {{number-format (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
             </td>
           </tr>
         {{/each}}
