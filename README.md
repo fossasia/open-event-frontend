@@ -2,7 +2,7 @@
 
 <h1  align="center"><u>Open Event Frontend </u></h1>
 
-> UI for the FOSSASIA open-event-server
+> <strong>UI for the FOSSASIA open-event-server</strong>
 
 ![Open Event Frontend](https://storage.googleapis.com/eventyay.com/assets/branding/frontend_branding.png)
 
