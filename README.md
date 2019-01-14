@@ -1,4 +1,4 @@
-<img src="icon.png" align="right" />
+<img src="icon.png" align="right" height="85px" weight="85px" />
 
 <h1  align="center"><u>Open Event Frontend </u></h1>
 
