@@ -1,4 +1,9 @@
-# Open Event Frontend
+<img src="icon.png" align="right" />
+
+<h1  align="center"><u>Open Event Frontend </u></h1>
+
+> UI for the FOSSASIA open-event-server
+
 ![Open Event Frontend](https://storage.googleapis.com/eventyay.com/assets/branding/frontend_branding.png)
 
 [![Build Status](https://travis-ci.org/fossasia/open-event-frontend.svg?branch=development)](https://travis-ci.org/fossasia/open-event-frontend)
