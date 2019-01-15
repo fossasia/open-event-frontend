@@ -1,5 +1,5 @@
 {{#if record.tickets}}
-  <div class="ui bulleted list">
+  <div class="ui list">
     {{#each record.tickets as |ticket|}}
       <div class="item">{{ticket.type}} ({{ticket.orderStatistics.tickets.total}}/{{ticket.quantity}})</div>
     {{/each}}
