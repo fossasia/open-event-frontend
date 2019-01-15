@@ -74,6 +74,7 @@ export default Component.extend(FormMixin, {
             .post('auth/reset-password', payload)
             .then(() => {
               this.set('successMessage', this.get('l10n').t('Please go to the link sent to your email to reset your password'));
+              this.$('input[name=email]').val('')
             })
             .catch(reason => {
               if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 404) {
