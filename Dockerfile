@@ -1,12 +1,16 @@
-FROM danlynn/ember-cli:3.3.0 as builder
+FROM node:10.15-alpine as builder
 LABEL maintainer="Niranjan Rajendran <me@niranjan.io>"
 
 WORKDIR /app
-ADD package.json yarn.lock ./
+
+RUN apk add git python-dev make g++
+
+COPY package.json yarn.lock ./
+
 RUN yarn install
 
-ADD . .
-RUN touch .env && ember build -prod
+COPY . .
+RUN touch .env && JOBS=1 npx ember build -prod
 
 ##
 ##
