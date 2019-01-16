@@ -2,7 +2,7 @@
   {{#unless device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
       <a class="image" href="#">
-        {{widgets/safe-image src=(if order.event.originalImageUrl order.event.originalImageUrl order.event.originalImageUrl)}}
+        {{widgets/safe-image src=(if order.event.thumbnailImageUrl order.event.thumbnailImageUrl order.event.originalImageUrl)}}
       </a>
     </div>
   {{/unless}}
