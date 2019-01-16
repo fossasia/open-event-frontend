@@ -128,6 +128,21 @@ export default Route.extend({
           }
         ]
       });
+    } else {
+      filterOptions.push({
+        or: [
+          {
+            name : 'starts-at',
+            op   : 'ge',
+            val  : new Date()
+          },
+          {
+            name : 'ends-at',
+            op   : 'ge',
+            val  : new Date()
+          }
+        ]
+      });
     }
 
     return this.store.query('event', {
