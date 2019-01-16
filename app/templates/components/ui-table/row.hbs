@@ -17,7 +17,7 @@
             {{#if column.component}}
               {{component column.component data=data record=record column=column table=this}}
             {{else}}
-              {{get record column.propertyName}}
+              {{sanitize (get record column.propertyName)}}
             {{/if}}
           {{/if}}
         {{/if}}
