@@ -6,7 +6,7 @@
 </div>
 <div class="ui raised very padded text container segment">
   {{#each model.session as |session|}}
-    {{public/session-item session=session}}
+    {{{public/session-item session=session}}}
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
