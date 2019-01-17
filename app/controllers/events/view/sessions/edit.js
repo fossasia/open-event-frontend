@@ -4,7 +4,7 @@ export default Controller.extend({
   actions: {
     save() {
       this.set('isLoading', true);
-      this.get('model').save()
+      this.get('model.session').save()
         .then(() => {
           this.get('notify').success(this.get('l10n').t('Session details have been saved'));
           this.transitionToRoute('events.view.sessions');
