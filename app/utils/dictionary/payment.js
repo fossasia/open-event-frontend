@@ -32,14 +32,14 @@ export const paymentCurrencies = [
   {
     paypal : true,
     code   : 'SGD',
-    symbol : 'S$',
+    symbol : 'SG$',
     name   : 'Singapore dollar',
     stripe : true
   },
   {
     paypal : true,
     code   : 'CAD',
-    symbol : '$',
+    symbol : 'C$',
     name   : 'Canadian dollar',
     stripe : true
   },
@@ -137,7 +137,7 @@ export const paymentCurrencies = [
   {
     paypal : true,
     code   : 'AUD',
-    symbol : '$',
+    symbol : 'A$',
     name   : 'Australian dollar',
     stripe : true
   },

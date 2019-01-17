@@ -40,8 +40,7 @@
             {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
               <i class="dropdown icon"></i>
               <div class="default text">
-                {{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
-                  (concat 'Select a ' field.name)}}
+                {{if (get data.session field.fieldIdentifier) (custom-related-field data.session field.fieldIdentifier 'name') (concat 'Select a ' field.name)}}
               </div>
               <div class="menu">
                 {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
