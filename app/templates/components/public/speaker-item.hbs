@@ -15,11 +15,11 @@
     <div class="item">
       <p>
         {{#if speaker.shortBiography}}
-          {{speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
         {{else if speaker.longBiography}}
-          {{speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
         {{else if speaker.speakingExperience}}
-          {{speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
         {{/if}}
       </p>
       <div class="social-icons">
