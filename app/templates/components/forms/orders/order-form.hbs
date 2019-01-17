@@ -102,12 +102,16 @@
           <label class="required" for="zipcode">{{t 'Zip Code'}}</label>
           {{input type='text' id='zip_code' value=data.zipcode}}
         </div>
+        <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          {{t 'Payment Method'}}
+        </h4>
         <div class="field">
-          <label class="required" for="payment_mode">{{t 'Payment Mode'}}</label>
+          <label class="required" for="payment_mode">{{t 'Please choose your payment method'}}</label>
           <div class="grouped inline fields">
             {{#if data.event.isStripeLinked}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Stripe') value='stripe' current=data.paymentMode
+                {{ui-radio name='payment_mode' label=(t 'Stripe') value='Credit Card' current=data.paymentMode
                            onChange=(action (mut data.paymentMode))}}
                 <label for="payment_mode">
                   <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
