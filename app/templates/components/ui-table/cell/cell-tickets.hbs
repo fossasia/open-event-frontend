@@ -1,7 +1,8 @@
 {{#if record.tickets}}
   <div class="ui list">
     {{#each record.tickets as |ticket|}}
-      <div class="item">{{ticket.type}} ({{ticket.orderStatistics.tickets.total}}/{{ticket.quantity}})</div>
+      <div class="item">{{ticket.name}}</div>
+      <div class="item muted text">{{ticket.type}} ({{ticket.orderStatistics.tickets.total}}/{{ticket.quantity}})</div>
     {{/each}}
   </div>
 {{else}}

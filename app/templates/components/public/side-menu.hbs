@@ -1,4 +1,4 @@
-{{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session') (not-eq session.currentRouteName 'public.sessions.list') (not-eq session.currentRouteName 'public.speakers'))}}
+{{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session'))}}
   <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
     {{#if (eq session.currentRouteName 'public.index')}}
       {{#scroll-to href='#info' class='item active'}}
