@@ -22,6 +22,11 @@ export default Route.extend({
             name : 'ends-at',
             op   : 'eq',
             val  : null
+          },
+          {
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
           }
         ]
       }
@@ -39,6 +44,11 @@ export default Route.extend({
             name : 'ends-at',
             op   : 'ne',
             val  : null
+          },
+          {
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
           }
         ]
       }
