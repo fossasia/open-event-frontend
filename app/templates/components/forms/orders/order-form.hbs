@@ -111,7 +111,7 @@
           <div class="grouped inline fields">
             {{#if data.event.isStripeLinked}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Stripe') value='Credit Card' current=data.paymentMode
+                {{ui-radio name='payment_mode' label=(t 'Credit Card') value='stripe' current=data.paymentMode
                            onChange=(action (mut data.paymentMode))}}
                 <label for="payment_mode">
                   <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
