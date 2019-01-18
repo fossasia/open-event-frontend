@@ -5,7 +5,6 @@
         <th>{{t 'Type'}}</th>
         <th class="four wide">{{t 'Sales Ends'}}</th>
         <th class="ui two wide">{{t 'Price'}}</th>
-        <th class="ui two wide">{{t 'Discount'}}</th>
         <th class="one wide">{{t 'Quantity'}}</th>
         <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
       </tr>
@@ -23,8 +22,18 @@
               {{/if}}
             </td>
             <td>{{moment-format ticket.salesEndsAt 'ddd, DD MMMM YY, h:mm A'}}</td>
-            <td id="{{ticket.id}}_price">$ {{number-format ticket.price}}</td>
-            <td id="{{ticket.id}}_discount">$ {{number-format ticket.discount}}</td>
+            {{#if ticket.discount}}
+              <td>
+                <div id="{{ticket.id}}_price" class="strike text">
+                  $ {{number-format ticket.price}}
+                </div>
+                <div id="{{ticket.id}}_discount">
+                  $ {{number-format (sub ticket.price ticket.discount)}}
+                </div>
+              </td>
+            {{else}}
+              <td id="{{ticket.id}}_price">$ {{number-format ticket.price}}</td>
+            {{/if}}
             <td>
               <div class="field">
                 {{#ui-dropdown class='compact selection' forceSelection=false onChange=(action 'updateOrder' ticket) as |execute mapper|}}
