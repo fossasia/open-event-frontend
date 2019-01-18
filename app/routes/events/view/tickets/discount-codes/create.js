@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
+import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
@@ -28,5 +29,11 @@ export default Route.extend({
     allTickets.forEach(ticket => {
       ticket.set('isChecked', false);
     });
+    let currentDiscountCode = model.discountCode;
+    let event = this.modelFor('events.view');
+    currentDiscountCode.set('validFrom', moment().toISOString());
+    currentDiscountCode.set('validTill', event.startsAt);
+    currentDiscountCode.set('minQuantity', 1);
+    currentDiscountCode.set('maxQuantity', 1);
   }
 });
