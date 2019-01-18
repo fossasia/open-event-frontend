@@ -10,7 +10,7 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 COPY . .
-RUN node scripts/l10n.js
+RUN node scripts/l10n.js generate
 RUN touch .env && JOBS=1 npx ember build -prod
 
 ##
