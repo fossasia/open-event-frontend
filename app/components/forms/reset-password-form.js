@@ -55,6 +55,7 @@ export default Component.extend(FormMixin, {
             .patch('auth/reset-password', payload)
             .then(() => {
               this.set('successMessage', this.get('l10n').t('Your password has been reset successfully. Please log in to continue'));
+              this.transitionToRoute('login');
             })
             .catch(() => {
               this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
