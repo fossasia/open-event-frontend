@@ -162,7 +162,7 @@ export default ModelsTable.extend({
   },
 
   pageSizeValues: computed(function() {
-    return A([10, 25, 50]);
+    return A([10, 25, 50, 100, 250, 'All']);
   }),
 
   actions: {
