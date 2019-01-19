@@ -42,7 +42,8 @@ export default Route.extend({
               val  : 'accepted'
             }
           }
-        ]
+        ],
+        'page[size]': 0
       }),
 
       sponsors: await eventDetails.get('sponsors'),
