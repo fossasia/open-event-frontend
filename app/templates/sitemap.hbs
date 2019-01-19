@@ -1,0 +1,73 @@
+<div class='ui secondary pointing menu'>
+  <a class='active item'>
+    Sitemap
+  </a>
+</div>
+
+<div class='ui segment'>
+  <div class='ui grid'>
+    <div class='three column row'>
+      <div class='column'>
+        <h4>General Information</h4>
+        {{#link-to 'index' class='links'}}
+          Home
+        {{/link-to}}
+      </div>
+      <div class='column'>
+        <h4>Open Event</h4>
+        <a href='https://github.com/fossasia/open-event-frontend' class='links'>Github Repository Frontend</a><br>
+        <a href='https://github.com/fossasia/open-event-server' class='links'>Github Repository Server</a><br>
+        <a href='https://blog.fossasia.org' class='links'>Blog</a>
+      </div>
+      <div class='column'>
+        <h4>Account management</h4>
+        {{#link-to 'register' class='links'}}
+          Register
+        {{/link-to}}
+        <br>
+        {{#link-to 'login' class='links'}}
+          Login
+        {{/link-to}}
+        <br>
+        {{#link-to 'reset-password' class='links'}}
+          Reset-password
+        {{/link-to}}
+        <br>
+        {{#link-to 'profile' class='links'}}
+          View Profile
+        {{/link-to}}
+        <br>
+        {{#link-to 'settings' class='links'}}
+          Settings
+        {{/link-to}}
+      </div>
+    </div>
+    <div class='ui section divider'>
+
+    </div>
+    <div class='three column row'>
+      <div class='column'>
+        <h4>Creating Events</h4>
+        {{#link-to 'create' class='links'}}
+          Create Event
+        {{/link-to}}
+        <br>
+
+      </div>
+      <div class='column'>
+        <h4>Managing events</h4>
+        {{#link-to 'events' class='links'}}
+          My Events
+        {{/link-to}}
+        <br>
+        {{#link-to 'my-sessions' class='links'}}
+          My Sessions
+        {{/link-to}}
+        <br>
+        {{#link-to 'my-tickets' class='links'}}
+          My tickets
+        {{/link-to}}
+      </div>
+    </div>
+  </div>
+</div>

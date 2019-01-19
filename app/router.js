@@ -34,6 +34,7 @@ router.map(function() {
   this.route('login');
   this.route('register');
   this.route('reset-password');
+  this.route('sitemap');
   this.route('logout');
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
