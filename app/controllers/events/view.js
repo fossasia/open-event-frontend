@@ -23,6 +23,7 @@ export default Controller.extend({
           }
         })
         .catch(() => {
+          this.set('model.state', state);
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {

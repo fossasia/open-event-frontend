@@ -8,8 +8,6 @@ export default Route.extend({
         return this.get('l10n').t('Upcoming');
       case 'past':
         return this.get('l10n').t('Past');
-      case 'saved':
-        return this.get('l10n').t('Saved');
     }
   },
   model(params) {

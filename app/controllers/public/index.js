@@ -5,6 +5,10 @@ import { htmlSafe } from '@ember/string';
 
 export default Controller.extend({
 
+  queryParams: ['code'],
+
+  code: null,
+
   featuredSpeakers: filterBy('model.speakers', 'isFeatured', true),
 
   nonFeaturedSpeakers: filterBy('model.speakers', 'isFeatured', false),

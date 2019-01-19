@@ -189,14 +189,14 @@ export default ModelsTable.extend({
     },
 
     gotoFirst() {
-      if (!get(this, 'gotoForwardEnabled')) {
+      if (!get(this, 'gotoBackwardEnabled')) {
         return;
       }
       set(this, 'currentPageNumber', 1);
     },
 
     gotoLast() {
-      if (!get(this, 'gotoBackwardEnabled')) {
+      if (!get(this, 'gotoForwardEnabled')) {
         return;
       }
       let pagesCount = get(this, 'pagesCount');

@@ -1,7 +1,7 @@
 {{#ui-accordion}}
   <div class="title">
     <div class="ui">
-      <img alt="speaker" class="ui medium rounded image" src="{{if speaker.photo.iconImageUrl speaker.image '/images/placeholders/avatar.png'}}">
+      <img alt="speaker" class="ui medium rounded image" src="{{if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png'}}">
       <br>
       <h3 class="ui centered header less margin">
         {{speaker.name}}
@@ -15,11 +15,11 @@
     <div class="item">
       <p>
         {{#if speaker.shortBiography}}
-          {{speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
         {{else if speaker.longBiography}}
-          {{speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
         {{else if speaker.speakingExperience}}
-          {{speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
         {{/if}}
       </p>
       <div class="social-icons">
