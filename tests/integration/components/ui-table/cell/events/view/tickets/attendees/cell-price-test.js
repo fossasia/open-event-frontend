@@ -7,7 +7,7 @@ module('Integration | Component | ui table/cell/events/view/tickets/attendees/ce
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{ui-table/cell/events/view/tickets/attendees/cell-price}}`);
+    await render(hbs`{{ui-table/cell/events/view/tickets/attendees/cell-price paymentCurrency='USD'}}`);
     assert.ok(this.element.textContent.trim().includes(''));
   });
 });
