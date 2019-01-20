@@ -21,14 +21,17 @@ export default Component.extend(FormMixin, {
       ticket.set('discount', 0);
     });
     if (discountCode) {
+      let discountCodeTickets = await discountCode.get('tickets');
       let discountType = discountCode.get('type');
       let discountValue = discountCode.get('value');
       tickets.forEach(ticket => {
-        let ticketPrice = ticket.get('price');
-        if (discountType === 'amount') {
-          ticket.set('discount', Math.min(ticketPrice, discountValue));
-        } else {
-          ticket.set('discount', ticketPrice * (discountValue / 100));
+        if (discountCodeTickets.includes(ticket)) {
+          let ticketPrice = ticket.get('price');
+          if (discountType === 'amount') {
+            ticket.set('discount', Math.min(ticketPrice, discountValue));
+          } else {
+            ticket.set('discount', ticketPrice * (discountValue / 100));
+          }
         }
       });
     }
