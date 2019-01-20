@@ -116,6 +116,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
    */
   saveEventDataAndRedirectTo(route, propsToSave = []) {
     this.set('isLoading', true);
+    $('.notification-container').children().hide();
     this.saveEventData(propsToSave)
       .then(data => {
         this.get('notify').success(this.get('l10n').t('Your event has been saved'));
