@@ -9,7 +9,7 @@ export default Controller.extend({
     },
     {
       propertyName : 'startsAt',
-      template     : 'components/ui-table/cell/cell-simple-date',
+      template     : 'components/ui-table/cell/cell-local-date',
       dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Date'
     },
