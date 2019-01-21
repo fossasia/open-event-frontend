@@ -1,4 +1,4 @@
 {{!`record` - row from model, current column is available as `column`}}
 <div class="ui header weight-400">
-  <img src="{{record.logoUrl}}" alt="Event logo" class="ui image"> <br> {{record.name}}
+  <img src="{{if record.logoUrl record.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{record.name}}
 </div>
