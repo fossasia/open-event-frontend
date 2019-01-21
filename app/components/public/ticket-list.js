@@ -39,76 +39,82 @@ export default Component.extend(FormMixin, {
     );
   }),
   actions: {
-    async togglePromotionalCode() {
+    async togglePromotionalCode(queryParam) {
       this.toggleProperty('enterPromotionalCode');
-      if (this.get('enterPromotionalCode')) {
+      if (this.get('enterPromotionalCode') && !queryParam) {
         this.set('promotionalCode', '');
       } else {
-        this.set('promotionalCodeApplied', false);
-        let order = this.get('order');
-        order.set('accessCode', undefined);
-        order.set('discountCode', undefined);
-        this.get('accessCodeTickets').forEach(ticket => {
-          ticket.set('isHidden', true);
-          this.get('tickets').removeObject(ticket);
-        });
-        this.get('discountedTickets').forEach(ticket => {
-          ticket.set('discount', 0);
-        });
-        this.get('accessCodeTickets').clear();
-        this.get('discountedTickets').clear();
+        if (queryParam) {
+          this.set('promotionalCode', queryParam);
+          this.send('applyPromotionalCode');
+        } else {
+          this.set('promotionalCodeApplied', false);
+          this.set('code', null);
+          let order = this.get('order');
+          order.set('accessCode', undefined);
+          order.set('discountCode', undefined);
+          this.get('accessCodeTickets').forEach(ticket => {
+            ticket.set('isHidden', true);
+            this.get('tickets').removeObject(ticket);
+          });
+          this.get('discountedTickets').forEach(ticket => {
+            ticket.set('discount', 0);
+          });
+          this.get('accessCodeTickets').clear();
+          this.get('discountedTickets').clear();
+        }
+
       }
     },
-    applyPromotionalCode() {
-      this.onValid(async() => {
-        let promotionalCode = this.get('promotionalCode');
-        let order = this.get('order');
-        try {
-          let accessCode = await this.get('store').findRecord('access-code', promotionalCode, {});
-          order.set('accessCode', accessCode);
-          let tickets = await accessCode.get('tickets');
-          tickets.forEach(ticket => {
-            ticket.set('isHidden', false);
-            this.get('tickets').addObject(ticket);
-            this.get('accessCodeTickets').addObject(ticket);
-            this.set('invalidPromotionalCode', false);
-          });
-        } catch (e) {
+    async applyPromotionalCode() {
+      let promotionalCode = this.get('promotionalCode');
+      let order = this.get('order');
+      try {
+        let accessCode = await this.get('store').findRecord('access-code', promotionalCode, {});
+        order.set('accessCode', accessCode);
+        let tickets = await accessCode.get('tickets');
+        tickets.forEach(ticket => {
+          ticket.set('isHidden', false);
+          this.get('tickets').addObject(ticket);
+          this.get('accessCodeTickets').addObject(ticket);
+          this.set('invalidPromotionalCode', false);
+        });
+      } catch (e) {
+        this.set('invalidPromotionalCode', true);
+      }
+      try {
+        let discountCode = await this.get('store').findRecord('discount-code', promotionalCode, {
+          include: 'tickets'
+        });
+        let discountType = discountCode.get('type');
+        let discountValue = discountCode.get('value');
+        order.set('discountCode', discountCode);
+        let tickets = await discountCode.get('tickets');
+        tickets.forEach(ticket => {
+          let ticketPrice = ticket.get('price');
+          if (discountType === 'amount') {
+            ticket.set('discount', Math.min(ticketPrice, discountValue));
+            this.get('discountedTickets').addObject(ticket);
+          } else {
+            ticket.set('discount', ticketPrice * (discountValue / 100));
+            this.get('discountedTickets').addObject(ticket);
+          }
+          this.set('invalidPromotionalCode', false);
+        });
+      } catch (e) {
+        if (this.get('invalidPromotionalCode')) {
           this.set('invalidPromotionalCode', true);
         }
-        try {
-          let discountCode = await this.get('store').findRecord('discount-code', promotionalCode, {
-            include: 'tickets'
-          });
-          let discountType = discountCode.get('type');
-          let discountValue = discountCode.get('value');
-          order.set('discountCode', discountCode);
-          let tickets = await discountCode.get('tickets');
-          tickets.forEach(ticket => {
-            let ticketPrice = ticket.get('price');
-            if (discountType === 'amount') {
-              ticket.set('discount', Math.min(ticketPrice, discountValue));
-              this.get('discountedTickets').addObject(ticket);
-            } else {
-              ticket.set('discount', ticketPrice * (discountValue / 100));
-              this.get('discountedTickets').addObject(ticket);
-            }
-            this.set('invalidPromotionalCode', false);
-          });
-        } catch (e) {
-          if (this.get('invalidPromotionalCode')) {
-            this.set('invalidPromotionalCode', true);
-          }
-        }
-        if (this.get('invalidPromotionalCode')) {
-          this.set('promotionalCodeApplied', false);
-          this.notify.error('This Promotional Code is not valid');
-        } else {
-          this.set('promotionalCodeApplied', true);
-          this.set('promotionalCode', 'Promotional code applied successfully');
-        }
-        order.set('amount', this.get('total'));
-      });
+      }
+      if (this.get('invalidPromotionalCode')) {
+        this.set('promotionalCodeApplied', false);
+        this.notify.error('This Promotional Code is not valid');
+      } else {
+        this.set('promotionalCodeApplied', true);
+        this.set('promotionalCode', 'Promotional code applied successfully');
+      }
+      order.set('amount', this.get('total'));
+
     },
     updateOrder(ticket, count) {
       let order = this.get('order');
@@ -145,12 +151,22 @@ export default Component.extend(FormMixin, {
         }
       });
       this.sendAction('save');
+    },
+
+    handleKeyPress() {
+      if (event.code === 'Enter') {
+        this.send('applyPromotionalCode');
+        this.set('code', this.get('promotionalCode'));
+      }
     }
   },
   didInsertElement() {
     this.get('data').forEach(ticket => {
       ticket.set('discount', 0);
     });
+    if (this.get('code')) {
+      this.send('togglePromotionalCode', this.get('code'));
+    }
   },
   getValidationRules() {
     return {
