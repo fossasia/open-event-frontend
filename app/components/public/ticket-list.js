@@ -49,6 +49,7 @@ export default Component.extend(FormMixin, {
           this.send('applyPromotionalCode');
         } else {
           this.set('promotionalCodeApplied', false);
+          this.set('code', null);
           let order = this.get('order');
           order.set('accessCode', undefined);
           order.set('discountCode', undefined);
@@ -150,6 +151,13 @@ export default Component.extend(FormMixin, {
         }
       });
       this.sendAction('save');
+    },
+
+    handleKeyPress() {
+      if (event.code === 'Enter') {
+        this.send('applyPromotionalCode');
+        this.set('code', this.get('promotionalCode'));
+      }
     }
   },
   didInsertElement() {
