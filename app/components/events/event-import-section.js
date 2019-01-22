@@ -29,6 +29,7 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
+        this.get('uploadFile')(event.target.getElementsByTagName('input')[0].files);
       });
     }
   }
