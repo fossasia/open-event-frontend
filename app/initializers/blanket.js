@@ -21,6 +21,7 @@ export function initialize(application) {
   inject('fastboot', 'service:fastboot');
   inject('routing', 'service:-routing');
   inject('cookies', 'service:cookies');
+  inject('infinity', 'service:infinity');
   application.inject('component', 'router', 'service:router');
 }
 
