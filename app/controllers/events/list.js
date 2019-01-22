@@ -22,7 +22,7 @@ export default Controller.extend({
     },
     {
       propertyName     : 'sessionsByState',
-      template         : 'components/ui-table/cell/cell-sessions',
+      template         : 'components/ui-table/cell/cell-sessions-dashboard',
       title            : 'Sessions',
       disableSorting   : true,
       disableFiltering : true
