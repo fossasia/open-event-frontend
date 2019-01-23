@@ -6,16 +6,6 @@ export default Route.extend({
   },
 
   model() {
-    return [{
-      event   : 'Sample Event',
-      tickets : 1,
-      fee     : 20,
-      revenue : 25
-    }, {
-      event   : 'Sample Event2',
-      tickets : 3,
-      fee     : 10,
-      revenue : 40
-    }];
+    return this.store.findAll('admin-sales-fee');
   }
 });
