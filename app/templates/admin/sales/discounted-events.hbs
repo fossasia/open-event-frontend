@@ -14,7 +14,7 @@
               {{t 'Discount Code'}}
             </th>
             <th rowspan="2">
-              {{t 'Marketer'}}
+              {{t 'Marketer Email'}}
             </th>
             <th colspan="2" class="ui green inverted segment center aligned">
               {{t 'Completed Orders '}}
@@ -51,31 +51,31 @@
           {{#each model as |entry|}}
             <tr>
               <td>
-                {{entry.event}}
+                {{entry.eventName}}
               </td>
               <td>
-                {{entry.discountCode}}
+                {{entry.code}}
               </td>
               <td>
-                {{entry.marketer}}
+                {{entry.email}}
               </td>
               <td class="right aligned">
-                {{entry.completedTickets}}
+                {{entry.sales.completed.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.completedSales}}
+                US$ {{number-format entry.sales.completed.sales_total}}
               </td>
               <td class="right aligned">
-                {{entry.placedTickets}}
+                {{entry.sales.placed.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.placedSales}}
+                US$ {{number-format entry.sales.places.sales_total}}
               </td>
               <td class="right aligned">
-                {{entry.pendingTickets}}
+                {{entry.sales.pending.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.pendingSales}}
+                US$ {{number-format entry.sales.pending.sales_total}}
               </td>
             </tr>
           {{/each}}

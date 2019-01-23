@@ -1,13 +1,20 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-import { sumBy } from 'lodash';
 
 export default Controller.extend({
   ticketsTotal: computed(function() {
-    return sumBy(this.get('model'), 'tickets');
+    let sum = 0;
+    this.get('model').forEach(data => {
+      sum += data.ticketCount;
+    });
+    return sum;
   }),
 
   revenueTotal: computed(function() {
-    return sumBy(this.get('model'), 'revenue');
+    let sum = 0;
+    this.get('model').forEach(data => {
+      sum += data.revenue;
+    });
+    return sum;
   })
 });
