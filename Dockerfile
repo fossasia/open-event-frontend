@@ -1,25 +1,32 @@
 FROM node:10.15-alpine as builder
+
 LABEL maintainer="Niranjan Rajendran <me@niranjan.io>"
 
 WORKDIR /app
 
 RUN apk add git python-dev make g++ gettext
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock fastboot/server.js ./
 
 RUN yarn install
 
 COPY . .
-RUN node scripts/l10n.js generate
-RUN touch .env && JOBS=1 npx ember build -prod
+
+RUN  touch .env && node scripts/l10n.js generate  && JOBS=1 npx ember build -prod
 
 ##
 ##
 
-FROM steebchen/nginx-spa:stable
+FROM node:10.15-alpine
 
-COPY --from=builder /app/dist /app
+COPY fastboot /fastboot
 
-EXPOSE 80
+COPY --from=builder /app/dist /fastboot/app
 
-CMD ["nginx"]
+WORKDIR /fastboot
+
+RUN npm install --no-save && cd app && npm install --no-save
+
+EXPOSE 4000
+
+CMD ["node", "server.js"]
