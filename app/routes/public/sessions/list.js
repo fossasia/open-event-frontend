@@ -121,20 +121,20 @@ export default Route.extend({
         filter: [
           {
             and: [
-            {
-              name : 'event',
-              op   : 'has',
-              val  : {
-                name : 'identifier',
-                op   : 'eq',
-                val  : eventDetails.id
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'identifier',
+                  op   : 'eq',
+                  val  : eventDetails.id
+                }
+              },
+              {
+                name : 'state',
+                op : 'eq',
+                val : 'accepted'
               }
-            },
-            {
-              name : 'state',
-              op : 'eq',
-              val : 'accepted'
-            }
             ]
           }
         ]
