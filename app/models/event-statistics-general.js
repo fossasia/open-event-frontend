@@ -8,7 +8,7 @@ export default ModelBase.extend({
   sessions          : attr('number'),
   sessionsPending   : attr('number'),
   sponsors          : attr('number'),
-  sessionsSubmited  : attr('number'),
+  sessionsSubmitted : attr('number'),
   sessionsRejected  : attr('number'),
   sessionsConfirmed : attr('number'),
   identifier        : attr('string'),
