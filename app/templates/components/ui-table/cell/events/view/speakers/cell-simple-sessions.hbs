@@ -2,7 +2,27 @@
   {{#each record.sessions as |session|}}
     {{#if (not eq session.deletedAt)}}
       <div class="item">
-          {{#if (eq session.state "Accepted!")}}
+          {{#if (eq session.state "Accepted")}}
+                    <div class="item">
+            <div class="ui green horizontal label">{{t 'Accepted'}}</div>
+            {{session.title}}
+          </div>
+        {{else if (eq session.state "Confirmed")}}
+          <div class="item">
+            <div class="ui yellow horizontal label">{{t 'Confirmed'}}</div>
+            {{session.title}}
+          </div>
+        {{else if (eq session.state "Pending")}}
+          <div class="item">
+            <div class="ui yellow horizontal label">{{t 'Pending'}}</div>
+            {{session.title}}
+          </div>
+        {{else}}
+          <div class="item">
+            <div class="ui red horizontal label">{{t 'Rejected'}}</div>
+            {{session.title}}
+          </div>
+        {{/if}}
       </div>
     {{/if}}
   {{/each}}
