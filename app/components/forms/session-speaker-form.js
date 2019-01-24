@@ -481,10 +481,6 @@ export default Component.extend(FormMixin, {
     return (this.get('sessions').length === 1);
   }),
 
-  shouldShowNewSpeakerDetails: computed('speakerDetails', 'newSpeakerSelected', function() {
-    return this.get('newSpeakerSelected') && !this.get('speakerDetails');
-  }),
-
   shouldShowNewSessionDetails: computed('sessionDetails', 'newSessionSelected', function() {
     return this.get('newSessionSelected') && !this.get('sessionDetails');
   }),
@@ -496,10 +492,6 @@ export default Component.extend(FormMixin, {
       });
     },
 
-    toggleNewSpeakerSelected(value) {
-      this.set('speakerDetails', false);
-      this.set('newSpeakerSelected', value);
-    },
 
     toggleNewSessionSelected(value) {
       this.set('sessionDetails', false);

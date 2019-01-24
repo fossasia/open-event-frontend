@@ -59,15 +59,22 @@
       {{t 'Speaker details'}}
     </h2>
     <h4>
-      {{t 'Choose an existing speaker'}}
+      {{t 'Choose from existing speaker(s)'}}
     </h4>
-    {{#each speakers as |speaker|}}
-      <div class="field">
-        {{#if speaker.id}}
-          {{ui-radio name='speakerDetails' label=speaker.name value=speaker onChange=(action (mut speakerDetails))}}
-        {{/if}}
+    {{#ui-dropdown class="fluid multiple selection" selected=speakersDetails onChange=(action (mut speakersDetails)) as |execute mapper|}}
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Speakers'}}
       </div>
-    {{/each}}
+      <div class="menu">
+        {{#each speakers as |speaker|}}
+          <div data-value="{{map-value mapper speaker}}" class="item">
+            {{speaker.name}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+
     {{#if noSpeakerExists}}
       <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
     {{/if}}
@@ -75,9 +82,9 @@
       Or
     </div>
     <div class="field">
-      {{ui-radio name='speakerDetails' label=(t 'Add a new Speaker') value=false onChange=(action 'toggleNewSpeakerSelected' true)}}
+      {{ui-checkbox class="toggle" label="Add a new speaker" checked=addNewSpeaker onChange=(action (mut addNewSpeaker))}}
     </div>
-    {{#if shouldShowNewSpeakerDetails}}
+    {{#if addNewSpeaker}}
       {{#each allFields.speaker as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
@@ -256,6 +263,10 @@
       {{/each}}
     {{/if}}
   {{/if}}
+
+
+
+
   <button type="submit" class="ui teal submit button update-changes">
     {{t 'Submit'}}
   </button>
