@@ -1,8 +1,8 @@
-<div class="ui unordered list">
+<div class="ui list">
   {{#each record.sessions as |session|}}
     {{#if (not eq session.deletedAt)}}
       <div class="item">
-        {{session.title}}
+          {{#if (eq session.state "Accepted!")}}
       </div>
     {{/if}}
   {{/each}}
