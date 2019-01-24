@@ -15,10 +15,17 @@ export default Route.extend(AuthenticatedRouteMixin, {
         sort         : 'id'
       }),
       session: await this.get('store').findRecord('session', params.session_id, {
-        include: 'track,session-type'
+        include: 'track,session-type,speakers'
       }),
       tracks       : await eventDetails.query('tracks', {}),
-      sessionTypes : await eventDetails.query('sessionTypes', {})
+      sessionTypes : await eventDetails.query('sessionTypes', {}),
+      speakers     : await eventDetails.query('speakers', {
+        'page[size]': 0
+      }),
+      speaker: await this.get('store').createRecord('speaker', {
+        event : eventDetails,
+        user  : this.get('authManager.currentUser')
+      })
 
     };
   }
