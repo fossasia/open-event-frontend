@@ -43,8 +43,8 @@ export default Route.extend({
               },
               {
                 name : 'state',
-                op : 'eq',
-                val : 'accepted'
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
@@ -76,8 +76,8 @@ export default Route.extend({
               },
               {
                 name : 'state',
-                op : 'eq',
-                val : 'accepted'
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
@@ -109,8 +109,8 @@ export default Route.extend({
               },
               {
                 name : 'state',
-                op : 'eq',
-                val : 'accepted'
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
@@ -132,8 +132,8 @@ export default Route.extend({
               },
               {
                 name : 'state',
-                op : 'eq',
-                val : 'accepted'
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
