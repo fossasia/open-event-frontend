@@ -69,6 +69,9 @@ export default Component.extend(FormMixin, {
     async applyPromotionalCode() {
       let promotionalCode = this.get('promotionalCode');
       let order = this.get('order');
+      if (!this.get('code')) {
+        this.set('code', promotionalCode);
+      }
       try {
         let accessCode = await this.get('store').findRecord('access-code', promotionalCode, {});
         order.set('accessCode', accessCode);
