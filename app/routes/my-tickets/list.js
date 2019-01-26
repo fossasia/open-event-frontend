@@ -12,11 +12,7 @@ export default Route.extend({
   },
   model(params) {
     this.set('params', params);
-    let filterOptions = [{
-      name : 'completed-at',
-      op   : 'ne',
-      val  : null
-    }];
+    let filterOptions = [];
     if (params.ticket_status === 'upcoming') {
       filterOptions.push(
         {
