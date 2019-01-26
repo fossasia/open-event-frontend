@@ -14,10 +14,13 @@ export default Route.extend(ApplicationRouteMixin, {
     return tokens.join(' | ');
   },
 
-  async beforeModel() {
+  async beforeModel(transition) {
     this._super(...arguments);
     await this.get('authManager').initialize();
     await this.get('settings').initialize();
+    if (!transition.intent.url.includes('login')) {
+      this.set('session.previousRouteName', transition.intent.url);
+    }
   },
 
   async model() {
@@ -78,7 +81,6 @@ export default Route.extend(ApplicationRouteMixin, {
       transition.then(() => {
         let params = this._mergeParams(transition.params);
         let url;
-
         // generate doesn't like empty params.
         if (isEmpty(params)) {
           url = transition.router.generate(transition.targetName);

@@ -40,6 +40,11 @@ export default Route.extend({
                 name : 'starts-at',
                 op   : 'lt',
                 val  : moment().endOf('day').toISOString()
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
@@ -68,6 +73,11 @@ export default Route.extend({
                 name : 'starts-at',
                 op   : 'lt',
                 val  : moment().endOf('week').toISOString()
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
@@ -96,6 +106,11 @@ export default Route.extend({
                 name : 'starts-at',
                 op   : 'lt',
                 val  : moment().add('month').toISOString()
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
@@ -105,13 +120,22 @@ export default Route.extend({
       sessions = await this.get('store').query('session', {
         filter: [
           {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
+            and: [
+              {
+                name : 'event',
+                op   : 'has',
+                val  : {
+                  name : 'identifier',
+                  op   : 'eq',
+                  val  : eventDetails.id
+                }
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
+              }
+            ]
           }
         ]
       });

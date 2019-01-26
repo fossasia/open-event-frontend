@@ -20,8 +20,10 @@
           </div>
         </div>
         <div class="ui right aligned column four wide less left padding">
-          <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-          <div class=""><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{#if session.startsAt}}
+            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+            <div class=""><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{/if}}
         </div>
       </div>
       <div class="row">
