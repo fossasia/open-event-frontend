@@ -16,28 +16,64 @@ export default Route.extend({
     if (params.ticket_status === 'upcoming') {
       filterOptions.push(
         {
-          name : 'event',
-          op   : 'has',
-          val  : {
-            name : 'starts-at',
-            op   : 'ge',
-            val  : moment().toISOString()
-          }
-        });
+          and: [
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'starts-at',
+                op   : 'ge',
+                val  : moment().toISOString()
+              }
+            },
+            {
+              or: [
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'completed'
+                },
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'placed'
+                }
+              ]
+            }
+          ]
+        }
+      );
     } else if (params.ticket_status === 'past') {
       filterOptions.push(
         {
-          name : 'event',
-          op   : 'has',
-          val  : {
-            name : 'ends-at',
-            op   : 'lt',
-            val  : moment().toISOString()
-          }
+          and: [
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'starts-at',
+                op   : 'lt',
+                val  : moment().toISOString()
+              }
+            },
+            {
+              or: [
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'completed'
+                },
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'placed'
+                }
+              ]
+            }
+          ]
         }
       );
     }
-
     return this.get('authManager.currentUser').query('orders', {
       include : 'event',
       filter  : filterOptions
