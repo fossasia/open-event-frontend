@@ -1,12 +1,13 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { inject as service } from '@ember/service';
 
 export default Component.extend(FormMixin, {
 
   identification : '',
   password       : '',
   isLoading      : false,
-
+  router         : service(),
   getValidationRules() {
     return {
       inline : true,
@@ -84,8 +85,8 @@ export default Component.extend(FormMixin, {
             })
             .finally(() => {
               this.set('isLoading', false);
-            }
-            );
+              this.get('router').transitionTo('login');
+            });
         }
         this.set('errorMessage', null);
         this.set('successMessage', null);
