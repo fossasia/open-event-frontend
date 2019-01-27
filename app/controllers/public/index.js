@@ -9,6 +9,8 @@ export default Controller.extend({
 
   code: null,
 
+  isLoginModalOpen: false,
+
   featuredSpeakers: filterBy('model.speakers', 'isFeatured', true),
 
   nonFeaturedSpeakers: filterBy('model.speakers', 'isFeatured', false),
@@ -18,6 +20,72 @@ export default Controller.extend({
   }),
 
   actions: {
+    async createNewUserViaEmail(email) {
+      this.set('isLoading', true);
+      let newUser = this.store.createRecord('user', {
+        email,
+        'password': (Math.random() * 10).toString(16)
+      });
+      newUser.save()
+        .then(() => {
+          let credentials = newUser.getProperties('email', 'password'),
+              authenticator = 'authenticator:jwt';
+          credentials.identification = newUser.email;
+          this.get('session')
+            .authenticate(authenticator, credentials)
+            .then(async() => {
+              const tokenPayload = this.get('authManager').getTokenPayload();
+              if (tokenPayload) {
+                this.set('session.skipRedirectOnInvalidation', true);
+                this.get('authManager').persistCurrentUser(
+                  await this.get('store').findRecord('user', tokenPayload.identity)
+                );
+                this.set('isLoginModalOpen', false);
+                this.send('placeOrder');
+              }
+            })
+            .catch(reason => {
+              if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+                if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+                  this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
+                } else {
+                  this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+                }
+                this.set('isLoading', false);
+              } else {
+                console.warn(reason);
+              }
+            })
+            .finally(() => {
+              this.set('session.skipRedirectOnInvalidation', false);
+              this.set('isLoading', false);
+            });
+        });
+
+    },
+
+    async placeOrder() {
+      if (!this.get('session.isAuthenticated')) {
+        this.set('isLoginModalOpen', true);
+        return;
+      }
+      let order = this.get('model.order');
+      let event = order.get('event');
+      order.tickets.forEach(ticket => {
+        let numberOfAttendees = ticket.orderQuantity;
+        while (numberOfAttendees--) {
+          this.get('model.attendees').addObject(this.store.createRecord('attendee', {
+            firstname : 'John',
+            lastname  : 'Doe',
+            email     : 'johndoe@example.com',
+            event,
+            ticket
+          }));
+        }
+      });
+      this.send('save');
+    },
+
     async save() {
       try {
         this.set('isLoading', true);
