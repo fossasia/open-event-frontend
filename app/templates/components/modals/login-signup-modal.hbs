@@ -1,19 +1,37 @@
-<i class="black close icon"></i>
-<div class="header">
-  {{t 'Login or Signup'}}
-</div>
-<div class="content">
-  {{#if (eq session.currentRouteName 'public.cfs.index')}}
-    <h4 class="ui header">{{t 'Please Login or Signup before you can submit a proposal.'}}</h4>
-  {{else if (eq session.currentRouteName 'public.index')}}
-    <h4 class="ui header">{{t 'Please Login or Signup before you can place an order.'}}</h4>
-  {{/if}}
-  <div>
-    {{#link-to 'login' class='ui teal button' invokeAction=(action 'toggleView')}}
-      {{t 'Login'}}
-    {{/link-to}}
-    {{#link-to 'register' class='ui blue button' invokeAction=(action 'toggleView')}}
-      {{t 'Signup'}}
-    {{/link-to}}
+{{#if (eq session.currentRouteName 'public.cfs.index')}}
+  <i class="black close icon"></i>
+  <div class="header">
+    {{t 'Login or Signup'}}
   </div>
-</div>
+  <div class="content">
+    <h4 class="ui header">{{t 'Please Login or Signup before you can submit a proposal.'}}</h4>
+    <div>
+      {{#link-to 'login' class='ui teal button' invokeAction=(action 'toggleView')}}
+        {{t 'Login'}}
+      {{/link-to}}
+      {{#link-to 'register' class='ui blue button' invokeAction=(action 'toggleView')}}
+        {{t 'Signup'}}
+      {{/link-to}}
+    </div>
+  </div>
+{{else if (eq session.currentRouteName 'public.index')}}
+  <i class="black close icon"></i>
+  <h4 class="ui header">{{t 'Please enter your Email address to continue.'}}</h4>
+  <div class="content">
+    {{t 'Have you used Open Event before? Please'}}
+    {{#link-to 'login'  invokeAction=(action 'toggleView')}}
+      {{t 'Login'}}
+    {{/link-to}} {{t 'to continue'}}
+    <form class="ui {{if isLoading 'loading' }} form">
+      <div class="field">
+        <label class="required" for="email">{{t 'E-mail'}}</label>
+        {{input type='text' name="email" value=email  placeholder=(t 'Email Address')}}
+      </div>
+      <button type="submit" class="ui green button" {{action createNewUserViaEmail email}}>
+        {{t 'Continue'}}
+      </button>
+    </form>
+  </div>
+{{/if}}
+
+

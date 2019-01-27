@@ -8,6 +8,11 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | public/ticket list', function(hooks) {
   setupIntegrationTest(hooks);
 
+  hooks.beforeEach(function() {
+    this.actions = {};
+    this.send = (actionName, ...args) => this.actions[actionName].apply(this, args);
+  });
+
   const tickets =  A(
     [
       EmberObject.create({
@@ -47,7 +52,8 @@ module('Integration | Component | public/ticket list', function(hooks) {
   );
   test('it renders', async function(assert) {
     this.set('data', tickets);
-    await render(hbs `{{public/ticket-list data=data eventCurrency='USD'}}`);
+    this.actions.placeOrder = function() { };
+    await render(hbs `{{public/ticket-list data=data placeOrder=(action 'placeOrder') eventCurrency='USD'}}`);
     assert.ok(this.element.innerHTML.trim().includes('Standard Ticket'));
   });
 });

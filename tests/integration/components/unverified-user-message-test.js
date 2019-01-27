@@ -30,19 +30,6 @@ module('Integration | Component | unverified user message', function(hooks) {
   test('it renders', async function(assert) {
 
     let session = EmberObject.create({
-      currentRouteName: 'public.index'
-    });
-
-    this.set('shouldShowMessage', true);
-    this.set('isMailSent', false);
-    this.set('session', session);
-    await render(hbs`{{unverified-user-message shouldShowMessage=shouldShowMessage session=session isMailSent=isMailSent}}`);
-    assert.ok(this.element.innerHTML.trim().includes('To place an order, please verify your account by clicking on the confirmation link that has been emailed to you.'));
-  });
-
-  test('it renders', async function(assert) {
-
-    let session = EmberObject.create({
       currentRouteName: 'else'
     });
 
