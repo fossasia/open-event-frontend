@@ -1,7 +1,7 @@
 <div class="event wide ui grid row">
   {{#unless device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
-      <a class="image" href="#">
+      <a class="image" href="{{href-to 'orders.view' order.identifier}}">
         {{widgets/safe-image src=(if order.event.thumbnailImageUrl order.event.thumbnailImageUrl order.event.originalImageUrl)}}
       </a>
     </div>
