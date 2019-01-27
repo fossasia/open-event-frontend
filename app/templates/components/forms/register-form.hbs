@@ -24,8 +24,8 @@
             {{input type='password' name='password' placeholder=(t 'Password') value=data.password}}
           {{/if}}
           <div class="ui small basic icon buttons">
-            <button class="ui button" id="eye2" {{ action 'showSignupPassword'}}>
-              <i class="eye icon"></i>
+            <button class="ui button" id="eye2">
+              <i class="eye icon" {{ action 'showSignupPassword'}}></i>
             </button>
           </div>
         </div>
@@ -39,8 +39,8 @@
             {{input type='password' name='password_repeat' placeholder=(t 'Re-enter Password') value=password_repeat}}
           {{/if}}
           <div class="ui small basic icon buttons">
-            <button class="ui button" id="eye3" {{ action 'showConfirmPassword'}}>
-              <i class="eye icon"></i>
+            <button class="ui button" id="eye3">
+              <i class="eye icon" {{ action 'showConfirmPassword'}}></i>
             </button>
           </div>
         </div>
