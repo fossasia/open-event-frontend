@@ -35,14 +35,14 @@ export default Controller.extend({
       disableSorting : true
     }
   ],
-  actions:{
-    toggleCheck(attendee){
+  actions: {
+    toggleCheck(attendee) {
       attendee.toggleProperty('isCheckedIn');
       attendee.save()
         .then(() => {
           this.notify.success(this.get('ln10').t('Attendee CheckedIn status modified successfully.'));
         })
-        .catch(()=>{
+        .catch(() => {
           this.notify.error(this.get('ln10').t('An unexpected error has occured'));
         });
     }
