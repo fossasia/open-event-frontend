@@ -89,6 +89,23 @@ export default Controller.extend({
           this.set('isLoading', false);
         });
     },
+    confirmProposal(session, sendEmail) {
+      session.set('sendEmail', sendEmail);
+      session.set('state', 'confirmed');
+      session.set('isMailSent', sendEmail);
+      this.set('isLoading', true);
+      session.save()
+        .then(() => {
+          sendEmail ? this.notify.success(this.get('l10n').t('Session has been confirmed and speaker has been notified via email.'))
+            : this.notify.success(this.get('l10n').t('Session has been confirmed'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
     rejectProposal(session, sendEmail) {
       session.set('sendEmail', sendEmail);
       session.set('state', 'rejected');
