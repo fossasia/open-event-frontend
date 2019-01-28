@@ -39,6 +39,15 @@ export default Route.extend({
                   val  : 'placed'
                 }
               ]
+            },
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              }
             }
           ]
         }
@@ -69,6 +78,15 @@ export default Route.extend({
                   val  : 'placed'
                 }
               ]
+            },
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              }
             }
           ]
         }
