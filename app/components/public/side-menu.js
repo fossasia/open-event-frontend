@@ -1,4 +1,6 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
+import moment from 'moment';
 
 export default Component.extend({
   async didInsertElement() {
@@ -6,5 +8,8 @@ export default Component.extend({
     let speakersCall = await this.get('event.speakersCall');
     this.set('shouldShowCallforSpeakers',
       speakersCall.announcement && (speakersCall.privacy === 'public'));
-  }
+  },
+  isSchedulePublished: computed('event.schedulePublishedOn', function() {
+    return this.get('event.schedulePublishedOn').toISOString() !== moment(0).toISOString();
+  })
 });
