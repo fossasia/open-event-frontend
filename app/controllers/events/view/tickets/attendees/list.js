@@ -36,7 +36,7 @@ export default Controller.extend({
     }
   ],
   actions: {
-    toggleCheck(attendee) {
+    toggleCheckIn(attendee) {
       attendee.toggleProperty('isCheckedIn');
       attendee.save()
         .then(() => {
