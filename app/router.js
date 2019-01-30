@@ -98,6 +98,7 @@ router.map(function() {
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
+    this.route('role-invite');
   });
   this.route('profile');
 
