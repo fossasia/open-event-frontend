@@ -53,6 +53,12 @@ export default Controller.extend({
       disableSorting : true
     },
     {
+      propertyName   : 'is-featured',
+      template       : 'components/ui-table/cell/admin/event-is-featured',
+      title          : 'Featured Event',
+      disableSorting : true
+    },
+    {
       template       : 'components/ui-table/cell/cell-buttons',
       title          : 'Actions',
       disableSorting : true
@@ -85,6 +91,16 @@ export default Controller.extend({
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });
       this.set('isEventDeleteModalOpen', false);
+    },
+    toggleFeatured(event) {
+      event.toggleProperty('isFeatured');
+      event.save()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Event details modified successfully'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        });
     }
   }
 });
