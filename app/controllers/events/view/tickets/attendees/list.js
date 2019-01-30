@@ -34,5 +34,17 @@ export default Controller.extend({
       template       : 'components/ui-table/cell/events/view/tickets/attendees/cell-action',
       disableSorting : true
     }
-  ]
+  ],
+  actions: {
+    toggleCheckIn(attendee) {
+      attendee.toggleProperty('isCheckedIn');
+      attendee.save()
+        .then(() => {
+          this.notify.success(this.get('ln10').t('Attendee CheckedIn status modified successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('ln10').t('An unexpected error has occured'));
+        });
+    }
+  }
 });
