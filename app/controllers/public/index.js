@@ -11,6 +11,8 @@ export default Controller.extend({
 
   isLoginModalOpen: false,
 
+  userExists: false,
+
   featuredSpeakers: filterBy('model.speakers', 'isFeatured', true),
 
   nonFeaturedSpeakers: filterBy('model.speakers', 'isFeatured', false),
@@ -24,7 +26,8 @@ export default Controller.extend({
       this.set('isLoading', true);
       let newUser = this.store.createRecord('user', {
         email,
-        'password': (Math.random() * 10).toString(16)
+        'password'               : (Math.random() * 10).toString(16),
+        'wasRegisteredWithOrder' : true
       });
       newUser.save()
         .then(() => {
@@ -45,21 +48,61 @@ export default Controller.extend({
               }
             })
             .catch(reason => {
-              if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
-                if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
-                  this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
-                } else {
-                  this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
-                }
-                this.set('isLoading', false);
-              } else {
-                console.warn(reason);
-              }
+              console.warn(reason);
             })
             .finally(() => {
               this.set('session.skipRedirectOnInvalidation', false);
-              this.set('isLoading', false);
             });
+        })
+        .catch(error => {
+          if (error.errors[0]) {
+            if (error.errors[0].status === 409) {
+              this.set('userExists', true);
+            } else {
+              this.get('notify').error(this.get('l10n').t(error.errors[0].detail));
+            }
+          }
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+
+    },
+
+    async loginExistingUser(identification, password) {
+      this.set('isLoading', true);
+      let credentials = {
+        identification,
+        password
+      };
+      let authenticator = 'authenticator:jwt';
+      this.get('session')
+        .authenticate(authenticator, credentials)
+        .then(async() => {
+          const tokenPayload = this.get('authManager').getTokenPayload();
+          if (tokenPayload) {
+            this.set('session.skipRedirectOnInvalidation', true);
+            this.get('authManager').persistCurrentUser(
+              await this.get('store').findRecord('user', tokenPayload.identity)
+            );
+            this.set('isLoginModalOpen', false);
+            this.send('placeOrder');
+          }
+        })
+        .catch(reason => {
+          if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+            if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+              this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
+            } else {
+              this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+            }
+          } else {
+            console.warn(reason);
+          }
+        })
+        .finally(() => {
+          this.set('session.skipRedirectOnInvalidation', false);
+          this.set('isLoading', false);
         });
 
     },
