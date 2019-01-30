@@ -38,7 +38,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, Cac
   }),
 
   isInvalid(statusCode) {
-    if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403) {
+    if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403 && statusCode !== 409) {
       this.get('notify').error('An unexpected error occurred.', {
         closeAfter: 5000
       });
