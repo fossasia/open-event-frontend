@@ -49,6 +49,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketingEnabled        : attr('boolean', { defaultValue: true }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
+  isFeatured                : attr('boolean', { defaultValue: true })
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
