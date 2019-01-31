@@ -4,6 +4,7 @@
     columns=columns
     data=model.tickets
     store=model.store
+    paymentCurrency=model.store.paymentCurrency
     query=model.query
     isNotStoreQuery = true
     modelName = model.objectType
@@ -15,7 +16,7 @@
   <div class="ui grid stackable">
     <div class="row">
       <div class="sixteen wide column right aligned">
-        <h5 class="ui header">{{t 'Grand Total'}}: US$ {{total}}</h5>
+        <h5 class="ui header">{{t 'Grand Total'}}: {{currency-symbol model.store.paymentCurrency}} {{total}}</h5>
       </div>
     </div>
     <div class="row">
