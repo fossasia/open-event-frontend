@@ -125,4 +125,10 @@
   </div>
 </form>
 
-{{modals/login-signup-modal isOpen=isLoginModalOpen isLoading=isLoading createNewUserViaEmail=createNewUserViaEmail}}
+{{modals/login-signup-modal isOpen=isLoginModalOpen
+                            isLoading=isLoading
+                            createNewUserViaEmail=createNewUserViaEmail
+                            loginExistingUser=loginExistingUser
+                            userExists=userExists
+                            errorMessage=errorMessage
+}}

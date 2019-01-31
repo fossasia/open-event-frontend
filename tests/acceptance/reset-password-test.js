@@ -15,6 +15,6 @@ module('Acceptance | reset password', function(hooks) {
   test('visiting /reset-password after login', async function(assert) {
     await login(assert);
     await visit('/reset-password');
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/reset-password');
   });
 });

@@ -16,21 +16,38 @@
   </div>
 {{else if (eq session.currentRouteName 'public.index')}}
   <i class="black close icon"></i>
-  <h4 class="ui header">{{t 'Please enter your Email address to continue.'}}</h4>
-  <div class="content">
-    {{t 'Have you used Open Event before? Please'}}
-    {{#link-to 'login'  invokeAction=(action 'toggleView')}}
-      {{t 'Login'}}
-    {{/link-to}} {{t 'to continue'}}
-    <form class="ui {{if isLoading 'loading' }} form">
-      <div class="field">
-        <label class="required" for="email">{{t 'E-mail'}}</label>
-        {{input type='text' name="email" value=email  placeholder=(t 'Email Address')}}
-      </div>
-      <button type="submit" class="ui green button" {{action createNewUserViaEmail email}}>
-        {{t 'Continue'}}
-      </button>
-    </form>
+  <div class="ui basic compact segment">
+    <div class="content">
+      <form class="ui {{if isLoading 'loading' }} form">
+        {{#if errorMessage}}
+          <div class="ui negative message">
+            <p>{{errorMessage}}</p>
+          </div>
+        {{/if}}
+        <h4 class="ui header">{{t 'Please enter your email address to continue.'}}</h4>
+        <div class="field">
+          {{input type='text' name="email" value=email  disabled=userExists placeholder=(t 'Email Address')}}
+        </div>
+        {{#if userExists}}
+          <div class="ui text muted">{{t 'You have previously registered with this email address.'}}</div>
+          <div class="field">
+            <label class="required" for="password">{{t 'Please enter your password to continue.'}}</label>
+            {{input type='password' name="password" value=password}}
+          </div>
+          <div class="ui center aligned segment basic">
+            <a href="{{href-to 'reset-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
+          </div>
+          <button type="submit" class="ui blue button" {{action loginExistingUser email password}}>
+            {{t 'Sign In'}}
+          </button>
+        {{else}}
+          <button type="submit" class="ui green button" {{action createNewUserViaEmail email}}>
+            {{t 'Continue'}}
+          </button>
+        {{/if}}
+
+      </form>
+    </div>
   </div>
 {{/if}}
 
