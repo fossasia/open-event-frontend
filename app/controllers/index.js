@@ -30,7 +30,7 @@ export default Controller.extend({
       return false;
     });
   }),
-  
+
   actions: {
     shareEvent(event) {
       this.set('eventToShare', event);
