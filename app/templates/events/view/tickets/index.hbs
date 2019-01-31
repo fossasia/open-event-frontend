@@ -4,7 +4,7 @@
   </div>
   <div class="ui {{if device.isMobile 'horizontal'}} three statistics">
     <div class="statistic"><div class="value">{{model.orderStats.orders.completed}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{number-format model.orderStats.sales.completed}}</div><div class="label">{{t 'Sales ('}}{{currency-symbol model.eventDetail.paymentCurrency}}{{')'}}</div></div>
+    <div class="statistic"><div class="value">{{number-format model.orderStats.sales.completed}}</div><div class="label">{{t 'Sales '}}({{currency-symbol model.eventDetail.paymentCurrency}})</div></div>
     <div class="statistic"><div class="value">{{model.orderStats.tickets.completed}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
@@ -22,7 +22,7 @@
         <th>{{t 'Order Status'}}</th>
         <th class="right aligned">{{t 'Total Tickets'}}</th>
         <th class="right aligned">{{t 'Total Orders'}}</th>
-        <th class="right aligned">{{t 'Total Sales ('}}{{currency-symbol model.eventDetail.paymentCurrency}}{{')'}} </th>
+        <th class="right aligned">{{t 'Total Sales' }}({{currency-symbol model.eventDetail.paymentCurrency}}) </th>
         <th>{{t 'View Reports'}}</th>
       </tr>
       <tr>
