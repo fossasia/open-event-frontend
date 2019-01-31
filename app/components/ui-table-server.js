@@ -5,7 +5,7 @@ import { run } from '@ember/runloop';
 import { A } from '@ember/array';
 import ModelsTable from 'open-event-frontend/components/ui-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
-import { merge } from 'lodash';
+import { merge, kebabCase } from 'lodash';
 
 export default ModelsTable.extend({
 
@@ -165,9 +165,9 @@ export default ModelsTable.extend({
       });
   },
 
-  sortingWrapper(query, sortBy, sortDirection) {
+  sortingWrapper(query, sortBy) {
     query[get(this, 'filterQueryParameters.sort')] = sortBy;
-    query[get(this, 'filterQueryParameters.sortDirection')] = sortDirection;
+    // query[get(this, 'filterQueryParameters.sortDirection')] = sortDirection;
 
     return query;
   },
@@ -230,13 +230,14 @@ export default ModelsTable.extend({
         desc : ''
       };
       let sortedBy = get(column, 'sortedBy');
-      if (typeOf(sortedBy) === 'undefined') {
+      if (typeOf(sortedBy) === 'undefined' || typeOf(sortedBy) === 'null') {
         sortedBy = get(column, 'propertyName');
       }
       if (!sortedBy) {
         return;
       }
 
+      sortedBy = kebabCase(sortedBy);
       let currentSorting = get(column, 'sorting');
       sortedBy = `${sortSign[currentSorting]}${sortedBy}`;
       let newSorting = sortMap[currentSorting.toLowerCase()];
