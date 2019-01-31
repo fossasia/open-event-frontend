@@ -11,16 +11,14 @@ export default Controller.extend({
       title        : 'Trigger'
     },
     {
-      subject  : 'emailSubject',
-      message  : 'emailMessage',
-      title    : 'Email Message',
-      template : 'components/ui-table/cell/cell-title-message'
+      propertyName : 'email',
+      title        : 'Email Message',
+      template     : 'components/ui-table/cell/admin/messages/cell-email-sanitize'
     },
     {
-      subject  : 'notificationTitle',
-      message  : 'notificationMessage',
-      title    : 'Notification Message',
-      template : 'components/ui-table/cell/cell-title-message'
+      propertyName : 'notification',
+      title        : 'Notification Message',
+      template     : 'components/ui-table/cell/admin/messages/cell-notification-sanitize'
     },
     {
       title    : 'Options',
