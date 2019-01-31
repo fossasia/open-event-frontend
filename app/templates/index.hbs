@@ -11,7 +11,12 @@
   {{else}}
     <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
   {{/if}}
+  {{#infinity-loader infinityModel=filteredEvents}}
 
+    <div class="ui loading very padded basic segment">
+    </div>
+    {{infintyModel.reachedInfinity}}
+  {{/infinity-loader}}
   {{#if callForSpeakersEvents}}
     <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">

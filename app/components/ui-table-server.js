@@ -113,11 +113,26 @@ export default ModelsTable.extend({
       delete query[[get(this, 'filterQueryParameters.sortDirection')]];
     }
 
-    let globalFilter = get(this, 'filterQueryParameters.globalFilter');
-    if (filterString) {
-      query[globalFilter] = filterString;
+    // let globalFilter = get(this, 'filterQueryParameters.globalFilter');
+    // if (filterString) {
+    //   query[globalFilter] = filterString;
+    // } else {
+    //   delete query[globalFilter];
+    // }
+
+    let globalFilter = get(this, 'customGlobalFilter');
+    if (globalFilter) {
+      query.filter.pushObject({
+        name : globalFilter,
+        op   : 'ilike',
+        val  : `%${filterString}%`
+      });
     } else {
-      delete query[globalFilter];
+      query.filter.removeObject({
+        name : globalFilter,
+        op   : 'ilike',
+        val  : `%${filterString}%`
+      });
     }
 
     columns.forEach(column => {

@@ -1,4 +1,4 @@
-<form class="ui form">
+<form class="ui form" {{action on='submit' preventDefault=true}}>
   <table class="ui very basic compact table" style="margin-bottom: 0">
     <thead class="full-width">
       <tr>
@@ -76,7 +76,12 @@
         <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
           <div class="field">
             <div class="ui action fluid input">
-              {{input type='text' name='promotional_code' value=promotionalCode placeholder=(t 'Promotional Code') readonly=promotionalCodeApplied}}
+              {{input type='text' name='promotional_code'
+                      value=promotionalCode
+                      placeholder=(t 'Promotional Code')
+                      readonly=promotionalCodeApplied
+                      key-up=(action 'handleKeyPress')
+              }}
               {{#unless promotionalCodeApplied}}
                 <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
                   <i class="checkmark icon"></i>
@@ -112,7 +117,7 @@
         <i class="colored visa link icon"></i>
       </div>
       <div class="ui less padding three wide computer four wide tablet column right aligned floated">
-        <button id="total" class="ui primary small button less right margin" disabled={{shouldDisableOrderButton}} {{action 'placeOrder'}}>
+        <button id="total" class="ui primary small button less right margin" disabled={{shouldDisableOrderButton}} {{action placeOrder}}>
           {{t 'Order Now'}}
         </button>
       </div>
@@ -120,4 +125,10 @@
   </div>
 </form>
 
-{{modals/login-signup-modal isOpen=isLoginModalOpen}}
+{{modals/login-signup-modal isOpen=isLoginModalOpen
+                            isLoading=isLoading
+                            createNewUserViaEmail=createNewUserViaEmail
+                            loginExistingUser=loginExistingUser
+                            userExists=userExists
+                            errorMessage=errorMessage
+}}
