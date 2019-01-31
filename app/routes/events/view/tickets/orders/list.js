@@ -45,5 +45,10 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'orders'
     };
+  },
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
 });
