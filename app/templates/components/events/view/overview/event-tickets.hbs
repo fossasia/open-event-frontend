@@ -25,6 +25,7 @@
       <tr>
         <th>{{t 'Type'}}</th>
         <th>{{t 'Sold'}}</th>
+        <th>{{t 'Total'}}</th>
         <th>{{t 'Available'}}</th>
       </tr>
     </thead>
@@ -34,6 +35,7 @@
           <td>{{ticket.name}}</td>
           <td>{{ticket.orderStatistics.tickets.completed}}</td>
           <td>{{ticket.quantity}}</td>
+          <td>{{sub ticket.quantity ticket.orderStatistics.tickets.completed}}</td>
         </tr>
       {{/each}}
     </tbody>
