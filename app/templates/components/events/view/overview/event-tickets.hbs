@@ -7,15 +7,15 @@
     <tbody>
       <tr>
         <td>{{t 'Total tickets sold'}}</td>
-        <td>{{data.orderStat.tickets.total}}</td>
+        <td>{{data.orderStat.tickets.completed}}</td>
       </tr>
       <tr>
         <td>{{t 'No. of orders'}}</td>
-        <td>{{data.orderStat.orders.total}}</td>
+        <td>{{data.orderStat.orders.completed}}</td>
       </tr>
       <tr>
         <td>{{t 'Sales (amount)'}}</td>
-        <td>US$ {{number-format data.orderStat.sales.total}}</td>
+        <td>US$ {{number-format data.orderStat.sales.completed}}</td>
       </tr>
     </tbody>
   </table>
@@ -25,6 +25,7 @@
       <tr>
         <th>{{t 'Type'}}</th>
         <th>{{t 'Sold'}}</th>
+        <th>{{t 'Total'}}</th>
         <th>{{t 'Available'}}</th>
       </tr>
     </thead>
@@ -32,8 +33,9 @@
       {{#each data.tickets as |ticket|}}
         <tr>
           <td>{{ticket.name}}</td>
-          <td>{{ticket.orderStatistics.tickets.total}}</td>
+          <td>{{ticket.orderStatistics.tickets.completed}}</td>
           <td>{{ticket.quantity}}</td>
+          <td>{{sub ticket.quantity ticket.orderStatistics.tickets.completed}}</td>
         </tr>
       {{/each}}
     </tbody>
