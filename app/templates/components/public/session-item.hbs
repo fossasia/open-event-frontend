@@ -37,6 +37,7 @@
     {{#each session.speakers as |speaker|}}
       <h3 class="ui header">{{speaker.name}}</h3>
       <p>
+        <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.image '/images/placeholders/avatar.png'}}">
         {{#if speaker.shortBiography}}
           <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
           {{speaker.shortBiography}}
