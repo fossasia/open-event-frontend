@@ -6,8 +6,9 @@ export default Route.extend({
   },
   async model() {
     return {
-      orderStats : await this.modelFor('events.view').query('orderStatistics', {}),
-      tickets    : await this.modelFor('events.view').query('tickets', {})
+      orderStats  : await this.modelFor('events.view').query('orderStatistics', {}),
+      tickets     : await this.modelFor('events.view').query('tickets', {}),
+      eventDetail : await this.modelFor('events.view')
     };
   }
 });
