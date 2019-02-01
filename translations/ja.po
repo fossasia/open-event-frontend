@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  v1\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-20 23:55+0530\n"
+"POT-Creation-Date: 2019-01-31 16:31+0800\n"
 "PO-Revision-Date: 2017-03-18 02:59+0000\n"
 "Last-Translator: Yohei Yasukawa <yasulab@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/open-event/organizer-server/ja/>\n"
@@ -19,41 +19,188 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "Generated-By: Babel 2.3.4\n"
 
+#: app/components/events/event-import-section.js:17
+#: app/components/forms/admin/content/translation-form.js:17
+msgid "Please upload a file"
+msgstr ""
+
+#: app/components/events/event-import-section.js:22
+#: app/components/forms/admin/content/translation-form.js:22
+msgid "Please upload a file in suggested format"
+msgstr ""
+
+#: app/components/events/view/export/api-response.js:42
+msgid "Could not fetch from the server"
+msgstr ""
+
+#: app/components/events/view/export/download-common.js:32
+#: app/controllers/events/view/sessions.js:36
+#: app/controllers/events/view/speakers.js:30
+#: app/controllers/events/view/tickets/attendees.js:30
+#: app/controllers/events/view/tickets/orders.js:30
+msgid "Download Ready"
+msgstr ""
+
+#: app/components/events/view/export/download-common.js:36
+#: app/controllers/events/view/sessions.js:39
+#: app/controllers/events/view/speakers.js:33
+#: app/controllers/events/view/tickets/attendees.js:33
+#: app/controllers/events/view/tickets/orders.js:33
+msgid "Task is going on."
+msgstr ""
+
+#: app/components/events/view/export/download-common.js:39
+#: app/components/events/view/export/download-common.js:44
+msgid "Task failed."
+msgstr ""
+
+#: app/components/events/view/export/download-common.js:61
+#: app/controllers/events/view/export.js:52
+msgid "Unexpected error occurred."
+msgstr ""
+
+#: app/components/events/view/overview/manage-roles.js:32
+msgid "Role Invite sent successfully"
+msgstr ""
+
+#: app/components/events/view/overview/manage-roles.js:32
+msgid "Role Invite updated successfully"
+msgstr ""
+
+#: app/components/events/view/overview/manage-roles.js:35
+#: app/components/events/view/overview/manage-roles.js:49
+#: app/components/forms/admin/settings/ticket-fees-form.js:40
+#: app/components/widgets/forms/file-upload.js:29
+#: app/controllers/events/view/sessions/create.js:18
+#: app/controllers/events/view/sessions/create.js:25
+#: app/controllers/events/view/sessions/create.js:37
+#: app/controllers/events/view/speakers/create.js:21
+#: app/controllers/events/view/speakers/edit.js:13
+#: app/controllers/events/view/tickets/add-order.js:88
+#: app/controllers/events/view/tickets/add-order.js:94
+#: app/controllers/orders/new.js:36
+#: app/controllers/public/cfs/edit-session.js:13
+#: app/controllers/public/cfs/edit-speaker.js:13
+#: app/controllers/public/cfs/new-session.js:13
+#: app/controllers/public/cfs/new-speaker.js:13
+msgid "Oops something went wrong. Please try again"
+msgstr ""
+
+#: app/components/events/view/overview/manage-roles.js:45
+msgid "Role Invite deleted successfully"
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:17
+#: app/components/forms/session-speaker-form.js:182
+msgid "Please enter a name"
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:26
+#: app/components/forms/session-speaker-form.js:26
+msgid "Please enter a title"
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:35
+msgid "Please enter the path"
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:40
+msgid "Path should not contain leading slash."
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:44
+msgid "Path should not contain whitespaces."
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:53
+msgid "Please select a place"
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:62
+#: app/components/forms/session-speaker-form.js:252
+msgid "Please enter a position"
+msgstr ""
+
+#: app/components/forms/admin/content/pages-form.js:71
+#: app/components/forms/session-speaker-form.js:98
+msgid "Please enter a language"
+msgstr ""
+
 #: app/components/forms/admin/content/social-links-form.js:20
-#: app/components/forms/admin/content/social-links-form.js:30
-#: app/components/forms/admin/content/social-links-form.js:40
+#: app/components/forms/admin/content/social-links-form.js:35
 #: app/components/forms/admin/content/social-links-form.js:50
-#: app/components/forms/admin/content/social-links-form.js:60
-#: app/components/forms/admin/content/social-links-form.js:70
+#: app/components/forms/admin/content/social-links-form.js:65
+#: app/components/forms/admin/content/social-links-form.js:80
+#: app/components/forms/admin/content/social-links-form.js:95
+#: app/components/forms/orders/order-form.js:228
+#: app/components/forms/orders/order-form.js:242
+#: app/components/forms/orders/order-form.js:253
+#: app/components/forms/orders/order-form.js:267
+#: app/components/forms/session-speaker-form.js:112
+#: app/components/forms/session-speaker-form.js:123
+#: app/components/forms/session-speaker-form.js:137
+#: app/components/forms/session-speaker-form.js:148
+#: app/components/forms/session-speaker-form.js:162
+#: app/components/forms/session-speaker-form.js:173
+#: app/components/forms/session-speaker-form.js:223
+#: app/components/forms/session-speaker-form.js:234
+#: app/components/forms/session-speaker-form.js:347
+#: app/components/forms/session-speaker-form.js:358
+#: app/components/forms/wizard/basic-details-step.js:70
+#: app/components/forms/wizard/basic-details-step.js:307
 msgid "Please enter a valid url"
 msgstr ""
 
-#: app/components/forms/admin/settings/images-form.js:19
-#: app/components/forms/admin/settings/images-form.js:46
-#: app/components/forms/admin/settings/images-form.js:73
-#: app/components/forms/admin/settings/images-form.js:100
+#: app/components/forms/admin/content/social-links-form.js:30
+msgid "Please enter a valid twitter url"
+msgstr ""
+
+#: app/components/forms/admin/content/social-links-form.js:45
+msgid "Please enter a valid facebook url"
+msgstr ""
+
+#: app/components/forms/admin/content/social-links-form.js:60
+msgid "Please enter a valid google plus url"
+msgstr ""
+
+#: app/components/forms/admin/content/social-links-form.js:75
+msgid "Please enter a valid youtube url"
+msgstr ""
+
+#: app/components/forms/admin/content/social-links-form.js:90
+msgid "Please enter a valid github url"
+msgstr ""
+
+#: app/components/forms/admin/content/translation-form.js:31
+msgid "Please select a language"
+msgstr ""
+
+#: app/components/forms/admin/settings/images-form.js:17
+#: app/components/forms/admin/settings/images-form.js:44
+#: app/components/forms/admin/settings/images-form.js:71
+#: app/components/forms/admin/settings/images-form.js:98
 msgid "Please enter width"
 msgstr ""
 
-#: app/components/forms/admin/settings/images-form.js:28
-#: app/components/forms/admin/settings/images-form.js:55
-#: app/components/forms/admin/settings/images-form.js:82
-#: app/components/forms/admin/settings/images-form.js:109
+#: app/components/forms/admin/settings/images-form.js:26
+#: app/components/forms/admin/settings/images-form.js:53
+#: app/components/forms/admin/settings/images-form.js:80
+#: app/components/forms/admin/settings/images-form.js:107
 msgid "Please enter height"
 msgstr ""
 
-#: app/components/forms/admin/settings/images-form.js:37
-#: app/components/forms/admin/settings/images-form.js:64
-#: app/components/forms/admin/settings/images-form.js:91
-#: app/components/forms/admin/settings/images-form.js:127
-#: app/components/forms/admin/settings/images-form.js:145
-#: app/components/forms/admin/settings/images-form.js:163
+#: app/components/forms/admin/settings/images-form.js:35
+#: app/components/forms/admin/settings/images-form.js:62
+#: app/components/forms/admin/settings/images-form.js:89
+#: app/components/forms/admin/settings/images-form.js:125
+#: app/components/forms/admin/settings/images-form.js:143
+#: app/components/forms/admin/settings/images-form.js:161
 msgid "Please enter quality"
 msgstr ""
 
-#: app/components/forms/admin/settings/images-form.js:118
-#: app/components/forms/admin/settings/images-form.js:136
-#: app/components/forms/admin/settings/images-form.js:154
+#: app/components/forms/admin/settings/images-form.js:116
+#: app/components/forms/admin/settings/images-form.js:134
+#: app/components/forms/admin/settings/images-form.js:152
 msgid "Please enter size"
 msgstr ""
 
@@ -61,297 +208,660 @@ msgstr ""
 msgid "Please enter a valid URL for Android app"
 msgstr ""
 
-#: app/components/forms/admin/settings/microservices-form.js:30
+#: app/components/forms/admin/settings/microservices-form.js:31
 msgid "Please enter a valid URL for web app"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:18
+#: app/components/forms/admin/settings/payment-gateway-form.js:17
 msgid "Please enter the client ID"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:28
+#: app/components/forms/admin/settings/payment-gateway-form.js:27
 msgid "Please enter the secret key"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:38
+#: app/components/forms/admin/settings/payment-gateway-form.js:37
 msgid "Please enter the publishable key"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:48
-msgid "Please enter the sadnbox username"
+#: app/components/forms/admin/settings/payment-gateway-form.js:47
+msgid "Please enter the sandbox client id"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:58
-msgid "Please enter the sandbox password"
+#: app/components/forms/admin/settings/payment-gateway-form.js:57
+msgid "Please enter the sandbox secret token"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:68
-msgid "Please enter the sandbox signature"
+#: app/components/forms/admin/settings/payment-gateway-form.js:67
+msgid "Please enter the live client token"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:78
-msgid "Please enter the live username"
+#: app/components/forms/admin/settings/payment-gateway-form.js:77
+msgid "Please enter the live secret token"
 msgstr ""
 
-#: app/components/forms/admin/settings/payment-gateway-form.js:88
-msgid "Please enter the live password"
-msgstr ""
-
-#: app/components/forms/admin/settings/payment-gateway-form.js:98
-msgid "Please enter the live signature"
-msgstr ""
-
-#: app/components/forms/admin/settings/system-form.js:18
+#: app/components/forms/admin/settings/system-form.js:17
 msgid "Please enter the App name"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:28
+#: app/components/forms/admin/settings/system-form.js:27
 msgid "Please enter a tag line"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:38
-#: app/components/forms/admin/settings/system-form.js:78
+#: app/components/forms/admin/settings/system-form.js:37
+#: app/components/forms/admin/settings/system-form.js:77
 msgid "Please enter the Bucket name"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:48
+#: app/components/forms/admin/settings/system-form.js:47
 msgid "Please enter the access key"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:58
+#: app/components/forms/admin/settings/system-form.js:57
 msgid "Please enter the access secret"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:68
+#: app/components/forms/admin/settings/system-form.js:67
 msgid "Please select a region"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:88
+#: app/components/forms/admin/settings/system-form.js:87
 msgid "Please enter the key"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:98
+#: app/components/forms/admin/settings/system-form.js:97
 msgid "Please enter the secret"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:108
+#: app/components/forms/admin/settings/system-form.js:107
 msgid "Please enter the from email"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:112
+#: app/components/forms/admin/settings/system-form.js:111
 msgid "Please enter a valid  email address"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:122
+#: app/components/forms/admin/settings/system-form.js:121
 msgid "Please enter name for from email"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:132
-msgid "Please enter the SMTP host"
+#: app/components/forms/admin/settings/system-form.js:131
+msgid "Please enter the Frontend Url"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:142
-msgid "Please enter the SMTP port number"
+#: app/components/forms/admin/settings/system-form.js:136
+msgid "Please enter a valid URL for Frontend"
 msgstr ""
 
 #: app/components/forms/admin/settings/system-form.js:146
-msgid "Please enter a valid port number"
+msgid "Please enter the SMTP host"
 msgstr ""
 
 #: app/components/forms/admin/settings/system-form.js:156
+msgid "Please enter the SMTP port number"
+msgstr ""
+
+#: app/components/forms/admin/settings/system-form.js:160
+msgid "Please enter a valid port number"
+msgstr ""
+
+#: app/components/forms/admin/settings/system-form.js:170
 msgid "Please enter the username for SMTP"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:166
+#: app/components/forms/admin/settings/system-form.js:180
 msgid "Please enter the password for SMTP"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:176
+#: app/components/forms/admin/settings/system-form.js:190
 msgid "Please enter the token for Sendgrid"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:186
-msgid "Please enter a valid email address for super admin"
-msgstr ""
-
-#: app/components/forms/admin/settings/system-form.js:196
+#: app/components/forms/admin/settings/system-form.js:200
 msgid "Please enter the application secret key"
 msgstr ""
 
-#: app/components/forms/admin/settings/system-form.js:200
+#: app/components/forms/admin/settings/system-form.js:204
 msgid "Your application secret key must have at least {ruleValue} characters"
 msgstr ""
 
-#: app/components/forms/forgot-password-form.js:23
-#: app/components/forms/login-form.js:23
-#: app/components/settings/contact-info-section.js:23
+#: app/components/forms/admin/settings/ticket-fees-form.js:24
+msgid "Existing items need to be completed before new items can be added."
+msgstr ""
+
+#: app/components/forms/admin/settings/ticket-fees-form.js:37
+msgid "Fee setting deleted successfully"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:25
+msgid "Please enter access code"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:38
+msgid "Please enter number of tickets"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:42
+msgid "Please enter proper number of tickets"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:52
+#: app/components/forms/events/view/create-access-code.js:66
+msgid "Please enter the proper number"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:56
+#: app/components/forms/events/view/create-discount-code.js:70
+msgid "Minimum value should not be greater than maximum"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:70
+#: app/components/forms/events/view/create-discount-code.js:84
+msgid "Maximum value should not be less than minimum"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:74
+#: app/components/forms/events/view/create-discount-code.js:88
+msgid "Maximum value should not be greater than number of tickets"
+msgstr ""
+
+#: app/components/forms/events/view/create-access-code.js:84
+#: app/components/forms/events/view/create-access-code.js:94
+msgid "Please enter the proper date"
+msgstr ""
+
+#: app/components/forms/events/view/create-discount-code.js:25
+msgid "Please enter a discount code"
+msgstr ""
+
+#: app/components/forms/events/view/create-discount-code.js:38
+msgid "Please enter the number of tickets"
+msgstr ""
+
+#: app/components/forms/events/view/create-discount-code.js:47
+msgid "Please enter the discount amount"
+msgstr ""
+
+#: app/components/forms/events/view/create-discount-code.js:56
+msgid "Please enter the discount percentage"
+msgstr ""
+
+#: app/components/forms/events/view/create-discount-code.js:66
+#: app/components/forms/events/view/create-discount-code.js:80
+msgid "Please enter a valid integer"
+msgstr ""
+
+#: app/components/forms/events/view/order-form.js:16
+msgid "Please enter a valid registration time limit between 1 to 60 minutes."
+msgstr ""
+
+#: app/components/forms/login-form.js:24
+#: app/components/forms/reset-password-form.js:22
+#: app/components/modals/login-signup-modal.js:16
+#: app/components/settings/contact-info-section.js:21
 msgid "Please enter your email ID"
 msgstr ""
 
-#: app/components/forms/forgot-password-form.js:27
-#: app/components/forms/login-form.js:27
-#: app/components/settings/contact-info-section.js:27
+#: app/components/forms/login-form.js:28
+#: app/components/forms/reset-password-form.js:26
+#: app/components/modals/login-signup-modal.js:20
+#: app/components/settings/contact-info-section.js:25
 msgid "Please enter a valid email ID"
 msgstr ""
 
-#: app/components/forms/forgot-password-form.js:50
-#: app/components/forms/login-form.js:65
-msgid "Your credentials were incorrect."
-msgstr ""
-
-#: app/components/forms/forgot-password-form.js:52
-#: app/components/forms/login-form.js:67
-#: app/components/forms/register-form.js:72
-msgid "An unexpected error occurred."
-msgstr ""
-
-#: app/components/forms/login-form.js:36
+#: app/components/forms/login-form.js:37
+#: app/components/modals/login-signup-modal.js:29
 msgid "Please enter your password"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:38
-#: app/components/forms/orders/order-form.js:68
+#: app/components/forms/login-form.js:67 app/controllers/public/index.js:95
+msgid "Your credentials were incorrect."
+msgstr ""
+
+#: app/components/forms/login-form.js:69
+#: app/components/forms/reset-password-form.js:62
+#: app/components/forms/reset-password-form.js:85
+#: app/components/notification-dropdown.js:25
+#: app/components/settings/email-preferences-section.js:12
+#: app/components/widgets/forms/image-upload.js:37
+#: app/controllers/notifications.js:17 app/controllers/public/index.js:97
+#: app/controllers/register.js:22 app/mixins/notifications.js:12
+#: app/mixins/notifications.js:29
+msgid "An unexpected error occurred."
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:71
+#: app/components/forms/orders/order-form.js:357
 msgid "Please enter your first name"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:46
-#: app/components/forms/orders/order-form.js:77
+#: app/components/forms/orders/order-form.js:79
+#: app/components/forms/orders/order-form.js:366
 msgid "Please enter your last name"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:54
+#: app/components/forms/orders/order-form.js:87
 msgid "Please enter your email"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:86
-#: app/components/forms/register-form.js:23
-msgid "Please enter a valid email address"
+#: app/components/forms/orders/order-form.js:91
+#: app/components/forms/session-speaker-form.js:195
+#: app/components/forms/session-speaker-form.js:209
+#: app/components/forms/wizard/basic-details-step.js:265
+msgid "Please enter a valid email"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:95
-msgid "Please enter your country"
+#: app/components/forms/orders/order-form.js:100
+#: app/components/forms/session-speaker-form.js:315
+msgid "Please select a gender"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:104
+#: app/components/forms/orders/order-form.js:109
+#: app/components/forms/orders/order-form.js:393
 msgid "Please enter your address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:113
-msgid "Please enter your city "
+#: app/components/forms/orders/order-form.js:118
+msgid "Please enter your city"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:122
+#: app/components/forms/orders/order-form.js:127
+#: app/components/forms/orders/order-form.js:411
 msgid "Please enter your state"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:131
+#: app/components/forms/orders/order-form.js:136
+#: app/components/forms/orders/order-form.js:384
+msgid "Please enter your country"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:145
+msgid "Please enter your job title"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:154
+#: app/components/forms/session-speaker-form.js:333
+msgid "Please enter a mobile number"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:163
+msgid "Please enter your tax business info"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:172
+msgid "Please enter your billing address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:181
+msgid "Please enter your home address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:190
+msgid "Please enter your shipping address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:199
+msgid "Please enter your company"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:208
+msgid "Please enter your work address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:217
+msgid "Please enter your work phone"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:237
+#: app/components/forms/orders/order-form.js:262
+#: app/components/forms/session-speaker-form.js:342
+msgid "Please enter url of website"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:278
+#: app/components/forms/orders/order-form.js:292
+#: app/components/forms/session-speaker-form.js:397
+#: app/components/forms/session-speaker-form.js:408
+msgid "Please enter a valid twitter profile url"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:287
+#: app/components/forms/session-speaker-form.js:392
+msgid "Please enter twitter link"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:303
+#: app/components/forms/orders/order-form.js:317
+#: app/components/forms/session-speaker-form.js:372
+#: app/components/forms/session-speaker-form.js:383
+msgid "Please enter a valid facebook account url"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:312
+#: app/components/forms/session-speaker-form.js:367
+msgid "Please enter facebook link"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:328
+#: app/components/forms/orders/order-form.js:342
+#: app/components/forms/session-speaker-form.js:422
+#: app/components/forms/session-speaker-form.js:433
+msgid "Please enter a valid github profile url"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:337
+#: app/components/forms/session-speaker-form.js:417
+msgid "Please enter github link"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:375
+#: app/components/forms/register-form.js:21
+msgid "Please enter a valid email address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:402
+msgid "Please enter your city "
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:420
 msgid "Please enter your zip code"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:140
+#: app/components/forms/orders/order-form.js:429
 msgid "Please specify your choice of payment method "
 msgstr ""
 
-#: app/components/forms/register-form.js:32
+#: app/components/forms/register-form.js:30
 msgid "Please enter a password"
 msgstr ""
 
-#: app/components/forms/register-form.js:36
-#: app/components/settings/password-section.js:31
+#: app/components/forms/register-form.js:34
+#: app/components/settings/password-section.js:29
 msgid "Your password must have at least {ruleValue} characters"
 msgstr ""
 
-#: app/components/forms/register-form.js:45
-#: app/components/settings/password-section.js:40
+#: app/components/forms/register-form.js:43
+#: app/components/settings/password-section.js:38
 msgid "Passwords do not match"
 msgstr ""
 
-#: app/components/forms/user-profile-form.js:20
-msgid "Please enter your name "
+#: app/components/forms/reset-password-form.js:36
+msgid "Please enter your new password"
 msgstr ""
 
-#: app/components/forms/user-profile-form.js:29
-msgid "Please enter your family name "
+#: app/components/forms/reset-password-form.js:58
+msgid "Your password has been reset successfully. Please log in to continue"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:28
+#: app/components/forms/reset-password-form.js:78
+msgid "Please go to the link sent to your email to reset your password"
+msgstr ""
+
+#: app/components/forms/reset-password-form.js:83
+msgid "No account is registered with this email address."
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:35
+msgid "Please enter a subtitle"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:44
+msgid "Please enter short abstract"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:53
+msgid "Please enter a long abstract"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:62
+msgid "Please enter comments"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:71
+msgid "Please select a track"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:80
+msgid "Please select a session type"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:89
+msgid "Please enter a level"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:107
+#: app/components/forms/session-speaker-form.js:132
+#: app/components/forms/session-speaker-form.js:157
+msgid "Please enter a url"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:191
+#: app/components/forms/session-speaker-form.js:205
+msgid "Please enter an email"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:218
+msgid "Please select an image"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:243
+msgid "Please enter an organisation"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:261
+msgid "Please enter a country"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:270
+msgid "Please enter a city"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:279
+msgid "Please enter long biography"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:288
+msgid "Please enter short biography"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:297
+msgid "Please enter speaking experience"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:306
+msgid "Please enter select sponsorship"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:324
+msgid "Please enter where you heard about the event"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:442
+msgid "Please enter linkedin link"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:447
+#: app/components/forms/session-speaker-form.js:458
+msgid "Please enter a valid linkedin profile url"
+msgstr ""
+
+#: app/components/forms/user-profile-form.js:18
+msgid "Please enter your name"
+msgstr ""
+
+#: app/components/forms/user-profile-form.js:27
+msgid "Please enter your family name"
+msgstr ""
+
+#: app/components/forms/user-profile-form.js:41
+msgid "Your profile has been updated"
+msgstr ""
+
+#: app/components/forms/user-profile-form.js:45
+#: app/controllers/admin/users/view/settings/contact-info.js:13
+#: app/controllers/settings/contact-info.js:13
+msgid "An unexpected error occurred"
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:126
 msgid "Please give your event a name"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:37
+#: app/components/forms/wizard/basic-details-step.js:135
 msgid "Choose a timezone for your event"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:46
+#: app/components/forms/wizard/basic-details-step.js:144
 msgid "Please tell us when your event starts"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:50
+#: app/components/forms/wizard/basic-details-step.js:148
 msgid "Please give a valid start date"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:59
+#: app/components/forms/wizard/basic-details-step.js:157
 msgid "Please tell us when your event ends"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:63
+#: app/components/forms/wizard/basic-details-step.js:161
 msgid "Please give a valid end date"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:73
+#: app/components/forms/wizard/basic-details-step.js:171
 msgid "Please give a start time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:83
+#: app/components/forms/wizard/basic-details-step.js:181
 msgid "Please give an end time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:92
+#: app/components/forms/wizard/basic-details-step.js:190
 msgid "Please give your ticket a name"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:102
+#: app/components/forms/wizard/basic-details-step.js:200
 msgid "Ticket description shouldn't contain more than {ruleValue} characters"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:111
+#: app/components/forms/wizard/basic-details-step.js:209
 msgid "Please give your ticket a price"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:115
+#: app/components/forms/wizard/basic-details-step.js:213
 msgid "Please give a proper price for you ticket"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:124
+#: app/components/forms/wizard/basic-details-step.js:217
+msgid "Ticket price should be greater than 0"
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:226
 msgid "Please specify how many tickets of this type are available"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:128
+#: app/components/forms/wizard/basic-details-step.js:230
 msgid "Please give a proper quantity for you ticket"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:137
+#: app/components/forms/wizard/basic-details-step.js:239
 msgid "Minimum tickets per order required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:141
-#: app/components/forms/wizard/basic-details-step.js:154
+#: app/components/forms/wizard/basic-details-step.js:243
+#: app/components/forms/wizard/basic-details-step.js:256
 msgid "Invalid number"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:150
+#: app/components/forms/wizard/basic-details-step.js:252
 msgid "Maximum tickets per order required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:292
+#: app/components/forms/wizard/basic-details-step.js:269
+msgid "Please fill your paypal email for payment of tickets."
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:278
+msgid "Please fill the details for payment of tickets."
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:287
+msgid "Please fill the bank details for payment of tickets."
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:296
+msgid "Please fill the cheque details for payment of tickets."
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:375
 msgid "This discount code is invalid. Please try again."
 msgstr ""
 
-#: app/components/forms/wizard/sponsors-step.js:18
+#: app/components/forms/wizard/sessions-speakers-step.js:20
+msgid "Please enter name for session-type"
+msgstr ""
+
+#: app/components/forms/wizard/sessions-speakers-step.js:29
+msgid "Please enter name for track"
+msgstr ""
+
+#: app/components/forms/wizard/sessions-speakers-step.js:38
+msgid "Please enter a Private link"
+msgstr ""
+
+#: app/components/forms/wizard/sessions-speakers-step.js:47
+msgid "Please select the Privacy"
+msgstr ""
+
+#: app/components/forms/wizard/sponsors-step.js:17
 msgid "Please give your sponsor a name"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:28
+#: app/components/forms/wizard/sponsors-step.js:36
+msgid "Please fill the required fields for existing sponsor items"
+msgstr ""
+
+#: app/components/forms/wizard/sponsors-step.js:52
+#: app/controllers/admin/settings/ticket-fees.js:12
+msgid "Please fill the required fields."
+msgstr ""
+
+#: app/components/modals/add-system-role-modal.js:35
+msgid "Please enter a role name"
+msgstr ""
+
+#: app/components/modals/add-user-role-modal.js:34
+msgid "Please enter an email for user"
+msgstr ""
+
+#: app/components/modals/add-user-role-modal.js:38
+msgid "Please enter a valid email address  for user"
+msgstr ""
+
+#: app/components/modals/add-user-role-modal.js:47
+msgid "Please select a role"
+msgstr ""
+
+#: app/components/modals/admin/content/new-event-sub-topic-modal.js:27
+msgid "Please enter a sub topic name"
+msgstr ""
+
+#: app/components/modals/admin/content/new-event-topic-modal.js:26
+msgid "Please enter a topic name"
+msgstr ""
+
+#: app/components/modals/admin/content/new-event-type-modal.js:26
+msgid "Please enter a event type"
+msgstr ""
+
+#: app/components/modals/change-image-modal.js:11
+msgid "Placeholder has been saved successfully."
+msgstr ""
+
+#: app/components/modals/change-image-modal.js:14
+msgid "An unexpected error has occurred. Placeholder not saved."
+msgstr ""
+
+#: app/components/modals/tax-info-modal.js:27
 msgid "Please give a name"
 msgstr ""
 
@@ -363,420 +873,920 @@ msgstr ""
 msgid "Please give a valid tax rate"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:48
+#: app/components/modals/tax-info-modal.js:49
 msgid "Please give us your tax ID"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:57
+#: app/components/modals/tax-info-modal.js:59
 msgid "Please give us your company name"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:66
+#: app/components/modals/tax-info-modal.js:69
 msgid "Please give us your address"
 msgstr ""
 
-#: app/components/settings/contact-info-section.js:36
+#: app/components/modals/tax-info-modal.js:79
+msgid "Please give a city"
+msgstr ""
+
+#: app/components/modals/tax-info-modal.js:89
+msgid "Please give a state"
+msgstr ""
+
+#: app/components/modals/tax-info-modal.js:99
+msgid "Please provide a zip code"
+msgstr ""
+
+#: app/components/notification-dropdown.js:22 app/mixins/notifications.js:9
+msgid "Marked as Read successfully"
+msgstr ""
+
+#: app/components/public/ticket-list.js:164
+msgid "Please enter the promotional Code"
+msgstr ""
+
+#: app/components/settings/contact-info-section.js:34
 msgid "Please enter your phone"
 msgstr ""
 
-#: app/components/settings/password-section.js:18
+#: app/components/settings/email-preferences-section.js:8
+msgid "Email notifications updated successfully"
+msgstr ""
+
+#: app/components/settings/password-section.js:16
 msgid "Please enter the current password"
 msgstr ""
 
-#: app/components/settings/password-section.js:27
+#: app/components/settings/password-section.js:25
 msgid "Please enter a new password"
 msgstr ""
 
-#: app/components/widgets/forms/image-upload.js:53
+#: app/components/unverified-user-message.js:25
+msgid "Verification mail sent successfully"
+msgstr ""
+
+#: app/components/unverified-user-message.js:32
+#: app/controllers/admin/events/list.js:85
+#: app/controllers/admin/sessions/list.js:58
+#: app/controllers/admin/users/list.js:77
+#: app/controllers/admin/users/view/events/list.js:72
+#: app/controllers/events/list.js:79 app/controllers/events/view.js:27
+#: app/controllers/events/view.js:41 app/controllers/events/view/index.js:39
+#: app/controllers/events/view/sessions.js:24
+#: app/controllers/events/view/sessions/list.js:63
+#: app/controllers/events/view/sessions/list.js:86
+#: app/controllers/events/view/sessions/list.js:103
+#: app/controllers/events/view/sessions/list.js:120
+#: app/controllers/events/view/speakers.js:18
+#: app/controllers/events/view/speakers/list.js:49
+#: app/controllers/events/view/speakers/list.js:68
+#: app/controllers/events/view/tickets/access-codes/list.js:41
+#: app/controllers/events/view/tickets/access-codes/list.js:55
+#: app/controllers/events/view/tickets/attendees.js:19
+#: app/controllers/events/view/tickets/discount-codes/list.js:46
+#: app/controllers/events/view/tickets/discount-codes/list.js:61
+#: app/controllers/events/view/tickets/orders.js:19
+#: app/controllers/events/view/tickets/orders/list.js:42
+#: app/controllers/events/view/tickets/orders/list.js:56
+#: app/controllers/events/view/tickets/orders/list.js:70
+#: app/controllers/my-sessions/view.js:26
+msgid "An unexpected error has occurred."
+msgstr ""
+
+#: app/components/widgets/forms/file-upload.js:26
+msgid "File uploaded successfully"
+msgstr ""
+
+#: app/components/widgets/forms/file-upload.js:48
+#: app/components/widgets/forms/image-upload.js:60
 msgid "No FileReader support. Please use a more latest browser"
 msgstr ""
 
-#: app/mixins/event-wizard.js:13 app/routes/events/view/edit/basic-details.js:8
+#: app/controllers/admin/content/events.js:17
+msgid "An unexpected error has occurred. SubTopics not loaded."
+msgstr ""
+
+#: app/controllers/admin/content/events.js:35
+msgid "This Event Property has been deleted successfully."
+msgstr ""
+
+#: app/controllers/admin/content/events.js:38
+msgid "An unexpected error has occurred. Event Type was not deleted."
+msgstr ""
+
+#: app/controllers/admin/content/index.js:10
+msgid "Social links have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/content/index.js:13
+msgid "An unexpected error has occurred. Social links not saved."
+msgstr ""
+
+#: app/controllers/admin/content/pages.js:26
+msgid "Page details have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/content/pages.js:29
+msgid "An unexpected error has occurred. Page Details not saved."
+msgstr ""
+
+#: app/controllers/admin/events/list.js:81
+#: app/controllers/admin/users/view/events/list.js:69
+#: app/controllers/events/list.js:76 app/controllers/events/view.js:38
+msgid "Event has been deleted successfully."
+msgstr ""
+
+#: app/controllers/admin/messages.js:12
+msgid "Changes have been saved successfully"
+msgstr ""
+
+#: app/controllers/admin/modules.js:10
+#: app/controllers/admin/settings/analytics.js:10
+#: app/controllers/admin/settings/index.js:10
+#: app/controllers/admin/settings/microservices.js:10
+#: app/controllers/admin/settings/payment-gateway.js:10
+msgid "Settings have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/modules.js:13
+#: app/controllers/admin/settings/analytics.js:13
+#: app/controllers/admin/settings/index.js:13
+#: app/controllers/admin/settings/microservices.js:13
+#: app/controllers/admin/settings/payment-gateway.js:13
+#: app/controllers/admin/settings/ticket-fees.js:20
+msgid "An unexpected error has occurred. Settings not saved."
+msgstr ""
+
+#: app/controllers/admin/permissions/event-roles.js:15
+msgid "Admin Event role permissions have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/permissions/system-roles.js:33
+msgid "System role has been deleted successfully."
+msgstr ""
+
+#: app/controllers/admin/permissions/system-roles.js:36
+msgid "An unexpected error has occurred. System role was not deleted."
+msgstr ""
+
+#: app/controllers/admin/permissions/system-roles.js:54
+msgid "Please select atleast one panel."
+msgstr ""
+
+#: app/controllers/admin/permissions/system-roles.js:60
+msgid "System role have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/permissions/system-roles.js:63
+msgid "An unexpected error has occurred. System role not saved."
+msgstr ""
+
+#: app/controllers/admin/permissions/system-roles.js:74
+msgid "User permissions have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/permissions/system-roles.js:77
+msgid "An unexpected error has occurred. User permissions not saved."
+msgstr ""
+
+#: app/controllers/admin/sessions/list.js:55
+#: app/controllers/events/view/sessions/list.js:60
+msgid "Session has been deleted successfully."
+msgstr ""
+
+#: app/controllers/admin/settings/images.js:11
+msgid "Image sizes have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/settings/images.js:14
+#: app/controllers/admin/settings/images.js:18
+msgid "An unexpected error has occurred. Image sizes not saved."
+msgstr ""
+
+#: app/controllers/admin/settings/ticket-fees.js:17
+msgid "Ticket Fee settings have been saved successfully."
+msgstr ""
+
+#: app/controllers/admin/users/list.js:74
+msgid "User has been deleted successfully."
+msgstr ""
+
+#: app/controllers/admin/users/view/settings/contact-info.js:10
+#: app/controllers/settings/contact-info.js:10
+msgid "Your Contact Info has been updated"
+msgstr ""
+
+#: app/controllers/events/view.js:11
+msgid "Your event must have a location before it can be published."
+msgstr ""
+
+#: app/controllers/events/view.js:20
+msgid "Your event has been published successfully."
+msgstr ""
+
+#: app/controllers/events/view.js:22
+msgid "Your event has been unpublished."
+msgstr ""
+
+#: app/controllers/events/view/export.js:22
+msgid "Event exported."
+msgstr ""
+
+#: app/controllers/events/view/export.js:26
+msgid "Event export is going on."
+msgstr ""
+
+#: app/controllers/events/view/export.js:29
+#: app/controllers/events/view/export.js:34
+msgid "Event export failed."
+msgstr ""
+
+#: app/controllers/events/view/index.js:35
+msgid "Sponsor has been deleted successfully."
+msgstr ""
+
+#: app/controllers/events/view/sessions.js:41
+#: app/controllers/events/view/sessions.js:45
+#: app/controllers/events/view/speakers.js:35
+#: app/controllers/events/view/speakers.js:39
+msgid "CSV Export has failed."
+msgstr ""
+
+#: app/controllers/events/view/sessions/create.js:14
+#: app/controllers/events/view/sessions/create.js:33
+#: app/controllers/events/view/sessions/edit.js:15
+#: app/controllers/events/view/sessions/edit.js:34
+#: app/controllers/events/view/speakers/create.js:18
+#: app/controllers/public/cfs/new-session.js:10
+msgid "Your session has been saved"
+msgstr ""
+
+#: app/controllers/events/view/sessions/edit.js:19
+msgid "Oops something went wrong1. Please try again"
+msgstr ""
+
+#: app/controllers/events/view/sessions/edit.js:26
+msgid "Oops something went wrong2. Please try again"
+msgstr ""
+
+#: app/controllers/events/view/sessions/edit.js:38
+msgid "Oops something went wrong4. Please try again"
+msgstr ""
+
+#: app/controllers/events/view/sessions/list.js:82
+msgid "Session has been accepted and speaker has been notified via email."
+msgstr ""
+
+#: app/controllers/events/view/sessions/list.js:83
+msgid "Session has been accepted"
+msgstr ""
+
+#: app/controllers/events/view/sessions/list.js:99
+msgid "Session has been confirmed and speaker has been notified via email."
+msgstr ""
+
+#: app/controllers/events/view/sessions/list.js:100
+msgid "Session has been confirmed"
+msgstr ""
+
+#: app/controllers/events/view/sessions/list.js:116
+msgid "Session has been rejected and speaker has been notified via email."
+msgstr ""
+
+#: app/controllers/events/view/sessions/list.js:117
+msgid "Session has been rejected"
+msgstr ""
+
+#: app/controllers/events/view/speakers/edit.js:9
+#: app/controllers/public/cfs/edit-speaker.js:9
+#: app/controllers/public/cfs/new-speaker.js:9
+msgid "Speaker details have been saved"
+msgstr ""
+
+#: app/controllers/events/view/speakers/list.js:46
+msgid "Speaker has been deleted successfully."
+msgstr ""
+
+#: app/controllers/events/view/speakers/list.js:65
+msgid "Speaker details modified successfully"
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/create.js:8
+msgid "Access code has been successfully created."
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/create.js:12
+#: app/controllers/events/view/tickets/access-codes/edit.js:12
+#: app/controllers/events/view/tickets/discount-codes/create.js:12
+msgid "An unexpected error has occured. Discount code cannot be created."
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/edit.js:8
+msgid "Access code has been successfully updated."
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/list.js:38
+msgid "Access Code has been deleted successfully."
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/list.js:52
+msgid "Access Code has been updated successfully."
+msgstr ""
+
+#: app/controllers/events/view/tickets/add-order.js:81
+#: app/controllers/public/index.js:143
+msgid "Order details saved. Please fill further details within 10 minutes."
+msgstr ""
+
+#: app/controllers/events/view/tickets/attendees/list.js:43
+msgid "Attendee CheckedIn status modified successfully."
+msgstr ""
+
+#: app/controllers/events/view/tickets/attendees/list.js:46
+msgid "An unexpected error has occured"
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/create.js:8
+msgid "Discount code has been successfully created."
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/edit.js:8
+msgid "Discount code has been successfully updated."
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/edit.js:12
+msgid "An unexpected error has occurred. Discount code cannot be updated."
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/list.js:43
+msgid "Discount Code has been deleted successfully."
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/list.js:57
+msgid "Discount Code has been updated successfully."
+msgstr ""
+
+#: app/controllers/events/view/tickets/order-form.js:20
+msgid "Your Attendee form has been saved"
+msgstr ""
+
+#: app/controllers/events/view/tickets/orders/list.js:39
+msgid "Order has been marked completed successfully."
+msgstr ""
+
+#: app/controllers/events/view/tickets/orders/list.js:53
+msgid "Order has been deleted successfully."
+msgstr ""
+
+#: app/controllers/events/view/tickets/orders/list.js:67
+msgid "Order has been cancelled successfully."
+msgstr ""
+
+#: app/controllers/my-sessions/view.js:23
+msgid "Proposal has been deleted successfully."
+msgstr ""
+
+#: app/controllers/notifications.js:14
+msgid "All notifications marked read successfully"
+msgstr ""
+
+#: app/controllers/orders/new.js:21
+msgid "Order details saved. Please fill the payment details"
+msgstr ""
+
+#: app/controllers/orders/new.js:24
+msgid "Order details saved. Your order is successful"
+msgstr ""
+
+#: app/controllers/public/cfs/edit-session.js:9
+msgid "Session details have been saved"
+msgstr ""
+
+#: app/controllers/register.js:20
+msgid "User already exists."
+msgstr ""
+
+#: app/controllers/settings/password.js:16
+msgid "Password updated successfully"
+msgstr ""
+
+#: app/controllers/settings/password.js:22
+msgid "Unexpected error. Password did not change."
+msgstr ""
+
+#: app/mixins/event-wizard.js:17 app/routes/events/view/edit/basic-details.js:7
 msgid "Basic Details"
 msgstr "基本的な詳細"
 
-#: app/mixins/event-wizard.js:14
+#: app/mixins/event-wizard.js:18
 msgid "Tell about your event"
 msgstr ""
 
-#: app/mixins/event-wizard.js:19 app/routes/events/view/edit/sponsors.js:8
+#: app/mixins/event-wizard.js:23 app/routes/events/view/edit/sponsors.js:7
 msgid "Sponsors"
 msgstr "スポンサー"
 
-#: app/mixins/event-wizard.js:20
+#: app/mixins/event-wizard.js:24
 msgid "Advertise your sponsors"
 msgstr ""
 
-#: app/mixins/event-wizard.js:25
-#: app/routes/events/view/edit/sessions-speakers.js:8
+#: app/mixins/event-wizard.js:29
+#: app/routes/events/view/edit/sessions-speakers.js:7
 msgid "Sessions & Speakers"
 msgstr ""
 
-#: app/mixins/event-wizard.js:26
+#: app/mixins/event-wizard.js:30
 msgid "Expand your event"
 msgstr ""
 
-#: app/routes/admin.js:7
+#: app/mixins/event-wizard.js:121
+msgid "Your event has been saved"
+msgstr ""
+
+#: app/mixins/notifications.js:26
+msgid "Marked all as Read successfully"
+msgstr ""
+
+#: app/routes/admin.js:6
 msgid "Administration"
 msgstr ""
 
-#: app/routes/admin/content.js:7
+#: app/routes/admin/content.js:5
 msgid "Content"
 msgstr "コンテンツ"
 
-#: app/routes/admin/content/index.js:7
+#: app/routes/admin/content/events.js:5 app/routes/admin/content/index.js:5
 msgid "Social Links"
 msgstr "ソーシャル リンク"
 
-#: app/routes/admin/content/pages.js:7
+#: app/routes/admin/content/pages.js:5 app/routes/pages.js:5
 msgid "Pages"
 msgstr "ページ"
 
-#: app/routes/admin/content/system-images.js:7
+#: app/routes/admin/content/system-images.js:5
 msgid "System Images"
 msgstr "システム イメージ"
 
-#: app/routes/admin/content/translations.js:7
+#: app/routes/admin/content/system-images/list.js:5
+msgid "Sub topics"
+msgstr ""
+
+#: app/routes/admin/content/translations.js:5
 msgid "Translations"
 msgstr "翻訳"
 
-#: app/routes/admin/events.js:7 app/routes/events.js:8
+#: app/routes/admin/events.js:5 app/routes/admin/users/view/events.js:6
+#: app/routes/events.js:6
 msgid "Events"
 msgstr "イベント"
 
-#: app/routes/admin/events/import.js:7 app/routes/events/import.js:7
+#: app/routes/admin/events/import.js:5 app/routes/events/import.js:5
 msgid "Import"
 msgstr "インポート"
 
-#: app/routes/admin/events/list.js:9 app/routes/events/list.js:9
+#: app/routes/admin/events/list.js:8
+#: app/routes/admin/users/view/events/list.js:8 app/routes/events/list.js:8
 msgid "Live"
 msgstr "ライブ"
 
-#: app/routes/admin/events/list.js:11 app/routes/events/list.js:11
+#: app/routes/admin/events/list.js:10
+#: app/routes/admin/users/view/events/list.js:10 app/routes/events/list.js:10
 msgid "Draft"
 msgstr "下書き"
 
-#: app/routes/admin/events/list.js:13 app/routes/events/list.js:13
-#: app/routes/my-tickets/past.js:7
+#: app/routes/admin/events/list.js:12
+#: app/routes/admin/users/view/events/list.js:12
+#: app/routes/admin/users/view/sessions/list.js:11
+#: app/routes/admin/users/view/tickets/list.js:10 app/routes/events/list.js:12
+#: app/routes/my-sessions/list.js:11 app/routes/my-tickets/list.js:10
 msgid "Past"
 msgstr "過去"
 
-#: app/routes/admin/events/list.js:15 app/routes/admin/sessions/list.js:15
+#: app/routes/admin/events/list.js:14 app/routes/admin/sessions/list.js:13
+#: app/routes/admin/users/list.js:9
 msgid "Deleted"
 msgstr "削除済"
 
-#: app/routes/admin/messages.js:7
+#: app/routes/admin/messages.js:5
 msgid "Messages"
 msgstr "メッセージ"
 
-#: app/routes/admin/modules.js:7
+#: app/routes/admin/modules.js:5
 msgid "Modules"
 msgstr "モジュール"
 
-#: app/routes/admin/permissions.js:7
+#: app/routes/admin/permissions.js:5
 msgid "Permissions"
 msgstr "アクセス許可"
 
-#: app/routes/admin/permissions/event-roles.js:10
+#: app/routes/admin/permissions/event-roles.js:5
 msgid "Event Roles"
 msgstr "イベント ロール"
 
-#: app/routes/admin/permissions/system-roles.js:7
+#: app/routes/admin/permissions/system-roles.js:5
 msgid "System Roles"
 msgstr "システム ロール"
 
-#: app/routes/admin/reports.js:7
+#: app/routes/admin/reports.js:5
 msgid "Reports"
 msgstr "レポート"
 
-#: app/routes/admin/reports/kubernetes-server-logs.js:7
+#: app/routes/admin/reports/kubernetes-server-logs.js:5
 msgid "Kubernetes Server Logs"
 msgstr ""
 
-#: app/routes/admin/reports/system-logs.js:7
+#: app/routes/admin/reports/system-logs.js:5
 msgid "System Logs"
 msgstr "システム ログ"
 
-#: app/routes/admin/reports/system-logs/activity-logs.js:7
+#: app/routes/admin/reports/system-logs/activity-logs.js:5
 msgid "Activity Logs"
 msgstr ""
 
-#: app/routes/admin/reports/system-logs/mail-logs.js:7
+#: app/routes/admin/reports/system-logs/mail-logs.js:5
 msgid "Mail Logs"
 msgstr ""
 
-#: app/routes/admin/reports/system-logs/notification-logs.js:7
+#: app/routes/admin/reports/system-logs/notification-logs.js:5
 msgid "Notification Logs"
 msgstr ""
 
-#: app/routes/admin/sales.js:7
+#: app/routes/admin/sales.js:5
 msgid "Sales"
 msgstr "販売"
 
-#: app/routes/admin/sales/discounted-events.js:7
+#: app/routes/admin/sales/discounted-events.js:5
 msgid "Discounted Events"
 msgstr ""
 
-#: app/routes/admin/sales/fees.js:7
+#: app/routes/admin/sales/fees.js:5
 msgid "Fees"
 msgstr ""
 
-#: app/routes/admin/sales/index.js:6 app/routes/events/view/tickets/index.js:7
+#: app/routes/admin/sales/index.js:5 app/routes/events/view/tickets/index.js:5
 msgid "Overview"
 msgstr ""
 
-#: app/routes/admin/sales/locations.js:7
+#: app/routes/admin/sales/locations.js:5
 msgid "Location"
 msgstr "場所"
 
-#: app/routes/admin/sales/marketer.js:7
+#: app/routes/admin/sales/marketer.js:5
 msgid "Marketer"
 msgstr "マーケティング担当者"
 
-#: app/routes/admin/sales/organizers.js:7
+#: app/routes/admin/sales/organizers.js:5
 msgid "Organizer"
 msgstr "主催者"
 
-#: app/routes/admin/sales/status.js:7
+#: app/routes/admin/sales/status.js:5
 msgid "Status"
 msgstr "ステータス"
 
-#: app/routes/admin/sessions.js:7 app/routes/events/view/sessions.js:7
-#: app/routes/public/sessions.js:8
+#: app/routes/admin/sessions.js:5 app/routes/events/view/sessions.js:5
+#: app/routes/my-sessions/view.js:6 app/routes/public/sessions.js:5
 msgid "Sessions"
 msgstr "セッション"
 
-#: app/routes/admin/sessions/list.js:9
-#: app/routes/events/view/sessions/list.js:9
-#: app/routes/events/view/speakers/list.js:9
+#: app/routes/admin/sessions/list.js:7
+#: app/routes/events/view/sessions/list.js:7
+#: app/routes/events/view/speakers/list.js:7
+#: app/routes/events/view/tickets/attendees/list.js:9
+#: app/routes/events/view/tickets/orders/list.js:9
 msgid "Pending"
 msgstr "保留"
 
-#: app/routes/admin/sessions/list.js:11
+#: app/routes/admin/sessions/list.js:9
 #: app/routes/events/view/sessions/list.js:11
-#: app/routes/events/view/speakers/list.js:11
+#: app/routes/events/view/speakers/list.js:9
 msgid "Accepted"
 msgstr "受付"
 
-#: app/routes/admin/sessions/list.js:13
-#: app/routes/events/view/sessions/list.js:15
-#: app/routes/events/view/speakers/list.js:13
+#: app/routes/admin/sessions/list.js:11
+#: app/routes/events/view/sessions/list.js:13
+#: app/routes/events/view/speakers/list.js:11
 msgid "Rejected"
 msgstr "拒否"
 
-#: app/routes/admin/sessions/list.js:17
+#: app/routes/admin/sessions/list.js:15
+#: app/routes/events/view/sessions/list.js:15
 msgid "Session"
 msgstr "セッション"
 
-#: app/routes/admin/settings.js:7 app/routes/settings.js:7
+#: app/routes/admin/settings.js:5 app/routes/admin/users/view/settings.js:6
+#: app/routes/settings.js:5
 msgid "Settings"
 msgstr "設定"
 
-#: app/routes/admin/settings/analytics.js:7
+#: app/routes/admin/settings/analytics.js:5
 msgid "Analytics"
 msgstr "アナリティクス"
 
-#: app/routes/admin/settings/images.js:7
+#: app/routes/admin/settings/images.js:5
 msgid "Images"
 msgstr "画像"
 
-#: app/routes/admin/settings/index.js:7
+#: app/routes/admin/settings/index.js:5
 msgid "System"
 msgstr "システム"
 
-#: app/routes/admin/settings/microservices.js:7
+#: app/routes/admin/settings/microservices.js:5
 msgid "Microservices"
 msgstr "マイクロサービス"
 
-#: app/routes/admin/settings/payment-gateway.js:7
+#: app/routes/admin/settings/payment-gateway.js:5
 msgid "Payment Gateway"
 msgstr ""
 
-#: app/routes/admin/settings/ticket-fees.js:7
+#: app/routes/admin/settings/ticket-fees.js:5
 msgid "Ticket Fees"
 msgstr "チケット料金"
 
-#: app/routes/admin/users.js:7
+#: app/routes/admin/users.js:5
 msgid "Users"
 msgstr "ユーザー"
 
-#: app/routes/create.js:9
-msgid "Create an Event"
+#: app/routes/admin/users/list.js:7
+#: app/routes/events/view/tickets/access-codes/list.js:7
+#: app/routes/events/view/tickets/discount-codes/list.js:7
+msgid "Active"
+msgstr "有効"
+
+#: app/routes/admin/users/view/sessions.js:6 app/routes/my-sessions.js:6
+msgid "My sessions"
 msgstr ""
 
-#: app/routes/events/view/edit.js:9
-msgid "Edit Event"
-msgstr "イベントを編集"
-
-#: app/routes/events/view/export.js:7
-msgid "Export"
-msgstr "エクスポート"
-
-#: app/routes/events/view/sessions/list.js:13
-msgid "Confirmed"
-msgstr ""
-
-#: app/routes/events/view/speakers.js:7
-msgid "Speakers"
-msgstr "スピーカー"
-
-#: app/routes/events/view/tickets.js:7
-msgid "Tickets"
-msgstr "チケット"
-
-#: app/routes/events/view/tickets/access.js:7
-msgid "Access codes"
-msgstr ""
-
-#: app/routes/events/view/tickets/add-order.js:7
-msgid "Add Order"
-msgstr "注文を追加"
-
-#: app/routes/events/view/tickets/attendees.js:7
-msgid "Attendees"
-msgstr "参加者"
-
-#: app/routes/events/view/tickets/discount-codes.js:7
-msgid "Discount codes"
-msgstr ""
-
-#: app/routes/events/view/tickets/orders.js:7 app/routes/orders.js:8
-msgid "Orders"
-msgstr "注文"
-
-#: app/routes/explore.js:8
-msgid "Explore"
-msgstr "探索"
-
-#: app/routes/forgot-password.js:8
-msgid "Forgot Password"
-msgstr "パスワードをお忘れですか"
-
-#: app/routes/login.js:8
-msgid "Login"
-msgstr ""
-
-#: app/routes/my-tickets.js:9
-msgid "My Tickets"
-msgstr "チケット"
-
-#: app/routes/my-tickets/index.js:7
+#: app/routes/admin/users/view/sessions/list.js:9
+#: app/routes/admin/users/view/tickets/index.js:5
+#: app/routes/admin/users/view/tickets/list.js:8
+#: app/routes/my-sessions/index.js:6 app/routes/my-sessions/list.js:9
+#: app/routes/my-tickets/index.js:5 app/routes/my-tickets/list.js:8
 msgid "Upcoming"
 msgstr ""
 
-#: app/routes/my-tickets/saved.js:7
+#: app/routes/admin/users/view/settings/applications.js:6
+#: app/routes/settings/applications.js:6
+msgid "Applications"
+msgstr ""
+
+#: app/routes/admin/users/view/settings/email-preferences.js:6
+#: app/routes/settings/email-preferences.js:6
+msgid "Email Preferences"
+msgstr ""
+
+#: app/routes/admin/users/view/tickets.js:6 app/routes/my-tickets.js:6
+msgid "My Tickets"
+msgstr "チケット"
+
+#: app/routes/admin/users/view/tickets/list.js:12
 msgid "Saved"
 msgstr ""
 
-#: app/routes/not-found-catch.js:7 app/routes/not-found.js:7
+#: app/routes/create.js:7
+msgid "Create an Event"
+msgstr ""
+
+#: app/routes/events/view/edit.js:7
+msgid "Edit Event"
+msgstr "イベントを編集"
+
+#: app/routes/events/view/export.js:5
+msgid "Export"
+msgstr "エクスポート"
+
+#: app/routes/events/view/scheduler.js:5
+msgid "Scheduler"
+msgstr "スケジューラー"
+
+#: app/routes/events/view/sessions/create.js:5
+#: app/routes/events/view/speakers/create.js:5
+msgid "Create session"
+msgstr ""
+
+#: app/routes/events/view/sessions/list.js:9
+msgid "Confirmed"
+msgstr ""
+
+#: app/routes/events/view/speakers.js:5
+msgid "Speakers"
+msgstr "スピーカー"
+
+#: app/routes/events/view/tickets.js:5
+msgid "Tickets"
+msgstr "チケット"
+
+#: app/routes/events/view/tickets/access-codes.js:5
+msgid "Access codes"
+msgstr ""
+
+#: app/routes/events/view/tickets/access-codes/create.js:7
+#: app/routes/events/view/tickets/discount-codes/create.js:7
+msgid "Create"
+msgstr ""
+
+#: app/routes/events/view/tickets/access-codes/list.js:9
+#: app/routes/events/view/tickets/discount-codes/list.js:9
+msgid "Inactive"
+msgstr "無効"
+
+#: app/routes/events/view/tickets/add-order.js:5
+msgid "Add Order"
+msgstr "注文を追加"
+
+#: app/routes/events/view/tickets/attendees.js:5
+msgid "Attendees"
+msgstr "参加者"
+
+#: app/routes/events/view/tickets/attendees/list.js:7
+#: app/routes/events/view/tickets/orders/list.js:7
+msgid "Placed"
+msgstr "注文済"
+
+#: app/routes/events/view/tickets/attendees/list.js:11
+#: app/routes/events/view/tickets/orders/list.js:11
+msgid "Expired"
+msgstr "期限切れ"
+
+#: app/routes/events/view/tickets/attendees/list.js:13
+#: app/routes/events/view/tickets/orders/list.js:13
+msgid "Cancelled"
+msgstr "キャンセル"
+
+#: app/routes/events/view/tickets/attendees/list.js:15
+msgid "Checked In"
+msgstr "チェックイン"
+
+#: app/routes/events/view/tickets/attendees/list.js:17
+msgid "Not Checked In"
+msgstr "チェックインしていません"
+
+#: app/routes/events/view/tickets/attendees/list.js:19
+#: app/routes/events/view/tickets/orders/list.js:15
+#: app/routes/notifications/all.js:9
+msgid "All"
+msgstr "すべて"
+
+#: app/routes/events/view/tickets/discount-codes.js:6
+msgid "Discount codes"
+msgstr ""
+
+#: app/routes/events/view/tickets/order-form.js:7
+msgid "Order Form"
+msgstr ""
+
+#: app/routes/events/view/tickets/orders.js:5 app/routes/orders.js:6
+msgid "Orders"
+msgstr "注文"
+
+#: app/routes/explore.js:5
+msgid "Explore"
+msgstr "探索"
+
+#: app/routes/login.js:6
+msgid "Login"
+msgstr ""
+
+#: app/routes/not-found.js:5
 msgid "Page Not Found"
 msgstr ""
 
-#: app/routes/notifications.js:8
+#: app/routes/notifications.js:6
 msgid "Notifications"
 msgstr "通知"
 
 #: app/routes/notifications/all.js:7
-msgid "All"
-msgstr "すべて"
-
-#: app/routes/notifications/index.js:7
 msgid "Unread"
 msgstr "未読"
 
-#: app/routes/orders/new.js:7
-msgid "New Order"
-msgstr ""
-
-#: app/routes/profile.js:8
+#: app/routes/profile.js:6
 msgid "Profile"
 msgstr "プロフィール"
 
-#: app/routes/public/cfs.js:8
+#: app/routes/public/cfs.js:5 app/routes/public/cfs/index.js:5
 msgid "Call for Speakers"
 msgstr "スピーカー募集"
 
-#: app/routes/public/schedule.js:7
+#: app/routes/public/cfs/edit-session.js:5
+msgid "Edit Session"
+msgstr "セッションを編集"
+
+#: app/routes/public/cfs/edit-speaker.js:5
+msgid "Edit Speaker"
+msgstr ""
+
+#: app/routes/public/cfs/index.js:20
+msgid "Call For Speakers has not been issued yet."
+msgstr ""
+
+#: app/routes/public/cfs/new-session.js:5
+msgid "New Session"
+msgstr ""
+
+#: app/routes/public/cfs/new-speaker.js:5
+msgid "New Speaker"
+msgstr ""
+
+#: app/routes/public/coc.js:5
+msgid "Code of Conduct"
+msgstr "行動規範"
+
+#: app/routes/public/schedule.js:5
 msgid "Schedule"
 msgstr ""
 
-#: app/routes/register.js:8
+#: app/routes/public/sessions/list.js:8
+msgid "All sessions"
+msgstr ""
+
+#: app/routes/public/sessions/list.js:10
+msgid "Today's Sessions"
+msgstr ""
+
+#: app/routes/public/sessions/list.js:12
+msgid "Week's Sessions"
+msgstr ""
+
+#: app/routes/public/sessions/list.js:14
+msgid "Month's Sessions"
+msgstr ""
+
+#: app/routes/register.js:6
 msgid "Register"
 msgstr "登録"
 
-#: app/routes/settings/applications.js:8
-msgid "Applications"
-msgstr ""
+#: app/routes/reset-password.js:5
+msgid "Reset Password"
+msgstr "パスワードをリセット"
 
-#: app/routes/settings/contact-info.js:7
+#: app/routes/settings/contact-info.js:6
 msgid "Contact Info"
 msgstr ""
 
-#: app/routes/settings/email-preferences.js:7
-msgid "Email Preferences"
-msgstr ""
-
-#: app/routes/settings/password.js:7
+#: app/routes/settings/password.js:6
 msgid "Password"
 msgstr "パスワード"
 
-#: app/services/l10n.js:9
-msgid "en"
-msgstr ""
-
-#: app/services/l10n.js:10
-msgid "Bengali/Bangla"
-msgstr ""
-
-#: app/services/l10n.js:11
-msgid "Chinese (Simplified)"
+#: app/routes/verify.js:6
+msgid "Verify"
 msgstr ""
 
 #: app/services/l10n.js:12
-msgid "Chinese (Traditional)"
+msgid "Bengali/Bangla"
 msgstr ""
 
 #: app/services/l10n.js:13
-msgid "French"
+msgid "Chinese (Simplified)"
 msgstr ""
 
 #: app/services/l10n.js:14
-msgid "German"
+msgid "Chinese (Traditional)"
 msgstr ""
 
 #: app/services/l10n.js:15
-msgid "Indonesian"
+msgid "English"
 msgstr ""
 
 #: app/services/l10n.js:16
-msgid "Korean"
+msgid "French"
 msgstr ""
 
 #: app/services/l10n.js:17
-msgid "Polish"
+msgid "German"
 msgstr ""
 
 #: app/services/l10n.js:18
-msgid "Spanish"
+msgid "Indonesian"
 msgstr ""
 
 #: app/services/l10n.js:19
-msgid "Thai"
+msgid "Korean"
 msgstr ""
 
 #: app/services/l10n.js:20
-msgid "Vietnamese"
+msgid "Polish"
 msgstr ""
 
 #: app/services/l10n.js:21
-msgid "Hindi"
+msgid "Spanish"
 msgstr ""
 
 #: app/services/l10n.js:22
-msgid "Japanese"
+msgid "Thai"
 msgstr ""
 
 #: app/services/l10n.js:23
+msgid "Vietnamese"
+msgstr ""
+
+#: app/services/l10n.js:24
+msgid "Hindi"
+msgstr ""
+
+#: app/services/l10n.js:25
+msgid "Japanese"
+msgstr ""
+
+#: app/services/l10n.js:26
 msgid "Russian"
 msgstr ""
 
@@ -816,6 +1826,78 @@ msgstr ""
 msgid "Admin"
 msgstr "管理者"
 
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Event Types"
+msgstr ""
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Edit"
+msgstr "編集"
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Delete"
+msgstr "削除"
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Are you sure you would like to delete this event type?"
+msgstr ""
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Event Topics"
+msgstr ""
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Are you sure you would like to delete this event topic?"
+msgstr ""
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Event Subtopics"
+msgstr ""
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Event Topic"
+msgstr ""
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Select Event Topic"
+msgstr ""
+
+#: app/templates/admin/content/events.l10n.hbs:1
+msgid "Are you sure you would like to delete this event sub topic?"
+msgstr ""
+
+#: app/templates/admin/content/pages.l10n.hbs:1
+msgid "Create Page"
+msgstr "ページを作成"
+
+#: app/templates/admin/content/pages.l10n.hbs:1
+msgid "Open Event:"
+msgstr ""
+
+#: app/templates/admin/content/pages.l10n.hbs:1
+msgid "Footer menu:"
+msgstr ""
+
+#: app/templates/admin/content/system-images/list.l10n.hbs:1
+msgid "Change"
+msgstr "変更"
+
+#: app/templates/admin/content/translations.l10n.hbs:1
+msgid "Language"
+msgstr "言語"
+
+#: app/templates/admin/content/translations.l10n.hbs:1
+msgid "Download .PO files"
+msgstr ".PO ファイルをダウンロード"
+
+#: app/templates/admin/content/translations.l10n.hbs:1
+msgid "Download"
+msgstr "ダウンロード"
+
+#: app/templates/admin/content/translations.l10n.hbs:1
+msgid "Update .PO files :"
+msgstr ""
+
 #: app/templates/admin/events.l10n.hbs:1
 msgid "All Events"
 msgstr "すべてのイベント"
@@ -835,54 +1917,6 @@ msgstr "すべての過去"
 #: app/templates/admin/events.l10n.hbs:1
 msgid "All Deleted"
 msgstr ""
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Name"
-msgstr "名前"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "State"
-msgstr "状態"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Public URL"
-msgstr "公開 URL"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Start Date"
-msgstr "開始日"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "End Date"
-msgstr "終了日"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Roles"
-msgstr "ロール"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Options"
-msgstr "オプション"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "draft"
-msgstr ""
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Submitted"
-msgstr "提出済"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "View"
-msgstr ""
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Edit"
-msgstr "編集"
-
-#: app/templates/admin/events/list.l10n.hbs:1
-msgid "Delete"
-msgstr "削除"
 
 #: app/templates/admin/index.l10n.hbs:1
 msgid "Version 1.0.0-alpha.10"
@@ -953,38 +1987,6 @@ msgid "No. of Attendees"
 msgstr ""
 
 #: app/templates/admin/messages.l10n.hbs:1
-msgid "Recipient"
-msgstr "受信者"
-
-#: app/templates/admin/messages.l10n.hbs:1
-msgid "Trigger"
-msgstr "トリガー"
-
-#: app/templates/admin/messages.l10n.hbs:1
-msgid "Email Message"
-msgstr "メール メッセージ"
-
-#: app/templates/admin/messages.l10n.hbs:1
-msgid "Notification Message"
-msgstr "通知メッセージ"
-
-#: app/templates/admin/messages.l10n.hbs:1
-msgid "Sent At"
-msgstr ""
-
-#: app/templates/admin/messages.l10n.hbs:1
-msgid "Mail"
-msgstr ""
-
-#: app/templates/admin/messages.l10n.hbs:1
-msgid "Notification"
-msgstr ""
-
-#: app/templates/admin/messages.l10n.hbs:1
-msgid "User Control"
-msgstr ""
-
-#: app/templates/admin/messages.l10n.hbs:1
 msgid "Save"
 msgstr "保存"
 
@@ -1005,23 +2007,7 @@ msgid "Event Role/Service"
 msgstr ""
 
 #: app/templates/admin/permissions/event-roles.l10n.hbs:1
-msgid "Track"
-msgstr "トラック"
-
-#: app/templates/admin/permissions/event-roles.l10n.hbs:1
-msgid "Speaker"
-msgstr "スピーカー"
-
-#: app/templates/admin/permissions/event-roles.l10n.hbs:1
-msgid "Sponsor"
-msgstr "スポンサー"
-
-#: app/templates/admin/permissions/event-roles.l10n.hbs:1
-msgid "Microlocation"
-msgstr "マイクロロケーション"
-
-#: app/templates/admin/permissions/event-roles.l10n.hbs:1
-msgid "Create"
+msgid "service.name"
 msgstr ""
 
 #: app/templates/admin/permissions/event-roles.l10n.hbs:1
@@ -1057,7 +2043,7 @@ msgid "Super Admin"
 msgstr "Super Admin"
 
 #: app/templates/admin/permissions/system-roles.l10n.hbs:1
-msgid "Sales Admin"
+msgid "Are you sure you would like to delete this role?"
 msgstr ""
 
 #: app/templates/admin/permissions/system-roles.l10n.hbs:1
@@ -1073,28 +2059,12 @@ msgid "Permission"
 msgstr "アクセス許可"
 
 #: app/templates/admin/permissions/system-roles.l10n.hbs:1
-msgid "Verified User"
-msgstr "確認済みユーザー"
-
-#: app/templates/admin/permissions/system-roles.l10n.hbs:1
 msgid "Unverified User"
 msgstr "未確認ユーザー"
 
 #: app/templates/admin/permissions/system-roles.l10n.hbs:1
 msgid "Anonymous User"
 msgstr "匿名ユーザー"
-
-#: app/templates/admin/permissions/system-roles.l10n.hbs:1
-msgid "Publish event (make event live)"
-msgstr ""
-
-#: app/templates/admin/permissions/system-roles.l10n.hbs:1
-msgid "Account Creation is necessary."
-msgstr ""
-
-#: app/templates/admin/permissions/system-roles.l10n.hbs:1
-msgid "Create Event"
-msgstr "イベントを作成"
 
 #: app/templates/admin/reports/system-logs.l10n.hbs:1
 msgid "Activity"
@@ -1103,30 +2073,6 @@ msgstr "活動"
 #: app/templates/admin/reports/system-logs.l10n.hbs:1
 msgid "Mails"
 msgstr "メール"
-
-#: app/templates/admin/reports/system-logs/activity-logs.l10n.hbs:1
-msgid "Actor"
-msgstr "アクター"
-
-#: app/templates/admin/reports/system-logs/activity-logs.l10n.hbs:1
-msgid "Time"
-msgstr "時間"
-
-#: app/templates/admin/reports/system-logs/activity-logs.l10n.hbs:1
-msgid "Action"
-msgstr "操作"
-
-#: app/templates/admin/reports/system-logs/mail-logs.l10n.hbs:1
-msgid "To"
-msgstr "宛先"
-
-#: app/templates/admin/reports/system-logs/mail-logs.l10n.hbs:1
-msgid "Message"
-msgstr "メッセージ"
-
-#: app/templates/admin/reports/system-logs/notification-logs.l10n.hbs:1
-msgid "For"
-msgstr "宛先"
 
 #: app/templates/admin/sales.l10n.hbs:1
 msgid "By Events"
@@ -1152,12 +2098,36 @@ msgstr ""
 msgid "Invoices"
 msgstr ""
 
-#: app/templates/admin/sales/fees.l10n.hbs:1
-msgid "Fee Summary"
+#: app/templates/admin/sales/discounted-events.l10n.hbs:1
+msgid "Tickets Summary"
+msgstr "チケット概要"
+
+#: app/templates/admin/sales/discounted-events.l10n.hbs:1
+msgid "Discount Code"
+msgstr "割引コード"
+
+#: app/templates/admin/sales/discounted-events.l10n.hbs:1
+msgid "Marketer Email"
 msgstr ""
 
-#: app/templates/admin/sales/fees.l10n.hbs:1
+#: app/templates/admin/sales/discounted-events.l10n.hbs:1
 msgid "Completed Orders "
+msgstr ""
+
+#: app/templates/admin/sales/discounted-events.l10n.hbs:1
+msgid "Placed Orders"
+msgstr "注文"
+
+#: app/templates/admin/sales/discounted-events.l10n.hbs:1
+msgid "Pending Orders "
+msgstr ""
+
+#: app/templates/admin/sales/discounted-events.l10n.hbs:1
+msgid "Total"
+msgstr "合計"
+
+#: app/templates/admin/sales/fees.l10n.hbs:1
+msgid "Fee Summary"
 msgstr ""
 
 #: app/templates/admin/sales/fees.l10n.hbs:1
@@ -1168,25 +2138,9 @@ msgstr "料金"
 msgid "Revenue"
 msgstr "収益"
 
-#: app/templates/admin/sales/fees.l10n.hbs:1
-msgid "Total"
-msgstr "合計"
-
-#: app/templates/admin/sales/index.l10n.hbs:1
-msgid "Tickets Summary"
-msgstr "チケット概要"
-
 #: app/templates/admin/sales/index.l10n.hbs:1
 msgid "Event Date"
 msgstr "イベント日付"
-
-#: app/templates/admin/sales/index.l10n.hbs:1
-msgid "Placed Orders"
-msgstr "注文"
-
-#: app/templates/admin/sales/index.l10n.hbs:1
-msgid "Pending Orders "
-msgstr ""
 
 #: app/templates/admin/sales/marketer.l10n.hbs:1
 msgid "Marketers"
@@ -1199,34 +2153,6 @@ msgstr ""
 #: app/templates/admin/sales/marketer.l10n.hbs:1
 msgid "Discounted amount"
 msgstr ""
-
-#: app/templates/admin/sales/status.l10n.hbs:1
-msgid "Invoice#"
-msgstr ""
-
-#: app/templates/admin/sales/status.l10n.hbs:1
-msgid "Event"
-msgstr "イベント"
-
-#: app/templates/admin/sales/status.l10n.hbs:1
-msgid "Dated"
-msgstr "日付"
-
-#: app/templates/admin/sales/status.l10n.hbs:1
-msgid "Amount"
-msgstr "金額"
-
-#: app/templates/admin/sales/status.l10n.hbs:1
-msgid "Sent To"
-msgstr ""
-
-#: app/templates/admin/sessions/list.l10n.hbs:1
-msgid "Title"
-msgstr "タイトル"
-
-#: app/templates/admin/sessions/list.l10n.hbs:1
-msgid "Date of Submission"
-msgstr "提出の日付"
 
 #: app/templates/admin/settings.l10n.hbs:1
 msgid "Payment Gateways"
@@ -1244,29 +2170,89 @@ msgstr "アクティブなユーザー"
 msgid "Deleted Users"
 msgstr "削除されたユーザー"
 
-#: app/templates/admin/users.l10n.hbs:1
-msgid "Email"
-msgstr "メール"
+#: app/templates/admin/users/view/sessions.l10n.hbs:1
+msgid "My Sessions"
+msgstr "セッション"
 
-#: app/templates/admin/users.l10n.hbs:1
-msgid "User Links"
-msgstr "ユーザー リンク"
+#: app/templates/admin/users/view/sessions.l10n.hbs:1
+msgid "Upcoming Sessions"
+msgstr ""
 
-#: app/templates/admin/users.l10n.hbs:1
-msgid "Member Since"
-msgstr "加入"
+#: app/templates/admin/users/view/sessions.l10n.hbs:1
+msgid "Past Sessions"
+msgstr ""
 
-#: app/templates/admin/users.l10n.hbs:1
-msgid "Last Access"
-msgstr "最終アクセス"
+#: app/templates/admin/users/view/sessions/list.l10n.hbs:1
+msgid "No session proposals found for the events"
+msgstr ""
 
-#: app/templates/admin/users.l10n.hbs:1
-msgid "Active"
-msgstr "有効"
+#: app/templates/admin/users/view/settings.l10n.hbs:1
+msgid "Email-Preferences"
+msgstr ""
 
-#: app/templates/admin/users.l10n.hbs:1
-msgid "Inactive"
-msgstr "無効"
+#: app/templates/admin/users/view/tickets.l10n.hbs:1
+msgid "My tickets"
+msgstr ""
+
+#: app/templates/admin/users/view/tickets.l10n.hbs:1
+msgid "Upcoming Events"
+msgstr "今後のイベント"
+
+#: app/templates/admin/users/view/tickets.l10n.hbs:1
+msgid "Saved Events"
+msgstr ""
+
+#: app/templates/admin/users/view/tickets.l10n.hbs:1
+msgid "Past Events"
+msgstr ""
+
+#: app/templates/admin/users/view/tickets/list.l10n.hbs:1
+msgid "No tickets found for this user"
+msgstr ""
+
+#: app/templates/components/errors/forbidden-error.l10n.hbs:1
+msgid "Forbidden"
+msgstr ""
+
+#: app/templates/components/errors/forbidden-error.l10n.hbs:1
+msgid "Oops, you don't have the permission"
+msgstr ""
+
+#: app/templates/components/errors/forbidden-error.l10n.hbs:1
+msgid "to access this page"
+msgstr ""
+
+#: app/templates/components/errors/forbidden-error.l10n.hbs:1
+msgid "You may want to head back to the home page."
+msgstr ""
+
+#: app/templates/components/errors/forbidden-error.l10n.hbs:1
+msgid "If you think you shouldn't be seeing this, please contact the administrator."
+msgstr ""
+
+#: app/templates/components/errors/forbidden-error.l10n.hbs:1
+msgid "Go Back Home"
+msgstr ""
+
+#: app/templates/components/errors/generic-error.l10n.hbs:1
+msgid "Oops, the page you were trying"
+msgstr ""
+
+#: app/templates/components/errors/generic-error.l10n.hbs:1
+msgid "to access"
+msgstr ""
+
+#: app/templates/components/errors/generic-error.l10n.hbs:1
+msgid "has caused an error. "
+msgstr ""
+
+#: app/templates/components/errors/generic-error.l10n.hbs:1
+msgid "This, may or may not be a server issue. We are looking into it. You may want to head back to the home page."
+msgstr ""
+
+#: app/templates/components/errors/generic-error.l10n.hbs:1
+msgid "Please try visiting after some time."
+msgstr ""
 
 #: app/templates/components/errors/not-found.l10n.hbs:1
 msgid "Not Found"
@@ -1285,15 +2271,7 @@ msgid "exist"
 msgstr ""
 
 #: app/templates/components/errors/not-found.l10n.hbs:1
-msgid "You may want to head back to the home page."
-msgstr ""
-
-#: app/templates/components/errors/not-found.l10n.hbs:1
 msgid "If you think something is broken, try again."
-msgstr ""
-
-#: app/templates/components/errors/not-found.l10n.hbs:1
-msgid "Go Back Home"
 msgstr ""
 
 #: app/templates/components/errors/server-error.l10n.hbs:1
@@ -1308,10 +2286,6 @@ msgstr ""
 msgid "on our servers."
 msgstr ""
 
-#: app/templates/components/event-info.l10n.hbs:1
-msgid "When & Where"
-msgstr "時と場所"
-
 #: app/templates/components/events/event-import-section.l10n.hbs:1
 msgid "Select event source file to import"
 msgstr "インポートするイベント ソース ファイルを選択"
@@ -1321,7 +2295,7 @@ msgid "Supported formats:"
 msgstr ""
 
 #: app/templates/components/events/event-import-section.l10n.hbs:1
-msgid "Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical)"
+msgid "Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical, .ics), XML Representation of iCalendar (.xcal)"
 msgstr ""
 
 #: app/templates/components/events/event-import-section.l10n.hbs:1
@@ -1343,6 +2317,14 @@ msgstr ""
 #: app/templates/components/events/imports-history-section.l10n.hbs:1
 msgid "Search"
 msgstr "検索"
+
+#: app/templates/components/events/imports-history-section.l10n.hbs:1
+msgid "State"
+msgstr "状態"
+
+#: app/templates/components/events/imports-history-section.l10n.hbs:1
+msgid "Message"
+msgstr "メッセージ"
 
 #: app/templates/components/events/imports-history-section.l10n.hbs:1
 msgid "Started"
@@ -1412,6 +2394,10 @@ msgstr ""
 msgid " here"
 msgstr ""
 
+#: app/templates/components/events/view/export/download-common.l10n.hbs:1
+msgid "Download "
+msgstr ""
+
 #: app/templates/components/events/view/export/download-zip.l10n.hbs:1
 msgid "Export and Download Event as Zip"
 msgstr ""
@@ -1440,9 +2426,17 @@ msgstr "ドキュメント"
 msgid "Start"
 msgstr "開始"
 
-#: app/templates/components/events/view/export/download-zip.l10n.hbs:1
-msgid "Download"
-msgstr "ダウンロード"
+#: app/templates/components/events/view/overview/event-apps.l10n.hbs:1
+msgid "Apps"
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-apps.l10n.hbs:1
+msgid "Generate Android App"
+msgstr "Android アプリを生成"
+
+#: app/templates/components/events/view/overview/event-apps.l10n.hbs:1
+msgid "Generate Web App"
+msgstr "Web アプリを生成"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.l10n.hbs:1
 msgid "Event setup checklist"
@@ -1488,20 +2482,44 @@ msgstr ""
 msgid "Event sponsors"
 msgstr ""
 
-#: app/templates/components/events/view/overview/event-sponsors.l10n.hbs:1
-msgid "Logo"
-msgstr "ロゴ"
-
-#: app/templates/components/events/view/overview/event-sponsors.l10n.hbs:1
-msgid "type"
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "Summary"
 msgstr ""
 
-#: app/templates/components/events/view/overview/event-sponsors.l10n.hbs:1
-msgid "Level"
-msgstr "レベル"
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "Total tickets sold"
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "No. of orders"
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "Sales (amount)"
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "Details"
+msgstr "詳細"
+
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "Type"
+msgstr "種類"
+
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "Sold"
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-tickets.l10n.hbs:1
+msgid "Available"
+msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.l10n.hbs:1
 msgid "General info"
+msgstr ""
+
+#: app/templates/components/events/view/overview/general-info.l10n.hbs:1
+msgid "Your event is live at"
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.l10n.hbs:1
@@ -1517,6 +2535,10 @@ msgid "(view revisions)"
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.l10n.hbs:1
+msgid "Click to add location."
+msgstr ""
+
+#: app/templates/components/events/view/overview/general-info.l10n.hbs:1
 msgid "Start time"
 msgstr ""
 
@@ -1529,8 +2551,20 @@ msgid "Session types"
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.l10n.hbs:1
+msgid "No Session Type present. "
+msgstr ""
+
+#: app/templates/components/events/view/overview/general-info.l10n.hbs:1
+msgid "Click here to add"
+msgstr ""
+
+#: app/templates/components/events/view/overview/general-info.l10n.hbs:1
 msgid "Links and Social Media"
 msgstr "リンクとソーシャル メディア"
+
+#: app/templates/components/events/view/overview/general-info.l10n.hbs:1
+msgid "No social links present. "
+msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.l10n.hbs:1
 msgid "No. of Speakers"
@@ -1557,12 +2591,24 @@ msgid "Invited"
 msgstr "招待"
 
 #: app/templates/components/events/view/overview/manage-roles.l10n.hbs:1
-msgid "User e-mail"
+msgid "User(Email)"
 msgstr ""
 
 #: app/templates/components/events/view/overview/manage-roles.l10n.hbs:1
 msgid "Role"
 msgstr "ロール"
+
+#: app/templates/components/events/view/overview/manage-roles.l10n.hbs:1
+msgid "Options"
+msgstr "オプション"
+
+#: app/templates/components/events/view/overview/manage-roles.l10n.hbs:1
+msgid "Are you sure you would like to cancel this invite?"
+msgstr ""
+
+#: app/templates/components/events/view/overview/manage-roles.l10n.hbs:1
+msgid "No records to show"
+msgstr ""
 
 #: app/templates/components/explore/side-bar.l10n.hbs:1
 msgid "Enter Location"
@@ -1588,9 +2634,17 @@ msgstr "開始"
 msgid "Ends"
 msgstr "終了"
 
+#: app/templates/components/explore/side-bar.l10n.hbs:1
+msgid "Clear Filters"
+msgstr ""
+
 #: app/templates/components/footer-main.l10n.hbs:1
 msgid "Use"
 msgstr ""
+
+#: app/templates/components/footer-main.l10n.hbs:1
+msgid "Sitemap"
+msgstr "サイトマップ"
 
 #: app/templates/components/footer-main.l10n.hbs:1
 msgid "Locations"
@@ -1601,36 +2655,80 @@ msgid "Nearby Events"
 msgstr ""
 
 #: app/templates/components/footer-main.l10n.hbs:1
-msgid "Follow us on"
+msgid "Connect with us"
+msgstr ""
+
+#: app/templates/components/footer-main.l10n.hbs:1
+msgid "Support"
+msgstr "サポート"
+
+#: app/templates/components/footer-main.l10n.hbs:1
+msgid "Facebook"
+msgstr "Facebook"
+
+#: app/templates/components/footer-main.l10n.hbs:1
+msgid "Twitter"
+msgstr "Twitter"
+
+#: app/templates/components/footer-main.l10n.hbs:1
+msgid "Github"
+msgstr "GitHub"
+
+#: app/templates/components/footer-main.l10n.hbs:1
+msgid "Youtube"
+msgstr "YouTube"
+
+#: app/templates/components/footer-main.l10n.hbs:1
+msgid "Google +"
 msgstr ""
 
 #: app/templates/components/footer-main.l10n.hbs:1
 msgid "Copyright"
 msgstr ""
 
-#: app/templates/components/forms/admin/content/social-links-form.l10n.hbs:1
-msgid "Support"
-msgstr "サポート"
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Name"
+msgstr "名前"
 
-#: app/templates/components/forms/admin/content/social-links-form.l10n.hbs:1
-msgid "Twitter"
-msgstr "Twitter"
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Title"
+msgstr "タイトル"
 
-#: app/templates/components/forms/admin/content/social-links-form.l10n.hbs:1
-msgid "Facebook"
-msgstr "Facebook"
-
-#: app/templates/components/forms/admin/content/social-links-form.l10n.hbs:1
-msgid "Google +"
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Path"
 msgstr ""
 
-#: app/templates/components/forms/admin/content/social-links-form.l10n.hbs:1
-msgid "Youtube"
-msgstr "YouTube"
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Description"
+msgstr "説明"
 
-#: app/templates/components/forms/admin/content/social-links-form.l10n.hbs:1
-msgid "Github"
-msgstr "GitHub"
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Place"
+msgstr ""
+
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Event"
+msgstr "イベント"
+
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Footer"
+msgstr ""
+
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Position"
+msgstr ""
+
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: app/templates/components/forms/admin/content/pages-form.l10n.hbs:1
+msgid "Are you sure you would like to delete this page?"
+msgstr ""
+
+#: app/templates/components/forms/admin/content/translation-form.l10n.hbs:1
+msgid "Upload"
+msgstr "アップロード"
 
 #: app/templates/components/forms/admin/settings/analytics-form.l10n.hbs:1
 msgid "Google Analytics"
@@ -1813,32 +2911,24 @@ msgid "Sandbox mode - Used during development and testing"
 msgstr ""
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.l10n.hbs:1
-msgid "Sandbox username"
-msgstr "サンドボックス ユーザー名"
+msgid "Paypal Sandbox Client Id"
+msgstr ""
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.l10n.hbs:1
-msgid "Sandbox password"
-msgstr "サンドボックス パスワード"
-
-#: app/templates/components/forms/admin/settings/payment-gateway-form.l10n.hbs:1
-msgid "Sandbox signature"
-msgstr "サンド ボックス署名"
+msgid "Paypal Sandbox Secret Token"
+msgstr ""
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.l10n.hbs:1
 msgid "Live mode - Used during production"
 msgstr "ライブモード - 本番稼働時に使用します"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.l10n.hbs:1
-msgid "Live username"
-msgstr "ライブ ユーザー名"
+msgid "Paypal Client Id"
+msgstr ""
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.l10n.hbs:1
-msgid "Live password"
-msgstr "ライブ パスワード"
-
-#: app/templates/components/forms/admin/settings/payment-gateway-form.l10n.hbs:1
-msgid "Live signature"
-msgstr "ライブ署名"
+msgid "Paypal Secret Token"
+msgstr ""
 
 #: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
 msgid "App Environment"
@@ -1873,6 +2963,18 @@ msgid "Tagline"
 msgstr ""
 
 #: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
+msgid "Choose a searching option to be used in the backend"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
+msgid "Flask Filtering"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
+msgid "Elastic Search (Coming Soon)"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
 msgid "App secret key"
 msgstr "アプリ秘密キー"
 
@@ -1883,14 +2985,6 @@ msgstr "アプリケーションの秘密キー。ランダムな文字列を最
 #: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
 msgid "Secret"
 msgstr "秘密"
-
-#: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
-msgid "Super Admin Email ID"
-msgstr "Super Admin メール ID"
-
-#: app/templates/components/forms/admin/settings/system-form.l10n.hbs:1
-msgid "The email ID of the super admin user created during initial deployment."
-msgstr "初期デプロイメント時に作成した super admin ユーザーのメール ID。"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.l10n.hbs:1
 msgid "Mail Settings"
@@ -1903,6 +2997,10 @@ msgstr "メールから"
 #: app/templates/components/forms/admin/settings/system/mail-settings.l10n.hbs:1
 msgid "From Name"
 msgstr "差出人名"
+
+#: app/templates/components/forms/admin/settings/system/mail-settings.l10n.hbs:1
+msgid "Frontend Url"
+msgstr ""
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.l10n.hbs:1
 msgid "Disable email"
@@ -1961,8 +3059,8 @@ msgid "Sendgrid Token"
 msgstr "Sendgrid トークン"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
-msgid "Tokens"
-msgstr "トークン"
+msgid "Google Tokens"
+msgstr "Google トークン"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
 msgid "on how to obtain these tokens."
@@ -1973,12 +3071,28 @@ msgid "Client secret"
 msgstr "クライアント 秘密"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
+msgid "Facebook Tokens"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
+msgid "Client Secret"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
+msgid "Twitter Tokens"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
 msgid "Consumer ID"
 msgstr ""
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
-msgid "Consumer secret"
-msgstr "コンシューマー 秘密"
+msgid "Consumer Secret"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system/social-media-token.l10n.hbs:1
+msgid "Instagram Tokens"
+msgstr ""
 
 #: app/templates/components/forms/admin/settings/system/storage-option.l10n.hbs:1
 msgid "Storage"
@@ -2029,7 +3143,15 @@ msgid "Key"
 msgstr "キー"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.l10n.hbs:1
-msgid "List of supported currencies"
+msgid "Add Fee Settings for the event"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/ticket-fees-form.l10n.hbs:1
+msgid "Select country"
+msgstr "国を選択"
+
+#: app/templates/components/forms/admin/settings/ticket-fees-form.l10n.hbs:1
+msgid "Select currency"
 msgstr ""
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.l10n.hbs:1
@@ -2044,20 +3166,156 @@ msgstr "最大料金"
 msgid "If you keep the maximum fee as 0, it would become unlimited. Kindly set the maximum fee to some value."
 msgstr ""
 
-#: app/templates/components/forms/forgot-password-form.l10n.hbs:1
-msgid "Email ID"
+#: app/templates/components/forms/admin/settings/ticket-fees-form.l10n.hbs:1
+msgid "Are you sure you would like to remove this ticket?"
 msgstr ""
 
-#: app/templates/components/forms/forgot-password-form.l10n.hbs:1
-msgid "Reset Password"
-msgstr "パスワードをリセット"
+#: app/templates/components/forms/admin/settings/ticket-fees-form.l10n.hbs:1
+msgid "Add New"
+msgstr ""
 
-#: app/templates/components/forms/forgot-password-form.l10n.hbs:1
-msgid "New to site? Create Account"
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Access Code"
+msgstr "アクセス コード"
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Number of Access Tickets"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Select Tickets applied to the access code"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Select all Ticket types"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "No hidden tickets available for this event to select from"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Show more options"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Set the min and max quantity allowed to purchase per order(Optional)"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Min"
+msgstr "最小"
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Max"
+msgstr "最大"
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Validity Period(Optional)"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Valid from"
+msgstr "有効期限開始"
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Expires on"
+msgstr "有効期限"
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Access Link"
+msgstr "アクセス リンク"
+
+#: app/templates/components/forms/events/view/create-access-code.l10n.hbs:1
+msgid "Copy"
+msgstr "コピー"
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "Enter Discount"
+msgstr "割引を入力してください"
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "Amount (US$)"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "Percent (%)"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "Number of Discount Tickets"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "Select Ticket(s) applied to the discount code"
+msgstr "割引コードに適用されるチケットを選択"
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "No event tickets to select from"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "Set the min and max quantity allowed to purchase per order (Optional)"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-discount-code.l10n.hbs:1
+msgid "Discount Link"
+msgstr "割引リンク"
+
+#: app/templates/components/forms/events/view/edit-session.l10n.hbs:1
+msgid "Short Abstract"
+msgstr "短い要約"
+
+#: app/templates/components/forms/events/view/edit-session.l10n.hbs:1
+msgid "Comments"
+msgstr "コメント"
+
+#: app/templates/components/forms/events/view/edit-session.l10n.hbs:1
+msgid "Slides"
+msgstr ""
+
+#: app/templates/components/forms/events/view/edit-session.l10n.hbs:1
+msgid "File"
+msgstr ""
+
+#: app/templates/components/forms/events/view/edit-session.l10n.hbs:1
+msgid "Select a file"
+msgstr ""
+
+#: app/templates/components/forms/events/view/edit-session.l10n.hbs:1
+msgid "Save Session"
+msgstr "セッションを保存"
+
+#: app/templates/components/forms/events/view/order-form.l10n.hbs:1
+msgid "Information to Collect"
+msgstr ""
+
+#: app/templates/components/forms/events/view/order-form.l10n.hbs:1
+msgid "Option"
+msgstr "オプション"
+
+#: app/templates/components/forms/events/view/order-form.l10n.hbs:1
+msgid "Include"
+msgstr "含む"
+
+#: app/templates/components/forms/events/view/order-form.l10n.hbs:1
+msgid "Require"
+msgstr "必要"
+
+#: app/templates/components/forms/events/view/order-form.l10n.hbs:1
+msgid "Registration Options"
+msgstr ""
+
+#: app/templates/components/forms/events/view/order-form.l10n.hbs:1
+msgid "REGISTRATION TIME LIMIT"
 msgstr ""
 
 #: app/templates/components/forms/login-form.l10n.hbs:1
 msgid "You have been registered successfully. Please login to continue."
+msgstr ""
+
+#: app/templates/components/forms/login-form.l10n.hbs:1
+msgid "Email ID"
 msgstr ""
 
 #: app/templates/components/forms/login-form.l10n.hbs:1
@@ -2069,83 +3327,135 @@ msgid "Login with Facebook"
 msgstr ""
 
 #: app/templates/components/forms/login-form.l10n.hbs:1
-msgid "Login with Twitter"
+msgid "New to site? Create Account"
 msgstr ""
 
-#: app/templates/components/forms/login-form.l10n.hbs:1
-msgid "Login with Google Plus"
-msgstr ""
-
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Registration Information"
 msgstr "登録情報"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
-msgid "Please complete registration within 10:00 minutes."
-msgstr ""
-
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
-msgid "After 10:00 minutes, the reservation we're holding will be released to others."
-msgstr "10 分後、保持している予約を他の人に解放します。"
-
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Ticket Buyer"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "First Name"
 msgstr "名"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Last Name"
 msgstr "姓"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Email"
+msgstr "メール"
+
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Ticket Holder's Information"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Ticket Holder "
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
-msgid "Same as Ticket Buyer"
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid " -for- "
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Billing Information"
 msgstr "請求情報"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
-msgid "Select country"
-msgstr "国を選択"
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Country"
+msgstr "国"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Address"
 msgstr "住所"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "City"
 msgstr "市区町村"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "State/Province"
 msgstr "都道府県/州"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
 msgid "Zip Code"
 msgstr "郵便番号"
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
-msgid "Pay Via"
-msgstr "支払い"
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Payment Mode"
+msgstr ""
 
-#: app/templates/components/forms/orders/order-form.l10n.hbs:1
-msgid "By clicking \"Pay Now\", I acknowledge that I have read and agree with the Open Event terms of services and privacy policy."
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Stripe"
+msgstr "Stripe"
+
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Paypal"
+msgstr ""
+
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Cheque"
+msgstr "小切手"
+
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Bank"
+msgstr ""
+
+#: app/templates/components/forms/orders/attendee-list.l10n.hbs:1
+msgid "Onsite"
 msgstr ""
 
 #: app/templates/components/forms/orders/order-form.l10n.hbs:1
-msgid "Pay Now"
+msgid "Please complete registration within "
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "minutes."
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "After "
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "minutes, the reservation we're holding will be released to others."
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "Ticket holder is the same person as ticket buyer"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "Enable Billing Information"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "Payment Method"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "Please choose your payment method"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "Credit Card"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "Acknowledgement"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "By clicking \"Pay Now\", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event."
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.l10n.hbs:1
+msgid "Proceed to Checkout"
 msgstr ""
 
 #: app/templates/components/forms/register-form.l10n.hbs:1
@@ -2156,6 +3466,58 @@ msgstr ""
 msgid "Already have an account? Login"
 msgstr ""
 
+#: app/templates/components/forms/reset-password-form.l10n.hbs:1
+msgid "Forgot Password"
+msgstr "パスワードをお忘れですか"
+
+#: app/templates/components/forms/reset-password-form.l10n.hbs:1
+msgid "password"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Session details"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Logo"
+msgstr "ロゴ"
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Select an image"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Speaker details"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Choose from existing speaker(s)"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Select Speakers"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "No speaker exists. Add a new speaker."
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Choose from an existing session"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "No session exists. Add a new session proposal."
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Add a new Proposal"
+msgstr ""
+
+#: app/templates/components/forms/session-speaker-form.l10n.hbs:1
+msgid "Submit"
+msgstr "提出"
+
 #: app/templates/components/forms/user-profile-form.l10n.hbs:1
 msgid "User Image"
 msgstr ""
@@ -2165,7 +3527,7 @@ msgid "Select User Image"
 msgstr ""
 
 #: app/templates/components/forms/user-profile-form.l10n.hbs:1
-msgid "We recommend using at least a 2160x1080px (2:1 ratio) image"
+msgid "We recommend using at least a 1000x1000px (1:1 ratio) image"
 msgstr ""
 
 #: app/templates/components/forms/user-profile-form.l10n.hbs:1
@@ -2197,8 +3559,8 @@ msgid "Select timezone"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Description"
-msgstr "説明"
+msgid "Select Logo"
+msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "Event Image"
@@ -2209,7 +3571,7 @@ msgid "Select Event Image"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Select Logo"
+msgid "We recommend using at least a 2160x1080px (2:1 ratio) image"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
@@ -2226,6 +3588,10 @@ msgstr "主催者の説明"
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "Links & Social Media"
+msgstr ""
+
+#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
+msgid "External event URL"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
@@ -2261,47 +3627,7 @@ msgid "Ticket URL"
 msgstr "チケット URL"
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Redeem Discount Code"
-msgstr "割引コードの交換"
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Discount code"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Redeem"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Code Applied"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Discount of"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "over a period of"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "month(s)"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Are you sure you wish to remove the discount applied ?"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Remove"
-msgstr "削除"
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "Add Payment Details"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Select currency"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
@@ -2334,6 +3660,14 @@ msgstr "はい、Stripe による支払いを受け付けます"
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "Stripe accepts Visa, Master and Amex. Find out more about Stripe "
+msgstr ""
+
+#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
+msgid "You have linked your Stripe account successfully. Click Here to Disconnect you account."
+msgstr ""
+
+#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
+msgid "Disconnect Stripe Account"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
@@ -2377,6 +3711,10 @@ msgid "Tax Information"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
+msgid "Remove"
+msgstr "削除"
+
+#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "Add Tax Information"
 msgstr ""
 
@@ -2405,14 +3743,6 @@ msgid "Select Event Type"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Event Topic"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Select Event Topic"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "Event Sub-topic"
 msgstr ""
 
@@ -2423,10 +3753,6 @@ msgstr ""
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "Add Code of Conduct"
 msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
-msgid "Code of Conduct"
-msgstr "行動規範"
 
 #: app/templates/components/forms/wizard/basic-details-step.l10n.hbs:1
 msgid "License of Event Data & Content"
@@ -2453,11 +3779,11 @@ msgid "Publish"
 msgstr "公開"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
-msgid "turn off"
+msgid "Turn off"
 msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
-msgid "turn on"
+msgid "Turn on"
 msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
@@ -2483,10 +3809,6 @@ msgstr "お知らせ"
 #: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
 msgid "Private Link"
 msgstr ""
-
-#: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
-msgid "Copy"
-msgstr "コピー"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
@@ -2521,24 +3843,16 @@ msgid "Collect Speaker Details"
 msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
-msgid "Option"
-msgstr "オプション"
-
-#: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
-msgid "Include"
-msgstr "含む"
-
-#: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
-msgid "Require"
-msgstr "必要"
-
-#: app/templates/components/forms/wizard/sessions-speakers-step.l10n.hbs:1
 msgid "Collect Session Details"
 msgstr ""
 
 #: app/templates/components/forms/wizard/sponsors-step.l10n.hbs:1
-msgid "Type"
-msgstr "種類"
+msgid "Sponsor"
+msgstr "スポンサー"
+
+#: app/templates/components/forms/wizard/sponsors-step.l10n.hbs:1
+msgid "Level"
+msgstr "レベル"
 
 #: app/templates/components/forms/wizard/sponsors-step.l10n.hbs:1
 msgid "URL"
@@ -2546,6 +3860,138 @@ msgstr ""
 
 #: app/templates/components/forms/wizard/sponsors-step.l10n.hbs:1
 msgid "Add another sponsor"
+msgstr ""
+
+#: app/templates/components/modals/add-system-role-modal.l10n.hbs:1
+msgid "Add New System Role"
+msgstr ""
+
+#: app/templates/components/modals/add-system-role-modal.l10n.hbs:1
+msgid "Edit System Role"
+msgstr ""
+
+#: app/templates/components/modals/add-system-role-modal.l10n.hbs:1
+msgid "Enter Role name"
+msgstr ""
+
+#: app/templates/components/modals/add-system-role-modal.l10n.hbs:1
+msgid "Add Role"
+msgstr "ロールを追加"
+
+#: app/templates/components/modals/add-system-role-modal.l10n.hbs:1
+msgid "Edit Role"
+msgstr "ロールを編集"
+
+#: app/templates/components/modals/add-user-role-modal.l10n.hbs:1
+msgid "User Email"
+msgstr "ユーザーのメール"
+
+#: app/templates/components/modals/add-user-role-modal.l10n.hbs:1
+msgid "User role"
+msgstr ""
+
+#: app/templates/components/modals/add-user-role-modal.l10n.hbs:1
+msgid "Select a role"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-sub-topic-modal.l10n.hbs:1
+msgid "Add New Event Sub Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-sub-topic-modal.l10n.hbs:1
+msgid "New Event Sub Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-sub-topic-modal.l10n.hbs:1
+msgid "Enter New Event Sub Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-sub-topic-modal.l10n.hbs:1
+msgid "Add Event Sub Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-topic-modal.l10n.hbs:1
+msgid "Add New Event Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-topic-modal.l10n.hbs:1
+msgid "New Event Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-topic-modal.l10n.hbs:1
+msgid "Enter New Event Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-topic-modal.l10n.hbs:1
+msgid "Add Event Topic"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-type-modal.l10n.hbs:1
+msgid "Add New Event Type"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-type-modal.l10n.hbs:1
+msgid "New Event Type"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-type-modal.l10n.hbs:1
+msgid "Enter New Event Type"
+msgstr ""
+
+#: app/templates/components/modals/admin/content/new-event-type-modal.l10n.hbs:1
+msgid "Add Event Type"
+msgstr ""
+
+#: app/templates/components/modals/cfs-proposal-modal.l10n.hbs:1
+msgid "Submit Proposal"
+msgstr "申し込みを提出"
+
+#: app/templates/components/modals/cfs-proposal-modal.l10n.hbs:1
+msgid "Existing Sessions"
+msgstr "既存のセッション"
+
+#: app/templates/components/modals/cfs-proposal-modal.l10n.hbs:1
+msgid "Edit Session - "
+msgstr ""
+
+#: app/templates/components/modals/cfs-proposal-modal.l10n.hbs:1
+msgid "No existing sessions"
+msgstr ""
+
+#: app/templates/components/modals/cfs-proposal-modal.l10n.hbs:1
+msgid "Add Speaker Details"
+msgstr ""
+
+#: app/templates/components/modals/cfs-proposal-modal.l10n.hbs:1
+msgid "Edit Speaker Details"
+msgstr ""
+
+#: app/templates/components/modals/cfs-proposal-modal.l10n.hbs:1
+msgid "Add Session Details"
+msgstr ""
+
+#: app/templates/components/modals/change-image-modal.l10n.hbs:1
+msgid "Update image"
+msgstr ""
+
+#: app/templates/components/modals/change-image-modal.l10n.hbs:1
+msgid "Update Image"
+msgstr "画像を更新"
+
+#: app/templates/components/modals/change-image-modal.l10n.hbs:1
+msgid "Select Image"
+msgstr ""
+
+#: app/templates/components/modals/change-image-modal.l10n.hbs:1
+msgid "For Cover Photos : 300x150px (2:1 ratio) image. For Avatar Photos : 150x150px (1:1 ratio) image."
+msgstr ""
+
+#: app/templates/components/modals/change-image-modal.l10n.hbs:1
+msgid "Copyright information"
+msgstr ""
+
+#: app/templates/components/modals/change-image-modal.l10n.hbs:1
+msgid "Origin information"
 msgstr ""
 
 #: app/templates/components/modals/confirm-modal.l10n.hbs:1
@@ -2572,9 +4018,89 @@ msgstr ""
 msgid "Looks good"
 msgstr ""
 
+#: app/templates/components/modals/edit-user-modal.l10n.hbs:1
+msgid "Update System Roles"
+msgstr "システム ロールを更新"
+
+#: app/templates/components/modals/edit-user-modal.l10n.hbs:1
+msgid "Provide admin access?"
+msgstr ""
+
+#: app/templates/components/modals/edit-user-modal.l10n.hbs:1
+msgid "Custom system roles"
+msgstr ""
+
+#: app/templates/components/modals/event-delete-modal.l10n.hbs:1
+msgid "Are you sure you would like to delete this event?"
+msgstr ""
+
+#: app/templates/components/modals/event-delete-modal.l10n.hbs:1
+msgid "Deleting the event will delete all the data associated with it."
+msgstr "イベントを削除すると、それに関連付けられているすべてのデータが削除されます。"
+
+#: app/templates/components/modals/event-delete-modal.l10n.hbs:1
+msgid "Please enter the full name of the event to continue"
+msgstr "続けてイベントの完全な名前を入力してください"
+
+#: app/templates/components/modals/event-delete-modal.l10n.hbs:1
+msgid "Delete Event"
+msgstr ""
+
 #: app/templates/components/modals/event-share-modal.l10n.hbs:1
 msgid "Share this event"
 msgstr "このイベントを共有"
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Login or Signup"
+msgstr ""
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Please Login or Signup before you can submit a proposal."
+msgstr ""
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Signup"
+msgstr ""
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Please enter your email address to continue."
+msgstr ""
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Email Address"
+msgstr ""
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "You have previously registered with this email address."
+msgstr ""
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Please enter your password to continue."
+msgstr ""
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Sign In"
+msgstr "サインイン"
+
+#: app/templates/components/modals/login-signup-modal.l10n.hbs:1
+msgid "Continue"
+msgstr "続行"
+
+#: app/templates/components/modals/proposal-delete-modal.l10n.hbs:1
+msgid "Are you sure you would like to delete this proposal?"
+msgstr ""
+
+#: app/templates/components/modals/proposal-delete-modal.l10n.hbs:1
+msgid "Deleting the proposal will delete all the data associated with it."
+msgstr ""
+
+#: app/templates/components/modals/proposal-delete-modal.l10n.hbs:1
+msgid "Proceeding forward will delete the proposal titled:"
+msgstr ""
+
+#: app/templates/components/modals/proposal-delete-modal.l10n.hbs:1
+msgid "Delete Proposal"
+msgstr ""
 
 #: app/templates/components/modals/tax-info-modal.l10n.hbs:1
 msgid "Add tax information"
@@ -2637,24 +4163,12 @@ msgid "Include tax in ticket price"
 msgstr "チケット料金に税を含む (内税)"
 
 #: app/templates/components/modals/tax-info-modal.l10n.hbs:1
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: app/templates/components/modals/tax-info-modal.l10n.hbs:1
 msgid "Update tax information"
-msgstr ""
-
-#: app/templates/components/nav-bar.l10n.hbs:1
-msgid "Search Events..."
 msgstr ""
 
 #: app/templates/components/nav-bar.l10n.hbs:1
 msgid "Browse Events"
 msgstr "イベントを参照"
-
-#: app/templates/components/nav-bar.l10n.hbs:1
-msgid "My Sessions"
-msgstr "セッション"
 
 #: app/templates/components/nav-bar.l10n.hbs:1
 msgid "Manage Events"
@@ -2664,28 +4178,96 @@ msgstr "イベントを管理"
 msgid "Logout"
 msgstr "ログアウト"
 
+#: app/templates/components/nav-bar.l10n.hbs:1
+msgid "Create Event"
+msgstr "イベントを作成"
+
 #: app/templates/components/notification-dropdown.l10n.hbs:1
 msgid "Mark all as Read"
 msgstr ""
 
-#: app/templates/components/order-summary.l10n.hbs:1
+#: app/templates/components/notification-dropdown.l10n.hbs:1
+msgid "Go to notifications panel"
+msgstr ""
+
+#: app/templates/components/notification-dropdown.l10n.hbs:1
+msgid "No new notifications"
+msgstr "新しい通知はありません"
+
+#: app/templates/components/order-card.l10n.hbs:1
+msgid "Free"
+msgstr ""
+
+#: app/templates/components/order-card.l10n.hbs:1
+msgid "order"
+msgstr ""
+
+#: app/templates/components/order-card.l10n.hbs:1
+msgid "on"
+msgstr "オン"
+
+#: app/templates/components/orders/event-info.l10n.hbs:1
+msgid "When & Where"
+msgstr "時と場所"
+
+#: app/templates/components/orders/event-info.l10n.hbs:1
+msgid "Go to event"
+msgstr ""
+
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "Your order completed successfully."
+msgstr ""
+
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "Find all the details related to your order below."
+msgstr ""
+
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "Your order has been placed successfully."
+msgstr ""
+
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "You can pay for your order to get tickets."
+msgstr ""
+
+#: app/templates/components/orders/order-summary.l10n.hbs:1
 msgid "Order Summary"
 msgstr "注文内容"
 
-#: app/templates/components/order-summary.l10n.hbs:1
+#: app/templates/components/orders/order-summary.l10n.hbs:1
 msgid "Ticket Type"
 msgstr "チケットの種類"
 
-#: app/templates/components/order-summary.l10n.hbs:1
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "Discount"
+msgstr "割引"
+
+#: app/templates/components/orders/order-summary.l10n.hbs:1
 msgid "Subtotal"
 msgstr "小計"
 
-#: app/templates/components/order-summary.l10n.hbs:1
-msgid "Student/In"
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "Order Total"
 msgstr ""
 
-#: app/templates/components/order-summary.l10n.hbs:1
-msgid "Order Total"
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "Your order expired because you did not complete regsitration in time."
+msgstr ""
+
+#: app/templates/components/orders/order-summary.l10n.hbs:1
+msgid "Please click on event link given right to order your tickets again."
+msgstr ""
+
+#: app/templates/components/orders/organizer-info.l10n.hbs:1
+msgid "Organizer "
+msgstr ""
+
+#: app/templates/components/public/call-for-speakers.l10n.hbs:1
+msgid "Open"
+msgstr "オープン"
+
+#: app/templates/components/public/call-for-speakers.l10n.hbs:1
+msgid "Call for Speakers is open until"
 msgstr ""
 
 #: app/templates/components/public/call-for-speakers.l10n.hbs:1
@@ -2693,23 +4275,27 @@ msgid "Closed"
 msgstr "クローズ済"
 
 #: app/templates/components/public/call-for-speakers.l10n.hbs:1
-msgid "Open"
-msgstr "オープン"
-
-#: app/templates/components/public/call-for-speakers.l10n.hbs:1
-msgid "Call for Speakers Open until"
+msgid "Call for Speakers will open at"
 msgstr ""
 
 #: app/templates/components/public/call-for-speakers.l10n.hbs:1
-msgid "Submit Proposal"
-msgstr "申し込みを提出"
+msgid "Call for Speakers was closed at"
+msgstr ""
 
 #: app/templates/components/public/copyright-item.l10n.hbs:1
 msgid "This event is licenced under"
 msgstr ""
 
+#: app/templates/components/public/event-map.l10n.hbs:1
+msgid "Getting Here"
+msgstr "ここで取得"
+
 #: app/templates/components/public/featured-speaker-list.l10n.hbs:1
 msgid "Featured Speakers"
+msgstr ""
+
+#: app/templates/components/public/session-item.l10n.hbs:1
+msgid "About "
 msgstr ""
 
 #: app/templates/components/public/side-menu.l10n.hbs:1
@@ -2720,12 +4306,12 @@ msgstr ""
 msgid "Getting here"
 msgstr ""
 
-#: app/templates/components/public/social-links.l10n.hbs:1
-msgid "External event URL"
+#: app/templates/components/public/ticket-list.l10n.hbs:1
+msgid "Sales Ends"
 msgstr ""
 
 #: app/templates/components/public/ticket-list.l10n.hbs:1
-msgid "Sales Ends"
+msgid "Promotional Code"
 msgstr ""
 
 #: app/templates/components/public/ticket-list.l10n.hbs:1
@@ -2748,32 +4334,16 @@ msgstr "今週"
 msgid "Next Week"
 msgstr "来週"
 
+#: app/templates/components/session-card.l10n.hbs:1
+msgid "Session Not Yet Scheduled"
+msgstr "セッションはまだ予定が決まっていません"
+
 #: app/templates/components/settings/application-section.l10n.hbs:1
-msgid "facebook.com/"
+msgid "Successfully linked with Facebook"
 msgstr ""
 
 #: app/templates/components/settings/application-section.l10n.hbs:1
-msgid "Connect"
-msgstr ""
-
-#: app/templates/components/settings/application-section.l10n.hbs:1
-msgid "twitter.com/"
-msgstr ""
-
-#: app/templates/components/settings/application-section.l10n.hbs:1
-msgid "Instagram"
-msgstr ""
-
-#: app/templates/components/settings/application-section.l10n.hbs:1
-msgid "instagram.com/"
-msgstr ""
-
-#: app/templates/components/settings/application-section.l10n.hbs:1
-msgid "Google+"
-msgstr ""
-
-#: app/templates/components/settings/application-section.l10n.hbs:1
-msgid "plus.google.com/"
+msgid "Connect with Facebook"
 msgstr ""
 
 #: app/templates/components/settings/contact-info-section.l10n.hbs:1
@@ -2808,6 +4378,10 @@ msgstr ""
 msgid "Reminder for Next Event"
 msgstr ""
 
+#: app/templates/components/settings/email-preferences-section.l10n.hbs:1
+msgid "No events have been created by the user"
+msgstr ""
+
 #: app/templates/components/settings/password-section.l10n.hbs:1
 msgid "Current Password"
 msgstr "現在のパスワード"
@@ -2820,21 +4394,205 @@ msgstr "新しいパスワード"
 msgid "Repeat Password"
 msgstr "パスワードの再入力"
 
-#: app/templates/components/ui-table/cell/cell-buttons.l10n.hbs:1
-msgid "Edit event details"
+#: app/templates/components/ui-table/cell/admin/users/cell-actions.l10n.hbs:1
+msgid "View"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/cell-buttons.l10n.hbs:1
-msgid "View event details"
+#: app/templates/components/ui-table/cell/admin/users/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to delete this user?"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/cell-buttons.l10n.hbs:1
-msgid "Delete event"
+#: app/templates/components/ui-table/cell/admin/users/cell-event-roles.l10n.hbs:1
+msgid " - Organizer"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/admin/users/cell-event-roles.l10n.hbs:1
+msgid " - Co organizer"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/admin/users/cell-event-roles.l10n.hbs:1
+msgid " - Track Organizer"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/admin/users/cell-event-roles.l10n.hbs:1
+msgid " - Registrar"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/admin/users/cell-event-roles.l10n.hbs:1
+msgid " - Moderator"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/admin/users/cell-system-roles.l10n.hbs:1
+msgid "Verified User"
+msgstr "確認済みユーザー"
+
+#: app/templates/components/ui-table/cell/cell-code-buttons.l10n.hbs:1
+msgid "Deactivate"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-event-date.l10n.hbs:1
+msgid "No dates available."
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-roles.l10n.hbs:1
+msgid "Co-organizers"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-roles.l10n.hbs:1
+msgid "Track-organizers"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-roles.l10n.hbs:1
+msgid "Registrars"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-roles.l10n.hbs:1
+msgid "Moderators"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-sessions-dashboard.l10n.hbs:1
+msgid "Submitted"
+msgstr "提出済"
+
+#: app/templates/components/ui-table/cell/cell-simple-buttons.l10n.hbs:1
+msgid "Are you sure you would like to delete this Session?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-sponsor-options.l10n.hbs:1
+msgid "Are you sure you would like to delete this Sponsor?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/cell-tickets.l10n.hbs:1
+msgid "No Ticket Information"
+msgstr "チケット情報はありません"
+
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-buttons.l10n.hbs:1
+msgid "With email"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-buttons.l10n.hbs:1
+msgid "Without email"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.l10n.hbs:1
+msgid "Are you sure you would like to delete this Speaker?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to delete this Access Code?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/attendees/cell-action.l10n.hbs:1
+msgid "Check In"
+msgstr "チェックイン"
+
+#: app/templates/components/ui-table/cell/events/view/tickets/attendees/cell-order.l10n.hbs:1
+msgid "by"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/attendees/cell-order.l10n.hbs:1
+msgid "Payment via"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to deactivate this Discount Code?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.l10n.hbs:1
+msgid "Activate"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to activate this Discount Code?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to delete this Discount Code?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-value.l10n.hbs:1
+msgid "%"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-value.l10n.hbs:1
+msgid "US$ "
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-actions.l10n.hbs:1
+msgid "Mark Completed"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to mark this Order as completed?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-actions.l10n.hbs:1
+msgid "Cancel order"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to cancel this Order?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-actions.l10n.hbs:1
+msgid "Delete order"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-actions.l10n.hbs:1
+msgid "Are you sure you would like to delete this Order?"
+msgstr ""
+
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-actions.l10n.hbs:1
+msgid "Resend order confirmation"
+msgstr ""
+
+#: app/templates/components/ui-table/simple-pagination.l10n.hbs:1
+msgid "Showing"
+msgstr ""
+
+#: app/templates/components/ui-table/simple-pagination.l10n.hbs:1
+msgid "of"
+msgstr ""
+
+#: app/templates/components/unverified-user-message.l10n.hbs:1
+msgid "Cofirmation mail has been sent again successfully!"
+msgstr ""
+
+#: app/templates/components/unverified-user-message.l10n.hbs:1
+msgid "To make your event live, please verify your account by clicking on the confirmation link that has been emailed to you."
+msgstr ""
+
+#: app/templates/components/unverified-user-message.l10n.hbs:1
+msgid "Your account is unverified. Please verify by clicking on the confirmation link that has been emailed to you."
+msgstr ""
+
+#: app/templates/components/unverified-user-message.l10n.hbs:1
+msgid "Did not get the email?"
+msgstr ""
+
+#: app/templates/components/unverified-user-message.l10n.hbs:1
+msgid "Please click here to resend the confirmation mail."
 msgstr ""
 
 #: app/templates/components/welcome-header.l10n.hbs:1
 msgid "The simplest way to create events."
 msgstr "イベントを作成する最も簡単な方法です。"
+
+#: app/templates/components/widgets/forms/file-upload.l10n.hbs:1
+msgid "Are you sure want to remove this slide?"
+msgstr ""
+
+#: app/templates/components/widgets/forms/file-upload.l10n.hbs:1
+msgid "Remove file"
+msgstr ""
+
+#: app/templates/components/widgets/forms/file-upload.l10n.hbs:1
+msgid "Or"
+msgstr ""
+
+#: app/templates/components/widgets/forms/file-upload.l10n.hbs:1
+msgid "No larger than"
+msgstr ""
 
 #: app/templates/components/widgets/forms/image-upload.l10n.hbs:1
 msgid "Image Uploading"
@@ -2848,14 +4606,6 @@ msgstr ""
 msgid "click or drag-and-drop"
 msgstr ""
 
-#: app/templates/components/widgets/forms/image-upload.l10n.hbs:1
-msgid "No larger than"
-msgstr ""
-
-#: app/templates/components/widgets/forms/location-input.l10n.hbs:1
-msgid "Enter address"
-msgstr ""
-
 #: app/templates/components/widgets/forms/location-input.l10n.hbs:1
 msgid "Venue Name"
 msgstr ""
@@ -2865,11 +4615,11 @@ msgid "Street Address"
 msgstr ""
 
 #: app/templates/components/widgets/forms/location-input.l10n.hbs:1
-msgid "Country"
-msgstr "国"
+msgid "Reset Map"
+msgstr ""
 
 #: app/templates/components/widgets/forms/location-input.l10n.hbs:1
-msgid "Reset Map"
+msgid "Enter address"
 msgstr ""
 
 #: app/templates/components/widgets/forms/rich-text-editor.l10n.hbs:1
@@ -2973,11 +4723,27 @@ msgid "Preview"
 msgstr ""
 
 #: app/templates/events/view.l10n.hbs:1
-msgid "Scheduler"
-msgstr "スケジューラー"
+msgid "Unpublish"
+msgstr "非公開"
 
 #: app/templates/events/view/edit.l10n.hbs:1
 msgid "Editing"
+msgstr ""
+
+#: app/templates/events/view/scheduler.l10n.hbs:1
+msgid "Unpublish Schedule"
+msgstr "スケジュールの公開を取り下げ"
+
+#: app/templates/events/view/scheduler.l10n.hbs:1
+msgid "Publish Schedule"
+msgstr "スケジュールを公開"
+
+#: app/templates/events/view/scheduler.l10n.hbs:1
+msgid "Unscheduled Sessions"
+msgstr "スケジュールされていないセッション"
+
+#: app/templates/events/view/sessions.l10n.hbs:1
+msgid "Export as CSV"
 msgstr ""
 
 #: app/templates/events/view/sessions.l10n.hbs:1
@@ -2985,63 +4751,23 @@ msgid "Create Session"
 msgstr "セッションを作成"
 
 #: app/templates/events/view/sessions.l10n.hbs:1
-msgid "CSV"
+msgid "In order to use this feature please activate \"Sessions and Speakers\" for the event."
 msgstr ""
 
 #: app/templates/events/view/sessions.l10n.hbs:1
-msgid "PDF"
+msgid "Please click "
 msgstr ""
 
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "Short Abstract"
-msgstr "短い要約"
-
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "Submission Date"
-msgstr "提出日"
-
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "Last Modified"
-msgstr "最終更新"
-
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "Email Sent"
-msgstr "メールを送信済"
-
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "Not Confirmed"
-msgstr ""
-
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "Browse edit history"
-msgstr ""
-
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "With email"
-msgstr ""
-
-#: app/templates/events/view/sessions/list.l10n.hbs:1
-msgid "Without email"
+#: app/templates/events/view/sessions.l10n.hbs:1
+msgid " to activate this module."
 msgstr ""
 
 #: app/templates/events/view/speakers.l10n.hbs:1
 msgid "Add Speaker"
 msgstr "スピーカーを追加"
 
-#: app/templates/events/view/speakers.l10n.hbs:1
-msgid "Export as CSV"
-msgstr ""
-
-#: app/templates/events/view/speakers.l10n.hbs:1
-msgid "No. of entries"
-msgstr ""
-
-#: app/templates/events/view/speakers/list.l10n.hbs:1
-msgid "Submitted Sessions"
-msgstr "提出済のセッション"
-
-#: app/templates/events/view/speakers/list.l10n.hbs:1
-msgid "Canceled"
+#: app/templates/events/view/speakers/create.l10n.hbs:1
+msgid "Create a Speaker"
 msgstr ""
 
 #: app/templates/events/view/tickets.l10n.hbs:1
@@ -3056,77 +4782,17 @@ msgstr "アクセス コード"
 msgid "Add order"
 msgstr ""
 
-#: app/templates/events/view/tickets/access.l10n.hbs:1
+#: app/templates/events/view/tickets/access-codes.l10n.hbs:1
 msgid "Create an access code"
 msgstr ""
 
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "#"
+#: app/templates/events/view/tickets/access-codes/edit.l10n.hbs:1
+msgid "Edit an access code"
 msgstr ""
-
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "Access Code"
-msgstr "アクセス コード"
-
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "Access Code URL"
-msgstr "アクセス コード URL"
-
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "Accessible Ticket"
-msgstr "アクセス チケット"
-
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "Validity"
-msgstr "妥当性"
-
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "Edit Access Code"
-msgstr ""
-
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "Delete Access Code"
-msgstr ""
-
-#: app/templates/events/view/tickets/access.l10n.hbs:1
-msgid "Deactivate Access code"
-msgstr ""
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Price "
-msgstr ""
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Item Total"
-msgstr "アイテム合計"
 
 #: app/templates/events/view/tickets/add-order.l10n.hbs:1
 msgid "Grand Total"
 msgstr "総合計"
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Select Payment Type"
-msgstr ""
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Cheque"
-msgstr "小切手"
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Telegraphic Transfer(TT)/Bank Transfer"
-msgstr ""
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Onsite/Cash"
-msgstr "オンサイト/現金"
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Free Order"
-msgstr "無料注文"
-
-#: app/templates/events/view/tickets/add-order.l10n.hbs:1
-msgid "Continue"
-msgstr "続行"
 
 #: app/templates/events/view/tickets/attendees.l10n.hbs:1
 msgid "View Attendees"
@@ -3134,6 +4800,14 @@ msgstr "参加者の表示"
 
 #: app/templates/events/view/tickets/attendees.l10n.hbs:1
 msgid "Export As"
+msgstr ""
+
+#: app/templates/events/view/tickets/attendees.l10n.hbs:1
+msgid "PDF"
+msgstr ""
+
+#: app/templates/events/view/tickets/attendees.l10n.hbs:1
+msgid "CSV"
 msgstr ""
 
 #: app/templates/events/view/tickets/attendees.l10n.hbs:1
@@ -3156,61 +4830,21 @@ msgstr "フィルターを削除"
 msgid "Completed"
 msgstr "完了"
 
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Placed"
-msgstr "注文済"
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Expired"
-msgstr "期限切れ"
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Cancelled"
-msgstr "キャンセル"
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Checked In"
-msgstr "チェックイン"
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Not Checked In"
-msgstr "チェックインしていません"
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Order"
-msgstr "注文"
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Ticket Price"
-msgstr "チケット価格"
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "by"
-msgstr ""
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Payment via"
-msgstr ""
-
-#: app/templates/events/view/tickets/attendees.l10n.hbs:1
-msgid "Check In"
-msgstr "チェックイン"
-
 #: app/templates/events/view/tickets/discount-codes.l10n.hbs:1
 msgid "Create a discount"
 msgstr "割引を作成"
 
-#: app/templates/events/view/tickets/discount-codes.l10n.hbs:1
-msgid "Discount code URL"
+#: app/templates/events/view/tickets/discount-codes/create.l10n.hbs:1
+msgid "Create a new Discount Code"
 msgstr ""
 
-#: app/templates/events/view/tickets/discount-codes.l10n.hbs:1
-msgid "Discount Per Ticket"
-msgstr "チケットあたりの割引"
-
-#: app/templates/events/view/tickets/discount-codes.l10n.hbs:1
-msgid "Deactivate"
+#: app/templates/events/view/tickets/discount-codes/edit.l10n.hbs:1
+msgid "Edit a Discount Code"
 msgstr ""
+
+#: app/templates/events/view/tickets/index.l10n.hbs:1
+msgid "Completed Orders"
+msgstr "完了した注文"
 
 #: app/templates/events/view/tickets/index.l10n.hbs:1
 msgid "Sales(US $)"
@@ -3245,8 +4879,12 @@ msgid "View Reports"
 msgstr "レポートを表示"
 
 #: app/templates/events/view/tickets/index.l10n.hbs:1
-msgid "View orders / View attendees"
-msgstr ""
+msgid "View orders"
+msgstr "注文を表示"
+
+#: app/templates/events/view/tickets/index.l10n.hbs:1
+msgid "View attendees"
+msgstr "参加者の表示"
 
 #: app/templates/events/view/tickets/index.l10n.hbs:1
 msgid "Tickets Capacity Set"
@@ -3256,60 +4894,251 @@ msgstr "チケット供給量設定"
 msgid "View Orders"
 msgstr "注文を表示"
 
-#: app/templates/events/view/tickets/orders.l10n.hbs:1
-msgid "Total Amount"
-msgstr "合計金額"
-
-#: app/templates/events/view/tickets/orders.l10n.hbs:1
-msgid "Buyer/Registration Contact "
-msgstr ""
-
-#: app/templates/events/view/tickets/orders.l10n.hbs:1
-msgid "Cancel order"
-msgstr ""
-
-#: app/templates/events/view/tickets/orders.l10n.hbs:1
-msgid "Delete order"
-msgstr ""
-
-#: app/templates/events/view/tickets/orders.l10n.hbs:1
-msgid "Resend order confirmation"
+#: app/templates/explore.l10n.hbs:1
+msgid "No events found for selected filters"
 msgstr ""
 
 #: app/templates/index.l10n.hbs:1
-msgid "Upcoming Events"
-msgstr "今後のイベント"
-
-#: app/templates/my-tickets.l10n.hbs:1
-msgid "My tickets"
+msgid "No Upcoming Events Found"
 msgstr ""
 
-#: app/templates/my-tickets.l10n.hbs:1
-msgid "Saved Events"
+#: app/templates/my-sessions/view.l10n.hbs:1
+msgid "Edit Session Proposal"
 msgstr ""
 
-#: app/templates/my-tickets.l10n.hbs:1
-msgid "Past Events"
+#: app/templates/my-sessions/view.l10n.hbs:1
+msgid "Edit Speaker- "
 msgstr ""
 
-#: app/templates/notifications.l10n.hbs:1
-msgid "Mark all read"
-msgstr "すべて既読にする"
+#: app/templates/my-sessions/view.l10n.hbs:1
+msgid "Withdraw Proposal"
+msgstr "申し込みを撤回"
+
+#: app/templates/my-sessions/view.l10n.hbs:1
+msgid "Session Details"
+msgstr "セッションの詳細"
+
+#: app/templates/my-sessions/view.l10n.hbs:1
+msgid "From "
+msgstr ""
+
+#: app/templates/my-sessions/view.l10n.hbs:1
+msgid " to "
+msgstr ""
+
+#: app/templates/my-tickets/list.l10n.hbs:1
+msgid "No tickets found"
+msgstr ""
 
 #: app/templates/notifications/all.l10n.hbs:1
-msgid "View Session"
+msgid "Mark all as read"
+msgstr ""
+
+#: app/templates/notifications/all.l10n.hbs:1
+msgid "Mark as read"
+msgstr "既読にする"
+
+#: app/templates/notifications/all.l10n.hbs:1
+msgid "action.buttonTitle"
+msgstr ""
+
+#: app/templates/notifications/all.l10n.hbs:1
+msgid "No Unread Notifications"
+msgstr ""
+
+#: app/templates/notifications/all.l10n.hbs:1
+msgid "No Notifications"
+msgstr ""
+
+#: app/templates/public/cfs/new-speaker.l10n.hbs:1
+msgid "Speaker Details"
+msgstr "スピーカーの詳細"
+
+#: app/templates/public/index.l10n.hbs:1
+msgid "Order tickets"
 msgstr ""
 
 #: app/templates/public/index.l10n.hbs:1
-msgid "Getting Here"
-msgstr "ここで取得"
-
-#: app/templates/settings.l10n.hbs:1
-msgid "Email-Preferences"
+msgid "You will be taken to "
 msgstr ""
 
-#~ msgid "Sitemap"
-#~ msgstr "サイトマップ"
+#: app/templates/public/index.l10n.hbs:1
+msgid " to complete the purchase of tickets"
+msgstr ""
+
+#: app/templates/public/index.l10n.hbs:1
+msgid "Organized by"
+msgstr "主催者"
+
+#: app/templates/public/schedule.l10n.hbs:1
+msgid "Schedule for the event is currently unavailable"
+msgstr ""
+
+#: app/templates/public/sessions/list.l10n.hbs:1
+msgid "Week"
+msgstr ""
+
+#: app/templates/public/sessions/list.l10n.hbs:1
+msgid "Month"
+msgstr ""
+
+#: app/templates/public/sessions/list.l10n.hbs:1
+msgid "No Sessions exist for this time period"
+msgstr ""
+
+#: app/templates/verify.l10n.hbs:1
+msgid "error"
+msgstr ""
+
+#~ msgid "Public URL"
+#~ msgstr "公開 URL"
+
+#~ msgid "Start Date"
+#~ msgstr "開始日"
+
+#~ msgid "End Date"
+#~ msgstr "終了日"
+
+#~ msgid "Roles"
+#~ msgstr "ロール"
+
+#~ msgid "Recipient"
+#~ msgstr "受信者"
+
+#~ msgid "Trigger"
+#~ msgstr "トリガー"
+
+#~ msgid "Email Message"
+#~ msgstr "メール メッセージ"
+
+#~ msgid "Notification Message"
+#~ msgstr "通知メッセージ"
+
+#~ msgid "Track"
+#~ msgstr "トラック"
+
+#~ msgid "Speaker"
+#~ msgstr "スピーカー"
+
+#~ msgid "Microlocation"
+#~ msgstr "マイクロロケーション"
+
+#~ msgid "Actor"
+#~ msgstr "アクター"
+
+#~ msgid "Time"
+#~ msgstr "時間"
+
+#~ msgid "Action"
+#~ msgstr "操作"
+
+#~ msgid "To"
+#~ msgstr "宛先"
+
+#~ msgid "For"
+#~ msgstr "宛先"
+
+#~ msgid "Dated"
+#~ msgstr "日付"
+
+#~ msgid "Amount"
+#~ msgstr "金額"
+
+#~ msgid "Date of Submission"
+#~ msgstr "提出の日付"
+
+#~ msgid "User Links"
+#~ msgstr "ユーザー リンク"
+
+#~ msgid "Member Since"
+#~ msgstr "加入"
+
+#~ msgid "Last Access"
+#~ msgstr "最終アクセス"
+
+#~ msgid "Sandbox username"
+#~ msgstr "サンドボックス ユーザー名"
+
+#~ msgid "Sandbox password"
+#~ msgstr "サンドボックス パスワード"
+
+#~ msgid "Sandbox signature"
+#~ msgstr "サンド ボックス署名"
+
+#~ msgid "Live username"
+#~ msgstr "ライブ ユーザー名"
+
+#~ msgid "Live password"
+#~ msgstr "ライブ パスワード"
+
+#~ msgid "Live signature"
+#~ msgstr "ライブ署名"
+
+#~ msgid "Super Admin Email ID"
+#~ msgstr "Super Admin メール ID"
+
+#~ msgid "The email ID of the super admin user created during initial deployment."
+#~ msgstr "初期デプロイメント時に作成した super admin ユーザーのメール ID。"
+
+#~ msgid "Tokens"
+#~ msgstr "トークン"
+
+#~ msgid "Consumer secret"
+#~ msgstr "コンシューマー 秘密"
+
+#~ msgid "After 10:00 minutes, the reservation we're holding will be released to others."
+#~ msgstr "10 分後、保持している予約を他の人に解放します。"
+
+#~ msgid "Pay Via"
+#~ msgstr "支払い"
+
+#~ msgid "Redeem Discount Code"
+#~ msgstr "割引コードの交換"
+
+#~ msgid "Submission Date"
+#~ msgstr "提出日"
+
+#~ msgid "Last Modified"
+#~ msgstr "最終更新"
+
+#~ msgid "Email Sent"
+#~ msgstr "メールを送信済"
+
+#~ msgid "Submitted Sessions"
+#~ msgstr "提出済のセッション"
+
+#~ msgid "Access Code URL"
+#~ msgstr "アクセス コード URL"
+
+#~ msgid "Accessible Ticket"
+#~ msgstr "アクセス チケット"
+
+#~ msgid "Validity"
+#~ msgstr "妥当性"
+
+#~ msgid "Item Total"
+#~ msgstr "アイテム合計"
+
+#~ msgid "Onsite/Cash"
+#~ msgstr "オンサイト/現金"
+
+#~ msgid "Free Order"
+#~ msgstr "無料注文"
+
+#~ msgid "Order"
+#~ msgstr "注文"
+
+#~ msgid "Ticket Price"
+#~ msgstr "チケット価格"
+
+#~ msgid "Discount Per Ticket"
+#~ msgstr "チケットあたりの割引"
+
+#~ msgid "Total Amount"
+#~ msgstr "合計金額"
+
+#~ msgid "Mark all read"
+#~ msgstr "すべて既読にする"
 
 #~ msgid "Connect With Us"
 #~ msgstr "お問い合わせ"
@@ -3319,12 +5148,6 @@ msgstr ""
 
 #~ msgid "Mark All as Read"
 #~ msgstr "すべて既読にする"
-
-#~ msgid "Mark as read"
-#~ msgstr "既読にする"
-
-#~ msgid "No new notifications"
-#~ msgstr "新しい通知はありません"
 
 #~ msgid "We are not able to understand what you require"
 #~ msgstr "あなたが必要とするものを理解できません"
@@ -3404,9 +5227,6 @@ msgstr ""
 #~ msgid "This ticket's sale will start"
 #~ msgstr "このチケットの販売が開始されます"
 
-#~ msgid "on"
-#~ msgstr "オン"
-
 #~ msgid "No tickets available right now."
 #~ msgstr "現在、利用可能なチケットはありません。"
 
@@ -3428,26 +5248,14 @@ msgstr ""
 #~ msgid "Add Speaker Information"
 #~ msgstr "スピーカーの情報を追加"
 
-#~ msgid "Existing Sessions"
-#~ msgstr "既存のセッション"
-
 #~ msgid "Add Session Proposal"
 #~ msgstr "セッションの提案を追加"
-
-#~ msgid "Session Details"
-#~ msgstr "セッションの詳細"
-
-#~ msgid "Speaker Details"
-#~ msgstr "スピーカーの詳細"
 
 #~ msgid "No sessions have been published yet"
 #~ msgstr "セッションがまだ公開されていません"
 
 #~ msgid "Other Sponsors"
 #~ msgstr "他のスポンサー"
-
-#~ msgid "Organized by"
-#~ msgstr "主催者"
 
 #~ msgid "Rooms View"
 #~ msgstr "ルーム ビュー"
@@ -3502,9 +5310,6 @@ msgstr ""
 
 #~ msgid "Personal Information"
 #~ msgstr "個人情報"
-
-#~ msgid "Sign In"
-#~ msgstr "サインイン"
 
 #~ msgid "to your account to continue"
 #~ msgstr "引き続きアカウントに"
@@ -3641,12 +5446,6 @@ msgstr ""
 #~ msgid "Origin Info"
 #~ msgstr "オリジナル情報"
 
-#~ msgid "Change"
-#~ msgstr "変更"
-
-#~ msgid "Update Image"
-#~ msgstr "画像を更新"
-
 #~ msgid "Placeholder"
 #~ msgstr "プレースホルダー"
 
@@ -3668,29 +5467,17 @@ msgstr ""
 #~ msgid "Origin Information"
 #~ msgstr "オリジナル情報"
 
-#~ msgid "Language"
-#~ msgstr "言語"
-
-#~ msgid "Download .PO files"
-#~ msgstr ".PO ファイルをダウンロード"
-
 #~ msgid "Update .PO files"
 #~ msgstr ".PO ファイルを更新"
 
 #~ msgid "language"
 #~ msgstr "言語"
 
-#~ msgid "Upload"
-#~ msgstr "アップロード"
-
 #~ msgid "Debug"
 #~ msgstr "デバッグ"
 
 #~ msgid "Drafts"
 #~ msgstr "下書き"
-
-#~ msgid "No Ticket Information"
-#~ msgstr "チケット情報はありません"
 
 #~ msgid "Restore Event"
 #~ msgstr "イベントを復元"
@@ -3737,9 +5524,6 @@ msgstr ""
 #~ msgid "LANGUAGE"
 #~ msgstr "言語"
 
-#~ msgid "Create Page"
-#~ msgstr "ページを作成"
-
 #~ msgid "Use Open Even"
 #~ msgstr "Open Event を使用する"
 
@@ -3785,23 +5569,11 @@ msgstr ""
 #~ msgid "Server Logs"
 #~ msgstr "サーバー ログ"
 
-#~ msgid "Completed Orders"
-#~ msgstr "完了した注文"
-
 #~ msgid "discounted"
 #~ msgstr "割引"
 
 #~ msgid "Discount amount"
 #~ msgstr "割引額"
-
-#~ msgid "Discount Code"
-#~ msgstr "割引コード"
-
-#~ msgid "Discount"
-#~ msgstr "割引"
-
-#~ msgid "Enter Discount"
-#~ msgstr "割引を入力してください"
 
 #~ msgid "Percent"
 #~ msgstr "パーセント"
@@ -3932,9 +5704,6 @@ msgstr ""
 #~ msgid "Where is the application running"
 #~ msgstr "アプリケーションを実行している場所"
 
-#~ msgid "Google Tokens"
-#~ msgstr "Google トークン"
-
 #~ msgid "on how to obtain these tokens"
 #~ msgstr "これらのトークンを取得する方法について"
 
@@ -3966,9 +5735,6 @@ msgstr ""
 
 #~ msgid "Restore User"
 #~ msgstr "ユーザーを復元"
-
-#~ msgid "Update System Roles"
-#~ msgstr "システム ロールを更新"
 
 #~ msgid "Provide Admin access"
 #~ msgstr "管理者アクセスを提供"
@@ -4039,23 +5805,11 @@ msgstr ""
 #~ msgid "Previous Imports"
 #~ msgstr "以前のインポート"
 
-#~ msgid "Unpublish"
-#~ msgstr "非公開"
-
 #~ msgid "Are you sure you would like to delete this event"
 #~ msgstr "このイベントを削除してもよろしいですか"
 
-#~ msgid "Deleting the event will delete all the data associated with it."
-#~ msgstr "イベントを削除すると、それに関連付けられているすべてのデータが削除されます。"
-
-#~ msgid "Please enter the full name of the event to continue"
-#~ msgstr "続けてイベントの完全な名前を入力してください"
-
 #~ msgid "Confirm Delete"
 #~ msgstr "削除の確認"
-
-#~ msgid "Edit Role"
-#~ msgstr "ロールを編集"
 
 #~ msgid "Track Organizer"
 #~ msgstr "トラック主催者"
@@ -4069,17 +5823,8 @@ msgstr ""
 #~ msgid "Update Role"
 #~ msgstr "ロールを更新"
 
-#~ msgid "Generate Android App"
-#~ msgstr "Android アプリを生成"
-
-#~ msgid "Generate Web App"
-#~ msgstr "Web アプリを生成"
-
 #~ msgid "Manage Roles"
 #~ msgstr "ロールの管理"
-
-#~ msgid "User Email"
-#~ msgstr "ユーザーのメール"
 
 #~ msgid "User (Email)"
 #~ msgstr "ユーザー (メールアドレス)"
@@ -4092,9 +5837,6 @@ msgstr ""
 
 #~ msgid "Invitation Link"
 #~ msgstr "招待状のリンク"
-
-#~ msgid "Add Role"
-#~ msgstr "ロールを追加"
 
 #~ msgid "User email"
 #~ msgstr "ユーザーのメール"
@@ -4177,15 +5919,6 @@ msgstr ""
 #~ msgid "Error loading sessions"
 #~ msgstr "セッションの読み込みエラー"
 
-#~ msgid "Unpublish Schedule"
-#~ msgstr "スケジュールの公開を取り下げ"
-
-#~ msgid "Publish Schedule"
-#~ msgstr "スケジュールを公開"
-
-#~ msgid "Unscheduled Sessions"
-#~ msgstr "スケジュールされていないセッション"
-
 #~ msgid "No Unscheduled sessions"
 #~ msgstr "スケジュールされていないセッションはありません"
 
@@ -4200,9 +5933,6 @@ msgstr ""
 
 #~ msgid "Export as"
 #~ msgstr "エクスポート..."
-
-#~ msgid "Edit Session"
-#~ msgstr "セッションを編集"
 
 #~ msgid "Long Abstract"
 #~ msgstr "長い要約"
@@ -4276,9 +6006,6 @@ msgstr ""
 #~ msgid "selected"
 #~ msgstr "選択済"
 
-#~ msgid "Save Session"
-#~ msgstr "セッションを保存"
-
 #~ msgid "Submit Session"
 #~ msgstr "セッションを提出"
 
@@ -4315,23 +6042,8 @@ msgstr ""
 #~ msgid "Set the min. and max. quantity allowed to purchase per order (optional)"
 #~ msgstr "最小と最大を設定します。注文ごとに購入できる数量 (省略可)"
 
-#~ msgid "Min"
-#~ msgstr "最小"
-
-#~ msgid "Max"
-#~ msgstr "最大"
-
 #~ msgid "Validity period (optional)"
 #~ msgstr "有効期限 (省略可)"
-
-#~ msgid "Valid from"
-#~ msgstr "有効期限開始"
-
-#~ msgid "Expires on"
-#~ msgstr "有効期限"
-
-#~ msgid "Access Link"
-#~ msgstr "アクセス リンク"
 
 #~ msgid "Save Access"
 #~ msgstr "アクセスを保存"
@@ -4348,9 +6060,6 @@ msgstr ""
 #~ msgid "Onsite / Cash"
 #~ msgstr "オンサイト / 現金"
 
-#~ msgid "Stripe"
-#~ msgstr "Stripe"
-
 #~ msgid "Filter by Ticket"
 #~ msgstr "チケットでフィルター"
 
@@ -4362,12 +6071,6 @@ msgstr ""
 
 #~ msgid "Number of discount tickets"
 #~ msgstr "割引チケットの数"
-
-#~ msgid "Select Ticket(s) applied to the discount code"
-#~ msgstr "割引コードに適用されるチケットを選択"
-
-#~ msgid "Discount Link"
-#~ msgstr "割引リンク"
 
 #~ msgid "Qty"
 #~ msgstr "数量"
@@ -4398,12 +6101,6 @@ msgstr ""
 
 #~ msgid "Resend"
 #~ msgstr "再送信"
-
-#~ msgid "View orders"
-#~ msgstr "注文を表示"
-
-#~ msgid "View attendees"
-#~ msgstr "参加者の表示"
 
 #~ msgid "Orders Summary"
 #~ msgstr "注文概要"
@@ -4636,17 +6333,11 @@ msgstr ""
 #~ msgid "Collect"
 #~ msgstr "収集"
 
-#~ msgid "Details"
-#~ msgstr "詳細"
-
 #~ msgid "Customize Registration Form"
 #~ msgstr "登録フォームをカスタマイズ"
 
 #~ msgid "Session, Microlocations, Session types"
 #~ msgstr "セッション、マイクロロケーション、セッションの種類"
-
-#~ msgid "Submit"
-#~ msgstr "提出"
 
 #~ msgid "Create Password"
 #~ msgstr "パスワードを作成"
@@ -4681,20 +6372,11 @@ msgstr ""
 #~ msgid "Under Review"
 #~ msgstr "審査中"
 
-#~ msgid "Withdraw Proposal"
-#~ msgstr "申し込みを撤回"
-
 #~ msgid "Edit Proposal"
 #~ msgstr "申し込みを編集"
 
 #~ msgid "Session Type"
 #~ msgstr "セッションの種類"
-
-#~ msgid "Comments"
-#~ msgstr "コメント"
-
-#~ msgid "Session Not Yet Scheduled"
-#~ msgstr "セッションはまだ予定が決まっていません"
 
 #~ msgid "No session proposals for upcoming events found"
 #~ msgstr "予定されているイベントの、セッションの申し込みが見つかりませんでした"

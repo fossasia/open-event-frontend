@@ -13,7 +13,7 @@ export default Route.extend({
             val  : {
               name : 'state',
               op   : 'eq',
-              val  : 'accepted'
+              val  : 'confirmed'
             }
           }
         ],

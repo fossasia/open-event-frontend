@@ -64,6 +64,7 @@ export default Controller.extend({
       order.set('status', 'cancelled');
       order.save()
         .then(() => {
+          this.send('refreshRoute');
           this.notify.success(this.get('l10n').t('Order has been cancelled successfully.'));
         })
         .catch(() => {

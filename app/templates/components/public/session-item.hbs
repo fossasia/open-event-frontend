@@ -40,13 +40,13 @@
         <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.image '/images/placeholders/avatar.png'}}">
         {{#if speaker.shortBiography}}
           <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
-          {{speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
         {{else if speaker.longBiography}}
           <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
-          {{speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
         {{else if speaker.speakingExperience}}
           <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
-          {{speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
         {{/if}}
       </p>
       <div class="social-icons">
