@@ -2,7 +2,7 @@
   {{#link-to 'orders.view' record.order.identifier}}{{record.order.identifier}}{{/link-to}}
   <span class="weight-400">
     {{t 'by'}}
-    {{record.user.email}}
+    {{record.order.user.email}}
   </span>
   <div class="ui basic mini {{if (eq record.order.status 'completed') 'green'
                                  (if (or (eq record.order.status 'placed')
