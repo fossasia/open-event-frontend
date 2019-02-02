@@ -29,6 +29,7 @@ export default Controller.extend({
             this.set('isLoading', false);
           });
       } else {
+        this.get('model.speaker').deleteRecord();
         this.get('model.session').save()
           .then(() => {
             this.get('notify').success(this.get('l10n').t('Your session has been saved'));
