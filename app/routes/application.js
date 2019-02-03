@@ -57,6 +57,7 @@ export default Route.extend(ApplicationRouteMixin, {
     if (!this.get('session.skipRedirectOnInvalidation')) {
       this._super(...arguments);
     }
+    this.set('session.skipRedirectOnInvalidation', false);
   },
 
   sessionAuthenticated() {
