@@ -47,6 +47,11 @@ export default Component.extend(FormMixin, {
       }
     };
   },
+  didInsertElement() {
+    if (this.get('inviteEmail')) {
+      this.get('data').set('email', this.get('inviteEmail'));
+    }
+  },
 
   actions: {
     submit() {

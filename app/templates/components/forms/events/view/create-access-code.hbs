@@ -74,13 +74,18 @@
       <div class="ui action input fluid">
         <input type="text" value="{{accessLink}}" placeholder="{{accessLink}}" readonly>
         {{#copy-button
+          class='ui black right labeled icon copy button'
           clipboardText=accessLink
-          class='ui black right labeled icon copy button'}}
+          click=(action 'copiedText')
+          }}
           <i class="copy icon"></i>
           {{t 'Copy'}}
         {{/copy-button}}
       </div>
     </div>
+    {{#if this.isLinkSuccess}}
+      <div><span style="float:right;color:green;">Link copied to clipboard</span></div>
+    {{/if}}
   </div>
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
