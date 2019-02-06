@@ -21,8 +21,6 @@ export default ModelsTable.extend({
 
   debounceDataLoadTime: 500,
 
-  reloadPageCount: false,
-
   filterQueryParameters: {
     globalFilter : 'contains',
     sort         : 'sort',
@@ -30,7 +28,7 @@ export default ModelsTable.extend({
     pageSize     : 'page[size]'
   },
 
-  observedProperties: ['reloadPageCount', 'currentPageNumber', 'pagesCount', 'sortProperties.[]', 'pageSize', 'filterString', 'processedColumns.@each.filterString'],
+  observedProperties: ['currentPageNumber', 'pagesCount', 'sortProperties.[]', 'pageSize', 'filterString', 'processedColumns.@each.filterString'],
 
   filteredContent: [],
 
@@ -43,7 +41,7 @@ export default ModelsTable.extend({
     return get(meta, itemsCountProperty) || 0;
   }),
 
-  pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', 'reloadPageCount', function() {
+  pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     let items = (get(meta, itemsCountProperty));
@@ -157,7 +155,7 @@ export default ModelsTable.extend({
       setProperties(this, { isLoading: true, isError: false });
     }
     store.query(modelName, query)
-      .then(newData => setProperties(this, { isLoading: false, isError: false, reloadPageCount: true, filteredContent: newData }))
+      .then(newData => setProperties(this, { isLoading: false, isError: false, filteredContent: newData }))
       .catch(() => {
         if (!this.isDestroyed) {
           setProperties(this, { isLoading: false, isError: true });
@@ -251,8 +249,6 @@ export default ModelsTable.extend({
     set(this, 'pageSize', 10);
     set(this, 'currentPageNumber', 1);
     set(this, 'filteredContent', get(this, 'data'));
-    set(this, 'reloadPageCount', false);
-
   },
 
   didInsertElement() {
