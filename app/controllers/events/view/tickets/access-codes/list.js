@@ -50,6 +50,7 @@ export default Controller.extend({
       accessCode.save()
         .then(() => {
           this.notify.success(this.get('l10n').t('Access Code has been updated successfully.'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
