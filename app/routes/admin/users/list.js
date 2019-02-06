@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
@@ -22,9 +23,18 @@ export default Route.extend({
     if (params.users_status === 'active') {
       filterOptions = [
         {
-          name : 'deleted-at',
-          op   : 'eq',
-          val  : null
+          and: [
+            {
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
+            },
+            {
+              name : 'last-accessed-at',
+              op   : 'le',
+              val  : moment().add(1, 'M').toISOString()
+            }
+          ]
         }
       ];
     } else if (params.users_status === 'deleted') {
