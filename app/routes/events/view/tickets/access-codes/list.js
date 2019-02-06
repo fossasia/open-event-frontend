@@ -46,5 +46,11 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'accessCodes'
     };
+  },
+
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
 });
