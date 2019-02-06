@@ -120,11 +120,13 @@ export default ModelsTable.extend({
 
     let globalFilter = get(this, 'customGlobalFilter');
     if (globalFilter) {
-      query.filter.pushObject({
-        name : globalFilter,
-        op   : 'ilike',
-        val  : `%${filterString}%`
-      });
+      if (filterString) {
+        query.filter.pushObject({
+          name : globalFilter,
+          op   : 'ilike',
+          val  : `%${filterString}%`
+        });
+      }
     } else {
       query.filter.removeObject({
         name : globalFilter,
