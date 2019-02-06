@@ -10,21 +10,19 @@
       <div class="ui row">{{session.track.name}}</div>
     </div>
     <br>
-    <div class="ui grid">
-      <div class="row">
-        <div class="column twelve wide">
-          <div class="session-speakers">
-            {{#each session.speakers as |speaker|}}
-              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.image '/images/placeholders/avatar.png'}}">
-            {{/each}}
-          </div>
+    <div class="ui grid stackable">
+      <div class="left floated eleven wide column">
+        <div class="session-speakers">
+          {{#each session.speakers as |speaker|}}
+            <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
+          {{/each}}
         </div>
-        <div class="ui right aligned column four wide less left padding">
-          {{#if session.startsAt}}
-            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-            <div class=""><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
-          {{/if}}
-        </div>
+      </div>
+      <div class="right floated five wide column">
+        {{#if session.startsAt}}
+          <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+          <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+        {{/if}}
       </div>
       <div class="row">
         <div class="column session-description">
@@ -36,6 +34,7 @@
   <div class="content">
     {{#each session.speakers as |speaker|}}
       <h3 class="ui header">{{speaker.name}}</h3>
+      <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
       <p>
         {{#if speaker.shortBiography}}
           <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>

@@ -1,5 +1,10 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 export default Controller.extend({
+  isAdminEventsDeleteRoute: computed('eventsStatusParam', function() {
+    return this.get('eventsStatusParam') === 'deleted';
+
+  }),
   columns: [
     {
       propertyName : 'name',
@@ -85,6 +90,22 @@ export default Controller.extend({
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });
       this.set('isEventDeleteModalOpen', false);
+    },
+    restoreEvent(event) {
+      this.set('isLoading', true);
+      event.set('deletedAt', null);
+      event.save({ adapterOptions: { getTrashed: true } })
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Event has been restored successfully.'));
+          this.send('refreshRoute');
+        })
+        .catch(e => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          console.warn(e);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
     }
   }
 });

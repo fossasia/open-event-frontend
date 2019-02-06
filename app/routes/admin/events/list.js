@@ -116,5 +116,15 @@ export default Route.extend({
       filter       : filterOptions,
       'page[size]' : 10
     });
+  },
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('eventsStatusParam', this.get('params.events_status'));
+  },
+
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
 });
