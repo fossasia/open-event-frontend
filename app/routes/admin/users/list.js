@@ -32,7 +32,7 @@ export default Route.extend({
             {
               name : 'last-accessed-at',
               op   : 'ge',
-              val  : moment().subtract(1, 'M').toISOString()
+              val  : moment().subtract(1, 'Y').toISOString()
             }
           ]
         }
