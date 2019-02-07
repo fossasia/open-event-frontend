@@ -11,9 +11,9 @@
     {{/ui-popup}}
   {{else}}
     {{#if (eq record.deletedAt null)}}
-        {{#ui-popup content=(t 'Delete') click=(action openDeleteEventModal record.identifier record.name) class='ui icon button' position='left center'}}
-        <i class="trash outline icon"></i>
-        {{/ui-popup}}
+      {{#ui-popup content=(t 'Delete') click=(action openDeleteEventModal record.identifier record.name) class='ui icon button' position='left center'}}
+      <i class="trash outline icon"></i>
+      {{/ui-popup}}
     {{/if}}
   {{/if}}
 </div>
