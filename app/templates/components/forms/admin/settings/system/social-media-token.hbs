@@ -97,3 +97,28 @@
 </div>
 
 <div class="ui hidden divider"></div>
+
+<h3 class="ui header">
+  {{t 'Github Tokens'}}
+  <div class="sub header">
+    {{t 'See'}}
+    <a href="https://developer.github.com/apps/building-oauth-apps/" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these tokens.'}}
+  </div>
+</h3>
+<div class="field">
+  <label>
+    {{t 'Client ID'}}
+  </label>
+  {{input type='text' name='github_client_id' value=settings.gitClientId}}
+</div>
+<div class="field">
+  <label>
+    {{t 'Client Secret'}}
+  </label>
+  {{input type='text' name='github_client_secret' value=settings.gitClientSecret}}
+</div>
+
+<div class="ui hidden divider"></div>
