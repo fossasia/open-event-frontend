@@ -41,7 +41,7 @@
         {{t 'Sessions'}}
       </h3>
       {{#each speaker.sessions as |session|}}
-        {{#if (eq session.state 'accepted')}}
+        {{#if (or (eq session.state 'confirmed') (eq session.state 'accepted'))}}
           <p>
             {{moment-format session.startsAt 'DD MMM YY'}}
             <br>
