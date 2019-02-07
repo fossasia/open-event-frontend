@@ -1,57 +1,76 @@
-<div class="ui ordered list">
-  {{#if record.isUserOrganizer}}
-    {{#each record.events as |event|}}
-      {{#each event.organizers as |organizer|}}
-        {{#if (eq organizer.email record.email)}}
-          <div class="field">
-            {{event.name}}{{t ' - Organizer'}}
-          </div>
-        {{/if}}
+<div class="ui bulleted list">
+  {{#if (or record.isAdmin record.isSuperAdmin)}}
+    {{t 'User has administrative privileges, he has privileges of the following roles for all the events:'}}
+    <div class="item">
+      <span class="ui tiny basic green label">{{t 'Organizer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic orange label">{{t 'Co organizer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic yellow label">{{t 'Track Organizer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic olive label">{{t 'Moderator'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic teal label">{{t 'Marketer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic brown label">{{t 'Sales Admin'}}</span>
+    </div>
+  {{else}}
+    {{#if record.isUserOrganizer}}
+      {{#each record.organizerEvents as |event|}}
+        <div class="item">
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic black label">{{t 'Organizer'}}</span>
+        </div>
       {{/each}}
-    {{/each}}
-  {{/if}}
-  {{#if record.isUserCoorganizer}}
-    {{#each record.events as |event|}}
-      {{#each event.coorganizers as |coorganizer|}}
-        {{#if (eq coorganizer.email record.email)}}
-          <div class="field">
-            {{event.name}}{{t ' - Co organizer'}}
-          </div>
-        {{/if}}
+    {{/if}}
+    {{#if record.isUserCoorganizer}}
+      {{#each record.coorganizerEvents as |event|}}
+        <div class="item">
+          {{event.name}} - <span class="ui tiny basic orange label">{{t 'Co organizer'}}</span>
+        </div>
       {{/each}}
-    {{/each}}
-  {{/if}}
-  {{#if record.isUserTrackOrganizer}}
-    {{#each record.events as |event|}}
-      {{#each event.trackOrganizers as |trackOrganizer|}}
-        {{#if (eq trackOrganizer.email record.email)}}
-          <div class="field">
-            {{event.name}}{{t ' - Track Organizer'}}
-          </div>
-        {{/if}}
+    {{/if}}
+    {{#if record.isUserTrackOrganizer}}
+      {{#each record.trackOrganizerEvents as |event|}}
+        <div class="item">
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic yellow label">{{t 'Track Organizer'}}</span>
+        </div>
       {{/each}}
-    {{/each}}
-  {{/if}}
-  {{#if record.isUserRegistrar}}
-    {{#each record.events as |event|}}
-      {{#each event.registrars as |registrar|}}
-        {{#if (eq registrar.email record.email)}}
-          <div class="field">
-            {{event.name}}{{t ' - Registrar'}}
-          </div>
-        {{/if}}
+    {{/if}}
+    {{#if record.isUserRegistrar}}
+      {{#each record.registrarEvents as |event|}}
+        <div class="item">
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
+        </div>
       {{/each}}
-    {{/each}}
-  {{/if}}
-  {{#if record.isUserModerator}}
-    {{#each record.events as |event|}}
-      {{#each event.moderators as |moderator|}}
-        {{#if (eq moderator.email record.email)}}
-          <div class="field">
-            {{event.name}}{{t ' - Moderator'}}
-          </div>
-        {{/if}}
+    {{/if}}
+    {{#if record.isUserModerator}}
+      {{#each record.moderatorEvents as |event|}}
+        <div class="item">
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic olive label">{{t 'Moderator'}}</span>
+        </div>
       {{/each}}
-    {{/each}}
+    {{/if}}
+    {{#if record.isMarketer}}
+      {{#each record.marketerEvents as |event|}}
+        <div class="item">
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic teal label">{{t 'Marketer'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+    {{#if record.isSalesAdmin}}
+      {{#each record.salesAdminEvents as |event|}}
+        <div class="item">
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic brown label">{{t 'Sales Admin'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
   {{/if}}
 </div>
