@@ -28,6 +28,8 @@ export default ModelBase.extend({
   twConsumerSecret     : attr('string'),
   inClientId           : attr('string'),
   inClientSecret       : attr('string'),
+  gitClientId          : attr('string'),
+  gitClientSecret      : attr('string'),
   paypalMode           : attr('string'),
   paypalClient         : attr('string'),
   paypalSecret         : attr('string'),
