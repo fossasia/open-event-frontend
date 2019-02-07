@@ -7,12 +7,14 @@
       {{/if}}
     {{/link-to}}
     {{#each model.speakers as |speaker|}}
-      {{#link-to 'events.view.speakers.edit' model.event.id speaker.id}}
-        <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
-        {{#if device.isMobile}}
-          <div class="ui hidden fitted divider"></div>
-        {{/if}}
-      {{/link-to}}
+      {{#if (eq speaker.email authManager.currentUser.email)}}
+        {{#link-to 'events.view.speakers.edit' model.event.id speaker.id}}
+          <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
+          {{#if device.isMobile}}
+            <div class="ui hidden fitted divider"></div>
+          {{/if}}
+        {{/link-to}}
+      {{/if}}
     {{/each}}
     {{#if isUpcoming}}
       <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}" {{action 'openProposalDeleteModal'}}>{{t 'Withdraw Proposal'}}</button>
@@ -43,6 +45,16 @@
         <div class="ui divider"></div>
         <h1 class="ui header"> {{model.title}} </h1>
         {{#each model.speakers as |speaker|}}
+          {{#if (eq authManager.currentUser.isAnAdmin true)}}
+            <div class="row">
+              {{#link-to 'events.view.speakers.edit' model.event.id speaker.id}}
+                <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
+                {{#if device.isMobile}}
+                  <div class="ui hidden fitted divider"></div>
+                {{/if}}
+              {{/link-to}}
+            </div>
+          {{/if}}
           <h4 class="ui header"> {{speaker.name}} </h4>
         {{/each}}
         <h2 class="ui sub header"> <div class="ui gray-text">{{t 'From '}}{{moment-format model.startAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD h:mm A'}}</div> </h2>
