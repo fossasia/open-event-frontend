@@ -1,4 +1,3 @@
-{{record.deletedAt}}
 <div class="ui vertical compact basic buttons">
   {{#ui-popup tagName='a' click=(action moveToDetails record.identifier) content=(t 'View') class='ui icon button' position='left center'}}
     <i class="unhide icon"></i>
@@ -11,8 +10,10 @@
       <i class="undo icon"></i>
     {{/ui-popup}}
   {{else}}
-    {{#ui-popup content=(t 'Delete') click=(action openDeleteEventModal record.identifier record.name) class='ui icon button' position='left center'}}
-      <i class="trash outline icon"></i>
-    {{/ui-popup}}
+    {{#if (eq record.deletedAt null)}}
+        {{#ui-popup content=(t 'Delete') click=(action openDeleteEventModal record.identifier record.name) class='ui icon button' position='left center'}}
+        <i class="trash outline icon"></i>
+        {{/ui-popup}}
+    {{/if}}
   {{/if}}
 </div>

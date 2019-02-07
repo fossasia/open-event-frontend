@@ -1,0 +1,5 @@
+{{#if record.deletedAt}}
+    {{t 'deleted'}}
+{{else}}
+    {{get record column.propertyName}}
+{{/if}}

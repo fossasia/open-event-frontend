@@ -25,7 +25,7 @@ export default Controller.extend({
     },
     {
       propertyName : 'state',
-      template     : 'components/ui-table/cell/cell-event-state',
+      template     : 'components/ui-table/cell/admin/events/cell-event-state',
       title        : 'State'
     },
     {
@@ -58,7 +58,7 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      template       : 'components/ui-table/cell/cell-buttons',
+      template       : 'components/ui-table/cell/admin/events/cell-buttons',
       title          : 'Actions',
       disableSorting : true
     }
