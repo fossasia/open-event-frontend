@@ -13,12 +13,13 @@ export default Controller.extend({
   callForSpeakersEvents: computed('filteredEvents.[]', function() {
     return this.get('filteredEvents').filter(event => {
       const callForPapers = event.get('speakersCall');
+      const sessionEnabled = event.isSessionsSpeakersEnabled;
       if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
         return false;
       }
       const startDateTime = callForPapers.get('startsAt');
       const endDateTime = callForPapers.get('endsAt');
-      return moment().isBetween(startDateTime, endDateTime);
+      return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled));
     });
   }),
 

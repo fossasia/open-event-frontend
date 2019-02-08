@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import $ from 'jquery';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { later } from '@ember/runloop';
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
@@ -108,6 +109,8 @@ export default Component.extend(FormMixin, {
     return false;
   }),
 
+  isLinkSuccess: false,
+
   actions: {
     toggleAllSelection(allTicketTypesChecked) {
       this.toggleProperty('allTicketTypesChecked');
@@ -138,6 +141,12 @@ export default Component.extend(FormMixin, {
       this.onValid(() => {
         this.sendAction('save', data);
       });
+    },
+    copiedText() {
+      this.set('isLinkSuccess', true);
+      later(this, () => {
+        this.set('isLinkSuccess', false);
+      }, 5000);
     }
   }
 });

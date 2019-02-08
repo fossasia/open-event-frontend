@@ -385,6 +385,15 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
+        company: {
+          identifier : 'company',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter your company')
+            }
+          ]
+        },
         address: {
           identifier : 'address',
           rules      : [
@@ -400,15 +409,6 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter your city ')
-            }
-          ]
-        },
-        state: {
-          identifier : 'state',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your state')
             }
           ]
         },

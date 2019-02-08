@@ -5,7 +5,7 @@
   </div>
   <div class="field">
     <label class="required">{{t 'Enter Discount'}}</label>
-    {{ui-radio label=(t 'Amount (US$)') name='discount_type'  value='amount' current=data.type onChange=(action (mut data.type))}}
+    {{ui-radio name='discount_type' label = (concat 'Amount in ' (currency-symbol data.event.paymentCurrency)) value='amount' current=data.type onChange=(action (mut data.type))}}
   </div>
   {{#if (not-eq data.type 'percent')}}
     <div class="field">
@@ -86,13 +86,18 @@
       <div class="ui action input fluid">
         <input type="text" value="{{discountLink}}" readonly>
         {{#copy-button
+          class='ui black right labeled icon copy button'
           clipboardText=discountLink
-          class='ui black right labeled icon copy button'}}
+          click=(action 'copiedText')
+          }}
           <i class="copy icon"></i>
           {{t 'Copy'}}
         {{/copy-button}}
       </div>
     </div>
+    {{#if this.isLinkSuccess}}
+      <div><span style="float:right;color:green;">Link copied to clipboard</span></div>
+    {{/if}}
   </div>
   <div class="ui hidden divider"></div>
   <button class="ui teal button" name="submit" type="submit">

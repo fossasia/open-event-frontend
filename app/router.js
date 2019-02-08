@@ -52,6 +52,7 @@ router.map(function() {
     this.route('schedule');
     this.route('coc');
     this.route('speakers');
+    this.route('role-invites');
   });
   this.route('create');
   this.route('not-found');
