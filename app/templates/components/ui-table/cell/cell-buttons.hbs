@@ -5,7 +5,7 @@
   {{#ui-popup content=(t 'Edit') click=(action editEvent record.identifier) class='ui icon button' position='left center'}}
     <i class="edit icon"></i>
   {{/ui-popup}}
-  {{#if isAdminEventsDeleteRoute}}
+  {{#if (and hasRestorePrivileges (get record column.propertyName))}}
     {{#ui-popup content=(t 'Restore') click=(action restoreEvent record) class='ui icon button' position='left center'}}
       <i class="undo icon"></i>
     {{/ui-popup}}

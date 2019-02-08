@@ -8,8 +8,7 @@
     openDeleteEventModal=(action 'openDeleteEventModal')
     restoreEvent = (action 'restoreEvent')
     customGlobalFilter='name'
-    isAdminEventsDeleteRoute=isAdminEventsDeleteRoute
+    hasRestorePrivileges=hasRestorePrivileges
   }}
   {{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen confirmName=confirmName eventName=eventName deleteEvent=(action 'deleteEvent')}}
 </div>
-{{hello}}

@@ -1,9 +1,8 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 export default Controller.extend({
-  isAdminEventsDeleteRoute: computed('eventsStatusParam', function() {
-    return this.get('eventsStatusParam') === 'deleted';
-
+  hasRestorePrivileges: computed('authManager.currentUser.isAdmin', function() {
+    return this.get('authManager.currentUser.isSuperAdmin') || this.get('authManager.currentUser.isAdmin');
   }),
   columns: [
     {
@@ -58,6 +57,7 @@ export default Controller.extend({
       disableSorting : true
     },
     {
+      propertyName   : 'deletedAt',
       template       : 'components/ui-table/cell/cell-buttons',
       title          : 'Actions',
       disableSorting : true
