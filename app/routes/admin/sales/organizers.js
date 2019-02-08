@@ -6,6 +6,6 @@ export default Route.extend({
   },
 
   model() {
-    return this.store.findAll('admin-sales-by-organizer');
+    return this.store.query('admin-sales-by-organizer', {});
   }
 });
