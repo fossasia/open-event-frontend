@@ -2,12 +2,12 @@
   {{#ui-popup tagName='a' click=(action moveToUserDetails record.id) content=(t 'View') class='ui icon button'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
-  {{#unless record.isSuperAdmin}}
+  {{#if (and (eq record.deletedAt null) (not-eq record.isSuperAdmin true))}}
     {{#ui-popup content=(t 'Edit') click=(action openEditModal record) class='ui icon button'}}
       <i class="edit icon"></i>
     {{/ui-popup}}
     {{#ui-popup content=(t 'Delete') click=(action (confirm (t 'Are you sure you would like to delete this user?') (action deleteUser record))) class='ui icon button'}}
       <i class="trash outline icon"></i>
     {{/ui-popup}}
-  {{/unless}}
+  {{/if}}
 </div>
