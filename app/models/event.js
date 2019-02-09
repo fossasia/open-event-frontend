@@ -84,7 +84,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   icalUrl      : attr('string', { readOnly: true }),
 
   createdAt : attr('moment', { readOnly: true }),
-  deletedAt : attr('moment', { readOnly: true }),
+  deletedAt : attr('moment'),
 
   /**
    * Relationships

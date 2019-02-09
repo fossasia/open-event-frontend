@@ -2,7 +2,7 @@
   <form class="ui form" {{action 'submit' on='submit'}}>
     <div class="field {{if device.isMobile 'sixteen' 'five'}} wide column">
       <label class="required" for="file"> {{t 'Select event source file to import'}}</label>
-      {{input type='file' disabled=file}}
+      <input accept='.zip,.xml,.ical,.ics,.xcal' type="file" disabled={{disabled}} onchange={{action 'onFileSelected' value='target.files'}}>
     </div>
     <div class="field {{if device.isMobile 'sixteen' 'five'}} wide column">
       <span class="text muted">

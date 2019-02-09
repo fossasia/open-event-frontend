@@ -16,7 +16,7 @@ export default Component.extend(FormMixin, {
   }),
 
   shouldDisableOrderButton: computed('isUnverified', 'hasTicketsInOrder', function() {
-    return this.get('isUnverified') || !(this.get('hasTicketsInOrder'));
+    return !this.get('hasTicketsInOrder');
   }),
 
   accessCodeTickets : A(),
@@ -69,6 +69,9 @@ export default Component.extend(FormMixin, {
     async applyPromotionalCode() {
       let promotionalCode = this.get('promotionalCode');
       let order = this.get('order');
+      if (!this.get('code')) {
+        this.set('code', promotionalCode);
+      }
       try {
         let accessCode = await this.get('store').findRecord('access-code', promotionalCode, {});
         order.set('accessCode', accessCode);
@@ -130,27 +133,6 @@ export default Component.extend(FormMixin, {
           order.tickets.removeObject(ticket);
         }
       }
-    },
-    placeOrder() {
-      if (!this.get('session.isAuthenticated')) {
-        this.set('isLoginModalOpen', true);
-        return;
-      }
-      let order = this.get('order');
-      let event = order.get('event');
-      order.tickets.forEach(ticket => {
-        let numberOfAttendees = ticket.orderQuantity;
-        while (numberOfAttendees--) {
-          this.get('attendees').addObject(this.store.createRecord('attendee', {
-            firstname : 'John',
-            lastname  : 'Doe',
-            email     : 'johndoe@example.com',
-            event,
-            ticket
-          }));
-        }
-      });
-      this.sendAction('save');
     },
 
     handleKeyPress() {

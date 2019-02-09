@@ -18,12 +18,12 @@ export default Component.extend(FormMixin, {
     return this.get('data.user');
   }),
 
-  buyerHasFirstName: computed('data.user', function() {
-    return this.get('data.user.firstName') !== null;
+  buyerHasFirstName: computed(function() {
+    return this.get('data.user.firstName');
   }),
 
-  buyerHasLastName: computed('data.user', function() {
-    return this.get('data.user.lastName') !== null;
+  buyerHasLastName: computed(function() {
+    return this.get('data.user.lastName');
   }),
   holders: computed('data.attendees', function() {
     this.get('data.attendees').forEach(attendee => {
@@ -40,7 +40,8 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer: false,
+  sameAsBuyer   : false,
+  enableBilling : false,
 
   getRemainingTime: computed('data', function() {
     let orderExpiryTime = this.get('data.event.orderExpiryTime');
@@ -384,6 +385,15 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
+        company: {
+          identifier : 'company',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter your company')
+            }
+          ]
+        },
         address: {
           identifier : 'address',
           rules      : [
@@ -399,15 +409,6 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.get('l10n').t('Please enter your city ')
-            }
-          ]
-        },
-        state: {
-          identifier : 'state',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your state')
             }
           ]
         },

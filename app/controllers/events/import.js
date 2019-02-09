@@ -13,10 +13,10 @@ export default Controller.extend({
         .load(taskUrl)
         .then(data => {
           if (data.state !== 'SUCCESS') {
-            this.set('importStatus', `Status: ${  data.state}`);
+            this.set('importStatus', `Status: ${data.state}`);
             this.importTask(taskUrl);
           } else {
-            this.set('importStatus', `Status: ${  data.state}`);
+            this.set('importStatus', `Status: ${data.state}`);
             this.transitionToRoute('events.view', data.result.id);
           }
         })
@@ -38,8 +38,10 @@ export default Controller.extend({
       ext = ext[ext.length - 1].toLowerCase();
       if (ext === 'xml') {
         endpoint = 'import/pentabarf';
-      } else if (ext === 'ical') {
+      } else if (ext === 'ics' || ext === 'ical') {
         endpoint = 'import/ical';
+      } else if (ext === 'xcal') {
+        endpoint = 'import/xcal';
       }
       data.append('file', file);
 

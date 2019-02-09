@@ -37,12 +37,14 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
     const json = this._super(...arguments);
     let attendeeSnapshots = snapshot._hasManyRelationships.attendees;
     let attendees = { data: [] };
-    attendeeSnapshots.forEach(function(snapshot) {
-      attendees.data.push({
-        type : 'attendee',
-        id   : snapshot.id
+    if (attendeeSnapshots) {
+      attendeeSnapshots.forEach(function(snapshot) {
+        attendees.data.push({
+          type : 'attendee',
+          id   : snapshot.id
+        });
       });
-    });
+    }
     json.data.relationships.attendees = attendees;
     return json;
   }

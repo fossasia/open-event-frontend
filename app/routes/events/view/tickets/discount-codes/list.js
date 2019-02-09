@@ -47,5 +47,11 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'discountCodes'
     };
+  },
+
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
 });

@@ -117,7 +117,7 @@
         <i class="colored visa link icon"></i>
       </div>
       <div class="ui less padding three wide computer four wide tablet column right aligned floated">
-        <button id="total" class="ui primary small button less right margin" disabled={{shouldDisableOrderButton}} {{action 'placeOrder'}}>
+        <button id="total" class="ui primary small button less right margin" disabled={{shouldDisableOrderButton}} {{action placeOrder}}>
           {{t 'Order Now'}}
         </button>
       </div>
@@ -125,4 +125,10 @@
   </div>
 </form>
 
-{{modals/login-signup-modal isOpen=isLoginModalOpen}}
+{{modals/login-signup-modal isOpen=isLoginModalOpen
+                            isLoading=isLoading
+                            createNewUserViaEmail=createNewUserViaEmail
+                            loginExistingUser=loginExistingUser
+                            userExists=userExists
+                            errorMessage=errorMessage
+}}
