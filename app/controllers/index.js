@@ -19,7 +19,8 @@ export default Controller.extend({
       }
       const startDateTime = callForPapers.get('startsAt');
       const endDateTime = callForPapers.get('endsAt');
-      return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled));
+      const privacyState = callForPapers.get('privacy');
+      return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled) && (privacyState === 'public'));
     });
   }),
 
