@@ -50,7 +50,7 @@
       <div class="ui divider"></div>
       {{#if model.shortAbstract}}
         <h3 class="ui left aligned header">Short Abstract</h3>
-        <p> <i>{{model.shortAbstract}}</i> </p>
+        <p> <i>{{sanitize model.shortAbstract}}</i> </p>
       {{/if}}
       {{#if model.sessionType.name}}
         <h3 class="ui left aligned header">Session Type</h3>

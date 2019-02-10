@@ -81,6 +81,7 @@ export default Controller.extend({
         .then(() => {
           sendEmail ? this.notify.success(this.get('l10n').t('Session has been accepted and speaker has been notified via email.'))
             : this.notify.success(this.get('l10n').t('Session has been accepted'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
@@ -98,6 +99,7 @@ export default Controller.extend({
         .then(() => {
           sendEmail ? this.notify.success(this.get('l10n').t('Session has been confirmed and speaker has been notified via email.'))
             : this.notify.success(this.get('l10n').t('Session has been confirmed'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
@@ -115,6 +117,7 @@ export default Controller.extend({
         .then(() => {
           sendEmail ? this.notify.success(this.get('l10n').t('Session has been rejected and speaker has been notified via email.'))
             : this.notify.success(this.get('l10n').t('Session has been rejected'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
