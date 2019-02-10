@@ -1,11 +1,20 @@
 <div class="ui segments">
+  <div class="ui orange inverted segment center aligned">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        Event Information
+      </div>
+    </div>
+  </div>
   <div class="ui secondary segment">
     <h3 class="weight-400">{{t 'When & Where'}}</h3>
   </div>
   <div class="ui padded segment">
-    {{data.event.locationName}}
+    <b>At {{data.event.locationName}}</b>
     <br>
-    {{header-date data.event.startsAt}} - {{header-date data.event.endsAt}}
+    <b>From :</b> {{header-date data.event.startsAt}}
+    <br>
+    <b>To :</b> {{header-date data.event.endsAt}}
   </div>
   <div class="ui padded segment">
     <a href="{{data.event.url}}">{{t 'Go to event'}}</a>
