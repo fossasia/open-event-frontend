@@ -1,0 +1,44 @@
+<form class="ui form">
+	<div class="ui segments">
+		<div class="ui aligned secondary segment">
+			<h3 class="weight-400">{{t 'Payee Information'}}</h3>
+		</div>
+		<div class="ui padded segment">
+			<h4 class="ui horizontal divider header">
+				<i class="ticket icon"></i>
+				{{t 'Ticket Buyer'}}
+			</h4>
+			<h2 class="weight-300">
+				{{t 'Name '}}
+			</h2>
+			<span>
+				{{buyer.firstName}} {{buyer.lastName}}
+			</span>
+			<div class="ui divider"></div>
+
+			<h2 class="weight-300">
+				{{t 'Email '}}
+			</h2>
+			<span>
+				{{buyer.email}}
+			</span>
+
+			{{#if (not-eq data.paymentMode 'free')}}
+			<div class="ui divider"></div>
+
+			<h2 class="weight-300">
+				{{t 'Opted Payment Mode '}}
+			</h2>
+			<span>
+				{{#if (eq data.paymentMode 'paypal')}}
+				<img class="ui small image" src="/images/payment-logos/paypal.png" alt="paypal">
+				{{else if (eq data.paymentMode 'stripe')}}
+				<img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
+				{{else}}
+				<span>{{data.paymentMode}}</span>
+				{{/if}}
+			</span>
+			{{/if}}
+		</div>
+	</div>
+</form>

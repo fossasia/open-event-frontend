@@ -59,7 +59,10 @@
   </div>
 
   <div class="row">
-    <div class="ten wide column">
+    <div class="seven wide column">
+      {{orders/ticket-holder data=model.order}}
+    </div>
+    <div class="nine wide column">
       {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
     </div>
   </div>
