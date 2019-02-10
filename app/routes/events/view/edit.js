@@ -21,7 +21,8 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
       types : await this.store.query('event-type', {
         sort: 'name'
       }),
-      topics: await this.store.query('event-topic', {
+      module : await this.store.queryRecord('module', {}),
+      topics : await this.store.query('event-topic', {
         sort    : 'name',
         include : 'event-sub-topics'
       })

@@ -22,6 +22,7 @@ cd open-event-frontend
 
 * `yarn`
 * `cp .env.example .env`
+* `node scripts/l10n.js generate`
 
 **Note:**  Open Event Frontend supports [FastBoot](https://github.com/ember-fastboot/ember-cli-fastboot) which is disabled for the development environment and is controlled by the flag `FASTBOOT_DISABLED` in the `.env` file.  
 ## Running / Development
