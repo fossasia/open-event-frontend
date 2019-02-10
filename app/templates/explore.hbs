@@ -5,7 +5,7 @@
   <div class="twelve wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
     {{#each filteredEvents as |event|}}
-      {{event-card event=event isWide=true shareEvent=(action 'shareEvent')}}
+      {{event-card event=event isWide=true category=category subCategory=sub_category eventType=event_type shareEvent=(action 'shareEvent')}}
       <div class="ui hidden divider"></div>
     {{else}}
       <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
