@@ -77,6 +77,7 @@ export default Component.extend(FormMixin, {
             if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
               this.set('password', '');
             }
+            this.get('router').transitionTo('index');
           });
       });
     },
