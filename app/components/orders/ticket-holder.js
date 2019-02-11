@@ -4,5 +4,5 @@ import { computed } from '@ember/object';
 export default Component.extend({
   buyer: computed('data.user', function() {
     return this.get('data.user');
-  }),
+  })
 });

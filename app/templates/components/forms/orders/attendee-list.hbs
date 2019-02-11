@@ -8,7 +8,7 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Holder\'s Information'}}
       </h4>
-      {{#each holders as |holder index|}}
+      {{#each holders as |holder|}}
         <div class="field">
           <div class="inline field">
             <i class="user icon"></i>
@@ -29,11 +29,14 @@
           <div class="ui divider"></div>
         </div>
       {{/each}}
-      {{#if isPaidOrder}}
-        <h4 class="ui horizontal divider header">
-          <i class="ticket icon"></i>
-          {{t 'Billing Information'}}
-        </h4>
+      
+      
+      <h4 class="ui horizontal divider header">
+        {{ui-checkbox label=(t 'Show Billing Information') checked=enableBilling
+                          onChange=(action (mut enableBilling))}}
+      </h4>
+      
+      {{#if enableBilling}}
         <div class="field disabled">
           <label for="company">{{t 'Company'}}</label>
           {{input type='text' id='company' value=data.company}}
@@ -62,55 +65,8 @@
           <label for="country">{{t 'Country'}}</label>
           {{input type='text' id='country' value=data.country}}
         </div>
-        <div class="field disabled">
-          <label for="payment_mode">{{t 'Payment Mode'}}</label>
-          <div class="grouped inline fields">
-            {{#if data.event.isStripeLinked}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Stripe') value='stripe' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode">
-                  <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
-                </label>
-              </div>
-            {{/if}}
-            {{#if data.event.canPayByPaypal}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Paypal') value='paypal' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
-              </div>
-            {{/if}}
-            {{#if data.event.canPayByCheque}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Cheque') value='cheque' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-              </div>
-            {{/if}}
-            {{#if data.event.canPayByBank}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Bank') value='bank' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-              </div>
-            {{/if}}
-            {{#if data.event.canPayOnsite}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Onsite') value='onsite' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-              </div>
-            {{/if}}
-          </div>
-        </div>
-        <div class="field disabled">
-          {{#if (eq data.paymentMode 'bank')}}
-            {{textarea name="payment_details" value=data.event.bankDetails readonly=""}}
-          {{else if (eq data.paymentMode 'cheque')}}
-            {{textarea name="payment_details" value=data.event.chequeDetails readonly=""}}
-          {{else if (eq data.paymentMode 'onsite')}}
-            {{textarea name="payment_details" value=data.event.onsiteDetails readonly=""}}
-          {{/if}}
-        </div>
       {{/if}}
+      <div class="ui divider" style="margin-top: 30px"></div>
     </div>
   </div>
 </form>
