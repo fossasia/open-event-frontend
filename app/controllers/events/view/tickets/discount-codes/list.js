@@ -55,6 +55,7 @@ export default Controller.extend({
       discountCode.save()
         .then(() => {
           this.notify.success(this.get('l10n').t('Discount Code has been updated successfully.'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           discountCode.toggleProperty('isActive');

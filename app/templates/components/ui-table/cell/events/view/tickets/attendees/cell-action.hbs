@@ -1,7 +1,7 @@
 {{#if (eq record.order.status 'completed')}}
   {{#if record.isCheckedIn}}
-    <a role="button" class="ui red label" {{action toggleCheckIn record}}><i class="remove icon"></i>{{t 'Cancel'}}</a>
+    <button class="tiny ui labeled icon negative button" {{action toggleCheckIn record}}><i class="remove icon"></i>{{t 'Cancel'}}</button>
   {{else}}
-    <a role="button" class="ui green label" {{action toggleCheckIn record}}><i class="checkmark icon"></i>{{t 'Check In'}}</a>
+    <button class="tiny ui labeled icon positive button" {{action toggleCheckIn record}}><i class="checkmark icon"></i>{{t 'Check‑In'}}</button>
   {{/if}}
 {{/if}}

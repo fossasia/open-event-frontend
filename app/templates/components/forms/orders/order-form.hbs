@@ -73,10 +73,34 @@
                           onChange=(action (mut enablebilling))}}
         </div>
         {{#if enablebilling}}
-          <div class="field" >
+          <div class="field">
+            <label class="required" for="company">{{t 'Company'}}</label>
+            {{input type='text' id='company' value=data.company}}
+          </div>
+          <div class="field">
+            <label for="taxBusinessInfo">{{t 'Tax Business Info'}}</label>
+            {{input type='text' id='taxBusinessInfo' value=data.taxBusinessInfo}}
+          </div>
+          <div class="field">
+            <label class="required" for="address">{{t 'Address'}}</label>
+            {{textarea rows='2' id='address' value=data.address}}
+          </div>
+          <div class="field">
+            <label class="required" for="city">{{t 'City'}}</label>
+            {{input type='text' id='city' value=data.city}}
+          </div>
+          <div class="field">
+            <label for="state">{{t 'State/Province'}}</label>
+            {{input type='text' id='state' value=data.state}}
+          </div>
+          <div class="field">
+            <label class="required" for="zipcode">{{t 'Zip Code'}}</label>
+            {{input type='text' id='zip_code' value=data.zipcode}}
+          </div>
+          <div class="field">
             <label class="required">{{t 'Select country'}}</label>
-            {{#ui-dropdown class="selection" selected=data.country 
-                         onChange=(action (mut data.country)) as |execute mapper|}}
+            {{#ui-dropdown class="selection" selected=data.country
+                          onChange=(action (mut data.country)) as |execute mapper|}}
               <div class="default text">{{t 'Select country'}}</div>
               <i class="dropdown icon"></i>
               <div class="menu">
@@ -88,25 +112,9 @@
               </div>
             {{/ui-dropdown}}
           </div>
-          <div class="field">
-            <label class="required" for="address">{{t 'Address'}}</label>
-            {{textarea rows='2' id='address' value=data.address}}
-          </div>
-          <div class="field">
-            <label class="required" for="city">{{t 'City'}}</label>
-            {{input type='text' id='city' value=data.city}}
-          </div>
-          <div class="field">
-            <label class="required" for="state">{{t 'State/Province'}}</label>
-            {{input type='text' id='state' value=data.state}}
-          </div>
-          <div class="field">
-            <label class="required" for="zipcode">{{t 'Zip Code'}}</label>
-            {{input type='text' id='zip_code' value=data.zipcode}}
-          </div>
         {{/if}}
-        
-       
+
+
         <h4 class="ui horizontal divider header">
           <i class="ticket icon"></i>
           {{t 'Payment Method'}}
