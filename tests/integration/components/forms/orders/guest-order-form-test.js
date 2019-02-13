@@ -19,7 +19,7 @@ module('Integration | Component | forms/orders/guest-order-form', function(hooks
         loginExistingUser=loginExistingUser
         createNewUserViaEmail=createNewUserViaEmail}}`);
 
-    assert.ok(this.element.innerHTML.trim().includes('Registration'));
+    assert.ok(this.element.innerHTML.trim().includes('Please enter your email address to continue.'));
 
   });
 });
