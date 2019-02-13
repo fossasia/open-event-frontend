@@ -32,14 +32,6 @@
           {{orders/ticket-holder data=model.order}}
         </div>
       </div>
-
-      <div class="row" style="margin-top:25px">
-        {{#if model.order.event.organizerName}}
-          <div class="mobile hidden row">
-            {{orders/organizer-info data=model.order}}
-          </div>
-        {{/if}}
-      </div>
       <br>
       <a class="ui labeled icon button" href="{{model.order.ticketsPdfUrl}}" target="_blank" rel="noopener nofollow">
         <i class="ticket alternate icon"></i>

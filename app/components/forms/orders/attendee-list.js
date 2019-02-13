@@ -17,12 +17,5 @@ export default Component.extend({
   }),
   allFields: computed('fields', function() {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
-  }),
-  enableBilling: false,
-
-  actions: {
-    toggleBilling() {
-      this.toggleProperty('enableBilling');
-    }
-  }
+  })
 });

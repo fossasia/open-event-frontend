@@ -23,9 +23,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="ui-segment sixteen wide column">
+    <div class="ui-segment right floated four wide column">
       {{#if isStripe}}
-        <div class = 'stripe-button' style='float: right'>
+        <div class = 'ui right floated'>
           {{stripe-checkout
             image="https://stripe.com/img/documentation/checkout/marketplace.png"
             locale='auto'
@@ -41,23 +41,13 @@
         </div>
       {{/if}}
       {{#if isPaypal}}
-        <div class='paypal-button' style='float: right'>
+        <div class='paypal-button'>
           {{paypal-button data=model.order}}
         </div>
       {{/if}}
     </div>
   </div>
   
-  <div class="row">
-    <div class="sixteen wide column">
-      {{#if model.order.event.organizerName}}
-        <div class="mobile hidden row">
-          {{orders/organizer-info data=model.order}}
-        </div>
-      {{/if}}
-    </div>
-  </div>
-
   <div class="row">
     <div class="seven wide column">
       {{orders/ticket-holder data=model.order}}
