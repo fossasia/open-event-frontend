@@ -4,6 +4,7 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
 import { sumBy } from 'lodash';
 import { A } from '@ember/array';
+import moment from 'moment';
 
 export default Component.extend(FormMixin, {
   store: service(),
@@ -22,7 +23,8 @@ export default Component.extend(FormMixin, {
   accessCodeTickets : A(),
   discountedTickets : A(),
 
-  invalidPromotionalCode: false,
+  invalidPromotionalCode : false,
+  invalidTimeFrame       : false,
 
   tickets: computed(function() {
     return this.get('data').sortBy('position');
@@ -91,19 +93,34 @@ export default Component.extend(FormMixin, {
         });
         let discountType = discountCode.get('type');
         let discountValue = discountCode.get('value');
-        order.set('discountCode', discountCode);
-        let tickets = await discountCode.get('tickets');
-        tickets.forEach(ticket => {
-          let ticketPrice = ticket.get('price');
-          if (discountType === 'amount') {
-            ticket.set('discount', Math.min(ticketPrice, discountValue));
-            this.get('discountedTickets').addObject(ticket);
+
+        var isActive = discountCode.get('isActive');
+        var validTill = discountCode.get('validTill');
+        var validFrom = discountCode.get('validFrom');
+        var current = moment();
+
+        if (isActive) {
+          if (current.isAfter(validFrom, 'second') && current.isBefore(validTill, 'second')) {
+            order.set('discountCode', discountCode);
+            let tickets = await discountCode.get('tickets');
+            tickets.forEach(ticket => {
+              let ticketPrice = ticket.get('price');
+              if (discountType === 'amount') {
+                ticket.set('discount', Math.min(ticketPrice, discountValue));
+                this.get('discountedTickets').addObject(ticket);
+              } else {
+                ticket.set('discount', ticketPrice * (discountValue / 100));
+                this.get('discountedTickets').addObject(ticket);
+              }
+              this.set('invalidPromotionalCode', false);
+            });
           } else {
-            ticket.set('discount', ticketPrice * (discountValue / 100));
-            this.get('discountedTickets').addObject(ticket);
+            this.set('invalidPromotionalCode', true);
+            this.set('invalidTimeFrame', true);
           }
-          this.set('invalidPromotionalCode', false);
-        });
+        } else {
+          this.set('invalidPromotionalCode', true);
+        }
       } catch (e) {
         if (this.get('invalidPromotionalCode')) {
           this.set('invalidPromotionalCode', true);
@@ -111,7 +128,13 @@ export default Component.extend(FormMixin, {
       }
       if (this.get('invalidPromotionalCode')) {
         this.set('promotionalCodeApplied', false);
-        this.notify.error('This Promotional Code is not valid');
+        if (!isActive) {
+          this.notify.error('This Promotional Code is not active');
+        } else if (this.get('invalidTimeFrame')) {
+          this.notify.error('This Promotional Code cannot be applied right now');
+        } else {
+          this.notify.error('This Promotional Code is not valid');
+        }
       } else {
         this.set('promotionalCodeApplied', true);
         this.set('promotionalCode', 'Promotional code applied successfully');
