@@ -202,6 +202,20 @@
                   {{/each}}
                 </div>
               {{/ui-dropdown}}
+            {{else if (eq field.fieldIdentifier 'gender')}}
+              {{#ui-dropdown class='search selection' selected=data.speaker.gender forceSelection=false
+                              fullTextSearch=true}}
+                {{input type='hidden' id='speaker_gender' value=data.speaker.gender}}
+                <i class="dropdown icon"></i>
+                <div class="default text">{{t 'Select'}}</div>
+                <div class="menu">
+                  {{#each genders as |gender|}}
+                    <div class="item" data-value="{{gender.name}}">
+                      {{gender.name}}
+                    </div>
+                  {{/each}}
+                </div>
+              {{/ui-dropdown}}
             {{else}}
               {{#ui-dropdown class='search selection' onChange=(action (mut (get data.speaker field.fieldIdentifier))) as |execute mapper|}}
                 <i class="dropdown icon"></i>
