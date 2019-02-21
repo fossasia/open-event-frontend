@@ -3,6 +3,7 @@ import ModelBase from 'open-event-frontend/models/base';
 
 export default ModelBase.extend({
   firstName : attr('string'),
-  lastName  : attr('moment'),
+  lastName  : attr('string'),
+  email     : attr('string'),
   sales     : attr()
 });
