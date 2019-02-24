@@ -45,7 +45,12 @@
           {{#each model as |entry|}}
             <tr>
               <td>
-                {{entry.firstName entry.lastName}}
+                {{#if entry.firstName}}
+                  {{entry.firstName}} {{entry.lastName}}
+                {{else}}
+                  {{t 'No Name Provided'}}
+                {{/if}}
+                <div class="muted text">({{entry.email}})</div>
               </td>
               <td class="right aligned">
                 {{entry.sales.completed.ticket_count}}
