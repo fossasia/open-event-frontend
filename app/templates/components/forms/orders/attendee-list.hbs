@@ -1,30 +1,14 @@
 <form class="ui form">
   <div class="ui segments">
     <div class="ui aligned secondary segment">
-      <h3 class="weight-400">{{t 'Registration Information'}}</h3>
+      <h3 class="weight-400">{{t 'Attendee Information'}}</h3>
     </div>
     <div class="ui padded segment">
       <h4 class="ui horizontal divider header">
         <i class="ticket icon"></i>
-        {{t 'Ticket Buyer'}}
-      </h4>
-      <div class="field disabled">
-        <label for="firstname">{{t 'First Name'}}</label>
-        {{input type='text' name='first_name' value=buyer.firstName}}
-      </div>
-      <div class="field disabled">
-        <label for="lastname">{{t 'Last Name'}}</label>
-        {{input type='text' name='last_name' value=buyer.lastName}}
-      </div>
-      <div class="field disabled">
-        <label for="email">{{t 'Email'}}</label>
-        {{input type='text' name='email' value=buyer.email}}
-      </div>
-      <h4 class="ui horizontal divider header">
-        <i class="ticket icon"></i>
         {{t 'Ticket Holder\'s Information'}}
       </h4>
-      {{#each holders as |holder index|}}
+      {{#each holders as |holder|}}
         <div class="field">
           <div class="inline field">
             <i class="user icon"></i>
@@ -32,104 +16,54 @@
           </div>
           {{# each allFields.attendee as |field|}}
             {{#if field.isIncluded}}
-              <div class="field disabled">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+              <div class="field">
+                <h4 class="weight-300">
+                  {{field.name}}
+                </h4>
                 {{#if (is-input-field field.type) }}
-                  {{#if field.isLongText}}
-                    {{widgets/forms/rich-text-editor value=(mut (get holder field.fieldIdentifier))
-                                                     name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
-                  {{else}}
-                    {{input type=field.type value=(mut (get holder field.fieldIdentifier))
-                            name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
-                  {{/if}}
+                  <span>{{get holder field.fieldIdentifier}}</span>
                 {{/if}}
               </div>
             {{/if}}
           {{/each}}
+          <div class="ui divider"></div>
         </div>
       {{/each}}
-      {{#if isPaidOrder}}
-        <h4 class="ui horizontal divider header">
-          <i class="ticket icon"></i>
-          {{t 'Billing Information'}}
-        </h4>
-        <div class="field disabled">
-          <label for="company">{{t 'Company'}}</label>
-          {{input type='text' id='company' value=data.company}}
-        </div>
-        <div class="field disabled">
-          <label for="taxBusinessInfo">{{t 'Tax Business Info'}}</label>
-          {{input type='text' id='taxBusinessInfo' value=data.taxBusinessInfo}}
-        </div>
-        <div class="field disabled">
-          <label for="address">{{t 'Address'}}</label>
-          {{textarea rows='2' id='address' value=data.address}}
-        </div>
-        <div class="field disabled">
-          <label for="city">{{t 'City'}}</label>
-          {{input type='text' id='city' value=data.city}}
-        </div>
-        <div class="field disabled">
-          <label for="state">{{t 'State/Province'}}</label>
-          {{input type='text' id='state' value=data.state}}
-        </div>
-        <div class="field disabled">
-          <label for="zipcode">{{t 'Zip Code'}}</label>
-          {{input type='text' id='zip_code' value=data.zipcode}}
-        </div>
-        <div class="field disabled">
-          <label for="country">{{t 'Country'}}</label>
-          {{input type='text' id='country' value=data.country}}
-        </div>
-        <div class="field disabled">
-          <label for="payment_mode">{{t 'Payment Mode'}}</label>
-          <div class="grouped inline fields">
-            {{#if data.event.isStripeLinked}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Stripe') value='stripe' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode">
-                  <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
-                </label>
-              </div>
-            {{/if}}
-            {{#if data.event.canPayByPaypal}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Paypal') value='paypal' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
-              </div>
-            {{/if}}
-            {{#if data.event.canPayByCheque}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Cheque') value='cheque' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-              </div>
-            {{/if}}
-            {{#if data.event.canPayByBank}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Bank') value='bank' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-              </div>
-            {{/if}}
-            {{#if data.event.canPayOnsite}}
-              <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Onsite') value='onsite' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-              </div>
-            {{/if}}
-          </div>
-        </div>
-        <div class="field disabled">
-          {{#if (eq data.paymentMode 'bank')}}
-            {{textarea name="payment_details" value=data.event.bankDetails readonly=""}}
-          {{else if (eq data.paymentMode 'cheque')}}
-            {{textarea name="payment_details" value=data.event.chequeDetails readonly=""}}
-          {{else if (eq data.paymentMode 'onsite')}}
-            {{textarea name="payment_details" value=data.event.onsiteDetails readonly=""}}
-          {{/if}}
-        </div>
-      {{/if}}
+      
+      
+      <h4 class="ui horizontal divider header">
+        <i class='ticket icon'></i>
+        {{t 'Billing Information'}}
+      </h4>
+      <div class="field disabled">
+        <label for="company">{{t 'Company'}}</label>
+        {{input type='text' id='company' value=data.company}}
+      </div>
+      <div class="field disabled">
+        <label for="taxBusinessInfo">{{t 'Tax Business Info'}}</label>
+        {{input type='text' id='taxBusinessInfo' value=data.taxBusinessInfo}}
+      </div>
+      <div class="field disabled">
+        <label for="address">{{t 'Address'}}</label>
+        {{textarea rows='2' id='address' value=data.address}}
+      </div>
+      <div class="field disabled">
+        <label for="city">{{t 'City'}}</label>
+        {{input type='text' id='city' value=data.city}}
+      </div>
+      <div class="field disabled">
+        <label for="state">{{t 'State/Province'}}</label>
+        {{input type='text' id='state' value=data.state}}
+      </div>
+      <div class="field disabled">
+        <label for="zipcode">{{t 'Zip Code'}}</label>
+        {{input type='text' id='zip_code' value=data.zipcode}}
+      </div>
+      <div class="field disabled">
+        <label for="country">{{t 'Country'}}</label>
+        {{input type='text' id='country' value=data.country}}
+      </div>
+      <div class="ui divider" style="margin-top: 30px"></div>
     </div>
   </div>
 </form>
