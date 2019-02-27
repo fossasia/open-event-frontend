@@ -8,12 +8,14 @@ export default Route.extend({
         return this.get('l10n').t('Active');
       case 'deleted':
         return this.get('l10n').t('Deleted');
+      case 'inactive':
+        return this.get('l10n').t('Inactive');
     }
   },
   beforeModel(transition) {
     this._super(...arguments);
     const userState = transition.params[transition.targetName].users_status;
-    if (!['all', 'deleted', 'active'].includes(userState)) {
+    if (!['all', 'deleted', 'active', 'inactive'].includes(userState)) {
       this.replaceWith('admin.users.view', userState);
     }
   },
@@ -43,6 +45,23 @@ export default Route.extend({
           name : 'deleted-at',
           op   : 'ne',
           val  : null
+        }
+      ];
+    } else if (params.users_status === 'inactive') {
+      filterOptions = [
+        {
+          or: [
+            {
+              name : 'last-accessed-at',
+              op   : 'eq',
+              val  : null
+            },
+            {
+              name : 'last-accessed-at',
+              op   : 'lt',
+              val  : moment().subtract(1, 'Y').toISOString()
+            }
+          ]
         }
       ];
     }

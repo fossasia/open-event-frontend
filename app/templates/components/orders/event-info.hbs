@@ -1,11 +1,26 @@
 <div class="ui segments">
+  {{#if showBanner}}
+    <div class="ui orange inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          Event Information
+        </div>
+      </div>
+    </div>
+  {{/if}}
   <div class="ui secondary segment">
     <h3 class="weight-400">{{t 'When & Where'}}</h3>
   </div>
   <div class="ui padded segment">
-    {{data.event.locationName}}
+    <strong>At {{data.event.locationName}}</strong>
     <br>
-    {{header-date data.event.startsAt}} - {{header-date data.event.endsAt}}
+    <strong>From :</strong> {{header-date data.event.startsAt}}
+    <br>
+    <strong>To :</strong> {{header-date data.event.endsAt}}
+    {{#if data.event.organizerName}}
+      <br>
+      <strong>Organized By :</strong> {{data.event.organizerName}}
+    {{/if}}
   </div>
   <div class="ui padded segment">
     <a href="{{data.event.url}}">{{t 'Go to event'}}</a>

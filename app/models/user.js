@@ -34,6 +34,7 @@ export default ModelBase.extend({
   iconImageUrl      : attr('string'),
   smallImageUrl     : attr('string'),
   thumbnailImageUrl : attr('string'),
+  originalImageUrl  : attr('string'),
 
   facebookUrl   : attr('string'),
   instagramUrl  : attr('string'),

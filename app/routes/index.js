@@ -15,9 +15,19 @@ export default Route.extend({
   _loadEvents(params) {
     let filterOptions = [
       {
-        name : 'state',
-        op   : 'eq',
-        val  : 'published'
+        and:
+        [
+          {
+            name : 'state',
+            op   : 'eq',
+            val  : 'published'
+          },
+          {
+            name : 'privacy',
+            op   : 'eq',
+            val  : 'public'
+          }
+        ]
       }
     ];
 
