@@ -463,7 +463,7 @@
       <div class="default text">{{if data.event.type.name data.event.type.name (t 'Select Event Type')}}</div>
       <div class="menu">
         {{#each data.types as |type|}}
-          <div class="item" data-value="{{map-value mapper type}}">{{type.name}}</div>
+          <div class="item" data-value="{{map-value mapper type}}">{{sanitize type.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}
@@ -475,7 +475,7 @@
       <div class="default text">{{if data.event.topic.name data.event.topic.name (t 'Select Event Topic')}}</div>
       <div class="menu">
         {{#each data.topics as |topic|}}
-          <div class="item" data-value="{{map-value mapper topic}}">{{topic.name}}</div>
+          <div class="item" data-value="{{map-value mapper topic}}">{{sanitize topic.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}
@@ -488,7 +488,7 @@
       <div class="default text">{{if data.event.subTopic.name data.event.subTopic.name (t 'Select Event Sub-Topic')}}</div>
       <div class="menu">
         {{#each subTopics as |subTopic|}}
-          <div class="item" data-value="{{map-value mapper subTopic}}">{{subTopic.name}}</div>
+          <div class="item" data-value="{{map-value mapper subTopic}}">{{sanitize subTopic.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}

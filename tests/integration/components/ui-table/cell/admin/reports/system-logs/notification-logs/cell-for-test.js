@@ -9,7 +9,7 @@ module('Integration | Component | ui table/cell/admin/reports/system logs/notifi
   test('it renders', async function(assert) {
 
     await render(hbs`{{ui-table/cell/admin/reports/system-logs/notification-logs/cell-for}}`);
-    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), 'No Name Provided');
 
   });
 });

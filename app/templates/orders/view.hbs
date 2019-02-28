@@ -27,11 +27,11 @@
       {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
     </div>
     <div class="six wide column">
-      {{#if model.order.event.organizerName}}
+      <div class="row">
         <div class="mobile hidden row">
-          {{orders/organizer-info data=model.order}}
+          {{orders/ticket-holder data=model.order}}
         </div>
-      {{/if}}
+      </div>
       <br>
       <a class="ui labeled icon button" href="{{model.order.ticketsPdfUrl}}" target="_blank" rel="noopener nofollow">
         <i class="ticket alternate icon"></i>

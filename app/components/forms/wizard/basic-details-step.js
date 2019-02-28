@@ -254,6 +254,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'number',
               prompt : this.get('l10n').t('Invalid number')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.get('l10n').t('Maximum tickets per order should be greater than 0')
             }
           ]
         },
