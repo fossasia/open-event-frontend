@@ -1,1 +1,6 @@
-{{record.user.firstName}} {{record.user.lastName}}
+{{#if (or record.user.firstName record.user.lastName)}}
+  {{record.user.firstName}} {{record.user.lastName}}
+{{else}}
+  {{t 'No Name Provided'}}
+{{/if}}
+<div class="muted text">{{record.user.email}}</div>
