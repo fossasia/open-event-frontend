@@ -17,7 +17,8 @@ export default Component.extend(FormMixin, {
           identifier : 'email',
           rules      : [
             {
-              type   : 'email',
+              type   : 'regExp',
+              value  : /\S+@\S+\.\S+/,
               prompt : this.get('l10n').t('Please enter a valid email address')
             }
           ]

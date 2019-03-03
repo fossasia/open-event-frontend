@@ -28,7 +28,7 @@ export default Controller.extend({
           if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 409) {
             this.set('errorMessage', this.get('l10n').t('User already exists.'));
           } else {
-            this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+            this.set('errorMessage', this.get('l10n').t('Invalid Email address. Please try again with a valid email address.'));
           }
         })
         .finally(() => {
