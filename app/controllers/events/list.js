@@ -73,13 +73,13 @@ export default Controller.extend({
         event.destroyRecord();
       })
         .then(() => {
+          this.set('isLoading', false);
           this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
+          this.send('refreshRoute');
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
-        })
-        .finally(() => {
           this.set('isLoading', false);
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });
       this.set('isEventDeleteModalOpen', false);
     }
