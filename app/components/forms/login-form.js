@@ -106,6 +106,29 @@ export default Component.extend(FormMixin, {
               });
           });
         }
+        if (provider === 'instagram') {
+          this.get('torii').open('instagram').then(authData => {
+            this.get('loader').load(`/auth/oauth/login/${  provider  }/${  authData.authorizationCode  }/?redirect_uri=${  authData.redirectUri}`)
+              .then(async response => {
+                let credentials = {
+                  'identification' : response.email,
+                  'password'       : response.instagram_login_hash
+                };
+
+                let authenticator = 'authenticator:jwt';
+                this.get('session')
+                  .authenticate(authenticator, credentials)
+                  .then(async() => {
+                    const tokenPayload = this.get('authManager').getTokenPayload();
+                    if (tokenPayload) {
+                      this.get('authManager').persistCurrentUser(
+                        await this.get('store').findRecord('user', tokenPayload.identity)
+                      );
+                    }
+                  });
+              });
+          });
+        }
       } catch (error) {
         this.get('notify').error(this.get('l10n').t(error.message));
       }

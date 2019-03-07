@@ -41,7 +41,8 @@ export default ModelBase.extend({
   twitterUrl    : attr('string'),
   googlePlusUrl : attr('string'),
 
-  facebookId: attr('string', { readOnly: true }),
+  facebookId  : attr('string', { readOnly: true }),
+  instagramId : attr('string', { readOnly: true }),
 
   createdAt      : attr('moment', { readOnly: true }),
   deletedAt      : attr('moment', { readOnly: true }),
