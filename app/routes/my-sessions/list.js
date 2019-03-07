@@ -14,9 +14,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
   model(params) {
     this.set('params', params);
     let filterOptions = [];
-    if (params.session_status === 'all') {
-      filterOptions = [];
-    } else if (params.session_status === 'upcoming') {
+    if (params.session_status === 'upcoming') {
       filterOptions = [
         {
           or: [
