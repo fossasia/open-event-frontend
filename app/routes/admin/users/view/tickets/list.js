@@ -9,8 +9,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
         return this.get('l10n').t('Upcoming');
       case 'past':
         return this.get('l10n').t('Past');
-      case 'saved':
-        return this.get('l10n').t('Saved');
     }
   },
   async model(params) {
