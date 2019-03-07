@@ -17,6 +17,7 @@ export default Service.extend({
     adapter           : 'adapter:application',
     isExternal        : false,
     isFormData        : false,
+    isFile            : false,
     queryParams       : {},
     withoutPrefix     : false,
     replaceHeaders    : false,
@@ -48,6 +49,9 @@ export default Service.extend({
         } else {
           if (config.isFormData) {
             fetchOptions.body = objectToFormData(data);
+          } else if (config.isFile) {
+            delete fetchOptions.headers['Content-Type'];
+            fetchOptions.body = data;
           } else {
             fetchOptions.headers['Content-Type'] = 'application/json';
             fetchOptions.body = JSON.stringify(data);
