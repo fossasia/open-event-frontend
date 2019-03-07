@@ -81,7 +81,7 @@ export default Controller.extend({
         })
         .finally(() => {
           this.set('isLoading', false);
-        }
+        });
       this.set('isEventDeleteModalOpen', false);
     }
   }
