@@ -14,14 +14,30 @@ export default Route.extend(AuthenticatedRouteMixin, {
   model(params) {
     this.set('params', params);
     let filterOptions = [];
-    if (params.session_status === 'all') {
-      filterOptions = [];
-    } else if (params.session_status === 'upcoming') {
+    if (params.session_status === 'upcoming') {
       filterOptions = [
         {
-          name : 'starts-at',
-          op   : 'ge',
-          val  : moment().toISOString()
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            },
+            {
+              and: [
+                {
+                  name : 'starts-at',
+                  op   : 'eq',
+                  val  : null
+                },
+                {
+                  name : 'ends-at',
+                  op   : 'eq',
+                  val  : null
+                }
+              ]
+            }
+          ]
         }
       ];
     } else {
