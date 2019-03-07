@@ -15,7 +15,12 @@
     <tbody>
       <tr>
         <td><strong>{{t 'No. of Revisions'}}</strong></td>
-        <td>6 {{t '(view revisions)'}}</td>
+        <td>
+          6
+          <a {{action 'openModal'}} role="button">
+            {{t '(View Revisions)'}}
+          </a>
+        </td>
       </tr>
       <tr>
         <td><strong>{{t 'Location'}}</strong></td>
@@ -80,3 +85,4 @@
     </tbody>
   </table>
 </div>
+{{modals/event-revision isOpen=isEventRevisionModalOpen}}
