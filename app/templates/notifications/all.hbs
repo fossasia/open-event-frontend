@@ -33,9 +33,9 @@
         <div class="ten wide column">
           {{#each notification.notificationActions as |action|}}
             {{#if action.link}}
-              {{#link-to action.link tagName='button' class='ui blue button'}}
-                {{t action.buttonTitle}}
-              {{/link-to}}
+              <a href={{action.link}} target="_blank">
+                <button class="ui blue button">{{t action.buttonTitle}}</button>
+              </a>
             {{else}}
               {{#link-to action.buttonRoute action.subjectId tagName='button' class='ui blue button'}}
                 {{t action.buttonTitle}}
