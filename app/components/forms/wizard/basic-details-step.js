@@ -353,7 +353,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
-      deleteTicket.deleteRecord();
+      deleteTicket.destroyRecord();
     },
 
     moveTicket(ticket, direction) {
