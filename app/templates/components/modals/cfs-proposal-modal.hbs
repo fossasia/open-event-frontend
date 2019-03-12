@@ -6,20 +6,24 @@
   <h4 class="ui header">{{t 'Existing Sessions'}}</h4>
   {{#unless isNewSpeaker}}
     {{#unless isNewSession}}
-      {{#each data.userSession as |session|}}
-        {{#if session.id}}
-          {{#link-to 'public.cfs.edit-session' session.id invokeAction=(action 'toggleView')}}
-            <div class="item">
-              {{t 'Edit Session - '}}{{session.title}}
-            </div>
-          {{/link-to}}
-        {{/if}}
-      {{/each}}
+      <div class="ui list">
+        {{#each data.userSession as |session|}}
+          {{#if session.id}}
+            {{#link-to 'public.cfs.edit-session' session.id invokeAction=(action 'toggleView')}}
+              <div class="item">
+                <i class="right triangle icon"></i>
+                {{t 'Edit Session - '}}{{session.title}}
+              </div>
+            {{/link-to}}
+          {{/if}}
+        {{/each}}
+      </div>
     {{/unless}}
   {{/unless}}
   {{#if isNewSession}}
     <p>{{t 'No existing sessions'}}</p>
   {{/if}}
+  <br>
   <div>
     {{#if isNewSpeaker}}
       {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
