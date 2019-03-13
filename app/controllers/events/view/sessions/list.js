@@ -70,7 +70,7 @@ export default Controller.extend({
       this.transitionToRoute('events.view.sessions.edit', id);
     },
     viewSession(id) {
-      this.transitionToRoute('events.view.sessions.edit', id);
+      this.transitionToRoute('my-sessions.view', id);
     },
     acceptProposal(session, sendEmail) {
       session.set('sendEmail', sendEmail);
