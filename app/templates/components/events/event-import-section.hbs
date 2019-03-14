@@ -2,7 +2,7 @@
   <form class="ui form" {{action 'submit' on='submit'}}>
     <div class="field {{if device.isMobile 'sixteen' 'five'}} wide column">
       <label class="required" for="file"> {{t 'Select event source file to import'}}</label>
-      {{input type='file' disabled=file}}
+      <input accept='.zip,.xml,.ical,.ics,.xcal' type="file" disabled={{disabled}} onchange={{action 'onFileSelected' value='target.files'}}>
     </div>
     <div class="field {{if device.isMobile 'sixteen' 'five'}} wide column">
       <span class="text muted">
@@ -10,9 +10,9 @@
         {{t 'Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical, .ics), XML Representation of iCalendar (.xcal)'}}
       </span>
     </div>
-    <button class="ui small primary button" id="btnImportEvent" type="submit" disabled={{btnImportEvent}}>{{t 'Import Event'}}</button>
+    <button class="ui small primary button" type="submit" disabled={{isImporting}}>{{t 'Import Event'}}</button>
     <div style="margin-top: 10px;">
-      <span>{{importStatus}}</span>
+      <span>{{importStatus}}</span><br>
       <span class="red">{{importError}}</span>
     </div>
   </form>

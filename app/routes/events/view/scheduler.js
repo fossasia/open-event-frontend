@@ -22,6 +22,11 @@ export default Route.extend({
             name : 'ends-at',
             op   : 'eq',
             val  : null
+          },
+          {
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
           }
         ]
       }
@@ -39,6 +44,11 @@ export default Route.extend({
             name : 'ends-at',
             op   : 'ne',
             val  : null
+          },
+          {
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
           }
         ]
       }
@@ -63,7 +73,7 @@ export default Route.extend({
     let header = {
       left   : 'today,prev,next',
       center : 'title',
-      right  : 'timelineDay,timelineThreeDays,agendaWeek'
+      right  : 'agendaDay,timelineThreeDays,agendaWeek'
     };
 
     let scheduledSessions = await eventDetails.query('sessions', {
@@ -107,7 +117,6 @@ export default Route.extend({
     return {
       header,
       defaultView     : 'agendaDay',
-      groupByResource : true,
       events          : scheduled,
       eventDetails,
       resources,

@@ -9,7 +9,7 @@
           <p>{{errorMessage}}</p>
         </div>
       {{/if}}
-      <div class="field">
+      <div class="{{if inviteEmail 'disabled' }} field">
         <div class="ui left icon input">
           <i class="mail icon"></i>
           {{input name='email' type='email' placeholder=(t 'Email') value=data.email}}
@@ -24,7 +24,7 @@
             {{input type='password' name='password' placeholder=(t 'Password') value=data.password}}
           {{/if}}
           <div class="ui small basic icon buttons">
-            <button class="ui button" id="eye2" {{ action 'showSignupPassword'}}>
+            <button type="button" class="ui button" id="eye2" {{ action 'showSignupPassword'}}>
               <i class="eye icon"></i>
             </button>
           </div>
@@ -39,7 +39,7 @@
             {{input type='password' name='password_repeat' placeholder=(t 'Re-enter Password') value=password_repeat}}
           {{/if}}
           <div class="ui small basic icon buttons">
-            <button class="ui button" id="eye3" {{ action 'showConfirmPassword'}}>
+            <button type="button" class="ui button" id="eye3" {{ action 'showConfirmPassword'}}>
               <i class="eye icon"></i>
             </button>
           </div>

@@ -14,10 +14,15 @@ export default Route.extend(ApplicationRouteMixin, {
     return tokens.join(' | ');
   },
 
-  async beforeModel() {
+  async beforeModel(transition) {
     this._super(...arguments);
     await this.get('authManager').initialize();
     await this.get('settings').initialize();
+    if (!transition.intent.url.includes('login') && !transition.intent.url.includes('reset-password')) {
+      this.set('session.previousRouteName', transition.intent.url);
+    } else {
+      this.set('session.previousRouteName', null);
+    }
   },
 
   async model() {
@@ -52,6 +57,7 @@ export default Route.extend(ApplicationRouteMixin, {
     if (!this.get('session.skipRedirectOnInvalidation')) {
       this._super(...arguments);
     }
+    this.set('session.skipRedirectOnInvalidation', false);
   },
 
   sessionAuthenticated() {
@@ -78,7 +84,6 @@ export default Route.extend(ApplicationRouteMixin, {
       transition.then(() => {
         let params = this._mergeParams(transition.params);
         let url;
-
         // generate doesn't like empty params.
         if (isEmpty(params)) {
           url = transition.router.generate(transition.targetName);
@@ -86,8 +91,10 @@ export default Route.extend(ApplicationRouteMixin, {
           url = transition.router.generate(transition.targetName, params);
         }
         // Do not save the url of the transition to login route.
-        if (!url.includes('login')) {
+        if (!url.includes('login') && !url.includes('reset-password')) {
           this.set('session.previousRouteName', url);
+        } else {
+          this.set('session.previousRouteName', null);
         }
       });
     }

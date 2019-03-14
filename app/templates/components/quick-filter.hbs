@@ -1,4 +1,4 @@
-{{input type='text' placeholder=(t 'Search for events') value=dummyName}}
+{{input type='text' key-up=(action 'handleKeyPress' ) placeholder=(t 'Search for events') value=dummyName}}
 {{#unless device.isMobile }}
   <div class="ui input">
     {{widgets/forms/places-autocomplete

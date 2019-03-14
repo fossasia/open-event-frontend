@@ -9,7 +9,9 @@
       <h3 class="ui header">{{t 'Unscheduled Sessions'}}</h3>
       <div class="ui raised segments">
         {{#each model.unscheduled as |session|}}
-          {{scheduler/unscheduled-session session=session}}
+          {{#if (or (eq session.state 'accepted') (eq session.state 'confirmed'))}}
+            {{scheduler/unscheduled-session session=session}}
+          {{/if}}
         {{/each}}
       </div>
     </div>
@@ -19,6 +21,7 @@
                       editable=true
                       droppable=true
                       resources=model.resources
+                      groupByResource=true
                       resourceLabelText= 'Rooms'
                       header=model.header
                       ondragover="{{action 'allowDrop' event}}"
@@ -39,4 +42,3 @@
     </div>
   </div>
 </div>
-

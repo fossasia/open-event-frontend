@@ -12,6 +12,8 @@ export default ModelBase.extend({
   email              : attr('string'),
   photoUrl           : attr('string'),
   thumbnailImageUrl  : attr('string'),
+  iconImageUrl       : attr('string'),
+  smallImageUrl      : attr('string'),
   shortBiography     : attr('string'),
   longBiography      : attr('string'),
   speakingExperience : attr('string'),

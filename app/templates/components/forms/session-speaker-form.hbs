@@ -37,17 +37,33 @@
               maxSizeInKb=10000}}
           {{/if}}
           {{#if (eq field.type 'select')}}
-            {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
-              <i class="dropdown icon"></i>
-              <div class="default text">
-                {{if (get data.session field.fieldIdentifier) (custom-related-field data.session field.fieldIdentifier 'name') (concat 'Select a ' field.name)}}
-              </div>
-              <div class="menu">
-                {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
-                  <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
+            {{#if (eq field.fieldIdentifier 'language')}}
+              {{#ui-dropdown class='search selection' selected=data.session.language forceSelection=false
+                             fullTextSearch=true}}
+                {{input type='hidden' id='session_language' value=data.session.language}}
+                <i class="dropdown icon"></i>
+                <div class="default text">{{t 'Select'}}</div>
+                <div class="menu">
+                  {{#each languages as |language|}}
+                    <div class="item" data-value="{{language.name}}">
+                      {{language.name}}
+                    </div>
+                  {{/each}}
+                </div>
+              {{/ui-dropdown}}
+            {{else}}
+              {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
+                <i class="dropdown icon"></i>
+                <div class="default text">
+                  {{if (get data.session field.fieldIdentifier) (custom-related-field data.session field.fieldIdentifier 'name') (concat 'Select a ' field.name)}}
+                </div>
+                <div class="menu">
+                  {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
+                    <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+                  {{/each}}
+                </div>
+              {{/ui-dropdown}}
+            {{/if}}
           {{/if}}
         </div>
       {{/if}}
@@ -59,15 +75,22 @@
       {{t 'Speaker details'}}
     </h2>
     <h4>
-      {{t 'Choose an existing speaker'}}
+      {{t 'Choose from existing speaker(s)'}}
     </h4>
-    {{#each speakers as |speaker|}}
-      <div class="field">
-        {{#if speaker.id}}
-          {{ui-radio name='speakerDetails' label=speaker.name value=speaker onChange=(action (mut speakerDetails))}}
-        {{/if}}
+    {{#ui-dropdown class="fluid multiple selection" selected=speakersDetails onChange=(action (mut speakersDetails)) as |execute mapper|}}
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Speakers'}}
       </div>
-    {{/each}}
+      <div class="menu">
+        {{#each speakers as |speaker|}}
+          <div data-value="{{map-value mapper speaker}}" class="item">
+            {{speaker.name}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+
     {{#if noSpeakerExists}}
       <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
     {{/if}}
@@ -75,9 +98,9 @@
       Or
     </div>
     <div class="field">
-      {{ui-radio name='speakerDetails' label=(t 'Add a new Speaker') value=false onChange=(action 'toggleNewSpeakerSelected' true)}}
+      {{ui-checkbox class="toggle" label="Add a new speaker" checked=addNewSpeaker onChange=(action (mut addNewSpeaker))}}
     </div>
-    {{#if shouldShowNewSpeakerDetails}}
+    {{#if addNewSpeaker}}
       {{#each allFields.speaker as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
@@ -100,18 +123,35 @@
                 maxSizeInKb=1000}}
             {{/if}}
             {{#if (eq field.type 'select')}}
-              {{#ui-dropdown class='search selection' onChange=(action (mut (get data.speaker field.fieldIdentifier))) as |execute mapper|}}
-                <i class="dropdown icon"></i>
-                <div class="default text">
-                  {{if (get data.speaker field.fieldIdentifier) (get data.speaker field.fieldIdentifier)
+              {{#if (eq field.fieldIdentifier 'country')}}
+                {{#ui-dropdown class='search selection' selected=data.speaker.country forceSelection=false
+                               fullTextSearch=true}}
+                  {{input type='hidden' id='speaker_country' value=data.speaker.country}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{get data 'selectedCountry'}}</div>
+                  <div class="menu">
+                    {{#each countries as |country|}}
+                      <div class="item" data-value="{{country.name}}">
+                        <i class="{{lowercase country.code}} flag"></i>
+                        {{country.name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              {{else}}
+                {{#ui-dropdown class='search selection' onChange=(action (mut (get data.speaker field.fieldIdentifier))) as |execute mapper|}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">
+                    {{if (get data.speaker field.fieldIdentifier) (get data.speaker field.fieldIdentifier)
                        (concat 'Select a ' field.name)}}
-                </div>
-                <div class="menu">
-                  {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
-                    <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
-                  {{/each}}
-                </div>
-              {{/ui-dropdown}}
+                  </div>
+                  <div class="menu">
+                    {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
+                      <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              {{/if}}
             {{/if}}
           </div>
         {{/if}}
@@ -238,24 +278,44 @@
                 maxSizeInKb=10000}}
             {{/if}}
             {{#if (eq field.type 'select')}}
-              {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
-                <i class="dropdown icon"></i>
-                <div class="default text">
-                  {{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
+              {{#if (eq field.fieldIdentifier 'language')}}
+                {{#ui-dropdown class='search selection' selected=data.session.language forceSelection=false
+                               fullTextSearch=true}}
+                  {{input type='hidden' id='session_language' value=data.session.language}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{t 'Select'}}</div>
+                  <div class="menu">
+                    {{#each languages as |language|}}
+                      <div class="item" data-value="{{language.name}}">
+                        {{language.name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              {{else}}
+                {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">
+                    {{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
                       (concat 'Select a ' field.name)}}
-                </div>
-                <div class="menu">
-                  {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
-                    <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
-                  {{/each}}
-                </div>
-              {{/ui-dropdown}}
+                  </div>
+                  <div class="menu">
+                    {{#each (get data (concat field.fieldIdentifier 's')) as |item|}}
+                      <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              {{/if}}
             {{/if}}
           </div>
         {{/if}}
       {{/each}}
     {{/if}}
   {{/if}}
+
+
+
+
   <button type="submit" class="ui teal submit button update-changes">
     {{t 'Submit'}}
   </button>

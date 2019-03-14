@@ -50,7 +50,7 @@ export default Service.extend({
           if (config.isFormData) {
             fetchOptions.body = objectToFormData(data);
           } else if (config.isFile) {
-            fetchOptions.headers.Authorization = adapter.ajaxOptions().headers.Authorization;
+            delete fetchOptions.headers['Content-Type'];
             fetchOptions.body = data;
           } else {
             fetchOptions.headers['Content-Type'] = 'application/json';

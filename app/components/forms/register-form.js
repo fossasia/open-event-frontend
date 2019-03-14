@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, {
               prompt : this.get('l10n').t('Please enter a password')
             },
             {
-              type   : 'minLength[6]',
+              type   : 'minLength[8]',
               prompt : this.get('l10n').t('Your password must have at least {ruleValue} characters')
             }
           ]
@@ -46,6 +46,11 @@ export default Component.extend(FormMixin, {
         }
       }
     };
+  },
+  didInsertElement() {
+    if (this.get('inviteEmail')) {
+      this.get('data').set('email', this.get('inviteEmail'));
+    }
   },
 
   actions: {
