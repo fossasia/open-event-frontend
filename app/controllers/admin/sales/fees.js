@@ -20,18 +20,22 @@ export default Controller.extend({
 
   columnNames: {
     rowspan: [{
-      colname : 'Events',
+      colname : this.get('l10n').t('Events'),
       class   : '',
       span    : 2
     }],
     colspan: [{
-      colname : 'Completed Orders',
+      colname : this.get('l10n').t('Completed Orders'),
       class   : 'ui green inverted segment center aligned',
       span    : 3
     }]
   },
-  subColumnNames : ['Tickets', 'Fee', 'Revenue'],
-  columnValues   : [
+  subColumnNames: [
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Fee'),
+    this.get('l10n').t('Revenue')
+  ],
+  columnValues: [
     {
       propertyName : 'name',
       type         : '',

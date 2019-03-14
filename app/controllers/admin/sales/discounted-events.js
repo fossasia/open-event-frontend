@@ -5,34 +5,41 @@ import { computed } from '@ember/object';
 export default Controller.extend(AdminSalesMixin, {
   columnNames: {
     rowspan: [{
-      colname : 'Events',
+      colname : this.get('l10n').t('Events'),
       class   : '',
       span    : 2
     }, {
-      colname : 'Discount Code',
+      colname : this.get('l10n').t('Discount Code'),
       class   : '',
       span    : 2
     }, {
-      colname : 'Marketer Email',
+      colname : this.get('l10n').t('Marketer Email'),
       class   : '',
       span    : 2
     }],
     colspan: [{
-      colname : 'Completed Orders',
+      colname : this.get('l10n').t('Completed Orders'),
       class   : 'ui green inverted segment center aligned',
       span    : 2
     }, {
-      colname : 'Placed Orders',
+      colname : this.get('l10n').t('Placed Orders'),
       class   : 'ui blue inverted segment center aligned',
       span    : 2
     }, {
-      colname : 'Pending Orders',
+      colname : this.get('l10n').t('Pending Orders'),
       class   : 'ui yellow inverted segment center aligned',
       span    : 2
     }]
   },
-  subColumnNames : ['Tickets', 'Sales', 'Tickets', 'Sales', 'Tickets', 'Sales'],
-  columnValues   : [
+  subColumnNames: [
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales'),
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales'),
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales')
+  ],
+  columnValues: [
     {
       propertyName: 'eventName'
     }, {

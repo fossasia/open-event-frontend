@@ -19,18 +19,25 @@ export default Controller.extend(AdminSalesMixin, {
   }),
   columnNames: {
     rowspan: [{
-      colname : 'Marketers',
+      colname : this.get('l10n').t('Marketers'),
       class   : '',
       span    : 2
     }],
     colspan: [{
-      colname : 'Completed Orders',
+      colname : this.get('l10n').t('Completed Orders'),
       class   : 'ui green inverted segment center aligned',
       span    : 3
     }]
   },
-  subColumnNames : ['Tickets', 'Sales (discounted)', 'Discounted amount'],
-  columnValues   : [
+  subColumnNames: [
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales'),
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales'),
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales')
+  ],
+  columnValues: [
     {
       propertyName : 'fullname',
       type         : '',

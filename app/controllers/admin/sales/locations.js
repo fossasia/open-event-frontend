@@ -23,8 +23,15 @@ export default Controller.extend(AdminSalesMixin, {
       span    : 2
     }]
   },
-  subColumnNames : ['Tickets', 'Sales', 'Tickets', 'Sales', 'Tickets', 'Sales'],
-  columnValues   : [
+  subColumnNames: [
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales'),
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales'),
+    this.get('l10n').t('Tickets'),
+    this.get('l10n').t('Sales')
+  ],
+  columnValues: [
     {
       propertyName : 'locationName',
       type         : '',
