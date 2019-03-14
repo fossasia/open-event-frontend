@@ -17,26 +17,30 @@ export default Controller.extend(AdminSalesMixin, {
     });
     return sum;
   }),
-  columnNames: {
-    rowspan: [{
-      colname : this.get('l10n').t('Marketers'),
-      class   : '',
-      span    : 2
-    }],
-    colspan: [{
-      colname : this.get('l10n').t('Completed Orders'),
-      class   : 'ui green inverted segment center aligned',
-      span    : 3
-    }]
-  },
-  subColumnNames: [
-    this.get('l10n').t('Tickets'),
-    this.get('l10n').t('Sales'),
-    this.get('l10n').t('Tickets'),
-    this.get('l10n').t('Sales'),
-    this.get('l10n').t('Tickets'),
-    this.get('l10n').t('Sales')
-  ],
+  columnNames: computed(function() {
+    return {
+      rowspan: [{
+        colname : this.get('l10n').t('Marketers'),
+        class   : '',
+        span    : 2
+      }],
+      colspan: [{
+        colname : this.get('l10n').t('Completed Orders'),
+        class   : 'ui green inverted segment center aligned',
+        span    : 3
+      }]
+    };
+  }),
+  subColumnNames: computed(function() {
+    return [
+      this.get('l10n').t('Tickets'),
+      this.get('l10n').t('Sales'),
+      this.get('l10n').t('Tickets'),
+      this.get('l10n').t('Sales'),
+      this.get('l10n').t('Tickets'),
+      this.get('l10n').t('Sales')
+    ];
+  }),
   columnValues: [
     {
       propertyName : 'fullname',

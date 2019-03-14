@@ -3,38 +3,42 @@ import AdminSalesMixin from 'open-event-frontend/mixins/admin-sales';
 import { computed } from '@ember/object';
 
 export default Controller.extend(AdminSalesMixin, {
-  columnNames: {
-    rowspan: [{
-      colname : this.get('l10n').t('Events'),
-      class   : '',
-      span    : 2
-    }, {
-      colname : this.get('l10n').t('Events Date'),
-      class   : '',
-      span    : 2
-    }],
-    colspan: [{
-      colname : this.get('l10n').t('Completed Orders'),
-      class   : 'ui green inverted segment center aligned',
-      span    : 2
-    }, {
-      colname : this.get('l10n').t('Placed Orders'),
-      class   : 'ui blue inverted segment center aligned',
-      span    : 2
-    }, {
-      colname : this.get('l10n').t('Pending Orders'),
-      class   : 'ui yellow inverted segment center aligned',
-      span    : 2
-    }]
-  },
-  subColumnNames: [
-    this.get('l10n').t('Tickets'),
-    this.get('l10n').t('Sales'),
-    this.get('l10n').t('Tickets'),
-    this.get('l10n').t('Sales'),
-    this.get('l10n').t('Tickets'),
-    this.get('l10n').t('Sales')
-  ],
+  columnNames: computed(function() {
+    return {
+      rowspan: [{
+        colname : this.get('l10n').t('Events'),
+        class   : '',
+        span    : 2
+      }, {
+        colname : this.get('l10n').t('Events Date'),
+        class   : '',
+        span    : 2
+      }],
+      colspan: [{
+        colname : this.get('l10n').t('Completed Orders'),
+        class   : 'ui green inverted segment center aligned',
+        span    : 2
+      }, {
+        colname : this.get('l10n').t('Placed Orders'),
+        class   : 'ui blue inverted segment center aligned',
+        span    : 2
+      }, {
+        colname : this.get('l10n').t('Pending Orders'),
+        class   : 'ui yellow inverted segment center aligned',
+        span    : 2
+      }]
+    };
+  }),
+  subColumnNames: computed(function() {
+    return [
+      this.get('l10n').t('Tickets'),
+      this.get('l10n').t('Sales'),
+      this.get('l10n').t('Tickets'),
+      this.get('l10n').t('Sales'),
+      this.get('l10n').t('Tickets'),
+      this.get('l10n').t('Sales')
+    ];
+  }),
   columnValues: [
     {
       propertyName : 'name',

@@ -18,23 +18,27 @@ export default Controller.extend({
     return sum;
   }),
 
-  columnNames: {
-    rowspan: [{
-      colname : this.get('l10n').t('Events'),
-      class   : '',
-      span    : 2
-    }],
-    colspan: [{
-      colname : this.get('l10n').t('Completed Orders'),
-      class   : 'ui green inverted segment center aligned',
-      span    : 3
-    }]
-  },
-  subColumnNames: [
-    this.get('l10n').t('Tickets'),
-    this.get('l10n').t('Fee'),
-    this.get('l10n').t('Revenue')
-  ],
+  columnNames: computed(function() {
+    return {
+      rowspan: [{
+        colname : this.get('l10n').t('Events'),
+        class   : '',
+        span    : 2
+      }],
+      colspan: [{
+        colname : this.get('l10n').t('Completed Orders'),
+        class   : 'ui green inverted segment center aligned',
+        span    : 3
+      }]
+    };
+  }),
+  subColumnNames: computed(function() {
+    return [
+      this.get('l10n').t('Tickets'),
+      this.get('l10n').t('Fee'),
+      this.get('l10n').t('Revenue')
+    ];
+  }),
   columnValues: [
     {
       propertyName : 'name',
