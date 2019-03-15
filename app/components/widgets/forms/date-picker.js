@@ -14,12 +14,13 @@ export default Component.extend({
   format        : FORM_DATE_FORMAT,
 
   options: {},
-
   didInsertElement() {
     this._super(...arguments);
+    const mindate = new Date();
     const defaultOptions = {
       type      : 'date',
       today     : this.get('today'),
+      minDate   : mindate,
       formatter : {
         date: date => {
           if (!date) {return ''}
