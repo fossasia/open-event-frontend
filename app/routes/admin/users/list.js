@@ -71,5 +71,10 @@ export default Route.extend({
       filter       : filterOptions,
       'page[size]' : 10
     });
+  },
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
 });

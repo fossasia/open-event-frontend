@@ -44,7 +44,7 @@ export default ModelBase.extend({
   facebookId: attr('string', { readOnly: true }),
 
   createdAt      : attr('moment', { readOnly: true }),
-  deletedAt      : attr('moment', { readOnly: true }),
+  deletedAt      : attr('moment'),
   lastAccessedAt : attr('moment', { readOnly: true }),
 
   status: computed('lastAccessedAt', function() {
