@@ -2,7 +2,7 @@
   <div class="ui icon info message eight wide column center aligned">
     <p>Your email has been verified successfully! Please login to continue.</p>
   </div>
-{{else}}
+{{else if (not success)}}
   <div class="ui icon error message eight wide column center aligned">
     <p>Error: {{t error}}</p>
   </div>
