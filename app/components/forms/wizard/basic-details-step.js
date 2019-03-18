@@ -405,6 +405,30 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
     },
 
+    clearEventType() {
+      this.setProperties({
+        'data.event.type': null
+      });
+    },
+
+    clearEventTopic() {
+      this.setProperties({
+        'data.event.topic': null
+      });
+    },
+
+    clearEventSubTopic() {
+      this.setProperties({
+        'data.event.subTopic': null
+      });
+    },
+
+    clearLicense() {
+      this.setProperties({
+        'data.event.copyright.licence': null
+      });
+    },
+
     async updateCopyright(name) {
       const event = this.get('data.event');
       const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
