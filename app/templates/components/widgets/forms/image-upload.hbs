@@ -9,12 +9,12 @@
       <img src="{{selectedImage}}" alt="Selected image">
     </div>
     {{#if allowReCrop}}
-    <div class="ui bottom attached mini buttons">
-	    <button type="button" class="ui teal button" {{action 'reCrop'}}>
-	      <i class="trash icon"></i>
-	      {{t 'Re-crop'}}
-	    </button>
-    </div>
+	     <div class="ui bottom attached mini buttons">
+		      <button type="button" class="ui teal button" {{action 'reCrop'}}>
+		        <i class="trash icon"></i>
+		        {{t 'Re-crop'}}
+		      </button>
+	     </div>
     {{/if}}
     <div class="ui bottom attached mini buttons">
       <button type="button" class="ui red button" {{action 'removeSelection'}}>
