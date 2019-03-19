@@ -6,15 +6,14 @@
   <div class="field">
     <label class="required">{{t 'Enter Discount'}}</label>
     {{ui-radio label=(t 'Amount (US$)') name='discount_type'  value='amount' current=data.type onChange=(action (mut data.type))}}
+    &nbsp;
+    {{ui-radio label=(t 'Percent (%)') name='discount_type'  value='percent' current=data.type onChange=(action (mut data.type))}}
   </div>
   {{#if (not-eq data.type 'percent')}}
     <div class="field">
       {{input type='number' name='discount_amount' min=1 step=0.1 value=data.value}}
     </div>
   {{/if}}
-  <div class="field">
-    {{ui-radio label=(t 'Percent (%)') name='discount_type'  value='percent' current=data.type onChange=(action (mut data.type))}}
-  </div>
   {{#if (eq data.type 'percent')}}
     <div class="field">
       {{input type='number' name='discount_percent' min=1 max=100 step=0.1 value=data.value}}
