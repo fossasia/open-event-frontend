@@ -49,7 +49,11 @@
             {{speaker.name}}
           {{/each}}
         </h4>
-        <h2 class="ui sub header"> <div class="ui gray-text">{{t 'From '}}{{moment-format model.startAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD h:mm A'}}</div> </h2>
+        {{#if (not-eq model.startsAt null)}}
+          <h2 class="ui sub header"> <div class="ui gray-text">{{t 'From '}}{{moment-format model.startsAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD h:mm A'}}</div> </h2>
+        {{else}}
+          <h2 class="ui sub header"> <div class="ui gray-text">{{t 'Session Not Yet Scheduled'}}</div></h2>
+        {{/if}}
       </div>
       <div class="ui divider"></div>
       {{#if model.shortAbstract}}
