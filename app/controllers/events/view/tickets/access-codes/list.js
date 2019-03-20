@@ -9,6 +9,7 @@ export default Controller.extend({
     {
       propertyName   : 'accessUrl',
       title          : 'Access Code URL',
+      template       : 'components/ui-table/cell/events/view/tickets/access-codes/cell-url',
       disableSorting : true
     },
     {
