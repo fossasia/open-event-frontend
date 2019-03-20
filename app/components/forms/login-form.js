@@ -50,6 +50,7 @@ export default Component.extend(FormMixin, {
 
         this.set('errorMessage', null);
         this.set('isLoading', true);
+        console.log(credentials)
 
         this.get('session')
           .authenticate(authenticator, credentials)
@@ -86,9 +87,8 @@ export default Component.extend(FormMixin, {
         if (provider === 'facebook') {
           this.get('loader').load('/auth/oauth/facebook')
             .then(async response => {
-              console.log(response.url)
-              window.location.replace(response.url)
-            })
+              window.location.replace(response.url);
+            });
         }
       } catch (error) {
         this.get('notify').error(this.get('l10n').t(error.message));
