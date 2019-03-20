@@ -17,7 +17,7 @@ export default Controller.extend({
             this.set('isLoading', false);
           });
       } else {
-        this.get('notify').error(this.get('l10n').t('Please enter the valid phone number'));
+        this.get('notify').error(this.get('l10n').t('Phone number should have digits only'));
         this.set('isLoading', false);
       }
     }
