@@ -25,7 +25,7 @@ export default Controller.extend({
 });
 
 function verifyPhoneNumber(number) {
-  if (!isNaN(number) && number.length === 10) {
+  if (!isNaN(number)) {
     return true;
   } else {
     return false;
