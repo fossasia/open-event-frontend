@@ -2,10 +2,11 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   queryParams: {
-    code: ''
+    code     : '',
+    provider : ''
   },
   model(queryParams) {
-    this.get('loader').post(`/auth/oauth/login/facebook?code=${ queryParams.code }`)
+    this.get('loader').post(`/auth/oauth/login/${ queryParams.provider }?code=${ queryParams.code }`)
       .then(response => {
         let credentials = {
               identification : response.email,
