@@ -50,7 +50,6 @@ export default Component.extend(FormMixin, {
 
         this.set('errorMessage', null);
         this.set('isLoading', true);
-        console.log(credentials)
 
         this.get('session')
           .authenticate(authenticator, credentials)
