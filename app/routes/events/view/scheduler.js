@@ -24,9 +24,18 @@ export default Route.extend({
             val  : null
           },
           {
-            name : 'state',
-            op   : 'eq',
-            val  : 'accepted'
+            or: [
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'confirmed'
+              }
+            ]
           }
         ]
       }
@@ -46,9 +55,18 @@ export default Route.extend({
             val  : null
           },
           {
-            name : 'state',
-            op   : 'eq',
-            val  : 'accepted'
+            or: [
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'confirmed'
+              }
+            ]
           }
         ]
       }
