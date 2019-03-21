@@ -4,12 +4,12 @@ export default Route.extend({
   queryParams: {
     code: ''
   },
-  model(params) {
-    this.get('loader').post(`/auth/oauth/login/facebook?code=${ params.code }`)
+  model(queryParams) {
+    this.get('loader').post(`/auth/oauth/login/facebook?code=${ queryParams.code }`)
       .then(response => {
         let credentials = {
               identification : response.email,
-              password       : response.facebook_login_hash
+              password       : response.oauth_hash
             },
             authenticator = 'authenticator:jwt';
 
@@ -23,6 +23,7 @@ export default Route.extend({
               );
             }
             window.location.replace('/');
+            window.close();
           })
           .catch(reason => {
             if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
