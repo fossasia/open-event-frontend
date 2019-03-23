@@ -1,12 +1,8 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  queryParams: {
-    code     : '',
-    provider : ''
-  },
-  model(queryParams) {
-    this.get('loader').post(`/auth/oauth/login/${ queryParams.provider }?code=${ queryParams.code }`)
+  beforeModel(transition) {
+    this.get('loader').post(`/auth/oauth/login/${ transition.queryParams.provider }?code=${ transition.queryParams.code }`)
       .then(response => {
         let credentials = {
               identification : response.email,
@@ -23,7 +19,7 @@ export default Route.extend({
                 await this.get('store').findRecord('user', tokenPayload.identity)
               );
             }
-            window.location.replace('/');
+            this.transitionTo('/');
             window.close();
           })
           .catch(reason => {
@@ -46,3 +42,4 @@ export default Route.extend({
       });
   }
 });
+
