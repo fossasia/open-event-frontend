@@ -11,7 +11,10 @@ module('Integration | Component | events/view/overview/event tickets', function(
     assert.ok(this.element.innerHTML.trim().includes('Tickets'));
   });
   test('it renders', async function(assert) {
-    await render(hbs`{{events/view/overview/event-tickets paymentCurrency='USD'}}`);
-    assert.ok(this.element.textContent.trim().includes(''));
-  });
+    this.set('inputValue', 'USD');
+
+    await render(hbs`{{events/view/overview/event-tickets currency-symbol inputValue}}`);
+
+    assert.equal(this.element.textContent.trim(), 'US$');
 });
+
