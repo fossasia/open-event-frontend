@@ -86,7 +86,7 @@ export default Component.extend(FormMixin, {
         if (provider === 'facebook') {
           this.get('loader').load('/auth/oauth/facebook')
             .then(async response => {
-              window.open(response.url, 'Login', 'height=450,width=800');
+              window.location.replace(response.url);
             });
         }
       } catch (error) {
