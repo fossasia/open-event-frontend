@@ -16,5 +16,5 @@ module('Integration | Component | events/view/overview/event tickets', function(
     await render(hbs`{{events/view/overview/event-tickets currency-symbol inputValue}}`);
 
     assert.equal(this.element.textContent.trim(), 'US$');
+    });
 });
-
