@@ -28,7 +28,7 @@ export default Controller.extend({
       disableFiltering : true
     },
     {
-      propertyName     : 'speakersByState',
+      propertyName     : 'speakers.length',
       template         : 'components/ui-table/cell/cell-speakers-dashboard',
       title            : 'Speakers',
       disableSorting   : true,
