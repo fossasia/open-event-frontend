@@ -40,8 +40,7 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer   : false,
-  enableBilling : false,
+  sameAsBuyer: false,
 
   getRemainingTime: computed('data', function() {
     let orderExpiryTime = this.get('data.event.orderExpiryTime');

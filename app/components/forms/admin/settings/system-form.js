@@ -162,26 +162,6 @@ export default Component.extend(FormMixin, {
           ]
         },
 
-        smtpUsername: {
-          identifier : 'smtp_username',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the username for SMTP')
-            }
-          ]
-        },
-
-        smtpPassword: {
-          identifier : 'smtp_password',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the password for SMTP')
-            }
-          ]
-        },
-
         sendgridToken: {
           identifier : 'sendgrid_token',
           rules      : [
