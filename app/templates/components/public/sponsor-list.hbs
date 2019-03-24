@@ -1,6 +1,8 @@
 <h3 class="ui header">{{t 'Sponsors'}}</h3>
 {{#each-in sponsorsGrouped as |key sponsors|}}
-  <h4 class="ui header">{{key}}</h4>
+  {{#if (not-eq key 'null')}}
+    <h4 class="ui header">{{key}}</h4>
+  {{/if}}
   <div class="ui three column stackable grid">
     {{#each sponsors as |sponsor|}}
       {{public/sponsor-item sponsor=sponsor}}
