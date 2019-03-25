@@ -1,7 +1,7 @@
 {{#ui-accordion}}
   <div class="title">
     <div class="ui">
-      <img alt="speaker" class="ui medium rounded image" src="{{if speaker.photo.iconImageUrl speaker.image '/images/placeholders/avatar.png'}}">
+      <img alt="speaker" class="ui medium rounded image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <br>
       <h3 class="ui centered header less margin">
         {{speaker.name}}
@@ -13,27 +13,27 @@
   </div>
   <div class="ui vertical fluid menu content padded">
     <div class="item">
-      <p>
+      <p class="word-break">
         {{#if speaker.shortBiography}}
-          {{speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
         {{else if speaker.longBiography}}
-          {{speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
         {{else if speaker.speakingExperience}}
-          {{speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
         {{/if}}
       </p>
       <div class="social-icons">
         {{#if speaker.facebook}}
-          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>Facebook</a>
+          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i></a>
         {{/if}}
         {{#if speaker.linkedin}}
-          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>Linkedin</a>
+          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i></a>
         {{/if}}
         {{#if speaker.twitter}}
-          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>Twitter</a>
+          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i></a>
         {{/if}}
         {{#if speaker.github}}
-          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>Github</a>
+          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
         {{/if}}
       </div>
       <div class="ui divider"></div>
@@ -41,9 +41,11 @@
         {{t 'Sessions'}}
       </h3>
       {{#each speaker.sessions as |session|}}
-        {{#if (eq session.state 'accepted')}}
+        {{#if (or (eq session.state 'confirmed') (eq session.state 'accepted'))}}
           <p>
-            {{moment-format session.startsAt 'DD MMM YY'}}
+            {{#if session.startsAt}}
+              {{moment-format session.startsAt 'DD MMM YY'}}
+            {{/if}}
             <br>
             <span class="session-location">
               <strong>
@@ -53,7 +55,9 @@
           </p>
           <div class="ui fluid padded" style={{-html-safe (concat "color: " session.track.fontColor "px; background-color: " session.track.color ";")}}>
             <h3 class="item">
-              {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
+              {{#if (and session.startsAt session.endsAt)}}
+                {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
+              {{/if}}
               <br>
               &bull;&nbsp; {{session.title}}
               <br>

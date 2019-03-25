@@ -7,8 +7,8 @@ module('Integration | Component | public/social links', function(hooks) {
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    this.set('eventUrl', 'https://example.com');
-    await render(hbs`{{public/social-links eventUrl=eventUrl}}`);
+    this.set('externalEventUrl', 'https://example.com');
+    await render(hbs`{{public/social-links externalUrl=externalEventUrl}}`);
     assert.ok(this.element.innerHTML.trim().includes('https://example.com'));
   });
 });

@@ -34,15 +34,29 @@ export default Route.extend({
       speakers: await eventDetails.query('speakers', {
         filter: [
           {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'accepted'
-            }
+            or: [
+              {
+                name : 'sessions',
+                op   : 'any',
+                val  : {
+                  name : 'state',
+                  op   : 'eq',
+                  val  : 'confirmed'
+                }
+              },
+              {
+                name : 'sessions',
+                op   : 'any',
+                val  : {
+                  name : 'state',
+                  op   : 'eq',
+                  val  : 'accepted'
+                }
+              }
+            ]
           }
-        ]
+        ],
+        'page[size]': 0
       }),
 
       sponsors: await eventDetails.get('sponsors'),

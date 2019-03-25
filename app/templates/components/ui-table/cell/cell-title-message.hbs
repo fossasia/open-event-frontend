@@ -1,6 +1,18 @@
 <div class="content">
-  <a class="header">{{get record column.subject}}</a>
+  {{#if (eq column.subject 'emailSubject')}}
+    <a class="header">{{sanitize record.emailSubject}}</a>
+  {{else}}
+    {{#if record.notificationTitle}}
+      <a class="header">{{sanitize record.notificationTitle}}</a>
+    {{/if}}  
+  {{/if}}  
   <div class="description">
-    <p>{{get record column.message}}</p>
+    {{#if (eq column.message 'emailMessage')}}
+      <p>{{sanitize record.emailMessage}}</p>
+    {{else if (eq column.message 'notificationMessage')}}
+      {{#if record.notificationMessage}}
+        <p>{{sanitize record.notificationMessage}}</p>
+      {{/if}}
+    {{/if}}  
   </div>
 </div>

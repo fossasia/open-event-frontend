@@ -27,8 +27,12 @@ export default Component.extend(FormMixin, {
     };
   },
   actions: {
+    onFileSelected(files) {
+      this.set('files', files);
+    },
     submit() {
       this.onValid(() => {
+        this.uploadFile(this.files);
       });
     }
   }

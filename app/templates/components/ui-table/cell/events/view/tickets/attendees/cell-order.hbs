@@ -2,7 +2,7 @@
   {{#link-to 'orders.view' record.order.identifier}}{{record.order.identifier}}{{/link-to}}
   <span class="weight-400">
     {{t 'by'}}
-    {{record.user.email}}
+    {{record.order.user.email}}
   </span>
   <div class="ui basic mini {{if (eq record.order.status 'completed') 'green'
                                  (if (or (eq record.order.status 'placed')
@@ -11,12 +11,17 @@
     {{record.order.status}}
   </div>
   <div class="sub header">
-    {{#if record.order.paymentMode}}
+    {{#if record.order.paidVia}}
       <span class="weight-800">
-        {{t 'Payment via'}} {{record.order.paymentMode}}
+        {{t 'Payment via'}} {{record.order.paidVia}}
       </span>
     {{/if}}
-    {{moment-format record.order.createdAt 'MMMM Do YYYY, h:mm A -'}}
-    {{moment-from-now record.order.createdAt}}
+    {{#if (eq record.order.status 'completed')}}
+      {{moment-format record.order.completedAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now record.order.completedAt}}
+    {{else}}
+      {{moment-format record.order.createdAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now record.order.createdAt}}
+    {{/if}}
   </div>
 </div>

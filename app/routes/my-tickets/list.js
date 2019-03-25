@@ -8,42 +8,90 @@ export default Route.extend({
         return this.get('l10n').t('Upcoming');
       case 'past':
         return this.get('l10n').t('Past');
-      case 'saved':
-        return this.get('l10n').t('Saved');
     }
   },
   model(params) {
     this.set('params', params);
-    let filterOptions = [{
-      name : 'completed-at',
-      op   : 'ne',
-      val  : null
-    }];
+    let filterOptions = [];
     if (params.ticket_status === 'upcoming') {
       filterOptions.push(
         {
-          name : 'event',
-          op   : 'has',
-          val  : {
-            name : 'starts-at',
-            op   : 'ge',
-            val  : moment().toISOString()
-          }
-        });
+          and: [
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'starts-at',
+                op   : 'ge',
+                val  : moment().toISOString()
+              }
+            },
+            {
+              or: [
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'completed'
+                },
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'placed'
+                }
+              ]
+            },
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              }
+            }
+          ]
+        }
+      );
     } else if (params.ticket_status === 'past') {
       filterOptions.push(
         {
-          name : 'event',
-          op   : 'has',
-          val  : {
-            name : 'ends-at',
-            op   : 'lt',
-            val  : moment().toISOString()
-          }
+          and: [
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'starts-at',
+                op   : 'lt',
+                val  : moment().toISOString()
+              }
+            },
+            {
+              or: [
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'completed'
+                },
+                {
+                  name : 'status',
+                  op   : 'eq',
+                  val  : 'placed'
+                }
+              ]
+            },
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              }
+            }
+          ]
         }
       );
     }
-
     return this.get('authManager.currentUser').query('orders', {
       include : 'event',
       filter  : filterOptions

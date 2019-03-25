@@ -5,7 +5,7 @@ import { run } from '@ember/runloop';
 import { A } from '@ember/array';
 import ModelsTable from 'open-event-frontend/components/ui-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
-import { merge } from 'lodash';
+import { merge, kebabCase } from 'lodash';
 
 export default ModelsTable.extend({
 
@@ -21,8 +21,6 @@ export default ModelsTable.extend({
 
   debounceDataLoadTime: 500,
 
-  reloadPageCount: false,
-
   filterQueryParameters: {
     globalFilter : 'contains',
     sort         : 'sort',
@@ -30,7 +28,7 @@ export default ModelsTable.extend({
     pageSize     : 'page[size]'
   },
 
-  observedProperties: ['reloadPageCount', 'currentPageNumber', 'pagesCount', 'sortProperties.[]', 'pageSize', 'filterString', 'processedColumns.@each.filterString'],
+  observedProperties: ['currentPageNumber', 'pagesCount', 'sortProperties.[]', 'pageSize', 'filterString', 'processedColumns.@each.filterString'],
 
   filteredContent: [],
 
@@ -43,7 +41,7 @@ export default ModelsTable.extend({
     return get(meta, itemsCountProperty) || 0;
   }),
 
-  pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', 'reloadPageCount', function() {
+  pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', function() {
     let itemsCountProperty = get(this, 'metaItemsCountProperty');
     let meta = get(this, 'filteredContent.meta') || {};
     let items = (get(meta, itemsCountProperty));
@@ -113,11 +111,28 @@ export default ModelsTable.extend({
       delete query[[get(this, 'filterQueryParameters.sortDirection')]];
     }
 
-    let globalFilter = get(this, 'filterQueryParameters.globalFilter');
-    if (filterString) {
-      query[globalFilter] = filterString;
+    // let globalFilter = get(this, 'filterQueryParameters.globalFilter');
+    // if (filterString) {
+    //   query[globalFilter] = filterString;
+    // } else {
+    //   delete query[globalFilter];
+    // }
+
+    let globalFilter = get(this, 'customGlobalFilter');
+    if (globalFilter) {
+      if (filterString) {
+        query.filter.pushObject({
+          name : globalFilter,
+          op   : 'ilike',
+          val  : `%${filterString}%`
+        });
+      }
     } else {
-      delete query[globalFilter];
+      query.filter.removeObject({
+        name : globalFilter,
+        op   : 'ilike',
+        val  : `%${filterString}%`
+      });
     }
 
     columns.forEach(column => {
@@ -142,7 +157,7 @@ export default ModelsTable.extend({
       setProperties(this, { isLoading: true, isError: false });
     }
     store.query(modelName, query)
-      .then(newData => setProperties(this, { isLoading: false, isError: false, reloadPageCount: true, filteredContent: newData }))
+      .then(newData => setProperties(this, { isLoading: false, isError: false, filteredContent: newData }))
       .catch(() => {
         if (!this.isDestroyed) {
           setProperties(this, { isLoading: false, isError: true });
@@ -150,9 +165,9 @@ export default ModelsTable.extend({
       });
   },
 
-  sortingWrapper(query, sortBy, sortDirection) {
+  sortingWrapper(query, sortBy) {
     query[get(this, 'filterQueryParameters.sort')] = sortBy;
-    query[get(this, 'filterQueryParameters.sortDirection')] = sortDirection;
+    // query[get(this, 'filterQueryParameters.sortDirection')] = sortDirection;
 
     return query;
   },
@@ -162,7 +177,7 @@ export default ModelsTable.extend({
   },
 
   pageSizeValues: computed(function() {
-    return A([10, 25, 50]);
+    return A([10, 25, 50, 100, 250, 'All']);
   }),
 
   actions: {
@@ -189,14 +204,14 @@ export default ModelsTable.extend({
     },
 
     gotoFirst() {
-      if (!get(this, 'gotoForwardEnabled')) {
+      if (!get(this, 'gotoBackwardEnabled')) {
         return;
       }
       set(this, 'currentPageNumber', 1);
     },
 
     gotoLast() {
-      if (!get(this, 'gotoBackwardEnabled')) {
+      if (!get(this, 'gotoForwardEnabled')) {
         return;
       }
       let pagesCount = get(this, 'pagesCount');
@@ -215,13 +230,14 @@ export default ModelsTable.extend({
         desc : ''
       };
       let sortedBy = get(column, 'sortedBy');
-      if (typeOf(sortedBy) === 'undefined') {
+      if (typeOf(sortedBy) === 'undefined' || typeOf(sortedBy) === 'null') {
         sortedBy = get(column, 'propertyName');
       }
       if (!sortedBy) {
         return;
       }
 
+      sortedBy = kebabCase(sortedBy);
       let currentSorting = get(column, 'sorting');
       sortedBy = `${sortSign[currentSorting]}${sortedBy}`;
       let newSorting = sortMap[currentSorting.toLowerCase()];
@@ -235,8 +251,6 @@ export default ModelsTable.extend({
     set(this, 'pageSize', 10);
     set(this, 'currentPageNumber', 1);
     set(this, 'filteredContent', get(this, 'data'));
-    set(this, 'reloadPageCount', false);
-
   },
 
   didInsertElement() {

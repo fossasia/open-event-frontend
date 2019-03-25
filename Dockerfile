@@ -1,20 +1,37 @@
-FROM danlynn/ember-cli:3.3.0 as builder
+FROM node:10-alpine as builder
 LABEL maintainer="Niranjan Rajendran <me@niranjan.io>"
 
 WORKDIR /app
-ADD package.json yarn.lock ./
+
+RUN apk add git python-dev make g++ gettext
+
+COPY package.json yarn.lock ./
+
 RUN yarn install
 
-ADD . .
-RUN touch .env && ember build -prod
+COPY . .
+
+RUN node scripts/l10n.js generate && \
+    touch .env && \
+    JOBS=1 yarn build -prod
 
 ##
 ##
 
-FROM steebchen/nginx-spa:stable
+FROM node:10-alpine
 
-COPY --from=builder /app/dist /app
+WORKDIR /fastboot
 
-EXPOSE 80
+COPY scripts/fastboot-server.js .
+COPY --from=builder /app/dist/ app/
 
-CMD ["nginx"]
+RUN apk add --no-cache ca-certificates && \
+    cp app/package.json . && \
+    yarn install && \
+    yarn add fastboot-app-server && \
+    rm -rf yarn.lock && \
+    yarn cache clean
+
+EXPOSE 4000
+
+CMD ["node", "fastboot-server.js"]

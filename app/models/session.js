@@ -4,13 +4,12 @@ import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 
-const detectedTimezone = moment.tz.guess();
 
 export default ModelBase.extend({
   title         : attr('string'),
   subtitle      : attr('string'),
-  startsAt      : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
-  endsAt        : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
+  startsAt      : attr('moment', { defaultValue: () => null }),
+  endsAt        : attr('moment', { defaultValue: () => null }),
   shortAbstract : attr('string'),
   longAbstract  : attr('string'),
   language      : attr('string'),

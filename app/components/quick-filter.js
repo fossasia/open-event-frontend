@@ -60,8 +60,12 @@ export default Component.extend({
     this.set('dummyName', this.get('eventName'));
     if (this.get('dummyName') || this.get('dummyLocation')) {this.set('disableClear', false)}
   },
-
   actions: {
+    handleKeyPress() {
+      if (event.code === 'Enter') {
+        this.send('search');
+      }
+    },
     search() {
       this.setDateFilter();
       this.set('location', this.get('dummyLocation'));

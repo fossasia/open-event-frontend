@@ -1,5 +1,9 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 export default Controller.extend({
+  hasRestorePrivileges: computed('authManager.currentUser.isAdmin', function() {
+    return this.get('authManager.currentUser.isSuperAdmin') || this.get('authManager.currentUser.isAdmin');
+  }),
   columns: [
     {
       propertyName : 'name',
@@ -53,6 +57,7 @@ export default Controller.extend({
       disableSorting : true
     },
     {
+      propertyName   : 'deletedAt',
       template       : 'components/ui-table/cell/cell-buttons',
       title          : 'Actions',
       disableSorting : true
@@ -85,6 +90,22 @@ export default Controller.extend({
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });
       this.set('isEventDeleteModalOpen', false);
+    },
+    restoreEvent(event) {
+      this.set('isLoading', true);
+      event.set('deletedAt', null);
+      event.save({ adapterOptions: { getTrashed: true } })
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Event has been restored successfully.'));
+          this.send('refreshRoute');
+        })
+        .catch(e => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          console.warn(e);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
     }
   }
 });

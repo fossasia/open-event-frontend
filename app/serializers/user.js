@@ -11,7 +11,7 @@ export default ApplicationSerializer.extend({
       }
       json.data.attributes = omit(json.data.attributes, attributesToOmit);
     } else if (options && options.includeId) {
-      json.data.attributes = pick(json.data.attributes, ['email', 'password']);
+      json.data.attributes = pick(json.data.attributes, ['email', 'password', 'was-registered-with-order']);
     }
     return json;
   }

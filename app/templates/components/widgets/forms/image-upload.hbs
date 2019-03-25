@@ -8,13 +8,15 @@
     <div class="image">
       <img src="{{selectedImage}}" alt="Selected image">
     </div>
+    {{#if allowReCrop}}
+	     <div class="ui bottom attached mini buttons">
+		      <button type="button" class="ui teal button" {{action 'reCrop'}}>
+		        <i class="trash icon"></i>
+		        {{t 'Re-crop'}}
+		      </button>
+	     </div>
+    {{/if}}
     <div class="ui bottom attached mini buttons">
-      {{#if allowReCrop}}
-        <button type="button" class="ui teal button" {{action 'reCrop'}}>
-          <i class="trash icon"></i>
-          {{t 'Re-crop'}}
-        </button>
-      {{/if}}
       <button type="button" class="ui red button" {{action 'removeSelection'}}>
         <i class="trash icon"></i>
         {{if needsConfirmation 'Delete' 'Confirm Delete'}}
@@ -24,7 +26,7 @@
 {{else}}
   {{input type='file'
           id=inputIdGenerated
-          class='styled input' accept="image/*" name=name change=(action 'fileSelected')}}
+          class='styled input' accept="image/*" name='image_upload' change=(action 'fileSelected')}}
   <label for="{{inputIdGenerated}}">
     <div class="ui center aligned piled upload segment text muted">
       <i class="big {{icon}} icon"></i>

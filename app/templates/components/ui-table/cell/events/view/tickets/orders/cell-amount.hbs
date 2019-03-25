@@ -1,1 +1,8 @@
-US$ {{number-format record.amount}}
+<div class="weight-400">
+  {{currency-symbol paymentCurrency}}  {{number-format record.amount}}
+</div>
+{{#if record.discountCode.code}}
+  <div class="ui mini yellow label">
+    {{record.discountCode.code}}
+  </div>
+{{/if}}

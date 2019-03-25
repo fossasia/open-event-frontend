@@ -24,17 +24,17 @@
         <tbody>
           {{#each model as |entry|}}
             <tr>
-              <td>{{entry.location}}</td>
-              <td class="right aligned">{{entry.completedTickets}}</td>
-              <td class="right aligned">US$ {{number-format entry.completedSales}}</td>
-              <td class="right aligned">{{entry.placedTickets}}</td>
-              <td class="right aligned">US$ {{number-format entry.placedSales}}</td>
-              <td class="right aligned">{{entry.pendingTickets}}</td>
-              <td class="right aligned">US$ {{number-format entry.pendingSales}}</td>
+              <td>{{entry.locationName}}</td>
+              <td class="right aligned">{{entry.sales.completed.ticket_count}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.completed.sales_total}}</td>
+              <td class="right aligned">{{entry.sales.placed.ticket_count}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.placed.sales_total}}</td>
+              <td class="right aligned">{{entry.sales.pending.ticket_count}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.pending.sales_total}}</td>
             </tr>
           {{/each}}
         </tbody>
-        <tfoot>
+        {{!-- <tfoot>
           <tr>
             <th><span class="weight-600">{{t 'Total'}}</span></th>
             <th class="right aligned">{{totalCompletedTickets}}</th>
@@ -44,7 +44,7 @@
             <th class="right aligned">{{totalPendingTickets}}</th>
             <th class="right aligned">US$ {{number-format totalPendingSales}}</th>
           </tr>
-        </tfoot>
+        </tfoot> --}}
       </table>
     </div>
   </div>

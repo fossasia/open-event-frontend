@@ -70,5 +70,12 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'sessions'
     };
+  },
+
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
+
 });

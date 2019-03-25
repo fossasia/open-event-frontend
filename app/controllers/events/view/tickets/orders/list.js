@@ -30,11 +30,26 @@ export default Controller.extend({
   ],
 
   actions: {
+    completeOrder(order) {
+      this.set('isLoading', true);
+      order.set('status', 'completed');
+      order.save()
+        .then(() => {
+          this.send('refreshRoute');
+          this.notify.success(this.get('l10n').t('Order has been marked completed successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
     deleteOrder(order) {
       this.set('isLoading', true);
       order.destroyRecord()
         .then(() => {
-          this.get('model').reload();
+          this.send('refreshRoute');
           this.notify.success(this.get('l10n').t('Order has been deleted successfully.'));
         })
         .catch(() => {
@@ -49,6 +64,7 @@ export default Controller.extend({
       order.set('status', 'cancelled');
       order.save()
         .then(() => {
+          this.send('refreshRoute');
           this.notify.success(this.get('l10n').t('Order has been cancelled successfully.'));
         })
         .catch(() => {

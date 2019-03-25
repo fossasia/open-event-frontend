@@ -8,11 +8,15 @@ export default ModelBase.extend({
   sessions          : attr('number'),
   sessionsPending   : attr('number'),
   sponsors          : attr('number'),
-  sessionsSubmited  : attr('number'),
+  sessionsSubmitted : attr('number'),
   sessionsRejected  : attr('number'),
   sessionsConfirmed : attr('number'),
   identifier        : attr('string'),
   sessionsAccepted  : attr('number'),
   sessionsDraft     : attr('number'),
+  speakersAccepted  : attr('number'),
+  speakersConfirmed : attr('number'),
+  speakersPending   : attr('number'),
+  speakersRejected  : attr('number'),
   event             : belongsTo('event')
 });

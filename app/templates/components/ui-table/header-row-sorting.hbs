@@ -11,7 +11,7 @@
                 {{component column.componentForSortCell data=data column=column row=record table=this}}
               {{else}}
                 {{column.title}}
-                <i class="{{if column.sortAsc 'caret up icon'}} {{if column.sortDesc 'caret down icon'}}"></i>
+                <i class="{{if column.sortAsc 'caret up' 'sort'}} {{if column.sortDesc 'caret down' 'sort'}} icon"></i>
               {{/if}}
             {{/if}}
           </div>

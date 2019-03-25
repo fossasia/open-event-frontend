@@ -1,12 +1,13 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { inject as service } from '@ember/service';
 
 export default Component.extend(FormMixin, {
 
   identification : '',
   password       : '',
   isLoading      : false,
-
+  router         : service(),
   getValidationRules() {
     return {
       inline : true,
@@ -54,7 +55,8 @@ export default Component.extend(FormMixin, {
           this.get('loader')
             .patch('auth/reset-password', payload)
             .then(() => {
-              this.set('successMessage', this.get('l10n').t('Your password has been reset successfully. Please log in to continue'));
+              this.notify.success(this.get('l10n').t('Your password has been reset successfully. Please log in to continue'));
+              this.get('router').transitionTo('login');
             })
             .catch(() => {
               this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
@@ -73,7 +75,8 @@ export default Component.extend(FormMixin, {
           this.get('loader')
             .post('auth/reset-password', payload)
             .then(() => {
-              this.set('successMessage', this.get('l10n').t('Please go to the link sent to your email to reset your password'));
+              this.notify.success(this.get('l10n').t('Please go to the link sent to your email to reset your password'));
+              this.get('router').transitionTo('login');
             })
             .catch(reason => {
               if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 404) {
@@ -84,8 +87,7 @@ export default Component.extend(FormMixin, {
             })
             .finally(() => {
               this.set('isLoading', false);
-            }
-            );
+            });
         }
         this.set('errorMessage', null);
         this.set('successMessage', null);

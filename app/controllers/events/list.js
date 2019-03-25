@@ -9,7 +9,7 @@ export default Controller.extend({
     },
     {
       propertyName : 'startsAt',
-      template     : 'components/ui-table/cell/cell-simple-date',
+      template     : 'components/ui-table/cell/cell-event-date',
       dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Date'
     },
@@ -22,13 +22,14 @@ export default Controller.extend({
     },
     {
       propertyName     : 'sessionsByState',
-      template         : 'components/ui-table/cell/cell-sessions',
+      template         : 'components/ui-table/cell/cell-sessions-dashboard',
       title            : 'Sessions',
       disableSorting   : true,
       disableFiltering : true
     },
     {
       propertyName     : 'speakers.length',
+      template         : 'components/ui-table/cell/cell-speakers-dashboard',
       title            : 'Speakers',
       disableSorting   : true,
       disableFiltering : true

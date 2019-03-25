@@ -45,30 +45,35 @@
           {{#each model as |entry|}}
             <tr>
               <td>
-                {{entry.organizer}}
+                {{#if entry.firstName}}
+                  {{entry.firstName}} {{entry.lastName}}
+                {{else}}
+                  {{t 'No Name Provided'}}
+                {{/if}}
+                <div class="muted text">({{entry.email}})</div>
               </td>
               <td class="right aligned">
-                {{entry.completedTickets}}
+                {{entry.sales.completed.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.completedSales}}
+                US$ {{number-format entry.sales.completed.sales_total}}
               </td>
               <td class="right aligned">
-                {{entry.placedTickets}}
+                {{entry.sales.placed.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.placedSales}}
+                US$ {{number-format entry.sales.places.sales_total}}
               </td>
               <td class="right aligned">
-                {{entry.pendingTickets}}
+                {{entry.sales.pending.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.pendingSales}}
+                US$ {{number-format entry.sales.pending.sales_total}}
               </td>
             </tr>
           {{/each}}
         </tbody>
-        <tfoot>
+        {{!-- <tfoot>
           <tr>
             <th>
               <span class="weight-600">
@@ -94,7 +99,7 @@
               US$ {{number-format totalPendingSales}}
             </th>
           </tr>
-        </tfoot>
+        </tfoot> --}}
       </table>
     </div>
   </div>

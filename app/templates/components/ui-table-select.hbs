@@ -5,7 +5,11 @@
   <div class="default text">10</div>
   <div class="menu">
     {{#each options as |option|}}
-      <div class="item" data-value="{{option}}">{{option}}</div>
+      {{#if (eq option 'All') }}
+        <div class="item" data-value="0">{{option}}</div>
+      {{else }}
+        <div class="item" data-value="{{option}}">{{option}}</div>
+      {{/if}}
     {{/each}}
   </div>
 {{/ui-dropdown}}&nbsp;

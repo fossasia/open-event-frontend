@@ -128,11 +128,27 @@ export default Route.extend({
           }
         ]
       });
+    } else {
+      filterOptions.push({
+        or: [
+          {
+            name : 'starts-at',
+            op   : 'ge',
+            val  : new Date()
+          },
+          {
+            name : 'ends-at',
+            op   : 'ge',
+            val  : new Date()
+          }
+        ]
+      });
     }
 
     return this.store.query('event', {
-      sort   : 'starts-at',
-      filter : filterOptions
+      sort    : 'starts-at',
+      filter  : filterOptions,
+      include : 'event-topic,event-sub-topic,event-type'
     });
   },
 

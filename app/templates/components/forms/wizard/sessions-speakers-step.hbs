@@ -27,7 +27,7 @@
       </div>
     </h3>
     <div class="field">
-      <label>Tracks</label>
+      <label class="required">Tracks</label>
       {{#each tracks as |track|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">
@@ -57,7 +57,7 @@
     </div>
 
     <div class="field">
-      <label>{{t 'Microlocations'}}</label>
+      <label class="required">{{t 'Microlocations'}}</label>
       {{#each microlocations as |microlocation|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">
@@ -80,7 +80,7 @@
       {{/each}}
     </div>
     <div class="field">
-      <label>{{t 'Session Types'}}</label>
+      <label class="required">{{t 'Session Types'}}</label>
       {{#each sessionTypes as |sessionType|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">

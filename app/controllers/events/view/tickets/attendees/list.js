@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-
+import moment from 'moment';
 export default Controller.extend({
   columns: [
     {
@@ -34,5 +34,22 @@ export default Controller.extend({
       template       : 'components/ui-table/cell/events/view/tickets/attendees/cell-action',
       disableSorting : true
     }
-  ]
+  ],
+  actions: {
+    toggleCheckIn(attendee) {
+      attendee.toggleProperty('isCheckedIn');
+      if (attendee.isCheckedIn) {
+        let newCheckinTimes = attendee.get('checkinTimes') === null ? `${moment().toISOString()}` : `${attendee.get('checkinTimes')},${moment().toISOString()}`;
+        attendee.set('checkinTimes', newCheckinTimes);
+      }
+      attendee.save()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Attendee check In status modified successfully.'));
+          this.send('refreshRoute');
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred'));
+        });
+    }
+  }
 });

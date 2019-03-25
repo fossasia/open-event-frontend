@@ -3,6 +3,12 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   columns: [
     {
+      propertyName   : 'thumbnailImageUrl',
+      title          : ' ',
+      template       : 'components/ui-table/cell/events/view/speakers/speaker-logo',
+      disableSorting : true
+    },
+    {
       propertyName : 'name',
       title        : 'Name'
     },
@@ -12,6 +18,7 @@ export default Controller.extend({
     },
     {
       propertyName : 'mobile',
+      template     : 'components/ui-table/cell/events/view/speakers/speaker-mobile',
       title        : 'Phone'
     },
     {
@@ -37,11 +44,11 @@ export default Controller.extend({
       this.set('isLoading', true);
       speaker.destroyRecord()
         .then(() => {
-          this.get('model').reload();
           this.notify.success(this.get('l10n').t('Speaker has been deleted successfully.'));
         })
-        .catch(() => {
+        .catch(e => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          console.warn(e);
         })
         .finally(() => {
           this.set('isLoading', false);

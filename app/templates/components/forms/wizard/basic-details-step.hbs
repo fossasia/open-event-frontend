@@ -139,66 +139,68 @@
       }}
     {{/each}}
   </div>
-  <div class="ui section divider"></div>
-  <div class="field">
-    <div class="ui slider checkbox">
-      {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
-      <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
+  {{#if data.module.ticketInclude}}
+    <div class="ui section divider"></div>
+    <div class="field">
+      <div class="ui slider checkbox">
+        {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
+        <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
+      </div>
     </div>
-  </div>
-  {{#if data.event.isTicketingEnabled}}
-    <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
-      {{#if data.event.tickets}}
-        <div class="ui stackable celled five column grid ticket-header">
-          <div class="row weight-600">
-            <div class="six wide column">
-              <label class="required">{{t 'Ticket Name'}}</label>
-            </div>
-            <div class="column">
-              <label class="required">{{t 'Price'}}</label>
-            </div>
-            <div class="column">
-              <label class="required">{{t 'Quantity'}}</label>
-            </div>
-            <div class="column">
-              <label>{{t 'Options'}}</label>
+    {{#if data.event.isTicketingEnabled}}
+      <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
+        {{#if data.event.tickets}}
+          <div class="ui stackable celled five column grid ticket-header">
+            <div class="row weight-600">
+              <div class="six wide column">
+                <label class="required">{{t 'Ticket Name'}}</label>
+              </div>
+              <div class="column">
+                <label class="required">{{t 'Price'}}</label>
+              </div>
+              <div class="column">
+                <label class="required">{{t 'Quantity'}}</label>
+              </div>
+              <div class="column">
+                <label>{{t 'Options'}}</label>
+              </div>
             </div>
           </div>
-        </div>
-        {{#each tickets as |ticket index|}}
-          {{widgets/forms/ticket-input ticket=ticket
-                                       timezone=data.event.timezone
-                                       canMoveUp=(not-eq index 0)
-                                       canMoveDown=(not-eq ticket.position (dec data.event.tickets.length))
-                                       moveTicketUp=(action 'moveTicket' ticket 'up')
-                                       moveTicketDown=(action 'moveTicket' ticket 'down')
-                                       removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
-        {{/each}}
-      {{else}}
-        <h3 class="text muted weight-500">
-          {{t 'You don\'t have any tickets added. Add one of your choice.'}}
-        </h3>
-      {{/if}}
-    </div>
-    <button type="button" class="ui blue small button" {{action 'addTicket' 'free' data.event.tickets.length}}>
-      <i class="large icons basic-details">
-        <i class="smile icon"></i>
-        <i class="inverted corner add icon"></i>
-      </i>
-      {{t 'Free Ticket'}}
-    </button>
-    <button type="button" class="ui blue small button" {{action 'addTicket' 'paid' data.event.tickets.length}}>
-      <i class="large icons basic-details">
-        <i class="dollar icon"></i>
-        <i class="inverted corner add icon"></i>
-      </i>
-      {{t 'Paid Ticket'}}
-    </button>
-  {{else}}
-    <div class="field">
-      <label for="ticket_url">{{t 'Ticket URL'}}</label>
-      {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
-    </div>
+          {{#each tickets as |ticket index|}}
+            {{widgets/forms/ticket-input ticket=ticket
+                                        timezone=data.event.timezone
+                                        canMoveUp=(not-eq index 0)
+                                        canMoveDown=(not-eq ticket.position (dec data.event.tickets.length))
+                                        moveTicketUp=(action 'moveTicket' ticket 'up')
+                                        moveTicketDown=(action 'moveTicket' ticket 'down')
+                                        removeTicket=(confirm 'Are you sure you wish to delete this ticket ?' (action 'removeTicket' ticket))}}
+          {{/each}}
+        {{else}}
+          <h3 class="text muted weight-500">
+            {{t 'You don\'t have any tickets added. Add one of your choice.'}}
+          </h3>
+        {{/if}}
+      </div>
+      <button type="button" class="ui blue small button" {{action 'addTicket' 'free' data.event.tickets.length}}>
+        <i class="large icons basic-details">
+          <i class="smile icon"></i>
+          <i class="inverted corner add icon"></i>
+        </i>
+        {{t 'Free Ticket'}}
+      </button>
+      <button type="button" class="ui blue small button" {{action 'addTicket' 'paid' data.event.tickets.length}}>
+        <i class="large icons basic-details">
+          <i class="dollar icon"></i>
+          <i class="inverted corner add icon"></i>
+        </i>
+        {{t 'Paid Ticket'}}
+      </button>
+    {{else}}
+      <div class="field">
+        <label for="ticket_url">{{t 'Ticket URL'}}</label>
+        {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
+      </div>
+    {{/if}}
   {{/if}}
   {{#if hasPaidTickets}}
 
@@ -461,7 +463,7 @@
       <div class="default text">{{if data.event.type.name data.event.type.name (t 'Select Event Type')}}</div>
       <div class="menu">
         {{#each data.types as |type|}}
-          <div class="item" data-value="{{map-value mapper type}}">{{type.name}}</div>
+          <div class="item" data-value="{{map-value mapper type}}">{{sanitize type.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}
@@ -473,7 +475,7 @@
       <div class="default text">{{if data.event.topic.name data.event.topic.name (t 'Select Event Topic')}}</div>
       <div class="menu">
         {{#each data.topics as |topic|}}
-          <div class="item" data-value="{{map-value mapper topic}}">{{topic.name}}</div>
+          <div class="item" data-value="{{map-value mapper topic}}">{{sanitize topic.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}
@@ -486,7 +488,7 @@
       <div class="default text">{{if data.event.subTopic.name data.event.subTopic.name (t 'Select Event Sub-Topic')}}</div>
       <div class="menu">
         {{#each subTopics as |subTopic|}}
-          <div class="item" data-value="{{map-value mapper subTopic}}">{{subTopic.name}}</div>
+          <div class="item" data-value="{{map-value mapper subTopic}}">{{sanitize subTopic.name}}</div>
         {{/each}}
       </div>
     {{/ui-dropdown}}

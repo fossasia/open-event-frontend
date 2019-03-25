@@ -1,4 +1,4 @@
-export const paymentCountries = ['US', 'AL', 'AR', 'AU', 'AT', 'BE', 'BR', 'CA', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HK', 'HU', 'IE', 'IL', 'IT', 'JP', 'LV', 'LT', 'LU', 'MY', 'MT', 'MX', 'NL', 'NZ', 'NO', 'PH', 'PL', 'PT', 'SG', 'SK', 'SI', 'ES', 'SE', 'CH', 'TW', 'GB'];
+export const paymentCountries = ['US', 'AL', 'AR', 'AU', 'AT', 'BE', 'BR', 'CA', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HK', 'HU', 'IE', 'IL', 'IN', 'IT', 'JP', 'LV', 'LT', 'LU', 'MY', 'MT', 'MX', 'NL', 'NZ', 'NO', 'PH', 'PL', 'PT', 'SG', 'SK', 'SI', 'ES', 'SE', 'CH', 'TW', 'GB'];
 
 export const paymentCurrencies = [
   {
@@ -16,7 +16,7 @@ export const paymentCurrencies = [
     stripe : true
   },
   {
-    paypal : false,
+    paypal : true,
     code   : 'INR',
     symbol : '₹',
     name   : 'Indian rupee',
@@ -32,14 +32,14 @@ export const paymentCurrencies = [
   {
     paypal : true,
     code   : 'SGD',
-    symbol : 'S$',
+    symbol : 'SG$',
     name   : 'Singapore dollar',
     stripe : true
   },
   {
     paypal : true,
     code   : 'CAD',
-    symbol : '$',
+    symbol : 'C$',
     name   : 'Canadian dollar',
     stripe : true
   },
@@ -137,7 +137,7 @@ export const paymentCurrencies = [
   {
     paypal : true,
     code   : 'AUD',
-    symbol : '$',
+    symbol : 'A$',
     name   : 'Australian dollar',
     stripe : true
   },

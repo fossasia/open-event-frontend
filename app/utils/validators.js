@@ -55,24 +55,23 @@ export const protocolLessValidUrlPattern = new RegExp(
 
 export const validTwitterProfileUrlPattern = new RegExp(
   '^(https?:\\/\\/)' // compulsory protocol
-  + 'twitter\\.com\\/([a-zA-Z0-9_]+)$'
+  + '?(?:www.)?twitter\\.com\\/([a-zA-Z0-9_]+)$'
 );
 
 export const validFacebookProfileUrlPattern = new RegExp(
   '^(https?:\\/\\/)' // compulsory protocol
-  + 'facebook\\.com\\/([a-zA-Z0-9_]+)$'
+  + '?(?:www.)?(facebook|fb)\\.com\\/([a-zA-Z0-9_.]+)$'
 );
 
 export const validGithubProfileUrlPattern = new RegExp(
   '^(https?:\\/\\/)' // compulsory protocol
-  + 'github\\.com\\/([a-zA-Z0-9_]+)$'
+  + '?(?:www.)?github\\.com\\/([a-zA-Z0-9_]+)$'
 );
 
 export const validLinkedinProfileUrlPattern = new RegExp(
   '^(https?:\\/\\/)' // compulsory protocol
-  + 'linkedin\\.com\\/([a-zA-Z0-9_]+)$'
+  + '?(?:www.)?(linkedin\\.com\\/)((([\\w]{2,3})?)|([^\\/]+\\/(([\\w|\\d-&#?=])+\\/?){1,}))$'
 );
-
 
 export const isValidUrl = str => {
   return validUrlPattern.test(str);

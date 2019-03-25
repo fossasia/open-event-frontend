@@ -14,7 +14,7 @@
     </div>
   {{/if}}
   {{#if (eq session.currentRouteName 'orders.placed')}}
-    <div class="ui blue inverted segment">
+    <div class="ui blue inverted segment center aligned">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
           Placed
@@ -49,11 +49,11 @@
                 {{ticket.name}}
               </div>
             </td>
-            <td>$ {{number-format ticket.price}}</td>
-            <td>$ {{number-format ticket.discount}}</td>
-            <td>{{ticket.attendees.length}}</td>
+            <td>{{currency-symbol eventCurrency}} {{number-format ticket.price}}</td>
+            <td>{{currency-symbol eventCurrency}} {{number-format ticket.discount}}</td>
+            <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
             <td>
-              $ {{number-format (mult (sub ticket.price ticket.discount) ticket.attendees.length)}}
+              {{currency-symbol eventCurrency}} {{number-format (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
             </td>
           </tr>
         {{/each}}
@@ -70,7 +70,7 @@
           </th>
           <th colspan="4">
             <div class="ui aligned small primary icon">
-              $ {{number-format data.amount}}
+              {{currency-symbol eventCurrency}} {{number-format data.amount}}
             </div>
           </th>
         </tr>

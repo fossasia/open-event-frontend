@@ -3,11 +3,13 @@
                         data=model.data
                         store=model.store
                         query=model.query
+                        paymentCurrency=model.store.paymentCurrency
                         isNotStoreQuery = true
                         modelName = model.objectType
                         useNumericPagination=true
                         showGlobalFilter=true
                         showPageSize=true
+                        completeOrder=(action 'completeOrder')
                         deleteOrder=(action 'deleteOrder')
                         cancelOrder=(action 'cancelOrder')
   }}

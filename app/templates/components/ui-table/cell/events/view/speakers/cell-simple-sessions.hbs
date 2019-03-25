@@ -2,6 +2,7 @@
   {{#each record.sessions as |session|}}
     {{#if (not eq session.deletedAt)}}
       <div class="item">
+
           {{#if (eq session.state "Accepted")}}
                     <div class="item">
             <div class="ui green horizontal label">{{t 'Accepted'}}</div>
@@ -23,6 +24,13 @@
             {{session.title}}
           </div>
         {{/if}}
+
+        <div class="item">
+          {{Colour}}
+          <div class="ui {{session-color session.state}} horizontal label">{{session.state}}</div>
+          {{session.title}}
+        </div>
+
       </div>
     {{/if}}
   {{/each}}

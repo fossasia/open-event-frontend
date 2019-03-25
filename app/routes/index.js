@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
 import moment from 'moment';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+  infinity: service(),
 
   /**
    * Load filtered events based on the given params
@@ -13,9 +15,19 @@ export default Route.extend({
   _loadEvents(params) {
     let filterOptions = [
       {
-        name : 'state',
-        op   : 'eq',
-        val  : 'published'
+        and:
+        [
+          {
+            name : 'state',
+            op   : 'eq',
+            val  : 'published'
+          },
+          {
+            name : 'privacy',
+            op   : 'eq',
+            val  : 'public'
+          }
+        ]
       }
     ];
 
@@ -101,10 +113,14 @@ export default Route.extend({
       });
     }
 
-    return this.store.query('event', {
-      sort    : 'starts-at',
-      include : 'event-topic,event-sub-topic,event-type,speakers-call',
-      filter  : filterOptions
+    return this.infinity.model('event', {
+      sort         : 'starts-at',
+      include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+      filter       : filterOptions,
+      perPage      : 6,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]'
     });
   },
 

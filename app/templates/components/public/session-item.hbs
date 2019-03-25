@@ -1,5 +1,5 @@
 {{#ui-accordion}}
-  <div class="title">
+  <div class="title" {{action 'hideSpeakerImage'}} role="button">
     <div class="ui">
       <h3 class="ui header">
         {{session.title}}
@@ -10,40 +10,51 @@
       <div class="ui row">{{session.track.name}}</div>
     </div>
     <br>
-    <div class="ui grid">
-      <div class="row">
-        <div class="column twelve wide">
+    <div class="ui grid stackable">
+      {{#if hideImage}}
+        <div class="left floated five wide column">
+          {{#if session.startsAt}}
+            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{/if}}
+        </div>
+      {{else}}
+        <div class="left floated eleven wide column">
           <div class="session-speakers">
             {{#each session.speakers as |speaker|}}
-              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.image '/images/placeholders/avatar.png'}}">
+              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
             {{/each}}
           </div>
         </div>
-        <div class="ui right aligned column four wide less left padding">
-          <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-          <div class=""><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+        <div class="right floated five wide column">
+          {{#if session.startsAt}}
+            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{/if}}
         </div>
-      </div>
+      {{/if}}
+
       <div class="row">
         <div class="column session-description">
-          {{session.shortAbstract}}
+          {{sanitize session.shortAbstract}}
         </div>
       </div>
     </div>
   </div>
   <div class="content">
     {{#each session.speakers as |speaker|}}
-      <h3 class="ui header">{{speaker.name}}</h3>
+      <div class="ui divider"></div>
+      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
       <p>
+        <br>
+        {{speaker.name}}
+        <br>
         {{#if speaker.shortBiography}}
-          <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
-          {{speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
         {{else if speaker.longBiography}}
-          <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
-          {{speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
         {{else if speaker.speakingExperience}}
-          <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
-          {{speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
         {{/if}}
       </p>
       <div class="social-icons">

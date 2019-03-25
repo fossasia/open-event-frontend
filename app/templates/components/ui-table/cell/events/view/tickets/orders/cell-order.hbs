@@ -3,7 +3,7 @@
     {{record.identifier}}
   </a>
   <span class="weight-400">
-    {{t 'by'}} {{record.user.firstName}}
+    {{t 'by'}} {{if record.user.firstName record.user.firstName (t 'Name not provided')}}
   </span>
   <div class="ui basic mini {{if (eq record.status 'completed') 'green' (if (or (eq record.status 'placed') (eq record.status 'pending')) 'yellow' 'red')}} label">
     {{record.status}}
@@ -14,5 +14,12 @@
         {{t 'Payment via'}} {{record.paidVia}}
       </span>
     {{/if}}
+    <span class="muted text">
+      {{#if (eq record.status 'completed')}}
+        {{moment-format record.completedAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now record.completedAt}}
+      {{else}}
+        {{moment-format record.createdAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now record.createdAt}}
+      {{/if}}
+    </span>
   </div>
 </div>
