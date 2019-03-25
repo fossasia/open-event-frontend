@@ -11,7 +11,7 @@ module('Integration | Component | events/view/overview/event tickets', function(
     assert.ok(this.element.innerHTML.trim().includes('Tickets'));
   });
   test('Currency Helper', async function(assert) {
-    this.set('data.event.paymentCurrency', '$');
+    this.set('paymentCurrency', '$');
     await render(hbs`{{currency-symbol data.event.paymentCurrency}}`);
     assert.equal(this.element.textContent.trim(), '$');
   });
