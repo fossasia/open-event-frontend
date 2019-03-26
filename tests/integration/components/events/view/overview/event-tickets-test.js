@@ -12,7 +12,7 @@ module('Integration | Component | events/view/overview/event tickets', function(
   });
   test('Currency Helper', async function(assert) {
     this.set('paymentCurrency', '$');
-    await render(hbs`{{currency-symbol data.event.paymentCurrency}}`);
+    await render(hbs`{{currency-symbol "CAD"}}`);
     assert.equal(this.element.textContent.trim(), '$');
   });
 });
