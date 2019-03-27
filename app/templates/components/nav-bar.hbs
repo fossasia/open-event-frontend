@@ -33,12 +33,16 @@
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (not-eq routing.currentRouteName 'create')}}
-        {{#link-to 'create' class='item ui blue text'}}
-          <div>
-            {{t 'Create Event'}}
-          </div>
-        {{/link-to}}
+      {{#if session.isAuthenticated}}
+        {{#if (not-eq routing.currentRouteName 'create')}}
+          {{#link-to 'create' class='item ui blue text'}}
+            <div>
+              {{t 'Create Event'}}
+            </div>
+          {{/link-to}}
+        {{/if}}
+      {{else}}
+        <a href="{{href-to 'register'}}" class="item">{{t 'Sign Up'}}</a>
       {{/if}}
     </div>
   </div>
