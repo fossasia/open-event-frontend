@@ -42,9 +42,18 @@ export default Route.extend({
                 val  : moment().endOf('day').toISOString()
               },
               {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
+                or: [
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'confirmed'
+                  },
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'accepted'
+                  }
+                ]
               }
             ]
           }
@@ -75,9 +84,18 @@ export default Route.extend({
                 val  : moment().endOf('week').toISOString()
               },
               {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
+                or: [
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'confirmed'
+                  },
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'accepted'
+                  }
+                ]
               }
             ]
           }
@@ -108,9 +126,18 @@ export default Route.extend({
                 val  : moment().add('month').toISOString()
               },
               {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
+                or: [
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'confirmed'
+                  },
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'accepted'
+                  }
+                ]
               }
             ]
           }
@@ -131,9 +158,18 @@ export default Route.extend({
                 }
               },
               {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
+                or: [
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'confirmed'
+                  },
+                  {
+                    name : 'state',
+                    op   : 'eq',
+                    val  : 'accepted'
+                  }
+                ]
               }
             ]
           }
