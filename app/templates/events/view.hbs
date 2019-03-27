@@ -20,14 +20,20 @@
       <div class="twelve wide column {{unless device.isMobile 'right aligned'}}">
         {{#if device.isMobile}}
           <div class="ui icon fluid buttons">
-            <a href="{{href-to 'public' model.id}}" class="ui button">
-              <i class="unhide icon"></i>
-            </a>
-            <button class="ui button" {{action 'togglePublishState'}}>
+            {{#ui-popup content=(t 'Preview') class='ui icon button' position='bottom center'}}
+              <a href="{{href-to 'public' model.id}}" style="color:inherit">
+                <i class="unhide icon"></i>
+              </a>
+            {{/ui-popup}}
+            {{#ui-popup content=(t 'Publish') class='ui icon button' position='bottom center' click=(action 'togglePublishState')}}
               <i class="{{if (eq model.state 'published') 'ban' 'check'}} icon"></i>
-            </button>
-            <button class="ui button"><i class="copy icon"></i></button>
-            <button class="ui red button" {{action 'openDeleteEventModal'}}><i class="trash icon"></i></button>
+            {{/ui-popup}}
+            {{#ui-popup content=(t 'Copy') class='ui icon button' position='bottom center'}}
+              <i class="copy icon"></i>
+            {{/ui-popup}}
+            {{#ui-popup content=(t 'Delete') class='ui red icon button' position='bottom center' click=(action 'openDeleteEventModal')}}
+              <i class="trash icon"></i>
+            {{/ui-popup}}
           </div>
         {{else}}
           <a href="{{href-to 'public' model.id}}" class="ui button labeled icon small">
