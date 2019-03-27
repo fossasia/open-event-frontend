@@ -68,7 +68,7 @@
                 {{entry.sales.pending.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.sales.pending.sales_total}}
+                {{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.pending.sales_total}}
               </td>
             </tr>
           {{/each}}
