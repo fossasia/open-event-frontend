@@ -66,7 +66,13 @@
       </tr>
       <tr>
         <td><strong>{{t 'No. of Speakers'}}</strong></td>
-        <td>{{data.statistics.speakers}}</td>
+        <td>
+          {{t 'All'}}: {{data.statistics.speakers}}
+          | {{t 'Accepted'}}: {{data.statistics.speakersAccepted}}
+          | {{t 'Pending'}}: {{data.statistics.speakersPending}}
+          | {{t 'Rejected'}}: {{data.statistics.speakersRejected}}
+          | {{t 'Confirmed'}}: {{data.statistics.speakersConfirmed}}
+        </td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sessions'}}</strong></td>
@@ -76,6 +82,7 @@
           | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
           | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
           | {{t 'Draft'}}: {{data.statistics.sessionsDraft}}
+          | {{t 'Confirmed'}}: {{data.statistics.sessionsConfirmed}}
         </td>
       </tr>
       <tr>
