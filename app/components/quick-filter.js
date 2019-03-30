@@ -20,31 +20,37 @@ export default Component.extend({
       case 'today':
         newStartDate = moment().toISOString();
         newEndDate = moment().toISOString();
+        this.set('disableClear', false);
         break;
 
       case 'tomorrow':
         newStartDate = moment().add(1, 'day').toISOString();
         newEndDate = newStartDate;
+        this.set('disableClear', false);
         break;
 
       case 'this_week':
         newStartDate = moment().startOf('week').toISOString();
         newEndDate = moment().endOf('week').toISOString();
+        this.set('disableClear', false);
         break;
 
       case 'this_weekend':
         newStartDate = moment().isoWeekday('Friday').toISOString();
         newEndDate = moment().isoWeekday('Sunday').toISOString();
+        this.set('disableClear', false);
         break;
 
       case 'next_week':
         newStartDate = moment().isoWeekday('Monday').add(1, 'week').toISOString();
         newEndDate = moment().isoWeekday('Sunday').add(1, 'week').toISOString();
+        this.set('disableClear', false);
         break;
 
       case 'this_month':
         newStartDate = moment().startOf('month').toISOString();
         newEndDate = moment().endOf('month').toISOString();
+        this.set('disableClear', false);
         break;
 
       default:
@@ -52,6 +58,7 @@ export default Component.extend({
 
     this.set('startDate', newStartDate);
     this.set('endDate', newEndDate);
+
   },
 
   init() {
@@ -70,7 +77,9 @@ export default Component.extend({
       this.setDateFilter();
       this.set('location', this.get('dummyLocation'));
       this.set('eventName', this.get('dummyName'));
-      this.set('disableClear', false);
+      if (this.get('dummyName', null) || this.get('dummyLocation', null)) {
+        this.set('disableClear', false);
+      }
     },
 
     clearFilters() {
