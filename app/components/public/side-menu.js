@@ -10,6 +10,6 @@ export default Component.extend({
       speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
   },
   isSchedulePublished: computed('event.schedulePublishedOn', function() {
-    return this.get('event.schedulePublishedOn').toISOString() !== moment(0).toISOString();
+    return this.get('event.schedulePublishedOn') && this.get('event.schedulePublishedOn').toISOString() !== moment(0).toISOString();
   })
 });
