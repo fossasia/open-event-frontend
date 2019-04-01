@@ -6,6 +6,18 @@ import { pascalCase } from 'open-event-frontend/utils/string';
 export default Component.extend({
   classNames: ['column'],
 
+  categoryTag: computed(function() {
+    return this.get('event.topic');
+  }),
+
+  eventTypeTag: computed(function() {
+    return this.get('event.type');
+  }),
+
+  subCategoryTag: computed(function() {
+    return this.get('event.subTopic');
+  }),
+
   tags: computed('event.type', 'event.topic', 'event.subTopic', function() {
     const tagsOriginal = this.getProperties('event.topic.name', 'event.type.name', 'event.subTopic.name');
     let tags = [];
@@ -15,5 +27,16 @@ export default Component.extend({
       }
     });
     return tags;
-  })
+  }),
+
+  actions: {
+    selectCategory(category, subCategory) {
+      this.set('category', (category === this.category && !subCategory) ? null : category);
+      this.set('subCategory', (!subCategory || subCategory === this.subCategory) ? null : subCategory);
+    },
+
+    selectEventType(eventType) {
+      this.set('eventType', eventType === this.eventType ? null : eventType);
+    }
+  }
 });

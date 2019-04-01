@@ -35,9 +35,21 @@
         {{#if hasBlock}}
           {{yield}}
         {{else}}
-          {{#each tags as |tag|}}
-            <a>{{tag}}</a>
-          {{/each}}
+          <a href="#"
+            class="link item {{if (eq category categoryTag.name) 'active'}}"
+            {{action 'selectCategory' categoryTag.name}}>
+            {{tags.[0]}}
+          </a>
+          <a href="#"
+            class="link item {{if (eq eventType eventTypeTag.name) 'active'}}"
+            {{action 'selectEventType' eventTypeTag.name}}>
+            {{tags.[1]}}
+          </a>
+          <a href="#"
+            class="link item {{if (eq subCategory subCategoryTag.slug) 'active'}}"
+            {{action 'selectCategory' categoryTag.name subCategoryTag.slug}}>
+            {{tags.[2]}}
+          </a>
         {{/if}}
       </span>
     </div>
