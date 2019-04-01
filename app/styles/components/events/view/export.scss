@@ -32,3 +32,21 @@
 .url {
   padding: 0 1em !important;
 }
+
+.copy-url {
+  background-color: inherit;
+  border: 0;
+}
+
+.display-url {
+  float: left;
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .copy-url {
+    max-width: 270px;
+    overflow: auto;
+  }
+
+}
