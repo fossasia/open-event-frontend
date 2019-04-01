@@ -42,6 +42,9 @@ export default Component.extend(FormMixin, {
           this.createNewUserViaEmail(this.email);
         }
       });
+    },
+    refresh() {
+      this.reload();
     }
   }
 });
