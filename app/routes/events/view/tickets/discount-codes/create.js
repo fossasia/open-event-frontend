@@ -32,7 +32,7 @@ export default Route.extend({
     let currentDiscountCode = model.discountCode;
     let event = this.modelFor('events.view');
     currentDiscountCode.set('validFrom', moment().toISOString());
-    currentDiscountCode.set('validTill', event.startsAt);
+    currentDiscountCode.set('validTill', event.endsAt);
     currentDiscountCode.set('minQuantity', 1);
     currentDiscountCode.set('maxQuantity', 1);
   }
