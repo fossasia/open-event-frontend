@@ -541,17 +541,17 @@
     {{/ui-dropdown}}
   </div>
   <br>
-  <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui buttons">
-    <button class="ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
+  <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui fields buttons">
+    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
     {{#if data.event.locationName}}
-      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>
