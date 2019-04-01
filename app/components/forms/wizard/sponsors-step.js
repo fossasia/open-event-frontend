@@ -17,6 +17,14 @@ export default Component.extend(FormMixin, {
               prompt : this.get('l10n').t('Please give your sponsor a name')
             }
           ]
+        },
+        image_upload: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please upload sponsor\'s logo.')
+            }
+          ]
         }
       }
     };

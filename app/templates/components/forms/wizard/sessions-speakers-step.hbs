@@ -27,7 +27,7 @@
       </div>
     </h3>
     <div class="field">
-      <label>Tracks</label>
+      <label class="required">Tracks</label>
       {{#each tracks as |track|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">
@@ -57,7 +57,7 @@
     </div>
 
     <div class="field">
-      <label>{{t 'Microlocations'}}</label>
+      <label class="required">{{t 'Microlocations'}}</label>
       {{#each microlocations as |microlocation|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">
@@ -80,7 +80,7 @@
       {{/each}}
     </div>
     <div class="field">
-      <label>{{t 'Session Types'}}</label>
+      <label class="required">{{t 'Session Types'}}</label>
       {{#each sessionTypes as |sessionType|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">
@@ -315,17 +315,17 @@
     <div class="spacer-50"></div>
   {{/if}}
 
-  <div class="ui buttons {{if device.isMobile 'fluid' 'right floated large'}}">
-    <button class="ui left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+  <div class="ui fields buttons {{if device.isMobile 'mini three' 'right floated large'}}">
+    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
     </button>
-    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
     {{#if data.event.locationName}}
-      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

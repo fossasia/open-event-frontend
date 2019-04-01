@@ -14,45 +14,46 @@
     </div>
   </div>
   <div class="row">
-    <div class="ten wide column">
+    <div class="mobile hidden seven wide column">
+      {{orders/event-info data=model.order}}
+    </div>
+    <div class="nine wide column">
       {{orders/order-summary data=model.order
                              eventCurrency=model.order.event.paymentCurrency}}
     </div>
-    <div class="mobile hidden six wide column">
-      {{orders/event-info data=model.order}}
-    </div>
   </div>
   <div class="row">
-    <div class="ten wide column">
-      {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
-    </div>
-    <div class="six wide column">
-      {{#if model.order.event.organizerName}}
-        <div class="mobile hidden row">
-          {{orders/organizer-info data=model.order}}
+    <div class="ui-segment right floated four wide column">
+      {{#if isStripe}}
+        <div class = 'ui right floated'>
+          {{stripe-checkout
+            image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            locale='auto'
+            name="Open Event"
+            class="ui teal submit button"
+            description=paymentDescription
+            amount=paymentAmount
+            key=model.order.event.stripeAuthorization.stripePublishableKey
+            onToken=(action "processStripeToken")
+            onClosed=(action "checkoutClosed")
+            onOpened=(action "checkoutOpened")
+          }}
+        </div>
+      {{/if}}
+      {{#if isPaypal}}
+        <div class='paypal-button'>
+          {{paypal-button data=model.order}}
         </div>
       {{/if}}
     </div>
   </div>
+  
   <div class="row">
-    <div class="ten wide column">
-      {{#if isStripe}}
-        {{stripe-checkout
-          image="https://stripe.com/img/documentation/checkout/marketplace.png"
-          locale='auto'
-          name="Open Event"
-          class="ui teal submit button"
-          description=paymentDescription
-          amount=paymentAmount
-          key=model.order.event.stripeAuthorization.stripePublishableKey
-          onToken=(action "processStripeToken")
-          onClosed=(action "checkoutClosed")
-          onOpened=(action "checkoutOpened")
-        }}
-      {{/if}}
-      {{#if isPaypal}}
-        {{paypal-button data=model.order}}
-      {{/if}}
+    <div class="seven wide column">
+      {{orders/ticket-holder data=model.order}}
+    </div>
+    <div class="nine wide column">
+      {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
     </div>
   </div>
 </div>

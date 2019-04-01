@@ -42,7 +42,7 @@
     {{ui-checkbox label=(t 'Standard aspect ratio is 5:2. Tick to maintain aspect ratio.') class='checkbox' name='thumb_ratio' checked=image.eventImageSize.thumbnailAspect onChange=(action (mut image.eventImageSize.thumbnailAspect))}}
   </div>
   {{t 'Standard Size of the available area is 500px X 200px'}}
-  {{t 'Found in :'}}
+  <p>{{t 'Found in :'}}</p>
   <div class="ui bulleted list">
     <div class="item">{{t 'Home Page Event Images'}}</div>
     <div class="item">{{t 'My Session Page Event Images'}}</div>

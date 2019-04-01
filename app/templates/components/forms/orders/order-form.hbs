@@ -69,10 +69,10 @@
       {{/each}}
       {{#if isPaidOrder}}
         <div class="field">
-          {{ui-checkbox label=(t 'Enable Billing Information') checked=enablebilling
-                          onChange=(action (mut enablebilling))}}
+          {{ui-checkbox label=(t 'Enable Billing Information') checked=data.isBillingEnabled
+                          onChange=(action (mut data.isBillingEnabled))}}
         </div>
-        {{#if enablebilling}}
+        {{#if data.isBillingEnabled}}
           <div class="field">
             <label class="required" for="company">{{t 'Company'}}</label>
             {{input type='text' id='company' value=data.company}}
@@ -113,7 +113,6 @@
             {{/ui-dropdown}}
           </div>
         {{/if}}
-
 
         <h4 class="ui horizontal divider header">
           <i class="ticket icon"></i>

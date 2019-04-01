@@ -22,7 +22,7 @@ export default Default.extend({
   classes: {
     outerTableWrapper              : 'ui ui-table',
     innerTableWrapper              : 'ui segment column sixteen wide inner-table-wrapper',
-    table                          : 'ui tablet stackable very basic table',
+    table                          : 'ui very basic table',
     globalFilterWrapper            : 'ui row',
     columnsDropdownWrapper         : 'right floated columns-dropdown',
     columnsDropdownButtonWrapper   : 'buttons',
