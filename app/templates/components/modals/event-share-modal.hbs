@@ -22,12 +22,14 @@
   <div>
     <div class="ui action input fluid">
       <input type="text" value="{{event.url}}" placeholder="{{event.url}}" readonly>
-      {{#copy-button
-        clipboardText=event.url
-        class='ui black right labeled icon copy button'}}
-        <i class="copy icon"></i>
-        {{t 'Copy'}}
-      {{/copy-button}}
+      {{#ui-popup on='click' content=(t 'Link copied to clipboard') position='bottom right'}}
+        {{#copy-button
+          clipboardText=event.url
+          class='ui black right labeled icon copy button'}}
+          <i class="copy icon"></i>
+          {{t 'Copy'}}
+        {{/copy-button}}
+      {{/ui-popup}}
     </div>
   </div>
 </div>
