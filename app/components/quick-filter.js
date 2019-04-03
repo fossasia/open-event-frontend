@@ -77,7 +77,7 @@ export default Component.extend({
       this.setDateFilter();
       this.set('location', this.get('dummyLocation'));
       this.set('eventName', this.get('dummyName'));
-      if (this.get('dummyName', null) || this.get('dummyLocation', null)) {
+      if (this.location !== null || this.eventName !== null) {
         this.set('disableClear', false);
       }
     },
