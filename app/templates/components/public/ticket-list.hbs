@@ -54,6 +54,18 @@
             </td>
           </tr>
         {{/unless}}
+        {{#if ticket.event.tax.name}}
+          <tr>
+            <td colspan="5">
+              {{ticket.event.tax.rate}}% {{ticket.event.tax.name}} ({{ticket.event.tax.taxId}}) tax on every ticket.
+              {{#if ticket.event.tax.isTaxIncludedInPrice}}
+                Included in ticket price
+              {{else}}
+                Extra on ticket price
+              {{/if}}
+            </td>
+          </tr>
+        {{/if}}
       {{/each}}
     </tbody>
     <tfoot class="full-width">
