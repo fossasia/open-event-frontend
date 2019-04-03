@@ -27,7 +27,7 @@ cd open-event-frontend
 #### Important Notes
  - Open Event Frontend supports [FastBoot](https://github.com/ember-fastboot/ember-cli-fastboot) which is disabled for the development environment and is controlled by the flag `FASTBOOT_DISABLED` in the `.env` file.  
 
-- By default, the `.env.example` file specifies the `API_HOST` as `localhost:5000` and assumes, that the [open-event-server](https://github.com/fossasia/open-event-server) is already up and running. If you intend to work on issues which involve both the frontend, and the backend, please install and set it up first before proceeding to run the frontend. If however, you intend to work on just the frontend, please change the URL for `API_HOST` to `https://open-event-api-dev.herokuapp.com` which is a test deployment of the open-event-server.
+- By default, the `.env.example` file specifies the `API_HOST` as `localhost:5000` and assumes, that the [open-event-server](https://github.com/fossasia/open-event-server) is already up and running. If you intend to work on issues which involve both the frontend, and the backend, please install and set it up first before proceeding to run the frontend. **If however, you intend to work on just the frontend, please change the URL for `API_HOST` to `https://open-event-api-dev.herokuapp.com` which is a test deployment of the open-event-server.**
 ## Running / Development
 
 * `ember serve`
