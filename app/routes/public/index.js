@@ -8,13 +8,14 @@ const { set } = Ember;
 export default Route.extend({
   headData: service(),
   async model() {
-    const eventDetails = this.modelFor('public');
+    const eventDetails = this.modelFor('public', {
+      include: 'tax'
+    });
     return {
       event   : eventDetails,
       tickets : await eventDetails.query('tickets', {
-        reload: true,
-
-        filter: [
+        reload : true,
+        filter : [
           {
             and: [
               {

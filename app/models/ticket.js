@@ -44,5 +44,11 @@ export default ModelBase.extend({
 
   itemTotal: computed('price', 'quantity', function() {
     return this.get('price') * this.get('quantity');
+  }),
+
+  tax_inclusive_price: computed('event', 'price', function() {
+    if (this.get('event').tax.rate) {
+      return this.get('price') + ((this.get('event').tax.rate * this.get('price')) / 100);
+    }
   })
 });
