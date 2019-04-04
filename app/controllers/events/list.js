@@ -29,6 +29,7 @@ export default Controller.extend({
     },
     {
       propertyName     : 'speakers.length',
+      template         : 'components/ui-table/cell/cell-speakers-dashboard',
       title            : 'Speakers',
       disableSorting   : true,
       disableFiltering : true
