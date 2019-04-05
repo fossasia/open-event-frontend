@@ -1,4 +1,4 @@
-<i class="mail outline icon {{unless unreadNotifications.length 'ui less right margin'}}"></i>
+<i class="bell outline icon {{unless unreadNotifications.length 'ui less right margin'}}"></i>
 {{#if unreadNotifications.length}}
   <div class="floating ui teal circular mini label {{if device.isMobile 'tiny text'}}">{{unreadNotifications.length}}</div>
 {{/if}}
