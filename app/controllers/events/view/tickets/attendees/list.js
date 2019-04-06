@@ -38,13 +38,24 @@ export default Controller.extend({
   actions: {
     toggleCheckIn(attendee) {
       attendee.toggleProperty('isCheckedIn');
+      attendee.save()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Attendee Checked-In Successfully'));
+          this.send('refreshRoute');
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred'));
+        });
+    },
+    toggleCheckOut(attendee) {
       if (attendee.isCheckedIn) {
         let newCheckinTimes = attendee.get('checkinTimes') === null ? `${moment().toISOString()}` : `${attendee.get('checkinTimes')},${moment().toISOString()}`;
         attendee.set('checkinTimes', newCheckinTimes);
+        attendee.toggleProperty('isCheckedIn');
       }
       attendee.save()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Attendee check In status modified successfully.'));
+          this.notify.success(this.get('l10n').t('Attendee Checked-Out Successfully'));
           this.send('refreshRoute');
         })
         .catch(() => {
