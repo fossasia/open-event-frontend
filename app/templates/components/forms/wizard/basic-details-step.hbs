@@ -202,8 +202,7 @@
       </div>
     {{/if}}
   {{/if}}
-  {{#if hasPaidTickets}}
-
+  {{#if (and hasPaidTickets data.event.isTicketingEnabled)}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
 
     <div class="ui section divider"></div>
