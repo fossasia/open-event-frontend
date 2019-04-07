@@ -542,19 +542,36 @@
   </div>
   <br>
   <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui fields buttons">
-    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
-      {{t 'Forward'}}
-      <i class="right chevron icon"></i>
-    </button>
-    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-      {{t 'Save draft'}}
-      <i class="save icon"></i>
-    </button>
-    {{#if data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
+    {{#if (or (eq data.verifiedStatus true) (and (eq data.verifiedStatus false) (eq data.permissions.unverifiedUser true)))}}
+      <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
+        {{t 'Forward'}}
+        <i class="right chevron icon"></i>
       </button>
+      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+        {{t 'Save draft'}}
+        <i class="save icon"></i>
+      </button>
+      {{#if data.event.locationName}}
+        <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+          {{t 'Publish'}}
+          <i class="check icon"></i>
+        </button>
+      {{/if}}
+    {{else}}
+      <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}} disabled='true'>
+        {{t 'Forward'}}
+        <i class="right chevron icon"></i>
+      </button>
+      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}} disabled='true'>
+        {{t 'Save draft'}}
+        <i class="save icon"></i>
+      </button>
+      {{#if data.event.locationName}}
+        <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}} disabled='true'>
+          {{t 'Publish'}}
+          <i class="check icon"></i>
+        </button>
+      {{/if}}
     {{/if}}
   </div>
 </form>
