@@ -141,11 +141,17 @@
   </div>
   {{#if data.module.ticketInclude}}
     <div class="ui section divider"></div>
+    {{!-- Hiding The Ticketing System toggle to prevent addition of spam events , Will be available as soon as we get a thought-through approach.
     <div class="field">
       <div class="ui slider checkbox">
         {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
         <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
       </div>
+    </div> --}}
+    
+
+    <div class="grouped fields">
+      <label>{{t 'Ticketing System'}}</label>
     </div>
     {{#if data.event.isTicketingEnabled}}
       <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
