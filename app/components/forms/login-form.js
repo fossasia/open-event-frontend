@@ -61,10 +61,17 @@ export default Component.extend(FormMixin, {
           })
           .catch(reason => {
             if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
-              if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
-                this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
-              } else {
-                this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+              var i, cnt = 0;
+              for (i = 0; i < 3; i++) {
+                if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+                  this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
+                } else {
+                  this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+                }
+                cnt = cnt + 1;
+              }
+              if (cnt === 3) {
+                this.set('errorMessage', this.get('l10').t('Forgot your password.'));
               }
               this.set('isLoading', false);
             } else {
