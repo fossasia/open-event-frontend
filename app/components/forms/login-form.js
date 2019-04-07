@@ -46,6 +46,8 @@ export default Component.extend(FormMixin, {
         let credentials = this.getProperties('identification', 'password'),
             authenticator = 'authenticator:jwt';
 
+        credentials.identification = credentials.identification.trim();
+
         this.set('errorMessage', null);
         this.set('isLoading', true);
 
