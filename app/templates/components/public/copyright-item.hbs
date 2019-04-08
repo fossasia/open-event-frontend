@@ -3,7 +3,7 @@
   <br>
 {{/if}}
 <div class='copyright text'>
-  <p>
-    {{t 'This event is licenced under'}} <a href="{{copyright.licenceUrl}}"> {{copyright.licence}} </a>.
-  </p>
+  {{#if copyright.licence}}
+    <p>{{t 'This event is licenced under'}} <a href="{{copyright.licenceUrl}}"> {{copyright.licence}} </a>.</p>
+  {{/if}}
 </div>
