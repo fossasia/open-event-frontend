@@ -37,6 +37,8 @@
           <td>{{ticket.quantity}}</td>
           <td>{{sub ticket.quantity ticket.orderStatistics.tickets.completed}}</td>
         </tr>
+      {{else}}
+        <h4 class="ui header">{{t 'There are no tickets for this event'}}</h4>
       {{/each}}
     </tbody>
   </table>
