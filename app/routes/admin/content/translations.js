@@ -9,7 +9,7 @@ export default Route.extend({
     return [
       {
         code      : 'en',
-        sourceUrl : this.get('loader').load('/admin/content/translations/all')
+        sourceUrl : '#'
       }
     ];
   }

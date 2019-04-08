@@ -16,7 +16,7 @@
               {{get l10n.availableLocales language.code}}
             </div>
             <div class="column eight wide">
-              <a href="{{language.sourceUrl}}">{{t 'Download'}}</a>
+              <button class="ui primary {{if isLoading 'loading'}} button" href="{{language.sourceUrl}}" {{action 'translationsDownload'}}>{{t 'Download' }}</button>
             </div>
           </div>
         {{/each}}
