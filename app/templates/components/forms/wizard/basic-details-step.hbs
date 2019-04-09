@@ -183,7 +183,7 @@
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">
-            {{t 'You don\'t have any tickets added. Add one of your choice.'}}
+            {{t 'You don\'t have any tickets added. Please add atleast one ticket to make this event live.'}}
           </h3>
         {{/if}}
       </div>
@@ -556,10 +556,12 @@
       <i class="save icon"></i>
     </button>
     {{#if data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
+      {{#if data.event.tickets.length}}
+        <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+          {{t 'Publish'}}
+          <i class="check icon"></i>
+        </button>
+      {{/if}}
     {{/if}}
   </div>
 </form>
