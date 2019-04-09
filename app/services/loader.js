@@ -171,5 +171,24 @@ export default Service.extend({
       if (xhr.upload && onProgressUpdate) {xhr.upload.onprogress = onProgressUpdate}
       xhr.send(fetchOptions.body);
     });
+  },
+  downloadFile(urlPath,  onProgressUpdate = null, config = {}, method = 'GET') {
+    return new Promise((resolve, reject) => {
+      const { url, fetchOptions } = this.getFetchOptions(urlPath, method, null, config);
+      const xhr = new XMLHttpRequest();
+
+      xhr.responseType = 'blob';
+      xhr.open(fetchOptions.method || 'get', url);
+      xhr.onload =  e => {
+        const anchor = document.createElement('a');
+        anchor.style.display = 'none';
+        anchor.href = e.target.responseURL;
+        anchor.click();
+        resolve('success');
+      };
+      xhr.onerror = reject;
+      if (onProgressUpdate) {xhr.onprogress = onProgressUpdate}
+      xhr.send();
+    });
   }
 });
