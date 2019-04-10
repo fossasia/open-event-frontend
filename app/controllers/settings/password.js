@@ -16,8 +16,8 @@ export default Controller.extend({
           this.get('notify').success(this.get('l10n').t('Password updated successfully'));
         })
         .catch(error => {
-          if (error.error) {
-            this.get('notify').error(this.get('l10n').t(error.error));
+          if (error.errors) {
+            this.get('notify').error(this.get('l10n').t(`${error.errors[0].detail}`));
           } else {
             this.get('notify').error(this.get('l10n').t('Unexpected error. Password did not change.'));
           }

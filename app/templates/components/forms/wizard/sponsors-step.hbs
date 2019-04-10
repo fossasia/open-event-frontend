@@ -66,7 +66,7 @@
         <div class="ui section divider"></div>
       {{/if}}
     {{/each}}
-    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t 'Add another sponsor'}}</button>
+    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t (if sponsors.length 'Add another sponsor' 'Add sponsor')}}</button>
     <div class="spacer-50"></div>
   {{else}}
     <div class="spacer-50"></div>
