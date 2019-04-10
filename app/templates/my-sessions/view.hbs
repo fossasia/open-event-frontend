@@ -70,7 +70,7 @@
       {{/if}}
       {{#if model.slidesUrl}}
         <h3 class="ui left aligned header">Slide</h3>
-        <a href="{{model.slidesUrl}}">{{t 'Download'}}</a>
+        <a href="{{model.slidesUrl}}">{{t (if slideText 'Link to Slides' 'Download')}}</a>
       {{/if}}
     </div>
   </div>

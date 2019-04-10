@@ -11,6 +11,15 @@ export default Controller.extend({
     return true;
   }),
 
+  slideText: computed('model.slidesUrl', function() {
+    let fileUploadRegex = /((https|http):\/\/)?.*\/static\/media\/events\/.*/;
+    let slidesUrl = this.get('model.slidesUrl');
+    if (fileUploadRegex.test(slidesUrl)) {
+      return false;
+    }
+    return true;
+  }),
+
   actions: {
     openProposalDeleteModal() {
       this.set('isProposalDeleteModalOpen', true);
