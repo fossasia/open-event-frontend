@@ -50,7 +50,7 @@ export default Route.extend({
     } else if (params.users_status === 'inactive') {
       filterOptions = [
         {
-          and: [
+          or: [
             {
               name : 'last-accessed-at',
               op   : 'eq',
