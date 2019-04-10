@@ -95,8 +95,9 @@ export default Route.extend({
     };
 
     let scheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers,microlocation,track',
-      filter  : scheduledFilterOptions
+      include      : 'speakers,microlocation,track',
+      filter       : scheduledFilterOptions,
+      'page[size]' : 0
     });
 
     let scheduled = []; // to convert sessions data to fullcalendar's requirements
@@ -117,8 +118,9 @@ export default Route.extend({
     });
 
     let unscheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers,track',
-      filter  : unscheduledFilterOptions
+      include      : 'speakers,track',
+      filter       : unscheduledFilterOptions,
+      'page[size]' : 0
     });
 
     let microlocations = await eventDetails.query('microlocations', {});
