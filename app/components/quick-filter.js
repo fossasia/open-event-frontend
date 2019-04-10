@@ -47,6 +47,11 @@ export default Component.extend({
         newEndDate = moment().endOf('month').toISOString();
         break;
 
+      case 'next_month':
+        newStartDate = moment().startOf('month').add(1, 'month').toISOString();
+        newEndDate = moment().endOf('month').add(1, 'month').toISOString();
+        break;
+
       default:
     }
 
