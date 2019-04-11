@@ -11,7 +11,7 @@
     {{#if allowReCrop}}
 	     <div class="ui bottom attached mini buttons">
 		      <button type="button" class="ui teal button" {{action 'reCrop'}}>
-		        <i class="trash icon"></i>
+		        <i class="crop icon"></i>
 		        {{t 'Re-crop'}}
 		      </button>
 	     </div>
@@ -40,7 +40,7 @@
       {{#if helpText}}
         {{helpText}}<br>
       {{/if}}
-      ({{t 'No larger than'}} {{maxSize}})
+      ({{t 'Not larger than'}} {{maxSize}})
     </span>
   </label>
 {{/if}}
