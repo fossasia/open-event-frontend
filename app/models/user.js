@@ -48,7 +48,7 @@ export default ModelBase.extend({
   lastAccessedAt : attr('moment', { readOnly: true }),
 
   status: computed('lastAccessedAt', function() {
-    return (new Date().getMonth() - new Date(this.get('lastAccessedAt')).getMonth() < 1);
+    return (new Date().getMonth() - new Date(this.get('lastAccessedAt')).getMonth() < 12);
   }),
   isAnAdmin: or('isSuperAdmin', 'isAdmin'),
 

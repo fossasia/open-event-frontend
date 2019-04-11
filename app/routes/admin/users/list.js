@@ -50,16 +50,25 @@ export default Route.extend({
     } else if (params.users_status === 'inactive') {
       filterOptions = [
         {
-          or: [
+          and: [
             {
-              name : 'last-accessed-at',
-              op   : 'eq',
-              val  : null
+              or: [
+                {
+                  name : 'last-accessed-at',
+                  op   : 'eq',
+                  val  : null
+                },
+                {
+                  name : 'last-accessed-at',
+                  op   : 'lt',
+                  val  : moment().subtract(1, 'Y').toISOString()
+                }
+              ]
             },
             {
-              name : 'last-accessed-at',
-              op   : 'lt',
-              val  : moment().subtract(1, 'Y').toISOString()
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
             }
           ]
         }

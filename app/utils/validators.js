@@ -73,6 +73,10 @@ export const validLinkedinProfileUrlPattern = new RegExp(
   + '?(?:www.)?(linkedin\\.com\\/)((([\\w]{2,3})?)|([^\\/]+\\/(([\\w|\\d-&#?=])+\\/?){1,}))$'
 );
 
+export const validPhoneNumber = new RegExp(
+  '^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$'
+);
+
 export const isValidUrl = str => {
   return validUrlPattern.test(str);
 };

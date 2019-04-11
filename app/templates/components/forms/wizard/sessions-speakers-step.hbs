@@ -23,7 +23,7 @@
     <h3 class="ui dividing header">
       <i class="ordered list icon"></i>
       <div class="content">
-        {{t 'Session, Microlocations, Session Types'}}
+        {{t 'Sessions, Microlocations, Session Types'}}
       </div>
     </h3>
     <div class="field">
@@ -156,12 +156,14 @@
       <label>{{t 'Private Link'}}</label>
       <div class="ui action input fluid">
         <input type="text" name="private_link" value="{{concat data.event.url '/cfs/' data.speakersCall.hash}}" placeholder="{{concat data.event '/cfs/' data.speakersCall.hash}}" readonly>
-        {{#copy-button
-          clipboardText=(concat data.event.url '/cfs/' data.speakersCall.hash)
-          class='ui black right labeled icon copy button'}}
-          <i class="copy icon"></i>
-          {{t 'Copy'}}
-        {{/copy-button}}
+        {{#ui-popup on='click' content=(t 'Link copied to clipboard') position='bottom right'}}
+          {{#copy-button
+            clipboardText=(concat data.event.url '/cfs/' data.speakersCall.hash)
+            class='ui black right labeled icon copy button'}}
+            <i class="copy icon"></i>
+            {{t 'Copy'}}
+          {{/copy-button}}
+        {{/ui-popup}}
       </div>
       <span class="text muted">
         {{t 'Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)'}}
@@ -313,17 +315,17 @@
     <div class="spacer-50"></div>
   {{/if}}
 
-  <div class="ui buttons {{if device.isMobile 'fluid' 'right floated large'}}">
-    <button class="ui left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+  <div class="ui fields buttons {{if device.isMobile 'mini three' 'right floated large'}}">
+    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
     </button>
-    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
     {{#if data.event.locationName}}
-      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

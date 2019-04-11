@@ -124,7 +124,7 @@ export default Component.extend(FormMixin, {
       ticket.set('orderQuantity', count);
       order.set('amount', this.get('total'));
       if (!this.get('total')) {
-        order.set('amount', null);
+        order.set('amount', 0);
       }
       if (count > 0) {
         order.tickets.addObject(ticket);

@@ -20,6 +20,20 @@ export default Route.extend({
             name : 'ends-at',
             op   : 'ne',
             val  : null
+          },
+          {
+            or: [
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'confirmed'
+              }
+            ]
           }
         ]
       }

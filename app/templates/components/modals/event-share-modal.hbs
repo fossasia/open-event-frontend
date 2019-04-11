@@ -10,9 +10,6 @@
     <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?url={{url-encode event.url}}&text={{url-encode event.name}}">
       <i class="bordered link inverted colored twitter large icon"></i>
     </a>
-    <a target="_blank" rel="noopener noreferrer" href="https://plus.google.com/share?url={{url-encode event.url}}">
-      <i class="bordered link inverted colored google plus large icon"></i>
-    </a>
     <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/shareArticle?url={{url-encode event.url}}&title={{url-encode event.name}}">
       <i class="bordered link inverted colored linkedin large icon"></i>
     </a>
@@ -25,12 +22,14 @@
   <div>
     <div class="ui action input fluid">
       <input type="text" value="{{event.url}}" placeholder="{{event.url}}" readonly>
-      {{#copy-button
-        clipboardText=event.url
-        class='ui black right labeled icon copy button'}}
-        <i class="copy icon"></i>
-        {{t 'Copy'}}
-      {{/copy-button}}
+      {{#ui-popup on='click' content=(t 'Link copied to clipboard') position='bottom right'}}
+        {{#copy-button
+          clipboardText=event.url
+          class='ui black right labeled icon copy button'}}
+          <i class="copy icon"></i>
+          {{t 'Copy'}}
+        {{/copy-button}}
+      {{/ui-popup}}
     </div>
   </div>
 </div>
