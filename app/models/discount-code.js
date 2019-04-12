@@ -1,4 +1,5 @@
 import attr from 'ember-data/attr';
+import { computed } from '@ember/object';
 import ModelBase from 'open-event-frontend/models/base';
 import moment from 'moment';
 import { hasMany, belongsTo } from 'ember-data/relationships';
@@ -28,9 +29,12 @@ export default ModelBase.extend({
   isActive      : attr('boolean', { defaultValue: true }),
   createdAt     : attr('moment'),
 
-  tickets : hasMany('ticket'),
-  orders  : hasMany('order'),
-  event   : belongsTo('event', {
+  tickets   : hasMany('ticket'),
+  orders    : hasMany('order'),
+  isExpired : computed('validTill', function() {
+    return (new Date() > new Date(this.get('validTill')));
+  }),
+  event: belongsTo('event', {
     inverse: 'discountCodes'
   }), // The event that this discount code belongs to [Form (2)]
   events: hasMany('event', {
