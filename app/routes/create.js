@@ -14,9 +14,8 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
         copyright           : this.store.createRecord('event-copyright'),
         stripeAuthorization : this.store.createRecord('stripe-authorization')
       }),
-      module         : await this.get('store').queryRecord('module', {}),
-      isUserVerified : this.authManager.currentUser.isVerified,
-      types          : await this.store.query('event-type', {
+      module : await this.get('store').queryRecord('module', {}),
+      types  : await this.store.query('event-type', {
         sort: 'name'
       }),
       topics: await this.store.query('event-topic', {

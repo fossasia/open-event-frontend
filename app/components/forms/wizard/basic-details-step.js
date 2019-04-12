@@ -53,7 +53,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   isUserUnverified: computed(function() {
-    return (this.data.isUserVerified ? false : true);
+    return (this.authManager.currentUser.isVerified ? false : true);
   }),
   /**
    * returns the validation rules for the social links.
