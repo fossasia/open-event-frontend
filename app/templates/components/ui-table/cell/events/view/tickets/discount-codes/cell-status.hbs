@@ -1,7 +1,11 @@
 <span>
-  {{#if record.isActive}}
-    <a class="ui green label">{{t 'Active'}}</a>
+  {{#if record.isExpired}}
+    <a class="ui red label">{{t 'Expired'}}</a>
   {{else}}
-    <a class="ui red label">{{t 'Inactive'}}</a>
+    {{#if record.isActive}}
+      <a class="ui green label">{{t 'Active'}}</a>
+    {{else}}
+      <a class="ui yellow label">{{t 'Inactive'}}</a>
+    {{/if}}
   {{/if}}
 </span>
