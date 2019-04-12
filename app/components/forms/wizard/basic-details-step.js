@@ -127,6 +127,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             }
           ]
         },
+        location: {
+          identifier : 'location',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please give location for your event')
+            }
+          ]
+        },
         timezone: {
           identifier : 'timezone',
           rules      : [

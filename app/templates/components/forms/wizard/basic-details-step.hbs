@@ -1,17 +1,17 @@
 <form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
   <div class="field">
     <label class="required" for="name">{{t 'Name'}}</label>
-    {{input type='text' id='name' value=data.event.name}}
+    {{input type='text' id='name' value=data.event.name placeholder=(t 'Event Name')}}
   </div>
   <div class="field">
-    <label for="location">{{t 'Location'}}</label>
+    <label class="required" for="location">{{t 'Location'}}</label>
     {{#widgets/forms/location-input
       inputId='location'
       lat=data.event.latitude
       lng=data.event.longitude
       placeName=data.event.locationName
       zoom=15
-      placeholder=(t 'Location is required to make this event live')}}
+      placeholder=(t 'Enter the location of your event')}}
       <div class="inline field">
         <div class="ui slider checkbox">
           {{input id='show_map' type='checkbox' id='show_map' checked=data.event.isMapShown}}
@@ -204,7 +204,6 @@
   {{/if}}
   {{#if (and hasPaidTickets data.event.isTicketingEnabled)}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
-
     <div class="ui section divider"></div>
     <div class="field">
       <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
@@ -549,12 +548,11 @@
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
-    {{#if data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
-    {{/if}}
+    <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      {{t 'Publish'}}
+      <i class="check icon"></i>
+    </button>
+   
   </div>
 </form>
 
