@@ -1,4 +1,5 @@
 import attr from 'ember-data/attr';
+import { computed } from '@ember/object';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
@@ -13,9 +14,12 @@ export default ModelBase.extend({
   validFrom     : attr('moment'),
   validTill     : attr('moment'),
 
-  tickets  : hasMany('ticket'),
-  marketer : belongsTo('user', { inverse: 'accessCodes' }),
-  event    : belongsTo('event', {
+  tickets   : hasMany('ticket'),
+  marketer  : belongsTo('user', { inverse: 'accessCodes' }),
+  isExpired : computed('validTill', function() {
+    return (new Date() > new Date(this.get('validTill')));
+  }),
+  event: belongsTo('event', {
     inverse: 'accessCodes'
   }), // The event that this access code belongs to
   orders: hasMany('order'),
