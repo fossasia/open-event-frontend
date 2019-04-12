@@ -52,6 +52,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('data.event.socialLinks').filterBy('isDeleted', false);
   }),
 
+  isUserUnverified: computed(function() {
+    return (this.data.isUserVerified ? false : true);
+  }),
   /**
    * returns the validation rules for the social links.
    */
