@@ -53,7 +53,7 @@
           <label>{{t 'Description'}}</label>
           {{widgets/forms/rich-text-editor value=sponsor.description name='description'}}
         </div>
-        <div class="sponsors-step eleven wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
+        <div class="sponsors-step eight wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
           {{widgets/forms/image-upload
             label=(t 'Logo')
             imageUrl=sponsor.logoUrl
