@@ -204,7 +204,6 @@
   {{/if}}
   {{#if (and hasPaidTickets data.event.isTicketingEnabled)}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
-
     <div class="ui section divider"></div>
     <div class="field">
       <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
@@ -540,7 +539,7 @@
     {{/ui-dropdown}}
   </div>
   <br>
-  <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui fields buttons">
+  <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui fields {{if isUserUnverified 'disabled'}} buttons">
     <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
