@@ -1,18 +1,18 @@
-<div class="ui grid">
-  <div class="row">
-    <div class="sixteen wide column">
-      <h1>
-        {{t 'My tickets'}}
-      </h1>
-      {{#tabbed-navigation}}
-        {{#link-to 'admin.users.view.tickets.list' 'upcoming' class='item'}}
-          {{t 'Upcoming Events'}}
-        {{/link-to}}
-        {{#link-to 'admin.users.view.tickets.list' 'past' class='item'}}
-          {{t 'Past Events'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+<div class="ui container">
+  <h1 class="ui header">{{t 'My Tickets'}}</h1>
+  <div class="ui grid">
+    <div class="row">
+      <div class="sixteen wide column">
+        {{#tabbed-navigation}}
+          {{#link-to 'admin.users.view.tickets.list' 'upcoming' class='item'}}
+            {{t 'Upcoming Events'}}
+          {{/link-to}}
+          {{#link-to 'admin.users.view.tickets.list' 'past' class='item'}}
+            {{t 'Past Events'}}
+          {{/link-to}}
+        {{/tabbed-navigation}}
+      </div>
     </div>
+    {{outlet}}
   </div>
-  {{outlet}}
 </div>

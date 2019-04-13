@@ -202,8 +202,7 @@
       </div>
     {{/if}}
   {{/if}}
-  {{#if hasPaidTickets}}
-
+  {{#if (and hasPaidTickets data.event.isTicketingEnabled)}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>
     <div class="field">
@@ -457,9 +456,9 @@
 
   <div class="field">
     <label>{{t 'Event Type'}}</label>
-    {{#ui-dropdown class='search selection' onChange=(action (mut data.event.type)) as |execute mapper|}}
+    {{#ui-dropdown class='search selection' selected=data.event.type.name onChange=(action (mut data.event.type)) as |execute mapper|}}
       <i class="dropdown icon"></i>
-      <div class="default text">{{if data.event.type.name data.event.type.name (t 'Select Event Type')}}</div>
+      <div class="default text">{{t 'Select Event Type'}}</div>
       <div class="menu">
         {{#each data.types as |type|}}
           <div class="item" data-value="{{map-value mapper type}}">{{sanitize type.name}}</div>
@@ -469,9 +468,9 @@
   </div>
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
-    {{#ui-dropdown class='search selection' onChange=(action (mut data.event.topic)) as |execute mapper|}}
+    {{#ui-dropdown class='search selection' selected=data.event.topic.name onChange=(action (mut data.event.topic)) as |execute mapper|}}
       <i class="dropdown icon"></i>
-      <div class="default text">{{if data.event.topic.name data.event.topic.name (t 'Select Event Topic')}}</div>
+      <div class="default text">{{t 'Select Event Topic'}}</div>
       <div class="menu">
         {{#each data.topics as |topic|}}
           <div class="item" data-value="{{map-value mapper topic}}">{{sanitize topic.name}}</div>
@@ -481,10 +480,10 @@
   </div>
   <div class="field">
     <label>{{t 'Event Sub-topic'}}</label>
-    {{#ui-dropdown class='search selection' onChange=(action (mut data.event.subTopic)) as |execute mapper|}}
+    {{#ui-dropdown class='search selection' selected=data.event.subTopic.name onChange=(action (mut data.event.subTopic)) as |execute mapper|}}
       <i class="dropdown icon"></i>
 
-      <div class="default text">{{if data.event.subTopic.name data.event.subTopic.name (t 'Select Event Sub-Topic')}}</div>
+      <div class="default text">{{t 'Select Event Sub-Topic'}}</div>
       <div class="menu">
         {{#each subTopics as |subTopic|}}
           <div class="item" data-value="{{map-value mapper subTopic}}">{{sanitize subTopic.name}}</div>
