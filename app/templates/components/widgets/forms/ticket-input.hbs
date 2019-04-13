@@ -46,14 +46,16 @@
         {{textarea rows=3 name='ticket_description' value=ticket.description placeholder=(t 'This description would be available to the attendees when ordering tickets.') maxlength=160}}
       </div>
       <div class="field">
-        <div class="ui checkbox">
-          {{input type='checkbox' checked=ticket.isDescriptionVisible name='description_visible'}}
+        <div class="ui radio checkbox">
+          {{widgets/forms/radio-button value name='ticket_hidden' value='public'
+                                       checked=ticket.isHidden}}
           <label for="description_visible">{{t 'Display Ticket description on Public Events page'}}</label>
         </div>
       </div>
       <div class="field">
-        <div class="ui checkbox">
-          {{input type='checkbox' checked=ticket.isHidden name='ticket_hidden'}}
+        <div class="ui radio checkbox">
+          {{widgets/forms/radio-button value name='ticket_hidden' value='private'
+                                       checked=ticket.isHidden}}
           <label for="description_visible">
             {{t 'Hide Ticket from the Public Events page'}}<br>
             <span class="text muted">{{t 'Ticket would still be available for sale to Organizers.'}}</span>
