@@ -1,9 +1,13 @@
-{{#if record.tickets}}
-  <div class="ui list">
-    {{#each record.tickets as |ticket|}}
-      <div class="item">{{ticket.name}} ({{ticket.orderStatistics.tickets.completed}}/{{ticket.quantity}}) <span class="item muted text">[{{ticket.type}}]</span></div>
-    {{/each}}
-  </div>
+{{#if record.ticketUrl}}
+  {{t 'Please visit'}}<a href="{{record.ticketUrl}}">{{record.ticketUrl}}</a>{{t ' to book tickets.'}}
 {{else}}
-  <div>{{t 'No Ticket Information'}}</div>
+  {{#if record.tickets}}
+    <div class="ui list">
+      {{#each record.tickets as |ticket|}}
+        <div class="item">{{ticket.name}} ({{ticket.orderStatistics.tickets.completed}}/{{ticket.quantity}}) <span class="item muted text">[{{ticket.type}}]</span></div>
+      {{/each}}
+    </div>
+  {{else}}
+    {{t 'No Ticket Information'}}
+  {{/if}}
 {{/if}}
