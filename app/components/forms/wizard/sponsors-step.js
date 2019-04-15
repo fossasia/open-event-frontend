@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators'
+import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, {
 
@@ -35,7 +35,7 @@ export default Component.extend(FormMixin, {
               value  : protocolLessValidUrlPattern,
               prompt : this.get('l10n').t('Please enter a valid url')
             }
-          ] 
+          ]
         }
       }
     };
