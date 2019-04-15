@@ -13,7 +13,6 @@ export default Component.extend({
   }),
   didInsertElement() {
     const isMobile = this.get('device.isMobile');
-    this.set('dropdownIcon', 'chevron down icon');
     if (isMobile) {
       this.$('a').addClass('vertical-item');
     } else {
@@ -29,17 +28,10 @@ export default Component.extend({
       this.$('a').removeClass('vertical-item');
     }
   },
-
-
   actions: {
     toggleMenu(mode) {
       const menu = this.$('div.menu');
       menu.toggleClass('hidden');
-      if (menu.hasClass('hidden')) {
-        this.set('dropdownIcon', 'chevron down icon');
-      } else {
-        this.set('dropdownIcon', 'chevron up icon');
-      }
       if (mode === 'reset') {
         this.set('item', event.srcElement.text);
       }
