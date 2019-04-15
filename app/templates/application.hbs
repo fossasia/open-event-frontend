@@ -11,7 +11,7 @@
 {{/if}}
 {{#side-bar}}
   <div class="footer-pusher">
-    {{nav-bar unreadNotifications=unreadNotifications}}
+    {{nav-bar event_byName=event_byName unreadNotifications=unreadNotifications}}
     {{#if (eq routing.currentRouteName 'index')}}
       {{welcome-header}}
     {{/if}}

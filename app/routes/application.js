@@ -5,6 +5,59 @@ import { merge, values, isEmpty } from 'lodash';
 
 export default Route.extend(ApplicationRouteMixin, {
   session: service(),
+
+
+  /**
+   * Merge all params into one param.
+   *
+   * @param params
+   * @return {*}
+   * @private
+   */
+  _mergeParams(params) {
+    return merge({}, ...values(params));
+  },
+
+  _loadEvents(params) {
+    console.log(params);
+    let filterOptions = [
+      {
+        and:
+        [
+          {
+            name : 'state',
+            op   : 'eq',
+            val  : 'published'
+          },
+          {
+            name : 'privacy',
+            op   : 'eq',
+            val  : 'public'
+          }
+        ]
+      }
+    ];
+
+    if (params.event_byName) {
+      filterOptions.push({
+        name : 'name',
+        op   : 'ilike',
+        val  : `%${params.event_byName}%`
+      });
+    }
+
+
+    return this.infinity.model('event', {
+      sort         : 'starts-at',
+      include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+      filter       : filterOptions,
+      perPage      : 5,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]'
+    });
+  },
+
   title(tokens) {
     if (!tokens) {
       tokens = [];
@@ -25,7 +78,23 @@ export default Route.extend(ApplicationRouteMixin, {
     }
   },
 
-  async model() {
+
+  sessionInvalidated() {
+    if (!this.get('session.skipRedirectOnInvalidation')) {
+      this._super(...arguments);
+    }
+    this.set('session.skipRedirectOnInvalidation', false);
+  },
+
+  sessionAuthenticated() {
+    if (this.get('session.previousRouteName')) {
+      this.transitionTo(this.get('session.previousRouteName'));
+    } else {
+      this._super(...arguments);
+    }
+  },
+
+  async model(params) {
     let notifications = [];
     if (this.get('session.isAuthenticated')) {
       notifications = await this.get('authManager.currentUser').query('notifications', {
@@ -49,34 +118,9 @@ export default Route.extend(ApplicationRouteMixin, {
       cookiePolicyLink : this.get('settings.cookiePolicyLink'),
       socialLinks      : await this.get('store').queryRecord('setting', {}),
       eventTypes       : await this.get('store').findAll('event-type'),
-      eventLocations   : await this.get('store').findAll('event-location')
+      eventLocations   : await this.get('store').findAll('event-location'),
+      filteredEvents   : await this._loadEvents(params)
     };
-  },
-
-  sessionInvalidated() {
-    if (!this.get('session.skipRedirectOnInvalidation')) {
-      this._super(...arguments);
-    }
-    this.set('session.skipRedirectOnInvalidation', false);
-  },
-
-  sessionAuthenticated() {
-    if (this.get('session.previousRouteName')) {
-      this.transitionTo(this.get('session.previousRouteName'));
-    } else {
-      this._super(...arguments);
-    }
-  },
-
-  /**
-   * Merge all params into one param.
-   *
-   * @param params
-   * @return {*}
-   * @private
-   */
-  _mergeParams(params) {
-    return merge({}, ...values(params));
   },
 
   actions: {

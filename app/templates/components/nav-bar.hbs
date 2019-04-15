@@ -3,6 +3,22 @@
     {{#link-to 'index' class='header item' activeClass=''}}
       <h3>{{settings.appName}}</h3>
     {{/link-to}}
+    <div class="ui item">
+      <div class="ui right labeled input">
+        {{input type='text' placeholder=(t 'Search for events') value=dummyName key-up=(action 'eventSearch') }}
+  <div class="ui simple dropdown label">
+    <div class="text">name</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item">name</div>
+      <div class="item">description</div>
+      <div class="item">location</div>
+      <div class="item">organiser</div>
+      <div class="item">organiser description</div>
+    </div>
+  </div>
+</div>
+    </div>
     <div class="right menu nav-bar">
       {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
       {{#if session.isAuthenticated}}

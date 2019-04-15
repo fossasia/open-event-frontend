@@ -6,11 +6,13 @@ import moment from 'moment';
 
 
 export default Controller.extend({
+  queryParams         : ['event_byName'],
   routing             : service('-routing'),
   cookies             : service(),
   fastboot            : service(),
   unreadNotifications : filterBy('model.notifications', 'isRead', false),
   footerPages         : filterBy('model.pages', 'place', 'footer'),
+  event_byName        : null,
 
   showCookie: computed(function() {
     const cookieName = 'seen-cookie-message';
