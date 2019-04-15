@@ -3,9 +3,11 @@
     <i class="unhide icon"></i>
   {{/ui-popup}}
   {{#unless record.isSuperAdmin}}
-    {{#ui-popup content=(t 'Edit') click=(action openEditModal record) class='ui icon button'}}
-      <i class="edit icon"></i>
-    {{/ui-popup}}
+    {{#if (not record.deletedAt)}}
+      {{#ui-popup content=(t 'Edit') click=(action openEditModal record) class='ui icon button'}}
+        <i class="edit icon"></i>
+      {{/ui-popup}}
+    {{/if}}
     {{#if (and hasRestorePrivileges record.deletedAt)}}
       {{#ui-popup content=(t 'Restore') click=(action restoreUser record) class='ui icon button' position='left center'}}
         <i class="undo icon"></i>
