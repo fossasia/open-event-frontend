@@ -27,6 +27,9 @@
         {{event.shortLocationName}}
       {{/smart-overflow}}
     </a>
+    {{#if (is-before event.startsAt [now])}}
+      <div class="ui red top right attached label">Event is over</div>
+    {{/if}}
     <div class="extra content small text">
       <span class="right floated">
         <i role="button" class="share alternate link icon" {{action shareEvent event}}></i>
