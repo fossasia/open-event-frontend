@@ -84,7 +84,7 @@
       </div>
       <div class="menu">
         {{#each speakers as |speaker|}}
-          <div data-value="{{map-value mapper speaker}}" class="item">
+          <div data-value="{{if noSpeakerExists 'null' '{{map-value mapper speaker}}' }}" class="item">
             {{speaker.name}}
           </div>
         {{/each}}
