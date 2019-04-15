@@ -40,7 +40,8 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName   : 'speakers.length',
+      propertyName   : 'eventStatisticsGeneral.speakers',
+      template       : 'components/ui-table/cell/cell-speakers-dashboard',
       title          : 'Speakers',
       disableSorting : true
     },
