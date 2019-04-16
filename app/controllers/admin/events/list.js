@@ -40,7 +40,8 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName   : 'speakers.length',
+      propertyName   : 'eventStatisticsGeneral.speakers',
+      template       : 'components/ui-table/cell/cell-speakers-dashboard',
       title          : 'Speakers',
       disableSorting : true
     },
@@ -84,6 +85,7 @@ export default Controller.extend({
         .then(() => {
           this.set('isLoading', false);
           this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           this.set('isLoading', false);
