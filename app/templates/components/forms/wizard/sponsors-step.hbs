@@ -45,7 +45,7 @@
         </div>
         <div class="six wide field">
           <label>{{t 'URL'}}</label>
-          {{widgets/forms/link-input segmentedLink=sponsor.segmentedLink name='url'}}
+          {{widgets/forms/link-input segmentedLink=sponsor.segmentedLink inputId='sponsor_url' name='url'}}
         </div>
       </div>
       <div class="fields">
@@ -53,7 +53,7 @@
           <label>{{t 'Description'}}</label>
           {{widgets/forms/rich-text-editor value=sponsor.description name='description'}}
         </div>
-        <div class="sponsors-step eleven wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
+        <div class="sponsors-step eight wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
           {{widgets/forms/image-upload
             label=(t 'Logo')
             imageUrl=sponsor.logoUrl
@@ -66,7 +66,7 @@
         <div class="ui section divider"></div>
       {{/if}}
     {{/each}}
-    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t 'Add another sponsor'}}</button>
+    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t (if sponsors.length 'Add another sponsor' 'Add sponsor')}}</button>
     <div class="spacer-50"></div>
   {{else}}
     <div class="spacer-50"></div>
