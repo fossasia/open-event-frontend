@@ -65,7 +65,6 @@
             </div>
           {{/if}}
         {{/each}}
-        
       {{/each}}
       {{#if isPaidOrder}}
         <div class="field">
@@ -99,7 +98,7 @@
           </div>
           <div class="field">
             <label class="required">{{t 'Select country'}}</label>
-            {{#ui-dropdown class="selection" selected=data.country
+            {{#ui-dropdown class="search selection" selected=data.country
                           onChange=(action (mut data.country)) as |execute mapper|}}
               <div class="default text">{{t 'Select country'}}</div>
               <i class="dropdown icon"></i>
@@ -113,7 +112,6 @@
             {{/ui-dropdown}}
           </div>
         {{/if}}
-
         <h4 class="ui horizontal divider header">
           <i class="ticket icon"></i>
           {{t 'Payment Method'}}
