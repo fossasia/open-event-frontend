@@ -3,7 +3,7 @@
     <label>
       {{t 'Enable Stripe'}}
     </label>
-    {{ui-checkbox class='toggle' checked=isCheckedStripe onChange=(action (mut isCheckedStripe))}}
+    {{ui-checkbox class='ui slider checkbox' checked=isCheckedStripe onChange=(action (mut isCheckedStripe))}}
   </div>
   {{#if isCheckedStripe}}
     <h3 class="ui header">
@@ -40,7 +40,7 @@
     <label>
       {{t 'Enable PayPal'}}
     </label>
-    {{ui-checkbox class='toggle' checked=isCheckedPaypal onChange=(action (mut isCheckedPaypal))}}
+    {{ui-checkbox class='ui slider checkbox' checked=isCheckedPaypal onChange=(action (mut isCheckedPaypal))}}
   </div>
   {{#if isCheckedPaypal}}
     <h3 class="ui header">
