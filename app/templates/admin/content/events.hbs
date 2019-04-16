@@ -15,11 +15,11 @@
           </div>
         </div>
         <div class="ui divider"></div>
-        <table class="ui celled table">
-          <tbody>
+        <table class="ui celled table" style="max-height: 1056px;display: inline-block;overflow-y:auto">
+          <tbody style="display: block">
             {{#each model.eventTypes as |eventType|}}
-              <tr>
-                <td>
+              <tr style="display: block">
+                <td style="display: block">
                   <div class="ui grid">
                     <div class="middle aligned content eight wide column left aligned">
                       {{eventType.name}}
@@ -57,11 +57,11 @@
           </div>
         </div>
         <div class="ui divider"></div>
-        <table class="ui celled table">
-          <tbody>
+        <table class="ui celled table" style="max-height: 1056px;display: inline-block;overflow-y:auto">
+          <tbody style="display: block">
             {{#each model.eventTopics as |eventTopic|}}
-              <tr>
-                <td>
+              <tr style="display: block">
+                <td style="display: block">
                   <div class="ui grid">
                     <div class="middle aligned content eight wide column left aligned">
                       {{eventTopic.name}}
@@ -112,11 +112,11 @@
           {{/ui-dropdown}}
         </div>
         {{#if model.eventSubTopics}}
-          <table class="ui celled table">
-            <tbody>
+          <table class="ui celled table" style="max-height: 1056px;display: inline-block;overflow-y:auto">
+            <tbody style="display: block">
               {{#each model.eventSubTopics as |subTopic|}}
-                <tr>
-                  <td>
+                <tr style="display: block">
+                  <td style="display: block">
                     <div class="ui grid">
                       <div class="middle aligned content eight wide column left aligned">
                         {{subTopic.name}}
