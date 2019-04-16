@@ -49,17 +49,15 @@
               <div class="ui center aligned segment basic">
                 <a href="{{href-to 'reset-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
               </div>
-              {{#if false}}
-                {{#unless noSocial}}
-                  <div class="ui horizontal divider">
-                    Or
-                  </div>
-                  <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
-                    <i class="facebook icon"></i>
-                    {{t 'Login with Facebook'}}
-                  </button>
-                {{/unless}}
-              {{/if}}
+              {{#unless noSocial}}
+                <div class="ui horizontal divider">
+                  Or
+                </div>
+                <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
+                  <i class="facebook icon"></i>
+                  {{t 'Login with Facebook'}}
+                </button>
+              {{/unless}}
             </div>
           </div>
         </div>
