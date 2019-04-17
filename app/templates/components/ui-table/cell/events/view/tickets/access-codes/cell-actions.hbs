@@ -4,11 +4,11 @@
   {{/ui-popup}}
   {{#if (not record.isExpired)}}
     {{#if record.isActive}}
-      {{#ui-popup content=(t 'Deactivate') click=(action toggleStatus record) class='ui icon button' position='left center'}}
+      {{#ui-popup content=(t 'Deactivate') click=(action (confirm (t 'Are you sure you would like to deactivate this Access Code?') (action toggleStatus record))) class='ui icon button' position='left center'}}
         <i class="remove icon"></i>
       {{/ui-popup}}
     {{else}}
-      {{#ui-popup content=(t 'Activate') click=(action toggleStatus record) class='ui icon button' position='left center'}}
+      {{#ui-popup content=(t 'Activate') click=(action (confirm (t 'Are you sure you would like to activate this Access Code?') (action toggleStatus record))) class='ui icon button' position='left center'}}
         <i class="check icon"></i>
       {{/ui-popup}}
     {{/if}}
