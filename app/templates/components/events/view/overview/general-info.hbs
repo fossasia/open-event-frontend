@@ -2,13 +2,23 @@
   <div class="header">{{t 'General info'}}</div>
 </div>
 <div class="content">
-  <div class="header">
-    {{#if (eq data.event.state 'published')}}
-      {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
-    {{else}}
-      {{t 'Your event is not live yet. Make it live now'}}
-    {{/if}}
-  </div>
+  {{#if device.isMobile}}
+    <div class="ui small header">
+      {{#if (eq data.event.state 'published')}}
+        {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
+      {{else}}
+        {{t 'Your event is not live yet. Make it live now'}}
+      {{/if}}
+    </div>
+  {{else}}
+    <div class="header">
+      {{#if (eq data.event.state 'published')}}
+        {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
+      {{else}}
+        {{t 'Your event is not live yet. Make it live now'}}
+      {{/if}}
+    </div>
+  {{/if}}
 </div>
 <div class="content">
   <table class="ui very basic table">
