@@ -1,25 +1,26 @@
 <form class="ui form" {{action 'submit' data on='submit'}}>
   <div class="field">
-    <label>{{t 'Name'}}</label>
-    {{input name='name' type='text' value=data.name}}
+    <label class="required">{{t 'Name'}}</label>
+    {{input name='name' type='text' value=data.name placeholder=(t 'Page Name')}}
   </div>
   <div class="field">
-    <label>{{t 'Title'}}</label>
-    {{input type='text' name='title' value=data.title}}
+    <label class="required">{{t 'Title'}}</label>
+    {{input type='text' name='title' value=data.title placeholder=(t 'Title of the Page')}}
   </div>
   <div class="field">
-    <label>{{t 'Path'}}</label>
-    {{input type='text' name='url' value=data.url}}
+    <label class="required">{{t 'Path'}}</label>
+    {{input type='text' name='url' value=data.url placeholder=(t 'URL for the Page')}}
   </div>
   <div class="field">
     <label>{{t 'Description'}}</label>
     {{widgets/forms/rich-text-editor value=data.description}}
   </div>
   <div class="field">
-    <label>{{t 'Place'}}</label>
-    {{#ui-dropdown class='selection' selected=data.place onChange=(action (mut data.place))}}
+    <label class="required">{{t 'Place'}}</label>
+    {{#ui-dropdown class='selection' selected=data.place onChange=(action (mut data.place)) }}
+      {{input type='hidden' name='place' value=data.place}}
       <i class="dropdown icon"></i>
-      <div class="default text">{{data.place}}</div>
+      <div class="default text">{{t 'Select Page Place'}}</div>
       <div class="menu">
         <div class="item" data-value="event">{{t 'Event'}}</div>
         <div class="item" data-value="footer">{{t 'Footer'}}</div>
@@ -27,14 +28,15 @@
     {{/ui-dropdown}}
   </div>
   <div class="field">
-    <label>{{t 'Position'}}</label>
-    {{input type='number' name='position' value=data.index min=1}}
+    <label class="required">{{t 'Position'}}</label>
+    {{input type='number' name='position' value=data.index min=1 placeholder=(t 'Position')}}
   </div>
   <div class="field">
-    <label>{{t 'Language'}}</label>
+    <label class="required">{{t 'Language'}}</label>
     {{#ui-dropdown class='search selection' selected=data.language onChange=(action (mut data.language))}}
+      {{input type='hidden' name='language' value=data.language}}
       <i class="dropdown icon"></i>
-      <div class="default text">{{get l10n.availableLocales data.language}}</div>
+      <div class="default text">{{t 'Select Language'}}</div>
       <div class="menu">
         {{#each-in l10n.availableLocales as |code language|}}
           <div class="item" data-value="{{code}}">{{language}}</div>
