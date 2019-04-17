@@ -26,10 +26,7 @@
         <th>{{t 'View Reports'}}</th>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'cancelled' tagName='td'
-        class='ui grey inverted segment link'}}
-          <span>{{t 'Cancelled'}}</span>
-        {{/link-to}}
+        <td class="ui grey inverted segment">{{t 'Cancelled'}}</td>
         <td class="right aligned">{{model.orderStats.tickets.cancelled}}</td>
         <td class="right aligned">{{model.orderStats.orders.cancelled}}</td>
         <td class="right aligned">{{number-format model.orderStats.sales.cancelled}}</td>
@@ -44,10 +41,7 @@
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'pending' tagName='td'
-        class='ui yellow inverted segment link'}}
-          <span>{{t 'Pending'}}</span>
-        {{/link-to}}
+        <td class="ui yellow inverted segment">{{t 'Pending'}}</td>
         <td class="right aligned">{{model.orderStats.tickets.pending}}</td>
         <td class="right aligned">{{model.orderStats.orders.pending}}</td>
         <td class="right aligned">{{number-format model.orderStats.sales.pending}}</td>
@@ -62,10 +56,7 @@
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'expired' tagName='td'
-        class='ui red inverted segment link'}}
-          <span>{{t 'Expired'}}</span>
-        {{/link-to}}
+        <td class="ui red inverted segment">{{t 'Expired'}}</td>
         <td class="right aligned">{{model.orderStats.tickets.expired}}</td>
         <td class="right aligned">{{model.orderStats.orders.expired}}</td>
         <td class="right aligned">{{number-format model.orderStats.sales.expired}}</td>
@@ -80,10 +71,7 @@
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'placed' tagName='td'
-        class='ui blue inverted segment link'}}
-          <span>{{t 'Placed'}}</span>
-        {{/link-to}}
+        <td class="ui blue inverted segment">{{t 'Placed'}}</td>
         <td class="right aligned">{{model.orderStats.tickets.placed}}</td>
         <td class="right aligned">{{model.orderStats.orders.placed}}</td>
         <td class="right aligned">{{number-format model.orderStats.sales.placed}}</td>
@@ -98,10 +86,7 @@
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.index' tagName='td'
-        class='ui green inverted segment link'}}
-          <span>{{t 'Completed'}}</span>
-        {{/link-to}}
+        <td class="ui green inverted segment">{{t 'Completed'}}</td>
         <td class="right aligned">{{model.orderStats.tickets.completed}}</td>
         <td class="right aligned">{{model.orderStats.orders.completed}}</td>
         <td class="right aligned">{{number-format model.orderStats.sales.completed}}</td>
