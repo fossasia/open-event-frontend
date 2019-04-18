@@ -1,26 +1,30 @@
-{{input type='text' key-up=(action 'handleKeyPress' ) placeholder=(t 'Search for events') value=dummyName}}
-{{#unless device.isMobile }}
-  <div class="ui input">
-    {{widgets/forms/places-autocomplete
-      name='location'
-      value=dummyLocation
-      type='text'
-      placeholder=(t 'Enter Location')}}
+<div class="fields {{if device.isMobile 'mini three' 'right floated large'}}">
+  <div class="{{unless device.isMobile 'three wide'}} field">
+    {{input type='text' key-up=(action 'handleKeyPress' ) placeholder=(t 'Search for events') value=dummyName}}
   </div>
-  {{#ui-dropdown class='search selection' selected=filterDate forceSelection=false}}
-    {{input type='hidden' id='filter_date' value=filterDate}}
-    <i class="dropdown icon"></i>
-    <div class="default text">{{t 'All Dates'}}</div>
-    <div class="menu">
-      <div class="item" data-value="all_dates">{{t 'All Dates'}}</div>
-      <div class="item" data-value="today">{{t 'Today'}}</div>
-      <div class="item" data-value="tomorrow">{{t 'Tomorrow'}}</div>
-      <div class="item" data-value="this_week">{{t 'This Week'}}</div>
-      <div class="item" data-value="this_weekend">{{t 'This Weekend'}}</div>
-      <div class="item" data-value="next_week">{{t 'Next Week'}}</div>
-      <div class="item" data-value="this_month">{{t 'This Month'}}</div>
+  {{#unless device.isMobile }}
+    <div class="ui input">
+      {{widgets/forms/places-autocomplete
+        name='location'
+        value=dummyLocation
+        type='text'
+        placeholder=(t 'Enter Location')}}
     </div>
-  {{/ui-dropdown}}
-{{/unless}}
-<button class="ui blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
-<button class="ui red button medium {{if disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
+    {{#ui-dropdown class='search selection' selected=filterDate forceSelection=false}}
+      {{input type='hidden' id='filter_date' value=filterDate}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'All Dates'}}</div>
+      <div class="menu">
+        <div class="item" data-value="all_dates">{{t 'All Dates'}}</div>
+        <div class="item" data-value="today">{{t 'Today'}}</div>
+        <div class="item" data-value="tomorrow">{{t 'Tomorrow'}}</div>
+        <div class="item" data-value="this_week">{{t 'This Week'}}</div>
+        <div class="item" data-value="this_weekend">{{t 'This Weekend'}}</div>
+        <div class="item" data-value="next_week">{{t 'Next Week'}}</div>
+        <div class="item" data-value="this_month">{{t 'This Month'}}</div>
+      </div>
+    {{/ui-dropdown}}
+  {{/unless}}
+  <button class="ui three field blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
+  <button class="ui three field red button large {{if disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
+</div>
