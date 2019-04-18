@@ -15,7 +15,7 @@ export default ModelBase.extend({
   password               : attr('string'),
   isVerified             : attr('boolean', { readOnly: true }),
   isSuperAdmin           : attr('boolean', { readOnly: true }),
-  isAdmin                : attr('boolean', { readOnly: true }),
+  isAdmin                : attr('boolean'),
   isUserOrganizer        : attr('boolean'),
   isUserCoorganizer      : attr('boolean'),
   isUserTrackOrganizer   : attr('boolean'),
