@@ -1,41 +1,41 @@
 <div class="sixteen wide column">
-  <h3 class="ui dividing header">{{t 'Previous Events'}}</h3>
-  <div>
-    {{t 'Show'}} &nbsp;
-    <select class="ui dropdown">
-      <option value="10">10</option>
-      <option value="25">25</option>
-      <option value="25">50</option>
-      <option value="25">100</option>
-    </select>
-    &nbsp;
-    {{t 'entries'}}
-    <div class="ui search-box icon input">
-      <i class="search icon"></i>
-      <input type="text" placeholder="{{t 'Search'}}...">
+  <div class="ui segment">
+    <h3 class="ui dividing header">{{t 'Previous Events'}}</h3>
+    <div>
+      {{t 'Show'}}&nbsp;
+      {{#ui-dropdown class='compact selection page-size-dropdown' selected=value}}
+        {{input type='hidden' id='table_select' value=value}}
+        <i class="dropdown icon"></i>
+        <div class="default text">10</div>
+      {{/ui-dropdown}}&nbsp;
+      {{t 'entries'}}
+      <div class="ui search-box icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="{{t 'Search'}}...">
+      </div>
     </div>
-  </div>
-  <table class="ui single line table">
-    <thead>
-      <tr>
-        <th>{{t 'State'}}</th>
-        <th>{{t 'Message'}}</th>
-        <th>{{t 'Started'}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <i class="check circle icon green"></i>{{t 'Success'}}
-        </td>
-        <td>{{t 'Check your event here'}}</td>
-        <td>{{t '8 days ago'}}</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="3">
-          <div class="ui pagination menu {{unless device.isMobile 'right floated'}}">
+    <div class="ui segment">
+      <table class="ui very basic table">
+        <thead>
+          <tr>
+            <th>{{t 'State'}}</th>
+            <th>{{t 'Message'}}</th>
+            <th>{{t 'Started'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {{t 'Success'}}
+            </td>
+            <td>{{t 'Check your event here'}}</td>
+            <td>{{t '8 days ago'}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3">
+              {{!--        Commented as this is not implemented completely   <div class="ui pagination menu {{unless device.isMobile 'right floated'}}">
             <a class="icon item">
               {{t 'Previous'}}
             </a>
@@ -43,9 +43,16 @@
             <a class="icon item">
               {{t 'Next'}}
             </a>
-          </div>
-        </th>
-      </tr>
-    </tfoot>
-  </table>
+          </div> --}}
+              <div class="ui left aligned left floated basic segment">
+                <h4 class="ui header">
+                  {{t 'Showing 1 of 1'}}  {{t 'entries'}}
+                </h4>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>  
+    </div>
+  </div>
 </div>
