@@ -27,9 +27,8 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        sponsorUrl: {
-          identifier : 'sponsor_url',
-          rules      : [
+        url: {
+          rules: [
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
