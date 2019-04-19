@@ -16,10 +16,12 @@
       <tr>
         <td><strong>{{t 'No. of Revisions'}}</strong></td>
         <td>
-          6
-          <a {{action 'openModal'}} role="button">
+          <div class="muted text">
+            {{t 'Coming Soon'}}
+          </div>
+          {{!-- This feature is not completely available for roll out so it would pointless to diplay a dummy slidebar  <a {{action 'openModal'}} role="button">
             {{t '(View Revisions)'}}
-          </a>
+          </a> --}}
         </td>
       </tr>
       <tr>
@@ -67,27 +69,35 @@
       <tr>
         <td><strong>{{t 'No. of Speakers'}}</strong></td>
         <td>
-          {{t 'All'}}: {{data.statistics.speakers}}
-          | {{t 'Accepted'}}: {{data.statistics.speakersAccepted}}
-          | {{t 'Pending'}}: {{data.statistics.speakersPending}}
-          | {{t 'Rejected'}}: {{data.statistics.speakersRejected}}
-          | {{t 'Confirmed'}}: {{data.statistics.speakersConfirmed}}
+          {{#if data.event.isSessionsSpeakersEnabled}}
+            {{t 'All'}}: {{data.statistics.speakers}}
+            | {{t 'Accepted'}}: {{data.statistics.speakersAccepted}}
+            | {{t 'Pending'}}: {{data.statistics.speakersPending}}
+            | {{t 'Rejected'}}: {{data.statistics.speakersRejected}}
+            | {{t 'Confirmed'}}: {{data.statistics.speakersConfirmed}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sessions'}}</strong></td>
         <td>
-          {{t 'All'}}: {{data.statistics.sessions}}
-          | {{t 'Accepted'}}: {{data.statistics.sessionsAccepted}}
-          | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
-          | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
-          | {{t 'Draft'}}: {{data.statistics.sessionsDraft}}
-          | {{t 'Confirmed'}}: {{data.statistics.sessionsConfirmed}}
+          {{#if data.event.isSessionsSpeakersEnabled}}
+            {{t 'All'}}: {{data.statistics.sessions}}
+            | {{t 'Accepted'}}: {{data.statistics.sessionsAccepted}}
+            | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
+            | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
+            | {{t 'Draft'}}: {{data.statistics.sessionsDraft}}
+            | {{t 'Confirmed'}}: {{data.statistics.sessionsConfirmed}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sponsors'}}</strong></td>
-        <td>{{data.statistics.sponsors}}</td>
+        <td>{{if data.event.isSponsorsEnabled data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
       </tr>
     </tbody>
   </table>

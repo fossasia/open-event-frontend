@@ -117,7 +117,7 @@ export default Route.extend({
       sort         : 'starts-at',
       include      : 'event-topic,event-sub-topic,event-type,speakers-call',
       filter       : filterOptions,
-      perPage      : 6,
+      perPage      : 18,
       startingPage : 1,
       perPageParam : 'page[size]',
       pageParam    : 'page[number]'
