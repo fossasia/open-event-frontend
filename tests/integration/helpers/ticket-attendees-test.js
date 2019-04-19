@@ -6,10 +6,10 @@ import { render } from '@ember/test-helpers';
 module('Integration | Helper | ticket-attendees', function(hooks) {
   setupIntegrationTest(hooks);
   test('it renders', async function(assert) {
-    this.set('array1', ['1', '2', '3', '4', '5']);
-    this.set('array2', ['a', '1', '3', 'b']);
-    await render(hbs`{{ticket-attendees array1 array2}}`);
-    assert.equal(this.element.textContent.trim(), 2);
+    this.set('allTicketAttendees', ['user1', 'user2', 'user3', 'user4', 'user5']);
+    this.set('orderAttendees', ['user1', 'user2', 'user4']);
+    await render(hbs`{{ticket-attendees allTicketAttendees orderAttendees}}`);
+    assert.equal(this.element.textContent.trim(), 3);
   });
 });
 
