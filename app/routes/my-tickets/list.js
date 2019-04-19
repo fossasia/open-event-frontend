@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
 import moment from 'moment';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+  infinity: service(),
   titleToken() {
     switch (this.get('params.ticket_status')) {
       case 'upcoming':
@@ -10,7 +12,14 @@ export default Route.extend({
         return this.get('l10n').t('Past');
     }
   },
-  model(params) {
+  /**
+   * Load filtered events based on the given params
+   *
+   * @param params
+   * @return {*}
+   * @private
+   */
+  _loadOrders(params) {
     this.set('params', params);
     let filterOptions = [];
     if (params.ticket_status === 'upcoming') {
@@ -89,12 +98,36 @@ export default Route.extend({
               }
             }
           ]
-        }
-      );
+        });
     }
-    return this.get('authManager.currentUser').query('orders', {
-      include : 'event',
-      filter  : filterOptions
+
+    return this.infinity.model('order', {
+      include      : 'event',
+      filter       : filterOptions,
+      perPage      : 6,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]'
     });
+  },
+
+  async model(params) {
+    return {
+      filteredOrders: await this._loadOrders(params)
+    };
+  },
+
+  setupController(controller, model) {
+    this._super(...arguments);
+    controller.set('filteredOrders', model.filteredOrders);
+    this.set('controller', controller);
+  },
+
+  actions: {
+    async queryParamsDidChange(change, params) {
+      if (this.get('controller')) {
+        this.get('controller').set('filteredOrders', await this._loadOrders(params));
+      }
+    }
   }
 });
