@@ -38,6 +38,11 @@ export default Component.extend(FormMixin, {
       ticket => (ticket.getWithDefault('price', 0) - ticket.getWithDefault('discount', 0)) * ticket.getWithDefault('orderQuantity', 0)
     );
   }),
+
+  tax_calculated_total: computed(function() {
+    return this.get('total') + ((this.get('tax').rate * this.get('total')) * 0.01);
+  }),
+
   actions: {
     async togglePromotionalCode(queryParam) {
       this.toggleProperty('enterPromotionalCode');

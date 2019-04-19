@@ -32,11 +32,7 @@
                 </div>
               </td>
             {{else}}
-              {{#if ticket.event.tax.isTaxIncludedInPrice}}
-                <td id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{number-format ticket.tax_inclusive_price}}</td>
-              {{else}}
-                <td id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{number-format ticket.price}}</td>
-              {{/if}}
+            <td id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{number-format ticket.price}}</td>
             {{/if}}
             <td>
               <div class="field">
@@ -68,7 +64,15 @@
         <th></th>
         <th colspan="4">
           <div class="ui right aligned small primary icon">
-            {{t 'Total'}}: {{currency-symbol eventCurrency}} {{number-format total}}
+            {{#if event.tax}}
+              {{#if event.tax.isTaxIncludedInPrice}}
+                {{t 'Total'}}: {{currency-symbol eventCurrency}} {{number-format total}}
+              {{else}}
+                {{t 'Total'}}: {{currency-symbol eventCurrency}} {{number-format tax_calculated_total}}
+              {{/if}}
+            {{else}}
+                {{t 'Total'}}: {{currency-symbol eventCurrency}} {{number-format total}}              
+            {{/if}}
           </div>
           {{#if event.tax.name}}
             <tr>

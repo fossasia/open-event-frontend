@@ -13,6 +13,7 @@ export default Route.extend({
     });
     return {
       event   : eventDetails,
+      tax     : eventDetails.get('tax'),
       tickets : await eventDetails.query('tickets', {
         reload : true,
         filter : [
