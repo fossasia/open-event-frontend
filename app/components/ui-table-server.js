@@ -13,6 +13,8 @@ export default ModelsTable.extend({
 
   isLoading: false,
 
+  isInitialLoad: true,
+
   isError: false,
 
   metaPagesCountProperty: 'page[size]',
@@ -153,16 +155,20 @@ export default ModelsTable.extend({
         });
       }
     });
-    if (!this.isDestroyed) {
-      setProperties(this, { isLoading: true, isError: false });
+    if (!this.isInitialLoad) {
+      if (!this.isDestroyed) {
+        setProperties(this, { isLoading: true, isError: false });
+      }
+      store.query(modelName, query)
+        .then(newData => setProperties(this, { isLoading: false, isError: false, filteredContent: newData }))
+        .catch(() => {
+          if (!this.isDestroyed) {
+            setProperties(this, { isLoading: false, isError: true });
+          }
+        });
+    } else {
+      this.set('isInitialLoad', false);
     }
-    store.query(modelName, query)
-      .then(newData => setProperties(this, { isLoading: false, isError: false, filteredContent: newData }))
-      .catch(() => {
-        if (!this.isDestroyed) {
-          setProperties(this, { isLoading: false, isError: true });
-        }
-      });
   },
 
   sortingWrapper(query, sortBy) {
@@ -275,6 +281,7 @@ export default ModelsTable.extend({
   willDestroyElement() {
     this._super(...arguments);
     this.set('isLoading', false);
+    this.set('isInitialLoad', true);
     let observedProperties = get(this, 'observedProperties');
     observedProperties.forEach(propertyName => this.removeObserver(propertyName));
   }
