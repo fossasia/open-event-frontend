@@ -34,14 +34,14 @@
       {{#each data.userSpeaker as |speaker|}}
         {{#if speaker.id}}
           {{#link-to 'public.cfs.edit-speaker' speaker.id invokeAction=(action 'toggleView')}}
-            <button class="ui teal {{if device.isMobile 'tiny' ''}} button">{{t 'Edit Speaker Details'}}</button>
+            <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
           {{/link-to}}
         {{/if}}
       {{/each}}
     {{/if}}
     {{#unless isNewSpeaker}}
       {{#link-to 'public.cfs.new-session' invokeAction=(action 'toggleView')}}
-        <button class="ui teal {{if device.isMobile 'tiny' ''}} button">{{t 'Add Session Details'}}</button>
+        <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Add Session Details'}}</button>
       {{/link-to}}
     {{/unless}}
   </div>
