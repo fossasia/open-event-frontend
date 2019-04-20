@@ -13,8 +13,8 @@ export default Controller.extend({
       title        : 'Ticket Name'
     },
     {
-      propertyName : 'ticket.price',
-      title        : 'Ticket Price',
+      propertyName : 'total.price',
+      title        : 'Total Price',
       template     : 'components/ui-table/cell/events/view/tickets/attendees/cell-price'
     },
     {
