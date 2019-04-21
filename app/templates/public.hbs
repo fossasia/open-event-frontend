@@ -38,17 +38,11 @@
       <div class="ten wide column">
         {{outlet}}
       </div>
-      {{#if device.isMobile}}
+      <div class="{{if device.isMobile '' 'three wide column public'}}">
         {{#if (not-eq session.currentRouteName 'public.cfs.new-speaker')}}
           {{public/social-links externalUrl=model.externalEventUrl socialLinks=model.socialLinks}}
         {{/if}}
-      {{else}}
-        <div class="three wide column public">
-          {{#if (not-eq session.currentRouteName 'public.cfs.new-speaker')}}
-            {{public/social-links externalUrl=model.externalEventUrl socialLinks=model.socialLinks}}
-          {{/if}}
-        </div>
-      {{/if}}
+      </div>
     </div>
   </div>
 </div>
