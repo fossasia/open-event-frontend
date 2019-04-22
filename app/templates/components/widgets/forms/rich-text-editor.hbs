@@ -1,14 +1,14 @@
 <div id="{{textareaIdGenerated}}-toolbar">
-  <div class="ui icon buttons">
+  <div class="{{if device.isMobile 'compact'}} ui icon buttons">
     <a href="#" class="ui button" data-content="{{t 'Bold (Ctrl+B)'}}" data-wysihtml5-command="bold"><i class="bold icon"></i></a>
     <a href="#" class="ui button" data-content="{{t 'Italic (Ctrl+I)'}}" data-wysihtml5-command="italic"><i class="italic icon"></i></a>
     <a href="#" class="ui button" data-content="{{t 'Underline (Ctrl+U)'}}" data-wysihtml5-command="underline"><i class="underline icon"></i></a>
   </div>
-  <div class="ui icon buttons">
+  <div class="{{if device.isMobile 'compact'}} ui icon buttons">
     <a href="#" class="ui button" data-content="{{t 'Numbered List'}}" data-wysihtml5-command="insertOrderedList"><i class="ordered list icon"></i></a>
     <a href="#" class="ui button" data-content="{{t 'Bullet List'}}" data-wysihtml5-command="insertUnorderedList"><i class="unordered list icon"></i></a>
   </div>
-  <div class="ui icon buttons">
+  <div class="{{if device.isMobile 'compact'}} ui icon buttons">
     <a href="#" class="ui button" data-content="{{t 'Undo (Ctrl+Z)'}}" data-wysihtml5-command="undo"><i class="undo icon"></i></a>
     <a href="#" class="ui button" data-content="{{t 'Redo (Ctrl+Y)'}}" data-wysihtml5-command="redo"><i class="repeat icon"></i></a>
   </div>
