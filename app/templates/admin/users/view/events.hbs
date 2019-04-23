@@ -1,20 +1,20 @@
 <div class="ui container">
-  <div class="ui grid">
-    <div class="row">
-      <div class="sixteen wide column">
-        {{#tabbed-navigation}}
-          {{#link-to 'admin.users.view.events.list' 'live' class='item'}}
-            {{t 'Live'}}
-          {{/link-to}}
-          {{#link-to 'admin.users.view.events.list' 'draft' class='item'}}
-            {{t 'Draft'}}
-          {{/link-to}}
-          {{#link-to 'admin.users.view.events.list' 'past' class='item'}}
-            {{t 'Past'}}
-          {{/link-to}}
-        {{/tabbed-navigation}}
-      </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{#tabbed-navigation}}
+        {{#link-to 'admin.users.view.events.list' 'live' class='item'}}
+          {{t 'Live'}}
+        {{/link-to}}
+        {{#link-to 'admin.users.view.events.list' 'draft' class='item'}}
+          {{t 'Draft'}}
+        {{/link-to}}
+        {{#link-to 'admin.users.view.events.list' 'past' class='item'}}
+          {{t 'Past'}}
+        {{/link-to}}
+      {{/tabbed-navigation}}
     </div>
+  </div>
+  <div class="ui segment">
     {{outlet}}
   </div>
 </div>
