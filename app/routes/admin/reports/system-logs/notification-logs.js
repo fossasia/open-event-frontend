@@ -9,7 +9,7 @@ export default Route.extend({
     return this.get('store').query('notification', {
       include      : 'user',
       'page[size]' : 10,
-      sort         : '-received-at' 
+      sort         : '-received-at'
     });
   }
 });
