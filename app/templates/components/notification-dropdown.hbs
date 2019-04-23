@@ -21,6 +21,11 @@
             {{#link-to 'notifications' invokeAction=(action 'markRead' notification)}}
               {{notification.title}}
             {{/link-to}}
+            <div class="right floated content" >
+              <a href="#" {{action 'markRead' notification}}>
+                <i class="close icon"></i>
+              </a>
+            </div>
           </div>
           <div class="content weight-400">
             {{sanitize notification.message}}
