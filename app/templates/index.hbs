@@ -1,6 +1,14 @@
 <div class="ui container">
   {{quick-filter eventName=event_name startDate=start_date endDate=end_date location=location filterDate=filterDate}}
 
+  {{#if featuredEvents}}
+    <h2 class="main-heading">{{t 'Featured Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each featuredEvents as |event|}}
+        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{/each}}
+    </div>
+  {{/if}}
   {{#if filteredEvents}}
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
@@ -11,12 +19,6 @@
   {{else}}
     <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
   {{/if}}
-  {{#infinity-loader infinityModel=filteredEvents}}
-
-    <div class="ui loading very padded basic segment">
-    </div>
-    {{infintyModel.reachedInfinity}}
-  {{/infinity-loader}}
   {{#if callForSpeakersEvents}}
     <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">
@@ -25,5 +27,6 @@
       {{/each}}
     </div>
   {{/if}}
+  
   {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
 </div>

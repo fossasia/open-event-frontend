@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import moment from 'moment';
 
 export default Component.extend({
-  classNames: ['ui', 'action', 'input', 'fluid'],
 
   dummyName     : null,
   dummyLocation : null,

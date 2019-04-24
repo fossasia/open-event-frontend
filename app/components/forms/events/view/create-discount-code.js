@@ -12,6 +12,15 @@ export default Component.extend(FormMixin, {
     $.fn.form.settings.rules.checkMaxTotal = () => {
       return this.get('data.maxQuantity') <= this.get('data.ticketsNumber');
     };
+    $.fn.form.settings.rules.checkTicketSelected = () => {
+      let tickets = this.eventTickets;
+      for (let ticket of tickets) {
+        if (ticket.isChecked) {
+          return true;
+        }
+      }
+      return false;
+    };
     return {
       inline : true,
       delay  : false,
@@ -87,6 +96,15 @@ export default Component.extend(FormMixin, {
             {
               type   : 'checkMaxTotal',
               prompt : this.get('l10n').t('Maximum value should not be greater than number of tickets')
+            }
+          ]
+        },
+        ticketName: {
+          identifier : 'ticket_name',
+          rules      : [
+            {
+              type   : 'checkTicketSelected',
+              prompt : this.get('l10n').t('Please select atleast 1 ticket.')
             }
           ]
         }

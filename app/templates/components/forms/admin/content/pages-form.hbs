@@ -32,7 +32,7 @@
   </div>
   <div class="field">
     <label>{{t 'Language'}}</label>
-    {{#ui-dropdown class='selection' selected=data.language onChange=(action (mut data.language))}}
+    {{#ui-dropdown class='search selection' selected=data.language onChange=(action (mut data.language))}}
       <i class="dropdown icon"></i>
       <div class="default text">{{get l10n.availableLocales data.language}}</div>
       <div class="menu">

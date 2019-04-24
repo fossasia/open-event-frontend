@@ -9,9 +9,9 @@ export default Controller.extend({
     },
     {
       propertyName : 'startsAt',
-      template     : 'components/ui-table/cell/cell-simple-date',
+      template     : 'components/ui-table/cell/cell-event-date',
       dateFormat   : 'MMMM DD, YYYY - HH:mm A',
-      title        : 'Date'
+      title        : 'Date And Time'
     },
     {
       propertyName     : 'sessionsByState',
@@ -21,7 +21,8 @@ export default Controller.extend({
       disableFiltering : true
     },
     {
-      propertyName     : 'speakers.length',
+      propertyName     : 'eventStatisticsGeneral.speakers',
+      template         : 'components/ui-table/cell/cell-speakers-dashboard',
       title            : 'Speakers',
       disableSorting   : true,
       disableFiltering : true

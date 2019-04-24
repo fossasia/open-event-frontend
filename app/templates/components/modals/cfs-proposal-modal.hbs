@@ -23,7 +23,8 @@
   {{#if isNewSession}}
     <p>{{t 'No existing sessions'}}</p>
   {{/if}}
-  <br>
+  <div class="ui hidden divider">
+  </div>
   <div>
     {{#if isNewSpeaker}}
       {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
@@ -32,15 +33,15 @@
     {{else}}
       {{#each data.userSpeaker as |speaker|}}
         {{#if speaker.id}}
-          {{#link-to 'public.cfs.edit-speaker' speaker.id class='ui teal button' invokeAction=(action 'toggleView')}}
-            {{t 'Edit Speaker Details'}}
+          {{#link-to 'public.cfs.edit-speaker' speaker.id invokeAction=(action 'toggleView')}}
+            <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
           {{/link-to}}
         {{/if}}
       {{/each}}
     {{/if}}
     {{#unless isNewSpeaker}}
-      {{#link-to 'public.cfs.new-session' class='ui teal button' invokeAction=(action 'toggleView')}}
-        {{t 'Add Session Details'}}
+      {{#link-to 'public.cfs.new-session' invokeAction=(action 'toggleView')}}
+        <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Add Session Details'}}</button>
       {{/link-to}}
     {{/unless}}
   </div>
