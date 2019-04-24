@@ -8,7 +8,8 @@ export default Route.extend({
   model() {
     return this.get('store').query('notification', {
       include      : 'user',
-      'page[size]' : 10
+      'page[size]' : 100,
+      sort         : '-received-at'
     });
   }
 });
