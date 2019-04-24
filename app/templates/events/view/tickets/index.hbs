@@ -144,7 +144,7 @@
           <td>{{ticket.name}}</td>
           <td>{{ticket.quantity}}</td>
           <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
-          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{number-format ticket.orderStatistics.sales.completed}}</td>
+          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{number-format model.orderStats.sales.completed}}</td>
           <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{number-format ticket.orderStatistics.sales.placed}}</td>
           <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
