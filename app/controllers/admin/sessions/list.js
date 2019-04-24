@@ -11,7 +11,7 @@ export default Controller.extend({
       title        : 'Title'
     },
     {
-      propertyName   : 'state',
+      propertyName   : 'status',
       template       : 'components/ui-table/cell/events/view/sessions/cell-session-state',
       title          : 'State',
       disableSorting : true

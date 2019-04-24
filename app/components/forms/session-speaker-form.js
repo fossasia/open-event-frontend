@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { groupBy, orderBy } from 'lodash';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
+import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
   validGithubProfileUrlPattern, validLinkedinProfileUrlPattern, validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { languages } from 'open-event-frontend/utils/dictionary/languages';
@@ -360,7 +360,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
@@ -371,7 +371,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.get('l10n').t('Please enter a valid url')
             }
           ]
@@ -431,12 +431,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter github link')
+              prompt : this.get('l10n').t('Please enter GitHub link')
             },
             {
               type   : 'regExp',
               value  : validGithubProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid github profile url')
+              prompt : this.get('l10n').t('Please enter a valid GitHub profile url')
             }
           ]
         },
@@ -447,7 +447,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : validGithubProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid github profile url')
+              prompt : this.get('l10n').t('Please enter a valid GitHub profile url')
             }
           ]
         },

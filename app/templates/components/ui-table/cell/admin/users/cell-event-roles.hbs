@@ -1,25 +1,13 @@
-<div class="ui bulleted list">
+<div>
   {{#if (or record.isAdmin record.isSuperAdmin)}}
     {{t 'User has administrative privileges, he has privileges of the following roles for all the events:'}}
     <div class="item">
       <span class="ui tiny basic green label">{{t 'Organizer'}}</span>
-    </div>
-    <div class="item">
       <span class="ui tiny basic orange label">{{t 'Co organizer'}}</span>
-    </div>
-    <div class="item">
       <span class="ui tiny basic yellow label">{{t 'Track Organizer'}}</span>
-    </div>
-    <div class="item">
       <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
-    </div>
-    <div class="item">
       <span class="ui tiny basic olive label">{{t 'Moderator'}}</span>
-    </div>
-    <div class="item">
       <span class="ui tiny basic teal label">{{t 'Marketer'}}</span>
-    </div>
-    <div class="item">
       <span class="ui tiny basic brown label">{{t 'Sales Admin'}}</span>
     </div>
   {{else}}
