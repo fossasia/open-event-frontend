@@ -7,6 +7,10 @@
       <div class="ui hidden divider"></div>
       <button class="ui button primary" {{action 'openModal' subTopic.placeholder}} id="changebutton">{{t 'Change'}}</button>
     </div>
+  {{else}}
+    <div class="ui disabled header">
+      {{t 'No images to show'}}
+    </div>
   {{/each}}
 </div>
 {{modals/change-image-modal isOpen=isModalOpen placeholder=selectedPlaceholder}}
