@@ -1,10 +1,8 @@
 <div class="ui grid stackable">
   <div class="row">
-    <div class="sixteen wide {{if device.isMobile 'center aligned'}} column">
-      <button class="ui blue button right floated {{if isLoading 'loading'}}" {{action 'save'}}>{{t 'Save'}}</button>
-    </div>
-  </div>
-  <div class="row">
     {{outlet}}
+    <div class="sixteen wide {{if device.isMobile 'center aligned'}} column">
+      <button class="ui blue button left floated {{if isLoading 'loading'}}" {{action 'save'}}>{{t 'Save'}}</button>
+    </div>
   </div>
 </div>
