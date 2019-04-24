@@ -1,6 +1,7 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
+import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 
 export default ModelBase.extend({
 
@@ -31,6 +32,8 @@ export default ModelBase.extend({
   city               : attr('string'),
   gender             : attr('string'),
   heardFrom          : attr('string'),
+
+  segmentedLinkWebsite: computedSegmentedLink.bind(this)('website'),
 
   /**
    * Relationships
