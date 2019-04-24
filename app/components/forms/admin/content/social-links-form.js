@@ -87,7 +87,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'containsExactly[github.com]',
-              prompt : this.get('l10n').t('Please enter a valid github url')
+              prompt : this.get('l10n').t('Please enter a valid GitHub url')
             },
             {
               type   : 'regExp',
