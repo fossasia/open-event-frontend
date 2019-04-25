@@ -6,6 +6,7 @@ import { A } from '@ember/array';
 import ModelsTable from 'open-event-frontend/components/ui-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
 import { merge, kebabCase } from 'lodash';
+import moment from 'moment';
 
 export default ModelsTable.extend({
 
@@ -140,12 +141,23 @@ export default ModelsTable.extend({
     columns.forEach(column => {
       let filter = get(column, 'filterString');
       let filterTitle = this.getCustomFilterTitle(column);
-
-      if (filter) {
+      let filterHeading = this.getFilterHeading(column);
+      let isMomentQuery = false;
+      if (filterHeading && filterHeading === 'Date') {
+        isMomentQuery = true;
+        var queryParam = moment(filter);
+      }
+      if (filter && !isMomentQuery) {
         query.filter.pushObject({
           name : filterTitle,
           op   : 'ilike',
           val  : `%${filter}%`
+        });
+      } else if (isMomentQuery && queryParam.isValid()) {
+        query.filter.pushObject({
+          name : filterTitle,
+          op   : 'ge',
+          val  : queryParam
         });
       } else {
         query.filter.removeObject({
@@ -180,6 +192,10 @@ export default ModelsTable.extend({
 
   getCustomFilterTitle(column) {
     return get(column, 'filteredBy') || get(column, 'propertyName');
+  },
+
+  getFilterHeading(column) {
+    return get(column, 'title');
   },
 
   pageSizeValues: computed(function() {

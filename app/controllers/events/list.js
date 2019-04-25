@@ -8,7 +8,7 @@ export default Controller.extend({
       title        : 'Name'
     },
     {
-      propertyName : 'startsAt',
+      propertyName : 'starts-at',
       template     : 'components/ui-table/cell/cell-event-date',
       dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Date'
