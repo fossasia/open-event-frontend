@@ -55,7 +55,6 @@ export default Route.extend({
     }
 
     let queryObject = {
-      include      : 'speakers',
       filter       : filterOptions,
       'page[size]' : 10
     };
