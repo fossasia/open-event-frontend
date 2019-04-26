@@ -27,7 +27,8 @@
                                   inputId='start_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='start'
-                                  value=data.event.startsAtDate}}
+                                  value=data.event.startsAtDate
+                                  onChange=(action 'updateSalesEndDate')}}
     </div>
     <div class="three wide field">
       <label for="start_time">&nbsp;</label>
@@ -468,7 +469,7 @@
   </div>
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
-    {{#ui-dropdown class='search selection' selected=data.event.topic.name onChange=(action (mut data.event.topic)) as |execute mapper|}}
+    {{#ui-dropdown class='search selection' selected=(sanitize data.event.topic.name) onChange=(action (mut data.event.topic)) as |execute mapper|}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select Event Topic'}}</div>
       <div class="menu">

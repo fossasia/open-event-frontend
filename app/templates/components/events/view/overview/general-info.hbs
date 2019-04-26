@@ -2,7 +2,7 @@
   <div class="header">{{t 'General info'}}</div>
 </div>
 <div class="content">
-  <div class="header">
+  <div class="ui {{if device.isMobile 'small' 'medium'}} header">
     {{#if (eq data.event.state 'published')}}
       {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
     {{else}}
