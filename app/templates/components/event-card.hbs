@@ -20,7 +20,7 @@
       {{/smart-overflow}}
       <div class="meta">
         <span class="date">
-          {{moment-format event.startsAt 'ddd, MMM DD h:mm A'}}
+          {{moment-format event.startsAt 'ddd, MMM DD h:mm A'}} - {{moment-format event.endsAt 'ddd, MMM DD h:mm A'}}
         </span>
       </div>
       {{#smart-overflow class='description'}}
