@@ -31,6 +31,7 @@ const router = Router.extend(RouterScroll, {
 });
 
 router.map(function() {
+  this.route('cookie-policy');
   this.route('login');
   this.route('register');
   this.route('reset-password');

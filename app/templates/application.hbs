@@ -5,7 +5,7 @@
     <i class="close icon" onclick={{action (mut showCookie) false}} role="button"></i>
     {{model.cookiePolicy}}
     {{#if model.cookiePolicyLink}}
-      <p>For more information <a href="{{model.cookiePolicyLink}}">click here</a>.</p>
+      <p>For more information <a href="{{href-to 'cookie-policy'}}" target="_blank" rel="noopener noreferrer">click here</a>.</p>
     {{/if}}
   </div>
 {{/if}}
