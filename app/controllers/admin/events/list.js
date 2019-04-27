@@ -61,7 +61,7 @@ export default Controller.extend({
       propertyName   : 'is-featured',
       template       : 'components/ui-table/cell/admin/event-is-featured',
       title          : 'Featured Event',
-      disableSorting : false
+      disableSorting : true
     },
     {
       propertyName   : 'deletedAt',

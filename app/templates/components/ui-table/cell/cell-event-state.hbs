@@ -1,1 +1,9 @@
-{{get record column.propertyName}}
+<span>
+  {{#if (eq record.state "draft")}}
+    <div class="ui yellow label">{{t 'Draft'}}</div>
+  {{else if (eq record.state "published")}}
+    <div class="ui green label">{{t 'Published'}}</div>
+  {{else if (eq record.state "past")}}
+    <div class="ui red label">{{t 'Past'}}</div>
+  {{/if}}
+</span>
