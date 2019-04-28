@@ -21,8 +21,8 @@
             <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
             <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
             <div class="divider"></div>
-            <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
-            <a href="{{href-to 'settings.contact-info'}}" class="item">{{t 'Settings'}}</a>
+            <a href="{{href-to 'profile'}}" class="item"><i class="ui right floated large user circle icon"></i>{{t 'Profile'}}</a>
+            <a href="{{href-to 'settings.contact-info'}}" class="item"><i class="ui right floated large settings icon"></i>{{t 'Settings'}}</a>
             {{#if authManager.currentUser.isAnAdmin}}
               <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
             {{/if}}
