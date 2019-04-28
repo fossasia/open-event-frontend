@@ -410,10 +410,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
 
     updateDates() {
-      const { timezone, startsAt, endsAt } = this.get('data.event').getProperties('timezone', 'startsAt', 'endsAt');
+      const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event').getProperties('startsAtDate', 'endsAtDate', 'startsAtTime', 'endsAtTime', 'timezone');
+      
+      var startsAtConcatenated = moment(startsAtDate +' '+ startsAtTime);
+      var endsAtConcatenated = moment(endsAtDate +' '+ endsAtTime);
       this.get('data.event').setProperties({
-        startsAt : moment.tz(startsAt, timezone),
-        endsAt   : moment.tz(endsAt, timezone)
+        startsAt : moment.tz(startsAtConcatenated, timezone),
+        endsAt   : moment.tz(endsAtConcatenated, timezone)
       });
     },
 
