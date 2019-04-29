@@ -52,6 +52,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('data.event.socialLinks').filterBy('isDeleted', false);
   }),
 
+  isUserUnverified: computed('authManager.currentUser.isVerified', function() {
+    return !this.authManager.currentUser.isVerified;
+  }),
   /**
    * returns the validation rules for the social links.
    */
@@ -344,6 +347,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
       }));
+    },
+
+    updateSalesEndDate(eventStartDate) {
+      eventStartDate = moment(new Date(eventStartDate));
+      this.get('data.event.tickets').forEach(ticket => {
+        if (moment(eventStartDate).isBefore(ticket.get('salesEndsAt'))) {
+          ticket.set('salesEndsAt', moment(eventStartDate, 'MM/DD/YYYY').toDate());
+        }
+      });
     },
 
     removeTicket(deleteTicket) {

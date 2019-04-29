@@ -52,7 +52,7 @@ export default Component.extend({
   actions: {
     fileSelected(mode, event) {
       if (mode === 'url') {
-        this.set('selectedFile', event.target.value);
+        this.set('fileUrl', event.target.value);
       } else {
         this.processFiles(event.target.files);
       }

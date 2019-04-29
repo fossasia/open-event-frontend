@@ -170,6 +170,7 @@ export default Route.extend({
     async queryParamsDidChange(change, params) {
       if (this.get('controller')) {
         this.get('controller').set('filteredEvents', await this._loadEvents(params));
+        this.get('controller').set('filters', params);
       }
     }
   }

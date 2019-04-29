@@ -1,4 +1,9 @@
 <div class="ui container">
+  <div class="ui stackable grid">
+    <div class="sixteen wide column">
+      {{unverified-user-message}}
+    </div>
+  </div>
   {{#if model.event.name}}
     <h2 class="weight-300">{{t 'Creating'}} <span class="weight-500">{{model.event.name}}</span></h2>
   {{else}}

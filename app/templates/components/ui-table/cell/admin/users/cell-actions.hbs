@@ -3,11 +3,19 @@
     <i class="unhide icon"></i>
   {{/ui-popup}}
   {{#unless record.isSuperAdmin}}
-    {{#ui-popup content=(t 'Edit') click=(action openEditModal record) class='ui icon button'}}
-      <i class="edit icon"></i>
-    {{/ui-popup}}
-    {{#ui-popup content=(t 'Delete') click=(action (confirm (t 'Are you sure you would like to delete this user?') (action deleteUser record))) class='ui icon button'}}
-      <i class="trash outline icon"></i>
-    {{/ui-popup}}
+    {{#if (not record.deletedAt)}}
+      {{#ui-popup content=(t 'Edit') click=(action openEditModal record) class='ui icon button'}}
+        <i class="edit icon"></i>
+      {{/ui-popup}}
+    {{/if}}
+    {{#if (and hasRestorePrivileges record.deletedAt)}}
+      {{#ui-popup content=(t 'Restore') click=(action restoreUser record) class='ui icon button' position='left center'}}
+        <i class="undo icon"></i>
+      {{/ui-popup}}
+    {{else}}  
+      {{#ui-popup content=(t 'Delete') click=(action (confirm (t 'Are you sure you would like to delete this user?') (action deleteUser record))) class='ui icon button'}}
+        <i class="trash outline icon"></i>
+      {{/ui-popup}}
+    {{/if}}
   {{/unless}}
 </div>

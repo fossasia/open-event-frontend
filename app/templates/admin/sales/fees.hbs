@@ -38,7 +38,10 @@
                 {{order.ticketCount}}
               </td>
               <td class="right aligned">
-                {{number-format order.feePercentage}}%
+                {{number-format order.feePercentage}}% 
+                {{#if order.maximumFee}}
+                  <span class="item muted text">[{{t 'Max.'}} {{currency-symbol order.paymentCurrency}} {{order.maximumFee}}]</span>
+                {{/if}}
               </td>
               <td class="right aligned">
                 {{currency-symbol order.paymentCurrency}} {{number-format order.revenue}}

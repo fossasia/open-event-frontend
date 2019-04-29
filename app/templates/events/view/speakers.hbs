@@ -21,14 +21,13 @@
             {{/link-to}}
           {{/tabbed-navigation}}
         </div>
-        <div class="ten wide {{if device.isMobile 'center aligned'}} column">
-          <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}} {{if isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
-          {{#if device.isMobile}}
-            <div class="ui hidden fitted divider"></div>
-          {{/if}}
-          {{#link-to 'events.view.speakers.create' class='ui blue button right floated'}}
-            {{t 'Add Speaker'}}
-          {{/link-to}}
+        <div class="ten wide right aligned column">
+          <div class="ui labeled input">
+            <button class="ui blue button right-floated {{if isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
+            {{#link-to 'events.view.speakers.create' class='ui blue button right floated'}}
+              {{t 'Add Speaker'}}
+            {{/link-to}}
+          </div>
         </div>
       </div>
     {{/if}}

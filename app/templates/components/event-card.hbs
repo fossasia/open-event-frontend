@@ -35,9 +35,27 @@
         {{#if hasBlock}}
           {{yield}}
         {{else}}
-          {{#each tags as |tag|}}
-            <a>{{tag}}</a>
-          {{/each}}
+          {{#if filterByTags}}
+            <a href="#"
+               class="link item {{if (eq category event.topic.name) 'active'}}"
+              {{action 'selectCategory' event.topic.name}}>
+              {{tags.[0]}}
+            </a>
+            <a href="#"
+               class="link item {{if (eq eventType event.type.name) 'active'}}"
+              {{action 'selectEventType' event.type.name}}>
+              {{tags.[1]}}
+            </a>
+            <a href="#"
+               class="link item {{if (eq subCategory event.subTopic.slug) 'active'}}"
+              {{action 'selectCategory' event.topic.name event.subTopic.slug}}>
+              {{tags.[2]}}
+            </a>
+          {{else}}
+            {{#each tags as |tag|}}
+              <a>{{tag}}</a>
+            {{/each}}
+          {{/if}}
         {{/if}}
       </span>
     </div>

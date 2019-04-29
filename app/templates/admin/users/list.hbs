@@ -7,7 +7,9 @@
                         moveToUserDetails=(action 'moveToUserDetails')
                         deleteUser=(action 'deleteUser')
                         openEditModal=(action 'openEditModal')
+                        restoreUser = (action 'restoreUser')
                         customGlobalFilter='first-name'
+                        hasRestorePrivileges=hasRestorePrivileges
   }}
 </div>
 {{modals/edit-user-modal isOpen=isEditUserModalOpen data=data}}

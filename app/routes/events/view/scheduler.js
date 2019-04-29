@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-
 export default Route.extend({
   titleToken() {
     return this.get('l10n').t('Scheduler');
@@ -95,8 +94,9 @@ export default Route.extend({
     };
 
     let scheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers,microlocation,track',
-      filter  : scheduledFilterOptions
+      include      : 'speakers,microlocation,track',
+      filter       : scheduledFilterOptions,
+      'page[size]' : 0
     });
 
     let scheduled = []; // to convert sessions data to fullcalendar's requirements
@@ -105,11 +105,10 @@ export default Route.extend({
       session.speakers.forEach(function(speaker) {
         speakerNames.push(speaker.name);
       });
-
       scheduled.push({
         title      : `${session.title} | ${speakerNames.join(', ')}`,
-        start      : session.startsAt.format('YYYY-MM-DDTHH:mm:SS'),
-        end        : session.endsAt.format('YYYY-MM-DDTHH:mm:SS'),
+        start      : session.startsAt.format(),
+        end        : session.endsAt.format(),
         resourceId : session.microlocation.get('id'),
         color      : session.track.get('color'),
         serverId   : session.get('id') // id of the session on BE
@@ -117,8 +116,9 @@ export default Route.extend({
     });
 
     let unscheduledSessions = await eventDetails.query('sessions', {
-      include : 'speakers,track',
-      filter  : unscheduledFilterOptions
+      include      : 'speakers,track',
+      filter       : unscheduledFilterOptions,
+      'page[size]' : 0
     });
 
     let microlocations = await eventDetails.query('microlocations', {});
@@ -134,6 +134,7 @@ export default Route.extend({
 
     return {
       header,
+      timezone        : 'UTC',
       defaultView     : 'agendaDay',
       events          : scheduled,
       eventDetails,

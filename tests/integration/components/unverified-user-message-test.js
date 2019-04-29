@@ -11,7 +11,7 @@ module('Integration | Component | unverified user message', function(hooks) {
     this.set('shouldShowMessage', true);
     this.set('isMailSent', true);
     await render(hbs`{{unverified-user-message shouldShowMessage=shouldShowMessage isMailSent=isMailSent}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Cofirmation mail has been sent again successfully'));
+    assert.ok(this.element.innerHTML.trim().includes('Confirmation mail has been sent again successfully'));
   });
 
   test('it renders', async function(assert) {

@@ -7,7 +7,7 @@
             <h4 class="ui header">{{t 'Language'}}</h4>
           </div>
           <div class="column eight wide">
-            <h4 class="ui header">{{t 'Download .PO files'}}</h4>
+            <h4 class="ui header"> <a href="{{translations.sourceUrl}}">{{t 'Download .PO files'}}</a></h4>
           </div>
         </div>
         {{#each model as |language|}}
@@ -16,7 +16,7 @@
               {{get l10n.availableLocales language.code}}
             </div>
             <div class="column eight wide">
-              <a href="{{language.sourceUrl}}">{{t 'Download'}}</a>
+              <button class="ui primary {{if isLoading 'loading'}} button" href="{{language.sourceUrl}}" {{action 'translationsDownload'}}>{{t 'Download' }}</button>
             </div>
           </div>
         {{/each}}

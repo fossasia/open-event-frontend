@@ -2,6 +2,6 @@
   {{#if (eq record.type 'percent')}}
     {{number-format record.value}}{{t '%'}}
   {{else if (eq record.type 'amount')}}
-    {{t 'US$ '}}{{number-format record.value}}
+    {{t currency-symbol record.event.paymentCurrency }}{{number-format record.value}}
   {{/if}}
 </span>

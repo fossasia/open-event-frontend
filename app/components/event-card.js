@@ -15,5 +15,16 @@ export default Component.extend({
       }
     });
     return tags;
-  })
+  }),
+
+  actions: {
+    selectCategory(category, subCategory) {
+      this.set('category', (category === this.category && !subCategory) ? null : category);
+      this.set('subCategory', (!subCategory || subCategory === this.subCategory) ? null : subCategory);
+    },
+
+    selectEventType(eventType) {
+      this.set('eventType', eventType === this.eventType ? null : eventType);
+    }
+  }
 });
