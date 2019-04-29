@@ -1,11 +1,13 @@
 <span>
-  {{#if (eq record.state "accepted")}}
+  {{#if (eq record.status "accepted")}}
     <div class="ui yellow label">{{t 'Accepted'}}</div>
-  {{else if (eq record.state "confirmed")}}
+  {{else if (eq record.status "confirmed")}}
     <div class="ui green label">{{t 'Confirmed'}}</div>
-  {{else if (eq record.state "pending")}}
+  {{else if (eq record.status "pending")}}
     <div class="ui yellow label">{{t 'Pending'}}</div>
-  {{else}}
+  {{else if (eq record.status "rejected")}}
     <div class="ui red label">{{t 'Rejected'}}</div>
+  {{else if (eq record.status "deleted")}}
+    <div class="ui red label">{{t 'Deleted'}}</div>
   {{/if}}
 </span>

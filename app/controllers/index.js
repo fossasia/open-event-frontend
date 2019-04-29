@@ -24,6 +24,15 @@ export default Controller.extend({
     });
   }),
 
+  featuredEvents: computed('filteredEvents.[]', function() {
+    return this.get('filteredEvents').filter(event => {
+      if (event.isFeatured) {
+        return true;
+      }
+      return false;
+    });
+  }),
+
   actions: {
     shareEvent(event) {
       this.set('eventToShare', event);

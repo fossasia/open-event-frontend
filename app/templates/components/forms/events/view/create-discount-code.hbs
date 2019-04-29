@@ -44,9 +44,9 @@
       <label>{{t 'No event tickets to select from'}}</label>
     </div>
   {{/if}}
-  <div class="ui list">
+  <div class="ui list field">
     {{#each eventTickets as |ticket|}}
-      {{ui-checkbox label=ticket.name checked=ticket.isChecked onChange=(action 'updateTicketsSelection' ticket)}}
+      {{ui-checkbox name='ticket_name' label=ticket.name checked=ticket.isChecked onChange=(action 'updateTicketsSelection' ticket)}}
       <br>
     {{/each}}
   </div>
