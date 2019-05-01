@@ -27,7 +27,7 @@ export const languages = [
     name: 'Thai'
   },
   {
-    name: 'Viatnamese'
+    name: 'Vietnamese'
   },
   {
     name: 'Hindi'
