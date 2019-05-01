@@ -12,7 +12,13 @@ export const languages = [
     name: 'German'
   },
   {
+    name: 'Hindi'
+  },
+  {
     name: 'Indonesian'
+  },
+  {
+    name: 'Japanese'
   },
   {
     name: 'Korean'
@@ -21,21 +27,15 @@ export const languages = [
     name: 'Polish'
   },
   {
+    name: 'Russian'
+  },
+  {
     name: 'Spanish'
   },
   {
     name: 'Thai'
   },
   {
-    name: 'Viatnamese'
-  },
-  {
-    name: 'Hindi'
-  },
-  {
-    name: 'Japanese'
-  },
-  {
-    name: 'Russian'
+    name: 'Vietnamese'
   }
 ];
