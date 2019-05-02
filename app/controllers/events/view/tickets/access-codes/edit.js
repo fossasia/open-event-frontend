@@ -9,7 +9,7 @@ export default Controller.extend({
           this.transitionToRoute('events.view.tickets.access-codes');
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('An unexpected error has occured. Discount code cannot be created.'));
+          this.get('notify').error(this.get('l10n').t('An unexpected error has occured. Access code cannot be created.'));
         });
     }
   }
