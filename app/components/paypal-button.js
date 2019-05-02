@@ -23,8 +23,6 @@ export default Component.extend({
     };
 
     paypal.Button.render({
-      env: 'sandbox',
-
       commit: true,
 
       style: {
