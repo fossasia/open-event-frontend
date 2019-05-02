@@ -8,10 +8,6 @@ export default Component.extend({
   }),
   hasSocialLinks: computed(function() {
     var currentSpeaker = this.speaker;
-    if (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience) {
-      return true;
-    } else {
-      return false;
-    }
+    return (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience);
   })
 });
