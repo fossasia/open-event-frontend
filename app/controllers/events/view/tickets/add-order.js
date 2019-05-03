@@ -21,10 +21,9 @@ export default Controller.extend({
       title        : 'Ticket Type'
     },
     {
-      propertyName   : 'price',
-      title          : 'Price',
-      template       : 'components/ui-table/cell/events/view/tickets/cell-add-order-price',
-      disableSorting : true
+      propertyName : 'price',
+      title        : 'Price',
+      template     : 'components/ui-table/cell/events/view/tickets/cell-add-order-price'
     },
     {
       propertyName : 'quantity',
