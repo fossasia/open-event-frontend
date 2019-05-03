@@ -3,7 +3,7 @@
     <div class="ui orange inverted segment center aligned">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
-          Event Information
+          {{t 'Event Information'}}
         </div>
       </div>
     </div>
@@ -12,14 +12,14 @@
     <h3 class="weight-400">{{t 'When & Where'}}</h3>
   </div>
   <div class="ui padded segment">
-    <strong>At {{data.event.locationName}}</strong>
+    <strong>{{t 'At'}} {{data.event.locationName}}</strong>
     <br>
-    <strong>From:</strong> {{header-date data.event.startsAt}}
+    <strong>{{t 'From'}}:</strong> {{header-date data.event.startsAt}}
     <br>
-    <strong>To:</strong> {{header-date data.event.endsAt}}
+    <strong>{{t 'To'}}:</strong> {{header-date data.event.endsAt}}
     {{#if data.event.organizerName}}
       <br>
-      <strong>Organized By:</strong> {{data.event.organizerName}}
+      <strong>{{t 'Organized By'}}:</strong> {{data.event.organizerName}}
     {{/if}}
   </div>
   <div class="ui padded segment">
