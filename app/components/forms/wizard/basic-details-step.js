@@ -91,6 +91,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('data.event.topic.subTopics');
   }),
 
+  showDraftButton: computed('data.event.state', 'data.event.location', function() {
+    return (this.get('data.event.state') !== 'published');
+  }),
+
   hasPaidTickets: computed('data.event.tickets.[]', function() {
     return filter(this.get('data.event.tickets').toArray(), ticket => ticket.get('type') === 'paid').length > 0;
   }),
