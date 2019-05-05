@@ -44,6 +44,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
+  canAcceptOmise: computed('data.event.paymentCurrency', 'settings.isOmiseActivated', function() {
+    return this.get('settings.isOmiseActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).omise;
+  }),
+
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
     return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
   }),
