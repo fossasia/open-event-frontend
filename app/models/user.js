@@ -15,7 +15,7 @@ export default ModelBase.extend({
   password               : attr('string'),
   isVerified             : attr('boolean', { readOnly: true }),
   isSuperAdmin           : attr('boolean', { readOnly: true }),
-  isAdmin                : attr('boolean', { readOnly: true }),
+  isAdmin                : attr('boolean'),
   isUserOrganizer        : attr('boolean'),
   isUserCoorganizer      : attr('boolean'),
   isUserTrackOrganizer   : attr('boolean'),
@@ -47,8 +47,15 @@ export default ModelBase.extend({
   deletedAt      : attr('moment'),
   lastAccessedAt : attr('moment', { readOnly: true }),
 
-  status: computed('lastAccessedAt', function() {
-    return (new Date().getMonth() - new Date(this.get('lastAccessedAt')).getMonth() < 12);
+  status: computed('lastAccessedAt', 'deletedAt', function() {
+    if (this.get('deletedAt') == null) {
+      if (this.get('lastAccessedAt') == null) {
+        return 'inactive';
+      }
+      return ((new Date().getMonth() - new Date(this.get('lastAccessedAt')).getMonth() <= 12) ? 'active' : 'inactive');
+    } else {
+      return 'deleted';
+    }
   }),
   isAnAdmin: or('isSuperAdmin', 'isAdmin'),
 

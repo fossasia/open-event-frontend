@@ -40,7 +40,8 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName   : 'speakers.length',
+      propertyName   : 'eventStatisticsGeneral.speakers',
+      template       : 'components/ui-table/cell/cell-speakers-dashboard',
       title          : 'Speakers',
       disableSorting : true
     },
@@ -55,6 +56,12 @@ export default Controller.extend({
       template       : 'components/ui-table/cell/cell-link',
       title          : 'Public URL',
       disableSorting : true
+    },
+    {
+      propertyName   : 'is-featured',
+      template       : 'components/ui-table/cell/admin/event-is-featured',
+      title          : 'Featured Event',
+      disableSorting : false
     },
     {
       propertyName   : 'deletedAt',
@@ -106,6 +113,16 @@ export default Controller.extend({
         })
         .finally(() => {
           this.set('isLoading', false);
+        });
+    },
+    toggleFeatured(event) {
+      event.toggleProperty('isFeatured');
+      event.save()
+        .then(() => {
+          this.notify.success(this.get('l10n').t('Event details modified successfully'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         });
     }
   }

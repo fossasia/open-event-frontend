@@ -46,7 +46,7 @@ export default ModelBase.extend({
     website             : 'Website',
     facebook            : 'Facebook',
     twitter             : 'Twitter',
-    github              : 'Github',
+    github              : 'GitHub',
     linkedin            : 'Linkedin'
   },
 
@@ -71,7 +71,7 @@ export default ModelBase.extend({
     blog            : 'Blog',
     twitter         : 'Twitter',
     facebook        : 'Facebook',
-    github          : 'Github',
+    github          : 'GitHub',
     gender          : 'Gender'
   },
 

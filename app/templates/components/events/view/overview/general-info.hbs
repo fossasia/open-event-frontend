@@ -2,7 +2,7 @@
   <div class="header">{{t 'General info'}}</div>
 </div>
 <div class="content">
-  <div class="header">
+  <div class="ui {{if device.isMobile 'small' 'medium'}} header">
     {{#if (eq data.event.state 'published')}}
       {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
     {{else}}
@@ -62,34 +62,42 @@
               {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
             {{/each}}
           {{else}}
-            {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click here to add'}}</a>
+            {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.basic-details'}}#social-links">{{t 'Click here to add'}}</a>
           {{/if}}
         </td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Speakers'}}</strong></td>
         <td>
-          {{t 'All'}}: {{data.statistics.speakers}}
-          | {{t 'Accepted'}}: {{data.statistics.speakersAccepted}}
-          | {{t 'Pending'}}: {{data.statistics.speakersPending}}
-          | {{t 'Rejected'}}: {{data.statistics.speakersRejected}}
-          | {{t 'Confirmed'}}: {{data.statistics.speakersConfirmed}}
+          {{#if data.event.isSessionsSpeakersEnabled}}
+            {{t 'All'}}: {{data.statistics.speakers}}
+            | {{t 'Accepted'}}: {{data.statistics.speakersAccepted}}
+            | {{t 'Pending'}}: {{data.statistics.speakersPending}}
+            | {{t 'Rejected'}}: {{data.statistics.speakersRejected}}
+            | {{t 'Confirmed'}}: {{data.statistics.speakersConfirmed}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sessions'}}</strong></td>
         <td>
-          {{t 'All'}}: {{data.statistics.sessions}}
-          | {{t 'Accepted'}}: {{data.statistics.sessionsAccepted}}
-          | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
-          | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
-          | {{t 'Draft'}}: {{data.statistics.sessionsDraft}}
-          | {{t 'Confirmed'}}: {{data.statistics.sessionsConfirmed}}
+          {{#if data.event.isSessionsSpeakersEnabled}}
+            {{t 'All'}}: {{data.statistics.sessions}}
+            | {{t 'Accepted'}}: {{data.statistics.sessionsAccepted}}
+            | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
+            | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
+            | {{t 'Draft'}}: {{data.statistics.sessionsDraft}}
+            | {{t 'Confirmed'}}: {{data.statistics.sessionsConfirmed}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sponsors'}}</strong></td>
-        <td>{{data.statistics.sponsors}}</td>
+        <td>{{if data.event.isSponsorsEnabled data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
       </tr>
     </tbody>
   </table>
