@@ -111,7 +111,10 @@ router.map(function() {
   });
   this.route('explore');
   this.route('my-tickets', function() {
-    this.route('list', { path: '/:ticket_status' });
+    this.route('upcoming', function() {
+      this.route('list', { path: '/:ticket_status' });
+    });
+    this.route('past');
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
