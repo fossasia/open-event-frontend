@@ -84,9 +84,11 @@
       </div>
       <div class="menu">
         {{#each speakers as |speaker|}}
-          <div data-value="{{map-value mapper speaker}}" class="item">
-            {{speaker.name}}
-          </div>
+          {{#if speaker.name}}
+            <div data-value="{{map-value mapper speaker}}" class="item">
+              {{speaker.name}}
+            </div>
+          {{/if}}
         {{/each}}
       </div>
     {{/ui-dropdown}}
