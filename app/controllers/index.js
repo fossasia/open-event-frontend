@@ -25,12 +25,8 @@ export default Controller.extend({
   }),
 
   featuredEvents: computed('filteredEvents.[]', function() {
-    return this.get('filteredEvents').filter(event => {
-      if (event.isFeatured) {
-        return true;
-      }
-      return false;
-    });
+    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
+
   }),
 
   actions: {
