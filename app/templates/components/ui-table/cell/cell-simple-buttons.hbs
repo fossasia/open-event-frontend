@@ -1,7 +1,4 @@
 <div class="ui {{if device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
-  {{#ui-popup content=(t 'View') class='ui icon button'  click=(action viewSession record.id) position='left center'}}
-    <i class="unhide icon"></i>
-<div class="ui vertical compact basic buttons">
   {{#ui-popup content=(t 'View Session') class='ui icon button'  click=(action viewSession record.id) position='left center'}}
     <i class="unhide icon"></i>		
   {{/ui-popup}}
