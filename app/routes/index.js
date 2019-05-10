@@ -113,13 +113,11 @@ export default Route.extend({
     if (mode === 'filterOptions') {
       return filterOptions;
     } else {
-      return {
-        filteredEvents: this.store.query('event', {
-          sort    : 'starts-at',
-          include : 'event-topic,event-sub-topic,event-type,speakers-call',
-          filter  : filterOptions
-        })
-      };
+      return this.store.query('event', {
+        sort    : 'starts-at',
+        include : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter  : filterOptions
+      });
     }
 
   },
