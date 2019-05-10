@@ -77,6 +77,46 @@ export default Component.extend(FormMixin, {
               prompt : this.get('l10n').t('Please enter the live secret token')
             }
           ]
+        },
+
+        omiseTestPublic: {
+          identifier : 'test_public_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter the public test key')
+            }
+          ]
+        },
+
+        omiseTestSecret: {
+          identifier : 'test_secret_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter the secret test key')
+            }
+          ]
+        },
+
+        omiseLivePublic: {
+          identifier : 'live_public_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter the public live key')
+            }
+          ]
+        },
+
+        omiseLiveSecret: {
+          identifier : 'live_secret_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.get('l10n').t('Please enter the secret live key')
+            }
+          ]
         }
       }
     };
@@ -88,6 +128,10 @@ export default Component.extend(FormMixin, {
 
   isCheckedPaypal: computed(function() {
     return this.get('settings.paypalSandboxClient') || this.get('settings.paypalClient');
+  }),
+
+  isCheckedOmise: computed(function() {
+    return this.get('settings.omiseTestPublic') || this.get('settings.omiseLivePublic');
   }),
 
   actions: {
@@ -106,6 +150,14 @@ export default Component.extend(FormMixin, {
             'paypalSandboxSecret' : null,
             'paypalSecret'        : null,
             'paypalClient'        : null
+          });
+        }
+        if (this.get('isCheckedOmise') === false) {
+          this.get('settings').setProperties({
+            'omiseTestPublic' : null,
+            'omiseTestSecret' : null,
+            'omiseLivePublic' : null,
+            'omiseLiveSecret' : null
           });
         }
         this.sendAction('save');

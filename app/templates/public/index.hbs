@@ -5,7 +5,7 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if (or ticketUrl model.tickets)}}
+  {{#if (or model.event.ticketUrl model.tickets)}}
     <div class="tickets" id="tickets">
       <div class="ui segments ticket-list">
         <div class="ui segment">
@@ -20,6 +20,7 @@
                                  order=model.order
                                  attendees=model.attendees
                                  code=code
+                                 currentEventIdentifier=model.event.identifier
                                  createNewUserViaEmail=(action 'createNewUserViaEmail')
                                  loginExistingUser=(action 'loginExistingUser')
                                  isLoginModalOpen=isLoginModalOpen
@@ -32,7 +33,7 @@
             <div class="ui grid">
               <div class="ui row">
                 <div class="column">
-                  <a target="_blank" rel="noopener noreferrer" href="{{ticketUrl}}" class="ui right labeled blue icon button">
+                  <a target="_blank" rel="noopener noreferrer" href="{{model.event.ticketUrl}}" class="ui right labeled blue icon button">
                     <i class="ticket icon"></i>
                     {{t 'Order tickets'}}
                   </a>
@@ -40,7 +41,7 @@
               </div>
               <div class="ui row muted text">
                 <div class="column">
-                  {{t 'You will be taken to '}} {{ticketUrl}} {{t ' to complete the purchase of tickets'}}
+                  {{t 'You will be taken to '}} {{model.event.ticketUrl}} {{t ' to complete the purchase of tickets'}}
                 </div>
               </div>
             </div>

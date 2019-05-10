@@ -32,14 +32,14 @@
       <div class="row">
         <div class="ten wide column">
           {{#each notification.notificationActions as |action|}}
-            {{#if action.link}}
-              <a href={{action.link}} class="ui blue button">
-                {{t action.buttonTitle}}
-              </a>
-            {{else}}
+            {{#if action.buttonRoute}}
               {{#link-to action.buttonRoute action.subjectId tagName='button' class='ui blue button'}}
                 {{t action.buttonTitle}}
               {{/link-to}}
+            {{else}}
+              <a href={{action.link}} class="ui blue button">
+                {{t action.buttonTitle}}
+              </a>
             {{/if}}
           {{/each}}
         </div>

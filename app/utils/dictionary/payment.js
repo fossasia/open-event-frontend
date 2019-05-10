@@ -6,174 +6,199 @@ export const paymentCurrencies = [
     code   : 'PLN',
     symbol : 'zł',
     name   : 'Polish zloty',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'NZD',
     symbol : 'NZ$',
     name   : 'New Zealand dollar',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'INR',
     symbol : '₹',
     name   : 'Indian rupee',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'BRL',
     symbol : 'R$',
     name   : 'Brazilian real',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'SGD',
     symbol : 'SG$',
     name   : 'Singapore dollar',
-    stripe : true
+    stripe : true,
+    omise  : true
   },
   {
     paypal : true,
     code   : 'CAD',
     symbol : 'C$',
     name   : 'Canadian dollar',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'HKD',
     symbol : 'HK$',
     name   : 'Hong Kong dollar',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'CZK',
     symbol : 'Kč',
     name   : 'Czech koruna',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'DKK',
     symbol : 'Kr',
     name   : 'Danish krone',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'NOK',
     symbol : 'kr',
     name   : 'Norwegian krone',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'SEK',
     symbol : 'kr',
     name   : 'Swedish krona',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'TWD',
     symbol : 'NT$',
     name   : 'New Taiwan dollar',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'USD',
     symbol : 'US$',
     name   : 'United States dollar',
-    stripe : true
+    stripe : true,
+    omise  : true
   },
   {
     paypal : true,
     code   : 'HUF',
     symbol : 'Ft',
     name   : 'Hungarian forint',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'JPY',
     symbol : '‎¥‎',
     name   : 'Japanese yen',
-    stripe : true
+    stripe : true,
+    omise  : true
   },
   {
     paypal : true,
     code   : 'ILS',
     symbol : '₪',
     name   : 'Israeli new sheqel',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'EUR',
     symbol : '€',
     name   : 'European Euro',
-    stripe : true
+    stripe : true,
+    omise  : true
   },
   {
     paypal : true,
     code   : 'MXN',
     symbol : '$',
     name   : 'Mexican peso',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'PHP',
     symbol : '₱',
     name   : 'Philippine peso',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'AUD',
     symbol : 'A$',
     name   : 'Australian dollar',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'GBP',
     symbol : '£',
     name   : 'British pound',
-    stripe : true
+    stripe : true,
+    omise  : true
   },
   {
     paypal : true,
     code   : 'THB',
     symbol : '฿',
     name   : 'Thai baht',
-    stripe : true
+    stripe : true,
+    omise  : true
   },
   {
     paypal : true,
     code   : 'RUB',
     symbol : 'R',
     name   : 'Russian ruble',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'MYR',
     symbol : 'RM',
     name   : 'Malaysian ringgit',
-    stripe : true
+    stripe : true,
+    omise  : false
   },
   {
     paypal : true,
     code   : 'CHF',
     symbol : 'Sf.',
     name   : 'Swiss franc',
-    stripe : true
+    stripe : true,
+    omise  : false
   }
 ];

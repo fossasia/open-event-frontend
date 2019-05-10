@@ -25,7 +25,7 @@ export default Component.extend(FormMixin, {
               prompt : this.get('l10n').t('Please enter a new password')
             },
             {
-              type   : 'minLength[6]',
+              type   : 'minLength[8]',
               prompt : this.get('l10n').t('Your password must have at least {ruleValue} characters')
             }
           ]
@@ -44,6 +44,9 @@ export default Component.extend(FormMixin, {
   },
 
   actions: {
+    showPassword(fieldName) {
+      this.toggleProperty(`showPass${fieldName}`);
+    },
     submit() {
       this.onValid(() => {
         this.sendAction('changePassword', this.getProperties('passwordCurrent', 'passwordNew'));

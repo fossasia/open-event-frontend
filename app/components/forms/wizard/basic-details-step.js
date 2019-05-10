@@ -44,6 +44,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
 
+  canAcceptOmise: computed('data.event.paymentCurrency', 'settings.isOmiseActivated', function() {
+    return this.get('settings.isOmiseActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).omise;
+  }),
+
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
     return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
   }),
@@ -52,6 +56,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('data.event.socialLinks').filterBy('isDeleted', false);
   }),
 
+  isUserUnverified: computed('authManager.currentUser.isVerified', function() {
+    return !this.authManager.currentUser.isVerified;
+  }),
   /**
    * returns the validation rules for the social links.
    */
@@ -86,6 +93,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       return [];
     }
     return this.get('data.event.topic.subTopics');
+  }),
+
+  showDraftButton: computed('data.event.state', function() {
+    return this.data.event.state !== 'published';
   }),
 
   hasPaidTickets: computed('data.event.tickets.[]', function() {
@@ -346,6 +357,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       }));
     },
 
+    updateSalesEndDate(eventStartDate) {
+      eventStartDate = moment(new Date(eventStartDate));
+      this.get('data.event.tickets').forEach(ticket => {
+        if (moment(eventStartDate).isBefore(ticket.get('salesEndsAt'))) {
+          ticket.set('salesEndsAt', moment(eventStartDate, 'MM/DD/YYYY').toDate());
+        }
+      });
+    },
+
     removeTicket(deleteTicket) {
       const index = deleteTicket.get('position');
       this.get('data.event.tickets').forEach(ticket => {
@@ -398,10 +418,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
 
     updateDates() {
-      const { timezone, startsAt, endsAt } = this.get('data.event').getProperties('timezone', 'startsAt', 'endsAt');
+      const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event').getProperties('startsAtDate', 'endsAtDate', 'startsAtTime', 'endsAtTime', 'timezone');
+      var startsAtConcatenated = moment(startsAtDate.concat(' ', startsAtTime));
+      var endsAtConcatenated = moment(endsAtDate.concat(' ', endsAtTime));
       this.get('data.event').setProperties({
-        startsAt : moment.tz(startsAt, timezone),
-        endsAt   : moment.tz(endsAt, timezone)
+        startsAt : moment.tz(startsAtConcatenated, timezone),
+        endsAt   : moment.tz(endsAtConcatenated, timezone)
       });
     },
 
