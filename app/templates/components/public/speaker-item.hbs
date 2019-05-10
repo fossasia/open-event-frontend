@@ -22,21 +22,23 @@
           {{sanitize speaker.speakingExperience}}
         {{/if}}
       </p>
-      <div class="social-icons">
-        {{#if speaker.facebook}}
-          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i></a>
-        {{/if}}
-        {{#if speaker.linkedin}}
-          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i></a>
-        {{/if}}
-        {{#if speaker.twitter}}
-          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i></a>
-        {{/if}}
-        {{#if speaker.github}}
-          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
-        {{/if}}
-      </div>
-      <div class="ui divider"></div>
+      {{#if hasSocialLinks}}
+        <div class="social-icons">
+          {{#if speaker.facebook}}
+            <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i></a>
+          {{/if}}
+          {{#if speaker.linkedin}}
+            <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i></a>
+          {{/if}}
+          {{#if speaker.twitter}}
+            <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i></a>
+          {{/if}}
+          {{#if speaker.github}}
+            <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
+          {{/if}}
+        </div>
+        <div class="ui divider"></div>
+      {{/if}}
       <h3 class="ui header">
         {{t 'Sessions'}}
       </h3>

@@ -77,7 +77,7 @@
             {{input type='text' id='company' value=data.company}}
           </div>
           <div class="field">
-            <label for="taxBusinessInfo">{{t 'Tax Business Info'}}</label>
+            <label for="taxBusinessInfo">{{t 'Tax ID or Business ID'}}</label>
             {{input type='text' id='taxBusinessInfo' value=data.taxBusinessInfo}}
           </div>
           <div class="field">
@@ -134,6 +134,13 @@
                 {{ui-radio name='payment_mode' label=(t 'Paypal') value='paypal' current=data.paymentMode
                            onChange=(action (mut data.paymentMode))}}
                 <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
+              </div>
+            {{/if}}
+            {{#if data.event.canPayByOmise}}
+              <div class="field">
+                {{ui-radio name='payment_mode' label=(t 'Omise') value='omise' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+                <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise"></label>
               </div>
             {{/if}}
             {{#if data.event.canPayByCheque}}

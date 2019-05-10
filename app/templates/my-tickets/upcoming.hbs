@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="sixteen wide column">
+    {{#tabbed-navigation isNonPointing=true}}
+      {{#link-to 'my-tickets.upcoming.list' 'completed' class='item'}}
+        {{t 'Completed Orders'}}
+      {{/link-to}}
+      {{#link-to 'my-tickets.upcoming.list' 'open' class='item'}}
+        {{t 'Open Orders'}}
+      {{/link-to}}
+    {{/tabbed-navigation}}
+  </div>
+</div>
+{{outlet}}
