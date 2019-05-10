@@ -136,6 +136,13 @@
                 <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
               </div>
             {{/if}}
+            {{#if data.event.canPayByOmise}}
+              <div class="field">
+                {{ui-radio name='payment_mode' label=(t 'Omise') value='omise' current=data.paymentMode
+                           onChange=(action (mut data.paymentMode))}}
+                <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise"></label>
+              </div>
+            {{/if}}
             {{#if data.event.canPayByCheque}}
               <div class="field">
                 {{ui-radio name='payment_mode' label=(t 'Cheque') value='cheque' current=data.paymentMode

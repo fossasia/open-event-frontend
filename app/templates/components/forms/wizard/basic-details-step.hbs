@@ -308,6 +308,25 @@
           </div>
         {{/if}}
       {{/if}}
+      {{#if canAcceptOmise}}
+        <label>{{t 'Payment with Omise'}}</label>
+        <div class="field payments">
+          <div class="ui checkbox">
+            {{input type='checkbox' id='payment_by_omise' checked=data.event.canPayByOmise}}
+            <label for="payment_by_omise">
+              {{t 'Yes, accept payment through Omise Gateway'}}
+              <div class="ui hidden divider"></div>
+              <span class="text muted">
+                {{t 'Omise can accept Credit and Debit Cards , Net-Banking and AliPay. Find more details '}}
+                <a href="https://www.omise.co/payment-methods" target="_blank" rel="noopener noreferrer">{{t 'here'}}</a>.
+              </span>
+            </label>
+          </div>
+        </div>
+        {{#if data.event.canPayByOmise}}
+          <label>{{t 'Omise Gateway has been successfully activated'}}</label>
+        {{/if}}
+      {{/if}}
       {{#if canAcceptStripe}}
         <label>{{t 'Payment by Stripe'}}</label>
         <div class="field payments">
@@ -315,7 +334,7 @@
             {{input type='checkbox' id='payment_by_stripe' checked=data.event.canPayByStripe}}
             <label for="payment_by_stripe">
               <span>{{t 'YES, accept payment through Stripe'}}</span>
-              <br>
+              <div class="ui hidden divider"></div>
               <span class="text muted">
                 {{t 'Stripe accepts Visa, Master and Amex. Find out more about Stripe '}}
                 <a href="https://stripe.com/docs" target="_blank" rel="noopener noreferrer">{{t 'here'}}</a>.
