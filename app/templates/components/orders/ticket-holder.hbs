@@ -8,17 +8,17 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
-      <h2 class="weight-300">
+      <h4 class="weight-300">
         {{t 'Name '}}
-      </h2>
+      </h4>
       <span>
         {{buyer.firstName}} {{buyer.lastName}}
       </span>
       <div class="ui divider"></div>
 
-      <h2 class="weight-300">
+      <h4 class="weight-300">
         {{t 'Email '}}
-      </h2>
+      </h4>
       <span>
         {{buyer.email}}
       </span>
@@ -26,14 +26,14 @@
       {{#if (not-eq data.paymentMode 'free')}}
         <div class="ui divider"></div>
 
-        <h2 class="weight-300">
+        <h4 class="weight-300">
           {{t 'Payment Mode '}}
-        </h2>
+        </h4>
         <span>
           {{#if (eq data.paymentMode 'paypal')}}
             <img src="/images/payment-logos/paypal.png" alt="paypal" height='19' width="80" style="margin-left:5px">
           {{else if (eq data.paymentMode 'stripe')}}
-            <img src="/images/payment-logos/stripe.png" alt="stripe" height='19' width="80" style="margin-left:5px">
+            <img src="/images/payment-logos/stripe.png" alt="stripe" height='19' width="200" style="margin-left:5px">
           {{else}}
             {{capitalize data.paymentMode}}
           {{/if}}

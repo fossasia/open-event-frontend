@@ -4,16 +4,16 @@ import moment from 'moment';
 export default Route.extend({
   titleToken() {
     switch (this.get('params.ticket_status')) {
-      case 'upcoming':
-        return this.get('l10n').t('Upcoming');
-      case 'past':
-        return this.get('l10n').t('Past');
+      case 'completed':
+        return this.get('l10n').t('Completed');
+      case 'open':
+        return this.get('l10n').t('Open');
     }
   },
   model(params) {
     this.set('params', params);
     let filterOptions = [];
-    if (params.ticket_status === 'upcoming') {
+    if (params.ticket_status === 'completed') {
       filterOptions.push(
         {
           and: [
@@ -27,18 +27,9 @@ export default Route.extend({
               }
             },
             {
-              or: [
-                {
-                  name : 'status',
-                  op   : 'eq',
-                  val  : 'completed'
-                },
-                {
-                  name : 'status',
-                  op   : 'eq',
-                  val  : 'placed'
-                }
-              ]
+              name : 'status',
+              op   : 'eq',
+              val  : 'completed'
             },
             {
               name : 'event',
@@ -52,7 +43,7 @@ export default Route.extend({
           ]
         }
       );
-    } else if (params.ticket_status === 'past') {
+    } else if (params.ticket_status === 'open') {
       filterOptions.push(
         {
           and: [
@@ -61,23 +52,14 @@ export default Route.extend({
               op   : 'has',
               val  : {
                 name : 'starts-at',
-                op   : 'lt',
+                op   : 'ge',
                 val  : moment().toISOString()
               }
             },
             {
-              or: [
-                {
-                  name : 'status',
-                  op   : 'eq',
-                  val  : 'completed'
-                },
-                {
-                  name : 'status',
-                  op   : 'eq',
-                  val  : 'placed'
-                }
-              ]
+              name : 'status',
+              op   : 'eq',
+              val  : 'placed'
             },
             {
               name : 'event',
