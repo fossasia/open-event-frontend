@@ -84,11 +84,10 @@
         <td><strong>{{t 'No. of Sessions'}}</strong></td>
         <td>
           {{#if data.event.isSessionsSpeakersEnabled}}
-            {{t 'All'}}: {{data.statistics.sessions}}
+            {{t 'Submitted'}}: {{data.statistics.sessions}}
             | {{t 'Accepted'}}: {{data.statistics.sessionsAccepted}}
             | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
             | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
-            | {{t 'Draft'}}: {{data.statistics.sessionsDraft}}
             | {{t 'Confirmed'}}: {{data.statistics.sessionsConfirmed}}
           {{else}}
             {{t 'Sessions and Speakers not enabled.'}}
