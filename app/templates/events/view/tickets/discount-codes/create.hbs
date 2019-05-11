@@ -1,10 +1,25 @@
-<div class="ui stackable grid">
-  <div class="row">
-    <h2 class="ui header column">{{t 'Create a new Discount Code'}}</h2>
-  </div>
-  <div class="row">
-    <div class="sixteen wide column">
-      {{forms/events/view/create-discount-code save='saveCode' data=model.discountCode tickets=model.tickets}}
+{{#if (eq model.tickets.length 0)}}
+  <div class="ui stackable grid">
+    <div class="row">
+      <h2 class="ui header column">{{t 'No Tickets Found'}}</h2>
+    </div>
+    <div class="row">
+      <div class="sixteen wide column">
+        <div class="ui muted text">
+          {{t 'Please add some tickets to add a Discount Code.'}}
+        </div>
+      </div>
     </div>
   </div>
-</div>
+{{else}}  
+  <div class="ui stackable grid">
+    <div class="row">
+      <h2 class="ui header column">{{t 'Create a new Discount Code'}}</h2>
+    </div>
+    <div class="row">
+      <div class="sixteen wide column">
+        {{forms/events/view/create-discount-code save='saveCode' data=model.discountCode tickets=model.tickets}}
+      </div>
+    </div>
+  </div>
+{{/if}}
