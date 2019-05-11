@@ -1,18 +1,16 @@
 import Route from '@ember/routing/route';
 import moment from 'moment';
-import { inject as service } from '@ember/service';
 
 export default Route.extend({
-  infinity: service(),
-
   /**
    * Load filtered events based on the given params
    *
    * @param params
+   * @param mode
    * @return {*}
    * @private
    */
-  _loadEvents(params) {
+  _loadEvents(params, mode) {
     let filterOptions = [
       {
         and:
@@ -112,21 +110,26 @@ export default Route.extend({
         ]
       });
     }
+    if (mode === 'filterOptions') {
+      return filterOptions;
+    } else {
+      return this.store.query('event', {
+        sort    : 'starts-at',
+        include : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter  : filterOptions
+      });
+    }
 
-    return this.infinity.model('event', {
-      sort         : 'starts-at',
-      include      : 'event-topic,event-sub-topic,event-type,speakers-call',
-      filter       : filterOptions,
-      perPage      : 6,
-      startingPage : 1,
-      perPageParam : 'page[size]',
-      pageParam    : 'page[number]'
-    });
   },
 
   async model(params) {
+    let filterOptions =  this._loadEvents(params, 'filterOptions');
     return {
-      filteredEvents: await this._loadEvents(params)
+      filteredEvents: await this.store.query('event', {
+        sort    : 'starts-at',
+        include : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter  : filterOptions
+      })
     };
   },
 
@@ -141,6 +144,12 @@ export default Route.extend({
       if (this.get('controller')) {
         this.get('controller').set('filteredEvents', await this._loadEvents(params));
       }
+    },
+    loading(transition) {
+      transition.promise.finally(() => {
+        this.controller.set('finishedLoading', true);
+      });
+      return false;
     }
   }
 });

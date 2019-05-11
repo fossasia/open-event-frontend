@@ -9,8 +9,9 @@ module('Integration | Helper | can-modify-order', function(hooks) {
 
   test('it returns true for free orders', async function(assert) {
     let order = EmberObject.create({
-      amount : 0,
-      status : 'completed'
+      amount         : 0,
+      status         : 'completed',
+      discountCodeId : null
     });
     this.set('order', order);
 
@@ -21,8 +22,9 @@ module('Integration | Helper | can-modify-order', function(hooks) {
 
   test('it returns true for paid non completed orders', async function(assert) {
     let order = EmberObject.create({
-      amount : 10,
-      status : 'placed'
+      amount         : 10,
+      status         : 'placed',
+      discountCodeId : null
     });
     this.set('order', order);
 
@@ -33,8 +35,9 @@ module('Integration | Helper | can-modify-order', function(hooks) {
 
   test('it returns false for paid completed orders', async function(assert) {
     let order = EmberObject.create({
-      amount : 10,
-      status : 'completed'
+      amount         : 10,
+      status         : 'completed',
+      discountCodeId : null
     });
     this.set('order', order);
 
@@ -43,5 +46,30 @@ module('Integration | Helper | can-modify-order', function(hooks) {
     assert.equal(this.element.textContent.trim(), 'false');
   });
 
+  test('it returns false for paid, completed discounted orders', async function(assert) {
+    let order = EmberObject.create({
+      amount         : 0,
+      status         : 'completed',
+      discountCodeId : 1
+    });
+    this.set('order', order);
+
+    await render(hbs`{{can-modify-order order}}`);
+
+    assert.equal(this.element.textContent.trim(), 'false');
+  });
+
+  test('it returns true for paid, non completed discounted orders', async function(assert) {
+    let order = EmberObject.create({
+      amount         : 10,
+      status         : 'pending',
+      discountCodeId : 1
+    });
+    this.set('order', order);
+
+    await render(hbs`{{can-modify-order order}}`);
+
+    assert.equal(this.element.textContent.trim(), 'true');
+  });
 });
 

@@ -1,17 +1,17 @@
-<div class="ui list">
-  {{#each record.organizers as |role index|}}
-    <div class="item">{{add index 1}}. {{role.email}} ({{t 'Organizer'}})</div>
+<div class="ui ordered list">
+  {{#each record.organizers as |role|}}
+    <div class="item">{{role.email}} ({{t 'Organizer'}})</div>
   {{/each}}
-  {{#each record.coorganizers as |role index|}}
-    <div class="item">{{add index 1}}. {{role.email}} ({{t 'Co-organizers'}})</div>
+  {{#each record.coorganizers as |role|}}
+    <div class="item">{{role.email}} ({{t 'Co-organizers'}})</div>
   {{/each}}
-  {{#each record.trackOrganizers as |role index|}}
-    <div class="item">{{add index 1}}. {{role.email}} ({{t 'Track-organizers'}})</div>
+  {{#each record.trackOrganizers as |role|}}
+    <div class="item">{{role.email}} ({{t 'Track-organizers'}})</div>
   {{/each}}
-  {{#each record.registrars as |role index|}}
-    <div class="item">{{add index 1}}. {{role.email}} ({{t 'Registrars'}})</div>
+  {{#each record.registrars as |role|}}
+    <div class="item">{{role.email}} ({{t 'Registrars'}})</div>
   {{/each}}
-  {{#each record.moderators as |role index|}}
-    <div class="item">{{add index 1}}. {{role.email}} ({{t 'Moderators'}})</div>
+  {{#each record.moderators as |role|}}
+    <div class="item">{{role.email}} ({{t 'Moderators'}})</div>
   {{/each}}
 </div>

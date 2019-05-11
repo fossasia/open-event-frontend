@@ -49,6 +49,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketingEnabled        : attr('boolean', { defaultValue: true }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
+  isFeatured                : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
@@ -56,6 +57,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isStripeLinked  : attr('boolean'),
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
+  canPayByOmise   : attr('boolean', { defaultValue: false }),
   canPayOnsite    : attr('boolean', { defaultValue: false }),
   paymentCountry  : attr('string'),
   paymentCurrency : attr('string', { defaultValue: 'USD' }),
