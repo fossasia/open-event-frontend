@@ -12,13 +12,7 @@ export const languages = [
     name: 'German'
   },
   {
-    name: 'Hindi'
-  },
-  {
     name: 'Indonesian'
-  },
-  {
-    name: 'Japanese'
   },
   {
     name: 'Korean'
@@ -27,15 +21,22 @@ export const languages = [
     name: 'Polish'
   },
   {
-    name: 'Russian'
-  },
-  {
     name: 'Spanish'
   },
   {
     name: 'Thai'
   },
   {
-    name: 'Vietnamese'
+    name: 'Viatnamese'
+  },
+  {
+    name: 'Hindi'
+  },
+  {
+    name: 'Japanese'
+  },
+  {
+    name: 'Russian'
   }
 ];
+languages.sort((a, b) => a.name !== b.name ? a.name < b.name ? -1 : 1 : 0);
