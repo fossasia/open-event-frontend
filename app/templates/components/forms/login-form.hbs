@@ -33,9 +33,13 @@
               <div class="ui small basic icon buttons">
                 <button type="button" class="ui button" id="eye1" {{action 'showPassword'}}>
                   {{#if showPass}}
-                    <i class="hide basic icon"></i>
+                    <div class="ui icon button" data-tooltip="Hide Password" data-position="top left" data-inverted="">
+                      <i class="hide basic icon"></i>
+                    </div>
                   {{else}}
-                    <i class="unhide basic icon"></i>
+                    <div class="ui icon button" data-tooltip="Show Password" data-position="top left" data-inverted="">
+                      <i class="unhide basic icon"></i>
+                    </div>
                   {{/if}}
                 </button>
               </div>
