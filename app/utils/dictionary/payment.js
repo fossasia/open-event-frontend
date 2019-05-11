@@ -3,6 +3,27 @@ export const paymentCountries = ['US', 'AL', 'AR', 'AU', 'AT', 'BE', 'BR', 'CA',
 export const paymentCurrencies = [
   {
     paypal : true,
+    code   : 'LTL',
+    symbol : 'Lt',
+    name   : 'Lithuanian Litas',
+    stripe : true
+  },
+  {
+    paypal : true,
+    code   : 'ARS',
+    symbol : '$',
+    name   : 'Argentine Peso',
+    stripe : true
+  },
+  {
+    paypal : true,
+    code   : 'ALL',
+    symbol : 'Lek',
+    name   : 'Albanian Lek',
+    stripe : true
+  },
+  {
+    paypal : true,
     code   : 'PLN',
     symbol : 'zł',
     name   : 'Polish zloty',
