@@ -5,8 +5,9 @@ import { v4 } from 'ember-uuid';
 
 export default Component.extend({
 
-  selectedImage : null,
-  allowDragDrop : true,
+  selectedImage   : null,
+  allowDragDrop   : true,
+  requiresDivider : false,
 
   inputIdGenerated: computed('inputId', function() {
     return this.get('inputId') ? this.get('inputId') : v4();
