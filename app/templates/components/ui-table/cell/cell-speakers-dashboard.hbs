@@ -1,7 +1,11 @@
-<div class="ui list">
-  <div class="item">{{t 'Total'}}: {{record.eventStatisticsGeneral.speakers}}</div>
-  <div class="item">{{t 'Accepted'}}: {{record.eventStatisticsGeneral.speakersAccepted}}</div>
-  <div class="item">{{t 'Confirmed'}}: {{record.eventStatisticsGeneral.speakersConfirmed}}</div>
-  <div class="item">{{t 'Pending'}}: {{record.eventStatisticsGeneral.speakersPending}}</div>
-  <div class="item">{{t 'Rejected'}}: {{record.eventStatisticsGeneral.speakersRejected}}</div>
-</div>
+{{#if record.eventStatisticsGeneral.speakers}}
+  <div class="ui list">
+    <div class="item">{{t 'Total'}}: {{record.eventStatisticsGeneral.speakers}}</div>
+    <div class="item">{{t 'Accepted'}}: {{record.eventStatisticsGeneral.speakersAccepted}}</div>
+    <div class="item">{{t 'Confirmed'}}: {{record.eventStatisticsGeneral.speakersConfirmed}}</div>
+    <div class="item">{{t 'Pending'}}: {{record.eventStatisticsGeneral.speakersPending}}</div>
+    <div class="item">{{t 'Rejected'}}: {{record.eventStatisticsGeneral.speakersRejected}}</div>
+  </div>
+{{else}}
+  {{t 'No Speaker Added Yet'}}
+{{/if}}
