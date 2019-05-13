@@ -1,0 +1,4 @@
+[context.production]
+  command = "ember build -prod"
+  [context.production.environment]
+    API_HOST = "https://open-event-api-dev.herokuapp.com"

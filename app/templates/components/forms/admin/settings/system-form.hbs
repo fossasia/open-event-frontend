@@ -34,20 +34,6 @@
   </div>
   <div class="ui hidden divider"></div>
 
-  <h3 class="ui header">
-    {{t 'Search'}}
-    <div class="sub header">
-      {{t 'Choose a searching option to be used in the backend'}}
-    </div>
-  </h3>
-  <div class="field">
-    {{ui-radio label=(t 'Flask Filtering') checked='checked' name='search' disabled=true}}
-  </div>
-  <div class="field">
-    {{ui-radio label=(t 'Elastic Search (Coming Soon)') name='search' disabled=true value='elastic'}}
-  </div>
-  <div class="ui hidden divider"></div>
-
   {{forms/admin/settings/system/social-media-token settings=settings}}
 
 
@@ -59,7 +45,7 @@
   <h3 class="ui header">
     {{t 'App secret key'}}
     <div class="sub header">
-      {{t 'Secret key for the application. Recommended is a random string minimum 20 characters in length.'}}
+      {{t 'Secret key for the application. Recommended is a random string of minimum 20 characters in length.'}}
     </div>
   </h3>
   <div class="field">

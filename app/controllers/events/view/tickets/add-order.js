@@ -21,10 +21,9 @@ export default Controller.extend({
       title        : 'Ticket Type'
     },
     {
-      propertyName   : 'price',
-      title          : 'Price',
-      template       : 'components/ui-table/cell/events/view/tickets/cell-add-order-price',
-      disableSorting : true
+      propertyName : 'price',
+      title        : 'Price',
+      template     : 'components/ui-table/cell/events/view/tickets/cell-add-order-price'
     },
     {
       propertyName : 'quantity',
@@ -44,7 +43,7 @@ export default Controller.extend({
       ticket.set('orderQuantity', count);
       order.set('amount', this.get('total'));
       if (!this.get('total')) {
-        order.set('amount', null);
+        order.set('amount', 0);
       }
       if (count > 0) {
         order.tickets.addObject(ticket);

@@ -42,7 +42,7 @@
                   <div class="default text">0</div>
                   <div class="menu">
                     <div class="item" data-value="{{map-value mapper 0}}">0</div>
-                    {{#each (range ticket.minOrder ticket.maxOrder) as |count|}}
+                    {{#each (range ticket.minOrder (add ticket.maxOrder 1)) as |count|}}
                       <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
                     {{/each}}
                   </div>

@@ -53,7 +53,7 @@
           <label>{{t 'Description'}}</label>
           {{widgets/forms/rich-text-editor value=sponsor.description name='description'}}
         </div>
-        <div class="sponsors-step eleven wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
+        <div class="sponsors-step eight wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
           {{widgets/forms/image-upload
             label=(t 'Logo')
             imageUrl=sponsor.logoUrl
@@ -66,27 +66,27 @@
         <div class="ui section divider"></div>
       {{/if}}
     {{/each}}
-    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t 'Add another sponsor'}}</button>
+    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t (if sponsors.length 'Add another sponsor' 'Add sponsor')}}</button>
     <div class="spacer-50"></div>
   {{else}}
     <div class="spacer-50"></div>
   {{/if}}
 
-  <div class="{{if device.isMobile 'mini three' 'right floated large'}} ui buttons">
-    <button class="ui left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+  <div class="{{if device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
+    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
     </button>
-    <button class="ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
+    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{t 'Save draft'}}
       <i class="save icon"></i>
     </button>
     {{#if data.event.locationName}}
-      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

@@ -11,8 +11,8 @@ export default Component.extend({
 
   customEndDate: null,
 
-  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', function() {
-    return !(this.get('category') || this.get('sub_category') || this.get('event_type') || this.get('startDate') || this.get('endDate'));
+  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', function() {
+    return !(this.get('category') || this.get('sub_category') || this.get('event_type') || this.get('startDate') || this.get('endDate') || this.get('location') !== null);
   }),
 
   dateRanges: computed(function() {
@@ -103,6 +103,7 @@ export default Component.extend({
       this.set('category', null);
       this.set('sub_category', null);
       this.set('event_type', null);
+      this.set('location', null);
     }
   }
 });

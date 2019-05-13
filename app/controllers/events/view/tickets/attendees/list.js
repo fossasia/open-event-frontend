@@ -43,8 +43,8 @@ export default Controller.extend({
         attendee.set('checkinTimes', newCheckinTimes);
       }
       attendee.save()
-        .then(() => {
-          this.notify.success(this.get('l10n').t('Attendee check In status modified successfully.'));
+        .then(savedAttendee => {
+          this.notify.success(this.get('l10n').t(`Attendee ${savedAttendee.isCheckedIn ? 'Checked-In' : 'Checked-Out'} Successfully`));
           this.send('refreshRoute');
         })
         .catch(() => {

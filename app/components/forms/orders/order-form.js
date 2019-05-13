@@ -40,8 +40,7 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer   : false,
-  enableBilling : false,
+  sameAsBuyer: false,
 
   getRemainingTime: computed('data', function() {
     let orderExpiryTime = this.get('data.event.orderExpiryTime');
@@ -325,7 +324,7 @@ export default Component.extend(FormMixin, {
         {
           type   : 'regExp',
           value  : validGithubProfileUrlPattern,
-          prompt : this.get('l10n').t('Please enter a valid github profile url')
+          prompt : this.get('l10n').t('Please enter a valid GitHub profile url')
         }
       ]
     };
@@ -334,12 +333,12 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.get('l10n').t('Please enter github link')
+          prompt : this.get('l10n').t('Please enter GitHub link')
         },
         {
           type   : 'regExp',
           value  : validGithubProfileUrlPattern,
-          prompt : this.get('l10n').t('Please enter a valid github profile url')
+          prompt : this.get('l10n').t('Please enter a valid GitHub profile url')
         }
       ]
     };

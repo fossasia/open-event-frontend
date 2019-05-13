@@ -27,7 +27,8 @@
                                   inputId='start_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='start'
-                                  value=data.event.startsAtDate}}
+                                  value=data.event.startsAtDate
+                                  onChange=(action 'updateSalesEndDate')}}
     </div>
     <div class="three wide field">
       <label for="start_time">&nbsp;</label>
@@ -91,7 +92,8 @@
         icon='camera'
         hint=(t 'Select Event Image')
         maxSizeInKb=10000
-        helpText=(t 'We recommend using at least a 2160x1080px (2:1 ratio) image')}}
+        helpText=(t 'We recommend using at least a 2160x1080px (2:1 ratio) image')
+        requiresDivider=true}}
     </div>
   </div>
 
@@ -114,7 +116,7 @@
     </div>
   {{/if}}
   <div class="ui section divider"></div>
-  <div class="grouped fields">
+  <div class="grouped fields" id="social-links">
     <label>{{t 'Links & Social Media'}}</label>
     {{widgets/forms/link-input
       hasLinkName=true
@@ -202,10 +204,8 @@
       </div>
     {{/if}}
   {{/if}}
-  {{#if hasPaidTickets}}
-
+  {{#if (and hasPaidTickets data.event.isTicketingEnabled)}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
-
     <div class="ui section divider"></div>
     <div class="field">
       <label for="discount_code">{{t 'Redeem Discount Code'}}</label>
@@ -309,6 +309,25 @@
           </div>
         {{/if}}
       {{/if}}
+      {{#if canAcceptOmise}}
+        <label>{{t 'Payment with Omise'}}</label>
+        <div class="field payments">
+          <div class="ui checkbox">
+            {{input type='checkbox' id='payment_by_omise' checked=data.event.canPayByOmise}}
+            <label for="payment_by_omise">
+              {{t 'Yes, accept payment through Omise Gateway'}}
+              <div class="ui hidden divider"></div>
+              <span class="text muted">
+                {{t 'Omise can accept Credit and Debit Cards , Net-Banking and AliPay. Find more details '}}
+                <a href="https://www.omise.co/payment-methods" target="_blank" rel="noopener noreferrer">{{t 'here'}}</a>.
+              </span>
+            </label>
+          </div>
+        </div>
+        {{#if data.event.canPayByOmise}}
+          <label>{{t 'Omise Gateway has been successfully activated'}}</label>
+        {{/if}}
+      {{/if}}
       {{#if canAcceptStripe}}
         <label>{{t 'Payment by Stripe'}}</label>
         <div class="field payments">
@@ -316,7 +335,7 @@
             {{input type='checkbox' id='payment_by_stripe' checked=data.event.canPayByStripe}}
             <label for="payment_by_stripe">
               <span>{{t 'YES, accept payment through Stripe'}}</span>
-              <br>
+              <div class="ui hidden divider"></div>
               <span class="text muted">
                 {{t 'Stripe accepts Visa, Master and Amex. Find out more about Stripe '}}
                 <a href="https://stripe.com/docs" target="_blank" rel="noopener noreferrer">{{t 'here'}}</a>.
@@ -458,9 +477,9 @@
 
   <div class="field">
     <label>{{t 'Event Type'}}</label>
-    {{#ui-dropdown class='search selection' onChange=(action (mut data.event.type)) as |execute mapper|}}
+    {{#ui-dropdown class='search selection' selected=data.event.type.name onChange=(action (mut data.event.type)) as |execute mapper|}}
       <i class="dropdown icon"></i>
-      <div class="default text">{{if data.event.type.name data.event.type.name (t 'Select Event Type')}}</div>
+      <div class="default text">{{t 'Select Event Type'}}</div>
       <div class="menu">
         {{#each data.types as |type|}}
           <div class="item" data-value="{{map-value mapper type}}">{{sanitize type.name}}</div>
@@ -470,9 +489,9 @@
   </div>
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
-    {{#ui-dropdown class='search selection' onChange=(action (mut data.event.topic)) as |execute mapper|}}
+    {{#ui-dropdown class='search selection' selected=(sanitize data.event.topic.name) onChange=(action (mut data.event.topic)) as |execute mapper|}}
       <i class="dropdown icon"></i>
-      <div class="default text">{{if data.event.topic.name data.event.topic.name (t 'Select Event Topic')}}</div>
+      <div class="default text">{{t 'Select Event Topic'}}</div>
       <div class="menu">
         {{#each data.topics as |topic|}}
           <div class="item" data-value="{{map-value mapper topic}}">{{sanitize topic.name}}</div>
@@ -482,10 +501,10 @@
   </div>
   <div class="field">
     <label>{{t 'Event Sub-topic'}}</label>
-    {{#ui-dropdown class='search selection' onChange=(action (mut data.event.subTopic)) as |execute mapper|}}
+    {{#ui-dropdown class='search selection' selected=data.event.subTopic.name onChange=(action (mut data.event.subTopic)) as |execute mapper|}}
       <i class="dropdown icon"></i>
 
-      <div class="default text">{{if data.event.subTopic.name data.event.subTopic.name (t 'Select Event Sub-Topic')}}</div>
+      <div class="default text">{{t 'Select Event Sub-Topic'}}</div>
       <div class="menu">
         {{#each subTopics as |subTopic|}}
           <div class="item" data-value="{{map-value mapper subTopic}}">{{sanitize subTopic.name}}</div>
@@ -541,17 +560,19 @@
     {{/ui-dropdown}}
   </div>
   <br>
-  <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui buttons">
-    <button class="ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
+  <div class="{{unless device.isMobile 'right floated large' 'mini three'}} ui fields {{if isUserUnverified 'disabled'}} buttons">
+    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="blue ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-      {{t 'Save draft'}}
-      <i class="save icon"></i>
-    </button>
+    {{#if showDraftButton}}
+      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+        {{t 'Save draft'}}
+        <i class="save icon"></i>
+      </button>
+    {{/if}}
     {{#if data.event.locationName}}
-      <button class="green ui right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

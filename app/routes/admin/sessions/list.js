@@ -124,23 +124,13 @@ export default Route.extend({
     } else {
       filterOptions = [
         {
-          and:
-            [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'deleted-at',
-                  op   : 'eq',
-                  val  : null
-                }
-              },
-              {
-                name : 'deleted-at',
-                op   : 'eq',
-                val  : null
-              }
-            ]
+          name : 'event',
+          op   : 'has',
+          val  : {
+            name : 'deleted-at',
+            op   : 'eq',
+            val  : null
+          }
         }
       ];
     }

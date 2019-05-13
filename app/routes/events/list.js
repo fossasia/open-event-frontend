@@ -93,5 +93,10 @@ export default Route.extend({
       objectType : 'events'
     };
 
+  },
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
 });

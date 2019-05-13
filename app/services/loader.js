@@ -161,7 +161,6 @@ export default Service.extend({
       xhr.open(fetchOptions.method || 'get', url);
       let headers = fetchOptions.headers || {};
       for (let k in headers) {
-        // https://stackoverflow.com/a/39281156/6870128
         if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
@@ -170,6 +169,31 @@ export default Service.extend({
       xhr.onerror = reject;
       if (xhr.upload && onProgressUpdate) {xhr.upload.onprogress = onProgressUpdate}
       xhr.send(fetchOptions.body);
+    });
+  },
+  downloadFile(urlPath,  onProgressUpdate = null, config = {}, method = 'GET') {
+    return new Promise((resolve, reject) => {
+      const { url, fetchOptions } = this.getFetchOptions(urlPath, method, null, config);
+      const xhr = new XMLHttpRequest();
+
+      xhr.responseType = 'blob';
+      xhr.open('get', url);
+      let headers = fetchOptions.headers || {};
+      for (let k in headers) {
+        if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
+          xhr.setRequestHeader(k, fetchOptions.headers[k]);
+        }
+      }
+      xhr.onload =  e => {
+        if (e.target.response) {
+          resolve(e.target.response);
+        } else {
+          reject('Failed to download file.');
+        }
+      };
+      xhr.onerror = reject;
+      if (onProgressUpdate) {xhr.onprogress = onProgressUpdate}
+      xhr.send(null);
     });
   }
 });

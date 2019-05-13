@@ -14,11 +14,13 @@ export default Controller.extend({
     },
     {
       propertyName   : 'type',
+      template       : 'components/ui-table/cell/cell-sponsor-sanitize',
       title          : 'Type',
       disableSorting : true
     },
     {
       propertyName : 'level',
+      template     : 'components/ui-table/cell/cell-sponsor-sanitize',
       title        : 'Level'
     },
     {

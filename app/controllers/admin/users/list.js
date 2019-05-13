@@ -1,6 +1,10 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 
 export default Controller.extend({
+  hasRestorePrivileges: computed('authManager.currentUser.isAdmin', function() {
+    return this.get('authManager.currentUser.isSuperAdmin') || this.get('authManager.currentUser.isAdmin');
+  }),
   columns: [
     {
       propertyName     : 'first-name',
@@ -83,6 +87,22 @@ export default Controller.extend({
     openEditModal(user) {
       this.set('isEditUserModalOpen', true);
       this.set('data', user);
+    },
+    restoreUser(user) {
+      this.set('isLoading', true);
+      user.set('deletedAt', null);
+      user.save({ adapterOptions: { getTrashed: true } })
+        .then(() => {
+          this.notify.success(this.get('l10n').t('User has been restored successfully.'));
+          this.send('refreshRoute');
+        })
+        .catch(e => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          console.warn(e);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
     }
   }
 });

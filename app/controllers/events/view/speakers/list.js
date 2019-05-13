@@ -3,9 +3,10 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   columns: [
     {
-      propertyName : 'thumbnailImageUrl',
-      title        : ' ',
-      template     : 'components/ui-table/cell/events/view/speakers/speaker-logo'
+      propertyName   : 'thumbnailImageUrl',
+      title          : ' ',
+      template       : 'components/ui-table/cell/events/view/speakers/speaker-logo',
+      disableSorting : true
     },
     {
       propertyName : 'name',
@@ -17,6 +18,7 @@ export default Controller.extend({
     },
     {
       propertyName : 'mobile',
+      template     : 'components/ui-table/cell/events/view/speakers/speaker-mobile',
       title        : 'Phone'
     },
     {

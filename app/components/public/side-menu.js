@@ -7,9 +7,9 @@ export default Component.extend({
     this._super(...arguments);
     let speakersCall = await this.get('event.speakersCall');
     this.set('shouldShowCallforSpeakers',
-      speakersCall.announcement && (speakersCall.privacy === 'public'));
+      speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
   },
   isSchedulePublished: computed('event.schedulePublishedOn', function() {
-    return this.get('event.schedulePublishedOn').toISOString() !== moment(0).toISOString();
+    return this.get('event.schedulePublishedOn') && this.get('event.schedulePublishedOn').toISOString() !== moment(0).toISOString();
   })
 });

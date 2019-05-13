@@ -28,15 +28,15 @@
               <td>{{entry.name}}</td>
               <td>{{moment-format entry.startsAt 'ddd, MMM DD \at h:mm A'}}</td>
               <td class="right aligned">{{entry.sales.completed.ticket_count}}</td>
-              <td class="right aligned">US$ {{number-format entry.sales.completed.sales_total}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.completed.sales_total}}</td>
               <td class="right aligned">{{entry.sales.placed.ticket_count}}</td>
-              <td class="right aligned">US$ {{number-format entry.sales.placed.sales_total}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.placed.sales_total}}</td>
               <td class="right aligned">{{entry.sales.pending.ticket_count}}</td>
-              <td class="right aligned">US$ {{number-format entry.sales.pending.sales_total}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.pending.sales_total}}</td>
             </tr>
           {{/each}}
         </tbody>
-        <tfoot>
+        {{!-- <tfoot>
           <tr>
             <th colspan="2">
               <span class="weight-600">{{t 'Total'}}</span>
@@ -60,7 +60,7 @@
               US$ {{number-format totalPendingSales}}
             </th>
           </tr>
-        </tfoot>
+        </tfoot> --}}
       </table>
     </div>
   </div>

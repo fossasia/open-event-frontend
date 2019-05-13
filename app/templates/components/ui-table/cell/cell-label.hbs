@@ -1,5 +1,11 @@
-{{#if record.isActive}}
-  <div class="ui green label center aligned">{{t 'Active'}}</div>
-{{else}}
-  <div class="ui red label center aligned">{{t 'Inactive'}}</div>
-{{/if}}
+<span>
+  {{#if record.isExpired}}
+    <a class="ui red label">{{t 'Expired'}}</a>
+  {{else}}
+    {{#if record.isActive}}
+      <a class="ui green label">{{t 'Active'}}</a>
+    {{else}}
+      <a class="ui yellow label">{{t 'Inactive'}}</a>
+    {{/if}}
+  {{/if}}
+</span>

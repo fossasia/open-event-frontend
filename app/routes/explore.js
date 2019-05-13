@@ -146,8 +146,9 @@ export default Route.extend({
     }
 
     return this.store.query('event', {
-      sort   : 'starts-at',
-      filter : filterOptions
+      sort    : 'starts-at',
+      filter  : filterOptions,
+      include : 'event-topic,event-sub-topic,event-type'
     });
   },
 
@@ -169,6 +170,7 @@ export default Route.extend({
     async queryParamsDidChange(change, params) {
       if (this.get('controller')) {
         this.get('controller').set('filteredEvents', await this._loadEvents(params));
+        this.get('controller').set('filters', params);
       }
     }
   }

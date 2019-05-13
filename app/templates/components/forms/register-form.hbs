@@ -25,7 +25,11 @@
           {{/if}}
           <div class="ui small basic icon buttons">
             <button type="button" class="ui button" id="eye2" {{ action 'showSignupPassword'}}>
-              <i class="eye icon"></i>
+              {{#if showSignupPass}}
+                <i class="hide basic icon"></i>
+              {{else}}
+                <i class="unhide basic icon"></i>
+              {{/if}}
             </button>
           </div>
         </div>
@@ -40,7 +44,11 @@
           {{/if}}
           <div class="ui small basic icon buttons">
             <button type="button" class="ui button" id="eye3" {{ action 'showConfirmPassword'}}>
-              <i class="eye icon"></i>
+              {{#if showConfirmPass}}
+                <i class="hide basic icon"></i>
+              {{else}}
+                <i class="unhide basic icon"></i>
+              {{/if}}
             </button>
           </div>
         </div>

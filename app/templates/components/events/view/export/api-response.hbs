@@ -31,9 +31,16 @@
 <div class="ui secondary header">
   {{t 'You can make a GET request to the following endpoint to access the selected information'}}
 </div>
-<div class="ui secondary segment url">
-  <pre>{{displayUrl}}</pre>
-</div>
+{{#ui-popup on='click' content=(t 'Link copied to clipboard') position='bottom right'}}
+  <div class="ui secondary segment url">
+    {{#copy-button
+      clipboardText=displayUrl
+      tagName=null
+    }}
+      <pre>{{displayUrl}}</pre>
+    {{/copy-button}}
+  </div>
+{{/ui-popup}}
 <div class="ui secondary header">
   {{t 'Response'}}
 </div>

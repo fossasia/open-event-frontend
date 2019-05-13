@@ -1,5 +1,5 @@
 {{#ui-accordion}}
-  <div class="title">
+  <div class="title" {{action 'hideSpeakerImage'}} role="button">
     <div class="ui">
       <h3 class="ui header">
         {{session.title}}
@@ -11,19 +11,29 @@
     </div>
     <br>
     <div class="ui grid stackable">
-      <div class="left floated eleven wide column">
-        <div class="session-speakers">
-          {{#each session.speakers as |speaker|}}
-            <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
-          {{/each}}
+      {{#if hideImage}}
+        <div class="left floated five wide column">
+          {{#if session.startsAt}}
+            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{/if}}
         </div>
-      </div>
-      <div class="right floated five wide column">
-        {{#if session.startsAt}}
-          <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-          <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
-        {{/if}}
-      </div>
+      {{else}}
+        <div class="left floated eleven wide column">
+          <div class="session-speakers">
+            {{#each session.speakers as |speaker|}}
+              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
+            {{/each}}
+          </div>
+        </div>
+        <div class="right floated five wide column">
+          {{#if session.startsAt}}
+            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{/if}}
+        </div>
+      {{/if}}
+
       <div class="row">
         <div class="column session-description">
           {{sanitize session.shortAbstract}}
@@ -33,17 +43,17 @@
   </div>
   <div class="content">
     {{#each session.speakers as |speaker|}}
-      <h3 class="ui header">{{speaker.name}}</h3>
-      <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
+      <div class="ui divider"></div>
+      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
       <p>
+        <br>
+        {{speaker.name}}
+        <br>
         {{#if speaker.shortBiography}}
-          <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
           {{sanitize speaker.shortBiography}}
         {{else if speaker.longBiography}}
-          <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
           {{sanitize speaker.longBiography}}
         {{else if speaker.speakingExperience}}
-          <h4 class="ui header">{{t 'About '}}{{speaker.name}}</h4>
           {{sanitize speaker.speakingExperience}}
         {{/if}}
       </p>
@@ -58,7 +68,7 @@
           <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>Twitter</a>
         {{/if}}
         {{#if speaker.github}}
-          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>Github</a>
+          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>GitHub</a>
         {{/if}}
       </div>
     {{/each}}

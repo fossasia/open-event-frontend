@@ -32,7 +32,11 @@
               {{/if}}
               <div class="ui small basic icon buttons">
                 <button type="button" class="ui button" id="eye1" {{action 'showPassword'}}>
-                  <i class="eye icon"></i>
+                  {{#if showPass}}
+                    <i class="hide basic icon"></i>
+                  {{else}}
+                    <i class="unhide basic icon"></i>
+                  {{/if}}
                 </button>
               </div>
             </div>
@@ -45,6 +49,7 @@
               <div class="ui center aligned segment basic">
                 <a href="{{href-to 'reset-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
               </div>
+              {{!--
               {{#unless noSocial}}
                 <div class="ui horizontal divider">
                   Or
@@ -54,6 +59,7 @@
                   {{t 'Login with Facebook'}}
                 </button>
               {{/unless}}
+              --}}
             </div>
           </div>
         </div>

@@ -35,6 +35,7 @@ router.map(function() {
   this.route('register');
   this.route('reset-password');
   this.route('logout');
+  this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
       this.route('list', { path: '/s/:session_status' });
@@ -110,7 +111,10 @@ router.map(function() {
   });
   this.route('explore');
   this.route('my-tickets', function() {
-    this.route('list', { path: '/:ticket_status' });
+    this.route('upcoming', function() {
+      this.route('list', { path: '/:ticket_status' });
+    });
+    this.route('past');
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });

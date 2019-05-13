@@ -11,3 +11,4 @@ module('Integration | Component | events/view/overview/event tickets', function(
     assert.ok(this.element.innerHTML.trim().includes('Tickets'));
   });
 });
+

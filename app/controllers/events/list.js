@@ -8,7 +8,7 @@ export default Controller.extend({
       title        : 'Name'
     },
     {
-      propertyName : 'startsAt',
+      propertyName : 'starts-at',
       template     : 'components/ui-table/cell/cell-event-date',
       dateFormat   : 'MMMM DD, YYYY - HH:mm A',
       title        : 'Date'
@@ -29,6 +29,7 @@ export default Controller.extend({
     },
     {
       propertyName     : 'speakers.length',
+      template         : 'components/ui-table/cell/cell-speakers-dashboard',
       title            : 'Speakers',
       disableSorting   : true,
       disableFiltering : true
@@ -74,6 +75,7 @@ export default Controller.extend({
       })
         .then(() => {
           this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));

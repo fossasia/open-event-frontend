@@ -1,6 +1,6 @@
-<div class="ui vertical compact basic buttons">
+<div class="ui {{if device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
   {{#if (or (eq record.state 'rejected')(eq record.state 'pending'))}}
-    {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
+    {{#ui-dropdown class='ui icon right pointing dropdown button'}}
       <i class="green checkmark icon"></i>
       <div class="menu">
         <a role="button" class="item" {{action acceptProposal record true}}>{{t 'With email'}}</a>
@@ -9,7 +9,7 @@
     {{/ui-dropdown}}
   {{/if}}
   {{#if (eq record.state 'accepted')}}
-    {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
+    {{#ui-dropdown class='ui icon right pointing dropdown button'}}
       <i class="blue checkmark icon"></i>
       <div class="menu">
         <a role="button" class="item" {{action confirmProposal record true}}>{{t 'With email'}}</a>
@@ -18,7 +18,7 @@
     {{/ui-dropdown}}
   {{/if}}
   {{#if (or (eq record.state 'confirmed') (eq record.state 'pending') (eq record.state 'accepted'))}}
-    {{#ui-dropdown class='ui icon bottom right pointing dropdown button'}}
+    {{#ui-dropdown class='ui icon right pointing dropdown button'}}
       <i class="red remove icon"></i>
       <div class="menu">
         <a role="button" class="item" {{action rejectProposal record true}}>{{t 'With email'}}</a>

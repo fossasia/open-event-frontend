@@ -8,13 +8,26 @@ export default Route.extend({
       speakers : await eventDetails.query('speakers', {
         filter: [
           {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'confirmed'
-            }
+            or: [
+              {
+                name : 'sessions',
+                op   : 'any',
+                val  : {
+                  name : 'state',
+                  op   : 'eq',
+                  val  : 'accepted'
+                }
+              },
+              {
+                name : 'sessions',
+                op   : 'any',
+                val  : {
+                  name : 'state',
+                  op   : 'eq',
+                  val  : 'confirmed'
+                }
+              }
+            ]
           }
         ],
         'page[size]': 0

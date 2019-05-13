@@ -89,21 +89,26 @@ export default Component.extend(FormMixin, {
         let discountCode = await this.get('store').findRecord('discount-code', promotionalCode, {
           include: 'tickets'
         });
-        let discountType = discountCode.get('type');
-        let discountValue = discountCode.get('value');
-        order.set('discountCode', discountCode);
-        let tickets = await discountCode.get('tickets');
-        tickets.forEach(ticket => {
-          let ticketPrice = ticket.get('price');
-          if (discountType === 'amount') {
-            ticket.set('discount', Math.min(ticketPrice, discountValue));
-            this.get('discountedTickets').addObject(ticket);
-          } else {
-            ticket.set('discount', ticketPrice * (discountValue / 100));
-            this.get('discountedTickets').addObject(ticket);
-          }
-          this.set('invalidPromotionalCode', false);
-        });
+        let discountCodeEvent = await discountCode.get('event');
+        if (this.currentEventIdentifier === discountCodeEvent.identifier) {
+          let discountType = discountCode.get('type');
+          let discountValue = discountCode.get('value');
+          order.set('discountCode', discountCode);
+          let tickets = await discountCode.get('tickets');
+          tickets.forEach(ticket => {
+            let ticketPrice = ticket.get('price');
+            if (discountType === 'amount') {
+              ticket.set('discount', Math.min(ticketPrice, discountValue));
+              this.get('discountedTickets').addObject(ticket);
+            } else {
+              ticket.set('discount', ticketPrice * (discountValue / 100));
+              this.get('discountedTickets').addObject(ticket);
+            }
+            this.set('invalidPromotionalCode', false);
+          });
+        } else {
+          this.set('invalidPromotionalCode', true);
+        }
       } catch (e) {
         if (this.get('invalidPromotionalCode')) {
           this.set('invalidPromotionalCode', true);
@@ -124,7 +129,7 @@ export default Component.extend(FormMixin, {
       ticket.set('orderQuantity', count);
       order.set('amount', this.get('total'));
       if (!this.get('total')) {
-        order.set('amount', null);
+        order.set('amount', 0);
       }
       if (count > 0) {
         order.tickets.addObject(ticket);

@@ -30,40 +30,39 @@
         </div>
       {{/each}}
       
-      
-      <h4 class="ui horizontal divider header">
-        <i class='ticket icon'></i>
-        {{t 'Billing Information'}}
-      </h4>
-      <div class="field disabled">
-        <label for="company">{{t 'Company'}}</label>
-        {{input type='text' id='company' value=data.company}}
-      </div>
-      <div class="field disabled">
-        <label for="taxBusinessInfo">{{t 'Tax Business Info'}}</label>
-        {{input type='text' id='taxBusinessInfo' value=data.taxBusinessInfo}}
-      </div>
-      <div class="field disabled">
-        <label for="address">{{t 'Address'}}</label>
-        {{textarea rows='2' id='address' value=data.address}}
-      </div>
-      <div class="field disabled">
-        <label for="city">{{t 'City'}}</label>
-        {{input type='text' id='city' value=data.city}}
-      </div>
-      <div class="field disabled">
-        <label for="state">{{t 'State/Province'}}</label>
-        {{input type='text' id='state' value=data.state}}
-      </div>
-      <div class="field disabled">
-        <label for="zipcode">{{t 'Zip Code'}}</label>
-        {{input type='text' id='zip_code' value=data.zipcode}}
-      </div>
-      <div class="field disabled">
-        <label for="country">{{t 'Country'}}</label>
-        {{input type='text' id='country' value=data.country}}
-      </div>
-      <div class="ui divider" style="margin-top: 30px"></div>
+      {{#if data.isBillingEnabled}}
+        <div class="print">
+          <h4 class="ui horizontal divider header">
+            <i class='ticket icon'></i>
+            {{t 'Billing Information'}}
+          </h4>
+          <div class="ui two column divided relaxed stackable grid ">
+            <div class="row">
+              <div class="column">
+                <h4 class="weight-300">
+                  {{t 'Company '}}
+                </h4>
+                <div class="muted text"> {{data.company}}</div>
+                <h4 class="weight-300">
+                  {{t 'Tax ID or Business ID'}}
+                </h4>
+                <div class="muted text"> {{data.taxBusinessInfo}}</div>
+              </div>
+
+              <div class="column">
+                <h4 class="weight-300">
+                  {{t 'Address '}}
+                </h4>
+                <div class="muted text"> {{data.address}}</div>
+                <div class="muted text"> {{data.city}}</div>
+                <div class="muted text"> {{data.state}}</div>
+                <div class="muted text"> {{data.country}}</div>
+                <div class="muted text"> {{data.zipcode}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
     </div>
   </div>
 </form>
