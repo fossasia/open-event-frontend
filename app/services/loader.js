@@ -161,7 +161,6 @@ export default Service.extend({
       xhr.open(fetchOptions.method || 'get', url);
       let headers = fetchOptions.headers || {};
       for (let k in headers) {
-        // https://stackoverflow.com/a/39281156/6870128
         if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
@@ -178,17 +177,23 @@ export default Service.extend({
       const xhr = new XMLHttpRequest();
 
       xhr.responseType = 'blob';
-      xhr.open(fetchOptions.method || 'get', url);
+      xhr.open('get', url);
+      let headers = fetchOptions.headers || {};
+      for (let k in headers) {
+        if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
+          xhr.setRequestHeader(k, fetchOptions.headers[k]);
+        }
+      }
       xhr.onload =  e => {
-        const anchor = document.createElement('a');
-        anchor.style.display = 'none';
-        anchor.href = e.target.responseURL;
-        anchor.click();
-        resolve('success');
+        if (e.target.response) {
+          resolve(e.target.response);
+        } else {
+          reject('Failed to download file.');
+        }
       };
       xhr.onerror = reject;
       if (onProgressUpdate) {xhr.onprogress = onProgressUpdate}
-      xhr.send();
+      xhr.send(null);
     });
   }
 });

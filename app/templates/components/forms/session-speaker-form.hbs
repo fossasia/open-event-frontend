@@ -84,9 +84,11 @@
       </div>
       <div class="menu">
         {{#each speakers as |speaker|}}
-          <div data-value="{{map-value mapper speaker}}" class="item">
-            {{speaker.name}}
-          </div>
+          {{#if speaker.name}}
+            <div data-value="{{map-value mapper speaker}}" class="item">
+              {{speaker.name}}
+            </div>
+          {{/if}}
         {{/each}}
       </div>
     {{/ui-dropdown}}
@@ -174,7 +176,16 @@
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{else}}
-              {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+              {{#if (eq field.name 'Website')}}
+                {{widgets/forms/link-input
+                  fixedName=true
+                  inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
+                  segmentedLink=data.speaker.segmentedLinkWebsite
+                  canRemoveItem=false
+                }}
+              {{else}}
+                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+              {{/if}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
