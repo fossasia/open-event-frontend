@@ -18,7 +18,12 @@ export default Controller.extend({
     this.set('isLoading', true);
     this.get('loader')
       .downloadFile(`/tickets/${this.get('model.order.identifier')}`)
-      .then(() => {
+      .then(res => {
+        const anchor = document.createElement('a');
+        anchor.style.display = 'none';
+        anchor.href = `data:text/plain;charset=utf-8,${encodeURIComponent(res)}`;
+        anchor.download = 'Tickets.pdf';
+        anchor.click();
         this.get('notify').success(this.get('l10n').t('Here are your tickets'));
       })
       .catch(e => {
