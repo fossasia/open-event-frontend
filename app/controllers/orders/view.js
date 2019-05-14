@@ -21,7 +21,7 @@ export default Controller.extend({
       .then(res => {
         const anchor = document.createElement('a');
         anchor.style.display = 'none';
-        anchor.href = `data:text/plain;charset=utf-8,${encodeURIComponent(res)}`;
+        anchor.href = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
         anchor.download = 'Tickets.pdf';
         anchor.click();
         this.get('notify').success(this.get('l10n').t('Here are your tickets'));
