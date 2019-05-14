@@ -20,7 +20,7 @@
       <div class="twelve wide column {{unless device.isMobile 'right aligned'}}">
         {{#if device.isMobile}}
           <div class="ui icon fluid buttons">
-            <a href="{{href-to 'public' model.id}}" class="ui button" data-tooltip={{t 'Preview'}} data-position="top left">
+            <a href="{{model.url}}" class="ui button" data-tooltip={{t 'Preview'}} data-position="top left">
               <i class="unhide icon"></i>
             </a>
             <button class="ui button" {{action 'togglePublishState'}} data-tooltip="{{if (eq model.state 'published') 'Unpublish' 'Publish'}}" data-position="top left">
@@ -32,7 +32,7 @@
             <button class="ui red button" {{action 'openDeleteEventModal'}} data-tooltip={{t 'Delete'}} data-position="top left"><i class="trash icon"></i></button>
           </div>
         {{else}}
-          <a href="{{href-to 'public' model.id}}" class="ui button labeled icon small">
+          <a href="{{model.url}}" class="ui button labeled icon small">
             <i class="unhide icon"></i>
             {{t 'Preview'}}
           </a>
