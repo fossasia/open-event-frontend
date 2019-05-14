@@ -491,18 +491,6 @@ export default Component.extend(FormMixin, {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
   }),
 
-  otherGender: computed('data.speaker', function() {
-    if (this.get('data.speaker')) {
-      if (this.get('data.speaker.gender') === 'Male' || this.get('data.speaker.gender') === 'Female') {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return false;
-    }
-  }),
-
   // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
   noSpeakerExists: computed('speakers', function() {
     return (this.get('speakers').length === 1);
@@ -528,15 +516,6 @@ export default Component.extend(FormMixin, {
     toggleNewSessionSelected(value) {
       this.set('sessionDetails', false);
       this.set('newSessionSelected', value);
-    },
-
-    setGender(gender) {
-      this.set('data.speaker.gender', gender);
-      if (gender === 'Other') {
-        this.set('otherGender', true);
-      } else {
-        this.set('otherGender', false);
-      }
     }
   },
   didInsertElement() {
