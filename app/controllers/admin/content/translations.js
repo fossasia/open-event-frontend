@@ -11,7 +11,7 @@ export default Controller.extend({
         .then(res => {
           const anchor = document.createElement('a');
           anchor.style.display = 'none';
-          anchor.href = `data:text/plain;charset=utf-8,${encodeURIComponent(res)}`;
+          anchor.href = URL.createObjectURL(new Blob([res], { type: 'octet/stream' }));
           anchor.download = 'Translations.zip';
           anchor.click();
           this.get('notify').success(this.get('l10n').t('Translations Zip generated successfully.'));
