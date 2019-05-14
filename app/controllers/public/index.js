@@ -112,8 +112,13 @@ export default Controller.extend({
         this.set('isLoginModalOpen', true);
         return;
       }
-      let order = this.get('model.order');
-      let event = order.get('event');
+      let order = await this.model.order;
+      let { event } = order.event;
+      let { tax } = event.tax;
+      if (!tax.taxIncludedInPrice) {
+        let taxedPrice  = (order.amount) * (tax.rate) / 100 + (order.amount);
+        order.set('amount', taxedPrice);
+      }
       order.tickets.forEach(ticket => {
         let numberOfAttendees = ticket.orderQuantity;
         while (numberOfAttendees--) {
