@@ -6,6 +6,7 @@ import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validTw
   validGithubProfileUrlPattern, validLinkedinProfileUrlPattern, validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { languages } from 'open-event-frontend/utils/dictionary/languages';
+import { genders } from 'open-event-frontend/utils/dictionary/genders';
 
 export default Component.extend(FormMixin, {
 
@@ -484,8 +485,22 @@ export default Component.extend(FormMixin, {
 
   languages: orderBy(languages, 'name'),
 
+  genders: orderBy(genders, 'name'),
+
   allFields: computed('fields', function() {
     return groupBy(this.get('fields').toArray(), field => field.get('form'));
+  }),
+
+  otherGender: computed('data.speaker', function() {
+    if (this.get('data.speaker')) {
+      if (this.get('data.speaker.gender') === 'Male' || this.get('data.speaker.gender') === 'Female') {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
   }),
 
   // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
@@ -513,6 +528,15 @@ export default Component.extend(FormMixin, {
     toggleNewSessionSelected(value) {
       this.set('sessionDetails', false);
       this.set('newSessionSelected', value);
+    },
+
+    setGender(gender) {
+      this.set('data.speaker.gender', gender);
+      if (gender === 'Other') {
+        this.set('otherGender', true);
+      } else {
+        this.set('otherGender', false);
+      }
     }
   },
   didInsertElement() {
