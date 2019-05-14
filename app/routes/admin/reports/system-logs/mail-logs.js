@@ -7,7 +7,7 @@ export default Route.extend({
 
   model() {
     return this.get('store').query('mail', {
-      'page[size]' : 100,
+      'page[size]' : 10,
       sort         : '-time'
     });
   }
