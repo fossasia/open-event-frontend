@@ -1,5 +1,7 @@
 {{#if selectedImage}}
-  <div class="ui hidden divider"></div>
+  {{#if (and requiresDivider device.isMobile)}}
+    <div class="ui hidden divider"></div>
+  {{/if}}
   <div class="ui card">
     {{#if uploadingImage}}
       <div class="ui active dimmer">

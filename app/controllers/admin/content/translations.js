@@ -8,7 +8,12 @@ export default Controller.extend({
       this.set('isLoading', true);
       this.get('loader')
         .downloadFile('/admin/content/translations/all')
-        .then(() => {
+        .then(res => {
+          const anchor = document.createElement('a');
+          anchor.style.display = 'none';
+          anchor.href = URL.createObjectURL(new Blob([res], { type: 'octet/stream' }));
+          anchor.download = 'Translations.zip';
+          anchor.click();
           this.get('notify').success(this.get('l10n').t('Translations Zip generated successfully.'));
         })
         .catch(e => {

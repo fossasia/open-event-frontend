@@ -1,10 +1,10 @@
 <div class="ui one column container stackable doubling left grid">
-  <div class="row">
+  <div class="row print">
     <div class="column">
       <h2>{{model.order.event.name}}</h2>
     </div>
   </div>
-  <div class="row">
+  <div class="row print">
     <div class="column">
       <div class="ui small gray-text">
         {{header-date model.order.event.startsAt}} - {{header-date model.order.event.endsAt}}
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="ten wide column">
+    <div class="ten wide column print">
       {{orders/order-summary data=model.order
                              eventCurrency=model.order.event.paymentCurrency}}
     </div>
@@ -33,15 +33,15 @@
         </div>
       </div>
       <br>
-      <a class="ui labeled icon button" href="{{model.order.ticketsPdfUrl}}" target="_blank" rel="noopener nofollow">
+      <a class="ui labeled icon button" href="#" {{action downloadTickets}} target="_blank" rel="noopener nofollow">
         <i class="ticket alternate icon"></i>
-        Download Tickets
+        {{t 'Download Tickets'}}
       </a>
       <br>
       <br>
       <a href="#" {{action 'downloadInvoice'}} class="ui labeled icon blue button">
-        <i class="ticket alternate icon"></i>
-        Order Invoice
+        <i class="print alternate icon"></i>
+        {{t 'Print Invoice'}}
       </a>
     </div>
   </div>
