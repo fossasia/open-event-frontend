@@ -108,6 +108,7 @@ router.map(function() {
     this.route('password');
     this.route('email-preferences');
     this.route('applications');
+    this.route('danzer-zone');
   });
   this.route('explore');
   this.route('my-tickets', function() {

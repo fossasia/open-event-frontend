@@ -35,9 +35,6 @@
       <button type="submit" class="ui teal submit button update-changes">
         {{t 'Update Changes'}}
       </button>
-      {{#ui-popup content=(t 'Delete') click=(action (confirm (t 'Are you sure you would like to delete your account?') (action 'deleteUser' user))) class='ui icon button'}}
-        Delete you account <i class="trash outline icon"></i>
-      {{/ui-popup}}
     </div>
   </div>
 </form>

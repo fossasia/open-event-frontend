@@ -1,0 +1,21 @@
+<div class="header">
+  {{t 'You are deleting this account. This action cannot be undone.'}}
+  <div class="muted small text">
+    {{t 'All user data will be deleted'}}
+  </div>
+</div>
+<div class="content">
+  <form class="ui {{if isLoading 'loading'}} form" id="confirm-delete-form" autocomplete="off" {{action deleteUser on='submit' preventDefault=true}}>
+    <div class="field">
+      {{ui-checkbox label=(t 'Please tick the box to agree [ ] and press DELETE') checked=checked onChange=(action (mut checked))}}
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="confirm-delete-form" class="ui red button {{if (not checked) 'disabled'}}">
+    {{t 'Delete'}}
+  </button>
+</div>
