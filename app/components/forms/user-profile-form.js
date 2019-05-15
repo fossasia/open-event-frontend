@@ -33,6 +33,22 @@ export default Component.extend(FormMixin, {
   },
 
   actions: {
+    deleteUser(user) {
+      this.set('isLoading', true);
+      user.destroyRecord()
+        .then(() => {
+          this.get('authManager').logout();
+          this.get('routing').transitionTo('index');
+          this.notify.success(this.get('l10n').t('User has been deleted successfully.'));
+        })
+        .catch(() => {
+          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
+
     submit() {
       this.onValid(() => {
         this.set('isLoading', true);
