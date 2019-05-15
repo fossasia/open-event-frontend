@@ -72,7 +72,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'containsExactly[youtube.com]',
-              prompt : this.get('l10n').t('Please enter a valid youtube url')
+              prompt : this.get('l10n').t('Please enter a valid YouTube url')
             },
             {
               type   : 'regExp',
