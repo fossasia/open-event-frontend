@@ -1,21 +1,21 @@
 <div class="row">
   {{#if doesUserHaveEventsOrOrders}}
     <p>
-      {{t 'Your account currently cannot be deleted as events are associated with it. 
-      Please transfer the ownership of your events to another organizer.'}}
+      {{t 'Your account currently cannot be deleted as events/orders are associated with it. 
+      If you\'ve any event associated, please transfer the ownership to another organizer.'}}
     </p>
-    {{#ui-popup class='ui red button disabled'}}
-      Delete Your Account <i class="trash outline icon"></i>
-    {{/ui-popup}}
+    <button class='ui red button disabled'>
+      Delete Your Account
+    </button>
   {{else}}
     <p>
       {{t 'All user data will be deleted. Your user data will be entirely erased and any data that will stay 
       in the system for accounting purposes will be anonymised and there will be no link to any of your personal information. 
-      Ones you delete this account you will have no longer access to the system.'}}
+      Once you delete this account, you will have no longer access to the system.'}}
     </p>
-    {{#ui-popup click=(action 'openDeleteUserModal' data.id data.email) class='ui red button'}}
-      Delete Your Account <i class="trash outline icon"></i>
-    {{/ui-popup}}
+    <button {{action 'openDeleteUserModal' data.id data.email}} class='ui red button'>
+      Delete Your Account
+    </button>
     {{modals/user-delete-modal isLoading=isLoading isOpen=isUserDeleteModalOpen openConfirmDeleteUserModal=(action 'openConfirmDeleteUserModal') confirmEmail=confirmEmail userEmail=userEmail deleteUser=(action 'deleteUser' data)}}
     {{modals/confirm-user-delete-modal isLoading=isLoading isOpen=isConfirmUserDeleteModalOpen checked=checked deleteUser=(action 'deleteUser' data)}}
   {{/if}}

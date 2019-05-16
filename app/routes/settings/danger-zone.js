@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return this.get('l10n').t('Danzer Zone');
+    return this.get('l10n').t('Danger Zone');
   },
   model() {
     return this.get('authManager.currentUser');

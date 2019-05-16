@@ -1,5 +1,4 @@
 <div class="header">
-  {{isConfirmUserDeleteModalOpen}}
   {{t 'Are you sure you would like to delete your account?'}}
   <div class="muted small text">
     {{t 'Deleting the account will delete all the data associated with it.'}}
@@ -19,7 +18,7 @@
   <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  {{#ui-popup click=(action openConfirmDeleteUserModal) class="ui red button" disabled=isEmailDifferent}}
+  <button {{action openConfirmDeleteUserModal}} class="ui red button {{if isEmailDifferent 'disabled'}}">
     {{t 'Proceed'}}
-  {{/ui-popup}}
+  </button>
 </div>
