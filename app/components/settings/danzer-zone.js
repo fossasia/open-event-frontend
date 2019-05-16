@@ -1,6 +1,15 @@
+import { computed } from '@ember/object';
 import Component from '@ember/component';
 
 export default Component.extend({
+
+  doesUserHaveEventsOrOrders: computed('data.events', 'data.orders', function() {
+    if (this.get('data.events').length || this.get('data.orders').length) {
+      return true;
+    }
+    return false;
+  }),
+
   actions: {
     openDeleteUserModal(id, email) {
       this.set('isUserDeleteModalOpen', true);

@@ -6,9 +6,11 @@
 </div>
 <div class="content">
   <form class="ui {{if isLoading 'loading'}} form" id="confirm-delete-form" autocomplete="off" {{action deleteUser on='submit' preventDefault=true}}>
-    <div class="field">
-      {{ui-checkbox label=(t 'Please tick the box to agree [ ] and press DELETE') checked=checked onChange=(action (mut checked))}}
-    </div>
+    <span>
+      {{t 'Please tick the box to agree '}}
+      {{input type="checkbox" checked=checked onChange=(action (mut checked))}}
+      {{t ' and press DELETE'}}
+    </span>
   </form>
 </div>
 <div class="actions">
