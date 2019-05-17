@@ -8,7 +8,8 @@ export default Controller.extend({
     downloadInvoice() {
       const selector = '.print';
       const options = {
-        header: 'Order Invoice'
+        header     : 'Order Invoice',
+        printDelay : 800
       };
       this.get('printThis').print(selector, options);
     }
