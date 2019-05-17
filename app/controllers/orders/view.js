@@ -14,7 +14,7 @@ export default Controller.extend({
     }
   },
 
-  downloadTickets() {
+  downloadTickets(eventName, orderId) {
     this.set('isLoading', true);
     this.get('loader')
       .downloadFile(`/tickets/${this.get('model.order.identifier')}`)
@@ -22,9 +22,11 @@ export default Controller.extend({
         const anchor = document.createElement('a');
         anchor.style.display = 'none';
         anchor.href = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
-        anchor.download = 'Tickets.pdf';
+        anchor.download = `${eventName}-Tickets-${orderId}.pdf`;
+        document.body.appendChild(anchor);
         anchor.click();
         this.get('notify').success(this.get('l10n').t('Here are your tickets'));
+        document.body.removeChild(anchor);
       })
       .catch(e => {
         console.warn(e);
@@ -34,5 +36,4 @@ export default Controller.extend({
         this.set('isLoading', false);
       });
   }
-
 });
