@@ -3,25 +3,29 @@ import Component from '@ember/component';
 
 export default Component.extend({
 
-  doesUserHaveEventsOrOrders: computed('data.events', 'data.orders', function() {
+  isUserDeletable: computed('data.events', 'data.orders', function() {
     if (this.get('data.events').length || this.get('data.orders').length) {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }),
 
   actions: {
     openDeleteUserModal(id, email) {
-      this.set('isUserDeleteModalOpen', true);
-      this.set('confirmEmail', '');
-      this.set('userEmail', email);
-      this.set('userId', id);
+      this.setProperties({
+        'isUserDeleteModalOpen' : true,
+        'confirmEmail'          : '',
+        'userEmail'             : email,
+        'userId'                : id
+      });
     },
     openConfirmDeleteUserModal() {
-      this.set('isUserDeleteModalOpen', false);
-      this.set('confirmEmail', '');
-      this.set('isConfirmUserDeleteModalOpen', true);
-      this.set('checked', false);
+      this.setProperties({
+        'isUserDeleteModalOpen'        : false,
+        'confirmEmail'                 : '',
+        'isConfirmUserDeleteModalOpen' : true,
+        'checked'                      : false
+      });
     },
     deleteUser(user) {
       this.set('isLoading', true);
@@ -35,9 +39,11 @@ export default Component.extend({
           this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
         })
         .finally(() => {
-          this.set('isLoading', false);
-          this.set('checked', false);
-          this.set('isConfirmUserDeleteModalOpen', false);
+          this.setProperties({
+            'isLoading'                    : false,
+            'isConfirmUserDeleteModalOpen' : false,
+            'checked'                      : false
+          });
         });
     }
   }

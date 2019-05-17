@@ -5,7 +5,16 @@ export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
     return this.get('l10n').t('Danger Zone');
   },
-  model() {
-    return this.get('authManager.currentUser');
+  async model() {
+
+    let user = this.get('authManager.currentUser');
+    const events = await user.query('events', {});
+    const orders = await user.query('orders', {});
+
+    return {
+      user,
+      events,
+      orders
+    };
   }
 });
