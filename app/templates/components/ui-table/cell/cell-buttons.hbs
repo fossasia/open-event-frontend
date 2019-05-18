@@ -1,17 +1,17 @@
-<div class="ui vertical compact basic buttons">
-  {{#ui-popup tagName='a' click=(action moveToDetails record.identifier) content=(t 'View') class='ui icon button' position='left center'}}
+<div class="ui horizontal compact basic buttons">
+  {{#ui-popup tagName='a' click=(action moveToDetails record.identifier) content=(t 'View') class='huge ui icon button' position='left center'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'Edit') click=(action editEvent record.identifier) class='ui icon button' position='left center'}}
+  {{#ui-popup content=(t 'Edit') click=(action editEvent record.identifier) class='huge ui icon button' position='left center'}}
     <i class="edit icon"></i>
   {{/ui-popup}}
   {{#if (and hasRestorePrivileges (get record column.propertyName))}}
-    {{#ui-popup content=(t 'Restore') click=(action restoreEvent record) class='ui icon button' position='left center'}}
+    {{#ui-popup content=(t 'Restore') click=(action restoreEvent record) class='huge ui icon button' position='left center'}}
       <i class="undo icon"></i>
     {{/ui-popup}}
-  {{else}}
+  <!-- {{else}}
     {{#ui-popup content=(t 'Delete') click=(action openDeleteEventModal record.identifier record.name) class='ui icon button' position='left center'}}
       <i class="trash outline icon"></i>
-    {{/ui-popup}}
+    {{/ui-popup}} -->
   {{/if}}
 </div>
