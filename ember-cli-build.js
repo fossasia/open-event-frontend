@@ -2,7 +2,7 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
-const { browsers } = require('./config/targets');
+const targets = require('./config/targets');
 
 let env = process.env.EMBER_ENV || 'development';
 
@@ -13,12 +13,19 @@ module.exports = function(defaults) {
     },
     storeConfigInMeta : false,
     autoprefixer      : {
-      browsers,
-      cascade: false
+      browsers : targets.browsers,
+      cascade  : false
     },
     minifyHTML: {
       enabled   : false,
       htmlFiles : ['index.html', '404.html']
+    },
+    babel: {
+      plugins: [
+        '@babel/plugin-proposal-object-rest-spread'
+      ],
+      targets,
+      sourceMaps: 'inline'
     },
     fingerprint: {
       enabled          : env === 'production',

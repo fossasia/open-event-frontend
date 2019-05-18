@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import sanitizeHtml from 'npm:sanitize-html';
+import sanitizeHtml from 'sanitize-html';
 
 export default Service.extend({
 

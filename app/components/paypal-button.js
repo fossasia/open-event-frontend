@@ -1,4 +1,4 @@
-import paypal from 'npm:paypal-checkout';
+import paypal from 'paypal-checkout';
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
