@@ -15,6 +15,9 @@ The front end for the **Open Event Server**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+**API Documentation:**
+- Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
+- A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
 
 ## Communication
 
@@ -52,24 +55,24 @@ This project has acceptance, integration and unit tests located inside the `test
 
 ## Deployments, Docker images and Releases
 
-#### Deployments
+### Deployments
 **Master branch** 
 
 The master branch of open-event-frontend gets deployed in a production environment at [https://eventyay.com](https://eventyay.com)
-It consumes the API exposed by master branch deployment of open event server, hosted at [https://api.eventyay.com]
+It consumes the API exposed by master branch deployment of open event server, hosted at [https://api.eventyay.com](https://api.eventyay.com)
 
 **Development branch**
 
 The **development** branch of open-event-frontend gets deployed at [https://opev-fe.netlify.com](https://opev-fe.netlify.com)
-It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com]
+It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com](https://open-event-api-dev.herokuapp.com)
 
 
-#### Release Cycle
+### Release Cycle
 
 Stable versions will released periodically, starting from version 1.0.0 when open-event-frontend went into production. Version names will follow [semantic versioning](https://semver.org/)
 
-#### Docker Hub Images
-Docker images hosted on docker hub are updated for each push on master and developement branch. Separate tags for each version release are also maintained. They are as follows:
+### Docker Hub Images
+Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and developement branch. Separate tags for each version release are also maintained. They are as follows:
 
 |Branch/Release | Image|
 |---|---|
