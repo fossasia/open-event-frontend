@@ -8,7 +8,7 @@ export default Controller.extend({
         let order = data;
         let current_user = this.get('authManager.currentUser');
         let userChanges = current_user.changedAttributes();
-        if (userChanges.firstName || userChanges.lastName){
+        if (userChanges.firstName || userChanges.lastName) {
           await current_user.save();
         }
         let { attendees, paymentMode } = data;
