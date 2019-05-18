@@ -1,4 +1,7 @@
 <div class="ui horizontal compact basic buttons">
+  {{#ui-popup content=(t 'Go to Event') click=(action moveToDetails record.identifier) class='huge ui icon button' position='left center'}}
+    <i class="external alternate icon"></i>
+  {{/ui-popup}}
   {{#ui-popup tagName='a' click=(action moveToDetails record.identifier) content=(t 'View') class='huge ui icon button' position='left center'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
