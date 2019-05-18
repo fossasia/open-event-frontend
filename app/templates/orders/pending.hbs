@@ -14,13 +14,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="mobile hidden seven wide column">
-      {{orders/event-info data=model.order}}
-    </div>
     <div class="nine wide column">
       {{orders/order-summary data=model.order
                              event=model.event
                              eventCurrency=model.order.event.paymentCurrency}}
+    </div>
+    <div class="mobile hidden seven wide column">
+      {{orders/event-info data=model.order}}
     </div>
   </div>
   <div class="row">

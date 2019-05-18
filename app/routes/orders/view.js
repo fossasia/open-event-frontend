@@ -3,7 +3,11 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   titleToken(model) {
     var order = model.order.get('identifier');
-    return this.get('l10n').t(`Completed Order -${order}`);
+    if (model.order.status === 'completed') {
+      return this.l10n.t(`Completed Order -${order}`);
+    } else if (model.order.status === 'placed') {
+      return this.l10n.t(`Placed Order -${order}`);
+    }
   },
 
   async model(params) {
@@ -25,10 +29,12 @@ export default Route.extend({
   afterModel(model) {
     if (model.order.get('status') === 'expired') {
       this.transitionTo('orders.expired', model.order.get('identifier'));
-    } else if (model.order.get('status') === 'completed') {
+    } else if (model.order.get('status') === 'completed' || model.order.get('status') === 'placed') {
       this.transitionTo('orders.view', model.order.get('identifier'));
-    } else if (model.order.get('status') === 'placed') {
-      this.transitionTo('orders.placed', model.order.get('identifier'));
+    } else if (model.order.get('status') === 'pending') {
+      this.transitionTo('orders.pending', model.order.get('identifier'));
+    } else if (model.order.get('status') === 'initializing') {
+      this.transitionTo('orders.new', model.order.get('identifier'));
     }
   }
 });

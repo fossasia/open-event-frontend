@@ -15,23 +15,25 @@ export default Controller.extend({
         for (const attendee of attendees ? attendees.toArray() : []) {
           await attendee.save();
         }
-        if (paymentMode === 'free' || paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite') {
+        if (paymentMode === 'free') {
           order.set('status', 'completed');
-        } else {
+        } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite') {
           order.set('status', 'placed');
+        } else {
+          order.set('status', 'pending');
         }
         await order.save()
           .then(order => {
-            if (order.status === 'placed') {
+            if (order.status === 'pending') {
               this.get('notify').success(this.get('l10n').t('Order details saved. Please fill the payment details'));
-              this.transitionToRoute('orders.placed', order.identifier);
-            } else if (order.status === 'completed') {
+              this.transitionToRoute('orders.pending', order.identifier);
+            } else if (order.status === 'completed' || order.status === 'placed') {
               this.get('notify').success(this.get('l10n').t('Order details saved. Your order is successful'));
               this.transitionToRoute('orders.view', order.identifier);
             }
           })
           .catch(e => {
-            order.set('status', 'pending');
+            order.set('status', 'initializing');
             this.get('notify').error(this.get('l10n').t(` ${e} Oops something went wrong. Please try again`));
           })
           .finally(() => {
