@@ -1,4 +1,4 @@
-import palette from 'npm:google-material-color';
+import palette from 'google-material-color';
 import { random } from 'lodash';
 
 export const getColor = (shades = ['600', '700', '800', '900']) => {

@@ -1,5 +1,5 @@
-import UrlParser from 'npm:url-parse';
-import queryString from 'npm:query-string';
+import UrlParser from 'url-parse';
+import queryString from 'query-string';
 import { merge, mapValues, isArray } from 'lodash';
 
 /**
