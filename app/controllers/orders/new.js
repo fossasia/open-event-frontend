@@ -6,6 +6,11 @@ export default Controller.extend({
       try {
         this.set('isLoading', true);
         let order = data;
+        let current_user = this.get('authManager.currentUser');
+        let userChanges = current_user.changedAttributes();
+        if (userChanges.firstName || userChanges.lastName){
+          await current_user.save();
+        }
         let { attendees, paymentMode } = data;
         for (const attendee of attendees ? attendees.toArray() : []) {
           await attendee.save();
