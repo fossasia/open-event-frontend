@@ -9,6 +9,12 @@ export default Controller.extend({
       disableSorting : true
     },
     {
+      propertyName : 'completedAt',
+      template     : 'components/ui-table/cell/events/view/tickets/orders/cell-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      title        : 'Date And Time'
+    },
+    {
       propertyName : 'amount',
       template     : 'components/ui-table/cell/events/view/tickets/orders/cell-amount',
       title        : 'Total Amount'
