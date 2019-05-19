@@ -5,6 +5,6 @@ export default ModalBase.extend({
   isSmall          : true,
   confirmEmail     : '',
   isEmailDifferent : computed('confirmEmail', function() {
-    return this.get('userEmail') ? this.get('confirmEmail') !== this.get('userEmail') : true;
+    return this.userEmail ? this.confirmEmail !== this.userEmail : true;
   })
 });

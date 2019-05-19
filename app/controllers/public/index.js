@@ -34,14 +34,14 @@ export default Controller.extend({
           let credentials = newUser.getProperties('email', 'password'),
               authenticator = 'authenticator:jwt';
           credentials.identification = newUser.email;
-          this.get('session')
+          this.session
             .authenticate(authenticator, credentials)
             .then(async() => {
-              const tokenPayload = this.get('authManager').getTokenPayload();
+              const tokenPayload = this.authManager.getTokenPayload();
               if (tokenPayload) {
                 this.set('session.skipRedirectOnInvalidation', true);
-                this.get('authManager').persistCurrentUser(
-                  await this.get('store').findRecord('user', tokenPayload.identity)
+                this.authManager.persistCurrentUser(
+                  await this.store.findRecord('user', tokenPayload.identity)
                 );
                 this.set('isLoginModalOpen', false);
                 this.send('placeOrder');
@@ -59,7 +59,7 @@ export default Controller.extend({
             if (error.errors[0].status === 409) {
               this.set('userExists', true);
             } else {
-              this.get('notify').error(this.get('l10n').t(error.errors[0].detail));
+              this.notify.error(this.l10n.t(error.errors[0].detail));
             }
           }
         })
@@ -76,25 +76,25 @@ export default Controller.extend({
         password
       };
       let authenticator = 'authenticator:jwt';
-      this.get('session')
+      this.session
         .authenticate(authenticator, credentials)
         .then(async() => {
-          const tokenPayload = this.get('authManager').getTokenPayload();
+          const tokenPayload = this.authManager.getTokenPayload();
           if (tokenPayload) {
             this.set('session.skipRedirectOnInvalidation', true);
-            this.get('authManager').persistCurrentUser(
-              await this.get('store').findRecord('user', tokenPayload.identity)
+            this.authManager.persistCurrentUser(
+              await this.store.findRecord('user', tokenPayload.identity)
             );
             this.set('isLoginModalOpen', false);
             this.send('placeOrder');
           }
         })
         .catch(reason => {
-          if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+          if (!(this.isDestroyed || this.isDestroying)) {
             if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
-              this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
+              this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
-              this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
             }
           } else {
             console.warn(reason);
@@ -146,20 +146,20 @@ export default Controller.extend({
         order.set('attendees', attendees);
         await order.save()
           .then(order => {
-            this.get('notify').success(this.get('l10n').t('Order details saved. Please fill further details within 10 minutes.'));
+            this.notify.success(this.l10n.t('Order details saved. Please fill further details within 10 minutes.'));
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async e => {
             for (const attendee of attendees ? attendees.toArray() : []) {
               await attendee.destroyRecord();
             }
-            this.get('notify').error(this.get('l10n').t(e.errors[0].detail));
+            this.notify.error(this.l10n.t(e.errors[0].detail));
           })
           .finally(() => {
             this.set('isLoading', false);
           });
       } catch (e) {
-        this.get('notify').error(this.get('l10n').t(e));
+        this.notify.error(this.l10n.t(e));
       }
     }
   }

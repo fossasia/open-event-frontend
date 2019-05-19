@@ -5,9 +5,9 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.ticket_status')) {
       case 'completed':
-        return this.get('l10n').t('Completed');
+        return this.l10n.t('Completed');
       case 'open':
-        return this.get('l10n').t('Open');
+        return this.l10n.t('Open');
     }
   },
   model(params) {

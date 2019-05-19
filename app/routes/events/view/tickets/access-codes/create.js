@@ -4,11 +4,11 @@ import RSVP from 'rsvp';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Create');
+    return this.l10n.t('Create');
   },
   async model() {
     return RSVP.hash({
-      accessCode: this.get('store').createRecord('access-code', {
+      accessCode: this.store.createRecord('access-code', {
         event         : this.modelFor('events.view'),
         tickets       : [],
         marketer      : this.get('authManager.currentUser'),

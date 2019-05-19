@@ -39,11 +39,11 @@ export default Controller.extend({
       this.set('isLoading', true);
       discountCode.destroyRecord()
         .then(() => {
-          this.get('model').reload();
-          this.notify.success(this.get('l10n').t('Discount Code has been deleted successfully.'));
+          this.model.reload();
+          this.notify.success(this.l10n.t('Discount Code has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -54,12 +54,12 @@ export default Controller.extend({
       discountCode.toggleProperty('isActive');
       discountCode.save()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Discount Code has been updated successfully.'));
+          this.notify.success(this.l10n.t('Discount Code has been updated successfully.'));
           this.send('refreshRoute');
         })
         .catch(() => {
           discountCode.toggleProperty('isActive');
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

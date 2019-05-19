@@ -5,11 +5,11 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.users_status')) {
       case 'active':
-        return this.get('l10n').t('Active');
+        return this.l10n.t('Active');
       case 'deleted':
-        return this.get('l10n').t('Deleted');
+        return this.l10n.t('Deleted');
       case 'inactive':
-        return this.get('l10n').t('Inactive');
+        return this.l10n.t('Inactive');
     }
   },
   beforeModel(transition) {
@@ -74,7 +74,7 @@ export default Route.extend({
         }
       ];
     }
-    return this.get('store').query('user', {
+    return this.store.query('user', {
       include      : 'events',
       get_trashed  : true,
       filter       : filterOptions,

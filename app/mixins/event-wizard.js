@@ -14,20 +14,20 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   getSteps() {
     return [
       {
-        title       : this.get('l10n').t('Basic Details'),
-        description : this.get('l10n').t('Tell about your event'),
+        title       : this.l10n.t('Basic Details'),
+        description : this.l10n.t('Tell about your event'),
         icon        : 'info icon',
         route       : 'events.view.edit.basic-details'
       },
       {
-        title       : this.get('l10n').t('Sponsors'),
-        description : this.get('l10n').t('Advertise your sponsors'),
+        title       : this.l10n.t('Sponsors'),
+        description : this.l10n.t('Advertise your sponsors'),
         icon        : 'dollar icon',
         route       : 'events.view.edit.sponsors'
       },
       {
-        title       : this.get('l10n').t('Sessions & Speakers'),
-        description : this.get('l10n').t('Expand your event'),
+        title       : this.l10n.t('Sessions & Speakers'),
+        description : this.l10n.t('Expand your event'),
         icon        : 'list icon',
         route       : 'events.view.edit.sessions-speakers'
       }
@@ -118,12 +118,12 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     this.set('isLoading', true);
     this.saveEventData(propsToSave)
       .then(data => {
-        this.get('notify').success(this.get('l10n').t('Your event has been saved'));
+        this.notify.success(this.l10n.t('Your event has been saved'));
         this.transitionToRoute(route, data.id);
       })
       .catch(e => {
         console.error(e);
-        this.get('notify').error(this.get('l10n').t(e.errors[0].detail));
+        this.notify.error(this.l10n.t(e.errors[0].detail));
       })
       .finally(() => {
         this.set('isLoading', false);

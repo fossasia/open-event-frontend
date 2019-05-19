@@ -17,13 +17,13 @@ export default Controller.extend({
     },
     deleteProposal() {
       this.set('isLoading', true);
-      this.get('model').destroyRecord()
+      this.model.destroyRecord()
         .then(() => {
           this.transitionToRoute('my-sessions.index');
-          this.notify.success(this.get('l10n').t('Proposal has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Proposal has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

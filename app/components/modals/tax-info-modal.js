@@ -24,7 +24,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give a name')
+              prompt : this.l10n.t('Please give a name')
             }
           ]
         },
@@ -33,11 +33,11 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please tell us your tax rate (in %)')
+              prompt : this.l10n.t('Please tell us your tax rate (in %)')
             },
             {
               type   : 'number',
-              prompt : this.get('l10n').t('Please give a valid tax rate')
+              prompt : this.l10n.t('Please give a valid tax rate')
             }
           ]
         },
@@ -46,7 +46,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give us your tax ID')
+              prompt : this.l10n.t('Please give us your tax ID')
             }
           ]
         },
@@ -56,7 +56,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give us your company name')
+              prompt : this.l10n.t('Please give us your company name')
             }
           ]
         },
@@ -66,7 +66,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give us your address')
+              prompt : this.l10n.t('Please give us your address')
             }
           ]
         },
@@ -76,7 +76,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give a city')
+              prompt : this.l10n.t('Please give a city')
             }
           ]
         },
@@ -86,7 +86,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give a state')
+              prompt : this.l10n.t('Please give a state')
             }
           ]
         },
@@ -96,7 +96,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please provide a zip code')
+              prompt : this.l10n.t('Please provide a zip code')
             }
           ]
         }
@@ -116,7 +116,7 @@ export default ModalBase.extend(FormMixin, {
     updateTaxInfo() {
       this.$('.ui.form').form('validate form');
       if (this.$('.ui.form').form('is valid')) {
-        this.set('tax.isTaxIncludedInPrice', this.get('isTaxIncludedInPrice') === 'include');
+        this.set('tax.isTaxIncludedInPrice', this.isTaxIncludedInPrice === 'include');
         this.close();
         this.set('hasTaxInfo', true);
       }

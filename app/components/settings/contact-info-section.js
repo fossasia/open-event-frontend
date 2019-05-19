@@ -19,11 +19,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your email ID')
+              prompt : this.l10n.t('Please enter your email ID')
             },
             {
               type   : 'email',
-              prompt : this.get('l10n').t('Please enter a valid email ID')
+              prompt : this.l10n.t('Please enter a valid email ID')
             }
           ]
         },
@@ -32,12 +32,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a phone number.')
+              prompt : this.l10n.t('Please enter a phone number.')
             },
             {
               type   : 'regExp',
               value  : validPhoneNumber,
-              prompt : this.get('l10n').t('Please enter a valid phone number.')
+              prompt : this.l10n.t('Please enter a valid phone number.')
             }
           ]
         }

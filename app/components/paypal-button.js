@@ -8,10 +8,7 @@ export default Component.extend({
 
   async didInsertElement() {
     this._super(...arguments);
-    let order = this.get('data');
-    let loader = this.get('loader');
-    let notify = this.get('notify');
-    let router = this.get('router');
+    let order = this.data;
     let createPayload = {
       'data': {
         'attributes': {
@@ -33,7 +30,7 @@ export default Component.extend({
       },
 
       payment() {
-        return loader.post(`orders/${order.identifier}/create-paypal-payment`, createPayload)
+        return this.loader.post(`orders/${order.identifier}/create-paypal-payment`, createPayload)
           .then(res => {
             return res.payment_id;
           });
@@ -55,13 +52,13 @@ export default Component.extend({
           skipDataTransform: true
         };
         chargePayload = JSON.stringify(chargePayload);
-        return loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
+        return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
           .then(charge => {
             if (charge.data.attributes.status) {
-              notify.success(charge.data.attributes.message);
-              router.transitionTo('orders.view', order.identifier);
+              this.notify.success(charge.data.attributes.message);
+              this.router.transitionTo('orders.view', order.identifier);
             } else {
-              notify.error(charge.data.attributes.message);
+              this.notify.error(charge.data.attributes.message);
             }
           });
       }

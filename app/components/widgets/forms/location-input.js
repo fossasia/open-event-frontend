@@ -14,18 +14,18 @@ export default Component.extend({
   },
 
   combinedAddress: computed('address.{venue,line,city,state,zipCode,country}', function() {
-    return values(this.get('address')).join(' ').trim();
+    return values(this.address).join(' ').trim();
   }),
 
   placeNameChanger: observer('combinedAddress', function() {
-    this.set('placeName', this.get('combinedAddress'));
+    this.set('placeName', this.combinedAddress);
   }),
 
   actions: {
     showAddressView(show = true) {
       this.set('addressViewIsShown', show);
       if (!show) {
-        keys(this.get('address')).forEach(key => {
+        keys(this.address).forEach(key => {
           this.set(`address.${key}`, '');
         });
         this.setProperties({

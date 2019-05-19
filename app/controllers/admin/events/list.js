@@ -85,17 +85,17 @@ export default Controller.extend({
     },
     deleteEvent() {
       this.set('isLoading', true);
-      this.store.findRecord('event', this.get('eventId'), { backgroundReload: false }).then(function(event) {
+      this.store.findRecord('event', this.eventId, { backgroundReload: false }).then(function(event) {
         event.destroyRecord();
       })
         .then(() => {
           this.set('isLoading', false);
-          this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
           this.send('refreshRoute');
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         });
       this.set('isEventDeleteModalOpen', false);
     },
@@ -104,11 +104,11 @@ export default Controller.extend({
       event.set('deletedAt', null);
       event.save({ adapterOptions: { getTrashed: true } })
         .then(() => {
-          this.notify.success(this.get('l10n').t('Event has been restored successfully.'));
+          this.notify.success(this.l10n.t('Event has been restored successfully.'));
           this.send('refreshRoute');
         })
         .catch(e => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
           console.warn(e);
         })
         .finally(() => {
@@ -119,10 +119,10 @@ export default Controller.extend({
       event.toggleProperty('isFeatured');
       event.save()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Event details modified successfully'));
+          this.notify.success(this.l10n.t('Event details modified successfully'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         });
     }
   }

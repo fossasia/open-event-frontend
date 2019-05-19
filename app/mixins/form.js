@@ -16,7 +16,7 @@ export default Mixin.create({
   autoScrollSpeed    : 200,
 
   getForm() {
-    return this.get('$form');
+    return this.$form;
   },
 
   onValid(callback) {
@@ -55,7 +55,7 @@ export default Mixin.create({
       }
 
       let $form;
-      if ((this.get('tagName') && this.get('tagName').toLowerCase() === 'form') || (this.$() && this.$().prop('tagName').toLowerCase() === 'form')) {
+      if ((this.tagName && this.tagName.toLowerCase() === 'form') || (this.$() && this.$().prop('tagName').toLowerCase() === 'form')) {
         $form = this.$();
         $form.addClass('ui form');
       } else {
@@ -63,7 +63,7 @@ export default Mixin.create({
       }
       if ($form) {
         $form = $form.first();
-        if (this.get('getValidationRules') && $form) {
+        if (this.getValidationRules && $form) {
           $form.form(merge(defaultFormRules, this.getValidationRules()));
         }
         if ($form && this) {

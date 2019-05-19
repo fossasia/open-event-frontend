@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('New Speaker');
+    return this.l10n.t('New Speaker');
   },
 
   async model() {
@@ -18,7 +18,7 @@ export default Route.extend({
         sort         : 'id',
         'page[size]' : 50
       }),
-      speaker: await this.get('store').createRecord('speaker', {
+      speaker: await this.store.createRecord('speaker', {
         email    : currentUser.email,
         name     : userName,
         photoUrl : currentUser.avatarUrl,

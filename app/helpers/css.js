@@ -11,6 +11,6 @@ export default Helper.extend({
     forOwn(hash, (value, key) => {
       style += `${key}: ${value};`;
     });
-    return htmlSafe(this.get('sanitizer').strip(style));
+    return htmlSafe(this.sanitizer.strip(style));
   }
 });

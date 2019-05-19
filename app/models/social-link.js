@@ -13,7 +13,7 @@ export default ModelBase.extend({
   event: belongsTo('event'),
 
   normalizedName: computed('name', function() {
-    return this.get('name').trim().toLowerCase();
+    return this.name.trim().toLowerCase();
   }),
 
   isTwitter: equal('normalizedName', 'twitter'),

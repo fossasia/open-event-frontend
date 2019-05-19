@@ -63,10 +63,10 @@ export default Controller.extend({
       this.set('isLoading', true);
       session.destroyRecord()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Session has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Session has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -115,12 +115,12 @@ export default Controller.extend({
       this.set('isLoading', true);
       session.save()
         .then(() => {
-          sendEmail ? this.notify.success(this.get('l10n').t('Session has been accepted and speaker has been notified via email.'))
-            : this.notify.success(this.get('l10n').t('Session has been accepted'));
+          sendEmail ? this.notify.success(this.l10n.t('Session has been accepted and speaker has been notified via email.'))
+            : this.notify.success(this.l10n.t('Session has been accepted'));
           this.send('refreshRoute');
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -133,12 +133,12 @@ export default Controller.extend({
       this.set('isLoading', true);
       session.save()
         .then(() => {
-          sendEmail ? this.notify.success(this.get('l10n').t('Session has been confirmed and speaker has been notified via email.'))
-            : this.notify.success(this.get('l10n').t('Session has been confirmed'));
+          sendEmail ? this.notify.success(this.l10n.t('Session has been confirmed and speaker has been notified via email.'))
+            : this.notify.success(this.l10n.t('Session has been confirmed'));
           this.send('refreshRoute');
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -151,12 +151,12 @@ export default Controller.extend({
       this.set('isLoading', true);
       session.save()
         .then(() => {
-          sendEmail ? this.notify.success(this.get('l10n').t('Session has been rejected and speaker has been notified via email.'))
-            : this.notify.success(this.get('l10n').t('Session has been rejected'));
+          sendEmail ? this.notify.success(this.l10n.t('Session has been rejected and speaker has been notified via email.'))
+            : this.notify.success(this.l10n.t('Session has been rejected'));
           this.send('refreshRoute');
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

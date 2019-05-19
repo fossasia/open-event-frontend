@@ -38,10 +38,10 @@ export default ModelBase.extend({
   creator        : belongsTo('user'),
 
   status: computed('state', 'deletedAt', function() {
-    if (this.get('deletedAt') !== null) {
+    if (this.deletedAt !== null) {
       return 'deleted';
     } else {
-      return this.get('state');
+      return this.state;
     }
   }),
 

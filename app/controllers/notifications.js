@@ -11,10 +11,10 @@ export default Controller.extend({
               item.save();
             }
           });
-          this.get('notify').success(this.get('l10n').t('All notifications marked read successfully'));
+          this.notify.success(this.l10n.t('All notifications marked read successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error occurred.'));
         });
     }
   }

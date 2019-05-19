@@ -9,6 +9,6 @@ export default Helper.extend({
   sanitizer: service(),
 
   compute(params) {
-    return htmlSafe(this.get('sanitizer').purify(params[0]));
+    return htmlSafe(this.sanitizer.purify(params[0]));
   }
 });

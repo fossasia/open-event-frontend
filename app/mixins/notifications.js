@@ -6,10 +6,10 @@ export default Mixin.create({
       notification.set('isRead', true);
       notification.save()
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Marked as Read successfully'));
+          this.notify.success(this.l10n.t('Marked as Read successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error occurred.'));
         });
     },
     markAllAsRead(notifications) {
@@ -23,10 +23,10 @@ export default Mixin.create({
       Promise
         .all(bulkPromises)
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Marked all as Read successfully'));
+          this.notify.success(this.l10n.t('Marked all as Read successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error occurred.'));
         });
     }
   }

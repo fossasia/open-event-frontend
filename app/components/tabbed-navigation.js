@@ -8,7 +8,7 @@ export default Component.extend({
   currentRoute: computed('session.currentRouteName', 'item', function() {
     const path = this.get('session.currentRouteName');
     if (path) {
-      return this.get('item');
+      return this.item;
     }
   }),
   didInsertElement() {

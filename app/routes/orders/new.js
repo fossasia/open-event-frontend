@@ -4,7 +4,7 @@ export default Route.extend({
 
   titleToken(model) {
     let order = model.order.get('identifier');
-    return this.get('l10n').t(`New Order -${order}`);
+    return this.l10n.t(`New Order -${order}`);
   },
 
   async model(params) {

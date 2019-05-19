@@ -20,8 +20,8 @@ export default Component.extend({
   },
   willDestroyElement() {
     this._super(...arguments);
-    if (this.get('$header')) {
-      this.get('$header').popup('destroy');
+    if (this.$header) {
+      this.$header.popup('destroy');
     }
   }
 });

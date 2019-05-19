@@ -14,7 +14,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give your sponsor a name')
+              prompt : this.l10n.t('Please give your sponsor a name')
             }
           ]
         },
@@ -22,7 +22,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please upload sponsor\'s logo.')
+              prompt : this.l10n.t('Please upload sponsor\'s logo.')
             }
           ]
         }
@@ -41,7 +41,7 @@ export default Component.extend(FormMixin, {
         return (!sponsor.get('name'));
       });
       if (incorrect_sponsors.length > 0) {
-        this.notify.error(this.get('l10n').t('Please fill the required fields for existing sponsor items'));
+        this.notify.error(this.l10n.t('Please fill the required fields for existing sponsor items'));
         this.set('isLoading', false);
       } else {
         this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
@@ -57,7 +57,7 @@ export default Component.extend(FormMixin, {
           return (!sponsor.get('name'));
         });
         if (incorrect_sponsors.length > 0) {
-          this.notify.error(this.get('l10n').t('Please fill the required fields.'));
+          this.notify.error(this.l10n.t('Please fill the required fields.'));
           this.set('isLoading', false);
         } else {
           this.set('data.event.state', 'draft');
