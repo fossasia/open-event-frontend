@@ -5,18 +5,18 @@ export default Component.extend({
   tagName       : 'footer',
   classNames    : ['ui', 'inverted', 'vertical', 'footer', 'segment'],
   currentLocale : computed(function() {
-    return this.get('l10n').getLocale();
+    return this.l10n.getLocale();
   }),
   actions: {
     switchLanguage(locale) {
-      this.get('l10n').switchLanguage(locale);
+      this.l10n.switchLanguage(locale);
     }
   },
 
   didInsertElement() {
-    this.set('eventLocations', this.get('eventLocations').sortBy('name'));
+    this.set('eventLocations', this.eventLocations.sortBy('name'));
 
-    let eventTypes = this.get('eventTypes').sortBy('name').toArray();
+    let eventTypes = this.eventTypes.sortBy('name').toArray();
     eventTypes.forEach(eventType => {
       if (eventType.name === 'Other') {
         let other = eventType;

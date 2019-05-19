@@ -18,8 +18,8 @@ export default Component.extend({
   }),
 
   protocolAddressObserver: observer('protocol', 'address', function() {
-    let add = this.get('address');
-    let proto = this.get('protocol');
+    let add = this.address;
+    let proto = this.protocol;
     if (add.includes('http://') || add.includes('https://')) {
       let temp = add.split('://');
       proto = temp[0];
@@ -36,7 +36,7 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    if (this.get('segmentedLink')) {
+    if (this.segmentedLink) {
       this.setProperties({
         protocol : this.get('segmentedLink.protocol'),
         address  : this.get('segmentedLink.address')

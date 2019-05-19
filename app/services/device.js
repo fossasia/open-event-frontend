@@ -38,9 +38,8 @@ export default Service.extend({
 
   deviceType: computed('currentWidth', function() {
     let deviceType = 'computer';
-    const currentWidth = this.get('currentWidth');
     forOwn(breakpoints, (value, key) => {
-      if (currentWidth >= value.min && (!value.hasOwnProperty('max') || currentWidth <= value.max)) {
+      if (this.currentWidth >= value.min && (!value.hasOwnProperty('max') || this.currentWidth <= value.max)) {
         deviceType = key;
       }
     });
@@ -90,7 +89,7 @@ export default Service.extend({
 
     $(window).resize(() => {
       debounce(() => {
-        if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+        if (!(this.isDestroyed || this.isDestroying)) {
           this.set('currentWidth', document.body.clientWidth);
         }
       }, 200);

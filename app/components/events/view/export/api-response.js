@@ -14,11 +14,11 @@ export default Component.extend({
   isLoading: false,
 
   baseUrl: computed('eventId', function() {
-    return `${`${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/`}${this.get('eventId')}`;
+    return `${`${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/`}${this.eventId}`;
   }),
 
   displayUrl: computed('eventId', function() {
-    return `${`${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/`}${this.get('eventId')}`;
+    return `${`${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/`}${this.eventId}`;
   }),
 
   toggleSwitches: {
@@ -32,14 +32,14 @@ export default Component.extend({
 
   makeRequest() {
     this.set('isLoading', true);
-    this.get('loader')
-      .load(this.get('displayUrl'), { isExternal: true })
+    this.loader
+      .load(this.displayUrl, { isExternal: true })
       .then(json => {
         json = JSON.stringify(json, null, 2);
         this.set('json', htmlSafe(syntaxHighlight(json)));
       })
       .catch(() => {
-        this.get('notify').error(this.get('l10n').t('Could not fetch from the server'));
+        this.notify.error(this.l10n.t('Could not fetch from the server'));
         this.set('json', 'Could not fetch from the server');
       })
       .finally(() => {
@@ -48,12 +48,12 @@ export default Component.extend({
   },
 
   buildDisplayUrl() {
-    let newUrl = this.get('baseUrl');
+    let newUrl = this.baseUrl;
     const include = [];
 
-    for (const key in this.get('toggleSwitches')) {
-      if (this.get('toggleSwitches').hasOwnProperty(key)) {
-        this.get('toggleSwitches')[key] && include.push(key);
+    for (const key in this.toggleSwitches) {
+      if (this.toggleSwitches.hasOwnProperty(key)) {
+        this.toggleSwitches[key] && include.push(key);
       }
     }
 

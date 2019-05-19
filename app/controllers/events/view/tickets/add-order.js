@@ -41,8 +41,8 @@ export default Controller.extend({
     updateOrder(ticket, count) {
       let order = this.get('model.order');
       ticket.set('orderQuantity', count);
-      order.set('amount', this.get('total'));
-      if (!this.get('total')) {
+      order.set('amount', this.total);
+      if (!this.total) {
         order.set('amount', 0);
       }
       if (count > 0) {
@@ -78,20 +78,20 @@ export default Controller.extend({
         order.set('attendees', attendees.slice());
         await order.save()
           .then(order => {
-            this.get('notify').success(this.get('l10n').t('Order details saved. Please fill further details within 10 minutes.'));
+            this.notify.success(this.l10n.t('Order details saved. Please fill further details within 10 minutes.'));
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async() => {
             for (const attendee of attendees ? attendees.toArray() : []) {
               await attendee.destroyRecord();
             }
-            this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
           })
           .finally(() => {
             this.set('isLoading', false);
           });
       } catch (e) {
-        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       }
     }
   }

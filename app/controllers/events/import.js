@@ -9,7 +9,7 @@ export default Controller.extend({
   fileName     : '',
   importTask(taskUrl) {
     run.later(() => {
-      this.get('loader')
+      this.loader
         .load(taskUrl)
         .then(data => {
           if (data.state !== 'SUCCESS') {
@@ -52,7 +52,7 @@ export default Controller.extend({
         'file'         : true
       });
 
-      this.get('loader').post(
+      this.loader.post(
         `/events/${endpoint}`,
         data,
         { isFile: true }

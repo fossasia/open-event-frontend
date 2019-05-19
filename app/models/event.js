@@ -153,13 +153,12 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   segmentedTicketUrl        : computedSegmentedLink.bind(this)('ticketUrl'),
 
   shortLocationName: computed('locationName', function() {
-    let eventLocation = this.get('locationName');
-    if (!eventLocation) {
+    if (!this.locationName) {
       return '';
     }
-    let splitLocations = eventLocation.split(',');
+    let splitLocations = this.locationName.split(',');
     if (splitLocations.length <= 3) {
-      return eventLocation;
+      return this.locationName;
     } else {
       return splitLocations.splice(1, splitLocations.length).join();
     }
@@ -167,11 +166,11 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
 
   url: computed('identifier', function() {
     const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
-    return origin + this.get('router').urlFor('public', this.get('id'));
+    return origin + this.router.urlFor('public', this.id);
   }),
 
   sessionsByState: computed('sessions', function() {
-    return groupBy(this.get('sessions').toArray(), 'data.state');
+    return groupBy(this.sessions.toArray(), 'data.state');
   }),
 
   _ready: on('ready', function() {

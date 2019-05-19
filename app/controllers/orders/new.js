@@ -25,22 +25,22 @@ export default Controller.extend({
         await order.save()
           .then(order => {
             if (order.status === 'pending') {
-              this.get('notify').success(this.get('l10n').t('Order details saved. Please fill the payment details'));
+              this.notify.success(this.l10n.t('Order details saved. Please fill the payment details'));
               this.transitionToRoute('orders.pending', order.identifier);
             } else if (order.status === 'completed' || order.status === 'placed') {
-              this.get('notify').success(this.get('l10n').t('Order details saved. Your order is successful'));
+              this.notify.success(this.l10n.t('Order details saved. Your order is successful'));
               this.transitionToRoute('orders.view', order.identifier);
             }
           })
           .catch(e => {
             order.set('status', 'initializing');
-            this.get('notify').error(this.get('l10n').t(` ${e} Oops something went wrong. Please try again`));
+            this.notify.error(this.l10n.t(` ${e} Oops something went wrong. Please try again`));
           })
           .finally(() => {
             this.set('isLoading', false);
           });
       } catch (e) {
-        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       }
     }
   }

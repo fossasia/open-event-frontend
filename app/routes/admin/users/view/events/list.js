@@ -6,11 +6,11 @@ export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
     switch (this.get('params.event_status')) {
       case 'live':
-        return this.get('l10n').t('Live');
+        return this.l10n.t('Live');
       case 'draft':
-        return this.get('l10n').t('Draft');
+        return this.l10n.t('Draft');
       case 'past':
-        return this.get('l10n').t('Past');
+        return this.l10n.t('Past');
     }
   },
   async model(params) {

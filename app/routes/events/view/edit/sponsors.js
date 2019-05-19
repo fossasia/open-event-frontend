@@ -4,7 +4,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 export default Route.extend(EventWizardMixin, {
 
   titleToken() {
-    return this.get('l10n').t('Sponsors');
+    return this.l10n.t('Sponsors');
   },
 
   async model() {

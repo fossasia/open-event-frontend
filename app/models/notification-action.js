@@ -17,8 +17,7 @@ export default ModelBase.extend({
    */
   buttonTitle: computed('subject', 'actionType', function() {
     let action;
-    const actionType = this.get('actionType');
-    switch (actionType) {
+    switch (this.actionType) {
       case 'download':
         action = 'Download';
         break;
@@ -32,8 +31,7 @@ export default ModelBase.extend({
     }
 
     let buttonSubject;
-    const subject = this.get('subject');
-    switch (subject) {
+    switch (this.subject) {
       case 'event-export':
         buttonSubject = ' Event';
         break;
@@ -63,7 +61,7 @@ export default ModelBase.extend({
         break;
 
       case 'call-for-speakers':
-        if (this.get('actionType') === 'submit') {
+        if (this.actionType === 'submit') {
           buttonSubject = ' Proposal';
         } else {
           buttonSubject = ' Call for Speakers';
@@ -80,9 +78,8 @@ export default ModelBase.extend({
    * The route name to which the action button will direct the user to.
    */
   buttonRoute: computed('subject', function() {
-    const subject = this.get('subject');
     let routeName;
-    switch (subject) {
+    switch (this.subject) {
       case 'event-export':
         routeName = 'events.view';
         break;

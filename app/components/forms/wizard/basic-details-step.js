@@ -63,18 +63,17 @@ export default Component.extend(FormMixin, EventWizardMixin, {
    * returns the validation rules for the social links.
    */
   socialLinksValidationRules: computed('socialLinks', function() {
-    const socialLinks = this.get('socialLinks');
     let validationRules = {};
-    for (let i = 0; i < socialLinks.length; i++) {
+    for (let i = 0; i < this.socialLinks.length; i++) {
       validationRules = merge(validationRules, {
-        [socialLinks.get(i).identifier]: {
-          identifier : socialLinks.get(i).identifier,
+        [this.socialLinks.get(i).identifier]: {
+          identifier : this.socialLinks.get(i).identifier,
           optional   : true,
           rules      : [
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         }
@@ -112,10 +111,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   didInsertElement() {
-    if (!this.get('isCreate') && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
+    if (!this.isCreate && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
     }
-    if (!this.get('isCreate') && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
+    if (!this.isCreate && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
       this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
     }
   },
@@ -131,7 +130,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give your event a name')
+              prompt : this.l10n.t('Please give your event a name')
             }
           ]
         },
@@ -140,7 +139,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Choose a timezone for your event')
+              prompt : this.l10n.t('Choose a timezone for your event')
             }
           ]
         },
@@ -149,11 +148,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please tell us when your event starts')
+              prompt : this.l10n.t('Please tell us when your event starts')
             },
             {
               type   : 'date',
-              prompt : this.get('l10n').t('Please give a valid start date')
+              prompt : this.l10n.t('Please give a valid start date')
             }
           ]
         },
@@ -162,11 +161,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please tell us when your event ends')
+              prompt : this.l10n.t('Please tell us when your event ends')
             },
             {
               type   : 'date',
-              prompt : this.get('l10n').t('Please give a valid end date')
+              prompt : this.l10n.t('Please give a valid end date')
             }
           ]
         },
@@ -176,7 +175,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give a start time')
+              prompt : this.l10n.t('Please give a start time')
             }
           ]
         },
@@ -186,7 +185,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give an end time')
+              prompt : this.l10n.t('Please give an end time')
             }
           ]
         },
@@ -195,7 +194,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give your ticket a name')
+              prompt : this.l10n.t('Please give your ticket a name')
             }
           ]
         },
@@ -205,7 +204,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'maxLength[160]',
-              prompt : this.get('l10n').t('Ticket description shouldn\'t contain more than {ruleValue} characters')
+              prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
             }
           ]
         },
@@ -214,15 +213,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please give your ticket a price')
+              prompt : this.l10n.t('Please give your ticket a price')
             },
             {
               type   : 'number',
-              prompt : this.get('l10n').t('Please give a proper price for you ticket')
+              prompt : this.l10n.t('Please give a proper price for you ticket')
             },
             {
               type   : 'integer[1..]',
-              prompt : this.get('l10n').t('Ticket price should be greater than 0')
+              prompt : this.l10n.t('Ticket price should be greater than 0')
             }
           ]
         },
@@ -231,11 +230,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please specify how many tickets of this type are available')
+              prompt : this.l10n.t('Please specify how many tickets of this type are available')
             },
             {
               type   : 'number',
-              prompt : this.get('l10n').t('Please give a proper quantity for you ticket')
+              prompt : this.l10n.t('Please give a proper quantity for you ticket')
             }
           ]
         },
@@ -244,11 +243,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Minimum tickets per order required')
+              prompt : this.l10n.t('Minimum tickets per order required')
             },
             {
               type   : 'number',
-              prompt : this.get('l10n').t('Invalid number')
+              prompt : this.l10n.t('Invalid number')
             }
           ]
         },
@@ -257,15 +256,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Maximum tickets per order required')
+              prompt : this.l10n.t('Maximum tickets per order required')
             },
             {
               type   : 'number',
-              prompt : this.get('l10n').t('Invalid number')
+              prompt : this.l10n.t('Invalid number')
             },
             {
               type   : 'integer[1..]',
-              prompt : this.get('l10n').t('Maximum tickets per order should be greater than 0')
+              prompt : this.l10n.t('Maximum tickets per order should be greater than 0')
             }
           ]
         },
@@ -274,11 +273,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.get('l10n').t('Please enter a valid email')
+              prompt : this.l10n.t('Please enter a valid email')
             },
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please fill your paypal email for payment of tickets.')
+              prompt : this.l10n.t('Please fill your paypal email for payment of tickets.')
             }
           ]
         },
@@ -287,7 +286,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please fill the details for payment of tickets.')
+              prompt : this.l10n.t('Please fill the details for payment of tickets.')
             }
           ]
         },
@@ -296,7 +295,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please fill the bank details for payment of tickets.')
+              prompt : this.l10n.t('Please fill the bank details for payment of tickets.')
             }
           ]
         },
@@ -305,7 +304,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please fill the cheque details for payment of tickets.')
+              prompt : this.l10n.t('Please fill the cheque details for payment of tickets.')
             }
           ]
         },
@@ -316,26 +315,26 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         }
       }
     };
     // Merging the predetermined rules with the rules for social links.
-    validationRules.fields = merge(validationRules.fields, this.get('socialLinksValidationRules'));
+    validationRules.fields = merge(validationRules.fields, this.socialLinksValidationRules);
     return validationRules;
   },
 
   actions: {
     connectStripe() {
       this.get('data.event.stripeAuthorization.content') || this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
-      this.get('torii').open('stripe')
+      this.torii.open('stripe')
         .then(authorization => {
           this.set('data.event.stripeAuthorization.stripeAuthCode', authorization.authorizationCode);
         })
         .catch(error => {
-          this.get('notify').error(this.get('l10n').t(`${error.message}. Please try again`));
+          this.notify.error(this.l10n.t(`${error.message}. Please try again`));
         });
     },
     disconnectStripe() {
@@ -396,7 +395,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       // TODO do proper checks. Simulating now.
       later(this, () => {
         if (this.get('data.event.discountCode.code') !== 'AIYPWZQP') {
-          this.getForm().form('add prompt', 'discount_code', this.get('l10n').t('This discount code is invalid. Please try again.'));
+          this.getForm().form('add prompt', 'discount_code', this.l10n.t('This discount code is invalid. Please try again.'));
         } else {
           this.set('data.event.discountCode.code', 42);
           this.set('discountCodeDescription', 'Tester special discount');
@@ -418,7 +417,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
 
     updateDates() {
-      const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event').getProperties('startsAtDate', 'endsAtDate', 'startsAtTime', 'endsAtTime', 'timezone');
+      const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event');
       let startsAtConcatenated = moment(startsAtDate.concat(' ', startsAtTime));
       let endsAtConcatenated = moment(endsAtDate.concat(' ', endsAtTime));
       this.get('data.event').setProperties({

@@ -12,7 +12,7 @@ const router = Router.extend(RouterScroll, {
   headData : service(),
 
   setTitle(title) {
-    this.get('headData').set('title', title);
+    this.headData.set('title', title);
   },
 
   init() {
@@ -24,9 +24,9 @@ const router = Router.extend(RouterScroll, {
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
-      const page = this.get('url');
+      const page = this.url;
       const title = this.getWithDefault('currentRouteName', 'unknown');
-      this.get('metrics').trackPage({ page, title });
+      this.metrics.trackPage({ page, title });
       this.set('session.currentRouteName', title);
     });
   }

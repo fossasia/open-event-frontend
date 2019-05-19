@@ -78,10 +78,10 @@ export default ModelBase.extend({
   },
 
   name: computed('fieldIdentifier', 'form', function() {
-    let name = this.get('fieldIdentifier');
-    if (this.get('form') === 'session') {
+    let name = this.fieldIdentifier;
+    if (this.form === 'session') {
       name = this.get(`session.${name}`);
-    } else if (this.get('form') === 'speaker') {
+    } else if (this.form === 'speaker') {
       name = this.get(`speaker.${name}`);
     } else {
       name = this.get(`attendee.${name}`);
@@ -90,18 +90,18 @@ export default ModelBase.extend({
   }),
 
   isLongText: computed('type', function() {
-    return this.get('type') === 'text'
-    && (['shortBiography', 'longBiography', 'longAbstract', 'shortAbstract', 'comments', 'speakingExperience'].includes(this.get('fieldIdentifier')));
+    return this.type === 'text'
+    && (['shortBiography', 'longBiography', 'longAbstract', 'shortAbstract', 'comments', 'speakingExperience'].includes(this.fieldIdentifier));
   }),
 
   isIncludedObserver: observer('isIncluded', function() {
-    if (!this.get('isIncluded') && this.get('isRequired')) {
+    if (!this.isIncluded && this.isRequired) {
       this.set('isRequired', false);
     }
   }),
 
   isRequiredObserver: observer('isRequired', function() {
-    if (!this.get('isIncluded') && this.get('isRequired')) {
+    if (!this.isIncluded && this.isRequired) {
       this.set('isIncluded', true);
     }
   })

@@ -13,7 +13,7 @@ export default Service.extend({
    * Reload settings when the authentication state changes.
    */
   _authenticationObserver: observer('session.isAuthenticated', function() {
-    this.get('_lastPromise')
+    this._lastPromise
       .then(() => this.set('_lastPromise', this._loadSettings()))
       .catch(() => this.set('_lastPromise', this._loadSettings()));
   }),
@@ -25,8 +25,8 @@ export default Service.extend({
    * @private
    */
   async _loadSettings() {
-    const settingsModel = await this.get('store').queryRecord('setting', {});
-    this.get('store').modelFor('setting').eachAttribute(attributeName => {
+    const settingsModel = await this.store.queryRecord('setting', {});
+    this.store.modelFor('setting').eachAttribute(attributeName => {
       this.set(attributeName, settingsModel.get(attributeName));
     });
   },

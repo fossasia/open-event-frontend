@@ -9,34 +9,34 @@ export default Controller.extend({
   actions: {
     export(mode) {
       this.set(`isLoading${mode}`, true);
-      this.get('loader')
+      this.loader
         .load(`/events/${this.get('model.id')}/export/orders/${mode}`)
         .then(exportJobInfo => {
           this.requestLoop(exportJobInfo, mode);
         })
         .catch(() => {
           this.set(`isLoading${mode}`, false);
-          this.get('notify').error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         });
     }
   },
   requestLoop(exportJobInfo, mode) {
     run.later(() => {
-      this.get('loader')
+      this.loader
         .load(exportJobInfo.task_url, { withoutPrefix: true })
         .then(exportJobStatus => {
           if (exportJobStatus.state === 'SUCCESS') {
             window.location = exportJobStatus.result.download_url;
-            this.get('notify').success(this.get('l10n').t('Download Ready'));
+            this.notify.success(this.l10n.t('Download Ready'));
           } else if (exportJobStatus.state === 'WAITING') {
             this.requestLoop(exportJobInfo);
-            this.get('notify').alert(this.get('l10n').t('Task is going on.'));
+            this.notify.alert(this.l10n.t('Task is going on.'));
           } else {
-            this.get('notify').error(this.get('l10n').t(`${mode.toUpperCase()} Export has failed.`));
+            this.notify.error(this.l10n.t(`${mode.toUpperCase()} Export has failed.`));
           }
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t(`${mode.toUpperCase()} Export has failed.`));
+          this.notify.error(this.l10n.t(`${mode.toUpperCase()} Export has failed.`));
         })
         .finally(() => {
           this.set('isLoading', false);

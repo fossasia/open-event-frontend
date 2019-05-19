@@ -16,6 +16,6 @@ export default Component.extend({
     return true;
   }),
   allFields: computed('fields', function() {
-    return groupBy(this.get('fields').toArray(), field => field.get('form'));
+    return groupBy(this.fields.toArray(), field => field.get('form'));
   })
 });

@@ -44,10 +44,10 @@ export default Controller.extend({
       this.set('isLoading', true);
       speaker.destroyRecord()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Speaker has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
         })
         .catch(e => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
           console.warn(e);
         })
         .finally(() => {
@@ -64,10 +64,10 @@ export default Controller.extend({
       speaker.toggleProperty('isFeatured');
       speaker.save()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Speaker details modified successfully'));
+          this.notify.success(this.l10n.t('Speaker details modified successfully'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         });
     }
   }

@@ -7,10 +7,10 @@ export default Controller.extend({
         await this.get('model.session').save();
         speakerDetails.sessions.pushObject(this.get('model.session'));
         await this.get('model.session').save();
-        this.get('notify').success(this.get('l10n').t('Your session has been saved'));
+        this.notify.success(this.l10n.t('Your session has been saved'));
         this.transitionToRoute('public.cfs.index');
       } catch (e) {
-        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       }
     }
   }

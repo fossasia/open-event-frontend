@@ -23,12 +23,12 @@ export default Component.extend({
       formatter : {
         time: date => {
           if (!date) {return ''}
-          return moment(date).format(this.get('format'));
+          return moment(date).format(this.format);
         }
       }
     };
 
-    switch (this.get('rangePosition')) {
+    switch (this.rangePosition) {
       case 'start':
         defaultOptions.endCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
         break;
@@ -37,7 +37,7 @@ export default Component.extend({
         break;
     }
 
-    this.$().calendar(merge(defaultOptions, this.get('options')));
+    this.$().calendar(merge(defaultOptions, this.options));
   }
 
 });

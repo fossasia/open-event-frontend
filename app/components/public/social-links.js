@@ -8,6 +8,6 @@ export default Component.extend({
   socialLinks: A(),
 
   twitterLink: computed('socialLinks.[]', function() {
-    return this.get('socialLinks').findBy('isTwitter', true);
+    return this.socialLinks.findBy('isTwitter', true);
   })
 });

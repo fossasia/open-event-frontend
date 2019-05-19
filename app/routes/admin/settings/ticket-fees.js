@@ -2,10 +2,10 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Ticket Fees');
+    return this.l10n.t('Ticket Fees');
   },
   model() {
-    return this.get('store').findAll('ticket-fee');
+    return this.store.findAll('ticket-fee');
   },
   actions: {
     willTransition() {

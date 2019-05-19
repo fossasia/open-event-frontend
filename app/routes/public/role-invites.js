@@ -7,23 +7,23 @@ export default Route.extend({
         token: transition.queryParams.token
       }
     };
-    this.get('loader')
+    this.loader
       .post('/role_invites/user', payload)
       .then(user => {
         if (this.get('session.isAuthenticated')) {
           if (this.get('authManager.currentUser.email') === user.email) {
-            this.get('loader')
+            this.loader
               .post('/role_invites/accept-invite', payload)
               .then(invite => {
                 this.transitionTo('events.view', invite.event);
               })
               .catch(e => {
-                this.get('notify').error(this.get('l10n').t('An unexpected error has occurred'));
+                this.notify.error(this.l10n.t('An unexpected error has occurred'));
                 console.warn(e);
               });
           } else {
             this.set('session.skipRedirectOnInvalidation', true);
-            this.get('session').invalidate();
+            this.session.invalidate();
             this.transitionTo('register', {
               queryParams: {
                 event       : `${transition.params.public.event_id}`,
@@ -44,7 +44,7 @@ export default Route.extend({
         }
       })
       .catch(e => {
-        this.get('notify').error(this.get('l10n').t('An unexpected error has occurred'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred'));
         console.warn(e);
       });
   }

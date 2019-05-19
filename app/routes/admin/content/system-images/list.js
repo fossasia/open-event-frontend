@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Sub topics');
+    return this.l10n.t('Sub topics');
   },
   model(params) {
     this.set('params', params);

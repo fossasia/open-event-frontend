@@ -31,12 +31,12 @@ export default Component.extend({
       this.set('isLoading', true);
       user.destroyRecord()
         .then(() => {
-          this.get('authManager').logout();
-          this.get('routing').transitionTo('index');
-          this.notify.success(this.get('l10n').t('Your account has been deleted successfully.'));
+          this.authManager.logout();
+          this.routing.transitionTo('index');
+          this.notify.success(this.l10n.t('Your account has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.setProperties({

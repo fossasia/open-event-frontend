@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Explore');
+    return this.l10n.t('Explore');
   },
 
   /**
@@ -168,9 +168,9 @@ export default Route.extend({
 
   actions: {
     async queryParamsDidChange(change, params) {
-      if (this.get('controller')) {
-        this.get('controller').set('filteredEvents', await this._loadEvents(params));
-        this.get('controller').set('filters', params);
+      if (this.controller) {
+        this.controller.set('filteredEvents', await this._loadEvents(params));
+        this.controller.set('filters', params);
       }
     }
   }

@@ -19,11 +19,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your email ID')
+              prompt : this.l10n.t('Please enter your email ID')
             },
             {
               type   : 'email',
-              prompt : this.get('l10n').t('Please enter a valid email ID')
+              prompt : this.l10n.t('Please enter a valid email ID')
             }
           ]
         },
@@ -33,7 +33,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your new password')
+              prompt : this.l10n.t('Please enter your new password')
             }
           ]
         }
@@ -45,21 +45,21 @@ export default Component.extend(FormMixin, {
     submit() {
       this.onValid(() => {
         let payload = {};
-        if (this.get('token')) {
+        if (this.token) {
           payload = {
             'data': {
-              'token'    : this.get('token'),
-              'password' : this.get('password')
+              'token'    : this.token,
+              'password' : this.password
             }
           };
-          this.get('loader')
+          this.loader
             .patch('auth/reset-password', payload)
             .then(() => {
-              this.notify.success(this.get('l10n').t('Your password has been reset successfully. Please log in to continue'));
-              this.get('router').transitionTo('login');
+              this.notify.success(this.l10n.t('Your password has been reset successfully. Please log in to continue'));
+              this.router.transitionTo('login');
             })
             .catch(() => {
-              this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
             })
             .finally(() => {
               this.set('isLoading', false);
@@ -69,20 +69,20 @@ export default Component.extend(FormMixin, {
         } else {
           payload = {
             'data': {
-              'email': this.get('identification')
+              'email': this.identification
             }
           };
-          this.get('loader')
+          this.loader
             .post('auth/reset-password', payload)
             .then(() => {
-              this.notify.success(this.get('l10n').t('Please go to the link sent to your email to reset your password'));
-              this.get('router').transitionTo('login');
+              this.notify.success(this.l10n.t('Please go to the link sent to your email to reset your password'));
+              this.router.transitionTo('login');
             })
             .catch(reason => {
               if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 404) {
-                this.set('errorMessage', this.get('l10n').t('No account is registered with this email address.'));
+                this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
               } else {
-                this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
               }
             })
             .finally(() => {

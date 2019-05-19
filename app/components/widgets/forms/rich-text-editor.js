@@ -33,18 +33,18 @@ export default Component.extend({
   },
 
   valueObserver: observer('value', function() {
-    if (this.get('editor') && this.get('value') !== this.get('_value')) {
-      this.get('editor').setValue(this.get('value'));
+    if (this.editor && this.value !== this._value) {
+      this.editor.setValue(this.value);
     }
   }),
 
   textareaIdGenerated: computed('textareaId', function() {
-    return this.get('textareaId') ? this.get('textareaId') : v4();
+    return this.textareaId ? this.textareaId : v4();
   }),
 
   didInsertElement() {
     this._super(...arguments);
-    this.set('_value', this.get('value'));
+    this.set('_value', this.value);
     this.$('.button')
       .popup({
         inline    : true,
@@ -53,9 +53,9 @@ export default Component.extend({
 
     // Don't initialize wysihtml5 when app is in testing mode
     if (!isTesting) {
-      this.editor = new wysihtml5.Editor(this.$(`#${this.get('textareaIdGenerated')}`)[0], {
-        toolbar     : this.$(`#${this.get('textareaIdGenerated')}-toolbar`)[0],
-        parserRules : this.get('standardParserRules')
+      this.editor = new wysihtml5.Editor(this.$(`#${this.textareaIdGenerated}`)[0], {
+        toolbar     : this.$(`#${this.textareaIdGenerated}-toolbar`)[0],
+        parserRules : this.standardParserRules
       });
 
       const updateValue = () => {

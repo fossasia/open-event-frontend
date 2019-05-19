@@ -16,8 +16,8 @@ export default Route.extend(ApplicationRouteMixin, {
 
   async beforeModel(transition) {
     this._super(...arguments);
-    await this.get('authManager').initialize();
-    await this.get('settings').initialize();
+    await this.authManager.initialize();
+    await this.settings.initialize();
     if (!transition.intent.url.includes('login') && !transition.intent.url.includes('reset-password')) {
       this.set('session.previousRouteName', transition.intent.url);
     } else {
@@ -42,14 +42,14 @@ export default Route.extend(ApplicationRouteMixin, {
 
     return {
       notifications,
-      pages: await this.get('store').query('page', {
+      pages: await this.store.query('page', {
         sort: 'index'
       }),
       cookiePolicy     : this.get('settings.cookiePolicy'),
       cookiePolicyLink : this.get('settings.cookiePolicyLink'),
-      socialLinks      : await this.get('store').queryRecord('setting', {}),
-      eventTypes       : await this.get('store').findAll('event-type'),
-      eventLocations   : await this.get('store').findAll('event-location')
+      socialLinks      : await this.store.queryRecord('setting', {}),
+      eventTypes       : await this.store.findAll('event-type'),
+      eventLocations   : await this.store.findAll('event-location')
     };
   },
 

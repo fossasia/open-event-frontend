@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Past');
+    return this.l10n.t('Past');
   },
   model() {
     let filterOptions = [];

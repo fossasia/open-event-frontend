@@ -7,7 +7,7 @@ export default Component.extend({
   eventDownloadUrl   : '',
   isLoading          : false,
   fileFormat         : computed(function() {
-    switch (this.get('downloadType')) {
+    switch (this.downloadType) {
       case 'iCalendar':
         return 'ical';
       case 'Pentabarf XML':
@@ -19,29 +19,29 @@ export default Component.extend({
     }
   }),
   displayUrl: computed(function() {
-    return this.get(`model.${  this.get('fileFormat')  }Url`) !== null ? this.get(`model.${  this.get('fileFormat')  }Url`) : 'Please publish to generate the link';
+    return this.get(`model.${  this.fileFormat  }Url`) !== null ? this.get(`model.${  this.fileFormat  }Url`) : 'Please publish to generate the link';
   }),
   requestLoop(exportJobInfo) {
     run.later(() => {
-      this.get('loader')
+      this.loader
         .load(exportJobInfo.task_url, { withoutPrefix: true })
         .then(exportJobStatus => {
           if (exportJobStatus.state === 'SUCCESS') {
             this.set('isDownloadDisabled', false);
             this.set('eventDownloadUrl', exportJobStatus.result.download_url);
-            this.get('notify').success(this.get('l10n').t('Download Ready'));
+            this.notify.success(this.l10n.t('Download Ready'));
           } else if (exportJobStatus.state === 'WAITING') {
             this.requestLoop(exportJobInfo);
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').alert(this.get('l10n').t('Task is going on.'));
+            this.notify.alert(this.l10n.t('Task is going on.'));
           } else {
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').error(this.get('l10n').t('Task failed.'));
+            this.notify.error(this.l10n.t('Task failed.'));
           }
         })
         .catch(() => {
           this.set('eventExportStatus', 'FAILURE');
-          this.get('notify').error(this.get('l10n').t('Task failed.'));
+          this.notify.error(this.l10n.t('Task failed.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -51,14 +51,14 @@ export default Component.extend({
   actions: {
     startExportTask() {
       this.set('isLoading', true);
-      this.get('loader')
-        .load(`/events/${this.get('model.id')}/export/${this.get('fileFormat')}`)
+      this.loader
+        .load(`/events/${this.get('model.id')}/export/${this.fileFormat}`)
         .then(exportJobInfo => {
           this.requestLoop(exportJobInfo);
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Unexpected error occurred.'));
+          this.notify.error(this.l10n.t('Unexpected error occurred.'));
         });
     }
   }
