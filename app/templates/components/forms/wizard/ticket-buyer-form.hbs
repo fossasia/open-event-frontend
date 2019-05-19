@@ -1,0 +1,48 @@
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
+
+  <div class="ui centered grid">
+    <div class="column">
+      <div class="ui {{if data.event.isTicketFormEnabled 'basic'}} segment">
+        <div class="center aligned text">
+          <div class=" field">
+            <div class="ui slider checkbox">
+              {{input type='checkbox' checked=data.event.isTicketFormEnabled}}
+              <label class="weight-300" style="font-size: large">
+                {{if data.event.isTicketFormEnabled (t 'Turn off') (t 'Turn on')}}
+                {{t 'Ticket Form'}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{#if data.event.isTicketFormEnabled}}
+    Coming Soon
+  {{else}}
+    <div class="spacer-50"></div>
+  {{/if}}
+
+  <div class="{{if device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
+    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+      {{t 'Previous'}}
+      <i class="left chevron icon"></i>
+    </button>
+    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
+      {{t 'Forward'}}
+      <i class="right chevron icon"></i>
+    </button>
+    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+      {{t 'Save draft'}}
+      <i class="save icon"></i>
+    </button>
+    {{#if data.event.locationName}}
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+        {{t 'Publish'}}
+        <i class="check icon"></i>
+      </button>
+    {{/if}}
+  </div>
+
+</form>

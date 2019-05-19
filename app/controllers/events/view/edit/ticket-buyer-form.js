@@ -6,13 +6,13 @@ export default Controller.extend(EventWizardMixin, {
     save() {
       this.saveEventDataAndRedirectTo(
         'events.view.index',
-        ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
+        []
       );
     },
-    move() {
+    move(direction) {
       this.saveEventDataAndRedirectTo(
-        'events.view.edit.ticket-buyer-form',
-        ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
+        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.basic-details',
+        []
       );
     }
   }
