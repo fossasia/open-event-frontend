@@ -1,5 +1,5 @@
 import { helper } from '@ember/component/helper';
-import { intersection } from 'lodash';
+import { intersection } from 'lodash-es';
 
 export  function ticketAttendees(params/* , hash*/) {
 

@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
-import { sumBy } from 'lodash';
+import { sumBy } from 'lodash-es';
 import { A } from '@ember/array';
 
 export default Component.extend(FormMixin, {

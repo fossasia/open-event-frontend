@@ -11,13 +11,15 @@ const router = Router.extend(RouterScroll, {
   session  : service(),
   headData : service(),
 
-  didTransition() {
-    this._super(...arguments);
-    this._trackPage();
-  },
-
   setTitle(title) {
     this.get('headData').set('title', title);
+  },
+
+  init() {
+    this._super(...arguments);
+    this.on('routeDidChange', () => {
+      this._trackPage();
+    });
   },
 
   _trackPage() {

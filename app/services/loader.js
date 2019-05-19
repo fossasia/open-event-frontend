@@ -6,7 +6,7 @@ import { buildUrl } from 'open-event-frontend/utils/url';
 import httpStatus from 'http-status';
 import objectToFormData from 'object-to-formdata';
 import fetch from 'fetch';
-import { clone, assign, merge } from 'lodash';
+import { clone, assign, merge } from 'lodash-es';
 const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
 
 export default Service.extend({

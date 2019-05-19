@@ -1,5 +1,5 @@
 import ApplicationSerializer from 'open-event-frontend/serializers/application';
-import { pick, omit } from 'lodash';
+import { pick, omit } from 'lodash-es';
 
 export default ApplicationSerializer.extend({
   serialize(snapshot, options) {

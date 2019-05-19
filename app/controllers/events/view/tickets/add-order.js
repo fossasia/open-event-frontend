@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-import { sumBy } from 'lodash';
+import { sumBy } from 'lodash-es';
 
 export default Controller.extend({
   hasTicketsInOrder: computed('model.tickets.@each.orderQuantity', function() {

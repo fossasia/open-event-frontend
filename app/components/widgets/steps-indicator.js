@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import Object, { observer, computed } from '@ember/object';
-import { map, findIndex } from 'lodash';
+import { map, findIndex } from 'lodash-es';
 
 export default Component.extend({
 

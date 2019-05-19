@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { sumBy } from 'lodash';
+import { sumBy } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
   tickets: computed('data.tickets', function() {

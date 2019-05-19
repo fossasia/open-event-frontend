@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { camelCase, startCase } from 'lodash';
+import { camelCase, startCase } from 'lodash-es';
 
 export default Controller.extend({
 

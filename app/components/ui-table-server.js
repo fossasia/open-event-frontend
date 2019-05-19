@@ -5,7 +5,7 @@ import { run } from '@ember/runloop';
 import { A } from '@ember/array';
 import ModelsTable from 'open-event-frontend/components/ui-table';
 import layout from 'open-event-frontend/templates/components/ui-table';
-import { merge, kebabCase } from 'lodash';
+import { merge, kebabCase } from 'lodash-es';
 import moment from 'moment';
 
 export default ModelsTable.extend({

@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
 import moment from 'moment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { groupBy, orderBy } from 'lodash';
+import { groupBy, orderBy } from 'lodash-es';
 import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
   validGithubProfileUrlPattern

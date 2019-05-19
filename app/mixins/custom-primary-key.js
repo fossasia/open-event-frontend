@@ -1,5 +1,5 @@
 import Mixin from '@ember/object/mixin';
-import { get, unset } from 'lodash';
+import { get, unset } from 'lodash-es';
 import { coerceId } from 'open-event-frontend/utils/internal';
 import attr from 'ember-data/attr';
 

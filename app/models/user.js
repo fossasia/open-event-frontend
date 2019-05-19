@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany } from 'ember-data/relationships';
-import { toString } from 'lodash';
+import { toString } from 'lodash-es';
 
 export default ModelBase.extend({
 

@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { orderBy, groupBy } from 'lodash';
+import { orderBy, groupBy } from 'lodash-es';
 
 export default Component.extend({
   sponsorsGrouped: computed('sponsors.[]', function() {

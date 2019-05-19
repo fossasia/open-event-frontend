@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { observer, computed } from '@ember/object';
-import { keys, values } from 'lodash';
+import { keys, values } from 'lodash-es';
 
 export default Component.extend({
 

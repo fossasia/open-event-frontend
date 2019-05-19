@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
 import { inject as service } from '@ember/service';
-import { forOwn } from 'lodash';
+import { forOwn } from 'lodash-es';
 import { htmlSafe } from '@ember/string';
 
 export default Helper.extend({

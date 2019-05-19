@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-import { groupBy } from 'lodash';
+import { groupBy } from 'lodash-es';
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 

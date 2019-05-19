@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { forOwn } from 'lodash';
+import { forOwn } from 'lodash-es';
 import { pascalCase } from 'open-event-frontend/utils/string';
 
 export default Component.extend({
