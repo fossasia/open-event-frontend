@@ -1,0 +1,15 @@
+{{record.title}}
+<div class="hidden ui divider"></div>
+<div class="ui horizontal compact basic buttons">
+  {{#ui-popup content=(t 'View Session') class="{{if device.isMobile 'medium' 'huge'}} ui icon button"  click=(action viewSession record.id) position='left center'}}
+    <i class="unhide icon"></i>		
+  {{/ui-popup}}
+  {{#if (not record.isLocked)}}
+    {{#ui-popup content=(t 'Edit Session') class="{{if device.isMobile 'medium' 'huge'}} ui icon button" click=(action editSession record.id record.event.id) position='left center'}}
+      <i class="edit icon"></i>
+    {{/ui-popup}}
+  {{/if}}
+  {{#ui-popup content=(t 'Delete Session') click=(action (confirm (t 'Are you sure you would like to delete this Session?') (action deleteSession record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='left center'}}
+    <i class="trash outline icon"></i>
+  {{/ui-popup}}
+</div>
