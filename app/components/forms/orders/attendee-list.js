@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { groupBy } from 'lodash';
+import { groupBy } from 'lodash-es';
 
 export default Component.extend({
   buyer: computed('data.user', function() {

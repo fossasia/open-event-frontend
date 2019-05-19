@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { inject as service } from '@ember/service';
-import { merge, values, isEmpty } from 'lodash';
+import { merge, values, isEmpty } from 'lodash-es';
 
 export default Route.extend(ApplicationRouteMixin, {
   session: service(),

@@ -3,7 +3,7 @@ import Service from '@ember/service';
 import { computed } from '@ember/object';
 import { equal, or } from '@ember/object/computed';
 import { debounce } from '@ember/runloop';
-import { forOwn } from 'lodash';
+import { forOwn } from 'lodash-es';
 import { inject as service } from '@ember/service';
 
 /**

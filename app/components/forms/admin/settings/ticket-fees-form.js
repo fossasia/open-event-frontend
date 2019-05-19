@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
-import { orderBy, filter } from 'lodash';
+import { orderBy, filter } from 'lodash-es';
 
 export default Component.extend({
 

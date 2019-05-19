@@ -1,7 +1,7 @@
 import { observer, computed } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
 import { camelize } from '@ember/string';
-import { mapKeys } from 'lodash';
+import { mapKeys } from 'lodash-es';
 
 export default Service.extend({
 

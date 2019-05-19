@@ -2,7 +2,7 @@ import { computed } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { orderBy } from 'lodash';
+import { orderBy } from 'lodash-es';
 
 export default ModalBase.extend(FormMixin, {
   isSmall : false,

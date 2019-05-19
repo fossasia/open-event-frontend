@@ -10,7 +10,7 @@ import {
   computedSegmentedLink
 } from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
-import { groupBy } from 'lodash';
+import { groupBy } from 'lodash-es';
 
 const detectedTimezone = moment.tz.guess();
 
