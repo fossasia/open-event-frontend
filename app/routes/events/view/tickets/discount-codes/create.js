@@ -1,21 +1,23 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
     return this.get('l10n').t('Create');
   },
-  model() {
-    return RSVP.hash({
+  async model() {
+    let tickets = await this.modelFor('events.view').query('tickets', {});
+    let event = this.modelFor('events.view');
+    return {
       discountCode: this.get('store').createRecord('discount-code', {
-        event    : this.modelFor('events.view'),
+        event,
         tickets  : [],
         usedFor  : 'ticket',
         marketer : this.get('authManager.currentUser')
       }),
-      tickets: this.modelFor('events.view').query('tickets', {})
-    });
+      tickets,
+      event
+    };
   },
   resetController(controller) {
     this._super(...arguments);
