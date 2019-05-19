@@ -16,6 +16,7 @@ module.exports = {
   },
   rules: {
     'arrow-spacing': 'error',
+    'no-var': 'error',
     'no-useless-escape': 'off',
     'space-before-blocks': 'error',
     'comma-dangle': ['error', 'never'],
@@ -47,7 +48,6 @@ module.exports = {
     'brace-style': ['error', '1tbs', { 'allowSingleLine': true }],
     'max-statements-per-line': ['error', { 'max': 2 }],
     'quotes': ['error', 'single'],
-    'no-var': 'off',
     'indent': [
       'error', 2, {
         "FunctionExpression": {"parameters": "first"},

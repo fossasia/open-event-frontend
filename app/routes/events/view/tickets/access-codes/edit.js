@@ -4,7 +4,7 @@ import RSVP from 'rsvp';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken(model) {
-    var access_code = model.accessCode.get('code');
+    let access_code = model.accessCode.get('code');
     return this.get('l10n').t(access_code.concat('-Edit'));
   },
   model(params) {

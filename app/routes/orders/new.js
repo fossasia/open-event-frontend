@@ -3,7 +3,7 @@ import Route from '@ember/routing/route';
 export default Route.extend({
 
   titleToken(model) {
-    var order = model.order.get('identifier');
+    let order = model.order.get('identifier');
     return this.get('l10n').t(`New Order -${order}`);
   },
 
