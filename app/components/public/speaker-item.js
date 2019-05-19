@@ -7,7 +7,7 @@ export default Component.extend({
     return this.get('speaker').getProperties('twitter', 'facebook', 'github', 'linkedin');
   }),
   hasSocialLinks: computed(function() {
-    var currentSpeaker = this.speaker;
+    let currentSpeaker = this.speaker;
     return (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience);
   })
 });

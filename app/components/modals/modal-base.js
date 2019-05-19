@@ -1,5 +1,6 @@
 import { observer } from '@ember/object';
-import { assign, merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
+import { merge } from 'lodash-es';
 import UiModal from 'semantic-ui-ember/components/ui-modal';
 import { isTesting } from 'open-event-frontend/utils/testing';
 

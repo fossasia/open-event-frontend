@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Mixin from '@ember/object/mixin';
-import { merge } from '@ember/polyfills';
+import { merge } from 'lodash-es';
 import { debounce } from '@ember/runloop';
 import moment from 'moment';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';

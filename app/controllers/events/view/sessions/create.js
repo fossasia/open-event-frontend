@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   actions: {
     async save() {
-      var _this = this;
+      let _this = this;
       await this.get('model.session').save();
       if (this.get('addNewSpeaker')) {
         let newSpeaker = this.get('model.speaker');

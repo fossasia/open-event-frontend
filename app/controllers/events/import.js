@@ -32,9 +32,9 @@ export default Controller.extend({
   actions: {
     uploadFile(files) {
       let [file] = files;
-      var data = new FormData();
-      var endpoint = 'import/json';
-      var ext = file.name.split('.');
+      let data = new FormData();
+      let endpoint = 'import/json';
+      let ext = file.name.split('.');
       ext = ext[ext.length - 1].toLowerCase();
       if (ext === 'xml') {
         endpoint = 'import/pentabarf';

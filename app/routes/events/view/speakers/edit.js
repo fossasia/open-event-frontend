@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken(model) {
-    var speakerName = model.speaker.get('name');
+    let speakerName = model.speaker.get('name');
     return this.get('l10n').t(speakerName.concat('-Edit'));
   },
   async model(params) {

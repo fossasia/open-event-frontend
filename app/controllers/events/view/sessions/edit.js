@@ -4,7 +4,7 @@ export default Controller.extend({
   actions: {
     save() {
       this.set('isLoading', true);
-      var _this = this;
+      let _this = this;
       if (this.get('addNewSpeaker')) {
         let newSpeaker = this.get('model.speaker');
         newSpeaker.save()

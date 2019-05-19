@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
-import { merge } from '@ember/polyfills';
+import { merge } from 'lodash-es';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
@@ -419,8 +419,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     updateDates() {
       const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event').getProperties('startsAtDate', 'endsAtDate', 'startsAtTime', 'endsAtTime', 'timezone');
-      var startsAtConcatenated = moment(startsAtDate.concat(' ', startsAtTime));
-      var endsAtConcatenated = moment(endsAtDate.concat(' ', endsAtTime));
+      let startsAtConcatenated = moment(startsAtDate.concat(' ', startsAtTime));
+      let endsAtConcatenated = moment(endsAtDate.concat(' ', endsAtTime));
       this.get('data.event').setProperties({
         startsAt : moment.tz(startsAtConcatenated, timezone),
         endsAt   : moment.tz(endsAtConcatenated, timezone)

@@ -7,7 +7,7 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | settings/contact info section', function(hooks) {
   setupIntegrationTest(hooks);
 
-  var user = EmberObject.create({
+  let user = EmberObject.create({
     email   : 'xyz@xyz.com',
     contact : '34893485843'
   });

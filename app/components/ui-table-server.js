@@ -88,7 +88,7 @@ export default ModelsTable.extend({
     let columns = get(this, 'processedColumns');
     let sortProperties = get(this, 'sortProperties');
     let filterString = get(this, 'filterString');
-    var query, store, modelName;
+    let query, store, modelName;
 
     if (!get(data, 'query')) {
       console.warn('You must use https://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
@@ -143,9 +143,10 @@ export default ModelsTable.extend({
       let filterTitle = this.getCustomFilterTitle(column);
       let filterHeading = this.getFilterHeading(column);
       let isMomentQuery = false;
+      let queryParam;
       if (filterHeading && filterHeading === 'Date') {
         isMomentQuery = true;
-        var queryParam = moment(filter);
+        queryParam = moment(filter);
       }
       if (filter && !isMomentQuery) {
         query.filter.pushObject({

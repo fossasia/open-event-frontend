@@ -4,8 +4,8 @@ export default Component.extend({
   classNames: ['smart-overflow'],
   didInsertElement() {
     this._super(...arguments);
-    var $headerSpan = this.$('span');
-    var $header = this.$();
+    let $headerSpan = this.$('span');
+    let $header = this.$();
     $header.attr('data-content', $headerSpan.text());
     $header.attr('data-variation', 'tiny');
     while ($headerSpan.outerHeight() > $header.height()) {

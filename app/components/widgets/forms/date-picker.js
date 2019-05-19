@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { merge } from '@ember/polyfills';
+import { merge } from 'lodash-es';
 import moment from 'moment';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
