@@ -12,7 +12,7 @@ export default Controller.extend(EventWizardMixin, {
     },
     move() {
       this.saveEventDataAndRedirectTo(
-        'events.view.edit.sponsors',
+        'events.view.edit.ticket-buyer-form',
         ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
       );
     }

@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { A } from '@ember/array';
-
 export default Route.extend(EventWizardMixin, {
 
   titleToken() {

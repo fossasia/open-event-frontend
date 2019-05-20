@@ -8,16 +8,15 @@ export default Controller.extend(EventWizardMixin, {
     }
     return data;
   },
-
   actions: {
-    save() {
+    save(data) {
       this.saveForms(data);
       this.saveEventDataAndRedirectTo(
         'events.view.index',
         []
       );
     },
-    move(direction) {
+    move(direction, data) {
       this.saveForms(data);
       this.saveEventDataAndRedirectTo(
         direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.basic-details',
