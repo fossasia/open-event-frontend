@@ -153,10 +153,16 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   segmentedTicketUrl        : computedSegmentedLink.bind(this)('ticketUrl'),
 
   shortLocationName: computed('locationName', function() {
-    if (!this.get('locationName')) {
+    let eventLocation = this.get('locationName');
+    if (!eventLocation) {
       return '';
     }
-    return this.get('locationName').split(',')[0];
+    let splitLocations = eventLocation.split(',');
+    if (splitLocations.length <= 3) {
+      return eventLocation;
+    } else {
+      return splitLocations.splice(1, splitLocations.length).join();
+    }
   }),
 
   url: computed('identifier', function() {
