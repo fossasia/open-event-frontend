@@ -89,7 +89,7 @@ export default ModelBase.extend({
 
   isLongText: computed('type', function() {
     return this.get('type') === 'text'
-    && (['shortBiography', 'longBiography', 'longAbstract', 'shortAbstract', 'comments'].includes(this.get('fieldIdentifier')));
+    && (['shortBiography', 'longBiography', 'longAbstract', 'shortAbstract', 'comments', 'speakingExperience'].includes(this.get('fieldIdentifier')));
   }),
 
   isIncludedObserver: observer('isIncluded', function() {

@@ -33,7 +33,7 @@
         </div>
       </div>
       <br>
-      <a class="ui labeled icon button" href="#" {{action downloadTickets}} target="_blank" rel="noopener nofollow">
+      <a class="ui labeled icon button" href="#" {{action downloadTickets model.event.name model.order.identifier}} target="_blank" rel="noopener nofollow">
         <i class="ticket alternate icon"></i>
         {{t 'Download Tickets'}}
       </a>
