@@ -1,5 +1,5 @@
 # Open Event Frontend
-![Open Event Frontend](https://storage.googleapis.com/eventyay.com/assets/branding/frontend_branding.png)
+![Open Event Frontend](docs/images/Frontend_Branding.png)
 
 [![Build Status](https://travis-ci.org/fossasia/open-event-frontend.svg?branch=development)](https://travis-ci.org/fossasia/open-event-frontend)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/89d57fdc-826c-400b-af13-c542e9513f62/deploy-status)](https://app.netlify.com/sites/open-event-fe/deploys)
@@ -52,6 +52,33 @@ This project has acceptance, integration and unit tests located inside the `test
 * `ember build` (development)
 * `ember build --environment production` (production)
 
+
+## Deployments, Docker images and Releases
+
+### Deployments
+**Master branch** 
+
+The master branch of open-event-frontend gets deployed in a production environment at [https://eventyay.com](https://eventyay.com)
+It consumes the API exposed by master branch deployment of open event server, hosted at [https://api.eventyay.com](https://api.eventyay.com)
+
+**Development branch**
+
+The **development** branch of open-event-frontend gets deployed at [https://opev-fe.netlify.com](https://opev-fe.netlify.com)
+It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com](https://open-event-api-dev.herokuapp.com)
+
+
+### Release Cycle
+
+Stable versions will released periodically, starting from version 1.0.0 when open-event-frontend went into production. Version names will follow [semantic versioning](https://semver.org/)
+
+### Docker Hub Images
+Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and developement branch. Separate tags for each version release are also maintained. They are as follows:
+
+|Branch/Release | Image|
+|---|---|
+|Master| eventyay/open-event-frontend:latest|
+|Development | eventyay/open-event-frontend:development | 
+|Version(vx.y.z) | eventyay/open-event-frontend:vx.y.z|
 
 ## Further Reading / Useful Links
 * [ember.js](https://emberjs.com/)

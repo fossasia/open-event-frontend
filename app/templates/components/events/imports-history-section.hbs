@@ -33,13 +33,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <i class="check circle icon green"></i>{{t 'Success'}}
-        </td>
-        <td>{{t 'Check your event here'}}</td>
-        <td>{{t '8 days ago'}}</td>
-      </tr>
+      {{#each data as |job|}}
+        <tr>
+          <td>{{job.resultStatus}}</td>
+          <td>{{job.result}}</td>
+          <td>{{header-date job.startsAt}}</td>
+        </tr>
+      {{/each}}
     </tbody>
     <tfoot>
       <tr>
