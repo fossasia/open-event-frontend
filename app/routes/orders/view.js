@@ -14,7 +14,8 @@ export default Route.extend({
     const eventDetails = await order.query('event', {});
     return {
       order,
-      form: await eventDetails.query('customForms', {
+      event : eventDetails,
+      form  : await eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
       })
