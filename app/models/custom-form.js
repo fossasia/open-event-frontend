@@ -34,6 +34,7 @@ export default ModelBase.extend({
     photoUrl            : 'Photo',
     organisation        : 'Organisation',
     position            : 'Position',
+    address             : 'Address',
     country             : 'Country',
     city                : 'City',
     longBiography       : 'Long Biography',
@@ -47,7 +48,8 @@ export default ModelBase.extend({
     facebook            : 'Facebook',
     twitter             : 'Twitter',
     github              : 'GitHub',
-    linkedin            : 'Linkedin'
+    linkedin            : 'Linkedin',
+    instagram           : 'Instagram'
   },
 
   attendee: {
