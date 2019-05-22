@@ -115,9 +115,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     if (!this.get('isCreate') && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
     }
-    if (!this.get('isCreate') && this.get('data.event.tax') && !this.get('data.event.tax.content')) {
-      this.set('data.event.tax', this.store.createRecord('tax'));
-    }
     if (!this.get('isCreate') && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
       this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
     }
@@ -383,7 +380,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
 
-    openTaxModal() {
+    openTaxModal(isNewTax) {
+      if (!this.isCreate && isNewTax) {
+        this.set('data.event.tax', this.store.createRecord('tax'));
+      }
       this.set('taxModalIsOpen', true);
     },
 
