@@ -107,13 +107,13 @@ export default Controller.extend({
 
     },
 
-    placeOrder() {
+    async placeOrder() {
       if (!this.get('session.isAuthenticated')) {
         this.set('isLoginModalOpen', true);
         return;
       }
       let { order, event } = this.model;
-      let { tax } =  event;
+      let tax =  await event.get('tax');
       if (tax) {
         if (!tax.get('isTaxIncludedInPrice')) {
           let taxedPrice  = (order.amount) * (tax.rate) / 100 + (order.amount);
