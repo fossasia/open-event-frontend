@@ -27,7 +27,7 @@ export default Route.extend({
       });
     });
 
-    const eventDetails = await order.query('event', {});
+    const eventDetails = await order.query('event', { include: 'tax' });
     return {
       order,
       event : eventDetails,

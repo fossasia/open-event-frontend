@@ -107,17 +107,18 @@ export default Controller.extend({
 
     },
 
-    async placeOrder() {
+    placeOrder() {
       if (!this.get('session.isAuthenticated')) {
         this.set('isLoginModalOpen', true);
         return;
       }
-      let order = await this.model.order;
-      let { event } = order.event;
-      let { tax } = event.tax;
-      if (!tax.taxIncludedInPrice) {
-        let taxedPrice  = (order.amount) * (tax.rate) / 100 + (order.amount);
-        order.set('amount', taxedPrice);
+      let { order, event } = this.model;
+      let { tax } =  event;
+      if (tax) {
+        if (!tax.get('isTaxIncludedInPrice')) {
+          let taxedPrice  = (order.amount) * (tax.rate) / 100 + (order.amount);
+          order.set('amount', taxedPrice);
+        }
       }
       order.tickets.forEach(ticket => {
         let numberOfAttendees = ticket.orderQuantity;

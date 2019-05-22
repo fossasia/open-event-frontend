@@ -11,7 +11,7 @@ export default Route.extend({
       include : 'attendees,tickets,event',
       reload  : true
     });
-    const eventDetails = await order.query('event', {});
+    const eventDetails = await order.query('event', { include: 'tax' });
     return {
       order,
       event : eventDetails,
