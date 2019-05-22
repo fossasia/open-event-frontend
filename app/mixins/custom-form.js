@@ -146,6 +146,14 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'address',
+        form            : 'speaker',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'country',
         form            : 'speaker',
         type            : 'select',
@@ -251,6 +259,14 @@ export default Mixin.create(MutableArray, {
       }),
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'linkedin',
+        form            : 'speaker',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'instagram',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,

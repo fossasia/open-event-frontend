@@ -3,6 +3,7 @@ import { computed } from '@ember/object';
 import $ from 'jquery';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { later } from '@ember/runloop';
+import { currencySymbol } from 'open-event-frontend/helpers/currency-symbol';
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
@@ -118,6 +119,11 @@ export default Component.extend(FormMixin, {
     this.set('data.discountUrl', link);
     return link;
   }),
+
+  amountLabel: computed('event.paymentCurrency', function() {
+    return `Amount (${currencySymbol([this.event.paymentCurrency])})`;
+  }),
+
   eventTickets: computed.filterBy('tickets', 'type', 'paid'),
 
   allTicketTypesChecked: computed('tickets', function() {

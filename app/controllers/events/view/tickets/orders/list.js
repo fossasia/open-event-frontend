@@ -27,11 +27,6 @@ export default Controller.extend({
       propertyName   : 'user.email',
       title          : 'Buyer/Registration Contact',
       disableSorting : true
-    },
-    {
-      title          : 'Actions',
-      template       : 'components/ui-table/cell/events/view/tickets/orders/cell-actions',
-      disableSorting : true
     }
   ],
 

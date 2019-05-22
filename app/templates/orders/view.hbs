@@ -16,6 +16,7 @@
   <div class="row">
     <div class="ten wide column print">
       {{orders/order-summary data=model.order
+                             event=model.event
                              eventCurrency=model.order.event.paymentCurrency}}
     </div>
     <div class="mobile hidden six wide column">

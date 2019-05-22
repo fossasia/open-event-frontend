@@ -11,10 +11,11 @@ export default Route.extend({
       include : 'attendees,tickets,event',
       reload  : true
     });
-    const eventDetails = await order.query('event', {});
+    const eventDetails = await order.query('event', { include: 'tax' });
     return {
       order,
-      form: await eventDetails.query('customForms', {
+      event : eventDetails,
+      form  : await eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
       })

@@ -27,11 +27,12 @@ export default Route.extend({
       });
     });
 
-    const eventDetails = await order.query('event', {});
+    const eventDetails = await order.query('event', { include: 'tax' });
     return {
       order,
+      event : eventDetails,
       tickets,
-      form: await eventDetails.query('customForms', {
+      form  : await eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
       })

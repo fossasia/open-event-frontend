@@ -39,6 +39,9 @@
           <th class="ui aligned two wide">{{t 'Discount'}}</th>
           <th class="one wide">{{t 'Quantity'}}</th>
           <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+          {{#if event.tax}}
+            <th class="four wide">{{t 'Tax'}}</th>
+          {{/if}}
         </tr>
       </thead>
       <tbody>
@@ -55,6 +58,15 @@
             <td>
               {{currency-symbol eventCurrency}} {{number-format (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
             </td>
+            {{#if event.tax}}
+              <td>
+                {{#if event.tax.isTaxIncludedInPrice}}
+                  {{t 'The price is inclusive of all taxes.'}}
+                {{else}}
+                  {{event.tax.rate}}%
+                {{/if}}
+              </td>
+            {{/if}}
           </tr>
         {{/each}}
       </tbody>
@@ -65,7 +77,7 @@
           <th></th>
           <th>
             <div class="ui aligned small primary icon">
-              {{t 'Order Total'}}:
+              {{t 'Grand Total'}}:
             </div>
           </th>
           <th colspan="4">
