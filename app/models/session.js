@@ -23,7 +23,8 @@ export default ModelBase.extend({
   signupUrl     : attr('string'),
   sendEmail     : attr('boolean'),
 
-  isMailSent: attr('boolean', { defaultValue: false }),
+  isLocked   : attr('boolean', { defaultValue: false }),
+  isMailSent : attr('boolean', { defaultValue: false }),
 
   createdAt      : attr('string'),
   deletedAt      : attr('string'),
