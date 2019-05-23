@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken(model) {
-    var order = model.order.get('identifier');
+    let order = model.order.get('identifier');
     if (model.order.status === 'completed') {
       return this.l10n.t(`Completed Order -${order}`);
     } else if (model.order.status === 'placed') {

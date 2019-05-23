@@ -25,7 +25,7 @@
                 {{entry.sales.completed.ticket_count}}
               </td>
               <td class="right aligned">
-                US$ {{number-format entry.sales.completed.sales_total}}
+                US$ {{format-number entry.sales.completed.sales_total}}
               </td>
             </tr>
           {{/each}}
@@ -38,8 +38,8 @@
               </span>
             </th>
             <th class="right aligned">{{ticketsTotal}}</th>
-            <th class="right aligned">US$ {{number-format salesTotal}}</th>
-            <th class="right aligned">US$ {{number-format discountsTotal}}</th>
+            <th class="right aligned">US$ {{format-number salesTotal}}</th>
+            <th class="right aligned">US$ {{format-number discountsTotal}}</th>
           </tr>
         </tfoot> --}}
       </table>
