@@ -4,7 +4,7 @@ export default Controller.extend({
   columns: [
     {
       propertyName : 'name',
-      template     : 'components/ui-table/cell/cell-event',
+      template     : 'components/ui-table/cell/cell-event-general',
       title        : 'Name'
     },
     {
@@ -47,15 +47,12 @@ export default Controller.extend({
       title            : 'Public URL',
       disableSorting   : true,
       disableFiltering : true
-    },
-    {
-      template         : 'components/ui-table/cell/cell-buttons',
-      title            : 'Actions',
-      disableSorting   : true,
-      disableFiltering : true
     }
   ],
   actions: {
+    moveToPublic(id) {
+      this.transitionToRoute('public', id);
+    },
     moveToDetails(id) {
       this.transitionToRoute('events.view', id);
     },
