@@ -14,7 +14,7 @@ export default Route.extend({
   },
   beforeModel(transition) {
     this._super(...arguments);
-    const userState = transition.params[transition.targetName].users_status;
+    const userState = transition.to.params.users_status;
     if (!['all', 'deleted', 'active', 'inactive'].includes(userState)) {
       this.replaceWith('admin.users.view', userState);
     }

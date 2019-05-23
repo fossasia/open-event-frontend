@@ -74,7 +74,7 @@ export default Route.extend({
         }
       );
     }
-    return this.get('authManager.currentUser').query('orders', {
+    return this.authManager.currentUser.query('orders', {
       include : 'event',
       filter  : filterOptions
     });

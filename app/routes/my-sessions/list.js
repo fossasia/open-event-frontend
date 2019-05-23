@@ -49,7 +49,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
         }
       ];
     }
-    return this.get('authManager.currentUser').query('sessions', {
+    return this.authManager.currentUser.query('sessions', {
       include : 'event',
       filter  : filterOptions,
       sort    : 'starts-at'
