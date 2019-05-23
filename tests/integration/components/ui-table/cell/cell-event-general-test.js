@@ -6,7 +6,7 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | ui table/cell/cell event general', function(hooks) {
   setupIntegrationTest(hooks);
 
-  const record = { name: 'Event', image: 'url' }
+  const record = { name: 'Event', image: 'url' };
   test('it renders', async function(assert) {
     this.set('record', record);
     this.set('editEvent', () => {});
