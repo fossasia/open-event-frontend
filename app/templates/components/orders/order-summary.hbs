@@ -60,11 +60,11 @@
                 {{ticket.name}}
               </div>
             </td>
-            <td>{{currency-symbol eventCurrency}} {{number-format ticket.price}}</td>
-            <td>{{currency-symbol eventCurrency}} {{number-format ticket.discount}}</td>
+            <td>{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+            <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
             <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
             <td>
-              {{currency-symbol eventCurrency}} {{number-format (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
+              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
             </td>
             {{#if event.tax}}
               <td>
@@ -90,7 +90,7 @@
           </th>
           <th colspan="4">
             <div class="ui aligned small primary icon">
-              {{currency-symbol eventCurrency}} {{number-format data.amount}}
+              {{currency-symbol eventCurrency}} {{format-number data.amount}}
             </div>
           </th>
         </tr>
