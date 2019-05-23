@@ -34,6 +34,8 @@ router.map(function() {
   this.route('login');
   this.route('register');
   this.route('reset-password');
+  this.route('attendee-app');
+  this.route('organizer-app');
   this.route('logout');
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
