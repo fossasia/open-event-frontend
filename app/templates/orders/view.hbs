@@ -34,13 +34,13 @@
         </div>
       </div>
       <br>
-      <a class="ui labeled icon button" href="#" {{action downloadTickets model.event.name model.order.identifier}} target="_blank" rel="noopener nofollow">
+      <a class="ui labeled icon {{if isLoadingTickets 'loading'}} button" href="#" {{action downloadTickets model.event.name model.order.identifier}} target="_blank" rel="noopener nofollow">
         <i class="ticket alternate icon"></i>
         {{t 'Download Tickets'}}
       </a>
       <br>
       <br>
-      <a href="#" {{action 'downloadInvoice'}} class="ui labeled icon blue button">
+      <a href="#" {{action 'downloadInvoice' model.event.name model.order.identifier }} class="ui labeled icon blue {{if isLoadingInvoice 'loading'}} button">
         <i class="print alternate icon"></i>
         {{t 'Print Invoice'}}
       </a>
