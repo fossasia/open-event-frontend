@@ -8,6 +8,7 @@ export default Controller.extend({
       template       : 'components/ui-table/cell/events/view/sessions/cell-session-state'
     },
     {
+      propertyName   : 'title',
       title          : 'Title',
       disableSorting : true,
       template       : 'components/ui-table/cell/events/view/sessions/cell-session-title'
@@ -82,11 +83,11 @@ export default Controller.extend({
       this.set('isLoading', true);
       session.save()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Session has been locked successfully.'));
+          this.notify.success(this.l10n.t('Session has been locked successfully.'));
           this.send('refreshRoute');
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -97,11 +98,11 @@ export default Controller.extend({
       this.set('isLoading', true);
       session.save()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Session has been unlocked successfully.'));
+          this.notify.success(this.l10n.t('Session has been unlocked successfully.'));
           this.send('refreshRoute');
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

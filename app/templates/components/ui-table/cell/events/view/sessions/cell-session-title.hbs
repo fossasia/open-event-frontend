@@ -1,4 +1,4 @@
-{{record.title}}
+{{get record column.propertyName}}
 <div class="hidden ui divider"></div>
 <div class="ui horizontal compact basic buttons">
   {{#ui-popup content=(t 'View Session') class="{{if device.isMobile 'medium' 'huge'}} ui icon button"  click=(action viewSession record.id) position='left center'}}
