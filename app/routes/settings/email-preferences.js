@@ -6,6 +6,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return this.l10n.t('Email Preferences');
   },
   model() {
-    return this.get('authManager.currentUser').query('emailNotifications', { include: 'event' });
+    return this.authManager.currentUser.query('emailNotifications', { include: 'event' });
   }
 });

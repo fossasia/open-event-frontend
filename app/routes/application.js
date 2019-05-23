@@ -28,7 +28,7 @@ export default Route.extend(ApplicationRouteMixin, {
   async model() {
     let notifications = [];
     if (this.get('session.isAuthenticated')) {
-      notifications = await this.get('authManager.currentUser').query('notifications', {
+      notifications = await this.authManager.currentUser.query('notifications', {
         filter: [
           {
             name : 'is-read',

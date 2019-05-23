@@ -13,7 +13,7 @@ export default Route.extend({
         event,
         tickets  : [],
         usedFor  : 'ticket',
-        marketer : this.authManager.get('currentUser')
+        marketer : this.authManager.currentUser
       }),
       tickets,
       event

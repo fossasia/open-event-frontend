@@ -14,7 +14,7 @@ export default Route.extend({
   },
   beforeModel(transition) {
     this._super(...arguments);
-    const eventState = transition.params[transition.targetName].event_state;
+    const eventState = transition.to.params.event_state;
     if (!['live', 'draft', 'past'].includes(eventState)) {
       this.replaceWith('events.view', eventState);
     }
