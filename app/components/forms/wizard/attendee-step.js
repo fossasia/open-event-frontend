@@ -21,5 +21,4 @@ export default Component.extend(FormMixin, {
       });
     }
   }
-
 });

@@ -4,7 +4,7 @@ import { A } from '@ember/array';
 export default Route.extend(EventWizardMixin, {
 
   titleToken() {
-    return this.get('l10n').t('Ticket Buyer Form');
+    return this.l10n.t('Attendee Form');
   },
 
   async model() {

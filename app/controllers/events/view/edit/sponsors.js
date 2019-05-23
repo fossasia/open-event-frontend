@@ -12,7 +12,7 @@ export default Controller.extend(EventWizardMixin, {
     },
     move(direction) {
       this.saveEventDataAndRedirectTo(
-        direction === 'forwards' ? 'events.view.edit.sessions-speakers' : 'events.view.edit.ticket-buyer-form',
+        direction === 'forwards' ? 'events.view.edit.sessions-speakers' : 'events.view.edit.attendee',
         ['sponsors']
       );
     }
