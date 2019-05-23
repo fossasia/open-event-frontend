@@ -8,8 +8,10 @@ export default Controller.extend({
       template       : 'components/ui-table/cell/events/view/sessions/cell-session-state'
     },
     {
-      propertyName : 'title',
-      title        : 'Title'
+      propertyName   : 'title',
+      title          : 'Title',
+      disableSorting : true,
+      template       : 'components/ui-table/cell/events/view/sessions/cell-session-title'
     },
     {
       propertyName   : 'speakers',
@@ -18,9 +20,12 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      propertyName   : 'shortAbstract',
-      title          : 'Short Abstract',
-      disableSorting : true
+      propertyName : 'track.name',
+      title        : 'Track'
+    },
+    {
+      propertyName : 'sessionType.name',
+      title        : 'Type'
     },
     {
       propertyName : 'submittedAt',
@@ -41,13 +46,14 @@ export default Controller.extend({
       disableSorting : true
     },
     {
-      template         : 'components/ui-table/cell/cell-simple-buttons',
+      template         : 'components/ui-table/cell/events/view/sessions/cell-buttons',
+      title            : 'Actions',
       disableSorting   : true,
       disableFiltering : true
     },
     {
-      template         : 'components/ui-table/cell/events/view/sessions/cell-buttons',
-      title            : 'Actions',
+      template         : 'components/ui-table/cell/events/view/sessions/cell-lock-session',
+      title            : 'Lock Session',
       disableSorting   : true,
       disableFiltering : true
     }
@@ -71,6 +77,36 @@ export default Controller.extend({
     },
     viewSession(id) {
       this.transitionToRoute('events.view.sessions.edit', id);
+    },
+    lockSession(session) {
+      session.set('isLocked', true);
+      this.set('isLoading', true);
+      session.save()
+        .then(() => {
+          this.notify.success(this.l10n.t('Session has been locked successfully.'));
+          this.send('refreshRoute');
+        })
+        .catch(() => {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    },
+    unlockSession(session) {
+      session.set('isLocked', false);
+      this.set('isLoading', true);
+      session.save()
+        .then(() => {
+          this.notify.success(this.l10n.t('Session has been unlocked successfully.'));
+          this.send('refreshRoute');
+        })
+        .catch(() => {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
     },
     acceptProposal(session, sendEmail) {
       session.set('sendEmail', sendEmail);
