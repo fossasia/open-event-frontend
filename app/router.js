@@ -200,7 +200,7 @@ router.map(function() {
     this.route('new', { path: '/:order_id/new' });
     this.route('expired', { path: '/:order_id/expired' });
     this.route('view', { path: '/:order_id/view' });
-    this.route('placed', { path: '/:order_id/placed' });
+    this.route('pending', { path: '/:order_id/pending' });
   });
   this.route('verify');
 });

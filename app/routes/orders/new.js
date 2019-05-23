@@ -42,10 +42,10 @@ export default Route.extend({
   afterModel(model) {
     if (model.order.get('status') === 'expired') {
       this.transitionTo('orders.expired', model.order.get('identifier'));
-    } else if (model.order.get('status') === 'completed') {
+    } else if (model.order.get('status') === 'completed' || model.order.get('status') === 'placed') {
       this.transitionTo('orders.view', model.order.get('identifier'));
-    } else if (model.order.get('status') === 'placed') {
-      this.transitionTo('orders.placed', model.order.get('identifier'));
+    } else if (model.order.get('status') === 'pending') {
+      this.transitionTo('orders.pending', model.order.get('identifier'));
     }
   }
 });

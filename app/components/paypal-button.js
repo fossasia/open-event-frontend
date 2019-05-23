@@ -15,8 +15,8 @@ export default Component.extend({
     let createPayload = {
       'data': {
         'attributes': {
-          'return-url' : `${window.location.origin}/orders/${order.identifier}/placed`,
-          'cancel-url' : `${window.location.origin}/orders/${order.identifier}/placed`
+          'return-url' : `${window.location.origin}/orders/${order.identifier}/view`,
+          'cancel-url' : `${window.location.origin}/orders/${order.identifier}/pending`
         },
         'type': 'paypal-payment'
       }
