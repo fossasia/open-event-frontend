@@ -1,0 +1,97 @@
+<div class='ui secondary pointing menu'>
+  <a class='active item'>
+    {{t 'Attendee App'}}
+  </a>
+</div>
+<div class="ui segment">
+  <div class="content">
+    <img class="ui fluid image" src="/images/attendee-app.jpg" alt="Open Event Attendee App">
+  </div>
+  <h1 class="weight-500 ui huge center aligned header">
+    {{t 'Open Event Attendee App'}}
+  </h1>
+  <div class="ui grid">
+    {{#if device.isMobile}}
+      <div class="eight wide column">
+        <a class="store" href='https://play.google.com/store/apps/details?id=com.eventyay.attendee'><img alt='Get it on Google Play' src='/images/google-play.png' height="50"></a>
+      </div>
+      <div class="eight wide column">
+        <a class="store" href='https://f-droid.org/en/packages/com.eventyay.attendee/'><img alt='Get it on F-Droid' src='/images/fdroid.png' height="50"></a>
+      </div>
+    {{else}}
+      <div class="five wide column">
+      </div>
+      <div class="three wide column">
+        <a class="store" href='https://play.google.com/store/apps/details?id=com.eventyay.attendee'><img alt='Get it on Google Play' src='/images/google-play.png' height="60"></a>
+      </div>
+      <div class="three wide column">
+        <a class="store" href='https://f-droid.org/en/packages/com.eventyay.attendee/'><img alt='Get it on F-Droid' src='/images/fdroid.png' height="60"></a>
+      </div>
+      <div class="five wide column">
+      </div>
+    {{/if}}
+  </div>
+  {{#if device.isMobile}}
+    <img class="ui fluid image" src="images/android-img.jpg" alt="{{t 'Android Attendee App'}}">
+  {{else}}
+    <div class="ui grid">
+      <div class="eight wide column">   
+        <h1 class="weight-900">
+          {{t 'Get Your Next Experience of Open Event'}}
+        </h1>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600">
+            {{t 'Get More'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Check popular events on the go, unique, local, near you just for you'}} 
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600"> {{t 'Know More'}}</h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Check all event related information on the go and get all relevant details about the speakers'}}
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600"> 
+            {{t 'Manage More'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Manage all you ticket details , event details on the go with your phone'}} 
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600">
+            {{t 'Go Digital'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Show your ticket details , Session Pass on your phone using QR code and get in'}} 
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600">
+            {{t 'Go Hassle-free'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Pay with your phone , Register for nearby events with your phone, hasslefree , easily and conveniently'}} 
+          </h3>
+        </div>
+      </div>
+      <div class="eight wide column">
+        <img class="ui fluid image" src="/images/android-img.jpg" alt="Android Pic">
+      </div>
+    </div>
+  {{/if}}
+</div>
+<div class="ui center aligned muted text">
+  {{t 'Please Check-Out our Organizer App'}}
+  <a class="item" href="{{href-to 'organizer-app'}}">{{t 'Here'}}</a>
+  <div class="ui hidden divider"></div>
+</div>
+
