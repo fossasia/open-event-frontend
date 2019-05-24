@@ -82,6 +82,8 @@ export default ModelsTable.extend({
     if (!get(this.data, 'query')) {
       console.warn('You must use https://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
       query = merge({}, this.query);
+      store = this.store;
+      modelName = this.modelName;
     } else {
       query = merge({}, get(this.data, 'query'));
       store = get(this.data, 'store');
