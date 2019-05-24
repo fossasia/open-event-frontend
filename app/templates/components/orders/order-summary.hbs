@@ -1,6 +1,6 @@
 <div class="ui segments">
   {{#if (eq session.currentRouteName 'orders.view')}}
-    <div class="ui {{if (eq data.status 'completed') 'green' 'blue'}} inverted segment center aligned">
+    <div class="ui {{order-color data.status}} inverted segment center aligned">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
           {{#if (eq data.status 'completed')}}
