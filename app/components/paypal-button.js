@@ -29,14 +29,14 @@ export default Component.extend({
         shape : 'pill'    // pill, rect
       },
 
-      payment() {
+      payment: () => {
         return this.loader.post(`orders/${order.identifier}/create-paypal-payment`, createPayload)
           .then(res => {
             return res.payment_id;
           });
       },
 
-      onAuthorize(data) {
+      onAuthorize: data => {
         // this callback will be for authorizing the payments
         let chargePayload = {
           'data': {
