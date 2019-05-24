@@ -26,11 +26,18 @@ export default Route.extend({
                 val  : moment().toISOString()
               }
             },
-            {
-              name : 'status',
-              op   : 'eq',
-              val  : 'completed'
-            },
+            { or: [
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'completed'
+              },
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'placed'
+              }
+            ] },
             {
               name : 'event',
               op   : 'has',
@@ -56,11 +63,18 @@ export default Route.extend({
                 val  : moment().toISOString()
               }
             },
-            {
-              name : 'status',
-              op   : 'eq',
-              val  : 'placed'
-            },
+            { or: [
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'pending'
+              },
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'initializing'
+              }
+            ] },
             {
               name : 'event',
               op   : 'has',
