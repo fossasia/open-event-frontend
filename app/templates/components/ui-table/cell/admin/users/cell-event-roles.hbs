@@ -24,7 +24,7 @@
     </div>
   {{else}}
     {{#if record.isUserOrganizer}}
-      {{#each record.organizerEvents as |event|}}
+      {{#each record.events as |event|}}
         <div class="item">
           {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic black label">{{t 'Organizer'}}</span>
         </div>
