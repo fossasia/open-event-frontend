@@ -30,11 +30,11 @@
                 {{#if (eq columnValue.type 'date')}}
                   <td class="{{columnValue.class}}">{{moment-format (get entry columnValue.propertyName) 'ddd, MMM DD \at h:mm A'}}</td>
                 {{else if (eq columnValue.type 'currency')}}
-                  <td class="{{columnValue.class}}">US$ {{get entry columnValue.propertyName}}</td>
+                  <td class="{{columnValue.class}}">US$ {{format-number (get entry columnValue.propertyName)}}</td>
                 {{else if (eq columnValue.type 'percentage')}}
-                  <td class="{{columnValue.class}}">{{get entry columnValue.propertyName}}%</td>
+                  <td class="{{columnValue.class}}">{{format-number (get entry columnValue.propertyName)}}%</td>
                 {{else}}
-                  <td class="{{columnValue.class}}">{{get entry columnValue.propertyName}}</td>
+                  <td class="{{columnValue.class}}">{{format-number (get entry columnValue.propertyName)}}</td>
                 {{/if}}
               {{/each}}
             </tr>

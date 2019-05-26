@@ -65,28 +65,5 @@ export default Controller.extend(AdminSalesMixin, {
       type         : 'currency',
       class        : 'right aligned'
     }
-  ],
-  totalRow: computed(function() {
-    return [
-      {
-        value: this.totalCompletedTickets
-      },
-      {
-        value: `US$ ${this.totalCompletedSales}`
-      },
-      {
-        value: this.totalPlacedTickets
-      },
-      {
-        value: `US$ ${this.totalPlacedTickets}`
-      },
-      {
-        value: this.totalPlacedTickets
-      },
-      {
-        value: `US$ ${this.totalPlacedTickets}`
-      }
-    ];
-  }),
-  totalSpan: 1
+  ]
 });

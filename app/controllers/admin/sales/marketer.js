@@ -34,8 +34,8 @@ export default Controller.extend(AdminSalesMixin, {
   subColumnNames: computed(function() {
     return [
       this.l10n.t('Tickets'),
-      this.l10n.t('Sales'),
-      this.l10n.t('Total')
+      this.l10n.t('Sales (Discounted)'),
+      this.l10n.t('Discounted Amount')
     ];
   }),
   columnValues: [
@@ -56,21 +56,5 @@ export default Controller.extend(AdminSalesMixin, {
       type         : 'currency',
       class        : 'right aligned'
     }
-  ],
-
-  totalRow: computed(function() {
-    return [
-      {
-        value: this.ticketsTotal
-      },
-      {
-        value: `US$ ${this.salesTotal}`
-      },
-      {
-        value: `US$ ${this.discountsTotal}`
-      }
-    ];
-  }),
-
-  totalSpan: 1
+  ]
 });
