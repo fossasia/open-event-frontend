@@ -6,6 +6,8 @@ export default Route.extend({
   },
 
   model() {
-    return this.store.findAll('admin-sales-by-location');
+    return this.store.query('admin-sales-by-location', {
+      'page[size]': 10
+    });
   }
 });

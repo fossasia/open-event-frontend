@@ -1,0 +1,53 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h2 class="ui header">{{t 'Tickets Summary'}}</h2>
+    <div class="page-select">
+      {{ui-table-select options=pageSizeValues value=pageSize}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <table class="ui stackable structured celled compact table">
+        <thead>
+          <tr>
+            {{#each columnNames.rowspan as |columnName|}}
+              <th rowspan="{{columnName.span}}">{{t columnName.colname}}</th>
+            {{/each}}
+            {{#each columnNames.colspan as |columnName|}}
+              <th colspan="{{columnName.span}}" class="{{columnName.class}}">{{t columnName.colname}}</th>
+            {{/each}}
+          </tr>
+          <tr>
+            {{#each subColumnNames as |columnName|}}
+              <th class="right aligned">{{t columnName}}</th>
+            {{/each}}
+          </tr>
+        </thead>
+        <tbody>
+          {{#each filteredContent as |entry|}}
+            <tr>
+              {{#each columnValues as |columnValue|}}
+                {{#if (eq columnValue.type 'date')}}
+                  <td class="{{columnValue.class}}">{{moment-format (get entry columnValue.propertyName) 'ddd, MMM DD \at h:mm A'}}</td>
+                {{else if (eq columnValue.type 'currency')}}
+                  <td class="{{columnValue.class}}">US$ {{get entry columnValue.propertyName}}</td>
+                {{else if (eq columnValue.type 'percentage')}}
+                  <td class="{{columnValue.class}}">{{get entry columnValue.propertyName}}%</td>
+                {{else}}
+                  <td class="{{columnValue.class}}">{{get entry columnValue.propertyName}}</td>
+                {{/if}}
+              {{/each}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-navigation">
+    <div class="{{themeInstance.classes.tfooter-wrapper}}">
+      <div class="{{themeInstance.classes.pagination-wrapper}}">
+        {{partial themeInstance.components.pagination-simple}}
+      </div>
+    </div>
+  </div>
+</div>
