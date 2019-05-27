@@ -89,7 +89,7 @@
                               isOpen=isEventDeleteModalOpen
                               eventName=model.name
                               deleteEvent=(action 'deleteEvent')}}
-  <div class="ui {{if isLoading 'loading'}} segment">
+  <div class="ui {{if isLoading 'loading'}} basic segment">
     {{outlet}}
   </div>
 {{else}}
