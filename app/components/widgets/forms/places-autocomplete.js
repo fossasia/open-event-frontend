@@ -24,10 +24,10 @@ export default TextField.extend({
     if (this.get('fastboot.isFastboot')) {
       return;
     }
-    let navigator = this.get('navigator') || ((window) ? window.navigator : null);
+    let navigator = this.navigator || ((window) ? window.navigator : null);
     if (navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        let google = this.get('google') || window.google;
+        let google = this.google || window.google;
         let geolocation = {
           lat : position.coords.latitude,
           lng : position.coords.longitude
@@ -36,7 +36,7 @@ export default TextField.extend({
           center : geolocation,
           radius : position.coords.accuracy
         });
-        this.get('autocomplete').setBounds(circle.getBounds());
+        this.autocomplete.setBounds(circle.getBounds());
       });
     }
   },
@@ -48,32 +48,32 @@ export default TextField.extend({
 
   setupComponent() {
     this.getAutocomplete();
-    this.get('autocomplete').addListener('place_changed', () => {
+    this.autocomplete.addListener('place_changed', () => {
       run(() => { this.placeChanged() });
     });
-    if (this.get('withGeoLocate')) {
+    if (this.withGeoLocate) {
       this.geolocate();
     }
   },
 
 
   willDestroy() {
-    if (isPresent(this.get('autocomplete'))) {
-      let google = this.get('google') || ((window) ? window.google : null);
+    if (isPresent(this.autocomplete)) {
+      let google = this.google || ((window) ? window.google : null);
       if (google) {
-        google.maps.event.clearInstanceListeners(this.get('autocomplete'));
+        google.maps.event.clearInstanceListeners(this.autocomplete);
       }
     }
   },
 
   getAutocomplete() {
-    if (isEmpty(this.get('autocomplete'))) {
+    if (isEmpty(this.autocomplete)) {
       if (document && window) {
         let [inputElement] = this.$(),
-            google = this.get('google') || window.google,
+            google = this.google || window.google,
             options = { types: this._typesToArray() };
-        if (Object.keys(this.get('restrictions')).length > 0) {
-          options.componentRestrictions = this.get('restrictions');
+        if (Object.keys(this.restrictions).length > 0) {
+          options.componentRestrictions = this.restrictions;
         }
         let autocomplete = new google.maps.places.Autocomplete(inputElement, options);
         this.set('autocomplete', autocomplete);
@@ -82,16 +82,16 @@ export default TextField.extend({
   },
 
   placeChanged() {
-    if (this.get('placeChangedCallback')) {
-      let place = this.get('autocomplete').getPlace();
-      this.get('placeChangedCallback')(place);
-      this.set('value', place[this.get('setValueWithProperty')]);
+    if (this.placeChangedCallback) {
+      let place = this.autocomplete.getPlace();
+      this.placeChangedCallback(place);
+      this.set('value', place[this.setValueWithProperty]);
     }
   },
 
   _typesToArray() {
-    if (this.get('types') !== '') {
-      return this.get('types').split(',');
+    if (this.types !== '') {
+      return this.types.split(',');
     } else {
       return [];
     }
@@ -99,8 +99,8 @@ export default TextField.extend({
 
   actions: {
     focusOut() {
-      if (this.get('focusOutCallback')) {
-        this.get('focusOutCallback')();
+      if (this.focusOutCallback) {
+        this.focusOutCallback();
       }
     }
   }

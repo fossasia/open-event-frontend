@@ -4,15 +4,15 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.session_status')) {
       case 'pending':
-        return this.get('l10n').t('Pending');
+        return this.l10n.t('Pending');
       case 'confirmed':
-        return this.get('l10n').t('Confirmed');
+        return this.l10n.t('Confirmed');
       case 'accepted':
-        return this.get('l10n').t('Accepted');
+        return this.l10n.t('Accepted');
       case 'rejected':
-        return this.get('l10n').t('Rejected');
+        return this.l10n.t('Rejected');
       default:
-        return this.get('l10n').t('Session');
+        return this.l10n.t('Session');
     }
   },
   async model(params) {

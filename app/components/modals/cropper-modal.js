@@ -33,7 +33,7 @@ export default ModalBase.extend({
     },
     cropImage() {
       this.$('img').croppie('result', 'base64', 'original', 'jpeg').then(result => {
-        if (this.get('onImageCrop')) {
+        if (this.onImageCrop) {
           this.onImageCrop(result);
         }
       });

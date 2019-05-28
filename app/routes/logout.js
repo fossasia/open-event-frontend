@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   beforeModel() {
-    this.get('authManager').logout();
+    this.authManager.logout();
     this.transitionTo('index');
   }
 });

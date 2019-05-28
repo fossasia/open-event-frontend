@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Add Order');
+    return this.l10n.t('Add Order');
   },
   async model() {
     const eventDetails = this.modelFor('events.view');

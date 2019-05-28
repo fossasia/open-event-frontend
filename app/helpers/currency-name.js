@@ -1,5 +1,5 @@
 import Helper from '@ember/component/helper';
-import { find } from 'lodash';
+import { find } from 'lodash-es';
 import { paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 
 export function currencyName(params) {

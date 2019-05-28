@@ -15,7 +15,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your name')
+              prompt : this.l10n.t('Please enter your name')
             }
           ]
         },
@@ -24,7 +24,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your family name')
+              prompt : this.l10n.t('Please enter your family name')
             }
           ]
         }
@@ -36,13 +36,13 @@ export default Component.extend(FormMixin, {
     submit() {
       this.onValid(() => {
         this.set('isLoading', true);
-        this.get('user').save()
+        this.user.save()
           .then(() => {
-            this.get('notify').success(this.get('l10n').t('Your profile has been updated'));
+            this.notify.success(this.l10n.t('Your profile has been updated'));
           })
           .catch(() => {
             this.get('authManager.currentUser').rollbackAttributes();
-            this.get('notify').error(this.get('l10n').t('An unexpected error occurred'));
+            this.notify.error(this.l10n.t('An unexpected error occurred'));
           })
           .finally(() => {
             this.set('isLoading', false);

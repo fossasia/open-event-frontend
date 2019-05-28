@@ -43,6 +43,6 @@ export default ModelBase.extend({
   salesEndsAtTime  : computedDateTimeSplit.bind(this)('salesEndsAt', 'time'),
 
   itemTotal: computed('price', 'quantity', function() {
-    return this.get('price') * this.get('quantity');
+    return this.price * this.quantity;
   })
 });

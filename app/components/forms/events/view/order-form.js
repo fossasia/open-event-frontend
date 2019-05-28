@@ -13,7 +13,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'integer[1..60]',
-              prompt : this.get('l10n').t('Please enter a valid registration time limit between 1 to 60 minutes.')
+              prompt : this.l10n.t('Please enter a valid registration time limit between 1 to 60 minutes.')
             }
           ]
         }

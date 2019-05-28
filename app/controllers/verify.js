@@ -14,7 +14,7 @@ export default Controller.extend({
         token: tokenVal
       }
     };
-    return this.get('loader')
+    return this.loader
       .post('auth/verify-email', payload)
       .then(() => {
         this.set('success', true);

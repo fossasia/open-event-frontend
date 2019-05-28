@@ -4,7 +4,7 @@ export default Controller.extend({
   columns: [
     {
       propertyName : 'name',
-      template     : 'components/ui-table/cell/cell-event',
+      template     : 'components/ui-table/cell/cell-event-general',
       title        : 'Name'
     },
     {
@@ -47,15 +47,12 @@ export default Controller.extend({
       title            : 'Public URL',
       disableSorting   : true,
       disableFiltering : true
-    },
-    {
-      template         : 'components/ui-table/cell/cell-buttons',
-      title            : 'Actions',
-      disableSorting   : true,
-      disableFiltering : true
     }
   ],
   actions: {
+    moveToPublic(id) {
+      this.transitionToRoute('public', id);
+    },
     moveToDetails(id) {
       this.transitionToRoute('events.view', id);
     },
@@ -70,15 +67,15 @@ export default Controller.extend({
     },
     deleteEvent() {
       this.set('isLoading', true);
-      this.store.findRecord('event', this.get('eventId'), { backgroundReload: false }).then(function(event) {
+      this.store.findRecord('event', this.eventId, { backgroundReload: false }).then(function(event) {
         event.destroyRecord();
       })
         .then(() => {
-          this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
           this.send('refreshRoute');
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

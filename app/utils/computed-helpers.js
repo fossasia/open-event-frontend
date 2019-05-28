@@ -1,6 +1,6 @@
 import { computed } from '@ember/object';
 import moment from 'moment';
-import { values } from 'lodash';
+import { values } from 'lodash-es';
 import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 

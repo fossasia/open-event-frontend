@@ -34,11 +34,11 @@ export default Controller.extend({
       this.set('isLoading', true);
       sponsor.destroyRecord()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Sponsor has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Sponsor has been deleted successfully.'));
           this.get('model.sponsors').removeObject(sponsor);
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

@@ -8,7 +8,7 @@ export default Component.extend({
 
   shouldShowMessage: computed('session.isAuthenticated', 'authManager.currentUser.isVerified', 'isMessageVisible', function() {
     return this.get('session.isAuthenticated')
-          && this.get('isMessageVisible')
+          && this.isMessageVisible
           && !this.get('authManager.currentUser.isVerified');
   }),
 
@@ -19,17 +19,17 @@ export default Component.extend({
           'email': this.get('authManager.currentUser.email')
         }
       };
-      this.get('loader')
+      this.loader
         .post('/auth/resend-verification-email', payload)
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Verification mail sent successfully'));
+          this.notify.success(this.l10n.t('Verification mail sent successfully'));
           this.set('isMailSent', true);
         })
         .catch(error => {
           if (error.error) {
-            this.get('notify').error(this.get('l10n').t(error.error));
+            this.notify.error(this.l10n.t(error.error));
           } else {
-            this.get('notify').error(this.get('l10n').t('An unexpected error has occurred.'));
+            this.notify.error(this.l10n.t('An unexpected error has occurred.'));
           }
         });
     }

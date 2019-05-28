@@ -14,12 +14,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please upload a file')
+              prompt : this.l10n.t('Please upload a file')
             },
             {
               type   : 'regExp',
               value  : '/^(.*.((zip|xml|ical|ics|xcal)$))?[^.]*$/i',
-              prompt : this.get('l10n').t('Please upload a file in suggested format')
+              prompt : this.l10n.t('Please upload a file in suggested format')
             }
           ]
         }

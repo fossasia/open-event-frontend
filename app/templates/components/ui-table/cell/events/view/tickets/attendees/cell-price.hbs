@@ -1,5 +1,5 @@
 <div class="weight-400">
-  {{currency-symbol paymentCurrency}}  {{number-format record.order.amount}}
+  {{currency-symbol paymentCurrency}}  {{format-number record.order.amount}}
 </div>
 {{#if record.order.discountCode.code}}
   <div class="ui mini yellow label">

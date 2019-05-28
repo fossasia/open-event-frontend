@@ -4,9 +4,9 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.notification_state')) {
       case 'unread':
-        return this.get('l10n').t('Unread');
+        return this.l10n.t('Unread');
       case 'all':
-        return this.get('l10n').t('All');
+        return this.l10n.t('All');
     }
   },
   async model(params) {
@@ -28,7 +28,7 @@ export default Route.extend({
       data.unread = true;
     }
 
-    data.notifications = await this.get('authManager.currentUser').query('notifications', {
+    data.notifications = await this.authManager.currentUser.query('notifications', {
       include : 'notification-actions',
       sort    : '-received-at',
       filter  : filterOptions

@@ -1,7 +1,7 @@
 import { observer, computed } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
 import { camelize } from '@ember/string';
-import { mapKeys } from 'lodash';
+import { mapKeys } from 'lodash-es';
 
 export default Service.extend({
 
@@ -10,11 +10,11 @@ export default Service.extend({
   store   : service(),
 
   currentUser: computed('session.data.currentUserFallback.id', 'currentUserModel', function() {
-    if (this.get('currentUserModel')) {
-      return this.get('currentUserModel');
+    if (this.currentUserModel) {
+      return this.currentUserModel;
     }
     if (this.get('session.data.currentUserFallback')) {
-      let userModel = this.get('store').peekRecord('user', this.get('session.data.currentUserFallback.id'));
+      let userModel = this.store.peekRecord('user', this.get('session.data.currentUserFallback.id'));
       if (!userModel) {
         return this.restoreCurrentUser();
       }
@@ -30,7 +30,7 @@ export default Service.extend({
   }),
 
   currentUserChangeListener: observer('currentUser', function() {
-    if (this.get('currentUser') && this.get('session.isAuthenticated')) {
+    if (this.currentUser && this.get('session.isAuthenticated')) {
       this.identify();
     }
   }),
@@ -44,34 +44,33 @@ export default Service.extend({
   },
 
   logout() {
-    this.get('session').invalidate();
+    this.session.invalidate();
     this.set('currentUserModel', null);
-    this.get('session').set('data.currentUserFallback', null);
+    this.session.set('data.currentUserFallback', null);
   },
 
   identify() {
-    let currentUser = this.get('currentUser');
-    if (currentUser) {
-      this.get('metrics').identify({
-        distinctId : currentUser.id,
-        email      : currentUser.email
+    if (this.currentUser) {
+      this.metrics.identify({
+        distinctId : this.currentUser.id,
+        email      : this.currentUser.email
       });
     }
   },
 
   identifyStranger() {
-    this.get('metrics').identify(null);
+    this.metrics.identify(null);
   },
 
   persistCurrentUser(user = null) {
     if (!user) {
-      user = this.get('currentUserModel');
+      user = this.currentUserModel;
     } else {
       this.set('currentUserModel', user);
     }
     let userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
-    this.get('session').set('data.currentUserFallback', userData);
+    this.session.set('data.currentUserFallback', userData);
   },
 
   restoreCurrentUser(data = null) {
@@ -84,14 +83,14 @@ export default Service.extend({
     if (!data.email) {
       data.email = null;
     }
-    this.get('store').push({
+    this.store.push({
       data: {
         id         : userId,
         type       : 'user',
         attributes : data
       }
     });
-    let userModel = this.get('store').peekRecord('user', userId);
+    let userModel = this.store.peekRecord('user', userId);
     this.set('currentUserModel', userModel);
     return userModel;
   },
@@ -99,7 +98,7 @@ export default Service.extend({
   async initialize() {
     if (this.get('session.isAuthenticated')) {
       if (this.get('session.data.currentUserFallback.id')) {
-        const user = await this.get('store').findRecord('user', this.get('session.data.currentUserFallback.id'));
+        const user = await this.store.findRecord('user', this.get('session.data.currentUserFallback.id'));
         this.set('currentUserModel', user);
         this.identify();
       } else {

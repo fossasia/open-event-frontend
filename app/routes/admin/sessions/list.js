@@ -4,17 +4,17 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.sessions_state')) {
       case 'confirmed':
-        return this.get('l10n').t('Confirmed');
+        return this.l10n.t('Confirmed');
       case 'pending':
-        return this.get('l10n').t('Pending');
+        return this.l10n.t('Pending');
       case 'accepted':
-        return this.get('l10n').t('Accepted');
+        return this.l10n.t('Accepted');
       case 'rejected':
-        return this.get('l10n').t('Rejected');
+        return this.l10n.t('Rejected');
       case 'deleted':
-        return this.get('l10n').t('Deleted');
+        return this.l10n.t('Deleted');
       default:
-        return this.get('l10n').t('Session');
+        return this.l10n.t('Session');
     }
   },
   model(params) {
@@ -163,7 +163,7 @@ export default Route.extend({
         }
       ];
     }
-    return this.get('store').query('session', {
+    return this.store.query('session', {
       get_trashed  : true,
       include      : 'event,speakers',
       filter       : filterOptions,

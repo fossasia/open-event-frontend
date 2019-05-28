@@ -1,4 +1,4 @@
-import { isString, isArray, isObjectLike, isNumber } from 'lodash';
+import { isString, isArray, isObjectLike, isNumber } from 'lodash-es';
 
 /**
  * A recursive method to parse and retrieve an error string from a BE response

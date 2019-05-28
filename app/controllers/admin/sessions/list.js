@@ -52,10 +52,10 @@ export default Controller.extend({
       this.set('isLoading', true);
       session.destroyRecord()
         .then(() => {
-          this.notify.success(this.get('l10n').t('Session has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Session has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

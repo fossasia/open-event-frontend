@@ -12,26 +12,26 @@ export default Controller.extend({
   },
   requestLoop(exportJobInfo) {
     run.later(() => {
-      this.get('loader')
+      this.loader
         .load(exportJobInfo.task_url, { withoutPrefix: true })
         .then(exportJobStatus => {
           if (exportJobStatus.state === 'SUCCESS') {
             this.set('isDownloadDisabled', false);
             this.set('eventDownloadUrl', exportJobStatus.result.download_url);
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').success(this.get('l10n').t('Event exported.'));
+            this.notify.success(this.l10n.t('Event exported.'));
           } else if (exportJobStatus.state === 'WAITING') {
             this.requestLoop(exportJobInfo);
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').alert(this.get('l10n').t('Event export is going on.'));
+            this.notify.alert(this.l10n.t('Event export is going on.'));
           } else {
             this.set('eventExportStatus', exportJobStatus.state);
-            this.get('notify').error(this.get('l10n').t('Event export failed.'));
+            this.notify.error(this.l10n.t('Event export failed.'));
           }
         })
         .catch(() => {
           this.set('eventExportStatus', 'FAILURE');
-          this.get('notify').error(this.get('l10n').t('Event export failed.'));
+          this.notify.error(this.l10n.t('Event export failed.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -41,15 +41,15 @@ export default Controller.extend({
   actions: {
     startGeneration() {
       this.set('isLoading', true);
-      let payload = this.get('data');
-      this.get('loader')
+      let payload = this.data;
+      this.loader
         .post(`/events/${this.get('model.id')}/export/json`, payload)
         .then(exportJobInfo => {
           this.requestLoop(exportJobInfo);
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.get('notify').error(this.get('l10n').t('Unexpected error occurred.'));
+          this.notify.error(this.l10n.t('Unexpected error occurred.'));
         });
     }
   }

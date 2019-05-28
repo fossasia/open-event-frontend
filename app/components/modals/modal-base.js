@@ -1,5 +1,6 @@
 import { observer } from '@ember/object';
-import { assign, merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
+import { merge } from 'lodash-es';
 import UiModal from 'semantic-ui-ember/components/ui-modal';
 import { isTesting } from 'open-event-frontend/utils/testing';
 
@@ -8,7 +9,7 @@ export default UiModal.extend({
   classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
 
   openObserver: observer('isOpen', function() {
-    if (this.get('isOpen')) {
+    if (this.isOpen) {
       this.$().modal('show');
     } else {
       this.$().modal('hide');
@@ -44,23 +45,23 @@ export default UiModal.extend({
       detachable     : false,
       duration       : isTesting ? 0 : 200,
       dimmerSettings : {
-        dimmerName : `${this.get('elementId')}-modal-dimmer`,
+        dimmerName : `${this.elementId}-modal-dimmer`,
         variation  : 'inverted'
       },
       onHide: () => {
         this.set('isOpen', false);
-        if (this.get('onHide')) {
+        if (this.onHide) {
           this.onHide();
         }
       },
       onDeny: () => {
-        if (this.get('onDeny')) {
+        if (this.onDeny) {
           this.onDeny();
         }
         return true;
       },
       onApprove: () => {
-        if (this.get('onApprove')) {
+        if (this.onApprove) {
           this.onApprove();
         }
         return true;
@@ -72,18 +73,18 @@ export default UiModal.extend({
         this.$('[data-content]').popup({
           inline: true
         });
-        if (this.get('onVisible')) {
+        if (this.onVisible) {
           this.onVisible();
         }
       }
     };
 
-    const options = this.get('options') ? merge(defaultOptions, this.get('options')) : defaultOptions;
+    const options = this.options ? merge(defaultOptions, this.options) : defaultOptions;
     assign(settings, options);
   },
 
   didInitSemantic() {
-    if (this.get('isOpen')) {
+    if (this.isOpen) {
       this.$().modal('show');
     }
   }

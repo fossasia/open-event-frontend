@@ -11,20 +11,22 @@ const router = Router.extend(RouterScroll, {
   session  : service(),
   headData : service(),
 
-  didTransition() {
-    this._super(...arguments);
-    this._trackPage();
+  setTitle(title) {
+    this.headData.set('title', title);
   },
 
-  setTitle(title) {
-    this.get('headData').set('title', title);
+  init() {
+    this._super(...arguments);
+    this.on('routeDidChange', () => {
+      this._trackPage();
+    });
   },
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
-      const page = this.get('url');
+      const page = this.url;
       const title = this.getWithDefault('currentRouteName', 'unknown');
-      this.get('metrics').trackPage({ page, title });
+      this.metrics.trackPage({ page, title });
       this.set('session.currentRouteName', title);
     });
   }
@@ -34,6 +36,8 @@ router.map(function() {
   this.route('login');
   this.route('register');
   this.route('reset-password');
+  this.route('attendee-app');
+  this.route('organizer-app');
   this.route('logout');
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
@@ -198,7 +202,7 @@ router.map(function() {
     this.route('new', { path: '/:order_id/new' });
     this.route('expired', { path: '/:order_id/expired' });
     this.route('view', { path: '/:order_id/view' });
-    this.route('placed', { path: '/:order_id/placed' });
+    this.route('pending', { path: '/:order_id/pending' });
   });
   this.route('verify');
 });

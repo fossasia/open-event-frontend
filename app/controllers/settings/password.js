@@ -10,16 +10,16 @@ export default Controller.extend({
           'new-password' : passwordData.passwordNew
         }
       };
-      this.get('loader')
+      this.loader
         .post('/auth/change-password', payload)
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Password updated successfully'));
+          this.notify.success(this.l10n.t('Password updated successfully'));
         })
         .catch(error => {
           if (error.errors) {
-            this.get('notify').error(this.get('l10n').t(`${error.errors[0].detail}`));
+            this.notify.error(this.l10n.t(`${error.errors[0].detail}`));
           } else {
-            this.get('notify').error(this.get('l10n').t('Unexpected error. Password did not change.'));
+            this.notify.error(this.l10n.t('Unexpected error. Password did not change.'));
           }
         })
         .finally(() => {

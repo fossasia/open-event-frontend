@@ -39,7 +39,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, Cac
 
   isInvalid(statusCode) {
     if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403 && statusCode !== 409) {
-      this.get('notify').error('An unexpected error occurred.', {
+      this.notify.error('An unexpected error occurred.', {
         closeAfter: 5000
       });
     }
@@ -83,7 +83,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, Cac
    */
   ensureResponseAuthorized(status) {
     if (status === 401 && this.get('session.isAuthenticated')) {
-      this.get('session').invalidate();
+      this.session.invalidate();
     }
   }
 });

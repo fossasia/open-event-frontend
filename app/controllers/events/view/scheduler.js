@@ -46,20 +46,20 @@ export default Controller.extend({
     let config = {
       skipDataTransform: true
     };
-    return this.get('loader')
+    return this.loader
       .patch(`sessions/${sessionId}`, JSON.stringify(payload), config)
       .then(() => {
-        this.get('notify').success('Changes have been made successfully');
+        this.notify.success('Changes have been made successfully');
       })
       .catch(reason => {
         this.set('error', reason);
-        this.get('notify').error(`Error: ${reason}`);
+        this.notify.error(`Error: ${reason}`);
       });
   },
   unscheduleSession(session) {
     $('.full-calendar').fullCalendar('removeEvents', session._id);
     this.updateSession(null, null, session.resourceId, session.serverId);
-    this.get('target').send('refresh');
+    this.target.send('refresh');
 
   },
   actions: {
@@ -85,18 +85,17 @@ export default Controller.extend({
     },
     togglePublishState() {
       this.set('isLoading', true);
-      let isSchedulePublished = this.get('isSchedulePublished');
-      let action = isSchedulePublished ? 'unpublished' : 'published';
-      let publishedAt = isSchedulePublished ? moment(0) : moment();
+      let action = this.isSchedulePublished ? 'unpublished' : 'published';
+      let publishedAt = this.isSchedulePublished ? moment(0) : moment();
       let event = this.get('model.eventDetails');
       event.set('schedulePublishedOn', publishedAt);
       event.save()
         .then(() => {
-          this.get('notify').success(`The schedule has been ${action} successfully`);
+          this.notify.success(`The schedule has been ${action} successfully`);
         })
         .catch(reason => {
           this.set('error', reason);
-          this.get('notify').error(`Error: ${reason}`);
+          this.notify.error(`Error: ${reason}`);
         })
         .finally(() => {
           this.set('isLoading', false);

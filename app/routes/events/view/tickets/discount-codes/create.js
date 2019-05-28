@@ -3,17 +3,17 @@ import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Create');
+    return this.l10n.t('Create');
   },
   async model() {
     let tickets = await this.modelFor('events.view').query('tickets', {});
     let event = this.modelFor('events.view');
     return {
-      discountCode: this.get('store').createRecord('discount-code', {
+      discountCode: this.store.createRecord('discount-code', {
         event,
         tickets  : [],
         usedFor  : 'ticket',
-        marketer : this.get('authManager.currentUser')
+        marketer : this.authManager.currentUser
       }),
       tickets,
       event

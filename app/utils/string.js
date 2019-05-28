@@ -1,4 +1,4 @@
-import { camelCase } from 'lodash';
+import { camelCase } from 'lodash-es';
 
 export const pascalCase = string => {
   string = camelCase(string);

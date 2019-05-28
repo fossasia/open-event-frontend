@@ -16,7 +16,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid URL for Android app')
+              prompt : this.l10n.t('Please enter a valid URL for Android app')
             }
           ]
         },
@@ -28,7 +28,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid URL for web app')
+              prompt : this.l10n.t('Please enter a valid URL for web app')
             }
           ]
         }

@@ -16,7 +16,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   country          : attr('string'),
   zipcode          : attr('string'),
   paymentMode      : attr('string', { defaultValue: 'free' }),
-  status           : attr('string', { defaultValue: 'pending' }),
+  status           : attr('string', { defaultValue: 'initializing' }),
   transactionId    : attr('string', { readOnly: true }),
   expMonth         : attr('string'),
   expYear          : attr('string'),

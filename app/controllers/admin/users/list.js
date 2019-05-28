@@ -75,10 +75,10 @@ export default Controller.extend({
       this.set('isLoading', true);
       user.destroyRecord()
         .then(() => {
-          this.notify.success(this.get('l10n').t('User has been deleted successfully.'));
+          this.notify.success(this.l10n.t('User has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -93,11 +93,11 @@ export default Controller.extend({
       user.set('deletedAt', null);
       user.save({ adapterOptions: { getTrashed: true } })
         .then(() => {
-          this.notify.success(this.get('l10n').t('User has been restored successfully.'));
+          this.notify.success(this.l10n.t('User has been restored successfully.'));
           this.send('refreshRoute');
         })
         .catch(e => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
           console.warn(e);
         })
         .finally(() => {

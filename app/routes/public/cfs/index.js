@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Call for Speakers');
+    return this.l10n.t('Call for Speakers');
   },
 
   async beforeModel(transition) {
@@ -17,7 +17,7 @@ export default Route.extend({
      - CFS is private and a valid hash is entered
     */
     if (!speakersCall.announcement) {
-      this.get('notify').error(this.get('l10n').t('Call For Speakers has not been issued yet.'));
+      this.notify.error(this.l10n.t('Call For Speakers has not been issued yet.'));
       this.transitionTo('public', eventDetails.identifier);
     }
     if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {

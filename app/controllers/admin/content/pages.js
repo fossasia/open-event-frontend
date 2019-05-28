@@ -10,7 +10,7 @@ export default Controller.extend({
     updateCurrentPage(page, type) {
       if (type === 'create') {
         this.set('isCreate', true);
-        this.set('currentForm', this.get('store').createRecord('page'));
+        this.set('currentForm', this.store.createRecord('page'));
       } else {
         this.set('isCreate', false);
         this.set('currentForm', page);
@@ -20,13 +20,13 @@ export default Controller.extend({
     savePage(page) {
       page.save()
         .then(() => {
-          if (this.get('isCreate')) {
+          if (this.isCreate) {
             this.set('isFormOpen', false);
           }
-          this.notify.success(this.get('l10n').t('Page details have been saved successfully.'));
+          this.notify.success(this.l10n.t('Page details have been saved successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred. Page Details not saved.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Page Details not saved.'));
         });
     }
   }

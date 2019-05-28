@@ -5,16 +5,16 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.event_state')) {
       case 'live':
-        return this.get('l10n').t('Live');
+        return this.l10n.t('Live');
       case 'draft':
-        return this.get('l10n').t('Draft');
+        return this.l10n.t('Draft');
       case 'past':
-        return this.get('l10n').t('Past');
+        return this.l10n.t('Past');
     }
   },
   beforeModel(transition) {
     this._super(...arguments);
-    const eventState = transition.params[transition.targetName].event_state;
+    const eventState = transition.to.params.event_state;
     if (!['live', 'draft', 'past'].includes(eventState)) {
       this.replaceWith('events.view', eventState);
     }
