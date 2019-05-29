@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { readOnly, oneWay } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
@@ -14,30 +15,12 @@ import {
 export default Component.extend(FormMixin, {
   router: service(),
 
-  buyerFirstName: computed('buyerHasFirstName', function() {
-    if (this.buyerHasFirstName) {
-      return this.get('data.user.firstName');
-    } else {
-      return '';
-    }
-  }),
-  buyerLastName: computed('buyerHasLastName', function() {
-    if (this.buyerHasLastName) {
-      return this.get('data.user.lastName');
-    } else {
-      return '';
-    }
-  }),
-  buyer: computed('data.user', function() {
-    return this.get('data.user');
-  }),
-  buyerHasFirstName: computed(function() {
-    return this.get('data.user.firstName');
-  }),
-  buyerHasLastName: computed(function() {
-    return this.get('data.user.lastName');
-  }),
-  holders: computed('data.attendees', function() {
+  buyerFirstName    : oneWay('buyerHasFirstName'),
+  buyerLastName     : oneWay('buyerHasLastName'),
+  buyer             : readOnly('data.user'),
+  buyerHasFirstName : readOnly('data.user.firstName'),
+  buyerHasLastName  : readOnly('data.user.lastName'),
+  holders           : computed('data.attendees', function() {
     this.get('data.attendees').forEach(attendee => {
       attendee.set('firstname', '');
       attendee.set('lastname', '');
