@@ -46,9 +46,9 @@ export const computedSegmentedLink = function(property) {
 export const computedDateTimeSplit = function(property, segmentFormat) {
   return computed(property, {
     get() {
-      if (property === 'endsAt' && segmentFormat === 'date') {
-        return moment(this.get(property)).add(1, 'days').format(getFormat(segmentFormat));
-      }
+      // if (property === 'endsAt' && segmentFormat === 'date') {
+      //   return moment(this.get(property)).add(1, 'days').format(getFormat(segmentFormat));
+      // } The following line was adding one extra day to the endsAt Attribute . Commenting it to fix the issue .
       return moment(this.get(property)).format(getFormat(segmentFormat));
     },
     set(key, value) {
