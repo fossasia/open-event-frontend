@@ -6,7 +6,7 @@ export default Route.extend({
   },
 
   async beforeModel(transition) {
-    let hash = transition.params['public.cfs'].speaker_call_hash;
+    let hash = transition.to.params['public.cfs'] ? transition.to.params['public.cfs'].speaker_call_hash : null;
     const eventDetails = this.modelFor('public');
     const speakersCall = await eventDetails.get('speakersCall');
     /*

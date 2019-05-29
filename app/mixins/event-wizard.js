@@ -47,7 +47,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       try {
         data[property] = await event.get(property);
       } catch (e) {
-        if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[status] === 404)) {
+        if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[0].status === 404)) {
           // Lets just ignore any 404s that might occur. And throw the rest for the caller fn to catch
           throw e;
         }
