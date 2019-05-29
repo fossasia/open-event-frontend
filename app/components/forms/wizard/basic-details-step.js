@@ -114,9 +114,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     if (!this.isCreate && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
     }
-    if (!this.isCreate && this.get('data.event.stripeAuthorization') && !this.get('data.event.stripeAuthorization.content')) {
-      this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
-    }
   },
 
   getValidationRules() {
@@ -328,17 +325,24 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   actions: {
     connectStripe() {
-      this.get('data.event.stripeAuthorization.content') || this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization'));
       this.torii.open('stripe')
         .then(authorization => {
-          this.set('data.event.stripeAuthorization.stripeAuthCode', authorization.authorizationCode);
+          this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization', {
+            stripeAuthCode       : authorization.authorizationCode,
+            stripePublishableKey : this.settings.stripePublishableKey
+          }));
         })
         .catch(error => {
           this.notify.error(this.l10n.t(`${error.message}. Please try again`));
         });
     },
-    disconnectStripe() {
-      this.get('data.event.stripeAuthorization.content').destroyRecord();
+    async disconnectStripe() {
+      let stripeAuthorization = await this.get('data.event.stripeAuthorization');
+      stripeAuthorization.destroyRecord()
+        .then(() => {
+          this.notify.success(this.l10n.t('Stripe disconnected successfully'));
+        });
+
     },
     addTicket(type, position) {
       const event = this.get('data.event');
