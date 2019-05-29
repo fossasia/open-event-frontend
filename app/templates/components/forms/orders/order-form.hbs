@@ -22,11 +22,11 @@
       </h4>
       <div class="field {{if buyerHasFirstName 'disabled'}}">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
-        {{input type='text' name='first_name' value=buyer.firstName}}
+        {{input type='text' name='first_name' value=buyerFirstName}}
       </div>
       <div class="field {{if buyerHasLastName 'disabled'}}">
         <label class="required" for="lastname">{{t 'Last Name'}}</label>
-        {{input type='text' name='last_name' value=buyer.lastName}}
+        {{input type='text' name='last_name' value=buyerLastName}}
       </div>
       <div class="field disabled">
         <label class="required" for="email">{{t 'Email'}}</label>
