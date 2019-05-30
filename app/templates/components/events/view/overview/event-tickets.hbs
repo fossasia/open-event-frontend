@@ -3,7 +3,7 @@
 </div>
 <div class="content">
   <h4 class="ui header">{{t 'Summary'}}</h4>
-  <table class="ui very basic compact table">
+  <table class="ui very basic compact unstackable table">
     <tbody>
       <tr>
         <td>{{t 'Total tickets sold'}}</td>
@@ -20,7 +20,7 @@
     </tbody>
   </table>
   <h4 class="ui header">{{t 'Details'}}</h4>
-  <table class="ui very basic compact table">
+  <table class="ui very basic compact unstackable table">
     <thead>
       <tr>
         <th>{{t 'Type'}}</th>
@@ -38,7 +38,7 @@
           <td>{{sub ticket.quantity ticket.orderStatistics.tickets.completed}}</td>
         </tr>
       {{else}}
-        <div class="ui basic segment">
+        <div class="ui basic unstackable segment">
           {{t 'There are no tickets for this event'}}
         </div>
       {{/each}}
