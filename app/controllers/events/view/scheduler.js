@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import $ from 'jquery';
 import { computed } from '@ember/object';
 import moment from 'moment';
 
@@ -57,7 +56,7 @@ export default Controller.extend({
       });
   },
   unscheduleSession(session) {
-    $('.full-calendar').fullCalendar('removeEvents', session._id);
+    window.$('.full-calendar').fullCalendar('removeEvents', session._id);
     this.updateSession(null, null, session.resourceId, session.serverId);
     this.target.send('refresh');
 
@@ -67,8 +66,8 @@ export default Controller.extend({
       let start = date;
       let duration = this.get('model.defaultDuration').split(':');
       let end = start.clone().add(duration[0], 'hours').add(duration[1], 'minutes');
-      this.updateSession(start, end, resourceId, $(ui.helper).data('serverId'));
-      $(ui.helper).remove();
+      this.updateSession(start, end, resourceId, window.$(ui.helper).data('serverId'));
+      window.$(ui.helper).remove();
     },
     eventDrop(session) {
       this.updateSession(session.start, session.end, session.resourceId, session.serverId);

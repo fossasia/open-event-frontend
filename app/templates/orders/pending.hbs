@@ -29,6 +29,7 @@
         <div class = 'ui right floated'>
           {{stripe-checkout
             image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            currency=model.order.event.paymentCurrency
             locale='auto'
             name="Open Event"
             class="ui teal submit button"
