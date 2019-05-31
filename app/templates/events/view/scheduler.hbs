@@ -1,6 +1,6 @@
 <div class="ui grid">
   <div class="row">
-    <div class="three wide column">
+    <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
       {{#if isSchedulePublished}}
         <button class="ui orange {{if isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Unpublish Schedule'}}</button>
       {{else}}
@@ -15,7 +15,7 @@
         {{/each}}
       </div>
     </div>
-    <div class="thirteen wide column">
+    <div class="{{if device.isMobile 'ui segment' 'thirteen wide column'}}">
       {{full-calendar events=model.events
                       aspectRatio=1.8
                       editable=true
