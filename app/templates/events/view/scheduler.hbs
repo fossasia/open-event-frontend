@@ -1,6 +1,6 @@
 <div class="ui grid">
   <div class="row">
-    <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
+    <div class="sixteen wide mobile three wide computer column">
       {{#if isSchedulePublished}}
         <button class="ui orange {{if isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Unpublish Schedule'}}</button>
       {{else}}
