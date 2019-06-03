@@ -97,6 +97,23 @@ export default Route.extend(ApplicationRouteMixin, {
           this.set('session.previousRouteName', null);
         }
       });
+      transition.finally(() => {
+        // to catch the aborted transition exception
+        let params = this._mergeParams(transition.params);
+        let url;
+        // generate doesn't like empty params.
+        if (isEmpty(params)) {
+          url = transition.router.generate(transition.targetName);
+        } else {
+          url = transition.router.generate(transition.targetName, params);
+        }
+        // Do not save the url of the transition to login route.
+        if (!url.includes('login') && !url.includes('reset-password')) {
+          this.set('session.previousRouteName', url);
+        } else {
+          this.set('session.previousRouteName', null);
+        }
+      });
     }
   }
 });
