@@ -33,6 +33,9 @@ const router = Router.extend(RouterScroll, {
 });
 
 router.map(function() {
+  this.route('imprint');
+  this.route('terms-condition');
+  this.route('privacy-policy');
   this.route('login');
   this.route('register');
   this.route('reset-password');
