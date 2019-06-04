@@ -15,7 +15,9 @@ export default Route.extend({
       }),
       session: await this.store.findRecord('session', params.session_id, {
         include: 'session-type,track'
-      })
+      }),
+      tracks       : await eventDetails.query('tracks', {}),
+      sessionTypes : await eventDetails.query('sessionTypes', {})
     };
   }
 });
