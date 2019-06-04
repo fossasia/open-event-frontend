@@ -42,8 +42,9 @@
     <table class="ui very basic tablet stackable table order-summary center aligned">
       <thead>
         <tr>
-          <th class="four wide">{{t 'Ticket Type'}}</th>
-          <th class="four wide">{{t 'Price'}}</th>
+          <th class="three wide">{{t 'Ticket Type'}}</th>
+          <th class="three wide">{{t 'Price' }}</th>
+          <th class="three wide">{{t 'Taxable Price'}}</th>
           <th class="ui aligned two wide">{{t 'Discount'}}</th>
           <th class="one wide">{{t 'Quantity'}}</th>
           <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
@@ -61,10 +62,11 @@
               </div>
             </td>
             <td>{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+            <td>{{currency-symbol eventCurrency}} {{format-number ticket.taxedAmount}}</td>
             <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
             <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
             <td>
-              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
+              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.taxedAmount ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
             </td>
             {{#if event.tax}}
               <td>
@@ -83,13 +85,14 @@
           <th></th>
           <th></th>
           <th></th>
+          <th></th>
           <th>
             <div class="ui aligned small primary icon">
               {{t 'Grand Total'}}:
             </div>
           </th>
-          <th colspan="4">
-            <div class="ui aligned small primary icon">
+          <th colspan="2">
+            <div class="ui left aligned small primary icon">
               {{currency-symbol eventCurrency}} {{format-number data.amount}}
             </div>
           </th>

@@ -5,6 +5,7 @@
         <th>{{t 'Type'}}</th>
         <th class="four wide">{{t 'Sales Ends'}}</th>
         <th class="ui two wide">{{t 'Price'}}</th>
+        <th class="ui two wide">{{t 'Taxable Price'}}</th>
         <th class="one wide">{{t 'Quantity'}}</th>
         <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
       </tr>
@@ -22,17 +23,18 @@
               {{/if}}
             </td>
             <td>{{moment-format ticket.salesEndsAt 'ddd, DD MMMM YY, h:mm A'}}</td>
+            <td id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
             {{#if ticket.discount}}
-              <td>
+              <td class="ui aligned">
                 <div id="{{ticket.id}}_price" class="strike text">
-                  {{currency-symbol eventCurrency}} {{format-number ticket.price}}
+                  {{currency-symbol eventCurrency}} {{format-number ticket.taxedAmount}}
                 </div>
                 <div id="{{ticket.id}}_discount">
-                  {{currency-symbol eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
+                  {{currency-symbol eventCurrency}} {{format-number (sub ticket.taxedAmount ticket.discount)}}
                 </div>
               </td>
             {{else}}
-              <td id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+              <td class="ui aligned" id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{format-number ticket.taxedAmount}}</td>
             {{/if}}
             <td>
               <div class="field">
@@ -50,7 +52,7 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
+              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.taxedAmount ticket.discount) ticket.orderQuantity)}}
             </td>
           </tr>
         {{/unless}}
@@ -66,6 +68,15 @@
           <div class="ui right aligned small primary icon">
             {{t 'Total'}}: {{currency-symbol eventCurrency}} {{format-number total}}
           </div>
+        </th>
+      </tr>
+      <tr>
+        <th colspan="6">
+          {{#if taxDetails.isTaxIncludedInPrice}}
+            <small class="ui gray-text tiny">{{t 'Ticket Price is inclusive of all taxes'}}</small>
+          {{else}}
+            <small class="ui gray-text tiny">{{taxDetails.name}} tax: {{taxDetails.rate}}% {{t 'is charged extra on ticket prices'}}</small>
+          {{/if}}
         </th>
       </tr>
     </tfoot>

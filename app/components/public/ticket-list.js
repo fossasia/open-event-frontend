@@ -35,7 +35,7 @@ export default Component.extend(FormMixin, {
 
   total: computed('tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
     return sumBy(this.tickets.toArray(),
-      ticket => (ticket.getWithDefault('price', 0) - ticket.getWithDefault('discount', 0)) * ticket.getWithDefault('orderQuantity', 0)
+      ticket => (ticket.getWithDefault('taxedAmount', 0) - ticket.getWithDefault('discount', 0)) * ticket.getWithDefault('orderQuantity', 0)
     );
   }),
   actions: {

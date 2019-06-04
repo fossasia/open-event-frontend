@@ -4,6 +4,7 @@ import ModelBase from 'open-event-frontend/models/base';
 import moment from 'moment';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import { belongsTo, hasMany } from 'ember-data/relationships';
+import tax from './tax';
 
 export default ModelBase.extend({
 
@@ -44,5 +45,13 @@ export default ModelBase.extend({
 
   itemTotal: computed('price', 'quantity', function() {
     return this.price * this.quantity;
+  }),
+
+  taxedAmount: computed('event.tax', function() {
+    let taxType = this.event.get('tax.isTaxIncludedInPrice');
+    if (!taxType) {
+      return (1 + this.event.get('tax.rate')/100)*this.price;
+    }
+    return this.price;
   })
 });
