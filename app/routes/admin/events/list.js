@@ -5,13 +5,13 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.events_status')) {
       case 'live':
-        return this.get('l10n').t('Live');
+        return this.l10n.t('Live');
       case 'draft':
-        return this.get('l10n').t('Draft');
+        return this.l10n.t('Draft');
       case 'past':
-        return this.get('l10n').t('Past');
+        return this.l10n.t('Past');
       case 'deleted':
-        return this.get('l10n').t('Deleted');
+        return this.l10n.t('Deleted');
     }
   },
   model(params) {

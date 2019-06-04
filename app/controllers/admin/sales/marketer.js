@@ -4,14 +4,14 @@ import { computed } from '@ember/object';
 export default Controller.extend({
   salesTotal: computed(function() {
     let sum = 0;
-    this.get('model').forEach(data => {
+    this.model.forEach(data => {
       sum += data.sales.completed.ticket_count;
     });
     return sum;
   }),
   discountsTotal: computed(function() {
     let sum = 0;
-    this.get('model').forEach(data => {
+    this.model.forEach(data => {
       sum += data.sales.completed.sales_total;
     });
     return sum;

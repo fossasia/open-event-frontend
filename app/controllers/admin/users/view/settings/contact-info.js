@@ -7,10 +7,10 @@ export default Controller.extend({
       let currentUser = this.get('model.user');
       currentUser.save()
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Your Contact Info has been updated'));
+          this.notify.success(this.l10n.t('Your Contact Info has been updated'));
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('An unexpected error occurred'));
+          this.notify.error(this.l10n.t('An unexpected error occurred'));
         })
         .finally(() => {
           this.set('isLoading', false);

@@ -35,13 +35,13 @@ export default Controller.extend({
         skipDataTransform: true
       };
       chargePayload = JSON.stringify(chargePayload);
-      return this.get('loader').post(`orders/${order.identifier}/charge`, chargePayload, config)
+      return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
         .then(charge => {
           if (charge.data.attributes.status) {
-            this.get('notify').success(charge.data.attributes.message);
+            this.notify.success(charge.data.attributes.message);
             this.transitionToRoute('orders.view', order.identifier);
           } else {
-            this.get('notify').error(charge.data.attributes.message);
+            this.notify.error(charge.data.attributes.message);
           }
         });
     },

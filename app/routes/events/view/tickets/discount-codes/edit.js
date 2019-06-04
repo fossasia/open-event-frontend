@@ -4,8 +4,8 @@ import RSVP from 'rsvp';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken(model) {
-    var discount_code = model.discountCode.get('code');
-    return this.get('l10n').t(discount_code.concat('-Edit'));
+    let discount_code = model.discountCode.get('code');
+    return this.l10n.t(discount_code.concat('-Edit'));
   },
   model(params) {
     return RSVP.hash({

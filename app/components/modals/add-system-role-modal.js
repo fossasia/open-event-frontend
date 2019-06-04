@@ -16,7 +16,7 @@ export default ModalBase.extend(FormMixin, {
     },
     close() {
       if (!this.get('role.id')) {
-        this.get('role').unloadRecord();
+        this.role.unloadRecord();
       }
       this.set('isOpen', false);
     }
@@ -32,7 +32,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a role name')
+              prompt : this.l10n.t('Please enter a role name')
             }
           ]
         }

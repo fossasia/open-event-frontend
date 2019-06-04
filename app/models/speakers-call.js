@@ -23,10 +23,10 @@ export default ModelBase.extend({
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
   isOpen: computed('startsAt', 'endsAt', function() {
-    return moment().isAfter(this.get('startsAt')) && moment().isBefore(this.get('endsAt'));
+    return moment().isAfter(this.startsAt) && moment().isBefore(this.endsAt);
   }),
 
   isInFuture: computed('startsAt', function() {
-    return moment(this.get('startsAt')).isAfter();
+    return moment(this.startsAt).isAfter();
   })
 });

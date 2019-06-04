@@ -1,11 +1,12 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { groupBy, orderBy } from 'lodash';
+import { groupBy, orderBy } from 'lodash-es';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
   validGithubProfileUrlPattern, validLinkedinProfileUrlPattern, validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { languages } from 'open-event-frontend/utils/dictionary/languages';
+import { genders } from 'open-event-frontend/utils/dictionary/genders';
 
 export default Component.extend(FormMixin, {
 
@@ -24,7 +25,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a title')
+              prompt : this.l10n.t('Please enter a title')
             }
           ]
         },
@@ -33,7 +34,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a subtitle')
+              prompt : this.l10n.t('Please enter a subtitle')
             }
           ]
         },
@@ -42,7 +43,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter short abstract')
+              prompt : this.l10n.t('Please enter short abstract')
             }
           ]
         },
@@ -51,7 +52,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a long abstract')
+              prompt : this.l10n.t('Please enter a long abstract')
             }
           ]
         },
@@ -60,7 +61,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter comments')
+              prompt : this.l10n.t('Please enter comments')
             }
           ]
         },
@@ -69,7 +70,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please select a track')
+              prompt : this.l10n.t('Please select a track')
             }
           ]
         },
@@ -78,7 +79,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please select a session type')
+              prompt : this.l10n.t('Please select a session type')
             }
           ]
         },
@@ -87,7 +88,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a level')
+              prompt : this.l10n.t('Please enter a level')
             }
           ]
         },
@@ -96,7 +97,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a language')
+              prompt : this.l10n.t('Please enter a language')
             }
           ]
         },
@@ -105,12 +106,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a url')
+              prompt : this.l10n.t('Please enter a url')
             },
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -121,7 +122,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -130,12 +131,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a url')
+              prompt : this.l10n.t('Please enter a url')
             },
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -146,7 +147,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -155,12 +156,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a url')
+              prompt : this.l10n.t('Please enter a url')
             },
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -171,7 +172,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -180,7 +181,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a name')
+              prompt : this.l10n.t('Please enter a name')
             }
           ]
         },
@@ -189,11 +190,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter an email')
+              prompt : this.l10n.t('Please enter an email')
             },
             {
               type   : 'email',
-              prompt : this.get('l10n').t('Please enter a valid email')
+              prompt : this.l10n.t('Please enter a valid email')
             }
           ]
         },
@@ -203,11 +204,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter an email')
+              prompt : this.l10n.t('Please enter an email')
             },
             {
               type   : 'email',
-              prompt : this.get('l10n').t('Please enter a valid email')
+              prompt : this.l10n.t('Please enter a valid email')
             }
           ]
         },
@@ -216,12 +217,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please select an image')
+              prompt : this.l10n.t('Please select an image')
             },
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -232,7 +233,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : compulsoryProtocolValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -241,7 +242,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter an organisation')
+              prompt : this.l10n.t('Please enter an organisation')
             }
           ]
         },
@@ -250,7 +251,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a position')
+              prompt : this.l10n.t('Please enter a position')
             }
           ]
         },
@@ -259,7 +260,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a country')
+              prompt : this.l10n.t('Please enter a country')
             }
           ]
         },
@@ -268,7 +269,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a city')
+              prompt : this.l10n.t('Please enter a city')
             }
           ]
         },
@@ -277,7 +278,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter long biography')
+              prompt : this.l10n.t('Please enter long biography')
             }
           ]
         },
@@ -286,7 +287,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter short biography')
+              prompt : this.l10n.t('Please enter short biography')
             }
           ]
         },
@@ -295,7 +296,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter speaking experience')
+              prompt : this.l10n.t('Please enter speaking experience')
             }
           ]
         },
@@ -304,7 +305,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter select sponsorship')
+              prompt : this.l10n.t('Please enter select sponsorship')
             }
           ]
         },
@@ -313,7 +314,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please select a gender')
+              prompt : this.l10n.t('Please select a gender')
             }
           ]
         },
@@ -322,7 +323,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter where you heard about the event')
+              prompt : this.l10n.t('Please enter where you heard about the event')
             }
           ]
         },
@@ -333,7 +334,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : validPhoneNumber,
-              prompt : this.get('l10n').t('Please enter a valid mobile number.')
+              prompt : this.l10n.t('Please enter a valid mobile number.')
             }
           ]
         },
@@ -342,12 +343,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a mobile number')
+              prompt : this.l10n.t('Please enter a mobile number')
             },
             {
               type   : 'regExp',
               value  : validPhoneNumber,
-              prompt : this.get('l10n').t('Please enter a valid mobile number.')
+              prompt : this.l10n.t('Please enter a valid mobile number.')
             }
           ]
         },
@@ -356,12 +357,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter url of website')
+              prompt : this.l10n.t('Please enter url of website')
             },
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -372,7 +373,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
@@ -381,12 +382,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter facebook link')
+              prompt : this.l10n.t('Please enter facebook link')
             },
             {
               type   : 'regExp',
               value  : validFacebookProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid facebook account url')
+              prompt : this.l10n.t('Please enter a valid facebook account url')
             }
           ]
         },
@@ -397,7 +398,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : validFacebookProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid facebook account url')
+              prompt : this.l10n.t('Please enter a valid facebook account url')
             }
           ]
         },
@@ -406,12 +407,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter twitter link')
+              prompt : this.l10n.t('Please enter twitter link')
             },
             {
               type   : 'regExp',
               value  : validTwitterProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid twitter profile url')
+              prompt : this.l10n.t('Please enter a valid twitter profile url')
             }
           ]
         },
@@ -422,7 +423,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : validTwitterProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid twitter profile url')
+              prompt : this.l10n.t('Please enter a valid twitter profile url')
             }
           ]
         },
@@ -431,12 +432,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter GitHub link')
+              prompt : this.l10n.t('Please enter GitHub link')
             },
             {
               type   : 'regExp',
               value  : validGithubProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid GitHub profile url')
+              prompt : this.l10n.t('Please enter a valid GitHub profile url')
             }
           ]
         },
@@ -447,7 +448,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : validGithubProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid GitHub profile url')
+              prompt : this.l10n.t('Please enter a valid GitHub profile url')
             }
           ]
         },
@@ -456,12 +457,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter linkedin link')
+              prompt : this.l10n.t('Please enter linkedin link')
             },
             {
               type   : 'regExp',
               value  : validLinkedinProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid linkedin profile url')
+              prompt : this.l10n.t('Please enter a valid linkedin profile url')
             }
           ]
         },
@@ -472,7 +473,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : validLinkedinProfileUrlPattern,
-              prompt : this.get('l10n').t('Please enter a valid linkedin profile url')
+              prompt : this.l10n.t('Please enter a valid linkedin profile url')
             }
           ]
         }
@@ -484,22 +485,24 @@ export default Component.extend(FormMixin, {
 
   languages: orderBy(languages, 'name'),
 
+  genders: orderBy(genders, 'name'),
+
   allFields: computed('fields', function() {
-    return groupBy(this.get('fields').toArray(), field => field.get('form'));
+    return groupBy(this.fields.toArray(), field => field.get('form'));
   }),
 
   // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
   noSpeakerExists: computed('speakers', function() {
-    return (this.get('speakers').length === 1);
+    return this.speakers.length === 1;
   }),
 
   // Clicking on the add speaker button creates a blank record which increases the length of the session's list by 1.
   noSessionExists: computed('sessions', function() {
-    return (this.get('sessions').length === 1);
+    return this.sessions.length === 1;
   }),
 
   shouldShowNewSessionDetails: computed('sessionDetails', 'newSessionSelected', function() {
-    return this.get('newSessionSelected') && !this.get('sessionDetails');
+    return this.newSessionSelected && !this.sessionDetails;
   }),
 
   actions: {
@@ -516,11 +519,11 @@ export default Component.extend(FormMixin, {
     }
   },
   didInsertElement() {
-    if (this.get('isSpeaker') && this.get('data.speaker') && this.get('data.speaker').length) {
+    if (this.isSpeaker && this.get('data.speaker') && this.get('data.speaker').length) {
       this.set('data.speaker', this.get('data.speaker').toArray()[0]);
     }
 
-    if (this.get('isSession') && this.get('data.session') && this.get('data.session').length) {
+    if (this.isSession && this.get('data.session') && this.get('data.session').length) {
       this.set('data.session', this.get('data.session').toArray()[0]);
     }
   }

@@ -5,9 +5,9 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.ticket_status')) {
       case 'completed':
-        return this.get('l10n').t('Completed');
+        return this.l10n.t('Completed');
       case 'open':
-        return this.get('l10n').t('Open');
+        return this.l10n.t('Open');
     }
   },
   model(params) {
@@ -26,11 +26,18 @@ export default Route.extend({
                 val  : moment().toISOString()
               }
             },
-            {
-              name : 'status',
-              op   : 'eq',
-              val  : 'completed'
-            },
+            { or: [
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'completed'
+              },
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'placed'
+              }
+            ] },
             {
               name : 'event',
               op   : 'has',
@@ -56,11 +63,18 @@ export default Route.extend({
                 val  : moment().toISOString()
               }
             },
-            {
-              name : 'status',
-              op   : 'eq',
-              val  : 'placed'
-            },
+            { or: [
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'pending'
+              },
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'initializing'
+              }
+            ] },
             {
               name : 'event',
               op   : 'has',
@@ -74,7 +88,7 @@ export default Route.extend({
         }
       );
     }
-    return this.get('authManager.currentUser').query('orders', {
+    return this.authManager.currentUser.query('orders', {
       include : 'event',
       filter  : filterOptions
     });

@@ -1,6 +1,6 @@
 import { computed } from '@ember/object';
 import moment from 'moment';
-import { values } from 'lodash';
+import { values } from 'lodash-es';
 import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
@@ -46,9 +46,9 @@ export const computedSegmentedLink = function(property) {
 export const computedDateTimeSplit = function(property, segmentFormat) {
   return computed(property, {
     get() {
-      if (property === 'endsAt' && segmentFormat === 'date') {
-        return moment(this.get(property)).add(1, 'days').format(getFormat(segmentFormat));
-      }
+      // if (property === 'endsAt' && segmentFormat === 'date') {
+      //   return moment(this.get(property)).add(1, 'days').format(getFormat(segmentFormat));
+      // } The following line was adding one extra day to the endsAt Attribute . Commenting it to fix the issue .
       return moment(this.get(property)).format(getFormat(segmentFormat));
     },
     set(key, value) {

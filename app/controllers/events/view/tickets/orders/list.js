@@ -9,6 +9,12 @@ export default Controller.extend({
       disableSorting : true
     },
     {
+      propertyName : 'completedAt',
+      template     : 'components/ui-table/cell/events/view/tickets/orders/cell-date',
+      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+      title        : 'Date And Time'
+    },
+    {
       propertyName : 'amount',
       template     : 'components/ui-table/cell/events/view/tickets/orders/cell-amount',
       title        : 'Total Amount'
@@ -21,11 +27,6 @@ export default Controller.extend({
       propertyName   : 'user.email',
       title          : 'Buyer/Registration Contact',
       disableSorting : true
-    },
-    {
-      title          : 'Actions',
-      template       : 'components/ui-table/cell/events/view/tickets/orders/cell-actions',
-      disableSorting : true
     }
   ],
 
@@ -36,10 +37,10 @@ export default Controller.extend({
       order.save()
         .then(() => {
           this.send('refreshRoute');
-          this.notify.success(this.get('l10n').t('Order has been marked completed successfully.'));
+          this.notify.success(this.l10n.t('Order has been marked completed successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -50,10 +51,10 @@ export default Controller.extend({
       order.destroyRecord()
         .then(() => {
           this.send('refreshRoute');
-          this.notify.success(this.get('l10n').t('Order has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Order has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -65,10 +66,10 @@ export default Controller.extend({
       order.save()
         .then(() => {
           this.send('refreshRoute');
-          this.notify.success(this.get('l10n').t('Order has been cancelled successfully.'));
+          this.notify.success(this.l10n.t('Order has been cancelled successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

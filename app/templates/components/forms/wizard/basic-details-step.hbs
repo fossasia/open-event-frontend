@@ -433,7 +433,7 @@
               </div>
             </div>
             <div class="ui bottom attached small buttons">
-              <button class="ui button" type="button" {{action 'openTaxModal'}}>
+              <button class="ui button" type="button" {{action 'openTaxModal' false}}>
                 <i class="pencil icon"></i>
                 {{t 'Edit'}}
               </button>
@@ -445,7 +445,7 @@
             </div>
           </div>
         {{else}}
-          <button type="button" class="ui right labeled icon button" {{action 'openTaxModal'}}>
+          <button type="button" class="ui right labeled icon button" {{action 'openTaxModal' true}}>
             <i class="percent icon"></i>
             {{t 'Add Tax Information'}}
           </button>

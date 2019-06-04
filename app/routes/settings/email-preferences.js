@@ -3,9 +3,9 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return this.get('l10n').t('Email Preferences');
+    return this.l10n.t('Email Preferences');
   },
   model() {
-    return this.get('authManager.currentUser').query('emailNotifications', { include: 'event' });
+    return this.authManager.currentUser.query('emailNotifications', { include: 'event' });
   }
 });

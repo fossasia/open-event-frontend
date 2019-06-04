@@ -14,7 +14,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the client ID')
+              prompt : this.l10n.t('Please enter the client ID')
             }
           ]
         },
@@ -24,7 +24,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the secret key')
+              prompt : this.l10n.t('Please enter the secret key')
             }
           ]
         },
@@ -34,7 +34,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the publishable key')
+              prompt : this.l10n.t('Please enter the publishable key')
             }
           ]
         },
@@ -44,7 +44,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sandbox client id')
+              prompt : this.l10n.t('Please enter the sandbox client id')
             }
           ]
         },
@@ -54,7 +54,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the sandbox secret token')
+              prompt : this.l10n.t('Please enter the sandbox secret token')
             }
           ]
         },
@@ -64,7 +64,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live client token')
+              prompt : this.l10n.t('Please enter the live client token')
             }
           ]
         },
@@ -74,7 +74,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the live secret token')
+              prompt : this.l10n.t('Please enter the live secret token')
             }
           ]
         },
@@ -84,7 +84,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the public test key')
+              prompt : this.l10n.t('Please enter the public test key')
             }
           ]
         },
@@ -94,7 +94,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the secret test key')
+              prompt : this.l10n.t('Please enter the secret test key')
             }
           ]
         },
@@ -104,7 +104,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the public live key')
+              prompt : this.l10n.t('Please enter the public live key')
             }
           ]
         },
@@ -114,7 +114,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the secret live key')
+              prompt : this.l10n.t('Please enter the secret live key')
             }
           ]
         }
@@ -137,23 +137,23 @@ export default Component.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
-        if (this.get('isCheckedStripe') === false) {
-          this.get('settings').setProperties({
+        if (this.isCheckedStripe === false) {
+          this.settings.setProperties({
             'stripeClientId'       : null,
             'stripeSecretKey'      : null,
             'stripePublishableKey' : null
           });
         }
-        if (this.get('isCheckedPaypal') === false)  {
-          this.get('settings').setProperties({
+        if (this.isCheckedPaypal === false)  {
+          this.settings.setProperties({
             'paypalSandboxClient' : null,
             'paypalSandboxSecret' : null,
             'paypalSecret'        : null,
             'paypalClient'        : null
           });
         }
-        if (this.get('isCheckedOmise') === false) {
-          this.get('settings').setProperties({
+        if (this.isCheckedOmise === false) {
+          this.settings.setProperties({
             'omiseTestPublic' : null,
             'omiseTestSecret' : null,
             'omiseLivePublic' : null,

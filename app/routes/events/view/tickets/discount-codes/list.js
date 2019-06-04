@@ -5,11 +5,11 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.discount_status')) {
       case 'active':
-        return this.get('l10n').t('Active');
+        return this.l10n.t('Active');
       case 'inactive':
-        return this.get('l10n').t('Inactive');
+        return this.l10n.t('Inactive');
       case 'expired':
-        return this.get('l10n').t('Expired');
+        return this.l10n.t('Expired');
     }
   },
   async model(params) {

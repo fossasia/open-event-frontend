@@ -4,7 +4,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   titleToken() {
-    return this.get('l10n').t('Create an Event');
+    return this.l10n.t('Create an Event');
   },
   async model() {
     return {
@@ -14,7 +14,7 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
         copyright           : this.store.createRecord('event-copyright'),
         stripeAuthorization : this.store.createRecord('stripe-authorization')
       }),
-      module : await this.get('store').queryRecord('module', {}),
+      module : await this.store.queryRecord('module', {}),
       types  : await this.store.query('event-type', {
         sort: 'name'
       }),

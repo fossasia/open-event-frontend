@@ -3,6 +3,6 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 
 export default Route.extend(UnauthenticatedRouteMixin, {
   titleToken() {
-    return this.get('l10n').t('Login');
+    return this.l10n.t('Login');
   }
 });

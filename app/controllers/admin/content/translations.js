@@ -6,7 +6,7 @@ export default Controller.extend({
   actions: {
     translationsDownload() {
       this.set('isLoading', true);
-      this.get('loader')
+      this.loader
         .downloadFile('/admin/content/translations/all')
         .then(res => {
           const anchor = document.createElement('a');
@@ -14,11 +14,11 @@ export default Controller.extend({
           anchor.href = URL.createObjectURL(new Blob([res], { type: 'octet/stream' }));
           anchor.download = 'Translations.zip';
           anchor.click();
-          this.get('notify').success(this.get('l10n').t('Translations Zip generated successfully.'));
+          this.notify.success(this.l10n.t('Translations Zip generated successfully.'));
         })
         .catch(e => {
           console.warn(e);
-          this.get('notify').error(this.get('l10n').t('Unexpected error occurred.'));
+          this.notify.error(this.l10n.t('Unexpected error occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

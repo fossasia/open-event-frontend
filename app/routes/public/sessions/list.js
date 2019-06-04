@@ -5,20 +5,20 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.session_status')) {
       case 'all':
-        return this.get('l10n').t('All sessions');
+        return this.l10n.t('All sessions');
       case 'today':
-        return this.get('l10n').t('Today\'s Sessions');
+        return this.l10n.t('Today\'s Sessions');
       case 'week':
-        return this.get('l10n').t('Week\'s Sessions');
+        return this.l10n.t('Week\'s Sessions');
       case 'month':
-        return this.get('l10n').t('Month\'s Sessions');
+        return this.l10n.t('Month\'s Sessions');
     }
   },
   async model(params) {
     const eventDetails = this.modelFor('public');
     let sessions =  null;
     if (params.session_status === 'today') {
-      sessions = await this.get('store').query('session', {
+      sessions = await this.store.query('session', {
         filter: [
           {
             and: [
@@ -60,7 +60,7 @@ export default Route.extend({
         ]
       });
     } else if (params.session_status === 'week') {
-      sessions = await this.get('store').query('session', {
+      sessions = await this.store.query('session', {
         filter: [
           {
             and: [
@@ -102,7 +102,7 @@ export default Route.extend({
         ]
       });
     } else if (params.session_status === 'month') {
-      sessions = await this.get('store').query('session', {
+      sessions = await this.store.query('session', {
         filter: [
           {
             and: [
@@ -144,7 +144,7 @@ export default Route.extend({
         ]
       });
     } else {
-      sessions = await this.get('store').query('session', {
+      sessions = await this.store.query('session', {
         filter: [
           {
             and: [

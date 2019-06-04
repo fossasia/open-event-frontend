@@ -1,4 +1,4 @@
-import paypal from 'npm:paypal-checkout';
+import paypal from 'paypal-checkout';
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
@@ -8,15 +8,12 @@ export default Component.extend({
 
   async didInsertElement() {
     this._super(...arguments);
-    let order = this.get('data');
-    let loader = this.get('loader');
-    let notify = this.get('notify');
-    let router = this.get('router');
+    let order = this.data;
     let createPayload = {
       'data': {
         'attributes': {
-          'return-url' : `${window.location.origin}/orders/${order.identifier}/placed`,
-          'cancel-url' : `${window.location.origin}/orders/${order.identifier}/placed`
+          'return-url' : `${window.location.origin}/orders/${order.identifier}/view`,
+          'cancel-url' : `${window.location.origin}/orders/${order.identifier}/pending`
         },
         'type': 'paypal-payment'
       }
@@ -32,14 +29,14 @@ export default Component.extend({
         shape : 'pill'    // pill, rect
       },
 
-      payment() {
-        return loader.post(`orders/${order.identifier}/create-paypal-payment`, createPayload)
+      payment: () => {
+        return this.loader.post(`orders/${order.identifier}/create-paypal-payment`, createPayload)
           .then(res => {
             return res.payment_id;
           });
       },
 
-      onAuthorize(data) {
+      onAuthorize: data => {
         // this callback will be for authorizing the payments
         let chargePayload = {
           'data': {
@@ -55,13 +52,13 @@ export default Component.extend({
           skipDataTransform: true
         };
         chargePayload = JSON.stringify(chargePayload);
-        return loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
+        return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
           .then(charge => {
             if (charge.data.attributes.status) {
-              notify.success(charge.data.attributes.message);
-              router.transitionTo('orders.view', order.identifier);
+              this.notify.success(charge.data.attributes.message);
+              this.router.transitionTo('orders.view', order.identifier);
             } else {
-              notify.error(charge.data.attributes.message);
+              this.notify.error(charge.data.attributes.message);
             }
           });
       }

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Mixin from '@ember/object/mixin';
-import { merge } from '@ember/polyfills';
+import { merge } from 'lodash-es';
 import { debounce } from '@ember/runloop';
 import moment from 'moment';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
@@ -16,7 +16,7 @@ export default Mixin.create({
   autoScrollSpeed    : 200,
 
   getForm() {
-    return this.get('$form');
+    return this.$form;
   },
 
   onValid(callback) {
@@ -55,7 +55,7 @@ export default Mixin.create({
       }
 
       let $form;
-      if ((this.get('tagName') && this.get('tagName').toLowerCase() === 'form') || (this.$() && this.$().prop('tagName').toLowerCase() === 'form')) {
+      if ((this.tagName && this.tagName.toLowerCase() === 'form') || (this.$() && this.$().prop('tagName').toLowerCase() === 'form')) {
         $form = this.$();
         $form.addClass('ui form');
       } else {
@@ -63,7 +63,7 @@ export default Mixin.create({
       }
       if ($form) {
         $form = $form.first();
-        if (this.get('getValidationRules') && $form) {
+        if (this.getValidationRules && $form) {
           $form.form(merge(defaultFormRules, this.getValidationRules()));
         }
         if ($form && this) {
@@ -75,7 +75,7 @@ export default Mixin.create({
 
   didInsertElement() {
     this._super(...arguments);
-    $.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
+    window.$.fn.form.settings.rules.date = (value, format = FORM_DATE_FORMAT) => {
       if (value && value.length > 0 && format) {
         return moment(value, format).isValid();
       }

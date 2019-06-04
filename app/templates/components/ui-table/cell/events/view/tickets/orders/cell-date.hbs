@@ -1,0 +1,9 @@
+{{#if record.completedAt}}
+  <div>
+    {{moment-format record.completedAt 'MMMM DD, YYYY - hh:mm A'}}
+  </div>
+{{else}}
+  <div>
+    {{moment-format record.createdAt 'MMMM DD, YYYY - hh:mm A'}}
+  </div>
+{{/if}}

@@ -19,11 +19,11 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your email ID')
+              prompt : this.l10n.t('Please enter your email ID')
             },
             {
               type   : 'email',
-              prompt : this.get('l10n').t('Please enter a valid email ID')
+              prompt : this.l10n.t('Please enter a valid email ID')
             }
           ]
         },
@@ -32,7 +32,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter your password')
+              prompt : this.l10n.t('Please enter your password')
             }
           ]
         }
@@ -49,22 +49,22 @@ export default Component.extend(FormMixin, {
         this.set('errorMessage', null);
         this.set('isLoading', true);
 
-        this.get('session')
+        this.session
           .authenticate(authenticator, credentials)
           .then(async() => {
-            const tokenPayload = this.get('authManager').getTokenPayload();
+            const tokenPayload = this.authManager.getTokenPayload();
             if (tokenPayload) {
-              this.get('authManager').persistCurrentUser(
-                await this.get('store').findRecord('user', tokenPayload.identity)
+              this.authManager.persistCurrentUser(
+                await this.store.findRecord('user', tokenPayload.identity)
               );
             }
           })
           .catch(reason => {
-            if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+            if (!(this.isDestroyed || this.isDestroying)) {
               if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
-                this.set('errorMessage', this.get('l10n').t('Your credentials were incorrect.'));
+                this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
               } else {
-                this.set('errorMessage', this.get('l10n').t('An unexpected error occurred.'));
+                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
               }
               this.set('isLoading', false);
             } else {
@@ -72,7 +72,7 @@ export default Component.extend(FormMixin, {
             }
           })
           .finally(() => {
-            if (!(this.get('isDestroyed') || this.get('isDestroying'))) {
+            if (!(this.isDestroyed || this.isDestroying)) {
               this.set('password', '');
             }
           });
@@ -82,13 +82,13 @@ export default Component.extend(FormMixin, {
     async auth(provider) {
       try {
         if (provider === 'facebook') {
-          this.get('loader').load('/auth/oauth/facebook')
+          this.loader.load('/auth/oauth/facebook')
             .then(async response => {
               window.location.replace(response.url);
             });
         }
       } catch (error) {
-        this.get('notify').error(this.get('l10n').t(error.message));
+        this.notify.error(this.l10n.t(error.message));
       }
     },
 

@@ -3,10 +3,10 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 
 export default Route.extend(UnauthenticatedRouteMixin, {
   titleToken() {
-    return this.get('l10n').t('Verify');
+    return this.l10n.t('Verify');
   },
 
   beforeModel(transition) {
-    this.controllerFor('verify').verify(transition.queryParams.token);
+    this.controllerFor('verify').verify(transition.to.queryParams.token);
   }
 });

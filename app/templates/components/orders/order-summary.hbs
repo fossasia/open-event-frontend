@@ -1,23 +1,31 @@
 <div class="ui segments">
   {{#if (eq session.currentRouteName 'orders.view')}}
-    <div class="ui green inverted segment center aligned">
+    <div class="ui {{order-color data.status}} inverted segment center aligned">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
-          Success
+          {{#if (eq data.status 'completed')}}
+            {{t 'Success'}}
+          {{else}}
+            {{t 'Placed'}}
+          {{/if}}
         </div>
         <div class="label">
-          {{t 'Your order completed successfully.'}}
+          {{#if (eq data.status 'completed')}}
+            {{t 'Your order completed successfully.'}}
+          {{else}}
+            {{t 'Your order placed successfully.'}}
+          {{/if}}
           <br>
           {{t 'Find all the details related to your order below.'}}
         </div>
       </div>
     </div>
   {{/if}}
-  {{#if (eq session.currentRouteName 'orders.placed')}}
-    <div class="ui blue inverted segment center aligned">
+  {{#if (eq session.currentRouteName 'orders.pending')}}
+    <div class="ui orange inverted segment center aligned">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
-          Placed
+          {{t 'Pending'}}
         </div>
         <div class="label">
           {{t 'Your order has been placed successfully.'}}
@@ -30,7 +38,7 @@
   <div class="ui secondary segment">
     <h3 class="weight-400">{{t 'Order Summary'}}</h3>
   </div>
-  {{#if (or (eq session.currentRouteName 'orders.new') (eq session.currentRouteName 'orders.view') (eq session.currentRouteName 'orders.placed'))}}
+  {{#if (or (eq session.currentRouteName 'orders.new') (eq session.currentRouteName 'orders.view') (eq session.currentRouteName 'orders.pending'))}}
     <table class="ui very basic tablet stackable table order-summary center aligned">
       <thead>
         <tr>
@@ -39,6 +47,9 @@
           <th class="ui aligned two wide">{{t 'Discount'}}</th>
           <th class="one wide">{{t 'Quantity'}}</th>
           <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+          {{#if event.tax}}
+            <th class="four wide">{{t 'Tax'}}</th>
+          {{/if}}
         </tr>
       </thead>
       <tbody>
@@ -49,12 +60,21 @@
                 {{ticket.name}}
               </div>
             </td>
-            <td>{{currency-symbol eventCurrency}} {{number-format ticket.price}}</td>
-            <td>{{currency-symbol eventCurrency}} {{number-format ticket.discount}}</td>
+            <td>{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+            <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
             <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
             <td>
-              {{currency-symbol eventCurrency}} {{number-format (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
+              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
             </td>
+            {{#if event.tax}}
+              <td>
+                {{#if event.tax.isTaxIncludedInPrice}}
+                  {{t 'The price is inclusive of all taxes.'}}
+                {{else}}
+                  {{event.tax.rate}}%
+                {{/if}}
+              </td>
+            {{/if}}
           </tr>
         {{/each}}
       </tbody>
@@ -65,12 +85,12 @@
           <th></th>
           <th>
             <div class="ui aligned small primary icon">
-              {{t 'Order Total'}}:
+              {{t 'Grand Total'}}:
             </div>
           </th>
           <th colspan="4">
             <div class="ui aligned small primary icon">
-              {{currency-symbol eventCurrency}} {{number-format data.amount}}
+              {{currency-symbol eventCurrency}} {{format-number data.amount}}
             </div>
           </th>
         </tr>
@@ -79,10 +99,10 @@
   {{/if}}
 </div>
 {{#if (eq session.currentRouteName 'orders.expired')}}
-  <div class="ui orange inverted segment">
+  <div class="ui red inverted segment">
     <div class="ui inverted mini statistic horizontal">
       <div class="value">
-        Expired
+        {{t 'Expired'}}
       </div>
       <div class="label">
         {{t 'Your order expired because you did not complete registration in time.'}}

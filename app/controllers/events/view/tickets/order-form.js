@@ -17,11 +17,11 @@ export default Controller.extend({
       this.set('isLoading', true);
       this.saveForms(data)
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Your Attendee form has been saved'));
+          this.notify.success(this.l10n.t('Your Attendee form has been saved'));
         })
         .catch(e => {
           console.error(e);
-          this.get('notify').error(this.get('l10n').t(e.errors[0].detail));
+          this.notify.error(this.l10n.t(e.errors[0].detail));
         })
         .finally(() => {
           this.set('isLoading', false);

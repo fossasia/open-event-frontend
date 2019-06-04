@@ -15,10 +15,10 @@ export default Controller.extend({
           this.get('model.speaker.sessions').pushObject(sessionDetails);
         }
         await this.get('model.speaker').save();
-        this.get('notify').success(this.get('l10n').t('Your session has been saved'));
+        this.notify.success(this.l10n.t('Your session has been saved'));
         this.transitionToRoute('events.view.speakers', this.get('model.event.id'));
       } catch (e) {
-        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       }
     }
   }

@@ -12,16 +12,16 @@ export default Component.extend({
   checked : null,
 
   htmlChecked: computed('value', 'checked', function() {
-    return this.get('value') === this.get('checked');
+    return this.value === this.checked;
   }),
 
   change() {
-    this.set('checked', this.get('value'));
+    this.set('checked', this.value);
   },
 
   _setCheckedProp() {
     if (!this.$()) { return }
-    this.$().prop('checked', this.get('htmlChecked'));
+    this.$().prop('checked', this.htmlChecked);
   },
 
   _updateElementValue: observer('htmlChecked', function() {

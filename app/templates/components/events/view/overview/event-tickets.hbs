@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <td>{{t 'Sales (amount)'}}</td>
-        <td>US$ {{number-format data.orderStat.sales.completed}}</td>
+        <td>{{currency-symbol data.event.paymentCurrency}} {{format-number data.orderStat.sales.completed}}</td>
       </tr>
     </tbody>
   </table>

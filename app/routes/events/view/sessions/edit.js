@@ -3,8 +3,8 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken(model) {
-    var sessionTitle = model.session.title;
-    return this.get('l10n').t(sessionTitle.concat('-Edit'));
+    let sessionTitle = model.session.title;
+    return this.l10n.t(sessionTitle.concat('-Edit'));
   },
   async model(params) {
     const eventDetails = this.modelFor('events.view');
@@ -14,7 +14,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
         'page[size]' : 50,
         sort         : 'id'
       }),
-      session: await this.get('store').findRecord('session', params.session_id, {
+      session: await this.store.findRecord('session', params.session_id, {
         include: 'track,session-type,speakers'
       }),
       tracks       : await eventDetails.query('tracks', {}),
@@ -22,7 +22,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
       speakers     : await eventDetails.query('speakers', {
         'page[size]': 0
       }),
-      speaker: await this.get('store').createRecord('speaker', {
+      speaker: await this.store.createRecord('speaker', {
         event : eventDetails,
         user  : this.get('authManager.currentUser')
       })

@@ -24,7 +24,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a sub topic name')
+              prompt : this.l10n.t('Please enter a sub topic name')
             }
           ]
         }

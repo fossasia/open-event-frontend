@@ -6,9 +6,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
     switch (this.get('params.session_status')) {
       case 'upcoming':
-        return this.get('l10n').t('Upcoming');
+        return this.l10n.t('Upcoming');
       case 'past':
-        return this.get('l10n').t('Past');
+        return this.l10n.t('Past');
     }
   },
   model(params) {
@@ -49,7 +49,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
         }
       ];
     }
-    return this.get('authManager.currentUser').query('sessions', {
+    return this.authManager.currentUser.query('sessions', {
       include : 'event',
       filter  : filterOptions,
       sort    : 'starts-at'

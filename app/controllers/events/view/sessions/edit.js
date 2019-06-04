@@ -4,8 +4,8 @@ export default Controller.extend({
   actions: {
     save() {
       this.set('isLoading', true);
-      var _this = this;
-      if (this.get('addNewSpeaker')) {
+      let _this = this;
+      if (this.addNewSpeaker) {
         let newSpeaker = this.get('model.speaker');
         newSpeaker.save()
           .then(() => {
@@ -16,14 +16,14 @@ export default Controller.extend({
                 _this.transitionToRoute('events.view.sessions', _this.get('model.event.id'));
               })
               .catch(() =>   {
-                _this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+                _this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
               })
               .finally(() => {
                 _this.set('isLoading', false);
               });
           })
           .catch(() =>   {
-            this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
           })
           .finally(() => {
             this.set('isLoading', false);
@@ -32,11 +32,11 @@ export default Controller.extend({
         this.get('model.speaker').deleteRecord();
         this.get('model.session').save()
           .then(() => {
-            this.get('notify').success(this.get('l10n').t('Your session has been saved'));
+            this.notify.success(this.l10n.t('Your session has been saved'));
             this.transitionToRoute('events.view.sessions', this.get('model.event.id'));
           })
           .catch(() => {
-            this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
           })
           .finally(() => {
             this.set('isLoading', false);

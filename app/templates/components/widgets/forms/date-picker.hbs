@@ -1,4 +1,4 @@
 {{#if icon}}
   <i class="calendar icon"></i>
 {{/if}}
-{{input type='text' value=value placeholder=placeholder name=name focus-out='onChange'}}
+{{input type='text' value=value placeholder=placeholder name=name focus-out=(action 'onChange')}}
