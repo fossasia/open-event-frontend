@@ -421,6 +421,11 @@
             </div>
             <div class="content">
               <div class="header">{{data.event.tax.name}}</div>
+              {{#if data.event.tax.shouldSendInvoice}}
+                <div class="description">
+                  {{t 'Company Name '}}{{data.event.tax.registeredCompany}}
+                </div>
+              {{/if}}
               <div class="description">
                 {{data.event.tax.taxId}}<br>
                 {{data.event.tax.rate}}% - {{if data.event.tax.isTaxIncludedInPrice 'Included in ticket price'
