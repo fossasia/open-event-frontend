@@ -1,19 +1,18 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import $ from 'jquery';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { later } from '@ember/runloop';
 import { currencySymbol } from 'open-event-frontend/helpers/currency-symbol';
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
-    $.fn.form.settings.rules.checkMaxMin = () => {
+    window.$.fn.form.settings.rules.checkMaxMin = () => {
       return this.get('data.minQuantity') <= this.get('data.maxQuantity');
     };
-    $.fn.form.settings.rules.checkMaxTotal = () => {
+    window.$.fn.form.settings.rules.checkMaxTotal = () => {
       return this.get('data.maxQuantity') <= this.get('data.ticketsNumber');
     };
-    $.fn.form.settings.rules.checkTicketSelected = () => {
+    window.$.fn.form.settings.rules.checkTicketSelected = () => {
       let tickets = this.eventTickets;
       for (let ticket of tickets) {
         if (ticket.isChecked) {
