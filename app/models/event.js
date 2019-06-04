@@ -47,6 +47,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
 
   isMapShown                : attr('boolean', { defaultValue: true }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
+  isDonationEnabled         : attr('boolean', { defaultValue: false }),
   isTicketingEnabled        : attr('boolean', { defaultValue: true }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
@@ -65,6 +66,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
+  isNgo           : attr('boolean', { defaultValue: false }),
   orderExpiryTime : attr('number', { defaultValue: 10 }),
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),

@@ -4,6 +4,12 @@
     {{input type='text' id='name' value=data.event.name}}
   </div>
   <div class="field">
+    <div class="ui slider checkbox">
+      {{input type='checkbox' checked=data.event.isNgo id='is_ngo'}}
+      <label for="is_ngo">{{t 'Create as NGO'}}</label>
+    </div>
+  </div>
+  <div class="field">
     <label for="location">{{t 'Location'}}</label>
     {{#widgets/forms/location-input
       inputId='location'
@@ -149,6 +155,12 @@
         <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
       </div>
     </div>
+    <div class="field">
+      <div class="ui slider checkbox">
+        {{input type='checkbox' checked=data.event.isDonationEnabled id='use_donation_system'}}
+        <label for="use_donation_system">{{t 'Enable Donations'}}</label>
+      </div>
+    </div>
     {{#if data.event.isTicketingEnabled}}
       <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
         {{#if data.event.tickets}}
@@ -190,13 +202,15 @@
         </i>
         {{t 'Free Ticket'}}
       </button>
-      <button type="button" class="ui blue small button" {{action 'addTicket' 'paid' data.event.tickets.length}}>
-        <i class="large icons basic-details">
-          <i class="dollar icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Paid Ticket'}}
-      </button>
+      {{#unless data.event.isNgo}}
+        <button type="button" class="ui blue small button" {{action 'addTicket' 'paid' data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="dollar icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Paid Ticket'}}
+        </button>
+      {{/unless}}
     {{else}}
       <div class="field">
         <label for="ticket_url">{{t 'Ticket URL'}}</label>

@@ -96,6 +96,11 @@
         </tr>
       </tfoot>
     </table>
+    {{#if event.isDonationEnabled }}
+      <button class="ui primary button">
+        Donate
+      </button>
+    {{/if}}
   {{/if}}
 </div>
 {{#if (eq session.currentRouteName 'orders.expired')}}
