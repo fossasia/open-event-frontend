@@ -15,7 +15,10 @@
         {{/each}}
       </div>
     </div>
-    <div class="{{if device.isMobile 'ui segment' 'thirteen wide column'}}">
+    <div class="sixteen wide mobile thirteen wide computer column">
+      {{#if device.isMobile}}
+        <div class="ui hidden divider"></div>
+      {{/if}}
       {{full-calendar events=model.events
                       aspectRatio=1.8
                       editable=true
