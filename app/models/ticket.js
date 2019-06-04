@@ -4,7 +4,6 @@ import ModelBase from 'open-event-frontend/models/base';
 import moment from 'moment';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import { belongsTo, hasMany } from 'ember-data/relationships';
-import tax from './tax';
 
 export default ModelBase.extend({
 
