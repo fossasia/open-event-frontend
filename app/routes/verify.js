@@ -7,6 +7,6 @@ export default Route.extend(UnauthenticatedRouteMixin, {
   },
 
   beforeModel(transition) {
-    this.controllerFor('verify').verify(transition.queryParams.token);
+    this.controllerFor('verify').verify(transition.to.queryParams.token);
   }
 });

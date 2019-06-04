@@ -10,7 +10,7 @@ export default ModalBase.extend(FormMixin, {
     closable: false
   },
 
-  autoScrollToErrors   : false,
+  autoScrollToErrors   : true,
   isTaxIncludedInPrice : 'include',
 
   getValidationRules() {
