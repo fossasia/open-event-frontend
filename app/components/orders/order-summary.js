@@ -13,7 +13,20 @@ export default Component.extend(FormMixin, {
       ticket => (ticket.getWithDefault('price', 0) - ticket.getWithDefault('discount', 0)) * ticket.getWithDefault('attendees.length', 0)
     );
   }),
+  actions: {
+    submitDonation(amount) {
+      const donationTicket =  this.tickets.createRecord({
+          name: 'Donation Ticket',
+          type: 'donation',
+          price: amount
+        });
+      this.donationTicket.save()
+        .then(() => {
+          this.get('data.tickets').addObject(donationTicket)
+        })
+    }
 
+  },
   async didInsertElement() {
     let discountCode = await this.get('data.discountCode');
     let tickets = await this.get('data.tickets');
