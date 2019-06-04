@@ -9,7 +9,7 @@ export default Controller.extend({
     }
   }),
   displayEndDate: computed('model.startsAtDate', 'model.endsAtDate', function() {
-    return !(moment(this.model.startsAtDate).isSame(this.model.endsAtDate, 'minute'));
+    return !moment(this.model.startsAtDate).isSame(this.model.endsAtDate, 'minute');
   }),
   actions: {
     toggleMenu() {
