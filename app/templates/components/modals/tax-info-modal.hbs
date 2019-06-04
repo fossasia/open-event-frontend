@@ -1,7 +1,7 @@
 <div class="header">
   {{t 'Add tax information'}}
 </div>
-<div class="{{if tax.shouldSendInvoice "y-scrollable scrollable-" ""}}modal content">
+<div class="{{if tax.shouldSendInvoice "y-scrollable scrollable-"}}modal content">
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
