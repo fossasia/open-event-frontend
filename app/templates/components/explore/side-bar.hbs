@@ -1,6 +1,8 @@
 <div class="map item">
-  {{g-map lat=37.7833 lng=-122.4167 zoom=2 class='explore'}}
-</div>
+  {{#g-map lat=37.7833 lng=-122.4167 zoom=2 address=location class='google-maps' as |context|}}
+    {{g-map-address-marker context address=location onLocationChange=(action 'onLocationChangeHandler')}}
+  {{/g-map}}
+</div> 
 <div class="item">
   <div class="ui input">
     {{widgets/forms/places-autocomplete
