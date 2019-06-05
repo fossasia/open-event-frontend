@@ -14,6 +14,7 @@
               {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
             {{else}}
+              
               {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
                 id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
             {{/if}}
@@ -184,7 +185,12 @@
                   canRemoveItem=false
                 }}
               {{else}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+              {{#if (eq field.fieldIdentifier 'email')}}
+              {{ui-checkbox label=(t 'Use Email for this speaker') type="checkbox" onChange=(action (mut checked))}}     
+              {{/if}}
+              {{#unless (and (not checked) (eq field.fieldIdentifier 'email'))}}
+                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier (if (not checked) '_required')) (concat 'speaker_' field.fieldIdentifier))}}
+                {{/unless}}
               {{/if}}
             {{/if}}
           {{/if}}

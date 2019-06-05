@@ -198,20 +198,20 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        email: {
-          identifier : 'speaker_email',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter an email')
-            },
-            {
-              type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email')
-            }
-          ]
-        },
+        // email: {
+        //   identifier : 'speaker_email',
+        //   optional   : true,
+        //   rules      : [
+        //     {
+        //       type   : 'empty',
+        //       prompt : this.l10n.t('Please enter an email')
+        //     },
+        //     {
+        //       type   : 'email',
+        //       prompt : this.l10n.t('Please enter a valid email')
+        //     }
+        //   ]
+        // },
         photoUrlRequired: {
           identifier : 'speaker_photoUrl_required',
           rules      : [
