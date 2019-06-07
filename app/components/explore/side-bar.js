@@ -20,6 +20,13 @@ export default Component.extend({
   }),
 
   actions: {
+    onLocationChangeHandler(lat, lng) {
+      this.setProperties({
+        zoom: 17,
+        lat,
+        lng
+      });
+    },
     selectCategory(category, subCategory) {
       this.set('category', (category === this.category && !subCategory) ? null : category);
       this.set('sub_category', (!subCategory || subCategory === this.sub_category) ? null : subCategory);

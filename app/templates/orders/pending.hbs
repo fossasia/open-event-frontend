@@ -1,60 +1,64 @@
-<div class="ui one column container stackable doubling left grid">
-  <div class="row">
-    <div class="column">
-      <h2>{{model.order.event.name}}</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="column">
-      <div class="ui small gray-text">
-        {{header-date model.order.event.startsAt}} - {{header-date model.order.event.endsAt}}
-        <br>
-        {{model.order.event.locationName}}
+<div class="ui basic {{if isLoading 'loading'}} segment">
+  <div class="ui one column container stackable doubling left grid">
+    <div class="row">
+      <div class="column">
+        <h2>{{model.order.event.name}}</h2>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="nine wide column">
-      {{orders/order-summary data=model.order
-                             event=model.event
-                             eventCurrency=model.order.event.paymentCurrency}}
-    </div>
-    <div class="mobile hidden seven wide column">
-      {{orders/event-info data=model.order}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="ui-segment right floated four wide column">
-      {{#if isStripe}}
-        <div class = 'ui right floated'>
-          {{stripe-checkout
-            image="https://stripe.com/img/documentation/checkout/marketplace.png"
-            locale='auto'
-            name="Open Event"
-            class="ui teal submit button"
-            description=paymentDescription
-            amount=paymentAmount
-            key=model.order.event.stripeAuthorization.stripePublishableKey
-            onToken=(action "processStripeToken")
-            onClosed=(action "checkoutClosed")
-            onOpened=(action "checkoutOpened")
-          }}
+    <div class="row">
+      <div class="column">
+        <div class="ui small gray-text">
+          {{header-date model.order.event.startsAt}} - {{header-date model.order.event.endsAt}}
+          <br>
+          {{model.order.event.locationName}}
         </div>
-      {{/if}}
-      {{#if isPaypal}}
-        <div class='paypal-button'>
-          {{paypal-button data=model.order}}
-        </div>
-      {{/if}}
+      </div>
     </div>
-  </div>
-  
-  <div class="row">
-    <div class="seven wide column">
-      {{orders/ticket-holder data=model.order}}
+    <div class="row">
+      <div class="nine wide column">
+        {{orders/order-summary data=model.order
+                               event=model.event
+                               eventCurrency=model.order.event.paymentCurrency}}
+      </div>
+      <div class="mobile hidden seven wide column">
+        {{orders/event-info data=model.order}}
+      </div>
     </div>
-    <div class="nine wide column">
-      {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
+    <div class="row">
+      <div class="nine wide right aligned column">
+        {{#if isStripe}}
+          {{#stripe-checkout
+              image="https://stripe.com/img/documentation/checkout/marketplace.png"
+              currency=model.order.event.paymentCurrency
+              locale='auto'
+              name="Open Event"
+              class="ui right labeled icon blue button"
+              description=paymentDescription
+              amount=paymentAmount
+              key=model.order.event.stripeAuthorization.stripePublishableKey
+              onToken=(action "processStripeToken")
+              onClosed=(action "checkoutClosed")
+              onOpened=(action "checkoutOpened")
+            }}
+            {{t 'Pay Now'}}
+            <i class="credit card icon"></i>
+          {{/stripe-checkout}}
+        {{/if}}
+        {{#if isPaypal}}
+          <div class='paypal-button'>
+            {{paypal-button data=model.order}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="nine wide column">
+        {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
+      </div>
+      <div class="seven wide column">
+        {{orders/ticket-holder data=model.order}}
+      </div>
     </div>
   </div>
 </div>
