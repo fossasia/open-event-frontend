@@ -4,6 +4,8 @@ import ENV from 'open-event-frontend/config/environment';
 
 export default Controller.extend({
 
+  isLoading: false,
+
   paymentDescription: 'Please fill your card details to proceed',
 
   isStripe: computed('model.order', function() {
@@ -34,6 +36,7 @@ export default Controller.extend({
   actions: {
     processStripeToken(token) {
       // Send this token to server to process payment
+      this.set('isLoading', true);
       let order = this.get('model.order');
       let chargePayload = {
         'data': {
@@ -57,6 +60,13 @@ export default Controller.extend({
           } else {
             this.notify.error(charge.data.attributes.message);
           }
+        })
+        .catch(e => {
+          console.warn(e);
+          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     },
     checkoutClosed() {
