@@ -45,11 +45,14 @@ export default Controller.extend(AdminSalesMixin, {
   }),
   columnValues: [
     {
-      propertyName: 'eventName'
+      propertyName : 'eventName',
+      type         : 'string'
     }, {
-      propertyName: 'code'
+      propertyName : 'code',
+      type         : 'string'
     }, {
-      propertyName: 'email'
+      propertyName : 'email',
+      type         : 'string'
     }, {
       propertyName : 'sales.completed.sales_total',
       type         : 'currency',

@@ -43,7 +43,7 @@ export default Controller.extend(AdminSalesMixin, {
   columnValues: [
     {
       propertyName : 'name',
-      type         : '',
+      type         : 'string',
       class        : ''
     }, {
       propertyName : 'startsAt',

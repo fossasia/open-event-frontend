@@ -41,7 +41,7 @@ export default Controller.extend(AdminSalesMixin, {
   columnValues: [
     {
       propertyName : 'fullname',
-      type         : '',
+      type         : 'string',
       class        : ''
     }, {
       propertyName : 'tickets',
