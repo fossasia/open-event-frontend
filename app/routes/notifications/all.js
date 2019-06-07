@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-
 export default Route.extend({
   titleToken() {
     switch (this.get('params.notification_state')) {
@@ -28,10 +27,15 @@ export default Route.extend({
       data.unread = true;
     }
 
-    data.notifications = await this.authManager.currentUser.query('notifications', {
-      include : 'notification-actions',
-      sort    : '-received-at',
-      filter  : filterOptions
+    data.notifications = this.infinity.model('notifications', {
+      perPage      : 10,
+      startingPage : 1,
+      sort         : '-received-at',
+      include      : 'notification-actions',
+      store        : this.authManager.currentUser,
+      filter       : filterOptions,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]'
     });
 
     return data;
