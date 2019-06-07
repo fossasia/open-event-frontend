@@ -59,23 +59,6 @@ export default Controller.extend({
           }
         });
     },
-
-  omiseCheckout(order_identifier) {
-    console.log('in omise action checlout');
-    var data = window.$("input[name=omiseToken]");
-    let payload = {
-      'omiseToken' : data.prevObject['0'].location.search
-    }
-    this.loader.post(`orders/${order_identifier}/omise-checkout`, payload)
-      .then(charge => {
-        if (charge.status) {
-          this.notify.success('Payment has succeeded');
-          this.transitionToRoute('orders.view', order_identifier);
-        } else {
-          this.notify.error('Payment has failed');
-        }
-      });
-    },
     checkoutClosed() {
       // The callback invoked when stripe Checkout is closed.
     },
