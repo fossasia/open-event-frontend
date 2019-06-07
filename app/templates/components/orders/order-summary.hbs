@@ -44,7 +44,9 @@
         <tr>
           <th class="four wide">{{t 'Ticket Type'}}</th>
           <th class="four wide">{{t 'Price'}}</th>
-          <th class="ui aligned two wide">{{t 'Discount'}}</th>
+          {{#if discountCode}}
+            <th class="ui aligned two wide">{{t 'Discount'}}</th>
+          {{/if}}
           <th class="one wide">{{t 'Quantity'}}</th>
           <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
           {{#if event.tax}}
@@ -61,7 +63,9 @@
               </div>
             </td>
             <td>{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
-            <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
+            {{#if ticket.discount}}
+              <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
+            {{/if}}
             <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
             <td>
               {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}

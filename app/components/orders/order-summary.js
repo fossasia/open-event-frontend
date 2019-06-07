@@ -14,12 +14,17 @@ export default Component.extend(FormMixin, {
     );
   }),
 
+  discountCode: computed('data.discountCode', function() {
+    return this.get('data.discountCode');
+  }),
+
   async didInsertElement() {
     let discountCode = await this.get('data.discountCode');
+    console.log(discountCode);
     let tickets = await this.get('data.tickets');
-    tickets.forEach(ticket => {
-      ticket.set('discount', 0);
-    });
+    // tickets.forEach(ticket => {
+    //   ticket.set('discount', 0);
+    // });
     if (discountCode) {
       let discountCodeTickets = await discountCode.get('tickets');
       let discountType = discountCode.get('type');
