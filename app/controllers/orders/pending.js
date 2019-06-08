@@ -8,15 +8,15 @@ export default Controller.extend({
 
   paymentDescription: 'Please fill your card details to proceed',
 
-  isStripe: computed('model.order', function() {
+  isStripe: computed('model.order.paymentMode', function() {
     return this.get('model.order.paymentMode') === 'stripe';
   }),
 
-  isPaypal: computed('model.order', function() {
+  isPaypal: computed('model.order.paymentMode', function() {
     return this.get('model.order.paymentMode') === 'paypal';
   }),
 
-  isOmise: computed('model.order', function() {
+  isOmise: computed('model.order.paymentMode', function() {
     return this.get('model.order.paymentMode') === 'omise';
   }),
 
@@ -24,11 +24,11 @@ export default Controller.extend({
     return this.get('model.order.amount') * 100;
   }),
 
-  publicKeyOmise: computed('settings.omiseLivePublic', function() {
+  publicKeyOmise: computed('settings.omiseLivePublic', 'settings.omiseLivePublic', function() {
     return this.get('settings.omiseLivePublic') || this.get('settings.omiseTestPublic');
   }),
 
-  omiseFormAction: computed('model.order', function() {
+  omiseFormAction: computed('model.order.identifier', function() {
     let identifier = this.get('model.order.identifier');
     return `${ENV.APP.apiHost}/v1/orders/${identifier}/omise-checkout`;
   }),
