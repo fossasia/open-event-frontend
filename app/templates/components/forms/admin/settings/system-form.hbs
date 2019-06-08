@@ -9,10 +9,10 @@
     {{ui-radio label=(t 'Development') current=settings.appEnvironment name='environment' value='development' onChange=(action (mut settings.appEnvironment))}}
   </div>
   <div class="field">
-    {{ui-radio label=(t 'Staging') current=settings.appEnvironment name='environment' value='staging'}}
+    {{ui-radio label=(t 'Staging') current=settings.appEnvironment name='environment' value='staging' onChange=(action (mut settings.appEnvironment))}}
   </div>
   <div class="field">
-    {{ui-radio label=(t 'Production') current=settings.appEnvironment name='environment' value='production'}}
+    {{ui-radio label=(t 'Production') current=settings.appEnvironment name='environment' value='production' onChange=(action (mut settings.appEnvironment))}}
   </div>
   <h3 class="ui header">
     {{t 'App Name'}}
