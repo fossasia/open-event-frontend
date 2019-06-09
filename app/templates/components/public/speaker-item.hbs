@@ -48,19 +48,21 @@
             {{#if session.startsAt}}
               {{moment-format session.startsAt 'DD MMM YY'}}
             {{/if}}
-            <br>
-            <span class="session-location">
-              <strong>
-                {{session.microlocation.name}}
-              </strong>
-            </span>
+            {{#if session.microlocation}}
+              <br>
+              <span class="session-location">
+                <strong>
+                  {{concat (t 'Microlocation - ') session.microlocation.name}}
+                </strong>
+              </span>
+            {{/if}}
           </p>
-          <div class="ui fluid padded" style={{-html-safe (concat "color: " session.track.fontColor "px; background-color: " session.track.color ";")}}>
+          <div class="ui fluid padded" style={{concat "color: " session.track.fontColor "px; background-color: " session.track.color ";"}}>
             <h3 class="item">
               {{#if (and session.startsAt session.endsAt)}}
                 {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
+                <br>
               {{/if}}
-              <br>
               &bull;&nbsp; {{session.title}}
               <br>
             </h3>
