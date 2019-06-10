@@ -57,7 +57,7 @@
               </span>
             {{/if}}
           </p>
-          <div class="ui fluid padded" style={{concat "color: " session.track.fontColor "px; background-color: " session.track.color ";"}}>
+          <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
             <h3 class="item">
               {{#if (and session.startsAt session.endsAt)}}
                 {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
