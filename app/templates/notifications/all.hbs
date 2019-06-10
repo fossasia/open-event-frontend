@@ -56,3 +56,8 @@
     <div class="ui disabled header">{{t 'No Notifications'}}</div>
   {{/if}}
 {{/each}}
+{{#infinity-loader infinityModel=model.notifications}}
+  <div class="ui loading very padded basic segment">
+  </div>
+  {{infintyModel.reachedInfinity}}
+{{/infinity-loader}}
