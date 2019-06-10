@@ -309,6 +309,25 @@
           </div>
         {{/if}}
       {{/if}}
+      {{#if canAcceptAliPay}}
+        <label>{{t 'Payment with AliPay'}}</label>
+        <div class="field payments">
+          <div class="ui checkbox">
+            {{input type='checkbox' id='payment_by_alipay' checked=data.event.canPayByAliPay}}
+            <label for="payment_by_alipay">
+              {{t 'Yes, accept payment through AliPay Gateway'}}
+              <div class="ui hidden divider"></div>
+              <span class="text muted">
+                {{t 'AliPay can accept Credit and Debit Cards , Net-Banking and AliPay. Find more details '}}
+                <a href="https://stripe.com/docs/sources/alipay" target="_blank" rel="noopener noreferrer">{{t 'here'}}</a>.
+              </span>
+            </label>
+          </div>
+        </div>
+        {{#if data.event.canPayByAliPay}}
+          <label>{{t 'AliPay Gateway has been successfully activated'}}</label>
+        {{/if}}
+      {{/if}}
       {{#if canAcceptOmise}}
         <label>{{t 'Payment with Omise'}}</label>
         <div class="field payments">
