@@ -71,9 +71,4 @@ export default Route.extend({
       objectType : 'attendees'
     };
   },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
-  }
 });
