@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { readOnly, oneWay } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
@@ -14,18 +15,12 @@ import {
 export default Component.extend(FormMixin, {
   router: service(),
 
-  buyer: computed('data.user', function() {
-    return this.get('data.user');
-  }),
-
-  buyerHasFirstName: computed(function() {
-    return this.get('data.user.firstName');
-  }),
-
-  buyerHasLastName: computed(function() {
-    return this.get('data.user.lastName');
-  }),
-  holders: computed('data.attendees', function() {
+  buyerFirstName    : oneWay('buyerHasFirstName'),
+  buyerLastName     : oneWay('buyerHasLastName'),
+  buyer             : readOnly('data.user'),
+  buyerHasFirstName : readOnly('data.user.firstName'),
+  buyerHasLastName  : readOnly('data.user.lastName'),
+  holders           : computed('data.attendees', function() {
     this.get('data.attendees').forEach(attendee => {
       attendee.set('firstname', '');
       attendee.set('lastname', '');
@@ -474,13 +469,16 @@ export default Component.extend(FormMixin, {
   actions: {
     submit(data) {
       this.onValid(() => {
+        let currentUser = this.get('data.user');
+        currentUser.set('firstName', this.buyerFirstName);
+        currentUser.set('lastName', this.buyerLastName);
         this.sendAction('save', data);
       });
     },
     modifyHolder(holder) {
       if (this.sameAsBuyer) {
-        holder.set('firstname', this.buyer.content.firstName);
-        holder.set('lastname', this.buyer.content.lastName);
+        holder.set('firstname', this.buyerFirstName);
+        holder.set('lastname', this.buyerLastName);
         holder.set('email', this.buyer.content.email);
       } else {
         holder.set('firstname', '');
