@@ -1,8 +1,26 @@
-<div class="weight-400">
-  {{currency-symbol paymentCurrency}}  {{format-number record.order.amount}}
-</div>
 {{#if record.order.discountCode.code}}
-  <div class="ui mini yellow label">
-    {{record.order.discountCode.code}}
+  {{#each record.ticket.discountCodes as |discountCode|}}
+    {{#if (eq discountCode.code record.order.discountCode.code)}}
+      {{#if (eq discountCode.type 'amount')}}
+        <div class="weight-400">
+          {{currency-symbol paymentCurrency}}  {{format-number (sub record.ticket.price discountCode.value)}}
+        </div>
+      {{else}}
+        <div class="weight-400">
+          {{currency-symbol paymentCurrency}}  {{format-number (mult (div (sub 100 discountCode.value) 100) record.ticket.price)}}
+        </div>
+      {{/if}}
+      <div class="ui mini yellow label">
+        {{discountCode.code}}
+      </div>
+    {{/if}}
+  {{else}}
+    <div class="weight-400">
+      {{currency-symbol paymentCurrency}}  {{format-number record.ticket.price}}
+    </div>
+  {{/each}}
+{{else}}
+  <div class="weight-400">
+    {{currency-symbol paymentCurrency}}  {{format-number record.ticket.price}}
   </div>
 {{/if}}
