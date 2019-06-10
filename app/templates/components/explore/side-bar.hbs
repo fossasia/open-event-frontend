@@ -15,49 +15,6 @@
 <div class="item">
   {{#ui-accordion}}
     <span class="title">
-      <i class="right floated dropdown icon"></i>
-      {{t 'Categories'}}
-    </span>
-    <div class="content menu">
-      {{#each model.eventTopics as |Category| }}
-        <a href="#"
-           class="link item {{if (eq category Category.name) 'active'}}" {{action 'selectCategory' Category.name}}>
-          <i class="caret {{if (eq category Category.name) 'down' 'right'}} icon"></i>
-          {{Category.name}}
-        </a>
-        {{#if (eq category Category.name)}}
-          {{#each Category.subTopics as |subCategory|}}
-            <a href="#"
-               class="link inner item {{if (eq sub_category subCategory.slug) 'active'}}"
-              {{action 'selectCategory' Category.name subCategory.slug}}>
-              {{subCategory.name}}
-            </a>
-          {{/each}}
-        {{/if}}
-      {{/each}}
-    </div>
-  {{/ui-accordion}}
-</div>
-<div class="item">
-  {{#ui-accordion}}
-    <span class="title">
-      <i class="dropdown icon"></i>
-      {{t 'Event Type' }}
-    </span>
-    <div class="content menu">
-      {{#each model.eventTypes as |eventType|}}
-        <a href="#"
-           class="link item {{if (eq event_type eventType.name) 'active'}}"
-          {{action 'selectEventType' eventType.name}}>
-          {{eventType.name}}
-        </a>
-      {{/each}}
-    </div>
-  {{/ui-accordion}}
-</div>
-<div class="item">
-  {{#ui-accordion}}
-    <span class="title">
       <i class="dropdown icon"></i>
       {{t 'Date'}}
     </span>
@@ -90,6 +47,56 @@
               </div>
             </div>
           {{/if}}
+        </a>
+      {{/each}}
+    </div>
+  {{/ui-accordion}}
+</div>
+<div class="item">
+  {{#ui-accordion}}
+    <span class="title">
+      <i class="right floated dropdown icon"></i>
+      {{t 'Categories'}}
+    </span>
+    <div class="content menu">
+      <a href="#" class="link item {{if showAllCategories 'active'}}" {{action 'clearFilterCategory'}}>
+        <i class="caret right icon"></i>
+        {{t 'All Categories'}}
+      </a>
+      {{#each model.eventTopics as |Category| }}
+        <a href="#"
+           class="link item {{if (eq category Category.name) 'active'}}" {{action 'selectCategory' Category.name}}>
+          <i class="caret {{if (eq category Category.name) 'down' 'right'}} icon"></i>
+          {{Category.name}}
+        </a>
+        {{#if (eq category Category.name)}}
+          {{#each Category.subTopics as |subCategory|}}
+            <a href="#"
+               class="link inner item {{if (eq sub_category subCategory.slug) 'active'}}"
+              {{action 'selectCategory' Category.name subCategory.slug}}>
+              {{subCategory.name}}
+            </a>
+          {{/each}}
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/ui-accordion}}
+</div>
+<div class="item">
+  {{#ui-accordion}}
+    <span class="title">
+      <i class="dropdown icon"></i>
+      {{t 'Event Type' }}
+    </span>
+    <div class="content menu">
+      <a href="#" class="link item {{if showAllTypes 'active'}}" {{action 'clearFilterTypes'}}>
+        {{t 'All Types'}}
+      </a>
+      {{#each model.eventTypes as |eventType|}}
+        <a href="#"
+           class="link item {{if (eq event_type eventType.name) 'active'}}"
+          {{action 'selectEventType' eventType.name}}>
+          {{eventType.name}}
         </a>
       {{/each}}
     </div>

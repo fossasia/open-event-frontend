@@ -15,6 +15,16 @@ export default Component.extend({
     return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location !== null);
   }),
 
+  showAllCategories: computed('category', 'sub_category', function() {
+    return !(this.category || this.sub_category !== null);
+
+  }),
+  showAllTypes: computed('event_type', function() {
+    return !(this.event_type !== null);
+
+  }),
+
+
   dateRanges: computed(function() {
     return getDateRanges.bind(this)();
   }),
@@ -101,6 +111,13 @@ export default Component.extend({
 
     onDateChange() {
       this.send('selectDateFilter', 'custom_dates');
+    },
+    clearFilterCategory() {
+      this.set('category', null);
+      this.set('sub_category', null);
+    },
+    clearFilterTypes() {
+      this.set('event_type', null);
     },
 
     clearFilters() {
