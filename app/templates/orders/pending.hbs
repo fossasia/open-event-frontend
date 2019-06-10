@@ -13,6 +13,23 @@
           {{model.order.event.locationName}}
         </div>
       </div>
+      {{#if isPaypal}}
+        <div class='paypal-button'>
+          {{paypal-button data=model.order}}
+        </div>
+      {{/if}}
+      {{#if isOmise}}
+        <div>
+          <form class="checkout-form" name="checkoutForm" method='POST' action={{omiseFormAction}}>
+            <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+                    data-key="{{publicKeyOmise}}"
+                    data-amount="{{paymentAmount}}"
+                    data-currency="{{model.order.event.paymentCurrency}}"
+                    data-default-payment-method="credit_card">
+            </script>
+          </form>
+        </div>
+      {{/if}}
     </div>
     <div class="row">
       <div class="nine wide column">
