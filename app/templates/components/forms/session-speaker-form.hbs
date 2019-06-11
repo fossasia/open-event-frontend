@@ -177,24 +177,15 @@
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{else}}
-              {{#if (eq field.name 'Website')}}
+              {{#if (or (eq field.name 'Website') (eq field.name 'Twitter'))}}
                 {{widgets/forms/link-input
                   fixedName=true
                   inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-                  segmentedLink=data.speaker.segmentedLinkWebsite
+                  segmentedLink=(if (eq field.name 'Website') data.speaker.segmentedLinkWebsite data.speaker.segmentedLinkTwitter)
                   canRemoveItem=false
                 }}
               {{else}}
-                {{#if (eq field.name 'Twitter')}}
-                  {{widgets/forms/link-input
-                    fixedName=true
-                    inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-                    segmentedLink=data.speaker.segmentedLinkTwitter
-                    canRemoveItem=false
-                  }}
-                {{else}}
-                  {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
-                {{/if}}
+                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
             {{/if}}
           {{/if}}
