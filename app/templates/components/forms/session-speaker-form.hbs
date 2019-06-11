@@ -173,7 +173,6 @@
         <div class="field">
           <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
           {{#if (is-input-field field.type) }}
-          
             {{#if field.isLongText}}
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
