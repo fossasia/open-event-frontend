@@ -1,6 +1,9 @@
 <div class="row">
   <div class="sixteen wide column">
     {{#tabbed-navigation}}
+      {{#link-to 'settings.profile' class='item'}}
+        {{t 'Profile'}}
+      {{/link-to}}
       {{#link-to 'settings.contact-info' class='item'}}
         {{t 'Contact Info'}}
       {{/link-to}}
