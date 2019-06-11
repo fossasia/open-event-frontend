@@ -16,11 +16,11 @@ export default Component.extend({
   }),
 
   showAllCategories: computed('category', 'sub_category', function() {
-    return !(this.category || this.sub_category !== null);
+    return !(this.category || this.sub_category);
 
   }),
   showAllTypes: computed('event_type', function() {
-    return !(this.event_type !== null);
+    return !this.event_type;
 
   }),
 
@@ -113,21 +113,27 @@ export default Component.extend({
       this.send('selectDateFilter', 'custom_dates');
     },
     clearFilterCategory() {
-      this.set('category', null);
-      this.set('sub_category', null);
+      this.setProperties({
+        category     : null,
+        sub_category : null
+      });
+
     },
     clearFilterTypes() {
       this.set('event_type', null);
     },
 
     clearFilters() {
-      this.set('startDate', null);
-      this.set('endDate', null);
-      this.set('dateType', null);
-      this.set('category', null);
-      this.set('sub_category', null);
-      this.set('event_type', null);
-      this.set('location', null);
+      this.setProperties({
+        startDate    : null,
+        endDate      : null,
+        dateType     : null,
+        category     : null,
+        sub_category : null,
+        event_type   : null,
+        location     : null
+      });
+
     }
   }
 });
