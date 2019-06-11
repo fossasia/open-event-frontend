@@ -41,8 +41,8 @@
   </div>
   <div class="less padding field">
     <label>{{t 'Encryption'}}</label>
-    {{#ui-dropdown class='fluid selection' }}
-      {{input type='hidden' id='encryption_select'}}
+    {{#ui-dropdown class='fluid selection' selected=settings.smtpEncryption}}
+      {{input type='hidden' id='encryption_select' value=settings.smtpEncryption}}
       <div class="default text">
         {{t 'Choose Encryption type'}}
       </div>
