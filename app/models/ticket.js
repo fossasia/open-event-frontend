@@ -44,5 +44,13 @@ export default ModelBase.extend({
 
   itemTotal: computed('price', 'quantity', function() {
     return this.price * this.quantity;
+  }),
+
+  ticketPriceWithTax: computed('event.tax', function() {
+    let taxType = this.event.get('tax.isTaxIncludedInPrice');
+    if (!taxType && taxType !== undefined) {
+      return (1 + this.event.get('tax.rate') / 100) * this.price;
+    }
+    return this.price;
   })
 });
