@@ -12,6 +12,15 @@
         <div class="ui {{order-color order.status}} large label">
           {{order.status}}
         </div>
+        {{#if isUserCheckedIn}}
+          <div class="ui green large label">
+            {{t 'Checked In'}}
+          </div>
+        {{else}}
+          <div class="ui red large label">
+            {{t 'Not Checked In'}}
+          </div>
+        {{/if}}
       </div>
       {{#smart-overflow class='header'}}
         {{order.event.name}}
