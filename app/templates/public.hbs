@@ -12,6 +12,9 @@
           <div class="one wide column"></div>
           <div class="fifteen wide column">
             <h4 class="event time">{{header-date model.startsAt model.timezone}}</h4>
+            {{#if displayEndDate}}
+              <h5 class="event time ends">{{t 'To'}} {{header-date model.endsAt model.timezone}}</h5>
+            {{/if}}
             <h1 class="event name">{{model.name}}</h1>
             <h4 class="event location"><i class="marker icon"></i>{{model.locationName}}</h4>
           </div>

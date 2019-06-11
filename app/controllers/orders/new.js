@@ -1,7 +1,8 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
-  actions: {
+  isLoading : false,
+  actions   : {
     async save(data) {
       try {
         this.set('isLoading', true);
@@ -40,6 +41,7 @@ export default Controller.extend({
             this.set('isLoading', false);
           });
       } catch (e) {
+        this.set('isLoading', false);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       }
     }

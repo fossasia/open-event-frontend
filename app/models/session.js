@@ -5,6 +5,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import { computed } from '@ember/object';
 
+const detectedTimezone = moment.tz.guess();
 
 export default ModelBase.extend({
   title         : attr('string'),
@@ -28,7 +29,7 @@ export default ModelBase.extend({
 
   createdAt      : attr('string'),
   deletedAt      : attr('string'),
-  submittedAt    : attr('string', { defaultValue: () => moment() }),
+  submittedAt    : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
   lastModifiedAt : attr('string'),
   sessionType    : belongsTo('session-type'),
   microlocation  : belongsTo('microlocation'),

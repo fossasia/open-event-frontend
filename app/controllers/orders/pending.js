@@ -1,25 +1,42 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Controller.extend({
 
+  isLoading: false,
+
   paymentDescription: 'Please fill your card details to proceed',
 
-  isStripe: computed('model.order', function() {
+  isStripe: computed('model.order.paymentMode', function() {
     return this.get('model.order.paymentMode') === 'stripe';
   }),
 
-  isPaypal: computed('model.order', function() {
+  isPaypal: computed('model.order.paymentMode', function() {
     return this.get('model.order.paymentMode') === 'paypal';
+  }),
+
+  isOmise: computed('model.order.paymentMode', function() {
+    return this.get('model.order.paymentMode') === 'omise';
   }),
 
   paymentAmount: computed('model.order', function() {
     return this.get('model.order.amount') * 100;
   }),
 
+  publicKeyOmise: computed('settings.omiseLivePublic', 'settings.omiseLivePublic', function() {
+    return this.get('settings.omiseLivePublic') || this.get('settings.omiseTestPublic');
+  }),
+
+  omiseFormAction: computed('model.order.identifier', function() {
+    let identifier = this.get('model.order.identifier');
+    return `${ENV.APP.apiHost}/v1/orders/${identifier}/omise-checkout`;
+  }),
+
   actions: {
     processStripeToken(token) {
       // Send this token to server to process payment
+      this.set('isLoading', true);
       let order = this.get('model.order');
       let chargePayload = {
         'data': {
@@ -43,9 +60,15 @@ export default Controller.extend({
           } else {
             this.notify.error(charge.data.attributes.message);
           }
+        })
+        .catch(e => {
+          console.warn(e);
+          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
         });
     },
-
     checkoutClosed() {
       // The callback invoked when stripe Checkout is closed.
     },
