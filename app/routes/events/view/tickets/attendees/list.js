@@ -70,5 +70,5 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'attendees'
     };
-  },
+  }
 });
