@@ -173,6 +173,7 @@
         <div class="field">
           <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
           {{#if (is-input-field field.type) }}
+          
             {{#if field.isLongText}}
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
@@ -185,7 +186,16 @@
                   canRemoveItem=false
                 }}
               {{else}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                {{#if (eq field.name 'Twitter')}}
+                  {{widgets/forms/link-input
+                    fixedName=true
+                    inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
+                    segmentedLink=data.speaker.segmentedLinkTwitter
+                    canRemoveItem=false
+                  }}
+                {{else}}
+                  {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                {{/if}}
               {{/if}}
             {{/if}}
           {{/if}}

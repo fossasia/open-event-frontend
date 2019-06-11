@@ -424,6 +424,11 @@ export default Component.extend(FormMixin, {
               type   : 'regExp',
               value  : validTwitterProfileUrlPattern,
               prompt : this.l10n.t('Please enter a valid twitter profile url')
+            },
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         },
