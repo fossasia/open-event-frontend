@@ -32,6 +32,7 @@ export default ModelBase.extend({
   event           : belongsTo('event'),
   orders          : hasMany('order'),
   attendees       : hasMany('attendee'),
+  discountCodes   : hasMany('discount-code'),
   orderStatistics : belongsTo('order-statistics-ticket'),
 
   /**
