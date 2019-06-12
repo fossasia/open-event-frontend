@@ -154,7 +154,7 @@ router.map(function() {
         this.route('events', function() {
           this.route('list', { path: '/:event_status' });
         });
-        this.route('settings', function() {
+        this.route('account', function() {
           this.route('applications');
           this.route('contact-info');
           this.route('email-preferences');
