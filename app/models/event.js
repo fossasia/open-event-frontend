@@ -51,22 +51,23 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
 
-  isTaxEnabled    : attr('boolean', { defaultValue: false }),
-  canPayByPaypal  : attr('boolean', { defaultValue: false }),
-  canPayByStripe  : attr('boolean', { defaultValue: false }),
-  isStripeLinked  : attr('boolean'),
-  canPayByCheque  : attr('boolean', { defaultValue: false }),
-  canPayByBank    : attr('boolean', { defaultValue: false }),
-  canPayByOmise   : attr('boolean', { defaultValue: false }),
-  canPayByAliPay  : attr('boolean', { defaultValue: false }),
-  canPayOnsite    : attr('boolean', { defaultValue: false }),
-  paymentCountry  : attr('string'),
-  paymentCurrency : attr('string', { defaultValue: 'USD' }),
-  paypalEmail     : attr('string'),
-  chequeDetails   : attr('string'),
-  bankDetails     : attr('string'),
-  onsiteDetails   : attr('string'),
-  orderExpiryTime : attr('number', { defaultValue: 10 }),
+  isTaxEnabled         : attr('boolean', { defaultValue: false }),
+  canPayByPaypal       : attr('boolean', { defaultValue: false }),
+  canPayByStripe       : attr('boolean', { defaultValue: false }),
+  isStripeLinked       : attr('boolean'),
+  canPayByCheque       : attr('boolean', { defaultValue: false }),
+  canPayByBank         : attr('boolean', { defaultValue: false }),
+  canPayByOmise        : attr('boolean', { defaultValue: false }),
+  canPayByAliPay       : attr('boolean', { defaultValue: false }),
+  canPayOnsite         : attr('boolean', { defaultValue: false }),
+  showRemainingTickets : attr('boolean', { defaultValue: false }),
+  paymentCountry       : attr('string'),
+  paymentCurrency      : attr('string', { defaultValue: 'USD' }),
+  paypalEmail          : attr('string'),
+  chequeDetails        : attr('string'),
+  bankDetails          : attr('string'),
+  onsiteDetails        : attr('string'),
+  orderExpiryTime      : attr('number', { defaultValue: 10 }),
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),
 
@@ -157,6 +158,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
     if (!this.locationName) {
       return '';
     }
+
     let splitLocations = this.locationName.split(',');
     if (splitLocations.length <= 3) {
       return this.locationName;

@@ -209,6 +209,15 @@
       {{/if}} --}}
     </div>
   {{/if}}
+  <div class="ui segmented divider"></div>
+  <div class="field">
+    <div class="ui slider checkbox">
+      {{input type='checkbox' checked=data.event.showRemainingTickets id='show_remaining_tickets'}}
+      <label for="show_remaining_tickets">
+        {{t 'Show Remaining Tickets Info on Public Events Page'}}
+      </label>
+    </div>
+  </div>
   {{#if hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>

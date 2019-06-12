@@ -17,6 +17,11 @@
               <div class="ui small">
                 {{ticket.name}}
               </div>
+              {{#if showRemainingTickets}}
+                <small class="ui gray-text tiny">
+                  {{sub ticket.quantity (add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed)}} {{t ' Tickets Remaining'}}
+                </small>
+              {{/if}}
               {{#if ticket.isDescriptionVisible}}
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
