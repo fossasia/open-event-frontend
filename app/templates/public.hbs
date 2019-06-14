@@ -41,7 +41,7 @@
       <div class="ten wide column">
         {{outlet}}
       </div>
-      <div class="three wide column {{if device.isMobile 'public'}}">
+      <div class="three wide column">
         {{#if (not-eq session.currentRouteName 'public.cfs.new-speaker')}}
           {{public/social-links externalUrl=model.externalEventUrl socialLinks=model.socialLinks}}
         {{/if}}

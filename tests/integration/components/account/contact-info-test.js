@@ -4,7 +4,7 @@ import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-in
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
-module('Integration | Component | settings/contact info section', function(hooks) {
+module('Integration | Component | account/contact info section', function(hooks) {
   setupIntegrationTest(hooks);
 
   let user = EmberObject.create({
@@ -14,7 +14,7 @@ module('Integration | Component | settings/contact info section', function(hooks
 
   test('it renders', async function(assert) {
     this.set('user', user);
-    await render(hbs`{{settings/contact-info-section user=user l10n=l10n}}`);
+    await render(hbs`{{account/contact-info-section user=user l10n=l10n}}`);
     assert.ok(this.element.innerHTML.trim().includes('Email'));
   });
 });
