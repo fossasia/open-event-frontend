@@ -38,6 +38,38 @@
   {{/if}}
   <div class="inline field">
     <label>
+      {{t 'Enable AliPay'}}
+    </label>
+    {{ui-checkbox class='toggle' checked=isCheckedAliPay onChange=(action (mut isCheckedAliPay))}}
+  </div>
+  {{#if isCheckedAliPay}}
+    <h3 class="ui header">
+      {{t 'AliPay Keys(Stripe Sources)'}}
+      <div class="sub header">
+        {{t 'See'}}
+        <a href="https://stripe.com/docs/dashboard" target="_blank" rel="noopener nofollow">
+          {{t 'here'}}
+        </a>
+        {{t 'on how to obtain these keys.'}}
+      </div>
+    </h3>
+    <div class="field">
+      <label>
+        {{t 'Secret Key'}}
+      </label>
+      {{input type='text' name='alipay_secret_key' value=settings.alipaySecretKey}}
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Publishable Key'}}
+      </label>
+      {{input type='text' name='alipay_publishable_key' value=settings.alipayPublishableKey}}
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+
+  <div class="inline field">
+    <label>
       {{t 'Enable PayPal'}}
     </label>
     {{ui-checkbox class='toggle' checked=isCheckedPaypal onChange=(action (mut isCheckedPaypal))}}

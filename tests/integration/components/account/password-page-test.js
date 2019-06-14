@@ -3,11 +3,11 @@ import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-in
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
-module('Integration | Component | settings/application section', function(hooks) {
+module('Integration | Component | account/password section', function(hooks) {
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{settings/application-section}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Connect'));
+    await render(hbs`{{account/password-section}}`);
+    assert.ok(this.element.innerHTML.trim().includes('Current Password'));
   });
 });
