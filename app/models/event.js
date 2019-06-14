@@ -58,6 +58,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
   canPayByOmise   : attr('boolean', { defaultValue: false }),
+  canPayByAliPay  : attr('boolean', { defaultValue: false }),
   canPayOnsite    : attr('boolean', { defaultValue: false }),
   paymentCountry  : attr('string'),
   paymentCurrency : attr('string', { defaultValue: 'USD' }),

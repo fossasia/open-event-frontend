@@ -1,19 +1,22 @@
 <div class="row">
   <div class="sixteen wide column">
     {{#tabbed-navigation}}
-      {{#link-to 'settings.contact-info' class='item'}}
+      {{#link-to 'account.profile' class='item'}}
+        {{t 'Profile'}}
+      {{/link-to}}
+      {{#link-to 'account.contact-info' class='item'}}
         {{t 'Contact Info'}}
       {{/link-to}}
-      {{#link-to 'settings.password' class='item'}}
+      {{#link-to 'account.password' class='item'}}
         {{t 'Password'}}
       {{/link-to}}
-      {{#link-to 'settings.email-preferences' class='item'}}
+      {{#link-to 'account.email-preferences' class='item'}}
         {{t 'Email-Preferences'}}
       {{/link-to}}
-      {{#link-to 'settings.applications' class='item'}}
+      {{#link-to 'account.applications' class='item'}}
         {{t 'Applications'}}
       {{/link-to}}
-      {{#link-to 'settings.danger-zone' class='item'}}
+      {{#link-to 'account.danger-zone' class='item'}}
         {{t 'Danger Zone'}}
       {{/link-to}}
     {{/tabbed-navigation}}
