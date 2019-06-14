@@ -30,12 +30,14 @@
                 <div id="{{ticket.id}}_discount">
                   {{currency-symbol eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
                   {{#if taxInfo}}
-                    <small class="ui gray-text small">
-                      + {{currency-symbol eventCurrency}} {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
-                    </small>
-                    <div>
-                      <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
-                    </div>
+                    {{#unless showTaxIncludedMessage}}
+                      <small class="ui gray-text small">
+                        + {{currency-symbol eventCurrency}} {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
+                      </small>
+                      <div>
+                        <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
+                      </div>
+                    {{/unless}}
                   {{/if}}
                 </div>
               </td>
@@ -43,12 +45,14 @@
               <td id="{{ticket.id}}_price">
                 {{currency-symbol eventCurrency}} {{format-number ticket.price}}
                 {{#if (and taxInfo (not-eq ticket.type 'free'))}}
-                  <small class="ui gray-text small">
-                    + {{currency-symbol eventCurrency}} {{format-number (sub ticket.ticketPriceWithTax ticket.price)}}
-                  </small>
-                  <div>
-                    <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
-                  </div>
+                  {{#unless showTaxIncludedMessage}}
+                    <small class="ui gray-text small">
+                      + {{currency-symbol eventCurrency}} {{format-number (sub ticket.ticketPriceWithTax ticket.price)}}
+                    </small>
+                    <div>
+                      <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
+                    </div>
+                  {{/unless}}
                 {{/if}}
               </td>
             {{/if}}
@@ -80,7 +84,11 @@
     </tbody>
     <tfoot class="full-width">
       <tr>
-        <th></th>
+        <th>
+          {{#if showTaxIncludedMessage}}
+            <div class="ui gray-text small"> {{taxInfo.name}} {{t 'Tax has been included in ticket prices' }}</div>
+          {{/if}}
+        </th>
         <th></th>
         <th></th>
         <th></th>
