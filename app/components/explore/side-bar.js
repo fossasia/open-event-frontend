@@ -14,7 +14,7 @@ export default Component.extend({
   showFilters   : false,
 
   hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', function() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type !== null);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs !== null);
   }),
 
   showAllCategories: computed('category', 'sub_category', function() {
@@ -59,6 +59,10 @@ export default Component.extend({
       }
 
       this.send('selectDateFilter', 'custom_dates');
+    },
+
+    selectEventCfs(cfs) {
+      this.set('cfs', cfs === this.cfs ? null : (cfs === 'open' ? true : false));
     },
 
     selectDateFilter(dateType) {
