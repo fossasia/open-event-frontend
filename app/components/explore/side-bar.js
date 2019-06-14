@@ -21,7 +21,7 @@ export default Component.extend({
   }),
 
   showFiltersOnMobile: computed('device.isMobile', 'showFilters', function() {
-    return ((this.device.isMobile && this.showFilters) || !this.device.isMobile);
+    return (!this.device.isMobile || this.showFilters);
   }),
 
   actions: {
