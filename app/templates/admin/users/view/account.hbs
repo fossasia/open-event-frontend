@@ -1,15 +1,15 @@
 <div class="ui container">
-  <h1 class="ui header">{{t 'Settings'}}</h1>
+  <h1 class="ui header">{{t 'Account'}}</h1>
   <div class="row">
     <div class="sixteen wide column">
       {{#tabbed-navigation}}
-        {{#link-to 'admin.users.view.settings.contact-info' model.user.id class='item'}}
+        {{#link-to 'admin.users.view.account.contact-info' model.user.id class='item'}}
           {{t 'Contact Info'}}
         {{/link-to}}
-        {{#link-to 'admin.users.view.settings.email-preferences' model.user.id class='item'}}
+        {{#link-to 'admin.users.view.account.email-preferences' model.user.id class='item'}}
           {{t 'Email-Preferences'}}
         {{/link-to}}
-        {{#link-to 'admin.users.view.settings.applications' model.user.id class='item'}}
+        {{#link-to 'admin.users.view.account.applications' model.user.id class='item'}}
           {{t 'Applications'}}
         {{/link-to}}
       {{/tabbed-navigation}}
