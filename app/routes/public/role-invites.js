@@ -14,9 +14,7 @@ export default Route.extend({
 
       if (this.authManager.currentUser.email === user.email) {
         const invite = await this.loader.post('/role_invites/accept-invite', payload);
-        return this.transitionTo(
-          ['organiser', 'coorganizer'].includes(invite.role) ? 'events.view' : 'public', invite.event
-        );
+        return this.transitionTo('events.view', invite.event);
       }
 
       this.set('session.skipRedirectOnInvalidation', true);
