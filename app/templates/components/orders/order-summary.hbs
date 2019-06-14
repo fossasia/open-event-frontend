@@ -67,6 +67,20 @@
             </tr>
           {{/each}}
         </tbody>
+        {{#if data.discountCode}}
+          <tfoot class="full-width">
+            <tr>
+              <th></th>
+              <th></th>
+              <th colspan="1">
+                {{t 'Grand Total'}}:
+              </th>
+              <th colspan="1">
+                {{currency-symbol eventCurrency}} {{format-number data.amount}}
+              </th>
+            </tr>
+          </tfoot>
+        {{/if}}
       {{else}}
         <thead>
           <tr>
