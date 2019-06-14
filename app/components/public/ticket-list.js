@@ -19,6 +19,10 @@ export default Component.extend(FormMixin, {
     return !this.hasTicketsInOrder;
   }),
 
+  showTaxIncludedMessage: computed('taxInfo', function() {
+    return (this.taxInfo.get('name') && (this.taxInfo.get('rate') === 0 || this.taxInfo.get('isTaxIncludedInPrice')));
+  }),
+
   accessCodeTickets : A(),
   discountedTickets : A(),
 
