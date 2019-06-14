@@ -22,7 +22,7 @@
         <div class="left floated eleven wide column">
           <div class="session-speakers">
             {{#each session.speakers as |speaker|}}
-              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.photo.iconImageUrl speaker.photo.iconImageUrl '/images/placeholders/avatar.png'}}">
+              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
             {{/each}}
           </div>
         </div>
