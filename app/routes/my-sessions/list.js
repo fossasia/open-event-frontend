@@ -49,10 +49,16 @@ export default Route.extend(AuthenticatedRouteMixin, {
         }
       ];
     }
-    return this.authManager.currentUser.query('sessions', {
-      include : 'event',
-      filter  : filterOptions,
-      sort    : 'starts-at'
+
+    return this.infinity.model('sessions', {
+      include      : 'event',
+      filter       : filterOptions,
+      sort         : 'starts-at',
+      perPage      : 10,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]',
+      store        : this.authManager.currentUser
     });
   }
 });

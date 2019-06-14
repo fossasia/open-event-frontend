@@ -12,8 +12,9 @@
     {{modals/confirm-user-delete-modal isLoading=isLoading isOpen=isConfirmUserDeleteModalOpen checked=checked deleteUser=(action 'deleteUser' data.user)}}
   {{else}}
     <p>
-      {{t 'Your account currently cannot be deleted as events/orders are associated with it. 
-      If you\'ve any event associated, please transfer the ownership to another organizer.'}}
+      {{t 'Your account currently cannot be deleted as active events and/or orders are associated with it. 
+      Before you can delete your account you must transfer the ownership of your event(s) to another organizer or cancel your event(s). 
+      If you have ticket orders stored in the system, please cancel your orders first too.'}}
     </p>
     <button class='ui red button disabled'>
       {{t 'Delete Your Account'}}

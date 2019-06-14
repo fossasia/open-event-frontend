@@ -30,6 +30,9 @@
           </form>
         </div>
       {{/if}}
+      {{#if isAliPay}}
+        <button class="ui button primary" {{action alipayCheckout model.order.identifier}}>{{t 'Pay with AliPay'}}</button>          
+      {{/if}}
     </div>
     <div class="row">
       <div class="nine wide column">

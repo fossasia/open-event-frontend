@@ -33,7 +33,8 @@ export default ModelBase.extend({
   gender             : attr('string'),
   heardFrom          : attr('string'),
 
-  segmentedLinkWebsite: computedSegmentedLink.bind(this)('website'),
+  segmentedLinkWebsite : computedSegmentedLink.bind(this)('website'),
+  segmentedLinkTwitter : computedSegmentedLink.bind(this)('twitter'),
 
   /**
    * Relationships

@@ -20,6 +20,10 @@ export default Controller.extend({
     return this.get('model.order.paymentMode') === 'omise';
   }),
 
+  isAliPay: computed('model.order', function() {
+    return this.get('model.order.paymentMode') === 'alipay';
+  }),
+
   paymentAmount: computed('model.order', function() {
     return this.get('model.order.amount') * 100;
   }),
@@ -34,6 +38,18 @@ export default Controller.extend({
   }),
 
   actions: {
+    aliPayCheckout(order_identifier) {
+      this.loader.post(`/create_source/${order_identifier}`)
+        .then(charge => {
+          if (charge.status) {
+            this.notify.success('Payment has succeeded');
+            this.transitionToRoute('orders.view', order_identifier);
+          } else {
+            this.notify.error('Payment has failed');
+          }
+        });
+
+    },
     processStripeToken(token) {
       // Send this token to server to process payment
       this.set('isLoading', true);

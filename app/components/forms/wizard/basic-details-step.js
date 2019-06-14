@@ -48,6 +48,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isOmiseActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).omise;
   }),
 
+  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAliPayActivated', function() {
+    return this.get('settings.isAliPayActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).alipay;
+  }),
+
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
     return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
   }),
