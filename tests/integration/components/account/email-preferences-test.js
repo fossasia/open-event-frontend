@@ -3,11 +3,11 @@ import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-in
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
-module('Integration | Component | settings/email preferences section', function(hooks) {
+module('Integration | Component | account/email preferences section', function(hooks) {
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{settings/email-preferences-section}}`);
+    await render(hbs`{{account/email-preferences-section}}`);
     assert.ok(this.element.innerHTML.trim().includes('Email'));
   });
 });

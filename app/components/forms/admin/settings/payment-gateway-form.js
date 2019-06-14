@@ -38,6 +38,25 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
+        alipaySecretKey: {
+          identifier : 'alipay_secret_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the secret key')
+            }
+          ]
+        },
+
+        alipayPublishableKey: {
+          identifier : 'alipay_publishable_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the publishable key')
+            }
+          ]
+        },
 
         paypalSandboxClient: {
           identifier : 'sandbox_client_id',
@@ -134,6 +153,10 @@ export default Component.extend(FormMixin, {
     return this.get('settings.omiseTestPublic') || this.get('settings.omiseLivePublic');
   }),
 
+  isCheckedAliPay: computed('settings.alipaySecretKey', 'settings.alipayPublishableKey', function() {
+    return this.get('settings.alipaySecretKey') && this.get('settings.alipayPublishableKey');
+  }),
+
   actions: {
     submit() {
       this.onValid(() => {
@@ -150,6 +173,12 @@ export default Component.extend(FormMixin, {
             'paypalSandboxSecret' : null,
             'paypalSecret'        : null,
             'paypalClient'        : null
+          });
+        }
+        if (!this.isCheckedAliPay) {
+          this.settings.setProperties({
+            'aliPaySecretKey'      : null,
+            'aliPayPublishableKey' : null
           });
         }
         if (this.isCheckedOmise === false) {
