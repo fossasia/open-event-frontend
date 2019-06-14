@@ -7,5 +7,10 @@
     {{else}}
       <div class="ui disabled header">{{t 'No tickets found'}}</div>
     {{/each}}
+    {{#infinity-loader infinityModel=model}}
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{infintyModel.reachedInfinity}}
+    {{/infinity-loader}}
   </div>
 </div>

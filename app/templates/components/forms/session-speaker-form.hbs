@@ -53,6 +53,7 @@
               {{/ui-dropdown}}
             {{else}}
               {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
+                {{input type='hidden' name=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier)) value=data.session.fieldIdentifier}}
                 <i class="dropdown icon"></i>
                 <div class="default text">
                   {{if (get data.session field.fieldIdentifier) (custom-related-field data.session field.fieldIdentifier 'name') (concat 'Select a ' field.name)}}
@@ -176,11 +177,11 @@
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{else}}
-              {{#if (eq field.name 'Website')}}
+              {{#if (or (eq field.name 'Website') (eq field.name 'Twitter'))}}
                 {{widgets/forms/link-input
                   fixedName=true
                   inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-                  segmentedLink=data.speaker.segmentedLinkWebsite
+                  segmentedLink=(if (eq field.name 'Website') data.speaker.segmentedLinkWebsite data.speaker.segmentedLinkTwitter)
                   canRemoveItem=false
                 }}
               {{else}}

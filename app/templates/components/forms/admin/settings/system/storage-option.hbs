@@ -11,7 +11,7 @@
   </span>
 </div>
 <div class="field">
-  {{ui-radio label=(t 'Google Storage') name='storage' value='google' onChange=(action  (mut settings.storagePlace))}}
+  {{ui-radio label=(t 'Google Storage') current=settings.storagePlace name='storage' value='gs' onChange=(action  (mut settings.storagePlace))}}
   <span class="small text">
     ({{t 'See'}}
     <a href="https://cloud.google.com/storage/docs/migrating#defaultproj" target="_blank" rel="noopener nofollow">
@@ -20,7 +20,7 @@
     {{t 'on how to obtain these keys.'}})
   </span>
 </div>
-{{#if (eq settings.storagePlace 'google')}}
+{{#if (eq settings.storagePlace 'gs')}}
   <div class="field">
     <label>
       {{t 'Bucket name'}}
@@ -42,7 +42,7 @@
   <div class="ui hidden divider"></div>
 {{/if}}
 <div class="field">
-  {{ui-radio label=(t 'Amazon S3') name='storage' value='S3' current=settings.storagePlace onChange=(action (mut settings.storagePlace))}}
+  {{ui-radio label=(t 'Amazon S3') name='storage' value='s3' current=settings.storagePlace onChange=(action (mut settings.storagePlace))}}
   <span class="small text">
     ({{t 'See'}}
     <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-getting-started.html" target="_blank" rel="noopener nofollow">
@@ -51,7 +51,7 @@
     {{t 'on how to obtain these keys.'}})
   </span>
 </div>
-{{#if (eq settings.storagePlace 'S3')}}
+{{#if (eq settings.storagePlace 's3')}}
   <div class="less padding field">
     <label>
       {{t 'Region'}}
