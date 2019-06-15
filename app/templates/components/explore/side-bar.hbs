@@ -13,7 +13,7 @@
   </div>
 </div>
 {{#if showFiltersOnMobile}}
-<div class="item">
+  <div class="item">
     {{#ui-accordion}}
       <span class="title">
         <i class="dropdown icon"></i>
@@ -60,6 +60,10 @@
         {{t 'Categories'}}
       </span>
       <div class="content menu">
+        <a href="#" class="link item {{if showAllCategories 'active'}}" {{action 'clearFilterCategory'}}>
+          <i class="caret right icon"></i>
+          {{t 'All Categories'}}
+        </a>
         {{#each model.eventTopics as |Category| }}
           <a href="#"
             class="link item {{if (eq category Category.name) 'active'}}" {{action 'selectCategory' Category.name}}>
@@ -86,6 +90,9 @@
         {{t 'Event Type' }}
       </span>
       <div class="content menu">
+        <a href="#" class="link item {{if showAllTypes 'active'}}" {{action 'clearFilterTypes'}}>
+          {{t 'All Types'}}
+        </a>
         {{#each model.eventTypes as |eventType|}}
           <a href="#"
             class="link item {{if (eq event_type eventType.name) 'active'}}"

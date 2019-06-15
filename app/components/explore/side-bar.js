@@ -17,7 +17,7 @@ export default Component.extend({
   }),
 
   showAllCategories: computed('category', 'sub_category', function() {
-    return !(this.category || this.sub_category);
+    return !this.category || !this.sub_category;
 
   }),
   showAllTypes: computed('event_type', function() {
