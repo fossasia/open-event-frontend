@@ -9,7 +9,8 @@ export default Component.extend({
 
   customStartDate: moment().toISOString(),
 
-  customEndDate: null,
+  customEndDate : null,
+  showFilters   : false,
 
   hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', function() {
     return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location !== null);
@@ -27,6 +28,10 @@ export default Component.extend({
 
   dateRanges: computed(function() {
     return getDateRanges.bind(this)();
+  }),
+
+  showFiltersOnMobile: computed('device.isMobile', 'showFilters', function() {
+    return (!this.device.isMobile || this.showFilters);
   }),
 
   actions: {
@@ -124,15 +129,18 @@ export default Component.extend({
     },
 
     clearFilters() {
-      this.setProperties({
-        startDate    : null,
-        endDate      : null,
-        dateType     : null,
-        category     : null,
-        sub_category : null,
-        event_type   : null,
-        location     : null
-      });
+
+      this.set('startDate', null);
+      this.set('endDate', null);
+      this.set('dateType', null);
+      this.set('category', null);
+      this.set('sub_category', null);
+      this.set('event_type', null);
+      this.set('location', null);
+    },
+
+    toggleFilters() {
+      this.set('showFilters', !this.showFilters);
 
     }
   }
