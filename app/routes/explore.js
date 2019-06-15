@@ -78,10 +78,7 @@ export default Route.extend({
     }
 
     if (params.cfs) {
-      let cfsVal = false;
-      if (params.cfs === 'open') {
-        cfsVal = true;
-      }
+      let cfsVal = (params.cfs === 'open' ? true : false);
       filterOptions.push({
         name : 'is_sessions_speakers_enabled',
         op   : 'eq',
