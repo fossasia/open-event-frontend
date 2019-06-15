@@ -1,11 +1,12 @@
+{{meh}}
 <div class="row">
   <div class="ui header">
-    {{t 'Completed Orders'}}
+    {{t 'Total Sold Orders'}}
   </div>
   <div class="ui {{if device.isMobile 'horizontal'}} three statistics">
-    <div class="statistic"><div class="value">{{model.orderStats.orders.completed}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{format-number model.orderStats.sales.completed}}</div><div class="label">{{t 'Sales '}}({{currency-symbol model.eventDetail.paymentCurrency}})</div></div>
-    <div class="statistic"><div class="value">{{model.orderStats.tickets.completed}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
+    <div class="statistic"><div class="value">{{totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
+    <div class="statistic"><div class="value">{{format-number totalAmount}}</div><div class="label">{{t 'Sales '}}({{currency-symbol model.eventDetail.paymentCurrency}})</div></div>
+    <div class="statistic"><div class="value">{{totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
 <br>
