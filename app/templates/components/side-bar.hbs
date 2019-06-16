@@ -1,5 +1,5 @@
 <div class="ui left inverted vertical menu sidebar {{if sidebarVisible 'visible'}}">
-  {{#link-to 'index' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
+  {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
   {{#if session.isAuthenticated}}
     <div class="item">
       {{widgets/safe-image isAvatar=true class='ui avatar round image side-bar' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
@@ -12,8 +12,8 @@
     <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
     <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
     <div class="divider"></div>
-    <a href="{{href-to 'profile'}}" class="item">{{t 'Profile'}}</a>
-    <a href="{{href-to 'settings.contact-info'}}" class="item">{{t 'Settings'}}</a>
+    <a href="{{href-to 'account.profile'}}" class="item">{{t 'Profile'}}</a>
+    <a href="{{href-to 'account.contact-info'}}" class="item">{{t 'Settings'}}</a>
     {{#if authManager.currentUser.isAnAdmin}}
       <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
     {{/if}}

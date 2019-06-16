@@ -22,22 +22,69 @@
       <span>
         {{buyer.email}}
       </span>
-
       {{#if (not-eq data.paymentMode 'free')}}
         <div class="ui divider"></div>
-
-        <h4 class="weight-300">
-          {{t 'Payment Mode '}}
-        </h4>
-        <span>
-          {{#if (eq data.paymentMode 'paypal')}}
-            <img src="/images/payment-logos/paypal.png" alt="paypal" height='19' width="80" style="margin-left:5px">
-          {{else if (eq data.paymentMode 'stripe')}}
-            <img src="/images/payment-logos/stripe.png" alt="stripe" height='19' width="200" style="margin-left:5px">
-          {{else}}
-            {{capitalize data.paymentMode}}
+        {{#if (eq data.paymentMode 'paypal')}}
+          <h3 class="ui header">
+            <div class="content">
+              {{t 'Payment Mode'}}
+            </div>
+          </h3>
+          <img src="/images/payment-logos/paypal.png" alt="paypal" class="ui tiny image">
+          {{#if (eq data.status 'completed')}}
+            <div class="ui very relaxed divided list">
+              <div class="item">
+                <div class="content">
+                  <div class="header">
+                    {{t 'Transaction ID'}}
+                  </div>
+                  <div class="description">
+                    {{data.transactionId}}
+                  </div>
+                </div>
+              </div>
+            </div>
           {{/if}}
-        </span>
+        {{else if (eq data.paymentMode 'stripe')}}
+          <h3 class="ui header">
+            <div class="content">{{t 'Payment Mode'}}</div>
+            <i class="big stripe icon"></i>
+
+          </h3>
+          {{#if (eq data.status 'completed')}}
+            <div class="ui very relaxed divided list">
+              <div class="item">
+                <div class="content">
+                  <div class="header">Card Type</div>
+                  <div class="description">
+                    {{#if (payment-icon data.brand)}}
+                      <i class="{{payment-icon data.brand}}"></i>
+                    {{else}}
+                      {{data.brand}}
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content">
+                  <div class="header">Card Number</div>
+                  <div class="description">**** {{data.last4}}</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content">
+                  <div class="header">Exp Date</div>
+                  <div class="description">{{data.expMonth}}/{{data.expYear}}</div>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+        {{else}}
+          <h4 class="weight-300">
+            {{t 'Paid via '}}
+          </h4>
+          {{capitalize data.paymentMode}}
+        {{/if}}
         {{#if (eq data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
           <h2 class="weight-300">
