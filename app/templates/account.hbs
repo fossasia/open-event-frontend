@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="sixteen wide column">
+    {{#tabbed-navigation}}
+      {{#link-to 'account.profile' class='item'}}
+        {{t 'Profile'}}
+      {{/link-to}}
+      {{#link-to 'account.contact-info' class='item'}}
+        {{t 'Contact Info'}}
+      {{/link-to}}
+      {{#link-to 'account.billing-info' class='item'}}
+        {{t 'Billing Info'}}
+      {{/link-to}}
+      {{#link-to 'account.password' class='item'}}
+        {{t 'Password'}}
+      {{/link-to}}
+      {{#link-to 'account.email-preferences' class='item'}}
+        {{t 'Email-Preferences'}}
+      {{/link-to}}
+      {{#link-to 'account.applications' class='item'}}
+        {{t 'Applications'}}
+      {{/link-to}}
+      {{#link-to 'account.danger-zone' class='item'}}
+        {{t 'Danger Zone'}}
+      {{/link-to}}
+    {{/tabbed-navigation}}
+  </div>
+</div>
+<div class="ui segment">
+  {{outlet}}
+</div>

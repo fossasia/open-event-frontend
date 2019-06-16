@@ -20,9 +20,9 @@ export default Default.extend({
   },
 
   classes: {
-    outerTableWrapper              : 'ui ui-table',
+    outerTableWrapper              : 'ui unstackable ui-table',
     innerTableWrapper              : 'ui segment column sixteen wide inner-table-wrapper',
-    table                          : 'ui very basic table',
+    table                          : 'ui very basic unstackable table',
     globalFilterWrapper            : 'ui row',
     columnsDropdownWrapper         : 'right floated columns-dropdown',
     columnsDropdownButtonWrapper   : 'buttons',

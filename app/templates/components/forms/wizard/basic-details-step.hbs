@@ -143,13 +143,17 @@
   </div>
   {{#if data.module.ticketInclude}}
     <div class="ui section divider"></div>
-    <div class="field">
-      <div class="ui slider checkbox">
-        {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
-        <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
+    {{!-- Hiding toggle ticket feature temporarily
+      <div class="field">
+        <div class="ui slider checkbox">
+          {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
+          <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
+        </div>
       </div>
-    </div>
-    {{#if data.event.isTicketingEnabled}}
+    --}}
+    <div class="field">
+      <label class="required">{{t 'Ticketing System'}}</label>
+      {{!-- {{#if data.event.isTicketingEnabled}} --}}
       <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
         {{#if data.event.tickets}}
           <div class="ui stackable celled five column grid ticket-header">
@@ -179,7 +183,7 @@
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">
-            {{t 'You don\'t have any tickets added. Add one of your choice.'}}
+            {{t 'You don\'t have any tickets added. Please add atleast one ticket to publish your event.'}}
           </h3>
         {{/if}}
       </div>
@@ -197,14 +201,15 @@
         </i>
         {{t 'Paid Ticket'}}
       </button>
-    {{else}}
-      <div class="field">
-        <label for="ticket_url">{{t 'Ticket URL'}}</label>
-        {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
-      </div>
-    {{/if}}
+      {{!-- {{else}}
+        <div class="field">
+          <label for="ticket_url">{{t 'Ticket URL'}}</label>
+          {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
+        </div>
+      {{/if}} --}}
+    </div>
   {{/if}}
-  {{#if (and hasPaidTickets data.event.isTicketingEnabled)}}
+  {{#if hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>
     <div class="field">
@@ -307,6 +312,25 @@
             <label class="required">PayPal Email</label>
             {{input type='email' id='paypal_email' value=data.event.paypalEmail}}
           </div>
+        {{/if}}
+      {{/if}}
+      {{#if canAcceptAliPay}}
+        <label>{{t 'Payment with AliPay'}}</label>
+        <div class="field payments">
+          <div class="ui checkbox">
+            {{input type='checkbox' id='payment_by_alipay' checked=data.event.canPayByAliPay}}
+            <label for="payment_by_alipay">
+              {{t 'Yes, accept payment through AliPay Gateway'}}
+              <div class="ui hidden divider"></div>
+              <span class="text muted">
+                {{t 'AliPay can accept Credit and Debit Cards , Net-Banking and AliPay. Find more details '}}
+                <a href="https://stripe.com/docs/sources/alipay" target="_blank" rel="noopener noreferrer">{{t 'here'}}</a>.
+              </span>
+            </label>
+          </div>
+        </div>
+        {{#if data.event.canPayByAliPay}}
+          <label>{{t 'AliPay Gateway has been successfully activated'}}</label>
         {{/if}}
       {{/if}}
       {{#if canAcceptOmise}}

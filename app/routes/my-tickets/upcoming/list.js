@@ -88,9 +88,15 @@ export default Route.extend({
         }
       );
     }
-    return this.authManager.currentUser.query('orders', {
-      include : 'event',
-      filter  : filterOptions
+
+    return this.infinity.model('orders', {
+      include      : 'event',
+      filter       : filterOptions,
+      perPage      : 10,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]',
+      store        : this.authManager.currentUser
     });
   }
 });
