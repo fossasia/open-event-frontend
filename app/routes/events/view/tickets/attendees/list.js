@@ -70,10 +70,5 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'attendees'
     };
-  },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
   }
 });
