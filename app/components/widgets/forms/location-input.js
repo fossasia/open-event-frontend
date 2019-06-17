@@ -17,8 +17,17 @@ export default Component.extend({
     return values(this.address).join(' ').trim();
   }),
 
-  placeNameChanger: observer('combinedAddress', function() {
-    this.set('placeName', this.combinedAddress);
+  searchableAddress: computed('address.{city}', function() {
+    return this.address.city;
+  }),
+
+  placeNameChanger: observer('combinedAddress', 'searchableAddress', function() {
+    this.setProperties(
+      { 'placeName'      : this.combinedAddress,
+        'searchableName' : this.searchableAddress
+      }
+    );
+
   }),
 
   actions: {
