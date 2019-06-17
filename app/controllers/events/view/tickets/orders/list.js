@@ -20,7 +20,7 @@ export default Controller.extend({
       title        : 'Total Amount'
     },
     {
-      propertyName : 'tickets.length',
+      propertyName : 'attendees.length',
       title        : 'Quantity'
     },
     {

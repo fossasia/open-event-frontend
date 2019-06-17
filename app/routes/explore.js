@@ -145,11 +145,16 @@ export default Route.extend({
       });
     }
 
-    return this.store.query('event', {
-      sort    : 'starts-at',
-      filter  : filterOptions,
-      include : 'event-topic,event-sub-topic,event-type'
+    return this.infinity.model('event', {
+      include      : 'event-topic,event-sub-topic,event-type',
+      filter       : filterOptions,
+      sort         : 'starts-at',
+      perPage      : 6,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]'
     });
+
   },
 
   async model(params) {
