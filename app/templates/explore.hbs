@@ -43,5 +43,10 @@
       <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
     {{/each}}
     {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
+    {{#infinity-loader infinityModel=filteredEvents}}
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{infintyModel.reachedInfinity}}
+    {{/infinity-loader}}
   </div>
 </div>
