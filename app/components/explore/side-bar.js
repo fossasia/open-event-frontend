@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import moment from 'moment';
 import { computed } from '@ember/object';
+import { not } from '@ember/object/computed';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
 
 export default Component.extend({
@@ -20,10 +21,7 @@ export default Component.extend({
     return !this.category || !this.sub_category;
 
   }),
-  showAllTypes: computed('event_type', function() {
-    return !this.event_type;
-
-  }),
+  showAllTypes: not('event_type'),
 
 
   dateRanges: computed(function() {
@@ -129,14 +127,16 @@ export default Component.extend({
     },
 
     clearFilters() {
+      this.setProperties({
+        startDate    : null,
+        endDate      : null,
+        dateType     : null,
+        category     : null,
+        sub_category : null,
+        event_type   : null,
+        location     : null
+      });
 
-      this.set('startDate', null);
-      this.set('endDate', null);
-      this.set('dateType', null);
-      this.set('category', null);
-      this.set('sub_category', null);
-      this.set('event_type', null);
-      this.set('location', null);
     },
 
     toggleFilters() {
