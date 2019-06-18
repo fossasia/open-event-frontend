@@ -46,10 +46,10 @@ export default ModelBase.extend({
     return this.price * this.quantity;
   }),
 
-  ticketPriceWithTax: computed('event.tax', function() {
+  ticketPriceWithTax: computed('event', function() {
     let taxType = this.event.get('tax.isTaxIncludedInPrice');
-    if (!taxType && taxType !== undefined) {
-      return (1 + this.event.get('tax.rate') / 100) * this.price;
+    if (taxType !== undefined) {
+      return ((1 + this.event.get('tax.rate') / 100) * this.price).toFixed(2);
     }
     return this.price;
   })

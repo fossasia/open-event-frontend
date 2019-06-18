@@ -57,9 +57,9 @@ export default Route.extend({
         'page[size]': 0
       }),
 
-      sponsors: await eventDetails.get('sponsors'),
-
-      order: this.store.createRecord('order', {
+      sponsors : await eventDetails.get('sponsors'),
+      tax      : await eventDetails.get('tax'),
+      order    : this.store.createRecord('order', {
         event   : eventDetails,
         user    : this.get('authManager.currentUser'),
         tickets : []

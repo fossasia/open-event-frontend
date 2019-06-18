@@ -4,7 +4,6 @@ import { module, test } from 'qunit';
 import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
-import ObjectProxy from '@ember/object/proxy';
 
 
 module('Integration | Component | public/ticket list', function(hooks) {
@@ -57,12 +56,9 @@ module('Integration | Component | public/ticket list', function(hooks) {
     rate                 : 20,
     isTaxIncludedInPrice : true
   });
-  const taxProxy = ObjectProxy.create({
-    content: eventTax
-  });
   test('it renders', async function(assert) {
     this.set('data', tickets);
-    this.set('taxInfo', taxProxy);
+    this.set('taxInfo', eventTax);
     this.actions.placeOrder = function() { };
     await render(hbs `{{public/ticket-list data=data placeOrder=(action 'placeOrder') eventCurrency='USD' taxInfo=taxInfo}}`);
     assert.ok(this.element.innerHTML.trim().includes('Standard Ticket'));

@@ -20,7 +20,10 @@ export default Component.extend(FormMixin, {
   }),
 
   showTaxIncludedMessage: computed('taxInfo', function() {
-    return (this.taxInfo.get('name') && (this.taxInfo.get('rate') === 0 || this.taxInfo.get('isTaxIncludedInPrice')));
+    if (this.taxInfo !== null) {
+      return (this.taxInfo.name && (this.taxInfo.rate === 0 || this.taxInfo.isTaxIncludedInPrice));
+    }
+    return false;
   }),
 
   accessCodeTickets : A(),
@@ -38,7 +41,7 @@ export default Component.extend(FormMixin, {
   }),
 
   total: computed('tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
-    if (this.taxInfo.get('name') !== undefined) {
+    if (this.taxInfo !== null) {
       return sumBy(this.tickets.toArray(),
         ticket => (ticket.ticketPriceWithTax || 0) * (ticket.orderQuantity || 0)
       );
