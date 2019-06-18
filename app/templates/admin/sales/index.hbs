@@ -28,11 +28,11 @@
               <td>{{entry.name}}</td>
               <td>{{moment-format entry.startsAt 'ddd, MMM DD \at h:mm A'}}</td>
               <td class="right aligned">{{entry.sales.completed.ticket_count}}</td>
-              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.completed.sales_total}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{format-number entry.sales.completed.sales_total}}</td>
               <td class="right aligned">{{entry.sales.placed.ticket_count}}</td>
-              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.placed.sales_total}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{format-number entry.sales.placed.sales_total}}</td>
               <td class="right aligned">{{entry.sales.pending.ticket_count}}</td>
-              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{number-format entry.sales.pending.sales_total}}</td>
+              <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{format-number entry.sales.pending.sales_total}}</td>
             </tr>
           {{/each}}
         </tbody>
@@ -45,19 +45,19 @@
               {{totalCompletedTickets}}
             </th>
             <th class="right aligned">
-              US$ {{number-format totalCompletedSales}}
+              US$ {{format-number totalCompletedSales}}
             </th>
             <th class="right aligned">
               {{totalPlacedTickets}}
             </th>
             <th class="right aligned">
-              US$ {{number-format totalPlacedSales}}
+              US$ {{format-number totalPlacedSales}}
             </th>
             <th class="right aligned">
               {{totalPendingTickets}}
             </th>
             <th class="right aligned">
-              US$ {{number-format totalPendingSales}}
+              US$ {{format-number totalPendingSales}}
             </th>
           </tr>
         </tfoot> --}}

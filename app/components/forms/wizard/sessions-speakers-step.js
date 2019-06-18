@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-import { groupBy } from 'lodash';
+import { groupBy } from 'lodash-es';
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 
@@ -17,7 +17,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter name for session-type')
+              prompt : this.l10n.t('Please enter name for session-type')
             }
           ]
         },
@@ -26,7 +26,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter name for track')
+              prompt : this.l10n.t('Please enter name for track')
             }
           ]
         },
@@ -35,7 +35,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a Private link')
+              prompt : this.l10n.t('Please enter a Private link')
             }
           ]
         },
@@ -44,7 +44,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please select the Privacy')
+              prompt : this.l10n.t('Please select the Privacy')
             }
           ]
         }

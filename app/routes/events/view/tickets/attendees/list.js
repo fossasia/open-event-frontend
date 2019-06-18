@@ -4,19 +4,19 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.attendees_status')) {
       case 'placed':
-        return this.get('l10n').t('Placed');
+        return this.l10n.t('Placed');
       case 'pending':
-        return this.get('l10n').t('Pending');
+        return this.l10n.t('Pending');
       case 'expired':
-        return this.get('l10n').t('Expired');
+        return this.l10n.t('Expired');
       case 'cancelled':
-        return this.get('l10n').t('Cancelled');
+        return this.l10n.t('Cancelled');
       case 'checkedIn':
-        return this.get('l10n').t('Checked In');
+        return this.l10n.t('Checked In');
       case 'notCheckedIn':
-        return this.get('l10n').t('Not Checked In');
+        return this.l10n.t('Not Checked In');
       case 'all':
-        return this.get('l10n').t('All');
+        return this.l10n.t('All');
     }
   },
   async model(params) {
@@ -70,10 +70,5 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'attendees'
     };
-  },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
   }
 });

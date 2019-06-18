@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Past');
+    return this.l10n.t('Past');
   },
   model() {
     let filterOptions = [];
@@ -45,9 +45,15 @@ export default Route.extend({
         ]
       }
     );
-    return this.get('authManager.currentUser').query('orders', {
-      include : 'event',
-      filter  : filterOptions
+
+    return this.infinity.model('orders', {
+      include      : 'event',
+      filter       : filterOptions,
+      perPage      : 10,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]',
+      store        : this.authManager.currentUser
     });
   }
 });

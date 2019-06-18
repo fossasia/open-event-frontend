@@ -23,7 +23,7 @@
     <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">
       {{#each callForSpeakersEvents as |event|}}
-        {{event-card event=event shareEvent=(action 'shareEvent')}}
+        {{event-card event=event isCFS=true shareEvent=(action 'shareEvent')}}
       {{/each}}
     </div>
   {{/if}}

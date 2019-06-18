@@ -13,6 +13,6 @@ export default ModelBase.extend({
   trackOrganizer : attr('number'),
 
   total: computed('superAdmin', 'admin', 'verified', 'unverified', function() {
-    return this.get('superAdmin') + this.get('admin') + this.get('verified') + this.get('unverified');
+    return this.superAdmin + this.admin + this.verified + this.unverified;
   })
 });

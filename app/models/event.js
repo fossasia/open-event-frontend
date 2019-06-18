@@ -10,7 +10,7 @@ import {
   computedSegmentedLink
 } from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
-import { groupBy } from 'lodash';
+import { groupBy } from 'lodash-es';
 
 const detectedTimezone = moment.tz.guess();
 
@@ -59,6 +59,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
   canPayByOmise   : attr('boolean', { defaultValue: false }),
+  canPayByAliPay  : attr('boolean', { defaultValue: false }),
   canPayOnsite    : attr('boolean', { defaultValue: false }),
   paymentCountry  : attr('string'),
   paymentCurrency : attr('string', { defaultValue: 'USD' }),
@@ -154,19 +155,24 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   segmentedTicketUrl        : computedSegmentedLink.bind(this)('ticketUrl'),
 
   shortLocationName: computed('locationName', function() {
-    if (!this.get('locationName')) {
+    if (!this.locationName) {
       return '';
     }
-    return this.get('locationName').split(',')[0];
+    let splitLocations = this.locationName.split(',');
+    if (splitLocations.length <= 3) {
+      return this.locationName;
+    } else {
+      return splitLocations.splice(1, splitLocations.length).join();
+    }
   }),
 
   url: computed('identifier', function() {
     const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
-    return origin + this.get('router').urlFor('public', this.get('id'));
+    return origin + this.router.urlFor('public', this.id);
   }),
 
   sessionsByState: computed('sessions', function() {
-    return groupBy(this.get('sessions').toArray(), 'data.state');
+    return groupBy(this.sessions.toArray(), 'data.state');
   }),
 
   _ready: on('ready', function() {

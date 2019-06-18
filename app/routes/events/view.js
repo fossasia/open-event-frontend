@@ -1,8 +1,7 @@
 import Route from '@ember/routing/route';
-import Ember from 'ember';
+import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
 
-const { set } = Ember;
 export default Route.extend({
   headData: service(),
   titleToken(model) {

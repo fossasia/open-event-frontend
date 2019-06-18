@@ -63,14 +63,14 @@ export default Controller.extend({
     },
     deleteEvent() {
       this.set('isLoading', true);
-      this.store.findRecord('event', this.get('eventId'), { backgroundReload: false }).then(function(event) {
+      this.store.findRecord('event', this.eventId, { backgroundReload: false }).then(function(event) {
         event.destroyRecord();
       })
         .then(() => {
-          this.notify.success(this.get('l10n').t('Event has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         })
         .finally(() => {
           this.set('isLoading', false);

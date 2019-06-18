@@ -7,7 +7,15 @@ module('Integration | Component | events/view/overview/event tickets', function(
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{events/view/overview/event-tickets}}`);
+    this.set('model', {
+      event: {
+        paymentCurrency: 'USD'
+      }
+    });
+    this.set('tickets', 10);
+    this.set('orders', 10);
+    this.set('sales', 100);
+    await render(hbs`{{events/view/overview/event-tickets data=model tickets=tickets orders=orders sales=sales}}`);
     assert.ok(this.element.innerHTML.trim().includes('Tickets'));
   });
 });

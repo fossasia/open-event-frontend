@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('New Session');
+    return this.l10n.t('New Session');
   },
 
   async model() {
@@ -13,7 +13,7 @@ export default Route.extend({
         sort         : 'id',
         'page[size]' : 50
       }),
-      session: await this.get('store').createRecord('session', {
+      session: await this.store.createRecord('session', {
         event   : eventDetails,
         creator : this.get('authManager.currentUser')
       }),

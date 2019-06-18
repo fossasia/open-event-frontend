@@ -4,7 +4,7 @@ import { A } from '@ember/array';
 
 export default Route.extend(CustomFormMixin, {
   titleToken() {
-    return this.get('l10n').t('Order Form');
+    return this.l10n.t('Order Form');
   },
   async model() {
     let filterOptions = [{

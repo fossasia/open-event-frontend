@@ -9,24 +9,24 @@ export default Component.extend({
   allowDragDrop : true,
 
   inputIdGenerated: computed('inputId', function() {
-    return this.get('inputId') ? this.get('inputId') : v4();
+    return this.inputId ? this.inputId : v4();
   }),
 
   maxSize: computed('maxSizeInKb', function() {
-    return humanReadableBytes(this.get('maxSizeInKb'));
+    return humanReadableBytes(this.maxSizeInKb);
   }),
 
   uploadFile() {
     this.set('needsConfirmation', false);
     this.set('uploadingFile', true);
-    this.get('loader')
-      .uploadFile('/upload/files', this.$(`#${this.get('inputIdGenerated')}`))
+    this.loader
+      .uploadFile('/upload/files', this.$(`#${this.inputIdGenerated}`))
       .then(file => {
         this.set('fileUrl', JSON.parse(file).url);
-        this.get('notify').success(this.get('l10n').t('File uploaded successfully'));
+        this.notify.success(this.l10n.t('File uploaded successfully'));
       })
       .catch(() => {
-        this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       })
       .finally(() => {
         this.set('uploadingFile', false);
@@ -35,7 +35,7 @@ export default Component.extend({
 
   processFiles(files) {
     if (files && files[0]) {
-      isFileValid(files[0], this.get('maxSizeInKb'), ['application/pdf', 'application/vnd.ms-powerpoint', 'video/mp4', 'application/vnd.oasis.opendocument.presentation']).then(() => {
+      isFileValid(files[0], this.maxSizeInKb, ['application/pdf', 'application/vnd.ms-powerpoint', 'video/mp4', 'application/vnd.oasis.opendocument.presentation']).then(() => {
         const reader = new FileReader();
         reader.onload = () => {
           this.uploadFile();
@@ -45,7 +45,7 @@ export default Component.extend({
         this.notify.error(error);
       });
     } else {
-      this.notify.error(this.get('l10n').t('No FileReader support. Please use a more latest browser'));
+      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'));
     }
   },
 
@@ -58,7 +58,7 @@ export default Component.extend({
       }
     },
     removeSelection() {
-      if (!this.get('needsConfirmation') || this.get('edit') === true) {
+      if (!this.needsConfirmation || this.edit === true) {
         this.set('selectedFile', null);
         this.set('fileUrl', null);
       } else {
@@ -69,8 +69,8 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-    this.set('selectedFile', this.get('fileUrl'));
-    if (this.get('selectedFile')) {
+    this.set('selectedFile', this.fileUrl);
+    if (this.selectedFile) {
       this.set('needsConfirmation', true);
     }
   },

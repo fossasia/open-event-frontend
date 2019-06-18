@@ -4,11 +4,11 @@ export default Route.extend({
   titleToken() {
     switch (this.get('params.speakers_status')) {
       case 'pending':
-        return this.get('l10n').t('Pending');
+        return this.l10n.t('Pending');
       case 'accepted':
-        return this.get('l10n').t('Accepted');
+        return this.l10n.t('Accepted');
       case 'rejected':
-        return this.get('l10n').t('Rejected');
+        return this.l10n.t('Rejected');
     }
   },
   async model(params) {

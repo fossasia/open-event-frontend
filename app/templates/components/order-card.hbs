@@ -9,10 +9,18 @@
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
     <a class="main content" href="{{href-to 'orders.view' order.identifier}}">
       <div class="right floated author">
-        <div class="ui {{if (eq order.status 'completed') 'green' (if (eq order.status 'placed') 'blue' 'red')}}
-          large label">
+        <div class="ui {{order-color order.status}} large label">
           {{order.status}}
         </div>
+        {{#if isUserCheckedIn}}
+          <div class="ui green large label">
+            {{t 'Checked In'}}
+          </div>
+        {{else}}
+          <div class="ui red large label">
+            {{t 'Not Checked In'}}
+          </div>
+        {{/if}}
       </div>
       {{#smart-overflow class='header'}}
         {{order.event.name}}

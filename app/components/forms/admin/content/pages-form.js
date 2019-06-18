@@ -14,7 +14,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a name')
+              prompt : this.l10n.t('Please enter a name')
             }
           ]
         },
@@ -23,7 +23,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a title')
+              prompt : this.l10n.t('Please enter a title')
             }
           ]
         },
@@ -32,16 +32,16 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter the path')
+              prompt : this.l10n.t('Please enter the path')
             },
             {
               type   : 'regExp',
               value  : '/[^/](.*)/',
-              prompt : this.get('l10n').t('Path should not contain leading slash.')
+              prompt : this.l10n.t('Path should not contain leading slash.')
             },
             {
               type   : 'doesntContain[ ]',
-              prompt : this.get('l10n').t('Path should not contain whitespaces.')
+              prompt : this.l10n.t('Path should not contain whitespaces.')
             }
           ]
         },
@@ -50,7 +50,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please select a place')
+              prompt : this.l10n.t('Please select a place')
             }
           ]
         },
@@ -59,7 +59,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a position')
+              prompt : this.l10n.t('Please enter a position')
             }
           ]
         },
@@ -68,7 +68,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter a language')
+              prompt : this.l10n.t('Please enter a language')
             }
           ]
         }
@@ -83,13 +83,13 @@ export default Component.extend(FormMixin, {
       });
     },
     deletePage(data) {
-      if (!this.get('isCreate')) {
+      if (!this.isCreate) {
         data.destroyRecord();
         this.set('isFormOpen', false);
       }
     },
     close() {
-      if (this.get('isCreate')) {
+      if (this.isCreate) {
         this.set('isFormOpen', false);
       }
     }

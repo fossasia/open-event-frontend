@@ -12,8 +12,8 @@ export default ModalBase.extend(FormMixin, {
       });
     },
     close() {
-      if (!this.get('currentInvite').get('id')) {
-        this.get('currentInvite').unloadRecord();
+      if (!this.currentInvite.get('id')) {
+        this.currentInvite.unloadRecord();
       }
       this.set('isOpen', false);
     }
@@ -31,11 +31,11 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please enter an email for user')
+              prompt : this.l10n.t('Please enter an email for user')
             },
             {
               type   : 'email',
-              prompt : this.get('l10n').t('Please enter a valid email address  for user')
+              prompt : this.l10n.t('Please enter a valid email address  for user')
             }
           ]
         },
@@ -44,7 +44,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.get('l10n').t('Please select a role')
+              prompt : this.l10n.t('Please select a role')
             }
           ]
         }

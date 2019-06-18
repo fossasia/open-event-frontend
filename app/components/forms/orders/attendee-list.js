@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { groupBy } from 'lodash';
+import { groupBy } from 'lodash-es';
 
 export default Component.extend({
   buyer: computed('data.user', function() {
@@ -16,6 +16,6 @@ export default Component.extend({
     return true;
   }),
   allFields: computed('fields', function() {
-    return groupBy(this.get('fields').toArray(), field => field.get('form'));
+    return groupBy(this.fields.toArray(), field => field.get('form'));
   })
 });

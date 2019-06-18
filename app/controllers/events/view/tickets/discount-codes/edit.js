@@ -5,11 +5,11 @@ export default Controller.extend({
     saveCode(discountCode) {
       discountCode.save()
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Discount code has been successfully updated.'));
+          this.notify.success(this.l10n.t('Discount code has been successfully updated.'));
           this.transitionToRoute('events.view.tickets.discount-codes');
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('An unexpected error has occurred. Discount code cannot be updated.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Discount code cannot be updated.'));
         });
     }
   }

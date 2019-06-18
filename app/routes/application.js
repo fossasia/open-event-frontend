@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { inject as service } from '@ember/service';
-import { merge, values, isEmpty } from 'lodash';
+import { merge, values, isEmpty } from 'lodash-es';
 
 export default Route.extend(ApplicationRouteMixin, {
   session: service(),
@@ -16,8 +16,8 @@ export default Route.extend(ApplicationRouteMixin, {
 
   async beforeModel(transition) {
     this._super(...arguments);
-    await this.get('authManager').initialize();
-    await this.get('settings').initialize();
+    await this.authManager.initialize();
+    await this.settings.initialize();
     if (!transition.intent.url.includes('login') && !transition.intent.url.includes('reset-password')) {
       this.set('session.previousRouteName', transition.intent.url);
     } else {
@@ -28,7 +28,7 @@ export default Route.extend(ApplicationRouteMixin, {
   async model() {
     let notifications = [];
     if (this.get('session.isAuthenticated')) {
-      notifications = await this.get('authManager.currentUser').query('notifications', {
+      notifications = await this.authManager.currentUser.query('notifications', {
         filter: [
           {
             name : 'is-read',
@@ -42,14 +42,14 @@ export default Route.extend(ApplicationRouteMixin, {
 
     return {
       notifications,
-      pages: await this.get('store').query('page', {
+      pages: await this.store.query('page', {
         sort: 'index'
       }),
       cookiePolicy     : this.get('settings.cookiePolicy'),
       cookiePolicyLink : this.get('settings.cookiePolicyLink'),
-      socialLinks      : await this.get('store').queryRecord('setting', {}),
-      eventTypes       : await this.get('store').findAll('event-type'),
-      eventLocations   : await this.get('store').findAll('event-location')
+      socialLinks      : await this.store.queryRecord('setting', {}),
+      eventTypes       : await this.store.findAll('event-type'),
+      eventLocations   : await this.store.findAll('event-location')
     };
   },
 

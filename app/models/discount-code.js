@@ -32,7 +32,7 @@ export default ModelBase.extend({
   tickets   : hasMany('ticket'),
   orders    : hasMany('order'),
   isExpired : computed('validTill', function() {
-    return (new Date() > new Date(this.get('validTill')));
+    return new Date() > new Date(this.validTill);
   }),
   event: belongsTo('event', {
     inverse: 'discountCodes'

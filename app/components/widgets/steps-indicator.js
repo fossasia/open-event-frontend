@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import Object, { observer, computed } from '@ember/object';
-import { map, findIndex } from 'lodash';
+import { map, findIndex } from 'lodash-es';
 
 export default Component.extend({
 
@@ -9,25 +9,25 @@ export default Component.extend({
   currentStep : 1,
 
   currentIndex: computed('currentStep', function() {
-    return this.get('currentStep') - 1;
+    return this.currentStep - 1;
   }),
 
   currentStepComputed: observer('session.currentRouteName', 'autoSteps', function() {
-    if (this.get('autoSteps')) {
-      this.set('currentStep', findIndex(this.get('steps'), ['route', this.get('session.currentRouteName')]) + 1);
+    if (this.autoSteps) {
+      this.set('currentStep', findIndex(this.steps, ['route', this.get('session.currentRouteName')]) + 1);
     }
   }),
 
   processedSteps: computed('steps', 'currentIndex', 'enableAll', function() {
-    return map(this.get('steps'), (step, index) => {
+    return map(this.steps, (step, index) => {
       step = Object.create(step);
-      if (!this.get('enableAll') && index > this.get('currentIndex')) {
+      if (!this.enableAll && index > this.currentIndex) {
         step.set('isDisabled', true);
       }
-      if (this.get('disableAll') && index !== this.get('currentIndex')) {
+      if (this.disableAll && index !== this.currentIndex) {
         step.set('isDisabled', true);
       }
-      if (index < this.get('currentIndex')) {
+      if (index < this.currentIndex) {
         step.set('isCompleted', true);
       }
       return step;

@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
-import { orderBy, filter } from 'lodash';
+import { orderBy, filter } from 'lodash-es';
 
 export default Component.extend({
 
@@ -16,15 +16,15 @@ export default Component.extend({
 
   actions: {
     addNewTicket() {
-      let settings = this.get('model');
+      let settings = this.model;
       let incorrect_settings = settings.filter(function(setting) {
         return (!setting.get('currency') || !setting.get('country'));
       });
       if (incorrect_settings.length > 0) {
-        this.notify.error(this.get('l10n').t('Existing items need to be completed before new items can be added.'));
+        this.notify.error(this.l10n.t('Existing items need to be completed before new items can be added.'));
         this.set('isLoading', false);
       } else {
-        this.get('model').toArray().addObject(this.store.createRecord('ticket-fee', {
+        this.model.toArray().addObject(this.store.createRecord('ticket-fee', {
           maximumFee : 0.0,
           serviceFee : 0.0
         }));
@@ -34,10 +34,10 @@ export default Component.extend({
       this.set('isLoading', true);
       rec.destroyRecord()
         .then(() => {
-          this.get('notify').success(this.get('l10n').t('Fee setting deleted successfully'));
+          this.notify.success(this.l10n.t('Fee setting deleted successfully'));
         })
         .catch(() => {
-          this.get('notify').error(this.get('l10n').t('Oops something went wrong. Please try again'));
+          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
         })
         .finally(() => {
           this.set('isLoading', false);

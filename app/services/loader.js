@@ -3,10 +3,10 @@ import { getOwner } from '@ember/application';
 import $ from 'jquery';
 import { getErrorMessage } from 'open-event-frontend/utils/errors';
 import { buildUrl } from 'open-event-frontend/utils/url';
-import httpStatus from 'npm:http-status';
-import objectToFormData from 'npm:object-to-formdata';
+import httpStatus from 'http-status';
+import objectToFormData from 'object-to-formdata';
 import fetch from 'fetch';
-import { clone, assign, merge } from 'lodash';
+import { clone, assign, merge } from 'lodash-es';
 const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
 
 export default Service.extend({

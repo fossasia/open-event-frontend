@@ -2,10 +2,10 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Social Links');
+    return this.l10n.t('Social Links');
   },
   model() {
-    return this.get('store').queryRecord('setting', {});
+    return this.store.queryRecord('setting', {});
   },
   actions: {
     willTransition() {

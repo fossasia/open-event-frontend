@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   titleToken() {
-    return this.get('l10n').t('Explore');
+    return this.l10n.t('Explore');
   },
 
   /**
@@ -145,11 +145,16 @@ export default Route.extend({
       });
     }
 
-    return this.store.query('event', {
-      sort    : 'starts-at',
-      filter  : filterOptions,
-      include : 'event-topic,event-sub-topic,event-type'
+    return this.infinity.model('event', {
+      include      : 'event-topic,event-sub-topic,event-type',
+      filter       : filterOptions,
+      sort         : 'starts-at',
+      perPage      : 6,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]'
     });
+
   },
 
   async model(params) {
@@ -168,9 +173,9 @@ export default Route.extend({
 
   actions: {
     async queryParamsDidChange(change, params) {
-      if (this.get('controller')) {
-        this.get('controller').set('filteredEvents', await this._loadEvents(params));
-        this.get('controller').set('filters', params);
+      if (this.controller) {
+        this.controller.set('filteredEvents', await this._loadEvents(params));
+        this.controller.set('filters', params);
       }
     }
   }

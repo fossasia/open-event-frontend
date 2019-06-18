@@ -1,39 +1,42 @@
-<div class="ui one column container stackable doubling left grid">
-  <div class="row">
-    <div class="column">
-      <h2>{{model.order.event.name}}</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="column">
-      <div class="ui small gray-text">
-        {{header-date model.order.event.startsAt}} - {{header-date model.order.event.endsAt}}
-        <br>
-        {{model.order.event.locationName}}
+<div class="ui basic {{if isLoading 'loading'}} segment">
+  <div class="ui one column container stackable doubling left grid">
+    <div class="row">
+      <div class="column">
+        <h2>{{model.order.event.name}}</h2>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="ten wide column">
-      {{orders/order-summary
-        data=model.order
-        tickets=model.tickets
-        eventCurrency=model.order.event.paymentCurrency}}
-    </div>
-    <div class="mobile hidden six wide column">
-      {{orders/event-info data=model.order showBanner=false}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="ten wide column">
-      {{forms/orders/order-form save='save' data=model.order fields=model.form}}
-    </div>
-    <div class="six wide column">
-      {{#if model.order.event.organizerName}}
-        <div class="mobile hidden row">
-          {{orders/organizer-info data=model.order}}
+    <div class="row">
+      <div class="column">
+        <div class="ui small gray-text">
+          {{header-date model.order.event.startsAt}} - {{header-date model.order.event.endsAt}}
+          <br>
+          {{model.order.event.locationName}}
         </div>
-      {{/if}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="ten wide column">
+        {{orders/order-summary
+          data=model.order
+          tickets=model.tickets
+          event=model.event
+          eventCurrency=model.order.event.paymentCurrency}}
+      </div>
+      <div class="mobile hidden six wide column">
+        {{orders/event-info data=model.order showBanner=false}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="ten wide column">
+        {{forms/orders/order-form save='save' data=model.order fields=model.form}}
+      </div>
+      <div class="six wide column">
+        {{#if model.order.event.organizerName}}
+          <div class="mobile hidden row">
+            {{orders/organizer-info data=model.order}}
+          </div>
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>

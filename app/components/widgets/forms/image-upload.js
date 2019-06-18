@@ -10,22 +10,22 @@ export default Component.extend({
   requiresDivider : false,
 
   inputIdGenerated: computed('inputId', function() {
-    return this.get('inputId') ? this.get('inputId') : v4();
+    return this.inputId ? this.inputId : v4();
   }),
 
   maxSize: computed('maxSizeInKb', function() {
-    return humanReadableBytes(this.get('maxSizeInKb'));
+    return humanReadableBytes(this.maxSizeInKb);
   }),
 
   allowReCrop: computed('selectedImage', 'needsCropper', function() {
-    return this.get('needsCropper') && !this.get('selectedImage').includes('http');
+    return this.needsCropper && !this.selectedImage.includes('http');
   }),
 
   uploadImage(imageData) {
     this.set('selectedImage', imageData);
     this.set('needsConfirmation', false);
     this.set('uploadingImage', true);
-    this.get('loader')
+    this.loader
       .post('/upload/image', {
         data: imageData
       })
@@ -45,7 +45,7 @@ export default Component.extend({
         const reader = new FileReader();
         reader.onload = e => {
           const untouchedImageData = e.target.result;
-          if (this.get('needsCropper')) {
+          if (this.needsCropper) {
             this.set('imgData', untouchedImageData);
             this.set('cropperModalIsShown', true);
           } else {
@@ -58,7 +58,7 @@ export default Component.extend({
         this.notify.error(error);
       });
     } else {
-      this.notify.error(this.get('l10n').t('No FileReader support. Please use a more latest browser'));
+      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'));
     }
 
   },
@@ -75,7 +75,7 @@ export default Component.extend({
     },
 
     removeSelection() {
-      if (!this.get('needsConfirmation')) {
+      if (!this.needsConfirmation) {
         this.set('selectedImage', null);
         this.set('imageUrl', null);
       } else {
@@ -90,8 +90,8 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-    this.set('selectedImage', this.get('imageUrl'));
-    if (this.get('selectedImage')) {
+    this.set('selectedImage', this.imageUrl);
+    if (this.selectedImage) {
       this.set('needsConfirmation', true);
     }
   },

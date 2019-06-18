@@ -4,7 +4,14 @@
       {{t 'Edit Session'}}
     </h2>
     <div class="ui container">
-      {{forms/events/view/edit-session data=model.session save='save' isLoading=isLoading}}
+      {{forms/session-speaker-form fields=model.forms
+                                   data=model
+                                   isLoading=isLoading
+                                   save=(action 'save')
+                                   isSession=true
+                                   includeSession=true
+                                   isSessionSpeaker=true
+      }}
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
   titleToken() {
-    return this.get('l10n').t('Edit Event');
+    return this.l10n.t('Edit Event');
   },
 
   beforeModel(transition) {

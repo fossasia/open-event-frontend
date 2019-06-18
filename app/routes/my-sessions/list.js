@@ -6,9 +6,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
     switch (this.get('params.session_status')) {
       case 'upcoming':
-        return this.get('l10n').t('Upcoming');
+        return this.l10n.t('Upcoming');
       case 'past':
-        return this.get('l10n').t('Past');
+        return this.l10n.t('Past');
     }
   },
   model(params) {
@@ -49,10 +49,16 @@ export default Route.extend(AuthenticatedRouteMixin, {
         }
       ];
     }
-    return this.get('authManager.currentUser').query('sessions', {
-      include : 'event',
-      filter  : filterOptions,
-      sort    : 'starts-at'
+
+    return this.infinity.model('sessions', {
+      include      : 'event',
+      filter       : filterOptions,
+      sort         : 'starts-at',
+      perPage      : 10,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]',
+      store        : this.authManager.currentUser
     });
   }
 });

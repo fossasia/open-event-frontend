@@ -9,28 +9,40 @@ export default Component.extend({
 
   customStartDate: moment().toISOString(),
 
-  customEndDate: null,
+  customEndDate : null,
+  showFilters   : false,
 
   hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', function() {
-    return !(this.get('category') || this.get('sub_category') || this.get('event_type') || this.get('startDate') || this.get('endDate') || this.get('location') !== null);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location !== null);
   }),
 
   dateRanges: computed(function() {
     return getDateRanges.bind(this)();
   }),
 
+  showFiltersOnMobile: computed('device.isMobile', 'showFilters', function() {
+    return (!this.device.isMobile || this.showFilters);
+  }),
+
   actions: {
+    onLocationChangeHandler(lat, lng) {
+      this.setProperties({
+        zoom: 17,
+        lat,
+        lng
+      });
+    },
     selectCategory(category, subCategory) {
-      this.set('category', (category === this.get('category') && !subCategory) ? null : category);
-      this.set('sub_category', (!subCategory || subCategory === this.get('sub_category')) ? null : subCategory);
+      this.set('category', (category === this.category && !subCategory) ? null : category);
+      this.set('sub_category', (!subCategory || subCategory === this.sub_category) ? null : subCategory);
     },
 
     selectEventType(eventType) {
-      this.set('event_type', eventType === this.get('event_type') ? null : eventType);
+      this.set('event_type', eventType === this.event_type ? null : eventType);
     },
 
     dateValidate(date) {
-      if (moment(date).isAfter(this.get('customEndDate'))) {
+      if (moment(date).isAfter(this.customEndDate)) {
         this.set('customEndDate', date);
       }
 
@@ -41,14 +53,14 @@ export default Component.extend({
       let newStartDate = null;
       let newEndDate = null;
 
-      if (dateType === this.get('dateType') && dateType !== 'custom_dates') {
+      if (dateType === this.dateType && dateType !== 'custom_dates') {
         this.set('dateType', null);
       } else {
         this.set('dateType', dateType);
         switch (dateType) {
           case 'custom_dates':
-            newStartDate = this.get('customStartDate');
-            newEndDate = this.get('customEndDate');
+            newStartDate = this.customStartDate;
+            newEndDate = this.customEndDate;
             break;
 
           case 'all_dates':
@@ -104,6 +116,10 @@ export default Component.extend({
       this.set('sub_category', null);
       this.set('event_type', null);
       this.set('location', null);
+    },
+
+    toggleFilters() {
+      this.set('showFilters', !this.showFilters);
     }
   }
 });

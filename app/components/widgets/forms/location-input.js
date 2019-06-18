@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { observer, computed } from '@ember/object';
-import { keys, values } from 'lodash';
+import { keys, values } from 'lodash-es';
 
 export default Component.extend({
 
@@ -14,18 +14,27 @@ export default Component.extend({
   },
 
   combinedAddress: computed('address.{venue,line,city,state,zipCode,country}', function() {
-    return values(this.get('address')).join(' ').trim();
+    return values(this.address).join(' ').trim();
   }),
 
-  placeNameChanger: observer('combinedAddress', function() {
-    this.set('placeName', this.get('combinedAddress'));
+  searchableAddress: computed('address.{city}', function() {
+    return this.address.city;
+  }),
+
+  placeNameChanger: observer('combinedAddress', 'searchableAddress', function() {
+    this.setProperties(
+      { 'placeName'      : this.combinedAddress,
+        'searchableName' : this.searchableAddress
+      }
+    );
+
   }),
 
   actions: {
     showAddressView(show = true) {
       this.set('addressViewIsShown', show);
       if (!show) {
-        keys(this.get('address')).forEach(key => {
+        keys(this.address).forEach(key => {
           this.set(`address.${key}`, '');
         });
         this.setProperties({

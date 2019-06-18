@@ -9,7 +9,7 @@ export default Controller.extend({
   fileName     : '',
   importTask(taskUrl) {
     run.later(() => {
-      this.get('loader')
+      this.loader
         .load(taskUrl)
         .then(data => {
           if (data.state !== 'SUCCESS') {
@@ -32,9 +32,9 @@ export default Controller.extend({
   actions: {
     uploadFile(files) {
       let [file] = files;
-      var data = new FormData();
-      var endpoint = 'import/json';
-      var ext = file.name.split('.');
+      let data = new FormData();
+      let endpoint = 'import/json';
+      let ext = file.name.split('.');
       ext = ext[ext.length - 1].toLowerCase();
       if (ext === 'xml') {
         endpoint = 'import/pentabarf';
@@ -52,7 +52,7 @@ export default Controller.extend({
         'file'         : true
       });
 
-      this.get('loader').post(
+      this.loader.post(
         `/events/${endpoint}`,
         data,
         { isFile: true }

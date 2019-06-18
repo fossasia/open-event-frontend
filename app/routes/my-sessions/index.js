@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    return this.get('l10n').t('Upcoming');
+    return this.l10n.t('Upcoming');
   },
   beforeModel() {
     this._super(...arguments);

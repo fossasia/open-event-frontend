@@ -44,11 +44,10 @@ export default Controller.extend({
       }
       attendee.save()
         .then(savedAttendee => {
-          this.notify.success(this.get('l10n').t(`Attendee ${savedAttendee.isCheckedIn ? 'Checked-In' : 'Checked-Out'} Successfully`));
-          this.send('refreshRoute');
+          this.notify.success(this.l10n.t(`Attendee ${savedAttendee.isCheckedIn ? 'Checked-In' : 'Checked-Out'} Successfully`));
         })
         .catch(() => {
-          this.notify.error(this.get('l10n').t('An unexpected error has occurred'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred'));
         });
     }
   }

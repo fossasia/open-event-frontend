@@ -16,10 +16,23 @@
   <div class="row">
     <div class="ten wide column print">
       {{orders/order-summary data=model.order
+                             event=model.event
                              eventCurrency=model.order.event.paymentCurrency}}
     </div>
     <div class="mobile hidden six wide column">
       {{orders/event-info data=model.order}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="column right aligned">
+      <button class="ui labeled icon {{if isLoadingTickets 'loading'}} button" {{action downloadTickets model.event.name model.order.identifier}}>
+        <i class="ticket alternate icon"></i>
+        {{t 'Download Tickets'}}
+      </button>
+      <button {{action 'downloadInvoice' model.event.name model.order.identifier }} class="ui labeled icon blue {{if isLoadingInvoice 'loading'}} button">
+        <i class="print alternate icon"></i>
+        {{t 'Print Invoice'}}
+      </button>
     </div>
   </div>
   <div class="row">
@@ -32,17 +45,6 @@
           {{orders/ticket-holder data=model.order}}
         </div>
       </div>
-      <br>
-      <a class="ui labeled icon button" href="#" {{action downloadTickets model.event.name model.order.identifier}} target="_blank" rel="noopener nofollow">
-        <i class="ticket alternate icon"></i>
-        {{t 'Download Tickets'}}
-      </a>
-      <br>
-      <br>
-      <a href="#" {{action 'downloadInvoice'}} class="ui labeled icon blue button">
-        <i class="print alternate icon"></i>
-        {{t 'Print Invoice'}}
-      </a>
     </div>
   </div>
 </div>

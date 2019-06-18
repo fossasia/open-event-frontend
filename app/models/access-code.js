@@ -17,7 +17,7 @@ export default ModelBase.extend({
   tickets   : hasMany('ticket'),
   marketer  : belongsTo('user', { inverse: 'accessCodes' }),
   isExpired : computed('validTill', function() {
-    return (new Date() > new Date(this.get('validTill')));
+    return new Date() > new Date(this.validTill);
   }),
   event: belongsTo('event', {
     inverse: 'accessCodes'

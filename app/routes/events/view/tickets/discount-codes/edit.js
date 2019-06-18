@@ -1,17 +1,18 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-import RSVP from 'rsvp';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken(model) {
-    var discount_code = model.discountCode.get('code');
-    return this.get('l10n').t(discount_code.concat('-Edit'));
+    let discount_code = model.discountCode.get('code');
+    return this.l10n.t(discount_code.concat('-Edit'));
   },
-  model(params) {
-    return RSVP.hash({
-      discountCode : this.store.findRecord('discount-code', params.discount_code_id, {}),
-      tickets      : this.modelFor('events.view').query('tickets', {})
-    });
+  async model(params) {
+    let event = this.modelFor('events.view');
+    return {
+      discountCode : await this.store.findRecord('discount-code', params.discount_code_id, {}),
+      tickets      : await this.modelFor('events.view').query('tickets', {}),
+      event
+    };
   },
 
   async afterModel(model) {

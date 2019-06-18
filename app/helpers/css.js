@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
 import { inject as service } from '@ember/service';
-import { forOwn } from 'lodash';
+import { forOwn } from 'lodash-es';
 import { htmlSafe } from '@ember/string';
 
 export default Helper.extend({
@@ -11,6 +11,6 @@ export default Helper.extend({
     forOwn(hash, (value, key) => {
       style += `${key}: ${value};`;
     });
-    return htmlSafe(this.get('sanitizer').strip(style));
+    return htmlSafe(this.sanitizer.strip(style));
   }
 });

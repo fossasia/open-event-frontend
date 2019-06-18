@@ -25,24 +25,24 @@ export default Component.extend({
 
     this.set('$sidebarOpener', this.$('.open.sidebar'));
     this.set('$sidebarClosers', this.$('.ui.sidebar').find('.item,a,.link,button'));
-    this.get('$sidebarClosers').push(this.$('.main-container')[0]);
+    this.$sidebarClosers.push(this.$('.main-container')[0]);
 
-    if (this.get('$sidebarOpener')) {
-      this.get('$sidebarOpener').on('click', this.toggleSidebar.bind(this));
+    if (this.$sidebarOpener) {
+      this.$sidebarOpener.on('click', this.toggleSidebar.bind(this));
     }
 
-    if (this.get('$sidebarClosers') && this.get('$sidebarClosers').length > 0) {
-      this.get('$sidebarClosers').on('click', this.hideSidebar.bind(this));
+    if (this.$sidebarClosers && this.$sidebarClosers.length > 0) {
+      this.$sidebarClosers.on('click', this.hideSidebar.bind(this));
     }
   },
 
   willDestroyElement() {
     this._super(...arguments);
-    if (this.get('$sidebarOpener')) {
-      this.get('$sidebarOpener').off('click', this.toggleSidebar.bind(this));
+    if (this.$sidebarOpener) {
+      this.$sidebarOpener.off('click', this.toggleSidebar.bind(this));
     }
-    if (this.get('$sidebarClosers') && this.get('$sidebarClosers').length > 0) {
-      this.get('$sidebarClosers').off('click', this.hideSidebar.bind(this));
+    if (this.$sidebarClosers && this.$sidebarClosers.length > 0) {
+      this.$sidebarClosers.off('click', this.hideSidebar.bind(this));
     }
   }
 });

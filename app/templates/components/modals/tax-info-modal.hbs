@@ -1,7 +1,7 @@
 <div class="header">
   {{t 'Add tax information'}}
 </div>
-<div class="y-scrollable scrollable-modal content">
+<div class="{{if tax.shouldSendInvoice "y-scrollable scrollable-"}}modal content">
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
@@ -44,32 +44,30 @@
         </label>
       </div>
     </div>
-    {{#if tax.shouldSendInvoice}}
-      <div class="field">
-        <label class="required">{{t 'Registered Company'}}</label>
-        {{input type='text' id='tax_invoice_company' value=tax.registeredCompany}}
-      </div>
-      <div class="field">
-        <label class="required">{{t 'Business Address'}}</label>
-        {{textarea rows=3 id='tax_invoice_address' value=tax.address}}
-      </div>
-      <div class="field">
-        <label class="required">{{t 'City'}}</label>
-        {{input type='text' id='tax_invoice_city' value=tax.city}}
-      </div>
-      <div class="field">
-        <label class="required">{{t 'State'}}</label>
-        {{input type='text' id='tax_invoice_state' value=tax.state}}
-      </div>
-      <div class="field">
-        <label class="required">{{t 'Zipcode'}}</label>
-        {{input type='text' id='tax_invoice_zipcode' value=tax.zip}}
-      </div>
-      <div class="field">
-        <label>{{t 'Text for invoice footer (optional)'}}</label>
-        {{textarea rows=3 id='tax_invoice_footer' value=tax.invoiceFooter}}
-      </div>
-    {{/if}}
+    <div class="field">
+      <label class="required">{{t 'Registered Company'}}</label>
+      {{input type='text' id='tax_invoice_company' value=tax.registeredCompany}}
+    </div>
+    <div class="field">
+      <label class="required">{{t 'Business Address'}}</label>
+      {{textarea rows=3 id='tax_invoice_address' value=tax.address}}
+    </div>
+    <div class="field">
+      <label class="required">{{t 'City'}}</label>
+      {{input type='text' id='tax_invoice_city' value=tax.city}}
+    </div>
+    <div class="field">
+      <label class="required">{{t 'State'}}</label>
+      {{input type='text' id='tax_invoice_state' value=tax.state}}
+    </div>
+    <div class="field">
+      <label class="required">{{t 'Zipcode'}}</label>
+      {{input type='text' id='tax_invoice_zipcode' value=tax.zip}}
+    </div>
+    <div class="field">
+      <label>{{t 'Text for invoice footer (optional)'}}</label>
+      {{textarea rows=3 id='tax_invoice_footer' value=tax.invoiceFooter}}
+    </div>
     <div class="grouped fields">
       <label for="privacy">{{t 'Add or Include Tax Fee'}}</label>
       <div class="field">

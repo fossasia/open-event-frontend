@@ -3,24 +3,24 @@
 </div>
 <div class="content">
   <h4 class="ui header">{{t 'Summary'}}</h4>
-  <table class="ui very basic compact table">
+  <table class="ui very basic compact unstackable table">
     <tbody>
       <tr>
         <td>{{t 'Total tickets sold'}}</td>
-        <td>{{data.orderStat.tickets.completed}}</td>
+        <td>{{tickets}}</td>
       </tr>
       <tr>
         <td>{{t 'No. of orders'}}</td>
-        <td>{{data.orderStat.orders.completed}}</td>
+        <td>{{orders}}</td>
       </tr>
       <tr>
         <td>{{t 'Sales (amount)'}}</td>
-        <td>US$ {{number-format data.orderStat.sales.completed}}</td>
+        <td>{{currency-symbol data.event.paymentCurrency}} {{format-number sales}}</td>
       </tr>
     </tbody>
   </table>
   <h4 class="ui header">{{t 'Details'}}</h4>
-  <table class="ui very basic compact table">
+  <table class="ui very basic compact unstackable table">
     <thead>
       <tr>
         <th>{{t 'Type'}}</th>
@@ -33,9 +33,9 @@
       {{#each data.tickets as |ticket|}}
         <tr>
           <td>{{ticket.name}}</td>
-          <td>{{ticket.orderStatistics.tickets.completed}}</td>
+          <td>{{add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed}}</td>
           <td>{{ticket.quantity}}</td>
-          <td>{{sub ticket.quantity ticket.orderStatistics.tickets.completed}}</td>
+          <td>{{sub ticket.quantity (add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed)}}</td>
         </tr>
       {{else}}
         <div class="ui basic segment">
