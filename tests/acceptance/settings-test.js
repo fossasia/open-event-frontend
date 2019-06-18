@@ -11,8 +11,8 @@ module('Acceptance | account', function(hooks) {
     assert.equal(currentURL(), '/login');
   });
 
-  test('visiting /account/contact-info without login', async function(assert) {
-    await visit('/account/contact-info');
+  test('visiting /account/profile without login', async function(assert) {
+    await visit('/account/profile');
     assert.equal(currentURL(), '/login');
   });
 
@@ -26,10 +26,10 @@ module('Acceptance | account', function(hooks) {
     assert.equal(currentURL(), '/login');
   });
 
-  test('visiting /account/contact-info with login', async function(assert) {
+  test('visiting /account/profile with login', async function(assert) {
     await login(assert);
-    await visit('/account/contact-info');
-    assert.equal(currentURL(), '/account/contact-info');
+    await visit('/account/profile');
+    assert.equal(currentURL(), '/account/profile');
   });
 
   test('visiting /account/password with login', async function(assert) {
