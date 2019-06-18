@@ -108,7 +108,6 @@ router.map(function() {
   });
   this.route('account', function() {
     this.route('profile');
-    this.route('contact-info');
     this.route('password');
     this.route('email-preferences');
     this.route('applications');
@@ -161,7 +160,7 @@ router.map(function() {
         });
         this.route('account', function() {
           this.route('applications');
-          this.route('contact-info');
+          this.route('profile');
           this.route('email-preferences');
         });
         this.route('tickets', function() {
