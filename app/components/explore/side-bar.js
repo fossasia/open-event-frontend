@@ -12,8 +12,8 @@ export default Component.extend({
   customEndDate : null,
   showFilters   : false,
 
-  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', function() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location !== null);
+  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', function() {
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type !== null);
   }),
 
   dateRanges: computed(function() {
@@ -39,6 +39,10 @@ export default Component.extend({
 
     selectEventType(eventType) {
       this.set('event_type', eventType === this.event_type ? null : eventType);
+    },
+
+    selectTicketType(ticketType) {
+      this.set('ticket_type', ticketType === this.ticket_type ? null : ticketType);
     },
 
     dateValidate(date) {
@@ -116,6 +120,7 @@ export default Component.extend({
       this.set('sub_category', null);
       this.set('event_type', null);
       this.set('location', null);
+      this.set('ticket_type', null);
     },
 
     toggleFilters() {
