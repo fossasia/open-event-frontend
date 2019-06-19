@@ -103,16 +103,16 @@
         {{t 'Ticket Type' }}
       </span>
       <div class="content menu">
-          <a href="#"
-            class="link item {{if (eq ticket_type 'free') 'active'}}"
-            {{action 'selectTicketType' 'free'}}>
-            {{t 'Free'}}
-          </a>
-          <a href="#"
-            class="link item {{if (eq ticket_type 'paid') 'active'}}"
-            {{action 'selectTicketType' 'paid'}}>
-            {{t 'Paid'}}
-          </a>
+        <a href="#"
+          class="link item {{if (eq ticket_type 'free') 'active'}}"
+          {{action 'selectTicketType' 'free'}}>
+          {{t 'Free'}}
+        </a>
+        <a href="#"
+          class="link item {{if (eq ticket_type 'paid') 'active'}}"
+          {{action 'selectTicketType' 'paid'}}>
+          {{t 'Paid'}}
+        </a>
       </div>
     {{/ui-accordion}}
   </div>
