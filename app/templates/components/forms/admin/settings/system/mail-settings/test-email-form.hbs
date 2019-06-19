@@ -1,0 +1,16 @@
+<div class="ui form">
+  {{#ui-accordion class='field'}}
+    <div class="title">
+      <i class="icon dropdown"></i>
+      {{t 'Send Test Email'}}
+    </div>
+    <div class="content four wide field">
+      <div class="ui action input">
+        {{input type="text" placeholder=(t 'Recipient E-mail') name='test_email' value=recipientEmail }}
+        <div class="ui secondary button" role="button" {{action 'sendTestMail'}}>
+          {{t 'Test'}}
+        </div>
+      </div>
+    </div>
+  {{/ui-accordion}}
+</div>
