@@ -4,7 +4,11 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 export default Controller.extend(EventWizardMixin, {
   async saveForms(data) {
     for (const customForm of data.customForms ? data.customForms.toArray() : []) {
-      await customForm.save();
+      try {
+        await customForm.save();
+      } catch (error) {
+        this.notify.error(this.ln10.t(error.message));
+      }
     }
     return data;
   },
