@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { groupBy, orderBy } from 'lodash-es';
 import FormMixin from 'open-event-frontend/mixins/form';
+import $ from 'jquery';
 import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
   validGithubProfileUrlPattern, validLinkedinProfileUrlPattern, validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
@@ -13,7 +14,12 @@ export default Component.extend(FormMixin, {
   newSpeakerSelected : false,
   newSessionSelected : false,
 
+
   getValidationRules() {
+    window.$.fn.form.settings.rules.isTrackField = () => {
+      return this.get('data.session.track');
+    };
+
     return {
       inline : true,
       delay  : false,
@@ -75,11 +81,24 @@ export default Component.extend(FormMixin, {
           ]
         },
         sessionType: {
+          identifier : 'session_sessionType',
+          rules      : [
+            {
+              type   : 'isTrackField',
+              prompt : this.l10n.t('Please select a Track Associated first')
+            }
+          ]
+        },
+        sessionTypeReq: {
           identifier : 'session_sessionType_required',
           rules      : [
             {
               type   : 'empty',
               prompt : this.l10n.t('Please select a session type')
+            },
+            {
+              type   : 'isTrackField',
+              prompt : this.l10n.t('Please select a Track Associated first')
             }
           ]
         },
