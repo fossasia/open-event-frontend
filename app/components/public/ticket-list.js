@@ -21,7 +21,7 @@ export default Component.extend(FormMixin, {
 
   showTaxIncludedMessage: computed('taxInfo', function() {
     if (this.taxInfo !== null) {
-      return (this.taxInfo.name && (this.taxInfo.rate === 0 || this.taxInfo.isTaxIncludedInPrice));
+      return (this.taxInfo.isTaxIncludedInPrice);
     }
     return false;
   }),
@@ -71,9 +71,12 @@ export default Component.extend(FormMixin, {
           this.discountedTickets.forEach(ticket => {
             let taxRate = ticket.get('event.tax.rate');
             let ticketPrice = ticket.get('price');
-            if (taxRate) {
+            if (taxRate && !this.showTaxIncludedMessage) {
               let ticketPriceWithTax = ticketPrice * (1 + taxRate / 100);
               ticket.set('ticketPriceWithTax', ticketPriceWithTax);
+            } else if (taxRate && this.showTaxIncludedMessage) {
+              let includedTaxAmount = (taxRate * ticketPrice) / (100 + taxRate);
+              ticket.set('includedTaxAmount', includedTaxAmount);
             }
             ticket.set('discount', 0);
           });
@@ -115,9 +118,12 @@ export default Component.extend(FormMixin, {
             let taxRate = ticket.get('event.tax.rate');
             let discount = discountType === 'amount' ? Math.min(ticketPrice, discountValue) : ticketPrice * (discountValue / 100);
             ticket.set('discount', discount);
-            if (taxRate) {
+            if (taxRate && !this.showTaxIncludedMessage) {
               let ticketPriceWithTax = (ticketPrice - ticket.discount) * (1 + taxRate / 100);
               ticket.set('ticketPriceWithTax', ticketPriceWithTax);
+            } else if (taxRate && this.showTaxIncludedMessage) {
+              let includedTaxAmount = (taxRate * (ticketPrice - discount)) / (100 + taxRate);
+              ticket.set('includedTaxAmount', includedTaxAmount);
             }
             this.discountedTickets.addObject(ticket);
             this.set('invalidPromotionalCode', false);
