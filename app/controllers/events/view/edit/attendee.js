@@ -4,28 +4,32 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 export default Controller.extend(EventWizardMixin, {
   async saveForms(data) {
     for (const customForm of data.customForms ? data.customForms.toArray() : []) {
-      try {
-        await customForm.save();
-      } catch (error) {
-        this.notify.error(this.ln10.t(error.message));
-      }
+      await customForm.save();
     }
     return data;
   },
   actions: {
-    save(data) {
-      this.saveForms(data);
-      this.saveEventDataAndRedirectTo(
-        'events.view.index',
-        []
-      );
+    async save(data) {
+      try {
+        await this.saveForms(data);
+        this.saveEventDataAndRedirectTo(
+          'events.view.index',
+          []
+        );  
+      } catch (error) {
+        this.notify.error(this.ln10.t(error.message));
+      }
     },
-    move(direction, data) {
-      this.saveForms(data);
-      this.saveEventDataAndRedirectTo(
-        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.basic-details',
-        []
-      );
+    async move(direction, data) {
+      try {
+        await this.saveForms(data);
+        this.saveEventDataAndRedirectTo(
+          direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.basic-details',
+          []
+        );  
+      } catch (error) {
+        this.notify.error(this.ln10.t(error.message));
+      }
     }
   }
 });

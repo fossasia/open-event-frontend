@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
-import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
+import CustomFormMixin from 'open-event-frontend/mixins/event-wizard';
 import { A } from '@ember/array';
-export default Route.extend(EventWizardMixin, {
+export default Route.extend(CustomFormMixin, {
 
   titleToken() {
     return this.l10n.t('Attendee Form');
