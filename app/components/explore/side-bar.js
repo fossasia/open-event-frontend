@@ -13,8 +13,8 @@ export default Component.extend({
   customEndDate : null,
   showFilters   : false,
 
-  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', function() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location !== null);
+  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', function() {
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type !== null);
   }),
 
   showAllCategories: computed('category', 'sub_category', function() {
@@ -47,6 +47,10 @@ export default Component.extend({
 
     selectEventType(eventType) {
       this.set('event_type', eventType === this.event_type ? null : eventType);
+    },
+
+    selectTicketType(ticketType) {
+      this.set('ticket_type', ticketType === this.ticket_type ? null : ticketType);
     },
 
     dateValidate(date) {
@@ -124,6 +128,7 @@ export default Component.extend({
     },
     clearFilterTypes() {
       this.set('event_type', null);
+
     },
 
     clearFilters() {
@@ -134,8 +139,10 @@ export default Component.extend({
         category     : null,
         sub_category : null,
         event_type   : null,
-        location     : null
+        location     : null,
+        ticket_type  : null,
       });
+
 
     },
 

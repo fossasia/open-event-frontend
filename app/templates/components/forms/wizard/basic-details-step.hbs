@@ -162,10 +162,10 @@
               <div class="six wide column">
                 <label class="required">{{t 'Ticket Name'}}</label>
               </div>
-              <div class="column">
+              <div class="two wide column">
                 <label class="required">{{t 'Price'}}</label>
               </div>
-              <div class="column">
+              <div class="four wide column">
                 <label class="required">{{t 'Quantity'}}</label>
               </div>
               <div class="column">
@@ -208,6 +208,18 @@
           {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
         </div>
       {{/if}} --}}
+    </div>
+    <button type="button" class="ui blue small button" {{action 'addTicket' 'donation' data.event.tickets.length}}>
+      <i class="large icons basic-details">
+        <i class="heart icon"></i>
+        <i class="inverted corner add icon"></i>
+      </i>
+      {{t 'Donation Ticket'}}
+    </button>
+  {{else}}
+    <div class="field">
+      <label for="ticket_url">{{t 'Ticket URL'}}</label>
+      {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
     </div>
   {{/if}}
   {{#if hasPaidTickets}}
