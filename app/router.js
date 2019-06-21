@@ -68,6 +68,7 @@ router.map(function() {
         this.route('basic-details');
         this.route('sponsors');
         this.route('sessions-speakers');
+        this.route('attendee');
       });
       this.route('export');
       this.route('sessions', function() {

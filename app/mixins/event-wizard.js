@@ -20,6 +20,12 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         route       : 'events.view.edit.basic-details'
       },
       {
+        title       : this.l10n.t('Attendee Form'),
+        description : this.l10n.t('Know your audience'),
+        icon        : 'list icon',
+        route       : 'events.view.edit.attendee'
+      },
+      {
         title       : this.l10n.t('Sponsors'),
         description : this.l10n.t('Advertise your sponsors'),
         icon        : 'dollar icon',

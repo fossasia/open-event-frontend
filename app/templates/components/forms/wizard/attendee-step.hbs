@@ -1,0 +1,113 @@
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
+
+  <div class="ui centered grid">
+    <div class="column">
+      <div class="ui {{if data.event.isTicketFormEnabled 'basic'}} segment">
+        <div class="center aligned text">
+          <div class=" field">
+            <div class="ui slider checkbox">
+              {{input type='checkbox' checked=data.event.isTicketFormEnabled}}
+              <label class="weight-300" style="font-size: large">
+                {{if data.event.isTicketFormEnabled (t 'Turn off') (t 'Turn on')}}
+                {{t 'Ticket Form'}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{#if data.event.isTicketFormEnabled}}
+    <div class="ui hidden divider"></div>
+    <h3 class="ui dividing header">
+      <i class="checkmark box icon"></i>
+      <div class="content">
+        {{t 'Information to Collect'}}
+      </div>
+    </h3>
+    <div class="ui two column stackable grid">
+      <div class="column">
+        <table class="ui selectable celled table">
+          <thead>
+            <tr>
+              {{#if device.isMobile}}
+                <th class="center aligned">
+                  {{t 'Options'}}
+                </th>
+              {{else}}
+                <th class="right aligned">
+                  {{t 'Option'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Include'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Require'}}
+                </th>
+              {{/if}}
+            </tr>
+          </thead>
+          <tbody>
+            {{#each data.customForms as |field|}}
+              <tr class="{{if field.isIncluded 'positive'}}">
+                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                  <label class="{{if field.isFixed 'required'}}">
+                    {{field.name}}
+                  </label>
+                </td>
+                <td class="center aligned">
+                  {{ui-checkbox class='slider'
+                                checked=field.isIncluded
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isIncluded))
+                                label=(if device.isMobile (t 'Include'))}}
+                </td>
+                <td class="center aligned">
+                  {{ui-checkbox class='slider'
+                                checked=field.isRequired
+                                disabled=field.isFixed
+                                onChange=(action (mut field.isRequired))
+                                label=(if device.isMobile (t 'Require'))}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h3 class="ui dividing header">
+      <i class="options box icon"></i>
+      <div class="content">
+        {{t 'Registration Options'}}
+      </div>
+    </h3>
+    <div class="field">
+      <label>{{t 'REGISTRATION TIME LIMIT'}}</label>
+      <div class="{{unless device.isMobile 'two wide'}} field">
+        {{input type='number' id='orderExpiryTime' value=data.event.orderExpiryTime min="1" max="60" step="1"}}
+      </div>
+    </div>
+  {{/if}}
+  <div class="spacer-50"></div>
+  <div class="{{if device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
+    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+      {{t 'Previous'}}
+      <i class="left chevron icon"></i>
+    </button>
+    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
+      {{t 'Forward'}}
+      <i class="right chevron icon"></i>
+    </button>
+    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+      {{t 'Save draft'}}
+      <i class="save icon"></i>
+    </button>
+    {{#if data.event.locationName}}
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+        {{t 'Publish'}}
+        <i class="check icon"></i>
+      </button>
+    {{/if}}
+  </div>
+</form>
