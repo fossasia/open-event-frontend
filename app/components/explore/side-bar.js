@@ -13,7 +13,7 @@ export default Component.extend({
   customEndDate : null,
   showFilters   : false,
 
-  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', function() {
+  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', function() {
     return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs !== null);
   }),
 
@@ -62,7 +62,11 @@ export default Component.extend({
     },
 
     selectEventCfs(cfs) {
-      this.set('cfs', cfs === this.cfs ? null : (cfs === 'open' ? true : false));
+      console.log('incoming param cfs and current this.cfs', cfs, this.cfs);
+      console.log('typeof cfs and typeof this.cfs', typeof(cfs), typeof(this.cfs));
+      this.set('cfs', cfs === this.cfs ? null : cfs);
+      console.log('value of param cfs are this.set and value of this.cfs are this.set', cfs, this.cfs);
+      console.log('typeof cfs and typeof this.cfs after this.set', typeof(cfs), typeof(this.cfs));
     },
 
     selectDateFilter(dateType) {

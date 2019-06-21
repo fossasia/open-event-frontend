@@ -132,13 +132,13 @@
     </span>
     <div class="content menu">
       <a href="#"
-        class="link item {{if (eq cfs 'open') 'active'}}"
-        {{action 'selectEventCfs' 'open'}}>
+        class="link item {{if cfs 'active'}}"
+        {{action 'selectEventCfs' true}}>
         {{t 'Open'}}
       </a>
       <a href="#"
-        class="link item {{if (eq cfs 'closed') 'active'}}"
-        {{action 'selectEventCfs' 'closed'}}>
+        class="link item {{unless cfs 'active'}}"
+        {{action 'selectEventCfs' false}}>
         {{t 'Closed'}}
       </a>
     </div>
