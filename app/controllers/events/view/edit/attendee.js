@@ -15,9 +15,9 @@ export default Controller.extend(EventWizardMixin, {
         this.saveEventDataAndRedirectTo(
           'events.view.index',
           []
-        );  
+        );
       } catch (error) {
-        this.notify.error(this.ln10.t(error.message));
+        this.notify.error(this.l10n.t(error.message));
       }
     },
     async move(direction, data) {
@@ -26,9 +26,9 @@ export default Controller.extend(EventWizardMixin, {
         this.saveEventDataAndRedirectTo(
           direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.basic-details',
           []
-        );  
+        );
       } catch (error) {
-        this.notify.error(this.ln10.t(error.message));
+        this.notify.error(this.l10n.t(error.message));
       }
     }
   }
