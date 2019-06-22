@@ -27,6 +27,10 @@ export default Controller.extend({
       template : 'components/ui-table/cell/admin/messages/cell-options'
     },
     {
+      title    : 'Threshold [Msg/Hr]',
+      template : 'components/ui-table/cell/admin/messages/cell-threshold'
+    },
+    {
       propertyName : 'sentAt',
       title        : 'Time/Date sent out',
       template     : 'components/ui-table/cell/cell-simple-date',

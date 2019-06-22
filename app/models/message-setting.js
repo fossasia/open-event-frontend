@@ -15,5 +15,6 @@ export default ModelBase.extend({
   emailSubject        : attr('string'),
   notificationTitle   : attr('string'),
   notificationMessage : attr('string'),
-  sentAt              : attr('string')
+  sentAt              : attr('string'),
+  threshold           : attr('number')
 });
