@@ -140,7 +140,7 @@ export default Component.extend({
         sub_category : null,
         event_type   : null,
         location     : null,
-        ticket_type  : null,
+        ticket_type  : null
       });
 
 
