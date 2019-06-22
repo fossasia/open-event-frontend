@@ -19,7 +19,7 @@ export default Component.extend(FormMixin, {
     return !this.hasTicketsInOrder;
   }),
 
-  showTaxIncludedMessage: computed('taxInfo', function() {
+  showTaxIncludedMessage: computed('taxInfo.isTaxIncludedInPrice', function() {
     if (this.taxInfo !== null) {
       return (this.taxInfo.isTaxIncludedInPrice);
     }
