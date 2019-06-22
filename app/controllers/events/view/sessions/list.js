@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+
 export default Controller.extend({
   columns: [
     {
@@ -18,6 +19,12 @@ export default Controller.extend({
       template       : 'components/ui-table/cell/cell-speakers',
       title          : 'Speakers',
       disableSorting : true
+    },
+    {
+      propertyName   : 'average_rating',
+      template       : 'components/ui-table/cell/events/view/sessions/cell-rating',
+      title          : 'Rating',
+      disableSorting : false
     },
     {
       propertyName : 'track.name',
@@ -161,6 +168,37 @@ export default Controller.extend({
         .finally(() => {
           this.set('isLoading', false);
         });
+    },
+    async updateRating(session, rating) {
+      try {
+        if (session.feedbacks.length) {
+          this.set('isLoading', true);
+          const user = this.authManager.currentUser;
+          let feedback = session.feedbacks.firstObject;
+          feedback.setProperties({
+            user,
+            rating
+          });
+          await feedback.save();
+          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'));
+        } else {
+          this.set('isLoading', true);
+          const user = this.authManager.currentUser;
+          const comment = '';
+          let feedback = await this.store.createRecord('feedback', {
+            rating,
+            comment,
+            session,
+            user
+          });
+          await feedback.save();
+          this.notify.success(this.l10n.t('Session feedback has been created successfully.'));
+        }
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.message));
+      }
+      this.send('refreshRoute');
+      this.set('isLoading', false);
     }
   }
 });

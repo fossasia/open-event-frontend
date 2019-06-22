@@ -21,6 +21,8 @@ export default ModelBase.extend({
   salesEndsAt          : attr('moment', { defaultValue: () => moment().add(10, 'days').startOf('day') }),
   minOrder             : attr('number', { defaultValue: 1 }),
   maxOrder             : attr('number', { defaultValue: 10 }),
+  minPrice             : attr('number'),
+  maxPrice             : attr('number'),
   isFeeAbsorbed        : attr('boolean', { defaultValue: true }),
   position             : attr('number'),
 

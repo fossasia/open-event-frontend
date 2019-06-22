@@ -63,6 +63,23 @@
                   </div>
                 {{/if}}
               </td>
+            {{#if (eq ticket.type 'donation') }}
+              <div class="three wide column">
+                <td id="{{ticket.id}}_price">{{input type='number' value=ticket.price}}</td>
+              </div>
+            {{else}}
+              {{#if ticket.discount}}
+                <td>
+                  <div id="{{ticket.id}}_price" class="strike text">
+                    {{currency-symbol eventCurrency}} {{format-number ticket.price}}
+                  </div>
+                  <div id="{{ticket.id}}_discount">
+                    {{currency-symbol eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
+                  </div>
+                </td>
+              {{else}}
+                <td id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+              {{/if}}
             {{/if}}
             <td>
               <div class="field">
