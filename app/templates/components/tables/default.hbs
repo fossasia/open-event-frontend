@@ -1,0 +1,18 @@
+{{#ember-table as |t|}}
+  {{t.head columns=columns}}
+  {{#t.body rows=rows as |b|}}
+    {{#b.row as |r|}}
+      {{#r.cell as |cell column row|}}
+        {{#if column.cellComponent}}
+          {{#component column.cellComponent record=(get row column.valuePath)}}
+            {{cell}}
+          {{/component}}
+        {{else}}
+          {{cell}}
+        {{/if}}
+      {{/r.cell}}
+    {{/b.row}}
+  {{/t.body}}
+{{/ember-table}}
+
+{{tables/utilities/pagination currentPage=currentPage}}
