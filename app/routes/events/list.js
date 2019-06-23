@@ -2,6 +2,11 @@ import Route from '@ember/routing/route';
 import moment from 'moment';
 
 export default Route.extend({
+  queryParams: {
+    currentPage: {
+      refreshModel: true
+    }
+  },
   titleToken() {
     switch (this.get('params.event_state')) {
       case 'live':
@@ -20,6 +25,7 @@ export default Route.extend({
     }
   },
   async model(params) {
+    console.log(params);
     this.set('params', params);
     let filterOptions = [];
     if (params.event_state === 'live') {
@@ -77,9 +83,10 @@ export default Route.extend({
     }
 
     let queryObject =  {
-      include      : 'tickets,sessions,speakers,owner,organizers,coorganizers,track-organizers,registrars,moderators',
-      filter       : filterOptions,
-      'page[size]' : 10
+      include        : 'tickets,sessions,speakers,owners,organizers,coorganizers,track-organizers,registrars,moderators',
+      filter         : filterOptions,
+      'page[size]'   : 2,
+      'page[number]' : this.params.currentPage || 1
     };
 
     let store = this.get('authManager.currentUser');
@@ -90,7 +97,8 @@ export default Route.extend({
       data,
       store,
       query      : queryObject,
-      objectType : 'events'
+      objectType : 'events',
+      meta: data.meta
     };
 
   },

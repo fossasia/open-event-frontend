@@ -1,54 +1,117 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 
 export default Controller.extend({
-  columns: [
+  queryParams : ['currentPage', 'pageSize'],
+  currentPage : 1,
+  pageSize    : 1,
+  // columns: [
+  //   {
+  //     propertyName : 'name',
+  //     template     : 'components/ui-table/cell/cell-event-general',
+  //     title        : 'Name'
+  //   },
+  //   {
+  //     propertyName : 'starts-at',
+  //     template     : 'components/ui-table/cell/cell-event-date',
+  //     dateFormat   : 'MMMM DD, YYYY - HH:mm A',
+  //     title        : 'Date'
+  //   },
+  //   {
+  //     propertyName     : 'roles',
+  //     template         : 'components/ui-table/cell/cell-roles',
+  //     title            : 'Roles',
+  //     disableSorting   : true,
+  //     disableFiltering : true
+  //   },
+  //   {
+  //     propertyName     : 'sessionsByState',
+  //     template         : 'components/ui-table/cell/cell-sessions-dashboard',
+  //     title            : 'Sessions',
+  //     disableSorting   : true,
+  //     disableFiltering : true
+  //   },
+  //   {
+  //     propertyName     : 'speakers.length',
+  //     template         : 'components/ui-table/cell/cell-speakers-dashboard',
+  //     title            : 'Speakers',
+  //     disableSorting   : true,
+  //     disableFiltering : true
+  //   },
+  //   {
+  //     propertyName     : 'tickets',
+  //     template         : 'components/ui-table/cell/cell-tickets',
+  //     title            : 'Tickets',
+  //     disableSorting   : true,
+  //     disableFiltering : true
+  //   },
+  //   {
+  //     propertyName     : 'url',
+  //     template         : 'components/ui-table/cell/cell-link',
+  //     title            : 'Public URL',
+  //     disableSorting   : true,
+  //     disableFiltering : true
+  //   }
+  // ],
+  columns     : [
     {
-      propertyName : 'name',
-      template     : 'components/ui-table/cell/cell-event-general',
-      title        : 'Name'
+      name      : 'Name',
+      valuePath : 'name'
+      // cellComponent : 'ui-table/cell/cell-event-general',
+      // dateFormat    : 'MMMM DD, YYYY - HH:mm A'
+
     },
     {
-      propertyName : 'starts-at',
-      template     : 'components/ui-table/cell/cell-event-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
-      title        : 'Date'
+      name          : 'Date',
+      valuePath     : 'startsAt',
+      cellComponent : 'ui-table/cell/cell-event-date'
+
     },
     {
-      propertyName     : 'roles',
-      template         : 'components/ui-table/cell/cell-roles',
-      title            : 'Roles',
-      disableSorting   : true,
-      disableFiltering : true
+      name          : 'Roles',
+      valuePath     : 'roles',
+      cellComponent : 'ui-table/cell/cell-roles'
     },
     {
-      propertyName     : 'sessionsByState',
-      template         : 'components/ui-table/cell/cell-sessions-dashboard',
-      title            : 'Sessions',
-      disableSorting   : true,
-      disableFiltering : true
+      name          : 'Sessions',
+      valuePath     : 'sessions',
+      cellComponent : 'ui-table/cell/cell-sessions-dashboard'
     },
     {
-      propertyName     : 'speakers.length',
-      template         : 'components/ui-table/cell/cell-speakers-dashboard',
-      title            : 'Speakers',
-      disableSorting   : true,
-      disableFiltering : true
+      name          : 'Speakers',
+      valuePath     : 'speakers',
+      cellComponent : 'ui-table/cell/cell-speakers-dashboard'
+
     },
     {
-      propertyName     : 'tickets',
-      template         : 'components/ui-table/cell/cell-tickets',
-      title            : 'Tickets',
-      disableSorting   : true,
-      disableFiltering : true
+      name          : 'Tickets',
+      valuePath     : 'tickets',
+      cellComponent : 'ui-table/cell/cell-tickets'
+
     },
     {
-      propertyName     : 'url',
-      template         : 'components/ui-table/cell/cell-link',
-      title            : 'Public URL',
-      disableSorting   : true,
-      disableFiltering : true
+      name          : 'Public URL',
+      valuePath     : 'url',
+      cellComponent : 'ui-table/cell/cell-link'
+
     }
   ],
+
+  rows: computed('model.data', function() {
+    const rows = [];
+    this.model.data.forEach(row => {
+      rows.pushObject({
+        name     : row.name,
+        startsAt : row.startsAt,
+        roles    : row,
+        sessions : row,
+        speakers : row,
+        tickets  : row,
+        url      : row
+      });
+    });
+    return rows;
+  }),
   actions: {
     moveToPublic(id) {
       this.transitionToRoute('public', id);
