@@ -846,6 +846,29 @@
     ember-cli-babel "^6.6.0"
     ember-cli-version-checker "^2.1.0"
 
+"@ember-decorators/component@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/component/-/component-6.0.0.tgz#1800cbd48ab478620b1fba93ca050b930ff957f8"
+  integrity sha512-kdXZ+SV286vJ0l4ZJWK6ZbTApevebgSnLdi6++ld3H7uc7uI1XLGzxTIyp2/eFeclJlYiy/KnV0ElTAk35dPGQ==
+  dependencies:
+    "@ember-decorators/utils" "^6.0.0"
+    ember-cli-babel "^7.1.3"
+
+"@ember-decorators/object@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/object/-/object-6.0.0.tgz#79dc37e803b5da64e21346444d0cb3d3825224fa"
+  integrity sha512-VK4PT1fBZB0SPd+6f1YVyNw9PO5vK/wV05lIANVmvjE8SHP09ig1z04ajBujQMJtbQBFbTfwwnxtBAOfNUNr5g==
+  dependencies:
+    "@ember-decorators/utils" "^6.0.0"
+    ember-cli-babel "^7.1.3"
+
+"@ember-decorators/utils@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-6.0.0.tgz#94ac94ce03b607fc0d2d6a058b9a27e20735ec8e"
+  integrity sha512-moW4Oa7X1CN15LvjHlJVuwI4PpwTjXTPHPCCJll+a0X1sowQhObcLRykn6OMwdm9naCROGnRmcwpVqnE0eFjBg==
+  dependencies:
+    ember-cli-babel "^7.1.3"
+
 "@ember/jquery@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@ember/jquery/-/jquery-0.6.0.tgz#5fe9d39b15c9d47fe495302b2a6176059a6267cd"
@@ -1895,15 +1918,16 @@ babel-core@^6.26.3:
     slash "^1.0.0"
     source-map "^0.5.7"
 
-babel-eslint@^8.2.3:
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-8.2.3.tgz#1a2e6681cc9bc4473c32899e59915e19cd6733cf"
+babel-eslint@^8.0.0:
+  version "8.2.6"
+  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-8.2.6.tgz#6270d0c73205628067c0f7ae1693a9e797acefd9"
+  integrity sha512-aCdHjhzcILdP8c9lej7hvXKvQieyRt20SF102SIGyY4cUIiw6UaAtK4j2o3dXX74jEmy0TJ0CEhv4fTIM3SzcA==
   dependencies:
     "@babel/code-frame" "7.0.0-beta.44"
     "@babel/traverse" "7.0.0-beta.44"
     "@babel/types" "7.0.0-beta.44"
     babylon "7.0.0-beta.44"
-    eslint-scope "~3.7.1"
+    eslint-scope "3.7.1"
     eslint-visitor-keys "^1.0.0"
 
 babel-generator@^6.18.0, babel-generator@^6.26.0:
@@ -6078,6 +6102,15 @@ ember-debug-handlers-polyfill@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ember-debug-handlers-polyfill/-/ember-debug-handlers-polyfill-1.1.1.tgz#e9ae0a720271a834221179202367421b580002ef"
 
+ember-decorators@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ember-decorators/-/ember-decorators-6.0.0.tgz#7f324660bed126e45d0c0877924dde9681dc1821"
+  integrity sha512-qzgaE3U/bwIIsogH3r3GGTgvQ85/BnKgoapWNgoKsGQIPxyVMbDXIdznNMmDm5JdXW/B/e9Wa3TzfNsPmimeAg==
+  dependencies:
+    "@ember-decorators/component" "^6.0.0"
+    "@ember-decorators/object" "^6.0.0"
+    ember-cli-babel "^7.7.3"
+
 ember-drag-drop@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/ember-drag-drop/-/ember-drag-drop-0.6.3.tgz#65e2adfffd427875a0fb2e9f15f470dcad2e5d3d"
@@ -6772,16 +6805,17 @@ eslint-plugin-node@^9.0.1:
     resolve "^1.10.1"
     semver "^6.0.0"
 
-eslint-scope@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.0.tgz#50bf3071e9338bcdc43331794a0cb533f0136172"
+eslint-scope@3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-3.7.1.tgz#3d63c3edfda02e06e01a452ad88caacc7cdcb6e8"
+  integrity sha1-PWPD7f2gLgbgGkUq2IyqzHzctug=
   dependencies:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-scope@~3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-3.7.1.tgz#3d63c3edfda02e06e01a452ad88caacc7cdcb6e8"
+eslint-scope@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.0.tgz#50bf3071e9338bcdc43331794a0cb533f0136172"
   dependencies:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
