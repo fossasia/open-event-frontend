@@ -1,0 +1,16 @@
+<div class="ui secondary menu">
+  <div class="ui secondary mini labeled icon compact menu">
+    <a class="item" {{action 'moveToPreviousPage'}}>
+      <i class="caret left icon"></i>
+      Previous
+    </a>
+    <a class="item" {{action 'moveToNextPage'}}>
+       <i class="caret right icon"></i>
+      Next
+    </a>
+  </div>
+  <div class="ui text right padded menu">
+    Showing {{currentRange}} of  {{totalCount}} entries
+  </div>
+</div>
+
