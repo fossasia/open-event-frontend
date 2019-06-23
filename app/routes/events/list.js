@@ -1,12 +1,18 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
 import moment from 'moment';
 
-export default Route.extend({
-  queryParams: {
-    currentPage: {
+export default class extends Route {
+
+  queryParams = {
+    page: {
+      refreshModel: true
+    },
+    per_page: {
       refreshModel: true
     }
-  },
+  };
+
   titleToken() {
     switch (this.get('params.event_state')) {
       case 'live':
@@ -16,16 +22,17 @@ export default Route.extend({
       case 'past':
         return this.l10n.t('Past');
     }
-  },
+  }
+
   beforeModel(transition) {
     this._super(...arguments);
     const eventState = transition.to.params.event_state;
     if (!['live', 'draft', 'past'].includes(eventState)) {
       this.replaceWith('events.view', eventState);
     }
-  },
+  }
+
   async model(params) {
-    console.log(params);
     this.set('params', params);
     let filterOptions = [];
     if (params.event_state === 'live') {
@@ -81,30 +88,19 @@ export default Route.extend({
         }
       ];
     }
-
-    let queryObject =  {
-      include        : 'tickets,sessions,speakers,owners,organizers,coorganizers,track-organizers,registrars,moderators',
-      filter         : filterOptions,
-      'page[size]'   : 2,
-      'page[number]' : this.params.currentPage || 1
-    };
-
-    let store = this.get('authManager.currentUser');
-
-    const data = await store.query('events', queryObject);
-
     return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'events',
-      meta: data.meta
+      data: await this.authManager.currentUser.query('events', {
+        include        : 'tickets,sessions,speakers,owners,organizers,coorganizers,track-organizers,registrars,moderators',
+        filter         : filterOptions,
+        'page[size]'   : params.per_page,
+        'page[number]' : params.page || 1
+      })
     };
 
-  },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
   }
-});
+
+  @action
+  refreshRoute() {
+    this.refresh();
+  }
+}

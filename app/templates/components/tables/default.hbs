@@ -4,7 +4,10 @@
     {{#b.row as |r|}}
       {{#r.cell as |cell column row|}}
         {{#if column.cellComponent}}
-          {{#component column.cellComponent record=(get row column.valuePath)}}
+          {{#component column.cellComponent
+                       record=(get row column.valuePath)
+                       extraRecords=(get-properties row column.extraValuePaths)
+                       props=(hash options=column.options actions=column.actions)}}
             {{cell}}
           {{/component}}
         {{else}}

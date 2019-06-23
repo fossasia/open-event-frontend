@@ -1,21 +1,27 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
-export default Component.extend({
-  currentRange: computed(function() {
-    return '1-10';
-  }),
-  pageCount: computed(function() {
+import { computed, action } from '@ember/object';
 
-  }),
-  actions: {
-    moveToNextPage() {
-      console.log('hello');
-      this.incrementProperty('currentPage');
-    },
-    moveToPreviousPage() {
-      console.log('pevious');
-      this.decrementProperty('currentPage');
-    }
-  },
-  totalCount: 100
-});
+export default class extends Component {
+
+  totalCount = 100;
+
+  @computed()
+  get currentRange() {
+    return '1-10';
+  }
+
+  @computed()
+  get pageCount() {
+    return 10;
+  }
+
+  @action
+  moveToNextPage() {
+    this.incrementProperty('currentPage');
+  }
+
+  @action
+  moveToPreviousPage() {
+    this.decrementProperty('currentPage');
+  }
+}
