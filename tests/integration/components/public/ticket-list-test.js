@@ -5,6 +5,7 @@ import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-in
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
+
 module('Integration | Component | public/ticket list', function(hooks) {
   setupIntegrationTest(hooks);
 
@@ -50,10 +51,16 @@ module('Integration | Component | public/ticket list', function(hooks) {
       })
     ]
   );
+  const eventTax = EmberObject.create({
+    name                 : 'Sample Tax',
+    rate                 : 20,
+    isTaxIncludedInPrice : true
+  });
   test('it renders', async function(assert) {
     this.set('data', tickets);
+    this.set('taxInfo', eventTax);
     this.actions.placeOrder = function() { };
-    await render(hbs `{{public/ticket-list data=data placeOrder=(action 'placeOrder') eventCurrency='USD'}}`);
+    await render(hbs `{{public/ticket-list data=data placeOrder=(action 'placeOrder') eventCurrency='USD' taxInfo=taxInfo}}`);
     assert.ok(this.element.innerHTML.trim().includes('Standard Ticket'));
   });
 });
