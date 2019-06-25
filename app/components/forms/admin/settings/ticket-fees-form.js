@@ -17,6 +17,7 @@ export default Component.extend({
   actions: {
     addNewTicket() {
       let settings = this.model;
+      console.log(this.model.toArray());
       let incorrect_settings = settings.filter(function(setting) {
         return (!setting.get('currency') || !setting.get('country'));
       });

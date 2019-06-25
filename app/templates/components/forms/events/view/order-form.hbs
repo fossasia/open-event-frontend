@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each data.customForms as |field|}}
+          {{#each normalFields as |field|}}
             <tr class="{{if field.isIncluded 'positive'}}">
               <td class="{{if device.isMobile 'center' 'right'}} aligned">
                 <label class="{{if field.isFixed 'required'}}">
@@ -55,6 +55,63 @@
       </table>
     </div>
   </div>
+  <div>
+    <h3 class="ui dividing header">
+      <i class="options box icon"></i>
+      <div class="content">
+        {{t 'Custom Fields'}}
+      </div>
+    </h3>
+  </div>
+  <div class="ui hidden divider"></div>
+  <div class="ui stackable grid">
+    {{#each data.customForms as |question|}}
+      {{#if question.isCustomQuestion}}
+        <div class="ui field three wide column">
+          <label class="required">{{t 'Name'}}</label>
+          {{input type='text' name='name' value=question.fieldIdentifier placeholder=(t 'Name of field')}}
+        </div>
+        <div class="ui field four wide column">
+          <label>{{t 'Question Prompt'}}</label>
+          {{input type='text' name='prompt' value=question.prompt placeholder=(t 'Question Prompt')}}
+        </div>
+        <div class="ui field two wide column">
+          <label class="required">{{t 'Require'}}</label>
+          {{ui-checkbox checked=question.isRequired class='slider' onChange=(action (mut question.isRequired))}}
+        </div>
+        <div class="ui field two wide column">
+          <label class="required">{{t 'Include'}}</label>
+          {{ui-checkbox checked=question.isIncluded class='slider' onChange=(action (mut question.isIncluded))}}
+        </div>
+        <div class="ui field two wide column">
+            <label class="required">{{t 'Type'}}</label>
+            {{#ui-dropdown class='search selection' selected=question.type}}
+            {{input type='hidden' value=question.type}}
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select Type'}}</div>
+            <div class="menu">
+              {{#each typeList as |typeList|}}
+                <div class="item" data-value="{{typeList.type}}">
+                  {{typeList.type}}
+                </div>
+              {{/each}}
+            </div>
+          {{/ui-dropdown}}
+        </div>
+        <div class="field one wide column centered row" style="margin-top: 24px;">
+          {{#ui-popup content=(t 'Delete')
+                      class='ui icon button'
+                      click=(action (confirm (t 'Are you sure you would like to remove this event fee?') (action 'deleteQuestion' question)))}}
+            <i class="trash outline icon"></i>
+          {{/ui-popup}}
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+  <div class="ui hidden divider"></div>
+  <button type="button" class="ui teal button" {{action 'addNewQuestion'}}>
+    {{t 'Add New'}}
+  </button>
   <h3 class="ui dividing header">
     <i class="options box icon"></i>
     <div class="content">

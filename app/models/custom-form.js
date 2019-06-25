@@ -4,12 +4,14 @@ import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
 
 export default ModelBase.extend({
-  fieldIdentifier : attr('string'),
-  form            : attr('string'),
-  type            : attr('string', { defaultValue: 'text' }),
-  isRequired      : attr('boolean', { defaultValue: false }),
-  isIncluded      : attr('boolean', { defaultValue: false }),
-  isFixed         : attr('boolean', { defaultValue: false }),
+  fieldIdentifier  : attr('string'),
+  form             : attr('string'),
+  type             : attr('string', { defaultValue: 'text' }),
+  isRequired       : attr('boolean', { defaultValue: false }),
+  isIncluded       : attr('boolean', { defaultValue: false }),
+  isFixed          : attr('boolean', { defaultValue: false }),
+  isCustomQuestion : attr('boolean', { defaultValue: false }),
+  prompt           : attr('string'),
 
   event: belongsTo('event'),
 
@@ -84,7 +86,7 @@ export default ModelBase.extend({
     } else if (this.form === 'speaker') {
       name = this.get(`speaker.${name}`);
     } else {
-      name = this.get(`attendee.${name}`);
+      name = this.get(`attendee.${name}`) || name;
     }
     return name;
   }),
