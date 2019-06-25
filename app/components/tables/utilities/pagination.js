@@ -11,14 +11,14 @@ export default class extends Component {
   @computed('currentPage', 'pageSize', 'totalContentLength')
   get currentRange() {
     let firstIndex = this.totalContentLength === 0 ? 0 : (this.currentPage - 1) * this.pageSize + 1;
-    let lastIndex = this.currentPage === this.pageCount ? this.totalContentLength : this.currentPage * this.pageSize;
+    let lastIndex = (this.currentPage === this.pageCount || this.pageSize === 0) ? this.totalContentLength : this.currentPage * this.pageSize;
     return `${firstIndex} - ${lastIndex}`;
   }
 
   @computed('currentPage', 'pageSize', 'totalContentLength')
   get pageCount() {
-    let totalPages = 0;
-    if (this.pageSize < this.totalContentLength) {
+    let totalPages = 1;
+    if (parseInt(this.pageSize) !== 0 && this.pageSize < this.totalContentLength) {
       totalPages = parseInt(this.totalContentLength / this.pageSize);
       if (this.totalContentLength % this.pageSize) {
         totalPages += 1;
