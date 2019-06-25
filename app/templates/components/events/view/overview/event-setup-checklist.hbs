@@ -18,6 +18,21 @@
         </div>
       </div>
     </a>
+    <a href="{{href-to 'events.view.edit.attendee'}}" class="ui segment {{unless data.event.isTicketFormEnabled 'secondary'}} grid less margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if data.event.isTicketFormEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Attendee Form'}}
+            <div class="sub header">
+              {{t 'Information to be collected from attendees'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
     <a href="{{href-to 'events.view.edit.sponsors'}}" class="ui {{unless data.event.isSponsorsEnabled 'secondary'}} segment grid less margin">
       <div class="ui row">
         <div class="column one wide">
