@@ -1,16 +1,17 @@
-<div class="ui secondary menu">
-  <div class="ui secondary mini labeled icon compact menu">
-    <a class="item" {{action 'moveToPreviousPage'}}>
-      <i class="caret left icon"></i>
-      Previous
+  <div class="ui small pagination menu">
+    <a class="item {{if moveToPreviousPageDisabled 'disabled'}}" {{action 'moveToFirstPage'}}>
+      <i class="angle double left icon"></i>
     </a>
-    <a class="item" {{action 'moveToNextPage'}}>
-       <i class="caret right icon"></i>
-      Next
+    <a class="item {{if moveToPreviousPageDisabled 'disabled'}}" {{action 'moveToPreviousPage'}}>
+      <i class="angle left icon"></i>
+    </a>
+    <a class="item {{if moveToNextPageDisabled 'disabled'}}" {{action 'moveToNextPage'}}>
+       <i class="angle right icon"></i>
+    </a>
+    <a class="item {{if moveToNextPageDisabled 'disabled'}}" {{action 'moveToLastPage'}}>
+      <i class="angle double right icon"></i>
     </a>
   </div>
-  <div class="ui text right padded menu">
-    Showing {{currentRange}} of  {{totalCount}} entries
+  <div class="ui right floated less padding basic segment">
+    {{t 'Showing'}} {{currentRange}} {{t 'of'}}  {{totalContentLength}} {{t 'entries'}}
   </div>
-</div>
-

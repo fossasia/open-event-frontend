@@ -13,8 +13,14 @@ export default class extends Controller {
         name            : 'Name',
         valuePath       : 'name',
         extraValuePaths : ['startsAt', 'endAt'],
+        cellComponent   : 'ui-table/cell/cell-event-general',
         options         : {
           dateFormat: 'MMMM DD, YYYY - HH:mm A'
+        },
+        actions: {
+          moveToPublic  : this.moveToPublic.bind(this),
+          moveToDetails : this.moveToDetails.bind(this),
+          editEvent     : this.editEvent.bind(this)
         }
       },
       {
@@ -49,14 +55,6 @@ export default class extends Controller {
         name          : 'Public URL',
         valuePath     : 'url',
         cellComponent : 'ui-table/cell/cell-link'
-      },
-      {
-        name          : 'Action',
-        valuePath     : 'name',
-        cellComponent : 'ui-table/cell/cell-actions-test',
-        actions       : {
-          doAction: this.doAction.bind(this)
-        }
       }
     ];
   }
@@ -66,7 +64,7 @@ export default class extends Controller {
     const rows = [];
     this.model.data.forEach(row => {
       rows.pushObject({
-        name     : row.name,
+        name     : row,
         startsAt : row.startsAt,
         roles    : row,
         sessions : row,

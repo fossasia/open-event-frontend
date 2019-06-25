@@ -1,27 +1,72 @@
 import Component from '@ember/component';
-import { computed, action } from '@ember/object';
+import { computed, action, get } from '@ember/object';
 
 export default class extends Component {
 
   totalCount = 100;
 
-  @computed()
+  metaPagesCountProperty = 'page[size]';
+  metaItemsCountProperty = 'count';
+
+  @computed('currentPage', 'pageSize', 'totalContentLength')
   get currentRange() {
-    return '1-10';
+    let firstIndex = this.totalContentLength === 0 ? 0 : (this.currentPage - 1) * this.pageSize + 1;
+    let lastIndex = this.currentPage === this.pageCount ? this.totalContentLength : this.currentPage * this.pageSize;
+    return `${firstIndex} - ${lastIndex}`;
   }
 
-  @computed()
+  @computed('currentPage', 'pageSize', 'totalContentLength')
   get pageCount() {
-    return 10;
+    let totalPages = 0;
+    if (this.pageSize < this.totalContentLength) {
+      totalPages = parseInt(this.totalContentLength / this.pageSize);
+      if (this.totalContentLength % this.pageSize) {
+        totalPages += 1;
+      }
+    }
+    return totalPages;
+  }
+
+  @computed('metaData')
+  get totalContentLength() {
+    return get(this.metaData, this.metaItemsCountProperty);
+  }
+
+  @computed('currentPage')
+  get moveToPreviousPageDisabled() {
+    return this.currentPage <= 1;
+
+  }
+  @computed('currentPage', 'pageCount')
+  get moveToNextPageDisabled() {
+    return this.currentPage >= this.pageCount;
   }
 
   @action
   moveToNextPage() {
-    this.incrementProperty('currentPage');
+    if (!this.moveToNextPageDisabled) {
+      this.incrementProperty('currentPage');
+    }
   }
 
   @action
   moveToPreviousPage() {
-    this.decrementProperty('currentPage');
+    if (!this.moveToPreviousPageDisabled) {
+      this.decrementProperty('currentPage');
+    }
+  }
+
+  @action
+  moveToLastPage() {
+    if (!this.moveToNextPageDisabled) {
+      this.set('currentPage', this.pageCount);
+    }
+  }
+
+  @action
+  moveToFirstPage() {
+    if (!this.moveToPreviousPageDisabled) {
+      this.set('currentPage', 1);
+    }
   }
 }

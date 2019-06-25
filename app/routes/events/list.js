@@ -92,8 +92,8 @@ export default class extends Route {
       data: await this.authManager.currentUser.query('events', {
         include        : 'tickets,sessions,speakers,owners,organizers,coorganizers,track-organizers,registrars,moderators',
         filter         : filterOptions,
-        'page[size]'   : params.per_page,
-        'page[number]' : params.page || 1
+        'page[size]'   : params.per_page || 10,
+        'page[number]' : params.page || 4
       })
     };
 
