@@ -4,7 +4,7 @@ import { computed, action } from '@ember/object';
 export default class extends Controller {
   queryParams = ['page', 'per_page'];
   page = 1;
-  per_page    = 1;
+  per_page = 2;
 
   @computed()
   get columns() {

@@ -1,21 +1,36 @@
-{{#ember-table as |t|}}
-  {{t.head columns=columns}}
-  {{#t.body rows=rows as |b|}}
-    {{#b.row as |r|}}
-      {{#r.cell as |cell column row|}}
-        {{#if column.cellComponent}}
-          {{#component column.cellComponent
-                       record=(get row column.valuePath)
-                       extraRecords=(get-properties row column.extraValuePaths)
-                       props=(hash options=column.options actions=column.actions)}}
-            {{cell}}
-          {{/component}}
-        {{else}}
-          {{cell}}
-        {{/if}}
-      {{/r.cell}}
-    {{/b.row}}
-  {{/t.body}}
-{{/ember-table}}
+<div class="ui grid">
+  <div class="ui less bottom padding row">
+    <div class="left aligned eight wide column">
+      {{tables/utilities/page-size-input pageSize=pageSize}}
+    </div>
+    <div class="eight wide right aligned column">
+      {{tables/utilities/search-box searchQuery=searchQuery}}
+    </div>
+  </div>
 
-{{tables/utilities/pagination currentPage=currentPage pageSize=pageSize metaData=metaData}}
+  <div class="row">
+    {{#ember-table as |t|}}
+      {{t.head columns=columns}}
+      {{#t.body rows=rows as |b|}}
+        {{#b.row as |r|}}
+          {{#r.cell as |cell column row|}}
+            {{#if column.cellComponent}}
+              {{#component column.cellComponent
+                           record=(get row column.valuePath)
+                           extraRecords=(get-properties row column.extraValuePaths)
+                           props=(hash options=column.options actions=column.actions)}}
+                {{cell}}
+              {{/component}}
+            {{else}}
+              {{cell}}
+            {{/if}}
+          {{/r.cell}}
+        {{/b.row}}
+      {{/t.body}}
+    {{/ember-table}}
+  </div>
+
+  <div class="row">
+    {{tables/utilities/pagination currentPage=currentPage pageSize=pageSize metaData=metaData}}
+  </div>
+</div>
