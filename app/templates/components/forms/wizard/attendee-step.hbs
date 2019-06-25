@@ -105,8 +105,8 @@
             {{ui-checkbox checked=question.isIncluded class='slider' onChange=(action (mut question.isIncluded))}}
           </div>
           <div class="ui field two wide column">
-              <label class="required">{{t 'Type'}}</label>
-              {{#ui-dropdown class='search selection' selected=question.type}}
+            <label class="required">{{t 'Type'}}</label>
+            {{#ui-dropdown class='search selection' selected=question.type}}
               {{input type='hidden' value=question.type}}
               <i class="dropdown icon"></i>
               <div class="default text">{{t 'Select Type'}}</div>

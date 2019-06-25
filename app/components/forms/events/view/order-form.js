@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { computed } from "@ember/object";
-import { fieldTypes } from "open-event-frontend/utils/dictionary/custom-fields";
+import { computed } from '@ember/object';
+import { fieldTypes } from 'open-event-frontend/utils/dictionary/custom-fields';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { orderBy } from 'lodash-es';
 
@@ -23,10 +23,10 @@ export default Component.extend(FormMixin, {
       }
     };
   },
-  typeList : computed(function() {
+  typeList: computed(function() {
     return orderBy(fieldTypes, 'type');
   }),
-  normalFields: computed(function() {
+  normalFields: computed('data.customForms', function() {
     return this.data.customForms.filter(field => {
       return !field.isCustomQuestion;
     });

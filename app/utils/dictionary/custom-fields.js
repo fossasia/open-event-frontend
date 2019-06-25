@@ -1,23 +1,23 @@
 export const fieldTypes = [
   {
-    type : 'text'
+    type: 'text'
   },
   {
-    type : 'checkbox'
+    type: 'checkbox'
   },
   {
-    type : 'select'
+    type: 'select'
   },
   {
-    type : 'file'
+    type: 'file'
   },
   {
-    type : 'image'
+    type: 'image'
   },
   {
-    type : 'number'
+    type: 'number'
   },
   {
-    type : 'email'
+    type: 'email'
   }
-]
+];

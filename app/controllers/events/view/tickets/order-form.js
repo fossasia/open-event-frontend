@@ -14,7 +14,6 @@ export default Controller.extend({
 
   actions: {
     save(data) {
-      console.log('SHUT UP : ', data);
       this.set('isLoading', true);
       this.saveForms(data)
         .then(() => {
