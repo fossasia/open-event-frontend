@@ -9,15 +9,20 @@
               {{input type='checkbox' checked=data.event.isTicketFormEnabled}}
               <label class="weight-300" style="font-size: large">
                 {{if data.event.isTicketFormEnabled (t 'Turn off') (t 'Turn on')}}
-                {{t 'Ticket Form'}}
+                {{t 'Attendee Form'}}
               </label>
             </div>
           </div>
         </div>
       </div>
+      <div class="ui center aligned header">
+        {{t 'Information About Attendee Form'}}
+      </div>
+      <div class="ui muted text">  
+        {{t 'The attendee form by default collects the name and email of an attendee. You also have the option to collect additional information such as contact data, position, organization and more. This information will be available together with the ticket information in a CSV file in the ticket section of your event.'}}
+      </div>
     </div>
   </div>
-
   {{#if data.event.isTicketFormEnabled}}
     <div class="ui hidden divider"></div>
     <h3 class="ui dividing header">
