@@ -101,7 +101,7 @@
         <div class="field one wide column centered row" style="margin-top: 24px;">
           {{#ui-popup content=(t 'Delete')
                       class='ui icon button'
-                      click=(action (confirm (t 'Are you sure you would like to remove this event fee?') (action 'deleteQuestion' question)))}}
+                      click=(action (confirm (t 'Are you sure you would like to remove this custom field?') (action 'deleteQuestion' question)))}}
             <i class="trash outline icon"></i>
           {{/ui-popup}}
         </div>
@@ -110,7 +110,7 @@
   </div>
   <div class="ui hidden divider"></div>
   <button type="button" class="ui teal button" {{action 'addNewQuestion'}}>
-    {{t 'Add New'}}
+    {{t 'Add New Custom Field'}}
   </button>
   <h3 class="ui dividing header">
     <i class="options box icon"></i>

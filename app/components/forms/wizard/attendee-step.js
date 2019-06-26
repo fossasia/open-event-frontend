@@ -2,22 +2,18 @@ import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { computed } from '@ember/object';
 import { fieldTypes } from 'open-event-frontend/utils/dictionary/custom-fields';
-import { orderBy } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
 
-  normalFields: computed('data.customForms', function() {
+  normalFields: computed('data.customForms.@each.isCustomQuestion', function() {
     return this.data.customForms.filter(field => {
       return !field.isCustomQuestion;
     });
   }),
-  typeList: computed(function() {
-    return orderBy(fieldTypes, 'type');
-  }),
+  typeList: fieldTypes,
   checkIncompleteFields() {
-    let fields = this.data.customForms;
-    let incompleteFields = fields.filter(function(field) {
-      return ((!field.fieldIdentifier || !field.type || field.fieldIdentifier === '') && field.isCustomQuestion);
+    let incompleteFields = this.data.customForms.filter(function(field) {
+      return (!field.fieldIdentifier || !field.type || field.fieldIdentifier === '') && field.isCustomQuestion;
     });
     if (incompleteFields.length > 0) {
       return true;
@@ -26,8 +22,7 @@ export default Component.extend(FormMixin, {
   },
   actions: {
     saveDraft() {
-      let checkFields = this.checkIncompleteFields();
-      if (checkFields) {
+      if (this.checkIncompleteFields()) {
         this.notify.error(this.l10n.t('Existing fields need to be completed before new items can be added.'));
       } else {
         this.onValid(() => {
@@ -36,12 +31,11 @@ export default Component.extend(FormMixin, {
         });
       }
     },
-    deleteQuestion(field) {
-      field.destroyRecord();
+    async deleteQuestion(field) {
+      await field.destroyRecord();
     },
     addNewQuestion() {
-      let checkFields = this.checkIncompleteFields();
-      if (checkFields) {
+      if (this.checkIncompleteFields()) {
         this.notify.error(this.l10n.t('Existing fields need to be completed before new items can be added.'));
       } else {
         this.data.customForms.pushObject(this.store.createRecord('custom-form', {
@@ -54,8 +48,7 @@ export default Component.extend(FormMixin, {
       }
     },
     move(direction) {
-      let checkFields = this.checkIncompleteFields();
-      if (checkFields) {
+      if (this.checkIncompleteFields()) {
         this.notify.error(this.l10n.t('Existing fields need to be completed before new items can be added.'));
       } else {
         this.onValid(() => {
@@ -64,8 +57,7 @@ export default Component.extend(FormMixin, {
       }
     },
     publish() {
-      let checkFields = this.checkIncompleteFields();
-      if (checkFields) {
+      if (this.checkIncompleteFields()) {
         this.notify.error(this.l10n.t('Existing fields need to be completed before new items can be added.'));
       } else {
         this.onValid(() => {
