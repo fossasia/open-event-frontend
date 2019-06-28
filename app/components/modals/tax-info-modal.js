@@ -49,56 +49,6 @@ export default ModalBase.extend(FormMixin, {
               prompt : this.l10n.t('Please give us your tax ID')
             }
           ]
-        },
-        taxInvoiceCompany: {
-          identifier : 'tax_invoice_company',
-          depends    : 'send_tax_invoices',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give us your company name')
-            }
-          ]
-        },
-        taxInvoiceAddress: {
-          identifier : 'tax_invoice_address',
-          depends    : 'send_tax_invoices',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give us your address')
-            }
-          ]
-        },
-
-        taxInvoiceCity: {
-          identifier : 'tax_invoice_city',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give a city')
-            }
-          ]
-        },
-
-        taxInvoiceState: {
-          identifier : 'tax_invoice_state',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give a state')
-            }
-          ]
-        },
-
-        taxInvoiceZipCode: {
-          identifier : 'tax_invoice_zipcode',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please provide a zip code')
-            }
-          ]
         }
       }
     };

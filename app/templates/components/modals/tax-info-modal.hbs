@@ -1,7 +1,7 @@
 <div class="header">
   {{t 'Add tax information'}}
 </div>
-<div class="{{if tax.shouldSendInvoice "y-scrollable scrollable-"}}modal content">
+<div class="y-scrollable scrollable-modal content">
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
@@ -45,23 +45,23 @@
       </div>
     </div>
     <div class="field">
-      <label class="required">{{t 'Registered Company'}}</label>
+      <label>{{t 'Registered Company'}}</label>
       {{input type='text' id='tax_invoice_company' value=tax.registeredCompany}}
     </div>
     <div class="field">
-      <label class="required">{{t 'Business Address'}}</label>
+      <label>{{t 'Business Address'}}</label>
       {{textarea rows=3 id='tax_invoice_address' value=tax.address}}
     </div>
     <div class="field">
-      <label class="required">{{t 'City'}}</label>
+      <label>{{t 'City'}}</label>
       {{input type='text' id='tax_invoice_city' value=tax.city}}
     </div>
     <div class="field">
-      <label class="required">{{t 'State'}}</label>
+      <label>{{t 'State'}}</label>
       {{input type='text' id='tax_invoice_state' value=tax.state}}
     </div>
     <div class="field">
-      <label class="required">{{t 'Zipcode'}}</label>
+      <label>{{t 'Zipcode'}}</label>
       {{input type='text' id='tax_invoice_zipcode' value=tax.zip}}
     </div>
     <div class="field">
