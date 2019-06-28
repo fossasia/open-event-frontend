@@ -43,7 +43,7 @@
       {{/if}}
       {{#if filters.cfs}}
         <div class="ui mini label">
-          {{if (eq filters.cfs 'true') 'Open' 'Closed'}}
+          {{if (eq filters.cfs 'Open') 'Open' 'Closed'}}
           <a role="button" {{action 'clearFilter' 'cfs'}}><i class="icon close"></i></a>
         </div>
       {{/if}}

@@ -62,7 +62,7 @@ export default Component.extend({
     },
 
     selectEventCfs(cfs) {
-      this.set('cfs', cfs.toString() === this.cfs ? null : cfs);
+      this.set('cfs', cfs === this.cfs ? null : cfs);
     },
 
     selectDateFilter(dateType) {
