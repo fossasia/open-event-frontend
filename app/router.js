@@ -143,8 +143,8 @@ router.map(function() {
       this.route('organizers');
       this.route('marketer');
       this.route('locations');
-      this.route('fees');
       this.route('invoices');
+      this.route('revenue');
       this.route('discounted-events');
     });
     this.route('sessions',  function() {
