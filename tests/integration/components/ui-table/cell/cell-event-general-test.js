@@ -7,12 +7,23 @@ module('Integration | Component | ui table/cell/cell event general', function(ho
   setupIntegrationTest(hooks);
 
   const record = { name: 'Event', image: 'url' };
+
+  const props = {
+    actions: {
+      editEvent     : () => {},
+      moveToDetails : () => {},
+      moveToPublic  : () => {}
+    }
+  };
+
   test('it renders', async function(assert) {
-    this.set('record', record);
-    this.set('editEvent', () => {});
-    this.set('moveToDetails', () => {});
-    this.set('moveToPublic', () => {});
-    await render(hbs`{{ui-table/cell/cell-event-general record=record editEvent=(action editEvent) moveToDetails=(action moveToDetails) moveToPublic=(action moveToPublic)}}`);
+
+    this.setProperties({
+      record,
+      props
+    });
+
+    await render(hbs`{{ui-table/cell/cell-event-general record=record props=props}}`);
     assert.ok(this.element.textContent.trim().includes('Event'));
   });
 });

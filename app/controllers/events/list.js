@@ -4,7 +4,7 @@ import { computed, action } from '@ember/object';
 export default class extends Controller {
   queryParams = ['page', 'per_page'];
   page = 1;
-  per_page = 2;
+  per_page = 10;
   search = null;
   sort_dir = null;
   sort_by = null;
@@ -31,37 +31,40 @@ export default class extends Controller {
       {
         name          : 'Date',
         valuePath     : 'startsAt',
-        isSortable: false,
         cellComponent : 'ui-table/cell/cell-event-date'
 
       },
       {
         name          : 'Roles',
         valuePath     : 'roles',
-        cellComponent : 'ui-table/cell/cell-roles'
+        cellComponent : 'ui-table/cell/cell-roles',
+        isSortable    : false
       },
       {
         name          : 'Sessions',
         valuePath     : 'sessions',
-        isSortable: false,
+        isSortable    : false,
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
       },
       {
         name          : 'Speakers',
         valuePath     : 'speakers',
-        cellComponent : 'ui-table/cell/cell-speakers-dashboard'
+        cellComponent : 'ui-table/cell/cell-speakers-dashboard',
+        isSortable    : false
 
       },
       {
         name          : 'Tickets',
         valuePath     : 'tickets',
-        cellComponent : 'ui-table/cell/cell-tickets'
+        cellComponent : 'ui-table/cell/cell-tickets',
+        isSortable    : false
 
       },
       {
         name          : 'Public URL',
         valuePath     : 'url',
-        cellComponent : 'ui-table/cell/cell-link'
+        cellComponent : 'ui-table/cell/cell-link',
+        isSortable    : false
       }
     ];
   }
@@ -72,7 +75,7 @@ export default class extends Controller {
     this.model.data.forEach(row => {
       rows.pushObject({
         name     : row,
-        startsAt : row.startsAt,
+        startsAt : row,
         roles    : row,
         sessions : row,
         speakers : row,
@@ -100,10 +103,12 @@ export default class extends Controller {
 
   @action
   openDeleteEventModal(id, name) {
-    this.set('isEventDeleteModalOpen', true);
-    this.set('confirmName', '');
-    this.set('eventName', name);
-    this.set('eventId', id);
+    this.setProperties({
+      isEventDeleteModalOpen : true,
+      confirmName            : '',
+      eventName              : name,
+      eventId                : id
+    });
   }
 
   @action
@@ -111,8 +116,8 @@ export default class extends Controller {
     this.set('isLoading', true);
 
     try {
-      const event = await this.store.findRecord('event', this.eventId, { backgroundReload: false });
-      event.destroyRecord();
+      const event = this.store.peekRecord('event', this.eventId, { backgroundReload: false });
+      await event.destroyRecord();
       this.notify.success(this.l10n.t('Event has been deleted successfully.'));
       this.send('refreshRoute');
     } catch (e) {

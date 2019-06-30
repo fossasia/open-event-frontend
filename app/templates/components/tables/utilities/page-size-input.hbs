@@ -1,15 +1,15 @@
 <span>
-{{t 'Show'}}
-{{#ui-dropdown class='inline' onChange=(action (mut pageSize)) forceSelection=true}}
-  <div class="default text">{{pageSize}}</div>
-  <i class="dropdown icon"></i>
-  <div class="menu">
-    {{#each sizes as |size|}}
-      <div class="item" data-value="{{if (eq size 'All') 0 size}}">
-        {{size}}
-      </div>
-    {{/each}}
-  </div>
-{{/ui-dropdown}}
-{{t 'entries per page'}}
+  {{t 'Show'}}
+  {{#ui-dropdown class='inline' onChange=(action (mut pageSize)) forceSelection=true}}
+    <div class="default text">{{pageSize}}</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each sizes as |size|}}
+        <div class="item" data-value="{{if (eq size 'All') 0 size}}">
+          {{size}}
+        </div>
+      {{/each}}
+    </div>
+  {{/ui-dropdown}}
+  {{t 'entries per page'}}
 </span>
