@@ -1,0 +1,41 @@
+<form class="ui form" {{action 'submit' on='submit'}}> 
+  <h3 class="ui header">
+    {{t 'Payment Information'}}
+  </h3>
+  <div class="field">
+    <label class="required" for="contactName">{{t 'Contact Name'}}</label>
+    {{input type='text' id='contactName' value=(mut userBillingInfo.billingContactName)}}
+  </div>
+  <div class="field">
+    <label class="required" for="phone">{{t 'Phone'}}</label>
+    {{input type='text' id='phone' value=(mut userBillingInfo.billingPhone)}}
+  </div>
+  <div class="field">
+    <label class="required" for="company">{{t 'Company'}}</label>
+    {{input type='text' id='company' value=(mut userBillingInfo.company)}}
+  </div>
+  <div class="field">
+    <label for="taxID">{{t 'Tax ID or Business ID'}}</label>
+    {{input type='text' id='taxID' value=(mut userBillingInfo.billingTaxInfo)}}
+  </div>
+  <div class="field">
+    <label class="required" for="address">{{t 'Address'}}</label>
+    {{textarea rows='2' id='address' value=(mut userBillingInfo.billingAddress)}}
+  </div>
+  <div class="field">
+    <label class="required" for="city">{{t 'City'}}</label>
+    {{input type='text' id='city' value=(mut userBillingInfo.billingCity)}}
+  </div>
+  <div class="field">
+    <label class="required" for="zip">{{t 'Zip Code'}}</label>
+    {{input type='text' id='zip' value=(mut userBillingInfo.billingZipCode)}}
+  </div>
+  <div class="field">
+    <label for="additionalInfo">{{t 'Additional Information'}}</label>
+    {{textarea rows='4' id='additionalInfo' value=(mut userBillingInfo.billingAdditionalInfo)}}
+  </div>
+
+  <button type="submit" class="ui teal submit button update-changes">
+    {{t 'Submit'}}
+  </button>
+</form>
