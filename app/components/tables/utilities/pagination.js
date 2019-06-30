@@ -3,9 +3,7 @@ import { computed, action, get } from '@ember/object';
 
 export default class extends Component {
 
-  totalCount = 100;
 
-  metaPagesCountProperty = 'page[size]';
   metaItemsCountProperty = 'count';
 
   @computed('currentPage', 'pageSize', 'totalContentLength')

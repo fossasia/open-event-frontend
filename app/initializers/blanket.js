@@ -22,7 +22,6 @@ export function initialize(application) {
   inject('routing', 'service:-routing');
   inject('cookies', 'service:cookies');
   inject('infinity', 'service:infinity');
-  inject('headData', 'service:headData');
   application.inject('component', 'router', 'service:router');
 }
 

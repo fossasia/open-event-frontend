@@ -18,12 +18,18 @@ export default class extends Component {
 
 
   didInsertElement() {
+    super.didInsertElement(...arguments);
     if (this.sorts && this.sorts[0] && this.sorts[0].valuePath === this.column.valuePath) {
-      this.set('sortBy', this.sorts[0].valuePath);
-      this.set('sortDir', this.sorts[0].isAscending ? 'ASC' : 'DSC');
+      this.setProperties({
+        sortBy  : this.sorts[0].valuePath,
+        sortDir : this.sorts[0].isAscending ? 'ASC' : 'DSC'
+      });
+
     } else {
-      this.set('sortBy', null);
-      this.set('sortDir', null);
+      this.setProperties({
+        sortBy  : null,
+        sortDir : null
+      });
     }
   }
 }

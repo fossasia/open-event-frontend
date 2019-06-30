@@ -1,28 +1,8 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import moment from 'moment';
-
-export default class extends Route {
-
-  queryParams = {
-    page: {
-      refreshModel: true
-    },
-    per_page: {
-      refreshModel: true
-    },
-    search: {
-      refreshModel: true
-    },
-    sort_dir: {
-      refreshModel: true
-    },
-    sort_by: {
-      refreshModel: true
-    }
-  };
-
-  filterOptions = [];
+import EmberTableMixin from 'open-event-frontend/mixins/ember-table';
+export default class extends Route.extend(EmberTableMixin) {
 
   titleToken() {
     switch (this.get('params.event_state')) {
@@ -36,7 +16,7 @@ export default class extends Route {
   }
 
   beforeModel(transition) {
-    this._super(...arguments);
+    super.beforeModel(...arguments);
     const eventState = transition.to.params.event_state;
     if (!['live', 'draft', 'past'].includes(eventState)) {
       this.replaceWith('events.view', eventState);
@@ -46,9 +26,10 @@ export default class extends Route {
 
   async model(params) {
     this.set('params', params);
+    let filterOptions = [];
     const searchField = 'name';
     if (params.event_state === 'live') {
-      this.filterOptions = [
+      filterOptions = [
         {
           name : 'state',
           op   : 'eq',
@@ -79,7 +60,7 @@ export default class extends Route {
         }
       ];
     } else if (params.event_state === 'past') {
-      this.filterOptions = [
+      filterOptions = [
         {
           name : 'ends-at',
           op   : 'lt',
@@ -92,7 +73,7 @@ export default class extends Route {
         }
       ];
     } else {
-      this.filterOptions = [
+      filterOptions = [
         {
           name : 'state',
           op   : 'eq',
@@ -100,35 +81,15 @@ export default class extends Route {
         }
       ];
     }
-
-    if (params.search) {
-      this.filterOptions.pushObject({
-        name : searchField,
-        op   : 'ilike',
-        val  : `%${params.search}%`
-      });
-    } else {
-      this.filterOptions.removeObject({
-        name : searchField,
-        op   : 'ilike',
-        val  : `%${params.search}%`
-      });
-    }
-
-
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
-      include        : 'tickets,sessions,speakers,owners,organizers,coorganizers,track-organizers,registrars,moderators',
-      filter         : this.filterOptions,
+      include        : 'tickets,sessions,speakers,owner,organizers,coorganizers,track-organizers,registrars,moderators',
+      filter         : filterOptions,
       'page[size]'   : params.per_page || 10,
       'page[number]' : params.page || 4
     };
+    queryString = this.applySortFilters(queryString, params);
 
-    if (params.sort_by && params.sort_dir) {
-      queryString.sort = `${params.sort_dir === 'ASC' ? '-' : ''}${params.sort_by}`;
-    }
-    else {
-      delete queryString.sort;
-    }
     return {
       data: await this.authManager.currentUser.query('events', queryString)
     };
