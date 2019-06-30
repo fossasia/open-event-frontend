@@ -10,8 +10,19 @@ export default class extends Route {
     },
     per_page: {
       refreshModel: true
+    },
+    search: {
+      refreshModel: true
+    },
+    sort_dir: {
+      refreshModel: true
+    },
+    sort_by: {
+      refreshModel: true
     }
   };
+
+  filterOptions = [];
 
   titleToken() {
     switch (this.get('params.event_state')) {
@@ -30,13 +41,14 @@ export default class extends Route {
     if (!['live', 'draft', 'past'].includes(eventState)) {
       this.replaceWith('events.view', eventState);
     }
+
   }
 
   async model(params) {
     this.set('params', params);
-    let filterOptions = [];
+    const searchField = 'name';
     if (params.event_state === 'live') {
-      filterOptions = [
+      this.filterOptions = [
         {
           name : 'state',
           op   : 'eq',
@@ -67,7 +79,7 @@ export default class extends Route {
         }
       ];
     } else if (params.event_state === 'past') {
-      filterOptions = [
+      this.filterOptions = [
         {
           name : 'ends-at',
           op   : 'lt',
@@ -80,7 +92,7 @@ export default class extends Route {
         }
       ];
     } else {
-      filterOptions = [
+      this.filterOptions = [
         {
           name : 'state',
           op   : 'eq',
@@ -88,13 +100,37 @@ export default class extends Route {
         }
       ];
     }
+
+    if (params.search) {
+      this.filterOptions.pushObject({
+        name : searchField,
+        op   : 'ilike',
+        val  : `%${params.search}%`
+      });
+    } else {
+      this.filterOptions.removeObject({
+        name : searchField,
+        op   : 'ilike',
+        val  : `%${params.search}%`
+      });
+    }
+
+
+    let queryString = {
+      include        : 'tickets,sessions,speakers,owners,organizers,coorganizers,track-organizers,registrars,moderators',
+      filter         : this.filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 4
+    };
+
+    if (params.sort_by && params.sort_dir) {
+      queryString.sort = `${params.sort_dir === 'ASC' ? '-' : ''}${params.sort_by}`;
+    }
+    else {
+      delete queryString.sort;
+    }
     return {
-      data: await this.authManager.currentUser.query('events', {
-        include        : 'tickets,sessions,speakers,owners,organizers,coorganizers,track-organizers,registrars,moderators',
-        filter         : filterOptions,
-        'page[size]'   : params.per_page || 10,
-        'page[number]' : params.page || 4
-      })
+      data: await this.authManager.currentUser.query('events', queryString)
     };
 
   }

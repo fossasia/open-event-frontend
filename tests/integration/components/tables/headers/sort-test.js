@@ -11,16 +11,6 @@ module('Integration | Component | tables/headers/sort', function(hooks) {
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`{{tables/headers/sort}}`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#tables/headers/sort}}
-        template block text
-      {{/tables/headers/sort}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.ok(this.element.innerHTML.trim().includes(''));
   });
 });
