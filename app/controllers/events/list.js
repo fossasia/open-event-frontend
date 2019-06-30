@@ -5,6 +5,9 @@ export default class extends Controller {
   queryParams = ['page', 'per_page'];
   page = 1;
   per_page = 2;
+  search = null;
+  sort_dir = null;
+  sort_by = null;
 
   @computed()
   get columns() {
@@ -12,7 +15,9 @@ export default class extends Controller {
       {
         name            : 'Name',
         valuePath       : 'name',
+        isSortable      : true,
         extraValuePaths : ['startsAt', 'endAt'],
+        headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-general',
         options         : {
           dateFormat: 'MMMM DD, YYYY - HH:mm A'
@@ -26,6 +31,7 @@ export default class extends Controller {
       {
         name          : 'Date',
         valuePath     : 'startsAt',
+        isSortable: false,
         cellComponent : 'ui-table/cell/cell-event-date'
 
       },
@@ -37,6 +43,7 @@ export default class extends Controller {
       {
         name          : 'Sessions',
         valuePath     : 'sessions',
+        isSortable: false,
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
       },
       {
@@ -74,12 +81,6 @@ export default class extends Controller {
       });
     });
     return rows;
-  }
-
-  @action
-  doAction(eventName) {
-    // Also testing the availability of correct `this` context
-    alert(`Works on page ${this.page}. Got event name: ${eventName}`);
   }
 
   @action
