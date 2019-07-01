@@ -16,6 +16,6 @@ module('Acceptance | account/billing-info', function(hooks) {
   test('visiting account/billing-info with login', async function(assert) {
     await login(assert);
     await visit('account/billing-info');
-    assert.equal(currentURL(), 'account/billing-info');
+    assert.equal(currentURL(), '/account/billing-info/payment-info');
   });
 });

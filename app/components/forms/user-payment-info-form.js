@@ -1,22 +1,14 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
+import { pick } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
 
-  async init() {
+  async didInsertElement() {
     this._super(...arguments);
     let actualUser = await this.authManager.currentUser;
-    let userBillingInfo = {
-      billingContactName    : actualUser.billingContactName,
-      billingCity           : actualUser.billingCity,
-      billingPhone          : actualUser.billingPhone,
-      company               : actualUser.company,
-      billingTaxInfo        : actualUser.billingTaxInfo,
-      billingAddress        : actualUser.billingAddress,
-      billingZipCode        : actualUser.billingZipCode,
-      billingAdditionalInfo : actualUser.billingAdditionalInfo
-    };
+    let userBillingInfo = pick(actualUser, ['billingContactName', 'billingCity', 'billingPhone', 'company', 'billingTaxInfo', 'billingAddress', 'billingZipCode', 'billingAdditionalInfo']);
     this.set('userBillingInfo', userBillingInfo);
     this.set('actualUser', actualUser);
   },
@@ -94,20 +86,11 @@ export default Component.extend(FormMixin, {
     submit() {
       this.onValid(async() => {
         try {
-          this.actualUser.setProperties({
-            billingAdditionalInfo : this.userBillingInfo.billingAdditionalInfo,
-            billingZipCode        : this.userBillingInfo.billingZipCode,
-            billingContactName    : this.userBillingInfo.billingContactName,
-            billingPhone          : this.userBillingInfo.billingPhone,
-            company               : this.userBillingInfo.company,
-            billingTaxInfo        : this.userBillingInfo.billingTaxInfo,
-            billingCity           : this.userBillingInfo.billingCity,
-            billingAddress        : this.userBillingInfo.billingAddress
-          });
-          await this.actualUser.save();
+          this.authManager.currentUser.setProperties(this.userBillingInfo);
+          await this.authManager.currentUser.save();
           this.notify.success(this.l10n.t('Your billing details has been updated'));
         } catch (error) {
-          this.actualUser.rollbackAttributes();
+          this.authManager.currentUser.rollbackAttributes();
           this.notify.error(this.l10n.t('An unexpected error occurred'));
         }
       });
