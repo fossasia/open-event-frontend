@@ -1,10 +1,10 @@
 <div class="five column row">
-  <div class="six wide column">
+  <div class="five wide column">
     <div class="field">
       {{input type='text' name='ticket_name' placeholder=(t 'Ticket Name') value=ticket.name}}
     </div>
   </div>
-  <div class="two wide column">
+  <div class="three wide column">
     {{#if (eq ticket.type 'paid') }}
       <div class="field">
         {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price min=1}}

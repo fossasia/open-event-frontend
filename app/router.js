@@ -144,7 +144,7 @@ router.map(function() {
       this.route('marketer');
       this.route('locations');
       this.route('fees');
-      this.route('status');
+      this.route('invoices');
       this.route('discounted-events');
     });
     this.route('sessions',  function() {
