@@ -56,11 +56,12 @@
             {{#if data.discountCode}}
               <th class="ui aligned two wide">{{t 'Discount'}}</th>
             {{/if}}
-            <th class="two wide">{{t 'Quantity'}}</th>
-            <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+            <th class="four wide">{{t 'Quantity'}}</th>
             {{#if event.tax}}
-              <th class="two wide">{{t 'Tax'}}</th>
+              <th class="one wide">{{t 'Tax'}}</th>
             {{/if}}
+            <th class="ui aligned four wide">{{t 'Subtotal'}}</th>
+            
           {{/if}}
         </tr>
       </thead>
@@ -92,19 +93,25 @@
                 <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
               {{/if}}
               <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
-              <td>
-                {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
-              </td>
               {{#if event.tax}}
                 <td>
                   {{#if event.tax.isTaxIncludedInPrice}}
                     {{t 'The price is inclusive of all taxes.'}}
                   {{else}}
-                    {{event.tax.rate}}%
+                    {{#if ticket.price}}
+                      {{event.tax.rate}}%
+                    {{else}}
+                      {{t 'N/A'}}
+                    {{/if}}
                   {{/if}}
                 </td>
               {{/if}}
+              <td>
+                {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
+              </td>
             {{/if}}
+              
+              
           </tr>
         {{/each}}
       </tbody>
@@ -112,17 +119,24 @@
         <tfoot class="full-width">
           <tr>
             <th></th>
-            <th></th>
-            <th></th>
+            {{#if data.discountCode}}
+              <th colspan="2"></th>
+            {{else}}
+              <th></th>
+            {{/if}}
+            {{#if event.tax}}
+              <th></th>
+              {{#if data.discountCode}}
+                <th></th>
+              {{/if}}
+            {{/if}}
             <th>
               <div class="ui aligned small primary icon">
                 {{t 'Grand Total'}}:
               </div>
             </th>
             <th colspan="4">
-              <div class="ui aligned small primary icon">
-                {{currency-symbol eventCurrency}} {{format-number data.amount}}
-              </div>
+              {{currency-symbol eventCurrency}} {{format-number data.amount}}
             </th>
           </tr>
         </tfoot>
