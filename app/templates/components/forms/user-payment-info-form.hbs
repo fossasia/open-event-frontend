@@ -27,6 +27,14 @@
     {{input type='text' id='city' value=(mut userBillingInfo.billingCity)}}
   </div>
   <div class="field">
+    <label for="state">{{t 'State'}}</label>
+    {{input type='text' id='state' value=(mut userBillingInfo.billingState)}}
+  </div>
+  <div class="field">
+    <label class="required" for="country">{{t 'Country'}}</label>
+    {{input type='text' id='country' value=(mut userBillingInfo.billingCountry)}}
+  </div>
+  <div class="field">
     <label class="required" for="zip">{{t 'Zip Code'}}</label>
     {{input type='text' id='zip' value=(mut userBillingInfo.billingZipCode)}}
   </div>

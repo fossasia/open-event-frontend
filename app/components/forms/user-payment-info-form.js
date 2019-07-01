@@ -38,6 +38,15 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
+        country: {
+          identifier : 'country',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter your country')
+            }
+          ]
+        },
         address: {
           identifier : 'address',
           rules      : [

@@ -7,6 +7,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
   },
   beforeModel() {
     this._super(...arguments);
-    this.replaceWith('account.billing-info.payment-info');
+    this.replaceWith('account.billing.payment-info');
   }
 });

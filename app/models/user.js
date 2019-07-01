@@ -60,6 +60,7 @@ export default ModelBase.extend({
   billingZipCode        : attr('string'),
   billingTaxInfo        : attr('string'),
   billingAdditionalInfo : attr('string'),
+  billingState          : attr('string'),
 
   status: computed('lastAccessedAt', 'deletedAt', function() {
     if (this.deletedAt == null) {
