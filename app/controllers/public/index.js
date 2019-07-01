@@ -113,13 +113,6 @@ export default Controller.extend({
         return;
       }
       let { order, event } = this.model;
-      let tax =  await event.get('tax');
-      if (tax) {
-        if (!tax.get('isTaxIncludedInPrice')) {
-          let taxedPrice  = (order.amount) * (tax.rate) / 100 + (order.amount);
-          order.set('amount', taxedPrice);
-        }
-      }
       order.tickets.forEach(ticket => {
         let numberOfAttendees = ticket.orderQuantity;
         while (numberOfAttendees--) {

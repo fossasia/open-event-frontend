@@ -57,6 +57,18 @@ export default Route.extend({
       });
     }
 
+    if (params.ticket_type) {
+      filterOptions.push({
+        name : 'tickets',
+        op   : 'any',
+        val  : {
+          name : 'type',
+          op   : 'eq',
+          val  : params.ticket_type
+        }
+      });
+    }
+
     if (params.location) {
       filterOptions.push({
         name : 'location_name',

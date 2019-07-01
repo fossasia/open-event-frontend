@@ -1,25 +1,44 @@
 <div class="five column row">
-  <div class="six wide column">
+  <div class="five wide column">
     <div class="field">
       {{input type='text' name='ticket_name' placeholder=(t 'Ticket Name') value=ticket.name}}
     </div>
   </div>
-  <div class="column">
-    {{#if (eq ticket.type 'paid')}}
+  <div class="three wide column">
+    {{#if (eq ticket.type 'paid') }}
       <div class="field">
         {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price min=1}}
       </div>
-    {{else}}
-      <span class="text muted ticket-input">
-        {{t 'This is a'}} {{ticket.type}} {{t 'Ticket'}}
-      </span>
+    {{else if (eq ticket.type 'donation')}}
+      <div class="two fields">
+        <div class="field">
+          {{input type='number' name='min_price' placeholder=(t 'Min') value=ticket.minOrder}}
+        </div>
+        <div class="field">
+          {{input type='number' name='max_price' placeholder=(t 'Max') value=ticket.maxOrder}}
+        </div>
+      </div>
+    {{else if (eq ticket.type 'free')}}
+      <div class="four wide column">
+        <span class="text muted ticket-input">
+          {{t 'This is a free Ticket'}}
+        </span>
+      </div>
     {{/if}}
   </div>
-  <div class="column">
-    <div class="field">
-      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity min=1}}
+  {{#if (eq ticket.type 'donation')}}
+    <div class="four wide column">
+      <span class="text muted ticket-input">
+        {{t 'This is a Donation Ticket'}}
+      </span>
     </div>
-  </div>
+  {{else}}
+    <div class="four wide column">
+      <div class="field">
+        {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.maxOrder min=1}}
+      </div>
+    </div>
+  {{/if}}
   <div class="column {{unless device.isLargeMonitor 'less right padding'}}">
     <div class="field">
       <div class="ui icon buttons">

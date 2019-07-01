@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  templateName: 'profile'
+  templateName: 'admin/users/view/account/profile'
 });

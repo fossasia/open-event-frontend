@@ -19,6 +19,13 @@ export default Component.extend(FormMixin, {
     return !this.hasTicketsInOrder;
   }),
 
+  showTaxIncludedMessage: computed('taxInfo.isTaxIncludedInPrice', function() {
+    if (this.taxInfo !== null) {
+      return (this.taxInfo.isTaxIncludedInPrice);
+    }
+    return false;
+  }),
+
   accessCodeTickets : A(),
   discountedTickets : A(),
 
@@ -29,13 +36,18 @@ export default Component.extend(FormMixin, {
   }),
   hasTicketsInOrder: computed('tickets.@each.orderQuantity', function() {
     return sumBy(this.tickets.toArray(),
-      ticket => ticket.getWithDefault('orderQuantity', 0)
+      ticket => (ticket.orderQuantity || 0)
     ) > 0;
   }),
 
   total: computed('tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
+    if (this.taxInfo !== null) {
+      return sumBy(this.tickets.toArray(),
+        ticket => (ticket.ticketPriceWithTax || 0) * (ticket.orderQuantity || 0)
+      );
+    }
     return sumBy(this.tickets.toArray(),
-      ticket => (ticket.getWithDefault('price', 0) - ticket.getWithDefault('discount', 0)) * ticket.getWithDefault('orderQuantity', 0)
+      ticket => ((ticket.price || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
     );
   }),
   actions: {
@@ -57,6 +69,15 @@ export default Component.extend(FormMixin, {
             this.tickets.removeObject(ticket);
           });
           this.discountedTickets.forEach(ticket => {
+            let taxRate = ticket.get('event.tax.rate');
+            let ticketPrice = ticket.get('price');
+            if (taxRate && !this.showTaxIncludedMessage) {
+              let ticketPriceWithTax = ticketPrice * (1 + taxRate / 100);
+              ticket.set('ticketPriceWithTax', ticketPriceWithTax);
+            } else if (taxRate && this.showTaxIncludedMessage) {
+              let includedTaxAmount = (taxRate * ticketPrice) / (100 + taxRate);
+              ticket.set('includedTaxAmount', includedTaxAmount);
+            }
             ticket.set('discount', 0);
           });
           this.accessCodeTickets.clear();
@@ -94,13 +115,17 @@ export default Component.extend(FormMixin, {
           let tickets = await discountCode.get('tickets');
           tickets.forEach(ticket => {
             let ticketPrice = ticket.get('price');
-            if (discountType === 'amount') {
-              ticket.set('discount', Math.min(ticketPrice, discountValue));
-              this.discountedTickets.addObject(ticket);
-            } else {
-              ticket.set('discount', ticketPrice * (discountValue / 100));
-              this.discountedTickets.addObject(ticket);
+            let taxRate = ticket.get('event.tax.rate');
+            let discount = discountType === 'amount' ? Math.min(ticketPrice, discountValue) : ticketPrice * (discountValue / 100);
+            ticket.set('discount', discount);
+            if (taxRate && !this.showTaxIncludedMessage) {
+              let ticketPriceWithTax = (ticketPrice - ticket.discount) * (1 + taxRate / 100);
+              ticket.set('ticketPriceWithTax', ticketPriceWithTax);
+            } else if (taxRate && this.showTaxIncludedMessage) {
+              let includedTaxAmount = (taxRate * (ticketPrice - discount)) / (100 + taxRate);
+              ticket.set('includedTaxAmount', includedTaxAmount);
             }
+            this.discountedTickets.addObject(ticket);
             this.set('invalidPromotionalCode', false);
           });
         } else {

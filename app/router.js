@@ -68,6 +68,7 @@ router.map(function() {
         this.route('basic-details');
         this.route('sponsors');
         this.route('sessions-speakers');
+        this.route('attendee');
       });
       this.route('export');
       this.route('sessions', function() {
@@ -143,7 +144,7 @@ router.map(function() {
       this.route('marketer');
       this.route('locations');
       this.route('fees');
-      this.route('status');
+      this.route('invoices');
       this.route('discounted-events');
     });
     this.route('sessions',  function() {

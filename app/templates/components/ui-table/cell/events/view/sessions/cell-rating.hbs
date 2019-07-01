@@ -1,0 +1,5 @@
+{{ui-rating
+    rating=(if record.averageRating record.averageRating '0')
+    maxRating=5
+    onRate=(pipe-action (action (mut record.averageRating)) (action updateRating record record.averageRating))
+    clearable=true}}
