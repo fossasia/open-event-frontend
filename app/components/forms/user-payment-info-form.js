@@ -7,10 +7,8 @@ export default Component.extend(FormMixin, {
 
   async didInsertElement() {
     this._super(...arguments);
-    let actualUser = await this.authManager.currentUser;
-    let userBillingInfo = pick(actualUser, ['billingContactName', 'billingCity', 'billingPhone', 'company', 'billingTaxInfo', 'billingAddress', 'billingZipCode', 'billingAdditionalInfo']);
+    let userBillingInfo = pick(this.authManager.currentUser, ['billingContactName', 'billingCity', 'billingPhone', 'company', 'billingTaxInfo', 'billingAddress', 'billingZipCode', 'billingAdditionalInfo']);
     this.set('userBillingInfo', userBillingInfo);
-    this.set('actualUser', actualUser);
   },
 
   getValidationRules() {
