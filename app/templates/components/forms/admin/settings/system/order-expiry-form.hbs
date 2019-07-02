@@ -1,0 +1,12 @@
+<h3 class="ui header">
+  {{t 'Order Expiry Time'}}
+  <div class="sub header">
+    {{t 'Set registration time limit for your order'}}
+  </div>
+</h3>
+<div class="field">
+  <label class="required">{{t 'REGISTRATION TIME LIMIT'}}</label>
+  <div class="{{unless device.isMobile 'two wide'}} field">
+    {{input type='number' id='orderExpiryTime' name='order_expiry_time' value=settings.orderExpiryTime min="1" max="60" step="1"}}
+  </div>
+</div>

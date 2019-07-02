@@ -7,6 +7,9 @@ export default Route.extend({
   actions: {
     willTransition() {
       this.get('controller.model').rollbackAttributes();
+    },
+    refreshRoute() {
+      this.refresh();
     }
   }
 });

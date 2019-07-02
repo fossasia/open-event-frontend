@@ -8,6 +8,7 @@ export default Controller.extend({
       settings.save()
         .then(() => {
           this.notify.success(this.l10n.t('Settings have been saved successfully.'));
+          this.send('refreshRoute');
         })
         .catch(() => {
           this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'));
