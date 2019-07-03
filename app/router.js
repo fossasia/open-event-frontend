@@ -71,6 +71,7 @@ router.map(function() {
         this.route('attendee');
       });
       this.route('export');
+      this.route('settings');
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
