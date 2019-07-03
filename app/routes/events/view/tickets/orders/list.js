@@ -11,6 +11,8 @@ export default Route.extend({
         return this.l10n.t('Expired');
       case 'cancelled':
         return this.l10n.t('Cancelled');
+      case 'deleted':
+        return this.l10n.t('Deleted');
       case 'all':
         return this.l10n.t('All');
     }
@@ -19,7 +21,7 @@ export default Route.extend({
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
-    if (params.orders_status !== 'all') {
+    if (params.orders_status !== 'all' && params.orders_status !== 'deleted') {
       filterOptions = [
         {
           name : 'status',
@@ -27,9 +29,18 @@ export default Route.extend({
           val  : params.orders_status
         }
       ];
+    } else if (params.orders_status === 'deleted') {
+      filterOptions = [
+        {
+          name : 'deleted-at',
+          op   : 'ne',
+          val  : null
+        }
+      ];
     }
 
     let queryObject = {
+      get_trashed  : (params.orders_status === 'deleted') ? true : false,
       include      : 'tickets,user',
       filter       : filterOptions,
       'page[size]' : 10

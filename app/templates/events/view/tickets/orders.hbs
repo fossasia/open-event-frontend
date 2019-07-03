@@ -69,6 +69,11 @@
         {{#link-to 'events.view.tickets.orders.list' 'cancelled' class='item'}}
           {{t 'Cancelled'}}
         {{/link-to}}
+        {{#if showDeletedRoute}}
+          {{#link-to 'events.view.tickets.orders.list' 'deleted' class='item'}}
+            {{t 'Deleted'}}
+          {{/link-to}}
+        {{/if}}
       {{/tabbed-navigation}}
     </div>
   </div>

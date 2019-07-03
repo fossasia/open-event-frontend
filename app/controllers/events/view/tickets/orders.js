@@ -1,11 +1,15 @@
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
+import { computed } from '@ember/object';
 
 export default Controller.extend({
   isLoadingcsv: false,
 
   isLoadingpdf: false,
 
+  showDeletedRoute: computed('authManager.currentUser.isAdmin', 'authManager.currentUser.isSuperAdmin', function() {
+    return this.get('authManager.currentUser.isSuperAdmin') || this.get('authManager.currentUser.isAdmin');
+  }),
   actions: {
     export(mode) {
       this.set(`isLoading${mode}`, true);
