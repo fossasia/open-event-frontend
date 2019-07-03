@@ -1,0 +1,65 @@
+{{#if (eq model.params.invoice_status 'due') }}
+  <div class="sixteen wide column">
+    {{tables/default columns=dueInvoiceColumns
+                    rows=dueInvoiceRows
+                    currentPage=page
+                    pageSize=per_page
+                    searchQuery=search
+                    sortBy=sort_by
+                    sortDir=sort_dir
+                    metaData=model.data.meta
+                    filterOptions=filterOptions
+                    widthConstraint="eq-container"
+                    resizeMode="fluid"
+                    fillMode="equal-column"
+    }}
+  </div>
+{{else if (eq model.params.invoice_status 'paid') }}
+  <div class="sixteen wide column">
+    {{tables/default columns=paidInvoiceColumns
+                    rows=paidInvoiceRows
+                    currentPage=page
+                    pageSize=per_page
+                    searchQuery=search
+                    sortBy=sort_by
+                    sortDir=sort_dir
+                    metaData=model.data.meta
+                    filterOptions=filterOptions
+                    widthConstraint="eq-container"
+                    resizeMode="fluid"
+                    fillMode="equal-column"
+    }}
+  </div>
+{{else if (eq model.params.invoice_status 'upcoming') }}
+  <div class="sixteen wide column">
+    {{tables/default columns=upcomingInvoiceColumns
+                    rows=upcomingInvoiceRows
+                    currentPage=page
+                    pageSize=per_page
+                    searchQuery=search
+                    sortBy=sort_by
+                    sortDir=sort_dir
+                    metaData=model.data.meta
+                    filterOptions=filterOptions
+                    widthConstraint="eq-container"
+                    resizeMode="fluid"
+                    fillMode="equal-column"
+    }}
+  </div>
+{{else if (eq model.params.invoice_status 'all') }}
+  <div class="sixteen wide column">
+    {{tables/default columns=allInvoiceColumns
+                    rows=allInvoiceRows
+                    currentPage=page
+                    pageSize=per_page
+                    searchQuery=search
+                    sortBy=sort_by
+                    sortDir=sort_dir
+                    metaData=model.data.meta
+                    filterOptions=filterOptions
+                    widthConstraint="eq-container"
+                    resizeMode="fluid"
+                    fillMode="equal-column"
+    }}
+  </div>
+{{/if}}
