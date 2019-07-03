@@ -2,13 +2,16 @@
   {{#if (or record.isAdmin record.isSuperAdmin)}}
     {{t 'User has administrative privileges, he has privileges of the following roles for all the events:'}}
     <div class="item">
-      <span class="ui tiny basic green label">{{t 'Organizer'}}</span>
+      <span class="ui tiny basic green label">{{t 'Owner'}}</span>
     </div>
     <div class="item">
-      <span class="ui tiny basic orange label">{{t 'Co organizer'}}</span>
+      <span class="ui tiny basic orange label">{{t 'Organizer'}}</span>
     </div>
     <div class="item">
-      <span class="ui tiny basic yellow label">{{t 'Track Organizer'}}</span>
+      <span class="ui tiny basic yellow label">{{t 'Co organizer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic red label">{{t 'Track Organizer'}}</span>
     </div>
     <div class="item">
       <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
@@ -23,10 +26,17 @@
       <span class="ui tiny basic brown label">{{t 'Sales Admin'}}</span>
     </div>
   {{else}}
+    {{#if record.isUserOwner}}
+      {{#each record.ownerEvents as |event|}}
+        <div class="item">
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic black label">{{t 'Owner'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
     {{#if record.isUserOrganizer}}
       {{#each record.organizerEvents as |event|}}
         <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic black label">{{t 'Organizer'}}</span>
+          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic orange label">{{t 'Organizer'}}</span>
         </div>
       {{/each}}
     {{/if}}

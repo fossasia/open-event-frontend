@@ -6,9 +6,9 @@ export default Route.extend({
   },
   async model() {
     return {
-      roles       : ['Attendee', 'Co-organizer', 'Moderator', 'Organizer', 'Track Organizer', 'Registrar'],
+      roles       : ['Attendee', 'Co-organizer', 'Moderator', 'Organizer', 'Owner', 'Track Organizer', 'Registrar'],
       services    : await this.store.query('service', {}),
-      permissions : await this.store.query('event-role-permission', { 'page[size]': 30 })
+      permissions : await this.store.query('event-role-permission', { 'page[size]': 35 })
     };
   }
 });
