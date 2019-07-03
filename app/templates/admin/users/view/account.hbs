@@ -3,13 +3,13 @@
   <div class="row">
     <div class="sixteen wide column">
       {{#tabbed-navigation}}
-        {{#link-to 'admin.users.view.account.contact-info' model.user.id class='item'}}
+        {{#link-to 'admin.users.view.account.profile' model.id class='item'}}
           {{t 'Profile Info'}}
         {{/link-to}}
-        {{#link-to 'admin.users.view.account.email-preferences' model.user.id class='item'}}
+        {{#link-to 'admin.users.view.account.email-preferences' model.id class='item'}}
           {{t 'Email-Preferences'}}
         {{/link-to}}
-        {{#link-to 'admin.users.view.account.applications' model.user.id class='item'}}
+        {{#link-to 'admin.users.view.account.applications' model.id class='item'}}
           {{t 'Applications'}}
         {{/link-to}}
       {{/tabbed-navigation}}

@@ -159,13 +159,13 @@
         {{#if data.event.tickets}}
           <div class="ui stackable celled five column grid ticket-header">
             <div class="row weight-600">
-              <div class="six wide column">
+              <div class="five wide column">
                 <label class="required">{{t 'Ticket Name'}}</label>
               </div>
-              <div class="column">
+              <div class="three wide column">
                 <label class="required">{{t 'Price'}}</label>
               </div>
-              <div class="column">
+              <div class="four wide column">
                 <label class="required">{{t 'Quantity'}}</label>
               </div>
               <div class="column">
@@ -208,6 +208,19 @@
           {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
         </div>
       {{/if}} --}}
+    
+      <button type="button" class="ui blue small button" {{action 'addTicket' 'donation' data.event.tickets.length}}>
+        <i class="large icons basic-details">
+          <i class="heart icon"></i>
+          <i class="inverted corner add icon"></i>
+        </i>
+        {{t 'Donation Ticket'}}
+      </button>
+    </div>
+  {{else}}
+    <div class="field">
+      <label for="ticket_url">{{t 'Ticket URL'}}</label>
+      {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
     </div>
   {{/if}}
   {{#if hasPaidTickets}}

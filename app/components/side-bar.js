@@ -41,6 +41,7 @@ export default Component.extend({
     if (this.$sidebarOpener) {
       this.$sidebarOpener.off('click', this.toggleSidebar.bind(this));
     }
+
     if (this.$sidebarClosers && this.$sidebarClosers.length > 0) {
       this.$sidebarClosers.off('click', this.hideSidebar.bind(this));
     }

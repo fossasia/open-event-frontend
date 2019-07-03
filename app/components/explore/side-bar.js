@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import moment from 'moment';
 import { computed } from '@ember/object';
+import { not } from '@ember/object/computed';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
 
 export default Component.extend({
@@ -12,9 +13,16 @@ export default Component.extend({
   customEndDate : null,
   showFilters   : false,
 
-  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', function() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location !== null);
+  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', function() {
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type !== null);
   }),
+
+  showAllCategories: computed('category', 'sub_category', function() {
+    return !this.category || !this.sub_category;
+
+  }),
+  showAllTypes: not('event_type'),
+
 
   dateRanges: computed(function() {
     return getDateRanges.bind(this)();
@@ -39,6 +47,10 @@ export default Component.extend({
 
     selectEventType(eventType) {
       this.set('event_type', eventType === this.event_type ? null : eventType);
+    },
+
+    selectTicketType(ticketType) {
+      this.set('ticket_type', ticketType === this.ticket_type ? null : ticketType);
     },
 
     dateValidate(date) {
@@ -107,19 +119,36 @@ export default Component.extend({
     onDateChange() {
       this.send('selectDateFilter', 'custom_dates');
     },
+    clearFilterCategory() {
+      this.setProperties({
+        category     : null,
+        sub_category : null
+      });
+
+    },
+    clearFilterTypes() {
+      this.set('event_type', null);
+
+    },
 
     clearFilters() {
-      this.set('startDate', null);
-      this.set('endDate', null);
-      this.set('dateType', null);
-      this.set('category', null);
-      this.set('sub_category', null);
-      this.set('event_type', null);
-      this.set('location', null);
+      this.setProperties({
+        startDate    : null,
+        endDate      : null,
+        dateType     : null,
+        category     : null,
+        sub_category : null,
+        event_type   : null,
+        location     : null,
+        ticket_type  : null
+      });
+
+
     },
 
     toggleFilters() {
       this.set('showFilters', !this.showFilters);
+
     }
   }
 });

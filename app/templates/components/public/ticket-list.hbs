@@ -4,7 +4,7 @@
       <tr>
         <th>{{t 'Type'}}</th>
         <th class="four wide">{{t 'Sales Ends'}}</th>
-        <th class="ui two wide">{{t 'Price'}}</th>
+        <th class="ui three wide">{{t 'Price'}}</th>
         <th class="one wide">{{t 'Quantity'}}</th>
         <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
       </tr>
@@ -29,10 +29,56 @@
                 </div>
                 <div id="{{ticket.id}}_discount">
                   {{currency-symbol eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
+                  {{#if taxInfo}}
+                    {{#if showTaxIncludedMessage}}
+                      <small class="ui gray-text small">
+                        {{t 'includes'}} {{currency-symbol eventCurrency}} {{format-number ticket.includedTaxAmount}}
+                      </small>
+                    {{else}}
+                      <small class="ui gray-text small">
+                        + {{currency-symbol eventCurrency}} {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
+                      </small>
+                    {{/if}}
+                    <div>
+                      <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
+                    </div>
+                  {{/if}}
                 </div>
               </td>
             {{else}}
-              <td id="{{ticket.id}}_price">{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+              <td id="{{ticket.id}}_price">
+                {{currency-symbol eventCurrency}} {{format-number ticket.price}}
+                {{#if (and taxInfo (not-eq ticket.type 'free'))}}
+                  {{#if showTaxIncludedMessage}}
+                    <small class="ui gray-text small">
+                      {{t 'includes'}} {{currency-symbol eventCurrency}} {{format-number ticket.includedTaxAmount}}
+                    </small>
+                  {{else}}
+                    <small class="ui gray-text small">
+                      + {{currency-symbol eventCurrency}} {{format-number (sub ticket.ticketPriceWithTax ticket.price)}}
+                    </small>
+                  {{/if}}
+                  <div>
+                    <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
+                  </div>
+                {{/if}}
+              </td>
+              {{#if (eq ticket.type 'donation') }}
+                <div class="three wide column">
+                  <td id="{{ticket.id}}_price">{{input type='number' value=ticket.price}}</td>
+                </div>
+              {{else}}
+                {{#if ticket.discount}}
+                  <td>
+                    <div id="{{ticket.id}}_price" class="strike text">
+                      {{currency-symbol eventCurrency}} {{format-number ticket.price}}
+                    </div>
+                    <div id="{{ticket.id}}_discount">
+                      {{currency-symbol eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
+                    </div>
+                  </td>
+                {{/if}}
+              {{/if}}
             {{/if}}
             <td>
               <div class="field">
@@ -50,7 +96,11 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
+              {{#if taxInfo}}
+                {{currency-symbol eventCurrency}} {{format-number (mult ticket.ticketPriceWithTax ticket.orderQuantity)}}
+              {{else}}
+                {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
+              {{/if}}
             </td>
           </tr>
         {{/unless}}

@@ -23,6 +23,7 @@ export default ModelBase.extend({
   audioUrl      : attr('string'),
   signupUrl     : attr('string'),
   sendEmail     : attr('boolean'),
+  averageRating : attr('number'),
 
   isLocked   : attr('boolean', { defaultValue: false }),
   isMailSent : attr('boolean', { defaultValue: false }),
@@ -35,6 +36,7 @@ export default ModelBase.extend({
   microlocation  : belongsTo('microlocation'),
   track          : belongsTo('track'),
   speakers       : hasMany('speaker'),
+  feedbacks      : hasMany('feedback'),
   event          : belongsTo('event'), // temporary
   creator        : belongsTo('user'),
 

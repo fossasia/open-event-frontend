@@ -38,17 +38,14 @@ export default Controller.extend({
   }),
 
   actions: {
-    aliPayCheckout(order_identifier) {
-      this.loader.post(`/create_source/${order_identifier}`)
-        .then(charge => {
-          if (charge.status) {
-            this.notify.success('Payment has succeeded');
-            this.transitionToRoute('orders.view', order_identifier);
-          } else {
-            this.notify.error('Payment has failed');
-          }
-        });
-
+    async aliPayCheckout(order_identifier) {
+      try {
+        const res = await this.loader.load(`alipay/create_source/${order_identifier}`);
+        this.notify.success(this.l10n.t('Payment has succeeded'));
+        window.location.replace(res.link);
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.error));
+      }
     },
     processStripeToken(token) {
       // Send this token to server to process payment
