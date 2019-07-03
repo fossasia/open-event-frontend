@@ -10,9 +10,8 @@ module('Integration | Component | forms/events/view/order-form', function(hooks)
 
   test('it renders', async function(assert) {
     let event = EmberObject.create({
-      id              : 123,
-      identifier      : 'abc123',
-      orderExpiryTime : 10
+      id         : 123,
+      identifier : 'abc123'
     });
 
     let customForms = A();
