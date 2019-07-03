@@ -115,7 +115,9 @@ router.map(function() {
     this.route('danger-zone');
     this.route('billing', function() {
       this.route('payment-info');
-      this.route('invoices');
+      this.route('invoices', function() {
+        this.route('list', { path: '/:invoice_status' });
+      });
     });
   });
   this.route('explore');
