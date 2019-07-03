@@ -32,6 +32,6 @@ module('Integration | Component | forms/events/view/order-form', function(hooks)
 
     await render(hbs`{{forms/events/view/order-form data=data}}`);
 
-    assert.ok(this.element.innerHTML.trim().includes('Registration'));
+    assert.ok(this.element.innerHTML.trim().includes('Information'));
   });
 });
