@@ -58,7 +58,7 @@
                   {{widgets/forms/rich-text-editor value=(mut (get holder field.fieldIdentifier))
                                                    name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
                 {{else if (eq field.fieldIdentifier 'gender')}}
-                  {{#ui-dropdown class='search selection' selected=holder.gender onChange=(action (mut holder.gender)) as |execute mapper|}}
+                  {{#ui-dropdown class='search selection' value=(mut (get holder field.fieldIdentifier)) onChange=(action (mut holder.gender)) as |execute mapper|}}
                     <i class="dropdown icon"></i>
                     <div class="default text">{{t 'Select your gender'}}</div>
                     <div class="menu">
