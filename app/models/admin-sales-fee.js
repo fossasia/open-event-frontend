@@ -1,5 +1,6 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
+import moment from 'moment';
 
 export default ModelBase.extend({
   name            : attr('string'),
@@ -7,5 +8,6 @@ export default ModelBase.extend({
   feePercentage   : attr('number'),
   maximumFee      : attr('number'),
   revenue         : attr('number'),
-  ticketCount     : attr('number')
+  ticketCount     : attr('number'),
+  eventDate       : attr('moment')
 });
