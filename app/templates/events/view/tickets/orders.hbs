@@ -51,23 +51,25 @@
   <div class="row">
     <div class="eight wide column">
       {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'events.view.tickets.orders.list' 'all' class='item'}}
-          {{t 'All'}}
-        {{/link-to}}
         {{#link-to 'events.view.tickets.orders.list' 'completed' class='item'}}
           {{t 'Completed'}}
         {{/link-to}}
         {{#link-to 'events.view.tickets.orders.list' 'placed' class='item'}}
           {{t 'Placed'}}
         {{/link-to}}
-        {{#link-to 'events.view.tickets.orders.list' 'pending' class='item'}}
-          {{t 'Pending'}}
-        {{/link-to}}
+        {{#if authManager.currentUser.isAnAdmin}}
+          {{#link-to 'events.view.tickets.orders.list' 'pending' class='item'}}
+            {{t 'Pending'}}
+          {{/link-to}}
+        {{/if}}
         {{#link-to 'events.view.tickets.orders.list' 'expired' class='item'}}
           {{t 'Expired'}}
         {{/link-to}}
         {{#link-to 'events.view.tickets.orders.list' 'cancelled' class='item'}}
           {{t 'Cancelled'}}
+        {{/link-to}}
+        {{#link-to 'events.view.tickets.orders.list' 'all' class='item'}}
+          {{t 'All'}}
         {{/link-to}}
       {{/tabbed-navigation}}
     </div>
