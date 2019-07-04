@@ -5,7 +5,7 @@ export default Route.extend({
     return this.l10n.t('Revenue');
   },
 
-  async model() {
+  model() {
     return this.store.findAll('admin-sales-fee');
   }
 });
