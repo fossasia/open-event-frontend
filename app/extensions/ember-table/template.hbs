@@ -1,0 +1,10 @@
+<div class="resize-container">
+  <table class="ui unstackable table">
+    {{yield (hash
+              api=api
+              head=(component "ember-thead" api=api)
+              body=(component "ember-tbody" api=api)
+              foot=(component "ember-tfoot" api=api)
+            )}}
+  </table>
+</div>
