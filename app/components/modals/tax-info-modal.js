@@ -52,6 +52,7 @@ export default ModalBase.extend(FormMixin, {
         },
         taxInvoiceCompany: {
           identifier : 'tax_invoice_company',
+          optional   : true,
           depends    : 'send_tax_invoices',
           rules      : [
             {
@@ -62,6 +63,7 @@ export default ModalBase.extend(FormMixin, {
         },
         taxInvoiceAddress: {
           identifier : 'tax_invoice_address',
+          optional   : true,
           depends    : 'send_tax_invoices',
           rules      : [
             {
@@ -73,6 +75,7 @@ export default ModalBase.extend(FormMixin, {
 
         taxInvoiceCity: {
           identifier : 'tax_invoice_city',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
@@ -83,6 +86,7 @@ export default ModalBase.extend(FormMixin, {
 
         taxInvoiceState: {
           identifier : 'tax_invoice_state',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
@@ -93,6 +97,7 @@ export default ModalBase.extend(FormMixin, {
 
         taxInvoiceZipCode: {
           identifier : 'tax_invoice_zipcode',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
