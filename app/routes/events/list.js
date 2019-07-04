@@ -77,7 +77,7 @@ export default Route.extend({
     }
 
     let queryObject =  {
-      include      : 'tickets,sessions,speakers,organizers,coorganizers,track-organizers,registrars,moderators',
+      include      : 'tickets,sessions,speakers,owner,organizers,coorganizers,track-organizers,registrars,moderators',
       filter       : filterOptions,
       'page[size]' : 10
     };

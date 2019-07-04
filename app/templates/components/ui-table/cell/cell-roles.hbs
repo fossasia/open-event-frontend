@@ -1,4 +1,5 @@
 <div class="ui ordered list">
+  <div class="item">{{record.owner.email}} ({{t 'Owner'}})</div>
   {{#each record.organizers as |role|}}
     <div class="item">{{role.email}} ({{t 'Organizer'}})</div>
   {{/each}}
