@@ -70,10 +70,10 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),
 
-  hasOrganizerInfo: attr('boolean',  { defaultValue: false }),
+  hasOwnerInfo: attr('boolean',  { defaultValue: false }),
 
-  organizerName        : attr('string'),
-  organizerDescription : attr('string'),
+  ownerName        : attr('string'),
+  ownerDescription : attr('string'),
 
   externalEventUrl : attr('string'),
   ticketUrl        : attr('string'),
@@ -119,6 +119,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
 
+  owner           : belongsTo('user', { inverse: null }),
   organizers      : hasMany('user', { inverse: null }),
   coorganizers    : hasMany('user', { inverse: null }),
   trackOrganizers : hasMany('user', { inverse: null }),
