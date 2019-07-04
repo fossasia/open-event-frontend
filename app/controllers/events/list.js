@@ -15,6 +15,7 @@ export default class extends Controller {
       {
         name            : 'Name',
         valuePath       : 'name',
+        width           : 150,
         isSortable      : true,
         extraValuePaths : ['startsAt', 'endAt'],
         headerComponent : 'tables/headers/sort',
@@ -37,6 +38,7 @@ export default class extends Controller {
       {
         name          : 'Roles',
         valuePath     : 'roles',
+        width         : 180,
         cellComponent : 'ui-table/cell/cell-roles',
         isSortable    : false
       },
