@@ -7,6 +7,7 @@ export default ModelBase.extend({
   admin          : attr('number'),
   verified       : attr('number'),
   unverified     : attr('number'),
+  owner          : attr('number'),
   organizer      : attr('number'),
   coorganizer    : attr('number'),
   attendee       : attr('number'),

@@ -99,6 +99,26 @@ export default Component.extend(FormMixin, {
           ]
         },
 
+        googlereCAPTCHAsitekey: {
+          identifier : 'google_recaptcha_sitekey',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the reCAPTCHA site key')
+            }
+          ]
+        },
+
+        googlereCAPTCHAsecretkey: {
+          identifier : 'google_recaptcha_secretkey',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the reCAPTCHA secret key')
+            }
+          ]
+        },
+
         emailFrom: {
           identifier : 'email_from',
           rules      : [
