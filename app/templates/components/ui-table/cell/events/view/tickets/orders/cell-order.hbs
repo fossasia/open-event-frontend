@@ -5,11 +5,11 @@
   <span class="weight-400">
     {{t 'by'}} {{if record.user.firstName record.user.firstName (t 'Name not provided')}}
   </span>
-  {{#if (not record.deletedAt)}}
-    <div class="ui basic mini {{if (eq record.status 'completed') 'green' (if (eq record.status 'placed') 'blue' (if (eq record.status 'pending') 'orange' (if (eq record.status 'expired') 'red' 'yellow')))}} label">
+  {{#unless record.deletedAt}}
+    <div class="ui basic mini {{order-color record.status}} label">
       {{record.status}}
     </div>
-  {{/if}}
+  {{/unless}}
   <div class="sub header">
     {{#if record.paidVia}}
       <span class="weight-800">
@@ -25,7 +25,7 @@
     </span>
   </div>
 </div>
-{{#if (not record.deletedAt)}}
+{{#unless record.deletedAt}}
   <div class="ui horizontal compact basic buttons">
     {{#if (and (eq record.status 'placed') (can-modify-order record))}}
       {{#ui-popup content=(t 'Mark Completed') click=(action (confirm (t 'Are you sure you would like to mark this Order as completed?') (action completeOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
@@ -46,4 +46,4 @@
       <i class="mail outline icon"></i>
     {{/ui-popup}}
   </div>
-{{/if}}
+{{/unless}}

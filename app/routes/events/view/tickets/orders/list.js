@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
 
-export default Route.extend({
+export default class extends Route {
   titleToken() {
     switch (this.get('params.orders_status')) {
       case 'placed':
@@ -16,7 +17,7 @@ export default Route.extend({
       case 'all':
         return this.l10n.t('All');
     }
-  },
+  }
 
   async model(params) {
     this.set('params', params);
@@ -40,7 +41,7 @@ export default Route.extend({
     }
 
     let queryObject = {
-      get_trashed  : (params.orders_status === 'deleted') ? true : false,
+      get_trashed  : (params.orders_status === 'deleted'),
       include      : 'tickets,user',
       filter       : filterOptions,
       'page[size]' : 10
@@ -56,10 +57,10 @@ export default Route.extend({
       query      : queryObject,
       objectType : 'orders'
     };
-  },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
   }
-});
+
+  @action
+  refreshRoute() {
+    this.refresh();
+  }
+}
