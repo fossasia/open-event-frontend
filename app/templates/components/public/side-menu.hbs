@@ -44,14 +44,14 @@
         {{t 'Call for Speakers'}}
       {{/link-to}}
     {{/if}}
-    {{#if event.hasOrganizerInfo}}
+    {{#if event.hasOwnerInfo}}
       {{#if (eq session.currentRouteName 'public.index')}}
-        {{#scroll-to href='#organizer' class='item'}}
-          {{t 'Organizer'}}
+        {{#scroll-to href='#owner' class='item'}}
+          {{t 'Owner'}}
         {{/scroll-to}}
       {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#organizer">
-          {{t 'Organizer'}}
+        <a class="item" href="{{href-to 'public.index'}}#owner">
+          {{t 'Owner'}}
         </a>
       {{/if}}
     {{/if}}

@@ -68,11 +68,11 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if model.event.hasOrganizerInfo}}
-    <h2 class="ui header" id="organizer">
-      {{t 'Organized  by'}} {{model.event.organizerName}}
+  {{#if model.event.hasOwnerInfo}}
+    <h2 class="ui header" id="owner">
+      {{t 'Organized  by'}} {{model.event.ownerName}}
     </h2>
-    {{sanitize model.event.organizerDescription}}
+    {{sanitize model.event.ownerDescription}}
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="location" id="getting-here">

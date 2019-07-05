@@ -2,13 +2,13 @@
   <img src="{{if record.logoUrl record.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{record.name}}
 </div>
 <div class="ui horizontal large basic buttons">
-  {{#ui-popup tagName='a' click=(action moveToDetails record.identifier) content=(t 'Event Dashboard') class='ui icon button' position='top center'}}
+  {{#ui-popup tagName='a' click=(action props.actions.moveToDetails record.identifier) content=(t 'Event Dashboard') class='ui icon button' position='top center'}}
     <i class="tasks icon"></i>
   {{/ui-popup}}
-  {{#ui-popup tagName='a' click=(action moveToPublic record.identifier) content=(t 'View') class='ui icon button' position='top center'}}
+  {{#ui-popup tagName='a' click=(action props.actions.moveToPublic record.identifier) content=(t 'View') class='ui icon button' position='top center'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'Edit') click=(action editEvent record.identifier) class='ui icon button' position='top center'}}
+  {{#ui-popup content=(t 'Edit') click=(action props.actions.editEvent record.identifier) class='ui icon button' position='top center'}}
     <i class="edit icon"></i>
   {{/ui-popup}}
 </div>
