@@ -65,6 +65,7 @@ export default class extends Controller {
       {
         name          : 'Public URL',
         valuePath     : 'url',
+        width         : 250,
         cellComponent : 'ui-table/cell/cell-link',
         isSortable    : false
       }
