@@ -1,86 +1,133 @@
 import Controller from '@ember/controller';
+import { computed, action } from '@ember/object';
 
-export default Controller.extend({
-  columns: [
-    {
-      propertyName : 'name',
-      template     : 'components/ui-table/cell/cell-event-general',
-      title        : 'Name'
-    },
-    {
-      propertyName : 'starts-at',
-      template     : 'components/ui-table/cell/cell-event-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
-      title        : 'Date'
-    },
-    {
-      propertyName     : 'roles',
-      template         : 'components/ui-table/cell/cell-roles',
-      title            : 'Roles',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'sessionsByState',
-      template         : 'components/ui-table/cell/cell-sessions-dashboard',
-      title            : 'Sessions',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'speakers.length',
-      template         : 'components/ui-table/cell/cell-speakers-dashboard',
-      title            : 'Speakers',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'tickets',
-      template         : 'components/ui-table/cell/cell-tickets',
-      title            : 'Tickets',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'url',
-      template         : 'components/ui-table/cell/cell-link',
-      title            : 'Public URL',
-      disableSorting   : true,
-      disableFiltering : true
-    }
-  ],
-  actions: {
-    moveToPublic(id) {
-      this.transitionToRoute('public', id);
-    },
-    moveToDetails(id) {
-      this.transitionToRoute('events.view', id);
-    },
-    editEvent(id) {
-      this.transitionToRoute('events.view.edit.basic-details', id);
-    },
-    openDeleteEventModal(id, name) {
-      this.set('isEventDeleteModalOpen', true);
-      this.set('confirmName', '');
-      this.set('eventName', name);
-      this.set('eventId', id);
-    },
-    deleteEvent() {
-      this.set('isLoading', true);
-      this.store.findRecord('event', this.eventId, { backgroundReload: false }).then(function(event) {
-        event.destroyRecord();
-      })
-        .then(() => {
-          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
-          this.send('refreshRoute');
-        })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
-      this.set('isEventDeleteModalOpen', false);
-    }
+export default class extends Controller {
+  queryParams = ['page', 'per_page'];
+  page = 1;
+  per_page = 10;
+  search = null;
+  sort_dir = null;
+  sort_by = null;
+  sorts = [];
+  @computed()
+  get columns() {
+    return [
+      {
+        name            : 'Name',
+        valuePath       : 'name',
+        isSortable      : true,
+        extraValuePaths : ['startsAt', 'endAt'],
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-event-general',
+        options         : {
+          dateFormat: 'MMMM DD, YYYY - HH:mm A'
+        },
+        actions: {
+          moveToPublic  : this.moveToPublic.bind(this),
+          moveToDetails : this.moveToDetails.bind(this),
+          editEvent     : this.editEvent.bind(this)
+        }
+      },
+      {
+        name            : 'Date',
+        valuePath       : 'startsAt',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-event-date'
+
+      },
+      {
+        name          : 'Roles',
+        valuePath     : 'roles',
+        cellComponent : 'ui-table/cell/cell-roles',
+        isSortable    : false
+      },
+      {
+        name          : 'Sessions',
+        valuePath     : 'sessions',
+        isSortable    : false,
+        cellComponent : 'ui-table/cell/cell-sessions-dashboard'
+      },
+      {
+        name          : 'Speakers',
+        valuePath     : 'speakers',
+        cellComponent : 'ui-table/cell/cell-speakers-dashboard',
+        isSortable    : false
+
+      },
+      {
+        name          : 'Tickets',
+        valuePath     : 'tickets',
+        cellComponent : 'ui-table/cell/cell-tickets',
+        isSortable    : false
+
+      },
+      {
+        name          : 'Public URL',
+        valuePath     : 'url',
+        cellComponent : 'ui-table/cell/cell-link',
+        isSortable    : false
+      }
+    ];
   }
-});
+
+  @computed('model.data')
+  get rows() {
+    const rows = [];
+    this.model.data.forEach(row => {
+      rows.pushObject({
+        name     : row,
+        startsAt : row,
+        roles    : row,
+        sessions : row,
+        speakers : row,
+        tickets  : row,
+        url      : row
+      });
+    });
+    return rows;
+  }
+
+  @action
+  moveToPublic(id) {
+    this.transitionToRoute('public', id);
+  }
+
+  @action
+  moveToDetails(id) {
+    this.transitionToRoute('events.view', id);
+  }
+
+  @action
+  editEvent(id) {
+    this.transitionToRoute('events.view.edit.basic-details', id);
+  }
+
+  @action
+  openDeleteEventModal(id, name) {
+    this.setProperties({
+      isEventDeleteModalOpen : true,
+      confirmName            : '',
+      eventName              : name,
+      eventId                : id
+    });
+  }
+
+  @action
+  async deleteEvent() {
+    this.set('isLoading', true);
+
+    try {
+      const event = this.store.peekRecord('event', this.eventId, { backgroundReload: false });
+      await event.destroyRecord();
+      this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+      this.send('refreshRoute');
+    } catch (e) {
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+    }
+    this.setProperties({
+      isLoading              : false,
+      isEventDeleteModalOpen : false
+    });
+  }
+}
