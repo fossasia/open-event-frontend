@@ -8,7 +8,7 @@ export default class extends Controller {
   search = null;
   sort_dir = null;
   sort_by = null;
-
+  sorts = [];
   @computed()
   get columns() {
     return [
@@ -29,9 +29,11 @@ export default class extends Controller {
         }
       },
       {
-        name          : 'Date',
-        valuePath     : 'startsAt',
-        cellComponent : 'ui-table/cell/cell-event-date'
+        name            : 'Date',
+        valuePath       : 'startsAt',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-event-date'
 
       },
       {
