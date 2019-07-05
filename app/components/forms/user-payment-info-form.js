@@ -1,15 +1,15 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
-import { pick } from 'lodash-es';
+import { pick, orderBy } from 'lodash-es';
+import { action, computed } from '@ember/object';
+import { countries } from 'open-event-frontend/utils/dictionary/demography';
 
-export default Component.extend(FormMixin, {
-
-  async didInsertElement() {
-    this._super(...arguments);
-    let userBillingInfo = pick(this.authManager.currentUser, ['billingContactName', 'billingCity', 'billingPhone', 'company', 'billingTaxInfo', 'billingAddress', 'billingZipCode', 'billingAdditionalInfo']);
-    this.set('userBillingInfo', userBillingInfo);
-  },
+export default class extends Component.extend(FormMixin) {
+  didInsertElement() {
+    super.didInsertElement(...arguments);
+    this.set('userBillingInfo', pick(this.authManager.currentUser, ['billingContactName', 'billingCity', 'billingPhone', 'company', 'billingTaxInfo', 'billingCountry', 'billingState', 'billingAddress', 'billingZipCode', 'billingAdditionalInfo']));
+  }
 
   getValidationRules() {
     return {
@@ -88,19 +88,24 @@ export default Component.extend(FormMixin, {
         }
       }
     };
-  },
-  actions: {
-    submit() {
-      this.onValid(async() => {
-        try {
-          this.authManager.currentUser.setProperties(this.userBillingInfo);
-          await this.authManager.currentUser.save();
-          this.notify.success(this.l10n.t('Your billing details has been updated'));
-        } catch (error) {
-          this.authManager.currentUser.rollbackAttributes();
-          this.notify.error(this.l10n.t('An unexpected error occurred'));
-        }
-      });
-    }
   }
-});
+
+  @computed()
+  get countries() {
+    return orderBy(countries, 'name');
+  }
+
+  @action
+  submit() {
+    this.onValid(async() => {
+      try {
+        this.authManager.currentUser.setProperties(this.userBillingInfo);
+        await this.authManager.currentUser.save();
+        this.notify.success(this.l10n.t('Your billing details has been updated'));
+      } catch (error) {
+        this.authManager.currentUser.rollbackAttributes();
+        this.notify.error(this.l10n.t('An unexpected error occurred'));
+      }
+    });
+  }
+}
