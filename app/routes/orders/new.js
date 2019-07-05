@@ -35,8 +35,7 @@ export default Route.extend({
       form  : await eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
-      }),
-      settings: await this.store.queryRecord('setting', {})
+      })
     };
   },
 
