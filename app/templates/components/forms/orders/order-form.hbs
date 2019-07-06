@@ -47,7 +47,7 @@
           <i class="user icon"></i>
           <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
         </div>
-        {{# each allFields.attendee as |field|}}
+        {{#each allFields.attendee as |field|}}
           {{#if field.isIncluded}}
             <div class="field {{if
               (and sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))
@@ -57,9 +57,22 @@
                 {{#if field.isLongText}}
                   {{widgets/forms/rich-text-editor value=(mut (get holder field.fieldIdentifier))
                                                    name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                {{else if (eq field.fieldIdentifier 'gender')}}
+                  {{#ui-dropdown class='search selection' value=(mut (get holder field.fieldIdentifier)) onChange=(action (mut holder.gender)) as |execute mapper|}}
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your gender'}}</div>
+                    <div class="menu">
+                      {{#each genders as |gender|}}
+                        <div class="item" data-value="{{map-value mapper gender.name}}">
+                          {{gender.name}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  {{/ui-dropdown}}
                 {{else}}
                   {{input type=field.type value=(mut (get holder field.fieldIdentifier))
                           name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+
                 {{/if}}
               {{/if}}
             </div>
