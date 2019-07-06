@@ -71,6 +71,7 @@ router.map(function() {
         this.route('attendee');
       });
       this.route('export');
+      this.route('settings');
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
@@ -144,7 +145,7 @@ router.map(function() {
       this.route('marketer');
       this.route('locations');
       this.route('fees');
-      this.route('status');
+      this.route('invoices');
       this.route('discounted-events');
     });
     this.route('sessions',  function() {

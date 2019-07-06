@@ -101,19 +101,19 @@
   <div class="ui section divider"></div>
   <div class="field">
     <div class="ui slider checkbox">
-      {{input type='checkbox' checked=data.event.hasOrganizerInfo id='add_organizer_information'}}
-      <label for="add_organizer_information">{{t 'Add organizer information'}}</label>
+      {{input type='checkbox' checked=data.event.hasOwnerInfo id='add_owner_information'}}
+      <label for="add_owner_information">{{t 'Add owner information'}}</label>
     </div>
   </div>
 
-  {{#if data.event.hasOrganizerInfo}}
+  {{#if data.event.hasOwnerInfo}}
     <div class="field">
-      <label for="organizer_name">{{t 'Organizer Name'}}</label>
-      {{input type='text' id='organizer_name' value=data.event.organizerName}}
+      <label for="owner_name">{{t 'Owner Name'}}</label>
+      {{input type='text' id='owner_name' value=data.event.ownerName}}
     </div>
     <div class="field">
-      <label for="organizer_description">{{t 'Organizer Description'}}</label>
-      {{widgets/forms/rich-text-editor id='organizer_description' value=data.event.organizerDescription}}
+      <label for="owner_description">{{t 'Owner Description'}}</label>
+      {{widgets/forms/rich-text-editor id='owner_description' value=data.event.ownerDescription}}
     </div>
   {{/if}}
   <div class="ui section divider"></div>
@@ -159,10 +159,10 @@
         {{#if data.event.tickets}}
           <div class="ui stackable celled five column grid ticket-header">
             <div class="row weight-600">
-              <div class="six wide column">
+              <div class="five wide column">
                 <label class="required">{{t 'Ticket Name'}}</label>
               </div>
-              <div class="two wide column">
+              <div class="three wide column">
                 <label class="required">{{t 'Price'}}</label>
               </div>
               <div class="four wide column">
@@ -208,14 +208,15 @@
           {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
         </div>
       {{/if}} --}}
+    
+      <button type="button" class="ui blue small button" {{action 'addTicket' 'donation' data.event.tickets.length}}>
+        <i class="large icons basic-details">
+          <i class="heart icon"></i>
+          <i class="inverted corner add icon"></i>
+        </i>
+        {{t 'Donation Ticket'}}
+      </button>
     </div>
-    <button type="button" class="ui blue small button" {{action 'addTicket' 'donation' data.event.tickets.length}}>
-      <i class="large icons basic-details">
-        <i class="heart icon"></i>
-        <i class="inverted corner add icon"></i>
-      </i>
-      {{t 'Donation Ticket'}}
-    </button>
   {{else}}
     <div class="field">
       <label for="ticket_url">{{t 'Ticket URL'}}</label>

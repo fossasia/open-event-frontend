@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
 import moment from 'moment';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+export default class extends Route.extend(EmberTableRouteMixin) {
 
-export default Route.extend({
   titleToken() {
     switch (this.get('params.event_state')) {
       case 'live':
@@ -11,17 +13,21 @@ export default Route.extend({
       case 'past':
         return this.l10n.t('Past');
     }
-  },
+  }
+
   beforeModel(transition) {
-    this._super(...arguments);
+    super.beforeModel(...arguments);
     const eventState = transition.to.params.event_state;
     if (!['live', 'draft', 'past'].includes(eventState)) {
       this.replaceWith('events.view', eventState);
     }
-  },
+
+  }
+
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
+    const searchField = 'name';
     if (params.event_state === 'live') {
       filterOptions = [
         {
@@ -75,28 +81,23 @@ export default Route.extend({
         }
       ];
     }
-
-    let queryObject =  {
-      include      : 'tickets,sessions,speakers,organizers,coorganizers,track-organizers,registrars,moderators',
-      filter       : filterOptions,
-      'page[size]' : 10
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+    let queryString = {
+      include        : 'tickets,sessions,speakers,owner,organizers,coorganizers,track-organizers,registrars,moderators',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 4
     };
-
-    let store = this.get('authManager.currentUser');
-
-    const data = await store.query('events', queryObject);
+    queryString = this.applySortFilters(queryString, params);
 
     return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'events'
+      data: await this.authManager.currentUser.query('events', queryString)
     };
 
-  },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
   }
-});
+
+  @action
+  refreshRoute() {
+    this.refresh();
+  }
+}

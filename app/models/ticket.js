@@ -46,5 +46,31 @@ export default ModelBase.extend({
 
   itemTotal: computed('price', 'quantity', function() {
     return this.price * this.quantity;
+  }),
+
+  /**
+   * This attribute computes total ticket price payable after inclusion
+   * of additional taxes on the base ticket price
+   */
+  ticketPriceWithTax: computed('event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
+    let taxType = this.event.get('tax.isTaxIncludedInPrice');
+    if (!taxType) {
+      return ((1 + this.event.get('tax.rate') / 100) * this.price).toFixed(2);
+    }
+    return this.price;
+  }),
+
+  /**
+   * This attribute computes value added tax amount in the cases
+   * when tax amount is included in ticket price, otherwise return
+   * 0
+   */
+  includedTaxAmount: computed('event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
+    const taxType = this.event.get('tax.isTaxIncludedInPrice');
+    if (taxType) {
+      const taxRate = this.event.get('tax.rate');
+      return ((taxRate * this.price) / (100 + taxRate)).toFixed(2);
+    }
+    return 0;
   })
 });

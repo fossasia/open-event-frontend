@@ -13,8 +13,8 @@ export default Component.extend({
   customEndDate : null,
   showFilters   : false,
 
-  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', function() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type !== null);
+  hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', function() {
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs);
   }),
 
   showAllCategories: computed('category', 'sub_category', function() {
@@ -59,6 +59,10 @@ export default Component.extend({
       }
 
       this.send('selectDateFilter', 'custom_dates');
+    },
+
+    selectEventCfs(cfs) {
+      this.set('cfs', cfs === this.cfs ? null : cfs);
     },
 
     selectDateFilter(dateType) {
@@ -128,7 +132,6 @@ export default Component.extend({
     },
     clearFilterTypes() {
       this.set('event_type', null);
-
     },
 
     clearFilters() {
@@ -140,15 +143,13 @@ export default Component.extend({
         sub_category : null,
         event_type   : null,
         location     : null,
-        ticket_type  : null
+        ticket_type  : null,
+        cfs          : null
       });
-
-
     },
 
     toggleFilters() {
       this.set('showFilters', !this.showFilters);
-
     }
   }
 });
