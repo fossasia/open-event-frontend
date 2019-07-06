@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import moment from 'moment';
-import EmberTableMixin from 'open-event-frontend/mixins/ember-table';
-export default class extends Route.extend(EmberTableMixin) {
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+export default class extends Route.extend(EmberTableRouteMixin) {
 
   titleToken() {
     switch (this.get('params.event_state')) {
