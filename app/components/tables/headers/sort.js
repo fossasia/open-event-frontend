@@ -1,13 +1,13 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { kebabCase } from 'lodash-es';
 
 export default class extends Component {
   @computed('sorts.@each.isAscending', 'sortDir')
   get sortIcon() {
     if (this.sorts && this.sorts[0] && this.sorts[0].valuePath === this.column.valuePath) {
-      this.set('sortDirection', this.sorts[0].isAscending ? 'ASC' : 'DES');
       if (this.sorts[0].isAscending) {
-        // support got sort up, sort down to come with next release of semantic-ui-ember
+        // support for sort up, sort down to come with next release of semantic-ui-ember
         return 'caret up';
       } else {
         return 'caret down';
@@ -21,15 +21,18 @@ export default class extends Component {
     super.didInsertElement(...arguments);
     if (this.sorts && this.sorts[0] && this.sorts[0].valuePath === this.column.valuePath) {
       this.setProperties({
-        sortBy  : this.sorts[0].valuePath,
+        sortBy  : kebabCase(this.sorts[0].valuePath), // Ensures field names are server compatible with sort
         sortDir : this.sorts[0].isAscending ? 'ASC' : 'DSC'
       });
 
     } else {
-      this.setProperties({
-        sortBy  : null,
-        sortDir : null
-      });
+      // avoid resetting the query params, when sorts is  uninitialised
+      if (this.sorts && !this.sorts[0]) {
+        this.setProperties({
+          sortBy  : null,
+          sortDir : null
+        });
+      }
     }
   }
 }
