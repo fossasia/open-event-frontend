@@ -1,33 +1,25 @@
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
-import { computed, action } from '@ember/object';
-import { or } from '@ember/object/computed';
 
-export default class extends Controller {
-  isLoadingcsv = false;
+export default Controller.extend({
+  isLoadingcsv: false,
 
-  isLoadingpdf = false;
+  isLoadingpdf: false,
 
-  @computed('authManager.currentUser.isAdmin', 'authManager.currentUser.isSuperAdmin')
-  get showDeletedRoute() {
-    return or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin');
-  }
-
-  @action
-  export(mode) {
-    this.set(`isLoading${mode}`, true);
-    this.loader
-      .load(`/events/${this.get('model.id')}/export/orders/${mode}`)
-      .then(exportJobInfo => {
-        this.requestLoop(exportJobInfo, mode);
-      })
-      .catch(() => {
-        this.set(`isLoading${mode}`, false);
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-      });
-  }
-
-  @action
+  actions: {
+    export(mode) {
+      this.set(`isLoading${mode}`, true);
+      this.loader
+        .load(`/events/${this.get('model.id')}/export/orders/${mode}`)
+        .then(exportJobInfo => {
+          this.requestLoop(exportJobInfo, mode);
+        })
+        .catch(() => {
+          this.set(`isLoading${mode}`, false);
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        });
+    }
+  },
   requestLoop(exportJobInfo, mode) {
     run.later(() => {
       this.loader
@@ -51,4 +43,4 @@ export default class extends Controller {
         });
     }, 3000);
   }
-}
+});

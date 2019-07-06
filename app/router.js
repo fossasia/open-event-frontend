@@ -151,6 +151,9 @@ router.map(function() {
     this.route('sessions',  function() {
       this.route('list', { path: '/:sessions_state' });
     });
+    this.route('tickets', function() {
+      this.route('list', { path: '/:ticket_status'});
+    });
     this.route('users', function() {
       this.route('view', { path: '/:user_id' }, function() {
         this.route('sessions', function() {
