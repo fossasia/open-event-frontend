@@ -10,6 +10,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Name',
         valuePath       : 'name',
+        width           : 150,
         isSortable      : true,
         extraValuePaths : ['startsAt', 'endAt'],
         headerComponent : 'tables/headers/sort',
@@ -34,6 +35,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : 'Roles',
         valuePath     : 'roles',
+        width         : 180,
         cellComponent : 'ui-table/cell/cell-roles',
         isSortable    : false
       },
@@ -60,6 +62,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : 'Public URL',
         valuePath     : 'url',
+        width         : 250,
         cellComponent : 'ui-table/cell/cell-link',
         isSortable    : false
       }
