@@ -14,10 +14,32 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : 'Date and Time',
-        valuePath       : 'startsAt',
+        valuePath       : 'createdAt',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/tickets/orders/cell-date'
+      },
+      {
+        name            : 'Total Amount',
+        valuePath       : 'amount',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/admin/tickets/cell-amount'
+      },
+      {
+        name            : 'Buyer/ Registeration Contact',
+        valuePath       : 'user.email',
+        cellComponent   : 'ui-table/cell/admin/tickets/cell-user-email'
+      },
+      {
+        name            : 'Event Name',
+        valuePath       : 'event',
+        cellComponent   : 'ui-table/cell/admin/tickets/cell-event-info'
+      },
+      {
+        name            : 'Actions',
+        valuePath       : 'actions',
+        cellComponent   : 'ui-table/cell/admin/tickets/cell-action'
       }
     ]
   }
@@ -28,8 +50,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     this.model.data.forEach(row => {
       console.log('SOMETHING AWESOME ', row);
       rows.pushObject({
-        order    : row,
-        startsAt : row
+        order     : row,
+        createdAt : row,
+        amount    : row,
+        startsAt  : row
       });
     });
     return rows;
