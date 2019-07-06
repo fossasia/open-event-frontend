@@ -14,7 +14,7 @@ export default Component.extend({
   showFilters   : false,
 
   hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', function() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs !== null);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs);
   }),
 
   showAllCategories: computed('category', 'sub_category', function() {
