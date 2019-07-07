@@ -1,20 +1,16 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
+import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
-export default class extends Controller {
-  queryParams = ['page', 'per_page'];
-  page = 1;
-  per_page = 10;
-  search = null;
-  sort_dir = null;
-  sort_by = null;
-  sorts = [];
+export default class extends Controller.extend(EmberTableControllerMixin) {
+
   @computed()
   get columns() {
     return [
       {
         name            : 'Name',
         valuePath       : 'name',
+        width           : 150,
         isSortable      : true,
         extraValuePaths : ['startsAt', 'endAt'],
         headerComponent : 'tables/headers/sort',
@@ -39,6 +35,7 @@ export default class extends Controller {
       {
         name          : 'Roles',
         valuePath     : 'roles',
+        width         : 180,
         cellComponent : 'ui-table/cell/cell-roles',
         isSortable    : false
       },
@@ -65,6 +62,7 @@ export default class extends Controller {
       {
         name          : 'Public URL',
         valuePath     : 'url',
+        width         : 250,
         cellComponent : 'ui-table/cell/cell-link',
         isSortable    : false
       }

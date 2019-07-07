@@ -125,6 +125,26 @@
   </div>
 {{/if}}
 <div class="item">
+  {{#ui-accordion}}
+    <span class="title">
+      <i class="dropdown icon"></i>
+      {{t 'Event Call For Speakers' }}
+    </span>
+    <div class="content menu">
+      <a href="#"
+        class="link item {{if (eq cfs 'open') 'active'}}"
+        {{action 'selectEventCfs' 'open'}}>
+        {{t 'Open'}}
+      </a>
+      <a href="#"
+        class="link item {{if (eq cfs 'closed') 'active'}}"
+        {{action 'selectEventCfs' 'closed'}}>
+        {{t 'Closed'}}
+      </a>
+    </div>
+  {{/ui-accordion}}
+</div>
+<div class="item">
   <button class="ui red button {{if hideClearFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
   {{#if device.isMobile}}
     <button class="ui blue button" {{action 'toggleFilters'}}>{{if showFiltersOnMobile 'Hide Filters' 'Show Filters'}}</button>
