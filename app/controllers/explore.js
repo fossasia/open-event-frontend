@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
-  queryParams  : ['category', 'sub_category', 'event_type', 'start_date', 'end_date', 'location', 'ticket_type'],
+  queryParams  : ['category', 'sub_category', 'event_type', 'start_date', 'end_date', 'location', 'ticket_type', 'cfs'],
   category     : null,
   sub_category : null,
   event_type   : null,
@@ -9,6 +9,7 @@ export default Controller.extend({
   end_date     : null,
   location     : null,
   ticket_type  : null,
+  cfs          : null,
 
   actions: {
     shareEvent(event) {
@@ -36,6 +37,9 @@ export default Controller.extend({
       }
       if (filterType === 'ticket_type') {
         this.set('ticket_type', null);
+      }
+      if (filterType === 'cfs') {
+        this.set('cfs', null);
       }
     }
   }

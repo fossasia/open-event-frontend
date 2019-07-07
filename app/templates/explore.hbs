@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   <div class="four wide column">
-    {{explore/side-bar model=model category=category sub_category=sub_category event_type=event_type startDate=start_date endDate=end_date location=location ticket_type=ticket_type}}
+    {{explore/side-bar model=model category=category sub_category=sub_category event_type=event_type startDate=start_date endDate=end_date location=location ticket_type=ticket_type cfs=cfs}}
   </div>
   <div class="twelve wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
@@ -39,6 +39,12 @@
         <div class="ui mini label">
           {{ticket_type}}
           <a role="button" {{action 'clearFilter' 'ticket_type'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if filters.cfs}}
+        <div class="ui mini label">
+          {{filters.cfs}}
+          <a role="button" {{action 'clearFilter' 'cfs'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
     </div>
