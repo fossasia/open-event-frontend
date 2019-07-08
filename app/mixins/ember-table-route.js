@@ -1,4 +1,5 @@
 import Mixin from '@ember/object/mixin';
+import { kebabCase } from 'lodash-es';
 
 export default Mixin.create({
   queryParams: {
@@ -20,6 +21,7 @@ export default Mixin.create({
   },
 
   applySearchFilters(options, params, searchField) {
+    searchField = kebabCase(searchField);
     if (params.search) {
       options.pushObject({
         name : searchField,
