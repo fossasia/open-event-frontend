@@ -11,6 +11,7 @@ import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
   validGithubProfileUrlPattern
 } from 'open-event-frontend/utils/validators';
+import { genders } from 'open-event-frontend/utils/dictionary/genders';
 
 export default Component.extend(FormMixin, {
   router: service(),
@@ -465,6 +466,8 @@ export default Component.extend(FormMixin, {
   countries: computed(function() {
     return orderBy(countries, 'name');
   }),
+
+  genders: orderBy(genders, 'name'),
 
   actions: {
     submit(data) {
