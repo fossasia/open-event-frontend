@@ -101,9 +101,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
    }
 
   @action
-  moveToDetails(id) {
-    this.transitionToRoute('events.view', id);
-  }
+   moveToDetails(id) {
+     this.transitionToRoute('events.view', id);
+   }
 
   @action
   editEvent(id) {

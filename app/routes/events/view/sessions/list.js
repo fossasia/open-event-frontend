@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
-
-export default Route.extend({
+import { action } from '@ember/object';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     switch (this.get('params.session_status')) {
       case 'pending':
@@ -14,9 +15,11 @@ export default Route.extend({
       default:
         return this.l10n.t('Session');
     }
-  },
+  }
+
   async model(params) {
     this.set('params', params);
+    const searchField = 'name';
     let filterOptions = [];
     if (params.session_status === 'pending') {
       filterOptions = [
@@ -53,29 +56,25 @@ export default Route.extend({
     } else {
       filterOptions = [];
     }
-
-    let queryObject = {
-      include      : 'speakers,feedbacks',
-      filter       : filterOptions,
-      'page[size]' : 10
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+    let queryString = {
+      include        : 'speakers,feedbacks',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
     };
+    queryString = this.applySortFilters(queryString, params);
 
     let store = this.modelFor('events.view');
 
-    let data =  await store.query('sessions', queryObject);
-
     return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'sessions'
+      data: await store.query('sessions', queryString)
     };
-  },
-
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
   }
 
-});
+    @action
+  refreshRoute() {
+    this.refresh();
+  }
+
+}
