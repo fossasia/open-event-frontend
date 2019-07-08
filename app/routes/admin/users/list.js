@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import moment from 'moment';
 
-export default Route.extend({
+export default class extends Route.extend(EmberTableRouteMixin) {
+
   titleToken() {
     switch (this.get('params.users_status')) {
       case 'active':
@@ -11,17 +14,20 @@ export default Route.extend({
       case 'inactive':
         return this.l10n.t('Inactive');
     }
-  },
+  }
+
   beforeModel(transition) {
-    this._super(...arguments);
+    super.beforeModel(...arguments);
     const userState = transition.to.params.users_status;
     if (!['all', 'deleted', 'active', 'inactive'].includes(userState)) {
       this.replaceWith('admin.users.view', userState);
     }
-  },
-  model(params) {
+  }
+
+  async model(params) {
     this.set('params', params);
     let filterOptions = [];
+    const searchField = 'firstName';
     if (params.users_status === 'active') {
       filterOptions = [
         {
@@ -74,16 +80,21 @@ export default Route.extend({
         }
       ];
     }
-    return this.store.query('user', {
-      include      : 'events',
-      get_trashed  : true,
-      filter       : filterOptions,
-      'page[size]' : 10
-    });
-  },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+
+    let queryString = {
+      include        : 'events',
+      get_trashed    : true,
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
+    };
+
+    queryString = this.applySortFilters(queryString, params);
+    return  this.asArray(this.store.query('user', queryString));
   }
-});
+  @action
+  refreshRoute() {
+    this.refresh();
+  }
+}
