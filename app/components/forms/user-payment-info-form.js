@@ -98,6 +98,7 @@ export default class extends Component.extend(FormMixin) {
   @action
   submit() {
     this.onValid(async() => {
+      this.set('isLoading', true);
       try {
         this.authManager.currentUser.setProperties(this.userBillingInfo);
         await this.authManager.currentUser.save();
@@ -106,6 +107,7 @@ export default class extends Component.extend(FormMixin) {
         this.authManager.currentUser.rollbackAttributes();
         this.notify.error(this.l10n.t('An unexpected error occurred'));
       }
+      this.set('isLoading', false);
     });
   }
 }

@@ -1,4 +1,4 @@
-<form class="ui form" {{action 'submit' on='submit'}}> 
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}> 
   <h3 class="ui header">
     {{t 'Payment Information'}}
   </h3>
@@ -56,7 +56,7 @@
     {{textarea rows='4' id='additionalInfo' value=userBillingInfo.billingAdditionalInfo}}
   </div>
 
-  <button type="submit" class="ui teal submit button update-changes">
+  <button type="submit" class="ui teal submit button">
     {{t 'Submit'}}
   </button>
 </form>
