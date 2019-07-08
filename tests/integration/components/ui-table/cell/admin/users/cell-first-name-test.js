@@ -5,9 +5,17 @@ import { render } from '@ember/test-helpers';
 
 module('Integration | Component | ui table/cell/admin/users/cell first name', function(hooks) {
   setupIntegrationTest(hooks);
-
+  const props = {
+    actions: {
+      moveToUserDetails : () => {},
+      deleteUser        : () => {},
+      openEditModal     : () => {},
+      restoreUser       : () => {}
+    }
+  };
   test('it renders', async function(assert) {
-    await render(hbs`{{ui-table/cell/admin/users/cell-first-name}}`);
+    this.set('props', props);
+    await render(hbs`{{ui-table/cell/admin/users/cell-first-name props=props}}`);
     assert.ok(this.element.innerHTML.trim().includes(''));
   });
 });

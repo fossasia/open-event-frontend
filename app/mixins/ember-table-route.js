@@ -43,6 +43,23 @@ export default Mixin.create({
       delete query.sort;
     }
     return query;
+  },
+
+  /**
+   * Convert the given ArrayProxy or Promise<ArrayProxy> to a native Array.
+   *
+   * @param promise
+   * @return {Promise<Array>}
+   */
+  async asArray(promise) {
+    const resolved = await promise;
+    if (resolved.toArray) {
+      return {
+        data : resolved.toArray(),
+        meta : resolved.meta
+      };
+    }
+    return resolved;
   }
 
 
