@@ -7,5 +7,6 @@ export default ModelBase.extend({
   feePercentage   : attr('number'),
   maximumFee      : attr('number'),
   revenue         : attr('number'),
-  ticketCount     : attr('number')
+  ticketCount     : attr('number'),
+  eventDate       : attr('moment')
 });

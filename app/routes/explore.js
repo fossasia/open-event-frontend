@@ -76,6 +76,13 @@ export default Route.extend({
         val  : `%${params.location}%`
       });
     }
+    if (params.cfs) {
+      filterOptions.push({
+        name : 'is_sessions_speakers_enabled',
+        op   : 'eq',
+        val  : params.cfs === 'open'
+      });
+    }
 
     if (params.start_date && params.end_date) {
       filterOptions.push({

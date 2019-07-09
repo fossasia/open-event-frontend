@@ -26,7 +26,13 @@
         {{event-card event=event isCFS=true shareEvent=(action 'shareEvent')}}
       {{/each}}
     </div>
+    <div class="ui hidden divider"></div>
+    <div class="ui centered grid">
+      <div class="row">
+        {{#link-to "explore" (query-params cfs='open') class='ui blue button'}}{{t 'Show more calls for speakers'}}{{/link-to}}
+      </div>
+    </div>
   {{/if}}
-  
+
   {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
 </div>
