@@ -274,6 +274,32 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             }
           ]
         },
+        minPrice: {
+          identifier : 'min_price',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Minimum price for donation tickets required')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.l10n.t('Minimum price needs to be greater than zero')
+            }
+          ]
+        },
+        maxPrice: {
+          identifier : 'max_price',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Maximum price for donation tickets required')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.l10n.t('Maximum price needs to be greater than zero')
+            }
+          ]
+        },
         paypalEmail: {
           identifier : 'paypal_email',
           rules      : [

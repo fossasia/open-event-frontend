@@ -11,11 +11,11 @@
       </div>
     {{else if (eq ticket.type 'donation')}}
       <div class="two fields">
-        <div class="field">
-          {{input type='number' name='min_price' placeholder=(t 'Min') value=ticket.minOrder}}
+        <div class="field {{unless minMaxValid 'error'}}" >
+          {{input type='number' name='min_price' placeholder=(t 'Min') value=ticket.minPrice  min=1}}
         </div>
-        <div class="field">
-          {{input type='number' name='max_price' placeholder=(t 'Max') value=ticket.maxOrder}}
+        <div class="field {{unless minMaxValid 'error'}}" >
+          {{input type='number' name='max_price' placeholder=(t 'Max') value=ticket.maxPrice min=1}}
         </div>
       </div>
     {{else if (eq ticket.type 'free')}}
@@ -26,19 +26,11 @@
       </div>
     {{/if}}
   </div>
-  {{#if (eq ticket.type 'donation')}}
-    <div class="four wide column">
-      <span class="text muted ticket-input">
-        {{t 'This is a Donation Ticket'}}
-      </span>
+  <div class="four wide column">
+    <div class="field">
+      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity min=1}}
     </div>
-  {{else}}
-    <div class="four wide column">
-      <div class="field">
-        {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.maxOrder min=1}}
-      </div>
-    </div>
-  {{/if}}
+  </div>
   <div class="column {{unless device.isLargeMonitor 'less right padding'}}">
     <div class="field">
       <div class="ui icon buttons">
