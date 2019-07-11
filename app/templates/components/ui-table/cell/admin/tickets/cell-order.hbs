@@ -23,3 +23,15 @@
     </span>
   </div>
 </div>
+<div class="ui horizontal compact basic buttons">
+  {{#unless record.deletedAt}}
+    {{#ui-popup content=(t 'Delete order') class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center' click=(action props.actions.deleteOrder record)}}
+      <i class="trash icon"></i>
+    {{/ui-popup}}
+  {{/unless}}
+  {{#if record.deletedAt}}
+    {{#ui-popup content=(t 'Restore order') class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center' click=(action props.actions.restoreOrder record)}}
+      <i class="undo icon"></i>
+    {{/ui-popup}}
+  {{/if}}
+</div>
