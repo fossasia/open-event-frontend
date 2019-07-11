@@ -4,6 +4,7 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
 import { sumBy } from 'lodash-es';
 import { A } from '@ember/array';
+import { merge } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
   store: service(),
@@ -15,8 +16,14 @@ export default Component.extend(FormMixin, {
       && !this.get('authManager.currentUser.isVerified');
   }),
 
-  shouldDisableOrderButton: computed('isUnverified', 'hasTicketsInOrder', function() {
-    return !this.hasTicketsInOrder;
+  shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', function() {
+    let quantityDonation = sumBy(this.donationTickets.toArray(),
+      donationTicket => (donationTicket.orderQuantity || 0));
+    if (quantityDonation > 0) {
+      return !(this.hasTicketsInOrder && this.isDonationPriceValid);
+    } else {
+      return !this.hasTicketsInOrder;
+    }
   }),
 
   showTaxIncludedMessage: computed('taxInfo.isTaxIncludedInPrice', function() {
@@ -39,8 +46,20 @@ export default Component.extend(FormMixin, {
       ticket => (ticket.orderQuantity || 0)
     ) > 0;
   }),
+  donationTickets: computed.filterBy('data', 'type', 'donation'),
 
-  total: computed('tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
+  isDonationPriceValid: computed('donationTickets.@each.orderQuantity', 'donationTickets.@each.price', function() {
+    for (const donationTicket of this.donationTickets) {
+      if (donationTicket.orderQuantity > 0) {
+        if (donationTicket.price < donationTicket.minPrice || donationTicket.price > donationTicket.maxPrice) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }),
+
+  total: computed('tickets.@each.price', 'tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
     if (this.taxInfo !== null) {
       return sumBy(this.tickets.toArray(),
         ticket => (ticket.ticketPriceWithTax || 0) * (ticket.orderQuantity || 0)
@@ -176,14 +195,30 @@ export default Component.extend(FormMixin, {
       this.send('togglePromotionalCode', this.code);
     }
   },
+  donationTicketsValidation: computed('donationTickets.@each.id', 'donationTickets.@each.minPrice', 'donationTickets.@each.maxPrice', function() {
+    const validationRules = {};
+    for (let donationTicket of this.donationTickets) {
+      validationRules[donationTicket.id] =  {
+        identifier : donationTicket.id,
+        optional   : true,
+        rules      : [
+          {
+            type   : `integer[${donationTicket.minPrice}..${donationTicket.maxPrice}]`,
+            prompt : this.l10n.t(`Please enter a donation amount between ${donationTicket.minPrice} and ${donationTicket.maxPrice}`)
+          }
+        ]
+      };
+    }
+    return validationRules;
+  }),
   getValidationRules() {
-    return {
+    const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
       fields : {
         promotionalCode: {
-          identifier : 'promotional_code',
+          identifier : 'promotionalCode',
           rules      : [
             {
               type   : 'empty',
@@ -193,5 +228,7 @@ export default Component.extend(FormMixin, {
         }
       }
     };
+    validationRules.fields = merge(validationRules.fields, this.donationTicketsValidation);
+    return validationRules;
   }
 });

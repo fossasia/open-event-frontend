@@ -21,7 +21,7 @@ export default ModelBase.extend({
   salesEndsAt          : attr('moment', { defaultValue: () => moment().add(10, 'days').startOf('day') }),
   minOrder             : attr('number', { defaultValue: 1 }),
   maxOrder             : attr('number', { defaultValue: 10 }),
-  minPrice             : attr('number'),
+  minPrice             : attr('number', { defaultValue: 1 }),
   maxPrice             : attr('number'),
   isFeeAbsorbed        : attr('boolean', { defaultValue: true }),
   position             : attr('number'),
@@ -52,7 +52,7 @@ export default ModelBase.extend({
    * This attribute computes total ticket price payable after inclusion
    * of additional taxes on the base ticket price
    */
-  ticketPriceWithTax: computed('event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
+  ticketPriceWithTax: computed('price', 'event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
     let taxType = this.event.get('tax.isTaxIncludedInPrice');
     if (!taxType) {
       return ((1 + this.event.get('tax.rate') / 100) * this.price).toFixed(2);
