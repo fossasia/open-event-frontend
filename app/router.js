@@ -113,7 +113,7 @@ router.map(function() {
     this.route('email-preferences');
     this.route('applications');
     this.route('danger-zone');
-    this.route('billing-info', function() {
+    this.route('billing', function() {
       this.route('payment-info');
       this.route('invoices');
     });
