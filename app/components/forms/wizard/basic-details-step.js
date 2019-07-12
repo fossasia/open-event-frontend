@@ -106,10 +106,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return filter(this.get('data.event.tickets').toArray(), ticket => ticket.get('type') === 'paid').length > 0;
   }),
 
-  hasDonationTickets: computed('data.event.tickets.[]', {
-    get() {
-      return filter(this.get('data.event.tickets').toArray(), ticket => ticket.get('type') === 'donation').length > 0;
-    }
+  hasDonationTickets: computed('data.event.tickets.[]', function() {
+    return filter(this.get('data.event.tickets').toArray(), ticket => ticket.get('type') === 'donation').length > 0;
   }),
 
   hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
