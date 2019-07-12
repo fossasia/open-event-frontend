@@ -30,10 +30,10 @@ export default Component.extend({
 
     switch (this.rangePosition) {
       case 'start':
-        defaultOptions.endCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
+        defaultOptions.Calendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
         break;
       case 'end':
-        defaultOptions.startCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
+        defaultOptions.Calendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
         break;
     }
 
