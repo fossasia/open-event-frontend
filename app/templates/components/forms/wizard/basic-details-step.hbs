@@ -223,7 +223,7 @@
       {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
     </div>
   {{/if}}
-  {{#if (or hasPaidTickets hasDonationTickets)}}
+  {{#if hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>
     <div class="field">
