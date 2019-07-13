@@ -48,6 +48,21 @@ export default ModelBase.extend({
   deletedAt      : attr('moment'),
   lastAccessedAt : attr('moment', { readOnly: true }),
 
+  /**
+   * Billing Contact Information
+   */
+
+  billingContactName    : attr('string'),
+  billingPhone          : attr('string'),
+  billingCountry        : attr('string'),
+  company               : attr('string'),
+  billingAddress        : attr('string'),
+  billingCity           : attr('string'),
+  billingZipCode        : attr('string'),
+  billingTaxInfo        : attr('string'),
+  billingAdditionalInfo : attr('string'),
+  billingState          : attr('string'),
+
   status: computed('lastAccessedAt', 'deletedAt', function() {
     if (this.deletedAt == null) {
       if (this.lastAccessedAt == null) {
