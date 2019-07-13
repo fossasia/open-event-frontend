@@ -77,7 +77,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       order.set('deletedAt', null);
       await order.save({ adapterOptions: { getTrashed: true } });
-      this.notify.success(this.l10n.t('Order has been deleted successfully.'));
+      this.notify.success(this.l10n.t('Order has been restored successfully.'));
     } catch {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
