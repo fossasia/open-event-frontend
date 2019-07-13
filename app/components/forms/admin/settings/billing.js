@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { action } from '@ember/object';
 
 export default class extends Component.extend(FormMixin) {
@@ -22,8 +23,9 @@ export default class extends Component.extend(FormMixin) {
           identifier : 'adminBillingPhone',
           rules      : [
             {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter a phone number')
+              type   : 'regExp',
+              value  : validPhoneNumber,
+              prompt : this.l10n.t('Please enter a valid mobile number.')
             }
           ]
         },
@@ -93,34 +95,11 @@ export default class extends Component.extend(FormMixin) {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please enter the zip code')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Please enter a valid zip code')
-            }
-          ]
-        },
-        adminBillingState: {
-          identifier : 'adminBillingState',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter the state')
-            }
-          ]
-        },
-        adminBillingAdditionalInfo: {
-          identifier : 'adminBillingAdditionalInfo',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter additional info')
             }
           ]
         }
       }
     };
-
   }
 
   @action
@@ -129,5 +108,4 @@ export default class extends Component.extend(FormMixin) {
       this.save();
     });
   }
-
 }

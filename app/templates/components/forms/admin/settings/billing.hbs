@@ -42,9 +42,22 @@
     {{input type='text' id='adminBillingEmail' value=model.adminBillingEmail}}
   </div>
   <div class="field">
-    <label class="required" for="adminBillingCountry">{{t 'Country'}}</label>
-    {{input type='text' id='adminBillingCountry' value=model.adminBillingCountry}}
-  </div>
+	  <label class="required">{{t 'Country'}}</label>
+    {{#ui-dropdown class='search selection' selected=model.adminBillingCountry forceSelection=false
+	                         fullTextSearch=true}}
+	    {{input type='hidden' id='country' value=model.adminBillingCountry}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select country'}}</div>
+      <div class="menu">
+        {{#each countries as |country|}}
+          <div class="item" data-value="{{country.name}}">
+            <i class="{{lowercase country.code}} flag"></i>
+            {{country.name}}
+          </div>
+        {{/each}}
+      </div>
+	  {{/ui-dropdown}}
+	</div>
   <div class="field">
     <label for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
     {{input type='text' id='adminBillingTaxInfo' value=model.adminBillingTaxInfo}}
@@ -62,7 +75,7 @@
     {{input type='text' id='adminBillingCity' value=model.adminBillingCity}}
   </div>
   <div class="field">
-    <label class="required" for="adminBillingState">{{t 'State'}}</label>
+    <label for="adminBillingState">{{t 'State'}}</label>
     {{input type='text' id='adminBillingState' value=model.adminBillingState}}
   </div>
   <div class="field">
