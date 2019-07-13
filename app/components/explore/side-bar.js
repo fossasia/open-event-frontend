@@ -12,7 +12,7 @@ export default Component.extend({
 
   customEndDate : null,
   showFilters   : false,
-  hideMap       : false,
+  toggleMap       : false,
 
   hideClearFilters: computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', function() {
     return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs);
@@ -153,8 +153,8 @@ export default Component.extend({
       this.set('showFilters', !this.showFilters);
     },
 
-    hideMap() {
-      this.toggleProperty('hideMap');
+    toggleMap() {
+      this.toggleProperty('toggleMap');
     }
   }
 });
