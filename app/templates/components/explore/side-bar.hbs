@@ -24,10 +24,7 @@
           <div class="grouped fields">
             {{#each dateRanges as |dateRange|}}
               <div class="field">
-                <div class="ui checkbox">
-                  <input type="checkbox" onChange={{action 'selectDateFilter' dateRange.key}} checked={{if (eq dateType dateRange.key) 'active'}}>
-                  <label>{{dateRange.name}}</label>
-                </div>
+                {{ui-checkbox label=dateRange.name class='ui checkbox' checked=(if (eq dateType dateRange.key) 'active') onChange=(action 'selectDateFilter' dateRange.key)}}
               </div>
               {{#if (and (eq dateRange.key 'custom_dates') (eq dateType 'custom_dates'))}}
                 <div class="explore sub menu">
@@ -81,10 +78,7 @@
               <div class="grouped fields">
                 {{#each Category.subTopics as |subCategory|}}
                   <div class="field inner item">
-                    <div class="ui checkbox">
-                      <input type="checkbox" onChange={{action 'selectCategory' Category.name subCategory.slug}} checked={{if (eq sub_category subCategory.slug) 'active'}}>
-                      <label>{{subCategory.name}}</label>
-                    </div>
+                    {{ui-checkbox label=subCategory.name class='toggle' checked=(if (eq sub_category subCategory.slug) 'active') onChange=(action 'selectCategory' Category.name subCategory.slug)}}
                   </div>
                 {{/each}}
               </div>
@@ -101,18 +95,12 @@
         {{t 'Event Type' }}
       </span>
       <div class="content menu">
-        <div class="ui checkbox">
-          <input type="checkbox" onChange={{action 'clearFilterTypes'}} checked={{if showAllTypes 'active'}}>
-          <label>{{t 'All Types'}}</label>
-        </div>
+        {{ui-checkbox label=(t 'All Types') class='ui checkbox' checked=(if showAllTypes 'active') onChange=(action 'clearFilterTypes')}}
         <div class="ui form">
           <div class="grouped fields">
             {{#each model.eventTypes as |eventType|}}
               <div class="field">
-                <div class="ui checkbox">
-                  <input type="checkbox" onChange={{action 'selectEventType' eventType.name}} checked={{if (eq event_type eventType.name) 'active'}}>
-                  <label>{{eventType.name}}</label>
-                </div>
+                {{ui-checkbox label=eventType.name class='ui checkbox' checked=(if (eq event_type eventType.name) 'active') onChange=(action 'selectEventType' eventType.name)}}
               </div>
             {{/each}}
           </div>
@@ -130,16 +118,10 @@
         <div class="ui form">
           <div class="grouped fields">
             <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" onChange={{action 'selectTicketType' 'free'}} checked={{if (eq ticket_type 'free') true}}>
-                <label>{{t 'Free'}}</label>
-              </div>
+              {{ui-checkbox label=(t 'Free') class='ui checkbox' checked=(if (eq ticket_type 'free') true) onChange=(action 'selectTicketType' 'free')}}
             </div>
             <div class="field">
-              <div class="ui checkbox checkbox">
-                <input type="checkbox" onChange={{action 'selectTicketType' 'paid'}} checked={{if (eq ticket_type 'paid') true}}>
-                <label>{{t 'Paid'}}</label>
-              </div>
+              {{ui-checkbox label=(t 'Paid') class='ui checkbox' checked=(if (eq ticket_type 'paid') true) onChange=(action 'selectTicketType' 'paid')}}
             </div>
           </div>
         </div>
@@ -157,16 +139,10 @@
       <div class="ui form">
         <div class="grouped fields">
           <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" onChange={{action 'selectEventCfs' 'open'}} checked={{if (eq cfs 'open') 'active'}}>
-              <label>{{t 'Open'}}</label>
-            </div>
+            {{ui-checkbox label=(t 'Open') checked=(if (eq cfs 'open') 'active') onChange=(action 'selectEventCfs' 'open')}}
           </div>
           <div class="field">
-            <div class="ui checkbox checkbox">
-              <input type="checkbox" onChange={{action 'selectEventCfs' 'closed'}} checked={{if (eq cfs 'closed') 'active'}}>
-              <label>{{t 'Closed'}}</label>
-            </div>
+            {{ui-checkbox label=(t 'Closed') class='ui checkbox' checked=(if (eq cfs 'closed') 'active') onChange=(action 'selectEventCfs' 'closed')}}
           </div>
         </div>
       </div>
