@@ -98,9 +98,16 @@ export default Service.extend({
   async initialize() {
     if (this.get('session.isAuthenticated')) {
       if (this.get('session.data.currentUserFallback.id')) {
-        const user = await this.store.findRecord('user', this.get('session.data.currentUserFallback.id'));
-        this.set('currentUserModel', user);
-        this.identify();
+        try {
+          const user = await this.store.findRecord('user', this.get('session.data.currentUserFallback.id'));
+          this.set('currentUserModel', user);
+          this.identify();
+        } catch (e) {
+          console.warn(e);
+          this.session.invalidate();
+          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+        }
+
       } else {
         this.identifyStranger();
       }
