@@ -75,6 +75,10 @@ dueInvoiceColumns = [
   {
     name      : 'View Invoice',
     valuePath : 'invoiceLink'
+  },
+  {
+    name      : 'Pay',
+    valuePath : 'paymentLink'
   }
 
 ];
@@ -106,7 +110,8 @@ get dueInvoiceRows() {
       eventName   : row.event.name,
       dateIssued  : row.createdAt,
       amount      : row.amount,
-      invoiceLink : row.invoicePdfUrl
+      invoiceLink : row.invoicePdfUrl,
+      paymentLink : components/ui-table/cell/cell-simple-date
     });
   });
   return rows;
