@@ -42,10 +42,10 @@
     {{input type='text' id='adminBillingEmail' value=model.adminBillingEmail}}
   </div>
   <div class="field">
-	  <label class="required">{{t 'Country'}}</label>
+    <label class="required">{{t 'Country'}}</label>
     {{#ui-dropdown class='search selection' selected=model.adminBillingCountry forceSelection=false
 	                         fullTextSearch=true}}
-	    {{input type='hidden' id='country' value=model.adminBillingCountry}}
+      {{input type='hidden' id='country' value=model.adminBillingCountry}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select country'}}</div>
       <div class="menu">
@@ -56,8 +56,8 @@
           </div>
         {{/each}}
       </div>
-	  {{/ui-dropdown}}
-	</div>
+    {{/ui-dropdown}}
+  </div>
   <div class="field">
     <label for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
     {{input type='text' id='adminBillingTaxInfo' value=model.adminBillingTaxInfo}}
