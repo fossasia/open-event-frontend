@@ -109,6 +109,15 @@ export default Component.extend(FormMixin, {
           ]
         },
 
+        orderExpiryTime: {
+          identifier : 'order_expiry_time',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter a Expiry Time for Order')
+            }]
+        },
+
         googlereCAPTCHAsecretkey: {
           identifier : 'google_recaptcha_secretkey',
           rules      : [
