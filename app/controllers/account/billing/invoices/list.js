@@ -100,7 +100,7 @@ allInvoiceColumns =  [
 
 get dueInvoiceRows() {
   const rows = [];
-  this.model.data.forEach(row => {
+  this.model.data.map(row => {
     rows.pushObject({
       invoiceId   : row.identifier,
       eventName   : row.event.name,
@@ -114,7 +114,7 @@ get dueInvoiceRows() {
 
 get paidInvoiceRows() {
   const rows = [];
-  this.model.data.forEach(row => {
+  this.model.data.map(row => {
     rows.pushObject({
       invoiceId   : row.identifier,
       eventName   : row.event.name,
@@ -129,7 +129,7 @@ get paidInvoiceRows() {
 
 get upcomingInvoiceRows() {
   const rows = [];
-  this.model.data.forEach(row => {
+  this.model.data.map(row => {
     rows.pushObject({
       invoiceId   : row.identifier,
       eventName   : row.event.name,
@@ -143,7 +143,7 @@ get upcomingInvoiceRows() {
 
 get allInvoiceRows() {
   const rows = [];
-  this.model.data.forEach(row => {
+  this.model.data.map(row => {
     rows.pushObject({
       invoiceId : row.identifier,
       eventName : row.event.name,
