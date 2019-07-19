@@ -8,11 +8,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'Order',
-        valuePath       : 'order',
-        cellComponent   : 'ui-table/cell/admin/tickets/cell-order',
-        width           : 250,
-        actions         : {
+        name          : 'Order',
+        valuePath     : 'order',
+        cellComponent : 'ui-table/cell/admin/orders/cell-order',
+        width         : 250,
+        actions       : {
           deleteOrder  : this.deleteOrder.bind(this),
           restoreOrder : this.restoreOrder.bind(this)
         }
@@ -29,26 +29,25 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'amount',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
-        cellComponent   : 'ui-table/cell/admin/tickets/cell-amount'
+        cellComponent   : 'ui-table/cell/admin/orders/cell-amount'
       },
       {
-        name            : 'Buyer/ Registeration Contact',
-        valuePath       : 'user',
-        cellComponent   : 'ui-table/cell/admin/tickets/cell-user-email'
+        name          : 'Buyer/ Registeration Contact',
+        valuePath     : 'user',
+        cellComponent : 'ui-table/cell/admin/orders/cell-user-email'
       },
       {
-        name            : 'Event Name',
-        valuePath       : 'event',
-        cellComponent   : 'ui-table/cell/admin/tickets/cell-event-info'
+        name          : 'Event Name',
+        valuePath     : 'event',
+        cellComponent : 'ui-table/cell/admin/orders/cell-event-info'
       }
-    ]
+    ];
   }
 
   @computed('model.data.[]', 'model.data.@each.user')
   get rows() {
     const rows = [];
     this.model.data.map(row => {
-      console.log('order :', row.deletedAt);
       rows.pushObject({
         order     : row,
         createdAt : row,
@@ -66,8 +65,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       await order.destroyRecord();
       this.notify.success(this.l10n.t('Order has been deleted successfully.'));
-    }
-    catch {
+    } catch {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
   }

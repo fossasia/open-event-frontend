@@ -3,7 +3,7 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.get('params.ticket_status')) {
+    switch (this.get('params.order_status')) {
       case 'completed':
         return this.l10n.t('Completed');
       case 'pending':
@@ -24,16 +24,16 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
-    const searchField='order';
-    if (params.ticket_status !== 'all' && params.ticket_status !== 'deleted') {
+    const searchField = 'order';
+    if (params.order_status !== 'all' && params.order_status !== 'deleted') {
       filterOptions = [
         {
           name : 'status',
           op   : 'eq',
-          val  : params.ticket_status
+          val  : params.order_status
         }
       ];
-    } else if (params.ticket_status === 'deleted') {
+    } else if (params.order_status === 'deleted') {
       filterOptions = [
         {
           name : 'deleted-at',
@@ -46,7 +46,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     }
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
-      get_trashed    : params.ticket_status === 'deleted',
+      get_trashed    : params.order_status === 'deleted',
       include        : 'tickets,user',
       filter         : filterOptions,
       'page[size]'   : params.per_page || 10,
@@ -55,7 +55,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     queryString = this.applySortFilters(queryString, params);
 
     return {
-      data : await this.store.query('order', queryString)
+      data: await this.store.query('order', queryString)
     };
   }
 }

@@ -55,6 +55,14 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, Cac
     return this._super(store, type, query);
   },
 
+  buildURL(modelName, id, snapshot, requestType, query) {
+    let url = this._super(modelName, id, snapshot, requestType, query);
+    if (requestType === 'updateRecord' && snapshot.adapterOptions && snapshot.adapterOptions.getTrashed) {
+      url = `${url}?get_trashed=true`;
+    }
+    return url;
+  },
+
   /**
    This method is called for every response that the adapter receives from the
    API. If the response has a 401 status code it invalidates the session (see
