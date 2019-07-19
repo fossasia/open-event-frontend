@@ -80,6 +80,10 @@
         {{/each}}
       {{/each}}
       {{#if isPaidOrder}}
+        <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          {{t 'Billing Information'}}
+        </h4>
         <div class="field">
           <label class="required" for="company">{{t 'Company'}}</label>
           {{input type='text' id='company' value=data.company}}
