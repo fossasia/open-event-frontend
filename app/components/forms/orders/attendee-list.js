@@ -14,13 +14,11 @@ export default class extends Component {
     return this.data.attendees;
   }
 
-  @computed('data.amount', 'data.isBillingEnabled')
-  get showBillingInfo() {
-    return or('data.amount', 'data.isBillingEnabled');
-  }
+  @or('data.amount', 'data.isBillingEnabled')
+  showBillingInfo;
 
   @computed('fields.@each.form')
   get allFields() {
-    return groupBy(this.fields.toArray(), field => field.get('form'));
+    return groupBy(this.fields.toArray(), field => field.form);
   }
 }
