@@ -1,47 +1,46 @@
 import Route from '@ember/routing/route';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import moment from 'moment';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
-export default Route.extend(AuthenticatedRouteMixin, {
-  titleToken() {
-    switch (this.get('params.event_status')) {
-      case 'live':
-        return this.l10n.t('Live');
-      case 'draft':
-        return this.l10n.t('Draft');
-      case 'past':
-        return this.l10n.t('Past');
-    }
-  },
+export default class extends Route.extend(EmberTableRouteMixin) {
+
   async model(params) {
-    this.set('params', params);
-
     let filterOptions = [];
+    const searchField = 'name';
     if (params.event_status === 'live') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'published'
-        },
-        {
-          or: [
+          and: [
             {
-              name : 'starts-at',
-              op   : 'ge',
-              val  : moment().toISOString()
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
             },
             {
-              and: [
+              name : 'state',
+              op   : 'eq',
+              val  : 'published'
+            },
+            {
+              or: [
                 {
                   name : 'starts-at',
-                  op   : 'le',
+                  op   : 'ge',
                   val  : moment().toISOString()
                 },
                 {
-                  name : 'ends-at',
-                  op   : 'gt',
-                  val  : moment().toISOString()
+                  and: [
+                    {
+                      name : 'starts-at',
+                      op   : 'le',
+                      val  : moment().toISOString()
+                    },
+                    {
+                      name : 'ends-at',
+                      op   : 'gt',
+                      val  : moment().toISOString()
+                    }
+                  ]
                 }
               ]
             }
@@ -51,42 +50,62 @@ export default Route.extend(AuthenticatedRouteMixin, {
     } else if (params.event_status === 'past') {
       filterOptions = [
         {
-          name : 'ends-at',
-          op   : 'lt',
-          val  : moment().toISOString()
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'published'
+          and: [
+            {
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
+            },
+            {
+              name : 'ends-at',
+              op   : 'lt',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'state',
+              op   : 'eq',
+              val  : 'published'
+            }
+          ]
         }
       ];
-    } else {
+    } else if (params.event_status === 'draft') {
       filterOptions = [
         {
-          name : 'state',
-          op   : 'eq',
-          val  : 'draft'
+          and:
+            [
+              {
+                name : 'deleted-at',
+                op   : 'eq',
+                val  : null
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'draft'
+              }
+            ]
+
+        }
+      ];
+    } else if (params.event_status === 'deleted') {
+      filterOptions = [
+        {
+          name : 'deleted-at',
+          op   : 'ne',
+          val  : null
         }
       ];
     }
-
-    let queryObject =  {
-      include      : 'tickets,sessions,speakers',
-      filter       : filterOptions,
-      'page[size]' : 10
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+    let queryString = {
+      get_trashed    : true,
+      include        : 'tickets,sessions,speakers',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
     };
-
-    const store = this.modelFor('admin.users.view');
-
-    const data = await store.query('events', queryObject);
-
-    return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'events'
-    };
-
+    queryString = this.applySortFilters(queryString, params);
+    return this.asArray(this.modelFor('admin.users.view').query('events', queryString));
   }
-});
+}
