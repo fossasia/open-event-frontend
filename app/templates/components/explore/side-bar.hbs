@@ -78,7 +78,7 @@
               <div class="grouped fields">
                 {{#each Category.subTopics as |subCategory|}}
                   <div class="field inner item">
-                    {{ui-checkbox label=subCategory.name class='toggle' checked=(if (eq sub_category subCategory.slug) 'active') onChange=(action 'selectCategory' Category.name subCategory.slug)}}
+                    {{ui-checkbox label=subCategory.name class='ui checkbox' checked=(if (eq sub_category subCategory.slug) 'active') onChange=(action 'selectCategory' Category.name subCategory.slug)}}
                   </div>
                 {{/each}}
               </div>
