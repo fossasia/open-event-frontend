@@ -89,11 +89,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 4
     };
     queryString = this.applySortFilters(queryString, params);
-
-    return {
-      data: await this.authManager.currentUser.query('events', queryString)
-    };
-
+    return this.asArray(this.authManager.currentUser.query('events', queryString));
   }
 
   @action
