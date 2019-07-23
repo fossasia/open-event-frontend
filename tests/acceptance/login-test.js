@@ -21,7 +21,7 @@ module('Acceptance | login', function(hooks) {
     await login(assert, 'wrong_user@gmail.com', 'wrong_password');
     assert.equal(currentURL(), '/login');
     assert.dom('.ui.negative.message').exists();
-    assert.dom('.ui.negative.message').hasText('Your credentials were incorrect.', 'Error message displayed');
+    assert.dom('.ui.negative.message').hasText('Invalid Credentials', 'Error message displayed');
   });
 
   test('logout at /logout', async function(assert) {
