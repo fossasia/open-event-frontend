@@ -190,6 +190,7 @@ router.map(function() {
       this.route('analytics');
       this.route('payment-gateway');
       this.route('ticket-fees');
+      this.route('billing');
     });
     this.route('modules');
     this.route('content', function() {
