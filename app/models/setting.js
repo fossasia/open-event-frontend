@@ -10,7 +10,7 @@ export default ModelBase.extend({
 
   appEnvironment           : attr('string'),
   appName                  : attr('string'),
-  orderExpiryTime          : attr('number', { defaultValue: 10 }),
+  orderExpiryTime          : attr('number', { defaultValue: 15 }),
   tagline                  : attr('string'),
   secret                   : attr('string'),
   storagePlace             : attr('string'),
