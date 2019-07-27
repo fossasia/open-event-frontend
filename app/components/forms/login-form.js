@@ -1,11 +1,12 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { action } from '@ember/object';
 
-export default Component.extend(FormMixin, {
+export default class extends Component.extend(FormMixin) {
 
-  identification : '',
-  password       : '',
-  isLoading      : false,
+  identification = '';
+  password       = '';
+  isLoading      = false;
 
 
   getValidationRules() {
@@ -38,70 +39,73 @@ export default Component.extend(FormMixin, {
         }
       }
     };
-  },
+  }
 
-  actions: {
-    submit() {
-      this.onValid(() => {
-        let credentials = this.getProperties('identification', 'password'),
-            authenticator = 'authenticator:jwt';
-
-        this.set('errorMessage', null);
-        this.set('isLoading', true);
-
-        this.session
-          .authenticate(authenticator, credentials)
-          .then(async() => {
-            const tokenPayload = this.authManager.getTokenPayload();
-            if (tokenPayload) {
-              this.authManager.persistCurrentUser(
-                await this.store.findRecord('user', tokenPayload.identity)
-              );
-            }
-          })
-          .catch(reason => {
-            if (!(this.isDestroyed || this.isDestroying)) {
-              if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
-                this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
-              } else {
-                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
-              }
-              this.set('isLoading', false);
-            } else {
-              console.warn(reason);
-            }
-          })
-          .finally(() => {
-            if (!(this.isDestroyed || this.isDestroying)) {
-              this.set('password', '');
-            }
-          });
+  @action
+  async submit() {
+    this.onValid(async() => {
+      let credentials = this.getProperties('identification', 'password'),
+          authenticator = 'authenticator:jwt';
+      this.setProperties({
+        errorMessage : null,
+        isLoading    : true
       });
-    },
-
-    async auth(provider) {
       try {
-        if (provider === 'facebook') {
-          this.loader.load('/auth/oauth/facebook')
-            .then(async response => {
-              window.location.replace(response.url);
-            });
+        await this.session.authenticate(authenticator, credentials);
+        const tokenPayload = this.authManager.getTokenPayload();
+        if (tokenPayload) {
+          this.authManager.persistCurrentUser(
+            await this.store.findRecord('user', tokenPayload.identity)
+          );
+
         }
-      } catch (error) {
-        this.notify.error(this.l10n.t(error.message));
+      } catch (e) {
+        if (e.error) {
+          this.set('errorMessage', this.l10n.tVar(e.error));
+        } else {
+          this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+        }
       }
-    },
 
-    showPassword() {
-      this.toggleProperty('showPass');
-    }
-  },
+      if (!(this.isDestroyed || this.isDestroying)) {
+        this.setProperties(
+          {
+            password  : '',
+            isLoading : false
+          });
+      }
+    });
+  }
 
-  didInsertElement() {
-    if (this.get('session.newUser')) {
-      this.set('newUser', this.get('session.newUser'));
-      this.set('identification', this.get('session.newUser'));
-      this.set('session.newUser', null);
+  @action
+  async auth(provider) {
+    if (provider === 'facebook') {
+      try {
+        let response = await this.loader.load('/auth/oauth/facebook');
+        window.location.replace(response.url);
+      } catch (e) {
+        if (e.message) {
+          this.notify.error(this.l10n.tVar(e.message));
+        } else {
+          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+        }
+      }
     }
   }
-});
+
+  @action
+  showPassword() {
+    this.toggleProperty('showPass');
+  }
+
+
+  didInsertElement() {
+    if (this.session.newUser) {
+      this.setProperties({
+        newUser        : this.session.newUser,
+        identification : this.session.newUser
+      });
+      this.session.set('newUser', null);
+    }
+  }
+}
