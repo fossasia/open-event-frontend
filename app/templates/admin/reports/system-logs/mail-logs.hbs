@@ -1,6 +1,13 @@
-{{events/events-table columns=columns data=model
-                      useNumericPagination=true
-                      showGlobalFilter=true
-                      showPageSize=true
-                      customGlobalFilter='recipient'
+{{tables/default  columns=columns
+                  rows=model.data
+                  currentPage=page
+                  pageSize=per_page
+                  searchQuery=search
+                  sortBy=sort_by
+                  sortDir=sort_dir
+                  metaData=model.meta
+                  filterOptions=filterOptions
+                  widthConstraint="eq-container"
+                  resizeMode="fluid"
+                  fillMode="equal-column"
 }}
