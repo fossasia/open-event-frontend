@@ -1,6 +1,6 @@
-{{#if (get record column.propertyName)}}
+{{#if record}}
   <span>
-    {{moment-format (get record column.propertyName) (if column.dateFormat column.dateFormat 'MMMM DD, YYYY - HH:mm A')}}
+    {{moment-format record (if props.options.dateFormat props.options.dateFormat 'MMMM DD, YYYY - HH:mm A')}}
   </span>
 {{else}}
   <span>
