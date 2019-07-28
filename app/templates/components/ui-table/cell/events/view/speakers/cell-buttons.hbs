@@ -1,11 +1,11 @@
 <div class="ui {{if device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
-  {{#ui-popup content=(t 'View') class='ui icon button' click=(action viewSpeaker record.id) position='left center'}}
+  {{#ui-popup content=(t 'View') class='ui icon button' click=(action props.actions.viewSpeaker record) position='left center'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action editSpeaker record.id) position='left center'}}
+  {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action props.actions.editSpeaker record) position='left center'}}
     <i class="edit icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'Delete') click=(action (confirm (t 'Are you sure you would like to delete this Speaker?') (action deleteSpeaker record))) class='ui icon button' position='left center'}}
+  {{#ui-popup content=(t 'Delete') click=(action (confirm (t 'Are you sure you would like to delete this Speaker?') (action props.actions.deleteSpeaker record))) class='ui icon button' position='left center'}}
     <i class="trash outline icon"></i>
   {{/ui-popup}}
 </div>

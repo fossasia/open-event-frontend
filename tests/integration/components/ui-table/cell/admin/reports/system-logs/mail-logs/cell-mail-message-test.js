@@ -6,11 +6,17 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | ui table/cell/admin/reports/system logs/mail logs/cell mail message', function(hooks) {
   setupIntegrationTest(hooks);
 
-  const record = { message: 'Hello', subject: 'New User' };
+  const record = 'Hello';
+  const extraRecords = {
+    subject: 'New User'
+  };
 
   test('it renders', async function(assert) {
-    this.set('record', record);
-    await render(hbs `{{ui-table/cell/admin/reports/system-logs/mail-logs/cell-mail-message record=record}}`);
+    this.setProperties({
+      record,
+      extraRecords }
+    );
+    await render(hbs `{{ui-table/cell/admin/reports/system-logs/mail-logs/cell-mail-message record=record extraRecords=extraRecords}}`);
     assert.ok(this.element.innerHTML.trim().includes('Hello'));
   });
 });

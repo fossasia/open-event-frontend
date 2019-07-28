@@ -1,11 +1,11 @@
 <div class="ui {{if device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
-  {{#ui-popup content=(t 'View Session') class='ui icon button'  click=(action viewSession record.id) position='left center'}}
-    <i class="unhide icon"></i>		
+  {{#ui-popup content=(t 'View Session') class='ui icon button'  click=(action props.actions.viewSession record) position='left center'}}
+    <i class="unhide icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'Edit Session') class='ui icon button' click=(action editSession record.id record.event.id) position='left center'}}
+  {{#ui-popup content=(t 'Edit Session') class='ui icon button' click=(action props.actions.editSession record extraRecords.event.id) position='left center'}}
     <i class="edit icon"></i>
   {{/ui-popup}}
-  {{#ui-popup content=(t 'Delete Session') click=(action (confirm (t 'Are you sure you would like to delete this Session?') (action deleteSession record))) class='ui icon button' position='left center'}}
+  {{#ui-popup content=(t 'Delete Session') click=(action (confirm (t 'Are you sure you would like to delete this Session?') (action props.actions.deleteSession record))) class='ui icon button' position='left center'}}
     <i class="trash outline icon"></i>
   {{/ui-popup}}
 </div>
