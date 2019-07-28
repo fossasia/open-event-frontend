@@ -18,6 +18,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
          cellComponent   : 'ui-table/cell/cell-event',
+         width           : 180,
          options         : {
            hasRestorePrivileges: this.hasRestorePrivileges
          },
@@ -35,7 +36,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
          cellComponent   : 'ui-table/cell/cell-simple-date',
-         width           : 40,
+         width           : 65,
          options         : {
            dateFormat: 'MMMM DD, YYYY - hh:mm A'
          }
@@ -46,7 +47,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
          cellComponent   : 'ui-table/cell/cell-simple-date',
-         width           : 40,
+         width           : 65,
          options         : {
            dateFormat: 'MMMM DD, YYYY - hh:mm A'
          }
@@ -56,26 +57,27 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          valuePath       : 'state',
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
-         width           : 50
+         width           : 80
        },
        {
          name            : 'Roles',
          valuePath       : 'owner',
          extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
-         cellComponent   : 'ui-table/cell/cell-roles'
+         cellComponent   : 'ui-table/cell/cell-roles',
+         width           : 185
        },
        {
          name          : 'Sessions',
          valuePath     : 'eventStatisticsGeneral',
          cellComponent : 'ui-table/cell/cell-sessions',
-         width         : 60
+         width         : 90
 
        },
        {
          name          : 'Speakers',
          valuePath     : 'eventStatisticsGeneral',
          cellComponent : 'ui-table/cell/cell-speakers-dashboard',
-         width         : 60
+         width         : 90
        },
        {
          name          : 'Tickets',
@@ -85,14 +87,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        {
          name          : 'Public URL',
          valuePath     : 'url',
-         cellComponent : 'ui-table/cell/cell-link'
+         cellComponent : 'ui-table/cell/cell-link',
+         width         : 220
        },
        {
          name            : 'Featured Event',
          valuePath       : 'id',
          extraValuePaths : ['isFeatured'],
          cellComponent   : 'ui-table/cell/admin/event-is-featured',
-         width           : 40,
+         width           : 80,
          actions         : {
            toggleFeatured: this.toggleFeatured.bind(this)
          }

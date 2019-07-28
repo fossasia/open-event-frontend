@@ -15,6 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'id',
         extraValuePaths : ['firstName', 'deletedAt'],
         cellComponent   : 'ui-table/cell/admin/users/cell-first-name',
+        width           : 155,
         options         : {
           hasRestorePrivileges: this.hasRestorePrivileges
         },
@@ -24,47 +25,38 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           openEditModal     : this.openEditModal.bind(this),
           restoreUser       : this.restoreUser.bind(this)
         }
-
       },
       {
         name      : 'Email',
-        valuePath : 'email'
-
-
+        valuePath : 'email',
+        width     : 160
       },
       {
         name          : 'Status',
         valuePath     : 'status',
         cellComponent : 'ui-table/cell/admin/users/cell-status'
-
-
       },
       {
         name            : 'System Roles',
         valuePath       : 'isSuperAdmin',
         extraValuePaths : ['isAdmin', 'isVerified'],
         cellComponent   : 'ui-table/cell/admin/users/cell-system-roles'
-
-
       },
       {
         name            : 'Event Roles',
         valuePath       : 'isSuperAdmin',
+        width           : 260,
         extraValuePaths : ['isAdmin', 'isUserOwner', 'ownerEvents',
           'isUserOrganizer', 'organizerEvents', 'isUserCoorganizer', 'coorganizerEvents',
           'isUserTrackOrganizer', 'trackOrganizerEvents', 'isUserRegistrar', 'registrarEvents',
           'isUserModerator', 'moderatorEvents', 'isMarketer', 'marketerEvents', 'isSalesAdmin',
           'salesAdminEvents'],
         cellComponent: 'ui-table/cell/admin/users/cell-event-roles'
-
-
       },
       {
         name          : 'User Links',
         valuePath     : 'id',
         cellComponent : 'ui-table/cell/admin/users/cell-user-links'
-
-
       },
       {
         name          : 'Member Since',
