@@ -5,12 +5,17 @@ import { render } from '@ember/test-helpers';
 
 module('Integration | Component | ui table/cell/cell simple buttons', function(hooks) {
   setupIntegrationTest(hooks);
-
+  const props = {
+    actions: {
+      deleteSession : () => {},
+      editSession   : () => {},
+      viewSession   : () => {}
+    }
+  };
   test('it renders', async function(assert) {
-    this.set('deleteSession', () => {});
-    this.set('editSession', () => {});
-    this.set('viewSession', () => {});
-    await render(hbs`{{ui-table/cell/cell-simple-buttons deleteSession=(action deleteSession) editSession=(action editSession) viewSession=(action viewSession)}}`);
+
+    this.set('props', props);
+    await render(hbs`{{ui-table/cell/cell-simple-buttons props=props}}`);
     assert.ok(this.element.innerHTML.trim().includes(''));
   });
 });

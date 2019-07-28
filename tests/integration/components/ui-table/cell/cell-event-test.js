@@ -7,9 +7,21 @@ module('Integration | Component | ui table/cell/cell event', function(hooks) {
   setupIntegrationTest(hooks);
 
   const record = { name: 'Event', image: 'url' };
+  const props = {
+    actions: {
+      moveToDetails        : () => {},
+      editEvent            : () => {},
+      openDeleteEventModal : () => {},
+      deleteEvent          : () => {},
+      restoreEvent         : () => {}
+    }
+  };
   test('it renders', async function(assert) {
-    this.set('record', record);
-    await render(hbs `{{ui-table/cell/cell-event record=record}}`);
+    this.setProperties({
+      record,
+      props
+    });
+    await render(hbs `{{ui-table/cell/cell-event record=record props=props}}`);
     assert.ok(this.element.innerHTML.trim().includes('Event'));
   });
 });

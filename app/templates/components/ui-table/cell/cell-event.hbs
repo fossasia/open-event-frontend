@@ -1,4 +1,21 @@
-{{!`record` - row from model, current column is available as `column`}}
 <div class="ui header weight-400">
-  <img src="{{if record.logoUrl record.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{record.name}}
+  <img src="{{if extraRecords.logoUrl extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{extraRecords.name}}
+</div>
+
+<div class="ui horizontal compact basic buttons">
+  {{#ui-popup tagName='a' click=(action props.actions.moveToDetails extraRecords.identifier) content=(t 'View') class='ui icon button' position='left center'}}
+    <i class="unhide icon"></i>
+  {{/ui-popup}}
+  {{#ui-popup content=(t 'Edit') click=(action props.actions.editEvent extraRecords.identifier) class='ui icon button' position='left center'}}
+    <i class="edit icon"></i>
+  {{/ui-popup}}
+  {{#if (and props.options.hasRestorePrivileges extraRecords.deletedAt)}}
+    {{#ui-popup content=(t 'Restore') click=(action props.actions.restoreEvent record) class='ui icon button' position='left center'}}
+      <i class="undo icon"></i>
+    {{/ui-popup}}
+  {{else}}
+    {{#ui-popup content=(t 'Delete') click=(action props.actions.openDeleteEventModal extraRecords.identifier extraRecords.name) class='ui icon button' position='left center'}}
+      <i class="trash outline icon"></i>
+    {{/ui-popup}}
+  {{/if}}
 </div>
