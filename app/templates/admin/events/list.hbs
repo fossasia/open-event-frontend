@@ -1,15 +1,16 @@
 <div class="sixteen column wide">
-  {{events/events-table columns=columns data=model
-    useNumericPagination=true
-    showGlobalFilter=true
-    showPageSize=true
-    moveToDetails=(action 'moveToDetails')
-    editEvent=(action 'editEvent')
-    openDeleteEventModal=(action 'openDeleteEventModal')
-    restoreEvent = (action 'restoreEvent')
-    toggleFeatured=(action 'toggleFeatured')
-    customGlobalFilter='name'
-    hasRestorePrivileges=hasRestorePrivileges
+  {{tables/default  columns=columns
+                    rows=model.data
+                    currentPage=page
+                    pageSize=per_page
+                    searchQuery=search
+                    sortBy=sort_by
+                    sortDir=sort_dir
+                    metaData=model.meta
+                    filterOptions=filterOptions
+                    widthConstraint="eq-container"
+                    resizeMode="fluid"
+                    fillMode="equal-column"
   }}
   {{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen confirmName=confirmName eventName=eventName deleteEvent=(action 'deleteEvent')}}
 </div>
