@@ -90,7 +90,7 @@
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
               {{#if taxInfo}}
-                {{currency-symbol eventCurrency}} {{format-number (mult ticket.ticketPriceWithTax ticket.orderQuantity)}}
+                {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.ticketPriceWithTax ticket.discount) ticket.orderQuantity)}}
               {{else}}
                 {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
               {{/if}}

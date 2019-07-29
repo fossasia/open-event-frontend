@@ -1,82 +1,121 @@
 import Controller from '@ember/controller';
+import { computed, action } from '@ember/object';
+import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { or } from '@ember/object/computed';
 
-export default Controller.extend({
-  columns: [
-    {
-      propertyName : 'name',
-      template     : 'components/ui-table/cell/cell-event',
-      title        : 'Name'
-    },
-    {
-      propertyName : 'startsAt',
-      template     : 'components/ui-table/cell/cell-event-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A',
-      title        : 'Date And Time'
-    },
-    {
-      propertyName     : 'sessionsByState',
-      template         : 'components/ui-table/cell/cell-sessions',
-      title            : 'Sessions',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'eventStatisticsGeneral.speakers',
-      template         : 'components/ui-table/cell/cell-speakers-dashboard',
-      title            : 'Speakers',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'tickets',
-      template         : 'components/ui-table/cell/cell-tickets',
-      title            : 'Tickets',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'url',
-      template         : 'components/ui-table/cell/cell-link',
-      title            : 'Public URL',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      template         : 'components/ui-table/cell/cell-buttons',
-      title            : 'Actions',
-      disableSorting   : true,
-      disableFiltering : true
-    }
-  ],
-  actions: {
-    moveToDetails(id) {
-      this.transitionToRoute('events.view', id);
-    },
-    editEvent(id) {
-      this.transitionToRoute('events.view.edit.basic-details', id);
-    },
-    openDeleteEventModal(id, name) {
-      this.set('isEventDeleteModalOpen', true);
-      this.set('confirmName', '');
-      this.set('eventName', name);
-      this.set('eventId', id);
-    },
-    deleteEvent() {
-      this.set('isLoading', true);
-      this.store.findRecord('event', this.eventId, { backgroundReload: false }).then(function(event) {
-        event.destroyRecord();
-      })
-        .then(() => {
-          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
-        })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
-      this.set('isEventDeleteModalOpen', false);
-    }
+export default class extends Controller.extend(EmberTableControllerMixin) {
+
+  @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
+
+  @computed()
+  get columns() {
+    return [
+      {
+        name            : 'Name',
+        valuePath       : 'id',
+        extraValuePaths : ['logoUrl', 'name', 'identifier', 'deletedAt'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-event',
+        options         : {
+          hasRestorePrivileges: this.hasRestorePrivileges
+        },
+        actions: {
+          moveToDetails        : this.moveToDetails.bind(this),
+          editEvent            : this.editEvent.bind(this),
+          openDeleteEventModal : this.openDeleteEventModal.bind(this),
+          deleteEvent          : this.deleteEvent.bind(this),
+          restoreEvent         : this.restoreEvent.bind(this)
+        }
+      },
+      {
+        name            : 'Date',
+        valuePath       : 'startsAt',
+        extraValuePaths : ['endsAt'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-event-date'
+
+      },
+      {
+        name          : 'Sessions',
+        valuePath     : 'eventStatisticsGeneral',
+        width         : 80,
+        isSortable    : false,
+        cellComponent : 'ui-table/cell/cell-sessions-dashboard'
+      },
+      {
+        name          : 'Speakers',
+        valuePath     : 'eventStatisticsGeneral',
+        cellComponent : 'ui-table/cell/cell-speakers-dashboard',
+        isSortable    : false
+
+      },
+      {
+        name          : 'Tickets',
+        valuePath     : 'tickets',
+        cellComponent : 'ui-table/cell/cell-tickets',
+        isSortable    : false
+
+      },
+      {
+        name          : 'Public URL',
+        valuePath     : 'url',
+        cellComponent : 'ui-table/cell/cell-link',
+        isSortable    : false
+      }
+    ];
   }
-});
 
+  @action
+  moveToDetails(id) {
+    this.transitionToRoute('events.view', id);
+  }
+
+  @action
+  editEvent(id) {
+    this.transitionToRoute('events.view.edit.basic-details', id);
+  }
+
+  @action
+  openDeleteEventModal(id, name) {
+    this.setProperties({
+      isEventDeleteModalOpen : true,
+      confirmName            : '',
+      eventName              : name,
+      eventId                : id
+    });
+  }
+
+  @action
+  async deleteEvent() {
+    this.set('isLoading', true);
+
+    try {
+      const event = this.store.peekRecord('event', this.eventId, { backgroundReload: false });
+      await event.destroyRecord();
+      this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+    } catch (e) {
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+    }
+    this.setProperties({
+      isLoading              : false,
+      isEventDeleteModalOpen : false
+    });
+  }
+
+  @action
+  async restoreEvent(event_id) {
+    this.set('isLoading', true);
+    try {
+      let event = this.store.peekRecord('event', event_id, { backgroundReload: false });
+      event.set('deletedAt', null);
+      await event.save({ adapterOptions: { getTrashed: true } });
+      this.notify.success(this.l10n.t('Event has been restored successfully.'));
+    } catch (e) {
+      console.warn(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+    }
+    this.set('isLoading', false);
+  }
+}

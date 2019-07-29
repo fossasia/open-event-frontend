@@ -62,7 +62,7 @@ export default Component.extend(FormMixin, {
   total: computed('tickets.@each.price', 'tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
     if (this.taxInfo !== null) {
       return sumBy(this.tickets.toArray(),
-        ticket => (ticket.ticketPriceWithTax || 0) * (ticket.orderQuantity || 0)
+        ticket => ((ticket.ticketPriceWithTax || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
       );
     }
     return sumBy(this.tickets.toArray(),
@@ -123,9 +123,7 @@ export default Component.extend(FormMixin, {
         this.set('invalidPromotionalCode', true);
       }
       try {
-        let discountCode = await this.store.findRecord('discount-code', this.promotionalCode, {
-          include: 'tickets'
-        });
+        let discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode });
         let discountCodeEvent = await discountCode.get('event');
         if (this.currentEventIdentifier === discountCodeEvent.identifier) {
           let discountType = discountCode.get('type');
@@ -151,6 +149,7 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalCode', true);
         }
       } catch (e) {
+        console.warn(e);
         if (this.invalidPromotionalCode) {
           this.set('invalidPromotionalCode', true);
         }

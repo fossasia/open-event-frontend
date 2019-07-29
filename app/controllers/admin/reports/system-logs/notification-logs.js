@@ -1,31 +1,36 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
+import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
-export default Controller.extend({
-  columns: [
-    {
-      propertyName     : 'user.first-name',
-      template         : 'components/ui-table/cell/admin/reports/system-logs/notification-logs/cell-for',
-      title            : 'For',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName : 'received-at',
-      template     : 'components/ui-table/cell/admin/reports/system-logs/notification-logs/cell-time',
-      title        : 'Time'
-    },
-    {
-      propertyName     : 'title',
-      title            : 'Actions',
-      disableSorting   : true,
-      disableFiltering : true
-    },
-    {
-      propertyName     : 'message',
-      title            : 'Message',
-      template         : 'components/ui-table/cell/admin/reports/system-logs/notification-logs/cell-sanitize',
-      disableSorting   : true,
-      disableFiltering : true
-    }
-  ]
-});
+
+export default class extends Controller.extend(EmberTableControllerMixin) {
+  per_page = 100;
+  sort_by = 'received-at';
+  sort_dir = 'ASC';
+  @computed()
+  get columns() {
+    return [
+      {
+        name          : 'For',
+        valuePath     : 'user',
+        cellComponent : 'ui-table/cell/admin/reports/system-logs/notification-logs/cell-for'
+      },
+      {
+        name            : 'Time',
+        valuePath       : 'receivedAt',
+        cellComponent   : 'ui-table/cell/admin/reports/system-logs/notification-logs/cell-time',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
+      },
+      {
+        name      : 'Actions',
+        valuePath : 'title'
+      },
+      {
+        name          : 'Message',
+        valuePath     : 'message',
+        cellComponent : 'ui-table/cell/admin/reports/system-logs/notification-logs/cell-sanitize'
+      }
+    ];
+  }
+}
