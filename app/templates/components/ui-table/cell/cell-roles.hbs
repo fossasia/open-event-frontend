@@ -1,18 +1,18 @@
 <div class="ui ordered list">
-  <div class="item">{{record.owner.email}} ({{t 'Owner'}})</div>
-  {{#each record.organizers as |role|}}
+  <div class="item">{{record.email}} ({{t 'Owner'}})</div>
+  {{#each extraRecords.organizers as |role|}}
     <div class="item">{{role.email}} ({{t 'Organizer'}})</div>
   {{/each}}
-  {{#each record.coorganizers as |role|}}
+  {{#each extraRecords.coorganizers as |role|}}
     <div class="item">{{role.email}} ({{t 'Co-organizers'}})</div>
   {{/each}}
-  {{#each record.trackOrganizers as |role|}}
+  {{#each extraRecords.trackOrganizers as |role|}}
     <div class="item">{{role.email}} ({{t 'Track-organizers'}})</div>
   {{/each}}
-  {{#each record.registrars as |role|}}
+  {{#each extraRecords.registrars as |role|}}
     <div class="item">{{role.email}} ({{t 'Registrars'}})</div>
   {{/each}}
-  {{#each record.moderators as |role|}}
+  {{#each extraRecords.moderators as |role|}}
     <div class="item">{{role.email}} ({{t 'Moderators'}})</div>
   {{/each}}
 </div>

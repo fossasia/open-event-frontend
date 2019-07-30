@@ -6,7 +6,7 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | ui table/cell/cell tickets', function(hooks) {
   setupIntegrationTest(hooks);
 
-  const record = { tickets: [{ type: 'Premium', order: 12, total: 100 }] };
+  const record = [{ type: 'Premium', order: 12, total: 100 }];
   test('it renders', async function(assert) {
     this.set('record', record);
     await render(hbs `{{ui-table/cell/cell-tickets record=record}}`);

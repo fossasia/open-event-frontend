@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
-export default Route.extend({
+export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     switch (this.get('params.speakers_status')) {
       case 'pending':
@@ -10,9 +11,10 @@ export default Route.extend({
       case 'rejected':
         return this.l10n.t('Rejected');
     }
-  },
+  }
   async model(params) {
     this.set('params', params);
+    const searchField = 'name';
     let filterOptions = [];
     if (params.speakers_status === 'pending') {
       filterOptions = [
@@ -65,21 +67,19 @@ export default Route.extend({
     } else {
       filterOptions = [];
     }
-    let queryObject = {
-      include      : 'sessions',
-      filter       : filterOptions,
-      'page[size]' : 10
+
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+
+    let queryString = {
+      include        : 'sessions',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
     };
 
-    let store = this.modelFor('events.view');
 
-    let data = await store.query('speakers', queryObject);
+    queryString = this.applySortFilters(queryString, params);
 
-    return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'speakers'
-    };
+    return this.asArray(this.modelFor('events.view').query('speakers', queryString));
   }
-});
+}
