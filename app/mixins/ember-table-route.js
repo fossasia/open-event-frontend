@@ -1,4 +1,5 @@
 import Mixin from '@ember/object/mixin';
+import { kebabCase } from 'lodash-es';
 
 export default Mixin.create({
   queryParams: {
@@ -20,6 +21,7 @@ export default Mixin.create({
   },
 
   applySearchFilters(options, params, searchField) {
+    searchField = kebabCase(searchField);
     if (params.search) {
       options.pushObject({
         name : searchField,
@@ -43,6 +45,23 @@ export default Mixin.create({
       delete query.sort;
     }
     return query;
+  },
+
+  /**
+   * Convert the given ArrayProxy or Promise<ArrayProxy> to a native Array.
+   *
+   * @param promise
+   * @return {Promise<Array>}
+   */
+  async asArray(promise) {
+    const resolved = await promise;
+    if (resolved.toArray) {
+      return {
+        data : resolved.toArray(),
+        meta : resolved.meta
+      };
+    }
+    return resolved;
   }
 
 
