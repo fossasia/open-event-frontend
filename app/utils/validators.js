@@ -65,7 +65,7 @@ export const validFacebookProfileUrlPattern = new RegExp(
 
 export const validGithubProfileUrlPattern = new RegExp(
   '^(https?:\\/\\/)' // compulsory protocol
-  + '?(?:www.)?github\\.com\\/([a-zA-Z0-9_]+)$'
+  + '?(?:www.)?github\\.com\\/([a-zA-Z0-9_-]+)$'
 );
 
 export const validLinkedinProfileUrlPattern = new RegExp(
