@@ -17,6 +17,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event',
+        width           : 160,
         options         : {
           hasRestorePrivileges: this.hasRestorePrivileges
         },
@@ -40,7 +41,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : 'Sessions',
         valuePath     : 'eventStatisticsGeneral',
-        width         : 80,
+        width         : 90,
         isSortable    : false,
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
       },
@@ -62,6 +63,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : 'Public URL',
         valuePath     : 'url',
         cellComponent : 'ui-table/cell/cell-link',
+        width         : 240,
         isSortable    : false
       }
     ];

@@ -9,10 +9,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'Name',
-        valuePath       : 'name',
+        valuePath       : 'identifier',
         width           : 150,
         isSortable      : true,
-        extraValuePaths : ['startsAt', 'endAt'],
+        extraValuePaths : ['name', 'logoUrl'],
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-general',
         options         : {
@@ -27,63 +27,41 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Date',
         valuePath       : 'startsAt',
+        extraValuePaths : ['endsAt'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
 
       },
       {
-        name          : 'Roles',
-        valuePath     : 'roles',
-        width         : 180,
-        cellComponent : 'ui-table/cell/cell-roles',
-        isSortable    : false
+        name            : 'Roles',
+        valuePath       : 'owner',
+        extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
+        width           : 180,
+        cellComponent   : 'ui-table/cell/cell-roles'
       },
       {
         name          : 'Sessions',
-        valuePath     : 'sessions',
-        isSortable    : false,
+        valuePath     : 'eventStatisticsGeneral',
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
       },
       {
         name          : 'Speakers',
-        valuePath     : 'speakers',
-        cellComponent : 'ui-table/cell/cell-speakers-dashboard',
-        isSortable    : false
-
+        valuePath     : 'eventStatisticsGeneral',
+        cellComponent : 'ui-table/cell/cell-speakers-dashboard'
       },
       {
         name          : 'Tickets',
         valuePath     : 'tickets',
-        cellComponent : 'ui-table/cell/cell-tickets',
-        isSortable    : false
-
+        cellComponent : 'ui-table/cell/cell-tickets'
       },
       {
         name          : 'Public URL',
         valuePath     : 'url',
         width         : 250,
-        cellComponent : 'ui-table/cell/cell-link',
-        isSortable    : false
+        cellComponent : 'ui-table/cell/cell-link'
       }
     ];
-  }
-
-  @computed('model.data')
-  get rows() {
-    const rows = [];
-    this.model.data.forEach(row => {
-      rows.pushObject({
-        name     : row,
-        startsAt : row,
-        roles    : row,
-        sessions : row,
-        speakers : row,
-        tickets  : row,
-        url      : row
-      });
-    });
-    return rows;
   }
 
   @action
