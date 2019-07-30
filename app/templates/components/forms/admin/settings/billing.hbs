@@ -30,11 +30,11 @@
     {{t 'Invoice Contact'}}
   </h3>
   <div class="field">
-    <label for="adminBillingContactName">{{t 'Contact Name'}}</label>
+    <label class="required" for="adminBillingContactName">{{t 'Contact Name'}}</label>
     {{input type='text' id='adminBillingContactName' value=model.adminBillingContactName}}
   </div>
   <div class="field">
-    <label for="adminBillingPhone">{{t 'Phone'}}</label>
+    <label class="required" for="adminBillingPhone">{{t 'Phone'}}</label>
     {{input type='text' id='adminBillingPhone' value=model.adminBillingPhone}}
   </div>
   <div class="field">
@@ -45,7 +45,7 @@
     <label class="required">{{t 'Country'}}</label>
     {{#ui-dropdown class='search selection' selected=model.adminBillingCountry forceSelection=false
 	                         fullTextSearch=true}}
-      {{input type='hidden' id='country' value=model.adminBillingCountry}}
+      {{input type='hidden' id='adminBillingCountry' value=model.adminBillingCountry}}
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select country'}}</div>
       <div class="menu">
@@ -59,11 +59,11 @@
     {{/ui-dropdown}}
   </div>
   <div class="field">
-    <label for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
+    <label class="required" for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
     {{input type='text' id='adminBillingTaxInfo' value=model.adminBillingTaxInfo}}
   </div>  
   <div class="field">
-    <label for="adminCompany">{{t 'Company'}}</label>
+    <label class="required" for="adminCompany">{{t 'Company'}}</label>
     {{input type='text' id='adminCompany' value=model.adminCompany}}
   </div>
   <div class="field">
