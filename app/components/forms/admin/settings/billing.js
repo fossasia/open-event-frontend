@@ -47,7 +47,7 @@ export default class extends Component.extend(FormMixin) {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the country')
+              prompt : this.l10n.t('Please select the country')
             }
           ]
         },
