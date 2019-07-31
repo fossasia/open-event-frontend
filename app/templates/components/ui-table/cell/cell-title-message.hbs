@@ -1,5 +1,5 @@
 <div class="content">
-  {{#if (eq column.subject 'emailSubject')}}
+  {{#if (eq props.options.subject 'emailSubject')}}
     <a class="header">{{sanitize record.emailSubject}}</a>
   {{else}}
     {{#if record.notificationTitle}}
@@ -7,9 +7,9 @@
     {{/if}}  
   {{/if}}  
   <div class="description">
-    {{#if (eq column.message 'emailMessage')}}
+    {{#if (eq props.options.message 'emailMessage')}}
       <p>{{sanitize record.emailMessage}}</p>
-    {{else if (eq column.message 'notificationMessage')}}
+    {{else if (eq props.options.message 'notificationMessage')}}
       {{#if record.notificationMessage}}
         <p>{{sanitize record.notificationMessage}}</p>
       {{/if}}
