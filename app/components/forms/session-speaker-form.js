@@ -110,7 +110,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
@@ -121,7 +121,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
@@ -135,7 +135,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
@@ -146,7 +146,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
@@ -160,7 +160,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
@@ -171,7 +171,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'regExp',
-              value  : compulsoryProtocolValidUrlPattern,
+              value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
@@ -437,7 +437,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter GitHub link')
+              prompt : this.l10n.t('Please enter your GitHub profile url')
             },
             {
               type   : 'regExp',
@@ -462,12 +462,12 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter linkedin link')
+              prompt : this.l10n.t('Please enter Linkedin profile url')
             },
             {
               type   : 'regExp',
               value  : validLinkedinProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid linkedin profile url')
+              prompt : this.l10n.t('Please enter a valid Linkedin profile url')
             }
           ]
         },
@@ -478,7 +478,7 @@ export default Component.extend(FormMixin, {
             {
               type   : 'regExp',
               value  : validLinkedinProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid linkedin profile url')
+              prompt : this.l10n.t('Please enter a valid Linkedin profile url')
             }
           ]
         }
