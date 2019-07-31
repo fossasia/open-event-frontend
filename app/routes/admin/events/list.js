@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import moment from 'moment';
 
-export default Route.extend({
+export default class extends Route.extend(EmberTableRouteMixin) {
+
   titleToken() {
     switch (this.get('params.events_status')) {
       case 'live':
@@ -13,10 +16,13 @@ export default Route.extend({
       case 'deleted':
         return this.l10n.t('Deleted');
     }
-  },
-  model(params) {
+  }
+
+
+  async model(params) {
     this.set('params', params);
     let filterOptions = [];
+    const searchField = 'name';
     if (params.events_status === 'live') {
       filterOptions = [
         {
@@ -110,17 +116,21 @@ export default Route.extend({
       filterOptions = [];
     }
 
-    return this.store.query('event', {
-      get_trashed  : true,
-      include      : 'tickets,sessions,speakers,owner,organizers,coorganizers,track-organizers,registrars,moderators',
-      filter       : filterOptions,
-      'page[size]' : 10
-    });
-  },
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
 
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
+    let queryString = {
+      get_trashed    : true,
+      include        : 'tickets,sessions,speakers,owner,organizers,coorganizers,track-organizers,registrars,moderators',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
+    };
+    queryString = this.applySortFilters(queryString, params);
+    return  this.asArray(this.store.query('event', queryString));
   }
-});
+
+  @action
+  refreshRoute() {
+    this.refresh();
+  }
+}

@@ -1,0 +1,90 @@
+<form class="ui form" {{action 'submit' on='submit'}}> 
+  <h3 class="ui header">
+    {{t 'Invoice Handling'}}
+  </h3>
+  <div class="two fields">
+    {{#ui-dropdown class="selection" selected=model.invoiceSendingDay onChange=(action (mut model.invoiceSendingDay))}}
+      {{input type='hidden' id='invoiceSendingDay' value=model.invoiceSendingDay}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Invoices Sent Out'}}</div>
+      <div class="menu">
+        <div class="item" data-value="1">{{t 'First of every month'}}</div>
+        <div class="item" data-value="2">{{t 'Second of every month'}}</div>
+        <div class="item" data-value="3">{{t 'Third of every month'}}</div>
+      </div>
+    {{/ui-dropdown}}
+    <div class="ui hidden divider"></div>
+    {{#ui-dropdown class="selection" selected=model.invoiceSendingTimezone onChange=(action (mut model.invoiceSendingTimezone))}}
+      {{input type='hidden' id='invoiceSendingTimezone' value=model.invoiceSendingTimezone}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select timezone'}}</div>
+      <div class="menu">
+        {{#each timezones as |timezone|}}
+          <div class="item" data-value="{{timezone}}">{{timezone}}</div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Invoice Contact'}}
+  </h3>
+  <div class="field">
+    <label class="required" for="adminBillingContactName">{{t 'Contact Name'}}</label>
+    {{input type='text' id='adminBillingContactName' value=model.adminBillingContactName}}
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingPhone">{{t 'Phone'}}</label>
+    {{input type='text' id='adminBillingPhone' value=model.adminBillingPhone}}
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingEmail">{{t 'Email'}}</label>
+    {{input type='text' id='adminBillingEmail' value=model.adminBillingEmail}}
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Country'}}</label>
+    {{#ui-dropdown class='search selection' selected=model.adminBillingCountry forceSelection=false
+	                         fullTextSearch=true}}
+      {{input type='hidden' id='adminBillingCountry' value=model.adminBillingCountry}}
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select country'}}</div>
+      <div class="menu">
+        {{#each countries as |country|}}
+          <div class="item" data-value="{{country.name}}">
+            <i class="{{lowercase country.code}} flag"></i>
+            {{country.name}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
+    {{input type='text' id='adminBillingTaxInfo' value=model.adminBillingTaxInfo}}
+  </div>  
+  <div class="field">
+    <label class="required" for="adminCompany">{{t 'Company'}}</label>
+    {{input type='text' id='adminCompany' value=model.adminCompany}}
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingAddress">{{t 'Address'}}</label>
+    {{textarea rows='2' id='adminBillingAddress' value=model.adminBillingAddress}}
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingCity">{{t 'City'}}</label>
+    {{input type='text' id='adminBillingCity' value=model.adminBillingCity}}
+  </div>
+  <div class="field">
+    <label for="adminBillingState">{{t 'State'}}</label>
+    {{input type='text' id='adminBillingState' value=model.adminBillingState}}
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingZip">{{t 'Zip Code'}}</label>
+    {{input type='text' id='adminBillingZip' value=model.adminBillingZip}}
+  </div>
+  <div class="field">
+    <label for="adminBillingAdditionalInfo">{{t 'Additional Info'}}</label>
+    {{input type='text' id='adminBillingAdditionalInfo' value=model.adminBillingAdditionalInfo}}
+  </div>
+  <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
+</form>

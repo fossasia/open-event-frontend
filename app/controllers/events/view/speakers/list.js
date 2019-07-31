@@ -1,74 +1,92 @@
 import Controller from '@ember/controller';
+import { computed, action } from '@ember/object';
+import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
-export default Controller.extend({
-  columns: [
-    {
-      propertyName   : 'thumbnailImageUrl',
-      title          : ' ',
-      template       : 'components/ui-table/cell/events/view/speakers/speaker-logo',
-      disableSorting : true
-    },
-    {
-      propertyName : 'name',
-      title        : 'Name'
-    },
-    {
-      propertyName : 'email',
-      title        : 'Email'
-    },
-    {
-      propertyName : 'mobile',
-      template     : 'components/ui-table/cell/events/view/speakers/speaker-mobile',
-      title        : 'Phone'
-    },
-    {
-      propertyName   : 'sessions',
-      title          : 'Submitted Sessions',
-      template       : 'components/ui-table/cell/events/view/speakers/cell-simple-sessions',
-      disableSorting : true
-    },
-    {
-      propertyName   : 'is-featured',
-      title          : 'Featured speaker',
-      template       : 'components/ui-table/cell/events/view/speakers/cell-is-featured',
-      disableSorting : true
-    },
-    {
-      propertyName : '',
-      title        : 'Actions',
-      template     : 'components/ui-table/cell/events/view/speakers/cell-buttons'
+
+export default class extends Controller.extend(EmberTableControllerMixin) {
+  @computed()
+  get columns() {
+    return [
+      {
+        name            : ' ',
+        valuePath       : 'thumbnailImageUrl',
+        extraValuePaths : ['photoUrl'],
+        cellComponent   : 'ui-table/cell/events/view/speakers/speaker-logo'
+      },
+      {
+        name      : 'Name',
+        valuePath : 'name'
+      },
+      {
+        name      : 'Email',
+        valuePath : 'email'
+      },
+      {
+        name          : 'Phone',
+        valuePath     : 'mobile',
+        cellComponent : 'ui-table/cell/events/view/speakers/speaker-mobile'
+      },
+      {
+        name          : 'Submitted Sessions',
+        valuePath     : 'sessions',
+        cellComponent : 'ui-table/cell/events/view/speakers/cell-simple-sessions'
+      },
+      {
+        name            : 'Featured speaker',
+        valuePath       : 'id',
+        extraValuePaths : ['isFeatured'],
+        cellComponent   : 'ui-table/cell/events/view/speakers/cell-is-featured',
+        actions         : {
+          toggleFeatured: this.toggleFeatured.bind(this)
+        }
+      },
+      {
+        name          : 'Actions',
+        valuePath     : 'id',
+        cellComponent : 'ui-table/cell/events/view/speakers/cell-buttons',
+        actions       : {
+          deleteSpeaker : this.deleteSpeaker.bind(this),
+          editSpeaker   : this.editSpeaker.bind(this),
+          viewSpeaker   : this.viewSpeaker.bind(this)
+        }
+      }
+    ];
+  }
+
+  @action
+  async deleteSpeaker(speaker_id) {
+    this.set('isLoading', true);
+    let speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: true });
+    try {
+      await speaker.destroyRecord();
+      this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
+    } catch (e) {
+      console.warn(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
-  ],
-  actions: {
-    deleteSpeaker(speaker) {
-      this.set('isLoading', true);
-      speaker.destroyRecord()
-        .then(() => {
-          this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
-        })
-        .catch(e => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-          console.warn(e);
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
-    },
-    editSpeaker(id) {
-      this.transitionToRoute('events.view.speakers.edit', id);
-    },
-    viewSpeaker(id) {
-      this.transitionToRoute('events.view.speakers.edit', id);
-    },
-    toggleFeatured(speaker) {
-      speaker.toggleProperty('isFeatured');
-      speaker.save()
-        .then(() => {
-          this.notify.success(this.l10n.t('Speaker details modified successfully'));
-        })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-        });
+    this.set('isLoading', false);
+  }
+
+  @action
+  editSpeaker(id) {
+    this.transitionToRoute('events.view.speakers.edit', id);
+  }
+
+  @action
+  viewSpeaker(id) {
+    this.transitionToRoute('events.view.speakers.edit', id);
+  }
+
+  @action
+  async toggleFeatured(speaker_id) {
+    let speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: false });
+    speaker.toggleProperty('isFeatured');
+    try {
+      await speaker.save();
+      this.notify.success(this.l10n.t('Speaker details modified successfully'));
+    } catch (e) {
+      console.warn(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
   }
-});
+}
