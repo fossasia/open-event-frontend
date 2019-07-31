@@ -2,8 +2,8 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   actions: {
     async save(speakerDetails) {
+      this.set('isLoading', true);
       try {
-        this.set('isLoading', true);
         await this.get('model.session').save();
         speakerDetails.sessions.pushObject(this.get('model.session'));
         await this.get('model.session').save();
@@ -12,6 +12,7 @@ export default Controller.extend({
       } catch (e) {
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       }
+      this.set('isLoading', false);
     }
   }
 });
