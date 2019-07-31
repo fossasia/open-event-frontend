@@ -61,8 +61,8 @@
                 </div>
               {{/ui-dropdown}}
             {{else}}
-              {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
-                {{input type='hidden' name=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier)) value=data.session.fieldIdentifier}}
+              {{#ui-dropdown class='search selection' selected=(get data.session field.fieldIdentifier) onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
+                {{input type='hidden' name=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier)) value=(if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier) null)}}
                 <i class="dropdown icon"></i>
                 <div class="default text">
                   {{if (get data.session field.fieldIdentifier) (custom-related-field data.session field.fieldIdentifier 'name') (concat 'Select a ' field.name)}}
