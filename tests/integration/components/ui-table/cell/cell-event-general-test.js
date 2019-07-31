@@ -6,7 +6,8 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | ui table/cell/cell event general', function(hooks) {
   setupIntegrationTest(hooks);
 
-  const record = { name: 'Event', image: 'url' };
+  const extraRecords = { name: 'Event', logoUrl: 'url' };
+  const record = 'abc215f';
 
   const props = {
     actions: {
@@ -20,10 +21,11 @@ module('Integration | Component | ui table/cell/cell event general', function(ho
 
     this.setProperties({
       record,
-      props
+      props,
+      extraRecords
     });
 
-    await render(hbs`{{ui-table/cell/cell-event-general record=record props=props}}`);
+    await render(hbs`{{ui-table/cell/cell-event-general extraRecords=extraRecords record=record props=props}}`);
     assert.ok(this.element.textContent.trim().includes('Event'));
   });
 });
