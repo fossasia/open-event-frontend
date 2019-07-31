@@ -1,8 +1,12 @@
 {{#if event.isMapShown}}
   <div class="eight wide column event-map">
     <h1>{{t 'Getting Here'}}</h1>
-    {{#g-map lat=event.latitude lng=event.longitude zoom=15 gestureHandling='cooperative' streetView='StreetViewPanorama' as |context|}}
-      {{g-map-marker context lat=event.latitude lng=event.longitude}}
+    {{#g-map markersFitMode='live' lat=37.744 lng=-122.4367 address=event.locationName zoom=2 class='google-maps' as |context|}}
+      {{#g-map-address-marker context address=event.locationName as |markerContext|}}
+        {{#g-map-infowindow markerContext}}
+          {{event.locationName}}
+        {{/g-map-infowindow}}
+      {{/g-map-address-marker}}
     {{/g-map}}
   </div>
 {{/if}}

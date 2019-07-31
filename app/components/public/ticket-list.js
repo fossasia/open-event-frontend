@@ -110,7 +110,7 @@ export default Component.extend(FormMixin, {
         this.set('code', this.promotionalCode);
       }
       try {
-        let accessCode = await this.store.findRecord('access-code', this.promotionalCode, {});
+        let accessCode = await this.store.queryRecord('access-code', { eventIdentifier: this.event.id, code: this.promotionalCode });
         this.order.set('accessCode', accessCode);
         let tickets = await accessCode.get('tickets');
         tickets.forEach(ticket => {
