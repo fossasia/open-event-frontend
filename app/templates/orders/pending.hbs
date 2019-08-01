@@ -50,20 +50,20 @@
           </div>
         {{/if}}
         {{#if isOmise}}
-        <div>
-          <form class="checkout-form" name="checkoutForm" method='POST' action={{omiseFormAction}}>
-            <script type="text/javascript" src="https://cdn.omise.co/omise.js"
-                    data-key="{{publicKeyOmise}}"
-                    data-amount="{{paymentAmount}}"
-                    data-currency="{{model.order.event.paymentCurrency}}"
-                    data-default-payment-method="credit_card">
-            </script>
-          </form>
-        </div>
-      {{/if}}
-      {{#if isAliPay}}
-        <button class="ui button primary" {{action alipayCheckout model.order.identifier}}>{{t 'Pay with AliPay'}}</button>          
-      {{/if}}
+          <div>
+            <form class="checkout-form" name="checkoutForm" method='POST' action={{omiseFormAction}}>
+              <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+                      data-key="{{publicKeyOmise}}"
+                      data-amount="{{paymentAmount}}"
+                      data-currency="{{model.order.event.paymentCurrency}}"
+                      data-default-payment-method="credit_card">
+              </script>
+            </form>
+          </div>
+        {{/if}}
+        {{#if isAliPay}}
+          <button class="ui button primary" {{action alipayCheckout model.order.identifier}}>{{t 'Pay with AliPay'}}</button>          
+        {{/if}}
       </div>
     </div>
 
