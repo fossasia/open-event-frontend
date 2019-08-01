@@ -1,6 +1,7 @@
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 import ModelBase from 'open-event-frontend/models/base';
+import { computed } from '@ember/object';
 
 export default ModelBase.extend({
 
@@ -40,5 +41,25 @@ export default ModelBase.extend({
   event  : belongsTo('event'),
   order  : belongsTo('order'),
   ticket : belongsTo('ticket'),
-  user   : belongsTo('user')
+  user   : belongsTo('user'),
+
+  ticketPrice: computed('ticket.price', 'ticket.discountCodes', 'order.discountCode', function() {
+    let orderDiscountCode = this.order.get('discountCode');
+    let price = this.ticket.get('price');
+    if (price && orderDiscountCode) {
+      let ticketDiscountCodes = this.ticket.get('discountCodes');
+      if (ticketDiscountCodes) {
+        ticketDiscountCodes.forEach(discountCode => {
+          if (discountCode.get('id') === orderDiscountCode.get('id')) {
+            if (discountCode.get('type') === 'amount') {
+              return (price - discountCode.get('amount'));
+            } else {
+              return ((price * (100 - discountCode.get('value'))) / 100).toFixed(2);
+            }
+          }
+        });
+      }
+    }
+    return price;
+  })
 });

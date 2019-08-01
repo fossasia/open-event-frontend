@@ -1,7 +1,7 @@
 <div class="weight-400">
-  {{currency-symbol paymentCurrency}}  {{format-number record.order.amount}}
+  {{currency-symbol paymentCurrency}}  {{format-number record.ticketPrice}}
 </div>
-{{#if record.order.discountCode.code}}
+{{#if (not-eq record.ticket.price record.ticketPrice)}}
   <div class="ui mini yellow label">
     {{record.order.discountCode.code}}
   </div>
