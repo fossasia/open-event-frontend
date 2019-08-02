@@ -44,9 +44,10 @@ get columns() {
       }
     },
     {
-      name          : 'Options',
-      valuePath     : 'option',
-      cellComponent : 'ui-table/cell/admin/messages/cell-options'
+      name            : 'Options',
+      valuePath       : 'option',
+      extraValuePaths : ['mailStatus', 'notificationStatus', 'userControlStatus'],
+      cellComponent   : 'ui-table/cell/admin/messages/cell-options'
     },
     {
       name            : 'Time/Date Sent Out',
