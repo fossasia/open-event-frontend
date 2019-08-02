@@ -221,7 +221,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please give a proper price for you ticket')
             },
             {
-              type   : 'integer[1..]',
+              type   : 'decimal[0..]',
               prompt : this.l10n.t('Ticket price should be greater than 0')
             }
           ]

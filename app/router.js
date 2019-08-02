@@ -210,6 +210,10 @@ router.map(function() {
     this.route('pending', { path: '/:order_id/pending' });
   });
   this.route('verify');
+
+  this.route('event-invoice', function() {
+    this.route('review', { path: '/:invoice_identifier/review' });
+  });
 });
 
 export default router;
