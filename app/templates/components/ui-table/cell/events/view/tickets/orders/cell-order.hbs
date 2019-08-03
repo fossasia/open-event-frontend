@@ -39,7 +39,7 @@
       <i class="trash icon"></i>
     {{/ui-popup}}
   {{/if}}
-  {{#ui-popup content=(t 'Resend order confirmation') class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+  {{#ui-popup content=(t 'Resend order confirmation') click=(action resendConfirmation record) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
     <i class="mail outline icon"></i>
   {{/ui-popup}}
 </div>

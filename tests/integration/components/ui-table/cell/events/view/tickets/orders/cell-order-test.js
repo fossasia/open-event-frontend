@@ -8,15 +8,18 @@ module('Integration | Component | ui table/cell/events/view/tickets/orders/cell 
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    this.set('deleteOrder', () => {});
-    this.set('cancelOrder', () => {});
+    this.setProperties({
+      'deleteOrder'        : () => {},
+      'cancelOrder'        : () => {},
+      'resendConfirmation' : () => {}
+    });
     let record = EmberObject.create({
       amount     : 20,
       status     : 'cancelled',
       identifier : 'identifier_order'
     });
     this.set('record', record);
-    await render(hbs`{{ui-table/cell/events/view/tickets/orders/cell-order deleteOrder=(action deleteOrder) cancelOrder=(action cancelOrder) record=record }}`);
+    await render(hbs`{{ui-table/cell/events/view/tickets/orders/cell-order deleteOrder=(action deleteOrder) cancelOrder=(action cancelOrder) resendConfirmation=(action resendConfirmation) record=record }}`);
     assert.ok(this.element.textContent.trim().includes(''));
   });
 });
