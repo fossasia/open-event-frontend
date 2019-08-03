@@ -2,7 +2,7 @@ import attr from 'ember-data/attr';
 import moment from 'moment';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
-import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
+import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 import { computed } from '@ember/object';
 
 const detectedTimezone = moment.tz.guess();
@@ -51,5 +51,12 @@ export default ModelBase.extend({
   startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
   startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
   endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
-  endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'time')
+  endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'time'),
+
+  segmentedLinkSlidesUrl : computedSegmentedLink.bind(this)('slidesUrl'),
+  segmentedLinkAudioUrl  : computedSegmentedLink.bind(this)('audioUrl'),
+  segmentedLinkVideoUrl  : computedSegmentedLink.bind(this)('videoUrl'),
+  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl')
+
+
 });

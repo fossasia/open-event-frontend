@@ -68,19 +68,5 @@
         </div>
       {{/each}}
     {{/if}}
-    {{#if extraRecords.isMarketer}}
-      {{#each extraRecords.marketerEvents as |event|}}
-        <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic teal label">{{t 'Marketer'}}</span>
-        </div>
-      {{/each}}
-    {{/if}}
-    {{#if extraRecords.isSalesAdmin}}
-      {{#each extraRecords.salesAdminEvents as |event|}}
-        <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic brown label">{{t 'Sales Admin'}}</span>
-        </div>
-      {{/each}}
-    {{/if}}
   {{/if}}
 </div>
