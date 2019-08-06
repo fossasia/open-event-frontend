@@ -6,20 +6,16 @@
   <div class="header">{{t 'Event sponsors'}}</div>
 </div>
 <div class="content">
-  {{events/events-table
-    columns=columns
-    data=data
-    store=store
-    query=query
-    isNotStoreQuery = true
-    modelName = modelName
-    useNumericPagination=true
-    showGlobalFilter=true
-    showPageSize=true
-    moveToDetails='moveToDetails'
-    editEvent='editEvent'
-    deleteSponsor=deleteSponsor
-    editSponsor=editSponsor
-    customGlobalFilter='name'
-  }}
+  {{tables/default columns=columns
+               rows=model.data
+               searchQuery=search
+               sortBy=sort_by
+               sortDir=sort_dir
+               metaData=model.meta
+               filterOptions=filterOptions
+               widthConstraint="eq-container"
+               resizeMode="fluid"
+               fillMode="equal-column"
+
+  }}    
 </div>

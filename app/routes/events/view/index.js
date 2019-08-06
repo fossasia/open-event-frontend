@@ -1,11 +1,20 @@
 import Route from '@ember/routing/route';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
-export default Route.extend({
-  async model() {
+export default class extends Route.extend(EmberTableRouteMixin) {
+
+  async model(params) {
     let eventDetails = this.modelFor('events.view');
+    const searchField = 'name';
+    let filterOptions = [];
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let sponsorQueryObject = {
-      'page[size]': 10
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.per_page || 1
     };
+    sponsorQueryObject = this.applySortFilters(sponsorQueryObject, params);
+
 
     return {
       event             : await eventDetails,
@@ -21,4 +30,4 @@ export default Route.extend({
       roles             : await this.store.findAll('role')
     };
   }
-});
+}

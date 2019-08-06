@@ -1,3 +1,7 @@
-{{#if (get record column.propertyName)}}
-  <span>{{get record column.propertyName}}</span>
+{{#if (eq props.options.PropName 'type')}}
+  {{sanitize extraRecords.type}}
+{{/if}}
+
+{{#if (eq props.options.PropName 'level')}}
+  {{sanitiza extraRecords.level}}
 {{/if}}
