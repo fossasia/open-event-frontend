@@ -22,18 +22,52 @@
       </label>
       {{input type='text' name='stripe_client_id' value=settings.stripeClientId}}
     </div>
+    <h5 class="ui header">
+      {{t 'Stripe Integration Mode'}}
+    </h5>
     <div class="field">
-      <label>
-        {{t 'Secret Key'}}
-      </label>
-      {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
+      {{ui-radio label=(t 'Test mode - Used during development and testing')
+                 name='stripe_integration_mode'
+                 value='debug'
+                 current=stripeMode
+                 onChange=(action (mut stripeMode))}}
     </div>
+    {{#if (eq stripeMode 'debug')}}
+      <div class="field">
+        <label>
+          {{t 'Secret Test Key'}}
+        </label>
+        {{input type='text' name='stripe_test_secret_key' value=settings.stripeTestSecretKey}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Publishable Test Key'}}
+        </label>
+        {{input type='text' name='stripe_test_publishable_key' value=settings.stripeTestPublishableKey}}
+      </div>
+    {{/if}}
+    <div class="ui hidden divider"></div>
     <div class="field">
-      <label>
-        {{t 'Publishable Key'}}
-      </label>
-      {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
+      {{ui-radio label=(t 'Live mode - Used during production')
+                 name='stripe_integration_mode'
+                 value='production'
+                 current=stripeMode
+                 onChange=(action (mut stripeMode))}}
     </div>
+    {{#if (eq stripeMode 'production')}}
+      <div class="field">
+        <label>
+          {{t 'Secret Key'}}
+        </label>
+        {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Publishable Key'}}
+        </label>
+        {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
+      </div>
+    {{/if}}
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="inline field">
