@@ -78,6 +78,8 @@ export default Component.extend({
       if (!this.needsConfirmation) {
         this.set('selectedImage', null);
         this.set('imageUrl', null);
+        this.user.set('avatarUrl', null);
+        this.user.save();
       } else {
         this.set('needsConfirmation', false);
       }
