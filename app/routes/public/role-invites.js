@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
+  redirectionParams: null,
   async beforeModel(transition) {
     const { token } = transition.to.queryParams;
     const originalEventId = transition.resolvedModels.public.originalId;
@@ -20,13 +21,16 @@ export default Route.extend({
       this.set('session.skipRedirectOnInvalidation', true);
       this.session.invalidate();
     }
-
-    this.transitionTo('register', {
+    this.set('redirectionParams',  {
       queryParams: {
         event       : originalEventId,
         inviteToken : token,
         inviteEmail : user.email
       }
     });
+
+  },
+  afterModel() {
+    this.transitionTo('register', this.redirectionParams);
   }
 });
