@@ -56,6 +56,8 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     } else {
       filterOptions = [];
     }
+
+    let store = this.modelFor('events.view');
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
       include        : 'speakers,feedbacks',
@@ -64,17 +66,35 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);
+    let data = (await store.query('sessions', queryString)).toArray();
 
-    let store = this.modelFor('events.view');
-
+    let queryObject = {
+      include : 'session',
+      filter  : [
+        {
+          name : 'session',
+          op   : 'has',
+          val  : {
+            name : 'event',
+            op   : 'has',
+            val  : {
+              name : 'identifier',
+              op   : 'eq',
+              val  : store.id
+            }
+          }
+        }
+      ]
+    };
+    let feedbacks = await this.authManager.currentUser.query('feedbacks', queryObject);
     return {
-      data: await store.query('sessions', queryString)
+      data,
+      feedbacks
     };
   }
 
-    @action
+  @action
   refreshRoute() {
     this.refresh();
   }
-
 }
