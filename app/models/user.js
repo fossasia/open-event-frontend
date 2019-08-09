@@ -83,6 +83,7 @@ export default ModelBase.extend({
   orders               : hasMany('order'),
   events               : hasMany('event', { inverse: 'user' }),
   sessions             : hasMany('session'),
+  feedbacks            : hasMany('feedback'),
   invoice              : hasMany('event-invoice'),
   attendees            : hasMany('attendee'),
   speakers             : hasMany('speaker'),
