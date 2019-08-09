@@ -1,9 +1,9 @@
-{{#if record.isLocked}}
-  {{#ui-popup content=(t 'Unlock Session') class='ui basic button'  click=(action unlockSession record) position='left center'}}
+{{#if extraRecords.isLocked}}
+  {{#ui-popup content=(t 'Unlock Session') class='ui basic button'  click=(action props.actions.unlockSession record) position='left center'}}
     <i class="lock icon"></i>		
   {{/ui-popup}}
 {{else}}
-  {{#ui-popup content=(t 'Lock Session') class='ui basic button'  click=(action lockSession record) position='left center'}}
+  {{#ui-popup content=(t 'Lock Session') class='ui basic button'  click=(action props.actions.lockSession record) position='left center'}}
     <i class="unlock icon"></i>		
   {{/ui-popup}}
 {{/if}}
