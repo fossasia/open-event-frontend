@@ -1,23 +1,16 @@
 <div class="sixteen wide column">
-  {{events/events-table
-    columns=columns
-    data=model.data
-    store=model.store
-    query=model.query
-    isNotStoreQuery = true
-    modelName = model.objectType
-    useNumericPagination=true
-    showGlobalFilter=true
-    showPageSize=true
-    lockSession=(action 'lockSession')
-    unlockSession=(action 'unlockSession')
-    deleteSession=(action 'deleteSession')
-    editSession=(action 'editSession')
-    viewSession=(action 'viewSession')
-    acceptProposal=(action 'acceptProposal')
-    rejectProposal=(action 'rejectProposal')
-    confirmProposal=(action 'confirmProposal')
-    updateRating=(action 'updateRating')
-    customGlobalFilter='title'
+  {{tables/default  columns=columns
+                    rows=model.data
+                    feedbacks=model.feedbacks
+                    currentPage=page
+                    pageSize=per_page
+                    searchQuery=search
+                    sortBy=sort_by
+                    sortDir=sort_dir
+                    metaData=model.meta
+                    filterOptions=filterOptions
+                    widthConstraint="eq-container"
+                    resizeMode="fluid"
+                    fillMode="equal-column"
   }}
 </div>
