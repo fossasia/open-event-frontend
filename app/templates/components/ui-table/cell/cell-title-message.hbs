@@ -10,7 +10,7 @@
     {{#if (eq props.options.message 'emailMessage')}}
       <p>{{sanitize record}}</p>
     {{else if (eq props.options.message 'notificationMessage')}}
-      {{#if extraRecords.notificationMessage}}     
+      {{#if record}}     
         <p>{{sanitize record}}</p>
       {{/if}}
     {{/if}}  
