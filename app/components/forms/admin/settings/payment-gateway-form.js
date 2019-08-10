@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
@@ -35,6 +36,25 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please enter the publishable key')
+            }
+          ]
+        },
+        stripeTestSecretKey: {
+          identifier : 'stripe_test_secret_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the secret test key')
+            }
+          ]
+        },
+
+        stripeTestPublishableKey: {
+          identifier : 'stripe_test_publishable_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the publishable test key')
             }
           ]
         },
@@ -143,6 +163,10 @@ export default Component.extend(FormMixin, {
 
   isCheckedStripe: computed(function() {
     return this.get('settings.stripeClientId');
+  }),
+
+  stripeMode: computed(function() {
+    return ENV.environment === 'development' || ENV.environment === 'test' ? 'debug' : 'production';
   }),
 
   isCheckedPaypal: computed(function() {

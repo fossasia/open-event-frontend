@@ -27,6 +27,7 @@ export default ModelBase.extend({
   linkedin           : attr('string'),
   organisation       : attr('string'),
   isFeatured         : attr('boolean', { default: false }),
+  isEmailOverridden  : attr('boolean', { default: false }),
   position           : attr('string'),
   country            : attr('string'),
   city               : attr('string'),
