@@ -27,7 +27,7 @@ get columns() {
       valuePath : 'emailMessage',
 
       cellComponent   : 'ui-table/cell/cell-title-message',
-      extraValuePaths : ['emailSubject', 'emailMessage'],
+      extraValuePaths : ['emailSubject'],
       options         : {
         subject : 'emailSubject',
         message : 'emailMessage'
@@ -37,7 +37,7 @@ get columns() {
       name            : 'Notification Message',
       valuePath       : 'notificationMessage',
       cellComponent   : 'ui-table/cell/cell-title-message',
-      extraValuePaths : ['notificationTitle', 'notificationMessage'],
+      extraValuePaths : ['notificationTitle'],
       options         : {
         subject : 'notificationTitle',
         message : 'notificationMessage'
