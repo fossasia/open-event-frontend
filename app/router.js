@@ -213,6 +213,7 @@ router.map(function() {
 
   this.route('event-invoice', function() {
     this.route('review', { path: '/:invoice_identifier/review' });
+    this.route('paid', { path: '/:invoice_identifier/paid' });
   });
 });
 
