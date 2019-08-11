@@ -156,6 +156,46 @@ export default Component.extend(FormMixin, {
               prompt : this.l10n.t('Please enter the secret live key')
             }
           ]
+        },
+
+        paytmLiveMerchant: {
+          identifier : 'paytm_live_merchant',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the live merchant ID')
+            }
+          ]
+        },
+
+        paytmLiveSecret: {
+          identifier : 'paytm_live_secret',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the secret live key')
+            }
+          ]
+        },
+
+        paytmSandboxMerchant: {
+          identifier : 'paytm_sandbox_merchant',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the test merchant ID')
+            }
+          ]
+        },
+
+        paytmSandboxSecret: {
+          identifier : 'paytm_sandbox_secret',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the secret test key')
+            }
+          ]
         }
       }
     };
