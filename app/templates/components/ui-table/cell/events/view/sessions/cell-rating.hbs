@@ -1,5 +1,19 @@
-{{ui-rating
-    rating=(if record.averageRating record.averageRating '0')
+{{#if (includes props.options.ratedSessions record)}}
+  {{#each extraRecords.feedbacks as |feedback|}}
+    {{#if (eq feedback.user.email authManager.currentUser.email)}}
+      {{ui-rating
+        initialRating=feedback.rating
+        rating=feedback.rating
+        maxRating=5
+        onRate=(pipe-action (action (mut feedback.rating)) (action props.actions.updateRating feedback.rating feedback))
+        clearable=true}}
+    {{/if}}
+  {{/each}}
+{{else}}
+  {{ui-rating
+    initialRating=0
+    rating=extraRecords.rating
     maxRating=5
-    onRate=(pipe-action (action (mut record.averageRating)) (action updateRating record record.averageRating))
+    onRate=(pipe-action (action (mut extraRecords.rating)) (action props.actions.addRating extraRecords.rating record))
     clearable=true}}
+{{/if}}
