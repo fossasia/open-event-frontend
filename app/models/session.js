@@ -48,8 +48,8 @@ export default ModelBase.extend({
     }
   }),
 
-  startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
-  startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
+  startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
+  startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
   endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 

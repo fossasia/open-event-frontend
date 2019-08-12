@@ -42,8 +42,8 @@ export default ModelBase.extend({
   }), // The events that this discount code has been applied to [Form (1)]
   marketer: belongsTo('user'),
 
-  validFromDate : computedDateTimeSplit.bind(this)('validFrom', 'date'),
-  validFromTime : computedDateTimeSplit.bind(this)('validFrom', 'time'),
+  validFromDate : computedDateTimeSplit.bind(this)('validFrom', 'date', 'validTill'),
+  validFromTime : computedDateTimeSplit.bind(this)('validFrom', 'time', 'validTill'),
   validTillDate : computedDateTimeSplit.bind(this)('validTill', 'date'),
   validTillTime : computedDateTimeSplit.bind(this)('validTill', 'time')
 });

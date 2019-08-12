@@ -17,8 +17,8 @@ export default ModelBase.extend({
 
   event: belongsTo('event'),
 
-  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
-  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
+  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
+  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
