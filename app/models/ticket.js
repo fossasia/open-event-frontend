@@ -39,8 +39,8 @@ export default ModelBase.extend({
   /**
    * Computed properties
    */
-  salesStartAtDate : computedDateTimeSplit.bind(this)('salesStartsAt', 'date'),
-  salesStartAtTime : computedDateTimeSplit.bind(this)('salesStartsAt', 'time'),
+  salesStartAtDate : computedDateTimeSplit.bind(this)('salesStartsAt', 'date', 'salesEndsAt'),
+  salesStartAtTime : computedDateTimeSplit.bind(this)('salesStartsAt', 'time', 'salesEndsAt'),
   salesEndsAtDate  : computedDateTimeSplit.bind(this)('salesEndsAt', 'date'),
   salesEndsAtTime  : computedDateTimeSplit.bind(this)('salesEndsAt', 'time'),
 
