@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { validPhoneNumber } from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, {
 
@@ -38,6 +39,17 @@ export default Component.extend(FormMixin, {
             {
               type   : 'email',
               prompt : this.l10n.t('Please enter a valid email ID')
+            }
+          ]
+        },
+        phone: {
+          identifier : 'phone',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validPhoneNumber,
+              prompt : this.l10n.t('Please enter a valid phone number')
             }
           ]
         }
