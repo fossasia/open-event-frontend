@@ -328,6 +328,18 @@
           </div>
         {{/if}}
       {{/if}}
+      {{#if canAcceptPaytm}}
+        <label>{{t 'Payment by Paytm'}}</label>
+        <div class="field payments">
+          <div class="ui checkbox">
+            {{input type='checkbox' id='payment_by_paytm' checked=data.event.canPayByPaytm}}
+            <label for="payment_by_paytm">
+              <span>{{t 'YES, accept payment through Paytm'}}</span>
+              <br>
+            </label>
+          </div>
+        </div>
+      {{/if}}
       {{#if canAcceptAliPay}}
         <label>{{t 'Payment with AliPay'}}</label>
         <div class="field payments">
