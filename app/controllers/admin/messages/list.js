@@ -1,36 +1,66 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
+import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
-export default Controller.extend({
-  columns: [
+export default class extends Controller.extend(EmberTableControllerMixin) {
+per_page = 100;
+
+sort_by = 'time';
+
+sort_dir = 'ASC';
+
+@computed()
+get columns() {
+  return [
     {
-      propertyName : 'recipient',
-      title        : 'Recipients'
+      name            : 'Recipients',
+      valuePath       : 'recipient',
+      headerComponent : 'tables/headers/sort',
+      isSortable      : true
     },
     {
-      propertyName : 'action',
-      title        : 'Trigger'
+      name      : 'Trigger',
+      valuePath : 'action'
     },
     {
-      subject  : 'emailSubject',
-      message  : 'emailMessage',
-      title    : 'Email Message',
-      template : 'components/ui-table/cell/cell-title-message'
+      name      : 'Email Message',
+      valuePath : 'emailMessage',
+
+      cellComponent   : 'ui-table/cell/cell-title-message',
+      extraValuePaths : ['emailSubject'],
+      options         : {
+        subject : 'emailSubject',
+        message : 'emailMessage'
+      }
     },
     {
-      subject  : 'notificationTitle',
-      message  : 'notificationMessage',
-      title    : 'Notification Message',
-      template : 'components/ui-table/cell/cell-title-message'
+      name            : 'Notification Message',
+      valuePath       : 'notificationMessage',
+      cellComponent   : 'ui-table/cell/cell-title-message',
+      extraValuePaths : ['notificationTitle'],
+      options         : {
+        subject : 'notificationTitle',
+        message : 'notificationMessage'
+      }
     },
     {
-      title    : 'Options',
-      template : 'components/ui-table/cell/admin/messages/cell-options'
+      name            : 'Options',
+      valuePath       : 'option',
+      extraValuePaths : ['mailStatus', 'notificationStatus', 'userControlStatus'],
+      cellComponent   : 'ui-table/cell/admin/messages/cell-options'
     },
     {
-      propertyName : 'sentAt',
-      title        : 'Time/Date sent out',
-      template     : 'components/ui-table/cell/cell-simple-date',
-      dateFormat   : 'MMMM DD, YYYY - HH:mm A'
+      name            : 'Time/Date Sent Out',
+      valuePath       : 'sentAt',
+      headerComponent : 'tables/headers/sort',
+      isSortable      : true,
+      cellComponent   : 'ui-table/cell/cell-simple-date',
+      options         : {
+        dateFormat: 'MMMM DD, YYYY - HH:mm A'
+      }
     }
-  ]
-});
+
+  ];
+}
+}
+
