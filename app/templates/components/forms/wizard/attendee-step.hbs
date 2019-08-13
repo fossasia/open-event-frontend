@@ -92,10 +92,12 @@
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-      {{t 'Save draft'}}
-      <i class="save icon"></i>
-    </button>
+    {{#if (not-eq data.event.state 'published')}}
+      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+        {{t 'Save draft'}}
+        <i class="save icon"></i>
+      </button>
+    {{/if}}
     {{#if data.event.locationName}}
       <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}

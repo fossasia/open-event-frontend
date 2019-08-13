@@ -50,6 +50,7 @@ export default ModelBase.extend({
   stripeClientId             : attr('string'),
   stripeSecretKey            : attr('string'),
   stripePublishableKey       : attr('string'),
+  stripeTestCliendId         : attr('string'),
   stripeTestSecretKey        : attr('string'),
   stripeTestPublishableKey   : attr('string'),
   isAliPayActivated          : attr('boolean'),
@@ -92,6 +93,9 @@ export default ModelBase.extend({
   adminBillingCity           : attr('string'),
   adminBillingZip            : attr('string'),
   adminBillingAdditionalInfo : attr('string'),
+  isGoogleRecaptchaEnabled   : attr('boolean', { defaultValue: false }),
+  googleRecaptchaSite        : attr('string'),
+  googleRecaptchaSecret      : attr('string'),
 
   /**
    * Computed properties
