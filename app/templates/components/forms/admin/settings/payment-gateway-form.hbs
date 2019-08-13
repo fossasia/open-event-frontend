@@ -252,9 +252,9 @@
     <label>
       {{t 'Enable PayTM'}}
     </label>
-    {{ui-checkbox class='toggle' checked=isPaytmActivated onChange=(action (mut isPaytmActivated))}}
+    {{ui-checkbox class='toggle' checked=settings.isPaytmActivated onChange=(action (mut settings.isPaytmActivated))}}
   </div>
-  {{#if isPaytmActivated}}
+  {{#if settings.isPaytmActivated}}
     <h3 class="ui header">
       {{t 'PayTM Credentials'}}
       <div class="sub header">
