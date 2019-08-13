@@ -6,7 +6,7 @@ import { buildUrl } from 'open-event-frontend/utils/url';
 import httpStatus from 'http-status';
 import objectToFormData from 'object-to-formdata';
 import fetch from 'fetch';
-import { clone, assign, merge } from 'lodash-es';
+import { clone, assign, merge, pick, isString } from 'lodash-es';
 const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
 
 export default Service.extend({
@@ -94,17 +94,17 @@ export default Service.extend({
 
     if (!response.ok) {
       const defaultMessage = httpStatus[response.status];
-      if (parsedResponse) {
-        throw parsedResponse;
-      }
-      throw new Error(
-        getErrorMessage(
+      const errorResponse = pick(response, ['status', 'ok', 'statusText', 'headers', 'url']);
+      errorResponse.statusText = defaultMessage;
+      errorResponse.response = parsedResponse;
+      errorResponse.errorMessage = isString(parsedResponse) ? parsedResponse
+        : getErrorMessage(
           response.statusText,
           defaultMessage
             ? `${response.status} - ${defaultMessage}`
             : `Could not make ${fetchOptions.type} request to ${fetchOptions.url}`
-        )
-      );
+        );
+      throw errorResponse;
     }
     return parsedResponse;
   },
