@@ -20,6 +20,7 @@ export function initialize(application) {
   inject('settings', 'service:settings');
   inject('fastboot', 'service:fastboot');
   inject('routing', 'service:-routing');
+  inject('router', 'service:router');
   inject('cookies', 'service:cookies');
   inject('infinity', 'service:infinity');
   application.inject('component', 'router', 'service:router');
