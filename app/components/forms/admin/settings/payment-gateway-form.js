@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
@@ -35,6 +36,25 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please enter the publishable key')
+            }
+          ]
+        },
+        stripeTestSecretKey: {
+          identifier : 'stripe_test_secret_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the secret test key')
+            }
+          ]
+        },
+
+        stripeTestPublishableKey: {
+          identifier : 'stripe_test_publishable_key',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the publishable test key')
             }
           ]
         },
@@ -136,6 +156,46 @@ export default Component.extend(FormMixin, {
               prompt : this.l10n.t('Please enter the secret live key')
             }
           ]
+        },
+
+        paytmLiveMerchant: {
+          identifier : 'paytm_live_merchant',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the live merchant ID')
+            }
+          ]
+        },
+
+        paytmLiveSecret: {
+          identifier : 'paytm_live_secret',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the secret live key')
+            }
+          ]
+        },
+
+        paytmSandboxMerchant: {
+          identifier : 'paytm_sandbox_merchant',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the test merchant ID')
+            }
+          ]
+        },
+
+        paytmSandboxSecret: {
+          identifier : 'paytm_sandbox_secret',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the secret test key')
+            }
+          ]
         }
       }
     };
@@ -143,6 +203,10 @@ export default Component.extend(FormMixin, {
 
   isCheckedStripe: computed(function() {
     return this.get('settings.stripeClientId');
+  }),
+
+  stripeMode: computed(function() {
+    return ENV.environment === 'development' || ENV.environment === 'test' ? 'debug' : 'production';
   }),
 
   isCheckedPaypal: computed(function() {

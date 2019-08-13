@@ -59,59 +59,76 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         }
       }
     }
+    const numberOfTickets = data.tickets ? data.tickets.length : 0;
+    if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
+      await event.save();
 
-    await event.save();
-
-    for (const ticket of data.tickets ? data.tickets.toArray() : []) {
-      ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
-      await ticket.save();
-    }
-
-    for (const socialLink of data.socialLinks ? data.socialLinks.toArray() : []) {
-      await socialLink.save();
-    }
-
-    if (data.copyright && data.copyright.get('licence')) {
-      await data.copyright.save();
-    }
-
-    if (data.tax && data.tax.get('name')) {
-      let tax = this.setRelationship(data.tax, event);
-      if (event.get('isTaxEnabled')) {
-        await tax.save();
-      } else {
-        await tax.destroyRecord();
+      for (const ticket of data.tickets ? data.tickets.toArray() : []) {
+        ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
+        await ticket.save();
       }
-    }
 
-    if (data.stripeAuthorization && data.stripeAuthorization.get('stripeAuthCode')) {
-      let stripeAuthorization = this.setRelationship(data.stripeAuthorization, event);
-      if (event.get('canPayByStripe')) {
-        await stripeAuthorization.save();
-      } else {
-        await stripeAuthorization.destroyRecord();
+      for (const socialLink of data.socialLinks ? data.socialLinks.toArray() : []) {
+        await socialLink.save();
       }
-    }
 
-    const bulkPromises = [];
-
-    for (const property of ['tracks', 'sessionTypes', 'microlocations', 'customForms']) {
-      const items = data[property];
-      for (const item of items ? items.toArray() : []) {
-        bulkPromises.push(event.get('isSessionsSpeakersEnabled') ? item.save() : item.destroyRecord());
+      if (data.copyright && data.copyright.get('licence')) {
+        await data.copyright.save();
       }
-    }
 
-    for (const property of ['sponsors']) {
-      const items = data[property];
-      for (const item of items ? items.toArray() : []) {
-        bulkPromises.push(event.get('isSponsorsEnabled') ? item.save() : item.destroyRecord());
+      if (data.tax && data.tax.get('name')) {
+        let tax = this.setRelationship(data.tax, event);
+        if (event.get('isTaxEnabled')) {
+          await tax.save();
+        } else {
+          await tax.destroyRecord();
+        }
       }
+
+      if (data.stripeAuthorization && data.stripeAuthorization.get('stripeAuthCode')) {
+        let stripeAuthorization = this.setRelationship(data.stripeAuthorization, event);
+        if (event.get('canPayByStripe')) {
+          await stripeAuthorization.save();
+        } else {
+          await stripeAuthorization.destroyRecord();
+        }
+      }
+
+      const bulkPromises = [];
+
+      for (const property of ['tracks', 'sessionTypes', 'microlocations', 'customForms']) {
+        const items = data[property];
+        for (const item of items ? items.toArray() : []) {
+          bulkPromises.push(event.get('isSessionsSpeakersEnabled') ? item.save() : item.destroyRecord());
+        }
+      }
+
+      for (const property of ['sponsors']) {
+        const items = data[property];
+        for (const item of items ? items.toArray() : []) {
+          bulkPromises.push(event.get('isSponsorsEnabled') ? item.save() : item.destroyRecord());
+        }
+      }
+
+      await Promise.all(bulkPromises);
+
+      return event;
+    } else {
+      let errorObject = { 'errors': [] };
+      if (event.name === undefined || event.name === '') {
+        errorObject.errors.push({ 'detail': 'Event name has not been provided' });
+      }
+      if (event.locationName === undefined || event.locationName === '') {
+        errorObject.errors.push({ 'detail': 'Location has not been provided' });
+      }
+      if (event.startsAtDate === undefined || event.endsAtDate === undefined) {
+        errorObject.errors.push({ 'detail': 'Dates have not been provided' });
+      }
+      if (numberOfTickets === 0) {
+        errorObject.errors.push({ 'detail': 'Tickets are required for publishing event' });
+      }
+      throw (errorObject);
     }
-
-    await Promise.all(bulkPromises);
-
-    return event;
   },
 
   /**
@@ -128,8 +145,9 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.transitionToRoute(route, data.id);
       })
       .catch(e => {
-        console.error(e);
-        this.notify.error(this.l10n.t(e.errors[0].detail));
+        e.errors.forEach(error => {
+          this.notify.error(this.l10n.tVar(error.detail));
+        });
       })
       .finally(() => {
         this.set('isLoading', false);

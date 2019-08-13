@@ -320,7 +320,7 @@
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
     </button>
-    {{#if (eq data.event.state 'unpublished')}}
+    {{#if (not-eq data.event.state 'published')}}
       <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
         {{t 'Save draft'}}
         <i class="save icon"></i>

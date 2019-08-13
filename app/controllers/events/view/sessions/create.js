@@ -6,6 +6,9 @@ export default Controller.extend({
       await this.get('model.session').save();
       if (this.addNewSpeaker) {
         let newSpeaker = this.get('model.speaker');
+        if (newSpeaker.isEmailOverridden) {
+          newSpeaker.set('email', this.authManager.currentUser.email);
+        }
         newSpeaker.save()
           .then(() => {
             newSpeaker.sessions.pushObject(_this.get('model.session'));

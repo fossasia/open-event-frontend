@@ -7,7 +7,11 @@ export default Controller.extend({
         if (!sessionDetails) {
           await this.get('model.session').save();
         }
-        await this.get('model.speaker').save();
+        let newSpeaker = this.get('model.speaker');
+        if (newSpeaker.isEmailOverridden) {
+          newSpeaker.set('email', this.authManager.currentUser.email);
+        }
+        await newSpeaker.save();
         if (!sessionDetails) {
           this.get('model.speaker.sessions').pushObject(this.get('model.session'));
           await this.get('model.session').save();

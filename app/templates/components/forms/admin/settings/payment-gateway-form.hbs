@@ -22,18 +22,52 @@
       </label>
       {{input type='text' name='stripe_client_id' value=settings.stripeClientId}}
     </div>
+    <h5 class="ui header">
+      {{t 'Stripe Integration Mode'}}
+    </h5>
     <div class="field">
-      <label>
-        {{t 'Secret Key'}}
-      </label>
-      {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
+      {{ui-radio label=(t 'Test mode - Used during development and testing')
+                 name='stripe_integration_mode'
+                 value='debug'
+                 current=stripeMode
+                 onChange=(action (mut stripeMode))}}
     </div>
+    {{#if (eq stripeMode 'debug')}}
+      <div class="field">
+        <label>
+          {{t 'Secret Test Key'}}
+        </label>
+        {{input type='text' name='stripe_test_secret_key' value=settings.stripeTestSecretKey}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Publishable Test Key'}}
+        </label>
+        {{input type='text' name='stripe_test_publishable_key' value=settings.stripeTestPublishableKey}}
+      </div>
+    {{/if}}
+    <div class="ui hidden divider"></div>
     <div class="field">
-      <label>
-        {{t 'Publishable Key'}}
-      </label>
-      {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
+      {{ui-radio label=(t 'Live mode - Used during production')
+                 name='stripe_integration_mode'
+                 value='production'
+                 current=stripeMode
+                 onChange=(action (mut stripeMode))}}
     </div>
+    {{#if (eq stripeMode 'production')}}
+      <div class="field">
+        <label>
+          {{t 'Secret Key'}}
+        </label>
+        {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Publishable Key'}}
+        </label>
+        {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
+      </div>
+    {{/if}}
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="inline field">
@@ -135,7 +169,6 @@
       </div>
     {{/if}}
   {{/if}}
-  <div class="ui hidden divider"></div>
   <div class="inline field">
     <label>
       {{t 'Enable Omise'}}
@@ -200,6 +233,73 @@
           {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used during live (production) mode' )}}
         </label>
         {{input type='text' name='live_secret_key' value=settings.omiseLiveSecret}}
+      </div>
+    {{/if}}
+  {{/if}}
+  <div class="inline field">
+    <label>
+      {{t 'Enable PayTM'}}
+    </label>
+    {{ui-checkbox class='toggle' checked=settings.isPaytmActivated onChange=(action (mut settings.isPaytmActivated))}}
+  </div>
+  {{#if settings.isPaytmActivated}}
+    <h3 class="ui header">
+      {{t 'PayTM Credentials'}}
+      <div class="sub header">
+        {{t 'See'}}
+        <a href="https://dashboard.paytm.com/next/apikeys" target="_blank" rel="noopener nofollow">
+          {{t 'here'}}
+        </a>
+        {{t 'on how to obtain these keys.'}}
+      </div>
+    </h3>
+    <h5 class="ui header">
+      {{t 'PayTM Integration Mode'}}
+    </h5>
+    <div class="field">
+      {{ui-radio label=(t 'Test mode - Used during development and testing')
+                 name='paytm_integration_mode'
+                 value='test'
+                 current=settings.paytmMode
+                 onChange=(action (mut settings.paytmMode))}}
+    </div>
+    {{#if (eq settings.paytmMode 'test')}}
+      <div class="field">
+        <label>
+          {{t 'PayTM Test Merchant ID'}}
+          {{ui-popup tagName="i" class="info icon" content=(t 'This Merchant ID will be used for testing mode') }}
+        </label>
+        {{input type='text' name='paytm_sandbox_merchant' value=settings.paytmSandboxMerchant}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'PayTM Test Secret Key'}}
+          {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used during testing mode') }}
+        </label>
+        {{input type='text' name='paytm_sandbox_secret' value=settings.paytmSandboxSecret}}
+      </div>
+    {{/if}}
+    <div class="field">
+      {{ui-radio label=(t 'Live mode - Used during production')
+                 name='paytm_integration_mode'
+                 value='live'
+                 current=settings.paytmMode
+                 onChange=(action (mut settings.paytmMode))}}
+    </div>
+    {{#if (eq settings.paytmMode 'live')}}
+      <div class="field">
+        <label>
+          {{t 'PayTM Live Merchant ID'}}
+          {{ui-popup tagName="i" class="info icon" content=(t 'This Merchant ID will be used during live (production) mode') }}
+        </label>
+        {{input type='text' name='paytm_live_merchant' value=settings.paytmLiveMerchant}}
+      </div>
+      <div class="field">
+        <label>
+          {{t 'PayTM Live Secret Key'}}
+          {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used during live (production) mode' )}}
+        </label>
+        {{input type='text' name='paytm_live_secret' value=settings.paytmLiveSecret}}
       </div>
     {{/if}}
   {{/if}}

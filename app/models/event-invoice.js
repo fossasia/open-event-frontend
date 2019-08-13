@@ -26,6 +26,7 @@ export default ModelBase.extend({
   expYear      	: attr('number'),
   amount        : attr('number'),
   completedAt   : attr('moment'),
+  invoicePdfUrl : attr('string'),
 
   /** relationships
    *
