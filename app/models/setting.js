@@ -91,6 +91,9 @@ export default ModelBase.extend({
   adminBillingCity           : attr('string'),
   adminBillingZip            : attr('string'),
   adminBillingAdditionalInfo : attr('string'),
+  isGoogleRecaptchaEnabled   : attr('boolean', { defaultValue: false }),
+  googleRecaptchaSite        : attr('string'),
+  googleRecaptchaSecret      : attr('string'),
   /**
    * Computed properties
    */
