@@ -74,6 +74,26 @@ export default Controller.extend({
         .finally(() => {
           this.set('isLoading', false);
         });
+    },
+    async resendConfirmation(order) {
+      try {
+        const payload = {
+          'data': {
+            'order' : order.identifier,
+            'user'  : this.authManager.currentUser.email
+          }
+        };
+        await this.loader.post('orders/resend-email', payload);
+        this.notify.success(this.l10n.t('Email confirmation has been sent to attendees successfully'));
+      } catch (error) {
+        if (error.status && error.status === 429) {
+          this.notify.error(this.l10n.t('Only 5 resend actions are allowed in a minute'));
+        } else if (error.status && error.status === 422) {
+          this.notify.error(this.l10n.tVar(error.response.errors[0].detail));
+        } else {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        }
+      }
     }
   }
 });
