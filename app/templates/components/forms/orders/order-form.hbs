@@ -114,6 +114,7 @@
           <label class="required">{{t 'Select country'}}</label>
           {{#ui-dropdown class="search selection" selected=data.country
                         onChange=(action (mut data.country)) as |execute mapper|}}
+            {{input type='hidden' id='country' value=data.country}}
             <div class="default text">{{t 'Select country'}}</div>
             <i class="dropdown icon"></i>
             <div class="menu">
