@@ -8,7 +8,8 @@ export const paymentCurrencies = [
     name   : 'Polish zloty',
     stripe : true,
     alipay : true,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -17,7 +18,8 @@ export const paymentCurrencies = [
     name   : 'New Zealand dollar',
     stripe : true,
     alipay : true,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -26,7 +28,8 @@ export const paymentCurrencies = [
     name   : 'Indian rupee',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : true
   },
   {
     paypal : true,
@@ -35,7 +38,8 @@ export const paymentCurrencies = [
     name   : 'Brazilian real',
     stripe : true,
     alipay : true,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -44,7 +48,8 @@ export const paymentCurrencies = [
     name   : 'Singapore dollar',
     stripe : true,
     alipay : true,
-    omise  : true
+    omise  : true,
+    paytm  : false
   },
   {
     paypal : true,
@@ -53,7 +58,8 @@ export const paymentCurrencies = [
     name   : 'Canadian dollar',
     stripe : true,
     alipay : true,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -62,7 +68,8 @@ export const paymentCurrencies = [
     name   : 'Hong Kong dollar',
     stripe : true,
     alipay : true,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -71,7 +78,8 @@ export const paymentCurrencies = [
     name   : 'Czech koruna',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -80,7 +88,8 @@ export const paymentCurrencies = [
     name   : 'Danish krone',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -89,7 +98,8 @@ export const paymentCurrencies = [
     name   : 'Norwegian krone',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -98,7 +108,8 @@ export const paymentCurrencies = [
     name   : 'Swedish krona',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -107,7 +118,8 @@ export const paymentCurrencies = [
     name   : 'New Taiwan dollar',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -116,7 +128,8 @@ export const paymentCurrencies = [
     name   : 'United States dollar',
     stripe : true,
     alipay : true,
-    omise  : true
+    omise  : true,
+    paytm  : false
   },
   {
     paypal : true,
@@ -125,7 +138,8 @@ export const paymentCurrencies = [
     name   : 'Hungarian forint',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -134,7 +148,8 @@ export const paymentCurrencies = [
     name   : 'Japanese yen',
     stripe : true,
     alipay : true,
-    omise  : true
+    omise  : true,
+    paytm  : false
   },
   {
     paypal : true,
@@ -143,7 +158,8 @@ export const paymentCurrencies = [
     name   : 'Israeli new sheqel',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -152,7 +168,8 @@ export const paymentCurrencies = [
     name   : 'European Euro',
     stripe : true,
     alipay : true,
-    omise  : true
+    omise  : true,
+    paytm  : false
   },
   {
     paypal : true,
@@ -161,7 +178,8 @@ export const paymentCurrencies = [
     name   : 'Mexican peso',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -170,7 +188,8 @@ export const paymentCurrencies = [
     name   : 'Philippine peso',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -179,7 +198,8 @@ export const paymentCurrencies = [
     name   : 'Australian dollar',
     stripe : true,
     alipay : true,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -188,7 +208,8 @@ export const paymentCurrencies = [
     name   : 'British pound',
     stripe : true,
     alipay : true,
-    omise  : true
+    omise  : true,
+    paytm  : false
   },
   {
     paypal : true,
@@ -197,7 +218,8 @@ export const paymentCurrencies = [
     name   : 'Thai baht',
     stripe : true,
     alipay : false,
-    omise  : true
+    omise  : true,
+    paytm  : false
   },
   {
     paypal : true,
@@ -206,7 +228,8 @@ export const paymentCurrencies = [
     name   : 'Russian ruble',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -215,7 +238,8 @@ export const paymentCurrencies = [
     name   : 'Malaysian ringgit',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   },
   {
     paypal : true,
@@ -224,6 +248,7 @@ export const paymentCurrencies = [
     name   : 'Swiss franc',
     stripe : true,
     alipay : false,
-    omise  : false
+    omise  : false,
+    paytm  : false
   }
 ];
