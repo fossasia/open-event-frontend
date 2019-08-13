@@ -16,12 +16,6 @@
         {{t 'on how to obtain these keys.'}}
       </div>
     </h3>
-    <div class="field">
-      <label>
-        {{t 'Client ID'}}
-      </label>
-      {{input type='text' name='stripe_client_id' value=settings.stripeClientId}}
-    </div>
     <h5 class="ui header">
       {{t 'Stripe Integration Mode'}}
     </h5>
@@ -35,13 +29,22 @@
     {{#if (eq stripeMode 'debug')}}
       <div class="field">
         <label>
+          {{t 'Client Test ID'}}
+          {{ui-popup tagName="i" class="info icon" content="This client id will be used for testing mode"}}
+        </label>
+        {{input type='text' name='stripe_test_client_id' value=settings.stripeTestClientId}}
+      </div>
+      <div class="field">
+        <label>
           {{t 'Secret Test Key'}}
+          {{ui-popup tagName="i" class="info icon" content="This secret key will be used for testing mode"}}
         </label>
         {{input type='text' name='stripe_test_secret_key' value=settings.stripeTestSecretKey}}
       </div>
       <div class="field">
         <label>
           {{t 'Publishable Test Key'}}
+          {{ui-popup tagName="i" class="info icon" content="This publishable key will be used for testing mode"}}
         </label>
         {{input type='text' name='stripe_test_publishable_key' value=settings.stripeTestPublishableKey}}
       </div>
@@ -57,13 +60,22 @@
     {{#if (eq stripeMode 'production')}}
       <div class="field">
         <label>
+          {{t 'Client ID'}}
+          {{ui-popup tagName="i" class="info icon" content="This client id will be used during live (production) mode"}}
+        </label>
+        {{input type='text' name='stripe_client_id' value=settings.stripeClientId}}
+      </div>
+      <div class="field">
+        <label>
           {{t 'Secret Key'}}
+          {{ui-popup tagName="i" class="info icon" content="This Secret Key will be used during live (production) mode"}}
         </label>
         {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
       </div>
       <div class="field">
         <label>
           {{t 'Publishable Key'}}
+          {{ui-popup tagName="i" class="info icon" content="This Publishable Key will be used during live (production) mode"}}
         </label>
         {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
       </div>

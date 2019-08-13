@@ -48,6 +48,7 @@ export default ModelBase.extend({
   stripeClientId             : attr('string'),
   stripeSecretKey            : attr('string'),
   stripePublishableKey       : attr('string'),
+  stripeTestCliendId         : attr('string'),
   stripeTestSecretKey        : attr('string'),
   stripeTestPublishableKey   : attr('string'),
   isAliPayActivated          : attr('boolean'),
