@@ -202,7 +202,7 @@ export default Component.extend(FormMixin, {
   },
 
   isCheckedStripe: computed(function() {
-    return this.get('settings.stripeClientId');
+    return this.get('settings.stripeClientId') || this.get('settings.stripeTestClientId');
   }),
 
   stripeMode: computed(function() {
