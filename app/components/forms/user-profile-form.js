@@ -44,15 +44,12 @@ export default Component.extend(FormMixin, {
         },
         phone: {
           identifier : 'phone',
+          optional   : true,
           rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter a phone number.')
-            },
             {
               type   : 'regExp',
               value  : validPhoneNumber,
-              prompt : this.l10n.t('Please enter a valid phone number.')
+              prompt : this.l10n.t('Please enter a valid phone number')
             }
           ]
         }
