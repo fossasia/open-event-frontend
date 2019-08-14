@@ -42,59 +42,105 @@
     <table class="ui very basic tablet stackable table order-summary center aligned">
       <thead>
         <tr>
-          <th class="four wide">{{t 'Ticket Type'}}</th>
-          <th class="four wide">{{t 'Price'}}</th>
-          <th class="ui aligned two wide">{{t 'Discount'}}</th>
-          <th class="one wide">{{t 'Quantity'}}</th>
-          <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
-          {{#if event.tax}}
-            <th class="four wide">{{t 'Tax'}}</th>
+          {{#if (eq data.amount 0)}}
+            <th class="ui aligned two wide">{{t 'Ticket Type'}}</th>
+            {{#if data.discountCode}}
+              <th class="two wide">{{t 'Price'}}</th>
+              <th class=" two wide">{{t 'Discount'}}</th>
+              <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+            {{/if}}
+            <th class="two wide">{{t 'Quantity'}}</th>
+          {{else}}
+            <th class="four wide">{{t 'Ticket Type'}}</th>
+            <th class="four wide">{{t 'Price'}}</th>
+            {{#if data.discountCode}}
+              <th class="ui aligned two wide">{{t 'Discount'}}</th>
+            {{/if}}
+            <th class="four wide">{{t 'Quantity'}}</th>
+            {{#if event.tax}}
+              <th class="one wide">{{t 'Tax'}}</th>
+            {{/if}}
+            <th class="ui aligned four wide">{{t 'Subtotal'}}</th>
+            
           {{/if}}
         </tr>
       </thead>
       <tbody>
         {{#each tickets as |ticket|}}
           <tr>
-            <td>
-              <div class="ui small">
-                {{ticket.name}}
-              </div>
-            </td>
-            <td>{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
-            <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
-            <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
-            <td>
-              {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
-            </td>
-            {{#if event.tax}}
+            {{#if (eq data.amount 0)}}
+          	   <td>
+                <div class="ui small">
+                  {{ticket.name}}
+                </div>
+              </td>
+              {{#if data.discountCode}}
+                <td>{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+                <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
+                <td>
+                  {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
+                </td>
+              {{/if}}
+              <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
+            {{else}}
               <td>
-                {{#if event.tax.isTaxIncludedInPrice}}
-                  {{t 'The price is inclusive of all taxes.'}}
-                {{else}}
-                  {{event.tax.rate}}%
-                {{/if}}
+                <div class="ui small">
+                  {{ticket.name}}
+                </div>
+              </td>
+              <td>{{currency-symbol eventCurrency}} {{format-number ticket.price}}</td>
+              {{#if data.discountCode}}
+                <td>{{currency-symbol eventCurrency}} {{format-number ticket.discount}}</td>
+              {{/if}}
+              <td>{{ticket-attendees data.attendees ticket.attendees}}</td>
+              {{#if event.tax}}
+                <td>
+                  {{#if event.tax.isTaxIncludedInPrice}}
+                    {{t 'The price is inclusive of all taxes.'}}
+                  {{else}}
+                    {{#if ticket.price}}
+                      {{event.tax.rate}}%
+                    {{else}}
+                      {{t 'N/A'}}
+                    {{/if}}
+                  {{/if}}
+                </td>
+              {{/if}}
+              <td>
+                {{currency-symbol eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees data.attendees ticket.attendees))}}
               </td>
             {{/if}}
+              
+              
           </tr>
         {{/each}}
       </tbody>
-      <tfoot class="full-width">
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>
-            <div class="ui aligned small primary icon">
-              {{t 'Grand Total'}}:
-            </div>
-          </th>
-          <th colspan="4">
-            <div class="ui aligned small primary icon">
+      {{#if (gt data.amount 0)}}
+        <tfoot class="full-width">
+          <tr>
+            <th></th>
+            {{#if data.discountCode}}
+              <th colspan="2"></th>
+            {{else}}
+              <th></th>
+            {{/if}}
+            {{#if event.tax}}
+              <th></th>
+              {{#if data.discountCode}}
+                <th></th>
+              {{/if}}
+            {{/if}}
+            <th>
+              <div class="ui aligned small primary icon">
+                {{t 'Grand Total'}}:
+              </div>
+            </th>
+            <th colspan="4">
               {{currency-symbol eventCurrency}} {{format-number data.amount}}
-            </div>
-          </th>
-        </tr>
-      </tfoot>
+            </th>
+          </tr>
+        </tfoot>
+      {{/if}}
     </table>
   {{/if}}
 </div>
