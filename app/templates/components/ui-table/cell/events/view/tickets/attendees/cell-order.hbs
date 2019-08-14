@@ -1,27 +1,24 @@
 <div class="ui tiny header">
-  {{#link-to 'orders.view' record.order.identifier}}{{record.order.identifier}}{{/link-to}}
+  {{#link-to 'orders.view' record.identifier}}{{record.identifier}}{{/link-to}}
   <span class="weight-400">
     {{t 'by'}}
-    {{record.order.user.email}}
+    {{extraRecords.user.email}}
   </span>
-  <div class="ui basic mini {{if (eq record.order.status 'completed') 'green'
-                                 (if (or (eq record.order.status 'placed')
-                                 (eq record.order.status 'pending')) 'yellow' 'red')}}
-                                  label attendees-margin">
-    {{record.order.status}}
+  <div class="ui basic mini {{order-color record.status}} label attendees-margin">
+    {{record.status}}
   </div>
   <div class="sub header">
-    {{#if record.order.paidVia}}
+    {{#if extraRecords.paidVia}}
       <span class="weight-800">
-        {{t 'Payment via'}} {{record.order.paidVia}}
+        {{t 'Payment via'}} {{extraRecords.paidVia}}
       </span>
     {{/if}}
-    {{#if (eq record.order.status 'completed')}}
-      {{moment-format record.order.completedAt 'MMMM Do YYYY, h:mm A -'}}
-      {{moment-from-now record.order.completedAt}}
+    {{#if (eq extraRecords.status 'completed')}}
+      {{moment-format extraRecords.completedAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now extraRecords.completedAt}}
     {{else}}
-      {{moment-format record.order.createdAt 'MMMM Do YYYY, h:mm A -'}}
-      {{moment-from-now record.order.createdAt}}
+      {{moment-format extraRecords.createdAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now extraRecords.createdAt}}
     {{/if}}
   </div>
 </div>
