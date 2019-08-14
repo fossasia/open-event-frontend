@@ -10,10 +10,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       columns = [
         {
           name      : 'Invoice ID',
-          valuePath : 'id'
+          valuePath : 'identifier'
         },
         {
-          name          : 'Name',
+          name          : 'Event Name',
           valuePath     : 'event',
           cellComponent : 'ui-table/cell/events/cell-event-invoice'
         },
@@ -22,8 +22,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           valuePath : 'createdAt'
         },
         {
-          name      : 'Outstanding Amount',
-          valuePath : 'amount'
+          name            : 'Outstanding Amount',
+          valuePath       : 'amount',
+          extraValuePaths : ['event'],
+          cellComponent   : 'ui-table/cell/events/cell-amount'
         },
         {
           name      : 'View Invoice',
@@ -34,10 +36,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       columns = [
         {
           name      : 'Invoice ID',
-          valuePath : 'id'
+          valuePath : 'identifier'
         },
         {
-          name          : 'Name',
+          name          : 'Event Name',
           valuePath     : 'event',
           cellComponent : 'ui-table/cell/events/cell-event-invoice'
         },
@@ -46,8 +48,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           valuePath : 'createdAt'
         },
         {
-          name      : 'Amount',
-          valuePath : 'amount'
+          name            : 'Amount',
+          valuePath       : 'amount',
+          extraValuePaths : ['event'],
+          cellComponent   : 'ui-table/cell/events/cell-amount'
         },
         {
           name      : 'Date Paid',
@@ -63,10 +67,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       columns =   [
         {
           name      : 'Invoice ID',
-          valuePath : 'id'
+          valuePath : 'identifier'
         },
         {
-          name          : 'Name',
+          name          : 'Event Name',
           valuePath     : 'event',
           cellComponent : 'ui-table/cell/events/cell-event-invoice'
 
@@ -76,8 +80,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           valuePath : 'createdAt'
         },
         {
-          name      : 'Amount Due',
-          valuePath : 'amount'
+          name            : 'Amount Due',
+          valuePath       : 'amount',
+          extraValuePaths : ['event'],
+          cellComponent   : 'ui-table/cell/events/cell-amount'
         },
         {
           name      : 'View Invoice',
@@ -85,20 +91,22 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
 
       ];
-    } else if (this.model.params.invoice_status === 'due') {
+    } else if (this.model.params.invoice_status === 'all') {
       columns = [
         {
           name      : 'Invoice ID',
-          valuePath : 'id'
+          valuePath : 'identifier'
         },
         {
-          name          : 'Name',
+          name          : 'Event Name',
           valuePath     : 'event',
           cellComponent : 'ui-table/cell/events/cell-event-invoice'
         },
         {
-          name      : 'Amount',
-          valuePath : 'amount'
+          name            : 'Amount',
+          valuePath       : 'amount',
+          extraValuePaths : ['event'],
+          cellComponent   : 'ui-table/cell/events/cell-amount'
         },
         {
           name      : 'Status',
