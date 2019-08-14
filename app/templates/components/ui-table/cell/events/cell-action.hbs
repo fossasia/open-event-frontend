@@ -1,0 +1,9 @@
+{{#if (eq extraRecords.status 'due')}}
+  {{#link-to 'event-invoice.review' record class='ui blue button'}}
+    {{t 'Review and Pay'}}
+  {{/link-to}}
+{{else}}
+  {{#link-to 'event-invoice.paid' record class='ui green button'}}
+    {{t 'See Payment'}}
+  {{/link-to}}
+{{/if}}
