@@ -14,16 +14,16 @@
             <i class="user icon"></i>
             <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
           </div>
-          {{# each allFields.attendee as |field|}}
+          {{#each allFields.attendee as |field|}}
             {{#if field.isIncluded}}
-              <div class="field">
-                <h4 class="weight-300">
-                  {{field.name}}
-                </h4>
-                {{#if (is-input-field field.type) }}
+              {{#if field.isRequired}}
+                <div class="field">
+                  <h4 class="weight-300">
+                    {{field.name}}
+                  </h4>
                   <span>{{get holder field.fieldIdentifier}}</span>
-                {{/if}}
-              </div>
+                </div>
+              {{/if}}
             {{/if}}
           {{/each}}
           <div class="ui divider"></div>
