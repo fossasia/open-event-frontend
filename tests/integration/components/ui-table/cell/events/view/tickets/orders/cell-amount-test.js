@@ -5,10 +5,14 @@ import { render } from '@ember/test-helpers';
 
 module('Integration | Component | ui table/cell/events/view/tickets/orders/cell amount', function(hooks) {
   setupIntegrationTest(hooks);
-
+  const extraRecords = {
+    event: {
+      paymentCurrency: 'USD'
+    }
+  };
   test('it renders', async function(assert) {
-
-    await render(hbs`{{ui-table/cell/events/view/tickets/orders/cell-amount paymentCurrency='USD'}}`);
+    this.set('extraRecords', extraRecords);
+    await render(hbs`{{ui-table/cell/events/view/tickets/orders/cell-amount extraRecords=extraRecords}}`);
     assert.ok(this.element.textContent.trim().includes(''));
   });
 });
