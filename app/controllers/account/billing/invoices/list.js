@@ -60,6 +60,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         {
           name      : 'View Invoice',
           valuePath : 'invoicePdfUrl'
+        },
+        {
+          name            : 'Action',
+          valuePath       : 'identifier',
+          extraValuePaths : ['status'],
+          cellComponent   : 'ui-table/cell/events/cell-action'
         }
 
       ];
@@ -88,6 +94,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         {
           name      : 'View Invoice',
           valuePath : 'invoicePdfUrl'
+        },
+        {
+          name            : 'Action',
+          valuePath       : 'identifier',
+          extraValuePaths : ['status'],
+          cellComponent   : 'ui-table/cell/events/cell-action'
         }
 
       ];
@@ -111,6 +123,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         {
           name      : 'Status',
           valuePath : 'status'
+        },
+        {
+          name            : 'Action',
+          valuePath       : 'identifier',
+          extraValuePaths : ['status'],
+          cellComponent   : 'ui-table/cell/events/cell-action'
         }
 
       ];
