@@ -8,8 +8,10 @@ export default ModelBase.extend({
    * Attributes
    */
 
+
   appEnvironment             : attr('string'),
   appName                    : attr('string'),
+  orderExpiryTime            : attr('number', { defaultValue: 15 }),
   tagline                    : attr('string'),
   secret                     : attr('string'),
   storagePlace               : attr('string'),
@@ -94,6 +96,7 @@ export default ModelBase.extend({
   isGoogleRecaptchaEnabled   : attr('boolean', { defaultValue: false }),
   googleRecaptchaSite        : attr('string'),
   googleRecaptchaSecret      : attr('string'),
+
   /**
    * Computed properties
    */
