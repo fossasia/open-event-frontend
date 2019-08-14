@@ -21,7 +21,6 @@ export default Component.extend({
       };
 
       paypal.Button.render({
-        env: 'sandbox',
         commit: true,
 
         style: {
@@ -79,8 +78,8 @@ export default Component.extend({
         }
       };
       paypal.Button.render({
-        env: 'sandbox',
-        commit: true,
+        env    : 'sandbox',
+        commit : true,
 
         style: {
           label : 'pay',
