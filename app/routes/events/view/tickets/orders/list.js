@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
-export default Route.extend({
+export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     switch (this.get('params.orders_status')) {
       case 'placed':
@@ -14,10 +15,11 @@ export default Route.extend({
       case 'all':
         return this.l10n.t('All');
     }
-  },
+  }
 
   async model(params) {
     this.set('params', params);
+    const searchField = 'identifier';
     let filterOptions = [];
     if (params.orders_status !== 'all') {
       filterOptions = [
@@ -28,27 +30,17 @@ export default Route.extend({
         }
       ];
     }
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
 
-    let queryObject = {
-      include      : 'tickets,user',
-      filter       : filterOptions,
-      'page[size]' : 10
+    let queryString = {
+      include        : 'tickets,user',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
     };
 
-    let store = this.modelFor('events.view');
+    queryString = this.applySortFilters(queryString, params);
 
-    let data = await store.query('orders', queryObject);
-
-    return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'orders'
-    };
-  },
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
+    return  this.asArray(this.modelFor('events.view').query('orders', queryString));
   }
-});
+}

@@ -1,45 +1,45 @@
 <div class="ui tiny header">
-  <a class="main content" href="{{href-to 'orders.view' record.identifier}}">
-    {{record.identifier}}
+  <a class="main content" href="{{href-to 'orders.view' record}}">
+    {{record}}
   </a>
   <span class="weight-400">
-    {{t 'by'}} {{if record.user.firstName record.user.firstName (t 'Name not provided')}}
+    {{t 'by'}} {{if extraRecords.user.firstName extraRecords.user.firstName (t 'Name not provided')}}
   </span>
-  <div class="ui basic mini {{if (eq record.status 'completed') 'green' (if (eq record.status 'placed') 'blue' (if (eq record.status 'pending') 'orange' (if (eq record.status 'expired') 'red' 'yellow')))}} label">
-    {{record.status}}
+  <div class="ui basic mini {{order-color extraRecords.status}} label">
+    {{extraRecords.status}}
   </div>
   <div class="sub header">
-    {{#if record.paidVia}}
+    {{#if extraRecords.paidVia}}
       <span class="weight-800">
-        {{t 'Payment via'}} {{record.paidVia}}
+        {{t 'Payment via'}} {{extraRecords.paidVia}}
       </span>
     {{/if}}
     <span class="muted text">
-      {{#if record.completedAt}}
-        {{moment-format record.completedAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now record.completedAt}}
+      {{#if extraRecords.completedAt}}
+        {{moment-format extraRecords.completedAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now extraRecords.completedAt}}
       {{else}}
-        {{moment-format record.createdAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now record.createdAt}}
+        {{moment-format extraRecords.createdAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now extraRecords.createdAt}}
       {{/if}}
     </span>
   </div>
 </div>
 <div class="ui horizontal compact basic buttons">
-  {{#if (and (eq record.status 'placed') (can-modify-order record))}}
-    {{#ui-popup content=(t 'Mark Completed') click=(action (confirm (t 'Are you sure you would like to mark this Order as completed?') (action completeOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+  {{#if (and (eq extraRecords.status 'placed') (can-modify-order record))}}
+    {{#ui-popup content=(t 'Mark Completed') click=(action (confirm (t 'Are you sure you would like to mark this Order as completed?') (action props.actions.completeOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
       <i class="check icon"></i>
     {{/ui-popup}}
   {{/if}}
   {{#if (and (not-eq record.status 'cancelled') (not-eq record.status 'expired') (can-modify-order record))}}
-    {{#ui-popup content=(t 'Cancel order') click=(action (confirm (t 'Are you sure you would like to cancel this Order?') (action cancelOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+    {{#ui-popup content=(t 'Cancel order') click=(action (confirm (t 'Are you sure you would like to cancel this Order?') (action props.actions.cancelOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
       <i class="delete icon"></i>
     {{/ui-popup}}
   {{/if}}
   {{#if (can-modify-order record)}}
-    {{#ui-popup content=(t 'Delete order') click=(action (confirm (t 'Are you sure you would like to delete this Order?') (action deleteOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+    {{#ui-popup content=(t 'Delete order') click=(action (confirm (t 'Are you sure you would like to delete this Order?') (action props.actions.deleteOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
       <i class="trash icon"></i>
     {{/ui-popup}}
   {{/if}}
-  {{#ui-popup content=(t 'Resend order confirmation') click=(action resendConfirmation record) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+  {{#ui-popup content=(t 'Resend order confirmation') click=(action props.actions.resendConfirmation record) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
     <i class="mail outline icon"></i>
   {{/ui-popup}}
 </div>
