@@ -21,6 +21,7 @@ export default Component.extend({
       };
 
       paypal.Button.render({
+        env: 'sandbox',
         commit: true,
 
         style: {
@@ -78,6 +79,7 @@ export default Component.extend({
         }
       };
       paypal.Button.render({
+        env: 'sandbox',
         commit: true,
 
         style: {
@@ -112,11 +114,11 @@ export default Component.extend({
           chargePayload = JSON.stringify(chargePayload);
           return this.loader.post(`event-invoices/${eventInvoice.identifier}/charge`, chargePayload, config)
             .then(charge => {
-              if (charge.data.attributes.status) {
-                this.notify.success(charge.data.attributes.message);
+              if (charge.status) {
+                this.notify.success(charge.status);
                 this.router.transitionTo('event-invoice.paid', eventInvoice.identifier);
               } else {
-                this.notify.error(charge.data.attributes.message);
+                this.notify.error(charge.error);
               }
             });
         }
