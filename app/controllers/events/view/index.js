@@ -3,9 +3,6 @@ import { computed, action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  per_page = 100;
-
-  sort_dir = 'ASC';
 
   @computed()
   get sponsorsColumns() {
@@ -23,22 +20,22 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
       },
       {
-        name            : 'Type',
-        valuePath       : 'type',
-        cellComponent   : 'ui-table/cell/cell-sponsor-sanitize',
-        extraValuePaths : ['type'],
-        options         : {
-          PropName: 'type'
-        }
+        name          : 'Type',
+        valuePath     : 'type',
+        cellComponent : 'ui-table/cell/cell-sponsor-sanitize'
+        // extraValuePaths : ['type'],
+        // options         : {
+        //   PropName: 'type'
+        // }
       },
       {
-        name            : 'Level',
-        valuePath       : 'level',
-        cellComponent   : 'ui-table/cell/cell-sponsor-sanitize',
-        extraValuePaths : ['level'],
-        options         : {
-          PropName: 'level'
-        }
+        name          : 'Level',
+        valuePath     : 'level',
+        cellComponent : 'ui-table/cell/cell-sponsor-sanitize'
+        // extraValuePaths : ['level'],
+        // options         : {
+        //   PropName: 'level'
+        // }
       },
       {
         name          : 'Options',
@@ -52,13 +49,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     ];
   }
 
-     @action
+  @action
   deleteSponsor(sponsor) {
     this.set('isLoading', true);
     sponsor.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Sponsor has been deleted successfully.'));
-        this.get('model.sponsors').removeObject(sponsor);
+        this.refreshModel.bind(this)();
       })
       .catch(() => {
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
@@ -68,9 +65,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       });
   }
 
-    @action
-     editSponsor() {
-       this.transitionToRoute('events.view.edit.sponsors');
-     }
+  @action
+  editSponsor() {
+    this.transitionToRoute('events.view.edit.sponsors');
+  }
 }
 

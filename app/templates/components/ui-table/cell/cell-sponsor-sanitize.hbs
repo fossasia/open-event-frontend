@@ -1,7 +1,3 @@
-{{#if (eq props.options.PropName 'type')}}
-  {{sanitize extraRecords.type}}
-{{/if}}
-
-{{#if (eq props.options.PropName 'level')}}
-  {{sanitiza extraRecords.level}}
+{{#if record}}
+  {{sanitize record}}
 {{/if}}
