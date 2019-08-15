@@ -1,16 +1,15 @@
 <div class="sixteen wide column">
-  {{events/events-table columns=columns
-                        data=model.data
-                        store=model.store
-                        query=model.query
-                        isNotStoreQuery = true
-                        modelName = model.objectType
-                        useNumericPagination=true
-                        showGlobalFilter=true
-                        showPageSize=true
-                        deleteAccessCode=(action 'deleteAccessCode')
-                        toggleStatus=(action 'toggleStatus')
-                        editAccessCode=(action 'editAccessCode')
-                        customGlobalFilter='code'
+  {{tables/default  columns=columns
+                    rows=model.data
+                    currentPage=page
+                    pageSize=per_page
+                    searchQuery=search
+                    sortBy=sort_by
+                    sortDir=sort_dir
+                    metaData=model.meta
+                    filterOptions=filterOptions
+                    widthConstraint="eq-container"
+                    resizeMode="fluid"
+                    fillMode="equal-column"
   }}
 </div>
