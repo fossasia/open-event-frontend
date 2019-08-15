@@ -8,18 +8,18 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const searchField = 'name';
     let filterOptions = [];
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
-    let sponsorQueryObject = {
+    let queryString = {
       filter         : filterOptions,
       'page[size]'   : params.per_page || 10,
       'page[number]' : params.per_page || 1
     };
-    sponsorQueryObject = this.applySortFilters(sponsorQueryObject, params);
+    queryString = this.applySortFilters(queryString, params);
 
 
     return {
       event             : await eventDetails,
-      sponsors          : await eventDetails.query('sponsors', sponsorQueryObject),
-      query             : sponsorQueryObject,
+      sponsors          : await eventDetails.query('sponsors', queryString),
+      query             : queryString,
       sponsorObjectType : 'sponsors',
       roleInvites       : await eventDetails.query('roleInvites', {}),
       sessionTypes      : await eventDetails.query('sessionTypes', {}),

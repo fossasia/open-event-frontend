@@ -23,19 +23,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : 'Type',
         valuePath     : 'type',
         cellComponent : 'ui-table/cell/cell-sponsor-sanitize'
-        // extraValuePaths : ['type'],
-        // options         : {
-        //   PropName: 'type'
-        // }
       },
       {
         name          : 'Level',
         valuePath     : 'level',
         cellComponent : 'ui-table/cell/cell-sponsor-sanitize'
-        // extraValuePaths : ['level'],
-        // options         : {
-        //   PropName: 'level'
-        // }
       },
       {
         name          : 'Options',
