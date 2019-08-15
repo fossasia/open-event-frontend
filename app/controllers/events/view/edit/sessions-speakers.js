@@ -18,13 +18,13 @@ export default Controller.extend(EventWizardMixin, {
     save() {
       this.saveEventDataAndRedirectTo(
         'events.view.index',
-        ['tracks', 'sessionTypes', 'microlocations', 'customForms']
+        ['tracks', 'sessionTypes', 'microlocations', 'customForms', 'tickets']
       );
     },
     move(direction) {
       this.saveEventDataAndRedirectTo(
         direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.sponsors',
-        ['tracks', 'sessionTypes', 'microlocations', 'customForms']
+        ['tracks', 'sessionTypes', 'microlocations', 'customForms', 'tickets']
       );
     }
   }
