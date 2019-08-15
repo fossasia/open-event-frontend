@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
-export default Route.extend({
+export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     switch (this.get('params.attendees_status')) {
       case 'placed':
@@ -18,9 +19,10 @@ export default Route.extend({
       case 'all':
         return this.l10n.t('All');
     }
-  },
+  }
   async model(params) {
     this.set('params', params);
+    const searchField = 'firstname';
     let filterOptions = [];
     if (params.attendees_status === 'checkedIn') {
       filterOptions = [
@@ -53,22 +55,18 @@ export default Route.extend({
         }
       ];
     }
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
 
-    let queryObject = {
-      include      : 'order.user,user',
-      filter       : filterOptions,
-      'page[size]' : 10
+    let queryString = {
+      include        : 'user,order',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
     };
 
-    let store = this.modelFor('events.view');
 
-    let data = await store.query('attendees', queryObject);
+    queryString = this.applySortFilters(queryString, params);
 
-    return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'attendees'
-    };
+    return  this.asArray(this.modelFor('events.view').query('attendees', queryString));
   }
-});
+}
