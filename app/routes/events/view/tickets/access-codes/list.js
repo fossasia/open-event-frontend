@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
+import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import moment from 'moment';
 
-export default Route.extend({
+export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     switch (this.get('params.access_status')) {
       case 'active':
@@ -11,9 +12,11 @@ export default Route.extend({
       case 'expired':
         return this.l10n.t('Expired');
     }
-  },
+  }
+
   async model(params) {
     let filterOptions = [];
+    const searchField = 'code';
     if (params.access_status === 'active') {
       filterOptions = [
         {
@@ -60,26 +63,15 @@ export default Route.extend({
       filterOptions = [];
     }
 
-    let queryObject = {
-      filter       : filterOptions,
-      'page[size]' : 10
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+    let queryString = {
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
     };
 
-    let store = this.modelFor('events.view');
+    queryString = this.applySortFilters(queryString, params);
 
-    let data = await store.query('accessCodes', queryObject);
-
-    return {
-      data,
-      store,
-      query      : queryObject,
-      objectType : 'accessCodes'
-    };
-  },
-
-  actions: {
-    refreshRoute() {
-      this.refresh();
-    }
+    return  this.asArray(this.modelFor('events.view').query('accessCodes', queryString));
   }
-});
+}
