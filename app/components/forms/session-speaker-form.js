@@ -510,6 +510,10 @@ export default Component.extend(FormMixin, {
     return this.newSessionSelected && !this.sessionDetails;
   }),
 
+  isAdmin: computed('authManager.currentUser.isAdmin', function() {
+    return this.get('authManager.currentUser.isSuperAdmin') || this.get('authManager.currentUser.isAdmin');
+  }),
+
   actions: {
     submit() {
       this.onValid(() => {

@@ -122,8 +122,10 @@
                 {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                                                  textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{else if (eq field.fieldIdentifier 'email')}}
-                {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
-                              onChange=(action (mut data.speaker.isEmailOverridden))}}
+                {{#if isAdmin}}
+                  {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
+                                onChange=(action (mut data.speaker.isEmailOverridden))}}
+                {{/if}}
                 {{#if (not data.speaker.isEmailOverridden)}}
                   {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier))
                           id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
@@ -193,8 +195,10 @@
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{else if (eq field.fieldIdentifier 'email')}}
-              {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
-                            onChange=(action (mut data.speaker.isEmailOverridden))}}
+              {{#if isAdmin}}
+                {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
+                              onChange=(action (mut data.speaker.isEmailOverridden))}}
+              {{/if}}
               {{#if (not data.speaker.isEmailOverridden)}}
                 {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier))
                         id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
