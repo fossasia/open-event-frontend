@@ -5,13 +5,16 @@ import { render } from '@ember/test-helpers';
 
 module('Integration | Component | ui table/cell/events/view/tickets/discount codes/cell actions', function(hooks) {
   setupIntegrationTest(hooks);
-
+  const props = {
+    actions: {
+      deleteDiscountCode : () => {},
+      editDiscountCode   : () => {},
+      toggleStatus       : () => {}
+    }
+  };
   test('it renders', async function(assert) {
-    this.set('deleteDiscountCode', () => {});
-    this.set('editDiscountCode', () => {});
-    this.set('toggleStatus', () => {});
-    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions
-       deleteDiscountCode=(action deleteDiscountCode) editDiscountCode=(action editDiscountCode) toggleStatus=(action toggleStatus)}}`);
+    this.set('props', props);
+    await render(hbs`{{ui-table/cell/events/view/tickets/discount-codes/cell-actions props=props}}`);
     assert.ok(this.element.textContent.trim().includes(''));
 
   });
