@@ -3,8 +3,7 @@ import Route from '@ember/routing/route';
 export default class extends Route {
 
   titleToken(model) {
-    let invoice_identifier = model.get('identifier');
-    return this.l10n.t(`Paid Event Invoice -${invoice_identifier}`);
+    return this.l10n.tVar(`Paid Event Invoice - ${model.get('identifier')}`);
   }
 
   model(params) {
