@@ -45,13 +45,11 @@ export const computedSegmentedLink = function(property) {
  * @returns {*}
  */
 export const computedDateTimeSplit = function(property, segmentFormat, endProperty) {
-  console.log(property);
   return computed(property, {
     get() {
       return moment(this.get(property)).format(getFormat(segmentFormat));
     },
     set(key, value) {
-      console.log(key, value, this);
       const newDate = moment(value, getFormat(segmentFormat));
       let oldDate = newDate;
       if (this.get(property)) {
