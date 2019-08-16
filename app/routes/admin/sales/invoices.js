@@ -7,7 +7,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   }
 
   async model(params) {
-    const searchField = 'recipient';
+    const searchField = 'identifier';
     let filterOptions = this.applySearchFilters([], params, searchField);
     let queryString = {
       filter        : filterOptions,
