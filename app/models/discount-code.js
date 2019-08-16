@@ -5,7 +5,6 @@ import moment from 'moment';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 
-const detectedTimezone = moment.tz.guess();
 
 /**
  * Two different forms of discount code can exist. (Both use the same model)
