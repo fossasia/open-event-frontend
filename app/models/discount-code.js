@@ -22,9 +22,9 @@ export default ModelBase.extend({
   ticketsNumber : attr('number'), // For form (1) this holds the max. times this can be used for events
   minQuantity   : attr('number', { defaultValue: 0 }), // Not of any significance for form (1)
   maxQuantity   : attr('number'), // For form (1) this holds the number of months this code is valid for events
-  validFrom     : attr('moment'),
+  validFrom     : attr('moment', { defaultValue: () => moment().startOf('day') }),
   discountUrl   : attr('string'),
-  validTill     : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
+  validTill     : attr('moment', { defaultValue: () => moment().add(1, 'months').startOf('day') }),
   usedFor       : attr('string'),
   isActive      : attr('boolean', { defaultValue: true }),
   createdAt     : attr('moment'),

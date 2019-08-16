@@ -5,7 +5,7 @@ import { FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time
 
 export default Component.extend({
 
-  classNames        : ['ui', 'calendar', 'time', 'picker', 'input', 'fluid'],
+  classNames        : ['ui', 'calendar', 'time', 'picker', 'input', 'fluid', 'field'],
   classNameBindings : ['icon:left', 'icon'],
 
   icon: true,
@@ -28,14 +28,14 @@ export default Component.extend({
       }
     };
 
-    switch (this.rangePosition) {
-      case 'start':
-        defaultOptions.endCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
-        break;
-      case 'end':
-        defaultOptions.startCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
-        break;
-    }
+    // switch (this.rangePosition) {
+    //   case 'start':
+    //     defaultOptions.endCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
+    //     break;
+    //   case 'end':
+    //     defaultOptions.startCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
+    //     break;
+    // }
 
     this.$().calendar(merge(defaultOptions, this.options));
   },
