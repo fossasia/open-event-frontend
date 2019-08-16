@@ -130,7 +130,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'checkDates',
-              prompt : this.l10n.t('Valid Till date & time should be after valid from date and time')
+              prompt : '.'
             }
           ]
         },
@@ -150,7 +150,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'checkDates',
-              prompt : this.l10n.t('Valid Till date & time should be after valid from date and time')
+              prompt : '.'
             }
           ]
         }
@@ -216,6 +216,9 @@ export default Component.extend(FormMixin, {
       later(this, () => {
         this.set('isLinkSuccess', false);
       }, 5000);
+    },
+    onChange() {
+      this.onValid(() => {});
     }
   }
 });
