@@ -1,9 +1,8 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
-import { action } from '@ember/object';
 
-export default class extends Component.extend(FormMixin) {
+export default Component.extend(FormMixin, {
   getValidationRules() {
     return {
       inline : true,
@@ -100,12 +99,13 @@ export default class extends Component.extend(FormMixin) {
         }
       }
     };
-  }
+  },
 
-  @action
-  submit() {
-    this.onValid(() => {
-      this.save();
-    });
+  actions: {
+    submit() {
+      this.onValid(() => {
+        this.save();
+      });
+    }
   }
-}
+});
