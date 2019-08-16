@@ -18,7 +18,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     return {
       event             : await eventDetails,
-      sponsors          : await eventDetails.query('sponsors', queryString),
+      sponsors          : await this.asArray(eventDetails.query('sponsors', queryString)),
       query             : queryString,
       sponsorObjectType : 'sponsors',
       roleInvites       : await eventDetails.query('roleInvites', {}),
@@ -27,7 +27,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       statistics        : await eventDetails.query('eventStatisticsGeneral', {}),
       orderStat         : await eventDetails.query('orderStatistics', {}),
       tickets           : await eventDetails.query('tickets', {}),
-      roles             : await this.asArray(this.store.findAll('role'))
+      roles             : await this.store.findAll('role')
     };
   }
 }
