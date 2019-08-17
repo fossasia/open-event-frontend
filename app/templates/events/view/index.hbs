@@ -9,7 +9,7 @@
     {{events/view/overview/manage-roles data=model}}
   </div>
   <div class="eight wide column">
-    {{events/view/overview/event-sponsors data=model.sponsors query=model.query modelName=model.sponsorObjectType store=model.event columns=sponsorsColumns deleteSponsor=(action 'deleteSponsor') editSponsor=(action 'editSponsor')}}
+    {{events/view/overview/event-sponsors data=model.sponsors modelName=model.sponsorObjectType store=model.event columns=columns}}
   </div>
   <div class="eight wide column">
     {{events/view/overview/event-apps}}

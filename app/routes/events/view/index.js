@@ -19,7 +19,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     return {
       event             : await eventDetails,
       sponsors          : await this.asArray(eventDetails.query('sponsors', queryString)),
-      query             : queryString,
       sponsorObjectType : 'sponsors',
       roleInvites       : await eventDetails.query('roleInvites', {}),
       sessionTypes      : await eventDetails.query('sessionTypes', {}),
