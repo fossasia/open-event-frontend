@@ -38,22 +38,25 @@ export const computedSegmentedLink = function(property) {
 };
 
 /**
- * Get set splitted date time from/to a Full datetime object
+ * Get, set split date time from/to a Full datetime object
  * @param property The full date time object
  * @param segmentFormat The part of the date to be returned. (time/date or a custom format)
+ * @param endProperty Optional end field name for date or time.
  * @returns {*}
  */
-export const computedDateTimeSplit = function(property, segmentFormat) {
+export const computedDateTimeSplit = function(property, segmentFormat, endProperty) {
   return computed(property, {
     get() {
-      // if (property === 'endsAt' && segmentFormat === 'date') {
-      //   return moment(this.get(property)).add(1, 'days').format(getFormat(segmentFormat));
-      // } The following line was adding one extra day to the endsAt Attribute . Commenting it to fix the issue .
       return moment(this.get(property)).format(getFormat(segmentFormat));
     },
     set(key, value) {
       const newDate = moment(value, getFormat(segmentFormat));
-      let oldDate = moment(this.get(property));
+      let oldDate = newDate;
+      if (this.get(property)) {
+        oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
+      } else {
+        oldDate = newDate;
+      }
       if (segmentFormat === 'time') {
         oldDate.hour(newDate.hour());
         oldDate.minute(newDate.minute());
@@ -65,7 +68,11 @@ export const computedDateTimeSplit = function(property, segmentFormat) {
         oldDate = newDate;
       }
       this.set(property, oldDate);
-      this.set('endsAt', oldDate);
+      if (endProperty) {
+        if (segmentFormat === 'date' && this.get(endProperty) < oldDate) {
+          this.set(endProperty, oldDate);
+        }
+      }
       return value;
     }
   });

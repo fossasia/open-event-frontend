@@ -69,15 +69,15 @@
       <div class="fields">
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Valid from'}}</label>
-          {{widgets/forms/date-picker id='start_date' value=data.validFromDate rangePosition='start'}}
+          {{widgets/forms/date-picker name='start_date' value=data.validFromDate rangePosition='start' onChange=(action 'onChange')}}
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker inputId='start_time' value=data.validFromTime rangePosition='start'}}
+          {{widgets/forms/time-picker name='start_time' value=data.validFromTime onChange=(action 'onChange')}}
         </div>
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Expires on'}}</label>
-          {{widgets/forms/date-picker type="text" inputId='end_date' value=data.validTillDate rangePosition='end'}}
+          {{widgets/forms/date-picker type="text" name='end_date' value=data.validTillDate rangePosition='end' onChange=(action 'onChange')}}
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker type="text" inputId='end_time' value=data.validTillTime rangePosition='end'}}
+          {{widgets/forms/time-picker type="text" name='end_time' value=data.validTillTime onChange=(action 'onChange')}}
         </div>
       </div>
     {{/if}}
