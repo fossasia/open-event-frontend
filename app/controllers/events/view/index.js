@@ -31,7 +31,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : 'Options',
-        valuePath     : 'id',
+        valuePath     : 'name',
         cellComponent : 'ui-table/cell/cell-sponsor-options',
         actions       : {
           editSponsor   : this.editSponsor.bind(this),
@@ -42,9 +42,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  deleteSponsor(sponsor_id) {
+  deleteSponsor(sponsor_name) {
     this.set('isLoading', true);
-    let sponsor = this.store.pekkRecord('sponsor', sponsor_id, { backgroundReload: false });
+    let sponsor = this.store.pekkRecord('sponsor', sponsor_name, { backgroundReload: false });
     sponsor.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Sponsor has been deleted successfully.'));
