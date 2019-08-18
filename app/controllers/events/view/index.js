@@ -4,19 +4,13 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
-  per_page = 100;
-
-  sort_by = 'name';
-
-  sort_dir = 'ASC';
-
   @computed()
   get columns() {
     return [
       {
         name          : 'Logo',
-        valuePath     : 'logo-url',
-        cellComponent : 'ui-table/cell/cell-image'
+        valuePath     : 'logoUrl',
+        cellComponent : 'ui-table/cell/cell-sponsor-image'
       },
       {
         name            : 'Name',
@@ -37,7 +31,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : 'Options',
-        valuePath     : 'name',
+        valuePath     : 'id',
         cellComponent : 'ui-table/cell/cell-sponsor-options',
         actions       : {
           editSponsor   : this.editSponsor.bind(this),
@@ -48,9 +42,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  deleteSponsor(sponsor_name) {
+  deleteSponsor(sponsor_id) {
     this.set('isLoading', true);
-    let sponsor = this.store.pekkRecord('sponsor', sponsor_name, { backgroundReload: false });
+    let sponsor = this.store.peekRecord('sponsor', sponsor_id, { backgroundReload: false });
     sponsor.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Sponsor has been deleted successfully.'));
