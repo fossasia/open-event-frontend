@@ -4,6 +4,12 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
+  per_page = 100;
+
+  sort_by = 'name';
+
+  sort_dir = 'ASC';
+
   @computed()
   get columns() {
     return [

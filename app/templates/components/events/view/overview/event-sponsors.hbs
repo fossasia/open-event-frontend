@@ -7,11 +7,12 @@
 </div>
 <div class="content">
   {{tables/default columns=columns
-               rows=model.data
+               rows=data.data
                searchQuery=search
+               pageSize=per_page
                sortBy=sort_by
                sortDir=sort_dir
-               metaData=model.meta
+               metaData=data.meta
                filterOptions=filterOptions
                widthConstraint="eq-container"
                resizeMode="fluid"
