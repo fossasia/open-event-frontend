@@ -19,10 +19,14 @@ export default Component.extend({
       notification.set('isRead', true);
       notification.save()
         .then(() => {
-          this.notify.success(this.l10n.t('Marked as Read successfully'));
+          this.notify.success(this.l10n.t('Marked as Read successfully'), {
+            id: 'not_read_succ'
+          });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error occurred.'), {
+            id: 'not_read_error'
+          });
         });
     },
     markAllRead() {

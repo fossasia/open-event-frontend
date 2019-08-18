@@ -33,10 +33,14 @@ export default Component.extend({
         .then(() => {
           this.authManager.logout();
           this.routing.transitionTo('index');
-          this.notify.success(this.l10n.t('Your account has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Your account has been deleted successfully.'), {
+            id: 'Account_Delete'
+          });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+            id: 'account_del_error'
+          });
         })
         .finally(() => {
           this.setProperties({

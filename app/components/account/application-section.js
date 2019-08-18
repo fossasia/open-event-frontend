@@ -30,13 +30,16 @@ export default Component.extend({
                       );
                       this.set('data', this.get('authManager.currentUser'));
                     }
+
                     this.set('isLoading', false);
                   });
               });
           });
         }
       } catch (error) {
-        this.notify.error(this.l10n.t(error.message));
+        this.notify.error(this.l10n.t(error.message), {
+          id: 'Error_message'
+        });
         this.set('isLoading', false);
       }
     }

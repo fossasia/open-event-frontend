@@ -21,7 +21,9 @@ export default Component.extend({
         return (!setting.get('currency') || !setting.get('country'));
       });
       if (incorrect_settings.length > 0) {
-        this.notify.error(this.l10n.t('Existing items need to be completed before new items can be added.'));
+        this.notify.error(this.l10n.t('Existing items need to be completed before new items can be added.'), {
+          id: 'Existing_item'
+        });
         this.set('isLoading', false);
       } else {
         this.model.toArray().addObject(this.store.createRecord('ticket-fee', {
@@ -34,10 +36,14 @@ export default Component.extend({
       this.set('isLoading', true);
       rec.destroyRecord()
         .then(() => {
-          this.notify.success(this.l10n.t('Fee setting deleted successfully'));
+          this.notify.success(this.l10n.t('Fee setting deleted successfully'), {
+            id: 'fee_delete_succ'
+          });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
+            id: 'fee_err'
+          });
         })
         .finally(() => {
           this.set('isLoading', false);

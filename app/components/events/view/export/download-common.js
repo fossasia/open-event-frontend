@@ -29,19 +29,27 @@ export default Component.extend({
           if (exportJobStatus.state === 'SUCCESS') {
             this.set('isDownloadDisabled', false);
             this.set('eventDownloadUrl', exportJobStatus.result.download_url);
-            this.notify.success(this.l10n.t('Download Ready'));
+            this.notify.success(this.l10n.t('Download Ready'), {
+              id: 'down_ready'
+            });
           } else if (exportJobStatus.state === 'WAITING') {
             this.requestLoop(exportJobInfo);
             this.set('eventExportStatus', exportJobStatus.state);
-            this.notify.alert(this.l10n.t('Task is going on.'));
+            this.notify.alert(this.l10n.t('Task is going on.'), {
+              id: 'Task_progress'
+            });
           } else {
             this.set('eventExportStatus', exportJobStatus.state);
-            this.notify.error(this.l10n.t('Task failed.'));
+            this.notify.error(this.l10n.t('Task failed.'), {
+              id: 'Task_fail'
+            });
           }
         })
         .catch(() => {
           this.set('eventExportStatus', 'FAILURE');
-          this.notify.error(this.l10n.t('Task failed.'));
+          this.notify.error(this.l10n.t('Task failed.'), {
+            if: 'failure'
+          });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -58,7 +66,9 @@ export default Component.extend({
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.notify.error(this.l10n.t('Unexpected error occurred.'));
+          this.notify.error(this.l10n.t('Unexpected error occurred.'), {
+            id: 'Unexpected_down_error'
+          });
         });
     }
   }

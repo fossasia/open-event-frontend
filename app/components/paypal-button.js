@@ -55,10 +55,14 @@ export default Component.extend({
         return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
           .then(charge => {
             if (charge.data.attributes.status) {
-              this.notify.success(charge.data.attributes.message);
+              this.notify.success(charge.data.attributes.message, {
+                id: 'paypal_succ'
+              });
               this.router.transitionTo('orders.view', order.identifier);
             } else {
-              this.notify.error(charge.data.attributes.message);
+              this.notify.error(charge.data.attributes.message, {
+                id: 'err_paypal'
+              });
             }
           });
       }

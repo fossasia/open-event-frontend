@@ -384,14 +384,18 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           }));
         })
         .catch(error => {
-          this.notify.error(this.l10n.t(`${error.message}. Please try again`));
+          this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
+            id: 'basic_detail_err'
+          });
         });
     },
     async disconnectStripe() {
       let stripeAuthorization = await this.get('data.event.stripeAuthorization');
       stripeAuthorization.destroyRecord()
         .then(() => {
-          this.notify.success(this.l10n.t('Stripe disconnected successfully'));
+          this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
+            id: 'stripe_disconn'
+          });
         });
 
     },
