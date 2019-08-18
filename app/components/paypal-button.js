@@ -126,6 +126,7 @@ export default Component.extend({
                 this.notify.error(charge.error, {
                   id: 'paypal_button_error_1'
                 });
+
               }
             });
         }
