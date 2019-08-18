@@ -6,10 +6,20 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | ui table/cell/cell sponsor options', function(hooks) {
   setupIntegrationTest(hooks);
 
+  const props = {
+    actions: {
+      editSponsor   : () => {},
+      deleteSponsor : () => {}
+    }
+  };
+
   test('it renders', async function(assert) {
-    this.set('deleteSponsor', () => {});
-    this.set('editSponsor', () => {});
-    await render(hbs`{{ui-table/cell/cell-sponsor-options deleteSponsor=(action deleteSponsor) editSponsor=(action editSponsor)}}`);
+
+    this.setProperties({
+      props
+    });
+
+    await render(hbs`{{ui-table/cell/cell-sponsor-options props=props }}`);
     assert.ok(this.element.textContent.trim().includes(''));
   });
 });
