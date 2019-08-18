@@ -46,7 +46,7 @@
         {{/if}}
         {{#if isPaypal}}
           <div class='paypal-button'>
-            {{paypal-button data=model.order}}
+            {{paypal-button data=model.order paymentFor='order'}}
           </div>
         {{/if}}
         {{#if isOmise}}
