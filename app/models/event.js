@@ -68,7 +68,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
-  orderExpiryTime : attr('number', { defaultValue: 10 }),
+
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),
 
@@ -148,8 +148,8 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * Computed properties
    */
 
-  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
-  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
+  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
+  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 

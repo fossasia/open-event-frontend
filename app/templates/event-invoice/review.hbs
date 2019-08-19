@@ -59,18 +59,20 @@
           <div class="ui padded segment">
             <div class="ui list">
               <div class="item">
-                <strong>{{t 'Event Name'}}:</strong> {{model.data.event.name}}
+                <strong>{{t 'Event Name'}}:</strong> {{model.event.name}}
               </div>
               <div class="item">
-                <strong>{{t 'Date Issued'}}:</strong> {{moment-format model.data.createdAt 'MM/DD/YYYY'}} 
+                <strong>{{t 'Date Issued'}}:</strong> {{moment-format model.createdAt 'MM/DD/YYYY'}} 
               </div>
               <div class="item">
-                <strong>{{t 'Total Invoice Amount'}}:</strong> {{format-number model.data.amount}}
+                <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol model.event.paymentCurrency}} {{format-number model.amount}}
               </div>
             </div>
           </div>
         </div>
-        <button class="ui primary button" href="#">{{t 'Pay Now' }}</button>
+        <div class='paypal-button'>
+          {{paypal-button data=model.data paymentFor='invoice'}}
+        </div>
       </div>
     </div>
   </div>

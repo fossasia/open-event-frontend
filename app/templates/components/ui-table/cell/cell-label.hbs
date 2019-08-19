@@ -1,8 +1,8 @@
 <span>
-  {{#if record.isExpired}}
+  {{#if extraRecords.isExpired}}
     <a class="ui red label">{{t 'Expired'}}</a>
   {{else}}
-    {{#if record.isActive}}
+    {{#if record}}
       <a class="ui green label">{{t 'Active'}}</a>
     {{else}}
       <a class="ui yellow label">{{t 'Inactive'}}</a>

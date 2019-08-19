@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { later } from '@ember/runloop';
 import { currencySymbol } from 'open-event-frontend/helpers/currency-symbol';
-
+import moment from 'moment';
 export default Component.extend(FormMixin, {
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
@@ -20,6 +20,12 @@ export default Component.extend(FormMixin, {
         }
       }
       return false;
+    };
+
+    window.$.fn.form.settings.rules.checkDates = () => {
+      let startDatetime = moment(this.get('data.validFrom'));
+      let endDatetime = moment(this.get('data.validTill'));
+      return (endDatetime.diff(startDatetime, 'minutes') > 0);
     };
     return {
       inline : true,
@@ -107,6 +113,46 @@ export default Component.extend(FormMixin, {
               prompt : this.l10n.t('Please select atleast 1 ticket.')
             }
           ]
+        },
+        startDate: {
+          optional   : true,
+          identifier : 'start_date',
+          rules      : [
+            {
+              type   : 'checkDates',
+              prompt : this.l10n.t('Valid Till date & time should be after valid from date and time')
+            }
+          ]
+        },
+        startTime: {
+          optional   : true,
+          identifier : 'start_time',
+          rules      : [
+            {
+              type   : 'checkDates',
+              prompt : '.'
+            }
+          ]
+        },
+        endDate: {
+          optional   : true,
+          identifier : 'end_date',
+          rules      : [
+            {
+              type   : 'checkDates',
+              prompt : this.l10n.t('Valid Till date & time should be after valid from date and time')
+            }
+          ]
+        },
+        endTime: {
+          optional   : true,
+          identifier : 'end_time',
+          rules      : [
+            {
+              type   : 'checkDates',
+              prompt : '.'
+            }
+          ]
         }
       }
     };
@@ -170,6 +216,9 @@ export default Component.extend(FormMixin, {
       later(this, () => {
         this.set('isLinkSuccess', false);
       }, 5000);
+    },
+    onChange() {
+      this.onValid(() => {});
     }
   }
 });

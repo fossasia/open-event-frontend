@@ -14,7 +14,7 @@ export default Controller.extend(EventWizardMixin, {
         await this.saveForms(data);
         this.saveEventDataAndRedirectTo(
           'events.view.index',
-          []
+          ['tickets']
         );
       } catch (error) {
         this.notify.error(this.l10n.t(error.message));
@@ -25,7 +25,7 @@ export default Controller.extend(EventWizardMixin, {
         await this.saveForms(data);
         this.saveEventDataAndRedirectTo(
           direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.basic-details',
-          []
+          ['tickets']
         );
       } catch (error) {
         this.notify.error(this.l10n.t(error.message));

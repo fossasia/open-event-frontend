@@ -25,34 +25,35 @@
     <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
       {{widgets/forms/date-picker type='text'
-                                  inputId='start_date'
+                                  name='start_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='start'
                                   value=data.event.startsAtDate
-                                  onChange=(action 'updateSalesEndDate')}}
+                                  onChange=(pipe-action (action 'updateSalesEndDate') (action 'onChange'))}}
     </div>
     <div class="three wide field">
       <label for="start_time">&nbsp;</label>
       {{widgets/forms/time-picker type='text'
-                                  inputId='start_time'
+                                  name='start_time'
                                   placeholder='HH:MM'
-                                  rangePosition='start'
+                                  onChange=(action 'onChange')
                                   value=data.event.startsAtTime}}
     </div>
     <div class="five wide field">
       <label class="required" for="end_date">{{t 'Ends'}}</label>
       {{widgets/forms/date-picker type='text'
-                                  inputId='end_date'
+                                  name='end_date'
                                   placeholder='MM/DD/YYYY'
                                   rangePosition='end'
+                                  onChange=(action 'onChange')
                                   value=data.event.endsAtDate}}
     </div>
     <div class="three wide field">
       <label for="end_time">&nbsp;</label>
       {{widgets/forms/time-picker type='text'
-                                  inputId='end_time'
+                                  name='end_time'
                                   placeholder='HH:MM'
-                                  rangePosition='end'
+                                  onChange=(action 'onChange')
                                   value=data.event.endsAtTime}}
     </div>
     <div class="five wide field">
