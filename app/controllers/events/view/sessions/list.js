@@ -11,7 +11,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'State',
-        valuePath       : 'status',
+        valuePath       : 'state',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-state'
@@ -38,7 +38,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Rating',
         valuePath       : 'id',
-        extraValuePaths : ['rating', 'feedbacks'],
+        extraValuePaths : ['feedbacks'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
         options         : {
           ratedSessions: this.ratedSessions
@@ -49,16 +49,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Avg Rating',
-        valuePath       : 'averageRating',
-        isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        name      : 'Avg Rating',
+        valuePath : 'averageRating'
       },
       {
-        name            : 'No. of ratings',
-        valuePath       : 'feedbacks.length',
-        isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        name      : 'No. of ratings',
+        valuePath : 'feedbacks.length'
       },
       {
         name      : 'Track',
