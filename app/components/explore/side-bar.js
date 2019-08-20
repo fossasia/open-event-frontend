@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import moment from 'moment';
-import { computed, action, get } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
 
