@@ -22,7 +22,7 @@ export default Component.extend({
       });
       if (incorrect_settings.length > 0) {
         this.notify.error(this.l10n.t('Existing items need to be completed before new items can be added.'), {
-          id: 'Existing_item'
+          id: 'existing_item'
         });
         this.set('isLoading', false);
       } else {

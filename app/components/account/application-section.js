@@ -38,7 +38,7 @@ export default Component.extend({
         }
       } catch (error) {
         this.notify.error(this.l10n.t(error.message), {
-          id: 'Error_message'
+          id: 'error_message'
         });
         this.set('isLoading', false);
       }

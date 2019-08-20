@@ -34,7 +34,7 @@ export default Component.extend({
           this.authManager.logout();
           this.routing.transitionTo('index');
           this.notify.success(this.l10n.t('Your account has been deleted successfully.'), {
-            id: 'Account_Delete'
+            id: 'account_Delete'
           });
         })
         .catch(() => {

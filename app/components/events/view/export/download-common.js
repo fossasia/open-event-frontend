@@ -36,19 +36,19 @@ export default Component.extend({
             this.requestLoop(exportJobInfo);
             this.set('eventExportStatus', exportJobStatus.state);
             this.notify.alert(this.l10n.t('Task is going on.'), {
-              id: 'Task_progress'
+              id: 'task_progress'
             });
           } else {
             this.set('eventExportStatus', exportJobStatus.state);
             this.notify.error(this.l10n.t('Task failed.'), {
-              id: 'Task_fail'
+              id: 'task_fail'
             });
           }
         })
         .catch(() => {
           this.set('eventExportStatus', 'FAILURE');
           this.notify.error(this.l10n.t('Task failed.'), {
-            if: 'failure'
+            id: 'task_failure'
           });
         })
         .finally(() => {
@@ -67,7 +67,7 @@ export default Component.extend({
         .catch(() => {
           this.set('isLoading', false);
           this.notify.error(this.l10n.t('Unexpected error occurred.'), {
-            id: 'Unexpected_down_error'
+            id: 'unexpected_down_error'
           });
         });
     }
