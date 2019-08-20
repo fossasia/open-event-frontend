@@ -19,7 +19,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
-    const searchField = 'name';
+    const searchField = 'title';
     let filterOptions = [];
     if (params.session_status === 'pending') {
       filterOptions = [
@@ -58,16 +58,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     }
 
     let store = this.modelFor('events.view');
-    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
-    let queryString = {
-      include        : 'speakers,feedbacks',
-      filter         : filterOptions,
-      'page[size]'   : params.per_page || 10,
-      'page[number]' : params.page || 1
-    };
-    queryString = this.applySortFilters(queryString, params);
-    let data = (await store.query('sessions', queryString)).toArray();
-
     let queryObject = {
       include : 'session',
       filter  : [
@@ -87,8 +77,18 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       ]
     };
     let feedbacks = await this.authManager.currentUser.query('feedbacks', queryObject);
+
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+    let queryString = {
+      include        : 'speakers,feedbacks',
+      filter         : filterOptions,
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
+    };
+    queryString = this.applySortFilters(queryString, params);
+
     return {
-      data,
+      sessions: await this.asArray(store.query('sessions', queryString)),
       feedbacks
     };
   }
