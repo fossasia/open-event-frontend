@@ -16,6 +16,10 @@ export default Controller.extend({
     return this.get('model.order.paymentMode') === 'paypal';
   }),
 
+  isPaytm: computed('model.order.paymentMode', function() {
+    return this.get('model.order.paymentMode') === 'paytm';
+  }),
+
   isOmise: computed('model.order.paymentMode', function() {
     return this.get('model.order.paymentMode') === 'omise';
   }),
