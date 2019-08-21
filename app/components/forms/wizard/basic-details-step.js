@@ -40,6 +40,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isPaypalActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
   }),
 
+  canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated', function() {
+    return this.get('settings.isPaytmActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paytm;
+  }),
+
   canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
     return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
