@@ -6,7 +6,7 @@
   <div class="muted small text">
     {{t 'Select an option to pay'}}
   </div>
-  <div class="ui {{if isLoading 'loading'}} form" autocomplete="off" >
+  <form class="ui form" autocomplete="off" {{action 'openOTPController' on='submit' preventDefault=true}}>
     <div class="field">
       {{ui-radio name='payment_mode' value='paytm' onChange=(action (mut isWalletSelected))}}
       {{t 'Paytm Wallet'}}<img src="/images/payment-logos/paytm.png" alt="paytm"> 
@@ -16,10 +16,10 @@
         <div class="label">
           {{t 'Please enter your Paytm registered Mobile Number to continue'}}
         </div>
-        {{input type='number' name='mobile_number' value=mobileNumber required=true}}
+        {{input type='number' id='mobile_number' value=mobileNumber required=true}}
       </div>
     {{/if}}
-  </div>
+  </form>
 </div>
 
 <div class="actions">

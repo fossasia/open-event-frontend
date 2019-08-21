@@ -4,9 +4,11 @@
 
 <div class="content">
   {{t 'Enter OTP sent to mobile number'}}
-  <div class="ui {{if isLoading 'loading'}} form" autocomplete="off">
-    {{input type='number' name='otp' value=otp required=true}}
-  </div>
+  <form class="ui form" autocomplete="off">
+    <div class="field">
+      {{input type='number' id='otp' value=otp required=true}}
+    </div>
+  </form>
 </div>
 <div class="actions">
   <button type="button" class="ui black button" {{action 'close'}}>
