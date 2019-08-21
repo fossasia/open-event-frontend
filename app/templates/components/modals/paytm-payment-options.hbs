@@ -1,0 +1,32 @@
+<div class="header">
+  {{t 'Amount to be paid:'}} {{currency-symbol currency}} {{amount}}
+</div>
+
+<div class="content">
+  <div class="muted small text">
+    {{t 'Select an option to pay'}}
+  </div>
+  <div class="ui {{if isLoading 'loading'}} form" autocomplete="off" >
+    <div class="field">
+      {{ui-radio name='payment_mode' value='paytm' onChange=(action (mut isWalletSelected))}}
+      {{t 'Paytm Wallet'}}<img src="/images/payment-logos/paytm.png" alt="paytm"> 
+    </div>
+    {{#if isWalletSelected}}
+      <div class="field">
+        <div class="label">
+          {{t 'Please enter your Paytm registered Mobile Number to continue'}}
+        </div>
+        {{input type='number' name='mobile_number' value=mobileNumber required=true}}
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button {{action openOTPController}} class="ui green button" disabled={{not isWalletSelected}}>
+    {{t 'Proceed'}}
+  </button>
+</div>
