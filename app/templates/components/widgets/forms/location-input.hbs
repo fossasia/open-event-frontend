@@ -41,6 +41,7 @@
       name=name
       value=placeName
       placeChangedCallback=(action 'placeChanged')
+      key-down=(action 'tests')
       type='text'
       placeholder=placeholder}}
     <button class="ui left {{unless device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>

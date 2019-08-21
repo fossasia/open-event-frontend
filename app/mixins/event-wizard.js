@@ -189,21 +189,18 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   },
 
   actions: {
-    saveDraft(event) {
-      event.preventDefault();
+    saveDraft() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
         this.sendAction('save');
       });
     },
-    moveForward(event) {
-      event.preventDefault();
+    moveForward() {
       this.onValid(() => {
         this.sendAction('move');
       });
     },
-    publish(event) {
-      event.preventDefault();
+    publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
         this.sendAction('save');

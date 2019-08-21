@@ -30,6 +30,12 @@ export default Component.extend({
 
   }),
 
+  keyDown(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+    }
+  },
+
   actions: {
     showAddressView(show = true) {
       this.set('addressViewIsShown', show);
@@ -51,6 +57,13 @@ export default Component.extend({
         lng
       });
     },
+
+    tests(value, event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+      }
+    },
+
     placeChanged(place) {
       const addressComponents = place.address_components;
       addressComponents.forEach(component => {
