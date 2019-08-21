@@ -19,7 +19,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Title',
         valuePath       : 'title',
-        extraValuePaths : ['event', 'isLocked'],
+        extraValuePaths : ['id', 'event', 'isLocked'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-title',
@@ -114,15 +114,18 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   async deleteSession(session_id) {
     this.set('isLoading', true);
-    try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-      await session.destroyRecord();
-      this.notify.success(this.l10n.t('Session has been deleted successfully.'));
-    } catch (e) {
-      console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-    }
-    this.set('isLoading', false);
+    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    session.destroyRecord()
+      .then(() => {
+        this.notify.success(this.l10n.t('Session has been deleted successfully.'));
+        this.refreshModel.bind(this)();
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
   }
 
   @action
@@ -136,130 +139,161 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  async lockSession(session_id) {
-    try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-      session.set('isLocked', true);
-      this.set('isLoading', true);
-      await session.save();
-      this.notify.success(this.l10n.t('Session has been locked successfully.'));
-    } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
-    }
-    this.send('refreshRoute');
-    this.set('isLoading', false);
-  }
-
-  @action
-  async unlockSession(session_id) {
-    try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-      session.set('isLocked', false);
-      this.set('isLoading', true);
-      await session.save();
-      this.notify.success(this.l10n.t('Session has been unlocked successfully.'));
-    } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
-    }
-    this.send('refreshRoute');
-    this.set('isLoading', false);
-  }
-
-  @action
-  async acceptProposal(session_id, sendEmail) {
-    try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-      session.setProperties({
-        sendEmail,
-        'state'      : 'accepted',
-        'isMailSent' : sendEmail
+  lockSession(session_id) {
+    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    session.set('isLocked', true);
+    this.set('isLoading', true);
+    session.save()
+      .then(() => {
+        this.notify.success(this.l10n.t('Session has been locked successfully.'));
+        this.refreshModel.bind(this)();
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      })
+      .finally(() => {
+        this.set('isLoading', false);
       });
-      this.set('isLoading', true);
-      await session.save();
-      sendEmail ? this.notify.success(this.l10n.t('Session has been accepted and speaker has been notified via email.'))
-        : this.notify.success(this.l10n.t('Session has been accepted'));
-    } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
-    }
-    this.send('refreshRoute');
-    this.set('isLoading', false);
   }
 
   @action
-  async confirmProposal(session_id, sendEmail) {
-    try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-      session.setProperties({
-        sendEmail,
-        'state'      : 'confirmed',
-        'isMailSent' : sendEmail
+  unlockSession(session_id) {
+    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    session.set('isLocked', false);
+    this.set('isLoading', true);
+    session.save()
+      .then(() => {
+        this.notify.success(this.l10n.t('Session has been unlocked successfully.'));
+        this.refreshModel.bind(this)();
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      })
+      .finally(() => {
+        this.set('isLoading', false);
       });
-      this.set('isLoading', true);
-      await session.save();
-      sendEmail ? this.notify.success(this.l10n.t('Session has been confirmed and speaker has been notified via email.'))
-        : this.notify.success(this.l10n.t('Session has been confirmed'));
-    } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
-    }
-    this.send('refreshRoute');
-    this.set('isLoading', false);
   }
 
   @action
-  async rejectProposal(session_id, sendEmail) {
-    try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-      session.setProperties({
-        sendEmail,
-        'state'      : 'rejected',
-        'isMailSent' : sendEmail
+  acceptProposal(session_id, sendEmail) {
+    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    session.setProperties({
+      sendEmail,
+      'state'      : 'accepted',
+      'isMailSent' : sendEmail
+    });
+    this.set('isLoading', true);
+    session.save()
+      .then(() => {
+        sendEmail ? this.notify.success(this.l10n.t('Session has been accepted and speaker has been notified via email.'))
+          : this.notify.success(this.l10n.t('Session has been accepted'));
+        this.refreshModel.bind(this)();
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      })
+      .finally(() => {
+        this.set('isLoading', false);
       });
-      this.set('isLoading', true);
-      await session.save();
-      sendEmail ? this.notify.success(this.l10n.t('Session has been rejected and speaker has been notified via email.'))
-        : this.notify.success(this.l10n.t('Session has been rejected'));
-    } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
-    }
-    this.send('refreshRoute');
-    this.set('isLoading', false);
   }
 
   @action
-  async updateRating(rating, feedback) {
-    try {
-      this.set('isLoading', true);
-      if (rating) {
-        feedback.set('rating', rating);
-        await feedback.save();
-      } else {
-        await feedback.destroyRecord();
-      }
-      this.notify.success(this.l10n.t('Session feedback has been updated successfully.'));
-    } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
-    }
-    this.send('refreshRoute');
-    this.set('isLoading', false);
-  }
-
-  @action
-  async addRating(rating, session_id) {
-    try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-      this.set('isLoading', true);
-      let feedback = await this.store.createRecord('feedback', {
-        rating,
-        session,
-        comment : '',
-        user    : this.authManager.currentUser
+  confirmProposal(session_id, sendEmail) {
+    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    session.setProperties({
+      sendEmail,
+      'state'      : 'confirmed',
+      'isMailSent' : sendEmail
+    });
+    this.set('isLoading', true);
+    session.save()
+      .then(() => {
+        sendEmail ? this.notify.success(this.l10n.t('Session has been confirmed and speaker has been notified via email.'))
+          : this.notify.success(this.l10n.t('Session has been confirmed'));
+        this.refreshModel.bind(this)();
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      })
+      .finally(() => {
+        this.set('isLoading', false);
       });
-      await feedback.save();
-      this.notify.success(this.l10n.t('Session feedback has been created successfully.'));
-    } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
+  }
+
+  @action
+  rejectProposal(session_id, sendEmail) {
+    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    session.setProperties({
+      sendEmail,
+      'state'      : 'rejected',
+      'isMailSent' : sendEmail
+    });
+    this.set('isLoading', true);
+    session.save()
+      .then(() => {
+        sendEmail ? this.notify.success(this.l10n.t('Session has been rejected and speaker has been notified via email.'))
+          : this.notify.success(this.l10n.t('Session has been rejected'));
+        this.refreshModel.bind(this)();
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+  }
+
+  @action
+  updateRating(rating, feedback) {
+    this.set('isLoading', true);
+    if (rating) {
+      feedback.set('rating', rating);
+      feedback.save()
+        .then(() => {
+          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'));
+          this.refreshModel.bind(this)();
+        })
+        .catch(() => {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    } else {
+      feedback.destroyRecord()
+        .then(() => {
+          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'));
+          this.refreshModel.bind(this)();
+        })
+        .catch(() => {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
     }
-    this.send('refreshRoute');
-    this.set('isLoading', false);
+  }
+
+  @action
+  addRating(rating, session_id) {
+    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    this.set('isLoading', true);
+    let feedback = this.store.createRecord('feedback', {
+      rating,
+      session,
+      comment : '',
+      user    : this.authManager.currentUser
+    });
+    feedback.save()
+      .then(() => {
+        this.notify.success(this.l10n.t('Session feedback has been created successfully.'));
+        this.refreshModel.bind(this)();
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
   }
 }
