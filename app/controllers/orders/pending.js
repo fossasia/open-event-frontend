@@ -42,7 +42,7 @@ export default Controller.extend({
   }),
 
   actions: {
-    async aliPayCheckout(order_identifier) {
+    async alipayCheckout(order_identifier) {
       try {
         const res = await this.loader.load(`alipay/create_source/${order_identifier}`);
         this.notify.success(this.l10n.t('Payment has succeeded'));
@@ -50,6 +50,20 @@ export default Controller.extend({
       } catch (error) {
         this.notify.error(this.l10n.t(error.error));
       }
+    },
+    openPaytmModal() {
+      // Model controller for PaytmModal
+      this.setProperties({
+        'isPaytmModalOpen': true
+      });
+    },
+
+    openOTPController() {
+      // Modal controller for OTP step
+      this.setProperties({
+        'isPaytmModalOpen' : false,
+        'isOTPModalOpen'   : true
+      });
     },
     processStripeToken(token) {
       // Send this token to server to process payment
