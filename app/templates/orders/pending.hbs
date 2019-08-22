@@ -65,7 +65,7 @@
           <button class="ui button primary" {{action "openPaytmModal"}}>{{t 'Pay with PayTM'}}</button>
         {{/if}}
         {{#if isAliPay}}
-          <button class="ui button primary" {{action alipayCheckout model.order.identifier}}>{{t 'Pay with AliPay'}}</button>          
+          <button class="ui button primary" {{action "alipayCheckout" model.order.identifier}}>{{t 'Pay with AliPay'}}</button>          
         {{/if}}
       </div>
     </div>
