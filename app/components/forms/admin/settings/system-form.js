@@ -29,6 +29,21 @@ export default Component.extend(FormMixin, {
           ]
         },
 
+        apiUrl: {
+          identifier : 'api_url',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the API Url')
+            },
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid URL for the API')
+            }
+          ]
+        },
+
         googleStorageBucketName: {
           identifier : 'google_storage_bucket_name',
           rules      : [
