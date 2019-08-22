@@ -51,6 +51,20 @@ export default Controller.extend({
         this.notify.error(this.l10n.t(error.error));
       }
     },
+    openPaytmModal() {
+      // Model controller for PaytmModal
+      this.setProperties({
+        'isPaytmModalOpen': true
+      });
+    },
+
+    openOTPController() {
+      // Modal controller for OTP step
+      this.setProperties({
+        'isPaytmModalOpen' : false,
+        'isOTPModalOpen'   : true
+      });
+    },
     processStripeToken(token) {
       // Send this token to server to process payment
       this.set('isLoading', true);
