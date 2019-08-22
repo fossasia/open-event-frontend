@@ -32,6 +32,18 @@
     </label>
     {{input type='text' name='tag_line' value=settings.tagline}}
   </div>
+  <h3 class="ui header">
+    {{t 'API server details'}}
+    <div class="sub header">
+      {{t 'The URL of the API that this frontend will make use of as the backend.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Url'}}
+    </label>
+    {{widgets/forms/link-input segmentedLink=settings.segmentedStaticDomain inputId='api_url'}}
+  </div>
   <div class="ui hidden divider"></div>
   {{forms/admin/settings/system/social-media-token settings=settings}}
   <div class="ui hidden divider"></div>
