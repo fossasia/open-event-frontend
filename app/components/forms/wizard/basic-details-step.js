@@ -12,6 +12,7 @@ import { orderBy, filter, find } from 'lodash-es';
 import { inject as service } from '@ember/service';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
@@ -384,7 +385,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         .then(authorization => {
           this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization', {
             stripeAuthCode       : authorization.authorizationCode,
-            stripePublishableKey : this.settings.stripePublishableKey
+            stripePublishableKey : ENV.environment === 'development' || ENV.environment === 'test' ? this.settings.stripeTestPublishableKey : this.settings.stripePublishableKey
           }));
         })
         .catch(error => {
