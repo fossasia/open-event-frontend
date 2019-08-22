@@ -164,11 +164,11 @@
                 <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise"></label>
               </div>
             {{/if}}
-            {{#if data.event.canPayByAliPay}}
+            {{#if data.event.canPayByAlipay}}
               <div class="field">
                 {{ui-radio name='payment_mode' label=(t 'AliPay') value='alipay' current=data.paymentMode
                            onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode"><img src="/images/payment-logos/alipay.png" alt="alipay"></label>
+                <label for="payment_mode"><img src="/images/payment-logos/alipay.png" alt="alipay" class="ui tiny image"></label>
               </div>
             {{/if}}
             {{#if data.event.canPayByCheque}}

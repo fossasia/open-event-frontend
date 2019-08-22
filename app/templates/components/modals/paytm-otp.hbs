@@ -1,0 +1,20 @@
+<div class="header">
+  {{t 'Amount to be paid:'}} {{currency-symbol currency}} {{amount}}
+</div>
+
+<div class="content">
+  {{t 'Enter OTP sent to mobile number'}}
+  <form class="ui form" autocomplete="off">
+    <div class="field">
+      {{input type='number' id='otp' value=otp required=true}}
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button class="ui green button">
+    {{t 'Verify'}}
+  </button>
+</div>
