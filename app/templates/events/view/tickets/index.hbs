@@ -150,15 +150,15 @@
           {{#unless device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{format-number ticket.orderStatistics.sales.completed}}</td>
+          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{format-number (mult ticket.orderStatistics.tickets.completed ticket.price)}}</td>
           {{#unless device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{format-number ticket.orderStatistics.sales.placed}}</td>
+          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{format-number (mult ticket.orderStatistics.tickets.placed ticket.price)}}</td>
           {{#unless device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{format-number ticket.orderStatistics.sales.pending}}</td>
+          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{format-number (mult ticket.orderStatistics.tickets.pending ticket.price)}}</td>
         </tr>
       {{/each}}
     </tbody>
