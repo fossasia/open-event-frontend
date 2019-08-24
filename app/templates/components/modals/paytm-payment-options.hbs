@@ -26,7 +26,7 @@
   <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  <button {{action openOTPController}} class="ui green button" disabled={{not isWalletSelected}}>
+  <button {{action openOTPController mobileNumber}} class="ui green button" disabled={{not isWalletSelected}}>
     {{t 'Proceed'}}
   </button>
 </div>
