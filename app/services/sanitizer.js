@@ -7,7 +7,7 @@ export default Service.extend({
 
   // Ensure any changes to the sanitizer rules are set in the rich text editor @ components/widgets/forms/rich-text-editor.js
   options: {
-    allowedTags       : ['b', 'strong', 'i', 'em', 'u', 'ol', 'ul', 'li', 'a', 'p'],
+    allowedTags       : ['br', 'b', 'strong', 'i', 'em', 'u', 'ol', 'ul', 'li', 'a', 'p'],
     allowedAttributes : {
       'a': ['href', 'rel', 'target']
     },

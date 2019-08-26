@@ -11,6 +11,7 @@ export default Component.extend({
   // Ensure any changes to the parser rules are set in the sanitizer @ services/sanitizer.js
   standardParserRules: {
     tags: {
+      'br'     : 1,
       'p'      : 1,
       'b'      : { 'rename_tag': 'strong' },
       'strong' : 1,
