@@ -40,6 +40,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isPaypalActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
   }),
 
+  canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated', function() {
+    return this.get('settings.isPaytmActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paytm;
+  }),
+
   canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
     return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
@@ -48,8 +52,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isOmiseActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).omise;
   }),
 
-  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAliPayActivated', function() {
-    return this.get('settings.isAliPayActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).alipay;
+  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAlipayActivated', function() {
+    return this.get('settings.isAlipayActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).alipay;
   }),
 
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
@@ -121,6 +125,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   getValidationRules() {
+    window.$.fn.form.settings.rules.checkDates = () => {
+      let startDatetime = moment(this.get('data.event.startsAt'));
+      let endDatetime = moment(this.get('data.event.endsAt'));
+      return (endDatetime.diff(startDatetime, 'minutes') > 0);
+    };
     let validationRules = {
       inline : true,
       delay  : false,
@@ -154,6 +163,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid start date')
+            },
+            {
+              type   : 'checkDates',
+              prompt : this.l10n.t('Start date & time should be after End date and time')
             }
           ]
         },
@@ -167,6 +180,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid end date')
+            },
+            {
+              type   : 'checkDates',
+              prompt : this.l10n.t('Start date & time should be after End date and time')
             }
           ]
         },
@@ -177,6 +194,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
+            },
+            {
+              type   : 'checkDates',
+              prompt : '..'
             }
           ]
         },
@@ -187,6 +208,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
+            },
+            {
+              type   : 'checkDates',
+              prompt : '..'
             }
           ]
         },
@@ -469,6 +494,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         logoUrl    : license.logoUrl,
         licenceUrl : license.link
       });
+    },
+    onChange() {
+      this.onValid(() => {});
     }
   }
 });

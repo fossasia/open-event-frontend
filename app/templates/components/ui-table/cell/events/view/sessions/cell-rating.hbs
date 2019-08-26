@@ -12,8 +12,8 @@
 {{else}}
   {{ui-rating
     initialRating=0
-    rating=extraRecords.rating
+    rating=rating
     maxRating=5
-    onRate=(pipe-action (action (mut extraRecords.rating)) (action props.actions.addRating extraRecords.rating record))
+    onRate=(pipe-action (action (mut rating)) (action props.actions.addRating rating record))
     clearable=true}}
 {{/if}}

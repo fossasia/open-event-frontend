@@ -2,8 +2,9 @@ import Component from '@ember/component';
 import { merge } from 'lodash-es';
 import moment from 'moment';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
+import FormMixin from 'open-event-frontend/mixins/form';
 
-export default Component.extend({
+export default Component.extend(FormMixin, {
 
   classNames        : ['ui', 'calendar', 'date', 'picker', 'input', 'fluid'],
   classNameBindings : ['icon:left', 'icon'],
@@ -43,7 +44,7 @@ export default Component.extend({
   actions: {
     onChange() {
       if (this.onChange) {
-        this.sendAction('onChange', this.value);
+        this.sendAction('onChange');
       }
     }
   }

@@ -50,10 +50,10 @@ export default ModelBase.extend({
   stripeClientId             : attr('string'),
   stripeSecretKey            : attr('string'),
   stripePublishableKey       : attr('string'),
-  stripeTestCliendId         : attr('string'),
+  stripeTestClientId         : attr('string'),
   stripeTestSecretKey        : attr('string'),
   stripeTestPublishableKey   : attr('string'),
-  isAliPayActivated          : attr('boolean'),
+  isAlipayActivated          : attr('boolean'),
   isPaypalActivated          : attr('boolean'),
   isStripeActivated          : attr('boolean'),
   isOmiseActivated           : attr('boolean'),
@@ -109,5 +109,6 @@ export default ModelBase.extend({
   segmentedGithubUrl     : computedSegmentedLink.bind(this)('githubUrl'),
   segmentedAndroidAppUrl : computedSegmentedLink.bind(this)('androidAppUrl'),
   segmentedWebAppUrl     : computedSegmentedLink.bind(this)('webAppUrl'),
-  segmentedFrontendUrl   : computedSegmentedLink.bind(this)('frontendUrl')
+  segmentedFrontendUrl   : computedSegmentedLink.bind(this)('frontendUrl'),
+  segmentedStaticDomain  : computedSegmentedLink.bind(this)('staticDomain')
 });

@@ -54,12 +54,13 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
+  canPayByPaytm   : attr('boolean', { defaultValue: false }),
   canPayByStripe  : attr('boolean', { defaultValue: false }),
   isStripeLinked  : attr('boolean'),
   canPayByCheque  : attr('boolean', { defaultValue: false }),
   canPayByBank    : attr('boolean', { defaultValue: false }),
   canPayByOmise   : attr('boolean', { defaultValue: false }),
-  canPayByAliPay  : attr('boolean', { defaultValue: false }),
+  canPayByAlipay  : attr('boolean', { defaultValue: false }),
   canPayOnsite    : attr('boolean', { defaultValue: false }),
   paymentCountry  : attr('string'),
   paymentCurrency : attr('string', { defaultValue: 'USD' }),
@@ -147,8 +148,8 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * Computed properties
    */
 
-  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date'),
-  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time'),
+  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
+  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 

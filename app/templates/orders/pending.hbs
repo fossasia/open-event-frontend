@@ -46,7 +46,7 @@
         {{/if}}
         {{#if isPaypal}}
           <div class='paypal-button'>
-            {{paypal-button data=model.order}}
+            {{paypal-button data=model.order paymentFor='order'}}
           </div>
         {{/if}}
         {{#if isOmise}}
@@ -61,8 +61,11 @@
             </form>
           </div>
         {{/if}}
+        {{#if isPaytm}}
+          <button class="ui button primary" {{action "openPaytmModal"}}>{{t 'Pay with PayTM'}}</button>
+        {{/if}}
         {{#if isAliPay}}
-          <button class="ui button primary" {{action alipayCheckout model.order.identifier}}>{{t 'Pay with AliPay'}}</button>          
+          <button class="ui button primary" {{action "alipayCheckout" model.order.identifier}}>{{t 'Pay with AliPay'}}</button>          
         {{/if}}
       </div>
     </div>
@@ -77,3 +80,5 @@
     </div>
   </div>
 </div>
+{{modals/paytm-payment-options isLoading=isLoading isOpen=isPaytmModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency openOTPController=(action 'openOTPController')}}
+{{modals/paytm-otp isLoading=isLoading isOpen=isOTPModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency}}
