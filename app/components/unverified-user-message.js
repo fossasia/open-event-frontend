@@ -22,14 +22,20 @@ export default Component.extend({
       this.loader
         .post('/auth/resend-verification-email', payload)
         .then(() => {
-          this.notify.success(this.l10n.t('Verification mail sent successfully'));
+          this.notify.success(this.l10n.t('Verification mail sent successfully'), {
+            id: 'ver_mail_succ'
+          });
           this.set('isMailSent', true);
         })
         .catch(error => {
           if (error.error) {
-            this.notify.error(this.l10n.t(error.error));
+            this.notify.error(this.l10n.t(error.error), {
+              id: 'ver_mail_serv_error'
+            });
           } else {
-            this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+            this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+              id: 'ver_mail_serv'
+            });
           }
         });
     }
