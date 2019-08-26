@@ -39,7 +39,9 @@ export default Component.extend({
         this.set('json', htmlSafe(syntaxHighlight(json)));
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('Could not fetch from the server'));
+        this.notify.error(this.l10n.t('Could not fetch from the server'), {
+          id: 'server_fetch_error'
+        });
         this.set('json', 'Could not fetch from the server');
       })
       .finally(() => {

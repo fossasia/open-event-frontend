@@ -12,10 +12,14 @@ export default class extends Component {
       anchor.href = URL.createObjectURL(new Blob([res], { type: 'octet/stream' }));
       anchor.download = 'EventExport.zip';
       anchor.click();
-      this.notify.success(this.l10n.t('Exported Event Downloaded successfully.'));
+      this.notify.success(this.l10n.t('Exported Event Downloaded successfully.'), {
+        id: 'export_succ'
+      });
     } catch (e) {
       console.error(e);
-      this.notify.error(this.l10n.t(e));
+      this.notify.error(this.l10n.t(e), {
+        id: 'err_down'
+      });
     }
     this.set('isLoading', false);
   }

@@ -80,5 +80,5 @@
     </div>
   </div>
 </div>
-{{modals/paytm-payment-options isLoading=isLoading isOpen=isPaytmModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency openOTPController=(action 'openOTPController')}}
-{{modals/paytm-otp isLoading=isLoading isOpen=isOTPModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency}}
+{{modals/paytm-payment-options isLoading=isLoading isOpen=isPaytmModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency openOTPController=(action 'openOTPController') txnToken=txnToken}}
+{{modals/paytm-otp isLoading=isLoading isOpen=isOTPModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency txnToken=txnToken verifyOtp=(action 'verifyOtp')}}

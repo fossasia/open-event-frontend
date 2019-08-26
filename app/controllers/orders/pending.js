@@ -51,20 +51,53 @@ export default Controller.extend({
         this.notify.error(this.l10n.t(error.error));
       }
     },
-    openPaytmModal() {
+    async openPaytmModal() {
       // Model controller for PaytmModal
-      this.setProperties({
-        'isPaytmModalOpen': true
-      });
+      try {
+        const res = await this.loader.post(`orders/${this.model.order.identifier}/paytm/initiate-transaction`);
+        this.setProperties({
+          'isPaytmModalOpen' : true,
+          'txnToken'         : res.body.txnToken
+        });
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.error));
+      }
     },
 
-    openOTPController() {
+    async openOTPController(mobileNumber) {
       // Modal controller for OTP step
-      this.setProperties({
-        'isPaytmModalOpen' : false,
-        'isOTPModalOpen'   : true
-      });
+      try {
+        const payload = {
+          'data': {
+            'phone': mobileNumber
+          }
+        };
+        await this.loader.post(`orders/${this.model.order.identifier}/paytm/send_otp/${this.txnToken}`, payload);
+        this.setProperties({
+          'isPaytmModalOpen' : false,
+          'isOTPModalOpen'   : true
+        });
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.error));
+      }
     },
+
+    async verifyOtp(OTP) {
+      try {
+        const payload = {
+          'data': {
+            'otp': OTP
+          }
+        };
+        await this.loader.post(`orders/${this.model.order.identifier}/paytm/validate_otp/${this.txnToken}`, payload);
+        this.setProperties({
+          'isOTPModalOpen': false
+        });
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.error));
+      }
+    },
+
     processStripeToken(token) {
       // Send this token to server to process payment
       this.set('isLoading', true);

@@ -101,10 +101,14 @@ export default Component.extend(FormMixin, {
         try {
           this.authManager.currentUser.setProperties(this.userBillingInfo);
           await this.authManager.currentUser.save();
-          this.notify.success(this.l10n.t('Your billing details has been updated'));
+          this.notify.success(this.l10n.t('Your billing details has been updated'), {
+            id: 'bill_det_updated'
+          });
         } catch (error) {
           this.authManager.currentUser.rollbackAttributes();
-          this.notify.error(this.l10n.t('An unexpected error occurred'));
+          this.notify.error(this.l10n.t('An unexpected error occurred'), {
+            id: 'bill_det_unexpect'
+          });
         }
         this.set('isLoading', false);
       });
