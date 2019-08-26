@@ -20,7 +20,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : 'Dated',
-        valuePath       : 'created-at',
+        valuePath       : 'createdAt',
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
         cellComponent   : 'ui-table/cell/cell-simple-date',
