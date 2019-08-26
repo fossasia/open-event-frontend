@@ -42,7 +42,7 @@ export default Controller.extend({
   }),
 
   actions: {
-    async aliPayCheckout(order_identifier) {
+    async alipayCheckout(order_identifier) {
       try {
         const res = await this.loader.load(`alipay/create_source/${order_identifier}`);
         this.notify.success(this.l10n.t('Payment has succeeded'));
