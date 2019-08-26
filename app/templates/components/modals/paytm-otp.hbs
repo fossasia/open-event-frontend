@@ -14,7 +14,7 @@
   <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  <button class="ui green button">
+  <button {{action verifyOtp otp}} class="ui green button">
     {{t 'Verify'}}
   </button>
 </div>
