@@ -85,9 +85,13 @@ export default class extends Component.extend(FormMixin) {
         window.location.replace(response.url);
       } catch (e) {
         if (e.message) {
-          this.notify.error(this.l10n.tVar(e.message));
+          this.notify.error(this.l10n.tVar(e.message), {
+            id: 'error_server_msg'
+          });
         } else {
-          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred'), {
+            id: 'unexpect_error'
+          });
         }
       }
     }

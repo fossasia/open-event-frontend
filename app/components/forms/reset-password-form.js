@@ -55,11 +55,15 @@ export default Component.extend(FormMixin, {
           this.loader
             .patch('auth/reset-password', payload)
             .then(() => {
-              this.notify.success(this.l10n.t('Your password has been reset successfully. Please log in to continue'));
+              this.notify.success(this.l10n.t('Your password has been reset successfully. Please log in to continue'), {
+                id: 'reser_succ'
+              });
               this.router.transitionTo('login');
             })
             .catch(() => {
-              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'), {
+                id: 'reset_unexpect'
+              });
             })
             .finally(() => {
               this.set('isLoading', false);
@@ -75,7 +79,9 @@ export default Component.extend(FormMixin, {
           this.loader
             .post('auth/reset-password', payload)
             .then(() => {
-              this.notify.success(this.l10n.t('Please go to the link sent to your email to reset your password'));
+              this.notify.success(this.l10n.t('Please go to the link sent to your email to reset your password'), {
+                id: 'reset_link_sent'
+              });
               this.router.transitionTo('login');
             })
             .catch(reason => {

@@ -18,7 +18,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : 'State',
-        valuePath       : 'status',
+        valuePath       : 'state',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-state',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
