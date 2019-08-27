@@ -55,10 +55,14 @@ export default Component.extend({
         reader.readAsDataURL(files[0]);
 
       }).catch(error => {
-        this.notify.error(error);
+        this.notify.error(error, {
+          id: 'unexpected_image_upload_1'
+        });
       });
     } else {
-      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'));
+      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'), {
+        id: 'unexpected_image_upload_2'
+      });
     }
 
   },

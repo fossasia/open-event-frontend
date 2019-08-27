@@ -8,10 +8,14 @@ export default ModalBase.extend({
         placeholder.save()
           .then(() => {
             this.set('isOpen', false);
-            this.notify.success(this.l10n.t('Placeholder has been saved successfully.'));
+            this.notify.success(this.l10n.t('Placeholder has been saved successfully.'), {
+              id: 'placeholder_sav'
+            });
           })
           .catch(() => {
-            this.notify.error(this.l10n.t('An unexpected error has occurred. Placeholder not saved.'));
+            this.notify.error(this.l10n.t('An unexpected error has occurred. Placeholder not saved.'), {
+              id: 'placeholder_err'
+            });
           });
       });
     }
