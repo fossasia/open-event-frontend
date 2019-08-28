@@ -56,10 +56,14 @@ export default Component.extend({
           return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
             .then(charge => {
               if (charge.data.attributes.status) {
-                this.notify.success(charge.data.attributes.message);
+                this.notify.success(charge.data.attributes.message, {
+                  id: 'paypal_button_success'
+                });
                 this.router.transitionTo('orders.view', order.identifier);
               } else {
-                this.notify.error(charge.data.attributes.message);
+                this.notify.error(charge.data.attributes.message, {
+                  id: 'paypal_button_error'
+                });
               }
             });
         }
@@ -114,10 +118,15 @@ export default Component.extend({
           return this.loader.post(`event-invoices/${eventInvoice.identifier}/charge`, chargePayload, config)
             .then(charge => {
               if (charge.status) {
-                this.notify.success(charge.status);
+                this.notify.success(charge.status, {
+                  id: 'paypal_button_success_1'
+                });
                 this.router.transitionTo('event-invoice.paid', eventInvoice.identifier);
               } else {
-                this.notify.error(charge.error);
+                this.notify.error(charge.error, {
+                  id: 'paypal_button_error_1'
+                });
+
               }
             });
         }

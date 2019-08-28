@@ -35,11 +35,15 @@ export default Component.extend(FormMixin, {
         };
         this.loader.post('/test-mail', JSON.stringify(payload), config)
           .then(response => {
-            this.notify.success(response.message);
+            this.notify.success(response.message, {
+              id: 'succ_response_test'
+            });
           })
           .catch(e => {
             console.warn(e);
-            this.notify.error(this.l10n.t('An unexpected error has occurred'));
+            this.notify.error(this.l10n.t('An unexpected error has occurred'), {
+              id: 'test_mail_err'
+            });
           });
       });
     }

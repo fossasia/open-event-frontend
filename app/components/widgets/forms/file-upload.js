@@ -23,10 +23,14 @@ export default Component.extend({
       .uploadFile('/upload/files', this.$(`#${this.inputIdGenerated}`))
       .then(file => {
         this.set('fileUrl', JSON.parse(file).url);
-        this.notify.success(this.l10n.t('File uploaded successfully'));
+        this.notify.success(this.l10n.t('File uploaded successfully'), {
+          id: 'file_upload_succ'
+        });
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
+          id: 'file_upload_err'
+        });
       })
       .finally(() => {
         this.set('uploadingFile', false);
@@ -42,10 +46,14 @@ export default Component.extend({
         };
         reader.readAsDataURL(files[0]);
       }).catch(error => {
-        this.notify.error(error);
+        this.notify.error(error, {
+          id: 'file_upload_err_1'
+        });
       });
     } else {
-      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'));
+      this.notify.error(this.l10n.t('No FileReader support. Please use a more latest browser'), {
+        id: 'file_upload_err_brow'
+      });
     }
   },
 
