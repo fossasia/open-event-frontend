@@ -22,7 +22,7 @@ export default Component.extend({
 
       paypal.Button.render({
         commit : true,
-        env    : this.settings.paypalMode,
+        env    : this.settings.paypalMode === 'sandbox' ? this.settings.paypalMode : 'production',
         style  : {
           label : 'pay',
           size  : 'medium', // tiny, small, medium
@@ -82,7 +82,7 @@ export default Component.extend({
         }
       };
       paypal.Button.render({
-        env    : this.settings.paypalMode,
+        env    : this.settings.paypalMode === 'sandbox' ? this.settings.paypalMode : 'production',
         commit : true,
         style  : {
           label : 'pay',
