@@ -7,10 +7,12 @@ module('Integration | Component | modals/paytm payment options modal', function(
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    this.set('isOpen', false);
-    this.set('currency', 'USD');
-    this.set('amount', 100);
-    this.set('openOTPController', () => {});
+    this.setProperties({
+      'isOpen'            : false,
+      'currency'          : 'USD',
+      'amount'            : 100,
+      'openOTPController' : () => {}
+    });
     await render(hbs`{{modals/paytm-payment-options isOpen=isOpen currency=currency amount=amount openOTPController=(action openOTPController)}}`);
     assert.ok(this.element.innerHTML.trim().includes('Select an option to pay'));
   });
