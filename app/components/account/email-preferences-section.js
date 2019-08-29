@@ -5,11 +5,15 @@ export default Component.extend({
     savePreference(emailPreference) {
       emailPreference.save()
         .then(() => {
-          this.notify.success(this.l10n.t('Email notifications updated successfully'));
+          this.notify.success(this.l10n.t('Email notifications updated successfully'), {
+            id: 'email_notif'
+          });
         })
         .catch(() => {
           emailPreference.rollbackAttributes();
-          this.notify.error(this.l10n.t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error occurred.'), {
+            id: 'email_error'
+          });
         });
     }
   }

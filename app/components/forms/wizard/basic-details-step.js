@@ -40,6 +40,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isPaypalActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
   }),
 
+  canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated', function() {
+    return this.get('settings.isPaytmActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paytm;
+  }),
+
   canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
     return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
   }),
@@ -48,8 +52,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.get('settings.isOmiseActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).omise;
   }),
 
-  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAliPayActivated', function() {
-    return this.get('settings.isAliPayActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).alipay;
+  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAlipayActivated', function() {
+    return this.get('settings.isAlipayActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).alipay;
   }),
 
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
@@ -384,14 +388,18 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           }));
         })
         .catch(error => {
-          this.notify.error(this.l10n.t(`${error.message}. Please try again`));
+          this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
+            id: 'basic_detail_err'
+          });
         });
     },
     async disconnectStripe() {
       let stripeAuthorization = await this.get('data.event.stripeAuthorization');
       stripeAuthorization.destroyRecord()
         .then(() => {
-          this.notify.success(this.l10n.t('Stripe disconnected successfully'));
+          this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
+            id: 'stripe_disconn'
+          });
         });
 
     },

@@ -8,62 +8,132 @@ export default Component.extend({
 
   async didInsertElement() {
     this._super(...arguments);
-    let order = this.data;
-    let createPayload = {
-      'data': {
-        'attributes': {
-          'return-url' : `${window.location.origin}/orders/${order.identifier}/view`,
-          'cancel-url' : `${window.location.origin}/orders/${order.identifier}/pending`
+    if (this.paymentFor === 'order') {
+      let order = this.data;
+      let createPayload = {
+        'data': {
+          'attributes': {
+            'return-url' : `${window.location.origin}/orders/${order.identifier}/view`,
+            'cancel-url' : `${window.location.origin}/orders/${order.identifier}/pending`
+          },
+          'type': 'paypal-payment'
+        }
+      };
+
+      paypal.Button.render({
+        commit: true,
+
+        style: {
+          label : 'pay',
+          size  : 'medium', // tiny, small, medium
+          color : 'gold', // orange, blue, silver
+          shape : 'pill'    // pill, rect
         },
-        'type': 'paypal-payment'
-      }
-    };
 
-    paypal.Button.render({
-      commit: true,
+        payment: () => {
+          return this.loader.post(`orders/${order.identifier}/create-paypal-payment`, createPayload)
+            .then(res => {
+              return res.payment_id;
+            });
+        },
 
-      style: {
-        label : 'pay',
-        size  : 'medium', // tiny, small, medium
-        color : 'gold', // orange, blue, silver
-        shape : 'pill'    // pill, rect
-      },
-
-      payment: () => {
-        return this.loader.post(`orders/${order.identifier}/create-paypal-payment`, createPayload)
-          .then(res => {
-            return res.payment_id;
-          });
-      },
-
-      onAuthorize: data => {
-        // this callback will be for authorizing the payments
-        let chargePayload = {
-          'data': {
-            'attributes': {
-              'stripe'            : null,
-              'paypal_payer_id'   : data.payerID,
-              'paypal_payment_id' : data.paymentID
-            },
-            'type': 'charge'
-          }
-        };
-        let config = {
-          skipDataTransform: true
-        };
-        chargePayload = JSON.stringify(chargePayload);
-        return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
-          .then(charge => {
-            if (charge.data.attributes.status) {
-              this.notify.success(charge.data.attributes.message);
-              this.router.transitionTo('orders.view', order.identifier);
-            } else {
-              this.notify.error(charge.data.attributes.message);
+        onAuthorize: data => {
+          // this callback will be for authorizing the payments
+          let chargePayload = {
+            'data': {
+              'attributes': {
+                'stripe'            : null,
+                'paypal_payer_id'   : data.payerID,
+                'paypal_payment_id' : data.paymentID
+              },
+              'type': 'charge'
             }
-          });
-      }
+          };
+          let config = {
+            skipDataTransform: true
+          };
+          chargePayload = JSON.stringify(chargePayload);
+          return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
+            .then(charge => {
+              if (charge.data.attributes.status) {
+                this.notify.success(charge.data.attributes.message, {
+                  id: 'paypal_button_success'
+                });
+                this.router.transitionTo('orders.view', order.identifier);
+              } else {
+                this.notify.error(charge.data.attributes.message, {
+                  id: 'paypal_button_error'
+                });
+              }
+            });
+        }
 
-    }, this.elementId);
+      }, this.elementId);
 
+    } else if (this.paymentFor === 'invoice') {
+      let eventInvoice = this.data;
+      let createPayload = {
+        'data': {
+          'attributes': {
+            'return-url' : `${window.location.origin}/event-invoice/${eventInvoice.identifier}/paid`,
+            'cancel-url' : `${window.location.origin}/event-invoice/${eventInvoice.identifier}/pending`
+          },
+          'type': 'paypal-payment'
+        }
+      };
+      paypal.Button.render({
+        env    : 'sandbox',
+        commit : true,
+
+        style: {
+          label : 'pay',
+          size  : 'medium', // tiny, small, medium
+          color : 'gold', // orange, blue, silver
+          shape : 'pill'    // pill, rect
+        },
+
+        payment: () => {
+          return this.loader.post(`event-invoices/${eventInvoice.identifier}/create-paypal-payment`, createPayload)
+            .then(res => {
+              return res.payment_id;
+            });
+        },
+
+        onAuthorize: data => {
+          // this callback will be for authorizing the payments
+          let chargePayload = {
+            'data': {
+              'attributes': {
+                'stripe'            : null,
+                'paypal_payer_id'   : data.payerID,
+                'paypal_payment_id' : data.paymentID
+              },
+              'type': 'charge'
+            }
+          };
+          let config = {
+            skipDataTransform: true
+          };
+          chargePayload = JSON.stringify(chargePayload);
+          return this.loader.post(`event-invoices/${eventInvoice.identifier}/charge`, chargePayload, config)
+            .then(charge => {
+              if (charge.status) {
+                this.notify.success(charge.status, {
+                  id: 'paypal_button_success_1'
+                });
+                this.router.transitionTo('event-invoice.paid', eventInvoice.identifier);
+              } else {
+                this.notify.error(charge.error, {
+                  id: 'paypal_button_error_1'
+                });
+
+              }
+            });
+        }
+
+      }, this.elementId);
+
+
+    }
   }
 });
