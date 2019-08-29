@@ -58,7 +58,7 @@
     </div>
     <div class="five wide field">
       <label class="required" for="timezone">{{t 'Timezone'}}</label>
-      {{#ui-dropdown class='search selection' selected=data.event.timezone onChange=(action 'updateDates') forceSelection=false fullTextSearch=true}}
+      {{#ui-dropdown class='search selection' selected=data.event.timezone forceSelection=false fullTextSearch=true}}
         {{input type='hidden' id='timezone' value=data.event.timezone}}
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select timezone'}}</div>
