@@ -118,11 +118,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           name            : 'Amount',
           valuePath       : 'amount',
           extraValuePaths : ['event'],
-          cellComponent   : 'ui-table/cell/events/cell-amount'
+          cellComponent   : 'ui-table/cell/events/cell-amount',
+          isSortable      : true,
+          headerComponent : 'tables/headers/sort'
         },
         {
-          name      : 'Status',
-          valuePath : 'status'
+          name            : 'Status',
+          valuePath       : 'status',
+          isSortable      : true,
+          headerComponent : 'tables/headers/sort'
         },
         {
           name            : 'Action',
