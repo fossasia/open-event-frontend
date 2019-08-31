@@ -16,6 +16,10 @@ export default Controller.extend({
     return this.get('model.order.paymentMode') === 'paypal';
   }),
 
+  isPaytm: computed('model.order.paymentMode', function() {
+    return this.get('model.order.paymentMode') === 'paytm';
+  }),
+
   isOmise: computed('model.order.paymentMode', function() {
     return this.get('model.order.paymentMode') === 'omise';
   }),
@@ -38,7 +42,7 @@ export default Controller.extend({
   }),
 
   actions: {
-    async aliPayCheckout(order_identifier) {
+    async alipayCheckout(order_identifier) {
       try {
         const res = await this.loader.load(`alipay/create_source/${order_identifier}`);
         this.notify.success(this.l10n.t('Payment has succeeded'));
@@ -47,6 +51,53 @@ export default Controller.extend({
         this.notify.error(this.l10n.t(error.error));
       }
     },
+    async openPaytmModal() {
+      // Model controller for PaytmModal
+      try {
+        const res = await this.loader.post(`orders/${this.model.order.identifier}/paytm/initiate-transaction`);
+        this.setProperties({
+          'isPaytmModalOpen' : true,
+          'txnToken'         : res.body.txnToken
+        });
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.error));
+      }
+    },
+
+    async openOTPController(mobileNumber) {
+      // Modal controller for OTP step
+      try {
+        const payload = {
+          'data': {
+            'phone': mobileNumber
+          }
+        };
+        await this.loader.post(`orders/${this.model.order.identifier}/paytm/send_otp/${this.txnToken}`, payload);
+        this.setProperties({
+          'isPaytmModalOpen' : false,
+          'isOTPModalOpen'   : true
+        });
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.error));
+      }
+    },
+
+    async verifyOtp(OTP) {
+      try {
+        const payload = {
+          'data': {
+            'otp': OTP
+          }
+        };
+        await this.loader.post(`orders/${this.model.order.identifier}/paytm/validate_otp/${this.txnToken}`, payload);
+        this.setProperties({
+          'isOTPModalOpen': false
+        });
+      } catch (error) {
+        this.notify.error(this.l10n.t(error.error));
+      }
+    },
+
     processStripeToken(token) {
       // Send this token to server to process payment
       this.set('isLoading', true);

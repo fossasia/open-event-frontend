@@ -18,7 +18,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   }
   async model(params) {
     this.set('params', params);
-    const searchField = 'name';
+    const searchField = 'status';
     let filterOptions = [];
     if (params.invoice_status === 'paid' || params.invoice_status === 'due') {
       filterOptions = [
@@ -59,7 +59,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     queryString = this.applySortFilters(queryString, params);
     return {
-      eventInvoices: (await this.store.query('event-invoice', queryString)).toArray(),
+      eventInvoices: await this.asArray(this.store.query('event-invoice', queryString)),
       params
 
     };

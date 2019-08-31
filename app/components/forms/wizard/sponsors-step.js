@@ -41,7 +41,9 @@ export default Component.extend(FormMixin, {
         return (!sponsor.get('name'));
       });
       if (incorrect_sponsors.length > 0) {
-        this.notify.error(this.l10n.t('Please fill the required fields for existing sponsor items'));
+        this.notify.error(this.l10n.t('Please fill the required fields for existing sponsor items'), {
+          id: 'req_field_sponsor'
+        });
         this.set('isLoading', false);
       } else {
         this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
@@ -57,7 +59,9 @@ export default Component.extend(FormMixin, {
           return (!sponsor.get('name'));
         });
         if (incorrect_sponsors.length > 0) {
-          this.notify.error(this.l10n.t('Please fill the required fields.'));
+          this.notify.error(this.l10n.t('Please fill the required fields.'), {
+            id: 'req_field_spon'
+          });
           this.set('isLoading', false);
         } else {
           this.set('data.event.state', 'draft');

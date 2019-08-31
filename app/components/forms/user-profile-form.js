@@ -63,11 +63,15 @@ export default Component.extend(FormMixin, {
         this.set('isLoading', true);
         this.user.save()
           .then(() => {
-            this.notify.success(this.l10n.t('Your profile has been updated'));
+            this.notify.success(this.l10n.t('Your profile has been updated'), {
+              id: 'profi_update'
+            });
           })
           .catch(() => {
             this.get('authManager.currentUser').rollbackAttributes();
-            this.notify.error(this.l10n.t('An unexpected error occurred'));
+            this.notify.error(this.l10n.t('An unexpected error occurred'), {
+              id: 'profi_error'
+            });
           })
           .finally(() => {
             this.set('isLoading', false);

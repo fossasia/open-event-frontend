@@ -16,6 +16,7 @@ export const fixFilterQuery = query  => {
   if (query.hasOwnProperty('filter')) {
     query.filter = JSON.stringify(query.filter);
   }
+
   return query;
 };
 
@@ -34,13 +35,15 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, Cac
     if (access_token) {
       headers[ENV['ember-simple-auth-token'].authorizationHeaderName] = ENV['ember-simple-auth-token'].authorizationPrefix + access_token;
     }
+
     return headers;
   }),
 
   isInvalid(statusCode) {
     if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403 && statusCode !== 409) {
       this.notify.error('An unexpected error occurred.', {
-        closeAfter: 5000
+        closeAfter : 5000,
+        id         : 'serve_error'
       });
     }
   },

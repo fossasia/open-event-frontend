@@ -1,7 +1,7 @@
 import { computed, observer } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
-import { belongsTo } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default ModelBase.extend({
 
@@ -11,8 +11,12 @@ export default ModelBase.extend({
   isRequired      : attr('boolean', { defaultValue: false }),
   isIncluded      : attr('boolean', { defaultValue: false }),
   isFixed         : attr('boolean', { defaultValue: false }),
+  isComplex       : attr('boolean', { defaultValue: false }),
+  description     : attr('string', { defaultValue: 'text' }),
 
-  event: belongsTo('event'),
+
+  event             : belongsTo('event'),
+  customFormOptions : hasMany('customFormOptions'),
 
   session: {
     title         : 'Title',

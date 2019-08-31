@@ -11,13 +11,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath : 'event.name'
       },
       {
-        name      : 'Title',
-        valuePath : 'title'
+        name            : 'Title',
+        valuePath       : 'title',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
-        name          : 'State',
-        valuePath     : 'status',
-        cellComponent : 'ui-table/cell/events/view/sessions/cell-session-state'
+        name            : 'State',
+        valuePath       : 'state',
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-state',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
         name          : 'Speakers',
@@ -25,26 +29,32 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name          : 'Submitted At',
-        valuePath     : 'submittedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        options       : {
+        name            : 'Submitted At',
+        valuePath       : 'submittedAt',
+        cellComponent   : 'ui-table/cell/cell-simple-date',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        options         : {
           dateFormat: 'MMMM DD, YYYY - hh:mm A'
         }
       },
       {
-        name          : 'Starts At',
-        valuePath     : 'startsAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        options       : {
+        name            : 'Starts At',
+        valuePath       : 'startsAt',
+        cellComponent   : 'ui-table/cell/cell-simple-date',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        options         : {
           dateFormat: 'MMMM DD, YYYY - hh:mm A'
         }
       },
       {
-        name          : 'Ends At',
-        valuePath     : 'endsAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        options       : {
+        name            : 'Ends At',
+        valuePath       : 'endsAt',
+        cellComponent   : 'ui-table/cell/cell-simple-date',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        options         : {
           dateFormat: 'MMMM DD, YYYY - hh:mm A'
         }
       },

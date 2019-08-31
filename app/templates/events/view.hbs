@@ -81,9 +81,11 @@
         {{#link-to 'events.view.export' class='item'}}
           {{t 'Export'}}
         {{/link-to}}
-        {{#link-to 'events.view.settings' class='item'}}
-          {{t 'Settings'}}
-        {{/link-to}}
+        {{#if (or authManager.currentUser.isAnAdmin (eq model.owner.email authManager.currentUser.email))}}
+          {{#link-to 'events.view.settings' class='item'}}
+            {{t 'Settings'}}
+          {{/link-to}}
+        {{/if}}
       {{/tabbed-navigation}}
     </div>
   </div>
