@@ -2,13 +2,12 @@ import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
-import { merge } from 'lodash-es';
+import { merge, orderBy, filter, find } from 'lodash-es';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { orderBy, filter, find } from 'lodash-es';
 import { inject as service } from '@ember/service';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
@@ -87,6 +86,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         }
       });
     }
+
     return validationRules;
   }),
 
@@ -99,6 +99,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     if (!this.get('data.event.topic')) {
       return [];
     }
+
     return this.get('data.event.topic.subTopics');
   }),
 
@@ -130,6 +131,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       let endDatetime = moment(this.get('data.event.endsAt'));
       return (endDatetime.diff(startDatetime, 'minutes') > 0);
     };
+
     let validationRules = {
       inline : true,
       delay  : false,
@@ -446,6 +448,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       if (!this.isCreate && isNewTax) {
         this.set('data.event.tax', this.store.createRecord('tax'));
       }
+
       this.set('taxModalIsOpen', true);
     },
 
@@ -465,6 +468,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           this.set('discountCodeValue', '25%');
           this.set('discountCodePeriod', '5');
         }
+
         this.set('validatingDiscountCode', false);
       }, 1000);
     },
@@ -479,15 +483,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
     },
 
-    updateDates() {
-      const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event');
-      let startsAtConcatenated = moment(startsAtDate.concat(' ', startsAtTime));
-      let endsAtConcatenated = moment(endsAtDate.concat(' ', endsAtTime));
-      this.get('data.event').setProperties({
-        startsAt : moment.tz(startsAtConcatenated, timezone),
-        endsAt   : moment.tz(endsAtConcatenated, timezone)
-      });
-    },
+    // leaving these comments.. because someday we might want the time validation to change it's values according to its start counterpart, removed it for now because it sort of broke the UI.
+    // updateDates() {
+    //   const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event');
+    //   let startsAtConcatenated = moment(startsAtDate.concat(' ', startsAtTime));
+    //   let endsAtConcatenated = moment(endsAtDate.concat(' ', endsAtTime));
+    //   this.get('data.event').setProperties({
+    //     startsAt : moment.tz(startsAtConcatenated, timezone),
+    //     endsAt   : moment.tz(endsAtConcatenated, timezone)
+    //   });
+    // },
 
     async updateCopyright(name) {
       const event = this.get('data.event');
