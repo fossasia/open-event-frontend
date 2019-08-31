@@ -1,4 +1,4 @@
-<div class="ui stackable grid">
+<div class="ui unstackable grid">
   <div class="row">
     <div class="column">
       <h2 class="ui header">
@@ -8,11 +8,19 @@
   </div>
   <div class="row">
     <div class="column">
-      {{events/events-table columns=columns data=model
-                            useNumericPagination=true
-                            showGlobalFilter=true
-                            showPageSize=true
-      }}
+      {{tables/default columns=columns
+                rows=model.data
+                currentPage=page
+                pageSize=per_page
+                searchQuery=search
+                sortBy=sort_by
+                sortDir=sort_dir
+                metaData=model.meta
+                filterOptions=filterOptions
+                widthConstraint="eq-container"
+                resizeMode="fluid"
+                fillMode="equal-column"
+      }}    
     </div>
   </div>
 </div>
