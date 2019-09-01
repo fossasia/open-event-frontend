@@ -12,8 +12,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'Name',
-        valuePath       : 'id',
-        extraValuePaths : ['firstName', 'deletedAt'],
+        valuePath       : 'firstName',
+        extraValuePaths : ['deletedAt', 'id'],
         cellComponent   : 'ui-table/cell/admin/users/cell-first-name',
         width           : 155,
         isSortable      : true,
