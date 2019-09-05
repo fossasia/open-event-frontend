@@ -4,8 +4,8 @@
   {{#ui-popup tagName='a' click=(action props.actions.moveToUserDetails extraRecords.id) content=(t 'View') class='ui icon button'}}
     <i class="unhide icon"></i>
   {{/ui-popup}}
-  {{#unless extraRecords.id.isSuperAdmin}}
-    {{#if (not extraRecords.id.deletedAt)}}
+  {{#unless extraRecords.isSuperAdmin}}
+    {{#if (not extraRecords.deletedAt)}}
       {{#ui-popup content=(t 'Edit') click=(action props.actions.openEditModal extraRecords.id) class='ui icon button'}}
         <i class="edit icon"></i>
       {{/ui-popup}}
