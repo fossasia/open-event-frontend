@@ -28,17 +28,18 @@ export default ModelBase.extend({
   isLocked   : attr('boolean', { defaultValue: false }),
   isMailSent : attr('boolean', { defaultValue: false }),
 
-  createdAt      : attr('string'),
-  deletedAt      : attr('string'),
-  submittedAt    : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
-  lastModifiedAt : attr('string'),
-  sessionType    : belongsTo('session-type'),
-  microlocation  : belongsTo('microlocation'),
-  track          : belongsTo('track'),
-  speakers       : hasMany('speaker'),
-  feedbacks      : hasMany('feedback'),
-  event          : belongsTo('event'), // temporary
-  creator        : belongsTo('user'),
+  createdAt          : attr('string'),
+  deletedAt          : attr('string'),
+  submittedAt        : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
+  lastModifiedAt     : attr('string'),
+  complexFieldValues : attr(),
+  sessionType        : belongsTo('session-type'),
+  microlocation      : belongsTo('microlocation'),
+  track              : belongsTo('track'),
+  speakers           : hasMany('speaker'),
+  feedbacks          : hasMany('feedback'),
+  event              : belongsTo('event'), // temporary
+  creator            : belongsTo('user'),
 
   status: computed('state', 'deletedAt', function() {
     if (this.deletedAt !== null) {
