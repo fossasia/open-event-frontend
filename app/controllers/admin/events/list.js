@@ -132,7 +132,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.notify.success(this.l10n.t('Event has been deleted successfully.'));
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t(e.errors[0].detail));
+      if (e.errors[0].detail) {
+        this.notify.error(this.l10n.tVar(e.errors[0].detail), {
+          id: 'error_server_msg'
+        });
+      } else {
+        this.notify.error(this.l10n.t('An unexpected error has occurred'), {
+          id: 'unexpect_error'
+        });
+      }
     }
     this.setProperties({
       isLoading              : false,
