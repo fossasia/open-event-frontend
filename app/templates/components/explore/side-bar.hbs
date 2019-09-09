@@ -1,8 +1,11 @@
-<div class="map item">
+<div class="map item {{if (not isMapVisible) 'mobile hidden'}}">
   {{#g-map markersFitMode='live' lat=37.7833 lng=-122.4167 zoom=2 address=location class='google-maps' as |context|}}
     {{g-map-address-marker context address=location onLocationChange=(action 'onLocationChangeHandler')}}
   {{/g-map}}
 </div>
+{{#if device.isMobile}}
+  <div class="ui bottom attached button" role="button" {{action 'toggleMap'}}> {{if (not isMapVisible) 'Show' 'Hide'}} Map </div>
+{{/if}}
 <div class="item">
   <div class="ui input">
     {{widgets/forms/places-autocomplete
