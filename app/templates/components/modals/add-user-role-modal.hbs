@@ -20,9 +20,11 @@
         </div>
         <div class="menu">
           {{#each data.roles as |role|}}
-            <div class="item" data-value="{{map-value mapper role}}">
-              {{role.name}}
-            </div>
+            {{#if (not-eq role.name 'owner')}}
+              <div class="item" data-value="{{map-value mapper role}}">
+                {{role.name}}
+              </div>
+            {{/if}}
           {{/each}}
         </div>
       {{/ui-dropdown}}
