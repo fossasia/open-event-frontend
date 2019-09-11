@@ -36,7 +36,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name      : 'Last Name',
         valuePath : 'lastname',
         width     : 90
-
       },
       {
         name      : 'Email',
