@@ -496,7 +496,7 @@ export default Component.extend(FormMixin, {
     return groupBy(this.fields.toArray(), field => field.get('form'));
   }),
 
-  // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
+  // Clicking on the Add Session Details button creates a blank record which increases the length of the speaker's list by 1.
   noSpeakerExists: computed('speakers', function() {
     return this.speakers.length === 1;
   }),
