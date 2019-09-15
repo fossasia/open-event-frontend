@@ -12,6 +12,17 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         return this.l10n.t('Rejected');
     }
   }
+
+  beforeModel() {
+    this._super(...arguments);
+    let event = this.modelFor('events.view');
+    let { currentUser } = this.authManager;
+    if (!(currentUser.isAnAdmin || currentUser.email === event.owner.get('email') || event.organizers.includes(currentUser)
+      || event.coorganizers.includes(currentUser) || event.trackOrganizers.includes(currentUser)
+      || event.registrars.includes(currentUser) || event.moderators.includes(currentUser))) {
+      this.transitionTo('public', event.id);
+    }
+  }
   async model(params) {
     this.set('params', params);
     const searchField = 'name';
