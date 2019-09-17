@@ -34,7 +34,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ## Running / Development
 
-* `ember serve`
+* `ember server
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
