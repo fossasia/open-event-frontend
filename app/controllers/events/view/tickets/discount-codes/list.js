@@ -9,33 +9,39 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name      : 'Discount code',
+        width     : 100,
         valuePath : 'code'
       },
       {
         name          : 'Discount code URL',
         valuePath     : 'discountUrl',
+        width         : 220,
         cellComponent : 'ui-table/cell/events/view/tickets/discount-codes/cell-url'
       },
       {
         name            : 'Discount Per Ticket',
         valuePath       : 'value',
+        width           : 90,
         extraValuePaths : ['type', 'event'],
         cellComponent   : 'ui-table/cell/events/view/tickets/discount-codes/cell-value'
       },
       {
         name          : 'Validity',
         valuePath     : 'validTill',
+        width         : 120,
         cellComponent : 'ui-table/cell/events/view/tickets/discount-codes/cell-validity'
       },
       {
         name            : 'Status',
         valuePath       : 'isActive',
+        width           : 100,
         extraValuePaths : ['isExpired'],
         cellComponent   : 'ui-table/cell/events/view/tickets/discount-codes/cell-status'
       },
       {
         name            : 'Actions',
         valuePath       : 'id',
+        width           : 170,
         extraValuePaths : ['isActive', 'isExpired'],
         cellComponent   : 'ui-table/cell/events/view/tickets/discount-codes/cell-actions',
         actions         : {
@@ -88,6 +94,4 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   editDiscountCode(id) {
     this.transitionToRoute('events.view.tickets.discount-codes.edit', id);
   }
-
-
 }
