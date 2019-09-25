@@ -132,6 +132,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       return (endDatetime.diff(startDatetime, 'minutes') > 0);
     };
 
+    window.$.fn.form.settings.rules.checkMaxMin = () => {
+      return this.get('data.ticket.minOrder') <= this.get('data.ticket.maxOrder');
+    };
+
     let validationRules = {
       inline : true,
       delay  : false,
@@ -276,6 +280,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'number',
               prompt : this.l10n.t('Invalid number')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.l10n.t('Minimum Order should be greater than 0')
             }
           ]
         },
@@ -291,8 +299,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Invalid number')
             },
             {
-              type   : 'integer[1..]',
-              prompt : this.l10n.t('Maximum tickets per order should be greater than 0')
+              type   : 'checkMaxMin',
+              prompt : this.l10n.t('Maximum tickets per order should be greater than minimum order')
             }
           ]
         },
