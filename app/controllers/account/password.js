@@ -14,21 +14,21 @@ export default Controller.extend({
         .post('/auth/change-password', payload)
         .then(() => {
           this.notify.success(this.l10n.t('Password updated successfully'),
-          	{
-          		id: 'pass_upd_succ'
-          	});
+            {
+              id: 'pass_upd_succ'
+            });
         })
         .catch(error => {
           if (error.errors) {
             this.notify.error(this.l10n.t(`${error.errors[0].detail}`),
-            	{
-            		id: 'err_pass_ser'
-            	});
+              {
+                id: 'err_pass_ser'
+              });
           } else {
             this.notify.error(this.l10n.t('Unexpected error. Password did not change.'),
-            	{
-            		id: 'err_unex_pass'
-            	});
+              {
+                id: 'err_unex_pass'
+              });
           }
         })
         .finally(() => {

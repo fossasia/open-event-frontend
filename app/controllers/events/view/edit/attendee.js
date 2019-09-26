@@ -17,7 +17,10 @@ export default Controller.extend(EventWizardMixin, {
           ['tickets']
         );
       } catch (error) {
-        this.notify.error(this.l10n.t(error.message));
+        this.notify.error(this.l10n.t(error.message),
+          {
+            id: 'attendee_error_serv'
+          });
       }
     },
     async move(direction, data) {
@@ -28,7 +31,10 @@ export default Controller.extend(EventWizardMixin, {
           ['tickets']
         );
       } catch (error) {
-        this.notify.error(this.l10n.t(error.message));
+        this.notify.error(this.l10n.t(error.message),
+          {
+            id: 'attendee_move_error'
+          });
       }
     }
   }

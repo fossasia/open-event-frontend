@@ -21,7 +21,10 @@ export default Controller.extend({
         })
         .catch(() => {
           this.set('isLoading', false);
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'session_err_unexp'
+            });
         });
     }
   },
@@ -33,16 +36,28 @@ export default Controller.extend({
         .then(exportJobStatus => {
           if (exportJobStatus.state === 'SUCCESS') {
             window.location = exportJobStatus.result.download_url;
-            this.notify.success(this.l10n.t('Download Ready'));
+            this.notify.success(this.l10n.t('Download Ready'),
+              {
+                id: 'download_ready'
+              });
           } else if (exportJobStatus.state === 'WAITING') {
             this.requestLoop(exportJobInfo);
-            this.notify.alert(this.l10n.t('Task is going on.'));
+            this.notify.alert(this.l10n.t('Task is going on.'),
+              {
+                id: 'task_going'
+              });
           } else {
-            this.notify.error(this.l10n.t('CSV Export has failed.'));
+            this.notify.error(this.l10n.t('CSV Export has failed.'),
+              {
+                id: 'csv_fail'
+              });
           }
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('CSV Export has failed.'));
+          this.notify.error(this.l10n.t('CSV Export has failed.'),
+            {
+              id: 'csv_export_fail'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);

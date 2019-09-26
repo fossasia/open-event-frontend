@@ -10,9 +10,9 @@ export default Controller.extend({
       });
       if (incorrect_settings.length > 0) {
         this.notify.error(this.l10n.t('Please fill the required fields.'),
-        {
-          id: 'fill_req_field'
-        });
+          {
+            id: 'fill_req_field'
+          });
         this.set('isLoading', false);
       } else {
         settings.save()
