@@ -96,10 +96,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event = this.store.peekRecord('event', this.eventId, { backgroundReload: false });
       await event.destroyRecord();
-      this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+      this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+        {
+          id: 'event_del_succ'
+        });
       this.send('refreshRoute');
     } catch (e) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_del_unex'
+        });
     }
     this.setProperties({
       isLoading              : false,

@@ -6,9 +6,15 @@ export default Controller.extend({
       this.set('isLoading', true);
       try {
         await this.model.save();
-        this.notify.success(this.l10n.t('Your Contact Info has been updated'));
+        this.notify.success(this.l10n.t('Your Contact Info has been updated'),
+          {
+            id: 'cont_info_upd'
+          });
       }  catch (error) {
-        this.notify.error(this.l10n.t(error.message));
+        this.notify.error(this.l10n.t(error.message),
+          {
+            id: 'cont_upd_error'
+          });
       }
       this.set('isLoading', false);
     }

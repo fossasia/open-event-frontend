@@ -14,7 +14,10 @@ export default Controller.extend({
         this.set('disableEventSubtopic', false);
         this.set('currentTopicSelected', topic);
       } catch (e) {
-        this.notify.error(this.l10n.t('An unexpected error has occurred. SubTopics not loaded.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred. SubTopics not loaded.'),
+          {
+            id: 'subtop_err'
+          });
       } finally {
         this.set('isLoading', false);
       }
@@ -32,10 +35,16 @@ export default Controller.extend({
       eventProp.destroyRecord()
         .then(() => {
           this.get(`model.${modelName}s`).removeObject(eventProp);
-          this.notify.success(this.l10n.t('This Event Property has been deleted successfully.'));
+          this.notify.success(this.l10n.t('This Event Property has been deleted successfully.'),
+            {
+              id: 'event_prop_del'
+            });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred. Event Type was not deleted.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Event Type was not deleted.'),
+            {
+              id: 'event_type_err'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -47,10 +56,16 @@ export default Controller.extend({
       modelInstance.save()
         .then(() => {
           this.get(`model.${camelCasedValue}s`).addObject(modelInstance);
-          this.notify.success(this.l10n.t(`${startCase(camelCasedValue)} has been added successfully.`));
+          this.notify.success(this.l10n.t(`${startCase(camelCasedValue)} has been added successfully.`),
+            {
+              id: 'mode_add_succ'
+            });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t(`An unexpected error has occurred. ${startCase(camelCasedValue)} not saved.`));
+          this.notify.error(this.l10n.t(`An unexpected error has occurred. ${startCase(camelCasedValue)} not saved.`),
+            {
+              id: 'mode_err_succ'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);

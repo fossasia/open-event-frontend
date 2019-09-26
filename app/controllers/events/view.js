@@ -8,7 +8,10 @@ export default Controller.extend({
     },
     togglePublishState() {
       if (isEmpty(this.get('model.locationName'))) {
-        this.notify.error(this.l10n.t('Your event must have a location before it can be published.'));
+        this.notify.error(this.l10n.t('Your event must have a location before it can be published.'),
+          {
+            id: 'event_location'
+          });
         return;
       }
       this.set('isLoading', true);
@@ -17,14 +20,23 @@ export default Controller.extend({
       this.model.save()
         .then(() => {
           if (state === 'draft') {
-            this.notify.success(this.l10n.t('Your event has been published successfully.'));
+            this.notify.success(this.l10n.t('Your event has been published successfully.'),
+              {
+                id: 'event_publish'
+              });
           } else {
-            this.notify.success(this.l10n.t('Your event has been unpublished.'));
+            this.notify.success(this.l10n.t('Your event has been unpublished.'),
+              {
+                id: 'event_unpublish'
+              });
           }
         })
         .catch(() => {
           this.set('model.state', state);
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'event_publish_error'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -35,10 +47,16 @@ export default Controller.extend({
       this.model.destroyRecord()
         .then(() => {
           this.transitionToRoute('events');
-          this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+            {
+              id: 'event_deleted_succ_dash'
+            });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'eve_del_err'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -51,10 +69,16 @@ export default Controller.extend({
         .post(`events/${this.get('model.id')}/copy`, {})
         .then(copiedEvent => {
           this.transitionToRoute('events.view.edit', copiedEvent.identifier);
-          this.notify.success(this.l10n.t('Event copied successfully'));
+          this.notify.success(this.l10n.t('Event copied successfully'),
+            {
+              id: 'event_copy_succ'
+            });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('Copying of event failed'));
+          this.notify.error(this.l10n.t('Copying of event failed'),
+            {
+              id: 'event_copy_fail'
+            });
         })
         .finally(() => {
           this.set('isCopying', false);
