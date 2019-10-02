@@ -24,6 +24,7 @@ export default class extends Component {
         sortBy  : kebabCase(this.sorts[0].valuePath), // Ensures field names are server compatible with sort
         sortDir : this.sorts[0].isAscending ? 'ASC' : 'DSC'
       });
+      
 
     } else {
       // avoid resetting the query params, when sorts is  uninitialised
