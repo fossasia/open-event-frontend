@@ -3,8 +3,8 @@ import moment from 'moment';
 
 export default Component.extend({
 
-  dummyName     : null,
-  dummyLocation : null,
+  dummyName     : '',
+  dummyLocation : '',
   disableClear  : true,
 
   setDateFilter() {
@@ -61,25 +61,38 @@ export default Component.extend({
   },
   actions: {
     handleKeyPress() {
+      this.set('disableClear', false);
+      if (!this.dummiessFull()) {
+        this.set('disableClear', true);
+      }
       if (event.code === 'Enter') {
         this.send('search');
       }
     },
     search() {
-      this.setDateFilter();
-      this.set('location', this.dummyLocation);
-      this.set('eventName', this.dummyName);
-      this.set('disableClear', false);
+      if (this.dummiessFull()) {
+        this.setDateFilter();
+        this.set('location', this.dummyLocation);
+        this.set('eventName', this.dummyName);
+        this.set('disableClear', false);
+      }
     },
 
     clearFilters() {
-      this.set('dummyLocation', null);
-      this.set('dummyName', null);
+      this.set('dummyLocation', '');
+      this.set('dummyName', '');
       this.set('filterDate', null);
       this.setDateFilter();
       this.set('location', this.dummyLocation);
       this.set('eventName', this.dummyName);
       this.set('disableClear', true);
     }
+  },
+
+  dummiessFull() {
+    if (this.dummyLocation.length === 0 && this.dummyName.length === 0) {
+      return 0;
+    }
+    return true;
   }
 });
