@@ -6,7 +6,8 @@
         name='location'
         value=dummyLocation
         type='text'
-        placeholder=(t 'Enter Location')}}
+        placeholder=(t 'Enter Location')
+        key-up=(action 'handleKeyPress' )}}
     </div>
     {{#ui-dropdown class='search selection' selected=filterDate forceSelection=false}}
       {{input type='hidden' id='filter_date' value=filterDate}}
