@@ -146,13 +146,13 @@ export default Controller.extend({
             for (const attendee of attendees ? attendees.toArray() : []) {
               await attendee.destroyRecord();
             }
-            this.notify.error(this.l10n.t(e.errors[0].detail));
+            this.notify.error(this.l10n.t('unverified user cannot order tickets'));
           })
           .finally(() => {
             this.set('isLoading', false);
           });
       } catch (e) {
-        this.notify.error(this.l10n.t(e));
+        this.notify.error('unverified user cannot order tickets');
       }
     }
   }
