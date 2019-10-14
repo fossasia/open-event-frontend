@@ -39,7 +39,7 @@ script:
   - ROOT_URL=open-event-frontend ember build -prod
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - 'bash <(curl -s https://codecov.io/bash)'
   - bash kubernetes/travis/docker-deploy.sh
 #  - bash kubernetes/travis/k8s-deploy.sh
 
