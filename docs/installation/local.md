@@ -34,7 +34,7 @@ brew reinstall gettext
 brew link --force gettext 
 ```
 
-- By default, the `.env.example` file specifies the `API_HOST` as `https://open-event-api-dev.herokuapp.com` which is a test deployment of the open-event-server. If you intend to work on just the frontend, this is sufficient. **If however, you intend to work on issues which involve both the frontend and the backend, you must have the [open-event-server](https://github.com/fossasia/open-event-server) already up and running. Please install and set it up first before changing the URL for `API_HOST` to `localhost:5000` and proceeding to run the frontent.**
+- By default, the `.env.example` file specifies the `API_HOST` as `https://open-event-api-dev.herokuapp.com` which is a test deployment of the open-event-server. If you intend to work on just the frontend, this is sufficient. **If however, you intend to work on issues which involve both the frontend and the backend, you must have the [open-event-server](https://github.com/fossasia/open-event-server) already up and running. Please install and set it up first before changing the URL for `API_HOST` to `localhost:5000` and proceeding to run the frontend.**
 ## Running / Development
 
 * `ember serve`
