@@ -1,16 +1,16 @@
 {{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session'))}}
   <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
     {{#if (eq session.currentRouteName 'public.index')}}
-      {{#scroll-to href='#info' class='item active'}}
+      {{#scroll-to click=(action 'changeSelectedIndex' "info") href='#info' class=(if (eq selectedIndex "info") 'active item' 'item')}}
         {{t 'Info'}}
       {{/scroll-to}}
       {{#if event.tickets.length}}
-        {{#scroll-to href='#tickets' class='item'}}
+        {{#scroll-to click=(action 'changeSelectedIndex' "tickets") href='#tickets' class=(if (eq selectedIndex "tickets") 'active item' 'item')}}
           {{t 'Tickets'}}
         {{/scroll-to}}
       {{/if}}
       {{#if event.speakers.length}}
-        {{#link-to 'public.speakers' class='item'}}
+        {{#link-to 'public.speakers' click=(action 'changeSelectedIndex' "speakers") class=(if (eq selectedIndex "speakers") 'active item' 'item')}}
           {{t 'Speakers'}}
         {{/link-to}}
       {{/if}}
@@ -24,29 +24,29 @@
         </a>
       {{/if}}
       {{#if event.speakers.length}}
-        {{#link-to 'public.speakers' class='item'}}
+        {{#link-to 'public.speakers' click=(action 'changeSelectedIndex' "speakers") class=(if (eq selectedIndex "speakers") 'active item' 'item')}}
           {{t 'Speakers'}}
         {{/link-to}}
       {{/if}}
     {{/if}}
     {{#if event.sessions.length}}
-      {{#link-to 'public.sessions' class='item'}}
+      {{#link-to 'public.sessions' click=(action 'changeSelectedIndex' "sessions") class=(if (eq selectedIndex "sessions") 'active item' 'item')}}
         {{t 'Sessions'}}
       {{/link-to}}
     {{/if}}
     {{#if isSchedulePublished}}
-      {{#link-to 'public.schedule' class='item'}}
+      {{#link-to 'public.schedule' click=(action 'changeSelectedIndex' "schedule") class=(if (eq selectedIndex "schedule") 'active item' 'item')}}
         {{t 'Schedule'}}
       {{/link-to}}
     {{/if}}  
     {{#if shouldShowCallforSpeakers }}
-      {{#link-to 'public.cfs' class='item'}}
+      {{#link-to 'public.cfs' click=(action 'changeSelectedIndex' "callForSpeakers") class=(if (eq selectedIndex "callForSpeakers") 'active item' 'item')}}
         {{t 'Call for Speakers'}}
       {{/link-to}}
     {{/if}}
     {{#if event.hasOwnerInfo}}
       {{#if (eq session.currentRouteName 'public.index')}}
-        {{#scroll-to href='#owner' class='item'}}
+        {{#scroll-to click=(action 'changeSelectedIndex' "owner")  href='#owner' class=(if (eq selectedIndex "owner") 'active item' 'item')}}
           {{t 'Owner'}}
         {{/scroll-to}}
       {{else}}
@@ -56,7 +56,7 @@
       {{/if}}
     {{/if}}
     {{#if (eq session.currentRouteName 'public.index')}}
-      {{#scroll-to href='#getting-here' class='item'}}
+      {{#scroll-to click=(action 'changeSelectedIndex' "gettingHere") href='#getting-here' class=(if (eq selectedIndex "gettingHere") 'active item' 'item')}}
         {{t 'Getting here'}}
       {{/scroll-to}}
     {{else}}
@@ -65,7 +65,7 @@
       </a>
     {{/if}}
     {{#if event.codeOfConduct}}
-      {{#link-to 'public.coc' class='item'}}
+      {{#link-to 'public.coc' click=(action 'changeSelectedIndex' "coc") class=(if (eq selectedIndex "coc") 'active item' 'item')}}
         {{t 'Code of Conduct'}}
       {{/link-to}}
     {{/if}}
