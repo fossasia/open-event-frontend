@@ -14,12 +14,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/speakers/speaker-logo'
       },
       {
-        name      : 'Name',
-        valuePath : 'name'
+        name            : 'Name',
+        valuePath       : 'name',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
-        name      : 'Email',
-        valuePath : 'email'
+        name            : 'Email',
+        valuePath       : 'email',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
         name          : 'Phone',
