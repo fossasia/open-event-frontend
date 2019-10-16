@@ -13,7 +13,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
      return [
        {
          name            : 'Name',
-         valuePath       : 'id',
+         valuePath       : 'name',
          extraValuePaths : ['logoUrl', 'identifier', 'deletedAt', 'name'],
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
