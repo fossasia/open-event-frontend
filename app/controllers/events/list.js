@@ -9,10 +9,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'Name',
-        valuePath       : 'identifier',
+        valuePath       : 'name',
         width           : 150,
         isSortable      : true,
-        extraValuePaths : ['name', 'logoUrl'],
+        extraValuePaths : ['identifier', 'logoUrl'],
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-general',
         options         : {
