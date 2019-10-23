@@ -1,7 +1,7 @@
 .event.card {
-  height: 355px;
-  transition: transform 0.2s;
   border-radius: 5px;
+  height: 355px;
+  transition: transform .3s;
 
   .header {
     height: 50px;
@@ -17,11 +17,13 @@
     height: 179px !important;
     object-fit: cover;
   }
+
   :hover > & {
+    box-shadow: 5px 5px 5px #808080;
     transform: scale(1.1);
-    box-shadow: 5px 5px 5px grey;
   }
 }
+
 .event.wide {
   border-radius: 0 !important;
   margin: 0 !important;
