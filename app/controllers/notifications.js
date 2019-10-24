@@ -11,10 +11,16 @@ export default Controller.extend({
               item.save();
             }
           });
-          this.notify.success(this.l10n.t('All notifications marked read successfully'));
+          this.notify.success(this.l10n.t('All notifications marked read successfully'),
+            {
+              id: 'mark_read'
+            });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error occurred.'),
+            {
+              id: 'mark_read_err'
+            });
         });
     }
   }

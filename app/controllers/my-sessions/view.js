@@ -8,6 +8,7 @@ export default Controller.extend({
     if (endAt < moment()) {
       return false;
     }
+
     return true;
   }),
 
@@ -20,10 +21,16 @@ export default Controller.extend({
       this.model.destroyRecord()
         .then(() => {
           this.transitionToRoute('my-sessions.index');
-          this.notify.success(this.l10n.t('Proposal has been deleted successfully.'));
+          this.notify.success(this.l10n.t('Proposal has been deleted successfully.'),
+            {
+              id: 'prop_del'
+            });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'view_unex_error'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
