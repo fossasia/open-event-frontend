@@ -42,9 +42,9 @@ export default Component.extend(FormMixin, {
   },
 
   actions: {
-    onChange() {
+    handleFocusOut() {
       if (this.onChange) {
-        this.sendAction('onChange');
+        this.onChange();
       }
     }
   }
