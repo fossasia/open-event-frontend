@@ -33,12 +33,14 @@ export default ModelBase.extend({
   city               : attr('string'),
   gender             : attr('string'),
   heardFrom          : attr('string'),
+  complexFieldValues : attr(),
 
   segmentedLinkWebsite  : computedSegmentedLink.bind(this)('website'),
   segmentedLinkTwitter  : computedSegmentedLink.bind(this)('twitter'),
   segmentedLinkGithub   : computedSegmentedLink.bind(this)('github'),
   segmentedLinkFacebook : computedSegmentedLink.bind(this)('facebook'),
   segmentedLinkLinkedIn : computedSegmentedLink.bind(this)('linkedin'),
+
   /**
    * Relationships
    */

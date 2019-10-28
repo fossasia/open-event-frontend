@@ -10,35 +10,42 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'Order',
+        width           : 190,
         valuePath       : 'order',
         extraValuePaths : ['user', 'status', 'paidVia', 'completedAt', 'createdAt'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-order'
       },
       {
         name      : 'Ticket Name',
+        width     : 110,
         valuePath : 'ticket.name'
       },
       {
         name            : 'Ticket Price',
         valuePath       : 'ticket.price',
+        width           : 100,
         extraValuePaths : ['event', 'discountCode'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price'
       },
       {
         name      : 'First Name',
-        valuePath : 'firstname'
+        valuePath : 'firstname',
+        width     : 100
       },
       {
         name      : 'Last Name',
-        valuePath : 'lastname'
+        valuePath : 'lastname',
+        width     : 90
       },
       {
         name      : 'Email',
-        valuePath : 'email'
+        valuePath : 'email',
+        width     : 160
       },
       {
         name            : 'Actions',
         valuePath       : 'id',
+        width           : 130,
         extraValuePaths : ['order', 'isCheckedIn'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-action',
         actions         : {
