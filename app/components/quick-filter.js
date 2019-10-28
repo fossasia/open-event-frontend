@@ -93,7 +93,7 @@ export default Component.extend({
 
   dummiessFull() {
     if (this.dummyLocation.length === 0 && this.dummyName.length === 0) {
-      return 0;
+      return false;
     }
     return true;
   }
