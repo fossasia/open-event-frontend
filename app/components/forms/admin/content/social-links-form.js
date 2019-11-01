@@ -56,8 +56,8 @@ export default Component.extend(FormMixin, {
           optional   : true,
           rules      : [
             {
-              type   : 'containsExactly[plus.google.com]',
-              prompt : this.l10n.t('Please enter a valid google plus url')
+              type   : 'containsExactly[groups.google.com]',
+              prompt : this.l10n.t('Please enter a valid google groups url')
             },
             {
               type   : 'regExp',
