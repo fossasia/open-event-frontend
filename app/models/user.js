@@ -40,7 +40,7 @@ export default ModelBase.extend({
   facebookUrl   : attr('string'),
   instagramUrl  : attr('string'),
   twitterUrl    : attr('string'),
-  googlePlusUrl : attr('string'),
+  googleGroupsUrl : attr('string'),
 
   facebookId: attr('string', { readOnly: true }),
 
