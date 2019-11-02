@@ -51,8 +51,8 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        googlePlus: {
-          identifier : 'google_plus',
+        googleGroups: {
+          identifier : 'google_groups',
           optional   : true,
           rules      : [
             {
