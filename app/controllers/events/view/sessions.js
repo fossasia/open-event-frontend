@@ -23,7 +23,7 @@ export default Controller.extend({
           this.set('isLoading', false);
           this.notify.error(this.l10n.t('An unexpected error has occurred.'),
             {
-              id: 'session_err_unexp'
+              id: 'session_unexp_error'
             });
         });
     }

@@ -19,7 +19,7 @@ export default Controller.extend({
         .catch(() => {
           this.notify.error(this.l10n.t('An unexpected error occurred.'),
             {
-              id: 'mark_read_err'
+              id: 'mark_read_error'
             });
         });
     }

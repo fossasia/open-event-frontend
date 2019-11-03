@@ -49,13 +49,13 @@ export default Controller.extend({
           this.transitionToRoute('events');
           this.notify.success(this.l10n.t('Event has been deleted successfully.'),
             {
-              id: 'event_deleted_succ_dash'
+              id: 'event_deleted_succ'
             });
         })
         .catch(() => {
           this.notify.error(this.l10n.t('An unexpected error has occurred.'),
             {
-              id: 'eve_del_err'
+              id: 'event_deleted_error'
             });
         })
         .finally(() => {

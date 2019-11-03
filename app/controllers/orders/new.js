@@ -43,7 +43,7 @@ export default Controller.extend({
             order.set('status', 'initializing');
             this.notify.error(this.l10n.t(` ${e} Oops something went wrong. Please try again`),
               {
-                id: 'order_stat_err'
+                id: 'order_stat_error'
               });
           })
           .finally(() => {

@@ -15,7 +15,7 @@ export default Controller.extend({
         .catch(() => {
           this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
             {
-              id: 'sess_err'
+              id: 'sess_error'
             });
         })
         .finally(() => {

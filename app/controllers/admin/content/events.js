@@ -16,7 +16,7 @@ export default Controller.extend({
       } catch (e) {
         this.notify.error(this.l10n.t('An unexpected error has occurred. SubTopics not loaded.'),
           {
-            id: 'subtop_err'
+            id: 'subtop_error'
           });
       } finally {
         this.set('isLoading', false);
@@ -43,7 +43,7 @@ export default Controller.extend({
         .catch(() => {
           this.notify.error(this.l10n.t('An unexpected error has occurred. Event Type was not deleted.'),
             {
-              id: 'event_type_err'
+              id: 'event_type_error'
             });
         })
         .finally(() => {

@@ -101,7 +101,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } catch (e) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
-          id: 'user_delete_err'
+          id: 'user_delete_error'
         });
     }
 

@@ -322,7 +322,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         .catch(() => {
           this.notify.error(this.l10n.t('An unexpected error has occurred.'),
             {
-              id: 'session_feed_err'
+              id: 'session_feed_error'
             });
         })
         .finally(() => {
