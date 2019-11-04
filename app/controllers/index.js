@@ -6,8 +6,8 @@ export default Controller.extend({
   queryParams : ['event_name', 'start_date', 'end_date', 'location'],
   start_date  : null,
   end_date    : null,
-  location    : null,
-  event_name  : null,
+  location    : '',
+  name        : '',
   filterDate  : null,
 
   callForSpeakersEvents: computed('filteredEvents.[]', function() {

@@ -16,7 +16,7 @@ export default Route.extend({
       event : eventDetails,
       forms : await eventDetails.query('customForms', {
         sort         : 'id',
-        'page[size]' : 0
+        'page[size]' : 50
       }),
       speaker: await this.store.createRecord('speaker', {
         email    : currentUser.email,

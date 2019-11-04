@@ -168,7 +168,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             },
             {
               type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be before End date and time')
+              prompt : this.l10n.t('Start date & time should be after End date and time')
             }
           ]
         },
@@ -185,7 +185,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             },
             {
               type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be before End date and time')
+              prompt : this.l10n.t('Start date & time should be after End date and time')
             }
           ]
         },

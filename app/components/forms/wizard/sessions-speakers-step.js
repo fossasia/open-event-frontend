@@ -128,10 +128,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     return this.get('data.event.microlocations').filterBy('isDeleted', false);
   }),
 
-  complexCustomForms: computed('data.customForms.@each.isComplex', function() {
-    return this.data.customForms.filterBy('isComplex', true);
-  }),
-
   fieldChanged(field) {
     if (!field.get('isIncluded')) {
       field.set('isRequired', false);
@@ -177,12 +173,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           this.get('data.microlocations').addObject(this.store.createRecord('microlocation'));
           break;
       }
-    },
-    addCustomField() {
-      this.data.customForms.addObject(this.store.createRecord('customForm', {
-        event     : this.data.event,
-        isComplex : true
-      }));
     },
     onChange() {
       this.onValid(() => {});

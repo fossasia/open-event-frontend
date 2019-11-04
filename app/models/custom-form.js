@@ -84,15 +84,14 @@ export default ModelBase.extend({
 
   name: computed('fieldIdentifier', 'form', function() {
     let name = this.fieldIdentifier;
-    if (!this.isComplex) {
-      if (this.form === 'session') {
-        name = this.get(`session.${name}`);
-      } else if (this.form === 'speaker') {
-        name = this.get(`speaker.${name}`);
-      } else {
-        name = this.get(`attendee.${name}`);
-      }
+    if (this.form === 'session') {
+      name = this.get(`session.${name}`);
+    } else if (this.form === 'speaker') {
+      name = this.get(`speaker.${name}`);
+    } else {
+      name = this.get(`attendee.${name}`);
     }
+
     return name;
   }),
 

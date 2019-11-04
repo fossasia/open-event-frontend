@@ -20,14 +20,12 @@ export const compulsoryProtocolValidUrlPattern = new RegExp('^(https?:\\/\\/)' /
 
 export const protocolLessValidUrlPattern = new RegExp(
   '^'
-  // localhost inclusion
-  + '(?:(?:localhost)(:\\d{2,5})?|'
   // user:pass authentication
   + '(?:\\S+(?::\\S*)?@)?'
   + '(?:'
   // IP address exclusion
   // private & local networks
-  + '(?!(?:10)(?:\\.\\d{1,3}){3})'
+  + '(?!(?:10|127)(?:\\.\\d{1,3}){3})'
   + '(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})'
   + '(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})'
   // IP address dotted notation octets
@@ -51,7 +49,7 @@ export const protocolLessValidUrlPattern = new RegExp(
   // port number
   + '(?::\\d{2,5})?'
   // resource path
-  + '(?:[/?#]\\S*)?)'
+  + '(?:[/?#]\\S*)?'
   + '$', 'i'
 );
 
