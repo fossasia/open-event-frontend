@@ -316,7 +316,7 @@
   {{else}}
     <div class="spacer-50"></div>
   {{/if}}
-
+  {{!--  Commented out until issue #3598 is solved and needs thorough testing.
   {{#each complexCustomForms as |form|}}
     {{form.isComplex}}
     <div class="fields">
@@ -354,7 +354,7 @@
   {{/each}}
 
   <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addCustomField'}}>{{t 'Add another custom field'}}</button>
-
+ --}}
 
   <div class="ui fields buttons {{if device.isMobile 'mini three' 'right floated large'}}">
     <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
