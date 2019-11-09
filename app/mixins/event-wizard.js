@@ -59,7 +59,14 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
-    if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
+    let minMaxValueOfTicketValid = true;
+    for (const ticket of data.tickets ? data.tickets.toArray() : []) {
+      if (!(parseInt(ticket.get('maxOrder')) >= parseInt(ticket.get('minOrder')))) {
+        minMaxValueOfTicketValid = false;
+        break;
+      }
+    }
+    if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0 && minMaxValueOfTicketValid) {
       await event.save();
 
       for (const ticket of data.tickets ? data.tickets.toArray() : []) {
@@ -125,6 +132,9 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
       if (numberOfTickets === 0) {
         errorObject.errors.push({ 'detail': 'Tickets are required for publishing event' });
+      }
+      if (!minMaxValueOfTicketValid) {
+        errorObject.errors.push({ 'detail': 'Min Order value should be less than equal to Max Order' });
       }
       throw (errorObject);
     }

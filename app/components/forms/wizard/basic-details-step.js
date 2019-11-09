@@ -276,6 +276,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'number',
               prompt : this.l10n.t('Invalid number')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.l10n.t('Invalid number')
             }
           ]
         },

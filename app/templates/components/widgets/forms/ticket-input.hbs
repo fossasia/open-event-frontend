@@ -126,11 +126,11 @@
         <div class="fields">
           <div class="three wide field">
             <label class="required text muted" for="ticket_min_order">{{t 'Minimum Order'}}</label>
-            {{input type='number' value=ticket.minOrder name='ticket_min_order'}}
+            {{input type='number' value=ticket.minOrder name='ticket_min_order' min=1}}
           </div>
           <div class="three wide field">
             <label class="required text muted" for="ticket_max_order">{{t 'Maximum Order'}}</label>
-            {{input type='number' value=ticket.maxOrder name='ticket_max_order'}}
+            {{input type='number' value=ticket.maxOrder name='ticket_max_order' min=1}}
           </div>
         </div>
       </div>
