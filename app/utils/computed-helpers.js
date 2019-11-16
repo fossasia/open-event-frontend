@@ -47,13 +47,13 @@ export const computedSegmentedLink = function(property) {
 export const computedDateTimeSplit = function(property, segmentFormat, endProperty) {
   return computed(property, {
     get() {
-      return moment(this.get(property)).format(getFormat(segmentFormat));
+      return moment(this.get(property)).tz(this.timezone).format(getFormat(segmentFormat));
     },
     set(key, value) {
-      const newDate = moment(value, getFormat(segmentFormat));
+      const newDate = moment(value, getFormat(segmentFormat)).tz(this.timezone, true);
       let oldDate = newDate;
       if (this.get(property)) {
-        oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
+        oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT).tz(this.timezone, true);
       } else {
         oldDate = newDate;
       }
