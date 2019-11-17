@@ -1,7 +1,7 @@
 <div class="ui stackable grid">
   <div class="row">
     <div class="five wide column">
-      <div class="ui center aligned fluid segment">
+      <div class="ui center aligned fluid segment ">
         <div class="ui grid container">
           <div class="middle aligned content eight wide column left aligned">
             <h4 class="ui header">
@@ -15,31 +15,33 @@
           </div>
         </div>
         <div class="ui divider"></div>
-        <table class="ui celled table">
-          <tbody>
-            {{#each model.eventTypes as |eventType|}}
-              <tr>
-                <td>
-                  <div class="ui grid">
-                    <div class="middle aligned content eight wide column left aligned">
-                      {{eventType.name}}
-                    </div>
-                    <div class="eight wide column right aligned">
-                      <div class="ui horizontal compact basic buttons">
-                        {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' eventType)}}
-                          <i class="edit icon"></i>
-                        {{/ui-popup}}
-                        {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event type?') (action 'deleteEventProperty' eventType)))}}
-                          <i class="trash outline icon"></i>
-                        {{/ui-popup}}
+        <div  class = "y-scrollable" style = "max-height: 768px;overflow-x: hidden;">
+          <table class="ui celled table">
+            <tbody>
+              {{#each model.eventTypes as |eventType|}}
+                <tr>
+                  <td>
+                    <div class="ui grid">
+                      <div class="middle aligned content eight wide column left aligned">
+                        {{eventType.name}}
+                      </div>
+                      <div class="eight wide column right aligned">
+                        <div class="ui horizontal compact basic buttons">
+                          {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' eventType)}}
+                            <i class="edit icon"></i>
+                          {{/ui-popup}}
+                          {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event type?') (action 'deleteEventProperty' eventType)))}}
+                            <i class="trash outline icon"></i>
+                          {{/ui-popup}}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div class="six wide column">
@@ -57,31 +59,33 @@
           </div>
         </div>
         <div class="ui divider"></div>
-        <table class="ui celled table">
-          <tbody>
-            {{#each model.eventTopics as |eventTopic|}}
-              <tr>
-                <td>
-                  <div class="ui grid">
-                    <div class="middle aligned content eight wide column left aligned">
-                      {{eventTopic.name}}
-                    </div>
-                    <div class="eight wide column right aligned">
-                      <div class="ui horizontal compact basic buttons">
-                        {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' eventTopic)}}
-                          <i class="edit icon"></i>
-                        {{/ui-popup}}
-                        {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event topic?') (action 'deleteEventProperty' eventTopic)))}}
-                          <i class="trash outline icon"></i>
-                        {{/ui-popup}}
+        <div class= "y-scrollable" style = "max-height: 768px;overflow-x: hidden;">
+          <table class="ui celled table">
+            <tbody>
+              {{#each model.eventTopics as |eventTopic|}}
+                <tr>
+                  <td>
+                    <div class="ui grid">
+                      <div class="middle aligned content eight wide column left aligned">
+                        {{eventTopic.name}}
+                      </div>
+                      <div class="eight wide column right aligned">
+                        <div class="ui horizontal compact basic buttons">
+                          {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' eventTopic)}}
+                            <i class="edit icon"></i>
+                          {{/ui-popup}}
+                          {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event topic?') (action 'deleteEventProperty' eventTopic)))}}
+                            <i class="trash outline icon"></i>
+                          {{/ui-popup}}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div class="five wide column">
@@ -112,31 +116,33 @@
           {{/ui-dropdown}}
         </div>
         {{#if model.eventSubTopics}}
-          <table class="ui celled table">
-            <tbody>
-              {{#each model.eventSubTopics as |subTopic|}}
-                <tr>
-                  <td>
-                    <div class="ui grid">
-                      <div class="middle aligned content eight wide column left aligned">
-                        {{subTopic.name}}
-                      </div>
-                      <div class="eight wide column right aligned">
-                        <div class="ui horizontal compact basic buttons">
-                          {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' subTopic)}}
-                            <i class="edit icon"></i>
-                          {{/ui-popup}}
-                          {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event sub topic?') (action 'deleteEventProperty' subTopic)))}}
-                            <i class="trash outline icon"></i>
-                          {{/ui-popup}}
+          <div class= "y-scrollable"  style = "max-height: 768px; overflow-x: hidden;">
+            <table class="ui celled table">
+              <tbody>
+                {{#each model.eventSubTopics as |subTopic|}}
+                  <tr>
+                    <td>
+                      <div class="ui grid">
+                        <div class="middle aligned content eight wide column left aligned">
+                          {{subTopic.name}}
+                        </div>
+                        <div class="eight wide column right aligned">
+                          <div class="ui horizontal compact basic buttons">
+                            {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' subTopic)}}
+                              <i class="edit icon"></i>
+                            {{/ui-popup}}
+                            {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event sub topic?') (action 'deleteEventProperty' subTopic)))}}
+                              <i class="trash outline icon"></i>
+                            {{/ui-popup}}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              {{/each}}
-            </tbody>
-          </table>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
         {{/if}}
       </div>
     </div>
