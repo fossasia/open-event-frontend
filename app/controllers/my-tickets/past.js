@@ -1,9 +1,10 @@
 import Controller from '@ember/controller';
-export default Controller.extend({
-  actions: {
-    shareEvent(event) {
-      this.set('eventToShare', event);
-      this.set('isShareModalOpen', true);
-    }
+import { action } from '@ember/object';
+
+export default class extends Controller {
+  @action
+  shareEvent(event) {
+    this.set('eventToShare', event);
+    this.set('isShareModalOpen', true);
   }
-});
+}
