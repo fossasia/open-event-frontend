@@ -23,10 +23,16 @@ export default Controller.extend({
           if (this.isCreate) {
             this.set('isFormOpen', false);
           }
-          this.notify.success(this.l10n.t('Page details have been saved successfully.'));
+          this.notify.success(this.l10n.t('Page details have been saved successfully.'),
+            {
+              id: 'page_detail_succ'
+            });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred. Page Details not saved.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Page Details not saved.'),
+            {
+              id: 'page_detail_del'
+            });
         });
     }
   }
