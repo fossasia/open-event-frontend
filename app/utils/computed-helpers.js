@@ -47,23 +47,22 @@ export const computedSegmentedLink = function(property) {
 export const computedDateTimeSplit = function(property, segmentFormat, endProperty) {
   return computed(property, {
     get() {
-      if (this.constructor.toString() === 'model:event') {
-        return moment(this.get(property)).tz(this.timezone).format(getFormat(segmentFormat));
-      } else {
-        return moment(this.get(property)).format(getFormat(segmentFormat));
+      let momentDate = moment(this.get(property));
+      if (this.constructor.modelName === 'event') {
+        momentDate = momentDate.tz(this.timezone);
       }
+      return momentDate.format(getFormat(segmentFormat));
     },
     set(key, value) {
       let newDate = moment(value, getFormat(segmentFormat));
-      if (this.constructor.toString() === 'model:event') {
-        newDate = moment(value, getFormat(segmentFormat)).tz(this.timezone, true);
+      if (this.constructor.modelName === 'event') {
+        newDate = newDate.tz(this.timezone, true);
       }
       let oldDate = newDate;
       if (this.get(property)) {
-        if (this.constructor.toString() === 'model:event') {
-          oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT).tz(this.timezone, true);
-        } else {
-          oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
+        oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
+        if (this.constructor.modelName === 'event') {
+          oldDate = oldDate.tz(this.timezone, true);
         }
       } else {
         oldDate = newDate;
