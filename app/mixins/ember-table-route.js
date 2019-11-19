@@ -22,12 +22,14 @@ export default Mixin.create({
 
   applySearchFilters(options, params, searchField) {
     searchField = kebabCase(searchField);
-    if (params.search) {
-      options.pushObject({
-        name : searchField,
-        op   : 'ilike',
-        val  : `%${params.search}%`
-      });
+    if(params.search.length > 2){
+      if (params.search) {
+        options.pushObject({
+          name : searchField,
+          op   : 'ilike',
+          val  : `%${params.search}%`
+        });
+      }
     } else {
       options.removeObject({
         name : searchField,
