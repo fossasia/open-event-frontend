@@ -27,8 +27,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Date',
         valuePath       : 'startsAt',
-        extraValuePaths : ['endsAt'],
+        extraValuePaths : ['endsAt', 'timezone'],
         isSortable      : true,
+        width           : 180,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
 

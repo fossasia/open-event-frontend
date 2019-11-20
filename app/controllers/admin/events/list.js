@@ -35,22 +35,18 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          valuePath       : 'startsAt',
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
+         extraValuePaths : ['timezone'],
          cellComponent   : 'ui-table/cell/cell-simple-date',
-         width           : 65,
-         options         : {
-           dateFormat: 'MMMM DD, YYYY - hh:mm A'
-         }
+         width           : 75
        },
        {
          name            : 'Ends At',
          valuePath       : 'endsAt',
          isSortable      : true,
+         extraValuePaths : ['timezone'],
          headerComponent : 'tables/headers/sort',
          cellComponent   : 'ui-table/cell/cell-simple-date',
-         width           : 65,
-         options         : {
-           dateFormat: 'MMMM DD, YYYY - hh:mm A'
-         }
+         width           : 75
        },
        {
          name            : 'State',
