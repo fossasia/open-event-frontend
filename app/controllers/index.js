@@ -28,6 +28,13 @@ export default Controller.extend({
     return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
 
   }),
+  
+  upcomingEvents: computed('filteredEvents.[]', function() {
+    return this.filteredEvents.filter(event => {
+      const endDate = event.get('endsAt');
+      return(moment().isBefore(endDate));
+    });
+  }),
 
   actions: {
     shareEvent(event) {
