@@ -47,11 +47,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     let sponsor = this.store.peekRecord('sponsor', sponsor_id, { backgroundReload: false });
     sponsor.destroyRecord()
       .then(() => {
-        this.notify.success(this.l10n.t('Sponsor has been deleted successfully.'));
+        this.notify.success(this.l10n.t('Sponsor has been deleted successfully.'),
+          {
+            id: 'spons_deleted'
+          });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'spons_deleted_error'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);

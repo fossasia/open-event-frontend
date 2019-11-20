@@ -125,10 +125,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       let event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
       await event.destroyRecord();
-      this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+      this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+        {
+          id: 'event_del_succ'
+        });
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_delete_error'
+        });
     }
     this.setProperties({
       isLoading              : false,
@@ -142,10 +148,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.set('deletedAt', null);
       await event.save({ adapterOptions: { getTrashed: true } });
-      this.notify.success(this.l10n.t('Event has been restored successfully.'));
+      this.notify.success(this.l10n.t('Event has been restored successfully.'),
+        {
+          id: 'event_restored'
+        });
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'restore_error'
+        });
     }
     this.set('isLoading', false);
   }
@@ -157,11 +169,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
       await event.save();
-      this.notify.success(this.l10n.t('Event details modified successfully'));
+      this.notify.success(this.l10n.t('Event details modified successfully'),
+        {
+          id: 'event_detail_changed'
+        });
 
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_det_error'
+        });
     }
     this.set('isLoading', false);
   }

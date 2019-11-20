@@ -4,7 +4,6 @@ export default Controller.extend({
   actions: {
     save() {
       this.set('isLoading', true);
-      let _this = this;
       if (this.addNewSpeaker) {
         let newSpeaker = this.get('model.speaker');
         if (newSpeaker.isEmailOverridden) {
@@ -12,34 +11,49 @@ export default Controller.extend({
         }
         newSpeaker.save()
           .then(() => {
-            newSpeaker.sessions.pushObject(_this.get('model.session'));
-            _this.get('model.session').save()
+            newSpeaker.sessions.pushObject(this.model.session);
+            this.model.session.save()
               .then(() => {
-                _this.get('notify').success(_this.get('l10n').t('Your session has been saved'));
-                _this.transitionToRoute('events.view.sessions', _this.get('model.event.id'));
+                this.notify.success(this.l10n.t('Your session has been saved'),
+                  {
+                    id: 'session_edit_save'
+                  });
+                this.transitionToRoute('events.view.sessions', this.model.event.id);
               })
               .catch(() =>   {
-                _this.get('notify').error(this.l10n.t('Oops something went wrong. Please try again'));
+                this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
+                  {
+                    id: 'session_edit_error'
+                  });
               })
               .finally(() => {
-                _this.set('isLoading', false);
+                this.set('isLoading', false);
               });
           })
           .catch(() =>   {
-            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
+              {
+                id: 'session_edit_wrong'
+              });
           })
           .finally(() => {
             this.set('isLoading', false);
           });
       } else {
-        this.get('model.speaker').deleteRecord();
-        this.get('model.session').save()
+        this.model.speaker.deleteRecord();
+        this.model.session.save()
           .then(() => {
-            this.notify.success(this.l10n.t('Your session has been saved'));
-            this.transitionToRoute('events.view.sessions', this.get('model.event.id'));
+            this.notify.success(this.l10n.t('Your session has been saved'),
+              {
+                id: 'session_saved'
+              });
+            this.transitionToRoute('events.view.sessions', this.model.event.id);
           })
           .catch(() => {
-            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
+              {
+                id: 'session_edit_error'
+              });
           })
           .finally(() => {
             this.set('isLoading', false);
