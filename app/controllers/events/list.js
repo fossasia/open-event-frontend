@@ -52,11 +52,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-speakers-dashboard'
       },
       {
-        name          : 'Tickets',
-        valuePath     : 'tickets',
-        cellComponent : 'ui-table/cell/cell-tickets'
-      },
-      {
         name          : 'Public URL',
         valuePath     : 'url',
         width         : 250,
