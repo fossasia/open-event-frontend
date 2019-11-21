@@ -10,7 +10,7 @@ function getSentryServer(dsn, withProtocol = true) {
 
 module.exports = function(environment) {
   let ENV = {
-    appName                  : process.env.APP_NAME || 'Open Event',
+    appName                  : process.env.APP_NAME || 'eventyay',
     modulePrefix             : 'open-event-frontend',
     environment,
     rootURL                  : process.env.ROOT_URL || '/',
