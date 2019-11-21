@@ -1,11 +1,11 @@
 {{#if record}}
   {{#if extraRecords.endsAt}}
     <div>
-      {{moment-format record 'MMMM DD, YYYY - hh:mm A'}}
+      {{general-date record extraRecords.timezone}}
     </div>
     (to)
     <div>
-      {{moment-format extraRecords.endsAt 'MMMM DD, YYYY - hh:mm A'}}
+      {{general-date extraRecords.endsAt extraRecords.timezone}}
     </div>
   {{else}}
     <span>
