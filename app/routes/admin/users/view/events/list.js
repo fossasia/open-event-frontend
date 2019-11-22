@@ -100,7 +100,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
       get_trashed    : true,
-      include        : 'tickets,sessions,speakers',
       filter         : filterOptions,
       'page[size]'   : params.per_page || 10,
       'page[number]' : params.page || 1
