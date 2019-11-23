@@ -25,7 +25,7 @@
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
             </td>
-            <td>{{moment-format ticket.salesEndsAt 'ddd, DD MMMM YY, h:mm A'}}</td>
+            <td>{{general-date ticket.salesEndsAt event.timezone}}</td>
             {{#if ticket.discount}}
               <td>
                 <div id="{{ticket.id}}_price" class="strike text">

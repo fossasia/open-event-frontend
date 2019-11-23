@@ -26,7 +26,7 @@
           {{#each model as |entry|}}
             <tr>
               <td>{{entry.name}}</td>
-              <td>{{moment-format entry.startsAt 'ddd, MMM DD \at h:mm A'}}</td>
+              <td>{{general-date entry.startsAt entry.timezone}}</td>
               <td class="right aligned">{{entry.sales.completed.ticket_count}}</td>
               <td class="right aligned">{{currency-symbol entry.paymentCurrency}} {{format-number entry.sales.completed.sales_total}}</td>
               <td class="right aligned">{{entry.sales.placed.ticket_count}}</td>

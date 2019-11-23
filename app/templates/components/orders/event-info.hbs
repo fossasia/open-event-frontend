@@ -14,9 +14,9 @@
   <div class="ui padded segment">
     <strong>{{t 'At'}} {{data.event.locationName}}</strong>
     <br>
-    <strong>{{t 'From'}}:</strong> {{header-date data.event.startsAt}}
+    <strong>{{t 'From'}}:</strong> {{general-date data.event.startsAt data.event.timezone}}
     <br>
-    <strong>{{t 'To'}}:</strong> {{header-date data.event.endsAt}}
+    <strong>{{t 'To'}}:</strong> {{general-date data.event.endsAt data.event.timezone}}
     {{#if data.event.ownerName}}
       <br>
       <strong>{{t 'Organized By'}}:</strong> {{data.event.ownerName}}

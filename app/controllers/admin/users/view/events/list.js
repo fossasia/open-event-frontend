@@ -32,11 +32,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Date',
         valuePath       : 'startsAt',
-        extraValuePaths : ['endsAt'],
+        extraValuePaths : ['endsAt', 'timezone'],
         isSortable      : true,
+        width           : 170,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
-
       },
       {
         name          : 'Sessions',
@@ -50,14 +50,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath     : 'eventStatisticsGeneral',
         cellComponent : 'ui-table/cell/cell-speakers-dashboard',
         isSortable    : false
-
-      },
-      {
-        name          : 'Tickets',
-        valuePath     : 'tickets',
-        cellComponent : 'ui-table/cell/cell-tickets',
-        isSortable    : false
-
       },
       {
         name          : 'Public URL',
@@ -100,6 +92,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } catch (e) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
+
     this.setProperties({
       isLoading              : false,
       isEventDeleteModalOpen : false
@@ -118,6 +111,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       console.warn(e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
+
     this.set('isLoading', false);
   }
 }
