@@ -32,7 +32,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Date',
         valuePath       : 'startsAt',
-        extraValuePaths : ['endsAt', 'timezone'],
+        extraValuePaths : ['endsAt'],
         isSortable      : true,
         width           : 170,
         headerComponent : 'tables/headers/sort',

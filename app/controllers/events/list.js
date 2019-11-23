@@ -15,7 +15,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['name', 'logoUrl'],
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-general',
-        actions         : {
+        options         : {
+          dateFormat: 'MMMM DD, YYYY - HH:mm A'
+        },
+        actions: {
           moveToPublic  : this.moveToPublic.bind(this),
           moveToDetails : this.moveToDetails.bind(this),
           editEvent     : this.editEvent.bind(this)
@@ -29,6 +32,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         width           : 180,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
+
       },
       {
         name            : 'Roles',
@@ -99,7 +103,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_del_unex'
         });
     }
-
     this.setProperties({
       isLoading              : false,
       isEventDeleteModalOpen : false
