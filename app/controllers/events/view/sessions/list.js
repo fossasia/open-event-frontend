@@ -117,11 +117,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
     session.destroyRecord()
       .then(() => {
-        this.notify.success(this.l10n.t('Session has been deleted successfully.'));
+        this.notify.success(this.l10n.t('Session has been deleted successfully.'),
+          {
+            id: 'session_del_tab'
+          });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_unex_del'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -145,11 +151,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     this.set('isLoading', true);
     session.save()
       .then(() => {
-        this.notify.success(this.l10n.t('Session has been locked successfully.'));
+        this.notify.success(this.l10n.t('Session has been locked successfully.'),
+          {
+            id: 'session_locked'
+          });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_lock_error'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -163,11 +175,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     this.set('isLoading', true);
     session.save()
       .then(() => {
-        this.notify.success(this.l10n.t('Session has been unlocked successfully.'));
+        this.notify.success(this.l10n.t('Session has been unlocked successfully.'),
+          {
+            id: 'session_unlock'
+          });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_unexpected_unlock'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -185,12 +203,21 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     this.set('isLoading', true);
     session.save()
       .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been accepted and speaker has been notified via email.'))
-          : this.notify.success(this.l10n.t('Session has been accepted'));
+        sendEmail ? this.notify.success(this.l10n.t('Session has been accepted and speaker has been notified via email.'),
+          {
+            id: 'session_accep_email'
+          })
+          : this.notify.success(this.l10n.t('Session has been accepted'),
+            {
+              id: 'session_accep'
+            });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_unex_error'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -208,12 +235,21 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     this.set('isLoading', true);
     session.save()
       .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been confirmed and speaker has been notified via email.'))
-          : this.notify.success(this.l10n.t('Session has been confirmed'));
+        sendEmail ? this.notify.success(this.l10n.t('Session has been confirmed and speaker has been notified via email.'),
+          {
+            id: 'session_confirm_email'
+          })
+          : this.notify.success(this.l10n.t('Session has been confirmed'),
+            {
+              id: 'session_confirm'
+            });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_confirm_unexpected'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -231,12 +267,21 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     this.set('isLoading', true);
     session.save()
       .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been rejected and speaker has been notified via email.'))
-          : this.notify.success(this.l10n.t('Session has been rejected'));
+        sendEmail ? this.notify.success(this.l10n.t('Session has been rejected and speaker has been notified via email.'),
+          {
+            id: 'session_reject_email'
+          })
+          : this.notify.success(this.l10n.t('Session has been rejected'),
+            {
+              id: 'session_rejected'
+            });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_reject_error'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -250,11 +295,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       feedback.set('rating', rating);
       feedback.save()
         .then(() => {
-          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'));
+          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'),
+            {
+              id: 'session_feedback'
+            });
           this.refreshModel.bind(this)();
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'session_feedback_error'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -262,11 +313,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } else {
       feedback.destroyRecord()
         .then(() => {
-          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'));
+          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'),
+            {
+              id: 'session_feed_update'
+            });
           this.refreshModel.bind(this)();
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'session_feed_error'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -286,11 +343,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     });
     feedback.save()
       .then(() => {
-        this.notify.success(this.l10n.t('Session feedback has been created successfully.'));
+        this.notify.success(this.l10n.t('Session feedback has been created successfully.'),
+          {
+            id: 'session_feed_created'
+          });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_feed_error_created'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);

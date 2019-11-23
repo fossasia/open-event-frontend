@@ -19,9 +19,15 @@ export default class extends Controller {
     this.set('isLoading', true);
     try {
       await this.model.save();
-      this.notify.success(this.l10n.t('Admin Billing info has been saved successfully'));
+      this.notify.success(this.l10n.t('Admin Billing info has been saved successfully'),
+        {
+          id: 'admin_billing_save'
+        });
     } catch (error) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'),
+        {
+          id: 'admin_billing_error'
+        });
     }
     this.set('isLoading', false);
   }
