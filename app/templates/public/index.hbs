@@ -7,11 +7,11 @@
   {{/if}}
   {{#if (or model.event.ticketUrl model.tickets)}}
     <div class="tickets" id="tickets">
-      <div class="ui {{if device.isMobile 'compact'}} segments ticket-list">
+      <div class="ui segments ticket-list">
         <div class="ui segment">
           <h3 class="ui header">{{t 'Tickets'}}</h3>
         </div>
-        <div class="ui segment">
+        <div class="ui segment x-scrollable">
           {{#if model.event.isTicketingEnabled}}
             {{public/ticket-list eventCurrency=model.event.paymentCurrency
                                  ticketUrl=model.event.ticketUrl
