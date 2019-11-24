@@ -17,7 +17,10 @@ export default Controller.extend({
           anchor.download = `${eventName}-Invoice-${orderId}.pdf`;
           document.body.appendChild(anchor);
           anchor.click();
-          this.notify.success(this.l10n.t('Here is your Order Invoice'));
+          this.notify.success(this.l10n.t('Here is your Order Invoice'),
+            {
+              id: 'order_invoi'
+            });
           document.body.removeChild(anchor);
         })
         .catch(e => {
@@ -46,12 +49,18 @@ export default Controller.extend({
         anchor.download = `${eventName}-Tickets-${orderId}.pdf`;
         document.body.appendChild(anchor);
         anchor.click();
-        this.notify.success(this.l10n.t('Here are your tickets'));
+        this.notify.success(this.l10n.t('Here are your tickets'),
+          {
+            id: 'tick_pdf'
+          });
         document.body.removeChild(anchor);
       })
       .catch(e => {
         console.warn(e);
-        this.notify.error(this.l10n.t('An unexpected Error occurred'));
+        this.notify.error(this.l10n.t('An unexpected Error occurred'),
+          {
+            id: 'unexpected_occur'
+          });
       })
       .finally(() => {
         this.set('isLoadingTickets', false);
