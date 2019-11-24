@@ -501,10 +501,18 @@
             {{t 'Add Tax Information'}}
           </button>
         {{/if}}
+        <div class="ui hidden divider"></div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            {{input type='checkbox' id='billing_info_mandatory' checked=data.event.isBillingInfoMandatory}}
+            <label for="billing_info">
+              <strong>{{t 'Billing Info'}}:</strong>
+              {{t 'Require Billing Information from Ticket Buyer'}}
+            </label>
+          </div>
+        </div>
       </div>
-
     </div>
-
   {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields">

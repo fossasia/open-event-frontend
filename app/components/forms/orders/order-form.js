@@ -34,9 +34,18 @@ export default Component.extend(FormMixin, {
       this.data.set('paymentMode', 'free');
       return false;
     }
+
     return true;
   }),
   sameAsBuyer: false,
+
+  isBillingInfoMandatory: computed('event', function() {
+    if (this.event.isBillingInfoMandatory) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
 
   getRemainingTime: computed('settings', function() {
     let orderExpiryTime = this.get('settings.orderExpiryTime');
@@ -380,12 +389,12 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        company: {
-          identifier : 'company',
+        taxBusinessInfo: {
+          identifier : 'taxBusinessInfo',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your company')
+              prompt : this.l10n.t('Please enter your TAX ID or Business ID')
             }
           ]
         },
