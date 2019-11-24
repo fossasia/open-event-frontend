@@ -9,9 +9,15 @@ export default Controller.extend({
         systemMessages.forEach(systemMessage => {
           systemMessage.save();
         });
-        this.notify.success(this.l10n.t('Changes have been saved successfully'));
+        this.notify.success(this.l10n.t('Changes have been saved successfully'),
+          {
+            id: 'message_success'
+          });
       } catch (e) {
-        this.notify.error(this.l10n.t(e.errors[0].detail));
+        this.notify.error(this.l10n.t(e.errors[0].detail),
+          {
+            id: 'change_error_message'
+          });
       }
     }
   }
