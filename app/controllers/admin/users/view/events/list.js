@@ -37,6 +37,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         width           : 170,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
+
       },
       {
         name          : 'Sessions',
@@ -92,13 +93,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } catch (e) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
-
     this.setProperties({
       isLoading              : false,
       isEventDeleteModalOpen : false
     });
   }
-
+  
   @action
   async restoreEvent(event_id) {
     this.set('isLoading', true);
@@ -111,7 +111,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       console.warn(e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
-
     this.set('isLoading', false);
   }
 }
