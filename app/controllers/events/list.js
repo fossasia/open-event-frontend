@@ -27,8 +27,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Date',
         valuePath       : 'startsAt',
-        extraValuePaths : ['endsAt'],
+        extraValuePaths : ['endsAt', 'timezone'],
         isSortable      : true,
+        width           : 180,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
 
@@ -49,11 +50,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : 'Speakers',
         valuePath     : 'eventStatisticsGeneral',
         cellComponent : 'ui-table/cell/cell-speakers-dashboard'
-      },
-      {
-        name          : 'Tickets',
-        valuePath     : 'tickets',
-        cellComponent : 'ui-table/cell/cell-tickets'
       },
       {
         name          : 'Public URL',
@@ -96,10 +92,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event = this.store.peekRecord('event', this.eventId, { backgroundReload: false });
       await event.destroyRecord();
-      this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+      this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+        {
+          id: 'event_del_succ'
+        });
       this.send('refreshRoute');
     } catch (e) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_del_unex'
+        });
     }
     this.setProperties({
       isLoading              : false,

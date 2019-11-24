@@ -93,10 +93,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       let user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       await user.destroyRecord();
-      this.notify.success(this.l10n.t('User has been deleted successfully.'));
+      this.notify.success(this.l10n.t('User has been deleted successfully.'),
+        {
+          id: 'user_delete_succ'
+        });
 
     } catch (e) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_delete_error'
+        });
     }
 
     this.set('isLoading', false);
@@ -118,9 +124,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       let user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       user.set('deletedAt', null);
       user.save({ adapterOptions: { getTrashed: true } });
-      this.notify.success(this.l10n.t('User has been restored successfully.'));
+      this.notify.success(this.l10n.t('User has been restored successfully.'),
+        {
+          id: 'user_restore'
+        });
     } catch (e) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_restore_error'
+        });
       console.warn(e);
     }
 
