@@ -34,6 +34,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'startsAt',
         extraValuePaths : ['endsAt'],
         isSortable      : true,
+        width           : 170,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
 
@@ -50,14 +51,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath     : 'eventStatisticsGeneral',
         cellComponent : 'ui-table/cell/cell-speakers-dashboard',
         isSortable    : false
-
-      },
-      {
-        name          : 'Tickets',
-        valuePath     : 'tickets',
-        cellComponent : 'ui-table/cell/cell-tickets',
-        isSortable    : false
-
       },
       {
         name          : 'Public URL',
