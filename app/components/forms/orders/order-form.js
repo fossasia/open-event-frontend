@@ -34,17 +34,12 @@ export default Component.extend(FormMixin, {
       this.data.set('paymentMode', 'free');
       return false;
     }
-
     return true;
   }),
   sameAsBuyer: false,
 
   isBillingInfoMandatory: computed('event', function() {
-    if (this.event.isBillingInfoMandatory) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.event.isBillingInfoMandatory;
   }),
 
   getRemainingTime: computed('settings', function() {
