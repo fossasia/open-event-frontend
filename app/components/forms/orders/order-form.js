@@ -38,8 +38,12 @@ export default Component.extend(FormMixin, {
   }),
   sameAsBuyer: false,
 
-  isBillingInfoMandatory: computed('event', function() {
-    return this.event.isBillingInfoMandatory;
+  isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
+    return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
+  }),
+
+  isBillingNotMandatory: computed('event', function() {
+    return !this.event.isBillingInfoMandatory;
   }),
 
   getRemainingTime: computed('settings', function() {
@@ -389,7 +393,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your TAX ID or Business ID')
+              prompt : this.l10n.t('Please enter your Tax ID or Business ID')
             }
           ]
         },
