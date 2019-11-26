@@ -1,7 +1,7 @@
 <div class="mobile hidden row">
   <div class="ui menu">
     {{#link-to 'index' class='header item' activeClass=''}}
-      <h3>{{settings.appName}}</h3>
+      <h3>{{config.appName}}</h3>
     {{/link-to}}
     <div class="right menu nav-bar">
       {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
@@ -48,7 +48,7 @@
       <i class="large content icon"></i>
     </a>
     {{#link-to 'index' class='item' activeClass=''}}
-      <div class="ui header small text">{{settings.appName}}</div>
+      <div class="ui header small text">{{config.appName}}</div>
     {{/link-to}}
     <div class="right menu nav-bar">
       {{#if session.isAuthenticated}}
