@@ -5,7 +5,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash-es';
 
 export default Component.extend(EventWizardMixin, FormMixin, {
-
+// Removing the Session & Speaker Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
     return {
       inline : true,
