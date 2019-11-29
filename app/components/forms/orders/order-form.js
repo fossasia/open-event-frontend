@@ -38,6 +38,10 @@ export default Component.extend(FormMixin, {
   }),
   sameAsBuyer: false,
 
+  isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
+    return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
+  }),
+
   getRemainingTime: computed('settings', function() {
     let orderExpiryTime = this.get('settings.orderExpiryTime');
     let willExpireAt = this.get('data.createdAt').add(orderExpiryTime, 'minutes');
@@ -380,12 +384,12 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        company: {
-          identifier : 'company',
+        taxBusinessInfo: {
+          identifier : 'taxBusinessInfo',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your company')
+              prompt : this.l10n.t('Please enter your Tax ID or Business ID')
             }
           ]
         },
