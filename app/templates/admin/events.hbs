@@ -2,9 +2,6 @@
   <div class="row">
     <div class="sixteen wide column">
       {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'admin.events.list' 'all' class='item'}}
-          {{t 'All Events'}}
-        {{/link-to}}
         {{#link-to 'admin.events.list' 'live' class='item'}}
           {{t 'All Live'}}
         {{/link-to}}
@@ -13,6 +10,9 @@
         {{/link-to}}
         {{#link-to 'admin.events.list' 'past' class='item'}}
           {{t 'All Past'}}
+        {{/link-to}}
+        {{#link-to 'admin.events.list' 'all' class='item'}}
+          {{t 'All Events'}}
         {{/link-to}}
         {{#link-to 'admin.events.list' 'deleted' class='item'}}
           {{t 'All Deleted'}}
