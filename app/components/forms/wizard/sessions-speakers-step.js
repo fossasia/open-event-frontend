@@ -3,16 +3,10 @@ import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash-es';
-import moment from 'moment';
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 
   getValidationRules() {
-    window.$.fn.form.settings.rules.checkDates = () => {
-      let startDatetime = moment(this.get('data.speakersCall.startsAt'));
-      let endDatetime = moment(this.get('data.speakersCall.endsAt'));
-      return (endDatetime.diff(startDatetime, 'minutes') > 0);
-    };
     return {
       inline : true,
       delay  : false,
@@ -60,10 +54,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please tell us when your event starts')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time ')
             }
           ]
         },
@@ -73,10 +63,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please tell us when your event ends')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be after End date and time')
             }
           ]
         },
@@ -87,10 +73,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '.'
             }
           ]
         },
@@ -101,10 +83,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '.'
             }
           ]
         }
