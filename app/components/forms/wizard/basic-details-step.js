@@ -124,7 +124,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
     }
   },
-// Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
+
+  // Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
 
     let validationRules = {
