@@ -115,7 +115,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     if (!field.get('isIncluded')) {
       field.set('isRequired', false);
     }
-
     if (field.get('isRequired')) {
       field.set('isIncluded', true);
     }
