@@ -87,15 +87,15 @@
           <i class="ticket icon"></i>
           {{t 'Billing Information'}}
         </h4>
-        {{#if isBillingNotMandatory}}
+        {{#unless this.event.isBillingInfoMandatory}}
           <div class="ui center aligned field">
             {{ui-checkbox label=(t 'Enable Billing Information') checked=data.isBillingEnabled
                                                 onChange=(action (mut data.isBillingEnabled))}}
           </div>                                    
-        {{/if}}
+        {{/unless}}
         {{#if isBillingInfoNeeded}}   
           {{widgets/forms/billing-info
-        	data=data
+        	  data=data
           	event=event}} 
         {{/if}}
         <h4 class="ui horizontal divider header">

@@ -42,10 +42,6 @@ export default Component.extend(FormMixin, {
     return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
   }),
 
-  isBillingNotMandatory: computed('event', function() {
-    return !this.event.isBillingInfoMandatory;
-  }),
-
   getRemainingTime: computed('settings', function() {
     let orderExpiryTime = this.get('settings.orderExpiryTime');
     let willExpireAt = this.get('data.createdAt').add(orderExpiryTime, 'minutes');
