@@ -46,12 +46,12 @@ export default Controller.extend({
             this.set('isLoginModalOpen', false);
             this.send('placeOrder');
           }
-        } catch(reason) {
+        } catch (reason) {
           console.warn(reason);
         } finally {
           this.set('session.skipRedirectOnInvalidation', false);
         }
-      } catch(error) {
+      } catch (error) {
         if (error.errors[0]) {
           if (error.errors[0].status === 409) {
             this.set('userExists', true);
