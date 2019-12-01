@@ -68,7 +68,11 @@ export default Route.extend(ApplicationRouteMixin, {
 
   sessionAuthenticated() {
     if (this.get('session.previousRouteName')) {
-      this.transitionTo(this.get('session.previousRouteName'));
+      this._super(...arguments);
+      const route = this.get('session.previousRouteName');
+      setTimeout(() => {
+        this.transitionTo(route);
+      }, 1000)
     } else {
       this._super(...arguments);
     }
@@ -97,11 +101,13 @@ export default Route.extend(ApplicationRouteMixin, {
           url = transition.router.generate(transition.targetName, params);
         }
         // Do not save the url of the transition to login route.
+        console.log('>>>>', this.get('session.previousRouteName'), url)
         if (!url.includes('login') && !url.includes('reset-password')) {
           this.set('session.previousRouteName', url);
         } else {
-          this.set('session.previousRouteName', null);
+          // this.set('session.previousRouteName', null);
         }
+        console.log('<<<', this.get('session.previousRouteName'))
       });
     }
   }
