@@ -12,13 +12,7 @@ export default Controller.extend({
 
         this.session
           .authenticate(authenticator, credentials)
-          .then(async() => {
-            const tokenPayload = this.authManager.getTokenPayload();
-            if (tokenPayload) {
-              this.authManager.persistCurrentUser(
-                await this.store.findRecord('user', tokenPayload.identity)
-              );
-            }
+          .then(() => {
             this.transitionToRoute('/');
           })
           .catch(reason => {

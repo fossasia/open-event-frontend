@@ -52,13 +52,6 @@ export default class extends Component.extend(FormMixin) {
       });
       try {
         await this.session.authenticate(authenticator, credentials);
-        const tokenPayload = this.authManager.getTokenPayload();
-        if (tokenPayload) {
-          this.authManager.persistCurrentUser(
-            await this.store.findRecord('user', tokenPayload.identity)
-          );
-
-        }
       } catch (e) {
         if (e.error) {
           this.set('errorMessage', this.l10n.tVar(e.error));

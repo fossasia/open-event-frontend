@@ -29,43 +29,39 @@ export default Controller.extend({
         'password'               : (Math.random() * 10).toString(16),
         'wasRegisteredWithOrder' : true
       });
-      newUser.save()
-        .then(() => {
-          let credentials = newUser.getProperties('email', 'password'),
-              authenticator = 'authenticator:jwt';
-          credentials.identification = newUser.email;
-          this.session
-            .authenticate(authenticator, credentials)
-            .then(async() => {
-              const tokenPayload = this.authManager.getTokenPayload();
-              if (tokenPayload) {
-                this.set('session.skipRedirectOnInvalidation', true);
-                this.authManager.persistCurrentUser(
-                  await this.store.findRecord('user', tokenPayload.identity)
-                );
-                this.set('isLoginModalOpen', false);
-                this.send('placeOrder');
-              }
-            })
-            .catch(reason => {
-              console.warn(reason);
-            })
-            .finally(() => {
-              this.set('session.skipRedirectOnInvalidation', false);
-            });
-        })
-        .catch(error => {
-          if (error.errors[0]) {
-            if (error.errors[0].status === 409) {
-              this.set('userExists', true);
-            } else {
-              this.notify.error(this.l10n.t(error.errors[0].detail));
-            }
+
+      try {
+        await newUser.save();
+
+        let credentials = newUser.getProperties('email', 'password'),
+            authenticator = 'authenticator:jwt';
+        credentials.identification = newUser.email;
+
+        try {
+          await this.session.authenticate(authenticator, credentials);
+          const tokenPayload = this.authManager.getTokenPayload();
+          if (tokenPayload) {
+            this.set('session.skipRedirectOnInvalidation', true);
+            await this.authManager.loadUser();
+            this.set('isLoginModalOpen', false);
+            this.send('placeOrder');
           }
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
+        } catch(reason) {
+          console.warn(reason);
+        } finally {
+          this.set('session.skipRedirectOnInvalidation', false);
+        }
+      } catch(error) {
+        if (error.errors[0]) {
+          if (error.errors[0].status === 409) {
+            this.set('userExists', true);
+          } else {
+            this.notify.error(this.l10n.t(error.errors[0].detail));
+          }
+        }
+      } finally {
+        this.set('isLoading', false);
+      }
 
     },
 
@@ -82,9 +78,7 @@ export default Controller.extend({
           const tokenPayload = this.authManager.getTokenPayload();
           if (tokenPayload) {
             this.set('session.skipRedirectOnInvalidation', true);
-            this.authManager.persistCurrentUser(
-              await this.store.findRecord('user', tokenPayload.identity)
-            );
+            await this.authManager.loadUser();
             this.set('isLoginModalOpen', false);
             this.send('placeOrder');
           }

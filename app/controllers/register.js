@@ -46,13 +46,7 @@ export default Controller.extend({
       this.session
         .authenticate(authenticator, credentials)
         .then(async() => {
-          const tokenPayload = this.authManager.getTokenPayload();
-          if (tokenPayload) {
-            this.set('session.skipRedirectOnInvalidation', true);
-            this.authManager.persistCurrentUser(
-              await this.store.findRecord('user', tokenPayload.identity)
-            );
-          }
+          await this.authManager.loadUser();
           this.transitionToRoute('public.role-invites', eventId, { queryParams: { token } });
         })
         .catch(reason => {

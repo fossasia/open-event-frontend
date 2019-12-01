@@ -62,6 +62,20 @@ export default Service.extend({
     this.metrics.identify(null);
   },
 
+  async loadUser() {
+    if (this.currentUserModel) {
+      return this.currentUserModel;
+    }
+    const tokenPayload = this.getTokenPayload();
+    if (tokenPayload) {
+      this.persistCurrentUser(
+        await this.store.findRecord('user', tokenPayload.identity)
+      );
+    }
+
+    return this.currentUserModel;
+  },
+
   persistCurrentUser(user = null) {
     if (!user) {
       user = this.currentUserModel;

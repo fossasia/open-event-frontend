@@ -28,6 +28,7 @@ export default Route.extend({
   async model() {
     const eventDetails = this.modelFor('public');
     const currentUser  = this.get('authManager.currentUser');
+    console.log('>>>>> current user', currentUser);
     if (this.get('session.isAuthenticated')) {
       const userSpeaker = await currentUser.query('speakers', {
         filter: [

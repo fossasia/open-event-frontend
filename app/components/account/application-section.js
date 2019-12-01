@@ -23,14 +23,8 @@ export default Component.extend({
                 this.session
                   .authenticate(authenticator, credentials)
                   .then(async() => {
-                    const tokenPayload = this.authManager.getTokenPayload();
-                    if (tokenPayload) {
-                      this.authManager.persistCurrentUser(
-                        await this.store.findRecord('user', tokenPayload.identity)
-                      );
-                      this.set('data', this.get('authManager.currentUser'));
-                    }
-
+                    await this.authManager.loadUser();
+                    this.set('data', this.get('authManager.currentUser'));
                     this.set('isLoading', false);
                   });
               });
