@@ -75,13 +75,13 @@ export default Component.extend({
     },
 
     clearFilters() {
-      this.set('dummyLocatio', null);
-      this.set('dummyNam', null);
-      this.set('filterDat', null);
+      this.set('dummyLocation', null);
+      this.set('dummyName', null);
+      this.set('filterDate', null);
       this.setDateFilter();
-      this.set('locatio', this.dummyLocation);
-      this.set('eventNam', this.dummyName);
-      this.set('disableClea', true);
+      this.set('location', this.dummyLocation);
+      this.set('eventName', this.dummyName);
+      this.set('disableClear', true);
     }
   }
 });
