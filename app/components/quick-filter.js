@@ -61,15 +61,21 @@ export default Component.extend({
   },
   actions: {
     handleKeyPress() {
+      this.set('disableClear', false);
+      if (!this.dummiesFull()) {
+        this.set('disableClear', true);
+      }
       if (event.code === 'Enter') {
         this.send('search');
       }
     },
     search() {
       this.setDateFilter();
-      this.set('location', this.dummyLocation);
-      this.set('eventName', this.dummyName);
-      if (this.dummyName || this.dummyLocation) { this.set('disableClear', false) }
+      if (this.dummiesFull()) {
+        this.set('location', this.dummyLocation);
+        this.set('eventName', this.dummyName);
+        this.set('disableClear', false);
+      }
     },
 
     clearFilters() {
@@ -81,5 +87,12 @@ export default Component.extend({
       this.set('eventName', this.dummyName);
       this.set('disableClear', true);
     }
+  },
+
+  dummiesFull() {
+    if (this.dummyName === '' || this.dummyName === null) {
+      return false;
+    }
+    return true;
   }
 });
