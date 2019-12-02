@@ -90,9 +90,9 @@ export default Component.extend({
   },
 
   dummiesFull() {
-    if (this.dummyName === '' || this.dummyName === null) {
-      return false;
+    if (this.dummyName || this.get('startDate') || this.get('endDate') || this.dummyLocation) {
+      return true;
     }
-    return true;
+    return false;
   }
 });
