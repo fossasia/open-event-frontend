@@ -3,9 +3,9 @@ import moment from 'moment';
 
 export default Component.extend({
 
-  dummyName: null,
-  dummyLocation: null,
-  disableClear: true,
+  dummyName     : null,
+  dummyLocation : null,
+  disableClear  : true,
 
   setDateFilter() {
     let newStartDate = null;
@@ -57,7 +57,7 @@ export default Component.extend({
     this._super(...arguments);
     this.set('dummyLocation', this.location);
     this.set('dummyName', this.eventName);
-    if (this.dummyName || this.dummyLocation) { this.set('disableClear', false) }
+    if (this.dummyName || this.dummyLocation) {this.set('disableClear', false)}
   },
   actions: {
     handleKeyPress() {
