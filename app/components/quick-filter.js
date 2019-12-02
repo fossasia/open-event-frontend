@@ -3,9 +3,9 @@ import moment from 'moment';
 
 export default Component.extend({
 
-  dummyName    : null,
-  dummyLocation: null,
-  disableClear : true,
+  dummyName     : null,
+  dummyLocation : null,
+  disableClear  : true,
 
   setDateFilter() {
     let newStartDate = null;
