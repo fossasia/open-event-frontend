@@ -57,9 +57,7 @@ export default Component.extend({
     this._super(...arguments);
     this.set('dummyLocation', this.location);
     this.set('dummyName', this.eventName);
-    if (this.dummyName || this.dummyLocation) {
-      this.set('disableClear', false);
-    }
+    if (this.dummyName || this.dummyLocation) {this.set('disableClear', false);}
   },
   actions: {
     handleKeyPress() {
