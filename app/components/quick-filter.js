@@ -61,7 +61,6 @@ export default Component.extend({
   },
   actions: {
     handleKeyPress() {
-      this.set('disableClear', false);
       if (!this.dummiesFull()) {
         this.set('disableClear', true);
       }
