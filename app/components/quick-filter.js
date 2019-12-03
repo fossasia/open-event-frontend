@@ -89,7 +89,7 @@ export default Component.extend({
   },
 
   dummiesFull() {
-    if (this.dummyName || this.get('startDate') || this.get('endDate') || this.dummyLocation) {
+    if (this.dummyName || this.startDate || this.endDate || this.dummyLocation) {
       return true;
     }
     return false;
