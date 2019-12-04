@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 export default class extends ModalBase { 
   onVisible() {
     let viewport = {};
-    let factor = 750;
+    let factor = 150;
     const aspectRatio = this.getWithDefault('aspectRatio', [2, 1]);
     viewport.width = aspectRatio[0] * factor;
     viewport.height = aspectRatio[1] * factor;
@@ -33,7 +33,7 @@ export default class extends ModalBase {
   }
   @action
   cropImage() {
-    this.$('img').croppie('result', 'base64', 'original', 'jpeg', 1).then(result => {
+    this.$('img').croppie('result', 'base64', 'original', 'jpeg').then(result => {
       if (this.onImageCrop) {
         this.onImageCrop(result);
       }
