@@ -1,6 +1,6 @@
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import { action } from '@ember/object';
-export default class extends ModalBase { 
+export default class extends ModalBase {
   onVisible() {
     let viewport = {};
     let factor = 150;
@@ -25,7 +25,6 @@ export default class extends ModalBase {
       $img.unwrap();
     }
   }
-  
   @action
   resetImage() {
     this.onHide();
