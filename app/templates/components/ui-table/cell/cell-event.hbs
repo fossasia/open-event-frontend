@@ -1,5 +1,5 @@
 <div class="ui header weight-400">
-  <img src="{{if extraRecords.logoUrl extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{extraRecords.name}}
+  <img src="{{if extraRecords.logoUrl extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{record}}
 </div>
 
 <div class="ui horizontal compact basic buttons">
@@ -10,11 +10,11 @@
     <i class="edit icon"></i>
   {{/ui-popup}}
   {{#if (and props.options.hasRestorePrivileges extraRecords.deletedAt)}}
-    {{#ui-popup content=(t 'Restore') click=(action props.actions.restoreEvent record) class='ui icon button' position='left center'}}
+    {{#ui-popup content=(t 'Restore') click=(action props.actions.restoreEvent extraRecords.identifier) class='ui icon button' position='left center'}}
       <i class="undo icon"></i>
     {{/ui-popup}}
   {{else}}
-    {{#ui-popup content=(t 'Delete') click=(action props.actions.openDeleteEventModal extraRecords.identifier extraRecords.name) class='ui icon button' position='left center'}}
+    {{#ui-popup content=(t 'Delete') click=(action props.actions.openDeleteEventModal extraRecords.identifier record) class='ui icon button' position='left center'}}
       <i class="trash outline icon"></i>
     {{/ui-popup}}
   {{/if}}
