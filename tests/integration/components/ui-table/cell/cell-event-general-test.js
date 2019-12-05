@@ -6,8 +6,8 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | ui table/cell/cell event general', function(hooks) {
   setupIntegrationTest(hooks);
 
-  const extraRecords = { name: 'Event', logoUrl: 'url' };
-  const record = 'abc215f';
+  const extraRecords = { identifier: 'abc215f', logoUrl: 'url' };
+  const record = 'Event';
 
   const props = {
     actions: {
