@@ -145,17 +145,8 @@
   </div>
   {{#if data.module.ticketInclude}}
     <div class="ui section divider"></div>
-    {{!-- Hiding toggle ticket feature temporarily
-      <div class="field">
-        <div class="ui slider checkbox">
-          {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
-          <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
-        </div>
-      </div>
-    --}}
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
-      {{!-- {{#if data.event.isTicketingEnabled}} --}}
       <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
         {{#if data.event.tickets}}
           <div class="ui stackable celled five column grid ticket-header">
@@ -501,10 +492,18 @@
             {{t 'Add Tax Information'}}
           </button>
         {{/if}}
+        <div class="ui hidden divider"></div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            {{input type='checkbox' id='billing_info_mandatory' checked=data.event.isBillingInfoMandatory}}
+            <label for="billing_info">
+              <strong>{{t 'Billing Info'}}:</strong>
+              {{t 'Require Billing Information from Ticket Buyer'}}
+            </label>
+          </div>
+        </div>
       </div>
-
     </div>
-
   {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields">

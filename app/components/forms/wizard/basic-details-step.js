@@ -125,12 +125,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     }
   },
 
+  // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
-    window.$.fn.form.settings.rules.checkDates = () => {
-      let startDatetime = moment(this.get('data.event.startsAt'));
-      let endDatetime = moment(this.get('data.event.endsAt'));
-      return (endDatetime.diff(startDatetime, 'minutes') > 0);
-    };
 
     let validationRules = {
       inline : true,
@@ -165,10 +161,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid start date')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be before End date and time')
             }
           ]
         },
@@ -182,10 +174,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid end date')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be before End date and time')
             }
           ]
         },
@@ -196,10 +184,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '..'
             }
           ]
         },
@@ -210,10 +194,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '..'
             }
           ]
         },
