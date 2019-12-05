@@ -11,6 +11,11 @@ export default Controller.extend({
   displayEndDate: computed('model.startsAtDate', 'model.endsAtDate', function() {
     return !moment(this.model.startsAtDate).isSame(this.model.endsAtDate, 'minute');
   }),
+  displaySideMenu: computed('session.currentRouteName', function() {
+    if (this.get('session.currentRouteName')) {
+      return this.get('session.currentRouteName') !== 'public.cfs.new-session' && this.get('session.currentRouteName') !== 'public.cfs.new-speaker' && this.get('session.currentRouteName') !== 'public.cfs.edit-speaker' && this.get('session.currentRouteName') !== 'public.cfs.edit-session';
+    }
+  }),
   actions: {
     toggleMenu() {
       this.toggleProperty('isMenuOpen');
