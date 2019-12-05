@@ -26,7 +26,7 @@
     <div class="ui stackable grid">
       <div class="three wide column" id="public-event-content">
         {{#if device.isMobile}}
-          {{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session'))}}
+          {{#if displaySideMenu}}
             <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
               <i class="content icon"></i>
             </button>
