@@ -1,9 +1,9 @@
-{{#if record}}
+{{#if extraRecords.timezone}}
+  <span>
+    {{general-date record extraRecords.timezone}}
+  </span>
+{{else if record}}
   <span>
     {{moment-format record (if props.options.dateFormat props.options.dateFormat 'MMMM DD, YYYY - HH:mm A')}}
-  </span>
-{{else}}
-  <span>
-    {{t 'No dates available.'}}
   </span>
 {{/if}}

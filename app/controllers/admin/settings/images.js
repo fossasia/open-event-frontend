@@ -8,14 +8,23 @@ export default Controller.extend({
         .then(() => {
           this.get('model.speakerImageSize').save()
             .then(() => {
-              this.notify.success(this.l10n.t('Image sizes have been saved successfully.'));
+              this.notify.success(this.l10n.t('Image sizes have been saved successfully.'),
+                {
+                  id: 'image_size_save'
+                });
             })
             .catch(() => {
-              this.notify.error(this.l10n.t('An unexpected error has occurred. Image sizes not saved.'));
+              this.notify.error(this.l10n.t('An unexpected error has occurred. Image sizes not saved.'),
+                {
+                  id: 'image_size_error'
+                });
             });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred. Image sizes not saved.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Image sizes not saved.'),
+            {
+              id: 'image_size_error_unex'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);

@@ -48,7 +48,10 @@ export default Controller.extend({
     return this.loader
       .patch(`sessions/${sessionId}`, JSON.stringify(payload), config)
       .then(() => {
-        this.notify.success('Changes have been made successfully');
+        this.notify.success('Changes have been made successfully',
+          {
+            id: 'schedu_change'
+          });
       })
       .catch(reason => {
         this.set('error', reason);
@@ -90,11 +93,17 @@ export default Controller.extend({
       event.set('schedulePublishedOn', publishedAt);
       event.save()
         .then(() => {
-          this.notify.success(`The schedule has been ${action} successfully`);
+          this.notify.success(`The schedule has been ${action} successfully`,
+            {
+              id: 'schedule_change_succ'
+            });
         })
         .catch(reason => {
           this.set('error', reason);
-          this.notify.error(`Error: ${reason}`);
+          this.notify.error(`Error: ${reason}`,
+            {
+              id: 'error_reason_scheduler'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);

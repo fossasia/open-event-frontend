@@ -145,17 +145,8 @@
   </div>
   {{#if data.module.ticketInclude}}
     <div class="ui section divider"></div>
-    {{!-- Hiding toggle ticket feature temporarily
-      <div class="field">
-        <div class="ui slider checkbox">
-          {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
-          <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
-        </div>
-      </div>
-    --}}
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
-      {{!-- {{#if data.event.isTicketingEnabled}} --}}
       <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
         {{#if data.event.tickets}}
           <div class="ui stackable celled five column grid ticket-header">
@@ -189,14 +180,14 @@
           </h3>
         {{/if}}
       </div>
-      <button type="button" class="ui blue small button" {{action 'addTicket' 'free' data.event.tickets.length}}>
+      <button type="button" class="ui blue small button {{if device.isMobile 'field fluid'}}" {{action 'addTicket' 'free' data.event.tickets.length}}>
         <i class="large icons basic-details">
           <i class="smile icon"></i>
           <i class="inverted corner add icon"></i>
         </i>
         {{t 'Free Ticket'}}
       </button>
-      <button type="button" class="ui blue small button" {{action 'addTicket' 'paid' data.event.tickets.length}}>
+      <button type="button" class="ui blue small button {{if device.isMobile 'field fluid'}}" {{action 'addTicket' 'paid' data.event.tickets.length}}>
         <i class="large icons basic-details">
           <i class="dollar icon"></i>
           <i class="inverted corner add icon"></i>
@@ -210,7 +201,7 @@
         </div>
       {{/if}} --}}
     
-      <button type="button" class="ui blue small button" {{action 'addTicket' 'donation' data.event.tickets.length}}>
+      <button type="button" class="ui blue small button {{if device.isMobile 'field fluid'}}" {{action 'addTicket' 'donation' data.event.tickets.length}}>
         <i class="large icons basic-details">
           <i class="heart icon"></i>
           <i class="inverted corner add icon"></i>
@@ -501,10 +492,18 @@
             {{t 'Add Tax Information'}}
           </button>
         {{/if}}
+        <div class="ui hidden divider"></div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            {{input type='checkbox' id='billing_info_mandatory' checked=data.event.isBillingInfoMandatory}}
+            <label for="billing_info">
+              <strong>{{t 'Billing Info'}}:</strong>
+              {{t 'Require Billing Information from Ticket Buyer'}}
+            </label>
+          </div>
+        </div>
       </div>
-
     </div>
-
   {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields">

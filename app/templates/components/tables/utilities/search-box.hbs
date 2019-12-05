@@ -1,4 +1,4 @@
-<div class="ui small icon input">
-  {{input type="text" value=searchQuery placeholder="Search ..." }}
+<div class="ui small icon input search-box">
+  {{input type="text" value=(readonly searchQuery) keyUp=(action 'setSearchQuery' value="target.value") placeholder="Search ..." }}
   <i class="search icon"></i>
 </div>

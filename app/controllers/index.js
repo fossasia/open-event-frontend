@@ -7,7 +7,7 @@ export default Controller.extend({
   start_date  : null,
   end_date    : null,
   location    : null,
-  name        : null,
+  event_name  : null,
   filterDate  : null,
 
   callForSpeakersEvents: computed('filteredEvents.[]', function() {
