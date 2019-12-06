@@ -28,7 +28,7 @@
     </div>
     <div class="row">
       <div class="ten wide column">
-        {{forms/orders/order-form save='save' data=model.order fields=model.form settings=settings}}
+        {{forms/orders/order-form save='save' data=model.order event=model.event fields=model.form settings=settings}}
       </div>
       <div class="six wide column">
         {{#if model.order.event.ownerName}}
