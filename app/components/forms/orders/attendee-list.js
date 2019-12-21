@@ -14,7 +14,7 @@ export default class extends Component {
     return this.data.attendees;
   }
 
-  @or('data.amount', 'data.isBillingEnabled')
+  @or('event.isBillingInfoMandatory', 'data.isBillingEnabled')
   showBillingInfo;
 
   @computed('fields.@each.form')
