@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { action,computed } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { paymentCountries } from 'open-event-frontend/utils/dictionary/payment';
 import { orderBy, filter } from 'lodash-es';
 
