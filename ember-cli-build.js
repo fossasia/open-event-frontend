@@ -3,6 +3,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const targets = require('./config/targets');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let env = process.env.EMBER_ENV || 'development';
 
@@ -22,7 +23,8 @@ module.exports = function(defaults) {
     },
     babel: {
       plugins: [
-        '@babel/plugin-proposal-object-rest-spread'
+        '@babel/plugin-proposal-object-rest-spread',
+        require.resolve('ember-auto-import/babel-plugin')
       ],
       targets,
       sourceMaps: 'inline'
@@ -32,7 +34,18 @@ module.exports = function(defaults) {
       generateAssetMap : true,
       exclude          : ['package.json'],
       extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
-    }
+    },
+    autoImport: {
+      webpack: {
+        plugins: env === 'production' ? [
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false,
+            generateStatsFile: true
+          })
+        ] : []
+      },
+    },
   });
 
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');
