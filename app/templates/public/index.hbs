@@ -11,43 +11,26 @@
         <div class="ui segment">
           <h3 class="ui header">{{t 'Tickets'}}</h3>
         </div>
+
         <div class="ui segment x-scrollable">
-          {{#if model.event.isTicketingEnabled}}
-            {{public/ticket-list eventCurrency=model.event.paymentCurrency
-                                 ticketUrl=model.event.ticketUrl
-                                 isTicketingEnabled=model.event.isTicketingEnabled
-                                 data=model.tickets
-                                 order=model.order
-                                 event=model.event
-                                 attendees=model.attendees
-                                 code=code
-                                 taxInfo=model.tax
-                                 currentEventIdentifier=model.event.identifier
-                                 createNewUserViaEmail=(action 'createNewUserViaEmail')
-                                 loginExistingUser=(action 'loginExistingUser')
-                                 isLoginModalOpen=isLoginModalOpen
-                                 placeOrder=(action 'placeOrder')
-                                 isLoading=isLoading
-                                 userExists=userExists
-                                 errorMessage=errorMessage
-                                 save='save'}}
-          {{else}}
-            <div class="ui grid">
-              <div class="ui row">
-                <div class="column">
-                  <a target="_blank" rel="noopener noreferrer" href="{{model.event.ticketUrl}}" class="ui right labeled blue icon button">
-                    <i class="ticket icon"></i>
-                    {{t 'Order tickets'}}
-                  </a>
-                </div>
-              </div>
-              <div class="ui row muted text">
-                <div class="column">
-                  {{t 'You will be taken to '}} {{model.event.ticketUrl}} {{t ' to complete the purchase of tickets'}}
-                </div>
-              </div>
-            </div>
-          {{/if}}
+          {{public/ticket-list eventCurrency=model.event.paymentCurrency
+                               ticketUrl=model.event.ticketUrl
+                               data=model.tickets
+                               order=model.order
+                               event=model.event
+                               attendees=model.attendees
+                               code=code
+                               taxInfo=model.tax
+                               currentEventIdentifier=model.event.identifier
+                               createNewUserViaEmail=(action 'createNewUserViaEmail')
+                               loginExistingUser=(action 'loginExistingUser')
+                               isLoginModalOpen=isLoginModalOpen
+                               placeOrder=(action 'placeOrder')
+                               isLoading=isLoading
+                               userExists=userExists
+                               errorMessage=errorMessage
+                               save='save'}}
+
         </div>
       </div>
     </div>
