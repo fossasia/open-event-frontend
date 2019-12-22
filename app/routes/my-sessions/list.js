@@ -40,7 +40,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
           ]
         }
       ];
-    } else {
+    } else if (params.session_status === 'past') {
       filterOptions = [
         {
           name : 'ends-at',
