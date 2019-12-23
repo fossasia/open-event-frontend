@@ -1,24 +1,28 @@
 import Controller from '@ember/controller';
 import moment from 'moment';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
 
-export default Controller.extend({
-  smallLead: computed('session.currentRouteName', function() {
-    if (this.get('session.currentRouteName')) {
-      return this.get('session.currentRouteName') !== 'public.index';
+export default class extends Controller {
+  @computed('session.currentRouteName')
+  get smallLead() {
+    if (this.session.currentRouteName) {
+      return this.session.currentRouteName !== 'public.index';
     }
-  }),
-  displayEndDate: computed('model.startsAtDate', 'model.endsAtDate', function() {
+    return null;
+  }
+  @computed('model.startsAtDate', 'model.endsAtDate')
+  get displayEndDate() {
     return !moment(this.model.startsAtDate).isSame(this.model.endsAtDate, 'minute');
-  }),
-  displaySideMenu: computed('session.currentRouteName', function() {
+  }
+  @computed('session.currentRouteName')
+  get displaySideMenu() {
     if (this.session.currentRouteName) {
       return this.session.currentRouteName !== 'public.cfs.new-session' && this.session.currentRouteName !== 'public.cfs.new-speaker' && this.session.currentRouteName !== 'public.cfs.edit-speaker' && this.session.currentRouteName !== 'public.cfs.edit-session';
     }
-  }),
-  actions: {
-    toggleMenu() {
-      this.toggleProperty('isMenuOpen');
-    }
+    return null;
   }
-});
+  @action
+  toggleMenu() {
+    this.toggleProperty('isMenuOpen');
+  }
+}
