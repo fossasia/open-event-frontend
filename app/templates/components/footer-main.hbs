@@ -73,7 +73,7 @@
   <div class="ui stackable grid">
     <div class="thirteen wide computer twelve wide tablet column left aligned">
       <div class="ui horizontal inverted small divided link list less top margin">
-        <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
+        <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{settings.appName}} </span>
         {{#each footerPages as |page|}}
           {{#link-to 'pages' page.url class='item'}}
             {{page.name}}
