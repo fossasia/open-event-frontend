@@ -1,22 +1,26 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-export default Controller.extend({
-  data: computed('model.subTopics', function() {
-    let topics = this.get('model.subTopics');
+import { action } from '@ember/object';
+
+export default class extends Controller {
+
+  @computed('model.subTopics')
+  get data() {
+    let topics = this.model.subTopics;
     topics.forEach(topic => {
       if (!topic.get('placeholder.content')) {
         topic.set('placeholder', this.store.createRecord('custom-placeholder', {
-          name          : topic.get('name'),
+          name          : topic.name,
           eventSubTopic : topic
         }));
       }
     });
     return topics;
-  }),
-  actions: {
-    openModal(placeholder) {
-      this.set('isModalOpen', true);
-      this.set('selectedPlaceholder', placeholder);
-    }
   }
-});
+
+  @action
+  openModal(placeholder) {
+    this.set('isModalOpen', true);
+    this.set('selectedPlaceholder', placeholder);
+  }
+}
