@@ -24,6 +24,7 @@ export default class extends ModalBase {
     if ($img.parent().is('div.croppie')) {
       $img.unwrap();
     }
+
   }
   @action
   resetImage() {
