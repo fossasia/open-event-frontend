@@ -1,24 +1,24 @@
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
+import { action } from '@ember/object';
 
-export default Controller.extend({
+export default class extends Controller {
 
-  isLoading: false,
+  isLoading = false;
 
-  actions: {
-    export() {
-      this.set('isLoading', true);
-      this.loader
-        .load(`/events/${this.get('model.id')}/export/speakers/csv`)
-        .then(exportJobInfo => {
-          this.requestLoop(exportJobInfo);
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-        });
-    }
-  },
+  @action
+  export() {
+    this.set('isLoading', true);
+    this.loader
+      .load(`/events/${this.model.id}/export/speakers/csv`)
+      .then(exportJobInfo => {
+        this.requestLoop(exportJobInfo);
+      })
+      .catch(() => {
+        this.set('isLoading', false);
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      });
+  }
 
   requestLoop(exportJobInfo) {
     run.later(() => {
@@ -43,4 +43,4 @@ export default Controller.extend({
         });
     }, 3000);
   }
-});
+}
