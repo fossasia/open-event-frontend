@@ -1,100 +1,81 @@
 import Controller from '@ember/controller';
-export default Controller.extend({
-  actions: {
-    async openAddSystemRoleModal(role) {
-      let permissions = await this.get('model.panelPermissions');
+import { action } from '@ember/object';
 
-      this.set('panelPermissions', permissions);
-      if (role) {
-        let roles = role.panelPermissions;
-
-        permissions.forEach(permission => {
-          if (roles.includes(permission)) {
-            permission.set('isChecked', true);
-          } else {
-            permission.set('isChecked', false);
-          }
-        });
-        this.set('role', role);
-        this.set('isNew', false);
-      } else {
-        this.set('role', this.store.createRecord('custom-system-role'));
-        permissions.forEach(permission => {
-          permission.set('isChecked', false);
-        });
-        this.set('isNew', true);
-      }
-      this.set('isAddSystemRoleModalOpen', true);
-    },
-    deleteSystemRole(role) {
-      this.set('isLoading', true);
-      role.destroyRecord()
-        .then(() => {
-          this.notify.success(this.l10n.t('System role has been deleted successfully.'),
-            {
-              id: 'system_role_update'
-            });
-        })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred. System role was not deleted.'),
-            {
-              id: 'system_role_error'
-            });
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
-    },
-    addSystemRole() {
-      this.set('isLoading', true);
-      let panels = this.panelPermissions;
-
-      panels.forEach(panel => {
-        if (panel.isChecked) {
-          this.get('role.panelPermissions').addObject(panel);
+export default class extends Controller {
+  @action
+  async openAddSystemRoleModal(role) {
+    let permissions = await this.model.panelPermissions;
+    this.set('panelPermissions', permissions);
+    if (role) {
+      let roles = role.panelPermissions;
+      permissions.forEach(permission => {
+        if (roles.includes(permission)) {
+          permission.set('isChecked', true);
         } else {
-          this.get('role.panelPermissions').removeObject(panel);
+          permission.set('isChecked', false);
         }
       });
-      if (!this.get('role.panelPermissions').length) {
-        this.notify.error(this.l10n.t('Please select atleast one panel.'),
+      this.set('role', role);
+      this.set('isNew', false);
+    } else {
+      this.set('role', this.store.createRecord('custom-system-role'));
+      permissions.forEach(permission => {
+        permission.set('isChecked', false);
+      });
+      this.set('isNew', true);
+    }
+    this.set('isAddSystemRoleModalOpen', true);
+  }
+  @action
+  deleteSystemRole(role) {
+    this.set('isLoading', true);
+    role.destroyRecord()
+      .then(() => {
+        this.notify.success(this.l10n.t('System role has been deleted successfully.'),
           {
-            id: 'select_panel'
+            id: 'system_role_update'
           });
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred. System role was not deleted.'),
+          {
+            id: 'system_role_error'
+          });
+      })
+      .finally(() => {
         this.set('isLoading', false);
+      });
+  }
+  @action
+  addSystemRole() {
+    this.set('isLoading', true);
+    let panels = this.panelPermissions;
+    panels.forEach(panel => {
+      if (panel.isChecked) {
+        this.role.panelPermissions.addObject(panel);
       } else {
-        this.role.save()
-          .then(() => {
-            this.set('isAddSystemRoleModalOpen', false);
-            this.notify.success(this.l10n.t('System role have been saved successfully.'),
-              {
-                id: 'system_role_save'
-              });
-          })
-          .catch(() => {
-            this.notify.error(this.l10n.t('An unexpected error has occurred. System role not saved.'),
-              {
-                id: 'system_save_role_error'
-              });
-          })
-          .finally(() => {
-            this.set('isLoading', false);
-          });
+        this.role.panelPermissions.removeObject(panel);
       }
-    },
-    updatePermissions() {
-      this.set('isLoading', true);
-      this.get('model.userPermissions').save()
+    });
+    if (!this.role.panelPermissions.length) {
+      this.notify.error(this.l10n.t('Please select atleast one panel.'),
+        {
+          id: 'select_panel'
+        });
+      this.set('isLoading', false);
+    } else {
+      this.role.save()
         .then(() => {
-          this.notify.success(this.l10n.t('User permissions have been saved successfully.'),
+          this.set('isAddSystemRoleModalOpen', false);
+          this.notify.success(this.l10n.t('System role have been saved successfully.'),
             {
-              id: 'user_permission_save'
+              id: 'system_role_save'
             });
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred. User permissions not saved.'),
+          this.notify.error(this.l10n.t('An unexpected error has occurred. System role not saved.'),
             {
-              id: 'user_error_permission'
+              id: 'system_save_role_error'
             });
         })
         .finally(() => {
@@ -102,4 +83,24 @@ export default Controller.extend({
         });
     }
   }
-});
+  @action
+  updatePermissions() {
+    this.set('isLoading', true);
+    this.model.userPermissions.save()
+      .then(() => {
+        this.notify.success(this.l10n.t('User permissions have been saved successfully.'),
+          {
+            id: 'user_permission_save'
+          });
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred. User permissions not saved.'),
+          {
+            id: 'user_error_permission'
+          });
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+  }
+}

@@ -26,11 +26,13 @@
     <div class="ui stackable grid">
       <div class="three wide column" id="public-event-content">
         {{#if device.isMobile}}
-          <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
-            <i class="content icon"></i>
-          </button>
-          {{#if isMenuOpen}}
-            {{public/side-menu class='toggle menu' event=model}}
+          {{#if displaySideMenu}}
+            <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
+              <i class="content icon"></i>
+            </button>
+            {{#if isMenuOpen}}
+              {{public/side-menu class='toggle menu' event=model}}
+            {{/if}}
           {{/if}}
         {{else}}
           {{#ui-sticky context='#public-event-content' observeChanges=true}}
