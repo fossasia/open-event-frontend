@@ -1,18 +1,23 @@
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
 
-export default Controller.extend({
-
-  actions: {
-    save() {
-      try {
-        let systemMessages = this.model;
-        systemMessages.forEach(systemMessage => {
-          systemMessage.save();
+export default class extends Controller {
+  @action
+  save() {
+    try {
+      let systemMessages = this.model;
+      systemMessages.forEach(systemMessage => {
+        systemMessage.save();
+      });
+      this.notify.success(this.l10n.t('Changes have been saved successfully'),
+        {
+          id: 'message_success'
         });
-        this.notify.success(this.l10n.t('Changes have been saved successfully'));
-      } catch (e) {
-        this.notify.error(this.l10n.t(e.errors[0].detail));
-      }
+    } catch (e) {
+      this.notify.error(this.l10n.t(e.errors[0].detail),
+        {
+          id: 'change_error_message'
+        });
     }
   }
-});
+}

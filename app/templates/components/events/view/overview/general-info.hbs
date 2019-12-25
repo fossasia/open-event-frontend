@@ -36,11 +36,11 @@
       </tr>
       <tr>
         <td><strong>{{t 'Start time'}}</strong></td>
-        <td>{{moment-format data.event.startsAt 'h:mm A, MMMM Do YYYY'}}</td>
+        <td>{{general-date data.event.startsAt data.event.timezone}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'End time'}}</strong></td>
-        <td>{{moment-format data.event.endsAt 'h:mm A, MMMM Do YYYY'}}</td>
+        <td>{{general-date data.event.endsAt data.event.timezone}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'Session types'}}</strong></td>
