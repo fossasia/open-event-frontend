@@ -33,11 +33,10 @@ export default class extends ModalBase {
   }
   @action
   cropImage() {
-    this.$('img').croppie('result', 'base64', 'original', 'jpeg').then(result => {
+    this.$('img').croppie('result', { type: 'base64', size: 'original', quality: 1, format: 'jpeg' }).then(result => {
       if (this.onImageCrop) {
         this.onImageCrop(result);
       }
     });
   }
 }
-
