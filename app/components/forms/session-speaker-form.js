@@ -501,6 +501,15 @@ export default Component.extend(FormMixin, {
     return this.speakers.length === 1;
   }),
 
+  isUserOwnerOrAdmin: computed('event.owner.email', 'authManager.currentUser', function() {
+    return (this.authManager.currentUser.isAnAdmin || (this.event.owner.get('email') === this.authManager.currentUser.get('email')));
+  }),
+
+  isUserOrganiser: computed('event.organizers', 'authManager.currentUser', function() {
+    let { currentUser } = this.authManager;
+    return this.event.organizers.includes(currentUser);
+  }),
+
   // Clicking on the add speaker button creates a blank record which increases the length of the session's list by 1.
   noSessionExists: computed('sessions', function() {
     return this.sessions.length === 1;
