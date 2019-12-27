@@ -28,11 +28,23 @@ export default Controller.extend({
     return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
 
   }),
+    marker: {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [ -96.7969879, 32.7766642 ] }
+      }
+    ]
+  },
 
   actions: {
     shareEvent(event) {
       this.set('eventToShare', event);
       this.set('isShareModalOpen', true);
+    },
+        mapClicked({ target: map, point }) {
+      console.log(map, point);
     }
   }
 });

@@ -97,6 +97,15 @@ module.exports = function(environment) {
     enabled: false
   };
 
+  ENV['mapbox-gl'] = {
+  	 accessToken: 'pk.eyJ1Ijoia3VzaHRoZWR1ZGUiLCJhIjoiY2s0bmczdXhlMzJidDNlbXdpY3F2enp3dSJ9.fZMstKnXl5ySzxzMajg3vQ',
+      map: {
+    style: 'mapbox://styles/mapbox/basic-v9',
+    zoom: 13,
+    center: [ -96.7969879, 32.7766642 ]
+  }
+  };
+
   ENV['ember-simple-auth-token'] = {
     refreshAccessTokens      : false,
     serverTokenEndpoint      : `${ENV.APP.apiHost}/auth/session`,

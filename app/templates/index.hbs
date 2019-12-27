@@ -1,4 +1,13 @@
 <div class="ui container">
+{{#mapbox-gl class='map-container' initOptions=(hash pitch=30) as |map|}}
+  {{map.on 'click' (action 'mapClicked')}}
+
+  {{#map.source options=(hash type='geojson' data=marker) as |source|}}
+    {{source.layer layer=(hash
+      type='circle'
+      paint=(hash circle-color='#007cbf' circle-radius=10))}}
+  {{/map.source}}
+{{/mapbox-gl}}
   {{quick-filter eventName=event_name startDate=start_date endDate=end_date location=location filterDate=filterDate}}
 
   {{#if featuredEvents}}
