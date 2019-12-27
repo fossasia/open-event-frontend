@@ -2,8 +2,16 @@ module.exports = {
   root: true,
   parser: 'babel-eslint',
   parserOptions: {
+<<<<<<< HEAD
     ecmaVersion: 2017,
     sourceType: 'module'
+=======
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
+>>>>>>> f74dadb1... message
   },
   plugins: [
     'ember'
@@ -16,6 +24,7 @@ module.exports = {
     browser: true
   },
   rules: {
+<<<<<<< HEAD
     'arrow-spacing': 'error',
     'no-var': 'error',
     'no-useless-escape': 'off',
@@ -79,6 +88,9 @@ module.exports = {
     Uint8Array : true,
     require    : true,
     Promise    : true
+=======
+    'ember/no-jquery': 'error'
+>>>>>>> f74dadb1... message
   },
   overrides: [
     // node files
@@ -94,8 +106,7 @@ module.exports = {
         'server/**/*.js'
       ],
       parserOptions: {
-        sourceType: 'script',
-        ecmaVersion: 2015
+        sourceType: 'script'
       },
       env: {
         browser: false,

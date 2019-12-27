@@ -2,10 +2,14 @@
 'use strict';
 
 module.exports = {
+<<<<<<< HEAD
   extends: 'recommended',
   rules: {
     'no-nested-interactive': {
       ignoredTags: ['label'] // Allow label tag inside a or any other interactive element
     }
   }
+=======
+  extends: 'octane'
+>>>>>>> f74dadb1... message
 };

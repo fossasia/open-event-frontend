@@ -31,6 +31,10 @@ before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 install: yarn
 
+branches:
+  only:
+    - master
+
 script:
   - touch .env
   - node scripts/l10n.js generate

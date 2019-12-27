@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import config from 'open-event-frontend/config/environment';
 import RouterScroll from 'ember-router-scroll';
 
+<<<<<<< HEAD
 const router = Router.extend(RouterScroll, {
   location : config.locationType,
   rootURL  : config.rootURL,
@@ -31,6 +32,12 @@ const router = Router.extend(RouterScroll, {
     });
   }
 });
+=======
+export default class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
+>>>>>>> f74dadb1... message
 
 router.map(function() {
   this.route('login');
@@ -218,5 +225,8 @@ router.map(function() {
     this.route('paid', { path: '/:invoice_identifier/paid' });
   });
 });
+<<<<<<< HEAD
 
 export default router;
+=======
+>>>>>>> f74dadb1... message
