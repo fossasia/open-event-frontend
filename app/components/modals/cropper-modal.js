@@ -1,6 +1,6 @@
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
-
-export default ModalBase.extend({
+import { action } from '@ember/object';
+export default class extends ModalBase {
   onVisible() {
     let viewport = {};
     let factor = 150;
@@ -16,7 +16,7 @@ export default ModalBase.extend({
         height: 250
       }
     });
-  },
+  }
 
   onHide() {
     this.$('img').croppie('destroy');
@@ -24,19 +24,19 @@ export default ModalBase.extend({
     if ($img.parent().is('div.croppie')) {
       $img.unwrap();
     }
-  },
 
-  actions: {
-    resetImage() {
-      this.onHide();
-      this.onVisible();
-    },
-    cropImage() {
-      this.$('img').croppie('result', { type: 'base64', size: 'original', quality: 1, format: 'jpeg' }).then(result => {
-        if (this.onImageCrop) {
-          this.onImageCrop(result);
-        }
-      });
-    }
   }
-});
+  @action
+  resetImage() {
+    this.onHide();
+    this.onVisible();
+  }
+  @action
+  cropImage() {
+    this.$('img').croppie('result', { type: 'base64', size: 'original', quality: 1, format: 'jpeg' }).then(result => {
+      if (this.onImageCrop) {
+        this.onImageCrop(result);
+      }
+    });
+  }
+}

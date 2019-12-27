@@ -1,5 +1,5 @@
 <div class="ui segments">
-  {{#if (eq session.currentRouteName 'orders.view')}}
+  {{#if (and (eq session.currentRouteName 'orders.view') (not-eq data.status 'cancelled'))}}
     <div class="ui {{order-color data.status}} inverted segment center aligned">
       <div class="ui inverted mini statistic horizontal">
         <div class="value">
@@ -38,7 +38,7 @@
   <div class="ui secondary segment">
     <h3 class="weight-400">{{t 'Order Summary'}}</h3>
   </div>
-  {{#if (or (eq session.currentRouteName 'orders.new') (eq session.currentRouteName 'orders.view') (eq session.currentRouteName 'orders.pending'))}}
+  {{#if (and (or (eq session.currentRouteName 'orders.new') (eq session.currentRouteName 'orders.view') (eq session.currentRouteName 'orders.pending')) (not-eq data.status 'cancelled'))}}
     <table class="ui very basic tablet stackable table order-summary center aligned">
       <thead>
         <tr>
@@ -154,6 +154,20 @@
         {{t 'Your order expired because you did not complete registration in time.'}}
         <br>
         {{t 'Please click on event link given on the right to order your tickets again.'}}
+      </div>
+    </div>
+  </div>
+{{/if}}
+{{#if (and (eq session.currentRouteName 'orders.view') (eq data.status 'cancelled'))}}
+  <div class="ui {{order-color data.status}} inverted segment">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Cancelled'}}
+      </div>
+      <div class="label">
+        {{t 'Your order has been cancelled due to some unavoidable circumstances.'}}
+        <br>
+        {{t 'Please contact the event organizer for further details.'}}
       </div>
     </div>
   </div>
