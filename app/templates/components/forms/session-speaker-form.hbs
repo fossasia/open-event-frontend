@@ -203,6 +203,12 @@
                 {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier))
                         id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
+            {{else if (eq field.fieldIdentifier 'sponsorshipRequired')}}
+              {{ui-checkbox label=(t 'Sponsorship is required') checked = data.speaker.isNotRequired 
+              onChange = (action (mut data.speaker.isNotRequired))}} 
+              {{#if (not data.speaker.isNotRequired)}}
+                {{input type='hidden' id='speaker_sponsorshipRequired_required' value=(mut (get data.speaker field.fieldIdentifier))}} 
+              {{/if}}
             {{else}}
               {{#if field.isUrlField}}
                 {{widgets/forms/link-input
