@@ -3,6 +3,7 @@
 
 module.exports = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   extends: 'recommended',
   rules: {
     'no-nested-interactive': {
@@ -12,4 +13,7 @@ module.exports = {
 =======
   extends: 'octane'
 >>>>>>> f74dadb1... message
+=======
+  extends: 'recommended'
+>>>>>>> d09dfa49... message
 };
