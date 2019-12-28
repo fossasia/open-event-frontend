@@ -204,11 +204,12 @@
                         id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
             {{else if (eq field.fieldIdentifier 'sponsorshipRequired')}}
-              {{ui-checkbox label=(t 'Sponsorship is required') checked = data.speaker.isNotRequired 
-              onChange = (action (mut data.speaker.isNotRequired))}} 
-              {{#if (not data.speaker.isNotRequired)}}
-                {{input type='hidden' id='speaker_sponsorshipRequired_required' value=(mut (get data.speaker field.fieldIdentifier))}} 
-              {{/if}}
+                {{ui-checkbox  checked=data.speaker.isSponsor  onChange=(action (mut data.speaker.isSponsor))  label= (if data.speaker.isSponsor  (t 'Yes')  (t 'No'))}}
+                {{#if data.speaker.isSponsor}}
+                  {{input type="hidden" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))  value = "Yes" }}
+                {{else}}
+                  {{input type="hidden" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))  value = "No"}}
+                {{/if}}
             {{else}}
               {{#if field.isUrlField}}
                 {{widgets/forms/link-input
