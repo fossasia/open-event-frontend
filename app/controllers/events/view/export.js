@@ -1,15 +1,18 @@
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
-export default Controller.extend({
-  eventDownloadUrl   : '',
-  eventExportStatus  : 'Event export not yet started.',
-  isDownloadDisabled : true,
-  data               : {
+import { action } from '@ember/object';
+
+export default class extends Controller {
+  eventDownloadUrl   = '';
+  eventExportStatus  = 'Event export not yet started.';
+  isDownloadDisabled = true;
+  data               = {
     image    : false,
     audio    : false,
     video    : false,
     document : false
-  },
+  };
+
   requestLoop(exportJobInfo) {
     run.later(() => {
       this.loader
@@ -49,23 +52,22 @@ export default Controller.extend({
           this.set('isLoading', false);
         });
     }, 3000);
-  },
-  actions: {
-    startGeneration() {
-      this.set('isLoading', true);
-      let payload = this.data;
-      this.loader
-        .post(`/events/${this.get('model.id')}/export/json`, payload)
-        .then(exportJobInfo => {
-          this.requestLoop(exportJobInfo);
-        })
-        .catch(() => {
-          this.set('isLoading', false);
-          this.notify.error(this.l10n.t('Unexpected error occurred.'),
-            {
-              id: 'event_error_export'
-            });
-        });
-    }
   }
-});
+  @action
+  startGeneration() {
+    this.set('isLoading', true);
+    let payload = this.data;
+    this.loader
+      .post(`/events/${this.get('model.id')}/export/json`, payload)
+      .then(exportJobInfo => {
+        this.requestLoop(exportJobInfo);
+      })
+      .catch(() => {
+        this.set('isLoading', false);
+        this.notify.error(this.l10n.t('Unexpected error occurred.'),
+          {
+            id: 'event_error_export'
+          });
+      });
+  }
+}
