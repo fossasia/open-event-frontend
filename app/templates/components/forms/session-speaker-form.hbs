@@ -204,12 +204,8 @@
                         id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
             {{else if (eq field.fieldIdentifier 'sponsorshipRequired')}}
-                {{ui-checkbox  checked=data.speaker.isSponsor  onChange=(action (mut data.speaker.isSponsor))  label= (if data.speaker.isSponsor  (t 'Yes')  (t 'No'))}}
-                {{#if data.speaker.isSponsor}}
-                  {{input type="hidden" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))  value = "Yes" }}
-                {{else}}
-                  {{input type="hidden" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))  value = "No"}}
-                {{/if}}
+                  <label>{{input type="radio" value = "yes" name = "sponsorshipRequired" class = "ui radio checkbox"  id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}} Yes </label>
+                  <label>{{input type="radio" value = "no" name = "sponsorshipRequired" class="ui radio checkbox" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}} No </label>
             {{else}}
               {{#if field.isUrlField}}
                 {{widgets/forms/link-input
