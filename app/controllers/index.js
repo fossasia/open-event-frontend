@@ -17,6 +17,7 @@ export default Controller.extend({
       if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
         return false;
       }
+
       const startDateTime = callForPapers.get('startsAt');
       const endDateTime = callForPapers.get('endsAt');
       const privacyState = callForPapers.get('privacy');

@@ -12,10 +12,12 @@ export default Controller.extend({
         if (userChanges.firstName || userChanges.lastName) {
           await current_user.save();
         }
+
         let { attendees, paymentMode } = data;
         for (const attendee of attendees ? attendees.toArray() : []) {
           await attendee.save();
         }
+
         if (paymentMode === 'free') {
           order.set('status', 'completed');
         } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite') {
@@ -23,6 +25,7 @@ export default Controller.extend({
         } else {
           order.set('status', 'pending');
         }
+
         await order.save()
           .then(order => {
             if (order.status === 'pending') {

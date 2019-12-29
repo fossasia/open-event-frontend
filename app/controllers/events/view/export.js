@@ -4,8 +4,11 @@ import { action } from '@ember/object';
 
 export default class extends Controller {
   eventDownloadUrl   = '';
+
   eventExportStatus  = 'Event export not yet started.';
+
   isDownloadDisabled = true;
+
   data               = {
     image    : false,
     audio    : false,
@@ -53,6 +56,7 @@ export default class extends Controller {
         });
     }, 3000);
   }
+
   @action
   startGeneration() {
     this.set('isLoading', true);

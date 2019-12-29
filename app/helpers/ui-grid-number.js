@@ -10,9 +10,11 @@ export function uiGridNumber(params) {
   if (params < 1) {
     params = 1;
   }
+
   if (params > 16) {
     params = 16;
   }
+
   switch (params) {
     case 1:
       return 'one';
@@ -47,6 +49,7 @@ export function uiGridNumber(params) {
     case 16:
       return 'sixteen';
   }
+
   return '';
 }
 

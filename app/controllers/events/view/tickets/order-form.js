@@ -9,6 +9,7 @@ export default Controller.extend({
     for (const customForm of data.customForms ? data.customForms.toArray() : []) {
       await customForm.save();
     }
+
     return data;
   },
 

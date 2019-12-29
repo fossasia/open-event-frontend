@@ -66,6 +66,7 @@ export default ModelBase.extend({
         } else {
           buttonSubject = ' Call for Speakers';
         }
+
         break;
 
       default:
@@ -103,6 +104,7 @@ export default ModelBase.extend({
       default:
       // Nothing here.
     }
+
     return routeName;
   })
 });

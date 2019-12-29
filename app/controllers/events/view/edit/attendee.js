@@ -8,8 +8,10 @@ export default class extends Controller.extend(EventWizardMixin) {
     for (const customForm of data.customForms ? data.customForms.toArray() : []) {
       await customForm.save();
     }
+
     return data;
   }
+
   @action
   async save(data) {
     try {
@@ -25,6 +27,7 @@ export default class extends Controller.extend(EventWizardMixin) {
         });
     }
   }
+
   @action
   async move(direction, data) {
     try {

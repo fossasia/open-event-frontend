@@ -9,10 +9,12 @@ export default ApplicationSerializer.extend({
       if (!snapshot.adapterOptions || !snapshot.adapterOptions.includePassword) {
         attributesToOmit.push('password');
       }
+
       json.data.attributes = omit(json.data.attributes, attributesToOmit);
     } else if (options && options.includeId) {
       json.data.attributes = pick(json.data.attributes, ['email', 'password', 'was-registered-with-order']);
     }
+
     return json;
   }
 });

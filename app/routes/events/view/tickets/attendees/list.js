@@ -20,6 +20,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         return this.l10n.t('All');
     }
   }
+
   async model(params) {
     this.set('params', params);
     const searchField = 'firstname';
@@ -55,6 +56,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         }
       ];
     }
+
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
 
     let queryString = {

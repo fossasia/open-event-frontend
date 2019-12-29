@@ -24,6 +24,7 @@ export default TextField.extend({
     if (this.get('fastboot.isFastboot')) {
       return;
     }
+
     let navigator = this.navigator || ((window) ? window.navigator : null);
     if (navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -75,6 +76,7 @@ export default TextField.extend({
         if (Object.keys(this.restrictions).length > 0) {
           options.componentRestrictions = this.restrictions;
         }
+
         let autocomplete = new google.maps.places.Autocomplete(inputElement, options);
         this.set('autocomplete', autocomplete);
       }

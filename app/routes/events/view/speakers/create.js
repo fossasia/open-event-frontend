@@ -32,6 +32,7 @@ export default Route.extend({
     if (!controller.get('model.speaker.id')) {
       model.speaker.unloadRecord();
     }
+
     if (!controller.get('model.session.id')) {
       model.session.unloadRecord();
     }

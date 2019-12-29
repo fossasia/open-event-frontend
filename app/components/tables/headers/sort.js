@@ -13,6 +13,7 @@ export default class extends Component {
         return 'caret down';
       }
     }
+
     return 'sort';
   }
 

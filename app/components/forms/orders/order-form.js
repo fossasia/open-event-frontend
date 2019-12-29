@@ -34,6 +34,7 @@ export default Component.extend(FormMixin, {
       this.data.set('paymentMode', 'free');
       return false;
     }
+
     return true;
   }),
   sameAsBuyer: false,

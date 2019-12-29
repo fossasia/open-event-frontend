@@ -1,9 +1,10 @@
+/* eslint-disable no-duplicate-imports */
 import $ from 'jquery';
-import Service from '@ember/service';
 import { computed } from '@ember/object';
 import { equal, or } from '@ember/object/computed';
 import { debounce } from '@ember/runloop';
 import { forOwn } from 'lodash-es';
+import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 
 /**
@@ -74,6 +75,7 @@ export default Service.extend({
         rv = parseFloat(RegExp.$1);
       }
     }
+
     return rv !== -1;
   }),
 

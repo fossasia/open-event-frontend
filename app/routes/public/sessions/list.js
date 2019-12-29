@@ -176,6 +176,7 @@ export default Route.extend({
         ]
       });
     }
+
     return {
       event   : eventDetails,
       session : sessions

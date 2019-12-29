@@ -63,6 +63,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       let newCheckinTimes = attendee.get('checkinTimes') === null ? `${moment().toISOString()}` : `${attendee.get('checkinTimes')},${moment().toISOString()}`;
       attendee.set('checkinTimes', newCheckinTimes);
     }
+
     attendee.save()
       .then(savedAttendee => {
         this.notify.success(this.l10n.t(`Attendee ${savedAttendee.isCheckedIn ? 'Checked-In' : 'Checked-Out'} Successfully`));

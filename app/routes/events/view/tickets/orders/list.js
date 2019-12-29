@@ -30,6 +30,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         }
       ];
     }
+
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
 
     let queryString = {

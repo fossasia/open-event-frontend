@@ -103,6 +103,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_del_unex'
         });
     }
+
     this.setProperties({
       isLoading              : false,
       isEventDeleteModalOpen : false

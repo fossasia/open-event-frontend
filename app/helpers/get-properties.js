@@ -12,6 +12,7 @@ export function getProperties(params = []) {
   if (params.length < 2 || !params[1]) {
     return {};
   }
+
   let inputParams = params.slice();
   const row = inputParams.shift();
   return emberGetProperties(row, flatten(inputParams));

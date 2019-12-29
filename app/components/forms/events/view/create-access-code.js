@@ -8,9 +8,11 @@ export default Component.extend(FormMixin, {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
       return this.get('data.minQuantity') <= this.get('data.maxQuantity');
     };
+
     window.$.fn.form.settings.rules.checkMaxTotal = () => {
       return this.get('data.maxQuantity') <= this.get('data.ticketsNumber');
     };
+
     return {
       inline : true,
       delay  : false,
@@ -112,6 +114,7 @@ export default Component.extend(FormMixin, {
     if (this.hiddenTickets.length && this.get('data.tickets').length === this.hiddenTickets.length) {
       return true;
     }
+
     return false;
   }),
 
@@ -126,6 +129,7 @@ export default Component.extend(FormMixin, {
       } else {
         this.get('data.tickets').clear();
       }
+
       tickets.forEach(ticket => {
         ticket.set('isChecked', allTicketTypesChecked);
       });

@@ -76,6 +76,7 @@ export default Route.extend({
         val  : `%${params.location}%`
       });
     }
+
     if (params.cfs) {
       filterOptions.push({
         name : 'is_sessions_speakers_enabled',

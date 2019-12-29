@@ -12,6 +12,7 @@ export default ModalBase.extend(FormMixin, {
       if (!this.currentInvite.id) {
         this.currentInvite.unloadRecord();
       }
+
       this.set('isOpen', false);
     }
   },

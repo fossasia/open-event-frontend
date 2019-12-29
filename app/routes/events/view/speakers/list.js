@@ -23,6 +23,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       this.transitionTo('public', event.id);
     }
   }
+
   async model(params) {
     this.set('params', params);
     const searchField = 'name';

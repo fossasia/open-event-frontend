@@ -25,9 +25,11 @@ export default Component.extend({
       proto = temp[0];
       add = temp[1];
     }
+
     if (add.includes('www.')) {
       add = add.substring(add.indexOf('.') + 1);
     }
+
     this.set('segmentedLink', {
       protocol : proto,
       address  : add

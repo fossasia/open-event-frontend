@@ -12,6 +12,7 @@ export default Route.extend({
     if (currentUser.firstName || currentUser.lastName) {
       userName = `${currentUser.firstName} ${currentUser.lastName}`;
     }
+
     return {
       event : eventDetails,
       forms : await eventDetails.query('customForms', {

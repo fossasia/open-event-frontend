@@ -20,6 +20,7 @@ export const computedSegmentedLink = function(property) {
           address  : ''
         };
       }
+
       return {
         protocol : splitted[0],
         address  : splitted[1]
@@ -32,6 +33,7 @@ export const computedSegmentedLink = function(property) {
       } else {
         this.set(property, null);
       }
+
       return value;
     }
   });
@@ -51,6 +53,7 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       if (this.constructor.modelName === 'event') {
         momentDate = momentDate.tz(this.timezone);
       }
+
       return momentDate.format(getFormat(segmentFormat));
     },
     set(key, value) {
@@ -58,6 +61,7 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       if (this.constructor.modelName === 'event') {
         newDate = newDate.tz(this.timezone, true);
       }
+
       let oldDate = newDate;
       if (this.get(property)) {
         oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
@@ -67,6 +71,7 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       } else {
         oldDate = newDate;
       }
+
       if (segmentFormat === 'time') {
         oldDate.hour(newDate.hour());
         oldDate.minute(newDate.minute());
@@ -77,12 +82,14 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       } else {
         oldDate = newDate;
       }
+
       this.set(property, oldDate);
       if (endProperty) {
         if (segmentFormat === 'date' && this.get(endProperty) < oldDate) {
           this.set(endProperty, oldDate);
         }
       }
+
       return value;
     }
   });

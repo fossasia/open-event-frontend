@@ -57,6 +57,7 @@ export default ModelBase.extend({
     if (!taxType) {
       return ((1 + this.event.get('tax.rate') / 100) * this.price).toFixed(2);
     }
+
     return this.price;
   }),
 
@@ -71,6 +72,7 @@ export default ModelBase.extend({
       const taxRate = this.event.get('tax.rate');
       return ((taxRate * this.price) / (100 + taxRate)).toFixed(2);
     }
+
     return 0;
   })
 });

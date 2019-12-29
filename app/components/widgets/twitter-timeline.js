@@ -8,8 +8,10 @@ export default Component.extend({
       if (splitted.includes('hashtag')) {
         return null;
       }
+
       return splitted[splitted.length - 1];
     }
+
     return this.handleOrProfile;
   }),
 
@@ -17,6 +19,7 @@ export default Component.extend({
     if (this.handle) {
       return `https://twitter.com/${this.handle}`;
     }
+
     return null;
   })
 });

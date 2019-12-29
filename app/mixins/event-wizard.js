@@ -58,6 +58,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         }
       }
     }
+
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
     if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
       await event.save();
@@ -117,15 +118,19 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       if (event.name === undefined || event.name === '') {
         errorObject.errors.push({ 'detail': 'Event name has not been provided' });
       }
+
       if (event.locationName === undefined || event.locationName === '') {
         errorObject.errors.push({ 'detail': 'Location has not been provided' });
       }
+
       if (event.startsAtDate === undefined || event.endsAtDate === undefined) {
         errorObject.errors.push({ 'detail': 'Dates have not been provided' });
       }
+
       if (numberOfTickets === 0) {
         errorObject.errors.push({ 'detail': 'Tickets are required for publishing event' });
       }
+
       throw (errorObject);
     }
   },

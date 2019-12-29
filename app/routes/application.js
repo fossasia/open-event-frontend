@@ -63,6 +63,7 @@ export default Route.extend(ApplicationRouteMixin, {
     if (!this.get('session.skipRedirectOnInvalidation')) {
       this._super(...arguments);
     }
+
     this.set('session.skipRedirectOnInvalidation', false);
   },
 
@@ -96,6 +97,7 @@ export default Route.extend(ApplicationRouteMixin, {
         } else {
           url = transition.router.generate(transition.targetName, params);
         }
+
         // Do not save the url of the transition to login route.
         if (!url.includes('login') && !url.includes('reset-password')) {
           this.set('session.previousRouteName', url);

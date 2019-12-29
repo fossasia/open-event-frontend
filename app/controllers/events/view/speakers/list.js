@@ -68,6 +68,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       console.warn(e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
+
     this.set('isLoading', false);
   }
 

@@ -2,9 +2,8 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
-import { sumBy } from 'lodash-es';
+import { sumBy, merge } from 'lodash-es';
 import { A } from '@ember/array';
-import { merge } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
   store: service(),
@@ -30,6 +29,7 @@ export default Component.extend(FormMixin, {
     if (this.taxInfo !== null) {
       return (this.taxInfo.isTaxIncludedInPrice);
     }
+
     return false;
   }),
 
@@ -56,6 +56,7 @@ export default Component.extend(FormMixin, {
         }
       }
     }
+
     return true;
   }),
 
@@ -65,6 +66,7 @@ export default Component.extend(FormMixin, {
         ticket => ((ticket.ticketPriceWithTax || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
       );
     }
+
     return sumBy(this.tickets.toArray(),
       ticket => ((ticket.price || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
     );
@@ -97,6 +99,7 @@ export default Component.extend(FormMixin, {
               let includedTaxAmount = (taxRate * ticketPrice) / (100 + taxRate);
               ticket.set('includedTaxAmount', includedTaxAmount);
             }
+
             ticket.set('discount', 0);
           });
           this.accessCodeTickets.clear();
@@ -109,6 +112,7 @@ export default Component.extend(FormMixin, {
       if (!this.code) {
         this.set('code', this.promotionalCode);
       }
+
       try {
         let accessCode = await this.store.queryRecord('access-code', { eventIdentifier: this.event.id, code: this.promotionalCode });
         this.order.set('accessCode', accessCode);
@@ -122,6 +126,7 @@ export default Component.extend(FormMixin, {
       } catch (e) {
         this.set('invalidPromotionalCode', true);
       }
+
       try {
         let discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode });
         let discountCodeEvent = await discountCode.get('event');
@@ -142,6 +147,7 @@ export default Component.extend(FormMixin, {
               let includedTaxAmount = (taxRate * (ticketPrice - discount)) / (100 + taxRate);
               ticket.set('includedTaxAmount', includedTaxAmount);
             }
+
             this.discountedTickets.addObject(ticket);
             this.set('invalidPromotionalCode', false);
           });
@@ -154,6 +160,7 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalCode', true);
         }
       }
+
       if (this.invalidPromotionalCode) {
         this.set('promotionalCodeApplied', false);
         this.notify.error('This Promotional Code is not valid', {
@@ -163,6 +170,7 @@ export default Component.extend(FormMixin, {
         this.set('promotionalCodeApplied', true);
         this.set('promotionalCode', 'Promotional code applied successfully');
       }
+
       this.order.set('amount', this.total);
 
     },
@@ -172,6 +180,7 @@ export default Component.extend(FormMixin, {
       if (!this.total) {
         this.order.set('amount', 0);
       }
+
       if (count > 0) {
         this.order.tickets.addObject(ticket);
       } else {
@@ -210,6 +219,7 @@ export default Component.extend(FormMixin, {
         ]
       };
     }
+
     return validationRules;
   }),
   getValidationRules() {

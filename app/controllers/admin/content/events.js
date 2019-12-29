@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 export default class extends Controller {
 
   disableEventSubtopic = true;
+
   currentTopicSelected = null;
 
   @action
@@ -23,6 +24,7 @@ export default class extends Controller {
       this.set('isLoading', false);
     }
   }
+
   @action
   openModalFor(modelInstanceOrName) {
     const modelName = typeof modelInstanceOrName === 'string' ? modelInstanceOrName : modelInstanceOrName.constructor.modelName;
@@ -31,6 +33,7 @@ export default class extends Controller {
     this.set(camelCasedValue, modelInstance);
     modelInstance.openModal = true;
   }
+
   @action
   deleteEventProperty(eventProp) {
     this.set('isLoading', true);
@@ -53,6 +56,7 @@ export default class extends Controller {
         this.set('isLoading', false);
       });
   }
+
   @action
   addEventProperty(modelInstance) {
     const camelCasedValue = camelCase(modelInstance.constructor.modelName);

@@ -17,6 +17,7 @@ export default Component.extend({
         this.set('currentInvite', currentInvite);
         this.set('isNewInvite', true);
       }
+
       this.set('isAddUserRoleModalOpen', true);
     },
     updateUserRoles() {
@@ -27,6 +28,7 @@ export default Component.extend({
           if (this.isNewInvite) {
             this.get('data.roleInvites').addObject(this.currentInvite);
           }
+
           this.set('isAddUserRoleModalOpen', false);
           this.notify.success(this.isNewInvite ? this.l10n.t('Role Invite sent successfully') : this.l10n.t('Role Invite updated successfully'), {
             id: 'man_role'

@@ -110,6 +110,7 @@ export default Route.extend({
         ]
       });
     }
+
     if (mode === 'filterOptions') {
       return filterOptions;
     } else {

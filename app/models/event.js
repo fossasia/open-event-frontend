@@ -160,6 +160,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
     if (!this.locationName) {
       return '';
     }
+
     let splitLocations = this.locationName.split(',');
     if (splitLocations.length <= 3) {
       return this.locationName;

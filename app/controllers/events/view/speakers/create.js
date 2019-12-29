@@ -9,10 +9,12 @@ export default class extends Controller {
       if (!sessionDetails) {
         await this.model.session.save();
       }
+
       let newSpeaker = this.model.speaker;
       if (newSpeaker.isEmailOverridden) {
         newSpeaker.set('email', this.authManager.currentUser.email);
       }
+
       await newSpeaker.save();
       if (!sessionDetails) {
         this.model.speaker.sessions.pushObject(this.model.session);

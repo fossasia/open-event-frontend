@@ -11,6 +11,7 @@ export default ModalBase.extend({
       if (this.get('confirm.pendingPromise.reject')) {
         this.get('confirm.pendingPromise.reject')();
       }
+
       this.set('isOpen', false);
     },
 
@@ -18,6 +19,7 @@ export default ModalBase.extend({
       if (this.get('confirm.pendingPromise.resolve')) {
         this.get('confirm.pendingPromise.resolve')();
       }
+
       this.set('isOpen', false);
     }
   }

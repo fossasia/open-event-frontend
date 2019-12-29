@@ -76,6 +76,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
         }
       ];
     }
+
     return {
       orders: await userDetails.query('orders', {
         filter: filterOptions

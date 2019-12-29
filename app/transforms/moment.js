@@ -6,6 +6,7 @@ export default Transform.extend({
     if (!serialized) {
       return null;
     }
+
     return moment(serialized);
   },
 
@@ -13,6 +14,7 @@ export default Transform.extend({
     if (!deserialized) {
       return null;
     }
+
     return moment(deserialized).toISOString();
   }
 });

@@ -8,6 +8,7 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
     if (json.data.relationships.order) {
       json.data.relationships.order.data.id = snapshot._belongsToRelationships.order.__attributes.originalId;
     }
+
     return json;
   }
 });

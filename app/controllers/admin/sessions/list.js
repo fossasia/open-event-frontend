@@ -71,6 +71,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
+
   @action
   async deleteSession(session_id) {
     this.set('isLoading', true);
@@ -88,6 +89,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'unexpected_session_error'
         });
     }
+
     this.set('isLoading', false);
   }
 

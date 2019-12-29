@@ -68,6 +68,7 @@ export default ModelBase.extend({
       if (this.lastAccessedAt == null) {
         return 'inactive';
       }
+
       return (new Date().getMonth() - new Date(this.lastAccessedAt).getMonth() <= 12) ? 'active' : 'inactive';
     } else {
       return 'deleted';

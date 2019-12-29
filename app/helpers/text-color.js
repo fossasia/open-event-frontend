@@ -27,10 +27,12 @@ export function textColor(params) {
   if (!params[0]) {
     return colorForLightBackground;
   }
+
   const rgb = hexToRgb(params[0]);
   if (!rgb) {
     return colorForLightBackground;
   }
+
   return colourIsLight(rgb.r, rgb.g, rgb.b) ? colorForLightBackground : colorForDarkBackground;
 }
 

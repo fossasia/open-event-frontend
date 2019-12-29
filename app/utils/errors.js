@@ -16,17 +16,21 @@ export const getErrorMessage = (input, defaultError = 'Unable to load data', att
     if (!input) {
       return defaultError;
     }
+
     if (attempt > 2) {
       return JSON.stringify(input);
     }
+
     if (isString(input) || isNumber(input)) {
       let error = input;
       try {
         error = JSON.parse(input);
       } catch (ignored) { /* ignored */ }
+
       if (isString(error) || isNumber(isNumber)) {
         return error;
       }
+
       return getErrorMessage(error, ++attempt);
     }
 

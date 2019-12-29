@@ -6,6 +6,7 @@ export function canModifyOrder(params) {
     // returns false if order is paid or discounted and completed
     return order.status !== 'completed';
   }
+
   // returns true for free ticket
   return true;
 }

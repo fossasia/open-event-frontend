@@ -52,6 +52,7 @@ export default Component.extend({
             this.uploadImage(untouchedImageData);
           }
         };
+
         reader.readAsDataURL(files[0]);
 
       }).catch(error => {

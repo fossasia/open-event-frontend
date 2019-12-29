@@ -5,7 +5,9 @@ import { action } from '@ember/object';
 export default class extends Component.extend(FormMixin) {
 
   identification = '';
+
   password       = '';
+
   isLoading      = false;
 
 
@@ -44,7 +46,7 @@ export default class extends Component.extend(FormMixin) {
   @action
   async submit() {
     this.onValid(async() => {
-      let credentials = this.getProperties('identification', 'password'),
+      let credentials = { identification: this.identification, password: this.password },
           authenticator = 'authenticator:jwt';
       this.setProperties({
         errorMessage : null,

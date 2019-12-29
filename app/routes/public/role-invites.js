@@ -21,6 +21,7 @@ export default Route.extend({
       this.set('session.skipRedirectOnInvalidation', true);
       this.session.invalidate();
     }
+
     this.set('redirectionParams',  {
       queryParams: {
         event       : originalEventId,

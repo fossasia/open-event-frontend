@@ -25,6 +25,7 @@ export default class extends Controller {
           id: 'event_here_error'
         });
     }
+
     this.set('isLoading', false);
   }
 }

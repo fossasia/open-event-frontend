@@ -93,6 +93,7 @@ export default ModelBase.extend({
         name = this.get(`attendee.${name}`);
       }
     }
+
     return name;
   }),
 

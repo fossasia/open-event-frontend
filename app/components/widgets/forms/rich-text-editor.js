@@ -75,6 +75,7 @@ export default Component.extend({
     if (this.editor) {
       this.editor.destroy();
     }
+
     this.$('.button').popup('destroy');
   }
 });

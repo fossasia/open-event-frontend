@@ -6,6 +6,7 @@ export default ApplicationAdapter.extend({
     if (requestType === 'updateRecord' && snapshot.adapterOptions && snapshot.adapterOptions.getTrashed) {
       url = `${url}?get_trashed=true`;
     }
+
     return url;
   }
 });

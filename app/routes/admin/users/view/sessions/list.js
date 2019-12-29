@@ -76,6 +76,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
         }
       ];
     }
+
     return this.store.query('session', {
       filter : filterOptions,
       sort   : 'starts-at'

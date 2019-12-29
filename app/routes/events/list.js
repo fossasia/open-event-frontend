@@ -81,6 +81,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         }
       ];
     }
+
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
       include        : 'owner,organizers,coorganizers,track-organizers,registrars,moderators',

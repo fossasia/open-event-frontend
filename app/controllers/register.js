@@ -53,6 +53,7 @@ export default Controller.extend({
               await this.store.findRecord('user', tokenPayload.identity)
             );
           }
+
           this.transitionToRoute('public.role-invites', eventId, { queryParams: { token } });
         })
         .catch(reason => {

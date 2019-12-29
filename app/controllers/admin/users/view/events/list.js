@@ -93,6 +93,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } catch (e) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
+
     this.setProperties({
       isLoading              : false,
       isEventDeleteModalOpen : false
@@ -111,6 +112,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       console.warn(e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
+
     this.set('isLoading', false);
   }
 }

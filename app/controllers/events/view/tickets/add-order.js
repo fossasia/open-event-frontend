@@ -45,6 +45,7 @@ export default Controller.extend({
       if (!this.total) {
         order.set('amount', 0);
       }
+
       if (count > 0) {
         order.tickets.addObject(ticket);
       } else {
@@ -75,6 +76,7 @@ export default Controller.extend({
         for (const attendee of attendees ? attendees.toArray() : []) {
           await attendee.save();
         }
+
         order.set('attendees', attendees.slice());
         await order.save()
           .then(order => {
@@ -85,6 +87,7 @@ export default Controller.extend({
             for (const attendee of attendees ? attendees.toArray() : []) {
               await attendee.destroyRecord();
             }
+
             this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
           })
           .finally(() => {

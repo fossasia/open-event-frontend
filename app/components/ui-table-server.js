@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import { alias } from '@ember/object/computed';
 import { computed, setProperties, set, get } from '@ember/object';
 import { typeOf } from '@ember/utils';
@@ -60,6 +61,7 @@ export default ModelsTable.extend({
         pages = pages + 1;
       }
     }
+
     return pages || 1;
   }),
 
@@ -89,6 +91,7 @@ export default ModelsTable.extend({
       store = get(this.data, 'store');
       modelName = get(this.data, 'type.modelName');
     }
+
     query.filter = JSON.parse(query.filter || '[]');
     query[get(this, 'filterQueryParameters.page')] = this.currentPageNumber;
     query[get(this, 'filterQueryParameters.pageSize')] = this.pageSize;
@@ -136,6 +139,7 @@ export default ModelsTable.extend({
         isMomentQuery = true;
         queryParam = moment(filter);
       }
+
       if (filter && !isMomentQuery) {
         query.filter.pushObject({
           name : filterTitle,
@@ -160,6 +164,7 @@ export default ModelsTable.extend({
       if (!this.isDestroyed) {
         setProperties(this, { isLoading: true, isError: false });
       }
+
       store.query(modelName, query)
         .then(newData => setProperties(this, { isLoading: false, isError: false, filteredContent: newData }))
         .catch(() => {
@@ -197,6 +202,7 @@ export default ModelsTable.extend({
       if (!this.gotoForwardEnabled) {
         return;
       }
+
       if (this.pagesCount > this.currentPageNumber) {
         this.incrementProperty('currentPageNumber');
       }
@@ -206,6 +212,7 @@ export default ModelsTable.extend({
       if (!this.gotoBackwardEnabled) {
         return;
       }
+
       if (this.pagesCount > 1) {
         this.decrementProperty('currentPageNumber');
       }
@@ -215,6 +222,7 @@ export default ModelsTable.extend({
       if (!this.gotoBackwardEnabled) {
         return;
       }
+
       set(this, 'currentPageNumber', 1);
     },
 
@@ -222,6 +230,7 @@ export default ModelsTable.extend({
       if (!this.gotoForwardEnabled) {
         return;
       }
+
       this.set('currentPageNumber', this.pagesCount);
     },
 
@@ -240,6 +249,7 @@ export default ModelsTable.extend({
       if (typeOf(sortedBy) === 'undefined' || typeOf(sortedBy) === 'null') {
         sortedBy = get(column, 'propertyName');
       }
+
       if (!sortedBy) {
         return;
       }

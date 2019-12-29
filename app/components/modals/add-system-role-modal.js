@@ -18,6 +18,7 @@ export default ModalBase.extend(FormMixin, {
       if (!this.get('role.id')) {
         this.role.unloadRecord();
       }
+
       this.set('isOpen', false);
     }
   },

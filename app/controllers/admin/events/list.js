@@ -131,11 +131,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_delete_error'
         });
     }
+
     this.setProperties({
       isLoading              : false,
       isEventDeleteModalOpen : false
     });
   }
+
   @action
   async restoreEvent(event_id) {
     this.set('isLoading', true);
@@ -154,6 +156,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'restore_error'
         });
     }
+
     this.set('isLoading', false);
   }
 
@@ -176,6 +179,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_det_error'
         });
     }
+
     this.set('isLoading', false);
   }
 }

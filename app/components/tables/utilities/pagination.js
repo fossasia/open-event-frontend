@@ -22,6 +22,7 @@ export default class extends Component {
         totalPages += 1;
       }
     }
+
     return totalPages;
   }
 
@@ -35,6 +36,7 @@ export default class extends Component {
     return this.currentPage <= 1;
 
   }
+
   @computed('currentPage', 'pageCount')
   get moveToNextPageDisabled() {
     return this.currentPage >= this.pageCount;

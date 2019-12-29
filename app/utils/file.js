@@ -6,6 +6,7 @@ export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
   if (Math.abs(bytes) < thresh) {
     return `${bytes} B`;
   }
+
   const units = si
     ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
     : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
@@ -14,6 +15,7 @@ export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
     bytes /= thresh;
     ++u;
   } while (Math.abs(bytes) >= thresh && u < units.length - 1);
+
   return `${bytes.toFixed(absolute ? 0 : 1)} ${units[u]}`;
 };
 
@@ -32,6 +34,7 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
         for (let i = 0; i < arr.length; i++) {
           header += arr[i].toString(16);
         }
+
         let type;
         // Magic number reference: from http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html
         switch (header) {
@@ -62,12 +65,14 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
             type = 'unknown';
             break;
         }
+
         if (type !== 'unknown' && fileTypes.includes(file.type)) {
           return resolve();
         } else {
           return reject('File type not supported.');
         }
       };
+
       fileReader.readAsArrayBuffer(file);
 
     } else {

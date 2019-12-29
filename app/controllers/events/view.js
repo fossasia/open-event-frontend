@@ -7,6 +7,7 @@ export default class extends Controller {
   openDeleteEventModal() {
     this.set('isEventDeleteModalOpen', true);
   }
+
   @action
   togglePublishState() {
     if (isEmpty(this.model.locationName)) {
@@ -16,6 +17,7 @@ export default class extends Controller {
         });
       return;
     }
+
     this.set('isLoading', true);
     const { state } = this.model;
     this.set('model.state', state === 'draft' ? 'published' : 'draft');
@@ -44,6 +46,7 @@ export default class extends Controller {
         this.set('isLoading', false);
       });
   }
+
   @action
   deleteEvent() {
     this.set('isLoading', true);
@@ -66,6 +69,7 @@ export default class extends Controller {
       });
     this.set('isEventDeleteModalOpen', false);
   }
+
   @action
   copyEvent() {
     this.set('isCopying', true);

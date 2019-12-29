@@ -7,6 +7,7 @@ export default Component.extend({
     if (this.get('data.events').length || this.get('data.orders').length) {
       return false;
     }
+
     return true;
   }),
 

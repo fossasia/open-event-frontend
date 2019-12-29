@@ -17,6 +17,7 @@ export default class extends Controller {
           id: 'cont_upd_error'
         });
     }
+
     this.set('isLoading', false);
   }
 }

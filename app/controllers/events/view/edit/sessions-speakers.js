@@ -21,6 +21,7 @@ export default class extends Controller.extend(EventWizardMixin) {
       ['tracks', 'sessionTypes', 'microlocations', 'customForms', 'tickets']
     );
   }
+
   @action
   move(direction) {
     this.saveEventDataAndRedirectTo(

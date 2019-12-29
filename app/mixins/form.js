@@ -61,11 +61,13 @@ export default Mixin.create({
       } else {
         $form = this.$('.ui.form');
       }
+
       if ($form) {
         $form = $form.first();
         if (this.getValidationRules && $form) {
           $form.form(merge(defaultFormRules, this.getValidationRules()));
         }
+
         if ($form && this) {
           this.set('$form', $form);
         }
@@ -79,6 +81,7 @@ export default Mixin.create({
       if (value && value.length > 0 && format) {
         return moment(value, format).isValid();
       }
+
       return true;
     };
   },

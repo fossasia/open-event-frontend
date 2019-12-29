@@ -45,6 +45,7 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
         });
       });
     }
+
     json.data.relationships.attendees = attendees;
     return json;
   }

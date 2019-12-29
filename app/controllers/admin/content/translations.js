@@ -25,6 +25,7 @@ export default class extends Controller {
           id: 'zip_error'
         });
     }
+
     this.set('isLoading', false);
   }
 }

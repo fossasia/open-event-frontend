@@ -36,6 +36,7 @@ export default Service.extend({
       if (!url.startsWith('/')) {
         url = `/${url}`;
       }
+
       url = config.withoutPrefix ? `${adapter.host}${url}` : `${adapter.urlPrefix()}${url}`;
     }
 
@@ -106,6 +107,7 @@ export default Service.extend({
         );
       throw errorResponse;
     }
+
     return parsedResponse;
   },
 
@@ -146,9 +148,11 @@ export default Service.extend({
         if (files.length === 0) {
           return reject('no_files_selected');
         }
+
         if (!config.fileName) {
           config.fileName = $(source).attr('name');
         }
+
         source = files[0];
       }
 
@@ -165,6 +169,7 @@ export default Service.extend({
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }
+
       xhr.onload = e => resolve(e.target.responseText);
       xhr.onerror = reject;
       if (xhr.upload && onProgressUpdate) {xhr.upload.onprogress = onProgressUpdate}
@@ -184,6 +189,7 @@ export default Service.extend({
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }
+
       xhr.onload =  e => {
         if (e.target.response) {
           resolve(e.target.response);
@@ -191,6 +197,7 @@ export default Service.extend({
           reject('Failed to download file.');
         }
       };
+
       xhr.onerror = reject;
       if (onProgressUpdate) {xhr.onprogress = onProgressUpdate}
       xhr.send(null);

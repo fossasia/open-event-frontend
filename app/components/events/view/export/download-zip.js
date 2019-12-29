@@ -21,6 +21,7 @@ export default class extends Component {
         id: 'err_down'
       });
     }
+
     this.set('isLoading', false);
   }
 

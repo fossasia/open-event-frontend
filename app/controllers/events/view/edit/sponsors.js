@@ -11,6 +11,7 @@ export default class extends Controller.extend(EventWizardMixin) {
       ['sponsors', 'tickets']
     );
   }
+
   @action
   move(direction) {
     this.saveEventDataAndRedirectTo(

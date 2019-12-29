@@ -24,12 +24,15 @@ export default Component.extend({
       if (!this.enableAll && index > this.currentIndex) {
         step.set('isDisabled', true);
       }
+
       if (this.disableAll && index !== this.currentIndex) {
         step.set('isDisabled', true);
       }
+
       if (index < this.currentIndex) {
         step.set('isCompleted', true);
       }
+
       return step;
     });
   }),

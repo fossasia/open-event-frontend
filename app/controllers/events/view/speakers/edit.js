@@ -9,6 +9,7 @@ export default class extends Controller {
     if (speaker.isEmailOverridden) {
       speaker.set('email', this.authManager.currentUser.email);
     }
+
     speaker.save()
       .then(() => {
         this.notify.success(this.l10n.t('Speaker details have been saved'));

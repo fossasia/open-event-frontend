@@ -20,6 +20,7 @@ export default Route.extend({
       this.notify.error(this.l10n.t('Call For Speakers has not been issued yet.'));
       this.transitionTo('public', eventDetails.identifier);
     }
+
     if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {
       this.transitionTo('not-found');
     }

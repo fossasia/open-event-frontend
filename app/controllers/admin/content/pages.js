@@ -17,8 +17,10 @@ export default class extends Controller {
       this.set('isCreate', false);
       this.set('currentForm', page);
     }
+
     this.set('isFormOpen', true);
   }
+
   @action
   savePage(page) {
     page.save()
@@ -26,6 +28,7 @@ export default class extends Controller {
         if (this.isCreate) {
           this.set('isFormOpen', false);
         }
+
         this.notify.success(this.l10n.t('Page details have been saved successfully.'),
           {
             id: 'page_detail_succ'

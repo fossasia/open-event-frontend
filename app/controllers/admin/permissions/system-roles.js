@@ -24,8 +24,10 @@ export default class extends Controller {
       });
       this.set('isNew', true);
     }
+
     this.set('isAddSystemRoleModalOpen', true);
   }
+
   @action
   deleteSystemRole(role) {
     this.set('isLoading', true);
@@ -46,6 +48,7 @@ export default class extends Controller {
         this.set('isLoading', false);
       });
   }
+
   @action
   addSystemRole() {
     this.set('isLoading', true);
@@ -83,6 +86,7 @@ export default class extends Controller {
         });
     }
   }
+
   @action
   updatePermissions() {
     this.set('isLoading', true);

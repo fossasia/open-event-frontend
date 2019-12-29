@@ -37,6 +37,7 @@ export default Route.extend({
     if (!model.speaker.id) {
       model.speaker.unloadRecord();
     }
+
     if (!model.session.id) {
       model.session.unloadRecord();
     }

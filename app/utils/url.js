@@ -17,9 +17,11 @@ export const buildUrlViaUrlParse = (baseUrl, queryParams, stringifyArray = false
       if (isArray(value)) {
         return value.join(',');
       }
+
       return value;
     });
   }
+
   parsedUrl.set('query', merge(parsedUrl.query, queryParams));
   return parsedUrl.toString();
 };
@@ -39,9 +41,11 @@ export const buildUrlViaQueryString = (baseUrl, queryParams, stringifyArray = fa
       if (isArray(value)) {
         return value.join(',');
       }
+
       return value;
     });
   }
+
   // eslint-disable-next-line prefer-template
   return parsedUrl.url + '?' + queryString.stringify(merge(parsedUrl.query, queryParams), { arrayFormat: 'bracket' });
 };

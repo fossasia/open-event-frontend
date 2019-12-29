@@ -11,7 +11,9 @@ export default class extends Component {
   customStartDate = moment().toISOString();
 
   customEndDate = null;
+
   showFilters = false;
+
   isMapVisible = true;
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs')
@@ -66,6 +68,7 @@ export default class extends Component {
     if (moment(date).isAfter(this.customEndDate)) {
       this.set('customEndDate', date);
     }
+
     this.send('selectDateFilter', 'custom_dates');
   }
 
@@ -125,6 +128,7 @@ export default class extends Component {
         default:
       }
     }
+
     this.set('startDate', newStartDate);
     this.set('endDate', newEndDate);
   }

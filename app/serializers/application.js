@@ -17,6 +17,7 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
     if (attribute.options && attribute.options.readOnly) {
       return;
     }
+
     this._super(...arguments);
   },
 
@@ -24,6 +25,7 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
     if (!snapshot.hasMany(relationship.key) || (snapshot.hasMany(relationship.key) && relationship.options.readOnly)) {
       return;
     }
+
     this._super(...arguments);
   },
 
@@ -31,6 +33,7 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
     if (!snapshot.belongsTo(relationship.key) || (snapshot.belongsTo(relationship.key) && !snapshot.belongsTo(relationship.key).id)) {
       return;
     }
+
     this._super(...arguments);
   }
 });

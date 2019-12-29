@@ -18,6 +18,7 @@ export default Component.extend({
     } else {
       this.$('a').removeClass('vertical-item');
     }
+
     this.set('item', this.$('a.active').text().trim());
   },
   didUpdate() {

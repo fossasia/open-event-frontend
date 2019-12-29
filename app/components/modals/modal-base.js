@@ -58,12 +58,14 @@ export default UiModal.extend({
         if (this.onDeny) {
           this.onDeny();
         }
+
         return true;
       },
       onApprove: () => {
         if (this.onApprove) {
           this.onApprove();
         }
+
         return true;
       },
 

@@ -95,6 +95,7 @@ export default Component.extend(FormMixin, {
               this.set('isLoading', false);
             });
         }
+
         this.set('errorMessage', null);
         this.set('successMessage', null);
         this.set('isLoading', true);

@@ -44,6 +44,7 @@ export default Component.extend({
         reader.onload = () => {
           this.uploadFile();
         };
+
         reader.readAsDataURL(files[0]);
       }).catch(error => {
         this.notify.error(error, {

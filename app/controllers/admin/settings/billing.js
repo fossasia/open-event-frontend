@@ -8,11 +8,14 @@ import { orderBy, filter } from 'lodash-es';
 
 export default class extends Controller {
   timezones = timezones;
+
   @computed()
   get countries() {
     return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
   }
+
   payment
+
   @action
   async updateInvoiceModel() {
     this.set('isLoading', true);
@@ -28,6 +31,7 @@ export default class extends Controller {
           id: 'admin_billing_error'
         });
     }
+
     this.set('isLoading', false);
   }
 }

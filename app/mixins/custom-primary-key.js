@@ -19,6 +19,7 @@ export default Mixin.create({
       json.data.id = json.data.attributes['original-id']; // Restore the original from copy
       unset(json, 'data.attributes.original-id'); // Remove the original's copy
     }
+
     return json;
   },
 
@@ -27,6 +28,7 @@ export default Mixin.create({
     if (this.primaryKey !== 'id') {
       attributes.originalId = resourceHash.id;
     }
+
     return attributes;
   }
 });

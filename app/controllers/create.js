@@ -10,6 +10,7 @@ export default class extends Controller.extend(EventWizardMixin) {
       ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
     );
   }
+
   @action
   move() {
     this.saveEventDataAndRedirectTo(

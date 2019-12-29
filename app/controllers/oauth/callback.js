@@ -19,6 +19,7 @@ export default Controller.extend({
                 await this.store.findRecord('user', tokenPayload.identity)
               );
             }
+
             this.transitionToRoute('/');
           })
           .catch(reason => {
@@ -28,6 +29,7 @@ export default Controller.extend({
               } else {
                 this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
               }
+
               this.set('isLoading', false);
             } else {
               console.warn(reason);

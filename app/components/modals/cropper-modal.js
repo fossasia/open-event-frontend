@@ -26,11 +26,13 @@ export default class extends ModalBase {
     }
 
   }
+
   @action
   resetImage() {
     this.onHide();
     this.onVisible();
   }
+
   @action
   cropImage() {
     this.$('img').croppie('result', { type: 'base64', size: 'original', quality: 1, format: 'jpeg' }).then(result => {

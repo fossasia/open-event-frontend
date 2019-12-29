@@ -231,6 +231,7 @@ export default Component.extend(FormMixin, {
             'stripePublishableKey' : null
           });
         }
+
         if (this.isCheckedPaypal === false)  {
           this.settings.setProperties({
             'paypalSandboxClient' : null,
@@ -239,12 +240,14 @@ export default Component.extend(FormMixin, {
             'paypalClient'        : null
           });
         }
+
         if (!this.isCheckedAliPay) {
           this.settings.setProperties({
             'aliPaySecretKey'      : null,
             'aliPayPublishableKey' : null
           });
         }
+
         if (this.isCheckedOmise === false) {
           this.settings.setProperties({
             'omiseTestPublic' : null,
@@ -253,6 +256,7 @@ export default Component.extend(FormMixin, {
             'omiseLiveSecret' : null
           });
         }
+
         this.sendAction('save');
       });
     }

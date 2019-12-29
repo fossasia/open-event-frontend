@@ -35,6 +35,7 @@ export default Mixin.create({
         val  : `%${params.search}%`
       });
     }
+
     return options;
   },
 
@@ -44,6 +45,7 @@ export default Mixin.create({
     } else {
       delete query.sort;
     }
+
     return query;
   },
 
@@ -61,6 +63,7 @@ export default Mixin.create({
         meta : resolved.meta
       };
     }
+
     return resolved;
   }
 

@@ -4,6 +4,7 @@ import { validPhoneNumber } from 'open-event-frontend/utils/validators';
 
 export default class extends ModalBase.extend(FormMixin) {
   isSmall = true;
+
   isWalletSelected = false;
 
   getValidationRules() {

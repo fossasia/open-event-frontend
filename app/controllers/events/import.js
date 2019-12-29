@@ -4,9 +4,13 @@ import { action } from '@ember/object';
 
 export default class extends Controller {
   importStatus = '';
+
   importError  = '';
+
   isImporting  = false;
+
   file         = false;
+
   fileName     = '';
 
   importTask(taskUrl) {
@@ -31,6 +35,7 @@ export default class extends Controller {
         });
     }, 3000);
   }
+
   @action
   uploadFile(files) {
     let [file] = files;
@@ -45,6 +50,7 @@ export default class extends Controller {
     } else if (ext === 'xcal') {
       endpoint = 'import/xcal';
     }
+
     data.append('file', file);
 
     this.setProperties({

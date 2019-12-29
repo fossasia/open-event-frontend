@@ -20,24 +20,31 @@ export default Controller.extend({
       if (filterType === 'start_date') {
         this.set('startDate', null);
       }
+
       if (filterType === 'end_date') {
         this.set('endDate', null);
       }
+
       if (filterType === 'category') {
         this.set('category', null);
       }
+
       if (filterType === 'sub_category') {
         this.set('sub_category', null);
       }
+
       if (filterType === 'event_type') {
         this.set('event_type', null);
       }
+
       if (filterType === 'location') {
         this.set('location', null);
       }
+
       if (filterType === 'ticket_type') {
         this.set('ticket_type', null);
       }
+
       if (filterType === 'cfs') {
         this.set('cfs', null);
       }

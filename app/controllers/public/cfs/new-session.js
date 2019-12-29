@@ -15,6 +15,7 @@ export default Controller.extend({
       } catch (e) {
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       }
+
       this.set('isLoading', false);
     }
   }
