@@ -3,6 +3,7 @@ require('dotenv').config()
 const fs = require('fs');
 const promisify = require('util').promisify
 const { merge } = require('lodash')
+const safeEval = require('safe-eval')
 
 const env = require('../config/environment')
 const appName = 'open-event-frontend'
@@ -16,6 +17,8 @@ async function replaceFastbootConfig() {
   const old = packageInfo.fastboot.config[appName]
   packageInfo.fastboot.config[appName] = merge(old, environment);
   await promisify(fs.writeFile)(packagePath, JSON.stringify(packageInfo))
+
+  console.log('Transformed package.json with new environment')
 }
 
 function findObject(js, objectStart) {
@@ -68,6 +71,10 @@ function findObject(js, objectStart) {
   };
 }
 
+function replace(str, start, end, replacement) {
+  return str.substring(0, start) + replacement + str.substring(end + 1, str.length)
+}
+
 async function replaceWebConfig() {
   const pattern = new RegExp(`^${appName}.*\.js$`)
   const basePath = './dist/assets/'
@@ -76,7 +83,8 @@ async function replaceWebConfig() {
   const envDefinition = 'define("open-event-frontend/config/environment"'
 
   for (const js of appJs) {
-    const code = (await promisify(fs.readFile)(basePath + js)).toString()
+    const jsPath = basePath + js;
+    const code = (await promisify(fs.readFile)(jsPath)).toString()
     let defineIndex = code.indexOf(envDefinition)
 
     if (defineIndex < 0) {
@@ -90,18 +98,35 @@ async function replaceWebConfig() {
     if (defaultIndex < 0)
       continue;
     
+    // File with environment definition found
+
+    console.log('Transforming ' + js)
+    
     const object = findObject(code, defaultIndex)
 
+    console.log('Environment Object Found', object)
+
     const webEnvJson = code.substring(object.start, object.end + 1)
-    const old = eval('(' + webEnvJson + ')')
+    const old = safeEval('(' + webEnvJson + ')')
     
-    // File with environment definition found
-    console.log('Transforming ' + js, object, JSON.stringify(old))
-    console.log(JSON.stringify(merge(old, environment)))
+    const newEnv = JSON.stringify(merge(old, environment))
+    const newCode = replace(code, object.start, object.end, newEnv)
+
+    console.log('Injected new environment')
+
+    await promisify(fs.writeFile)(jsPath, newCode)
+
+    console.log('Transformation Complete')
+
+    break;
   }
 }
 
-(async () => {
+async function injectEnvironment() {
   await replaceFastbootConfig()
   await replaceWebConfig()
-})();
+}
+
+module.exports = {
+  injectEnvironment
+}
