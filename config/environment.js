@@ -99,7 +99,7 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth-token'] = {
     refreshAccessTokens      : false,
-    serverTokenEndpoint      : `/auth/session`,
+    serverTokenEndpoint      : `${ENV.APP.apiHost}/auth/session`,
     identificationField      : 'email',
     passwordField            : 'password',
     tokenPropertyName        : 'access_token',
