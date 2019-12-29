@@ -204,8 +204,12 @@
                         id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
             {{else if (eq field.fieldIdentifier 'sponsorshipRequired')}}
-                  <label>{{input type="radio" value = "yes" name = "sponsorshipRequired" class = "ui radio checkbox"  id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}} Yes </label>
-                  <label>{{input type="radio" value = "no" name = "sponsorshipRequired" class="ui radio checkbox" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}} No </label>
+                <div class="field">
+                  {{ui-radio label=(t 'Yes') current=settings.sponsorshipRequired name='sponsorship' value='yes' onChange=(action (mut settings.sponsorshipRequired))}}
+                </div>
+                <div class="field">
+                  {{ui-radio label=(t 'No') current=settings.sponsorshipRequired name='sponsorship' value='no' onChange=(action (mut settings.sponsorshipRequired))}}
+                </div>
             {{else}}
               {{#if field.isUrlField}}
                 {{widgets/forms/link-input
