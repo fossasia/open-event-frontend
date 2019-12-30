@@ -40,3 +40,4 @@ export default Controller.extend(EventWizardMixin, {
     }
   }
 });
+
