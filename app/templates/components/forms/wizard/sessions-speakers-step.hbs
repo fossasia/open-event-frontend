@@ -316,7 +316,7 @@
   {{else}}
     <div class="spacer-50"></div>
   {{/if}}
-
+  {{!--  Hiding the Custom Widget Form, Until it is ready to be deployed for Development & Production.
   {{#each complexCustomForms as |form|}}
     {{form.isComplex}}
     <div class="fields">
@@ -355,7 +355,7 @@
 
   <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addCustomField'}}>{{t 'Add another custom field'}}</button>
 
-
+ --}}
   <div class="ui fields buttons {{if device.isMobile 'mini three' 'right floated large'}}">
     <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
