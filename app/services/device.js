@@ -39,7 +39,7 @@ export default Service.extend({
   deviceType: computed('currentWidth', function() {
     let deviceType = 'computer';
     forOwn(breakpoints, (value, key) => {
-      if (this.currentWidth >= value.min && (!Object.prototype.hasOwnProperty.call(value, 'max') || this.currentWidth <= value.max) || this.currentWidth <= value.max)) {
+      if (this.currentWidth >= value.min && (!Object.prototype.hasOwnProperty.call(value, 'max') || this.currentWidth <= value.max)) {
         deviceType = key;
       }
     });
