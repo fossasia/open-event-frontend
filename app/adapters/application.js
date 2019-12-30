@@ -13,7 +13,7 @@ import CachedShoe   from 'ember-cached-shoe';
  * @return {*}
  */
 export const fixFilterQuery = query  => {
-  if (query.hasOwnProperty('filter')) {
+  if (Object.prototype.hasOwnProperty.call(query, 'filter')) {
     query.filter = JSON.stringify(query.filter);
   }
 
