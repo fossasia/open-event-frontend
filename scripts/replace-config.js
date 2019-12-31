@@ -18,7 +18,7 @@ async function replaceFastbootConfig() {
   packageInfo.fastboot.config[appName] = merge(old, environment);
   await promisify(fs.writeFile)(packagePath, JSON.stringify(packageInfo));
 
-  //console.log('Transformed package.json with new environment')
+  console.log('Transformed package.json with new environment')
 }
 
 function findObject(js, objectStart) {
@@ -100,11 +100,11 @@ async function replaceWebConfig() {
     }
     // File with environment definition found
 
-    //console.log('Transforming ' + js)
+    console.log('Transforming ' + js)
 
     const object = findObject(code, defaultIndex);
 
-    //console.log('Environment Object Found', object)
+    console.log('Environment Object Found', object)
 
     const webEnvJson = code.substring(object.start, object.end + 1)
     const old = safeEval('(' + webEnvJson + ')')
