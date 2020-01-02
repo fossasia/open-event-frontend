@@ -172,6 +172,7 @@ module.exports = function(environment) {
       'media-src' : '\'none\''
     };
   }
+  
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

@@ -85,7 +85,7 @@ export default Component.extend(FormMixin, {
               this.router.transitionTo('login');
             })
             .catch(reason => {
-              if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 404) {
+              if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 404) {
                 this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
               } else {
                 this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
