@@ -25,7 +25,7 @@ export default Controller.extend({
           }
         })
         .catch(reason => {
-          if (reason && reason.hasOwnProperty('errors') && reason.errors[0].status === 409) {
+          if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 409) {
             this.set('errorMessage', this.l10n.t('User already exists.'));
           } else {
             this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
@@ -57,7 +57,7 @@ export default Controller.extend({
         })
         .catch(reason => {
           if (!(this.isDestroyed || this.isDestroying)) {
-            if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+            if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.status_code === 401) {
               this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
