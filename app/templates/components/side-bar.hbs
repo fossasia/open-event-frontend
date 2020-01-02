@@ -2,11 +2,13 @@
   {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
   {{#if session.isAuthenticated}}
     <div class="item">
-      {{widgets/safe-image isAvatar=true class='ui avatar round image side-bar' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
-                '/images/placeholders/avatar.png')}}
-      {{if authManager.currentUser
-           (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
-           'Welcome'}}
+      <a href="{{href-to 'account.profile'}}">
+        {{widgets/safe-image isAvatar=true class='ui avatar round image side-bar' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
+                  '/images/placeholders/avatar.png')}}
+        {{if authManager.currentUser
+            (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
+            'Welcome'}}
+      </a>
     </div>
     <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
     <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>

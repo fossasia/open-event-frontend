@@ -122,8 +122,10 @@
                 {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                                                  textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{else if (eq field.fieldIdentifier 'email')}}
-                {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
-                              onChange=(action (mut data.speaker.isEmailOverridden))}}
+                {{#if (or isUserOwnerOrAdmin isUserOrganiser)}}
+                  {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
+                                onChange=(action (mut data.speaker.isEmailOverridden))}}
+                {{/if}}
                 {{#if (not data.speaker.isEmailOverridden)}}
                   {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier))
                           id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
@@ -153,6 +155,18 @@
                       <div class="item" data-value="{{country.name}}">
                         <i class="{{lowercase country.code}} flag"></i>
                         {{country.name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              {{else if (eq field.fieldIdentifier 'gender')}}
+                {{#ui-dropdown class='search selection' selected=data.speaker.gender onChange=(action (mut data.speaker.gender)) as |execute mapper|}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{t 'Select your gender'}}</div>
+                  <div class="menu">
+                    {{#each genders as |gender|}}
+                      <div class="item" data-value="{{map-value mapper gender.name}}">
+                        {{gender.name}}
                       </div>
                     {{/each}}
                   </div>
@@ -193,8 +207,10 @@
               {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
             {{else if (eq field.fieldIdentifier 'email')}}
-              {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
-                            onChange=(action (mut data.speaker.isEmailOverridden))}}
+              {{#if (or isUserOwnerOrAdmin isUserOrganiser)}}
+                {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
+                              onChange=(action (mut data.speaker.isEmailOverridden))}}
+              {{/if}}
               {{#if (not data.speaker.isEmailOverridden)}}
                 {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier))
                         id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
@@ -359,7 +375,6 @@
       {{/each}}
     {{/if}}
   {{/if}}
-
 
 
 

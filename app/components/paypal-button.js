@@ -1,4 +1,3 @@
-import paypal from 'paypal-checkout';
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
@@ -8,6 +7,8 @@ export default Component.extend({
 
   async didInsertElement() {
     this._super(...arguments);
+    const paypal = await import('paypal-checkout');
+
     if (this.paymentFor === 'order') {
       let order = this.data;
       let createPayload = {

@@ -12,10 +12,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'Name',
-        valuePath       : 'id',
-        extraValuePaths : ['firstName', 'deletedAt'],
+        valuePath       : 'firstName',
+        extraValuePaths : ['deletedAt', 'id', 'isSuperAdmin'],
         cellComponent   : 'ui-table/cell/admin/users/cell-first-name',
         width           : 155,
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
         options         : {
           hasRestorePrivileges: this.hasRestorePrivileges
         },
@@ -27,9 +29,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : 'Email',
-        valuePath : 'email',
-        width     : 160
+        name            : 'Email',
+        valuePath       : 'email',
+        width           : 175,
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
         name          : 'Status',
@@ -59,15 +63,19 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/admin/users/cell-user-links'
       },
       {
-        name          : 'Member Since',
-        valuePath     : 'createdAt',
-        cellComponent : 'ui-table/cell/admin/users/cell-created-at'
+        name            : 'Member Since',
+        valuePath       : 'createdAt',
+        cellComponent   : 'ui-table/cell/admin/users/cell-created-at',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
-        name          : 'Last Accessed',
-        valuePath     : 'lastAccessedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        options       : {
+        name            : 'Last Accessed',
+        valuePath       : 'lastAccessedAt',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-simple-date',
+        options         : {
           dateFormat: 'MMMM DD, YYYY - hh:mm A'
         }
       }
@@ -78,17 +86,25 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   moveToUserDetails(id) {
     this.transitionToRoute('admin.users.view', id);
   }
+
   @action
   async deleteUser(user_id) {
     this.set('isLoading', true);
     try {
       let user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       await user.destroyRecord();
-      this.notify.success(this.l10n.t('User has been deleted successfully.'));
+      this.notify.success(this.l10n.t('User has been deleted successfully.'),
+        {
+          id: 'user_delete_succ'
+        });
 
     } catch (e) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_delete_error'
+        });
     }
+
     this.set('isLoading', false);
   }
 
@@ -108,11 +124,18 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       let user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       user.set('deletedAt', null);
       user.save({ adapterOptions: { getTrashed: true } });
-      this.notify.success(this.l10n.t('User has been restored successfully.'));
+      this.notify.success(this.l10n.t('User has been restored successfully.'),
+        {
+          id: 'user_restore'
+        });
     } catch (e) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_restore_error'
+        });
       console.warn(e);
     }
+
     this.set('isLoading', false);
   }
 }

@@ -30,14 +30,14 @@
         {{t 'Download Tickets'}}
       </button>
       <button {{action 'downloadInvoice' model.event.name model.order.identifier }} class="ui labeled icon blue {{if isLoadingInvoice 'loading'}} button">
-        <i class="print alternate icon"></i>
-        {{t 'Print Invoice'}}
+        <i class="download icon"></i>
+        {{t 'Download Invoice'}}
       </button>
     </div>
   </div>
   <div class="row">
     <div class="ten wide column">
-      {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
+      {{forms/orders/attendee-list save='save' data=model.order fields=model.form event=model.event}}
     </div>
     <div class="six wide column">
       <div class="row">

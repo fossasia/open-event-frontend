@@ -45,7 +45,10 @@ export default Controller.extend({
     async alipayCheckout(order_identifier) {
       try {
         const res = await this.loader.load(`alipay/create_source/${order_identifier}`);
-        this.notify.success(this.l10n.t('Payment has succeeded'));
+        this.notify.success(this.l10n.t('Payment has succeeded'),
+          {
+            id: 'payment_succ'
+          });
         window.location.replace(res.link);
       } catch (error) {
         this.notify.error(this.l10n.t(error.error));
@@ -127,7 +130,17 @@ export default Controller.extend({
         })
         .catch(e => {
           console.warn(e);
-          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+          if ('errors' in e) {
+            this.notify.error(this.l10n.tVar(e.errors[0].detail),
+              {
+                id: 'unexpected_error_occur'
+              });
+          } else {
+            this.notify.error(this.l10n.tVar(e),
+              {
+                id: 'unexpected_error_occur'
+              });
+          }
         })
         .finally(() => {
           this.set('isLoading', false);

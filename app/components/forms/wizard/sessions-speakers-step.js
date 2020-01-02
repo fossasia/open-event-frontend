@@ -3,16 +3,11 @@ import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash-es';
-import moment from 'moment';
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 
+  // TODO: Removing the Session & Speaker Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
-    window.$.fn.form.settings.rules.checkDates = () => {
-      let startDatetime = moment(this.get('data.speakersCall.startsAt'));
-      let endDatetime = moment(this.get('data.speakersCall.endsAt'));
-      return (endDatetime.diff(startDatetime, 'minutes') > 0);
-    };
     return {
       inline : true,
       delay  : false,
@@ -60,10 +55,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please tell us when your event starts')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time ')
             }
           ]
         },
@@ -73,10 +64,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please tell us when your event ends')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be after End date and time')
             }
           ]
         },
@@ -87,10 +74,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '.'
             }
           ]
         },
@@ -101,10 +84,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '.'
             }
           ]
         }
@@ -126,6 +105,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
 
   microlocations: computed('data.microlocations.@each.isDeleted', function() {
     return this.get('data.event.microlocations').filterBy('isDeleted', false);
+  }),
+
+  complexCustomForms: computed('data.customForms.@each.isComplex', function() {
+    return this.data.customForms.filterBy('isComplex', true);
   }),
 
   fieldChanged(field) {
@@ -173,6 +156,12 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           this.get('data.microlocations').addObject(this.store.createRecord('microlocation'));
           break;
       }
+    },
+    addCustomField() {
+      this.data.customForms.addObject(this.store.createRecord('customForm', {
+        event     : this.data.event,
+        isComplex : true
+      }));
     },
     onChange() {
       this.onValid(() => {});
