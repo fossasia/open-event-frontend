@@ -1,15 +1,12 @@
 <div class="row">
   <div class="sixteen column wide">
     {{#each model as |session|}}
-      {{session-card session=session}}
+      {{#if (or (eq session.status 'confirmed')(eq session.status 'accepted'))}}
+        {{session-card session=session}}
+      {{/if}}
       <div class="ui hidden divider"></div>      
     {{else}}
       <div class="ui disabled header">{{t 'No session proposals found for the events'}}</div>
     {{/each}}
-    {{#infinity-loader infinityModel=model}}
-      <div class="ui loading very padded basic segment">
-      </div>
-      {{infintyModel.reachedInfinity}}
-    {{/infinity-loader}}
   </div>
 </div>
