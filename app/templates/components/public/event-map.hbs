@@ -1,13 +1,17 @@
 {{#if event.isMapShown}}
   <div class="eight wide column event-map">
     <h1>{{t 'Getting Here'}}</h1>
-    {{#g-map markersFitMode='live' lat=37.744 lng=-122.4367 address=event.locationName zoom=2 class='google-maps' as |context|}}
-      {{#g-map-address-marker context address=event.locationName as |markerContext|}}
-        {{#g-map-infowindow markerContext}}
-          {{event.locationName}}
-        {{/g-map-infowindow}}
-      {{/g-map-address-marker}}
-    {{/g-map}}
+    {{#if (eq mapConfig.display 'embed') }}
+      <iframe class="g-map" src="https://maps.google.com/maps?q={{event.locationName}}&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no"></iframe>
+    {{else}}
+      {{#g-map markersFitMode='live' lat=37.744 lng=-122.4367 address=event.locationName zoom=2 class='google-maps' as |context|}}
+        {{#g-map-address-marker context address=event.locationName as |markerContext|}}
+          {{#g-map-infowindow markerContext}}
+            {{event.locationName}}
+          {{/g-map-infowindow}}
+        {{/g-map-address-marker}}
+      {{/g-map}}
+    {{/if}}
   </div>
 {{/if}}
 <div class="{{if event.isMapShown 'eight' 'sixteen'}} wide column address">

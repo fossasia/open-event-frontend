@@ -58,7 +58,7 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="location" id="getting-here">
-    {{public/event-map event=model.event}}
+    {{public/event-map event=model.event mapConfig=model.mapConfig}}
   </div>
   <div class="ui hidden divider"></div>
   {{#if model.event.copyright}}
