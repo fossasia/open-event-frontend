@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import moment from 'moment';
 import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Route.extend({
   headData: service(),
@@ -65,7 +66,9 @@ export default Route.extend({
         tickets : []
       }),
 
-      attendees: []
+      attendees: [],
+
+      mapConfig: ENV.APP.mapConfig
     };
   },
   afterModel(model) {
