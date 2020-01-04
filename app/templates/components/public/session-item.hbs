@@ -44,7 +44,7 @@
   <div class="content">
     {{#each session.speakers as |speaker|}}
       <div class="ui divider"></div>
-      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbImageUrl speaker.thumbImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <p>
         <br>
         {{speaker.name}}
