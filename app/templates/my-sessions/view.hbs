@@ -1,25 +1,25 @@
 <div class="ui container">
   <div class="ui row">
-    {{#if (not model.isLocked)}}
-      {{#if isCfsOpen}}
-        {{#link-to 'public.cfs.edit-session' model.event.id model.id}}
-          <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
-          {{#if device.isMobile}}
-            <div class="ui hidden fitted divider"></div>
-          {{/if}}
-        {{/link-to}}
+    {{#if isCfsOpen}}
+      {{#if (not model.isLocked)}
+          {{#link-to 'public.cfs.edit-session' model.event.id model.id}}
+            <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
+            {{#if device.isMobile}}
+              <div class="ui hidden fitted divider"></div>
+            {{/if}}
+          {{/link-to}}
       {{/if}}
+      {{#each model.speakers as |speaker|}}
+        {{#if (eq speaker.email authManager.currentUser.email)}}
+          {{#link-to 'public.cfs.edit-speaker' model.event.id speaker.id}}
+            <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
+            {{#if device.isMobile}}
+              <div class="ui hidden fitted divider"></div>
+            {{/if}}
+          {{/link-to}}
+        {{/if}}
+      {{/each}}
     {{/if}}
-    {{#each model.speakers as |speaker|}}
-      {{#if (eq speaker.email authManager.currentUser.email)}}
-        {{#link-to 'public.cfs.edit-speaker' model.event.id speaker.id}}
-          <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
-          {{#if device.isMobile}}
-            <div class="ui hidden fitted divider"></div>
-          {{/if}}
-        {{/link-to}}
-      {{/if}}
-    {{/each}}
     {{#if isUpcoming}}
       <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}" {{action 'openProposalDeleteModal'}}>{{t 'Withdraw Proposal'}}</button>
       {{#if device.isMobile}}
