@@ -13,16 +13,15 @@ export default class extends Controller {
 
     return true;
   }
-  
   @computed('model.event.speakersCall.endsAt')
-  get isCfsOpen(){
+  get isCfsOpen() {
     let cfsEndsAt = this.get('model.event.speakersCall.endsAt');
-    if(cfsEndsAt  < moment()) {
+    if (cfsEndsAt  < moment()) {
       return false;
     }
-    
+
     return true;
-    }
+  }
 
   @action
   openProposalDeleteModal() {
