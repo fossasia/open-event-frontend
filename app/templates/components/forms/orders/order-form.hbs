@@ -180,8 +180,9 @@
         {{t
           'By clicking "Pay Now", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event.'}}
       </p>
-      <div class="center aligned">
+      <div class="ui {{if device.isMobile 'grid'}} buttons">
         <button type="submit" class="ui teal submit button">{{t 'Proceed to Checkout'}}</button>
+        {{#link-to "explore" class='ui red button'}}{{t 'Cancel Order'}}{{/link-to}}
       </div>
     </div>
   </div>
