@@ -4,7 +4,9 @@ import { inject as service } from '@ember/service';
 import { merge, values, isEmpty } from 'lodash-es';
 
 export default Route.extend(ApplicationRouteMixin, {
-  session: service(),
+  session     : service(),
+  currentUser : service(),
+
   title(tokens) {
     if (!tokens) {
       tokens = [];
@@ -23,6 +25,8 @@ export default Route.extend(ApplicationRouteMixin, {
     } else {
       this.set('session.previousRouteName', null);
     }
+
+    return this._loadCurrentUser();
   },
 
   async model() {
@@ -63,15 +67,18 @@ export default Route.extend(ApplicationRouteMixin, {
     if (!this.get('session.skipRedirectOnInvalidation')) {
       this._super(...arguments);
     }
+
     this.set('session.skipRedirectOnInvalidation', false);
   },
 
-  sessionAuthenticated() {
-    if (this.get('session.previousRouteName')) {
-      this.transitionTo(this.get('session.previousRouteName'));
-    } else {
-      this._super(...arguments);
-    }
+  async sessionAuthenticated() {
+    let { _super } = this;
+    await this._loadCurrentUser();
+    _super.call(this, ...arguments);
+  },
+
+  _loadCurrentUser() {
+    return this.currentUser.load().catch(() => this.getsession.invalidate());
   },
 
   /**
@@ -96,6 +103,7 @@ export default Route.extend(ApplicationRouteMixin, {
         } else {
           url = transition.router.generate(transition.targetName, params);
         }
+
         // Do not save the url of the transition to login route.
         if (!url.includes('login') && !url.includes('reset-password')) {
           this.set('session.previousRouteName', url);
