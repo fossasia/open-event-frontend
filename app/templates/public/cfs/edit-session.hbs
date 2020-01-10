@@ -4,14 +4,20 @@
       {{t 'Edit Session'}}
     </h2>
     <div class="ui container">
-      {{forms/session-speaker-form fields=model.forms
-                                   data=model
-                                   isLoading=isLoading
-                                   save=(action 'save')
-                                   isSession=true
-                                   includeSession=true
-                                   isSessionSpeaker=true
-      }}
+      {{#if model.event.speakersCall.isOpen}}
+        {{forms/session-speaker-form fields=model.forms
+                                     data=model
+                                     isLoading=isLoading
+                                     save=(action 'save')
+                                     isSession=true
+                                     includeSession=true
+                                     isSessionSpeaker=true
+        }}
+      {{else}}
+        <h2 class = "ui">
+          {{t 'Speakers Call is closed now'}}
+        </h2> 
+      {{/if}} 
     </div>
   </div>
 </div>
