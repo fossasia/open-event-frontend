@@ -304,8 +304,8 @@ export default Component.extend(FormMixin, {
           identifier : 'speaker_sponsorshipRequired_required',
           rules      : [
             {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter select sponsorship')
+              type   : 'checked',
+              prompt : this.l10n.t('Please select sponsorshipRequired')
             }
           ]
         },
