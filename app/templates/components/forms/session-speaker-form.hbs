@@ -217,10 +217,10 @@
               {{/if}}
             {{else if (eq field.fieldIdentifier 'sponsorshipRequired')}}
               <div class="field">
-                {{ui-radio label=(t 'Yes') current=data.speaker.sponsorshipRequired name='sponsorship' value='yes' onChange=(action (mut data.speaker.sponsorshipRequired))}}
+                {{ui-radio label=(t 'Yes') current=data.speaker.sponsorshipRequired name='speaker_sponsorshipRequired_required' value='yes' onChange=(action (mut data.speaker.sponsorshipRequired))}}
               </div>
               <div class="field">
-                {{ui-radio label=(t 'No') current=data.speaker.sponsorshipRequired name='sponsorship' value='no' onChange=(action (mut data.speaker.sponsorshipRequired))}}
+                {{ui-radio label=(t 'No') current=data.speaker.sponsorshipRequired name='speaker_sponsorshipRequired_required' value='no' onChange=(action (mut data.speaker.sponsorshipRequired))}}
               </div>
             {{else}}
               {{#if field.isUrlField}}
