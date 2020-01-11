@@ -196,7 +196,7 @@ export default Mixin.create(MutableArray, {
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'sponsorshipRequired',
         form            : 'speaker',
-        type            : 'text',
+        type            : 'select',
         isRequired      : false,
         isIncluded      : false,
         event           : parent
