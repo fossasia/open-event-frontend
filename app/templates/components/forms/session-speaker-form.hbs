@@ -292,13 +292,21 @@
     <h4>
       {{t 'Choose from an existing session'}}
     </h4>
-    {{#each sessions as |session|}}
-      <div class="field">
-        {{#if session.id}}
-          {{ui-radio name='sessionDetails' label=session.title value=session onChange=(action (mut sessionDetails))}}
-        {{/if}}
+    {{#ui-dropdown class="fluid search selection" selected=sessionDetails onChange=(action (mut sessionDetails)) as |execute mapper|}}
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Session'}}
       </div>
-    {{/each}}
+      <div class="menu">
+        {{#each sessions as |session|}}
+          {{#if session.id}}
+            <div data-value="{{map-value mapper session}}" class="item">
+              {{session.title}}
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
     {{#if noSessionExists}}
       <div class="ui small disabled header">{{t 'No session exists. Add a new session proposal.'}}</div>
     {{/if}}
