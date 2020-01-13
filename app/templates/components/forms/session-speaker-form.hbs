@@ -216,9 +216,9 @@
                         id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
               {{/if}}
             {{else if (eq field.fieldIdentifier 'sponsorshipRequired')}}
-              {{#each sponsorships as |sponsorship|}}
+              {{#each sponsorshipRequired as |sponsorship|}}
                 {{ui-radio label=(t sponsorship.name) current=data.speaker.sponsorshipRequired name='speaker_sponsorshipRequired_required' value=sponsorship.name onChange=(action (mut data.speaker.sponsorshipRequired))}}   
-                <br/>
+                <br>
               {{/each}}
             {{else}}
               {{#if field.isUrlField}}
