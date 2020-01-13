@@ -17,6 +17,7 @@ export default Route.extend({
         creator : this.get('authManager.currentUser')
       }),
       sessions: await eventDetails.query('sessions', {
+        'page[size]': 0
       }),
       speaker: await this.store.createRecord('speaker', {
         event : eventDetails,
