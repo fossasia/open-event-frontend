@@ -7,6 +7,7 @@ import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validTw
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { languages } from 'open-event-frontend/utils/dictionary/languages';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
+import { sponsorships } from 'open-event-frontend/utils/dictionary/sponsorship';
 
 export default Component.extend(FormMixin, {
 
@@ -491,6 +492,8 @@ export default Component.extend(FormMixin, {
   languages: orderBy(languages, 'name'),
 
   genders: orderBy(genders, 'name'),
+
+  sponsorships: orderBy(sponsorships, 'name'),
 
   allFields: computed('fields', function() {
     return groupBy(this.fields.toArray(), field => field.get('form'));
