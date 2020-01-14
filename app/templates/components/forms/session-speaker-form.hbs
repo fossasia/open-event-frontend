@@ -250,7 +250,7 @@
             {{#if (eq field.fieldIdentifier 'country')}}
               {{#ui-dropdown class='search selection' selected=data.speaker.country forceSelection=false
                          fullTextSearch=true}}
-                {{input type='hidden' id='speaker_country' value=data.speaker.country}}
+                {{input type='hidden' id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier)) value=data.speaker.country}}
                 <i class="dropdown icon"></i>
                 <div class="default text">{{get data 'selectedCountry'}}</div>
                 <div class="menu">
@@ -264,6 +264,7 @@
               {{/ui-dropdown}}
             {{else if (eq field.fieldIdentifier 'gender')}}
               {{#ui-dropdown class='search selection' selected=data.speaker.gender onChange=(action (mut data.speaker.gender)) as |execute mapper|}}
+                {{input type="hidden" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier)) value=data.speaker.gender}}
                 <i class="dropdown icon"></i>
                 <div class="default text">{{t 'Select your gender'}}</div>
                 <div class="menu">
