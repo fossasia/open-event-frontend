@@ -91,6 +91,121 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return validationRules;
   }),
 
+  ticketsValidationRules() {
+    let validationRules = {};
+    for (let i = 0; i < this.get('data.event.tickets').length; i++) {
+      validationRules = merge(validationRules, {
+        [`ticketName${i}`]: {
+          identifier : `ticket_name_${  i}`,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give your ticket a name')
+            }
+          ]
+        },
+        [`ticketDescription${i}`]: {
+          identifier : `ticket_description_${  i}`,
+          optional   : true,
+          rules      : [
+            {
+              type   : 'maxLength[160]',
+              prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
+            }
+          ]
+        },
+        [`ticketPrice${i}`]: {
+          identifier : `ticket_price_${  i}`,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give your ticket a price')
+            },
+            {
+              type   : 'number',
+              prompt : this.l10n.t('Please give a proper price for you ticket')
+            },
+            {
+              type   : 'decimal[0..]',
+              prompt : this.l10n.t('Ticket price should be greater than 0')
+            }
+          ]
+        },
+        [`ticketQuantity${i}`]: {
+          identifier : `ticket_quantity_${  i}`,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please specify how many tickets of this type are available')
+            },
+            {
+              type   : 'number',
+              prompt : this.l10n.t('Please give a proper quantity for you ticket')
+            }
+          ]
+        },
+        [`ticketMinOrder${i}`]: {
+          identifier : `ticket_min_order_${  i}`,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Minimum tickets per order required')
+            },
+            {
+              type   : 'number',
+              prompt : this.l10n.t('Invalid number')
+            }
+          ]
+        },
+        [`ticketMaxOrder${i}`]: {
+          identifier : `ticket_max_order_${  i}`,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Maximum tickets per order required')
+            },
+            {
+              type   : 'number',
+              prompt : this.l10n.t('Invalid number')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.l10n.t('Maximum tickets per order should be greater than 0')
+            }
+          ]
+        },
+        [`minPrice${i}`]: {
+          identifier : `min_price_${  i}`,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Minimum price for donation tickets required')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.l10n.t('Minimum price needs to be greater than zero')
+            }
+          ]
+        },
+        [`maxPrice${i}`]: {
+          identifier : `max_price${  i}`,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Maximum price for donation tickets required')
+            },
+            {
+              type   : 'integer[1..]',
+              prompt : this.l10n.t('Maximum price needs to be greater than zero')
+            }
+          ]
+        }
+      });
+    }
+
+    return validationRules;
+  },
+
   subTopics: computed('data.event.topic', function() {
     later(this, () => {
       try {
@@ -198,111 +313,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             }
           ]
         },
-        ticketName: {
-          identifier : 'ticket_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a name')
-            }
-          ]
-        },
-        ticketDescription: {
-          identifier : 'ticket_description',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'maxLength[160]',
-              prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
-            }
-          ]
-        },
-        ticketPrice: {
-          identifier : 'ticket_price',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a price')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Please give a proper price for you ticket')
-            },
-            {
-              type   : 'decimal[0..]',
-              prompt : this.l10n.t('Ticket price should be greater than 0')
-            }
-          ]
-        },
-        ticketQuantity: {
-          identifier : 'ticket_quantity',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please specify how many tickets of this type are available')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Please give a proper quantity for you ticket')
-            }
-          ]
-        },
-        ticketMinOrder: {
-          identifier : 'ticket_min_order',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Minimum tickets per order required')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Invalid number')
-            }
-          ]
-        },
-        ticketMaxOrder: {
-          identifier : 'ticket_max_order',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Maximum tickets per order required')
-            },
-            {
-              type   : 'number',
-              prompt : this.l10n.t('Invalid number')
-            },
-            {
-              type   : 'integer[1..]',
-              prompt : this.l10n.t('Maximum tickets per order should be greater than 0')
-            }
-          ]
-        },
-        minPrice: {
-          identifier : 'min_price',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Minimum price for donation tickets required')
-            },
-            {
-              type   : 'integer[1..]',
-              prompt : this.l10n.t('Minimum price needs to be greater than zero')
-            }
-          ]
-        },
-        maxPrice: {
-          identifier : 'max_price',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Maximum price for donation tickets required')
-            },
-            {
-              type   : 'integer[1..]',
-              prompt : this.l10n.t('Maximum price needs to be greater than zero')
-            }
-          ]
-        },
         paypalEmail: {
           identifier : 'paypal_email',
           rules      : [
@@ -358,6 +368,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     };
     // Merging the predetermined rules with the rules for social links.
     validationRules.fields = merge(validationRules.fields, this.socialLinksValidationRules);
+    validationRules.fields = merge(validationRules.fields, this.ticketsValidationRules());
     return validationRules;
   },
 

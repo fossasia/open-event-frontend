@@ -1,21 +1,21 @@
 <div class="five column row">
   <div class="five wide column">
     <div class="field">
-      {{input type='text' name='ticket_name' placeholder=(t 'Ticket Name') value=ticket.name}}
+      <input type='text' data-validate={{concat "ticket_name_" index}} name='ticket_name' placeholder={{t 'Ticket Name'}} value={{ticket.name}}>
     </div>
   </div>
   <div class="three wide column">
     {{#if (eq ticket.type 'paid') }}
       <div class="field">
-        {{input type='number' name='ticket_price' placeholder=(t 'Price') value=ticket.price min=1}}
+        <input type='number' data-validate={{concat "ticket_price_" index}} name='ticket_price' placeholder={{t 'Price'}} value={{ticket.price}} min=1>
       </div>
     {{else if (eq ticket.type 'donation')}}
       <div class="two fields">
         <div class="field {{unless minMaxValid 'error'}}" >
-          {{input type='number' name='min_price' placeholder=(t 'Min') value=ticket.minPrice  min=1}}
+          <input type='number' data-validate={{concat "min_price_" index}} name='min_price' placeholder={{t 'Min'}} value={{ticket.minPrice}}  min=1>
         </div>
         <div class="field {{unless minMaxValid 'error'}}" >
-          {{input type='number' name='max_price' placeholder=(t 'Max') value=ticket.maxPrice min=1}}
+          <input type='number' data-validate={{concat "max_price_" index}} name='max_price' placeholder={{t 'Max'}} value={{ticket.maxPrice}} min=1>
         </div>
       </div>
     {{else if (eq ticket.type 'free')}}
@@ -28,7 +28,7 @@
   </div>
   <div class="four wide column">
     <div class="field">
-      {{input type='number' name='ticket_quantity' placeholder=(t 'Quantity') value=ticket.quantity min=1}}
+      <input type='number' data-validate={{concat "ticket_quantity_" index}} name='ticket_quantity' placeholder={{t 'Quantity'}} value={{ticket.quantity}} min=1>
     </div>
   </div>
   <div class="column {{unless device.isLargeMonitor 'less right padding'}}">
@@ -126,11 +126,11 @@
         <div class="fields">
           <div class="three wide field">
             <label class="required text muted" for="ticket_min_order">{{t 'Minimum Order'}}</label>
-            {{input type='number' value=ticket.minOrder name='ticket_min_order'}}
+            <input type='number' data-validate={{concat "ticket_min_order_" index}} value={{ticket.minOrder}} name='ticket_min_order'>
           </div>
           <div class="three wide field">
             <label class="required text muted" for="ticket_max_order">{{t 'Maximum Order'}}</label>
-            {{input type='number' value=ticket.maxOrder name='ticket_max_order'}}
+            <input type='number' data-validate={{concat "ticket_max_order_" index}} value={{ticket.maxOrder}} name='ticket_max_order'>
           </div>
         </div>
       </div>

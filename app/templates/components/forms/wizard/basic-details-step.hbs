@@ -167,6 +167,7 @@
           </div>
           {{#each tickets as |ticket index|}}
             {{widgets/forms/ticket-input ticket=ticket
+                                        index=index
                                         timezone=data.event.timezone
                                         canMoveUp=(not-eq index 0)
                                         canMoveDown=(not-eq ticket.position (dec data.event.tickets.length))
