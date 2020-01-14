@@ -301,21 +301,28 @@
     <h4>
       {{t 'Choose from an existing session'}}
     </h4>
-    {{#ui-dropdown class="fluid search selection" selected=sessionDetails onChange=(action (mut sessionDetails)) as |execute mapper|}}
-      <i class="dropdown icon"></i>
-      <div class="default text">
-        {{t 'Select Session'}}
-      </div>
-      <div class="menu">
-        {{#each sessions as |session|}}
-          {{#if session.id}}
-            <div data-value="{{map-value mapper session}}" class="item">
-              {{session.title}}
-            </div>
-          {{/if}}
-        {{/each}}
-      </div>
-    {{/ui-dropdown}}
+    <div class="ui fluid input">
+      {{#ui-dropdown class="fluid search selection" selected=sessionDetails onChange=(action (mut sessionDetails)) as |execute mapper|}}
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          {{t 'Select Session'}}
+        </div>
+        <div class="menu">
+          {{#each sessions as |session|}}
+            {{#if session.id}}
+              <div data-value="{{map-value mapper session}}" class="item">
+                {{session.title}}
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
+      {{#if sessionDetails}}
+        <button type="button" class="ui icon button" {{action 'clearSession'}}>
+          <i class="remove icon"></i>
+        </button>
+      {{/if}}
+    </div>
     {{#if noSessionExists}}
       <div class="ui small disabled header">{{t 'No session exists. Add a new session proposal.'}}</div>
     {{/if}}

@@ -526,6 +526,9 @@ export default Component.extend(FormMixin, {
       });
     },
 
+    clearSession() {
+      this.set('sessionDetails', null);
+    },
 
     toggleNewSessionSelected(value) {
       this.set('sessionDetails', false);
