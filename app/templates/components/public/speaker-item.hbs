@@ -1,7 +1,7 @@
 {{#ui-accordion}}
   <div class="title">
     <div class="ui">
-      <img alt="speaker" class="ui medium rounded image" id="speakerImg" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      <img alt="speaker" class="ui rounded image speakerImg" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <br>
       <h3 class="ui centered header less margin">
         {{speaker.name}}
