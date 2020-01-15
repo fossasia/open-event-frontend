@@ -177,7 +177,7 @@ export default Route.extend({
       });
     }
     // sorting the sessions according to their average rating
-    sessions.content.sort((a,b)=>{
+    sessions.content.sort((a, b) => {
       return b.__recordData.__data.averageRating - a.__recordData.__data.averageRating;
     });
     return {
