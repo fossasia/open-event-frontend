@@ -3,34 +3,36 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   async model() {
     const eventDetails = this.modelFor('public');
+    let filterOptions = [
+      {
+        or: [
+          {
+            name : 'sessions',
+            op   : 'any',
+            val  : {
+              name : 'state',
+              op   : 'eq',
+              val  : 'accepted'
+            }
+          },
+          {
+            name : 'sessions',
+            op   : 'any',
+            val  : {
+              name : 'state',
+              op   : 'eq',
+              val  : 'confirmed'
+            }
+          }
+        ]
+      }
+    ];
     return {
       event    : eventDetails,
       speakers : await eventDetails.query('speakers', {
-        filter: [
-          {
-            or: [
-              {
-                name : 'sessions',
-                op   : 'any',
-                val  : {
-                  name : 'state',
-                  op   : 'eq',
-                  val  : 'accepted'
-                }
-              },
-              {
-                name : 'sessions',
-                op   : 'any',
-                val  : {
-                  name : 'state',
-                  op   : 'eq',
-                  val  : 'confirmed'
-                }
-              }
-            ]
-          }
-        ],
-        'page[size]': 0
+        'page[size]' : 0,
+        filter       : filterOptions,
+        include      : 'sessions'
       })
 
     };
