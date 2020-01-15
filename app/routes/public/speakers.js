@@ -3,7 +3,7 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   async model() {
     const eventDetails = this.modelFor('public');
-    let filterOptions = [
+    const filterOptions = [
       {
         or: [
           {
