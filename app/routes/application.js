@@ -74,7 +74,12 @@ export default Route.extend(ApplicationRouteMixin, {
   async sessionAuthenticated() {
     let { _super } = this;
     await this._loadCurrentUser();
-    _super.call(this, ...arguments);
+    const route = this.session.previousRouteName;
+    if (route) {
+      this.transitionTo(route);
+    } else {
+      _super.call(this, ...arguments);
+    }
   },
 
   _loadCurrentUser() {
@@ -107,8 +112,6 @@ export default Route.extend(ApplicationRouteMixin, {
         // Do not save the url of the transition to login route.
         if (!url.includes('login') && !url.includes('reset-password')) {
           this.set('session.previousRouteName', url);
-        } else {
-          this.set('session.previousRouteName', null);
         }
       });
     }
