@@ -176,11 +176,6 @@ export default Route.extend({
         ]
       });
     }
-    console.log(sessions);
-    console.log();
-    // sessions.content.sort((a,b)=>{
-    //   return b.__recordData.__data.averageRating - a.__recordData.__data.averageRating;
-    // });
     return {
       event   : eventDetails,
       session : sessions.toArray().sortBy('averageRating').reverse()
