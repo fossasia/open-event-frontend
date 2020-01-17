@@ -90,6 +90,19 @@
                     {{/each}}
                   </div>
                 {{/ui-dropdown}}
+              {{else if (eq field.fieldIdentifier 'ageGroup')}}
+                {{#ui-dropdown class='search selection' value=(mut (get holder field.fieldIdentifier)) onChange=(action (mut holder.ageGroup)) as |execute mapper|}}
+                  {{input type='hidden' name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{t 'Select your age group'}}</div>
+                  <div class="menu">
+                    {{#each ageGroups as |ageGroup|}}
+                      <div class="item" data-value="{{map-value mapper ageGroup.name}}">
+                        {{ageGroup.name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}  
               {{/if}}
             </div>
           {{/if}}
