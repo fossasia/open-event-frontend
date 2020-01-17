@@ -23,7 +23,7 @@ export default Controller.extend({
           })
           .catch(reason => {
             if (!(this.isDestroyed || this.isDestroying)) {
-              if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+              if (reason && Object.prototype.hasOwnProperty.call(reason, 'status_code') && reason.status_code === 401) {
                 this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
               } else {
                 this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));

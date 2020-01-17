@@ -115,6 +115,13 @@ module.exports = function(environment) {
     protocol  : 'https'
   };
 
+  ENV.APP.mapConfig = {};
+
+  // Use embed iframe map using address if MAP_DISPLAY is set or GOOGLE_API_KEY is not available or invalid
+  if (process.env.MAP_DISPLAY === 'embed' || !process.env.GOOGLE_API_KEY || !process.env.GOOGLE_API_KEY.startsWith('AIza')) {
+    ENV.APP.mapConfig.display = 'embed';
+  }
+
   ENV.sentry.hostname = getSentryServer(ENV.sentry.dsn, false);
   ENV.sentry.server = getSentryServer(ENV.sentry.dsn, true);
   if (process.env.CSPPermissive) {
@@ -172,6 +179,7 @@ module.exports = function(environment) {
       'media-src' : '\'none\''
     };
   }
+  
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

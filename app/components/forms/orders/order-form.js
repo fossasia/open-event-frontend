@@ -5,7 +5,6 @@ import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
 import moment from 'moment';
-import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { groupBy, orderBy } from 'lodash-es';
 import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
@@ -132,7 +131,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter your country')
+          prompt : this.l10n.t('Please select your country')
         }
       ]
     };
@@ -380,7 +379,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your country')
+              prompt : this.l10n.t('Please select your country')
             }
           ]
         },
@@ -465,10 +464,6 @@ export default Component.extend(FormMixin, {
 
   allFields: computed('fields', function() {
     return groupBy(this.fields.toArray(), field => field.get('form'));
-  }),
-
-  countries: computed(function() {
-    return orderBy(countries, 'name');
   }),
 
   genders: orderBy(genders, 'name'),

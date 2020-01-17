@@ -109,7 +109,7 @@ export default ModelBase.extend({
 
   isUrlField: computed('type', 'fieldIdentifier', function() {
     return this.type === 'text'
-    && (['website', 'twitter', 'github', 'facebook', 'linkedin', 'slidesUrl', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
+    && (['website', 'twitter', 'github', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
   }),
 
   segmentedLinkName: computed('fieldIdentifier', function() {

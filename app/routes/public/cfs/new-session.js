@@ -11,7 +11,7 @@ export default Route.extend({
       event : eventDetails,
       forms : await eventDetails.query('customForms', {
         sort         : 'id',
-        'page[size]' : 50
+        'page[size]' : 0
       }),
       session: await this.store.createRecord('session', {
         event       : eventDetails,
