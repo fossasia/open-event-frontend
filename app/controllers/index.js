@@ -26,7 +26,10 @@ export default Controller.extend({
 
   featuredEvents: computed('filteredEvents.[]', function() {
     return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
+  }),
 
+  promotedEvents: computed('filteredEvents.[]', function() {
+    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isPromoted}) : null;
   }),
 
   actions: {
