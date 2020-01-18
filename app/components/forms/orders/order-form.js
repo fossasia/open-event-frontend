@@ -478,7 +478,7 @@ export default Component.extend(FormMixin, {
   }),
 
   genders   : orderBy(genders, 'name'),
-  ageGroups : orderBy(ageGroups, 'name'),
+  ageGroups : orderBy(ageGroups, 'age'),
 
   actions: {
     submit(data) {
