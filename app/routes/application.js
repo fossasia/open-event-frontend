@@ -73,6 +73,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   async sessionAuthenticated() {
     let { _super } = this;
+    await this.authManager.loadUser();
     await this._loadCurrentUser();
     const route = this.session.previousRouteName;
     if (route) {

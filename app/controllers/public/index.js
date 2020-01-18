@@ -41,9 +41,7 @@ export default Controller.extend({
           const tokenPayload = this.authManager.getTokenPayload();
           if (tokenPayload) {
             this.set('session.skipRedirectOnInvalidation', true);
-            this.authManager.persistCurrentUser(
-              await this.store.findRecord('user', tokenPayload.identity)
-            );
+            await this.authManager.loadUser();
             this.set('isLoginModalOpen', false);
             this.send('placeOrder');
           }
@@ -80,9 +78,7 @@ export default Controller.extend({
           const tokenPayload = this.authManager.getTokenPayload();
           if (tokenPayload) {
             this.set('session.skipRedirectOnInvalidation', true);
-            this.authManager.persistCurrentUser(
-              await this.store.findRecord('user', tokenPayload.identity)
-            );
+            await this.authManager.loadUser();
             this.set('isLoginModalOpen', false);
             this.send('placeOrder');
           }
