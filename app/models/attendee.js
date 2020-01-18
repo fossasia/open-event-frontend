@@ -32,6 +32,7 @@ export default ModelBase.extend({
   facebook           : attr('string'),
   github             : attr('string'),
   gender             : attr('string'),
+  ageGroup           : attr('string'),
   birthDate          : attr('moment'),
   complexFieldValues : attr(),
 

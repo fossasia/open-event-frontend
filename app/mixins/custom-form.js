@@ -292,6 +292,14 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'ageGroup',
+        form            : 'attendee',
+        type            : 'select',
+        isRequired      : false,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'address',
         form            : 'attendee',
         type            : 'text',

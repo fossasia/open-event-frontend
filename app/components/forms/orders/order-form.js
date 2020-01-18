@@ -11,6 +11,7 @@ import {
   validGithubProfileUrlPattern
 } from 'open-event-frontend/utils/validators';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
+import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 
 export default Component.extend(FormMixin, {
   router: service(),
@@ -96,6 +97,15 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.l10n.t('Please select a gender')
+        }
+      ]
+    };
+
+    let ageGroupValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please select your age group')
         }
       ]
     };
@@ -435,6 +445,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`lastname_required_${index}`] = lastNameValidation;
       validationRules.fields[`email_required_${index}`] = emailValidation;
       validationRules.fields[`gender_required_${  index}`] = genderValidation;
+      validationRules.fields[`ageGroup_required_${  index}`] = ageGroupValidation;
       validationRules.fields[`address_required_${  index}`] = addressValidation;
       validationRules.fields[`city_required_${  index}`] = cityValidation;
       validationRules.fields[`state_required_${  index}`] = stateValidation;
@@ -466,7 +477,8 @@ export default Component.extend(FormMixin, {
     return groupBy(this.fields.toArray(), field => field.get('form'));
   }),
 
-  genders: orderBy(genders, 'name'),
+  genders   : orderBy(genders, 'name'),
+  ageGroups : orderBy(ageGroups, 'age'),
 
   actions: {
     submit(data) {
