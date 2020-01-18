@@ -22,6 +22,8 @@
                 </h4>
                 {{#if (is-input-field field.type) }}
                   <span>{{get holder field.fieldIdentifier}}</span>
+                {{else if (eq field.type 'select')}}
+                  <span>{{get holder field.fieldIdentifier}}</span>
                 {{/if}}
               </div>
             {{/if}}

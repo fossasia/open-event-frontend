@@ -13,13 +13,16 @@ export default Service.extend({
     if (this.currentUserModel) {
       return this.currentUserModel;
     }
+
     if (this.get('session.data.currentUserFallback')) {
       let userModel = this.store.peekRecord('user', this.get('session.data.currentUserFallback.id'));
       if (!userModel) {
         return this.restoreCurrentUser();
       }
+
       return userModel;
     }
+
     return null;
   }),
 
@@ -40,6 +43,7 @@ export default Service.extend({
     if (token && token !== '') {
       return JSON.parse(atob(token.split('.')[1]));
     }
+
     return null;
   },
 
@@ -61,6 +65,20 @@ export default Service.extend({
   identifyStranger() {
     this.metrics.identify(null);
   },
+  async loadUser() {
+    if (this.currentUserModel) {
+      return this.currentUserModel;
+    }
+
+    const tokenPayload = this.getTokenPayload();
+    if (tokenPayload) {
+      this.persistCurrentUser(
+        await this.store.findRecord('user', tokenPayload.identity)
+      );
+    }
+
+    return this.currentUserModel;
+  },
 
   persistCurrentUser(user = null) {
     if (!user) {
@@ -68,6 +86,7 @@ export default Service.extend({
     } else {
       this.set('currentUserModel', user);
     }
+
     let userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
     this.session.set('data.currentUserFallback', userData);
@@ -77,12 +96,14 @@ export default Service.extend({
     if (!data) {
       data = this.get('session.data.currentUserFallback', {});
     }
+
     const userId = data.id;
     delete data.id;
     data = mapKeys(data, (value, key) => camelize(key));
     if (!data.email) {
       data.email = null;
     }
+
     this.store.push({
       data: {
         id         : userId,
