@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Controller | settings/password', function(hooks) {
+module('Unit | Controller | my tickets/upcoming', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:settings/password');
+    let controller = this.owner.lookup('controller:my-tickets/upcoming');
     assert.ok(controller);
   });
 });
