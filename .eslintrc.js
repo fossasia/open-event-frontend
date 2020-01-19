@@ -6,7 +6,8 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'ember'
+    'ember',
+    'ember-suave'
   ],
   extends: [
     'eslint:recommended',
