@@ -1,7 +1,7 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const FastBootAppServer = require('fastboot-app-server');
-const { injectEnvironment } = require('./replace-config');
+const { injectEnvironment } = require('./replace-config-v2');
 
 const enableGzip = process.env.FASTBOOT_GZIP || 'true';
 const fastbootDistPath = process.env.FASTBOOT_DIST_PATH || './dist';
@@ -19,10 +19,8 @@ let fastbootServer = new FastBootAppServer({
   workerCount     : parseInt(fastbootWorkers)
 });
 
-(async () => {
-  if (process.env.INJECT_ENV === 'true') {
-    await injectEnvironment();
-  }
+if (process.env.INJECT_ENV === 'true') {
+  injectEnvironment();
+}
 
-  fastbootServer.start();
-})();
+fastbootServer.start();
