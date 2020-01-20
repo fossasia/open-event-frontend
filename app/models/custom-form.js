@@ -79,7 +79,8 @@ export default ModelBase.extend({
     twitter         : 'Twitter',
     facebook        : 'Facebook',
     github          : 'GitHub',
-    gender          : 'Gender'
+    gender          : 'Gender',
+    ageGroup        : 'Age Group'
   },
 
   name: computed('fieldIdentifier', 'form', function() {
