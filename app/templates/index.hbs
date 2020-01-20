@@ -15,6 +15,9 @@
       {{#each promotedEvents as |event|}}
         {{event-card event=event shareEvent=(action 'shareEvent')}}
       {{/each}}
+      {{#each upcomingEvents as |event|}}
+        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{/each}}
     </div>
   {{else}}
     <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>

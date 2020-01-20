@@ -32,6 +32,10 @@ export default Controller.extend({
     return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isPromoted}) : null;
   }),
 
+  upcomingEvents: computed('filteredEvents.[]', function() {
+    return this.filteredEvents ? this.filteredEvents.filter(event => {return !event.isPromoted}) : null;
+  }),
+
   actions: {
     shareEvent(event) {
       this.set('eventToShare', event);
