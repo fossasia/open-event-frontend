@@ -105,7 +105,7 @@ export default ModalBase.extend(FormMixin, {
             }
           ]
         },
-        country: {
+        taxCountry: {
           identifier : 'tax_country',
           rules      : [
             {

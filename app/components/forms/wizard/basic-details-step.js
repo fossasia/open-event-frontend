@@ -354,15 +354,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             }
           ]
         },
-        country: {
-          identifier : 'country',
+        paymentCountry: {
+          identifier : 'payment_country',
           rules      : [
             {
               type   : 'empty',
               prompt : this.l10n.t('Please select your country')
             }
           ]
-        },
+        }
       }
     };
     // Merging the predetermined rules with the rules for social links.

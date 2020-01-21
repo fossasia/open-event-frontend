@@ -260,7 +260,7 @@
           <label class="required">{{t 'Select country'}}</label>
           {{#ui-dropdown class='search selection' selected=data.event.paymentCountry forceSelection=false
                          fullTextSearch=true}}
-            {{input type='hidden' id="country" name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+            {{input type='hidden' id='payment_country' value=data.event.paymentCountry}}
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select country'}}</div>
             <div class="menu">

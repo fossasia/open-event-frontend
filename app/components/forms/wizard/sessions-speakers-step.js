@@ -86,6 +86,24 @@ export default Component.extend(EventWizardMixin, FormMixin, {
               prompt : this.l10n.t('Please give an end time')
             }
           ]
+        },
+        microlocation: {
+          identifier : 'microlocation',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter name for microlocation')
+            }
+          ]
+        },
+        microlocationFloor: {
+          identifier : 'microlocation_floor',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter floor for microlocation')
+            }
+          ]
         }
       }
     };
