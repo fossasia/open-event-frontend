@@ -104,6 +104,15 @@ export default ModalBase.extend(FormMixin, {
               prompt : this.l10n.t('Please provide a zip code')
             }
           ]
+        },
+        country: {
+          identifier : 'tax_country',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please select your country')
+            }
+          ]
         }
       }
     };

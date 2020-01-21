@@ -353,7 +353,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
-        }
+        },
+        country: {
+          identifier : 'country',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please select your country')
+            }
+          ]
+        },
       }
     };
     // Merging the predetermined rules with the rules for social links.

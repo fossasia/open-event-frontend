@@ -6,7 +6,7 @@
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
       {{#ui-dropdown class='search selection' selected=tax.country forceSelection=false fullTextSearch=true}}
-        {{input type='hidden' id='tax_country' value=tax.country}}
+        {{input type='hidden' id='tax_country' name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select country'}}</div>
         <div class="menu">
