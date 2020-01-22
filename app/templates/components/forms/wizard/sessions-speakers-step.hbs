@@ -61,11 +61,11 @@
       {{#each microlocations as |microlocation|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">
-            {{input type='text' value=microlocation.name placeholder='Name'}}
+            {{input type='text' id="microlocation" value=microlocation.name placeholder='Name'}}
           </div>
           <div class="{{unless device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              {{input type='number' name='microlocation' value=microlocation.floor placeholder='Floor'}}
+              {{input type='number' id='microlocation_floor' value=microlocation.floor placeholder='Floor'}}
               {{#if (gt microlocations.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' microlocation}}>
                   <i class="minus icon"></i>

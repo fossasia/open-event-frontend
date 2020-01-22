@@ -1,3 +1,5 @@
+[build.environment]
+NODE_VERSION = "12"
 [context.production]
   command = "ember build -prod"
   [context.production.environment]
