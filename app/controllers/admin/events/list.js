@@ -134,6 +134,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         {
           id: 'event_del_succ'
         });
+      this.refreshModel.bind(this)();
     } catch (e) {
       console.warn(e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
