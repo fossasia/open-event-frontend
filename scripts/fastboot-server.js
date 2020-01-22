@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const FastBootAppServer = require('fastboot-app-server');
 const { injectEnvironment } = require('./replace-config');
@@ -19,10 +19,8 @@ let fastbootServer = new FastBootAppServer({
   workerCount     : parseInt(fastbootWorkers)
 });
 
-(async () => {
-  if (process.env.INJECT_ENV === 'true') {
-    await injectEnvironment();
-  }
+if (process.env.INJECT_ENV === 'true') {
+  injectEnvironment();
+}
 
-  fastbootServer.start();
-})();
+fastbootServer.start();
