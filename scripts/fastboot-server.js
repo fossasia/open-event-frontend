@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const FastBootAppServer = require('fastboot-app-server');
-const { injectEnvironment } = require('./replace-config-v2');
+const { injectEnvironment } = require('./replace-config');
 
 const enableGzip = process.env.FASTBOOT_GZIP || 'true';
 const fastbootDistPath = process.env.FASTBOOT_DIST_PATH || './dist';
