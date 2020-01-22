@@ -12,7 +12,10 @@
   {{#if filteredEvents}}
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each filteredEvents as |event|}}
+      {{#each promotedEvents as |event|}}
+        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{/each}}
+      {{#each upcomingEvents as |event|}}
         {{event-card event=event shareEvent=(action 'shareEvent')}}
       {{/each}}
     </div>
