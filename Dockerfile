@@ -20,7 +20,7 @@ RUN node scripts/l10n.js generate && \
 ##
 ##
 
-FROM node:10-alpine
+FROM node:12-alpine
 
 WORKDIR /fastboot
 
