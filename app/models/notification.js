@@ -1,4 +1,4 @@
-import attr from 'ember-data/attr';
+import attr from 'ember-data/attr'; // eslint-disable-line no-console
 import { hasMany } from 'ember-data/relationships';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';

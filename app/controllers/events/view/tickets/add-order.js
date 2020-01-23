@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import Controller from '@ember/controller'; // eslint-disable-line no-console
 import { computed } from '@ember/object';
 import { sumBy } from 'lodash-es';
 

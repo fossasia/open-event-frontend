@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import Controller from '@ember/controller'; // eslint-disable-line no-console
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { action, computed } from '@ember/object';

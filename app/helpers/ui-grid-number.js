@@ -1,4 +1,4 @@
-import Helper from '@ember/component/helper';
+import Helper from '@ember/component/helper'; // eslint-disable-line no-console
 
 /**
  * Helper to return the semantic UI width class for a given number

@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import Controller from '@ember/controller'; // eslint-disable-line no-console
 
 export default Controller.extend({
   /**

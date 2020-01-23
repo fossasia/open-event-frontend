@@ -1,4 +1,4 @@
-import { alias } from '@ember/object/computed';
+import { alias } from '@ember/object/computed'; // eslint-disable-line no-console
 import { computed, setProperties, set, get } from '@ember/object';
 import { typeOf } from '@ember/utils';
 import { run } from '@ember/runloop';

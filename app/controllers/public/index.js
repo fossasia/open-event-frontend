@@ -1,4 +1,4 @@
-import { filterBy } from '@ember/object/computed';
+import { filterBy } from '@ember/object/computed'; // eslint-disable-line no-console
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { htmlSafe } from '@ember/string';

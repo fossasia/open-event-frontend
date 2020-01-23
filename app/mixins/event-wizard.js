@@ -1,4 +1,4 @@
-import Mixin from '@ember/object/mixin';
+import Mixin from '@ember/object/mixin'; // eslint-disable-line no-console
 import MutableArray from '@ember/array/mutable';
 import RSVP from 'rsvp';
 import { v1 } from 'ember-uuid';

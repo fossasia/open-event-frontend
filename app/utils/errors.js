@@ -1,4 +1,4 @@
-import { isString, isArray, isObjectLike, isNumber } from 'lodash-es';
+import { isString, isArray, isObjectLike, isNumber } from 'lodash-es'; // eslint-disable-line no-console
 
 /**
  * A recursive method to parse and retrieve an error string from a BE response

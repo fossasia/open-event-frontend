@@ -1,4 +1,4 @@
-import UrlParser from 'url-parse';
+import UrlParser from 'url-parse'; // eslint-disable-line no-console
 import queryString from 'query-string';
 import { merge, mapValues, isArray } from 'lodash-es';
 

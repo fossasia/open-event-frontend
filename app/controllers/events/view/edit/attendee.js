@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import Controller from '@ember/controller'; // eslint-disable-line no-console
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 export default Controller.extend(EventWizardMixin, {

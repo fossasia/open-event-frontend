@@ -1,4 +1,4 @@
-import { computed } from '@ember/object';
+import { computed } from '@ember/object'; // eslint-disable-line no-console
 import moment from 'moment';
 import { values } from 'lodash-es';
 import { isValidUrl } from 'open-event-frontend/utils/validators';

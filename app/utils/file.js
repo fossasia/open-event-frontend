@@ -1,4 +1,4 @@
-import { Promise as RSVPPromise } from 'rsvp';
+import { Promise as RSVPPromise } from 'rsvp'; // eslint-disable-line no-console
 
 export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
   const thresh = si ? 1000 : 1024;

@@ -1,4 +1,4 @@
-import Service from '@ember/service';
+import Service from '@ember/service'; // eslint-disable-line no-console
 import { getOwner } from '@ember/application';
 import $ from 'jquery';
 import { getErrorMessage } from 'open-event-frontend/utils/errors';

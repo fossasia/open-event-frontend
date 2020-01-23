@@ -1,4 +1,4 @@
-export const amazonS3Regions = [
+export const amazonS3Regions = [ // eslint-disable-line no-console
   'us-east-1',
   'us-west-1',
   'us-gov-west-1',

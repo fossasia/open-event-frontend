@@ -1,4 +1,4 @@
-import palette from 'google-material-color';
+import palette from 'google-material-color'; // eslint-disable-line no-console
 import { random } from 'lodash-es';
 
 export const getColor = (shades = ['600', '700', '800', '900']) => {

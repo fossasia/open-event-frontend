@@ -1,4 +1,4 @@
-import Component from '@ember/component';
+import Component from '@ember/component'; // eslint-disable-line no-console
 import { computed } from '@ember/object';
 
 export default Component.extend({
