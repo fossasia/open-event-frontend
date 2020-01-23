@@ -40,9 +40,7 @@ export default Controller.extend({
               const tokenPayload = this.authManager.getTokenPayload();
               if (tokenPayload) {
                 this.set('session.skipRedirectOnInvalidation', true);
-                this.authManager.persistCurrentUser(
-                  await this.store.findRecord('user', tokenPayload.identity)
-                );
+                await this.authManager.loadUser();
                 this.set('isLoginModalOpen', false);
                 this.send('placeOrder');
               }
@@ -82,16 +80,14 @@ export default Controller.extend({
           const tokenPayload = this.authManager.getTokenPayload();
           if (tokenPayload) {
             this.set('session.skipRedirectOnInvalidation', true);
-            this.authManager.persistCurrentUser(
-              await this.store.findRecord('user', tokenPayload.identity)
-            );
+            await this.authManager.loadUser();
             this.set('isLoginModalOpen', false);
             this.send('placeOrder');
           }
         })
         .catch(reason => {
           if (!(this.isDestroyed || this.isDestroying)) {
-            if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+            if (reason && Object.prototype.hasOwnProperty.call(reason, 'status_code') && reason.status_code === 401) {
               this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));

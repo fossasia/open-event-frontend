@@ -11,7 +11,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return {
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
-        'page[size]' : 50,
+        'page[size]' : 0,
         sort         : 'id'
       }),
       speaker: await this.store.findRecord('speaker', params.speaker_id)

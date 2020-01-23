@@ -50,6 +50,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   isTicketFormEnabled       : attr('boolean', { defaultValue: false }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
+  isPromoted                : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),

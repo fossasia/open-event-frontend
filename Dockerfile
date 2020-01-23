@@ -1,5 +1,4 @@
-FROM node:10-alpine as builder
-LABEL maintainer="Niranjan Rajendran <me@niranjan.io>"
+FROM node:12-alpine as builder
 
 WORKDIR /app
 
@@ -21,20 +20,22 @@ RUN node scripts/l10n.js generate && \
 ##
 ##
 
-FROM node:10-alpine
+FROM node:12-alpine
 
 WORKDIR /fastboot
 
-COPY scripts/fastboot-server.js .
-COPY --from=builder /app/dist/ app/
+COPY --from=builder /app/dist/ dist/
 
 RUN apk add --no-cache ca-certificates && \
-    cp app/package.json . && \
+    cp dist/package.json . && \
     yarn install && \
-    yarn add fastboot-app-server && \
+    yarn add fastboot-app-server dotenv lodash safe-eval && \
     rm -rf yarn.lock && \
     yarn cache clean
 
+COPY scripts/* ./scripts/
+COPY config/environment.js ./config/
+
 EXPOSE 4000
 
-CMD ["node", "fastboot-server.js"]
+CMD ["node", "./scripts/fastboot-server.js"]
