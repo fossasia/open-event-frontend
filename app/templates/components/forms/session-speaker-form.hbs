@@ -146,11 +146,15 @@
             {{#if (eq field.type 'image')}}
               {{widgets/forms/image-upload
                 imageUrl=(mut (get data.speaker field.fieldIdentifier))
-                label=(t 'Logo')
+                needsCropper=true
+                label=(t 'Speaker Image')
                 id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
                 icon='image'
+                aspectRatio = (array 2 2)
                 hint=(t 'Select an image')
-                maxSizeInKb=1000}}
+                maxSizeInKb=1000
+                helpText=(t 'We recommend using a 1:1 ratio image')
+                requiresDivider=true}}
             {{/if}}
             {{#if (eq field.type 'select')}}
               {{#if (eq field.fieldIdentifier 'country')}}
@@ -239,12 +243,16 @@
           {{/if}}
           {{#if (eq field.type 'image')}}
             {{widgets/forms/image-upload
-              imageUrl=(mut (get data.speaker field.fieldIdentifier))
-              label=(t 'Logo')
-              id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-              icon='image'
-              hint=(t 'Select an image')
-              maxSizeInKb=1000}}
+                imageUrl=(mut (get data.speaker field.fieldIdentifier))
+                needsCropper=true
+                label=(t 'Speaker Image')
+                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
+                icon='image'
+                aspectRatio = (array 2 2)
+                hint=(t 'Select an image')
+                maxSizeInKb=1000
+                helpText=(t 'We recommend using a 1:1 ratio image')
+                requiresDivider=true}}
           {{/if}}
           {{#if (eq field.type 'select')}}
             {{#if (eq field.fieldIdentifier 'country')}}
