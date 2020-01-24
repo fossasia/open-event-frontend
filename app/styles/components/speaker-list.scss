@@ -16,16 +16,16 @@
 
 .thumbnail-square {
   height: 220px;
-  overflow:hidden;
+  overflow: hidden;
   position: relative;
   width: 220px;
 }
 
 .thumbnail-square img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
   height: 100%;
-  width: auto;
+  position: absolute;
+  top: 50%;
   transform: translate(-50%, -50%);
+  width: auto;
+  left: 50%; 
 }
