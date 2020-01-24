@@ -12,6 +12,7 @@ import {
 } from 'open-event-frontend/utils/validators';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
+import { countries } from 'open-event-frontend/utils/dictionary/demography';
 
 export default Component.extend(FormMixin, {
   router: service(),
@@ -479,6 +480,7 @@ export default Component.extend(FormMixin, {
 
   genders   : orderBy(genders, 'name'),
   ageGroups : orderBy(ageGroups, 'age'),
+  countries : orderBy(countries, 'name'),
 
   actions: {
     submit(data) {
