@@ -15,17 +15,11 @@
 }
 
 .thumbnail-square {
-  height: 220px;
+  height: 300px;
   overflow: hidden;
-  position: relative;
-  width: 220px;
 }
 
 .thumbnail-square img {
-  height: 100%;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
+  min-height: 100%;
+  object-fit: cover;
 }
