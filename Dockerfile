@@ -29,7 +29,7 @@ COPY --from=builder /app/dist/ dist/
 RUN apk add --no-cache ca-certificates && \
     cp dist/package.json . && \
     yarn install && \
-    yarn add fastboot-app-server dotenv lodash safe-eval && \
+    yarn add fastboot-app-server dotenv lodash && \
     rm -rf yarn.lock && \
     yarn cache clean
 
