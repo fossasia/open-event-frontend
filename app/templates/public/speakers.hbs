@@ -4,11 +4,6 @@
       {{public/speaker-item speaker=speaker}}
     </div>
   {{/each}}
-  {{#infinity-loader infinityModel=model}}
-    <div class="center aligned five wide column">
-      <div class="ui loading very padded basic segment">
-      </div>
-    </div>
-    {{infintyModel.reachedInfinity}}
+  {{#infinity-loader infinityModel=model triggerOffset=40 eventDebounce=30}}
   {{/infinity-loader}}
 </div>
