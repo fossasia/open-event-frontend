@@ -34,10 +34,10 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if featuredSpeakers}}
+  {{#if model.featuredSpeakers}}
     <div class="featured-speakers" id="speakers">
       <div class="row">
-        {{public/featured-speaker-list speakers=featuredSpeakers}}
+        {{public/featured-speaker-list speakers=model.featuredSpeakers}}
       </div>
     </div>
     <div class="ui hidden divider"></div>
