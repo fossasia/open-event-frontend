@@ -1,6 +1,8 @@
 import Component from '@ember/component';
 import { observer, computed } from '@ember/object';
 import { keys, values } from 'lodash-es';
+import { orderBy } from 'lodash-es';
+import { countries } from 'open-event-frontend/utils/dictionary/demography';
 
 export default Component.extend({
 
@@ -29,6 +31,8 @@ export default Component.extend({
     );
 
   }),
+
+  countries: orderBy(countries, 'name'),
 
   actions: {
     showAddressView(show = true) {

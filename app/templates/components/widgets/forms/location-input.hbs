@@ -17,7 +17,20 @@
         {{input type='text' name='address_zip_code' value=address.zipCode placeholder=(t 'Zip Code')}}
       </div>
       <div class="field">
-        {{input type='text' name='address_country' value=address.country placeholder=(t 'Country')}}
+        {{#ui-dropdown class='search selection' selected=address.country forceSelection=false
+                         fullTextSearch=true}}
+          {{input type='hidden' name='address_country' value=address.country}}
+          <i class="dropdown icon"></i>
+          <div class="default text">{{t 'Select country'}}</div>
+          <div class="menu">
+            {{#each countries as |country|}}
+              <div class="item" data-value="{{country.name}}">
+                <i class="{{lowercase country.code}} flag"></i>
+                {{country.name}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
       </div>
       <div class="ui two column grid">
         <div class="left floated column">
