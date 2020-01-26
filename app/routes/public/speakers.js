@@ -29,7 +29,7 @@ export default Route.extend({
     ];
     return this.infinity.model('speakers', {
       filter       : filterOptions,
-      perPage      : 6,
+      perPage      : 12,
       startingPage : 1,
       perPageParam : 'page[size]',
       pageParam    : 'page[number]',
