@@ -34,6 +34,10 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please enter your new password')
+            },
+            {
+              type   : 'minLength[8]',
+              prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
             }
           ]
         }
