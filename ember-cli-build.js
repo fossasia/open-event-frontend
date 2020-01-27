@@ -12,7 +12,7 @@ module.exports = function(defaults) {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    storeConfigInMeta : false,
+    storeConfigInMeta : true,
     autoprefixer      : {
       browsers : targets.browsers,
       cascade  : false

@@ -30,29 +30,12 @@ export default Route.extend({
           }
         ]
       }),
-      speakers: await eventDetails.query('speakers', {
+      featuredSpeakers: await eventDetails.query('speakers', {
         filter: [
           {
-            or: [
-              {
-                name : 'sessions',
-                op   : 'any',
-                val  : {
-                  name : 'state',
-                  op   : 'eq',
-                  val  : 'confirmed'
-                }
-              },
-              {
-                name : 'sessions',
-                op   : 'any',
-                val  : {
-                  name : 'state',
-                  op   : 'eq',
-                  val  : 'accepted'
-                }
-              }
-            ]
+            name : 'is-featured',
+            op   : 'eq',
+            val  : 'true'
           }
         ],
         'page[size]': 0

@@ -1,13 +1,7 @@
 language: node_js
 
 node_js:
-  - "8"
-#  - "10"
-
-# sudo: required
-
-# services:
-#  - docker
+  - "12"
 
 env:
   - CXX=g++-4.8 JOBS=1 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
@@ -25,10 +19,7 @@ addons:
 
 before_install:
   - export PATH="$(yarn global bin):$PATH"
-  - yarn global add greenkeeper-lockfile@1
 
-before_script: greenkeeper-lockfile-update
-after_script: greenkeeper-lockfile-upload
 install: yarn
 
 script:
@@ -40,8 +31,6 @@ script:
 
 after_success:
   - 'bash <(curl -s https://codecov.io/bash)'
-  - bash kubernetes/travis/docker-deploy.sh
-#  - bash kubernetes/travis/k8s-deploy.sh
 
 deploy:
   provider: pages
@@ -51,3 +40,8 @@ deploy:
   local-dir: dist/
   on:
     branch: development
+
+branches:
+  only:
+    - master
+    - development

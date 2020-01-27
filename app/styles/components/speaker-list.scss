@@ -13,3 +13,13 @@
 .word-break {
   overflow-wrap: break-word;
 }
+
+.thumbnail-square {
+  height: 300px;
+  overflow: hidden;
+}
+
+.thumbnail-square img {
+  min-height: 100%;
+  object-fit: cover;
+}
