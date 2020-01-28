@@ -3,7 +3,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const targets = require('./config/targets');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 let env = process.env.EMBER_ENV || 'development';
 
@@ -39,13 +39,13 @@ module.exports = function(defaults) {
       webpack: {
         plugins: env === 'production' ? [
           new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false,
-            generateStatsFile: true
+            analyzerMode      : 'static',
+            openAnalyzer      : false,
+            generateStatsFile : true
           })
         ] : []
-      },
-    },
+      }
+    }
   });
 
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');

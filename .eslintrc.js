@@ -69,7 +69,6 @@ module.exports = {
     'ember-suave/no-const-outside-module-scope': 'off',
     'ember-suave/require-access-in-comments': 'off',
     'ember/no-get': 'error',
-    'ember/no-get-properties': 'error',
   },
   globals: {
     module     : true,
