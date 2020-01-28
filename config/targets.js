@@ -1,5 +1,5 @@
 const browsers = [
-  'Firefox >= 55', 'Chrome >=55', 'Android >= 4.4', 'Safari >= 10', 'iOS >= 10',
+  'Firefox >= 55', 'Chrome >=55', 'Android >= 4.4', 'Safari >= 10', 'iOS >= 10'
 ];
 
 const isCI = !!process.env.CI;
