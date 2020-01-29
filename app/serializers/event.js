@@ -23,12 +23,6 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
         self    : `/v1/events/${event.id}/general-statistics`
       }
     };
-    event.relationships.orderStatistics = {
-      links: {
-        related : `/v1/events/${event.id}/order-statistics`,
-        self    : `/v1/events/${event.id}/order-statistics`
-      }
-    };
     return event;
   }
 
