@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 
@@ -14,23 +15,23 @@ export default Component.extend({
   didInsertElement() {
     const isMobile = this.get('device.isMobile');
     if (isMobile) {
-      this.$('a').addClass('vertical-item');
+      $('a', this.element).addClass('vertical-item');
     } else {
-      this.$('a').removeClass('vertical-item');
+      $('a', this.element).removeClass('vertical-item');
     }
-    this.set('item', this.$('a.active').text().trim());
+    this.set('item', $('a.active', this.element).text().trim());
   },
   didUpdate() {
     const isMobile = this.get('device.isMobile');
     if (isMobile) {
-      this.$('a').addClass('vertical-item');
+      $('a', this.element).addClass('vertical-item');
     } else {
-      this.$('a').removeClass('vertical-item');
+      $('a', this.element).removeClass('vertical-item');
     }
   },
   actions: {
     toggleMenu(mode) {
-      const menu = this.$('div.menu');
+      const menu = $('div.menu', this.element);
       menu.toggleClass('hidden');
       if (mode === 'reset') {
         this.set('item', event.srcElement.text);
