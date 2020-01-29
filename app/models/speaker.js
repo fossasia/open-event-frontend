@@ -40,7 +40,7 @@ export default ModelBase.extend({
   segmentedLinkTwitter   : computedSegmentedLink.bind(this)('twitter'),
   segmentedLinkGithub    : computedSegmentedLink.bind(this)('github'),
   segmentedLinkFacebook  : computedSegmentedLink.bind(this)('facebook'),
-  segmentedLinkLinkedIn  : computedSegmentedLink.bind(this)('linkedin'),
+  segmentedLinkLinkedin  : computedSegmentedLink.bind(this)('linkedin'),
   segmentedLinkInstagram : computedSegmentedLink.bind(this)('instagram'),
 
   /**

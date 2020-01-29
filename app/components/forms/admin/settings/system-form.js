@@ -214,20 +214,6 @@ export default Component.extend(FormMixin, {
               prompt : this.l10n.t('Please enter the token for Sendgrid')
             }
           ]
-        },
-
-        secretKey: {
-          identifier : 'secret_key',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter the application secret key')
-            },
-            {
-              type   : 'minLength[16]',
-              prompt : this.l10n.t('Your application secret key must have at least {ruleValue} characters')
-            }
-          ]
         }
       }
     };
