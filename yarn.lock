@@ -1116,6 +1116,18 @@
     jquery "^3.3.1"
     resolve "^1.10.0"
 
+"@ember/jquery@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@ember/jquery/-/jquery-1.1.0.tgz#33d062610a5ceaa5c5c8a3187f870d47d6595940"
+  integrity sha512-zePT3LiK4/2bS4xafrbOlwoLJrDFseOZ95OOuVDyswv8RjFL+9lar+uxX6+jxRb0w900BcQSWP/4nuFSK6HXXw==
+  dependencies:
+    broccoli-funnel "^2.0.2"
+    broccoli-merge-trees "^3.0.2"
+    ember-cli-babel "^7.11.1"
+    ember-cli-version-checker "^3.1.3"
+    jquery "^3.4.1"
+    resolve "^1.11.1"
+
 "@ember/optional-features@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-0.7.0.tgz#f65a858007020ddfb8342f586112750c32abd2d9"
@@ -6734,15 +6746,17 @@ ember-notify@^6.0.0:
     ember-cli-babel "^7.7.3"
     ember-cli-htmlbars "^3.0.1"
 
-ember-print-this@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ember-print-this/-/ember-print-this-1.0.0.tgz#7268fae01acd75af2842235017e365e4157f6319"
+ember-print-this@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-print-this/-/ember-print-this-2.0.0.tgz#eb3095c7125ad9262e01f4dde1e422755717045b"
+  integrity sha512-1ondIbOTLRXvZ/JJ8B0Nu1m3jDFdlNEDbR6ms5rrVrY0w8Xbp5a+fhE9eNisejL+MaLRbpVUCQGihPM+kRQ5oQ==
   dependencies:
+    "@ember/jquery" "^1.1.0"
     broccoli-funnel "^2.0.1"
     broccoli-merge-trees "^2.0.0"
     broccoli-stew "^1.5.0"
-    ember-cli-babel "^6.6.0"
-    ember-cli-htmlbars "^2.0.1"
+    ember-cli-babel "^7.7.3"
+    ember-cli-htmlbars "^3.0.1"
     print-this "^1.12.0"
 
 ember-promise-utils@^0.1.1:
@@ -13260,7 +13274,7 @@ resolve@1.9.0:
   dependencies:
     path-parse "^1.0.6"
 
-resolve@^1.1.2, resolve@^1.1.3, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.14.0, resolve@^1.3.2, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.7.1, resolve@^1.8.1:
+resolve@^1.1.2, resolve@^1.1.3, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.11.1, resolve@^1.14.0, resolve@^1.3.2, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.7.1, resolve@^1.8.1:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.15.0.tgz#1b7ca96073ebb52e741ffd799f6b39ea462c67f5"
   integrity sha512-+hTmAldEGE80U2wJJDC1lebb5jWqvTYAfm3YZ1ckk1gBr0MnCqUKlwK1e+anaFljIl+F5tR5IoZcm4ZDA1zMQw==
