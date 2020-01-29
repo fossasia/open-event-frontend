@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { once } from '@ember/runloop';
 import { computed, observer } from '@ember/object';
@@ -20,8 +21,8 @@ export default Component.extend({
   },
 
   _setCheckedProp() {
-    if (!this.$()) { return }
-    this.$().prop('checked', this.htmlChecked);
+    if (!$(this.element)) { return }
+    $(this.element).prop('checked', this.htmlChecked);
   },
 
   _updateElementValue: observer('htmlChecked', function() {

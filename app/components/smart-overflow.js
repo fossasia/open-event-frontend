@@ -1,11 +1,12 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['smart-overflow'],
   didInsertElement() {
     this._super(...arguments);
-    let $headerSpan = this.$('span');
-    let $header = this.$();
+    let $header = $(this.element);
+    let $headerSpan = $header.find('span');
     $header.attr('data-content', $headerSpan.text());
     $header.attr('data-variation', 'tiny');
     while ($headerSpan.outerHeight() > $header.height()) {

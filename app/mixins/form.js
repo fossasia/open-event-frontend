@@ -35,31 +35,31 @@ export default Mixin.create({
             // Scroll to the first error message
             if (formErrors.length > 0) {
               $('html,body').animate({
-                scrollTop: this.$(`div:contains('${formErrors[0]}')`).offset().top
+                scrollTop: $(`div:contains('${formErrors[0]}')`, this.element).offset().top
               }, this.autoScrollSpeed);
             }
           }
         }
       };
 
-      const $popUps = this.$('.has.popup');
+      const $popUps = $('.has.popup', this.element);
       if ($popUps) {
         $popUps.popup({
           hoverable: true
         });
       }
 
-      const $checkBoxes = this.$('.ui.checkbox:not(.ember-view)');
+      const $checkBoxes = $('.ui.checkbox:not(.ember-view)', this.element);
       if ($checkBoxes) {
         $checkBoxes.checkbox();
       }
 
       let $form;
-      if ((this.tagName && this.tagName.toLowerCase() === 'form') || (this.$() && this.$().prop('tagName').toLowerCase() === 'form')) {
-        $form = this.$();
+      if ((this.tagName && this.tagName.toLowerCase() === 'form') || ($(this.element) && $(this.element).prop('tagName').toLowerCase() === 'form')) {
+        $form = $(this.element);
         $form.addClass('ui form');
       } else {
-        $form = this.$('.ui.form');
+        $form = $('.ui.form', this.element);
       }
       if ($form) {
         $form = $form.first();
@@ -85,7 +85,7 @@ export default Mixin.create({
 
   willDestroyElement() {
     this._super(...arguments);
-    const $popUps = this.$('.has.popup');
+    const $popUps = $('.has.popup', this.element);
     if ($popUps) {
       $popUps.popup('destroy');
     }
