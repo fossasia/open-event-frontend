@@ -55,7 +55,8 @@ export default Mixin.create({
       }
 
       let $form;
-      if ((this.tagName && this.tagName.toLowerCase() === 'form') || ($(this.element) && $(this.element).prop('tagName').toLowerCase() === 'form')) {
+      const tagName = ($(this.element) && $(this.element).prop('tagName')) || '';
+      if ((this.tagName && this.tagName.toLowerCase() === 'form') || (tagName.toLowerCase() === 'form')) {
         $form = $(this.element);
         $form.addClass('ui form');
       } else {
