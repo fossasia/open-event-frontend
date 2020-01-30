@@ -55,8 +55,12 @@ export default Component.extend(FormMixin, {
   },
 
   actions: {
-    showPassword(fieldName) {
-      this.toggleProperty(`showPass${fieldName}`);
+    showSignupPassword() {
+      this.toggleProperty('shownewPass');
+    },
+
+    showConfirmPassword() {
+      this.toggleProperty('showrepeatPass');
     },
     submit() {
       this.onValid(() => {
