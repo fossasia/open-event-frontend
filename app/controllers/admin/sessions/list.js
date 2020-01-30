@@ -71,6 +71,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
+
   @action
   async deleteSession(session_id) {
     this.set('isLoading', true);

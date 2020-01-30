@@ -53,6 +53,7 @@ export default class extends Controller {
         });
     }, 3000);
   }
+
   @action
   startGeneration() {
     this.set('isLoading', true);
