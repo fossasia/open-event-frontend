@@ -47,10 +47,6 @@ export default Component.extend(FormMixin, {
             {
               type   : 'match[password]',
               prompt : this.l10n.t('Passwords do not match')
-            },
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please confirm your password')
             }
           ]
         }
