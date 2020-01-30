@@ -5,8 +5,8 @@ export default Controller.extend({
     this.loader.post(`/auth/oauth/login/${ queryParams.provider }?code=${ queryParams.code }`)
       .then(response => {
         let credentials = {
-              identification : response.email,
-              password       : response.oauth_hash
+              username : response.email,
+              password : response.oauth_hash
             },
             authenticator = 'authenticator:jwt';
 

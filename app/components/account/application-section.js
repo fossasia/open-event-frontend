@@ -15,8 +15,8 @@ export default Component.extend({
             this.loader.load(`/auth/oauth/login/${  provider  }/${  authData.authorizationCode  }/?redirect_uri=${  authData.redirectUri}`)
               .then(async response => {
                 let credentials = {
-                  'identification' : response.email,
-                  'password'       : response.facebook_login_hash
+                  'username' : response.email,
+                  'password' : response.facebook_login_hash
                 };
 
                 let authenticator = 'authenticator:jwt';

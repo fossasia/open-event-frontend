@@ -29,7 +29,7 @@ export default Controller.extend({
         .then(() => {
           let credentials = newUser.getProperties('email', 'password'),
               authenticator = 'authenticator:jwt';
-          credentials.identification = newUser.email;
+          credentials.username = newUser.email;
           this.session
             .authenticate(authenticator, credentials)
             .then(async() => {
@@ -63,10 +63,10 @@ export default Controller.extend({
 
     },
 
-    async loginExistingUser(identification, password) {
+    async loginExistingUser(username, password) {
       this.set('isLoading', true);
       let credentials = {
-        identification,
+        username,
         password
       };
       let authenticator = 'authenticator:jwt';

@@ -44,7 +44,7 @@ export default class extends Component.extend(FormMixin) {
   @action
   async submit() {
     this.onValid(async() => {
-      let credentials = { identification: this.identification, password: this.password },
+      let credentials = { username: this.identification, password: this.password },
           authenticator = 'authenticator:jwt';
       this.setProperties({
         errorMessage : null,
