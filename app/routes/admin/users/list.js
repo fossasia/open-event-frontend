@@ -93,6 +93,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     queryString = this.applySortFilters(queryString, params);
     return  this.asArray(this.store.query('user', queryString));
   }
+
   @action
   refreshRoute() {
     this.refresh();
