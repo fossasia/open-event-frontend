@@ -11,6 +11,7 @@ export default Controller.extend({
   fastboot            : service(),
   unreadNotifications : filterBy('model.notifications', 'isRead', false),
   footerPages         : filterBy('model.pages', 'place', 'footer'),
+  userLocation        : null,
 
   showCookie: computed(function() {
     const cookieName = 'seen-cookie-message';
