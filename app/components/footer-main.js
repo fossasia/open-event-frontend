@@ -1,9 +1,11 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
   tagName       : 'footer',
   classNames    : ['ui', 'inverted', 'vertical', 'footer', 'segment'],
+  geolocation   : service(),
   currentLocale : computed(function() {
     return this.l10n.getLocale();
   }),
@@ -12,9 +14,11 @@ export default Component.extend({
       this.l10n.switchLanguage(locale);
     },
     getUserLocation() {
-      let currentlocation = navigator.geolocation.getCurrentPosition( position => { 
-        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+position.coords.latitude+","+position.coords.latitude+"&key=AIzaSyDEmpxGnTRr_CKeiim6OrvsZLvXrppJCnE";
-        this.set('userLocation',[position.coords.latitude,position.coords.longitude]);
+      let currentlocation = navigator.geolocation.getCurrentPosition( position => {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&key=AIzaSyDEmpxGnTRr_CKeiim6OrvsZLvXrppJCnE";
+        this.set('userLocation', [lat, lng]);
       });
     }
   },
