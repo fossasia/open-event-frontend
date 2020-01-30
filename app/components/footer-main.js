@@ -10,6 +10,12 @@ export default Component.extend({
   actions: {
     switchLanguage(locale) {
       this.l10n.switchLanguage(locale);
+    },
+    getUserLocation() {
+      let currentlocation = navigator.geolocation.getCurrentPosition( position => { 
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+position.coords.latitude+","+position.coords.latitude+"&key=AIzaSyDEmpxGnTRr_CKeiim6OrvsZLvXrppJCnE";
+        this.set('userLocation',[position.coords.latitude,position.coords.longitude]);
+      });
     }
   },
 
