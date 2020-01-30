@@ -4215,9 +4215,10 @@ callsites@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.0.0.tgz#fb7eb569b72ad7a45812f93fd9430a3e410b3dd3"
 
-camel-case@3.0.x:
+camel-case@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-3.0.0.tgz#ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73"
+  integrity sha1-yjw2iKTpzzpM2nd9xNy8cTJJz3M=
   dependencies:
     no-case "^2.2.0"
     upper-case "^1.1.1"
@@ -4465,18 +4466,19 @@ clean-css-promise@^0.1.0:
     clean-css "^3.4.5"
     pinkie-promise "^2.0.0"
 
-clean-css@4.2.x:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
-  dependencies:
-    source-map "~0.6.0"
-
 clean-css@^3.4.5:
   version "3.4.28"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.28.tgz#bf1945e82fc808f55695e6ddeaec01400efd03ff"
   dependencies:
     commander "2.8.x"
     source-map "0.4.x"
+
+clean-css@^4.2.1:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.3.tgz#507b5de7d97b48ee53d84adb0160ff6216380f78"
+  integrity sha512-VcMWDN54ZN/DS+g58HYL5/n4Zrqe8vHJpGA8KdgUXFU4fuP/aHNw8eld9SyEIyabIMJX/0RaY/fplOo5hYLSFA==
+  dependencies:
+    source-map "~0.6.0"
 
 clean-up-path@^1.0.0:
   version "1.0.0"
@@ -4646,10 +4648,6 @@ commander@2.12.2:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
 
-commander@2.17.x, commander@~2.17.1:
-  version "2.17.1"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
-
 commander@2.8.x:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.8.1.tgz#06be367febfda0c330aa1e2a072d3dc9762425d4"
@@ -4660,7 +4658,7 @@ commander@^2.15.1:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
-commander@^2.18.0:
+commander@^2.18.0, commander@^2.20.0:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
@@ -4672,6 +4670,15 @@ commander@^2.19.0, commander@^2.5.0, commander@~2.20.0:
 commander@^2.6.0, commander@^2.8.1:
   version "2.15.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
+
+commander@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.0.tgz#545983a0603fe425bc672d66c9e3c89c42121a83"
+  integrity sha512-NIQrwvv9V39FHgGFm36+U9SMQzbiHvU79k+iADraJTpmrFFfx7Ds0IvDoAdZsDrknlkRk14OYoWXb57uTh7/sw==
+
+commander@~2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
 common-tags@^1.4.0:
   version "1.7.2"
@@ -5937,14 +5944,15 @@ ember-cli-head@^0.4.1:
     ember-cli-babel "^6.11.0"
     ember-cli-htmlbars "^2.0.3"
 
-ember-cli-html-minifier@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-html-minifier/-/ember-cli-html-minifier-1.0.0.tgz#4ca5c7db5d4bc865d2fbb217baeb11b5be090f1e"
+ember-cli-html-minifier@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-html-minifier/-/ember-cli-html-minifier-1.1.0.tgz#fefd6ce8f5c5863affc3fe3d494e7ef3c7bdb252"
+  integrity sha512-zF/wOAE1IlzsVUw4NRLuXBkrKJ/J+ymdIKre+NYIxJXHjVlE3xSc1Z0uP4UqdTd+l4J0s9mOYbiIH67RQFBtdg==
   dependencies:
     broccoli-filter "^1.3.0"
     broccoli-funnel "^2.0.1"
     broccoli-merge-trees "^3.0.1"
-    html-minifier "^3.5.20"
+    html-minifier-terser "^5.0.2"
     util-extend "^1.0.3"
 
 ember-cli-htmlbars-inline-precompile@^1.0.0:
@@ -8925,9 +8933,10 @@ hawk@3.1.3, hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-he@1.1.x:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+he@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
+  integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 heimdalljs-fs-monitor@^0.2.2:
   version "0.2.2"
@@ -9032,17 +9041,18 @@ html-encoding-sniffer@^1.0.2:
   dependencies:
     whatwg-encoding "^1.0.1"
 
-html-minifier@^3.5.20:
-  version "3.5.20"
-  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.20.tgz#7b19fd3caa0cb79f7cde5ee5c3abdf8ecaa6bb14"
+html-minifier-terser@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/html-minifier-terser/-/html-minifier-terser-5.0.2.tgz#0e67a0b062ae1dd0719fc73199479298f807ae16"
+  integrity sha512-VAaitmbBuHaPKv9bj47XKypRhgDxT/cDLvsPiiF7w+omrN3K0eQhpigV9Z1ilrmHa9e0rOYcD6R/+LCDADGcnQ==
   dependencies:
-    camel-case "3.0.x"
-    clean-css "4.2.x"
-    commander "2.17.x"
-    he "1.1.x"
-    param-case "2.1.x"
-    relateurl "0.2.x"
-    uglify-js "3.4.x"
+    camel-case "^3.0.0"
+    clean-css "^4.2.1"
+    commander "^4.0.0"
+    he "^1.2.0"
+    param-case "^2.1.1"
+    relateurl "^0.2.7"
+    terser "^4.3.9"
 
 htmlparser2@^3.10.0:
   version "3.10.1"
@@ -12130,9 +12140,10 @@ parallel-transform@^1.1.0:
     inherits "^2.0.3"
     readable-stream "^2.1.5"
 
-param-case@2.1.x:
+param-case@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/param-case/-/param-case-2.1.1.tgz#df94fd8cf6531ecf75e6bef9a0858fbc72be2247"
+  integrity sha1-35T9jPZTHs915r75oIWPvHK+Ikc=
   dependencies:
     no-case "^2.2.0"
 
@@ -13154,9 +13165,10 @@ regjsparser@^0.6.0:
   dependencies:
     jsesc "~0.5.0"
 
-relateurl@0.2.x:
+relateurl@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
+  integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
@@ -14132,6 +14144,14 @@ source-map-support@~0.5.10:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
+source-map-support@~0.5.12:
+  version "0.5.16"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.16.tgz#0ae069e7fe3ba7538c64c98515e35339eac5a042"
+  integrity sha512-efyLRJDr68D9hBBNIPWFjhpFzURh+KJykQwvMyW5UiZzYwoF6l4YMMDIJJEyFWxWCqfyxLzz6tSfUFR+kXXsVQ==
+  dependencies:
+    buffer-from "^1.0.0"
+    source-map "^0.6.0"
+
 source-map-support@~0.5.6:
   version "0.5.10"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.10.tgz#2214080bc9d51832511ee2bab96e3c2f9353120c"
@@ -14657,6 +14677,15 @@ terser@^3.8.1:
     source-map "~0.6.1"
     source-map-support "~0.5.6"
 
+terser@^4.3.9:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-4.6.3.tgz#e33aa42461ced5238d352d2df2a67f21921f8d87"
+  integrity sha512-Lw+ieAXmY69d09IIc/yqeBqXpEQIpDGZqT34ui1QWXIUpR2RjbqEkT8X7Lgex19hslSqcWM5iMN2kM11eMsESQ==
+  dependencies:
+    commander "^2.20.0"
+    source-map "~0.6.1"
+    source-map-support "~0.5.12"
+
 test-exclude@^4.1.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-4.2.1.tgz#dfa222f03480bca69207ca728b37d74b45f724fa"
@@ -14984,13 +15013,6 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.5.tgz#0c65f15f815aa08b560a61ce8b4db7ffc3f45376"
 
-uglify-js@3.4.x, uglify-js@^3.1.4:
-  version "3.4.9"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.4.9.tgz#af02f180c1207d76432e473ed24a28f4a782bae3"
-  dependencies:
-    commander "~2.17.1"
-    source-map "~0.6.1"
-
 uglify-js@^2.6:
   version "2.8.29"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
@@ -15005,6 +15027,13 @@ uglify-js@^3.0.24:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.13.tgz#d2d8857b598d77f8764ae3bfcf90bb1df134d2bd"
   dependencies:
     commander "~2.20.0"
+    source-map "~0.6.1"
+
+uglify-js@^3.1.4:
+  version "3.4.9"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.4.9.tgz#af02f180c1207d76432e473ed24a28f4a782bae3"
+  dependencies:
+    commander "~2.17.1"
     source-map "~0.6.1"
 
 uglify-to-browserify@~1.0.0:
