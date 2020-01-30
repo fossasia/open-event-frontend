@@ -27,3 +27,4 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
   }
 
 });
+
