@@ -3121,21 +3121,16 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beaver-logger@^3.0.17:
+beaver-logger@^3.0.17, beaver-logger@^3.0.6:
   version "3.0.17"
   resolved "https://registry.yarnpkg.com/beaver-logger/-/beaver-logger-3.0.17.tgz#59d201ab9c7359e6250d10f3a72bf06dcc4c2866"
   dependencies:
     zalgo-promise "^1.0.26"
 
-beaver-logger@^3.0.6:
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/beaver-logger/-/beaver-logger-3.0.14.tgz#ef7e9bf2d72f80b48097842cd79e665df1d862e1"
-  dependencies:
-    zalgo-promise "^1.0.26"
-
-belter@^1.0.77, belter@^1.0.93:
-  version "1.0.96"
-  resolved "https://registry.yarnpkg.com/belter/-/belter-1.0.96.tgz#4c9419bda8d037b94a9c81a5ecfc34ff6f0d0827"
+belter@^1.0.77, belter@^1.0.96:
+  version "1.0.115"
+  resolved "https://registry.yarnpkg.com/belter/-/belter-1.0.115.tgz#a1fe7786f94175d4450863a9b501eb32f14fc3a3"
+  integrity sha512-CDUeweAO3hRNamhZsDqO0Ubn+Lyfka3rMfjBvOCka6/NreGGAACGFVYlej9ssgebyl2qbBBSiwinUVNC85uGvw==
   dependencies:
     cross-domain-safe-weakmap "^1.0.20"
     cross-domain-utils "^2.0.10"
@@ -5064,13 +5059,7 @@ cross-domain-safe-weakmap@^1.0.20, cross-domain-safe-weakmap@^1.0.22:
   dependencies:
     cross-domain-utils "^2.0.0"
 
-cross-domain-utils@^2.0.0, cross-domain-utils@^2.0.1:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/cross-domain-utils/-/cross-domain-utils-2.0.10.tgz#4ee5962d61523e92fbe07a6d4d461c6e6f5f1878"
-  dependencies:
-    zalgo-promise "^1.0.11"
-
-cross-domain-utils@^2.0.10, cross-domain-utils@^2.0.16:
+cross-domain-utils@^2.0.0, cross-domain-utils@^2.0.1, cross-domain-utils@^2.0.10, cross-domain-utils@^2.0.16:
   version "2.0.27"
   resolved "https://registry.yarnpkg.com/cross-domain-utils/-/cross-domain-utils-2.0.27.tgz#acd3d8cfe2441dfc132965b55f7864bbb0958571"
   dependencies:
@@ -8338,6 +8327,11 @@ form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
+
+form-serialize@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/form-serialize/-/form-serialize-0.7.2.tgz#b0a2ff0c22026fb6d3d15c9d33f6de6a432e4732"
+  integrity sha1-sKL/DCICb7bT0VydM/beakMuRzI=
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -12589,15 +12583,17 @@ path-type@^3.0.0:
   dependencies:
     pify "^3.0.0"
 
-paypal-checkout@^4.0.268:
-  version "4.0.268"
-  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.268.tgz#cf61d39f7b8b26c0440cce6e81a3aec1241d5c85"
+paypal-checkout@^4.0.311:
+  version "4.0.311"
+  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.311.tgz#88b0bf8a70b3b94a7dc58db5a9a49456a7b5593b"
+  integrity sha512-B7SKU6Mn6dFoUsjvGqORzdwbNPYIormHHa7rGLF4blCwQe2ZLcp+FATT23hW0gzw9XwJIgm3049tMEAn1YFszQ==
   dependencies:
     Base64 "^1.0.0"
     beaver-logger "^3.0.6"
-    belter "^1.0.93"
+    belter "^1.0.96"
     bowser "^1.7.1"
     cross-domain-utils "^2.0.1"
+    form-serialize "^0.7.2"
     hi-base32 "^0.5.0"
     post-robot "^8.0.0"
     zalgo-promise "^1.0.10"
@@ -12693,15 +12689,7 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
 
-post-robot@^8.0.0:
-  version "8.0.28"
-  resolved "https://registry.yarnpkg.com/post-robot/-/post-robot-8.0.28.tgz#2d1e37988317e94c1311ed4caa8162366d4fd1cd"
-  dependencies:
-    cross-domain-safe-weakmap "^1.0.1"
-    cross-domain-utils "^2.0.0"
-    zalgo-promise "^1.0.3"
-
-post-robot@^8.0.29:
+post-robot@^8.0.0, post-robot@^8.0.29:
   version "8.0.30"
   resolved "https://registry.yarnpkg.com/post-robot/-/post-robot-8.0.30.tgz#5aac91bb996751549a3c273507b6448a293f6c1f"
   dependencies:
@@ -16227,11 +16215,7 @@ yeast@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
-zalgo-promise@^1.0.10, zalgo-promise@^1.0.11, zalgo-promise@^1.0.26, zalgo-promise@^1.0.3:
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/zalgo-promise/-/zalgo-promise-1.0.28.tgz#d21b31c060fbb159af9d48f0e67dd31ce4091b33"
-
-zalgo-promise@^1.0.28, zalgo-promise@^1.0.34:
+zalgo-promise@^1.0.10, zalgo-promise@^1.0.11, zalgo-promise@^1.0.26, zalgo-promise@^1.0.28, zalgo-promise@^1.0.3, zalgo-promise@^1.0.34:
   version "1.0.38"
   resolved "https://registry.yarnpkg.com/zalgo-promise/-/zalgo-promise-1.0.38.tgz#6acdb8990954eabab505c0c3bde47523fd927d33"
 
