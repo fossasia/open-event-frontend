@@ -82,7 +82,11 @@ module.exports = function(environment) {
       hostWhitelist: [/.+/]
     },
 
-    torii: {}
+    torii: {},
+
+    'ember-l10n': {
+      jsonPath: 'assets/locales'
+    }
   };
 
   if (environment === 'production') {
