@@ -6,6 +6,7 @@ export default class extends Controller {
   get services() {
     return this.model.services.sortBy('name');
   }
+
   @computed('model.permissions')
   get permissions() {
     return this.model.permissions.sortBy('serviceName');

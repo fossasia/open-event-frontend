@@ -16,6 +16,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         return this.l10n.t('All');
     }
   }
+
   async model(params) {
     this.set('params', params);
     const searchField = 'status';
@@ -65,6 +66,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
 
   }
+
   @action
   refreshRoute() {
     this.refresh();

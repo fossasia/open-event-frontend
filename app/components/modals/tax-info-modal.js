@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { computed } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import FormMixin from 'open-event-frontend/mixins/form';
@@ -128,8 +129,9 @@ export default ModalBase.extend(FormMixin, {
 
   actions: {
     updateTaxInfo() {
-      this.$('.ui.form').form('validate form');
-      if (this.$('.ui.form').form('is valid')) {
+      const $form = $('.ui.form', this.element);
+      $form.form('validate form');
+      if ($form.form('is valid')) {
         this.set('tax.isTaxIncludedInPrice', this.isTaxIncludedInPrice === 'include');
         this.close();
         this.set('hasTaxInfo', true);

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 
 export default Component.extend({
@@ -23,9 +24,9 @@ export default Component.extend({
      * - @niranjan94
      */
 
-    this.set('$sidebarOpener', this.$('.open.sidebar'));
-    this.set('$sidebarClosers', this.$('.ui.sidebar').find('.item,a,.link,button'));
-    this.$sidebarClosers.push(this.$('.main-container')[0]);
+    this.set('$sidebarOpener', $('.open.sidebar', this.element));
+    this.set('$sidebarClosers', $('.ui.sidebar', this.element).find('.item,a,.link,button'));
+    this.$sidebarClosers.push($('.main-container', this.element)[0]);
 
     if (this.$sidebarOpener) {
       this.$sidebarOpener.on('click', this.toggleSidebar.bind(this));
