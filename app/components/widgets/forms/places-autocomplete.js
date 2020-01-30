@@ -6,6 +6,7 @@
  *
  */
 
+import $ from 'jquery';
 import TextField from '@ember/component/text-field';
 
 import { isPresent, isEmpty } from '@ember/utils';
@@ -69,7 +70,7 @@ export default TextField.extend({
   getAutocomplete() {
     if (isEmpty(this.autocomplete)) {
       if (document && window) {
-        let [inputElement] = this.$(),
+        let [inputElement] = $(this.element),
             google = this.google || window.google,
             options = { types: this._typesToArray() };
         if (Object.keys(this.restrictions).length > 0) {

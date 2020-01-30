@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { merge } from 'lodash-es';
 import moment from 'moment';
@@ -28,16 +29,7 @@ export default Component.extend({
       }
     };
 
-    // switch (this.rangePosition) {
-    //   case 'start':
-    //     defaultOptions.endCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
-    //     break;
-    //   case 'end':
-    //     defaultOptions.startCalendar = this.$().closest('.fields').find('.ui.calendar.time.picker');
-    //     break;
-    // }
-
-    this.$().calendar(merge(defaultOptions, this.options));
+    $(this.element).calendar(merge(defaultOptions, this.options));
   },
   actions: {
     onChange() {

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { run } from '@ember/runloop';
 
@@ -12,7 +13,7 @@ export default Component.extend({
     if (!this.src) {
       this.set('src', this.isAvatar ? this.fallbackAvatar : this.fallback);
     }
-    this.$().on('error', () => {
+    $(this.element).on('error', () => {
       run(this, () => {
         this.set('src', this.isAvatar ? this.fallbackAvatar : this.fallback);
       });
@@ -20,6 +21,6 @@ export default Component.extend({
   },
 
   willDestroyElement() {
-    this.$().off();
+    $(this.element).off();
   }
 });

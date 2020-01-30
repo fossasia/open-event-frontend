@@ -363,6 +363,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
+        },
+        paymentCountry: {
+          identifier : 'payment_country',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please select your country')
+            }
+          ]
         }
       }
     };

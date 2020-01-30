@@ -125,9 +125,10 @@
                       placeholder=(t 'Promotional Code')
                       readonly=promotionalCodeApplied
                       key-up=(action 'handleKeyPress')
+                      id='promotionalCode'
               }}
               {{#unless promotionalCodeApplied}}
-                <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
+                <div role="button" class="ui icon {{if promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
                   <i class="checkmark icon"></i>
                 </div>
               {{/unless}}
