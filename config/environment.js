@@ -154,6 +154,7 @@ module.exports = function(environment) {
         'https://platform.twitter.com',
         'https://cdn.syndication.twimg.com',
         'http://127.0.0.1:5000',
+        'cdn.omise.co/omise.js',
         'cdn.ravenjs.com'
       ],
       'font-src': [
