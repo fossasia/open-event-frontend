@@ -27,9 +27,10 @@
     <div class="three wide column">
       <div class="ui inverted link list">
         <strong class="item">{{t 'Nearby Events'}}</strong>
-        <a class="item" href="#">FOSSASIA</a>
-        <a class="item" href="#">Science Meet</a>
-        <a class="item" href="#">Tech Meet</a>
+        <a class = "item" {{action 'getUserLocation'}}>Allow location access <i class="eye icon"></i></a>
+        <a class="item" href="{{concat '/explore/?location=' userLocation}}">FOSSASIA</a>
+        <a class="item" href="{{concat '/explore/?category=Science%20%26%20Technology&location=' userLocation '&sub_category=science'}}">Science Meet</a>
+        <a class="item" href="{{concat '/explore/?category=Science%20%26%20Technology&location=' userLocation '&sub_category=high-tech'}}">Tech Meet</a>
       </div>
     </div>
 
