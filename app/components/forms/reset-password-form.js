@@ -40,6 +40,19 @@ export default Component.extend(FormMixin, {
               prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
             }
           ]
+        },
+        repeatPassword: {
+          identifier : 'password_repeat',
+          rules      : [
+            {
+              type   : 'match[password]',
+              prompt : this.l10n.t('Passwords do not match')
+            },
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please confirm your password')
+            }
+          ]
         }
       }
     };
