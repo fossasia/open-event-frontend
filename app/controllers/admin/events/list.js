@@ -147,6 +147,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       isEventDeleteModalOpen : false
     });
   }
+
   @action
   async restoreEvent(event_id) {
     this.set('isLoading', true);
