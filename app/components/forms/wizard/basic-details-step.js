@@ -436,7 +436,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     openTaxModal(isNewTax) {
       if (!this.isCreate && isNewTax) {
-        this.set('data.event.tax', this.store.createRecord('tax'));
+        this.set('data.event.tax', this.store.createRecord('tax', {name: this.data.event.tax.name}));
       }
 
       this.set('taxModalIsOpen', true);
