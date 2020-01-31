@@ -13,6 +13,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         return this.l10n.t('Expired');
     }
   }
+
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
