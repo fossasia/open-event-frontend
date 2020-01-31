@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 
 export default Component.extend({
@@ -5,14 +6,14 @@ export default Component.extend({
   tagName    : 'a',
   didInsertElement() {
     this._super.call(this);
-    this.$().popup({
+    $(this.element).popup({
       popup : '.popup',
       on    : 'click'
     });
   },
   willDestroyElement() {
     this._super.call(this);
-    this.$().popup('destroy');
+    $(this.element).popup('destroy');
   },
   actions: {
     markRead(notification) {

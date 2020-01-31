@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { alias } from '@ember/object/computed';
 import { computed, setProperties, set, get } from '@ember/object';
 import { typeOf } from '@ember/utils';
@@ -50,11 +51,11 @@ export default ModelsTable.extend({
     let items = (get(meta, itemsCountProperty));
     let pages = 0;
     if (this.pageSize > items) {
-      this.$('.pagination').css({
+      $('.pagination', this.element).css({
         display: 'none'
       });
     } else {
-      this.$('.pagination').removeAttr('style');
+      $('.pagination', this.element).removeAttr('style');
       pages = parseInt((items / this.pageSize));
       if (items % this.pageSize) {
         pages = pages + 1;
@@ -82,8 +83,7 @@ export default ModelsTable.extend({
     if (!get(this.data, 'query')) {
       console.warn('You must use https://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
       query = merge({}, this.query);
-      store = this.store;
-      modelName = this.modelName;
+      ({ store, modelName } = this);
     } else {
       query = merge({}, get(this.data, 'query'));
       store = get(this.data, 'store');

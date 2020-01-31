@@ -1,9 +1,9 @@
 <div class="content">
   {{#if (eq props.options.subject 'emailSubject')}}
-    <a class="header">{{sanitize extraRecords.emailSubject}}</a>
+    <a href="#" class="header">{{sanitize extraRecords.emailSubject}}</a>
   {{else if (eq props.options.subject 'notificationTitle')}}
     {{#if extraRecords.notificationTitle}}
-      <a class="header">{{sanitize extraRecords.notificationTitle}}</a>
+      <a href="#" class="header">{{sanitize extraRecords.notificationTitle}}</a>
     {{/if}} 
   {{/if}}  
   <div class="description">

@@ -11,18 +11,21 @@ export default class extends Controller {
     }
     return false;
   }
+
   isLoading = false;
   header    = {
     left   : 'today prev,next',
     center : 'title',
     right  : 'timelineDay,timelineThreeDays,agendaWeek,month'
   }
+
   view = {
     timelineThreeDays: {
       type     : 'timeline',
       duration : { days: 3 }
     }
   }
+
   updateSession(start, end, microlocationId, sessionId) {
     let payload = {
       data: {
@@ -58,11 +61,13 @@ export default class extends Controller {
         this.notify.error(`Error: ${reason}`);
       });
   }
+
   unscheduleSession(session) {
     window.$('.full-calendar').fullCalendar('removeEvents', session._id);
     this.updateSession(null, null, session.resourceId, session.serverId);
     this.target.send('refresh');
   }
+
   @action
   drop(date, jsEvent, ui, resourceId) {
     let start = date;
@@ -71,14 +76,17 @@ export default class extends Controller {
     this.updateSession(start, end, resourceId, window.$(ui.helper).data('serverId'));
     window.$(ui.helper).remove();
   }
+
   @action
   eventDrop(session) {
     this.updateSession(session.start, session.end, session.resourceId, session.serverId);
   }
+
   @action
   eventResize(session) {
     this.updateSession(session.start, session.end, session.resourceId, session.serverId);
   }
+
   @action
   eventRender(session, element) {
     element.append('<span class="scheduled-close-btn"><i class="x icon"></i></span>');
@@ -87,6 +95,7 @@ export default class extends Controller {
       controller.unscheduleSession(session);
     });
   }
+
   @action
   togglePublishState() {
     this.set('isLoading', true);

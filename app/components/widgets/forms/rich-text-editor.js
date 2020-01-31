@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { debounce } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
@@ -45,7 +46,7 @@ export default Component.extend({
   didInsertElement() {
     this._super(...arguments);
     this.set('_value', this.value);
-    this.$('.button')
+    $('.button', this.element)
       .popup({
         inline    : true,
         variation : 'tiny'
@@ -53,8 +54,8 @@ export default Component.extend({
 
     // Don't initialize wysihtml5 when app is in testing mode
     if (!isTesting) {
-      this.editor = new wysihtml5.Editor(this.$(`#${this.textareaIdGenerated}`)[0], {
-        toolbar     : this.$(`#${this.textareaIdGenerated}-toolbar`)[0],
+      this.editor = new wysihtml5.Editor($(`#${this.textareaIdGenerated}`, this.element)[0], {
+        toolbar     : $(`#${this.textareaIdGenerated}-toolbar`, this.element)[0],
         parserRules : this.standardParserRules
       });
 
@@ -75,6 +76,6 @@ export default Component.extend({
     if (this.editor) {
       this.editor.destroy();
     }
-    this.$('.button').popup('destroy');
+    $('.button', this.element).popup('destroy');
   }
 });
