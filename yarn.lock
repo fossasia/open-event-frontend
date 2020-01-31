@@ -6074,7 +6074,7 @@ ember-cli-htmlbars@^3.0.0, ember-cli-htmlbars@^3.0.1:
     json-stable-stringify "^1.0.0"
     strip-bom "^3.0.0"
 
-ember-cli-htmlbars@^4.2.0, ember-cli-htmlbars@^4.2.2:
+ember-cli-htmlbars@^4.0.0, ember-cli-htmlbars@^4.2.0, ember-cli-htmlbars@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-4.2.2.tgz#3db341a0c866b6e16919db071be9592b9702f014"
   integrity sha512-xhVYhdbS2H+XNHzSYfOZKRFIpZ8zOrNGMuAc7vJd6oUE8Aad2r5xjncIVQDioPp8sQfUpXt0uvkUZaOll/thXw==
@@ -6321,12 +6321,13 @@ ember-cli-string-utils@^1.0.0, ember-cli-string-utils@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ember-cli-string-utils/-/ember-cli-string-utils-1.1.0.tgz#39b677fc2805f55173735376fcef278eaa4452a1"
 
-ember-cli-stripe@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/ember-cli-stripe/-/ember-cli-stripe-1.0.4.tgz#80785415af0e223f242f52818d6bf2c44b37d9c1"
+ember-cli-stripe@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-stripe/-/ember-cli-stripe-3.0.0.tgz#6cbf71b69e3d42b92337bdd81fd69b80a0d9b3aa"
+  integrity sha512-EKQu9noDfjnuOhybE+bYropgg9v+K7TbsytHe/jbugho7KSMXRcMpsvuO0rqw0ddWuXAbR4gko5ggkTQ5aXrKA==
   dependencies:
-    ember-cli-babel "^6.0.0"
-    ember-cli-htmlbars "^1.1.1"
+    ember-cli-babel "^7.11.1"
+    ember-cli-htmlbars "^4.0.0"
     ember-invoke-action "^1.5.1"
 
 ember-cli-template-lint@^0.7.6:
@@ -6766,13 +6767,7 @@ ember-infinity@^2.1.0:
   dependencies:
     ember-cli-babel "^6.6.0"
 
-ember-invoke-action@^1.4.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/ember-invoke-action/-/ember-invoke-action-1.5.0.tgz#0370f187f39f22d54ddd039cd01aa7e685edbbec"
-  dependencies:
-    ember-cli-babel "^6.6.0"
-
-ember-invoke-action@^1.5.1:
+ember-invoke-action@^1.4.0, ember-invoke-action@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ember-invoke-action/-/ember-invoke-action-1.5.1.tgz#b6cad51ee729fc227cdbdba83b2b5486f0fa5834"
   dependencies:
