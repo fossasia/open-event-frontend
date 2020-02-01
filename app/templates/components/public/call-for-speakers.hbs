@@ -2,12 +2,12 @@
 <h1 class="ui header">
   {{t 'Call for Speakers'}}
   {{#if data.speakersCall.isOpen}}
-    <a class="ui basic green label">{{t 'Open'}}</a>
+    <a href="#" class="ui basic green label">{{t 'Open'}}</a>
     <div class="sub header">
       {{t 'Call for Speakers is open until'}} {{moment-format data.speakersCall.endsAt 'ddd, MMM DD h:mm A'}}
     </div>
   {{else}}
-    <a class="ui basic red label">{{t 'Closed'}}</a>
+    <a href="#" class="ui basic red label">{{t 'Closed'}}</a>
     <div class="sub header">
       {{#if data.speakersCall.isInFuture}}
         {{t 'Call for Speakers will open at'}} {{moment-format data.speakersCall.startsAt 'ddd, MMM DD h:mm A' }}
@@ -28,7 +28,7 @@
           {{#if session.id}}
             <div class="item">
               {{#link-to 'public.cfs.edit-session' session.id }}
-                <a class="ui very tiny basic blue button">{{session.title}}</a>
+                <a href="#" class="ui very tiny basic blue button">{{session.title}}</a>
               {{/link-to}}
             </div>
           {{/if}}
