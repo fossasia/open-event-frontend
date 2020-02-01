@@ -125,9 +125,7 @@ export default Controller.extend({
         this.set('isLoading', true);
         let order = this.get('model.order');
         let attendees = this.get('model.attendees');
-        for (const attendee of attendees ? attendees.toArray() : []) {
-          await attendee.save();
-        }
+        await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
         order.set('attendees', attendees);
         await order.save()
           .then(order => {
@@ -135,9 +133,7 @@ export default Controller.extend({
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async e => {
-            for (const attendee of attendees ? attendees.toArray() : []) {
-              await attendee.destroyRecord();
-            }
+            await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
             this.notify.error(this.l10n.t(e.errors[0].detail));
           })
           .finally(() => {
