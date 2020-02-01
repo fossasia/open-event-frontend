@@ -6,9 +6,7 @@ export default Controller.extend({
    */
   async saveForms(data) {
     await data.event.save();
-    for (const customForm of data.customForms ? data.customForms.toArray() : []) {
-      await customForm.save();
-    }
+    await Promise.all((data.customForms ? data.customForms.toArray() : []).map(customForm => customForm.save()));
     return data;
   },
 

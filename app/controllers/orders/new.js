@@ -13,9 +13,7 @@ export default Controller.extend({
           await current_user.save();
         }
         let { attendees, paymentMode } = data;
-        for (const attendee of attendees ? attendees.toArray() : []) {
-          await attendee.save();
-        }
+        await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
         if (paymentMode === 'free') {
           order.set('status', 'completed');
         } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite') {
