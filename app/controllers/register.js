@@ -36,10 +36,10 @@ export default Controller.extend({
         });
     },
 
-    async loginExistingUser(identification, password, token, eventId) {
+    async loginExistingUser(username, password, token, eventId) {
       this.set('isLoading', true);
       let credentials = {
-        identification,
+        username,
         password
       };
       let authenticator = 'authenticator:jwt';
