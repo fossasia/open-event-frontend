@@ -48,9 +48,9 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   async saveEventData(propsToSave = []) {
     const event = this.get('model.event');
     const data = {};
-    await Promise.all(propsToSave.map(property => {
+    const promises = await Promise.all(propsToSave.map(property => {
       try {
-        return data[property] = event.get(property);
+        return event.get(property);
       } catch (e) {
         if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[0].status === 404)) {
           // Lets just ignore any 404s that might occur. And throw the rest for the caller fn to catch
@@ -58,6 +58,9 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         }
       }
     }));
+    propsToSave.map((property, index) => {
+      promises.then(promise => { data[property] = promise[index] });
+    });
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
     if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
       await event.save();
