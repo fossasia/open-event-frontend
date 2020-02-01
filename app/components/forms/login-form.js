@@ -60,8 +60,8 @@ export default class extends Component.extend(FormMixin) {
 
         }
       } catch (e) {
-        if (e.error) {
-          this.set('errorMessage', this.l10n.tVar(e.error));
+        if (e.json && e.json.error) {
+          this.set('errorMessage', this.l10n.tVar(e.json.error));
         } else {
           this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
         }
