@@ -37,6 +37,9 @@ module.exports = function(defaults) {
     },
     autoImport: {
       webpack: {
+        node: {
+          path: true // TODO: Remove after https://github.com/fossasia/open-event-frontend/issues/3956
+        },
         plugins: env === 'production' ? [
           new BundleAnalyzerPlugin({
             analyzerMode      : 'static',
