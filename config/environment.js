@@ -82,11 +82,7 @@ module.exports = function(environment) {
       hostWhitelist: [/.+/]
     },
 
-    torii: {},
-
-    'ember-l10n': {
-      jsonPath: 'assets/locales'
-    }
+    torii: {}
   };
 
   if (environment === 'production') {
@@ -102,15 +98,11 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    refreshAccessTokens      : false,
-    serverTokenEndpoint      : `${ENV.APP.apiHost}/auth/session`,
-    identificationField      : 'email',
-    passwordField            : 'password',
-    tokenPropertyName        : 'access_token',
-    refreshTokenPropertyName : 'refresh_token',
-    authorizationPrefix      : 'JWT ',
-    authorizationHeaderName  : 'Authorization',
-    headers                  : {}
+    refreshAccessTokens : false,
+    serverTokenEndpoint : `${ENV.APP.apiHost}/auth/session`,
+    tokenPropertyName : 'access_token',
+    authorizationPrefix : 'JWT ',
+    authorizationHeaderName: 'Authorization'
   };
 
   ENV['g-map'] = {
@@ -211,6 +203,8 @@ module.exports = function(environment) {
     ENV['simple-auth'] = {
       store: 'simple-auth-session-store:ephemeral'
     };
+
+    ENV['ember-simple-auth-token'].tokenExpirationInvalidateSession = false;
   }
 
   if (environment === 'production') {
