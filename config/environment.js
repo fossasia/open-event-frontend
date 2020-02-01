@@ -102,12 +102,10 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint              : `${ENV.APP.apiHost}/auth/session`,
-    tokenPropertyName                : 'access_token',
-
-    tokenExpirationInvalidateSession : false,
-    authorizationPrefix              : 'JWT ',
-    authorizationHeaderName          : 'Authorization'
+    refreshAccessTokens  : false,
+    serverTokenEndpoint  : `${ENV.APP.apiHost}/auth/session`,
+    tokenPropertyName    : 'access_token',
+    authorizationPrefix  : 'JWT ',
   };
 
   ENV['g-map'] = {
@@ -208,6 +206,8 @@ module.exports = function(environment) {
     ENV['simple-auth'] = {
       store: 'simple-auth-session-store:ephemeral'
     };
+
+    ENV['ember-simple-auth-token'].tokenExpirationInvalidateSession = false;
   }
 
   if (environment === 'production') {
