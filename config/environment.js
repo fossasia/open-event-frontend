@@ -102,15 +102,12 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    refreshAccessTokens              : false,
     serverTokenEndpoint              : `${ENV.APP.apiHost}/auth/session`,
     tokenPropertyName                : 'access_token',
-    refreshTokenPropertyName         : 'refresh_token',
-    refreshAccessTokens              : false,
+
     tokenExpirationInvalidateSession : false,
     authorizationPrefix              : 'JWT ',
-    authorizationHeaderName          : 'Authorization',
-    headers                          : {}
+    authorizationHeaderName          : 'Authorization'
   };
 
   ENV['g-map'] = {
