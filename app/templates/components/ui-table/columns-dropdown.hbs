@@ -8,7 +8,7 @@
         <a class="item" {{action 'showAllColumns' column bubbles=false}} href="#">{{messages.columnsShowAll}}</a>
         <a class="item" {{action 'hideAllColumns' column bubbles=false}} href="#">{{messages.columnsHideAll}}</a>
         <a class="item" {{action 'restoreDefaultVisibility' column bubbles=false}} href="#">{{messages.columnsRestoreDefaults}}</a>
-        <a class="item">&nbsp;</a>
+        <a class="item" href="#">&nbsp;</a>
         {{#each processedColumns as |column|}}
           {{#if column.mayBeHidden}}
             <a class='item' {{action 'toggleHidden' column bubbles=false}} href="#">
