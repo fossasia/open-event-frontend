@@ -14,6 +14,7 @@
         {{t 'User role'}}
       </label>
       {{#ui-dropdown class='fluid selection' onChange=(action (mut currentInvite.role)) as |execute mapper|}}
+        {{input type='hidden' name='user_role'}}
         <i class="dropdown icon"></i>
         <div class="default text">
           {{t 'Select a role'}}

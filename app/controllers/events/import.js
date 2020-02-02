@@ -31,6 +31,7 @@ export default class extends Controller {
         });
     }, 3000);
   }
+
   @action
   uploadFile(files) {
     let [file] = files;

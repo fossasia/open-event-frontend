@@ -1,26 +1,25 @@
-import Router from '@ember/routing/router';
 import { scheduleOnce } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import config from 'open-event-frontend/config/environment';
 import RouterScroll from 'ember-router-scroll';
 
-const router = Router.extend(RouterScroll, {
-  location : config.locationType,
-  rootURL  : config.rootURL,
-  metrics  : service(),
-  session  : service(),
-  headData : service(),
+class Router extends RouterScroll {
+  location = config.locationType;
+  rootURL  = config.rootURL;
+  @service metrics;
+  @service session;
+  @service headData;
 
   setTitle(title) {
     this.headData.set('title', title);
-  },
+  }
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     this.on('routeDidChange', () => {
       this._trackPage();
     });
-  },
+  }
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
@@ -30,9 +29,9 @@ const router = Router.extend(RouterScroll, {
       this.set('session.currentRouteName', title);
     });
   }
-});
+}
 
-router.map(function() {
+Router.map(function() {
   this.route('login');
   this.route('register');
   this.route('reset-password');
@@ -219,4 +218,4 @@ router.map(function() {
   });
 });
 
-export default router;
+export default Router;

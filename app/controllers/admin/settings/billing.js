@@ -12,6 +12,7 @@ export default class extends Controller {
   get countries() {
     return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
   }
+
   payment
   @action
   async updateInvoiceModel() {

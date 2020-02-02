@@ -25,7 +25,7 @@
         <h4 class="ui header">{{preference.event.name}}</h4>
       </div>
       <div class="ui column eight wide right aligned">
-        <a class="ui circular label {{if (or preference.newPaper preference.sessionSchedule preference.nextEvent) 'green' 'yellow'}}">
+        <a href="#" class="ui circular label {{if (or preference.newPaper preference.sessionSchedule preference.nextEvent) 'green' 'yellow'}}">
           {{#if (or preference.newPaper preference.sessionSchedule preference.nextEvent)}}
             {{t 'On'}}
           {{else}}
