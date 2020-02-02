@@ -374,9 +374,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     connectStripe() {
       this.torii.open('stripe')
         .then(authorization => {
+          const isDebug = ENV.environment === 'development' || ENV.environment === 'test';
           this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization', {
             stripeAuthCode       : authorization.authorizationCode,
-            stripePublishableKey : ENV.environment === 'development' || ENV.environment === 'test' ? this.settings.stripeTestPublishableKey : this.settings.stripePublishableKey
+            stripePublishableKey : isDebug && this.settings.stripeTestPublishableKey ? this.settings.stripeTestPublishableKey : this.settings.stripePublishableKey
           }));
         })
         .catch(error => {

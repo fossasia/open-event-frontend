@@ -206,7 +206,12 @@ export default Component.extend(FormMixin, {
   }),
 
   stripeMode: computed(function() {
-    return ENV.environment === 'development' || ENV.environment === 'test' ? 'debug' : 'production';
+    const isDebug = ENV.environment === 'development' || ENV.environment === 'test';
+    if (isDebug && this.get('settings.stripeTestPublishableKey') && this.get('settings.stripeTestClientId')) {
+      return 'debug';
+    } else {
+      return 'production';
+    }
   }),
 
   isCheckedPaypal: computed(function() {
