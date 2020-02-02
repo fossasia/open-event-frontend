@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { merge } from 'lodash-es';
 import moment from 'moment';
@@ -31,14 +32,14 @@ export default Component.extend(FormMixin, {
 
     switch (this.rangePosition) {
       case 'start':
-        defaultOptions.endCalendar = this.$().closest('.fields').find('.ui.calendar.date.picker');
+        defaultOptions.endCalendar = $(this.element).closest('.fields').find('.ui.calendar.date.picker');
         break;
       case 'end':
-        defaultOptions.startCalendar = this.$().closest('.fields').find('.ui.calendar.date.picker');
+        defaultOptions.startCalendar = $(this.element).closest('.fields').find('.ui.calendar.date.picker');
         break;
     }
 
-    this.$().calendar(merge(defaultOptions, this.options));
+    $(this.element).calendar(merge(defaultOptions, this.options));
   },
 
   actions: {

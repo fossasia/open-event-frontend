@@ -59,6 +59,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.set('isLoading', false);
       });
   }
+
     @action
   toggleStatus(access_id) {
     this.set('isLoading', true);
@@ -76,6 +77,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.set('isLoading', false);
       });
   }
+
     @action
     editAccessCode(id) {
       this.transitionToRoute('events.view.tickets.access-codes.edit', id);

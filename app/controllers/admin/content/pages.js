@@ -19,6 +19,7 @@ export default class extends Controller {
     }
     this.set('isFormOpen', true);
   }
+
   @action
   savePage(page) {
     page.save()

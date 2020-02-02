@@ -8,17 +8,17 @@
     {{record.status}}
   </div>
   <div class="sub header">
-    {{#if extraRecords.paidVia}}
+    {{#if record.paidVia}}
       <span class="weight-800">
-        {{t 'Payment via'}} {{extraRecords.paidVia}}
+        {{t 'Payment via'}} {{record.paidVia}}
       </span>
     {{/if}}
-    {{#if (eq extraRecords.status 'completed')}}
-      {{moment-format extraRecords.completedAt 'MMMM Do YYYY, h:mm A -'}}
-      {{moment-from-now extraRecords.completedAt}}
+    {{#if (eq record.status 'completed')}}
+      {{moment-format record.completedAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now record.completedAt}}
     {{else}}
-      {{moment-format extraRecords.createdAt 'MMMM Do YYYY, h:mm A -'}}
-      {{moment-from-now extraRecords.createdAt}}
+      {{moment-format record.createdAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now record.createdAt}}
     {{/if}}
   </div>
 </div>

@@ -75,6 +75,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.set('isLoading', false);
       });
   }
+
   @action
   deleteOrder(order_id) {
     this.set('isLoading', true);

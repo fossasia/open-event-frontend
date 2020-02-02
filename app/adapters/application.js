@@ -3,7 +3,6 @@ import { computed } from '@ember/object';
 import ENV from 'open-event-frontend/config/environment';
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
 import HasManyQueryAdapterMixin from 'ember-data-has-many-query/mixins/rest-adapter';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 import FastbootAdapter from 'ember-data-storefront/mixins/fastboot-adapter';
 
 /**
@@ -20,7 +19,7 @@ export const fixFilterQuery = query  => {
   return query;
 };
 
-export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, FastbootAdapter, {
+export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, {
   host      : ENV.APP.apiHost,
   namespace : ENV.APP.apiNamespace,
 

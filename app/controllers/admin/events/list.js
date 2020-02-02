@@ -64,14 +64,14 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        },
        {
          name          : 'Sessions',
-         valuePath     : 'eventStatisticsGeneral',
+         valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-sessions',
          width         : 90
 
        },
        {
          name          : 'Speakers',
-         valuePath     : 'eventStatisticsGeneral',
+         valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-speakers-dashboard',
          width         : 90
        },
@@ -147,6 +147,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       isEventDeleteModalOpen : false
     });
   }
+
   @action
   async restoreEvent(event_id) {
     this.set('isLoading', true);
