@@ -51,22 +51,22 @@ module.exports = function(defaults) {
     }
   });
 
-  app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');
-  app.import('bower_components/Croppie/croppie.css');
+  app.import('node_modules/@bower_components/semantic-ui-calendar/dist/calendar.min.css');
+  app.import('node_modules/@bower_components/Croppie/croppie.css');
 
-  app.import('bower_components/semantic-ui-calendar/dist/calendar.min.js', {
+  app.import('node_modules/@bower_components/semantic-ui-calendar/dist/calendar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js', {
+  app.import('node_modules/@bower_components/wysihtml/dist/wysihtml-toolbar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/Croppie/croppie.min.js', {
+  app.import('node_modules/@bower_components/Croppie/croppie.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/tinyColorPicker/jqColorPicker.min.js', {
+  app.import('node_modules/@bower_components/tinyColorPicker/jqColorPicker.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/js-polyfills/xhr.js', {
+  app.import('node_modules/@bower_components/js-polyfills/xhr.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
   app.import('vendor/jquery-ui.min.js', {
