@@ -22,7 +22,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       roleInvites  : await eventDetails.query('roleInvites', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {}),
       socialLinks  : await eventDetails.query('socialLinks', {}),
-      statistics   : await eventDetails.query('eventStatisticsGeneral', {}),
+      statistics   : await eventDetails.query('generalStatistics', {}),
       orderStat    : await eventDetails.query('orderStatistics', {}),
       tickets      : await eventDetails.query('tickets', {}),
       roles        : await this.store.findAll('role')
