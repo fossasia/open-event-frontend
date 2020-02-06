@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import moment from 'moment';
@@ -18,10 +17,11 @@ export default Component.extend({
           document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
           });
-          $('.scroll').each(function() {
-            $(this).removeClass('active');
+
+          document.querySelectorAll('.scroll').forEach(node => {
+            node.classList.remove('active');
           });
-          $(this).addClass('active');
+          e.target.classList.add('active');
         });
       });
     }
