@@ -16,7 +16,7 @@ export default Route.extend({
   },
   async model(params) {
     const eventDetails = this.modelFor('public');
-    let filterOptions = [
+    const filterOptions = [
       {
         and: [
           {
