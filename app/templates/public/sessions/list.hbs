@@ -10,4 +10,10 @@
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
+  {{#infinity-loader infinityModel=model.session triggerOffset=300 eventDebounce=50}}
+    <div class="center aligned five wide column">
+      <div class="ui loading very padded basic segment">
+      </div>
+    </div>
+  {{/infinity-loader}}
 </div>
