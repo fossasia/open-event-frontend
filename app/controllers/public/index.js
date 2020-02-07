@@ -131,7 +131,7 @@ export default Controller.extend({
         order.set('attendees', attendees);
         await order.save()
           .then(order => {
-            this.notify.success(this.l10n.t('Order details saved. Please fill further details within 10 minutes.'));
+            this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async e => {
