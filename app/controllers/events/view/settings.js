@@ -4,6 +4,34 @@ import { action } from '@ember/object';
 export default class extends Controller {
 
   @action
+  openDeleteEventModal() {
+    this.set('isEventDeleteModalOpen', true);
+  }
+
+  @action
+  deleteEvent() {
+    this.set('isLoading', true);
+    this.model.event.destroyRecord()
+      .then(() => {
+        this.transitionToRoute('events');
+        this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+          {
+            id: 'event_deleted_succ'
+          });
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'event_deleted_error'
+          });
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+    this.set('isEventDeleteModalOpen', false);
+  }
+
+  @action
   openEventTransferModal(id, name) {
     this.setProperties({
       'isEventTransferModalOpen' : true,
