@@ -332,9 +332,9 @@
       Or
     </div>
     <div class="field">
-      {{ui-radio name='sessionDetails' label=(t 'Add a new Proposal') value=false onChange=(action 'toggleNewSessionSelected' true)}}
+      {{ui-checkbox class="toggle" label="Add a new proposal" checked=addNewSession onChange=(action (mut addNewSession))}}
     </div>
-    {{#if shouldShowNewSessionDetails}}
+    {{#if addNewSession}}
       {{#each allFields.session as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
