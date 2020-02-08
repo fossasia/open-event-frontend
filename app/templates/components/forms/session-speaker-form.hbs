@@ -332,7 +332,7 @@
       Or
     </div>
     <div class="field">
-      {{ui-checkbox class="toggle" label="Add a new proposal" checked=addNewSession onChange=(action (mut addNewSession))}}
+      {{ui-checkbox name='sessionDetails' class="toggle" label="Add a new proposal" checked=addNewSession onChange=(action (mut addNewSession))}}
     </div>
     {{#if addNewSession}}
       {{#each allFields.session as |field|}}
