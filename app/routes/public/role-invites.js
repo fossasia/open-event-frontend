@@ -1,8 +1,14 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+  fastboot: service(),
   redirectionParams: null,
   async beforeModel(transition) {
+    // We don't want to process or transition in fastboot mode
+    // Since this is only an intermediate page
+    if (this.fastboot.isFastBoot)
+      return;
     const { token } = transition.to.queryParams;
     const originalEventId = transition.resolvedModels.public.originalId;
     const payload = {
@@ -31,6 +37,8 @@ export default Route.extend({
 
   },
   afterModel() {
+    if (this.fastboot.isFastBoot)
+      return;
     this.transitionTo('register', this.redirectionParams);
   }
 });
