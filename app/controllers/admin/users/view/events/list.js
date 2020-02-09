@@ -12,8 +12,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'Name',
-        valuePath       : 'id',
-        extraValuePaths : ['logoUrl', 'name', 'identifier', 'deletedAt'],
+        valuePath       : 'name',
+        extraValuePaths : ['logoUrl', 'identifier', 'deletedAt'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event',
