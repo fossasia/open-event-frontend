@@ -1,7 +1,7 @@
 <div class="row">
   <div class="ui red segment">
     <div class="ui grid">
-      <div class="ui left aligned eight wide column">
+      <div class="ui left aligned sixteen wide mobile eight wide computer column">
         <h3 class="ui header">
           {{t 'Transfer Ownership'}}
         </h3>
@@ -9,14 +9,14 @@
           {{t 'You\'ll lose all the owner rights once the other user accepts the invitation for ownership.'}}
         </p>
       </div>
-      <div class="ui right aligned eight wide column">
-        <button {{action 'openEventTransferModal'}} class='ui red button'>
+      <div class="ui right aligned sixteen wide mobile eight wide computer column">
+        <button {{action 'openEventTransferModal' model.event.id model.event.name}} class='ui labeled icon red button'>
           <i class="share icon"></i>
           {{t 'Transfer Event'}}
         </button>
       </div>
 
-      <div class="ui left aligned eight wide column">
+      <div class="ui left aligned sixteen wide mobile eight wide computer column">
         <h3 class="ui header">
           {{t 'Delete this event'}}
         </h3>
@@ -24,8 +24,8 @@
           {{t 'Once you delete an event, you will lose all the data related to this event.'}}
         </div>
       </div>
-      <div class="ui right aligned eight wide column">
-        <button {{action 'openDeleteEventModal'}} class='ui red button'>
+      <div class="ui right aligned sixteen wide mobile eight wide computer column">
+        <button {{action 'openDeleteEventModal'}} class='ui labeled icon red button'>
           <i class="trash icon"></i>
           {{t 'Delete Event'}}
         </button>
