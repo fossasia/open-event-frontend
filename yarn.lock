@@ -6521,7 +6521,7 @@ ember-config-service@^1.0.0:
     ember-cli-babel "^7.1.0"
     ember-getowner-polyfill "^1.1.0 || ^2.0.0"
 
-ember-cookies@^0.5.2:
+ember-cookies@^0.5.0, ember-cookies@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/ember-cookies/-/ember-cookies-0.5.2.tgz#06e33463f2f83254fefaf224cc944dec3fb9d3ba"
   integrity sha512-nZ7oG97kBcO9UHjO95ryABpnVx62Bhxo7lIsBJNmWvFXleILm9DGueiAynzXxuYWWPuKIeeSbYakrS1869tNTw==
@@ -6987,20 +6987,18 @@ ember-simple-auth@^1.6.0:
     ember-getowner-polyfill "^1.1.0 || ^2.0.0"
     silent-error "^1.0.0"
 
-ember-simple-auth@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-2.1.1.tgz#c9624485193304f7767ce9a0c9353eae9a4f7325"
-  integrity sha512-VrX09hZGGk/PuDmaVDEfRf46tNBJF8FJR6nszvY3rmmB1+tGrzeyHOZTyY7+mcAQfsyZAS71gs6twjxYKCquGQ==
+ember-simple-auth@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-3.0.0.tgz#d994f512cda1a8a5a6ef5a853fac60c0c0d6acd6"
+  integrity sha512-JaEw5W/Z9+HIH9I2BmE/JD4KofH4rp79Y51zJpt3UQI1OwWFOzFa+ulN0rK/DVLpGOz7uL7hBIE/rtEcEN1eqA==
   dependencies:
     base-64 "^0.1.0"
     broccoli-file-creator "^2.0.0"
     broccoli-funnel "^1.2.0 || ^2.0.0"
     broccoli-merge-trees "^2.0.0 || ^3.0.0"
-    ember-cli-babel "^6.8.2"
+    ember-cli-babel "^7.12.0"
     ember-cli-is-package-missing "^1.0.0"
-    ember-cookies "^0.3.0 || ^0.4.0"
-    ember-fetch "^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0"
-    ember-getowner-polyfill "^1.1.0 || ^2.0.0"
+    ember-cookies "^0.5.0"
     silent-error "^1.0.0"
 
 ember-source-channel-url@^2.0.1:
@@ -7010,10 +7008,10 @@ ember-source-channel-url@^2.0.1:
   dependencies:
     got "^8.0.1"
 
-ember-source@~3.16.1:
-  version "3.16.1"
-  resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-3.16.1.tgz#997f51c2b74620906d2a8111089b6e894b6165e6"
-  integrity sha512-4cYfQ+DsqeSTqG0RztuTsh8d8p0XdeIaPWe9Ol229GhQjM1JgpjQNTXGJDTIB8FfbAxycPlCwIk2qXygA+pFsA==
+ember-source@~3.16.2:
+  version "3.16.2"
+  resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-3.16.2.tgz#bdb342445804d20b46796b98919a924e5a8eb61e"
+  integrity sha512-aRF90V88rJ6h47ootUw8oGcV7O4ulwLYNVqnokTr9RTeWjEimwMtzLLazUfDR1LZMkdMTLVLGcQkJCJVvUAg5A==
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/plugin-transform-block-scoping" "^7.6.2"
