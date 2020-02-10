@@ -159,6 +159,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             }
           ]
         },
+        externalEventUrl: {
+          identifier : 'external_event_url',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter a valid link.')
+            }
+          ]
+        },
         timezone: {
           identifier : 'timezone',
           rules      : [
