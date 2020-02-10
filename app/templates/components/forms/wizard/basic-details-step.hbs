@@ -4,7 +4,7 @@
     {{input type='text' id='name' value=data.event.name}}
   </div>
   <div class="field">
-    <label for="location">{{t 'Location'}}</label>
+    <label class="required" for="location">{{t 'Location'}}</label>
     {{#widgets/forms/location-input
       inputId='location'
       lat=data.event.latitude
@@ -119,7 +119,7 @@
   {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields" id="social-links">
-    <label>{{t 'Links & Social Media'}}</label>
+    <label class="required">{{t 'Links & Social Media'}}</label>
     {{widgets/forms/link-input
       hasLinkName=true
       fixedName=true
