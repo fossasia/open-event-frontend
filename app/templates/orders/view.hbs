@@ -24,12 +24,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="column right aligned">
-      <button class="ui labeled icon {{if isLoadingTickets 'loading'}} button" {{action downloadTickets model.event.name model.order.identifier}}>
+    <div class="column right {{if device.isMobile 'center'}} aligned">
+      <button class="ui labeled icon {{if isLoadingTickets 'loading '}}button" {{action downloadTickets model.event.name model.order.identifier}}>
         <i class="ticket alternate icon"></i>
         {{t 'Download Tickets'}}
       </button>
-      <button {{action 'downloadInvoice' model.event.name model.order.identifier }} class="ui labeled icon blue {{if isLoadingInvoice 'loading'}} button">
+      <button {{action 'downloadInvoice' model.event.name model.order.identifier }} class="ui labeled icon blue {{if isLoadingInvoice 'loading'}}button">
         <i class="download icon"></i>
         {{t 'Download Invoice'}}
       </button>
