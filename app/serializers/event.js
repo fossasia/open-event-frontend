@@ -16,7 +16,7 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
 
     const { relationships } = json.data;
     // We are deleting read only relationships so that they don't
-    // break the server. Since these relationships are not always 
+    // break the server. Since these relationships are not always
     // present, we catch and ignore the error
     try {
       delete relationships['general-statistics'];
