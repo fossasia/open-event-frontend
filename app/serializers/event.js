@@ -13,16 +13,17 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
 
   serialize() {
     const json = this._super(...arguments);
+
+    const { relationships } = json.data;
     try {
-    delete json.data.relationships['general-statistics'];		
-     delete json.data.relationships['order-statistics'];
- } catch(e){
- 	console.error(e);
- 	this.notify.error(this.l10n.t(e), {
-        id: 'err_down'
-      });
- }
+      delete relationships['general-statistics'];
+    } catch {} // eslint-disable-line no-empty
+    try {
+      delete relationships['order-statistics'];
+    } catch {} // eslint-disable-line no-empty
+
     return json;
+
   }
 
 });
