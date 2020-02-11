@@ -13,9 +13,6 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
 
   serialize() {
     const json = this._super(...arguments);
-    delete json.data.relationships['general-statistics'];
-    delete json.data.relationships['order-statistics'];
-
     return json;
   }
 
