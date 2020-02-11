@@ -15,6 +15,9 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
     const json = this._super(...arguments);
 
     const { relationships } = json.data;
+    // We are deleting read only relationships so that they don't
+    // break the server. Since these relationships are not always 
+    // present, we catch and ignore the error
     try {
       delete relationships['general-statistics'];
     } catch {} // eslint-disable-line no-empty
