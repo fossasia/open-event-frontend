@@ -63,6 +63,15 @@ export default class extends Component.extend(FormMixin) {
             }
           ]
         },
+        taxID: {
+          identifier : 'taxID' ,
+          rules      : [
+            {
+              type : 'empty',
+              prompt : this.l10n.t('Please enter your Tax ID or Buisness ID')
+            }
+          ]
+        },
         zipCode: {
           identifier : 'zip',
           rules      : [
