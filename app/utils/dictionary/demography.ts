@@ -1,8 +1,6 @@
 /**
  * Using a lean list of countries instead of an external dependency.
  * All the libraries have a lot of extra data which is of no use to us at this point and unnecessarily takes up more space.
- *
- * @type {[*]}
  */
 export const countries = [
   {
