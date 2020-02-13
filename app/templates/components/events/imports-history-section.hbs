@@ -1,60 +1,16 @@
 <div class="sixteen wide column">
-  <h3 class="ui dividing header">{{t 'Previous Events'}}</h3>
-  <div>
-    {{t 'Show'}} &nbsp;
-    <select class="ui dropdown">
-      <option value="10">10</option>
-      <option value="25">25</option>
-      <option value="25">50</option>
-      <option value="25">100</option>
-    </select>
-    &nbsp;
-    {{t 'entries'}}
-    <div class="ui search-box icon input">
-      <i class="search icon"></i>
-      <input type="text" placeholder="{{t 'Search'}}...">
-    </div>
+  <h3 class="ui dividing header">{{t 'Imported Events'}}</h3>
   </div>
-  <div class="ui segment">
-    <div class="ui two column centered grid">
-      <div class="ui column">
-        <div class="ui disabled header">
-          <h3> {{t 'Import Events - Currently Under Maintenance'}}</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{!-- <table class="ui very basic table">
-    <thead>
-      <tr>
-        <th>{{t 'State'}}</th>
-        <th>{{t 'Message'}}</th>
-        <th>{{t 'Started'}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each data as |job|}}
-        <tr>
-          <td>{{job.resultStatus}}</td>
-          <td>{{job.result}}</td>
-          <td>{{header-date job.startsAt}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="3">
-          <div class="ui pagination menu {{unless device.isMobile 'right floated'}}">
-            <a class="icon item">
-              {{t 'Previous'}}
-            </a>
-            <a class="item">1</a>
-            <a class="icon item">
-              {{t 'Next'}}
-            </a>
-          </div>
-        </th>
-      </tr>
-    </tfoot>
-  </table> --}}
-</div>
+{{tables/default  columns=columns
+                  rows=data.data
+                  currentPage=page
+                  pageSize=per_page
+                  searchQuery=search
+                  sortBy=sort_by
+                  sortDir=sort_dir
+                  metaData=data.meta
+                  filterOptions=filterOptions
+                  widthConstraint="eq-container"
+                  resizeMode="fluid"
+                  fillMode="equal-column"
+}}    

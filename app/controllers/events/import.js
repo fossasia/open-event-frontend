@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class extends Controller {
   importStatus = '';
@@ -8,6 +8,28 @@ export default class extends Controller {
   isImporting  = false;
   file         = false;
   fileName     = '';
+
+  @computed()
+  get columns() {
+    return [
+      {
+        name      : 'State',
+        valuePath : 'resultStatus'
+      },
+      {
+        name      : 'Message',
+        valuePath : 'result'
+
+      },
+      {
+        name            : 'Started',
+        valuePath       : 'startsAt',
+        cellComponent   : 'ui-table/cell/cell-simple-date',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
+      }
+    ];
+  }
 
   importTask(taskUrl) {
     run.later(() => {
