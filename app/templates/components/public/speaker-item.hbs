@@ -47,15 +47,9 @@
         {{#if (or (eq session.state 'confirmed') (eq session.state 'accepted'))}}
           <p>
             {{#if session.startsAt}}
-              {{moment-format session.startsAt 'DD MMM YY'}}
-            {{/if}}
-            {{#if session.microlocation}}
-              <br>
-              <span class="session-location">
-                <strong>
-                  {{concat (t 'Microlocation - ') session.microlocation.name}}
-                </strong>
-              </span>
+              <strong>
+                {{moment-format session.startsAt 'DD MMM YY'}}
+              </strong>
             {{/if}}
           </p>
           <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
@@ -68,6 +62,7 @@
               <br>
             </h3>
           </div>
+        <br>
         {{/if}}
       {{/each}}
     </div>
