@@ -3,6 +3,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const targets = require('./config/targets');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 let env = process.env.EMBER_ENV || 'development';
 
@@ -11,7 +12,7 @@ module.exports = function(defaults) {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    storeConfigInMeta : false,
+    storeConfigInMeta : true,
     autoprefixer      : {
       browsers : targets.browsers,
       cascade  : false
@@ -22,7 +23,8 @@ module.exports = function(defaults) {
     },
     babel: {
       plugins: [
-        '@babel/plugin-proposal-object-rest-spread'
+        '@babel/plugin-proposal-object-rest-spread',
+        require.resolve('ember-auto-import/babel-plugin')
       ],
       targets,
       sourceMaps: 'inline'
@@ -32,6 +34,20 @@ module.exports = function(defaults) {
       generateAssetMap : true,
       exclude          : ['package.json'],
       extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
+    },
+    autoImport: {
+      webpack: {
+        node: {
+          path: true // TODO: Remove after https://github.com/fossasia/open-event-frontend/issues/3956
+        },
+        plugins: env === 'production' ? [
+          new BundleAnalyzerPlugin({
+            analyzerMode      : 'static',
+            openAnalyzer      : false,
+            generateStatsFile : true
+          })
+        ] : []
+      }
     }
   });
 

@@ -11,6 +11,8 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
+import ENV from 'open-event-frontend/config/environment';
+import $ from 'jquery';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
@@ -125,11 +127,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     }
   },
 
+  // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
-    window.$.fn.form.settings.rules.checkDates = () => {
-      let startDatetime = moment(this.get('data.event.startsAt'));
-      let endDatetime = moment(this.get('data.event.endsAt'));
-      return (endDatetime.diff(startDatetime, 'minutes') > 0);
+    $.fn.form.settings.rules.checkMaxMinPrice = () => {
+      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
+    };
+    $.fn.form.settings.rules.checkMaxMinOrder = () => {
+      return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
     };
 
     let validationRules = {
@@ -165,10 +169,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid start date')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be before End date and time')
             }
           ]
         },
@@ -182,10 +182,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid end date')
-            },
-            {
-              type   : 'checkDates',
-              prompt : this.l10n.t('Start date & time should be before End date and time')
             }
           ]
         },
@@ -196,10 +192,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '..'
             }
           ]
         },
@@ -210,10 +202,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
-            },
-            {
-              type   : 'checkDates',
-              prompt : '..'
             }
           ]
         },
@@ -276,6 +264,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'number',
               prompt : this.l10n.t('Invalid number')
+            },
+            {
+              type   : 'checkMaxMinOrder',
+              prompt : this.l10n.t('Minimum order should not be greater than maximum')
             }
           ]
         },
@@ -293,6 +285,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'integer[1..]',
               prompt : this.l10n.t('Maximum tickets per order should be greater than 0')
+            },
+            {
+              type   : 'checkMaxMinOrder',
+              prompt : this.l10n.t('Maximum order should not be less than minimum')
             }
           ]
         },
@@ -306,6 +302,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'integer[1..]',
               prompt : this.l10n.t('Minimum price needs to be greater than zero')
+            },
+            {
+              type   : 'checkMaxMinPrice',
+              prompt : this.l10n.t('Minimum price should not be greater than maximum')
             }
           ]
         },
@@ -319,6 +319,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'integer[1..]',
               prompt : this.l10n.t('Maximum price needs to be greater than zero')
+            },
+            {
+              type   : 'checkMaxMinPrice',
+              prompt : this.l10n.t('Maximum price should not be less than minimum')
             }
           ]
         },
@@ -372,6 +376,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
+        },
+        paymentCountry: {
+          identifier : 'payment_country',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please select your country')
+            }
+          ]
         }
       }
     };
@@ -386,7 +399,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         .then(authorization => {
           this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization', {
             stripeAuthCode       : authorization.authorizationCode,
-            stripePublishableKey : this.settings.stripePublishableKey
+            stripePublishableKey : ENV.environment === 'development' || ENV.environment === 'test' ? this.settings.stripeTestPublishableKey : this.settings.stripePublishableKey
           }));
         })
         .catch(error => {

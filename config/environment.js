@@ -98,15 +98,11 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    refreshAccessTokens      : false,
-    serverTokenEndpoint      : `${ENV.APP.apiHost}/auth/session`,
-    identificationField      : 'email',
-    passwordField            : 'password',
-    tokenPropertyName        : 'access_token',
-    refreshTokenPropertyName : 'refresh_token',
-    authorizationPrefix      : 'JWT ',
-    authorizationHeaderName  : 'Authorization',
-    headers                  : {}
+    refreshAccessTokens : false,
+    serverTokenEndpoint : `${ENV.APP.apiHost}/auth/session`,
+    tokenPropertyName : 'access_token',
+    authorizationPrefix : 'JWT ',
+    authorizationHeaderName: 'Authorization'
   };
 
   ENV['g-map'] = {
@@ -114,6 +110,13 @@ module.exports = function(environment) {
     key       : process.env.GOOGLE_API_KEY,
     protocol  : 'https'
   };
+
+  ENV.APP.mapConfig = {};
+
+  // Use embed iframe map using address if MAP_DISPLAY is set or GOOGLE_API_KEY is not available or invalid
+  if (process.env.MAP_DISPLAY === 'embed' || !process.env.GOOGLE_API_KEY || !process.env.GOOGLE_API_KEY.startsWith('AIza')) {
+    ENV.APP.mapConfig.display = 'embed';
+  }
 
   ENV.sentry.hostname = getSentryServer(ENV.sentry.dsn, false);
   ENV.sentry.server = getSentryServer(ENV.sentry.dsn, true);
@@ -147,6 +150,7 @@ module.exports = function(environment) {
         'https://platform.twitter.com',
         'https://cdn.syndication.twimg.com',
         'http://127.0.0.1:5000',
+        'cdn.omise.co/omise.js',
         'cdn.ravenjs.com'
       ],
       'font-src': [
@@ -172,6 +176,7 @@ module.exports = function(environment) {
       'media-src' : '\'none\''
     };
   }
+  
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -198,6 +203,8 @@ module.exports = function(environment) {
     ENV['simple-auth'] = {
       store: 'simple-auth-session-store:ephemeral'
     };
+
+    ENV['ember-simple-auth-token'].tokenExpirationInvalidateSession = false;
   }
 
   if (environment === 'production') {

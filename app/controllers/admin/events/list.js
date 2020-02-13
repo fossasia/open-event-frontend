@@ -13,7 +13,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
      return [
        {
          name            : 'Name',
-         valuePath       : 'id',
+         valuePath       : 'name',
          extraValuePaths : ['logoUrl', 'identifier', 'deletedAt', 'name'],
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
@@ -35,22 +35,18 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          valuePath       : 'startsAt',
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
+         extraValuePaths : ['timezone'],
          cellComponent   : 'ui-table/cell/cell-simple-date',
-         width           : 65,
-         options         : {
-           dateFormat: 'MMMM DD, YYYY - hh:mm A'
-         }
+         width           : 75
        },
        {
          name            : 'Ends At',
          valuePath       : 'endsAt',
          isSortable      : true,
+         extraValuePaths : ['timezone'],
          headerComponent : 'tables/headers/sort',
          cellComponent   : 'ui-table/cell/cell-simple-date',
-         width           : 65,
-         options         : {
-           dateFormat: 'MMMM DD, YYYY - hh:mm A'
-         }
+         width           : 75
        },
        {
          name            : 'State',
@@ -68,21 +64,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        },
        {
          name          : 'Sessions',
-         valuePath     : 'eventStatisticsGeneral',
+         valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-sessions',
          width         : 90
 
        },
        {
          name          : 'Speakers',
-         valuePath     : 'eventStatisticsGeneral',
+         valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-speakers-dashboard',
          width         : 90
-       },
-       {
-         name          : 'Tickets',
-         valuePath     : 'tickets',
-         cellComponent : 'ui-table/cell/cell-tickets'
        },
        {
          name          : 'Public URL',
@@ -94,10 +85,20 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          name            : 'Featured Event',
          valuePath       : 'id',
          extraValuePaths : ['isFeatured'],
-         cellComponent   : 'ui-table/cell/admin/event-is-featured',
+         cellComponent   : 'ui-table/cell/admin/events/event-is-featured',
          width           : 80,
          actions         : {
            toggleFeatured: this.toggleFeatured.bind(this)
+         }
+       },
+       {
+         name            : 'Promoted Event',
+         valuePath       : 'id',
+         extraValuePaths : ['isPromoted'],
+         cellComponent   : 'ui-table/cell/admin/events/event-is-promoted',
+         width           : 80,
+         actions         : {
+           togglePromoted: this.togglePromoted.bind(this)
          }
        }
      ];
@@ -129,16 +130,24 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       let event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
       await event.destroyRecord();
-      this.notify.success(this.l10n.t('Event has been deleted successfully.'));
+      this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+        {
+          id: 'event_del_succ'
+        });
+      this.refreshModel.bind(this)();
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_delete_error'
+        });
     }
     this.setProperties({
       isLoading              : false,
       isEventDeleteModalOpen : false
     });
   }
+
   @action
   async restoreEvent(event_id) {
     this.set('isLoading', true);
@@ -146,10 +155,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.set('deletedAt', null);
       await event.save({ adapterOptions: { getTrashed: true } });
-      this.notify.success(this.l10n.t('Event has been restored successfully.'));
+      this.notify.success(this.l10n.t('Event has been restored successfully.'),
+        {
+          id: 'event_restored'
+        });
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'restore_error'
+        });
     }
     this.set('isLoading', false);
   }
@@ -161,11 +176,38 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
       await event.save();
-      this.notify.success(this.l10n.t('Event details modified successfully'));
+      this.notify.success(this.l10n.t('Event details modified successfully'),
+        {
+          id: 'event_detail_changed'
+        });
 
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_det_error'
+        });
+    }
+    this.set('isLoading', false);
+  }
+
+  @action
+  async togglePromoted(event_id) {
+    this.set('isLoading', true);
+    try {
+      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      event.toggleProperty('isPromoted');
+      await event.save();
+      this.notify.success(this.l10n.t(`Event ${event.isPromoted ? 'Promoted' : 'unpromoted'} Successfully`),
+        {
+          id: 'event_detail_changed'
+        });
+    } catch (e) {
+      console.warn(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_det_error'
+        });
     }
     this.set('isLoading', false);
   }

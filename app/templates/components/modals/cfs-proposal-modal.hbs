@@ -3,28 +3,9 @@
   {{t 'Submit Proposal'}}
 </div>
 <div class="content">
-  <h4 class="ui header">{{t 'Existing Sessions'}}</h4>
-  {{#unless isNewSpeaker}}
-    {{#unless isNewSession}}
-      <div class="ui list">
-        {{#each data.userSession as |session|}}
-          {{#if session.id}}
-            {{#link-to 'public.cfs.edit-session' session.id invokeAction=(action 'toggleView')}}
-              <div class="item">
-                <i class="right triangle icon"></i>
-                {{t 'Edit Session - '}}{{session.title}}
-              </div>
-            {{/link-to}}
-          {{/if}}
-        {{/each}}
-      </div>
-    {{/unless}}
-  {{/unless}}
   {{#if isNewSession}}
     <p>{{t 'No existing sessions'}}</p>
   {{/if}}
-  <div class="ui hidden divider">
-  </div>
   <div>
     {{#if isNewSpeaker}}
       {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
@@ -41,7 +22,7 @@
     {{/if}}
     {{#unless isNewSpeaker}}
       {{#link-to 'public.cfs.new-session' invokeAction=(action 'toggleView')}}
-        <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Add Session'}}</button>
+        <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Add New Session'}}</button>
       {{/link-to}}
     {{/unless}}
   </div>

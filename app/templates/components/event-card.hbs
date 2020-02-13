@@ -20,7 +20,7 @@
       {{/smart-overflow}}
       <div class="meta">
         <span class="date">
-          {{moment-format event.startsAt 'ddd, MMM DD h:mm A'}}
+          {{general-date event.startsAt event.timezone}}
         </span>
       </div>
       {{#smart-overflow class='description'}}
@@ -53,7 +53,7 @@
             </a>
           {{else}}
             {{#each tags as |tag|}}
-              <a>{{tag}}</a>
+              <a href="#">{{tag}}</a>
             {{/each}}
           {{/if}}
         {{/if}}

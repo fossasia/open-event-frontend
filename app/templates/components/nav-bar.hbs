@@ -26,7 +26,7 @@
               <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
             {{/if}}
             <div class="divider"></div>
-            <a role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i class="ui right floated large signout sign out icon"></i></span></a>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i class="ui right floated large signout sign out icon"></i></span></a>
           </div>
         {{/ui-dropdown}}
       {{else}}
@@ -44,11 +44,11 @@
 </div>
 <div class="mobile only row">
   <div class="ui navbar tiny menu">
-    <a class="menu item open sidebar">
+    <a href="#" class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
     {{#link-to 'index' class='item' activeClass=''}}
-      <div class="ui header small text">{{config.appName}}</div>
+      <div class="ui header small text">{{settings.appName}}</div>
     {{/link-to}}
     <div class="right menu nav-bar">
       {{#if session.isAuthenticated}}

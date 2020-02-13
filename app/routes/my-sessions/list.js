@@ -34,13 +34,22 @@ export default Route.extend(AuthenticatedRouteMixin, {
                   name : 'ends-at',
                   op   : 'eq',
                   val  : null
+                },
+                {
+                  name : 'event',
+                  op   : 'has',
+                  val  : {
+                    name : 'starts-at',
+                    op   : 'ge',
+                    val  : moment().toISOString()
+                  }
                 }
               ]
             }
           ]
         }
       ];
-    } else {
+    } else if (params.session_status === 'past') {
       filterOptions = [
         {
           name : 'ends-at',

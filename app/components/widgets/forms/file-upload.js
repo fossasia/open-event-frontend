@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
@@ -20,7 +21,7 @@ export default Component.extend({
     this.set('needsConfirmation', false);
     this.set('uploadingFile', true);
     this.loader
-      .uploadFile('/upload/files', this.$(`#${this.inputIdGenerated}`))
+      .uploadFile('/upload/files', $(`#${this.inputIdGenerated}`, this.element))
       .then(file => {
         this.set('fileUrl', JSON.parse(file).url);
         this.notify.success(this.l10n.t('File uploaded successfully'), {
@@ -85,16 +86,16 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    this.$()
+    $(this.element)
       .on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
         e.preventDefault();
         e.stopPropagation();
       })
       .on('dragover dragenter', () => {
-        this.$('.upload.segment').addClass('drag-hover');
+        $('.upload.segment', this.element).addClass('drag-hover');
       })
       .on('dragleave dragend drop', () => {
-        this.$('.upload.segment').removeClass('drag-hover');
+        $('.upload.segment', this.element).removeClass('drag-hover');
       })
       .on('drop', e => {
         this.processFiles(e.originalEvent.dataTransfer.files);
@@ -103,7 +104,7 @@ export default Component.extend({
 
   willDestroyElement() {
     this._super(...arguments);
-    this.$().off('drag dragstart dragend dragover dragenter dragleave drop');
+    $(this.element).off('drag dragstart dragend dragover dragenter dragleave drop');
   }
 
 });

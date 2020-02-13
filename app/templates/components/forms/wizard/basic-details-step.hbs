@@ -15,7 +15,7 @@
       placeholder=(t 'Location is required to make this event live')}}
       <div class="inline field">
         <div class="ui slider checkbox">
-          {{input id='show_map' type='checkbox' id='show_map' checked=data.event.isMapShown}}
+          {{input id='show_map' type='checkbox' checked=data.event.isMapShown}}
           <label for="show_map">{{t 'Show map on event page'}}</label>
         </div>
       </div>
@@ -145,17 +145,8 @@
   </div>
   {{#if data.module.ticketInclude}}
     <div class="ui section divider"></div>
-    {{!-- Hiding toggle ticket feature temporarily
-      <div class="field">
-        <div class="ui slider checkbox">
-          {{input type='checkbox' checked=data.event.isTicketingEnabled id='use_ticketing_system'}}
-          <label for="use_ticketing_system">{{t 'Use ticketing system'}}</label>
-        </div>
-      </div>
-    --}}
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
-      {{!-- {{#if data.event.isTicketingEnabled}} --}}
       <div class="ui attached segment {{unless data.event.tickets 'center aligned'}}">
         {{#if data.event.tickets}}
           <div class="ui stackable celled five column grid ticket-header">
@@ -398,10 +389,10 @@
           <div class="field">
             {{#if (or data.event.stripeAuthorization.stripeAuthCode data.event.stripeAuthorization.stripePublishableKey)}}
               <label class="required">{{t 'You have linked your Stripe account successfully. Click Here to Disconnect you account.'}}</label>
-              <a class="stripe-connect" role="button" {{action 'disconnectStripe'}}><span>{{t 'Disconnect Stripe Account'}}</span></a>
+              <a href="#" class="stripe-connect" role="button" {{action 'disconnectStripe'}}><span>{{t 'Disconnect Stripe Account'}}</span></a>
             {{else}}
               <label class="required">{{t 'Connect to your Stripe account'}}</label>
-              <a class="stripe-connect" role="button" {{action 'connectStripe'}}><span>{{t 'Connect with Stripe'}}</span></a>
+              <a href="#" class="stripe-connect" role="button" {{action 'connectStripe'}}><span>{{t 'Connect with Stripe'}}</span></a>
             {{/if}}
           </div>
         {{/if}}
@@ -501,10 +492,18 @@
             {{t 'Add Tax Information'}}
           </button>
         {{/if}}
+        <div class="ui hidden divider"></div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            {{input type='checkbox' id='billing_info_mandatory' checked=data.event.isBillingInfoMandatory}}
+            <label for="billing_info">
+              <strong>{{t 'Billing Info'}}:</strong>
+              {{t 'Require Billing Information from Ticket Buyer'}}
+            </label>
+          </div>
+        </div>
       </div>
-
     </div>
-
   {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields">

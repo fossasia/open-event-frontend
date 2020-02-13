@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { getErrorMessage } from 'open-event-frontend/utils/errors';
 import { buildUrl } from 'open-event-frontend/utils/url';
 import httpStatus from 'http-status';
-import objectToFormData from 'object-to-formdata';
+import { objectToFormData } from 'object-to-formdata';
 import fetch from 'fetch';
 import { clone, assign, merge, pick, isString } from 'lodash-es';
 const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
@@ -180,7 +180,7 @@ export default Service.extend({
       xhr.open('get', url);
       let headers = fetchOptions.headers || {};
       for (let k in headers) {
-        if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
+        if (k !== 'Content-Type' && Object.prototype.hasOwnProperty.call(headers, k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }

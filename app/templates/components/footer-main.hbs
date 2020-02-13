@@ -2,7 +2,7 @@
   <div class="ui stackable inverted divided grid">
     <div class="four wide column">
       <div class="ui inverted link list">
-        <strong class="item">{{t 'Use'}} eventyay</strong>
+        <strong class="item">{{t 'Use'}} {{settings.appName}}</strong>
         <a class="item" href="#" target="_blank" rel="noopener noreferrer">{{t 'Sitemap'}}</a>
         <a class="item" href="{{href-to 'attendee-app'}}" rel="noopener noreferrer">{{t 'Open Event App'}}</a>
         <a class="item" href="{{href-to 'organizer-app'}}" rel="noopener noreferrer">{{t 'Open Event Organizer App'}}</a>
@@ -73,7 +73,7 @@
   <div class="ui stackable grid">
     <div class="thirteen wide computer twelve wide tablet column left aligned">
       <div class="ui horizontal inverted small divided link list less top margin">
-        <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{config.appName}} </span>
+        <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{settings.appName}} </span>
         {{#each footerPages as |page|}}
           {{#link-to 'pages' page.url class='item'}}
             {{page.name}}

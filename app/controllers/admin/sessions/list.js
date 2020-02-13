@@ -71,16 +71,23 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
+
   @action
   async deleteSession(session_id) {
     this.set('isLoading', true);
     try {
       let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
       await session.destroyRecord();
-      this.notify.success(this.l10n.t('Session has been deleted successfully.'));
+      this.notify.success(this.l10n.t('Session has been deleted successfully.'),
+        {
+          id: 'session_deleted_succ'
+        });
     } catch (e) {
       console.warn(e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'unexpected_session_error'
+        });
     }
     this.set('isLoading', false);
   }

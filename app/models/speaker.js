@@ -25,6 +25,7 @@ export default ModelBase.extend({
   facebook           : attr('string'),
   github             : attr('string'),
   linkedin           : attr('string'),
+  instagram          : attr('string'),
   organisation       : attr('string'),
   isFeatured         : attr('boolean', { default: false }),
   isEmailOverridden  : attr('boolean', { default: false }),
@@ -35,11 +36,12 @@ export default ModelBase.extend({
   heardFrom          : attr('string'),
   complexFieldValues : attr(),
 
-  segmentedLinkWebsite  : computedSegmentedLink.bind(this)('website'),
-  segmentedLinkTwitter  : computedSegmentedLink.bind(this)('twitter'),
-  segmentedLinkGithub   : computedSegmentedLink.bind(this)('github'),
-  segmentedLinkFacebook : computedSegmentedLink.bind(this)('facebook'),
-  segmentedLinkLinkedIn : computedSegmentedLink.bind(this)('linkedin'),
+  segmentedLinkWebsite   : computedSegmentedLink.bind(this)('website'),
+  segmentedLinkTwitter   : computedSegmentedLink.bind(this)('twitter'),
+  segmentedLinkGithub    : computedSegmentedLink.bind(this)('github'),
+  segmentedLinkFacebook  : computedSegmentedLink.bind(this)('facebook'),
+  segmentedLinkLinkedin  : computedSegmentedLink.bind(this)('linkedin'),
+  segmentedLinkInstagram : computedSegmentedLink.bind(this)('instagram'),
 
   /**
    * Relationships

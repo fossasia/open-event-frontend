@@ -29,6 +29,15 @@
             {{t 'Speakers'}}
           {{/link-to}}
         {{/if}}
+  <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
+    {{#if (eq session.currentRouteName 'public.index')}}
+      <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
+        {{t 'Info'}}
+      </a>
+      {{#if event.tickets.length}}
+        <a href='#tickets' {{action "scrollToTarget"}} class='item scroll'>
+          {{t 'Tickets'}}
+        </a>
       {{/if}}
       {{#if event.sessions.length}}
         {{#link-to 'public.sessions' class='item'}}
@@ -60,6 +69,9 @@
         {{#scroll-to href='#getting-here' class='item'}}
           {{t 'Getting here'}}
         {{/scroll-to}}
+        <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
+          {{t 'Owner'}}
+        </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#getting-here">
           {{t 'Getting here'}}
@@ -71,5 +83,20 @@
         {{/link-to}}
       {{/if}}
     </div>
+    {{/if}}
+    {{#if (eq session.currentRouteName 'public.index')}}
+      <a href='#getting-here' class='item scroll'>
+        {{t 'Getting here'}}
+      </a>
+    {{else}}
+      <a class="item" href="{{href-to 'public.index'}}#getting-here">
+        {{t 'Getting here'}}
+      </a>
+    {{/if}}
+    {{#if event.codeOfConduct}}
+      {{#link-to 'public.coc' class='item'}}
+        {{t 'Code of Conduct'}}
+      {{/link-to}}
+    {{/if}}
   </div>
 {{/if}}
