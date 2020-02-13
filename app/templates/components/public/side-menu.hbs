@@ -1,34 +1,4 @@
 {{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session'))}}
-  <div class = "ui {{unless device.isMobile 'rail'}}">
-    <div class="ui sticky fluid vertical {{unless device.isMobile 'pointing'}} menu">
-      {{#if (eq session.currentRouteName 'public.index')}}
-        {{#scroll-to href='#info' class='active item'}}
-          {{t 'Info'}}
-        {{/scroll-to}}
-        {{#if event.tickets.length}}
-          {{#scroll-to href='#tickets' class='item'}}
-            {{t 'Tickets'}}
-          {{/scroll-to}}
-        {{/if}}
-        {{#if event.speakers.length}}
-          {{#link-to 'public.speakers' class='item'}}
-            {{t 'Speakers'}}
-          {{/link-to}}
-        {{/if}}
-      {{else}}
-        <a class="item" href="{{href-to 'public.index'}}">
-          {{t 'Info'}}
-        </a>
-        {{#if event.tickets.length}}
-          <a class="item" href="{{href-to 'public.index'}}#tickets">
-            {{t 'Tickets'}}
-          </a>
-        {{/if}}
-        {{#if event.speakers.length}}
-          {{#link-to 'public.speakers' class='item'}}
-            {{t 'Speakers'}}
-          {{/link-to}}
-        {{/if}}
   <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
     {{#if (eq session.currentRouteName 'public.index')}}
       <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
@@ -39,50 +9,51 @@
           {{t 'Tickets'}}
         </a>
       {{/if}}
-      {{#if event.sessions.length}}
-        {{#link-to 'public.sessions' class='item'}}
-          {{t 'Sessions'}}
+      {{#if event.speakers.length}}
+        {{#link-to 'public.speakers' class='item'}}
+          {{t 'Speakers'}}
         {{/link-to}}
       {{/if}}
-      {{#if isSchedulePublished}}
-        {{#link-to 'public.schedule' class='item'}}
-          {{t 'Schedule'}}
-        {{/link-to}}
-      {{/if}}  
-      {{#if shouldShowCallforSpeakers }}
-        {{#link-to 'public.cfs' class='item'}}
-          {{t 'Call for Speakers'}}
+    {{else}}
+      <a class="item" href="{{href-to 'public.index'}}">
+        {{t 'Info'}}
+      </a>
+      {{#if event.tickets.length}}
+        <a class="item" href="{{href-to 'public.index'}}#tickets">
+          {{t 'Tickets'}}
+        </a>
+      {{/if}}
+      {{#if event.speakers.length}}
+        {{#link-to 'public.speakers' class='item'}}
+          {{t 'Speakers'}}
         {{/link-to}}
       {{/if}}
-      {{#if event.hasOwnerInfo}}
-        {{#if (eq session.currentRouteName 'public.index')}}
-          {{#scroll-to href='#owner' class='item'}}
-            {{t 'Owner'}}
-          {{/scroll-to}}
-        {{else}}
-          <a class="item" href="{{href-to 'public.index'}}#owner">
-            {{t 'Owner'}}
-          </a>
-        {{/if}}
-      {{/if}}
+    {{/if}}
+    {{#if event.sessions.length}}
+      {{#link-to 'public.sessions' class='item'}}
+        {{t 'Sessions'}}
+      {{/link-to}}
+    {{/if}}
+    {{#if isSchedulePublished}}
+      {{#link-to 'public.schedule' class='item'}}
+        {{t 'Schedule'}}
+      {{/link-to}}
+    {{/if}}  
+    {{#if shouldShowCallforSpeakers }}
+      {{#link-to 'public.cfs' class='item'}}
+        {{t 'Call for Speakers'}}
+      {{/link-to}}
+    {{/if}}
+    {{#if event.hasOwnerInfo}}
       {{#if (eq session.currentRouteName 'public.index')}}
-        {{#scroll-to href='#getting-here' class='item'}}
-          {{t 'Getting here'}}
-        {{/scroll-to}}
         <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
           {{t 'Owner'}}
         </a>
       {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#getting-here">
-          {{t 'Getting here'}}
+        <a class="item" href="{{href-to 'public.index'}}#owner">
+          {{t 'Owner'}}
         </a>
       {{/if}}
-      {{#if event.codeOfConduct}}
-        {{#link-to 'public.coc' class='item'}}
-          {{t 'Code of Conduct'}}
-        {{/link-to}}
-      {{/if}}
-    </div>
     {{/if}}
     {{#if (eq session.currentRouteName 'public.index')}}
       <a href='#getting-here' class='item scroll'>
