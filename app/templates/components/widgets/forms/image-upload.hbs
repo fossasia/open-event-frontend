@@ -8,9 +8,24 @@
         <div class="ui text loader">{{t 'Image Uploading'}}</div>
       </div>
     {{/if}}
-    <div class="image">
-      <img src="{{selectedImage}}" alt="Selected image">
-    </div>
+    {{#if profileImage}}
+      {{input type='file'
+            id=inputIdGenerated
+            class='styled input' accept="image/*" name='image_update' change=(action 'fileSelected')}}
+      <label for="{{inputIdGenerated}}">
+        <div class='ui link cards'>
+          <div class="card">
+            <div class="ui image">
+              <img src="{{selectedImage}}" alt="Selected image"> 
+            </div>
+          </div>
+        </div>
+      </label>
+    {{else}}
+      <div class="image">
+        <img src="{{selectedImage}}" alt="Selected image">
+      </div>  
+    {{/if}} 
     {{#if allowReCrop}}
 	     <div class="ui bottom attached mini buttons">
 		      <button type="button" class="ui teal button" {{action 'reCrop'}}>
