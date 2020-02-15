@@ -5,6 +5,6 @@ export default ModalBase.extend({
   isSmall          : true,
   confirmEventName : '',
   isNameDifferent  : computed('confirmEventName', 'eventName', function() {
-    return this.eventName ? this.confirmEventName.toLowerCase() !== this.eventName.toLowerCase() : true;
+    return this.eventName ? this.confirmEventName !== this.eventName : true;
   })
 });

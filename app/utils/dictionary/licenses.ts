@@ -1,4 +1,11 @@
-export const licenses = [
+export interface License {
+  name: string,
+  link: string,
+  imageSrc: string,
+  logoUrl: string | null
+}
+
+export const licenses: License[] = [
   {
     name     : 'Attribution-NonCommercial-NoDerivs',
     link     : 'https://creativecommons.org/licenses/by-nc-nd/4.0',

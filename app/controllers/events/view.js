@@ -4,11 +4,6 @@ import { action } from '@ember/object';
 
 export default class extends Controller {
   @action
-  openDeleteEventModal() {
-    this.set('isEventDeleteModalOpen', true);
-  }
-
-  @action
   togglePublishState() {
     if (isEmpty(this.model.locationName)) {
       this.notify.error(this.l10n.t('Your event must have a location before it can be published.'),
@@ -44,29 +39,6 @@ export default class extends Controller {
       .finally(() => {
         this.set('isLoading', false);
       });
-  }
-
-  @action
-  deleteEvent() {
-    this.set('isLoading', true);
-    this.model.destroyRecord()
-      .then(() => {
-        this.transitionToRoute('events');
-        this.notify.success(this.l10n.t('Event has been deleted successfully.'),
-          {
-            id: 'event_deleted_succ'
-          });
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'event_deleted_error'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-    this.set('isEventDeleteModalOpen', false);
   }
 
   @action

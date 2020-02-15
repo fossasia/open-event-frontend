@@ -72,9 +72,7 @@ export default Controller.extend({
       try {
         let order = this.get('model.order');
         let attendees = this.get('model.attendees');
-        for (const attendee of attendees ? attendees.toArray() : []) {
-          await attendee.save();
-        }
+        await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
         order.set('attendees', attendees.slice());
         await order.save()
           .then(order => {
@@ -82,9 +80,7 @@ export default Controller.extend({
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async() => {
-            for (const attendee of attendees ? attendees.toArray() : []) {
-              await attendee.destroyRecord();
-            }
+            await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
             this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
           })
           .finally(() => {
