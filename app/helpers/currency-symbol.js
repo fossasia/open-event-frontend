@@ -3,7 +3,8 @@ import { find } from 'lodash-es';
 import { paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 
 export function currencySymbol(params) {
-  return find(paymentCurrencies, ['code', params[0]]).symbol;
+  const currency = find(paymentCurrencies, ['code', params[0]]);
+  return currency ? currency.symbol : 'UNKNOWN';
 }
 
 export default Helper.helper(currencySymbol);
