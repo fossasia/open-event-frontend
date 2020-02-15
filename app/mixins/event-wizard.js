@@ -48,28 +48,31 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   async saveEventData(propsToSave = []) {
     const event = this.get('model.event');
     const data = {};
-    for (const property of propsToSave) {
+    const results = await Promise.allSettled(propsToSave.map(property => {
       try {
-        data[property] = await event.get(property);
+        return event.get(property);
       } catch (e) {
         if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[0].status === 404)) {
           // Lets just ignore any 404s that might occur. And throw the rest for the caller fn to catch
           throw e;
         }
       }
+    }));
+    for (const result of results) {
+      if (result.status === 'fulfilled') {
+        data[result.value.key] = result.value;
+      }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
     if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
       await event.save();
 
-      for (const ticket of data.tickets ? data.tickets.toArray() : []) {
+      await Promise.all((data.tickets ? data.tickets.toArray() : []).map(ticket => {
         ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
-        await ticket.save();
-      }
+        return ticket.save();
+      }));
 
-      for (const socialLink of data.socialLinks ? data.socialLinks.toArray() : []) {
-        await socialLink.save();
-      }
+      await Promise.all((data.socialLinks ? data.socialLinks.toArray() : []).map(socialLink => socialLink.save()));
 
       if (data.copyright && data.copyright.get('licence')) {
         await data.copyright.save();
