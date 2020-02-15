@@ -5,12 +5,15 @@ import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
 import loadEmberExam from 'ember-exam/test-support/load';
 import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
 
-Application.extend({
+const App = Application.extend({
   modulePrefix    : config.modulePrefix,
   podModulePrefix : config.podModulePrefix,
   Resolver
 });
+
+loadInitializers(App, config.modulePrefix);
 
 QUnit.config.testTimeout = 300000;
 
