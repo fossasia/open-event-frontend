@@ -1,9 +1,16 @@
-import Application from '../app';
+import Application from '@ember/application';
 import QUnit from 'qunit';
-import config from '../config/environment';
+import config from 'open-event-frontend/config/environment';
 import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
 import loadEmberExam from 'ember-exam/test-support/load';
+import Resolver from 'ember-resolver';
+
+Application.extend({
+  modulePrefix    : config.modulePrefix,
+  podModulePrefix : config.podModulePrefix,
+  Resolver
+});
 
 QUnit.config.testTimeout = 300000;
 
