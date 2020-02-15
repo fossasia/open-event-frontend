@@ -12,10 +12,10 @@
     <br>
     <div class="ui grid stackable">
       {{#if hideImage}}
-        <div class="left floated five wide column">
+        <div class="left floated twelve wide column">
           {{#if session.startsAt}}
             <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date session.startsAt}} - {{general-date session.endsAt}}</div>
           {{/if}}
         </div>
       {{else}}

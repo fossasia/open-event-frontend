@@ -49,9 +49,7 @@
         </div>
         {{#each allFields.attendee as |field|}}
           {{#if field.isIncluded}}
-            <div class="field {{if
-              (and sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))
-              'disabled'}}">
+            <div class="field">
               <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
               {{#if (is-input-field field.type) }}
                 {{#if field.isLongText}}
@@ -59,9 +57,13 @@
                                                    name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
                 
                 {{else}}
-                  {{input type=field.type value=(mut (get holder field.fieldIdentifier))
-                          name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
-
+                  {{#if (and sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
+                    {{input type=field.type value=(mut (get holder field.fieldIdentifier))
+                            name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index)) readonly=""}}
+                  {{else}}
+                    {{input type=field.type value=(mut (get holder field.fieldIdentifier))
+                            name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                  {{/if}}
                 {{/if}}
               {{else if (eq field.fieldIdentifier 'gender')}}
                 {{#ui-dropdown class='search selection' value=(mut (get holder field.fieldIdentifier)) onChange=(action (mut holder.gender)) as |execute mapper|}}
