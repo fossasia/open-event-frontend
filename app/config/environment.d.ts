@@ -13,4 +13,9 @@ declare const config: {
   podModulePrefix: string;
   locationType: string;
   rootURL: string;
+  sentry: {
+    dsn: string;
+    debug: boolean;
+    development: boolean;
+  }
 };

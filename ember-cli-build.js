@@ -35,6 +35,9 @@ module.exports = function(defaults) {
       exclude          : ['package.json'],
       extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
     },
+    sourcemaps: {
+      enabled: true
+    },
     autoImport: {
       webpack: {
         node: {
