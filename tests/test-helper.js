@@ -1,6 +1,6 @@
-import Application from '../app';
+import Application from './app';
 import QUnit from 'qunit';
-import config from '../config/environment';
+import config from 'open-event-frontend/config/environment';
 import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
 import loadEmberExam from 'ember-exam/test-support/load';
