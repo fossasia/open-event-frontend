@@ -30,7 +30,6 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   async model() {
-
     let notificationsPromise = Promise.resolve([]);
     if (this.get('session.isAuthenticated')) {
       try {
