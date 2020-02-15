@@ -162,7 +162,9 @@
                                fullTextSearch=true}}
                   {{input type='hidden' id='speaker_country' value=data.speaker.country}}
                   <i class="dropdown icon"></i>
-                  <div class="default text">{{get data 'selectedCountry'}}</div>
+                  <div class="default text">
+                    {{t 'Select Country'}}
+                  </div>
                   <div class="menu">
                     {{#each countries as |country|}}
                       <div class="item" data-value="{{country.name}}">
@@ -260,7 +262,9 @@
                          fullTextSearch=true}}
                 {{input type='hidden' id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier)) value=data.speaker.country}}
                 <i class="dropdown icon"></i>
-                <div class="default text">{{get data 'selectedCountry'}}</div>
+                <div class="default text">
+                  {{t 'Select Country'}}
+                </div>
                 <div class="menu">
                   {{#each countries as |country|}}
                     <div class="item" data-value="{{country.name}}">
