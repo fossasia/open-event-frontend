@@ -30,10 +30,11 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   async model() {
-    let notifications = [];
+
+    let notificationsPromise = Promise.resolve([]);
     if (this.get('session.isAuthenticated')) {
       try {
-        notifications = await this.authManager.currentUser.query('notifications', {
+        notificationsPromise = this.authManager.currentUser.query('notifications', {
           filter: [
             {
               name : 'is-read',
@@ -49,17 +50,29 @@ export default Route.extend(ApplicationRouteMixin, {
       }
     }
 
+    const pagesPromise = this.store.query('page', {
+      sort: 'index'
+    });
+
+    const settingsPromise = this.store.queryRecord('setting', {});
+    const eventTypesPromise = this.store.findAll('event-type');
+    const eventLocationsPromise = this.store.findAll('event-location');
+
+    const [notifications, pages, settings, eventTypes, eventLocations] = await Promise.all([
+      notificationsPromise,
+      pagesPromise,
+      settingsPromise,
+      eventTypesPromise,
+      eventLocationsPromise]);
 
     return {
       notifications,
-      pages: await this.store.query('page', {
-        sort: 'index'
-      }),
-      cookiePolicy     : this.get('settings.cookiePolicy'),
-      cookiePolicyLink : this.get('settings.cookiePolicyLink'),
-      socialLinks      : await this.store.queryRecord('setting', {}),
-      eventTypes       : await this.store.findAll('event-type'),
-      eventLocations   : await this.store.findAll('event-location')
+      pages,
+      cookiePolicy     : settings.cookiePolicy,
+      cookiePolicyLink : settings.cookiePolicyLink,
+      socialLinks      : settings,
+      eventTypes,
+      eventLocations
     };
   },
 
