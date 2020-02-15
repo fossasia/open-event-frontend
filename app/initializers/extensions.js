@@ -1,4 +1,4 @@
-import 'open-event-frontend/extensions/ember-table/component';
+import '../extensions/ember-table/component';
 
 export function initialize() {}
 
