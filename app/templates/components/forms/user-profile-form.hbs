@@ -41,7 +41,21 @@
       </div>
       <div class="field">
         <label class="details">{{t 'Phone'}}</label>
-        {{input type='text' name='phone' value=user.contact}}
+        <div class="ui left action input">
+          {{#ui-dropdown class='selection'}}
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select'}}</div>
+            <div class="menu">
+              {{#each countries as |country|}}
+                <div class="item">
+                  <i class="{{lowercase country.code}} flag"></i>
+                  {{country.phone}}
+                </div>
+              {{/each}}
+            </div>
+          {{/ui-dropdown}}
+          {{input type='text' name='phone' value=user.contact}}
+        </div>
       </div>
       <button type="submit" class="ui teal submit button update-changes">
         {{t 'Update Changes'}}

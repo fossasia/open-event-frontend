@@ -1,6 +1,8 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
+import { countries } from 'open-event-frontend/utils/dictionary/demography';
+import { orderBy } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
 
@@ -56,6 +58,8 @@ export default Component.extend(FormMixin, {
       }
     };
   },
+
+  countries: orderBy(countries, 'name'),
 
   actions: {
     submit() {
