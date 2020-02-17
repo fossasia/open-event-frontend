@@ -3,6 +3,7 @@ import { computed } from '@ember/object';
 import { htmlSafe } from '@ember/string';
 import { buildUrl } from 'open-event-frontend/utils/url';
 import ENV from 'open-event-frontend/config/environment';
+import { later } from '@ember/runloop';
 
 export default Component.extend({
 
@@ -69,6 +70,12 @@ export default Component.extend({
       this.set(`toggleSwitches.${data}`, !this.get(`toggleSwitches.${data}`));
       this.buildDisplayUrl();
       this.makeRequest();
+    },
+    copiedText() {
+      this.set('isLinkSuccess', true);
+      later(this, () => {
+        this.set('isLinkSuccess', false);
+      }, 5000);
     }
   }
 });
