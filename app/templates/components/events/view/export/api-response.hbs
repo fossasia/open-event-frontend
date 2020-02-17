@@ -31,16 +31,20 @@
 <div class="ui secondary header">
   {{t 'You can make a GET request to the following endpoint to access the selected information'}}
 </div>
-{{#ui-popup on='click' content=(t 'Link copied to clipboard') position='bottom right'}}
-  <div class="ui secondary segment url">
-    {{#copy-button
-      clipboardText=displayUrl
-      tagName=null
+<div class="ui action input fluid">
+  <input type="text" value="{{displayUrl}}" placeholder="{{displayUrl}}" readonly>
+  {{#copy-button
+    class='ui black right labeled icon copy button'
+    clipboardText=displayUrl
+    success=(action 'copiedText')
     }}
-      <pre>{{displayUrl}}</pre>
-    {{/copy-button}}
-  </div>
-{{/ui-popup}}
+    <i class="copy icon"></i>
+    {{t 'Copy'}}
+  {{/copy-button}}
+</div>
+{{#if this.isLinkSuccess}}
+  <div><span style="float:right;color:green;">Link copied to clipboard</span></div>
+{{/if}}
 <div class="ui secondary header">
   {{t 'Response'}}
 </div>
