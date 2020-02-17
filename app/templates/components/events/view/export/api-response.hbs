@@ -36,7 +36,7 @@
   {{#copy-button
     class='ui black right labeled icon copy button'
     clipboardText=displayUrl
-    success=(action 'copiedText')
+    success=(action (mut isLinkSuccess))
     }}
     <i class="copy icon"></i>
     {{t 'Copy'}}
