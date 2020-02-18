@@ -3,9 +3,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 export default Controller.extend(EventWizardMixin, {
   async saveForms(data) {
-    for (const customForm of data.customForms ? data.customForms.toArray() : []) {
-      await customForm.save();
-    }
+    await Promise.all((data.customForms ? data.customForms.toArray() : []).map(customForm => customForm.save()));
     return data;
   },
   actions: {
