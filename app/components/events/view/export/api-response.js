@@ -69,6 +69,11 @@ export default Component.extend({
       this.set(`toggleSwitches.${data}`, !this.get(`toggleSwitches.${data}`));
       this.buildDisplayUrl();
       this.makeRequest();
+    },
+    copiedText() {
+      this.notify.success(this.l10n.t('Link Copied to Textboard'), {
+        id: 'copied_api'
+      });
     }
   }
 });
