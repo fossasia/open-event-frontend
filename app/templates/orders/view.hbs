@@ -25,7 +25,7 @@
   </div>
   <div class="row">
     <div class="column right {{if device.isMobile 'center'}} aligned">
-      <button class="ui labeled icon {{if isLoadingTickets 'loading '}} button" {{action downloadTickets model.event.name model.order.identifier}}>
+      <button class="ui labeled icon {{if isLoadingTickets 'loading'}} button" {{action downloadTickets model.event.name model.order.identifier}}>
         <i class="ticket alternate icon"></i>
         {{t 'Download Tickets'}}
       </button>
