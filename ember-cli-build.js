@@ -13,8 +13,8 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     storeConfigInMeta : true,
-    sassOptions: {
-      sourceMapEmbed : true
+    sassOptions : {
+      sourceMapEmbed: true
     },
     autoprefixer: {
       overrideBrowserslist : targets.browsers,
