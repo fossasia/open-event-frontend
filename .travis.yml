@@ -32,6 +32,7 @@ script:
 
 after_success:
   - 'bash <(curl -s https://codecov.io/bash)'
+  - bash scripts/pr-deploy.sh
 
 deploy:
   provider: pages
