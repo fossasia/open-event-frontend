@@ -4,8 +4,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     exit 0
 fi
 
-ember build production
-
 export REPO_SLUG_ARRAY=(${TRAVIS_REPO_SLUG//\// })
 export REPO_OWNER=${REPO_SLUG_ARRAY[0]}
 export REPO_NAME=${REPO_SLUG_ARRAY[1]}
