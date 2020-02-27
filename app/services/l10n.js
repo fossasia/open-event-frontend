@@ -31,6 +31,8 @@ export default L10n.extend({
 
   autoInitialize: false,
 
+  jsonPath: '/assets/locales',
+
   switchLanguage(locale) {
     this.setLocale(locale);
     this.cookies.write(this.localStorageKey, locale);

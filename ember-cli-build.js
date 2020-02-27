@@ -13,9 +13,14 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     storeConfigInMeta : true,
-    autoprefixer      : {
-      browsers : targets.browsers,
-      cascade  : false
+    sassOptions : {
+      sourceMapEmbed: true
+    },
+    autoprefixer: {
+      overrideBrowserslist : targets.browsers,
+      enabled              : true,
+      cascade              : false,
+      sourcemap            : true
     },
     minifyHTML: {
       enabled   : false,
@@ -35,8 +40,14 @@ module.exports = function(defaults) {
       exclude          : ['package.json'],
       extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
     },
+    sourcemaps: {
+      enabled: true
+    },
     autoImport: {
       webpack: {
+        node: {
+          path: true // TODO: Remove after https://github.com/fossasia/open-event-frontend/issues/3956
+        },
         plugins: env === 'production' ? [
           new BundleAnalyzerPlugin({
             analyzerMode      : 'static',

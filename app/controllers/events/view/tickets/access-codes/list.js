@@ -15,13 +15,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name           : 'Access Code URL',
         valuePath      : 'accessUrl',
         cellComponent  : 'ui-table/cell/events/view/tickets/access-codes/cell-url',
-        disableSorting : true
+        disableSorting : true,
+        width          : 250
       },
       {
         name            : 'Validity',
         valuePath       : 'validFrom',
         extraValuePaths : ['validTill'],
-        cellComponent   : 'ui-table/cell/cell-validity'
+        cellComponent   : 'ui-table/cell/cell-validity',
+        width           : 150
       },
       {
         name            : 'Status',
@@ -34,6 +36,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/tickets/access-codes/cell-actions',
         valuePath       : 'id',
         extraValuePaths : ['isActive', 'isExpired'],
+        width           : 160,
         actions         : {
           deleteAccessCode : this.deleteAccessCode.bind(this),
           toggleStatus     : this.toggleStatus.bind(this),

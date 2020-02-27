@@ -29,7 +29,7 @@ export default Controller.extend({
         .then(() => {
           let credentials = newUser.getProperties('email', 'password'),
               authenticator = 'authenticator:jwt';
-          credentials.identification = newUser.email;
+          credentials.username = newUser.email;
           this.session
             .authenticate(authenticator, credentials)
             .then(async() => {
@@ -63,10 +63,10 @@ export default Controller.extend({
 
     },
 
-    async loginExistingUser(identification, password) {
+    async loginExistingUser(username, password) {
       this.set('isLoading', true);
       let credentials = {
-        identification,
+        username,
         password
       };
       let authenticator = 'authenticator:jwt';
@@ -83,7 +83,7 @@ export default Controller.extend({
         })
         .catch(reason => {
           if (!(this.isDestroyed || this.isDestroying)) {
-            if (reason && Object.prototype.hasOwnProperty.call(reason, 'status_code') && reason.status_code === 401) {
+            if (reason && reason.status === 401) {
               this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
@@ -125,19 +125,15 @@ export default Controller.extend({
         this.set('isLoading', true);
         let order = this.get('model.order');
         let attendees = this.get('model.attendees');
-        for (const attendee of attendees ? attendees.toArray() : []) {
-          await attendee.save();
-        }
+        await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
         order.set('attendees', attendees);
         await order.save()
           .then(order => {
-            this.notify.success(this.l10n.t('Order details saved. Please fill further details within 10 minutes.'));
+            this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async e => {
-            for (const attendee of attendees ? attendees.toArray() : []) {
-              await attendee.destroyRecord();
-            }
+            await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
             this.notify.error(this.l10n.t(e.errors[0].detail));
           })
           .finally(() => {

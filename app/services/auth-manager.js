@@ -5,9 +5,10 @@ import { mapKeys } from 'lodash-es';
 
 export default Service.extend({
 
-  session : service(),
-  metrics : service(),
-  store   : service(),
+  session    : service(),
+  metrics    : service(),
+  store      : service(),
+  bugTracker : service(),
 
   currentUser: computed('session.data.currentUserFallback.id', 'currentUserModel', function() {
     if (this.currentUserModel) {
@@ -59,12 +60,18 @@ export default Service.extend({
         distinctId : this.currentUser.id,
         email      : this.currentUser.email
       });
+      this.bugTracker.setUser({
+        id    : this.currentUser.id,
+        email : this.currentUser.email
+      });
     }
   },
 
   identifyStranger() {
     this.metrics.identify(null);
+    this.bugTracker.clearUser();
   },
+
   async loadUser() {
     if (this.currentUserModel) {
       return this.currentUserModel;
