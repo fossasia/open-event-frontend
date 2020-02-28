@@ -34,6 +34,20 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please enter your new password')
+            },
+            {
+              type   : 'minLength[8]',
+              prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
+            }
+          ]
+        },
+
+        passwordRepeat: {
+          identifier : 'password_repeat',
+          rules      : [
+            {
+              type   : 'match[password]',
+              prompt : this.l10n.t('Passwords do not match')
             }
           ]
         }
@@ -42,6 +56,15 @@ export default Component.extend(FormMixin, {
   },
 
   actions: {
+
+    showNewPassword() {
+      this.toggleProperty('showNewPass');
+    },
+
+    showConfirmPassword() {
+      this.toggleProperty('showConfirmPass');
+    },
+
     submit() {
       this.onValid(() => {
         let payload = {};
