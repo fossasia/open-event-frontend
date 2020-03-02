@@ -3663,10 +3663,10 @@ broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.1.0:
     symlink-or-copy "^1.0.0"
     walk-sync "^0.3.1"
 
-broccoli-funnel@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-3.0.1.tgz#21b00c2bc1c0b1b4c083e24139e2b321c4cf353f"
-  integrity sha512-G1LdSYpuVU7mxVq8KlOyLztsUv+posrHbe+6n/XymZpPd2bbLmQ4HL0v6YP1wWAnfCVTcTnUTpIkw9oYwy+tTw==
+broccoli-funnel@^3.0.1, broccoli-funnel@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-3.0.2.tgz#25e1c9a512b3852d3c9dde19ebdf07880d619c73"
+  integrity sha512-yRa7f0H/BtfqXNmL4eCYtAiVAQASI5b83//17MxAYp3I+w8XzGY8Tc3mwhdUrAgh6Zhb6LZwgvUZDZPTLmkK7w==
   dependencies:
     array-equal "^1.0.0"
     blank-object "^1.0.1"
@@ -3732,7 +3732,7 @@ broccoli-merge-trees@^2.0.0:
     broccoli-plugin "^1.3.0"
     merge-trees "^2.0.0"
 
-broccoli-merge-trees@^4.1.0:
+broccoli-merge-trees@^4.0.1, broccoli-merge-trees@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/broccoli-merge-trees/-/broccoli-merge-trees-4.1.0.tgz#a30e2e4c5bb0f5eb8981e8af33a8077714c11f1a"
   integrity sha512-1OXsksKPFiRdiZZOfh1z1mm7ZqKezlMS+DPBpHMDLSb6AhYHvoQfjf0KuMXbY8aoYskj7+Z+EJ5SsS/OC2v5yw==
@@ -6340,15 +6340,16 @@ ember-cli-normalize-entity-name@^1.0.0:
   dependencies:
     silent-error "^1.0.0"
 
-ember-cli-nouislider@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-nouislider/-/ember-cli-nouislider-1.1.0.tgz#835d814433d9e2a1aa674b463ee296cd7723d42f"
+ember-cli-nouislider@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-nouislider/-/ember-cli-nouislider-1.2.0.tgz#b78476e40bdc37ff485aa08fffa1ce1ed75531ba"
+  integrity sha512-fu1DH4+lGOonIdn2/9A/0Wnl2L5ajQkzvRTKEeI2oy3s+THhXajuvoVR2/KP6Uc7K3jTfM8432kfP/EIu0jquA==
   dependencies:
-    broccoli-funnel "^2.0.1"
-    broccoli-merge-trees "^2.0.0"
-    ember-cli-babel "^6.6.0"
-    ember-cli-htmlbars "^2.0.1"
-    nouislider "^11.0.3"
+    broccoli-funnel "^3.0.2"
+    broccoli-merge-trees "^4.0.1"
+    ember-cli-babel "^7.7.3"
+    ember-cli-htmlbars "^4.2.3"
+    nouislider "^14.1.1"
 
 ember-cli-pace@devotox/ember-cli-pace#master:
   version "0.1.0"
@@ -12232,9 +12233,10 @@ normalize-url@2.0.1:
     query-string "^5.0.1"
     sort-keys "^2.0.0"
 
-nouislider@^11.0.3:
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-11.1.0.tgz#1768eb5b854917325d41b96f2dc4eb3757d73381"
+nouislider@^14.1.1:
+  version "14.1.1"
+  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-14.1.1.tgz#def812b2aaaa2ccf9e7a41dd0144a25dab5673e5"
+  integrity sha512-3/+Z/pTBoWoJf2YXSEWRmS27LW2XxOBmGEzkPyRzB/J6QvL+0mS3QwcQp0SmWhgO5CMzbSxPmb1lDDD4HP12bg==
 
 npm-bundled@^1.0.1:
   version "1.0.5"
