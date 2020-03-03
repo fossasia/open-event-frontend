@@ -13,14 +13,18 @@ export default Route.extend({
       {
         and: [
           {
-            name : 'starts-at',
-            op   : 'eq',
-            val  : null
-          },
-          {
-            name : 'ends-at',
-            op   : 'eq',
-            val  : null
+            or: [
+              {
+                name : 'starts-at',
+                op   : 'eq',
+                val  : null
+              },
+              {
+                name : 'ends-at',
+                op   : 'eq',
+                val  : null
+              },
+            ]
           },
           {
             or: [
