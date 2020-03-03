@@ -13,7 +13,7 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     storeConfigInMeta : true,
-    sassOptions : {
+    sassOptions       : {
       sourceMapEmbed: true
     },
     autoprefixer: {
