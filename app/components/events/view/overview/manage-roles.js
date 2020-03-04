@@ -32,7 +32,8 @@ export default Component.extend({
             id: 'man_role'
           });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while updating role invite', e);
           this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
             id: 'man_role_err'
           });
@@ -50,7 +51,8 @@ export default Component.extend({
           });
           this.get('data.roleInvites').removeObject(invite);
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while deleting role invite', e);
           this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
             id: 'err_man_role'
           });

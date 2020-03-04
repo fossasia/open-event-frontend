@@ -40,7 +40,8 @@ export default Component.extend({
             id: 'fee_delete_succ'
           });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while deleting ticket', e);
           this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
             id: 'fee_err'
           });

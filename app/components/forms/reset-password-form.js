@@ -60,7 +60,8 @@ export default Component.extend(FormMixin, {
               });
               this.router.transitionTo('login');
             })
-            .catch(() => {
+            .catch(e => {
+              console.error('Error while resetting password', e);
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'), {
                 id: 'reset_unexpect'
               });
@@ -86,8 +87,10 @@ export default Component.extend(FormMixin, {
             })
             .catch(reason => {
               if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 404) {
+                console.warn('Reset Password: No user account found', reason);
                 this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
               } else {
+                console.error('Error while submitting reset password', reason);
                 this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
               }
             })

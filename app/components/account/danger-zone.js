@@ -37,7 +37,8 @@ export default Component.extend({
             id: 'account_Delete'
           });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while deleting account', e);
           this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
             id: 'account_del_error'
           });

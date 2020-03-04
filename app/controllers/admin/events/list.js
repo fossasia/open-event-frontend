@@ -136,7 +136,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
       this.refreshModel.bind(this)();
     } catch (e) {
-      console.warn(e);
+      console.error('Error while deleting event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_delete_error'
@@ -160,7 +160,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_restored'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error while restoring event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'restore_error'
@@ -182,7 +182,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
 
     } catch (e) {
-      console.warn(e);
+      console.error('Error while toggling featured event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_det_error'
@@ -203,7 +203,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_detail_changed'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error while toggling promoted event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_det_error'

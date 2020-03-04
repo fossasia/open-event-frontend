@@ -23,7 +23,8 @@ export default class extends Controller {
               id: 'ticket_fee_save'
             });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while saving ticket fee settings', e);
           this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'),
             {
               id: 'ticket_fee_error'

@@ -14,14 +14,16 @@ export default class extends Controller {
                 id: 'image_size_save'
               });
           })
-          .catch(() => {
+          .catch(e => {
+            console.error('Error while saving speaker image sizes', e);
             this.notify.error(this.l10n.t('An unexpected error has occurred. Image sizes not saved.'),
               {
                 id: 'image_size_error'
               });
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while saving image image size', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. Image sizes not saved.'),
           {
             id: 'image_size_error_unex'
