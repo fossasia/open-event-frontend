@@ -45,6 +45,7 @@ export default class extends Controller {
           }
         })
         .catch(e => {
+          console.error('Error while importing event', e);
           this.setProperties({
             'importError' : e.message,
             'isImporting' : false,
@@ -84,6 +85,7 @@ export default class extends Controller {
     ).then(data => {
       this.importTask(`tasks/${data.task_url.split('/')[3]}`);
     }).catch(e => {
+      console.error('Error while importing event', e);
       this.set('importError', e.message);
     });
   }

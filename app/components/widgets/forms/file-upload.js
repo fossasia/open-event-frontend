@@ -28,7 +28,8 @@ export default Component.extend({
           id: 'file_upload_succ'
         });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while upload file', e);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
           id: 'file_upload_err'
         });
@@ -47,6 +48,7 @@ export default Component.extend({
         };
         reader.readAsDataURL(files[0]);
       }).catch(error => {
+        console.error('Error while reading file', error);
         this.notify.error(error, {
           id: 'file_upload_err_1'
         });

@@ -106,6 +106,7 @@ export default class extends Component.extend(FormMixin) {
           id: 'bill_det_updated'
         });
       } catch (error) {
+        console.error('Error while updating billing details', error);
         this.authManager.currentUser.rollbackAttributes();
         this.notify.error(this.l10n.t('An unexpected error occurred'), {
           id: 'bill_det_unexpect'

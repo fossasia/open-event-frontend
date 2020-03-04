@@ -24,7 +24,8 @@ export default Component.extend({
             id: 'not_read_succ'
           });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while marking notifications as read.', e);
           this.notify.error(this.l10n.t('An unexpected error occurred.'), {
             id: 'not_read_error'
           });

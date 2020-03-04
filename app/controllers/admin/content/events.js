@@ -15,6 +15,7 @@ export default class extends Controller {
       this.set('disableEventSubtopic', false);
       this.set('currentTopicSelected', topic);
     } catch (e) {
+      console.error('Error while updating subtopics', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred. SubTopics not loaded.'),
         {
           id: 'subtop_error'
@@ -45,7 +46,8 @@ export default class extends Controller {
             id: 'event_prop_del'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while deleting ' + modelName, e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. Event Type was not deleted.'),
           {
             id: 'event_type_error'
@@ -68,7 +70,8 @@ export default class extends Controller {
             id: 'mode_add_succ'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while adding ' + camelCasedValue, e);
         this.notify.error(this.l10n.t(`An unexpected error has occurred. ${startCase(camelCasedValue)} not saved.`),
           {
             id: 'mode_err_succ'

@@ -96,7 +96,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     later(this, () => {
       try {
         this.set('subTopic', null);
-      } catch (ignored) { /* To suppress error thrown in-case this gets executed after component gets destroy */ }
+      } catch (ignored) {
+        /* To suppress error thrown in-case this gets executed after component gets destroy */
+        console.warn('Error setting subTopic to null', ignored);
+      }
     }, 50);
     if (!this.get('data.event.topic')) {
       return [];
@@ -403,6 +406,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           }));
         })
         .catch(error => {
+          console.error('Error while setting stripe authorization in event', error);
           this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
             id: 'basic_detail_err'
           });

@@ -34,7 +34,8 @@ export default Component.extend({
         this.set('uploadingImage', false);
         this.set('imageUrl', image.url);
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while uploading and setting image URL', e);
         this.set('uploadingImage', false);
         this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
       });
@@ -56,6 +57,7 @@ export default Component.extend({
         reader.readAsDataURL(files[0]);
 
       }).catch(error => {
+        console.error('Error while image reading and cropping', error);
         this.notify.error(error, {
           id: 'unexpected_image_upload_1'
         });

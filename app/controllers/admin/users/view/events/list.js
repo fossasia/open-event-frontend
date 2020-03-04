@@ -91,6 +91,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await event.destroyRecord();
       this.notify.success(this.l10n.t('Event has been deleted successfully.'));
     } catch (e) {
+      console.error('Error while deleting event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
     this.setProperties({
@@ -108,7 +109,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await event.save({ adapterOptions: { getTrashed: true } });
       this.notify.success(this.l10n.t('Event has been restored successfully.'));
     } catch (e) {
-      console.warn(e);
+      console.error('Error while restoring event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
     this.set('isLoading', false);
