@@ -62,7 +62,7 @@ module.exports = {
     ],
     'max-len': 'off',
     'no-console': ["error", { allow: ["warn", "error"] }],
-    'prefer-template': 'error',
+    'prefer-template': 'off',
     'camelcase': 'off',
     'new-cap': 'off',
     'eqeqeq': ['error', 'smart'],
