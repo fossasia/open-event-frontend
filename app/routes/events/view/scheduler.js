@@ -23,7 +23,7 @@ export default Route.extend({
                 name : 'ends-at',
                 op   : 'eq',
                 val  : null
-              },
+              }
             ]
           },
           {
