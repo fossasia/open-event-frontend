@@ -5757,17 +5757,17 @@ ember-angle-bracket-invocation-polyfill@^2.0.2:
     ember-compatibility-helpers "^1.0.2"
     silent-error "^1.1.1"
 
-ember-app-scheduler@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/ember-app-scheduler/-/ember-app-scheduler-4.0.0.tgz#4ca8873c21d0aaea866439dbbf5bdef674abb255"
-  integrity sha512-cV2Eex6Y9PnpHtiJ3l59JVthTLrP4+XLhoWVHKxDSix2xWUnXKnu0KjR+0upNQWQlWVjQuX/iD9CERJ9c0KA0w==
+ember-app-scheduler@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/ember-app-scheduler/-/ember-app-scheduler-4.0.1.tgz#670fc0c28a28367a1aea7e5286d0d73e90561e19"
+  integrity sha512-K29+tzArM9Gx5VGtDuH35yoAIhS1hOUZ7EtdOXae09uDxkbuyhTvZHfTB2u0Eq7FhT56TGLZ03x3u9RyBT0o8Q==
   dependencies:
     "@types/ember" "^3.1.0"
     "@types/rsvp" "^4.0.2"
     ember-cli-babel "^7.1.3"
     ember-cli-typescript "^2.0.0"
     ember-compatibility-helpers "^1.1.2"
-    ember-test-waiters "^1.1.1"
+    ember-test-waiters "^2.0.0"
 
 ember-assign-polyfill@^2.2.0, ember-assign-polyfill@^2.6.0:
   version "2.6.0"
@@ -7176,12 +7176,12 @@ ember-router-generator@^2.0.0:
     "@babel/traverse" "^7.4.5"
     recast "^0.18.1"
 
-ember-router-scroll@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/ember-router-scroll/-/ember-router-scroll-3.3.1.tgz#98e3a8b15ad6e8684922983dc096700cbba9a80d"
-  integrity sha512-jjWAfWdGZBxIpabFIcAL77+z8xiAqnHK/r8/l2C9pfSRteiQnq7aadlBDVk6QAKbxwPQwNRvCSRTHsAJ/EvUhg==
+ember-router-scroll@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/ember-router-scroll/-/ember-router-scroll-3.3.2.tgz#ceac667d100368b1d184816ebc8b834eb54d0f45"
+  integrity sha512-6nQkrt7ZKRXIGLiFSeIjUiJHiqDHX8xscrhAhIBRXn8wYWhaulOBdFi4ZXFjMoIh56f48Tb6UePZJ8HRrXnmPA==
   dependencies:
-    ember-app-scheduler "^4.0.0"
+    ember-app-scheduler "^4.0.1"
     ember-cli-babel "^7.11.1"
     ember-compatibility-helpers "^1.1.2"
 
@@ -7342,6 +7342,15 @@ ember-test-waiters@^1.1.1:
   dependencies:
     ember-cli-babel "^7.11.0"
     semver "^6.3.0"
+
+ember-test-waiters@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-test-waiters/-/ember-test-waiters-2.0.0.tgz#fee43406670a2bd54baa7daf836b8c9acd517fee"
+  integrity sha512-R7H/BgKeAJdmpNA7aropEJkcJZNBMSOXTogz7hF+ZO0tnHSq3cJb/gDpu6Beok3DzLCJIrYYApU3MPbQ0/teXQ==
+  dependencies:
+    ember-cli-babel "^7.18.0"
+    ember-cli-typescript "^3.1.3"
+    semver "^7.1.3"
 
 ember-truth-helpers@^2.1.0:
   version "2.1.0"
