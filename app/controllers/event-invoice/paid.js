@@ -19,7 +19,7 @@ export default class extends Controller {
         });
       document.body.removeChild(anchor);
     } catch (e) {
-      console.warn(e);
+      console.error('Error while downloading event invoice', e);
       this.notify.error(this.l10n.t('Unexpected error occurred.'),
         {
           id: 'event_here_error'

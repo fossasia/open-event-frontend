@@ -12,7 +12,8 @@ export default ModalBase.extend({
               id: 'placeholder_sav'
             });
           })
-          .catch(() => {
+          .catch(e => {
+            console.error('Error while saving placeholder.', e);
             this.notify.error(this.l10n.t('An unexpected error has occurred. Placeholder not saved.'), {
               id: 'placeholder_err'
             });

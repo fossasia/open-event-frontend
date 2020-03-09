@@ -36,7 +36,10 @@ export default UiModal.extend({
     this._super(...arguments);
     try {
       $(this.element).modal('refresh');
-    } catch (ignored) { /* ignored exception */ }
+    } catch (ignored) {
+      /* ignored exception */
+      console.warn('Error refreshing modal', ignored);
+    }
   },
 
 

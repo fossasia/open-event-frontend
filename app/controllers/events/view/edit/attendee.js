@@ -15,6 +15,7 @@ export default Controller.extend(EventWizardMixin, {
           ['tickets']
         );
       } catch (error) {
+        console.error('Error while updating attendee', error);
         this.notify.error(this.l10n.t(error.message),
           {
             id: 'attendee_error_serv'
@@ -29,6 +30,7 @@ export default Controller.extend(EventWizardMixin, {
           ['tickets']
         );
       } catch (error) {
+        console.error('Error while moving attendee', error);
         this.notify.error(this.l10n.t(error.message),
           {
             id: 'attendee_move_error'

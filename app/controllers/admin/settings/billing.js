@@ -24,6 +24,7 @@ export default class extends Controller {
           id: 'admin_billing_save'
         });
     } catch (error) {
+      console.error('Error while saving admin billing info', error);
       this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'),
         {
           id: 'admin_billing_error'

@@ -98,6 +98,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
       this.send('refreshRoute');
     } catch (e) {
+      console.error('Error while deleting event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_del_unex'

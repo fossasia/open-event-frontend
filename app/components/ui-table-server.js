@@ -162,7 +162,8 @@ export default ModelsTable.extend({
       }
       store.query(modelName, query)
         .then(newData => setProperties(this, { isLoading: false, isError: false, filteredContent: newData }))
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while querying data in UI Table', e);
           if (!this.isDestroyed) {
             setProperties(this, { isLoading: false, isError: true });
           }

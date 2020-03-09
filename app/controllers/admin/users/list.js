@@ -99,6 +99,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
 
     } catch (e) {
+      console.error('Error while deleting user', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'user_delete_error'
@@ -129,6 +130,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'user_restore'
         });
     } catch (e) {
+      console.error('Error while restoring user', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'user_restore_error'

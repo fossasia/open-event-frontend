@@ -14,6 +14,7 @@ export default class extends Controller {
           id: 'message_success'
         });
     } catch (e) {
+      console.error('Error while saving system messages', e);
       this.notify.error(this.l10n.t(e.errors[0].detail),
         {
           id: 'change_error_message'
