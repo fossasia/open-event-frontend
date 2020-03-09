@@ -5747,6 +5747,16 @@ ember-ajax@5.0.0:
     ember-cli-babel "^7.5.0"
     najax "^1.0.3"
 
+ember-angle-bracket-invocation-polyfill@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/ember-angle-bracket-invocation-polyfill/-/ember-angle-bracket-invocation-polyfill-2.0.2.tgz#117ab5238305f11046a2eb3a5bc026c98d2cf5c1"
+  integrity sha512-HkG0xyTHtAhWVjU0Q5V/i4xe4FRvNIOaiUEgIvN815F3TIUboV/J0xhYgivm0uDZp9lAYUVF+U5PI1sCnlC3Og==
+  dependencies:
+    ember-cli-babel "^6.17.0"
+    ember-cli-version-checker "^2.1.2"
+    ember-compatibility-helpers "^1.0.2"
+    silent-error "^1.1.1"
+
 ember-app-scheduler@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/ember-app-scheduler/-/ember-app-scheduler-4.0.1.tgz#670fc0c28a28367a1aea7e5286d0d73e90561e19"
@@ -5854,7 +5864,7 @@ ember-cli-babel@^5.2.4:
     ember-cli-version-checker "^1.0.2"
     resolve "^1.1.2"
 
-ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.10.0, ember-cli-babel@^6.11.0, ember-cli-babel@^6.12.0, ember-cli-babel@^6.16.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.2, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
+ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.10.0, ember-cli-babel@^6.11.0, ember-cli-babel@^6.12.0, ember-cli-babel@^6.16.0, ember-cli-babel@^6.17.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.2, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.18.0.tgz#3f6435fd275172edeff2b634ee7b29ce74318957"
   dependencies:
@@ -6694,7 +6704,7 @@ ember-cli@~3.16.0:
     watch-detector "^1.0.0"
     yam "^1.0.0"
 
-ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.1.2, ember-compatibility-helpers@^1.2.0:
+ember-compatibility-helpers@^1.0.2, ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.1.2, ember-compatibility-helpers@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ember-compatibility-helpers/-/ember-compatibility-helpers-1.2.0.tgz#feee16c5e9ef1b1f1e53903b241740ad4b01097e"
   dependencies:
@@ -6702,7 +6712,7 @@ ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.1.2, ember-co
     ember-cli-version-checker "^2.1.1"
     semver "^5.4.1"
 
-ember-composable-helpers@^3.0.2, ember-composable-helpers@^3.1.1:
+ember-composable-helpers@^3.0.1, ember-composable-helpers@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/ember-composable-helpers/-/ember-composable-helpers-3.1.1.tgz#9d663f4359fd54fd369ea60aa1915bf59113bcec"
   integrity sha512-lPmPhk4wIg1JDnuOfzcDzrCZoaDoTvZrYVaBi4Eia2SdEEfcDNipQTXTk0yHFCvKfSjXjuNlTtNP9UANH58TzQ==
@@ -6770,6 +6780,15 @@ ember-data@3.14.1:
 ember-debug-handlers-polyfill@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ember-debug-handlers-polyfill/-/ember-debug-handlers-polyfill-1.1.1.tgz#e9ae0a720271a834221179202367421b580002ef"
+
+ember-decorators-polyfill@^1.1.0:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/ember-decorators-polyfill/-/ember-decorators-polyfill-1.1.3.tgz#2ffd7b5a4d45cb2a0dc7fce9cb132719a1134d13"
+  integrity sha512-38cVtAryDo0Dlv96wLQHJk273UUxU8UPKQenN4T0wlXqqifTldZ/brLK9Jp4gE99g2swHeG9EVvcTGPCwmCXmg==
+  dependencies:
+    ember-cli-babel "^7.1.2"
+    ember-cli-version-checker "^3.1.3"
+    ember-compatibility-helpers "^1.2.0"
 
 ember-decorators@^6.1.1:
   version "6.1.1"
@@ -6851,6 +6870,15 @@ ember-fetch@7.0.1:
     ember-cli-babel "^6.8.2"
     node-fetch "^2.6.0"
     whatwg-fetch "^3.0.0"
+
+ember-fn-helper-polyfill@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ember-fn-helper-polyfill/-/ember-fn-helper-polyfill-1.0.2.tgz#deb035fced77f98b9256ba4eb17694b7a2e2a526"
+  integrity sha512-T/YG1Do59xvyMCUItqvY61ZJfSLiUsUuykG8C4o9ffrwDuspbquL3eJdLi+NF1dNoihwcIdJHcxLKvwvQB05LQ==
+  dependencies:
+    calculate-cache-key-for-tree "^2.0.0"
+    ember-cli-babel "^7.7.3"
+    ember-cli-version-checker "^3.1.3"
 
 ember-fullcalendar@^1.8.0:
   version "1.8.0"
@@ -6997,14 +7025,18 @@ ember-metrics@^0.14.0:
     ember-getowner-polyfill "^2.0.0"
     ember-runtime-enumerable-includes-polyfill "^2.0.0"
 
-ember-models-table@^2.14.0:
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/ember-models-table/-/ember-models-table-2.14.0.tgz#01658ea6b4c6e8c72c429cb9b3718e019ce15db6"
-  integrity sha512-VeOnwblaeTFOIrtqg1SXFm0GkGu74ikQRfO5zQytsyrGPFAP/uzxfW9NSMpr2p8WeNBUngFAlGUj4f5Lm0VcDg==
+ember-models-table@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ember-models-table/-/ember-models-table-3.0.0.tgz#7b5bdd54d1691054d3205911311c797d684de0d5"
+  integrity sha512-JOGlbBVVWezzXL19km3neMGWTGdWUCmQlltn277eP0+c2LBO1NfydqBbkEIaNl1/ej1IJPe6k4pBb8wYNdJ+cw==
   dependencies:
+    ember-angle-bracket-invocation-polyfill "^2.0.2"
     ember-cli-babel "^7.17.2"
     ember-cli-htmlbars "^4.2.2"
-    ember-composable-helpers "^3.0.2"
+    ember-composable-helpers "^3.0.1"
+    ember-decorators "^6.1.1"
+    ember-decorators-polyfill "^1.1.0"
+    ember-fn-helper-polyfill "^1.0.2"
 
 ember-modifier-manager-polyfill@^1.1.0, ember-modifier-manager-polyfill@^1.2.0:
   version "1.2.0"
