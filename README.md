@@ -63,7 +63,7 @@ It consumes the API exposed by master branch deployment of open event server, ho
 
 #### Development branch
 
-The **development** branch of open-event-frontend gets deployed at [https://open-event.netlify.com](https://open-event.netlify.com)
+The **development** branch of open-event-frontend gets deployed at [https://open-event-frontend.now.sh/](https://open-event-frontend.now.sh/)
 It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com](https://open-event-api-dev.herokuapp.com)
 
 ### Release Cycle
@@ -71,7 +71,7 @@ It consumes the API exposed by development branch of open event server, hosted a
 Stable versions will released periodically, starting from version 1.0.0 when open-event-frontend went into production. Version names will follow [semantic versioning](https://semver.org/)
 
 ### Docker Hub Images
-Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and developement branch. Separate tags for each version release are also maintained. They are as follows:
+Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and development branch. Separate tags for each version release are also maintained. They are as follows:
 
 | Branch/Release  | Image                                    |
 | --------------- | ---------------------------------------- |
