@@ -71,7 +71,7 @@ It consumes the API exposed by development branch of open event server, hosted a
 Stable versions will released periodically, starting from version 1.0.0 when open-event-frontend went into production. Version names will follow [semantic versioning](https://semver.org/)
 
 ### Docker Hub Images
-Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and developement branch. Separate tags for each version release are also maintained. They are as follows:
+Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and development branch. Separate tags for each version release are also maintained. They are as follows:
 
 | Branch/Release  | Image                                    |
 | --------------- | ---------------------------------------- |
