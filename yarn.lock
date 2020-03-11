@@ -1245,7 +1245,7 @@
     "@sentry/utils" "5.14.0"
     tslib "^1.9.3"
 
-"@sentry/browser@5.14.0":
+"@sentry/browser@5.14.0", "@sentry/browser@^5.14.0":
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.14.0.tgz#01cb12d0c42dca184d17854245686eee2fe3f21f"
   integrity sha512-C/gb4YpUIKEaBDulacgnTm55PNXbkLShPOtkGJstbxedhOLZq7J3q2wjeyhKzfWFBw4WewLanMv+Eisn/Bm8XQ==
@@ -1253,27 +1253,6 @@
     "@sentry/core" "5.14.0"
     "@sentry/types" "5.14.0"
     "@sentry/utils" "5.14.0"
-    tslib "^1.9.3"
-
-"@sentry/browser@^5.13.2":
-  version "5.13.2"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.13.2.tgz#fcca630c8c80447ba8392803d4e4450fd2231b92"
-  integrity sha512-4MeauHs8Rf1c2FF6n84wrvA4LexEL1K/Tg3r+1vigItiqyyyYBx1sPjHGZeKeilgBi+6IEV5O8sy30QIrA/NsQ==
-  dependencies:
-    "@sentry/core" "5.13.2"
-    "@sentry/types" "5.13.2"
-    "@sentry/utils" "5.13.2"
-    tslib "^1.9.3"
-
-"@sentry/core@5.13.2":
-  version "5.13.2"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.13.2.tgz#d89e199beef612d0a01e5c4df4e0bb7efcb72c74"
-  integrity sha512-iB7CQSt9e0EJhSmcNOCjzJ/u7E7qYJ3mI3h44GO83n7VOmxBXKSvtUl9FpKFypbWrsdrDz8HihLgAZZoMLWpPA==
-  dependencies:
-    "@sentry/hub" "5.13.2"
-    "@sentry/minimal" "5.13.2"
-    "@sentry/types" "5.13.2"
-    "@sentry/utils" "5.13.2"
     tslib "^1.9.3"
 
 "@sentry/core@5.14.0":
@@ -1285,15 +1264,6 @@
     "@sentry/minimal" "5.14.0"
     "@sentry/types" "5.14.0"
     "@sentry/utils" "5.14.0"
-    tslib "^1.9.3"
-
-"@sentry/hub@5.13.2":
-  version "5.13.2"
-  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.13.2.tgz#875a5ba983d6ada5caae5b6b4decd0257ef5cdb7"
-  integrity sha512-/U7yq3DTuRz8SRpZVKAaenW9sD2F5wbj12kDVPxPnGspyqhy0wBWKs9j0YJfBiDXMKOwp3HX964O3ygtwjnfAw==
-  dependencies:
-    "@sentry/types" "5.13.2"
-    "@sentry/utils" "5.13.2"
     tslib "^1.9.3"
 
 "@sentry/hub@5.14.0":
@@ -1312,15 +1282,6 @@
   dependencies:
     "@sentry/types" "5.13.2"
     "@sentry/utils" "5.13.2"
-    tslib "^1.9.3"
-
-"@sentry/minimal@5.13.2":
-  version "5.13.2"
-  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.13.2.tgz#e42e33dc74fc935f8857d1a43a528afd741640fd"
-  integrity sha512-VV0eA3HgrnN3mac1XVPpSCLukYsU+QxegbmpnZ8UL8eIQSZ/ZikYxagDNlZbdnmXHUpOEUeag2gxVntSCo5UcA==
-  dependencies:
-    "@sentry/hub" "5.13.2"
-    "@sentry/types" "5.13.2"
     tslib "^1.9.3"
 
 "@sentry/minimal@5.14.0":
