@@ -63,7 +63,7 @@ It consumes the API exposed by master branch deployment of open event server, ho
 
 #### Development branch
 
-The **development** branch of open-event-frontend gets deployed at [https://open-event.netlify.com](https://open-event.netlify.com)
+The **development** branch of open-event-frontend gets deployed at [https://open-event-frontend.now.sh/](https://open-event-frontend.now.sh/)
 It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com](https://open-event-api-dev.herokuapp.com)
 
 ### Release Cycle
