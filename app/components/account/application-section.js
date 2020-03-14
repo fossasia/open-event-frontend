@@ -37,6 +37,7 @@ export default Component.extend({
           });
         }
       } catch (error) {
+        console.error('Error during authentication', error);
         this.notify.error(this.l10n.t(error.message), {
           id: 'error_message'
         });
