@@ -119,6 +119,7 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalCode', false);
         });
       } catch (e) {
+        console.error('Error while applying access code', e);
         this.set('invalidPromotionalCode', true);
       }
       try {
@@ -148,7 +149,7 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalCode', true);
         }
       } catch (e) {
-        console.warn(e);
+        console.error('Error while applying discount code as promo code', e);
         if (this.invalidPromotionalCode) {
           this.set('invalidPromotionalCode', true);
         }

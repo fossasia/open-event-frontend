@@ -133,13 +133,19 @@ export default Controller.extend({
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async e => {
-            await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
+            console.error('Error while saving order', e);
+            try {
+              await Promise.allSettled((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
+            } catch (error) {
+              console.error('Error while deleting attendees after order failure', error);
+            }
             this.notify.error(this.l10n.t(e.errors[0].detail));
           })
           .finally(() => {
             this.set('isLoading', false);
           });
       } catch (e) {
+        console.error('Error while creating order', e);
         this.notify.error(this.l10n.t(e));
       }
     }

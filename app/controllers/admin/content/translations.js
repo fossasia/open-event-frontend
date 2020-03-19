@@ -19,7 +19,7 @@ export default class extends Controller {
           id: 'zip_generated_succ'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error downloading translation zip', e);
       this.notify.error(this.l10n.t('Unexpected error occurred.'),
         {
           id: 'zip_error'

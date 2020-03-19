@@ -61,8 +61,10 @@ export default class extends Component.extend(FormMixin) {
         }
       } catch (e) {
         if (e.json && e.json.error) {
+          console.warn('Error while authentication', e);
           this.set('errorMessage', this.l10n.tVar(e.json.error));
         } else {
+          console.error('Error while authentication', e);
           this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
         }
       }
@@ -89,6 +91,7 @@ export default class extends Component.extend(FormMixin) {
             id: 'error_server_msg'
           });
         } else {
+          console.error('Error while facebook authentication', e);
           this.notify.error(this.l10n.t('An unexpected error has occurred'), {
             id: 'unexpect_error'
           });

@@ -2,7 +2,7 @@
 ![Open Event Frontend](docs/images/Frontend_Branding.png)
 
 [![Build Status](https://travis-ci.org/fossasia/open-event-frontend.svg?branch=development)](https://travis-ci.org/fossasia/open-event-frontend)
-[![Netlify](https://img.shields.io/netlify/89d57fdc-826c-400b-af13-c542e9513f62)](https://app.netlify.com/sites/open-event-fe/deploys)
+[![Netlify](https://img.shields.io/netlify/89d57fdc-826c-400b-af13-c542e9513f62)](https://app.netlify.com/sites/open-event/deploys)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
 [![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d51cf60fc734d3699fd6eff6054e483)](https://www.codacy.com/app/fossasia/open-event-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fossasia/open-event-frontend&amp;utm_campaign=Badge_Grade)
@@ -63,7 +63,7 @@ It consumes the API exposed by master branch deployment of open event server, ho
 
 #### Development branch
 
-The **development** branch of open-event-frontend gets deployed at [https://open-event-fe.netlify.com](https://open-event-fe.netlify.com)
+The **development** branch of open-event-frontend gets deployed at [https://open-event-frontend.now.sh/](https://open-event-frontend.now.sh/)
 It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com](https://open-event-api-dev.herokuapp.com)
 
 ### Release Cycle
@@ -71,7 +71,7 @@ It consumes the API exposed by development branch of open event server, hosted a
 Stable versions will released periodically, starting from version 1.0.0 when open-event-frontend went into production. Version names will follow [semantic versioning](https://semver.org/)
 
 ### Docker Hub Images
-Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and developement branch. Separate tags for each version release are also maintained. They are as follows:
+Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and development branch. Separate tags for each version release are also maintained. They are as follows:
 
 | Branch/Release  | Image                                    |
 | --------------- | ---------------------------------------- |
