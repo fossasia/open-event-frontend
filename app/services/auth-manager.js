@@ -131,7 +131,7 @@ export default Service.extend({
           this.set('currentUserModel', user);
           this.identify();
         } catch (e) {
-          console.warn(e);
+          console.warn('Error while runnnig session', e);
           this.session.invalidate();
           this.notify.error(this.l10n.t('An unexpected error has occurred'));
         }
