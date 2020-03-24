@@ -1,6 +1,9 @@
 import $ from 'jquery';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import { action } from '@ember/object';
+import Croppie from 'croppie';
+import 'croppie/croppie.css';
+
 export default class extends ModalBase {
   onVisible() {
     let viewport = {};
@@ -10,7 +13,7 @@ export default class extends ModalBase {
     viewport.height = aspectRatio[1] * factor;
     viewport.type = 'square';
     $('.content', this.element).css('height', '300px');
-    $('img', this.element).croppie({
+    this.croppie = new Croppie(this.element.getElementsByTagName('img')[0], {
       customClass : 'croppie',
       viewport,
       boundary    : {
@@ -21,7 +24,7 @@ export default class extends ModalBase {
 
   onHide() {
     const $img = $('img', this.element);
-    $img.croppie('destroy');
+    this.croppie.destroy();
     if ($img.parent().is('div.croppie')) {
       $img.unwrap();
     }
@@ -36,7 +39,7 @@ export default class extends ModalBase {
 
   @action
   cropImage() {
-    $('img', this.element).croppie('result', { type: 'base64', size: 'original', quality: 1, format: 'jpeg' }).then(result => {
+    this.croppie.result({ type: 'base64', size: 'original', quality: 1, format: 'jpeg' }).then(result => {
       if (this.onImageCrop) {
         this.onImageCrop(result);
       }
