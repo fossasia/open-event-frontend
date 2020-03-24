@@ -2381,15 +2381,12 @@ async-promise-queue@^1.0.5:
     async "^2.4.1"
     debug "^2.6.8"
 
-async@^1.4.0:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
-
-async@^2.4.1, async@^2.6.1, async@^2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.6.2.tgz#18330ea7e6e313887f5d2f2a904bac6fe4dd5381"
+async@^2.4.1, async@^2.6.2, async@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.6.3.tgz#d72625e2344a3656e3a3ad4fa749fa83299d82ff"
+  integrity sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.14"
 
 async@^3.2.0:
   version "3.2.0"
@@ -4422,7 +4419,7 @@ camelcase-keys@^2.0.0:
     camelcase "^2.0.0"
     map-obj "^1.0.0"
 
-camelcase@^1.0.2, camelcase@^1.2.1:
+camelcase@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
 
@@ -7049,14 +7046,14 @@ ember-macro-helpers@^4.2.2:
     ember-cli-string-utils "^1.1.0"
     ember-cli-test-info "^1.0.0"
 
-ember-math-helpers@^2.13.0:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/ember-math-helpers/-/ember-math-helpers-2.13.0.tgz#eb304b6f75f217e7c1c62fceada396365faf63eb"
-  integrity sha512-UW4MKjpTp5TXcO/mIAvuZtKBx1uuL3W/uDJsFp5fDHA3Thdl5R+NQsQcnJZURbsKeaW3oPGPyM9tG806yopRbA==
+ember-math-helpers@^2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/ember-math-helpers/-/ember-math-helpers-2.14.0.tgz#5845eaa52f3d258aa1369e9cf614b4b9bcf45d8f"
+  integrity sha512-ZgDnTx1Za//qRtWpDM6ZAKjG2jhR1pQuo/txA2BZKIiKudJ4CWeXnKDOb498s7tQDsr2UNgo4+5bVG3EHmfazw==
   dependencies:
     broccoli-funnel "^3.0.1"
-    ember-cli-babel "^7.13.0"
-    ember-cli-htmlbars "^4.2.0"
+    ember-cli-babel "^7.17.2"
+    ember-cli-htmlbars "^4.2.2"
 
 ember-maybe-import-regenerator@^0.1.6:
   version "0.1.6"
@@ -8959,11 +8956,12 @@ gettext-ejs@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/gettext-ejs/-/gettext-ejs-0.1.1.tgz#92a6099bb98b780c804055f226ee53c70be7aa90"
 
-gettext-handlebars@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/gettext-handlebars/-/gettext-handlebars-0.7.0.tgz#09045b2f1aaaad4cf95080fd88683d2040c117d0"
+gettext-handlebars@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/gettext-handlebars/-/gettext-handlebars-1.0.2.tgz#e7c75264b2153317bf313e4cd4359a4f2736c046"
+  integrity sha512-tllZDk/O3CzfPob5e2JiIsWgYfxMjmcNQlTPMcqL4FU9ASl8a96zJ1RabfjFJ4EhVSrKpPtOD2UmNjdd4CPxTg==
   dependencies:
-    handlebars "4.0.6"
+    handlebars "^4.5.2"
 
 gettext-nunjucks@^0.0.2:
   version "0.0.2"
@@ -8973,31 +8971,24 @@ gettext-nunjucks@^0.0.2:
     nunjucks "^3.0.0"
     nunjucks-markdown "^2.0.1"
 
-gettext-parser@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/gettext-parser/-/gettext-parser-2.1.0.tgz#44dad33a15a74776f4383bb33efa8e0eda2346e4"
-  dependencies:
-    encoding "^0.1.12"
-    readable-stream "^2.0.0"
-    safe-buffer "^5.1.2"
-
-gettext-parser@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/gettext-parser/-/gettext-parser-4.0.2.tgz#1325b50320dccb0afeff305590603f4a88c0d7a6"
-  integrity sha512-JPCBpGzm01te+nTenJwWqKDzixYPY4pInedixpcMl4GPEJeia/cH2TJCh32IggDrrLYrzqA8OitXZLpBdrx4Gg==
+gettext-parser@^4.0.2, gettext-parser@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/gettext-parser/-/gettext-parser-4.0.3.tgz#bfb26f22fdd51c080f55c398eb5b0f12328e7353"
+  integrity sha512-FGzzgAtSJuhFZGKNlV8AGjuBic1MoJXL2hlfS55JlCeMgyvG5XbY/Zje/Cx78gnLh+oO8WMIHp6kh7/j3CLx9A==
   dependencies:
     content-type "^1.0.4"
     encoding "^0.1.12"
-    readable-stream "^3.4.0"
+    readable-stream "^3.6.0"
     safe-buffer "^5.2.0"
 
 gettext-swig@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/gettext-swig/-/gettext-swig-0.3.0.tgz#4e87923a239ec5b1b0ac0ad9835a036799235758"
 
-gettext-volt@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/gettext-volt/-/gettext-volt-0.2.2.tgz#64c4d9cfe84a0104ad042378e0ebeed0e1bf595b"
+gettext-volt@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/gettext-volt/-/gettext-volt-0.2.5.tgz#77b0759def133584ba7e38e34ddc2499e1260865"
+  integrity sha512-kOskmNTpxFgt1w2T6LV0bgfrzyj8L37UJMioi6Lbk4sk3DEzxJtVkVEf/kUkyxIrD15r7AXtb2/m6RlPoITCWw==
 
 git-diff-apply@^0.13.0:
   version "0.13.0"
@@ -9260,16 +9251,6 @@ hammerjs@^2.0.8:
   resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
   integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
 
-handlebars@4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.6.tgz#2ce4484850537f9c97a8026d5399b935c4ed4ed7"
-  dependencies:
-    async "^1.4.0"
-    optimist "^0.6.1"
-    source-map "^0.4.4"
-  optionalDependencies:
-    uglify-js "^2.6"
-
 handlebars@^4.0.11, handlebars@^4.0.4, handlebars@^4.3.1, handlebars@^4.5.1:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.2.tgz#01127b3840156a0927058779482031afe0e730d7"
@@ -9281,7 +9262,7 @@ handlebars@^4.0.11, handlebars@^4.0.4, handlebars@^4.3.1, handlebars@^4.5.1:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-handlebars@^4.7.3:
+handlebars@^4.5.2, handlebars@^4.7.3:
   version "4.7.3"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.3.tgz#8ece2797826886cf8082d1726ff21d2a022550ee"
   integrity sha512-SRGwSYuNfx8DwHD/6InAPzD6RgeruWLT+B8e8a7gGs8FWgHzlExpTFMEq2IA6QpAfOClpKHy6+8IqTjeBCu6Kg==
@@ -11319,7 +11300,7 @@ lodash@^3.10.0, lodash@^3.2.0, lodash@^3.9.3:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@~4.17.4:
+lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@~4.17.4:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -13865,10 +13846,10 @@ readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable
     string_decoder "~1.0.3"
     util-deprecate "~1.0.1"
 
-readable-stream@^3.4.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.5.0.tgz#465d70e6d1087f6162d079cd0b5db7fbebfd1606"
-  integrity sha512-gSz026xs2LfxBPudDuI41V1lka8cxg64E66SGe78zJlsUofOg/yqwezdIcdfwik6B4h8LFmWPA9ef9X3FiNFLA==
+readable-stream@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
+  integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
@@ -15180,13 +15161,13 @@ source-map@0.1.32:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@0.4.x, source-map@^0.4.2, source-map@^0.4.4:
+source-map@0.4.x, source-map@^0.4.2:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7, source-map@~0.5.0, source-map@~0.5.1:
+source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7, source-map@~0.5.0:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
@@ -16073,15 +16054,6 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.5.tgz#0c65f15f815aa08b560a61ce8b4db7ffc3f45376"
 
-uglify-js@^2.6:
-  version "2.8.29"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
-  dependencies:
-    source-map "~0.5.1"
-    yargs "~3.10.0"
-  optionalDependencies:
-    uglify-to-browserify "~1.0.0"
-
 uglify-js@^3.0.24:
   version "3.5.13"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.13.tgz#d2d8857b598d77f8764ae3bfcf90bb1df134d2bd"
@@ -16095,10 +16067,6 @@ uglify-js@^3.1.4:
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
-
-uglify-to-browserify@~1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
 uid-number@0.0.6, uid-number@^0.0.6:
   version "0.0.6"
@@ -16611,10 +16579,6 @@ widest-line@^2.0.0:
   dependencies:
     string-width "^2.1.1"
 
-window-size@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
-
 window-size@^0.1.2, window-size@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.1.4.tgz#f8e1aa1ee5a53ec5bf151ffa09742a6ad7697876"
@@ -16737,17 +16701,18 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xgettext-template@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/xgettext-template/-/xgettext-template-3.4.2.tgz#f29b9eab1aeb86860e1e31c50df9e4069c003e80"
+xgettext-template@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/xgettext-template/-/xgettext-template-4.0.3.tgz#e780947c7d8884ca4222dc61764c925a5a2bc0d2"
+  integrity sha512-p+iYdjzQG0Ye7K6zuFwWdBE2gmkPAJHQkhTCsTd4OxJkKOd/omXnC2cJw8+HbiCGlbLgbVi1G1PpePLn4b4Bvw==
   dependencies:
-    async "^2.6.1"
+    async "^2.6.3"
     gettext-ejs "^0.1.1"
-    gettext-handlebars "^0.7.0"
+    gettext-handlebars "^1.0.2"
     gettext-nunjucks "^0.0.2"
-    gettext-parser "^2.0.0"
+    gettext-parser "^4.0.3"
     gettext-swig "^0.3.0"
-    gettext-volt "^0.2.2"
+    gettext-volt "^0.2.5"
     object-assign "^4.1.1"
     yargs "^6.6.0"
 
@@ -16904,15 +16869,6 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
-
-yargs@~3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
-  dependencies:
-    camelcase "^1.0.2"
-    cliui "^2.1.0"
-    decamelize "^1.0.0"
-    window-size "0.1.0"
 
 yargs@~3.27.0:
   version "3.27.0"
