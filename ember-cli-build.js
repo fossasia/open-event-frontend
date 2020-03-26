@@ -48,19 +48,27 @@ module.exports = function(defaults) {
         node: {
           path: true // TODO: Remove after https://github.com/fossasia/open-event-frontend/issues/3956
         },
+        externals: { jquery: 'jQuery' },
         plugins: env === 'production' ? [
           new BundleAnalyzerPlugin({
             analyzerMode      : 'static',
             openAnalyzer      : false,
             generateStatsFile : true
           })
-        ] : []
+        ] : [],
+        module: {
+          rules: [
+            {
+              test: /\.css$/i,
+              use: ['style-loader', 'css-loader'],
+            },
+          ],
+        }
       }
     }
   });
 
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');
-  app.import('bower_components/Croppie/croppie.css');
 
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
@@ -68,10 +76,7 @@ module.exports = function(defaults) {
   app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/Croppie/croppie.min.js', {
-    using: [{ transformation: 'fastbootShim' }]
-  });
-  app.import('bower_components/tinyColorPicker/jqColorPicker.min.js', {
+  app.import('node_modules/tinyColorPicker/jqColorPicker.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
   app.import('bower_components/js-polyfills/xhr.js', {
