@@ -27,12 +27,7 @@
       <div class="three wide column" id="public-event-content">
         {{#if device.isMobile}}
           {{#if displaySideMenu}}
-            <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
-              <i class="content icon"></i>
-            </button>
-            {{#if isMenuOpen}}
-              {{public/side-menu class='toggle menu' event=model}}
-            {{/if}}
+            {{public/side-menu class='toggle menu' event=model}}
           {{/if}}
         {{else}}
           <div class="ui fluid side-menu">
