@@ -202,6 +202,7 @@ export default Component.extend(FormMixin, {
     };
 
     let companyValidation = {
+      identifier : 'company',
       rules: [
         {
           type   : 'empty',
