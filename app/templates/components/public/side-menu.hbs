@@ -1,5 +1,5 @@
 {{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session'))}}
-  <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
+  {{#tabbed-navigation isVertical=true}}
     {{#if (eq session.currentRouteName 'public.index')}}
       <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
         {{t 'Info'}}
@@ -69,5 +69,5 @@
         {{t 'Code of Conduct'}}
       {{/link-to}}
     {{/if}}
-  </div>
+  {{/tabbed-navigation}}
 {{/if}}
