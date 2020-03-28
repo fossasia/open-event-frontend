@@ -14,7 +14,7 @@ export default Controller.extend({
 
   actions: {
     createUser() {
-      const password = this.get('model.password');
+      const { password } = this.model;
       this.model.save()
         .then(user => {
           this.set('session.newUser', user.get('email'));

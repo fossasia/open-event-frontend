@@ -45,7 +45,7 @@ export default Route.extend({
       tax      : await eventDetails.get('tax'),
       order    : this.store.createRecord('order', {
         event   : eventDetails,
-        user    : this.get('authManager.currentUser'),
+        user    : this.authManager.currentUser,
         tickets : []
       }),
 
@@ -59,7 +59,7 @@ export default Route.extend({
   },
   resetController(controller) {
     this._super(...arguments);
-    const model = controller.get('model.order');
+    const model = controller.model.order;
     if (!model.id) {
       model.unloadRecord();
     }

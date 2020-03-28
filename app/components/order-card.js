@@ -4,7 +4,7 @@ import { isEqual } from '@ember/utils';
 
 export default Component.extend({
   isFreeOrder: computed('order', function() {
-    const amount = this.get('order.amount');
+    const { amount } = this.order;
     return amount === null || isEqual(amount, 0);
   }),
 

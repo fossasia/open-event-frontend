@@ -7,12 +7,12 @@ export default Route.extend(AuthenticatedRouteMixin, {
   },
 
   model() {
-    return this.get('authManager.currentUser');
+    return this.authManager.currentUser;
   },
 
   actions: {
     willTransition() {
-      this.get('authManager.currentUser').rollbackAttributes();
+      this.authManager.currentUser.rollbackAttributes();
     }
   }
 });

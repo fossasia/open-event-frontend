@@ -20,9 +20,9 @@ export default Route.extend({
   },
   resetController(controller) {
     this._super(...arguments);
-    const model = controller.get('model.discountCode');
+    const model = controller.model.discountCode;
     if (!model.id) {
-      controller.get('model.discountCode').unloadRecord();
+      controller.model.discountCode.unloadRecord();
     }
   },
   afterModel(model) {

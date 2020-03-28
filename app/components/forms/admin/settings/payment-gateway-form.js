@@ -202,7 +202,7 @@ export default Component.extend(FormMixin, {
   },
 
   isCheckedStripe: computed(function() {
-    return this.get('settings.stripeClientId') || this.get('settings.stripeTestClientId');
+    return this.settings.stripeClientId || this.settings.stripeTestClientId;
   }),
 
   stripeMode: computed(function() {
@@ -210,15 +210,15 @@ export default Component.extend(FormMixin, {
   }),
 
   isCheckedPaypal: computed(function() {
-    return this.get('settings.paypalSandboxClient') || this.get('settings.paypalClient');
+    return this.settings.paypalSandboxClient || this.settings.paypalClient;
   }),
 
   isCheckedOmise: computed(function() {
-    return this.get('settings.omiseTestPublic') || this.get('settings.omiseLivePublic');
+    return this.settings.omiseTestPublic || this.settings.omiseLivePublic;
   }),
 
   isCheckedAliPay: computed('settings.alipaySecretKey', 'settings.alipayPublishableKey', function() {
-    return this.get('settings.alipaySecretKey') && this.get('settings.alipayPublishableKey');
+    return this.settings.alipaySecretKey && this.settings.alipayPublishableKey;
   }),
 
   actions: {

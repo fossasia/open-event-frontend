@@ -28,7 +28,7 @@ export default Component.extend({
                       this.authManager.persistCurrentUser(
                         await this.store.findRecord('user', tokenPayload.identity)
                       );
-                      this.set('data', this.get('authManager.currentUser'));
+                      this.set('data', this.authManager.currentUser);
                     }
 
                     this.set('isLoading', false);

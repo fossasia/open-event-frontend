@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 export default Component.extend({
   actions: {
     openModal() {
-      if (this.get('session.isAuthenticated')) {
+      if (this.session.isAuthenticated) {
         this.set('isCfsModalOpen', true);
       } else {
         this.set('isLoginModalOpen', true);
@@ -12,9 +12,9 @@ export default Component.extend({
     }
   },
   isNewSpeaker: computed('data.userSpeaker', function() {
-    return !(this.get('data.userSpeaker') && this.get('data.userSpeaker').toArray().length);
+    return !(this.data.userSpeaker && this.data.userSpeaker.toArray().length);
   }),
   isNewSession: computed('data.userSession', function() {
-    return !(this.get('data.userSession') && this.get('data.userSession').toArray().length);
+    return !(this.data.userSession && this.data.userSession.toArray().length);
   })
 });

@@ -67,13 +67,13 @@ export default Component.extend({
             this.set('address.city', value);
             break;
           case 'route':
-            this.set('address.line', `${this.get('address.line')}${value} `);
+            this.set('address.line', `${this.address.line}${value} `);
             break;
           case 'sublocality_level_2':
-            this.set('address.line', `${this.get('address.line')}${value} `);
+            this.set('address.line', `${this.address.line}${value} `);
             break;
           case 'sublocality_level_1':
-            this.set('address.line', `${this.get('address.line')}${value} `);
+            this.set('address.line', `${this.address.line}${value} `);
             break;
         }
       });

@@ -4,7 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    switch (this.get('params.session_status')) {
+    switch (this.params.session_status) {
       case 'upcoming':
         return this.l10n.t('Upcoming');
       case 'past':

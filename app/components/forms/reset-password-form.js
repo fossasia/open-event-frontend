@@ -129,9 +129,9 @@ export default Component.extend(FormMixin, {
   },
 
   didInsertElement() {
-    if (this.get('session.newUser')) {
-      this.set('newUser', this.get('session.newUser'));
-      this.set('identification', this.get('session.newUser'));
+    if (this.session.newUser) {
+      this.set('newUser', this.session.newUser);
+      this.set('identification', this.session.newUser);
       this.set('session.newUser', null);
     }
   }

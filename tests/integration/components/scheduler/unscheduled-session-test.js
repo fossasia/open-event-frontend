@@ -7,7 +7,12 @@ module('Integration | Component | scheduler/unscheduled session', function(hooks
   setupIntegrationTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{scheduler/unscheduled-session}}`);
+    this.set('session', {
+      track: {
+        color: '#fff333'
+      }
+    });
+    await render(hbs`{{scheduler/unscheduled-session session=session}}`);
     assert.ok(this.element.innerHTML.trim().includes('|'));
   });
 });

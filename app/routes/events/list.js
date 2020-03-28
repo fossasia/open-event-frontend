@@ -5,7 +5,7 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 export default class extends Route.extend(EmberTableRouteMixin) {
 
   titleToken() {
-    switch (this.get('params.event_state')) {
+    switch (this.params.event_state) {
       case 'live':
         return this.l10n.t('Live');
       case 'draft':

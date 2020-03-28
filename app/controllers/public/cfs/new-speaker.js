@@ -4,7 +4,7 @@ export default Controller.extend({
   actions: {
     save() {
       this.set('isLoading', true);
-      this.get('model.speaker').save()
+      this.model.speaker.save()
         .then(() => {
           this.notify.success(this.l10n.t('Speaker details have been saved'),
             {

@@ -7,7 +7,7 @@ export default Controller.extend({
       try {
         this.set('isLoading', true);
         let order = data;
-        let current_user = this.get('authManager.currentUser');
+        let current_user = this.authManager.currentUser;
         let userChanges = current_user.changedAttributes();
         if (userChanges.firstName || userChanges.lastName) {
           await current_user.save();

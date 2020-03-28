@@ -13,8 +13,8 @@ export default Route.extend({
   },
   actions: {
     willTransition() {
-      this.get('controller.model.speakerImageSize').rollbackAttributes();
-      this.get('controller.model.eventImageSize').rollbackAttributes();
+      this.controller.model.speakerImageSize.rollbackAttributes();
+      this.controller.model.eventImageSize.rollbackAttributes();
     }
   }
 });
