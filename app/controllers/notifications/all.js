@@ -4,6 +4,6 @@ import NotificationsMixin from 'open-event-frontend/mixins/notifications';
 
 export default Controller.extend(NotificationsMixin, {
   showMarkAllRead: computed('model.notifications', 'model.unread', function() {
-    return this.get('model.notifications').length > 0 && this.get('model.unread');
+    return this.model.notifications.length > 0 && this.model.unread;
   })
 });

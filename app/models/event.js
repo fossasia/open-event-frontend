@@ -170,7 +170,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   url: computed('identifier', function() {
-    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
+    const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
     return origin + this.router.urlFor('public', this.id);
   }),
 

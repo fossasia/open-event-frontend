@@ -110,19 +110,19 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   },
 
   tracks: computed('data.tracks.@each.isDeleted', function() {
-    return this.get('data.tracks').filterBy('isDeleted', false);
+    return this.data.tracks.filterBy('isDeleted', false);
   }),
 
   sessionTypes: computed('data.sessionTypes.@each.isDeleted', function() {
-    return this.get('data.sessionTypes').filterBy('isDeleted', false);
+    return this.data.sessionTypes.filterBy('isDeleted', false);
   }),
 
   customForm: computed('data.customForms.[]', function() {
-    return groupBy(this.get('data.customForms').toArray(), customForm => customForm.get('form'));
+    return groupBy(this.data.customForms.toArray(), customForm => customForm.get('form'));
   }),
 
   microlocations: computed('data.microlocations.@each.isDeleted', function() {
-    return this.get('data.event.microlocations').filterBy('isDeleted', false);
+    return this.data.event.microlocations.filterBy('isDeleted', false);
   }),
 
   complexCustomForms: computed('data.customForms.@each.isComplex', function() {
@@ -139,20 +139,20 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   },
 
   didInsertElement() {
-    if (this.get('data.event.customForms') && !this.get('data.event.customForms.length')) {
-      this.set('data.event.customForms', this.getCustomForm(this.get('data.event')));
+    if (this.data.event.customForms && !this.data.event.customForms.length) {
+      this.set('data.event.customForms', this.getCustomForm(this.data.event));
     }
 
-    if (this.get('data.event.sessionTypes') && !this.get('data.event.sessionTypes.length')) {
-      this.get('data.event.sessionTypes').addObject(this.store.createRecord('session-type'));
+    if (this.data.event.sessionTypes && !this.data.event.sessionTypes.length) {
+      this.data.event.sessionTypes.addObject(this.store.createRecord('session-type'));
     }
 
-    if (this.get('data.event.tracks') && !this.get('data.event.tracks.length')) {
-      this.get('data.event.tracks').addObject(this.store.createRecord('track'));
+    if (this.data.event.tracks && !this.data.event.tracks.length) {
+      this.data.event.tracks.addObject(this.store.createRecord('track'));
     }
 
-    if (this.get('data.event.microlocations') && !this.get('data.event.microlocations.length')) {
-      this.get('data.event.microlocations').addObject(this.store.createRecord('microlocation'));
+    if (this.data.event.microlocations && !this.data.event.microlocations.length) {
+      this.data.event.microlocations.addObject(this.store.createRecord('microlocation'));
     }
   },
 
@@ -165,13 +165,13 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     addItem(type) {
       switch (type) {
         case 'sessionType':
-          this.get('data.sessionTypes').addObject(this.store.createRecord('session-type'));
+          this.data.sessionTypes.addObject(this.store.createRecord('session-type'));
           break;
         case 'track':
-          this.get('data.tracks').addObject(this.store.createRecord('track'));
+          this.data.tracks.addObject(this.store.createRecord('track'));
           break;
         case 'microlocation':
-          this.get('data.microlocations').addObject(this.store.createRecord('microlocation'));
+          this.data.microlocations.addObject(this.store.createRecord('microlocation'));
           break;
       }
     },

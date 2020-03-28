@@ -12,8 +12,8 @@ export default Component.extend({
 
   segmentedLinkObserver: observer('segmentedLink.{address,protocol}', function() {
     this.setProperties({
-      protocol : this.get('segmentedLink.protocol'),
-      address  : this.get('segmentedLink.address')
+      protocol : this.segmentedLink.protocol,
+      address  : this.segmentedLink.address
     });
   }),
 
@@ -38,8 +38,8 @@ export default Component.extend({
     this._super(...arguments);
     if (this.segmentedLink) {
       this.setProperties({
-        protocol : this.get('segmentedLink.protocol'),
-        address  : this.get('segmentedLink.address')
+        protocol : this.segmentedLink.protocol,
+        address  : this.segmentedLink.address
       });
     }
   }

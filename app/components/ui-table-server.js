@@ -41,13 +41,13 @@ export default ModelsTable.extend({
 
   arrangedContentLength: computed('router.currentURL', 'filteredContent.meta', function() {
     let itemsCountProperty = this.metaItemsCountProperty;
-    let meta = get(this, 'filteredContent.meta') || {};
+    let meta = this.filteredContent.meta || {};
     return get(meta, itemsCountProperty) || 0;
   }),
 
   pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', function() {
     let itemsCountProperty = this.metaItemsCountProperty;
-    let meta = this.get('filteredContent.meta') || {};
+    let meta = this.filteredContent.meta || {};
     let items = (get(meta, itemsCountProperty));
     let pages = 0;
     if (this.pageSize > items) {
@@ -90,16 +90,16 @@ export default ModelsTable.extend({
       modelName = get(this.data, 'type.modelName');
     }
     query.filter = JSON.parse(query.filter || '[]');
-    query[get(this, 'filterQueryParameters.page')] = this.currentPageNumber;
-    query[get(this, 'filterQueryParameters.pageSize')] = this.pageSize;
+    query[this.filterQueryParameters.page] = this.currentPageNumber;
+    query[this.filterQueryParameters.pageSize] = this.pageSize;
 
-    let sort = this.sortProperties && get(this.sortProperties, 'firstObject');
+    let sort = this.sortProperties && this.sortProperties.firstObject;
     if (sort) {
       let [sortBy, sortDirection] = sort.split(':');
       query = this.sortingWrapper(query, sortBy, sortDirection.toUpperCase());
     } else {
-      delete query[[get(this, 'filterQueryParameters.sort')]];
-      delete query[[get(this, 'filterQueryParameters.sortDirection')]];
+      delete query[[this.filterQueryParameters.sort]];
+      delete query[[this.filterQueryParameters.sortDirection]];
     }
 
     // let globalFilter = get(this, 'filterQueryParameters.globalFilter');
@@ -174,7 +174,7 @@ export default ModelsTable.extend({
   },
 
   sortingWrapper(query, sortBy) {
-    query[get(this, 'filterQueryParameters.sort')] = sortBy;
+    query[this.filterQueryParameters.sort] = sortBy;
     // query[get(this, 'filterQueryParameters.sortDirection')] = sortDirection;
 
     return query;

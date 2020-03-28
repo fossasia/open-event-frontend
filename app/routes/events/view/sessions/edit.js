@@ -24,7 +24,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
       }),
       speaker: await this.store.createRecord('speaker', {
         event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        user  : this.authManager.currentUser
       })
 
     };

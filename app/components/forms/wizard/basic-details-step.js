@@ -38,31 +38,31 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.isPaypalActivated', function() {
-    return this.get('settings.isPaypalActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
+    return this.settings.isPaypalActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paypal;
   }),
 
   canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated', function() {
-    return this.get('settings.isPaytmActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paytm;
+    return this.settings.isPaytmActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paytm;
   }),
 
   canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
-    return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
+    return this.settings.isStripeActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).stripe;
   }),
 
   canAcceptOmise: computed('data.event.paymentCurrency', 'settings.isOmiseActivated', function() {
-    return this.get('settings.isOmiseActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).omise;
+    return this.settings.isOmiseActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).omise;
   }),
 
   canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAlipayActivated', function() {
-    return this.get('settings.isAlipayActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).alipay;
+    return this.settings.isAlipayActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).alipay;
   }),
 
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
-    return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
+    return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
   }),
 
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
-    return this.get('data.event.socialLinks').filterBy('isDeleted', false);
+    return this.data.event.socialLinks.filterBy('isDeleted', false);
   }),
 
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
@@ -101,11 +101,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         console.warn('Error setting subTopic to null', ignored);
       }
     }, 50);
-    if (!this.get('data.event.topic')) {
+    if (!this.data.event.topic) {
       return [];
     }
 
-    return this.get('data.event.topic.subTopics');
+    return this.data.event.topic.subTopics;
   }),
 
   showDraftButton: computed('data.event.state', function() {
@@ -117,7 +117,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
-    return !!this.get('data.event.codeOfConduct');
+    return !!this.data.event.codeOfConduct;
   }),
 
   discountCodeObserver: observer('data.event.discountCode', function() {
@@ -125,7 +125,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   didInsertElement() {
-    if (!this.isCreate && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
+    if (!this.isCreate && this.data.event.copyright && !this.data.event.copyright.content) {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
     }
   },
@@ -413,7 +413,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         });
     },
     async disconnectStripe() {
-      let stripeAuthorization = await this.get('data.event.stripeAuthorization');
+      let stripeAuthorization = await this.data.event.stripeAuthorization;
       stripeAuthorization.destroyRecord()
         .then(() => {
           this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
@@ -423,10 +423,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     },
     addTicket(type, position) {
-      const event = this.get('data.event');
+      const { event } = this.data;
       const salesStartDateTime = moment();
-      const salesEndDateTime = this.get('data.event.startsAt');
-      this.get('data.event.tickets').pushObject(this.store.createRecord('ticket', {
+      const salesEndDateTime = this.data.event.startsAt;
+      this.data.event.tickets.pushObject(this.store.createRecord('ticket', {
         event,
         type,
         position,
@@ -437,7 +437,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     updateSalesEndDate(eventStartDate) {
       eventStartDate = moment(new Date(eventStartDate));
-      this.get('data.event.tickets').forEach(ticket => {
+      this.data.event.tickets.forEach(ticket => {
         if (moment(eventStartDate).isBefore(ticket.get('salesEndsAt'))) {
           ticket.set('salesEndsAt', moment(eventStartDate, 'MM/DD/YYYY').toDate());
         }
@@ -446,7 +446,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     removeTicket(deleteTicket) {
       const index = deleteTicket.get('position');
-      this.get('data.event.tickets').forEach(ticket => {
+      this.data.event.tickets.forEach(ticket => {
         if (ticket.get('position') > index) {
           ticket.set('position', ticket.get('position') - 1);
         }
@@ -456,7 +456,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     moveTicket(ticket, direction) {
       const index = ticket.get('position');
-      const otherTicket = this.get('data.event.tickets').find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
+      const otherTicket = this.data.event.tickets.find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
       otherTicket.set('position', index);
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
@@ -477,7 +477,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.set('validatingDiscountCode', true);
       // TODO do proper checks. Simulating now.
       later(this, () => {
-        if (this.get('data.event.discountCode.code') !== 'AIYPWZQP') {
+        if (this.data.event.discountCode.code !== 'AIYPWZQP') {
           this.getForm().form('add prompt', 'discount_code', this.l10n.t('This discount code is invalid. Please try again.'));
         } else {
           this.set('data.event.discountCode.code', 42);
@@ -512,7 +512,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     // },
 
     async updateCopyright(name) {
-      const event = this.get('data.event');
+      const { event } = this.data;
       const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
       let license = find(licenses, { name });
       copyright.setProperties({

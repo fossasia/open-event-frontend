@@ -6,6 +6,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return this.l10n.t('Applications');
   },
   model() {
-    return this.get('authManager.currentUser');
+    return this.authManager.currentUser;
   }
 });
