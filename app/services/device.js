@@ -55,7 +55,7 @@ export default Service.extend({
 
   isInternetExplorer: computed(function() {
 
-    if (this.get('fastboot.isFastBoot')) {
+    if (this.fastboot.isFastBoot) {
       return false;
     }
 
@@ -79,7 +79,7 @@ export default Service.extend({
   init() {
     this._super(...arguments);
 
-    if (this.get('fastboot.isFastBoot')) {
+    if (this.fastboot.isFastBoot) {
       this.currentWidth = 1024;
       return;
     }

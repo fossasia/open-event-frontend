@@ -11,8 +11,8 @@ export default Component.extend(FormMixin, {
   promotionalCodeApplied: false,
 
   isUnverified: computed('session.isAuthenticated', 'authManager.currentUser.isVerified', function() {
-    return this.get('session.isAuthenticated')
-      && !this.get('authManager.currentUser.isVerified');
+    return this.session.isAuthenticated
+      && !this.authManager.currentUser.isVerified;
   }),
 
   shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', function() {

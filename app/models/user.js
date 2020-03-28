@@ -100,7 +100,7 @@ export default ModelBase.extend({
 
 
   _didUpdate: on('didUpdate', function(user) {
-    if (toString(user.id) === toString(this.get('authManager.currentUser.id'))) {
+    if (toString(user.id) === toString(this.authManager.currentUser.id)) {
       user = this.store.peekRecord('user', user.id);
       this.authManager.persistCurrentUser(user);
     }

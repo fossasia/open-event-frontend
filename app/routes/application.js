@@ -12,7 +12,7 @@ export default Route.extend(ApplicationRouteMixin, {
       tokens = [];
     }
 
-    tokens.reverse().push(this.get('settings.appName'));
+    tokens.reverse().push(this.settings.appName);
     return tokens.join(' | ');
   },
 
@@ -31,7 +31,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   async model() {
     let notificationsPromise = Promise.resolve([]);
-    if (this.get('session.isAuthenticated')) {
+    if (this.session.isAuthenticated) {
       try {
         notificationsPromise = this.authManager.currentUser.query('notifications', {
           filter: [
@@ -76,7 +76,7 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   sessionInvalidated() {
-    if (!this.get('session.skipRedirectOnInvalidation')) {
+    if (!this.session.skipRedirectOnInvalidation) {
       this._super(...arguments);
     }
 

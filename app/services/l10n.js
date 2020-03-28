@@ -36,7 +36,7 @@ export default L10n.extend({
   switchLanguage(locale) {
     this.setLocale(locale);
     this.cookies.write(this.localStorageKey, locale);
-    if (!this.get('fastboot.isFastBoot')) {
+    if (!this.fastboot.isFastBoot) {
       location.reload();
     }
   },

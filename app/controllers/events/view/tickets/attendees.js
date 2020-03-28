@@ -10,7 +10,7 @@ export default Controller.extend({
     export(mode) {
       this.set(`isLoading${mode}`, true);
       this.loader
-        .load(`/events/${this.get('model.id')}/export/attendees/${mode}`)
+        .load(`/events/${this.model.id}/export/attendees/${mode}`)
         .then(exportJobInfo => {
           this.requestLoop(exportJobInfo, mode);
         })

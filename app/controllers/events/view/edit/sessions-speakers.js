@@ -7,8 +7,8 @@ export default Controller.extend(EventWizardMixin, {
     const event = await this._super(...arguments);
 
     event.get('isSessionsSpeakersEnabled')
-      ? await this.get('model.speakersCall').save()
-      : await this.get('model.speakersCall').destroyRecord();
+      ? await this.model.speakersCall.save()
+      : await this.model.speakersCall.destroyRecord();
 
     return event;
   },

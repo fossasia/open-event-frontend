@@ -5,18 +5,18 @@ import { sumBy } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
   tickets: computed('data.tickets', function() {
-    return this.get('data.tickets').sortBy('position');
+    return this.data.tickets.sortBy('position');
   }),
 
   total: computed('data.tickets', 'data.tickets.@each.attendees', function() {
-    return sumBy(this.get('data.tickets').toArray(),
+    return sumBy(this.data.tickets.toArray(),
       ticket => (ticket.getWithDefault('price', 0) - ticket.getWithDefault('discount', 0)) * ticket.getWithDefault('attendees.length', 0)
     );
   }),
 
   async didInsertElement() {
-    let discountCode = await this.get('data.discountCode');
-    let tickets = await this.get('data.tickets');
+    let discountCode = await this.data.discountCode;
+    let tickets = await this.data.tickets;
     tickets.forEach(ticket => {
       ticket.set('discount', 0);
     });

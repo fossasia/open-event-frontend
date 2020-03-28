@@ -7,13 +7,13 @@ export default Component.extend({
   item       : null,
 
   currentRoute: computed('session.currentRouteName', 'item', function() {
-    const path = this.get('session.currentRouteName');
+    const path = this.session.currentRouteName;
     if (path) {
       return this.item;
     }
   }),
   didInsertElement() {
-    const isMobile = this.get('device.isMobile');
+    const { isMobile } = this.device;
     if (isMobile) {
       $('a', this.element).addClass('vertical-item');
     } else {
@@ -22,7 +22,7 @@ export default Component.extend({
     this.set('item', $('a.active', this.element).text().trim());
   },
   didUpdate() {
-    const isMobile = this.get('device.isMobile');
+    const { isMobile } = this.device;
     if (isMobile) {
       $('a', this.element).addClass('vertical-item');
     } else {

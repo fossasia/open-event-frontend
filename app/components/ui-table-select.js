@@ -12,7 +12,7 @@ export default UiSelect.extend({
   cssPropertyName: '',
 
   aligned: computed('device.isMobile', function() {
-    return this.get('device.isMobile') ? 'center aligned' : 'left aligned';
+    return this.device.isMobile ? 'center aligned' : 'left aligned';
   }),
 
   change() {

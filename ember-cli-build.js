@@ -48,8 +48,8 @@ module.exports = function(defaults) {
         node: {
           path: true // TODO: Remove after https://github.com/fossasia/open-event-frontend/issues/3956
         },
-        externals: { jquery: 'jQuery' },
-        plugins: env === 'production' ? [
+        externals : { jquery: 'jQuery' },
+        plugins   : env === 'production' ? [
           new BundleAnalyzerPlugin({
             analyzerMode      : 'static',
             openAnalyzer      : false,
@@ -59,10 +59,10 @@ module.exports = function(defaults) {
         module: {
           rules: [
             {
-              test: /\.css$/i,
-              use: ['style-loader', 'css-loader'],
-            },
-          ],
+              test : /\.css$/i,
+              use  : ['style-loader', 'css-loader']
+            }
+          ]
         }
       }
     }

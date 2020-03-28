@@ -5,7 +5,7 @@ export default Route.extend({
     return this.l10n.t('Reset Password');
   },
   beforeModel() {
-    if (this.get('session.isAuthenticated')) {
+    if (this.session.isAuthenticated) {
       this.set('session.skipRedirectOnInvalidation', true);
       this.authManager.logout();
     }

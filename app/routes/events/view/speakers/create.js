@@ -14,14 +14,14 @@ export default Route.extend({
       }),
       session: await this.store.createRecord('session', {
         event   : eventDetails,
-        creator : this.get('authManager.currentUser')
+        creator : this.authManager.currentUser
       }),
       sessions: await eventDetails.query('sessions', {
         'page[size]': 0
       }),
       speaker: await this.store.createRecord('speaker', {
         event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        user  : this.authManager.currentUser
       }),
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})
@@ -30,10 +30,10 @@ export default Route.extend({
   resetController(controller) {
     this._super(...arguments);
     const { model } = controller;
-    if (!controller.get('model.speaker.id')) {
+    if (!controller.model.speaker.id) {
       model.speaker.unloadRecord();
     }
-    if (!controller.get('model.session.id')) {
+    if (!controller.model.session.id) {
       model.session.unloadRecord();
     }
   }

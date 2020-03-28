@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
-    switch (this.get('params.ticket_status')) {
+    switch (this.params.ticket_status) {
       case 'completed':
         return this.l10n.t('Completed');
       case 'open':

@@ -7,7 +7,7 @@ export default Route.extend({
 
   async model() {
     const eventDetails = this.modelFor('public');
-    const currentUser = this.get('authManager.currentUser');
+    const { currentUser } = this.authManager;
     let userName;
     if (currentUser.firstName || currentUser.lastName) {
       userName = `${currentUser.firstName} ${currentUser.lastName}`;
@@ -29,9 +29,9 @@ export default Route.extend({
   },
   resetController(controller) {
     this._super(...arguments);
-    const model = controller.get('model.speaker');
+    const model = controller.model.speaker;
     if (!model.id) {
-      controller.get('model.speaker').unloadRecord();
+      controller.model.speaker.unloadRecord();
     }
   }
 });

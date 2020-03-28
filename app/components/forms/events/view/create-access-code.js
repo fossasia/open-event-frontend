@@ -6,10 +6,10 @@ import { later } from '@ember/runloop';
 export default Component.extend(FormMixin, {
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
-      return this.get('data.minQuantity') <= this.get('data.maxQuantity');
+      return this.data.minQuantity <= this.data.maxQuantity;
     };
     window.$.fn.form.settings.rules.checkMaxTotal = () => {
-      return this.get('data.maxQuantity') <= this.get('data.ticketsNumber');
+      return this.data.maxQuantity <= this.data.ticketsNumber;
     };
     return {
       inline : true,
@@ -100,16 +100,16 @@ export default Component.extend(FormMixin, {
   },
   accessCode : '',
   accessLink : computed('data.code', function() {
-    const params = this.get('router._router.currentState.routerJsState.params');
-    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
-    let link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.get('data.code') } });
+    const { params } = this.router._router.currentState.routerJsState;
+    const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
+    let link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.data.code } });
     this.set('data.accessUrl', link);
     return link;
   }),
   hiddenTickets: computed.filterBy('tickets', 'isHidden', true),
 
   allTicketTypesChecked: computed('tickets', function() {
-    if (this.hiddenTickets.length && this.get('data.tickets').length === this.hiddenTickets.length) {
+    if (this.hiddenTickets.length && this.data.tickets.length === this.hiddenTickets.length) {
       return true;
     }
     return false;
@@ -124,7 +124,7 @@ export default Component.extend(FormMixin, {
       if (allTicketTypesChecked) {
         this.set('data.tickets', tickets.slice());
       } else {
-        this.get('data.tickets').clear();
+        this.data.tickets.clear();
       }
       tickets.forEach(ticket => {
         ticket.set('isChecked', allTicketTypesChecked);
@@ -132,13 +132,13 @@ export default Component.extend(FormMixin, {
     },
     updateTicketsSelection(ticket) {
       if (!ticket.get('isChecked')) {
-        this.get('data.tickets').pushObject(ticket);
+        this.data.tickets.pushObject(ticket);
         ticket.set('isChecked', true);
-        if (this.get('data.tickets').length === this.hiddenTickets.length) {
+        if (this.data.tickets.length === this.hiddenTickets.length) {
           this.set('allTicketTypesChecked', true);
         }
       } else {
-        this.get('data.tickets').removeObject(ticket);
+        this.data.tickets.removeObject(ticket);
         ticket.set('isChecked', false);
         this.set('allTicketTypesChecked', false);
       }

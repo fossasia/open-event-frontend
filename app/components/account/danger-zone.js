@@ -4,7 +4,7 @@ import Component from '@ember/component';
 export default Component.extend({
 
   isUserDeletable: computed('data.events', 'data.orders', function() {
-    if (this.get('data.events').length || this.get('data.orders').length) {
+    if (this.data.events.length || this.data.orders.length) {
       return false;
     }
     return true;

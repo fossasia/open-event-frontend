@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 export default Route.extend({
   titleToken() {
-    switch (this.get('params.notification_state')) {
+    switch (this.params.notification_state) {
       case 'unread':
         return this.l10n.t('Unread');
       case 'all':
