@@ -9,7 +9,7 @@ export default Controller.extend({
           this.transitionToRoute('events.view.tickets.access-codes');
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occured. Access code cannot be created.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Access code cannot be created.'));
         });
     }
   }

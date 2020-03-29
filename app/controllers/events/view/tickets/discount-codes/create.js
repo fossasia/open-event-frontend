@@ -9,7 +9,7 @@ export default Controller.extend({
           this.transitionToRoute('events.view.tickets.discount-codes');
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occured. Discount code cannot be created.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred. Discount code cannot be created.'));
         });
     }
   }
