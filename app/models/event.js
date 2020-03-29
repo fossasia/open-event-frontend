@@ -1,6 +1,5 @@
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { on } from '@ember/object/evented';
 import moment from 'moment';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
@@ -176,9 +175,6 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
 
   sessionsByState: computed('sessions', function() {
     return groupBy(this.sessions.toArray(), 'data.state');
-  }),
-
-  _ready: on('ready', function() {
-
   })
+
 });
