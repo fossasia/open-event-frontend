@@ -178,7 +178,4 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
     return groupBy(this.sessions.toArray(), 'data.state');
   }),
 
-  _ready: on('ready', function() {
-
-  })
 });
