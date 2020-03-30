@@ -8,7 +8,7 @@ export default Component.extend({
   actions: {
     hideSpeakerImage() {
       this.toggleProperty('hideImage');
-      if (!this.get('session.speakers.length')) {
+      if (!this.session.speakers.length) {
         this.set('hideImage', false);
       }
     }

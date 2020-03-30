@@ -4,7 +4,7 @@ import Component from '@ember/component';
 export default Component.extend({
 
   isUserDeletable: computed('data.events', 'data.orders', function() {
-    if (this.get('data.events').length || this.get('data.orders').length) {
+    if (this.data.events.length || this.data.orders.length) {
       return false;
     }
     return true;
@@ -37,7 +37,8 @@ export default Component.extend({
             id: 'account_Delete'
           });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while deleting account', e);
           this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
             id: 'account_del_error'
           });

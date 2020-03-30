@@ -53,12 +53,13 @@ export default class extends Controller {
         });
     }, 3000);
   }
+
   @action
   startGeneration() {
     this.set('isLoading', true);
     let payload = this.data;
     this.loader
-      .post(`/events/${this.get('model.id')}/export/json`, payload)
+      .post(`/events/${this.model.id}/export/json`, payload)
       .then(exportJobInfo => {
         this.requestLoop(exportJobInfo);
       })

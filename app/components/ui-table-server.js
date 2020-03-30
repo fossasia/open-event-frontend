@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { alias } from '@ember/object/computed';
 import { computed, setProperties, set, get } from '@ember/object';
 import { typeOf } from '@ember/utils';
@@ -40,21 +41,21 @@ export default ModelsTable.extend({
 
   arrangedContentLength: computed('router.currentURL', 'filteredContent.meta', function() {
     let itemsCountProperty = this.metaItemsCountProperty;
-    let meta = get(this, 'filteredContent.meta') || {};
+    let meta = this.filteredContent.meta || {};
     return get(meta, itemsCountProperty) || 0;
   }),
 
   pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', function() {
     let itemsCountProperty = this.metaItemsCountProperty;
-    let meta = this.get('filteredContent.meta') || {};
+    let meta = this.filteredContent.meta || {};
     let items = (get(meta, itemsCountProperty));
     let pages = 0;
     if (this.pageSize > items) {
-      this.$('.pagination').css({
+      $('.pagination', this.element).css({
         display: 'none'
       });
     } else {
-      this.$('.pagination').removeAttr('style');
+      $('.pagination', this.element).removeAttr('style');
       pages = parseInt((items / this.pageSize));
       if (items % this.pageSize) {
         pages = pages + 1;
@@ -82,24 +83,23 @@ export default ModelsTable.extend({
     if (!get(this.data, 'query')) {
       console.warn('You must use https://emberjs.com/api/data/classes/DS.Store.html#method_query for loading data');
       query = merge({}, this.query);
-      store = this.store;
-      modelName = this.modelName;
+      ({ store, modelName } = this);
     } else {
       query = merge({}, get(this.data, 'query'));
       store = get(this.data, 'store');
       modelName = get(this.data, 'type.modelName');
     }
     query.filter = JSON.parse(query.filter || '[]');
-    query[get(this, 'filterQueryParameters.page')] = this.currentPageNumber;
-    query[get(this, 'filterQueryParameters.pageSize')] = this.pageSize;
+    query[this.filterQueryParameters.page] = this.currentPageNumber;
+    query[this.filterQueryParameters.pageSize] = this.pageSize;
 
-    let sort = this.sortProperties && get(this.sortProperties, 'firstObject');
+    let sort = this.sortProperties && this.sortProperties.firstObject;
     if (sort) {
       let [sortBy, sortDirection] = sort.split(':');
       query = this.sortingWrapper(query, sortBy, sortDirection.toUpperCase());
     } else {
-      delete query[[get(this, 'filterQueryParameters.sort')]];
-      delete query[[get(this, 'filterQueryParameters.sortDirection')]];
+      delete query[[this.filterQueryParameters.sort]];
+      delete query[[this.filterQueryParameters.sortDirection]];
     }
 
     // let globalFilter = get(this, 'filterQueryParameters.globalFilter');
@@ -162,7 +162,8 @@ export default ModelsTable.extend({
       }
       store.query(modelName, query)
         .then(newData => setProperties(this, { isLoading: false, isError: false, filteredContent: newData }))
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while querying data in UI Table', e);
           if (!this.isDestroyed) {
             setProperties(this, { isLoading: false, isError: true });
           }
@@ -173,7 +174,7 @@ export default ModelsTable.extend({
   },
 
   sortingWrapper(query, sortBy) {
-    query[get(this, 'filterQueryParameters.sort')] = sortBy;
+    query[this.filterQueryParameters.sort] = sortBy;
     // query[get(this, 'filterQueryParameters.sortDirection')] = sortDirection;
 
     return query;

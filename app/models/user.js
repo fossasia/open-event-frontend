@@ -1,6 +1,5 @@
 import { or } from '@ember/object/computed';
 import { computed } from '@ember/object';
-import { on } from '@ember/object/evented';
 import { inject as service } from '@ember/service';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
@@ -98,11 +97,11 @@ export default ModelBase.extend({
   marketerEvents       : hasMany('event'),
   salesAdminEvents     : hasMany('event'),
 
-
-  _didUpdate: on('didUpdate', function(user) {
-    if (toString(user.id) === toString(this.get('authManager.currentUser.id'))) {
-      user = this.store.peekRecord('user', user.id);
+  didUpdate() {
+    this._super(...arguments);
+    if (toString(this.id) === toString(this.authManager.currentUser.id)) {
+      const user = this.store.peekRecord('user', this.id);
       this.authManager.persistCurrentUser(user);
     }
-  })
+  }
 });

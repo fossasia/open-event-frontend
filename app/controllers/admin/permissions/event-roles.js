@@ -6,6 +6,7 @@ export default class extends Controller {
   get services() {
     return this.model.services.sortBy('name');
   }
+
   @computed('model.permissions')
   get permissions() {
     return this.model.permissions.sortBy('serviceName');
@@ -22,6 +23,7 @@ export default class extends Controller {
           });
       })
       .catch(err => {
+        console.error('Error while saving admin event role permissions', err);
         this.notify.error(this.l10n.t(err),
           {
             id: 'admin_event_error'

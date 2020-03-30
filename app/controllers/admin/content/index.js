@@ -13,7 +13,8 @@ export default class extends Controller {
             id: 'social_link_upd'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error updating social links', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. Social links not saved.'),
           {
             id: 'unex_social_error'

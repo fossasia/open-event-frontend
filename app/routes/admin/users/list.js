@@ -6,7 +6,7 @@ import moment from 'moment';
 export default class extends Route.extend(EmberTableRouteMixin) {
 
   titleToken() {
-    switch (this.get('params.users_status')) {
+    switch (this.params.users_status) {
       case 'active':
         return this.l10n.t('Active');
       case 'deleted':
@@ -93,6 +93,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     queryString = this.applySortFilters(queryString, params);
     return  this.asArray(this.store.query('user', queryString));
   }
+
   @action
   refreshRoute() {
     this.refresh();

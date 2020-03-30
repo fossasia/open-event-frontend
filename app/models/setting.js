@@ -13,7 +13,6 @@ export default ModelBase.extend({
   appName                    : attr('string'),
   orderExpiryTime            : attr('number', { defaultValue: 15 }),
   tagline                    : attr('string'),
-  secret                     : attr('string'),
   storagePlace               : attr('string'),
   awsKey                     : attr('string'),
   awsSecret                  : attr('string'),

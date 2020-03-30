@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 
 export default Component.extend({
@@ -5,14 +6,14 @@ export default Component.extend({
   tagName    : 'a',
   didInsertElement() {
     this._super.call(this);
-    this.$().popup({
+    $(this.element).popup({
       popup : '.popup',
       on    : 'click'
     });
   },
   willDestroyElement() {
     this._super.call(this);
-    this.$().popup('destroy');
+    $(this.element).popup('destroy');
   },
   actions: {
     markRead(notification) {
@@ -23,14 +24,15 @@ export default Component.extend({
             id: 'not_read_succ'
           });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while marking notifications as read.', e);
           this.notify.error(this.l10n.t('An unexpected error occurred.'), {
             id: 'not_read_error'
           });
         });
     },
     markAllRead() {
-      this.get('authManager.currentUser').get('notifications')
+      this.authManager.currentUser.get('notifications')
         .then(data => {
           data.forEach(item => {
             if (!item.get('isRead')) {

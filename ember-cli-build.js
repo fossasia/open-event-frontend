@@ -3,7 +3,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const targets = require('./config/targets');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 let env = process.env.EMBER_ENV || 'development';
 
@@ -12,10 +12,15 @@ module.exports = function(defaults) {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    storeConfigInMeta : false,
-    autoprefixer      : {
-      browsers : targets.browsers,
-      cascade  : false
+    storeConfigInMeta : true,
+    sassOptions       : {
+      sourceMapEmbed: true
+    },
+    autoprefixer: {
+      overrideBrowserslist : targets.browsers,
+      enabled              : true,
+      cascade              : false,
+      sourcemap            : true
     },
     minifyHTML: {
       enabled   : false,
@@ -35,21 +40,35 @@ module.exports = function(defaults) {
       exclude          : ['package.json'],
       extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
     },
+    sourcemaps: {
+      enabled: true
+    },
     autoImport: {
       webpack: {
-        plugins: env === 'production' ? [
+        node: {
+          path: true // TODO: Remove after https://github.com/fossasia/open-event-frontend/issues/3956
+        },
+        externals : { jquery: 'jQuery' },
+        plugins   : env === 'production' ? [
           new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false,
-            generateStatsFile: true
+            analyzerMode      : 'static',
+            openAnalyzer      : false,
+            generateStatsFile : true
           })
-        ] : []
-      },
-    },
+        ] : [],
+        module: {
+          rules: [
+            {
+              test : /\.css$/i,
+              use  : ['style-loader', 'css-loader']
+            }
+          ]
+        }
+      }
+    }
   });
 
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');
-  app.import('bower_components/Croppie/croppie.css');
 
   app.import('bower_components/semantic-ui-calendar/dist/calendar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
@@ -57,10 +76,7 @@ module.exports = function(defaults) {
   app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/Croppie/croppie.min.js', {
-    using: [{ transformation: 'fastbootShim' }]
-  });
-  app.import('bower_components/tinyColorPicker/jqColorPicker.min.js', {
+  app.import('node_modules/tinyColorPicker/jqColorPicker.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
   app.import('bower_components/js-polyfills/xhr.js', {

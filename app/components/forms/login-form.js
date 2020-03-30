@@ -44,7 +44,7 @@ export default class extends Component.extend(FormMixin) {
   @action
   async submit() {
     this.onValid(async() => {
-      let credentials = this.getProperties('identification', 'password'),
+      let credentials = { username: this.identification, password: this.password },
           authenticator = 'authenticator:jwt';
       this.setProperties({
         errorMessage : null,
@@ -60,9 +60,11 @@ export default class extends Component.extend(FormMixin) {
 
         }
       } catch (e) {
-        if (e.error) {
-          this.set('errorMessage', this.l10n.tVar(e.error));
+        if (e.json && e.json.error) {
+          console.warn('Error while authentication', e);
+          this.set('errorMessage', this.l10n.tVar(e.json.error));
         } else {
+          console.error('Error while authentication', e);
           this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
         }
       }
@@ -89,6 +91,7 @@ export default class extends Component.extend(FormMixin) {
             id: 'error_server_msg'
           });
         } else {
+          console.error('Error while facebook authentication', e);
           this.notify.error(this.l10n.t('An unexpected error has occurred'), {
             id: 'unexpect_error'
           });

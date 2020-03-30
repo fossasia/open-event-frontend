@@ -1,8 +1,9 @@
 {{#ui-accordion}}
   <div class="title">
     <div class="ui">
-      <img alt="speaker" class="ui medium rounded image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
-      <br>
+      <div class="thumbnail-square">
+        <img alt="speaker" class="ui rounded image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      </div>
       <h3 class="ui centered header less margin">
         {{speaker.name}}
       </h3>
@@ -46,15 +47,9 @@
         {{#if (or (eq session.state 'confirmed') (eq session.state 'accepted'))}}
           <p>
             {{#if session.startsAt}}
-              {{moment-format session.startsAt 'DD MMM YY'}}
-            {{/if}}
-            {{#if session.microlocation}}
-              <br>
-              <span class="session-location">
-                <strong>
-                  {{concat (t 'Microlocation - ') session.microlocation.name}}
-                </strong>
-              </span>
+              <strong>
+                {{moment-format session.startsAt 'DD MMM YY'}}
+              </strong>
             {{/if}}
           </p>
           <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
@@ -67,6 +62,7 @@
               <br>
             </h3>
           </div>
+        <br>
         {{/if}}
       {{/each}}
     </div>

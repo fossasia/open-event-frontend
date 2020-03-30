@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.get('params.discount_status')) {
+    switch (this.params.discount_status) {
       case 'active':
         return this.l10n.t('Active');
       case 'inactive':
@@ -13,6 +13,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         return this.l10n.t('Expired');
     }
   }
+
   async model(params) {
     this.set('params', params);
     let filterOptions = [];

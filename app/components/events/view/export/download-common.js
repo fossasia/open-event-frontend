@@ -39,13 +39,15 @@ export default Component.extend({
               id: 'task_progress'
             });
           } else {
+            console.error('Event exporting task failed', exportJobStatus);
             this.set('eventExportStatus', exportJobStatus.state);
             this.notify.error(this.l10n.t('Task failed.'), {
               id: 'task_fail'
             });
           }
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while exporting event', e);
           this.set('eventExportStatus', 'FAILURE');
           this.notify.error(this.l10n.t('Task failed.'), {
             id: 'task_failure'
@@ -60,11 +62,12 @@ export default Component.extend({
     startExportTask() {
       this.set('isLoading', true);
       this.loader
-        .load(`/events/${this.get('model.id')}/export/${this.fileFormat}`)
+        .load(`/events/${this.model.id}/export/${this.fileFormat}`)
         .then(exportJobInfo => {
           this.requestLoop(exportJobInfo);
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while starting exporting job', e);
           this.set('isLoading', false);
           this.notify.error(this.l10n.t('Unexpected error occurred.'), {
             id: 'unexpected_down_error'

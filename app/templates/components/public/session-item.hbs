@@ -12,17 +12,17 @@
     <br>
     <div class="ui grid stackable">
       {{#if hideImage}}
-        <div class="left floated five wide column">
+        <div class="left floated twelve wide column">
           {{#if session.startsAt}}
             <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date session.startsAt}} - {{general-date session.endsAt}}</div>
           {{/if}}
         </div>
       {{else}}
         <div class="left floated eleven wide column">
           <div class="session-speakers">
             {{#each session.speakers as |speaker|}}
-              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
             {{/each}}
           </div>
         </div>
@@ -44,7 +44,7 @@
   <div class="content">
     {{#each session.speakers as |speaker|}}
       <div class="ui divider"></div>
-      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <p>
         <br>
         {{speaker.name}}

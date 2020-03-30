@@ -46,15 +46,24 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
    * @return {Promise<*>}
    */
   async saveEventData(propsToSave = []) {
-    const event = this.get('model.event');
+    const { event } = this.model;
     const data = {};
-    for (const property of propsToSave) {
+    const results = await Promise.allSettled(propsToSave.map(property => {
       try {
-        data[property] = await event.get(property);
+        return event.get(property);
       } catch (e) {
         if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[0].status === 404)) {
           // Lets just ignore any 404s that might occur. And throw the rest for the caller fn to catch
           throw e;
+        }
+      }
+    }));
+    for (const result of results) {
+      if (result.status === 'fulfilled') {
+        if (result?.value?.key) {
+          data[result.value.key] = result.value;
+        } else {
+          console.warn('No value for key while saving event', result);
         }
       }
     }
@@ -62,14 +71,12 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
       await event.save();
 
-      for (const ticket of data.tickets ? data.tickets.toArray() : []) {
+      await Promise.all((data.tickets ? data.tickets.toArray() : []).map(ticket => {
         ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
-        await ticket.save();
-      }
+        return ticket.save();
+      }));
 
-      for (const socialLink of data.socialLinks ? data.socialLinks.toArray() : []) {
-        await socialLink.save();
-      }
+      await Promise.all((data.socialLinks ? data.socialLinks.toArray() : []).map(socialLink => socialLink.save()));
 
       if (data.copyright && data.copyright.get('licence')) {
         await data.copyright.save();
@@ -117,9 +124,6 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       if (event.name === undefined || event.name === '') {
         errorObject.errors.push({ 'detail': 'Event name has not been provided' });
       }
-      if (event.locationName === undefined || event.locationName === '') {
-        errorObject.errors.push({ 'detail': 'Location has not been provided' });
-      }
       if (event.startsAtDate === undefined || event.endsAtDate === undefined) {
         errorObject.errors.push({ 'detail': 'Dates have not been provided' });
       }
@@ -144,9 +148,14 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.transitionToRoute(route, data.id);
       })
       .catch(e => {
-        e.errors.forEach(error => {
-          this.notify.error(this.l10n.tVar(error.detail));
-        });
+        console.error('Error while saving event', e);
+        if (e.errors) {
+          e.errors.forEach(error => {
+            this.notify.error(this.l10n.tVar(error.detail));
+          });
+        } else {
+          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+        }
       })
       .finally(() => {
         this.set('isLoading', false);

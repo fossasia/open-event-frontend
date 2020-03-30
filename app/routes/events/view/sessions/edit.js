@@ -11,7 +11,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return {
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
-        'page[size]' : 50,
+        'page[size]' : 0,
         sort         : 'id'
       }),
       session: await this.store.findRecord('session', params.session_id, {
@@ -24,7 +24,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
       }),
       speaker: await this.store.createRecord('speaker', {
         event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        user  : this.authManager.currentUser
       })
 
     };

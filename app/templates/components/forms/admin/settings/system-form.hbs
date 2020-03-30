@@ -55,19 +55,6 @@
   <div class="ui hidden divider"></div>
   {{forms/admin/settings/system/order-expiry-form settings=settings}}
   <div class="ui hidden divider"></div>
-  <h3 class="ui header">
-    {{t 'App secret key'}}
-    <div class="sub header">
-      {{t 'Secret key for the application. Recommended is a random string of minimum 20 characters in length.'}}
-    </div>
-  </h3>
-  <div class="field">
-    <label>
-      {{t 'Secret'}}
-    </label>
-    {{input type='text' name='secret_key' value=settings.secret}}
-  </div>
-  <div class="ui hidden divider"></div>
   <button class="ui teal wide button" type="submit">
     {{t 'Save'}}
   </button>

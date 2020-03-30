@@ -26,6 +26,7 @@ export default class extends Controller {
     }
     this.set('isAddSystemRoleModalOpen', true);
   }
+
   @action
   deleteSystemRole(role) {
     this.set('isLoading', true);
@@ -36,7 +37,8 @@ export default class extends Controller {
             id: 'system_role_update'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while deleting system role', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. System role was not deleted.'),
           {
             id: 'system_role_error'
@@ -46,6 +48,7 @@ export default class extends Controller {
         this.set('isLoading', false);
       });
   }
+
   @action
   addSystemRole() {
     this.set('isLoading', true);
@@ -72,7 +75,8 @@ export default class extends Controller {
               id: 'system_role_save'
             });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while saving system role', e);
           this.notify.error(this.l10n.t('An unexpected error has occurred. System role not saved.'),
             {
               id: 'system_save_role_error'
@@ -83,6 +87,7 @@ export default class extends Controller {
         });
     }
   }
+
   @action
   updatePermissions() {
     this.set('isLoading', true);
@@ -93,7 +98,8 @@ export default class extends Controller {
             id: 'user_permission_save'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while saving user permissions', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. User permissions not saved.'),
           {
             id: 'user_error_permission'

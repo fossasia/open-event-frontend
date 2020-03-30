@@ -9,7 +9,8 @@ export default Component.extend({
             id: 'email_notif'
           });
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while updating email notifications.', e);
           emailPreference.rollbackAttributes();
           this.notify.error(this.l10n.t('An unexpected error occurred.'), {
             id: 'email_error'

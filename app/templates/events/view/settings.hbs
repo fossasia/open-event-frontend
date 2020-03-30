@@ -1,10 +1,41 @@
 <div class="row">
-  <p>
-    {{t 'Transfer ownership of this event to another user. You\'ll lose all the owner rights once they accept the ownership.'}}
-  </p>
-  <button {{action 'openEventTransferModal' model.event.id model.event.name}} class='ui red button'>
-    {{t 'Transfer Ownership'}}
-  </button>
+  <div class="ui red segment">
+    <div class="ui grid">
+      <div class="ui left aligned sixteen wide mobile eight wide computer column">
+        <h3 class="ui header">
+          {{t 'Transfer Ownership'}}
+        </h3>
+        <p class="ui muted text">
+          {{t 'You\'ll lose all the owner rights once the other user accepts the invitation for ownership.'}}
+        </p>
+      </div>
+      <div class="ui right aligned sixteen wide mobile eight wide computer column">
+        <button {{action 'openEventTransferModal' model.event.id model.event.name}} class='ui labeled icon red button'>
+          <i class="share icon"></i>
+          {{t 'Transfer Event'}}
+        </button>
+      </div>
+
+      <div class="ui left aligned sixteen wide mobile eight wide computer column">
+        <h3 class="ui header">
+          {{t 'Delete this event'}}
+        </h3>
+        <div class="ui muted text">
+          {{t 'Once you delete an event, you will lose all the data related to this event.'}}
+        </div>
+      </div>
+      <div class="ui right aligned sixteen wide mobile eight wide computer column">
+        <button {{action 'openDeleteEventModal'}} class='ui labeled icon red button'>
+          <i class="trash icon"></i>
+          {{t 'Delete Event'}}
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 {{modals/event-transfer-modal isLoading=isLoading isOpen=isEventTransferModalOpen confirmEventName=confirmEventName eventName=eventName openConfirmEventTransferModal=(action 'openConfirmEventTransferModal') transferEvent=(action 'transferEvent' model)}}
 {{modals/confirm-event-transfer-modal currentInvite=currentInvite isLoading=isLoading isOpen=isConfirmEventTransferModalOpen checked=checked transferEvent=(action 'transferEvent')}}
+{{modals/event-delete-modal isLoading=isLoading
+  isOpen=isEventDeleteModalOpen
+  eventName=model.event.name
+  deleteEvent=(action 'deleteEvent')}}

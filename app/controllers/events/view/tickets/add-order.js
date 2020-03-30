@@ -4,13 +4,13 @@ import { sumBy } from 'lodash-es';
 
 export default Controller.extend({
   hasTicketsInOrder: computed('model.tickets.@each.orderQuantity', function() {
-    return sumBy(this.get('model.tickets').toArray(),
+    return sumBy(this.model.tickets.toArray(),
       ticket => ticket.getWithDefault('orderQuantity', 0)
     ) > 0;
   }),
   total: computed('model.tickets.@each.orderQuantity', function() {
     let sum = 0.0;
-    this.get('model.tickets').forEach(ticket => {
+    this.model.tickets.forEach(ticket => {
       sum += ticket.get('orderQuantity') * ticket.get('price');
     });
     return sum;
@@ -39,7 +39,7 @@ export default Controller.extend({
 
   actions: {
     updateOrder(ticket, count) {
-      let order = this.get('model.order');
+      let { order } = this.model;
       ticket.set('orderQuantity', count);
       order.set('amount', this.total);
       if (!this.total) {
@@ -55,12 +55,12 @@ export default Controller.extend({
     },
     async placeOrder() {
       this.set('isLoading', true);
-      let order = this.get('model.order');
+      let { order } = this.model;
       let event = order.get('event');
       order.tickets.forEach(ticket => {
         let numberOfAttendees = ticket.orderQuantity;
         while (numberOfAttendees--) {
-          this.get('model.attendees').addObject(this.store.createRecord('attendee', {
+          this.model.attendees.addObject(this.store.createRecord('attendee', {
             firstname : 'John',
             lastname  : 'Doe',
             email     : 'johndoe@example.com',
@@ -70,11 +70,9 @@ export default Controller.extend({
         }
       });
       try {
-        let order = this.get('model.order');
-        let attendees = this.get('model.attendees');
-        for (const attendee of attendees ? attendees.toArray() : []) {
-          await attendee.save();
-        }
+        let { order } = this.model;
+        let { attendees } = this.model;
+        await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
         order.set('attendees', attendees.slice());
         await order.save()
           .then(order => {
@@ -82,9 +80,7 @@ export default Controller.extend({
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async() => {
-            for (const attendee of attendees ? attendees.toArray() : []) {
-              await attendee.destroyRecord();
-            }
+            await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
             this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
           })
           .finally(() => {

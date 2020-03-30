@@ -33,7 +33,7 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
           header += arr[i].toString(16);
         }
         let type;
-        // Magic number reference: from http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html
+        // Magic number reference: from http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html & http://en.wikipedia.org/wiki/List_of_file_signatures
         switch (header) {
           case '89504e47':
             type = 'image/png';
@@ -44,6 +44,8 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
           case 'ffd8ffe0':
           case 'ffd8ffe1':
           case 'ffd8ffe2':
+          case 'ffd8ffdb':
+          case 'ffd8ffee':
             type = 'image/jpeg';
             break;
           case '25504446':

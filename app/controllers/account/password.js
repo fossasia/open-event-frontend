@@ -21,6 +21,7 @@ export default class extends Controller {
           });
       })
       .catch(error => {
+        console.error('Error while updating password', error);
         if (error.errors) {
           this.notify.error(this.l10n.t(`${error.errors[0].detail}`),
             {

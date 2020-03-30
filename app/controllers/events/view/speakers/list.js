@@ -17,13 +17,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : 'Name',
         valuePath       : 'name',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        headerComponent : 'tables/headers/sort',
+        width           : 150
       },
       {
         name            : 'Email',
         valuePath       : 'email',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        headerComponent : 'tables/headers/sort',
+        width           : 250
       },
       {
         name          : 'Phone',
@@ -48,6 +50,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : 'Actions',
         valuePath     : 'id',
         cellComponent : 'ui-table/cell/events/view/speakers/cell-buttons',
+        width         : 160,
         actions       : {
           deleteSpeaker : this.deleteSpeaker.bind(this),
           editSpeaker   : this.editSpeaker.bind(this),

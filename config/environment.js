@@ -98,15 +98,11 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    refreshAccessTokens      : false,
-    serverTokenEndpoint      : `${ENV.APP.apiHost}/auth/session`,
-    identificationField      : 'email',
-    passwordField            : 'password',
-    tokenPropertyName        : 'access_token',
-    refreshTokenPropertyName : 'refresh_token',
-    authorizationPrefix      : 'JWT ',
-    authorizationHeaderName  : 'Authorization',
-    headers                  : {}
+    refreshAccessTokens : false,
+    serverTokenEndpoint : `${ENV.APP.apiHost}/auth/session`,
+    tokenPropertyName : 'access_token',
+    authorizationPrefix : 'JWT ',
+    authorizationHeaderName: 'Authorization'
   };
 
   ENV['g-map'] = {
@@ -115,63 +111,16 @@ module.exports = function(environment) {
     protocol  : 'https'
   };
 
+  ENV.APP.mapConfig = {};
+
+  // Use embed iframe map using address if MAP_DISPLAY is set or GOOGLE_API_KEY is not available or invalid
+  if (process.env.MAP_DISPLAY === 'embed' || !process.env.GOOGLE_API_KEY || !process.env.GOOGLE_API_KEY.startsWith('AIza')) {
+    ENV.APP.mapConfig.display = 'embed';
+  }
+
   ENV.sentry.hostname = getSentryServer(ENV.sentry.dsn, false);
   ENV.sentry.server = getSentryServer(ENV.sentry.dsn, true);
-  if (process.env.CSPPermissive) {
-    ENV.contentSecurityPolicy = { 'default-src': ['*', '', 'data:', 'blob:', '\'unsafe-inline\'', '\'unsafe-eval\''], 'script-src': ['*', '\'unsafe-inline\'', '\'unsafe-eval\''], 'connect-src': ['*', '\'unsafe-inline\''], 'img-src': ['*', 'data:', 'blob:', '\'unsafe-inline\''], 'frame-src': ['*'], 'style-src': ['*', 'data:', 'blob:', '\'unsafe-inline\''], 'font-src': ['*', 'data:', 'blob:', '\'unsafe-inline\''] };
-  } else {
-    ENV.contentSecurityPolicy = {
-      'default-src' : '\'none\'',
-      'connect-src' : [
-        '\'self\'',
-        'ws://eventyay.local:65520',
-        'ws://localhost:49153',
-        'https://maps.gstatic.com',
-        'https://*.eventyay.com',
-        'https://eventyay.com',
-        'https://open-event-api-dev.herokuapp.com',
-        'www.google-analytics.com',
-        'http://127.0.0.1:5000',
-        ENV.sentry.hostname
-      ],
-      'script-src': [
-        '\'self\'',
-        '\'unsafe-inline\'',
-        'https://*.googleapis.com',
-        'https://maps.gstatic.com',
-        'https://eventyay.com',
-        'https://*.eventyay.com',
-        'http://eventyay.local:65520',
-        'http://localhost:49153',
-        'www.google-analytics.com',
-        'https://platform.twitter.com',
-        'https://cdn.syndication.twimg.com',
-        'http://127.0.0.1:5000',
-        'cdn.ravenjs.com'
-      ],
-      'font-src': [
-        '\'self\'',
-        'data:',
-        'https://fonts.gstatic.com'
-      ],
-      'img-src': [
-        '*',
-        'data:',
-        'app.getsentry.com',
-        ENV.sentry.hostname
-      ],
-      'style-src': [
-        '\'self\'',
-        '\'unsafe-inline\'',
-        'https://fonts.googleapis.com',
-        'https://maps.gstatic.com',
-        'platform.twitter.com',
-        'https://ton.twimg.com'
-      ],
-      'frame-src' : '*',
-      'media-src' : '\'none\''
-    };
-  }
+  
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -198,6 +147,8 @@ module.exports = function(environment) {
     ENV['simple-auth'] = {
       store: 'simple-auth-session-store:ephemeral'
     };
+
+    ENV['ember-simple-auth-token'].tokenExpirationInvalidateSession = false;
   }
 
   if (environment === 'production') {

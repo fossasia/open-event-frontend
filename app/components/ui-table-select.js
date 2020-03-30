@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { computed } from '@ember/object';
 import UiSelect from 'ember-models-table/components/models-table/select';
 
@@ -11,11 +12,11 @@ export default UiSelect.extend({
   cssPropertyName: '',
 
   aligned: computed('device.isMobile', function() {
-    return this.get('device.isMobile') ? 'center aligned' : 'left aligned';
+    return this.device.isMobile ? 'center aligned' : 'left aligned';
   }),
 
   change() {
-    this.set('value', this.$('#table_select').val());
+    this.set('value', $('#table_select', this.element).val());
   }
 
 });

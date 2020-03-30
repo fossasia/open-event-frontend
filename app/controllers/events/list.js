@@ -43,12 +43,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : 'Sessions',
-        valuePath     : 'eventStatisticsGeneral',
+        valuePath     : 'generalStatistics',
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
       },
       {
         name          : 'Speakers',
-        valuePath     : 'eventStatisticsGeneral',
+        valuePath     : 'generalStatistics',
         cellComponent : 'ui-table/cell/cell-speakers-dashboard'
       },
       {
@@ -98,6 +98,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
       this.send('refreshRoute');
     } catch (e) {
+      console.error('Error while deleting event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_del_unex'

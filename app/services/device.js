@@ -1,10 +1,9 @@
 import $ from 'jquery';
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { equal, or } from '@ember/object/computed';
 import { debounce } from '@ember/runloop';
 import { forOwn } from 'lodash-es';
-import { inject as service } from '@ember/service';
 
 /**
  * Keeping this outside the service object to keep it lean and faster to loop over
@@ -39,7 +38,7 @@ export default Service.extend({
   deviceType: computed('currentWidth', function() {
     let deviceType = 'computer';
     forOwn(breakpoints, (value, key) => {
-      if (this.currentWidth >= value.min && (!value.hasOwnProperty('max') || this.currentWidth <= value.max)) {
+      if (this.currentWidth >= value.min && (!Object.prototype.hasOwnProperty.call(value, 'max') || this.currentWidth <= value.max)) {
         deviceType = key;
       }
     });
@@ -56,7 +55,7 @@ export default Service.extend({
 
   isInternetExplorer: computed(function() {
 
-    if (this.get('fastboot.isFastBoot')) {
+    if (this.fastboot.isFastBoot) {
       return false;
     }
 
@@ -80,7 +79,7 @@ export default Service.extend({
   init() {
     this._super(...arguments);
 
-    if (this.get('fastboot.isFastBoot')) {
+    if (this.fastboot.isFastBoot) {
       this.currentWidth = 1024;
       return;
     }

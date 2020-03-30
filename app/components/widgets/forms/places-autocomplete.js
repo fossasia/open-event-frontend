@@ -6,6 +6,7 @@
  *
  */
 
+import $ from 'jquery';
 import TextField from '@ember/component/text-field';
 
 import { isPresent, isEmpty } from '@ember/utils';
@@ -21,7 +22,7 @@ export default TextField.extend({
 
   // @see https://developers.google.com/maps/documentation/javascript/places-autocomplete#set_search_area
   geolocate() {
-    if (this.get('fastboot.isFastboot')) {
+    if (this.fastboot.isFastBoot) {
       return;
     }
     let navigator = this.navigator || ((window) ? window.navigator : null);
@@ -69,7 +70,7 @@ export default TextField.extend({
   getAutocomplete() {
     if (isEmpty(this.autocomplete)) {
       if (document && window) {
-        let [inputElement] = this.$(),
+        let [inputElement] = $(this.element),
             google = this.google || window.google,
             options = { types: this._typesToArray() };
         if (Object.keys(this.restrictions).length > 0) {

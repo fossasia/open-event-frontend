@@ -131,17 +131,30 @@
                           id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
                 {{/if}}
               {{else}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                {{#if field.isUrlField}}
+                  {{widgets/forms/link-input
+                  fixedName=true
+                  inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_'field.fieldIdentifier))
+                  segmentedLink=(get data.speaker field.segmentedLinkName)
+                  canRemoveItem=false
+                }}
+                {{else}}
+                  {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                {{/if}}
               {{/if}}
             {{/if}}
             {{#if (eq field.type 'image')}}
               {{widgets/forms/image-upload
                 imageUrl=(mut (get data.speaker field.fieldIdentifier))
-                label=(t 'Logo')
+                needsCropper=true
+                label=(t 'Speaker Image')
                 id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
                 icon='image'
+                aspectRatio = (array 2 2)
                 hint=(t 'Select an image')
-                maxSizeInKb=1000}}
+                maxSizeInKb=1000
+                helpText=(t 'We recommend using a 1:1 ratio image')
+                requiresDivider=true}}
             {{/if}}
             {{#if (eq field.type 'select')}}
               {{#if (eq field.fieldIdentifier 'country')}}
@@ -155,6 +168,18 @@
                       <div class="item" data-value="{{country.name}}">
                         <i class="{{lowercase country.code}} flag"></i>
                         {{country.name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              {{else if (eq field.fieldIdentifier 'gender')}}
+                {{#ui-dropdown class='search selection' selected=data.speaker.gender onChange=(action (mut data.speaker.gender)) as |execute mapper|}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{t 'Select your gender'}}</div>
+                  <div class="menu">
+                    {{#each genders as |gender|}}
+                      <div class="item" data-value="{{map-value mapper gender.name}}">
+                        {{gender.name}}
                       </div>
                     {{/each}}
                   </div>
@@ -218,18 +243,22 @@
           {{/if}}
           {{#if (eq field.type 'image')}}
             {{widgets/forms/image-upload
-              imageUrl=(mut (get data.speaker field.fieldIdentifier))
-              label=(t 'Logo')
-              id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-              icon='image'
-              hint=(t 'Select an image')
-              maxSizeInKb=1000}}
+                imageUrl=(mut (get data.speaker field.fieldIdentifier))
+                needsCropper=true
+                label=(t 'Speaker Image')
+                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
+                icon='image'
+                aspectRatio = (array 2 2)
+                hint=(t 'Select an image')
+                maxSizeInKb=1000
+                helpText=(t 'We recommend using a 1:1 ratio image')
+                requiresDivider=true}}
           {{/if}}
           {{#if (eq field.type 'select')}}
             {{#if (eq field.fieldIdentifier 'country')}}
               {{#ui-dropdown class='search selection' selected=data.speaker.country forceSelection=false
                          fullTextSearch=true}}
-                {{input type='hidden' id='speaker_country' value=data.speaker.country}}
+                {{input type='hidden' id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier)) value=data.speaker.country}}
                 <i class="dropdown icon"></i>
                 <div class="default text">{{get data 'selectedCountry'}}</div>
                 <div class="menu">
@@ -243,6 +272,7 @@
               {{/ui-dropdown}}
             {{else if (eq field.fieldIdentifier 'gender')}}
               {{#ui-dropdown class='search selection' selected=data.speaker.gender onChange=(action (mut data.speaker.gender)) as |execute mapper|}}
+                {{input type="hidden" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier)) value=data.speaker.gender}}
                 <i class="dropdown icon"></i>
                 <div class="default text">{{t 'Select your gender'}}</div>
                 <div class="menu">
@@ -280,13 +310,21 @@
     <h4>
       {{t 'Choose from an existing session'}}
     </h4>
-    {{#each sessions as |session|}}
-      <div class="field">
-        {{#if session.id}}
-          {{ui-radio name='sessionDetails' label=session.title value=session onChange=(action (mut sessionDetails))}}
-        {{/if}}
+    {{#ui-dropdown class="fluid search selection" selected=sessionDetails onChange=(action (mut sessionDetails)) as |execute mapper|}}
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Session'}}
       </div>
-    {{/each}}
+      <div class="menu">
+        {{#each sessions as |session|}}
+          {{#if session.id}}
+            <div data-value="{{map-value mapper session}}" class="item">
+              {{session.title}}
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
     {{#if noSessionExists}}
       <div class="ui small disabled header">{{t 'No session exists. Add a new session proposal.'}}</div>
     {{/if}}

@@ -61,11 +61,11 @@
       {{#each microlocations as |microlocation|}}
         <div class="{{if device.isMobile 'grouped'}} fields">
           <div class="{{unless device.isMobile 'three wide'}} field">
-            {{input type='text' value=microlocation.name placeholder='Name'}}
+            {{input type='text' id="microlocation" value=microlocation.name placeholder='Name'}}
           </div>
           <div class="{{unless device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              {{input type='number' name='microlocation' value=microlocation.floor placeholder='Floor'}}
+              {{input type='number' id='microlocation_floor' value=microlocation.floor placeholder='Floor'}}
               {{#if (gt microlocations.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' microlocation}}>
                   <i class="minus icon"></i>
@@ -316,7 +316,7 @@
   {{else}}
     <div class="spacer-50"></div>
   {{/if}}
-
+  {{!--  Hiding the Custom Widget Form, Until it is ready to be deployed for Development & Production.
   {{#each complexCustomForms as |form|}}
     {{form.isComplex}}
     <div class="fields">
@@ -355,7 +355,7 @@
 
   <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addCustomField'}}>{{t 'Add another custom field'}}</button>
 
-
+ --}}
   <div class="ui fields buttons {{if device.isMobile 'mini three' 'right floated large'}}">
     <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}

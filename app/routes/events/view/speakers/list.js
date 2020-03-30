@@ -3,7 +3,7 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.get('params.speakers_status')) {
+    switch (this.params.speakers_status) {
       case 'pending':
         return this.l10n.t('Pending');
       case 'accepted':
@@ -23,6 +23,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       this.transitionTo('public', event.id);
     }
   }
+
   async model(params) {
     this.set('params', params);
     const searchField = 'name';

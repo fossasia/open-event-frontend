@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import moment from 'moment';
 import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Route.extend({
   headData: service(),
@@ -29,29 +30,12 @@ export default Route.extend({
           }
         ]
       }),
-      speakers: await eventDetails.query('speakers', {
+      featuredSpeakers: await eventDetails.query('speakers', {
         filter: [
           {
-            or: [
-              {
-                name : 'sessions',
-                op   : 'any',
-                val  : {
-                  name : 'state',
-                  op   : 'eq',
-                  val  : 'confirmed'
-                }
-              },
-              {
-                name : 'sessions',
-                op   : 'any',
-                val  : {
-                  name : 'state',
-                  op   : 'eq',
-                  val  : 'accepted'
-                }
-              }
-            ]
+            name : 'is-featured',
+            op   : 'eq',
+            val  : 'true'
           }
         ],
         'page[size]': 0
@@ -61,11 +45,13 @@ export default Route.extend({
       tax      : await eventDetails.get('tax'),
       order    : this.store.createRecord('order', {
         event   : eventDetails,
-        user    : this.get('authManager.currentUser'),
+        user    : this.authManager.currentUser,
         tickets : []
       }),
 
-      attendees: []
+      attendees: [],
+
+      mapConfig: ENV.APP.mapConfig
     };
   },
   afterModel(model) {
@@ -73,7 +59,7 @@ export default Route.extend({
   },
   resetController(controller) {
     this._super(...arguments);
-    const model = controller.get('model.order');
+    const model = controller.model.order;
     if (!model.id) {
       model.unloadRecord();
     }

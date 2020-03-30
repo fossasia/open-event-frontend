@@ -11,6 +11,8 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
+import ENV from 'open-event-frontend/config/environment';
+import $ from 'jquery';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
@@ -36,31 +38,31 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.isPaypalActivated', function() {
-    return this.get('settings.isPaypalActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paypal;
+    return this.settings.isPaypalActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paypal;
   }),
 
   canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated', function() {
-    return this.get('settings.isPaytmActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).paytm;
+    return this.settings.isPaytmActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paytm;
   }),
 
   canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
-    return this.get('settings.isStripeActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).stripe;
+    return this.settings.isStripeActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).stripe;
   }),
 
   canAcceptOmise: computed('data.event.paymentCurrency', 'settings.isOmiseActivated', function() {
-    return this.get('settings.isOmiseActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).omise;
+    return this.settings.isOmiseActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).omise;
   }),
 
   canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAlipayActivated', function() {
-    return this.get('settings.isAlipayActivated') && find(paymentCurrencies, ['code', this.get('data.event.paymentCurrency')]).alipay;
+    return this.settings.isAlipayActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).alipay;
   }),
 
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
-    return this.get('data.event.tickets').sortBy('position').filterBy('isDeleted', false);
+    return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
   }),
 
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
-    return this.get('data.event.socialLinks').filterBy('isDeleted', false);
+    return this.data.event.socialLinks.filterBy('isDeleted', false);
   }),
 
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
@@ -94,13 +96,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     later(this, () => {
       try {
         this.set('subTopic', null);
-      } catch (ignored) { /* To suppress error thrown in-case this gets executed after component gets destroy */ }
+      } catch (ignored) {
+        /* To suppress error thrown in-case this gets executed after component gets destroy */
+        console.warn('Error setting subTopic to null', ignored);
+      }
     }, 50);
-    if (!this.get('data.event.topic')) {
+    if (!this.data.event.topic) {
       return [];
     }
 
-    return this.get('data.event.topic.subTopics');
+    return this.data.event.topic.subTopics;
   }),
 
   showDraftButton: computed('data.event.state', function() {
@@ -112,7 +117,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
-    return !!this.get('data.event.codeOfConduct');
+    return !!this.data.event.codeOfConduct;
   }),
 
   discountCodeObserver: observer('data.event.discountCode', function() {
@@ -120,13 +125,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   didInsertElement() {
-    if (!this.isCreate && this.get('data.event.copyright') && !this.get('data.event.copyright.content')) {
+    if (!this.isCreate && this.data.event.copyright && !this.data.event.copyright.content) {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
     }
   },
 
   // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
+    $.fn.form.settings.rules.checkMaxMinPrice = () => {
+      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
+    };
+    $.fn.form.settings.rules.checkMaxMinOrder = () => {
+      return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
+    };
 
     let validationRules = {
       inline : true,
@@ -256,6 +267,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'number',
               prompt : this.l10n.t('Invalid number')
+            },
+            {
+              type   : 'checkMaxMinOrder',
+              prompt : this.l10n.t('Minimum order should not be greater than maximum')
             }
           ]
         },
@@ -273,6 +288,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'integer[1..]',
               prompt : this.l10n.t('Maximum tickets per order should be greater than 0')
+            },
+            {
+              type   : 'checkMaxMinOrder',
+              prompt : this.l10n.t('Maximum order should not be less than minimum')
             }
           ]
         },
@@ -286,6 +305,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'integer[1..]',
               prompt : this.l10n.t('Minimum price needs to be greater than zero')
+            },
+            {
+              type   : 'checkMaxMinPrice',
+              prompt : this.l10n.t('Minimum price should not be greater than maximum')
             }
           ]
         },
@@ -299,6 +322,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'integer[1..]',
               prompt : this.l10n.t('Maximum price needs to be greater than zero')
+            },
+            {
+              type   : 'checkMaxMinPrice',
+              prompt : this.l10n.t('Maximum price should not be less than minimum')
             }
           ]
         },
@@ -352,6 +379,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
+        },
+        paymentCountry: {
+          identifier : 'payment_country',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please select your country')
+            }
+          ]
         }
       }
     };
@@ -366,17 +402,18 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         .then(authorization => {
           this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization', {
             stripeAuthCode       : authorization.authorizationCode,
-            stripePublishableKey : this.settings.stripePublishableKey
+            stripePublishableKey : ENV.environment === 'development' || ENV.environment === 'test' ? this.settings.stripeTestPublishableKey : this.settings.stripePublishableKey
           }));
         })
         .catch(error => {
+          console.error('Error while setting stripe authorization in event', error);
           this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
             id: 'basic_detail_err'
           });
         });
     },
     async disconnectStripe() {
-      let stripeAuthorization = await this.get('data.event.stripeAuthorization');
+      let stripeAuthorization = await this.data.event.stripeAuthorization;
       stripeAuthorization.destroyRecord()
         .then(() => {
           this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
@@ -386,10 +423,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     },
     addTicket(type, position) {
-      const event = this.get('data.event');
+      const { event } = this.data;
       const salesStartDateTime = moment();
-      const salesEndDateTime = this.get('data.event.startsAt');
-      this.get('data.event.tickets').pushObject(this.store.createRecord('ticket', {
+      const salesEndDateTime = this.data.event.startsAt;
+      this.data.event.tickets.pushObject(this.store.createRecord('ticket', {
         event,
         type,
         position,
@@ -400,7 +437,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     updateSalesEndDate(eventStartDate) {
       eventStartDate = moment(new Date(eventStartDate));
-      this.get('data.event.tickets').forEach(ticket => {
+      this.data.event.tickets.forEach(ticket => {
         if (moment(eventStartDate).isBefore(ticket.get('salesEndsAt'))) {
           ticket.set('salesEndsAt', moment(eventStartDate, 'MM/DD/YYYY').toDate());
         }
@@ -409,7 +446,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     removeTicket(deleteTicket) {
       const index = deleteTicket.get('position');
-      this.get('data.event.tickets').forEach(ticket => {
+      this.data.event.tickets.forEach(ticket => {
         if (ticket.get('position') > index) {
           ticket.set('position', ticket.get('position') - 1);
         }
@@ -419,7 +456,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     moveTicket(ticket, direction) {
       const index = ticket.get('position');
-      const otherTicket = this.get('data.event.tickets').find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
+      const otherTicket = this.data.event.tickets.find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
       otherTicket.set('position', index);
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
@@ -440,7 +477,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.set('validatingDiscountCode', true);
       // TODO do proper checks. Simulating now.
       later(this, () => {
-        if (this.get('data.event.discountCode.code') !== 'AIYPWZQP') {
+        if (this.data.event.discountCode.code !== 'AIYPWZQP') {
           this.getForm().form('add prompt', 'discount_code', this.l10n.t('This discount code is invalid. Please try again.'));
         } else {
           this.set('data.event.discountCode.code', 42);
@@ -475,7 +512,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     // },
 
     async updateCopyright(name) {
-      const event = this.get('data.event');
+      const { event } = this.data;
       const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
       let license = find(licenses, { name });
       copyright.setProperties({

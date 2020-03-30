@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
@@ -33,7 +34,8 @@ export default Component.extend({
         this.set('uploadingImage', false);
         this.set('imageUrl', image.url);
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while uploading and setting image URL', e);
         this.set('uploadingImage', false);
         this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
       });
@@ -55,6 +57,7 @@ export default Component.extend({
         reader.readAsDataURL(files[0]);
 
       }).catch(error => {
+        console.error('Error while image reading and cropping', error);
         this.notify.error(error, {
           id: 'unexpected_image_upload_1'
         });
@@ -104,16 +107,16 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    this.$()
+    $(this.element)
       .on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
         e.preventDefault();
         e.stopPropagation();
       })
       .on('dragover dragenter', () => {
-        this.$('.upload.segment').addClass('drag-hover');
+        $('.upload.segment', this.element).addClass('drag-hover');
       })
       .on('dragleave dragend drop', () => {
-        this.$('.upload.segment').removeClass('drag-hover');
+        $('.upload.segment', this.element).removeClass('drag-hover');
       })
       .on('drop', e => {
         this.processFiles(e.originalEvent.dataTransfer.files);
@@ -122,7 +125,7 @@ export default Component.extend({
 
   willDestroyElement() {
     this._super(...arguments);
-    this.$().off('drag dragstart dragend dragover dragenter dragleave drop');
+    $(this.element).off('drag dragstart dragend dragover dragenter dragleave drop');
   }
 
 });

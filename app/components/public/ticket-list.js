@@ -2,9 +2,8 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
-import { sumBy } from 'lodash-es';
+import { sumBy, merge } from 'lodash-es';
 import { A } from '@ember/array';
-import { merge } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
   store: service(),
@@ -12,8 +11,8 @@ export default Component.extend(FormMixin, {
   promotionalCodeApplied: false,
 
   isUnverified: computed('session.isAuthenticated', 'authManager.currentUser.isVerified', function() {
-    return this.get('session.isAuthenticated')
-      && !this.get('authManager.currentUser.isVerified');
+    return this.session.isAuthenticated
+      && !this.authManager.currentUser.isVerified;
   }),
 
   shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', function() {
@@ -120,6 +119,7 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalCode', false);
         });
       } catch (e) {
+        console.error('Error while applying access code', e);
         this.set('invalidPromotionalCode', true);
       }
       try {
@@ -149,7 +149,7 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalCode', true);
         }
       } catch (e) {
-        console.warn(e);
+        console.error('Error while applying discount code as promo code', e);
         if (this.invalidPromotionalCode) {
           this.set('invalidPromotionalCode', true);
         }

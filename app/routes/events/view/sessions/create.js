@@ -9,7 +9,7 @@ export default Route.extend({
     return {
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
-        'page[size]' : 50,
+        'page[size]' : 0,
         sort         : 'id'
       }),
       speakers: await eventDetails.query('speakers', {
@@ -18,14 +18,14 @@ export default Route.extend({
       }),
       session: await this.store.createRecord('session', {
         event    : eventDetails,
-        creator  : this.get('authManager.currentUser'),
+        creator  : this.authManager.currentUser,
         startsAt : null,
         endsAt   : null,
         speakers : []
       }),
       speaker: await this.store.createRecord('speaker', {
         event : eventDetails,
-        user  : this.get('authManager.currentUser')
+        user  : this.authManager.currentUser
       }),
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})

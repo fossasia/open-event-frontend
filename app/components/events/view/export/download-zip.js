@@ -16,7 +16,7 @@ export default class extends Component {
         id: 'export_succ'
       });
     } catch (e) {
-      console.error(e);
+      console.error('Error while downloading event zip', e);
       this.notify.error(this.l10n.t(e), {
         id: 'err_down'
       });

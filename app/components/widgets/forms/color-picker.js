@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 
 export default Component.extend({
@@ -7,7 +8,7 @@ export default Component.extend({
   didInsertElement() {
     this._super(...arguments);
     const _this = this;
-    this.$('.picker').colorPicker({
+    $('.picker', this.element).colorPicker({
       doRender : false,
       opacity  : false,
       renderCallback() {
@@ -18,6 +19,6 @@ export default Component.extend({
 
   willDestroyElement() {
     this._super(...arguments);
-    this.$('.picker').colorPicker('destroy');
+    $('.picker', this.element).colorPicker('destroy');
   }
 });

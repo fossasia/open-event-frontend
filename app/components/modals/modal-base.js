@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { observer } from '@ember/object';
 import { assign } from '@ember/polyfills';
 import { merge } from 'lodash-es';
@@ -9,10 +10,11 @@ export default UiModal.extend({
   classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
 
   openObserver: observer('isOpen', function() {
+    const $element = $(this.element);
     if (this.isOpen) {
-      this.$().modal('show');
+      $element.modal('show');
     } else {
-      this.$().modal('hide');
+      $element.modal('hide');
     }
   }),
 
@@ -33,8 +35,11 @@ export default UiModal.extend({
   didRender()  {
     this._super(...arguments);
     try {
-      this.$().modal('refresh');
-    } catch (ignored) { /* ignored exception */ }
+      $(this.element).modal('refresh');
+    } catch (ignored) {
+      /* ignored exception */
+      console.warn('Error refreshing modal', ignored);
+    }
   },
 
 
@@ -69,8 +74,9 @@ export default UiModal.extend({
 
       onVisible: () => {
         this.set('isOpen', true);
-        this.$().modal('refresh');
-        this.$('[data-content]').popup({
+        const $element = $(this.element);
+        $element.modal('refresh');
+        $element.find('[data-content]').popup({
           inline: true
         });
         if (this.onVisible) {
@@ -85,7 +91,7 @@ export default UiModal.extend({
 
   didInitSemantic() {
     if (this.isOpen) {
-      this.$().modal('show');
+      $(this.element).modal('show');
     }
   }
 });

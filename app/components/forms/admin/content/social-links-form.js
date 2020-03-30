@@ -51,13 +51,13 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        googlePlus: {
-          identifier : 'google_plus',
+        googleGroup: {
+          identifier : 'google_group',
           optional   : true,
           rules      : [
             {
-              type   : 'containsExactly[plus.google.com]',
-              prompt : this.l10n.t('Please enter a valid google plus url')
+              type   : 'containsExactly[groups.google.com]',
+              prompt : this.l10n.t('Please enter a valid google group url')
             },
             {
               type   : 'regExp',

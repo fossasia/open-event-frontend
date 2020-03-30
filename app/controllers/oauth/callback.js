@@ -5,8 +5,8 @@ export default Controller.extend({
     this.loader.post(`/auth/oauth/login/${ queryParams.provider }?code=${ queryParams.code }`)
       .then(response => {
         let credentials = {
-              identification : response.email,
-              password       : response.oauth_hash
+              username : response.email,
+              password : response.oauth_hash
             },
             authenticator = 'authenticator:jwt';
 
@@ -23,7 +23,7 @@ export default Controller.extend({
           })
           .catch(reason => {
             if (!(this.isDestroyed || this.isDestroying)) {
-              if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+              if (reason && Object.prototype.hasOwnProperty.call(reason, 'status_code') && reason.status_code === 401) {
                 this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
               } else {
                 this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));

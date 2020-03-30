@@ -4,8 +4,8 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   smallLead: computed('session.currentRouteName', function() {
-    if (this.get('session.currentRouteName')) {
-      return this.get('session.currentRouteName') !== 'public.index';
+    if (this.session.currentRouteName) {
+      return this.session.currentRouteName !== 'public.index';
     }
   }),
   displayEndDate: computed('model.startsAtDate', 'model.endsAtDate', function() {

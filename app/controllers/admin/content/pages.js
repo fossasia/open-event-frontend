@@ -19,6 +19,7 @@ export default class extends Controller {
     }
     this.set('isFormOpen', true);
   }
+
   @action
   savePage(page) {
     page.save()
@@ -31,7 +32,8 @@ export default class extends Controller {
             id: 'page_detail_succ'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error saving page details', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. Page Details not saved.'),
           {
             id: 'page_detail_del'

@@ -64,14 +64,14 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        },
        {
          name          : 'Sessions',
-         valuePath     : 'eventStatisticsGeneral',
+         valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-sessions',
          width         : 90
 
        },
        {
          name          : 'Speakers',
-         valuePath     : 'eventStatisticsGeneral',
+         valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-speakers-dashboard',
          width         : 90
        },
@@ -85,10 +85,20 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          name            : 'Featured Event',
          valuePath       : 'id',
          extraValuePaths : ['isFeatured'],
-         cellComponent   : 'ui-table/cell/admin/event-is-featured',
+         cellComponent   : 'ui-table/cell/admin/events/event-is-featured',
          width           : 80,
          actions         : {
            toggleFeatured: this.toggleFeatured.bind(this)
+         }
+       },
+       {
+         name            : 'Promoted Event',
+         valuePath       : 'id',
+         extraValuePaths : ['isPromoted'],
+         cellComponent   : 'ui-table/cell/admin/events/event-is-promoted',
+         width           : 80,
+         actions         : {
+           togglePromoted: this.togglePromoted.bind(this)
          }
        }
      ];
@@ -124,8 +134,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         {
           id: 'event_del_succ'
         });
+      this.refreshModel.bind(this)();
     } catch (e) {
-      console.warn(e);
+      console.error('Error while deleting event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_delete_error'
@@ -136,6 +147,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       isEventDeleteModalOpen : false
     });
   }
+
   @action
   async restoreEvent(event_id) {
     this.set('isLoading', true);
@@ -148,7 +160,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_restored'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error while restoring event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'restore_error'
@@ -170,7 +182,28 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
 
     } catch (e) {
-      console.warn(e);
+      console.error('Error while toggling featured event', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_det_error'
+        });
+    }
+    this.set('isLoading', false);
+  }
+
+  @action
+  async togglePromoted(event_id) {
+    this.set('isLoading', true);
+    try {
+      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      event.toggleProperty('isPromoted');
+      await event.save();
+      this.notify.success(this.l10n.t(`Event ${event.isPromoted ? 'Promoted' : 'unpromoted'} Successfully`),
+        {
+          id: 'event_detail_changed'
+        });
+    } catch (e) {
+      console.error('Error while toggling promoted event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_det_error'

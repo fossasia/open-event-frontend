@@ -3,7 +3,7 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.get('params.sessions_state')) {
+    switch (this.params.sessions_state) {
       case 'confirmed':
         return this.l10n.t('Confirmed');
       case 'pending':
@@ -18,6 +18,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         return this.l10n.t('Session');
     }
   }
+
   async model(params) {
     this.set('params', params);
     const searchField = 'title';

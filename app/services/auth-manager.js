@@ -5,41 +5,46 @@ import { mapKeys } from 'lodash-es';
 
 export default Service.extend({
 
-  session : service(),
-  metrics : service(),
-  store   : service(),
+  session    : service(),
+  metrics    : service(),
+  store      : service(),
+  bugTracker : service(),
 
   currentUser: computed('session.data.currentUserFallback.id', 'currentUserModel', function() {
     if (this.currentUserModel) {
       return this.currentUserModel;
     }
-    if (this.get('session.data.currentUserFallback')) {
-      let userModel = this.store.peekRecord('user', this.get('session.data.currentUserFallback.id'));
+
+    if (this.session.data.currentUserFallback) {
+      let userModel = this.store.peekRecord('user', this.session.data.currentUserFallback.id);
       if (!userModel) {
         return this.restoreCurrentUser();
       }
+
       return userModel;
     }
+
     return null;
   }),
 
   userAuthenticatedStatusChange: observer('session.isAuthenticated', function() {
-    if (!this.get('session.isAuthenticated')) {
+    if (!this.session.isAuthenticated) {
       this.identifyStranger();
     }
   }),
 
   currentUserChangeListener: observer('currentUser', function() {
-    if (this.currentUser && this.get('session.isAuthenticated')) {
+    if (this.currentUser && this.session.isAuthenticated) {
       this.identify();
     }
   }),
 
   getTokenPayload() {
-    const token = this.get('session.session.content.authenticated.access_token');
+    const token = this.session.session.content.authenticated.access_token;
     if (token && token !== '') {
       return JSON.parse(atob(token.split('.')[1]));
     }
+
     return null;
   },
 
@@ -55,11 +60,31 @@ export default Service.extend({
         distinctId : this.currentUser.id,
         email      : this.currentUser.email
       });
+      this.bugTracker.setUser({
+        id    : this.currentUser.id,
+        email : this.currentUser.email
+      });
     }
   },
 
   identifyStranger() {
     this.metrics.identify(null);
+    this.bugTracker.clearUser();
+  },
+
+  async loadUser() {
+    if (this.currentUserModel) {
+      return this.currentUserModel;
+    }
+
+    const tokenPayload = this.getTokenPayload();
+    if (tokenPayload) {
+      this.persistCurrentUser(
+        await this.store.findRecord('user', tokenPayload.identity)
+      );
+    }
+
+    return this.currentUserModel;
   },
 
   persistCurrentUser(user = null) {
@@ -68,6 +93,7 @@ export default Service.extend({
     } else {
       this.set('currentUserModel', user);
     }
+
     let userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
     this.session.set('data.currentUserFallback', userData);
@@ -77,12 +103,14 @@ export default Service.extend({
     if (!data) {
       data = this.get('session.data.currentUserFallback', {});
     }
+
     const userId = data.id;
     delete data.id;
     data = mapKeys(data, (value, key) => camelize(key));
     if (!data.email) {
       data.email = null;
     }
+
     this.store.push({
       data: {
         id         : userId,
@@ -96,10 +124,10 @@ export default Service.extend({
   },
 
   async initialize() {
-    if (this.get('session.isAuthenticated')) {
-      if (this.get('session.data.currentUserFallback.id')) {
+    if (this.session.isAuthenticated) {
+      if (this.session.data.currentUserFallback.id) {
         try {
-          const user = await this.store.findRecord('user', this.get('session.data.currentUserFallback.id'));
+          const user = await this.store.findRecord('user', this.session.data.currentUserFallback.id);
           this.set('currentUserModel', user);
           this.identify();
         } catch (e) {

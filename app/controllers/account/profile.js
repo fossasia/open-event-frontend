@@ -11,7 +11,8 @@ export default class extends Controller {
         {
           id: 'cont_info_upd'
         });
-    }  catch (error) {
+    } catch (error) {
+      console.error('Error while updating contact info', error);
       this.notify.error(this.l10n.t(error.message),
         {
           id: 'cont_upd_error'

@@ -3,8 +3,7 @@ import { computed } from '@ember/object';
 import ENV from 'open-event-frontend/config/environment';
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
 import HasManyQueryAdapterMixin from 'ember-data-has-many-query/mixins/rest-adapter';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
-import CachedShoe   from 'ember-cached-shoe';
+import FastbootAdapter from 'ember-data-storefront/mixins/fastboot-adapter';
 
 /**
  * The backend server expects the filter in a serialized string format.
@@ -13,14 +12,14 @@ import CachedShoe   from 'ember-cached-shoe';
  * @return {*}
  */
 export const fixFilterQuery = query  => {
-  if (query.hasOwnProperty('filter')) {
+  if (Object.prototype.hasOwnProperty.call(query, 'filter')) {
     query.filter = JSON.stringify(query.filter);
   }
 
   return query;
 };
 
-export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, CachedShoe, {
+export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, {
   host      : ENV.APP.apiHost,
   namespace : ENV.APP.apiNamespace,
 
@@ -31,7 +30,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, Cac
     const headers = {
       'Content-Type': 'application/vnd.api+json'
     };
-    const { access_token } = this.get('session.data.authenticated');
+    const { access_token } = this.session.data.authenticated;
     if (access_token) {
       headers[ENV['ember-simple-auth-token'].authorizationHeaderName] = ENV['ember-simple-auth-token'].authorizationPrefix + access_token;
     }
@@ -85,7 +84,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, AdapterFetch, Cac
    @param {Number} status The response status as received from the API
    */
   ensureResponseAuthorized(status) {
-    if (status === 401 && this.get('session.isAuthenticated')) {
+    if (status === 401 && this.session.isAuthenticated) {
       this.session.invalidate();
     }
   }

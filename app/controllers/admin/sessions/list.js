@@ -71,6 +71,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
+
   @action
   async deleteSession(session_id) {
     this.set('isLoading', true);
@@ -82,7 +83,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'session_deleted_succ'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error while deleting session', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'unexpected_session_error'

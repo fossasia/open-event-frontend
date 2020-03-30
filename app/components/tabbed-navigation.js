@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 
@@ -6,31 +7,31 @@ export default Component.extend({
   item       : null,
 
   currentRoute: computed('session.currentRouteName', 'item', function() {
-    const path = this.get('session.currentRouteName');
+    const path = this.session.currentRouteName;
     if (path) {
       return this.item;
     }
   }),
   didInsertElement() {
-    const isMobile = this.get('device.isMobile');
+    const { isMobile } = this.device;
     if (isMobile) {
-      this.$('a').addClass('vertical-item');
+      $('a', this.element).addClass('vertical-item');
     } else {
-      this.$('a').removeClass('vertical-item');
+      $('a', this.element).removeClass('vertical-item');
     }
-    this.set('item', this.$('a.active').text().trim());
+    this.set('item', $('a.active', this.element).text().trim());
   },
   didUpdate() {
-    const isMobile = this.get('device.isMobile');
+    const { isMobile } = this.device;
     if (isMobile) {
-      this.$('a').addClass('vertical-item');
+      $('a', this.element).addClass('vertical-item');
     } else {
-      this.$('a').removeClass('vertical-item');
+      $('a', this.element).removeClass('vertical-item');
     }
   },
   actions: {
     toggleMenu(mode) {
-      const menu = this.$('div.menu');
+      const menu = $('div.menu', this.element);
       menu.toggleClass('hidden');
       if (mode === 'reset') {
         this.set('item', event.srcElement.text);

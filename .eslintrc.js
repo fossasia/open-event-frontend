@@ -6,7 +6,8 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'ember'
+    'ember',
+    'ember-suave'
   ],
   extends: [
     'eslint:recommended',
@@ -61,15 +62,21 @@ module.exports = {
     ],
     'max-len': 'off',
     'no-console': ["error", { allow: ["warn", "error"] }],
-    'prefer-template': 'error',
+    'prefer-template': 'off',
     'camelcase': 'off',
     'new-cap': 'off',
     'eqeqeq': ['error', 'smart'],
     'one-var': 'off',
+    'padding-line-between-statements': 'off',
+    'lines-between-class-members': ['error', "always", { exceptAfterSingleLine: true }],
     'ember-suave/no-const-outside-module-scope': 'off',
     'ember-suave/require-access-in-comments': 'off',
+    'ember-suave/lines-between-object-properties': 'off',
     'ember/no-get': 'error',
-    'ember/no-get-properties': 'error',
+    // TODO: Re-enable later
+    'no-duplicate-imports': 'warn',
+    'no-await-in-loop': 'warn',
+    'import/no-relative-parent-imports': 'warn',
   },
   globals: {
     module     : true,

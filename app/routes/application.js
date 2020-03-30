@@ -4,13 +4,15 @@ import { inject as service } from '@ember/service';
 import { merge, values, isEmpty } from 'lodash-es';
 
 export default Route.extend(ApplicationRouteMixin, {
-  session: service(),
+  session     : service(),
+  currentUser : service(),
+
   title(tokens) {
     if (!tokens) {
       tokens = [];
     }
 
-    tokens.reverse().push(this.get('settings.appName'));
+    tokens.reverse().push(this.settings.appName);
     return tokens.join(' | ');
   },
 
@@ -23,13 +25,15 @@ export default Route.extend(ApplicationRouteMixin, {
     } else {
       this.set('session.previousRouteName', null);
     }
+
+    return this._loadCurrentUser();
   },
 
   async model() {
-    let notifications = [];
-    if (this.get('session.isAuthenticated')) {
+    let notificationsPromise = Promise.resolve([]);
+    if (this.session.isAuthenticated) {
       try {
-        notifications = await this.authManager.currentUser.query('notifications', {
+        notificationsPromise = this.authManager.currentUser.query('notifications', {
           filter: [
             {
               name : 'is-read',
@@ -45,33 +49,54 @@ export default Route.extend(ApplicationRouteMixin, {
       }
     }
 
+    const pagesPromise = this.store.query('page', {
+      sort: 'index'
+    });
+
+    const settingsPromise = this.store.queryRecord('setting', {});
+    const eventTypesPromise = this.store.findAll('event-type');
+    const eventLocationsPromise = this.store.findAll('event-location');
+
+    const [notifications, pages, settings, eventTypes, eventLocations] = await Promise.all([
+      notificationsPromise,
+      pagesPromise,
+      settingsPromise,
+      eventTypesPromise,
+      eventLocationsPromise]);
 
     return {
       notifications,
-      pages: await this.store.query('page', {
-        sort: 'index'
-      }),
-      cookiePolicy     : this.get('settings.cookiePolicy'),
-      cookiePolicyLink : this.get('settings.cookiePolicyLink'),
-      socialLinks      : await this.store.queryRecord('setting', {}),
-      eventTypes       : await this.store.findAll('event-type'),
-      eventLocations   : await this.store.findAll('event-location')
+      pages,
+      cookiePolicy     : settings.cookiePolicy,
+      cookiePolicyLink : settings.cookiePolicyLink,
+      socialLinks      : settings,
+      eventTypes,
+      eventLocations
     };
   },
 
   sessionInvalidated() {
-    if (!this.get('session.skipRedirectOnInvalidation')) {
+    if (!this.session.skipRedirectOnInvalidation) {
       this._super(...arguments);
     }
+
     this.set('session.skipRedirectOnInvalidation', false);
   },
 
-  sessionAuthenticated() {
-    if (this.get('session.previousRouteName')) {
-      this.transitionTo(this.get('session.previousRouteName'));
+  async sessionAuthenticated() {
+    let { _super } = this;
+    await this.authManager.loadUser();
+    await this._loadCurrentUser();
+    const route = this.session.previousRouteName;
+    if (route) {
+      this.transitionTo(route);
     } else {
-      this._super(...arguments);
+      _super.call(this, ...arguments);
     }
+  },
+
+  _loadCurrentUser() {
+    return this.currentUser.load().catch(() => this.getsession.invalidate());
   },
 
   /**
@@ -96,11 +121,10 @@ export default Route.extend(ApplicationRouteMixin, {
         } else {
           url = transition.router.generate(transition.targetName, params);
         }
+
         // Do not save the url of the transition to login route.
         if (!url.includes('login') && !url.includes('reset-password')) {
           this.set('session.previousRouteName', url);
-        } else {
-          this.set('session.previousRouteName', null);
         }
       });
     }

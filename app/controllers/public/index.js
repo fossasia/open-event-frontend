@@ -1,4 +1,3 @@
-import { filterBy } from '@ember/object/computed';
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { htmlSafe } from '@ember/string';
@@ -13,12 +12,9 @@ export default Controller.extend({
 
   userExists: false,
 
-  featuredSpeakers: filterBy('model.speakers', 'isFeatured', true),
-
-  nonFeaturedSpeakers: filterBy('model.speakers', 'isFeatured', false),
 
   htmlSafeDescription: computed('model.event.description', function() {
-    return htmlSafe(this.get('model.event.description'));
+    return htmlSafe(this.model.event.description);
   }),
 
   actions: {
@@ -33,16 +29,14 @@ export default Controller.extend({
         .then(() => {
           let credentials = newUser.getProperties('email', 'password'),
               authenticator = 'authenticator:jwt';
-          credentials.identification = newUser.email;
+          credentials.username = newUser.email;
           this.session
             .authenticate(authenticator, credentials)
             .then(async() => {
               const tokenPayload = this.authManager.getTokenPayload();
               if (tokenPayload) {
                 this.set('session.skipRedirectOnInvalidation', true);
-                this.authManager.persistCurrentUser(
-                  await this.store.findRecord('user', tokenPayload.identity)
-                );
+                await this.authManager.loadUser();
                 this.set('isLoginModalOpen', false);
                 this.send('placeOrder');
               }
@@ -69,10 +63,10 @@ export default Controller.extend({
 
     },
 
-    async loginExistingUser(identification, password) {
+    async loginExistingUser(username, password) {
       this.set('isLoading', true);
       let credentials = {
-        identification,
+        username,
         password
       };
       let authenticator = 'authenticator:jwt';
@@ -82,16 +76,14 @@ export default Controller.extend({
           const tokenPayload = this.authManager.getTokenPayload();
           if (tokenPayload) {
             this.set('session.skipRedirectOnInvalidation', true);
-            this.authManager.persistCurrentUser(
-              await this.store.findRecord('user', tokenPayload.identity)
-            );
+            await this.authManager.loadUser();
             this.set('isLoginModalOpen', false);
             this.send('placeOrder');
           }
         })
         .catch(reason => {
           if (!(this.isDestroyed || this.isDestroying)) {
-            if (reason && reason.hasOwnProperty('status_code') && reason.status_code === 401) {
+            if (reason && reason.status === 401) {
               this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
             } else {
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
@@ -108,7 +100,7 @@ export default Controller.extend({
     },
 
     async placeOrder() {
-      if (!this.get('session.isAuthenticated')) {
+      if (!this.session.isAuthenticated) {
         this.set('isLoginModalOpen', true);
         return;
       }
@@ -116,7 +108,7 @@ export default Controller.extend({
       order.tickets.forEach(ticket => {
         let numberOfAttendees = ticket.orderQuantity;
         while (numberOfAttendees--) {
-          this.get('model.attendees').addObject(this.store.createRecord('attendee', {
+          this.model.attendees.addObject(this.store.createRecord('attendee', {
             firstname : 'John',
             lastname  : 'Doe',
             email     : 'johndoe@example.com',
@@ -131,20 +123,21 @@ export default Controller.extend({
     async save() {
       try {
         this.set('isLoading', true);
-        let order = this.get('model.order');
-        let attendees = this.get('model.attendees');
-        for (const attendee of attendees ? attendees.toArray() : []) {
-          await attendee.save();
-        }
+        let { order } = this.model;
+        let { attendees } = this.model;
+        await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
         order.set('attendees', attendees);
         await order.save()
           .then(order => {
-            this.notify.success(this.l10n.t('Order details saved. Please fill further details within 10 minutes.'));
+            this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
             this.transitionToRoute('orders.new', order.identifier);
           })
           .catch(async e => {
-            for (const attendee of attendees ? attendees.toArray() : []) {
-              await attendee.destroyRecord();
+            console.error('Error while saving order', e);
+            try {
+              await Promise.allSettled((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
+            } catch (error) {
+              console.error('Error while deleting attendees after order failure', error);
             }
             this.notify.error(this.l10n.t(e.errors[0].detail));
           })
@@ -152,6 +145,7 @@ export default Controller.extend({
             this.set('isLoading', false);
           });
       } catch (e) {
+        console.error('Error while creating order', e);
         this.notify.error(this.l10n.t(e));
       }
     }

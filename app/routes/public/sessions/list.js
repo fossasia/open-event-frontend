@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
-    switch (this.get('params.session_status')) {
+    switch (this.params.session_status) {
       case 'all':
         return this.l10n.t('All sessions');
       case 'today':
@@ -16,169 +16,64 @@ export default Route.extend({
   },
   async model(params) {
     const eventDetails = this.modelFor('public');
-    let sessions =  null;
-    if (params.session_status === 'today') {
-      sessions = await this.store.query('session', {
-        filter: [
+    const filterOptions = [
+      {
+        and: [
           {
-            and: [
+            name : 'event',
+            op   : 'has',
+            val  : {
+              name : 'identifier',
+              op   : 'eq',
+              val  : eventDetails.id
+            }
+          },
+          {
+            or: [
               {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'identifier',
-                  op   : 'eq',
-                  val  : eventDetails.id
-                }
+                name : 'state',
+                op   : 'eq',
+                val  : 'confirmed'
               },
               {
-                name : 'starts-at',
-                op   : 'ge',
-                val  : moment().startOf('day').toISOString()
-              },
-              {
-                name : 'starts-at',
-                op   : 'lt',
-                val  : moment().endOf('day').toISOString()
-              },
-              {
-                or: [
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'confirmed'
-                  },
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'accepted'
-                  }
-                ]
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
               }
             ]
           }
         ]
-      });
-    } else if (params.session_status === 'week') {
-      sessions = await this.store.query('session', {
-        filter: [
+      }
+    ];
+
+    if (params.session_status !== 'all') {
+
+      const period = params.session_status === 'today' ? 'day' : params.session_status;
+      filterOptions.push({
+        and: [
           {
-            and: [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'identifier',
-                  op   : 'eq',
-                  val  : eventDetails.id
-                }
-              },
-              {
-                name : 'starts-at',
-                op   : 'ge',
-                val  : moment().startOf('week').toISOString()
-              },
-              {
-                name : 'starts-at',
-                op   : 'lt',
-                val  : moment().endOf('week').toISOString()
-              },
-              {
-                or: [
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'confirmed'
-                  },
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'accepted'
-                  }
-                ]
-              }
-            ]
+            name : 'starts-at',
+            op   : 'ge',
+            val  : moment().startOf(period).toISOString()
+          },
+          {
+            name : 'starts-at',
+            op   : 'lt',
+            val  : moment().endOf(period).toISOString()
           }
         ]
       });
-    } else if (params.session_status === 'month') {
-      sessions = await this.store.query('session', {
-        filter: [
-          {
-            and: [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'identifier',
-                  op   : 'eq',
-                  val  : eventDetails.id
-                }
-              },
-              {
-                name : 'starts-at',
-                op   : 'ge',
-                val  : moment().startOf('month').toISOString()
-              },
-              {
-                name : 'starts-at',
-                op   : 'lt',
-                val  : moment().add('month').toISOString()
-              },
-              {
-                or: [
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'confirmed'
-                  },
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'accepted'
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      });
-    } else {
-      sessions = await this.store.query('session', {
-        filter: [
-          {
-            and: [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'identifier',
-                  op   : 'eq',
-                  val  : eventDetails.id
-                }
-              },
-              {
-                or: [
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'confirmed'
-                  },
-                  {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'accepted'
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      });
+
     }
     return {
       event   : eventDetails,
-      session : sessions
+      session : await this.infinity.model('session', {
+        filter       : filterOptions,
+        perPage      : 6,
+        startingPage : 1,
+        perPageParam : 'page[size]',
+        pageParam    : 'page[number]'
+      })
     };
   }
 });

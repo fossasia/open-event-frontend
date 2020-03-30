@@ -5,7 +5,7 @@
     <i class="close icon" onclick={{action (mut showCookie) false}} role="button"></i>
     {{model.cookiePolicy}}
     {{#if model.cookiePolicyLink}}
-      <p>For more information <a href="{{model.cookiePolicyLink}}">click here</a>.</p>
+      <p><a href="{{model.cookiePolicyLink}}">Click here For more information</a></p>
     {{/if}}
   </div>
 {{/if}}
@@ -26,4 +26,4 @@
   </div>
 {{/side-bar}}
 {{modals/confirm-modal isOpen=confirm.isOpen}}
-{{ember-notify messageStyle='semantic-ui' classPrefix='notification-container'}}
+{{ember-notify messageStyle='semantic-ui' defaultClass='notification-container'}}

@@ -5,7 +5,7 @@
       <tr>
         <th>{{t 'Type'}}</th>
         <th class="four wide">{{t 'Sales Ends'}}</th>
-        <th class="ui three wide">{{t 'Price'}}</th>
+        <th class="ui three wide single line">{{t 'Ticket Price'}}</th>
         <th class="one wide">{{t 'Quantity'}}</th>
         <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
       </tr>
@@ -125,9 +125,10 @@
                       placeholder=(t 'Promotional Code')
                       readonly=promotionalCodeApplied
                       key-up=(action 'handleKeyPress')
+                      id='promotionalCode'
               }}
               {{#unless promotionalCodeApplied}}
-                <div role="button" class="ui icon button" {{action 'applyPromotionalCode'}}>
+                <div role="button" class="ui icon {{if promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
                   <i class="checkmark icon"></i>
                 </div>
               {{/unless}}

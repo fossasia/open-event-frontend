@@ -42,7 +42,7 @@ export default class extends Controller {
           this.set('isLoading', false);
         });
     } else {
-      this.get('model.session').save()
+      this.model.session.save()
         .then(() => {
           this.notify.success(this.l10n.t('Your session has been saved'),
             {
