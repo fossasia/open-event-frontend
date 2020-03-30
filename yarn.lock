@@ -3556,7 +3556,7 @@ broccoli-clean-css@^1.1.0:
     inline-source-map-comment "^1.0.5"
     json-stable-stringify "^1.0.0"
 
-broccoli-concat@^3.2.2, broccoli-concat@^3.7.1, broccoli-concat@^3.7.4, broccoli-concat@^3.7.5:
+broccoli-concat@^3.2.2, broccoli-concat@^3.7.1, broccoli-concat@^3.7.4:
   version "3.7.5"
   resolved "https://registry.yarnpkg.com/broccoli-concat/-/broccoli-concat-3.7.5.tgz#223beda8c1184252cf08ae020a3d45ffa6a48218"
   integrity sha512-rDs1Mej3Ej0Cy5yIO9oIQq5+BCv0opAwS2NW7M0BeCsAMeFM42Z/zacDUC6jKc5OV5wiHvGTyCPLnZkMe0h6kQ==
@@ -3574,10 +3574,10 @@ broccoli-concat@^3.2.2, broccoli-concat@^3.7.1, broccoli-concat@^3.7.4, broccoli
     lodash.uniq "^4.2.0"
     walk-sync "^0.3.2"
 
-broccoli-concat@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/broccoli-concat/-/broccoli-concat-4.2.2.tgz#9551c49fcb2fc40e966ef45e8caa6dfa1c7c59e0"
-  integrity sha512-kGvdeTf7coFqUYBohh1HpEMoGX3y42C6yGd80xfDkHlWspL//hmLNiq2FRBuMAeEv5F9KnSvN+TEFi+HAtPEPQ==
+broccoli-concat@^4.2.2, broccoli-concat@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/broccoli-concat/-/broccoli-concat-4.2.3.tgz#9f995c86e843f74b42d12f8146b9f21cd80eac64"
+  integrity sha512-K6glsSJKuoC+ubbnOZ4+g0BCFWXfjkKiEQMx2NFLYMXuBxKZnaV/Lx2aq+My57j0yUspRUXC/bJbEUIj5uPWkQ==
   dependencies:
     broccoli-debug "^0.6.5"
     broccoli-kitchen-sink-helpers "^0.3.1"
@@ -6881,15 +6881,15 @@ ember-factory-for-polyfill@^1.3.1:
   dependencies:
     ember-cli-version-checker "^2.1.0"
 
-ember-fetch@7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/ember-fetch/-/ember-fetch-7.1.0.tgz#17549e0df0f8c402b68612aa87f77957fa956ebf"
-  integrity sha512-FF2uEE7MXahNpXsQt9J3iJdPJDu27WL/ZD4NLuIWKgSAnFEvOxrjqhrU0fNMbkmJmlMBwGykbNiZVXDMpHbuLg==
+ember-fetch@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/ember-fetch/-/ember-fetch-8.0.0.tgz#bf4fcb78c6986f96658e8ee86ca3eb72cc0bb7aa"
+  integrity sha512-uWmxGmmd8+b3h4E0LY5+y4VFobcSMxCDsXitUIGKLKM9kXTKsdrbbML6Zmlwm4++nI7an9z7GQEKEuI5Bc/BHw==
   dependencies:
     abortcontroller-polyfill "^1.4.0"
-    broccoli-concat "^3.7.5"
+    broccoli-concat "^4.2.3"
     broccoli-debug "^0.6.5"
-    broccoli-merge-trees "^3.0.0"
+    broccoli-merge-trees "^4.1.0"
     broccoli-rollup "^2.1.1"
     broccoli-stew "^3.0.0"
     broccoli-templater "^2.0.1"
