@@ -3,7 +3,7 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.get('params.attendees_status')) {
+    switch (this.params.attendees_status) {
       case 'placed':
         return this.l10n.t('Placed');
       case 'pending':

@@ -9,35 +9,35 @@ export default Controller.extend({
   paymentDescription: 'Please fill your card details to proceed',
 
   isStripe: computed('model.order.paymentMode', function() {
-    return this.get('model.order.paymentMode') === 'stripe';
+    return this.model.order.paymentMode === 'stripe';
   }),
 
   isPaypal: computed('model.order.paymentMode', function() {
-    return this.get('model.order.paymentMode') === 'paypal';
+    return this.model.order.paymentMode === 'paypal';
   }),
 
   isPaytm: computed('model.order.paymentMode', function() {
-    return this.get('model.order.paymentMode') === 'paytm';
+    return this.model.order.paymentMode === 'paytm';
   }),
 
   isOmise: computed('model.order.paymentMode', function() {
-    return this.get('model.order.paymentMode') === 'omise';
+    return this.model.order.paymentMode === 'omise';
   }),
 
   isAliPay: computed('model.order', function() {
-    return this.get('model.order.paymentMode') === 'alipay';
+    return this.model.order.paymentMode === 'alipay';
   }),
 
   paymentAmount: computed('model.order', function() {
-    return this.get('model.order.amount') * 100;
+    return this.model.order.amount * 100;
   }),
 
   publicKeyOmise: computed('settings.omiseLivePublic', 'settings.omiseLivePublic', function() {
-    return this.get('settings.omiseLivePublic') || this.get('settings.omiseTestPublic');
+    return this.settings.omiseLivePublic || this.settings.omiseTestPublic;
   }),
 
   omiseFormAction: computed('model.order.identifier', function() {
-    let identifier = this.get('model.order.identifier');
+    let { identifier } = this.model.order;
     return `${ENV.APP.apiHost}/v1/orders/${identifier}/omise-checkout`;
   }),
 
@@ -104,7 +104,7 @@ export default Controller.extend({
     processStripeToken(token) {
       // Send this token to server to process payment
       this.set('isLoading', true);
-      let order = this.get('model.order');
+      let { order } = this.model;
       let chargePayload = {
         'data': {
           'attributes': {

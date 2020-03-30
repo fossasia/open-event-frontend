@@ -14,7 +14,7 @@ export default Controller.extend({
 
 
   htmlSafeDescription: computed('model.event.description', function() {
-    return htmlSafe(this.get('model.event.description'));
+    return htmlSafe(this.model.event.description);
   }),
 
   actions: {
@@ -100,7 +100,7 @@ export default Controller.extend({
     },
 
     async placeOrder() {
-      if (!this.get('session.isAuthenticated')) {
+      if (!this.session.isAuthenticated) {
         this.set('isLoginModalOpen', true);
         return;
       }
@@ -108,7 +108,7 @@ export default Controller.extend({
       order.tickets.forEach(ticket => {
         let numberOfAttendees = ticket.orderQuantity;
         while (numberOfAttendees--) {
-          this.get('model.attendees').addObject(this.store.createRecord('attendee', {
+          this.model.attendees.addObject(this.store.createRecord('attendee', {
             firstname : 'John',
             lastname  : 'Doe',
             email     : 'johndoe@example.com',
@@ -123,8 +123,8 @@ export default Controller.extend({
     async save() {
       try {
         this.set('isLoading', true);
-        let order = this.get('model.order');
-        let attendees = this.get('model.attendees');
+        let { order } = this.model;
+        let { attendees } = this.model;
         await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
         order.set('attendees', attendees);
         await order.save()

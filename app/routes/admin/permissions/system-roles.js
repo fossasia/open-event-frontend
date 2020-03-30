@@ -13,7 +13,7 @@ export default Route.extend({
   },
   actions: {
     willTransition() {
-      this.get('controller.model.userPermissions').forEach(userPermission => {
+      this.controller.model.userPermissions.forEach(userPermission => {
         userPermission.rollbackAttributes();
       });
     }

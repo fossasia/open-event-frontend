@@ -30,7 +30,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
     const headers = {
       'Content-Type': 'application/vnd.api+json'
     };
-    const { access_token } = this.get('session.data.authenticated');
+    const { access_token } = this.session.data.authenticated;
     if (access_token) {
       headers[ENV['ember-simple-auth-token'].authorizationHeaderName] = ENV['ember-simple-auth-token'].authorizationPrefix + access_token;
     }
@@ -84,7 +84,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
    @param {Number} status The response status as received from the API
    */
   ensureResponseAuthorized(status) {
-    if (status === 401 && this.get('session.isAuthenticated')) {
+    if (status === 401 && this.session.isAuthenticated) {
       this.session.invalidate();
     }
   }

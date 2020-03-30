@@ -7,7 +7,11 @@ export default Component.extend({
   classNames: ['column'],
 
   tags: computed('event.type', 'event.topic', 'event.subTopic', function() {
-    const tagsOriginal = this.getProperties('event.topic.name', 'event.type.name', 'event.subTopic.name');
+    // Unfortunately, due to the extremely dynamic and stringy nature
+    // of ember, the next line crashes on using object destructuring
+    // and we don't have time and resources to chase down issues originating
+    // from ember core, hence disabling the lint
+    const tagsOriginal = this.getProperties('event.topic.name', 'event.type.name', 'event.subTopic.name');  // eslint-disable-line ember/no-get
     let tags = [];
     forOwn(tagsOriginal, value => {
       if (value && value.trim() !== '') {

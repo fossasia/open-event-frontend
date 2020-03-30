@@ -6,7 +6,7 @@ export default class extends Controller {
 
   @computed('model.endsAt')
   get isUpcoming() {
-    let endAt = this.get('model.endsAt');
+    let endAt = this.model.endsAt;
     if (endAt < moment()) {
       return false;
     }

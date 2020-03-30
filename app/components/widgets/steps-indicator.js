@@ -14,7 +14,7 @@ export default Component.extend({
 
   currentStepComputed: observer('session.currentRouteName', 'autoSteps', function() {
     if (this.autoSteps) {
-      this.set('currentStep', findIndex(this.steps, ['route', this.get('session.currentRouteName')]) + 1);
+      this.set('currentStep', findIndex(this.steps, ['route', this.session.currentRouteName]) + 1);
     }
   }),
 

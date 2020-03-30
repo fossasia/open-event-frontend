@@ -7,7 +7,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
   },
   async model() {
 
-    let user = this.get('authManager.currentUser');
+    let user = this.authManager.currentUser;
     const events = await user.query('events', {});
     const orders = await user.query('orders', {});
 

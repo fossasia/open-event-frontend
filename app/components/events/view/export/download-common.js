@@ -62,7 +62,7 @@ export default Component.extend({
     startExportTask() {
       this.set('isLoading', true);
       this.loader
-        .load(`/events/${this.get('model.id')}/export/${this.fileFormat}`)
+        .load(`/events/${this.model.id}/export/${this.fileFormat}`)
         .then(exportJobInfo => {
           this.requestLoop(exportJobInfo);
         })

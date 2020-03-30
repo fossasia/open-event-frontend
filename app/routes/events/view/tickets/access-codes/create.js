@@ -11,7 +11,7 @@ export default Route.extend({
       accessCode: this.store.createRecord('access-code', {
         event         : this.modelFor('events.view'),
         tickets       : [],
-        marketer      : this.get('authManager.currentUser'),
+        marketer      : this.authManager.currentUser,
         validFromDate : moment(),
         validFromTime : '12:00',
         validTillDate : moment().add(7, 'days'),
@@ -24,7 +24,7 @@ export default Route.extend({
   },
   resetController(controller) {
     this._super(...arguments);
-    const model = controller.get('model.accessCode');
+    const model = controller.model.accessCode;
     if (!model.id) {
       model.unloadRecord();
     }

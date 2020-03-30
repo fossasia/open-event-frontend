@@ -32,7 +32,7 @@ export default Component.extend({
         });
     },
     markAllRead() {
-      this.get('authManager.currentUser').get('notifications')
+      this.authManager.currentUser.get('notifications')
         .then(data => {
           data.forEach(item => {
             if (!item.get('isRead')) {

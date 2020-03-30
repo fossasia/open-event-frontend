@@ -4,7 +4,7 @@ export default Controller.extend({
   actions: {
     save() {
       this.set('isLoading', true);
-      this.get('model.session').save()
+      this.model.session.save()
         .then(() => {
           this.notify.success(this.l10n.t('Session details have been saved'),
             {

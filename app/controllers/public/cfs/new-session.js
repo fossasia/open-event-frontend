@@ -4,9 +4,9 @@ export default Controller.extend({
     async save(speakerDetails) {
       this.set('isLoading', true);
       try {
-        await this.get('model.session').save();
-        speakerDetails.sessions.pushObject(this.get('model.session'));
-        await this.get('model.session').save();
+        await this.model.session.save();
+        speakerDetails.sessions.pushObject(this.model.session);
+        await this.model.session.save();
         this.notify.success(this.l10n.t('Your session has been saved'),
           {
             id: 'sess_save_succ'

@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   titleToken() {
-    switch (this.get('params.tickets_status')) {
+    switch (this.params.tickets_status) {
       case 'upcoming':
         return this.l10n.t('Upcoming');
       case 'past':

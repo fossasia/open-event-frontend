@@ -15,7 +15,7 @@ export default ModalBase.extend(FormMixin, {
       permission.toggleProperty('isChecked');
     },
     close() {
-      if (!this.get('role.id')) {
+      if (!this.role.id) {
         this.role.unloadRecord();
       }
       this.set('isOpen', false);

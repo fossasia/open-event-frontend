@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default Route.extend({
   titleToken() {
-    switch (this.get('params.session_status')) {
+    switch (this.params.session_status) {
       case 'all':
         return this.l10n.t('All sessions');
       case 'today':
