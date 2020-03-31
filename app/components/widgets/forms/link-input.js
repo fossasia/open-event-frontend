@@ -1,23 +1,34 @@
+import classic from 'ember-classic-decorator';
+import { classNameBindings } from '@ember-decorators/component';
+import { observes } from '@ember-decorators/object';
 import Component from '@ember/component';
-import { observer } from '@ember/object';
+import '@ember/object';
 
-export default Component.extend({
-  classNameBindings : ['hasLinkName:fields', 'hasLinkName::ui', 'hasLinkName::labeled', 'hasLinkName::input:'],
-  hasLinkName       : false,
-  isChild           : false,
-  canRemoveItem     : true,
-  canAddItem        : true,
-  protocol          : 'https',
-  address           : '',
+@classic
+@classNameBindings(
+  'hasLinkName:fields',
+  'hasLinkName::ui',
+  'hasLinkName::labeled',
+  'hasLinkName::input:'
+)
+export default class LinkInput extends Component {
+  hasLinkName = false;
+  isChild = false;
+  canRemoveItem = true;
+  canAddItem = true;
+  protocol = 'https';
+  address = '';
 
-  segmentedLinkObserver: observer('segmentedLink.{address,protocol}', function() {
+  @observes('segmentedLink.{address,protocol}')
+  segmentedLinkObserver() {
     this.setProperties({
       protocol : this.segmentedLink.protocol,
       address  : this.segmentedLink.address
     });
-  }),
+  }
 
-  protocolAddressObserver: observer('protocol', 'address', function() {
+  @observes('protocol', 'address')
+  protocolAddressObserver() {
     let add = this.address;
     let proto = this.protocol;
     if (add.includes('http://') || add.includes('https://')) {
@@ -32,10 +43,10 @@ export default Component.extend({
       protocol : proto,
       address  : add
     });
-  }),
+  }
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     if (this.segmentedLink) {
       this.setProperties({
         protocol : this.segmentedLink.protocol,
@@ -43,4 +54,4 @@ export default Component.extend({
       });
     }
   }
-});
+}

@@ -1,21 +1,24 @@
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import $ from 'jquery';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { v4 } from 'ember-uuid';
 
-export default Component.extend({
+@classic
+export default class FileUpload extends Component {
+  selectedFile = null;
+  allowDragDrop = true;
 
-  selectedFile  : null,
-  allowDragDrop : true,
-
-  inputIdGenerated: computed('inputId', function() {
+  @computed('inputId')
+  get inputIdGenerated() {
     return this.inputId ? this.inputId : v4();
-  }),
+  }
 
-  maxSize: computed('maxSizeInKb', function() {
+  @computed('maxSizeInKb')
+  get maxSize() {
     return humanReadableBytes(this.maxSizeInKb);
-  }),
+  }
 
   uploadFile() {
     this.set('needsConfirmation', false);
@@ -37,7 +40,7 @@ export default Component.extend({
       .finally(() => {
         this.set('uploadingFile', false);
       });
-  },
+  }
 
   processFiles(files) {
     if (files && files[0]) {
@@ -58,36 +61,37 @@ export default Component.extend({
         id: 'file_upload_err_brow'
       });
     }
-  },
+  }
 
-  actions: {
-    fileSelected(mode, event) {
-      if (mode === 'url') {
-        this.set('fileUrl', event.target.value);
-      } else {
-        this.processFiles(event.target.files);
-      }
-    },
-    removeSelection() {
-      if (!this.needsConfirmation || this.edit === true) {
-        this.set('selectedFile', null);
-        this.set('fileUrl', null);
-      } else {
-        this.set('needsConfirmation', false);
-      }
+  @action
+  fileSelected(mode, event) {
+    if (mode === 'url') {
+      this.set('fileUrl', event.target.value);
+    } else {
+      this.processFiles(event.target.files);
     }
-  },
+  }
+
+  @action
+  removeSelection() {
+    if (!this.needsConfirmation || this.edit === true) {
+      this.set('selectedFile', null);
+      this.set('fileUrl', null);
+    } else {
+      this.set('needsConfirmation', false);
+    }
+  }
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     this.set('selectedFile', this.fileUrl);
     if (this.selectedFile) {
       this.set('needsConfirmation', true);
     }
-  },
+  }
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     $(this.element)
       .on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
         e.preventDefault();
@@ -102,11 +106,10 @@ export default Component.extend({
       .on('drop', e => {
         this.processFiles(e.originalEvent.dataTransfer.files);
       });
-  },
-
-  willDestroyElement() {
-    this._super(...arguments);
-    $(this.element).off('drag dragstart dragend dragover dragenter dragleave drop');
   }
 
-});
+  willDestroyElement() {
+    super.willDestroyElement(...arguments);
+    $(this.element).off('drag dragstart dragend dragover dragenter dragleave drop');
+  }
+}

@@ -1,8 +1,11 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
+import Component from '@ember/component';
 
-export default Component.extend({
-  handle: computed('handleOrProfile', function() {
+@classic
+export default class TwitterTimeline extends Component {
+  @computed('handleOrProfile')
+  get handle() {
     if (this.handleOrProfile && this.handleOrProfile.includes('/')) {
       const splitted = this.handleOrProfile.trim().split('/');
       if (splitted.includes('hashtag')) {
@@ -11,12 +14,13 @@ export default Component.extend({
       return splitted[splitted.length - 1];
     }
     return this.handleOrProfile;
-  }),
+  }
 
-  normalizedUrl: computed('handle', function() {
+  @computed('handle')
+  get normalizedUrl() {
     if (this.handle) {
       return `https://twitter.com/${this.handle}`;
     }
     return null;
-  })
-});
+  }
+}

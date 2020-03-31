@@ -1,4 +1,5 @@
+import classic from 'ember-classic-decorator';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend({
-});
+@classic
+export default class ConfirmUserDeleteModal extends ModalBase {}

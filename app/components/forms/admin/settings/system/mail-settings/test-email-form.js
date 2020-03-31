@@ -1,7 +1,10 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 
-export default Component.extend(FormMixin, {
+@classic
+export default class TestEmailForm extends Component.extend(FormMixin) {
   getValidationRules() {
     return {
       inline : true,
@@ -23,29 +26,29 @@ export default Component.extend(FormMixin, {
         }
       }
     };
-  },
-  actions: {
-    sendTestMail() {
-      this.onValid(() => {
-        let payload = {
-          recipient: this.recipientEmail
-        };
-        let config = {
-          skipDataTransform: true
-        };
-        this.loader.post('/test-mail', JSON.stringify(payload), config)
-          .then(response => {
-            this.notify.success(response.message, {
-              id: 'succ_response_test'
-            });
-          })
-          .catch(e => {
-            console.error('Error while sending test email', e);
-            this.notify.error(this.l10n.t('An unexpected error has occurred'), {
-              id: 'test_mail_err'
-            });
-          });
-      });
-    }
   }
-});
+
+  @action
+  sendTestMail() {
+    this.onValid(() => {
+      let payload = {
+        recipient: this.recipientEmail
+      };
+      let config = {
+        skipDataTransform: true
+      };
+      this.loader.post('/test-mail', JSON.stringify(payload), config)
+        .then(response => {
+          this.notify.success(response.message, {
+            id: 'succ_response_test'
+          });
+        })
+        .catch(e => {
+          console.error('Error while sending test email', e);
+          this.notify.error(this.l10n.t('An unexpected error has occurred'), {
+            id: 'test_mail_err'
+          });
+        });
+    });
+  }
+}

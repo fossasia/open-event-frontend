@@ -1,32 +1,36 @@
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import moment from 'moment';
 
-export default Component.extend({
+@classic
+export default class SideMenu extends Component {
   async didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     let speakersCall = await this.event.speakersCall;
     this.set('shouldShowCallforSpeakers',
       speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
-  },
-  actions: {
-    scrollToTarget() {
-      document.querySelectorAll('.scroll').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+  }
 
-          document.querySelectorAll('.scroll').forEach(node => {
-            node.classList.remove('active');
-          });
-          e.target.classList.add('active');
+  @action
+  scrollToTarget() {
+    document.querySelectorAll('.scroll').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
+
+        document.querySelectorAll('.scroll').forEach(node => {
+          node.classList.remove('active');
+        });
+        e.target.classList.add('active');
       });
-    }
-  },
-  isSchedulePublished: computed('event.schedulePublishedOn', function() {
+    });
+  }
+
+  @computed('event.schedulePublishedOn')
+  get isSchedulePublished() {
     return this.event.schedulePublishedOn && this.event.schedulePublishedOn.toISOString() !== moment(0).toISOString();
-  })
-});
+  }
+}

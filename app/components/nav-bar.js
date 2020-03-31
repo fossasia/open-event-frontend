@@ -1,10 +1,12 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 
-export default Component.extend({
-  actions: {
-    logout() {
-      this.authManager.logout();
-      this.routing.transitionTo('index');
-    }
+@classic
+export default class NavBar extends Component {
+  @action
+  logout() {
+    this.authManager.logout();
+    this.routing.transitionTo('index');
   }
-});
+}

@@ -1,6 +1,5 @@
+import classic from 'ember-classic-decorator';
 import DefaultPagination from 'ember-models-table/components/models-table/columns-dropdown';
-import layout from 'open-event-frontend/components/ui-table/columns-dropdown';
 
-export default DefaultPagination.extend({
-  layout
-});
+@classic
+export default class ColumnsDropdown extends DefaultPagination {}

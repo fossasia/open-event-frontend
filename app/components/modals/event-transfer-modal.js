@@ -1,10 +1,14 @@
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend({
-  isSmall          : true,
-  confirmEventName : '',
-  isNameDifferent  : computed('confirmEventName', 'eventName', function() {
+@classic
+export default class EventTransferModal extends ModalBase {
+  isSmall = true;
+  confirmEventName = '';
+
+  @computed('confirmEventName', 'eventName')
+  get isNameDifferent() {
     return this.eventName ? this.confirmEventName !== this.eventName : true;
-  })
-});
+  }
+}
