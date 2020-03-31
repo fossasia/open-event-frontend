@@ -1,9 +1,12 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
+import Component from '@ember/component';
 import { orderBy, groupBy } from 'lodash-es';
 
-export default Component.extend({
-  sponsorsGrouped: computed('sponsors.[]', function() {
+@classic
+export default class SponsorList extends Component {
+  @computed('sponsors.[]')
+  get sponsorsGrouped() {
     return groupBy(
       orderBy(
         this.sponsors.toArray(),
@@ -11,5 +14,5 @@ export default Component.extend({
       ),
       sponsor => sponsor.get('type')
     );
-  })
-});
+  }
+}

@@ -1,12 +1,16 @@
+import classic from 'ember-classic-decorator';
+import { classNames, classNameBindings } from '@ember-decorators/component';
 import $ from 'jquery';
 import Component from '@ember/component';
 
-export default Component.extend({
-  classNames        : ['unscheduled-session'],
-  classNameBindings : ['isDragActive'],
-  isDragActive      : false,
+@classic
+@classNames('unscheduled-session')
+@classNameBindings('isDragActive')
+export default class UnscheduledSession extends Component {
+  isDragActive = false;
+
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     const $element = $(this.element);
     $element.data('event', {
       title    : $element.text().replace(/\s\s+/g, ' '), // use the element's text as the event title
@@ -24,12 +28,14 @@ export default Component.extend({
     $element.data('serverId', this.session.id);
     $element.css('border-color', this.session.track.color);
 
-  },
+  }
+
   dragStart() {
     this.set('isDragActive', true);
 
-  },
+  }
+
   mouseUp() {
     this.set('isDragActive', false);
   }
-});
+}

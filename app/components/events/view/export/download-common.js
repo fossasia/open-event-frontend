@@ -1,12 +1,16 @@
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import { run } from '@ember/runloop';
 
-export default Component.extend({
-  isDownloadDisabled : true,
-  eventDownloadUrl   : '',
-  isLoading          : false,
-  fileFormat         : computed(function() {
+@classic
+export default class DownloadCommon extends Component {
+  isDownloadDisabled = true;
+  eventDownloadUrl = '';
+  isLoading = false;
+
+  @computed
+  get fileFormat() {
     switch (this.downloadType) {
       case 'iCalendar':
         return 'ical';
@@ -17,10 +21,13 @@ export default Component.extend({
       default:
         return ' ';
     }
-  }),
-  displayUrl: computed(function() {
+  }
+
+  @computed
+  get displayUrl() {
     return this.get(`model.${  this.fileFormat  }Url`) !== null ? this.get(`model.${  this.fileFormat  }Url`) : 'Please publish to generate the link';
-  }),
+  }
+
   requestLoop(exportJobInfo) {
     run.later(() => {
       this.loader
@@ -57,22 +64,22 @@ export default Component.extend({
           this.set('isLoading', false);
         });
     }, 3000);
-  },
-  actions: {
-    startExportTask() {
-      this.set('isLoading', true);
-      this.loader
-        .load(`/events/${this.model.id}/export/${this.fileFormat}`)
-        .then(exportJobInfo => {
-          this.requestLoop(exportJobInfo);
-        })
-        .catch(e => {
-          console.error('Error while starting exporting job', e);
-          this.set('isLoading', false);
-          this.notify.error(this.l10n.t('Unexpected error occurred.'), {
-            id: 'unexpected_down_error'
-          });
-        });
-    }
   }
-});
+
+  @action
+  startExportTask() {
+    this.set('isLoading', true);
+    this.loader
+      .load(`/events/${this.model.id}/export/${this.fileFormat}`)
+      .then(exportJobInfo => {
+        this.requestLoop(exportJobInfo);
+      })
+      .catch(e => {
+        console.error('Error while starting exporting job', e);
+        this.set('isLoading', false);
+        this.notify.error(this.l10n.t('Unexpected error occurred.'), {
+          id: 'unexpected_down_error'
+        });
+      });
+  }
+}

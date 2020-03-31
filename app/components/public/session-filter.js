@@ -1,10 +1,11 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 
-export default Component.extend({
-
-  actions: {
-    filter(trackId = null) {
-      this.set('selectedTrackId', trackId);
-    }
+@classic
+export default class SessionFilter extends Component {
+  @action
+  filter(trackId = null) {
+    this.set('selectedTrackId', trackId);
   }
-});
+}

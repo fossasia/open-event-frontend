@@ -1,13 +1,19 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
+import { classNames } from '@ember-decorators/component';
 import { computed } from '@ember/object';
+import Component from '@ember/component';
 
-export default Component.extend({
-  classNames  : ['four wide  speaker column'],
-  socialLinks : computed(function() {
+@classic
+@classNames('four wide  speaker column')
+export default class SpeakerItem extends Component {
+  @computed
+  get socialLinks() {
     return this.speaker.getProperties('twitter', 'facebook', 'github', 'linkedin');
-  }),
-  hasSocialLinks: computed(function() {
+  }
+
+  @computed
+  get hasSocialLinks() {
     let currentSpeaker = this.speaker;
     return (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience);
-  })
-});
+  }
+}

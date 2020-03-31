@@ -1,23 +1,27 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend(FormMixin, {
-  isSmall            : true,
-  autoScrollToErrors : false,
+@classic
+export default class AddUserRoleModal extends ModalBase.extend(FormMixin) {
+  isSmall = true;
+  autoScrollToErrors = false;
 
-  actions: {
-    addRole() {
-      this.onValid(() => {
-        this.sendAction('updateUserRoles');
-      });
-    },
-    close() {
-      if (!this.currentInvite.get('id')) {
-        this.currentInvite.unloadRecord();
-      }
-      this.set('isOpen', false);
+  @action
+  addRole() {
+    this.onValid(() => {
+      this.sendAction('updateUserRoles');
+    });
+  }
+
+  @action
+  close() {
+    if (!this.currentInvite.get('id')) {
+      this.currentInvite.unloadRecord();
     }
-  },
+    this.set('isOpen', false);
+  }
 
   getValidationRules() {
 
@@ -51,4 +55,4 @@ export default ModalBase.extend(FormMixin, {
       }
     };
   }
-});
+}

@@ -1,5 +1,7 @@
+import classic from 'ember-classic-decorator';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend({
-  isSmall: true
-});
+@classic
+export default class ProposalDeleteModal extends ModalBase {
+  isSmall = true;
+}

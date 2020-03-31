@@ -1,26 +1,33 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend(FormMixin, {
-  isSmall            : true,
-  autoScrollToErrors : false,
+@classic
+export default class AddSystemRoleModal extends ModalBase.extend(FormMixin) {
+  isSmall = true;
+  autoScrollToErrors = false;
 
-  actions: {
-    addRole() {
-      this.onValid(() => {
-        this.sendAction('addSystemRole');
-      });
-    },
-    toggleCheckbox(permission) {
-      permission.toggleProperty('isChecked');
-    },
-    close() {
-      if (!this.role.id) {
-        this.role.unloadRecord();
-      }
-      this.set('isOpen', false);
+  @action
+  addRole() {
+    this.onValid(() => {
+      this.sendAction('addSystemRole');
+    });
+  }
+
+  @action
+  toggleCheckbox(permission) {
+    permission.toggleProperty('isChecked');
+  }
+
+  @action
+  close() {
+    if (!this.role.id) {
+      this.role.unloadRecord();
     }
-  },
+    this.set('isOpen', false);
+  }
+
   getValidationRules() {
     return {
       inline : true,
@@ -39,4 +46,4 @@ export default ModalBase.extend(FormMixin, {
       }
     };
   }
-});
+}

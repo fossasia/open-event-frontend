@@ -1,5 +1,7 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 
-export default Component.extend({
-  showBanner: true
-});
+@classic
+export default class EventInfo extends Component {
+  showBanner = true;
+}
