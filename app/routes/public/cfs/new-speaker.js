@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class NewSpeakerRoute extends Route {
   titleToken() {
     return this.l10n.t('New Speaker');
-  },
+  }
 
   async model() {
     const eventDetails = this.modelFor('public');
@@ -26,12 +28,13 @@ export default Route.extend({
         user     : currentUser
       })
     };
-  },
+  }
+
   resetController(controller) {
-    this._super(...arguments);
+    super.resetController(...arguments);
     const model = controller.model.speaker;
     if (!model.id) {
       controller.model.speaker.unloadRecord();
     }
   }
-});
+}

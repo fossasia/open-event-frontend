@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class EditSpeakerRoute extends Route {
   titleToken() {
     return this.l10n.t('Edit Speaker');
-  },
+  }
 
   async model(params) {
     const eventDetails = this.modelFor('public');
@@ -16,4 +18,4 @@ export default Route.extend({
       speaker: await this.store.findRecord('speaker', params.speaker_id)
     };
   }
-});
+}
