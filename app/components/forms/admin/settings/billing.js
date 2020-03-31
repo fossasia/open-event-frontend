@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { action } from '@ember/object';
 
-export default class extends Component.extend(FormMixin) {
+@classic
+export default class Billing extends Component.extend(FormMixin) {
   getValidationRules() {
     return {
       inline : true,

@@ -1,8 +1,10 @@
+import classic from 'ember-classic-decorator';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
 
-export default class extends ModalBase.extend(FormMixin) {
+@classic
+export default class PaytmPaymentOptions extends ModalBase.extend(FormMixin) {
   isSmall = true;
   isWalletSelected = false;
 

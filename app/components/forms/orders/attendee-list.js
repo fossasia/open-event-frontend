@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { groupBy } from 'lodash-es';
 import { or } from '@ember/object/computed';
 
-export default class extends Component {
+@classic
+export default class AttendeeList extends Component {
   @computed('data.user')
   get buyer() {
     return this.data.user;

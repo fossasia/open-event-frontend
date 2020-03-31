@@ -1,5 +1,7 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 
-export default class extends Component {
+@classic
+export default class CaptchaForm extends Component {
 
 }
