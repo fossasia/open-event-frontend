@@ -1,3 +1,4 @@
+import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import moment from 'moment';
@@ -13,7 +14,7 @@ export default class SideBar extends Component {
   customStartDate = moment().toISOString();
 
   customEndDate = null;
-  showFilters = false;
+  @tracked showFilters = false;
   isMapVisible = true;
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs')
@@ -28,7 +29,6 @@ export default class SideBar extends Component {
 
   showAllTypes = not('event_type');
 
-  @computed()
   get dateRanges() {
     return getDateRanges.bind(this)();
   }

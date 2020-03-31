@@ -1,9 +1,8 @@
 import Controller from '@ember/controller';
-import { computed, action } from '@ember/object';
+import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  @computed()
   get columns() {
     return [
       {

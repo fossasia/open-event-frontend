@@ -1,3 +1,4 @@
+import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import { classNames } from '@ember-decorators/component';
 import { action, computed } from '@ember/object';
@@ -6,7 +7,7 @@ import Component from '@ember/component';
 @classic
 @classNames('ui', 'fluid', 'card')
 export default class ManageRoles extends Component {
-  roleType = 'accepted';
+  @tracked roleType = 'accepted';
 
   @computed('data.roleInvites.@each', 'roleType')
   get roleInvites() {

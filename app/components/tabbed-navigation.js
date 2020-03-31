@@ -1,3 +1,4 @@
+import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import { classNames } from '@ember-decorators/component';
 import { action, computed } from '@ember/object';
@@ -7,14 +8,11 @@ import Component from '@ember/component';
 @classic
 @classNames('tabbed-navigation')
 export default class TabbedNavigation extends Component {
-  item = null;
+  @tracked item = null;
 
   @computed('session.currentRouteName', 'item')
   get currentRoute() {
-    const path = this.session.currentRouteName;
-    if (path) {
-      return this.item;
-    }
+    return this.session.currentRouteName && this.item;
   }
 
   didInsertElement() {

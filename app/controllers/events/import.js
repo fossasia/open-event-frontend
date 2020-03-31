@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 
 export default class extends Controller {
   importStatus = '';
@@ -9,7 +9,6 @@ export default class extends Controller {
   file         = false;
   fileName     = '';
 
-  @computed()
   get columns() {
     return [
       {

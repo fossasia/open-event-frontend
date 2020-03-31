@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 
@@ -7,7 +6,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   per_page = 100;
   sort_by = 'received-at';
   sort_dir = 'ASC';
-  @computed()
   get columns() {
     return [
       {

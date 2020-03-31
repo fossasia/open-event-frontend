@@ -3,7 +3,7 @@ import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { pick, orderBy } from 'lodash-es';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 
 @classic
@@ -92,7 +92,6 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
     };
   }
 
-  @computed()
   get countries() {
     return orderBy(countries, 'name');
   }
