@@ -1,5 +1,7 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-export default Route.extend({
+@classic
+export default class AllRoute extends Route {
   titleToken() {
     switch (this.params.notification_state) {
       case 'unread':
@@ -7,7 +9,8 @@ export default Route.extend({
       case 'all':
         return this.l10n.t('All');
     }
-  },
+  }
+
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
@@ -40,4 +43,4 @@ export default Route.extend({
 
     return data;
   }
-});
+}

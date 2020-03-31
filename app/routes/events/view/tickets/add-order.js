@@ -1,9 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class AddOrderRoute extends Route {
   titleToken() {
     return this.l10n.t('Add Order');
-  },
+  }
+
   async model() {
     const eventDetails = this.modelFor('events.view');
     let queryObject = {};
@@ -22,18 +25,20 @@ export default Route.extend({
 
       attendees: []
     };
-  },
+  }
+
   afterModel(model) {
     let { tickets } = model;
     tickets.forEach(ticket => {
       ticket.set('orderQuantity', 0);
     });
-  },
+  }
+
   resetController(controller) {
-    this._super(...arguments);
+    super.resetController(...arguments);
     const model = controller.model.order;
     if (!model.id) {
       model.unloadRecord();
     }
   }
-});
+}

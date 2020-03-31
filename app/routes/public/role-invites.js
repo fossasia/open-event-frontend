@@ -1,9 +1,14 @@
-import Route from '@ember/routing/route';
+import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Route.extend({
-  fastboot          : service(),
-  redirectionParams : null,
+@classic
+export default class RoleInvitesRoute extends Route {
+  @service
+  fastboot;
+
+  redirectionParams = null;
+
   async beforeModel(transition) {
     // We don't want to process or transition in fastboot mode
     // Since this is only an intermediate page
@@ -34,9 +39,10 @@ export default Route.extend({
       }
     });
 
-  },
+  }
+
   afterModel() {
     if (this.fastboot.isFastBoot) {return}
     this.transitionTo('register', this.redirectionParams);
   }
-});
+}

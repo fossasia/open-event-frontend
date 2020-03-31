@@ -1,9 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  templateName: 'admin/users/list',
+@classic
+export default class IndexRoute extends Route {
+  templateName = 'admin/users/list';
+
   beforeModel() {
-    this._super(...arguments);
+    super.beforeModel(...arguments);
     this.transitionTo('admin.users.list', 'all');
   }
-});
+}

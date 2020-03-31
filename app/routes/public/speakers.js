@@ -1,6 +1,8 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class SpeakersRoute extends Route {
   async model() {
     const eventDetails = this.modelFor('public');
     const filterOptions = [
@@ -38,4 +40,4 @@ export default Route.extend({
 
 
   }
-});
+}

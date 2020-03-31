@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class ScheduleRoute extends Route {
   titleToken() {
     return this.l10n.t('Schedule');
-  },
+  }
 
   async model() {
     let event = this.modelFor('public');
@@ -108,4 +110,4 @@ export default Route.extend({
     };
 
   }
-});
+}

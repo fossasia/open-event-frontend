@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 
-export default Route.extend({
+@classic
+export default class ListRoute extends Route {
   titleToken() {
     switch (this.params.ticket_status) {
       case 'completed':
@@ -9,7 +11,8 @@ export default Route.extend({
       case 'open':
         return this.l10n.t('Open');
     }
-  },
+  }
+
   model(params) {
     this.set('params', params);
     let filterOptions = [];
@@ -99,4 +102,4 @@ export default Route.extend({
       store        : this.authManager.currentUser
     });
   }
-});
+}

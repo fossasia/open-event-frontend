@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class IndexRoute extends Route {
   titleToken() {
     return this.l10n.t('Call for Speakers');
-  },
+  }
 
   async beforeModel(transition) {
     let hash = transition.to.params['public.cfs'] ? transition.to.params['public.cfs'].speaker_call_hash : null;
@@ -23,7 +25,7 @@ export default Route.extend({
     if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {
       this.transitionTo('not-found');
     }
-  },
+  }
 
   async model() {
     const eventDetails = this.modelFor('public');
@@ -91,4 +93,4 @@ export default Route.extend({
       };
     }
   }
-});
+}

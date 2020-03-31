@@ -1,7 +1,10 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 
-export default Route.extend({
+@classic
+export default class IndexRoute extends Route {
   /**
    * Load filtered events based on the given params
    *
@@ -120,7 +123,7 @@ export default Route.extend({
       });
     }
 
-  },
+  }
 
   async model(params) {
     let filterOptions =  this._loadEvents(params, 'filterOptions');
@@ -131,25 +134,26 @@ export default Route.extend({
         filter  : filterOptions
       })
     };
-  },
+  }
 
   setupController(controller, model) {
-    this._super(...arguments);
+    super.setupController(...arguments);
     controller.set('filteredEvents', model.filteredEvents);
     this.set('controller', controller);
-  },
+  }
 
-  actions: {
-    async queryParamsDidChange(change, params) {
-      if (this.controller) {
-        this.controller.set('filteredEvents', await this._loadEvents(params));
-      }
-    },
-    loading(transition) {
-      transition.promise.finally(() => {
-        this.controller.set('finishedLoading', true);
-      });
-      return false;
+  @action
+  async queryParamsDidChange(change, params) {
+    if (this.controller) {
+      this.controller.set('filteredEvents', await this._loadEvents(params));
     }
   }
-});
+
+  @action
+  loading(transition) {
+    transition.promise.finally(() => {
+      this.controller.set('finishedLoading', true);
+    });
+    return false;
+  }
+}

@@ -1,11 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Route.extend(EventWizardMixin, {
-
+@classic
+export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin) {
   titleToken() {
     return this.l10n.t('Sessions & Speakers');
-  },
+  }
 
   async model() {
     let data = this.modelFor('events.view.edit');
@@ -35,4 +36,4 @@ export default Route.extend(EventWizardMixin, {
     });
     return data;
   }
-});
+}

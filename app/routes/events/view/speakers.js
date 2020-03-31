@@ -1,10 +1,13 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class SpeakersRoute extends Route {
   titleToken() {
     return this.l10n.t('Speakers');
-  },
+  }
+
   model() {
     return this.modelFor('events.view');
   }
-});
+}

@@ -1,9 +1,12 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class ExploreRoute extends Route {
   titleToken() {
     return this.l10n.t('Explore');
-  },
+  }
 
   /**
    * Load filtered events based on the given params
@@ -174,7 +177,7 @@ export default Route.extend({
       pageParam    : 'page[number]'
     });
 
-  },
+  }
 
   async model(params) {
     return {
@@ -182,20 +185,19 @@ export default Route.extend({
       eventTopics    : await this.store.findAll('event-topic', { include: 'event-sub-topics' }),
       filteredEvents : await this._loadEvents(params)
     };
-  },
+  }
 
   setupController(controller, model) {
-    this._super(...arguments);
+    super.setupController(...arguments);
     controller.set('filteredEvents', model.filteredEvents);
     this.set('controller', controller);
-  },
+  }
 
-  actions: {
-    async queryParamsDidChange(change, params) {
-      if (this.controller) {
-        this.controller.set('filteredEvents', await this._loadEvents(params));
-        this.controller.set('filters', params);
-      }
+  @action
+  async queryParamsDidChange(change, params) {
+    if (this.controller) {
+      this.controller.set('filteredEvents', await this._loadEvents(params));
+      this.controller.set('filters', params);
     }
   }
-});
+}

@@ -1,12 +1,15 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class PaymentGatewayRoute extends Route {
   titleToken() {
     return this.l10n.t('Payment Gateway');
-  },
-  actions: {
-    willTransition() {
-      this.controller.model.rollbackAttributes();
-    }
   }
-});
+
+  @action
+  willTransition() {
+    this.controller.model.rollbackAttributes();
+  }
+}

@@ -1,9 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class CreateRoute extends Route {
   titleToken() {
     return this.l10n.t('Create');
-  },
+  }
+
   async model() {
     let tickets = await this.modelFor('events.view').query('tickets', {});
     let event = this.modelFor('events.view');
@@ -17,14 +20,16 @@ export default Route.extend({
       tickets,
       event
     };
-  },
+  }
+
   resetController(controller) {
-    this._super(...arguments);
+    super.resetController(...arguments);
     const model = controller.model.discountCode;
     if (!model.id) {
       controller.model.discountCode.unloadRecord();
     }
-  },
+  }
+
   afterModel(model) {
     let allTickets = model.tickets;
     allTickets.forEach(ticket => {
@@ -36,4 +41,4 @@ export default Route.extend({
     currentDiscountCode.set('minQuantity', 1);
     currentDiscountCode.set('maxQuantity', 1);
   }
-});
+}

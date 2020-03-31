@@ -1,11 +1,14 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
+@classic
+export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
     let sessionTitle = model.session.title;
     return this.l10n.t(sessionTitle.concat('-Edit'));
-  },
+  }
+
   async model(params) {
     const eventDetails = this.modelFor('events.view');
     return {
@@ -29,4 +32,4 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     };
   }
-});
+}

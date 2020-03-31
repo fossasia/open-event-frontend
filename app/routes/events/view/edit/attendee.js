@@ -1,11 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import CustomFormMixin from 'open-event-frontend/mixins/event-wizard';
 import { A } from '@ember/array';
-export default Route.extend(CustomFormMixin, {
-
+@classic
+export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
   titleToken() {
     return this.l10n.t('Attendee Form');
-  },
+  }
 
   async model() {
     let filterOptions = [{
@@ -24,7 +25,8 @@ export default Route.extend(CustomFormMixin, {
     });
 
     return data;
-  },
+  }
+
   afterModel(data) {
     /**
      * Create the additional custom forms if only the compulsory forms exist.
@@ -44,4 +46,4 @@ export default Route.extend(CustomFormMixin, {
       data.customForms = customForms;
     }
   }
-});
+}
