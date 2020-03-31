@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { action } from '@ember/object';
 
-export default class extends Component {
+@classic
+export default class DownloadZip extends Component {
   @action
   async exportEventDownload(eventDownloadUrl) {
     this.set('isLoading', true);

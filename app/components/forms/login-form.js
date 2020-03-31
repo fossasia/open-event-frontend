@@ -1,8 +1,10 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { action } from '@ember/object';
 
-export default class extends Component.extend(FormMixin) {
+@classic
+export default class LoginForm extends Component.extend(FormMixin) {
 
   identification = '';
   password       = '';

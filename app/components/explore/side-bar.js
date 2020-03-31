@@ -1,10 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import moment from 'moment';
 import { computed, action } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
 
-export default class extends Component {
+@classic
+export default class SideBar extends Component {
 
   classNames = ['ui', 'fluid', 'explore', 'vertical', 'menu'];
 
