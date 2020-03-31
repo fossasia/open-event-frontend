@@ -1,16 +1,19 @@
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
 import moment from 'moment';
 
-export default Controller.extend({
-  queryParams : ['event_name', 'start_date', 'end_date', 'location'],
-  start_date  : null,
-  end_date    : null,
-  location    : null,
-  event_name  : null,
-  filterDate  : null,
+@classic
+export default class IndexController extends Controller {
+  queryParams = ['event_name', 'start_date', 'end_date', 'location'];
+  start_date = null;
+  end_date = null;
+  location = null;
+  event_name = null;
+  filterDate = null;
 
-  callForSpeakersEvents: computed('filteredEvents.[]', function() {
+  @computed('filteredEvents.[]')
+  get callForSpeakersEvents() {
     return this.filteredEvents.filter(event => {
       const callForPapers = event.get('speakersCall');
       const sessionEnabled = event.isSessionsSpeakersEnabled;
@@ -22,24 +25,26 @@ export default Controller.extend({
       const privacyState = callForPapers.get('privacy');
       return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled) && (privacyState === 'public'));
     });
-  }),
-
-  featuredEvents: computed('filteredEvents.[]', function() {
-    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
-  }),
-
-  promotedEvents: computed('filteredEvents.[]', function() {
-    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isPromoted}) : null;
-  }),
-
-  upcomingEvents: computed('filteredEvents.[]', function() {
-    return this.filteredEvents ? this.filteredEvents.filter(event => {return !event.isPromoted}) : null;
-  }),
-
-  actions: {
-    shareEvent(event) {
-      this.set('eventToShare', event);
-      this.set('isShareModalOpen', true);
-    }
   }
-});
+
+  @computed('filteredEvents.[]')
+  get featuredEvents() {
+    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
+  }
+
+  @computed('filteredEvents.[]')
+  get promotedEvents() {
+    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isPromoted}) : null;
+  }
+
+  @computed('filteredEvents.[]')
+  get upcomingEvents() {
+    return this.filteredEvents ? this.filteredEvents.filter(event => {return !event.isPromoted}) : null;
+  }
+
+  @action
+  shareEvent(event) {
+    this.set('eventToShare', event);
+    this.set('isShareModalOpen', true);
+  }
+}

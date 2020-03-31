@@ -1,16 +1,26 @@
-import { observer, computed } from '@ember/object';
+import classic from 'ember-classic-decorator';
+import { observes } from '@ember-decorators/object';
+import { computed } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
 import { camelize } from '@ember/string';
 import { mapKeys } from 'lodash-es';
 
-export default Service.extend({
+@classic
+export default class AuthManagerService extends Service {
+  @service
+  session;
 
-  session    : service(),
-  metrics    : service(),
-  store      : service(),
-  bugTracker : service(),
+  @service
+  metrics;
 
-  currentUser: computed('session.data.currentUserFallback.id', 'currentUserModel', function() {
+  @service
+  store;
+
+  @service
+  bugTracker;
+
+  @computed('session.data.currentUserFallback.id', 'currentUserModel')
+  get currentUser() {
     if (this.currentUserModel) {
       return this.currentUserModel;
     }
@@ -25,19 +35,21 @@ export default Service.extend({
     }
 
     return null;
-  }),
+  }
 
-  userAuthenticatedStatusChange: observer('session.isAuthenticated', function() {
+  @observes('session.isAuthenticated')
+  userAuthenticatedStatusChange() {
     if (!this.session.isAuthenticated) {
       this.identifyStranger();
     }
-  }),
+  }
 
-  currentUserChangeListener: observer('currentUser', function() {
+  @observes('currentUser')
+  currentUserChangeListener() {
     if (this.currentUser && this.session.isAuthenticated) {
       this.identify();
     }
-  }),
+  }
 
   getTokenPayload() {
     const token = this.session.session.content.authenticated.access_token;
@@ -46,13 +58,13 @@ export default Service.extend({
     }
 
     return null;
-  },
+  }
 
   logout() {
     this.session.invalidate();
     this.set('currentUserModel', null);
     this.session.set('data.currentUserFallback', null);
-  },
+  }
 
   identify() {
     if (this.currentUser) {
@@ -65,12 +77,12 @@ export default Service.extend({
         email : this.currentUser.email
       });
     }
-  },
+  }
 
   identifyStranger() {
     this.metrics.identify(null);
     this.bugTracker.clearUser();
-  },
+  }
 
   async loadUser() {
     if (this.currentUserModel) {
@@ -85,7 +97,7 @@ export default Service.extend({
     }
 
     return this.currentUserModel;
-  },
+  }
 
   persistCurrentUser(user = null) {
     if (!user) {
@@ -97,7 +109,7 @@ export default Service.extend({
     let userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
     this.session.set('data.currentUserFallback', userData);
-  },
+  }
 
   restoreCurrentUser(data = null) {
     if (!data) {
@@ -121,7 +133,7 @@ export default Service.extend({
     let userModel = this.store.peekRecord('user', userId);
     this.set('currentUserModel', userModel);
     return userModel;
-  },
+  }
 
   async initialize() {
     if (this.session.isAuthenticated) {
@@ -143,4 +155,4 @@ export default Service.extend({
       this.identifyStranger();
     }
   }
-});
+}

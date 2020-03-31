@@ -1,13 +1,17 @@
+import classic from 'ember-classic-decorator';
+import { inject as service } from '@ember/service';
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
-import { inject as service } from '@ember/service';
 
-export default L10n.extend({
+@classic
+export default class L10nService extends L10n {
+  @service
+  cookies;
 
-  cookies  : service(),
-  fastboot : service(),
+  @service
+  fastboot;
 
-  availableLocales: computed(function() {
+  @computed(function() {
     return {
       'bn'      : this.t('Bengali/Bangla'),
       'zh_Hans' : this.t('Chinese (Simplified)'),
@@ -25,13 +29,12 @@ export default L10n.extend({
       'ja'      : this.t('Japanese'),
       'ru'      : this.t('Russian')
     };
-  }),
+  })
+  availableLocales;
 
-  localStorageKey: 'current_locale',
-
-  autoInitialize: false,
-
-  jsonPath: '/assets/locales',
+  localStorageKey = 'current_locale';
+  autoInitialize = false;
+  jsonPath = '/assets/locales';
 
   switchLanguage(locale) {
     this.setLocale(locale);
@@ -39,10 +42,10 @@ export default L10n.extend({
     if (!this.fastboot.isFastBoot) {
       location.reload();
     }
-  },
+  }
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     const currentLocale = this.cookies.read(this.localStorageKey);
     const detectedLocale = this.detectLocale();
     if (currentLocale) {
@@ -53,4 +56,4 @@ export default L10n.extend({
       this.setLocale('en');
     }
   }
-});
+}

@@ -1,10 +1,15 @@
+import classic from 'ember-classic-decorator';
 import Service, { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { resolve } from 'rsvp';
 
-export default Service.extend({
-  session : service(),
-  store   : service(),
+@classic
+export default class CurrentUserService extends Service {
+  @service
+  session;
+
+  @service
+  store;
 
   load() {
     let userId = this.session.data.authenticated.user_id;
@@ -16,4 +21,4 @@ export default Service.extend({
       return resolve();
     }
   }
-});
+}

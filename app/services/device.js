@@ -1,7 +1,8 @@
+import classic from 'ember-classic-decorator';
+import { computed } from '@ember/object';
+import { or, equal } from '@ember/object/computed';
 import $ from 'jquery';
 import Service, { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
-import { equal, or } from '@ember/object/computed';
 import { debounce } from '@ember/runloop';
 import { forOwn } from 'lodash-es';
 
@@ -31,11 +32,13 @@ const breakpoints = {
   }
 };
 
-export default Service.extend({
+@classic
+export default class DeviceService extends Service {
+  @service
+  fastboot;
 
-  fastboot: service(),
-
-  deviceType: computed('currentWidth', function() {
+  @computed('currentWidth')
+  get deviceType() {
     let deviceType = 'computer';
     forOwn(breakpoints, (value, key) => {
       if (this.currentWidth >= value.min && (!Object.prototype.hasOwnProperty.call(value, 'max') || this.currentWidth <= value.max)) {
@@ -43,17 +46,28 @@ export default Service.extend({
       }
     });
     return deviceType;
-  }),
+  }
 
-  isMobile           : equal('deviceType', 'mobile'),
-  isComputer         : equal('deviceType', 'computer'),
-  isTablet           : equal('deviceType', 'tablet'),
-  isLargeMonitor     : equal('deviceType', 'largeMonitor'),
-  isWideScreen       : equal('deviceType', 'widescreen'),
-  isBiggerThanTablet : or('isComputer', 'isLargeMonitor', 'isWideScreen'),
+  @equal('deviceType', 'mobile')
+  isMobile;
 
+  @equal('deviceType', 'computer')
+  isComputer;
 
-  isInternetExplorer: computed(function() {
+  @equal('deviceType', 'tablet')
+  isTablet;
+
+  @equal('deviceType', 'largeMonitor')
+  isLargeMonitor;
+
+  @equal('deviceType', 'widescreen')
+  isWideScreen;
+
+  @or('isComputer', 'isLargeMonitor', 'isWideScreen')
+  isBiggerThanTablet;
+
+  @computed
+  get isInternetExplorer() {
 
     if (this.fastboot.isFastBoot) {
       return false;
@@ -74,10 +88,10 @@ export default Service.extend({
       }
     }
     return rv !== -1;
-  }),
+  }
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
 
     if (this.fastboot.isFastBoot) {
       this.currentWidth = 1024;
@@ -94,5 +108,4 @@ export default Service.extend({
       }, 200);
     });
   }
-
-});
+}
