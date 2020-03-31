@@ -4,7 +4,6 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  @computed()
   get columns() {
     return [
       {

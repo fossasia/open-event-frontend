@@ -1,3 +1,4 @@
+import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import $ from 'jquery';
@@ -7,7 +8,7 @@ import { v4 } from 'ember-uuid';
 
 @classic
 export default class ImageUpload extends Component {
-  selectedImage = null;
+  @tracked selectedImage = null;
   allowDragDrop = true;
   requiresDivider = false;
 

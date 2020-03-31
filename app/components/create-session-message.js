@@ -1,10 +1,11 @@
+import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
 import Component from '@ember/component';
 
 @classic
 export default class CreateSessionMessage extends Component {
-  isMessageVisible = true;
+  @tracked isMessageVisible = true;
 
   @computed(
     'session.isAuthenticated',

@@ -1,3 +1,4 @@
+import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import { observes } from '@ember-decorators/object';
 import Component from '@ember/component';
@@ -6,9 +7,9 @@ import { map, findIndex } from 'lodash-es';
 
 @classic
 export default class StepsIndicator extends Component {
-  enableAll = true;
+  @tracked enableAll = true;
   autoSteps = false;
-  currentStep = 1;
+  @tracked currentStep = 1;
 
   @computed('currentStep')
   get currentIndex() {
