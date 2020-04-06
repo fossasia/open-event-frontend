@@ -16,11 +16,11 @@ export default class TestEmailForm extends Component.extend(FormMixin) {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the recepient E-mail')
+              prompt : this.l10n.t('Please enter the recipient E-mail')
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid  email address')
+              prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
         }
