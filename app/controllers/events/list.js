@@ -1,10 +1,9 @@
 import Controller from '@ember/controller';
-import { computed, action } from '@ember/object';
+import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
-  @computed()
   get columns() {
     return [
       {
@@ -98,6 +97,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
       this.send('refreshRoute');
     } catch (e) {
+      console.error('Error while deleting event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_del_unex'

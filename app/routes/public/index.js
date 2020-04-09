@@ -1,11 +1,15 @@
+import classic from 'ember-classic-decorator';
+import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 import { set } from '@ember/object';
-import { inject as service } from '@ember/service';
 import ENV from 'open-event-frontend/config/environment';
 
-export default Route.extend({
-  headData: service(),
+@classic
+export default class IndexRoute extends Route {
+  @service
+  headData;
+
   async model() {
     const eventDetails = this.modelFor('public');
     return {
@@ -45,7 +49,7 @@ export default Route.extend({
       tax      : await eventDetails.get('tax'),
       order    : this.store.createRecord('order', {
         event   : eventDetails,
-        user    : this.get('authManager.currentUser'),
+        user    : this.authManager.currentUser,
         tickets : []
       }),
 
@@ -53,15 +57,17 @@ export default Route.extend({
 
       mapConfig: ENV.APP.mapConfig
     };
-  },
+  }
+
   afterModel(model) {
     set(this, 'headData.description', model.event.description);
-  },
+  }
+
   resetController(controller) {
-    this._super(...arguments);
-    const model = controller.get('model.order');
+    super.resetController(...arguments);
+    const model = controller.model.order;
     if (!model.id) {
       model.unloadRecord();
     }
   }
-});
+}

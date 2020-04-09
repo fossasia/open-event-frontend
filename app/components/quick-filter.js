@@ -1,11 +1,13 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 import moment from 'moment';
 
-export default Component.extend({
-
-  dummyName     : null,
-  dummyLocation : null,
-  disableClear  : true,
+@classic
+export default class QuickFilter extends Component {
+  dummyName = null;
+  dummyLocation = null;
+  disableClear = true;
 
   setDateFilter() {
     let newStartDate = null;
@@ -51,35 +53,38 @@ export default Component.extend({
 
     this.set('startDate', newStartDate);
     this.set('endDate', newEndDate);
-  },
+  }
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     this.set('dummyLocation', this.location);
     this.set('dummyName', this.eventName);
     if (this.dummyName || this.dummyLocation) {this.set('disableClear', false)}
-  },
-  actions: {
-    handleKeyPress() {
-      if (event.code === 'Enter') {
-        this.send('search');
-      }
-    },
-    search() {
-      this.setDateFilter();
-      this.set('location', this.dummyLocation);
-      this.set('eventName', this.dummyName);
-      this.set('disableClear', false);
-    },
+  }
 
-    clearFilters() {
-      this.set('dummyLocation', null);
-      this.set('dummyName', null);
-      this.set('filterDate', null);
-      this.setDateFilter();
-      this.set('location', this.dummyLocation);
-      this.set('eventName', this.dummyName);
-      this.set('disableClear', true);
+  @action
+  handleKeyPress() {
+    if (event.code === 'Enter') {
+      this.send('search');
     }
   }
-});
+
+  @action
+  search() {
+    this.setDateFilter();
+    this.set('location', this.dummyLocation);
+    this.set('eventName', this.dummyName);
+    this.set('disableClear', false);
+  }
+
+  @action
+  clearFilters() {
+    this.set('dummyLocation', null);
+    this.set('dummyName', null);
+    this.set('filterDate', null);
+    this.setDateFilter();
+    this.set('location', this.dummyLocation);
+    this.set('eventName', this.dummyName);
+    this.set('disableClear', true);
+  }
+}

@@ -1,12 +1,14 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Component.extend({
-
-  router: service(),
+@classic
+export default class PaypalButton extends Component {
+  @service
+  router;
 
   async didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     const paypal = await import('paypal-checkout');
 
     if (this.paymentFor === 'order') {
@@ -136,4 +138,4 @@ export default Component.extend({
 
     }
   }
-});
+}

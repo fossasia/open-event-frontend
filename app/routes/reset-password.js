@@ -1,16 +1,20 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class ResetPasswordRoute extends Route {
   titleToken() {
     return this.l10n.t('Reset Password');
-  },
+  }
+
   beforeModel() {
-    if (this.get('session.isAuthenticated')) {
+    if (this.session.isAuthenticated) {
       this.set('session.skipRedirectOnInvalidation', true);
       this.authManager.logout();
     }
-  },
+  }
+
   afterModel() {
     this.set('session.skipRedirectOnInvalidation', false);
   }
-});
+}

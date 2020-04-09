@@ -46,7 +46,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
    * @return {Promise<*>}
    */
   async saveEventData(propsToSave = []) {
-    const event = this.get('model.event');
+    const { event } = this.model;
     const data = {};
     const results = await Promise.allSettled(propsToSave.map(property => {
       try {
@@ -60,7 +60,11 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     }));
     for (const result of results) {
       if (result.status === 'fulfilled') {
-        data[result.value.key] = result.value;
+        if (result?.value?.key) {
+          data[result.value.key] = result.value;
+        } else {
+          console.warn('No value for key while saving event', result);
+        }
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
@@ -144,9 +148,14 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.transitionToRoute(route, data.id);
       })
       .catch(e => {
-        e.errors.forEach(error => {
-          this.notify.error(this.l10n.tVar(error.detail));
-        });
+        console.error('Error while saving event', e);
+        if (e.errors) {
+          e.errors.forEach(error => {
+            this.notify.error(this.l10n.tVar(error.detail));
+          });
+        } else {
+          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+        }
       })
       .finally(() => {
         this.set('isLoading', false);

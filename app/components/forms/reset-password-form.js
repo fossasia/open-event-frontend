@@ -34,6 +34,20 @@ export default Component.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please enter your new password')
+            },
+            {
+              type   : 'minLength[8]',
+              prompt : this.l10n.t('Your password must have at least {ruleValue} characters')
+            }
+          ]
+        },
+
+        passwordRepeat: {
+          identifier : 'password_repeat',
+          rules      : [
+            {
+              type   : 'match[password]',
+              prompt : this.l10n.t('Passwords do not match')
             }
           ]
         }
@@ -42,6 +56,15 @@ export default Component.extend(FormMixin, {
   },
 
   actions: {
+
+    showNewPassword() {
+      this.toggleProperty('showNewPass');
+    },
+
+    showConfirmPassword() {
+      this.toggleProperty('showConfirmPass');
+    },
+
     submit() {
       this.onValid(() => {
         let payload = {};
@@ -60,7 +83,8 @@ export default Component.extend(FormMixin, {
               });
               this.router.transitionTo('login');
             })
-            .catch(() => {
+            .catch(e => {
+              console.error('Error while resetting password', e);
               this.set('errorMessage', this.l10n.t('An unexpected error occurred.'), {
                 id: 'reset_unexpect'
               });
@@ -86,8 +110,10 @@ export default Component.extend(FormMixin, {
             })
             .catch(reason => {
               if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 404) {
+                console.warn('Reset Password: No user account found', reason);
                 this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
               } else {
+                console.error('Error while submitting reset password', reason);
                 this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
               }
             })
@@ -103,9 +129,9 @@ export default Component.extend(FormMixin, {
   },
 
   didInsertElement() {
-    if (this.get('session.newUser')) {
-      this.set('newUser', this.get('session.newUser'));
-      this.set('identification', this.get('session.newUser'));
+    if (this.session.newUser) {
+      this.set('newUser', this.session.newUser);
+      this.set('identification', this.session.newUser);
       this.set('session.newUser', null);
     }
   }

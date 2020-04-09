@@ -1,9 +1,12 @@
-import Controller from '@ember/controller';
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
+import Controller from '@ember/controller';
 import moment from 'moment';
 
-export default Controller.extend({
-  isSchedulePublished: computed('model.event.schedulePublishedOn', function() {
-    return this.get('model.event.schedulePublishedOn').toISOString() !== moment(0).toISOString();
-  })
-});
+@classic
+export default class ScheduleController extends Controller {
+  @computed('model.event.schedulePublishedOn')
+  get isSchedulePublished() {
+    return this.model.event.schedulePublishedOn.toISOString() !== moment(0).toISOString();
+  }
+}

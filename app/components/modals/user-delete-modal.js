@@ -1,10 +1,13 @@
-import { computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import classic from 'ember-classic-decorator';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend({
-  isSmall          : true,
-  confirmEmail     : '',
-  isEmailDifferent : computed('confirmEmail', function() {
+@classic
+export default class UserDeleteModal extends ModalBase {
+  isSmall = true;
+  @tracked confirmEmail = '';
+
+  get isEmailDifferent() {
     return this.userEmail ? this.confirmEmail !== this.userEmail : true;
-  })
-});
+  }
+}

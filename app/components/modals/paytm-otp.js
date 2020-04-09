@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import FormMixin from 'open-event-frontend/mixins/form';
 
-export default class extends ModalBase.extend(FormMixin) {
+@classic
+export default class PaytmOTP extends ModalBase.extend(FormMixin) {
   isSmall = true;
 
   getValidationRules() {

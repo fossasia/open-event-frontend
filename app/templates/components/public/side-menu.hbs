@@ -47,11 +47,11 @@
     {{#if event.hasOwnerInfo}}
       {{#if (eq session.currentRouteName 'public.index')}}
         <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
-          {{t 'Owner'}}
+          {{t 'Organizer'}}
         </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#owner">
-          {{t 'Owner'}}
+          {{t 'Organizer'}}
         </a>
       {{/if}}
     {{/if}}

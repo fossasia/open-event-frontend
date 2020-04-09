@@ -8,15 +8,15 @@ export default ModalBase.extend({
 
   actions: {
     deny() {
-      if (this.get('confirm.pendingPromise.reject')) {
-        this.get('confirm.pendingPromise.reject')();
+      if (this.confirm.pendingPromise.reject) {
+        this.confirm.pendingPromise.reject();
       }
       this.set('isOpen', false);
     },
 
     confirm() {
-      if (this.get('confirm.pendingPromise.resolve')) {
-        this.get('confirm.pendingPromise.resolve')();
+      if (this.confirm.pendingPromise.resolve) {
+        this.confirm.pendingPromise.resolve();
       }
       this.set('isOpen', false);
     }

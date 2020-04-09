@@ -29,7 +29,8 @@ export default class extends Controller {
             });
         }
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while publishing/unpublishing event', e);
         this.set('model.state', state);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'),
           {

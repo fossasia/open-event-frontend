@@ -1,23 +1,28 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
+import { classNames } from '@ember-decorators/component';
+import { gte } from '@ember/object/computed';
 import $ from 'jquery';
 import Component from '@ember/component';
-import { gte } from '@ember/object/computed';
 
-export default Component.extend({
-  classNames  : ['ui', 'celled', 'stackable', 'grid', 'ticket-row'],
-  minMaxValid : gte('ticket.maxPrice', 'ticket.minPrice'),
-  actions     : {
-    toggleSettings() {
-      this.toggleProperty('isExpanded');
-    }
-  },
+@classic
+@classNames('ui', 'celled', 'stackable', 'grid', 'ticket-row')
+export default class TicketInput extends Component {
+  @gte('ticket.maxPrice', 'ticket.minPrice')
+  minMaxValid;
+
+  @action
+  toggleSettings() {
+    this.toggleProperty('isExpanded');
+  }
 
   didRender() {
-    this._super(...arguments);
+    super.didRender(...arguments);
     $('.icon.buttons', this.element).find('.button').popup();
-  },
+  }
 
   willDestroyElement() {
-    this._super(...arguments);
+    super.willDestroyElement(...arguments);
     $('.icon.buttons', this.element).find('.button').popup('destroy');
   }
-});
+}

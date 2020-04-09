@@ -6,10 +6,10 @@ import { currencySymbol } from 'open-event-frontend/helpers/currency-symbol';
 export default Component.extend(FormMixin, {
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
-      return this.get('data.minQuantity') <= this.get('data.maxQuantity');
+      return this.data.minQuantity <= this.data.maxQuantity;
     };
     window.$.fn.form.settings.rules.checkMaxTotal = () => {
-      return this.get('data.maxQuantity') <= this.get('data.ticketsNumber');
+      return this.data.maxQuantity <= this.data.ticketsNumber;
     };
     window.$.fn.form.settings.rules.checkTicketSelected = () => {
       let tickets = this.eventTickets;
@@ -113,9 +113,9 @@ export default Component.extend(FormMixin, {
     };
   },
   discountLink: computed('data.code', function() {
-    const params = this.get('router._router.currentState.routerJsState.params');
-    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
-    let link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.get('data.code') } });
+    const { params } = this.router._router.currentState.routerJsState;
+    const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
+    let link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.data.code } });
     this.set('data.discountUrl', link);
     return link;
   }),
@@ -127,7 +127,7 @@ export default Component.extend(FormMixin, {
   eventTickets: computed.filterBy('tickets', 'type', 'paid'),
 
   allTicketTypesChecked: computed('tickets', function() {
-    if (this.eventTickets.length && this.get('data.tickets').length === this.eventTickets.length) {
+    if (this.eventTickets.length && this.data.tickets.length === this.eventTickets.length) {
       return true;
     }
     return false;
@@ -142,7 +142,7 @@ export default Component.extend(FormMixin, {
       if (allTicketTypesChecked) {
         this.set('data.tickets', tickets.slice());
       } else {
-        this.get('data.tickets').clear();
+        this.data.tickets.clear();
       }
       tickets.forEach(ticket => {
         ticket.set('isChecked', allTicketTypesChecked);
@@ -150,13 +150,13 @@ export default Component.extend(FormMixin, {
     },
     updateTicketsSelection(ticket) {
       if (!ticket.get('isChecked')) {
-        this.get('data.tickets').pushObject(ticket);
+        this.data.tickets.pushObject(ticket);
         ticket.set('isChecked', true);
-        if (this.get('data.tickets').length === this.eventTickets.length) {
+        if (this.data.tickets.length === this.eventTickets.length) {
           this.set('allTicketTypesChecked', true);
         }
       } else {
-        this.get('data.tickets').removeObject(ticket);
+        this.data.tickets.removeObject(ticket);
         ticket.set('isChecked', false);
         this.set('allTicketTypesChecked', false);
       }

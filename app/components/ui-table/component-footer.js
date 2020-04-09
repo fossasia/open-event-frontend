@@ -1,6 +1,5 @@
+import classic from 'ember-classic-decorator';
 import DefaultPagination from 'ember-models-table/components/models-table/footer';
-import layout from 'open-event-frontend/components/ui-table/component-footer';
 
-export default DefaultPagination.extend({
-  layout
-});
+@classic
+export default class ComponentFooter extends DefaultPagination {}

@@ -1,15 +1,24 @@
-import Component from '@ember/component';
+import { tracked } from '@glimmer/tracking';
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
+import Component from '@ember/component';
 
-export default Component.extend({
+@classic
+export default class CreateSessionMessage extends Component {
+  @tracked isMessageVisible = true;
 
-  isMessageVisible  : true,
-  shouldShowMessage : computed('session.isAuthenticated', 'isMessageVisible', 'isNewSpeaker', 'isNewSession', function() {
+  @computed(
+    'session.isAuthenticated',
+    'isMessageVisible',
+    'isNewSpeaker',
+    'isNewSession'
+  )
+  get shouldShowMessage() {
     let speakerIDlength =  this.data.userSpeaker ? this.data.userSpeaker.toArray().length : 0;
     return this.session.isAuthenticated
           && this.isMessageVisible
           && !this.isNewSpeaker
           && this.isNewSession
           && (speakerIDlength > 0);
-  })
-});
+  }
+}

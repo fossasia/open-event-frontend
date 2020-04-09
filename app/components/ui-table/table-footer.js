@@ -1,6 +1,5 @@
+import classic from 'ember-classic-decorator';
 import DefaultFooter from 'ember-models-table/components/models-table/table-footer';
-import layout from 'open-event-frontend/components/ui-table/table-footer';
 
-export default DefaultFooter.extend({
-  layout
-});
+@classic
+export default class TableFooter extends DefaultFooter {}

@@ -1,20 +1,24 @@
-import Controller from '@ember/controller';
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
+import Controller from '@ember/controller';
 
-export default Controller.extend({
-  ticketsTotal: computed(function() {
+@classic
+export default class RevenueController extends Controller {
+  @computed
+  get ticketsTotal() {
     let sum = 0;
     this.model.forEach(data => {
       sum += data.ticketCount;
     });
     return sum;
-  }),
+  }
 
-  revenueTotal: computed(function() {
+  @computed
+  get revenueTotal() {
     let sum = 0;
     this.model.forEach(data => {
       sum += data.revenue;
     });
     return sum;
-  })
-});
+  }
+}

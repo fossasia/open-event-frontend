@@ -1,17 +1,21 @@
+import classic from 'ember-classic-decorator';
+import { classNames, tagName } from '@ember-decorators/component';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 
-export default Component.extend({
-  tagName       : 'footer',
-  classNames    : ['ui', 'inverted', 'vertical', 'footer', 'segment'],
-  currentLocale : computed(function() {
+@classic
+@tagName('footer')
+@classNames('ui', 'inverted', 'vertical', 'footer', 'segment')
+export default class FooterMain extends Component {
+  @computed
+  get currentLocale() {
     return this.l10n.getLocale();
-  }),
-  actions: {
-    switchLanguage(locale) {
-      this.l10n.switchLanguage(locale);
-    }
-  },
+  }
+
+  @action
+  switchLanguage(locale) {
+    this.l10n.switchLanguage(locale);
+  }
 
   didInsertElement() {
     this.set('eventLocations', this.eventLocations.sortBy('name'));
@@ -26,4 +30,4 @@ export default Component.extend({
     });
     this.set('eventTypes', eventTypes);
   }
-});
+}

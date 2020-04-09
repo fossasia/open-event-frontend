@@ -1,5 +1,7 @@
+import classic from 'ember-classic-decorator';
+import { classNames } from '@ember-decorators/component';
 import Component from '@ember/component';
 
-export default Component.extend({
-  classNames: ['ui', 'stackable', 'centered', 'grid']
-});
+@classic
+@classNames('ui', 'stackable', 'centered', 'grid')
+export default class ImportsHistorySection extends Component {}

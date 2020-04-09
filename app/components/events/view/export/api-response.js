@@ -38,7 +38,8 @@ export default Component.extend({
         json = JSON.stringify(json, null, 2);
         this.set('json', htmlSafe(syntaxHighlight(json)));
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while fetching export JSON from server', e);
         this.notify.error(this.l10n.t('Could not fetch from the server'), {
           id: 'server_fetch_error'
         });

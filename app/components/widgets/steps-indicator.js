@@ -1,24 +1,30 @@
+import { tracked } from '@glimmer/tracking';
+import classic from 'ember-classic-decorator';
+import { observes } from '@ember-decorators/object';
 import Component from '@ember/component';
-import Object, { observer, computed } from '@ember/object';
+import Object, { computed } from '@ember/object';
 import { map, findIndex } from 'lodash-es';
 
-export default Component.extend({
+@classic
+export default class StepsIndicator extends Component {
+  @tracked enableAll = true;
+  autoSteps = false;
+  @tracked currentStep = 1;
 
-  enableAll   : true,
-  autoSteps   : false,
-  currentStep : 1,
-
-  currentIndex: computed('currentStep', function() {
+  @computed('currentStep')
+  get currentIndex() {
     return this.currentStep - 1;
-  }),
+  }
 
-  currentStepComputed: observer('session.currentRouteName', 'autoSteps', function() {
+  @observes('session.currentRouteName', 'autoSteps')
+  currentStepComputed() {
     if (this.autoSteps) {
-      this.set('currentStep', findIndex(this.steps, ['route', this.get('session.currentRouteName')]) + 1);
+      this.set('currentStep', findIndex(this.steps, ['route', this.session.currentRouteName]) + 1);
     }
-  }),
+  }
 
-  processedSteps: computed('steps', 'currentIndex', 'enableAll', function() {
+  @computed('steps', 'currentIndex', 'enableAll')
+  get processedSteps() {
     return map(this.steps, (step, index) => {
       step = Object.create(step);
       if (!this.enableAll && index > this.currentIndex) {
@@ -32,10 +38,10 @@ export default Component.extend({
       }
       return step;
     });
-  }),
+  }
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     this.notifyPropertyChange('autoSteps');
   }
-});
+}

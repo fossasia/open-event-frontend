@@ -1,16 +1,19 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
+@classic
+export default class ListRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken() {
-    switch (this.get('params.session_status')) {
+    switch (this.params.session_status) {
       case 'upcoming':
         return this.l10n.t('Upcoming');
       case 'past':
         return this.l10n.t('Past');
     }
-  },
+  }
+
   model(params) {
     this.set('params', params);
     let filterOptions = [];
@@ -70,4 +73,4 @@ export default Route.extend(AuthenticatedRouteMixin, {
       store        : this.authManager.currentUser
     });
   }
-});
+}

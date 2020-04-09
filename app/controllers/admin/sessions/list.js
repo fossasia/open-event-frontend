@@ -1,9 +1,8 @@
 import Controller from '@ember/controller';
-import { computed, action } from '@ember/object';
+import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  @computed()
   get columns() {
     return [
       {
@@ -83,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'session_deleted_succ'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error while deleting session', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'unexpected_session_error'

@@ -1,25 +1,27 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
 
-export default Controller.extend({
-  isLoadingcsv: false,
+@classic
+export default class OrdersController extends Controller {
+  isLoadingcsv = false;
+  isLoadingpdf = false;
 
-  isLoadingpdf: false,
+  @action
+  export(mode) {
+    this.set(`isLoading${mode}`, true);
+    this.loader
+      .load(`/events/${this.model.id}/export/orders/${mode}`)
+      .then(exportJobInfo => {
+        this.requestLoop(exportJobInfo, mode);
+      })
+      .catch(() => {
+        this.set(`isLoading${mode}`, false);
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      });
+  }
 
-  actions: {
-    export(mode) {
-      this.set(`isLoading${mode}`, true);
-      this.loader
-        .load(`/events/${this.get('model.id')}/export/orders/${mode}`)
-        .then(exportJobInfo => {
-          this.requestLoop(exportJobInfo, mode);
-        })
-        .catch(() => {
-          this.set(`isLoading${mode}`, false);
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-        });
-    }
-  },
   requestLoop(exportJobInfo, mode) {
     run.later(() => {
       this.loader
@@ -43,4 +45,4 @@ export default Controller.extend({
         });
     }, 3000);
   }
-});
+}

@@ -1,6 +1,5 @@
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { on } from '@ember/object/evented';
 import moment from 'moment';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
@@ -170,15 +169,12 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   url: computed('identifier', function() {
-    const origin = this.get('fastboot.isFastBoot') ? `${this.get('fastboot.request.protocol')}//${this.get('fastboot.request.host')}` : location.origin;
+    const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
     return origin + this.router.urlFor('public', this.id);
   }),
 
   sessionsByState: computed('sessions', function() {
     return groupBy(this.sessions.toArray(), 'data.state');
-  }),
-
-  _ready: on('ready', function() {
-
   })
+
 });

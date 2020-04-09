@@ -1,22 +1,32 @@
-import { observer, computed } from '@ember/object';
+import classic from 'ember-classic-decorator';
+import { observes } from '@ember-decorators/object';
+import { computed } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
 import { camelize } from '@ember/string';
 import { mapKeys } from 'lodash-es';
 
-export default Service.extend({
+@classic
+export default class AuthManagerService extends Service {
+  @service
+  session;
 
-  session    : service(),
-  metrics    : service(),
-  store      : service(),
-  bugTracker : service(),
+  @service
+  metrics;
 
-  currentUser: computed('session.data.currentUserFallback.id', 'currentUserModel', function() {
+  @service
+  store;
+
+  @service
+  bugTracker;
+
+  @computed('session.data.currentUserFallback.id', 'currentUserModel')
+  get currentUser() {
     if (this.currentUserModel) {
       return this.currentUserModel;
     }
 
-    if (this.get('session.data.currentUserFallback')) {
-      let userModel = this.store.peekRecord('user', this.get('session.data.currentUserFallback.id'));
+    if (this.session.data.currentUserFallback) {
+      let userModel = this.store.peekRecord('user', this.session.data.currentUserFallback.id);
       if (!userModel) {
         return this.restoreCurrentUser();
       }
@@ -25,34 +35,36 @@ export default Service.extend({
     }
 
     return null;
-  }),
+  }
 
-  userAuthenticatedStatusChange: observer('session.isAuthenticated', function() {
-    if (!this.get('session.isAuthenticated')) {
+  @observes('session.isAuthenticated')
+  userAuthenticatedStatusChange() {
+    if (!this.session.isAuthenticated) {
       this.identifyStranger();
     }
-  }),
+  }
 
-  currentUserChangeListener: observer('currentUser', function() {
-    if (this.currentUser && this.get('session.isAuthenticated')) {
+  @observes('currentUser')
+  currentUserChangeListener() {
+    if (this.currentUser && this.session.isAuthenticated) {
       this.identify();
     }
-  }),
+  }
 
   getTokenPayload() {
-    const token = this.get('session.session.content.authenticated.access_token');
+    const token = this.session.session.content.authenticated.access_token;
     if (token && token !== '') {
       return JSON.parse(atob(token.split('.')[1]));
     }
 
     return null;
-  },
+  }
 
   logout() {
     this.session.invalidate();
     this.set('currentUserModel', null);
     this.session.set('data.currentUserFallback', null);
-  },
+  }
 
   identify() {
     if (this.currentUser) {
@@ -65,12 +77,12 @@ export default Service.extend({
         email : this.currentUser.email
       });
     }
-  },
+  }
 
   identifyStranger() {
     this.metrics.identify(null);
     this.bugTracker.clearUser();
-  },
+  }
 
   async loadUser() {
     if (this.currentUserModel) {
@@ -85,7 +97,7 @@ export default Service.extend({
     }
 
     return this.currentUserModel;
-  },
+  }
 
   persistCurrentUser(user = null) {
     if (!user) {
@@ -97,7 +109,7 @@ export default Service.extend({
     let userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
     this.session.set('data.currentUserFallback', userData);
-  },
+  }
 
   restoreCurrentUser(data = null) {
     if (!data) {
@@ -121,13 +133,13 @@ export default Service.extend({
     let userModel = this.store.peekRecord('user', userId);
     this.set('currentUserModel', userModel);
     return userModel;
-  },
+  }
 
   async initialize() {
-    if (this.get('session.isAuthenticated')) {
-      if (this.get('session.data.currentUserFallback.id')) {
+    if (this.session.isAuthenticated) {
+      if (this.session.data.currentUserFallback.id) {
         try {
-          const user = await this.store.findRecord('user', this.get('session.data.currentUserFallback.id'));
+          const user = await this.store.findRecord('user', this.session.data.currentUserFallback.id);
           this.set('currentUserModel', user);
           this.identify();
         } catch (e) {
@@ -143,4 +155,4 @@ export default Service.extend({
       this.identifyStranger();
     }
   }
-});
+}

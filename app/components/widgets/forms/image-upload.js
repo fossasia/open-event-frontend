@@ -1,26 +1,31 @@
+import { tracked } from '@glimmer/tracking';
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import $ from 'jquery';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import { humanReadableBytes, isFileValid } from 'open-event-frontend/utils/file';
 import { v4 } from 'ember-uuid';
 
-export default Component.extend({
+@classic
+export default class ImageUpload extends Component {
+  @tracked selectedImage = null;
+  allowDragDrop = true;
+  requiresDivider = false;
 
-  selectedImage   : null,
-  allowDragDrop   : true,
-  requiresDivider : false,
-
-  inputIdGenerated: computed('inputId', function() {
+  @computed('inputId')
+  get inputIdGenerated() {
     return this.inputId ? this.inputId : v4();
-  }),
+  }
 
-  maxSize: computed('maxSizeInKb', function() {
+  @computed('maxSizeInKb')
+  get maxSize() {
     return humanReadableBytes(this.maxSizeInKb);
-  }),
+  }
 
-  allowReCrop: computed('selectedImage', 'needsCropper', function() {
+  @computed('selectedImage', 'needsCropper')
+  get allowReCrop() {
     return this.needsCropper && !this.selectedImage.includes('http');
-  }),
+  }
 
   uploadImage(imageData) {
     this.set('selectedImage', imageData);
@@ -34,11 +39,12 @@ export default Component.extend({
         this.set('uploadingImage', false);
         this.set('imageUrl', image.url);
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while uploading and setting image URL', e);
         this.set('uploadingImage', false);
         this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
       });
-  },
+  }
 
   processFiles(files) {
     if (files && files[0]) {
@@ -56,6 +62,7 @@ export default Component.extend({
         reader.readAsDataURL(files[0]);
 
       }).catch(error => {
+        console.error('Error while image reading and cropping', error);
         this.notify.error(error, {
           id: 'unexpected_image_upload_1'
         });
@@ -66,45 +73,46 @@ export default Component.extend({
       });
     }
 
-  },
+  }
 
-  actions: {
+  @action
+  fileSelected(event) {
+    this.processFiles(event.target.files);
+  }
 
-    fileSelected(event) {
-      this.processFiles(event.target.files);
-    },
+  @action
+  imageCropped(croppedImageData) {
+    this.set('cropperModalIsShown', false);
+    this.uploadImage(croppedImageData);
+  }
 
-    imageCropped(croppedImageData) {
-      this.set('cropperModalIsShown', false);
-      this.uploadImage(croppedImageData);
-    },
-
-    removeSelection() {
-      if (!this.needsConfirmation) {
-        this.set('selectedImage', null);
-        this.set('imageUrl', null);
-        this.user.set('avatarUrl', null);
-        this.user.save();
-      } else {
-        this.set('needsConfirmation', false);
-      }
-    },
-
-    reCrop() {
-      this.set('cropperModalIsShown', true);
+  @action
+  removeSelection() {
+    if (!this.needsConfirmation) {
+      this.set('selectedImage', null);
+      this.set('imageUrl', null);
+      this.user.set('avatarUrl', null);
+      this.user.save();
+    } else {
+      this.set('needsConfirmation', false);
     }
-  },
+  }
+
+  @action
+  reCrop() {
+    this.set('cropperModalIsShown', true);
+  }
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     this.set('selectedImage', this.imageUrl);
     if (this.selectedImage) {
       this.set('needsConfirmation', true);
     }
-  },
+  }
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     $(this.element)
       .on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
         e.preventDefault();
@@ -119,11 +127,10 @@ export default Component.extend({
       .on('drop', e => {
         this.processFiles(e.originalEvent.dataTransfer.files);
       });
-  },
-
-  willDestroyElement() {
-    this._super(...arguments);
-    $(this.element).off('drag dragstart dragend dragover dragenter dragleave drop');
   }
 
-});
+  willDestroyElement() {
+    super.willDestroyElement(...arguments);
+    $(this.element).off('drag dragstart dragend dragover dragenter dragleave drop');
+  }
+}

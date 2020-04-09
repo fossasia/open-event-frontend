@@ -1,10 +1,13 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 
-export default Route.extend({
+@classic
+export default class PastRoute extends Route {
   titleToken() {
     return this.l10n.t('Past');
-  },
+  }
+
   model() {
     let filterOptions = [];
     filterOptions.push(
@@ -56,4 +59,4 @@ export default Route.extend({
       store        : this.authManager.currentUser
     });
   }
-});
+}

@@ -1,5 +1,5 @@
+import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-
-});
+@classic
+export default class SessionsController extends Controller {}

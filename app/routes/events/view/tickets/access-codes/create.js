@@ -1,17 +1,20 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 import RSVP from 'rsvp';
 
-export default Route.extend({
+@classic
+export default class CreateRoute extends Route {
   titleToken() {
     return this.l10n.t('Create');
-  },
+  }
+
   async model() {
     return RSVP.hash({
       accessCode: this.store.createRecord('access-code', {
         event         : this.modelFor('events.view'),
         tickets       : [],
-        marketer      : this.get('authManager.currentUser'),
+        marketer      : this.authManager.currentUser,
         validFromDate : moment(),
         validFromTime : '12:00',
         validTillDate : moment().add(7, 'days'),
@@ -21,18 +24,20 @@ export default Route.extend({
       }),
       tickets: this.modelFor('events.view').query('tickets', {})
     });
-  },
+  }
+
   resetController(controller) {
-    this._super(...arguments);
-    const model = controller.get('model.accessCode');
+    super.resetController(...arguments);
+    const model = controller.model.accessCode;
     if (!model.id) {
       model.unloadRecord();
     }
-  },
+  }
+
   afterModel(model) {
     let allTickets = model.tickets;
     allTickets.forEach(ticket => {
       ticket.set('isChecked', false);
     });
   }
-});
+}

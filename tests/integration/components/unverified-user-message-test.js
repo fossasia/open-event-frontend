@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import EmberObject from '@ember/object';
 import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
-import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
 module('Integration | Component | unverified user message', function(hooks) {

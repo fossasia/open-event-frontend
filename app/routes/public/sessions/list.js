@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 
-export default Route.extend({
+@classic
+export default class ListRoute extends Route {
   titleToken() {
-    switch (this.get('params.session_status')) {
+    switch (this.params.session_status) {
       case 'all':
         return this.l10n.t('All sessions');
       case 'today':
@@ -13,7 +15,8 @@ export default Route.extend({
       case 'month':
         return this.l10n.t('Month\'s Sessions');
     }
-  },
+  }
+
   async model(params) {
     const eventDetails = this.modelFor('public');
     const filterOptions = [
@@ -76,4 +79,4 @@ export default Route.extend({
       })
     };
   }
-});
+}

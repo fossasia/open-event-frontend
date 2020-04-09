@@ -1,12 +1,15 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
+@classic
+export default class IndexRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken() {
     return this.l10n.t('Upcoming');
-  },
+  }
+
   beforeModel() {
-    this._super(...arguments);
+    super.beforeModel(...arguments);
     this.transitionTo('my-sessions.list', 'upcoming');
   }
-});
+}

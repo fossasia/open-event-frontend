@@ -1,10 +1,13 @@
+import classic from 'ember-classic-decorator';
+import { classNames } from '@ember-decorators/component';
 import $ from 'jquery';
 import Component from '@ember/component';
 
-export default Component.extend({
-  classNames: ['smart-overflow'],
+@classic
+@classNames('smart-overflow')
+export default class SmartOverflow extends Component {
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     let $header = $(this.element);
     let $headerSpan = $header.find('span');
     $header.attr('data-content', $headerSpan.text());
@@ -18,11 +21,12 @@ export default Component.extend({
       });
       this.set('$header', $header);
     }
-  },
+  }
+
   willDestroyElement() {
-    this._super(...arguments);
+    super.willDestroyElement(...arguments);
     if (this.$header) {
       this.$header.popup('destroy');
     }
   }
-});
+}

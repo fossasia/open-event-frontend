@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 
 export default class extends Controller {
   importStatus = '';
@@ -9,7 +9,6 @@ export default class extends Controller {
   file         = false;
   fileName     = '';
 
-  @computed()
   get columns() {
     return [
       {
@@ -45,6 +44,7 @@ export default class extends Controller {
           }
         })
         .catch(e => {
+          console.error('Error while importing event', e);
           this.setProperties({
             'importError' : e.message,
             'isImporting' : false,
@@ -84,6 +84,7 @@ export default class extends Controller {
     ).then(data => {
       this.importTask(`tasks/${data.task_url.split('/')[3]}`);
     }).catch(e => {
+      console.error('Error while importing event', e);
       this.set('importError', e.message);
     });
   }

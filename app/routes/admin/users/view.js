@@ -1,5 +1,7 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  templateName: 'admin/users/view'
-});
+@classic
+export default class ViewRoute extends Route {
+  templateName = 'admin/users/view';
+}

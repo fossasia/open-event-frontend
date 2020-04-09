@@ -1,11 +1,14 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
+@classic
+export default class EmailPreferencesRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken() {
     return this.l10n.t('Email Preferences');
-  },
+  }
+
   model() {
     return this.authManager.currentUser.query('emailNotifications', { include: 'event' });
   }
-});
+}

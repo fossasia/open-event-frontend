@@ -1,20 +1,25 @@
+import classic from 'ember-classic-decorator';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 
-export default Component.extend({
-  actions: {
-    openModal() {
-      if (this.get('session.isAuthenticated')) {
-        this.set('isCfsModalOpen', true);
-      } else {
-        this.set('isLoginModalOpen', true);
-      }
+@classic
+export default class CallForSpeakers extends Component {
+  @action
+  openModal() {
+    if (this.session.isAuthenticated) {
+      this.set('isCfsModalOpen', true);
+    } else {
+      this.set('isLoginModalOpen', true);
     }
-  },
-  isNewSpeaker: computed('data.userSpeaker', function() {
-    return !(this.get('data.userSpeaker') && this.get('data.userSpeaker').toArray().length);
-  }),
-  isNewSession: computed('data.userSession', function() {
-    return !(this.get('data.userSession') && this.get('data.userSession').toArray().length);
-  })
-});
+  }
+
+  @computed('data.userSpeaker')
+  get isNewSpeaker() {
+    return !(this.data.userSpeaker && this.data.userSpeaker.toArray().length);
+  }
+
+  @computed('data.userSession')
+  get isNewSession() {
+    return !(this.data.userSession && this.data.userSession.toArray().length);
+  }
+}

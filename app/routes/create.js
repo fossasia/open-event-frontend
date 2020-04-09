@@ -1,11 +1,14 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
+@classic
+export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, EventWizardMixin) {
   titleToken() {
     return this.l10n.t('Create an Event');
-  },
+  }
+
   async model() {
     return {
       event: this.store.createRecord('event', {
@@ -25,4 +28,4 @@ export default Route.extend(AuthenticatedRouteMixin, EventWizardMixin, {
       steps: this.getSteps()
     };
   }
-});
+}
