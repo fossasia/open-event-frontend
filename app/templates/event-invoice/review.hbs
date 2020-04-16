@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class='paypal-button'>
-          {{paypal-button data=model.data paymentFor='invoice'}}
+          <PaypalButton @data={{model.data}} @paymentFor="invoice" />
         </div>
       </div>
     </div>

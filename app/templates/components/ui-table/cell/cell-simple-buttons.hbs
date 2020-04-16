@@ -1,11 +1,11 @@
 <div class="ui vertical compact basic buttons">
-  {{#ui-popup content=(t 'View Session') class='ui icon button'  click=(action props.actions.viewSession record) position='left center'}}
+  <UiPopup @content={{t "View Session"}} @class="ui icon button" @click={{action props.actions.viewSession record}} @position="left center">
     <i class="unhide icon"></i>
-  {{/ui-popup}}
-  {{#ui-popup content=(t 'Edit Session') class='ui icon button' click=(action props.actions.editSession record extraRecords.event.id) position='left center'}}
+  </UiPopup>
+  <UiPopup @content={{t "Edit Session"}} @class="ui icon button" @click={{action props.actions.editSession record extraRecords.event.id}} @position="left center">
     <i class="edit icon"></i>
-  {{/ui-popup}}
-  {{#ui-popup content=(t 'Delete Session') click=(action (confirm (t 'Are you sure you would like to delete this Session?') (action props.actions.deleteSession record))) class='ui icon button' position='left center'}}
+  </UiPopup>
+  <UiPopup @content={{t "Delete Session"}} @click={{action (confirm (t "Are you sure you would like to delete this Session?") (action props.actions.deleteSession record))}} @class="ui icon button" @position="left center">
     <i class="trash outline icon"></i>
-  {{/ui-popup}}
+  </UiPopup>
 </div>

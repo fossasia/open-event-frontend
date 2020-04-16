@@ -11,45 +11,53 @@
           <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
           {{#if (is-input-field field.type) }}
             {{#if field.isLongText}}
-              {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
-                textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
+              <Widgets::Forms::RichTextEditor
+                @value={{mut (get data.session field.fieldIdentifier)}}
+                @textareaId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
             {{else}}
               {{#if field.isUrlField}}
-                {{widgets/forms/link-input
-                  fixedName=true
-                  inputId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
-                  segmentedLink=(get data.session field.segmentedLinkName)
-                  canRemoveItem=false
-                }}
+                <Widgets::Forms::LinkInput
+                  @fixedName={{true}}
+                  @inputId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
+                  @segmentedLink={{get data.session field.segmentedLinkName}}
+                  @canRemoveItem={{false}} />
               {{else}}
-                {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
-                        id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
+                <Input
+                  @type={{field.type}}
+                  @value={{mut (get data.session field.fieldIdentifier)}}
+                  @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
-            {{widgets/forms/image-upload
-              imageUrl=(mut (get data.session field.fieldIdentifier))
-              label=(t 'Logo')
-              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
-              icon='image'
-              hint=(t 'Select an image')
-              maxSizeInKb=1000}}
+            <Widgets::Forms::ImageUpload
+              @imageUrl={{mut (get data.session field.fieldIdentifier)}}
+              @label={{t "Logo"}}
+              @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
+              @icon="image"
+              @hint={{t "Select an image"}}
+              @maxSizeInKb={{1000}} />
           {{/if}}
           {{#if (eq field.type 'file')}}
-            {{widgets/forms/file-upload
-              fileUrl=(mut (get data.session field.fieldIdentifier))
-              label=(t 'File')
-              id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
-              icon='file'
-              hint=(t 'Select a file')
-              maxSizeInKb=10000}}
+            <Widgets::Forms::FileUpload
+              @fileUrl={{mut (get data.session field.fieldIdentifier)}}
+              @label={{t "File"}}
+              @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
+              @icon="file"
+              @hint={{t "Select a file"}}
+              @maxSizeInKb={{10000}} />
           {{/if}}
           {{#if (eq field.type 'select')}}
             {{#if (eq field.fieldIdentifier 'language')}}
-              {{#ui-dropdown class='search selection' selected=data.session.language forceSelection=false
-                             fullTextSearch=true}}
-                {{input type='hidden' id='session_language' value=data.session.language}}
+              <UiDropdown
+                @class="search selection"
+                @selected={{data.session.language}}
+                @forceSelection={{false}}
+                @fullTextSearch={{true}}>
+                <Input
+                  @type="hidden"
+                  @id="session_language"
+                  @value={{data.session.language}} />
                 <i class="dropdown icon"></i>
                 <div class="default text">{{t 'Select'}}</div>
                 <div class="menu">
@@ -59,10 +67,16 @@
                     </div>
                   {{/each}}
                 </div>
-              {{/ui-dropdown}}
+              </UiDropdown>
             {{else}}
-              {{#ui-dropdown class='search selection' selected=(get data.session field.fieldIdentifier) onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
-                {{input type='hidden' name=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier)) value=(if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier) null)}}
+              <UiDropdown
+                @class="search selection"
+                @selected={{get data.session field.fieldIdentifier}}
+                @onChange={{action (mut (get data.session field.fieldIdentifier))}} as |execute mapper|>
+                <Input
+                  @type="hidden"
+                  @name={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
+                  @value={{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier) null}} />
                 <i class="dropdown icon"></i>
                 <div class="default text">
                   {{if (get data.session field.fieldIdentifier) (custom-related-field data.session field.fieldIdentifier 'name') (concat 'Select a ' field.name)}}
@@ -72,7 +86,7 @@
                     <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
                   {{/each}}
                 </div>
-              {{/ui-dropdown}}
+              </UiDropdown>
             {{/if}}
           {{/if}}
         </div>
@@ -87,7 +101,10 @@
     <h4>
       {{t 'Choose from existing speaker(s)'}}
     </h4>
-    {{#ui-dropdown class="fluid multiple selection" selected=speakersDetails onChange=(action (mut speakersDetails)) as |execute mapper|}}
+    <UiDropdown
+      @class="fluid multiple selection"
+      @selected={{speakersDetails}}
+      @onChange={{action (mut speakersDetails)}} as |execute mapper|>
       <i class="dropdown icon"></i>
       <div class="default text">
         {{t 'Select Speakers'}}
@@ -101,7 +118,7 @@
           {{/if}}
         {{/each}}
       </div>
-    {{/ui-dropdown}}
+    </UiDropdown>
 
     {{#if noSpeakerExists}}
       <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
@@ -110,7 +127,11 @@
       Or
     </div>
     <div class="field">
-      {{ui-checkbox class="toggle" label="Add a new speaker" checked=addNewSpeaker onChange=(action (mut addNewSpeaker))}}
+      <UiCheckbox
+        @class="toggle"
+        @label="Add a new speaker"
+        @checked={{addNewSpeaker}}
+        @onChange={{action (mut addNewSpeaker)}} />
     </div>
     {{#if addNewSpeaker}}
       {{#each allFields.speaker as |field|}}
@@ -119,48 +140,61 @@
             <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
             {{#if (is-input-field field.type) }}
               {{#if field.isLongText}}
-                {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
-                                                 textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                <Widgets::Forms::RichTextEditor
+                  @value={{mut (get data.speaker field.fieldIdentifier)}}
+                  @textareaId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{else if (eq field.fieldIdentifier 'email')}}
                 {{#if (or isUserOwnerOrAdmin isUserOrganiser)}}
-                  {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
-                                onChange=(action (mut data.speaker.isEmailOverridden))}}
+                  <UiCheckbox
+                    @label={{t "Do not require email for this speaker."}}
+                    @checked={{data.speaker.isEmailOverridden}}
+                    @onChange={{action (mut data.speaker.isEmailOverridden)}} />
                 {{/if}}
                 {{#if (not data.speaker.isEmailOverridden)}}
-                  {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier))
-                          id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                  <Input
+                    @type={{field.type}}
+                    @value={{mut (get data.speaker field.fieldIdentifier)}}
+                    @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
                 {{/if}}
               {{else}}
                 {{#if field.isUrlField}}
-                  {{widgets/forms/link-input
-                  fixedName=true
-                  inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_'field.fieldIdentifier))
-                  segmentedLink=(get data.speaker field.segmentedLinkName)
-                  canRemoveItem=false
-                }}
+                  <Widgets::Forms::LinkInput
+                    @fixedName={{true}}
+                    @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+                    @segmentedLink={{get data.speaker field.segmentedLinkName}}
+                    @canRemoveItem={{false}} />
                 {{else}}
-                  {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                  <Input
+                    @type={{field.type}}
+                    @value={{mut (get data.speaker field.fieldIdentifier)}}
+                    @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
                 {{/if}}
               {{/if}}
             {{/if}}
             {{#if (eq field.type 'image')}}
-              {{widgets/forms/image-upload
-                imageUrl=(mut (get data.speaker field.fieldIdentifier))
-                needsCropper=true
-                label=(t 'Speaker Image')
-                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-                icon='image'
-                aspectRatio = (array 2 2)
-                hint=(t 'Select an image')
-                maxSizeInKb=1000
-                helpText=(t 'We recommend using a 1:1 ratio image')
-                requiresDivider=true}}
+              <Widgets::Forms::ImageUpload
+                @imageUrl={{mut (get data.speaker field.fieldIdentifier)}}
+                @needsCropper={{true}}
+                @label={{t "Speaker Image"}}
+                @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+                @icon="image"
+                @aspectRatio={{array 2 2}}
+                @hint={{t "Select an image"}}
+                @maxSizeInKb={{1000}}
+                @helpText={{t "We recommend using a 1:1 ratio image"}}
+                @requiresDivider={{true}} />
             {{/if}}
             {{#if (eq field.type 'select')}}
               {{#if (eq field.fieldIdentifier 'country')}}
-                {{#ui-dropdown class='search selection' selected=data.speaker.country forceSelection=false
-                               fullTextSearch=true}}
-                  {{input type='hidden' id='speaker_country' value=data.speaker.country}}
+                <UiDropdown
+                  @class="search selection"
+                  @selected={{data.speaker.country}}
+                  @forceSelection={{false}}
+                  @fullTextSearch={{true}}>
+                  <Input
+                    @type="hidden"
+                    @id="speaker_country"
+                    @value={{data.speaker.country}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">{{get data 'selectedCountry'}}</div>
                   <div class="menu">
@@ -171,9 +205,12 @@
                       </div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               {{else if (eq field.fieldIdentifier 'gender')}}
-                {{#ui-dropdown class='search selection' selected=data.speaker.gender onChange=(action (mut data.speaker.gender)) as |execute mapper|}}
+                <UiDropdown
+                  @class="search selection"
+                  @selected={{data.speaker.gender}}
+                  @onChange={{action (mut data.speaker.gender)}} as |execute mapper|>
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your gender'}}</div>
                   <div class="menu">
@@ -183,9 +220,11 @@
                       </div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               {{else}}
-                {{#ui-dropdown class='search selection' onChange=(action (mut (get data.speaker field.fieldIdentifier))) as |execute mapper|}}
+                <UiDropdown
+                  @class="search selection"
+                  @onChange={{action (mut (get data.speaker field.fieldIdentifier))}} as |execute mapper|>
                   <i class="dropdown icon"></i>
                   <div class="default text">
                     {{if (get data.speaker field.fieldIdentifier) (get data.speaker field.fieldIdentifier)
@@ -196,7 +235,7 @@
                       <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               {{/if}}
             {{/if}}
           </div>
@@ -217,48 +256,61 @@
           <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
           {{#if (is-input-field field.type) }}
             {{#if field.isLongText}}
-              {{widgets/forms/rich-text-editor value=(mut (get data.speaker field.fieldIdentifier))
-                textareaId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+              <Widgets::Forms::RichTextEditor
+                @value={{mut (get data.speaker field.fieldIdentifier)}}
+                @textareaId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
             {{else if (eq field.fieldIdentifier 'email')}}
               {{#if (or isUserOwnerOrAdmin isUserOrganiser)}}
-                {{ui-checkbox label=(t 'Do not require email for this speaker.') checked=data.speaker.isEmailOverridden
-                              onChange=(action (mut data.speaker.isEmailOverridden))}}
+                <UiCheckbox
+                  @label={{t "Do not require email for this speaker."}}
+                  @checked={{data.speaker.isEmailOverridden}}
+                  @onChange={{action (mut data.speaker.isEmailOverridden)}} />
               {{/if}}
               {{#if (not data.speaker.isEmailOverridden)}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier))
-                        id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                <Input
+                  @type={{field.type}}
+                  @value={{mut (get data.speaker field.fieldIdentifier)}}
+                  @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{/if}}
             {{else}}
               {{#if field.isUrlField}}
-                {{widgets/forms/link-input
-                  fixedName=true
-                  inputId=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-                  segmentedLink=(get data.speaker field.segmentedLinkName)
-                  canRemoveItem=false
-                }}
+                <Widgets::Forms::LinkInput
+                  @fixedName={{true}}
+                  @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+                  @segmentedLink={{get data.speaker field.segmentedLinkName}}
+                  @canRemoveItem={{false}} />
               {{else}}
-                {{input type=field.type value=(mut (get data.speaker field.fieldIdentifier)) id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))}}
+                <Input
+                  @type={{field.type}}
+                  @value={{mut (get data.speaker field.fieldIdentifier)}}
+                  @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}
           {{/if}}
           {{#if (eq field.type 'image')}}
-            {{widgets/forms/image-upload
-                imageUrl=(mut (get data.speaker field.fieldIdentifier))
-                needsCropper=true
-                label=(t 'Speaker Image')
-                id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier))
-                icon='image'
-                aspectRatio = (array 2 2)
-                hint=(t 'Select an image')
-                maxSizeInKb=1000
-                helpText=(t 'We recommend using a 1:1 ratio image')
-                requiresDivider=true}}
+            <Widgets::Forms::ImageUpload
+              @imageUrl={{mut (get data.speaker field.fieldIdentifier)}}
+              @needsCropper={{true}}
+              @label={{t "Speaker Image"}}
+              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+              @icon="image"
+              @aspectRatio={{array 2 2}}
+              @hint={{t "Select an image"}}
+              @maxSizeInKb={{1000}}
+              @helpText={{t "We recommend using a 1:1 ratio image"}}
+              @requiresDivider={{true}} />
           {{/if}}
           {{#if (eq field.type 'select')}}
             {{#if (eq field.fieldIdentifier 'country')}}
-              {{#ui-dropdown class='search selection' selected=data.speaker.country forceSelection=false
-                         fullTextSearch=true}}
-                {{input type='hidden' id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier)) value=data.speaker.country}}
+              <UiDropdown
+                @class="search selection"
+                @selected={{data.speaker.country}}
+                @forceSelection={{false}}
+                @fullTextSearch={{true}}>
+                <Input
+                  @type="hidden"
+                  @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+                  @value={{data.speaker.country}} />
                 <i class="dropdown icon"></i>
                 <div class="default text">{{get data 'selectedCountry'}}</div>
                 <div class="menu">
@@ -269,10 +321,16 @@
                     </div>
                   {{/each}}
                 </div>
-              {{/ui-dropdown}}
+              </UiDropdown>
             {{else if (eq field.fieldIdentifier 'gender')}}
-              {{#ui-dropdown class='search selection' selected=data.speaker.gender onChange=(action (mut data.speaker.gender)) as |execute mapper|}}
-                {{input type="hidden" id=(if field.isRequired (concat 'speaker_' field.fieldIdentifier '_required') (concat 'speaker_' field.fieldIdentifier)) value=data.speaker.gender}}
+              <UiDropdown
+                @class="search selection"
+                @selected={{data.speaker.gender}}
+                @onChange={{action (mut data.speaker.gender)}} as |execute mapper|>
+                <Input
+                  @type="hidden"
+                  @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+                  @value={{data.speaker.gender}} />
                 <i class="dropdown icon"></i>
                 <div class="default text">{{t 'Select your gender'}}</div>
                 <div class="menu">
@@ -282,9 +340,11 @@
                     </div>
                   {{/each}}
                 </div>
-              {{/ui-dropdown}}
+              </UiDropdown>
             {{else}}
-              {{#ui-dropdown class='search selection' onChange=(action (mut (get data.speaker field.fieldIdentifier))) as |execute mapper|}}
+              <UiDropdown
+                @class="search selection"
+                @onChange={{action (mut (get data.speaker field.fieldIdentifier))}} as |execute mapper|>
                 <i class="dropdown icon"></i>
                 <div class="default text">
                   {{if (get data.speaker field.fieldIdentifier) (get data.speaker field.fieldIdentifier)
@@ -295,7 +355,7 @@
                     <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
                   {{/each}}
                 </div>
-              {{/ui-dropdown}}
+              </UiDropdown>
             {{/if}}
           {{/if}}
         </div>
@@ -310,7 +370,10 @@
     <h4>
       {{t 'Choose from an existing session'}}
     </h4>
-    {{#ui-dropdown class="fluid search selection" selected=sessionDetails onChange=(action (mut sessionDetails)) as |execute mapper|}}
+    <UiDropdown
+      @class="fluid search selection"
+      @selected={{sessionDetails}}
+      @onChange={{action (mut sessionDetails)}} as |execute mapper|>
       <i class="dropdown icon"></i>
       <div class="default text">
         {{t 'Select Session'}}
@@ -324,7 +387,7 @@
           {{/if}}
         {{/each}}
       </div>
-    {{/ui-dropdown}}
+    </UiDropdown>
     {{#if noSessionExists}}
       <div class="ui small disabled header">{{t 'No session exists. Add a new session proposal.'}}</div>
     {{/if}}
@@ -332,7 +395,11 @@
       Or
     </div>
     <div class="field">
-      {{ui-radio name='sessionDetails' label=(t 'Add a new Proposal') value=false onChange=(action 'toggleNewSessionSelected' true)}}
+      <UiRadio
+        @name="sessionDetails"
+        @label={{t "Add a new Proposal"}}
+        @value={{false}}
+        @onChange={{action "toggleNewSessionSelected" true}} />
     </div>
     {{#if shouldShowNewSessionDetails}}
       {{#each allFields.session as |field|}}
@@ -341,36 +408,45 @@
             <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
             {{#if (is-input-field field.type) }}
               {{#if field.isLongText}}
-                {{widgets/forms/rich-text-editor value=(mut (get data.session field.fieldIdentifier))
-                                               textareaId=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
+                <Widgets::Forms::RichTextEditor
+                  @value={{mut (get data.session field.fieldIdentifier)}}
+                  @textareaId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
               {{else}}
-                {{input type=field.type value=(mut (get data.session field.fieldIdentifier))
-                      id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))}}
+                <Input
+                  @type={{field.type}}
+                  @value={{mut (get data.session field.fieldIdentifier)}}
+                  @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}
             {{#if (eq field.type 'image')}}
-              {{widgets/forms/image-upload
-                imageUrl=(mut (get data.session field.fieldIdentifier))
-                label=(t 'Logo')
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
-                icon='image'
-                hint=(t 'Select an image')
-                maxSizeInKb=1000}}
+              <Widgets::Forms::ImageUpload
+                @imageUrl={{mut (get data.session field.fieldIdentifier)}}
+                @label={{t "Logo"}}
+                @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
+                @icon="image"
+                @hint={{t "Select an image"}}
+                @maxSizeInKb={{1000}} />
             {{/if}}
             {{#if (eq field.type 'file')}}
-              {{widgets/forms/file-upload
-                fileUrl=(mut (get data.session field.fieldIdentifier))
-                label=(t 'File')
-                id=(if field.isRequired (concat 'session_' field.fieldIdentifier '_required') (concat 'session_' field.fieldIdentifier))
-                icon='file'
-                hint=(t 'Select a file')
-                maxSizeInKb=10000}}
+              <Widgets::Forms::FileUpload
+                @fileUrl={{mut (get data.session field.fieldIdentifier)}}
+                @label={{t "File"}}
+                @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
+                @icon="file"
+                @hint={{t "Select a file"}}
+                @maxSizeInKb={{10000}} />
             {{/if}}
             {{#if (eq field.type 'select')}}
               {{#if (eq field.fieldIdentifier 'language')}}
-                {{#ui-dropdown class='search selection' selected=data.session.language forceSelection=false
-                               fullTextSearch=true}}
-                  {{input type='hidden' id='session_language' value=data.session.language}}
+                <UiDropdown
+                  @class="search selection"
+                  @selected={{data.session.language}}
+                  @forceSelection={{false}}
+                  @fullTextSearch={{true}}>
+                  <Input
+                    @type="hidden"
+                    @id="session_language"
+                    @value={{data.session.language}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select'}}</div>
                   <div class="menu">
@@ -380,9 +456,11 @@
                       </div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               {{else}}
-                {{#ui-dropdown class='search selection' onChange=(action (mut (get data.session field.fieldIdentifier))) as |execute mapper|}}
+                <UiDropdown
+                  @class="search selection"
+                  @onChange={{action (mut (get data.session field.fieldIdentifier))}} as |execute mapper|>
                   <i class="dropdown icon"></i>
                   <div class="default text">
                     {{if (get data.session field.fieldIdentifier) (get data.session field.fieldIdentifier)
@@ -393,7 +471,7 @@
                       <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               {{/if}}
             {{/if}}
           </div>

@@ -1,7 +1,7 @@
 <div class="ui container">
   <div class="ui stackable grid">
     <div class="sixteen wide column">
-      {{unverified-user-message}}
+      <UnverifiedUserMessage />
     </div>
   </div>
   {{#if model.event.name}}
@@ -11,10 +11,10 @@
   {{/if}}
   <div class="ui one column centered stacked grid event wizard">
     <div class="column mobile hidden">
-      {{widgets/steps-indicator steps=model.steps currentStep=1 enableAll=false disableLinks=true}}
+      <Widgets::StepsIndicator @steps={{model.steps}} @currentStep={{1}} @enableAll={{false}} @disableLinks={{true}} />
     </div>
     <div class="column">
-      {{forms/wizard/basic-details-step data=model save='save' move='move' isCreate=true isLoading=isLoading}}
+      <Forms::Wizard::BasicDetailsStep @data={{model}} @save="save" @move="move" @isCreate={{true}} @isLoading={{isLoading}} />
     </div>
   </div>
 </div>

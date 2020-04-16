@@ -6,29 +6,33 @@
   <div class="ui grid">
     <div class="row">
       <div class="sixteen wide column">
-        {{widgets/forms/image-upload
-          imageUrl=placeholder.originalImageUrl
-          selectedImage=placeholder.originalImageUrl 
-          needsCropper=true
-          label=(t 'Update Image')
-          id='user_image'
-          aspectRatio=(if (eq placeholder.name 'avatar') (array 1 1) (array 2 1))
-          icon='photo'
-          hint=(t 'Select Image')
-          maxSizeInKb=10000
-          helpText=(t 'For Cover Photos : 300x150px (2:1 ratio) image.
-                    For Avatar Photos : 150x150px (1:1 ratio) image.')}}
+        <Widgets::Forms::ImageUpload
+          @imageUrl={{placeholder.originalImageUrl}}
+          @selectedImage={{placeholder.originalImageUrl}}
+          @needsCropper={{true}}
+          @label={{t "Update Image"}}
+          @id="user_image"
+          @aspectRatio={{if (eq placeholder.name "avatar") (array 1 1) (array 2 1)}}
+          @icon="photo"
+          @hint={{t "Select Image"}}
+          @maxSizeInKb={{10000}}
+          @helpText={{t "For Cover Photos : 300x150px (2:1 ratio) image.
+                    For Avatar Photos : 150x150px (1:1 ratio) image."}} />
         <form class="ui form">
           <div class="field">
             <label class="ui label">{{t 'Copyright information'}}</label>
             <div class="ui input">
-              {{input type="text" value=placeholder.copyright}}
+              <Input
+                @type="text"
+                @value={{placeholder.copyright}} />
             </div>
           </div>
           <div class="field">
             <label class="ui label">{{t 'Origin information'}}</label>
             <div class="ui input">
-              {{input type="text" value=placeholder.origin}}
+              <Input
+                @type="text"
+                @value={{placeholder.origin}} />
             </div>
           </div>
         </form>

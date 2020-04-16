@@ -5,8 +5,8 @@
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
-      {{#ui-dropdown class='search selection' selected=tax.country forceSelection=false fullTextSearch=true}}
-        {{input type='hidden' id='tax_country' value=tax.country}}
+      <UiDropdown @class="search selection" @selected={{tax.country}} @forceSelection={{false}} @fullTextSearch={{true}}>
+        <Input @type="hidden" @id="tax_country" @value={{tax.country}} />
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select country'}}</div>
         <div class="menu">
@@ -17,24 +17,24 @@
             </div>
           {{/each}}
         </div>
-      {{/ui-dropdown}}
+      </UiDropdown>
     </div>
     <div class="field">
       <label class="required">{{t 'Tax name'}}</label>
-      {{input type='text' id='tax_name' value=tax.name}}
+      <Input @type="text" @id="tax_name" @value={{tax.name}} />
     </div>
     <div class="field">
       <label class="required">{{t 'Tax rate'}}</label>
-      {{input type='number' id='tax_rate' min=0 max=100 value=tax.rate}}
+      <Input @type="number" @id="tax_rate" @min={{0}} @max={{100}} @value={{tax.rate}} />
     </div>
     <div class="field">
       <label class="required">{{t 'Tax ID'}}</label>
-      {{input type='text' id='tax_id' value=tax.taxId}}
+      <Input @type="text" @id="tax_id" @value={{tax.taxId}} />
     </div>
     <div class="field">
       <label>{{t 'Tax Invoices'}}</label>
       <div class="ui checkbox">
-        {{input type='checkbox' id='send_tax_invoices' name='send_tax_invoices' checked=tax.shouldSendInvoice}}
+        <Input @type="checkbox" @id="send_tax_invoices" @name="send_tax_invoices" @checked={{tax.shouldSendInvoice}} />
         <label for="send_tax_invoices">
           <strong>{{t 'Send tax invoice to attendees'}} : </strong>
           <span class="text muted">
@@ -46,39 +46,39 @@
     </div>
     <div class="field">
       <label>{{t 'Registered Company'}}</label>
-      {{input type='text' id='tax_invoice_company' value=tax.registeredCompany}}
+      <Input @type="text" @id="tax_invoice_company" @value={{tax.registeredCompany}} />
     </div>
     <div class="field">
       <label>{{t 'Business Address'}}</label>
-      {{textarea rows=3 id='tax_invoice_address' value=tax.address}}
+      <Textarea @rows={{3}} @id="tax_invoice_address" @value={{tax.address}} />
     </div>
     <div class="field">
       <label>{{t 'City'}}</label>
-      {{input type='text' id='tax_invoice_city' value=tax.city}}
+      <Input @type="text" @id="tax_invoice_city" @value={{tax.city}} />
     </div>
     <div class="field">
       <label>{{t 'State'}}</label>
-      {{input type='text' id='tax_invoice_state' value=tax.state}}
+      <Input @type="text" @id="tax_invoice_state" @value={{tax.state}} />
     </div>
     <div class="field">
       <label>{{t 'Zipcode'}}</label>
-      {{input type='text' id='tax_invoice_zipcode' value=tax.zip}}
+      <Input @type="text" @id="tax_invoice_zipcode" @value={{tax.zip}} />
     </div>
     <div class="field">
       <label>{{t 'Text for invoice footer (optional)'}}</label>
-      {{textarea rows=3 id='tax_invoice_footer' value=tax.invoiceFooter}}
+      <Textarea @rows={{3}} @id="tax_invoice_footer" @value={{tax.invoiceFooter}} />
     </div>
     <div class="grouped fields">
       <label for="privacy">{{t 'Add or Include Tax Fee'}}</label>
       <div class="field">
         <div class="ui radio checkbox">
-          {{widgets/forms/radio-button name='tax_add_include' id='add_tax' value='add' checked=isTaxIncludedInPrice}}
+          <Widgets::Forms::RadioButton @name="tax_add_include" @id="add_tax" @value="add" @checked={{isTaxIncludedInPrice}} />
           <label for="add_tax">{{t 'Add tax as separate fee on top of the price'}}</label>
         </div>
       </div>
       <div class="field">
         <div class="ui radio checkbox">
-          {{widgets/forms/radio-button name='tax_add_include' id='include_tax' value='include' checked=isTaxIncludedInPrice}}
+          <Widgets::Forms::RadioButton @name="tax_add_include" @id="include_tax" @value="include" @checked={{isTaxIncludedInPrice}} />
           <label for="include_tax">{{t 'Include tax in ticket price'}}</label>
         </div>
       </div>

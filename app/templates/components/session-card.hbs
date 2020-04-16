@@ -2,7 +2,7 @@
   {{#unless device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
       <a class="image" href="{{href-to 'my-sessions.view' session.id}}">
-        {{widgets/safe-image src=(if session.event.thumbnailImageUrl session.event.thumbnailImageUrl 'assets/images/landing.jpg')}}
+        <Widgets::SafeImage @src={{if session.event.thumbnailImageUrl session.event.thumbnailImageUrl "assets/images/landing.jpg"}} />
       </a>
     </div>
   {{/unless}}

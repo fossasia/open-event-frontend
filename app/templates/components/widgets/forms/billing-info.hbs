@@ -1,32 +1,55 @@
 <div class="field">
   <label class="required" for="company">{{t 'Company'}}</label>
-  {{input type='text' id='company' value=data.company}}
+  <Input
+    @type="text"
+    @id="company"
+    @value={{data.company}} />
 </div>
 <div class="field">
   <label class="required" for="taxBusinessInfo">{{t 'Tax ID or Business ID'}}</label>
-  {{input type='text' id='taxBusinessInfo' value=data.taxBusinessInfo}}
+  <Input
+    @type="text"
+    @id="taxBusinessInfo"
+    @value={{data.taxBusinessInfo}} />
 </div>
 <div class="field">
   <label class="required" for="address">{{t 'Address'}}</label>
-  {{textarea rows='2' id='address' value=data.address}}
-</div>
+  <Textarea
+    @rows="2"
+    @id="address"
+    @value={{data.address}} />
+  </div>
 <div class="field">
   <label class="required" for="city">{{t 'City'}}</label>
-  {{input type='text' id='city' value=data.city}}
+  <Input
+@type="text"
+@id="city"
+@value={{data.city}} />
 </div>
 <div class="field">
   <label for="state">{{t 'State/Province'}}</label>
-  {{input type='text' id='state' value=data.state}}
+  <Input
+@type="text"
+@id="state"
+@value={{data.state}} />
 </div>
 <div class="field">
   <label class="required" for="zipcode">{{t 'Zip Code'}}</label>
-  {{input type='text' id='zip_code' value=data.zipcode}}
+  <Input
+@type="text"
+@id="zip_code"
+@value={{data.zipcode}} />
 </div>
 <div class="field">
   <label class="required">{{t 'Select country'}}</label>
-  {{#ui-dropdown class="search selection" selected=data.country
-                onChange=(action (mut data.country)) as |execute mapper|}}
-    {{input type='hidden' id='country' value=data.country}}
+  <UiDropdown
+@class="search selection"
+@selected={{data.country}}
+@onChange={{action (mut data.country)}} as |execute mapper|>
+    <Input
+@type="hidden"
+@id="country"
+@value={{data.country}} />
     <div class="default text">{{t 'Select country'}}</div>
     <i class="dropdown icon"></i>
     <div class="menu">
@@ -37,5 +60,5 @@
         </div>
       {{/each}}
     </div>
-  {{/ui-dropdown}}
+  </UiDropdown>
 </div>

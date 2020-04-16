@@ -10,7 +10,7 @@
       <div class="label">
         {{t 'Please enter your Email ID to confirm that you want to delete the account'}}
       </div>
-      {{input type='text' name='confirm_email' value=confirmEmail required=true}}
+      <Input @type="text" @name="confirm_email" @value={{confirmEmail}} required={{true}} />
     </div>
   </div>
 </div>

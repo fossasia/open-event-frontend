@@ -7,14 +7,14 @@
       <label class="required">
         {{t 'User Email'}}
       </label>
-      {{input type='text' name='user_email' value=currentInvite.email}}
+      <Input @type="text" @name="user_email" @value={{currentInvite.email}} />
     </div>
     <div class="field">
       <label class="required">
         {{t 'User role'}}
       </label>
-      {{#ui-dropdown class='fluid selection' onChange=(action (mut currentInvite.role)) as |execute mapper|}}
-        {{input type='hidden' name='user_role'}}
+      <UiDropdown @class="fluid selection" @onChange={{action (mut currentInvite.role)}} as |execute mapper|>
+        <Input @type="hidden" @name="user_role" />
         <i class="dropdown icon"></i>
         <div class="default text">
           {{t 'Select a role'}}
@@ -28,7 +28,7 @@
             {{/if}}
           {{/each}}
         </div>
-      {{/ui-dropdown}}
+      </UiDropdown>
     </div>
   </form>
 </div>

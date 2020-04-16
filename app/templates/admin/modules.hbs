@@ -5,7 +5,7 @@
         {{t 'Ticketing'}}
       </div>
       <div class="ui column eight wide field right aligned">
-        {{ui-checkbox class='toggle' checked=model.ticketInclude onChange=(pipe-action (action (mut model.ticketInclude)) (action 'submit'))}}
+        <UiCheckbox @class="toggle" @checked={{model.ticketInclude}} @onChange={{pipe-action (action (mut model.ticketInclude)) (action "submit")}} />
       </div>
     </div>
     <div class="ui row segment">
@@ -13,7 +13,7 @@
         {{t 'Payments'}}
       </div>
       <div class="ui column eight wide field right aligned">
-        {{ui-checkbox class='toggle' checked=model.paymentInclude onChange=(pipe-action (action (mut model.paymentInclude)) (action 'submit'))}}
+        <UiCheckbox @class="toggle" @checked={{model.paymentInclude}} @onChange={{pipe-action (action (mut model.paymentInclude)) (action "submit")}} />
       </div>
     </div>
     <div class="ui row segment">
@@ -21,7 +21,7 @@
         {{t 'Donations'}}
       </div>
       <div class="ui eight column wide field right aligned">
-        {{ui-checkbox class='toggle' checked=model.donationInclude onChange=(pipe-action (action (mut model.donationInclude)) (action 'submit'))}}
+        <UiCheckbox @class="toggle" @checked={{model.donationInclude}} @onChange={{pipe-action (action (mut model.donationInclude)) (action "submit")}} />
       </div>
     </div>
   </div>

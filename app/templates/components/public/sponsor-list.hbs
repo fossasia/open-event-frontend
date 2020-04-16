@@ -5,7 +5,7 @@
   {{/if}}
   <div class="ui three column stackable grid">
     {{#each sponsors as |sponsor|}}
-      {{public/sponsor-item sponsor=sponsor}}
+      <Public::SponsorItem @sponsor={{sponsor}} />
     {{/each}}
   </div>
 {{/each-in}}

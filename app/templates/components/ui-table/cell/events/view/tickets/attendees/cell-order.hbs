@@ -1,5 +1,5 @@
 <div class="ui tiny header">
-  {{#link-to 'orders.view' record.identifier}}{{record.identifier}}{{/link-to}}
+  <LinkTo @route="orders.view" @model={{record.identifier}}>{{record.identifier}}</LinkTo>
   <span class="weight-400">
     {{t 'by'}}
     {{extraRecords.user.email}}

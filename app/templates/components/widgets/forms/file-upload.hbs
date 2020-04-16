@@ -1,7 +1,7 @@
 <div class="ui {{if uploadingFile 'loading'}} basic segment less padding">
   {{#if fileUrl}}
     <div class="ui action input">
-      {{input type='url' readonly="" value=fileUrl}}
+      <Input @type="url" @readonly="" @value={{fileUrl}} />
       <button class="ui icon red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' edit))}}>
         <i class="remove icon"></i>
         {{t 'Remove file'}}
@@ -10,7 +10,7 @@
   {{else}}
     <div class="ui grid">
       <div class="column sixteen wide">
-        {{input type='url' change=(action 'fileSelected' 'url')}}
+        <Input @type="url" @change={{action "fileSelected" "url"}} />
       </div>
       <span>{{t 'Or'}}</span>
       <div class="column sixteen wide">
@@ -18,7 +18,7 @@
           <i class="file icon"></i>
           {{hint}}
         </label>
-        {{input type='file' name='file' id=inputIdGenerated class='hidden-item' change=(action 'fileSelected' 'file')}}
+        <Input @type="file" @name="file" @id={{inputIdGenerated}} class="hidden-item" @change={{action "fileSelected" "file"}} />
         <span class="text muted">
           {{#if helpText}}
             {{helpText}}<br>

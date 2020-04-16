@@ -11,7 +11,8 @@
         <div class="label">
           {{t 'Please complete registration within '}} {{settings.orderExpiryTime}} {{t 'minutes.'}}
           <br>
-          {{t 'After '}} {{settings.orderExpiryTime}} {{t 'minutes, the reservation we\'re holding will be released to others.'}}
+          {{t 'After '}} {{settings.orderExpiryTime}}
+          {{t 'minutes, the reservation we\'re holding will be released to others.'}}
         </div>
       </div>
     </div>
@@ -22,15 +23,24 @@
       </h4>
       <div class="field {{if buyerHasFirstName 'disabled'}}">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
-        {{input type='text' name='first_name' value=buyerFirstName}}
+        <Input
+          @type="text"
+          @name="first_name"
+          @value={{buyerFirstName}} />
       </div>
       <div class="field {{if buyerHasLastName 'disabled'}}">
         <label class="required" for="lastname">{{t 'Last Name'}}</label>
-        {{input type='text' name='last_name' value=buyerLastName}}
+        <Input
+          @type="text"
+          @name="last_name"
+          @value={{buyerLastName}} />
       </div>
       <div class="field disabled">
         <label class="required" for="email">{{t 'Email'}}</label>
-        {{input type='text' name='email' value=buyer.email}}
+        <Input
+          @type="text"
+          @name="email"
+          @value={{buyer.email}} />
       </div>
       <h4 class="ui horizontal divider header">
         <i class="ticket icon"></i>
@@ -39,8 +49,10 @@
       {{#each holders as |holder index|}}
         {{#if (eq index 0)}}
           <div class="field">
-            {{ui-checkbox label=(t 'Ticket holder is the same person as ticket buyer') checked=sameAsBuyer
-                          onChange=(pipe-action (action (mut sameAsBuyer)) (action 'modifyHolder' holder))}}
+            <UiCheckbox
+              @label={{t "Ticket holder is the same person as ticket buyer"}}
+              @checked={{sameAsBuyer}}
+              @onChange={{pipe-action (action (mut sameAsBuyer)) (action "modifyHolder" holder)}} />
           </div>
         {{/if}}
         <div class="inline field">
@@ -53,21 +65,32 @@
               <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
               {{#if (is-input-field field.type) }}
                 {{#if field.isLongText}}
-                  {{widgets/forms/rich-text-editor value=(mut (get holder field.fieldIdentifier))
-                                                   name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
-                
+                  <Widgets::Forms::RichTextEditor
+                    @value={{mut (get holder field.fieldIdentifier)}}
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+
                 {{else}}
                   {{#if (and sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
-                    {{input type=field.type value=(mut (get holder field.fieldIdentifier))
-                            name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index)) readonly=""}}
+                    <Input
+                      @type={{field.type}}
+                      @value={{mut (get holder field.fieldIdentifier)}}
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
+                      @readonly="" />
                   {{else}}
-                    {{input type=field.type value=(mut (get holder field.fieldIdentifier))
-                            name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                    <Input
+                      @type={{field.type}}
+                      @value={{mut (get holder field.fieldIdentifier)}}
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   {{/if}}
                 {{/if}}
               {{else if (eq field.fieldIdentifier 'gender')}}
-                {{#ui-dropdown class='search selection' value=(mut (get holder field.fieldIdentifier)) onChange=(action (mut holder.gender)) as |execute mapper|}}
-                  {{input type='hidden' name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                <UiDropdown
+                  @class="search selection"
+                  @value={{mut (get holder field.fieldIdentifier)}}
+                  @onChange={{action (mut holder.gender)}} as |execute mapper|>
+                  <Input
+                    @type="hidden"
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your gender'}}</div>
                   <div class="menu">
@@ -77,10 +100,15 @@
                       </div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               {{else if (eq field.fieldIdentifier 'country')}}
-                {{#ui-dropdown class='search selection' value=(mut (get holder field.fieldIdentifier)) onChange=(action (mut holder.country)) as |execute mapper|}}
-                  {{input type='hidden' name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                <UiDropdown
+                  @class="search selection"
+                  @value={{mut (get holder field.fieldIdentifier)}}
+                  @onChange={{action (mut holder.country)}} as |execute mapper|>
+                  <Input
+                    @type="hidden"
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your country'}}</div>
                   <div class="menu">
@@ -91,10 +119,15 @@
                       </div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               {{else if (eq field.fieldIdentifier 'ageGroup')}}
-                {{#ui-dropdown class='search selection' value=(mut (get holder field.fieldIdentifier)) onChange=(action (mut holder.ageGroup)) as |execute mapper|}}
-                  {{input type='hidden' name=(if field.isRequired (concat field.fieldIdentifier '_required_' index) (concat field.fieldIdentifier '_' index))}}
+                <UiDropdown
+                  @class="search selection"
+                  @value={{mut (get holder field.fieldIdentifier)}}
+                  @onChange={{action (mut holder.ageGroup)}} as |execute mapper|>
+                  <Input
+                    @type="hidden"
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your age group'}}</div>
                   <div class="menu">
@@ -104,7 +137,7 @@
                       </div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}  
+                </UiDropdown>
               {{/if}}
             </div>
           {{/if}}
@@ -118,14 +151,16 @@
         </h4>
         {{#unless this.event.isBillingInfoMandatory}}
           <div class="ui center aligned field">
-            {{ui-checkbox label=(t 'Enable Billing Information') checked=data.isBillingEnabled
-                                                onChange=(action (mut data.isBillingEnabled))}}
-          </div>                                    
+            <UiCheckbox
+              @label={{t "Enable Billing Information"}}
+              @checked={{data.isBillingEnabled}}
+              @onChange={{action (mut data.isBillingEnabled)}} />
+          </div>
         {{/unless}}
-        {{#if isBillingInfoNeeded}}   
-          {{widgets/forms/billing-info
-        	  data=data
-          	event=event}} 
+        {{#if isBillingInfoNeeded}}
+          <Widgets::Forms::BillingInfo
+            @data={{data}}
+            @event={{event}} />
         {{/if}}
         <h4 class="ui horizontal divider header">
           <i class="ticket icon"></i>
@@ -136,8 +171,12 @@
           <div class="grouped inline fields">
             {{#if data.event.isStripeLinked}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Credit Card') value='stripe' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Credit Card"}}
+                  @value="stripe"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
                 <label for="payment_mode">
                   <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
                 </label>
@@ -145,59 +184,98 @@
             {{/if}}
             {{#if data.event.canPayByPaypal}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Paypal') value='paypal' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Paypal"}}
+                  @value="paypal"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
                 <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
               </div>
             {{/if}}
             {{#if data.event.canPayByPaytm}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Paytm') value='paytm' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Paytm"}}
+                  @value="paytm"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
                 <label for="payment_mode"><img src="/images/payment-logos/paytm.png" alt="paytm"></label>
               </div>
             {{/if}}
             {{#if data.event.canPayByOmise}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Omise') value='omise' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise" class="ui tiny image" ></label>
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Omise"}}
+                  @value="omise"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise"
+                    class="ui tiny image"></label>
               </div>
             {{/if}}
             {{#if data.event.canPayByAlipay}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'AliPay') value='alipay' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
-                <label for="payment_mode"><img src="/images/payment-logos/alipay.png" alt="alipay" class="ui tiny image"></label>
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "AliPay"}}
+                  @value="alipay"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/alipay.png" alt="alipay"
+                    class="ui tiny image"></label>
               </div>
             {{/if}}
             {{#if data.event.canPayByCheque}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Cheque') value='cheque' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Cheque"}}
+                  @value="cheque"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
               </div>
             {{/if}}
             {{#if data.event.canPayByBank}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Bank') value='bank' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Bank"}}
+                  @value="bank"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
               </div>
             {{/if}}
             {{#if data.event.canPayOnsite}}
               <div class="field">
-                {{ui-radio name='payment_mode' label=(t 'Onsite') value='onsite' current=data.paymentMode
-                           onChange=(action (mut data.paymentMode))}}
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Onsite"}}
+                  @value="onsite"
+                  @current={{data.paymentMode}}
+                  @onChange={{action (mut data.paymentMode)}} />
               </div>
             {{/if}}
           </div>
         </div>
         <div class="field">
           {{#if (eq data.paymentMode 'bank')}}
-            {{textarea name="payment_details" value=data.event.bankDetails readonly=""}}
+            <Textarea
+              @name="payment_details"
+              @value={{data.event.bankDetails}}
+              @readonly="" />
           {{else if (eq data.paymentMode 'cheque')}}
-            {{textarea name="payment_details" value=data.event.chequeDetails readonly=""}}
+            <Textarea
+              @name="payment_details"
+              @value={{data.event.chequeDetails}}
+              @readonly="" />
           {{else if (eq data.paymentMode 'onsite')}}
-            {{textarea name="payment_details" value=data.event.onsiteDetails readonly=""}}
+            <Textarea
+              @name="payment_details"
+              @value={{data.event.onsiteDetails}}
+              @readonly="" />
           {{/if}}
         </div>
       {{/if}}

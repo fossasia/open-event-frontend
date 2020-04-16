@@ -8,22 +8,22 @@
   {{/if}}
   <div>
     {{#if isNewSpeaker}}
-      {{#link-to 'public.cfs.new-speaker' class='ui teal button' invokeAction=(action 'toggleView')}}
+      <LinkTo @route="public.cfs.new-speaker" class="ui teal button" @invokeAction={{action "toggleView"}}>
         {{t 'Add Speaker Details'}}
-      {{/link-to}}
+      </LinkTo>
     {{else}}
       {{#each data.userSpeaker as |speaker|}}
         {{#if speaker.id}}
-          {{#link-to 'public.cfs.edit-speaker' speaker.id invokeAction=(action 'toggleView')}}
+          <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}} @invokeAction={{action "toggleView"}}>
             <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
       {{/each}}
     {{/if}}
     {{#unless isNewSpeaker}}
-      {{#link-to 'public.cfs.new-session' invokeAction=(action 'toggleView')}}
+      <LinkTo @route="public.cfs.new-session" @invokeAction={{action "toggleView"}}>
         <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Add New Session'}}</button>
-      {{/link-to}}
+      </LinkTo>
     {{/unless}}
   </div>
 </div>

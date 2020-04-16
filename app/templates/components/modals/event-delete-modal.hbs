@@ -10,7 +10,7 @@
       <div class="label">
         {{t 'Please enter the full name of the event to continue'}}
       </div>
-      {{input type='text' name='confirm_name' value=confirmName required=true}}
+      <Input @type="text" @name="confirm_name" @value={{confirmName}} required={{true}} />
     </div>
   </form>
 </div>

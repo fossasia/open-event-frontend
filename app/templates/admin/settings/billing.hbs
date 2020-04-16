@@ -1,3 +1,3 @@
 <div class="ui basic {{if isLoading 'loading'}} segment">
-  {{forms/admin/settings/billing timezones=timezones countries=countries model=model save=(action 'updateInvoiceModel')}}
+  <Forms::Admin::Settings::Billing @timezones={{timezones}} @countries={{countries}} @model={{model}} @save={{action "updateInvoiceModel"}} />
 </div>

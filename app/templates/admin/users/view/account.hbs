@@ -2,17 +2,17 @@
   <h1 class="ui header">{{t 'Account'}}</h1>
   <div class="row">
     <div class="sixteen wide column">
-      {{#tabbed-navigation}}
-        {{#link-to 'admin.users.view.account.profile' model.id class='item'}}
+      <TabbedNavigation>
+        <LinkTo @route="admin.users.view.account.profile" @model={{model.id}} class="item">
           {{t 'Profile Info'}}
-        {{/link-to}}
-        {{#link-to 'admin.users.view.account.email-preferences' model.id class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.account.email-preferences" @model={{model.id}} class="item">
           {{t 'Email-Preferences'}}
-        {{/link-to}}
-        {{#link-to 'admin.users.view.account.applications' model.id class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.account.applications" @model={{model.id}} class="item">
           {{t 'Applications'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="ui segment">

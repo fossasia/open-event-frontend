@@ -21,13 +21,13 @@
         {{#each permissions as |permission|}}
           {{#if (eq permission.role.titleName role)}}
             <td>
-              {{ui-checkbox label=(t 'Create') checked=permission.canCreate onChange=(action (mut permission.canCreate))}}
+              <UiCheckbox @label={{t "Create"}} @checked={{permission.canCreate}} @onChange={{action (mut permission.canCreate)}} />
               <br>
-              {{ui-checkbox label=(t 'Read') checked=permission.canRead onChange=(action (mut permission.canRead))}}
+              <UiCheckbox @label={{t "Read"}} @checked={{permission.canRead}} @onChange={{action (mut permission.canRead)}} />
               <br>
-              {{ui-checkbox label=(t 'Update') checked=permission.canUpdate onChange=(action (mut permission.canUpdate))}}
+              <UiCheckbox @label={{t "Update"}} @checked={{permission.canUpdate}} @onChange={{action (mut permission.canUpdate)}} />
               <br>
-              {{ui-checkbox label=(t 'Delete') checked=permission.canDelete onChange=(action (mut permission.canDelete))}}
+              <UiCheckbox @label={{t "Delete"}} @checked={{permission.canDelete}} @onChange={{action (mut permission.canDelete)}} />
             </td>
           {{/if}}
         {{/each}}

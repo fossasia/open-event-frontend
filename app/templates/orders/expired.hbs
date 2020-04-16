@@ -15,11 +15,10 @@
   </div>
   <div class="row">
     <div class="ten wide column">
-      {{orders/order-summary data=model
-                             eventCurrency=model.event.paymentCurrency}}
+      <Orders::OrderSummary @data={{model}} @eventCurrency={{model.event.paymentCurrency}} />
     </div>
     <div class="mobile hidden six wide column">
-      {{orders/event-info data=model}}
+      <Orders::EventInfo @data={{model}} />
     </div>
   </div>
 </div>

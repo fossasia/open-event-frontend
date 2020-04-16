@@ -12,16 +12,16 @@
       <div class="{{if inviteEmail 'disabled' }} field">
         <div class="ui left icon input">
           <i class="mail icon"></i>
-          {{input name='email' type='email' placeholder=(t 'Email') value=data.email}}
+          <Input @name="email" @type="email" placeholder={{t "Email"}} @value={{data.email}} />
         </div>
       </div>
       <div class="field required">
         <div class="ui left icon input">
           <i class="lock icon"></i>
           {{#if showSignupPass}}
-            {{input type='text' name='password' placeholder=(t 'Password') value=data.password}}
+            <Input @type="text" @name="password" placeholder={{t "Password"}} @value={{data.password}} />
           {{else}}
-            {{input type='password' name='password' placeholder=(t 'Password') value=data.password}}
+            <Input @type="password" @name="password" placeholder={{t "Password"}} @value={{data.password}} />
           {{/if}}
           <div class="ui small basic icon buttons">
             <button type="button" class="ui button" id="eye2" {{ action 'showSignupPassword'}}>
@@ -38,9 +38,9 @@
         <div class="ui left icon input">
           <i class="lock icon"></i>
           {{#if showConfirmPass}}
-            {{input type='text' name='password_repeat' placeholder=(t 'Re-enter Password') value=password_repeat}}
+            <Input @type="text" @name="password_repeat" placeholder={{t "Re-enter Password"}} @value={{password_repeat}} />
           {{else}}
-            {{input type='password' name='password_repeat' placeholder=(t 'Re-enter Password') value=password_repeat}}
+            <Input @type="password" @name="password_repeat" placeholder={{t "Re-enter Password"}} @value={{password_repeat}} />
           {{/if}}
           <div class="ui small basic icon buttons">
             <button type="button" class="ui button" id="eye3" {{ action 'showConfirmPassword'}}>

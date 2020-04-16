@@ -24,7 +24,7 @@
     </div>
     <div class="column eight wide ui grid center aligned">
       <h4 class="ui header">{{t 'Update .PO files :'}}</h4>
-      {{forms/admin/content/translation-form languages=model}}
+      <Forms::Admin::Content::TranslationForm @languages={{model}} />
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   <div class="four wide column">
-    {{explore/side-bar model=model category=category sub_category=sub_category event_type=event_type startDate=start_date endDate=end_date location=location ticket_type=ticket_type cfs=cfs}}
+    <Explore::SideBar @model={{model}} @category={{category}} @sub_category={{sub_category}} @event_type={{event_type}} @startDate={{start_date}} @endDate={{end_date}} @location={{location}} @ticket_type={{ticket_type}} @cfs={{cfs}} />
   </div>
   <div class="twelve wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
@@ -49,16 +49,16 @@
       {{/if}}
     </div>
     {{#each filteredEvents as |event|}}
-      {{event-card event=event isWide=true filterByTags=true category=category subCategory=sub_category eventType=event_type shareEvent=(action 'shareEvent')}}
+      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}} @category={{category}} @subCategory={{sub_category}} @eventType={{event_type}} @shareEvent={{action "shareEvent"}} />
       <div class="ui hidden divider"></div>
     {{else}}
       <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
     {{/each}}
-    {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
-    {{#infinity-loader infinityModel=filteredEvents}}
+    <Modals::EventShareModal @isOpen={{isShareModalOpen}} @event={{eventToShare}} />
+    <InfinityLoader @infinityModel={{filteredEvents}}>
       <div class="ui loading very padded basic segment">
       </div>
       {{infintyModel.reachedInfinity}}
-    {{/infinity-loader}}
+    </InfinityLoader>
   </div>
 </div>

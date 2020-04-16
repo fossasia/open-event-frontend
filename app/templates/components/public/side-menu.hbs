@@ -10,9 +10,9 @@
         </a>
       {{/if}}
       {{#if event.speakers.length}}
-        {{#link-to 'public.speakers' class='item'}}
+        <LinkTo @route="public.speakers" class="item">
           {{t 'Speakers'}}
-        {{/link-to}}
+        </LinkTo>
       {{/if}}
     {{else}}
       <a class="item" href="{{href-to 'public.index'}}">
@@ -24,25 +24,25 @@
         </a>
       {{/if}}
       {{#if event.speakers.length}}
-        {{#link-to 'public.speakers' class='item'}}
+        <LinkTo @route="public.speakers" class="item">
           {{t 'Speakers'}}
-        {{/link-to}}
+        </LinkTo>
       {{/if}}
     {{/if}}
     {{#if event.sessions.length}}
-      {{#link-to 'public.sessions' class='item'}}
+      <LinkTo @route="public.sessions" class="item">
         {{t 'Sessions'}}
-      {{/link-to}}
+      </LinkTo>
     {{/if}}
     {{#if isSchedulePublished}}
-      {{#link-to 'public.schedule' class='item'}}
+      <LinkTo @route="public.schedule" class="item">
         {{t 'Schedule'}}
-      {{/link-to}}
+      </LinkTo>
     {{/if}}  
     {{#if shouldShowCallforSpeakers }}
-      {{#link-to 'public.cfs' class='item'}}
+      <LinkTo @route="public.cfs" class="item">
         {{t 'Call for Speakers'}}
-      {{/link-to}}
+      </LinkTo>
     {{/if}}
     {{#if event.hasOwnerInfo}}
       {{#if (eq session.currentRouteName 'public.index')}}
@@ -65,9 +65,9 @@
       </a>
     {{/if}}
     {{#if event.codeOfConduct}}
-      {{#link-to 'public.coc' class='item'}}
+      <LinkTo @route="public.coc" class="item">
         {{t 'Code of Conduct'}}
-      {{/link-to}}
+      </LinkTo>
     {{/if}}
   </div>
 {{/if}}

@@ -1,19 +1,19 @@
 <div class="ui buttons">
-  {{#link-to 'public.sessions.list' model.event.id 'all' class="ui button"}}{{t 'All'}}{{/link-to}}
-  {{#link-to 'public.sessions.list' model.event.id 'today' class="ui button"}}{{t 'Today'}}{{/link-to}}
-  {{#link-to 'public.sessions.list' model.event.id 'week' class="ui button"}}{{t 'Week'}}{{/link-to}}
-  {{#link-to 'public.sessions.list' model.event.id 'month' class="ui button"}}{{t 'Month'}}{{/link-to}}
+  <LinkTo @route="public.sessions.list" @models={{array model.event.id 'all'}} class="ui button">{{t 'All'}}</LinkTo>
+  <LinkTo @route="public.sessions.list" @models={{array model.event.id 'today'}} class="ui button">{{t 'Today'}}</LinkTo>
+  <LinkTo @route="public.sessions.list" @models={{array model.event.id 'week'}} class="ui button">{{t 'Week'}}</LinkTo>
+  <LinkTo @route="public.sessions.list" @models={{array model.event.id 'month'}} class="ui button">{{t 'Month'}}</LinkTo>
 </div>
 <div class="ui raised very padded text container segment">
   {{#each model.session as |session|}}
-    {{public/session-item session=session}}
+    <Public::SessionItem @session={{session}} />
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
-  {{#infinity-loader infinityModel=model.session triggerOffset=300 eventDebounce=50}}
+  <InfinityLoader @infinityModel={{model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
       </div>
     </div>
-  {{/infinity-loader}}
+  </InfinityLoader>
 </div>

@@ -1,4 +1,4 @@
-{{head-layout}}
+<HeadLayout />
 <div id='device-type-identifier'></div>
 {{#if showCookie}}
   <div class="ui inline warning large message">
@@ -9,11 +9,11 @@
     {{/if}}
   </div>
 {{/if}}
-{{#side-bar}}
+<SideBar>
   <div class="footer-pusher">
-    {{nav-bar unreadNotifications=unreadNotifications}}
+    <NavBar @unreadNotifications={{unreadNotifications}} />
     {{#if (eq routing.currentRouteName 'index')}}
-      {{welcome-header}}
+      <WelcomeHeader />
     {{/if}}
     <div id="main-container"
          class="ui fluid container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
@@ -21,9 +21,9 @@
     </div>
 
     
-    {{footer-main eventTypes=model.eventTypes eventLocations=model.eventLocations socialLinks=model.socialLinks footerPages=footerPages}}
+    <FooterMain @eventTypes={{model.eventTypes}} @eventLocations={{model.eventLocations}} @socialLinks={{model.socialLinks}} @footerPages={{footerPages}} />
 
   </div>
-{{/side-bar}}
-{{modals/confirm-modal isOpen=confirm.isOpen}}
-{{ember-notify messageStyle='semantic-ui' defaultClass='notification-container'}}
+</SideBar>
+<Modals::ConfirmModal @isOpen={{confirm.isOpen}} />
+<EmberNotify @messageStyle="semantic-ui" @defaultClass="notification-container" />

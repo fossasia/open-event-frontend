@@ -1,19 +1,19 @@
 {{#if (includes props.options.ratedSessions record)}}
   {{#each extraRecords.feedbacks as |feedback|}}
     {{#if (eq feedback.user.email authManager.currentUser.email)}}
-      {{ui-rating
-        initialRating=feedback.rating
-        rating=feedback.rating
-        maxRating=5
-        onRate=(pipe-action (action (mut feedback.rating)) (action props.actions.updateRating feedback.rating feedback))
-        clearable=true}}
+      <UiRating
+        @initialRating={{feedback.rating}}
+        @rating={{feedback.rating}}
+        @maxRating={{5}}
+        @onRate={{pipe-action (action (mut feedback.rating)) (action props.actions.updateRating feedback.rating feedback)}}
+        @clearable={{true}} />
     {{/if}}
   {{/each}}
 {{else}}
-  {{ui-rating
-    initialRating=0
-    rating=rating
-    maxRating=5
-    onRate=(pipe-action (action (mut rating)) (action props.actions.addRating rating record))
-    clearable=true}}
+  <UiRating
+    @initialRating={{0}}
+    @rating={{rating}}
+    @maxRating={{5}}
+    @onRate={{pipe-action (action (mut rating)) (action props.actions.addRating rating record)}}
+    @clearable={{true}} />
 {{/if}}

@@ -1,29 +1,29 @@
 <div class="ui stackable grid">
   <div class="row">
     <div class="three wide column">
-      {{#tabbed-navigation isVertical=true}}
-        {{#link-to 'admin.sales.index'  class='item'}}
+      <TabbedNavigation @isVertical={{true}}>
+        <LinkTo @route="admin.sales.index" class="item">
           {{t 'By Events'}}
-        {{/link-to}}
-        {{#link-to 'admin.sales.organizers' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sales.organizers" class="item">
           {{t 'By Organizer'}}
-        {{/link-to}}
-        {{#link-to 'admin.sales.locations' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sales.locations" class="item">
           {{t 'By Location'}}
-        {{/link-to}}
-        {{#link-to 'admin.sales.marketer' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sales.marketer" class="item">
           {{t 'By Marketer'}}
-        {{/link-to}}
-        {{#link-to 'admin.sales.discounted-events' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sales.discounted-events" class="item">
           {{t 'Discounted events'}}
-        {{/link-to}}
-        {{#link-to 'admin.sales.revenue' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sales.revenue" class="item">
           {{t 'Revenue'}}
-        {{/link-to}}
-        {{#link-to 'admin.sales.invoices' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sales.invoices" class="item">
           {{t 'Invoices'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
     <div class="thirteen wide column">
       {{outlet}}

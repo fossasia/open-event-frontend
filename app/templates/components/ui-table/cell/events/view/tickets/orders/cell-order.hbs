@@ -25,21 +25,21 @@
 </div>
 <div class="ui horizontal compact basic buttons">
   {{#if (and (eq extraRecords.status 'placed') (can-modify-order record))}}
-    {{#ui-popup content=(t 'Mark Completed') click=(action (confirm (t 'Are you sure you would like to mark this Order as completed?') (action props.actions.completeOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+    <UiPopup @content={{t "Mark Completed"}} @click={{action (confirm (t "Are you sure you would like to mark this Order as completed?") (action props.actions.completeOrder record))}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
       <i class="check icon"></i>
-    {{/ui-popup}}
+    </UiPopup>
   {{/if}}
   {{#if (and (not-eq extraRecords.status 'cancelled') (not-eq extraRecords.status 'expired') (can-modify-order record))}}
-    {{#ui-popup content=(t 'Cancel order') click=(action (confirm (t 'Are you sure you would like to cancel this Order?') (action props.actions.cancelOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+    <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Order?") (action props.actions.cancelOrder record))}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
       <i class="delete icon"></i>
-    {{/ui-popup}}
+    </UiPopup>
   {{/if}}
   {{#if (can-modify-order record)}}
-    {{#ui-popup content=(t 'Delete order') click=(action (confirm (t 'Are you sure you would like to delete this Order?') (action props.actions.deleteOrder record))) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+    <UiPopup @content={{t "Delete order"}} @click={{action (confirm (t "Are you sure you would like to delete this Order?") (action props.actions.deleteOrder record))}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
       <i class="trash icon"></i>
-    {{/ui-popup}}
+    </UiPopup>
   {{/if}}
-  {{#ui-popup content=(t 'Resend order confirmation') click=(action props.actions.resendConfirmation record) class="{{if device.isMobile 'medium' 'huge'}} ui icon button" position='top center'}}
+  <UiPopup @content={{t "Resend order confirmation"}} @click={{action props.actions.resendConfirmation record}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
     <i class="mail outline icon"></i>
-  {{/ui-popup}}
+  </UiPopup>
 </div>

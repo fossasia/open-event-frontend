@@ -1,4 +1,4 @@
-{{create-session-message isNewSpeaker=isNewSpeaker isNewSession=isNewSession data=data}}
+<CreateSessionMessage @isNewSpeaker={{isNewSpeaker}} @isNewSession={{isNewSession}} @data={{data}} />
 <h1 class="ui header">
   {{t 'Call for Speakers'}}
   {{#if data.speakersCall.isOpen}}
@@ -27,9 +27,9 @@
         {{#each data.userSession as |session|}}
           {{#if session.id}}
             <div class="item">
-              {{#link-to 'public.cfs.edit-session' session.id }}
+              <LinkTo @route="public.cfs.edit-session" @model={{session.id}}>
                 <a href="#" class="ui very tiny basic blue button">{{session.title}}</a>
-              {{/link-to}}
+              </LinkTo>
             </div>
           {{/if}}
         {{/each}}
@@ -42,5 +42,5 @@
     {{t 'Submit Proposal'}}
   </button>
 {{/if}}
-{{modals/cfs-proposal-modal isOpen=isCfsModalOpen isNewSpeaker=isNewSpeaker isNewSession=isNewSession data=data}}
-{{modals/login-signup-modal isOpen=isLoginModalOpen}}
+<Modals::CfsProposalModal @isOpen={{isCfsModalOpen}} @isNewSpeaker={{isNewSpeaker}} @isNewSession={{isNewSession}} @data={{data}} />
+<Modals::LoginSignupModal @isOpen={{isLoginModalOpen}} />

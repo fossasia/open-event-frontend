@@ -1,5 +1,5 @@
 <div class="ui column eight wide grid no-right-margin models-table-global-filter">
   <div class="ui search column {{if device.isMobile 'center' 'right'}} aligned no-right-margin">
-    {{input class='prompt' type='text' value=filterString placeholder=themeInstance.messages.searchPlaceholder}}
+    <Input class="prompt" @type="text" @value={{filterString}} placeholder={{themeInstance.messages.searchPlaceholder}} />
   </div>
 </div>

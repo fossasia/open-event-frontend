@@ -1,6 +1,6 @@
 {{t 'Show'}}&nbsp;
-{{#ui-dropdown class='compact selection page-size-dropdown' selected=value}}
-  {{input type='hidden' id='table_select' value=value}}
+<UiDropdown @class="compact selection page-size-dropdown" @selected={{value}}>
+  <Input @type="hidden" @id="table_select" @value={{value}} />
   <i class="dropdown icon"></i>
   <div class="default text">10</div>
   <div class="menu">
@@ -12,5 +12,5 @@
       {{/if}}
     {{/each}}
   </div>
-{{/ui-dropdown}}&nbsp;
+</UiDropdown>&nbsp;
 {{t 'entries'}}

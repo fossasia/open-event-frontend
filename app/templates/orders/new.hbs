@@ -16,24 +16,32 @@
     </div>
     <div class="row">
       <div class="ten wide column">
-        {{orders/order-summary
-          data=model.order
-          tickets=model.tickets
-          event=model.event
-          eventCurrency=model.order.event.paymentCurrency}}
+        <Orders::OrderSummary
+          @data={{model.order}}
+          @tickets={{model.tickets}}
+          @event={{model.event}}
+          @eventCurrency={{model.order.event.paymentCurrency}} />
       </div>
       <div class="mobile hidden six wide column">
-        {{orders/event-info data=model.order showBanner=false}}
+        <Orders::EventInfo
+          @data={{model.order}}
+          @showBanner={{false}} />
       </div>
     </div>
     <div class="row">
       <div class="ten wide column">
-        {{forms/orders/order-form save='save' data=model.order event=model.event fields=model.form settings=settings}}
+        <Forms::Orders::OrderForm
+          @save="save"
+          @data={{model.order}}
+          @event={{model.event}}
+          @fields={{model.form}}
+          @settings={{settings}} />
       </div>
       <div class="six wide column">
         {{#if model.order.event.ownerName}}
           <div class="mobile hidden row">
-            {{orders/organizer-info data=model.order}}
+            <Orders::OrganizerInfo
+              @data={{model.order}} />
           </div>
         {{/if}}
       </div>

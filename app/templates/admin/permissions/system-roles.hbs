@@ -52,12 +52,12 @@
           </td>
           <td>
             <div class="ui horizontal compact basic buttons">
-              {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openAddSystemRoleModal' role)}}
+              <UiPopup @content={{t "Edit"}} @class="ui icon button" @click={{action "openAddSystemRoleModal" role}}>
                 <i class="edit icon"></i>
-              {{/ui-popup}}
-              {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this role?') (action 'deleteSystemRole' role)))}}
+              </UiPopup>
+              <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteSystemRole" role))}}>
                 <i class="trash outline icon"></i>
-              {{/ui-popup}}
+              </UiPopup>
             </div>
           </td>
         </tr>
@@ -93,9 +93,9 @@
                 {{userPermission.description}}
               </div>
             </td>
-            <td>{{ui-checkbox label=(t 'Unverified User') checked=userPermission.unverifiedUser onChange=(action (mut userPermission.unverifiedUser))}}</td>
+            <td><UiCheckbox @label={{t "Unverified User"}} @checked={{userPermission.unverifiedUser}} @onChange={{action (mut userPermission.unverifiedUser)}} /></td>
             <td>
-              {{ui-checkbox label=(t 'Anonymous User') disabled=true}}
+              <UiCheckbox @label={{t "Anonymous User"}} @disabled={{true}} />
               <p>
                 Account creation is necessary.
               </p>
@@ -111,4 +111,4 @@
     </div>
   </form>
 </div>
-{{modals/add-system-role-modal isOpen=isAddSystemRoleModalOpen isNew=isNew role=role panelPermissions=panelPermissions isLoading=isLoading addSystemRole=(action 'addSystemRole')}}
+<Modals::AddSystemRoleModal @isOpen={{isAddSystemRoleModalOpen}} @isNew={{isNew}} @role={{role}} @panelPermissions={{panelPermissions}} @isLoading={{isLoading}} @addSystemRole={{action "addSystemRole"}} />
