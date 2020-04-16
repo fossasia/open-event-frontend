@@ -3,30 +3,30 @@
     {{#if onSessionRoute}}
       <div class="row">
         <div class="eight wide column">
-          {{#tabbed-navigation isNonPointing=true}}
-            {{#link-to 'events.view.sessions.list' 'all' class='item'}}
+          <TabbedNavigation @isNonPointing={{true}}>
+            <LinkTo @route="events.view.sessions.list" @model="all" class="item">
               {{t 'All'}}
-            {{/link-to}}
-            {{#link-to 'events.view.sessions.list' 'pending' class='item'}}
+            </LinkTo>
+            <LinkTo @route="events.view.sessions.list" @model="pending" class="item">
               {{t 'Pending'}}
-            {{/link-to}}
-            {{#link-to 'events.view.sessions.list' 'accepted' class='item'}}
+            </LinkTo>
+            <LinkTo @route="events.view.sessions.list" @model="accepted" class="item">
               {{t 'Accepted'}}
-            {{/link-to}}
-            {{#link-to 'events.view.sessions.list' 'confirmed' class='item'}}
+            </LinkTo>
+            <LinkTo @route="events.view.sessions.list" @model="confirmed" class="item">
               {{t 'Confirmed'}}
-            {{/link-to}}
-            {{#link-to 'events.view.sessions.list' 'rejected' class='item'}}
+            </LinkTo>
+            <LinkTo @route="events.view.sessions.list" @model="rejected" class="item">
               {{t 'Rejected'}}
-            {{/link-to}}
-          {{/tabbed-navigation}}
+            </LinkTo>
+          </TabbedNavigation>
         </div>
         <div class="eight wide right aligned column">
           <div class="ui labeled input">
             <button class="ui blue button right-floated {{if isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
-            {{#link-to 'events.view.sessions.create' class='ui blue button right floated'}}
+            <LinkTo @route="events.view.sessions.create" class="ui blue button right floated">
               {{t 'Create Session'}}
-            {{/link-to}}
+            </LinkTo>
           </div>
         </div>
       </div>

@@ -1,14 +1,14 @@
 <div class="ui stackable very relaxed container grid">
   <div class="eight wide column">
-    {{events/view/export/download-zip startGeneration=(action 'startGeneration') isDownloadDisabled=isDownloadDisabled eventExportStatus=eventExportStatus eventDownloadUrl=eventDownloadUrl data=data isLoading=isLoading}}
+    <Events::View::Export::DownloadZip @startGeneration={{action "startGeneration"}} @isDownloadDisabled={{isDownloadDisabled}} @eventExportStatus={{eventExportStatus}} @eventDownloadUrl={{eventDownloadUrl}} @data={{data}} @isLoading={{isLoading}} />
     <div class="ui divider"></div>
-    {{events/view/export/download-common downloadType='Pentabarf XML' downloadUrl='pentabarf.xml' model=model}}
+    <Events::View::Export::DownloadCommon @downloadType="Pentabarf XML" @downloadUrl="pentabarf.xml" @model={{model}} />
     <div class="ui divider"></div>
-    {{events/view/export/download-common downloadType='iCalendar' downloadUrl='calendar.ics' model=model}}
+    <Events::View::Export::DownloadCommon @downloadType="iCalendar" @downloadUrl="calendar.ics" @model={{model}} />
     <div class="ui divider"></div>
-    {{events/view/export/download-common downloadType='iCalendar XML (xCal)' downloadUrl='calendar.xcs' model=model}}
+    <Events::View::Export::DownloadCommon @downloadType="iCalendar XML (xCal)" @downloadUrl="calendar.xcs" @model={{model}} />
   </div>
   <div class="eight wide column">
-    {{events/view/export/api-response eventId=model.id}}
+    <Events::View::Export::ApiResponse @eventId={{model.id}} />
   </div>
 </div>

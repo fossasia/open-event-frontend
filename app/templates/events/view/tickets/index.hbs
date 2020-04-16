@@ -26,93 +26,88 @@
         <th>{{t 'View Reports'}}</th>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'cancelled' tagName='td'
-        class='ui grey inverted segment link'}}
+        <LinkTo @route="events.view.tickets.orders.list" @model="cancelled" @tagName="td" class="ui grey inverted segment link">
           <span>{{t 'Cancelled'}}</span>
-        {{/link-to}}
+        </LinkTo>
         <td class="right aligned">{{model.orderStats.tickets.cancelled}}</td>
         <td class="right aligned">{{model.orderStats.orders.cancelled}}</td>
         <td class="right aligned">{{model.orderStats.sales.cancelled}}</td>
         <td>
-          {{#link-to 'events.view.tickets.orders.list' 'cancelled'}}
+          <LinkTo @route="events.view.tickets.orders.list" @model="cancelled">
             {{t 'View orders'}}
-          {{/link-to}}
+          </LinkTo>
           /
-          {{#link-to 'events.view.tickets.attendees.list' 'cancelled'}}
+          <LinkTo @route="events.view.tickets.attendees.list" @model="cancelled">
             {{t 'View attendees'}}
-          {{/link-to}}
+          </LinkTo>
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'pending' tagName='td'
-        class='ui yellow inverted segment link'}}
+        <LinkTo @route="events.view.tickets.orders.list" @model="pending" @tagName="td" class="ui yellow inverted segment link">
           <span>{{t 'Pending'}}</span>
-        {{/link-to}}
+        </LinkTo>
         <td class="right aligned">{{model.orderStats.tickets.pending}}</td>
         <td class="right aligned">{{model.orderStats.orders.pending}}</td>
         <td class="right aligned">{{model.orderStats.sales.pending}}</td>
         <td>
-          {{#link-to 'events.view.tickets.orders.list' 'pending'}}
+          <LinkTo @route="events.view.tickets.orders.list" @model="pending">
             {{t 'View orders'}}
-          {{/link-to}}
+          </LinkTo>
           /
-          {{#link-to 'events.view.tickets.attendees.list' 'pending'}}
+          <LinkTo @route="events.view.tickets.attendees.list" @model="pending">
             {{t 'View attendees'}}
-          {{/link-to}}
+          </LinkTo>
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'expired' tagName='td'
-        class='ui red inverted segment link'}}
+        <LinkTo @route="events.view.tickets.orders.list" @model="expired" @tagName="td" class="ui red inverted segment link">
           <span>{{t 'Expired'}}</span>
-        {{/link-to}}
+        </LinkTo>
         <td class="right aligned">{{model.orderStats.tickets.expired}}</td>
         <td class="right aligned">{{model.orderStats.orders.expired}}</td>
         <td class="right aligned">{{model.orderStats.sales.expired}}</td>
         <td>
-          {{#link-to 'events.view.tickets.orders.list' 'expired'}}
+          <LinkTo @route="events.view.tickets.orders.list" @model="expired">
             {{t 'View orders'}}
-          {{/link-to}}
+          </LinkTo>
           /
-          {{#link-to 'events.view.tickets.attendees.list' 'expired'}}
+          <LinkTo @route="events.view.tickets.attendees.list" @model="expired">
             {{t 'View attendees'}}
-          {{/link-to}}
+          </LinkTo>
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.list' 'placed' tagName='td'
-        class='ui blue inverted segment link'}}
+        <LinkTo @route="events.view.tickets.orders.list" @model="placed" @tagName="td" class="ui blue inverted segment link">
           <span>{{t 'Placed'}}</span>
-        {{/link-to}}
+        </LinkTo>
         <td class="right aligned">{{model.orderStats.tickets.placed}}</td>
         <td class="right aligned">{{model.orderStats.orders.placed}}</td>
         <td class="right aligned">{{model.orderStats.sales.placed}}</td>
         <td>
-          {{#link-to 'events.view.tickets.orders.list' 'placed'}}
+          <LinkTo @route="events.view.tickets.orders.list" @model="placed">
             {{t 'View orders'}}
-          {{/link-to}}
+          </LinkTo>
           /
-          {{#link-to 'events.view.tickets.attendees.list' 'placed'}}
+          <LinkTo @route="events.view.tickets.attendees.list" @model="placed">
             {{t 'View attendees'}}
-          {{/link-to}}
+          </LinkTo>
         </td>
       </tr>
       <tr>
-        {{#link-to 'events.view.tickets.orders.index' tagName='td'
-        class='ui green inverted segment link'}}
+        <LinkTo @route="events.view.tickets.orders.index" @tagName="td" class="ui green inverted segment link">
           <span>{{t 'Completed'}}</span>
-        {{/link-to}}
+        </LinkTo>
         <td class="right aligned">{{model.orderStats.tickets.completed}}</td>
         <td class="right aligned">{{model.orderStats.orders.completed}}</td>
         <td class="right aligned">{{model.orderStats.sales.completed}}</td>
         <td>
-          {{#link-to 'events.view.tickets.orders.index'}}
+          <LinkTo @route="events.view.tickets.orders.index">
             {{t 'View orders'}}
-          {{/link-to}}
+          </LinkTo>
           /
-          {{#link-to 'events.view.tickets.attendees.index'}}
+          <LinkTo @route="events.view.tickets.attendees.index">
             {{t 'View attendees'}}
-          {{/link-to}}
+          </LinkTo>
         </td>
       </tr>
     </thead>
