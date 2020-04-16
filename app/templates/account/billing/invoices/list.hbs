@@ -1,15 +1,15 @@
 <div class="sixteen wide column">
-  <Tables::Default
-    @columns={{columns}}
-    @rows={{model.eventInvoices.data}}
-    @currentPage={{page}}
-    @pageSize={{per_page}}
-    @searchQuery={{search}}
-    @sortBy={{sort_by}}
-    @sortDir={{sort_dir}}
-    @metaData={{model.eventInvoices.meta}}
-    @filterOptions={{filterOptions}}
-    @widthConstraint="eq-container"
-    @resizeMode="fluid"
-    @fillMode="equal-column" />
+  {{tables/default columns=columns
+                  rows=model.eventInvoices.data
+                  currentPage=page
+                  pageSize=per_page
+                  searchQuery=search
+                  sortBy=sort_by
+                  sortDir=sort_dir
+                  metaData=model.eventInvoices.meta
+                  filterOptions=filterOptions
+                  widthConstraint="eq-container"
+                  resizeMode="fluid"
+                  fillMode="equal-column"
+  }}
 </div>
