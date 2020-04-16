@@ -3,13 +3,13 @@
   <div class="row">
     <div class="sixteen wide column">
       <TabbedNavigation>
-        <LinkTo @route="admin.users.view.account.profile" @model={{model.id}} class="item">
+        <LinkTo @route="admin.users.view.account.profile" @model={{this.model.id}} class="item">
           {{t 'Profile Info'}}
         </LinkTo>
-        <LinkTo @route="admin.users.view.account.email-preferences" @model={{model.id}} class="item">
+        <LinkTo @route="admin.users.view.account.email-preferences" @model={{this.model.id}} class="item">
           {{t 'Email-Preferences'}}
         </LinkTo>
-        <LinkTo @route="admin.users.view.account.applications" @model={{model.id}} class="item">
+        <LinkTo @route="admin.users.view.account.applications" @model={{this.model.id}} class="item">
           {{t 'Applications'}}
         </LinkTo>
       </TabbedNavigation>

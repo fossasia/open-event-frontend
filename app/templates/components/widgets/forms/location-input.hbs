@@ -1,41 +1,47 @@
-{{#if addressViewIsShown}}
+{{#if this.addressViewIsShown}}
   <div class="ui two column grid stackable">
     <div class="column">
       <div class="field">
         <Input
           @type="text"
           @name="address_vaue"
-          @value={{address.venue}} placeholder={{t "Venue Name"}} />
+          @value={{this.address.venue}}
+          placeholder={{t "Venue Name"}} />
       </div>
       <div class="field">
         <Input
           @type="text"
           @name="address_line"
-          @value={{address.line}} placeholder={{t "Street Address"}} />
+          @value={{this.address.line}}
+          placeholder={{t "Street Address"}} />
       </div>
       <div class="field">
         <Input
           @type="text"
           @name="address_city"
-          @value={{address.city}} placeholder={{t "City"}} />
+          @value={{this.address.city}}
+          placeholder={{t "City"}} />
       </div>
       <div class="field">
         <Input
           @type="text"
           @name="address_state"
-          @value={{address.state}} placeholder={{t "State"}} />
+          @value={{this.address.state}}
+          placeholder={{t "State"}} />
       </div>
       <div class="field">
         <Input
           @type="text"
           @name="address_zip_code"
-          @value={{address.zipCode}} placeholder={{t "Zip Code"}} />
+          @value={{this.address.zipCode}}
+          placeholder={{t "Zip Code"}} />
       </div>
       <div class="field">
         <Input
           @type="text"
           @name="address_country"
-          @value={{address.country}} placeholder={{t "Country"}} />
+          @value={{this.address.country}}
+          placeholder={{t "Country"}} />
       </div>
       <div class="ui two column grid">
         <div class="left floated column">
@@ -48,27 +54,27 @@
     </div>
     <div class="column">
       <GMap
-        @lat={{lat}}
-        @lng={{lng}}
-        @zoom={{zoom}}
+        @lat={{this.lat}}
+        @lng={{this.lng}}
+        @zoom={{this.zoom}}
         @class="google-maps"
-        @address={{combinedAddress}} as |context|>
-        {{g-map-address-marker context address=combinedAddress onLocationChange=(action 'onLocationChangeHandler')}}
+        @address={{this.combinedAddress}} as |context|>
+        {{g-map-address-marker context address=this.combinedAddress onLocationChange=(action 'onLocationChangeHandler')}}
       </GMap>
     </div>
   </div>
 {{else}}
   <div class="ui action input">
     <Widgets::Forms::PlacesAutocomplete
-      @id={{inputId}}
+      @id={{this.inputId}}
       @name={{name}}
-      @value={{placeName}}
+      @value={{this.placeName}}
       @placeChangedCallback={{action "placeChanged"}}
       @type="text"
-      @placeholder={{placeholder}} />
-    <button class="ui left {{unless device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>
+      @placeholder={{this.placeholder}} />
+    <button class="ui left {{unless this.device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>
       <i class="marker icon"></i>
-      {{unless device.isMobile (t 'Enter address')}}
+      {{unless this.device.isMobile (t 'Enter address')}}
     </button>
   </div>
 {{/if}}

@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each tickets as |ticket|}}
+      {{#each this.tickets as |ticket|}}
         {{#unless ticket.isHidden}}
           <tr>
             <td>
@@ -21,7 +21,7 @@
                   <UiPopup
                     @tagName="i"
                     @class="info icon"
-                    @content={{concat "Donation value should be between " ticket.minPrice " " eventCurrency " and " ticket.maxPrice " " eventCurrency}} />
+                    @content={{concat "Donation value should be between " ticket.minPrice " " this.eventCurrency " and " ticket.maxPrice " " this.eventCurrency}} />
                 {{/if}}
               </div>
               {{#if ticket.isDescriptionVisible}}
@@ -32,23 +32,23 @@
             {{#if ticket.discount}}
               <td>
                 <div id="{{ticket.id}}_price" class="strike text">
-                  {{eventCurrency}} {{format-number ticket.price}}
+                  {{this.eventCurrency}} {{format-number ticket.price}}
                 </div>
                 <div id="{{ticket.id}}_discount">
-                  {{eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
-                  {{#if taxInfo}}
-                    {{#if showTaxIncludedMessage}}
+                  {{this.eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
+                  {{#if this.taxInfo}}
+                    {{#if this.showTaxIncludedMessage}}
                       <small class="ui gray-text small">
-                        {{t 'includes'}} {{eventCurrency}} {{format-number ticket.includedTaxAmount}}
+                        {{t 'includes'}} {{this.eventCurrency}} {{format-number ticket.includedTaxAmount}}
                       </small>
                     {{else}}
                       <small class="ui gray-text small">
-                        + {{eventCurrency}}
+                        + {{this.eventCurrency}}
                         {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
                       </small>
                     {{/if}}
                     <div>
-                      <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
+                      <small class="ui gray-text tiny aligned right">({{this.taxInfo.name}})</small>
                     </div>
                   {{/if}}
                 </div>
@@ -65,20 +65,20 @@
                       @value={{ticket.price}} /><br>
                   </div>
                 {{else}}
-                  {{eventCurrency}} {{format-number ticket.price}}
+                  {{this.eventCurrency}} {{format-number ticket.price}}
                 {{/if}}
-                {{#if (and taxInfo (not-eq ticket.type 'free'))}}
-                  {{#if showTaxIncludedMessage}}
+                {{#if (and this.taxInfo (not-eq ticket.type 'free'))}}
+                  {{#if this.showTaxIncludedMessage}}
                     <small class="ui gray-text small">
-                      {{t 'includes'}} {{eventCurrency}} {{format-number ticket.includedTaxAmount}}
+                      {{t 'includes'}} {{this.eventCurrency}} {{format-number ticket.includedTaxAmount}}
                     </small>
                   {{else}}
                     <small class="ui gray-text small">
-                      + {{eventCurrency}} {{format-number (sub ticket.ticketPriceWithTax ticket.price)}}
+                      + {{this.eventCurrency}} {{format-number (sub ticket.ticketPriceWithTax ticket.price)}}
                     </small>
                   {{/if}}
                   <div>
-                    <small class="ui gray-text tiny aligned right">({{taxInfo.name}})</small>
+                    <small class="ui gray-text tiny aligned right">({{this.taxInfo.name}})</small>
                   </div>
                 {{/if}}
               </td>
@@ -105,11 +105,11 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              {{#if taxInfo}}
-                {{eventCurrency}}
+              {{#if this.taxInfo}}
+                {{this.eventCurrency}}
                 {{format-number (mult (sub ticket.ticketPriceWithTax ticket.discount) ticket.orderQuantity)}}
               {{else}}
-                {{eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
+                {{this.eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
               {{/if}}
             </td>
           </tr>
@@ -124,28 +124,28 @@
         <th></th>
         <th colspan="4">
           <div class="ui right aligned small primary icon">
-            {{t 'Total'}}: {{eventCurrency}} {{format-number total}}
+            {{t 'Total'}}: {{this.eventCurrency}} {{format-number this.total}}
           </div>
         </th>
       </tr>
     </tfoot>
   </table>
   <div class="ui grid">
-    {{#if enterPromotionalCode}}
+    {{#if this.enterPromotionalCode}}
       <div class="ui row">
-        <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
+        <div class="{{if this.device.isBiggerThanTablet 'right floated eight wide'}} column">
           <div class="field">
             <div class="ui action fluid input">
               <Input
                 @type="text"
                 @name="promotional_code"
-                @value={{promotionalCode}} placeholder={{t "Promotional Code"}}
-                @readonly={{promotionalCodeApplied}}
+                @value={{this.promotionalCode}}
+                placeholder={{t "Promotional Code"}}
+                @readonly={{this.promotionalCodeApplied}}
                 @key-up={{action "handleKeyPress"}}
                 @id="promotionalCode" />
-              {{#unless promotionalCodeApplied}}
-                <div role="button" class="ui icon {{if promotionalCode '' 'disabled'}} button"
-                  {{action 'applyPromotionalCode'}}>
+              {{#unless this.promotionalCodeApplied}}
+                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
                   <i class="checkmark icon"></i>
                 </div>
               {{/unless}}
@@ -159,7 +159,7 @@
     {{else}}
       <div class="ui row">
         <div class="column right aligned">
-          {{#if device.isMobile}}
+          {{#if this.device.isMobile}}
             <div class="ui hidden divider"></div>
           {{/if}}
           <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
@@ -179,8 +179,7 @@
         <i class="colored visa link icon"></i>
       </div>
       <div class="ui less padding three wide computer four wide tablet column right aligned floated">
-        <button id="total" class="ui primary small button less right margin" disabled={{shouldDisableOrderButton}}
-          {{action placeOrder}}>
+        <button id="total" class="ui primary small button less right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder}}>
           {{t 'Order Now'}}
         </button>
       </div>
@@ -189,9 +188,9 @@
 </form>
 
 <Modals::LoginSignupModal
-  @isOpen={{isLoginModalOpen}}
-  @isLoading={{isLoading}}
-  @createNewUserViaEmail={{createNewUserViaEmail}}
-  @loginExistingUser={{loginExistingUser}}
-  @userExists={{userExists}}
-  @errorMessage={{errorMessage}} />
+  @isOpen={{this.isLoginModalOpen}}
+  @isLoading={{this.isLoading}}
+  @createNewUserViaEmail={{this.createNewUserViaEmail}}
+  @loginExistingUser={{this.loginExistingUser}}
+  @userExists={{this.userExists}}
+  @errorMessage={{this.errorMessage}} />

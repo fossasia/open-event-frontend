@@ -1,9 +1,9 @@
-<i class="mail outline icon {{unless unreadNotifications.length 'ui less right margin'}}"></i>
-{{#if unreadNotifications.length}}
-  <div class="floating ui teal circular mini label {{if device.isMobile 'tiny text'}}">{{unreadNotifications.length}}</div>
+<i class="mail outline icon {{unless this.unreadNotifications.length 'ui less right margin'}}"></i>
+{{#if this.unreadNotifications.length}}
+  <div class="floating ui teal circular mini label {{if this.device.isMobile 'tiny text'}}">{{this.unreadNotifications.length}}</div>
 {{/if}}
 <div class="ui wide notification popup bottom left transition">
-  {{#if unreadNotifications}}
+  {{#if this.unreadNotifications}}
     <div class="ui basic inverted horizontal segments">
       <div class="ui basic left aligned segment weight-600">
         <LinkTo @route="notifications">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="ui fluid link celled selection list">
-      {{#each unreadNotifications as |notification|}}
+      {{#each this.unreadNotifications as |notification|}}
         <div class="item {{unless notification.isRead 'active'}}">
           <div class="header">
             <LinkTo @route="notifications" @invokeAction={{action "markRead" notification}}>
@@ -35,7 +35,7 @@
     <div class="ui segment empty-message">
       <a href="{{href-to 'notifications'}}">{{t 'Go to notifications panel'}}</a>
     </div>
-    <div class="ui fluid list {{if unreadNotifications 'link celled selection' ''}}">
+    <div class="ui fluid list {{if this.unreadNotifications 'link celled selection' ''}}">
       <div class="item active">
         {{t 'No new notifications'}}
       </div>

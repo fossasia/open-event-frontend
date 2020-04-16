@@ -1,7 +1,7 @@
 <span>
-  {{#if (eq extraRecords.type 'percent')}}
-    {{record}}{{t '%'}}
-  {{else if (eq extraRecords.type 'amount')}}
-    {{t currency-symbol extraRecords.event.paymentCurrency }}{{record}}
+  {{#if (eq this.extraRecords.type 'percent')}}
+    {{this.record}}{{t '%'}}
+  {{else if (eq this.extraRecords.type 'amount')}}
+    {{t this.currency-symbol this.extraRecords.event.paymentCurrency }}{{this.record}}
   {{/if}}
 </span>

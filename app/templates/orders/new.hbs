@@ -1,30 +1,30 @@
-<div class="ui basic {{if isLoading 'loading'}} segment">
+<div class="ui basic {{if this.isLoading 'loading'}} segment">
   <div class="ui one column container stackable doubling left grid">
     <div class="row">
       <div class="column">
-        <h2>{{model.order.event.name}}</h2>
+        <h2>{{this.model.order.event.name}}</h2>
       </div>
     </div>
     <div class="row">
       <div class="column">
         <div class="ui small gray-text">
-          {{header-date model.order.event.startsAt}} - {{header-date model.order.event.endsAt}}
+          {{header-date this.model.order.event.startsAt}} - {{header-date this.model.order.event.endsAt}}
           <br>
-          {{model.order.event.locationName}}
+          {{this.model.order.event.locationName}}
         </div>
       </div>
     </div>
     <div class="row">
       <div class="ten wide column">
         <Orders::OrderSummary
-          @data={{model.order}}
-          @tickets={{model.tickets}}
-          @event={{model.event}}
-          @eventCurrency={{model.order.event.paymentCurrency}} />
+          @data={{this.model.order}}
+          @tickets={{this.model.tickets}}
+          @event={{this.model.event}}
+          @eventCurrency={{this.model.order.event.paymentCurrency}} />
       </div>
       <div class="mobile hidden six wide column">
         <Orders::EventInfo
-          @data={{model.order}}
+          @data={{this.model.order}}
           @showBanner={{false}} />
       </div>
     </div>
@@ -32,16 +32,16 @@
       <div class="ten wide column">
         <Forms::Orders::OrderForm
           @save="save"
-          @data={{model.order}}
-          @event={{model.event}}
-          @fields={{model.form}}
-          @settings={{settings}} />
+          @data={{this.model.order}}
+          @event={{this.model.event}}
+          @fields={{this.model.form}}
+          @settings={{this.settings}} />
       </div>
       <div class="six wide column">
-        {{#if model.order.event.ownerName}}
+        {{#if this.model.order.event.ownerName}}
           <div class="mobile hidden row">
             <Orders::OrganizerInfo
-              @data={{model.order}} />
+              @data={{this.model.order}} />
           </div>
         {{/if}}
       </div>

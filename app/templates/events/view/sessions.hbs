@@ -1,6 +1,6 @@
-{{#if model.isSessionsSpeakersEnabled}}
+{{#if this.model.isSessionsSpeakersEnabled}}
   <div class="ui grid stackable">
-    {{#if onSessionRoute}}
+    {{#if this.onSessionRoute}}
       <div class="row">
         <div class="eight wide column">
           <TabbedNavigation @isNonPointing={{true}}>
@@ -23,7 +23,7 @@
         </div>
         <div class="eight wide right aligned column">
           <div class="ui labeled input">
-            <button class="ui blue button right-floated {{if isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
+            <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
             <LinkTo @route="events.view.sessions.create" class="ui blue button right floated">
               {{t 'Create Session'}}
             </LinkTo>

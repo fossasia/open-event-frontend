@@ -1,5 +1,5 @@
 <div class="ui basic segment less padding">
-  <div class="ui {{if isLoading 'active'}} inverted dimmer">
+  <div class="ui {{if this.isLoading 'active'}} inverted dimmer">
     <div class="ui loader"></div>
   </div>
   <div>
@@ -40,7 +40,7 @@
         <td></td>
         <td></td>
       </tr>
-      {{#each model.systemRoles as |role|}}
+      {{#each this.model.systemRoles as |role|}}
         <tr>
           <td>{{role.name}}</td>
           <td>
@@ -85,7 +85,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model.userPermissions as |userPermission|}}
+        {{#each this.model.userPermissions as |userPermission|}}
           <tr>
             <td>
               {{userPermission.name}}
@@ -111,4 +111,4 @@
     </div>
   </form>
 </div>
-<Modals::AddSystemRoleModal @isOpen={{isAddSystemRoleModalOpen}} @isNew={{isNew}} @role={{role}} @panelPermissions={{panelPermissions}} @isLoading={{isLoading}} @addSystemRole={{action "addSystemRole"}} />
+<Modals::AddSystemRoleModal @isOpen={{this.isAddSystemRoleModalOpen}} @isNew={{this.isNew}} @role={{this.role}} @panelPermissions={{this.panelPermissions}} @isLoading={{this.isLoading}} @addSystemRole={{action "addSystemRole"}} />

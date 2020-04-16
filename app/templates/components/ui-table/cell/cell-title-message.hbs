@@ -1,17 +1,17 @@
 <div class="content">
-  {{#if (eq props.options.subject 'emailSubject')}}
-    <a href="#" class="header">{{sanitize extraRecords.emailSubject}}</a>
-  {{else if (eq props.options.subject 'notificationTitle')}}
-    {{#if extraRecords.notificationTitle}}
-      <a href="#" class="header">{{sanitize extraRecords.notificationTitle}}</a>
+  {{#if (eq this.props.options.subject 'emailSubject')}}
+    <a href="#" class="header">{{sanitize this.extraRecords.emailSubject}}</a>
+  {{else if (eq this.props.options.subject 'notificationTitle')}}
+    {{#if this.extraRecords.notificationTitle}}
+      <a href="#" class="header">{{sanitize this.extraRecords.notificationTitle}}</a>
     {{/if}} 
   {{/if}}  
   <div class="description">
-    {{#if (eq props.options.message 'emailMessage')}}
-      <p>{{sanitize record}}</p>
-    {{else if (eq props.options.message 'notificationMessage')}}
-      {{#if record}}     
-        <p>{{sanitize record}}</p>
+    {{#if (eq this.props.options.message 'emailMessage')}}
+      <p>{{sanitize this.record}}</p>
+    {{else if (eq this.props.options.message 'notificationMessage')}}
+      {{#if this.record}}     
+        <p>{{sanitize this.record}}</p>
       {{/if}}
     {{/if}}  
   </div>

@@ -1,19 +1,19 @@
-<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
   <div class="field">
     <label>{{t 'Title'}}</label>
-    <Input @type="text" @id="title" @value={{data.title}} />
+    <Input @type="text" @id="title" @value={{this.data.title}} />
   </div>
   <div class="field">
     <label>{{t 'Short Abstract'}}</label>
-    <Widgets::Forms::RichTextEditor @value={{data.shortAbstract}} @name="shortAbstract" />
+    <Widgets::Forms::RichTextEditor @value={{this.data.shortAbstract}} @name="shortAbstract" />
   </div>
   <div class="field">
     <label>{{t 'Comments'}}</label>
-    <Widgets::Forms::RichTextEditor @value={{data.comments}} @name="comments" />
+    <Widgets::Forms::RichTextEditor @value={{this.data.comments}} @name="comments" />
   </div>
   <div class="field">
     <label>{{t 'Slides'}}</label>
-    <Widgets::Forms::FileUpload @fileUrl={{mut data.slidesUrl}} @label={{t "File"}} @icon="file" @hint={{t "Select a file"}} @maxSizeInKb={{10000}} @edit={{true}} />
+    <Widgets::Forms::FileUpload @fileUrl={{mut this.data.slidesUrl}} @label={{t "File"}} @icon="file" @hint={{t "Select a file"}} @maxSizeInKb={{10000}} @edit={{true}} />
   </div>
   <button type="submit" class="ui teal submit button update-changes">
     {{t 'Save Session'}}

@@ -4,39 +4,39 @@
   </div>
 </div>
 <div class="public-event ui relaxed grid">
-  <div class="sixteen wide column lead {{if smallLead 'small'}}">
-    <Widgets::SafeImage @src={{if model.largeImageUrl model.largeImageUrl model.originalImageUrl}} />
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
+    <Widgets::SafeImage @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
     <div class="content">
       <div class="ui container">
         <div class="ui grid info">
           <div class="one wide column"></div>
           <div class="fifteen wide column">
-            <h4 class="event time">{{header-date model.startsAt model.timezone}}</h4>
-            {{#if displayEndDate}}
-              <h5 class="event time ends">{{t 'To'}} {{header-date model.endsAt model.timezone}}</h5>
+            <h4 class="event time">{{header-date this.model.startsAt this.model.timezone}}</h4>
+            {{#if this.displayEndDate}}
+              <h5 class="event time ends">{{t 'To'}} {{header-date this.model.endsAt this.model.timezone}}</h5>
             {{/if}}
-            <h1 class="event name">{{model.name}}</h1>
-            <h4 class="event location"><i class="marker icon"></i>{{model.locationName}}</h4>
+            <h1 class="event name">{{this.model.name}}</h1>
+            <h4 class="event location"><i class="marker icon"></i>{{this.model.locationName}}</h4>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="sixteen wide column content {{if smallLead 'with small lead'}}">
+  <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}">
     <div class="ui stackable grid">
       <div class="three wide column" id="public-event-content">
-        {{#if device.isMobile}}
-          {{#if displaySideMenu}}
+        {{#if this.device.isMobile}}
+          {{#if this.displaySideMenu}}
             <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
               <i class="content icon"></i>
             </button>
-            {{#if isMenuOpen}}
-              <Public::SideMenu @class="toggle menu" @event={{model}} />
+            {{#if this.isMenuOpen}}
+              <Public::SideMenu @class="toggle menu" @event={{this.model}} />
             {{/if}}
           {{/if}}
         {{else}}
           <div class="ui fluid side-menu">
-            <Public::SideMenu @event={{model}} />
+            <Public::SideMenu @event={{this.model}} />
           </div>
         {{/if}}
       </div>
@@ -44,8 +44,8 @@
         {{outlet}}
       </div>
       <div class="three wide column">
-        {{#if (not-eq session.currentRouteName 'public.cfs.new-speaker')}}
-          <Public::SocialLinks @externalUrl={{model.externalEventUrl}} @socialLinks={{model.socialLinks}} />
+        {{#if (not-eq this.session.currentRouteName 'public.cfs.new-speaker')}}
+          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
         {{/if}}
       </div>
     </div>

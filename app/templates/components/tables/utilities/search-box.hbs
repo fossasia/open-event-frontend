@@ -1,4 +1,4 @@
 <div class="ui small icon input search-box">
-  <Input @type="text" @value={{readonly searchQuery}} @keyUp={{action 'setSearchQuery' value="target.value"}} placeholder="Search ..." />
+  <Input @type="text" @value={{readonly this.searchQuery}} @keyUp={{action 'setSearchQuery' value="target.value"}} placeholder="Search ..." />
   <i class="search icon"></i>
 </div>

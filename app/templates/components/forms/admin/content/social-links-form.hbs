@@ -1,38 +1,38 @@
-<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
   <div class="field">
     <label>{{t 'Blog'}}</label>
     <Widgets::Forms::LinkInput
-      @segmentedLink={{socials.segmentedSupportUrl}}
+      @segmentedLink={{this.socials.segmentedSupportUrl}}
       @inputId="support" />
   </div>
   <div class="field">
     <label>{{t 'Twitter'}}</label>
     <Widgets::Forms::LinkInput
-      @segmentedLink={{socials.segmentedTwitterUrl}}
+      @segmentedLink={{this.socials.segmentedTwitterUrl}}
       @inputId="twitter" />
   </div>
   <div class="field">
     <label>{{t 'Facebook'}}</label>
     <Widgets::Forms::LinkInput
-      @segmentedLink={{socials.segmentedFacebookUrl}}
+      @segmentedLink={{this.socials.segmentedFacebookUrl}}
       @inputId="facebook" />
   </div>
   <div class="field">
     <label>{{t 'Google Group'}}</label>
     <Widgets::Forms::LinkInput
-      @segmentedLink={{socials.segmentedGoogleUrl}}
+      @segmentedLink={{this.socials.segmentedGoogleUrl}}
       @inputId="google_group" />
   </div>
   <div class="field">
     <label>{{t 'YouTube'}}</label>
     <Widgets::Forms::LinkInput
-      @segmentedLink={{socials.segmentedYoutubeUrl}}
+      @segmentedLink={{this.socials.segmentedYoutubeUrl}}
       @inputId="youtube" />
   </div>
   <div class="field">
     <label>{{t 'GitHub'}}</label>
     <Widgets::Forms::LinkInput
-      @segmentedLink={{socials.segmentedGithubUrl}}
+      @segmentedLink={{this.socials.segmentedGithubUrl}}
       @inputId="github" />
   </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>

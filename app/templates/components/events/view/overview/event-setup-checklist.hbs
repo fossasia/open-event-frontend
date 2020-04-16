@@ -3,10 +3,10 @@
 </div>
 <div class= "content">
   <div class="ui fluid segments">
-    <a href="{{href-to 'events.view.edit.basic-details'}}" class="ui segment {{unless data.event.name 'secondary'}} grid less margin">
+    <a href="{{href-to 'events.view.edit.basic-details'}}" class="ui segment {{unless this.data.event.name 'secondary'}} grid less margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if data.event.name 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.name 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">
@@ -18,10 +18,10 @@
         </div>
       </div>
     </a>
-    <a href="{{href-to 'events.view.edit.attendee'}}" class="ui segment {{unless data.event.isTicketFormEnabled 'secondary'}} grid less margin">
+    <a href="{{href-to 'events.view.edit.attendee'}}" class="ui segment {{unless this.data.event.isTicketFormEnabled 'secondary'}} grid less margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if data.event.isTicketFormEnabled 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.isTicketFormEnabled 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">
@@ -33,10 +33,10 @@
         </div>
       </div>
     </a>
-    <a href="{{href-to 'events.view.edit.sponsors'}}" class="ui {{unless data.event.isSponsorsEnabled 'secondary'}} segment grid less margin">
+    <a href="{{href-to 'events.view.edit.sponsors'}}" class="ui {{unless this.data.event.isSponsorsEnabled 'secondary'}} segment grid less margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if data.event.isSponsorsEnabled 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.isSponsorsEnabled 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">
@@ -48,10 +48,10 @@
         </div>
       </div>
     </a>
-    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid less margin">
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid less margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">
@@ -63,10 +63,10 @@
         </div>
       </div>
     </a>
-    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless data.event.speakersCall.announcement 'secondary'}} segment grid less margin">
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.speakersCall.announcement 'secondary'}} segment grid less margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if data.event.speakersCall.announcement 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.speakersCall.announcement 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">
@@ -78,10 +78,10 @@
         </div>
       </div>
     </a>
-    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid less margin">
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid less margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">

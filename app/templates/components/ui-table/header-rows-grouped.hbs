@@ -1,4 +1,4 @@
-{{#each groupedHeaders as |row|}}
+{{#each this.groupedHeaders as |row|}}
   <tr>
     {{#each row as |cell|}}
       <th colspan="{{cell.colspan}}" rowspan="{{cell.rowspan}}">{{cell.title}}</th>

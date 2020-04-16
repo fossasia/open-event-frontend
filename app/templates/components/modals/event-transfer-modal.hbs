@@ -5,12 +5,12 @@
   </div>
 </div>
 <div class="content">
-  <div class="ui {{if isLoading 'loading'}} form" autocomplete="off">
+  <div class="ui {{if this.isLoading 'loading'}} form" autocomplete="off">
     <div class="field">
       <div class="label">
         {{t 'Please enter the event-name to confirm that you want to transfer the event'}}
       </div>
-      <Input @type="text" @name="confirm_name" @value={{confirmEventName}} required={{true}} />
+      <Input @type="text" @name="confirm_name" @value={{this.confirmEventName}} required={{true}} />
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
   <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  <button {{action openConfirmEventTransferModal}} class="ui red button {{if isNameDifferent 'disabled'}}">
+  <button {{action this.openConfirmEventTransferModal}} class="ui red button {{if this.isNameDifferent 'disabled'}}">
     {{t 'Proceed'}}
   </button>
 </div>

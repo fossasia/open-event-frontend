@@ -2,7 +2,7 @@
   {{t 'Add New Event Type'}}
 </div>
 <div class="content">
-  <form class="ui {{if isLoading 'loading'}} form" id="add-event-type-form" autocomplete="off" {{action 'addEventProperty' eventType on='submit' preventDefault=true}}>
+  <form class="ui {{if this.isLoading 'loading'}} form" id="add-event-type-form" autocomplete="off" {{action 'addEventProperty' this.eventType on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">
         {{t 'New Event Type'}}

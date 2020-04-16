@@ -5,10 +5,10 @@
     </h2>
     <div class="ui container">
       <Forms::SessionSpeakerForm
-        @fields={{model.forms}}
-        @event={{model.event}}
-        @data={{model}}
-        @isLoading={{isLoading}}
+        @fields={{this.model.forms}}
+        @event={{this.model.event}}
+        @data={{this.model}}
+        @isLoading={{this.isLoading}}
         @save={{action "save"}}
         @isSpeaker={{true}}
         @includeSpeaker={{true}} />

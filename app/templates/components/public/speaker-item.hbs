@@ -2,40 +2,40 @@
   <div class="title">
     <div class="ui">
       <div class="thumbnail-square">
-        <img alt="speaker" class="ui rounded image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+        <img alt="speaker" class="ui rounded image" src="{{if this.speaker.thumbnailImageUrl this.speaker.thumbnailImageUrl (if this.speaker.photoUrl this.speaker.photoUrl '/images/placeholders/avatar.png')}}">
       </div>
       <h3 class="ui centered header less margin">
-        {{speaker.name}}
+        {{this.speaker.name}}
       </h3>
       <p class="ui small centered disabled header less padding">
-        {{speaker.position}} {{speaker.organisation}}
+        {{this.speaker.position}} {{this.speaker.organisation}}
       </p>
     </div>
   </div>
   <div class="ui vertical fluid menu content padded">
     <div class="item">
       <p class="word-break">
-        {{#if speaker.shortBiography}}
-          {{sanitize speaker.shortBiography}}
-        {{else if speaker.longBiography}}
-          {{sanitize speaker.longBiography}}
-        {{else if speaker.speakingExperience}}
-          {{sanitize speaker.speakingExperience}}
+        {{#if this.speaker.shortBiography}}
+          {{sanitize this.speaker.shortBiography}}
+        {{else if this.speaker.longBiography}}
+          {{sanitize this.speaker.longBiography}}
+        {{else if this.speaker.speakingExperience}}
+          {{sanitize this.speaker.speakingExperience}}
         {{/if}}
       </p>
-      {{#if hasSocialLinks}}
+      {{#if this.hasSocialLinks}}
         <div class="social-icons">
-          {{#if speaker.facebook}}
-            <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i></a>
+          {{#if this.speaker.facebook}}
+            <a href={{this.speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i></a>
           {{/if}}
-          {{#if speaker.linkedin}}
-            <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i></a>
+          {{#if this.speaker.linkedin}}
+            <a href={{this.speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i></a>
           {{/if}}
-          {{#if speaker.twitter}}
-            <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i></a>
+          {{#if this.speaker.twitter}}
+            <a href={{this.speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i></a>
           {{/if}}
-          {{#if speaker.github}}
-            <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
+          {{#if this.speaker.github}}
+            <a href={{this.speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
           {{/if}}
         </div>
         <div class="ui divider"></div>
@@ -43,7 +43,7 @@
       <h3 class="ui header">
         {{t 'Sessions'}}
       </h3>
-      {{#each speaker.sessions as |session|}}
+      {{#each this.speaker.sessions as |session|}}
         {{#if (or (eq session.state 'confirmed') (eq session.state 'accepted'))}}
           <p>
             {{#if session.startsAt}}

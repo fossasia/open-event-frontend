@@ -1,14 +1,14 @@
-<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
 
   <div class="ui centered grid">
     <div class="column">
-      <div class="ui {{if data.event.isSessionsSpeakersEnabled 'basic'}} segment">
+      <div class="ui {{if this.data.event.isSessionsSpeakersEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class="field">
             <div class="ui slider checkbox">
-              <Input @type="checkbox" @checked={{data.event.isSessionsSpeakersEnabled}} />
+              <Input @type="checkbox" @checked={{this.data.event.isSessionsSpeakersEnabled}} />
               <label class="weight-300" style="font-size: large">
-                {{if data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
+                {{if this.data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sessions & Speakers'}}
               </label>
             </div>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  {{#if data.event.isSessionsSpeakersEnabled}}
+  {{#if this.data.event.isSessionsSpeakersEnabled}}
     <br>
     <h3 class="ui dividing header">
       <i class="ordered list icon"></i>
@@ -28,14 +28,14 @@
     </h3>
     <div class="field">
       <label class="required">Tracks</label>
-      {{#each tracks as |track|}}
-        <div class="{{if device.isMobile 'grouped'}} fields">
-          <div class="{{unless device.isMobile 'three wide'}} field">
+      {{#each this.tracks as |track|}}
+        <div class="{{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'three wide'}} field">
             <Input @type="text" @name="track" @value={{track.name}} placeholder="Name" />
           </div>
-          <div class="{{unless device.isMobile 'four wide'}} field">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
             <Widgets::Forms::ColorPicker @value={{track.color}} @fontColor={{track.fontColor}}>
-              {{#if (gt tracks.length 1)}}
+              {{#if (gt this.tracks.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' track}}>
                   <i class="minus icon"></i>
                 </button>
@@ -45,7 +45,7 @@
               </button>
             </Widgets::Forms::ColorPicker>
           </div>
-          <div class="{{unless device.isMobile 'two wide'}} field">
+          <div class="{{unless this.device.isMobile 'two wide'}} field">
             <input title="Preview"
                    class="preview"
                    value="{{if track.name track.name (t 'Preview Text')}}"
@@ -58,15 +58,15 @@
 
     <div class="field">
       <label class="required">{{t 'Microlocations'}}</label>
-      {{#each microlocations as |microlocation|}}
-        <div class="{{if device.isMobile 'grouped'}} fields">
-          <div class="{{unless device.isMobile 'three wide'}} field">
+      {{#each this.microlocations as |microlocation|}}
+        <div class="{{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'three wide'}} field">
             <Input @type="text" @id="microlocation" @value={{microlocation.name}} placeholder="Name" />
           </div>
-          <div class="{{unless device.isMobile 'four wide'}} field">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
               <Input @type="number" @id="microlocation_floor" @value={{microlocation.floor}} placeholder="Floor" />
-              {{#if (gt microlocations.length 1)}}
+              {{#if (gt this.microlocations.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' microlocation}}>
                   <i class="minus icon"></i>
                 </button>
@@ -81,15 +81,15 @@
     </div>
     <div class="field">
       <label class="required">{{t 'Session Types'}}</label>
-      {{#each sessionTypes as |sessionType|}}
-        <div class="{{if device.isMobile 'grouped'}} fields">
-          <div class="{{unless device.isMobile 'three wide'}} field">
+      {{#each this.sessionTypes as |sessionType|}}
+        <div class="{{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'three wide'}} field">
             <Input @type="text" @name="session" @value={{sessionType.name}} placeholder="Name" />
           </div>
-          <div class="{{unless device.isMobile 'four wide'}} field">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
               <Widgets::Forms::TimePicker @value={{sessionType.length}} @placeholder="HH:MM" @icon={{false}} />
-              {{#if (gt sessionTypes.length 1)}}
+              {{#if (gt this.sessionTypes.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' sessionType}}>
                   <i class="minus icon"></i>
                 </button>
@@ -112,36 +112,36 @@
     </h3>
     <div class="field">
       <label>{{t 'Announcement'}}</label>
-      <Widgets::Forms::RichTextEditor @name="announcement" @textareaId="announcement" @value={{data.speakersCall.announcement}} />
+      <Widgets::Forms::RichTextEditor @name="announcement" @textareaId="announcement" @value={{this.data.speakersCall.announcement}} />
     </div>
     <div class="fields">
       <div class="five wide field">
         <label class="required" for="start_date">{{t 'Starts'}}</label>
-        <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="MM/DD/YYYY" @rangePosition="start" @onChange={{action "onChange"}} @value={{data.speakersCall.startsAtDate}} />
+        <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="MM/DD/YYYY" @rangePosition="start" @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtDate}} />
       </div>
       <div class="two wide field">
         <label for="start_time">&nbsp;</label>
-        <Widgets::Forms::TimePicker @type="text" @name="start_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{data.speakersCall.startsAtTime}} />
+        <Widgets::Forms::TimePicker @type="text" @name="start_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtTime}} />
       </div>
       <div class="five wide field">
         <label class="required" for="end_date">{{t 'Ends'}}</label>
-        <Widgets::Forms::DatePicker @type="text" @name="end_date" @placeholder="MM/DD/YYYY" @rangePosition="end" @onChange={{action "onChange"}} @value={{data.speakersCall.endsAtDate}} />
+        <Widgets::Forms::DatePicker @type="text" @name="end_date" @placeholder="MM/DD/YYYY" @rangePosition="end" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtDate}} />
       </div>
       <div class="two wide field">
         <label for="end_time">&nbsp;</label>
-        <Widgets::Forms::TimePicker @type="text" @name="end_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{data.speakersCall.endsAtTime}} />
+        <Widgets::Forms::TimePicker @type="text" @name="end_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtTime}} />
       </div>
       <div class="five wide field">
         <label class="required" for="timezone">{{t 'Timezone'}}</label>
-        <Input @type="text" @disabled={{true}} @value={{data.event.timezone}} />
+        <Input @type="text" @disabled={{true}} @value={{this.data.event.timezone}} />
       </div>
     </div>
     <div class="field">
       <label>{{t 'Private Link'}}</label>
       <div class="ui action input fluid">
-        <input type="text" name="private_link" value="{{concat data.event.url '/cfs/' data.speakersCall.hash}}" placeholder="{{concat data.event '/cfs/' data.speakersCall.hash}}" readonly>
+        <input type="text" name="private_link" value="{{concat this.data.event.url '/cfs/' this.data.speakersCall.hash}}" placeholder="{{concat this.data.event '/cfs/' this.data.speakersCall.hash}}" readonly>
         <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
-          <CopyButton @clipboardText={{concat data.event.url "/cfs/" data.speakersCall.hash}} @class="ui black right labeled icon copy button">
+          <CopyButton @clipboardText={{concat this.data.event.url "/cfs/" this.data.speakersCall.hash}} @class="ui black right labeled icon copy button">
             <i class="copy icon"></i>
             {{t 'Copy'}}
           </CopyButton>
@@ -155,8 +155,7 @@
       <label for="privacy">{{t 'Privacy'}}</label>
       <div class="field">
         <div class="ui radio checkbox">
-          {{widgets/forms/radio-button value name='privacy' id='privacy_public' value='public'
-                                       checked=data.speakersCall.privacy}}
+          {{widgets/forms/radio-button this.value name='privacy' id='privacy_public' value='public' checked=this.data.speakersCall.privacy}}
           <label for="privacy_public">
             <strong>{{t 'Public'}}:</strong>
             {{t 'Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published.'}}
@@ -165,8 +164,7 @@
       </div>
       <div class="field">
         <div class="ui radio checkbox">
-          {{widgets/forms/radio-button value name='privacy' id='privacy_private' value='private'
-                                       checked=data.speakersCall.privacy}}
+          {{widgets/forms/radio-button this.value name='privacy' id='privacy_private' value='private' checked=this.data.speakersCall.privacy}}
           <label for="privacy_private">
             <strong>{{t 'Private'}}:</strong>
             {{t 'Do not display this publicly. Proposals can be submitted only using the private link.'}}
@@ -193,7 +191,7 @@
               </th>
             </tr>
             <tr>
-              {{#if device.isMobile}}
+              {{#if this.device.isMobile}}
                 <th class="center aligned">
                   {{t 'Options'}}
                 </th>
@@ -211,18 +209,18 @@
             </tr>
           </thead>
           <tbody>
-            {{#each customForm.speaker as |field|}}
+            {{#each this.customForm.speaker as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
                   <label class="{{if field.isFixed 'required'}}">
                     {{field.name}}
                   </label>
                 </td>
                 <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if device.isMobile (t "Include")}} />
+                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
                 </td>
                 <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if device.isMobile (t "Require")}} />
+                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if this.device.isMobile (t "Require")}} />
                 </td>
               </tr>
             {{/each}}
@@ -239,7 +237,7 @@
               </th>
             </tr>
             <tr>
-              {{#if device.isMobile}}
+              {{#if this.device.isMobile}}
                 <th class="center aligned">
                   {{t 'Options'}}
                 </th>
@@ -257,18 +255,18 @@
             </tr>
           </thead>
           <tbody>
-            {{#each customForm.session as |field|}}
+            {{#each this.customForm.session as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
                   <label class="{{if field.isFixed 'required'}}">
                     {{field.name}}
                   </label>
                 </td>
                 <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if device.isMobile (t "Include")}} />
+                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
                 </td>
                 <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if device.isMobile (t "Require")}} />
+                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if this.device.isMobile (t "Require")}} />
                 </td>
               </tr>
             {{/each}}
@@ -320,19 +318,19 @@
   <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addCustomField'}}>{{t 'Add another custom field'}}</button>
 
  --}}
-  <div class="ui fields buttons {{if device.isMobile 'mini three' 'right floated large'}}">
-    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+  <div class="ui fields buttons {{if this.device.isMobile 'mini three' 'right floated large'}}">
+    <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
     </button>
-    {{#if (not-eq data.event.state 'published')}}
-      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+    {{#if (not-eq this.data.event.state 'published')}}
+      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
         {{t 'Save draft'}}
         <i class="save icon"></i>
       </button>
     {{/if}}
-    {{#if data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+    {{#if this.data.event.locationName}}
+      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

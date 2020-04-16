@@ -1,5 +1,5 @@
 <div class="ui right floated pagination menu">
-  {{#each visiblePageNumbers as |page|}}
+  {{#each this.visiblePageNumbers as |page|}}
     {{#if page.isLink}}
       <a href="#" class="item text muted {{if page.isActive 'active'}}" {{action 'gotoCustomPage' page.label}}>{{page.label}}</a>
     {{else}}

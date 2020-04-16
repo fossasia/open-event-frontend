@@ -2,7 +2,7 @@
   <div class="row">
     <div class="three wide column">
       <TabbedNavigation @isVertical={{true}}>
-        {{#each model as |topic|}}
+        {{#each this.model as |topic|}}
           <LinkTo @route="admin.content.system-images.list" @model={{topic.id}} class="link item">
             {{topic.name}}
           </LinkTo>

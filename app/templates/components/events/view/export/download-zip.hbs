@@ -8,27 +8,27 @@
 </h3>
 <div class="ui hidden divider"></div>
 <div class="ui container"></div>
-<div class="ui form {{if isLoading 'loading'}}">
+<div class="ui form {{if this.isLoading 'loading'}}">
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Image"}} @checked={{data.image}} @onChange={{action (mut data.image)}} />
+    <UiCheckbox @class="toggle" @label={{t "Image"}} @checked={{this.data.image}} @onChange={{action (mut this.data.image)}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Video"}} @checked={{data.video}} @onChange={{action (mut data.video)}} />
+    <UiCheckbox @class="toggle" @label={{t "Video"}} @checked={{this.data.video}} @onChange={{action (mut this.data.video)}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Audio"}} @checked={{data.audio}} @onChange={{action (mut data.audio)}} />
+    <UiCheckbox @class="toggle" @label={{t "Audio"}} @checked={{this.data.audio}} @onChange={{action (mut this.data.audio)}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Document"}} @checked={{data.document}} @onChange={{action (mut data.document)}} />
+    <UiCheckbox @class="toggle" @label={{t "Document"}} @checked={{this.data.document}} @onChange={{action (mut this.data.document)}} />
   </div>
   <div class="ui basic segment less left padding">
-    <button class="ui blue button" {{action startGeneration}}>
+    <button class="ui blue button" {{action this.startGeneration}}>
       {{t 'Start'}}
     </button>
-    <a href="#" class="ui button {{if isDownloadDisabled 'disabled' ''}}" {{action exportEventDownload eventDownloadUrl }}>
+    <a href="#" class="ui button {{if this.isDownloadDisabled 'disabled' ''}}" {{action this.exportEventDownload this.eventDownloadUrl }}>
       {{t 'Download'}}
     </a>
     <div class="hidden divider"></div>
-    <h4 class="ui header">Status: {{eventExportStatus}}</h4>
+    <h4 class="ui header">Status: {{this.eventExportStatus}}</h4>
   </div>
 </div>

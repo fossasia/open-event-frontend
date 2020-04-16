@@ -8,7 +8,7 @@
         {{t 'Name '}}
       </h4>
       <span>
-        {{payer.firstName}} {{payer.lastName}}
+        {{this.payer.firstName}} {{this.payer.lastName}}
       </span>
       <div class="ui divider"></div>
 
@@ -16,18 +16,18 @@
         {{t 'Email '}}
       </h4>
       <span>
-        {{payer.email}}
+        {{this.payer.email}}
       </span>
-      {{#if (not-eq data.paymentMode 'free')}}
+      {{#if (not-eq this.data.paymentMode 'free')}}
         <div class="ui divider"></div>
-        {{#if (eq data.paymentMode 'paypal')}}
+        {{#if (eq this.data.paymentMode 'paypal')}}
           <h3 class="ui header">
             <div class="content">
               {{t 'Payment Mode'}}
             </div>
           </h3>
           <img src="/images/payment-logos/paypal.png" alt="paypal" class="ui tiny image">
-          {{#if (eq data.status 'paid')}}
+          {{#if (eq this.data.status 'paid')}}
             <div class="ui very relaxed divided list">
               <div class="item">
                 <div class="content">
@@ -35,28 +35,28 @@
                     {{t 'Transaction ID'}}
                   </div>
                   <div class="description">
-                    {{data.transactionId}}
+                    {{this.data.transactionId}}
                   </div>
                 </div>
               </div>
             </div>
           {{/if}}
-        {{else if (eq data.paymentMode 'stripe')}}
+        {{else if (eq this.data.paymentMode 'stripe')}}
           <h3 class="ui header">
             <div class="content">{{t 'Payment Mode'}}</div>
             <i class="big stripe icon"></i>
 
           </h3>
-          {{#if (eq data.status 'paid')}}
+          {{#if (eq this.data.status 'paid')}}
             <div class="ui very relaxed divided list">
               <div class="item">
                 <div class="content">
                   <div class="header">{{t 'Card Type'}}</div>
                   <div class="description">
-                    {{#if (payment-icon data.brand)}}
-                      <i class="{{payment-icon data.brand}}"></i>
+                    {{#if (payment-icon this.data.brand)}}
+                      <i class="{{payment-icon this.data.brand}}"></i>
                     {{else}}
-                      {{data.brand}}
+                      {{this.data.brand}}
                     {{/if}}
                   </div>
                 </div>
@@ -64,13 +64,13 @@
               <div class="item">
                 <div class="content">
                   <div class="header">{{t 'Card Number'}}</div>
-                  <div class="description">**** {{data.last4}}</div>
+                  <div class="description">**** {{this.data.last4}}</div>
                 </div>
               </div>
               <div class="item">
                 <div class="content">
                   <div class="header">{{t 'Exp Date'}}</div>
-                  <div class="description">{{data.expMonth}}/{{data.expYear}}</div>
+                  <div class="description">{{this.data.expMonth}}/{{this.data.expYear}}</div>
                 </div>
               </div>
             </div>

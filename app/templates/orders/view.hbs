@@ -1,39 +1,39 @@
 <div class="ui one column container stackable doubling left grid">
   <div class="row print">
     <div class="column">
-      <h2>{{model.order.event.name}}</h2>
+      <h2>{{this.model.order.event.name}}</h2>
     </div>
   </div>
   <div class="row print">
     <div class="column">
       <div class="ui small gray-text">
-        {{header-date model.order.event.startsAt}} - {{header-date model.order.event.endsAt}}
+        {{header-date this.model.order.event.startsAt}} - {{header-date this.model.order.event.endsAt}}
         <br>
-        {{model.order.event.locationName}}
+        {{this.model.order.event.locationName}}
       </div>
     </div>
   </div>
   <div class="row">
     <div class="ten wide column print">
       <Orders::OrderSummary
-        @data={{model.order}}
-        @event={{model.event}}
-        @eventCurrency={{model.order.event.paymentCurrency}} />
+        @data={{this.model.order}}
+        @event={{this.model.event}}
+        @eventCurrency={{this.model.order.event.paymentCurrency}} />
     </div>
     <div class="mobile hidden six wide column">
       <Orders::EventInfo
-        @data={{model.order}} />
+        @data={{this.model.order}} />
     </div>
   </div>
   <div class="row">
     <div class="column right aligned">
-      <button class="ui labeled icon {{if isLoadingTickets 'loading'}} {{if device.isMobile 'fluid'}} button"
-        {{action downloadTickets model.event.name model.order.identifier}}>
+      <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
+        {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
         <i class="ticket alternate icon"></i>
         {{t 'Download Tickets'}}
       </button>
-      <button {{action 'downloadInvoice' model.event.name model.order.identifier }}
-        class="ui labeled icon blue {{if isLoadingInvoice 'loading'}} {{if device.isMobile 'fluid'}} button">
+      <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
+        class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
         <i class="download icon"></i>
         {{t 'Download Invoice'}}
       </button>
@@ -43,15 +43,15 @@
     <div class="ten wide column">
       <Forms::Orders::AttendeeList
         @save="save"
-        @data={{model.order}}
-        @fields={{model.form}}
-        @event={{model.event}} />
+        @data={{this.model.order}}
+        @fields={{this.model.form}}
+        @event={{this.model.event}} />
     </div>
     <div class="six wide column">
       <div class="row">
         <div class="mobile hidden row">
           <Orders::TicketHolder
-            @data={{model.order}} />
+            @data={{this.model.order}} />
         </div>
       </div>
     </div>

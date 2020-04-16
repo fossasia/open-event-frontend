@@ -5,8 +5,8 @@
         {{t 'View Attendees'}}
       </h2>
     </div>
-    <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
-      <div class="{{if device.isMobile 'ui padded grid'}}">
+    <div class="eight wide {{unless this.device.isMobile 'right aligned'}} column">
+      <div class="{{if this.device.isMobile 'ui padded grid'}}">
         <div class="row">
           <UiDropdown @class="compact selection eight wide column">
             <div class="default text">
@@ -14,11 +14,11 @@
             </div>
             <i class="dropdown icon"></i>
             <div class="menu">
-              <div class="item {{if isLoadingpdf 'loading'}}" role="button" data-value="pdf" {{action 'export' 'pdf'}}>
+              <div class="item {{if this.isLoadingpdf 'loading'}}" role="button" data-value="pdf" {{action 'export' 'pdf'}}>
                 <i class="file pdf outline icon"></i>
                 {{t 'PDF'}}
               </div>
-              <div class="item {{if isLoadingcsv 'loading'}}" role="button" data-value="csv" {{action 'export' 'csv'}}>
+              <div class="item {{if this.isLoadingcsv 'loading'}}" role="button" data-value="csv" {{action 'export' 'csv'}}>
                 <i class="file excel outline icon"></i>
                 {{t 'CSV'}}
               </div>
@@ -57,7 +57,7 @@
         <LinkTo @route="events.view.tickets.attendees.list" @model="placed" class="item">
           {{t 'Placed'}}
         </LinkTo>
-        {{#if authManager.currentUser.isAnAdmin}}
+        {{#if this.authManager.currentUser.isAnAdmin}}
           <LinkTo @route="events.view.tickets.attendees.list" @model="pending" class="item">
             {{t 'Pending'}}
           </LinkTo>

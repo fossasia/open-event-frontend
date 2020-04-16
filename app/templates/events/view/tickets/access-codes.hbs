@@ -1,11 +1,11 @@
-{{#if (and (not-eq session.currentRouteName 'events.view.tickets.access-codes.create') (not-eq session.currentRouteName 'events.view.tickets.access-codes.edit'))}}
-  {{#if device.isMobile }}
+{{#if (and (not-eq this.session.currentRouteName 'events.view.tickets.access-codes.create') (not-eq this.session.currentRouteName 'events.view.tickets.access-codes.edit'))}}
+  {{#if this.device.isMobile }}
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="ui stackable grid">
     <div class="row">
-      <h2 class="ui header {{if device.isTablet 'nine' 'eleven'}} wide column left floated">{{t 'Access Codes'}}</h2>
-      <div class="{{if device.isTablet 'seven' 'five'}} wide column right floated">
+      <h2 class="ui header {{if this.device.isTablet 'nine' 'eleven'}} wide column left floated">{{t 'Access Codes'}}</h2>
+      <div class="{{if this.device.isTablet 'seven' 'five'}} wide column right floated">
         <LinkTo @route="events.view.tickets.access-codes.create" @tagName="button" class="ui button blue fluid">
           <i class="plus icon"></i>
           {{t 'Create an access code'}}

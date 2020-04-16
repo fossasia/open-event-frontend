@@ -1,15 +1,15 @@
-{{#if (and (not-eq session.currentRouteName 'public.cfs.new-session') (not-eq session.currentRouteName 'public.cfs.new-speaker') (not-eq session.currentRouteName 'public.cfs.edit-speaker') (not-eq session.currentRouteName 'public.cfs.edit-session'))}}
-  <div class="ui fluid vertical {{unless device.isMobile 'pointing'}} menu">
-    {{#if (eq session.currentRouteName 'public.index')}}
+{{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') (not-eq this.session.currentRouteName 'public.cfs.new-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
+  <div class="ui fluid vertical {{unless this.device.isMobile 'pointing'}} menu">
+    {{#if (eq this.session.currentRouteName 'public.index')}}
       <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
         {{t 'Info'}}
       </a>
-      {{#if event.tickets.length}}
+      {{#if this.event.tickets.length}}
         <a href='#tickets' {{action "scrollToTarget"}} class='item scroll'>
           {{t 'Tickets'}}
         </a>
       {{/if}}
-      {{#if event.speakers.length}}
+      {{#if this.event.speakers.length}}
         <LinkTo @route="public.speakers" class="item">
           {{t 'Speakers'}}
         </LinkTo>
@@ -18,34 +18,34 @@
       <a class="item" href="{{href-to 'public.index'}}">
         {{t 'Info'}}
       </a>
-      {{#if event.tickets.length}}
+      {{#if this.event.tickets.length}}
         <a class="item" href="{{href-to 'public.index'}}#tickets">
           {{t 'Tickets'}}
         </a>
       {{/if}}
-      {{#if event.speakers.length}}
+      {{#if this.event.speakers.length}}
         <LinkTo @route="public.speakers" class="item">
           {{t 'Speakers'}}
         </LinkTo>
       {{/if}}
     {{/if}}
-    {{#if event.sessions.length}}
+    {{#if this.event.sessions.length}}
       <LinkTo @route="public.sessions" class="item">
         {{t 'Sessions'}}
       </LinkTo>
     {{/if}}
-    {{#if isSchedulePublished}}
+    {{#if this.isSchedulePublished}}
       <LinkTo @route="public.schedule" class="item">
         {{t 'Schedule'}}
       </LinkTo>
     {{/if}}  
-    {{#if shouldShowCallforSpeakers }}
+    {{#if this.shouldShowCallforSpeakers }}
       <LinkTo @route="public.cfs" class="item">
         {{t 'Call for Speakers'}}
       </LinkTo>
     {{/if}}
-    {{#if event.hasOwnerInfo}}
-      {{#if (eq session.currentRouteName 'public.index')}}
+    {{#if this.event.hasOwnerInfo}}
+      {{#if (eq this.session.currentRouteName 'public.index')}}
         <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
           {{t 'Organizer'}}
         </a>
@@ -55,7 +55,7 @@
         </a>
       {{/if}}
     {{/if}}
-    {{#if (eq session.currentRouteName 'public.index')}}
+    {{#if (eq this.session.currentRouteName 'public.index')}}
       <a href='#getting-here' class='item scroll'>
         {{t 'Getting here'}}
       </a>
@@ -64,7 +64,7 @@
         {{t 'Getting here'}}
       </a>
     {{/if}}
-    {{#if event.codeOfConduct}}
+    {{#if this.event.codeOfConduct}}
       <LinkTo @route="public.coc" class="item">
         {{t 'Code of Conduct'}}
       </LinkTo>

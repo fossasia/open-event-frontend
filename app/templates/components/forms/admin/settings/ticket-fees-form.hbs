@@ -1,8 +1,8 @@
-<form class="ui form" {{action save on='submit' preventDefault=true}}>
+<form class="ui form" {{action this.save on='submit' preventDefault=true}}>
   <h3 class="ui header">
     {{t 'Add Fee Settings for the event'}}
   </h3>
-  {{#each model as |ticketFee|}}
+  {{#each this.model as |ticketFee|}}
     <div class="ui five column very relaxed grid">
       <div class="ui field three wide column">
         <label class="required">{{t 'Select country'}}</label>
@@ -17,7 +17,7 @@
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Select country'}}</div>
           <div class="menu">
-            {{#each paymentCountries as |paymentCountry|}}
+            {{#each this.paymentCountries as |paymentCountry|}}
               <div class="item" data-value="{{paymentCountry.name}}">
                 <i class="{{lowercase paymentCountry.code}} flag"></i>
                 {{paymentCountry.name}}
@@ -39,7 +39,7 @@
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Select currency'}}</div>
           <div class="menu">
-            {{#each paymentCurrencies as |paymentCurrency|}}
+            {{#each this.paymentCurrencies as |paymentCurrency|}}
               <div class="item" data-value="{{paymentCurrency.code}}">
                 {{paymentCurrency.code}} -
                 {{paymentCurrency.name}}
@@ -109,7 +109,7 @@
     {{t 'Add New'}}
   </button>
 
-  <button class="ui teal button {{unless model 'disabled'}}" type="submit">
+  <button class="ui teal button {{unless this.model 'disabled'}}" type="submit">
     {{t 'Save'}}
   </button>
 </form>

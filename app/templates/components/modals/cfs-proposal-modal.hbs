@@ -3,26 +3,26 @@
   {{t 'Submit Proposal'}}
 </div>
 <div class="content">
-  {{#if isNewSession}}
+  {{#if this.isNewSession}}
     <p>{{t 'No existing sessions'}}</p>
   {{/if}}
   <div>
-    {{#if isNewSpeaker}}
+    {{#if this.isNewSpeaker}}
       <LinkTo @route="public.cfs.new-speaker" class="ui teal button" @invokeAction={{action "toggleView"}}>
         {{t 'Add Speaker Details'}}
       </LinkTo>
     {{else}}
-      {{#each data.userSpeaker as |speaker|}}
+      {{#each this.data.userSpeaker as |speaker|}}
         {{#if speaker.id}}
           <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}} @invokeAction={{action "toggleView"}}>
-            <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
+            <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
           </LinkTo>
         {{/if}}
       {{/each}}
     {{/if}}
-    {{#unless isNewSpeaker}}
+    {{#unless this.isNewSpeaker}}
       <LinkTo @route="public.cfs.new-session" @invokeAction={{action "toggleView"}}>
-        <button class="ui teal {{if device.isMobile 'tiny'}} button">{{t 'Add New Session'}}</button>
+        <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Add New Session'}}</button>
       </LinkTo>
     {{/unless}}
   </div>

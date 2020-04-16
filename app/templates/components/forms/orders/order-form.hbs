@@ -1,4 +1,4 @@
-<form class="ui form" {{action 'submit' data on='submit' }}>
+<form class="ui form" {{action 'submit' this.data on='submit' }}>
   <div class="ui segments">
     <div class="ui aligned secondary segment">
       <h3 class="weight-400">{{t 'Registration Information'}}</h3>
@@ -6,12 +6,12 @@
     <div class="ui yellow inverted segment">
       <div class="ui inverted small horizontal statistic">
         <div class="value">
-          {{getRemainingTime}}
+          {{this.getRemainingTime}}
         </div>
         <div class="label">
-          {{t 'Please complete registration within '}} {{settings.orderExpiryTime}} {{t 'minutes.'}}
+          {{t 'Please complete registration within '}} {{this.settings.orderExpiryTime}} {{t 'minutes.'}}
           <br>
-          {{t 'After '}} {{settings.orderExpiryTime}}
+          {{t 'After '}} {{this.settings.orderExpiryTime}}
           {{t 'minutes, the reservation we\'re holding will be released to others.'}}
         </div>
       </div>
@@ -21,45 +21,45 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
-      <div class="field {{if buyerHasFirstName 'disabled'}}">
+      <div class="field {{if this.buyerHasFirstName 'disabled'}}">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
         <Input
           @type="text"
           @name="first_name"
-          @value={{buyerFirstName}} />
+          @value={{this.buyerFirstName}} />
       </div>
-      <div class="field {{if buyerHasLastName 'disabled'}}">
+      <div class="field {{if this.buyerHasLastName 'disabled'}}">
         <label class="required" for="lastname">{{t 'Last Name'}}</label>
         <Input
           @type="text"
           @name="last_name"
-          @value={{buyerLastName}} />
+          @value={{this.buyerLastName}} />
       </div>
       <div class="field disabled">
         <label class="required" for="email">{{t 'Email'}}</label>
         <Input
           @type="text"
           @name="email"
-          @value={{buyer.email}} />
+          @value={{this.buyer.email}} />
       </div>
       <h4 class="ui horizontal divider header">
         <i class="ticket icon"></i>
         {{t 'Ticket Holder\'s Information'}}
       </h4>
-      {{#each holders as |holder index|}}
+      {{#each this.holders as |holder index|}}
         {{#if (eq index 0)}}
           <div class="field">
             <UiCheckbox
               @label={{t "Ticket holder is the same person as ticket buyer"}}
-              @checked={{sameAsBuyer}}
-              @onChange={{pipe-action (action (mut sameAsBuyer)) (action "modifyHolder" holder)}} />
+              @checked={{this.sameAsBuyer}}
+              @onChange={{pipe-action (action (mut this.sameAsBuyer)) (action "modifyHolder" holder)}} />
           </div>
         {{/if}}
         <div class="inline field">
           <i class="user icon"></i>
           <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
         </div>
-        {{#each allFields.attendee as |field|}}
+        {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
             <div class="field">
               <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
@@ -70,7 +70,7 @@
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
 
                 {{else}}
-                  {{#if (and sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
+                  {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
                     <Input
                       @type={{field.type}}
                       @value={{mut (get holder field.fieldIdentifier)}}
@@ -94,7 +94,7 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your gender'}}</div>
                   <div class="menu">
-                    {{#each genders as |gender|}}
+                    {{#each this.genders as |gender|}}
                       <div class="item" data-value="{{map-value mapper gender.name}}">
                         {{gender.name}}
                       </div>
@@ -112,7 +112,7 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your country'}}</div>
                   <div class="menu">
-                    {{#each countries as |country|}}
+                    {{#each this.countries as |country|}}
                       <div class="item" data-value="{{map-value mapper country.name}}">
                         <i class="{{lowercase country.code}} flag"></i>
                         {{country.name}}
@@ -131,7 +131,7 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your age group'}}</div>
                   <div class="menu">
-                    {{#each ageGroups as |ageGroup|}}
+                    {{#each this.ageGroups as |ageGroup|}}
                       <div class="item" data-value="{{map-value mapper ageGroup.age}}">
                         {{ageGroup.age}}
                       </div>
@@ -144,7 +144,7 @@
         {{/each}}
       {{/each}}
 
-      {{#if isPaidOrder}}
+      {{#if this.isPaidOrder}}
         <h4 class="ui horizontal divider header">
           <i class="ticket icon"></i>
           {{t 'Billing Information'}}
@@ -153,14 +153,14 @@
           <div class="ui center aligned field">
             <UiCheckbox
               @label={{t "Enable Billing Information"}}
-              @checked={{data.isBillingEnabled}}
-              @onChange={{action (mut data.isBillingEnabled)}} />
+              @checked={{this.data.isBillingEnabled}}
+              @onChange={{action (mut this.data.isBillingEnabled)}} />
           </div>
         {{/unless}}
-        {{#if isBillingInfoNeeded}}
+        {{#if this.isBillingInfoNeeded}}
           <Widgets::Forms::BillingInfo
-            @data={{data}}
-            @event={{event}} />
+            @data={{this.data}}
+            @event={{this.event}} />
         {{/if}}
         <h4 class="ui horizontal divider header">
           <i class="ticket icon"></i>
@@ -169,115 +169,109 @@
         <div class="field">
           <label class="required" for="payment_mode">{{t 'Please choose your payment method'}}</label>
           <div class="grouped inline fields">
-            {{#if data.event.isStripeLinked}}
+            {{#if this.data.event.isStripeLinked}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Credit Card"}}
                   @value="stripe"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
                 <label for="payment_mode">
                   <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
                 </label>
               </div>
             {{/if}}
-            {{#if data.event.canPayByPaypal}}
+            {{#if this.data.event.canPayByPaypal}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Paypal"}}
                   @value="paypal"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
                 <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
               </div>
             {{/if}}
-            {{#if data.event.canPayByPaytm}}
+            {{#if this.data.event.canPayByPaytm}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Paytm"}}
                   @value="paytm"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
                 <label for="payment_mode"><img src="/images/payment-logos/paytm.png" alt="paytm"></label>
               </div>
             {{/if}}
-            {{#if data.event.canPayByOmise}}
+            {{#if this.data.event.canPayByOmise}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Omise"}}
                   @value="omise"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
                 <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise"
                     class="ui tiny image"></label>
               </div>
             {{/if}}
-            {{#if data.event.canPayByAlipay}}
+            {{#if this.data.event.canPayByAlipay}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "AliPay"}}
                   @value="alipay"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
                 <label for="payment_mode"><img src="/images/payment-logos/alipay.png" alt="alipay"
                     class="ui tiny image"></label>
               </div>
             {{/if}}
-            {{#if data.event.canPayByCheque}}
+            {{#if this.data.event.canPayByCheque}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Cheque"}}
                   @value="cheque"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
               </div>
             {{/if}}
-            {{#if data.event.canPayByBank}}
+            {{#if this.data.event.canPayByBank}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Bank"}}
                   @value="bank"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
               </div>
             {{/if}}
-            {{#if data.event.canPayOnsite}}
+            {{#if this.data.event.canPayOnsite}}
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Onsite"}}
                   @value="onsite"
-                  @current={{data.paymentMode}}
-                  @onChange={{action (mut data.paymentMode)}} />
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
               </div>
             {{/if}}
           </div>
         </div>
         <div class="field">
-          {{#if (eq data.paymentMode 'bank')}}
+          {{#if (eq this.data.paymentMode 'bank')}}
             <Textarea
               @name="payment_details"
-              @value={{data.event.bankDetails}}
-              @readonly="" />
-          {{else if (eq data.paymentMode 'cheque')}}
-            <Textarea
+              @value={{this.data.event.bankDetails}}
+              @readonly="" />          {{else if (eq this.data.paymentMode 'cheque')}}            <Textarea
               @name="payment_details"
-              @value={{data.event.chequeDetails}}
-              @readonly="" />
-          {{else if (eq data.paymentMode 'onsite')}}
-            <Textarea
+              @value={{this.data.event.chequeDetails}}
+              @readonly="" />          {{else if (eq this.data.paymentMode 'onsite')}}            <Textarea
               @name="payment_details"
-              @value={{data.event.onsiteDetails}}
-              @readonly="" />
-          {{/if}}
-        </div>
+              @value={{this.data.event.onsiteDetails}}
+              @readonly="" />          {{/if}}        </div>
       {{/if}}
       <h4 class="ui horizontal divider header">
         <i class="ticket icon"></i>

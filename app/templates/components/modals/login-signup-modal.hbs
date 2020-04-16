@@ -1,4 +1,4 @@
-{{#if (eq session.currentRouteName 'public.cfs.index')}}
+{{#if (eq this.session.currentRouteName 'public.cfs.index')}}
   <i class="black close icon"></i>
   <div class="header">
     {{t 'Login or Signup'}}
@@ -18,16 +18,16 @@
       </LinkTo>
     </div>
   </div>
-{{else if (eq session.currentRouteName 'public.index')}}
+{{else if (eq this.session.currentRouteName 'public.index')}}
   <i class="black close icon"></i>
   <div class="ui basic compact segment">
     <div class="content">
       <Forms::Orders::GuestOrderForm
-        @isLoading={{isLoading}}
-        @errorMessage={{errorMessage}}
-        @userExists={{userExists}}
-        @loginExistingUser={{loginExistingUser}}
-        @createNewUserViaEmail={{createNewUserViaEmail}} />
+        @isLoading={{this.isLoading}}
+        @errorMessage={{this.errorMessage}}
+        @userExists={{this.userExists}}
+        @loginExistingUser={{this.loginExistingUser}}
+        @createNewUserViaEmail={{this.createNewUserViaEmail}} />
 
     </div>
   </div>

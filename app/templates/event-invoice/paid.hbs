@@ -1,25 +1,25 @@
 <div class="ui one column container stackable doubling left grid">
   <div class="row print">
     <div class="column">
-      <h2>{{model.event.name}}</h2>
+      <h2>{{this.model.event.name}}</h2>
     </div>
   </div>
   <div class="row">
     <div class="ten wide column print">
       <EventInvoice::InvoiceSummary
-        @data={{model}}
-        @event={{model.event}}
-        @eventCurrency={{model.event.paymentCurrency}} />
+        @data={{this.model}}
+        @event={{this.model.event}}
+        @eventCurrency={{this.model.event.paymentCurrency}} />
     </div>
     <div class="mobile hidden six wide column">
       <EventInvoice::EventInfo
-        @event={{model.event}} />
+        @event={{this.model.event}} />
     </div>
   </div>
   <div class="row">
     <div class="column right aligned">
-      <button {{action 'downloadEventInvoice' model.event.name model.identifier }}
-        class="ui labeled icon blue {{if isLoadingInvoice 'loading'}} button">
+      <button {{action 'downloadEventInvoice' this.model.event.name this.model.identifier }}
+        class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} button">
         <i class="print alternate icon"></i>
         {{t 'Print Invoice'}}
       </button>
@@ -28,14 +28,14 @@
   <div class="row">
     <div class="ten wide column">
       <EventInvoice::BillingInfo
-        @user={{model.user}} />
+        @user={{this.model.user}} />
     </div>
     <div class="six wide column">
       <div class="row">
         <div class="mobile hidden row">
           <EventInvoice::PayeeInfo
-            @data={{model}}
-            @payer={{model.user}} />
+            @data={{this.model}}
+            @payer={{this.model.user}} />
         </div>
       </div>
     </div>

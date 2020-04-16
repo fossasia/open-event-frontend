@@ -1,24 +1,24 @@
 <div class="ui one column container stackable doubling left grid">
   <div class="row">
     <div class="column">
-      <h2>{{model.event.name}}</h2>
+      <h2>{{this.model.event.name}}</h2>
     </div>
   </div>
   <div class="row">
     <div class="column">
       <div class="ui small gray-text">
-        {{header-date model.event.startsAt}} - {{header-date model.event.endsAt}}
+        {{header-date this.model.event.startsAt}} - {{header-date this.model.event.endsAt}}
         <br>
-        {{model.event.locationName}}
+        {{this.model.event.locationName}}
       </div>
     </div>
   </div>
   <div class="row">
     <div class="ten wide column">
-      <Orders::OrderSummary @data={{model}} @eventCurrency={{model.event.paymentCurrency}} />
+      <Orders::OrderSummary @data={{this.model}} @eventCurrency={{this.model.event.paymentCurrency}} />
     </div>
     <div class="mobile hidden six wide column">
-      <Orders::EventInfo @data={{model}} />
+      <Orders::EventInfo @data={{this.model}} />
     </div>
   </div>
 </div>

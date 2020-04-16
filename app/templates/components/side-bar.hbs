@@ -1,16 +1,16 @@
-<div class="ui left inverted vertical menu sidebar {{if sidebarVisible 'visible'}}">
+<div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
   <LinkTo
     @route="explore" class="item"
     @activeClass="">{{t 'Browse Events'}}</LinkTo>
-  {{#if session.isAuthenticated}}
+  {{#if this.session.isAuthenticated}}
     <div class="item">
       <a href="{{href-to 'account.profile'}}">
         <Widgets::SafeImage
           @isAvatar={{true}}
           @class="ui avatar round image side-bar"
-          @src={{if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"}} />
-        {{if authManager.currentUser
-            (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
+          @src={{if this.authManager.currentUser.avatarUrl this.authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"}} />
+        {{if this.authManager.currentUser
+            (if this.authManager.currentUser.firstName this.authManager.currentUser.firstName this.authManager.currentUser.email)
             'Welcome'}}
       </a>
     </div>
@@ -19,7 +19,7 @@
     <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
     <div class="divider"></div>
     <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>
-    {{#if authManager.currentUser.isAnAdmin}}
+    {{#if this.authManager.currentUser.isAnAdmin}}
       <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
     {{/if}}
     <div class="divider"></div>

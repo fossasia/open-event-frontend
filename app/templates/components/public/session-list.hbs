@@ -1,11 +1,11 @@
 <div class="ui session-container">
-  {{#if (is-array sessions)}}
-    <h3 class="ui header">{{track}}</h3>
-    {{#each sessions as |session|}}
+  {{#if (is-array this.sessions)}}
+    <h3 class="ui header">{{this.track}}</h3>
+    {{#each this.sessions as |session|}}
       <Public::SessionItem @session={{session}} />
     {{/each}}
   {{else}}
-    {{#each-in sessions as |track trackSession|}}
+    {{#each-in this.sessions as |track trackSession|}}
       <h3 class="ui header">{{track}}</h3>
       {{#each trackSession as |session|}}
         <Public::SessionItem @session={{session}} />

@@ -3,8 +3,8 @@
   <div class="header">{{t 'Manage roles'}}</div>
 </div>
 <div class="content">
-  <button class="ui {{if (eq roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
-  <button class="ui {{if (eq roleType 'pending') 'active'}} button" {{action 'filter' 'pending'}}>{{t 'Invited'}}</button>
+  <button class="ui {{if (eq this.roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
+  <button class="ui {{if (eq this.roleType 'pending') 'active'}} button" {{action 'filter' 'pending'}}>{{t 'Invited'}}</button>
 </div>
 <div class="content x-scrollable">
   <table class="ui very basic unstackable table">
@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each roleInvites as |roleInvite|}}
+      {{#each this.roleInvites as |roleInvite|}}
         <tr>
           <td>{{roleInvite.email}}</td>
           <td>{{roleInvite.roleName}}</td>
@@ -28,7 +28,7 @@
                 @click={{action "openAddUserRoleModal" roleInvite}}>
                 <i class="edit icon"></i>
               </UiPopup>
-              {{#if (eq roleType 'accepted')}}
+              {{#if (eq this.roleType 'accepted')}}
                 <UiPopup
                   @content={{t "Delete"}}
                   @class="ui icon button"
@@ -55,8 +55,8 @@
   </table>
 </div>
 <Modals::AddUserRoleModal
-  @currentInvite={{currentInvite}}
-  @isLoading={{isLoading}}
-  @data={{data}}
-  @isOpen={{isAddUserRoleModalOpen}}
+  @currentInvite={{this.currentInvite}}
+  @isLoading={{this.isLoading}}
+  @data={{this.data}}
+  @isOpen={{this.isAddUserRoleModalOpen}}
   @updateUserRoles={{action "updateUserRoles"}} />
