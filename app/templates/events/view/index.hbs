@@ -1,20 +1,20 @@
 <div class="ui grid stackable">
   <div class="eight wide column">
-    {{events/view/overview/event-setup-checklist data=model}}
+    <Events::View::Overview::EventSetupChecklist @data={{model}} />
   </div>
   <div class="eight wide column">
-    {{events/view/overview/general-info data=model}}
+    <Events::View::Overview::GeneralInfo @data={{model}} />
   </div>
   <div class="eight wide column">
-    {{events/view/overview/manage-roles data=model}}
+    <Events::View::Overview::ManageRoles @data={{model}} />
   </div>
   <div class="eight wide column">
-    {{events/view/overview/event-sponsors data=model.sponsors columns=columns page=page per_page=per_page search=search sort_by=sort_by sort_dir=sort_dir filterOptions=filterOptions}}
+    <Events::View::Overview::EventSponsors @data={{model.sponsors}} @columns={{columns}} @page={{page}} @per_page={{per_page}} @search={{search}} @sort_by={{sort_by}} @sort_dir={{sort_dir}} @filterOptions={{filterOptions}} />
   </div>
   <div class="eight wide column">
-    {{events/view/overview/event-apps}}
+    <Events::View::Overview::EventApps />
   </div>
   <div class="eight wide column">
-    {{events/view/overview/event-tickets data=model}}
+    <Events::View::Overview::EventTickets @data={{model}} />
   </div>
 </div>

@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="sixteen wide column">
-      {{forms/events/view/create-discount-code save='saveCode' data=model.discountCode event=model.event tickets=model.tickets}}
+      <Forms::Events::View::CreateDiscountCode @save="saveCode" @data={{model.discountCode}} @event={{model.event}} @tickets={{model.tickets}} />
     </div>
   </div>
 </div>

@@ -33,9 +33,21 @@
     </div>
   </div>
 </div>
-{{modals/event-transfer-modal isLoading=isLoading isOpen=isEventTransferModalOpen confirmEventName=confirmEventName eventName=eventName openConfirmEventTransferModal=(action 'openConfirmEventTransferModal') transferEvent=(action 'transferEvent' model)}}
-{{modals/confirm-event-transfer-modal currentInvite=currentInvite isLoading=isLoading isOpen=isConfirmEventTransferModalOpen checked=checked transferEvent=(action 'transferEvent')}}
-{{modals/event-delete-modal isLoading=isLoading
-  isOpen=isEventDeleteModalOpen
-  eventName=model.event.name
-  deleteEvent=(action 'deleteEvent')}}
+<Modals::EventTransferModal
+  @isLoading={{isLoading}}
+  @isOpen={{isEventTransferModalOpen}}
+  @confirmEventName={{confirmEventName}}
+  @eventName={{eventName}}
+  @openConfirmEventTransferModal={{action "openConfirmEventTransferModal"}}
+  @transferEvent={{action "transferEvent" model}} />
+<Modals::ConfirmEventTransferModal
+  @currentInvite={{currentInvite}}
+  @isLoading={{isLoading}}
+  @isOpen={{isConfirmEventTransferModalOpen}}
+  @checked={{checked}}
+  @transferEvent={{action "transferEvent"}} />
+<Modals::EventDeleteModal
+  @isLoading={{isLoading}}
+  @isOpen={{isEventDeleteModalOpen}}
+  @eventName={{model.event.name}}
+  @deleteEvent={{action "deleteEvent"}} />

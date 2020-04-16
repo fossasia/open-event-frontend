@@ -3,16 +3,16 @@
     {{t 'Create Session'}}
   </h2>
   <div class="ui container">
-    {{forms/session-speaker-form addNewSpeaker=addNewSpeaker
-                                 fields=model.form
-                                 data=model
-                                 speakers=model.speakers
-                                 event=model.event
-                                 speakersDetails=model.session.speakers
-                                 save=(action 'save')
-                                 includeSession=true
-                                 isSessionSpeaker=true
-                                 isLoading=isLoading
-    }}
+    <Forms::SessionSpeakerForm
+      @addNewSpeaker={{addNewSpeaker}}
+      @fields={{model.form}}
+      @data={{model}}
+      @speakers={{model.speakers}}
+      @event={{model.event}}
+      @speakersDetails={{model.session.speakers}}
+      @save={{action "save"}}
+      @includeSession={{true}}
+      @isSessionSpeaker={{true}}
+      @isLoading={{isLoading}} />
   </div>
 </div>

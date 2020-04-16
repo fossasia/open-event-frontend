@@ -19,7 +19,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/app/templates/account/**/*.hbs'],
+      files: ['**/app/templates/account/**/*.hbs', '**/app/templates/events/**/*.hbs'],
       rules: {
         'no-curly-component-invocation': true,
       }

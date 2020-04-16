@@ -3,7 +3,7 @@
     <div class="ui grid stackable">
       <div class="row">
         <div class="sixteen wide column">
-          {{unverified-user-message}}
+          <UnverifiedUserMessage />
         </div>
       </div>
     </div>
@@ -57,31 +57,31 @@
 
   <div class="row" style="padding-top: 15px">
     <div class="sixteen wide column">
-      {{#tabbed-navigation}}
-        {{#link-to 'events.view.index' class='item'}}
+      <TabbedNavigation>
+        <LinkTo @route="events.view.index" class="item">
           {{t 'Overview'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets" class="item">
           {{t 'Tickets'}}
-        {{/link-to}}
-        {{#link-to 'events.view.scheduler' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.scheduler" class="item">
           {{t 'Scheduler'}}
-        {{/link-to}}
-        {{#link-to 'events.view.sessions' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.sessions" class="item">
           {{t 'Sessions'}}
-        {{/link-to}}
-        {{#link-to 'events.view.speakers' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.speakers" class="item">
           {{t 'Speakers'}}
-        {{/link-to}}
-        {{#link-to 'events.view.export' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.export" class="item">
           {{t 'Export'}}
-        {{/link-to}}
+        </LinkTo>
         {{#if (or authManager.currentUser.isAnAdmin (eq model.owner.email authManager.currentUser.email))}}
-          {{#link-to 'events.view.settings' class='item'}}
+          <LinkTo @route="events.view.settings" class="item">
             {{t 'Settings'}}
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
-      {{/tabbed-navigation}}
+      </TabbedNavigation>
     </div>
   </div>
 

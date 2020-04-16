@@ -3,7 +3,15 @@
     {{t 'Create a Speaker'}}
   </h2>
   <div class="ui container">
-    {{forms/session-speaker-form fields=model.form data=model event=model.event sessions=model.sessions sessionDetails=sessionDetails save=(action 'save' sessionDetails)
-                                 includeSpeaker=true isSessionSpeaker=true isLoading=isLoading}}
+    <Forms::SessionSpeakerForm
+      @fields={{model.form}}
+      @data={{model}}
+      @event={{model.event}}
+      @sessions={{model.sessions}}
+      @sessionDetails={{sessionDetails}}
+      @save={{action "save" sessionDetails}}
+      @includeSpeaker={{true}}
+      @isSessionSpeaker={{true}}
+      @isLoading={{isLoading}} />
   </div>
 </div>

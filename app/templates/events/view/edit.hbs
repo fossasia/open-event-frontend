@@ -2,7 +2,7 @@
   <h2 class="weight-300">{{t 'Editing'}} {{model.event.name}}</h2>
   <div class="ui one column centered stacked grid event wizard">
     <div class="column mobile hidden">
-      {{widgets/steps-indicator steps=model.steps autoSteps=true enableAll=true}}
+      <Widgets::StepsIndicator @steps={{model.steps}} @autoSteps={{true}} @enableAll={{true}} />
     </div>
     <div class="column">
       {{outlet}}
