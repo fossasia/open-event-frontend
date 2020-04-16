@@ -1,43 +1,86 @@
 <form class="ui form" {{action 'submit' data on='submit'}}>
   <div class="field">
     <label class="required">{{t 'Discount Code'}}</label>
-    <Input @type="text" @name="discount_code" @value={{data.code}} />
+    <Input
+      @type="text"
+      @name="discount_code"
+      @value={{data.code}} />
   </div>
   <div class="field">
     <label class="required">{{t 'Enter Discount'}}</label>
-    <UiRadio @label={{amountLabel}} @name="discount_type" @value="amount" @current={{data.type}} @onChange={{action (mut data.type)}} />
+    <UiRadio
+      @label={{amountLabel}}
+      @name="discount_type"
+      @value="amount"
+      @current={{data.type}}
+      @onChange={{action (mut data.type)}} />
   </div>
   {{#if (not-eq data.type 'percent')}}
     <div class="field">
-      <Input @type="number" @name="discount_amount" @min={{1}} @step={{0.1}} @value={{data.value}} />
+      <Input
+        @type="number"
+        @name="discount_amount"
+        @min={{1}}
+        @step={{0.1}}
+        @value={{data.value}} />
     </div>
   {{/if}}
   <div class="field">
-    <UiRadio @label={{t "Percent (%)"}} @name="discount_type" @value="percent" @current={{data.type}} @onChange={{action (mut data.type)}} />
+    <UiRadio
+      @label={{t "Percent (%)"}}
+      @name="discount_type"
+      @value="percent"
+      @current={{data.type}}
+      @onChange={{action (mut data.type)}} />
   </div>
   {{#if (eq data.type 'percent')}}
     <div class="field">
-      <Input @type="number" @name="discount_percent" @min={{1}} @max={{100}} @step={{0.1}} @value={{data.value}} />
+      <Input
+        @type="number"
+        @name="discount_percent"
+        @min={{1}}
+        @max={{100}}
+        @step={{0.1}}
+        @value={{data.value}} />
     </div>
   {{/if}}
   <div class="field">
     <label class="required">{{t 'Number of Discount Tickets'}}</label>
-    <Input @name="number_of_discount_tickets" @type="number" @value={{data.ticketsNumber}} @min="0" />
+    <Input
+      @name="number_of_discount_tickets"
+      @type="number"
+      @value={{data.ticketsNumber}}
+      @min="0" />
   </div>
   <div class="grouped inline fields">
     <label class="required">{{t 'Status'}}</label>
     <div class="field">
-      <UiRadio @name="status" @label={{t "Active"}} @current={{data.isActive}} @value={{true}} @onChange={{action (mut data.isActive)}} />
+      <UiRadio
+        @name="status"
+        @label={{t "Active"}}
+        @current={{data.isActive}}
+        @value={{true}}
+        @onChange={{action (mut data.isActive)}} />
     </div>
     <div class="field">
-      <UiRadio @name="status" @label={{t "Inactive"}} @value={{false}} @current={{data.isActive}} @onChange={{action (mut data.isActive)}} />
+      <UiRadio
+        @name="status"
+        @label={{t "Inactive"}}
+        @value={{false}}
+        @current={{data.isActive}}
+        @onChange={{action (mut data.isActive)}} />
     </div>
   </div>
   {{#if eventTickets}}
     <div class="inline field">
       <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
       <div class="ui hidden divider"></div>
-      <UiCheckbox @label={{t "Select all Ticket types"}} @name="all_ticket_types" @value="tickets" @checked={{allTicketTypesChecked}} @onChange={{action "toggleAllSelection"}} />
+      <UiCheckbox
+        @label={{t "Select all Ticket types"}}
+        @name="all_ticket_types"
+        @value="tickets"
+        @checked={{allTicketTypesChecked}}
+        @onChange={{action "toggleAllSelection"}} />
     </div>
   {{else}}
     <div class="inline field">
@@ -46,38 +89,70 @@
   {{/if}}
   <div class="ui list field">
     {{#each eventTickets as |ticket|}}
-      <UiCheckbox @name="ticket_name" @label={{ticket.name}} @checked={{ticket.isChecked}} @onChange={{action "updateTicketsSelection" ticket}} />
+      <UiCheckbox
+        @name="ticket_name"
+        @label={{ticket.name}}
+        @checked={{ticket.isChecked}}
+        @onChange={{action "updateTicketsSelection" ticket}} />
       <br>
     {{/each}}
   </div>
   <div>
     <div class="inline field">
-      <UiCheckbox @label={{t "Show more options"}} @class="toggle" @checked={{showMoreOptions}} @onChange={{action (mut showMoreOptions)}} />
+      <UiCheckbox
+        @label={{t "Show more options"}}
+        @class="toggle"
+        @checked={{showMoreOptions}}
+        @onChange={{action (mut showMoreOptions)}} />
     </div>
     {{#if showMoreOptions}}
       <div>{{t 'Set the min and max quantity allowed to purchase per order (Optional)'}}</div>
       <div class="{{unless device.isMobile 'fields'}}">
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Min'}}</label>
-          <Input @type="number" @name="min_order" @min="0" @value={{data.minQuantity}} />
+          <Input
+            @type="number"
+            @name="min_order"
+            @min="0"
+            @value={{data.minQuantity}} />
         </div>
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Max'}}</label>
-          <Input @type="number" @name="max_order" @min="0" @value={{data.maxQuantity}} />
+          <Input
+            @type="number"
+            @name="max_order"
+            @min="0"
+            @value={{data.maxQuantity}} />
         </div>
       </div>
       <div class="fields">
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Valid from'}}</label>
-          <Widgets::Forms::DatePicker @name="start_date" @value={{data.validFromDate}} @rangePosition="start" @onChange={{action "onChange"}} />
+          <Widgets::Forms::DatePicker
+            @name="start_date"
+            @value={{data.validFromDate}}
+            @rangePosition="start"
+            @onChange={{action "onChange"}} />
           <div class="ui hidden divider"></div>
-          <Widgets::Forms::TimePicker @name="start_time" @value={{data.validFromTime}} @onChange={{action "onChange"}} />
+          <Widgets::Forms::TimePicker
+            @name="start_time"
+            @value={{data.validFromTime}}
+            @onChange={{action "onChange"}} />
         </div>
         <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Expires on'}}</label>
-          <Widgets::Forms::DatePicker @type="text" @name="end_date" @value={{data.validTillDate}} @rangePosition="end" @onChange={{action "onChange"}} />
+          <Widgets::Forms::DatePicker
+            @type="text"
+            @name="end_date"
+            @value={{data.validTillDate}}
+            @rangePosition="end"
+            @onChange={{action "onChange"}} />
           <div class="ui hidden divider"></div>
-          <Widgets::Forms::TimePicker @type="text" @name="end_time" @value={{data.validTillTime}} @onChange={{action "onChange"}} />
+          <Widgets::Forms::TimePicker
+            @type="text"
+            @name="end_time"
+            @value={{data.validTillTime}}
+            @onChange={{action "onChange"}} />
         </div>
       </div>
     {{/if}}
@@ -85,7 +160,10 @@
       <label>{{t 'Discount Link'}}</label>
       <div class="ui action input fluid">
         <input type="text" value="{{discountLink}}" readonly>
-        <CopyButton @class="ui black right labeled icon copy button" @clipboardText={{discountLink}} @success={{action "copiedText"}}>
+        <CopyButton
+          @class="ui black right labeled icon copy button"
+          @clipboardText={{discountLink}}
+          @success={{action "copiedText"}}>
           <i class="copy icon"></i>
           {{t 'Copy'}}
         </CopyButton>

@@ -18,7 +18,10 @@
               <div class="ui small">
                 {{ticket.name}}
                 {{#if (eq ticket.type 'donation')}}
-                  <UiPopup @tagName="i" @class="info icon" @content={{concat "Donation value should be between " ticket.minPrice " " eventCurrency " and " ticket.maxPrice " " eventCurrency}} />
+                  <UiPopup
+                    @tagName="i"
+                    @class="info icon"
+                    @content={{concat "Donation value should be between " ticket.minPrice " " eventCurrency " and " ticket.maxPrice " " eventCurrency}} />
                 {{/if}}
               </div>
               {{#if ticket.isDescriptionVisible}}
@@ -40,7 +43,8 @@
                       </small>
                     {{else}}
                       <small class="ui gray-text small">
-                        + {{eventCurrency}} {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
+                        + {{eventCurrency}}
+                        {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
                       </small>
                     {{/if}}
                     <div>
@@ -53,7 +57,12 @@
               <td id="{{ticket.id}}_price">
                 {{#if (eq ticket.type 'donation') }}
                   <div class="field">
-                    <Input @type="number" @name={{ticket.id}} placeholder={{t "Enter Donation"}} @min={{ticket.minPrice}} @max={{ticket.maxPrice}} @value={{ticket.price}} /><br>
+                    <Input
+                      @type="number"
+                      @name={{ticket.id}} placeholder={{t "Enter Donation"}}
+                      @min={{ticket.minPrice}}
+                      @max={{ticket.maxPrice}}
+                      @value={{ticket.price}} /><br>
                   </div>
                 {{else}}
                   {{eventCurrency}} {{format-number ticket.price}}
@@ -76,8 +85,14 @@
             {{/if}}
             <td>
               <div class="field">
-                <UiDropdown @class="compact selection" @forceSelection={{false}} @onChange={{action "updateOrder" ticket}} as |execute mapper|>
-                  <Input @type="hidden" @id={{concat ticket.id "_quantity"}} @value={{ticket.orderQuantity}} />
+                <UiDropdown
+                  @class="compact selection"
+                  @forceSelection={{false}}
+                  @onChange={{action "updateOrder" ticket}} as |execute mapper|>
+                  <Input
+                    @type="hidden"
+                    @id={{concat ticket.id "_quantity"}}
+                    @value={{ticket.orderQuantity}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">0</div>
                   <div class="menu">
@@ -91,7 +106,8 @@
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
               {{#if taxInfo}}
-                {{eventCurrency}} {{format-number (mult (sub ticket.ticketPriceWithTax ticket.discount) ticket.orderQuantity)}}
+                {{eventCurrency}}
+                {{format-number (mult (sub ticket.ticketPriceWithTax ticket.discount) ticket.orderQuantity)}}
               {{else}}
                 {{eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
               {{/if}}
@@ -120,9 +136,16 @@
         <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
           <div class="field">
             <div class="ui action fluid input">
-              <Input @type="text" @name="promotional_code" @value={{promotionalCode}} placeholder={{t "Promotional Code"}} @readonly={{promotionalCodeApplied}} @key-up={{action "handleKeyPress"}} @id="promotionalCode" />
+              <Input
+                @type="text"
+                @name="promotional_code"
+                @value={{promotionalCode}} placeholder={{t "Promotional Code"}}
+                @readonly={{promotionalCodeApplied}}
+                @key-up={{action "handleKeyPress"}}
+                @id="promotionalCode" />
               {{#unless promotionalCodeApplied}}
-                <div role="button" class="ui icon {{if promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
+                <div role="button" class="ui icon {{if promotionalCode '' 'disabled'}} button"
+                  {{action 'applyPromotionalCode'}}>
                   <i class="checkmark icon"></i>
                 </div>
               {{/unless}}
@@ -156,7 +179,8 @@
         <i class="colored visa link icon"></i>
       </div>
       <div class="ui less padding three wide computer four wide tablet column right aligned floated">
-        <button id="total" class="ui primary small button less right margin" disabled={{shouldDisableOrderButton}} {{action placeOrder}}>
+        <button id="total" class="ui primary small button less right margin" disabled={{shouldDisableOrderButton}}
+          {{action placeOrder}}>
           {{t 'Order Now'}}
         </button>
       </div>
@@ -164,4 +188,10 @@
   </div>
 </form>
 
-<Modals::LoginSignupModal @isOpen={{isLoginModalOpen}} @isLoading={{isLoading}} @createNewUserViaEmail={{createNewUserViaEmail}} @loginExistingUser={{loginExistingUser}} @userExists={{userExists}} @errorMessage={{errorMessage}} />
+<Modals::LoginSignupModal
+  @isOpen={{isLoginModalOpen}}
+  @isLoading={{isLoading}}
+  @createNewUserViaEmail={{createNewUserViaEmail}}
+  @loginExistingUser={{loginExistingUser}}
+  @userExists={{userExists}}
+  @errorMessage={{errorMessage}} />

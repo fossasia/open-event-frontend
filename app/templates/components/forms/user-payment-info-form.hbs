@@ -1,39 +1,67 @@
-<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}> 
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
   <h3 class="ui header">
     {{t 'Payment Information'}}
   </h3>
   <div class="field">
     <label class="required" for="contactName">{{t 'Contact Name'}}</label>
-    <Input @type="text" @id="contactName" @value={{userBillingInfo.billingContactName}} />
+    <Input
+      @type="text"
+      @id="contactName"
+      @value={{userBillingInfo.billingContactName}} />
   </div>
   <div class="field">
     <label class="required" for="phone">{{t 'Phone'}}</label>
-    <Input @type="text" @id="phone" @value={{userBillingInfo.billingPhone}} />
+    <Input
+      @type="text"
+      @id="phone"
+      @value={{userBillingInfo.billingPhone}} />
   </div>
   <div class="field">
     <label class="required" for="company">{{t 'Company'}}</label>
-    <Input @type="text" @id="company" @value={{userBillingInfo.company}} />
+    <Input
+      @type="text"
+      @id="company"
+      @value={{userBillingInfo.company}} />
   </div>
   <div class="field">
     <label for="taxID">{{t 'Tax ID or Business ID'}}</label>
-    <Input @type="text" @id="taxID" @value={{userBillingInfo.billingTaxInfo}} />
+    <Input
+      @type="text"
+      @id="taxID"
+      @value={{userBillingInfo.billingTaxInfo}} />
   </div>
   <div class="field">
     <label class="required" for="address">{{t 'Address'}}</label>
-    <Textarea @rows="2" @id="address" @value={{userBillingInfo.billingAddress}} />
-  </div>
+    <Textarea
+      @rows="2"
+      @id="address"
+      @value={{userBillingInfo.billingAddress}} />
+    </div>
   <div class="field">
     <label class="required" for="city">{{t 'City'}}</label>
-    <Input @type="text" @id="city" @value={{userBillingInfo.billingCity}} />
+    <Input
+@type="text"
+@id="city"
+@value={{userBillingInfo.billingCity}} />
   </div>
   <div class="field">
     <label for="state">{{t 'State'}}</label>
-    <Input @type="text" @id="state" @value={{userBillingInfo.billingState}} />
+    <Input
+@type="text"
+@id="state"
+@value={{userBillingInfo.billingState}} />
   </div>
   <div class="field">
     <label class="required">{{t 'Country'}}</label>
-    <UiDropdown @class="search selection" @selected={{userBillingInfo.billingCountry}} @forceSelection={{false}} @fullTextSearch={{true}}>
-      <Input @type="hidden" @id="country" @value={{userBillingInfo.billingCountry}} />
+    <UiDropdown
+@class="search selection"
+@selected={{userBillingInfo.billingCountry}}
+@forceSelection={{false}}
+@fullTextSearch={{true}}>
+      <Input
+@type="hidden"
+@id="country"
+@value={{userBillingInfo.billingCountry}} />
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select country'}}</div>
       <div class="menu">
@@ -48,11 +76,17 @@
   </div>
   <div class="field">
     <label class="required" for="zip">{{t 'Zip Code'}}</label>
-    <Input @type="text" @id="zip" @value={{userBillingInfo.billingZipCode}} />
+    <Input
+@type="text"
+@id="zip"
+@value={{userBillingInfo.billingZipCode}} />
   </div>
   <div class="field">
     <label for="additionalInfo">{{t 'Additional Information'}}</label>
-    <Textarea @rows="4" @id="additionalInfo" @value={{userBillingInfo.billingAdditionalInfo}} />
+    <Textarea
+@rows="4"
+@id="additionalInfo"
+@value={{userBillingInfo.billingAdditionalInfo}} />
   </div>
 
   <button type="submit" class="ui teal submit button">

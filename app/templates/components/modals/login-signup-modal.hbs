@@ -6,10 +6,14 @@
   <div class="content">
     <h4 class="ui header">{{t 'Please Login or Signup before you can submit a proposal.'}}</h4>
     <div>
-      <LinkTo @route="login" class="ui teal button" @invokeAction={{action "toggleView"}}>
+      <LinkTo
+        @route="login" class="ui teal button"
+        @invokeAction={{action "toggleView"}}>
         {{t 'Login'}}
       </LinkTo>
-      <LinkTo @route="register" class="ui blue button" @invokeAction={{action "toggleView"}}>
+      <LinkTo
+        @route="register" class="ui blue button"
+        @invokeAction={{action "toggleView"}}>
         {{t 'Signup'}}
       </LinkTo>
     </div>
@@ -18,10 +22,13 @@
   <i class="black close icon"></i>
   <div class="ui basic compact segment">
     <div class="content">
-      <Forms::Orders::GuestOrderForm @isLoading={{isLoading}} @errorMessage={{errorMessage}} @userExists={{userExists}} @loginExistingUser={{loginExistingUser}} @createNewUserViaEmail={{createNewUserViaEmail}} />
+      <Forms::Orders::GuestOrderForm
+        @isLoading={{isLoading}}
+        @errorMessage={{errorMessage}}
+        @userExists={{userExists}}
+        @loginExistingUser={{loginExistingUser}}
+        @createNewUserViaEmail={{createNewUserViaEmail}} />
 
     </div>
   </div>
 {{/if}}
-
-

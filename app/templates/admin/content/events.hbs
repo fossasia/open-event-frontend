@@ -26,10 +26,16 @@
                     </div>
                     <div class="eight wide column right aligned">
                       <div class="ui horizontal compact basic buttons">
-                        <UiPopup @content={{t "Edit"}} @class="ui icon button" @click={{action "openModalFor" eventType}}>
+                        <UiPopup
+                          @content={{t "Edit"}}
+                          @class="ui icon button"
+                          @click={{action "openModalFor" eventType}}>
                           <i class="edit icon"></i>
                         </UiPopup>
-                        <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action (confirm (t "Are you sure you would like to delete this event type?") (action "deleteEventProperty" eventType))}}>
+                        <UiPopup
+                          @content={{t "Delete"}}
+                          @class="ui icon button"
+                          @click={{action (confirm (t "Are you sure you would like to delete this event type?") (action "deleteEventProperty" eventType))}}>
                           <i class="trash outline icon"></i>
                         </UiPopup>
                       </div>
@@ -68,10 +74,16 @@
                     </div>
                     <div class="eight wide column right aligned">
                       <div class="ui horizontal compact basic buttons">
-                        <UiPopup @content={{t "Edit"}} @class="ui icon button" @click={{action "openModalFor" eventTopic}}>
+                        <UiPopup
+                          @content={{t "Edit"}}
+                          @class="ui icon button"
+                          @click={{action "openModalFor" eventTopic}}>
                           <i class="edit icon"></i>
                         </UiPopup>
-                        <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action (confirm (t "Are you sure you would like to delete this event topic?") (action "deleteEventProperty" eventTopic))}}>
+                        <UiPopup
+                          @content={{t "Delete"}}
+                          @class="ui icon button"
+                          @click={{action (confirm (t "Are you sure you would like to delete this event topic?") (action "deleteEventProperty" eventTopic))}}>
                           <i class="trash outline icon"></i>
                         </UiPopup>
                       </div>
@@ -101,7 +113,9 @@
         <div class="ui divider"></div>
         <div class="field">
           <label>{{t 'Event Topic'}}</label>
-          <UiDropdown @class="search selection" @onChange={{action "loadSubTopics"}} as |execute mapper|>
+          <UiDropdown
+            @class="search selection"
+            @onChange={{action "loadSubTopics"}} as |execute mapper|>
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select Event Topic'}}</div>
             <div class="menu">
@@ -123,10 +137,16 @@
                       </div>
                       <div class="eight wide column right aligned">
                         <div class="ui horizontal compact basic buttons">
-                          <UiPopup @content={{t "Edit"}} @class="ui icon button" @click={{action "openModalFor" subTopic}}>
+                          <UiPopup
+                            @content={{t "Edit"}}
+                            @class="ui icon button"
+                            @click={{action "openModalFor" subTopic}}>
                             <i class="edit icon"></i>
                           </UiPopup>
-                          <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action (confirm (t "Are you sure you would like to delete this event sub topic?") (action "deleteEventProperty" subTopic))}}>
+                          <UiPopup
+                            @content={{t "Delete"}}
+                            @class="ui icon button"
+                            @click={{action (confirm (t "Are you sure you would like to delete this event sub topic?") (action "deleteEventProperty" subTopic))}}>
                             <i class="trash outline icon"></i>
                           </UiPopup>
                         </div>
@@ -143,8 +163,19 @@
   </div>
 </div>
 
-<Modals::Admin::Content::NewEventTypeModal @isOpen={{eventType.openModal}} @name={{eventType.name}} @addEventProperty={{action "addEventProperty" eventType}} />
+<Modals::Admin::Content::NewEventTypeModal
+  @isOpen={{eventType.openModal}}
+  @name={{eventType.name}}
+  @addEventProperty={{action "addEventProperty" eventType}} />
 
-<Modals::Admin::Content::NewEventTopicModal @isOpen={{eventTopic.openModal}} @name={{eventTopic.name}} @addEventProperty={{action "addEventProperty" eventTopic}} />
+<Modals::Admin::Content::NewEventTopicModal
+  @isOpen={{eventTopic.openModal}}
+  @name={{eventTopic.name}}
+  @addEventProperty={{action "addEventProperty" eventTopic}} />
 
-<Modals::Admin::Content::NewEventSubTopicModal @isOpen={{eventSubTopic.openModal}} @model={{model}} @eventSubTopic={{eventSubTopic}} @eventTopic={{currentTopicSelected}} @addEventProperty={{action "addEventProperty" eventSubTopic}} />
+<Modals::Admin::Content::NewEventSubTopicModal
+  @isOpen={{eventSubTopic.openModal}}
+  @model={{model}}
+  @eventSubTopic={{eventSubTopic}}
+  @eventTopic={{currentTopicSelected}}
+  @addEventProperty={{action "addEventProperty" eventSubTopic}} />

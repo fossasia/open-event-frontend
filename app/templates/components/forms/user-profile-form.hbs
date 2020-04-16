@@ -2,7 +2,17 @@
   <div class="ui stackable grid">
     <div class="three wide column">
       <div class="ui left floated eight wide column">
-        <Widgets::Forms::ImageUpload @user={{user}} @imageUrl={{user.avatarUrl}} @needsCropper={{true}} @label={{t "User Image"}} @id="user_image" @icon="photo" @hint={{t "Select User Image"}} @maxSizeInKb={{10000}} @aspectRatio={{array 1 1}} @helpText={{t "We recommend using at least a 1000x1000px (1:1 ratio) image"}} />
+        <Widgets::Forms::ImageUpload
+          @user={{user}}
+          @imageUrl={{user.avatarUrl}}
+          @needsCropper={{true}}
+          @label={{t "User Image"}}
+          @id="user_image"
+          @icon="photo"
+          @hint={{t "Select User Image"}}
+          @maxSizeInKb={{10000}}
+          @aspectRatio={{array 1 1}}
+          @helpText={{t "We recommend using at least a 1000x1000px (1:1 ratio) image"}} />
       </div>
       <div class="ui hidden divider"></div>
       <div class="field">
@@ -15,23 +25,37 @@
     <div class="thirteen wide column">
       <div class="field">
         <label class="required" for="name">{{t 'Name'}}</label>
-        <Input @type="text" @id="name" @value={{user.firstName}} />
+        <Input
+          @type="text"
+          @id="name"
+          @value={{user.firstName}} />
       </div>
       <div class="field">
         <label class="required" for="last_name">{{t 'Family Name'}}</label>
-        <Input @type="text" @id="last_name" @value={{user.lastName}} />
+        <Input
+          @type="text"
+          @id="last_name"
+          @value={{user.lastName}} />
       </div>
       <div class="field">
         <label for="details">{{t 'Bio'}}</label>
-        <Widgets::Forms::RichTextEditor @id="details" @value={{user.details}} />
+        <Widgets::Forms::RichTextEditor
+          @id="details"
+          @value={{user.details}} />
       </div>
       <div class="field">
         <label class="required">{{t 'Email'}}</label>
-        <Input @type="email" @name="email" @value={{user.email}} />
+        <Input
+          @type="email"
+          @name="email"
+          @value={{user.email}} />
       </div>
       <div class="field">
         <label class="details">{{t 'Phone'}}</label>
-        <Input @type="text" @name="phone" @value={{user.contact}} />
+        <Input
+          @type="text"
+          @name="phone"
+          @value={{user.contact}} />
       </div>
       <button type="submit" class="ui teal submit button update-changes">
         {{t 'Update Changes'}}

@@ -6,7 +6,13 @@
     <div class="ui container">
       {{#each model.speaker as |speaker|}}
         {{#if speaker.id}}
-          <Forms::SessionSpeakerForm @fields={{model.forms}} @data={{model}} @isLoading={{isLoading}} @save={{action "save" speaker}} @isSession={{true}} @includeSession={{true}} />
+          <Forms::SessionSpeakerForm
+            @fields={{model.forms}}
+            @data={{model}}
+            @isLoading={{isLoading}}
+            @save={{action "save" speaker}}
+            @isSession={{true}}
+            @includeSession={{true}} />
         {{/if}}
       {{/each}}
     </div>

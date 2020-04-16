@@ -1,15 +1,23 @@
 <div class="ui grid">
   <div class="ui less bottom padding row">
     <div class="left aligned eight wide column">
-      <Tables::Utilities::PageSizeInput @pageSize={{pageSize}} />
+      <Tables::Utilities::PageSizeInput
+        @pageSize={{pageSize}} />
     </div>
     <div class="eight wide right aligned column">
-      <Tables::Utilities::SearchBox @searchQuery={{searchQuery}} @filterOptions={{filterOptions}} />
+      <Tables::Utilities::SearchBox
+        @searchQuery={{searchQuery}}
+        @filterOptions={{filterOptions}} />
     </div>
   </div>
   <div class="row">
     <EmberTable as |t|>
-      <t.head @sortFunction={{null}} @columns={{columns}} @enableReorder={{true}} @sorts={{sorts}} @onUpdateSorts={{action (mut sorts)}} as |h|>
+      <t.head
+        @sortFunction={{null}}
+        @columns={{columns}}
+        @enableReorder={{true}}
+        @sorts={{sorts}}
+        @onUpdateSorts={{action (mut sorts)}} as |h|>
         <h.row as |r|>
           <r.cell as |column|>
             {{#if column.headerComponent}}
@@ -24,10 +32,11 @@
             {{else}}
               {{column.name}}
             {{/if}}
-             </r.cell>
-            </h.row>
-         </t.head>
-      <t.body @rows={{rows}} as |b|>
+          </r.cell>
+        </h.row>
+      </t.head>
+      <t.body
+        @rows={{rows}} as |b|>
         <b.row as |r|>
           <r.cell as |cell column row|>
             {{#if column.cellComponent}}
@@ -41,13 +50,16 @@
             {{else}}
               {{cell}}
             {{/if}}
-             </r.cell>
-            </b.row>
-         </t.body>
+          </r.cell>
+        </b.row>
+      </t.body>
     </EmberTable>
   </div>
 
   <div class="row">
-    <Tables::Utilities::Pagination @currentPage={{currentPage}} @pageSize={{pageSize}} @metaData={{metaData}} />
+    <Tables::Utilities::Pagination
+      @currentPage={{currentPage}}
+      @pageSize={{pageSize}}
+      @metaData={{metaData}} />
   </div>
 </div>

@@ -1,4 +1,5 @@
-<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
+<form class="ui form {{if isLoading 'loading'}}" autocomplete="off"
+  {{action 'move' 'forwards' on='submit' preventDefault=true}}>
 
   <div class="ui centered grid">
     <div class="column">
@@ -6,7 +7,9 @@
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
-              <Input @type="checkbox" @checked={{data.event.isSponsorsEnabled}} />
+              <Input
+                @type="checkbox"
+                @checked={{data.event.isSponsorsEnabled}} />
               <label class="weight-300" style="font-size: large">
                 {{if data.event.isSponsorsEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sponsors'}}
@@ -33,57 +36,81 @@
       <div class="fields">
         <div class="five wide field">
           <label class="required">{{t 'Name'}}</label>
-          <Input @type="text" @value={{sponsor.name}} @name="name" />
+          <Input
+            @type="text"
+            @value={{sponsor.name}}
+            @name="name" />
         </div>
         <div class="two wide field">
           <label>{{t 'Level'}}</label>
-          <Input @type="number" @value={{sponsor.level}} @name="level" @min={{0}} />
+          <Input
+            @type="number"
+            @value={{sponsor.level}}
+            @name="level"
+            @min={{0}} />
         </div>
         <div class="three wide field">
           <label>{{t 'Type'}}</label>
-          <Input @type="text" @value={{sponsor.type}} @name="type" />
+          <Input
+            @type="text"
+            @value={{sponsor.type}}
+            @name="type" />
         </div>
         <div class="six wide field">
           <label>{{t 'URL'}}</label>
-          <Widgets::Forms::LinkInput @segmentedLink={{sponsor.segmentedLink}} @name="url" />
+          <Widgets::Forms::LinkInput
+            @segmentedLink={{sponsor.segmentedLink}}
+            @name="url" />
         </div>
       </div>
       <div class="fields">
         <div class="five wide computer eight wide tablet field">
           <label>{{t 'Description'}}</label>
-          <Widgets::Forms::RichTextEditor @value={{sponsor.description}} @name="description" />
+          <Widgets::Forms::RichTextEditor
+            @value={{sponsor.description}}
+            @name="description" />
         </div>
         <div class="sponsors-step eight wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
-          <Widgets::Forms::ImageUpload @label={{t "Logo"}} @imageUrl={{sponsor.logoUrl}} @icon="image" @hint={{t "Select Logo"}} @maxSizeInKb={{1000}} />
+          <Widgets::Forms::ImageUpload
+            @label={{t "Logo"}}
+            @imageUrl={{sponsor.logoUrl}}
+            @icon="image"
+            @hint={{t "Select Logo"}}
+            @maxSizeInKb={{1000}} />
         </div>
       </div>
       {{#if (not-eq (inc index) data.event.sponsors.length)}}
         <div class="ui section divider"></div>
       {{/if}}
     {{/each}}
-    <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{t (if sponsors.length 'Add another sponsor' 'Add sponsor')}}</button>
+    <button type="button" class="ui primary {{if device.isMobile 'small'}} button"
+      {{action 'addSponsor'}}>{{t (if sponsors.length 'Add another sponsor' 'Add sponsor')}}</button>
     <div class="spacer-50"></div>
   {{else}}
     <div class="spacer-50"></div>
   {{/if}}
 
   <div class="{{if device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
-    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button"
+      {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
     </button>
-    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
+    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button"
+      {{action 'move' 'forwards'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
     {{#if (not-eq data.event.state 'published')}}
-      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button"
+        {{action 'saveDraft'}}>
         {{t 'Save draft'}}
         <i class="save icon"></i>
       </button>
     {{/if}}
     {{#if data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button"
+        {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

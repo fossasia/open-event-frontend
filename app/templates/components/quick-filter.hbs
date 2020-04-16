@@ -1,11 +1,24 @@
 <div class="ui {{unless device.isMobile 'action'}} input fluid">
-  <Input @type="text" @key-up={{action "handleKeyPress"}} placeholder={{t "Search for events"}} @value={{dummyName}} />
+  <Input
+    @type="text"
+    @key-up={{action "handleKeyPress"}} placeholder={{t "Search for events"}}
+    @value={{dummyName}} />
   {{#unless device.isMobile }}
     <div class="ui input">
-      <Widgets::Forms::PlacesAutocomplete @name="location" @value={{dummyLocation}} @type="text" @placeholder={{t "Enter Location"}} />
+      <Widgets::Forms::PlacesAutocomplete
+        @name="location"
+        @value={{dummyLocation}}
+        @type="text"
+        @placeholder={{t "Enter Location"}} />
     </div>
-    <UiDropdown @class="search selection" @selected={{filterDate}} @forceSelection={{false}}>
-      <Input @type="hidden" @id="filter_date" @value={{filterDate}} />
+    <UiDropdown
+      @class="search selection"
+      @selected={{filterDate}}
+      @forceSelection={{false}}>
+      <Input
+        @type="hidden"
+        @id="filter_date"
+        @value={{filterDate}} />
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'All Dates'}}</div>
       <div class="menu">
@@ -19,12 +32,14 @@
       </div>
     </UiDropdown>
     <button class="ui blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
-    <button class="ui red button medium {{if disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
+    <button class="ui red button medium {{if disableClear 'disabled'}}" type="button"
+      {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
   {{/unless}}
 </div>
 {{#if device.isMobile}}
   <div class="two ui buttons">
     <button class="ui blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
-    <button class="ui red button medium {{if disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
+    <button class="ui red button medium {{if disableClear 'disabled'}}" type="button"
+      {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
   </div>
 {{/if}}

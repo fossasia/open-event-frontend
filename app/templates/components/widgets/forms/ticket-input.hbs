@@ -1,21 +1,36 @@
 <div class="five column row">
   <div class="five wide column">
     <div class="field">
-      <Input @type="text" @name="ticket_name" placeholder={{t "Ticket Name"}} @value={{ticket.name}} />
+      <Input
+        @type="text"
+        @name="ticket_name" placeholder={{t "Ticket Name"}}
+        @value={{ticket.name}} />
     </div>
   </div>
   <div class="three wide column">
     {{#if (eq ticket.type 'paid') }}
       <div class="field">
-        <Input @type="number" @name="ticket_price" placeholder={{t "Price"}} @value={{ticket.price}} @min={{1}} />
+        <Input
+          @type="number"
+          @name="ticket_price" placeholder={{t "Price"}}
+          @value={{ticket.price}}
+          @min={{1}} />
       </div>
     {{else if (eq ticket.type 'donation')}}
       <div class="two fields">
-        <div class="field {{unless minMaxValid 'error'}}" >
-          <Input @type="number" @name="min_price" placeholder={{t "Min"}} @value={{ticket.minPrice}} @min={{1}} />
+        <div class="field {{unless minMaxValid 'error'}}">
+          <Input
+            @type="number"
+            @name="min_price" placeholder={{t "Min"}}
+            @value={{ticket.minPrice}}
+            @min={{1}} />
         </div>
-        <div class="field {{unless minMaxValid 'error'}}" >
-          <Input @type="number" @name="max_price" placeholder={{t "Max"}} @value={{ticket.maxPrice}} @min={{1}} />
+        <div class="field {{unless minMaxValid 'error'}}">
+          <Input
+            @type="number"
+            @name="max_price" placeholder={{t "Max"}}
+            @value={{ticket.maxPrice}}
+            @min={{1}} />
         </div>
       </div>
     {{else if (eq ticket.type 'free')}}
@@ -28,21 +43,29 @@
   </div>
   <div class="four wide column">
     <div class="field">
-      <Input @type="number" @name="ticket_quantity" placeholder={{t "Quantity"}} @value={{ticket.quantity}} @min={{1}} />
+      <Input
+        @type="number"
+        @name="ticket_quantity" placeholder={{t "Quantity"}}
+        @value={{ticket.quantity}}
+        @min={{1}} />
     </div>
   </div>
   <div class="column {{unless device.isLargeMonitor 'less right padding'}}">
     <div class="field">
       <div class="ui icon buttons">
-        <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i class="setting icon"></i></button>
-        <button type="button" class="ui button" {{action removeTicket}} data-content="Delete"><i class="trash icon"></i></button>
+        <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i
+            class="setting icon"></i></button>
+        <button type="button" class="ui button" {{action removeTicket}} data-content="Delete"><i
+            class="trash icon"></i></button>
       </div>
       <div class="ui icon buttons {{if device.isLargeMonitor 'right floated'}}">
         {{#if canMoveUp}}
-          <button type="button" class="ui button" {{action moveTicketUp}} data-content="Move ticket up"><i class="up arrow icon"></i></button>
+          <button type="button" class="ui button" {{action moveTicketUp}} data-content="Move ticket up"><i
+              class="up arrow icon"></i></button>
         {{/if}}
         {{#if canMoveDown}}
-          <button type="button" class="ui button" {{action moveTicketDown}} data-content="Move ticket down"><i class="down arrow icon"></i></button>
+          <button type="button" class="ui button" {{action moveTicketDown}} data-content="Move ticket down"><i
+              class="down arrow icon"></i></button>
         {{/if}}
       </div>
     </div>
@@ -54,17 +77,28 @@
       <h4>Settings</h4>
       <div class="field">
         <label for="ticket_description">{{t 'Ticket Description'}}</label>
-        <Textarea @rows={{3}} @name="ticket_description" @value={{ticket.description}} placeholder={{t "This description would be available to the attendees when ordering tickets."}} @maxlength={{160}} />
-      </div>
+        <Textarea
+          @rows={{3}}
+          @name="ticket_description"
+          @value={{ticket.description}}
+          placeholder={{t "This description would be available to the attendees when ordering tickets."}}
+          @maxlength={{160}} />
+        </div>
       <div class="field">
         <div class="ui checkbox">
-          <Input @type="checkbox" @checked={{ticket.isDescriptionVisible}} @name="description_visible" />
+          <Input
+@type="checkbox"
+@checked={{ticket.isDescriptionVisible}}
+@name="description_visible" />
           <label for="description_visible">{{t 'Display Ticket description on Public Events page'}}</label>
         </div>
       </div>
       <div class="field">
         <div class="ui checkbox">
-          <Input @type="checkbox" @checked={{ticket.isHidden}} @name="ticket_hidden" />
+          <Input
+@type="checkbox"
+@checked={{ticket.isHidden}}
+@name="ticket_hidden" />
           <label for="description_visible">
             {{t 'Hide Ticket from the Public Events page'}}<br>
             <span class="text muted">{{t 'Ticket would still be available for sale to Organizers.'}}</span>
@@ -74,7 +108,10 @@
       {{#if (eq ticket.type 'paid')}}
         <div class="field">
           <div class="ui checkbox">
-            <Input @type="checkbox" @checked={{ticket.isFeeAbsorbed}} @name="absorb_fees" />
+            <Input
+@type="checkbox"
+@checked={{ticket.isFeeAbsorbed}}
+@name="absorb_fees" />
             <label for="absorb_fees">
               {{t 'Absorb Fees'}} <br>
               <span class="text muted">{{t 'If unchecked fees will be passed on to the buyer.'}}</span>
@@ -85,23 +122,47 @@
       <div class="fields">
         <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_start_date">{{t 'Starts'}}</label>
-          <Widgets::Forms::DatePicker @type="text" @name="ticket_start_date" @placeholder="MM/DD/YYYY" @rangePosition="start" @value={{ticket.salesStartAtDate}} />
+          <Widgets::Forms::DatePicker
+@type="text"
+@name="ticket_start_date"
+@placeholder="MM/DD/YYYY"
+@rangePosition="start"
+@value={{ticket.salesStartAtDate}} />
         </div>
         <div class="three wide field">
           <label for="ticket_start_time">&nbsp;</label>
-          <Widgets::Forms::TimePicker @type="text" @name="ticket_start_time" @placeholder="HH:MM" @rangePosition="start" @value={{ticket.salesStartAtTime}} />
+          <Widgets::Forms::TimePicker
+@type="text"
+@name="ticket_start_time"
+@placeholder="HH:MM"
+@rangePosition="start"
+@value={{ticket.salesStartAtTime}} />
         </div>
         <div class="{{if device.isTablet 'four' 'five'}} wide field">
           <label class="required" for="ticket_end_date">{{t 'Ends'}}</label>
-          <Widgets::Forms::DatePicker @type="text" @name="ticket_end_date" @placeholder="MM/DD/YYYY" @rangePosition="end" @value={{ticket.salesEndsAtDate}} />
+          <Widgets::Forms::DatePicker
+@type="text"
+@name="ticket_end_date"
+@placeholder="MM/DD/YYYY"
+@rangePosition="end"
+@value={{ticket.salesEndsAtDate}} />
         </div>
         <div class="three wide field">
           <label for="ticket_end_time">&nbsp;</label>
-          <Widgets::Forms::TimePicker @type="text" @name="ticket_end_time" @placeholder="HH:MM" @rangePosition="end" @value={{ticket.salesEndsAtTime}} />
+          <Widgets::Forms::TimePicker
+@type="text"
+@name="ticket_end_time"
+@placeholder="HH:MM"
+@rangePosition="end"
+@value={{ticket.salesEndsAtTime}} />
         </div>
         <div class="five wide field has popup" data-content="Uses the timezone of the event.">
           <label class="required" for="ticket_timezone">{{t 'Timezone'}}</label>
-          <Input @type="text" @disabled={{true}} @value={{timezone}} @name="ticket_timezone" />
+          <Input
+@type="text"
+@disabled={{true}}
+@value={{timezone}}
+@name="ticket_timezone" />
         </div>
       </div>
 
@@ -110,19 +171,30 @@
         <div class="fields">
           <div class="three wide field">
             <label class="required text muted" for="ticket_min_order">{{t 'Minimum Order'}}</label>
-            <Input @type="number" @value={{ticket.minOrder}} @name="ticket_min_order" />
+            <Input
+@type="number"
+@value={{ticket.minOrder}}
+@name="ticket_min_order" />
           </div>
           <div class="three wide field">
             <label class="required text muted" for="ticket_max_order">{{t 'Maximum Order'}}</label>
-            <Input @type="number" @value={{ticket.maxOrder}} @name="ticket_max_order" />
+            <Input
+@type="number"
+@value={{ticket.maxOrder}}
+@name="ticket_max_order" />
           </div>
         </div>
       </div>
 
       <div class="{{unless device.isMobile 'six wide'}} field">
         <label for="code_groups">{{t 'Ticket Code Group'}}</label>
-        <UiDropdown @class="fluid multiple search selection" @allowAdditions={{true}}>
-          <Input @type="hidden" @name="ticket_code_groups" @value={{ticket.groups}} />
+        <UiDropdown
+@class="fluid multiple search selection"
+@allowAdditions={{true}}>
+          <Input
+@type="hidden"
+@name="ticket_code_groups"
+@value={{ticket.groups}} />
           <div class="default text">{{t 'Add Code Groups'}}</div>
           <div class="menu">
           </div>

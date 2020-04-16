@@ -1,8 +1,11 @@
 <div class="ui container">
   <div class="ui row">
     {{#if (not model.isLocked)}}
-      <LinkTo @route="public.cfs.edit-session" @models={{array model.event.id model.id}}>
-        <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
+      <LinkTo
+        @route="public.cfs.edit-session"
+        @models={{array model.event.id model.id}}>
+        <button
+          class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
         {{#if device.isMobile}}
           <div class="ui hidden fitted divider"></div>
         {{/if}}
@@ -10,8 +13,11 @@
     {{/if}}
     {{#each model.speakers as |speaker|}}
       {{#if (eq speaker.email authManager.currentUser.email)}}
-        <LinkTo @route="public.cfs.edit-speaker" @models={{array model.event.id speaker.id}}>
-          <button class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
+        <LinkTo
+          @route="public.cfs.edit-speaker"
+          @models={{array model.event.id speaker.id}}>
+          <button
+            class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
           {{#if device.isMobile}}
             <div class="ui hidden fitted divider"></div>
           {{/if}}
@@ -19,7 +25,8 @@
       {{/if}}
     {{/each}}
     {{#if isUpcoming}}
-      <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}" {{action 'openProposalDeleteModal'}}>{{t 'Withdraw Proposal'}}</button>
+      <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}"
+        {{action 'openProposalDeleteModal'}}>{{t 'Withdraw Proposal'}}</button>
       {{#if device.isMobile}}
         <div class="ui hidden fitted divider"></div>
       {{/if}}
@@ -52,9 +59,15 @@
           {{/each}}
         </h4>
         {{#if (not-eq model.startsAt null)}}
-          <h2 class="ui sub header"> <div class="ui gray-text">{{t 'From '}}{{moment-format model.startsAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD h:mm A'}}</div> </h2>
+          <h2 class="ui sub header">
+            <div class="ui gray-text">
+              {{t 'From '}}{{moment-format model.startsAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD h:mm A'}}
+            </div>
+          </h2>
         {{else}}
-          <h2 class="ui sub header"> <div class="ui gray-text">{{t 'Session Not Yet Scheduled'}}</div></h2>
+          <h2 class="ui sub header">
+            <div class="ui gray-text">{{t 'Session Not Yet Scheduled'}}</div>
+          </h2>
         {{/if}}
       </div>
       <div class="ui divider"></div>
@@ -78,4 +91,7 @@
   </div>
 </div>
 
-<Modals::ProposalDeleteModal @isOpen={{isProposalDeleteModalOpen}} @proposalName={{model.title}} @deleteProposal={{action "deleteProposal"}} />
+<Modals::ProposalDeleteModal
+  @isOpen={{isProposalDeleteModalOpen}}
+  @proposalName={{model.title}}
+  @deleteProposal={{action "deleteProposal"}} />

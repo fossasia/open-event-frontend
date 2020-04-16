@@ -12,7 +12,24 @@
           <h3 class="ui header">{{t 'Tickets'}}</h3>
         </div>
         <div class="ui segment">
-          <Public::TicketList @eventCurrency={{model.event.paymentCurrency}} @ticketUrl={{model.event.ticketUrl}} @data={{model.tickets}} @order={{model.order}} @event={{model.event}} @attendees={{model.attendees}} @code={{code}} @taxInfo={{model.tax}} @currentEventIdentifier={{model.event.identifier}} @createNewUserViaEmail={{action "createNewUserViaEmail"}} @loginExistingUser={{action "loginExistingUser"}} @isLoginModalOpen={{isLoginModalOpen}} @placeOrder={{action "placeOrder"}} @isLoading={{isLoading}} @userExists={{userExists}} @errorMessage={{errorMessage}} @save="save" />
+          <Public::TicketList
+            @eventCurrency={{model.event.paymentCurrency}}
+            @ticketUrl={{model.event.ticketUrl}}
+            @data={{model.tickets}}
+            @order={{model.order}}
+            @event={{model.event}}
+            @attendees={{model.attendees}}
+            @code={{code}}
+            @taxInfo={{model.tax}}
+            @currentEventIdentifier={{model.event.identifier}}
+            @createNewUserViaEmail={{action "createNewUserViaEmail"}}
+            @loginExistingUser={{action "loginExistingUser"}}
+            @isLoginModalOpen={{isLoginModalOpen}}
+            @placeOrder={{action "placeOrder"}}
+            @isLoading={{isLoading}}
+            @userExists={{userExists}}
+            @errorMessage={{errorMessage}}
+            @save="save" />
         </div>
       </div>
     </div>
@@ -21,7 +38,8 @@
   {{#if model.featuredSpeakers}}
     <div class="featured-speakers" id="speakers">
       <div class="row">
-        <Public::FeaturedSpeakerList @speakers={{model.featuredSpeakers}} />
+        <Public::FeaturedSpeakerList
+          @speakers={{model.featuredSpeakers}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
@@ -29,7 +47,8 @@
   {{#if model.sponsors}}
     <div class="sponsors">
       <div class="row">
-        <Public::SponsorList @sponsors={{model.sponsors}} />
+        <Public::SponsorList
+          @sponsors={{model.sponsors}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
@@ -42,12 +61,15 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="location" id="getting-here">
-    <Public::EventMap @event={{model.event}} @mapConfig={{model.mapConfig}} />
+    <Public::EventMap
+      @event={{model.event}}
+      @mapConfig={{model.mapConfig}} />
   </div>
   <div class="ui hidden divider"></div>
   {{#if model.event.copyright}}
     <div class="copyright">
-      <Public::CopyrightItem @copyright={{model.event.copyright}} />
+      <Public::CopyrightItem
+        @copyright={{model.event.copyright}} />
     </div>
   {{/if}}
 </div>
