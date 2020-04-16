@@ -1,29 +1,29 @@
 <div class="ui grid">
   <div class="row">
     <div class="sixteen wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'admin.settings.index' class='item'}}
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.settings.index" class="item">
           {{t 'System'}}
-        {{/link-to}}
-        {{#link-to 'admin.settings.microservices' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.microservices" class="item">
           {{t 'Microservices'}}
-        {{/link-to}}
-        {{#link-to 'admin.settings.images' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.images" class="item">
           {{t 'Images'}}
-        {{/link-to}}
-        {{#link-to 'admin.settings.analytics' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.analytics" class="item">
           {{t 'Analytics'}}
-        {{/link-to}}
-        {{#link-to 'admin.settings.payment-gateway' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.payment-gateway" class="item">
           {{t 'Payment Gateways'}}
-        {{/link-to}}
-        {{#link-to 'admin.settings.ticket-fees' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.ticket-fees" class="item">
           {{t 'Ticket Fees'}}
-        {{/link-to}}
-        {{#link-to 'admin.settings.billing' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.billing" class="item">
           {{t 'Billing'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="row">

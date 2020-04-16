@@ -7,7 +7,7 @@
       <label class="required">
         {{t 'New Event Type'}}
       </label>
-      {{input type='text' name='type_name' value=name placeholder=(t 'Enter New Event Type')}}
+      <Input @type="text" @name="type_name" @value={{name}} placeholder={{t "Enter New Event Type"}} />
     </div>
   </form>
 </div>

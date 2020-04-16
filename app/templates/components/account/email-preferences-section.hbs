@@ -6,7 +6,7 @@
       </h4>
     </div>
     <div class="ui column eight wide right aligned">
-      {{ui-checkbox class='toggle checked'}}
+      <UiCheckbox @class="toggle checked" />
     </div>
   </div>
   <div class="ui divider"></div>
@@ -19,7 +19,7 @@
   </div>
 </div>
 {{#each preferences as |preference|}}
-  {{#ui-accordion class='ui segment'}}
+  <UiAccordion @class="ui segment">
     <div class="ui grid title">
       <div class="ui column eight wide">
         <h4 class="ui header">{{preference.event.name}}</h4>
@@ -42,7 +42,7 @@
           {{t 'New Paper is Submitted to your Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=preference.newPaper onChange=(pipe-action (action (mut preference.newPaper)) (action 'savePreference' preference))}}
+          <UiCheckbox @class="toggle" @checked={{preference.newPaper}} @onChange={{pipe-action (action (mut preference.newPaper)) (action "savePreference" preference)}} />
         </div>
       </div>
       <div class="row">
@@ -50,7 +50,7 @@
           {{t 'Change in Schedule of Sessions in your Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=preference.sessionSchedule onChange=(pipe-action (action (mut preference.sessionSchedule)) (action 'savePreference' preference))}}
+          <UiCheckbox @class="toggle" @checked={{preference.sessionSchedule}} @onChange={{pipe-action (action (mut preference.sessionSchedule)) (action "savePreference" preference)}} />
         </div>
       </div>
       <div class="row">
@@ -58,11 +58,11 @@
           {{t 'Reminder for Next Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          {{ui-checkbox class='toggle' checked=preference.nextEvent onChange=(pipe-action (action (mut preference.nextEvent)) (action 'savePreference' preference))}}
+          <UiCheckbox @class="toggle" @checked={{preference.nextEvent}} @onChange={{pipe-action (action (mut preference.nextEvent)) (action "savePreference" preference)}} />
         </div>
       </div>
     </div>
-  {{/ui-accordion}}
+  </UiAccordion>
 {{else}}
   <div class="ui disabled header">{{t 'No events have been created by the user'}}</div>
 {{/each}}

@@ -3,19 +3,19 @@
 </div>
 
 <div class="ui horizontal compact basic buttons">
-  {{#ui-popup tagName='a' click=(action props.actions.moveToDetails extraRecords.identifier) content=(t 'View') class='ui icon button' position='left center'}}
+  <UiPopup @tagName="a" @click={{action props.actions.moveToDetails extraRecords.identifier}} @content={{t "View"}} @class="ui icon button" @position="left center">
     <i class="unhide icon"></i>
-  {{/ui-popup}}
-  {{#ui-popup content=(t 'Edit') click=(action props.actions.editEvent extraRecords.identifier) class='ui icon button' position='left center'}}
+  </UiPopup>
+  <UiPopup @content={{t "Edit"}} @click={{action props.actions.editEvent extraRecords.identifier}} @class="ui icon button" @position="left center">
     <i class="edit icon"></i>
-  {{/ui-popup}}
+  </UiPopup>
   {{#if (and props.options.hasRestorePrivileges extraRecords.deletedAt)}}
-    {{#ui-popup content=(t 'Restore') click=(action props.actions.restoreEvent extraRecords.identifier) class='ui icon button' position='left center'}}
+    <UiPopup @content={{t "Restore"}} @click={{action props.actions.restoreEvent extraRecords.identifier}} @class="ui icon button" @position="left center">
       <i class="undo icon"></i>
-    {{/ui-popup}}
+    </UiPopup>
   {{else}}
-    {{#ui-popup content=(t 'Delete') click=(action props.actions.openDeleteEventModal extraRecords.identifier record) class='ui icon button' position='left center'}}
+    <UiPopup @content={{t "Delete"}} @click={{action props.actions.openDeleteEventModal extraRecords.identifier record}} @class="ui icon button" @position="left center">
       <i class="trash outline icon"></i>
-    {{/ui-popup}}
+    </UiPopup>
   {{/if}}
 </div>

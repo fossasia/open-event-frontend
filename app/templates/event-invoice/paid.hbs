@@ -6,12 +6,10 @@
   </div>
   <div class="row">
     <div class="ten wide column print">
-      {{event-invoice/invoice-summary data=model
-                               event=model.event
-                               eventCurrency=model.event.paymentCurrency}}
+      <EventInvoice::InvoiceSummary @data={{model}} @event={{model.event}} @eventCurrency={{model.event.paymentCurrency}} />
     </div>
     <div class="mobile hidden six wide column">
-      {{event-invoice/event-info event=model.event}}
+      <EventInvoice::EventInfo @event={{model.event}} />
     </div>
   </div>
   <div class="row">
@@ -24,12 +22,12 @@
   </div>
   <div class="row">
     <div class="ten wide column">
-      {{event-invoice/billing-info user=model.user}}
+      <EventInvoice::BillingInfo @user={{model.user}} />
     </div>
     <div class="six wide column">
       <div class="row">
         <div class="mobile hidden row">
-          {{event-invoice/payee-info data=model payer=model.user}}
+          <EventInvoice::PayeeInfo @data={{model}} @payer={{model.user}} />
         </div>
       </div>
     </div>

@@ -2,8 +2,7 @@
   {{#each data as |subTopic|}}
     <div class="eight wide column">
       <h4>{{subTopic.name}}</h4>
-      {{widgets/safe-image isAvatar=true class='ui big image' src=(if subTopic.placeholder.originalImageUrl subTopic.placeholder.originalImageUrl
-        '/images/placeholders/avatar.png')}}
+      <Widgets::SafeImage @isAvatar={{true}} @class="ui big image" @src={{if subTopic.placeholder.originalImageUrl subTopic.placeholder.originalImageUrl "/images/placeholders/avatar.png"}} />
       <div class="ui hidden divider"></div>
       <button class="ui button primary" {{action 'openModal' subTopic.placeholder}} id="changebutton">{{t 'Change'}}</button>
     </div>
@@ -13,4 +12,4 @@
     </div>
   {{/each}}
 </div>
-{{modals/change-image-modal isOpen=isModalOpen placeholder=selectedPlaceholder}}
+<Modals::ChangeImageModal @isOpen={{isModalOpen}} @placeholder={{selectedPlaceholder}} />

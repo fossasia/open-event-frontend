@@ -13,7 +13,7 @@
                 {{#if column.filterWithSelect}}
                   {{models-select options=column.filterOptions cssPropertyName=column.cssPropertyName value=column.filterString class=(concat themeInstance.input 'changeFilterForColumn')}}
                 {{else}}
-                  {{input type='text' value=column.filterString class=themeInstance.input placeholder=''}}
+                  <Input @type="text" @value={{column.filterString}} class={{themeInstance.input}} placeholder="" />
                 {{/if}}
               </div>
             {{else}}

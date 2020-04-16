@@ -1,14 +1,14 @@
 <div class="ui grid">
   <div class="row">
     <div class="sixteen wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'admin.reports.system-logs' class='item'}}
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.reports.system-logs" class="item">
           {{t 'System Logs'}}
-        {{/link-to}}
-        {{#link-to 'admin.reports.kubernetes-server-logs' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.reports.kubernetes-server-logs" class="item">
           {{t 'Kubernetes Server Logs'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="row">

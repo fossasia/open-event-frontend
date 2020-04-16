@@ -1,11 +1,11 @@
 <div>
-  {{#tabbed-navigation isNonPointing=true}}
-    {{#link-to 'admin.permissions.system-roles' class='item'}}
+  <TabbedNavigation @isNonPointing={{true}}>
+    <LinkTo @route="admin.permissions.system-roles" class="item">
       {{t 'System Roles'}}
-    {{/link-to}}
-    {{#link-to 'admin.permissions.event-roles' class='item'}}
+    </LinkTo>
+    <LinkTo @route="admin.permissions.event-roles" class="item">
       {{t 'Event Roles'}}
-    {{/link-to}}
-  {{/tabbed-navigation}}
+    </LinkTo>
+  </TabbedNavigation>
 </div>
 {{outlet}}

@@ -75,14 +75,14 @@
       <div class="ui horizontal inverted small divided link list less top margin">
         <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{settings.appName}} </span>
         {{#each footerPages as |page|}}
-          {{#link-to 'pages' page.url class='item'}}
+          <LinkTo @route="pages" @model={{page.url}} class="item">
             {{page.name}}
-          {{/link-to}}
+          </LinkTo>
         {{/each}}
       </div>
     </div>
     <div class="three wide computer four wide tablet column right aligned">
-      {{#ui-dropdown class='floating labeled grey search icon mini button' selected=currentLocale forceSelection=false onChange=(action 'switchLanguage')}}
+      <UiDropdown @class="floating labeled grey search icon mini button" @selected={{currentLocale}} @forceSelection={{false}} @onChange={{action "switchLanguage"}}>
         <i class="world icon"></i>
         <span class="text">English</span>
         <div class="ui language menu">
@@ -90,7 +90,7 @@
             <div class="item" data-value="{{key}}">{{value}}</div>
           {{/each-in}}
         </div>
-      {{/ui-dropdown}}
+      </UiDropdown>
     </div>
   </div>
 </div>

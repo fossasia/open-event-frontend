@@ -16,37 +16,23 @@
     </div>
     <div class="row">
       <div class="nine wide column">
-        {{orders/order-summary data=model.order
-                               event=model.event
-                               eventCurrency=model.order.event.paymentCurrency}}
+        <Orders::OrderSummary @data={{model.order}} @event={{model.event}} @eventCurrency={{model.order.event.paymentCurrency}} />
       </div>
       <div class="mobile hidden seven wide column">
-        {{orders/event-info data=model.order}}
+        <Orders::EventInfo @data={{model.order}} />
       </div>
     </div>
     <div class="row">
       <div class="nine wide right aligned column">
         {{#if isStripe}}
-          {{#stripe-checkout
-              image="https://stripe.com/img/documentation/checkout/marketplace.png"
-              currency=model.order.event.paymentCurrency
-              locale='auto'
-              name="Open Event"
-              class="ui right labeled icon blue button"
-              description=paymentDescription
-              amount=paymentAmount
-              key=model.order.event.stripeAuthorization.stripePublishableKey
-              onToken=(action "processStripeToken")
-              onClosed=(action "checkoutClosed")
-              onOpened=(action "checkoutOpened")
-            }}
+          <StripeCheckout @image="https://stripe.com/img/documentation/checkout/marketplace.png" @currency={{model.order.event.paymentCurrency}} @locale="auto" @name="Open Event" @class="ui right labeled icon blue button" @description={{paymentDescription}} @amount={{paymentAmount}} @key={{model.order.event.stripeAuthorization.stripePublishableKey}} @onToken={{action "processStripeToken"}} @onClosed={{action "checkoutClosed"}} @onOpened={{action "checkoutOpened"}}>
             {{t 'Pay Now'}}
             <i class="credit card icon"></i>
-          {{/stripe-checkout}}
+          </StripeCheckout>
         {{/if}}
         {{#if isPaypal}}
           <div class='paypal-button'>
-            {{paypal-button data=model.order paymentFor='order'}}
+            <PaypalButton @data={{model.order}} @paymentFor="order" />
           </div>
         {{/if}}
         {{#if isOmise}}
@@ -72,13 +58,13 @@
 
     <div class="row">
       <div class="nine wide column">
-        {{forms/orders/attendee-list save='save' data=model.order fields=model.form}}
+        <Forms::Orders::AttendeeList @save="save" @data={{model.order}} @fields={{model.form}} />
       </div>
       <div class="seven wide column">
-        {{orders/ticket-holder data=model.order}}
+        <Orders::TicketHolder @data={{model.order}} />
       </div>
     </div>
   </div>
 </div>
-{{modals/paytm-payment-options isLoading=isLoading isOpen=isPaytmModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency openOTPController=(action 'openOTPController') txnToken=txnToken}}
-{{modals/paytm-otp isLoading=isLoading isOpen=isOTPModalOpen amount=model.order.amount currency=model.order.event.paymentCurrency txnToken=txnToken verifyOtp=(action 'verifyOtp')}}
+<Modals::PaytmPaymentOptions @isLoading={{isLoading}} @isOpen={{isPaytmModalOpen}} @amount={{model.order.amount}} @currency={{model.order.event.paymentCurrency}} @openOTPController={{action "openOTPController"}} @txnToken={{txnToken}} />
+<Modals::PaytmOtp @isLoading={{isLoading}} @isOpen={{isOTPModalOpen}} @amount={{model.order.amount}} @currency={{model.order.event.paymentCurrency}} @txnToken={{txnToken}} @verifyOtp={{action "verifyOtp"}} />

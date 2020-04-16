@@ -10,10 +10,10 @@
       <label class="required">
         {{t 'User Email'}}
       </label>
-      {{input type='text' name='user_email' value=currentInvite.email}}
+      <Input @type="text" @name="user_email" @value={{currentInvite.email}} />
     </div>
     <div class="field">
-      {{ui-checkbox label=(t 'Please tick the box to agree and press TRANSFER') type="checkbox" checked=checked onChange=(action (mut checked))}}
+      <UiCheckbox @label={{t "Please tick the box to agree and press TRANSFER"}} @type="checkbox" @checked={{checked}} @onChange={{action (mut checked)}} />
     </div>
   </form>
 </div>

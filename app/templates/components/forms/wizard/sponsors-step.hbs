@@ -6,7 +6,7 @@
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
-              {{input type='checkbox' checked=data.event.isSponsorsEnabled}}
+              <Input @type="checkbox" @checked={{data.event.isSponsorsEnabled}} />
               <label class="weight-300" style="font-size: large">
                 {{if data.event.isSponsorsEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sponsors'}}
@@ -33,33 +33,28 @@
       <div class="fields">
         <div class="five wide field">
           <label class="required">{{t 'Name'}}</label>
-          {{input type='text' value=sponsor.name name='name'}}
+          <Input @type="text" @value={{sponsor.name}} @name="name" />
         </div>
         <div class="two wide field">
           <label>{{t 'Level'}}</label>
-          {{input type='number' value=sponsor.level name='level' min=0}}
+          <Input @type="number" @value={{sponsor.level}} @name="level" @min={{0}} />
         </div>
         <div class="three wide field">
           <label>{{t 'Type'}}</label>
-          {{input type='text' value=sponsor.type name='type'}}
+          <Input @type="text" @value={{sponsor.type}} @name="type" />
         </div>
         <div class="six wide field">
           <label>{{t 'URL'}}</label>
-          {{widgets/forms/link-input segmentedLink=sponsor.segmentedLink name='url'}}
+          <Widgets::Forms::LinkInput @segmentedLink={{sponsor.segmentedLink}} @name="url" />
         </div>
       </div>
       <div class="fields">
         <div class="five wide computer eight wide tablet field">
           <label>{{t 'Description'}}</label>
-          {{widgets/forms/rich-text-editor value=sponsor.description name='description'}}
+          <Widgets::Forms::RichTextEditor @value={{sponsor.description}} @name="description" />
         </div>
         <div class="sponsors-step eight wide computer eight wide tablet field {{if device.isMobile 'less padding'}}">
-          {{widgets/forms/image-upload
-            label=(t 'Logo')
-            imageUrl=sponsor.logoUrl
-            icon='image'
-            hint=(t 'Select Logo')
-            maxSizeInKb=1000}}
+          <Widgets::Forms::ImageUpload @label={{t "Logo"}} @imageUrl={{sponsor.logoUrl}} @icon="image" @hint={{t "Select Logo"}} @maxSizeInKb={{1000}} />
         </div>
       </div>
       {{#if (not-eq (inc index) data.event.sponsors.length)}}

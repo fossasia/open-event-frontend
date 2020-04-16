@@ -27,9 +27,7 @@
     </div>
   </div>
 {{else}}
-  {{input type='file'
-          id=inputIdGenerated
-          class='styled input' accept="image/*" name='image_upload' change=(action 'fileSelected')}}
+  <Input @type="file" @id={{inputIdGenerated}} class="styled input" @accept="image/*" @name="image_upload" @change={{action "fileSelected"}} />
   <label for="{{inputIdGenerated}}">
     <div class="ui center aligned piled upload segment text muted">
       <i class="big {{icon}} icon"></i>
@@ -48,5 +46,5 @@
   </label>
 {{/if}}
 {{#if needsCropper}}
-  {{modals/cropper-modal isOpen=cropperModalIsShown imgData=imgData onImageCrop=(action 'imageCropped') aspectRatio=aspectRatio}}
+  <Modals::CropperModal @isOpen={{cropperModalIsShown}} @imgData={{imgData}} @onImageCrop={{action "imageCropped"}} @aspectRatio={{aspectRatio}} />
 {{/if}}

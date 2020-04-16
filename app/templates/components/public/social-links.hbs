@@ -18,7 +18,7 @@
   {{#if twitterLink}}
     <div class="item">
       <div class="twitter content">
-        {{widgets/twitter-timeline handleOrProfile=twitterLink.link}}
+        <Widgets::TwitterTimeline @handleOrProfile={{twitterLink.link}} />
       </div>
     </div>
   {{/if}}

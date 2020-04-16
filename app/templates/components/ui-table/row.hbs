@@ -3,13 +3,13 @@
     {{#if column.isVisible}}
       <td class={{column.className}}>
         {{#if column.routeName}}
-          {{#link-to column.routeName record.id}}
+          <LinkTo @route={{column.routeName}} @model={{record.id}}>
             {{#if column.propertyName}}
               {{get record column.propertyName}}
             {{else}}
               {{record.id}}
             {{/if}}
-          {{/link-to}}
+          </LinkTo>
         {{else}}
           {{#if column.template}}
             {{partial column.template}}

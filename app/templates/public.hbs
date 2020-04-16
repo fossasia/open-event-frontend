@@ -1,11 +1,11 @@
 <div class="ui stackable grid">
   <div class="sixteen wide column">
-    {{unverified-user-message}}
+    <UnverifiedUserMessage />
   </div>
 </div>
 <div class="public-event ui relaxed grid">
   <div class="sixteen wide column lead {{if smallLead 'small'}}">
-    {{widgets/safe-image src=(if model.largeImageUrl model.largeImageUrl model.originalImageUrl)}}
+    <Widgets::SafeImage @src={{if model.largeImageUrl model.largeImageUrl model.originalImageUrl}} />
     <div class="content">
       <div class="ui container">
         <div class="ui grid info">
@@ -31,12 +31,12 @@
               <i class="content icon"></i>
             </button>
             {{#if isMenuOpen}}
-              {{public/side-menu class='toggle menu' event=model}}
+              <Public::SideMenu @class="toggle menu" @event={{model}} />
             {{/if}}
           {{/if}}
         {{else}}
           <div class="ui fluid side-menu">
-            {{public/side-menu event=model}}
+            <Public::SideMenu @event={{model}} />
           </div>
         {{/if}}
       </div>
@@ -45,7 +45,7 @@
       </div>
       <div class="three wide column">
         {{#if (not-eq session.currentRouteName 'public.cfs.new-speaker')}}
-          {{public/social-links externalUrl=model.externalEventUrl socialLinks=model.socialLinks}}
+          <Public::SocialLinks @externalUrl={{model.externalEventUrl}} @socialLinks={{model.socialLinks}} />
         {{/if}}
       </div>
     </div>

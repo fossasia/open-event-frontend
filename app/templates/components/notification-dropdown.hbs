@@ -6,9 +6,9 @@
   {{#if unreadNotifications}}
     <div class="ui basic inverted horizontal segments">
       <div class="ui basic left aligned segment weight-600">
-        {{#link-to 'notifications'}}
+        <LinkTo @route="notifications">
           {{t 'Notifications'}}
-        {{/link-to}}
+        </LinkTo>
       </div>
       <div class="ui basic right aligned segment weight-400">
         <a href="#" {{action 'markAllRead'}}>{{t 'Mark all as Read'}}</a>
@@ -18,9 +18,9 @@
       {{#each unreadNotifications as |notification|}}
         <div class="item {{unless notification.isRead 'active'}}">
           <div class="header">
-            {{#link-to 'notifications' invokeAction=(action 'markRead' notification)}}
+            <LinkTo @route="notifications" @invokeAction={{action "markRead" notification}}>
               {{notification.title}}
-            {{/link-to}}
+            </LinkTo>
           </div>
           <div class="content weight-400">
             {{sanitize notification.message}}

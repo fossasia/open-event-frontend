@@ -6,7 +6,7 @@
   {{t 'Enter OTP sent to mobile number'}}
   <form class="ui form" autocomplete="off">
     <div class="field">
-      {{input type='number' id='otp' value=otp required=true}}
+      <Input @type="number" @id="otp" @value={{otp}} required={{true}} />
     </div>
   </form>
 </div>

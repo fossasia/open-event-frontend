@@ -6,25 +6,19 @@
   <div class="content">
     <h4 class="ui header">{{t 'Please Login or Signup before you can submit a proposal.'}}</h4>
     <div>
-      {{#link-to 'login' class='ui teal button' invokeAction=(action 'toggleView')}}
+      <LinkTo @route="login" class="ui teal button" @invokeAction={{action "toggleView"}}>
         {{t 'Login'}}
-      {{/link-to}}
-      {{#link-to 'register' class='ui blue button' invokeAction=(action 'toggleView')}}
+      </LinkTo>
+      <LinkTo @route="register" class="ui blue button" @invokeAction={{action "toggleView"}}>
         {{t 'Signup'}}
-      {{/link-to}}
+      </LinkTo>
     </div>
   </div>
 {{else if (eq session.currentRouteName 'public.index')}}
   <i class="black close icon"></i>
   <div class="ui basic compact segment">
     <div class="content">
-      {{forms/orders/guest-order-form
-        isLoading=isLoading
-        errorMessage=errorMessage
-        userExists=userExists
-        loginExistingUser=loginExistingUser
-        createNewUserViaEmail=createNewUserViaEmail
-      }}
+      <Forms::Orders::GuestOrderForm @isLoading={{isLoading}} @errorMessage={{errorMessage}} @userExists={{userExists}} @loginExistingUser={{loginExistingUser}} @createNewUserViaEmail={{createNewUserViaEmail}} />
 
     </div>
   </div>

@@ -10,16 +10,16 @@
 <div class="ui container"></div>
 <div class="ui form {{if isLoading 'loading'}}">
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Image') checked=data.image onChange=(action (mut data.image))}}
+    <UiCheckbox @class="toggle" @label={{t "Image"}} @checked={{data.image}} @onChange={{action (mut data.image)}} />
   </div>
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Video') checked=data.video onChange=(action (mut data.video))}}
+    <UiCheckbox @class="toggle" @label={{t "Video"}} @checked={{data.video}} @onChange={{action (mut data.video)}} />
   </div>
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Audio') checked=data.audio onChange=(action (mut data.audio))}}
+    <UiCheckbox @class="toggle" @label={{t "Audio"}} @checked={{data.audio}} @onChange={{action (mut data.audio)}} />
   </div>
   <div class="field">
-    {{ui-checkbox class='toggle' label=(t 'Document') checked=data.document onChange=(action (mut data.document))}}
+    <UiCheckbox @class="toggle" @label={{t "Document"}} @checked={{data.document}} @onChange={{action (mut data.document)}} />
   </div>
   <div class="ui basic segment less left padding">
     <button class="ui blue button" {{action startGeneration}}>

@@ -1,12 +1,12 @@
 <h1 class="ui header">{{t 'Notifications'}}</h1>
 <div class="ui divider"></div>
 <div class="row">
-  {{#link-to 'notifications.all' 'unread'}}
+  <LinkTo @route="notifications.all" @model="unread">
     <button class="ui button">{{t 'Unread'}}</button>
-  {{/link-to}}
-  {{#link-to 'notifications.all' 'all'}}
+  </LinkTo>
+  <LinkTo @route="notifications.all" @model="all">
     <button class="ui button">{{t 'All'}}</button>
-  {{/link-to}}
+  </LinkTo>
   {{#if showMarkAllRead}}
     <button class="ui button right floated" {{action 'markAllAsRead' model.notifications}}>{{t 'Mark all as read'}}</button>
   {{/if}}
@@ -33,9 +33,9 @@
         <div class="ten wide column">
           {{#each notification.notificationActions as |action|}}
             {{#if action.buttonRoute}}
-              {{#link-to action.buttonRoute action.subjectId tagName='button' class='ui blue button'}}
+              <LinkTo @route={{action.buttonRoute}} @model={{action.subjectId}} @tagName="button" class="ui blue button">
                 {{t action.buttonTitle}}
-              {{/link-to}}
+              </LinkTo>
             {{else}}
               <a href={{action.link}} class="ui blue button">
                 {{t action.buttonTitle}}
@@ -56,8 +56,8 @@
     <div class="ui disabled header">{{t 'No Notifications'}}</div>
   {{/if}}
 {{/each}}
-{{#infinity-loader infinityModel=model.notifications}}
+<InfinityLoader @infinityModel={{model.notifications}}>
   <div class="ui loading very padded basic segment">
   </div>
   {{infintyModel.reachedInfinity}}
-{{/infinity-loader}}
+</InfinityLoader>

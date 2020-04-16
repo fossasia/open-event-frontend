@@ -18,7 +18,7 @@
               <div class="ui small">
                 {{ticket.name}}
                 {{#if (eq ticket.type 'donation')}}
-                  {{ui-popup tagName="i" class="info icon" content=(concat "Donation value should be between " ticket.minPrice " " eventCurrency " and " ticket.maxPrice " " eventCurrency)}}
+                  <UiPopup @tagName="i" @class="info icon" @content={{concat "Donation value should be between " ticket.minPrice " " eventCurrency " and " ticket.maxPrice " " eventCurrency}} />
                 {{/if}}
               </div>
               {{#if ticket.isDescriptionVisible}}
@@ -53,7 +53,7 @@
               <td id="{{ticket.id}}_price">
                 {{#if (eq ticket.type 'donation') }}
                   <div class="field">
-                    {{input type='number' name=ticket.id placeholder=(t 'Enter Donation') min=ticket.minPrice max=ticket.maxPrice value=ticket.price}}<br>
+                    <Input @type="number" @name={{ticket.id}} placeholder={{t "Enter Donation"}} @min={{ticket.minPrice}} @max={{ticket.maxPrice}} @value={{ticket.price}} /><br>
                   </div>
                 {{else}}
                   {{eventCurrency}} {{format-number ticket.price}}
@@ -76,8 +76,8 @@
             {{/if}}
             <td>
               <div class="field">
-                {{#ui-dropdown class='compact selection' forceSelection=false onChange=(action 'updateOrder' ticket) as |execute mapper|}}
-                  {{input type='hidden' id=(concat ticket.id '_quantity') value=ticket.orderQuantity}}
+                <UiDropdown @class="compact selection" @forceSelection={{false}} @onChange={{action "updateOrder" ticket}} as |execute mapper|>
+                  <Input @type="hidden" @id={{concat ticket.id "_quantity"}} @value={{ticket.orderQuantity}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">0</div>
                   <div class="menu">
@@ -86,7 +86,7 @@
                       <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
                     {{/each}}
                   </div>
-                {{/ui-dropdown}}
+                </UiDropdown>
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
@@ -120,13 +120,7 @@
         <div class="{{if device.isBiggerThanTablet 'right floated eight wide'}} column">
           <div class="field">
             <div class="ui action fluid input">
-              {{input type='text' name='promotional_code'
-                      value=promotionalCode
-                      placeholder=(t 'Promotional Code')
-                      readonly=promotionalCodeApplied
-                      key-up=(action 'handleKeyPress')
-                      id='promotionalCode'
-              }}
+              <Input @type="text" @name="promotional_code" @value={{promotionalCode}} placeholder={{t "Promotional Code"}} @readonly={{promotionalCodeApplied}} @key-up={{action "handleKeyPress"}} @id="promotionalCode" />
               {{#unless promotionalCodeApplied}}
                 <div role="button" class="ui icon {{if promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
                   <i class="checkmark icon"></i>
@@ -170,10 +164,4 @@
   </div>
 </form>
 
-{{modals/login-signup-modal isOpen=isLoginModalOpen
-                            isLoading=isLoading
-                            createNewUserViaEmail=createNewUserViaEmail
-                            loginExistingUser=loginExistingUser
-                            userExists=userExists
-                            errorMessage=errorMessage
-}}
+<Modals::LoginSignupModal @isOpen={{isLoginModalOpen}} @isLoading={{isLoading}} @createNewUserViaEmail={{createNewUserViaEmail}} @loginExistingUser={{loginExistingUser}} @userExists={{userExists}} @errorMessage={{errorMessage}} />

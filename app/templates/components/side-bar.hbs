@@ -1,10 +1,9 @@
 <div class="ui left inverted vertical menu sidebar {{if sidebarVisible 'visible'}}">
-  {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
+  <LinkTo @route="explore" class="item" @activeClass="">{{t 'Browse Events'}}</LinkTo>
   {{#if session.isAuthenticated}}
     <div class="item">
       <a href="{{href-to 'account.profile'}}">
-        {{widgets/safe-image isAvatar=true class='ui avatar round image side-bar' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
-                  '/images/placeholders/avatar.png')}}
+        <Widgets::SafeImage @isAvatar={{true}} @class="ui avatar round image side-bar" @src={{if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"}} />
         {{if authManager.currentUser
             (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
             'Welcome'}}

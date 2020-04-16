@@ -3,7 +3,7 @@
     <label>
       {{t 'Enable Stripe'}}
     </label>
-    {{ui-checkbox class='toggle' checked=isCheckedStripe onChange=(action (mut isCheckedStripe))}}
+    <UiCheckbox @class="toggle" @checked={{isCheckedStripe}} @onChange={{action (mut isCheckedStripe)}} />
   </div>
   {{#if isCheckedStripe}}
     <h3 class="ui header">
@@ -20,64 +20,56 @@
       {{t 'Stripe Integration Mode'}}
     </h5>
     <div class="field">
-      {{ui-radio label=(t 'Test mode - Used during development and testing')
-                 name='stripe_integration_mode'
-                 value='debug'
-                 current=stripeMode
-                 onChange=(action (mut stripeMode))}}
+      <UiRadio @label={{t "Test mode - Used during development and testing"}} @name="stripe_integration_mode" @value="debug" @current={{stripeMode}} @onChange={{action (mut stripeMode)}} />
     </div>
     {{#if (eq stripeMode 'debug')}}
       <div class="field">
         <label>
           {{t 'Client Test ID'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This client id will be used for testing mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This client id will be used for testing mode"}} />
         </label>
-        {{input type='text' name='stripe_test_client_id' value=settings.stripeTestClientId}}
+        <Input @type="text" @name="stripe_test_client_id" @value={{settings.stripeTestClientId}} />
       </div>
       <div class="field">
         <label>
           {{t 'Secret Test Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used for testing mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This secret key will be used for testing mode"}} />
         </label>
-        {{input type='text' name='stripe_test_secret_key' value=settings.stripeTestSecretKey}}
+        <Input @type="text" @name="stripe_test_secret_key" @value={{settings.stripeTestSecretKey}} />
       </div>
       <div class="field">
         <label>
           {{t 'Publishable Test Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This publishable key will be used for testing mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This publishable key will be used for testing mode"}} />
         </label>
-        {{input type='text' name='stripe_test_publishable_key' value=settings.stripeTestPublishableKey}}
+        <Input @type="text" @name="stripe_test_publishable_key" @value={{settings.stripeTestPublishableKey}} />
       </div>
     {{/if}}
     <div class="ui hidden divider"></div>
     <div class="field">
-      {{ui-radio label=(t 'Live mode - Used during production')
-                 name='stripe_integration_mode'
-                 value='production'
-                 current=stripeMode
-                 onChange=(action (mut stripeMode))}}
+      <UiRadio @label={{t "Live mode - Used during production"}} @name="stripe_integration_mode" @value="production" @current={{stripeMode}} @onChange={{action (mut stripeMode)}} />
     </div>
     {{#if (eq stripeMode 'production')}}
       <div class="field">
         <label>
           {{t 'Client ID'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This client id will be used during live (production) mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This client id will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='stripe_client_id' value=settings.stripeClientId}}
+        <Input @type="text" @name="stripe_client_id" @value={{settings.stripeClientId}} />
       </div>
       <div class="field">
         <label>
           {{t 'Secret Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This Secret Key will be used during live (production) mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This Secret Key will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='stripe_secret_key' value=settings.stripeSecretKey}}
+        <Input @type="text" @name="stripe_secret_key" @value={{settings.stripeSecretKey}} />
       </div>
       <div class="field">
         <label>
           {{t 'Publishable Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This Publishable Key will be used during live (production) mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This Publishable Key will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='stripe_publishable_key' value=settings.stripePublishableKey}}
+        <Input @type="text" @name="stripe_publishable_key" @value={{settings.stripePublishableKey}} />
       </div>
     {{/if}}
     <div class="ui hidden divider"></div>
@@ -86,7 +78,7 @@
     <label>
       {{t 'Enable AliPay'}}
     </label>
-    {{ui-checkbox class='toggle' checked=isCheckedAliPay onChange=(action (mut isCheckedAliPay))}}
+    <UiCheckbox @class="toggle" @checked={{isCheckedAliPay}} @onChange={{action (mut isCheckedAliPay)}} />
   </div>
   {{#if isCheckedAliPay}}
     <h3 class="ui header">
@@ -103,13 +95,13 @@
       <label>
         {{t 'Secret Key'}}
       </label>
-      {{input type='text' name='alipay_secret_key' value=settings.alipaySecretKey}}
+      <Input @type="text" @name="alipay_secret_key" @value={{settings.alipaySecretKey}} />
     </div>
     <div class="field">
       <label>
         {{t 'Publishable Key'}}
       </label>
-      {{input type='text' name='alipay_publishable_key' value=settings.alipayPublishableKey}}
+      <Input @type="text" @name="alipay_publishable_key" @value={{settings.alipayPublishableKey}} />
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
@@ -118,7 +110,7 @@
     <label>
       {{t 'Enable PayPal'}}
     </label>
-    {{ui-checkbox class='toggle' checked=isCheckedPaypal onChange=(action (mut isCheckedPaypal))}}
+    <UiCheckbox @class="toggle" @checked={{isCheckedPaypal}} @onChange={{action (mut isCheckedPaypal)}} />
   </div>
   {{#if isCheckedPaypal}}
     <h3 class="ui header">
@@ -135,49 +127,41 @@
       {{t 'PayPal Integration Mode'}}
     </h5>
     <div class="field">
-      {{ui-radio label=(t 'Sandbox mode - Used during development and testing')
-                 name='paypal_integration_mode'
-                 value='sandbox'
-                 current=settings.paypalMode
-                 onChange=(action (mut settings.paypalMode))}}
+      <UiRadio @label={{t "Sandbox mode - Used during development and testing"}} @name="paypal_integration_mode" @value="sandbox" @current={{settings.paypalMode}} @onChange={{action (mut settings.paypalMode)}} />
     </div>
     {{#if (eq settings.paypalMode 'sandbox')}}
       <div class="field">
         <label>
           {{t 'Paypal Sandbox Client Id'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This client id will be used for testing mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This client id will be used for testing mode"}} />
         </label>
-        {{input type='text' name='sandbox_client_id' value=settings.paypalSandboxClient}}
+        <Input @type="text" @name="sandbox_client_id" @value={{settings.paypalSandboxClient}} />
       </div>
       <div class="field">
         <label>
           {{t 'Paypal Sandbox Secret Token'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This secret token will be used during testing mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This secret token will be used during testing mode"}} />
         </label>
-        {{input type='text' name='sandbox_secret_token' value=settings.paypalSandboxSecret}}
+        <Input @type="text" @name="sandbox_secret_token" @value={{settings.paypalSandboxSecret}} />
       </div>
     {{/if}}
     <div class="field">
-      {{ui-radio label=(t 'Live mode - Used during production')
-                 name='paypal_integration_mode'
-                 value='live'
-                 current=settings.paypalMode
-                 onChange=(action (mut settings.paypalMode))}}
+      <UiRadio @label={{t "Live mode - Used during production"}} @name="paypal_integration_mode" @value="live" @current={{settings.paypalMode}} @onChange={{action (mut settings.paypalMode)}} />
     </div>
     {{#if (eq settings.paypalMode 'live')}}
       <div class="field">
         <label>
           {{t 'Paypal Client Id'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This client id will be used during live (production) mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This client id will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='client_id' value=settings.paypalClient}}
+        <Input @type="text" @name="client_id" @value={{settings.paypalClient}} />
       </div>
       <div class="field">
         <label>
           {{t 'Paypal Secret Token'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This secret tocken will be used during live (production) mode')}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This secret tocken will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='secret_token' value=settings.paypalSecret}}
+        <Input @type="text" @name="secret_token" @value={{settings.paypalSecret}} />
       </div>
     {{/if}}
   {{/if}}
@@ -185,7 +169,7 @@
     <label>
       {{t 'Enable Omise'}}
     </label>
-    {{ui-checkbox class='toggle' checked=isCheckedOmise onChange=(action (mut isCheckedOmise))}}
+    <UiCheckbox @class="toggle" @checked={{isCheckedOmise}} @onChange={{action (mut isCheckedOmise)}} />
   </div>
   {{#if isCheckedOmise}}
     <h3 class="ui header">
@@ -202,49 +186,41 @@
       {{t 'Omise Integration Mode'}}
     </h5>
     <div class="field">
-      {{ui-radio label=(t 'Test mode - Used during development and testing')
-                 name='omise_integration_mode'
-                 value='test'
-                 current=settings.omiseMode
-                 onChange=(action (mut settings.omiseMode))}}
+      <UiRadio @label={{t "Test mode - Used during development and testing"}} @name="omise_integration_mode" @value="test" @current={{settings.omiseMode}} @onChange={{action (mut settings.omiseMode)}} />
     </div>
     {{#if (eq settings.omiseMode 'test')}}
       <div class="field">
         <label>
           {{t 'Omise Test Public Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This public key will be used for testing mode') }}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This public key will be used for testing mode"}} />
         </label>
-        {{input type='text' name='test_public_key' value=settings.omiseTestPublic}}
+        <Input @type="text" @name="test_public_key" @value={{settings.omiseTestPublic}} />
       </div>
       <div class="field">
         <label>
           {{t 'Omise Test Secret Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used during testing mode') }}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This secret key will be used during testing mode"}} />
         </label>
-        {{input type='text' name='test_secret_key' value=settings.omiseTestSecret}}
+        <Input @type="text" @name="test_secret_key" @value={{settings.omiseTestSecret}} />
       </div>
     {{/if}}
     <div class="field">
-      {{ui-radio label=(t 'Live mode - Used during production')
-                 name='omise_integration_mode'
-                 value='live'
-                 current=settings.omiseMode
-                 onChange=(action (mut settings.omiseMode))}}
+      <UiRadio @label={{t "Live mode - Used during production"}} @name="omise_integration_mode" @value="live" @current={{settings.omiseMode}} @onChange={{action (mut settings.omiseMode)}} />
     </div>
     {{#if (eq settings.omiseMode 'live')}}
       <div class="field">
         <label>
           {{t 'Omise Live Public Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This public key will be used during live (production) mode') }}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This public key will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='live_public_key' value=settings.omiseLivePublic}}
+        <Input @type="text" @name="live_public_key" @value={{settings.omiseLivePublic}} />
       </div>
       <div class="field">
         <label>
           {{t 'Omise Live Secret Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used during live (production) mode' )}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This secret key will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='live_secret_key' value=settings.omiseLiveSecret}}
+        <Input @type="text" @name="live_secret_key" @value={{settings.omiseLiveSecret}} />
       </div>
     {{/if}}
   {{/if}}
@@ -252,7 +228,7 @@
     <label>
       {{t 'Enable PayTM'}}
     </label>
-    {{ui-checkbox class='toggle' checked=settings.isPaytmActivated onChange=(action (mut settings.isPaytmActivated))}}
+    <UiCheckbox @class="toggle" @checked={{settings.isPaytmActivated}} @onChange={{action (mut settings.isPaytmActivated)}} />
   </div>
   {{#if settings.isPaytmActivated}}
     <h3 class="ui header">
@@ -269,49 +245,41 @@
       {{t 'PayTM Integration Mode'}}
     </h5>
     <div class="field">
-      {{ui-radio label=(t 'Test mode - Used during development and testing')
-                 name='paytm_integration_mode'
-                 value='test'
-                 current=settings.paytmMode
-                 onChange=(action (mut settings.paytmMode))}}
+      <UiRadio @label={{t "Test mode - Used during development and testing"}} @name="paytm_integration_mode" @value="test" @current={{settings.paytmMode}} @onChange={{action (mut settings.paytmMode)}} />
     </div>
     {{#if (eq settings.paytmMode 'test')}}
       <div class="field">
         <label>
           {{t 'PayTM Test Merchant ID'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This Merchant ID will be used for testing mode') }}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This Merchant ID will be used for testing mode"}} />
         </label>
-        {{input type='text' name='paytm_sandbox_merchant' value=settings.paytmSandboxMerchant}}
+        <Input @type="text" @name="paytm_sandbox_merchant" @value={{settings.paytmSandboxMerchant}} />
       </div>
       <div class="field">
         <label>
           {{t 'PayTM Test Secret Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used during testing mode') }}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This secret key will be used during testing mode"}} />
         </label>
-        {{input type='text' name='paytm_sandbox_secret' value=settings.paytmSandboxSecret}}
+        <Input @type="text" @name="paytm_sandbox_secret" @value={{settings.paytmSandboxSecret}} />
       </div>
     {{/if}}
     <div class="field">
-      {{ui-radio label=(t 'Live mode - Used during production')
-                 name='paytm_integration_mode'
-                 value='live'
-                 current=settings.paytmMode
-                 onChange=(action (mut settings.paytmMode))}}
+      <UiRadio @label={{t "Live mode - Used during production"}} @name="paytm_integration_mode" @value="live" @current={{settings.paytmMode}} @onChange={{action (mut settings.paytmMode)}} />
     </div>
     {{#if (eq settings.paytmMode 'live')}}
       <div class="field">
         <label>
           {{t 'PayTM Live Merchant ID'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This Merchant ID will be used during live (production) mode') }}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This Merchant ID will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='paytm_live_merchant' value=settings.paytmLiveMerchant}}
+        <Input @type="text" @name="paytm_live_merchant" @value={{settings.paytmLiveMerchant}} />
       </div>
       <div class="field">
         <label>
           {{t 'PayTM Live Secret Key'}}
-          {{ui-popup tagName="i" class="info icon" content=(t 'This secret key will be used during live (production) mode' )}}
+          <UiPopup @tagName="i" @class="info icon" @content={{t "This secret key will be used during live (production) mode"}} />
         </label>
-        {{input type='text' name='paytm_live_secret' value=settings.paytmLiveSecret}}
+        <Input @type="text" @name="paytm_live_secret" @value={{settings.paytmLiveSecret}} />
       </div>
     {{/if}}
   {{/if}}

@@ -2,13 +2,13 @@
   <img src="{{if extraRecords.logoUrl extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{record}}
 </div>
 <div class="ui horizontal large basic buttons">
-  {{#ui-popup tagName='a' click=(action props.actions.moveToDetails extraRecords.identifier) content=(t 'Event Dashboard') class='ui icon button' position='top center'}}
+  <UiPopup @tagName="a" @click={{action props.actions.moveToDetails extraRecords.identifier}} @content={{t "Event Dashboard"}} @class="ui icon button" @position="top center">
     <i class="tasks icon"></i>
-  {{/ui-popup}}
-  {{#ui-popup tagName='a' click=(action props.actions.moveToPublic extraRecords.identifier) content=(t 'View') class='ui icon button' position='top center'}}
+  </UiPopup>
+  <UiPopup @tagName="a" @click={{action props.actions.moveToPublic extraRecords.identifier}} @content={{t "View"}} @class="ui icon button" @position="top center">
     <i class="unhide icon"></i>
-  {{/ui-popup}}
-  {{#ui-popup content=(t 'Edit') click=(action props.actions.editEvent extraRecords.identifier) class='ui icon button' position='top center'}}
+  </UiPopup>
+  <UiPopup @content={{t "Edit"}} @click={{action props.actions.editEvent extraRecords.identifier}} @class="ui icon button" @position="top center">
     <i class="edit icon"></i>
-  {{/ui-popup}}
+  </UiPopup>
 </div>

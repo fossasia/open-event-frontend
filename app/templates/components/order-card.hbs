@@ -2,7 +2,7 @@
   {{#unless device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
       <a class="image" href="{{href-to 'orders.view' order.identifier}}">
-        {{widgets/safe-image src=(if order.event.thumbnailImageUrl order.event.thumbnailImageUrl order.event.originalImageUrl)}}
+        <Widgets::SafeImage @src={{if order.event.thumbnailImageUrl order.event.thumbnailImageUrl order.event.originalImageUrl}} />
       </a>
     </div>
   {{/unless}}
@@ -22,17 +22,17 @@
           </div>
         {{/if}}
       </div>
-      {{#smart-overflow class='header'}}
+      <SmartOverflow @class="header">
         {{order.event.name}}
-      {{/smart-overflow}}
+      </SmartOverflow>
       <div class="meta">
         <span class="date">
           {{moment-format order.event.startsAt 'ddd, DD MMMM YYYY, h:mm A'}}
         </span>
       </div>
-      {{#smart-overflow class='description'}}
+      <SmartOverflow @class="description">
         {{order.event.shortLocationName}}
-      {{/smart-overflow}}
+      </SmartOverflow>
     </a>
     <div class="extra content small text">
       <span>

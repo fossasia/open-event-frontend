@@ -1,23 +1,23 @@
 <div class="ui grid">
   <div class="row">
     <div class="sixteen wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'admin.content.index' class='item'}}
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.content.index" class="item">
           {{t 'Social Links'}}
-        {{/link-to}}
-        {{#link-to 'admin.content.pages' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.pages" class="item">
           {{t 'Pages'}}
-        {{/link-to}}
-        {{#link-to 'admin.content.system-images' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.system-images" class="item">
           {{t 'System Images'}}
-        {{/link-to}}
-        {{#link-to 'admin.content.translations' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.translations" class="item">
           {{t 'Translations'}}
-        {{/link-to}}
-        {{#link-to 'admin.content.events' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.events" class="item">
           {{t 'Events'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="row">

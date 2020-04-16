@@ -22,7 +22,7 @@
         {{t 'Delete Your Account'}}
       </button>
     </div>
-    {{modals/user-delete-modal isLoading=isLoading isOpen=isUserDeleteModalOpen openConfirmDeleteUserModal=(action 'openConfirmDeleteUserModal') confirmEmail=confirmEmail userEmail=userEmail deleteUser=(action 'deleteUser' data.user)}}
-    {{modals/confirm-user-delete-modal isLoading=isLoading isOpen=isConfirmUserDeleteModalOpen checked=checked deleteUser=(action 'deleteUser' data.user)}}
+    <Modals::UserDeleteModal @isLoading={{isLoading}} @isOpen={{isUserDeleteModalOpen}} @openConfirmDeleteUserModal={{action "openConfirmDeleteUserModal"}} @confirmEmail={{confirmEmail}} @userEmail={{userEmail}} @deleteUser={{action "deleteUser" data.user}} />
+    <Modals::ConfirmUserDeleteModal @isLoading={{isLoading}} @isOpen={{isConfirmUserDeleteModalOpen}} @checked={{checked}} @deleteUser={{action "deleteUser" data.user}} />
   </div>  
 </div>

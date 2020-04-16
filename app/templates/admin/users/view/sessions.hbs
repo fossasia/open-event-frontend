@@ -3,14 +3,14 @@
   <div class="ui grid">
     <div class="row">
       <div class="twelve wide column">
-        {{#tabbed-navigation}}
-          {{#link-to 'admin.users.view.sessions.list' 'upcoming' class='item'}}
+        <TabbedNavigation>
+          <LinkTo @route="admin.users.view.sessions.list" @model="upcoming" class="item">
             {{t 'Upcoming Sessions'}}
-          {{/link-to}}
-          {{#link-to 'admin.users.view.sessions.list' 'past' class='item'}}
+          </LinkTo>
+          <LinkTo @route="admin.users.view.sessions.list" @model="past" class="item">
             {{t 'Past Sessions'}}
-          {{/link-to}}
-        {{/tabbed-navigation}}
+          </LinkTo>
+        </TabbedNavigation>
       </div>
     </div>
     {{outlet}}

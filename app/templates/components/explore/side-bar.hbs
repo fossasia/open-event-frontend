@@ -1,23 +1,19 @@
 <div class="map item {{if (not isMapVisible) 'mobile hidden'}}">
-  {{#g-map markersFitMode='live' lat=37.7833 lng=-122.4167 zoom=2 address=location class='google-maps' as |context|}}
+  <GMap @markersFitMode="live" @lat={{37.7833}} @lng={{-122.4167}} @zoom={{2}} @address={{location}} @class="google-maps" as |context|>
     {{g-map-address-marker context address=location onLocationChange=(action 'onLocationChangeHandler')}}
-  {{/g-map}}
+  </GMap>
 </div>
 {{#if device.isMobile}}
   <div class="ui bottom attached button" role="button" {{action 'toggleMap'}}> {{if (not isMapVisible) 'Show' 'Hide'}} Map </div>
 {{/if}}
 <div class="item">
   <div class="ui input">
-    {{widgets/forms/places-autocomplete
-      name='location'
-      value=location
-      type='text'
-      placeholder=(t 'Enter Location')}}
+    <Widgets::Forms::PlacesAutocomplete @name="location" @value={{location}} @type="text" @placeholder={{t "Enter Location"}} />
   </div>
 </div>
 {{#if showFiltersOnMobile}}
   <div class="item">
-    {{#ui-accordion}}
+    <UiAccordion>
       <span class="title">
         <i class="dropdown icon"></i>
         {{t 'Date'}}
@@ -27,7 +23,7 @@
           <div class="grouped fields">
             {{#each dateRanges as |dateRange|}}
               <div class="field">
-                {{ui-checkbox label=dateRange.name class='ui checkbox' checked=(if (eq dateType dateRange.key) 'active') onChange=(action 'selectDateFilter' dateRange.key)}}
+                <UiCheckbox @label={{dateRange.name}} @class="ui checkbox" @checked={{if (eq dateType dateRange.key) "active"}} @onChange={{action "selectDateFilter" dateRange.key}} />
               </div>
               {{#if (and (eq dateRange.key 'custom_dates') (eq dateType 'custom_dates'))}}
                 <div class="explore sub menu">
@@ -35,19 +31,11 @@
                     <div class="grouped fields">
                       <div class="item field">
                         <label class="required" for="start_date">{{t 'Starts'}}</label>
-                        {{widgets/forms/date-picker type='text'
-                                                    value=customStartDate
-                                                    rangePosition='start'
-                                                    onChange=(action 'dateValidate')
-                        }}
+                        <Widgets::Forms::DatePicker @type="text" @value={{customStartDate}} @rangePosition="start" @onChange={{action "dateValidate"}} />
                       </div>
                       <div class="item field">
                         <label class="required" for="end_date">{{t 'Ends'}}</label>
-                        {{widgets/forms/date-picker type='text'
-                                                    value=customEndDate
-                                                    rangePosition='end'
-                                                    onChange=(action 'onDateChange')
-                        }}
+                        <Widgets::Forms::DatePicker @type="text" @value={{customEndDate}} @rangePosition="end" @onChange={{action "onDateChange"}} />
                       </div>
                     </div>
                   </div>
@@ -57,10 +45,10 @@
           </div>
         </div>
       </div>
-    {{/ui-accordion}}
+    </UiAccordion>
   </div>
   <div class="item">
-    {{#ui-accordion}}
+    <UiAccordion>
       <span class="title">
         <i class="right floated dropdown icon"></i>
         {{t 'Categories'}}
@@ -81,7 +69,7 @@
               <div class="grouped fields">
                 {{#each Category.subTopics as |subCategory|}}
                   <div class="field inner item">
-                    {{ui-checkbox label=subCategory.name class='ui checkbox' checked=(if (eq sub_category subCategory.slug) 'active') onChange=(action 'selectCategory' Category.name subCategory.slug)}}
+                    <UiCheckbox @label={{subCategory.name}} @class="ui checkbox" @checked={{if (eq sub_category subCategory.slug) "active"}} @onChange={{action "selectCategory" Category.name subCategory.slug}} />
                   </div>
                 {{/each}}
               </div>
@@ -89,30 +77,30 @@
           {{/if}}
         {{/each}}
       </div>
-    {{/ui-accordion}}
+    </UiAccordion>
   </div>
   <div class="item">
-    {{#ui-accordion}}
+    <UiAccordion>
       <span class="title">
         <i class="dropdown icon"></i>
         {{t 'Event Type' }}
       </span>
       <div class="content menu">
-        {{ui-checkbox label=(t 'All Types') class='ui checkbox' checked=(if showAllTypes 'active') onChange=(action 'clearFilterTypes')}}
+        <UiCheckbox @label={{t "All Types"}} @class="ui checkbox" @checked={{if showAllTypes "active"}} @onChange={{action "clearFilterTypes"}} />
         <div class="ui form">
           <div class="grouped fields">
             {{#each model.eventTypes as |eventType|}}
               <div class="field">
-                {{ui-checkbox label=eventType.name class='ui checkbox' checked=(if (eq event_type eventType.name) 'active') onChange=(action 'selectEventType' eventType.name)}}
+                <UiCheckbox @label={{eventType.name}} @class="ui checkbox" @checked={{if (eq event_type eventType.name) "active"}} @onChange={{action "selectEventType" eventType.name}} />
               </div>
             {{/each}}
           </div>
         </div>
       </div>
-    {{/ui-accordion}}
+    </UiAccordion>
   </div>
   <div class="item">
-    {{#ui-accordion}}
+    <UiAccordion>
       <span class="title">
         <i class="dropdown icon"></i>
         {{t 'Ticket Type' }}
@@ -121,19 +109,19 @@
         <div class="ui form">
           <div class="grouped fields">
             <div class="field">
-              {{ui-checkbox label=(t 'Free') class='ui checkbox' checked=(if (eq ticket_type 'free') true) onChange=(action 'selectTicketType' 'free')}}
+              <UiCheckbox @label={{t "Free"}} @class="ui checkbox" @checked={{if (eq ticket_type "free") true}} @onChange={{action "selectTicketType" "free"}} />
             </div>
             <div class="field">
-              {{ui-checkbox label=(t 'Paid') class='ui checkbox' checked=(if (eq ticket_type 'paid') true) onChange=(action 'selectTicketType' 'paid')}}
+              <UiCheckbox @label={{t "Paid"}} @class="ui checkbox" @checked={{if (eq ticket_type "paid") true}} @onChange={{action "selectTicketType" "paid"}} />
             </div>
           </div>
         </div>
       </div>
-    {{/ui-accordion}}
+    </UiAccordion>
   </div>
 {{/if}}
 <div class="item">
-  {{#ui-accordion}}
+  <UiAccordion>
     <span class="title">
       <i class="dropdown icon"></i>
       {{t 'Event Call For Speakers' }}
@@ -142,15 +130,15 @@
       <div class="ui form">
         <div class="grouped fields">
           <div class="field">
-            {{ui-checkbox label=(t 'Open') checked=(if (eq cfs 'open') 'active') onChange=(action 'selectEventCfs' 'open')}}
+            <UiCheckbox @label={{t "Open"}} @checked={{if (eq cfs "open") "active"}} @onChange={{action "selectEventCfs" "open"}} />
           </div>
           <div class="field">
-            {{ui-checkbox label=(t 'Closed') class='ui checkbox' checked=(if (eq cfs 'closed') 'active') onChange=(action 'selectEventCfs' 'closed')}}
+            <UiCheckbox @label={{t "Closed"}} @class="ui checkbox" @checked={{if (eq cfs "closed") "active"}} @onChange={{action "selectEventCfs" "closed"}} />
           </div>
         </div>
       </div>
     </div>
-  {{/ui-accordion}}
+  </UiAccordion>
 </div>
 <div class="item">
   <button class="ui red button {{if hideClearFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>

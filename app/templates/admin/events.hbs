@@ -1,26 +1,26 @@
 <div class="ui grid stackable">
   <div class="row">
     <div class="sixteen wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'admin.events.list' 'live' class='item'}}
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.events.list" @model="live" class="item">
           {{t 'All Live'}}
-        {{/link-to}}
-        {{#link-to 'admin.events.list' 'draft' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.events.list" @model="draft" class="item">
           {{t 'All Draft'}}
-        {{/link-to}}
-        {{#link-to 'admin.events.list' 'past' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.events.list" @model="past" class="item">
           {{t 'All Past'}}
-        {{/link-to}}
-        {{#link-to 'admin.events.list' 'all' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.events.list" @model="all" class="item">
           {{t 'All Events'}}
-        {{/link-to}}
-        {{#link-to 'admin.events.list' 'deleted' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.events.list" @model="deleted" class="item">
           {{t 'All Deleted'}}
-        {{/link-to}}
-        {{#link-to 'admin.events.import' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.events.import" class="item">
           {{t 'Import'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="row">

@@ -6,7 +6,7 @@
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
-              {{input type='checkbox' checked=data.event.isTicketFormEnabled}}
+              <Input @type="checkbox" @checked={{data.event.isTicketFormEnabled}} />
               <label class="weight-300" style="font-size: large">
                 {{if data.event.isTicketFormEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Attendee Form'}}
@@ -62,18 +62,10 @@
                   </label>
                 </td>
                 <td class="center aligned">
-                  {{ui-checkbox class='slider'
-                                checked=field.isIncluded
-                                disabled=field.isFixed
-                                onChange=(action (mut field.isIncluded))
-                                label=(if device.isMobile (t 'Include'))}}
+                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if device.isMobile (t "Include")}} />
                 </td>
                 <td class="center aligned">
-                  {{ui-checkbox class='slider'
-                                checked=field.isRequired
-                                disabled=field.isFixed
-                                onChange=(action (mut field.isRequired))
-                                label=(if device.isMobile (t 'Require'))}}
+                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if device.isMobile (t "Require")}} />
                 </td>
               </tr>
             {{/each}}

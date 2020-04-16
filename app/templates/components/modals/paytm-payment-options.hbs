@@ -8,7 +8,7 @@
   </div>
   <form class="ui form" autocomplete="off" {{action 'openOTPController' on='submit' preventDefault=true}}>
     <div class="field">
-      {{ui-radio name='payment_mode' value='paytm' onChange=(action (mut isWalletSelected))}}
+      <UiRadio @name="payment_mode" @value="paytm" @onChange={{action (mut isWalletSelected)}} />
       {{t 'Paytm Wallet'}}<img src="/images/payment-logos/paytm.png" alt="paytm"> 
     </div>
     {{#if isWalletSelected}}
@@ -16,7 +16,7 @@
         <div class="label">
           {{t 'Please enter your Paytm registered Mobile Number to continue'}}
         </div>
-        {{input type='number' id='mobile_number' value=mobileNumber required=true}}
+        <Input @type="number" @id="mobile_number" @value={{mobileNumber}} required={{true}} />
       </div>
     {{/if}}
   </form>

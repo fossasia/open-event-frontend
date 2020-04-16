@@ -29,14 +29,14 @@
     {{#if extraRecords.isUserOwner}}
       {{#each extraRecords.ownerEvents as |event|}}
         <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic black label">{{t 'Owner'}}</span>
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic black label">{{t 'Owner'}}</span>
         </div>
       {{/each}}
     {{/if}}
     {{#if extraRecords.isUserOrganizer}}
       {{#each extraRecords.organizerEvents as |event|}}
         <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic orange label">{{t 'Organizer'}}</span>
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic orange label">{{t 'Organizer'}}</span>
         </div>
       {{/each}}
     {{/if}}
@@ -50,21 +50,21 @@
     {{#if extraRecords.isUserTrackOrganizer}}
       {{#each extraRecords.trackOrganizerEvents as |event|}}
         <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic yellow label">{{t 'Track Organizer'}}</span>
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic yellow label">{{t 'Track Organizer'}}</span>
         </div>
       {{/each}}
     {{/if}}
     {{#if extraRecords.isUserRegistrar}}
       {{#each extraRecords.registrarEvents as |event|}}
         <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
         </div>
       {{/each}}
     {{/if}}
     {{#if extraRecords.isUserModerator}}
       {{#each extraRecords.moderatorEvents as |event|}}
         <div class="item">
-          {{#link-to 'events.view' event.identifier}}{{event.name}}{{/link-to}} - <span class="ui tiny basic olive label">{{t 'Moderator'}}</span>
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic olive label">{{t 'Moderator'}}</span>
         </div>
       {{/each}}
     {{/if}}

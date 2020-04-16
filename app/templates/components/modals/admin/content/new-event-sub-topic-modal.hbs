@@ -12,7 +12,7 @@
       <label class="required">
         {{t 'New Event Sub Topic'}}
       </label>
-      {{input type='text' name='sub_topic_name' value=eventSubTopic.name placeholder=(t 'Enter New Event Sub Topic')}}
+      <Input @type="text" @name="sub_topic_name" @value={{eventSubTopic.name}} placeholder={{t "Enter New Event Sub Topic"}} />
     </div>
   </form>
 </div>

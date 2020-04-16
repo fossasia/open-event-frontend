@@ -1,12 +1,12 @@
 {{! This will be automatically rendered if any model fetch fails }}
 <div class="ui container">
   {{#if (eq model.errors.0.status 404)}}
-    {{errors/not-found}}
+    <Errors::NotFound />
   {{else if (eq model.errors.0.status 403)}}
-    {{errors/forbidden-error}}
+    <Errors::ForbiddenError />
   {{else if (eq model.errors.0.status 500)}}
-    {{errors/server-error}}
+    <Errors::ServerError />
   {{else}}
-    {{errors/generic-error}}
+    <Errors::GenericError />
   {{/if}}
 </div>

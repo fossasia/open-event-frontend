@@ -9,7 +9,15 @@
     <Events::View::Overview::ManageRoles @data={{this.model}} />
   </div>
   <div class="eight wide column">
-    <Events::View::Overview::EventSponsors @data={{this.model.sponsors}} @columns={{this.columns}} @page={{this.page}} @per_page={{this.per_page}} @search={{this.search}} @sort_by={{this.sort_by}} @sort_dir={{this.sort_dir}} @filterOptions={{this.filterOptions}} />
+    <Events::View::Overview::EventSponsors
+      @data={{this.model.sponsors}}
+      @columns={{this.columns}}
+      @page={{this.page}}
+      @per_page={{this.per_page}}
+      @search={{this.search}}
+      @sort_by={{this.sort_by}}
+      @sort_dir={{this.sort_dir}}
+      @filterOptions={{this.filterOptions}} />
   </div>
   <div class="eight wide column">
     <Events::View::Overview::EventApps />

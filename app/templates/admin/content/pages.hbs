@@ -40,7 +40,7 @@
     </div>
     <div class="column eleven wide">
       {{#if isFormOpen}}
-        {{forms/admin/content/pages-form data=currentForm save='savePage' isCreate=isCreate isFormOpen=isFormOpen}}
+        <Forms::Admin::Content::PagesForm @data={{currentForm}} @save="savePage" @isCreate={{isCreate}} @isFormOpen={{isFormOpen}} />
       {{/if}}
     </div>
   </div>

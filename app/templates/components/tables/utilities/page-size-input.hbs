@@ -1,6 +1,6 @@
 <span>
   {{t 'Show'}}
-  {{#ui-dropdown class='inline' onChange=(action (mut pageSize)) forceSelection=true}}
+  <UiDropdown @class="inline" @onChange={{action (mut pageSize)}} @forceSelection={{true}}>
     <div class="default text">{{pageSize}}</div>
     <i class="dropdown icon"></i>
     <div class="menu">
@@ -10,6 +10,6 @@
         </div>
       {{/each}}
     </div>
-  {{/ui-dropdown}}
+  </UiDropdown>
   {{t 'entries per page'}}
 </span>

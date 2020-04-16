@@ -1,18 +1,18 @@
 {{#if hasLinkName}}
   <div class="three wide field">
-    {{input type='text' value=linkName disabled=fixedName}}
+    <Input @type="text" @value={{linkName}} @disabled={{fixedName}} />
   </div>
   <div class="six wide field">
     <div class="ui labeled {{if isChild 'action'}} input">
-      {{#ui-dropdown class='label' selected=protocol onChange=(action (mut protocol))}}
+      <UiDropdown @class="label" @selected={{protocol}} @onChange={{action (mut protocol)}}>
         <div class="text">https://</div>
         <i class="dropdown icon"></i>
         <div class="menu">
           <div class="item" data-value="http">http://</div>
           <div class="item" data-value="https">https://</div>
         </div>
-      {{/ui-dropdown}}
-      {{input type='text' value=address name=name id=inputId}}
+      </UiDropdown>
+      <Input @type="text" @value={{address}} @name={{name}} @id={{inputId}} />
       {{#if isChild}}
         <div class="ui icon buttons">
           {{#if canRemoveItem}}
@@ -26,13 +26,13 @@
     </div>
   </div>
 {{else}}
-  {{#ui-dropdown class='label' selected=protocol onChange=(action (mut protocol))}}
+  <UiDropdown @class="label" @selected={{protocol}} @onChange={{action (mut protocol)}}>
     <div class="text">https://</div>
     <i class="dropdown icon"></i>
     <div class="menu">
       <div class="item" data-value="http">http://</div>
       <div class="item" data-value="https">https://</div>
     </div>
-  {{/ui-dropdown}}
-  {{input type='text' value=address name=name id=inputId}}
+  </UiDropdown>
+  <Input @type="text" @value={{address}} @name={{name}} @id={{inputId}} />
 {{/if}}

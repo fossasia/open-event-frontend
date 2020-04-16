@@ -22,21 +22,17 @@
           <td>{{roleInvite.roleName}}</td>
           <td>
             <div class="ui horizontal compact basic buttons">
-              {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openAddUserRoleModal' roleInvite)}}
+              <UiPopup @content={{t "Edit"}} @class="ui icon button" @click={{action "openAddUserRoleModal" roleInvite}}>
                 <i class="edit icon"></i>
-              {{/ui-popup}}
+              </UiPopup>
               {{#if (eq roleType 'accepted')}}
-                {{#ui-popup content=(t 'Delete')
-                            class='ui icon button'
-                            click=(action (confirm (t 'Are you sure you would like to delete this role?') (action 'deleteUserRole' roleInvite)))}}
+                <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" roleInvite))}}>
                   <i class="trash outline icon"></i>
-                {{/ui-popup}}
+                </UiPopup>
               {{else}}
-                {{#ui-popup content=(t 'Delete')
-                            class='ui icon button'
-                            click=(action (confirm (t 'Are you sure you would like to cancel this invite?') (action 'deleteUserRole' roleInvite)))}}
+                <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
                   <i class="trash outline icon"></i>
-                {{/ui-popup}}
+                </UiPopup>
               {{/if}}
             </div>
           </td>
@@ -49,4 +45,4 @@
     </tbody>
   </table>
 </div>
-{{modals/add-user-role-modal currentInvite=currentInvite isLoading=isLoading data=data isOpen=isAddUserRoleModalOpen updateUserRoles=(action 'updateUserRoles')}}
+<Modals::AddUserRoleModal @currentInvite={{currentInvite}} @isLoading={{isLoading}} @data={{data}} @isOpen={{isAddUserRoleModalOpen}} @updateUserRoles={{action "updateUserRoles"}} />
