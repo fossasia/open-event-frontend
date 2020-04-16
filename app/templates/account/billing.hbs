@@ -1,14 +1,14 @@
 <div class="ui grid">
   <div class="row">
     <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
-      {{#tabbed-navigation isVertical=true}}
-        {{#link-to 'account.billing.payment-info' class='item'}}
+      <TabbedNavigation @isVertical={{true}}>
+        <LinkTo @route="account.billing.payment-info" class="item">
           {{t 'Payment Information'}}
-        {{/link-to}}
-        {{#link-to 'account.billing.invoices' class='item'}}
+        </LinkTo>
+        <LinkTo @route="account.billing.invoices" class="item">
           {{t 'Invoices'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
     <div class="{{if device.isMobile 'sixteen' 'thirteen'}} wide column">
       {{outlet}}

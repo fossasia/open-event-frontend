@@ -14,6 +14,15 @@ module.exports = {
     'require-valid-alt-text': false,
     'no-inline-styles': false,
     'no-negated-condition': false,
-    'no-invalid-meta': false // Crashing the linter https://github.com/ember-template-lint/ember-template-lint/pull/1087
-  }
+    'no-invalid-meta': false, // Crashing the linter https://github.com/ember-template-lint/ember-template-lint/pull/1087
+    'no-curly-component-invocation': false,
+  },
+  overrides: [
+    {
+      files: ['**/app/templates/account/**/*.hbs'],
+      rules: {
+        'no-curly-component-invocation': true,
+      }
+    },
+  ]
 };

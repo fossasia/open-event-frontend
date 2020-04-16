@@ -14,14 +14,15 @@
     "start": "ember server",
     "test": "ember test",
     "exam": "ember exam --launch=chrome --random",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:js": "eslint --fix app ember-cli-build.js testem.js tests",
     "lint:scss": "sass-lint -c .sass-lint.yml --verbose",
+    "lint:hbs": "ember-template-lint .",
     "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'bower_components', 'junction') } catch (e) { }\""
   },
   "pre-commit": {
     "run": [
-      "lint:js",
-      "lint:scss"
+      "lint"
     ]
   },
   "devDependencies": {
@@ -84,7 +85,6 @@
     "ember-cli-shims": "^1.2.0",
     "ember-cli-string-helpers": "^4.0.6",
     "ember-cli-stripe": "^3.0.0",
-    "ember-cli-template-lint": "^2.0.2",
     "ember-cli-typescript": "^3.1.3",
     "ember-cli-typescript-blueprints": "^3.0.0",
     "ember-cli-uglify": "^3.0.0",
@@ -121,6 +121,7 @@
     "ember-simple-auth-token": "^5.0.0",
     "ember-source": "~3.18.0",
     "ember-table": "^2.2.3",
+    "ember-template-lint": "^2.4.1",
     "ember-truth-helpers": "^2.1.0",
     "ember-uuid": "^2.1.0",
     "eslint-plugin-ember": "^8.4.0",
@@ -132,6 +133,7 @@
     "loader.js": "^4.7.0",
     "lodash-es": "^4.17.15",
     "mini-css-extract-plugin": "^0.9.0",
+    "npm-run-all": "^4.1.5",
     "object-to-formdata": "^3.0.4",
     "paypal-checkout": "^4.0.312",
     "pre-commit": "^1.2.2",
