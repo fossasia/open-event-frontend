@@ -1,45 +1,45 @@
 <div class="ui tiny header">
-  <a class="main content" href="{{href-to 'orders.view' record}}">
-    {{record}}
+  <a class="main content" href="{{href-to 'orders.view' this.record}}">
+    {{this.record}}
   </a>
   <span class="weight-400">
-    {{t 'by'}} {{if extraRecords.user.firstName extraRecords.user.firstName (t 'Name not provided')}}
+    {{t 'by'}} {{if this.extraRecords.user.firstName this.extraRecords.user.firstName (t 'Name not provided')}}
   </span>
-  <div class="ui basic mini {{order-color extraRecords.status}} label">
-    {{extraRecords.status}}
+  <div class="ui basic mini {{order-color this.extraRecords.status}} label">
+    {{this.extraRecords.status}}
   </div>
   <div class="sub header">
-    {{#if extraRecords.paidVia}}
+    {{#if this.extraRecords.paidVia}}
       <span class="weight-800">
-        {{t 'Payment via'}} {{extraRecords.paidVia}}
+        {{t 'Payment via'}} {{this.extraRecords.paidVia}}
       </span>
     {{/if}}
     <span class="muted text">
-      {{#if extraRecords.completedAt}}
-        {{moment-format extraRecords.completedAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now extraRecords.completedAt}}
+      {{#if this.extraRecords.completedAt}}
+        {{moment-format this.extraRecords.completedAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now this.extraRecords.completedAt}}
       {{else}}
-        {{moment-format extraRecords.createdAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now extraRecords.createdAt}}
+        {{moment-format this.extraRecords.createdAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now this.extraRecords.createdAt}}
       {{/if}}
     </span>
   </div>
 </div>
 <div class="ui horizontal compact basic buttons">
-  {{#if (and (eq extraRecords.status 'placed') (can-modify-order record))}}
-    <UiPopup @content={{t "Mark Completed"}} @click={{action (confirm (t "Are you sure you would like to mark this Order as completed?") (action props.actions.completeOrder record))}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
+  {{#if (and (eq this.extraRecords.status 'placed') (can-modify-order this.record))}}
+    <UiPopup @content={{t "Mark Completed"}} @click={{action (confirm (t "Are you sure you would like to mark this Order as completed?") (action this.props.actions.completeOrder this.record))}} @class="{{if this.device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
       <i class="check icon"></i>
     </UiPopup>
   {{/if}}
-  {{#if (and (not-eq extraRecords.status 'cancelled') (not-eq extraRecords.status 'expired') (can-modify-order record))}}
-    <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Order?") (action props.actions.cancelOrder record))}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
+  {{#if (and (not-eq this.extraRecords.status 'cancelled') (not-eq this.extraRecords.status 'expired') (can-modify-order this.record))}}
+    <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Order?") (action this.props.actions.cancelOrder this.record))}} @class="{{if this.device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
       <i class="delete icon"></i>
     </UiPopup>
   {{/if}}
-  {{#if (can-modify-order record)}}
-    <UiPopup @content={{t "Delete order"}} @click={{action (confirm (t "Are you sure you would like to delete this Order?") (action props.actions.deleteOrder record))}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
+  {{#if (can-modify-order this.record)}}
+    <UiPopup @content={{t "Delete order"}} @click={{action (confirm (t "Are you sure you would like to delete this Order?") (action this.props.actions.deleteOrder this.record))}} @class="{{if this.device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
       <i class="trash icon"></i>
     </UiPopup>
   {{/if}}
-  <UiPopup @content={{t "Resend order confirmation"}} @click={{action props.actions.resendConfirmation record}} @class="{{if device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
+  <UiPopup @content={{t "Resend order confirmation"}} @click={{action this.props.actions.resendConfirmation this.record}} @class="{{if this.device.isMobile 'medium' 'huge'}} ui icon button" @position="top center">
     <i class="mail outline icon"></i>
   </UiPopup>
 </div>

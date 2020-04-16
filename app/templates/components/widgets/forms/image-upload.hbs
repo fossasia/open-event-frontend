@@ -1,17 +1,17 @@
-{{#if selectedImage}}
-  {{#if (and requiresDivider device.isMobile)}}
+{{#if this.selectedImage}}
+  {{#if (and this.requiresDivider this.device.isMobile)}}
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="ui card">
-    {{#if uploadingImage}}
+    {{#if this.uploadingImage}}
       <div class="ui active dimmer">
         <div class="ui text loader">{{t 'Image Uploading'}}</div>
       </div>
     {{/if}}
     <div class="image">
-      <img src="{{selectedImage}}" alt="Selected image">
+      <img src="{{this.selectedImage}}" alt="Selected image">
     </div>
-    {{#if allowReCrop}}
+    {{#if this.allowReCrop}}
       <div class="ui bottom attached mini buttons">
         <button type="button" class="ui teal button" {{action 'reCrop'}}>
           <i class="crop icon"></i>
@@ -22,38 +22,39 @@
     <div class="ui bottom attached mini buttons">
       <button type="button" class="ui red button" {{action 'removeSelection'}}>
         <i class="trash icon"></i>
-        {{if needsConfirmation 'Delete' 'Confirm Delete'}}
+        {{if this.needsConfirmation 'Delete' 'Confirm Delete'}}
       </button>
     </div>
   </div>
 {{else}}
   <Input
     @type="file"
-    @id={{inputIdGenerated}} class="styled input"
+    @id={{this.inputIdGenerated}}
+    class="styled input"
     @accept="image/*"
     @name="image_upload"
     @change={{action "fileSelected"}} />
-  <label for="{{inputIdGenerated}}">
+  <label for="{{this.inputIdGenerated}}">
     <div class="ui center aligned piled upload segment text muted">
       <i class="big {{icon}} icon"></i>
       <br><br>
-      {{hint}}<br>
-      {{#if allowDragDrop}}
+      {{this.hint}}<br>
+      {{#if this.allowDragDrop}}
         <small>({{t 'click or drag-and-drop'}})</small>
       {{/if}}
     </div>
     <span class="text muted">
-      {{#if helpText}}
-        {{helpText}}<br>
+      {{#if this.helpText}}
+        {{this.helpText}}<br>
       {{/if}}
-      ({{t 'Not larger than'}} {{maxSize}})
+      ({{t 'Not larger than'}} {{this.maxSize}})
     </span>
   </label>
 {{/if}}
-{{#if needsCropper}}
+{{#if this.needsCropper}}
   <Modals::CropperModal
-    @isOpen={{cropperModalIsShown}}
-    @imgData={{imgData}}
+    @isOpen={{this.cropperModalIsShown}}
+    @imgData={{this.imgData}}
     @onImageCrop={{action "imageCropped"}}
-    @aspectRatio={{aspectRatio}} />
+    @aspectRatio={{this.aspectRatio}} />
 {{/if}}

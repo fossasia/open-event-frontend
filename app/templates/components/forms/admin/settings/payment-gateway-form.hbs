@@ -5,10 +5,10 @@
     </label>
     <UiCheckbox
       @class="toggle"
-      @checked={{isCheckedStripe}}
-      @onChange={{action (mut isCheckedStripe)}} />
+      @checked={{this.isCheckedStripe}}
+      @onChange={{action (mut this.isCheckedStripe)}} />
   </div>
-  {{#if isCheckedStripe}}
+  {{#if this.isCheckedStripe}}
     <h3 class="ui header">
       {{t 'Stripe Keys'}}
       <div class="sub header">
@@ -27,10 +27,10 @@
         @label={{t "Test mode - Used during development and testing"}}
         @name="stripe_integration_mode"
         @value="debug"
-        @current={{stripeMode}}
-        @onChange={{action (mut stripeMode)}} />
+        @current={{this.stripeMode}}
+        @onChange={{action (mut this.stripeMode)}} />
     </div>
-    {{#if (eq stripeMode 'debug')}}
+    {{#if (eq this.stripeMode 'debug')}}
       <div class="field">
         <label>
           {{t 'Client Test ID'}}
@@ -42,7 +42,7 @@
         <Input
           @type="text"
           @name="stripe_test_client_id"
-          @value={{settings.stripeTestClientId}} />
+          @value={{this.settings.stripeTestClientId}} />
       </div>
       <div class="field">
         <label>
@@ -55,7 +55,7 @@
         <Input
           @type="text"
           @name="stripe_test_secret_key"
-          @value={{settings.stripeTestSecretKey}} />
+          @value={{this.settings.stripeTestSecretKey}} />
       </div>
       <div class="field">
         <label>
@@ -68,7 +68,7 @@
         <Input
           @type="text"
           @name="stripe_test_publishable_key"
-          @value={{settings.stripeTestPublishableKey}} />
+          @value={{this.settings.stripeTestPublishableKey}} />
       </div>
     {{/if}}
     <div class="ui hidden divider"></div>
@@ -77,10 +77,10 @@
         @label={{t "Live mode - Used during production"}}
         @name="stripe_integration_mode"
         @value="production"
-        @current={{stripeMode}}
-        @onChange={{action (mut stripeMode)}} />
+        @current={{this.stripeMode}}
+        @onChange={{action (mut this.stripeMode)}} />
     </div>
-    {{#if (eq stripeMode 'production')}}
+    {{#if (eq this.stripeMode 'production')}}
       <div class="field">
         <label>
           {{t 'Client ID'}}
@@ -92,7 +92,7 @@
         <Input
           @type="text"
           @name="stripe_client_id"
-          @value={{settings.stripeClientId}} />
+          @value={{this.settings.stripeClientId}} />
       </div>
       <div class="field">
         <label>
@@ -105,7 +105,7 @@
         <Input
           @type="text"
           @name="stripe_secret_key"
-          @value={{settings.stripeSecretKey}} />
+          @value={{this.settings.stripeSecretKey}} />
       </div>
       <div class="field">
         <label>
@@ -118,7 +118,7 @@
         <Input
           @type="text"
           @name="stripe_publishable_key"
-          @value={{settings.stripePublishableKey}} />
+          @value={{this.settings.stripePublishableKey}} />
       </div>
     {{/if}}
     <div class="ui hidden divider"></div>
@@ -129,10 +129,10 @@
     </label>
     <UiCheckbox
       @class="toggle"
-      @checked={{isCheckedAliPay}}
-      @onChange={{action (mut isCheckedAliPay)}} />
+      @checked={{this.isCheckedAliPay}}
+      @onChange={{action (mut this.isCheckedAliPay)}} />
   </div>
-  {{#if isCheckedAliPay}}
+  {{#if this.isCheckedAliPay}}
     <h3 class="ui header">
       {{t 'AliPay Keys(Stripe Sources)'}}
       <div class="sub header">
@@ -150,7 +150,7 @@
       <Input
         @type="text"
         @name="alipay_secret_key"
-        @value={{settings.alipaySecretKey}} />
+        @value={{this.settings.alipaySecretKey}} />
     </div>
     <div class="field">
       <label>
@@ -159,7 +159,7 @@
       <Input
         @type="text"
         @name="alipay_publishable_key"
-        @value={{settings.alipayPublishableKey}} />
+        @value={{this.settings.alipayPublishableKey}} />
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
@@ -170,10 +170,10 @@
     </label>
     <UiCheckbox
       @class="toggle"
-      @checked={{isCheckedPaypal}}
-      @onChange={{action (mut isCheckedPaypal)}} />
+      @checked={{this.isCheckedPaypal}}
+      @onChange={{action (mut this.isCheckedPaypal)}} />
   </div>
-  {{#if isCheckedPaypal}}
+  {{#if this.isCheckedPaypal}}
     <h3 class="ui header">
       {{t 'PayPal Credentials'}}
       <div class="sub header">
@@ -193,10 +193,10 @@
         @label={{t "Sandbox mode - Used during development and testing"}}
         @name="paypal_integration_mode"
         @value="sandbox"
-        @current={{settings.paypalMode}}
-        @onChange={{action (mut settings.paypalMode)}} />
+        @current={{this.settings.paypalMode}}
+        @onChange={{action (mut this.settings.paypalMode)}} />
     </div>
-    {{#if (eq settings.paypalMode 'sandbox')}}
+    {{#if (eq this.settings.paypalMode 'sandbox')}}
       <div class="field">
         <label>
           {{t 'Paypal Sandbox Client Id'}}
@@ -208,7 +208,7 @@
         <Input
           @type="text"
           @name="sandbox_client_id"
-          @value={{settings.paypalSandboxClient}} />
+          @value={{this.settings.paypalSandboxClient}} />
       </div>
       <div class="field">
         <label>
@@ -221,7 +221,7 @@
         <Input
           @type="text"
           @name="sandbox_secret_token"
-          @value={{settings.paypalSandboxSecret}} />
+          @value={{this.settings.paypalSandboxSecret}} />
       </div>
     {{/if}}
     <div class="field">
@@ -229,10 +229,10 @@
         @label={{t "Live mode - Used during production"}}
         @name="paypal_integration_mode"
         @value="live"
-        @current={{settings.paypalMode}}
-        @onChange={{action (mut settings.paypalMode)}} />
+        @current={{this.settings.paypalMode}}
+        @onChange={{action (mut this.settings.paypalMode)}} />
     </div>
-    {{#if (eq settings.paypalMode 'live')}}
+    {{#if (eq this.settings.paypalMode 'live')}}
       <div class="field">
         <label>
           {{t 'Paypal Client Id'}}
@@ -244,7 +244,7 @@
         <Input
           @type="text"
           @name="client_id"
-          @value={{settings.paypalClient}} />
+          @value={{this.settings.paypalClient}} />
       </div>
       <div class="field">
         <label>
@@ -257,7 +257,7 @@
         <Input
           @type="text"
           @name="secret_token"
-          @value={{settings.paypalSecret}} />
+          @value={{this.settings.paypalSecret}} />
       </div>
     {{/if}}
   {{/if}}
@@ -267,10 +267,10 @@
     </label>
     <UiCheckbox
       @class="toggle"
-      @checked={{isCheckedOmise}}
-      @onChange={{action (mut isCheckedOmise)}} />
+      @checked={{this.isCheckedOmise}}
+      @onChange={{action (mut this.isCheckedOmise)}} />
   </div>
-  {{#if isCheckedOmise}}
+  {{#if this.isCheckedOmise}}
     <h3 class="ui header">
       {{t 'Omise Credentials'}}
       <div class="sub header">
@@ -289,10 +289,10 @@
         @label={{t "Test mode - Used during development and testing"}}
         @name="omise_integration_mode"
         @value="test"
-        @current={{settings.omiseMode}}
-        @onChange={{action (mut settings.omiseMode)}} />
+        @current={{this.settings.omiseMode}}
+        @onChange={{action (mut this.settings.omiseMode)}} />
     </div>
-    {{#if (eq settings.omiseMode 'test')}}
+    {{#if (eq this.settings.omiseMode 'test')}}
       <div class="field">
         <label>
           {{t 'Omise Test Public Key'}}
@@ -304,7 +304,7 @@
         <Input
           @type="text"
           @name="test_public_key"
-          @value={{settings.omiseTestPublic}} />
+          @value={{this.settings.omiseTestPublic}} />
       </div>
       <div class="field">
         <label>
@@ -317,7 +317,7 @@
         <Input
           @type="text"
           @name="test_secret_key"
-          @value={{settings.omiseTestSecret}} />
+          @value={{this.settings.omiseTestSecret}} />
       </div>
     {{/if}}
     <div class="field">
@@ -325,10 +325,10 @@
         @label={{t "Live mode - Used during production"}}
         @name="omise_integration_mode"
         @value="live"
-        @current={{settings.omiseMode}}
-        @onChange={{action (mut settings.omiseMode)}} />
+        @current={{this.settings.omiseMode}}
+        @onChange={{action (mut this.settings.omiseMode)}} />
     </div>
-    {{#if (eq settings.omiseMode 'live')}}
+    {{#if (eq this.settings.omiseMode 'live')}}
       <div class="field">
         <label>
           {{t 'Omise Live Public Key'}}
@@ -340,7 +340,7 @@
         <Input
           @type="text"
           @name="live_public_key"
-          @value={{settings.omiseLivePublic}} />
+          @value={{this.settings.omiseLivePublic}} />
       </div>
       <div class="field">
         <label>
@@ -353,7 +353,7 @@
         <Input
           @type="text"
           @name="live_secret_key"
-          @value={{settings.omiseLiveSecret}} />
+          @value={{this.settings.omiseLiveSecret}} />
       </div>
     {{/if}}
   {{/if}}
@@ -363,10 +363,10 @@
     </label>
     <UiCheckbox
       @class="toggle"
-      @checked={{settings.isPaytmActivated}}
-      @onChange={{action (mut settings.isPaytmActivated)}} />
+      @checked={{this.settings.isPaytmActivated}}
+      @onChange={{action (mut this.settings.isPaytmActivated)}} />
   </div>
-  {{#if settings.isPaytmActivated}}
+  {{#if this.settings.isPaytmActivated}}
     <h3 class="ui header">
       {{t 'PayTM Credentials'}}
       <div class="sub header">
@@ -385,10 +385,10 @@
         @label={{t "Test mode - Used during development and testing"}}
         @name="paytm_integration_mode"
         @value="test"
-        @current={{settings.paytmMode}}
-        @onChange={{action (mut settings.paytmMode)}} />
+        @current={{this.settings.paytmMode}}
+        @onChange={{action (mut this.settings.paytmMode)}} />
     </div>
-    {{#if (eq settings.paytmMode 'test')}}
+    {{#if (eq this.settings.paytmMode 'test')}}
       <div class="field">
         <label>
           {{t 'PayTM Test Merchant ID'}}
@@ -400,7 +400,7 @@
         <Input
           @type="text"
           @name="paytm_sandbox_merchant"
-          @value={{settings.paytmSandboxMerchant}} />
+          @value={{this.settings.paytmSandboxMerchant}} />
       </div>
       <div class="field">
         <label>
@@ -413,7 +413,7 @@
         <Input
           @type="text"
           @name="paytm_sandbox_secret"
-          @value={{settings.paytmSandboxSecret}} />
+          @value={{this.settings.paytmSandboxSecret}} />
       </div>
     {{/if}}
     <div class="field">
@@ -421,10 +421,10 @@
         @label={{t "Live mode - Used during production"}}
         @name="paytm_integration_mode"
         @value="live"
-        @current={{settings.paytmMode}}
-        @onChange={{action (mut settings.paytmMode)}} />
+        @current={{this.settings.paytmMode}}
+        @onChange={{action (mut this.settings.paytmMode)}} />
     </div>
-    {{#if (eq settings.paytmMode 'live')}}
+    {{#if (eq this.settings.paytmMode 'live')}}
       <div class="field">
         <label>
           {{t 'PayTM Live Merchant ID'}}
@@ -436,7 +436,7 @@
         <Input
           @type="text"
           @name="paytm_live_merchant"
-          @value={{settings.paytmLiveMerchant}} />
+          @value={{this.settings.paytmLiveMerchant}} />
       </div>
       <div class="field">
         <label>
@@ -449,7 +449,7 @@
         <Input
           @type="text"
           @name="paytm_live_secret"
-          @value={{settings.paytmLiveSecret}} />
+          @value={{this.settings.paytmLiveSecret}} />
       </div>
     {{/if}}
   {{/if}}

@@ -4,7 +4,7 @@
   <i class="dropdown icon"></i>
   <div class="default text">10</div>
   <div class="menu">
-    {{#each options as |option|}}
+    {{#each this.options as |option|}}
       {{#if (eq option 'All') }}
         <div class="item" data-value="0">{{option}}</div>
       {{else }}

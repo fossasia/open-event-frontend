@@ -5,14 +5,14 @@
     </h2>
     <div class="ui container">
       <Forms::SessionSpeakerForm
-        @fields={{model.form}}
-        @data={{model}}
+        @fields={{this.model.form}}
+        @data={{this.model}}
         @save={{action "save"}}
-        @event={{model.event}}
+        @event={{this.model.event}}
         @isSpeaker={{true}}
         @includeSpeaker={{true}}
         @isSessionSpeaker={{true}}
-        @isLoading={{isLoading}} />
+        @isLoading={{this.isLoading}} />
     </div>
   </div>
 </div>

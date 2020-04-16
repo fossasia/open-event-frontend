@@ -1,33 +1,33 @@
 <div class="ui container">
   <div class="ui row">
-    {{#if (not model.isLocked)}}
+    {{#if (not this.model.isLocked)}}
       <LinkTo
         @route="public.cfs.edit-session"
-        @models={{array model.event.id model.id}}>
+        @models={{array this.model.event.id this.model.id}}>
         <button
-          class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
-        {{#if device.isMobile}}
+          class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
+        {{#if this.device.isMobile}}
           <div class="ui hidden fitted divider"></div>
         {{/if}}
       </LinkTo>
     {{/if}}
-    {{#each model.speakers as |speaker|}}
-      {{#if (eq speaker.email authManager.currentUser.email)}}
+    {{#each this.model.speakers as |speaker|}}
+      {{#if (eq speaker.email this.authManager.currentUser.email)}}
         <LinkTo
           @route="public.cfs.edit-speaker"
-          @models={{array model.event.id speaker.id}}>
+          @models={{array this.model.event.id speaker.id}}>
           <button
-            class="ui blue button {{if device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
-          {{#if device.isMobile}}
+            class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
+          {{#if this.device.isMobile}}
             <div class="ui hidden fitted divider"></div>
           {{/if}}
         </LinkTo>
       {{/if}}
     {{/each}}
-    {{#if isUpcoming}}
-      <button class="ui red button {{if device.isMobile 'fluid' 'right floated'}}"
+    {{#if this.isUpcoming}}
+      <button class="ui red button {{if this.device.isMobile 'fluid' 'right floated'}}"
         {{action 'openProposalDeleteModal'}}>{{t 'Withdraw Proposal'}}</button>
-      {{#if device.isMobile}}
+      {{#if this.device.isMobile}}
         <div class="ui hidden fitted divider"></div>
       {{/if}}
     {{/if}}
@@ -39,29 +39,29 @@
     <div class="ui segment">
       <h3 class="ui header">
         <div>
-          {{#if (eq model.state 'confirmed')}}
+          {{#if (eq this.model.state 'confirmed')}}
             <div class="ui green large label">{{t 'Confirmed'}}</div>
-          {{else if (eq model.state 'pending')}}
+          {{else if (eq this.model.state 'pending')}}
             <div class="ui yellow large label">{{t 'Pending'}}</div>
-          {{else if (eq model.state 'accepted')}}
+          {{else if (eq this.model.state 'accepted')}}
             <div class="ui yellow large label">{{t 'Accepted'}}</div>
-          {{else if (eq model.state 'rejected')}}
+          {{else if (eq this.model.state 'rejected')}}
             <div class="ui red large label">{{t 'Rejected'}}</div>
           {{/if}}
         </div>
       </h3>
       <div class="field">
         <div class="ui divider"></div>
-        <h1 class="ui header"> {{model.title}} </h1>
+        <h1 class="ui header"> {{this.model.title}} </h1>
         <h4 class="ui header">
-          {{#each model.speakers as |speaker|}}
+          {{#each this.model.speakers as |speaker|}}
             {{speaker.name}}
           {{/each}}
         </h4>
-        {{#if (not-eq model.startsAt null)}}
+        {{#if (not-eq this.model.startsAt null)}}
           <h2 class="ui sub header">
             <div class="ui gray-text">
-              {{t 'From '}}{{moment-format model.startsAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format model.endsAt 'ddd, MMM DD h:mm A'}}
+              {{t 'From '}}{{moment-format this.model.startsAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format this.model.endsAt 'ddd, MMM DD h:mm A'}}
             </div>
           </h2>
         {{else}}
@@ -71,27 +71,27 @@
         {{/if}}
       </div>
       <div class="ui divider"></div>
-      {{#if model.shortAbstract}}
+      {{#if this.model.shortAbstract}}
         <h3 class="ui left aligned header">Short Abstract</h3>
-        <p> <i>{{sanitize model.shortAbstract}}</i> </p>
+        <p> <i>{{sanitize this.model.shortAbstract}}</i> </p>
       {{/if}}
-      {{#if model.sessionType.name}}
+      {{#if this.model.sessionType.name}}
         <h3 class="ui left aligned header">Session Type</h3>
-        <p>{{model.sessionType.name}}</p>
+        <p>{{this.model.sessionType.name}}</p>
       {{/if}}
-      {{#if model.track.name}}
+      {{#if this.model.track.name}}
         <h3 class="ui left aligned header">Track</h3>
-        <p>{{model.track.name}}</p>
+        <p>{{this.model.track.name}}</p>
       {{/if}}
-      {{#if model.slidesUrl}}
+      {{#if this.model.slidesUrl}}
         <h3 class="ui left aligned header">Slide</h3>
-        <a href="{{model.slidesUrl}}">{{t 'Download'}}</a>
+        <a href="{{this.model.slidesUrl}}">{{t 'Download'}}</a>
       {{/if}}
     </div>
   </div>
 </div>
 
 <Modals::ProposalDeleteModal
-  @isOpen={{isProposalDeleteModalOpen}}
-  @proposalName={{model.title}}
+  @isOpen={{this.isProposalDeleteModalOpen}}
+  @proposalName={{this.model.title}}
   @deleteProposal={{action "deleteProposal"}} />

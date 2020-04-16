@@ -1,10 +1,10 @@
 {{! This will be automatically rendered if any model fetch fails }}
 <div class="ui container">
-  {{#if (eq model.errors.0.status 404)}}
+  {{#if (eq this.model.errors.0.status 404)}}
     <Errors::NotFound />
-  {{else if (eq model.errors.0.status 403)}}
+  {{else if (eq this.model.errors.0.status 403)}}
     <Errors::ForbiddenError />
-  {{else if (eq model.errors.0.status 500)}}
+  {{else if (eq this.model.errors.0.status 500)}}
     <Errors::ServerError />
   {{else}}
     <Errors::GenericError />

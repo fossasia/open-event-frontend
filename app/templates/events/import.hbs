@@ -1,9 +1,9 @@
 <Events::EventImportSection
   @uploadFile={{action "uploadFile"}}
-  @importStatus={{importStatus}}
-  @importError={{importError}}
-  @isImporting={{isImporting}}
-  @file={{file}} />
+  @importStatus={{this.importStatus}}
+  @importError={{this.importError}}
+  @isImporting={{this.isImporting}}
+  @file={{this.file}} />
 <div class="ui hidden divider"></div>
 <Events::ImportsHistorySection
   @data={{this.model.importJobs}}

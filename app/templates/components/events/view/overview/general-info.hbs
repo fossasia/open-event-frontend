@@ -2,9 +2,9 @@
   <div class="header">{{t 'General info'}}</div>
 </div>
 <div class="content">
-  <div class="ui {{if device.isMobile 'small' 'medium'}} header">
-    {{#if (eq data.event.state 'published')}}
-      {{t 'Your event is live at'}} <a href="{{data.event.url}}" rel="noopener noreferrer">{{data.event.url}}</a>
+  <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
+    {{#if (eq this.data.event.state 'published')}}
+      {{t 'Your event is live at'}} <a href="{{this.data.event.url}}" rel="noopener noreferrer">{{this.data.event.url}}</a>
     {{else}}
       {{t 'Your event is not live yet. Make it live now'}}
     {{/if}}
@@ -27,8 +27,8 @@
       <tr>
         <td><strong>{{t 'Location'}}</strong></td>
         <td>
-          {{#if data.event.locationName}}
-            {{data.event.locationName}}
+          {{#if this.data.event.locationName}}
+            {{this.data.event.locationName}}
           {{else}}
             <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
           {{/if}}
@@ -36,17 +36,17 @@
       </tr>
       <tr>
         <td><strong>{{t 'Start time'}}</strong></td>
-        <td>{{general-date data.event.startsAt data.event.timezone}}</td>
+        <td>{{general-date this.data.event.startsAt this.data.event.timezone}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'End time'}}</strong></td>
-        <td>{{general-date data.event.endsAt data.event.timezone}}</td>
+        <td>{{general-date this.data.event.endsAt this.data.event.timezone}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'Session types'}}</strong></td>
         <td>
-          {{#if data.sessionTypes}}
-            {{#each data.sessionTypes as |sessionType index|}}
+          {{#if this.data.sessionTypes}}
+            {{#each this.data.sessionTypes as |sessionType index|}}
               {{if (not-eq index 0) ','}} {{sessionType.name}}
             {{/each}}
           {{else}}
@@ -57,8 +57,8 @@
       <tr>
         <td><strong>{{t 'Links and Social Media'}}</strong></td>
         <td>
-          {{#if data.socialLinks}}
-            {{#each data.socialLinks as |socialLink index|}}
+          {{#if this.data.socialLinks}}
+            {{#each this.data.socialLinks as |socialLink index|}}
               {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
             {{/each}}
           {{else}}
@@ -69,12 +69,12 @@
       <tr>
         <td><strong>{{t 'No. of Speakers'}}</strong></td>
         <td>
-          {{#if data.event.isSessionsSpeakersEnabled}}
-            {{t 'All'}}: {{data.statistics.speakers}}
-            | {{t 'Accepted'}}: {{data.statistics.speakersAccepted}}
-            | {{t 'Pending'}}: {{data.statistics.speakersPending}}
-            | {{t 'Rejected'}}: {{data.statistics.speakersRejected}}
-            | {{t 'Confirmed'}}: {{data.statistics.speakersConfirmed}}
+          {{#if this.data.event.isSessionsSpeakersEnabled}}
+            {{t 'All'}}: {{this.data.statistics.speakers}}
+            | {{t 'Accepted'}}: {{this.data.statistics.speakersAccepted}}
+            | {{t 'Pending'}}: {{this.data.statistics.speakersPending}}
+            | {{t 'Rejected'}}: {{this.data.statistics.speakersRejected}}
+            | {{t 'Confirmed'}}: {{this.data.statistics.speakersConfirmed}}
           {{else}}
             {{t 'Sessions and Speakers not enabled.'}}
           {{/if}}
@@ -83,12 +83,12 @@
       <tr>
         <td><strong>{{t 'No. of Sessions'}}</strong></td>
         <td>
-          {{#if data.event.isSessionsSpeakersEnabled}}
-            {{t 'Submitted'}}: {{data.statistics.sessions}}
-            | {{t 'Accepted'}}: {{data.statistics.sessionsAccepted}}
-            | {{t 'Pending'}}: {{data.statistics.sessionsPending}}
-            | {{t 'Rejected'}}: {{data.statistics.sessionsRejected}}
-            | {{t 'Confirmed'}}: {{data.statistics.sessionsConfirmed}}
+          {{#if this.data.event.isSessionsSpeakersEnabled}}
+            {{t 'Submitted'}}: {{this.data.statistics.sessions}}
+            | {{t 'Accepted'}}: {{this.data.statistics.sessionsAccepted}}
+            | {{t 'Pending'}}: {{this.data.statistics.sessionsPending}}
+            | {{t 'Rejected'}}: {{this.data.statistics.sessionsRejected}}
+            | {{t 'Confirmed'}}: {{this.data.statistics.sessionsConfirmed}}
           {{else}}
             {{t 'Sessions and Speakers not enabled.'}}
           {{/if}}
@@ -96,9 +96,9 @@
       </tr>
       <tr>
         <td><strong>{{t 'No. of Sponsors'}}</strong></td>
-        <td>{{if data.event.isSponsorsEnabled data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
+        <td>{{if this.data.event.isSponsorsEnabled this.data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
       </tr>
     </tbody>
   </table>
 </div>
-<Modals::EventRevision @isOpen={{isEventRevisionModalOpen}} />
+<Modals::EventRevision @isOpen={{this.isEventRevisionModalOpen}} />

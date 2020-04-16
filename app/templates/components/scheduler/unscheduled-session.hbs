@@ -1,8 +1,8 @@
 <div class="ui segment">
   <span class="text">
-    {{session.title}} |
+    {{this.session.title}} |
   </span>
-  {{#each session.speakers as |speaker|}}
+  {{#each this.session.speakers as |speaker|}}
     <span class="text speaker">
       {{speaker.name}}
     </span>

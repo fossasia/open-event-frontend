@@ -11,7 +11,7 @@
     {{t 'Open Event Organizer App'}}
   </h1>
   <div class="ui grid">
-    {{#if device.isMobile}}
+    {{#if this.device.isMobile}}
       <div class="eight wide column">
         <a class="store" href='https://play.google.com/store/apps/details?id=com.eventyay.organizer'><img alt='Get it on Google Play' src='/images/google-play.png' height="50"></a>
       </div>
@@ -31,7 +31,7 @@
       </div>
     {{/if}}
   </div>
-  {{#if device.isMobile}}
+  {{#if this.device.isMobile}}
     <img class="ui fluid image" src="images/organizer-android.jpg" alt="{{t 'Organizer Android App'}}">
   {{else}}
     <div class="ui grid">

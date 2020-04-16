@@ -7,12 +7,12 @@
     <div class="row">
       <div class="sixteen wide column">
         <Widgets::Forms::ImageUpload
-          @imageUrl={{placeholder.originalImageUrl}}
-          @selectedImage={{placeholder.originalImageUrl}}
+          @imageUrl={{this.placeholder.originalImageUrl}}
+          @selectedImage={{this.placeholder.originalImageUrl}}
           @needsCropper={{true}}
           @label={{t "Update Image"}}
           @id="user_image"
-          @aspectRatio={{if (eq placeholder.name "avatar") (array 1 1) (array 2 1)}}
+          @aspectRatio={{if (eq this.placeholder.name "avatar") (array 1 1) (array 2 1)}}
           @icon="photo"
           @hint={{t "Select Image"}}
           @maxSizeInKb={{10000}}
@@ -24,7 +24,7 @@
             <div class="ui input">
               <Input
                 @type="text"
-                @value={{placeholder.copyright}} />
+                @value={{this.placeholder.copyright}} />
             </div>
           </div>
           <div class="field">
@@ -32,7 +32,7 @@
             <div class="ui input">
               <Input
                 @type="text"
-                @value={{placeholder.origin}} />
+                @value={{this.placeholder.origin}} />
             </div>
           </div>
         </form>
@@ -42,7 +42,7 @@
     <div class="row">
       <div class="sixteen wide column right floated right aligned">
         <button class="ui primary button" {{action 'updatePlaceholder'}}>{{t 'Update'}}</button>
-        <button class="ui button" {{action (mut isOpen)}}>{{t 'Cancel'}}</button>
+        <button class="ui button" {{action (mut this.isOpen)}}>{{t 'Cancel'}}</button>
       </div>
     </div>
   </div>

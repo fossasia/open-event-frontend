@@ -10,14 +10,14 @@
     <h3 class="weight-400">{{t 'When & Where'}}</h3>
   </div>
   <div class="ui padded segment">
-    <strong>{{t 'At'}} {{event.locationName}}</strong>
+    <strong>{{t 'At'}} {{this.event.locationName}}</strong>
     <br>
-    <strong>{{t 'From'}}:</strong> {{header-date event.startsAt}}
+    <strong>{{t 'From'}}:</strong> {{header-date this.event.startsAt}}
     <br>
-    <strong>{{t 'To'}}:</strong> {{header-date event.endsAt}}
-    {{#if event.ownerName}}
+    <strong>{{t 'To'}}:</strong> {{header-date this.event.endsAt}}
+    {{#if this.event.ownerName}}
       <br>
-      <strong>{{t 'Organized By'}}:</strong> {{event.ownerName}}
+      <strong>{{t 'Organized By'}}:</strong> {{this.event.ownerName}}
     {{/if}}
   </div>
 </div>

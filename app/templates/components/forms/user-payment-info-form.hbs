@@ -1,4 +1,4 @@
-<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
   <h3 class="ui header">
     {{t 'Payment Information'}}
   </h3>
@@ -7,65 +7,64 @@
     <Input
       @type="text"
       @id="contactName"
-      @value={{userBillingInfo.billingContactName}} />
+      @value={{this.userBillingInfo.billingContactName}} />
   </div>
   <div class="field">
     <label class="required" for="phone">{{t 'Phone'}}</label>
     <Input
       @type="text"
       @id="phone"
-      @value={{userBillingInfo.billingPhone}} />
+      @value={{this.userBillingInfo.billingPhone}} />
   </div>
   <div class="field">
     <label class="required" for="company">{{t 'Company'}}</label>
     <Input
       @type="text"
       @id="company"
-      @value={{userBillingInfo.company}} />
+      @value={{this.userBillingInfo.company}} />
   </div>
   <div class="field">
     <label for="taxID">{{t 'Tax ID or Business ID'}}</label>
     <Input
       @type="text"
       @id="taxID"
-      @value={{userBillingInfo.billingTaxInfo}} />
+      @value={{this.userBillingInfo.billingTaxInfo}} />
   </div>
   <div class="field">
     <label class="required" for="address">{{t 'Address'}}</label>
     <Textarea
       @rows="2"
       @id="address"
-      @value={{userBillingInfo.billingAddress}} />
-    </div>
+      @value={{this.userBillingInfo.billingAddress}} />    </div>
   <div class="field">
     <label class="required" for="city">{{t 'City'}}</label>
     <Input
 @type="text"
 @id="city"
-@value={{userBillingInfo.billingCity}} />
+@value={{this.userBillingInfo.billingCity}} />
   </div>
   <div class="field">
     <label for="state">{{t 'State'}}</label>
     <Input
 @type="text"
 @id="state"
-@value={{userBillingInfo.billingState}} />
+@value={{this.userBillingInfo.billingState}} />
   </div>
   <div class="field">
     <label class="required">{{t 'Country'}}</label>
     <UiDropdown
 @class="search selection"
-@selected={{userBillingInfo.billingCountry}}
+@selected={{this.userBillingInfo.billingCountry}}
 @forceSelection={{false}}
 @fullTextSearch={{true}}>
       <Input
 @type="hidden"
 @id="country"
-@value={{userBillingInfo.billingCountry}} />
+@value={{this.userBillingInfo.billingCountry}} />
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select country'}}</div>
       <div class="menu">
-        {{#each countries as |country|}}
+        {{#each this.countries as |country|}}
           <div class="item" data-value="{{country.name}}">
             <i class="{{lowercase country.code}} flag"></i>
             {{country.name}}
@@ -79,15 +78,14 @@
     <Input
 @type="text"
 @id="zip"
-@value={{userBillingInfo.billingZipCode}} />
+@value={{this.userBillingInfo.billingZipCode}} />
   </div>
   <div class="field">
     <label for="additionalInfo">{{t 'Additional Information'}}</label>
     <Textarea
 @rows="4"
 @id="additionalInfo"
-@value={{userBillingInfo.billingAdditionalInfo}} />
-  </div>
+@value={{this.userBillingInfo.billingAdditionalInfo}} />  </div>
 
   <button type="submit" class="ui teal submit button">
     {{t 'Submit'}}

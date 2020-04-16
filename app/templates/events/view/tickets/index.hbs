@@ -2,10 +2,10 @@
   <div class="ui header">
     {{t 'Total Sold Orders'}}
   </div>
-  <div class="ui {{if device.isMobile 'horizontal'}} three statistics">
-    <div class="statistic"><div class="value">{{totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{totalAmount}}</div><div class="label">{{t 'Sales '}}({{currency-symbol model.eventDetail.paymentCurrency}})</div></div>
-    <div class="statistic"><div class="value">{{totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
+  <div class="ui {{if this.device.isMobile 'horizontal'}} three statistics">
+    <div class="statistic"><div class="value">{{this.totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
+    <div class="statistic"><div class="value">{{this.totalAmount}}</div><div class="label">{{t 'Sales '}}({{currency-symbol this.model.eventDetail.paymentCurrency}})</div></div>
+    <div class="statistic"><div class="value">{{this.totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
 <br>
@@ -22,16 +22,16 @@
         <th>{{t 'Order Status'}}</th>
         <th class="right aligned">{{t 'Total Tickets'}}</th>
         <th class="right aligned">{{t 'Total Orders'}}</th>
-        <th class="right aligned">{{t 'Total Sales' }}({{currency-symbol model.eventDetail.paymentCurrency}}) </th>
+        <th class="right aligned">{{t 'Total Sales' }}({{currency-symbol this.model.eventDetail.paymentCurrency}}) </th>
         <th>{{t 'View Reports'}}</th>
       </tr>
       <tr>
         <LinkTo @route="events.view.tickets.orders.list" @model="cancelled" @tagName="td" class="ui grey inverted segment link">
           <span>{{t 'Cancelled'}}</span>
         </LinkTo>
-        <td class="right aligned">{{model.orderStats.tickets.cancelled}}</td>
-        <td class="right aligned">{{model.orderStats.orders.cancelled}}</td>
-        <td class="right aligned">{{model.orderStats.sales.cancelled}}</td>
+        <td class="right aligned">{{this.model.orderStats.tickets.cancelled}}</td>
+        <td class="right aligned">{{this.model.orderStats.orders.cancelled}}</td>
+        <td class="right aligned">{{this.model.orderStats.sales.cancelled}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="cancelled">
             {{t 'View orders'}}
@@ -46,9 +46,9 @@
         <LinkTo @route="events.view.tickets.orders.list" @model="pending" @tagName="td" class="ui yellow inverted segment link">
           <span>{{t 'Pending'}}</span>
         </LinkTo>
-        <td class="right aligned">{{model.orderStats.tickets.pending}}</td>
-        <td class="right aligned">{{model.orderStats.orders.pending}}</td>
-        <td class="right aligned">{{model.orderStats.sales.pending}}</td>
+        <td class="right aligned">{{this.model.orderStats.tickets.pending}}</td>
+        <td class="right aligned">{{this.model.orderStats.orders.pending}}</td>
+        <td class="right aligned">{{this.model.orderStats.sales.pending}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="pending">
             {{t 'View orders'}}
@@ -63,9 +63,9 @@
         <LinkTo @route="events.view.tickets.orders.list" @model="expired" @tagName="td" class="ui red inverted segment link">
           <span>{{t 'Expired'}}</span>
         </LinkTo>
-        <td class="right aligned">{{model.orderStats.tickets.expired}}</td>
-        <td class="right aligned">{{model.orderStats.orders.expired}}</td>
-        <td class="right aligned">{{model.orderStats.sales.expired}}</td>
+        <td class="right aligned">{{this.model.orderStats.tickets.expired}}</td>
+        <td class="right aligned">{{this.model.orderStats.orders.expired}}</td>
+        <td class="right aligned">{{this.model.orderStats.sales.expired}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="expired">
             {{t 'View orders'}}
@@ -80,9 +80,9 @@
         <LinkTo @route="events.view.tickets.orders.list" @model="placed" @tagName="td" class="ui blue inverted segment link">
           <span>{{t 'Placed'}}</span>
         </LinkTo>
-        <td class="right aligned">{{model.orderStats.tickets.placed}}</td>
-        <td class="right aligned">{{model.orderStats.orders.placed}}</td>
-        <td class="right aligned">{{model.orderStats.sales.placed}}</td>
+        <td class="right aligned">{{this.model.orderStats.tickets.placed}}</td>
+        <td class="right aligned">{{this.model.orderStats.orders.placed}}</td>
+        <td class="right aligned">{{this.model.orderStats.sales.placed}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="placed">
             {{t 'View orders'}}
@@ -97,9 +97,9 @@
         <LinkTo @route="events.view.tickets.orders.index" @tagName="td" class="ui green inverted segment link">
           <span>{{t 'Completed'}}</span>
         </LinkTo>
-        <td class="right aligned">{{model.orderStats.tickets.completed}}</td>
-        <td class="right aligned">{{model.orderStats.orders.completed}}</td>
-        <td class="right aligned">{{model.orderStats.sales.completed}}</td>
+        <td class="right aligned">{{this.model.orderStats.tickets.completed}}</td>
+        <td class="right aligned">{{this.model.orderStats.orders.completed}}</td>
+        <td class="right aligned">{{this.model.orderStats.sales.completed}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.index">
             {{t 'View orders'}}
@@ -121,11 +121,11 @@
       <tr>
         <th rowspan="2" class="left aligned">{{t 'Ticket Name'}}</th>
         <th rowspan="2" class="left aligned">{{t 'Tickets Capacity Set'}}</th>
-        <th colspan="{{if device.isMobile "1" "2"}}" class="ui green inverted segment center aligned">{{if device.isMobile 'Sales ' ''}}{{t 'Completed Orders '}}</th>
-        <th colspan="{{if device.isMobile "1" "2"}}" class="ui blue inverted segment center aligned">{{if device.isMobile 'Sales ' ''}}{{t 'Placed Orders'}}</th>
-        <th colspan="{{if device.isMobile "1" "2"}}" class="ui yellow inverted segment center aligned">{{if device.isMobile 'Sales ' ''}}{{t 'Pending Orders '}}</th>
+        <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui green inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Completed Orders '}}</th>
+        <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui blue inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Placed Orders'}}</th>
+        <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui yellow inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Pending Orders '}}</th>
       </tr>
-      {{#unless device.isMobile}}
+      {{#unless this.device.isMobile}}
         <tr>
           <th class="right aligned">{{t 'Tickets'}}</th>
           <th class="right aligned">{{t 'Sales'}}</th>
@@ -137,22 +137,22 @@
       {{/unless}}
     </thead>
     <tbody>
-      {{#each model.tickets as |ticket|}}
+      {{#each this.model.tickets as |ticket|}}
         <tr>
           <td>{{ticket.name}}</td>
           <td>{{ticket.quantity}}</td>
-          {{#unless device.isMobile}}
+          {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.completed ticket.price}}</td>
-          {{#unless device.isMobile}}
+          <td class="right aligned">{{currency-symbol this.model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.completed ticket.price}}</td>
+          {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.placed ticket.price}}</td>
-          {{#unless device.isMobile}}
+          <td class="right aligned">{{currency-symbol this.model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.placed ticket.price}}</td>
+          {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.pending ticket.price}}</td>
+          <td class="right aligned">{{currency-symbol this.model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.pending ticket.price}}</td>
         </tr>
       {{/each}}
     </tbody>

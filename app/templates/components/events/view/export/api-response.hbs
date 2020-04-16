@@ -10,22 +10,22 @@
     <UiCheckbox @class="toggle disabled" @label={{t "Basic Event Details"}} @checked={{true}} @onChange={{action "checkboxChange" "basicEventDetails"}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Sessions"}} @checked={{toggleSwitches.sessions}} @onChange={{action "checkboxChange" "sessions"}} />
+    <UiCheckbox @class="toggle" @label={{t "Sessions"}} @checked={{this.toggleSwitches.sessions}} @onChange={{action "checkboxChange" "sessions"}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Microlocations"}} @checked={{toggleSwitches.microlocations}} @onChange={{action "checkboxChange" "microlocations"}} />
+    <UiCheckbox @class="toggle" @label={{t "Microlocations"}} @checked={{this.toggleSwitches.microlocations}} @onChange={{action "checkboxChange" "microlocations"}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Tracks"}} @checked={{toggleSwitches.tracks}} @onChange={{action "checkboxChange" "tracks"}} />
+    <UiCheckbox @class="toggle" @label={{t "Tracks"}} @checked={{this.toggleSwitches.tracks}} @onChange={{action "checkboxChange" "tracks"}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Speakers"}} @checked={{toggleSwitches.speakers}} @onChange={{action "checkboxChange" "speakers"}} />
+    <UiCheckbox @class="toggle" @label={{t "Speakers"}} @checked={{this.toggleSwitches.speakers}} @onChange={{action "checkboxChange" "speakers"}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Sponsors"}} @checked={{toggleSwitches.sponsors}} @onChange={{action "checkboxChange" "sponsors"}} />
+    <UiCheckbox @class="toggle" @label={{t "Sponsors"}} @checked={{this.toggleSwitches.sponsors}} @onChange={{action "checkboxChange" "sponsors"}} />
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Tickets"}} @checked={{toggleSwitches.tickets}} @onChange={{action "checkboxChange" "tickets"}} />
+    <UiCheckbox @class="toggle" @label={{t "Tickets"}} @checked={{this.toggleSwitches.tickets}} @onChange={{action "checkboxChange" "tickets"}} />
   </div>
 </div>
 <div class="ui secondary header">
@@ -33,14 +33,14 @@
 </div>
 <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
   <div class="ui secondary segment url">
-    <CopyButton @clipboardText={{displayUrl}} @tagName={{null}}>
-      <pre>{{displayUrl}}</pre>
+    <CopyButton @clipboardText={{this.displayUrl}} @tagName={{null}}>
+      <pre>{{this.displayUrl}}</pre>
     </CopyButton>
   </div>
 </UiPopup>
 <div class="ui secondary header">
   {{t 'Response'}}
 </div>
-<div class="ui {{if isLoading 'loading'}} secondary segment response">
-  <pre class="api-response">{{json}}</pre>
+<div class="ui {{if this.isLoading 'loading'}} secondary segment response">
+  <pre class="api-response">{{this.json}}</pre>
 </div>

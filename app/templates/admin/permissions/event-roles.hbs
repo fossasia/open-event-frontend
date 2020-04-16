@@ -9,16 +9,16 @@
   <thead>
     <tr>
       <th>{{t 'Event Role/Service'}}</th>
-      {{#each services as |service|}}
+      {{#each this.services as |service|}}
         <th>{{t service.name}}</th>
       {{/each}}
     </tr>
   </thead>
   <tbody>
-    {{#each model.roles as |role|}}
+    {{#each this.model.roles as |role|}}
       <tr>
         <td>{{role}}</td>
-        {{#each permissions as |permission|}}
+        {{#each this.permissions as |permission|}}
           {{#if (eq permission.role.titleName role)}}
             <td>
               <UiCheckbox @label={{t "Create"}} @checked={{permission.canCreate}} @onChange={{action (mut permission.canCreate)}} />

@@ -1,56 +1,56 @@
-{{#if isLoading}}
+{{#if this.isLoading}}
   <div class="ui active inverted dimmer">
     <div class="ui small text loader">Loading</div>
   </div>
 {{/if}}
-<div class="{{themeInstance.classes.outerTableWrapper}}">
-  <div class="{{themeInstance.classes.globalFilterDropdownWrapper}}">
-    {{#if showPageSize}}
-      {{partial themeInstance.components.pageSizeSelect}}
+<div class="{{this.themeInstance.classes.outerTableWrapper}}">
+  <div class="{{this.themeInstance.classes.globalFilterDropdownWrapper}}">
+    {{#if this.showPageSize}}
+      {{partial this.themeInstance.components.pageSizeSelect}}
     {{/if}}
-    {{#if showGlobalFilter}}
-      {{partial themeInstance.components.global-filter}}
+    {{#if this.showGlobalFilter}}
+      {{partial this.themeInstance.components.global-filter}}
     {{/if}}
   </div>
   <div class="ui row">
-    <div class="{{themeInstance.classes.innerTableWrapper}}">
-      <table class="{{themeInstance.classes.table}}">
-        <thead class="{{if noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{themeInstance.classes.thead}}">
-          {{#if groupedHeaders.length}}
-            {{partial themeInstance.components.grouped-header}}
+    <div class="{{this.themeInstance.classes.innerTableWrapper}}">
+      <table class="{{this.themeInstance.classes.table}}">
+        <thead class="{{if this.noHeaderFilteringAndSorting 'table-header-no-filtering-and-sorting'}} {{this.themeInstance.classes.thead}}">
+          {{#if this.groupedHeaders.length}}
+            {{partial this.themeInstance.components.grouped-header}}
           {{/if}}
-          {{partial themeInstance.components.row-sorting}}
-          {{#if useFilteringByColumns}}
-            {{partial themeInstance.components.row-filtering}}
+          {{partial this.themeInstance.components.row-sorting}}
+          {{#if this.useFilteringByColumns}}
+            {{partial this.themeInstance.components.row-filtering}}
           {{/if}}
         </thead>
         <tbody class="table-body">
-          {{#if allColumnsAreHidden}}
-            {{partial themeInstance.components.columns-hidden}}
+          {{#if this.allColumnsAreHidden}}
+            {{partial this.themeInstance.components.columns-hidden}}
           {{else}}
-            {{#if visibleContent.length}}
-              {{#each visibleContent as |record index|}}
+            {{#if this.visibleContent.length}}
+              {{#each this.visibleContent as |record index|}}
                 {{#if record}}
                   {{#if (gte index 0)}}
-                    {{partial themeInstance.components.row}}
+                    {{partial this.themeInstance.components.row}}
                   {{/if}}
                 {{/if}}
               {{/each}}
             {{else}}
-              {{partial themeInstance.components.no-data}}
+              {{partial this.themeInstance.components.no-data}}
             {{/if}}
           {{/if}}
         </tbody>
         <tfoot>
-          {{partial themeInstance.components.table-footer}}
+          {{partial this.themeInstance.components.table-footer}}
         </tfoot>
       </table>
     </div>
   </div>
-  {{#if showComponentFooter}}
-    <div class="{{themeInstance.classes.tfooterWrapper}}">
-      <div class="{{themeInstance.classes.paginationWrapper}}">
-        {{partial themeInstance.components.pagination-simple}}
+  {{#if this.showComponentFooter}}
+    <div class="{{this.themeInstance.classes.tfooterWrapper}}">
+      <div class="{{this.themeInstance.classes.paginationWrapper}}">
+        {{partial this.themeInstance.components.pagination-simple}}
       </div>
     </div>
   {{/if}}

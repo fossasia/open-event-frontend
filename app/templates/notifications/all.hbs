@@ -7,11 +7,11 @@
   <LinkTo @route="notifications.all" @model="all">
     <button class="ui button">{{t 'All'}}</button>
   </LinkTo>
-  {{#if showMarkAllRead}}
-    <button class="ui button right floated" {{action 'markAllAsRead' model.notifications}}>{{t 'Mark all as read'}}</button>
+  {{#if this.showMarkAllRead}}
+    <button class="ui button right floated" {{action 'markAllAsRead' this.model.notifications}}>{{t 'Mark all as read'}}</button>
   {{/if}}
 </div>
-{{#each model.notifications as |notification|}}
+{{#each this.model.notifications as |notification|}}
   <div class="ui segment {{unless notification.isRead 'blue'}}">
     <div class="ui grid">
       <div class="row">
@@ -50,14 +50,14 @@
     </div>
   </div>
 {{else}}
-  {{#if model.unread}}
+  {{#if this.model.unread}}
     <div class="ui disabled header">{{t 'No Unread Notifications'}}</div>
   {{else}}
     <div class="ui disabled header">{{t 'No Notifications'}}</div>
   {{/if}}
 {{/each}}
-<InfinityLoader @infinityModel={{model.notifications}}>
+<InfinityLoader @infinityModel={{this.model.notifications}}>
   <div class="ui loading very padded basic segment">
   </div>
-  {{infintyModel.reachedInfinity}}
+  {{this.infintyModel.reachedInfinity}}
 </InfinityLoader>

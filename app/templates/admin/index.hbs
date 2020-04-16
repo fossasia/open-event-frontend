@@ -22,7 +22,7 @@
           </div>
           <div class="value">
             <div class="ui teal label">
-              {{model.sessions.accepted}}
+              {{this.model.sessions.accepted}}
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
           </div>
           <div class="value">
             <div class="ui yellow label">
-              {{model.sessions.pending}}
+              {{this.model.sessions.pending}}
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@
           </div>
           <div class="value">
             <div class="ui red label">
-              {{model.sessions.rejected}}
+              {{this.model.sessions.rejected}}
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
           </div>
           <div class="value">
             <div class="ui teal label">
-              {{model.events.published}}
+              {{this.model.events.published}}
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
           </div>
           <div class="value">
             <div class="ui yellow label">
-              {{model.events.draft}}
+              {{this.model.events.draft}}
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
           </div>
           <div class="value">
             <div class="ui red label">
-              {{model.events.past}}
+              {{this.model.events.past}}
             </div>
           </div>
         </div>
@@ -101,25 +101,25 @@
             <tr>
               <td>{{t 'In last 24 hours'}}</td>
               <td class="right aligned">
-                {{model.mails.oneDay}}
+                {{this.model.mails.oneDay}}
               </td>
             </tr>
             <tr>
               <td>{{t 'In last 3 days'}}</td>
               <td class="right aligned">
-                {{model.mails.threeDays}}
+                {{this.model.mails.threeDays}}
               </td>
             </tr>
             <tr>
               <td>{{t 'In last 7 days	'}}</td>
               <td class="right aligned">
-                {{model.mails.sevenDays}}
+                {{this.model.mails.sevenDays}}
               </td>
             </tr>
             <tr>
               <td>{{t 'In last 1 month	'}}</td>
               <td class="right aligned">
-                {{model.mails.thirtyDays}}
+                {{this.model.mails.thirtyDays}}
               </td>
             </tr>
           </tbody>
@@ -140,23 +140,23 @@
           <tbody>
             <tr>
               <td>{{t 'No. of Super Admins'}}</td>
-              <td class="right aligned">{{model.users.superAdmin}}</td>
+              <td class="right aligned">{{this.model.users.superAdmin}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Admins'}}</td>
-              <td class="right aligned">{{model.users.admin}}</td>
+              <td class="right aligned">{{this.model.users.admin}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Registered Users'}}</td>
-              <td class="right aligned">{{model.users.verified}}</td>
+              <td class="right aligned">{{this.model.users.verified}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Unverified Users'}}</td>
-              <td class="right aligned">{{model.users.unverified}}</td>
+              <td class="right aligned">{{this.model.users.unverified}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Total Users'}}</td>
-              <td class="right aligned">{{model.users.total}}</td>
+              <td class="right aligned">{{this.model.users.total}}</td>
             </tr>
           </tbody>
         </table>
@@ -167,23 +167,23 @@
           <tbody>
             <tr>
               <td>{{t 'No. of Owners'}}</td>
-              <td class="right aligned">{{model.users.owner}}</td>
+              <td class="right aligned">{{this.model.users.owner}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Organizers'}}</td>
-              <td class="right aligned">{{model.users.organizer}}</td>
+              <td class="right aligned">{{this.model.users.organizer}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Co-Organizers'}}</td>
-              <td class="right aligned">{{model.users.coorganizer}}</td>
+              <td class="right aligned">{{this.model.users.coorganizer}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Track Organizers'}}</td>
-              <td class="right aligned">{{model.users.trackOrganizer}}</td>
+              <td class="right aligned">{{this.model.users.trackOrganizer}}</td>
             </tr>
             <tr>
               <td>{{t 'No. of Attendees'}}</td>
-              <td class="right aligned">{{model.users.attendee}}</td>
+              <td class="right aligned">{{this.model.users.attendee}}</td>
             </tr>
           </tbody>
         </table>

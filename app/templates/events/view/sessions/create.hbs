@@ -4,15 +4,15 @@
   </h2>
   <div class="ui container">
     <Forms::SessionSpeakerForm
-      @addNewSpeaker={{addNewSpeaker}}
-      @fields={{model.form}}
-      @data={{model}}
-      @speakers={{model.speakers}}
-      @event={{model.event}}
-      @speakersDetails={{model.session.speakers}}
+      @addNewSpeaker={{this.addNewSpeaker}}
+      @fields={{this.model.form}}
+      @data={{this.model}}
+      @speakers={{this.model.speakers}}
+      @event={{this.model.event}}
+      @speakersDetails={{this.model.session.speakers}}
       @save={{action "save"}}
       @includeSession={{true}}
       @isSessionSpeaker={{true}}
-      @isLoading={{isLoading}} />
+      @isLoading={{this.isLoading}} />
   </div>
 </div>

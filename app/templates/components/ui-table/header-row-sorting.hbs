@@ -1,14 +1,14 @@
 <tr>
-  {{#each processedColumns as |column|}}
+  {{#each this.processedColumns as |column|}}
     {{#if column.isVisible}}
       {{#if column.useSorting}}
-        <th class="{{themeInstance.classes.theadCell}}">
+        <th class="{{this.themeInstance.classes.theadCell}}">
           <div role="button" class="ui" {{action 'sort' column}}>
             {{#if column.templateForSortCell}}
               {{partial column.templateForSortCell}}
             {{else}}
               {{#if column.componentForSortCell}}
-                {{component column.componentForSortCell data=data column=column row=record table=this}}
+                {{component column.componentForSortCell data=this.data column=column row=this.record table=this}}
               {{else}}
                 {{column.title}}
                 <i class="{{if column.sortAsc 'caret up' 'sort'}} {{if column.sortDesc 'caret down' 'sort'}} icon"></i>
@@ -17,12 +17,12 @@
           </div>
         </th>
       {{else}}
-        <th class="{{themeInstance.classes.theadCell}} {{themeInstance.classes.theadCellNoSorting}}">
+        <th class="{{this.themeInstance.classes.theadCell}} {{this.themeInstance.classes.theadCellNoSorting}}">
           {{#if column.templateForSortCell}}
             {{partial column.templateForSortCell}}
           {{else}}
             {{#if column.componentForSortCell}}
-              {{component column.componentName data=data column=column record=record}}
+              {{component column.componentName data=this.data column=column record=this.record}}
             {{else}}
               {{column.title}}
             {{/if}}

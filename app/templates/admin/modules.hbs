@@ -1,11 +1,11 @@
-<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
   <div class="ui basic segment grid">
     <div class="ui row segment">
       <div class="column eight wide">
         {{t 'Ticketing'}}
       </div>
       <div class="ui column eight wide field right aligned">
-        <UiCheckbox @class="toggle" @checked={{model.ticketInclude}} @onChange={{pipe-action (action (mut model.ticketInclude)) (action "submit")}} />
+        <UiCheckbox @class="toggle" @checked={{this.model.ticketInclude}} @onChange={{pipe-action (action (mut this.model.ticketInclude)) (action "submit")}} />
       </div>
     </div>
     <div class="ui row segment">
@@ -13,7 +13,7 @@
         {{t 'Payments'}}
       </div>
       <div class="ui column eight wide field right aligned">
-        <UiCheckbox @class="toggle" @checked={{model.paymentInclude}} @onChange={{pipe-action (action (mut model.paymentInclude)) (action "submit")}} />
+        <UiCheckbox @class="toggle" @checked={{this.model.paymentInclude}} @onChange={{pipe-action (action (mut this.model.paymentInclude)) (action "submit")}} />
       </div>
     </div>
     <div class="ui row segment">
@@ -21,7 +21,7 @@
         {{t 'Donations'}}
       </div>
       <div class="ui eight column wide field right aligned">
-        <UiCheckbox @class="toggle" @checked={{model.donationInclude}} @onChange={{pipe-action (action (mut model.donationInclude)) (action "submit")}} />
+        <UiCheckbox @class="toggle" @checked={{this.model.donationInclude}} @onChange={{pipe-action (action (mut this.model.donationInclude)) (action "submit")}} />
       </div>
     </div>
   </div>

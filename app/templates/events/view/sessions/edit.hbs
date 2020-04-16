@@ -5,17 +5,17 @@
     </h2>
     <div class="ui container">
       <Forms::SessionSpeakerForm
-        @addNewSpeaker={{addNewSpeaker}}
-        @speakers={{model.speakers}}
-        @fields={{model.form}}
-        @data={{model}}
-        @event={{model.event}}
+        @addNewSpeaker={{this.addNewSpeaker}}
+        @speakers={{this.model.speakers}}
+        @fields={{this.model.form}}
+        @data={{this.model}}
+        @event={{this.model.event}}
         @save={{action "save"}}
         @isSession={{true}}
-        @speakersDetails={{model.session.speakers}}
+        @speakersDetails={{this.model.session.speakers}}
         @includeSession={{true}}
         @isSessionSpeaker={{true}}
-        @isLoading={{isLoading}}
+        @isLoading={{this.isLoading}}
         @isEditForm={{true}} />
     </div>
   </div>

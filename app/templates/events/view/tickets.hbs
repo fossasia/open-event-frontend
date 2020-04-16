@@ -1,6 +1,6 @@
 <div class="ui grid">
   <div class="row">
-    <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
+    <div class="{{if this.device.isMobile 'sixteen' 'three'}} wide column">
       <TabbedNavigation @isVertical={{true}}>
         <LinkTo @route="events.view.tickets.index" class="item">
           {{t 'Overview'}}
@@ -22,7 +22,7 @@
         </LinkTo>
       </TabbedNavigation>
     </div>
-    <div class="{{if device.isMobile 'sixteen' 'thirteen'}} wide column">
+    <div class="{{if this.device.isMobile 'sixteen' 'thirteen'}} wide column">
       {{outlet}}
     </div>
   </div>

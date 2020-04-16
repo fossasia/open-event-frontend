@@ -2,17 +2,17 @@
   {{t 'Add New Event Sub Topic'}}
 </div>
 <div class="content">
-  <form class="ui {{if isLoading 'loading'}} form" id="add-event-sub-topic-form" autocomplete="off" {{action
-    'addEventProperty' eventSubTopic eventTopic on='submit' preventDefault=true}}>
+  <form class="ui {{if this.isLoading 'loading'}} form" id="add-event-sub-topic-form" autocomplete="off" {{action
+    'addEventProperty' this.eventSubTopic this.eventTopic on='submit' preventDefault=true}}>
     <div class="field">
       <label>{{t 'Event Topic'}}</label>
-      <div class="text">{{eventTopic.name}}</div>
+      <div class="text">{{this.eventTopic.name}}</div>
     </div>
     <div class="field">
       <label class="required">
         {{t 'New Event Sub Topic'}}
       </label>
-      <Input @type="text" @name="sub_topic_name" @value={{eventSubTopic.name}} placeholder={{t "Enter New Event Sub Topic"}} />
+      <Input @type="text" @name="sub_topic_name" @value={{this.eventSubTopic.name}} placeholder={{t "Enter New Event Sub Topic"}} />
     </div>
   </form>
 </div>

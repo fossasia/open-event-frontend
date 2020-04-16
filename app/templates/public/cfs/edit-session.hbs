@@ -5,9 +5,9 @@
     </h2>
     <div class="ui container">
       <Forms::SessionSpeakerForm
-        @fields={{model.forms}}
-        @data={{model}}
-        @isLoading={{isLoading}}
+        @fields={{this.model.forms}}
+        @data={{this.model}}
+        @isLoading={{this.isLoading}}
         @save={{action "save"}}
         @isSession={{true}}
         @includeSession={{true}}

@@ -1,8 +1,8 @@
-<div class="ui {{if uploadingFile 'loading'}} basic segment less padding">
-  {{#if fileUrl}}
+<div class="ui {{if this.uploadingFile 'loading'}} basic segment less padding">
+  {{#if this.fileUrl}}
     <div class="ui action input">
-      <Input @type="url" @readonly="" @value={{fileUrl}} />
-      <button class="ui icon red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' edit))}}>
+      <Input @type="url" @readonly="" @value={{this.fileUrl}} />
+      <button class="ui icon red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' this.edit))}}>
         <i class="remove icon"></i>
         {{t 'Remove file'}}
       </button>
@@ -14,16 +14,16 @@
       </div>
       <span>{{t 'Or'}}</span>
       <div class="column sixteen wide">
-        <label for="{{inputIdGenerated}}" class="ui icon button">
+        <label for="{{this.inputIdGenerated}}" class="ui icon button">
           <i class="file icon"></i>
-          {{hint}}
+          {{this.hint}}
         </label>
-        <Input @type="file" @name="file" @id={{inputIdGenerated}} class="hidden-item" @change={{action "fileSelected" "file"}} />
+        <Input @type="file" @name="file" @id={{this.inputIdGenerated}} class="hidden-item" @change={{action "fileSelected" "file"}} />
         <span class="text muted">
-          {{#if helpText}}
-            {{helpText}}<br>
+          {{#if this.helpText}}
+            {{this.helpText}}<br>
           {{/if}}
-          ({{t 'Not larger than'}} {{maxSize}})
+          ({{t 'Not larger than'}} {{this.maxSize}})
         </span>
       </div>
     </div>

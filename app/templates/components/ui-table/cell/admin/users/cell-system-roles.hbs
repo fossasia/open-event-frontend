@@ -1,16 +1,16 @@
 <div class="ui unordered list">
-  {{#if record}}
+  {{#if this.record}}
     <div class="item">
       {{t 'Super Admin'}}
     </div>
   {{/if}}
-  {{#if extraRecords.isAdmin}}
+  {{#if this.extraRecords.isAdmin}}
     <div class="item">
       {{t 'Admin'}}
     </div>
   {{/if}}
   <div class="item">
-    {{#if extraRecords.isVerified}}
+    {{#if this.extraRecords.isVerified}}
       {{t 'Verified User'}}
     {{else}}
       {{t 'Unverified User'}}

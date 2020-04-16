@@ -2,30 +2,28 @@
   <div class="ui less bottom padding row">
     <div class="left aligned eight wide column">
       <Tables::Utilities::PageSizeInput
-        @pageSize={{pageSize}} />
+        @pageSize={{this.pageSize}} />
     </div>
     <div class="eight wide right aligned column">
       <Tables::Utilities::SearchBox
-        @searchQuery={{searchQuery}}
-        @filterOptions={{filterOptions}} />
+        @searchQuery={{this.searchQuery}}
+        @filterOptions={{this.filterOptions}} />
     </div>
   </div>
   <div class="row">
     <EmberTable as |t|>
       <t.head
         @sortFunction={{null}}
-        @columns={{columns}}
+        @columns={{this.columns}}
         @enableReorder={{true}}
-        @sorts={{sorts}}
-        @onUpdateSorts={{action (mut sorts)}} as |h|>
+        @sorts={{this.sorts}}
+        @onUpdateSorts={{action (mut this.sorts)}} as |h|>
         <h.row as |r|>
           <r.cell as |column|>
             {{#if column.headerComponent}}
               {{#component
                 column.headerComponent
-                sorts=sorts column=column
-                sortBy=sortBy
-                sortDir=sortDir
+                sorts=this.sorts column=column sortBy=this.sortBy sortDir=this.sortDir
               }}
                 {{column.name}}
               {{/component}}
@@ -36,7 +34,7 @@
         </h.row>
       </t.head>
       <t.body
-        @rows={{rows}} as |b|>
+        @rows={{this.rows}} as |b|>
         <b.row as |r|>
           <r.cell as |cell column row|>
             {{#if column.cellComponent}}
@@ -58,8 +56,8 @@
 
   <div class="row">
     <Tables::Utilities::Pagination
-      @currentPage={{currentPage}}
-      @pageSize={{pageSize}}
-      @metaData={{metaData}} />
+      @currentPage={{this.currentPage}}
+      @pageSize={{this.pageSize}}
+      @metaData={{this.metaData}} />
   </div>
 </div>

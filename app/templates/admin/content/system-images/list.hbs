@@ -1,5 +1,5 @@
 <div class="ui grid segment">
-  {{#each data as |subTopic|}}
+  {{#each this.data as |subTopic|}}
     <div class="eight wide column">
       <h4>{{subTopic.name}}</h4>
       <Widgets::SafeImage @isAvatar={{true}} @class="ui big image" @src={{if subTopic.placeholder.originalImageUrl subTopic.placeholder.originalImageUrl "/images/placeholders/avatar.png"}} />
@@ -12,4 +12,4 @@
     </div>
   {{/each}}
 </div>
-<Modals::ChangeImageModal @isOpen={{isModalOpen}} @placeholder={{selectedPlaceholder}} />
+<Modals::ChangeImageModal @isOpen={{this.isModalOpen}} @placeholder={{this.selectedPlaceholder}} />
