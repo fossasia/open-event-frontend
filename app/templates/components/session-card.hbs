@@ -1,26 +1,26 @@
 <div class="event wide ui grid row">
-  {{#unless device.isMobile}}
+  {{#unless this.device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
-      <a class="image" href="{{href-to 'my-sessions.view' session.id}}">
-        {{widgets/safe-image src=(if session.event.thumbnailImageUrl session.event.thumbnailImageUrl 'assets/images/landing.jpg')}}
+      <a class="image" href="{{href-to 'my-sessions.view' this.session.id}}">
+        <Widgets::SafeImage @src={{if this.session.event.thumbnailImageUrl this.session.event.thumbnailImageUrl "assets/images/landing.jpg"}} />
       </a>
     </div>
   {{/unless}}
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
-    <a class="main content" href="{{href-to 'my-sessions.view' session.id}}">
+    <a class="main content" href="{{href-to 'my-sessions.view' this.session.id}}">
       <div class="header">
-        <span>{{session.title}}</span>
+        <span>{{this.session.title}}</span>
         <div class="right floated author">
-          <div class="ui {{if (eq session.state 'confirmed') 'green' (if (eq session.state 'rejected') 'red' 'yellow')}}
+          <div class="ui {{if (eq this.session.state 'confirmed') 'green' (if (eq this.session.state 'rejected') 'red' 'yellow')}}
           large label">
-            {{session.state}}
+            {{this.session.state}}
           </div>
         </div>
       </div>
       <div class="meta">
         <span class="time">
-          {{#if session.startsAt}}
-            {{moment-format session.startsAt 'ddd, MMM DD h:mm A'}}
+          {{#if this.session.startsAt}}
+            {{moment-format this.session.startsAt 'ddd, MMM DD h:mm A'}}
           {{else}}
             {{t 'Session Not Yet Scheduled'}}
           {{/if}}
@@ -29,7 +29,7 @@
     </a>
     <div class="extra content">
       <div class="weight-600">
-        {{session.event.name}}
+        {{this.session.event.name}}
       </div>
     </div>
   </div>

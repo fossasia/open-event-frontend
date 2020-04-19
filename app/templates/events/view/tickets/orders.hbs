@@ -5,26 +5,26 @@
         {{t 'View Orders'}}
       </h2>
     </div>
-    <div class="eight wide {{unless device.isMobile 'right aligned'}} column">
-      <div class="{{if device.isMobile 'ui padded grid'}}">
+    <div class="eight wide {{unless this.device.isMobile 'right aligned'}} column">
+      <div class="{{if this.device.isMobile 'ui padded grid'}}">
         <div class="row">
-          {{#ui-dropdown class='compact selection eight wide column'}}
+          <UiDropdown @class="compact selection eight wide column">
             <div class="default text">
               {{t 'Export As'}}
             </div>
             <i class="dropdown icon"></i>
             <div class="menu">
-              <div class="item {{if isLoadingpdf 'loading'}}" role="button" data-value="pdf" {{action 'export' 'pdf'}}>
+              <div class="item {{if this.isLoadingpdf 'loading'}}" role="button" data-value="pdf" {{action 'export' 'pdf'}}>
                 <i class="file pdf outline icon"></i>
                 {{t 'PDF'}}
               </div>
-              <div class="item {{if isLoadingcsv 'loading'}}" role="button" data-value="csv" {{action 'export' 'csv'}}>
+              <div class="item {{if this.isLoadingcsv 'loading'}}" role="button" data-value="csv" {{action 'export' 'csv'}}>
                 <i class="file excel outline icon"></i>
                 {{t 'CSV'}}
               </div>
             </div>
-          {{/ui-dropdown}}
-          {{#ui-dropdown class='selection eight wide column'}}
+          </UiDropdown>
+          <UiDropdown @class="selection eight wide column">
             <div class="default text">
               {{t 'Showing all the records'}}
             </div>
@@ -43,35 +43,35 @@
                 {{t 'Remove Filters'}}
               </div>
             </div>
-          {{/ui-dropdown}}
+          </UiDropdown>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="eight wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'events.view.tickets.orders.list' 'completed' class='item'}}
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="events.view.tickets.orders.list" @model="completed" class="item">
           {{t 'Completed'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.orders.list' 'placed' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.orders.list" @model="placed" class="item">
           {{t 'Placed'}}
-        {{/link-to}}
-        {{#if authManager.currentUser.isAnAdmin}}
-          {{#link-to 'events.view.tickets.orders.list' 'pending' class='item'}}
+        </LinkTo>
+        {{#if this.authManager.currentUser.isAnAdmin}}
+          <LinkTo @route="events.view.tickets.orders.list" @model="pending" class="item">
             {{t 'Pending'}}
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
-        {{#link-to 'events.view.tickets.orders.list' 'expired' class='item'}}
+        <LinkTo @route="events.view.tickets.orders.list" @model="expired" class="item">
           {{t 'Expired'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.orders.list' 'cancelled' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.orders.list" @model="cancelled" class="item">
           {{t 'Cancelled'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.orders.list' 'all' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.orders.list" @model="all" class="item">
           {{t 'All'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="row">

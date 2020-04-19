@@ -1,35 +1,45 @@
-<form class="ui form" {{action save on='submit' preventDefault=true}}>
+<form class="ui form" {{action this.save on='submit' preventDefault=true}}>
   <h3 class="ui header">
     {{t 'Add Fee Settings for the event'}}
   </h3>
-  {{#each model as |ticketFee|}}
+  {{#each this.model as |ticketFee|}}
     <div class="ui five column very relaxed grid">
       <div class="ui field three wide column">
         <label class="required">{{t 'Select country'}}</label>
-        {{#ui-dropdown class='search selection' selected=ticketFee.country forceSelection=false
-                       fullTextSearch=true}}
-          {{input type='hidden' value=ticketFee.country}}
+        <UiDropdown
+          @class="search selection"
+          @selected={{ticketFee.country}}
+          @forceSelection={{false}}
+          @fullTextSearch={{true}}>
+          <Input
+            @type="hidden"
+            @value={{ticketFee.country}} />
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Select country'}}</div>
           <div class="menu">
-            {{#each paymentCountries as |paymentCountry|}}
+            {{#each this.paymentCountries as |paymentCountry|}}
               <div class="item" data-value="{{paymentCountry.name}}">
                 <i class="{{lowercase paymentCountry.code}} flag"></i>
                 {{paymentCountry.name}}
               </div>
             {{/each}}
           </div>
-        {{/ui-dropdown}}
+        </UiDropdown>
       </div>
       <div class="ui field four wide column">
         <label class="required">{{t 'Select currency'}}</label>
-        {{#ui-dropdown class='search selection' selected=ticketFee.currency forceSelection=false
-                       fullTextSearch=true}}
-          {{input type='hidden' value=ticketFee.currency}}
+        <UiDropdown
+          @class="search selection"
+          @selected={{ticketFee.currency}}
+          @forceSelection={{false}}
+          @fullTextSearch={{true}}>
+          <Input
+            @type="hidden"
+            @value={{ticketFee.currency}} />
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Select currency'}}</div>
           <div class="menu">
-            {{#each paymentCurrencies as |paymentCurrency|}}
+            {{#each this.paymentCurrencies as |paymentCurrency|}}
               <div class="item" data-value="{{paymentCurrency.code}}">
                 {{paymentCurrency.code}} -
                 {{paymentCurrency.name}}
@@ -37,7 +47,7 @@
               </div>
             {{/each}}
           </div>
-        {{/ui-dropdown}}
+        </UiDropdown>
       </div>
 
       <div class="ui field four wide column">
@@ -45,7 +55,12 @@
           {{t 'Service Fee'}}
         </label>
         <div class="ui right labeled input">
-          {{input type='number' name=(concat ticketFee.currency '_service') value=ticketFee.serviceFee step=0.1 min=0}}
+          <Input
+            @type="number"
+            @name={{concat ticketFee.currency "_service"}}
+            @value={{ticketFee.serviceFee}}
+            @step={{0.1}}
+            @min={{0}} />
           <div class="ui basic label">
             %
           </div>
@@ -62,21 +77,28 @@
               {{currency-symbol ticketFee.currency}}
             {{/if}}
           </div>
-          {{input type='number' name=(concat ticketFee.currency '_maximum') value=ticketFee.maximumFee step=0.1 min=0}}
+          <Input
+            @type="number"
+            @name={{concat ticketFee.currency "_maximum"}}
+            @value={{ticketFee.maximumFee}}
+            @step={{0.1}}
+            @min={{0}} />
           <div class="ui basic label">
-            {{#ui-popup content=(t 'If you keep the maximum fee as 0, it  would become unlimited. Kindly set the maximum fee to some value.')}}
+            <UiPopup
+              @content={{t "If you keep the maximum fee as 0, it  would become unlimited. Kindly set the maximum fee to some value."}}>
               <i class="info circle fitted icon"></i>
-            {{/ui-popup}}
+            </UiPopup>
           </div>
         </div>
       </div>
 
       <div class="field one wide column centered row" style="margin-top: 24px;">
-        {{#ui-popup content=(t 'Delete')
-                    class='ui icon button'
-                    click=(action (confirm (t 'Are you sure you would like to remove this event fee?') (action 'deleteTicket' ticketFee)))}}
+        <UiPopup
+          @content={{t "Delete"}}
+          @class="ui icon button"
+          @click={{action (confirm (t "Are you sure you would like to remove this event fee?") (action "deleteTicket" ticketFee))}}>
           <i class="trash outline icon"></i>
-        {{/ui-popup}}
+        </UiPopup>
       </div>
 
       <div class="ui horizontal divider">-</div>
@@ -87,7 +109,7 @@
     {{t 'Add New'}}
   </button>
 
-  <button class="ui teal button {{unless model 'disabled'}}" type="submit">
+  <button class="ui teal button {{unless this.model 'disabled'}}" type="submit">
     {{t 'Save'}}
   </button>
 </form>

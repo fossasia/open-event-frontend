@@ -1,13 +1,13 @@
 <div class="ui list">
-  {{#if externalUrl}}
+  {{#if this.externalUrl}}
     <div class="item">
       <i class="share square fitted disabled icon"></i>
       <div class="content">
-        <a href="{{externalUrl}}" target="_blank" rel="noopener nofollow">{{t 'External event URL'}}</a>
+        <a href="{{this.externalUrl}}" target="_blank" rel="noopener nofollow">{{t 'External event URL'}}</a>
       </div>
     </div>
   {{/if}}
-  {{#each socialLinks as |socialLink|}}
+  {{#each this.socialLinks as |socialLink|}}
     <div class="item">
       <i class="share square fitted {{socialLink.normalizedName}} disabled icon"></i>
       <div class="content">
@@ -15,10 +15,10 @@
       </div>
     </div>
   {{/each}}
-  {{#if twitterLink}}
+  {{#if this.twitterLink}}
     <div class="item">
       <div class="twitter content">
-        {{widgets/twitter-timeline handleOrProfile=twitterLink.link}}
+        <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
       </div>
     </div>
   {{/if}}

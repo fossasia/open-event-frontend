@@ -1,19 +1,27 @@
 <div class="mobile hidden row">
   <div class="ui menu">
-    {{#link-to 'index' class='header item' activeClass=''}}
-      <h3>{{settings.appName}}</h3>
-    {{/link-to}}
+    <LinkTo
+      @route="index" class="header item" @activeClass="">
+      <h3>{{this.settings.appName}}</h3>
+    </LinkTo>
     <div class="right menu nav-bar">
-      {{#link-to 'explore' class='item' activeClass=''}}{{t 'Browse Events'}}{{/link-to}}
-      {{#if session.isAuthenticated}}
-        {{notification-dropdown unreadNotifications=unreadNotifications}}
+      <LinkTo
+        @route="explore" class="item"
+        @activeClass="">{{t 'Browse Events'}}</LinkTo>
+      {{#if this.session.isAuthenticated}}
+        <NotificationDropdown
+          @unreadNotifications={{this.unreadNotifications}} />
       {{/if}}
-      {{#if session.isAuthenticated}}
-        {{#ui-dropdown class='item' action='hide'}}
-          {{widgets/safe-image isAvatar=true class='ui avatar round image nav-bar-image' src=(if authManager.currentUser.avatarUrl authManager.currentUser.avatarUrl
-                    '/images/placeholders/avatar.png')}}
-          {{if authManager.currentUser
-               (if authManager.currentUser.firstName authManager.currentUser.firstName authManager.currentUser.email)
+      {{#if this.session.isAuthenticated}}
+        <UiDropdown
+          @class="item"
+          @action="hide">
+          <Widgets::SafeImage
+            @isAvatar={{true}}
+            @class="ui avatar round image nav-bar-image"
+            @src={{if this.authManager.currentUser.avatarUrl this.authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"}} />
+          {{if this.authManager.currentUser
+               (if this.authManager.currentUser.firstName this.authManager.currentUser.firstName this.authManager.currentUser.email)
                'Welcome'}}
           <i class="dropdown icon"></i>
           <div class="menu profile-dropdown-menu">
@@ -22,22 +30,24 @@
             <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
             <div class="divider"></div>
             <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>
-            {{#if authManager.currentUser.isAnAdmin}}
+            {{#if this.authManager.currentUser.isAnAdmin}}
               <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
             {{/if}}
             <div class="divider"></div>
-            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i class="ui right floated large signout sign out icon"></i></span></a>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i
+                  class="ui right floated large signout sign out icon"></i></span></a>
           </div>
-        {{/ui-dropdown}}
+        </UiDropdown>
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (not-eq routing.currentRouteName 'create')}}
-        {{#link-to 'create' class='item ui blue text'}}
+      {{#if (not-eq this.routing.currentRouteName 'create')}}
+        <LinkTo
+          @route="create" class="item ui blue text">
           <div>
             {{t 'Create Event'}}
           </div>
-        {{/link-to}}
+        </LinkTo>
       {{/if}}
     </div>
   </div>
@@ -47,18 +57,21 @@
     <a href="#" class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
-    {{#link-to 'index' class='item' activeClass=''}}
-      <div class="ui header small text">{{settings.appName}}</div>
-    {{/link-to}}
+    <LinkTo
+      @route="index" class="item" @activeClass="">
+      <div class="ui header small text">{{this.settings.appName}}</div>
+    </LinkTo>
     <div class="right menu nav-bar">
-      {{#if session.isAuthenticated}}
-        {{notification-dropdown notifications=notifications}}
+      {{#if this.session.isAuthenticated}}
+        <NotificationDropdown
+          @notifications={{this.notifications}} />
       {{/if}}
-      {{#link-to 'create' class='item ui blue button-text small text'}}
+      <LinkTo
+        @route="create" class="item ui blue button-text small text">
         <div>
           {{t 'Create Event'}}
         </div>
-      {{/link-to}}
+      </LinkTo>
     </div>
   </div>
 </div>

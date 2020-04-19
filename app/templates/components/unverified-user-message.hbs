@@ -1,15 +1,15 @@
-{{#if shouldShowMessage}}
-  <div class="ui icon {{if isMailSent 'info' 'error'}} message eight wide column center aligned">
-    <i class="close icon" onclick={{action (mut isMessageVisible) false}} role="button"></i>
+{{#if this.shouldShowMessage}}
+  <div class="ui icon {{if this.isMailSent 'info' 'error'}} message eight wide column center aligned">
+    <i class="close icon" onclick={{action (mut this.isMessageVisible) false}} role="button"></i>
     <i class="info icon"></i>
     <div class="content">
-      {{#if isMailSent}}
+      {{#if this.isMailSent}}
         <div class="header">
           {{t 'Confirmation mail has been sent again successfully!'}}
         </div>
       {{else}}
         <div class="header">
-          {{#if (eq session.currentRouteName 'events.view.index')}}
+          {{#if (eq this.session.currentRouteName 'events.view.index')}}
             {{t 'To make your event live, please verify your account by clicking on the confirmation link that has been emailed to you.'}}
           {{else}}
             {{t 'Your account is unverified. Please verify by clicking on the confirmation link that has been emailed to you.'}}

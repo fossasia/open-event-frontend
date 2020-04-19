@@ -1,17 +1,17 @@
-{{#if (and (not-includes session.currentRouteName 'my-sessions.view'))}}
-  {{unverified-user-message}}
+{{#if (and (not-includes this.session.currentRouteName 'my-sessions.view'))}}
+  <UnverifiedUserMessage />
   <h1 class="ui header">{{t 'My Sessions'}}</h1>
   <div class="ui grid">
     <div class="row">
       <div class="sixteen wide column">
-        {{#tabbed-navigation}}
-          {{#link-to 'my-sessions.list' 'upcoming' class='item'}}
+        <TabbedNavigation>
+          <LinkTo @route="my-sessions.list" @model="upcoming" class="item">
             {{t 'Upcoming Sessions'}}
-          {{/link-to}}
-          {{#link-to 'my-sessions.list' 'past' class='item'}}
+          </LinkTo>
+          <LinkTo @route="my-sessions.list" @model="past" class="item">
             {{t 'Past Sessions'}}
-          {{/link-to}}
-        {{/tabbed-navigation}}
+          </LinkTo>
+        </TabbedNavigation>
       </div>
     </div>
     {{outlet}}

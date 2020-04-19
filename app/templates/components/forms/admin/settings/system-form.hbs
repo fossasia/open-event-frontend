@@ -6,13 +6,13 @@
     </div>
   </h3>
   <div class="field">
-    {{ui-radio label=(t 'Development') current=settings.appEnvironment name='environment' value='development' onChange=(action (mut settings.appEnvironment))}}
+    <UiRadio @label={{t "Development"}} @current={{this.settings.appEnvironment}} @name="environment" @value="development" @onChange={{action (mut this.settings.appEnvironment)}} />
   </div>
   <div class="field">
-    {{ui-radio label=(t 'Staging') current=settings.appEnvironment name='environment' value='staging' onChange=(action (mut settings.appEnvironment))}}
+    <UiRadio @label={{t "Staging"}} @current={{this.settings.appEnvironment}} @name="environment" @value="staging" @onChange={{action (mut this.settings.appEnvironment)}} />
   </div>
   <div class="field">
-    {{ui-radio label=(t 'Production') current=settings.appEnvironment name='environment' value='production' onChange=(action (mut settings.appEnvironment))}}
+    <UiRadio @label={{t "Production"}} @current={{this.settings.appEnvironment}} @name="environment" @value="production" @onChange={{action (mut this.settings.appEnvironment)}} />
   </div>
   <h3 class="ui header">
     {{t 'App Name'}}
@@ -24,13 +24,13 @@
     <label>
       {{t 'App Name'}}
     </label>
-    {{input type='text' name='app_name' value=settings.appName}}
+    <Input @type="text" @name="app_name" @value={{this.settings.appName}} />
   </div>
   <div class="field">
     <label>
       {{t 'Tagline'}}
     </label>
-    {{input type='text' name='tag_line' value=settings.tagline}}
+    <Input @type="text" @name="tag_line" @value={{this.settings.tagline}} />
   </div>
   <h3 class="ui header">
     {{t 'API server details'}}
@@ -42,18 +42,18 @@
     <label>
       {{t 'API Url'}}
     </label>
-    {{widgets/forms/link-input segmentedLink=settings.segmentedStaticDomain inputId='api_url'}}
+    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedStaticDomain}} @inputId="api_url" />
   </div>
   <div class="ui hidden divider"></div>
-  {{forms/admin/settings/system/social-media-token settings=settings}}
+  <Forms::Admin::Settings::System::SocialMediaToken @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
-  {{forms/admin/settings/system/captcha-form settings=settings}}
+  <Forms::Admin::Settings::System::CaptchaForm @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
-  {{forms/admin/settings/system/storage-option settings=settings}}
+  <Forms::Admin::Settings::System::StorageOption @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
-  {{forms/admin/settings/system/mail-settings settings=settings}}
+  <Forms::Admin::Settings::System::MailSettings @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
-  {{forms/admin/settings/system/order-expiry-form settings=settings}}
+  <Forms::Admin::Settings::System::OrderExpiryForm @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
   <button class="ui teal wide button" type="submit">
     {{t 'Save'}}

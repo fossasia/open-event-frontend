@@ -1,3 +1,3 @@
-<div class="ui basic {{if isLoading 'loading' ''}} segment">
-  {{forms/admin/settings/microservices-form save=(action 'updateSettings') settings=model}}
+<div class="ui basic {{if this.isLoading 'loading' ''}} segment">
+  <Forms::Admin::Settings::MicroservicesForm @save={{action "updateSettings"}} @settings={{this.model}} />
 </div>

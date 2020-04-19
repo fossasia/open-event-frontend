@@ -1,43 +1,86 @@
-<form class="ui form" {{action 'submit' data on='submit'}}>
+<form class="ui form" {{action 'submit' this.data on='submit'}}>
   <div class="field">
     <label class="required">{{t 'Discount Code'}}</label>
-    {{input type='text' name='discount_code' value=data.code}}
+    <Input
+      @type="text"
+      @name="discount_code"
+      @value={{this.data.code}} />
   </div>
   <div class="field">
     <label class="required">{{t 'Enter Discount'}}</label>
-    {{ui-radio label=amountLabel name='discount_type'  value='amount' current=data.type onChange=(action (mut data.type))}}
+    <UiRadio
+      @label={{this.amountLabel}}
+      @name="discount_type"
+      @value="amount"
+      @current={{this.data.type}}
+      @onChange={{action (mut this.data.type)}} />
   </div>
-  {{#if (not-eq data.type 'percent')}}
+  {{#if (not-eq this.data.type 'percent')}}
     <div class="field">
-      {{input type='number' name='discount_amount' min=1 step=0.1 value=data.value}}
+      <Input
+        @type="number"
+        @name="discount_amount"
+        @min={{1}}
+        @step={{0.1}}
+        @value={{this.data.value}} />
     </div>
   {{/if}}
   <div class="field">
-    {{ui-radio label=(t 'Percent (%)') name='discount_type'  value='percent' current=data.type onChange=(action (mut data.type))}}
+    <UiRadio
+      @label={{t "Percent (%)"}}
+      @name="discount_type"
+      @value="percent"
+      @current={{this.data.type}}
+      @onChange={{action (mut this.data.type)}} />
   </div>
-  {{#if (eq data.type 'percent')}}
+  {{#if (eq this.data.type 'percent')}}
     <div class="field">
-      {{input type='number' name='discount_percent' min=1 max=100 step=0.1 value=data.value}}
+      <Input
+        @type="number"
+        @name="discount_percent"
+        @min={{1}}
+        @max={{100}}
+        @step={{0.1}}
+        @value={{this.data.value}} />
     </div>
   {{/if}}
   <div class="field">
     <label class="required">{{t 'Number of Discount Tickets'}}</label>
-    {{input name='number_of_discount_tickets' type='number' value=data.ticketsNumber min='0'}}
+    <Input
+      @name="number_of_discount_tickets"
+      @type="number"
+      @value={{this.data.ticketsNumber}}
+      @min="0" />
   </div>
   <div class="grouped inline fields">
     <label class="required">{{t 'Status'}}</label>
     <div class="field">
-      {{ui-radio name='status' label=(t 'Active') current=data.isActive value=true onChange=(action (mut data.isActive))}}
+      <UiRadio
+        @name="status"
+        @label={{t "Active"}}
+        @current={{this.data.isActive}}
+        @value={{true}}
+        @onChange={{action (mut this.data.isActive)}} />
     </div>
     <div class="field">
-      {{ui-radio name='status' label=(t 'Inactive') value=false current=data.isActive onChange=(action (mut data.isActive))}}
+      <UiRadio
+        @name="status"
+        @label={{t "Inactive"}}
+        @value={{false}}
+        @current={{this.data.isActive}}
+        @onChange={{action (mut this.data.isActive)}} />
     </div>
   </div>
-  {{#if eventTickets}}
+  {{#if this.eventTickets}}
     <div class="inline field">
       <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
       <div class="ui hidden divider"></div>
-      {{ui-checkbox label=(t 'Select all Ticket types') name='all_ticket_types' value='tickets' checked=allTicketTypesChecked onChange=(action 'toggleAllSelection')}}
+      <UiCheckbox
+        @label={{t "Select all Ticket types"}}
+        @name="all_ticket_types"
+        @value="tickets"
+        @checked={{this.allTicketTypesChecked}}
+        @onChange={{action "toggleAllSelection"}} />
     </div>
   {{else}}
     <div class="inline field">
@@ -45,54 +88,85 @@
     </div>
   {{/if}}
   <div class="ui list field">
-    {{#each eventTickets as |ticket|}}
-      {{ui-checkbox name='ticket_name' label=ticket.name checked=ticket.isChecked onChange=(action 'updateTicketsSelection' ticket)}}
+    {{#each this.eventTickets as |ticket|}}
+      <UiCheckbox
+        @name="ticket_name"
+        @label={{ticket.name}}
+        @checked={{ticket.isChecked}}
+        @onChange={{action "updateTicketsSelection" ticket}} />
       <br>
     {{/each}}
   </div>
   <div>
     <div class="inline field">
-      {{ui-checkbox label=(t 'Show more options') class='toggle' checked=showMoreOptions onChange=(action (mut showMoreOptions))}}
+      <UiCheckbox
+        @label={{t "Show more options"}}
+        @class="toggle"
+        @checked={{this.showMoreOptions}}
+        @onChange={{action (mut this.showMoreOptions)}} />
     </div>
-    {{#if showMoreOptions}}
+    {{#if this.showMoreOptions}}
       <div>{{t 'Set the min and max quantity allowed to purchase per order (Optional)'}}</div>
-      <div class="{{unless device.isMobile 'fields'}}">
-        <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
+      <div class="{{unless this.device.isMobile 'fields'}}">
+        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Min'}}</label>
-          {{input type='number' name='min_order' min='0' value=data.minQuantity}}
+          <Input
+            @type="number"
+            @name="min_order"
+            @min="0"
+            @value={{this.data.minQuantity}} />
         </div>
-        <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
+        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Max'}}</label>
-          {{input type='number' name='max_order' min='0' value=data.maxQuantity}}
+          <Input
+            @type="number"
+            @name="max_order"
+            @min="0"
+            @value={{this.data.maxQuantity}} />
         </div>
       </div>
       <div class="fields">
-        <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
+        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Valid from'}}</label>
-          {{widgets/forms/date-picker name='start_date' value=data.validFromDate rangePosition='start' onChange=(action 'onChange')}}
+          <Widgets::Forms::DatePicker
+            @name="start_date"
+            @value={{this.data.validFromDate}}
+            @rangePosition="start"
+            @onChange={{action "onChange"}} />
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker name='start_time' value=data.validFromTime onChange=(action 'onChange')}}
+          <Widgets::Forms::TimePicker
+            @name="start_time"
+            @value={{this.data.validFromTime}}
+            @onChange={{action "onChange"}} />
         </div>
-        <div class="wide field {{if device.isMobile 'sixteen' 'five'}}">
+        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
           <label>{{t 'Expires on'}}</label>
-          {{widgets/forms/date-picker type="text" name='end_date' value=data.validTillDate rangePosition='end' onChange=(action 'onChange')}}
+          <Widgets::Forms::DatePicker
+            @type="text"
+            @name="end_date"
+            @value={{this.data.validTillDate}}
+            @rangePosition="end"
+            @onChange={{action "onChange"}} />
           <div class="ui hidden divider"></div>
-          {{widgets/forms/time-picker type="text" name='end_time' value=data.validTillTime onChange=(action 'onChange')}}
+          <Widgets::Forms::TimePicker
+            @type="text"
+            @name="end_time"
+            @value={{this.data.validTillTime}}
+            @onChange={{action "onChange"}} />
         </div>
       </div>
     {{/if}}
     <div class="field">
       <label>{{t 'Discount Link'}}</label>
       <div class="ui action input fluid">
-        <input type="text" value="{{discountLink}}" readonly>
-        {{#copy-button
-          class='ui black right labeled icon copy button'
-          clipboardText=discountLink
-          success=(action 'copiedText')
-          }}
+        <input type="text" value="{{this.discountLink}}" readonly>
+        <CopyButton
+          @class="ui black right labeled icon copy button"
+          @clipboardText={{this.discountLink}}
+          @success={{action "copiedText"}}>
           <i class="copy icon"></i>
           {{t 'Copy'}}
-        {{/copy-button}}
+        </CopyButton>
       </div>
     </div>
     {{#if this.isLinkSuccess}}

@@ -9,7 +9,7 @@
             </h4>
           </div>
           <div class="eight wide column right aligned">
-            <button class="ui icon circular blue button {{if device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-type'}}>
+            <button class="ui icon circular blue button {{if this.device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-type'}}>
               <i class="icon plus"></i>
             </button>
           </div>
@@ -17,7 +17,7 @@
         <div class="ui divider"></div>
         <table class="ui celled table">
           <tbody>
-            {{#each model.eventTypes as |eventType|}}
+            {{#each this.model.eventTypes as |eventType|}}
               <tr>
                 <td>
                   <div class="ui grid">
@@ -26,12 +26,18 @@
                     </div>
                     <div class="eight wide column right aligned">
                       <div class="ui horizontal compact basic buttons">
-                        {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' eventType)}}
+                        <UiPopup
+                          @content={{t "Edit"}}
+                          @class="ui icon button"
+                          @click={{action "openModalFor" eventType}}>
                           <i class="edit icon"></i>
-                        {{/ui-popup}}
-                        {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event type?') (action 'deleteEventProperty' eventType)))}}
+                        </UiPopup>
+                        <UiPopup
+                          @content={{t "Delete"}}
+                          @class="ui icon button"
+                          @click={{action (confirm (t "Are you sure you would like to delete this event type?") (action "deleteEventProperty" eventType))}}>
                           <i class="trash outline icon"></i>
-                        {{/ui-popup}}
+                        </UiPopup>
                       </div>
                     </div>
                   </div>
@@ -51,7 +57,7 @@
             </h4>
           </div>
           <div class="eight wide column right aligned">
-            <button class="ui icon circular blue button {{if device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-topic'}}>
+            <button class="ui icon circular blue button {{if this.device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-topic'}}>
               <i class="icon plus"></i>
             </button>
           </div>
@@ -59,7 +65,7 @@
         <div class="ui divider"></div>
         <table class="ui celled table">
           <tbody>
-            {{#each model.eventTopics as |eventTopic|}}
+            {{#each this.model.eventTopics as |eventTopic|}}
               <tr>
                 <td>
                   <div class="ui grid">
@@ -68,12 +74,18 @@
                     </div>
                     <div class="eight wide column right aligned">
                       <div class="ui horizontal compact basic buttons">
-                        {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' eventTopic)}}
+                        <UiPopup
+                          @content={{t "Edit"}}
+                          @class="ui icon button"
+                          @click={{action "openModalFor" eventTopic}}>
                           <i class="edit icon"></i>
-                        {{/ui-popup}}
-                        {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event topic?') (action 'deleteEventProperty' eventTopic)))}}
+                        </UiPopup>
+                        <UiPopup
+                          @content={{t "Delete"}}
+                          @class="ui icon button"
+                          @click={{action (confirm (t "Are you sure you would like to delete this event topic?") (action "deleteEventProperty" eventTopic))}}>
                           <i class="trash outline icon"></i>
-                        {{/ui-popup}}
+                        </UiPopup>
                       </div>
                     </div>
                   </div>
@@ -93,7 +105,7 @@
             </h4>
           </div>
           <div class="eight wide column right aligned">
-            <button class="ui icon circular blue {{if disableEventSubtopic 'disabled'}} button {{if device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-sub-topic'}}>
+            <button class="ui icon circular blue {{if this.disableEventSubtopic 'disabled'}} button {{if this.device.isMobile 'fluid'}}" {{action 'openModalFor' 'event-sub-topic'}}>
               <i class="icon plus"></i>
             </button>
           </div>
@@ -101,20 +113,22 @@
         <div class="ui divider"></div>
         <div class="field">
           <label>{{t 'Event Topic'}}</label>
-          {{#ui-dropdown class='search selection' onChange=(action 'loadSubTopics') as |execute mapper|}}
+          <UiDropdown
+            @class="search selection"
+            @onChange={{action "loadSubTopics"}} as |execute mapper|>
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select Event Topic'}}</div>
             <div class="menu">
-              {{#each model.eventTopics as |topic|}}
+              {{#each this.model.eventTopics as |topic|}}
                 <div class="item" data-value="{{map-value mapper topic}}">{{topic.name}}</div>
               {{/each}}
             </div>
-          {{/ui-dropdown}}
+          </UiDropdown>
         </div>
-        {{#if model.eventSubTopics}}
+        {{#if this.model.eventSubTopics}}
           <table class="ui celled table">
             <tbody>
-              {{#each model.eventSubTopics as |subTopic|}}
+              {{#each this.model.eventSubTopics as |subTopic|}}
                 <tr>
                   <td>
                     <div class="ui grid">
@@ -123,12 +137,18 @@
                       </div>
                       <div class="eight wide column right aligned">
                         <div class="ui horizontal compact basic buttons">
-                          {{#ui-popup content=(t 'Edit') class='ui icon button' click=(action 'openModalFor' subTopic)}}
+                          <UiPopup
+                            @content={{t "Edit"}}
+                            @class="ui icon button"
+                            @click={{action "openModalFor" subTopic}}>
                             <i class="edit icon"></i>
-                          {{/ui-popup}}
-                          {{#ui-popup content=(t 'Delete') class='ui icon button' click=(action (confirm (t 'Are you sure you would like to delete this event sub topic?') (action 'deleteEventProperty' subTopic)))}}
+                          </UiPopup>
+                          <UiPopup
+                            @content={{t "Delete"}}
+                            @class="ui icon button"
+                            @click={{action (confirm (t "Are you sure you would like to delete this event sub topic?") (action "deleteEventProperty" subTopic))}}>
                             <i class="trash outline icon"></i>
-                          {{/ui-popup}}
+                          </UiPopup>
                         </div>
                       </div>
                     </div>
@@ -143,16 +163,19 @@
   </div>
 </div>
 
-{{modals/admin/content/new-event-type-modal isOpen=eventType.openModal
-                              name=eventType.name
-                              addEventProperty=(action 'addEventProperty' eventType)}}
+<Modals::Admin::Content::NewEventTypeModal
+  @isOpen={{this.eventType.openModal}}
+  @name={{this.eventType.name}}
+  @addEventProperty={{action "addEventProperty" this.eventType}} />
 
-{{modals/admin/content/new-event-topic-modal isOpen=eventTopic.openModal
-                              name=eventTopic.name
-                              addEventProperty=(action 'addEventProperty' eventTopic)}}
+<Modals::Admin::Content::NewEventTopicModal
+  @isOpen={{this.eventTopic.openModal}}
+  @name={{this.eventTopic.name}}
+  @addEventProperty={{action "addEventProperty" this.eventTopic}} />
 
-{{modals/admin/content/new-event-sub-topic-modal isOpen=eventSubTopic.openModal
-                              model=model
-                              eventSubTopic=eventSubTopic
-                              eventTopic=currentTopicSelected
-                              addEventProperty=(action 'addEventProperty' eventSubTopic)}}
+<Modals::Admin::Content::NewEventSubTopicModal
+  @isOpen={{this.eventSubTopic.openModal}}
+  @model={{this.model}}
+  @eventSubTopic={{this.eventSubTopic}}
+  @eventTopic={{this.currentTopicSelected}}
+  @addEventProperty={{action "addEventProperty" this.eventSubTopic}} />

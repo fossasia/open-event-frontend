@@ -1,26 +1,26 @@
 <div class="ui grid stackable">
   <div class="row">
     <div class="sixteen wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'admin.sessions.list' 'all' class='item'}}
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.sessions.list" @model="all" class="item">
           {{t 'All'}}
-        {{/link-to}}
-        {{#link-to 'admin.sessions.list' 'confirmed' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sessions.list" @model="confirmed" class="item">
           {{t 'Confirmed'}}
-        {{/link-to}}
-        {{#link-to 'admin.sessions.list' 'pending' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sessions.list" @model="pending" class="item">
           {{t 'Pending'}}
-        {{/link-to}}
-        {{#link-to 'admin.sessions.list' 'accepted' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sessions.list" @model="accepted" class="item">
           {{t 'Accepted'}}
-        {{/link-to}}
-        {{#link-to 'admin.sessions.list' 'rejected' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sessions.list" @model="rejected" class="item">
           {{t 'Rejected'}}
-        {{/link-to}}
-        {{#link-to 'admin.sessions.list' 'deleted' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.sessions.list" @model="deleted" class="item">
           {{t 'Deleted'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="row">

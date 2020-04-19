@@ -1,22 +1,23 @@
 <div class="content">
-  {{#link-to 'events.view.edit.sponsors' tagName='button'
-  class='ui right floated blue button'}}
+  <LinkTo
+  @route="events.view.edit.sponsors"
+  @tagName="button" class="ui right floated blue button">
     {{t 'Add Sponsors'}}
-  {{/link-to}}
+  </LinkTo>
   <div class="header">{{t 'Event sponsors'}}</div>
 </div>
 <div class="content">
-  {{tables/default  columns=columns
-                    rows=data.data
-                    currentPage=page
-                    pageSize=per_page
-                    searchQuery=search
-                    sortBy=sort_by
-                    sortDir=sort_dir
-                    metaData=data.meta
-                    filterOptions=filterOptions
-                    widthConstraint="eq-container"
-                    resizeMode="fluid"
-                    fillMode="equal-column"
-  }}    
+  <Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.data.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.data.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
 </div>

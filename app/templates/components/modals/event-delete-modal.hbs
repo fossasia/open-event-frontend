@@ -5,12 +5,12 @@
   </div>
 </div>
 <div class="content">
-  <form class="ui {{if isLoading 'loading'}} form" id="delete-form" autocomplete="off" {{action deleteEvent on='submit' preventDefault=true}}>
+  <form class="ui {{if this.isLoading 'loading'}} form" id="delete-form" autocomplete="off" {{action this.deleteEvent on='submit' preventDefault=true}}>
     <div class="field">
       <div class="label">
         {{t 'Please enter the full name of the event to continue'}}
       </div>
-      {{input type='text' name='confirm_name' value=confirmName required=true}}
+      <Input @type="text" @name="confirm_name" @value={{this.confirmName}} required={{true}} />
     </div>
   </form>
 </div>
@@ -18,7 +18,7 @@
   <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  <button type="submit" form="delete-form" class="ui red button" disabled={{isNameDifferent}}>
+  <button type="submit" form="delete-form" class="ui red button" disabled={{this.isNameDifferent}}>
     {{t 'Delete Event'}}
   </button>
 </div>

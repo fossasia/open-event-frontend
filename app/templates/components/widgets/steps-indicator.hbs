@@ -1,6 +1,6 @@
-<div class="ui {{ui-grid-number processedSteps.length}} steps">
-  {{#each processedSteps as |step index|}}
-    <a class="{{if (eq currentIndex index) 'active'}} {{if step.isDisabled 'disabled'}} {{if step.isCompleted 'completed'}} step" href="{{unless disableLinks (href-to step.route)}}">
+<div class="ui {{ui-grid-number this.processedSteps.length}} steps">
+  {{#each this.processedSteps as |step index|}}
+    <a class="{{if (eq this.currentIndex index) 'active'}} {{if step.isDisabled 'disabled'}} {{if step.isCompleted 'completed'}} step" href="{{unless this.disableLinks (href-to step.route)}}">
       <i class="{{step.icon}}"></i>
       <div class="content">
         <div class="title">{{step.title}}</div>

@@ -1,29 +1,29 @@
-<div class="ui {{if device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
-  {{#if (or (eq extraRecords.status 'rejected')(eq extraRecords.status 'pending'))}}
-    {{#ui-dropdown class='ui icon right pointing dropdown button'}}
+<div class="ui {{if this.device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
+  {{#if (or (eq this.extraRecords.status 'rejected')(eq this.extraRecords.status 'pending'))}}
+    <UiDropdown @class="ui icon right pointing dropdown button">
       <i class="green checkmark icon"></i>
       <div class="menu">
-        <a href="#" role="button" class="item" {{action props.actions.acceptProposal record true}}>{{t 'With email'}}</a>
-        <a href="#" role="button" class="item" {{action props.actions.acceptProposal record false}}>{{t 'Without email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.acceptProposal this.record true}}>{{t 'With email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.acceptProposal this.record false}}>{{t 'Without email'}}</a>
       </div>
-    {{/ui-dropdown}}
+    </UiDropdown>
   {{/if}}
-  {{#if (eq extraRecords.status 'accepted')}}
-    {{#ui-dropdown class='ui icon right pointing dropdown button'}}
+  {{#if (eq this.extraRecords.status 'accepted')}}
+    <UiDropdown @class="ui icon right pointing dropdown button">
       <i class="blue checkmark icon"></i>
       <div class="menu">
-        <a href="#" role="button" class="item" {{action props.actions.confirmProposal record true}}>{{t 'With email'}}</a>
-        <a href="#" role="button" class="item" {{action props.actions.confirmProposal record false}}>{{t 'Without email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.confirmProposal this.record true}}>{{t 'With email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.confirmProposal this.record false}}>{{t 'Without email'}}</a>
       </div>
-    {{/ui-dropdown}}
+    </UiDropdown>
   {{/if}}
-  {{#if (or (eq extraRecords.status 'confirmed') (eq extraRecords.status 'pending') (eq extraRecords.status 'accepted'))}}
-    {{#ui-dropdown class='ui icon right pointing dropdown button'}}
+  {{#if (or (eq this.extraRecords.status 'confirmed') (eq this.extraRecords.status 'pending') (eq this.extraRecords.status 'accepted'))}}
+    <UiDropdown @class="ui icon right pointing dropdown button">
       <i class="red remove icon"></i>
       <div class="menu">
-        <a href="#" role="button" class="item" {{action props.actions.rejectProposal record true}}>{{t 'With email'}}</a>
-        <a href="#" role="button" class="item" {{action props.actions.rejectProposal record false}}>{{t 'Without email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.rejectProposal this.record true}}>{{t 'With email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.rejectProposal this.record false}}>{{t 'Without email'}}</a>
       </div>
-    {{/ui-dropdown}}
+    </UiDropdown>
   {{/if}}
 </div>

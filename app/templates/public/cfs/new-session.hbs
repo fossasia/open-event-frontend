@@ -4,10 +4,15 @@
       {{t 'Session Details'}}
     </h2>
     <div class="ui container">
-      {{#each model.speaker as |speaker|}}
+      {{#each this.model.speaker as |speaker|}}
         {{#if speaker.id}}
-          {{forms/session-speaker-form fields=model.forms data=model isLoading=isLoading
-            save=(action 'save' speaker) isSession=true includeSession=true}}
+          <Forms::SessionSpeakerForm
+            @fields={{this.model.forms}}
+            @data={{this.model}}
+            @isLoading={{this.isLoading}}
+            @save={{action "save" speaker}}
+            @isSession={{true}}
+            @includeSession={{true}} />
         {{/if}}
       {{/each}}
     </div>

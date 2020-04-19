@@ -1,14 +1,16 @@
-<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
 
   <div class="ui centered grid">
     <div class="column">
-      <div class="ui {{if data.event.isTicketFormEnabled 'basic'}} segment">
+      <div class="ui {{if this.data.event.isTicketFormEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class=" field">
             <div class="ui slider checkbox">
-              {{input type='checkbox' checked=data.event.isTicketFormEnabled}}
+              <Input
+                @type="checkbox"
+                @checked={{this.data.event.isTicketFormEnabled}} />
               <label class="weight-300" style="font-size: large">
-                {{if data.event.isTicketFormEnabled (t 'Turn off') (t 'Turn on')}}
+                {{if this.data.event.isTicketFormEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Attendee Form'}}
               </label>
             </div>
@@ -18,12 +20,12 @@
       <div class="ui center aligned header">
         {{t 'Information About Attendee Form'}}
       </div>
-      <div class="ui muted text">  
+      <div class="ui muted text">
         {{t 'The attendee form by default collects the name and email of an attendee. You also have the option to collect additional information such as contact data, position, organization and more. This information will be available together with the ticket information in a CSV file in the ticket section of your event.'}}
       </div>
     </div>
   </div>
-  {{#if data.event.isTicketFormEnabled}}
+  {{#if this.data.event.isTicketFormEnabled}}
     <div class="ui hidden divider"></div>
     <h3 class="ui dividing header">
       <i class="checkmark box icon"></i>
@@ -36,7 +38,7 @@
         <table class="ui selectable celled table">
           <thead>
             <tr>
-              {{#if device.isMobile}}
+              {{#if this.device.isMobile}}
                 <th class="center aligned">
                   {{t 'Options'}}
                 </th>
@@ -54,26 +56,28 @@
             </tr>
           </thead>
           <tbody>
-            {{#each data.customForms as |field|}}
+            {{#each this.data.customForms as |field|}}
               <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if device.isMobile 'center' 'right'}} aligned">
+                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
                   <label class="{{if field.isFixed 'required'}}">
                     {{field.name}}
                   </label>
                 </td>
                 <td class="center aligned">
-                  {{ui-checkbox class='slider'
-                                checked=field.isIncluded
-                                disabled=field.isFixed
-                                onChange=(action (mut field.isIncluded))
-                                label=(if device.isMobile (t 'Include'))}}
+                  <UiCheckbox
+                    @class="slider"
+                    @checked={{field.isIncluded}}
+                    @disabled={{field.isFixed}}
+                    @onChange={{action (mut field.isIncluded)}}
+                    @label={{if this.device.isMobile (t "Include")}} />
                 </td>
                 <td class="center aligned">
-                  {{ui-checkbox class='slider'
-                                checked=field.isRequired
-                                disabled=field.isFixed
-                                onChange=(action (mut field.isRequired))
-                                label=(if device.isMobile (t 'Require'))}}
+                  <UiCheckbox
+                    @class="slider"
+                    @checked={{field.isRequired}}
+                    @disabled={{field.isFixed}}
+                    @onChange={{action (mut field.isRequired)}}
+                    @label={{if this.device.isMobile (t "Require")}} />
                 </td>
               </tr>
             {{/each}}
@@ -83,23 +87,23 @@
     </div>
   {{/if}}
   <div class="spacer-50"></div>
-  <div class="{{if device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
-    <button class="ui three field left labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
+  <div class="{{if this.device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
+    <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
     </button>
-    <button class="ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
+    <button class="ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
-    {{#if (not-eq data.event.state 'published')}}
-      <button class="blue ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+    {{#if (not-eq this.data.event.state 'published')}}
+      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
         {{t 'Save draft'}}
         <i class="save icon"></i>
       </button>
     {{/if}}
-    {{#if data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+    {{#if this.data.event.locationName}}
+      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>

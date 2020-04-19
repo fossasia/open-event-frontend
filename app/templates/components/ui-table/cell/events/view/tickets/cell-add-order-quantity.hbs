@@ -1,13 +1,13 @@
 <div class="inline field">
-  {{#ui-dropdown class='compact selection' forceSelection=false onChange=(action updateOrder record) as |execute mapper|}}
-    {{input type='hidden' id=(concat record.id '_quantity') value=record.orderQuantity}}
+  <UiDropdown @class="compact selection" @forceSelection={{false}} @onChange={{action this.updateOrder this.record}} as |execute mapper|>
+    <Input @type="hidden" @id={{concat this.record.id "_quantity"}} @value={{this.record.orderQuantity}} />
     <i class="dropdown icon"></i>
     <div class="default text">0</div>
     <div class="menu">
       <div class="item" data-value="{{map-value mapper 0}}">0</div>
-      {{#each (range record.minOrder record.maxOrder) as |count|}}
+      {{#each (range this.record.minOrder this.record.maxOrder) as |count|}}
         <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
       {{/each}}
     </div>
-  {{/ui-dropdown}}
+  </UiDropdown>
 </div>

@@ -1,17 +1,17 @@
 <div class="header">
-  {{#if isNew}}
+  {{#if this.isNew}}
     {{t 'Add New System Role'}}
   {{else}}
     {{t 'Edit System Role'}}
   {{/if}}
 </div>
 <div class="content">
-  <form class="ui {{if isLoading 'loading'}} form" id="add-system-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
+  <form class="ui {{if this.isLoading 'loading'}} form" id="add-system-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
     <div class="field">
       <label class="required">
         {{t 'Name'}}
       </label>
-      {{input type='text' name='role_name' value=role.name placeholder=(t 'Enter Role name')}}
+      <Input @type="text" @name="role_name" @value={{this.role.name}} placeholder={{t "Enter Role name"}} />
     </div>
     <div class="field">
       <label class="required">
@@ -19,10 +19,10 @@
       </label>
       <div class="inline field">
         <div class="ui stackable grid container">
-          {{#each panelPermissions as |permission|}}
+          {{#each this.panelPermissions as |permission|}}
             <div class="five wide column">
               <div class="item" data-value={{permission}}>
-                {{ui-checkbox label=(concat permission.panelName ' panel') checked=permission.isChecked onChange=(action 'toggleCheckbox' permission)}}
+                <UiCheckbox @label={{concat permission.panelName " panel"}} @checked={{permission.isChecked}} @onChange={{action "toggleCheckbox" permission}} />
               </div>
             </div>
           {{/each}}
@@ -36,7 +36,7 @@
     {{t 'Cancel'}}
   </button>
   <button type="submit" form="add-system-role-form" class="ui green right labeled icon button">
-    {{#if isNew}}
+    {{#if this.isNew}}
       {{t 'Add Role'}}
     {{else}}
       {{t 'Edit Role'}}

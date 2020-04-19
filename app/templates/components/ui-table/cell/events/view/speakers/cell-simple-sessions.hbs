@@ -1,6 +1,6 @@
 <div class="ui list">
-  {{#each record as |session|}}
-    {{#if (not eq session.deletedAt)}}
+  {{#each this.record as |session|}}
+    {{#if (not this.eq session.deletedAt)}}
       <div class="item">
         <div class="item">
           <div class="ui {{session-color session.state}} horizontal label">{{session.state}}</div>

@@ -1,30 +1,30 @@
 <div class="ui stackable grid">
   <div class="sixteen wide column">
-    {{unverified-user-message}}
+    <UnverifiedUserMessage />
   </div>
 </div>
 <div class="row">
   <div class="sixteen wide column">
-    {{#tabbed-navigation}}
-      {{#link-to 'account.profile' class='item'}}
+    <TabbedNavigation>
+      <LinkTo @route="account.profile" class="item">
         {{t 'Profile'}}
-      {{/link-to}}
-      {{#link-to 'account.billing' class='item'}}
+      </LinkTo>
+      <LinkTo @route="account.billing" class="item">
         {{t 'Billing Info'}}
-      {{/link-to}}
-      {{#link-to 'account.password' class='item'}}
+      </LinkTo>
+      <LinkTo @route="account.password" class="item">
         {{t 'Password'}}
-      {{/link-to}}
-      {{#link-to 'account.email-preferences' class='item'}}
+      </LinkTo>
+      <LinkTo @route="account.email-preferences" class="item">
         {{t 'Email-Preferences'}}
-      {{/link-to}}
-      {{#link-to 'account.applications' class='item'}}
+      </LinkTo>
+      <LinkTo @route="account.applications" class="item">
         {{t 'Applications'}}
-      {{/link-to}}
-      {{#link-to 'account.danger-zone' class='item'}}
+      </LinkTo>
+      <LinkTo @route="account.danger-zone" class="item">
         {{t 'Danger Zone'}}
-      {{/link-to}}
-    {{/tabbed-navigation}}
+      </LinkTo>
+    </TabbedNavigation>
   </div>
 </div>
 <div class="ui segment">

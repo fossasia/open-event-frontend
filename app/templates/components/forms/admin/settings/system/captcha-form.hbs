@@ -8,9 +8,9 @@
   <label>
     {{t 'Enable Google reCAPTCHA'}}
   </label>
-  {{ui-checkbox class='toggle' checked=settings.isGoogleRecaptchaEnabled onChange=(action (mut settings.isGoogleRecaptchaEnabled))}}
+  <UiCheckbox @class="toggle" @checked={{this.settings.isGoogleRecaptchaEnabled}} @onChange={{action (mut this.settings.isGoogleRecaptchaEnabled)}} />
 </div>
-{{#if settings.isGoogleRecaptchaEnabled}}
+{{#if this.settings.isGoogleRecaptchaEnabled}}
   <h3 class="ui header">
     {{t 'Google reCaptcha'}}
     <div class="sub header">
@@ -25,12 +25,12 @@
     <label>
       {{t 'Google reCAPTCHA Site Key'}}
     </label>
-    {{input type='text' name='google_recaptcha_sitekey' value=settings.googleRecaptchaSite}}
+    <Input @type="text" @name="google_recaptcha_sitekey" @value={{this.settings.googleRecaptchaSite}} />
   </div>
   <div class="field">
     <label>
       {{t 'Google reCAPTCHA Secret Key'}}
     </label>
-    {{input type='text' name='google_recaptcha_secretkey' value=settings.googleRecaptchaSecret}}
+    <Input @type="text" @name="google_recaptcha_secretkey" @value={{this.settings.googleRecaptchaSecret}} />
   </div>
 {{/if}}

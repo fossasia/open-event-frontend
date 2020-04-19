@@ -1,28 +1,28 @@
 <div class="ui grid">
   <div class="row">
-    <div class="{{if device.isMobile 'sixteen' 'three'}} wide column">
-      {{#tabbed-navigation isVertical=true}}
-        {{#link-to 'events.view.tickets.index' class='item'}}
+    <div class="{{if this.device.isMobile 'sixteen' 'three'}} wide column">
+      <TabbedNavigation @isVertical={{true}}>
+        <LinkTo @route="events.view.tickets.index" class="item">
           {{t 'Overview'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.orders' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.orders" class="item">
           {{t 'Orders'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.attendees' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.attendees" class="item">
           {{t 'Attendees'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.discount-codes' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.discount-codes" class="item">
           {{t 'Discount Codes'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.access-codes' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.access-codes" class="item">
           {{t 'Access Codes'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets.add-order' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.add-order" class="item">
           {{t 'Add order'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
-    <div class="{{if device.isMobile 'sixteen' 'thirteen'}} wide column">
+    <div class="{{if this.device.isMobile 'sixteen' 'thirteen'}} wide column">
       {{outlet}}
     </div>
   </div>

@@ -7,6 +7,6 @@
 <div class="field">
   <label class="required">{{t 'Registration Time Limit'}}</label>
   <div class="two wide computer four wide mobile field">
-    {{input type='number' id='orderExpiryTime' name='order_expiry_time' value=settings.orderExpiryTime min="1" max="60" step="1"}}
+    <Input @type="number" @id="orderExpiryTime" @name="order_expiry_time" @value={{this.settings.orderExpiryTime}} @min="1" @max="60" @step="1" />
   </div>
 </div> 

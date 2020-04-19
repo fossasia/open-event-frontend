@@ -1,4 +1,4 @@
-<div class="ui basic {{if isLoading 'loading'}} segment">
+<div class="ui basic {{if this.isLoading 'loading'}} segment">
   <div class="ui one column container stackable doubling left grid">
     <h1 class="ui header">{{t 'Review Invoice'}}</h1>
     <div class="row">
@@ -10,22 +10,22 @@
           <div class="ui padded segment">
             <div class="ui list">
               <div class="item">
-                <strong>{{t 'From'}}:</strong> {{model.user.billingContactName}}
+                <strong>{{t 'From'}}:</strong> {{this.model.user.billingContactName}}
               </div>
               <div class="item">
-                <strong>{{t 'Phone'}}:</strong> {{model.user.billingPhone}}
+                <strong>{{t 'Phone'}}:</strong> {{this.model.user.billingPhone}}
               </div>
               <div class="item">
-                <strong>{{t 'Email'}}:</strong> {{model.user.email}}
+                <strong>{{t 'Email'}}:</strong> {{this.model.user.email}}
               </div>
               <div class="item">
-                <strong>{{t 'Billing Address'}}:</strong> {{model.user.billingAddress}}
+                <strong>{{t 'Billing Address'}}:</strong> {{this.model.user.billingAddress}}
               </div>
               <div class="item">
-                <strong>{{t 'Zip Code'}}:</strong> {{model.user.billingZipCode}}
+                <strong>{{t 'Zip Code'}}:</strong> {{this.model.user.billingZipCode}}
               </div>
               <div class="item">
-                <strong>{{t 'Country'}}:</strong> {{model.user.billingCountry}}
+                <strong>{{t 'Country'}}:</strong> {{this.model.user.billingCountry}}
               </div>
             </div>
           </div>
@@ -59,19 +59,19 @@
           <div class="ui padded segment">
             <div class="ui list">
               <div class="item">
-                <strong>{{t 'Event Name'}}:</strong> {{model.event.name}}
+                <strong>{{t 'Event Name'}}:</strong> {{this.model.event.name}}
               </div>
               <div class="item">
-                <strong>{{t 'Date Issued'}}:</strong> {{moment-format model.createdAt 'MM/DD/YYYY'}} 
+                <strong>{{t 'Date Issued'}}:</strong> {{moment-format this.model.createdAt 'MM/DD/YYYY'}} 
               </div>
               <div class="item">
-                <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol model.event.paymentCurrency}} {{format-number model.amount}}
+                <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol this.model.event.paymentCurrency}} {{format-number this.model.amount}}
               </div>
             </div>
           </div>
         </div>
         <div class='paypal-button'>
-          {{paypal-button data=model.data paymentFor='invoice'}}
+          <PaypalButton @data={{this.model.data}} @paymentFor="invoice" />
         </div>
       </div>
     </div>
