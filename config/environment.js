@@ -54,15 +54,6 @@ module.exports = function(environment) {
       color : 'blue'
     },
 
-    SemanticUI: {
-      source: {
-        css        : 'node_modules/@open-event/theme/dist',
-        javascript : 'node_modules/@open-event/theme/dist',
-        images     : 'node_modules/@open-event/theme/dist/themes/default/assets/images',
-        fonts      : 'node_modules/@open-event/theme/dist/themes/default/assets/fonts'
-      }
-    },
-
     sentry: {
       dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
       debug       : !!process.env.SENTRY_DSN,
