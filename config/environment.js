@@ -56,10 +56,10 @@ module.exports = function(environment) {
 
     SemanticUI: {
       source: {
-        css        : 'bower_components/open-event-theme/dist',
-        javascript : 'bower_components/open-event-theme/dist',
-        images     : 'bower_components/open-event-theme/dist/themes/default/assets/images',
-        fonts      : 'bower_components/open-event-theme/dist/themes/default/assets/fonts'
+        css        : 'node_modules/@open-event/theme/dist',
+        javascript : 'node_modules/@open-event/theme/dist',
+        images     : 'node_modules/@open-event/theme/dist/themes/default/assets/images',
+        fonts      : 'node_modules/@open-event/theme/dist/themes/default/assets/fonts'
       }
     },
 
