@@ -43,6 +43,14 @@ module.exports = function(defaults) {
     sourcemaps: {
       enabled: true
     },
+    SemanticUI: {
+      source: {
+        css        : 'node_modules/@open-event/theme/dist',
+        javascript : 'node_modules/@open-event/theme/dist',
+        images     : 'node_modules/@open-event/theme/dist/themes/default/assets/images',
+        fonts      : 'node_modules/@open-event/theme/dist/themes/default/assets/fonts'
+      }
+    },
     autoImport: {
       webpack: {
         node: {
