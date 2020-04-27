@@ -6,18 +6,18 @@ export default Component.extend(FormMixin, {
     saveDraft() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
-        this.sendAction('save', this.data);
+        this.save(this.data);
       });
     },
     move(direction) {
       this.onValid(() => {
-        this.sendAction('move', direction, this.data);
+        this.move(direction, this.data);
       });
     },
     publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
-        this.sendAction('save', this.data);
+        this.save(this.data);
       });
     }
   }

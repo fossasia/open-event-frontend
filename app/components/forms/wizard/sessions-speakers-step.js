@@ -159,7 +159,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   actions: {
     move(direction) {
       this.onValid(() => {
-        this.sendAction('move', direction);
+        this.move(direction);
       });
     },
     addItem(type) {

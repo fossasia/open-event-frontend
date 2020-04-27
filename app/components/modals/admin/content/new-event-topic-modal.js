@@ -8,7 +8,7 @@ export default ModalBase.extend(FormMixin, {
   actions: {
     addEventProperty(modelInstance) {
       this.onValid(() => {
-        this.sendAction('addEventProperty', modelInstance);
+        this.addEventProperty(modelInstance);
       });
     }
   },

@@ -49,7 +49,7 @@ export default Component.extend(FormMixin, {
     },
     submit() {
       this.onValid(() => {
-        this.sendAction('changePassword', { passwordCurrent: this.passwordCurrent, passwordNew: this.passwordNew });
+        this.changePassword({ passwordCurrent: this.passwordCurrent, passwordNew: this.passwordNew });
       });
     }
   }
