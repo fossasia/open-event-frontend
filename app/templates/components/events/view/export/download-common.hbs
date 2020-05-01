@@ -11,7 +11,7 @@
   <pre>{{this.displayUrl}}</pre>
 </div>
 <a class="ui link" href="#" onclick={{action 'startExportTask'}}> {{t 'Alternatively, you can download the'}} {{this.downloadType}} {{t ' here'}}</a>
-<div class="ui basic segment less left padding">
+<div class="ui basic segment no left padding">
   <a href="{{this.eventDownloadUrl}}" class="ui blue button {{if this.isDownloadDisabled 'disabled' ''}} {{if this.isLoading 'loading'}}">
     {{t 'Download '}}{{this.downloadType}}
   </a>

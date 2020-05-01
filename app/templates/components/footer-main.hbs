@@ -72,7 +72,7 @@
   <div class="ui inverted section divider"></div>
   <div class="ui stackable grid">
     <div class="thirteen wide computer twelve wide tablet column left aligned">
-      <div class="ui horizontal inverted small divided link list less top margin">
+      <div class="ui horizontal inverted small divided link list no top margin">
         <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{this.settings.appName}} </span>
         {{#each this.footerPages as |page|}}
           <LinkTo @route="pages" @model={{page.url}} class="item">
