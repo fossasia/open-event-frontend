@@ -27,7 +27,7 @@ cd open-event-frontend
 #### Important Notes
  - Open Event Frontend supports [FastBoot](https://github.com/ember-fastboot/ember-cli-fastboot) which is disabled for the development environment and is controlled by the flag `FASTBOOT_DISABLED` in the `.env` file.  
 
-- **Only for Mac users** :- If while running `node scripts/l10n.js generate` you encounter `Get-Text Finding Error` or `Ember-l10n Missing Dependancies`. 
+- **Only for Mac users** :- If while running `node scripts/l10n.js generate` you encounter `Get-Text Finding Error` or `Ember-l10n Missing Dependencies`. 
 Please use this before running `node scripts/l10n.js generate` again :
 ```sh
 brew reinstall gettext
