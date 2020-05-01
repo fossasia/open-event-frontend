@@ -16,7 +16,7 @@
       </UiPopup>
     {{else}}
       <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this user?") (action this.props.actions.deleteUser this.extraRecords.id))}} @class="ui icon button">
-        <i class="trash outline icon"></i>
+        <i class="trash icon"></i>
       </UiPopup>
     {{/if}}
   {{/unless}}
