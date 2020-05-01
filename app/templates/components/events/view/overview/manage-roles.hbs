@@ -33,14 +33,14 @@
                   @content={{t "Delete"}}
                   @class="ui icon button"
                   @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" roleInvite))}}>
-                  <i class="trash outline icon"></i>
+                  <i class="trash icon"></i>
                 </UiPopup>
               {{else}}
                 <UiPopup
                   @content={{t "Delete"}}
                   @class="ui icon button"
                   @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
-                  <i class="trash outline icon"></i>
+                  <i class="trash icon"></i>
                 </UiPopup>
               {{/if}}
             </div>

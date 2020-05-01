@@ -10,6 +10,6 @@
     </UiPopup>
   {{/if}}
   <UiPopup @content={{t "Delete Session"}} @click={{action (confirm (t "Are you sure you would like to delete this Session?") (action this.props.actions.deleteSession this.extraRecords.id))}} @class="{{if this.device.isMobile 'medium' 'huge'}} ui icon button" @position="left center">
-    <i class="trash outline icon"></i>
+    <i class="trash icon"></i>
   </UiPopup>
 </div>
