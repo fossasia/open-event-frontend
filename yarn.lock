@@ -1086,28 +1086,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@bower_components/flexibility@10up/flexibility#^2.0.1":
-  version "2.0.1"
-  resolved "https://codeload.github.com/10up/flexibility/tar.gz/9578df36e207c0a5eda7bb7515ba407366396527"
-
-"@bower_components/js-polyfills@inexorabletash/polyfill#^0.1.34":
-  version "0.1.42"
-  resolved "https://codeload.github.com/inexorabletash/polyfill/tar.gz/3ad9351437e7e6cd263dfbd75c099a0027ab960f"
-
-"@bower_components/pace@HubSpot/pace#^1.0.2":
-  version "1.0.2"
-  resolved "https://codeload.github.com/HubSpot/pace/tar.gz/c6846cbf6b928e9903b569269fa9fbf32f2554f4"
-
-"@bower_components/semantic-ui-calendar@mdehoog/semantic-ui-calendar#^0.0.8":
-  version "0.0.8"
-  resolved "https://codeload.github.com/mdehoog/semantic-ui-calendar/tar.gz/930d05ce0150c1fb04757dac82c0758a66419aca"
-
-"@bower_components/wysihtml@Voog/wysihtml#^0.5.5":
-  version "0.5.5"
-  resolved "https://codeload.github.com/Voog/wysihtml/tar.gz/2578cede1de168a3c46ac9c0e7faa49ae533d3e9"
-  dependencies:
-    rangy "^1.3.0"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -13115,6 +13093,7 @@ range-parser@~1.2.1:
 rangy@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/rangy/-/rangy-1.3.0.tgz#b7c9a70aea05e5d8cdc74a8d4c8273d697271904"
+  integrity sha1-t8mnCuoF5djNx0qNTIJz1pcnGQQ=
 
 raw-body@2.4.0:
   version "2.4.0"
@@ -14107,6 +14086,11 @@ scss-tokenizer@^0.2.3:
 select@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
+
+semantic-ui-calendar@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/semantic-ui-calendar/-/semantic-ui-calendar-0.0.8.tgz#ae16504e4d8016cac5ba9a00ad8ccd4a430de3ef"
+  integrity sha1-rhZQTk2AFsrFupoArYzNSkMN4+8=
 
 semantic-ui-css@^2.2.14:
   version "2.3.1"
@@ -15949,6 +15933,13 @@ ws@~3.3.1:
     async-limiter "~1.0.0"
     safe-buffer "~5.1.0"
     ultron "~1.1.0"
+
+wysihtml@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/wysihtml/-/wysihtml-0.5.5.tgz#6c1e52be1f5df7fbf81ccab7e615f08787c56fd0"
+  integrity sha1-bB5Svh9d9/v4HMq35hXwh4fFb9A=
+  dependencies:
+    rangy "^1.3.0"
 
 xdg-basedir@^4.0.0:
   version "4.0.0"
