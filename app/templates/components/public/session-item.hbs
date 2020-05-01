@@ -14,7 +14,7 @@
       {{#if this.hideImage}}
         <div class="left floated twelve wide column">
           {{#if this.session.startsAt}}
-            <div class=""><i class="marker icon"></i>{{this.session.microlocation.name}}</div>
+            <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
             <div class="small text"><i class="wait icon"></i>{{general-date this.session.startsAt}} - {{general-date this.session.endsAt}}</div>
           {{/if}}
         </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="right floated five wide column">
           {{#if this.session.startsAt}}
-            <div class=""><i class="marker icon"></i>{{this.session.microlocation.name}}</div>
+            <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
             <div class="small text"><i class="wait icon"></i>{{moment-format this.session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
           {{/if}}
         </div>
