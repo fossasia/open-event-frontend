@@ -21,7 +21,7 @@
   <div class="field">
     <UiCheckbox @class="toggle" @label={{t "Document"}} @checked={{this.data.document}} @onChange={{action (mut this.data.document)}} />
   </div>
-  <div class="ui basic segment less left padding">
+  <div class="ui basic segment no left padding">
     <button class="ui blue button" {{action this.startGeneration}}>
       {{t 'Start'}}
     </button>
