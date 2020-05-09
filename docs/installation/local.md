@@ -8,7 +8,7 @@ You will need the following things properly installed on your computer.
 * **[Yarn](https://yarnpkg.com/en/docs/install)**
 * **[Ember CLI](https://ember-cli.com/)** - `yarn global add ember-cli`
 
-It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install.html) installed to speed up the `file-watcher/auto-build` service of the ember build server.
+It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install) installed to speed up the `file-watcher/auto-build` service of the ember build server.
 
 ## Steps
 * `git clone <repository-url>` this repository
