@@ -74,7 +74,7 @@ export default class QuickFilter extends Component {
     this.setDateFilter();
     this.set('location', this.dummyLocation);
     this.set('eventName', this.dummyName);
-    this.set('disableClear', (this.dummyName || this.dummyLocation || this.startDate !== null) ? false : true);
+    this.set('disableClear', !(this.dummyName || this.dummyLocation || this.startDate !== null));
   }
 
   @action
