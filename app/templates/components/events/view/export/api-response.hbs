@@ -33,7 +33,7 @@
 </div>
 <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
   <div class="ui secondary segment url">
-    <CopyButton @clipboardText={{this.displayUrl}} @tagName={{null}}>
+    <CopyButton @clipboardText={{this.displayUrl}} @tagName={{null}} class="x-scrollable">
       <pre>{{this.displayUrl}}</pre>
     </CopyButton>
   </div>
@@ -41,6 +41,6 @@
 <div class="ui secondary header">
   {{t 'Response'}}
 </div>
-<div class="ui {{if this.isLoading 'loading'}} secondary segment response">
+<div class="ui {{if this.isLoading 'loading'}} secondary segment response x-scrollable y-scrollable">
   <pre class="api-response">{{this.json}}</pre>
 </div>
