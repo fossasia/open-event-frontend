@@ -7,9 +7,15 @@ export default Service.extend({
 
   _purify: null,
 
-  init() {
+  async init() {
     this._super(...arguments);
-    this._purify = createDOMPurify(self);
+    if (typeof window !== 'undefined') {
+      this._purify = createDOMPurify(self);
+    } else {
+      const { JSDOM } = await import('jsdom');
+
+      this._purify = createDOMPurify(new JSDOM('').window);
+    }
     this._purify.addHook('beforeSanitizeElements', function(node) {
       if ('href' in node) {
         node.setAttribute('target', '_blank');
