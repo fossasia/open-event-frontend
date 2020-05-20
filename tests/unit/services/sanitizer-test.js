@@ -17,5 +17,13 @@ module('Unit | Service | sanitizer', function(hooks) {
 
     sanitizedString = service.purify('<script src="https:/hackers.inc/xss.js">');
     assert.ok(sanitizedString === '', sanitizedString);
+
+    assert.equal(service.purify('<a href="www.google.com">Google</a>'), '<a rel="nofollow noopener" target="_blank" href="www.google.com">Google</a>');
+  });
+
+  test('test strip', function(assert) {
+    const service = this.owner.lookup('service:sanitizer');
+
+    assert.equal(service.strip('<p>This is amazing</p><br /><a href="google.com">Google</a>'), 'This is amazingGoogle');
   });
 });
