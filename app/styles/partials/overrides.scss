@@ -5,6 +5,19 @@
   box-shadow: none !important;
 }
 
+
+
+.ui.action.input {
+  &:not([class*='left action']) > input {
+    border-bottom-left-radius: .28571429rem !important;
+    border-top-left-radius: .28571429rem !important;
+  }
+
+  .ui.input > input {
+    border-radius: 0 !important;
+  }
+}
+
 .ui.active.search.dropdown input.search {
   &:focus + .text {
     color: rgba(177, 176, 176, .87) !important;
@@ -38,6 +51,14 @@ body.dimmable.undetached.dimmed {
 @media screen and (max-width: 768px) {
   .ui.fluid.container {
     padding: 0;
+  }
+
+  .ui.grid > .row >[class*='sixteen wide mobile'].column,
+  .ui.grid > .column.row > [class*='sixteen wide mobile'].column,
+  .ui.grid > [class*='sixteen wide mobile'].column,
+  .ui.column.grid > [class*='sixteen wide mobile'].column {
+    border-bottom-left-radius: .28571429rem !important;
+    border-top-left-radius: .28571429rem !important;
   }
 }
 
@@ -75,4 +96,28 @@ body.dimmable.undetached.dimmed {
       padding-bottom: 0 !important;
     }
   }
+}
+
+.ui.left.icon.input {
+  input {
+    &[type='password'] {
+      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+    }
+  }
+}
+
+.ui.basic.buttons {
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.three.six {
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.thirteen.ten {
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
 }
