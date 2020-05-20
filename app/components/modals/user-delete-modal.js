@@ -8,6 +8,6 @@ export default class UserDeleteModal extends ModalBase {
   @tracked confirmEmail = '';
 
   get isEmailDifferent() {
-    return this.userEmail ? this.confirmEmail !== this.userEmail : true;
+    return this.confirmEmail !== this.userEmail;
   }
 }
