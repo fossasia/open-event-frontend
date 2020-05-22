@@ -18,18 +18,10 @@
       <div class="field required">
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          {{#if this.showSignupPass}}
-            <Input @type="text" @name="password" placeholder={{t "Password"}} @value={{this.data.password}} />
-          {{else}}
-            <Input @type="password" @name="password" placeholder={{t "Password"}} @value={{this.data.password}} />
-          {{/if}}
-          <div class="ui small basic icon buttons">
-            <button type="button" class="ui button" id="eye2" {{ action 'showSignupPassword'}}>
-              {{#if this.showSignupPass}}
-                <i class="hide basic icon"></i>
-              {{else}}
-                <i class="unhide basic icon"></i>
-              {{/if}}
+          <Input class="rounded-r-none" @type="{{if this.showSignupPass 'text' 'password'}}" @name="password" placeholder={{t "Password"}} @value={{this.data.password}} />
+          <div class="ui small basic icon buttons rounded-l-none">
+            <button type="button" class="ui button" {{action 'showSignupPassword'}}>
+              <i class="{{if this.showSignupPass 'hide' 'unhide'}} basic icon"></i>
             </button>
           </div>
         </div>
@@ -37,18 +29,10 @@
       <div class="field required">
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          {{#if this.showConfirmPass}}
-            <Input @type="text" @name="password_repeat" placeholder={{t "Re-enter Password"}} @value={{this.password_repeat}} />
-          {{else}}
-            <Input @type="password" @name="password_repeat" placeholder={{t "Re-enter Password"}} @value={{this.password_repeat}} />
-          {{/if}}
-          <div class="ui small basic icon buttons">
-            <button type="button" class="ui button" id="eye3" {{ action 'showConfirmPassword'}}>
-              {{#if this.showConfirmPass}}
-                <i class="hide basic icon"></i>
-              {{else}}
-                <i class="unhide basic icon"></i>
-              {{/if}}
+          <Input class="rounded-r-none" @type="{{if this.showConfirmPass 'text' 'password'}}" @name="password_repeat" placeholder={{t "Re-enter Password"}} @value={{this.data.password_repeat}} />
+          <div class="ui small basic icon buttons rounded-l-none">
+            <button type="button" class="ui button" {{action 'showConfirmPassword'}}>
+              <i class="{{if this.showConfirmPass 'hide' 'unhide'}} basic icon"></i>
             </button>
           </div>
         </div>
