@@ -105,7 +105,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       return [];
     }
 
-    return this.data.event.topic.subTopics;
+    // TODO(Areeb): Revert to ES6 getter when a solution is found
+    return this.data.event.topic.get('subTopics');
   }),
 
   showDraftButton: computed('data.event.state', function() {
