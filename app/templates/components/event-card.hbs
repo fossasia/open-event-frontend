@@ -1,7 +1,7 @@
 <div class="{{if this.isWide 'event wide ui grid row'}}">
   {{#if this.isWide}}
     {{#unless this.device.isMobile}}
-      <div class="ui card three wide computer six wide tablet column">
+      <div class="ui card rounded-r-none three wide computer six wide tablet column">
         <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
           <Widgets::SafeImage
             @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
@@ -10,7 +10,7 @@
     {{/unless}}
   {{/if}}
   <div
-    class="ui card {{unless this.isWide 'event fluid' 'thirteen wide computer ten wide tablet sixteen wide mobile column'}}">
+    class="ui card {{unless this.isWide 'event fluid' 'thirteen wide computer ten wide tablet sixteen wide mobile column'}} {{unless this.device.isMobile 'rounded-l-none' }}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
         <Widgets::SafeImage

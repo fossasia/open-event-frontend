@@ -7,12 +7,14 @@
   {{#unless this.device.isMobile }}
     <div class="ui input">
       <Widgets::Forms::PlacesAutocomplete
+        class="rounded-none"
         @name="location"
         @value={{this.dummyLocation}}
         @type="text"
         @placeholder={{t "Enter Location"}} />
     </div>
     <UiDropdown
+      class="transparent"
       @class="search selection"
       @selected={{this.filterDate}}
       @forceSelection={{false}}>
