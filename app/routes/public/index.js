@@ -4,6 +4,7 @@ import Route from '@ember/routing/route';
 import moment from 'moment';
 import { set } from '@ember/object';
 import ENV from 'open-event-frontend/config/environment';
+import { allSettled } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
@@ -13,8 +14,6 @@ export default class IndexRoute extends Route {
   async model() {
     const event = this.modelFor('public');
     const ticketsPromise = event.query('tickets', {
-      reload: true,
-
       filter: [
         {
           and: [
@@ -45,7 +44,8 @@ export default class IndexRoute extends Route {
     const sponsorsPromise = event.get('sponsors');
     const taxPromise = event.get('tax');
 
-    const [tickets, featuredSpeakers, sponsors, tax] = await Promise.all([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]);
+    const [tickets, featuredSpeakers, sponsors, tax] = (await allSettled([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]))
+      .map(result => result.value);
 
     return {
       event,
