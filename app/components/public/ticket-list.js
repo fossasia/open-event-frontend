@@ -123,23 +123,23 @@ export default Component.extend(FormMixin, {
         this.set('invalidPromotionalCode', true);
       }
       try {
-        let discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode });
-        let discountCodeEvent = await discountCode.get('event');
+        const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode, include: 'event,tickets' });
+        const discountCodeEvent = await discountCode.event;
         if (this.currentEventIdentifier === discountCodeEvent.identifier) {
-          let discountType = discountCode.get('type');
-          let discountValue = discountCode.get('value');
+          const discountType = discountCode.type;
+          const discountValue = discountCode.value;
           this.order.set('discountCode', discountCode);
-          let tickets = await discountCode.get('tickets');
+          const tickets = await discountCode.tickets;
           tickets.forEach(ticket => {
-            let ticketPrice = ticket.get('price');
-            let taxRate = ticket.get('event.tax.rate');
-            let discount = discountType === 'amount' ? Math.min(ticketPrice, discountValue) : ticketPrice * (discountValue / 100);
+            const ticketPrice = ticket.price;
+            const taxRate = ticket.get('event.tax.rate');
+            const discount = discountType === 'amount' ? Math.min(ticketPrice, discountValue) : ticketPrice * (discountValue / 100);
             ticket.set('discount', discount);
             if (taxRate && !this.showTaxIncludedMessage) {
-              let ticketPriceWithTax = (ticketPrice - ticket.discount) * (1 + taxRate / 100);
+              const ticketPriceWithTax = (ticketPrice - ticket.discount) * (1 + taxRate / 100);
               ticket.set('ticketPriceWithTax', ticketPriceWithTax);
             } else if (taxRate && this.showTaxIncludedMessage) {
-              let includedTaxAmount = (taxRate * (ticketPrice - discount)) / (100 + taxRate);
+              const includedTaxAmount = (taxRate * (ticketPrice - discount)) / (100 + taxRate);
               ticket.set('includedTaxAmount', includedTaxAmount);
             }
             this.discountedTickets.addObject(ticket);

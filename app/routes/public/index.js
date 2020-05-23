@@ -11,44 +11,51 @@ export default class IndexRoute extends Route {
   headData;
 
   async model() {
-    const eventDetails = this.modelFor('public');
+    const event = this.modelFor('public');
+    const ticketsPromise = event.query('tickets', {
+      reload: true,
+
+      filter: [
+        {
+          and: [
+            {
+              name : 'sales-starts-at',
+              op   : 'le',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'sales-ends-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            }
+          ]
+        }
+      ]
+    });
+    const featuredSpeakersPromise = event.query('speakers', {
+      filter: [
+        {
+          name : 'is-featured',
+          op   : 'eq',
+          val  : 'true'
+        }
+      ],
+      'page[size]': 0
+    });
+    const sponsorsPromise = event.get('sponsors');
+    const taxPromise = event.get('tax');
+
+    const [tickets, featuredSpeakers, sponsors, tax] = await Promise.all([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]);
+
     return {
-      event   : eventDetails,
-      tickets : await eventDetails.query('tickets', {
-        reload: true,
+      event,
+      tickets,
+      featuredSpeakers,
 
-        filter: [
-          {
-            and: [
-              {
-                name : 'sales-starts-at',
-                op   : 'le',
-                val  : moment().toISOString()
-              },
-              {
-                name : 'sales-ends-at',
-                op   : 'ge',
-                val  : moment().toISOString()
-              }
-            ]
-          }
-        ]
-      }),
-      featuredSpeakers: await eventDetails.query('speakers', {
-        filter: [
-          {
-            name : 'is-featured',
-            op   : 'eq',
-            val  : 'true'
-          }
-        ],
-        'page[size]': 0
-      }),
-
-      sponsors : await eventDetails.get('sponsors'),
-      tax      : await eventDetails.get('tax'),
-      order    : this.store.createRecord('order', {
-        event   : eventDetails,
+      sponsors,
+      tax,
+      order: this.store.createRecord('order', {
+        event,
         user    : this.authManager.currentUser,
         tickets : []
       }),
