@@ -1,18 +1,11 @@
 import { tracked } from '@glimmer/tracking';
-import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 
-@classic
 export default class UnverifiedUserMessage extends Component {
   @tracked isMessageVisible = true;
   isMailSent = false;
 
-  @computed(
-    'session.isAuthenticated',
-    'authManager.currentUser.isVerified',
-    'isMessageVisible'
-  )
   get shouldShowMessage() {
     return this.session.isAuthenticated
           && this.isMessageVisible
