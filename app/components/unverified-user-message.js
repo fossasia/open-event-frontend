@@ -1,5 +1,5 @@
 import { tracked } from '@glimmer/tracking';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 
 export default class UnverifiedUserMessage extends Component {

@@ -1,5 +1,5 @@
 {{#if this.shouldShowMessage}}
-  <div style="{{unless @padless 'margin-bottom: 2rem'}}">
+  <div class="{{unless @padless 'mb-8'}}">
     <div class="ui icon {{if this.isMailSent 'info' 'error'}} message eight wide column center aligned">
       <i class="close icon" onclick={{action (mut this.isMessageVisible) false}} role="button"></i>
       <i class="info icon"></i>
