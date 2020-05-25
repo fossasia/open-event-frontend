@@ -136,7 +136,7 @@ export default class IndexController extends Controller {
         .catch(async e => {
           console.error('Error while saving order', e);
           try {
-            await Promise.allSettled((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
+            await RSVP.allSettled((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
           } catch (error) {
             console.error('Error while deleting attendees after order failure', error);
           }

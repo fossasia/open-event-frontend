@@ -48,7 +48,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   async saveEventData(propsToSave = []) {
     const { event } = this.model;
     const data = {};
-    const results = await Promise.allSettled(propsToSave.map(property => {
+    const results = await RSVP.allSettled(propsToSave.map(property => {
       try {
         return event.get(property);
       } catch (e) {
