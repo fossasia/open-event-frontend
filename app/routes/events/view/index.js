@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
+import { allSettled } from 'rsvp';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
@@ -25,7 +25,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const rolesPromise = this.store.findAll('role');
 
     const [sponsors, roleInvites, sessionTypes, socialLinks,
-      statistics, orderStat, tickets, roles] = await RSVP.allSettled([sponsorsPromise, roleInvitesPromise, sessionTypesPromise, socialLinksPromise,
+      statistics, orderStat, tickets, roles] = await allSettled([sponsorsPromise, roleInvitesPromise, sessionTypesPromise, socialLinksPromise,
       statisticsPromise, orderStatPromise, ticketsPromise, rolesPromise]);
 
 
