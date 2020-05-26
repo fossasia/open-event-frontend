@@ -42,8 +42,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   },
 
   /**
-   * Save event & related data 
-   * 
+   * Save event & related data
+   *
    * @return {Promise<*>}
    */
   async saveEventData(propsToSave = []) {
@@ -52,9 +52,10 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     const results = await RSVP.allSettled(propsToSave).then(property => {
       return event.get(property);
     }, (e) => {
-        if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[0].status === 404))
-        // Lets just ignore any 404s that might occur. And throw the rest for the caller fn to catch
-          throw e;
+      if (!(e.errors && e.errors.length && e.errors.length > 0 && e.errors[0].status === 404)) {
+          // Lets just ignore any 404s that might occur. And throw the rest for the caller fn to catch
+        throw e;
+      }
     });
     for (const result of results) {
       if (result.status === 'fulfilled') {

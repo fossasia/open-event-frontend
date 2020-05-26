@@ -137,9 +137,8 @@ export default class IndexController extends Controller {
         .catch(async e => {
           console.error('Error while saving order', e);
           await RSVP.allSettled(attendees ? attendees.toArray() : []).then(attendee => attendee.destroyRecord(),
-            (error) => {
-              console.error('Error while deleting attendees after order failure', error);
-            });
+            (error) => console.error('Error while deleting attendees after order failure', error)
+            );
           this.notify.error(this.l10n.t(e.errors[0].detail));
         })
         .finally(() => {
