@@ -26,7 +26,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     const [sponsors, roleInvites, sessionTypes, socialLinks,
       statistics, orderStat, tickets, roles] = await allSettled([sponsorsPromise, roleInvitesPromise, sessionTypesPromise, socialLinksPromise,
-      statisticsPromise, orderStatPromise, ticketsPromise, rolesPromise]);
+      statisticsPromise, orderStatPromise, ticketsPromise, rolesPromise]).map(result => result.value);
 
 
     return {
