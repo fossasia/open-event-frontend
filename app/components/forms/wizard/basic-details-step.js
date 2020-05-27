@@ -465,6 +465,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     openTaxModal(isNewTax) {
       if (!this.isCreate && isNewTax) {
         const tax = this.store.createRecord('tax');
+        // Note(Areeb): Workaround for issue #4385, ember data always fetches
+        // event.tax from network if it is not already created for some reason
         this.set('data.tax', tax);
         this.set('data.event.tax', tax);
       }

@@ -79,6 +79,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         await data.copyright.save();
       }
 
+      // model.tax is set in basic-detail step to workaround issue #4385
       let tax = this.model.tax || data.tax;
       if (tax && tax.name) {
         tax = this.setRelationship(tax, event);
