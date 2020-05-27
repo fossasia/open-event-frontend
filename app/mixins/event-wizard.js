@@ -58,13 +58,10 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         }
       }
     }));
-    for (const result of results) {
+    for (const [index, result] of results.entries()) {
       if (result.status === 'fulfilled') {
-        if (result?.value?.key) {
-          data[result.value.key] = result.value;
-        } else {
-          console.warn('No value for key while saving event', result);
-        }
+        const key = propsToSave[index];
+        data[key] = result.value;
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
@@ -82,9 +79,10 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         await data.copyright.save();
       }
 
-      if (data.tax && data.tax.get('name')) {
-        let tax = this.setRelationship(data.tax, event);
-        if (event.get('isTaxEnabled')) {
+      let tax = this.model.tax || data.tax;
+      if (tax && tax.name) {
+        tax = this.setRelationship(tax, event);
+        if (event.isTaxEnabled) {
           await tax.save();
         } else {
           await tax.destroyRecord();
