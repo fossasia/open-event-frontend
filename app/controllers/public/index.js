@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import { htmlSafe } from '@ember/string';
-import { allSettled } from 'rsvp';
+import RSVP from 'rsvp';
 
 @classic
 export default class IndexController extends Controller {
@@ -136,9 +136,11 @@ export default class IndexController extends Controller {
         })
         .catch(async e => {
           console.error('Error while saving order', e);
-          await RSVP.allSettled(attendees ? attendees.toArray() : []).then(attendee => attendee.destroyRecord(),
-            (error) => console.error('Error while deleting attendees after order failure', error)
-            );
+          try {
+            await RSVP.allSettled((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
+          } catch (error) {
+            console.error('Error while deleting attendees after order failure', error);
+          }
           this.notify.error(this.l10n.t(e.errors[0].detail));
         })
         .finally(() => {
