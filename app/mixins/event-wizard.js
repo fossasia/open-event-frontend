@@ -59,7 +59,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     }));
     for (const [index, result] of results.entries()) {
-      if (result.status === 'fulfilled') {
+      if (result.state === 'fulfilled') {
         const key = propsToSave[index];
         data[key] = result.value;
       }
