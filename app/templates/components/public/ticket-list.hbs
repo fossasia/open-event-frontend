@@ -32,19 +32,19 @@
             {{#if ticket.discount}}
               <td>
                 <div id="{{ticket.id}}_price" class="strike text">
-                  {{this.eventCurrency}} {{format-number ticket.price}}
+                  {{this.eventCurrency}} {{format-money ticket.price}}
                 </div>
                 <div id="{{ticket.id}}_discount">
-                  {{this.eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
+                  {{this.eventCurrency}} {{format-money (sub ticket.price ticket.discount)}}
                   {{#if this.taxInfo}}
                     {{#if this.showTaxIncludedMessage}}
                       <small class="ui gray-text small">
-                        {{t 'includes'}} {{this.eventCurrency}} {{format-number ticket.includedTaxAmount}}
+                        {{t 'includes'}} {{this.eventCurrency}} {{format-money ticket.includedTaxAmount}}
                       </small>
                     {{else}}
                       <small class="ui gray-text small">
                         + {{this.eventCurrency}}
-                        {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
+                        {{format-money (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
                       </small>
                     {{/if}}
                     <div>
@@ -65,16 +65,16 @@
                       @value={{ticket.price}} /><br>
                   </div>
                 {{else}}
-                  {{this.eventCurrency}} {{format-number ticket.price}}
+                  {{this.eventCurrency}} {{format-money ticket.price}}
                 {{/if}}
                 {{#if (and this.taxInfo (not-eq ticket.type 'free'))}}
                   {{#if this.showTaxIncludedMessage}}
                     <small class="ui gray-text small">
-                      {{t 'includes'}} {{this.eventCurrency}} {{format-number ticket.includedTaxAmount}}
+                      {{t 'includes'}} {{this.eventCurrency}} {{format-money ticket.includedTaxAmount}}
                     </small>
                   {{else}}
                     <small class="ui gray-text small">
-                      + {{this.eventCurrency}} {{format-number (sub ticket.ticketPriceWithTax ticket.price)}}
+                      + {{this.eventCurrency}} {{format-money (sub ticket.ticketPriceWithTax ticket.price)}}
                     </small>
                   {{/if}}
                   <div>
@@ -107,9 +107,9 @@
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
               {{#if this.taxInfo}}
                 {{this.eventCurrency}}
-                {{format-number (mult (sub ticket.ticketPriceWithTax ticket.discount) ticket.orderQuantity)}}
+                {{format-money (mult (sub ticket.ticketPriceWithTax ticket.discount) ticket.orderQuantity)}}
               {{else}}
-                {{this.eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
+                {{this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
               {{/if}}
             </td>
           </tr>
@@ -124,7 +124,7 @@
         <th></th>
         <th colspan="4">
           <div class="ui right aligned small primary icon">
-            {{t 'Total'}}: {{this.eventCurrency}} {{format-number this.total}}
+            {{t 'Total'}}: {{this.eventCurrency}} {{format-money this.total}}
           </div>
         </th>
       </tr>

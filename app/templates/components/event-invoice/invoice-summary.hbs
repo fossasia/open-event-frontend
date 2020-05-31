@@ -28,7 +28,7 @@
         <td>{{this.event.name}}</td>
         <td>{{moment-format this.data.createdAt 'MM/DD/YYYY'}}</td>
         <td>{{moment-format this.data.completedAt 'MM/DD/YYYY'}}</td>
-        <td>{{currency-symbol this.eventCurrency}} {{format-number this.data.amount}}</td>
+        <td>{{currency-symbol this.eventCurrency}} {{format-money this.data.amount}}</td>
       </tr>
     </tbody>
   </table>
