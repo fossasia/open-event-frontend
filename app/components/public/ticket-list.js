@@ -10,6 +10,8 @@ export default Component.extend(FormMixin, {
 
   promotionalCodeApplied: false,
 
+  orderAmount: null,
+
   isUnverified: computed('session.isAuthenticated', 'authManager.currentUser.isVerified', function() {
     return this.session.isAuthenticated
       && !this.authManager.currentUser.isVerified;
@@ -68,6 +70,20 @@ export default Component.extend(FormMixin, {
       ticket => ((ticket.price || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
     );
   }),
+
+  orderAmountInput: computed('order.tickets.@each.orderQuantity', 'order.discountCode', function() {
+    console.log(this.order.tickets.toArray());
+
+    return {
+      tickets: this.order.tickets.toArray().map(ticket => ({
+        id       : ticket.id,
+        quantity : ticket.orderQuantity,
+        price    : ticket.price
+      })),
+      'discount-code': this.order.get('discountCode.id')
+    };
+  }),
+
   actions: {
     async togglePromotionalCode(queryParam) {
       this.toggleProperty('enterPromotionalCode');
@@ -88,14 +104,6 @@ export default Component.extend(FormMixin, {
           });
           this.discountedTickets.forEach(ticket => {
             let taxRate = ticket.get('event.tax.rate');
-            let ticketPrice = ticket.get('price');
-            if (taxRate && !this.showTaxIncludedMessage) {
-              let ticketPriceWithTax = ticketPrice * (1 + taxRate / 100);
-              ticket.set('ticketPriceWithTax', ticketPriceWithTax);
-            } else if (taxRate && this.showTaxIncludedMessage) {
-              let includedTaxAmount = (taxRate * ticketPrice) / (100 + taxRate);
-              ticket.set('includedTaxAmount', includedTaxAmount);
-            }
             ticket.set('discount', 0);
           });
           this.accessCodeTickets.clear();
@@ -132,16 +140,8 @@ export default Component.extend(FormMixin, {
           const tickets = await discountCode.tickets;
           tickets.forEach(ticket => {
             const ticketPrice = ticket.price;
-            const taxRate = ticket.get('event.tax.rate');
             const discount = discountType === 'amount' ? Math.min(ticketPrice, discountValue) : ticketPrice * (discountValue / 100);
             ticket.set('discount', discount);
-            if (taxRate && !this.showTaxIncludedMessage) {
-              const ticketPriceWithTax = (ticketPrice - ticket.discount) * (1 + taxRate / 100);
-              ticket.set('ticketPriceWithTax', ticketPriceWithTax);
-            } else if (taxRate && this.showTaxIncludedMessage) {
-              const includedTaxAmount = (taxRate * (ticketPrice - discount)) / (100 + taxRate);
-              ticket.set('includedTaxAmount', includedTaxAmount);
-            }
             this.discountedTickets.addObject(ticket);
             this.set('invalidPromotionalCode', false);
           });
@@ -166,7 +166,7 @@ export default Component.extend(FormMixin, {
       this.order.set('amount', this.total);
 
     },
-    updateOrder(ticket, count) {
+    async updateOrder(ticket, count) {
       ticket.set('orderQuantity', count);
       this.order.set('amount', this.total);
       if (!this.total) {
@@ -179,6 +179,9 @@ export default Component.extend(FormMixin, {
           this.order.tickets.removeObject(ticket);
         }
       }
+      console.log(this.orderAmountInput);
+      this.orderAmount = await this.loader.post('/orders/calculate-amount', this.orderAmountInput);
+      console.log(this.orderAmount);
     },
 
     handleKeyPress() {
