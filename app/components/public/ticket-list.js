@@ -39,9 +39,26 @@ export default Component.extend(FormMixin, {
 
   invalidPromotionalCode: false,
 
-  tickets: computed(function() {
-    return this.data.sortBy('position');
+  tickets: computed('orderAmount', function() {
+    const ticketMap = {};
+    if (this.orderAmount) {
+      this.orderAmount.tickets.forEach(ticket => {
+        ticketMap[ticket.id] = ticket;
+      });
+    }
+
+    return this.data.sortBy('position').map(ticket => {
+      const ticketExtra = ticketMap[ticket.id];
+
+      if (ticketExtra) {
+        ticket.set('subTotal', ticketExtra.sub_total);
+        ticket.set('discountInfo', ticketExtra.discount);
+      }
+
+      return ticket;
+    });
   }),
+
   hasTicketsInOrder: computed('tickets.@each.orderQuantity', function() {
     return sumBy(this.tickets.toArray(),
       ticket => (ticket.orderQuantity || 0)
@@ -103,7 +120,6 @@ export default Component.extend(FormMixin, {
             this.tickets.removeObject(ticket);
           });
           this.discountedTickets.forEach(ticket => {
-            let taxRate = ticket.get('event.tax.rate');
             ticket.set('discount', 0);
           });
           this.accessCodeTickets.clear();
@@ -164,8 +180,9 @@ export default Component.extend(FormMixin, {
         this.set('promotionalCode', 'Promotional code applied successfully');
       }
       this.order.set('amount', this.total);
-
+      this.send('updateOrderAmount');
     },
+
     async updateOrder(ticket, count) {
       ticket.set('orderQuantity', count);
       this.order.set('amount', this.total);
@@ -179,8 +196,15 @@ export default Component.extend(FormMixin, {
           this.order.tickets.removeObject(ticket);
         }
       }
+
+      this.send('updateOrderAmount');
+    },
+
+    async updateOrderAmount() {
       console.log(this.orderAmountInput);
-      this.orderAmount = await this.loader.post('/orders/calculate-amount', this.orderAmountInput);
+
+      this.set('orderAmount', await this.loader.post('/orders/calculate-amount', this.orderAmountInput));
+
       console.log(this.orderAmount);
     },
 
