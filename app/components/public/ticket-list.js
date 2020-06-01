@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { debounce } from '@ember/runloop';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
 import { sumBy, merge } from 'lodash-es';
@@ -25,13 +26,6 @@ export default Component.extend(FormMixin, {
     } else {
       return !this.hasTicketsInOrder;
     }
-  }),
-
-  showTaxIncludedMessage: computed('taxInfo.isTaxIncludedInPrice', function() {
-    if (this.taxInfo !== null) {
-      return (this.taxInfo.isTaxIncludedInPrice);
-    }
-    return false;
   }),
 
   accessCodeTickets : A(),
@@ -88,8 +82,7 @@ export default Component.extend(FormMixin, {
     );
   }),
 
-  orderAmountInput: computed('order.tickets.@each.orderQuantity', 'order.discountCode', function() {
-    console.log(this.order.tickets.toArray());
+  orderAmountInput: computed('tickets.@each.price', 'order.tickets.@each.orderQuantity', 'order.discountCode', function() {
 
     return {
       tickets: this.order.tickets.toArray().map(ticket => ({
@@ -115,15 +108,16 @@ export default Component.extend(FormMixin, {
           this.set('code', null);
           this.order.set('accessCode', undefined);
           this.order.set('discountCode', undefined);
+          this.tickets.forEach(ticket => {
+            ticket.set('discount', null);
+          });
           this.accessCodeTickets.forEach(ticket => {
             ticket.set('isHidden', true);
             this.tickets.removeObject(ticket);
           });
-          this.discountedTickets.forEach(ticket => {
-            ticket.set('discount', 0);
-          });
           this.accessCodeTickets.clear();
           this.discountedTickets.clear();
+          this.send('updateOrderAmount');
         }
 
       }
@@ -150,13 +144,10 @@ export default Component.extend(FormMixin, {
         const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode, include: 'event,tickets' });
         const discountCodeEvent = await discountCode.event;
         if (this.currentEventIdentifier === discountCodeEvent.identifier) {
-          const discountType = discountCode.type;
-          const discountValue = discountCode.value;
           this.order.set('discountCode', discountCode);
           const tickets = await discountCode.tickets;
           tickets.forEach(ticket => {
-            const ticketPrice = ticket.price;
-            const discount = discountType === 'amount' ? Math.min(ticketPrice, discountValue) : ticketPrice * (discountValue / 100);
+            const discount = discountCode.type === 'amount' ? Math.min(ticket.price, discountCode.value) : ticket.price * (discountCode.value / 100);
             ticket.set('discount', discount);
             this.discountedTickets.addObject(ticket);
             this.set('invalidPromotionalCode', false);
@@ -179,19 +170,16 @@ export default Component.extend(FormMixin, {
         this.set('promotionalCodeApplied', true);
         this.set('promotionalCode', 'Promotional code applied successfully');
       }
-      this.order.set('amount', this.total);
       this.send('updateOrderAmount');
     },
 
     async updateOrder(ticket, count) {
       ticket.set('orderQuantity', count);
-      this.order.set('amount', this.total);
-      if (!this.total) {
-        this.order.set('amount', 0);
-      }
       if (count > 0) {
         this.order.tickets.addObject(ticket);
       } else {
+        ticket.set('subTotal', null);
+        ticket.set('discountInfo', null);
         if (this.order.tickets.includes(ticket)) {
           this.order.tickets.removeObject(ticket);
         }
@@ -201,11 +189,7 @@ export default Component.extend(FormMixin, {
     },
 
     async updateOrderAmount() {
-      console.log(this.orderAmountInput);
-
       this.set('orderAmount', await this.loader.post('/orders/calculate-amount', this.orderAmountInput));
-
-      console.log(this.orderAmount);
     },
 
     handleKeyPress() {
@@ -213,6 +197,10 @@ export default Component.extend(FormMixin, {
         this.send('applyPromotionalCode');
         this.set('code', this.promotionalCode);
       }
+    },
+
+    onChangeDonation() {
+      debounce(this, () => this.send('updateOrderAmount'), this.tickets, 250);
     }
   },
   didInsertElement() {
