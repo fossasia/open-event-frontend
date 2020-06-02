@@ -34,16 +34,18 @@
             <td></td>
             <td id="{{ticket.id}}_price">
               {{#if (eq ticket.type 'donation') }}
-                <div class="ui labeled input" style="max-width: 100px;">
-                  <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.eventCurrency}}</label>
-                  <Input
-                    id="i_{{ticket.id}}_price"
-                    @type="number"
-                    @name={{ticket.id}} placeholder={{t "Enter Donation"}}
-                    @min={{ticket.minPrice}}
-                    @max={{ticket.maxPrice}}
-                    @value={{ticket.price}}
-                    @keyUp={{action "onChangeDonation"}} />
+                <div class="field m-0">
+                  <div class="ui labeled input">
+                    <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.eventCurrency}}</label>
+                    <Input
+                      id="i_{{ticket.id}}_price"
+                      @type="number"
+                      @name={{ticket.id}} placeholder={{t "Enter Donation"}}
+                      @min={{ticket.minPrice}}
+                      @max={{ticket.maxPrice}}
+                      @value={{ticket.price}}
+                      @keyUp={{action "onChangeDonation"}} />
+                  </div>
                 </div>
               {{else}}
                 <div class="{{if ticket.discount 'strike text'}}">

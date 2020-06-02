@@ -189,7 +189,20 @@ export default Component.extend(FormMixin, {
     },
 
     async updateOrderAmount() {
-      this.set('orderAmount', await this.loader.post('/orders/calculate-amount', this.orderAmountInput));
+      if (this.shouldDisableOrderButton) {
+        this.set('orderAmount', null);
+        return;
+      }
+
+      try {
+        this.set('orderAmount', await this.loader.post('/orders/calculate-amount', this.orderAmountInput));
+        this.order.amount = this.orderAmount.total;
+      } catch (e) {
+        console.error('Error while calculating order amount', e);
+        this.notify.error(e.response.errors[0].detail, {
+          id: 'order-amount-error'
+        });
+      }
     },
 
     handleKeyPress() {

@@ -11,7 +11,7 @@ module('Integration | Helper | currency-symbol', function(hooks) {
 
     await render(hbs`{{currency-symbol inputValue}}`);
 
-    assert.equal(this.element.textContent.trim(), 'US$');
+    assert.equal(this.element.textContent.trim(), '$');
   });
 });
 
