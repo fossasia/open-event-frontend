@@ -135,7 +135,7 @@ export const paymentCurrencies: PaymentCurrency[] = [
   {
     paypal : true,
     code   : 'USD',
-    symbol : 'US$',
+    symbol : '$',
     name   : 'United States dollar',
     stripe : true,
     alipay : true,
