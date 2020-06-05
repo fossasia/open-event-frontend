@@ -58,6 +58,7 @@ export default Component.extend(FormMixin, {
       ticket => (ticket.orderQuantity || 0)
     ) > 0;
   }),
+
   donationTickets: computed.filterBy('data', 'type', 'donation'),
 
   isDonationPriceValid: computed('donationTickets.@each.orderQuantity', 'donationTickets.@each.price', function() {
@@ -71,19 +72,7 @@ export default Component.extend(FormMixin, {
     return true;
   }),
 
-  total: computed('tickets.@each.price', 'tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
-    if (this.taxInfo !== null) {
-      return sumBy(this.tickets.toArray(),
-        ticket => ((ticket.ticketPriceWithTax || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
-      );
-    }
-    return sumBy(this.tickets.toArray(),
-      ticket => ((ticket.price || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
-    );
-  }),
-
   orderAmountInput: computed('tickets.@each.price', 'order.tickets.@each.orderQuantity', 'order.discountCode', function() {
-
     return {
       tickets: this.order.tickets.toArray().map(ticket => ({
         id       : ticket.id,
