@@ -10,10 +10,10 @@ export default class NewRoute extends Route {
 
   async model(params) {
     const order = await this.store.findRecord('order', params.order_id, {
-      include : 'attendees,event',
+      include : 'attendees,event.tax,tickets',
       reload  : true
     });
-    const tickets = await order.query('tickets', {});
+    const tickets = await order.tickets;
     await tickets.forEach(ticket => {
       ticket.query('attendees', {
         filter: [{
@@ -28,7 +28,7 @@ export default class NewRoute extends Route {
       });
     });
 
-    const eventDetails = await order.query('event', { include: 'tax' });
+    const eventDetails = await order.event;
     return {
       order,
       event : eventDetails,
