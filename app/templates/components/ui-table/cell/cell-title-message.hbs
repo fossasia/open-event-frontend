@@ -8,10 +8,10 @@
   {{/if}}  
   <div class="description">
     {{#if (eq this.props.options.message 'emailMessage')}}
-      <p>{{sanitize this.record}}</p>
+      <p>{{sanitize record}}</p>
     {{else if (eq this.props.options.message 'notificationMessage')}}
-      {{#if this.record}}     
-        <p>{{sanitize this.record}}</p>
+      {{#if record}}     
+        <p>{{sanitize record}}</p>
       {{/if}}
     {{/if}}  
   </div>

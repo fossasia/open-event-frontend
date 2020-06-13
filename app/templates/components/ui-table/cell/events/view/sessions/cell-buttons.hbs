@@ -3,8 +3,8 @@
     <UiDropdown @class="ui icon right pointing dropdown button">
       <i class="green checkmark icon"></i>
       <div class="menu">
-        <a href="#" role="button" class="item" {{action this.props.actions.acceptProposal this.record true}}>{{t 'With email'}}</a>
-        <a href="#" role="button" class="item" {{action this.props.actions.acceptProposal this.record false}}>{{t 'Without email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.acceptProposal record true}}>{{t 'With email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.acceptProposal record false}}>{{t 'Without email'}}</a>
       </div>
     </UiDropdown>
   {{/if}}
@@ -12,8 +12,8 @@
     <UiDropdown @class="ui icon right pointing dropdown button">
       <i class="blue checkmark icon"></i>
       <div class="menu">
-        <a href="#" role="button" class="item" {{action this.props.actions.confirmProposal this.record true}}>{{t 'With email'}}</a>
-        <a href="#" role="button" class="item" {{action this.props.actions.confirmProposal this.record false}}>{{t 'Without email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.confirmProposal record true}}>{{t 'With email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.confirmProposal record false}}>{{t 'Without email'}}</a>
       </div>
     </UiDropdown>
   {{/if}}
@@ -21,8 +21,8 @@
     <UiDropdown @class="ui icon right pointing dropdown button">
       <i class="red remove icon"></i>
       <div class="menu">
-        <a href="#" role="button" class="item" {{action this.props.actions.rejectProposal this.record true}}>{{t 'With email'}}</a>
-        <a href="#" role="button" class="item" {{action this.props.actions.rejectProposal this.record false}}>{{t 'Without email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.rejectProposal record true}}>{{t 'With email'}}</a>
+        <a href="#" role="button" class="item" {{action this.props.actions.rejectProposal record false}}>{{t 'Without email'}}</a>
       </div>
     </UiDropdown>
   {{/if}}

@@ -1,5 +1,5 @@
 <div class="ui ordered list">
-  <div class="item">{{this.record.email}} ({{t 'Owner'}})</div>
+  <div class="item">{{record.email}} ({{t 'Owner'}})</div>
   {{#each this.extraRecords.organizers as |role|}}
     <div class="item">{{role.email}} ({{t 'Organizer'}})</div>
   {{/each}}

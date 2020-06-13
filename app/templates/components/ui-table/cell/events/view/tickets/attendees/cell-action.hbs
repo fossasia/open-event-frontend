@@ -1,7 +1,7 @@
 {{#if (eq this.extraRecords.order.status 'completed')}}
   {{#if this.extraRecords.isCheckedIn}}
-    <button class="tiny ui labeled icon negative button" {{action this.props.actions.toggleCheckIn this.record}}><i class="remove icon"></i>{{t 'Check-Out'}}</button>
+    <button class="tiny ui labeled icon negative button" {{action this.props.actions.toggleCheckIn record}}><i class="remove icon"></i>{{t 'Check-Out'}}</button>
   {{else}}
-    <button class="tiny ui labeled icon positive button" {{action this.props.actions.toggleCheckIn this.record}}><i class="checkmark icon"></i>{{t 'Check‑In'}}</button>
+    <button class="tiny ui labeled icon positive button" {{action this.props.actions.toggleCheckIn record}}><i class="checkmark icon"></i>{{t 'Check‑In'}}</button>
   {{/if}}
 {{/if}}

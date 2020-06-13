@@ -1,4 +1,4 @@
-{{#if (includes this.props.options.ratedSessions this.record)}}
+{{#if (includes this.props.options.ratedSessions record)}}
   {{#each this.extraRecords.feedbacks as |feedback|}}
     {{#if (eq feedback.user.email this.authManager.currentUser.email)}}
       <UiRating
@@ -14,6 +14,6 @@
     @initialRating={{0}}
     @rating={{this.rating}}
     @maxRating={{5}}
-    @onRate={{pipe-action (action (mut this.rating)) (action this.props.actions.addRating this.rating this.record)}}
+    @onRate={{pipe-action (action (mut this.rating)) (action this.props.actions.addRating this.rating record)}}
     @clearable={{true}} />
 {{/if}}

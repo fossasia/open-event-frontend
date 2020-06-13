@@ -1,5 +1,5 @@
 <div class="ui header weight-400">
-  <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{this.record}}
+  <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{record}}
 </div>
 <div class="ui horizontal large basic buttons">
   <UiPopup @tagName="a" @click={{action this.props.actions.moveToDetails this.extraRecords.identifier}} @content={{t "Event Dashboard"}} @class="ui icon button" @position="top center">

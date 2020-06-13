@@ -1,5 +1,5 @@
 <div class="ui header weight-400">
-  <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{this.record}}
+  <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{record}}
 </div>
 
 <div class="ui horizontal compact basic buttons">
@@ -14,7 +14,7 @@
       <i class="undo icon"></i>
     </UiPopup>
   {{else}}
-    <UiPopup @content={{t "Delete"}} @click={{action this.props.actions.openDeleteEventModal this.extraRecords.identifier this.record}} @class="ui icon button" @position="left center">
+    <UiPopup @content={{t "Delete"}} @click={{action this.props.actions.openDeleteEventModal this.extraRecords.identifier record}} @class="ui icon button" @position="left center">
       <i class="trash icon"></i>
     </UiPopup>
   {{/if}}

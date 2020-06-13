@@ -8,7 +8,7 @@
               {{partial column.templateForSortCell}}
             {{else}}
               {{#if column.componentForSortCell}}
-                {{component column.componentForSortCell data=this.data column=column row=this.record table=this}}
+                {{component column.componentForSortCell data=this.data column=column row=record table=this}}
               {{else}}
                 {{column.title}}
                 <i class="{{if column.sortAsc 'caret up' 'sort'}} {{if column.sortDesc 'caret down' 'sort'}} icon"></i>
@@ -22,7 +22,7 @@
             {{partial column.templateForSortCell}}
           {{else}}
             {{#if column.componentForSortCell}}
-              {{component column.componentName data=this.data column=column record=this.record}}
+              {{component column.componentName data=this.data column=column record=record}}
             {{else}}
               {{column.title}}
             {{/if}}

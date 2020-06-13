@@ -1,9 +1,9 @@
 {{#if this.extraRecords.timezone}}
   <span>
-    {{general-date this.record this.extraRecords.timezone}}
+    {{general-date record this.extraRecords.timezone}}
   </span>
-{{else if this.record}}
+{{else if record}}
   <span>
-    {{moment-format this.record (if this.props.options.dateFormat this.props.options.dateFormat 'MMMM DD, YYYY - HH:mm A')}}
+    {{moment-format record (if this.props.options.dateFormat this.props.options.dateFormat 'MMMM DD, YYYY - HH:mm A')}}
   </span>
 {{/if}}

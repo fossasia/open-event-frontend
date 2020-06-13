@@ -1,6 +1,6 @@
 <div class="ui tiny header">
-  <a class="main content" href="{{href-to 'orders.view' this.record}}">
-    {{this.record}}
+  <a class="main content" href="{{href-to 'orders.view' record}}">
+    {{record}}
   </a>
   <span class="weight-400">
     {{t 'by'}} {{if this.extraRecords.user.firstName this.extraRecords.user.firstName (t 'Name not provided')}}
@@ -24,22 +24,22 @@
   </div>
 </div>
 <div class="ui horizontal compact basic buttons">
-  {{#if (and (eq this.extraRecords.status 'placed') (can-modify-order this.record))}}
-    <UiPopup @content={{t "Mark Completed"}} @click={{action (confirm (t "Are you sure you would like to mark this Order as completed?") (action this.props.actions.completeOrder this.record))}} @class="ui icon button" @position="top center">
+  {{#if (and (eq this.extraRecords.status 'placed') (can-modify-order record))}}
+    <UiPopup @content={{t "Mark Completed"}} @click={{action (confirm (t "Are you sure you would like to mark this Order as completed?") (action this.props.actions.completeOrder record))}} @class="ui icon button" @position="top center">
       <i class="check icon"></i>
     </UiPopup>
   {{/if}}
-  {{#if (and (not-eq this.extraRecords.status 'cancelled') (not-eq this.extraRecords.status 'expired') (can-modify-order this.record))}}
-    <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Order?") (action this.props.actions.cancelOrder this.record))}} @class="ui icon button" @position="top center">
+  {{#if (and (not-eq this.extraRecords.status 'cancelled') (not-eq this.extraRecords.status 'expired') (can-modify-order record))}}
+    <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Order?") (action this.props.actions.cancelOrder record))}} @class="ui icon button" @position="top center">
       <i class="delete icon"></i>
     </UiPopup>
   {{/if}}
-  {{#if (can-modify-order this.record)}}
-    <UiPopup @content={{t "Delete order"}} @click={{action (confirm (t "Are you sure you would like to delete this Order?") (action this.props.actions.deleteOrder this.record))}} @class="ui icon button" @position="top center">
+  {{#if (can-modify-order record)}}
+    <UiPopup @content={{t "Delete order"}} @click={{action (confirm (t "Are you sure you would like to delete this Order?") (action this.props.actions.deleteOrder record))}} @class="ui icon button" @position="top center">
       <i class="trash icon"></i>
     </UiPopup>
   {{/if}}
-  <UiPopup @content={{t "Resend order confirmation"}} @click={{action this.props.actions.resendConfirmation this.record}} @class="ui icon button" @position="top center">
+  <UiPopup @content={{t "Resend order confirmation"}} @click={{action this.props.actions.resendConfirmation record}} @class="ui icon button" @position="top center">
     <i class="mail outline icon"></i>
   </UiPopup>
 </div>

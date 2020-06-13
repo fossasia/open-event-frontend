@@ -1,16 +1,16 @@
 <div class="ui {{if this.device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
-  <UiPopup @tagName="a" @click={{action this.moveToDetails this.record.identifier}} @content={{t "View"}} @class="ui icon button" @position="left center">
+  <UiPopup @tagName="a" @click={{action this.moveToDetails record.identifier}} @content={{t "View"}} @class="ui icon button" @position="left center">
     <i class="unhide icon"></i>
   </UiPopup>
-  <UiPopup @content={{t "Edit"}} @click={{action this.editEvent this.record.identifier}} @class="ui icon button" @position="left center">
+  <UiPopup @content={{t "Edit"}} @click={{action this.editEvent record.identifier}} @class="ui icon button" @position="left center">
     <i class="edit icon"></i>
   </UiPopup>
-  {{#if (and this.hasRestorePrivileges (get this.record this.column.propertyName))}}
-    <UiPopup @content={{t "Restore"}} @click={{action this.restoreEvent this.record}} @class="ui icon button" @position="left center">
+  {{#if (and this.hasRestorePrivileges (get record this.column.propertyName))}}
+    <UiPopup @content={{t "Restore"}} @click={{action this.restoreEvent record}} @class="ui icon button" @position="left center">
       <i class="undo icon"></i>
     </UiPopup>
   {{else}}
-    <UiPopup @content={{t "Delete"}} @click={{action this.openDeleteEventModal this.record.identifier this.record.name}} @class="ui icon button" @position="left center">
+    <UiPopup @content={{t "Delete"}} @click={{action this.openDeleteEventModal record.identifier record.name}} @class="ui icon button" @position="left center">
       <i class="trash icon"></i>
     </UiPopup>
   {{/if}}

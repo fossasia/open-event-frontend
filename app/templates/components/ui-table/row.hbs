@@ -1,13 +1,13 @@
-<tr class="{{if (exists-in this._selectedItems this.record) 'selected-row'}}">
+<tr class="{{if (exists-in this._selectedItems record) 'selected-row'}}">
   {{#each this.processedColumns as |column|}}
     {{#if column.isVisible}}
       <td class={{column.className}}>
         {{#if column.routeName}}
-          <LinkTo @route={{column.routeName}} @model={{this.record.id}}>
+          <LinkTo @route={{column.routeName}} @model={{record.id}}>
             {{#if column.propertyName}}
-              {{get this.record column.propertyName}}
+              {{get record column.propertyName}}
             {{else}}
-              {{this.record.id}}
+              {{record.id}}
             {{/if}}
           </LinkTo>
         {{else}}
@@ -15,9 +15,9 @@
             {{partial column.template}}
           {{else}}
             {{#if column.component}}
-              {{component column.component data=this.data record=this.record column=column table=this}}
+              {{component column.component data=this.data record=record column=column table=this}}
             {{else}}
-              {{sanitize (get this.record column.propertyName)}}
+              {{sanitize (get record column.propertyName)}}
             {{/if}}
           {{/if}}
         {{/if}}
@@ -26,7 +26,7 @@
   {{/each}}
 </tr>
 {{#if (exists-in this._expandedRowIndexes this.index)}}
-  <tr class="expandRow {{concat 'expand-' this.index}} {{if (exists-in this._selectedItems this.record) 'selected-expand'}}">
+  <tr class="expandRow {{concat 'expand-' this.index}} {{if (exists-in this._selectedItems record) 'selected-expand'}}">
     <td colspan="{{this.visibleProcessedColumns.length}}">
       {{partial this.expandedRowTemplate}}
     </td>
