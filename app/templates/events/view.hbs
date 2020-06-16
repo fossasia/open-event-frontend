@@ -29,8 +29,8 @@
             <i class="unhide icon"></i>
             {{t 'Preview'}}
           </a>
-          <div class="ui small labeled icon buttons">
-            <button class="ui button " {{action 'togglePublishState'}}>
+          
+            <button class="ui button labeled icon small" {{action 'togglePublishState'}}>
               {{#if (eq this.model.state 'published')}}
                 <i class="ban icon"></i>
                 {{t 'Unpublish'}}
@@ -39,11 +39,11 @@
                 {{t 'Publish'}}
               {{/if}}
             </button>
-            <button class="ui button {{if this.isCopying 'loading'}}" {{action 'copyEvent'}} disabled={{this.isCopying}}>
+            <button class="ui button labeled icon small {{if this.isCopying 'loading'}}" {{action 'copyEvent'}} disabled={{this.isCopying}}>
               <i class="copy icon"></i>
               {{t 'Copy'}}
             </button>
-          </div>
+          
         {{/if}}
       </div>
     </div>
