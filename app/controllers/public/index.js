@@ -2,7 +2,6 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import { htmlSafe } from '@ember/string';
-import RSVP from 'rsvp';
 
 @classic
 export default class IndexController extends Controller {
