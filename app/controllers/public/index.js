@@ -100,24 +100,14 @@ export default class IndexController extends Controller {
   }
 
   @action
-  async placeOrder() {
+  async placeOrder(orderInput) {
+    if (orderInput) {
+      this.set('orderInput', orderInput);
+    }
     if (!this.session.isAuthenticated) {
       this.set('isLoginModalOpen', true);
       return;
     }
-    let { order, event } = this.model;
-    order.tickets.forEach(ticket => {
-      let numberOfAttendees = ticket.orderQuantity;
-      while (numberOfAttendees--) {
-        this.model.attendees.addObject(this.store.createRecord('attendee', {
-          firstname : 'John',
-          lastname  : 'Doe',
-          email     : 'johndoe@example.com',
-          event,
-          ticket
-        }));
-      }
-    });
     this.send('save');
   }
 
@@ -125,27 +115,17 @@ export default class IndexController extends Controller {
   async save() {
     try {
       this.set('isLoading', true);
-      let { order } = this.model;
-      let { attendees } = this.model;
-      await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
-      order.set('attendees', attendees);
-      await order.save()
-        .then(order => {
-          this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
-          this.transitionToRoute('orders.new', order.identifier);
-        })
-        .catch(async e => {
-          console.error('Error while saving order', e);
-          try {
-            await RSVP.allSettled((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
-          } catch (error) {
-            console.error('Error while deleting attendees after order failure', error);
-          }
-          this.notify.error(this.l10n.t(e.errors[0].detail));
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
+      const { orderInput } = this;
+      try {
+        const order = await this.loader.post('/orders/create-order', orderInput);
+        this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
+        this.transitionToRoute('orders.new', order.data.attributes.identifier);
+      } catch (e) {
+        console.error('Error while saving order', e);
+        this.notify.error(this.l10n.t(e.response.errors[0].detail));
+      } finally {
+        this.set('isLoading', false);
+      }
     } catch (e) {
       console.error('Error while creating order', e);
       this.notify.error(this.l10n.t(e));

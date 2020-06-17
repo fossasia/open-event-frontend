@@ -4,8 +4,8 @@
     <thead class="full-width">
       <tr>
         <th>{{t 'Type'}}</th>
-        <th class="four wide">{{t 'Sales Ends'}}</th>
-        <th class="ui three wide single line">{{t 'Ticket Price'}}</th>
+        <th class="three wide"></th>
+        <th class="ui four wide single line">{{t 'Price'}}</th>
         <th class="one wide">{{t 'Quantity'}}</th>
         <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
       </tr>
@@ -27,62 +27,53 @@
               {{#if ticket.isDescriptionVisible}}
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
+              <div>
+                <small class="ui gray-text small">Sale ends on {{moment-format ticket.salesEndsAt 'ddd, DD MMMM YY, h:mm A'}}</small>
+              </div>
             </td>
-            <td>{{moment-format ticket.salesEndsAt 'ddd, DD MMMM YY, h:mm A'}}</td>
-            {{#if ticket.discount}}
-              <td>
-                <div id="{{ticket.id}}_price" class="strike text">
-                  {{this.eventCurrency}} {{format-number ticket.price}}
-                </div>
-                <div id="{{ticket.id}}_discount">
-                  {{this.eventCurrency}} {{format-number (sub ticket.price ticket.discount)}}
-                  {{#if this.taxInfo}}
-                    {{#if this.showTaxIncludedMessage}}
-                      <small class="ui gray-text small">
-                        {{t 'includes'}} {{this.eventCurrency}} {{format-number ticket.includedTaxAmount}}
-                      </small>
-                    {{else}}
-                      <small class="ui gray-text small">
-                        + {{this.eventCurrency}}
-                        {{format-number (add (sub ticket.ticketPriceWithTax ticket.price) ticket.discount)}}
-                      </small>
-                    {{/if}}
-                    <div>
-                      <small class="ui gray-text tiny aligned right">({{this.taxInfo.name}})</small>
-                    </div>
-                  {{/if}}
-                </div>
-              </td>
-            {{else}}
-              <td id="{{ticket.id}}_price">
-                {{#if (eq ticket.type 'donation') }}
-                  <div class="field">
+            <td></td>
+            <td id="{{ticket.id}}_price">
+              {{#if (eq ticket.type 'donation') }}
+                <div class="field m-0">
+                  <div class="ui labeled input">
+                    <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.eventCurrency}}</label>
                     <Input
+                      id="i_{{ticket.id}}_price"
                       @type="number"
                       @name={{ticket.id}} placeholder={{t "Enter Donation"}}
                       @min={{ticket.minPrice}}
                       @max={{ticket.maxPrice}}
-                      @value={{ticket.price}} /><br>
+                      @value={{ticket.price}}
+                      @keyUp={{action "onChangeDonation"}} />
                   </div>
-                {{else}}
-                  {{this.eventCurrency}} {{format-number ticket.price}}
+                </div>
+              {{else}}
+                <div class="{{if ticket.discount 'strike text'}}">
+                  {{currency-symbol this.eventCurrency}} {{format-money ticket.price}}
+                </div>
+                {{#if ticket.discount}}
+                  <div>
+                    {{currency-symbol this.eventCurrency}} {{format-money (sub ticket.price ticket.discount)}}
+                  </div>
                 {{/if}}
-                {{#if (and this.taxInfo (not-eq ticket.type 'free'))}}
-                  {{#if this.showTaxIncludedMessage}}
+              {{/if}}
+              {{#if (and this.taxInfo (not-eq ticket.type 'free'))}}
+                <p>
+                  {{#if this.taxInfo.isTaxIncludedInPrice}}
                     <small class="ui gray-text small">
-                      {{t 'includes'}} {{this.eventCurrency}} {{format-number ticket.includedTaxAmount}}
+                      {{t 'includes'}} {{currency-symbol this.eventCurrency}} {{format-money ticket.includedTaxAmount}}
                     </small>
                   {{else}}
                     <small class="ui gray-text small">
-                      + {{this.eventCurrency}} {{format-number (sub ticket.ticketPriceWithTax ticket.price)}}
+                      + {{currency-symbol this.eventCurrency}} {{format-money (sub ticket.ticketPriceWithTax ticket.price)}}
                     </small>
                   {{/if}}
-                  <div>
+                  <span>
                     <small class="ui gray-text tiny aligned right">({{this.taxInfo.name}})</small>
-                  </div>
-                {{/if}}
-              </td>
-            {{/if}}
+                  </span>
+                </p>
+              {{/if}}
+            </td>
             <td>
               <div class="field">
                 <UiDropdown
@@ -105,12 +96,7 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              {{#if this.taxInfo}}
-                {{this.eventCurrency}}
-                {{format-number (mult (sub ticket.ticketPriceWithTax ticket.discount) ticket.orderQuantity)}}
-              {{else}}
-                {{this.eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) ticket.orderQuantity)}}
-              {{/if}}
+              {{currency-symbol this.eventCurrency}} {{format-money ticket.subTotal}}
             </td>
           </tr>
         {{/unless}}
@@ -118,15 +104,27 @@
     </tbody>
     <tfoot class="full-width">
       <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th colspan="4">
-          <div class="ui right aligned small primary icon">
-            {{t 'Total'}}: {{this.eventCurrency}} {{format-number this.total}}
-          </div>
-        </th>
+        <td></td>
+        <td></td>
+        <td colspan="3">
+            <table class="ui small" style="float: right;">
+              <tbody>
+                {{#if orderAmount.tax}}
+                  <tr><td>{{t 'Sub-Total'}}</td><td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.sub_total}}</td></tr>
+                  <tr>
+                    <td>
+                      <div>{{t 'Tax'}} ({{this.orderAmount.tax.percent}}% {{this.orderAmount.tax.name}})</div>
+                      {{#if orderAmount.tax.included}}
+                        <small class="ui gray-text small">Included in Total</small>
+                      {{/if}}
+                    </td>
+                    <td>{{currency-symbol this.eventCurrency}} {{this.orderAmount.tax.amount}}</td>
+                  </tr>
+                {{/if}}
+                <tr><td>{{t 'Total'}}</td><td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td></tr>
+              </tbody>
+            </table>
+        </td>
       </tr>
     </tfoot>
   </table>
@@ -179,7 +177,7 @@
         <i class="colored cc visa link icon"></i>
       </div>
       <div class="ui no padding three wide computer four wide tablet column right aligned floated">
-        <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder}}>
+        <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>
           {{t 'Order Now'}}
         </button>
       </div>

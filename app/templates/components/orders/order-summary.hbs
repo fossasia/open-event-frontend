@@ -75,10 +75,10 @@
                 </div>
               </td>
               {{#if this.data.discountCode}}
-                <td>{{currency-symbol this.eventCurrency}} {{format-number ticket.price}}</td>
-                <td>{{currency-symbol this.eventCurrency}} {{format-number ticket.discount}}</td>
+                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.price}}</td>
+                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
                 <td>
-                  {{currency-symbol this.eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
+                  {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
                 </td>
               {{/if}}
               <td>{{ticket-attendees this.data.attendees ticket.attendees}}</td>
@@ -88,9 +88,9 @@
                   {{ticket.name}}
                 </div>
               </td>
-              <td>{{currency-symbol this.eventCurrency}} {{format-number ticket.price}}</td>
+              <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.price}}</td>
               {{#if this.data.discountCode}}
-                <td>{{currency-symbol this.eventCurrency}} {{format-number ticket.discount}}</td>
+                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
               {{/if}}
               <td>{{ticket-attendees this.data.attendees ticket.attendees}}</td>
               {{#if this.event.tax}}
@@ -107,7 +107,7 @@
                 </td>
               {{/if}}
               <td>
-                {{currency-symbol this.eventCurrency}} {{format-number (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
+                {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
               </td>
             {{/if}}
               
@@ -136,7 +136,7 @@
               </div>
             </th>
             <th colspan="4">
-              {{currency-symbol this.eventCurrency}} {{format-number this.data.amount}}
+              {{currency-symbol this.eventCurrency}} {{format-money this.data.amount}}
             </th>
           </tr>
         </tfoot>

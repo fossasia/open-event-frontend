@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { debounce } from '@ember/runloop';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
 import { sumBy, merge } from 'lodash-es';
@@ -9,6 +10,8 @@ export default Component.extend(FormMixin, {
   store: service(),
 
   promotionalCodeApplied: false,
+
+  orderAmount: null,
 
   isUnverified: computed('session.isAuthenticated', 'authManager.currentUser.isVerified', function() {
     return this.session.isAuthenticated
@@ -25,26 +28,37 @@ export default Component.extend(FormMixin, {
     }
   }),
 
-  showTaxIncludedMessage: computed('taxInfo.isTaxIncludedInPrice', function() {
-    if (this.taxInfo !== null) {
-      return (this.taxInfo.isTaxIncludedInPrice);
-    }
-    return false;
-  }),
-
   accessCodeTickets : A(),
   discountedTickets : A(),
 
   invalidPromotionalCode: false,
 
-  tickets: computed(function() {
-    return this.data.sortBy('position');
+  tickets: computed('orderAmount', function() {
+    const ticketMap = {};
+    if (this.orderAmount) {
+      this.orderAmount.tickets.forEach(ticket => {
+        ticketMap[ticket.id] = ticket;
+      });
+    }
+
+    return this.data.sortBy('position').map(ticket => {
+      const ticketExtra = ticketMap[ticket.id];
+
+      if (ticketExtra) {
+        ticket.set('subTotal', ticketExtra.sub_total);
+        ticket.set('discountInfo', ticketExtra.discount);
+      }
+
+      return ticket;
+    });
   }),
+
   hasTicketsInOrder: computed('tickets.@each.orderQuantity', function() {
     return sumBy(this.tickets.toArray(),
       ticket => (ticket.orderQuantity || 0)
     ) > 0;
   }),
+
   donationTickets: computed.filterBy('data', 'type', 'donation'),
 
   isDonationPriceValid: computed('donationTickets.@each.orderQuantity', 'donationTickets.@each.price', function() {
@@ -58,16 +72,17 @@ export default Component.extend(FormMixin, {
     return true;
   }),
 
-  total: computed('tickets.@each.price', 'tickets.@each.orderQuantity', 'tickets.@each.discount', function() {
-    if (this.taxInfo !== null) {
-      return sumBy(this.tickets.toArray(),
-        ticket => ((ticket.ticketPriceWithTax || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
-      );
-    }
-    return sumBy(this.tickets.toArray(),
-      ticket => ((ticket.price || 0) - (ticket.discount || 0)) * (ticket.orderQuantity || 0)
-    );
+  orderAmountInput: computed('tickets.@each.price', 'order.tickets.@each.orderQuantity', 'order.discountCode', function() {
+    return {
+      tickets: this.order.tickets.toArray().map(ticket => ({
+        id       : ticket.id,
+        quantity : ticket.orderQuantity,
+        price    : ticket.price
+      })),
+      'discount-code': this.order.get('discountCode.id')
+    };
   }),
+
   actions: {
     async togglePromotionalCode(queryParam) {
       this.toggleProperty('enterPromotionalCode');
@@ -82,24 +97,16 @@ export default Component.extend(FormMixin, {
           this.set('code', null);
           this.order.set('accessCode', undefined);
           this.order.set('discountCode', undefined);
+          this.tickets.forEach(ticket => {
+            ticket.set('discount', null);
+          });
           this.accessCodeTickets.forEach(ticket => {
             ticket.set('isHidden', true);
             this.tickets.removeObject(ticket);
           });
-          this.discountedTickets.forEach(ticket => {
-            let taxRate = ticket.get('event.tax.rate');
-            let ticketPrice = ticket.get('price');
-            if (taxRate && !this.showTaxIncludedMessage) {
-              let ticketPriceWithTax = ticketPrice * (1 + taxRate / 100);
-              ticket.set('ticketPriceWithTax', ticketPriceWithTax);
-            } else if (taxRate && this.showTaxIncludedMessage) {
-              let includedTaxAmount = (taxRate * ticketPrice) / (100 + taxRate);
-              ticket.set('includedTaxAmount', includedTaxAmount);
-            }
-            ticket.set('discount', 0);
-          });
           this.accessCodeTickets.clear();
           this.discountedTickets.clear();
+          this.send('updateOrderAmount');
         }
 
       }
@@ -126,22 +133,11 @@ export default Component.extend(FormMixin, {
         const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode, include: 'event,tickets' });
         const discountCodeEvent = await discountCode.event;
         if (this.currentEventIdentifier === discountCodeEvent.identifier) {
-          const discountType = discountCode.type;
-          const discountValue = discountCode.value;
           this.order.set('discountCode', discountCode);
           const tickets = await discountCode.tickets;
           tickets.forEach(ticket => {
-            const ticketPrice = ticket.price;
-            const taxRate = ticket.get('event.tax.rate');
-            const discount = discountType === 'amount' ? Math.min(ticketPrice, discountValue) : ticketPrice * (discountValue / 100);
+            const discount = discountCode.type === 'amount' ? Math.min(ticket.price, discountCode.value) : ticket.price * (discountCode.value / 100);
             ticket.set('discount', discount);
-            if (taxRate && !this.showTaxIncludedMessage) {
-              const ticketPriceWithTax = (ticketPrice - ticket.discount) * (1 + taxRate / 100);
-              ticket.set('ticketPriceWithTax', ticketPriceWithTax);
-            } else if (taxRate && this.showTaxIncludedMessage) {
-              const includedTaxAmount = (taxRate * (ticketPrice - discount)) / (100 + taxRate);
-              ticket.set('includedTaxAmount', includedTaxAmount);
-            }
             this.discountedTickets.addObject(ticket);
             this.set('invalidPromotionalCode', false);
           });
@@ -163,21 +159,38 @@ export default Component.extend(FormMixin, {
         this.set('promotionalCodeApplied', true);
         this.set('promotionalCode', 'Promotional code applied successfully');
       }
-      this.order.set('amount', this.total);
-
+      this.send('updateOrderAmount');
     },
-    updateOrder(ticket, count) {
+
+    async updateOrder(ticket, count) {
       ticket.set('orderQuantity', count);
-      this.order.set('amount', this.total);
-      if (!this.total) {
-        this.order.set('amount', 0);
-      }
       if (count > 0) {
         this.order.tickets.addObject(ticket);
       } else {
+        ticket.set('subTotal', null);
+        ticket.set('discountInfo', null);
         if (this.order.tickets.includes(ticket)) {
           this.order.tickets.removeObject(ticket);
         }
+      }
+
+      this.send('updateOrderAmount');
+    },
+
+    async updateOrderAmount() {
+      if (this.shouldDisableOrderButton) {
+        this.set('orderAmount', null);
+        return;
+      }
+
+      try {
+        this.set('orderAmount', await this.loader.post('/orders/calculate-amount', this.orderAmountInput));
+        this.order.amount = this.orderAmount.total;
+      } catch (e) {
+        console.error('Error while calculating order amount', e);
+        this.notify.error(e.response.errors[0].detail, {
+          id: 'order-amount-error'
+        });
       }
     },
 
@@ -186,6 +199,10 @@ export default Component.extend(FormMixin, {
         this.send('applyPromotionalCode');
         this.set('code', this.promotionalCode);
       }
+    },
+
+    onChangeDonation() {
+      debounce(this, () => this.send('updateOrderAmount'), this.tickets, 250);
     }
   },
   didInsertElement() {
