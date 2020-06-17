@@ -32,8 +32,8 @@
   {{t 'You can make a GET request to the following endpoint to access the selected information'}}
 </div>
 <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
-  <div class="ui secondary segment url">
-    <CopyButton @clipboardText={{this.displayUrl}} @tagName={{null}} class="x-scrollable">
+  <div class="ui secondary segment url text aligned center">
+    <CopyButton @clipboardText={{this.displayUrl}} @tagName={{null}} class="x-scrollable ui basic segments">
       <pre>{{this.displayUrl}}</pre>
     </CopyButton>
   </div>
