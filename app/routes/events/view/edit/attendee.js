@@ -9,13 +9,13 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
   }
 
   async model() {
-    let filterOptions = [{
+    const filterOptions = [{
       name : 'form',
       op   : 'eq',
       val  : 'attendee'
     }];
 
-    let data = {
+    const data = {
       event: this.modelFor('events.view')
     };
     data.customForms = await data.event.query('customForms', {
@@ -32,7 +32,7 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
      * Create the additional custom forms if only the compulsory forms exist.
      */
     if (data.customForms.length === 3) {
-      let customForms = A();
+      const customForms = A();
       for (const customForm of data.customForms ? data.customForms.toArray() : []) {
         customForms.pushObject(customForm);
       }

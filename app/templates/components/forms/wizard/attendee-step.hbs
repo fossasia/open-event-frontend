@@ -47,6 +47,9 @@
                   {{t 'Option'}}
                 </th>
                 <th class="center aligned">
+                  {{t 'Type'}}
+                </th>
+                <th class="center aligned">
                   {{t 'Include'}}
                 </th>
                 <th class="center aligned">
@@ -62,6 +65,9 @@
                   <label class="{{if field.isFixed 'required'}}">
                     {{field.name}}
                   </label>
+                </td>
+                <td class="center aligned">
+                  {{field.type}}
                 </td>
                 <td class="center aligned">
                   <UiCheckbox
