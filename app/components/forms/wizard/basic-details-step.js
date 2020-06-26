@@ -133,12 +133,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
-    $.fn.form.settings.rules.checkMaxprice = () => {
-      return $('.ui.form').form('get value', 'min_price') >= $('.ui.form').form('get value', 'max_price');
+    $.fn.form.settings.rules.checkMaxMinPrice = () => {
+       if($('.ui.form').form('get value', 'min_price') > $('.ui.form').form('get value', 'max_price')){
+        return false;
+      }
+      else{
+        return true;
+      }
     };
-    $.fn.form.settings.rules.checkMinprice = () => {
-      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
-    };
+   
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
       return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
     };
@@ -301,6 +304,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         },
         minPrice: {
           identifier : 'min_price',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
@@ -311,13 +315,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Minimum price needs to be greater than zero')
             },
             {
-              type   : 'checkMinprice',
+              type   : 'checkMaxMinPrice',
               prompt : this.l10n.t('Minimum price should not be greater than maximum')
             }
           ]
         },
         maxPrice: {
           identifier : 'max_price',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
@@ -328,7 +333,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Maximum price needs to be greater than zero')
             },
             {
-              type   : 'checkMaxprice',
+              type   : 'checkMaxMinPrice',
               prompt : this.l10n.t('Maximum price should not be less than minimum')
             }
           ]
