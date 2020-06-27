@@ -135,10 +135,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   getValidationRules() {
     $.fn.form.settings.rules.checkMaxMinPrice = () => {
       if ($('.ui.form').form('get value', 'min_price') > $('.ui.form').form('get value', 'max_price')) {
-        return false;
+         return false;
       }
       else {
-        return true;
+         return true;
       }
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
