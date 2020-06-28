@@ -27,6 +27,7 @@ export default Component.extend(FormMixin, {
       attendee.set('firstname', '');
       attendee.set('lastname', '');
       attendee.set('email', '');
+      attendee.set('complexFieldValues', {});
     });
     return this.data.attendees;
   }),
@@ -471,6 +472,17 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`facebook_required_${  index}`] = facebookRequiredValidation;
       validationRules.fields[`github_${  index}`] = githubValidation;
       validationRules.fields[`github_required_${  index}`] = githubRequiredValidation;
+      this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
+        validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter ' + field.name)
+            }
+          ]
+        };
+      });
+
     });
     return validationRules;
   },

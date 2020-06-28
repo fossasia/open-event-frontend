@@ -73,13 +73,13 @@
                   {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
                     <Input
                       @type={{field.type}}
-                      @value={{mut (get holder field.fieldIdentifier)}}
+                      @value={{mut (get holder field.identifierPath)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
                       @readonly="" />
                   {{else}}
                     <Input
                       @type={{field.type}}
-                      @value={{mut (get holder field.fieldIdentifier)}}
+                      @value={{mut (get holder field.identifierPath)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   {{/if}}
                 {{/if}}
