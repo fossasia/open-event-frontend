@@ -34,7 +34,14 @@ export default class NewRoute extends Route {
       event : eventDetails,
       tickets,
       form  : await eventDetails.query('customForms', {
-        'page[size]' : 50,
+        filter: [
+          {
+            name : 'form',
+            op   : 'eq',
+            val  : 'attendee'
+          }
+        ],
+        'page[size]' : 0,
         sort         : 'id'
       })
     };
