@@ -1,11 +1,25 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { slugify } from 'open-event-frontend/utils/text';
+import { computed } from '@ember/object';
 
 function getIdentifier(name, fields) {
-  return name.toLowerCase();
+  const fieldIdentifiers = new Set(fields.map(field => field.fieldIdentifier));
+  let identifier = slugify(name, '_');
+  while (fieldIdentifiers.has(identifier)) {
+    identifier += '_';
+  }
+
+  return identifier;
 }
 
 export default Component.extend(FormMixin, {
+  identifier: computed('data.newFormField.name', 'data.customForms', function() {
+    return getIdentifier(this.data.newFormField.name, this.data.customForms);
+  }),
+  validIdentifier: computed('data.newFormField.name', 'identifier', function() {
+    return this.identifier.trim().length > 0 && this.data.newFormField.name.trim().length > 0;
+  }),
   actions: {
     saveDraft() {
       this.onValid(() => {
@@ -25,8 +39,11 @@ export default Component.extend(FormMixin, {
       });
     },
     addFormField() {
+      if (!this.validIdentifier) {
+        return;
+      }
       this.data.customForms.pushObject(this.store.createRecord('custom-form', {
-        fieldIdentifier : getIdentifier(this.data.newFormField.name),
+        fieldIdentifier : this.identifier,
         name            : this.data.newFormField.name,
         form            : 'attendee',
         type            : this.data.newFormField.type,

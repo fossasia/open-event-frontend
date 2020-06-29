@@ -92,18 +92,27 @@
       </div>
     </div>
   {{/if}}
-  <Input id="firstname" @type="text" @value={{this.data.newFormField.name}} />
-  <UiDropdown @class="label" @selected={{this.data.newFormField.type}} @onChange={{action (mut this.data.newFormField.type)}}>
-    <div class="default text">
-      {{ this.data.newFormField.type}}
+  <div class="ui hidden divider"></div>
+  <h3 class="ui dividing header">
+    <i class="checkmark box icon"></i>
+    <div class="content">
+      {{t 'Add Custom Form Field'}}
     </div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="http">text</div>
-      <div class="item" data-value="https">number</div>
-    </div>
-  </UiDropdown>
-  <button class="ui button" {{action 'addFormField'}}>Add</button>
+  </h3>
+  <div class="ui action input">
+    <Input type="text" placeholder="Field Name" @value={{this.data.newFormField.name}} />
+    <UiDropdown class="ui selection dropdown" @selected={{this.data.newFormField.type}} @onChange={{action (mut this.data.newFormField.type)}}>
+      <div class="default text">
+        {{ this.data.newFormField.type}}
+      </div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item" data-value="text">Text</div>
+        <div class="item" data-value="number">Number</div>
+      </div>
+    </UiDropdown>
+    <button class="ui button" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>Add</button>
+  </div>
   <div class="spacer-50"></div>
   <div class="{{if this.device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
     <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
