@@ -9,8 +9,11 @@ export default class SponsorsRoute extends Route.extend(EventWizardMixin) {
   }
 
   async model() {
-    let data = this.modelFor('events.view.edit');
-    data.sponsors = await data.event.get('sponsors');
-    return data;
+    const data = this.modelFor('events.view.edit');
+    const sponsors = await data.event.get('sponsors');
+    return {
+      sponsors,
+      ...data
+    };
   }
 }
