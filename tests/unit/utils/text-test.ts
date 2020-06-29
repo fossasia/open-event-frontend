@@ -1,4 +1,4 @@
-import { slugify} from 'open-event-frontend/utils/text';
+import { slugify } from 'open-event-frontend/utils/text';
 import { module, test } from 'qunit';
 
 module('Unit | Text | Slugify', function() {
