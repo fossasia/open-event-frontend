@@ -84,6 +84,12 @@ export default ModelBase.extend({
     ageGroup        : 'Age Group'
   },
 
+  ready() {
+    if (!this.name) {
+      this.name = this[this.form][this.fieldIdentifier];
+    }
+  },
+
   identifierPath: computed('isComplex', function() {
     return !this.isComplex ? this.fieldIdentifier : 'complexFieldValues.' + this.fieldIdentifier;
   }),
