@@ -43,7 +43,15 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
       microlocations,
       sessionTypes,
       speakersCall,
-      customForms
+      customForms,
+      newSpeakerForm: {
+        name : '',
+        type : 'text'
+      },
+      newSessionForm: {
+        name : '',
+        type : 'text'
+      }
     };
   }
 }
