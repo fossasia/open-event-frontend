@@ -186,7 +186,7 @@
         <table class="ui selectable celled table">
           <thead>
             <tr>
-              <th colspan="3" class="text center aligned">
+              <th colspan="4" class="text center aligned">
                 {{t 'Collect Speaker Details'}}
               </th>
             </tr>
@@ -198,6 +198,9 @@
               {{else}}
                 <th class="right aligned">
                   {{t 'Option'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Type'}}
                 </th>
                 <th class="center aligned">
                   {{t 'Include'}}
@@ -217,6 +220,9 @@
                   </label>
                 </td>
                 <td class="center aligned">
+                  {{field.type}}
+                </td>
+                <td class="center aligned">
                   <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
                 </td>
                 <td class="center aligned">
@@ -227,12 +233,18 @@
           </tbody>
         </table>
 
+        <Forms::Wizard::CustomFormInput
+          @newFormField={{this.data.newSpeakerForm}}
+          @customForms={{this.data.customForms}}
+          @event={{this.data.event}}
+          @form="speaker" />
+
       </div>
       <div class="column">
         <table class="ui selectable celled table">
           <thead>
             <tr>
-              <th colspan="3" class="text center aligned">
+              <th colspan="4" class="text center aligned">
                 {{t 'Collect Session Details'}}
               </th>
             </tr>
@@ -244,6 +256,9 @@
               {{else}}
                 <th class="right aligned">
                   {{t 'Option'}}
+                </th>
+                <th class="center aligned">
+                  {{t 'Type'}}
                 </th>
                 <th class="center aligned">
                   {{t 'Include'}}
@@ -263,6 +278,9 @@
                   </label>
                 </td>
                 <td class="center aligned">
+                  {{field.type}}
+                </td>
+                <td class="center aligned">
                   <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
                 </td>
                 <td class="center aligned">
@@ -272,6 +290,12 @@
             {{/each}}
           </tbody>
         </table>
+
+        <Forms::Wizard::CustomFormInput
+          @newFormField={{this.data.newSessionForm}}
+          @customForms={{this.data.customForms}}
+          @event={{this.data.event}}
+          @form="session" />
       </div>
     </div>
     <div class="spacer-50"></div>
