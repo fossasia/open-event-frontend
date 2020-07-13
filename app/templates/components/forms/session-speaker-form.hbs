@@ -24,7 +24,7 @@
               {{else}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.session field.fieldIdentifier)}}
+                  @value={{mut (get this.data.session field.identifierPath)}}
                   @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}
@@ -153,7 +153,7 @@
                 {{#if (not this.data.speaker.isEmailOverridden)}}
                   <Input
                     @type={{field.type}}
-                    @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                    @value={{mut (get this.data.speaker field.identifierPath)}}
                     @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
                 {{/if}}
               {{else}}
@@ -166,7 +166,7 @@
                 {{else}}
                   <Input
                     @type={{field.type}}
-                    @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                    @value={{mut (get this.data.speaker field.identifierPath)}}
                     @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
                 {{/if}}
               {{/if}}
@@ -268,7 +268,7 @@
               {{#if (not this.data.speaker.isEmailOverridden)}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                  @value={{mut (get this.data.speaker field.identifierPath)}}
                   @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{/if}}
             {{else}}
@@ -281,7 +281,7 @@
               {{else}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                  @value={{mut (get this.data.speaker field.identifierPath)}}
                   @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}
@@ -412,7 +412,7 @@
               {{else}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.session field.fieldIdentifier)}}
+                  @value={{mut (get this.data.session field.identifierPath)}}
                   @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}

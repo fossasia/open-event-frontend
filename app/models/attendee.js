@@ -42,5 +42,11 @@ export default ModelBase.extend({
   event  : belongsTo('event'),
   order  : belongsTo('order'),
   ticket : belongsTo('ticket'),
-  user   : belongsTo('user')
+  user   : belongsTo('user'),
+
+  ready() {
+    if (!this.complexFieldValues) {
+      this.complexFieldValues = {};
+    }
+  }
 });

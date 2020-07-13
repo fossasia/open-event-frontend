@@ -49,6 +49,12 @@ export default ModelBase.extend({
 
   user     : belongsTo('user'),
   event    : belongsTo('event'),
-  sessions : hasMany('session')
+  sessions : hasMany('session'),
+
+  ready() {
+    if (!this.complexFieldValues) {
+      this.complexFieldValues = {};
+    }
+  }
 
 });
