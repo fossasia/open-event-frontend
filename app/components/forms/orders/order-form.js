@@ -27,7 +27,6 @@ export default Component.extend(FormMixin, {
       attendee.set('firstname', '');
       attendee.set('lastname', '');
       attendee.set('email', '');
-      attendee.set('complexFieldValues', {});
     });
     return this.data.attendees;
   }),
