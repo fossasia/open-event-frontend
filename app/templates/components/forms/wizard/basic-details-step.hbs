@@ -622,19 +622,15 @@
     </UiDropdown>
   </div>
   <div class="field">
-    <label>{{t 'Event Topic'}}</label>
-    <UiDropdown
-@class="search selection"
-@selected={{sanitize this.data.event.topic.name}}
-@onChange={{action (mut this.data.event.topic)}} as |execute mapper|>
-      <i class="dropdown icon"></i>
-      <div class="default text">{{t 'Select Event Topic'}}</div>
-      <div class="menu">
-        {{#each this.data.topics as |topic|}}
-          <div class="item" data-value="{{map-value mapper topic}}">{{sanitize topic.name}}</div>
-        {{/each}}
-      </div>
-    </UiDropdown>
+    <PowerSelect
+      @selected={{this.data.event.topic.name}}
+      @options={{this.data.topics}}
+      @onChange={{action (mut this.data.event.topic.name)}}
+      @placeholder={{t 'Select Event Topic'}} as |topic|>
+        <div class="menu">
+          <div class="item">{{topic}}</div>
+        </div>
+    </PowerSelect>
   </div>
   <div class="field">
     <label>{{t 'Event Sub-topic'}}</label>
