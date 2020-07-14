@@ -69,7 +69,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       await event.save();
 
       await Promise.all((data.tickets ? data.tickets.toArray() : []).map(ticket => {
-        ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), ticket.get('quantity')));
+        ticket.set('Price', Math.min(ticket.get('maxPrice'), ticket.get('minPrice')));
         return ticket.save();
       }));
 
