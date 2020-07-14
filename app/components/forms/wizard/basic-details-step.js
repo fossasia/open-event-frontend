@@ -109,6 +109,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.topic.get('subTopics');
   }),
 
+  topics: computed('this.data.topics', function() {
+    let topic_names = new Array();
+    const topics = this.data.topics.toArray();
+    topics.forEach(topic => topic_names.push(topic.name));
+    return topic_names;
+  }),
+
   showDraftButton: computed('data.event.state', function() {
     return this.data.event.state !== 'published';
   }),

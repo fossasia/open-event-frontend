@@ -622,11 +622,12 @@
     </UiDropdown>
   </div>
   <div class="field">
+    <label>{{t 'Event Topic'}}</label>
     <PowerSelect
       @selected={{this.data.event.topic.name}}
-      @options={{this.data.topics}}
-      @onChange={{action (mut this.data.event.topic.name)}}
-      @placeholder={{t 'Select Event Topic'}} as |topic|>
+      @options={{this.topics}}
+      @placeholder={{t 'Select Event Topic'}}
+      @onChange={{action (mut this.data.event.topic.name) as |topic|}}>
         <div class="menu">
           <div class="item">{{topic}}</div>
         </div>
