@@ -14,6 +14,12 @@ export default class extends Controller {
     return true;
   }
 
+  @computed('model.complexFieldValues')
+  get complexFieldValues() {
+    return Object.entries(this.model.complexFieldValues)
+      .map(([key, value]) => ({ key, value }));
+  }
+
   @action
   openProposalDeleteModal() {
     this.set('isProposalDeleteModalOpen', true);

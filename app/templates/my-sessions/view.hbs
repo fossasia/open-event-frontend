@@ -87,6 +87,10 @@
         <h3 class="ui left aligned header">Slide</h3>
         <a href="{{this.model.slidesUrl}}">{{t 'Download'}}</a>
       {{/if}}
+      {{#each this.complexFieldValues as |complexField|}}
+        <h3 class="ui left aligned header">{{sanitize complexField.key}}</h3>
+        <p>{{sanitize complexField.value}}</p>
+      {{/each}}
     </div>
   </div>
 </div>
