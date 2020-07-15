@@ -608,18 +608,13 @@
 
   <div class="field">
     <label>{{t 'Event Type'}}</label>
-    <UiDropdown
-@class="search selection"
-@selected={{this.data.event.type.name}}
-@onChange={{action (mut this.data.event.type)}} as |execute mapper|>
-      <i class="dropdown icon"></i>
-      <div class="default text">{{t 'Select Event Type'}}</div>
-      <div class="menu">
-        {{#each this.data.types as |type|}}
-          <div class="item" data-value="{{map-value mapper type}}">{{sanitize type.name}}</div>
-        {{/each}}
-      </div>
-    </UiDropdown>
+    <PowerSelect
+      @selected={{this.data.event.type}}
+      @options={{this.data.types}}
+      @placeholder={{t 'Select Event Type'}}
+      @onChange={{action (mut this.data.event.type)}} as |type|>
+        {{type.name}}
+    </PowerSelect>
   </div>
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
@@ -633,19 +628,13 @@
   </div>
   <div class="field">
     <label>{{t 'Event Sub-topic'}}</label>
-    <UiDropdown
-@class="search selection"
-@selected={{this.data.event.subTopic.name}}
-@onChange={{action (mut this.data.event.subTopic)}} as |execute mapper|>
-      <i class="dropdown icon"></i>
-
-      <div class="default text">{{t 'Select Event Sub-Topic'}}</div>
-      <div class="menu">
-        {{#each this.subTopics as |subTopic|}}
-          <div class="item" data-value="{{map-value mapper subTopic}}">{{sanitize subTopic.name}}</div>
-        {{/each}}
-      </div>
-    </UiDropdown>
+    <PowerSelect
+      @selected={{this.data.event.subTopic}}
+      @options={{this.subTopics}}
+      @placeholder={{t 'Select Event Sub-Topic'}}
+      @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
+        {{subTopic.name}}
+    </PowerSelect>
   </div>
   <div class="ui section divider"></div>
   <div class="field">
