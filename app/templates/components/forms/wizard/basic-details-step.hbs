@@ -624,13 +624,11 @@
   <div class="field">
     <label>{{t 'Event Topic'}}</label>
     <PowerSelect
-      @selected={{this.data.event.topic.name}}
-      @options={{this.topics}}
+      @selected={{this.data.event.topic}}
+      @options={{this.data.topics}}
       @placeholder={{t 'Select Event Topic'}}
-      @onChange={{action (mut this.data.event.topic.name) as |topic|}}>
-        <div class="menu">
-          <div class="item">{{topic}}</div>
-        </div>
+      @onChange={{action (mut this.data.event.topic)}} as |topic|>
+        {{topic.name}}
     </PowerSelect>
   </div>
   <div class="field">
