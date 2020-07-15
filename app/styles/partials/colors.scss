@@ -6,6 +6,14 @@ i.facebook {
   }
 }
 
+i.youtube {
+  &:not(.colored) {
+    &:not(.inverted) {
+      color: #d60303;
+    }
+  }
+}
+
 i.twitter {
   &:not(.colored) {
     &:not(.inverted) {
@@ -48,6 +56,10 @@ i.reddit {
 
 i.facebook.colored.inverted {
   background-color: #3b5998 !important;
+}
+
+i.youtube.colored.inverted {
+  background-color: #d60303 !important;
 }
 
 i.twitter.colored.inverted {
