@@ -104,6 +104,7 @@ export default class IndexController extends Controller {
       this.set('orderInput', orderInput);
     }
     if (!this.session.isAuthenticated) {
+      this.set('userExists', false);
       this.set('isLoginModalOpen', true);
       return;
     }
