@@ -6,7 +6,12 @@
   {{/if}}
   <h4 class="ui header">{{t 'Please enter your email address to continue.'}}</h4>
   <div class="field">
-    <Input @type="text" @name="email" @value={{this.email}} @disabled={{this.userExists}} placeholder={{t "Email Address"}} />
+    <div class="ui icon input">
+      <Input @type="text" @name="email" @value={{this.email}} @disabled={{this.userExists}} placeholder={{t "Email Address"}} />
+      {{#if this.userExists}}
+        <i class="circular undo link icon" role="button" onclick={{action (mut this.userExists) false}}></i>
+      {{/if}}
+    </div>
   </div>
   {{#if this.userExists}}
     <div class="ui text muted">{{t 'You have previously registered with this email address.'}}</div>
