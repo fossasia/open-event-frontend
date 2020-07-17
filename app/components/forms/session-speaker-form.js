@@ -542,12 +542,6 @@ export default Component.extend(FormMixin, {
       this.onValid(() => {
         this.sendAction('save');
       });
-    },
-
-
-    toggleNewSessionSelected(value) {
-      this.set('sessionDetails', false);
-      this.set('newSessionSelected', value);
     }
   },
   didInsertElement() {

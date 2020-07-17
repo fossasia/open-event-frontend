@@ -393,13 +393,14 @@
       Or
     </div>
     <div class="field">
-      <UiRadio
+      <UiCheckbox
         @name="sessionDetails"
+        @class="toggle"
+        @checked={{addNewSession}}
         @label={{t "Add a new Proposal"}}
-        @value={{false}}
-        @onChange={{action "toggleNewSessionSelected" true}} />
+        @onChange={{action (mut addNewSession)}}/>
     </div>
-    {{#if this.shouldShowNewSessionDetails}}
+    {{#if addNewSession}}
       {{#each this.allFields.session as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
