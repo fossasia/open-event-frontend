@@ -22,7 +22,7 @@ export default TextField.extend({
 
   // @see https://developers.google.com/maps/documentation/javascript/places-autocomplete#set_search_area
   geolocate() {
-    if (this.get('fastboot.isFastboot')) {
+    if (this.fastboot.isFastBoot) {
       return;
     }
     let navigator = this.navigator || ((window) ? window.navigator : null);

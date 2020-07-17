@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each model as |order|}}
+          {{#each this.model as |order|}}
             <tr>
               <td>
                 {{order.name}}
@@ -44,13 +44,13 @@
                 {{order.ticketCount}}
               </td>
               <td class="right aligned">
-                {{format-number order.feePercentage}}%
+                {{format-money order.feePercentage}}%
                 {{#if order.maximumFee}}
                   <span class="item muted text">[{{t 'Max.'}} {{currency-symbol order.paymentCurrency}} {{order.maximumFee}}]</span>
                 {{/if}}
               </td>
               <td class="right aligned">
-                {{currency-symbol order.paymentCurrency}} {{format-number order.revenue}}
+                {{currency-symbol order.paymentCurrency}} {{format-money order.revenue}}
               </td>
             </tr>
           {{/each}}
@@ -66,7 +66,7 @@
               {{ticketsTotal}}
             </th>
             <th colspan="2" class="right aligned">
-              US$ {{format-number revenueTotal}}
+              US$ {{format-money revenueTotal}}
             </th>
           </tr>
         </tfoot> --}}

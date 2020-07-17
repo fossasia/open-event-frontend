@@ -1,20 +1,22 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
+import { allSettled } from 'rsvp';
 
-export default Route.extend(EventWizardMixin, {
-
+@classic
+export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin) {
   titleToken() {
     return this.l10n.t('Sessions & Speakers');
-  },
+  }
 
   async model() {
-    let data = this.modelFor('events.view.edit');
-    data.tracks = await data.event.get('tracks');
-    data.microlocations = await data.event.get('microlocations');
-    data.sessionTypes = await data.event.get('sessionTypes');
-    data.speakersCall = await this.getOrCreate(data.event, 'speakersCall', 'speakers-call');
+    const data = this.modelFor('events.view.edit');
+    const tracksPromise = data.event.get('tracks');
+    const microlocationsPromise = data.event.get('microlocations');
+    const sessionTypesPromise = data.event.get('sessionTypes');
+    const speakersCallPromise = this.getOrCreate(data.event, 'speakersCall', 'speakers-call');
     // Only get session/speaker custom forms.
-    let customFormFilterOptions = [{
+    const customFormFilterOptions = [{
       or: [
         {
           name : 'form',
@@ -28,11 +30,28 @@ export default Route.extend(EventWizardMixin, {
         }
       ]
     }];
-    data.customForms = await data.event.query('customForms', {
+    const customFormsPromise = data.event.query('customForms', {
       filter       : customFormFilterOptions,
       sort         : 'field-identifier',
       'page[size]' : 50
     });
-    return data;
+
+    const [tracks, microlocations, sessionTypes, speakersCall, customForms] = (await allSettled([tracksPromise, microlocationsPromise, sessionTypesPromise, speakersCallPromise, customFormsPromise])).map(promise => promise.value);
+    return {
+      ...data,
+      tracks,
+      microlocations,
+      sessionTypes,
+      speakersCall,
+      customForms,
+      newSpeakerForm: {
+        name : '',
+        type : 'text'
+      },
+      newSessionForm: {
+        name : '',
+        type : 'text'
+      }
+    };
   }
-});
+}

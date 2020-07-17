@@ -2,7 +2,7 @@
   <div class="ui stackable inverted divided grid">
     <div class="four wide column">
       <div class="ui inverted link list">
-        <strong class="item">{{t 'Use'}} {{settings.appName}}</strong>
+        <strong class="item">{{t 'Use'}} {{this.settings.appName}}</strong>
         <a class="item" href="#" target="_blank" rel="noopener noreferrer">{{t 'Sitemap'}}</a>
         <a class="item" href="{{href-to 'attendee-app'}}" rel="noopener noreferrer">{{t 'Open Event App'}}</a>
         <a class="item" href="{{href-to 'organizer-app'}}" rel="noopener noreferrer">{{t 'Open Event Organizer App'}}</a>
@@ -11,7 +11,7 @@
     <div class="three wide column">
       <div class="ui inverted link list">
         <strong class="item">{{t 'Categories'}}</strong>
-        {{#each eventTypes as |event|}}
+        {{#each this.eventTypes as |event|}}
           <a class="item" href="{{concat '/explore?event_type=' event.name}}">{{event.name}}</a>
         {{/each}}
       </div>
@@ -19,7 +19,7 @@
     <div class="three wide column">
       <div class="ui inverted link list">
         <strong class="item">{{t 'Locations'}}</strong>
-        {{#each eventLocations as |place|}}
+        {{#each this.eventLocations as |place|}}
           <a class="item" href="{{concat '/explore/?location=' place.name}}">{{place.name}}</a>
         {{/each}}
       </div>
@@ -36,33 +36,33 @@
     <div class="three wide column">
       <div class="ui inverted link list">
         <strong class="item">{{t 'Connect with us'}}</strong>
-        {{#if socialLinks.supportUrl}}
-          <a class="item" href="{{socialLinks.supportUrl}}" target="_blank" rel="noopener noreferrer">
+        {{#if this.socialLinks.supportUrl}}
+          <a class="item" href="{{this.socialLinks.supportUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="info icon"></i> {{t 'Blog'}}
           </a>
         {{/if}}
-        {{#if socialLinks.facebookUrl}}
-          <a class="item" href="{{socialLinks.facebookUrl}}" target="_blank" rel="noopener noreferrer">
+        {{#if this.socialLinks.facebookUrl}}
+          <a class="item" href="{{this.socialLinks.facebookUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="facebook f icon"></i> {{t 'Facebook'}}
           </a>
         {{/if}}
-        {{#if socialLinks.twitterUrl}}
-          <a class="item" href="{{socialLinks.twitterUrl}}" target="_blank" rel="noopener noreferrer">
+        {{#if this.socialLinks.twitterUrl}}
+          <a class="item" href="{{this.socialLinks.twitterUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="twitter icon"></i> {{t 'Twitter'}}
           </a>
         {{/if}}
-        {{#if socialLinks.githubUrl}}
-          <a class="item" href="{{socialLinks.githubUrl}}" target="_blank" rel="noopener noreferrer">
+        {{#if this.socialLinks.githubUrl}}
+          <a class="item" href="{{this.socialLinks.githubUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="github icon"></i> {{t 'GitHub'}}
           </a>
         {{/if}}
-        {{#if socialLinks.youtubeUrl}}
-          <a class="item" href="{{socialLinks.youtubeUrl}}" target="_blank" rel="noopener noreferrer">
+        {{#if this.socialLinks.youtubeUrl}}
+          <a class="item" href="{{this.socialLinks.youtubeUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="youtube icon"></i> {{t 'YouTube'}}
           </a>
         {{/if}}
-        {{#if socialLinks.googleUrl}}
-          <a class="item" href="{{socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
+        {{#if this.socialLinks.googleUrl}}
+          <a class="item" href="{{this.socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="google plus icon"></i> {{t 'Google +'}}
           </a>
         {{/if}}
@@ -72,25 +72,25 @@
   <div class="ui inverted section divider"></div>
   <div class="ui stackable grid">
     <div class="thirteen wide computer twelve wide tablet column left aligned">
-      <div class="ui horizontal inverted small divided link list less top margin">
-        <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{settings.appName}} </span>
-        {{#each footerPages as |page|}}
-          {{#link-to 'pages' page.url class='item'}}
+      <div class="ui horizontal inverted small divided link list no top margin">
+        <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{this.settings.appName}} </span>
+        {{#each this.footerPages as |page|}}
+          <LinkTo @route="pages" @model={{page.url}} class="item">
             {{page.name}}
-          {{/link-to}}
+          </LinkTo>
         {{/each}}
       </div>
     </div>
     <div class="three wide computer four wide tablet column right aligned">
-      {{#ui-dropdown class='floating labeled grey search icon mini button' selected=currentLocale forceSelection=false onChange=(action 'switchLanguage')}}
+      <UiDropdown @class="floating labeled grey search icon mini button" @selected={{this.currentLocale}} @forceSelection={{false}} @onChange={{action "switchLanguage"}}>
         <i class="world icon"></i>
         <span class="text">English</span>
         <div class="ui language menu">
-          {{#each-in l10n.availableLocales as |key value|}}
+          {{#each-in this.l10n.availableLocales as |key value|}}
             <div class="item" data-value="{{key}}">{{value}}</div>
           {{/each-in}}
         </div>
-      {{/ui-dropdown}}
+      </UiDropdown>
     </div>
   </div>
 </div>

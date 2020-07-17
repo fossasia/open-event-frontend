@@ -1,16 +1,16 @@
 <div class="row">
   <div class="sixteen wide column">
-    {{#each model as |order|}}
-      {{#order-card order=order}}
-      {{/order-card}}
+    {{#each this.model as |order|}}
+      <OrderCard @order={{order}}>
+      </OrderCard>
       <div class="ui hidden divider"></div>
     {{else}}
       <div class="ui disabled header">{{t 'No tickets found'}}</div>
     {{/each}}
-    {{#infinity-loader infinityModel=model}}
+    <InfinityLoader @infinityModel={{this.model}}>
       <div class="ui loading very padded basic segment">
       </div>
-      {{infintyModel.reachedInfinity}}
-    {{/infinity-loader}}
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
   </div>
 </div>

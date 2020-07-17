@@ -1,8 +1,10 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { kebabCase } from 'lodash-es';
 
-export default class extends Component {
+@classic
+export default class Sort extends Component {
   @computed('sorts.@each.isAscending', 'sortDir')
   get sortIcon() {
     if (this.sorts && this.sorts[0] && this.sorts[0].valuePath === this.column.valuePath) {

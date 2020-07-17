@@ -1,9 +1,7 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
-import { computed } from '@ember/object';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  @computed()
   get columns() {
     let columns = [];
     if (this.model.params.invoice_status === 'upcoming') {

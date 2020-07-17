@@ -1,16 +1,21 @@
 <div class="sixteen column wide">
-  {{tables/default  columns=columns
-                    rows=model.data
-                    currentPage=page
-                    pageSize=per_page
-                    searchQuery=search
-                    sortBy=sort_by
-                    sortDir=sort_dir
-                    metaData=model.meta
-                    filterOptions=filterOptions
-                    widthConstraint="eq-container"
-                    resizeMode="fluid"
-                    fillMode="equal-column"
-  }}
-  {{modals/event-delete-modal isLoading=isLoading isOpen=isEventDeleteModalOpen confirmName=confirmName eventName=eventName deleteEvent=(action 'deleteEvent')}}
+  <Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.model.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.model.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
+  <Modals::EventDeleteModal
+    @isLoading={{this.isLoading}}
+    @isOpen={{this.isEventDeleteModalOpen}}
+    @confirmName={{this.confirmName}}
+    @eventName={{this.eventName}}
+    @deleteEvent={{action "deleteEvent"}} />
 </div>

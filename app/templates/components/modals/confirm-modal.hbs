@@ -1,16 +1,16 @@
 <div class="header">
-  {{if confirm.promptText confirm.promptText (t 'Are you sure ?')}}
+  {{if this.confirm.promptText this.confirm.promptText (t 'Are you sure ?')}}
 </div>
-{{#if confirm.options.extra}}
+{{#if this.confirm.options.extra}}
   <div class="content">
-    {{confirm.options.extra}}
+    {{this.confirm.options.extra}}
   </div>
 {{/if}}
 <div class="actions">
-  <button type="button" class="ui {{if confirm.options.denyText confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
-    {{if confirm.options.denyText confirm.options.denyText (t 'No')}}
+  <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
+    {{if this.confirm.options.denyText this.confirm.options.denyText (t 'No')}}
   </button>
-  <button type="button" class="ui {{if confirm.options.denyText confirm.options.approveColor 'green'}} button" {{action 'confirm'}}>
-    {{if confirm.options.approveText confirm.options.approveText (t 'Yes')}}
+  <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.approveColor 'green'}} button" {{action 'confirm'}}>
+    {{if this.confirm.options.approveText this.confirm.options.approveText (t 'Yes')}}
   </button>
 </div>

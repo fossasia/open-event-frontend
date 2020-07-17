@@ -1,64 +1,64 @@
 <div class="ui stackable grid">
   <div class="four wide column">
-    {{explore/side-bar model=model category=category sub_category=sub_category event_type=event_type startDate=start_date endDate=end_date location=location ticket_type=ticket_type cfs=cfs}}
+    <Explore::SideBar @model={{this.model}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
   </div>
   <div class="twelve wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
     <div class="ui labels">
-      {{#if filters.category}}
+      {{#if this.filters.category}}
         <div class="ui mini label">
-          {{filters.category}}
+          {{this.filters.category}}
           <a href="#" role="button" {{action 'clearFilter' 'category'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if filters.sub_category}}
+      {{#if this.filters.sub_category}}
         <div class="ui mini label">
-          {{filters.sub_category}}
+          {{this.filters.sub_category}}
           <a href="#" role="button" {{action 'clearFilter' 'sub_category'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if filters.event_type}}
+      {{#if this.filters.event_type}}
         <div class="ui mini label">
-          {{filters.event_type}}
+          {{this.filters.event_type}}
           <a href="#" role="button" {{action 'clearFilter' 'event_type'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if filters.start_date}}
+      {{#if this.filters.start_date}}
         <div class="ui mini label">
-          {{moment-format filters.start_date 'ddd, MMM DD'}}
+          {{moment-format this.filters.start_date 'ddd, MMM DD'}}
           <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if filters.end_date}}
+      {{#if this.filters.end_date}}
         <div class="ui mini label">
-          {{moment-format filters.end_date 'ddd, MMM DD'}}
+          {{moment-format this.filters.end_date 'ddd, MMM DD'}}
           <a href="#" role="button" {{action 'clearFilter' 'end_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if filters.ticket_type}}
+      {{#if this.filters.ticket_type}}
         <div class="ui mini label">
-          {{ticket_type}}
+          {{this.ticket_type}}
           <a href="#" role="button" {{action 'clearFilter' 'ticket_type'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if filters.cfs}}
+      {{#if this.filters.cfs}}
         <div class="ui mini label">
-          {{filters.cfs}}
+          {{this.filters.cfs}}
           <a href="#" role="button" {{action 'clearFilter' 'cfs'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
     </div>
-    {{#each filteredEvents as |event|}}
-      {{event-card event=event isWide=true filterByTags=true category=category subCategory=sub_category eventType=event_type shareEvent=(action 'shareEvent')}}
+    {{#each this.filteredEvents as |event|}}
+      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}} @category={{this.category}} @subCategory={{this.sub_category}} @eventType={{this.event_type}} @shareEvent={{action "shareEvent"}} />
       <div class="ui hidden divider"></div>
     {{else}}
       <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
     {{/each}}
-    {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
-    {{#infinity-loader infinityModel=filteredEvents}}
+    <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
+    <InfinityLoader @infinityModel={{this.filteredEvents}}>
       <div class="ui loading very padded basic segment">
       </div>
-      {{infintyModel.reachedInfinity}}
-    {{/infinity-loader}}
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
   </div>
 </div>

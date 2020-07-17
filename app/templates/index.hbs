@@ -1,43 +1,43 @@
 <div class="ui container">
-  {{quick-filter eventName=event_name startDate=start_date endDate=end_date location=location filterDate=filterDate}}
+  <QuickFilter @eventName={{this.event_name}} @startDate={{this.start_date}} @endDate={{this.end_date}} @location={{this.location}} @filterDate={{this.filterDate}} />
 
-  {{#if featuredEvents}}
+  {{#if this.featuredEvents}}
     <h2 class="main-heading">{{t 'Featured Events'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each featuredEvents as |event|}}
-        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{#each this.featuredEvents as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
     </div>
   {{/if}}
-  {{#if filteredEvents}}
+  {{#if this.filteredEvents}}
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each promotedEvents as |event|}}
-        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{#each this.promotedEvents as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
-      {{#each upcomingEvents as |event|}}
-        {{event-card event=event shareEvent=(action 'shareEvent')}}
+      {{#each this.upcomingEvents as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
     </div>
   {{else}}
     <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
   {{/if}}
-  {{#if callForSpeakersEvents}}
+  {{#if this.callForSpeakersEvents}}
     <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each callForSpeakersEvents as |event|}}
-        {{event-card event=event isCFS=true shareEvent=(action 'shareEvent')}}
+      {{#each this.callForSpeakersEvents as |event|}}
+        <EventCard @event={{event}} @isCFS={{true}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
     </div>
     <div class="ui hidden divider"></div>
-    {{#if (gt callForSpeakersEvents.length 3)}}
+    {{#if (gt this.callForSpeakersEvents.length 3)}}
       <div class="ui centered grid">
         <div class="row">
-          {{#link-to "explore" (query-params cfs='open') class='ui blue button'}}{{t 'Show more calls for speakers'}}{{/link-to}}
+          <LinkTo @route="explore" @query={{hash cfs='open'}} class="ui blue button">{{t 'Show more calls for speakers'}}</LinkTo>
         </div>
       </div>
     {{/if}}
   {{/if}}
 
-  {{modals/event-share-modal isOpen=isShareModalOpen event=eventToShare}}
+  <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
 </div>

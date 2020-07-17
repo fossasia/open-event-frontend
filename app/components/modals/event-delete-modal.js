@@ -1,10 +1,13 @@
-import { computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import classic from 'ember-classic-decorator';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend({
-  isSmall         : true,
-  confirmName     : '',
-  isNameDifferent : computed('confirmName', function() {
-    return this.eventName ? this.confirmName !== this.eventName : true;
-  })
-});
+@classic
+export default class EventDeleteModal extends ModalBase {
+  isSmall = true;
+  @tracked confirmName = '';
+
+  get isNameDifferent() {
+    return this.confirmName !== this.eventName;
+  }
+}

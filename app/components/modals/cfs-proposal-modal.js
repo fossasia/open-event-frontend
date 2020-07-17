@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
-export default ModalBase.extend({
-  actions: {
-    toggleView() {
-      this.set('isOpen', false);
-    }
+@classic
+export default class CfsProposalModal extends ModalBase {
+  @action
+  toggleView() {
+    this.set('isOpen', false);
   }
-});
+}

@@ -1,23 +1,47 @@
-{{#if addressViewIsShown}}
+{{#if this.addressViewIsShown}}
   <div class="ui two column grid stackable">
     <div class="column">
       <div class="field">
-        {{input type='text' name='address_vaue' value=address.venue placeholder=(t 'Venue Name')}}
+        <Input
+          @type="text"
+          @name="address_vaue"
+          @value={{this.address.venue}}
+          placeholder={{t "Venue Name"}} />
       </div>
       <div class="field">
-        {{input type='text' name='address_line' value=address.line placeholder=(t 'Street Address')}}
+        <Input
+          @type="text"
+          @name="address_line"
+          @value={{this.address.line}}
+          placeholder={{t "Street Address"}} />
       </div>
       <div class="field">
-        {{input type='text' name='address_city' value=address.city placeholder=(t 'City')}}
+        <Input
+          @type="text"
+          @name="address_city"
+          @value={{this.address.city}}
+          placeholder={{t "City"}} />
       </div>
       <div class="field">
-        {{input type='text' name='address_state' value=address.state placeholder=(t 'State')}}
+        <Input
+          @type="text"
+          @name="address_state"
+          @value={{this.address.state}}
+          placeholder={{t "State"}} />
       </div>
       <div class="field">
-        {{input type='text' name='address_zip_code' value=address.zipCode placeholder=(t 'Zip Code')}}
+        <Input
+          @type="text"
+          @name="address_zip_code"
+          @value={{this.address.zipCode}}
+          placeholder={{t "Zip Code"}} />
       </div>
       <div class="field">
-        {{input type='text' name='address_country' value=address.country placeholder=(t 'Country')}}
+        <Input
+          @type="text"
+          @name="address_country"
+          @value={{this.address.country}}
+          placeholder={{t "Country"}} />
       </div>
       <div class="ui two column grid">
         <div class="left floated column">
@@ -29,23 +53,28 @@
       </div>
     </div>
     <div class="column">
-      {{#g-map lat=lat lng=lng zoom=zoom class='google-maps' address=combinedAddress as |context|}}
-        {{g-map-address-marker context address=combinedAddress onLocationChange=(action 'onLocationChangeHandler')}}
-      {{/g-map}}
+      <GMap
+        @lat={{this.lat}}
+        @lng={{this.lng}}
+        @zoom={{this.zoom}}
+        @class="google-maps"
+        @address={{this.combinedAddress}} as |context|>
+        {{g-map-address-marker context address=this.combinedAddress onLocationChange=(action 'onLocationChangeHandler')}}
+      </GMap>
     </div>
   </div>
 {{else}}
   <div class="ui action input">
-    {{widgets/forms/places-autocomplete
-      id=inputId
-      name=name
-      value=placeName
-      placeChangedCallback=(action 'placeChanged')
-      type='text'
-      placeholder=placeholder}}
-    <button class="ui left {{unless device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>
-      <i class="marker icon"></i>
-      {{unless device.isMobile (t 'Enter address')}}
+    <Widgets::Forms::PlacesAutocomplete
+      @id={{this.inputId}}
+      @name={{name}}
+      @value={{this.placeName}}
+      @placeChangedCallback={{action "placeChanged"}}
+      @type="text"
+      @placeholder={{this.placeholder}} />
+    <button class="ui left {{unless this.device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>
+      <i class="icon map marker alternate"></i>
+      {{unless this.device.isMobile (t 'Enter address')}}
     </button>
   </div>
 {{/if}}

@@ -8,6 +8,7 @@ export default ModelBase.extend({
   fieldIdentifier : attr('string'),
   form            : attr('string'),
   type            : attr('string', { defaultValue: 'text' }),
+  name            : attr('string'),
   isRequired      : attr('boolean', { defaultValue: false }),
   isIncluded      : attr('boolean', { defaultValue: false }),
   isFixed         : attr('boolean', { defaultValue: false }),
@@ -83,18 +84,14 @@ export default ModelBase.extend({
     ageGroup        : 'Age Group'
   },
 
-  name: computed('fieldIdentifier', 'form', function() {
-    let name = this.fieldIdentifier;
-    if (!this.isComplex) {
-      if (this.form === 'session') {
-        name = this.get(`session.${name}`);
-      } else if (this.form === 'speaker') {
-        name = this.get(`speaker.${name}`);
-      } else {
-        name = this.get(`attendee.${name}`);
-      }
+  ready() {
+    if (!this.name) {
+      this.name = this[this.form][this.fieldIdentifier];
     }
-    return name;
+  },
+
+  identifierPath: computed('isComplex', function() {
+    return !this.isComplex ? this.fieldIdentifier : 'complexFieldValues.' + this.fieldIdentifier;
   }),
 
   isLongText: computed('type', function() {

@@ -1,11 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-
+@classic
+export default class NewRoute extends Route {
   titleToken(model) {
     let order = model.order.get('identifier');
     return this.l10n.t(`New Order -${order}`);
-  },
+  }
 
   async model(params) {
     const order = await this.store.findRecord('order', params.order_id, {
@@ -33,11 +34,18 @@ export default Route.extend({
       event : eventDetails,
       tickets,
       form  : await eventDetails.query('customForms', {
-        'page[size]' : 50,
+        filter: [
+          {
+            name : 'form',
+            op   : 'eq',
+            val  : 'attendee'
+          }
+        ],
+        'page[size]' : 0,
         sort         : 'id'
       })
     };
-  },
+  }
 
   afterModel(model) {
     if (model.order.get('status') === 'expired') {
@@ -48,4 +56,4 @@ export default Route.extend({
       this.transitionTo('orders.pending', model.order.get('identifier'));
     }
   }
-});
+}

@@ -1,17 +1,19 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class ExpiredRoute extends Route {
   titleToken(model) {
     let order = model.get('identifier');
     return this.l10n.t(`Expired Order -${order}`);
-  },
+  }
 
   model(params) {
     return this.store.findRecord('order', params.order_id, {
       include : 'event',
       reload  : true
     });
-  },
+  }
 
   afterModel(model) {
     if (model.get('status') === 'initializing') {
@@ -22,4 +24,4 @@ export default Route.extend({
       this.transitionTo('orders.pending', model.get('identifier'));
     }
   }
-});
+}

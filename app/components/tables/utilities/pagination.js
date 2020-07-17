@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { computed, action, get } from '@ember/object';
 
-export default class extends Component {
+@classic
+export default class Pagination extends Component {
 
 
   metaItemsCountProperty = 'count';

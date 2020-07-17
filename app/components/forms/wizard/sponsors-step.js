@@ -31,12 +31,12 @@ export default Component.extend(FormMixin, {
   },
 
   sponsors: computed('data.sponsors.@each.isDeleted', function() {
-    return this.get('data.sponsors').filterBy('isDeleted', false);
+    return this.data.sponsors.filterBy('isDeleted', false);
   }),
 
   actions: {
     addSponsor() {
-      let sponsors = this.get('data.sponsors');
+      let { sponsors } = this.data;
       let incorrect_sponsors = sponsors.filter(function(sponsor) {
         return (!sponsor.get('name'));
       });
@@ -46,7 +46,7 @@ export default Component.extend(FormMixin, {
         });
         this.set('isLoading', false);
       } else {
-        this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
+        this.data.sponsors.addObject(this.store.createRecord('sponsor'));
       }
     },
     removeSponsor(sponsor) {
@@ -54,7 +54,7 @@ export default Component.extend(FormMixin, {
     },
     saveDraft() {
       this.onValid(() => {
-        let sponsors = this.get('data.sponsors');
+        let { sponsors } = this.data;
         let incorrect_sponsors = sponsors.filter(function(sponsor) {
           return (!sponsor.get('name'));
         });
@@ -83,8 +83,8 @@ export default Component.extend(FormMixin, {
   },
 
   didInsertElement() {
-    if (this.get('data.sponsors') && !this.get('data.sponsors.length')) {
-      this.get('data.sponsors').addObject(this.store.createRecord('sponsor'));
+    if (this.data.sponsors && !this.data.sponsors.length) {
+      this.data.sponsors.addObject(this.store.createRecord('sponsor'));
     }
   }
 });

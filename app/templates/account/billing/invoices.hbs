@@ -1,20 +1,20 @@
 <div class="ui grid stackable">
   <div class="row">
     <div class="eight wide column">
-      {{#tabbed-navigation isNonPointing=true}}
-        {{#link-to 'account.billing.invoices.list' 'all' class='item'}}
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="account.billing.invoices.list" @model="all" class="item">
           {{t 'All'}}
-        {{/link-to}}
-        {{#link-to 'account.billing.invoices.list' 'due' class='item'}}
+        </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="due" class="item">
           {{t 'Due'}}
-        {{/link-to}}
-        {{#link-to 'account.billing.invoices.list' 'paid' class='item'}}
+        </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="paid" class="item">
           {{t 'Paid'}}
-        {{/link-to}}
-        {{#link-to 'account.billing.invoices.list' 'upcoming' class='item'}}
+        </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="upcoming" class="item">
           {{t 'Upcoming'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   <div class="row">

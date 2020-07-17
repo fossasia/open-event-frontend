@@ -13,9 +13,14 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     storeConfigInMeta : true,
-    autoprefixer      : {
-      browsers : targets.browsers,
-      cascade  : false
+    sassOptions       : {
+      sourceMapEmbed: true
+    },
+    autoprefixer: {
+      overrideBrowserslist : targets.browsers,
+      enabled              : true,
+      cascade              : false,
+      sourcemap            : true
     },
     minifyHTML: {
       enabled   : false,
@@ -38,38 +43,45 @@ module.exports = function(defaults) {
     sourcemaps: {
       enabled: true
     },
+    SemanticUI: {
+      source: {
+        css        : 'node_modules/@open-event/theme/dist',
+        javascript : 'node_modules/@open-event/theme/dist',
+        images     : 'node_modules/@open-event/theme/dist/themes/default/assets/images',
+        fonts      : 'node_modules/@open-event/theme/dist/themes/default/assets/fonts'
+      }
+    },
     autoImport: {
       webpack: {
-        node: {
-          path: true // TODO: Remove after https://github.com/fossasia/open-event-frontend/issues/3956
-        },
-        plugins: env === 'production' ? [
+        externals : { jquery: 'jQuery' },
+        plugins   : process.env.ANALYE_BUNDLE === 'true' ? [
           new BundleAnalyzerPlugin({
             analyzerMode      : 'static',
             openAnalyzer      : false,
             generateStatsFile : true
           })
-        ] : []
+        ] : [],
+        module: {
+          rules: [
+            {
+              test : /\.css$/i,
+              use  : ['style-loader', 'css-loader']
+            }
+          ]
+        }
       }
     }
   });
 
-  app.import('bower_components/semantic-ui-calendar/dist/calendar.min.css');
-  app.import('bower_components/Croppie/croppie.css');
+  app.import('node_modules/semantic-ui-calendar/dist/calendar.min.css');
 
-  app.import('bower_components/semantic-ui-calendar/dist/calendar.min.js', {
+  app.import('node_modules/semantic-ui-calendar/dist/calendar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/wysihtml/dist/wysihtml-toolbar.min.js', {
+  app.import('node_modules/wysihtml/dist/wysihtml-toolbar.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
-  app.import('bower_components/Croppie/croppie.min.js', {
-    using: [{ transformation: 'fastbootShim' }]
-  });
-  app.import('bower_components/tinyColorPicker/jqColorPicker.min.js', {
-    using: [{ transformation: 'fastbootShim' }]
-  });
-  app.import('bower_components/js-polyfills/xhr.js', {
+  app.import('node_modules/tinyColorPicker/jqColorPicker.min.js', {
     using: [{ transformation: 'fastbootShim' }]
   });
   app.import('vendor/jquery-ui.min.js', {

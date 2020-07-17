@@ -11,11 +11,11 @@
       </tr>
       <tr>
         <td>{{t 'No. of orders'}}</td>
-        <td>{{orders}}</td>
+        <td>{{this.orders}}</td>
       </tr>
       <tr>
         <td>{{t 'Sales (amount)'}}</td>
-        <td>{{currency-symbol data.event.paymentCurrency}} {{format-number sales}}</td>
+        <td>{{currency-symbol this.data.event.paymentCurrency}} {{format-money this.sales}}</td>
       </tr>
     </tbody>
   </table>
@@ -30,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each data.tickets as |ticket|}}
+      {{#each this.data.tickets as |ticket|}}
         <tr>
           <td>{{ticket.name}}</td>
           <td>{{add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed}}</td>

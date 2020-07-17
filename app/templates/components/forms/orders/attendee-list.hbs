@@ -8,13 +8,13 @@
         <i class="ticket icon"></i>
         {{t 'Ticket Holder\'s Information'}}
       </h4>
-      {{#each holders as |holder|}}
+      {{#each this.holders as |holder|}}
         <div class="field">
           <div class="inline field">
             <i class="user icon"></i>
             <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
           </div>
-          {{# each allFields.attendee as |field|}}
+          {{# each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
               <div class="field">
                 <h4 class="weight-300">
@@ -25,13 +25,16 @@
                 {{else if (eq field.type 'select')}}
                   <span>{{get holder field.fieldIdentifier}}</span>
                 {{/if}}
+                {{#if field.isComplex}}
+                  <span>{{get holder.complexFieldValues field.fieldIdentifier}}</span>
+                {{/if}}
               </div>
             {{/if}}
           {{/each}}
           <div class="ui divider"></div>
         </div>
       {{/each}}
-      {{#if showBillingInfo}}
+      {{#if this.showBillingInfo}}
         <div class="print">
           <h4 class="ui horizontal divider header">
             <i class='ticket icon'></i>
@@ -43,11 +46,11 @@
                 <h4 class="weight-300">
                   {{t 'Company '}}
                 </h4>
-                <p>{{data.company}}</p>
+                <p>{{this.data.company}}</p>
                 <h4 class="weight-300">
                   {{t 'Tax ID or Business ID'}}
                 </h4>
-                <p> {{data.taxBusinessInfo}}</p>
+                <p> {{this.data.taxBusinessInfo}}</p>
               </div>
 
               <div class="column">
@@ -56,19 +59,19 @@
                 </h4>
                 <div class="ui list">
                   <div class="item">
-                    {{data.address}}
+                    {{this.data.address}}
                   </div>
                   <div class="item">
-                    {{data.city}}
+                    {{this.data.city}}
                   </div>
                   <div class="item">
-                    {{data.state}}
+                    {{this.data.state}}
                   </div>
                   <div class="item">
-                    {{data.country}}
+                    {{this.data.country}}
                   </div>
                   <div class="item">
-                    {{data.zipcode}}
+                    {{this.data.zipcode}}
                   </div>
                 </div>
               </div>

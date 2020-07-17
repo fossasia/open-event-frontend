@@ -1,6 +1,8 @@
+import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
+@classic
+export default class CallbackController extends Controller {
   oauth(queryParams) {
     this.loader.post(`/auth/oauth/login/${ queryParams.provider }?code=${ queryParams.code }`)
       .then(response => {
@@ -40,4 +42,4 @@ export default Controller.extend({
           });
       });
   }
-});
+}

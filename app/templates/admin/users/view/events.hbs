@@ -1,20 +1,20 @@
 <div class="ui container">
   <div class="row">
     <div class="sixteen wide column">
-      {{#tabbed-navigation}}
-        {{#link-to 'admin.users.view.events.list' 'live' class='item'}}
+      <TabbedNavigation>
+        <LinkTo @route="admin.users.view.events.list" @model="live" class="item">
           {{t 'Live'}}
-        {{/link-to}}
-        {{#link-to 'admin.users.view.events.list' 'draft' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.events.list" @model="draft" class="item">
           {{t 'Draft'}}
-        {{/link-to}}
-        {{#link-to 'admin.users.view.events.list' 'past' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.events.list" @model="past" class="item">
           {{t 'Past'}}
-        {{/link-to}}
-        {{#link-to 'admin.users.view.events.list' 'deleted' class='item'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.events.list" @model="deleted" class="item">
           {{t 'Deleted'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   {{outlet}}

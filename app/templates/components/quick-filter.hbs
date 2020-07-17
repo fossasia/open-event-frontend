@@ -1,15 +1,26 @@
-<div class="ui {{unless device.isMobile 'action'}} input fluid">
-  {{input type='text' key-up=(action 'handleKeyPress' ) placeholder=(t 'Search for events') value=dummyName}}
-  {{#unless device.isMobile }}
+<div class="ui {{unless this.device.isMobile 'action'}} input fluid">
+  <Input
+    @type="text"
+    @key-up={{action "handleKeyPress"}}
+    placeholder={{t "Search for events"}}
+    @value={{this.dummyName}} />
+  {{#unless this.device.isMobile }}
     <div class="ui input">
-      {{widgets/forms/places-autocomplete
-        name='location'
-        value=dummyLocation
-        type='text'
-        placeholder=(t 'Enter Location')}}
+      <Widgets::Forms::PlacesAutocomplete
+        class="rounded-none"
+        @name="location"
+        @value={{this.dummyLocation}}
+        @type="text"
+        @placeholder={{t "Enter Location"}} />
     </div>
-    {{#ui-dropdown class='search selection' selected=filterDate forceSelection=false}}
-      {{input type='hidden' id='filter_date' value=filterDate}}
+    <UiDropdown
+      @class="search selection"
+      @selected={{this.filterDate}}
+      @forceSelection={{false}}>
+      <Input
+        @type="hidden"
+        @id="filter_date"
+        @value={{this.filterDate}} />
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'All Dates'}}</div>
       <div class="menu">
@@ -21,14 +32,14 @@
         <div class="item" data-value="next_week">{{t 'Next Week'}}</div>
         <div class="item" data-value="this_month">{{t 'This Month'}}</div>
       </div>
-    {{/ui-dropdown}}
+    </UiDropdown>
     <button class="ui blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
-    <button class="ui red button medium {{if disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
+    <button class="ui red button medium {{if this.disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
   {{/unless}}
 </div>
-{{#if device.isMobile}}
+{{#if this.device.isMobile}}
   <div class="two ui buttons">
     <button class="ui blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
-    <button class="ui red button medium {{if disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
+    <button class="ui red button medium {{if this.disableClear 'disabled'}}" type="button" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
   </div>
 {{/if}}

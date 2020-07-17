@@ -3,7 +3,8 @@ module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2017,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: { legacyDecorators: true },
   },
   plugins: [
     'ember',
@@ -14,6 +15,7 @@ module.exports = {
     'plugin:ember-suave/recommended'
   ],
   env: {
+    es6: true,
     browser: true
   },
   rules: {
@@ -62,7 +64,7 @@ module.exports = {
     ],
     'max-len': 'off',
     'no-console': ["error", { allow: ["warn", "error"] }],
-    'prefer-template': 'error',
+    'prefer-template': 'off',
     'camelcase': 'off',
     'new-cap': 'off',
     'eqeqeq': ['error', 'smart'],

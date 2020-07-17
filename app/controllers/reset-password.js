@@ -1,6 +1,8 @@
+import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  queryParams : ['token'],
-  token       : null
-});
+@classic
+export default class ResetPasswordController extends Controller {
+  queryParams = ['token'];
+  token = null;
+}

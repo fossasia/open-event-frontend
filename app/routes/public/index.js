@@ -1,51 +1,62 @@
+import classic from 'ember-classic-decorator';
+import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 import { set } from '@ember/object';
-import { inject as service } from '@ember/service';
 import ENV from 'open-event-frontend/config/environment';
+import { allSettled } from 'rsvp';
 
-export default Route.extend({
-  headData: service(),
+@classic
+export default class IndexRoute extends Route {
+  @service
+  headData;
+
   async model() {
-    const eventDetails = this.modelFor('public');
+    const event = this.modelFor('public');
+    const ticketsPromise = event.query('tickets', {
+      filter: [
+        {
+          and: [
+            {
+              name : 'sales-starts-at',
+              op   : 'le',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'sales-ends-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            }
+          ]
+        }
+      ]
+    });
+    const featuredSpeakersPromise = event.query('speakers', {
+      filter: [
+        {
+          name : 'is-featured',
+          op   : 'eq',
+          val  : 'true'
+        }
+      ],
+      'page[size]': 0
+    });
+    const sponsorsPromise = event.get('sponsors');
+    const taxPromise = event.get('tax');
+
+    const [tickets, featuredSpeakers, sponsors, tax] = (await allSettled([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]))
+      .map(result => result.value);
+
     return {
-      event   : eventDetails,
-      tickets : await eventDetails.query('tickets', {
-        reload: true,
+      event,
+      tickets,
+      featuredSpeakers,
 
-        filter: [
-          {
-            and: [
-              {
-                name : 'sales-starts-at',
-                op   : 'le',
-                val  : moment().toISOString()
-              },
-              {
-                name : 'sales-ends-at',
-                op   : 'ge',
-                val  : moment().toISOString()
-              }
-            ]
-          }
-        ]
-      }),
-      featuredSpeakers: await eventDetails.query('speakers', {
-        filter: [
-          {
-            name : 'is-featured',
-            op   : 'eq',
-            val  : 'true'
-          }
-        ],
-        'page[size]': 0
-      }),
-
-      sponsors : await eventDetails.get('sponsors'),
-      tax      : await eventDetails.get('tax'),
-      order    : this.store.createRecord('order', {
-        event   : eventDetails,
-        user    : this.get('authManager.currentUser'),
+      sponsors,
+      tax,
+      order: this.store.createRecord('order', {
+        event,
+        user    : this.authManager.currentUser,
         tickets : []
       }),
 
@@ -53,15 +64,17 @@ export default Route.extend({
 
       mapConfig: ENV.APP.mapConfig
     };
-  },
+  }
+
   afterModel(model) {
     set(this, 'headData.description', model.event.description);
-  },
+  }
+
   resetController(controller) {
-    this._super(...arguments);
-    const model = controller.get('model.order');
+    super.resetController(...arguments);
+    const model = controller.model.order;
     if (!model.id) {
       model.unloadRecord();
     }
   }
-});
+}

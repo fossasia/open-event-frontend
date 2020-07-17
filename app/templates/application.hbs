@@ -1,29 +1,29 @@
-{{head-layout}}
+<HeadLayout />
 <div id='device-type-identifier'></div>
-{{#if showCookie}}
+{{#if this.showCookie}}
   <div class="ui inline warning large message">
-    <i class="close icon" onclick={{action (mut showCookie) false}} role="button"></i>
-    {{model.cookiePolicy}}
-    {{#if model.cookiePolicyLink}}
-      <p><a href="{{model.cookiePolicyLink}}">Click here For more information</a></p>
+    <i class="close icon" onclick={{action (mut this.showCookie) false}} role="button"></i>
+    {{this.model.cookiePolicy}}
+    {{#if this.model.cookiePolicyLink}}
+      <p><a href="{{this.model.cookiePolicyLink}}">Click here For more information</a></p>
     {{/if}}
   </div>
 {{/if}}
-{{#side-bar}}
+<SideBar>
   <div class="footer-pusher">
-    {{nav-bar unreadNotifications=unreadNotifications}}
-    {{#if (eq routing.currentRouteName 'index')}}
-      {{welcome-header}}
+    <NavBar @unreadNotifications={{this.unreadNotifications}} />
+    {{#if (eq this.routing.currentRouteName 'index')}}
+      <WelcomeHeader />
     {{/if}}
     <div id="main-container"
-         class="ui fluid container main-container {{unless device.isInternetExplorer 'flexed-container' ''}}">
+         class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
 
     
-    {{footer-main eventTypes=model.eventTypes eventLocations=model.eventLocations socialLinks=model.socialLinks footerPages=footerPages}}
+    <FooterMain @eventTypes={{this.model.eventTypes}} @eventLocations={{this.model.eventLocations}} @socialLinks={{this.model.socialLinks}} @footerPages={{this.footerPages}} />
 
   </div>
-{{/side-bar}}
-{{modals/confirm-modal isOpen=confirm.isOpen}}
-{{ember-notify messageStyle='semantic-ui' classPrefix='notification-container'}}
+</SideBar>
+<Modals::ConfirmModal @isOpen={{this.confirm.isOpen}} />
+<EmberNotify @messageStyle="semantic-ui" @defaultClass="notification-container" />

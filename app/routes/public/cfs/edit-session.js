@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class EditSessionRoute extends Route {
   titleToken() {
     return this.l10n.t('Edit Session');
-  },
+  }
 
   async model(params) {
     const eventDetails = this.modelFor('public');
@@ -20,4 +22,4 @@ export default Route.extend({
       sessionTypes : await eventDetails.query('sessionTypes', {})
     };
   }
-});
+}

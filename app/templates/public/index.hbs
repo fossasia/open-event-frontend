@@ -1,69 +1,76 @@
 <div class="event">
-  {{#if model.event.description}}
+  {{#if this.model.event.description}}
     <div class="description" id="info">
-      {{sanitize model.event.description}}
+      {{sanitize this.model.event.description}}
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if (or model.event.ticketUrl model.tickets)}}
+  {{#if (or this.model.event.ticketUrl this.model.tickets)}}
     <div class="tickets" id="tickets">
       <div class="ui segments ticket-list">
         <div class="ui segment">
           <h3 class="ui header">{{t 'Tickets'}}</h3>
         </div>
         <div class="ui segment">
-          {{public/ticket-list eventCurrency=model.event.paymentCurrency
-                               ticketUrl=model.event.ticketUrl
-                               data=model.tickets
-                               order=model.order
-                               event=model.event
-                               attendees=model.attendees
-                               code=code
-                               taxInfo=model.tax
-                               currentEventIdentifier=model.event.identifier
-                               createNewUserViaEmail=(action 'createNewUserViaEmail')
-                               loginExistingUser=(action 'loginExistingUser')
-                               isLoginModalOpen=isLoginModalOpen
-                               placeOrder=(action 'placeOrder')
-                               isLoading=isLoading
-                               userExists=userExists
-                               errorMessage=errorMessage
-                               save='save'}}
+          <Public::TicketList
+            @eventCurrency={{this.model.event.paymentCurrency}}
+            @ticketUrl={{this.model.event.ticketUrl}}
+            @data={{this.model.tickets}}
+            @order={{this.model.order}}
+            @event={{this.model.event}}
+            @attendees={{this.model.attendees}}
+            @code={{code}}
+            @taxInfo={{this.model.tax}}
+            @currentEventIdentifier={{this.model.event.identifier}}
+            @createNewUserViaEmail={{action "createNewUserViaEmail"}}
+            @loginExistingUser={{action "loginExistingUser"}}
+            @isLoginModalOpen={{this.isLoginModalOpen}}
+            @placeOrder={{action "placeOrder"}}
+            @isLoading={{this.isLoading}}
+            @userExists={{this.userExists}}
+            @errorMessage={{this.errorMessage}}
+            @save="save" />
         </div>
+        <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if model.featuredSpeakers}}
+  {{#if this.model.featuredSpeakers}}
     <div class="featured-speakers" id="speakers">
       <div class="row">
-        {{public/featured-speaker-list speakers=model.featuredSpeakers}}
+        <Public::FeaturedSpeakerList
+          @speakers={{this.model.featuredSpeakers}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if model.sponsors}}
+  {{#if this.model.sponsors}}
     <div class="sponsors">
       <div class="row">
-        {{public/sponsor-list sponsors=model.sponsors}}
+        <Public::SponsorList
+          @sponsors={{this.model.sponsors}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if model.event.hasOwnerInfo}}
+  {{#if this.model.event.hasOwnerInfo}}
     <h2 class="ui header" id="owner">
-      {{t 'Organized  by'}} {{model.event.ownerName}}
+      {{t 'Organized  by'}} {{this.model.event.ownerName}}
     </h2>
-    {{sanitize model.event.ownerDescription}}
+    {{sanitize this.model.event.ownerDescription}}
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="location" id="getting-here">
-    {{public/event-map event=model.event mapConfig=model.mapConfig}}
+    <Public::EventMap
+      @event={{this.model.event}}
+      @mapConfig={{this.model.mapConfig}} />
   </div>
   <div class="ui hidden divider"></div>
-  {{#if model.event.copyright}}
+  {{#if this.model.event.copyright}}
     <div class="copyright">
-      {{public/copyright-item copyright=model.event.copyright}}
+      <Public::CopyrightItem
+        @copyright={{this.model.event.copyright}} />
     </div>
   {{/if}}
 </div>

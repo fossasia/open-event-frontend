@@ -13,7 +13,8 @@ export default class extends Controller {
             id: 'setting_analytic_save'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while saving analytics settings', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'),
           {
             id: 'setting_analytic_error'

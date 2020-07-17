@@ -13,7 +13,8 @@ export default class extends Controller {
             id: 'setting_change'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while saving module settings', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred. Settings not saved.'),
           {
             id: 'setting_not_change'

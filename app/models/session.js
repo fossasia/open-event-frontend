@@ -57,7 +57,12 @@ export default ModelBase.extend({
   segmentedLinkSlidesUrl : computedSegmentedLink.bind(this)('slidesUrl'),
   segmentedLinkAudioUrl  : computedSegmentedLink.bind(this)('audioUrl'),
   segmentedLinkVideoUrl  : computedSegmentedLink.bind(this)('videoUrl'),
-  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl')
+  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl'),
 
+  ready() {
+    if (!this.complexFieldValues) {
+      this.complexFieldValues = {};
+    }
+  }
 
 });

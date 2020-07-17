@@ -14,7 +14,7 @@ export default Component.extend(FormMixin, {
   newSessionSelected : false,
 
   getValidationRules() {
-    return {
+    const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
@@ -484,6 +484,24 @@ export default Component.extend(FormMixin, {
         }
       }
     };
+
+    const addCustomFieldRules = form => {
+      this.allFields[form].filter(field => field.isComplex && field.isRequired).forEach(field => {
+        validationRules.fields[`${form}_${field.fieldIdentifier}_required`] = {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter ' + field.name)
+            }
+          ]
+        };
+      });
+    };
+
+    addCustomFieldRules('speaker');
+    addCustomFieldRules('session');
+
+    return validationRules;
   },
 
   countries: orderBy(countries, 'name'),
@@ -533,12 +551,12 @@ export default Component.extend(FormMixin, {
     }
   },
   didInsertElement() {
-    if (this.isSpeaker && this.get('data.speaker') && this.get('data.speaker').length) {
-      this.set('data.speaker', this.get('data.speaker').toArray()[0]);
+    if (this.isSpeaker && this.data.speaker && this.data.speaker.length) {
+      this.set('data.speaker', this.data.speaker.toArray()[0]);
     }
 
-    if (this.isSession && this.get('data.session') && this.get('data.session').length) {
-      this.set('data.session', this.get('data.session').toArray()[0]);
+    if (this.isSession && this.data.session && this.data.session.length) {
+      this.set('data.session', this.data.session.toArray()[0]);
     }
   }
 });

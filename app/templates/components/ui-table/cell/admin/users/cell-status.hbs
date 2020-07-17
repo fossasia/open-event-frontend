@@ -1,6 +1,6 @@
-{{#if (eq record 'active')}}
+{{#if (eq this.record 'active')}}
   <div class="ui green label">{{t 'Active'}}</div>
-{{else if (eq record 'inactive')}}
+{{else if (eq this.record 'inactive')}}
   <div class="ui yellow label">{{t 'Inactive'}}</div>
 {{else}}
   <div class="ui red label">{{t 'Deleted'}}</div>

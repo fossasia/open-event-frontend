@@ -11,7 +11,7 @@
     {{t 'Open Event Attendee App'}}
   </h1>
   <div class="ui grid">
-    {{#if device.isMobile}}
+    {{#if this.device.isMobile}}
       <div class="eight wide column">
         <a class="store" href='https://play.google.com/store/apps/details?id=com.eventyay.attendee'><img alt='Get it on Google Play' src='/images/google-play.png' height="50"></a>
       </div>
@@ -31,7 +31,7 @@
       </div>
     {{/if}}
   </div>
-  {{#if device.isMobile}}
+  {{#if this.device.isMobile}}
     <img class="ui fluid image" src="images/android-img.jpg" alt="{{t 'Android Attendee App'}}">
   {{else}}
     <div class="ui grid">
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="eight wide column">
-        <img class="ui fluid image" src="/images/android-img.jpg" alt="Android Pic">
+        <img class="ui medium image" src="/images/android-img.jpg" alt="Android Pic">
       </div>
     </div>
   {{/if}}

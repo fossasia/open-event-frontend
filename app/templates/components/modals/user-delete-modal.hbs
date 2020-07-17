@@ -5,12 +5,12 @@
   </div>
 </div>
 <div class="content">
-  <div class="ui {{if isLoading 'loading'}} form" autocomplete="off">
+  <div class="ui {{if this.isLoading 'loading'}} form" autocomplete="off">
     <div class="field">
       <div class="label">
         {{t 'Please enter your Email ID to confirm that you want to delete the account'}}
       </div>
-      {{input type='text' name='confirm_email' value=confirmEmail required=true}}
+      <Input @type="text" @name="confirm_email" @value={{this.confirmEmail}} required={{true}} />
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
   <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  <button {{action openConfirmDeleteUserModal}} class="ui red button {{if isEmailDifferent 'disabled'}}">
+  <button {{action this.openConfirmDeleteUserModal}} class="ui red button {{if this.isEmailDifferent 'disabled'}}">
     {{t 'Proceed'}}
   </button>
 </div>

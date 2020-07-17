@@ -1,4 +1,3 @@
-import l10nTestHelper from 'ember-l10n/test-helpers';
 import RoutingServiceStub from 'open-event-frontend/tests/helpers/stubs/services/-routing';
 import L10n from 'ember-l10n/services/l10n';
 import { setupRenderingTest } from 'ember-qunit';
@@ -9,7 +8,6 @@ export function setupIntegrationTest(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(async function() {
-    l10nTestHelper(this.owner);
     this.owner.lookup('router:main').setupRouter();
     this.owner.register('service:routing', RoutingServiceStub);
     set(this, 'routing', this.owner.lookup('service:routing'));

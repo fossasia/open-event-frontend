@@ -23,15 +23,15 @@ export default Component.extend(FormMixin, {
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
   holders           : computed('data.attendees', function() {
-    this.get('data.attendees').forEach(attendee => {
+    this.data.attendees.forEach(attendee => {
       attendee.set('firstname', '');
       attendee.set('lastname', '');
       attendee.set('email', '');
     });
-    return this.get('data.attendees');
+    return this.data.attendees;
   }),
   isPaidOrder: computed('data', function() {
-    if (!this.get('data.amount')) {
+    if (!this.data.amount) {
       this.data.set('paymentMode', 'free');
       return false;
     }
@@ -44,9 +44,9 @@ export default Component.extend(FormMixin, {
   }),
 
   getRemainingTime: computed('settings', function() {
-    let orderExpiryTime = this.get('settings.orderExpiryTime');
-    let willExpireAt = this.get('data.createdAt').add(orderExpiryTime, 'minutes');
-    this.timer(willExpireAt, this.get('data.identifier'));
+    let { orderExpiryTime } = this.settings;
+    let willExpireAt = this.data.createdAt.add(orderExpiryTime, 'minutes');
+    this.timer(willExpireAt, this.data.identifier);
   }),
 
   timer(willExpireAt, orderIdentifier) {
@@ -202,7 +202,8 @@ export default Component.extend(FormMixin, {
     };
 
     let companyValidation = {
-      rules: [
+      identifier : 'company',
+      rules      : [
         {
           type   : 'empty',
           prompt : this.l10n.t('Please enter your company')
@@ -470,6 +471,17 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`facebook_required_${  index}`] = facebookRequiredValidation;
       validationRules.fields[`github_${  index}`] = githubValidation;
       validationRules.fields[`github_required_${  index}`] = githubRequiredValidation;
+      this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
+        validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter ' + field.name)
+            }
+          ]
+        };
+      });
+
     });
     return validationRules;
   },
@@ -485,7 +497,7 @@ export default Component.extend(FormMixin, {
   actions: {
     submit(data) {
       this.onValid(() => {
-        let currentUser = this.get('data.user');
+        let currentUser = this.data.user;
         currentUser.set('firstName', this.buyerFirstName);
         currentUser.set('lastName', this.buyerLastName);
         this.sendAction('save', data);

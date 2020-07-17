@@ -1,45 +1,39 @@
-<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
   <div class="field">
     <label>{{t 'Blog'}}</label>
-    {{widgets/forms/link-input
-      segmentedLink=socials.segmentedSupportUrl
-      inputId='support'
-    }}
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedSupportUrl}}
+      @inputId="support" />
   </div>
   <div class="field">
     <label>{{t 'Twitter'}}</label>
-    {{widgets/forms/link-input
-      segmentedLink=socials.segmentedTwitterUrl
-      inputId='twitter'
-    }}
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedTwitterUrl}}
+      @inputId="twitter" />
   </div>
   <div class="field">
     <label>{{t 'Facebook'}}</label>
-    {{widgets/forms/link-input
-      segmentedLink=socials.segmentedFacebookUrl
-      inputId='facebook'
-    }}
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedFacebookUrl}}
+      @inputId="facebook" />
   </div>
   <div class="field">
     <label>{{t 'Google Group'}}</label>
-    {{widgets/forms/link-input
-      segmentedLink=socials.segmentedGoogleUrl
-      inputId='google_group'
-    }}
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedGoogleUrl}}
+      @inputId="google_group" />
   </div>
   <div class="field">
     <label>{{t 'YouTube'}}</label>
-    {{widgets/forms/link-input
-      segmentedLink=socials.segmentedYoutubeUrl
-      inputId='youtube'
-    }}
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedYoutubeUrl}}
+      @inputId="youtube" />
   </div>
   <div class="field">
     <label>{{t 'GitHub'}}</label>
-    {{widgets/forms/link-input
-      segmentedLink=socials.segmentedGithubUrl
-      inputId='github'
-    }}
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedGithubUrl}}
+      @inputId="github" />
   </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>
 </form>

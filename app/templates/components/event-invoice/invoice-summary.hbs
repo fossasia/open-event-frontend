@@ -25,10 +25,10 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{event.name}}</td>
-        <td>{{moment-format data.createdAt 'MM/DD/YYYY'}}</td>
-        <td>{{moment-format data.completedAt 'MM/DD/YYYY'}}</td>
-        <td>{{currency-symbol eventCurrency}} {{format-number data.amount}}</td>
+        <td>{{this.event.name}}</td>
+        <td>{{moment-format this.data.createdAt 'MM/DD/YYYY'}}</td>
+        <td>{{moment-format this.data.completedAt 'MM/DD/YYYY'}}</td>
+        <td>{{currency-symbol this.eventCurrency}} {{format-money this.data.amount}}</td>
       </tr>
     </tbody>
   </table>

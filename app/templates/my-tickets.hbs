@@ -4,14 +4,14 @@
       <h1>
         {{t 'My tickets'}}
       </h1>
-      {{#tabbed-navigation}}
-        {{#link-to 'my-tickets.upcoming' class='item'}}
+      <TabbedNavigation>
+        <LinkTo @route="my-tickets.upcoming" class="item">
           {{t 'Upcoming Events'}}
-        {{/link-to}}
-        {{#link-to 'my-tickets.past' class='item'}}
+        </LinkTo>
+        <LinkTo @route="my-tickets.past" class="item">
           {{t 'Past Events'}}
-        {{/link-to}}
-      {{/tabbed-navigation}}
+        </LinkTo>
+      </TabbedNavigation>
     </div>
   </div>
   {{outlet}}

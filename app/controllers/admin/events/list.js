@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed, action } from '@ember/object';
+import { action } from '@ember/object';
 import { or } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
@@ -8,7 +8,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
    @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 
-   @computed()
    get columns() {
      return [
        {
@@ -136,7 +135,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
       this.refreshModel.bind(this)();
     } catch (e) {
-      console.warn(e);
+      console.error('Error while deleting event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_delete_error'
@@ -160,7 +159,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_restored'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error while restoring event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'restore_error'
@@ -182,7 +181,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
 
     } catch (e) {
-      console.warn(e);
+      console.error('Error while toggling featured event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_det_error'
@@ -203,7 +202,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'event_detail_changed'
         });
     } catch (e) {
-      console.warn(e);
+      console.error('Error while toggling promoted event', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'),
         {
           id: 'event_det_error'

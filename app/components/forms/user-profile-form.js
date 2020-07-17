@@ -71,8 +71,9 @@ export default Component.extend(FormMixin, {
               id: 'profi_update'
             });
           })
-          .catch(() => {
-            this.get('authManager.currentUser').rollbackAttributes();
+          .catch(e => {
+            console.error('Error while  updating profile.', e);
+            this.authManager.currentUser.rollbackAttributes();
             this.notify.error(this.l10n.t('An unexpected error occurred'), {
               id: 'profi_error'
             });

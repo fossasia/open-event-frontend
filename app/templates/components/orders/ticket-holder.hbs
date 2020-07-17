@@ -12,7 +12,7 @@
         {{t 'Name '}}
       </h4>
       <span>
-        {{buyer.firstName}} {{buyer.lastName}}
+        {{this.buyer.firstName}} {{this.buyer.lastName}}
       </span>
       <div class="ui divider"></div>
 
@@ -20,18 +20,18 @@
         {{t 'Email '}}
       </h4>
       <span>
-        {{buyer.email}}
+        {{this.buyer.email}}
       </span>
-      {{#if (not-eq data.paymentMode 'free')}}
+      {{#if (not-eq this.data.paymentMode 'free')}}
         <div class="ui divider"></div>
-        {{#if (eq data.paymentMode 'paypal')}}
+        {{#if (eq this.data.paymentMode 'paypal')}}
           <h3 class="ui header">
             <div class="content">
               {{t 'Payment Mode'}}
             </div>
           </h3>
           <img src="/images/payment-logos/paypal.png" alt="paypal" class="ui tiny image">
-          {{#if (eq data.status 'completed')}}
+          {{#if (eq this.data.status 'completed')}}
             <div class="ui very relaxed divided list">
               <div class="item">
                 <div class="content">
@@ -39,28 +39,28 @@
                     {{t 'Transaction ID'}}
                   </div>
                   <div class="description">
-                    {{data.transactionId}}
+                    {{this.data.transactionId}}
                   </div>
                 </div>
               </div>
             </div>
           {{/if}}
-        {{else if (eq data.paymentMode 'stripe')}}
+        {{else if (eq this.data.paymentMode 'stripe')}}
           <h3 class="ui header">
             <div class="content">{{t 'Payment Mode'}}</div>
             <i class="big stripe icon"></i>
 
           </h3>
-          {{#if (eq data.status 'completed')}}
+          {{#if (eq this.data.status 'completed')}}
             <div class="ui very relaxed divided list">
               <div class="item">
                 <div class="content">
                   <div class="header">Card Type</div>
                   <div class="description">
-                    {{#if (payment-icon data.brand)}}
-                      <i class="{{payment-icon data.brand}}"></i>
+                    {{#if (payment-icon this.data.brand)}}
+                      <i class="{{payment-icon this.data.brand}}"></i>
                     {{else}}
-                      {{data.brand}}
+                      {{this.data.brand}}
                     {{/if}}
                   </div>
                 </div>
@@ -68,13 +68,13 @@
               <div class="item">
                 <div class="content">
                   <div class="header">Card Number</div>
-                  <div class="description">**** {{data.last4}}</div>
+                  <div class="description">**** {{this.data.last4}}</div>
                 </div>
               </div>
               <div class="item">
                 <div class="content">
                   <div class="header">Exp Date</div>
-                  <div class="description">{{data.expMonth}}/{{data.expYear}}</div>
+                  <div class="description">{{this.data.expMonth}}/{{this.data.expYear}}</div>
                 </div>
               </div>
             </div>
@@ -83,31 +83,31 @@
           <h4 class="weight-300">
             {{t 'Paid via '}}
           </h4>
-          {{capitalize data.paymentMode}}
+          {{capitalize this.data.paymentMode}}
         {{/if}}
-        {{#if (eq data.paymentMode 'cheque')}}
+        {{#if (eq this.data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
           <h2 class="weight-300">
             {{t 'Cheque Details '}}
           </h2>
           <span>
-            {{data.event.chequeDetails}}
+            {{this.data.event.chequeDetails}}
           </span>
-        {{else if (eq data.paymentMode 'onsite')}}
+        {{else if (eq this.data.paymentMode 'onsite')}}
           <div class="ui divider"></div>
           <h2 class="weight-300">
             {{t 'Onsite Instructions '}}
           </h2>
           <span>
-            {{data.event.onsiteDetails}}
+            {{this.data.event.onsiteDetails}}
           </span>
-        {{else if (eq data.paymentMode 'cheque')}}
+        {{else if (eq this.data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
           <h2 class="weight-300">
             {{t 'Bank Details '}}
           </h2>
           <span>
-            {{data.event.bankDetails}}
+            {{this.data.event.bankDetails}}
           </span>
 				
         {{/if}}

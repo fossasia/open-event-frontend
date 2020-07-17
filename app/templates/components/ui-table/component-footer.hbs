@@ -1,17 +1,17 @@
-<div class="{{themeInstance.classes.tfooterWrapper}}">
-  <div class="ui {{if useNumericPagination themeInstance.classes.footerSummaryNumericPagination themeInstance.classes.footerSummaryDefaultPagination}} {{themeInstance.classes.footerSummary}}">
+<div class="{{this.themeInstance.classes.tfooterWrapper}}">
+  <div class="ui {{if this.useNumericPagination this.themeInstance.classes.footerSummaryNumericPagination this.themeInstance.classes.footerSummaryDefaultPagination}} {{this.themeInstance.classes.footerSummary}}">
     {{summary}}
-    <a href="#" {{action 'clearFilters'}} class="btn btn-link clearFilters {{unless anyFilterUsed 'invisible'}}">
-      <span class="{{themeInstance.classes.clearAllFiltersIcon}}"></span>
+    <a href="#" {{action 'clearFilters'}} class="btn btn-link clearFilters {{unless this.anyFilterUsed 'invisible'}}">
+      <span class="{{this.themeInstance.classes.clearAllFiltersIcon}}"></span>
     </a>
   </div>
-  {{#if useNumericPagination}}
-    <div class="{{themeInstance.classes.paginationWrapper}} {{themeInstance.classes.paginationWrapperNumeric}}">
-      {{partial themeInstance.components.numericPagination}}
+  {{#if this.useNumericPagination}}
+    <div class="{{this.themeInstance.classes.paginationWrapper}} {{this.themeInstance.classes.paginationWrapperNumeric}}">
+      {{partial this.themeInstance.components.numericPagination}}
     </div>
   {{else}}
-    <div class="{{themeInstance.classes.paginationWrapper}} {{themeInstance.classes.paginationWrapperDefault}}">
-      {{partial themeInstance.components.pagination-simple}}
+    <div class="{{this.themeInstance.classes.paginationWrapper}} {{this.themeInstance.classes.paginationWrapperDefault}}">
+      {{partial this.themeInstance.components.pagination-simple}}
     </div>
   {{/if}}
 </div>

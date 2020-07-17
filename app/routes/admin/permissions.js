@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class PermissionsRoute extends Route {
   titleToken() {
     return this.l10n.t('Permissions');
   }
-});
+}

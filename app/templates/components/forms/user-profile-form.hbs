@@ -1,43 +1,54 @@
-<form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'submit' on='submit'}}>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'submit' on='submit'}}>
   <div class="ui stackable grid">
     <div class="three wide column">
       <div class="ui left floated eight wide column">
-        {{widgets/forms/image-upload
-          user=user
-          imageUrl=user.avatarUrl
-          needsCropper=true
-          label=(t 'User Image')
-          id='user_image'
-          icon='photo'
-          hint=(t 'Select User Image')
-          maxSizeInKb=10000
-          aspectRatio=(array 1 1)
-          helpText=(t 'We recommend using at least a 1000x1000px (1:1 ratio) image')}}
+        <Widgets::Forms::ImageUpload
+          @user={{this.user}}
+          @imageUrl={{this.user.avatarUrl}}
+          @needsCropper={{true}}
+          @label={{t "User Image"}}
+          @id="user_image"
+          @icon="photo"
+          @hint={{t "Select User Image"}}
+          @maxSizeInKb={{10000}}
+          @aspectRatio={{array 1 1}}
+          @helpText={{t "We recommend using at least a 1000x1000px (1:1 ratio) image"}} />
       </div>
       <div class="ui hidden divider"></div>
       <div class="field">
-        <h3>{{user.firstName}} {{user.lastName}}</h3>
+        <h3>{{this.user.firstName}} {{this.user.lastName}}</h3>
       </div>
       <div class="field">
-        <h4>{{user.email}}</h4>
+        <h4>{{this.user.email}}</h4>
       </div>
     </div>
     <div class="thirteen wide column">
       <div class="field">
         <label class="required" for="name">{{t 'Name'}}</label>
-        {{input type='text' id='name' value=user.firstName}}
+        <Input
+          @type="text"
+          @id="name"
+          @value={{this.user.firstName}} />
       </div>
       <div class="field">
         <label class="required" for="last_name">{{t 'Family Name'}}</label>
-        {{input type='text' id='last_name' value=user.lastName}}
+        <Input
+          @type="text"
+          @id="last_name"
+          @value={{this.user.lastName}} />
       </div>
       <div class="field">
         <label for="details">{{t 'Bio'}}</label>
-        {{widgets/forms/rich-text-editor id='details' value=user.details}}
+        <Widgets::Forms::RichTextEditor
+          @id="details"
+          @value={{this.user.details}} />
       </div>
       <div class="field">
         <label class="required">{{t 'Email'}}</label>
-        {{input type='email' name='email' value=user.email}}
+        <Input
+          @type="email"
+          @name="email"
+          @value={{this.user.email}} />
       </div>
       <div class="field">
         <label class="details">{{t 'Phone'}}</label>
@@ -54,7 +65,10 @@
               {{/each}}
             </div>
           {{/ui-dropdown}}
-          {{input type='text' name='phone' value=user.contact}}
+          <Input
+            @type="text"
+            @name="phone"
+            @value={{this.user.contact}} />
         </div>
       </div>
       <button type="submit" class="ui teal submit button update-changes">

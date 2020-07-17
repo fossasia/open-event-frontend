@@ -1,17 +1,17 @@
-<div class="ui stackable {{unless noSocial 'three' 'one'}} column doubling centered grid">
+<div class="ui stackable {{unless this.noSocial 'three' 'one'}} column doubling centered grid">
   <div class="column">
     <form class="ui large form" autocomplete="off" {{action 'submit' on='submit'}}>
-      <div class="ui aligned segment basic less margin less padding">
+      <div class="ui aligned segment basic no margin no padding">
         <h3 class="weight-400">{{t 'Login'}}</h3>
       </div>
       <div class="ui segments">
-        <div class="ui segment {{if isLoading 'loading' ''}}">
-          {{#if errorMessage}}
+        <div class="ui segment {{if this.isLoading 'loading' ''}}">
+          {{#if this.errorMessage}}
             <div class="ui negative message">
-              <p>{{errorMessage}}</p>
+              <p>{{this.errorMessage}}</p>
             </div>
           {{/if}}
-          {{#if newUser}}
+          {{#if this.newUser}}
             <div class="ui info message">
               <p>{{t 'You have been registered successfully. Please login to continue.'}}</p>
             </div>
@@ -19,24 +19,16 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="mail icon"></i>
-              {{input name='email' placeholder=(t 'Email ID') value=identification}}
+              <Input @name="email" placeholder={{t "Email ID"}} @value={{this.identification}} />
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              {{#if showPass}}
-                {{input type="text" name='password' placeholder=(t 'Password') value=password}}
-              {{else}}
-                {{input type="password" name='password' placeholder=(t 'Password') value=password}}
-              {{/if}}
-              <div class="ui small basic icon buttons">
-                <button type="button" class="ui button" id="eye1" {{action 'showPassword'}}>
-                  {{#if showPass}}
-                    <i class="hide basic icon"></i>
-                  {{else}}
-                    <i class="unhide basic icon"></i>
-                  {{/if}}
+              <Input class="rounded-r-none" @type="{{if this.showPass 'text' 'password'}}" @name="password" placeholder={{t "Password"}} @value={{this.password}} />
+              <div class="ui small basic icon buttons rounded-l-none">
+                <button type="button" class="ui button" {{action 'showPassword'}}>
+                  <i class="{{if this.showPass 'hide' 'unhide'}} basic icon"></i>
                 </button>
               </div>
             </div>

@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+@classic
+export default class NewSessionRoute extends Route {
   titleToken() {
     return this.l10n.t('New Session');
-  },
+  }
 
   async model() {
     const eventDetails = this.modelFor('public');
@@ -15,7 +17,7 @@ export default Route.extend({
       }),
       session: await this.store.createRecord('session', {
         event       : eventDetails,
-        creator     : this.get('authManager.currentUser'),
+        creator     : this.authManager.currentUser,
         track       : null,
         sessionType : null
       }),
@@ -24,19 +26,20 @@ export default Route.extend({
           {
             name : 'email',
             op   : 'eq',
-            val  : this.get('authManager.currentUser').email
+            val  : this.authManager.currentUser.email
           }
         ]
       }),
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})
     };
-  },
+  }
+
   resetController(controller) {
-    this._super(...arguments);
-    const model = controller.get('model.session');
+    super.resetController(...arguments);
+    const model = controller.model.session;
     if (!model.id) {
-      controller.get('model.session').unloadRecord();
+      controller.model.session.unloadRecord();
     }
   }
-});
+}

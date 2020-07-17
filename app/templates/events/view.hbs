@@ -1,43 +1,37 @@
-{{#if (and (or (eq session.currentRouteName 'events.view.index') (eq session.currentRouteName 'events.view.export')) (gt unverified-user-message.length 0))}} 
-  {{#if (eq model.state 'draft')}}
-    <div class="ui grid stackable">
-      <div class="row">
-        <div class="sixteen wide column">
-          {{unverified-user-message}}
-        </div>
-      </div>
-    </div>
+{{#if (and (or (eq this.session.currentRouteName 'events.view.index') (eq this.session.currentRouteName 'events.view.export')) (gt this.unverified-user-message.length 0))}} 
+  {{#if (eq this.model.state 'draft')}}
+    <UnverifiedUserMessage />
   {{/if}}
 {{/if}}
-{{#if (not-includes session.currentRouteName 'events.view.edit')}}
+{{#if (not-includes this.session.currentRouteName 'events.view.edit')}}
   <div class="ui grid stackable">
     <div class="row">
       <div class="four wide column">
         <h2 class="ui header">
-          {{model.name}}
+          {{this.model.name}}
         </h2>
       </div>
-      <div class="twelve wide column {{unless device.isMobile 'right aligned'}}">
-        {{#if device.isMobile}}
+      <div class="twelve wide column {{unless this.device.isMobile 'right aligned'}}">
+        {{#if this.device.isMobile}}
           <div class="ui icon fluid buttons">
-            <a href="{{model.url}}" class="ui button" data-tooltip={{t 'Preview'}} data-position="top left">
+            <a href="{{this.model.url}}" class="ui button" data-tooltip={{t 'Preview'}} data-position="top left">
               <i class="unhide icon"></i>
             </a>
-            <button class="ui button" {{action 'togglePublishState'}} data-tooltip="{{if (eq model.state 'published') 'Unpublish' 'Publish'}}" data-position="top left">
-              <i class="{{if (eq model.state 'published') 'ban' 'check'}} icon"></i>
+            <button class="ui button" {{action 'togglePublishState'}} data-tooltip="{{if (eq this.model.state 'published') 'Unpublish' 'Publish'}}" data-position="top left">
+              <i class="{{if (eq this.model.state 'published') 'ban' 'check'}} icon"></i>
             </button>
-            <button class="ui button {{if isCopying 'loading'}}" {{action 'copyEvent'}} data-tooltip={{t 'Copy'}} data-position="top left">
+            <button class="ui button {{if this.isCopying 'loading'}}" {{action 'copyEvent'}} data-tooltip={{t 'Copy'}} data-position="top left">
               <i class="copy icon"></i>
             </button>
           </div>
         {{else}}
-          <a href="{{model.url}}" class="ui button labeled icon small">
+          <a href="{{this.model.url}}" class="ui button labeled icon small">
             <i class="unhide icon"></i>
             {{t 'Preview'}}
           </a>
-          <div class="ui small labeled icon buttons">
-            <button class="ui button " {{action 'togglePublishState'}}>
-              {{#if (eq model.state 'published')}}
+          
+            <button class="ui button labeled icon small" {{action 'togglePublishState'}}>
+              {{#if (eq this.model.state 'published')}}
                 <i class="ban icon"></i>
                 {{t 'Unpublish'}}
               {{else}}
@@ -45,11 +39,11 @@
                 {{t 'Publish'}}
               {{/if}}
             </button>
-            <button class="ui button {{if isCopying 'loading'}}" {{action 'copyEvent'}} disabled={{isCopying}}>
+            <button class="ui button labeled icon small {{if this.isCopying 'loading'}}" {{action 'copyEvent'}} disabled={{this.isCopying}}>
               <i class="copy icon"></i>
               {{t 'Copy'}}
             </button>
-          </div>
+          
         {{/if}}
       </div>
     </div>
@@ -57,35 +51,35 @@
 
   <div class="row" style="padding-top: 15px">
     <div class="sixteen wide column">
-      {{#tabbed-navigation}}
-        {{#link-to 'events.view.index' class='item'}}
+      <TabbedNavigation>
+        <LinkTo @route="events.view.index" class="item">
           {{t 'Overview'}}
-        {{/link-to}}
-        {{#link-to 'events.view.tickets' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets" class="item">
           {{t 'Tickets'}}
-        {{/link-to}}
-        {{#link-to 'events.view.scheduler' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.scheduler" class="item">
           {{t 'Scheduler'}}
-        {{/link-to}}
-        {{#link-to 'events.view.sessions' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.sessions" class="item">
           {{t 'Sessions'}}
-        {{/link-to}}
-        {{#link-to 'events.view.speakers' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.speakers" class="item">
           {{t 'Speakers'}}
-        {{/link-to}}
-        {{#link-to 'events.view.export' class='item'}}
+        </LinkTo>
+        <LinkTo @route="events.view.export" class="item">
           {{t 'Export'}}
-        {{/link-to}}
-        {{#if (or authManager.currentUser.isAnAdmin (eq model.owner.email authManager.currentUser.email))}}
-          {{#link-to 'events.view.settings' class='item'}}
+        </LinkTo>
+        {{#if (or this.authManager.currentUser.isAnAdmin (eq this.model.owner.email this.authManager.currentUser.email))}}
+          <LinkTo @route="events.view.settings" class="item">
             {{t 'Settings'}}
-          {{/link-to}}
+          </LinkTo>
         {{/if}}
-      {{/tabbed-navigation}}
+      </TabbedNavigation>
     </div>
   </div>
 
-  <div class="ui {{if isLoading 'loading'}} basic segment">
+  <div class="ui {{if this.isLoading 'loading'}} basic segment">
     {{outlet}}
   </div>
 {{else}}

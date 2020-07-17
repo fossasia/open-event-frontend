@@ -1,13 +1,15 @@
+import classic from 'ember-classic-decorator';
+import { attributeBindings, tagName } from '@ember-decorators/component';
 import $ from 'jquery';
 import Component from '@ember/component';
 import { run } from '@ember/runloop';
 
-export default Component.extend({
-  tagName           : 'img',
-  attributeBindings : ['src'],
-
-  fallback       : '/images/placeholders/Other.jpg',
-  fallbackAvatar : '/images/placeholders/avatar.png',
+@classic
+@tagName('img')
+@attributeBindings('src')
+export default class SafeImage extends Component {
+  fallback = '/images/placeholders/Other.jpg';
+  fallbackAvatar = '/images/placeholders/avatar.png';
 
   didInsertElement() {
     if (!this.src) {
@@ -18,9 +20,9 @@ export default Component.extend({
         this.set('src', this.isAvatar ? this.fallbackAvatar : this.fallback);
       });
     });
-  },
+  }
 
   willDestroyElement() {
     $(this.element).off();
   }
-});
+}

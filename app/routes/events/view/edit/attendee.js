@@ -1,36 +1,43 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import CustomFormMixin from 'open-event-frontend/mixins/event-wizard';
 import { A } from '@ember/array';
-export default Route.extend(CustomFormMixin, {
-
+@classic
+export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
   titleToken() {
     return this.l10n.t('Attendee Form');
-  },
+  }
 
   async model() {
-    let filterOptions = [{
+    const filterOptions = [{
       name : 'form',
       op   : 'eq',
       val  : 'attendee'
     }];
 
-    let data = {
-      event: this.modelFor('events.view')
+    const event = this.modelFor('events.view');
+    const data = {
+      event,
+      customForms: await event.query('customForms', {
+        filter       : filterOptions,
+        sort         : 'id',
+        'page[size]' : 50
+      }),
+      newFormField: {
+        name : '',
+        type : 'text'
+      }
     };
-    data.customForms = await data.event.query('customForms', {
-      filter       : filterOptions,
-      sort         : 'id',
-      'page[size]' : 50
-    });
 
     return data;
-  },
+  }
+
   afterModel(data) {
     /**
      * Create the additional custom forms if only the compulsory forms exist.
      */
     if (data.customForms.length === 3) {
-      let customForms = A();
+      const customForms = A();
       for (const customForm of data.customForms ? data.customForms.toArray() : []) {
         customForms.pushObject(customForm);
       }
@@ -44,4 +51,4 @@ export default Route.extend(CustomFormMixin, {
       data.customForms = customForms;
     }
   }
-});
+}

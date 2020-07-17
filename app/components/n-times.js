@@ -1,5 +1,7 @@
+import classic from 'ember-classic-decorator';
+import { tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
 
-export default Component.extend({
-  tagName: ''
-});
+@classic
+@tagName('')
+export default class NTimes extends Component {}

@@ -1,31 +1,34 @@
+import { tracked } from '@glimmer/tracking';
+import classic from 'ember-classic-decorator';
+import { attributeBindings, tagName } from '@ember-decorators/component';
+import { observes } from '@ember-decorators/object';
 import $ from 'jquery';
 import Component from '@ember/component';
 import { once } from '@ember/runloop';
-import { computed, observer } from '@ember/object';
 
-export default Component.extend({
+@classic
+@tagName('input')
+@attributeBindings('type', 'htmlChecked:checked', 'value', 'name', 'disabled')
+export default class RadioButton extends Component {
+  type = 'radio';
+  @tracked value = null;
+  @tracked checked = null;
 
-  tagName           : 'input',
-  type              : 'radio',
-  attributeBindings : ['type', 'htmlChecked:checked', 'value', 'name', 'disabled'],
-
-  value   : null,
-  checked : null,
-
-  htmlChecked: computed('value', 'checked', function() {
+  get htmlChecked() {
     return this.value === this.checked;
-  }),
+  }
 
   change() {
     this.set('checked', this.value);
-  },
+  }
 
   _setCheckedProp() {
     if (!$(this.element)) { return }
     $(this.element).prop('checked', this.htmlChecked);
-  },
+  }
 
-  _updateElementValue: observer('htmlChecked', function() {
+  @observes('htmlChecked')
+  _updateElementValue() {
     once(this, '_setCheckedProp');
-  })
-});
+  }
+}

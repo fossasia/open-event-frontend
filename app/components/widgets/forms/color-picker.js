@@ -1,12 +1,13 @@
+import classic from 'ember-classic-decorator';
+import { classNames } from '@ember-decorators/component';
 import $ from 'jquery';
 import Component from '@ember/component';
 
-export default Component.extend({
-
-  classNames: ['ui', 'action', 'input', 'fluid'],
-
+@classic
+@classNames('ui', 'action', 'input', 'fluid')
+export default class ColorPicker extends Component {
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     const _this = this;
     $('.picker', this.element).colorPicker({
       doRender : false,
@@ -15,10 +16,10 @@ export default Component.extend({
         _this.set('value', `#${this.color.colors.HEX}`);
       }
     });
-  },
+  }
 
   willDestroyElement() {
-    this._super(...arguments);
+    super.willDestroyElement(...arguments);
     $('.picker', this.element).colorPicker('destroy');
   }
-});
+}

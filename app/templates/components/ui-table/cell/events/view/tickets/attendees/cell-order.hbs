@@ -1,24 +1,24 @@
 <div class="ui tiny header">
-  {{#link-to 'orders.view' record.identifier}}{{record.identifier}}{{/link-to}}
+  <LinkTo @route="orders.view" @model={{this.record.identifier}}>{{this.record.identifier}}</LinkTo>
   <span class="weight-400">
     {{t 'by'}}
-    {{extraRecords.user.email}}
+    {{this.extraRecords.user.email}}
   </span>
-  <div class="ui basic mini {{order-color record.status}} label attendees-margin">
-    {{record.status}}
+  <div class="ui basic mini {{order-color this.record.status}} label attendees-margin">
+    {{this.record.status}}
   </div>
   <div class="sub header">
-    {{#if record.paidVia}}
+    {{#if this.record.paidVia}}
       <span class="weight-800">
-        {{t 'Payment via'}} {{record.paidVia}}
+        {{t 'Payment via'}} {{this.record.paidVia}}
       </span>
     {{/if}}
-    {{#if (eq record.status 'completed')}}
-      {{moment-format record.completedAt 'MMMM Do YYYY, h:mm A -'}}
-      {{moment-from-now record.completedAt}}
+    {{#if (eq this.record.status 'completed')}}
+      {{moment-format this.record.completedAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now this.record.completedAt}}
     {{else}}
-      {{moment-format record.createdAt 'MMMM Do YYYY, h:mm A -'}}
-      {{moment-from-now record.createdAt}}
+      {{moment-format this.record.createdAt 'MMMM Do YYYY, h:mm A -'}}
+      {{moment-from-now this.record.createdAt}}
     {{/if}}
   </div>
 </div>

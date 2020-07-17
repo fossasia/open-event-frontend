@@ -1,16 +1,19 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import moment from 'moment';
 
-export default Route.extend(AuthenticatedRouteMixin, {
+@classic
+export default class ListRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken() {
-    switch (this.get('params.tickets_status')) {
+    switch (this.params.tickets_status) {
       case 'upcoming':
         return this.l10n.t('Upcoming');
       case 'past':
         return this.l10n.t('Past');
     }
-  },
+  }
+
   async model(params) {
     const userDetails = this.modelFor('admin.users.view');
     this.set('params', params);
@@ -82,4 +85,4 @@ export default Route.extend(AuthenticatedRouteMixin, {
       })
     };
   }
-});
+}

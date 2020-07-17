@@ -7,7 +7,7 @@
 <div class="content">
   <div class="field">
     <div class="label">
-      {{t 'Proceeding forward will delete the proposal titled:'}} {{proposalName}}
+      {{t 'Proceeding forward will delete the proposal titled:'}} {{this.proposalName}}
     </div>
   </div>
 </div>
@@ -15,7 +15,7 @@
   <button type="button" class="ui black button" {{action 'close'}}>
     {{t 'Cancel'}}
   </button>
-  <button type="button" class="ui red button" {{action deleteProposal}}>
+  <button type="button" class="ui red button" {{action this.deleteProposal}}>
     {{t 'Delete Proposal'}}
   </button>
 </div>

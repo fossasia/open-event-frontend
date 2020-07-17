@@ -124,7 +124,8 @@ export default ModalBase.extend(FormMixin, {
   }),
 
   onVisible() {
-    this.set('isTaxIncludedInPrice', this.get('tax.isTaxIncludedInPrice') ? 'include' : 'add');
+    // TODO(Areeb): Revert to ES6 getter when a solution is found
+    this.set('isTaxIncludedInPrice', this.tax.get('isTaxIncludedInPrice') ? 'include' : 'add');
   },
 
   actions: {

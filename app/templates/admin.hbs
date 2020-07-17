@@ -1,40 +1,40 @@
 <div class="row">
   <div class="x-scrollable sixteen wide column">
-    {{#tabbed-navigation}}
-      {{#link-to 'admin.index' class='item'}}
+    <TabbedNavigation>
+      <LinkTo @route="admin.index" class="item">
         {{t 'Admin'}}
-      {{/link-to}}
-      {{#link-to 'admin.events' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.events" class="item">
         {{t 'Events'}}
-      {{/link-to}}
-      {{#link-to 'admin.sales' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.sales" class="item">
         {{t 'Sales'}}
-      {{/link-to}}
-      {{#link-to 'admin.sessions' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.sessions" class="item">
         {{t 'Sessions'}}
-      {{/link-to}}
-      {{#link-to 'admin.users' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.users" class="item">
         {{t 'Users'}}
-      {{/link-to}}
-      {{#link-to 'admin.permissions' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.permissions" class="item">
         {{t 'Permissions'}}
-      {{/link-to}}
-      {{#link-to 'admin.messages' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.messages" class="item">
         {{t 'Messages'}}
-      {{/link-to}}
-      {{#link-to 'admin.reports' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.reports" class="item">
         {{t 'Reports'}}
-      {{/link-to}}
-      {{#link-to 'admin.settings' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.settings" class="item">
         {{t 'Settings'}}
-      {{/link-to}}
-      {{#link-to 'admin.modules' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.modules" class="item">
         {{t 'Modules'}}
-      {{/link-to}}
-      {{#link-to 'admin.content' class='item'}}
+      </LinkTo>
+      <LinkTo @route="admin.content" class="item">
         {{t 'Content'}}
-      {{/link-to}}
-    {{/tabbed-navigation}}
+      </LinkTo>
+    </TabbedNavigation>
   </div>
 </div>
 <div class="ui basic segment">

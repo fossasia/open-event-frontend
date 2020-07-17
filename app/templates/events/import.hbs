@@ -1,3 +1,16 @@
-{{events/event-import-section uploadFile=(action 'uploadFile') importStatus=importStatus importError=importError isImporting=isImporting file=file}}
+<Events::EventImportSection
+  @uploadFile={{action "uploadFile"}}
+  @importStatus={{this.importStatus}}
+  @importError={{this.importError}}
+  @isImporting={{this.isImporting}}
+  @file={{this.file}} />
 <div class="ui hidden divider"></div>
-{{events/imports-history-section data=model.importJobs columns=columns page=page per_page=per_page search=search sort_by=sort_by sort_dir=sort_dir filterOptions=filterOptions}}
+<Events::ImportsHistorySection
+  @data={{this.model.importJobs}}
+  @columns={{this.columns}}
+  @page={{this.page}}
+  @per_page={{this.per_page}}
+  @search={{this.search}}
+  @sort_by={{this.sort_by}}
+  @sort_dir={{this.sort_dir}}
+  @filterOptions={{this.filterOptions}} />

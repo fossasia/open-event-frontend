@@ -1,48 +1,48 @@
-{{#ui-accordion}}
+<UiAccordion>
   <div class="title" {{action 'hideSpeakerImage'}} role="button">
     <div class="ui">
       <h3 class="ui header">
-        {{session.title}}
+        {{this.session.title}}
         <div class="sub header">
-          {{session.sessionType.name}}
+          {{this.session.sessionType.name}}
         </div>
       </h3>
-      <div class="ui row">{{session.track.name}}</div>
+      <div class="ui row">{{this.session.track.name}}</div>
     </div>
     <br>
     <div class="ui grid stackable">
-      {{#if hideImage}}
+      {{#if this.hideImage}}
         <div class="left floated twelve wide column">
-          {{#if session.startsAt}}
-            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date session.startsAt}} - {{general-date session.endsAt}}</div>
+          {{#if this.session.startsAt}}
+            <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date this.session.startsAt}} - {{general-date this.session.endsAt}}</div>
           {{/if}}
         </div>
       {{else}}
         <div class="left floated eleven wide column">
           <div class="session-speakers">
-            {{#each session.speakers as |speaker|}}
+            {{#each this.session.speakers as |speaker|}}
               <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
             {{/each}}
           </div>
         </div>
         <div class="right floated five wide column">
-          {{#if session.startsAt}}
-            <div class=""><i class="marker icon"></i>{{session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{moment-format session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
+          {{#if this.session.startsAt}}
+            <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{moment-format this.session.startsAt 'hh:mm a / DD-MM-YYYY'}}</div>
           {{/if}}
         </div>
       {{/if}}
 
       <div class="row">
         <div class="column session-description">
-          {{sanitize session.shortAbstract}}
+          {{sanitize this.session.shortAbstract}}
         </div>
       </div>
     </div>
   </div>
   <div class="content">
-    {{#each session.speakers as |speaker|}}
+    {{#each this.session.speakers as |speaker|}}
       <div class="ui divider"></div>
       <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <p>
@@ -73,4 +73,4 @@
       </div>
     {{/each}}
   </div>
-{{/ui-accordion}}
+</UiAccordion>

@@ -1,9 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  templateName: 'events/view/tickets/access-codes/list',
+@classic
+export default class IndexRoute extends Route {
+  templateName = 'events/view/tickets/access-codes/list';
+
   beforeModel() {
-    this._super(...arguments);
+    super.beforeModel(...arguments);
     this.transitionTo('events.view.tickets.access-codes.list', 'all');
   }
-});
+}

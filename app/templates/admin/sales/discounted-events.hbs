@@ -48,7 +48,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each model as |entry|}}
+          {{#each this.model as |entry|}}
             <tr>
               <td>
                 {{entry.eventName}}
@@ -63,19 +63,19 @@
                 {{entry.sales.completed.ticket_count}}
               </td>
               <td class="right aligned">
-                {{currency-symbol order.paymentCurrency}} {{format-number entry.sales.completed.sales_total}}
+                {{currency-symbol this.order.paymentCurrency}} {{format-money entry.sales.completed.sales_total}}
               </td>
               <td class="right aligned">
                 {{entry.sales.placed.ticket_count}}
               </td>
               <td class="right aligned">
-                {{currency-symbol order.paymentCurrency}} {{format-number entry.sales.places.sales_total}}
+                {{currency-symbol this.order.paymentCurrency}} {{format-money entry.sales.places.sales_total}}
               </td>
               <td class="right aligned">
                 {{entry.sales.pending.ticket_count}}
               </td>
               <td class="right aligned">
-                {{currency-symbol order.paymentCurrency}} {{format-number entry.sales.pending.sales_total}}
+                {{currency-symbol this.order.paymentCurrency}} {{format-money entry.sales.pending.sales_total}}
               </td>
             </tr>
           {{/each}}
@@ -91,19 +91,19 @@
               {{totalCompletedTickets}}
             </th>
             <th class="right aligned">
-              US$ {{format-number totalCompletedSales}}
+              US$ {{format-money totalCompletedSales}}
             </th>
             <th class="right aligned">
               {{totalPlacedTickets}}
             </th>
             <th class="right aligned">
-              US$ {{format-number totalPlacedSales}}
+              US$ {{format-money totalPlacedSales}}
             </th>
             <th class="right aligned">
               {{totalPendingTickets}}
             </th>
             <th class="right aligned">
-              US$ {{format-number totalPendingSales}}
+              US$ {{format-money totalPendingSales}}
             </th>
           </tr>
         </tfoot> --}}

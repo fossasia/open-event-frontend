@@ -1,10 +1,10 @@
-import $ from 'jquery';
-import Service from '@ember/service';
+import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
-import { equal, or } from '@ember/object/computed';
+import { or, equal } from '@ember/object/computed';
+import $ from 'jquery';
+import Service, { inject as service } from '@ember/service';
 import { debounce } from '@ember/runloop';
 import { forOwn } from 'lodash-es';
-import { inject as service } from '@ember/service';
 
 /**
  * Keeping this outside the service object to keep it lean and faster to loop over
@@ -32,11 +32,13 @@ const breakpoints = {
   }
 };
 
-export default Service.extend({
+@classic
+export default class DeviceService extends Service {
+  @service
+  fastboot;
 
-  fastboot: service(),
-
-  deviceType: computed('currentWidth', function() {
+  @computed('currentWidth')
+  get deviceType() {
     let deviceType = 'computer';
     forOwn(breakpoints, (value, key) => {
       if (this.currentWidth >= value.min && (!Object.prototype.hasOwnProperty.call(value, 'max') || this.currentWidth <= value.max)) {
@@ -44,19 +46,30 @@ export default Service.extend({
       }
     });
     return deviceType;
-  }),
+  }
 
-  isMobile           : equal('deviceType', 'mobile'),
-  isComputer         : equal('deviceType', 'computer'),
-  isTablet           : equal('deviceType', 'tablet'),
-  isLargeMonitor     : equal('deviceType', 'largeMonitor'),
-  isWideScreen       : equal('deviceType', 'widescreen'),
-  isBiggerThanTablet : or('isComputer', 'isLargeMonitor', 'isWideScreen'),
+  @equal('deviceType', 'mobile')
+  isMobile;
 
+  @equal('deviceType', 'computer')
+  isComputer;
 
-  isInternetExplorer: computed(function() {
+  @equal('deviceType', 'tablet')
+  isTablet;
 
-    if (this.get('fastboot.isFastBoot')) {
+  @equal('deviceType', 'largeMonitor')
+  isLargeMonitor;
+
+  @equal('deviceType', 'widescreen')
+  isWideScreen;
+
+  @or('isComputer', 'isLargeMonitor', 'isWideScreen')
+  isBiggerThanTablet;
+
+  @computed
+  get isInternetExplorer() {
+
+    if (this.fastboot.isFastBoot) {
       return false;
     }
 
@@ -75,12 +88,12 @@ export default Service.extend({
       }
     }
     return rv !== -1;
-  }),
+  }
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
 
-    if (this.get('fastboot.isFastBoot')) {
+    if (this.fastboot.isFastBoot) {
       this.currentWidth = 1024;
       return;
     }
@@ -95,5 +108,4 @@ export default Service.extend({
       }, 200);
     });
   }
-
-});
+}

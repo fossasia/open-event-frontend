@@ -1,13 +1,13 @@
 <div class="ui stackable grid">
   <div class="row">
     <div class="three wide column">
-      {{#tabbed-navigation isVertical=true}}
-        {{#each model as |topic|}}
-          {{#link-to 'admin.content.system-images.list' topic.id  class='link item'}}
+      <TabbedNavigation @isVertical={{true}}>
+        {{#each this.model as |topic|}}
+          <LinkTo @route="admin.content.system-images.list" @model={{topic.id}} class="link item">
             {{topic.name}}
-          {{/link-to}}
+          </LinkTo>
         {{/each}}
-      {{/tabbed-navigation}}
+      </TabbedNavigation>
     </div>
     <div class="thirteen wide column">
       {{outlet}}

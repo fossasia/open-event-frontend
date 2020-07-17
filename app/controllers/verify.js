@@ -1,11 +1,13 @@
+import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  queryParams : ['token'],
-  token       : null,
-  success     : false,
-  error       : null,
-  isLoading   : false,
+@classic
+export default class VerifyController extends Controller {
+  queryParams = ['token'];
+  token = null;
+  success = false;
+  error = null;
+  isLoading = false;
 
   verify(tokenVal) {
     this.set('isLoading', true);
@@ -27,4 +29,4 @@ export default Controller.extend({
         this.set('isLoading', false);
       });
   }
-});
+}

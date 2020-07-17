@@ -6,7 +6,7 @@ import moment from 'moment';
 export default class extends Route.extend(EmberTableRouteMixin) {
 
   titleToken() {
-    switch (this.get('params.events_status')) {
+    switch (this.params.events_status) {
       case 'live':
         return this.l10n.t('Live');
       case 'draft':
