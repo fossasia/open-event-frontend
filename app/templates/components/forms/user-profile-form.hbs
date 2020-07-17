@@ -53,9 +53,9 @@
       <div class="field">
         <label class="details">{{t 'Phone'}}</label>
         <div class="ui left action input">
-          {{#ui-dropdown class='selection'}}
+          <UiDropdown @class='ui selection dropdown'>
             <i class="dropdown icon"></i>
-            <div class="default text">{{t 'Select'}}</div>
+            <div class="default text">{{t 'Country Code'}}</div>
             <div class="menu">
               {{#each countries as |country|}}
                 <div class="item">
@@ -64,7 +64,7 @@
                 </div>
               {{/each}}
             </div>
-          {{/ui-dropdown}}
+          </UiDropdown>
           <Input
             @type="text"
             @name="phone"
