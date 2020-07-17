@@ -16,13 +16,13 @@ module.exports = function(defaults) {
     sassOptions       : {
       sourceMapEmbed: true
     },
-    SemanticUI: {	
-      source: {	
-        css        : 'node_modules/fomantic-ui/dist',	
-        javascript : 'node_modules/fomantic-ui/dist',	
-        images     : 'node_modules/fomantic-ui/dist/themes/default/assets/images',	
-        fonts      : 'node_modules/fomantic-ui/dist/themes/default/assets/fonts'	
-      }	
+    SemanticUI: {
+      source: {
+        css        : 'node_modules/fomantic-ui/dist',
+        javascript : 'node_modules/fomantic-ui/dist',
+        images     : 'node_modules/fomantic-ui/dist/themes/default/assets/images',
+        fonts      : 'node_modules/fomantic-ui/dist/themes/default/assets/fonts'
+      }
     },
     autoprefixer: {
       overrideBrowserslist : targets.browsers,
