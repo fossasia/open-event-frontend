@@ -17,7 +17,7 @@ export default Component.extend(FormMixin, {
           identifier : 'email',
           rules      : [
             {
-              type   : 'regExp[/^[A-Za-z0-9_]([\.-]?[A-Za-z0-9_])*@[A-Za-z0-9_]([\.-]?[A-Za-z0-9_])*(\.[A-Za-z0-9_]{2,3})+$/]',
+              type   : 'email',
               prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
