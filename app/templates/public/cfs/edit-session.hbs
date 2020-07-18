@@ -4,14 +4,20 @@
       {{t 'Edit Session'}}
     </h2>
     <div class="ui container">
-      <Forms::SessionSpeakerForm
-        @fields={{this.model.forms}}
-        @data={{this.model}}
-        @isLoading={{this.isLoading}}
-        @save={{action "save"}}
-        @isSession={{true}}
-        @includeSession={{true}}
-        @isSessionSpeaker={{true}} />
+      {{#if this.model.event.speakersCall.isOpen}}
+        <Forms::SessionSpeakerForm
+          @fields={{this.model.forms}}
+          @data={{this.model}}
+          @isLoading={{this.isLoading}}
+          @save={{action "save"}}
+          @isSession={{true}}
+          @includeSession={{true}}
+          @isSessionSpeaker={{true}} />
+      {{else}}
+        <h2 class="ui center aligned">
+          {{t 'Speakers Call is closed now'}}
+        </h2>
+      {{/if}}
     </div>
   </div>
 </div>
