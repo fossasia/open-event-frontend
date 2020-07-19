@@ -31,7 +31,7 @@ export default class RegisterController extends Controller {
       .catch(reason => {
         if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 409) {
           this.set('errorMessage', this.l10n.t('User already exists.'));
-        } else if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === '422') {
+        } else if (reason?.errors[0]?.status === '422') {
           this.set('errorMessage', this.l10n.t('Invalid email address.'));
         } else {
           this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
