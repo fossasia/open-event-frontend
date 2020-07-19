@@ -3,6 +3,49 @@ import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
+export const SPEAKER_FORM_FIELDS = {
+  name                : 'Name',
+  email               : 'Email',
+  position            : 'Position',
+  organisation        : 'Organisation',
+  address             : 'Address',
+  city                : 'City',
+  country             : 'Country',
+  mobile              : 'Mobile',
+  gender              : 'Gender',
+  shortBiography      : 'Short Biography',
+  longBiography       : 'Long Biography',
+  speakingExperience  : 'Speaking Experience',
+  photoUrl            : 'Photo',
+  website             : 'Website',
+  github              : 'GitHub',
+  facebook            : 'Facebook',
+  twitter             : 'Twitter',
+  instagram           : 'Instagram',
+  linkedin            : 'Linkedin',
+  heardFrom           : 'Heard From',
+  sponsorshipRequired : 'Sponsorship Required',
+};
+
+export const SPEAKER_FORM_ORDER = Object.keys(SPEAKER_FORM_FIELDS);
+
+export const SESSION_FORM_FIELDS = {
+  title         : 'Title',
+  subtitle      : 'Subtitle',
+  track         : 'Track',
+  sessionType   : 'Session Type',
+  shortAbstract : 'Short Abstract',
+  longAbstract  : 'Long Abstract',
+  language      : 'Language',
+  level         : 'Level',
+  slidesUrl     : 'Slides',
+  videoUrl      : 'Video',
+  audioUrl      : 'Audio',
+  comments      : 'Comments',
+};
+
+export const SESSION_FORM_ORDER = Object.keys(SESSION_FORM_FIELDS);
+
 export default ModelBase.extend({
 
   fieldIdentifier : attr('string'),
@@ -19,44 +62,9 @@ export default ModelBase.extend({
   event             : belongsTo('event'),
   customFormOptions : hasMany('customFormOptions'),
 
-  session: {
-    title         : 'Title',
-    subtitle      : 'Subtitle',
-    shortAbstract : 'Short Abstract',
-    longAbstract  : 'Long Abstract',
-    comments      : 'Comment',
-    track         : 'Track',
-    sessionType   : 'Session Type',
-    level         : 'Level',
-    language      : 'Language',
-    slidesUrl     : 'Slide',
-    videoUrl      : 'Video',
-    audioUrl      : 'Audio'
-  },
+  session: SESSION_FORM_FIELDS,
 
-  speaker: {
-    name                : 'Name',
-    email               : 'Email',
-    photoUrl            : 'Photo',
-    organisation        : 'Organisation',
-    position            : 'Position',
-    address             : 'Address',
-    country             : 'Country',
-    city                : 'City',
-    longBiography       : 'Long Biography',
-    shortBiography      : 'Short Biography',
-    speakingExperience  : 'Speaking Experience',
-    sponsorshipRequired : 'Sponsorship Required',
-    gender              : 'Gender',
-    heardFrom           : 'Heard From',
-    mobile              : 'Mobile',
-    website             : 'Website',
-    facebook            : 'Facebook',
-    twitter             : 'Twitter',
-    github              : 'GitHub',
-    linkedin            : 'Linkedin',
-    instagram           : 'Instagram'
-  },
+  speaker: SPEAKER_FORM_FIELDS,
 
   attendee: {
     firstname       : 'First Name',

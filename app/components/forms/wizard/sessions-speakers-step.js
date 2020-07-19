@@ -3,6 +3,8 @@ import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash-es';
+import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
+import { SPEAKER_FORM_ORDER, SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 
@@ -118,7 +120,12 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   }),
 
   customForm: computed('data.customForms.[]', function() {
-    return groupBy(this.data.customForms.toArray(), customForm => customForm.get('form'));
+    const grouped = groupBy(this.data.customForms.toArray(), customForm => customForm.get('form'));
+
+    grouped.speaker = sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER);
+    grouped.session = sortCustomFormFields(grouped.session, SESSION_FORM_ORDER);
+
+    return grouped;
   }),
 
   microlocations: computed('data.microlocations.@each.isDeleted', function() {
