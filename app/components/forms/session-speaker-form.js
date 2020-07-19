@@ -7,6 +7,8 @@ import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validTw
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { languages } from 'open-event-frontend/utils/dictionary/languages';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
+import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
+import { SPEAKER_FORM_ORDER, SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
 
 export default Component.extend(FormMixin, {
 
@@ -511,7 +513,12 @@ export default Component.extend(FormMixin, {
   genders: orderBy(genders, 'name'),
 
   allFields: computed('fields', function() {
-    return groupBy(this.fields.toArray(), field => field.get('form'));
+    const grouped = groupBy(this.fields.toArray(), field => field.get('form'));
+
+    grouped.speaker = sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER);
+    grouped.session = sortCustomFormFields(grouped.session, SESSION_FORM_ORDER);
+
+    return grouped;
   }),
 
   // Clicking on the add session button creates a blank record which increases the length of the speaker's list by 1.
