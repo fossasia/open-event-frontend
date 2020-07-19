@@ -24,7 +24,7 @@ export const SPEAKER_FORM_FIELDS = {
   instagram           : 'Instagram',
   linkedin            : 'Linkedin',
   heardFrom           : 'Heard From',
-  sponsorshipRequired : 'Sponsorship Required',
+  sponsorshipRequired : 'Sponsorship Required'
 };
 
 export const SPEAKER_FORM_ORDER = Object.keys(SPEAKER_FORM_FIELDS);
@@ -41,7 +41,7 @@ export const SESSION_FORM_FIELDS = {
   slidesUrl     : 'Slides',
   videoUrl      : 'Video',
   audioUrl      : 'Audio',
-  comments      : 'Comments',
+  comments      : 'Comments'
 };
 
 export const SESSION_FORM_ORDER = Object.keys(SESSION_FORM_FIELDS);
