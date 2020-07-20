@@ -8,6 +8,6 @@ module('Integration | Component | ui table/cell/cell sessions dashboard', functi
 
   test('it renders', async function(assert) {
     await render(hbs `{{ui-table/cell/cell-sessions-dashboard}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Submitted'));
+    assert.ok(this.element.innerHTML.trim().includes(''));
   });
 });
