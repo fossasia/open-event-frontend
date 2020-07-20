@@ -12,6 +12,11 @@ export default class EditSpeakerRoute extends Route {
     return {
       event : eventDetails,
       forms : await eventDetails.query('customForms', {
+        filter: [{
+          name : 'form',
+          op   : 'eq',
+          val  : 'speaker'
+        }],
         sort         : 'id',
         'page[size]' : 0
       }),
