@@ -8,6 +8,12 @@ module('Integration | Component | ui table/cell/cell sessions', function(hooks) 
 
   test('it renders', async function(assert) {
     await render(hbs `{{ui-table/cell/cell-sessions}}`);
-    assert.ok(this.element.innerHTML.trim().includes(''));
+    if (this.element.innerHTML.trim().includes('Submitted')) {
+      assert.notOk(this.element.innerHTML.trim().includes('No Session Information Added Yet'));
+      assert.ok(this.element.innerHTML.trim().includes('Submitted'));
+    } else {
+      assert.notOk(this.element.innerHTML.trim().includes('Submitted'));
+      assert.ok(this.element.innerHTML.trim().includes('No Session Information Added Yet'));
+    }
   });
 });
