@@ -369,7 +369,7 @@
       {{t 'Choose from an existing session'}}
     </h4>
     <UiDropdown
-      @class="fluid search selection"
+      @class="fluid search selection {{if this.newSessionSelected "disabled"}}"
       @selected={{this.sessionDetails}}
       @onChange={{action (mut this.sessionDetails)}} as |execute mapper|>
       <i class="dropdown icon"></i>
@@ -396,11 +396,11 @@
       <UiCheckbox
         @name="sessionDetails"
         @class="toggle"
-        @checked={{addNewSession}}
+        @checked={{this.newSessionSelected}}
         @label={{t "Add a new Proposal"}}
-        @onChange={{action (mut addNewSession)}}/>
+        @onChange={{action "toggleNewSessionSelected" this.newSessionSelected}}/>
     </div>
-    {{#if addNewSession}}
+    {{#if this.shouldShowNewSessionDetails}}
       {{#each this.allFields.session as |field|}}
         {{#if field.isIncluded}}
           <div class="field">
