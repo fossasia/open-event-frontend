@@ -18,11 +18,11 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
     const event = this.modelFor('events.view');
     const data = {
       event,
-      customForms: await event.query('customForms', {
+      customForms: (await event.query('customForms', {
         filter       : filterOptions,
         sort         : 'id',
         'page[size]' : 50
-      }),
+      })).toArray().filter(field => field.form === 'attendee'),
       newFormField: {
         name : '',
         type : 'text'
