@@ -22,19 +22,19 @@
       <div class="two fields">
         <div class="field {{unless this.minMaxValid 'error'}}">
           <Input
-            @type="number"
+            @type="integer[1...]"
             @name="min_price"
             placeholder={{t "Min"}}
             @value={{this.ticket.minPrice}}
-            @min={{1}} />
+             />
         </div>
         <div class="field {{unless this.minMaxValid 'error'}}">
           <Input
-            @type="number"
+            @type="integer[1...]"
             @name="max_price"
             placeholder={{t "Max"}}
             @value={{this.ticket.maxPrice}}
-            @min={{1}} />
+             />
         </div>
       </div>
     {{else if (eq this.ticket.type 'free')}}
