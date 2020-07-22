@@ -50,9 +50,9 @@ export default Mixin.create(MutableArray, {
         fieldIdentifier : 'track',
         form            : 'session',
         type            : 'select',
-        isRequired      : true,
-        isIncluded      : true,
-        isFixed         : true,
+        isRequired      : false,
+        isIncluded      : false,
+        isFixed         : false,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
@@ -60,7 +60,7 @@ export default Mixin.create(MutableArray, {
         form            : 'session',
         type            : 'select',
         isRequired      : false,
-        isIncluded      : true,
+        isIncluded      : false,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
@@ -84,7 +84,7 @@ export default Mixin.create(MutableArray, {
         form            : 'session',
         type            : 'file',
         isRequired      : false,
-        isIncluded      : true,
+        isIncluded      : false,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
@@ -158,7 +158,7 @@ export default Mixin.create(MutableArray, {
         form            : 'speaker',
         type            : 'select',
         isRequired      : false,
-        isIncluded      : true,
+        isIncluded      : false,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
@@ -246,7 +246,7 @@ export default Mixin.create(MutableArray, {
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
-        isIncluded      : true,
+        isIncluded      : false,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
