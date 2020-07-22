@@ -50,9 +50,9 @@ export default Mixin.create(MutableArray, {
         fieldIdentifier : 'track',
         form            : 'session',
         type            : 'select',
-        isRequired      : false,
-        isIncluded      : false,
-        isFixed         : false,
+        isRequired      : true,
+        isIncluded      : true,
+        isFixed         : true,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
