@@ -7,7 +7,7 @@
       @value={{this.data.event.name}} />
   </div>
   <div class="field">
-    <label for="location">{{t 'Location'}}</label>
+    <label class="required" for="location">{{t 'Location'}}</label>
     <Widgets::Forms::LocationInput
       @inputId="location"
       @lat={{this.data.event.latitude}}
