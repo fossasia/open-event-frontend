@@ -8,7 +8,7 @@ import Component from '@ember/component';
 @classic
 @classNames('ui', 'celled', 'stackable', 'grid', 'ticket-row')
 export default class TicketInput extends Component {
-  @gte('ticket.maxPrice', 'ticket.minPrice')
+  @gte('ticket.price.max_price', 'ticket.price.min_price')
   minMaxValid;
 
   @action
