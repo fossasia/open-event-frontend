@@ -128,7 +128,9 @@ Router.map(function() {
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
-    this.route('view', { path: '/s/:session_id' });
+  });
+  this.route('my-sessions', { path: '/e' }, function() {
+    this.route('view', { path: '/:event_id/sessions/:session_id' });
   });
   this.route('notifications', function() {
     this.route('all', { path: '/:notification_state' });
