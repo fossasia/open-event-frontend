@@ -17,7 +17,6 @@ export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, E
         copyright           : this.store.createRecord('event-copyright'),
         stripeAuthorization : this.store.createRecord('stripe-authorization')
       }),
-      module : await this.store.queryRecord('module', {}),
       types  : await this.store.query('event-type', {
         sort: 'name'
       }),
