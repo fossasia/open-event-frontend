@@ -31,8 +31,7 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin, Eve
       types : await this.store.query('event-type', {
         sort: 'name'
       }),
-      module : await this.store.queryRecord('module', {}),
-      topics : await this.store.query('event-topic', {
+      topics: await this.store.query('event-topic', {
         sort    : 'name',
         include : 'event-sub-topics'
       })
