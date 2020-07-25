@@ -41,7 +41,7 @@ Router.map(function() {
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
-      this.route('list', { path: '/s/:session_status' });
+      this.route('list', { path: '/:session_status' });
       this.route('view', { path: '/:session_id' });
     });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
