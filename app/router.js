@@ -193,7 +193,6 @@ Router.map(function() {
       this.route('ticket-fees');
       this.route('billing');
     });
-    this.route('modules');
     this.route('content', function() {
       this.route('social-links');
       this.route('pages');
