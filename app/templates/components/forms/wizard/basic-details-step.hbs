@@ -168,8 +168,7 @@
         @removeItem={{action "removeItem" socialLink "socialLinks"}} />
     {{/each}}
   </div>
-  {{#if this.data.module.ticketInclude}}
-    <div class="ui section divider"></div>
+  <div class="ui section divider"></div>
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
       <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}}">
@@ -236,14 +235,6 @@
         {{t 'Donation Ticket'}}
       </button>
     </div>
-  {{else}}
-    <div class="field">
-      <label for="ticket_url">{{t 'Ticket URL'}}</label>
-      <Widgets::Forms::LinkInput
-        @inputId="ticket_url"
-        @segmentedLink={{this.data.event.segmentedTicketUrl}} />
-    </div>
-  {{/if}}
   {{#if this.hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>
