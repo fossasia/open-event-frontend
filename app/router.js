@@ -42,6 +42,7 @@ Router.map(function() {
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
       this.route('list', { path: '/s/:session_status' });
+      this.route('view', { path: '/:session_id' });
     });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
       this.route('new-speaker');
@@ -128,9 +129,6 @@ Router.map(function() {
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
-  });
-  this.route('my-sessions', { path: '/e' }, function() {
-    this.route('view', { path: '/:event_id/sessions/:session_id' });
   });
   this.route('notifications', function() {
     this.route('all', { path: '/:notification_state' });
