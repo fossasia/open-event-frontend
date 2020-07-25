@@ -54,8 +54,8 @@
       {{/if}}
     {{/each}}
   {{/if}}
-  <LinkTo @route="public.cfs.new-session">
-    <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Add New Session'}}</button>
-  </LinkTo>
+  <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSession'}}>
+    {{t 'Add New Session'}}
+  </button>
 {{/if}}
 <Modals::LoginSignupModal @isOpen={{this.isLoginModalOpen}} />

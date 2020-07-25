@@ -13,6 +13,18 @@ export default class CallForSpeakers extends Component {
     }
   }
 
+  @action
+  addSession() {
+    if (this.data.userSpeaker && this.data.userSpeaker.toArray().length) {
+      // speaker detail exists
+    } else {
+      this.notify.error(this.l10n.t('You need to add your speaker details first before submitting a session'),
+        {
+          id: 'add_new_session_error'
+        });
+    }
+  }
+
   @computed('data.userSpeaker')
   get isNewSpeaker() {
     return !(this.data.userSpeaker && this.data.userSpeaker.toArray().length);
