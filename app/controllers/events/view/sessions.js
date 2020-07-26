@@ -2,6 +2,8 @@ import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
 import { run } from '@ember/runloop';
 
+export const SESSION_STATES = ['pending', 'accepted', 'confirmed', 'rejected', 'withdrawn', 'canceled'];
+
 export default class extends Controller {
 
   isLoading = false;
@@ -10,6 +12,10 @@ export default class extends Controller {
   get onSessionRoute() {
     let { currentRouteName } = this.session;
     return currentRouteName !== 'events.view.sessions.create' && currentRouteName !== 'events.view.sessions.edit';
+  }
+
+  get sessionStates() {
+    return SESSION_STATES;
   }
 
     @action

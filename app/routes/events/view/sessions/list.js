@@ -1,19 +1,16 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+import { SESSION_STATES } from 'open-event-frontend/controllers/events/view/sessions';
+import { capitalize } from 'lodash-es';
+
+
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.params.session_status) {
-      case 'pending':
-        return this.l10n.t('Pending');
-      case 'confirmed':
-        return this.l10n.t('Confirmed');
-      case 'accepted':
-        return this.l10n.t('Accepted');
-      case 'rejected':
-        return this.l10n.t('Rejected');
-      default:
-        return this.l10n.t('Session');
+    if (SESSION_STATES.includes(this.params.session_status)) {
+      return this.l10n.t(capitalize(this.params.session_status));
+    } else {
+      return this.l10n.t('Session');
     }
   }
 
@@ -32,40 +29,15 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this.set('params', params);
     const searchField = 'title';
     let filterOptions = [];
-    if (params.session_status === 'pending') {
+
+    if (SESSION_STATES.includes(params.session_status)) {
       filterOptions = [
         {
           name : 'state',
           op   : 'eq',
-          val  : 'pending'
+          val  : params.session_status
         }
       ];
-    } else if (params.session_status === 'accepted') {
-      filterOptions = [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'accepted'
-        }
-      ];
-    } else if (params.session_status === 'rejected') {
-      filterOptions = [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'rejected'
-        }
-      ];
-    } else if (params.session_status === 'confirmed') {
-      filterOptions = [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
-        }
-      ];
-    } else {
-      filterOptions = [];
     }
 
     let store = this.modelFor('events.view');
