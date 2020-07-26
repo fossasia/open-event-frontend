@@ -18,6 +18,12 @@
       @inputId="facebook" />
   </div>
   <div class="field">
+    <label>{{t 'Instagram'}}</label>
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedInstagramUrl}}
+      @inputId="instagram" />
+  </div>
+  <div class="field">
     <label>{{t 'Google Group'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedGoogleUrl}}
