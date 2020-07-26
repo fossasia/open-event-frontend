@@ -72,6 +72,7 @@ export default ModelBase.extend({
   twitterUrl                 : attr('string'),
   supportUrl                 : attr('string'),
   facebookUrl                : attr('string'),
+  instagramUrl               : attr('string'),
   youtubeUrl                 : attr('string'),
   androidAppUrl              : attr('string'),
   frontendUrl                : attr('string'),
@@ -102,6 +103,7 @@ export default ModelBase.extend({
 
   segmentedSupportUrl    : computedSegmentedLink.bind(this)('supportUrl'),
   segmentedFacebookUrl   : computedSegmentedLink.bind(this)('facebookUrl'),
+  segmentedInstagramUrl  : computedSegmentedLink.bind(this)('instagramUrl'),
   segmentedTwitterUrl    : computedSegmentedLink.bind(this)('twitterUrl'),
   segmentedGoogleUrl     : computedSegmentedLink.bind(this)('googleUrl'),
   segmentedYoutubeUrl    : computedSegmentedLink.bind(this)('youtubeUrl'),

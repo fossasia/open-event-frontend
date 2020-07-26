@@ -51,6 +51,21 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
+        instagram: {
+          identifier : 'instagram',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'containsExactly[instagram.com]',
+              prompt : this.l10n.t('Please enter a valid instagram url')
+            },
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        },
         googleGroup: {
           identifier : 'google_group',
           optional   : true,
