@@ -48,14 +48,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : 'Avg Rating',
-        valuePath : 'averageRating'
-      },
-      {
-        name      : 'No. of ratings',
-        valuePath : 'feedbacks.length'
-      },
-      {
         name      : 'Track',
         valuePath : 'track.name'
       },
@@ -87,14 +79,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/events/view/sessions/cell-is-mail-sent'
       },
       {
-        name            : 'Actions',
+        name            : 'Change State',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         valuePath       : 'id',
         extraValuePaths : ['status'],
-        actions         : {
-          acceptProposal  : this.acceptProposal.bind(this),
-          confirmProposal : this.confirmProposal.bind(this),
-          rejectProposal  : this.rejectProposal.bind(this)
+        options         : {
+          sessionStateMap: this.model.sessionStateMap
+        },
+        actions: {
+          changeState: this.changeState.bind(this)
         }
       },
       {
@@ -192,94 +185,30 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  acceptProposal(session_id, sendEmail) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+  changeState(session_id, state, sendEmail) {
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
     session.setProperties({
       sendEmail,
-      'state'      : 'accepted',
-      'isMailSent' : sendEmail
+      state,
+      isMailSent: sendEmail
     });
     this.set('isLoading', true);
     session.save()
       .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been accepted and speaker has been notified via email.'),
+        sendEmail ? this.notify.success(this.l10n.t(`Session has been ${state} and speaker has been notified via email.`),
           {
-            id: 'session_accep_email'
+            id: 'session_state_email'
           })
-          : this.notify.success(this.l10n.t('Session has been accepted'),
+          : this.notify.success(this.l10n.t(`Session has been ${state}`),
             {
-              id: 'session_accep'
+              id: 'session_state'
             });
         this.refreshModel.bind(this)();
       })
       .catch(() => {
         this.notify.error(this.l10n.t('An unexpected error has occurred.'),
           {
-            id: 'session_unex_error'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-  }
-
-  @action
-  confirmProposal(session_id, sendEmail) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.setProperties({
-      sendEmail,
-      'state'      : 'confirmed',
-      'isMailSent' : sendEmail
-    });
-    this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been confirmed and speaker has been notified via email.'),
-          {
-            id: 'session_confirm_email'
-          })
-          : this.notify.success(this.l10n.t('Session has been confirmed'),
-            {
-              id: 'session_confirm'
-            });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_confirm_unexpected'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-  }
-
-  @action
-  rejectProposal(session_id, sendEmail) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.setProperties({
-      sendEmail,
-      'state'      : 'rejected',
-      'isMailSent' : sendEmail
-    });
-    this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been rejected and speaker has been notified via email.'),
-          {
-            id: 'session_reject_email'
-          })
-          : this.notify.success(this.l10n.t('Session has been rejected'),
-            {
-              id: 'session_rejected'
-            });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_reject_error'
+            id: 'session_state_unexpected'
           });
       })
       .finally(() => {
