@@ -58,7 +58,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Change State',
+        name            : 'Actions',
         cellComponent   : 'ui-table/cell/cell-simple-buttons',
         valuePath       : 'id',
         extraValuePaths : ['event'],
