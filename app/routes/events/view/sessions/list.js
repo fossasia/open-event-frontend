@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
-import { SESSION_STATES } from 'open-event-frontend/controllers/events/view/sessions';
 import { capitalize } from 'lodash-es';
+import { SESSION_STATES } from 'open-event-frontend/utils/dictionary/sessions';
 
+let sessionStateMapCached = null;
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
@@ -59,7 +60,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         }
       ]
     };
-    let feedbacks = await this.authManager.currentUser.query('feedbacks', queryObject);
+    const feedbacksPromise = this.authManager.currentUser.query('feedbacks', queryObject);
 
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
@@ -70,9 +71,18 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
     queryString = this.applySortFilters(queryString, params);
 
+    const sessionsPromise = this.asArray(store.query('sessions', queryString));
+
+    const sessionStatesMapPromise = sessionStateMapCached || this.loader.load('sessions/states');
+
+    const [feedbacks, sessions, sessionStateMap] = await Promise.all([feedbacksPromise, sessionsPromise, sessionStatesMapPromise]);
+
+    sessionStateMapCached = sessionStateMap;
+
     return {
-      sessions: await this.asArray(store.query('sessions', queryString)),
-      feedbacks
+      sessions,
+      feedbacks,
+      sessionStateMap
     };
   }
 

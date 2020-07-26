@@ -1,8 +1,7 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
 import { run } from '@ember/runloop';
-
-export const SESSION_STATES = ['pending', 'accepted', 'confirmed', 'rejected', 'withdrawn', 'canceled'];
+import { SESSION_STATES } from 'open-event-frontend/utils/dictionary/sessions';
 
 export default class extends Controller {
 
