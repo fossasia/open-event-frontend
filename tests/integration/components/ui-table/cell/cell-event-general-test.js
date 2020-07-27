@@ -9,22 +9,14 @@ module('Integration | Component | ui table/cell/cell event general', function(ho
   const extraRecords = { identifier: 'abc215f', logoUrl: 'url' };
   const record = 'Event';
 
-  const props = {
-    actions: {
-      editEvent     : () => {},
-      moveToDetails : () => {}
-    }
-  };
-
   test('it renders', async function(assert) {
 
     this.setProperties({
       record,
-      props,
       extraRecords
     });
 
-    await render(hbs`{{ui-table/cell/cell-event-general extraRecords=extraRecords record=record props=props}}`);
+    await render(hbs`{{ui-table/cell/cell-event-general extraRecords=extraRecords record=record}}`);
     assert.ok(this.element.textContent.trim().includes('Event'));
   });
 });

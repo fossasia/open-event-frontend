@@ -9,8 +9,6 @@ module('Integration | Component | ui table/cell/cell event', function(hooks) {
   const record = { name: 'Event', image: 'url' };
   const props = {
     actions: {
-      moveToDetails        : () => {},
-      editEvent            : () => {},
       openDeleteEventModal : () => {},
       deleteEvent          : () => {},
       restoreEvent         : () => {}

@@ -22,8 +22,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
            hasRestorePrivileges: this.hasRestorePrivileges
          },
          actions: {
-           moveToDetails        : this.moveToDetails.bind(this),
-           editEvent            : this.editEvent.bind(this),
            openDeleteEventModal : this.openDeleteEventModal.bind(this),
            deleteEvent          : this.deleteEvent.bind(this),
            restoreEvent         : this.restoreEvent.bind(this)
@@ -104,24 +102,14 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
    }
 
   @action
-   moveToDetails(id) {
-     this.transitionToRoute('events.view', id);
+   openDeleteEventModal(id, name) {
+     this.setProperties({
+       isEventDeleteModalOpen : true,
+       confirmName            : '',
+       eventName              : name,
+       eventId                : id
+     });
    }
-
-  @action
-  editEvent(id) {
-    this.transitionToRoute('events.view.edit.basic-details', id);
-  }
-
-  @action
-  openDeleteEventModal(id, name) {
-    this.setProperties({
-      isEventDeleteModalOpen : true,
-      confirmName            : '',
-      eventName              : name,
-      eventId                : id
-    });
-  }
 
   @action
   async deleteEvent() {
