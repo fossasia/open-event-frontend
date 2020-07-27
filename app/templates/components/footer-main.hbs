@@ -46,6 +46,11 @@
             <i class="facebook f icon"></i> {{t 'Facebook'}}
           </a>
         {{/if}}
+        {{#if this.socialLinks.instagramUrl}}
+          <a class="item" href="{{this.socialLinks.instagramUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="instagram icon"></i> {{t 'Instagram'}}
+          </a>
+        {{/if}}
         {{#if this.socialLinks.twitterUrl}}
           <a class="item" href="{{this.socialLinks.twitterUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="twitter icon"></i> {{t 'Twitter'}}
@@ -63,7 +68,7 @@
         {{/if}}
         {{#if this.socialLinks.googleUrl}}
           <a class="item" href="{{this.socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
-            <i class="google plus icon"></i> {{t 'Google +'}}
+            <i class="google groups icon"></i> {{t 'Google Groups'}}
           </a>
         {{/if}}
       </div>
