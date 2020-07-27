@@ -5,18 +5,11 @@
         <LinkTo @route="admin.sessions.list" @model="all" class="item">
           {{t 'All'}}
         </LinkTo>
-        <LinkTo @route="admin.sessions.list" @model="confirmed" class="item">
-          {{t 'Confirmed'}}
-        </LinkTo>
-        <LinkTo @route="admin.sessions.list" @model="pending" class="item">
-          {{t 'Pending'}}
-        </LinkTo>
-        <LinkTo @route="admin.sessions.list" @model="accepted" class="item">
-          {{t 'Accepted'}}
-        </LinkTo>
-        <LinkTo @route="admin.sessions.list" @model="rejected" class="item">
-          {{t 'Rejected'}}
-        </LinkTo>
+        {{#each this.model.sessionStates as |state|}}
+          <LinkTo @route="admin.sessions.list" @model={{state}} class="item">
+            {{t (capitalize state)}}
+          </LinkTo>
+        {{/each}}
         <LinkTo @route="admin.sessions.list" @model="deleted" class="item">
           {{t 'Deleted'}}
         </LinkTo>

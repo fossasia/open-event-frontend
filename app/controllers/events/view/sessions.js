@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
 import { run } from '@ember/runloop';
+import { SESSION_STATES } from 'open-event-frontend/utils/dictionary/sessions';
 
 export default class extends Controller {
 
@@ -10,6 +11,10 @@ export default class extends Controller {
   get onSessionRoute() {
     let { currentRouteName } = this.session;
     return currentRouteName !== 'events.view.sessions.create' && currentRouteName !== 'events.view.sessions.edit';
+  }
+
+  get sessionStates() {
+    return SESSION_STATES;
   }
 
     @action
