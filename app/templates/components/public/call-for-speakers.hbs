@@ -42,9 +42,9 @@
 {{/if}}
 {{#if this.data.speakersCall.isOpen}}
   {{#if this.isNewSpeaker}}
-    <LinkTo @route="public.cfs.new-speaker" class="ui teal button">
+    <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
       {{t 'Add Speaker Details'}}
-    </LinkTo>
+    </button>
   {{else}}
     {{#each this.data.userSpeaker as |speaker|}}
       {{#if speaker.id}}

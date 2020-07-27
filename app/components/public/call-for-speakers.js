@@ -9,9 +9,9 @@ export default class CallForSpeakers extends Component {
   router;
 
   @action
-  openModal() {
+  addSpeaker() {
     if (this.session.isAuthenticated) {
-      this.set('isCfsModalOpen', true);
+      this.router.transitionTo('public.cfs.new-speaker');
     } else {
       this.set('isLoginModalOpen', true);
     }
