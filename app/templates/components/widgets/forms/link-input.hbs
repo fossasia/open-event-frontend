@@ -10,12 +10,6 @@
         <div class="menu">
           <div class="item" data-value="http">http://</div>
           <div class="item" data-value="https">https://</div>
-          <div class="item" data-value="https://twitter.com/"> https://twitter.com/</div>
-          <div class="item" data-value="https://github.com/">https://github.com/</div>
-          <div class="item" data-value="https://www.linkedin.com/">https://www.linkedin.com/</div>
-          <div class="item" data-value="https://instagram.com/">https://instagram.com/</div>
-          <div class="item" data-value="https://facebook.com/">https://facebook.com/</div>
-          <div class="item" data-value="https://youtube.com/">https://youtube.com/</div>
         </div>
       </UiDropdown>
       <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
@@ -31,60 +25,6 @@
       {{/if}}
     </div>
   </div>
-{{else if (eq this.inputId 'speaker_twitter')}}
-  <UiDropdown @class="label" @selected={{'https://twitter.com/'}} @onChange={{action (mut this.protocol)}}>
-    <div class="text">https://twitter.com/</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="https://twitter.com/">https://twitter.com/</div>
-    </div>
-  </UiDropdown>
-  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_github')}}
-  <UiDropdown @class="label" @selected={{'https://github.com/'}} @onChange={{action (mut this.protocol)}}>
-    <div class="text">https://github.com/</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="https://github.com/">https://github.com/</div>
-    </div>
-  </UiDropdown>
-  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_facebook')}}
-  <UiDropdown @class="label" @selected={{'https://facebook.com/'}} @onChange={{action (mut this.protocol)}}>
-    <div class="text">https://facebook.com/</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="https://facebook.com/">https://facebook.com/</div>
-    </div>
-  </UiDropdown>
-  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_instagram')}}
-  <UiDropdown @class="label" @selected={{'https://instagram.com/'}} @onChange={{action (mut this.protocol)}}>
-    <div class="text">https://instagram.com/</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="https://instagram.com/">https://instagram.com/</div>
-    </div>
-  </UiDropdown>
-  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_linkedin')}}
-  <UiDropdown @class="label" @selected={{'https://linkedin.com/'}} @onChange={{action (mut this.protocol)}}>
-    <div class="text">https://linkedin.com/</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="https://linkedin.com/">https://linkedin.com/</div>
-    </div>
-  </UiDropdown>
-  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_youtube')}}
-  <UiDropdown @class="label" @selected={{'https://youtube.com/'}} @onChange={{action (mut this.protocol)}}>
-    <div class="text">https://youtube.com/</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="https://youtube.com/">https://youtube.com/</div>
-    </div>
-  </UiDropdown>
-  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
 {{else}}
   <UiDropdown @class="label" @selected={{this.protocol}} @onChange={{action (mut this.protocol)}}>
     <div class="text">https://</div>
