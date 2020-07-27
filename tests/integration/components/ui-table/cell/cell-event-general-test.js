@@ -12,8 +12,7 @@ module('Integration | Component | ui table/cell/cell event general', function(ho
   const props = {
     actions: {
       editEvent     : () => {},
-      moveToDetails : () => {},
-      moveToPublic  : () => {}
+      moveToDetails : () => {}
     }
   };
 

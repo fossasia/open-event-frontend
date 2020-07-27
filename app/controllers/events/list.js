@@ -18,7 +18,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           dateFormat: 'MMMM DD, YYYY - HH:mm A'
         },
         actions: {
-          moveToPublic  : this.moveToPublic.bind(this),
           moveToDetails : this.moveToDetails.bind(this),
           editEvent     : this.editEvent.bind(this)
         }
@@ -57,11 +56,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-link'
       }
     ];
-  }
-
-  @action
-  moveToPublic(id) {
-    this.transitionToRoute('public', id);
   }
 
   @action
