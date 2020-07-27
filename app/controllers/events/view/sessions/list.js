@@ -197,7 +197,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     try {
       await session.save();
-      const message = `Session has been ${state}` + sendEmail ? ' and speaker has been notified via email.' : '';
+      const message = `Session has been ${state}` + (sendEmail ? ' and speaker has been notified via email.' : '');
       this.notify.success(this.l10n.t(message), {
         id: 'session_state'
       });
