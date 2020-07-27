@@ -185,35 +185,32 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  changeState(session_id, state, sendEmail) {
+  async changeState(session_id, state, sendEmail) {
     const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const oldState = session.state;
     session.setProperties({
       sendEmail,
       state,
       isMailSent: sendEmail
     });
     this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t(`Session has been ${state} and speaker has been notified via email.`),
-          {
-            id: 'session_state_email'
-          })
-          : this.notify.success(this.l10n.t(`Session has been ${state}`),
-            {
-              id: 'session_state'
-            });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_state_unexpected'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
+
+    try {
+      await session.save();
+      const message = `Session has been ${state}` + sendEmail ? ' and speaker has been notified via email.' : '';
+      this.notify.success(this.l10n.t(message), {
+        id: 'session_state'
       });
+      this.refreshModel.bind(this)();
+    } catch (e) {
+      session.set('state', oldState);
+      console.error('Error while changing session state in organizer session list', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+        id: 'session_state_unexpected'
+      });
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 
   @action
