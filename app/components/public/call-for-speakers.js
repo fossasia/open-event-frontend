@@ -1,9 +1,13 @@
 import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class CallForSpeakers extends Component {
+  @service
+  router;
+
   @action
   openModal() {
     if (this.session.isAuthenticated) {
@@ -17,6 +21,7 @@ export default class CallForSpeakers extends Component {
   addSession() {
     if (this.data.userSpeaker && this.data.userSpeaker.toArray().length) {
       // speaker detail exists
+      this.router.transitionTo('public.cfs.new-session');
     } else {
       this.notify.error(this.l10n.t('You need to add your speaker details first before submitting a session'),
         {
