@@ -472,15 +472,18 @@
           </label>
           <Textarea
             @id="cheque_details"
-            @value={{this.data.event.chequeDetails}} />          </div>
+            @value={{this.data.event.chequeDetails}} 
+          /> 
+        </div>
       {{/if}}
 
       <div class="field payments">
         <div class="ui checkbox">
           <Input
-@type="checkbox"
-@id="payment_by_bank"
-@checked={{this.data.event.canPayByBank}} />
+            @type="checkbox"
+            @id="payment_by_bank"
+            @checked={{this.data.event.canPayByBank}} 
+          />
           <label for="payment_by_bank">
             {{t 'YES, accept payment by Telegraphic Transfer(TT) / Bank Transfer '}}
           </label>
@@ -493,16 +496,18 @@
             {{t 'Enter your bank details and other required details/instructions to ticket buyers'}}
           </label>
           <Textarea
-@id="bank_details"
-@value={{this.data.event.bankDetails}} />        </div>
+            @id="bank_details"
+            @value={{this.data.event.bankDetails}} 
+          />
+        </div>
       {{/if}}
 
       <div class="field payments">
         <div class="ui checkbox">
           <Input
-@type="checkbox"
-@id="payment_onsite"
-@checked={{this.data.event.canPayOnsite}} />
+            @type="checkbox"
+            @id="payment_onsite"
+            @checked={{this.data.event.canPayOnsite}} />
           <label for="payment_onsite">
             {{t 'YES, accept payment at the event (on site) '}}
           </label>
@@ -515,8 +520,10 @@
             {{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}
           </label>
           <Textarea
-@id="on_site_details"
-@value={{this.data.event.onsiteDetails}} />        </div>
+            @id="on_site_details"
+            @value={{this.data.event.onsiteDetails}} 
+          />
+        </div>
       {{/if}}
 
       <div class="ui section divider"></div>
@@ -561,11 +568,12 @@
         {{/if}}
         <div class="ui hidden divider"></div>
         <div class="field">
-          <div class="ui radio checkbox">
+          <div class="ui checkbox">
             <Input
-@type="checkbox"
-@id="billing_info_mandatory"
-@checked={{this.data.event.isBillingInfoMandatory}} />
+              @type="checkbox"
+              @id="billing_info_mandatory"
+              @checked={{this.data.event.isBillingInfoMandatory}} 
+            />
             <label for="billing_info">
               <strong>{{t 'Billing Info'}}:</strong>
               {{t 'Require Billing Information from Ticket Buyer'}}
@@ -643,8 +651,9 @@
     <div class="field">
       <label for="code_of_conduct">{{t 'Code of Conduct'}}</label>
       <Widgets::Forms::RichTextEditor
-@textareaId="code_of_conduct"
-@value={{this.data.event.codeOfConduct}} />
+        @textareaId="code_of_conduct"
+        @value={{this.data.event.codeOfConduct}}
+      />
     </div>
   {{/if}}
   <div class="ui section divider"></div>
@@ -670,15 +679,16 @@
       </div>
     </label>
     <UiDropdown
-@class="search selection"
-@selected={{this.data.event.copyright.licence}}
-@onChange={{action "updateCopyright"}}
-@forceSelection={{false}}
-@fullTextSearch={{true}}>
+      @class="search selection"
+      @selected={{this.data.event.copyright.licence}}
+      @onChange={{action "updateCopyright"}}
+      @forceSelection={{false}}
+      @fullTextSearch={{true}}>
       <Input
-@type="hidden"
-@id="license"
-@value={{this.data.event.copyright.licence}} />
+        @type="hidden"
+        @id="license"
+        @value={{this.data.event.copyright.licence}} 
+      />
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select License'}}</div>
       <div class="menu">
@@ -710,6 +720,7 @@
 </form>
 
 <Modals::TaxInfoModal
-@isOpen={{this.taxModalIsOpen}}
-@tax={{this.data.event.tax}}
-@hasTaxInfo={{this.data.event.isTaxEnabled}} />
+  @isOpen={{this.taxModalIsOpen}}
+  @tax={{this.data.event.tax}}
+  @hasTaxInfo={{this.data.event.isTaxEnabled}} 
+/>
