@@ -31,32 +31,32 @@
       {{/if}}
     </div>
   </div>
-{{else if ( identifySocialLink this.inputId 'twitter') }}
+{{else if (identify-social-link this.inputId 'twitter') }}
   <UiDropdown @class="label" @selected={{'https://twitter.com/'}} @onChange={{action (mut this.protocol)}}>
       <div class="item" data-value="https://twitter.com/">https://twitter.com/</div>
   </UiDropdown>
   <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_github')}}
+{{else if (identify-social-link this.inputId 'github')}}
   <UiDropdown @class="label" @selected={{'https://github.com/'}} @onChange={{action (mut this.protocol)}}>
       <div class="item" data-value="https://github.com/">https://github.com/</div>
   </UiDropdown>
   <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_facebook')}}
+{{else if (identify-social-link this.inputId 'facebook')}}
   <UiDropdown @class="label" @selected={{'https://facebook.com/'}} @onChange={{action (mut this.protocol)}}>
       <div class="item" data-value="https://facebook.com/">https://facebook.com/</div>
   </UiDropdown>
   <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_instagram')}}
+{{else if (identify-social-link this.inputId 'instagram')}}
   <UiDropdown @class="label" @selected={{'https://instagram.com/'}} @onChange={{action (mut this.protocol)}}>
       <div class="item" data-value="https://instagram.com/">https://instagram.com/</div>
   </UiDropdown>
   <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_linkedin')}}
+{{else if (identify-social-link this.inputId 'linkedin')}}
   <UiDropdown @class="label" @selected={{'https://linkedin.com/'}} @onChange={{action (mut this.protocol)}}>
       <div class="item" data-value="https://linkedin.com/">https://linkedin.com/</div>
   </UiDropdown>
   <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
-{{else if (eq this.inputId 'speaker_youtube')}}
+{{else if (identify-social-link this.inputId 'youtube')}}
   <UiDropdown @class="label" @selected={{'https://youtube.com/'}} @onChange={{action (mut this.protocol)}}>
       <div class="item" data-value="https://youtube.com/">https://youtube.com/</div>
   </UiDropdown>
@@ -68,6 +68,12 @@
     <div class="menu">
       <div class="item" data-value="http">http://</div>
       <div class="item" data-value="https">https://</div>
+      <div class="item" data-value="https://twitter.com/"> https://twitter.com/</div>
+      <div class="item" data-value="https://github.com/">https://github.com/</div>
+      <div class="item" data-value="https://www.linkedin.com/">https://www.linkedin.com/</div>
+      <div class="item" data-value="https://instagram.com/">https://instagram.com/</div>
+      <div class="item" data-value="https://facebook.com/">https://facebook.com/</div>
+      <div class="item" data-value="https://youtube.com/">https://youtube.com/</div>
     </div>
   </UiDropdown>
   <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
