@@ -91,13 +91,11 @@
         </table>
       </div>
     </div>
-  {{/if}}
-  {{#if this.data.event.isTicketFormEnabled}}
-   <Forms::Wizard::CustomFormInput
-     @newFormField={{this.data.newFormField}}
-     @customForms={{this.data.customForms}}
-     @event={{this.data.event}}
-     @form="attendee" />
+    <Forms::Wizard::CustomFormInput
+      @newFormField={{this.data.newFormField}}
+      @customForms={{this.data.customForms}}
+      @event={{this.data.event}}
+      @form="attendee" />
   {{/if}}
   <div class="spacer-50"></div>
   <div class="{{if this.device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
