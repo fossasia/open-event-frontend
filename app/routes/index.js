@@ -132,6 +132,32 @@ export default class IndexRoute extends Route {
         sort    : 'starts-at',
         include : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter  : filterOptions
+      }),
+      featuredEvents: await this.store.query('event', {
+        sort    : 'starts-at',
+        include : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter  : [
+          {
+            and:
+            [
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'published'
+              },
+              {
+                name : 'privacy',
+                op   : 'eq',
+                val  : 'public'
+              },
+              {
+                name : 'is-featured',
+                op   : 'eq',
+                val  : true
+              }
+            ]
+          }
+        ]
       })
     };
   }
@@ -139,6 +165,7 @@ export default class IndexRoute extends Route {
   setupController(controller, model) {
     super.setupController(...arguments);
     controller.set('filteredEvents', model.filteredEvents);
+    controller.set('featuredEvents', model.featuredEvents);
     this.set('controller', controller);
   }
 

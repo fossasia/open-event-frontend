@@ -28,11 +28,6 @@ export default class IndexController extends Controller {
   }
 
   @computed('filteredEvents.[]')
-  get featuredEvents() {
-    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
-  }
-
-  @computed('filteredEvents.[]')
   get promotedEvents() {
     return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isPromoted}) : null;
   }
