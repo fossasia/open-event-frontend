@@ -154,6 +154,16 @@ export default class IndexRoute extends Route {
                 name : 'is-featured',
                 op   : 'eq',
                 val  : true
+              },
+              {
+                name : 'starts-at',
+                op   : 'ge',
+                val  : moment().toISOString()
+              },
+              {
+                name : 'ends-at',
+                op   : 'ge',
+                val  : moment().toISOString()
               }
             ]
           }
