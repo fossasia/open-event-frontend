@@ -34,7 +34,7 @@
             {{/if}}
           </a>
           
-            <button class="ui button labeled icon small" {{action 'togglePublishState'}}>
+            <button class="ui button labeled icon small" {{action 'openConfirmModal'}}>
               {{#if (eq this.model.state 'published')}}
                 <i class="ban icon"></i>
                 {{t 'Unpublish'}}
@@ -90,3 +90,4 @@
   {{!-- the edit page will be rendered without any of the above tabs --}}
   {{outlet}}
 {{/if}}
+<Modals::PublishUnpublishModal @isOpen={{this.isPublishUnpublishModalOpen}} @state={{this.model.state}} @togglePublishState={{action 'togglePublishState'}} />
