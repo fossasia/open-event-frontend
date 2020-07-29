@@ -37,10 +37,25 @@
     {{/unless}}
   {{/unless}}
 <div class="ui hidden divider"></div>
+{{#if this.isNewSession}}
+  <p>{{t 'No session have been submitted'}}</p>
+{{/if}}
 {{#if this.data.speakersCall.isOpen}}
-  <button type="submit" class="ui teal submit button" {{action 'openModal'}}>
-    {{t 'Submit Proposal'}}
+  {{#if this.isNewSpeaker}}
+    <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
+      {{t 'Add Speaker Details'}}
+    </button>
+  {{else}}
+    {{#each this.data.userSpeaker as |speaker|}}
+      {{#if speaker.id}}
+        <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}}>
+          <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
+        </LinkTo>
+      {{/if}}
+    {{/each}}
+  {{/if}}
+  <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSession'}}>
+    {{t 'Add New Session'}}
   </button>
 {{/if}}
-<Modals::CfsProposalModal @isOpen={{this.isCfsModalOpen}} @isNewSpeaker={{this.isNewSpeaker}} @isNewSession={{this.isNewSession}} @data={{this.data}} />
 <Modals::LoginSignupModal @isOpen={{this.isLoginModalOpen}} />
