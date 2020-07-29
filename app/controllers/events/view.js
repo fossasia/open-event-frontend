@@ -4,7 +4,13 @@ import { action } from '@ember/object';
 
 export default class extends Controller {
   @action
+  openConfirmModal() {
+    this.set('isPublishUnpublishModalOpen', true);
+  }
+
+  @action
   togglePublishState() {
+    this.set('isPublishUnpublishModalOpen', false);
     if (isEmpty(this.model.locationName)) {
       this.notify.error(this.l10n.t('Your event must have a location before it can be published.'),
         {
