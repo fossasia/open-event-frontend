@@ -14,10 +14,22 @@
       <div class="twelve wide column {{unless this.device.isMobile 'right aligned'}}">
         {{#if this.device.isMobile}}
           <div class="ui icon fluid buttons">
-            <a href="{{this.model.url}}" class="ui button" target="_blank" rel="noopener" data-tooltip="{{if (eq this.model.state 'published') 'View' 'Preview'}}" data-position="top left">
+            <a 
+              href="{{this.model.url}}" 
+              class="ui button {{if (eq this.model.state 'published') 'green'}}" 
+              target="_blank" 
+              rel="noopener" 
+              data-tooltip="{{if (eq this.model.state 'published') 'View' 'Preview'}}" 
+              data-position="top left" 
+            >
               <i class="unhide icon"></i>
             </a>
-            <button class="ui button" {{action 'togglePublishState'}} data-tooltip="{{if (eq this.model.state 'published') 'Unpublish' 'Publish'}}" data-position="top left">
+            <button 
+              class="ui button {{if (eq this.model.state 'published') 'orange' 'green'}}" 
+              {{action 'togglePublishState'}} 
+              data-tooltip="{{if (eq this.model.state 'published') 'Unpublish' 'Publish'}}" 
+              data-position="top left"
+            >
               <i class="{{if (eq this.model.state 'published') 'ban' 'check'}} icon"></i>
             </button>
             {{!-- <button class="ui button {{if this.isCopying 'loading'}}" {{action 'copyEvent'}} data-tooltip={{t 'Copy'}} data-position="top left">
@@ -25,7 +37,10 @@
             </button> --}}
           </div>
         {{else}}
-          <a href="{{this.model.url}}" target="_blank" rel="noopener" class="ui button labeled icon small">
+          <a 
+            href="{{this.model.url}}" 
+            target="_blank" rel="noopener" 
+            class="ui button labeled icon small {{if (eq this.model.state 'published') 'green'}}" >
             <i class="unhide icon"></i>
             {{#if (eq this.model.state 'published')}}
               {{t 'View'}}
@@ -34,7 +49,7 @@
             {{/if}}
           </a>
           
-            <button class="ui button labeled icon small" {{action 'openConfirmModal'}}>
+            <button class="ui button labeled icon small {{if (eq this.model.state 'published') 'orange' 'green'}}" {{action 'openConfirmModal'}}>
               {{#if (eq this.model.state 'published')}}
                 <i class="ban icon"></i>
                 {{t 'Unpublish'}}
