@@ -1,0 +1,144 @@
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
+    <div class="ui section divider"></div>
+  <div class="grouped fields" id="social-links">
+    <label>{{t 'Links & Social Media'}}</label>
+    <Widgets::Forms::LinkInput
+      @hasLinkName={{true}}
+      @fixedName={{true}}
+      @linkName={{t "External event URL"}}
+      @inputId="external_event_url"
+      @segmentedLink={{this.data.event.segmentedExternalEventUrl}}
+      @isChild={{unless this.data.event.socialLinks true}}
+      @canRemoveItem={{false}}
+      @addItem={{action "addItem" "socialLinks" "social-link"}} />
+
+    {{#each this.socialLinks as |socialLink|}}
+      <Widgets::Forms::LinkInput
+        @hasLinkName={{true}}
+        @linkName={{socialLink.name}}
+        @inputId={{socialLink.identifier}}
+        @segmentedLink={{socialLink.segmentedLink}}
+        @isChild={{true}}
+        @addItem={{action "addItem" "socialLinks" "social-link"}}
+        @removeItem={{action "removeItem" socialLink "socialLinks"}} />
+    {{/each}}
+  </div>
+
+   <div class="ui section divider"></div>
+  <div class="grouped fields">
+    <label for="privacy">{{t 'Listing Privacy'}}</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        {{widgets/forms/radio-button this.value name='privacy' id='privacy_public' value='public' checked=this.data.event.privacy}}
+        <label for="privacy_public">
+          <strong>{{t 'Public event'}}:</strong>
+          {{t 'list this event on this site and search engines'}}
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        {{widgets/forms/radio-button this.value name='privacy' id='privacy_private' value='private' checked=this.data.event.privacy}}
+        <label for="privacy_private">
+          <strong>{{t 'Private event'}}:</strong>
+          {{t 'do not list this event publicly'}}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>{{t 'Event Type'}}</label>
+    <PowerSelect
+      @selected={{this.data.event.type}}
+      @options={{this.data.types}}
+      @placeholder={{t 'Select Event Type'}}
+      @onChange={{action (mut this.data.event.type)}} as |type|>
+        {{type.name}}
+    </PowerSelect>
+  </div>
+  <div class="field">
+    <label>{{t 'Event Topic'}}</label>
+    <PowerSelect
+      @selected={{this.data.event.topic}}
+      @options={{this.data.topics}}
+      @placeholder={{t 'Select Event Topic'}}
+      @onChange={{action (mut this.data.event.topic)}} as |topic|>
+        {{topic.name}}
+    </PowerSelect>
+  </div>
+  <div class="field">
+    <label>{{t 'Event Sub-topic'}}</label>
+    <PowerSelect
+      @selected={{this.data.event.subTopic}}
+      @options={{this.subTopics}}
+      @placeholder={{t 'Select Event Sub-Topic'}}
+      @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
+        {{subTopic.name}}
+    </PowerSelect>
+  </div>
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui slider checkbox">
+      <Input
+@type="checkbox"
+@checked={{this.hasCodeOfConduct}}
+@id="add_code_of_conduct" />
+      <label for="add_code_of_conduct">{{t 'Add Code of Conduct'}}</label>
+    </div>
+  </div>
+
+  {{#if this.hasCodeOfConduct}}
+    <div class="field">
+      <label for="code_of_conduct">{{t 'Code of Conduct'}}</label>
+      <Widgets::Forms::RichTextEditor
+        @textareaId="code_of_conduct"
+        @value={{this.data.event.codeOfConduct}}
+      />
+    </div>
+  {{/if}}
+
+   <div class="ui section divider"></div>
+  <div class="field">
+    <label for="license">
+      {{t 'License of Event Data & Content'}}
+      ( <i class="fitted help icon link has popup"></i> )
+      <div class="ui flowing popup top left transition hidden">
+        <div class="ui one column divided grid">
+          <div class="column">
+            <strong>{{t 'Licenses'}}</strong>
+            <div class="ui bulleted list">
+              {{#each this.licenses as |license|}}
+                <div class="item">
+                  <a href="{{license.link}}" target="_blank" rel="noopener noreferrer">
+                    {{license.name}}
+                  </a>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+    <UiDropdown
+      @class="search selection"
+      @selected={{this.data.event.copyright.licence}}
+      @onChange={{action "updateCopyright"}}
+      @forceSelection={{false}}
+      @fullTextSearch={{true}}>
+      <Input
+        @type="hidden"
+        @id="license"
+        @value={{this.data.event.copyright.licence}} 
+      />
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select License'}}</div>
+      <div class="menu">
+        {{#each this.licenses as |license|}}
+          <div class="item" data-value="{{license.name}}">{{license.name}}</div>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+  <br>
+</form>
