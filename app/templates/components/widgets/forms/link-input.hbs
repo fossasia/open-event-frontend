@@ -1,12 +1,12 @@
 {{#if this.hasLinkName}}
   <div class="two wide field">
     <div class="ui labeled input">
-    <UiDropdown @class="label" @selected={{'Website'}} @onChange={{action (mut this.protocol)}}>
-      <div class="text">Website</div>
+    <UiDropdown @class="label" @selected={{this.socialmedia}} @onChange={{changelink}}>
+      <div class="text">Web</div>
       <i class="dropdown icon"></i>
       <div class="menu">
-        <div class="item" data-value='Website' >Website</div>
         <div class="item" data-value="Twitter">Twitter</div>
+        <div class="item" data-value='Website' >Website</div>
         <div class="item" data-value="Facebook">Facebook</div>
         <div class="item" data-value="Linkedin">Linkedin</div>
         <div class="item" data-value="Instagram">Instagram</div>
@@ -23,6 +23,12 @@
         <div class="menu">
           <div class="item" data-value="http">http://</div>
           <div class="item" data-value="https">https://</div>
+          <div class="item" data-value="https://twitter.com/"> https://twitter.com/</div>
+          <div class="item" data-value="https://github.com/">https://github.com/</div>
+          <div class="item" data-value="https://www.linkedin.com/">https://www.linkedin.com/</div>
+          <div class="item" data-value="https://instagram.com/">https://instagram.com/</div>
+          <div class="item" data-value="https://facebook.com/">https://facebook.com/</div>
+          <div class="item" data-value="https://youtube.com/">https://youtube.com/</div>
         </div>
       </UiDropdown>
       <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />

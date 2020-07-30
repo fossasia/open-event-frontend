@@ -18,6 +18,18 @@ export default class LinkInput extends Component {
   canAddItem = true;
   protocol = 'https';
   address = '';
+  socialmedia = 'Website';
+  @observes('socialmedia')
+  socialmediaObserver() {
+    this.setProperties({
+      socialmedia: this.socialmedia
+    });
+    if (this.socialmedia.includes('Twitter')) {
+      this.setProperties({
+        protocol: 'https://twitter.com'
+      });
+    }
+  }
 
   @observes('segmentedLink.{address,protocol}')
   segmentedLinkObserver() {
