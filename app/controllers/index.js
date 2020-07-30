@@ -12,15 +12,11 @@ export default class IndexController extends Controller {
   event_name = null;
   filterDate = null;
 
-  @computed('filteredEvents.[]')
+  @computed('filteredEvents.[]', 'featuredEvents.[]')
   get callForSpeakersEvents() {
-    let filteredEventsCfs = this.filteredEvents.filter(event => {
-      return isEventCfsOpen(event);
-    });
-    let featuredEventsCfs = this.featuredEvents.filter(event => {
-      return isEventCfsOpen(event);
-    });
-    let combinedCfsEvents = new Set(filteredEventsCfs.concat(featuredEventsCfs));
+    const filteredEventsCfs = this.filteredEvents.filter(isEventCfsOpen);
+    const featuredEventsCfs = this.featuredEvents.filter(isEventCfsOpen);
+    const combinedCfsEvents = new Set(filteredEventsCfs.concat(featuredEventsCfs));
     return Array.from(combinedCfsEvents);
   }
 
