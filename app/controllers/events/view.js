@@ -12,19 +12,21 @@ export default class extends Controller {
   togglePublishState() {
     this.set('isPublishUnpublishModalOpen', false);
     const { state } = this.model;
-    if (state === 'draft' && isEmpty(this.model.tickets)) {
-      this.notify.error(this.l10n.t('Your event must have tickets before it can be published.'),
-        {
-          id: 'event_tickets'
-        });
-      return;
-    }
-    if (state === 'draft' && isEmpty(this.model.locationName)) {
-      this.notify.error(this.l10n.t('Your event must have a location before it can be published.'),
-        {
-          id: 'event_location'
-        });
-      return;
+    if (state === 'draft') {
+      if (isEmpty(this.model.tickets)) {
+        this.notify.error(this.l10n.t('Your event must have tickets before it can be published.'),
+          {
+            id: 'event_tickets'
+          });
+        return;
+      }
+      if (isEmpty(this.model.locationName)) {
+        this.notify.error(this.l10n.t('Your event must have a location before it can be published.'),
+          {
+            id: 'event_location'
+          });
+        return;
+      }
     }
     this.set('isLoading', true);
     this.set('model.state', state === 'draft' ? 'published' : 'draft');
