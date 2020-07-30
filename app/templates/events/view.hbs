@@ -26,7 +26,7 @@
             </a>
             <button 
               class="ui button {{if (eq this.model.state 'published') 'orange' 'green'}}" 
-              {{action 'togglePublishState'}} 
+              {{action 'openConfirmModal'}} 
               data-tooltip="{{if (eq this.model.state 'published') 'Unpublish' 'Publish'}}" 
               data-position="top left"
             >
