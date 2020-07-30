@@ -1,6 +1,6 @@
 <form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
   <div class="field">
-    <label class="required" for="name">{{t 'Name'}}</label>
+    <label class="required" for="name">{{t 'Event Name'}}</label>
     <Input
       @type="text"
       @id="name"
@@ -125,20 +125,20 @@
         @type="checkbox"
         @checked={{this.data.event.hasOwnerInfo}}
         @id="add_owner_information" />
-      <label for="add_owner_information">{{t 'Add owner information'}}</label>
+      <label for="add_owner_information">{{t 'Add Organizer or Group Information'}}</label>
     </div>
   </div>
 
   {{#if this.data.event.hasOwnerInfo}}
     <div class="field">
-      <label for="owner_name">{{t 'Owner Name'}}</label>
+      <label for="owner_name">{{t 'Organizer or Group Name'}}</label>
       <Input
         @type="text"
         @id="owner_name"
         @value={{this.data.event.ownerName}} />
     </div>
     <div class="field">
-      <label for="owner_description">{{t 'Owner Description'}}</label>
+      <label for="owner_description">{{t 'About the Organizer or Group'}}</label>
       <Widgets::Forms::RichTextEditor
         @id="owner_description"
         @value={{this.data.event.ownerDescription}} />
