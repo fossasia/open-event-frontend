@@ -1,8 +1,13 @@
 import Controller from '@ember/controller';
 import { isEmpty } from '@ember/utils';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class extends Controller {
+  @computed('model.state', 'model.tickets', 'model.locationName')
+  get isEventPublishable() {
+    return !(this.model.state === 'draft' && (isEmpty(this.model.tickets) || isEmpty(this.model.locationName)));
+  }
+
   @action
   openConfirmModal() {
     this.set('isPublishUnpublishModalOpen', true);
