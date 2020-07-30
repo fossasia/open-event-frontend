@@ -14,17 +14,14 @@ export default class IndexController extends Controller {
 
   @computed('filteredEvents.[]')
   get callForSpeakersEvents() {
-    return this.filteredEvents.filter(event => {
-      const callForPapers = event.get('speakersCall');
-      const sessionEnabled = event.isSessionsSpeakersEnabled;
-      if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
-        return false;
-      }
-      const startDateTime = callForPapers.get('startsAt');
-      const endDateTime = callForPapers.get('endsAt');
-      const privacyState = callForPapers.get('privacy');
-      return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled) && (privacyState === 'public'));
+    let filteredEventsCfs = this.filteredEvents.filter(event => {
+      return isEventCfsOpen(event);
     });
+    let featuredEventsCfs = this.featuredEvents.filter(event => {
+      return isEventCfsOpen(event);
+    });
+    let combinedCfsEvents = new Set(filteredEventsCfs.concat(featuredEventsCfs));
+    return Array.from(combinedCfsEvents);
   }
 
   @computed('filteredEvents.[]')
@@ -42,4 +39,16 @@ export default class IndexController extends Controller {
     this.set('eventToShare', event);
     this.set('isShareModalOpen', true);
   }
+}
+
+function isEventCfsOpen(event) {
+  const callForPapers = event.get('speakersCall');
+  const sessionEnabled = event.isSessionsSpeakersEnabled;
+  if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
+    return false;
+  }
+  const startDateTime = callForPapers.get('startsAt');
+  const endDateTime = callForPapers.get('endsAt');
+  const privacyState = callForPapers.get('privacy');
+  return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled) && (privacyState === 'public'));
 }
