@@ -1,8 +1,8 @@
 {{#if this.hasLinkName}}
   <div class="two wide field">
     <div class="ui labeled input">
-    <UiDropdown @class="label" @selected={{this.socialmedia}} @onChange={{changelink}}>
-      <div class="text">Web</div>
+    <UiDropdown @class="label" @selected={{'Website'}} @onChange={{action (mut this.linkName)}}>
+      <div class="text">Website</div>
       <i class="dropdown icon"></i>
       <div class="menu">
         <div class="item" data-value="Twitter">Twitter</div>

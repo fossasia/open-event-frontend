@@ -18,19 +18,6 @@ export default class LinkInput extends Component {
   canAddItem = true;
   protocol = 'https';
   address = '';
-  socialmedia = 'Website';
-  @observes('socialmedia')
-  socialmediaObserver() {
-    this.setProperties({
-      socialmedia: this.socialmedia
-    });
-    if (this.socialmedia.includes('Twitter')) {
-      this.setProperties({
-        protocol: 'https://twitter.com'
-      });
-    }
-  }
-
   @observes('segmentedLink.{address,protocol}')
   segmentedLinkObserver() {
     this.setProperties({
@@ -57,6 +44,41 @@ export default class LinkInput extends Component {
     });
   }
 
+  @observes('linkName')
+  linkNameObserver() {
+    let link = this.linkName;
+    if (link === 'Twitter') {
+      this.set('segmentedLink', {
+        protocol : 'https://twitter.com/',
+        address  : ''
+      });
+    }
+    if (link.includes('Facebook')) {
+      this.set('segmentedLink', {
+        protocol : 'https://facebook.com/',
+        address  : ''
+      });
+    }
+    if (link.includes('Instagram')) {
+      this.set('segmentedLink', {
+        protocol : 'https://instagram.com/',
+        address  : ''
+      });
+    }
+    if (link.includes('Linkedin')) {
+      this.set('segmentedLink', {
+        protocol : 'https://www.linkedin.com/',
+        address  : ''
+      });
+    }
+    if (link.includes('Youtube')) {
+      this.set('segmentedLink', {
+        protocol : 'https://youtube.com/',
+        address  : ''
+      });
+    }
+  }
+
   didInsertElement() {
     super.didInsertElement(...arguments);
     if (this.segmentedLink) {
@@ -66,4 +88,5 @@ export default class LinkInput extends Component {
       });
     }
   }
+
 }
