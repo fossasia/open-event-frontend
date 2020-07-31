@@ -24,9 +24,9 @@
         </LinkTo>
       {{/if}}
     {{/each}}
-    {{#if this.isUpcoming}}
+    {{#if (not-eq this.model.status 'withdrawn')}}
       <button class="ui red button {{if this.device.isMobile 'fluid' 'right floated'}}"
-        {{action 'openProposalDeleteModal'}}>{{t 'Withdraw Proposal'}}</button>
+        {{action 'openProposalWithdrawModal'}}>{{t 'Withdraw Proposal'}}</button>
       {{#if this.device.isMobile}}
         <div class="ui hidden fitted divider"></div>
       {{/if}}
@@ -39,15 +39,7 @@
     <div class="ui segment">
       <h3 class="ui header">
         <div>
-          {{#if (eq this.model.state 'confirmed')}}
-            <div class="ui green large label">{{t 'Confirmed'}}</div>
-          {{else if (eq this.model.state 'pending')}}
-            <div class="ui yellow large label">{{t 'Pending'}}</div>
-          {{else if (eq this.model.state 'accepted')}}
-            <div class="ui yellow large label">{{t 'Accepted'}}</div>
-          {{else if (eq this.model.state 'rejected')}}
-            <div class="ui red large label">{{t 'Rejected'}}</div>
-          {{/if}}
+          <div class="ui {{ this.model.color }} large label">{{t (capitalize this.model.status)}}</div>
         </div>
       </h3>
       <div class="field">
@@ -91,7 +83,7 @@
   </div>
 </div>
 
-<Modals::ProposalDeleteModal
-  @isOpen={{this.isProposalDeleteModalOpen}}
+<Modals::ProposalWithdrawModal
+  @isOpen={{this.isProposalWithdrawModalOpen}}
   @proposalName={{this.model.title}}
-  @deleteProposal={{action "deleteProposal"}} />
+  @withdrawProposal={{action "withdrawProposal"}} />
