@@ -211,6 +211,11 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
+        if (this.deletedTickets) {
+          this.deletedTickets.forEach(ticket => {
+            ticket.destroyRecord();
+          });
+        }
         this.sendAction('save');
       });
     },

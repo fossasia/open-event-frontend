@@ -461,7 +461,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
-      deleteTicket.destroyRecord();
+      if (this.deletedTickets) {
+        this.deletedTickets.push(deleteTicket);
+      } else {
+        this.set('deletedTickets', [deleteTicket]);
+      }
+      deleteTicket.deleteRecord();
     },
 
     moveTicket(ticket, direction) {
