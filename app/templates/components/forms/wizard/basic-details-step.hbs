@@ -171,7 +171,7 @@
           {{#each this.tickets as |ticket index|}}
             <Widgets::Forms::TicketInput
               @ticket={{ticket}}
-              @isExpanded="true"
+              @isExpanded={{if this.data.event.id false true}}
               @timezone={{this.data.event.timezone}}
               @canMoveUp={{not-eq index 0}}
               @canMoveDown={{not-eq ticket.position (dec this.data.event.tickets.length)}}
