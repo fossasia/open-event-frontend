@@ -127,11 +127,24 @@ export default class IndexRoute extends Route {
 
   async model(params) {
     let filterOptions =  this._loadEvents(params, 'filterOptions');
+
+    let featuredEventsFilterOptions = this._loadEvents(params, 'filterOptions');
+    featuredEventsFilterOptions[0].and.push({
+      name : 'is-featured',
+      op   : 'eq',
+      val  : true
+    });
+
     return {
       filteredEvents: await this.store.query('event', {
         sort    : 'starts-at',
         include : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter  : filterOptions
+      }),
+      featuredEvents: await this.store.query('event', {
+        sort    : 'starts-at',
+        include : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter  : featuredEventsFilterOptions
       })
     };
   }
@@ -139,6 +152,7 @@ export default class IndexRoute extends Route {
   setupController(controller, model) {
     super.setupController(...arguments);
     controller.set('filteredEvents', model.filteredEvents);
+    controller.set('featuredEvents', model.featuredEvents);
     this.set('controller', controller);
   }
 
