@@ -12,6 +12,6 @@ module('Integration | Component | session card', function(hooks) {
   test('it renders', async function(assert) {
     this.set('session', session);
     await render(hbs`{{session-card session=session}}`);
-    assert.ok(this.element.innerHTML.trim().includes('rejected'));
+    assert.dom(this.element).includesText('Rejected');
   });
 });
