@@ -1,8 +1,13 @@
 import Controller from '@ember/controller';
 import { isEmpty } from '@ember/utils';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class extends Controller {
+  @computed('model.state', 'model.tickets', 'model.locationName')
+  get isEventPublishable() {
+    return !(this.model.state === 'draft' && (isEmpty(this.model.tickets) || isEmpty(this.model.locationName)));
+  }
+
   @action
   openConfirmModal() {
     this.set('isPublishUnpublishModalOpen', true);
@@ -11,15 +16,24 @@ export default class extends Controller {
   @action
   togglePublishState() {
     this.set('isPublishUnpublishModalOpen', false);
-    if (isEmpty(this.model.locationName)) {
-      this.notify.error(this.l10n.t('Your event must have a location before it can be published.'),
-        {
-          id: 'event_location'
-        });
-      return;
+    const { state } = this.model;
+    if (state === 'draft') {
+      if (isEmpty(this.model.tickets)) {
+        this.notify.error(this.l10n.t('Your event must have tickets before it can be published.'),
+          {
+            id: 'event_tickets'
+          });
+        return;
+      }
+      if (isEmpty(this.model.locationName)) {
+        this.notify.error(this.l10n.t('Your event must have a location before it can be published.'),
+          {
+            id: 'event_location'
+          });
+        return;
+      }
     }
     this.set('isLoading', true);
-    const { state } = this.model;
     this.set('model.state', state === 'draft' ? 'published' : 'draft');
     this.model.save()
       .then(() => {
