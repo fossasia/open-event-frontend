@@ -11,7 +11,7 @@
   </h3>
 
   <div class="field">
-    <label class="required" for="company">{{t 'Company'}}</label>
+    <label class="company" for="company">{{t 'Company'}}</label>
     <Input
       @type="text"
       @id="company"
@@ -19,7 +19,7 @@
   </div>
 
   <div class="field">
-    <label class="required" for="contactName">{{t 'Contact Name'}}</label>
+    <label class="contactName" for="contactName">{{t 'Contact Name'}}</label>
     <Input
       @type="text"
       @id="contactName"
@@ -27,7 +27,7 @@
   </div>
 
   <div class="field">
-    <label class="required" for="phone">{{t 'Phone'}}</label>
+    <label class="phone" for="phone">{{t 'Phone'}}</label>
     <Input
       @type="text"
       @id="phone"
@@ -35,7 +35,7 @@
   </div>
 
   <div class="field">
-    <label class="required" for="address">{{t 'Address'}}</label>
+    <label class="address" for="address">{{t 'Address'}}</label>
     <Textarea
       @rows="2"
       @id="address"
@@ -43,7 +43,7 @@
   </div>
 
   <div class="field">
-    <label class="required" for="zip">{{t 'Zip Code'}}</label>
+    <label class="zip" for="zip">{{t 'Zip Code'}}</label>
     <Input
       @type="text"
       @id="zip"
@@ -51,7 +51,7 @@
   </div>
 
   <div class="field">
-    <label class="required" for="city">{{t 'City'}}</label>
+    <label class="city" for="city">{{t 'City'}}</label>
     <Input
       @type="text"
       @id="city"
@@ -67,7 +67,7 @@
   </div>
 
   <div class="field">
-    <label class="required">{{t 'Country'}}</label>
+    <label class="country">{{t 'Country'}}</label>
     <UiDropdown
       @class="search selection"
       @selected={{this.userBillingInfo.billingCountry}}
