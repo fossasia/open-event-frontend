@@ -11,9 +11,9 @@
       <div class="header">
         <span>{{this.session.title}}</span>
         <div class="right floated author">
-          <div class="ui {{if (eq this.session.state 'confirmed') 'green' (if (eq this.session.state 'rejected') 'red' 'yellow')}}
+          <div class="ui {{session.color}}
           large label">
-            {{this.session.state}}
+            {{capitalize this.session.state}}
           </div>
         </div>
       </div>
