@@ -53,27 +53,33 @@ export default class LinkInput extends Component {
         address  : ''
       });
     }
-    if (link.includes('Facebook')) {
+    if (link === 'Facebook') {
       this.set('segmentedLink', {
         protocol : 'https://facebook.com/',
         address  : ''
       });
     }
-    if (link.includes('Instagram')) {
+    if (link === 'Instagram') {
       this.set('segmentedLink', {
         protocol : 'https://instagram.com/',
         address  : ''
       });
     }
-    if (link.includes('Linkedin')) {
+    if (link === 'Linkedin') {
       this.set('segmentedLink', {
         protocol : 'https://www.linkedin.com/',
         address  : ''
       });
     }
-    if (link.includes('Youtube')) {
+    if (link === 'Youtube') {
       this.set('segmentedLink', {
         protocol : 'https://youtube.com/',
+        address  : ''
+      });
+    }
+    if (link === 'Website') {
+      this.set('segmentedLink', {
+        protocol : 'https',
         address  : ''
       });
     }
