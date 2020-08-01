@@ -17,6 +17,6 @@ declare const config: {
     dsn: string;
     debug: boolean;
     development: boolean;
-    tracesSampleRate:number;
+    tracesSampleRate: number;
   }
 };
