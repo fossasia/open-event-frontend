@@ -193,6 +193,7 @@
                   @fullTextSearch={{true}}>
                   <Input
                     @type="hidden"
+                    @autocomplete="no"
                     @id="speaker_country"
                     @value={{this.data.speaker.country}} />
                   <i class="dropdown icon"></i>
@@ -308,6 +309,7 @@
                 @fullTextSearch={{true}}>
                 <Input
                   @type="hidden"
+                  @autocomplete="no"
                   @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
                   @value={{this.data.speaker.country}} />
                 <i class="dropdown icon"></i>

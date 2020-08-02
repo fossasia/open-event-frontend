@@ -44,7 +44,7 @@
   <div class="field">
     <label class="required">{{t 'Country'}}</label>
     <UiDropdown @class="search selection" @selected={{this.model.adminBillingCountry}} @forceSelection={{false}} @fullTextSearch={{true}}>
-      <Input @type="hidden" @id="adminBillingCountry" @value={{this.model.adminBillingCountry}} />
+      <Input @type="hidden" @autocomplete="no" @id="adminBillingCountry" @value={{this.model.adminBillingCountry}} />
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select country'}}</div>
       <div class="menu">
