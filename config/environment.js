@@ -57,7 +57,8 @@ module.exports = function(environment) {
     sentry: {
       dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
       debug       : !!process.env.SENTRY_DSN,
-      development : !process.env.SENTRY_DSN
+      development : !process.env.SENTRY_DSN,
+      tracesSampleRate: process.env.SENTRY_TRACE_SAMPLE_RATE || 0.01,
     },
 
     emberFullCalendar: {
