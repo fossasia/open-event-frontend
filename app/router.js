@@ -75,7 +75,7 @@ Router.map(function() {
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
-        this.route('edit', { path: '/edit/:session_id' });
+        this.route('edit', { path: '/:session_id/edit' });
       });
       this.route('tickets', function() {
         this.route('orders', function() {
