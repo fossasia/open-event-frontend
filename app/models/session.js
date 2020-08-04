@@ -4,6 +4,7 @@ import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 import { computed } from '@ember/object';
+import { stateColorMap } from 'open-event-frontend/utils/dictionary/sessions';
 
 const detectedTimezone = moment.tz.guess();
 
@@ -49,6 +50,10 @@ export default ModelBase.extend({
     }
   }),
 
+  color: computed('status', function() {
+    return stateColorMap[this.status];
+  }),
+
   startAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
   startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
   endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
@@ -57,7 +62,12 @@ export default ModelBase.extend({
   segmentedLinkSlidesUrl : computedSegmentedLink.bind(this)('slidesUrl'),
   segmentedLinkAudioUrl  : computedSegmentedLink.bind(this)('audioUrl'),
   segmentedLinkVideoUrl  : computedSegmentedLink.bind(this)('videoUrl'),
-  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl')
+  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl'),
 
+  ready() {
+    if (!this.complexFieldValues) {
+      this.complexFieldValues = {};
+    }
+  }
 
 });

@@ -1,10 +1,14 @@
 <div class="ui {{if this.device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
-  <UiPopup @tagName="a" @click={{action this.moveToDetails this.record.identifier}} @content={{t "View"}} @class="ui icon button" @position="left center">
-    <i class="unhide icon"></i>
-  </UiPopup>
-  <UiPopup @content={{t "Edit"}} @click={{action this.editEvent this.record.identifier}} @class="ui icon button" @position="left center">
-    <i class="edit icon"></i>
-  </UiPopup>
+  <LinkTo @route="events.view" @model={{this.record.identifier}}>
+    <UiPopup @content={{t "View"}} @class="ui icon button" @position="left center">
+      <i class="unhide icon"></i>
+    </UiPopup>
+  </LinkTo>
+  <LinkTo @route="events.view.edit.basic-details" @model={{this.record.identifier}}>
+    <UiPopup @content={{t "Edit"}} @class="ui icon button" @position="left center">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
   {{#if (and this.hasRestorePrivileges (get this.record this.column.propertyName))}}
     <UiPopup @content={{t "Restore"}} @click={{action this.restoreEvent this.record}} @class="ui icon button" @position="left center">
       <i class="undo icon"></i>

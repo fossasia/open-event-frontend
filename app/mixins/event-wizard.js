@@ -199,18 +199,21 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   actions: {
     saveDraft() {
       this.onValid(() => {
+        destroyDeletedTickets(this.deletedTickets);
         this.set('data.event.state', 'draft');
         this.sendAction('save');
       });
     },
     moveForward() {
       this.onValid(() => {
+        destroyDeletedTickets(this.deletedTickets);
         this.sendAction('move');
       });
     },
     publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
+        destroyDeletedTickets(this.deletedTickets);
         this.sendAction('save');
       });
     },
@@ -228,3 +231,9 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     }
   }
 });
+
+function destroyDeletedTickets(deletedTickets) {
+  deletedTickets.forEach(ticket => {
+    ticket.destroyRecord();
+  });
+}

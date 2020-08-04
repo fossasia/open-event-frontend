@@ -1,0 +1,42 @@
+<i class="black close icon"></i>
+<div class="header">
+	{{#if (or (eq this.state 'published') this.isEventPublishable)}}
+		{{t 'Are you sure?'}}
+	{{else}}
+		{{t 'Incomplete event details'}}
+	{{/if}}
+</div>
+<div class="content">
+  {{#if (eq this.state 'published')}}
+    <p>{{t 'This will unpublish your event. It will not be accessible to the public on the Internet anymore if you continue. The data of the event will still be available on your dashboard, but tickets, call for speakers or any other features will no longer be available online. Do you want to unpublish your event now?'}}</p>
+  {{else}}
+		{{#if this.isEventPublishable}}
+			<p>{{t 'This will publish the event and the event will be visible on the Internet. Please confirm you want to publish your event.'}}</p>
+		{{else}}
+			<p>{{t 'You need to add more details such as location and tickets to your event in order to publish it.'}}</p>
+		{{/if}}
+  {{/if}}
+</div>
+<div class="actions">
+	{{#if (eq this.state 'published')}}
+		<button type="button" class="ui red button" {{action this.togglePublishState}}>
+			{{t 'Yes, Unpublish it'}}
+		</button>
+		<button type="button" class="ui button" {{action 'toggleView'}}>
+			{{t 'Cancel'}}
+		</button>
+	{{else}}
+		{{#if this.isEventPublishable}}
+			<button type="button" class="ui green button" {{action this.togglePublishState}}>
+				{{t 'Yes'}}
+			</button>
+			<button type="button" class="ui button" {{action 'toggleView'}}>
+				{{t 'Cancel, Do Not Publish it Now'}}
+			</button>
+		{{else}}
+			<button type="button" class="ui button" {{action 'toggleView'}}>
+				{{t 'Okay'}}
+			</button>
+		{{/if}}
+	{{/if}}
+</div>

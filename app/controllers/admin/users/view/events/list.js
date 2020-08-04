@@ -21,8 +21,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           hasRestorePrivileges: this.hasRestorePrivileges
         },
         actions: {
-          moveToDetails        : this.moveToDetails.bind(this),
-          editEvent            : this.editEvent.bind(this),
           openDeleteEventModal : this.openDeleteEventModal.bind(this),
           deleteEvent          : this.deleteEvent.bind(this),
           restoreEvent         : this.restoreEvent.bind(this)
@@ -59,16 +57,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable    : false
       }
     ];
-  }
-
-  @action
-  moveToDetails(id) {
-    this.transitionToRoute('events.view', id);
-  }
-
-  @action
-  editEvent(id) {
-    this.transitionToRoute('events.view.edit.basic-details', id);
   }
 
   @action

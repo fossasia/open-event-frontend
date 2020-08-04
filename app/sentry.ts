@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { CaptureConsole, Dedupe, Ember } from '@sentry/integrations';
 import config from 'open-event-frontend/config/environment';
+import { Integrations as ApmIntegrations } from '@sentry/apm';
 
 if (!config.sentry.dsn.includes('dummy')) {
 
@@ -10,8 +11,9 @@ if (!config.sentry.dsn.includes('dummy')) {
             new Dedupe(),
             new CaptureConsole({
                 levels: ['error']
-            })
-        ],
+            }),
+            new ApmIntegrations.Tracing(),
+        ], 
         beforeSend(event: Sentry.Event) {
             const exception = event.exception?.values?.[0];
             const errorValue = exception?.value;

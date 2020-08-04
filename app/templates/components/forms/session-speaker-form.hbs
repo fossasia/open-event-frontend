@@ -24,7 +24,7 @@
               {{else}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.session field.fieldIdentifier)}}
+                  @value={{mut (get this.data.session field.identifierPath)}}
                   @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}
@@ -153,7 +153,7 @@
                 {{#if (not this.data.speaker.isEmailOverridden)}}
                   <Input
                     @type={{field.type}}
-                    @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                    @value={{mut (get this.data.speaker field.identifierPath)}}
                     @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
                 {{/if}}
               {{else}}
@@ -166,7 +166,7 @@
                 {{else}}
                   <Input
                     @type={{field.type}}
-                    @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                    @value={{mut (get this.data.speaker field.identifierPath)}}
                     @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
                 {{/if}}
               {{/if}}
@@ -193,6 +193,7 @@
                   @fullTextSearch={{true}}>
                   <Input
                     @type="hidden"
+                    @autocomplete="no"
                     @id="speaker_country"
                     @value={{this.data.speaker.country}} />
                   <i class="dropdown icon"></i>
@@ -268,7 +269,7 @@
               {{#if (not this.data.speaker.isEmailOverridden)}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                  @value={{mut (get this.data.speaker field.identifierPath)}}
                   @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{/if}}
             {{else}}
@@ -281,7 +282,7 @@
               {{else}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+                  @value={{mut (get this.data.speaker field.identifierPath)}}
                   @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}
@@ -308,6 +309,7 @@
                 @fullTextSearch={{true}}>
                 <Input
                   @type="hidden"
+                  @autocomplete="no"
                   @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
                   @value={{this.data.speaker.country}} />
                 <i class="dropdown icon"></i>
@@ -369,7 +371,7 @@
       {{t 'Choose from an existing session'}}
     </h4>
     <UiDropdown
-      @class="fluid search selection"
+      @class="fluid search selection {{if this.newSessionSelected "disabled"}}"
       @selected={{this.sessionDetails}}
       @onChange={{action (mut this.sessionDetails)}} as |execute mapper|>
       <i class="dropdown icon"></i>
@@ -393,11 +395,12 @@
       Or
     </div>
     <div class="field">
-      <UiRadio
+      <UiCheckbox
         @name="sessionDetails"
+        @class="toggle"
+        @checked={{this.newSessionSelected}}
         @label={{t "Add a new Proposal"}}
-        @value={{false}}
-        @onChange={{action "toggleNewSessionSelected" true}} />
+        @onChange={{action "toggleNewSessionSelected" this.newSessionSelected}}/>
     </div>
     {{#if this.shouldShowNewSessionDetails}}
       {{#each this.allFields.session as |field|}}
@@ -412,7 +415,7 @@
               {{else}}
                 <Input
                   @type={{field.type}}
-                  @value={{mut (get this.data.session field.fieldIdentifier)}}
+                  @value={{mut (get this.data.session field.identifierPath)}}
                   @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
               {{/if}}
             {{/if}}

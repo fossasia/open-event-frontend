@@ -18,7 +18,8 @@ export default Component.extend(FormMixin, {
       && !this.authManager.currentUser.isVerified;
   }),
 
-  shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', function() {
+  shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', 'isUnverified', function() {
+    if (this.isUnverified) {return true}
     let quantityDonation = sumBy(this.donationTickets.toArray(),
       donationTicket => (donationTicket.orderQuantity || 0));
     if (quantityDonation > 0) {
