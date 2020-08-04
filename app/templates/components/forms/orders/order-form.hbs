@@ -108,6 +108,7 @@
                   @onChange={{action (mut holder.country)}} as |execute mapper|>
                   <Input
                     @type="hidden"
+                    @autocomplete="no"
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your country'}}</div>
