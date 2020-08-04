@@ -13,8 +13,7 @@ if (!config.sentry.dsn.includes('dummy')) {
                 levels: ['error']
             }),
             new ApmIntegrations.Tracing(),
-        ],
-        tracesSampleRate: config.sentry.tracesSampleRate, 
+        ], 
         beforeSend(event: Sentry.Event) {
             const exception = event.exception?.values?.[0];
             const errorValue = exception?.value;
