@@ -96,8 +96,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['isLocked'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-lock-session',
         actions         : {
-          unlockSession : this.unlockSession.bind(this),
-          lockSession   : this.lockSession.bind(this)
+          lockSession: this.lockSession.bind(this)
         }
       }
     ];
@@ -137,51 +136,29 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  lockSession(session_id) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.set('isLocked', true);
+  async lockSession(session_id, lock) {
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const { isLocked } = session;
+    session.set('isLocked', lock);
     this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        this.notify.success(this.l10n.t('Session has been locked successfully.'),
-          {
-            id: 'session_locked'
-          });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_lock_error'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-  }
-
-  @action
-  unlockSession(session_id) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.set('isLocked', false);
-    this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        this.notify.success(this.l10n.t('Session has been unlocked successfully.'),
-          {
-            id: 'session_unlock'
-          });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_unexpected_unlock'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
+    const lockMessage = lock ? 'locked' : 'unlocked';
+    try {
+      await session.save();
+      this.notify.success(this.l10n.t(`Session has been ${ lockMessage } successfully.`),
+        {
+          id: 'session_lock'
+        });
+      this.refreshModel.bind(this)();
+    } catch (e) {
+      session.set('isLocked', isLocked);
+      console.error('Error while changing session lock in organizer session list', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'session_unexpected_lock'
+        });
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 
   @action
