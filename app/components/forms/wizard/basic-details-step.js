@@ -21,6 +21,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
+  deletedTickets: [],
+
   licenses: computed(function() {
     return orderBy(licenses, 'name');
   }),
@@ -457,15 +459,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     removeTicket(deleteTicket) {
       const index = deleteTicket.get('position');
       this.data.event.tickets.forEach(ticket => {
-        if (ticket.get('position') > index) {
+        if (!ticket.isDeleted && ticket.get('position') > index) {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
-      if (this.deletedTickets) {
-        this.deletedTickets.push(deleteTicket);
-      } else {
-        this.set('deletedTickets', [deleteTicket]);
-      }
+      this.deletedTickets.push(deleteTicket);
       deleteTicket.deleteRecord();
     },
 
