@@ -7,9 +7,11 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
     const json = this._super(...arguments);
 
     const { attributes } = json.data;
-    if (Object.keys(attributes['complex-field-values']).length === 0) {
+    if (attributes['complex-field-values'] && Object.keys(attributes['complex-field-values']).length === 0) {
       // If object is empty, remove it so that validations on server aren't triggered
-      delete attributes['complex-field-values'];
+      try {
+        delete attributes['complex-field-values'];
+      } catch {} // eslint-disable-line no-empty
     }
 
     return json;
