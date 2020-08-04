@@ -88,18 +88,18 @@ Router.map(function() {
         this.route('discount-codes', function() {
           this.route('list', { path: '/:discount_status' });
           this.route('create');
-          this.route('edit', { path: '/edit/:discount_code_id' });
+          this.route('edit', { path: '/:discount_code_id/edit' });
         });
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });
           this.route('create');
-          this.route('edit', { path: '/edit/:access_code_id' });
+          this.route('edit', { path: '/:access_code_id/edit' });
         });
         this.route('order-form');
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
-        this.route('edit', { path: '/edit/:speaker_id' });
+        this.route('edit', { path: '/:speaker_id/edit' });
         this.route('create');
       });
       this.route('scheduler');
