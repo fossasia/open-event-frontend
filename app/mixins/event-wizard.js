@@ -233,8 +233,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
 });
 
 function destroyDeletedTickets(deletedTickets) {
-  if (!deletedTickets)
-    return // This mixin may be used in other steps not containing tickets
+  if (!deletedTickets) {return} // This mixin may be used in other steps not containing tickets
   deletedTickets.forEach(ticket => {
     ticket.destroyRecord();
   });
