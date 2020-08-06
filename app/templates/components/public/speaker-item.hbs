@@ -52,7 +52,7 @@
               </strong>
             {{/if}}
           </p>
-          <LinkTo @route='public.sessions.view' @model={{session.id}}>
+          <a href="{{href-to 'public.sessions.list' 'all'}}#session-id-{{session.id}}">
             <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
               <h3 class="item">
                 {{#if (and session.startsAt session.endsAt)}}
@@ -63,7 +63,7 @@
                 <br>
               </h3>
             </div>
-          </LinkTo>
+          </a>
         <br>
         {{/if}}
       {{/each}}
