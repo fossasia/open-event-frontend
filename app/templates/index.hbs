@@ -11,15 +11,13 @@
   {{/if}}
   {{#if this.filteredEvents}}
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
-    <div class="upcoming-event">
-    <div class="ui stackable three column grid">
+    <div class="ui stackable three column grid upcoming-event">
       {{#each this.promotedEvents as |event|}}
         <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
       {{#each this.upcomingEvents as |event|}}
         <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
-    </div>
     </div>
   {{else}}
     <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
