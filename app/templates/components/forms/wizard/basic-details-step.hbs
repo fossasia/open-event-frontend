@@ -7,15 +7,27 @@
       @value={{this.data.event.name}} />
   </div>
   <div class="field">
-    <label class="required" for="location">{{t 'Location'}}</label>
+    <div class="inline feild">
+      
+    <label for="location">{{t 'Location'}}</label>
+     <div class="ui checked checkbox">
+      <Input
+      @id="showlocation"
+      @type="checkbox"
+      @checked=pre_checked/>
+      
+      </div>
+      </div>
+  <div id="hiddenDiv">
     <Widgets::Forms::LocationInput
       @inputId="location"
       @lat={{this.data.event.latitude}}
       @lng={{this.data.event.longitude}}
       @placeName={{this.data.event.locationName}}
       @searchableName={{this.data.event.searchableLocationName}}
-      @zoom={{15}}
-      @placeholder={{t "Location is required to make this event live"}}>
+      @zoom={{15}}>
+      {{!--@placeholder={{t "Location is required to make this event live"--}}>
+     
       <div class="inline field">
         <div class="ui slider checkbox">
           <Input
@@ -25,8 +37,58 @@
           <label for="show_map">{{t 'Show map on event page'}}</label>
         </div>
       </div>
-    </Widgets::Forms::LocationInput>
+    </Widgets::Forms::LocationInput></div>
+     <script> 
+      
+      $("#showlocation").on('change', function(){ 
+
+	 $("#hiddenDiv").toggle(); 
+
+      });</script> 
   </div>
+ <div class="field">
+    <div class="inline field">
+      <!--newly added-->
+      <label for="online-events">{{t 'Online Events'}}</label>
+       <div class="ui checked checkbox">
+      <Input
+      @id="showonlineevents"
+      @type="checkbox"/>
+           
+      </div></div>
+    <div id="hiddenDiv2">
+      <label for="Live-Streaming">{{t 'Live Streaming (Optional)'}}</label>
+       <div class="ui labeled right icon input"> 
+        <div class="ui label">
+        https://
+      </div>
+     <Input @type="text" @placeholder="www.livestreaming.com" @selected={{this.protocol}} @onChange={{action (mut this.protocol)}}/>
+    </div> 
+    {{!-- <Widgets::Forms::LinkInput
+        @hasLinkName={{false}}
+        @hasLinkName2={{true}}
+        @linkName={{online-events.name}}
+        @inputId={{online-events.identifier}}
+        @isChild={{false}}
+        @addItem={{false}}
+        @removeItem={{false}}/> --}}
+  
+      <label for="Webinar">{{t 'Webinar (Optional)  '}}</label>
+      <div class="ui labeled right icon input">
+  <div class="ui label">
+    https://
+  </div>
+  <input type="text" placeholder="www.webinar.com">
+  
+</div>   
+ </div></div>
+ <script>
+   $("#hiddenDiv2").hide();
+      $("#showonlineevents").on('change', function(){
+
+	$("#hiddenDiv2").toggle();
+
+});</script>
   <div class="fields">
     <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
