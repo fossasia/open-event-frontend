@@ -39,7 +39,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ### Code Generators
 
-Make use of the many generators for code, try `ember help generate` for more details.
+Make use of many generators for code, try `ember help generate` for more details.
 
 ### Running Tests
 
