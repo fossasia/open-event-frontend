@@ -10,10 +10,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'State',
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         valuePath       : 'state',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort',
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-state'
+        extraValuePaths : ['status'],
+        options         : {
+          sessionStateMap: this.model.sessionStateMap
+        },
+        actions: {
+          changeState: this.changeState.bind(this)
+        }
       },
       {
         name            : 'Title',
@@ -74,21 +81,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : 'Email Sent',
-        valuePath     : 'isMailSent',
-        cellComponent : 'ui-table/cell/events/view/sessions/cell-is-mail-sent'
-      },
-      {
-        name            : 'Change State',
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
-        valuePath       : 'id',
-        extraValuePaths : ['status'],
-        options         : {
-          sessionStateMap: this.model.sessionStateMap
-        },
-        actions: {
-          changeState: this.changeState.bind(this)
-        }
+        name          : 'Notify',
+        valuePath     : 'id',
+        cellComponent : 'ui-table/cell/events/view/sessions/cell-notify'
       },
       {
         name            : 'Lock Session',
@@ -260,5 +255,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       .finally(() => {
         this.set('isLoading', false);
       });
+  }
+
+  @action
+  async notifySession() {
+    console.log('Notify');
   }
 }
