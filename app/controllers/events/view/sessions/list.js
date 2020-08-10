@@ -256,9 +256,4 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.set('isLoading', false);
       });
   }
-
-  @action
-  async notifySession() {
-    console.log('Notify');
-  }
 }
