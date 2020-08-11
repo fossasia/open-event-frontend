@@ -61,7 +61,7 @@ export default class ViewController extends Controller {
         document.body.removeChild(anchor);
       })
       .catch(e => {
-        console.warn(e);
+        console.error('Error while downloading tickets', e);
         this.notify.error(this.l10n.t('An unexpected Error occurred'),
           {
             id: 'unexpected_occur'
