@@ -81,9 +81,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : 'Notify',
-        valuePath     : 'id',
-        cellComponent : 'ui-table/cell/events/view/sessions/cell-notify'
+        name            : 'Notify',
+        valuePath       : 'id',
+        extraValuePaths : ['status'],
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-notify'
       },
       {
         name            : 'Lock Session',

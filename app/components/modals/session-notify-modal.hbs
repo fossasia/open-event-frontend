@@ -4,6 +4,14 @@
 </div>
 <div class="content">
   {{t 'Session Notify Email'}}
+  {{#if this.loading}}
+    <div class="ui active inverted dimmer">
+      <div class="ui text loader"></div>
+    </div>
+  {{else}}
+    <p>{{this.mail.subject}}</p>
+    <p>{{this.mail.message}}</p>
+  {{/if}}
 </div>
 <div class="actions">
   <button type="button" class="ui green button" {{action "notifySession"}}>
