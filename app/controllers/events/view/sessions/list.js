@@ -14,7 +14,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         valuePath       : 'state',
         isSortable      : true,
-        extraValuePaths : ['status'],
+        extraValuePaths : ['id', 'status'],
         options         : {
           sessionStateMap: this.model.sessionStateMap
         },
@@ -158,19 +158,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  async changeState(session_id, state, sendEmail) {
+  async changeState(session_id, state) {
     const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
     const oldState = session.state;
-    session.setProperties({
-      sendEmail,
-      state,
-      isMailSent: sendEmail
-    });
+    session.set('state', state);
     this.set('isLoading', true);
 
     try {
       await session.save();
-      const message = `Session has been ${state}` + (sendEmail ? ' and speaker has been notified via email.' : '');
+      const message = `Session has been ${state}`;
       this.notify.success(this.l10n.t(message), {
         id: 'session_state'
       });

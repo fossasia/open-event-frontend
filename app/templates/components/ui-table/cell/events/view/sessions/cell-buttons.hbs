@@ -3,15 +3,9 @@
   {{t (capitalize this.extraRecords.status)}}
   <div class="menu">
     {{#each this.states as |state|}}
-      <div class="item">
-          <UiDropdown @class="ui dropdown">
-          <div class="ui {{state.color}} empty circular label"></div>
-          {{t (capitalize state.name)}}
-          <div class="menu">
-            <a href="#" role="button" class="item" {{action this.props.actions.changeState this.record state.name true}}>{{t 'With email'}}</a>
-            <a href="#" role="button" class="item" {{action this.props.actions.changeState this.record state.name false}}>{{t 'Without email'}}</a>
-          </div>
-        </UiDropdown>
+      <div class="item" role="button" {{action this.props.actions.changeState this.extraRecords.id state.name}}>
+        <div class="ui {{state.color}} empty circular label"></div>
+        {{t (capitalize state.name)}}
       </div>
     {{/each}}
   </div>
