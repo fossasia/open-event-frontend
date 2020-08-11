@@ -16,6 +16,7 @@ export default class NewSessionController extends Controller {
         });
       this.transitionToRoute('public.cfs.index');
     } catch (e) {
+      console.error('Error while saving new session', e);
       this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
     }
     this.set('isLoading', false);

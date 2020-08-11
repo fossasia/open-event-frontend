@@ -15,7 +15,8 @@ export default class EditSpeakerController extends Controller {
           });
         this.transitionToRoute('public.cfs.index');
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while editing speaker', e);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
           {
             id: 'some_error'
