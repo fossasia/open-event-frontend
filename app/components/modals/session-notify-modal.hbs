@@ -3,14 +3,40 @@
   {{t 'Notify Speakers'}}
 </div>
 <div class="content">
-  {{t 'Session Notify Email'}}
   {{#if this.loading}}
     <div class="ui active inverted dimmer">
       <div class="ui text loader"></div>
     </div>
-  {{else}}
-    <p>{{this.mail.subject}}</p>
-    <p>{{this.mail.message}}</p>
+  {{/if}}
+  {{#if this.mail}}
+    <form class="ui form">
+      <div class="field">
+        <label>Subject</label>
+        <Input
+          type="text"
+          name="subject"
+          @value={{this.subject}} />
+      </div>
+      <div class="field">
+        <label>Message</label>
+        <Textarea
+          name="message"
+          @rows="15"
+          @value={{this.message}} />
+      </div>
+    </form>
+    <p class="m-2">
+      You can use these identifiers as placeholders for actual details sent in the email:
+      <div class="ui bulleted list">
+        <div class="item"><code>{session_name}</code> - Name of the Session</div>
+        <div class="item"><code>{session_link}</code> - Link of the Session</div>
+        <div class="item"><code>{session_state}</code> - Current state of the Session</div>
+        <div class="item"><code>{event_name}</code> - Name of the Event</div>
+        <div class="item"><code>{event_link}</code> - Link of the Event</div>
+        <div class="item"><code>{app_name}</code> - Name of the App (Site)</div>
+        <div class="item"><code>{frontend_link}</code> - Link of the Frontend Site</div>
+      </div>
+    </p>
   {{/if}}
 </div>
 <div class="actions">

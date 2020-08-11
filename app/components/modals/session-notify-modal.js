@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
@@ -11,18 +11,28 @@ export default class SessionNotifyModal extends ModalBase {
   @service loader;
   @tracked mails = null;
   @tracked saving = false;
+  @tracked subject = '';
+  @tracked message = '';
 
   constructor() {
     super(...arguments);
     this.initialize();
   }
 
+  @computed('mails', 'saving')
   get loading() {
     return !this.mails || this.saving;
   }
 
+  @computed('mails', 'sessionState')
   get mail() {
-    return this.mails[this.sessionState];
+    if (!this.mails) {return null}
+    const mail =  this.mails[this.sessionState];
+
+    this.subject = mail.subject;
+    this.message = mail.message.replace(/<br\/>/g, '\n'); // Convert line breaks to newlines for display
+
+    return mail;
   }
 
   async initialize() {
@@ -33,8 +43,35 @@ export default class SessionNotifyModal extends ModalBase {
   }
 
   @action
-  notifySession() {
-    console.log('>>> Notify');
+  async notifySession() {
+    const { subject, message } = this.mail;
+    const payload = {};
+
+    if (subject !== this.subject) {
+      payload.subject = this.subject;
+    }
+
+    const newMessage = this.message.replace(/\n/g, '<br/>'); // Convert newlines to line breaks for HTML email
+    if (message !== newMessage) {
+      payload.message = newMessage;
+    }
+
+    this.saving = true;
+    try {
+      const response = await this.loader.post(`/sessions/${this.sessionId}/notify`, payload);
+      if (!response?.success) {throw response}
+      this.notify.success(this.l10n.t('Email scheduled to be sent successfully'), {
+        id: 'notify_email_succ'
+      });
+      this.close();
+    } catch (e) {
+      console.error('Error while sending session state change email', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+        id: 'notify_email_err'
+      });
+    } finally {
+      this.saving = false;
+    }
   }
 
 }
