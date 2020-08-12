@@ -17,7 +17,9 @@
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:js": "eslint --fix app ember-cli-build.js testem.js tests",
     "lint:scss": "sass-lint -c .sass-lint.yml --verbose",
-    "lint:hbs": "ember-template-lint ."
+    "lint:hbs": "ember-template-lint .",
+    "storybook": "start-storybook -p 6006 -s dist",
+    "build-storybook": "build-storybook -s dist"
   },
   "pre-commit": {
     "run": [
@@ -37,6 +39,11 @@
     "@sentry/browser": "^5.20.1",
     "@sentry/integrations": "^5.20.1",
     "@sentry/node": "^5.20.1",
+    "@storybook/addon-actions": "^6.0.5",
+    "@storybook/addon-essentials": "^6.0.5",
+    "@storybook/addon-links": "^6.0.5",
+    "@storybook/ember": "^6.0.5",
+    "@storybook/ember-cli-storybook": "^0.2.1",
     "@types/ember": "^3.16.0",
     "@types/ember-data": "^3.16.2",
     "@types/ember-qunit": "^3.4.9",
@@ -46,6 +53,9 @@
     "@types/rsvp": "^4.0.3",
     "async": "^3.2.0",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-ember-modules-api-polyfill": "^3.1.1",
+    "babel-plugin-htmlbars-inline-precompile": "^4.2.0",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-persistent-filter": "^3.0.0",
     "croppie": "^2.6.5",
@@ -143,6 +153,7 @@
     "pre-commit": "^1.2.2",
     "query-string": "^6.13.1",
     "qunit-dom": "^1.4.0",
+    "react-is": "^16.13.1",
     "sass": "^1.26.10",
     "semantic-ui-calendar": "^0.0.8",
     "semantic-ui-ember": "3.0.4",
