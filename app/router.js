@@ -215,6 +215,8 @@ Router.map(function() {
     this.route('review', { path: '/:invoice_identifier/review' });
     this.route('paid', { path: '/:invoice_identifier/paid' });
   });
+
+  this.route('org-group-profile');
 });
 
 export default Router;
