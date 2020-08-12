@@ -17,7 +17,7 @@
           @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
       </a>
     {{/unless}}
-    <a class="main content" style="padding-bottom: 0em ;" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
+    <a class="main content" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>
@@ -30,7 +30,7 @@
         {{this.event.shortLocationName}}
       </SmartOverflow>
     </a>
-    <div class="extra content small text" style="padding: 0em 1em;">
+    <div class="extra content small text">
       <span class="right floated">
         <i role="button" class="share alternate link icon" {{action this.shareEvent this.event}}></i>
       </span>
