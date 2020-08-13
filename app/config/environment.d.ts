@@ -8,7 +8,7 @@ export default config;
  * since different ember addons can materialize new entries.
  */
 declare const config: {
-  environment: any; // eslint:@typescript-eslint/no-explicit-any: "off"
+  environment: any;
   modulePrefix: string;
   podModulePrefix: string;
   locationType: string;
