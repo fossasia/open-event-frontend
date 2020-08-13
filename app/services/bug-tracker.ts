@@ -2,12 +2,12 @@ import Service from '@ember/service';
 import * as Sentry from '@sentry/browser';
 
 export default class BugTracker extends Service {
-  
-  setUser(user: Sentry.User | null) {
-    Sentry.setUser(user)
+
+  setUser(user: Sentry.User | null): void {
+    Sentry.setUser(user);
   }
 
-  clearUser() {
+  clearUser(): void {
     Sentry.setUser(null);
   }
 

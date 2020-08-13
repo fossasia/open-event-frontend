@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   root: true,
   parser: 'babel-eslint',
   parserOptions: {
@@ -122,3 +122,26 @@ module.exports = {
     }
   ]
 };
+
+config.overrides.push({
+  files: ['**/*.ts'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: config.parserOptions,
+  plugins: [
+    ...config.plugins,
+    '@typescript-eslint'
+  ],
+  extends: [
+    ...config.extends,
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  env: config.env,
+  rules: {
+    ...config.rules,
+    '@typescript-eslint/no-explicit-any': 'off'
+  },
+  globals: config.globals
+})
+
+module.exports = config;
