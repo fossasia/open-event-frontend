@@ -9,8 +9,7 @@
       </div>
     {{/unless}}
   {{/if}}
-  <div
-    class="ui card {{this.eventClass}}">
+  <div class="ui card {{this.eventClass}}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
         <Widgets::SafeImage
@@ -30,7 +29,7 @@
         {{this.event.shortLocationName}}
       </SmartOverflow>
     </a>
-    <div class="extra content small text">
+    <span class="extra content small text">
       <span class="right floated">
         <i role="button" class="share alternate link icon" {{action this.shareEvent this.event}}></i>
       </span>
@@ -61,6 +60,6 @@
           {{/if}}
         {{/if}}
       </span>
-    </div>
+    </span>
   </div>
 </div>
