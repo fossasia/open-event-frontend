@@ -5,9 +5,11 @@ import moment from 'moment';
 @classic
 export default class ListRoute extends Route {
   titleToken() {
+    const defaultToken = this.l10n.t('All sessions');
+    if (!this.params) {return defaultToken}
     switch (this.params.session_status) {
       case 'all':
-        return this.l10n.t('All sessions');
+        return defaultToken;
       case 'today':
         return this.l10n.t('Today\'s Sessions');
       case 'week':
@@ -71,6 +73,7 @@ export default class ListRoute extends Route {
     return {
       event   : eventDetails,
       session : await this.infinity.model('session', {
+        include      : 'track,speakers,session-type',
         filter       : filterOptions,
         perPage      : 6,
         startingPage : 1,
