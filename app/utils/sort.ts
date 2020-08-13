@@ -6,6 +6,6 @@ interface CustomFormField {
 }
 
 export function sortCustomFormFields(fields: CustomFormField[], fieldOrder: string[]): CustomFormField[] {
-    fieldOrder = [...fieldOrder].reverse();
-    return sortBy(fields, 'isComplex', item => -fieldOrder.indexOf(item.fieldIdentifier));
+  fieldOrder = [...fieldOrder].reverse();
+  return sortBy(fields, 'isComplex', item => -fieldOrder.indexOf(item.fieldIdentifier));
 }

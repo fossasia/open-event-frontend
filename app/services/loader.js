@@ -161,7 +161,7 @@ export default Service.extend({
       xhr.open(fetchOptions.method || 'get', url);
       let headers = fetchOptions.headers || {};
       for (let k in headers) {
-        if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
+        if (k !== 'Content-Type' && Object.prototype.hasOwnProperty.call(headers, k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }

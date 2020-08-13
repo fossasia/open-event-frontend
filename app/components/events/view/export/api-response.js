@@ -55,7 +55,7 @@ export default Component.extend({
     const include = [];
 
     for (const key in this.toggleSwitches) {
-      if (this.toggleSwitches.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(this.toggleSwitches, key)) {
         this.toggleSwitches[key] && include.push(key);
       }
     }
