@@ -8,14 +8,14 @@ export default class SettingsRoute extends Route {
   }
 
   beforeModel() {
-    let { currentUser } = this.authManager;
+    const { currentUser } = this.authManager;
     if (!(currentUser.isAnAdmin || this.modelFor('events.view').owner.get('email') === currentUser.email)) {
       this.transitionTo('events.view');
     }
   }
 
   async model() {
-    let eventDetails = this.modelFor('events.view');
+    const eventDetails = this.modelFor('events.view');
     return {
       event       : await eventDetails,
       roleInvites : await eventDetails.query('roleInvites', {}),

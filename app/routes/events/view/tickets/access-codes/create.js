@@ -35,7 +35,7 @@ export default class CreateRoute extends Route {
   }
 
   afterModel(model) {
-    let allTickets = model.tickets;
+    const allTickets = model.tickets;
     allTickets.forEach(ticket => {
       ticket.set('isChecked', false);
     });

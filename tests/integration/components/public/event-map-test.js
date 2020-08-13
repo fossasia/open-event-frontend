@@ -6,7 +6,7 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | public/event map', function(hooks) {
   setupIntegrationTest(hooks);
 
-  let event = Object.create({ latitude: 37.7833, longitude: -122.4167, locationName: 'Sample event location address' });
+  const event = Object.create({ latitude: 37.7833, longitude: -122.4167, locationName: 'Sample event location address' });
 
   test('it renders', async function(assert) {
     this.set('event', event);

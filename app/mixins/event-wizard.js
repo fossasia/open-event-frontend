@@ -91,7 +91,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
 
       if (data.stripeAuthorization && data.stripeAuthorization.get('stripeAuthCode')) {
-        let stripeAuthorization = this.setRelationship(data.stripeAuthorization, event);
+        const stripeAuthorization = this.setRelationship(data.stripeAuthorization, event);
         if (event.get('canPayByStripe')) {
           await stripeAuthorization.save();
         } else {
@@ -119,7 +119,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
 
       return event;
     } else {
-      let errorObject = { 'errors': [] };
+      const errorObject = { 'errors': [] };
       if (event.name === undefined || event.name === '') {
         errorObject.errors.push({ 'detail': 'Event name has not been provided' });
       }
@@ -188,7 +188,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
           resolve(relationshipRecord);
         })
         .catch(() => {
-          let record = this.store.createRecord(modelName);
+          const record = this.store.createRecord(modelName);
           record.set('event', event);
           event.set(relationship, record);
           resolve(record);

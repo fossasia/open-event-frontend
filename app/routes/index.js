@@ -14,7 +14,7 @@ export default class IndexRoute extends Route {
    * @private
    */
   _loadEvents(params, mode) {
-    let filterOptions = [
+    const filterOptions = [
       {
         and:
         [
@@ -126,9 +126,9 @@ export default class IndexRoute extends Route {
   }
 
   async model(params) {
-    let filterOptions =  this._loadEvents(params, 'filterOptions');
+    const filterOptions =  this._loadEvents(params, 'filterOptions');
 
-    let featuredEventsFilterOptions = this._loadEvents(params, 'filterOptions');
+    const featuredEventsFilterOptions = this._loadEvents(params, 'filterOptions');
     featuredEventsFilterOptions[0].and.push({
       name : 'is-featured',
       op   : 'eq',

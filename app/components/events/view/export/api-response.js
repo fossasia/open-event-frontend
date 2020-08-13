@@ -51,7 +51,7 @@ export default Component.extend({
   },
 
   buildDisplayUrl() {
-    let newUrl = this.baseUrl;
+    const newUrl = this.baseUrl;
     const include = [];
 
     for (const key in this.toggleSwitches) {

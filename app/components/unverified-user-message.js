@@ -14,7 +14,7 @@ export default class UnverifiedUserMessage extends Component {
 
   @action
   sendConfirmationMail() {
-    let payload = {
+    const payload = {
       'data': {
         'email': this.authManager.currentUser.email
       }

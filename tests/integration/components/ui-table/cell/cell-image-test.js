@@ -12,7 +12,7 @@ module('Integration | Component | ui table/cell/cell image', function(hooks) {
   });
 
   test('it renders', async function(assert) {
-    let record = { logoUrl: 'logo-url' };
+    const record = { logoUrl: 'logo-url' };
     this.set('record', record);
     await render(hbs`{{ui-table/cell/cell-image record=record}}`);
     assert.ok(this.element.innerHTML.trim().includes('logo-url'));

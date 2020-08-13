@@ -5,7 +5,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 @classic
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
-    let speakerName = model.speaker.get('name');
+    const speakerName = model.speaker.get('name');
     return this.l10n.t(speakerName.concat('-Edit'));
   }
 

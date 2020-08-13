@@ -11,7 +11,7 @@ export default class VerifyController extends Controller {
 
   verify(tokenVal) {
     this.set('isLoading', true);
-    let payload = {
+    const payload = {
       data: {
         token: tokenVal
       }

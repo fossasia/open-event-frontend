@@ -10,13 +10,13 @@ export default class NewController extends Controller {
   async save(data) {
     try {
       this.set('isLoading', true);
-      let order = data;
-      let current_user = this.authManager.currentUser;
-      let userChanges = current_user.changedAttributes();
+      const order = data;
+      const current_user = this.authManager.currentUser;
+      const userChanges = current_user.changedAttributes();
       if (userChanges.firstName || userChanges.lastName) {
         await current_user.save();
       }
-      let { attendees, paymentMode } = data;
+      const { attendees, paymentMode } = data;
       await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
       if (paymentMode === 'free') {
         order.set('status', 'completed');

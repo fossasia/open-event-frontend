@@ -5,7 +5,7 @@ export default ApplicationSerializer.extend({
   serialize(snapshot, options) {
     const json = this._super(...arguments);
     if (snapshot.id) {
-      let attributesToOmit = [];
+      const attributesToOmit = [];
       if (!snapshot.adapterOptions || !snapshot.adapterOptions.includePassword) {
         attributesToOmit.push('password');
       }

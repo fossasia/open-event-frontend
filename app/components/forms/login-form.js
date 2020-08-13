@@ -46,8 +46,8 @@ export default class LoginForm extends Component.extend(FormMixin) {
   @action
   async submit() {
     this.onValid(async() => {
-      let credentials = { username: this.identification, password: this.password };
-      let authenticator = 'authenticator:jwt';
+      const credentials = { username: this.identification, password: this.password };
+      const authenticator = 'authenticator:jwt';
       this.setProperties({
         errorMessage : null,
         isLoading    : true
@@ -85,7 +85,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
   async auth(provider) {
     if (provider === 'facebook') {
       try {
-        let response = await this.loader.load('/auth/oauth/facebook');
+        const response = await this.loader.load('/auth/oauth/facebook');
         window.location.replace(response.url);
       } catch (e) {
         if (e.message) {

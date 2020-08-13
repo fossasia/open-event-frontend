@@ -8,7 +8,7 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | events/overview/manage roles', function(hooks) {
   setupIntegrationTest(hooks);
 
-  let invites = A(
+  const invites = A(
     [
       EmberObject.create({
         email    : 'test@test.com',
@@ -22,7 +22,7 @@ module('Integration | Component | events/overview/manage roles', function(hooks)
       })
     ]
   );
-  let data = EmberObject.create({
+  const data = EmberObject.create({
     roleInvites: invites
   });
 

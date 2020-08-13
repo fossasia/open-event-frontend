@@ -45,7 +45,7 @@ export default class PendingController extends Controller {
 
   @computed('model.order.identifier')
   get omiseFormAction() {
-    let { identifier } = this.model.order;
+    const { identifier } = this.model.order;
     return `${ENV.APP.apiHost}/v1/orders/${identifier}/omise-checkout`;
   }
 
@@ -117,7 +117,7 @@ export default class PendingController extends Controller {
   processStripeToken(token) {
     // Send this token to server to process payment
     this.set('isLoading', true);
-    let { order } = this.model;
+    const { order } = this.model;
     let chargePayload = {
       'data': {
         'attributes': {
@@ -128,7 +128,7 @@ export default class PendingController extends Controller {
         'type': 'charge'
       }
     };
-    let config = {
+    const config = {
       skipDataTransform: true
     };
     chargePayload = JSON.stringify(chargePayload);

@@ -6,11 +6,11 @@ export default class CallbackController extends Controller {
   oauth(queryParams) {
     this.loader.post(`/auth/oauth/login/${ queryParams.provider }?code=${ queryParams.code }`)
       .then(response => {
-        let credentials = {
+        const credentials = {
           username : response.email,
           password : response.oauth_hash
         };
-        let authenticator = 'authenticator:jwt';
+        const authenticator = 'authenticator:jwt';
 
         this.session
           .authenticate(authenticator, credentials)

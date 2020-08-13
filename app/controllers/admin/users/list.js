@@ -90,7 +90,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async deleteUser(user_id) {
     this.set('isLoading', true);
     try {
-      let user = this.store.peekRecord('user', user_id, { backgroundReload: false });
+      const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       await user.destroyRecord();
       this.notify.success(this.l10n.t('User has been deleted successfully.'),
         {
@@ -110,7 +110,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
   @action
   openEditModal(user_id) {
-    let user = this.store.peekRecord('user', user_id, { backgroundReload: false });
+    const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
     this.setProperties({
       isEditUserModalOpen : true,
       data                : user
@@ -121,7 +121,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async restoreUser(user_id) {
     this.set('isLoading', true);
     try {
-      let user = this.store.peekRecord('user', user_id, { backgroundReload: false });
+      const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       user.set('deletedAt', null);
       user.save({ adapterOptions: { getTrashed: true } });
       this.notify.success(this.l10n.t('User has been restored successfully.'),

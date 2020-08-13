@@ -5,8 +5,8 @@ export default class extends Controller {
   @action
   updateSettings() {
     this.set('isLoading', true);
-    let settings = this.model;
-    let incorrect_settings = settings.filter(function(setting) {
+    const settings = this.model;
+    const incorrect_settings = settings.filter(function(setting) {
       return (!setting.currency || !setting.country);
     });
     if (incorrect_settings.length > 0) {

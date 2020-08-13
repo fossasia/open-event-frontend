@@ -2,7 +2,7 @@ import { helper } from '@ember/component/helper';
 
 export  function customRelatedField(params/* , hash*/) {
 
-  let record = params[0].get(params[1]);
+  const record = params[0].get(params[1]);
   return record.get(params[2]);
 
 }

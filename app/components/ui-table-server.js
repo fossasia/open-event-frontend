@@ -40,15 +40,15 @@ export default ModelsTable.extend({
   arrangedContent : alias('filteredContent'),
 
   arrangedContentLength: computed('router.currentURL', 'filteredContent.meta', function() {
-    let itemsCountProperty = this.metaItemsCountProperty;
-    let meta = this.filteredContent.meta || {};
+    const itemsCountProperty = this.metaItemsCountProperty;
+    const meta = this.filteredContent.meta || {};
     return get(meta, itemsCountProperty) || 0;
   }),
 
   pagesCount: computed('router.currentURL', 'currentPageNumber', 'pageSize', function() {
-    let itemsCountProperty = this.metaItemsCountProperty;
-    let meta = this.filteredContent.meta || {};
-    let items = (get(meta, itemsCountProperty));
+    const itemsCountProperty = this.metaItemsCountProperty;
+    const meta = this.filteredContent.meta || {};
+    const items = (get(meta, itemsCountProperty));
     let pages = 0;
     if (this.pageSize > items) {
       $('.pagination', this.element).css({
@@ -73,8 +73,8 @@ export default ModelsTable.extend({
   }),
 
   lastIndex: computed('router.currentURL', 'pageSize', 'currentPageNumber', 'arrangedContentLength', function() {
-    let pageMax = this.pageSize * this.currentPageNumber;
-    let itemsCount = this.arrangedContentLength;
+    const pageMax = this.pageSize * this.currentPageNumber;
+    const itemsCount = this.arrangedContentLength;
     return Math.min(pageMax, itemsCount);
   }),
 
@@ -93,9 +93,9 @@ export default ModelsTable.extend({
     query[this.filterQueryParameters.page] = this.currentPageNumber;
     query[this.filterQueryParameters.pageSize] = this.pageSize;
 
-    let sort = this.sortProperties && this.sortProperties.firstObject;
+    const sort = this.sortProperties && this.sortProperties.firstObject;
     if (sort) {
-      let [sortBy, sortDirection] = sort.split(':');
+      const [sortBy, sortDirection] = sort.split(':');
       query = this.sortingWrapper(query, sortBy, sortDirection.toUpperCase());
     } else {
       delete query[[this.filterQueryParameters.sort]];
@@ -109,7 +109,7 @@ export default ModelsTable.extend({
     //   delete query[globalFilter];
     // }
 
-    let globalFilter = this.customGlobalFilter;
+    const globalFilter = this.customGlobalFilter;
     if (globalFilter) {
       if (this.filterString) {
         query.filter.pushObject({
@@ -127,9 +127,9 @@ export default ModelsTable.extend({
     }
 
     this.processedColumns.forEach(column => {
-      let filter = get(column, 'filterString');
-      let filterTitle = this.getCustomFilterTitle(column);
-      let filterHeading = this.getFilterHeading(column);
+      const filter = get(column, 'filterString');
+      const filterTitle = this.getCustomFilterTitle(column);
+      const filterHeading = this.getFilterHeading(column);
       let isMomentQuery = false;
       let queryParam;
       if (filterHeading && filterHeading === 'Date') {
@@ -246,10 +246,10 @@ export default ModelsTable.extend({
       }
 
       sortedBy = kebabCase(sortedBy);
-      let currentSorting = get(column, 'sorting');
+      const currentSorting = get(column, 'sorting');
       sortedBy = `${sortSign[currentSorting]}${sortedBy}`;
-      let newSorting = sortMap[currentSorting.toLowerCase()];
-      let sortingArgs = [column, sortedBy, newSorting];
+      const newSorting = sortMap[currentSorting.toLowerCase()];
+      const sortingArgs = [column, sortedBy, newSorting];
       this._singleColumnSorting(...sortingArgs);
     }
 

@@ -15,7 +15,7 @@ export default class AllRoute extends Route {
     this.set('params', params);
     let filterOptions = [];
 
-    let data = {
+    const data = {
       unread: false
     };
 

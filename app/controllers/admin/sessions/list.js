@@ -75,7 +75,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async deleteSession(session_id) {
     this.set('isLoading', true);
     try {
-      let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+      const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
       await session.destroyRecord();
       this.notify.success(this.l10n.t('Session has been deleted successfully.'),
         {

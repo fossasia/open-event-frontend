@@ -5,8 +5,8 @@ import { module, test } from 'qunit';
 module('Unit | Mixin | ember-table-route', function() {
   // Replace this with your real tests.
   test('it works', function(assert) {
-    let EmberTableRouteObject = EmberObject.extend(EmberTableRouteMixin);
-    let subject = EmberTableRouteObject.create();
+    const EmberTableRouteObject = EmberObject.extend(EmberTableRouteMixin);
+    const subject = EmberTableRouteObject.create();
     assert.ok(subject);
   });
 });

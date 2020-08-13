@@ -5,7 +5,7 @@ const Funnel = require('broccoli-funnel');
 const targets = require('./config/targets');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-let env = process.env.EMBER_ENV || 'development';
+const env = process.env.EMBER_ENV || 'development';
 
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {

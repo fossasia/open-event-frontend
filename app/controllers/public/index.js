@@ -18,15 +18,15 @@ export default class IndexController extends Controller {
   @action
   async createNewUserViaEmail(email) {
     this.set('isLoading', true);
-    let newUser = this.store.createRecord('user', {
+    const newUser = this.store.createRecord('user', {
       email,
       'password'               : (Math.random() * 10).toString(16),
       'wasRegisteredWithOrder' : true
     });
     newUser.save()
       .then(() => {
-        let credentials = newUser.getProperties('email', 'password');
-        let authenticator = 'authenticator:jwt';
+        const credentials = newUser.getProperties('email', 'password');
+        const authenticator = 'authenticator:jwt';
         credentials.username = newUser.email;
         this.session
           .authenticate(authenticator, credentials)
@@ -64,11 +64,11 @@ export default class IndexController extends Controller {
   @action
   async loginExistingUser(username, password) {
     this.set('isLoading', true);
-    let credentials = {
+    const credentials = {
       username,
       password
     };
-    let authenticator = 'authenticator:jwt';
+    const authenticator = 'authenticator:jwt';
     this.session
       .authenticate(authenticator, credentials)
       .then(async() => {

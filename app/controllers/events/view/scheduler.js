@@ -27,7 +27,7 @@ export default class extends Controller {
   }
 
   updateSession(start, end, microlocationId, sessionId) {
-    let payload = {
+    const payload = {
       data: {
         attributes: {
           'starts-at' : start ? start.toISOString() : null,
@@ -45,7 +45,7 @@ export default class extends Controller {
         id   : sessionId
       }
     };
-    let config = {
+    const config = {
       skipDataTransform: true
     };
     return this.loader
@@ -70,9 +70,9 @@ export default class extends Controller {
 
   @action
   drop(date, jsEvent, ui, resourceId) {
-    let start = date;
-    let duration = this.model.defaultDuration.split(':');
-    let end = start.clone().add(duration[0], 'hours').add(duration[1], 'minutes');
+    const start = date;
+    const duration = this.model.defaultDuration.split(':');
+    const end = start.clone().add(duration[0], 'hours').add(duration[1], 'minutes');
     this.updateSession(start, end, resourceId, window.$(ui.helper).data('serverId'));
     window.$(ui.helper).remove();
   }
@@ -90,7 +90,7 @@ export default class extends Controller {
   @action
   eventRender(session, element) {
     element.append('<span class="scheduled-close-btn"><i class="x icon"></i></span>');
-    let controller = this;
+    const controller = this;
     element.find('.scheduled-close-btn').on('click', function() {
       controller.unscheduleSession(session);
     });
@@ -99,9 +99,9 @@ export default class extends Controller {
   @action
   togglePublishState() {
     this.set('isLoading', true);
-    let stat = this.isSchedulePublished ? 'unpublished' : 'published';
-    let publishedAt = this.isSchedulePublished ? moment(0) : moment();
-    let event = this.model.eventDetails;
+    const stat = this.isSchedulePublished ? 'unpublished' : 'published';
+    const publishedAt = this.isSchedulePublished ? moment(0) : moment();
+    const event = this.model.eventDetails;
     event.set('schedulePublishedOn', publishedAt);
     event.save()
       .then(() => {

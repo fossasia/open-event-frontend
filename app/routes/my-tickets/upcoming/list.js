@@ -15,7 +15,7 @@ export default class ListRoute extends Route {
 
   model(params) {
     this.set('params', params);
-    let filterOptions = [];
+    const filterOptions = [];
     if (params.ticket_status === 'completed') {
       filterOptions.push(
         {

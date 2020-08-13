@@ -6,7 +6,7 @@ module('Unit | Service | loader', function(hooks) {
 
 
   test('it exists and works', async function(assert) {
-    let service = this.owner.lookup('service:loader');
+    const service = this.owner.lookup('service:loader');
     assert.ok(service);
 
     let response;
