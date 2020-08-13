@@ -70,9 +70,9 @@ export default TextField.extend({
   getAutocomplete() {
     if (isEmpty(this.autocomplete)) {
       if (document && window) {
-        let [inputElement] = $(this.element),
-            google = this.google || window.google,
-            options = { types: this._typesToArray() };
+        let [inputElement] = $(this.element);
+        let google = this.google || window.google;
+        let options = { types: this._typesToArray() };
         if (Object.keys(this.restrictions).length > 0) {
           options.componentRestrictions = this.restrictions;
         }

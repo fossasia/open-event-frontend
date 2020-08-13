@@ -16,7 +16,7 @@ export default ModelBase.extend({
    * Computed properties
    */
   buttonTitle: computed('subject', 'actionType', function() {
-    let action;
+    let action, buttonSubject;
     switch (this.actionType) {
       case 'download':
         action = 'Download';
@@ -30,7 +30,6 @@ export default ModelBase.extend({
         action = 'View';
     }
 
-    let buttonSubject;
     switch (this.subject) {
       case 'event-export':
         buttonSubject = ' Event';
