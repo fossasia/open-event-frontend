@@ -25,8 +25,8 @@ export default class IndexController extends Controller {
     });
     newUser.save()
       .then(() => {
-        let credentials = newUser.getProperties('email', 'password'),
-            authenticator = 'authenticator:jwt';
+        let credentials = newUser.getProperties('email', 'password');
+        let authenticator = 'authenticator:jwt';
         credentials.username = newUser.email;
         this.session
           .authenticate(authenticator, credentials)
