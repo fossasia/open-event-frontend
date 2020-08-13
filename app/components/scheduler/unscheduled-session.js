@@ -17,7 +17,7 @@ export default class UnscheduledSession extends Component {
       stick    : true, // maintain when user navigates (see docs on the renderEvent method)
       id       : $element.attr('id'),
       serverId : this.session.id, // id of the session on the server
-      color    : this.session.track.color
+      color    : this.session.get('track.color')
 
     });
     $element.draggable({
@@ -26,7 +26,7 @@ export default class UnscheduledSession extends Component {
       revertDuration : 0  //  original position after the drag
     });
     $element.data('serverId', this.session.id);
-    $element.css('border-color', this.session.track.color);
+    $element.css('border-color', this.session.get('track.color'));
 
   }
 
