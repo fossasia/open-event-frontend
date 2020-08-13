@@ -15,8 +15,8 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin, Eve
       this.transitionTo('events.view.edit.basic-details');
     }
 
-    let event = this.modelFor('events.view');
-    let { currentUser } = this.authManager;
+    const event = this.modelFor('events.view');
+    const { currentUser } = this.authManager;
     if (!(currentUser.isAnAdmin || currentUser.email === event.owner.get('email') || event.organizers.includes(currentUser)
         || event.coorganizers.includes(currentUser) || event.trackOrganizers.includes(currentUser)
         || event.registrars.includes(currentUser) || event.moderators.includes(currentUser))) {

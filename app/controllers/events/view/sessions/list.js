@@ -101,7 +101,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   async deleteSession(session_id) {
     this.set('isLoading', true);
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
     session.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Session has been deleted successfully.'),
@@ -227,9 +227,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
   @action
   addRating(rating, session_id) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
     this.set('isLoading', true);
-    let feedback = this.store.createRecord('feedback', {
+    const feedback = this.store.createRecord('feedback', {
       rating,
       session,
       comment : '',

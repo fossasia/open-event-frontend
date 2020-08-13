@@ -44,7 +44,7 @@ export default class extends Controller {
   @action
   openConfirmEventTransferModal() {
     const currentInvite = this.model.roleInvites.createRecord({});
-    let { roles } = this.model;
+    const { roles } = this.model;
     for (const role of roles ? roles.toArray() : []) {
       if (role.name === 'owner') {
         currentInvite.set('role', role);

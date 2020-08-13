@@ -19,18 +19,18 @@ export default class OrderSummary extends Component.extend(FormMixin) {
   }
 
   async didInsertElement() {
-    let discountCode = await this.data.discountCode;
-    let tickets = await this.data.tickets;
+    const discountCode = await this.data.discountCode;
+    const tickets = await this.data.tickets;
     tickets.forEach(ticket => {
       ticket.set('discount', 0);
     });
     if (discountCode) {
-      let discountCodeTickets = await discountCode.get('tickets');
-      let discountType = discountCode.get('type');
-      let discountValue = discountCode.get('value');
+      const discountCodeTickets = await discountCode.get('tickets');
+      const discountType = discountCode.get('type');
+      const discountValue = discountCode.get('value');
       tickets.forEach(ticket => {
         if (discountCodeTickets.includes(ticket)) {
-          let ticketPrice = ticket.get('price');
+          const ticketPrice = ticket.get('price');
           if (discountType === 'amount') {
             ticket.set('discount', Math.min(ticketPrice, discountValue));
           } else {

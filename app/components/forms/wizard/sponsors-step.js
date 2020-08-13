@@ -36,8 +36,8 @@ export default Component.extend(FormMixin, {
 
   actions: {
     addSponsor() {
-      let { sponsors } = this.data;
-      let incorrect_sponsors = sponsors.filter(function(sponsor) {
+      const { sponsors } = this.data;
+      const incorrect_sponsors = sponsors.filter(function(sponsor) {
         return (!sponsor.get('name'));
       });
       if (incorrect_sponsors.length > 0) {

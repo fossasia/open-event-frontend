@@ -10,8 +10,8 @@ export default class Pagination extends Component {
 
   @computed('currentPage', 'pageSize', 'totalContentLength')
   get currentRange() {
-    let firstIndex = this.totalContentLength === 0 ? 0 : (this.currentPage - 1) * this.pageSize + 1;
-    let lastIndex = (this.currentPage === this.pageCount || this.pageSize === 0) ? this.totalContentLength : this.currentPage * this.pageSize;
+    const firstIndex = this.totalContentLength === 0 ? 0 : (this.currentPage - 1) * this.pageSize + 1;
+    const lastIndex = (this.currentPage === this.pageCount || this.pageSize === 0) ? this.totalContentLength : this.currentPage * this.pageSize;
     return `${firstIndex} - ${lastIndex}`;
   }
 

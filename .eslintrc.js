@@ -66,6 +66,10 @@ const config = {
     'prefer-template': 'off',
     'camelcase': 'off',
     'eqeqeq': ['error', 'smart'],
+    "prefer-const": ["error", {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": false
+    }],
     'padding-line-between-statements': 'off',
     'lines-between-class-members': ['error', "always", { exceptAfterSingleLine: true }],
     'ember-suave/no-const-outside-module-scope': 'off',

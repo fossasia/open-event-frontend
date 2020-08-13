@@ -56,7 +56,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   deleteDiscountCode(discount_id) {
     this.set('isLoading', true);
-    let discountCode = this.store.peekRecord('discountCode', discount_id, { backgroundReload: false });
+    const discountCode = this.store.peekRecord('discountCode', discount_id, { backgroundReload: false });
     discountCode.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Discount Code has been deleted successfully.'));
@@ -73,7 +73,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   toggleStatus(discount_id) {
     this.set('isLoading', true);
-    let discountCode = this.store.peekRecord('discountCode', discount_id, { backgroundReload: false });
+    const discountCode = this.store.peekRecord('discountCode', discount_id, { backgroundReload: false });
     discountCode.toggleProperty('isActive');
     discountCode.save()
       .then(() => {

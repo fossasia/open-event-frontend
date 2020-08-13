@@ -5,7 +5,7 @@ export default class extends Controller {
   @action
   saveSocials() {
     this.set('isLoading', true);
-    let settings = this.model;
+    const settings = this.model;
     settings.save()
       .then(() => {
         this.notify.success(this.l10n.t('Social links have been saved successfully.'),

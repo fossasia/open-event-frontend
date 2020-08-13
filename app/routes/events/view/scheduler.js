@@ -6,11 +6,11 @@ import $ from 'jquery';
 function patchFullCalendar() {
   if (!window?.FullCalendar) {return}
   window.FullCalendar.EventRenderer.prototype.renderFgSegEls = function(segs, disableResizing) {
-    let _this = this;
+    const _this = this;
     if (disableResizing === void 0) { disableResizing = false }
-    let hasEventRenderHandlers = this.view.hasPublicHandlers('eventRender');
+    const hasEventRenderHandlers = this.view.hasPublicHandlers('eventRender');
     let html = '';
-    let renderedSegs = [];
+    const renderedSegs = [];
     let i;
     if (segs.length) {
       // build a large concatenation of event segment HTML
@@ -21,7 +21,7 @@ function patchFullCalendar() {
       // Grab individual elements from the combined HTML string. Use each as the default rendering.
       // Then, compute the 'el' for each segment. An el might be null if the eventRender callback returned false.
       $(html).each(function(i, node) {
-        let seg = segs[i];
+        const seg = segs[i];
         let el = $(node);
         // Areeb: seg is undefined for single day events as i > seg.length due to some logical error
         if (seg && hasEventRenderHandlers) { // Areeb: Added `seg && `
@@ -49,7 +49,7 @@ export default Route.extend({
   },
   async model() {
     patchFullCalendar();
-    let unscheduledFilterOptions = [
+    const unscheduledFilterOptions = [
       {
         and: [
           {
@@ -84,7 +84,7 @@ export default Route.extend({
       }
     ];
 
-    let scheduledFilterOptions = [
+    const scheduledFilterOptions = [
       {
         and: [
           {
@@ -115,15 +115,15 @@ export default Route.extend({
       }
     ];
 
-    let eventDetails = this.modelFor('events.view');
+    const eventDetails = this.modelFor('events.view');
 
-    let validRange = {
+    const validRange = {
       start : eventDetails.startsAt.format('YYYY-MM-DD'),
       end   : eventDetails.endsAt.clone().add(1, 'day').format('YYYY-MM-DD')
     };
 
-    let durationDays = eventDetails.endsAt.diff(eventDetails.startsAt, 'days') + 1;
-    let views = {
+    const durationDays = eventDetails.endsAt.diff(eventDetails.startsAt, 'days') + 1;
+    const views = {
       timelineThreeDays: {
         type       : 'agenda',
         duration   : { days: durationDays },
@@ -131,21 +131,21 @@ export default Route.extend({
       }
     };
 
-    let header = {
+    const header = {
       left   : 'today,prev,next',
       center : 'title',
       right  : 'agendaDay,timelineThreeDays,agendaWeek'
     };
 
-    let scheduledSessions = await eventDetails.query('sessions', {
+    const scheduledSessions = await eventDetails.query('sessions', {
       include      : 'speakers,microlocation,track',
       filter       : scheduledFilterOptions,
       'page[size]' : 0
     });
 
-    let scheduled = []; // to convert sessions data to fullcalendar's requirements
+    const scheduled = []; // to convert sessions data to fullcalendar's requirements
     scheduledSessions.forEach(function(session) {
-      let speakerNames = [];
+      const speakerNames = [];
       session.speakers.forEach(function(speaker) {
         speakerNames.push(speaker.name);
       });
@@ -159,14 +159,14 @@ export default Route.extend({
       });
     });
 
-    let unscheduledSessions = await eventDetails.query('sessions', {
+    const unscheduledSessions = await eventDetails.query('sessions', {
       include      : 'speakers,track',
       filter       : unscheduledFilterOptions,
       'page[size]' : 0
     });
 
-    let microlocations = await eventDetails.query('microlocations', {});
-    let resources = [];
+    const microlocations = await eventDetails.query('microlocations', {});
+    const resources = [];
     microlocations.forEach(function(element) {
       resources.push({ id: element.id, title: element.name });
     });

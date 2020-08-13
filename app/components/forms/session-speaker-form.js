@@ -531,7 +531,7 @@ export default Component.extend(FormMixin, {
   }),
 
   isUserOrganiser: computed('event.organizers', 'authManager.currentUser', function() {
-    let { currentUser } = this.authManager;
+    const { currentUser } = this.authManager;
     return this.event.organizers.includes(currentUser);
   }),
 

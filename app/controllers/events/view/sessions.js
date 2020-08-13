@@ -9,7 +9,7 @@ export default class extends Controller {
 
   @computed('session.currentRouteName')
   get onSessionRoute() {
-    let { currentRouteName } = this.session;
+    const { currentRouteName } = this.session;
     return currentRouteName !== 'events.view.sessions.create' && currentRouteName !== 'events.view.sessions.edit';
   }
 

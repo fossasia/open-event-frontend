@@ -5,7 +5,7 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
-    let eventDetails = this.modelFor('events.view');
+    const eventDetails = this.modelFor('events.view');
     const searchField = 'name';
     let filterOptions = [];
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);

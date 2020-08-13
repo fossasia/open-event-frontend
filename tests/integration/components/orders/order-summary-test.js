@@ -34,7 +34,7 @@ module('Integration | Component | orders/order summary', function(hooks) {
       })
     ]
   );
-  let data = EmberObject.create({
+  const data = EmberObject.create({
     tickets
   });
 

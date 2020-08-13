@@ -25,15 +25,15 @@ export default TextField.extend({
     if (this.fastboot.isFastBoot) {
       return;
     }
-    let navigator = this.navigator || ((window) ? window.navigator : null);
+    const navigator = this.navigator || ((window) ? window.navigator : null);
     if (navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        let google = this.google || window.google;
-        let geolocation = {
+        const google = this.google || window.google;
+        const geolocation = {
           lat : position.coords.latitude,
           lng : position.coords.longitude
         };
-        let circle = new google.maps.Circle({
+        const circle = new google.maps.Circle({
           center : geolocation,
           radius : position.coords.accuracy
         });
@@ -60,7 +60,7 @@ export default TextField.extend({
 
   willDestroy() {
     if (isPresent(this.autocomplete)) {
-      let google = this.google || ((window) ? window.google : null);
+      const google = this.google || ((window) ? window.google : null);
       if (google) {
         google.maps.event.clearInstanceListeners(this.autocomplete);
       }
@@ -70,13 +70,13 @@ export default TextField.extend({
   getAutocomplete() {
     if (isEmpty(this.autocomplete)) {
       if (document && window) {
-        let [inputElement] = $(this.element);
-        let google = this.google || window.google;
-        let options = { types: this._typesToArray() };
+        const [inputElement] = $(this.element);
+        const google = this.google || window.google;
+        const options = { types: this._typesToArray() };
         if (Object.keys(this.restrictions).length > 0) {
           options.componentRestrictions = this.restrictions;
         }
-        let autocomplete = new google.maps.places.Autocomplete(inputElement, options);
+        const autocomplete = new google.maps.places.Autocomplete(inputElement, options);
         this.set('autocomplete', autocomplete);
       }
     }
@@ -84,7 +84,7 @@ export default TextField.extend({
 
   placeChanged() {
     if (this.placeChangedCallback) {
-      let place = this.autocomplete.getPlace();
+      const place = this.autocomplete.getPlace();
       this.placeChangedCallback(place);
       this.set('value', place[this.setValueWithProperty]);
     }

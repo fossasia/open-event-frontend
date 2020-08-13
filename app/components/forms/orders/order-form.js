@@ -44,15 +44,15 @@ export default Component.extend(FormMixin, {
   }),
 
   getRemainingTime: computed('settings', function() {
-    let { orderExpiryTime } = this.settings;
-    let willExpireAt = this.data.createdAt.add(orderExpiryTime, 'minutes');
+    const { orderExpiryTime } = this.settings;
+    const willExpireAt = this.data.createdAt.add(orderExpiryTime, 'minutes');
     this.timer(willExpireAt, this.data.identifier);
   }),
 
   timer(willExpireAt, orderIdentifier) {
     run.later(() => {
-      let currentTime = moment();
-      let diff = moment.duration(willExpireAt.diff(currentTime));
+      const currentTime = moment();
+      const diff = moment.duration(willExpireAt.diff(currentTime));
       this.set('getRemainingTime', moment.utc(diff.asMilliseconds()).format('mm:ss'));
       if (diff > 0) {
         this.timer(willExpireAt, orderIdentifier);
@@ -64,7 +64,7 @@ export default Component.extend(FormMixin, {
   },
 
   getValidationRules() {
-    let firstNameValidation = {
+    const firstNameValidation = {
       rules: [
         {
           type   : 'empty',
@@ -72,7 +72,7 @@ export default Component.extend(FormMixin, {
         }
       ]
     };
-    let lastNameValidation = {
+    const lastNameValidation = {
       rules: [
         {
           type   : 'empty',
@@ -80,7 +80,7 @@ export default Component.extend(FormMixin, {
         }
       ]
     };
-    let emailValidation = {
+    const emailValidation = {
       rules: [
         {
           type   : 'empty',
@@ -93,7 +93,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let genderValidation = {
+    const genderValidation = {
       rules: [
         {
           type   : 'empty',
@@ -102,7 +102,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let ageGroupValidation = {
+    const ageGroupValidation = {
       rules: [
         {
           type   : 'empty',
@@ -111,7 +111,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let addressValidation = {
+    const addressValidation = {
       rules: [
         {
           type   : 'empty',
@@ -120,7 +120,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let cityValidation = {
+    const cityValidation = {
       rules: [
         {
           type   : 'empty',
@@ -129,7 +129,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let stateValidation = {
+    const stateValidation = {
       rules: [
         {
           type   : 'empty',
@@ -138,7 +138,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let countryValidation = {
+    const countryValidation = {
       rules: [
         {
           type   : 'empty',
@@ -147,7 +147,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let jobTitleValidation = {
+    const jobTitleValidation = {
       rules: [
         {
           type   : 'empty',
@@ -156,7 +156,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let phoneValidation = {
+    const phoneValidation = {
       rules: [
         {
           type   : 'empty',
@@ -165,7 +165,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let taxBusinessInfoValidation = {
+    const taxBusinessInfoValidation = {
       rules: [
         {
           type   : 'empty',
@@ -174,7 +174,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let billingAddressValidation = {
+    const billingAddressValidation = {
       rules: [
         {
           type   : 'empty',
@@ -183,7 +183,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let homeAddressValidation = {
+    const homeAddressValidation = {
       rules: [
         {
           type   : 'empty',
@@ -192,7 +192,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let shippingAddressValidation = {
+    const shippingAddressValidation = {
       rules: [
         {
           type   : 'empty',
@@ -201,7 +201,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let companyValidation = {
+    const companyValidation = {
       identifier : 'company',
       rules      : [
         {
@@ -211,7 +211,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let workAddressValidation = {
+    const workAddressValidation = {
       rules: [
         {
           type   : 'empty',
@@ -220,7 +220,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let workPhoneValidation = {
+    const workPhoneValidation = {
       rules: [
         {
           type   : 'empty',
@@ -229,7 +229,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let websiteValidation = {
+    const websiteValidation = {
       optional : true,
       rules    : [
         {
@@ -240,7 +240,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let websiteRequiredValidation = {
+    const websiteRequiredValidation = {
       rules: [
         {
           type   : 'empty',
@@ -254,7 +254,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let blogValidation = {
+    const blogValidation = {
       optional : true,
       rules    : [
         {
@@ -265,7 +265,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let blogRequiredValidation = {
+    const blogRequiredValidation = {
       rules: [
         {
           type   : 'empty',
@@ -279,7 +279,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let twitterValidation = {
+    const twitterValidation = {
       optional : true,
       rules    : [
         {
@@ -290,7 +290,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let twitterRequiredValidation = {
+    const twitterRequiredValidation = {
       rules: [
         {
           type   : 'empty',
@@ -304,7 +304,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let facebookValidation = {
+    const facebookValidation = {
       optional : true,
       rules    : [
         {
@@ -315,7 +315,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let facebookRequiredValidation = {
+    const facebookRequiredValidation = {
       rules: [
         {
           type   : 'empty',
@@ -329,7 +329,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let githubValidation = {
+    const githubValidation = {
       optional : true,
       rules    : [
         {
@@ -340,7 +340,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let githubRequiredValidation = {
+    const githubRequiredValidation = {
       rules: [
         {
           type   : 'empty',
@@ -354,7 +354,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    let validationRules = {
+    const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
@@ -497,7 +497,7 @@ export default Component.extend(FormMixin, {
   actions: {
     submit(data) {
       this.onValid(() => {
-        let currentUser = this.data.user;
+        const currentUser = this.data.user;
         currentUser.set('firstName', this.buyerFirstName);
         currentUser.set('lastName', this.buyerLastName);
         this.sendAction('save', data);

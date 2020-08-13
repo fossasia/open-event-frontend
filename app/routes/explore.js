@@ -16,7 +16,7 @@ export default class ExploreRoute extends Route {
    * @private
    */
   _loadEvents(params) {
-    let filterOptions = [
+    const filterOptions = [
       {
         name : 'state',
         op   : 'eq',

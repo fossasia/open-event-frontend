@@ -19,8 +19,8 @@ export default class TicketFeesForm extends Component {
 
   @action
   addNewTicket() {
-    let settings = this.model;
-    let incorrect_settings = settings.filter(function(setting) {
+    const settings = this.model;
+    const incorrect_settings = settings.filter(function(setting) {
       return (!setting.get('currency') || !setting.get('country'));
     });
     if (incorrect_settings.length > 0) {

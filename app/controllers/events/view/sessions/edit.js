@@ -6,7 +6,7 @@ export default class extends Controller {
   save() {
     this.set('isLoading', true);
     if (this.addNewSpeaker) {
-      let newSpeaker = this.model.speaker;
+      const newSpeaker = this.model.speaker;
       if (newSpeaker.isEmailOverridden) {
         newSpeaker.set('email', this.authManager.currentUser.email);
       }

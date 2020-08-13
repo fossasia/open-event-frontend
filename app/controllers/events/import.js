@@ -56,8 +56,8 @@ export default class extends Controller {
 
   @action
   uploadFile(files) {
-    let [file] = files;
-    let data = new FormData();
+    const [file] = files;
+    const data = new FormData();
     let endpoint = 'import/json';
     let ext = file.name.split('.');
     ext = ext[ext.length - 1].toLowerCase();

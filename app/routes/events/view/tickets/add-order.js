@@ -9,7 +9,7 @@ export default class AddOrderRoute extends Route {
 
   async model() {
     const eventDetails = this.modelFor('events.view');
-    let queryObject = {};
+    const queryObject = {};
     return {
       tickets    : await eventDetails.query('tickets', queryObject),
       query      : queryObject,
@@ -28,7 +28,7 @@ export default class AddOrderRoute extends Route {
   }
 
   afterModel(model) {
-    let { tickets } = model;
+    const { tickets } = model;
     tickets.forEach(ticket => {
       ticket.set('orderQuantity', 0);
     });

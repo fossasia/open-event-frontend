@@ -26,13 +26,13 @@ export default class ApplicationController extends Controller {
   @computed
   get showCookie() {
     const cookieName = 'seen-cookie-message';
-    let cookie = this.cookies.read(cookieName);
+    const cookie = this.cookies.read(cookieName);
     let cookieExists = false;
     cookieExists = !(cookie != null && cookie === 'yes');
     let date = moment();
     date = date.add(30, 'day');
-    let expires = date.toISOString();
-    let options = {
+    const expires = date.toISOString();
+    const options = {
       path: '/',
       expires
     };

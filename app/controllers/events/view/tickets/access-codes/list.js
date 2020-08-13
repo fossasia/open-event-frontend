@@ -48,7 +48,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   deleteAccessCode(access_id) {
     this.set('isLoading', true);
-    let accessCode = this.store.peekRecord('accessCode', access_id, { backgroundReload: false });
+    const accessCode = this.store.peekRecord('accessCode', access_id, { backgroundReload: false });
     accessCode.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Access Code has been deleted successfully.'));
@@ -65,7 +65,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     @action
   toggleStatus(access_id) {
     this.set('isLoading', true);
-    let accessCode = this.store.peekRecord('accessCode', access_id, { backgroundReload: false });
+    const accessCode = this.store.peekRecord('accessCode', access_id, { backgroundReload: false });
     accessCode.toggleProperty('isActive');
     accessCode.save()
       .then(() => {

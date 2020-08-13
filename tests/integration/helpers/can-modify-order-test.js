@@ -8,7 +8,7 @@ module('Integration | Helper | can-modify-order', function(hooks) {
   setupIntegrationTest(hooks);
 
   test('it returns true for free orders', async function(assert) {
-    let order = EmberObject.create({
+    const order = EmberObject.create({
       amount         : 0,
       status         : 'completed',
       discountCodeId : null
@@ -21,7 +21,7 @@ module('Integration | Helper | can-modify-order', function(hooks) {
   });
 
   test('it returns true for paid non completed orders', async function(assert) {
-    let order = EmberObject.create({
+    const order = EmberObject.create({
       amount         : 10,
       status         : 'placed',
       discountCodeId : null
@@ -34,7 +34,7 @@ module('Integration | Helper | can-modify-order', function(hooks) {
   });
 
   test('it returns false for paid completed orders', async function(assert) {
-    let order = EmberObject.create({
+    const order = EmberObject.create({
       amount         : 10,
       status         : 'completed',
       discountCodeId : null
@@ -47,7 +47,7 @@ module('Integration | Helper | can-modify-order', function(hooks) {
   });
 
   test('it returns false for paid, completed discounted orders', async function(assert) {
-    let order = EmberObject.create({
+    const order = EmberObject.create({
       amount         : 0,
       status         : 'completed',
       discountCodeId : 1
@@ -60,7 +60,7 @@ module('Integration | Helper | can-modify-order', function(hooks) {
   });
 
   test('it returns true for paid, non completed discounted orders', async function(assert) {
-    let order = EmberObject.create({
+    const order = EmberObject.create({
       amount         : 10,
       status         : 'pending',
       discountCodeId : 1

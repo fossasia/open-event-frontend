@@ -15,7 +15,7 @@ export default class EventCard extends Component {
     // and we don't have time and resources to chase down issues originating
     // from ember core, hence disabling the lint
     const tagsOriginal = this.getProperties('event.topic.name', 'event.type.name', 'event.subTopic.name');  // eslint-disable-line ember/no-get
-    let tags = [];
+    const tags = [];
     forOwn(tagsOriginal, value => {
       if (value && value.trim() !== '') {
         tags.push(`#${pascalCase(value)}`);

@@ -115,7 +115,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async deleteEvent() {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
       await event.destroyRecord();
       this.notify.success(this.l10n.t('Event has been deleted successfully.'),
         {
@@ -139,7 +139,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async restoreEvent(event_id) {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.set('deletedAt', null);
       await event.save({ adapterOptions: { getTrashed: true } });
       this.notify.success(this.l10n.t('Event has been restored successfully.'),
@@ -160,7 +160,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async toggleFeatured(event_id) {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
       await event.save();
       this.notify.success(this.l10n.t('Event details modified successfully'),
@@ -182,7 +182,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async togglePromoted(event_id) {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isPromoted');
       await event.save();
       this.notify.success(this.l10n.t(`Event ${event.isPromoted ? 'Promoted' : 'unpromoted'} Successfully`),

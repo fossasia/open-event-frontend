@@ -8,7 +8,7 @@ export default Mixin.create({
   originalId: attr(),
 
   extractId(modelClass, resourceHash) {
-    let id = get(resourceHash, this.primaryKey);
+    const id = get(resourceHash, this.primaryKey);
     return coerceId(id);
   },
 
@@ -23,7 +23,7 @@ export default Mixin.create({
   },
 
   extractAttributes(modelClass, resourceHash) {
-    let attributes = this._super(...arguments);
+    const attributes = this._super(...arguments);
     if (this.primaryKey !== 'id') {
       attributes.originalId = resourceHash.id;
     }

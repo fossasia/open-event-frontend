@@ -26,7 +26,7 @@ export default class AuthManagerService extends Service {
     }
 
     if (this.session.data.currentUserFallback) {
-      let userModel = this.store.peekRecord('user', this.session.data.currentUserFallback.id);
+      const userModel = this.store.peekRecord('user', this.session.data.currentUserFallback.id);
       if (!userModel) {
         return this.restoreCurrentUser();
       }
@@ -106,7 +106,7 @@ export default class AuthManagerService extends Service {
       this.set('currentUserModel', user);
     }
 
-    let userData = user.serialize(false).data.attributes;
+    const userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
     this.session.set('data.currentUserFallback', userData);
   }
@@ -130,7 +130,7 @@ export default class AuthManagerService extends Service {
         attributes : data
       }
     });
-    let userModel = this.store.peekRecord('user', userId);
+    const userModel = this.store.peekRecord('user', userId);
     this.set('currentUserModel', userModel);
     return userModel;
   }

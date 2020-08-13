@@ -31,10 +31,10 @@ export default class TestEmailForm extends Component.extend(FormMixin) {
   @action
   sendTestMail() {
     this.onValid(() => {
-      let payload = {
+      const payload = {
         recipient: this.recipientEmail
       };
-      let config = {
+      const config = {
         skipDataTransform: true
       };
       this.loader.post('/test-mail', JSON.stringify(payload), config)

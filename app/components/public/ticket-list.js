@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, {
 
   shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', 'isUnverified', function() {
     if (this.isUnverified) {return true}
-    let quantityDonation = sumBy(this.donationTickets.toArray(),
+    const quantityDonation = sumBy(this.donationTickets.toArray(),
       donationTicket => (donationTicket.orderQuantity || 0));
     if (quantityDonation > 0) {
       return !(this.hasTicketsInOrder && this.isDonationPriceValid);
@@ -117,9 +117,9 @@ export default Component.extend(FormMixin, {
         this.set('code', this.promotionalCode);
       }
       try {
-        let accessCode = await this.store.queryRecord('access-code', { eventIdentifier: this.event.id, code: this.promotionalCode });
+        const accessCode = await this.store.queryRecord('access-code', { eventIdentifier: this.event.id, code: this.promotionalCode });
         this.order.set('accessCode', accessCode);
-        let tickets = await accessCode.get('tickets');
+        const tickets = await accessCode.get('tickets');
         tickets.forEach(ticket => {
           ticket.set('isHidden', false);
           this.tickets.addObject(ticket);
@@ -216,7 +216,7 @@ export default Component.extend(FormMixin, {
   },
   donationTicketsValidation: computed('donationTickets.@each.id', 'donationTickets.@each.minPrice', 'donationTickets.@each.maxPrice', function() {
     const validationRules = {};
-    for (let donationTicket of this.donationTickets) {
+    for (const donationTicket of this.donationTickets) {
       validationRules[donationTicket.id] =  {
         identifier : donationTicket.id,
         optional   : true,

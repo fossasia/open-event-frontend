@@ -20,10 +20,10 @@ export default class FooterMain extends Component {
   didInsertElement() {
     this.set('eventLocations', this.eventLocations.sortBy('name'));
 
-    let eventTypes = this.eventTypes.sortBy('name').toArray();
+    const eventTypes = this.eventTypes.sortBy('name').toArray();
     eventTypes.forEach(eventType => {
       if (eventType.name === 'Other') {
-        let other = eventType;
+        const other = eventType;
         eventTypes.splice(eventTypes.indexOf(eventType), 1);
         eventTypes.push(other);
       }

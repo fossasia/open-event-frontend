@@ -91,7 +91,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async restoreEvent(event_id) {
     this.set('isLoading', true);
     try {
-      let event = this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event = this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.set('deletedAt', null);
       await event.save({ adapterOptions: { getTrashed: true } });
       this.notify.success(this.l10n.t('Event has been restored successfully.'));

@@ -8,9 +8,9 @@ export default class ScheduleRoute extends Route {
   }
 
   async model() {
-    let event = this.modelFor('public');
+    const event = this.modelFor('public');
 
-    let scheduledFilterOptions = [
+    const scheduledFilterOptions = [
       {
         and: [
           {
@@ -42,13 +42,13 @@ export default class ScheduleRoute extends Route {
     ];
 
 
-    let validRange = {
+    const validRange = {
       start : event.startsAt.format('YYYY-MM-DD'),
       end   : event.endsAt.clone().add(1, 'day').format('YYYY-MM-DD')
     };
 
-    let durationDays = event.endsAt.diff(event.startsAt, 'days') + 1;
-    let views = {
+    const durationDays = event.endsAt.diff(event.startsAt, 'days') + 1;
+    const views = {
       timelineThreeDays: {
         type       : 'agenda',
         duration   : { days: durationDays },
@@ -56,20 +56,20 @@ export default class ScheduleRoute extends Route {
       }
     };
 
-    let header = {
+    const header = {
       left   : 'today,prev,next',
       center : 'title',
       right  : 'timelineDay,timelineThreeDays,agendaWeek'
     };
 
-    let scheduledSessions = await event.query('sessions', {
+    const scheduledSessions = await event.query('sessions', {
       include : 'speakers,microlocation,track',
       filter  : scheduledFilterOptions
     });
 
-    let scheduled = []; // to convert sessions data to fullcalendar's requirements
+    const scheduled = []; // to convert sessions data to fullcalendar's requirements
     scheduledSessions.forEach(function(session) {
-      let speakerNames = [];
+      const speakerNames = [];
       session.speakers.forEach(function(speaker) {
         speakerNames.push(speaker.name);
       });
@@ -84,8 +84,8 @@ export default class ScheduleRoute extends Route {
       });
     });
 
-    let microlocations = await event.query('microlocations', {});
-    let resources = [];
+    const microlocations = await event.query('microlocations', {});
+    const resources = [];
     microlocations.forEach(function(element) {
       resources.push({ id: element.id, title: element.name });
     });

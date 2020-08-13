@@ -6,8 +6,8 @@ import 'croppie/croppie.css';
 
 export default class extends ModalBase {
   onVisible() {
-    let viewport = {};
-    let factor = 150;
+    const viewport = {};
+    const factor = 150;
     const aspectRatio = this.getWithDefault('aspectRatio', [2, 1]);
     viewport.width = aspectRatio[0] * factor;
     viewport.height = aspectRatio[1] * factor;

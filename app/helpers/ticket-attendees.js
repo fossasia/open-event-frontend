@@ -3,9 +3,9 @@ import { intersection } from 'lodash-es';
 
 export  function ticketAttendees(params/* , hash*/) {
 
-  let allTicketAttendees =  params[1].toArray();
-  let orderAttendees = params[0].toArray();
-  let commonAttendees =  intersection(orderAttendees, allTicketAttendees);
+  const allTicketAttendees =  params[1].toArray();
+  const orderAttendees = params[0].toArray();
+  const commonAttendees =  intersection(orderAttendees, allTicketAttendees);
   return commonAttendees.length;
 
 }

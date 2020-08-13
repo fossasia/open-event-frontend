@@ -5,7 +5,7 @@ export default class extends Controller {
   @action
   updateContactInfo() {
     this.set('isLoading', true);
-    let currentUser = this.model.user;
+    const currentUser = this.model.user;
     currentUser.save()
       .then(() => {
         this.notify.success(this.l10n.t('Your Contact Info has been updated'));

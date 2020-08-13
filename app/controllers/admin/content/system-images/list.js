@@ -5,7 +5,7 @@ export default class extends Controller {
 
   @computed('model.subTopics')
   get data() {
-    let topics = this.model.subTopics;
+    const topics = this.model.subTopics;
     topics.forEach(topic => {
       if (!topic.get('placeholder.content')) {
         topic.set('placeholder', this.store.createRecord('custom-placeholder', {

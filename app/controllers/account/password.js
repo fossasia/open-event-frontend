@@ -6,7 +6,7 @@ export default class extends Controller {
   @action
   changePassword(passwordData) {
     this.set('isLoading', true);
-    let payload = {
+    const payload = {
       'data': {
         'old-password' : passwordData.passwordCurrent,
         'new-password' : passwordData.passwordNew

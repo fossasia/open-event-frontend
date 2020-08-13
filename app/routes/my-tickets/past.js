@@ -9,7 +9,7 @@ export default class PastRoute extends Route {
   }
 
   model() {
-    let filterOptions = [];
+    const filterOptions = [];
     filterOptions.push(
       {
         and: [

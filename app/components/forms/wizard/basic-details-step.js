@@ -142,7 +142,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
     };
 
-    let validationRules = {
+    const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
@@ -425,7 +425,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         });
     },
     async disconnectStripe() {
-      let stripeAuthorization = await this.data.event.stripeAuthorization;
+      const stripeAuthorization = await this.data.event.stripeAuthorization;
       stripeAuthorization.destroyRecord()
         .then(() => {
           this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
@@ -531,7 +531,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     async updateCopyright(name) {
       const { event } = this.data;
       const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
-      let license = find(licenses, { name });
+      const license = find(licenses, { name });
       copyright.setProperties({
         licence    : name,
         logoUrl    : license.logoUrl,

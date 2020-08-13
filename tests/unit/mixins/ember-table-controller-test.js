@@ -5,8 +5,8 @@ import { module, test } from 'qunit';
 module('Unit | Mixin | ember-table-controller', function() {
   // Replace this with your real tests.
   test('it works', function(assert) {
-    let EmberTableControllerObject = EmberObject.extend(EmberTableControllerMixin);
-    let subject = EmberTableControllerObject.create();
+    const EmberTableControllerObject = EmberObject.extend(EmberTableControllerMixin);
+    const subject = EmberTableControllerObject.create();
     assert.ok(subject);
   });
 });

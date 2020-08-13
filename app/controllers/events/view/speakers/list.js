@@ -62,7 +62,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   async deleteSpeaker(speaker_id) {
     this.set('isLoading', true);
-    let speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: true });
+    const speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: true });
     try {
       await speaker.destroyRecord();
       this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
@@ -85,7 +85,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
   @action
   async toggleFeatured(speaker_id) {
-    let speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: false });
+    const speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: false });
     speaker.toggleProperty('isFeatured');
     try {
       await speaker.save();
