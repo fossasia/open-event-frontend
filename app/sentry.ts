@@ -45,6 +45,16 @@ if (!config.sentry.dsn.includes('dummy')) {
                     adapter_errors_json: JSON.stringify(error.errors)
                 }
             }
+
+            try {
+                // Try to store JSON of error for diagnosing bugs
+                event.extra = {
+                    ...event.extra,
+                    error_json: JSON.stringify(error)
+                }
+            } catch {
+                // Ignore error to prevent stackoverflow
+            }
         }
 
         scope.addEventProcessor(function(event: Sentry.Event, hints: Sentry.EventHint) {
