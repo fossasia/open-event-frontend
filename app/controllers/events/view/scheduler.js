@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
 import moment from 'moment';
+import { tracked } from '@glimmer/tracking';
+import { matchPropertyIn } from 'open-event-frontend/utils/text';
 
 export default class extends Controller {
   @computed('model.eventDetails.schedulePublishedOn')
@@ -12,6 +14,16 @@ export default class extends Controller {
     return false;
   }
 
+  @computed('model.unscheduled', 'filter')
+  get unscheduledSessions() {
+    if (!this.filter || !this.model.unscheduled) {return this.model.unscheduled}
+
+    return this.model.unscheduled.toArray()
+      .filter(session => matchPropertyIn(session, this.filter, ['title', 'shortAbstract'])
+              || session.speakers.map(speaker => speaker.name).join(',').toLowerCase().includes(this.filter.toLowerCase()));
+  }
+
+  @tracked filter = '';
   isLoading = false;
   header    = {
     left   : 'today prev,next',

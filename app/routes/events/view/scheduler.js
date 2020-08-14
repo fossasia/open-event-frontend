@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import $ from 'jquery';
+import { hash } from 'rsvp';
 
 // TODO(Areeb): Remove once upgraded
 // Workaround for https://github.com/fossasia/open-event-frontend/issues/4729
@@ -137,12 +138,47 @@ export default Route.extend({
       right  : 'agendaDay,timelineThreeDays,agendaWeek'
     };
 
-    const scheduledSessions = await eventDetails.query('sessions', {
+    const scheduledSessions = eventDetails.query('sessions', {
       include      : 'speakers,microlocation,track',
       filter       : scheduledFilterOptions,
       'page[size]' : 0
     });
 
+    const scheduled = await this.getScheduled(scheduledSessions);
+
+    const unscheduled = eventDetails.query('sessions', {
+      include      : 'speakers,track',
+      filter       : unscheduledFilterOptions,
+      'page[size]' : 0
+    });
+
+    const microlocations = eventDetails.query('microlocations', {});
+
+    const resources = this.getResources(microlocations);
+
+    /*
+    The start hour of the start day is considered the start hour for remaining days as well.
+    The end hour of the last day is considered the end hour for remaining days as well.
+    */
+
+    return hash({
+      header,
+      timezone        : 'UTC',
+      defaultView     : 'agendaDay',
+      events          : scheduled,
+      eventDetails,
+      resources,
+      unscheduled,
+      minTime         : eventDetails.startsAt.format('HH:mm:ss'),
+      maxTime         : eventDetails.endsAt.format('HH:mm:ss'),
+      validRange,
+      views,
+      defaultDuration : '01:00'
+    });
+  },
+
+  async getScheduled(scheduledSessionsPromise) {
+    const scheduledSessions = await scheduledSessionsPromise;
     const scheduled = []; // to convert sessions data to fullcalendar's requirements
     scheduledSessions.forEach(function(session) {
       const speakerNames = [];
@@ -159,36 +195,14 @@ export default Route.extend({
       });
     });
 
-    const unscheduledSessions = await eventDetails.query('sessions', {
-      include      : 'speakers,track',
-      filter       : unscheduledFilterOptions,
-      'page[size]' : 0
-    });
+    return scheduled;
+  },
 
-    const microlocations = await eventDetails.query('microlocations', {});
+  async getResources(microlocationsPromise) {
+    const microlocations = await microlocationsPromise;
     const resources = [];
     microlocations.forEach(function(element) {
       resources.push({ id: element.id, title: element.name });
     });
-
-    /*
-    The start hour of the start day is considered the start hour for remaining days as well.
-    The end hour of the last day is considered the end hour for remaining days as well.
-    */
-
-    return {
-      header,
-      timezone        : 'UTC',
-      defaultView     : 'agendaDay',
-      events          : scheduled,
-      eventDetails,
-      resources,
-      unscheduled     : unscheduledSessions,
-      minTime         : eventDetails.startsAt.format('HH:mm:ss'),
-      maxTime         : eventDetails.endsAt.format('HH:mm:ss'),
-      validRange,
-      views,
-      defaultDuration : '01:00'
-    };
   }
 });
