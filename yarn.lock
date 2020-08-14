@@ -1474,6 +1474,15 @@
   resolved "https://registry.yarnpkg.com/@open-event/theme/-/theme-0.2.2.tgz#a0ca174c23dc13882f46212cb0f77d74a41241f4"
   integrity sha512-zZBY8a/x8Gv/DI8Ai4ggTuw3dGTXEm5/qVoLC7zOLJ5UIgEyQxIXykYa+sAHEmsNlfZ4aYA+tp8q799h/ILKag==
 
+"@paypal/sdk-constants@^1.0.64":
+  version "1.0.68"
+  resolved "https://registry.yarnpkg.com/@paypal/sdk-constants/-/sdk-constants-1.0.68.tgz#8e12deb99d6237de4a9ee4d8ebdca0d9545cf86e"
+  integrity sha512-1o/afsu2m/PPJDCoCIhYsNj7xxX+7kcEH3N5TFzYSYbP1VJrqdKWl4ZI08lcMoxF1mUCa4twEVMGUdxiEUvQsA==
+  dependencies:
+    cross-domain-utils "^2.0.10"
+    hi-base32 "^0.5.0"
+    zalgo-promise "^1.0.28"
+
 "@sentry/apm@5.21.1", "@sentry/apm@^5.20.1":
   version "5.21.1"
   resolved "https://registry.yarnpkg.com/@sentry/apm/-/apm-5.21.1.tgz#b52ea0a9e2f496bfa80f80ca8cfc0a46ab68bc9b"
@@ -12837,11 +12846,12 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-paypal-checkout@^4.0.315:
-  version "4.0.315"
-  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.315.tgz#7867c32798da4abc33ed629f91fb1d5a61dfba1c"
-  integrity sha512-EKRr/j/1l2dK8qvCrdH1bUbnYz12+SA0DIhl8po/rYXOL63EESVR7UrpF8CrFWym0wOjt/kEsGCzwFYQ8jBL0A==
+paypal-checkout@^4.0.317:
+  version "4.0.317"
+  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.317.tgz#e77a3b62458e451d6f4448ebfb36f4d345cbb2c2"
+  integrity sha512-CJWnOgIKZKgmZ8adIoov41jiwC6xMEQns8pq8GecpeY7aFz9jaWis+zrwkZ3wVa0JxSOUTzZH8njdYnNzs7iMQ==
   dependencies:
+    "@paypal/sdk-constants" "^1.0.64"
     Base64 "^1.0.0"
     beaver-logger "^3.0.6"
     belter "^1.0.96"
