@@ -1,42 +1,5 @@
 import Route from '@ember/routing/route';
-import $ from 'jquery';
-
-// TODO(Areeb): Remove once upgraded
-// Workaround for https://github.com/fossasia/open-event-frontend/issues/4729
-function patchFullCalendar() {
-  if (!window?.FullCalendar) {return}
-  window.FullCalendar.EventRenderer.prototype.renderFgSegEls = function(segs, disableResizing) {
-    const _this = this;
-    if (disableResizing === void 0) { disableResizing = false }
-    const hasEventRenderHandlers = this.view.hasPublicHandlers('eventRender');
-    let html = '';
-    const renderedSegs = [];
-    let i;
-    if (segs.length) {
-      // build a large concatenation of event segment HTML
-      for (i = 0; i < segs.length; i++) {
-        this.beforeFgSegHtml(segs[i]);
-        html += this.fgSegHtml(segs[i], disableResizing);
-      }
-      // Grab individual elements from the combined HTML string. Use each as the default rendering.
-      // Then, compute the 'el' for each segment. An el might be null if the eventRender callback returned false.
-      $(html).each(function(i, node) {
-        const seg = segs[i];
-        let el = $(node);
-        // Areeb: seg is undefined for single day events as i > seg.length due to some logical error
-        if (seg && hasEventRenderHandlers) { // Areeb: Added `seg && `
-          el = _this.filterEventRenderEl(seg.footprint, el);
-        }
-        if (seg && el) { // Areeb: Added `seg && `
-          el.data('fc-seg', seg); // used by handlers
-          seg.el = el;
-          renderedSegs.push(seg);
-        }
-      });
-    }
-    return renderedSegs;
-  };
-}
+import { patchFullCalendar } from 'open-event-frontend/utils/patches/fullcalendar';
 
 export default Route.extend({
   titleToken() {
@@ -116,6 +79,7 @@ export default Route.extend({
     ];
 
     const eventDetails = this.modelFor('events.view');
+    const { timezone } = eventDetails;
 
     const validRange = {
       start : eventDetails.startsAt.format('YYYY-MM-DD'),
@@ -151,8 +115,8 @@ export default Route.extend({
       });
       scheduled.push({
         title      : `${session.title} | ${speakerNames.join(', ')}`,
-        start      : session.startsAt.format(),
-        end        : session.endsAt.format(),
+        start      : session.startsAt.tz(timezone).format(),
+        end        : session.endsAt.tz(timezone).format(),
         resourceId : session.microlocation.get('id'),
         color      : session.track.get('color'),
         serverId   : session.get('id') // id of the session on BE
@@ -178,14 +142,14 @@ export default Route.extend({
 
     return {
       header,
-      timezone        : 'UTC',
+      timezone,
       defaultView     : 'agendaDay',
       events          : scheduled,
       eventDetails,
       resources,
       unscheduled     : unscheduledSessions,
-      minTime         : eventDetails.startsAt.format('HH:mm:ss'),
-      maxTime         : eventDetails.endsAt.format('HH:mm:ss'),
+      minTime         : eventDetails.startsAt.tz(eventDetails.timezone).format('HH:mm:ss'),
+      maxTime         : eventDetails.startsAt.tz(eventDetails.timezone).format('HH:mm:ss'),
       validRange,
       views,
       defaultDuration : '01:00'

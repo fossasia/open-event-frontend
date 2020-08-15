@@ -39,11 +39,24 @@ export default class extends Controller {
   }
 
   updateSession(start, end, microlocationId, sessionId) {
+    if (!start !== !end) {
+      // If either one of start or end is missing, then return and throw an error
+      // Either both should be present or none
+
+      this.notify.error('Start time or End time not present');
+      return;
+    }
+
+    if (start && end) {
+      start = moment.tz(start.format(), this.model.timezone).toISOString();
+      end = moment.tz(end.format(), this.model.timezone).toISOString();
+    }
+
     const payload = {
       data: {
         attributes: {
-          'starts-at' : start ? start.toISOString() : null,
-          'ends-at'   : end ? end.toISOString() : null
+          'starts-at' : start,
+          'ends-at'   : end
         },
         relationships: {
           microlocation: {
