@@ -81,8 +81,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        {
          name            : 'Featured Event',
          valuePath       : 'id',
+         isSortable      : true,
          extraValuePaths : ['isFeatured'],
          cellComponent   : 'ui-table/cell/admin/events/event-is-featured',
+         headerComponent : 'tables/headers/sort',
          width           : 80,
          actions         : {
            toggleFeatured: this.toggleFeatured.bind(this)
@@ -91,8 +93,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        {
          name            : 'Promoted Event',
          valuePath       : 'id',
+         isSortable      : true,
          extraValuePaths : ['isPromoted'],
          cellComponent   : 'ui-table/cell/admin/events/event-is-promoted',
+         headerComponent : 'tables/headers/sort',
          width           : 80,
          actions         : {
            togglePromoted: this.togglePromoted.bind(this)
