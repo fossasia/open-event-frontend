@@ -22,7 +22,7 @@ module('Integration | Component | unverified user message', function(hooks) {
     setShouldShowMessage.call(this);
     this.set('isMailSent', true);
     await render(hbs`{{unverified-user-message isMailSent=isMailSent authManager=authManager session=session}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Confirmation mail has been sent again successfully'));
+    assert.dom(this.element).includesText('Confirmation mail has been sent again successfully');
   });
 
   test('event live message', async function(assert) {
@@ -31,7 +31,7 @@ module('Integration | Component | unverified user message', function(hooks) {
     });
     this.set('isMailSent', false);
     await render(hbs`{{unverified-user-message session=session authManager=authManager isMailSent=isMailSent}}`);
-    assert.ok(this.element.innerHTML.trim().includes('To make your event live, please verify your account by clicking on the confirmation link that has been emailed to you.'));
+    assert.dom(this.element).includesText('To make your event live, please verify your account by clicking on the confirmation link that has been emailed to you.');
   });
 
   test('unverified message', async function(assert) {
