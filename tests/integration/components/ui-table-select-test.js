@@ -8,6 +8,6 @@ module('Integration | Component | ui table select', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs `{{ui-table-select}}`);
-    assert.ok(this.element.innerHTML.trim().includes('10'));
+    assert.dom(this.element).includesText('10');
   });
 });
