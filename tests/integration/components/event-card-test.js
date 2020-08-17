@@ -19,6 +19,6 @@ module('Integration | Component | event card', function(hooks) {
     }));
     this.actions.shareEvent = function() { };
     await render(hbs`{{event-card event=event isWide=false shareEvent=(action 'shareEvent')}}`);
-    assert.ok(this.element.innerHTML.trim().includes('event'));
+    assert.ok(this.element).includesText('event');
   });
 });
