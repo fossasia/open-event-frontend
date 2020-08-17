@@ -14,6 +14,6 @@ module('Integration | Component | tabbed navigation', function(hooks) {
         {{/link-to}}
       {{/tabbed-navigation}}`);
 
-    assert.ok(this.element.innerHTML.trim().includes('Overview'));
+    assert.dom(this.element).includesText('Overview');
   });
 });
