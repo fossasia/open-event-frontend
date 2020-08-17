@@ -1,22 +1,8 @@
 {{#if this.isSchedulePublished}}
-  <FullCalendar
-    @events={{this.model.events}}
-    @aspectRatio={{1.8}}
-    @editable={{false}}
-    @droppable={{false}}
-    @resources={{this.model.resources}}
-    @resourceLabelText="Rooms"
-    @header={{this.model.header}}
-    @timezone={{this.model.timezone}}
-    @views={{this.model.views}}
-    @viewName="agendaDay"
-    @defaultView="timelineDay"
-    @validRange={{this.model.validRange}}
-    @now={{moment-format (now ) "YYYY-MM-DD"}}
-    @scrollTime="00:00"
-    @minTime={{this.model.minTime}}
-    @slotDuration="00:30:00"
-    @slotLabelFormat="HH:mm" />
+  <Schedule
+    @event={{this.model.event}}
+    @sessions={{this.model.sessions}}
+    @rooms={{this.model.microlocations}} />
 {{else}}
   <div class="ui disabled header">{{t 'Schedule for the event is currently unavailable'}}</div>
 {{/if}}

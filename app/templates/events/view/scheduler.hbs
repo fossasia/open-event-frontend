@@ -23,29 +23,17 @@
       {{#if this.device.isMobile}}
         <div class="ui hidden divider"></div>
       {{/if}}
-      <FullCalendar
-        @events={{this.model.events}}
-        @aspectRatio={{if this.device.isMobile 0.7 1.8}}
+      <Schedule
+        @event={{this.model.event}}
+        @sessions={{this.model.scheduled}}
+        @rooms={{this.model.microlocations}}
         @editable={{true}}
-        @timezone={{this.model.timezone}}
         @droppable={{true}}
-        @resources={{this.model.resources}}
-        @groupByResource={{true}}
-        @resourceLabelText="Rooms"
-        @header={{this.model.header}}
-        @views={{this.model.views}}
-        @viewName="agendaDay"
+        @defaultTimedEventDuration={{this.model.defaultDuration}}
         @drop={{action "drop"}}
         @eventResize={{action "eventResize"}}
         @eventDrop={{action "eventDrop"}}
-        @eventRender={{action "eventRender"}}
-        @defaultView="timelineDay"
-        @validRange={{this.model.validRange}}
-        @now={{moment-format (now ) "YYYY-MM-DD"}}
-        @scrollTime="00:00"
-        @minTime={{this.model.minTime}}
-        @slotDuration="00:10:00"
-        @slotLabelFormat="HH:mm" />
+        @eventRender={{action "eventRender"}} />
     </div>
   </div>
 </div>

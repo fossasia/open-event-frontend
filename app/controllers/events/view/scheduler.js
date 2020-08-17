@@ -3,11 +3,15 @@ import { computed, action } from '@ember/object';
 import moment from 'moment';
 import { tracked } from '@glimmer/tracking';
 import { matchPropertyIn } from 'open-event-frontend/utils/text';
+import $ from 'jquery';
 
 export default class extends Controller {
-  @computed('model.eventDetails.schedulePublishedOn')
+  @tracked filter = '';
+  isLoading = false;
+
+  @computed('model.event.schedulePublishedOn')
   get isSchedulePublished() {
-    const schedulePublishStatus = this.model.eventDetails.schedulePublishedOn;
+    const schedulePublishStatus = this.model.event.schedulePublishedOn;
     if (schedulePublishStatus != null) {
       return schedulePublishStatus.toISOString() !== moment(0).toISOString();
     }
@@ -23,27 +27,25 @@ export default class extends Controller {
               || session.speakers.map(speaker => speaker.name).join(',').toLowerCase().includes(this.filter.toLowerCase()));
   }
 
-  @tracked filter = '';
-  isLoading = false;
-  header    = {
-    left   : 'today prev,next',
-    center : 'title',
-    right  : 'timelineDay,timelineThreeDays,agendaWeek,month'
-  }
+  async updateSession(start, end, microlocationId, sessionId) {
+    if (!start !== !end) {
+      // If either one of start or end is missing, then return and throw an error
+      // Either both should be present or none
 
-  view = {
-    timelineThreeDays: {
-      type     : 'timeline',
-      duration : { days: 3 }
+      this.notify.error('Start time or End time not present');
+      return;
     }
-  }
 
-  updateSession(start, end, microlocationId, sessionId) {
+    if (start && end) {
+      start = moment.tz(start.format(), this.model.timezone).toISOString();
+      end = moment.tz(end.format(), this.model.timezone).toISOString();
+    }
+
     const payload = {
       data: {
         attributes: {
-          'starts-at' : start ? start.toISOString() : null,
-          'ends-at'   : end ? end.toISOString() : null
+          'starts-at' : start,
+          'ends-at'   : end
         },
         relationships: {
           microlocation: {
@@ -74,19 +76,19 @@ export default class extends Controller {
       });
   }
 
-  unscheduleSession(session) {
-    window.$('.full-calendar').fullCalendar('removeEvents', session._id);
-    this.updateSession(null, null, session.resourceId, session.serverId);
+  async unscheduleSession(session) {
+    $('.full-calendar').fullCalendar('removeEvents', session._id);
+    await this.updateSession(null, null, session.resourceId, session.serverId);
     this.target.send('refresh');
   }
 
   @action
-  drop(date, jsEvent, ui, resourceId) {
+  async drop(date, jsEvent, ui, resourceId) {
     const start = date;
     const duration = this.model.defaultDuration.split(':');
     const end = start.clone().add(duration[0], 'hours').add(duration[1], 'minutes');
-    this.updateSession(start, end, resourceId, window.$(ui.helper).data('serverId'));
-    window.$(ui.helper).remove();
+    await this.updateSession(start, end, resourceId, $(ui.helper).data('serverId'));
+    this.target.send('refresh');
   }
 
   @action

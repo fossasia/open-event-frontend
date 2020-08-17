@@ -1,0 +1,24 @@
+<FullCalendar
+  @events={{this.events}}
+  @aspectRatio={{if this.device.isMobile 0.7 1.8}}
+  @editable={{@editable}}
+  @droppable={{@droppable}}
+  @resources={{this.resources}}
+  @groupByResource={{true}}
+  @resourceLabelText="Rooms"
+  @header={{this.header}}
+  @timezone={{this.timezone}}
+  @views={{this.views}}
+  @viewName="agendaDay"
+  @defaultView="timelineDay"
+  @validRange={{this.validRange}}
+  @now={{moment-format (now) "YYYY-MM-DD"}}
+  @scrollTime="00:00"
+  @minTime={{this.minTime}}
+  @slotDuration="00:10:00"
+  @slotLabelFormat="HH:mm"
+  @defaultTimedEventDuration={{@defaultTimedEventDuration}}
+  @drop={{@drop}}
+  @eventResize={{@eventResize}}
+  @eventDrop={{@eventDrop}}
+  @eventRender={{@eventRender}} />
