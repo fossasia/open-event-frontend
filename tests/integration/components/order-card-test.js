@@ -25,6 +25,6 @@ module('Integration | Component | order card', function(hooks) {
     this.set('order', order);
     this.set('authManager', authManager);
     await render(hbs`{{order-card order=order authManager=authManager}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Pragma'));
+    assert.dom(this.element).includesText('Pragma');
   });
 });
