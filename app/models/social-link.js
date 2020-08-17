@@ -13,7 +13,11 @@ export default ModelBase.extend({
   event: belongsTo('event'),
 
   normalizedName: computed('name', function() {
-    return this.name.trim().toLowerCase();
+    // Even though name is required for social links and is non-nullable
+    // and non-null name is being sent from API, for some reason, for certain events,
+    // this throws an error, so we check first if name exists
+    // https://github.com/fossasia/open-event-frontend/issues/4777
+    return this.name && this.name.trim().toLowerCase();
   }),
 
   isTwitter: equal('normalizedName', 'twitter'),
