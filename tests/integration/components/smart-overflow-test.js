@@ -8,6 +8,6 @@ module('Integration | Component | smart overflow', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{smart-overflow}}`);
-    assert.ok(this.element.innerHTML.trim().includes('smart-overflow'));
+    assert.dom(this.element).includesText('smart-overflow');
   });
 });
