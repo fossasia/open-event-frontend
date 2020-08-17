@@ -36,8 +36,8 @@ export default Component.extend(FormMixin, {
 
   actions: {
     addSponsor() {
-      let { sponsors } = this.data;
-      let incorrect_sponsors = sponsors.filter(function(sponsor) {
+      const { sponsors } = this.data;
+      const incorrect_sponsors = sponsors.filter(function(sponsor) {
         return (!sponsor.get('name'));
       });
       if (incorrect_sponsors.length > 0) {
@@ -54,19 +54,8 @@ export default Component.extend(FormMixin, {
     },
     saveDraft() {
       this.onValid(() => {
-        let { sponsors } = this.data;
-        let incorrect_sponsors = sponsors.filter(function(sponsor) {
-          return (!sponsor.get('name'));
-        });
-        if (incorrect_sponsors.length > 0) {
-          this.notify.error(this.l10n.t('Please fill the required fields.'), {
-            id: 'req_field_spon'
-          });
-          this.set('isLoading', false);
-        } else {
-          this.set('data.event.state', 'draft');
-          this.sendAction('save');
-        }
+        this.set('data.event.state', 'draft');
+        this.sendAction('save');
       });
     },
     move(direction) {

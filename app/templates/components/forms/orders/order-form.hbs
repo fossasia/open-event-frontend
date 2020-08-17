@@ -86,7 +86,7 @@
               {{else if (eq field.fieldIdentifier 'gender')}}
                 <UiDropdown
                   @class="search selection"
-                  @value={{mut (get holder field.fieldIdentifier)}}
+                  @selected={{get holder field.fieldIdentifier}}
                   @onChange={{action (mut holder.gender)}} as |execute mapper|>
                   <Input
                     @type="hidden"
@@ -104,10 +104,11 @@
               {{else if (eq field.fieldIdentifier 'country')}}
                 <UiDropdown
                   @class="search selection"
-                  @value={{mut (get holder field.fieldIdentifier)}}
+                  @selected={{get holder field.fieldIdentifier}}
                   @onChange={{action (mut holder.country)}} as |execute mapper|>
                   <Input
                     @type="hidden"
+                    @autocomplete="no"
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   <i class="dropdown icon"></i>
                   <div class="default text">{{t 'Select your country'}}</div>
@@ -123,7 +124,7 @@
               {{else if (eq field.fieldIdentifier 'ageGroup')}}
                 <UiDropdown
                   @class="search selection"
-                  @value={{mut (get holder field.fieldIdentifier)}}
+                  @selected={{get holder field.fieldIdentifier}}
                   @onChange={{action (mut holder.ageGroup)}} as |execute mapper|>
                   <Input
                     @type="hidden"

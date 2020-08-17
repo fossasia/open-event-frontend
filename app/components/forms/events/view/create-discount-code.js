@@ -12,8 +12,8 @@ export default Component.extend(FormMixin, {
       return this.data.maxQuantity <= this.data.ticketsNumber;
     };
     window.$.fn.form.settings.rules.checkTicketSelected = () => {
-      let tickets = this.eventTickets;
-      for (let ticket of tickets) {
+      const tickets = this.eventTickets;
+      for (const ticket of tickets) {
         if (ticket.isChecked) {
           return true;
         }
@@ -115,7 +115,7 @@ export default Component.extend(FormMixin, {
   discountLink: computed('data.code', function() {
     const { params } = this.router._router.currentState.routerJsState;
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
-    let link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.data.code } });
+    const link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.data.code } });
     this.set('data.discountUrl', link);
     return link;
   }),
@@ -138,7 +138,7 @@ export default Component.extend(FormMixin, {
   actions: {
     toggleAllSelection(allTicketTypesChecked) {
       this.toggleProperty('allTicketTypesChecked');
-      let tickets = this.eventTickets;
+      const tickets = this.eventTickets;
       if (allTicketTypesChecked) {
         this.set('data.tickets', tickets.slice());
       } else {

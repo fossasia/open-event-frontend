@@ -13,7 +13,7 @@ export default class SpeakerItem extends Component {
 
   @computed
   get hasSocialLinks() {
-    let currentSpeaker = this.speaker;
+    const currentSpeaker = this.speaker;
     return (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience);
   }
 }

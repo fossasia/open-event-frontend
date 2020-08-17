@@ -16,7 +16,7 @@ module('Integration | Component | ui table/cell/events/view/tickets/orders/cell 
     }
   };
   test('it renders', async function(assert) {
-    let record = EmberObject.create({
+    const record = EmberObject.create({
       amount     : 20,
       status     : 'cancelled',
       identifier : 'identifier_order'

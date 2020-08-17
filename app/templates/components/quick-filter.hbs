@@ -6,12 +6,13 @@
     @value={{this.dummyName}} />
   {{#unless this.device.isMobile }}
     <div class="ui input">
-      <Widgets::Forms::PlacesAutocomplete
-        class="rounded-none"
-        @name="location"
-        @value={{this.dummyLocation}}
+      <Input
         @type="text"
-        @placeholder={{t "Enter Location"}} />
+        @name = "location"
+        @key-up={{action "handleKeyPress"}}
+        placeholder={{t "Search for events"}}
+        @value={{this.dummyLocation}}
+        class="rounded-none" />
     </div>
     <UiDropdown
       @class="search selection"

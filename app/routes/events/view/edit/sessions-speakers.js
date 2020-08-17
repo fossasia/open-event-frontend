@@ -32,7 +32,7 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
     }];
     const customFormsPromise = data.event.query('customForms', {
       filter       : customFormFilterOptions,
-      sort         : 'field-identifier',
+      sort         : 'id',
       'page[size]' : 50
     });
 
@@ -43,7 +43,15 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
       microlocations,
       sessionTypes,
       speakersCall,
-      customForms
+      customForms,
+      newSpeakerForm: {
+        name : '',
+        type : 'text'
+      },
+      newSessionForm: {
+        name : '',
+        type : 'text'
+      }
     };
   }
 }

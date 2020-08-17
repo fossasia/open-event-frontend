@@ -41,7 +41,10 @@ Router.map(function() {
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions', function() {
-      this.route('list', { path: '/s/:session_status' });
+      this.route('list', { path: '/:session_status' });
+    });
+    this.route('session', function() {
+      this.route('view', { path: '/:session_id' });
     });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
       this.route('new-speaker');
@@ -50,8 +53,8 @@ Router.map(function() {
     this.route('cfs', function() {
       this.route('new-speaker');
       this.route('new-session');
-      this.route('edit-speaker', { path: '/edit/:speaker_id' });
-      this.route('edit-session', { path: '/edit/:session_id' });
+      this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
+      this.route('edit-session', { path: '/session/:session_id/edit' });
     });
     this.route('schedule');
     this.route('coc');
@@ -74,7 +77,7 @@ Router.map(function() {
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
-        this.route('edit', { path: '/edit/:session_id' });
+        this.route('edit', { path: '/:session_id/edit' });
       });
       this.route('tickets', function() {
         this.route('orders', function() {
@@ -87,18 +90,18 @@ Router.map(function() {
         this.route('discount-codes', function() {
           this.route('list', { path: '/:discount_status' });
           this.route('create');
-          this.route('edit', { path: '/edit/:discount_code_id' });
+          this.route('edit', { path: '/:discount_code_id/edit' });
         });
         this.route('access-codes', function() {
           this.route('list', { path: '/:access_status' });
           this.route('create');
-          this.route('edit', { path: '/edit/:access_code_id' });
+          this.route('edit', { path: '/:access_code_id/edit' });
         });
         this.route('order-form');
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
-        this.route('edit', { path: '/edit/:speaker_id' });
+        this.route('edit', { path: '/:speaker_id/edit' });
         this.route('create');
       });
       this.route('scheduler');
@@ -128,7 +131,6 @@ Router.map(function() {
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
-    this.route('view', { path: '/s/:session_id' });
   });
   this.route('notifications', function() {
     this.route('all', { path: '/:notification_state' });
@@ -193,7 +195,6 @@ Router.map(function() {
       this.route('ticket-fees');
       this.route('billing');
     });
-    this.route('modules');
     this.route('content', function() {
       this.route('social-links');
       this.route('pages');

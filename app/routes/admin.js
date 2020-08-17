@@ -4,6 +4,17 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 @classic
 export default class AdminRoute extends Route.extend(AuthenticatedRouteMixin) {
+  beforeModel(transition) {
+    super.beforeModel(transition);
+    if (!this.authManager.currentUser.isAdmin) {
+      throw {
+        errors: [
+          { status: 403 }
+        ]
+      };
+    }
+  }
+
   titleToken() {
     return this.l10n.t('Administration');
   }

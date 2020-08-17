@@ -12,6 +12,11 @@ export default class EditSessionRoute extends Route {
     return {
       event : eventDetails,
       forms : await eventDetails.query('customForms', {
+        filter: [{
+          name : 'form',
+          op   : 'eq',
+          val  : 'session'
+        }],
         sort         : 'id',
         'page[size]' : 0
       }),

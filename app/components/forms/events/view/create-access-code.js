@@ -102,7 +102,7 @@ export default Component.extend(FormMixin, {
   accessLink : computed('data.code', function() {
     const { params } = this.router._router.currentState.routerJsState;
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
-    let link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.data.code } });
+    const link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.data.code } });
     this.set('data.accessUrl', link);
     return link;
   }),
@@ -120,7 +120,7 @@ export default Component.extend(FormMixin, {
   actions: {
     toggleAllSelection(allTicketTypesChecked) {
       this.toggleProperty('allTicketTypesChecked');
-      let tickets = this.hiddenTickets;
+      const tickets = this.hiddenTickets;
       if (allTicketTypesChecked) {
         this.set('data.tickets', tickets.slice());
       } else {

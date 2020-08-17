@@ -40,6 +40,6 @@ module('Integration | Component | unverified user message', function(hooks) {
     });
     this.set('isMailSent', false);
     await render(hbs`{{unverified-user-message session=session authManager=authManager isMailSent=isMailSent}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Your account is unverified. Please verify by clicking on the confirmation link that has been emailed to you.'));
+    assert.dom(this.element).includesText('Your account is unverified. Please verify by clicking on the confirmation link that has been emailed to you.');
   });
 });

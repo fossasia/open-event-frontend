@@ -12,7 +12,7 @@ export default class CurrentUserService extends Service {
   store;
 
   load() {
-    let userId = this.session.data.authenticated.user_id;
+    const userId = this.session.data.authenticated.user_id;
     if (!isEmpty(userId)) {
       return this.store.findRecord('user', userId).then(user => {
         this.set('user', user);

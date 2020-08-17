@@ -25,7 +25,8 @@ export default Mixin.create({
         .then(() => {
           this.notify.success(this.l10n.t('Marked all as Read successfully'));
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while marking all notifications as read', e);
           this.notify.error(this.l10n.t('An unexpected error occurred.'));
         });
     }

@@ -43,7 +43,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   deleteSponsor(sponsor_id) {
     this.set('isLoading', true);
-    let sponsor = this.store.peekRecord('sponsor', sponsor_id, { backgroundReload: false });
+    const sponsor = this.store.peekRecord('sponsor', sponsor_id, { backgroundReload: false });
     sponsor.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Sponsor has been deleted successfully.'),

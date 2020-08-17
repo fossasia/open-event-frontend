@@ -22,8 +22,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
            hasRestorePrivileges: this.hasRestorePrivileges
          },
          actions: {
-           moveToDetails        : this.moveToDetails.bind(this),
-           editEvent            : this.editEvent.bind(this),
            openDeleteEventModal : this.openDeleteEventModal.bind(this),
            deleteEvent          : this.deleteEvent.bind(this),
            restoreEvent         : this.restoreEvent.bind(this)
@@ -83,8 +81,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        {
          name            : 'Featured Event',
          valuePath       : 'id',
+         isSortable      : true,
          extraValuePaths : ['isFeatured'],
          cellComponent   : 'ui-table/cell/admin/events/event-is-featured',
+         headerComponent : 'tables/headers/sort',
          width           : 80,
          actions         : {
            toggleFeatured: this.toggleFeatured.bind(this)
@@ -93,8 +93,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        {
          name            : 'Promoted Event',
          valuePath       : 'id',
+         isSortable      : true,
          extraValuePaths : ['isPromoted'],
          cellComponent   : 'ui-table/cell/admin/events/event-is-promoted',
+         headerComponent : 'tables/headers/sort',
          width           : 80,
          actions         : {
            togglePromoted: this.togglePromoted.bind(this)
@@ -104,30 +106,20 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
    }
 
   @action
-   moveToDetails(id) {
-     this.transitionToRoute('events.view', id);
+   openDeleteEventModal(id, name) {
+     this.setProperties({
+       isEventDeleteModalOpen : true,
+       confirmName            : '',
+       eventName              : name,
+       eventId                : id
+     });
    }
-
-  @action
-  editEvent(id) {
-    this.transitionToRoute('events.view.edit.basic-details', id);
-  }
-
-  @action
-  openDeleteEventModal(id, name) {
-    this.setProperties({
-      isEventDeleteModalOpen : true,
-      confirmName            : '',
-      eventName              : name,
-      eventId                : id
-    });
-  }
 
   @action
   async deleteEvent() {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
       await event.destroyRecord();
       this.notify.success(this.l10n.t('Event has been deleted successfully.'),
         {
@@ -151,7 +143,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async restoreEvent(event_id) {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.set('deletedAt', null);
       await event.save({ adapterOptions: { getTrashed: true } });
       this.notify.success(this.l10n.t('Event has been restored successfully.'),
@@ -172,7 +164,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async toggleFeatured(event_id) {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
       await event.save();
       this.notify.success(this.l10n.t('Event details modified successfully'),
@@ -194,7 +186,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async togglePromoted(event_id) {
     this.set('isLoading', true);
     try {
-      let event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isPromoted');
       await event.save();
       this.notify.success(this.l10n.t(`Event ${event.isPromoted ? 'Promoted' : 'unpromoted'} Successfully`),

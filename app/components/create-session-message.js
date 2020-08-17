@@ -14,7 +14,7 @@ export default class CreateSessionMessage extends Component {
     'isNewSession'
   )
   get shouldShowMessage() {
-    let speakerIDlength =  this.data.userSpeaker ? this.data.userSpeaker.toArray().length : 0;
+    const speakerIDlength =  this.data.userSpeaker ? this.data.userSpeaker.toArray().length : 0;
     return this.session.isAuthenticated
           && this.isMessageVisible
           && !this.isNewSpeaker

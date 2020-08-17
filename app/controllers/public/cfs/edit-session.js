@@ -15,7 +15,8 @@ export default class EditSessionController extends Controller {
           });
         this.transitionToRoute('public.cfs');
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while editing session', e);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
           {
             id: 'sess_error'

@@ -12,8 +12,8 @@ export default class PaypalButton extends Component {
     const paypal = await import('paypal-checkout');
 
     if (this.paymentFor === 'order') {
-      let order = this.data;
-      let createPayload = {
+      const order = this.data;
+      const createPayload = {
         'data': {
           'attributes': {
             'return-url' : `${window.location.origin}/orders/${order.identifier}/view`,
@@ -52,7 +52,7 @@ export default class PaypalButton extends Component {
               'type': 'charge'
             }
           };
-          let config = {
+          const config = {
             skipDataTransform: true
           };
           chargePayload = JSON.stringify(chargePayload);
@@ -74,8 +74,8 @@ export default class PaypalButton extends Component {
       }, this.elementId);
 
     } else if (this.paymentFor === 'invoice') {
-      let eventInvoice = this.data;
-      let createPayload = {
+      const eventInvoice = this.data;
+      const createPayload = {
         'data': {
           'attributes': {
             'return-url' : `${window.location.origin}/event-invoice/${eventInvoice.identifier}/paid`,
@@ -113,7 +113,7 @@ export default class PaypalButton extends Component {
               'type': 'charge'
             }
           };
-          let config = {
+          const config = {
             skipDataTransform: true
           };
           chargePayload = JSON.stringify(chargePayload);

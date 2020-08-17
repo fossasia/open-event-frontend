@@ -15,7 +15,8 @@ export default class NewSpeakerController extends Controller {
           });
         this.transitionToRoute('public.cfs.index');
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while saving new speaker', e);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       })
       .finally(() => {

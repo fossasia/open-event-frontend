@@ -118,7 +118,7 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
   @action
   willTransition(transition) {
     transition.then(() => {
-      let params = this._mergeParams(transition.params);
+      const params = this._mergeParams(transition.params);
       let url;
       // generate doesn't like empty params.
       if (isEmpty(params)) {

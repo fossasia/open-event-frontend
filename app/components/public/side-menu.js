@@ -7,7 +7,7 @@ import moment from 'moment';
 export default class SideMenu extends Component {
   async didInsertElement() {
     super.didInsertElement(...arguments);
-    let speakersCall = await this.event.speakersCall;
+    const speakersCall = await this.event.speakersCall;
     this.set('shouldShowCallforSpeakers',
       speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
   }

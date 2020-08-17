@@ -3,12 +3,16 @@
 </div>
 
 <div class="ui horizontal compact basic buttons">
-  <UiPopup @tagName="a" @click={{action this.props.actions.moveToDetails this.extraRecords.identifier}} @content={{t "View"}} @class="ui icon button" @position="left center">
-    <i class="unhide icon"></i>
-  </UiPopup>
-  <UiPopup @content={{t "Edit"}} @click={{action this.props.actions.editEvent this.extraRecords.identifier}} @class="ui icon button" @position="left center">
-    <i class="edit icon"></i>
-  </UiPopup>
+  <LinkTo @route="events.view" @model={{this.extraRecords.identifier}}>
+    <UiPopup @content={{t "View"}} @class="ui icon button" @position="left center">
+      <i class="unhide icon"></i>
+    </UiPopup>
+  </LinkTo>
+  <LinkTo @route="events.view.edit.basic-details" @model={{this.extraRecords.identifier}}>
+    <UiPopup @content={{t "Edit"}} @class="ui icon button" @position="left center">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
   {{#if (and this.props.options.hasRestorePrivileges this.extraRecords.deletedAt)}}
     <UiPopup @content={{t "Restore"}} @click={{action this.props.actions.restoreEvent this.extraRecords.identifier}} @class="ui icon button" @position="left center">
       <i class="undo icon"></i>

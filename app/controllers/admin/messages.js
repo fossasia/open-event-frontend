@@ -5,7 +5,7 @@ export default class extends Controller {
   @action
   save() {
     try {
-      let systemMessages = this.model;
+      const systemMessages = this.model;
       systemMessages.forEach(systemMessage => {
         systemMessage.save();
       });

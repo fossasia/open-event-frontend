@@ -153,14 +153,13 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
-  segmentedExternalEventUrl : computedSegmentedLink.bind(this)('externalEventUrl'),
-  segmentedTicketUrl        : computedSegmentedLink.bind(this)('ticketUrl'),
+  segmentedExternalEventUrl: computedSegmentedLink.bind(this)('externalEventUrl'),
 
   shortLocationName: computed('locationName', function() {
     if (!this.locationName) {
       return '';
     }
-    let splitLocations = this.locationName.split(',');
+    const splitLocations = this.locationName.split(',');
     if (splitLocations.length <= 3) {
       return this.locationName;
     } else {

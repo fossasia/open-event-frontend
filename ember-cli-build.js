@@ -5,7 +5,7 @@ const Funnel = require('broccoli-funnel');
 const targets = require('./config/targets');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-let env = process.env.EMBER_ENV || 'development';
+const env = process.env.EMBER_ENV || 'development';
 
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
@@ -15,6 +15,14 @@ module.exports = function(defaults) {
     storeConfigInMeta : true,
     sassOptions       : {
       sourceMapEmbed: true
+    },
+    SemanticUI: {
+      source: {
+        css        : 'node_modules/@open-event/theme/dist',
+        javascript : 'node_modules/@open-event/theme/dist',
+        images     : 'node_modules/@open-event/theme/dist/themes/default/assets/images',
+        fonts      : 'node_modules/@open-event/theme/dist/themes/default/assets/fonts'
+      }
     },
     autoprefixer: {
       overrideBrowserslist : targets.browsers,
@@ -42,14 +50,6 @@ module.exports = function(defaults) {
     },
     sourcemaps: {
       enabled: true
-    },
-    SemanticUI: {
-      source: {
-        css        : 'node_modules/@open-event/theme/dist',
-        javascript : 'node_modules/@open-event/theme/dist',
-        images     : 'node_modules/@open-event/theme/dist/themes/default/assets/images',
-        fonts      : 'node_modules/@open-event/theme/dist/themes/default/assets/fonts'
-      }
     },
     autoImport: {
       webpack: {

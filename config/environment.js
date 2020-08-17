@@ -57,7 +57,8 @@ module.exports = function(environment) {
     sentry: {
       dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
       debug       : !!process.env.SENTRY_DSN,
-      development : !process.env.SENTRY_DSN
+      development : !process.env.SENTRY_DSN,
+      tracesSampleRate: process.env.SENTRY_TRACE_SAMPLE_RATE || 0.01,
     },
 
     emberFullCalendar: {
@@ -84,10 +85,6 @@ module.exports = function(environment) {
     authorizer: 'authorizer:jwt'
   };
 
-  ENV['ember-cli-mirage'] = {
-    enabled: false
-  };
-
   ENV['ember-simple-auth-token'] = {
     refreshAccessTokens : false,
     serverTokenEndpoint : `${ENV.APP.apiHost}/auth/session`,
@@ -111,18 +108,6 @@ module.exports = function(environment) {
 
   ENV.sentry.hostname = getSentryServer(ENV.sentry.dsn, false);
   ENV.sentry.server = getSentryServer(ENV.sentry.dsn, true);
-  
-  if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
-  }
-
 
   if (environment === 'test') {
     // Testem prefers this...

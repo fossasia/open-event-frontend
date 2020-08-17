@@ -7,18 +7,11 @@
             <LinkTo @route="events.view.sessions.list" @model="all" class="item">
               {{t 'All'}}
             </LinkTo>
-            <LinkTo @route="events.view.sessions.list" @model="pending" class="item">
-              {{t 'Pending'}}
-            </LinkTo>
-            <LinkTo @route="events.view.sessions.list" @model="accepted" class="item">
-              {{t 'Accepted'}}
-            </LinkTo>
-            <LinkTo @route="events.view.sessions.list" @model="confirmed" class="item">
-              {{t 'Confirmed'}}
-            </LinkTo>
-            <LinkTo @route="events.view.sessions.list" @model="rejected" class="item">
-              {{t 'Rejected'}}
-            </LinkTo>
+            {{#each this.sessionStates as |state|}}
+              <LinkTo @route="events.view.sessions.list" @model={{state}} class="item">
+                {{t (capitalize state)}}
+              </LinkTo>
+            {{/each}}
           </TabbedNavigation>
         </div>
         <div class="eight wide right aligned column">

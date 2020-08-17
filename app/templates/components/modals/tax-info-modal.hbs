@@ -6,7 +6,7 @@
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
       <UiDropdown @class="search selection" @selected={{this.tax.country}} @forceSelection={{false}} @fullTextSearch={{true}}>
-        <Input @type="hidden" @id="tax_country" @value={{this.tax.country}} />
+        <Input @type="hidden" @autocomplete="no" @id="tax_country" @value={{this.tax.country}} />
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select country'}}</div>
         <div class="menu">

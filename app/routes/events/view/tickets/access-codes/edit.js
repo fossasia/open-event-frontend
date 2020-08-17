@@ -6,7 +6,7 @@ import RSVP from 'rsvp';
 @classic
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
-    let access_code = model.accessCode.get('code');
+    const access_code = model.accessCode.get('code');
     return this.l10n.t(access_code.concat('-Edit'));
   }
 
@@ -18,8 +18,8 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   }
 
   async afterModel(model) {
-    let tickets = await model.accessCode.tickets;
-    let allTickets = model.tickets;
+    const tickets = await model.accessCode.tickets;
+    const allTickets = model.tickets;
     allTickets.forEach(ticket => {
       if (tickets.includes(ticket)) {
         ticket.set('isChecked', true);

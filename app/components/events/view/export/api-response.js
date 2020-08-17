@@ -51,11 +51,11 @@ export default Component.extend({
   },
 
   buildDisplayUrl() {
-    let newUrl = this.baseUrl;
+    const newUrl = this.baseUrl;
     const include = [];
 
     for (const key in this.toggleSwitches) {
-      if (this.toggleSwitches.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(this.toggleSwitches, key)) {
         this.toggleSwitches[key] && include.push(key);
       }
     }

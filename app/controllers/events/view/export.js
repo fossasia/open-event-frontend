@@ -57,7 +57,7 @@ export default class extends Controller {
   @action
   startGeneration() {
     this.set('isLoading', true);
-    let payload = this.data;
+    const payload = this.data;
     this.loader
       .post(`/events/${this.model.id}/export/json`, payload)
       .then(exportJobInfo => {

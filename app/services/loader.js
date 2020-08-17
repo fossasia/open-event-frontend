@@ -152,16 +152,16 @@ export default Service.extend({
         source = files[0];
       }
 
-      let formData = new FormData();
+      const formData = new FormData();
       formData.append(config.fileName, source);
       config.skipDataTransform = true;
 
       const { url, fetchOptions } = this.getFetchOptions(urlPath, method, formData, config);
       const xhr = new XMLHttpRequest();
       xhr.open(fetchOptions.method || 'get', url);
-      let headers = fetchOptions.headers || {};
-      for (let k in headers) {
-        if (k !== 'Content-Type' && headers.hasOwnProperty(k)) {
+      const headers = fetchOptions.headers || {};
+      for (const k in headers) {
+        if (k !== 'Content-Type' && Object.prototype.hasOwnProperty.call(headers, k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }
@@ -178,8 +178,8 @@ export default Service.extend({
 
       xhr.responseType = 'blob';
       xhr.open('get', url);
-      let headers = fetchOptions.headers || {};
-      for (let k in headers) {
+      const headers = fetchOptions.headers || {};
+      for (const k in headers) {
         if (k !== 'Content-Type' && Object.prototype.hasOwnProperty.call(headers, k)) {
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }

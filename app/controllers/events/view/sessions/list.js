@@ -10,10 +10,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name            : 'State',
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         valuePath       : 'state',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort',
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-state'
+        extraValuePaths : ['id', 'status'],
+        options         : {
+          sessionStateMap: this.model.sessionStateMap
+        },
+        actions: {
+          changeState: this.changeState.bind(this)
+        }
       },
       {
         name            : 'Title',
@@ -48,14 +55,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : 'Avg Rating',
-        valuePath : 'averageRating'
-      },
-      {
-        name      : 'No. of ratings',
-        valuePath : 'feedbacks.length'
-      },
-      {
         name      : 'Track',
         valuePath : 'track.name'
       },
@@ -82,20 +81,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : 'Email Sent',
-        valuePath     : 'isMailSent',
-        cellComponent : 'ui-table/cell/events/view/sessions/cell-is-mail-sent'
-      },
-      {
-        name            : 'Actions',
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
+        name            : 'Notify',
         valuePath       : 'id',
         extraValuePaths : ['status'],
-        actions         : {
-          acceptProposal  : this.acceptProposal.bind(this),
-          confirmProposal : this.confirmProposal.bind(this),
-          rejectProposal  : this.rejectProposal.bind(this)
-        }
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-notify'
       },
       {
         name            : 'Lock Session',
@@ -103,8 +92,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['isLocked'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-lock-session',
         actions         : {
-          unlockSession : this.unlockSession.bind(this),
-          lockSession   : this.lockSession.bind(this)
+          lockSession: this.lockSession.bind(this)
         }
       }
     ];
@@ -113,7 +101,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   async deleteSession(session_id) {
     this.set('isLoading', true);
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
     session.destroyRecord()
       .then(() => {
         this.notify.success(this.l10n.t('Session has been deleted successfully.'),
@@ -139,152 +127,59 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  viewSession(id) {
-    this.transitionToRoute('my-sessions.view', id);
+  viewSession(session_id, event_id) {
+    this.transitionToRoute('public.session.view', event_id, session_id);
   }
 
   @action
-  lockSession(session_id) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.set('isLocked', true);
+  async lockSession(session_id, lock) {
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const { isLocked } = session;
+    session.set('isLocked', lock);
     this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        this.notify.success(this.l10n.t('Session has been locked successfully.'),
-          {
-            id: 'session_locked'
-          });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_lock_error'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
+    const lockMessage = lock ? 'locked' : 'unlocked';
+    try {
+      await session.save();
+      this.notify.success(this.l10n.t(`Session has been ${ lockMessage } successfully.`),
+        {
+          id: 'session_lock'
+        });
+      this.refreshModel.bind(this)();
+    } catch (e) {
+      session.set('isLocked', isLocked);
+      console.error('Error while changing session lock in organizer session list', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'session_unexpected_lock'
+        });
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 
   @action
-  unlockSession(session_id) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.set('isLocked', false);
+  async changeState(session_id, state) {
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const oldState = session.state;
+    session.set('state', state);
     this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        this.notify.success(this.l10n.t('Session has been unlocked successfully.'),
-          {
-            id: 'session_unlock'
-          });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_unexpected_unlock'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-  }
 
-  @action
-  acceptProposal(session_id, sendEmail) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.setProperties({
-      sendEmail,
-      'state'      : 'accepted',
-      'isMailSent' : sendEmail
-    });
-    this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been accepted and speaker has been notified via email.'),
-          {
-            id: 'session_accep_email'
-          })
-          : this.notify.success(this.l10n.t('Session has been accepted'),
-            {
-              id: 'session_accep'
-            });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_unex_error'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
+    try {
+      await session.save();
+      const message = `Session has been ${state}`;
+      this.notify.success(this.l10n.t(message), {
+        id: 'session_state'
       });
-  }
-
-  @action
-  confirmProposal(session_id, sendEmail) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.setProperties({
-      sendEmail,
-      'state'      : 'confirmed',
-      'isMailSent' : sendEmail
-    });
-    this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been confirmed and speaker has been notified via email.'),
-          {
-            id: 'session_confirm_email'
-          })
-          : this.notify.success(this.l10n.t('Session has been confirmed'),
-            {
-              id: 'session_confirm'
-            });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_confirm_unexpected'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
+      this.refreshModel.bind(this)();
+    } catch (e) {
+      session.set('state', oldState);
+      console.error('Error while changing session state in organizer session list', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+        id: 'session_state_unexpected'
       });
-  }
-
-  @action
-  rejectProposal(session_id, sendEmail) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
-    session.setProperties({
-      sendEmail,
-      'state'      : 'rejected',
-      'isMailSent' : sendEmail
-    });
-    this.set('isLoading', true);
-    session.save()
-      .then(() => {
-        sendEmail ? this.notify.success(this.l10n.t('Session has been rejected and speaker has been notified via email.'),
-          {
-            id: 'session_reject_email'
-          })
-          : this.notify.success(this.l10n.t('Session has been rejected'),
-            {
-              id: 'session_rejected'
-            });
-        this.refreshModel.bind(this)();
-      })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_reject_error'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 
   @action
@@ -332,9 +227,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
   @action
   addRating(rating, session_id) {
-    let session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
     this.set('isLoading', true);
-    let feedback = this.store.createRecord('feedback', {
+    const feedback = this.store.createRecord('feedback', {
       rating,
       session,
       comment : '',

@@ -21,8 +21,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           hasRestorePrivileges: this.hasRestorePrivileges
         },
         actions: {
-          moveToDetails        : this.moveToDetails.bind(this),
-          editEvent            : this.editEvent.bind(this),
           openDeleteEventModal : this.openDeleteEventModal.bind(this),
           deleteEvent          : this.deleteEvent.bind(this),
           restoreEvent         : this.restoreEvent.bind(this)
@@ -62,16 +60,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  moveToDetails(id) {
-    this.transitionToRoute('events.view', id);
-  }
-
-  @action
-  editEvent(id) {
-    this.transitionToRoute('events.view.edit.basic-details', id);
-  }
-
-  @action
   openDeleteEventModal(id, name) {
     this.setProperties({
       isEventDeleteModalOpen : true,
@@ -103,7 +91,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async restoreEvent(event_id) {
     this.set('isLoading', true);
     try {
-      let event = this.store.peekRecord('event', event_id, { backgroundReload: false });
+      const event = this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.set('deletedAt', null);
       await event.save({ adapterOptions: { getTrashed: true } });
       this.notify.success(this.l10n.t('Event has been restored successfully.'));

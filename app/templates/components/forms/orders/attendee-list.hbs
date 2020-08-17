@@ -25,6 +25,9 @@
                 {{else if (eq field.type 'select')}}
                   <span>{{get holder field.fieldIdentifier}}</span>
                 {{/if}}
+                {{#if field.isComplex}}
+                  <span>{{get holder.complexFieldValues field.fieldIdentifier}}</span>
+                {{/if}}
               </div>
             {{/if}}
           {{/each}}

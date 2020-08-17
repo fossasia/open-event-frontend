@@ -10,13 +10,13 @@ export default class NewController extends Controller {
   async save(data) {
     try {
       this.set('isLoading', true);
-      let order = data;
-      let current_user = this.authManager.currentUser;
-      let userChanges = current_user.changedAttributes();
+      const order = data;
+      const current_user = this.authManager.currentUser;
+      const userChanges = current_user.changedAttributes();
       if (userChanges.firstName || userChanges.lastName) {
         await current_user.save();
       }
-      let { attendees, paymentMode } = data;
+      const { attendees, paymentMode } = data;
       await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
       if (paymentMode === 'free') {
         order.set('status', 'completed');
@@ -42,6 +42,7 @@ export default class NewController extends Controller {
           }
         })
         .catch(e => {
+          console.error('Error while saving new order', e);
           order.set('status', 'initializing');
           this.notify.error(this.l10n.t(` ${e} Oops something went wrong. Please try again`),
             {
@@ -53,6 +54,7 @@ export default class NewController extends Controller {
         });
     } catch (e) {
       this.set('isLoading', false);
+      console.error('Error while in saving new order', e);
       this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
         {
           id: 'some_error'

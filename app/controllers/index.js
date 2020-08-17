@@ -12,24 +12,12 @@ export default class IndexController extends Controller {
   event_name = null;
   filterDate = null;
 
-  @computed('filteredEvents.[]')
+  @computed('filteredEvents.[]', 'featuredEvents.[]')
   get callForSpeakersEvents() {
-    return this.filteredEvents.filter(event => {
-      const callForPapers = event.get('speakersCall');
-      const sessionEnabled = event.isSessionsSpeakersEnabled;
-      if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
-        return false;
-      }
-      const startDateTime = callForPapers.get('startsAt');
-      const endDateTime = callForPapers.get('endsAt');
-      const privacyState = callForPapers.get('privacy');
-      return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled) && (privacyState === 'public'));
-    });
-  }
-
-  @computed('filteredEvents.[]')
-  get featuredEvents() {
-    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isFeatured}) : null;
+    const filteredEventsCfs = this.filteredEvents.filter(isEventCfsOpen);
+    const featuredEventsCfs = this.featuredEvents.filter(isEventCfsOpen);
+    const combinedCfsEvents = new Set(filteredEventsCfs.concat(featuredEventsCfs));
+    return Array.from(combinedCfsEvents);
   }
 
   @computed('filteredEvents.[]')
@@ -47,4 +35,16 @@ export default class IndexController extends Controller {
     this.set('eventToShare', event);
     this.set('isShareModalOpen', true);
   }
+}
+
+function isEventCfsOpen(event) {
+  const callForPapers = event.get('speakersCall');
+  const sessionEnabled = event.isSessionsSpeakersEnabled;
+  if (!callForPapers || !callForPapers.get('startsAt')  || !callForPapers.get('endsAt')) {
+    return false;
+  }
+  const startDateTime = callForPapers.get('startsAt');
+  const endDateTime = callForPapers.get('endsAt');
+  const privacyState = callForPapers.get('privacy');
+  return (moment().isBetween(startDateTime, endDateTime) && (sessionEnabled) && (privacyState === 'public'));
 }

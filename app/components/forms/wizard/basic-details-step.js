@@ -21,6 +21,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
+  deletedTickets: [],
+
   licenses: computed(function() {
     return orderBy(licenses, 'name');
   }),
@@ -140,7 +142,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
     };
 
-    let validationRules = {
+    const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
@@ -151,6 +153,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give your event a name')
+            }
+          ]
+        },
+        location: {
+          identifier : 'location',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Location is required to save an event')
             }
           ]
         },
@@ -414,7 +425,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         });
     },
     async disconnectStripe() {
-      let stripeAuthorization = await this.data.event.stripeAuthorization;
+      const stripeAuthorization = await this.data.event.stripeAuthorization;
       stripeAuthorization.destroyRecord()
         .then(() => {
           this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
@@ -448,11 +459,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     removeTicket(deleteTicket) {
       const index = deleteTicket.get('position');
       this.data.event.tickets.forEach(ticket => {
-        if (ticket.get('position') > index) {
+        if (!ticket.isDeleted && ticket.get('position') > index) {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
-      deleteTicket.destroyRecord();
+      this.deletedTickets.push(deleteTicket);
+      deleteTicket.deleteRecord();
     },
 
     moveTicket(ticket, direction) {
@@ -519,7 +531,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     async updateCopyright(name) {
       const { event } = this.data;
       const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
-      let license = find(licenses, { name });
+      const license = find(licenses, { name });
       copyright.setProperties({
         licence    : name,
         logoUrl    : license.logoUrl,

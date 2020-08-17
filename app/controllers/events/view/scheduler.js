@@ -1,37 +1,51 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
 import moment from 'moment';
+import { tracked } from '@glimmer/tracking';
+import { matchPropertyIn } from 'open-event-frontend/utils/text';
+import $ from 'jquery';
 
 export default class extends Controller {
-  @computed('model.eventDetails.schedulePublishedOn')
+  @tracked filter = '';
+  isLoading = false;
+
+  @computed('model.event.schedulePublishedOn')
   get isSchedulePublished() {
-    const schedulePublishStatus = this.model.eventDetails.schedulePublishedOn;
+    const schedulePublishStatus = this.model.event.schedulePublishedOn;
     if (schedulePublishStatus != null) {
       return schedulePublishStatus.toISOString() !== moment(0).toISOString();
     }
     return false;
   }
 
-  isLoading = false;
-  header    = {
-    left   : 'today prev,next',
-    center : 'title',
-    right  : 'timelineDay,timelineThreeDays,agendaWeek,month'
+  @computed('model.unscheduled', 'filter')
+  get unscheduledSessions() {
+    if (!this.filter || !this.model.unscheduled) {return this.model.unscheduled}
+
+    return this.model.unscheduled.toArray()
+      .filter(session => matchPropertyIn(session, this.filter, ['title', 'shortAbstract'])
+              || session.speakers.map(speaker => speaker.name).join(',').toLowerCase().includes(this.filter.toLowerCase()));
   }
 
-  view = {
-    timelineThreeDays: {
-      type     : 'timeline',
-      duration : { days: 3 }
+  async updateSession(start, end, microlocationId, sessionId) {
+    if (!start !== !end) {
+      // If either one of start or end is missing, then return and throw an error
+      // Either both should be present or none
+
+      this.notify.error('Start time or End time not present');
+      return;
     }
-  }
 
-  updateSession(start, end, microlocationId, sessionId) {
-    let payload = {
+    if (start && end) {
+      start = moment.tz(start.format(), this.model.timezone).toISOString();
+      end = moment.tz(end.format(), this.model.timezone).toISOString();
+    }
+
+    const payload = {
       data: {
         attributes: {
-          'starts-at' : start ? start.toISOString() : null,
-          'ends-at'   : end ? end.toISOString() : null
+          'starts-at' : start,
+          'ends-at'   : end
         },
         relationships: {
           microlocation: {
@@ -45,7 +59,7 @@ export default class extends Controller {
         id   : sessionId
       }
     };
-    let config = {
+    const config = {
       skipDataTransform: true
     };
     return this.loader
@@ -62,19 +76,19 @@ export default class extends Controller {
       });
   }
 
-  unscheduleSession(session) {
-    window.$('.full-calendar').fullCalendar('removeEvents', session._id);
-    this.updateSession(null, null, session.resourceId, session.serverId);
+  async unscheduleSession(session) {
+    $('.full-calendar').fullCalendar('removeEvents', session._id);
+    await this.updateSession(null, null, session.resourceId, session.serverId);
     this.target.send('refresh');
   }
 
   @action
-  drop(date, jsEvent, ui, resourceId) {
-    let start = date;
-    let duration = this.model.defaultDuration.split(':');
-    let end = start.clone().add(duration[0], 'hours').add(duration[1], 'minutes');
-    this.updateSession(start, end, resourceId, window.$(ui.helper).data('serverId'));
-    window.$(ui.helper).remove();
+  async drop(date, jsEvent, ui, resourceId) {
+    const start = date;
+    const duration = this.model.defaultDuration.split(':');
+    const end = start.clone().add(duration[0], 'hours').add(duration[1], 'minutes');
+    await this.updateSession(start, end, resourceId, $(ui.helper).data('serverId'));
+    this.target.send('refresh');
   }
 
   @action
@@ -90,7 +104,7 @@ export default class extends Controller {
   @action
   eventRender(session, element) {
     element.append('<span class="scheduled-close-btn"><i class="x icon"></i></span>');
-    let controller = this;
+    const controller = this;
     element.find('.scheduled-close-btn').on('click', function() {
       controller.unscheduleSession(session);
     });
@@ -99,9 +113,9 @@ export default class extends Controller {
   @action
   togglePublishState() {
     this.set('isLoading', true);
-    let stat = this.isSchedulePublished ? 'unpublished' : 'published';
-    let publishedAt = this.isSchedulePublished ? moment(0) : moment();
-    let event = this.model.eventDetails;
+    const stat = this.isSchedulePublished ? 'unpublished' : 'published';
+    const publishedAt = this.isSchedulePublished ? moment(0) : moment();
+    const event = this.model.eventDetails;
     event.set('schedulePublishedOn', publishedAt);
     event.save()
       .then(() => {

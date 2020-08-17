@@ -4,10 +4,10 @@ import { action } from '@ember/object';
 export default class extends Controller {
   @action
   async openAddSystemRoleModal(role) {
-    let permissions = await this.model.panelPermissions;
+    const permissions = await this.model.panelPermissions;
     this.set('panelPermissions', permissions);
     if (role) {
-      let roles = role.panelPermissions;
+      const roles = role.panelPermissions;
       permissions.forEach(permission => {
         if (roles.includes(permission)) {
           permission.set('isChecked', true);
@@ -52,7 +52,7 @@ export default class extends Controller {
   @action
   addSystemRole() {
     this.set('isLoading', true);
-    let panels = this.panelPermissions;
+    const panels = this.panelPermissions;
     panels.forEach(panel => {
       if (panel.isChecked) {
         this.role.panelPermissions.addObject(panel);

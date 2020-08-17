@@ -47,6 +47,7 @@
 @onChange={{action (mut this.data.country)}} as |execute mapper|>
     <Input
 @type="hidden"
+@autocomplete="no"
 @id="country"
 @value={{this.data.country}} />
     <div class="default text">{{t 'Select country'}}</div>

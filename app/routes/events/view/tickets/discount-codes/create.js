@@ -8,8 +8,8 @@ export default class CreateRoute extends Route {
   }
 
   async model() {
-    let tickets = await this.modelFor('events.view').query('tickets', {});
-    let event = this.modelFor('events.view');
+    const tickets = await this.modelFor('events.view').query('tickets', {});
+    const event = this.modelFor('events.view');
     return {
       discountCode: this.store.createRecord('discount-code', {
         event,
@@ -31,12 +31,12 @@ export default class CreateRoute extends Route {
   }
 
   afterModel(model) {
-    let allTickets = model.tickets;
+    const allTickets = model.tickets;
     allTickets.forEach(ticket => {
       ticket.set('isChecked', false);
     });
-    let currentDiscountCode = model.discountCode;
-    let event = this.modelFor('events.view');
+    const currentDiscountCode = model.discountCode;
+    const event = this.modelFor('events.view');
     currentDiscountCode.set('validTill', event.endsAt);
     currentDiscountCode.set('minQuantity', 1);
     currentDiscountCode.set('maxQuantity', 1);

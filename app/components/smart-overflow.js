@@ -8,8 +8,8 @@ import Component from '@ember/component';
 export default class SmartOverflow extends Component {
   didInsertElement() {
     super.didInsertElement(...arguments);
-    let $header = $(this.element);
-    let $headerSpan = $header.find('span');
+    const $header = $(this.element);
+    const $headerSpan = $header.find('span');
     $header.attr('data-content', $headerSpan.text());
     $header.attr('data-variation', 'tiny');
     while ($headerSpan.outerHeight() > $header.height()) {

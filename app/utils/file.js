@@ -25,9 +25,9 @@ export const isFileValid = (file, maxSizeInMb, fileTypes = []) => {
 
     // If Uint8Array support is available, get the actual file type using file header. (Preferred way)
     if ('Uint8Array' in window) {
-      let fileReader = new FileReader();
+      const fileReader = new FileReader();
       fileReader.onloadend = function(e) {
-        let arr = (new Uint8Array(e.target.result)).subarray(0, 4);
+        const arr = (new Uint8Array(e.target.result)).subarray(0, 4);
         let header = '';
         for (let i = 0; i < arr.length; i++) {
           header += arr[i].toString(16);

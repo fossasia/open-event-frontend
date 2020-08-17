@@ -2,13 +2,19 @@
   <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{this.record}}
 </div>
 <div class="ui horizontal large basic buttons">
-  <UiPopup @tagName="a" @click={{action this.props.actions.moveToDetails this.extraRecords.identifier}} @content={{t "Event Dashboard"}} @class="ui icon button" @position="top center">
-    <i class="tasks icon"></i>
-  </UiPopup>
-  <UiPopup @tagName="a" @click={{action this.props.actions.moveToPublic this.extraRecords.identifier}} @content={{t "View"}} @class="ui icon button" @position="top center">
-    <i class="unhide icon"></i>
-  </UiPopup>
-  <UiPopup @content={{t "Edit"}} @click={{action this.props.actions.editEvent this.extraRecords.identifier}} @class="ui icon button" @position="top center">
-    <i class="edit icon"></i>
-  </UiPopup>
+  <LinkTo @route="events.view" @model={{this.extraRecords.identifier}}>
+    <UiPopup @content={{t "Event Dashboard"}} @class="ui icon button" @position="top center">
+      <i class="tasks icon"></i>
+    </UiPopup>
+  </LinkTo>
+  <LinkTo @route="public" @model={{this.extraRecords.identifier}}>
+    <UiPopup @content={{t "View"}} @class="ui icon button" @position="top center">
+      <i class="unhide icon"></i>
+    </UiPopup>
+  </LinkTo>
+  <LinkTo @route="events.view.edit.basic-details" @model={{this.extraRecords.identifier}}>
+    <UiPopup @content={{t "Edit"}} @class="ui icon button" @position="top center">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
 </div>

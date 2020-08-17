@@ -18,12 +18,12 @@ export default class ApplicationSection extends Component {
           this.set('isLoading', true);
           this.loader.load(`/auth/oauth/login/${  provider  }/${  authData.authorizationCode  }/?redirect_uri=${  authData.redirectUri}`)
             .then(async response => {
-              let credentials = {
+              const credentials = {
                 'username' : response.email,
                 'password' : response.facebook_login_hash
               };
 
-              let authenticator = 'authenticator:jwt';
+              const authenticator = 'authenticator:jwt';
               this.session
                 .authenticate(authenticator, credentials)
                 .then(async() => {

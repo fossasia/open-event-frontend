@@ -35,8 +35,8 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
 
   serialize(snapshot) {
     const json = this._super(...arguments);
-    let attendeeSnapshots = snapshot._hasManyRelationships.attendees;
-    let attendees = { data: [] };
+    const attendeeSnapshots = snapshot._hasManyRelationships.attendees;
+    const attendees = { data: [] };
     if (attendeeSnapshots) {
       attendeeSnapshots.forEach(function(snapshot) {
         attendees.data.push({

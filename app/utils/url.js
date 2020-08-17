@@ -11,7 +11,7 @@ import { merge, mapValues, isArray } from 'lodash-es';
  * @return {string}
  */
 export const buildUrlViaUrlParse = (baseUrl, queryParams, stringifyArray = false) => {
-  let parsedUrl = new UrlParser(baseUrl, true);
+  const parsedUrl = new UrlParser(baseUrl, true);
   if (stringifyArray) {
     queryParams = mapValues(queryParams, value => {
       if (isArray(value)) {
@@ -33,7 +33,7 @@ export const buildUrlViaUrlParse = (baseUrl, queryParams, stringifyArray = false
  * @return {string}
  */
 export const buildUrlViaQueryString = (baseUrl, queryParams, stringifyArray = false) => {
-  let parsedUrl = queryString.parseUrl(baseUrl, { arrayFormat: 'bracket' });
+  const parsedUrl = queryString.parseUrl(baseUrl, { arrayFormat: 'bracket' });
   if (stringifyArray) {
     queryParams = mapValues(queryParams, value => {
       if (isArray(value)) {

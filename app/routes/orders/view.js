@@ -4,7 +4,7 @@ import Route from '@ember/routing/route';
 @classic
 export default class ViewRoute extends Route {
   titleToken(model) {
-    let order = model.order.get('identifier');
+    const order = model.order.get('identifier');
     if (model.order.status === 'completed') {
       return this.l10n.t(`Completed Order -${order}`);
     } else if (model.order.status === 'placed') {

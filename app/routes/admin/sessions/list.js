@@ -1,56 +1,32 @@
 import Route from '@ember/routing/route';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+import { capitalize } from 'lodash-es';
+import { SESSION_STATES } from 'open-event-frontend/utils/dictionary/sessions';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.params.sessions_state) {
-      case 'confirmed':
-        return this.l10n.t('Confirmed');
-      case 'pending':
-        return this.l10n.t('Pending');
-      case 'accepted':
-        return this.l10n.t('Accepted');
-      case 'rejected':
-        return this.l10n.t('Rejected');
-      case 'deleted':
-        return this.l10n.t('Deleted');
-      default:
-        return this.l10n.t('Session');
+    if ([...SESSION_STATES, 'deleted'].includes(this.params.sessions_state)) {
+      return this.l10n.t(capitalize(this.params.sessions_state));
+    } else {
+      return this.l10n.t('Session');
     }
   }
 
   async model(params) {
     this.set('params', params);
     const searchField = 'title';
-    let filterOptions = [];
-    if (params.sessions_state === 'pending') {
-      filterOptions = [
-        {
-          and:
-            [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'deleted-at',
-                  op   : 'eq',
-                  val  : null
-                }
-              },
-              {
-                name : 'deleted-at',
-                op   : 'eq',
-                val  : null
-              },
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'pending'
-              }
-            ]
+    let filterOptions = [
+      {
+        name : 'event',
+        op   : 'has',
+        val  : {
+          name : 'deleted-at',
+          op   : 'eq',
+          val  : null
         }
-      ];
-    } else if (params.sessions_state === 'confirmed') {
+      }
+    ];
+    if (SESSION_STATES.includes(params.sessions_state)) {
       filterOptions = [
         {
           and:
@@ -72,61 +48,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
               {
                 name : 'state',
                 op   : 'eq',
-                val  : 'confirmed'
-              }
-            ]
-        }
-      ];
-    } else if (params.sessions_state === 'accepted') {
-      filterOptions = [
-        {
-          and:
-            [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'deleted-at',
-                  op   : 'eq',
-                  val  : null
-                }
-              },
-              {
-                name : 'deleted-at',
-                op   : 'eq',
-                val  : null
-              },
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'accepted'
-              }
-            ]
-        }
-      ];
-    } else if (params.sessions_state === 'rejected') {
-      filterOptions = [
-        {
-          and:
-            [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'deleted-at',
-                  op   : 'eq',
-                  val  : null
-                }
-              },
-              {
-                name : 'deleted-at',
-                op   : 'eq',
-                val  : null
-              },
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'rejected'
+                val  : params.sessions_state
               }
             ]
         }
@@ -151,18 +73,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
                 val  : null
               }
             ]
-        }
-      ];
-    } else {
-      filterOptions = [
-        {
-          name : 'event',
-          op   : 'has',
-          val  : {
-            name : 'deleted-at',
-            op   : 'eq',
-            val  : null
-          }
         }
       ];
     }

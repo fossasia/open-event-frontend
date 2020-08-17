@@ -58,19 +58,23 @@
   <div class="column {{unless this.device.isLargeMonitor 'less right padding'}}">
     <div class="field">
       <div class="ui icon buttons">
-        <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings"><i
-            class="setting icon"></i></button>
-        <button type="button" class="ui button" {{action this.removeTicket}} data-content="Delete"><i
-            class="trash icon"></i></button>
+        <button type="button" class="ui button" {{action 'toggleSettings'}} data-content="Settings">
+          <i class="setting icon"></i>
+        </button>
+        <button type="button" class="ui button" {{action this.removeTicket}} data-content="Delete">
+          <i class="trash icon"></i>
+        </button>
       </div>
       <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
         {{#if this.canMoveUp}}
-          <button type="button" class="ui button" {{action this.moveTicketUp}} data-content="Move ticket up"><i
-              class="up arrow icon"></i></button>
+          <button type="button" class="ui button" {{action this.moveTicketUp}} data-content="Move ticket up">
+            <i class="up arrow icon"></i>
+          </button>
         {{/if}}
         {{#if this.canMoveDown}}
-          <button type="button" class="ui button" {{action this.moveTicketDown}} data-content="Move ticket down"><i
-              class="down arrow icon"></i></button>
+          <button type="button" class="ui button" {{action this.moveTicketDown}} data-content="Move ticket down">
+            <i class="down arrow icon"></i>
+          </button>
         {{/if}}
       </div>
     </div>

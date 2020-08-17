@@ -59,7 +59,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     const attendee = this.store.peekRecord('attendee', attendee_id, { backgroundReload: false });
     attendee.toggleProperty('isCheckedIn');
     if (attendee.isCheckedIn) {
-      let newCheckinTimes = attendee.get('checkinTimes') === null ? `${moment().toISOString()}` : `${attendee.get('checkinTimes')},${moment().toISOString()}`;
+      const newCheckinTimes = attendee.get('checkinTimes') === null ? `${moment().toISOString()}` : `${attendee.get('checkinTimes')},${moment().toISOString()}`;
       attendee.set('checkinTimes', newCheckinTimes);
     }
     attendee.save()
