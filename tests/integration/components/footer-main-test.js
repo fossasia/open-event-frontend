@@ -33,6 +33,6 @@ module('Integration | Component | footer main', function(hooks) {
     this.set('eventTypes', eventTypes);
     this.set('eventLocations', eventLocations);
     await render(hbs`{{footer-main l10n=l10n eventLocations=eventLocations eventTypes=eventTypes}}`);
-    assert.ok(this.element.innerHTML.trim().includes('footer'));
+    assert.ok(this.element).includesText('footer');
   });
 });
