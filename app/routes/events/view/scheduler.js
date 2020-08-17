@@ -12,67 +12,18 @@ export default Route.extend({
   },
   async model() {
     patchFullCalendar();
-    const unscheduledFilterOptions = [
+    const filterOptions = [
       {
-        and: [
+        or: [
           {
-            or: [
-              {
-                name : 'starts-at',
-                op   : 'eq',
-                val  : null
-              },
-              {
-                name : 'ends-at',
-                op   : 'eq',
-                val  : null
-              }
-            ]
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
           },
           {
-            or: [
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'accepted'
-              },
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
-              }
-            ]
-          }
-        ]
-      }
-    ];
-
-    const scheduledFilterOptions = [
-      {
-        and: [
-          {
-            name : 'starts-at',
-            op   : 'ne',
-            val  : null
-          },
-          {
-            name : 'ends-at',
-            op   : 'ne',
-            val  : null
-          },
-          {
-            or: [
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'accepted'
-              },
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
-              }
-            ]
+            name : 'state',
+            op   : 'eq',
+            val  : 'confirmed'
           }
         ]
       }
@@ -81,59 +32,22 @@ export default Route.extend({
     const eventDetails = this.modelFor('events.view');
     const { timezone } = eventDetails;
 
-    const validRange = {
-      start : eventDetails.startsAt.format('YYYY-MM-DD'),
-      end   : eventDetails.endsAt.clone().add(1, 'day').format('YYYY-MM-DD')
-    };
-
-    const durationDays = eventDetails.endsAt.diff(eventDetails.startsAt, 'days') + 1;
-    const views = {
-      timelineThreeDays: {
-        type       : 'agenda',
-        duration   : { days: durationDays },
-        buttonText : `${durationDays} day`
-      }
-    };
-
-    const header = {
-      left   : 'today,prev,next',
-      center : 'title',
-      right  : 'agendaDay,timelineThreeDays,agendaWeek'
-    };
-
-    const scheduledSessions = await eventDetails.query('sessions', {
+    const sessions = await eventDetails.query('sessions', {
       include      : 'speakers,microlocation,track',
-      filter       : scheduledFilterOptions,
+      filter       : filterOptions,
       'page[size]' : 0
     });
+    const scheduled = sessions.toArray().filter(session => session.startsAt && session.endsAt);
+    const unscheduled = sessions.toArray().filter(session => !session.startsAt || !session.endsAt);
 
-    const scheduled = []; // to convert sessions data to fullcalendar's requirements
-    scheduledSessions.forEach(function(session) {
-      const speakerNames = [];
-      session.speakers.forEach(function(speaker) {
-        speakerNames.push(speaker.name);
+    sessions.forEach(session => {
+      session.speakers.forEach(() => {
+        // Nothing to see here, just avoiding a stupid ember bug
+        // https://github.com/emberjs/ember.js/issues/18613#issuecomment-674454524
       });
-      scheduled.push({
-        title      : `${session.title} | ${speakerNames.join(', ')}`,
-        start      : session.startsAt.tz(timezone).format(),
-        end        : session.endsAt.tz(timezone).format(),
-        resourceId : session.microlocation.get('id'),
-        color      : session.track.get('color'),
-        serverId   : session.get('id') // id of the session on BE
-      });
-    });
-
-    const unscheduledSessions = await eventDetails.query('sessions', {
-      include      : 'speakers,track',
-      filter       : unscheduledFilterOptions,
-      'page[size]' : 0
     });
 
     const microlocations = await eventDetails.query('microlocations', {});
-    const resources = [];
-    microlocations.forEach(function(element) {
-      resources.push({ id: element.id, title: element.name });
-    });
 
     /*
     The start hour of the start day is considered the start hour for remaining days as well.
@@ -141,17 +55,12 @@ export default Route.extend({
     */
 
     return {
-      header,
+      event           : eventDetails,
+      sessions,
+      scheduled,
+      unscheduled,
+      microlocations,
       timezone,
-      defaultView     : 'agendaDay',
-      events          : scheduled,
-      eventDetails,
-      resources,
-      unscheduled     : unscheduledSessions,
-      minTime         : eventDetails.startsAt.tz(eventDetails.timezone).format('HH:mm:ss'),
-      maxTime         : eventDetails.startsAt.tz(eventDetails.timezone).format('HH:mm:ss'),
-      validRange,
-      views,
       defaultDuration : '01:00'
     };
   }
