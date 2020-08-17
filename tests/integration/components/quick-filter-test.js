@@ -8,6 +8,6 @@ module('Integration | Component | quick-filter', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{quick-filter}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Search'));
+    assert.dom(this.element).includesText('Search');
   });
 });
