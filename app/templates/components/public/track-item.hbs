@@ -1,0 +1,75 @@
+<UiAccordion class="tracks" style="background-color: {{this.session.track.color}}">
+  <div class="title" {{action 'hideSpeakerImage'}} role="button">
+    <div class="ui">
+      <h3 class="ui header">
+        {{this.session.track.name}}
+        <div class="sub header">
+          {{this.session.title}}
+        </div>
+      </h3>
+    </div>
+    <br>
+    <div class="ui grid stackable">
+      {{#if this.hideImage}}
+        <div class="left floated twelve wide column">
+          {{#if this.session.startsAt}}
+            <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date this.session.startsAt this.session.event.timezone}} - {{general-date this.session.endsAt this.session.event.timezone}}</div>
+          {{/if}}
+        </div>
+      {{else}}
+        <div class="left floated ten wide column">
+          <div class="session-speakers">
+            {{#each this.session.speakers as |speaker|}}
+              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+            {{/each}}
+          </div>
+        </div>
+        <div class="right floated six wide column">
+          {{#if this.session.startsAt}}
+            <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date this.session.startsAt this.session.event.timezone 'hh:mm a / DD-MM-YYYY (z)'}}</div>
+          {{/if}}
+        </div>
+      {{/if}}
+
+      <div class="row">
+        <div class="column session-description">
+          {{sanitize this.session.shortAbstract}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    {{#each this.session.speakers as |speaker|}}
+      <div class="ui divider"></div>
+      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      <p>
+        <br>
+        {{speaker.name}}
+        <br>
+        {{#if speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
+        {{else if speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
+        {{else if speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
+        {{/if}}
+      </p>
+      <div class="social-icons">
+        {{#if speaker.facebook}}
+          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>Facebook</a>
+        {{/if}}
+        {{#if speaker.linkedin}}
+          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>Linkedin</a>
+        {{/if}}
+        {{#if speaker.twitter}}
+          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>Twitter</a>
+        {{/if}}
+        {{#if speaker.github}}
+          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>GitHub</a>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+</UiAccordion>
