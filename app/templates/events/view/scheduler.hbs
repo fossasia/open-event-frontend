@@ -11,7 +11,7 @@
         <i class="search icon"></i>
       </div>
       <h3 class="ui header">{{t 'Unscheduled Sessions'}}</h3>
-      <div class="ui raised segments">
+      <div class="ui raised segments" style="overflow: auto; height: 750px">
         {{#each this.unscheduledSessions as |session|}}
           {{#if (or (eq session.state 'accepted') (eq session.state 'confirmed'))}}
             <Scheduler::UnscheduledSession @session={{session}} />
