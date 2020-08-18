@@ -4,3 +4,7 @@ declare module 'open-event-frontend/templates/*' {
   const tmpl: TemplateFactory;
   export default tmpl;
 }
+
+interface JQuery {
+  fullCalendar(op: string, key: string, value: unknown): void
+}

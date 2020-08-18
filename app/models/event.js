@@ -13,7 +13,7 @@ import { groupBy } from 'lodash-es';
 
 const detectedTimezone = moment.tz.guess();
 
-export default ModelBase.extend(CustomPrimaryKeyMixin, {
+export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   /**
    * Service Injection
@@ -176,4 +176,4 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
     return groupBy(this.sessions.toArray(), 'data.state');
   })
 
-});
+}) {}
