@@ -3,7 +3,7 @@ import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 
-export default ModelBase.extend({
+export default class Speaker extends ModelBase.extend({
 
   /**
    * Attributes
@@ -57,4 +57,4 @@ export default ModelBase.extend({
     }
   }
 
-});
+}) {}
