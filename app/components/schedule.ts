@@ -74,28 +74,45 @@ export default class Schedule extends Component<ScheduleArgs> {
     });
   }
 
-  @action
-  renderCallback(view: FullCalendarView): void {
-    const calendar = $('.full-calendar');
+  /**
+   * In default mode, a lot of resources in scheduler lead to a cramped layout
+   * where each column is very narrow. This function adjusts the column width
+   * and makes it scrollable, making ot easier to add sessions and navigate
+   *
+   * Copied from here - https://github.com/fullcalendar/fullcalendar/issues/4819#issuecomment-350709156
+   * @param view FullCalendarView
+   * @param calendar Calendar JQuery element
+   * @param columnWidth Resource column width to be set
+   */
+  adjustColumnWidth(view: FullCalendarView, calendar: JQuery<HTMLElement>, columnWidth = 250): void {
+    if (view.type !== 'agendaDay') {return}
+    const minColumnWidthInPixels = columnWidth;
 
-    if (view.type === 'agendaDay' || view.type === 'agendaWeek') {
-      const minColumnWidthInPixels = 250; // up to you
+    const getContainerWidth = () => calendar.parent().outerWidth();
 
-      const getContainerWidth = () => calendar.parent().outerWidth();
+    const containerWidthInPixels = getContainerWidth();
+    const numberOfColumns = calendar.fullCalendar('getResources').length;
+    const firstColumnWidthInPixels = calendar.find('.fc-axis.fc-widget-header').outerWidth();
+    const sumOfBorderWidthsInPixels = numberOfColumns;
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
+    const expectedTotalWidthInPixels = minColumnWidthInPixels * numberOfColumns
+        + firstColumnWidthInPixels!
+        + sumOfBorderWidthsInPixels;
+    const agendaWidthInPercent = expectedTotalWidthInPixels / containerWidthInPixels! * 100;
+    const width = Math.max(agendaWidthInPercent, 100); // should not be more than 100% anyway
 
-      const containerWidthInPixels = getContainerWidth();
-      const numberOfColumns = calendar.fullCalendar('getResources').length;
-      const firstColumnWidthInPixels = calendar.find('.fc-axis.fc-widget-header').outerWidth();
-      const sumOfBorderWidthsInPixels = numberOfColumns;
-      const expectedTotalWidthInPixels = minColumnWidthInPixels * numberOfColumns
-          + firstColumnWidthInPixels!
-          + sumOfBorderWidthsInPixels;
-      const agendaWidthInPercent = expectedTotalWidthInPixels / containerWidthInPixels! * 100;
-      const width = Math.max(agendaWidthInPercent, 100); // should not be less than 100% anyway
+    view.el.css('width', width + '%');
+  }
 
-      view.el.css('width', width + '%');
-    }
-
+  /**
+   * Min and max time in fullcandar sets it to every day, but it should only be applied
+   * to the first and last day of the event, or else it can cut off hours in other days
+   * of the event. This function changes the min and max time of the calendar dynamically
+   * based on the current selected day
+   * @param view FullCalendarView
+   * @param calendar Calendar JQuery element
+   */
+  adjustMinTime(view: FullCalendarView, calendar: JQuery<HTMLElement>): void {
     if (isTesting || !(view.type === 'agendaDay' || view.type === 'timelineDay')) {return}
 
     let minTime = '0:00:00';
@@ -107,6 +124,7 @@ export default class Schedule extends Component<ScheduleArgs> {
       ({ maxTime } = this);
     }
 
+    // To prevent infinite render loop
     if (minTime !== view.options.minTime) {
       calendar.fullCalendar('option', 'minTime', minTime);
     }
@@ -114,6 +132,13 @@ export default class Schedule extends Component<ScheduleArgs> {
     if (maxTime !== view.options.maxTime) {
       calendar.fullCalendar('option', 'maxTime', maxTime);
     }
+  }
+
+  @action
+  renderCallback(view: FullCalendarView): void {
+    const calendar = $('.full-calendar');
+    this.adjustColumnWidth(view, calendar);
+    this.adjustMinTime(view, calendar);
   }
 }
 
