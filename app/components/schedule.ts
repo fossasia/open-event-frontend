@@ -7,6 +7,7 @@ import Speaker from 'open-event-frontend/models/speaker';
 import moment from 'moment';
 import $ from 'jquery';
 import { isTesting } from 'open-event-frontend/utils/testing';
+import { isLight } from 'open-event-frontend/utils/color';
 
 interface ScheduleArgs {
   event: Event,
@@ -60,12 +61,14 @@ export default class Schedule extends Component<ScheduleArgs> {
   get events() { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
     return this.args.sessions.map(session => {
       const speakerNames = session.speakers.map((speaker: Speaker) => speaker.name).join(', ');
+      const color = session.track.get('color');
       return {
         title      : `${session.title} | ${speakerNames}`,
         start      : session.startsAt.tz(this.timezone).format(),
         end        : session.endsAt.tz(this.timezone).format(),
         resourceId : session.microlocation.get('id'),
-        color      : session.track.get('color'),
+        color,
+        textColor  : isLight(color) ? '#000' : '#fff',
         serverId   : session.get('id') // id of the session on BE
       };
     });
