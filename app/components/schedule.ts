@@ -76,6 +76,26 @@ export default class Schedule extends Component<ScheduleArgs> {
 
   @action
   renderCallback(view: FullCalendarView): void {
+    const calendar = $('.full-calendar');
+
+    if (view.type === 'agendaDay' || view.type === 'agendaWeek') {
+      const minColumnWidthInPixels = 250; // up to you
+      
+      const getContainerWidth = () => calendar.parent().outerWidth();
+      
+      const containerWidthInPixels = getContainerWidth();
+      const numberOfColumns = calendar.fullCalendar("getResources").length;
+      const firstColumnWidthInPixels = calendar.find(".fc-axis.fc-widget-header").outerWidth();
+      const sumOfBorderWidthsInPixels = numberOfColumns;
+      const expectedTotalWidthInPixels = minColumnWidthInPixels * numberOfColumns
+          + firstColumnWidthInPixels!
+          + sumOfBorderWidthsInPixels;
+      const agendaWidthInPercent = expectedTotalWidthInPixels / containerWidthInPixels! * 100;
+      const width = Math.max(agendaWidthInPercent, 100); // should not be less than 100% anyway
+      
+      view.el.css("width", width + "%");
+    }
+
     if (isTesting || !(view.type === 'agendaDay' || view.type === 'timelineDay')) {return}
 
     let minTime = '0:00:00';
@@ -88,11 +108,11 @@ export default class Schedule extends Component<ScheduleArgs> {
     }
 
     if (minTime !== view.options.minTime) {
-      $('.full-calendar').fullCalendar('option', 'minTime', minTime);
+      calendar.fullCalendar('option', 'minTime', minTime);
     }
 
     if (maxTime !== view.options.maxTime) {
-      $('.full-calendar').fullCalendar('option', 'maxTime', maxTime);
+      calendar.fullCalendar('option', 'maxTime', maxTime);
     }
   }
 }
@@ -101,5 +121,6 @@ interface FullCalendarView {
   type: string;
   start: moment.Moment;
   end: moment.Moment;
+  el: JQuery<HTMLElement>,
   options: { minTime: string; maxTime: string }
 }

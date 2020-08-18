@@ -6,5 +6,6 @@ declare module 'open-event-frontend/templates/*' {
 }
 
 interface JQuery {
-  fullCalendar(op: string, key: string, value: unknown): void
+  fullCalendar(op: string, key: string, value: unknown): void,
+  fullCalendar(key: string): unknown[]
 }
