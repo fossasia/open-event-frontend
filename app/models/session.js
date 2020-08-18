@@ -8,7 +8,7 @@ import { stateColorMap } from 'open-event-frontend/utils/dictionary/sessions';
 
 const detectedTimezone = moment.tz.guess();
 
-export default ModelBase.extend({
+export default class Session extends ModelBase.extend({
   title         : attr('string'),
   subtitle      : attr('string'),
   startsAt      : attr('moment', { defaultValue: () => null }),
@@ -70,4 +70,4 @@ export default ModelBase.extend({
     }
   }
 
-});
+}) {}
