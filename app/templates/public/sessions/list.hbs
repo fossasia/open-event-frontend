@@ -1,6 +1,6 @@
-<div class="ui bottom attached button" role="button" {{action 'toggleTrack'}}> {{if (not this.isTrackVisible) 'Show' 'Hide'}} Track </div>
+<div class="ui top attached toggle button active" role="button" {{action 'toggleTrack'}}> {{if (not this.isTrackVisible) 'Show' 'Hide'}} Track </div>
 {{#if this.isTrackVisible}}
-  <div class="ui raised very padded text container segment">
+  <div class="ui raised very padded segment">
     {{#each this.model.session as |session|}}
       <Public::TrackItem @session={{session}} />
     {{else}}
@@ -19,11 +19,15 @@
 
 <div class="ui buttons">
   <LinkTo @route="public.sessions.list" @models={{array this.model.event.id 'all'}} class="ui button">{{t 'All'}}</LinkTo>
-  <LinkTo @route="public.sessions.list" @models={{array this.model.event.id 'today'}} class="ui button">{{t 'Today'}}</LinkTo>
-  <LinkTo @route="public.sessions.list" @models={{array this.model.event.id 'week'}} class="ui button">{{t 'Week'}}</LinkTo>
-  <LinkTo @route="public.sessions.list" @models={{array this.model.event.id 'month'}} class="ui button">{{t 'Month'}}</LinkTo>
+  {{#each this.allDates as |date|}}
+    <LinkTo @route="public.sessions.list" @models={{array this.model.event.id date}} class="ui button">{{moment-format date 'ddd, MMM Do'}}</LinkTo>
+  {{/each}}
 </div>
-<div class="ui raised very padded text container segment">
+
+
+<br>
+
+<div class="ui raised very padded segment">
   {{#each this.model.session as |session|}}
     <Public::SessionItem @session={{session}} />
   {{else}}
