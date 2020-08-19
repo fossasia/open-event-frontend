@@ -53,18 +53,18 @@ export default class ListRoute extends Route {
 
     if (params.session_status !== 'all') {
 
-      const period = params.session_status === 'today' ? 'day' : params.session_status;
+      const period = params.session_status;
       filterOptions.push({
         and: [
           {
             name : 'starts-at',
             op   : 'ge',
-            val  : moment().startOf(period).toISOString()
+            val  : moment(period).toISOString()
           },
           {
             name : 'starts-at',
-            op   : 'lt',
-            val  : moment().endOf(period).toISOString()
+            op   : 'le',
+            val  : moment(period).add(1, 'days').toISOString()
           }
         ]
       });
