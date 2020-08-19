@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { action, computed  } from '@ember/object';
+import moment from 'moment';
 
 export default class extends Controller {
   isTrackVisible = false;
@@ -10,10 +11,10 @@ export default class extends Controller {
 
   @computed('model.event.startsAt', 'model.event.endsAt')
   get allDates() {
-    let arr = new Array();
-    let difference = (this.model.event.endsAt).diff(this.model.event.startsAt, 'days');
+    const arr = new Array();
+    const difference = (this.model.event.endsAt).diff(this.model.event.startsAt, 'days');
     for (let i = 0; i <= Math.abs(difference); i++) {
-    	arr.push(moment(this.model.event.startsAt).add(i,'days').toISOString());
+    	arr.push(moment(this.model.event.startsAt).add(i, 'days').toISOString());
     }
     return arr.toArray();
   }
