@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import { patchFullCalendar } from 'open-event-frontend/utils/patches/fullcalendar';
+import { hash } from 'rsvp';
 
 @classic
 export default class ScheduleRoute extends Route {
@@ -12,6 +13,14 @@ export default class ScheduleRoute extends Route {
     patchFullCalendar();
     const event = this.modelFor('public');
 
+    return hash({
+      sessions       : this.getSessions(event),
+      microlocations : event.query('microlocations', {}),
+      event
+    });
+  }
+
+  async getSessions(event) {
     const scheduledFilterOptions = [
       {
         and: [
@@ -44,8 +53,9 @@ export default class ScheduleRoute extends Route {
     ];
 
     const sessions = await event.query('sessions', {
-      include : 'speakers,microlocation,track',
-      filter  : scheduledFilterOptions
+      include      : 'speakers,microlocation,track',
+      filter       : scheduledFilterOptions,
+      'page[size]' : 0
     });
 
     sessions.forEach(session => {
@@ -55,18 +65,6 @@ export default class ScheduleRoute extends Route {
       });
     });
 
-    const microlocations = await event.query('microlocations', {});
-
-    /*
-    The start hour of the start day is considered the start hour for remaining days as well.
-    The end hour of the last day is considered the end hour for remaining days as well.
-    */
-
-    return {
-      sessions,
-      microlocations,
-      event
-    };
-
+    return sessions;
   }
 }
