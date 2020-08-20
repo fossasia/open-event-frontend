@@ -40,7 +40,10 @@
         {{outlet}}
       </div>
       <div class="three wide column">
-        {{#if (not-eq this.session.currentRouteName 'public.cfs.new-speaker')}}
+        {{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') 
+              (not-eq this.session.currentRouteName 'public.cfs.new-speaker') 
+              (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') 
+              (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
         {{/if}}
       </div>
