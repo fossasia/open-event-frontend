@@ -128,10 +128,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.refreshModel.bind(this)();
     } catch (e) {
       console.error('Error while deleting event', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'event_delete_error'
+      if (e.errors?.[0]?.detail) {
+        this.notify.error(this.l10n.tVar(e.errors[0].detail), {
+          id: 'event_delete_server_error'
         });
+      } else {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'event_delete_unknown_error'
+          });
+      }
     }
     this.setProperties({
       isLoading              : false,
