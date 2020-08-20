@@ -1,7 +1,9 @@
 <div class="ui stackable grid container">
   {{#each this.model as |speaker|}}
     <div class="five wide column speaker-column">
-      <Public::SpeakerItem @speaker={{speaker}} />
+      {{#if speaker.sessions}}
+        <Public::SpeakerItem @speaker={{speaker}} />
+      {{/if}}
     </div>
   {{/each}}
   <div class="sixteen wide column">
