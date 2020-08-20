@@ -17,7 +17,13 @@ export default ModelBase.extend({
     // and non-null name is being sent from API, for some reason, for certain events,
     // this throws an error, so we check first if name exists
     // https://github.com/fossasia/open-event-frontend/issues/4777
-    return this.name && this.name.trim().toLowerCase();
+
+    const normalizedName = this.name?.trim().toLowerCase();
+    const socialPlatforms = ['facebook', 'twitter', 'github', 'youtube', 'linkedin', 'google'];
+    if (!socialPlatforms.includes(normalizedName)) {
+      return 'globe';
+    }
+    return normalizedName;
   }),
 
   isTwitter: equal('normalizedName', 'twitter'),
