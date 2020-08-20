@@ -44,7 +44,7 @@
         {{t 'Sessions'}}
       </h3>
       {{#each this.speaker.sessions as |session|}}
-        {{#if (or (eq session.state 'confirmed') (eq session.state 'accepted'))}}
+        {{#if (and (eq session.deletedAt null) (or (eq session.state 'confirmed') (eq session.state 'accepted')))}}
           <p>
             {{#if session.startsAt}}
               <strong>

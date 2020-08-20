@@ -7,24 +7,37 @@ export default class SpeakersRoute extends Route {
     const eventDetails = this.modelFor('public');
     const filterOptions = [
       {
-        or: [
+        and: [
           {
             name : 'sessions',
             op   : 'any',
             val  : {
-              name : 'state',
+              name : 'deleted-at',
               op   : 'eq',
-              val  : 'accepted'
+              val  : null
             }
           },
           {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'confirmed'
-            }
+            or: [
+              {
+                name : 'sessions',
+                op   : 'any',
+                val  : {
+                  name : 'state',
+                  op   : 'eq',
+                  val  : 'accepted'
+                }
+              },
+              {
+                name : 'sessions',
+                op   : 'any',
+                val  : {
+                  name : 'state',
+                  op   : 'eq',
+                  val  : 'confirmed'
+                }
+              }
+            ]
           }
         ]
       }
@@ -35,7 +48,8 @@ export default class SpeakersRoute extends Route {
       startingPage : 1,
       perPageParam : 'page[size]',
       pageParam    : 'page[number]',
-      store        : eventDetails
+      store        : eventDetails,
+      include      : 'sessions.track'
     });
 
 
