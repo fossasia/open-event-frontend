@@ -21,7 +21,7 @@ export default ModelBase.extend({
     const normalizedName = this.name?.trim().toLowerCase();
     const socialPlatforms = ['facebook', 'twitter', 'github', 'youtube', 'linkedin', 'google'];
     if (normalizedName && !socialPlatforms.includes(normalizedName)) {
-      normalizedName = 'globe';
+      return 'globe';
     }
     return normalizedName;
   }),
