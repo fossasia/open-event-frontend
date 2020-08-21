@@ -48,7 +48,7 @@
           <p>
             {{#if session.startsAt}}
               <strong>
-                {{general-date session.startsAt}}
+                {{general-date session.startsAt session.event.timezone}}
               </strong>
             {{/if}}
           </p>
