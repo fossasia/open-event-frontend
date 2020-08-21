@@ -48,13 +48,13 @@
           <p>
             {{#if session.startsAt}}
               <strong>
-                {{moment-format session.startsAt 'DD MMM YY'}}
+                {{moment-format session.startsAt 'dddd Do MMM YY'}}
               </strong>
             {{/if}}
           </p>
           <a href="{{href-to 'public.sessions.list' 'all'}}#session-id-{{session.id}}">
             <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
-              <h3 class="item" style={{css user-select='text'}}>
+              <h3 class="item" style={{css user-select='text' color='white'}}>
                 {{#if (and session.startsAt session.endsAt)}}
                   {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
                   <br>
