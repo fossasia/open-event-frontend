@@ -4,7 +4,7 @@
       <div class="thumbnail-square">
         <img alt="speaker" class="ui rounded image" src="{{if this.speaker.thumbnailImageUrl this.speaker.thumbnailImageUrl (if this.speaker.photoUrl this.speaker.photoUrl '/images/placeholders/avatar.png')}}">
       </div>
-      <h3 class="ui centered header no margin">
+      <h3 class="ui centered header">
         {{this.speaker.name}}
       </h3>
       <p class="ui small centered disabled header no padding">
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="ui vertical fluid menu content padded">
-    <div class="item">
+    <div class="item" style={{css user-select='text'}}>
       <p class="word-break">
         {{#if this.speaker.shortBiography}}
           {{sanitize this.speaker.shortBiography}}
@@ -44,7 +44,7 @@
         {{t 'Sessions'}}
       </h3>
       {{#each this.speaker.sessions as |session|}}
-        {{#if (or (eq session.state 'confirmed') (eq session.state 'accepted'))}}
+        {{#if (and (eq session.deletedAt null) (or (eq session.state 'confirmed') (eq session.state 'accepted')))}}
           <p>
             {{#if session.startsAt}}
               <strong>
@@ -52,16 +52,18 @@
               </strong>
             {{/if}}
           </p>
-          <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
-            <h3 class="item">
-              {{#if (and session.startsAt session.endsAt)}}
-                {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
+          <a href="{{href-to 'public.sessions.list' 'all'}}#session-id-{{session.id}}">
+            <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
+              <h3 class="item" style={{css user-select='text'}}>
+                {{#if (and session.startsAt session.endsAt)}}
+                  {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
+                  <br>
+                {{/if}}
+                &bull;&nbsp; {{session.title}}
                 <br>
-              {{/if}}
-              &bull;&nbsp; {{session.title}}
-              <br>
-            </h3>
-          </div>
+              </h3>
+            </div>
+          </a>
         <br>
         {{/if}}
       {{/each}}

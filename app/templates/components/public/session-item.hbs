@@ -1,7 +1,7 @@
 <UiAccordion>
   <div class="title" {{action 'hideSpeakerImage'}} role="button">
     <div class="ui">
-      <h3 class="ui header">
+      <h3 class="ui header" id="session-id-{{this.session.id}}">
         {{this.session.title}}
         <div class="sub header">
           {{this.session.sessionType.name}}
