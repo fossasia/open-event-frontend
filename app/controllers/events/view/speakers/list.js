@@ -27,11 +27,25 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
+        name            : 'Position',
+        valuePath       : 'position',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        width           : 150
+      },
+      {
+        name            : 'Organization',
+        valuePath       : 'organisation',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        width           : 150
+      },
+      {
         name            : 'Email',
         valuePath       : 'email',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
-        width           : 250
+        width           : 150
       },
       {
         name          : 'Phone',
