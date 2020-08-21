@@ -1,12 +1,7 @@
-import { helper } from '@ember/component/helper';
+import { isLight } from 'open-event-frontend/utils/color';
+import Helper from '@ember/component/helper';
 
-export function isLight(params) {
-  switch (params[0]) {
-    case 'white':
-      return 'black';
-    default:
-      return 'white';
-  }
+export function textColor(color) {
+  return isLight(color) ? '#000' : '#fff';
 }
-
-export default helper(isLight);
+export default Helper.helper(textColor);
