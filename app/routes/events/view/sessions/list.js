@@ -66,7 +66,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     let queryString = {
       include        : 'speakers,feedbacks,session-type,track',
       filter         : filterOptions,
-      'page[size]'   : params.per_page || 10,
+      'page[size]'   : params.per_page || 25,
       'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);
