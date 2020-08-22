@@ -1,6 +1,6 @@
 export function getLuma(hex: string): number {
   // https://stackoverflow.com/a/12043228/3309666
-  const c = hex.substring(1);    // strip #
+  const c = hex.toString().substring(1);    // strip #
   const rgb = parseInt(c, 16);   // convert rrggbb to decimal
   const r = (rgb >> 16) & 0xff;  // extract red
   const g = (rgb >>  8) & 0xff;  // extract green
