@@ -1,2 +1,54 @@
 <h1 class="ui header">{{t 'Sessions'}}</h1>
-{{outlet}}
+
+<div class="d-flex wrap">
+  <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=null}} class="ui button mb-2">{{t 'All'}}</LinkTo>
+  {{#each this.allDates as |date|}}
+    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{moment-format date 'ddd, MMM Do'}}</LinkTo>
+  {{/each}}
+
+  <UiDropdown class="labeled icon button mb-2 ml-auto">
+    <i class="sort amount down icon"></i>
+    <span class="default text">{{t (if (eq this.sort 'title') 'By Title' 'By Time')}}</span>
+    <div class="menu">
+      <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='title'}} class="item">{{t 'By Title'}}</LinkTo>
+      <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>
+    </div>
+  </UiDropdown>
+</div>
+
+{{!-- To be enabled and developed on later --}}
+{{#if this.isTrackVisible}} 
+  {{#each this.model.session as |session|}}
+    <div class="ui grid">
+      <div class="three wide column">
+        {{general-date session.startsAt session.event.timezone 'hh:mm a'}} - 
+        {{general-date session.endsAt session.event.timezone 'hh:mm a'}}
+      </div>
+      <div class="thirteen wide column">
+        <Public::TrackItem @session={{session}} />
+      </div>
+    </div>
+  {{else}}
+    <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
+  {{/each}}
+  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
+    <div class="center aligned five wide column">
+      <div class="ui loading very padded basic segment">
+      </div>
+    </div>
+  </InfinityLoader>
+{{/if}}
+
+<div class="mt-8">
+  {{#each this.model.session as |session|}}
+    <Public::SessionItem @session={{session}} @timezone={{this.model.event.timezone}} />
+  {{else}}
+    <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
+  {{/each}}
+  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
+    <div class="center aligned five wide column">
+      <div class="ui loading very padded basic segment">
+      </div>
+    </div>
+  </InfinityLoader>
+</div>
