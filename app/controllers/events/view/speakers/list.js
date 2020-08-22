@@ -15,6 +15,27 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Name',
         valuePath       : 'name',
+        extraValuePaths : ['id'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/events/view/speakers/cell-buttons',
+        width           : 150,
+        actions         : {
+          deleteSpeaker : this.deleteSpeaker.bind(this),
+          editSpeaker   : this.editSpeaker.bind(this),
+          viewSpeaker   : this.viewSpeaker.bind(this)
+        }
+      },
+      {
+        name            : 'Position',
+        valuePath       : 'position',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        width           : 150
+      },
+      {
+        name            : 'Organization',
+        valuePath       : 'organisation',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         width           : 150
@@ -24,7 +45,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'email',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
-        width           : 250
+        width           : 150
       },
       {
         name          : 'Phone',
@@ -34,26 +55,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : 'Submitted Sessions',
         valuePath     : 'sessions',
-        cellComponent : 'ui-table/cell/events/view/speakers/cell-simple-sessions'
+        cellComponent : 'ui-table/cell/events/view/speakers/cell-simple-sessions',
+        width         : 250
       },
       {
-        name            : 'Featured speaker',
+        name            : 'Feature',
         valuePath       : 'id',
         extraValuePaths : ['isFeatured'],
         cellComponent   : 'ui-table/cell/events/view/speakers/cell-is-featured',
         actions         : {
           toggleFeatured: this.toggleFeatured.bind(this)
-        }
-      },
-      {
-        name          : 'Actions',
-        valuePath     : 'id',
-        cellComponent : 'ui-table/cell/events/view/speakers/cell-buttons',
-        width         : 160,
-        actions       : {
-          deleteSpeaker : this.deleteSpeaker.bind(this),
-          editSpeaker   : this.editSpeaker.bind(this),
-          viewSpeaker   : this.viewSpeaker.bind(this)
         }
       }
     ];
