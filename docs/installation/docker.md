@@ -13,7 +13,7 @@ You will need the following things properly installed on your computer.
 * `cd open-event-frontend`
 
 * `cp .env.example .env`
-* `docker-compose up --build -d`
+* `docker-compose up -d`
 
 * Visit your app at [http://localhost:4200](http://localhost:4200)
 
