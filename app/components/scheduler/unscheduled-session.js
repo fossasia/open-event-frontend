@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import { classNames, classNameBindings } from '@ember-decorators/component';
 import $ from 'jquery';
 import Component from '@ember/component';
-import { isLight } from 'open-event-frontend/utils/color';
+import { getTextColor } from 'open-event-frontend/utils/color';
 
 @classic
 @classNames('unscheduled-session')
@@ -20,7 +20,7 @@ export default class UnscheduledSession extends Component {
       id        : $element.attr('id'),
       serverId  : this.session.id, // id of the session on the server
       color,
-      textColor : isLight(color) ? '#000' : '#fff'
+      textColor : getTextColor(color)
     });
     $element.draggable({
       zIndex         : 999,

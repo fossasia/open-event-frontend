@@ -9,3 +9,5 @@ interface JQuery {
   fullCalendar(op: string, key: string, value: unknown): void,
   fullCalendar(key: string): unknown[]
 }
+
+declare module 'google-material-color';

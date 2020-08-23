@@ -42,15 +42,18 @@ export default class SpeakersRoute extends Route {
         ]
       }
     ];
-    return this.infinity.model('speakers', {
-      filter       : filterOptions,
-      perPage      : 12,
-      startingPage : 1,
-      perPageParam : 'page[size]',
-      pageParam    : 'page[number]',
-      store        : eventDetails,
-      include      : 'sessions.track'
-    });
+    return {
+      event    : eventDetails,
+      speakers : await this.infinity.model('speakers', {
+        filter       : filterOptions,
+        perPage      : 12,
+        startingPage : 1,
+        perPageParam : 'page[size]',
+        pageParam    : 'page[number]',
+        store        : eventDetails,
+        include      : 'sessions.track'
+      })
+    };
 
 
   }

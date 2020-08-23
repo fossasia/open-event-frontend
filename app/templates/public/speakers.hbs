@@ -1,11 +1,11 @@
 <div class="ui stackable grid container">
-  {{#each this.model as |speaker|}}
+  {{#each this.model.speakers as |speaker|}}
     <div class="five wide column speaker-column">
-      <Public::SpeakerItem @speaker={{speaker}} />
+      <Public::SpeakerItem @speaker={{speaker}} @timezone={{this.model.event.timezone}} />
     </div>
   {{/each}}
   <div class="sixteen wide column">
-    <InfinityLoader @infinityModel={{this.model}}>
+    <InfinityLoader @infinityModel={{this.model.speakers}}>
       <div class="ui loading very padded basic segment">
       </div>
       {{this.infintyModel.reachedInfinity}}
