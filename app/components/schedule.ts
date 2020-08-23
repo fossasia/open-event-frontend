@@ -7,7 +7,7 @@ import Speaker from 'open-event-frontend/models/speaker';
 import moment from 'moment';
 import $ from 'jquery';
 import { isTesting } from 'open-event-frontend/utils/testing';
-import { isLight } from 'open-event-frontend/utils/color';
+import { getTextColor } from 'open-event-frontend/utils/color';
 
 interface ScheduleArgs {
   event: Event,
@@ -68,7 +68,7 @@ export default class Schedule extends Component<ScheduleArgs> {
         end        : session.endsAt.tz(this.timezone).format(),
         resourceId : session.microlocation.get('id'),
         color,
-        textColor  : isLight(color) ? '#000' : '#fff',
+        textColor  : getTextColor(color),
         serverId   : session.get('id') // id of the session on BE
       };
     });

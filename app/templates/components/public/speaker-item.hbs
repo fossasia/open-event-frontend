@@ -45,23 +45,21 @@
       </h3>
       {{#each this.speaker.sessions as |session|}}
         {{#if (and (eq session.deletedAt null) (or (eq session.state 'confirmed') (eq session.state 'accepted')))}}
-          <p>
-            {{#if session.startsAt}}
-              <strong>
-                {{general-date session.startsAt session.event.timezone}}
-              </strong>
-            {{/if}}
-          </p>
+          {{#if session.startsAt}}
+            <strong>
+              {{general-date session.startsAt @timezone}}
+            </strong>
+          {{/if}}
           <a href="{{href-to 'public.sessions' (query-params session_id=session.id)}}">
-            <div class="ui fluid padded" style={{css color=session.track.fontColor background-color=session.track.color}}>
-              <h3 class="item" style={{css user-select='text' color=(is-light session.track.color)}}>
+            <div class="ui fluid rounded-default p-4" style={{css color=session.track.fontColor background-color=session.track.color}}>
+              <div style={{css opacity=0.9}}>
                 {{#if (and session.startsAt session.endsAt)}}
-                  {{moment-format session.startsAt 'HH:mm'}} - {{moment-format session.endsAt 'hh:mm'}}
-                  <br>
+                  <strong>{{general-date session.startsAt @timezone 'HH:mm'}} - {{general-date session.endsAt @timezone 'hh:mm'}}</strong>
                 {{/if}}
-                &bull;&nbsp; {{session.title}}
-                <br>
-              </h3>
+                <h3 class="m-0" style={{css user-select='text' color=(text-color session.track.color)}}>
+                  {{session.title}}
+                </h3>
+              </div>
             </div>
           </a>
         <br>

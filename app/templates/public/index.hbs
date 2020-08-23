@@ -40,7 +40,7 @@
     <div class="featured-speakers" id="speakers">
       <div class="row">
         <Public::FeaturedSpeakerList
-          @speakers={{this.model.featuredSpeakers}} />
+          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
