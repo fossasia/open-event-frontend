@@ -41,8 +41,8 @@ export default class IndexRoute extends Route {
         },
         ...SPEAKERS_FILTER
       ],
-      include: 'sessions.track',
-      'page[size]': 0
+      include      : 'sessions.track',
+      'page[size]' : 0
     });
     const sponsorsPromise = event.get('sponsors');
     const taxPromise = event.get('tax');
