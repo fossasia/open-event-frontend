@@ -46,9 +46,11 @@
       {{#each this.speaker.sessions as |session|}}
         {{#if (and (eq session.deletedAt null) (or (eq session.state 'confirmed') (eq session.state 'accepted')))}}
           {{#if session.startsAt}}
-            <strong>
-              {{general-date session.startsAt @timezone}}
-            </strong>
+            <p>
+              <strong>
+                {{general-date session.startsAt @timezone}}
+              </strong>
+            </p>
           {{/if}}
           <a href="{{href-to 'public.sessions' (query-params session_id=session.id)}}">
             <div class="ui fluid rounded-default p-4" style={{css color=session.track.fontColor background-color=session.track.color}}>
