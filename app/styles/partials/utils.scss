@@ -19,11 +19,16 @@
 }
 
 .rounded-default {
-  border-radius: .3rem;
+  border-radius: .28571429rem;
 }
 
 .rounded-none {
   border-radius: 0 !important;
+}
+
+.rounded-t-none {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
 .rounded-r-none {
@@ -36,8 +41,16 @@
   border-top-left-radius: 0 !important;
 }
 
+.p-0 {
+  padding: 0 !important;
+}
+
 .p-4 {
   padding: 1rem !important;
+}
+
+.pt-0 {
+  padding-top: 0 !important;
 }
 
 .mt-8 {
