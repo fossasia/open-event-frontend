@@ -1,18 +1,14 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import { classNames } from '@ember-decorators/component';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-@classic
-@classNames('ui', 'segment')
 export default class SessionItem extends Component {
   hideImage = false;
 
   @action
   hideSpeakerImage() {
-    this.toggleProperty('hideImage');
-    if (!this.session.speakers.length) {
-      this.set('hideImage', false);
+    this.hideImage = !this.hideImage;
+    if (!this.args.session.speakers.length) {
+      this.hideImage = false;
     }
   }
 }
