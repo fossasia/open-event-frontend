@@ -5,6 +5,7 @@ import moment from 'moment';
 import { set } from '@ember/object';
 import ENV from 'open-event-frontend/config/environment';
 import { allSettled } from 'rsvp';
+import { SPEAKERS_FILTER } from './speakers';
 
 @classic
 export default class IndexRoute extends Route {
@@ -37,9 +38,11 @@ export default class IndexRoute extends Route {
           name : 'is-featured',
           op   : 'eq',
           val  : 'true'
-        }
+        },
+        ...SPEAKERS_FILTER
       ],
-      'page[size]': 0
+      include      : 'sessions.track',
+      'page[size]' : 0
     });
     const sponsorsPromise = event.get('sponsors');
     const taxPromise = event.get('tax');
