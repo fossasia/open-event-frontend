@@ -1,9 +1,9 @@
-<UiAccordion>
-  <div class="title" {{action 'hideSpeakerImage'}} role="button">
+<UiAccordion class="segment p-0" style={{css background-color=@session.track.color border-color='lightgray'}}>
+  <div class="title p-4" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
     <div class="ui">
-      <h3 class="ui header" id="session-id-{{@session.id}}">
+      <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
-        <div class="sub header">
+        <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
           {{@session.sessionType.name}}
         </div>
       </h3>
@@ -41,7 +41,7 @@
       </div>
     </div>
   </div>
-  <div class="content">
+  <div class="content pt-0 p-4 rounded-t-none" style={{css background-color='white' border-radius='0.2rem'}}>
     {{#each @session.speakers as |speaker|}}
       <div class="ui divider"></div>
       <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
