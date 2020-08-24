@@ -10,9 +10,18 @@ export default class SessionsController extends Controller {
   queryParams = ['sort'];
   sort = 'starts-at';
   isTrackVisible = false;
-  timezones = timezones;
   currentTimezone = moment.tz.guess();
   localTimezone = moment.tz.guess();
+
+
+  @computed
+  get timezones() {
+    let mytimezones = []
+    mytimezones = timezones.filter(item => item !== moment.tz.guess());
+    mytimezones.unshift(moment.tz.guess());
+    return mytimezones;
+  }
+
   @computed('model.event.startsAt', 'model.event.endsAt')
   get allDates() {
     const arr = [];
