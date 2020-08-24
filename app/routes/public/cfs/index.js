@@ -1,13 +1,20 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class IndexRoute extends Route {
+  @service
+  fastboot;
+
   titleToken() {
     return this.l10n.t('Call for Speakers');
   }
 
   async beforeModel(transition) {
+    // We don't want to process or transition in fastboot mode
+    // Since this is only an intermediate page
+    if (this.fastboot.isFastBoot) {return}
     const hash = transition.to.params['public.cfs'] ? transition.to.params['public.cfs'].speaker_call_hash : null;
     const eventDetails = this.modelFor('public');
     const speakersCall = await eventDetails.get('speakersCall');
@@ -21,6 +28,7 @@ export default class IndexRoute extends Route {
     if (!speakersCall.announcement) {
       this.notify.error(this.l10n.t('Call For Speakers has not been issued yet.'));
       this.transitionTo('public', eventDetails.identifier);
+      return;
     }
     if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {
       this.transitionTo('not-found');
