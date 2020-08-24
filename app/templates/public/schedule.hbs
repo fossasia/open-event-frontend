@@ -2,7 +2,8 @@
   <Schedule
     @event={{this.model.event}}
     @sessions={{this.model.sessions}}
-    @rooms={{this.model.microlocations}} />
+    @rooms={{this.model.microlocations}} 
+    @height="auto"/>
 {{else}}
   <div class="ui disabled header">{{t 'Schedule for the event is currently unavailable'}}</div>
 {{/if}}
