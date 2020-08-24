@@ -9,7 +9,7 @@
  
   <UiDropdown
     @class="search selection mb-2 ml-auto"
-    @selected={{this.currentTimezone}}
+    @selected={{this.model.event.timezone}}
     @forceSelection={{false}}
     @fullTextSearch={{true}}>
     <Input
@@ -21,9 +21,9 @@
     <div class="menu">
       {{#each this.timezones as |timezone|}}
         {{#if (eq timezone this.localTimezone)}}
-           <div class="item" data-value="{{timezone}}">{{timezone}} {{t 'local'}}</div>
+           <div class="item" data-value="{{timezone}}">{{timezone}} (Local)</div>
         {{else if (eq timezone this.model.event.timezone)}}
-          <div class="item" data-value="{{timezone}}">{{timezone}} {{t 'event'}}</div>
+          <div class="item" data-value="{{timezone}}">{{timezone}} (Event)</div>
         {{else}}
           <div class="item" data-value="{{timezone}}">{{timezone}}</div>
         {{/if}}
