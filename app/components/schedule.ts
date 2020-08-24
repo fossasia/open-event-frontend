@@ -137,7 +137,6 @@ export default class Schedule extends Component<ScheduleArgs> {
   @action
   renderCallback(view: FullCalendarView): void {
     const calendar = $('.full-calendar');
-    calendar.fullCalendar('option', 'height', 'auto');
     this.adjustColumnWidth(view, calendar);
     this.adjustMinTime(view, calendar);
   }
