@@ -1,4 +1,5 @@
 import moment from 'moment';
+import 'moment-timezone';
 
 export const timezones = moment.tz.names();
 
