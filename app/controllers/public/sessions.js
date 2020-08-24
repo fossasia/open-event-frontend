@@ -2,13 +2,17 @@ import classic from 'ember-classic-decorator';
 import { computed } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
+import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 
 @classic
 export default class SessionsController extends Controller {
+
   queryParams = ['sort'];
   sort = 'starts-at';
   isTrackVisible = false;
-
+  timezones = timezones;
+  currentTimezone = moment.tz.guess();
+  localTimezone = moment.tz.guess();
   @computed('model.event.startsAt', 'model.event.endsAt')
   get allDates() {
     const arr = [];
