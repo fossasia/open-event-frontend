@@ -20,7 +20,7 @@
       top: 0;
     }
 
-    > img {
+    > img.background {
       bottom: 0;
       left: 0;
       position: absolute;
@@ -39,7 +39,7 @@
       right: 0;
       width: 100%;
 
-      img {
+      img.background {
         left: 0;
         position: absolute;
         right: 0;
@@ -56,8 +56,15 @@
         width: 100%;
 
         .info {
+          align-items: center;
           bottom: 20%;
+          flex-wrap: wrap;
           position: absolute;
+
+          .logo {
+            max-height: 100px;
+            max-width: 300px;
+          }
 
           .event {
             font-weight: 300;
@@ -105,6 +112,12 @@
             .event.location {
               font-size: 1.25rem;
             }
+          }
+        }
+
+        @media (max-width: 550px) {
+          .info {
+            bottom: 5%;
           }
         }
       }
