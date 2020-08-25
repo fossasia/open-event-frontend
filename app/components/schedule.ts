@@ -10,6 +10,7 @@ import { isTesting } from 'open-event-frontend/utils/testing';
 import { getTextColor } from 'open-event-frontend/utils/color';
 
 interface ScheduleArgs {
+  timezone: string | undefined,
   event: Event,
   sessions: Session[],
   rooms: Microlocation[]
@@ -43,7 +44,7 @@ export default class Schedule extends Component<ScheduleArgs> {
   }
 
   get timezone(): string {
-    return this.args.event.timezone;
+    return this.args.timezone || this.args.event.timezone;
   }
 
   get minTime(): string {
