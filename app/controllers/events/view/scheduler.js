@@ -111,28 +111,27 @@ export default class extends Controller {
   }
 
   @action
-  togglePublishState() {
+  async togglePublishState() {
     this.set('isLoading', true);
     const stat = this.isSchedulePublished ? 'unpublished' : 'published';
     const publishedAt = this.isSchedulePublished ? moment(0) : moment();
-    const event = this.model.eventDetails;
+    const { event } = this.model;
     event.set('schedulePublishedOn', publishedAt);
-    event.save()
-      .then(() => {
-        this.notify.success(`The schedule has been ${stat} successfully`,
-          {
-            id: 'schedule_change_succ'
-          });
-      })
-      .catch(reason => {
-        this.set('error', reason);
-        this.notify.error(`Error: ${reason}`,
-          {
-            id: 'error_reason_scheduler'
-          });
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
+    try {
+      await event.save();
+      this.notify.success(`The schedule has been ${stat} successfully`,
+        {
+          id: 'schedule_change_succ'
+        });
+    } catch (e) {
+      console.error('Error while toggling schedule publish state', e);
+      this.set('error', e);
+      this.notify.error(`Error: ${e}`,
+        {
+          id: 'error_reason_scheduler'
+        });
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 }
