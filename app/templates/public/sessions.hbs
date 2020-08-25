@@ -6,7 +6,12 @@
     <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{moment-format date 'ddd, MMM Do'}}</LinkTo>
   {{/each}}
 
-  <UiDropdown class="labeled icon button mb-2 ml-auto">
+  <Widgets::TimeZonePicker
+    class="mb-2 ml-auto mr-2"
+    @eventTimezone={{this.model.event.timezone}}
+    @timezone={{this.timezone}} />
+
+  <UiDropdown class="labeled icon button mb-2">
     <i class="sort amount down icon"></i>
     <span class="default text">{{t (if (eq this.sort 'title') 'By Title' 'By Time')}}</span>
     <div class="menu">
@@ -41,7 +46,7 @@
 
 <div class="mt-8">
   {{#each this.model.session as |session|}}
-    <Public::SessionItem @session={{session}} @timezone={{this.model.event.timezone}} />
+    <Public::SessionItem @session={{session}} @timezone={{this.timezone}} />
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
