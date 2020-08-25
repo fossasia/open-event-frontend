@@ -1483,7 +1483,7 @@
     hi-base32 "^0.5.0"
     zalgo-promise "^1.0.28"
 
-"@sentry/apm@5.21.3", "@sentry/apm@^5.21.3":
+"@sentry/apm@5.21.3":
   version "5.21.3"
   resolved "https://registry.yarnpkg.com/@sentry/apm/-/apm-5.21.3.tgz#513f0432f70dd23b29431d7af10cbdfa0befcc51"
   integrity sha512-5Hl/ZJV9dm1a/SskwdaTX34GsgmrWGMeGPIHTkrI5iXMHObHUjbnSuPgIld/Ffi19GpjPsjEV3kxA3AQnHQCqg==
@@ -1493,6 +1493,18 @@
     "@sentry/minimal" "5.21.3"
     "@sentry/types" "5.21.3"
     "@sentry/utils" "5.21.3"
+    tslib "^1.9.3"
+
+"@sentry/apm@^5.21.4":
+  version "5.21.4"
+  resolved "https://registry.yarnpkg.com/@sentry/apm/-/apm-5.21.4.tgz#bc1e026e36edced3f79fc86869b4b65749e20a2f"
+  integrity sha512-JkBfBKBXZifDI9CsKU+XHzNWkubM7U9dXDW4c6/kU3lURYGXpiR/WI+f3IQG5Vbd2t+cukYhG7BeMkhG8Tj+cA==
+  dependencies:
+    "@sentry/browser" "5.21.4"
+    "@sentry/hub" "5.21.4"
+    "@sentry/minimal" "5.21.4"
+    "@sentry/types" "5.21.4"
+    "@sentry/utils" "5.21.4"
     tslib "^1.9.3"
 
 "@sentry/browser@5.21.3":
@@ -1505,7 +1517,7 @@
     "@sentry/utils" "5.21.3"
     tslib "^1.9.3"
 
-"@sentry/browser@^5.21.4":
+"@sentry/browser@5.21.4", "@sentry/browser@^5.21.4":
   version "5.21.4"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.21.4.tgz#50cb1f815f5468bb7c891fee329b8298f2aa5d9a"
   integrity sha512-/bRGMNjJc4Qt9Me9qLobZe0pREUAMFQAR7GOF9HbgzxUc49qVvmPRglvwzwhPJ6XKPg0NH/C6MOn+yuIRjfMag==
