@@ -50,6 +50,32 @@
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
+  <h1> {{t 'Tracks'}} </h1>
+  {{#each this.model.event.tracks as |track|}}
+    <h2>{{track.name}}</h2>
+    {{#each track.sessions as |session|}}
+      {{#if (or (eq session.state 'confirmed')(eq session.state 'accepted'))}}
+        <Public::SessionItem @session={{session}} @timezone={{this.currentTimezone}} />
+      {{/if}}
+    {{else}}
+      <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+    {{/each}}
+  {{else}}
+    <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+  {{/each}}
+  <h1> {{t 'Rooms'}} </h1>
+  {{#each this.model.event.microlocations as |room|}}
+    <h2>{{room.name}}</h2>
+    {{#each room.sessions as |session|}}
+      {{#if (or (eq session.state 'confirmed')(eq session.state 'accepted'))}}
+        <Public::SessionItem @session={{session}} @timezone={{this.currentTimezone}} />
+      {{/if}}
+    {{else}}
+      <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+    {{/each}}
+  {{else}}
+    <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+  {{/each}}
   <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
