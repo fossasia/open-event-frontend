@@ -20,6 +20,15 @@ export default class PublicController extends Controller {
     return this.session.currentRouteName && this.session.currentRouteName !== 'public.cfs.new-session' && this.session.currentRouteName !== 'public.cfs.new-speaker' && this.session.currentRouteName !== 'public.cfs.edit-speaker' && this.session.currentRouteName !== 'public.cfs.edit-session';
   }
 
+  @computed('model.tracks')
+  get getTracks() { 
+    return this.model.tracks;
+  }
+
+  @computed('model.microlocations')
+  get getRooms() {
+    return this.model.microlocations;
+  }
   @action
   toggleMenu() {
     this.toggleProperty('isMenuOpen');
