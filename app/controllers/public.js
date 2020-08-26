@@ -21,7 +21,7 @@ export default class PublicController extends Controller {
   }
 
   @computed('model.tracks')
-  get getTracks() { 
+  get getTracks() {
     return this.model.tracks;
   }
 
