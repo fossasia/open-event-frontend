@@ -1,11 +1,11 @@
 {{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') (not-eq this.session.currentRouteName 'public.cfs.new-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
   <div class="ui fluid vertical {{unless this.device.isMobile 'pointing'}} menu">
     {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
+      <a href='#info' {{action "scrollToTarget" '#info'}} class='item active scroll'>
         {{t 'Info'}}
       </a>
       {{#if this.event.tickets.length}}
-        <a href='#tickets' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#tickets' {{action scrollToTarget '#tickets'}} class='item scroll'>
           {{t 'Tickets'}}
         </a>
       {{/if}}
@@ -46,17 +46,17 @@
     {{/if}}
     {{#if this.event.hasOwnerInfo}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#organizer' {{action scrollToTarget '#organizer'}} class='item scroll'>
           {{t 'Organizer'}}
         </a>
       {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#owner">
+        <a class="item" href="{{href-to 'public.index'}}#organizer">
           {{t 'Organizer'}}
         </a>
       {{/if}}
     {{/if}}
     {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#getting-here' class='item scroll'>
+      <a href='#getting-here' {{action scrollToTarget '#getting-here'}} class='item scroll'>
         {{t 'Getting here'}}
       </a>
     {{else}}
