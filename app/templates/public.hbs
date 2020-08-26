@@ -43,21 +43,21 @@
       </div>
       <div class="three wide column">
         {{#if (not-eq this.session.currentRouteName 'public.cfs.new-speaker')}}
-          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
-          <h1>{{t 'Tracks'}} <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}}><i class="minus circle icon" style={{css color=track.color}}></i></LinkTo> </h1>
+          <h4>{{t 'Tracks'}} <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}}><i class="minus circle icon" style={{css color=track.color}}></i></LinkTo> </h4>
           {{#each this.getTracks as |track|}} 
             <LinkTo @route="public.sessions" 
             @models={{array this.model.id}} @query={{hash track=track.name}}>
             <i class="circle icon" style={{css color=track.color}}></i> {{track.name}}</LinkTo>
             <br>
           {{/each}}
-         <h1>{{t 'Rooms'}} <LinkTo @route="public.sessions" @models={{array this.model.id}}         @query={{hash room=null}}><i class="minus circle icon"></i></LinkTo></h1>
+         <h4>{{t 'Rooms'}} <LinkTo @route="public.sessions" @models={{array this.model.id}}         @query={{hash room=null}}><i class="minus circle icon"></i></LinkTo></h4>
           {{#each this.getRooms as |room|}}
             <LinkTo @route="public.sessions" 
             @models={{array this.model.id}} @query={{hash room=room.name}}>
             <i class="circle icon"></i> {{room.name}}</LinkTo>
             <br>
           {{/each}}
+          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
         {{/if}}
       </div>
     </div>
