@@ -53,7 +53,9 @@
           {{/each}}
          <h1>{{t 'Rooms'}}</h1>
           {{#each this.getRooms as |room|}}
-            <LinkTo @route="public.sessions" class="ui button mb-2">{{room.name}}</LinkTo>
+            <LinkTo @route="public.sessions" 
+            @models={{array this.model.id}} @query={{hash room=room.name}}
+            class="ui button mb-2">{{room.name}}</LinkTo>
             <br>
           {{/each}}
         {{/if}}
