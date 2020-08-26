@@ -46,7 +46,7 @@
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
           <h1>{{t 'Tracks'}}</h1>
           {{#each this.getTracks as |track|}}
-            <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}}><i class="minus circle icon"></i></LinkTo>
+            <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}}><i class="minus circle icon" style={{css color=track.color}}></i></LinkTo>
             <LinkTo @route="public.sessions" 
             @models={{array this.model.id}} @query={{hash track=track.name}}
             style={{css color=track.color}}>{{track.name}}</LinkTo>
