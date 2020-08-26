@@ -442,6 +442,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         event,
         type,
         position,
+        quantity: 100,
+        maxPrice: type === 'donation' ? 10000 : null,
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
       }));
