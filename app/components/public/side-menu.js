@@ -26,8 +26,7 @@ export default class SideMenu extends Component {
     super.didInsertElement(...arguments);
     const speakersCall = await this.event.speakersCall;
     this.set('shouldShowCallforSpeakers',
-      speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
-      
+      speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));     
     this.checkSpeakers();
     this.checkSessions();
   }
