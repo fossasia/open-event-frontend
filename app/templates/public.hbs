@@ -46,16 +46,17 @@
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
           <h1>{{t 'Tracks'}}</h1>
           {{#each this.getTracks as |track|}}
+            <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}}><i class="minus circle icon"></i></LinkTo>
             <LinkTo @route="public.sessions" 
             @models={{array this.model.id}} @query={{hash track=track.name}}
-            class="ui button mb-2">{{track.name}}</LinkTo>
+            style={{css color=track.color}}>{{track.name}}</LinkTo>
             <br>
           {{/each}}
          <h1>{{t 'Rooms'}}</h1>
           {{#each this.getRooms as |room|}}
+            <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash room=null}}><i class="minus circle icon"></i></LinkTo>
             <LinkTo @route="public.sessions" 
-            @models={{array this.model.id}} @query={{hash room=room.name}}
-            class="ui button mb-2">{{room.name}}</LinkTo>
+            @models={{array this.model.id}} @query={{hash room=room.name}}>{{room.name}}</LinkTo>
             <br>
           {{/each}}
         {{/if}}
