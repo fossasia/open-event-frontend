@@ -1,6 +1,6 @@
 <div class="ui container">
   <div class="ui row">
-    {{#if (not this.model.isLocked)}}
+    {{#if (and (not this.model.isLocked) shouldView)}}
       <LinkTo
         @route="public.cfs.edit-session"
         @models={{array this.model.event.id this.model.id}}>
@@ -24,7 +24,7 @@
         </LinkTo>
       {{/if}}
     {{/each}}
-    {{#if (not-eq this.model.status 'withdrawn')}}
+    {{#if (and (not-eq this.model.status 'withdrawn') shouldView)}}
       <button class="ui red button {{if this.device.isMobile 'fluid' 'right floated'}}"
         {{action 'openProposalWithdrawModal'}}>{{t 'Withdraw Proposal'}}</button>
       {{#if this.device.isMobile}}
