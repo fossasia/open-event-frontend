@@ -26,7 +26,7 @@ export default class SideMenu extends Component {
     super.didInsertElement(...arguments);
     const speakersCall = await this.event.speakersCall;
     this.set('shouldShowCallforSpeakers',
-      speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
+      speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));    
     this.checkSpeakers();
     this.checkSessions();
   }
@@ -55,16 +55,24 @@ export default class SideMenu extends Component {
 
   @action
   scrollToTarget(e) {
+
+    if(history.pushState) {
+      history.pushState(null, null, e);
+    }
+    else {
+      location.hash = e;
+    }
     document.querySelector(e).scrollIntoView({
       behavior: 'smooth', block: 'start'
     });
+
     document.querySelectorAll('.scroll').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth', block: 'start'
         });
-
+        
         document.querySelectorAll('.scroll').forEach(node => {
           node.classList.remove('active');
         });
