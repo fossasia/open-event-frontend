@@ -75,27 +75,26 @@ export default class SessionsRoute extends Route {
     if (params.track) {
       filterOptions.push({
         name : 'track',
-        op : 'has',
-        val : {
-          name: 'name',
-          op: 'eq',
-          val: params.track
+        op   : 'has',
+        val  : {
+          name : 'name',
+          op   : 'eq',
+          val  : params.track
         }
-      })
+      });
     }
 
     if (params.room) {
       filterOptions.push({
         name : 'microlocation',
-        op : 'has',
-        val : {
-          name: 'name',
-          op: 'eq',
-          val: params.room
+        op   : 'has',
+        val  : {
+          name : 'name',
+          op   : 'eq',
+          val  : params.room
         }
-      })
+      });
     }
-  
 
     return {
       event   : eventDetails,
