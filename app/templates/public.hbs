@@ -43,6 +43,40 @@
       </div>
       <div class="three wide column">
         {{#if (not-eq this.session.currentRouteName 'public.cfs.new-speaker')}}
+          {{#if (eq this.session.currentRouteName 'public.sessions')}}
+            <div class="ui basic segment">
+              <h4>
+                {{t 'Tracks'}}
+                <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}} data-tooltip="{{t 'Clear Track Filter'}}">
+                  <i class="minus circle icon" style={{css color='#f00'}}></i>
+                </LinkTo>
+              </h4>
+              {{#each this.model.tracks as |track|}} 
+                <LinkTo
+                  class="p-1 mb-1 rounded-default link-item {{if (eq this.params.track track.name) 'active'}}"
+                  @route="public.sessions"
+                  @models={{array this.model.id}}
+                  @query={{hash track=track.name}}>
+                  <i class="circle icon" style={{css color=track.color}}></i> {{track.name}}
+                </LinkTo>
+              {{/each}}
+              <h4>
+                {{t 'Rooms'}}
+                <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash room=null}} data-tooltip="{{t 'Clear Room Filter'}}">
+                  <i class="minus circle icon" style={{css color='#f00'}}></i>
+                </LinkTo>
+              </h4>
+              {{#each this.model.microlocations as |room|}}
+                <LinkTo
+                  class="p-1 mb-1 rounded-default link-item {{if (eq this.params.room room.name) 'active'}}"
+                  @route="public.sessions" 
+                  @models={{array this.model.id}}
+                  @query={{hash room=room.name}}>
+                  <i class="circle icon"></i> {{room.name}}
+                </LinkTo>
+              {{/each}}
+            </div>
+          {{/if}}
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
         {{/if}}
       </div>
