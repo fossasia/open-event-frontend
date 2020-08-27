@@ -26,7 +26,7 @@ export default class SideMenu extends Component {
     super.didInsertElement(...arguments);
     const speakersCall = await this.event.speakersCall;
     this.set('shouldShowCallforSpeakers',
-      speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));    
+      speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
     this.checkSpeakers();
     this.checkSessions();
   }
@@ -72,7 +72,7 @@ export default class SideMenu extends Component {
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth', block: 'start'
         });
-        
+
         document.querySelectorAll('.scroll').forEach(node => {
           node.classList.remove('active');
         });
