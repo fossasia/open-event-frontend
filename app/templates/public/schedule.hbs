@@ -1,16 +1,54 @@
 {{#if this.isSchedulePublished}}
+  <div class="ui buttons">
+	  <div class="ui button" role ="button" {{action 'showSchedule'}}>Schedule</div>
+	  <div class="ui button" role ="button" {{action 'showTrack'}}>Tracks</div>
+	  <div class="ui button" role ="button" {{action 'showRoom'}}>Rooms</div>
+	</div>
   <div class="d-flex">
     <Widgets::TimeZonePicker
       class="mb-2 ml-auto"
       @eventTimezone={{this.model.event.timezone}}
       @timezone={{this.timezone}} />
   </div>
-  <Schedule
-    @timezone={{this.timezone}}
-    @event={{this.model.event}}
-    @sessions={{this.model.sessions}}
-    @rooms={{this.model.microlocations}} 
-    @height="auto"/>
+  <br>
+  {{#if this.hideSchedule}}
+		<br><br>
+	  <Schedule
+	    @event={{this.model.event}}
+	    @sessions={{this.model.sessions}}
+	    @rooms={{this.model.microlocations}} 
+	    @height="auto"/>
+	{{/if}}
+	{{#if this.hideTrack}}
+	  <h1> {{t 'Tracks'}} </h1>
+	  {{#each this.model.event.tracks as |track|}}
+	    <h2>{{track.name}}</h2>
+	    {{#each track.sessions as |session|}}
+	      {{#if (or (eq session.state 'confirmed')(eq session.state 'accepted'))}}
+	        <Public::SessionItem @session={{session}} @timezone={{this.currentTimezone}} />
+	      {{/if}}
+	    {{else}}
+	      <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+	    {{/each}}
+	  {{else}}
+	    <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+	  {{/each}}
+	{{/if}}
+	{{#if this.hideRooms}}
+	  <h1> {{t 'Rooms'}} </h1>
+	  {{#each this.model.event.microlocations as |room|}}
+	    <h2>{{room.name}}</h2>
+	    {{#each room.sessions as |session|}}
+	      {{#if (or (eq session.state 'confirmed')(eq session.state 'accepted'))}}
+	        <Public::SessionItem @session={{session}} @timezone={{this.currentTimezone}} />
+	      {{/if}}
+	    {{else}}
+	      <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+	    {{/each}}
+	  {{else}}
+	    <div class="ui disabled header">{{t 'No Sessions exist for this track'}}</div>
+	  {{/each}}
+	{{/if}}
 {{else}}
   <div class="ui disabled header">{{t 'Schedule for the event is currently unavailable'}}</div>
 {{/if}}
