@@ -56,10 +56,9 @@ export default class SideMenu extends Component {
   @action
   scrollToTarget(e) {
 
-    if(history.pushState) {
+    if (history.pushState) {
       history.pushState(null, null, e);
-    }
-    else {
+    } else {
       location.hash = e;
     }
     document.querySelector(e).scrollIntoView({
