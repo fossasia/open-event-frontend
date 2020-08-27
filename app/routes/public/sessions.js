@@ -10,6 +10,12 @@ export default class SessionsRoute extends Route {
     },
     sort: {
       refreshModel: true
+    },
+    track: {
+      refreshModel: true
+    },
+    room: {
+      refreshModel: true
     }
   };
 
@@ -63,6 +69,30 @@ export default class SessionsRoute extends Route {
             val  : moment.tz(params.date, eventDetails.timezone).add(1, 'days').toISOString()
           }
         ]
+      });
+    }
+
+    if (params.track) {
+      filterOptions.push({
+        name : 'track',
+        op   : 'has',
+        val  : {
+          name : 'name',
+          op   : 'eq',
+          val  : params.track
+        }
+      });
+    }
+
+    if (params.room) {
+      filterOptions.push({
+        name : 'microlocation',
+        op   : 'has',
+        val  : {
+          name : 'name',
+          op   : 'eq',
+          val  : params.room
+        }
       });
     }
 
