@@ -48,7 +48,7 @@
               <h4>
                 {{t 'Tracks'}}
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}} data-tooltip="{{t 'Clear Track Filter'}}">
-                  <i class="minus circle icon" style={{css color='#3f3f40'}}></i>
+                  <i class="minus circle icon" style={{css color='#555'}}></i>
                 </LinkTo>
               </h4>
               {{#each this.model.tracks as |track|}} 
@@ -63,7 +63,7 @@
               <h4>
                 {{t 'Rooms'}}
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash room=null}} data-tooltip="{{t 'Clear Room Filter'}}">
-                  <i class="minus circle icon" style={{css color='#3f3f40'}}></i>
+                  <i class="minus circle icon" style={{css color='#555'}}></i>
                 </LinkTo>
               </h4>
               {{#each this.model.microlocations as |room|}}
