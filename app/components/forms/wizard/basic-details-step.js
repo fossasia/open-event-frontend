@@ -23,10 +23,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   deletedTickets: [],
 
-  // licenses: computed(function() {
-  //   return orderBy(licenses, 'name');
-  // }),
-
   countries: computed(function() {
     return orderBy(countries, 'name');
   }),
@@ -411,6 +407,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         event,
         type,
         position,
+        quantity      : 100,	
+        maxPrice      : type === 'donation' ? 10000 : null,
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
       }));
