@@ -27,41 +27,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return orderBy(licenses, 'name');
   }),
 
-  countries: computed(function() {
-    return orderBy(countries, 'name');
-  }),
-
-  paymentCountries: computed(function() {
-    return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
-  }),
-
-  paymentCurrencies: computed(function() {
-    return orderBy(paymentCurrencies, 'name');
-  }),
-
-  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.isPaypalActivated', function() {
-    return this.settings.isPaypalActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paypal;
-  }),
-
-  canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated', function() {
-    return this.settings.isPaytmActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paytm;
-  }),
-
-  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
-    return this.settings.isStripeActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).stripe;
-  }),
-
-  canAcceptOmise: computed('data.event.paymentCurrency', 'settings.isOmiseActivated', function() {
-    return this.settings.isOmiseActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).omise;
-  }),
-
-  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAlipayActivated', function() {
-    return this.settings.isAlipayActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).alipay;
-  }),
-
-  tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
-    return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
-  }),
 
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
     return this.data.event.socialLinks.filterBy('isDeleted', false);
@@ -94,37 +59,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return validationRules;
   }),
 
-  subTopics: computed('data.event.topic', function() {
-    later(this, () => {
-      try {
-        this.set('subTopic', null);
-      } catch (ignored) {
-        /* To suppress error thrown in-case this gets executed after component gets destroy */
-        console.warn('Error setting subTopic to null', ignored);
-      }
-    }, 50);
-    if (!this.data.event.topic) {
-      return [];
-    }
-
-    // TODO(Areeb): Revert to ES6 getter when a solution is found
-    return this.data.event.topic.get('subTopics');
-  }),
 
   showDraftButton: computed('data.event.state', function() {
     return this.data.event.state !== 'published';
   }),
 
-  hasPaidTickets: computed('data.event.tickets.@each.type', function() {
-    return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
-  }),
-
   hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
     return !!this.data.event.codeOfConduct;
-  }),
-
-  discountCodeObserver: observer('data.event.discountCode', function() {
-    this.getForm().form('remove prompt', 'discount_code');
   }),
 
   didInsertElement() {
@@ -409,8 +350,20 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   actions: {
-    
-    saveDraft() {
+    async updateCopyright(name) {
+      const { event } = this.data;
+      const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
+      const license = find(licenses, { name });
+      copyright.setProperties({
+        licence    : name,
+        logoUrl    : license.logoUrl,
+        licenceUrl : license.link
+      });
+    },
+    onChange() {
+      this.onValid(() => {});
+    },
+     saveDraft() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
         this.sendAction('save');
@@ -425,135 +378,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.onValid(() => {
         this.set('data.event.state', 'published');
         this.sendAction('save');
-      });
-    },
-    connectStripe() {
-      this.torii.open('stripe')
-        .then(authorization => {
-          this.set('data.event.stripeAuthorization', this.store.createRecord('stripe-authorization', {
-            stripeAuthCode       : authorization.authorizationCode,
-            stripePublishableKey : ENV.environment === 'development' || ENV.environment === 'test' ? this.settings.stripeTestPublishableKey : this.settings.stripePublishableKey
-          }));
-        })
-        .catch(error => {
-          console.error('Error while setting stripe authorization in event', error);
-          this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
-            id: 'basic_detail_err'
-          });
-        });
-    },
-    async disconnectStripe() {
-      const stripeAuthorization = await this.data.event.stripeAuthorization;
-      stripeAuthorization.destroyRecord()
-        .then(() => {
-          this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
-            id: 'stripe_disconn'
-          });
-        });
-
-    },
-    addTicket(type, position) {
-      const { event } = this.data;
-      const salesStartDateTime = moment();
-      const salesEndDateTime = this.data.event.startsAt;
-      this.data.event.tickets.pushObject(this.store.createRecord('ticket', {
-        event,
-        type,
-        position,
-        salesStartsAt : salesStartDateTime,
-        salesEndsAt   : salesEndDateTime
-      }));
-    },
-
-    updateSalesEndDate(eventStartDate) {
-      eventStartDate = moment(new Date(eventStartDate));
-      this.data.event.tickets.forEach(ticket => {
-        if (moment(eventStartDate).isBefore(ticket.get('salesEndsAt'))) {
-          ticket.set('salesEndsAt', moment(eventStartDate, 'MM/DD/YYYY').toDate());
-        }
-      });
-    },
-
-    removeTicket(deleteTicket) {
-      const index = deleteTicket.get('position');
-      this.data.event.tickets.forEach(ticket => {
-        if (!ticket.isDeleted && ticket.get('position') > index) {
-          ticket.set('position', ticket.get('position') - 1);
-        }
-      });
-      this.deletedTickets.push(deleteTicket);
-      deleteTicket.deleteRecord();
-    },
-
-    moveTicket(ticket, direction) {
-      const index = ticket.get('position');
-      const otherTicket = this.data.event.tickets.find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
-      otherTicket.set('position', index);
-      ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
-    },
-
-    openTaxModal(isNewTax) {
-      if (!this.isCreate && isNewTax) {
-        const tax = this.store.createRecord('tax');
-        // Note(Areeb): Workaround for issue #4385, ember data always fetches
-        // event.tax from network if it is not already created for some reason
-        this.set('data.tax', tax);
-        this.set('data.event.tax', tax);
-      }
-
-      this.set('taxModalIsOpen', true);
-    },
-
-    deleteTaxInformation() {
-      this.set('data.event.isTaxEnabled', false);
-    },
-
-    redeemDiscountCode() {
-      this.set('validatingDiscountCode', true);
-      // TODO do proper checks. Simulating now.
-      later(this, () => {
-        if (this.data.event.discountCode.code !== 'AIYPWZQP') {
-          this.getForm().form('add prompt', 'discount_code', this.l10n.t('This discount code is invalid. Please try again.'));
-        } else {
-          this.set('data.event.discountCode.code', 42);
-          this.set('discountCodeDescription', 'Tester special discount');
-          this.set('discountCodeValue', '25%');
-          this.set('discountCodePeriod', '5');
-        }
-
-        this.set('validatingDiscountCode', false);
-      }, 1000);
-    },
-
-    removeDiscountCode() {
-      this.setProperties({
-        'data.event.discountCode'      : '',
-        'data.event.discountCode.code' : null,
-        'discountCodeDescription'      : null,
-        'discountCodeValue'            : null,
-        'discountCodePeriod'           : null
-      });
-    },
-
-    // leaving these comments.. because someday we might want the time validation to change it's values according to its start counterpart, removed it for now because it sort of broke the UI.
-    // updateDates() {
-    //   const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event');
-    //   let startsAtConcatenated = moment(startsAtDate.concat(' ', startsAtTime));
-    //   let endsAtConcatenated = moment(endsAtDate.concat(' ', endsAtTime));
-    //   this.get('data.event').setProperties({
-    //     startsAt : moment.tz(startsAtConcatenated, timezone),
-    //     endsAt   : moment.tz(endsAtConcatenated, timezone)
-    //   });
-    // },
-
-    async updateCopyright(name) {
-      const { event } = this.data;
-      const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
-      const license = find(licenses, { name });
-      copyright.setProperties({
-        licence    : name,
-        logoUrl    : license.logoUrl,
-        licenceUrl : license.link
       });
     },
     onChange() {
