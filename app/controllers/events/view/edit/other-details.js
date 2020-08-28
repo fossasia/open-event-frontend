@@ -14,7 +14,7 @@ export default class OtherDetailsController extends Controller.extend(EventWizar
   }
 
   @action
-  async move(direction, data) {
+  async move(direction) {
     try {
       this.saveEventDataAndRedirectTo(
         direction === 'forwards' ? 'events.view.edit.attendee' : 'events.view.edit.basic-details',
