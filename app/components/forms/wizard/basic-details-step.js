@@ -23,9 +23,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   deletedTickets: [],
 
-  licenses: computed(function() {
-    return orderBy(licenses, 'name');
-  }),
+  // licenses: computed(function() {
+  //   return orderBy(licenses, 'name');
+  // }),
 
   countries: computed(function() {
     return orderBy(countries, 'name');
@@ -63,35 +63,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
   }),
 
-  socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
-    return this.data.event.socialLinks.filterBy('isDeleted', false);
-  }),
-
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
     return !this.authManager.currentUser.isVerified;
-  }),
-  /**
-   * returns the validation rules for the social links.
-   */
-  socialLinksValidationRules: computed('socialLinks', function() {
-    let validationRules = {};
-    for (let i = 0; i < this.socialLinks.length; i++) {
-      validationRules = merge(validationRules, {
-        [this.socialLinks.get(i).identifier]: {
-          identifier : this.socialLinks.get(i).identifier,
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        }
-      });
-    }
-
-    return validationRules;
   }),
 
   subTopics: computed('data.event.topic', function() {
@@ -117,10 +90,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   hasPaidTickets: computed('data.event.tickets.@each.type', function() {
     return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
-  }),
-
-  hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
-    return !!this.data.event.codeOfConduct;
   }),
 
   discountCodeObserver: observer('data.event.discountCode', function() {
@@ -404,7 +373,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       }
     };
     // Merging the predetermined rules with the rules for social links.
-    validationRules.fields = merge(validationRules.fields, this.socialLinksValidationRules);
+   // validationRules.fields = merge(validationRules.fields, this.socialLinksValidationRules);
     return validationRules;
   },
 
@@ -442,8 +411,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         event,
         type,
         position,
-        quantity      : 100,
-        maxPrice      : type === 'donation' ? 10000 : null,
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
       }));
@@ -530,16 +497,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     //   });
     // },
 
-    async updateCopyright(name) {
-      const { event } = this.data;
-      const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
-      const license = find(licenses, { name });
-      copyright.setProperties({
-        licence    : name,
-        logoUrl    : license.logoUrl,
-        licenceUrl : license.link
-      });
-    },
     onChange() {
       this.onValid(() => {});
     }
