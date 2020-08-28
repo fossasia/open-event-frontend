@@ -47,11 +47,11 @@
     {{#if this.event.isSponsorsEnabled}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
         <a href='#sponsor' {{action "scrollToTarget"}} class='item scroll'>
-          {{t 'Sponsor'}}
+          {{t 'Sponsors'}}
         </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#sponsor">
-          {{t 'Sponsor'}}
+          {{t 'Sponsors'}}
         </a>
       {{/if}}
     {{/if}}
