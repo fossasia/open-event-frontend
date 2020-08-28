@@ -44,6 +44,17 @@
         {{t 'Call for Speakers'}}
       </LinkTo>
     {{/if}}
+    {{#if this.event.isSponsorsEnabled}}
+      {{#if (eq this.session.currentRouteName 'public.index')}}
+        <a href='#sponsor' {{action "scrollToTarget"}} class='item scroll'>
+          {{t 'Sponsor'}}
+        </a>
+      {{else}}
+        <a class="item" href="{{href-to 'public.index'}}#sponsor">
+          {{t 'Sponsor'}}
+        </a>
+      {{/if}}
+    {{/if}}
     {{#if this.event.hasOwnerInfo}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
         <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
