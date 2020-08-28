@@ -66,6 +66,7 @@ Router.map(function() {
     this.route('view', { path: '/:event_id' }, function() {
       this.route('edit', function() {
         this.route('basic-details');
+        this.route('other-details');
         this.route('sponsors');
         this.route('sessions-speakers');
         this.route('attendee');
