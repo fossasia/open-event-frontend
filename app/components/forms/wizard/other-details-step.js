@@ -409,6 +409,24 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   actions: {
+    
+    saveDraft() {
+      this.onValid(() => {
+        this.set('data.event.state', 'draft');
+        this.sendAction('save');
+      });
+    },
+    move(direction) {
+      this.onValid(() => {
+        this.sendAction('move', direction);
+      });
+    },
+    publish() {
+      this.onValid(() => {
+        this.set('data.event.state', 'published');
+        this.sendAction('save');
+      });
+    },
     connectStripe() {
       this.torii.open('stripe')
         .then(authorization => {
