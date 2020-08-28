@@ -1524,14 +1524,14 @@
     "@sentry/utils" "5.22.0"
     tslib "^1.9.3"
 
-"@sentry/integrations@^5.22.0":
-  version "5.22.0"
-  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-5.22.0.tgz#6a8b4cd1052bc153cda9f02d40c621ced7bea2c3"
-  integrity sha512-p5ZcBFA5GcygTUUmlfA02DXuZSIrZQMHFJKWL2VW5AT0Ri+QZKdd3G65FFyYdQXE7NVN26JO+KGTHCA8/LtCtw==
+"@sentry/integrations@^5.22.3":
+  version "5.22.3"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-5.22.3.tgz#ecec954d1d8802930baf824cac4cd2a51c8691cb"
+  integrity sha512-Fx6h8DTDvUpEOymx8Wi49LBdVcNYHwaI6NqApm1qVU9qn/I50Q29KWoZTCGBjBwmkJud+DOAHWYWoU2qRrIvcQ==
   dependencies:
-    "@sentry/types" "5.22.0"
-    "@sentry/utils" "5.22.0"
-    localforage "^1.8.1"
+    "@sentry/types" "5.22.3"
+    "@sentry/utils" "5.22.3"
+    localforage "1.8.1"
     tslib "^1.9.3"
 
 "@sentry/minimal@5.22.0":
@@ -1574,12 +1574,25 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.22.0.tgz#7017dc5f36aa05b7042c3ef703a740b397db8230"
   integrity sha512-PAeOQ8yxTkeTdJSYbPw6Tb7Wtx7/MWggqH6qj2G41u1yCvOoPURhlmd3pSayad+lWs2qm2kjVdkJKbPVJ4kojQ==
 
+"@sentry/types@5.22.3":
+  version "5.22.3"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.22.3.tgz#d1d547b30ee8bd7771fa893af74c4f3d71f0fd18"
+  integrity sha512-cv+VWK0YFgCVDvD1/HrrBWOWYG3MLuCUJRBTkV/Opdy7nkdNjhCAJQrEyMM9zX0sac8FKWKOHT0sykNh8KgmYw==
+
 "@sentry/utils@5.22.0":
   version "5.22.0"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.22.0.tgz#5b13fda94698fb1094535bc2b9b38a351894ba7e"
   integrity sha512-MvHB+PAVI4PAffZOiRhgODmj1CgmViO2257abGtBY2hM1wGqc6tmLw1mn6rF+fh+Id2UDfa4miIJL2VY1E2aaw==
   dependencies:
     "@sentry/types" "5.22.0"
+    tslib "^1.9.3"
+
+"@sentry/utils@5.22.3":
+  version "5.22.3"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.22.3.tgz#e3bda3e789239eb16d436f768daa12829f33d18f"
+  integrity sha512-AHNryXMBvIkIE+GQxTlmhBXD0Ksh+5w1SwM5qi6AttH+1qjWLvV6WB4+4pvVvEoS8t5F+WaVUZPQLmCCWp6zKw==
+  dependencies:
+    "@sentry/types" "5.22.3"
     tslib "^1.9.3"
 
 "@simple-dom/document@^1.4.0":
@@ -10839,10 +10852,10 @@ loader.js@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/loader.js/-/loader.js-4.7.0.tgz#a1a52902001c83631efde9688b8ab3799325ef1f"
 
-localforage@^1.8.1:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.9.0.tgz#f3e4d32a8300b362b4634cc4e066d9d00d2f09d1"
-  integrity sha512-rR1oyNrKulpe+VM9cYmcFn6tsHuokyVHFaCM3+osEmxaHTbEk8oQu6eGDfS6DQLWi/N67XRmB8ECG37OES368g==
+localforage@1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.8.1.tgz#f6c0a24b41ab33b10e4dc84342dd696f6f3e3433"
+  integrity sha512-azSSJJfc7h4bVpi0PGi+SmLQKJl2/8NErI+LhJsrORNikMZnhaQ7rv9fHj+ofwgSHrKRlsDCL/639a6nECIKuQ==
   dependencies:
     lie "3.1.1"
 
