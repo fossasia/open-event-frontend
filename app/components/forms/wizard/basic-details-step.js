@@ -2,8 +2,7 @@ import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
-import { merge, orderBy, filter, find } from 'lodash-es';
-import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
+import { orderBy, filter, find } from 'lodash-es';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
@@ -369,7 +368,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       }
     };
     // Merging the predetermined rules with the rules for social links.
-   // validationRules.fields = merge(validationRules.fields, this.socialLinksValidationRules);
     return validationRules;
   },
 
@@ -407,7 +405,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         event,
         type,
         position,
-        quantity      : 100,	
+        quantity      : 100,
         maxPrice      : type === 'donation' ? 10000 : null,
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
