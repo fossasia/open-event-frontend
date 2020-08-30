@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 
 export default Component.extend(FormMixin, {
-  
+
   fixedFields: computed('data.customForms', function() {
     return this.data.customForms?.filter(field => field.isFixed);
   }),
