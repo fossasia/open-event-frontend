@@ -25,8 +25,20 @@
       </div>
     </div>
   </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui dividing header">
+    <i class="checkmark box icon"></i>
+    <div class="content">
+      {{t 'Required Form Fields'}}
+    </div>
+  </h3>
+  <div class="ui two column stackable grid">
+    <div class="column">
+      <Forms::Wizard::CustomForms::Table
+        @fields={{this.fixedFields}} />
+    </div>
+  </div>
   {{#if this.data.event.isTicketFormEnabled}}
-    <div class="ui hidden divider"></div>
     <h3 class="ui dividing header">
       <i class="checkmark box icon"></i>
       <div class="content">
@@ -35,60 +47,8 @@
     </h3>
     <div class="ui two column stackable grid">
       <div class="column">
-        <table class="ui selectable celled table">
-          <thead>
-            <tr>
-              {{#if this.device.isMobile}}
-                <th class="center aligned">
-                  {{t 'Options'}}
-                </th>
-              {{else}}
-                <th class="right aligned">
-                  {{t 'Option'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Type'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Include'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Require'}}
-                </th>
-              {{/if}}
-            </tr>
-          </thead>
-          <tbody>
-            {{#each this.data.customForms as |field|}}
-              <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
-                  <label class="{{if field.isFixed 'required'}}">
-                    {{field.name}}
-                  </label>
-                </td>
-                <td class="center aligned">
-                  {{field.type}}
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox
-                    @class="slider"
-                    @checked={{field.isIncluded}}
-                    @disabled={{field.isFixed}}
-                    @onChange={{action (mut field.isIncluded)}}
-                    @label={{if this.device.isMobile (t "Include")}} />
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox
-                    @class="slider"
-                    @checked={{field.isRequired}}
-                    @disabled={{field.isFixed}}
-                    @onChange={{action (mut field.isRequired)}}
-                    @label={{if this.device.isMobile (t "Require")}} />
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
+        <Forms::Wizard::CustomForms::Table
+          @fields={{this.editableFields}} />
       </div>
     </div>
     <Forms::Wizard::CustomFormInput
