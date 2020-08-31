@@ -40,7 +40,7 @@ Router.map(function() {
   this.route('logout');
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
-    this.route('sessions');
+    this.route('sessions', { path: '/schedule' });
     this.route('session', function() {
       this.route('view', { path: '/:session_id' });
     });
@@ -54,7 +54,7 @@ Router.map(function() {
       this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
       this.route('edit-session', { path: '/session/:session_id/edit' });
     });
-    this.route('schedule');
+    this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
     this.route('role-invites');
