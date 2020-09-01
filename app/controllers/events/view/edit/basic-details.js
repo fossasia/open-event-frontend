@@ -16,7 +16,7 @@ export default class BasicDetailsController extends Controller.extend(EventWizar
   @action
   move() {
     this.saveEventDataAndRedirectTo(
-      'events.view.edit.attendee',
+      'events.view.edit.other-details',
       ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
     );
   }
