@@ -50,8 +50,8 @@
   {{#each this.model.session as |session|}}
     <li class="tl-item" ng-repeat="item in retailer_history">
      <div class="timestamp">
-       {{general-date session.startsAt session.event.timezone 'hh:mm'}} - 
-       {{general-date session.endsAt session.event.timezone 'hh:mm'}}
+       {{general-date session.startsAt session.event.timezone 'HH:mm'}} - 
+       {{general-date session.endsAt session.event.timezone 'HH:mm'}}
       </div>
     <div class="item-title">
       <Public::SessionItem @session={{session}} @timezone={{this.timezone}} />
