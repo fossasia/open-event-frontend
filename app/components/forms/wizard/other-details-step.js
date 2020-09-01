@@ -123,7 +123,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
-        },
+        }
       }
     };
     // Merging the predetermined rules with the rules for social links.
@@ -142,7 +142,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         licenceUrl : license.link
       });
     },
-     saveDraft() {
+    saveDraft() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
         this.sendAction('save');

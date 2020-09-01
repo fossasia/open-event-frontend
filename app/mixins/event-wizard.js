@@ -20,8 +20,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         route       : 'events.view.edit.basic-details'
       },
       {
-        title       : this.l10n.t('Additional Info and Settings'),
-        description : this.l10n.t('other details to fill out'),
+        title       : this.l10n.t('Additional Info'),
+        description : this.l10n.t('Extra Details about your event'),
         icon        : 'setting icon',
         route       : 'events.view.edit.other-details'
       },
