@@ -1,81 +1,142 @@
-<div class="ui stackable center aligned two column grid">
-<div class="column" style="width:30%"></div>
-<div class="column" style="width:30%">
-  <div class="ui center aligned piled segments" >
-      <div class="ui grey inverted center aligned segment">
-        <h3>LEVEL 1</h3>
-      </div>
-      <div class="ui center aligned segment">
-        <h2>FREE</h2>
-      </div>
-      <div class="ui center aligned segment">
-        <button class="ui primary button">Create Event</button>
-      </div>
-    </div>
-</div>
-</div>
-<div class="ui stackable center aligned two column grid">
-  <div class="column" style="width:30%">
-    <div class="ui center aligned piled segments" >
-      <div class="ui grey inverted center aligned segment">
-        <h3>WEBSITE FEATURES</h3>
-      </div>
-      <div class="ui center aligned segment">
-        Tickets
-      </div>
-      <div class="ui center aligned segment">
-        Attendee
-      </div>
-      <div class="ui center aligned segment">
-        Organizaer
-      </div>
-      <div class="ui center aligned segment">
-        Dashboard
-      </div>
-      <div class="ui center aligned segment">
-        Schedular
-      </div>
-      <div class="ui center aligned segment">
-        other
-      </div>
-      <div class="ui center aligned segment">
-        other
-      </div>
-      <div class="ui center aligned segment">
-        other
-      </div>
-    </div>
+<div class="ui grid center aligned padded">
+  <div class="ui thirteen wide column segment">
+    <table class="ui stackable celled structured table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="center aligned">{{t 'Features'}}</th>
+          <th class="center aligned">{{t 'Availability'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="center aligned">
+          <td rowspan="2">Basics</td>
+          <td>Fee per paid Tickets </td>
+          <td> 2% </td> 
+        </tr>
+        <tr class="center aligned">
+          <td> Fee per free Tickets </td>
+          <td> No fee </td> 
+        </tr>
+        <tr class="center aligned">
+          <td rowspan="7">Ticket Sales</td>
+          <td>Private event listing</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Private (unlisted ) event </td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Unlimited Events</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Attendee form</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Custom attendee form question</td>
+          <td><i class="cross icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Digital or printed tickets</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Donation tickets</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td rowspan="4">Payments</td>
+          <td>Secure payment processing</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Accepted all major credit cards</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>All major currencies</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>payment processor</td>
+          <td>Paypal, Stripe</td>
+        </tr>
+        <tr class="center aligned">
+          <td rowspan="3">Tracking & Optimising</td>
+          <td>Sales/RSVP summary dashboard</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Detailed analytics by ticket type</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Detailed exports of all data </td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td rowspan="9">Call for speakers</td>
+          <td>Submissions</td>
+          <td>Up to 100</td>
+        </tr>
+        <tr class="center aligned">
+          <td>Speaker form</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Custom speaker form question</td>
+          <td></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Session form</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>"LOCK" submission</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Rating Process</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Custom Session questions</td>
+          <td></td>
+        </tr>
+        <tr class="center aligned">
+          <td>API access </td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Submission Management</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td rowspan="3">Scheduler</td>
+          <td>Organizer Schedule access</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Create Schedule</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td>Public Schedule pages</td>
+          <td><i class="check icon"></i></td>
+        </tr>
+        <tr class="center aligned">
+          <td rowspan="3"> PRICE </td>
+          <td rowspan="3"></td>
+          <td rowspan="3">
+          <LinkTo @route="create" class="ui blue button">
+            {{t 'Create Event'}}
+          </LinkTo>
+          <h3><i class="dollar icon"></i> FREE</h3></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
-  <div class="column" style="width:30%">
-    <div class="ui center aligned piled segments" >
-      <div class="ui grey inverted center aligned segment">
-        <h3>AVAILABILITY</h3>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-      <div class="ui center aligned segment">
-        <i class="check circle icon" style="color:green"></i>
-      </div>
-    </div>
- </div>
 </div>
