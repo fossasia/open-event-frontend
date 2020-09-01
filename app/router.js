@@ -40,6 +40,7 @@ Router.map(function() {
   this.route('logout');
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
+    this.route('sessions-index', { path: '/sessions' });
     this.route('sessions', { path: '/schedule' });
     this.route('session', function() {
       this.route('view', { path: '/:session_id' });
