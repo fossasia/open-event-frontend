@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
     return !this.authManager.currentUser.isVerified;
   }),
-  
+
   showDraftButton: computed('data.event.state', function() {
     return this.data.event.state !== 'published';
   }),

@@ -28,7 +28,6 @@ export const computedSegmentedLink = function(property) {
     },
     set(key, value) {
       const finalLink = values(value).join('');
-      
       if (finalLink && isValidUrl(finalLink.trim())) {
         this.set(property, finalLink.trim());
       } else {
