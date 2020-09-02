@@ -595,9 +595,6 @@
 
   <br>
   <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    <LinkTo @route="events.view.index" class="red ui three field right labeled icon button">
-      {{t 'Cancel'}}<i class="close icon"></i>
-    </LinkTo>
     <button class="ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
