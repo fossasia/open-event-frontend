@@ -58,6 +58,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
   }),
 
+  ticketNumber: computed('data.event.tickets', function() {
+    return this.data.event.tickets.length > 0 ? true : false;
+  }),
+
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
     return !this.authManager.currentUser.isVerified;
   }),
@@ -117,15 +121,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give your event a name')
-            }
-          ]
-        },
-        location: {
-          identifier : 'location',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Location is required to save an event')
             }
           ]
         },
