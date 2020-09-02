@@ -11,6 +11,7 @@ import '@ember/object';
   'hasLinkName::labeled',
   'hasLinkName::input:'
 )
+
 export default class LinkInput extends Component {
   hasLinkName = false;
   isChild = false;
@@ -31,14 +32,23 @@ export default class LinkInput extends Component {
   protocolAddressObserver() {
     let add = this.address;
     let proto = this.protocol;
+    const link = this.linkName.toLowerCase();
+    const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github'];
+
     if (add.includes('http://') || add.includes('https://')) {
       const temp = add.split('://');
       proto = temp[0];
       add = temp[1];
     }
+
     if (add.includes('www.')) {
       add = add.substring(add.indexOf('.') + 1);
     }
+
+    if (socialPlatforms.includes(link)) {
+      proto = `https://${link}.com/`;
+    }
+
     this.set('segmentedLink', {
       protocol : proto,
       address  : add
