@@ -1,0 +1,59 @@
+<div class="ui one column container stackable doubling left grid">
+  <div class="row print">
+    <div class="column">
+      <h2>{{this.model.order.event.name}}</h2>
+    </div>
+  </div>
+  <div class="row print">
+    <div class="column">
+      <div class="ui small gray-text">
+        {{header-date this.model.order.event.startsAt}} - {{header-date this.model.order.event.endsAt}}
+        <br>
+        {{this.model.order.event.locationName}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ten wide column print">
+      <Orders::OrderSummary
+        @data={{this.model.order}}
+        @event={{this.model.event}}
+        @eventCurrency={{this.model.order.event.paymentCurrency}} />
+    </div>
+    <div class="mobile hidden six wide column">
+      <Orders::EventInfo
+        @data={{this.model.order}} />
+    </div>
+  </div>
+  <div class="row">
+    <div class="column right aligned">
+      <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
+        {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
+        <i class="ticket alternate icon"></i>
+        {{t 'Download Tickets'}}
+      </button>
+      <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
+        class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
+        <i class="download icon"></i>
+        {{t 'Download Invoice'}}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ten wide column">
+      <Forms::Orders::AttendeeList
+        @save="save"
+        @data={{this.model.order}}
+        @fields={{this.model.form}}
+        @event={{this.model.event}} />
+    </div>
+    <div class="six wide column">
+      <div class="row">
+        <div class="mobile hidden row">
+          <Orders::TicketHolder
+            @data={{this.model.order}} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

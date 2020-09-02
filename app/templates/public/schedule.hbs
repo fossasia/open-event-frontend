@@ -1,0 +1,16 @@
+{{#if this.isSchedulePublished}}
+  <div class="d-flex">
+    <Widgets::TimeZonePicker
+      class="mb-2 ml-auto"
+      @eventTimezone={{this.model.event.timezone}}
+      @timezone={{this.timezone}} />
+  </div>
+  <Schedule
+    @timezone={{this.timezone}}
+    @event={{this.model.event}}
+    @sessions={{this.model.sessions}}
+    @rooms={{this.model.microlocations}} 
+    @height="auto"/>
+{{else}}
+  <div class="ui disabled header">{{t 'Schedule for the event is currently unavailable'}}</div>
+{{/if}}

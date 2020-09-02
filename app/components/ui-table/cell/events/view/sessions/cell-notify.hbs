@@ -1,0 +1,4 @@
+<button class="ui icon button" {{action "openModal"}}>
+  <i class="mail icon"></i>
+</button>
+<Modals::SessionNotifyModal @isOpen={{this.isModalOpen}} @sessionId={{@record}} @sessionState={{@extraRecords.status}} />

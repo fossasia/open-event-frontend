@@ -1,0 +1,25 @@
+<div class="ui grid stackable">
+  {{#if this.onSessionRoute}}
+    <div class="row">
+      <div class="sixteen wide column">
+        <TabbedNavigation @isNonPointing={{true}}>
+          <LinkTo @route="admin.users.list" @model="all" class="item">
+            {{t 'All Users'}}
+          </LinkTo>
+          <LinkTo @route="admin.users.list" @model="active" class="item">
+            {{t 'Active Users'}}
+          </LinkTo>
+          <LinkTo @route="admin.users.list" @model="inactive" class="item">
+            {{t 'Inactive Users'}}
+          </LinkTo>
+          <LinkTo @route="admin.users.list" @model="deleted" class="item">
+            {{t 'Deleted Users'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
+    </div>
+  {{/if}}
+  <div class="row">
+    {{outlet}}
+  </div>
+</div>

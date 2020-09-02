@@ -1,0 +1,35 @@
+.compact.icon {
+  margin: 0 !important;
+}
+
+.colored {
+  &:not(.inverted) {
+    &.cc.amex {
+      color: #002663;
+    }
+
+    &.credit.card {
+      color: inherit;
+    }
+
+    &.diners.club {
+      color: #0069aa;
+    }
+
+    &.discover {
+      color: #f16821;
+    }
+
+    &.mastercard {
+      color: #c00;
+    }
+
+    &.paypal.card {
+      color: #003087;
+    }
+
+    &.visa {
+      color: #1a1f71;
+    }
+  }
+}

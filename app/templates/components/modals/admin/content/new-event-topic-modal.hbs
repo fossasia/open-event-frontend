@@ -1,0 +1,22 @@
+<div class="header">
+  {{t 'Add New Event Topic'}}
+</div>
+<div class="content">
+  <form class="ui {{if this.isLoading 'loading'}} form" id="add-event-topic-form" autocomplete="off" {{action 'addEventProperty' this.eventTopic on='submit' preventDefault=true}}>
+    <div class="field">
+      <label class="required">
+        {{t 'New Event Topic'}}
+      </label>
+      <Input @type="text" @name="topic_name" @value={{name}} placeholder={{t "Enter New Event Topic"}} />
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="add-event-topic-form" class="ui green right labeled icon button">
+    {{t 'Add Event Topic'}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>

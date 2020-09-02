@@ -1,0 +1,21 @@
+<div class="ui vertical compact basic buttons">
+  <UiPopup @tagName="a" @click={{action this.moveToUserDetails this.record.id}} @content={{t "View"}} @class="ui icon button">
+    <i class="unhide icon"></i>
+  </UiPopup>
+  {{#unless this.record.isSuperAdmin}}
+    {{#if (not this.record.deletedAt)}}
+      <UiPopup @content={{t "Edit"}} @click={{action this.openEditModal this.record}} @class="ui icon button">
+        <i class="edit icon"></i>
+      </UiPopup>
+    {{/if}}
+    {{#if (and this.hasRestorePrivileges this.record.deletedAt)}}
+      <UiPopup @content={{t "Restore"}} @click={{action this.restoreUser this.record}} @class="ui icon button" @position="left center">
+        <i class="undo icon"></i>
+      </UiPopup>
+    {{else}}  
+      <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this user?") (action this.deleteUser this.record))}} @class="ui icon button">
+        <i class="trash icon"></i>
+      </UiPopup>
+    {{/if}}
+  {{/unless}}
+</div>

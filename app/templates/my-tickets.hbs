@@ -1,0 +1,18 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <h1>
+        {{t 'My tickets'}}
+      </h1>
+      <TabbedNavigation>
+        <LinkTo @route="my-tickets.upcoming" class="item">
+          {{t 'Upcoming Events'}}
+        </LinkTo>
+        <LinkTo @route="my-tickets.past" class="item">
+          {{t 'Past Events'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  {{outlet}}
+</div>

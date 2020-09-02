@@ -1,0 +1,9 @@
+{{#if this.copyright.logoUrl}}
+  <img src="{{this.copyright.logoUrl}}" class="copyright-image" alt="{{this.copyright.licence}}">
+  <br>
+{{/if}}
+<div class='copyright text'>
+  {{#if this.copyright.licence}}
+    <p>{{t 'This event is licenced under'}} <a href="{{this.copyright.licenceUrl}}"> {{this.copyright.licence}} </a>.</p>
+  {{/if}}
+</div>

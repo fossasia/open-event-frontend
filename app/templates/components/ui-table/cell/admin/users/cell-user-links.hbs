@@ -1,0 +1,14 @@
+<div class="ui ordered list">
+  <div class="item">
+    <LinkTo @route="admin.users.view.sessions.list" @models={{array this.record 'upcoming'}}> {{t 'Sessions'}} </LinkTo>
+  </div>
+  <div class="item">
+    <LinkTo @route="admin.users.view.events" @model={{this.record}}> {{t 'Events'}} </LinkTo>
+  </div>
+  <div class="item">
+    <LinkTo @route="admin.users.view.tickets" @model={{this.record}}> {{t 'Tickets'}} </LinkTo>
+  </div>
+  <div class="item">
+    <LinkTo @route="admin.users.view.account.profile" @model={{this.record}}> {{t 'Accounts'}} </LinkTo>
+  </div>
+</div>

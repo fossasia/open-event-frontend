@@ -1,0 +1,17 @@
+<div class="{{this.themeInstance.classes.tfooterWrapper}}">
+  <div class="ui {{if this.useNumericPagination this.themeInstance.classes.footerSummaryNumericPagination this.themeInstance.classes.footerSummaryDefaultPagination}} {{this.themeInstance.classes.footerSummary}}">
+    {{summary}}
+    <a href="#" {{action 'clearFilters'}} class="btn btn-link clearFilters {{unless this.anyFilterUsed 'invisible'}}">
+      <span class="{{this.themeInstance.classes.clearAllFiltersIcon}}"></span>
+    </a>
+  </div>
+  {{#if this.useNumericPagination}}
+    <div class="{{this.themeInstance.classes.paginationWrapper}} {{this.themeInstance.classes.paginationWrapperNumeric}}">
+      {{partial this.themeInstance.components.numericPagination}}
+    </div>
+  {{else}}
+    <div class="{{this.themeInstance.classes.paginationWrapper}} {{this.themeInstance.classes.paginationWrapperDefault}}">
+      {{partial this.themeInstance.components.pagination-simple}}
+    </div>
+  {{/if}}
+</div>

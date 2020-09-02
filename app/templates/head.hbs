@@ -1,0 +1,14 @@
+<title>{{this.model.title}}</title>
+<meta name="title" content={{this.model.title}}>
+{{#if this.model.description}}
+  <meta name="description" content={{this.model.description}}>
+{{else}}
+  <meta name="description" content="The front end for the Open Event Server where event organisers can create and manage their event.">
+{{/if}}
+
+<meta property="og:title" content={{this.model.title}}>
+{{#if this.model.description}}
+  <meta property="og:description" content={{this.model.description}}>
+{{else}}
+  <meta property="og:description" content="The front end for the Open Event Server where event organisers can create and manage their event.">
+{{/if}}

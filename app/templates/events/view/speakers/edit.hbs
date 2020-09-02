@@ -1,0 +1,18 @@
+<div class="ui container">
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'Edit Speaker'}}
+    </h2>
+    <div class="ui container">
+      <Forms::SessionSpeakerForm
+        @fields={{this.model.form}}
+        @data={{this.model}}
+        @save={{action "save"}}
+        @event={{this.model.event}}
+        @isSpeaker={{true}}
+        @includeSpeaker={{true}}
+        @isSessionSpeaker={{true}}
+        @isLoading={{this.isLoading}} />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Crop Image'}}
+</div>
+<div class="content" style="padding: 0; margin: 0;">
+  <img src="{{this.imgData}}" style="width: 100%; height: auto; margin: 0; padding: 0;" alt="Cropper preview">
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'resetImage'}}>
+    {{t 'Reset'}}
+  </button>
+  <button type="button" class="ui green right labeled icon button" {{action 'cropImage'}}>
+    {{t 'Looks good'}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>

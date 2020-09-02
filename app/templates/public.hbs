@@ -1,0 +1,51 @@
+<UnverifiedUserMessage />
+<div class="public-event ui relaxed grid">
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
+    <Widgets::SafeImage class="background" @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          {{#if this.model.logoUrl}}
+            <img src="{{this.model.logoUrl}}" class="logo mr-8" />
+          {{/if}}
+          <div>
+            <h4 class="event time">{{header-date this.model.startsAt this.model.timezone}}</h4>
+            {{#if this.displayEndDate}}
+              <h5 class="event time ends">{{t 'To'}} {{header-date this.model.endsAt this.model.timezone}}</h5>
+            {{/if}}
+            <h1 class="event name">{{this.model.name}}</h1>
+            <h4 class="event location"><i class="icon map marker alternate"></i>{{this.model.locationName}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}">
+    <div class="ui stackable grid">
+      <div class="three wide column" id="public-event-content">
+        {{#if this.device.isMobile}}
+          {{#if this.displaySideMenu}}
+            <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
+              <i class="content icon"></i>
+            </button>
+            {{#if this.isMenuOpen}}
+              <Public::SideMenu @class="toggle menu" @event={{this.model}} />
+            {{/if}}
+          {{/if}}
+        {{else}}
+          <div class="ui fluid side-menu">
+            <Public::SideMenu @event={{this.model}} />
+          </div>
+        {{/if}}
+      </div>
+      <div class="ten wide column">
+        {{outlet}}
+      </div>
+      <div class="three wide column">
+        {{#if (not-eq this.session.currentRouteName 'public.cfs.new-speaker')}}
+          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

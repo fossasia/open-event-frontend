@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="sixteen wide column">
+    <TabbedNavigation @isNonPointing={{true}}>
+      <LinkTo @route="my-tickets.upcoming.list" @model="completed" class="item">
+        {{t 'Completed Orders'}}
+      </LinkTo>
+      <LinkTo @route="my-tickets.upcoming.list" @model="open" class="item">
+        {{t 'Open Orders'}}
+      </LinkTo>
+    </TabbedNavigation>
+  </div>
+</div>
+{{outlet}}

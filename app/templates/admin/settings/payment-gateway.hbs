@@ -1,0 +1,3 @@
+<div class="ui basic {{if this.isLoading 'loading' ''}} segment">
+  <Forms::Admin::Settings::PaymentGatewayForm @save="updateSettings" @settings={{this.model}} />
+</div>

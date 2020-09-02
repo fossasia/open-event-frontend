@@ -1,0 +1,290 @@
+<form class="ui form" {{action 'submit' this.data on='submit' }}>
+  <div class="ui segments">
+    <div class="ui aligned secondary segment">
+      <h3 class="weight-400">{{t 'Registration Information'}}</h3>
+    </div>
+    <div class="ui yellow inverted segment">
+      <div class="ui inverted small horizontal statistic">
+        <div class="value">
+          {{this.getRemainingTime}}
+        </div>
+        <div class="label">
+          {{t 'Please complete registration within '}} {{this.settings.orderExpiryTime}} {{t 'minutes.'}}
+          <br>
+          {{t 'After '}} {{this.settings.orderExpiryTime}}
+          {{t 'minutes, the reservation we\'re holding will be released to others.'}}
+        </div>
+      </div>
+    </div>
+    <div class="ui padded segment">
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Ticket Buyer'}}
+      </h4>
+      <div class="field {{if this.buyerHasFirstName 'disabled'}}">
+        <label class="required" for="firstname">{{t 'First Name'}}</label>
+        <Input
+          @type="text"
+          @name="first_name"
+          @value={{this.buyerFirstName}} />
+      </div>
+      <div class="field {{if this.buyerHasLastName 'disabled'}}">
+        <label class="required" for="lastname">{{t 'Last Name'}}</label>
+        <Input
+          @type="text"
+          @name="last_name"
+          @value={{this.buyerLastName}} />
+      </div>
+      <div class="field disabled">
+        <label class="required" for="email">{{t 'Email'}}</label>
+        <Input
+          @type="text"
+          @name="email"
+          @value={{this.buyer.email}} />
+      </div>
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Ticket Holder\'s Information'}}
+      </h4>
+      {{#each this.holders as |holder index|}}
+        {{#if (eq index 0)}}
+          <div class="field">
+            <UiCheckbox
+              @label={{t "Ticket holder is the same person as ticket buyer"}}
+              @checked={{this.sameAsBuyer}}
+              @onChange={{pipe-action (action (mut this.sameAsBuyer)) (action "modifyHolder" holder)}} />
+          </div>
+        {{/if}}
+        <div class="inline field">
+          <i class="user icon"></i>
+          <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+        </div>
+        {{#each this.allFields.attendee as |field|}}
+          {{#if field.isIncluded}}
+            <div class="field">
+              <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+              {{#if (is-input-field field.type) }}
+                {{#if field.isLongText}}
+                  <Widgets::Forms::RichTextEditor
+                    @value={{mut (get holder field.fieldIdentifier)}}
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+
+                {{else}}
+                  {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
+                    <Input
+                      @type={{field.type}}
+                      @value={{mut (get holder field.identifierPath)}}
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
+                      @readonly="" />
+                  {{else}}
+                    <Input
+                      @type={{field.type}}
+                      @value={{mut (get holder field.identifierPath)}}
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                  {{/if}}
+                {{/if}}
+              {{else if (eq field.fieldIdentifier 'gender')}}
+                <UiDropdown
+                  @class="search selection"
+                  @selected={{get holder field.fieldIdentifier}}
+                  @onChange={{action (mut holder.gender)}} as |execute mapper|>
+                  <Input
+                    @type="hidden"
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{t 'Select your gender'}}</div>
+                  <div class="menu">
+                    {{#each this.genders as |gender|}}
+                      <div class="item" data-value="{{map-value mapper gender.name}}">
+                        {{gender.name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                </UiDropdown>
+              {{else if (eq field.fieldIdentifier 'country')}}
+                <UiDropdown
+                  @class="search selection"
+                  @selected={{get holder field.fieldIdentifier}}
+                  @onChange={{action (mut holder.country)}} as |execute mapper|>
+                  <Input
+                    @type="hidden"
+                    @autocomplete="no"
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{t 'Select your country'}}</div>
+                  <div class="menu">
+                    {{#each this.countries as |country|}}
+                      <div class="item" data-value="{{map-value mapper country.name}}">
+                        <i class="{{lowercase country.code}} flag"></i>
+                        {{country.name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                </UiDropdown>
+              {{else if (eq field.fieldIdentifier 'ageGroup')}}
+                <UiDropdown
+                  @class="search selection"
+                  @selected={{get holder field.fieldIdentifier}}
+                  @onChange={{action (mut holder.ageGroup)}} as |execute mapper|>
+                  <Input
+                    @type="hidden"
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                  <i class="dropdown icon"></i>
+                  <div class="default text">{{t 'Select your age group'}}</div>
+                  <div class="menu">
+                    {{#each this.ageGroups as |ageGroup|}}
+                      <div class="item" data-value="{{map-value mapper ageGroup.age}}">
+                        {{ageGroup.age}}
+                      </div>
+                    {{/each}}
+                  </div>
+                </UiDropdown>
+              {{/if}}
+            </div>
+          {{/if}}
+        {{/each}}
+      {{/each}}
+
+      {{#if this.isPaidOrder}}
+        <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          {{t 'Billing Information'}}
+        </h4>
+        {{#unless this.event.isBillingInfoMandatory}}
+          <div class="ui center aligned field">
+            <UiCheckbox
+              @label={{t "Enable Billing Information"}}
+              @checked={{this.data.isBillingEnabled}}
+              @onChange={{action (mut this.data.isBillingEnabled)}} />
+          </div>
+        {{/unless}}
+        {{#if this.isBillingInfoNeeded}}
+          <Widgets::Forms::BillingInfo
+            @data={{this.data}}
+            @event={{this.event}} />
+        {{/if}}
+        <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          {{t 'Payment Method'}}
+        </h4>
+        <div class="field">
+          <label class="required" for="payment_mode">{{t 'Please choose your payment method'}}</label>
+          <div class="grouped inline fields">
+            {{#if this.data.event.isStripeLinked}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Credit Card"}}
+                  @value="stripe"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+                <label for="payment_mode">
+                  <img class="ui small image" src="/images/payment-logos/stripe.png" alt="stripe">
+                </label>
+              </div>
+            {{/if}}
+            {{#if this.data.event.canPayByPaypal}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Paypal"}}
+                  @value="paypal"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
+              </div>
+            {{/if}}
+            {{#if this.data.event.canPayByPaytm}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Paytm"}}
+                  @value="paytm"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/paytm.png" alt="paytm"></label>
+              </div>
+            {{/if}}
+            {{#if this.data.event.canPayByOmise}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Omise"}}
+                  @value="omise"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise"
+                    class="ui tiny image"></label>
+              </div>
+            {{/if}}
+            {{#if this.data.event.canPayByAlipay}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "AliPay"}}
+                  @value="alipay"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/alipay.png" alt="alipay"
+                    class="ui tiny image"></label>
+              </div>
+            {{/if}}
+            {{#if this.data.event.canPayByCheque}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Cheque"}}
+                  @value="cheque"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+              </div>
+            {{/if}}
+            {{#if this.data.event.canPayByBank}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Bank"}}
+                  @value="bank"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+              </div>
+            {{/if}}
+            {{#if this.data.event.canPayOnsite}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Onsite"}}
+                  @value="onsite"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="field">
+          {{#if (eq this.data.paymentMode 'bank')}}
+            <Textarea
+              @name="payment_details"
+              @value={{this.data.event.bankDetails}}
+              @readonly="" />          {{else if (eq this.data.paymentMode 'cheque')}}            <Textarea
+              @name="payment_details"
+              @value={{this.data.event.chequeDetails}}
+              @readonly="" />          {{else if (eq this.data.paymentMode 'onsite')}}            <Textarea
+              @name="payment_details"
+              @value={{this.data.event.onsiteDetails}}
+              @readonly="" />          {{/if}}        </div>
+      {{/if}}
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Acknowledgement'}}
+      </h4>
+      <p>
+        {{t
+          'By clicking "Pay Now", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event.'}}
+      </p>
+      <div class="center aligned">
+        <button type="submit" class="ui teal submit button">{{t 'Proceed to Checkout'}}</button>
+      </div>
+    </div>
+  </div>
+</form>

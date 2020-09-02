@@ -1,0 +1,27 @@
+<tr>
+  {{#each this.processedColumns as |column|}}
+    {{#if column.isVisible}}
+      <th class="header-filter {{this.themeInstance.theadCell}} {{unless column.useFilter this.themeInstance.theadCellNoFiltering}}">
+        {{#if column.templateForFilterCell}}
+          {{partial column.templateForFilterCell}}
+        {{else}}
+          {{#if column.componentForFilterCell}}
+            {{component column.componentForFilterCell data=this.data column=column row=this.record table=this}}
+          {{else}}
+            {{#if column.useFilter}}
+              <div class="ui input {{if column.filterUsed 'has-feedback'}}">
+                {{#if column.filterWithSelect}}
+                  {{models-select options=column.filterOptions cssPropertyName=column.cssPropertyName value=column.filterString class=(concat this.themeInstance.input 'changeFilterForColumn')}}
+                {{else}}
+                  <Input @type="text" @value={{column.filterString}} class={{this.themeInstance.input}} placeholder="" />
+                {{/if}}
+              </div>
+            {{else}}
+              &nbsp;
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      </th>
+    {{/if}}
+  {{/each}}
+</tr>

@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: frontend
+  namespace: web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: eventyay/frontend:latest
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 4000
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+        ports:
+        - containerPort: 4000
+          protocol: TCP
+      restartPolicy: Always

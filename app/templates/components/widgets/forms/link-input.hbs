@@ -1,0 +1,38 @@
+{{#if this.hasLinkName}}
+  <div class="three wide field">
+    <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
+  </div>
+  <div class="six wide field">
+    <div class="ui labeled {{if this.isChild 'action'}} input">
+      <UiDropdown @class="label" @selected={{this.protocol}} @onChange={{action (mut this.protocol)}}>
+        <div class="text">https://</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="http">http://</div>
+          <div class="item" data-value="https">https://</div>
+        </div>
+      </UiDropdown>
+      <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
+      {{#if this.isChild}}
+        <div class="ui icon buttons">
+          {{#if this.canRemoveItem}}
+            <button type="button" class="ui sharp button red" {{action this.removeItem}}><i class="minus icon"></i></button>
+          {{/if}}
+          {{#if this.canAddItem}}
+            <button type="button" class="ui button teal" {{action this.addItem}}><i class="plus icon"></i></button>
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+{{else}}
+  <UiDropdown @class="label" @selected={{this.protocol}} @onChange={{action (mut this.protocol)}}>
+    <div class="text">https://</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item" data-value="http">http://</div>
+      <div class="item" data-value="https">https://</div>
+    </div>
+  </UiDropdown>
+  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
+{{/if}}

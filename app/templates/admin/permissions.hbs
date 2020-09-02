@@ -1,0 +1,11 @@
+<div>
+  <TabbedNavigation @isNonPointing={{true}}>
+    <LinkTo @route="admin.permissions.system-roles" class="item">
+      {{t 'System Roles'}}
+    </LinkTo>
+    <LinkTo @route="admin.permissions.event-roles" class="item">
+      {{t 'Event Roles'}}
+    </LinkTo>
+  </TabbedNavigation>
+</div>
+{{outlet}}

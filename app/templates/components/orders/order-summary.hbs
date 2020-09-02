@@ -1,0 +1,174 @@
+<div class="ui segments">
+  {{#if (and (eq this.session.currentRouteName 'orders.view') (not-eq this.data.status 'cancelled'))}}
+    <div class="ui {{order-color this.data.status}} inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          {{#if (eq this.data.status 'completed')}}
+            {{t 'Success'}}
+          {{else}}
+            {{t 'Placed'}}
+          {{/if}}
+        </div>
+        <div class="label">
+          {{#if (eq this.data.status 'completed')}}
+            {{t 'Your order completed successfully.'}}
+          {{else}}
+            {{t 'Your order placed successfully.'}}
+          {{/if}}
+          <br>
+          {{t 'Find all the details related to your order below.'}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  {{#if (eq this.session.currentRouteName 'orders.pending')}}
+    <div class="ui orange inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          {{t 'Pending'}}
+        </div>
+        <div class="label">
+          {{t 'Your order has been placed successfully.'}}
+          <br>
+          {{t 'You can pay for your order to get tickets.'}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'Order Summary'}}</h3>
+  </div>
+  {{#if (and (or (eq this.session.currentRouteName 'orders.new') (eq this.session.currentRouteName 'orders.view') (eq this.session.currentRouteName 'orders.pending')) (not-eq this.data.status 'cancelled'))}}
+    <table class="ui very basic tablet stackable table order-summary center aligned">
+      <thead>
+        <tr>
+          {{#if (eq this.data.amount 0)}}
+            <th class="ui aligned two wide">{{t 'Ticket Type'}}</th>
+            {{#if this.data.discountCode}}
+              <th class="two wide">{{t 'Price'}}</th>
+              <th class=" two wide">{{t 'Discount'}}</th>
+              <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+            {{/if}}
+            <th class="two wide">{{t 'Quantity'}}</th>
+          {{else}}
+            <th class="four wide">{{t 'Ticket Type'}}</th>
+            <th class="four wide">{{t 'Price'}}</th>
+            {{#if this.data.discountCode}}
+              <th class="ui aligned two wide">{{t 'Discount'}}</th>
+            {{/if}}
+            <th class="four wide">{{t 'Quantity'}}</th>
+            {{#if this.event.tax}}
+              <th class="one wide">{{t 'Tax'}}</th>
+            {{/if}}
+            <th class="ui aligned four wide">{{t 'Subtotal'}}</th>
+            
+          {{/if}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.tickets as |ticket|}}
+          <tr>
+            {{#if (eq this.data.amount 0)}}
+          	   <td>
+                <div class="ui small">
+                  {{ticket.name}}
+                </div>
+              </td>
+              {{#if this.data.discountCode}}
+                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.price}}</td>
+                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
+                <td>
+                  {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
+                </td>
+              {{/if}}
+              <td>{{ticket-attendees this.data.attendees ticket.attendees}}</td>
+            {{else}}
+              <td>
+                <div class="ui small">
+                  {{ticket.name}}
+                </div>
+              </td>
+              <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.price}}</td>
+              {{#if this.data.discountCode}}
+                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
+              {{/if}}
+              <td>{{ticket-attendees this.data.attendees ticket.attendees}}</td>
+              {{#if this.event.tax}}
+                <td>
+                  {{#if this.event.tax.isTaxIncludedInPrice}}
+                    {{t 'The price is inclusive of all taxes.'}}
+                  {{else}}
+                    {{#if ticket.price}}
+                      {{this.event.tax.rate}}%
+                    {{else}}
+                      {{t 'N/A'}}
+                    {{/if}}
+                  {{/if}}
+                </td>
+              {{/if}}
+              <td>
+                {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
+              </td>
+            {{/if}}
+              
+              
+          </tr>
+        {{/each}}
+      </tbody>
+      {{#if (gt this.data.amount 0)}}
+        <tfoot class="full-width">
+          <tr>
+            <th></th>
+            {{#if this.data.discountCode}}
+              <th colspan="2"></th>
+            {{else}}
+              <th></th>
+            {{/if}}
+            {{#if this.event.tax}}
+              <th></th>
+              {{#if this.data.discountCode}}
+                <th></th>
+              {{/if}}
+            {{/if}}
+            <th>
+              <div class="ui aligned small primary icon">
+                {{t 'Grand Total'}}:
+              </div>
+            </th>
+            <th colspan="4">
+              {{currency-symbol this.eventCurrency}} {{format-money this.data.amount}}
+            </th>
+          </tr>
+        </tfoot>
+      {{/if}}
+    </table>
+  {{/if}}
+</div>
+{{#if (eq this.session.currentRouteName 'orders.expired')}}
+  <div class="ui red inverted segment">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Expired'}}
+      </div>
+      <div class="label">
+        {{t 'Your order expired because you did not complete registration in time.'}}
+        <br>
+        {{t 'Please click on event link given on the right to order your tickets again.'}}
+      </div>
+    </div>
+  </div>
+{{/if}}
+{{#if (and (eq this.session.currentRouteName 'orders.view') (eq this.data.status 'cancelled'))}}
+  <div class="ui {{order-color this.data.status}} inverted segment">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Cancelled'}}
+      </div>
+      <div class="label">
+        {{t 'Your order has been cancelled due to some unavoidable circumstances.'}}
+        <br>
+        {{t 'Please contact the event organizer for further details.'}}
+      </div>
+    </div>
+  </div>
+{{/if}}

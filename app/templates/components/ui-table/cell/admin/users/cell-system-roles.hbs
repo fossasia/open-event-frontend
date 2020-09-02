@@ -1,0 +1,19 @@
+<div class="ui unordered list">
+  {{#if this.record}}
+    <div class="item">
+      {{t 'Super Admin'}}
+    </div>
+  {{/if}}
+  {{#if this.extraRecords.isAdmin}}
+    <div class="item">
+      {{t 'Admin'}}
+    </div>
+  {{/if}}
+  <div class="item">
+    {{#if this.extraRecords.isVerified}}
+      {{t 'Verified User'}}
+    {{else}}
+      {{t 'Unverified User'}}
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Revisions'}}
+</div>
+<div class="content">
+  <div class="ui middle aligned grid">
+    <div class="centered row">
+      <div class="ten wide column">
+        <RangeSlider @start={{40}} />
+      </div>
+    </div>
+    <div class="row">
+      <div class="left aligned eleven wide column">
+        <span>
+          {{t 'Revisions by testuser'}}
+        </span><br>
+        <span>
+          8 {{t 'days ago'}} (February 06 @ 8:00 PM)
+        </span>
+      </div>
+      <div class="right aligned five wide column">
+        <button type="submit" class="ui teal submit button">
+          {{t 'Current Revision'}}
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="six wide column">
+        <h3 class="ui header">{{t 'Start Time'}}</h3>
+      </div>
+      <div class="right aligned four wide column">
+        <div class="ui disabled input">
+          <input type="text" value="2019-03-14 12:00:00">
+        </div>
+      </div>
+      <div class="right aligned six wide column">
+        <div class="ui disabled input">
+          <input type="text" value="2019-03-14 09:00:00">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="six wide column">
+        <h3 class="ui header">{{t 'End Time'}}</h3>
+      </div>
+      <div class="right aligned four wide column">
+        <div class="ui disabled input">
+          <input type="text" value="2019-03-17 19:00:00">
+        </div>
+      </div>
+      <div class="right aligned six wide column">
+        <div class="ui disabled input">
+          <input type="text" value="2019-03-17 16:00:00">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

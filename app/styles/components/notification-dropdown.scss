@@ -1,0 +1,46 @@
+.notification.item {
+  margin: 0 !important;
+
+  .label {
+    margin: 0 0 0 -3.2em !important;
+    padding: .2em;
+    top: 1em;
+
+  }
+}
+
+.ui.notification.popup {
+  padding: 2px;
+
+  .list {
+    margin: 0;
+    max-height: 50vh;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 5px;
+    width: auto;
+
+    .header {
+      margin-bottom: 5px;
+    }
+
+    .content {
+      margin-bottom: 2px;
+    }
+  }
+
+  .segments {
+    margin: 5px;
+  }
+
+  .segment {
+    border: 0;
+    margin: 0;
+    padding: 0 2px;
+  }
+
+  .empty-message {
+    width: 200px !important;
+  }
+
+}

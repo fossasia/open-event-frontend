@@ -1,0 +1,104 @@
+<div class="content">
+  <div class="header">{{t 'General info'}}</div>
+</div>
+<div class="content">
+  <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
+    {{#if (eq this.data.event.state 'published')}}
+      {{t 'Your event is live at'}} <a href="{{this.data.event.url}}" rel="noopener noreferrer">{{this.data.event.url}}</a>
+    {{else}}
+      {{t 'Your event is not live yet. Make it live now'}}
+    {{/if}}
+  </div>
+</div>
+<div class="content">
+  <table class="ui very basic table">
+    <tbody>
+      <tr>
+        <td><strong>{{t 'No. of Revisions'}}</strong></td>
+        <td>
+          <div class="muted text">
+            {{t 'Coming Soon'}}
+          </div>
+          {{!-- This feature is not completely available for roll out so it would pointless to diplay a dummy slidebar  <a {{action 'openModal'}} role="button">
+            {{t '(View Revisions)'}}
+          </a> --}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Location'}}</strong></td>
+        <td>
+          {{#if this.data.event.locationName}}
+            {{this.data.event.locationName}}
+          {{else}}
+            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Start time'}}</strong></td>
+        <td>{{general-date this.data.event.startsAt this.data.event.timezone}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'End time'}}</strong></td>
+        <td>{{general-date this.data.event.endsAt this.data.event.timezone}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Session types'}}</strong></td>
+        <td>
+          {{#if this.data.sessionTypes}}
+            {{#each this.data.sessionTypes as |sessionType index|}}
+              {{if (not-eq index 0) ','}} {{sessionType.name}}
+            {{/each}}
+          {{else}}
+            {{t 'No Session Type present. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'Links and Social Media'}}</strong></td>
+        <td>
+          {{#if this.data.socialLinks}}
+            {{#each this.data.socialLinks as |socialLink index|}}
+              {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
+            {{/each}}
+          {{else}}
+            {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.basic-details'}}#social-links">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'No. of Speakers'}}</strong></td>
+        <td>
+          {{#if this.data.event.isSessionsSpeakersEnabled}}
+            {{t 'All'}}: {{this.data.statistics.speakers}}
+            | {{t 'Accepted'}}: {{this.data.statistics.speakersAccepted}}
+            | {{t 'Pending'}}: {{this.data.statistics.speakersPending}}
+            | {{t 'Rejected'}}: {{this.data.statistics.speakersRejected}}
+            | {{t 'Confirmed'}}: {{this.data.statistics.speakersConfirmed}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'No. of Sessions'}}</strong></td>
+        <td>
+          {{#if this.data.event.isSessionsSpeakersEnabled}}
+            {{t 'Submitted'}}: {{this.data.statistics.sessions}}
+            | {{t 'Accepted'}}: {{this.data.statistics.sessionsAccepted}}
+            | {{t 'Pending'}}: {{this.data.statistics.sessionsPending}}
+            | {{t 'Rejected'}}: {{this.data.statistics.sessionsRejected}}
+            | {{t 'Confirmed'}}: {{this.data.statistics.sessionsConfirmed}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>{{t 'No. of Sponsors'}}</strong></td>
+        <td>{{if this.data.event.isSponsorsEnabled this.data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<Modals::EventRevision @isOpen={{this.isEventRevisionModalOpen}} />

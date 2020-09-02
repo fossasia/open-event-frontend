@@ -1,0 +1,6 @@
+{{#if (or this.record.firstName this.record.lastName)}}
+  {{this.record.firstName}} {{this.record.lastName}}
+{{else}}
+  {{t 'No Name Provided'}}
+{{/if}}
+<div class="muted text">{{this.record.email}}</div>

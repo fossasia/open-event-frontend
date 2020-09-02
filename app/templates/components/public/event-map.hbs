@@ -1,0 +1,20 @@
+{{#if this.event.isMapShown}}
+  <div class="eight wide column event-map">
+    <h1>{{t 'Getting Here'}}</h1>
+    {{#if (eq this.mapConfig.display 'embed') }}
+      <iframe title="Map" class="g-map" src="https://maps.google.com/maps?q={{this.event.locationName}}&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no"></iframe>
+    {{else}}
+      <GMap @markersFitMode="live" @lat={{37.744}} @lng={{-122.4367}} @address={{this.event.locationName}} @zoom={{2}} @class="google-maps" as |context|>
+        {{#g-map-address-marker context address=this.event.locationName as |markerContext|}}
+          {{#g-map-infowindow markerContext}}
+            {{this.event.locationName}}
+          {{/g-map-infowindow}}
+        {{/g-map-address-marker}}
+      </GMap>
+    {{/if}}
+  </div>
+{{/if}}
+<div class="{{if this.event.isMapShown 'eight' 'sixteen'}} wide column address">
+  <h1>{{t 'Address'}}</h1>
+  <p>{{this.event.locationName}}</p>
+</div>

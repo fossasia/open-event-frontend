@@ -1,0 +1,62 @@
+<div class="content">
+  <button class="ui right floated blue button" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
+  <div class="header">{{t 'Manage roles'}}</div>
+</div>
+<div class="content">
+  <button class="ui {{if (eq this.roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
+  <button class="ui {{if (eq this.roleType 'pending') 'active'}} button" {{action 'filter' 'pending'}}>{{t 'Invited'}}</button>
+</div>
+<div class="content x-scrollable">
+  <table class="ui very basic unstackable table">
+    <thead>
+      <tr>
+        <th>{{t 'User(Email)'}}</th>
+        <th>{{t 'Role'}}</th>
+        <th>{{t 'Options'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.roleInvites as |roleInvite|}}
+        <tr>
+          <td>{{roleInvite.email}}</td>
+          <td>{{roleInvite.roleName}}</td>
+          <td>
+            <div class="ui horizontal compact basic buttons">
+              <UiPopup
+                @content={{t "Edit"}}
+                @class="ui icon button"
+                @click={{action "openAddUserRoleModal" roleInvite}}>
+                <i class="edit icon"></i>
+              </UiPopup>
+              {{#if (eq this.roleType 'accepted')}}
+                <UiPopup
+                  @content={{t "Delete"}}
+                  @class="ui icon button"
+                  @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" roleInvite))}}>
+                  <i class="trash icon"></i>
+                </UiPopup>
+              {{else}}
+                <UiPopup
+                  @content={{t "Delete"}}
+                  @class="ui icon button"
+                  @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
+                  <i class="trash icon"></i>
+                </UiPopup>
+              {{/if}}
+            </div>
+          </td>
+        </tr>
+      {{else}}
+        <div class="ui basic segment">
+          {{t 'No records to show'}}
+        </div>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<Modals::AddUserRoleModal
+  @currentInvite={{this.currentInvite}}
+  @isLoading={{this.isLoading}}
+  @data={{this.data}}
+  @isOpen={{this.isAddUserRoleModalOpen}}
+  @updateUserRoles={{action "updateUserRoles"}} />

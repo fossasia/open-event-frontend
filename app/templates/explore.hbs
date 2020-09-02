@@ -1,0 +1,64 @@
+<div class="ui stackable grid">
+  <div class="four wide column">
+    <Explore::SideBar @model={{this.model}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
+  </div>
+  <div class="twelve wide column">
+    <h1 class="ui header">{{t 'Events'}}</h1>
+    <div class="ui labels">
+      {{#if this.filters.category}}
+        <div class="ui mini label">
+          {{this.filters.category}}
+          <a href="#" role="button" {{action 'clearFilter' 'category'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.sub_category}}
+        <div class="ui mini label">
+          {{this.filters.sub_category}}
+          <a href="#" role="button" {{action 'clearFilter' 'sub_category'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.event_type}}
+        <div class="ui mini label">
+          {{this.filters.event_type}}
+          <a href="#" role="button" {{action 'clearFilter' 'event_type'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.start_date}}
+        <div class="ui mini label">
+          {{moment-format this.filters.start_date 'ddd, MMM DD'}}
+          <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.end_date}}
+        <div class="ui mini label">
+          {{moment-format this.filters.end_date 'ddd, MMM DD'}}
+          <a href="#" role="button" {{action 'clearFilter' 'end_date'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.ticket_type}}
+        <div class="ui mini label">
+          {{this.ticket_type}}
+          <a href="#" role="button" {{action 'clearFilter' 'ticket_type'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.cfs}}
+        <div class="ui mini label">
+          {{this.filters.cfs}}
+          <a href="#" role="button" {{action 'clearFilter' 'cfs'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+    </div>
+    {{#each this.filteredEvents as |event|}}
+      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}} @category={{this.category}} @subCategory={{this.sub_category}} @eventType={{this.event_type}} @shareEvent={{action "shareEvent"}} />
+      <div class="ui hidden divider"></div>
+    {{else}}
+      <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
+    {{/each}}
+    <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
+    <InfinityLoader @infinityModel={{this.filteredEvents}}>
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
+  </div>
+</div>

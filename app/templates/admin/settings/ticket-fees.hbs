@@ -1,0 +1,3 @@
+<div class="ui basic {{if this.isLoading 'loading' ''}} segment">
+  <Forms::Admin::Settings::TicketFeesForm @save={{action "updateSettings"}} @model={{this.model}} />
+</div>

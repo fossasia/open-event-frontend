@@ -1,0 +1,36 @@
+<h3 class="ui header">
+  {{t 'Captcha Options'}}
+  <div class="sub header">
+    {{t 'Captcha settings for sensitive actions in app.'}}
+  </div>
+</h3>
+<div class="inline field">
+  <label>
+    {{t 'Enable Google reCAPTCHA'}}
+  </label>
+  <UiCheckbox @class="toggle" @checked={{this.settings.isGoogleRecaptchaEnabled}} @onChange={{action (mut this.settings.isGoogleRecaptchaEnabled)}} />
+</div>
+{{#if this.settings.isGoogleRecaptchaEnabled}}
+  <h3 class="ui header">
+    {{t 'Google reCaptcha'}}
+    <div class="sub header">
+      {{t 'See'}}
+      <a href="https://www.google.com/recaptcha/intro/v3.html" target="_blank" rel="noopener nofollow">
+        {{t 'here'}}
+      </a>
+      {{t 'on how to obtain these keys.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Google reCAPTCHA Site Key'}}
+    </label>
+    <Input @type="text" @name="google_recaptcha_sitekey" @value={{this.settings.googleRecaptchaSite}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Google reCAPTCHA Secret Key'}}
+    </label>
+    <Input @type="text" @name="google_recaptcha_secretkey" @value={{this.settings.googleRecaptchaSecret}} />
+  </div>
+{{/if}}

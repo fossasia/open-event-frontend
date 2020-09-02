@@ -1,0 +1,8 @@
+<div class="ui {{if this.device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
+  <UiPopup @content={{t "Edit"}} @click={{action this.props.actions.editSponsor}} @class="ui icon button" @position="left center">
+    <i class="edit icon"></i>
+  </UiPopup>
+  <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this Sponsor?") (action this.props.actions.deleteSponsor this.record))}} @class="ui icon button" @position="left center">
+    <i class="trash icon"></i>
+  </UiPopup>
+</div>

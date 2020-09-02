@@ -1,0 +1,38 @@
+.event.card {
+  height: 355px;
+
+  .header {
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .description {
+    height: 28px;
+    overflow: hidden;
+  }
+
+  img {
+    height: 179px !important;
+    object-fit: cover;
+  }
+}
+
+.event.wide {
+  border-radius: 0 !important;
+  margin: 0 !important;
+
+  .column {
+    margin: 0;
+    padding: 0 !important;
+  }
+
+  img {
+    height: 170px !important;
+    object-fit: cover;
+  }
+
+  .main.content {
+    display: block;
+    height: 130px;
+  }
+}

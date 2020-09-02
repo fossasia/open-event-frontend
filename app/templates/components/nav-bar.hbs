@@ -1,0 +1,77 @@
+<div class="mobile hidden row">
+  <div class="ui menu">
+    <LinkTo
+      @route="index" class="header item" @activeClass="">
+      <h3>{{this.settings.appName}}</h3>
+    </LinkTo>
+    <div class="right menu nav-bar">
+      <LinkTo
+        @route="explore" class="item"
+        @activeClass="">{{t 'Browse Events'}}</LinkTo>
+      {{#if this.session.isAuthenticated}}
+        <NotificationDropdown
+          @unreadNotifications={{this.unreadNotifications}} />
+      {{/if}}
+      {{#if this.session.isAuthenticated}}
+        <UiDropdown
+          @class="item"
+          @action="hide">
+          <Widgets::SafeImage
+            @isAvatar={{true}}
+            @class="ui avatar round image nav-bar-image"
+            @src={{if this.authManager.currentUser.avatarUrl this.authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"}} />
+          {{if this.authManager.currentUser
+               (if this.authManager.currentUser.firstName this.authManager.currentUser.firstName this.authManager.currentUser.email)
+               'Welcome'}}
+          <i class="dropdown icon"></i>
+          <div class="menu profile-dropdown-menu">
+            <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
+            <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
+            <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
+            <div class="divider"></div>
+            <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>
+            {{#if this.authManager.currentUser.isAnAdmin}}
+              <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+            {{/if}}
+            <div class="divider"></div>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i
+                  class="ui right floated large signout sign out icon"></i></span></a>
+          </div>
+        </UiDropdown>
+      {{else}}
+        <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+      {{/if}}
+      {{#if (not-eq this.routing.currentRouteName 'create')}}
+        <LinkTo
+          @route="create" class="item ui blue text">
+          <div>
+            {{t 'Create Event'}}
+          </div>
+        </LinkTo>
+      {{/if}}
+    </div>
+  </div>
+</div>
+<div class="mobile only row">
+  <div class="ui navbar tiny menu">
+    <a href="#" class="menu item open sidebar">
+      <i class="large content icon"></i>
+    </a>
+    <LinkTo
+      @route="index" class="item" @activeClass="">
+      <div class="ui header small text">{{this.settings.appName}}</div>
+    </LinkTo>
+    <div class="right menu nav-bar">
+      {{#if this.session.isAuthenticated}}
+        <NotificationDropdown
+          @notifications={{this.notifications}} />
+      {{/if}}
+      <LinkTo
+        @route="create" class="item ui blue button-text small text">
+        <div>
+          {{t 'Create Event'}}
+        </div>
+      </LinkTo>
+    </div>
+  </div>
+</div>

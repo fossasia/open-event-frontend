@@ -1,0 +1,80 @@
+{{#if this.addressViewIsShown}}
+  <div class="ui two column grid stackable">
+    <div class="column">
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_vaue"
+          @value={{this.address.venue}}
+          placeholder={{t "Venue Name"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_line"
+          @value={{this.address.line}}
+          placeholder={{t "Street Address"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_city"
+          @value={{this.address.city}}
+          placeholder={{t "City"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_state"
+          @value={{this.address.state}}
+          placeholder={{t "State"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_zip_code"
+          @value={{this.address.zipCode}}
+          placeholder={{t "Zip Code"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_country"
+          @value={{this.address.country}}
+          placeholder={{t "Country"}} />
+      </div>
+      <div class="ui two column grid">
+        <div class="left floated column">
+          <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
+        </div>
+        <div class="right floated column" style="text-align: right">
+          {{yield}}
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <GMap
+        @lat={{this.lat}}
+        @lng={{this.lng}}
+        @zoom={{this.zoom}}
+        @class="google-maps"
+        @address={{this.combinedAddress}} as |context|>
+        {{g-map-address-marker context address=this.combinedAddress onLocationChange=(action 'onLocationChangeHandler')}}
+      </GMap>
+    </div>
+  </div>
+{{else}}
+  <div class="ui action input">
+    <Widgets::Forms::PlacesAutocomplete
+      @id={{this.inputId}}
+      @name={{name}}
+      @value={{this.placeName}}
+      @placeChangedCallback={{action "placeChanged"}}
+      @type="text"
+      @placeholder={{this.placeholder}} />
+    <button class="ui left {{unless this.device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>
+      <i class="icon map marker alternate"></i>
+      {{unless this.device.isMobile (t 'Enter address')}}
+    </button>
+  </div>
+{{/if}}

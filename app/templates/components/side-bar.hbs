@@ -1,0 +1,33 @@
+<div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
+  <LinkTo
+    @route="explore" class="item"
+    @activeClass="">{{t 'Browse Events'}}</LinkTo>
+  {{#if this.session.isAuthenticated}}
+    <div class="item">
+      <a href="{{href-to 'account.profile'}}">
+        <Widgets::SafeImage
+          @isAvatar={{true}}
+          @class="ui avatar round image side-bar"
+          @src={{if this.authManager.currentUser.avatarUrl this.authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"}} />
+        {{if this.authManager.currentUser
+            (if this.authManager.currentUser.firstName this.authManager.currentUser.firstName this.authManager.currentUser.email)
+            'Welcome'}}
+      </a>
+    </div>
+    <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
+    <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
+    <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
+    <div class="divider"></div>
+    <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>
+    {{#if this.authManager.currentUser.isAnAdmin}}
+      <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+    {{/if}}
+    <div class="divider"></div>
+    <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
+  {{else}}
+    <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+  {{/if}}
+</div>
+<div class="pusher">
+  {{yield}}
+</div>

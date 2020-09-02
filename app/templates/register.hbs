@@ -1,0 +1,10 @@
+<div class="ui three column container stackable doubling centered grid">
+  <div class="column">
+    <Forms::RegisterForm
+      @data={{this.model}}
+      @submit="createUser"
+      @isLoading={{this.isLoading}}
+      @errorMessage={{this.errorMessage}}
+      @inviteEmail={{this.inviteEmail}} />
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  <div class="field">
+    <Input @type="file" @name="file" />
+  </div>
+  <div class="field">
+    <UiDropdown @class="selection fluid">
+      <Input @type="hidden" @name="language" />
+      <div class="default text">{{t 'Language'}}</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {{#each this.languages as |language|}}
+          <div class="item" data-value="{{language.code}}">
+            {{get this.l10n.availableLocales language.code}}
+          </div>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+  <button type="submit" name="button" class="ui blue button">{{t 'Upload'}}</button>
+</form>

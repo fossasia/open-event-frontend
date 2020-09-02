@@ -1,0 +1,68 @@
+$font-weights: 100 200 300 400 500 600 700 800 900;
+@each $font-weight in $font-weights {
+  .weight-#{$font-weight} {
+    font-weight: $font-weight !important;
+  }
+}
+
+$spacer-heights: 50 100 200 300 400 500 600 700 800 900;
+@each $spacer-height in $spacer-heights {
+  .spacer-#{$spacer-height} {
+    min-height: $spacer-height + px !important;
+  }
+}
+
+.text.muted {
+  color: #888 !important;
+}
+
+.text.center.aligned {
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .mobile.hidden,
+  .tablet.only,
+  .small.monitor.only,
+  .large.monitor.only {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .mobile.only,
+  .tablet.hidden,
+  .small.monitor.only,
+  .large.monitor.only {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .mobile.only,
+  .tablet.only,
+  .small.monitor.hidden,
+  .large.monitor.only {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .mobile.only,
+  .tablet.only,
+  .small.monitor.only,
+  .large.monitor.hidden {
+    display: none !important;
+  }
+}
+
+[data-ember-action] {
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-flex.wrap {
+  flex-wrap: wrap;
+}

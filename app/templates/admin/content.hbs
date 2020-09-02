@@ -1,0 +1,28 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.content.index" class="item">
+          {{t 'Social Links'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.pages" class="item">
+          {{t 'Pages'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.system-images" class="item">
+          {{t 'System Images'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.translations" class="item">
+          {{t 'Translations'}}
+        </LinkTo>
+        <LinkTo @route="admin.content.events" class="item">
+          {{t 'Events'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>

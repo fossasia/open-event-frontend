@@ -1,0 +1,86 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="eight wide column">
+      <h2 class="ui header">
+        {{t 'View Attendees'}}
+      </h2>
+    </div>
+    <div class="eight wide {{unless this.device.isMobile 'right aligned'}} column">
+      <div class="{{if this.device.isMobile 'ui padded grid'}}">
+        <div class="row">
+          <UiDropdown @class="compact selection eight wide column">
+            <div class="default text">
+              {{t 'Export As'}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item {{if this.isLoadingpdf 'loading'}}" role="button" data-value="pdf" {{action 'export' 'pdf'}}>
+                <i class="file pdf outline icon"></i>
+                {{t 'PDF'}}
+              </div>
+              <div class="item {{if this.isLoadingcsv 'loading'}}" role="button" data-value="csv" {{action 'export' 'csv'}}>
+                <i class="file excel outline icon"></i>
+                {{t 'CSV'}}
+              </div>
+            </div>
+          </UiDropdown>
+          <UiDropdown @class="selection eight wide column">
+            <div class="default text">
+              {{t 'Showing all the records'}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="date">
+                <i class="calendar outline icon"></i>
+                {{t 'Filter by Date'}}
+              </div>
+              <div class="item" data-value="discount">
+                <i class="dollar icon"></i>
+                {{t 'Filter by Discount'}}
+              </div>
+              <div class="item" data-value="remove">
+                <i class="ban icon"></i>
+                {{t 'Remove Filters'}}
+              </div>
+            </div>
+          </UiDropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="x-scrollable sixteen wide column">
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="events.view.tickets.attendees.list" @model="completed" class="item">
+          {{t 'Completed'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.attendees.list" @model="placed" class="item">
+          {{t 'Placed'}}
+        </LinkTo>
+        {{#if this.authManager.currentUser.isAnAdmin}}
+          <LinkTo @route="events.view.tickets.attendees.list" @model="pending" class="item">
+            {{t 'Pending'}}
+          </LinkTo>
+        {{/if}}
+        <LinkTo @route="events.view.tickets.attendees.list" @model="expired" class="item">
+          {{t 'Expired'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.attendees.list" @model="cancelled" class="item">
+          {{t 'Cancelled'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.attendees.list" @model="checkedIn" class="item">
+          {{t 'Checked In'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.attendees.list" @model="notCheckedIn" class="item">
+          {{t 'Not Checked In'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets.attendees.list" @model="all" class="item">
+          {{t 'All'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  <div class="row">
+    {{outlet}}
+  </div>
+</div>

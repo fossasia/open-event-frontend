@@ -1,0 +1,20 @@
+.upload.segment {
+  cursor: pointer;
+  font-size: 20px;
+  margin-bottom: 10px !important;
+  margin-top: 15px !important;
+  padding: 30px 0;
+  transition: color .3s;
+
+  &.drag-hover {
+    background-color: #fffcf4;
+  }
+
+  &:hover {
+    color: #2a2a2a !important;
+  }
+
+  small {
+    font-size: 14px;
+  }
+}

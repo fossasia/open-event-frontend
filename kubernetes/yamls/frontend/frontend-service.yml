@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+  namespace: web
+spec:
+  ports:
+  - port: 4000
+    protocol: TCP
+    targetPort: 4000
+  selector:
+    app: frontend

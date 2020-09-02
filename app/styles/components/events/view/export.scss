@@ -1,0 +1,34 @@
+.response {
+  .string {
+    color: #008000;
+  }
+
+  .number {
+    color: #ff8c00;
+  }
+
+  .boolean {
+    color: #00f;
+  }
+
+  .null {
+    color: #f0f;
+  }
+
+  .key {
+    color: #f00;
+  }
+
+  &.json {
+    max-height: 650px;
+  }
+
+  .api-response {
+    max-height: 650px;
+  }
+
+}
+
+.url {
+  padding: 0 1em !important;
+}

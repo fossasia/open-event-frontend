@@ -1,0 +1,54 @@
+<div class="event wide ui grid row">
+  {{#unless this.device.isMobile}}
+    <div class="ui card three wide computer six wide tablet column">
+      <a class="image" href="{{href-to 'orders.view' this.order.identifier}}">
+        <Widgets::SafeImage @src={{if this.order.event.thumbnailImageUrl this.order.event.thumbnailImageUrl this.order.event.originalImageUrl}} />
+      </a>
+    </div>
+  {{/unless}}
+  <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
+    <a class="main content" href="{{href-to 'orders.view' this.order.identifier}}">
+      <div class="right floated author">
+        <div class="ui {{order-color this.order.status}} large label">
+          {{this.order.status}}
+        </div>
+        {{#if this.isUserCheckedIn}}
+          <div class="ui green large label">
+            {{t 'Checked In'}}
+          </div>
+        {{else}}
+          <div class="ui red large label">
+            {{t 'Not Checked In'}}
+          </div>
+        {{/if}}
+      </div>
+      <SmartOverflow @class="header">
+        {{this.order.event.name}}
+      </SmartOverflow>
+      <div class="meta">
+        <span class="date">
+          {{moment-format this.order.event.startsAt 'ddd, DD MMMM YYYY, h:mm A'}}
+        </span>
+      </div>
+      <SmartOverflow @class="description">
+        {{this.order.event.shortLocationName}}
+      </SmartOverflow>
+    </a>
+    <div class="extra content small text">
+      <span>
+        <span>
+          {{#if this.isFreeOrder}}
+            {{t 'Free'}}
+          {{else}}
+            {{this.order.event.paymentCurrency}}{{this.order.amount}}
+          {{/if}}
+          {{t 'order'}}
+        </span>
+        <span>#{{this.order.identifier}}</span>
+        {{#if this.order.completedAt}}
+          <span>{{t 'on'}} {{moment-format this.order.completedAt 'MMMM DD, YYYY h:mm A'}}</span>
+        {{/if}}
+      </span>
+    </div>
+  </div>
+</div>

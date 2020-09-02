@@ -1,0 +1,12 @@
+<div class="ui list">
+  {{#each this.record as |session|}}
+    {{#if (not this.eq session.deletedAt)}}
+      <div class="item">
+        <div class="item">
+          <div class="ui {{session-color session.state}} horizontal label">{{session.state}}</div>
+          {{session.title}}
+        </div>
+      </div>
+    {{/if}}
+  {{/each}}
+</div>

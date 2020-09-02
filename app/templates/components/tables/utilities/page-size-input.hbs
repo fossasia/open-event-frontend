@@ -1,0 +1,15 @@
+<span>
+  {{t 'Show'}}
+  <UiDropdown @class="inline" @onChange={{action (mut this.pageSize)}} @forceSelection={{true}}>
+    <div class="default text">{{this.pageSize}}</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each this.sizes as |size|}}
+        <div class="item" data-value="{{if (eq size 'All') 0 size}}">
+          {{size}}
+        </div>
+      {{/each}}
+    </div>
+  </UiDropdown>
+  {{t 'entries per page'}}
+</span>

@@ -1,0 +1,21 @@
+<div class="ui {{if this.device.isMobile 'horizontal' 'vertical'}} compact basic buttons">
+  <LinkTo @route="events.view" @model={{this.record.identifier}}>
+    <UiPopup @content={{t "View"}} @class="ui icon button" @position="left center">
+      <i class="unhide icon"></i>
+    </UiPopup>
+  </LinkTo>
+  <LinkTo @route="events.view.edit.basic-details" @model={{this.record.identifier}}>
+    <UiPopup @content={{t "Edit"}} @class="ui icon button" @position="left center">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
+  {{#if (and this.hasRestorePrivileges (get this.record this.column.propertyName))}}
+    <UiPopup @content={{t "Restore"}} @click={{action this.restoreEvent this.record}} @class="ui icon button" @position="left center">
+      <i class="undo icon"></i>
+    </UiPopup>
+  {{else}}
+    <UiPopup @content={{t "Delete"}} @click={{action this.openDeleteEventModal this.record.identifier this.record.name}} @class="ui icon button" @position="left center">
+      <i class="trash icon"></i>
+    </UiPopup>
+  {{/if}}
+</div>

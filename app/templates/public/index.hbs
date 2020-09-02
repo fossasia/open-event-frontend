@@ -1,0 +1,76 @@
+<div class="event">
+  {{#if this.model.event.description}}
+    <div class="description" id="info">
+      {{sanitize this.model.event.description}}
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if (or this.model.event.ticketUrl this.model.tickets)}}
+    <div class="tickets" id="tickets">
+      <div class="ui segments ticket-list">
+        <div class="ui segment">
+          <h3 class="ui header">{{t 'Tickets'}}</h3>
+        </div>
+        <div class="ui segment">
+          <Public::TicketList
+            @eventCurrency={{this.model.event.paymentCurrency}}
+            @ticketUrl={{this.model.event.ticketUrl}}
+            @data={{this.model.tickets}}
+            @order={{this.model.order}}
+            @event={{this.model.event}}
+            @attendees={{this.model.attendees}}
+            @code={{code}}
+            @taxInfo={{this.model.tax}}
+            @currentEventIdentifier={{this.model.event.identifier}}
+            @createNewUserViaEmail={{action "createNewUserViaEmail"}}
+            @loginExistingUser={{action "loginExistingUser"}}
+            @isLoginModalOpen={{this.isLoginModalOpen}}
+            @placeOrder={{action "placeOrder"}}
+            @isLoading={{this.isLoading}}
+            @userExists={{this.userExists}}
+            @errorMessage={{this.errorMessage}}
+            @save="save" />
+        </div>
+        <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if this.model.featuredSpeakers}}
+    <div class="featured-speakers" id="speakers">
+      <div class="row">
+        <Public::FeaturedSpeakerList
+          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} />
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if this.model.sponsors}}
+    <div class="sponsors">
+      <div class="row">
+        <Public::SponsorList
+          @sponsors={{this.model.sponsors}} />
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if this.model.event.hasOwnerInfo}}
+    <h2 class="ui header" id="owner">
+      {{t 'Organized  by'}} {{this.model.event.ownerName}}
+    </h2>
+    {{sanitize this.model.event.ownerDescription}}
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  <div class="location" id="getting-here">
+    <Public::EventMap
+      @event={{this.model.event}}
+      @mapConfig={{this.model.mapConfig}} />
+  </div>
+  <div class="ui hidden divider"></div>
+  {{#if this.model.event.copyright}}
+    <div class="copyright">
+      <Public::CopyrightItem
+        @copyright={{this.model.event.copyright}} />
+    </div>
+  {{/if}}
+</div>

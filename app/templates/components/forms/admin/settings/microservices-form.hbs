@@ -1,0 +1,23 @@
+<form class="ui form" {{action 'submit' on='submit'}}>
+  <h3 class="ui header">
+    {{t 'Android App Generator'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Server'}}
+    </label>
+    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedAndroidAppUrl}} @inputId="android_app" />
+  </div>
+  <h3 class="ui header">
+    {{t 'Web App Generator'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Server'}}
+    </label>
+    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedWebAppUrl}} @inputId="web_app" />
+  </div>
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

@@ -1,0 +1,18 @@
+<div class="ui form">
+  <UiAccordion @class="field">
+    <div class="title">
+      <i class="icon dropdown"></i>
+      {{t 'Send Test Email'}}
+    </div>
+    <div class = "content ui grid">
+      <div class="four wide computer four wide tablet sixteen wide mobile column ">
+        <div class="ui action input">
+          <Input @type="text" placeholder={{t "Recipient E-mail"}} @name="test_email" @value={{this.recipientEmail}} />
+          <div class="ui secondary button" role="button" {{action 'sendTestMail'}}>
+            {{t 'Test'}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </UiAccordion>
+</div>

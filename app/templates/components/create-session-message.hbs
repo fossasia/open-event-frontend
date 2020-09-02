@@ -1,0 +1,9 @@
+{{#if this.shouldShowMessage}}
+  <div class="ui icon info message eight wide column center aligned">
+    <i class="close icon" onclick={{action (mut this.isMessageVisible) false}} role="button"></i>
+    <i class="info icon"></i>
+    <div class="content">
+      {{t 'Your Speaker Details have been saved, you can now submit a proposal by clicking Submit proposal!'}}
+    </div>
+  </div>
+{{/if}}

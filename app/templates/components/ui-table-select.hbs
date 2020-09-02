@@ -1,0 +1,16 @@
+{{t 'Show'}}&nbsp;
+<UiDropdown @class="compact selection page-size-dropdown" @selected={{value}}>
+  <Input @type="hidden" @id="table_select" @value={{value}} />
+  <i class="dropdown icon"></i>
+  <div class="default text">10</div>
+  <div class="menu">
+    {{#each this.options as |option|}}
+      {{#if (eq option 'All') }}
+        <div class="item" data-value="0">{{option}}</div>
+      {{else }}
+        <div class="item" data-value="{{option}}">{{option}}</div>
+      {{/if}}
+    {{/each}}
+  </div>
+</UiDropdown>&nbsp;
+{{t 'entries'}}

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="ui grid">
+    <div class="ui left aligned sixteen wide mobile ten wide computer column">
+      <h3 class="ui header">
+        {{t 'Delete Your Account'}}
+      </h3>
+      <p class="ui muted text">
+        {{#if this.isUserDeletable}}
+          {{t 'All user data will be deleted. Your user data will be entirely erased and any data that will stay 
+          in the system for accounting purposes will be anonymised and there will be no link to any of your personal information. 
+          Once you delete this account, you will have no longer access to the system.'}}
+        {{else}}
+          {{t 'Your account currently cannot be deleted as active events and/or orders are associated with it. 
+          Before you can delete your account you must transfer the ownership of your event(s) to another organizer or cancel your event(s). 
+          If you have ticket orders stored in the system, please cancel your orders first too.'}}
+        {{/if}}  
+      </p>
+    </div>
+    <div class="ui right aligned sixteen wide mobile six wide computer column">
+      <button {{action 'openDeleteUserModal' this.data.user.id this.data.user.email}} class={{if this.isUserDeletable 'ui labeled icon red button' 'ui labeled icon red button disabled'}}>
+        <i class="trash icon"></i>
+        {{t 'Delete Your Account'}}
+      </button>
+    </div>
+    <Modals::UserDeleteModal @isLoading={{this.isLoading}} @isOpen={{this.isUserDeleteModalOpen}} @openConfirmDeleteUserModal={{action "openConfirmDeleteUserModal"}} @confirmEmail={{this.confirmEmail}} @userEmail={{this.userEmail}} @deleteUser={{action "deleteUser" this.data.user}} />
+    <Modals::ConfirmUserDeleteModal @isLoading={{this.isLoading}} @isOpen={{this.isConfirmUserDeleteModalOpen}} @checked={{this.checked}} @deleteUser={{action "deleteUser" this.data.user}} />
+  </div>  
+</div>

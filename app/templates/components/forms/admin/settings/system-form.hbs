@@ -1,0 +1,61 @@
+<form class="ui form" {{action 'submit' on='submit'}} novalidate>
+  <h3 class="ui header">
+    {{t 'App Environment'}}
+    <div class="sub header">
+      {{t 'Where is the application running ?'}}
+    </div>
+  </h3>
+  <div class="field">
+    <UiRadio @label={{t "Development"}} @current={{this.settings.appEnvironment}} @name="environment" @value="development" @onChange={{action (mut this.settings.appEnvironment)}} />
+  </div>
+  <div class="field">
+    <UiRadio @label={{t "Staging"}} @current={{this.settings.appEnvironment}} @name="environment" @value="staging" @onChange={{action (mut this.settings.appEnvironment)}} />
+  </div>
+  <div class="field">
+    <UiRadio @label={{t "Production"}} @current={{this.settings.appEnvironment}} @name="environment" @value="production" @onChange={{action (mut this.settings.appEnvironment)}} />
+  </div>
+  <h3 class="ui header">
+    {{t 'App Name'}}
+    <div class="sub header">
+      {{t 'The name of your deployment. This will be used throughout this application.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'App Name'}}
+    </label>
+    <Input @type="text" @name="app_name" @value={{this.settings.appName}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Tagline'}}
+    </label>
+    <Input @type="text" @name="tag_line" @value={{this.settings.tagline}} />
+  </div>
+  <h3 class="ui header">
+    {{t 'API server details'}}
+    <div class="sub header">
+      {{t 'The URL of the API that this frontend will make use of as the backend.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Url'}}
+    </label>
+    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedStaticDomain}} @inputId="api_url" />
+  </div>
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::SocialMediaToken @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::CaptchaForm @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::StorageOption @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::MailSettings @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::OrderExpiryForm @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

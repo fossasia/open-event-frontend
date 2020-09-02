@@ -1,0 +1,47 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="column five wide ui grid">
+      <div class="row">
+        <div class="column eight wide">
+          <h3 class="ui header">{{t 'Pages'}}</h3>
+        </div>
+        <div class="column eight wide right aligned">
+          <button class="ui blue button" name="button" {{action 'updateCurrentPage' this.page 'create'}}>{{t 'Create Page'}}</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <h4 class="ui header">{{t 'Open Event:'}}</h4>
+        </div>
+      </div>
+      {{#each this.eventPages as |page|}}
+        <div class="row">
+          <div class="column">
+            <div role="button" class="ui segment" {{action 'updateCurrentPage' page 'update'}}>
+              {{page.name}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+      <div class="row">
+        <div class="column">
+          <h4 class="ui header">{{t 'Footer menu:'}}</h4>
+        </div>
+      </div>
+      {{#each this.footerPages as |page|}}
+        <div class="row">
+          <div class="column">
+            <div role="button" class="ui segment" {{action 'updateCurrentPage' page 'update'}}>
+              {{page.name}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+    <div class="column eleven wide">
+      {{#if this.isFormOpen}}
+        <Forms::Admin::Content::PagesForm @data={{this.currentForm}} @save="savePage" @isCreate={{this.isCreate}} @isFormOpen={{this.isFormOpen}} />
+      {{/if}}
+    </div>
+  </div>
+</div>

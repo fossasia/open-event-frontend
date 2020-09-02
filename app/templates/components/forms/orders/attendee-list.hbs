@@ -1,0 +1,84 @@
+<form class="ui form">
+  <div class="ui segments">
+    <div class="ui aligned secondary segment">
+      <h3 class="weight-400">{{t 'Attendee Information'}}</h3>
+    </div>
+    <div class="ui padded segment">
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{t 'Ticket Holder\'s Information'}}
+      </h4>
+      {{#each this.holders as |holder|}}
+        <div class="field">
+          <div class="inline field">
+            <i class="user icon"></i>
+            <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+          </div>
+          {{# each this.allFields.attendee as |field|}}
+            {{#if field.isIncluded}}
+              <div class="field">
+                <h4 class="weight-300">
+                  {{field.name}}
+                </h4>
+                {{#if (is-input-field field.type) }}
+                  <span>{{get holder field.fieldIdentifier}}</span>
+                {{else if (eq field.type 'select')}}
+                  <span>{{get holder field.fieldIdentifier}}</span>
+                {{/if}}
+                {{#if field.isComplex}}
+                  <span>{{get holder.complexFieldValues field.fieldIdentifier}}</span>
+                {{/if}}
+              </div>
+            {{/if}}
+          {{/each}}
+          <div class="ui divider"></div>
+        </div>
+      {{/each}}
+      {{#if this.showBillingInfo}}
+        <div class="print">
+          <h4 class="ui horizontal divider header">
+            <i class='ticket icon'></i>
+            {{t 'Billing Information'}}
+          </h4>
+          <div class="ui two column divided relaxed stackable grid ">
+            <div class="row">
+              <div class="column">
+                <h4 class="weight-300">
+                  {{t 'Company '}}
+                </h4>
+                <p>{{this.data.company}}</p>
+                <h4 class="weight-300">
+                  {{t 'Tax ID or Business ID'}}
+                </h4>
+                <p> {{this.data.taxBusinessInfo}}</p>
+              </div>
+
+              <div class="column">
+                <h4 class="weight-300">
+                  {{t 'Address '}}
+                </h4>
+                <div class="ui list">
+                  <div class="item">
+                    {{this.data.address}}
+                  </div>
+                  <div class="item">
+                    {{this.data.city}}
+                  </div>
+                  <div class="item">
+                    {{this.data.state}}
+                  </div>
+                  <div class="item">
+                    {{this.data.country}}
+                  </div>
+                  <div class="item">
+                    {{this.data.zipcode}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</form>
