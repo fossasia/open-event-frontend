@@ -45,6 +45,26 @@ export default class LinkInput extends Component {
     });
   }
 
+  @observes('linkName')
+  linkNameObserver() {
+    const link = this.linkName;
+    const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube'];
+
+    if (socialPlatforms.includes(link)) {
+      this.set('segmentedLink', {
+        protocol : `https://${link}.com/`,
+        address  : ''
+      });
+    }
+
+    if (link === 'website') {
+      this.set('segmentedLink', {
+        protocol : 'https://',
+        address  : ''
+      });
+    }
+  }
+
   didInsertElement() {
     super.didInsertElement(...arguments);
     if (this.segmentedLink) {

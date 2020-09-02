@@ -16,17 +16,18 @@ export const computedSegmentedLink = function(property) {
       const splitted = this.get(property) ? this.get(property).split('://') : [];
       if (!splitted || splitted.length === 0 || (splitted.length === 1 && splitted[0].includes('http'))) {
         return {
-          protocol : 'https',
+          protocol : 'https://',
           address  : ''
         };
       }
+      const socialUrl = splitted[1].split('/');
       return {
-        protocol : splitted[0],
-        address  : splitted[1]
+        protocol : `${splitted[0]}://${socialUrl[0]}/`,
+        address  : socialUrl[1]
       };
     },
     set(key, value) {
-      const finalLink = values(value).join('://');
+      const finalLink = values(value).join('');
       if (finalLink && isValidUrl(finalLink.trim())) {
         this.set(property, finalLink.trim());
       } else {
