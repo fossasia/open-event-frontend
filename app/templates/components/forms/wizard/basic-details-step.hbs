@@ -606,47 +606,21 @@
       </button>
     {{/if}}
     </div>
-    <br><br><br><br>
+    <br><br><br>
     <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    {{#if (eq this.data.event.state 'published')}}
-      <div class="ui icon fluid buttons">
-          <button class="orange ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'unpublish'}}>
-            {{t 'Unpublish'}}
-            <i class="ban icon"></i>
-          </button>
-            <a 
-              href="{{this.data.event.url}}" 
-              class="ui button {{if (eq this.data.event.state 'published') 'green'}}" 
-              target="_blank" 
-              rel="noopener" 
-              data-tooltip="{{if (eq this.data.event.state 'published') 'View' 'Preview'}}" 
-              data-position="top left" 
-            >
-              <i class="unhide icon"></i>
-              {{t 'View'}}
-            </a>
-      </div>
-    {{else}}
-      <div class="ui icon fluid buttons">
-        {{#if (and this.data.event.locationName ticketNumber)}}
-          <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-              {{t 'publish'}}
-              <i class="check icon"></i>
-          </button>
-        {{/if}}
-            <a 
-              href="{{this.data.event.url}}" 
-              class="ui button {{if (eq this.data.event.state 'published') 'grey'}}" 
-              target="_blank" 
-              rel="noopener" 
-              data-tooltip="{{if (eq this.data.event.state 'published') 'View' 'Preview'}}" 
-              data-position="top left" 
-            > 
-              <i class="unhide icon"></i>
-              {{t 'Preview'}}
-            </a>
-        </div>
-      
+    {{#if (and this.data.event.locationName this.ticketNumber)}}
+      {{#if (eq this.data.event.state 'draft')}}
+      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+        {{t 'Publish'}}
+        <i class="check icon"></i>
+      </button>
+      {{/if}}
+      {{#if (eq this.data.event.state 'published')}}
+      <button class="orange ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'unpublish'}}>
+        {{t 'Unpublish'}}
+        <i class="ban icon"></i>
+      </button>
+      {{/if}}
     {{/if}}
   </div>
 </form>
