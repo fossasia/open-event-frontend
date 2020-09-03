@@ -48,14 +48,16 @@
     <div class="ui two column stackable grid">
       <div class="column">
         <Forms::Wizard::CustomForms::Table
-          @fields={{this.editableFields}} />
+          @fields={{this.editableFields}}
+          @updateField={{action (mut this.field)}} />
       </div>
     </div>
     <Forms::Wizard::CustomFormInput
-      @newFormField={{this.data.newFormField}}
       @customForms={{this.data.customForms}}
       @event={{this.data.event}}
-      @form="attendee" />
+      @form="attendee"
+      @field={{this.field}}
+      @onSave={{action (mut this.field) null}} />
   {{/if}}
   <div class="spacer-50"></div>
   <div class="{{if this.device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
