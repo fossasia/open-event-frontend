@@ -58,10 +58,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
   }),
 
-  ticketNumber: computed('data.event.tickets', function() {
-    return this.data.event.tickets.length > 0 ? true : false;
-  }),
-
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
     return !this.authManager.currentUser.isVerified;
   }),
@@ -85,6 +81,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   showDraftButton: computed('data.event.state', function() {
     return this.data.event.state !== 'published';
+  }),
+
+  ticketNumber: computed('data.event.tickets', function() {
+    return this.data.event.tickets.length > 0 ? true : false;
+  }),
+
+  firstTimeEvent: computed('data.event.identifier', function() {
+    return (this.data.event.identifier === null || this.data.event.identifier=== "" || this.data.event.identifier=== undefined) ? true : false; 
   }),
 
   hasPaidTickets: computed('data.event.tickets.@each.type', function() {
