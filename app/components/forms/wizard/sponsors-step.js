@@ -34,8 +34,8 @@ export default Component.extend(FormMixin, {
     return this.data.sponsors.filterBy('isDeleted', false);
   }),
 
-  ticketNumber: computed('data.event.tickets', function() {
-    return this.data.event.tickets.length > 0 ? true : false;
+  ticketsPresent: computed('data.event.tickets.@each', function() {
+    return this.data.event.tickets.length > 0;
   }),
 
   actions: {
