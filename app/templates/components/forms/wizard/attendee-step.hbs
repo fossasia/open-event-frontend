@@ -90,7 +90,7 @@
         {{t 'Preview'}} <i class="unhide icon"></i>
       </a>
     {{/if}}
-    {{#if (and this.data.event.locationName ticketNumber)}}
+    {{#if (and this.data.event.locationName ticketsPresent)}}
       {{#if (eq this.data.event.state "draft")}}
         <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
           {{t 'Publish'}}
