@@ -39,8 +39,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return !!this.data.event.codeOfConduct;
   }),
 
-  ticketNumber: computed('data.event.tickets', function() {
-    return this.data.event.tickets.length > 0 ? true : false;
+  ticketsPresent: computed('data.event.tickets.@each', function() {
+    return this.data.event.tickets.length > 0;
   }),
 
   didInsertElement() {
