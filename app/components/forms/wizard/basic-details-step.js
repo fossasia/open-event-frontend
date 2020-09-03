@@ -87,8 +87,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.length > 0 ? true : false;
   }),
 
-  firstTimeEvent: computed('data.event.identifier', function() {
-    return (this.data.event.identifier === null || this.data.event.identifier=== "" || this.data.event.identifier=== undefined) ? true : false; 
+  unsavedEvent: computed('data.event.identifier', function() {
+    return !this.data.event.identifier; 
   }),
 
   hasPaidTickets: computed('data.event.tickets.@each.type', function() {
