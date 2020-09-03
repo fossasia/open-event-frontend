@@ -628,7 +628,7 @@
         </a>
       {{/if}}
     {{/if}}
-    {{#if (and this.data.event.locationName this.ticketNumber)}}
+    {{#if (and this.data.event.locationName this.ticketsPresent)}}
       {{#if (eq this.data.event.state 'draft')}}
       <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
