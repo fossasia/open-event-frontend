@@ -14,6 +14,8 @@ export default Component.extend(FormMixin, {
 
   ticketsPresent: computed('data.event.tickets.@each', function() {
     return this.data.event.tickets.length > 0;
+  }),
+ 
   showEditColumn: computed('editableFields.@each', function() {
     return this.editableFields?.some(field => field.isComplex);
   }),
