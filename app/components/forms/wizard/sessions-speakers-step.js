@@ -136,6 +136,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     return this.data.customForms.filterBy('isComplex', true);
   }),
 
+  ticketNumber: computed('data.event.tickets', function() {
+    return this.data.event.tickets.length > 0 ? true : false;
+  }),
+
   fieldChanged(field) {
     if (!field.get('isIncluded')) {
       field.set('isRequired', false);
@@ -179,6 +183,12 @@ export default Component.extend(EventWizardMixin, FormMixin, {
       this.onValid(() => {
         this.set('data.event.state', 'published');
         this.sendAction('save');
+      });
+    },
+    unpublish() {
+      this.onValid(() => {
+        this.set('data.event.state', 'draft');
+        this.sendAction('save', this.data);
       });
     },
     addItem(type) {
