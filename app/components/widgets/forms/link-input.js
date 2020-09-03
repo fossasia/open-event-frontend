@@ -31,8 +31,7 @@ export default class LinkInput extends Component {
 
   @observes('protocol', 'address')
   protocolAddressObserver() {
-    if (!this.address)
-      return;
+    if (!this.address) {return}
 
     let add = this.address;
     let proto = this.protocol;
