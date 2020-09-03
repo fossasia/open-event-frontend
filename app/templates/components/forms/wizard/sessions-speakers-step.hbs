@@ -343,6 +343,9 @@
 
  --}}
   <div class="ui fields buttons {{if this.device.isMobile 'mini three' 'right floated large'}}">
+    <LinkTo @route="events.view.index" @model={{this.data.event.identifier}} class="red ui three field right labeled icon button">
+      {{t 'Cancel'}}<i class="close icon"></i>
+    </LinkTo>
     <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
       {{t 'Previous'}}
       <i class="left chevron icon"></i>
@@ -353,11 +356,29 @@
         <i class="save icon"></i>
       </button>
     {{/if}}
-    {{#if this.data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
+  </div><br><br><br>
+  <div class="ui fields buttons {{if this.device.isMobile 'mini three' 'right floated large'}}">
+    {{#if (eq this.data.event.state 'draft')}}
+      <a href="{{this.data.event.url}}" class="ui three field right labeled icon button">
+        {{t 'View'}} <i class="hide icon"></i>
+      </a>
+    {{else}}
+      <a href="{{this.data.event.url}}" class="green ui three field right labeled icon button">
+        {{t 'Preview'}} <i class="unhide icon"></i>
+      </a>
+    {{/if}}
+    {{#if (and this.data.event.locationName ticketNumber)}}
+      {{#if (eq this.data.event.state "draft")}}
+        <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+          {{t 'Publish'}}
+          <i class="check icon"></i>
+        </button>
+      {{else}}
+        <button class="orange ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'unpublish'}}>
+          {{t 'Unpublish'}}
+          <i class="ban icon"></i>
+        </button>
+      {{/if}}
     {{/if}}
   </div>
 </form>
