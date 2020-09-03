@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import moment from 'moment';
-import { orderBy, find } from 'lodash-es';
+import { merge, orderBy, find } from 'lodash-es';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import FormMixin from 'open-event-frontend/mixins/form';
@@ -23,6 +23,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return orderBy(licenses, 'name');
   }),
 
+
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
     return this.data.event.socialLinks.filterBy('isDeleted', false);
   }),
@@ -30,6 +31,30 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
     return !this.authManager.currentUser.isVerified;
   }),
+  /**
+   * returns the validation rules for the social links.
+   */
+  socialLinksValidationRules: computed('socialLinks', function() {
+    let validationRules = {};
+    for (let i = 0; i < this.socialLinks.length; i++) {
+      validationRules = merge(validationRules, {
+        [this.socialLinks.get(i).identifier]: {
+          identifier : this.socialLinks.get(i).identifier,
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        }
+      });
+    }
+
+    return validationRules;
+  }),
+
 
   showDraftButton: computed('data.event.state', function() {
     return this.data.event.state !== 'published';
@@ -101,6 +126,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         }
       }
     };
+    // Merging the predetermined rules with the rules for social links.
+    validationRules.fields = merge(validationRules.fields, this.socialLinksValidationRules);
     return validationRules;
   },
 

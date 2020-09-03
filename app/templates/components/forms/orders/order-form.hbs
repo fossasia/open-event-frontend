@@ -76,13 +76,6 @@
                       @value={{mut (get holder field.identifierPath)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
                       @readonly="" />
-                  {{else if field.isUrlField}}
-                    <Widgets::Forms::LinkInput
-                      @fixedName={{true}}
-                      @linkName={{field.name}}
-                      @inputId={{if field.isRequired (concat "order_" field.fieldIdentifier "_required") (concat "order_" field.fieldIdentifier)}}
-                      @segmentedLink={{get this.data.speaker field.segmentedLinkName}}
-                      @canRemoveItem={{false}} />
                   {{else}}
                     <Input
                       @type={{field.type}}

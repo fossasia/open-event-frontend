@@ -18,7 +18,6 @@
               {{#if field.isUrlField}}
                 <Widgets::Forms::LinkInput
                   @fixedName={{true}}
-                  @linkName={{field.name}}
                   @inputId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
                   @segmentedLink={{get this.data.session field.segmentedLinkName}}
                   @canRemoveItem={{false}} />
@@ -161,7 +160,6 @@
                 {{#if field.isUrlField}}
                   <Widgets::Forms::LinkInput
                     @fixedName={{true}}
-                    @linkName={{field.name}}
                     @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
                     @segmentedLink={{get this.data.speaker field.segmentedLinkName}}
                     @canRemoveItem={{false}} />
@@ -278,7 +276,6 @@
               {{#if field.isUrlField}}
                 <Widgets::Forms::LinkInput
                   @fixedName={{true}}
-                  @linkName={{field.name}}
                   @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
                   @segmentedLink={{get this.data.speaker field.segmentedLinkName}}
                   @canRemoveItem={{false}} />
