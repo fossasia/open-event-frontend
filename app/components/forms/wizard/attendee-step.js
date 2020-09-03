@@ -12,7 +12,7 @@ export default Component.extend(FormMixin, {
     return this.data.customForms?.filter(field => !field.isFixed);
   }),
 
-  ticketNumber: computed('data.event.tickets', function() {
+  ticketsPresent: computed('data.event.tickets.@each', function() {
     return this.data.event.tickets.length > 0 ? true : false;
   showEditColumn: computed('editableFields.@each', function() {
     return this.editableFields?.some(field => field.isComplex);
