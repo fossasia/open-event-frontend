@@ -4,8 +4,6 @@ import { observes } from '@ember-decorators/object';
 import Component from '@ember/component';
 import '@ember/object';
 
-const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github'];
-
 @classic
 @classNameBindings(
   'hasLinkName:fields',
@@ -13,6 +11,7 @@ const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtub
   'hasLinkName::labeled',
   'hasLinkName::input:'
 )
+
 export default class LinkInput extends Component {
   hasLinkName = false;
   isChild = false;
@@ -31,11 +30,10 @@ export default class LinkInput extends Component {
 
   @observes('protocol', 'address')
   protocolAddressObserver() {
-    if (!this.address) {return}
-
     let add = this.address;
     let proto = this.protocol;
-    const link = this.linkName?.toLowerCase();
+    const link = this.linkName.toLowerCase();
+    const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github'];
 
     if (add.includes('http://') || add.includes('https://')) {
       const temp = add.split('://');
@@ -60,6 +58,7 @@ export default class LinkInput extends Component {
   @observes('linkName')
   linkNameObserver() {
     const link = this.linkName;
+    const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube'];
 
     if (socialPlatforms.includes(link)) {
       this.set('segmentedLink', {
