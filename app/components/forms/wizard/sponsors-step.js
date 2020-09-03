@@ -72,7 +72,7 @@ export default Component.extend(FormMixin, {
         this.set('data.event.state', 'published');
         this.sendAction('save');
       });
-    }
+    },
     unpublish() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
