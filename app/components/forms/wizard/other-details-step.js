@@ -39,6 +39,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return !!this.data.event.codeOfConduct;
   }),
 
+  ticketNumber: computed('data.event.tickets', function() {
+    return this.data.event.tickets.length > 0 ? true : false;
+  }),
+
   didInsertElement() {
     if (!this.isCreate && this.data.event.copyright && !this.data.event.copyright.content) {
       this.set('data.event.copyright', this.store.createRecord('event-copyright'));
