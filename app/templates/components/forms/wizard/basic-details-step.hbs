@@ -617,7 +617,7 @@
     </div>
     <br><br><br>
     <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    {{#if (not unsavedEvent)}}
+    {{#if (not this.unsavedEvent)}}
       {{#if (eq this.data.event.state 'draft')}}
         <a href="{{this.data.event.url}}" class="ui three field right labeled icon button">
           {{t 'View'}} <i class="hide icon"></i>
