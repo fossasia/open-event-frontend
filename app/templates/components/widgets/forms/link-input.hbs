@@ -1,36 +1,18 @@
 {{#if this.hasLinkName}}
   <div class="three wide field">
-    <div class="ui labeled input">
-      {{#if this.fixedName}}
-        <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
-      {{else}}
-        <UiDropdown @class='selection' @selected={{this.linkName}} @onChange={{action (mut this.linkName)}}>
-          <div class="default text">Select</div>
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="item" data-value='website' >Website</div>
-            <div class="item" data-value="twitter">Twitter</div>
-            <div class="item" data-value="facebook">Facebook</div>
-            <div class="item" data-value="linkedin">Linkedin</div>
-            <div class="item" data-value="instagram">Instagram</div>
-            <div class="item" data-value="youtube">Youtube</div>
-          </div>
-        </UiDropdown>
-      {{/if}} 
-    </div>
+    <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
   </div>
   <div class="six wide field">
-    <div class="ui labeled {{if this.isChild 'action'}} input">      
-        <div class="ui labeled input">
-          <div class="ui label">
-            {{#if this.isChild}}
-              {{this.protocol}}
-            {{else}}
-              https://
-            {{/if}}
-          </div>
-        <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
+    <div class="ui labeled {{if this.isChild 'action'}} input">
+      <UiDropdown @class="label" @selected={{this.protocol}} @onChange={{action (mut this.protocol)}}>
+        <div class="text">https://</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="http">http://</div>
+          <div class="item" data-value="https">https://</div>
         </div>
+      </UiDropdown>
+      <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
       {{#if this.isChild}}
         <div class="ui icon buttons">
           {{#if this.canRemoveItem}}
