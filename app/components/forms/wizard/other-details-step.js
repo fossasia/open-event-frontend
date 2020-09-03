@@ -136,6 +136,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         this.sendAction('save');
       });
     },
+    unpublish() {
+      this.onValid(() => {
+        this.set('data.event.state', 'draft');
+        this.sendAction('save');
+      });
+    },
     onChange() {
       this.onValid(() => {});
     }
