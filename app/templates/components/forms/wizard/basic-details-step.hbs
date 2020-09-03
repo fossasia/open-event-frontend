@@ -595,7 +595,7 @@
 
   <br>
   <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    {{#if this.firstTimeEvent}}
+    {{#if this.unsavedEvent}}
       <LinkTo @route="events.list" @model="live" class="orange ui three field right labeled icon button">
         {{t 'Discard'}} <i class="close icon"></i>
       </LinkTo>
@@ -617,7 +617,7 @@
     </div>
     <br><br><br>
     <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    {{#if (not firstTimeEvent)}}
+    {{#if (not unsavedEvent)}}
       {{#if (eq this.data.event.state 'draft')}}
         <a href="{{this.data.event.url}}" class="ui three field right labeled icon button">
           {{t 'View'}} <i class="hide icon"></i>
