@@ -72,14 +72,14 @@ export default Component.extend(FormMixin, {
         this.set('data.event.state', 'published');
         this.sendAction('save');
       });
-    },
+    }
     unpublish() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
         this.sendAction('save', this.data);
       });
-    },
-
+    }
+  },
   didInsertElement() {
     if (this.data.sponsors && !this.data.sponsors.length) {
       this.data.sponsors.addObject(this.store.createRecord('sponsor'));
