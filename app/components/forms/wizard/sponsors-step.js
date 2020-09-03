@@ -34,6 +34,10 @@ export default Component.extend(FormMixin, {
     return this.data.sponsors.filterBy('isDeleted', false);
   }),
 
+  ticketNumber: computed('data.event.tickets', function() {
+    return this.data.event.tickets.length > 0 ? true : false;
+  }),
+
   actions: {
     addSponsor() {
       const { sponsors } = this.data;
@@ -70,6 +74,12 @@ export default Component.extend(FormMixin, {
       });
     }
   },
+    unpublish() {
+      this.onValid(() => {
+        this.set('data.event.state', 'draft');
+        this.sendAction('save', this.data);
+      });
+    },
 
   didInsertElement() {
     if (this.data.sponsors && !this.data.sponsors.length) {
