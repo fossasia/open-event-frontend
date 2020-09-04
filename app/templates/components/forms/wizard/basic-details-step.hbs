@@ -419,8 +419,9 @@
         {{#if this.data.event.canPayByStripe}}
           <div class="field">
             {{#if (or this.data.event.stripeAuthorization.stripeAuthCode this.data.event.stripeAuthorization.stripePublishableKey)}}
-              <label
-                class="required">{{t 'You have linked your Stripe account successfully. Click Here to Disconnect you account.'}}</label>
+              <label class="required">
+                {{t 'You have linked your Stripe account successfully. Click here to disconnect your account.'}}
+              </label>
               <a href="#" class="stripe-connect" role="button"
                 {{action 'disconnectStripe'}}><span>{{t 'Disconnect Stripe Account'}}</span></a>
             {{else}}
