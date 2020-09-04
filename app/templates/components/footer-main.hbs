@@ -75,6 +75,11 @@
             <i class="google groups icon"></i> {{t 'Google Groups'}}
           </a>
         {{/if}}
+        {{#if this.socialLinks.patreonUrl}}
+          <a class="item" href="{{this.socialLinks.patreonUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="patreon icon"></i> {{t 'Patreon'}}
+          </a>
+        {{/if}}
       </div>
     </div>
   </div>
