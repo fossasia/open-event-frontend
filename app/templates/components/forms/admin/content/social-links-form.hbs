@@ -41,5 +41,11 @@
       @segmentedLink={{this.socials.segmentedGithubUrl}}
       @inputId="github" />
   </div>
+  <div class="field">
+    <label>{{t 'Patreon'}}</label>
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedPatreonUrl}}
+      @inputId="patreon" />
+  </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>
 </form>
