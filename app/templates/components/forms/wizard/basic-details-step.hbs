@@ -566,6 +566,7 @@
     <label>{{t 'Event Type'}}</label>
     <PowerSelect
       @selected={{this.data.event.type}}
+      @allowClear={{true}}
       @options={{this.data.types}}
       @placeholder={{t 'Select Event Type'}}
       @onChange={{action (mut this.data.event.type)}} as |type|>
@@ -576,6 +577,7 @@
     <label>{{t 'Event Topic'}}</label>
     <PowerSelect
       @selected={{this.data.event.topic}}
+      @allowClear={{true}}
       @options={{this.data.topics}}
       @placeholder={{t 'Select Event Topic'}}
       @onChange={{action (mut this.data.event.topic)}} as |topic|>
@@ -586,6 +588,7 @@
     <label>{{t 'Event Sub-topic'}}</label>
     <PowerSelect
       @selected={{this.data.event.subTopic}}
+      @allowClear={{true}}
       @options={{this.subTopics}}
       @placeholder={{t 'Select Event Sub-Topic'}}
       @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
