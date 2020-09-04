@@ -142,6 +142,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         licenceUrl : license.link
       });
     },
+    clearLicense() {
+      this.setProperties({
+        'data.event.copyright.licence': null
+      });
+    },
     saveDraft() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
