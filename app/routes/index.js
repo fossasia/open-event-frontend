@@ -218,7 +218,7 @@ export default class IndexRoute extends Route {
       }
     ];
 
-    return await hash({
+    return hash({
       filteredEvents: this.store.query('event', {
         upcoming : true,
         include  : 'event-topic,event-sub-topic,event-type,speakers-call'
