@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
+import { debounce } from 'lodash-es';
 
 @classic
 export default class ExploreRoute extends Route {
@@ -193,11 +194,15 @@ export default class ExploreRoute extends Route {
     this.set('controller', controller);
   }
 
-  @action
-  async queryParamsDidChange(change, params) {
+  debouncedFilterChange = debounce(async params => {
     if (this.controller) {
       this.controller.set('filteredEvents', await this._loadEvents(params));
       this.controller.set('filters', params);
     }
+  }, 250)
+
+  @action
+  queryParamsDidChange(change, params) {
+    this.debouncedFilterChange(params);
   }
 }
