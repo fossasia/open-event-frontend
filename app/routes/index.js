@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import moment from 'moment';
+import { hash } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
@@ -127,26 +128,112 @@ export default class IndexRoute extends Route {
 
   async model(params) {
     const filterOptions =  this._loadEvents(params, 'filterOptions');
-
-    const featuredEventsFilterOptions = this._loadEvents(params, 'filterOptions');
-    featuredEventsFilterOptions[0].and.push({
+    filterOptions[0].and.push({
       name : 'is-featured',
       op   : 'eq',
       val  : true
     });
 
-    return {
-      filteredEvents: await this.store.query('event', {
+    const upcomingEventsFilter = [
+      {
+        or: [
+          {
+            name : 'is-featured',
+            op   : 'eq',
+            val  : true
+          },
+          {
+            name : 'is-promoted',
+            op   : 'eq',
+            val  : true
+          },
+          {
+            and: [
+              {
+                name : 'logo-url',
+                op   : 'ne',
+                val  : null
+              },
+              {
+                name : 'original-image-url',
+                op   : 'ne',
+                val  : null
+              },
+              {
+                name : 'event-topic',
+                op   : 'ne',
+                val  : null
+              },
+              {
+                name : 'event-sub-topic',
+                op   : 'ne',
+                val  : null
+              },
+              {
+                name : 'event-type',
+                op   : 'ne',
+                val  : null
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    const callForSpeakersFilter = this._loadEvents(params, 'filterOptions');
+    callForSpeakersFilter[0].and = [
+      ...callForSpeakersFilter[0].and,
+      ...upcomingEventsFilter,
+      {
+        name : 'is-sessions-speakers-enabled',
+        op   : 'eq',
+        val  : true
+      },
+      {
+        name : 'speakers-call',
+        op   : 'has',
+        val  : {
+          name : 'privacy',
+          op   : 'eq',
+          val  : 'public'
+        }
+      },
+      {
+        name : 'speakers-call',
+        op   : 'has',
+        val  : {
+          name : 'starts-at',
+          op   : 'le',
+          val  : params.start_date
+        }
+      },
+      {
+        name : 'speakers-call',
+        op   : 'has',
+        val  : {
+          name : 'ends-at',
+          op   : 'ge',
+          val  : params.start_date
+        }
+      }
+    ];
+
+    return await hash({
+      filteredEvents: this.store.query('event', {
+        upcoming : true,
+        include  : 'event-topic,event-sub-topic,event-type,speakers-call'
+      }),
+      featuredEvents: this.store.query('event', {
         sort    : 'starts-at',
         include : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter  : filterOptions
       }),
-      featuredEvents: await this.store.query('event', {
+      callForSpeakersEvents: this.store.query('event', {
         sort    : 'starts-at',
         include : 'event-topic,event-sub-topic,event-type,speakers-call',
-        filter  : featuredEventsFilterOptions
+        filter  : callForSpeakersFilter
       })
-    };
+    });
   }
 
   setupController(controller, model) {
