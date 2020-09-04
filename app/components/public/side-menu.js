@@ -4,6 +4,7 @@ import Component from '@ember/component';
 import moment from 'moment';
 import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
 import { tracked } from '@glimmer/tracking';
+import $ from 'jquery';
 
 @classic
 export default class SideMenu extends Component {
@@ -13,12 +14,19 @@ export default class SideMenu extends Component {
   @tracked
   showSessions = false;
 
+  async didRender() {
+    super.didRender();
+    const anchor_tag = window.location.hash;
+    $('html, body').animate({
+      scrollTop: $(anchor_tag).offset().top
+    }, 20);
+  }
+
   async didInsertElement() {
     super.didInsertElement(...arguments);
     const speakersCall = await this.event.speakersCall;
     this.set('shouldShowCallforSpeakers',
       speakersCall && speakersCall.announcement && (speakersCall.privacy === 'public'));
-
     this.checkSpeakers();
     this.checkSessions();
   }
@@ -46,12 +54,22 @@ export default class SideMenu extends Component {
   }
 
   @action
-  scrollToTarget() {
+  scrollToTarget(e) {
+
+    if (history.pushState) {
+      history.pushState(null, null, e);
+    } else {
+      location.hash = e;
+    }
+    document.querySelector(e).scrollIntoView({
+      behavior: 'smooth', block: 'start'
+    });
+
     document.querySelectorAll('.scroll').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+          behavior: 'smooth', block: 'start'
         });
 
         document.querySelectorAll('.scroll').forEach(node => {
