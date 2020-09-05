@@ -8,6 +8,8 @@ import moment from 'moment';
 import $ from 'jquery';
 import { isTesting } from 'open-event-frontend/utils/testing';
 import { getTextColor } from 'open-event-frontend/utils/color';
+import { tracked } from '@glimmer/tracking';
+import { next } from '@ember/runloop';
 
 interface ScheduleArgs {
   timezone: string | undefined,
@@ -22,6 +24,9 @@ export default class Schedule extends Component<ScheduleArgs> {
     center : 'title',
     right  : 'timelineDay,agendaDay,timelineThreeDays,agendaWeek'
   }
+
+  @tracked
+  render = true;
 
   get validRange() { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
     const { event } = this.args;
@@ -140,6 +145,16 @@ export default class Schedule extends Component<ScheduleArgs> {
     const calendar = $('.full-calendar');
     this.adjustColumnWidth(view, calendar);
     this.adjustMinTime(view, calendar);
+  }
+
+  @action
+  timezoneUpdated(): void {
+    // Workaround to rerender calendar as updating it dynamically
+    // is not possible
+    this.render = false;
+    next(this, () => {
+      this.render = true;
+    });
   }
 }
 
