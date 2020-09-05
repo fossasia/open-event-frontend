@@ -1,9 +1,23 @@
-{{#if this.success}}
-  <div class="ui {{if this.isLoading 'loading'}} icon info message eight wide column center aligned">
-    <p>Your email has been verified successfully!</p>
-  </div>
-{{else}}
-  <div class="ui {{if this.isLoading 'loading'}} icon error message eight wide column center aligned">
-    <p>Error: {{t this.error}}</p>
-  </div>
+{{#if this.session.isAuthenticated}}
+  {{#if this.success}}
+    <div class="ui {{if this.isLoading 'loading'}} icon info message eight wide column center aligned">
+      <p>Your email has been verified successfully!</p>
+    </div>
+  {{else}}
+    <div class="ui {{if this.isLoading 'loading'}} icon error message eight wide column center aligned">
+      <p>Error: {{t this.error}}</p>
+    </div>
+  {{/if}}
 {{/if}}
+
+{{#unless this.session.isAuthenticated}}
+  {{#if this.success}}
+    <div class="ui {{if this.isLoading 'loading'}} icon info message eight wide column center aligned">
+      <p>Your email has been verified successfully! Please login to continue</p>
+    </div>
+  {{else}}
+    <div class="ui {{if this.isLoading 'loading'}} icon error message eight wide column center aligned">
+      <p>Error: {{t this.error}}</p>
+    </div>
+  {{/if}}
+{{/unless}}
