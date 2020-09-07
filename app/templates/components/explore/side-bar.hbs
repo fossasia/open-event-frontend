@@ -1,20 +1,6 @@
-<div class="map item {{if (not this.isMapVisible) 'mobile hidden'}}">
-  <GMap
-    @markersFitMode="live"
-    @lat={{37.7833}}
-    @lng={{-122.4167}}
-    @zoom={{2}}
-    @address={{this.location}}
-    @class="google-maps" as |context|>
-    {{g-map-address-marker context address=this.location onLocationChange=(action 'onLocationChangeHandler')}}
-  </GMap>
-</div>
-{{#if this.device.isMobile}}
-  <div class="ui bottom attached button" role="button" {{action 'toggleMap'}}> {{if (not this.isMapVisible) 'Show' 'Hide'}} Map </div>
-{{/if}}
 <div class="item">
   <div class="ui input">
-    <Widgets::Forms::PlacesAutocomplete
+    <Input
       @name="location"
       @value={{this.location}}
       @type="text"

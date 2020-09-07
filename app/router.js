@@ -60,6 +60,7 @@ Router.map(function() {
     this.route('speakers');
     this.route('role-invites');
   });
+  this.route('pricing');
   this.route('create');
   this.route('not-found');
   this.route('pages', { path: '/*path' });

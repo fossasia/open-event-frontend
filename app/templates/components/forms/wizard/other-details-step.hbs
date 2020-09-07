@@ -5,7 +5,7 @@
     <Widgets::Forms::LinkInput
       @hasLinkName={{true}}
       @fixedName={{true}}
-      @linkName={{t "Website"}}
+      @linkName={{t "External event URL"}}
       @inputId="external_event_url"
       @segmentedLink={{this.data.event.segmentedExternalEventUrl}}
       @isChild={{unless this.data.event.socialLinks true}}
@@ -89,25 +89,32 @@
         </div>
       </div>
     </label>
-    <UiDropdown
-      @class="search selection"
-      @selected={{this.data.event.copyright.licence}}
-      @onChange={{action "updateCopyright"}}
-      @forceSelection={{false}}
-      @fullTextSearch={{true}}>
-      <Input
-        @type="hidden"
-        @id="license"
-        @value={{this.data.event.copyright.licence}} 
-      />
-      <i class="dropdown icon"></i>
-      <div class="default text">{{t 'Select License'}}</div>
-      <div class="menu">
-        {{#each this.licenses as |license|}}
-          <div class="item" data-value="{{license.name}}">{{license.name}}</div>
-        {{/each}}
-      </div>
-    </UiDropdown>
+    <div class="ui labeled input">
+      <UiDropdown
+        @class="fluid search selection"
+        @selected={{this.data.event.copyright.licence}}
+        @onChange={{action "updateCopyright"}}
+        @forceSelection={{false}}
+        @fullTextSearch={{true}}>
+        <Input
+          @type="hidden"
+          @id="license"
+          @value={{this.data.event.copyright.licence}} 
+        />
+        <i class="dropdown icon"></i>
+        <div class="default text">{{t 'Select License'}}</div>
+        <div class="menu">
+          {{#each this.licenses as |license|}}
+            <div class="item" data-value="{{license.name}}">{{license.name}}</div>
+          {{/each}}
+        </div>
+      </UiDropdown>
+      {{#if data.event.copyright.licence}}
+        <button type="button" class="ui icon button" {{action 'clearLicense'}}>
+          <i class="remove icon"></i>
+        </button>
+      {{/if}}
+    </div>
   </div>
   <br>
   <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">

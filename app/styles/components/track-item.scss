@@ -10,3 +10,29 @@
   position: absolute;
   top: 0;
 }
+
+.history-tl-container {
+  display: block;
+  margin: auto;
+  position: relative;
+  width: 100%;
+}
+
+.history-tl-container ul.tl li {
+  border-left: 1px solid rgba(86, 86, 87, .15);
+  list-style: none;
+  margin: auto;
+  margin-left: 75px;
+  min-height: 50px;
+  padding: 0 0 10px 10px;
+  position: relative;
+}
+
+ul.tl li .timestamp {
+  color: #3b3939;
+  font-size: 13px;
+  left: -20%;
+  position: absolute;
+  text-align: right;
+  width: 100px;
+}
