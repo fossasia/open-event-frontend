@@ -21,6 +21,7 @@ export default Component.extend({
       'ol'     : 1,
       'li'     : 1,
       'ul'     : 1,
+      'br'     : 1,
       'a'      : {
         'check_attributes': {
           'href': 'url'
