@@ -52,7 +52,7 @@
               </strong>
             </p>
           {{/if}}
-          <a href="{{href-to 'public.sessions' (query-params session_id=session.id)}}">
+          <a href="{{href-to 'public.session.view' session.id}}">
             <div class="ui fluid rounded-default p-4" style={{css color=(text-color session.track.color) background-color=session.track.color}}>
               <div style={{css opacity=0.9}}>
                 {{#if (and session.startsAt session.endsAt)}}

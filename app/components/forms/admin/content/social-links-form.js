@@ -96,6 +96,21 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
+        patreon: {
+          identifier : 'patreon',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'containsExactly[patreon.com]',
+              prompt : this.l10n.t('Please enter a valid Patreon url')
+            },
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        },
         github: {
           identifier : 'github',
           optional   : true,
