@@ -5,7 +5,7 @@
     <Widgets::Forms::LinkInput
       @hasLinkName={{true}}
       @fixedName={{true}}
-      @linkName={{t "External event URL"}}
+      @linkName={{t "Website"}}
       @inputId="external_event_url"
       @segmentedLink={{this.data.event.segmentedExternalEventUrl}}
       @isChild={{unless this.data.event.socialLinks true}}
@@ -16,6 +16,7 @@
       <Widgets::Forms::LinkInput
         @hasLinkName={{true}}
         @linkName={{socialLink.name}}
+        @isSocialLink={{true}}
         @inputId={{socialLink.identifier}}
         @segmentedLink={{socialLink.segmentedLink}}
         @isChild={{true}}
