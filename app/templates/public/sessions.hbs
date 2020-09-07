@@ -48,7 +48,7 @@
 <div class="history-tl-container">
   <ul class="tl">
   {{#each this.model.session as |session|}}
-    <li class="tl-item" ng-repeat="item in retailer_history">
+    <li>
      <div class="timestamp">
        {{general-date session.startsAt session.event.timezone 'HH:mm'}} - 
        {{general-date session.endsAt session.event.timezone 'HH:mm'}}
