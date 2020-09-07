@@ -1,7 +1,8 @@
 <div class="public-event ui relaxed grid">
-  <Widgets::SafeImage class="background" @src="/images/pricing-header.jpg" style={{css width="100%"}}/>
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}" style={{css max-height="300px"}}>
+    <Widgets::SafeImage class="background" @src="/images/pricing-header.jpg" />
+  </div>
 </div>
-<br>
 <div class="ui thirteen column center aligned container">
   <div class="ui raised padded segment">
     <h3>Find the plan that's right for you.</h3>
