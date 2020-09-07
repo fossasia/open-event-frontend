@@ -29,14 +29,14 @@
         </LinkTo>
       {{/if}}
     {{/if}}
-    {{#if this.showSessions}}
+    {{#if (and this.showSessions this.isSchedulePublished)}}
       <LinkTo @route="public.sessions" class="item">
-        {{t 'Sessions'}}
+        {{t 'Schedule'}}
       </LinkTo>
     {{/if}}
-    {{#if this.isSchedulePublished}}
+    {{#if (and this.showSessions this.isSchedulePublished)}}
       <LinkTo @route="public.schedule" class="item">
-        {{t 'Schedule'}}
+        {{t 'Calendar'}}
       </LinkTo>
     {{/if}}  
     {{#if this.shouldShowCallforSpeakers }}
