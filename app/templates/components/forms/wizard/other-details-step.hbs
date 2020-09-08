@@ -153,11 +153,11 @@
   <div class="ui grid">
   <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}} {{if this.isUserUnverified 'disabled'}}">
     {{#if (eq this.data.event.state 'draft')}}
-      <a href="{{this.data.event.url}}" class="ui right labeled small icon button">
+      <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="ui right labeled small icon button">
         {{t 'Preview'}} <i class="hide icon"></i>
       </a>
     {{else}}
-      <a href="{{this.data.event.url}}" class="green ui right labeled small icon button">
+      <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="green ui right labeled small icon button">
         {{t 'View'}} <i class="unhide icon"></i>
       </a>
     {{/if}}
