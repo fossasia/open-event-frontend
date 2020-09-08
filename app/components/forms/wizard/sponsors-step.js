@@ -34,6 +34,9 @@ export default Component.extend(FormMixin, {
     return this.data.sponsors.filterBy('isDeleted', false);
   }),
 
+  ticketsPresent: computed('data.event.tickets.@each', function() {
+    return this.data.event.tickets.length > 0;
+  }),
   actions: {
     addSponsor() {
       const { sponsors } = this.data;
@@ -68,6 +71,13 @@ export default Component.extend(FormMixin, {
         this.set('data.event.state', 'published');
         this.sendAction('save');
       });
+    },
+
+    unpublish() {
+      this.onValid(() => {
+        this.set('data.event.state', 'draft');
+        this.sendAction('save', this.data);
+       });
     }
   },
 

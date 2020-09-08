@@ -12,6 +12,10 @@ export default Component.extend(FormMixin, {
     return this.data.customForms?.filter(field => !field.isFixed);
   }),
 
+  ticketsPresent: computed('data.event.tickets.@each', function() {
+    return this.data.event.tickets.length > 0;
+  }),
+
   showEditColumn: computed('editableFields.@each', function() {
     return this.editableFields?.some(field => field.isComplex);
   }),
@@ -31,6 +35,12 @@ export default Component.extend(FormMixin, {
     publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
+        this.sendAction('save', this.data);
+      });
+    },
+    unpublish() {
+      this.onValid(() => {
+        this.set('data.event.state', 'draft');
         this.sendAction('save', this.data);
       });
     }

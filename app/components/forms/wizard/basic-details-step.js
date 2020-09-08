@@ -83,6 +83,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.state !== 'published';
   }),
 
+  ticketsPresent: computed('data.event.tickets.@each', function() {
+    return this.data.event.tickets.length > 0;
+  }),
+
+  unsavedEvent: computed('data.event.identifier', function() {
+    return !this.data.event.identifier;
+  }),
+
   hasPaidTickets: computed('data.event.tickets.@each.type', function() {
     return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
   }),
@@ -117,15 +125,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give your event a name')
-            }
-          ]
-        },
-        location: {
-          identifier : 'location',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Location is required to save an event')
             }
           ]
         },
