@@ -598,54 +598,69 @@
   </div>
 
   <br>
-  <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
+  <div class="ui grid">
+  <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
     {{#if this.unsavedEvent}}
-      <LinkTo @route="events.list" @model="live" class="orange ui three field right labeled icon button">
+      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small {{if this.isUserUnverified 'disabled'}}">
         {{t 'Discard'}} <i class="close icon"></i>
       </LinkTo>
     {{else}}
-      <LinkTo @route="events.view.index" @model={{this.data.event.identifier}} class="red ui three field right labeled icon button">
+      <LinkTo @route="events.view.index" @model={{this.data.event.identifier}} class="ui red button right labeled icon small right aligned {{if this.isUserUnverified 'disabled'}} button">
         {{t 'Cancel'}} <i class="close icon"></i>
       </LinkTo>
     {{/if}}
-    <button class="ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
+    <button class="ui button right labeled icon small {{if this.isLoading 'disabled'}} right aligned" type="button" {{action 'moveForward'}}>
       {{t 'Forward'}}
       <i class="right chevron icon"></i>
     </button>
     {{#if this.showDraftButton}}
-      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+      <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
         {{t 'Save draft'}}
         <i class="save icon"></i>
       </button>
     {{/if}}
     </div>
-    <br><br><br>
-    <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
+  </div>
+  <div class="ui grid">
+    <div class="sixteen wide column right aligned">
+      {{#if (not this.unsavedEvent)}}
+        {{#if (eq this.data.event.state 'draft')}}
+          <p> This event is currently not published. It is in draft mode and it is not visible publicly. </p>
+        {{else}}
+          <p>This event is published. Any changes you make will appear on your live event.</p>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="ui divider"></div>
+  <div class="ui grid">
+  <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
     {{#if (not this.unsavedEvent)}}
       {{#if (eq this.data.event.state 'draft')}}
-        <a href="{{this.data.event.url}}" class="ui three field right labeled icon button">
-          {{t 'View'}} <i class="hide icon"></i>
+        <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="ui right labeled icon small button">
+          {{t 'Preview'}} <i class="hide icon"></i>
         </a>
       {{else}}
-        <a href="{{this.data.event.url}}" class="green ui three field right labeled icon button">
-          {{t 'Preview'}} <i class="unhide icon"></i>
+        <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="green ui right labeled icon small button">
+          {{t 'View'}} <i class="unhide icon"></i>
         </a>
       {{/if}}
     {{/if}}
     {{#if (and this.data.event.locationName this.ticketsPresent)}}
       {{#if (eq this.data.event.state 'draft')}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="green ui right labeled icon small button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>
       {{/if}}
       {{#if (eq this.data.event.state 'published')}}
-      <button class="orange ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'unpublish'}}>
+      <button class="orange ui right labeled icon small button {{if this.isLoading 'disabled'}}" type="button" {{action 'unpublish'}}>
         {{t 'Unpublish'}}
         <i class="ban icon"></i>
       </button>
       {{/if}}
     {{/if}}
+  </div>
   </div>
 </form>
 
