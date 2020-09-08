@@ -610,7 +610,7 @@
       </LinkTo>
     {{/if}}
     <button class="ui button right labeled icon small {{if this.isLoading 'disabled'}} right aligned" type="button" {{action 'moveForward'}}>
-      {{t 'Forward'}}
+      {{t 'Next'}}
       <i class="right chevron icon"></i>
     </button>
     {{#if this.showDraftButton}}
@@ -629,6 +629,8 @@
         {{else}}
           <p>This event is published. Any changes you make will appear on your live event.</p>
         {{/if}}
+      {{else}}
+        <p>You can preview the event after you have saved it as a draft. You can publish the event after filling in the required fields.</p>
       {{/if}}
     </div>
   </div>
