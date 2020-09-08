@@ -44,23 +44,12 @@
   </InfinityLoader>
 {{/if}}
 
-
-<div class="history-tl-container">
-  <ul class="tl">
+<div class="mt-8">
   {{#each this.model.session as |session|}}
-    <li>
-     <div class="timestamp">
-       {{general-date session.startsAt session.event.timezone 'HH:mm'}} - 
-       {{general-date session.endsAt session.event.timezone 'HH:mm'}}
-      </div>
-    <div class="item-title">
-      <Public::SessionItem @session={{session}} @timezone={{this.timezone}} />
-    </div>
-   </li>
+    <Public::SessionItem @session={{session}} @timezone={{this.timezone}} />
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
-  </ul>
   <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
