@@ -650,7 +650,7 @@
     {{/if}}
     {{#if (and this.data.event.locationName this.ticketsPresent)}}
       {{#if (eq this.data.event.state 'draft')}}
-      <button class="green ui right labeled icon small button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
+      <button class="{{unless this.unsavedEvent 'green'}} ui right labeled icon small button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
       </button>
