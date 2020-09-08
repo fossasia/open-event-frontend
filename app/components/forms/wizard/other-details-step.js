@@ -172,7 +172,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
         this.sendAction('save');
-     });
+      });
     },
     onChange() {
       this.onValid(() => {});

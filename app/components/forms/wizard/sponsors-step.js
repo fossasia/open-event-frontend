@@ -77,7 +77,7 @@ export default Component.extend(FormMixin, {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
         this.sendAction('save', this.data);
-       });
+      });
     }
   },
 
