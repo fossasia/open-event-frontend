@@ -106,6 +106,9 @@ Router.map(function() {
         this.route('create');
       });
       this.route('scheduler');
+      this.route('team', function() {
+        this.route('permissions');
+      });
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
