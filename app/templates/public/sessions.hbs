@@ -8,6 +8,7 @@
 
   <Widgets::TimeZonePicker
     class="mb-2 ml-auto mr-2"
+    @defaultLocal={{this.model.event.online}}
     @eventTimezone={{this.model.event.timezone}}
     @timezone={{this.timezone}} />
 
