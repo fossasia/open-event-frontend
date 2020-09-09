@@ -16,6 +16,7 @@
             <div class="item" data-value="instagram">Instagram</div>
             <div class="item" data-value="github">Github</div>
             <div class="item" data-value="gitlab">Gitlab</div>
+            <div class="item" data-value="groups.google">Google Groups</div>
             <div class="item" data-value="blog">Blog</div>
             <div class="item" data-value="vimeo">Vimeo</div>
             <div class="item" data-value="flicker">Flicker</div>
@@ -47,10 +48,10 @@
             </UiPopup>
           {{/if}}
           {{#if this.canAddItem}}
-            <UiPopup @content={{t "Custom"}} @class="ui icon teal button" @click={{action this.addCustomLink}} @position="top center">
+            <UiPopup @content={{t "Add custom link"}} @class="ui icon teal button" @click={{action this.addCustomLink}} @position="top center">
               <i class="plus icon"></i>
             </UiPopup>
-            <UiPopup @content={{t "Social Link"}} @class="ui icon blue button" @click={{action this.addItem}} @position="top center">
+            <UiPopup @content={{t "Add social link"}} @class="ui icon blue button" @click={{action this.addItem}} @position="top center">
               <i class="plus icon"></i>
             </UiPopup>
           {{/if}}
