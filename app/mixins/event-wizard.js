@@ -213,7 +213,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     savePublished() {
       this.onValid(() => {
         this.sendAction('save');
-      })
+      });
     },
     moveForward() {
       this.onValid(() => {

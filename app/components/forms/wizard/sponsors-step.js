@@ -65,7 +65,7 @@ export default Component.extend(FormMixin, {
       this.onValid(() => {
         this.set('data.event.state', 'published');
         this.sendAction('save', this.data);
-      })
+      });
     },
     move(direction) {
       this.onValid(() => {
