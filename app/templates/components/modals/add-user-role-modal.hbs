@@ -21,7 +21,7 @@
         </div>
         <div class="menu">
           {{#each this.data.roles as |role|}}
-            {{#if (not-eq role.name 'owner')}}
+            {{#if (eq role.name 'organizer')}}
               <div class="item" data-value="{{map-value mapper role}}">
                 {{role.name}}
               </div>
