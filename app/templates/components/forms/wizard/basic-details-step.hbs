@@ -6,27 +6,52 @@
       @id="name"
       @value={{this.data.event.name}} />
   </div>
-  <div class="field">
-    <label class="required" for="location">{{t 'Location'}}</label>
-    <Widgets::Forms::LocationInput
-      @inputId="location"
-      @lat={{this.data.event.latitude}}
-      @lng={{this.data.event.longitude}}
-      @placeName={{this.data.event.locationName}}
-      @searchableName={{this.data.event.searchableLocationName}}
-      @zoom={{15}}
-      @placeholder={{t "Location is required to make this event live"}}>
-      <div class="inline field">
-        <div class="ui slider checkbox">
-          <Input
-            @id="show_map"
-            @type="checkbox"
-            @checked={{this.data.event.isMapShown}} />
-          <label for="show_map">{{t 'Show map on event page'}}</label>
-        </div>
-      </div>
-    </Widgets::Forms::LocationInput>
+  <div class="ui secondary pointing menu">
+    {{#each this.locationMenuItems as |item|}}
+      <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
+        {{t item}}
+      </a>
+    {{/each}}
   </div>
+  {{#if (or (eq this.selectedLocationType 'Venue') (eq this.selectedLocationType 'Mixed'))}}
+    <div class="field">
+      <label class="{{if this.isLocationRequired 'required'}}" for="location">{{t 'Location'}}</label>
+      <Widgets::Forms::LocationInput
+        @inputId="{{if this.isLocationRequired 'location'}}"
+        @lat={{this.data.event.latitude}}
+        @lng={{this.data.event.longitude}}
+        @placeName={{this.data.event.locationName}}
+        @searchableName={{this.data.event.searchableLocationName}}
+        @zoom={{15}}
+        @placeholder={{t "Location is required to make this event live"}}>
+        <div class="inline field">
+          <div class="ui slider checkbox">
+            <Input
+              @id="show_map"
+              @type="checkbox"
+              @checked={{this.data.event.isMapShown}} />
+            <label for="show_map">{{t 'Show map on event page'}}</label>
+          </div>
+        </div>
+      </Widgets::Forms::LocationInput>
+    </div>
+  {{/if}}
+  {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Mixed'))}}
+    <Widgets::Forms::LinkInput
+      @hasLinkName={{true}}
+      @fixedName={{true}}
+      @linkName={{t "Live Stream URL"}}
+      @inputId="live_stream_url"
+      @segmentedLink={{this.data.event.segmentedLiveStreamUrl}}
+      @canRemoveItem={{false}} />
+    <Widgets::Forms::LinkInput
+      @hasLinkName={{true}}
+      @fixedName={{true}}
+      @linkName={{t "Webinar URL"}}
+      @inputId="webinar_url"
+      @segmentedLink={{this.data.event.segmentedWebinarUrl}}
+      @canRemoveItem={{false}} />
+  {{/if}}
   <div class="fields">
     <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
@@ -609,7 +634,7 @@
         <i class="save icon"></i>
       </button>
     {{/if}}
-    {{#if this.data.event.locationName}}
+    {{#if this.data.event.name}}
       <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>
