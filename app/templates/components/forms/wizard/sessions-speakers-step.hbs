@@ -299,7 +299,7 @@
       </a>
     {{/if}}
 
-    {{#if (and this.data.event.locationName ticketsPresent)}}
+    {{#if this.ticketsPresent}}
       <button class="ui button right labeled icon small {{if (eq this.data.event.state 'published') 'orange' 'green'}}" {{action 'openConfirmModal'}}>
         {{#if (eq this.data.event.state 'published')}}
           <i class="ban icon"></i>
