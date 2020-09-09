@@ -71,6 +71,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
+
     if (event.name && event.startsAtDate && event.endsAtDate) {
       await event.save();
 
@@ -205,7 +206,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   actions: {
     saveDraft() {
       this.onValid(() => {
-        destroyDeletedTickets(this.deletedTickets);
+        preSaveActions.call(this);
         this.set('data.event.state', 'draft');
         this.sendAction('save');
       });
@@ -217,14 +218,14 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     },
     moveForward() {
       this.onValid(() => {
-        destroyDeletedTickets(this.deletedTickets);
+        preSaveActions.call(this);
         this.sendAction('move');
       });
     },
     publish() {
       this.onValid(() => {
         this.set('data.event.state', 'published');
-        destroyDeletedTickets(this.deletedTickets);
+        preSaveActions.call(this);
         this.sendAction('save');
       });
     },
@@ -255,4 +256,15 @@ function destroyDeletedTickets(deletedTickets) {
   deletedTickets.forEach(ticket => {
     ticket.destroyRecord();
   });
+}
+
+function preSaveActions() {
+  destroyDeletedTickets(this.deletedTickets);
+
+  if (this.selectedLocationType) {
+    this.set('data.event.online', ['Online', 'Mixed'].includes(this.selectedLocationType));
+    if (['Online', 'To be announced'].includes(this.selectedLocationType)) {
+      this.set('data.event.locationName', null);
+    }
+  }
 }

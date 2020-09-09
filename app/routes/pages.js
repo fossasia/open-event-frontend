@@ -3,8 +3,8 @@ import Route from '@ember/routing/route';
 
 @classic
 export default class PagesRoute extends Route {
-  titleToken() {
-    return this.l10n.t('Pages');
+  titleToken(model) {
+    return this.l10n.t(model?.name || 'Pages');
   }
 
   model(params) {

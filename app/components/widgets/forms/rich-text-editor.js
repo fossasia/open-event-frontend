@@ -35,7 +35,7 @@ export default Component.extend({
   },
 
   valueObserver: observer('value', function() {
-    if (this.editor && this.value !== this._value) {
+    if (this.editor && this.editor.getValue() !== this.value) {
       this.editor.setValue(this.value);
     }
   }),

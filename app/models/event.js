@@ -88,6 +88,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   xcalUrl      : attr('string', { readOnly: true }),
   icalUrl      : attr('string', { readOnly: true }),
 
+  online        : attr('boolean', { defaultValue: false }),
+  liveStreamUrl : attr('string'),
+  webinarUrl    : attr('string'),
+
   createdAt : attr('moment', { readOnly: true }),
   deletedAt : attr('moment'),
 
@@ -153,7 +157,9 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
-  segmentedExternalEventUrl: computedSegmentedLink.bind(this)('externalEventUrl'),
+  segmentedExternalEventUrl : computedSegmentedLink.bind(this)('externalEventUrl'),
+  segmentedLiveStreamUrl    : computedSegmentedLink.bind(this)('liveStreamUrl'),
+  segmentedWebinarUrl       : computedSegmentedLink.bind(this)('webinarUrl'),
 
   shortLocationName: computed('locationName', function() {
     if (!this.locationName) {
