@@ -68,6 +68,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
+  refundPolicy    : attr('string'),
 
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),

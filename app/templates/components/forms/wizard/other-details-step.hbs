@@ -23,6 +23,20 @@
         @removeItem={{action "removeItem" socialLink "socialLinks"}} />
     {{/each}}
   </div>
+  
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui header">
+      <label for="refund_policy">{{t 'Refund Policy'}}</label>
+      <div class="sub header">
+        {{t 'Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the eventyay platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the eventyay platform.'}}
+      </div>
+    </div>
+    <Widgets::Forms::RichTextEditor
+      @textareaId="refunduct"
+      @value={{this.data.event.refundPolicy}}
+    />
+  </div>
 
   <div class="ui section divider"></div>
   <div class="grouped fields">
