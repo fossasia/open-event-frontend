@@ -130,12 +130,10 @@
       {{t 'Next'}}
       <i class="right chevron icon"></i>
     </button>
-    {{#if this.showDraftButton}}
-      <button class="blue ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
+    <button class="blue ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+      {{t 'Save'}}
+      <i class="save icon"></i>
+    </button>
     </div>
   </div>
   <div class="ui grid">

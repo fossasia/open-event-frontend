@@ -73,12 +73,10 @@
       {{t 'Next'}}
       <i class="right chevron icon"></i>
     </button>
-    {{#if (not-eq this.data.event.state 'published')}}
-      <button class="blue ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
+    <button class="blue ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+      {{t 'Save'}}
+      <i class="save icon"></i>
+    </button>
     </div>
     </div>
     <div class="ui grid">
