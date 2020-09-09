@@ -9,42 +9,56 @@
     <label>{{t 'Twitter'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedTwitterUrl}}
+      @linkname="twitter"
+      @isSocialLink={{true}}
       @inputId="twitter" />
   </div>
   <div class="field">
     <label>{{t 'Facebook'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedFacebookUrl}}
+      @linkname="facebook"
+      @isSocialLink={{true}}
       @inputId="facebook" />
   </div>
   <div class="field">
     <label>{{t 'Instagram'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedInstagramUrl}}
+      @linkname="instagram"
+      @isSocialLink={{true}}
       @inputId="instagram" />
   </div>
   <div class="field">
     <label>{{t 'Google Group'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedGoogleUrl}}
+      @linkname="groups.google"
+      @isSocialLink={{true}}
       @inputId="google_group" />
   </div>
   <div class="field">
     <label>{{t 'YouTube'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedYoutubeUrl}}
+      @linkname="youtube"
+      @isSocialLink={{true}}
       @inputId="youtube" />
   </div>
   <div class="field">
     <label>{{t 'GitHub'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedGithubUrl}}
+      @linkname="github"
+      @isSocialLink={{true}}
       @inputId="github" />
   </div>
   <div class="field">
     <label>{{t 'Patreon'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedPatreonUrl}}
+      @linkname="patreon"
+      @isSocialLink={{true}}
       @inputId="patreon" />
   </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>

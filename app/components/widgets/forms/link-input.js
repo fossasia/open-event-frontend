@@ -3,6 +3,7 @@ import { classNameBindings } from '@ember-decorators/component';
 import { observes } from '@ember-decorators/object';
 import Component from '@ember/component';
 import '@ember/object';
+import { socialPlatforms } from 'open-event-frontend/utils/computed-helpers';
 
 @classic
 @classNameBindings(
@@ -14,9 +15,10 @@ import '@ember/object';
 export default class LinkInput extends Component {
   hasLinkName = false;
   isChild = false;
+  isSocialLink = false;
   canRemoveItem = true;
   canAddItem = true;
-  protocol = 'https';
+  protocol = 'https://';
   address = '';
 
   @observes('segmentedLink.{address,protocol}')
@@ -29,6 +31,9 @@ export default class LinkInput extends Component {
 
   @observes('protocol', 'address')
   protocolAddressObserver() {
+    if (!this.address) {return}
+    const link = this.linkName?.toLowerCase();
+
     let add = this.address;
     let proto = this.protocol;
     if (add.includes('http://') || add.includes('https://')) {
@@ -39,10 +44,29 @@ export default class LinkInput extends Component {
     if (add.includes('www.')) {
       add = add.substring(add.indexOf('.') + 1);
     }
+    if (socialPlatforms.includes(link)) {
+      proto = `https://${link}.com/`;
+    }
     this.set('segmentedLink', {
       protocol : proto,
       address  : add
     });
+  }
+
+  @observes('linkName')
+  linkNameObserver() {
+    const link = this.linkName;
+    if (socialPlatforms.includes(link)) {
+      this.set('segmentedLink', {
+        protocol : `https://${link}.com/`,
+        address  : ''
+      });
+    } else {
+      this.set('segmentedLink', {
+        protocol : 'https://',
+        address  : ''
+      });
+    }
   }
 
   didInsertElement() {
