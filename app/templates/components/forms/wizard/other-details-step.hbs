@@ -10,6 +10,7 @@
       @segmentedLink={{this.data.event.segmentedExternalEventUrl}}
       @isChild={{unless this.data.event.socialLinks true}}
       @canRemoveItem={{false}}
+      @addCustomLink={{action "addItem" "customLink" "social-link"}}
       @addItem={{action "addItem" "socialLinks" "social-link"}} />
 
     {{#each this.socialLinks as |socialLink|}}
@@ -17,10 +18,12 @@
         @hasLinkName={{true}}
         @linkName={{socialLink.name}}
         @isSocialLink={{true}}
+        @isCustomLink={{socialLink.isCustom}}
         @inputId={{socialLink.identifier}}
         @segmentedLink={{socialLink.segmentedLink}}
         @isChild={{true}}
         @addItem={{action "addItem" "socialLinks" "social-link"}}
+        @addCustomLink={{action "addItem" "customLink" "social-link"}}
         @removeItem={{action "removeItem" socialLink "socialLinks"}} />
     {{/each}}
   </div>
@@ -52,9 +55,9 @@
   <div class="field">
     <div class="ui slider checkbox">
       <Input
-@type="checkbox"
-@checked={{this.hasCodeOfConduct}}
-@id="add_code_of_conduct" />
+        @type="checkbox"
+        @checked={{this.hasCodeOfConduct}}
+        @id="add_code_of_conduct" />
       <label for="add_code_of_conduct">{{t 'Add Code of Conduct'}}</label>
     </div>
   </div>

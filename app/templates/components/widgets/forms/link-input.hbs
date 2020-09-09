@@ -2,6 +2,9 @@
   <div class="three wide field">
     <div class="ui labeled input">
       {{#if this.isSocialLink}}
+        {{#if this.isCustomLink}}
+          <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
+        {{else}}
         <UiDropdown @class='selection' @selected={{this.linkName}} @onChange={{action (mut this.linkName)}}>
           <div class="default text">Select</div>
           <i class="dropdown icon"></i>
@@ -16,9 +19,9 @@
             <div class="item" data-value="blog">Blog</div>
             <div class="item" data-value="vimeo">Vimeo</div>
             <div class="item" data-value="flicker">Flicker</div>
-            <div class="item" data-value="other">Other</div>
           </div>
         </UiDropdown>
+        {{/if}}
       {{else}}
         <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
       {{/if}}
@@ -39,10 +42,17 @@
       {{#if this.isChild}}
         <div class="ui icon buttons">
           {{#if this.canRemoveItem}}
-            <button type="button" class="ui sharp button red" {{action this.removeItem}}><i class="minus icon"></i></button>
+            <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action this.removeItem}} @position="top center">
+              <i class="minus icon"></i>
+            </UiPopup>
           {{/if}}
           {{#if this.canAddItem}}
-            <button type="button" class="ui button teal" {{action this.addItem}}><i class="plus icon"></i></button>
+            <UiPopup @content={{t "Custom"}} @class="ui icon teal button" @click={{action this.addCustomLink}} @position="top center">
+              <i class="plus icon"></i>
+            </UiPopup>
+            <UiPopup @content={{t "Social Link"}} @class="ui icon blue button" @click={{action this.addItem}} @position="top center">
+              <i class="plus icon"></i>
+            </UiPopup>
           {{/if}}
         </div>
       {{/if}}

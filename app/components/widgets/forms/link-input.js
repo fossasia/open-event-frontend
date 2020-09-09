@@ -15,6 +15,7 @@ import { socialPlatforms } from 'open-event-frontend/utils/computed-helpers';
 export default class LinkInput extends Component {
   hasLinkName = false;
   isChild = false;
+  isSocialLink = false;
   canRemoveItem = true;
   canAddItem = true;
   protocol = 'https://';
@@ -55,7 +56,6 @@ export default class LinkInput extends Component {
   @observes('linkName')
   linkNameObserver() {
     const link = this.linkName;
-
     if (socialPlatforms.includes(link)) {
       this.set('segmentedLink', {
         protocol : `https://${link}.com/`,
