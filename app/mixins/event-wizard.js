@@ -210,6 +210,11 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.sendAction('save');
       });
     },
+    savePublished() {
+      this.onValid(() => {
+        this.sendAction('save');
+      })
+    },
     moveForward() {
       this.onValid(() => {
         destroyDeletedTickets(this.deletedTickets);

@@ -101,13 +101,15 @@
       {{t 'Next'}}
       <i class="right chevron icon"></i>
     </button>
-    <button class="blue ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-      {{#if (eq this.data.event.state 'draft')}}
+    {{#if (eq this.data.event.state 'draft')}}
+      <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
         {{t 'Save as draft'}} <i class="save icon"></i>
-      {{else}}
+      </button>
+    {{else}}
+      <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'savePublished'}}>
         {{t 'Save'}} <i class="save icon"></i>
-      {{/if}}
-    </button>
+      </button>
+    {{/if}}
   </div>
   </div>
   <div class="ui grid">

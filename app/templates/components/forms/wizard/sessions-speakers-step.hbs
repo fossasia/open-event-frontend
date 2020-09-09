@@ -264,13 +264,15 @@
         {{t 'Previous'}}
         <i class="left chevron icon"></i>
       </button>
-      <button class="blue ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
       {{#if (eq this.data.event.state 'draft')}}
-        {{t 'Save as draft'}} <i class="save icon"></i>
+        <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
+          {{t 'Save as draft'}} <i class="save icon"></i>
+        </button>
       {{else}}
-        {{t 'Save'}} <i class="save icon"></i>
+        <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'savePublished'}}>
+          {{t 'Save'}} <i class="save icon"></i>
+        </button>
       {{/if}}
-      </button>
      </div>
   </div>
   <div class="ui grid">
