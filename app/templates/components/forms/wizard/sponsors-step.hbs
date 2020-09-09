@@ -102,8 +102,11 @@
       <i class="right chevron icon"></i>
     </button>
     <button class="blue ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-      {{t 'Save'}}
-      <i class="save icon"></i>
+      {{#if (eq this.data.event.state 'draft')}}
+        {{t 'Save as draft'}} <i class="save icon"></i>
+      {{else}}
+        {{t 'Save'}} <i class="save icon"></i>
+      {{/if}}
     </button>
   </div>
   </div>
@@ -131,18 +134,19 @@
       </a>
     {{/if}}
     {{#if (and this.data.event.locationName ticketsPresent)}}
-      {{#if (eq this.data.event.state "draft")}}
-        <button class="green ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-          {{t 'Publish'}}
-          <i class="check icon"></i>
-        </button>
-      {{else}}
-        <button class="orange ui right labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'unpublish'}}>
-          {{t 'Unpublish'}}
+      <button class="ui button right labeled icon small {{if (eq this.data.event.state 'published') 'orange' 'green'}}" {{action 'openConfirmModal'}}>
+        {{#if (eq this.data.event.state 'published')}}
           <i class="ban icon"></i>
-        </button>
-      {{/if}}
+          {{t 'Unpublish'}}
+        {{else}}
+          <i class="check icon"></i>
+          {{t 'Publish'}}
+        {{/if}}
+      </button>
     {{/if}}
   </div>
   </div>
 </form>
+
+
+<Modals::PublishUnpublishModal @isOpen={{this.isPublishUnpublishModalOpen}} @state={{this.data.event.state}} @isEventPublishable='true' @togglePublishState={{action 'togglePublishState'}} />
