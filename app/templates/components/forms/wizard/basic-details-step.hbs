@@ -8,7 +8,7 @@
   </div>
   <div class="ui secondary pointing menu">
     {{#each this.locationMenuItems as |item|}}
-      <a class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
+      <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
         {{t item}}
       </a>
     {{/each}}
@@ -634,7 +634,7 @@
         <i class="save icon"></i>
       </button>
     {{/if}}
-    {{#if this.data.event.locationName}}
+    {{#if this.data.event.name}}
       <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
         {{t 'Publish'}}
         <i class="check icon"></i>

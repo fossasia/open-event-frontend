@@ -250,5 +250,8 @@ function preSaveActions() {
 
   if (this.selectedLocationType) {
     this.set('data.event.online', ['Online', 'Mixed'].includes(this.selectedLocationType));
+    if (['Online', 'To be announced'].includes(this.selectedLocationType)) {
+      this.set('data.event.locationName', null);
+    }
   }
 }

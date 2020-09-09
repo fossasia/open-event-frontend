@@ -37,7 +37,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     } else if (this.data.event.locationName) {
       this.selectedLocationType = 'Venue';
     } else {
-      this.selectedLocationType = 'To be anounced';
+      this.selectedLocationType = 'To be announced';
     }
   },
 
