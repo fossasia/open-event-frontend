@@ -165,44 +165,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     onChange() {
       this.onValid(() => {});
-    },
-
-    openConfirmModal() {
-      this.set('isPublishUnpublishModalOpen', true);
-    },
-
-    togglePublishState() {
-      this.set('isPublishUnpublishModalOpen', false);
-      const { state } = this.data.event;
-      this.set('isLoading', true);
-      this.set('data.event.state', state === 'draft' ? 'published' : 'draft');
-      this.data.event.save()
-        .then(() => {
-          if (state === 'draft') {
-            this.sendAction('save', this.data);
-            this.notify.success(this.l10n.t('Your event has been published successfully.'),
-              {
-                id: 'event_publish'
-              });
-          } else {
-            this.sendAction('save', this.data);
-            this.notify.success(this.l10n.t('Your event has been unpublished.'),
-              {
-                id: 'event_unpublish'
-              });
-          }
-        })
-        .catch(e => {
-          console.error('Error while publishing/unpublishing event', e);
-          this.set('data.event.state', state);
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-            {
-              id: 'event_publish_error'
-            });
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
     }
   }
 });
