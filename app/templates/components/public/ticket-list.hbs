@@ -181,10 +181,12 @@
           {{t 'Order Now'}}
         </button>
         <div class="ui hidden divider"></div>
-        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
-          <i class="info icon"></i>
-          {{t 'Refund Policy'}}
-        </UiPopup>
+        {{#if this.event.refundPolicy}}
+          <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
+            <i class="info icon"></i>
+            {{t 'Refund Policy'}}
+          </UiPopup>
+        {{/if}}
       </div>
     </div>
   </div>
