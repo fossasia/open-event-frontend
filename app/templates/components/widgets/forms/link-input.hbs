@@ -6,7 +6,13 @@
           <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
         {{else}}
         <UiDropdown @class='selection' @selected={{this.linkName}} @onChange={{action (mut this.linkName)}}>
-          <div class="default text">Select</div>
+          <div class="default text">
+            {{#if this.linkName}}
+              {{this.linkName}}
+            {{else}}
+              Select
+            {{/if}}
+          </div>
           <i class="dropdown icon"></i>
           <div class="menu">
             <div class="item" data-value='website' >Website</div>
