@@ -226,8 +226,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     addItem(type, model) {
       if (type === 'socialLinks') {
         this.get(`data.event.${type}`).pushObject(this.store.createRecord(model, {
-          identifier: v1(),
-          isCustom: false,
+          identifier : v1(),
+          isCustom   : false
         }));
       } else if (type === 'customLink') {
         this.get('data.event.socialLinks').pushObject(this.store.createRecord(model, {

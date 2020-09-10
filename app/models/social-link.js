@@ -25,8 +25,8 @@ export default ModelBase.extend({
     return normalizedName;
   }),
 
-  isTwitter: equal('normalizedName', 'twitter'),
-  isCustom: computed('normalizedName', function() {
+  isTwitter : equal('normalizedName', 'twitter'),
+  isCustom  : computed('normalizedName', function() {
     return !socialPlatforms.includes(this.normalizedName);
   }),
 
