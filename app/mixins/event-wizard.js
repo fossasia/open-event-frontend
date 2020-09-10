@@ -235,7 +235,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.sendAction('save');
       });
     },
-    
+
     openConfirmModal() {
       this.set('isPublishUnpublishModalOpen', true);
     },
