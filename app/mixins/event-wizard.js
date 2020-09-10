@@ -1,6 +1,7 @@
 import Mixin from '@ember/object/mixin';
 import MutableArray from '@ember/array/mutable';
 import RSVP from 'rsvp';
+import { computed } from '@ember/object';
 import { v1 } from 'ember-uuid';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
 
@@ -45,6 +46,10 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     ];
   },
+
+  ticketsPresent: computed('data.event.tickets.@each', function() {
+    return this.data.event.tickets.length > 0;
+  }),
 
   /**
    * Save event & related data

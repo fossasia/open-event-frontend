@@ -28,10 +28,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.socialLinks.filterBy('isDeleted', false);
   }),
 
-  ticketsPresent: computed('data.event.tickets.@each', function() {
-    return this.data.event.tickets.length > 0;
-  }),
-
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
     return !this.authManager.currentUser.isVerified;
   }),

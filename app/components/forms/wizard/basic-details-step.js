@@ -106,10 +106,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.state !== 'published';
   }),
 
-  ticketsPresent: computed('data.event.tickets.@each', function() {
-    return this.data.event.tickets.length > 0;
-  }),
-
   unsavedEvent: computed('data.event.identifier', function() {
     return !this.data.event.identifier;
   }),
