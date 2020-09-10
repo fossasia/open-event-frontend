@@ -9,15 +9,15 @@ module('Integration | Helper | payment-icon', function(hooks) {
   test('it renders', async function(assert) {
     this.set('inputIcon', 'Visa');
     await render(hbs`{{payment-icon inputIcon}}`);
-    assert.equal(this.element.textContent.trim(), 'big visa icon');
+    assert.equal(this.element.textContent.trim(), 'big cc visa icon');
 
     this.set('inputIcon', 'MasterCard');
     await render(hbs`{{payment-icon inputIcon}}`);
-    assert.equal(this.element.textContent.trim(), 'big mastercard icon');
+    assert.equal(this.element.textContent.trim(), 'big cc mastercard icon');
 
     this.set('inputIcon', 'American Express');
     await render(hbs`{{payment-icon inputIcon}}`);
-    assert.equal(this.element.textContent.trim(), 'big amex icon');
+    assert.equal(this.element.textContent.trim(), 'big cc amex icon');
 
   });
 });
