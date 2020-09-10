@@ -218,6 +218,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     },
     savePublished() {
       this.onValid(() => {
+        preSaveActions.call(this);
         this.sendAction('save');
       });
     },
@@ -237,7 +238,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     unpublish() {
       this.onValid(() => {
         this.set('data.event.state', 'draft');
-        destroyDeletedTickets(this.deletedTickets);
+        preSaveActions.call(this);
         this.sendAction('save');
       });
     },
