@@ -9,6 +9,7 @@ export default ModelBase.extend({
   name       : attr('string'),
   link       : attr('string'),
   identifier : attr('string'), // used for providing css id for URL validations.
+  isCustom   : attr('boolean'),
 
   event: belongsTo('event'),
 
