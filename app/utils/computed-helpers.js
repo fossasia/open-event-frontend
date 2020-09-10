@@ -5,7 +5,7 @@ import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
 // Social Platforms
-export const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github', 'gitlab', 'vimeo', 'flicker', 'groups.google'];
+export const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github', 'gitlab', 'patreon', 'vimeo', 'flicker', 'groups.google'];
 
 /**
  * Get/set a splitted URL from/to a string URL field
@@ -30,7 +30,7 @@ export const computedSegmentedLink = function(property) {
       if (isSocialUrl) {
         return {
           protocol : `${splitted[0]}://${splittedDomain[0]}.com/`,
-          address  : splittedDomain.slice(-1) // last element is username
+          address  : splittedDomain.slice(-1)[0] // last element is username
         };
       }
       const isHTTPSOnly = splitted[0] === 'https';
@@ -41,8 +41,8 @@ export const computedSegmentedLink = function(property) {
     },
     set(key, value) {
       const finalLink = values(value).join('');
-
-      if (finalLink && isValidUrl(finalLink.trim())) {
+      const isUserNamePresent = values(value)[1];
+      if (finalLink && isValidUrl(finalLink.trim()) && isUserNamePresent) {
         this.set(property, finalLink.trim());
       } else {
         this.set(property, null);
