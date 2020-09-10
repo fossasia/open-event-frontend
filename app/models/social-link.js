@@ -3,13 +3,12 @@ import { computed } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
-import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
+import { computedSegmentedLink, socialPlatforms } from 'open-event-frontend/utils/computed-helpers';
 
 export default ModelBase.extend({
   name       : attr('string'),
   link       : attr('string'),
   identifier : attr('string'), // used for providing css id for URL validations.
-  isCustom   : attr('boolean'),
 
   event: belongsTo('event'),
 
@@ -20,7 +19,6 @@ export default ModelBase.extend({
     // https://github.com/fossasia/open-event-frontend/issues/4777
 
     const normalizedName = this.name?.trim().toLowerCase();
-    const socialPlatforms = ['facebook', 'twitter', 'github', 'youtube', 'linkedin', 'google'];
     if (!socialPlatforms.includes(normalizedName)) {
       return 'globe';
     }
@@ -28,6 +26,9 @@ export default ModelBase.extend({
   }),
 
   isTwitter: equal('normalizedName', 'twitter'),
+  isCustom: computed('normalizedName', function() {
+    return !socialPlatforms.includes(this.normalizedName);
+  }),
 
   segmentedLink: computedSegmentedLink.bind(this)('link')
 });
