@@ -145,7 +145,6 @@
     </div>
   {{/if}}
   <div class="ui section divider"></div>
-  <div class="ui section divider"></div>
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
       <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}}">
@@ -249,7 +248,7 @@
     </div>
     --}}
 
-    <div class="ui section divider"></div>
+    {{!-- <div class="ui section divider"></div> --}}
     <div class="field">
       <h4>{{t 'Add Payment Details'}}</h4>
       <div class="two fields">
@@ -303,7 +302,7 @@
         </div>
       </div>
     </div>
-    <div class="ui section divider"></div>
+    {{!-- <div class="ui section divider"></div> --}}
     <div class="field">
       <h4>{{t 'Choose payment methods'}}</h4>
       {{#if this.canAcceptPayPal}}
@@ -505,7 +504,7 @@
         </div>
       {{/if}}
 
-      <div class="ui section divider"></div>
+      {{!-- <div class="ui section divider"></div> --}}
 
       <div class="field">
         {{#if this.data.event.isTaxEnabled}}
