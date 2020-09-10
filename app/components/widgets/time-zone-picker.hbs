@@ -1,7 +1,7 @@
 <UiDropdown
   ...attributes
   class="search selection"
-  @selected={{@eventTimezone}}
+  @selected={{if @defaultLocal this.localTimezone @eventTimezone}}
   @forceSelection={{false}}
   @fullTextSearch={{true}}>
   <Input

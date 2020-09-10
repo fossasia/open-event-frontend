@@ -5,23 +5,41 @@
     <Widgets::Forms::LinkInput
       @hasLinkName={{true}}
       @fixedName={{true}}
-      @linkName={{t "External event URL"}}
+      @linkName={{t "Website"}}
       @inputId="external_event_url"
       @segmentedLink={{this.data.event.segmentedExternalEventUrl}}
       @isChild={{unless this.data.event.socialLinks true}}
       @canRemoveItem={{false}}
+      @addCustomLink={{action "addItem" "customLink" "social-link"}}
       @addItem={{action "addItem" "socialLinks" "social-link"}} />
 
     {{#each this.socialLinks as |socialLink|}}
       <Widgets::Forms::LinkInput
         @hasLinkName={{true}}
         @linkName={{socialLink.name}}
+        @isSocialLink={{true}}
+        @isCustomLink={{socialLink.isCustom}}
         @inputId={{socialLink.identifier}}
         @segmentedLink={{socialLink.segmentedLink}}
         @isChild={{true}}
         @addItem={{action "addItem" "socialLinks" "social-link"}}
+        @addCustomLink={{action "addItem" "customLink" "social-link"}}
         @removeItem={{action "removeItem" socialLink "socialLinks"}} />
     {{/each}}
+  </div>
+  
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui header">
+      <label for="refund_policy">{{t 'Refund Policy'}}</label>
+      <div class="sub header">
+        {{t 'Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the eventyay platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the eventyay platform.'}}
+      </div>
+    </div>
+    <Widgets::Forms::RichTextEditor
+      @textareaId="refunduct"
+      @value={{this.data.event.refundPolicy}}
+    />
   </div>
 
   <div class="ui section divider"></div>
@@ -51,9 +69,9 @@
   <div class="field">
     <div class="ui slider checkbox">
       <Input
-@type="checkbox"
-@checked={{this.hasCodeOfConduct}}
-@id="add_code_of_conduct" />
+        @type="checkbox"
+        @checked={{this.hasCodeOfConduct}}
+        @id="add_code_of_conduct" />
       <label for="add_code_of_conduct">{{t 'Add Code of Conduct'}}</label>
     </div>
   </div>

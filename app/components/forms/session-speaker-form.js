@@ -2,8 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { groupBy, orderBy } from 'lodash-es';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
-  validGithubProfileUrlPattern, validLinkedinProfileUrlPattern, validPhoneNumber } from 'open-event-frontend/utils/validators';
+import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { languages } from 'open-event-frontend/utils/dictionary/languages';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
@@ -376,111 +375,6 @@ export default Component.extend(FormMixin, {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
-        facebookRequired: {
-          identifier : 'speaker_facebook_required',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter facebook link')
-            },
-            {
-              type   : 'regExp',
-              value  : validFacebookProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid facebook account url')
-            }
-          ]
-        },
-        facebook: {
-          identifier : 'speaker_facebook',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : validFacebookProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid facebook account url')
-            }
-          ]
-        },
-        twitterRequired: {
-          identifier : 'speaker_twitter_required',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter twitter link')
-            },
-            {
-              type   : 'regExp',
-              value  : validTwitterProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid twitter profile url')
-            }
-          ]
-        },
-        twitter: {
-          identifier : 'speaker_twitter',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : validTwitterProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid twitter profile url')
-            },
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
-        githubRequired: {
-          identifier : 'speaker_github_required',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your GitHub profile url')
-            },
-            {
-              type   : 'regExp',
-              value  : validGithubProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid GitHub profile url')
-            }
-          ]
-        },
-        github: {
-          identifier : 'speaker_github',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : validGithubProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid GitHub profile url')
-            }
-          ]
-        },
-        linkedinRequired: {
-          identifier : 'speaker_linkedin_required',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter Linkedin profile url')
-            },
-            {
-              type   : 'regExp',
-              value  : validLinkedinProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid Linkedin profile url')
-            }
-          ]
-        },
-        linkedin: {
-          identifier : 'speaker_linkedin',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : validLinkedinProfileUrlPattern,
-              prompt : this.l10n.t('Please enter a valid Linkedin profile url')
             }
           ]
         }
