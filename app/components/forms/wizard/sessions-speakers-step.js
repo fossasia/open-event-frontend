@@ -136,10 +136,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     return this.data.customForms.filterBy('isComplex', true);
   }),
 
-  ticketsPresent: computed('data.event.tickets.@each', function() {
-    return this.data.event.tickets.length > 0;
-  }),
-
   fieldChanged(field) {
     if (!field.get('isIncluded')) {
       field.set('isRequired', false);
