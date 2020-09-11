@@ -12,6 +12,12 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         return this.l10n.t('Due');
       case 'upcoming':
         return this.l10n.t('Upcoming');
+      case 'unpaid':
+        return this.l10n.t('Unpaid');
+      case 'refunding':
+        return this.l10n.t('Refunding');
+      case 'refunded':
+        return this.l10n.t('Refunded');
       case 'all':
         return this.l10n.t('All');
     }
@@ -27,6 +33,14 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           name : 'status',
           op   : 'eq',
           val  : params.invoice_status
+        }
+      ];
+    } else if (params.invoice_status === 'unpaid') {
+      filterOptions = [
+        {
+          name : 'status',
+          op   : 'ne',
+          val  : 'paid'
         }
       ];
     } else if (params.invoice_status === 'upcoming') {

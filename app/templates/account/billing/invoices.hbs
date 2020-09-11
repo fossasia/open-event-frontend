@@ -14,6 +14,15 @@
         <LinkTo @route="account.billing.invoices.list" @model="upcoming" class="item">
           {{t 'Upcoming'}}
         </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="unpaid" class="item">
+          {{t 'Unpaid'}}
+        </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="refunding" class="item">
+          {{t 'Refunding'}}
+        </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="refunded" class="item">
+          {{t 'Refunded'}}
+        </LinkTo>
       </TabbedNavigation>
     </div>
   </div>
