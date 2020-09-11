@@ -27,20 +27,12 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this.set('params', params);
     const searchField = 'status';
     let filterOptions = [];
-    if (params.invoice_status === 'paid' || params.invoice_status === 'due') {
+    if (params.invoice_status === 'paid' || params.invoice_status === 'due' || params.invoice_status === 'refunding' || params.invoice_status === 'refunded') {
       filterOptions = [
         {
           name : 'status',
           op   : 'eq',
           val  : params.invoice_status
-        }
-      ];
-    } else if (params.invoice_status === 'unpaid') {
-      filterOptions = [
-        {
-          name : 'status',
-          op   : 'ne',
-          val  : 'paid'
         }
       ];
     } else if (params.invoice_status === 'upcoming') {

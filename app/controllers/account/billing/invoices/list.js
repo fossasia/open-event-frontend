@@ -113,37 +113,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           cellComponent : 'ui-table/cell/events/cell-event-invoice'
         },
         {
-          name            : 'Amount',
-          valuePath       : 'amount',
-          extraValuePaths : ['event'],
-          cellComponent   : 'ui-table/cell/events/cell-amount',
-          isSortable      : true,
-          headerComponent : 'tables/headers/sort'
-        },
-        {
-          name            : 'Status',
-          valuePath       : 'status',
-          isSortable      : true,
-          headerComponent : 'tables/headers/sort'
-        },
-        {
-          name            : 'Action',
-          valuePath       : 'identifier',
-          extraValuePaths : ['status'],
-          cellComponent   : 'ui-table/cell/events/cell-action'
-        }
-
-      ];
-    } else if (this.model.params.invoice_status === 'unpaid') {
-      columns = [
-        {
-          name      : 'Invoice ID',
-          valuePath : 'identifier'
-        },
-        {
-          name          : 'Event Name',
-          valuePath     : 'event',
-          cellComponent : 'ui-table/cell/events/cell-event-invoice'
+          name       : 'Date',
+          valuePath  : 'createdAt',
+          isSortable : true
         },
         {
           name            : 'Amount',
