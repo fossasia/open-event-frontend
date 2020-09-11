@@ -2,24 +2,14 @@ import Route from '@ember/routing/route';
 import moment from 'moment';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import { action } from '@ember/object';
+import { capitalize } from 'lodash-es';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.params.invoice_status) {
-      case 'paid':
-        return this.l10n.t('Paid');
-      case 'due':
-        return this.l10n.t('Due');
-      case 'upcoming':
-        return this.l10n.t('Upcoming');
-      case 'unpaid':
-        return this.l10n.t('Unpaid');
-      case 'refunding':
-        return this.l10n.t('Refunding');
-      case 'refunded':
-        return this.l10n.t('Refunded');
-      case 'all':
-        return this.l10n.t('All');
+    if (['paid', 'due', 'refunding', 'refunded'].includes(this.params.invoice_status)) {
+      return this.l10n.t(capitalize(this.params.invoice_status));
+    } else {
+      return this.l10n.t('All');
     }
   }
 
@@ -27,7 +17,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this.set('params', params);
     const searchField = 'status';
     let filterOptions = [];
-    if (params.invoice_status === 'paid' || params.invoice_status === 'due' || params.invoice_status === 'refunding' || params.invoice_status === 'refunded') {
+    if (['paid', 'due', 'refunding', 'refunded'].includes(params.invoice_status)) {
       filterOptions = [
         {
           name : 'status',
