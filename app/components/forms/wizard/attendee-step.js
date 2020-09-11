@@ -26,7 +26,6 @@ export default Component.extend(FormMixin,EventWizardMixin, {
     },
     savePublished() {
       this.onValid(() => {
-        this.set('data.event.state', 'published');
         this.sendAction('save', this.data);
       });
     },
