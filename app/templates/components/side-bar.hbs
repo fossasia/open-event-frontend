@@ -1,5 +1,8 @@
 <div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
   <LinkTo
+    @route="pricing" class="item"
+    @activeClass="">{{t 'Pricing'}}</LinkTo>
+  <LinkTo
     @route="explore" class="item"
     @activeClass="">{{t 'Browse Events'}}</LinkTo>
   {{#if this.session.isAuthenticated}}
