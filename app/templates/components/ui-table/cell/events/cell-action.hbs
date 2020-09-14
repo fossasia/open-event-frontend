@@ -1,9 +1,6 @@
 {{#if (eq this.extraRecords.status 'due')}}
-  <LinkTo @route="event-invoice.review" @model={{this.record}} class="ui icon button">
-    <i class ="big stripe icon"></i>
-  </LinkTo>
-  <LinkTo @route="event-invoice.review" @model={{this.record}} class="ui icon button">
-    <i class ="big paypal icon"></i>
+  <LinkTo @route="event-invoice.review" @model={{this.record}} class="ui blue button">
+   	{{t 'Review and Pay'}}
   </LinkTo>
 {{else}}
   <LinkTo @route="event-invoice.paid" @model={{this.record}} class="ui green button">
