@@ -80,6 +80,16 @@
             <i class="patreon icon"></i> {{t 'Patreon'}}
           </a>
         {{/if}}
+        {{#if this.socialLinks.gitterUrl}}
+          <a class="item" href="{{this.socialLinks.gitterUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="gitter icon"></i> {{t 'Gitter'}}
+          </a>
+        {{/if}}
+        {{#if this.socialLinks.telegramUrl}}
+          <a class="item" href="{{this.socialLinks.telegramUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="telegram icon"></i> {{t 'Telegram'}}
+          </a>
+        {{/if}}
       </div>
     </div>
   </div>

@@ -61,5 +61,21 @@
       @isSocialLink={{true}}
       @inputId="patreon" />
   </div>
+  <div class="field">
+    <label>{{t 'Gitter'}}</label>
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedGitterUrl}}
+      @linkName="gitter"
+      @isSocialLink={{true}}
+      @inputId="gitter" />
+  </div>
+  <div class="field">
+    <label>{{t 'Telegram'}}</label>
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedTelegramUrl}}
+      @linkName="telegram"
+      @isSocialLink={{true}}
+      @inputId="telegram" />
+  </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>
 </form>
