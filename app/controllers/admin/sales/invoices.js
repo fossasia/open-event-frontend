@@ -38,11 +38,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name      : 'Status',
         valuePath : 'status'
       }
-      //{
+      // {
       //  name            : 'Action',
       //  valuePath       : 'identifier',
       //  cellComponent   : 'ui-table/cell/admin/sales/cell-action'
-      //}   
+      // }
     ];
   }
 }
