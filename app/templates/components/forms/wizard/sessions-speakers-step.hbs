@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}}>
 
   <div class="ui centered grid">
     <div class="column">
@@ -255,64 +255,11 @@
 
  --}}
 
-  <div class="ui grid">
-    <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}} {{if this.isUserUnverified 'disabled'}}">
-      <LinkTo @route="events.view.index" @model={{this.data.event.identifier}} class="red ui right labeled small icon button">
-        {{t 'Cancel'}}<i class="close icon"></i>
-      </LinkTo>
-      <button class="ui left labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
-        {{t 'Previous'}}
-        <i class="left chevron icon"></i>
-      </button>
-      {{#if (eq this.data.event.state 'draft')}}
-        <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-          {{t 'Save as draft'}} <i class="save icon"></i>
-        </button>
-      {{else}}
-        <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'savePublished'}}>
-          {{t 'Save'}} <i class="save icon"></i>
-        </button>
-      {{/if}}
-     </div>
-  </div>
-  <div class="ui grid">
-    <div class="sixteen wide column right aligned">
-      {{#if (not this.unsavedEvent)}}
-        {{#if (eq this.data.event.state 'draft')}}
-          <p> This event is currently not published. It is in draft mode and it is not visible publicly. </p>
-        {{else}}
-          <p>This event is published. Any changes you make will appear on your live event.</p>
-        {{/if}}
-      {{/if}}
-    </div>
-  </div>
-  <div class="ui divider"></div>
-  <div class="ui grid">
-    <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}} {{if this.isUserUnverified 'disabled'}}">
-      {{#if (eq this.data.event.state 'draft')}}
-         <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="ui right labeled small icon button">
-        {{t 'Preview'}} <i class="hide icon"></i>
-      </a>
-      {{else}}
-      <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="green ui right labeled small icon button">
-        {{t 'View'}} <i class="unhide icon"></i>
-      </a>
-    {{/if}}
-
-    {{#if this.ticketsPresent}}
-      <button class="ui button right labeled icon small {{if (eq this.data.event.state 'published') 'orange' 'green'}}" {{action 'openConfirmModal'}}>
-        {{#if (eq this.data.event.state 'published')}}
-          <i class="ban icon"></i>
-          {{t 'Unpublish'}}
-        {{else}}
-          <i class="check icon"></i>
-          {{t 'Publish'}}
-        {{/if}}
-      </button>
-    {{/if}}
-  </div>
-  </div>
+  <Forms::Wizard::WizardFooter
+    @event={{this.data.event}}
+    @loading={{this.loading}}
+    @last={{true}}
+    @onSaved={{action 'saveForm'}}
+    @onSaveDraft={{action 'saveDraft'}}
+    @move={{action 'move'}} />
 </form>
-
-
-<Modals::PublishUnpublishModal @isOpen={{this.isPublishUnpublishModalOpen}} @state={{this.data.event.state}} @isEventPublishable='true' @togglePublishState={{action 'togglePublishState'}} />

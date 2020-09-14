@@ -3,7 +3,6 @@ import MutableArray from '@ember/array/mutable';
 import RSVP from 'rsvp';
 import { v1 } from 'ember-uuid';
 import CustomFormMixin from 'open-event-frontend/mixins/custom-form';
-import { computed } from '@ember/object';
 
 export default Mixin.create(MutableArray, CustomFormMixin, {
 
@@ -46,10 +45,6 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     ];
   },
-
-  ticketsPresent: computed('data.event.tickets.@each', function() {
-    return this.data.event.tickets.length > 0;
-  }),
 
   /**
    * Save event & related data
@@ -216,67 +211,21 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.sendAction('save');
       });
     },
-    savePublished() {
+    saveForm() {
       this.onValid(() => {
         preSaveActions.call(this);
-        this.sendAction('save');
+        this.sendAction('save', this.data);
       });
     },
-    moveForward() {
+    move(direction) {
       this.onValid(() => {
-        preSaveActions.call(this);
-        this.sendAction('move');
+        this.sendAction('move', direction, this.data);
       });
     },
-    publish() {
+    onValidate(callback) {
       this.onValid(() => {
-        this.set('data.event.state', 'published');
-        preSaveActions.call(this);
-        this.sendAction('save');
+        callback(true);
       });
-    },
-    unpublish() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        preSaveActions.call(this);
-        this.sendAction('save');
-      });
-    },
-    openConfirmModal() {
-      this.set('isPublishUnpublishModalOpen', true);
-    },
-    togglePublishState() {
-      this.set('isPublishUnpublishModalOpen', false);
-      const { state } = this.data.event;
-      this.set('isLoading', true);
-      this.set('data.event.state', state === 'draft' ? 'published' : 'draft');
-      this.data.event.save()
-        .then(() => {
-          if (state === 'draft') {
-            this.sendAction('save', this.data);
-            this.notify.success(this.l10n.t('Your event has been published successfully.'),
-              {
-                id: 'event_publish'
-              });
-          } else {
-            this.sendAction('save', this.data);
-            this.notify.success(this.l10n.t('Your event has been unpublished.'),
-              {
-                id: 'event_unpublish'
-              });
-          }
-        })
-        .catch(e => {
-          console.error('Error while publishing/unpublishing event', e);
-          this.set('data.event.state', state);
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-            {
-              id: 'event_publish_error'
-            });
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
     },
     addItem(type, model) {
       if (type === 'socialLinks') {

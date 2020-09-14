@@ -52,17 +52,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
     removeSponsor(sponsor) {
       sponsor.deleteRecord();
-    },
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      });
-    },
-    move(direction) {
-      this.onValid(() => {
-        this.sendAction('move', direction);
-      });
     }
   },
 
