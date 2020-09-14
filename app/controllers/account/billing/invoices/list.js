@@ -104,10 +104,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } else if (this.model.params.invoice_status === 'all') {
       columns = [
         {
-          name           : 'Invoice ID',
-          valuePath      : 'identifier',
+          name            : 'Invoice ID',
+          valuePath       : 'identifier',
           extraValuePaths : ['invoicePdfUrl'],
-          cellComponent  : 'ui-table/cell/events/cell-download-invoice'
+          cellComponent   : 'ui-table/cell/events/cell-download-invoice'
         },
         {
           name          : 'Event Name',
