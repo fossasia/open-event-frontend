@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
-
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
   get columns() {
@@ -38,6 +37,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name      : 'Status',
         valuePath : 'status'
+      },
+      {
+        name            : 'Action',
+        valuePath       : 'identifier',
+        cellComponent   : 'ui-table/cell/admin/sales/cell-action'
       }
     ];
   }
