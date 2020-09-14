@@ -46,7 +46,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     ];
   },
-  
+
   ticketsPresent: computed('data.event.tickets.@each', function() {
     return this.data.event.tickets.length > 0;
   }),
