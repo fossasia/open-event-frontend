@@ -45,6 +45,22 @@
     <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedStaticDomain}} @inputId="api_url" />
   </div>
   <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Cookie Policy'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Cookie Policy URL'}}
+    </label>
+    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedCookiePolicyLink}} @inputId="cookie_url" />
+  </div>
+  <div class="field">
+    <label>{{t 'Cookie Policy'}}</label>
+    <Textarea
+      @rows="3"
+      @value={{this.settings.cookiePolicy}} />
+  </div>
+  <div class="ui hidden divider"></div>
   <Forms::Admin::Settings::System::SocialMediaToken @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
   <Forms::Admin::Settings::System::CaptchaForm @settings={{this.settings}} />
