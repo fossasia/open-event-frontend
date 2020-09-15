@@ -76,8 +76,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
-    if (event.name && event.startsAtDate && event.endsAtDate) {
 
+    if (event.name && event.startsAtDate && event.endsAtDate) {
       await event.save();
 
       await Promise.all((data.tickets ? data.tickets.toArray() : []).map(ticket => {
@@ -216,29 +216,20 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.sendAction('save');
       });
     },
-    savePublished() {
-      this.onValid(() => {
-        this.sendAction('save');
-      });
-    },
-    moveForward() {
+    saveForm() {
       this.onValid(() => {
         preSaveActions.call(this);
-        this.sendAction('move');
+        this.sendAction('save', this.data);
       });
     },
-    publish() {
+    move(direction) {
       this.onValid(() => {
-        this.set('data.event.state', 'published');
-        preSaveActions.call(this);
-        this.sendAction('save');
+        this.sendAction('move', direction, this.data);
       });
     },
-    unpublish() {
+    onValidate(callback) {
       this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        destroyDeletedTickets(this.deletedTickets);
-        this.sendAction('save');
+        callback(true);
       });
     },
 

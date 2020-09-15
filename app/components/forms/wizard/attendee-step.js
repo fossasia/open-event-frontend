@@ -15,25 +15,5 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   showEditColumn: computed('editableFields.@each', function() {
     return this.editableFields?.some(field => field.isComplex);
-  }),
-
-  actions: {
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save', this.data);
-      });
-    },
-    savePublished() {
-      this.onValid(() => {
-        this.set('data.event.state', 'published');
-        this.sendAction('save', this.data);
-      });
-    },
-    move(direction) {
-      this.onValid(() => {
-        this.sendAction('move', direction, this.data);
-      });
-    }
-  }
+  })
 });

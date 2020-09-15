@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}} novalidate>
   <div class="field">
     <label class="required" for="name">{{t 'Event Name'}}</label>
     <Input
@@ -623,73 +623,16 @@
   </div>
 
   <br>
-  <div class="ui grid">
-  <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
-    {{#if this.unsavedEvent}}
-      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small {{if this.isUserUnverified 'disabled'}}">
-        {{t 'Discard'}} <i class="close icon"></i>
-      </LinkTo>
-    {{else}}
-      <LinkTo @route="events.view.index" @model={{this.data.event.identifier}} class="ui red button right labeled icon small right aligned {{if this.isUserUnverified 'disabled'}} button">
-        {{t 'Cancel'}} <i class="close icon"></i>
-      </LinkTo>
-    {{/if}}
-    <button class="ui button right labeled icon small {{if this.isLoading 'disabled'}} right aligned" type="button" {{action 'moveForward'}}>
-      {{t 'Next'}}
-      <i class="right chevron icon"></i>
-    </button>
-      {{#if (eq this.data.event.state 'draft')}}
-      <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save as draft'}} <i class="save icon"></i>
-      </button>
-      {{else}}
-      <button class="ui blue button right labeled icon small right aligned {{if this.isLoading 'disabled'}}" type="button" {{action 'savePublished'}}>
-        {{t 'Save'}} <i class="save icon"></i>
-      </button>
-      {{/if}}
-    </div>
-  </div>
-  <div class="ui grid">
-    <div class="sixteen wide column right aligned">
-      {{#if (not this.unsavedEvent)}}
-        {{#if (eq this.data.event.state 'draft')}}
-          <p> This event is currently not published. It is in draft mode and it is not visible publicly. </p>
-        {{else}}
-          <p>This event is published. Any changes you make will appear on your live event.</p>
-        {{/if}}
-      {{else}}
-        <p>You can preview the event after you have saved it as a draft. You can publish the event after filling in the required fields.</p>
-      {{/if}}
-    </div>
-  </div>
-  <div class="ui divider"></div>
-  <div class="ui grid">
-  <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
-    {{#if (not this.unsavedEvent)}}
-      {{#if (eq this.data.event.state 'draft')}}
-        <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="ui right labeled icon small button">
-          {{t 'Preview'}} <i class="hide icon"></i>
-        </a>
-      {{else}}
-        <a href="{{this.data.event.url}}" target="_blank" rel="noopener" class="green ui right labeled icon small button">
-          {{t 'View'}} <i class="unhide icon"></i>
-        </a>
-      {{/if}}
-    {{/if}}
-    
-    {{#if this.ticketsPresent}}
-      <button class="ui button right labeled icon small {{if (eq this.data.event.state 'published') 'orange' 'green'}}" {{action 'openConfirmModal'}}>
-        {{#if (eq this.data.event.state 'published')}}
-          <i class="ban icon"></i>
-          {{t 'Unpublish'}}
-        {{else}}
-          <i class="check icon"></i>
-          {{t 'Publish'}}
-        {{/if}}
-      </button>
-    {{/if}}
-  </div>
-  </div>
+
+  <Forms::Wizard::WizardFooter
+    @event={{this.data.event}}
+    @loading={{this.loading}}
+    @first={{true}}
+    @onSaved={{action 'saveForm'}}
+    @onSaveDraft={{action 'saveDraft'}}
+    @move={{action 'move'}}
+    @onValidate={{action 'onValidate'}} />
+
 </form>
 
 <Modals::TaxInfoModal
@@ -697,5 +640,3 @@
   @tax={{this.data.event.tax}}
   @hasTaxInfo={{this.data.event.isTaxEnabled}} 
 />
-
-<Modals::PublishUnpublishModal @isOpen={{this.isPublishUnpublishModalOpen}} @state={{this.data.event.state}} @isEventPublishable='true' @togglePublishState={{action 'togglePublishState'}} />
