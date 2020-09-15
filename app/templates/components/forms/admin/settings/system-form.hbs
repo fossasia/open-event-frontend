@@ -52,7 +52,7 @@
     <label>
       {{t 'Cookie Policy URL'}}
     </label>
-    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedCookiePolicyLink}} @inputId="cookie_url" />
+    <Input type="url" @value={{this.settings.cookiePolicyLink}} />
   </div>
   <div class="field">
     <label>{{t 'Cookie Policy'}}</label>

@@ -113,6 +113,5 @@ export default ModelBase.extend({
   segmentedAndroidAppUrl    : computedSegmentedLink.bind(this)('androidAppUrl'),
   segmentedWebAppUrl        : computedSegmentedLink.bind(this)('webAppUrl'),
   segmentedFrontendUrl      : computedSegmentedLink.bind(this)('frontendUrl'),
-  segmentedStaticDomain     : computedSegmentedLink.bind(this)('staticDomain'),
-  segmentedCookiePolicyLink : computedSegmentedLink.bind(this)('cookiePolicyLink')
+  segmentedStaticDomain     : computedSegmentedLink.bind(this)('staticDomain')
 });
