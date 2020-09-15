@@ -255,11 +255,13 @@
 
  --}}
 
-  <Forms::Wizard::WizardFooter
-    @event={{this.data.event}}
-    @loading={{this.loading}}
-    @last={{true}}
-    @onSaved={{action 'saveForm'}}
-    @onSaveDraft={{action 'saveDraft'}}
-    @move={{action 'move'}} />
 </form>
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @last={{true}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}} />
+  

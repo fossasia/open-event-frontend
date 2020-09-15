@@ -60,10 +60,10 @@
       @onSave={{action (mut this.field) null}} />
   {{/if}}
   <div class="spacer-50"></div>
-  <Forms::Wizard::WizardFooter
+</form>
+<Forms::Wizard::WizardFooter
     @event={{this.data.event}}
     @loading={{this.loading}}
     @onSaved={{action 'saveForm'}}
     @onSaveDraft={{action 'saveDraft'}}
     @move={{action 'move'}} />
-</form>

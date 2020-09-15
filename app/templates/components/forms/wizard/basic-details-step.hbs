@@ -621,18 +621,8 @@
         {{subTopic.name}}
     </PowerSelect>
   </div>
-
   <br>
-
-  <Forms::Wizard::WizardFooter
-    @event={{this.data.event}}
-    @loading={{this.loading}}
-    @first={{true}}
-    @onSaved={{action 'saveForm'}}
-    @onSaveDraft={{action 'saveDraft'}}
-    @move={{action 'move'}}
-    @onValidate={{action 'onValidate'}} />
-
+  
 </form>
 
 <Modals::TaxInfoModal
@@ -640,3 +630,12 @@
   @tax={{this.data.event.tax}}
   @hasTaxInfo={{this.data.event.isTaxEnabled}} 
 />
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @first={{true}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}}
+  @onValidate={{action 'onValidate'}} />
