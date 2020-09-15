@@ -5,7 +5,7 @@
         {{@session.title}}
         {{#unless @hideSessionLink}}
           {{!-- template-lint-disable no-nested-interactive  --}}
-          <a href="{{href-to 'public.session.view' @session.id}}" style={{css float='right' color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
+          <a href="{{href-to 'public.session.view' (or @session.event.identifier @event.identifier) @session.id}}" style={{css float='right' color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
         {{/unless}}
         <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
           {{@session.sessionType.name}}
