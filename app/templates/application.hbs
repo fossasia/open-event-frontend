@@ -2,7 +2,7 @@
 <div id='device-type-identifier'></div>
 {{#if this.showCookie}}
   <div class="ui inline warning large message">
-    <i class="close icon" onclick={{action (mut this.showCookie) false}} role="button"></i>
+    <i class="close icon" onclick={{action 'hideCookieMessage'}} role="button"></i>
     {{this.model.cookiePolicy}}
     {{#if this.model.cookiePolicyLink}}
       <p><a href="{{this.model.cookiePolicyLink}}">Click here For more information</a></p>
