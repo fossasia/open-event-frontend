@@ -121,23 +121,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         'data.event.copyright.licence': null
       });
     },
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      });
-    },
-    move(direction) {
-      this.onValid(() => {
-        this.sendAction('move', direction);
-      });
-    },
-    publish() {
-      this.onValid(() => {
-        this.set('data.event.state', 'published');
-        this.sendAction('save');
-      });
-    },
     onChange() {
       this.onValid(() => {});
     }

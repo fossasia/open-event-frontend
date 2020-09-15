@@ -71,7 +71,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
-    if (event.name && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
+
+    if (event.name && event.startsAtDate && event.endsAtDate) {
       await event.save();
 
       await Promise.all((data.tickets ? data.tickets.toArray() : []).map(ticket => {
@@ -210,19 +211,23 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         this.sendAction('save');
       });
     },
-    moveForward() {
+    saveForm() {
       this.onValid(() => {
         preSaveActions.call(this);
-        this.sendAction('move');
+        this.sendAction('save', this.data);
       });
     },
-    publish() {
+    move(direction) {
       this.onValid(() => {
-        this.set('data.event.state', 'published');
-        preSaveActions.call(this);
-        this.sendAction('save');
+        this.sendAction('move', direction, this.data);
       });
     },
+    onValidate(callback) {
+      this.onValid(() => {
+        callback(true);
+      });
+    },
+
     addItem(type, model) {
       if (type === 'socialLinks') {
         this.get(`data.event.${type}`).pushObject(this.store.createRecord(model, {
