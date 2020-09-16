@@ -10,7 +10,7 @@ import { merge, mapValues, isArray } from 'lodash-es';
  * @param stringifyArray - Should an array be converted to csv
  * @return {string}
  */
-export const buildUrlViaUrlParse = (baseUrl: string, queryParams: { [key: string]: string }, stringifyArray = false) => {
+export const buildUrlViaUrlParse = (baseUrl: string, queryParams: { [key: string]: string }, stringifyArray = false): string => {
   const parsedUrl = new UrlParser(baseUrl, true);
   if (stringifyArray) {
     queryParams = mapValues(queryParams, value => {
@@ -32,7 +32,7 @@ export const buildUrlViaUrlParse = (baseUrl: string, queryParams: { [key: string
  * @param stringifyArray - Should an array be converted to csv
  * @return {string}
  */
-export const buildUrlViaQueryString = (baseUrl: string, queryParams: { [key: string]: string }, stringifyArray = false) => {
+export const buildUrlViaQueryString = (baseUrl: string, queryParams: { [key: string]: string }, stringifyArray = false): string => {
   const parsedUrl = queryString.parseUrl(baseUrl, { arrayFormat: 'bracket' });
   if (stringifyArray) {
     queryParams = mapValues(queryParams, value => {
