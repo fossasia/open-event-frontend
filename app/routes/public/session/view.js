@@ -3,8 +3,8 @@ import Route from '@ember/routing/route';
 
 @classic
 export default class ViewRoute extends Route {
-  titleToken() {
-    return this.l10n.t('Sessions');
+  titleToken(model) {
+    return model.title;
   }
 
   model(params) {
