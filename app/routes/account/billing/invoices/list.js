@@ -28,34 +28,33 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           name : 'user',
           op   : 'has',
           val  : {
-            name: 'email',
-            op  : 'eq',
-            val : this.authManager.currentUser.email
+            name : 'email',
+            op   : 'eq',
+            val  : this.authManager.currentUser.email
           }
         }
       ];
-    } else if(params.invoice_status === 'all') {
+    } else if (params.invoice_status === 'all') {
       filterOptions = [
         {
           name : 'user',
           op   : 'has',
           val  : {
-            name: 'email',
-            op  : 'eq',
-            val : this.authManager.currentUser.email
+            name : 'email',
+            op   : 'eq',
+            val  : this.authManager.currentUser.email
           }
         }
       ];
-    }
-    else if (params.invoice_status === 'upcoming') {
+    } else if (params.invoice_status === 'upcoming') {
       filterOptions = [
         {
           name : 'user',
           op   : 'has',
           val  : {
-            name: 'email',
-            op  : 'eq',
-            val : this.authManager.currentUser.email
+            name : 'email',
+            op   : 'eq',
+            val  : this.authManager.currentUser.email
           }
         },
         {
