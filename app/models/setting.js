@@ -108,6 +108,8 @@ export default ModelBase.extend({
   segmentedFacebookUrl   : computedSegmentedLink.bind(this)('facebookUrl'),
   segmentedInstagramUrl  : computedSegmentedLink.bind(this)('instagramUrl'),
   segmentedPatreonUrl    : computedSegmentedLink.bind(this)('patreonUrl'),
+  segmentedGitterUrl     : computedSegmentedLink.bind(this)('gitterUrl'),
+  segmentedTelegramUrl   : computedSegmentedLink.bind(this)('telegramUrl'),
   segmentedTwitterUrl    : computedSegmentedLink.bind(this)('twitterUrl'),
   segmentedGoogleUrl     : computedSegmentedLink.bind(this)('googleUrl'),
   segmentedYoutubeUrl    : computedSegmentedLink.bind(this)('youtubeUrl'),
