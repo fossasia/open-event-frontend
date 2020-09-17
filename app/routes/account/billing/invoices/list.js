@@ -86,7 +86,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     queryString = this.applySortFilters(queryString, params);
     return {
-      eventInvoices: await this.asArray(this.store.query('event-invoice', queryString)),
+      eventInvoices: await this.asArray(this.authManager.currentUser.query('eventInvoices', queryString)),
       params
 
     };
