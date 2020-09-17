@@ -63,19 +63,11 @@
   </div>
   <div class="field">
     <label>{{t 'Gitter'}}</label>
-    <Widgets::Forms::LinkInput
-      @segmentedLink={{this.socials.segmentedGitterUrl}}
-      @linkName="gitter"
-      @isSocialLink={{true}}
-      @inputId="gitter" />
+    <Input type="url" @value={{this.socials.gitterUrl}} />
   </div>
   <div class="field">
     <label>{{t 'Telegram'}}</label>
-    <Widgets::Forms::LinkInput
-      @segmentedLink={{this.socials.segmentedTelegramUrl}}
-      @linkName="telegram"
-      @isSocialLink={{true}}
-      @inputId="telegram" />
+    <Input type="url" @value={{this.socials.telegramUrl}} />
   </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>
 </form>
