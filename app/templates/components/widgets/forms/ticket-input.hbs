@@ -102,7 +102,7 @@
         </div>
       </div>
       <div class="field">
-        <div class="ui checkbox" onClick={{if (not this.ishidden) (confirm 'To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.' (action 'hideTicket') 'Ok' 'Cancel')}}>
+        <div class="ui checkbox" onClick={{if (not this.ishidden) (confirm 'To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.' (action 'hideTicket') 'Ok' 'Cancel' 'green' 'red')}}>
           <Input
 @type="checkbox"
 @checked={{this.ishidden}}
