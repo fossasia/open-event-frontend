@@ -10,7 +10,6 @@ import Component from '@ember/component';
 export default class TicketInput extends Component {
   @gte('ticket.maxPrice', 'ticket.minPrice')
   minMaxValid;
-
   @action
   toggleSettings() {
     this.toggleProperty('isExpanded');
@@ -25,4 +24,10 @@ export default class TicketInput extends Component {
     super.willDestroyElement(...arguments);
     $('.icon.buttons', this.element).find('.button').popup('destroy');
   }
+
+  @action
+  hideTicket() {
+    this.toggleProperty('ishidden');
+  }
+
 }

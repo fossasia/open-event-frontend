@@ -102,14 +102,14 @@
         </div>
       </div>
       <div class="field">
-        <div class="ui checkbox">
+        <div class="ui checkbox" onClick={{if (not this.ishidden) (confirm 'To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.' (action 'hideTicket'))}}>
           <Input
 @type="checkbox"
-@checked={{this.ticket.isHidden}}
-@name="ticket_hidden" />
+@checked={{this.ishidden}}
+@name="ticket_hidden"/>
           <label for="description_visible">
             {{t 'Hide Ticket from the Public Events page'}}<br>
-            <span class="text muted">{{t 'Ticket would still be available for sale to Organizers.'}}</span>
+            <span class="text muted">{{t 'To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.'}}</span>
           </label>
         </div>
       </div>
@@ -192,22 +192,6 @@
 @name="ticket_max_order" />
           </div>
         </div>
-      </div>
-
-      <div class="{{unless this.device.isMobile 'six wide'}} field">
-        <label for="code_groups">{{t 'Ticket Code Group'}}</label>
-        <UiDropdown
-@class="fluid multiple search selection"
-@allowAdditions={{true}}>
-          <Input
-@type="hidden"
-@name="ticket_code_groups"
-@value={{this.ticket.groups}} />
-          <div class="default text">{{t 'Add Code Groups'}}</div>
-          <div class="menu">
-          </div>
-        </UiDropdown>
-        <span class="text muted">({{t 'comma separated groups'}})</span>
       </div>
 
 
