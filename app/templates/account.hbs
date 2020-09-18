@@ -11,12 +11,14 @@
       <LinkTo @route="account.password" class="item">
         {{t 'Password'}}
       </LinkTo>
-      <LinkTo @route="account.email-preferences" class="item">
-        {{t 'Email-Preferences'}}
-      </LinkTo>
-      <LinkTo @route="account.applications" class="item">
-        {{t 'Applications'}}
-      </LinkTo>
+      {{#if (or this.authManager.currentUser.isAdmin this.authManager.currentUser.isSuperAdmin)}}
+        <LinkTo @route="account.email-preferences" class="item">
+          {{t 'Email-Preferences'}}
+        </LinkTo>
+        <LinkTo @route="account.applications" class="item">
+          {{t 'Applications'}}
+        </LinkTo>
+      {{/if}}
       <LinkTo @route="account.danger-zone" class="item">
         {{t 'Danger Zone'}}
       </LinkTo>
