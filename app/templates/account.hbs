@@ -11,7 +11,7 @@
       <LinkTo @route="account.password" class="item">
         {{t 'Password'}}
       </LinkTo>
-      {{#if this.authManager.currentUser.isAdmin}}
+      {{#if (or this.authManager.currentUser.isAdmin this.authManager.currentUser.isSuperAdmin)}}
         <LinkTo @route="account.email-preferences" class="item">
           {{t 'Email-Preferences'}}
         </LinkTo>
