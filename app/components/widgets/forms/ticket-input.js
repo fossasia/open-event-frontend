@@ -10,6 +10,7 @@ import Component from '@ember/component';
 export default class TicketInput extends Component {
   @gte('ticket.maxPrice', 'ticket.minPrice')
   minMaxValid;
+
   @action
   toggleSettings() {
     this.toggleProperty('isExpanded');

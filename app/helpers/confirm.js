@@ -9,7 +9,13 @@ export default Helper.extend({
 
   compute(params) {
     return () => {
-      if (params.length >= 2) {
+      if (params.length >= 4) {
+        this.confirm.prompt(params[0], {"denyText":params[2], "approveText": params[3]})
+          .then(() => {
+            params[1]();
+          });
+      } 
+      else if (params.length >= 2) {
         this.confirm.prompt(params[0])
           .then(() => {
             params[1]();
