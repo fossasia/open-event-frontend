@@ -22,15 +22,15 @@
   {{else}}
     <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
   {{/if}}
-  {{#if this.callForSpeakersEvents}}
+  {{#if this.model.callForSpeakersEvents}}
     <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each this.callForSpeakersEvents as |event|}}
+      {{#each this.model.callForSpeakersEvents as |event|}}
         <EventCard @event={{event}} @isCFS={{true}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
     </div>
     <div class="ui hidden divider"></div>
-    {{#if (gt this.callForSpeakersEvents.length 3)}}
+    {{#if (gt this.model.callForSpeakersEvents.length 3)}}
       <div class="ui centered grid">
         <div class="row">
           <LinkTo @route="explore" @query={{hash cfs='open'}} class="ui blue button">{{t 'Show more calls for speakers'}}</LinkTo>

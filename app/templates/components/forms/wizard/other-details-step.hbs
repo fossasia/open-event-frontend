@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}} novalidate>
   <div class="ui section divider"></div>
   <div class="grouped fields" id="social-links">
     <label>{{t 'Links & Social Media'}}</label>
@@ -10,18 +10,36 @@
       @segmentedLink={{this.data.event.segmentedExternalEventUrl}}
       @isChild={{unless this.data.event.socialLinks true}}
       @canRemoveItem={{false}}
+      @addCustomLink={{action "addItem" "customLink" "social-link"}}
       @addItem={{action "addItem" "socialLinks" "social-link"}} />
 
     {{#each this.socialLinks as |socialLink|}}
       <Widgets::Forms::LinkInput
         @hasLinkName={{true}}
         @linkName={{socialLink.name}}
+        @isSocialLink={{true}}
+        @isCustomLink={{socialLink.isCustom}}
         @inputId={{socialLink.identifier}}
         @segmentedLink={{socialLink.segmentedLink}}
         @isChild={{true}}
         @addItem={{action "addItem" "socialLinks" "social-link"}}
+        @addCustomLink={{action "addItem" "customLink" "social-link"}}
         @removeItem={{action "removeItem" socialLink "socialLinks"}} />
     {{/each}}
+  </div>
+  
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui header">
+      <label for="refund_policy">{{t 'Refund Policy'}}</label>
+      <div class="sub header">
+        {{t 'Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the eventyay platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the eventyay platform.'}}
+      </div>
+    </div>
+    <Widgets::Forms::RichTextEditor
+      @textareaId="refunduct"
+      @value={{this.data.event.refundPolicy}}
+    />
   </div>
 
   <div class="ui section divider"></div>
@@ -51,9 +69,9 @@
   <div class="field">
     <div class="ui slider checkbox">
       <Input
-@type="checkbox"
-@checked={{this.hasCodeOfConduct}}
-@id="add_code_of_conduct" />
+        @type="checkbox"
+        @checked={{this.hasCodeOfConduct}}
+        @id="add_code_of_conduct" />
       <label for="add_code_of_conduct">{{t 'Add Code of Conduct'}}</label>
     </div>
   </div>
@@ -89,47 +107,40 @@
         </div>
       </div>
     </label>
-    <UiDropdown
-      @class="search selection"
-      @selected={{this.data.event.copyright.licence}}
-      @onChange={{action "updateCopyright"}}
-      @forceSelection={{false}}
-      @fullTextSearch={{true}}>
-      <Input
-        @type="hidden"
-        @id="license"
-        @value={{this.data.event.copyright.licence}} 
-      />
-      <i class="dropdown icon"></i>
-      <div class="default text">{{t 'Select License'}}</div>
-      <div class="menu">
-        {{#each this.licenses as |license|}}
-          <div class="item" data-value="{{license.name}}">{{license.name}}</div>
-        {{/each}}
-      </div>
-    </UiDropdown>
+    <div class="ui labeled input">
+      <UiDropdown
+        @class="fluid search selection"
+        @selected={{this.data.event.copyright.licence}}
+        @onChange={{action "updateCopyright"}}
+        @forceSelection={{false}}
+        @fullTextSearch={{true}}>
+        <Input
+          @type="hidden"
+          @id="license"
+          @value={{this.data.event.copyright.licence}} 
+        />
+        <i class="dropdown icon"></i>
+        <div class="default text">{{t 'Select License'}}</div>
+        <div class="menu">
+          {{#each this.licenses as |license|}}
+            <div class="item" data-value="{{license.name}}">{{license.name}}</div>
+          {{/each}}
+        </div>
+      </UiDropdown>
+      {{#if data.event.copyright.licence}}
+        <button type="button" class="ui icon button" {{action 'clearLicense'}}>
+          <i class="remove icon"></i>
+        </button>
+      {{/if}}
+    </div>
   </div>
   <br>
-  <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
-      {{t 'Previous'}}
-      <i class="left chevron icon"></i>
-    </button>
-    <button class="ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
-      {{t 'Forward'}}
-      <i class="right chevron icon"></i>
-    </button>
-    {{#if this.showDraftButton}}
-      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
-    {{#if this.data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
-    {{/if}}
-  </div>
+
 </form>
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}} />

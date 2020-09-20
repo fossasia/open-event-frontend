@@ -5,11 +5,11 @@
     {{t 'Add Custom Form Field'}}
   </div>
 </h3>
-<div class="ui action input" style="width: inherit;">
-  <Input type="text" placeholder="Field Name" @value={{@newFormField.name}} />
-  <UiDropdown class="ui selection dropdown" @selected={{@newFormField.type}} @onChange={{action (mut @newFormField.type)}}>
+<div {{did-update this.updated @field}} class="ui action input" style="width: inherit;">
+  <Input type="text" placeholder="Field Name" @value={{this.name}} />
+  <UiDropdown class="ui selection dropdown" @selected={{this.type}} @onChange={{action (mut this.type)}}>
     <div class="default text">
-      {{ @newFormField.type}}
+      {{ this.type }}
     </div>
     <i class="dropdown icon"></i>
     <div class="menu">
@@ -17,5 +17,5 @@
       <div class="item" data-value="number">Number</div>
     </div>
   </UiDropdown>
-  <button class="ui button" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>Add</button>
+  <button class="ui button" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>{{t (if @field 'Save' 'Add')}}</button>
 </div>

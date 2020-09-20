@@ -21,7 +21,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       },
       {
         title       : this.l10n.t('Additional Info'),
-        description : this.l10n.t('Extra Details about your event'),
+        description : this.l10n.t('Extra details about your event'),
         icon        : 'setting icon',
         route       : 'events.view.edit.other-details'
       },
@@ -71,7 +71,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
-    if (event.name && event.locationName && event.startsAtDate && event.endsAtDate && numberOfTickets > 0) {
+
+    if (event.name && event.startsAtDate && event.endsAtDate) {
       await event.save();
 
       await Promise.all((data.tickets ? data.tickets.toArray() : []).map(ticket => {
@@ -205,28 +206,38 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   actions: {
     saveDraft() {
       this.onValid(() => {
-        destroyDeletedTickets(this.deletedTickets);
+        preSaveActions.call(this);
         this.set('data.event.state', 'draft');
         this.sendAction('save');
       });
     },
-    moveForward() {
+    saveForm() {
       this.onValid(() => {
-        destroyDeletedTickets(this.deletedTickets);
-        this.sendAction('move');
+        preSaveActions.call(this);
+        this.sendAction('save', this.data);
       });
     },
-    publish() {
+    move(direction) {
       this.onValid(() => {
-        this.set('data.event.state', 'published');
-        destroyDeletedTickets(this.deletedTickets);
-        this.sendAction('save');
+        this.sendAction('move', direction, this.data);
       });
     },
+    onValidate(callback) {
+      this.onValid(() => {
+        callback(true);
+      });
+    },
+
     addItem(type, model) {
       if (type === 'socialLinks') {
         this.get(`data.event.${type}`).pushObject(this.store.createRecord(model, {
-          identifier: v1()
+          identifier : v1(),
+          isCustom   : false
+        }));
+      } else if (type === 'customLink') {
+        this.get('data.event.socialLinks').pushObject(this.store.createRecord(model, {
+          identifier : v1(),
+          isCustom   : true
         }));
       } else {
         this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));
@@ -243,4 +254,15 @@ function destroyDeletedTickets(deletedTickets) {
   deletedTickets.forEach(ticket => {
     ticket.destroyRecord();
   });
+}
+
+function preSaveActions() {
+  destroyDeletedTickets(this.deletedTickets);
+
+  if (this.selectedLocationType) {
+    this.set('data.event.online', ['Online', 'Mixed'].includes(this.selectedLocationType));
+    if (['Online', 'To be announced'].includes(this.selectedLocationType)) {
+      this.set('data.event.locationName', null);
+    }
+  }
 }

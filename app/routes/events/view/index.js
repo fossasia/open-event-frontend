@@ -22,11 +22,10 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const statisticsPromise = eventDetails.query('generalStatistics', {});
     const orderStatPromise = eventDetails.query('orderStatistics', {});
     const ticketsPromise = eventDetails.query('tickets', {});
-    const rolesPromise = this.store.findAll('role');
 
     const [sponsors, roleInvites, sessionTypes, socialLinks,
-      statistics, orderStat, tickets, roles] = (await allSettled([sponsorsPromise, roleInvitesPromise, sessionTypesPromise, socialLinksPromise,
-      statisticsPromise, orderStatPromise, ticketsPromise, rolesPromise])).map(result => result.value);
+      statistics, orderStat, tickets] = (await allSettled([sponsorsPromise, roleInvitesPromise, sessionTypesPromise, socialLinksPromise,
+      statisticsPromise, orderStatPromise, ticketsPromise])).map(result => result.value);
 
 
     return {
@@ -37,8 +36,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       socialLinks,
       statistics,
       orderStat,
-      tickets,
-      roles
+      tickets
     };
   }
 }

@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}}>
 
   <div class="ui centered grid">
     <div class="column">
@@ -57,15 +57,15 @@
     </div>
 
     <div class="field">
-      <label class="required">{{t 'Microlocations'}}</label>
+      <label class="required">{{t 'Microlocations or Virtual Online Rooms'}}</label>
       {{#each this.microlocations as |microlocation|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
-            <Input @type="text" @id="microlocation" @value={{microlocation.name}} placeholder="Name" />
+            <Input @type="text" @value={{microlocation.name}} placeholder="Name" />
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              <Input @type="number" @id="microlocation_floor" @value={{microlocation.floor}} placeholder="Floor" />
+              <Input @type="number" @value={{microlocation.floor}} placeholder="Floor" />
               {{#if (gt this.microlocations.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' microlocation}}>
                   <i class="minus icon"></i>
@@ -183,119 +183,31 @@
 
     <div class="ui two column stackable grid">
       <div class="column">
-        <table class="ui selectable celled table">
-          <thead>
-            <tr>
-              <th colspan="4" class="text center aligned">
-                {{t 'Collect Speaker Details'}}
-              </th>
-            </tr>
-            <tr>
-              {{#if this.device.isMobile}}
-                <th class="center aligned">
-                  {{t 'Options'}}
-                </th>
-              {{else}}
-                <th class="right aligned">
-                  {{t 'Option'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Type'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Include'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Require'}}
-                </th>
-              {{/if}}
-            </tr>
-          </thead>
-          <tbody>
-            {{#each this.customForm.speaker as |field|}}
-              <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
-                  <label class="{{if field.isFixed 'required'}}">
-                    {{field.name}}
-                  </label>
-                </td>
-                <td class="center aligned">
-                  {{field.type}}
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if this.device.isMobile (t "Require")}} />
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
+        <Forms::Wizard::CustomForms::Table
+          @headerText="Collect Speaker Details"
+          @fields={{this.customForm.speaker}}
+          @updateField={{action (mut this.speakerField)}} />
 
         <Forms::Wizard::CustomFormInput
-          @newFormField={{this.data.newSpeakerForm}}
           @customForms={{this.data.customForms}}
           @event={{this.data.event}}
-          @form="speaker" />
+          @form="speaker"
+          @field={{this.speakerField}}
+          @onSave={{action (mut this.speakerField) null}} />
 
       </div>
       <div class="column">
-        <table class="ui selectable celled table">
-          <thead>
-            <tr>
-              <th colspan="4" class="text center aligned">
-                {{t 'Collect Session Details'}}
-              </th>
-            </tr>
-            <tr>
-              {{#if this.device.isMobile}}
-                <th class="center aligned">
-                  {{t 'Options'}}
-                </th>
-              {{else}}
-                <th class="right aligned">
-                  {{t 'Option'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Type'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Include'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Require'}}
-                </th>
-              {{/if}}
-            </tr>
-          </thead>
-          <tbody>
-            {{#each this.customForm.session as |field|}}
-              <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
-                  <label class="{{if field.isFixed 'required'}}">
-                    {{field.name}}
-                  </label>
-                </td>
-                <td class="center aligned">
-                  {{field.type}}
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if this.device.isMobile (t "Require")}} />
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
+        <Forms::Wizard::CustomForms::Table
+          @headerText="Collect Session Details"
+          @fields={{this.customForm.session}}
+          @updateField={{action (mut this.sessionField)}} />
 
         <Forms::Wizard::CustomFormInput
-          @newFormField={{this.data.newSessionForm}}
           @customForms={{this.data.customForms}}
           @event={{this.data.event}}
-          @form="session" />
+          @form="session"
+          @field={{this.sessionField}}
+          @onSave={{action (mut this.sessionField) null}} />
       </div>
     </div>
     <div class="spacer-50"></div>
@@ -342,22 +254,14 @@
   <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addCustomField'}}>{{t 'Add another custom field'}}</button>
 
  --}}
-  <div class="ui fields buttons {{if this.device.isMobile 'mini three' 'right floated large'}}">
-    <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
-      {{t 'Previous'}}
-      <i class="left chevron icon"></i>
-    </button>
-    {{#if (not-eq this.data.event.state 'published')}}
-      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
-    {{#if this.data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
-    {{/if}}
-  </div>
+
 </form>
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @last={{true}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}} />
+  

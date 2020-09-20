@@ -68,6 +68,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
+  refundPolicy    : attr('string'),
 
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),
@@ -87,6 +88,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   pentabarfUrl : attr('string', { readOnly: true }),
   xcalUrl      : attr('string', { readOnly: true }),
   icalUrl      : attr('string', { readOnly: true }),
+
+  online        : attr('boolean', { defaultValue: false }),
+  liveStreamUrl : attr('string'),
+  webinarUrl    : attr('string'),
 
   createdAt : attr('moment', { readOnly: true }),
   deletedAt : attr('moment'),
@@ -153,7 +158,9 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
-  segmentedExternalEventUrl: computedSegmentedLink.bind(this)('externalEventUrl'),
+  segmentedExternalEventUrl : computedSegmentedLink.bind(this)('externalEventUrl'),
+  segmentedLiveStreamUrl    : computedSegmentedLink.bind(this)('liveStreamUrl'),
+  segmentedWebinarUrl       : computedSegmentedLink.bind(this)('webinarUrl'),
 
   shortLocationName: computed('locationName', function() {
     if (!this.locationName) {

@@ -23,6 +23,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return orderBy(licenses, 'name');
   }),
 
+
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
     return this.data.event.socialLinks.filterBy('isDeleted', false);
   }),
@@ -115,21 +116,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         licenceUrl : license.link
       });
     },
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      });
-    },
-    move(direction) {
-      this.onValid(() => {
-        this.sendAction('move', direction);
-      });
-    },
-    publish() {
-      this.onValid(() => {
-        this.set('data.event.state', 'published');
-        this.sendAction('save');
+    clearLicense() {
+      this.setProperties({
+        'data.event.copyright.licence': null
       });
     },
     onChange() {

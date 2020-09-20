@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}} novalidate>
   <div class="field">
     <label class="required" for="name">{{t 'Event Name'}}</label>
     <Input
@@ -6,27 +6,52 @@
       @id="name"
       @value={{this.data.event.name}} />
   </div>
-  <div class="field">
-    <label class="required" for="location">{{t 'Location'}}</label>
-    <Widgets::Forms::LocationInput
-      @inputId="location"
-      @lat={{this.data.event.latitude}}
-      @lng={{this.data.event.longitude}}
-      @placeName={{this.data.event.locationName}}
-      @searchableName={{this.data.event.searchableLocationName}}
-      @zoom={{15}}
-      @placeholder={{t "Location is required to make this event live"}}>
-      <div class="inline field">
-        <div class="ui slider checkbox">
-          <Input
-            @id="show_map"
-            @type="checkbox"
-            @checked={{this.data.event.isMapShown}} />
-          <label for="show_map">{{t 'Show map on event page'}}</label>
-        </div>
-      </div>
-    </Widgets::Forms::LocationInput>
+  <div class="ui secondary pointing menu">
+    {{#each this.locationMenuItems as |item|}}
+      <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
+        {{t item}}
+      </a>
+    {{/each}}
   </div>
+  {{#if (or (eq this.selectedLocationType 'Venue') (eq this.selectedLocationType 'Mixed'))}}
+    <div class="field">
+      <label class="{{if this.isLocationRequired 'required'}}" for="location">{{t 'Location'}}</label>
+      <Widgets::Forms::LocationInput
+        @inputId="{{if this.isLocationRequired 'location'}}"
+        @lat={{this.data.event.latitude}}
+        @lng={{this.data.event.longitude}}
+        @placeName={{this.data.event.locationName}}
+        @searchableName={{this.data.event.searchableLocationName}}
+        @zoom={{15}}
+        @placeholder={{t "Location is required to make this event live"}}>
+        <div class="inline field">
+          <div class="ui slider checkbox">
+            <Input
+              @id="show_map"
+              @type="checkbox"
+              @checked={{this.data.event.isMapShown}} />
+            <label for="show_map">{{t 'Show map on event page'}}</label>
+          </div>
+        </div>
+      </Widgets::Forms::LocationInput>
+    </div>
+  {{/if}}
+  {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Mixed'))}}
+    <Widgets::Forms::LinkInput
+      @hasLinkName={{true}}
+      @fixedName={{true}}
+      @linkName={{t "Live Stream URL"}}
+      @inputId="live_stream_url"
+      @segmentedLink={{this.data.event.segmentedLiveStreamUrl}}
+      @canRemoveItem={{false}} />
+    <Widgets::Forms::LinkInput
+      @hasLinkName={{true}}
+      @fixedName={{true}}
+      @linkName={{t "Webinar URL"}}
+      @inputId="webinar_url"
+      @segmentedLink={{this.data.event.segmentedWebinarUrl}}
+      @canRemoveItem={{false}} />
+  {{/if}}
   <div class="fields">
     <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
@@ -419,8 +444,9 @@
         {{#if this.data.event.canPayByStripe}}
           <div class="field">
             {{#if (or this.data.event.stripeAuthorization.stripeAuthCode this.data.event.stripeAuthorization.stripePublishableKey)}}
-              <label
-                class="required">{{t 'You have linked your Stripe account successfully. Click Here to Disconnect you account.'}}</label>
+              <label class="required">
+                {{t 'You have linked your Stripe account successfully. Click here to disconnect your account.'}}
+              </label>
               <a href="#" class="stripe-connect" role="button"
                 {{action 'disconnectStripe'}}><span>{{t 'Disconnect Stripe Account'}}</span></a>
             {{else}}
@@ -566,6 +592,7 @@
     <label>{{t 'Event Type'}}</label>
     <PowerSelect
       @selected={{this.data.event.type}}
+      @allowClear={{true}}
       @options={{this.data.types}}
       @placeholder={{t 'Select Event Type'}}
       @onChange={{action (mut this.data.event.type)}} as |type|>
@@ -576,6 +603,7 @@
     <label>{{t 'Event Topic'}}</label>
     <PowerSelect
       @selected={{this.data.event.topic}}
+      @allowClear={{true}}
       @options={{this.data.topics}}
       @placeholder={{t 'Select Event Topic'}}
       @onChange={{action (mut this.data.event.topic)}} as |topic|>
@@ -586,32 +614,15 @@
     <label>{{t 'Event Sub-topic'}}</label>
     <PowerSelect
       @selected={{this.data.event.subTopic}}
+      @allowClear={{true}}
       @options={{this.subTopics}}
       @placeholder={{t 'Select Event Sub-Topic'}}
       @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
         {{subTopic.name}}
     </PowerSelect>
   </div>
-
   <br>
-  <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    <button class="ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
-      {{t 'Forward'}}
-      <i class="right chevron icon"></i>
-    </button>
-    {{#if this.showDraftButton}}
-      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
-    {{#if this.data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
-    {{/if}}
-  </div>
+  
 </form>
 
 <Modals::TaxInfoModal
@@ -619,3 +630,12 @@
   @tax={{this.data.event.tax}}
   @hasTaxInfo={{this.data.event.isTaxEnabled}} 
 />
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @first={{true}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}}
+  @onValidate={{action 'onValidate'}} />

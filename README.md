@@ -33,7 +33,9 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ## Running / Development
 
--   `ember serve`
+**Note**: Please follow [installation steps](/docs/installation/local.md#steps) listed above carefully before running 
+
+-   `yarn start`
 -   Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
@@ -44,13 +46,13 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 This project has acceptance, integration and unit tests located inside the `tests/` folder.
 
--   `ember test` - CLI output
--   `ember test --server` - Live browser preview and console access
+-   `yarn test` - CLI output
+-   `yarn test --server` - Live browser preview and console access
 
 ### Building
 
--   `ember build` (development)
--   `ember build --environment production` (production)
+-   `yarn build` (development)
+-   `yarn build -prod` (production)
 
 ## Deployments, Docker images and Releases
 
