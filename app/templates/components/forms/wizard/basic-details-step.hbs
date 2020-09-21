@@ -120,16 +120,7 @@
   </div>
 
   <div class="fields">
-    <div class="ten wide field">
-      <Widgets::Forms::ImageUpload
-        @imageUrl={{this.data.event.logoUrl}}
-        @label={{t "Logo"}}
-        @id="event_logo"
-        @icon="image"
-        @hint={{t "Select Logo"}}
-        @maxSizeInKb={{1000}} />
-    </div>
-    <div class="ten wide field">
+    <div class="fifteen wide field">
       <Widgets::Forms::ImageUpload
         @imageUrl={{this.data.event.originalImageUrl}}
         @needsCropper={{true}}
@@ -140,6 +131,17 @@
         @maxSizeInKb={{10000}}
         @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
         @requiresDivider={{true}} />
+    <small>Background Image</small>
+    </div>
+    <div class="five wide field">
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.data.event.logoUrl}}
+        @label={{t "Logo"}}
+        @id="event_logo"
+        @icon="image"
+        @hint={{t "Select Logo"}}
+        @maxSizeInKb={{1000}} />
+    <small>Logo</small>
     </div>
   </div>
 
