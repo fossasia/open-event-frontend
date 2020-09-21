@@ -2,14 +2,14 @@
   {{#if (and this.requiresDivider this.device.isMobile)}}
     <div class="ui hidden divider"></div>
   {{/if}}
-  <div class="ui card">
+  <div class="ui centered card">
     {{#if this.uploadingImage}}
       <div class="ui active dimmer">
         <div class="ui text loader">{{t 'Image Uploading'}}</div>
       </div>
     {{/if}}
     <div class="image">
-      <img src="{{this.selectedImage}}" alt="Selected image">
+      <img class="image" src="{{this.selectedImage}}" alt="Selected image">
     </div>
     {{#if this.allowReCrop}}
       <div class="ui bottom attached mini buttons">
@@ -26,7 +26,7 @@
       </button>
     </div>
   </div>
-  <div class="ui text muted">
+  <div class="ui center aligned text muted">
     {{this.imageText}}
   </div>
 {{else}}
