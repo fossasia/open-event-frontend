@@ -16,7 +16,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath : 'event.name'
       },
       {
-        name            : 'Dated',
+        name            : 'Invoice Date',
         valuePath       : 'createdAt',
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
