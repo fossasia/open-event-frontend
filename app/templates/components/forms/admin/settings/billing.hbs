@@ -30,11 +30,11 @@
     {{t 'Invoice Contact'}}
   </h3>
   <div class="field">
-    <label class="required" for="adminBillingContactName">{{t 'Contact Name'}}</label>
+    <label for="adminBillingContactName">{{t 'Contact Name'}}</label>
     <Input @type="text" @id="adminBillingContactName" @value={{this.model.adminBillingContactName}} />
   </div>
   <div class="field">
-    <label class="required" for="adminBillingPhone">{{t 'Phone'}}</label>
+    <label for="adminBillingPhone">{{t 'Phone'}}</label>
     <Input @type="text" @id="adminBillingPhone" @value={{this.model.adminBillingPhone}} />
   </div>
   <div class="field">
@@ -58,7 +58,7 @@
     </UiDropdown>
   </div>
   <div class="field">
-    <label class="required" for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
+    <label for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
     <Input @type="text" @id="adminBillingTaxInfo" @value={{this.model.adminBillingTaxInfo}} />
   </div>  
   <div class="field">
