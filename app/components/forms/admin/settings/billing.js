@@ -12,6 +12,17 @@ export default class Billing extends Component.extend(FormMixin) {
       delay  : false,
       on     : 'blur',
       fields : {
+        adminBillingPhone: {
+          identifier : 'adminBillingPhone',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validPhoneNumber,
+              prompt : this.l10n.t('Please enter a valid mobile number.')
+            }
+          ]
+        },
         adminBillingEmail: {
           identifier : 'adminBillingEmail',
           rules      : [
@@ -22,17 +33,6 @@ export default class Billing extends Component.extend(FormMixin) {
             {
               type   : 'email',
               prompt : this.l10n.t('Please enter a valid email address')
-            }
-          ]
-        },
-        adminBillingPhone: {
-          identifier : 'adminBillingPhone',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : validPhoneNumber,
-              prompt : this.l10n.t('Please enter a valid mobile number.')
             }
           ]
         },
