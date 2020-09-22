@@ -25,16 +25,16 @@ export default class Billing extends Component.extend(FormMixin) {
             }
           ]
         },
-        adminBillingPhone: {  
-          identifier : 'adminBillingPhone', 
+        adminBillingPhone: {
+          identifier : 'adminBillingPhone',
           optional   : true,
-          rules      : [  
-            { 
-              type   : 'regExp',  
-              value  : validPhoneNumber,  
-              prompt : this.l10n.t('Please enter a valid mobile number.') 
-            } 
-          ] 
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validPhoneNumber,
+              prompt : this.l10n.t('Please enter a valid mobile number.')
+            }
+          ]
         },
         adminBillingCountry: {
           identifier : 'adminBillingCountry',
