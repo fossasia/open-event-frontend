@@ -113,16 +113,16 @@
           </label>
         </div>
       </div>
-      {{#if (eq this.ticket.type 'paid')}}
+      {{#if (not-eq this.ticket.type 'free')}}
         <div class="field">
-          <div class="ui checkbox">
+          <div class="ui read-only checked checkbox">
             <Input
 @type="checkbox"
-@checked={{this.ticket.isFeeAbsorbed}}
+@checked="true"
 @name="absorb_fees" />
-            <label for="absorb_fees">
-              {{t 'Absorb Fees'}} <br>
-              <span class="text muted">{{t 'If unchecked fees will be passed on to the buyer.'}}</span>
+            <label class="required" for="absorb_fees">
+              {{t 'Tickets Absorb Fees'}} <br>
+              <span class="text muted">{{t 'Platform fees will always be included in your ticket price. You will receive an invoice each month.'}}</span>
             </label>
           </div>
         </div>

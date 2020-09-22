@@ -22,7 +22,7 @@ export default class Schedule extends Component<ScheduleArgs> {
   header = {
     left   : 'prev,next',
     center : 'title',
-    right  : 'timelineDay,agendaDay,timelineThreeDays,agendaWeek'
+    right  : 'agendaDay,timelineThreeDays,agendaWeek'
   }
 
   @tracked

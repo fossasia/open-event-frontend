@@ -70,7 +70,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         data[key] = result.value;
       }
     }
-    const numberOfTickets = data.tickets?.length || 0;
+    const numberOfTickets = data.tickets ? data.tickets.length : 0;
 
     if (event.name && event.startsAtDate && event.endsAtDate && (event.state === 'draft' || (numberOfTickets > 0 && event.deletedTickets?.length !== numberOfTickets))) {
       await destroyDeletedTickets(event.deletedTickets);
