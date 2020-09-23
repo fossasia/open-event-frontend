@@ -9,7 +9,7 @@
           {{t 'Tickets'}}
         </a>
       {{/if}}
-      {{#if (and this.showSpeakers this.event.speakers.length)}}
+      {{#if this.showSpeakers}}
         <LinkTo @route="public.speakers" class="item">
           {{t 'Speakers'}}
         </LinkTo>
@@ -23,7 +23,7 @@
           {{t 'Tickets'}}
         </a>
       {{/if}}
-      {{#if (and this.showSpeakers this.event.speakers.length)}}
+      {{#if this.showSpeakers}}
         <LinkTo @route="public.speakers" class="item">
           {{t 'Speakers'}}
         </LinkTo>

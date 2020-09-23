@@ -2,7 +2,6 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import moment from 'moment';
-import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
 import { tracked } from '@glimmer/tracking';
 
 @classic
@@ -24,7 +23,7 @@ export default class SideMenu extends Component {
   }
 
   async checkSpeakers() {
-    this.showSpeakers = this.showSpeakers || (await this.loader.load(`/events/${this.event.id}/speakers?fields[speaker]=id&page[size]=1&filters=${JSON.stringify(SPEAKERS_FILTER)}`)).data.length;
+    this.showSpeakers = this.showSpeakers || this.event.speakers.length;
   }
 
   async checkSessions() {
