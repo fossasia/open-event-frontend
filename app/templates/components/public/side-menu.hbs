@@ -46,7 +46,7 @@
     {{/if}}
     {{#if this.event.isSponsorsEnabled}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#sponsor' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#sponsor' onClick={{action "scrollToTarget"}} class='item scroll'>
           {{t 'Sponsors'}}
         </a>
       {{else}}
@@ -57,7 +57,7 @@
     {{/if}}
     {{#if this.event.hasOwnerInfo}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#owner' onClick={{action "scrollToTarget"}} class='item scroll'>
           {{t 'Organizer'}}
         </a>
       {{else}}
