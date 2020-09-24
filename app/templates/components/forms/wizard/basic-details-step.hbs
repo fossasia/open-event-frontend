@@ -173,7 +173,6 @@
     </div>
   {{/if}}
   <div class="ui section divider"></div>
-  <div class="ui section divider"></div>
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
       <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}}">
@@ -203,7 +202,8 @@
               @canMoveDown={{not-eq ticket.position (dec this.data.event.tickets.length)}}
               @moveTicketUp={{action "moveTicket" ticket "up"}}
               @moveTicketDown={{action "moveTicket" ticket "down"}}
-              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}} />
+              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}
+              @ishidden = {{false}} />
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">
@@ -276,8 +276,7 @@
       {{/if}}
     </div>
     --}}
-
-    <div class="ui section divider"></div>
+    <br>
     <div class="field">
       <h4>{{t 'Add Payment Details'}}</h4>
       <div class="two fields">
@@ -331,7 +330,7 @@
         </div>
       </div>
     </div>
-    <div class="ui section divider"></div>
+    <br>
     <div class="field">
       <h4>{{t 'Choose payment methods'}}</h4>
       {{#if this.canAcceptPayPal}}
@@ -532,9 +531,7 @@
           />
         </div>
       {{/if}}
-
-      <div class="ui section divider"></div>
-
+      <br>
       <div class="field">
         {{#if this.data.event.isTaxEnabled}}
           <div class="ui card">

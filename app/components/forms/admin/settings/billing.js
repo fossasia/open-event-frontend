@@ -12,17 +12,9 @@ export default class Billing extends Component.extend(FormMixin) {
       delay  : false,
       on     : 'blur',
       fields : {
-        adminBillingContactName: {
-          identifier : 'adminBillingContactName',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter the Contact name')
-            }
-          ]
-        },
         adminBillingPhone: {
           identifier : 'adminBillingPhone',
+          optional   : true,
           rules      : [
             {
               type   : 'regExp',
@@ -50,16 +42,6 @@ export default class Billing extends Component.extend(FormMixin) {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please select the country')
-            }
-          ]
-        },
-
-        adminBillingTaxInfo: {
-          identifier : 'adminBillingTaxInfo',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter the tax id')
             }
           ]
         },
