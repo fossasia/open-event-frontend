@@ -37,7 +37,7 @@ export default class LinkInput extends Component {
     let proto = this.protocol;
     if (add.includes('http://') || add.includes('https://')) {
       const temp = add.split('://');
-      proto = temp[0];
+      proto = temp[0] + '://';
       add = temp[1];
     }
     if (add.includes('www.')) {
