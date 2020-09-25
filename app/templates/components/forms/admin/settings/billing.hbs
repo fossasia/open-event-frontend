@@ -39,7 +39,11 @@
   </div>
   <div class="field">
     <label class="required" for="adminBillingEmail">{{t 'Email'}}</label>
-    <Input @type="text" @id="adminBillingEmail" @value={{this.model.adminBillingEmail}} />
+    <Input @type="email" @id="adminBillingEmail" @value={{this.model.adminBillingEmail}} />
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingPaypalEmail">{{t 'Paypal Email'}}</label>
+    <Input @type="email" @id="adminBillingPaypalEmail" @value={{this.model.adminBillingPaypalEmail}} />
   </div>
   <div class="field">
     <label class="required">{{t 'Country'}}</label>
