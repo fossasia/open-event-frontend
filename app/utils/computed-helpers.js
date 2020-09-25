@@ -5,7 +5,7 @@ import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
 // Social Platforms
-export const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github', 'gitlab', 'patreon', 'vimeo', 'flicker', 'groups.google'];
+export const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github', 'gitlab', 'patreon', 'vimeo', 'flicker', 'groups.google', 'vk', 'xing', 'weibo'];
 
 /**
  * Get/set a splitted URL from/to a string URL field
