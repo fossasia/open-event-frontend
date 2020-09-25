@@ -31,7 +31,7 @@ export default class LinkInput extends Component {
 
   @observes('protocol', 'address')
   protocolAddressObserver() {
-    const link = this.linkName?.toLowerCase();
+    const link = this.linkName;
 
     let add = this.address;
     let proto = this.protocol;
@@ -56,17 +56,10 @@ export default class LinkInput extends Component {
   linkNameObserver() {
     const link = this.linkName;
     if (socialPlatforms.includes(link)) {
-      if (link === 'weibo') {
-        this.set('segmentedLink', {
-          protocol : `https://${link}.com/u/`,
-          address  : ''
-        });
-      } else {
-        this.set('segmentedLink', {
-          protocol : `https://${link}.com/`,
-          address  : ''
-        });
-      }
+      this.set('segmentedLink', {
+        protocol : `https://${link}.com/`,
+        address  : ''
+      });
     } else {
       this.set('segmentedLink', {
         protocol : 'https://',
