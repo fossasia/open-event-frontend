@@ -5,29 +5,7 @@
   <div class="ui padded segment">
     <div class="ui list">
       <div class="item">
-        <strong>{{t 'From'}}:</strong> {{this.user.billingContactName}}
-      </div>
-      <div class="item">
-        <strong>{{t 'Phone'}}:</strong> {{this.user.billingPhone}}
-      </div>
-      <div class="item">
-        <strong>{{t 'Email'}}:</strong> {{this.user.email}}
-      </div>
-      <div class="item">
-        <strong>{{t 'Billing Address'}}:</strong> {{this.user.billingAddress}}
-      </div>
-      <div class="item">
-        <strong>{{t 'Zip Code'}}:</strong> {{this.user.billingZipCode}}
-      </div>
-      <div class="item">
-        <strong>{{t 'Country'}}:</strong> {{this.user.billingCountry}}
-      </div>
-    </div>
-  </div>
-  <div class="ui padded segment">
-    <div class="ui list">
-      <div class="item">
-        <strong>{{t 'To'}}:</strong> {{this.settings.adminBillingContactName}}
+        <strong>{{t 'From'}}:</strong> {{this.settings.adminBillingContactName}}
       </div>
       <div class="item">
         <strong>{{t 'Company'}}:</strong> {{this.settings.adminCompany}}
@@ -43,6 +21,28 @@
       </div>
       <div class="item">
         <strong>{{t 'Country'}}:</strong> {{this.settings.adminBillingCountry}}
+      </div>
+    </div>
+  </div>
+  <div class="ui padded segment">
+    <div class="ui list">
+      <div class="item">
+        <strong>{{t 'To'}}:</strong> {{or this.user.billingContactName this.user.fullName}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Phone'}}:</strong> {{this.user.billingPhone}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Email'}}:</strong> {{this.user.email}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Billing Address'}}:</strong> {{this.user.billingAddress}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Zip Code'}}:</strong> {{this.user.billingZipCode}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Country'}}:</strong> {{this.user.billingCountry}}
       </div>
     </div>
   </div>
