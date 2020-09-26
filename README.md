@@ -36,7 +36,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 **Note**: Please follow the [installation steps](/docs/installation/local.md#steps) listed above carefully before running 
 
 -   `yarn start`
--   Visit your app at [http://localhost:4200](http://localhost:4200).
+-   Visit your app at [http://localhost:4200](http://localhost:4200)
 
 ### Code Generators
 
