@@ -46,8 +46,8 @@
     {{/if}}
     {{#if this.event.isSponsorsEnabled}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#sponsor' onClick={{action "scrollToTarget"}} class='item scroll'>
-          {{t 'Sponsors'}}
+        <a href='#sponsor' {{action "scrollToTarget"}} class='item scroll'>
+          <span onClick={{action 'scrollToTarget'}}>{{t 'Sponsors'}}</span>
         </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#sponsor">
@@ -57,8 +57,8 @@
     {{/if}}
     {{#if this.event.hasOwnerInfo}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#owner' onClick={{action "scrollToTarget"}} class='item scroll'>
-          {{t 'Organizer'}}
+        <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
+          <span onClick={{action 'scrollToTarget'}}>{{t 'Organizer'}}</span>
         </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#owner">
@@ -67,8 +67,8 @@
       {{/if}}
     {{/if}}
     {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#getting-here' class='item scroll'>
-        {{t 'Getting here'}}
+      <a href='#getting-here' {{action "scrollToTarget"}} class='item scroll'>
+        <span onClick={{action 'scrollToTarget'}}>{{t 'Getting here'}}</span>
       </a>
     {{else}}
       <a class="item" href="{{href-to 'public.index'}}#getting-here">
