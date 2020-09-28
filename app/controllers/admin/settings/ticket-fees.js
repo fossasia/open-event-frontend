@@ -7,7 +7,7 @@ export default class extends Controller {
     this.set('isLoading', true);
     const settings = this.model;
     const incorrect_settings = settings.filter(function(setting) {
-      return (!setting.currency || !setting.country);
+      return (!setting.country);
     });
     if (incorrect_settings.length > 0) {
       this.notify.error(this.l10n.t('Please fill the required fields.'),
