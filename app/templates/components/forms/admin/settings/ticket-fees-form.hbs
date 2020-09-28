@@ -1,8 +1,55 @@
 <form class="ui form" {{action this.save on='submit' preventDefault=true}}>
   <h3 class="ui header">
-    {{t 'Add Fee Settings for the event'}}
+    {{t 'Add Fee Settings for the event invoices'}}
   </h3>
-  {{#each this.model as |ticketFee|}}
+  {{#if this.globalFees}}
+    <h4 class="ui header">
+      {{t 'Global Settings'}}
+    </h4>
+    
+    <div class="ui five column very relaxed grid">
+      <div class="ui field four wide column">
+        <label>
+          {{t 'Service Fee'}}
+        </label>
+        <div class="ui right labeled input">
+          <Input
+            @type="number"
+            @name={{concat this.globalFees.currency "_service"}}
+            @value={{this.globalFees.serviceFee}}
+            @step={{0.1}}
+            @min={{0}}
+            required />
+          <div class="ui basic label">
+            %
+          </div>
+        </div>
+      </div>
+
+      <div class="ui field four wide column">
+        <label>
+          {{t 'Maximum Fee'}}
+        </label>
+        <div class="ui input">
+          <Input
+            @type="number"
+            @name={{concat this.globalFees.currency "_maximum"}}
+            @value={{this.globalFees.maximumFee}}
+            @step={{0.1}}
+            @min={{0}}
+            required />
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if this.ticketFees}}
+    <h4 class="ui header">
+      {{t 'Country-Wise Settings'}}
+    </h4>
+  {{/if}}
+
+  {{#each this.ticketFees as |ticketFee|}}
     <div class="ui five column very relaxed grid">
       <div class="ui field three wide column">
         <label class="required">{{t 'Select country'}}</label>
