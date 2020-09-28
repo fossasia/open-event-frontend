@@ -22,13 +22,13 @@ export default class TicketFeesForm extends Component {
     return this.model.filter(fees => fees.country !== 'global');
   }
 
-  getGlobalFee(model) {
+  getGlobalFee() {
     return this.model.filter(fees => fees.country === 'global')[0];
   }
 
   @computed('model')
   get globalFees() {
-    const globalFee = this.getGlobalFee(this.model);
+    const globalFee = this.getGlobalFee();
     if (globalFee) {return globalFee}
     const globalFeeItem = this.store.createRecord('ticket-fee', {
       country: 'global'
