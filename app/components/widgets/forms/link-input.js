@@ -31,7 +31,7 @@ export default class LinkInput extends Component {
 
   @observes('protocol', 'address')
   protocolAddressObserver() {
-    const link = this.linkName;
+    const link = this.linkName?.toLowerCase();
 
     let add = this.address;
     let proto = this.protocol;
