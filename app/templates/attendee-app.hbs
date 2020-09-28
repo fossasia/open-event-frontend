@@ -1,12 +1,18 @@
-<div class='ui secondary pointing menu'>
-  <a href="#" class='active item'>
-    {{t 'Attendee App'}}
-  </a>
-</div>
-<div class="ui segment">
-  <div class="content">
-    <img class="ui fluid image" src="/images/attendee-app.jpg" alt="Open Event Attendee App">
+<div class="public-event ui relaxed grid">
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}" style = "height:200px;">
+    <Widgets::SafeImage class="background" @src="/images/app-landing-header.jpg" />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          <div>
+            <h1 class="event name">Attendee App</h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+<div class="ui center aligned container mt-8 mb-8">
   <h1 class="weight-500 ui huge center aligned header">
     {{t 'Open Event Attendee App'}}
   </h1>
@@ -35,7 +41,7 @@
     <img class="ui fluid image" src="images/android-img.jpg" alt="{{t 'Android Attendee App'}}">
   {{else}}
     <div class="ui grid">
-      <div class="eight wide column">   
+      <div class="ten wide column">   
         <h1 class="weight-900">
           {{t 'Get Your Next Experience of Open Event'}}
         </h1>
@@ -83,15 +89,17 @@
           </h3>
         </div>
       </div>
-      <div class="eight wide column">
+      <div class="six wide column">
         <img class="ui medium image" src="/images/android-img.jpg" alt="Android Pic">
       </div>
     </div>
   {{/if}}
 </div>
-<div class="ui center aligned muted text">
+<div class="ui center aligned muted text mb-8">
   {{t 'Please Check-Out our Organizer App'}}
   <a class="item" href="{{href-to 'organizer-app'}}">{{t 'Here'}}</a>
   <div class="ui hidden divider"></div>
 </div>
-
+<div class="ui center aligned secondary large segment mt-8" style="margin-bottom:-10px;border:none">
+  Still have questions? <a href="https://support.eventyay.com/">Visit our FAQ</a> to find answers.
+</div>
