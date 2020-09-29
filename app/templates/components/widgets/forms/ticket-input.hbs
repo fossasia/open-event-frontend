@@ -20,7 +20,7 @@
       </div>
     {{else if (eq this.ticket.type 'donation')}}
       <div class="two fields">
-        <div class="field">
+        <div class="field {{unless this.minMaxValid 'error'}}">
           <Input
             @type="number"
             @name="min_price"
@@ -28,7 +28,7 @@
             @value={{this.ticket.minPrice}}
             @min={{1}} />
         </div>
-        <div class="field">
+        <div class="field {{unless this.minMaxValid 'error'}}">
           <Input
             @type="number"
             @name="max_price"
