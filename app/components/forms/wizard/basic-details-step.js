@@ -82,7 +82,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
-    return !this.authManager.currentUser.isVerified;
+    return !this.authManager?.currentUser?.isVerified;
   }),
 
   subTopics: computed('data.event.topic', function() {
