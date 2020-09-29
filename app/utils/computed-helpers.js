@@ -35,7 +35,7 @@ export const computedSegmentedLink = function(property) {
       }
       const isHTTPSOnly = splitted[0] === 'https';
       return {
-        protocol : isHTTPSOnly ? 'https://' : splitted[0],
+        protocol : (isHTTPSOnly ? 'https' : splitted[0]) + '://',
         address  : splitted[1]
       };
     },
