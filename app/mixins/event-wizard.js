@@ -46,6 +46,15 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     ];
   },
 
+  allTicketsDeleted(tickets, deleted) {
+    if (!deleted) {return true}
+    const deletedTickets = new Set(deleted);
+    const eventTickets = new Set(tickets.toArray());
+
+    // eventTickets - deletedTickets
+    return new Set([...eventTickets].filter(ticket => !deletedTickets.has(ticket))).size === 0;
+  },
+
   /**
    * Save event & related data
    *
@@ -71,8 +80,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }
     }
     const numberOfTickets = data.tickets ? data.tickets.length : 0;
-
-    if (event.name && event.startsAtDate && event.endsAtDate && (event.state === 'draft' || (numberOfTickets > 0 && event.deletedTickets?.length !== numberOfTickets))) {
+    const areAllTicketsDeleted = this.allTicketsDeleted(data.tickets, event.deletedTickets);
+    if (event.name && event.startsAtDate && event.endsAtDate && (event.state === 'draft' || (numberOfTickets > 0 && !areAllTicketsDeleted))) {
       await destroyDeletedTickets(event.deletedTickets);
       await event.save();
 
@@ -134,7 +143,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       if (event.startsAtDate === undefined || event.endsAtDate === undefined) {
         errorObject.errors.push({ 'detail': 'Dates have not been provided' });
       }
-      if (numberOfTickets === 0 || event.deletedTickets?.length === numberOfTickets) {
+      if (numberOfTickets === 0 || areAllTicketsDeleted) {
         errorObject.errors.push({ 'detail': 'Tickets are required for publishing/published event' });
       }
       throw (errorObject);
@@ -226,7 +235,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     },
     onValidate(callback) {
       this.onValid(() => {
-        const allTicketsDeleted = this.deletedTickets?.length === this.data.event.tickets.length;
+        const allTicketsDeleted = this.allTicketsDeleted(this.data.event.tickets, this.deletedTickets);
         if (allTicketsDeleted) {
           this.notify.error('Tickets are required for publishing/published event');
         }
