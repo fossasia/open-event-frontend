@@ -47,7 +47,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   },
 
   allTicketsDeleted(tickets, deleted) {
-    if (!deleted) {return true}
+    if (!deleted) {return false}
     const deletedTickets = new Set(deleted);
     const eventTickets = new Set(tickets.toArray());
 
