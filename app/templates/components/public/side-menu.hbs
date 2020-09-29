@@ -47,8 +47,8 @@
     {{#if this.event.isSponsorsEnabled}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
         {{!-- template-lint-disable no-nested-interactive  --}}
-        <a href='#sponsor' onClick={{action "scrollToTarget"}} class='item scroll'>
-          <span role="button" onClick={{action 'scrollToTarget'}}>{{t 'Sponsors'}}</span>
+        <a href='#sponsor' {{action "scrollToTarget"}} class='item scroll' >
+          <span role="button" onClick={{action 'scrollToTarget'}} style="display:block;width:100%">{{t 'Sponsors'}}</span>
         </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#sponsor">
@@ -60,7 +60,7 @@
       {{#if (eq this.session.currentRouteName 'public.index')}}
         {{!-- template-lint-disable no-nested-interactive  --}}
         <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
-          <span role="button" onClick={{action 'scrollToTarget'}}>{{t 'Organizer'}}</span>
+          <span role="button" onClick={{action 'scrollToTarget'}} style="display:block;width:100%">{{t 'Organizer'}}</span>
         </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#owner">
