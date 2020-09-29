@@ -253,7 +253,9 @@ export default class IndexRoute extends Route {
   @action
   loading(transition) {
     transition.promise.finally(() => {
-      this.controller.set('finishedLoading', true);
+      if (this.controller) {
+        this.controller.set('finishedLoading', true);
+      }
     });
     return false;
   }
