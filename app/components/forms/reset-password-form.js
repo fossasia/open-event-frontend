@@ -85,8 +85,8 @@ export default Component.extend(FormMixin, {
             })
             .catch(e => {
               console.error('Error while resetting password', e);
-              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'), {
-                id: 'reset_unexpect'
+              this.set('errorMessage', this.l10n.t('Password reset link is either invalid or used already'), {
+                id: 'reset_invalid'
               });
             })
             .finally(() => {
