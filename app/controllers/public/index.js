@@ -121,7 +121,11 @@ export default class IndexController extends Controller {
         this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
         this.transitionToRoute('orders.new', order.data.attributes.identifier);
       } catch (e) {
-        console.error('Error while saving order', e);
+        if (e.response?.errors[0]?.source?.code === 'unverified-user') {
+          console.warn('Unverified user placing order', e.response);
+        } else {
+          console.error('Error while saving order', e);
+        }
         this.notify.error(this.l10n.t(e.response.errors[0].detail));
       } finally {
         this.set('isLoading', false);
