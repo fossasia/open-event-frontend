@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}} novalidate>
   <div class="field">
     <label class="required" for="name">{{t 'Event Name'}}</label>
     <Input
@@ -6,27 +6,52 @@
       @id="name"
       @value={{this.data.event.name}} />
   </div>
-  <div class="field">
-    <label class="required" for="location">{{t 'Location'}}</label>
-    <Widgets::Forms::LocationInput
-      @inputId="location"
-      @lat={{this.data.event.latitude}}
-      @lng={{this.data.event.longitude}}
-      @placeName={{this.data.event.locationName}}
-      @searchableName={{this.data.event.searchableLocationName}}
-      @zoom={{15}}
-      @placeholder={{t "Location is required to make this event live"}}>
-      <div class="inline field">
-        <div class="ui slider checkbox">
-          <Input
-            @id="show_map"
-            @type="checkbox"
-            @checked={{this.data.event.isMapShown}} />
-          <label for="show_map">{{t 'Show map on event page'}}</label>
-        </div>
-      </div>
-    </Widgets::Forms::LocationInput>
+  <div class="ui secondary pointing menu">
+    {{#each this.locationMenuItems as |item|}}
+      <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
+        {{t item}}
+      </a>
+    {{/each}}
   </div>
+  {{#if (or (eq this.selectedLocationType 'Venue') (eq this.selectedLocationType 'Mixed'))}}
+    <div class="field">
+      <label class="{{if this.isLocationRequired 'required'}}" for="location">{{t 'Location'}}</label>
+      <Widgets::Forms::LocationInput
+        @inputId="{{if this.isLocationRequired 'location'}}"
+        @lat={{this.data.event.latitude}}
+        @lng={{this.data.event.longitude}}
+        @placeName={{this.data.event.locationName}}
+        @searchableName={{this.data.event.searchableLocationName}}
+        @zoom={{15}}
+        @placeholder={{t "Location is required to make this event live"}}>
+        <div class="inline field">
+          <div class="ui slider checkbox">
+            <Input
+              @id="show_map"
+              @type="checkbox"
+              @checked={{this.data.event.isMapShown}} />
+            <label for="show_map">{{t 'Show map on event page'}}</label>
+          </div>
+        </div>
+      </Widgets::Forms::LocationInput>
+    </div>
+  {{/if}}
+  {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Mixed'))}}
+    <Widgets::Forms::LinkInput
+      @hasLinkName={{true}}
+      @fixedName={{true}}
+      @linkName={{t "Live Stream URL"}}
+      @inputId="live_stream_url"
+      @segmentedLink={{this.data.event.segmentedLiveStreamUrl}}
+      @canRemoveItem={{false}} />
+    <Widgets::Forms::LinkInput
+      @hasLinkName={{true}}
+      @fixedName={{true}}
+      @linkName={{t "Webinar URL"}}
+      @inputId="webinar_url"
+      @segmentedLink={{this.data.event.segmentedWebinarUrl}}
+      @canRemoveItem={{false}} />
+  {{/if}}
   <div class="fields">
     <div class="five wide field">
       <label class="required" for="start_date">{{t 'Starts'}}</label>
@@ -34,7 +59,6 @@
         @type="text"
         @name="start_date"
         @placeholder="MM/DD/YYYY"
-        @rangePosition="start"
         @value={{this.data.event.startsAtDate}}
         @onChange={{pipe-action (action "updateSalesEndDate") (action "onChange")}} />
     </div>
@@ -95,26 +119,29 @@
   </div>
 
   <div class="fields">
-    <div class="ten wide field">
-      <Widgets::Forms::ImageUpload
-        @imageUrl={{this.data.event.logoUrl}}
-        @label={{t "Logo"}}
-        @id="event_logo"
-        @icon="image"
-        @hint={{t "Select Logo"}}
-        @maxSizeInKb={{1000}} />
-    </div>
-    <div class="ten wide field">
+    <div class="fifteen wide field">
       <Widgets::Forms::ImageUpload
         @imageUrl={{this.data.event.originalImageUrl}}
         @needsCropper={{true}}
         @label={{t "Event Image"}}
         @id="event_image"
         @icon="camera"
-        @hint={{t "Select Event Image"}}
+        @hint={{t "Select Event Header Image"}}
+        @imageText={{t "Header Image"}}
+        @isHeaderImage={{true}}
         @maxSizeInKb={{10000}}
         @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
         @requiresDivider={{true}} />
+    </div>
+    <div class="five wide field">
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.data.event.logoUrl}}
+        @label={{t "Logo"}}
+        @id="event_logo"
+        @icon="image"
+        @hint={{t "Select Logo"}}
+        @imageText={{t "Logo"}}
+        @maxSizeInKb={{1000}} />
     </div>
   </div>
 
@@ -145,7 +172,6 @@
     </div>
   {{/if}}
   <div class="ui section divider"></div>
-  <div class="ui section divider"></div>
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
       <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}}">
@@ -175,7 +201,8 @@
               @canMoveDown={{not-eq ticket.position (dec this.data.event.tickets.length)}}
               @moveTicketUp={{action "moveTicket" ticket "up"}}
               @moveTicketDown={{action "moveTicket" ticket "down"}}
-              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}} />
+              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}
+              @ishidden = {{false}} />
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">
@@ -248,8 +275,7 @@
       {{/if}}
     </div>
     --}}
-
-    <div class="ui section divider"></div>
+    <br>
     <div class="field">
       <h4>{{t 'Add Payment Details'}}</h4>
       <div class="two fields">
@@ -303,7 +329,7 @@
         </div>
       </div>
     </div>
-    <div class="ui section divider"></div>
+    <br>
     <div class="field">
       <h4>{{t 'Choose payment methods'}}</h4>
       {{#if this.canAcceptPayPal}}
@@ -419,8 +445,9 @@
         {{#if this.data.event.canPayByStripe}}
           <div class="field">
             {{#if (or this.data.event.stripeAuthorization.stripeAuthCode this.data.event.stripeAuthorization.stripePublishableKey)}}
-              <label
-                class="required">{{t 'You have linked your Stripe account successfully. Click Here to Disconnect you account.'}}</label>
+              <label class="required">
+                {{t 'You have linked your Stripe account successfully. Click here to disconnect your account.'}}
+              </label>
               <a href="#" class="stripe-connect" role="button"
                 {{action 'disconnectStripe'}}><span>{{t 'Disconnect Stripe Account'}}</span></a>
             {{else}}
@@ -503,9 +530,7 @@
           />
         </div>
       {{/if}}
-
-      <div class="ui section divider"></div>
-
+      <br>
       <div class="field">
         {{#if this.data.event.isTaxEnabled}}
           <div class="ui card">
@@ -566,6 +591,7 @@
     <label>{{t 'Event Type'}}</label>
     <PowerSelect
       @selected={{this.data.event.type}}
+      @allowClear={{true}}
       @options={{this.data.types}}
       @placeholder={{t 'Select Event Type'}}
       @onChange={{action (mut this.data.event.type)}} as |type|>
@@ -576,6 +602,7 @@
     <label>{{t 'Event Topic'}}</label>
     <PowerSelect
       @selected={{this.data.event.topic}}
+      @allowClear={{true}}
       @options={{this.data.topics}}
       @placeholder={{t 'Select Event Topic'}}
       @onChange={{action (mut this.data.event.topic)}} as |topic|>
@@ -586,32 +613,15 @@
     <label>{{t 'Event Sub-topic'}}</label>
     <PowerSelect
       @selected={{this.data.event.subTopic}}
+      @allowClear={{true}}
       @options={{this.subTopics}}
       @placeholder={{t 'Select Event Sub-Topic'}}
       @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
         {{subTopic.name}}
     </PowerSelect>
   </div>
-
   <br>
-  <div class="{{unless this.device.isMobile 'right floated large' 'mini three'}} ui fields {{if this.isUserUnverified 'disabled'}} buttons">
-    <button class="ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'moveForward'}}>
-      {{t 'Forward'}}
-      <i class="right chevron icon"></i>
-    </button>
-    {{#if this.showDraftButton}}
-      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
-    {{#if this.data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
-    {{/if}}
-  </div>
+  
 </form>
 
 <Modals::TaxInfoModal
@@ -619,3 +629,12 @@
   @tax={{this.data.event.tax}}
   @hasTaxInfo={{this.data.event.isTaxEnabled}} 
 />
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @first={{true}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}}
+  @onValidate={{action 'onValidate'}} />

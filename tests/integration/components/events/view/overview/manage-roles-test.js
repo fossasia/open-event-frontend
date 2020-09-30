@@ -29,6 +29,6 @@ module('Integration | Component | events/overview/manage roles', function(hooks)
   test('it renders', async function(assert) {
     this.set('data', data);
     await render(hbs`{{events/view/overview/manage-roles data=data}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Manage roles'));
+    assert.dom(this.element).includesText('Team Members');
   });
 });

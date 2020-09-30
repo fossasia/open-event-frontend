@@ -83,7 +83,7 @@ export default ModelBase.extend({
   events               : hasMany('event', { inverse: 'user' }),
   sessions             : hasMany('session'),
   feedbacks            : hasMany('feedback'),
-  invoice              : hasMany('event-invoice'),
+  eventInvoices        : hasMany('event-invoice'),
   attendees            : hasMany('attendee'),
   speakers             : hasMany('speaker'),
   discountCodes        : hasMany('discount-code'),
@@ -103,5 +103,9 @@ export default ModelBase.extend({
       const user = this.store.peekRecord('user', this.id);
       this.authManager.persistCurrentUser(user);
     }
-  }
+  },
+
+  fullName: computed('firstName', 'lastName', function() {
+    return [this.firstName, this.lastName].filter(Boolean).join(' ');
+  })
 });

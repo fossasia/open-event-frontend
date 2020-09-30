@@ -9,37 +9,65 @@
     <label>{{t 'Twitter'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedTwitterUrl}}
+      @linkName="twitter"
+      @isSocialLink={{true}}
       @inputId="twitter" />
   </div>
   <div class="field">
     <label>{{t 'Facebook'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedFacebookUrl}}
+      @linkName="facebook"
+      @isSocialLink={{true}}
       @inputId="facebook" />
   </div>
   <div class="field">
     <label>{{t 'Instagram'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedInstagramUrl}}
+      @linkName="instagram"
+      @isSocialLink={{true}}
       @inputId="instagram" />
   </div>
   <div class="field">
     <label>{{t 'Google Group'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedGoogleUrl}}
+      @linkName="groups.google"
+      @isSocialLink={{true}}
       @inputId="google_group" />
   </div>
   <div class="field">
     <label>{{t 'YouTube'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedYoutubeUrl}}
+      @linkName="youtube"
+      @isSocialLink={{true}}
       @inputId="youtube" />
   </div>
   <div class="field">
     <label>{{t 'GitHub'}}</label>
     <Widgets::Forms::LinkInput
       @segmentedLink={{this.socials.segmentedGithubUrl}}
+      @linkName="github"
+      @isSocialLink={{true}}
       @inputId="github" />
+  </div>
+  <div class="field">
+    <label>{{t 'Patreon'}}</label>
+    <Widgets::Forms::LinkInput
+      @segmentedLink={{this.socials.segmentedPatreonUrl}}
+      @linkName="patreon"
+      @isSocialLink={{true}}
+      @inputId="patreon" />
+  </div>
+  <div class="field">
+    <label>{{t 'Gitter'}}</label>
+    <Input type="url" @value={{this.socials.gitterUrl}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Telegram'}}</label>
+    <Input type="url" @value={{this.socials.telegramUrl}} />
   </div>
   <button class="ui teal button" type="submit">{{t 'Save'}}</button>
 </form>

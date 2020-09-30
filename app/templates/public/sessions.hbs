@@ -8,6 +8,7 @@
 
   <Widgets::TimeZonePicker
     class="mb-2 ml-auto mr-2"
+    @defaultLocal={{this.model.event.online}}
     @eventTimezone={{this.model.event.timezone}}
     @timezone={{this.timezone}} />
 
@@ -46,7 +47,7 @@
 
 <div class="mt-8">
   {{#each this.model.session as |session|}}
-    <Public::SessionItem @session={{session}} @timezone={{this.timezone}} />
+    <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} />
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}

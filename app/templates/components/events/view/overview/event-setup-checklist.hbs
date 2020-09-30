@@ -18,6 +18,21 @@
         </div>
       </div>
     </a>
+    <a href="{{href-to 'events.view.edit.other-details'}}" class="ui segment {{unless this.data.event.socialLinks 'secondary'}} grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.socialLinks 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Additional Information'}}
+            <div class="sub header">
+              {{t 'Links, social media, privacy, code of conduct'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
     <a href="{{href-to 'events.view.edit.attendee'}}" class="ui segment {{unless this.data.event.isTicketFormEnabled 'secondary'}} grid no margin">
       <div class="ui row">
         <div class="column one wide">

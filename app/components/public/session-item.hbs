@@ -3,6 +3,10 @@
     <div class="ui">
       <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
+        {{#unless @hideSessionLink}}
+          {{!-- template-lint-disable no-nested-interactive  --}}
+          <a href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css float='right' color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
+        {{/unless}}
         <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
           {{@session.sessionType.name}}
         </div>
@@ -41,7 +45,35 @@
       </div>
     </div>
   </div>
-  <div class="content pt-0 p-4 rounded-t-none" style={{css background-color='white' border-radius='0.2rem'}}>
+  <div class="content pt-0 p-4 rounded-t-none {{if @expanded 'active'}}" style={{css background-color='white' border-radius='0.2rem'}}>
+    {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
+      <div class="row p-4">
+        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>
+          {{#if (or this.pdfLink this.pptLink)}}
+            <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ @session.slidesUrl }}&embedded=true"></iframe>
+          {{else if @session.slidesUrl}}
+            <a class="mb-2" href={{ @session.slidesUrl }} target="_blank" rel="noopener noreferrer">
+              <button class="ui labeled icon button">
+                <i class="file powerpoint icon"></i>
+                {{t 'Slides'}}
+              </button>
+            </a>
+          {{/if}}
+          
+          {{#if this.youtubeLink}}
+            <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
+          {{else if @session.videoUrl}}
+            <a class="mb-2" href={{ @session.videoUrl }} target="_blank" rel="noopener noreferrer">
+              <button class="ui labeled icon button">
+                <i class="video icon"></i>
+                {{t 'Video'}}
+              </button>
+            </a>
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+    
     {{#each @session.speakers as |speaker|}}
       <div class="ui divider"></div>
       <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">

@@ -1,9 +1,10 @@
 {{#if this.hasLinkName}}
   <div class="three wide field">
     <div class="ui labeled input">
-      {{#if this.fixedName}}
-        <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
-      {{else}}
+      {{#if this.isSocialLink}}
+        {{#if this.isCustomLink}}
+          <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
+        {{else}}
         <UiDropdown @class='selection' @selected={{this.linkName}} @onChange={{action (mut this.linkName)}}>
           <div class="default text">Select</div>
           <i class="dropdown icon"></i>
@@ -13,10 +14,22 @@
             <div class="item" data-value="facebook">Facebook</div>
             <div class="item" data-value="linkedin">Linkedin</div>
             <div class="item" data-value="instagram">Instagram</div>
-            <div class="item" data-value="youtube">Youtube</div>
+            <div class="item" data-value="github">Github</div>
+            <div class="item" data-value="gitlab">Gitlab</div>
+            <div class="item" data-value="groups.google">Google Groups</div>
+            <div class="item" data-value="blog">Blog</div>
+            <div class="item" data-value="vimeo">Vimeo</div>
+            <div class="item" data-value="flicker">Flicker</div>
+            <div class="item" data-value="youtube">YouTube</div>
+            <div class="item" data-value="vk">VK</div>
+            <div class="item" data-value="xing">Xing</div>
+            <div class="item" data-value="weibo">Weibo</div>
           </div>
         </UiDropdown>
-      {{/if}} 
+        {{/if}}
+      {{else}}
+        <Input @type="text" @value={{this.linkName}} @disabled={{this.fixedName}} />
+      {{/if}}
     </div>
   </div>
   <div class="six wide field">
@@ -34,23 +47,39 @@
       {{#if this.isChild}}
         <div class="ui icon buttons">
           {{#if this.canRemoveItem}}
-            <button type="button" class="ui sharp button red" {{action this.removeItem}}><i class="minus icon"></i></button>
+            <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action this.removeItem}} @position="top center">
+              <i class="minus icon"></i>
+            </UiPopup>
           {{/if}}
           {{#if this.canAddItem}}
-            <button type="button" class="ui button teal" {{action this.addItem}}><i class="plus icon"></i></button>
+            <UiPopup @content={{t "Add custom link"}} @class="ui icon teal button" @click={{action this.addCustomLink}} @position="top center">
+              <i class="plus icon"></i>
+            </UiPopup>
+            <UiPopup @content={{t "Add social link"}} @class="ui icon blue button" @click={{action this.addItem}} @position="top center">
+              <i class="plus icon"></i>
+            </UiPopup>
           {{/if}}
         </div>
       {{/if}}
     </div>
   </div>
 {{else}}
-  <UiDropdown @class="label" @selected={{this.protocol}} @onChange={{action (mut this.protocol)}}>
-    <div class="text">https://</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="http">http://</div>
-      <div class="item" data-value="https">https://</div>
+  {{#if this.isSocialLink}}
+    <div class="ui labeled input">
+      <div class="ui label">
+        {{this.protocol}}
+      </div>
+      <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
     </div>
-  </UiDropdown>
-  <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
+  {{else}}
+    <UiDropdown @class="label" @selected={{this.protocol}} @onChange={{action (mut this.protocol)}}>
+      <div class="text">https://</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item" data-value="http">http://</div>
+        <div class="item" data-value="https">https://</div>
+      </div>
+    </UiDropdown>
+    <Input @type="text" @value={{this.address}} @name={{name}} @id={{this.inputId}} />
+  {{/if}}  
 {{/if}}

@@ -10,7 +10,7 @@ import { merge, mapValues, isArray } from 'lodash-es';
  * @param stringifyArray - Should an array be converted to csv
  * @return {string}
  */
-export const buildUrlViaUrlParse = (baseUrl, queryParams, stringifyArray = false) => {
+export const buildUrlViaUrlParse = (baseUrl: string, queryParams: { [key: string]: string }, stringifyArray = false): string => {
   const parsedUrl = new UrlParser(baseUrl, true);
   if (stringifyArray) {
     queryParams = mapValues(queryParams, value => {
@@ -32,7 +32,7 @@ export const buildUrlViaUrlParse = (baseUrl, queryParams, stringifyArray = false
  * @param stringifyArray - Should an array be converted to csv
  * @return {string}
  */
-export const buildUrlViaQueryString = (baseUrl, queryParams, stringifyArray = false) => {
+export const buildUrlViaQueryString = (baseUrl: string, queryParams: { [key: string]: string }, stringifyArray = false): string => {
   const parsedUrl = queryString.parseUrl(baseUrl, { arrayFormat: 'bracket' });
   if (stringifyArray) {
     queryParams = mapValues(queryParams, value => {
@@ -47,3 +47,14 @@ export const buildUrlViaQueryString = (baseUrl, queryParams, stringifyArray = fa
 };
 
 export const buildUrl = buildUrlViaQueryString;
+
+export function extractYoutubeUrl(url: string | null): string | null | undefined {
+  if (!url) {return null}
+  const parsedUrl = new UrlParser(url, true);
+  if (['youtube.com', 'www.youtube.com'].includes(parsedUrl.hostname)) {
+    return parsedUrl.query?.v;
+  } else if (['youtu.be', 'www.youtu.be'].includes(parsedUrl.hostname)) {
+    return parsedUrl.pathname.split('/')[1];
+  }
+  return null;
+}

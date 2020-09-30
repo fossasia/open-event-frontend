@@ -35,9 +35,9 @@
         <td><strong>{{t 'Session types'}}</strong></td>
         <td>
           {{#if this.data.sessionTypes}}
-            {{#each this.data.sessionTypes as |sessionType index|}}
+            {{#each this.data.sessionTypes as |sessionType index|~}}
               {{if (not-eq index 0) ','}} {{sessionType.name}}
-            {{/each}}
+            {{~/each}}
           {{else}}
             {{t 'No Session Type present. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
           {{/if}}
@@ -47,9 +47,9 @@
         <td><strong>{{t 'Links and Social Media'}}</strong></td>
         <td>
           {{#if this.data.socialLinks}}
-            {{#each this.data.socialLinks as |socialLink index|}}
+            {{#each this.data.socialLinks as |socialLink index|~}}
               {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
-            {{/each}}
+            {{~/each}}
           {{else}}
             {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.basic-details'}}#social-links">{{t 'Click here to add'}}</a>
           {{/if}}

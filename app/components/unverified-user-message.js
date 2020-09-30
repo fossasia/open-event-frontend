@@ -9,7 +9,7 @@ export default class UnverifiedUserMessage extends Component {
   get shouldShowMessage() {
     return this.session.isAuthenticated
           && this.isMessageVisible
-          && !this.authManager.currentUser.isVerified;
+          && !this.authManager?.currentUser?.isVerified;
   }
 
   @action

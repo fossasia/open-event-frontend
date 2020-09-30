@@ -4,20 +4,20 @@
       <div class="ui left aligned container inverted link list">
         <strong class="item">{{t 'Use'}} {{this.settings.appName}}</strong>
         <a class="item" href="https://support.eventyay.com" target="_blank" rel="noopener noreferrer">{{t 'How it Works'}}</a>
-        <a class="item" href="https://support.eventyay.com/pricing" rel="noopener noreferrer">{{t 'Pricing'}}</a>
-        <a class="item" href="https://blog.fossasia.org/tags/open-event" rel="noopener noreferrer">{{t 'Event Blog'}}</a>
+        <a class="item" href="{{href-to 'pricing'}}"> {{t 'Pricing'}} </a>
+        <a class="item" href="https://blog.eventyay.com/" rel="noopener noreferrer">{{t 'Blog'}}</a>
       </div>
     </div>
     <div class="four wide column">
       <div class="ui left aligned container inverted link list">
         <strong class="item">{{t 'Plan Events'}}</strong>
-        <a class="item" href="https://support.eventyay.com/online-registration" target="_blank" rel="noopener noreferrer">
+        <a class="item" href="https://support.eventyay.com/event-setup/How-can-I-create-an-event.html" target="_blank" rel="noopener noreferrer">
           {{t 'Online Registration'}}
         </a>
-        <a class="item" href="https://support.eventyay.com/sell-tickets" target="_blank" rel="noopener noreferrer">
+        <a class="item" href="https://support.eventyay.com/event-setup/How-to-sell-tickets.html" target="_blank" rel="noopener noreferrer">
           {{t 'Sell Event Tickets'}}
         </a>
-        <a class="item" href="https://support.eventyay.com/open-event-software" target="_blank" rel="noopener noreferrer">
+        <a class="item" href="https://support.eventyay.com/" target="_blank" rel="noopener noreferrer">
           {{t 'Event Management Software'}}
         </a>
       </div>
@@ -25,13 +25,13 @@
     <div class="four wide column">
       <div class="ui left aligned container inverted link list">
         <strong class="item">{{t 'Find Events'}}</strong>
-        <a class="item" href="{{href-to 'explore'}}" target="_blank" rel="noopener noreferrer">
-          {{t 'Browse Local Events'}}
+        <a class="item" href="{{href-to 'explore'}}">
+          {{t 'Browse Events'}}
         </a>
-        <a class="item" href="{{href-to 'attendee-app'}}" target="_blank" rel="noopener noreferrer">
-          {{t 'Get the'}} {{this.settings.appName}} {{t 'App'}}
+        <a class="item" href="{{href-to 'attendee-app'}}">
+          {{t 'Attendee App'}}
         </a>
-        <a class="item" href="{{href-to 'organizer-app'}}" target="_blank" rel="noopener noreferrer">
+        <a class="item" href="{{href-to 'organizer-app'}}">
           {{t 'Organizer App'}}
         </a>
       </div>
@@ -73,6 +73,21 @@
         {{#if this.socialLinks.googleUrl}}
           <a class="item" href="{{this.socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="google groups icon"></i> {{t 'Google Groups'}}
+          </a>
+        {{/if}}
+        {{#if this.socialLinks.patreonUrl}}
+          <a class="item" href="{{this.socialLinks.patreonUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="patreon icon"></i> {{t 'Patreon'}}
+          </a>
+        {{/if}}
+        {{#if this.socialLinks.gitterUrl}}
+          <a class="item" href="{{this.socialLinks.gitterUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="gitter icon"></i> {{t 'Gitter'}}
+          </a>
+        {{/if}}
+        {{#if this.socialLinks.telegramUrl}}
+          <a class="item" href="{{this.socialLinks.telegramUrl}}" target="_blank" rel="noopener noreferrer">
+            <i class="telegram icon"></i> {{t 'Telegram'}}
           </a>
         {{/if}}
       </div>

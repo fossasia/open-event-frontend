@@ -2,29 +2,59 @@
   {{#if (and this.requiresDivider this.device.isMobile)}}
     <div class="ui hidden divider"></div>
   {{/if}}
-  <div class="ui card">
-    {{#if this.uploadingImage}}
-      <div class="ui active dimmer">
-        <div class="ui text loader">{{t 'Image Uploading'}}</div>
+  {{#if this.isHeaderImage}}
+    <div class="ui centered card" style="width:100%;height: auto;overflow: hidden;">
+      {{#if this.uploadingImage}}
+        <div class="ui active dimmer">
+          <div class="ui text loader">{{t 'Image Uploading'}}</div>
+        </div>
+      {{/if}}
+      <div class="image" style="width:100%;height: 250px;overflow: hidden;">
+        <img src={{this.selectedImage}} alt="Selected image">
       </div>
-    {{/if}}
-    <div class="image">
-      <img src="{{this.selectedImage}}" alt="Selected image">
-    </div>
-    {{#if this.allowReCrop}}
+      {{#if this.allowReCrop}}
+        <div class="ui bottom attached mini buttons">
+          <button type="button" class="ui teal button" {{action 'reCrop'}}>
+            <i class="crop icon"></i>
+            {{t 'Re-crop'}}
+          </button>
+        </div>
+      {{/if}}
       <div class="ui bottom attached mini buttons">
-        <button type="button" class="ui teal button" {{action 'reCrop'}}>
-          <i class="crop icon"></i>
-          {{t 'Re-crop'}}
+        <button type="button" class="ui red button" {{action 'removeSelection'}}>
+          <i class="trash icon"></i>
+          {{if this.needsConfirmation 'Delete' 'Confirm Delete'}}
         </button>
       </div>
-    {{/if}}
-    <div class="ui bottom attached mini buttons">
-      <button type="button" class="ui red button" {{action 'removeSelection'}}>
-        <i class="trash icon"></i>
-        {{if this.needsConfirmation 'Delete' 'Confirm Delete'}}
-      </button>
     </div>
+  {{else}}
+    <div class="ui centered card">
+      {{#if this.uploadingImage}}
+        <div class="ui active dimmer">
+          <div class="ui text loader">{{t 'Image Uploading'}}</div>
+        </div>
+      {{/if}}
+      <div class="image">
+        <img src={{this.selectedImage}} alt="Selected image">
+      </div>
+      {{#if this.allowReCrop}}
+        <div class="ui bottom attached mini buttons">
+          <button type="button" class="ui teal button" {{action 'reCrop'}}>
+            <i class="crop icon"></i>
+            {{t 'Re-crop'}}
+          </button>
+        </div>
+      {{/if}}
+      <div class="ui bottom attached mini buttons">
+        <button type="button" class="ui red button" {{action 'removeSelection'}}>
+          <i class="trash icon"></i>
+          {{if this.needsConfirmation 'Delete' 'Confirm Delete'}}
+        </button>
+      </div>
+    </div>
+  {{/if}} 
+  <div class="ui center aligned text mb-8" style="margin-top:-5px">
+    <span>{{this.imageText}}</span>
   </div>
 {{else}}
   <Input
