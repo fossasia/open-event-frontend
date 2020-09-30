@@ -5,11 +5,13 @@ export default class extends Route {
     return this.l10n.tVar(`Review Event Invoice - ${model.get('identifier')}`);
   }
 
-  model(params) {
-    return this.store.findRecord('event-invoice', params.invoice_identifier, {
+  async model(params) {
+    const model = await this.store.findRecord('event-invoice', params.invoice_identifier, {
       include : 'event,user',
       reload  : true
     });
+    await model.reload();
+    return model;
   }
 
   afterModel(model) {

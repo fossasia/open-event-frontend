@@ -18,7 +18,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name       : 'Date',
         valuePath  : 'issuedAt',
-        isSortable : true
+        isSortable : true,
+        cellComponent : 'ui-table/cell/cell-date',
+        options: {
+          timezone: 'UTC',
+          dateFormat: 'MMMM DD, YYYY'
+        }
       },
       {
         name            : 'Amount',
