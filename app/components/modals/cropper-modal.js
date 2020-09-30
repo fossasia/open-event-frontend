@@ -8,7 +8,7 @@ export default class extends ModalBase {
   onVisible() {
     const viewport = {};
     const factor = 150;
-    const aspectRatio = this.getWithDefault('aspectRatio', [2, 1]);
+    const aspectRatio = this.get('aspectRatio') ?? [2, 1];
     viewport.width = aspectRatio[0] * factor;
     viewport.height = aspectRatio[1] * factor;
     viewport.type = 'square';
