@@ -17,7 +17,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name       : 'Date',
-        valuePath  : 'createdAt',
+        valuePath  : 'issuedAt',
         isSortable : true
       },
       {
