@@ -15,7 +15,7 @@
                 <strong>{{t 'Event Name'}}:</strong> {{this.model.event.name}}
               </div>
               <div class="item">
-                <strong>{{t 'Date Issued'}}:</strong> {{moment-format this.model.issuedAt 'MM/DD/YYYY'}} 
+                <strong>{{t 'Date Issued'}}:</strong> {{general-date this.model.issuedAt 'UTC' 'MMMM DD, YYYY'}} 
               </div>
               <div class="item">
                 <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol this.model.event.paymentCurrency}} {{format-money this.model.amount}}
