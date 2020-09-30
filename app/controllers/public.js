@@ -20,7 +20,7 @@ export default class PublicController extends Controller {
     return this.session.currentRouteName && this.session.currentRouteName !== 'public.cfs.new-session' && this.session.currentRouteName !== 'public.cfs.new-speaker' && this.session.currentRouteName !== 'public.cfs.edit-speaker' && this.session.currentRouteName !== 'public.cfs.edit-session';
   }
 
-  @computed('locationName', 'online')
+  @computed('model.locationName', 'model.online')
   get headerLocation() {
     if (this.model.locationName && this.model.online) {
       return `In-Person Event and Online Event ${this.model.locationName}`;
