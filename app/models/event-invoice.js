@@ -14,6 +14,7 @@ export default ModelBase.extend({
   transactionId : attr('string'),
   brand         : attr('string'),
   createdAt     : attr('moment'),
+  issuedAt      : attr('moment'),
   paymentMode   : attr('string'),
   stripeToken   : attr('string'),
   last4         : attr('string'),

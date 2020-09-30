@@ -35,7 +35,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
               val  : null
             },
             {
-              name : 'created-at',
+              name : 'issued-at',
               op   : 'ge',
               val  : moment().subtract(30, 'days').toISOString()
             }
