@@ -20,6 +20,13 @@
               <div class="item">
                 <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol this.model.event.paymentCurrency}} {{format-money this.model.amount}}
               </div>
+              <div class="item">
+                <a href="{{ this.model.invoicePdfUrl }}" target="_blank" rel="noopener"
+                  class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} button">
+                  <i class="print alternate icon"></i>
+                  {{t 'Print Invoice'}}
+                </a>
+              </div>
             </div>
           </div>
         </div>
