@@ -32,7 +32,7 @@ export default class PublicController extends Controller {
       return 'Location to be announced';
     }
   }
-  
+
   @action
   toggleMenu() {
     this.toggleProperty('isMenuOpen');
