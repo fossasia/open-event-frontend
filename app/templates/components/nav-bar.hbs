@@ -5,6 +5,11 @@
       <h3>{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
+    {{#if (not this.session.isAuthenticated)}}
+      <LinkTo
+        @route="pricing" class="item"
+        @activeClass="">{{t 'Pricing'}}</LinkTo>
+    {{/if}}
       <LinkTo
         @route="explore" class="item"
         @activeClass="">{{t 'Browse Events'}}</LinkTo>

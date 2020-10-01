@@ -1,12 +1,18 @@
-<div class='ui secondary pointing menu'>
-  <a href="#" class='active item'>
-    {{t 'Organizer App'}}
-  </a>
-</div>
-<div class="ui segment">
-  <div class="content">
-    <img class="ui fluid image" src="/images/organizer-app.jpg" alt="Open Event Organizer App">
+<div class="public-event ui relaxed grid">
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}" style = "height:200px;">
+    <Widgets::SafeImage class="background" @src="/images/app-landing-header.jpg" />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          <div>
+            <h1 class="event name">Organizer App</h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+<div class="ui thirteen column center aligned container mt-8 mb-8">
   <h1 class="weight-500 ui huge center aligned header">
     {{t 'Open Event Organizer App'}}
   </h1>
@@ -35,7 +41,7 @@
     <img class="ui fluid image" src="images/organizer-android.jpg" alt="{{t 'Organizer Android App'}}">
   {{else}}
     <div class="ui grid">
-      <div class="eight wide column">   
+      <div class="ten wide column">   
         <h1 class="weight-900">
           {{t 'Make your event success with Orga App'}}
         </h1>
@@ -83,14 +89,17 @@
           </h3>
         </div>
       </div>
-      <div class="eight wide column">
+      <div class="six wide column">
         <img class="ui medium image" src="/images/organizer-android.jpg" alt="Android Pic">
       </div>
     </div>
   {{/if}}
 </div>
-<div class="ui center aligned muted text">
+<div class="ui center aligned muted text mb-8">
   {{t 'Please Check-Out our Attendee App'}}
   <a class="item" href="{{href-to 'attendee-app'}}" rel="noopener noreferrer">{{t 'Here'}}</a>
   <div class="ui hidden divider"></div>
+</div>
+<div class="ui center aligned large secondary segment mt-8" style="margin-bottom:-10px;border:none">
+  Still have questions? <a href="https://support.eventyay.com/">Visit our FAQ</a> to find answers.
 </div>

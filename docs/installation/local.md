@@ -4,9 +4,8 @@ Follow these steps to set up the project locally.
 You will need the following things properly installed on your computer.
 
 * **[Git](https://git-scm.com/)**
-* **[Node.js 8.x LTS](https://nodejs.org/)**
+* **[Node.js 12.x LTS](https://nodejs.org/)**
 * **[Yarn](https://yarnpkg.com/en/docs/install)**
-* **[Ember CLI](https://ember-cli.com/)** - `yarn global add ember-cli`
 
 It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install) installed to speed up the `file-watcher/auto-build` service of the ember build server.
 
@@ -37,6 +36,6 @@ brew link --force gettext
 - By default, the `.env.example` file specifies the `API_HOST` as `https://open-event-api-dev.herokuapp.com` which is a test deployment of the open-event-server. If you intend to work on just the frontend, this is sufficient. **If however, you intend to work on issues which involve both the frontend and the backend, you must have the [open-event-server](https://github.com/fossasia/open-event-server) already up and running. Please install and set it up first before changing the URL for `API_HOST` to `http://localhost:5000` and proceeding to run the frontend.**
 ## Running / Development
 
-* `ember serve`
+* `yarn start`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 

@@ -1,8 +1,9 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
+import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Component.extend(FormMixin, {
+export default Component.extend(FormMixin, EventWizardMixin, {
 
   getValidationRules() {
     return {
@@ -51,23 +52,6 @@ export default Component.extend(FormMixin, {
     },
     removeSponsor(sponsor) {
       sponsor.deleteRecord();
-    },
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      });
-    },
-    move(direction) {
-      this.onValid(() => {
-        this.sendAction('move', direction);
-      });
-    },
-    publish() {
-      this.onValid(() => {
-        this.set('data.event.state', 'published');
-        this.sendAction('save');
-      });
     }
   },
 

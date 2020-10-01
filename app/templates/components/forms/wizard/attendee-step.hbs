@@ -48,36 +48,22 @@
     <div class="ui two column stackable grid">
       <div class="column">
         <Forms::Wizard::CustomForms::Table
-          @fields={{this.editableFields}} />
+          @fields={{this.editableFields}}
+          @updateField={{action (mut this.field)}} />
       </div>
     </div>
     <Forms::Wizard::CustomFormInput
-      @newFormField={{this.data.newFormField}}
       @customForms={{this.data.customForms}}
       @event={{this.data.event}}
-      @form="attendee" />
+      @form="attendee"
+      @field={{this.field}}
+      @onSave={{action (mut this.field) null}} />
   {{/if}}
   <div class="spacer-50"></div>
-  <div class="{{if this.device.isMobile 'mini four' 'right floated large'}} ui fields buttons">
-    <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
-      {{t 'Previous'}}
-      <i class="left chevron icon"></i>
-    </button>
-    <button class="ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'forwards'}}>
-      {{t 'Forward'}}
-      <i class="right chevron icon"></i>
-    </button>
-    {{#if (not-eq this.data.event.state 'published')}}
-      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
-    {{#if this.data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
-    {{/if}}
-  </div>
 </form>
+<Forms::Wizard::WizardFooter
+    @event={{this.data.event}}
+    @loading={{this.loading}}
+    @onSaved={{action 'saveForm'}}
+    @onSaveDraft={{action 'saveDraft'}}
+    @move={{action 'move'}} />

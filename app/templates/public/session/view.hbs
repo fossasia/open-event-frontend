@@ -1,85 +1,46 @@
 <div class="ui container">
-  <div class="ui row">
-    {{#if (and (not this.model.isLocked) this.showEditSection)}}
-      <LinkTo
-        @route="public.cfs.edit-session"
-        @models={{array this.model.event.id this.model.id}}>
-        <button
-          class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
-        {{#if this.device.isMobile}}
-          <div class="ui hidden fitted divider"></div>
-        {{/if}}
-      </LinkTo>
-    {{/if}}
-    {{#each this.model.speakers as |speaker|}}
-      {{#if (eq speaker.email this.authManager.currentUser.email)}}
+  {{#if this.showEditSection}}
+    <div class="ui row mb-8">
+      {{#if (not this.model.isLocked)}}
+        <div class="ui {{ this.model.color }} large label">{{t (capitalize this.model.status)}}</div>
         <LinkTo
-          @route="public.cfs.edit-speaker"
-          @models={{array this.model.event.id speaker.id}}>
+          @route="public.cfs.edit-session"
+          @models={{array this.model.event.id this.model.id}}>
           <button
-            class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
+            class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session Proposal'}}</button>
           {{#if this.device.isMobile}}
             <div class="ui hidden fitted divider"></div>
           {{/if}}
         </LinkTo>
       {{/if}}
-    {{/each}}
-    {{#if (and (not-eq this.model.status 'withdrawn') this.showEditSection)}}
-      <button class="ui red button {{if this.device.isMobile 'fluid' 'right floated'}}"
-        {{action 'openProposalWithdrawModal'}}>{{t 'Withdraw Proposal'}}</button>
-      {{#if this.device.isMobile}}
-        <div class="ui hidden fitted divider"></div>
-      {{/if}}
-    {{/if}}
-  </div>
-  <div class="ui row">
-    <h2 class="ui header left aligned">
-      {{t 'Session Details'}}
-    </h2>
-    <div class="ui segment">
-      <h3 class="ui header">
-        <div>
-          <div class="ui {{ this.model.color }} large label">{{t (capitalize this.model.status)}}</div>
-        </div>
-      </h3>
-      <div class="field">
-        <div class="ui divider"></div>
-        <h1 class="ui header"> {{this.model.title}} </h1>
-        <h4 class="ui header">
-          {{#each this.model.speakers as |speaker|}}
-            {{speaker.name}}
-          {{/each}}
-        </h4>
-        {{#if (not-eq this.model.startsAt null)}}
-          <h2 class="ui sub header">
-            <div class="ui gray-text">
-              {{t 'From '}}{{moment-format this.model.startsAt 'ddd, MMM DD h:mm A'}}{{t ' to '}}{{moment-format this.model.endsAt 'ddd, MMM DD h:mm A'}}
-            </div>
-          </h2>
-        {{else}}
-          <h2 class="ui sub header">
-            <div class="ui gray-text">{{t 'Session Not Yet Scheduled'}}</div>
-          </h2>
+      {{#each this.model.speakers as |speaker|}}
+        {{#if (eq speaker.email this.authManager.currentUser.email)}}
+          <LinkTo
+            @route="public.cfs.edit-speaker"
+            @models={{array this.model.event.id speaker.id}}>
+            <button
+              class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker- '}}{{speaker.name}}</button>
+            {{#if this.device.isMobile}}
+              <div class="ui hidden fitted divider"></div>
+            {{/if}}
+          </LinkTo>
         {{/if}}
-      </div>
-      <div class="ui divider"></div>
-      {{#if this.model.shortAbstract}}
-        <h3 class="ui left aligned header">Short Abstract</h3>
-        <p> <i>{{sanitize this.model.shortAbstract}}</i> </p>
-      {{/if}}
-      {{#if this.model.sessionType.name}}
-        <h3 class="ui left aligned header">Session Type</h3>
-        <p>{{this.model.sessionType.name}}</p>
-      {{/if}}
-      {{#if this.model.track.name}}
-        <h3 class="ui left aligned header">Track</h3>
-        <p>{{this.model.track.name}}</p>
-      {{/if}}
-      {{#if this.model.slidesUrl}}
-        <h3 class="ui left aligned header">Slide</h3>
-        <a href="{{this.model.slidesUrl}}">{{t 'Download'}}</a>
+      {{/each}}
+      {{#if (and (not-eq this.model.status 'withdrawn') this.showEditSection)}}
+        <button class="ui red button {{if this.device.isMobile 'fluid' 'right floated'}}"
+          {{action 'openProposalWithdrawModal'}}>{{t 'Withdraw Proposal'}}</button>
+        {{#if this.device.isMobile}}
+          <div class="ui hidden fitted divider"></div>
+        {{/if}}
       {{/if}}
     </div>
+  {{/if}}
+  <div class="ui row">
+    <Public::SessionItem
+      @session={{this.model}}
+      @timezone={{this.model.event.timezone}}
+      @expanded={{true}}
+      @hideSessionLink={{true}} />
   </div>
 </div>
 

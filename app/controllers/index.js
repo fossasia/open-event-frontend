@@ -22,12 +22,12 @@ export default class IndexController extends Controller {
 
   @computed('filteredEvents.[]')
   get promotedEvents() {
-    return this.filteredEvents ? this.filteredEvents.filter(event => {return event.isPromoted}) : null;
+    return this.filteredEvents?.filter(event => event.isPromoted);
   }
 
   @computed('filteredEvents.[]')
   get upcomingEvents() {
-    return this.filteredEvents ? this.filteredEvents.filter(event => {return !event.isPromoted}) : null;
+    return this.filteredEvents?.filter(event => !event.isPromoted);
   }
 
   @action

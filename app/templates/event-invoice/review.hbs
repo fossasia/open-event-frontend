@@ -3,55 +3,8 @@
     <h1 class="ui header">{{t 'Review Invoice'}}</h1>
     <div class="row">
       <div class="sixteen wide column">
-        <div class="ui segments">
-          <div class="ui secondary segment">
-            <h3 class="weight-400">{{t 'Billing Info'}}</h3>
-          </div>
-          <div class="ui padded segment">
-            <div class="ui list">
-              <div class="item">
-                <strong>{{t 'From'}}:</strong> {{this.model.user.billingContactName}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Phone'}}:</strong> {{this.model.user.billingPhone}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Email'}}:</strong> {{this.model.user.email}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Billing Address'}}:</strong> {{this.model.user.billingAddress}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Zip Code'}}:</strong> {{this.model.user.billingZipCode}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Country'}}:</strong> {{this.model.user.billingCountry}}
-              </div>
-            </div>
-          </div>
-          <div class="ui padded segment">
-            <div class="ui list">
-              <div class="item">
-                <strong>{{t 'To'}}:</strong> {{this.settings.adminBillingContactName}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Company'}}:</strong> {{this.settings.adminCompany}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Phone'}}:</strong> {{this.settings.adminBillingPhone}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Email'}}:</strong> {{this.settings.adminBillingEmail}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Zip Code'}}:</strong> {{this.settings.adminBillingZip}}
-              </div>
-              <div class="item">
-                <strong>{{t 'Country'}}:</strong> {{this.settings.adminBillingCountry}}
-              </div>
-            </div>
-          </div>
-        </div>
+        <EventInvoice::BillingInfo
+          @user={{this.model.user}} />
         <div class="ui segments">
           <div class="ui secondary segment">
             <h3 class="weight-400">{{t 'Invoice Details'}}</h3>
@@ -62,10 +15,17 @@
                 <strong>{{t 'Event Name'}}:</strong> {{this.model.event.name}}
               </div>
               <div class="item">
-                <strong>{{t 'Date Issued'}}:</strong> {{moment-format this.model.createdAt 'MM/DD/YYYY'}} 
+                <strong>{{t 'Date Issued'}}:</strong> {{general-date this.model.issuedAt 'UTC' 'MMMM DD, YYYY'}} 
               </div>
               <div class="item">
                 <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol this.model.event.paymentCurrency}} {{format-money this.model.amount}}
+              </div>
+              <div class="item">
+                <a href="{{ this.model.invoicePdfUrl }}" target="_blank" rel="noopener"
+                  class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} button">
+                  <i class="print alternate icon"></i>
+                  {{t 'Print Invoice'}}
+                </a>
               </div>
             </div>
           </div>

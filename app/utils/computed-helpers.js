@@ -4,6 +4,9 @@ import { values } from 'lodash-es';
 import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
+// Social Platforms
+export const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github', 'gitlab', 'patreon', 'vimeo', 'flicker', 'groups.google', 'vk', 'xing', 'weibo'];
+
 /**
  * Get/set a splitted URL from/to a string URL field
  *
@@ -14,21 +17,32 @@ export const computedSegmentedLink = function(property) {
   return computed(property, {
     get() {
       const splitted = this.get(property) ? this.get(property).split('://') : [];
+
       if (!splitted || splitted.length === 0 || (splitted.length === 1 && splitted[0].includes('http'))) {
         return {
           protocol : 'https://',
           address  : ''
         };
       }
-      const socialUrl = splitted[1].split('/');
+      // check if the input url is a social url or not
+      const splittedDomain = splitted[1].split('.com/');
+      const isSocialUrl = socialPlatforms.includes(splittedDomain[0]);
+      if (isSocialUrl) {
+        return {
+          protocol : `${splitted[0]}://${splittedDomain[0]}.com/`,
+          address  : splittedDomain.slice(-1)[0] // last element is username
+        };
+      }
+      const isHTTPSOnly = splitted[0] === 'https';
       return {
-        protocol : `${splitted[0]}://${socialUrl[0]}/`,
-        address  : socialUrl[1]
+        protocol : (isHTTPSOnly ? 'https' : splitted[0]) + '://',
+        address  : splitted[1]
       };
     },
     set(key, value) {
       const finalLink = values(value).join('');
-      if (finalLink && isValidUrl(finalLink.trim())) {
+      const isUserNamePresent = values(value)[1];
+      if (finalLink && isValidUrl(finalLink.trim()) && isUserNamePresent) {
         this.set(property, finalLink.trim());
       } else {
         this.set(property, null);
