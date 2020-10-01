@@ -24,7 +24,7 @@ class Router extends RouterScroll {
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
       const page = this.url;
-      const title = this.getWithDefault('currentRouteName', 'unknown');
+      const title = this.get('currentRouteName') ?? 'unknown';
       this.metrics.trackPage({ page, title });
       this.set('session.currentRouteName', title);
     });

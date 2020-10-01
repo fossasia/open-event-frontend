@@ -8,7 +8,7 @@ export default class AddOrderController extends Controller {
   @computed('model.tickets.@each.orderQuantity')
   get hasTicketsInOrder() {
     return sumBy(this.model.tickets.toArray(),
-      ticket => ticket.getWithDefault('orderQuantity', 0)
+      ticket => ticket.get('orderQuantity') ?? 0
     ) > 0;
   }
 
