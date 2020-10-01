@@ -91,8 +91,10 @@ export default class ImageUpload extends Component {
     if (!this.needsConfirmation) {
       this.set('selectedImage', null);
       this.set('imageUrl', null);
-      this.user.set('avatarUrl', null);
-      this.user.save();
+      if (this.user) {
+        this.user.set('avatarUrl', null);
+        this.user.save();
+      }
     } else {
       this.set('needsConfirmation', false);
     }

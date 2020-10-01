@@ -20,7 +20,30 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
+  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
+
+  selectedLocationType: 'Venue',
+
   deletedTickets: [],
+
+  init() {
+    this._super(...arguments);
+    if (this.data.event.online) {
+      if (this.data.event.locationName) {
+        this.selectedLocationType = 'Mixed';
+      } else {
+        this.selectedLocationType = 'Online';
+      }
+    } else if (this.data.event.locationName) {
+      this.selectedLocationType = 'Venue';
+    } else {
+      this.selectedLocationType = 'To be announced';
+    }
+  },
+
+  isLocationRequired: computed('selectedLocationType', function() {
+    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
+  }),
 
   countries: computed(function() {
     return orderBy(countries, 'name');
@@ -59,7 +82,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
-    return !this.authManager.currentUser.isVerified;
+    return !this.authManager?.currentUser?.isVerified;
   }),
 
   subTopics: computed('data.event.topic', function() {
@@ -117,15 +140,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give your event a name')
-            }
-          ]
-        },
-        location: {
-          identifier : 'location',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Location is required to save an event')
             }
           ]
         },
@@ -362,6 +376,28 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please select your country')
+            }
+          ]
+        },
+        liveStreamUrl: {
+          identifier : 'live_stream_url',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        },
+        webinarUrl: {
+          identifier : 'webinar_url',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid url')
             }
           ]
         }

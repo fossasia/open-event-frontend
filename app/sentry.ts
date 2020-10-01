@@ -38,7 +38,7 @@ if (!config.sentry.dsn.includes('dummy')) {
 
   Sentry.configureScope(function(scope) {
     function addAdapterError(error: any, event: Sentry.Event) {
-      if (error.isAdapterError) {
+      if (error?.isAdapterError) {
         event.extra = {
           ...event.extra,
           adapter_errors      : error.errors,
@@ -47,6 +47,7 @@ if (!config.sentry.dsn.includes('dummy')) {
       }
 
       try {
+        if (!event) {return}
         // Try to store JSON of error for diagnosing bugs
         event.extra = {
           ...event.extra,

@@ -180,6 +180,13 @@
         <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>
           {{t 'Order Now'}}
         </button>
+        <div class="ui hidden divider"></div>
+        {{#if this.event.refundPolicy}}
+          <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
+            <i class="info icon"></i>
+            {{t 'Refund Policy'}}
+          </UiPopup>
+        {{/if}}
       </div>
     </div>
   </div>

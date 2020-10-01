@@ -15,7 +15,7 @@ module('Integration | Component | sponsor list', function(hooks) {
         url         : '#',
         logoUrl     : 'https://placehold.it/150x60',
         level       : 2,
-        type        : 'Gold Sponsor',
+        type        : 'Platinum Sponsor',
         description : ''
       }),
       EmberObject.create({
@@ -42,6 +42,9 @@ module('Integration | Component | sponsor list', function(hooks) {
     this.set('sponsors', sponsors);
     await render(hbs `{{public/sponsor-list sponsors=sponsors}}`);
 
-    assert.ok(this.element.innerHTML.trim().includes('Sponsors'));
+    const element = assert.dom(this.element);
+    element.includesText('Platinum Sponsor');
+    element.includesText('Gold Sponsor');
+    element.includesText('Silver Sponsor');
   });
 });

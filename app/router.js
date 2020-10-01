@@ -24,7 +24,7 @@ class Router extends RouterScroll {
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
       const page = this.url;
-      const title = this.getWithDefault('currentRouteName', 'unknown');
+      const title = this.get('currentRouteName') ?? 'unknown';
       this.metrics.trackPage({ page, title });
       this.set('session.currentRouteName', title);
     });
@@ -60,6 +60,7 @@ Router.map(function() {
     this.route('speakers');
     this.route('role-invites');
   });
+  this.route('pricing');
   this.route('create');
   this.route('not-found');
   this.route('pages', { path: '/*path' });
@@ -105,6 +106,9 @@ Router.map(function() {
         this.route('create');
       });
       this.route('scheduler');
+      this.route('team', function() {
+        this.route('permissions');
+      });
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');

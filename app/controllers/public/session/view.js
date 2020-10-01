@@ -3,9 +3,9 @@ import { action, computed } from '@ember/object';
 
 export default class extends Controller {
 
-  @computed('authManager.currentUser.email', 'authManager.currentUser.isAdmin', 'model.speakers')
+  @computed('session.isAuthenticated', 'authManager.currentUser.email', 'authManager.currentUser.isAdmin', 'model.speakers')
   get showEditSection() {
-    return this.authManager.currentUser.isAdmin || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email);
+    return this.session.isAuthenticated && (this.authManager.currentUser.isAdmin || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email));
   }
 
   @action
