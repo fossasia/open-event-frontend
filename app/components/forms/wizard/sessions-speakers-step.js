@@ -42,15 +42,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             }
           ]
         },
-        privacy: {
-          identifier : 'privacy',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please select the Privacy')
-            }
-          ]
-        },
         startDate: {
           identifier : 'start_date',
           rules      : [
