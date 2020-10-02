@@ -14,7 +14,7 @@ export default class extends Controller.extend(EventWizardMixin) {
   @action
   move() {
     this.saveEventDataAndRedirectTo(
-      'events.view.edit.attendee',
+      'events.view.edit.other-details',
       ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
     );
   }
