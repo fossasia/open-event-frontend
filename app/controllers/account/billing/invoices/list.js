@@ -11,18 +11,27 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/cell-download-invoice'
       },
       {
-        name          : 'Event Name',
-        valuePath     : 'event',
-        cellComponent : 'ui-table/cell/events/cell-event-invoice'
+        name      : 'Event Name',
+        valuePath : 'event.name'
       },
       {
-        name       : 'Date',
-        valuePath  : 'issuedAt',
-        isSortable : true,
+        name          : 'Invoice Date',
+        valuePath     : 'issuedAt',
+        isSortable    : true,
         cellComponent : 'ui-table/cell/cell-date',
-        options: {
-          timezone: 'UTC',
-          dateFormat: 'MMMM DD, YYYY'
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'MMMM DD, YYYY'
+        }
+      },
+      {
+        name          : 'Due Date',
+        valuePath     : 'dueAt',
+        isSortable    : true,
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'MMMM DD, YYYY'
         }
       },
       {

@@ -18,6 +18,9 @@
                 <strong>{{t 'Date Issued'}}:</strong> {{general-date this.model.issuedAt 'UTC' 'MMMM DD, YYYY'}} 
               </div>
               <div class="item">
+                <strong>{{t 'Due Date'}}:</strong> {{general-date this.model.dueAt 'UTC' 'MMMM DD, YYYY'}} 
+              </div>
+              <div class="item">
                 <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol this.model.event.paymentCurrency}} {{format-money this.model.amount}}
               </div>
               <div class="item">
