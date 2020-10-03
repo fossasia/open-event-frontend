@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import moment from 'moment';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import { action } from '@ember/object';
 import { capitalize } from 'lodash-es';
@@ -23,23 +22,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           name : 'status',
           op   : 'eq',
           val  : params.invoice_status
-        }
-      ];
-    } else if (params.invoice_status === 'upcoming') {
-      filterOptions = [
-        {
-          and: [
-            {
-              name : 'deleted-at',
-              op   : 'eq',
-              val  : null
-            },
-            {
-              name : 'issued-at',
-              op   : 'ge',
-              val  : moment().subtract(30, 'days').toISOString()
-            }
-          ]
         }
       ];
     }

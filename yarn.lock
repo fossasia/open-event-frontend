@@ -7112,10 +7112,10 @@ ember-concurrency-decorators@^2.0.0:
     ember-cli-htmlbars "^4.3.1"
     ember-cli-typescript "^3.1.4"
 
-ember-concurrency@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-1.2.1.tgz#54fb234579638c5c43d4153a4e14567fe2b2e325"
-  integrity sha512-6zlK3BndPPZlSVWq6xBohwobpDKrI58nMMDfD8OqjoeBwnaznuyVHJqDZ46NRJrvSqYX6R96XBBVpDGCCcbK+w==
+"ember-concurrency@>=1.0.0 <3":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-1.3.0.tgz#66f90fb792687470bcee1172adc0ebf33f5e8b9c"
+  integrity sha512-DwGlfWFpYyAkTwsedlEtK4t1DznJSculAW6Vq5S1C0shVPc5b6tTpHB2FFYisannSYkm+wpm1f1Pd40qiNPtOQ==
   dependencies:
     ember-cli-babel "^7.7.3"
     ember-compatibility-helpers "^1.2.0"
@@ -7469,10 +7469,10 @@ ember-notify@^6.0.0:
     ember-cli-babel "^7.7.3"
     ember-cli-htmlbars "^3.0.1"
 
-ember-power-select@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-4.0.4.tgz#a48205e9d095522e6a40b6372eca23f08023451e"
-  integrity sha512-loE6wZx01HXnFlU4Gq0r7eobjggdocB8OXPYk3NXKkuymANA8R9zHCeygNwHL183llrh2saUeo6AzSJTVr25+w==
+ember-power-select@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-4.0.5.tgz#7a018c102792e070b2f8cddff63ce3264b796dec"
+  integrity sha512-57diMZJ2887u6VNS0rT1ppBGppocZ7WhH37ZdZnSdmApCLUnloLNFA4H9YH1VWV2V62I5/18jViRBEFJxVUUKQ==
   dependencies:
     "@ember-decorators/component" "^6.1.0"
     "@glimmer/component" "^1.0.1"
@@ -7482,7 +7482,7 @@ ember-power-select@^4.0.4:
     ember-cli-babel "^7.21.0"
     ember-cli-htmlbars "^5.2.0"
     ember-cli-typescript "^3.1.4"
-    ember-concurrency "^1.2.1"
+    ember-concurrency ">=1.0.0 <3"
     ember-concurrency-decorators "^2.0.0"
     ember-text-measurer "^0.6.0"
     ember-truth-helpers "^2.1.0"
@@ -8065,10 +8065,10 @@ eslint-plugin-ember@^6.4.1:
     ember-rfc176-data "^0.3.11"
     snake-case "^2.1.0"
 
-eslint-plugin-ember@^9.1.1:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-9.1.1.tgz#b4ecd3c2e26faee685f8e91318257a933b4322e7"
-  integrity sha512-yEOaikB3/i9HnGN31JhP7kenrvXmmK/3b9Pazo4ErM7dpSHZ0GCH7xlN1H7eSmMqwcq0kAB5wcYSjF4hFiqQIA==
+eslint-plugin-ember@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-9.2.0.tgz#4bdf00701cb765931da1e2bd4df88e0ec5dfcd68"
+  integrity sha512-m4uFMBMItW6roXgv8feRqRksCKn9hEzDJPJYLo7u9AFNNYjcqZtXmzI986zRNErxmDtHWh4Jve7qgxjWAODDEw==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     ember-rfc176-data "^0.3.15"
@@ -11888,10 +11888,10 @@ min-document@^2.19.0:
   dependencies:
     dom-walk "^0.1.0"
 
-mini-css-extract-plugin@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.11.2.tgz#e3af4d5e04fbcaaf11838ab230510073060b37bf"
-  integrity sha512-h2LknfX4U1kScXxH8xE9LCOqT5B+068EAj36qicMb8l4dqdJoyHcmWmpd+ueyZfgu/POvIn+teoUnTtei2ikug==
+mini-css-extract-plugin@^0.11.3:
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.11.3.tgz#15b0910a7f32e62ffde4a7430cfefbd700724ea6"
+  integrity sha512-n9BA8LonkOkW1/zn+IbLPQmovsL0wMb9yx75fMJQZf2X1Zoec9yTZtyMePcyu19wPkmFbzZZA6fLTotpFhQsOA==
   dependencies:
     loader-utils "^1.1.0"
     normalize-url "1.9.1"
@@ -13391,10 +13391,10 @@ query-string@^5.0.1:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
-query-string@^6.13.4:
-  version "6.13.4"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.4.tgz#b35a9a3bd4955bce55f94feb0e819b3d0be6f66f"
-  integrity sha512-E2NPIeJoBEJGQNy3ib1k/Z/OkDBUKIo8IV2ZVwbKfoa65IS9unqWWUlLcbfU70Da0qNoxUZZA8CfKUjKLE641Q==
+query-string@^6.13.5:
+  version "6.13.5"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.5.tgz#99e95e2fb7021db90a6f373f990c0c814b3812d8"
+  integrity sha512-svk3xg9qHR39P3JlHuD7g3nRnyay5mHbrPctEBDUxUkHRifPHXJDhBUycdCC0NBjXoDf44Gb+IsOZL1Uwn8M/Q==
   dependencies:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
