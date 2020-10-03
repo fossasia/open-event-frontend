@@ -22,8 +22,9 @@
       </button>
     {{/if}}
     {{#if (eq @event.state 'draft')}}
+    {{if device.isMobile 'mt-8'}}
       <button class="ui blue button right labeled icon small right aligned {{if @loading 'disabled'}}" type="button" {{action @onSaveDraft}}>
-        {{t 'Save as draft'}} <i class="save icon"></i>
+      {{t 'Save as draft'}} <i class="save icon"></i>
       </button>
     {{else}}
       <button class="ui blue button right labeled icon small right aligned {{if @loading 'disabled'}}" type="button" {{action @onSaved}}>
