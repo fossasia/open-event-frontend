@@ -12,22 +12,22 @@ export default ModelBase.extend({
 
   event: belongsTo('event'),
 
-  capitalizeName: computed('name', function() {
+  normalizedName: computed('name', function() {
     // Even though name is required for social links and is non-nullable
     // and non-null name is being sent from API, for some reason, for certain events,
     // this throws an error, so we check first if name exists
     // https://github.com/fossasia/open-event-frontend/issues/4777
 
-    const capitalizeName = (s) => {
-      if (typeof s !== 'string') return ''
-      return s.charAt(0).toUpperCase() + s.slice(1)
+    const normalizedName = this.name?.trim().toLowerCase();
+    if (!socialPlatforms.includes(normalizedName)) {
+      return 'globe';
     }
     return normalizedName;
   }),
 
-  isTwitter : equal('capitalizeName', 'twitter'),
-  isCustom  : computed('capitalizeName', function() {
-    return !socialPlatforms.includes(this.capitalizeName);
+  isTwitter : equal('normalizedName', 'twitter'),
+  isCustom  : computed('normalizedName', function() {
+    return !socialPlatforms.includes(this.normalizedName);
   }),
 
   segmentedLink: computedSegmentedLink.bind(this)('link')
