@@ -110,6 +110,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
   }),
 
+  timezoneObserver: observer('data.event.timezone', function() {
+    const { event } = this.data;
+    const { oldTimezone } = this;
+    this.oldTimezone = this.data.event.timezone;
+    if (!oldTimezone || !this.oldTimezone || oldTimezone === this.oldTimezone) {return}
+    if (event.startsAt) {
+      event.startsAt = moment.tz(event.startsAt.clone().tz(oldTimezone).format('YYYY-MM-DDTHH:mm:ss.SSS'), moment.ISO_8601, this.data.event.timezone);
+    }
+    if (event.endsAt) {
+      event.endsAt = moment.tz(event.endsAt.clone().tz(oldTimezone).format('YYYY-MM-DDTHH:mm:ss.SSS'), moment.ISO_8601, this.data.event.timezone);
+    }
+  }),
+
   discountCodeObserver: observer('data.event.discountCode', function() {
     this.getForm().form('remove prompt', 'discount_code');
   }),
