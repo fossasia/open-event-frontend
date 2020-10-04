@@ -15,6 +15,12 @@ export default class Sort extends Component {
         return 'caret down';
       }
     }
+    else {
+      //default sorting for starts-at column
+      if(kebabCase(this.column.valuePath)=='starts-at'){
+        return 'caret down';
+      }
+    }
     return 'sort';
   }
 
@@ -33,6 +39,13 @@ export default class Sort extends Component {
         this.setProperties({
           sortBy  : null,
           sortDir : null
+        });
+      }
+      else {
+        //default sorting for starts-at
+        this.setProperties({
+          sortBy  : 'starts-at',
+          sortDir : 'DSC'
         });
       }
     }
