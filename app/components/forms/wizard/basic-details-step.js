@@ -114,8 +114,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     const { event } = this.data;
     const { oldTimezone } = this;
     this.oldTimezone = this.data.event.timezone;
-    if (!oldTimezone || !this.oldTimezone || oldTimezone === this.oldTimezone)
-      return;
+    if (!oldTimezone || !this.oldTimezone || oldTimezone === this.oldTimezone) {return}
     if (event.startsAt) {
       event.startsAt = moment.tz(event.startsAt.clone().tz(oldTimezone).format('YYYY-MM-DDTHH:mm:ss.SSS'), moment.ISO_8601, this.data.event.timezone);
     }
