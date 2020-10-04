@@ -14,10 +14,9 @@ export default class Sort extends Component {
       } else {
         return 'caret down';
       }
-    }
-    else {
-      //default sorting for starts-at column
-      if(kebabCase(this.column.valuePath)=='starts-at'){
+    } else {
+      // default sorting for starts-at column
+      if (kebabCase(this.column.valuePath) === 'starts-at') {
         return 'caret down';
       }
     }
@@ -40,9 +39,8 @@ export default class Sort extends Component {
           sortBy  : null,
           sortDir : null
         });
-      }
-      else {
-        //default sorting for starts-at
+      } else {
+        // default sorting for starts-at
         this.setProperties({
           sortBy  : 'starts-at',
           sortDir : 'DSC'
