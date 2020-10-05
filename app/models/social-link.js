@@ -11,7 +11,6 @@ export default ModelBase.extend({
   identifier : attr('string'), // used for providing css id for URL validations.
 
   event: belongsTo('event'),
-
   normalizedName: computed('name', function() {
     // Even though name is required for social links and is non-nullable
     // and non-null name is being sent from API, for some reason, for certain events,
