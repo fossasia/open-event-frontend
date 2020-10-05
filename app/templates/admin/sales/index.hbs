@@ -1,7 +1,5 @@
+{{!---
 <div class="ui stackable grid">
-  <div class="row">
-    <h2 class="ui header column">{{t 'Tickets Summary'}}</h2>
-  </div>
   <div class="row">
     <div class="sixteen wide column">
       <table class="ui stackable structured celled compact table">
@@ -36,7 +34,7 @@
             </tr>
           {{/each}}
         </tbody>
-        {{!-- <tfoot>
+        <tfoot>
           <tr>
             <th colspan="2">
               <span class="weight-600">{{t 'Total'}}</span>
@@ -60,8 +58,27 @@
               US$ {{format-money totalPendingSales}}
             </th>
           </tr>
-        </tfoot> --}}
+        </tfoot> 
       </table>
     </div>
   </div>
 </div>
+---}}
+
+<div class="row">
+  <h2 class="ui header column">{{t 'Tickets Summary'}}</h2>
+</div>
+<br>
+<Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.model.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.model.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
