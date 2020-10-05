@@ -8,72 +8,72 @@ export default class IndexController extends Controller.extend(AdminSalesMixin, 
 @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 
 get columns() {
-return [
-{
-name            : 'Events',
-valuePath       : 'name',
-isSortable      : true,
-headerComponent : 'tables/headers/sort'
-},
-{
-name            : 'Event Date',
-valuePath       : 'startsAt',
-isSortable      : true,
-headerComponent : 'tables/headers/sort',
-cellComponent   : 'ui-table/cell/cell-simple-date'
-},
-{
-name            : 'Completed Orders',
-headerComponent : 'tables/headers/sort',
-color           : 'green',
-subcolumns      : [
-{
-name      : 'Completed Tickets',
-valuePath : 'sales.completed.ticket_count'
-},
-{
-name            : 'Completed Sales',
-valuePath       : 'sales.completed.sales_total',
-extraValuePaths : ['paymentCurrency'],
-cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
-}
-]
-},
-{
-name            : 'Placed Orders',
-color           : 'blue',
-headerComponent : 'tables/headers/sort',
-subcolumns      : [
-{
-name      : 'Placed Tickets',
-valuePath : 'sales.placed.ticket_count'
-},
-{
-name            : 'Placed Sales',
-valuePath       : 'sales.placed.sales_total',
-extraValuePaths : ['paymentCurrency'],
-cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
-}
-]
-},
-{
-name            : 'Pending Orders',
-color           : 'yellow',
-headerComponent : 'tables/headers/sort',
-subcolumns      : [
-{
-name      : 'Pending Tickets',
-valuePath : 'sales.pending.ticket_count'
-},
-{
-name            : 'Pending Sales',
-valuePath       : 'sales.pending.sales_total',
-extraValuePaths : ['paymentCurrency'],
-cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
-}
-]
-}
-];
+  return [
+    {
+      name            : 'Events',
+      valuePath       : 'name',
+      isSortable      : true,
+      headerComponent : 'tables/headers/sort'
+    },
+    {
+      name            : 'Event Date',
+      valuePath       : 'startsAt',
+      isSortable      : true,
+      headerComponent : 'tables/headers/sort',
+      cellComponent   : 'ui-table/cell/cell-simple-date'
+    },
+    {
+      name            : 'Completed Orders',
+      headerComponent : 'tables/headers/sort',
+      color           : 'green',
+      subcolumns      : [
+        {
+          name      : 'Completed Tickets',
+          valuePath : 'sales.completed.ticket_count'
+        },
+        {
+          name            : 'Completed Sales',
+          valuePath       : 'sales.completed.sales_total',
+          extraValuePaths : ['paymentCurrency'],
+          cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
+        }
+      ]
+    },
+    {
+      name            : 'Placed Orders',
+      color           : 'blue',
+      headerComponent : 'tables/headers/sort',
+      subcolumns      : [
+        {
+          name      : 'Placed Tickets',
+          valuePath : 'sales.placed.ticket_count'
+        },
+        {
+          name            : 'Placed Sales',
+          valuePath       : 'sales.placed.sales_total',
+          extraValuePaths : ['paymentCurrency'],
+          cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
+        }
+      ]
+    },
+    {
+      name            : 'Pending Orders',
+      color           : 'yellow',
+      headerComponent : 'tables/headers/sort',
+      subcolumns      : [
+        {
+          name      : 'Pending Tickets',
+          valuePath : 'sales.pending.ticket_count'
+        },
+        {
+          name            : 'Pending Sales',
+          valuePath       : 'sales.pending.sales_total',
+          extraValuePaths : ['paymentCurrency'],
+          cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
+        }
+      ]
+    }
+  ];
 }
 
 }
