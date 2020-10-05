@@ -28,7 +28,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || 'https://open-event-api-dev.herokuapp.com',
+      apiHost      : process.env.API_HOST || 'https://api.eventyay.com',
       apiNamespace : process.env.API_NAMESPACE || 'v1'
     },
 
