@@ -23,7 +23,7 @@
             {{#if column.headerComponent}}
               {{#component
                 column.headerComponent
-                sorts=this.sorts column=column sortBy=this.sortBy sortDir=this.sortDir
+                sorts=this.sorts column=column sortBy=this.sortBy sortDir=this.sortDir color=column.color
               }}
                 {{column.name}}
               {{/component}}
