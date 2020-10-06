@@ -2,24 +2,31 @@ import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  queryParams = [...this.queryParams, 'user_id']
+
   get columns() {
     return [
       {
         name            : 'Invoice ID',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
         valuePath       : 'identifier',
         extraValuePaths : ['invoicePdfUrl'],
         cellComponent   : 'ui-table/cell/events/cell-download-invoice'
       },
       {
-        name      : 'Event Name',
-        valuePath : 'event.name'
+        name            : 'Event Name',
+        valuePath       : 'event.name',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
-        name          : 'Invoice Date',
-        valuePath     : 'issuedAt',
-        isSortable    : true,
-        cellComponent : 'ui-table/cell/cell-date',
-        options       : {
+        name            : 'Invoice Date',
+        valuePath       : 'issuedAt',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-date',
+        options         : {
           timezone   : 'UTC',
           dateFormat : 'MMMM DD, YYYY'
         }
@@ -27,7 +34,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : 'Due Date',
         valuePath     : 'dueAt',
-        isSortable    : true,
         cellComponent : 'ui-table/cell/cell-date',
         options       : {
           timezone   : 'UTC',

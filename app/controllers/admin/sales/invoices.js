@@ -9,40 +9,61 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : 'Invoice #',
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
-        valuePath       : 'identifier'
+        valuePath       : 'identifier',
+        extraValuePaths : ['invoicePdfUrl'],
+        cellComponent   : 'ui-table/cell/events/cell-download-invoice'
       },
       {
-        name      : 'Event',
-        valuePath : 'event.name'
+        name            : 'Event',
+        valuePath       : 'event.name',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
         name            : 'Invoice Date',
-        valuePath       : 'createdAt',
-        headerComponent : 'tables/headers/sort',
+        valuePath       : 'issuedAt',
         isSortable      : true,
-        cellComponent   : 'ui-table/cell/cell-simple-date',
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-date',
         options         : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm A'
+          timezone   : 'UTC',
+          dateFormat : 'MMMM DD, YYYY'
         }
       },
       {
-        name          : 'Amount',
-        valuePath     : 'amount',
-        cellComponent : 'ui-table/cell/admin/sales/status/cell-amount'
+        name          : 'Due Date',
+        valuePath     : 'dueAt',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'MMMM DD, YYYY'
+        }
       },
       {
-        name      : 'Sent To',
-        valuePath : 'user.email'
+        name            : 'Amount',
+        valuePath       : 'amount',
+        extraValuePaths : ['event'],
+        cellComponent   : 'ui-table/cell/events/cell-amount',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
-        name      : 'Status',
-        valuePath : 'status'
+        name          : 'Sent To',
+        valuePath     : 'user',
+        cellComponent : 'ui-table/cell/admin/sales/invoice-user'
+      },
+      {
+        name            : 'Status',
+        valuePath       : 'status',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
+      },
+      {
+        name            : 'Action',
+        valuePath       : 'identifier',
+        extraValuePaths : ['status'],
+        cellComponent   : 'ui-table/cell/events/cell-action'
       }
-      // {
-      //  name            : 'Action',
-      //  valuePath       : 'identifier',
-      //  cellComponent   : 'ui-table/cell/admin/sales/cell-action'
-      // }
     ];
   }
 }

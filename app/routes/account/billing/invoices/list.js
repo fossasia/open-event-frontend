@@ -4,6 +4,13 @@ import { action } from '@ember/object';
 import { capitalize } from 'lodash-es';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
+  queryParams = {
+    ...this.queryParams,
+    user_id: {
+      refreshModel: true
+    }
+  }
+
   titleToken() {
     if (['paid', 'due', 'refunding', 'refunded'].includes(this.params.invoice_status)) {
       return this.l10n.t(capitalize(this.params.invoice_status));
@@ -37,8 +44,9 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
 
     queryString = this.applySortFilters(queryString, params);
+    const user = params.user_id ? await this.store.findRecord('user', params.user_id) : this.authManager.currentUser;
     return {
-      eventInvoices: await this.asArray(this.authManager.currentUser.query('eventInvoices', queryString)),
+      eventInvoices: await this.asArray(user.query('eventInvoices', queryString)),
       params
 
     };
