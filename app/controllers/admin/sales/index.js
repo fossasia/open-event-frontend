@@ -20,6 +20,7 @@ get columns() {
       valuePath       : 'startsAt',
       isSortable      : true,
       headerComponent : 'tables/headers/sort',
+      extraValuePaths : ['timezone'],
       cellComponent   : 'ui-table/cell/cell-simple-date'
     },
     {
@@ -28,11 +29,12 @@ get columns() {
       color           : 'green',
       subcolumns      : [
         {
-          name      : 'Completed Tickets',
-          valuePath : 'sales.completed.ticket_count'
+          name      : 'Tickets',
+          valuePath : 'sales.completed.ticket_count',
+          width     : 30
         },
         {
-          name            : 'Completed Sales',
+          name            : 'Sales',
           valuePath       : 'sales.completed.sales_total',
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
@@ -45,11 +47,12 @@ get columns() {
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : 'Placed Tickets',
-          valuePath : 'sales.placed.ticket_count'
+          name      : 'Tickets',
+          valuePath : 'sales.placed.ticket_count',
+          width     : 30
         },
         {
-          name            : 'Placed Sales',
+          name            : 'Sales',
           valuePath       : 'sales.placed.sales_total',
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
@@ -62,11 +65,12 @@ get columns() {
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : 'Pending Tickets',
-          valuePath : 'sales.pending.ticket_count'
+          name      : 'Tickets',
+          valuePath : 'sales.pending.ticket_count',
+          width     : 30
         },
         {
-          name            : 'Pending Sales',
+          name            : 'Sales',
           valuePath       : 'sales.pending.sales_total',
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'

@@ -1,13 +1,6 @@
-{{#if color}}
-	<div class="ui {{color}} inverted segment">
-		{{yield}}
-		{{#if this.column.isSortable}}
-		  <i class="{{this.sortIcon}} icon"></i>
-		{{/if}}
-	</div>
-{{else}}
-	{{yield}}
-	{{#if this.column.isSortable}}
-	  <i class="{{this.sortIcon}} icon"></i>
-	{{/if}}
-{{/if}}
+<div class="{{if this.column.color (concat 'ui inverted segment ' this.column.color)}}">
+  {{yield}}
+  {{#if this.column.isSortable}}
+     <i class="{{this.sortIcon}} icon"></i>
+  {{/if}}
+</div>
