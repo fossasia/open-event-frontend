@@ -139,14 +139,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
-      return parseInt($('.ui.form').form('get value', 'ticket_min_order'),10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'),10);
+      return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
     };
 
     const validationRules = {
       inline : true,
       delay  : false,
-      on     : 'blur',
-      on     :'change',
+      on     : 'change',
       fields : {
         name: {
           identifier : 'name',
