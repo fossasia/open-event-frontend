@@ -30,7 +30,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           val  : `%${params.search}%`
         }
       });
-    } 
+    }
     if (params.orders_status !== 'all') {
       filterOptions.pushObject({
         name : 'status',
