@@ -19,9 +19,29 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
-    const searchField = 'identifier';
     let filterOptions = [];
-    if (params.orders_status !== 'all') {
+    if (params.orders_status !== 'all' && params.search !== null) {
+      filterOptions = [
+        {
+          and: [
+            {
+              name : 'status',
+              op   : 'eq',
+              val  : params.orders_status
+            },
+            {
+              name : 'user',
+              op   : 'has',
+              val  : {
+                name : 'email',
+                op   : 'ilike',
+                val  : `%${params.search}%`
+              }
+            }
+          ]
+        }
+      ];
+    } else if (params.orders_status !== 'all') {
       filterOptions = [
         {
           name : 'status',
@@ -29,8 +49,19 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           val  : params.orders_status
         }
       ];
+    } else if (params.search !== null) {
+      filterOptions = [
+        {
+          name : 'user',
+          op   : 'has',
+          val  : {
+            name : 'email',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          }
+        }
+      ];
     }
-    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
 
     let queryString = {
       include        : 'tickets,user',
