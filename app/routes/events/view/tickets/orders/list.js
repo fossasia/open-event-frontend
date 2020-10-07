@@ -30,17 +30,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           val  : `%${params.search}%`
         }
       });
-    } else {
-      filterOptions.removeObject({
-        name : 'user',
-        op   : 'has',
-        val  : {
-          name : 'email',
-          op   : 'ilike',
-          val  : `%${params.search}%`
-        }
-      });
-    }
+    } 
     if (params.orders_status !== 'all') {
       filterOptions.pushObject({
         name : 'status',
