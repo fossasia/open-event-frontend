@@ -19,7 +19,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
-    let filterOptions = [];
+    const filterOptions = [];
     if (params.search) {
       filterOptions.pushObject({
         name : 'user',
