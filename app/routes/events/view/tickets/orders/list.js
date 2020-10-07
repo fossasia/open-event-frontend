@@ -20,47 +20,33 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
-    if (params.orders_status !== 'all' && params.search !== null) {
-      filterOptions = [
-        {
-          and: [
-            {
-              name : 'status',
-              op   : 'eq',
-              val  : params.orders_status
-            },
-            {
-              name : 'user',
-              op   : 'has',
-              val  : {
-                name : 'email',
-                op   : 'ilike',
-                val  : `%${params.search}%`
-              }
-            }
-          ]
+    if (params.search) {
+      filterOptions.pushObject({
+        name : 'user',
+        op   : 'has',
+        val  : {
+          name : 'email',
+          op   : 'ilike',
+          val  : `%${params.search}%`
         }
-      ];
-    } else if (params.orders_status !== 'all') {
-      filterOptions = [
-        {
-          name : 'status',
-          op   : 'eq',
-          val  : params.orders_status
+      });
+    } else {
+      filterOptions.removeObject({
+        name : 'user',
+        op   : 'has',
+        val  : {
+          name : 'email',
+          op   : 'ilike',
+          val  : `%${params.search}%`
         }
-      ];
-    } else if (params.search !== null) {
-      filterOptions = [
-        {
-          name : 'user',
-          op   : 'has',
-          val  : {
-            name : 'email',
-            op   : 'ilike',
-            val  : `%${params.search}%`
-          }
-        }
-      ];
+      });
+    }
+    if (params.orders_status !== 'all') {
+      filterOptions.pushObject({
+        name : 'status',
+        op   : 'eq',
+        val  : params.orders_status
+      });
     }
 
     let queryString = {
