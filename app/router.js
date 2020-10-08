@@ -112,6 +112,9 @@ Router.map(function() {
       this.route('team', function() {
         this.route('permissions');
       });
+      this.route('video', function() {
+        this.route('create');
+      });
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
