@@ -15,7 +15,7 @@
     "test": "ember test",
     "exam": "ember exam --launch=chrome --random",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
-    "lint:js": "eslint --fix app ember-cli-build.js testem.js tests",
+    "lint:js": "eslint --fix app ember-cli-build.js testem.js tests config",
     "lint:scss": "sass-lint -c .sass-lint.yml --verbose",
     "lint:hbs": "ember-template-lint ."
   },
