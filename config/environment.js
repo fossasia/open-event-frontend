@@ -58,7 +58,8 @@ module.exports = function(environment) {
       dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
       debug       : !!process.env.SENTRY_DSN,
       development : !process.env.SENTRY_DSN,
-      tracesSampleRate: process.env.SENTRY_TRACE_SAMPLE_RATE || 0.01,
+      release     : (process.env.SENTRY_PROJECT_NAME || 'eventyay-frontend') + '@' + process.env.npm_package_version,
+      tracesSampleRate: process.env.SENTRY_TRACE_SAMPLE_RATE || 0.1,
     },
 
     emberFullCalendar: {
