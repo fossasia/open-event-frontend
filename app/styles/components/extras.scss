@@ -10,3 +10,10 @@ a.link-item {
     background-color: rgba(0, 0, 0, .05);
   }
 }
+
+// XToggle theme color
+.x-toggle {
+  &:checked + label > .x-toggle-ios.x-toggle-btn {
+    background-color: #2185d0;
+  }
+}

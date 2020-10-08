@@ -1,1 +1,5 @@
-<UiCheckbox @class="toggle" @checked={{this.extraRecords.isPromoted}} @onChange={{action this.props.actions.togglePromoted this.record}} />
+{{@extraRecords.isPromoted}}
+<Input type="checkbox" @checked={{if @extraRecords.isPromoted 'on' 'off'}} {{action @props.actions.togglePromoted @record}} />
+
+<LegacyCheckbox @checked={{@extraRecords.isPromoted}} @onChange={{action @props.actions.togglePromoted @record}} />
+<UiCheckbox @checked={{@extraRecords.isPromoted}} @onChange={{action @props.actions.togglePromoted @record}} />
