@@ -28,7 +28,7 @@ script:
   - yarn lint
   - COVERAGE=true yarn test
   - ROOT_URL=open-event-frontend ember build -prod
-  - bash scripts/test_fastboot.sh
+  # - bash scripts/test_fastboot.sh # FastBoot is disabled for now
 
 after_success:
   - 'bash <(curl -s https://codecov.io/bash)'
