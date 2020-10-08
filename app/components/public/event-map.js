@@ -6,7 +6,7 @@ import { computed } from '@ember/object';
 @classNames('ui', 'stackable', 'grid')
 export default class EventMap extends Component {
 	@computed('event.locationName')
-	get eventLocation() {
-		return this.event.locationName.split(", ");
-	}
+  get eventLocation() {
+    return this.event.locationName.split(', ');
+  }
 }
