@@ -14,7 +14,7 @@ export default Component.extend({
   },
 
   combinedAddress: computed('address.{venue,line,city,state,zipCode,country}', function() {
-    return values(this.address).join(' ').trim();
+    return values(this.address).join(', ').trim();
   }),
 
   searchableAddress: computed('address.{city}', function() {

@@ -1,5 +1,5 @@
 {{#if this.addressViewIsShown}}
-  <div class="ui two column grid stackable">
+  <div class="ui one column grid stackable">
     <div class="column">
       <div class="field">
         <Input
@@ -44,14 +44,17 @@
           placeholder={{t "Country"}} />
       </div>
       <div class="ui two column grid">
+        {{!---
         <div class="left floated column">
           <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
         </div>
+        ---}}
         <div class="right floated column" style="text-align: right">
           {{yield}}
         </div>
       </div>
     </div>
+    {{!---
     <div class="column">
       <GMap
         @lat={{this.lat}}
@@ -62,6 +65,7 @@
         {{g-map-address-marker context address=this.combinedAddress onLocationChange=(action 'onLocationChangeHandler')}}
       </GMap>
     </div>
+    ---}}
   </div>
 {{else}}
   <div class="ui action input">

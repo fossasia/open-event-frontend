@@ -16,5 +16,7 @@
 {{/if}}
 <div class="{{if this.event.isMapShown 'eight' 'sixteen'}} wide column address">
   <h1>{{t 'Address'}}</h1>
-  <p>{{this.event.locationName}}</p>
+  {{#each this.eventLocation as |loc|}}
+    <p>{{loc}}</p>
+  {{/each}}
 </div>
