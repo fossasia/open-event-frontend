@@ -27,7 +27,7 @@ script:
   - node scripts/l10n.js generate
   - yarn lint
   - COVERAGE=true yarn test
-  - ROOT_URL=open-event-frontend ember build -prod
+  # - ROOT_URL=open-event-frontend ember build -prod
   # - bash scripts/test_fastboot.sh # FastBoot is disabled for now
 
 after_success:
