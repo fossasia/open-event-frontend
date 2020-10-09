@@ -117,7 +117,7 @@
     <div class="fields">
       <div class="five wide field">
         <label class="required" for="start_date">{{t 'Starts'}}</label>
-        <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="MM/DD/YYYY" @rangePosition="start" @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtDate}} />
+        <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="MM/DD/YYYY"  @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtDate}} />
       </div>
       <div class="two wide field">
         <label for="start_time">&nbsp;</label>
