@@ -16,7 +16,7 @@
 <br>
 <form class="ui form" {{action 'submit' this.data on='submit'}}>
   <div class="field">
-    <label class="required">{{t 'Video Room Url for Session'}}</label>
+    <label class="required">{{t 'Video Room URL for Session'}}</label>
     <Input
       @type="text"
       @name="code"
@@ -45,7 +45,7 @@
     <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Public(no restriction)</label></div></div>
   </div>
   <div class="field">
-    <label class="required">{{t 'Stream'}}</label>
+    <label>{{t 'Stream'}}</label>
     <Input
       @type="text"
       @name="pin_codes"
@@ -53,7 +53,7 @@
   </div>
 
   <div class="grouped inline fields">
-    <label class="required">{{t 'Additional Information Stream'}}</label>
+    <label>{{t 'Additional Information Stream'}}</label>
     <Widgets::Forms::RichTextEditor
       @textareaId="description_again"
       @value={{this.data.event.description}} />

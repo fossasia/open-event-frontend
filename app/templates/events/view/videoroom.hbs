@@ -1,0 +1,13 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="right aligned column">
+      {{#if (not-eq this.session.currentRouteName 'events.view.videoroom.create')}}
+        <LinkTo @route="events.view.videoroom.create" class="ui blue button">
+          {{t 'Add Video Room'}}
+        </LinkTo>
+      {{/if}}
+    </div>
+  </div>
+</div>
+<br>
+{{outlet}}
