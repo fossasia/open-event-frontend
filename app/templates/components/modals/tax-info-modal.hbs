@@ -6,7 +6,7 @@
     <div class="field">
       <label class="required">{{t 'Choose country'}}</label>
       <UiDropdown @class="search selection" @selected={{this.tax.country}} @forceSelection={{false}} @fullTextSearch={{true}}>
-        <Input @type="hidden" @autocomplete="no" @id="tax_country" @value={{this.tax.country}} />
+        <Input @type="hidden" @autocomplete="some-random-string" @id="tax_country" @value={{this.tax.country}} />
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select country'}}</div>
         <div class="menu">
@@ -21,20 +21,20 @@
     </div>
     <div class="field">
       <label class="required">{{t 'Tax name'}}</label>
-      <Input @type="text" @id="tax_name" @value={{this.tax.name}} />
+      <Input @type="text" @autocomplete="some-random-string" @id="tax_name" @value={{this.tax.name}} />
     </div>
     <div class="field">
       <label class="required">{{t 'Tax rate'}}</label>
-      <Input @type="number" @id="tax_rate" @min={{0}} @max={{100}} @value={{this.tax.rate}} />
+      <Input @type="number" @autocomplete="some-random-string" @id="tax_rate" @min={{0}} @max={{100}} @value={{this.tax.rate}} />
     </div>
     <div class="field">
       <label class="required">{{t 'Tax ID'}}</label>
-      <Input @type="text" @id="tax_id" @value={{this.tax.taxId}} />
+      <Input @type="text" @autocomplete="some-random-string" @id="tax_id" @value={{this.tax.taxId}} />
     </div>
     <div class="field">
       <label>{{t 'Tax Invoices'}}</label>
       <div class="ui checkbox">
-        <Input @type="checkbox" @id="send_tax_invoices" @name="send_tax_invoices" @checked={{this.tax.shouldSendInvoice}} />
+        <Input @type="checkbox" @autocomplete="some-random-string" @id="send_tax_invoices" @name="send_tax_invoices" @checked={{this.tax.shouldSendInvoice}} />
         <label for="send_tax_invoices">
           <strong>{{t 'Send tax invoice to attendees'}} : </strong>
           <span class="text muted">
@@ -46,22 +46,22 @@
     </div>
     <div class="field">
       <label>{{t 'Registered Company'}}</label>
-      <Input @type="text" @id="tax_invoice_company" @value={{this.tax.registeredCompany}} />
+      <Input @type="text" @autocomplete="some-random-string" @id="tax_invoice_company" @value={{this.tax.registeredCompany}} />
     </div>
     <div class="field">
       <label>{{t 'Business Address'}}</label>
-      <Textarea @rows={{3}} @id="tax_invoice_address" @value={{this.tax.address}} />    </div>
+      <Textarea @rows={{3}} @autocomplete="some-random-string" @id="tax_invoice_address" @value={{this.tax.address}} />    </div>
     <div class="field">
       <label>{{t 'City'}}</label>
-      <Input @type="text" @id="tax_invoice_city" @value={{this.tax.city}} />
+      <Input @type="text" @autocomplete="some-random-string" @id="tax_invoice_city" @value={{this.tax.city}} />
     </div>
     <div class="field">
       <label>{{t 'State'}}</label>
-      <Input @type="text" @id="tax_invoice_state" @value={{this.tax.state}} />
+      <Input @type="text" @autocomplete="some-random-string" @id="tax_invoice_state" @value={{this.tax.state}} />
     </div>
     <div class="field">
       <label>{{t 'Zipcode'}}</label>
-      <Input @type="text" @id="tax_invoice_zipcode" @value={{this.tax.zip}} />
+      <Input @type="text" @autocomplete="some-random-string" @id="tax_invoice_zipcode" @value={{this.tax.zip}} />
     </div>
     <div class="field">
       <label>{{t 'Text for invoice footer (optional)'}}</label>
