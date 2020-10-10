@@ -5,15 +5,23 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy } from 'lodash-es';
 import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
 import { SPEAKER_FORM_ORDER, SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
+import moment from 'moment';
+import $ from 'jquery';
 
 export default Component.extend(EventWizardMixin, FormMixin, {
 
   // TODO: Removing the Session & Speaker Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
+    $.fn.form.settings.rules.checkStartDateCFS = () => {
+      return !(moment($('.ui.form').form('get value', 'start_date')).isAfter(this.data.event.startsAtDate));
+    };
+    $.fn.form.settings.rules.checkEndDateCFS = () => {
+      return !(moment($('.ui.form').form('get value', 'end_date')).isAfter(this.data.event.startsAtDate));
+    };
     return {
       inline : true,
       delay  : false,
-      on     : 'blur',
+      on     : 'change',
       fields : {
         sessionType: {
           identifier : 'session',
@@ -48,6 +56,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please tell us when your event starts')
+            },
+            {
+              type   : 'checkStartDateCFS',
+              prompt : this.l10n.t('CFS start time should be before than event start time')
             }
           ]
         },
@@ -57,6 +69,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please tell us when your event ends')
+            },
+            {
+              type   : 'checkEndDateCFS',
+              prompt : this.l10n.t('CFS end time should be before than event start time')
             }
           ]
         },
