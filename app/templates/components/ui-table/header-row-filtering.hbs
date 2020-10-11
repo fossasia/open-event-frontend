@@ -11,7 +11,7 @@
             {{#if column.useFilter}}
               <div class="ui input {{if column.filterUsed 'has-feedback'}}">
                 {{#if column.filterWithSelect}}
-                  {{models-select options=column.filterOptions cssPropertyName=column.cssPropertyName value=column.filterString class=(concat this.themeInstance.input 'changeFilterForColumn')}}
+                  <ModelsSelect @options={{column.filterOptions}} @cssPropertyName={{column.cssPropertyName}} @value={{column.filterString}} @class={{concat this.themeInstance.input 'changeFilterForColumn'}} />
                 {{else}}
                   <Input @type="text" @value={{column.filterString}} class={{this.themeInstance.input}} placeholder="" />
                 {{/if}}
