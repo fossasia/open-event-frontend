@@ -9,7 +9,12 @@ interface Event extends DS.Model { // eslint-disable-line ember-suave/no-direct-
   identifier: string | null,
   state: string,
   name: string | null,
-  tickets: any[]
+  tickets: any[],
+  canPayByStripe: boolean,
+  stripeAuthorization:{
+    stripePublishableKey: boolean,
+    stripeAuthCode: boolean,
+  },
 }
 
 interface EventsViewPublishBarArgs {
@@ -58,7 +63,13 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
             id: 'event_tickets'
           });
         return;
-      }
+      } else if(event.canPayByStripe && !(event.stripeAuthorization.stripeAuthCode || event.stripeAuthorization.stripePublishableKey)){
+        this.notify.error(this.l10n.t('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.'),
+          {
+            id: 'event_stripe'
+          });
+        return;
+      } 
     }
     this.isLoading = true;
     event.state = state === 'draft' ? 'published' : 'draft';
