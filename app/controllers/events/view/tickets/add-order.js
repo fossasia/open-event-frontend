@@ -59,6 +59,7 @@ export default class AddOrderController extends Controller {
       }
     }
   }
+
   @action
   async placeOrder(orderInput) {
     if (orderInput) {
