@@ -181,6 +181,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   sessionsByState: computed('sessions', function() {
     return groupBy(this.sessions.toArray(), 'data.state');
+  }),
+
+  stripeConnectCompulsion: computed('canPayByStripe', 'stripeAuthorization.stripeAuthCode', 'stripeAuthorization.stripePublishableKey', function() {
+    return this.canPayByStripe && !(this.stripeAuthorization.stripeAuthCode || this.stripeAuthorization.stripePublishableKey);
   })
 
 }) {}
