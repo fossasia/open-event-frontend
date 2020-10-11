@@ -184,7 +184,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   }),
 
   isStripeConnectionValid: computed('canPayByStripe', 'stripeAuthorization.stripeAuthCode', 'stripeAuthorization.stripePublishableKey', function() {
-    return this.canPayByStripe && !(this.stripeAuthorization.stripeAuthCode || this.stripeAuthorization.stripePublishableKey);
+    return this.canPayByStripe && this.stripeAuthorization?.stripeAuthCode && this.stripeAuthorization?.stripePublishableKey;
   })
 
 }) {}

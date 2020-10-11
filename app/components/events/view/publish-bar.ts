@@ -59,7 +59,7 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
             id: 'event_tickets'
           });
         return;
-      } else if (event.isStripeConnectionValid) {
+      } else if (!event.isStripeConnectionValid) {
         this.notify.error(this.l10n.t('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.'),
           {
             id: 'event_stripe'

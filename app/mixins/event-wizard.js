@@ -216,10 +216,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
   actions: {
     saveDraft() {
       this.onValid(() => {
-        preSaveActions.call(this);
-        if (this.data.event.isStripeConnectionValid) {
-          this.notify.error('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.');
-        } else {
+        const valid = preSaveActions.call(this);
+        if (valid) {
           this.set('data.event.state', 'draft');
           this.sendAction('save');
         }
@@ -227,10 +225,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     },
     saveForm() {
       this.onValid(() => {
-        preSaveActions.call(this);
-        if (this.data.event.isStripeConnectionValid) {
-          this.notify.error('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.');
-        } else {
+        const valid = preSaveActions.call(this);
+        if (valid) {
           this.sendAction('save', this.data);
         }
       });
@@ -292,4 +288,10 @@ function preSaveActions() {
       this.set('data.event.locationName', null);
     }
   }
+
+  if (!this.data.event.isStripeConnectionValid) {
+    this.notify.error('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.');
+  }
+
+  return this.data.event.isStripeConnectionValid;
 }
