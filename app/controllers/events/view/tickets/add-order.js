@@ -59,43 +59,41 @@ export default class AddOrderController extends Controller {
       }
     }
   }
+  @action
+  async placeOrder(orderInput) {
+    if (orderInput) {
+      this.set('orderInput', orderInput);
+    }
+    if (!this.session.isAuthenticated) {
+      this.set('userExists', false);
+      this.set('isLoginModalOpen', true);
+      return;
+    }
+    this.send('save');
+  }
 
   @action
-  async placeOrder() {
-    this.set('isLoading', true);
-    const { order } = this.model;
-    const event = order.get('event');
-    order.tickets.forEach(ticket => {
-      let numberOfAttendees = ticket.orderQuantity;
-      while (numberOfAttendees--) {
-        this.model.attendees.addObject(this.store.createRecord('attendee', {
-          firstname : 'John',
-          lastname  : 'Doe',
-          email     : 'johndoe@example.com',
-          event,
-          ticket
-        }));
-      }
-    });
+  async save() {
     try {
-      const { order } = this.model;
-      const { attendees } = this.model;
-      await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
-      order.set('attendees', attendees.slice());
-      await order.save()
-        .then(order => {
-          this.notify.success(this.l10n.t('Order details saved. Please fill further details within 10 minutes.'));
-          this.transitionToRoute('orders.new', order.identifier);
-        })
-        .catch(async() => {
-          await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.destroyRecord()));
-          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
-        })
-        .finally(() => {
-          this.set('isLoading', false);
-        });
+      this.set('isLoading', true);
+      const { orderInput } = this;
+      try {
+        const order = await this.loader.post('/orders/create-order', orderInput);
+        this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
+        this.transitionToRoute('orders.new', order.data.attributes.identifier);
+      } catch (e) {
+        if (e.response?.errors[0]?.source?.code === 'unverified-user') {
+          console.warn('Unverified user placing order', e.response);
+        } else {
+          console.error('Error while saving order', e);
+        }
+        this.notify.error(this.l10n.t(e.response.errors[0].detail));
+      } finally {
+        this.set('isLoading', false);
+      }
     } catch (e) {
-      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+      console.error('Error while creating order', e);
+      this.notify.error(this.l10n.t(e));
     }
   }
 }
