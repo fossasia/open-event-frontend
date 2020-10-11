@@ -17,6 +17,20 @@
   }
 }
 
+.extra.content {
+
+  span {
+
+    &:last-child {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 90%;
+    }
+  }
+}
+
 .event.wide {
   border-radius: 0 !important;
   margin: 0 !important;
