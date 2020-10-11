@@ -217,22 +217,22 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
     saveDraft() {
       this.onValid(() => {
         preSaveActions.call(this);
-        if(this.data.event.canPayByStripe && !(this.data.event.stripeAuthorization.stripeAuthCode || this.data.event.stripeAuthorization.stripePublishableKey)){
+        if (this.data.event.canPayByStripe && !(this.data.event.stripeAuthorization.stripeAuthCode || this.data.event.stripeAuthorization.stripePublishableKey)) {
           this.notify.error('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.');
-        }else{
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      }
+        } else {
+          this.set('data.event.state', 'draft');
+          this.sendAction('save');
+        }
       });
     },
     saveForm() {
       this.onValid(() => {
         preSaveActions.call(this);
-        if(this.data.event.canPayByStripe && !(this.data.event.stripeAuthorization.stripeAuthCode || this.data.event.stripeAuthorization.stripePublishableKey)){
+        if (this.data.event.canPayByStripe && !(this.data.event.stripeAuthorization.stripeAuthCode || this.data.event.stripeAuthorization.stripePublishableKey)) {
           this.notify.error('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.');
-        }else{
-        this.sendAction('save', this.data);
-      }
+        } else {
+          this.sendAction('save', this.data);
+        }
       });
     },
     move(direction) {
