@@ -60,35 +60,38 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name      : 'Type',
+        width     : 80,
         valuePath : 'sessionType.name'
       },
       {
         name          : 'Submission Date',
         valuePath     : 'submittedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
-        width         : 60,
+        width         : 115,
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm A'
+          dateFormat: 'MMMM DD, YYYY - HH:mm'
         }
       },
       {
         name          : 'Last Modified',
         valuePath     : 'lastModifiedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
-        width         : 60,
+        width         : 115,
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm A'
+          dateFormat: 'MMMM DD, YYYY - HH:mm'
         }
       },
       {
         name            : 'Notify',
         valuePath       : 'id',
+        width           : 55,
         extraValuePaths : ['status'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-notify'
       },
       {
         name            : 'Lock Session',
         valuePath       : 'id',
+        width           : 60,
         extraValuePaths : ['isLocked'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-lock-session',
         actions         : {
