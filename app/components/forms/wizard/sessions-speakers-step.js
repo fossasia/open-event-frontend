@@ -126,6 +126,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     return this.data.sessionTypes.filterBy('isDeleted', false);
   }),
 
+  hasCallForSpeaker: computed('data.speakersCall.announcement', function() {
+    return !!this.data.speakersCall.announcement;
+  }),
+
   customForm: computed('data.customForms.[]', function() {
     const grouped = groupBy(this.data.customForms.toArray(), customForm => customForm.get('form'));
 
