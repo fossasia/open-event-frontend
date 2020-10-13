@@ -183,11 +183,11 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     return groupBy(this.sessions.toArray(), 'data.state');
   }),
 
-  isStripeConnectionValid: computed('canPayByStripe', 'stripeAuthorization.stripeAuthCode', 'stripeAuthorization.stripePublishableKey', function() {
+  isStripeConnectionValid: computed('canPayByStripe', 'stripeAuthorization.stripePublishableKey', function() {
     if (!this.canPayByStripe) {
       return true;
     }
-    return this.canPayByStripe && this.stripeAuthorization?.stripeAuthCode && this.stripeAuthorization?.stripePublishableKey;
+    return this.canPayByStripe && this.get('stripeAuthorization.stripePublishableKey');
   })
 
 }) {}
