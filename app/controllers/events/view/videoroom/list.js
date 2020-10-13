@@ -6,22 +6,24 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'Session',
-        valuePath       : 'title',
-        isSortable      : 'true',
-        headerComponent : 'tables/headers/sort'
-      },
-      {
         name      : 'Microlocation',
         valuePath : 'microlocation.name'
       },
       {
-        name      : 'Track',
-        valuePath : 'track.name'
+        name      : 'Video room URL',
+        valuePath : 'videoUrl'
       },
       {
-        name      : 'Floor',
-        valuePath : 'microlocation.floor'
+        name      : 'Pin',
+        valuePath : ''
+      },
+      {
+        name      : 'Access',
+        valuePath : ''
+      },
+      {
+        name      : 'Track',
+        valuePath : 'track.name'
       },
       {
         name      : 'Type',

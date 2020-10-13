@@ -2,7 +2,7 @@
   <div class="ui grid">
     <div class="ui left aligned sixteen wide mobile eight wide computer column">
       <h3 class="ui header">
-        {{t 'Microlocation'}}
+        {{t 'Video Room'}}
       </h3>
     </div>
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
@@ -23,26 +23,25 @@
       @value={{this.data.code}} />
   </div>
   <div class="field">
-    <label class="required">{{t 'Pin'}}</label>
+    <label>{{t 'Pin'}}</label>
     <Input
       @type="text"
       @name="pin_code"
       @value={{this.data.code}} />
   </div>
   <div class="field">
-    <label class="required">{{t 'Additional Information'}}</label>
+    <label>{{t 'Additional Information'}}</label>
     <Widgets::Forms::RichTextEditor
       @textareaId="description"
       @value={{this.data.event.description}} />
   </div>
   <div class="grouped fields">
     <label class="required">{{t 'Access'}}</label>
-    <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Organization Team</label></div></div>
-    <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Room Speaker</label></div></div>
+    <div class="field"><div class="ui read-only checked checkbox"><Input @type="checkbox"/> <label>Organization Team</label></div></div>
     <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>All Speakers</label></div></div>
-    <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Community Ticket Holder</label></div></div>
+    <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Attendees</label></div></div>
     <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>All logged in users</label></div></div>
-    <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Public(no restriction)</label></div></div>
+    <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Public (no restriction)</label></div></div>
   </div>
   <div class="field">
     <label>{{t 'Stream'}}</label>

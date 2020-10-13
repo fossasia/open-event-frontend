@@ -1,9 +1,6 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
-import { SESSION_STATES } from 'open-event-frontend/utils/dictionary/sessions';
-
-let sessionStateMapCached = null;
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
@@ -26,36 +23,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const searchField = 'title';
     let filterOptions = [];
 
-    if (SESSION_STATES.includes(params.session_status)) {
-      filterOptions = [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : params.session_status
-        }
-      ];
-    }
-
     const store = this.modelFor('events.view');
-    const queryObject = {
-      include : 'session',
-      filter  : [
-        {
-          name : 'session',
-          op   : 'has',
-          val  : {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : store.id
-            }
-          }
-        }
-      ]
-    };
-    const feedbacksPromise = this.authManager.currentUser.query('feedbacks', queryObject);
 
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
@@ -68,16 +36,10 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     const sessionsPromise = this.asArray(store.query('sessions', queryString));
 
-    const sessionStatesMapPromise = sessionStateMapCached || this.loader.load('sessions/states');
-
-    const [feedbacks, sessions, sessionStateMap] = await Promise.all([feedbacksPromise, sessionsPromise, sessionStatesMapPromise]);
-
-    sessionStateMapCached = sessionStateMap;
+    const [sessions] = await Promise.all([sessionsPromise]);
 
     return {
-      sessions,
-      feedbacks,
-      sessionStateMap
+      sessions
     };
   }
 
