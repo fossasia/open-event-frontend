@@ -1,5 +1,5 @@
 .event.card {
-  height: 355px;
+  height: auto;
 
   .header {
     height: 50px;
@@ -14,6 +14,17 @@
   img {
     height: 179px !important;
     object-fit: cover;
+  }
+}
+
+.extra.content {
+
+  .hashtags {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90%;
   }
 }
 
