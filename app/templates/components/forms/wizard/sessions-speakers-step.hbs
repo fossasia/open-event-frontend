@@ -110,7 +110,9 @@
         <Input
           @type="checkbox"
           @checked={{this.hasCallForSpeaker}}
-          @id="add_call_for_speaker" />
+          @id="add_call_for_speaker" 
+          {{action "resetCFS" on="change"}}
+          />
         <label for="add_call_for_speaker">{{t 'Enable Call For Speakers'}}</label>
       </div>
     </div>
