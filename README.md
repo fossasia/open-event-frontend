@@ -72,7 +72,7 @@ It consumes the API exposed by development branch of open event server, hosted a
 Stable versions will be released periodically, starting from version 1.0.0 when open-event-frontend went into production. Version names will follow [semantic versioning](https://semver.org/)
 
 ### Docker Hub Images
-Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and development branch. Separate tags for each version release are also maintained. They are as follows:
+Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organization on docker hub are updated for each push on master and development branch. Separate tags for each version release are also maintained. They are as follows:
 
 | Branch/Release  | Image                                    |
 | --------------- | ---------------------------------------- |
@@ -109,7 +109,7 @@ When you file a feature request or when you are submitting a bug report to the [
 
 ### Join the development
 
--   Before you join development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.)
+-   Before you join the development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.)
 -   If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please feel free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
 
 ## License
