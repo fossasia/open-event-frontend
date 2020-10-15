@@ -7,6 +7,6 @@ export default class CellVideoUrl extends Component {
 @tracked taxModalIsOpen = false;
 @action
 openTaxModal() {
-this.set('taxModalIsOpen', true);
+  this.set('taxModalIsOpen', true);
 }
 }
