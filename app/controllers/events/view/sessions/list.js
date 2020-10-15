@@ -12,7 +12,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : 'State',
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
-        width           : 65,
+        width           : 75,
         valuePath       : 'state',
         isSortable      : true,
         extraValuePaths : ['id', 'status'],
@@ -26,7 +26,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Title',
         valuePath       : 'title',
-        width           : 240,
+        width           : 230,
         extraValuePaths : ['id', 'event', 'isLocked'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
