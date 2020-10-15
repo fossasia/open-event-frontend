@@ -10,7 +10,7 @@ export default class extends Controller {
 
   @computed('model.status', 'authManager.currentUser.email', 'authManager.currentUser.isAdmin', 'model.speakers', 'model.creator')
   get showPendingSession() {
-    return this.model.status!=='pending' || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email) || this.authManager.currentUser.isAdmin || this.model.creator.get('isUserOwner') || this.model.creator.get('isUserOrganizer');
+    return this.model.status !== 'pending' || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email) || this.authManager.currentUser.isAdmin || this.model.creator.get('isUserOwner') || this.model.creator.get('isUserOrganizer');
   }
 
   @action
