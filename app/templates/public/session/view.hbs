@@ -1,4 +1,4 @@
-{{#if (or (not-eq this.model.status 'pending') this.model.creator.isAdmin)}}
+{{#if this.showPendingSession}}
   <div class="ui container">
     {{#if this.showEditSection}}
       <div class="ui row mb-8">

@@ -8,6 +8,11 @@ export default class extends Controller {
     return this.session.isAuthenticated && (this.authManager.currentUser.isAdmin || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email));
   }
 
+  @computed('model.status', 'authManager.currentUser.email', 'authManager.currentUser.isAdmin', 'model.speakers', 'model.creator')
+  get showPendingSession() {
+    return this.model.status!=='pending' || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email) || this.authManager.currentUser.isAdmin || this.model.creator.get('isUserOwner') || this.model.creator.get('isUserOrganizer');
+  }
+
   @action
   openProposalWithdrawModal() {
     this.set('isProposalWithdrawModalOpen', true);
