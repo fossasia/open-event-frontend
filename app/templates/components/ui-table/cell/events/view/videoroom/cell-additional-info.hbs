@@ -1,0 +1,7 @@
+<button class="ui button" type="button" {{action 'openTaxModal'}}>
+	<i class="pencil icon"></i>
+	{{t 'Add'}}
+</button>
+
+
+<Modals::RoomInfoModal @isOpen={{this.taxModalIsOpen}} @inputId={{@record}} />
