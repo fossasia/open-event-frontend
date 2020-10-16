@@ -4,4 +4,4 @@ export default class VideoStreamSerializer extends ApplicationSerializer {
   attrs = {
     rooms: { serialize: true }
   }
-};
+}
