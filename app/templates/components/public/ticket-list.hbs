@@ -123,7 +123,7 @@
                 {{/if}}
                 <tr><td>{{t 'Total'}}</td>
                   {{#if this.user}}
-                    <td>{{currency-symbol this.eventCurrency}}</td> <td>{{input value=this.orderAmount.total placeholder="Total"}}</td>
+                    <td>{{currency-symbol this.eventCurrency}}</td> <td><input value={{this.orderAmount.total}} placeholder="Total"></td>
                   {{else}}
                     <td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td>
                   {{/if}}
