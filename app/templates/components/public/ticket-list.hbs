@@ -122,7 +122,7 @@
                   </tr>
                 {{/if}}
                 <tr><td>{{t 'Total'}}</td>
-                  {{#if this.user}}
+                  {{#if this.amountEditable}}
                     <td>{{currency-symbol this.eventCurrency}}</td> <td><input value={{this.orderAmount.total}} placeholder="Total"></td>
                   {{else}}
                     <td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td>
@@ -134,7 +134,7 @@
       </tr>
     </tfoot>
   </table>
-  {{#unless this.user}}
+  {{#unless this.amountEditable}}
   <div class="ui grid">
     {{#if this.enterPromotionalCode}}
       <div class="ui row">
