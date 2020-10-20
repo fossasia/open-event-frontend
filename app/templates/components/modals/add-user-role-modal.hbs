@@ -13,7 +13,7 @@
       <label class="required">
         {{t 'User role'}}
       </label>
-      <UiDropdown @class="fluid selection" @onChange={{action (mut this.currentInvite.role)}} as |execute mapper|>
+      <UiDropdown @class="fluid selection" @selected={{this.currentInvite.role}} @onChange={{action (mut this.currentInvite.role)}} as |execute mapper|>
         <Input @type="hidden" @name="user_role" />
         <i class="dropdown icon"></i>
         <div class="default text">

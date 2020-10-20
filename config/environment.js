@@ -29,19 +29,9 @@ module.exports = function(environment) {
 
     APP: {
       apiHost      : process.env.API_HOST || (environment === 'production' ? 'https://api.eventyay.com' : 'https://open-event-api-dev.herokuapp.com'),
-      apiNamespace : process.env.API_NAMESPACE || 'v1'
+      apiNamespace : process.env.API_NAMESPACE || 'v1',
+      version      : process.env.npm_package_version
     },
-
-    metricsAdapters: [{
-      name         : 'GoogleAnalytics',
-      environments : ['production'],
-      config       : {
-        id          : process.env.GOOGLE_ANALYTICS_PROPERTY_ID || 'UA-XXXX-Y',
-        debug       : environment === 'development',
-        trace       : environment === 'development',
-        sendHitTask : environment !== 'development'
-      }
-    }],
 
     moment: {
       includeTimezone: 'subset'
@@ -133,6 +123,19 @@ module.exports = function(environment) {
       ENV.locationType = 'hash';
       ENV.rootURL = `/${process.env.REPO_SLUG || 'open-event-frontend'}`;
     }
+  }
+
+  if (process.env.GOOGLE_ANALYTICS_PROPERTY_ID) {
+    ENV.metricsAdapters = [{
+      name         : 'GoogleAnalytics',
+      environments : ['production'],
+      config       : {
+        id          : process.env.GOOGLE_ANALYTICS_PROPERTY_ID || 'UA-XXXX-Y',
+        debug       : environment === 'development',
+        trace       : environment === 'development',
+        sendHitTask : environment !== 'development'
+      }
+    }];
   }
 
   return ENV;
