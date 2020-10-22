@@ -13,21 +13,21 @@ export default class L10nService extends L10n {
 
   @computed(function() {
     return {
-      'bn'      : this.t('Bengali/Bangla'),
-      'zh_Hans' : this.t('Chinese (Simplified)'),
-      'zh_Hant' : this.t('Chinese (Traditional)'),
+      'bn'      : this.t('বাংলা'),
+      'zh_Hans' : this.t('中文 (简化版)'),
+      'zh_Hant' : this.t('中文 (傳統的)'),
       'en'      : this.t('English'),
-      'fr'      : this.t('French'),
-      'de'      : this.t('German'),
-      'id'      : this.t('Indonesian'),
-      'ko'      : this.t('Korean'),
-      'pl'      : this.t('Polish'),
-      'es'      : this.t('Spanish'),
-      'th'      : this.t('Thai'),
-      'vi'      : this.t('Vietnamese'),
-      'hi'      : this.t('Hindi'),
-      'ja'      : this.t('Japanese'),
-      'ru'      : this.t('Russian')
+      'fr'      : this.t('français'),
+      'de'      : this.t('Deutsche'),
+      'id'      : this.t('bahasa Indonesia'),
+      'ko'      : this.t('한국어'),
+      'pl'      : this.t('Polskie'),
+      'es'      : this.t('Español'),
+      'th'      : this.t('ไทย'),
+      'vi'      : this.t('Tiếng Việt'),
+      'hi'      : this.t('हिंदी'),
+      'ja'      : this.t('日本語'),
+      'ru'      : this.t('русский')
     };
   })
   availableLocales;
