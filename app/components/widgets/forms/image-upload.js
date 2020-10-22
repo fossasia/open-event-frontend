@@ -42,7 +42,7 @@ export default class ImageUpload extends Component {
       .catch(e => {
         console.error('Error while uploading and setting image URL', e);
         this.set('uploadingImage', false);
-        this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
+        this.set('errorMessage', this.i18n.t('An unexpected error has occurred.'));
       });
   }
 

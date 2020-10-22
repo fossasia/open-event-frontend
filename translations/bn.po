@@ -25,11 +25,21 @@ msgid "Please enter your email ID"
 msgstr ""
 
 #: app/components/account/contact-info-section.js:26:23
+#: app/components/forms/admin/settings/billing.js:35:23
+#: app/components/forms/admin/settings/billing.js:48:23
+#: app/components/forms/admin/settings/system-form.js:155:23
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
 #: app/components/forms/login-form.js:29:23
 #: app/components/forms/orders/guest-order-form.js:22:23
+#: app/components/forms/orders/order-form.js:91:19
+#: app/components/forms/orders/order-form.js:385:23
+#: app/components/forms/register-form.js:21:23
 #: app/components/forms/reset-password-form.js:26:23
+#: app/components/forms/session-speaker-form.js:198:23
+#: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-msgid "Please enter a valid email ID"
+#: app/components/forms/wizard/basic-details-step.js:340:23
+msgid "Please enter a valid email address"
 msgstr ""
 
 #: app/components/account/contact-info-section.js:35:23
@@ -47,10 +57,19 @@ msgid "Your account has been deleted successfully."
 msgstr ""
 
 #: app/components/account/danger-zone.js:48:26
+#: app/components/account/email-preferences-section.js:18:26
+#: app/components/events/view/export/download-common.js:80:26
 #: app/components/events/view/publish-bar.ts:89:24
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
+#: app/components/forms/login-form.js:70:35
+#: app/components/forms/login-form.js:97:28
+#: app/components/forms/reset-password-form.js:117:41
 #: app/components/modals/session-notify-modal.js:69:24
+#: app/components/notification-dropdown.js:35:26
 #: app/components/unverified-user-message.js:37:28
+#: app/components/widgets/forms/image-upload.js:45:33
 #: app/controllers/admin/content/events.js:77:26
+#: app/controllers/admin/content/translations.js:23:24
 #: app/controllers/admin/events/list.js:136:26
 #: app/controllers/admin/events/list.js:161:24
 #: app/controllers/admin/events/list.js:183:24
@@ -60,7 +79,9 @@ msgstr ""
 #: app/controllers/admin/users/list.js:137:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
+#: app/controllers/event-invoice/paid.js:23:24
 #: app/controllers/events/list.js:81:24
+#: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/index.js:56:26
 #: app/controllers/events/view/sessions.js:30:26
 #: app/controllers/events/view/sessions/list.js:121:26
@@ -76,6 +97,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/access-codes/list.js:58:26
 #: app/controllers/events/view/tickets/access-codes/list.js:76:26
 #: app/controllers/events/view/tickets/attendees.js:21:26
+#: app/controllers/events/view/tickets/attendees/list.js:72:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:66:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:85:26
 #: app/controllers/events/view/tickets/orders.js:21:26
@@ -83,27 +105,20 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders/list.js:89:26
 #: app/controllers/events/view/tickets/orders/list.js:107:26
 #: app/controllers/events/view/tickets/orders/list.js:132:26
+#: app/controllers/notifications.js:23:26
+#: app/controllers/oauth/callback.js:31:41
+#: app/controllers/public/index.js:88:37
 #: app/controllers/public/session/view.js:29:24
+#: app/controllers/register.js:37:35 app/controllers/register.js:70:37
+#: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
+#: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
-msgstr ""
+msgstr "একটি অপ্রত্যাশিত ত্রুটি সংঘটিত হয়েছে।"
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
 msgstr ""
-
-#: app/components/account/email-preferences-section.js:18:26
-#: app/components/forms/login-form.js:70:35
-#: app/components/forms/reset-password-form.js:117:41
-#: app/components/notification-dropdown.js:35:26
-#: app/components/widgets/forms/image-upload.js:45:33
-#: app/controllers/notifications.js:23:26
-#: app/controllers/oauth/callback.js:31:41
-#: app/controllers/public/index.js:88:37 app/controllers/register.js:37:35
-#: app/controllers/register.js:70:37 app/mixins/notifications.js:12:28
-#: app/mixins/notifications.js:30:28
-msgid "An unexpected error occurred."
-msgstr "একটি অপ্রত্যাশিত ত্রুটি সংঘটিত হয়েছে।."
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
@@ -158,13 +173,6 @@ msgstr ""
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
-
-#: app/components/events/view/export/download-common.js:80:26
-#: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/view/export.js:68:26
-msgid "Unexpected error occurred."
 msgstr ""
 
 #: app/components/events/view/export/download-zip.js:17:26
@@ -313,15 +321,6 @@ msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr ""
-
-#: app/components/forms/admin/settings/billing.js:35:23
-#: app/components/forms/admin/settings/billing.js:48:23
-#: app/components/forms/admin/settings/system-form.js:155:23
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
-#: app/components/forms/orders/order-form.js:385:23
-#: app/components/forms/register-form.js:21:23
-msgid "Please enter a valid email address"
 msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:44:23
@@ -536,13 +535,6 @@ msgstr ""
 msgid "Please enter the recipient E-mail"
 msgstr ""
 
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
-#: app/components/forms/login-form.js:97:28
-#: app/controllers/events/view/tickets/attendees/list.js:72:26
-#: app/mixins/event-wizard.js:173:28 app/services/auth-manager.js:148:28
-msgid "An unexpected error has occurred"
-msgstr ""
-
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
 msgstr ""
@@ -631,13 +623,6 @@ msgstr ""
 #: app/components/forms/orders/order-form.js:87:19
 msgid "Please enter your email"
 msgstr "আপনার ই-মেইল লিখুন"
-
-#: app/components/forms/orders/order-form.js:91:19
-#: app/components/forms/session-speaker-form.js:198:23
-#: app/components/forms/session-speaker-form.js:212:23
-#: app/components/forms/wizard/basic-details-step.js:340:23
-msgid "Please enter a valid email"
-msgstr ""
 
 #: app/components/forms/orders/order-form.js:100:19
 #: app/components/forms/session-speaker-form.js:318:23
@@ -751,6 +736,11 @@ msgstr "অনুগ্রহ করে আপনার জিপ কোড প�
 
 #: app/components/forms/orders/order-form.js:439:23
 msgid "Please specify your choice of payment method"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:479:23
+#: app/components/forms/session-speaker-form.js:390:23
+msgid "Please enter {{field}}"
 msgstr ""
 
 #: app/components/forms/register-form.js:30:23
@@ -6947,48 +6937,3 @@ msgstr ""
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
 msgstr ""
-
-#~ msgid "Please enter a valid  email address"
-#~ msgstr "অনুগ্রহ করে একটি বৈধ ইমেল ঠিকানা প্রবেশ করান"
-
-#~ msgid "English"
-#~ msgstr "English"
-
-#~ msgid "Message"
-#~ msgstr "সংবাদ"
-
-#~ msgid "Started"
-#~ msgstr "শুরু হয়েগেছে"
-
-#~ msgid "Locations"
-#~ msgstr "অবস্থানগুলো"
-
-#~ msgid "Support"
-#~ msgstr "সাহায্য"
-
-#~ msgid "Github"
-#~ msgstr "গিটহাব"
-
-#~ msgid "Youtube"
-#~ msgstr "য়ুটুব"
-
-#~ msgid "Roles"
-#~ msgstr "চরিত্রগুল"
-
-#~ msgid "Bengali"
-#~ msgstr "Bengali"
-
-#~ msgid "Oops, the page you're"
-#~ msgstr "Oops, the page you're"
-
-#~ msgid "exisit"
-#~ msgstr "exisit"
-
-#~ msgid "on our servers"
-#~ msgstr "on our servers"
-
-#~ msgid "Street Address Line 1"
-#~ msgstr "Street Address Line 1"
-
-#~ msgid "Street Address Line 2"
-#~ msgstr "Street Address Line 2"
