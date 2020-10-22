@@ -4,7 +4,7 @@
   </div>
   <div class="ui {{if this.device.isMobile 'horizontal'}} three statistics">
     <div class="statistic"><div class="value">{{this.totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{this.totalAmount}}</div><div class="label">{{t 'Sales '}}({{currency-symbol this.model.eventDetail.paymentCurrency}})</div></div>
+    <div class="statistic"><div class="value">{{this.totalAmount}}</div><div class="label">{{t 'Sales'}}({{currency-symbol this.model.eventDetail.paymentCurrency}})</div></div>
     <div class="statistic"><div class="value">{{this.totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
@@ -121,9 +121,9 @@
       <tr>
         <th rowspan="2" class="left aligned">{{t 'Ticket Name'}}</th>
         <th rowspan="2" class="left aligned">{{t 'Tickets Capacity Set'}}</th>
-        <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui green inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Completed Orders '}}</th>
+        <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui green inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Completed Orders'}}</th>
         <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui blue inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Placed Orders'}}</th>
-        <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui yellow inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Pending Orders '}}</th>
+        <th colspan="{{if this.device.isMobile "1" "2"}}" class="ui yellow inverted segment center aligned">{{if this.device.isMobile 'Sales ' ''}}{{t 'Pending Orders'}}</th>
       </tr>
       {{#unless this.device.isMobile}}
         <tr>
