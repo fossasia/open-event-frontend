@@ -44,7 +44,7 @@ export default class NewController extends Controller {
         .catch(e => {
           console.error('Error while saving new order', e);
           order.set('status', 'initializing');
-          this.notify.error(this.l10n.t(` ${e} Oops something went wrong. Please try again`),
+          this.notify.error(e + ': ' + this.l10n.t('Oops something went wrong. Please try again'),
             {
               id: 'order_stat_error'
             });

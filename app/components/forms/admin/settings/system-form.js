@@ -152,7 +152,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid  email address')
+              prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
         },

@@ -7,7 +7,7 @@ import RSVP from 'rsvp';
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
     const access_code = model.accessCode.get('code');
-    return this.l10n.t(access_code.concat('-Edit'));
+    return access_code.concat(' - Edit');
   }
 
   model(params) {

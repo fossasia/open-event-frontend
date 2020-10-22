@@ -418,7 +418,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your city ')
+              prompt : this.l10n.t('Please enter your city')
             }
           ]
         },
@@ -476,7 +476,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter ' + field.name)
+              prompt : 'Please enter ' + field.name
             }
           ]
         };

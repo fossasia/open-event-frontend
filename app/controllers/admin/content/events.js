@@ -65,17 +65,21 @@ export default class extends Controller {
     modelInstance.save()
       .then(() => {
         this.get(`model.${camelCasedValue}s`).addObject(modelInstance);
-        this.notify.success(this.l10n.t(`${startCase(camelCasedValue)} has been added successfully.`),
-          {
-            id: 'mode_add_succ'
-          });
+        this.notify.success(this.l10n.t('{{item}} has been added successfully.', {
+          item: startCase(camelCasedValue)
+        }),
+        {
+          id: 'mode_add_succ'
+        });
       })
       .catch(e => {
         console.error('Error while adding ' + camelCasedValue, e);
-        this.notify.error(this.l10n.t(`An unexpected error has occurred. ${startCase(camelCasedValue)} not saved.`),
-          {
-            id: 'mode_err_succ'
-          });
+        this.notify.error(this.l10n.t('An unexpected error has occurred.') + this.l10n.t('{{item}} not saved.', {
+          item: startCase(camelCasedValue)
+        }),
+        {
+          id: 'mode_err_succ'
+        });
       })
       .finally(() => {
         this.set('isLoading', false);
