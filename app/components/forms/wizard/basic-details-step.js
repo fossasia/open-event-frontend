@@ -337,7 +337,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email')
+              prompt : this.l10n.t('Please enter a valid email address')
             },
             {
               type   : 'empty',

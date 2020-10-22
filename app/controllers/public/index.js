@@ -85,7 +85,7 @@ export default class IndexController extends Controller {
           if (reason && reason.status === 401) {
             this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
           } else {
-            this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+            this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
           }
         } else {
           console.warn(reason);
