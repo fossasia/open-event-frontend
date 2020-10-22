@@ -7,6 +7,7 @@ import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class SideMenu extends Component {
+
   @tracked
   showSpeakers = false;
 
@@ -46,20 +47,16 @@ export default class SideMenu extends Component {
   }
 
   @action
-  scrollToTarget() {
-    document.querySelectorAll('.scroll').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-
-        document.querySelectorAll('.scroll').forEach(node => {
-          node.classList.remove('active');
-        });
-        e.target.classList.add('active');
-      });
+  scrollToTarget(eventId) {
+    const target = document.getElementById(eventId);
+    document.querySelector(target.getAttribute('href')).scrollIntoView({
+      behavior : 'smooth',
+      block    : 'center'
     });
+    document.querySelectorAll('.scroll').forEach(node => {
+      node.classList.remove('active');
+    });
+    target.classList.add('active');
   }
 
   @computed('event.schedulePublishedOn')
