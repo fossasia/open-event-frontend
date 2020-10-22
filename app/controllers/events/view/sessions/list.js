@@ -144,13 +144,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     const { isLocked } = session;
     session.set('isLocked', lock);
     this.set('isLoading', true);
-    const lockMessage = lock ? 'locked' : 'unlocked';
+    const lockMessage = lock ? this.l10n.t('locked') : this.l10n.t('unlocked');
     try {
       await session.save();
-      this.notify.success(this.l10n.t(`Session has been ${ lockMessage } successfully.`),
-        {
-          id: 'session_lock'
-        });
+      this.notify.success(this.l10n.t('Session has been {{action}} successfully.', {
+        action: lockMessage
+      }),
+      {
+        id: 'session_lock'
+      });
       this.refreshModel.bind(this)();
     } catch (e) {
       session.set('isLocked', isLocked);
@@ -173,8 +175,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     try {
       await session.save();
-      const message = `Session has been ${state}`;
-      this.notify.success(this.l10n.t(message), {
+      this.notify.success(this.l10n.t('Session has been {{action}} successfully.', {
+        action: state
+      }), {
         id: 'session_state'
       });
       this.refreshModel.bind(this)();

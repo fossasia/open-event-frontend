@@ -431,7 +431,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         })
         .catch(error => {
           console.error('Error while setting stripe authorization in event', error);
-          this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
+          this.notify.error(error.message + '. ' + this.l10n.t('Please try again'), {
             id: 'basic_detail_err'
           });
         });
