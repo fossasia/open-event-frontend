@@ -7,12 +7,18 @@ import { isTesting } from 'open-event-frontend/utils/testing';
 
 export default UiModal.extend({
   tagName           : 'div',
-  classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
+  classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large', 'noCropper'],
 
-  openObserver: observer('isOpen', function() {
+  openObserver: observer('isOpen', 'noCroppper', function() {
     const $element = $(this.element);
     if (this.isOpen) {
-      $element.modal('show');
+      if (this.noCropper) {
+        $element.modal({
+          centered: false
+        }).modal('show');
+      } else {
+        $element.modal('show');
+      }
     } else {
       $element.modal('hide');
     }

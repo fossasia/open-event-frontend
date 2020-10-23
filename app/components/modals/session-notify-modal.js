@@ -16,6 +16,7 @@ export default class SessionNotifyModal extends ModalBase {
 
   constructor() {
     super(...arguments);
+    this.noCropper = true;
     this.initialize();
   }
 
