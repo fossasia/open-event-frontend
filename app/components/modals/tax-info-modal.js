@@ -7,9 +7,7 @@ import { orderBy } from 'lodash-es';
 
 export default ModalBase.extend(FormMixin, {
   isSmall : false,
-  options : {
-    closable: false
-  },
+  noCropper : true,
 
   autoScrollToErrors   : true,
   isTaxIncludedInPrice : 'include',
