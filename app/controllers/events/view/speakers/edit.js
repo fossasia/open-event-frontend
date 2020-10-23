@@ -7,7 +7,7 @@ export default class extends Controller {
     this.set('isLoading', true);
     const { speaker } = this.model;
     if (speaker.isEmailOverridden) {
-      speaker.set('email', this.authManager.currentUser.email);
+      speaker.set('email', 'Not Provided');
     }
     speaker.save()
       .then(() => {
