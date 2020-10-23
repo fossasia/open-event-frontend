@@ -7,12 +7,50 @@ import { isTesting } from 'open-event-frontend/utils/testing';
 
 export default UiModal.extend({
   tagName           : 'div',
+  classNames        : ['centered-modal'],
   classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
 
   openObserver: observer('isOpen', function() {
     const $element = $(this.element);
     if (this.isOpen) {
-      $element.modal('show');
+      $element.modal({
+        centered       : false,
+        duration       : isTesting ? 0 : 200,
+        dimmerSettings : {
+          dimmerName : `${this.elementId}-modal-dimmer`,
+          variation  : 'inverted'
+        },
+        onHide: () => {
+          this.set('isOpen', false);
+          if (this.onHide) {
+            this.onHide();
+          }
+        },
+        onDeny: () => {
+          if (this.onDeny) {
+            this.onDeny();
+          }
+          return true;
+        },
+        onApprove: () => {
+          if (this.onApprove) {
+            this.onApprove();
+          }
+          return true;
+        },
+  
+        onVisible: () => {
+          this.set('isOpen', true);
+          const $element = $(this.element);
+          $element.modal('refresh');
+          $element.find('[data-content]').popup({
+            inline: true
+          });
+          if (this.onVisible) {
+            this.onVisible();
+          }
+        }
+      }).modal('show');
     } else {
       $element.modal('hide');
     }
@@ -91,7 +129,44 @@ export default UiModal.extend({
 
   didInitSemantic() {
     if (this.isOpen) {
-      $(this.element).modal('show');
+      $(this.element).modal({
+        centered       : false,
+        duration       : isTesting ? 0 : 200,
+        dimmerSettings : {
+          dimmerName : `${this.elementId}-modal-dimmer`,
+          variation  : 'inverted'
+        },
+        onHide: () => {
+          this.set('isOpen', false);
+          if (this.onHide) {
+            this.onHide();
+          }
+        },
+        onDeny: () => {
+          if (this.onDeny) {
+            this.onDeny();
+          }
+          return true;
+        },
+        onApprove: () => {
+          if (this.onApprove) {
+            this.onApprove();
+          }
+          return true;
+        },
+  
+        onVisible: () => {
+          this.set('isOpen', true);
+          const $element = $(this.element);
+          $element.modal('refresh');
+          $element.find('[data-content]').popup({
+            inline: true
+          });
+          if (this.onVisible) {
+            this.onVisible();
+          }
+        }
+      }).modal('show');
     }
   }
 });
