@@ -19,7 +19,7 @@
         {{t 'Info'}}
       </a>
       {{#if this.event.tickets.length}}
-        <a class="item" href="{{href-to 'public.index'}}#tickets">
+        <a class="item" href="{{href-to 'public.index'}}#tickets" data-href-to-ignore>
           {{t 'Tickets'}}
         </a>
       {{/if}}
@@ -50,7 +50,7 @@
           {{t 'Sponsors'}}
         </a>
       {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#sponsor">
+        <a class="item" href="{{href-to 'public.index'}}#sponsor" data-href-to-ignore>
           {{t 'Sponsors'}}
         </a>
       {{/if}}
@@ -61,7 +61,7 @@
           {{t 'Organizer'}}
         </a>
       {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#owner">
+        <a class="item" href="{{href-to 'public.index'}}#owner" data-href-to-ignore>
           {{t 'Organizer'}}
         </a>
       {{/if}}
@@ -71,7 +71,7 @@
         {{t 'Getting here'}}
       </a>
     {{else}}
-      <a class="item" href="{{href-to 'public.index'}}#getting-here">
+      <a class="item" href="{{href-to 'public.index'}}#getting-here" data-href-to-ignore>
         {{t 'Getting here'}}
       </a>
     {{/if}}
