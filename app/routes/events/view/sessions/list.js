@@ -9,7 +9,7 @@ let sessionStateMapCached = null;
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     if (SESSION_STATES.includes(this.params.session_status)) {
-      return this.l10n.t(capitalize(this.params.session_status));
+      return capitalize(this.params.session_status);
     } else {
       return this.l10n.t('Session');
     }

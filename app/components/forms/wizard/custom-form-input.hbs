@@ -17,6 +17,8 @@
       <div class="item" data-value="number">Number</div>
     </div>
   </UiDropdown>
-  <button class="ui button" {{action 'addFormField'}}
-    disabled={{not this.validIdentifier}}>{{t (if @field 'Save' 'Add')}}</button>
+
+ 
+  <button class="ui button" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>{{if @field (t 'Save') (t 'Add')}}</button>
+
 </div>

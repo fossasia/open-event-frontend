@@ -64,11 +64,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     }
     attendee.save()
       .then(savedAttendee => {
-        this.notify.success(this.l10n.t(`Attendee ${savedAttendee.isCheckedIn ? 'Checked-In' : 'Checked-Out'} Successfully`));
+        const message = savedAttendee.isCheckedIn ? this.l10n.t('Attendee Checked-In Successfully') : this.l10n.t('Attendee Checked-Out Successfully');
+        this.notify.success(message);
         this.refreshModel.bind(this)();
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred'));
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
   }
 }

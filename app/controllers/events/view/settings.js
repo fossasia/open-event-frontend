@@ -71,7 +71,7 @@ export default class extends Controller {
       });
       this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
     } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
+      this.notify.error(error.message);
     }
 
     this.set('isLoading', false);

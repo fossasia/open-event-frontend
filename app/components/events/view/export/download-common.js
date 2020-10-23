@@ -77,7 +77,7 @@ export default class DownloadCommon extends Component {
       .catch(e => {
         console.error('Error while starting exporting job', e);
         this.set('isLoading', false);
-        this.notify.error(this.l10n.t('Unexpected error occurred.'), {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
           id: 'unexpected_down_error'
         });
       });

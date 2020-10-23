@@ -13,7 +13,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   titleToken() {
     if (['paid', 'due', 'refunding', 'refunded'].includes(this.params.invoice_status)) {
-      return this.l10n.t(capitalize(this.params.invoice_status));
+      return capitalize(this.params.invoice_status);
     } else {
       return this.l10n.t('All');
     }

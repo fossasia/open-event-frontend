@@ -65,7 +65,7 @@ export default class extends Controller {
       })
       .catch(() => {
         this.set('isLoading', false);
-        this.notify.error(this.l10n.t('Unexpected error occurred.'),
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
           {
             id: 'event_error_export'
           });

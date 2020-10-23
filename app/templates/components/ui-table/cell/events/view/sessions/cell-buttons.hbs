@@ -1,11 +1,11 @@
 <UiDropdown @class="ui floating dropdown button">
   <div class="ui {{this.color}} empty circular label"></div>
-  {{t (capitalize this.extraRecords.status)}}
+  {{capitalize this.extraRecords.status}}
   <div class="menu">
     {{#each this.states as |state|}}
       <div class="item" role="button" {{action this.props.actions.changeState this.extraRecords.id state.name}}>
         <div class="ui {{state.color}} empty circular label"></div>
-        {{t (capitalize state.name)}}
+        {{capitalize state.name}}
       </div>
     {{/each}}
   </div>
