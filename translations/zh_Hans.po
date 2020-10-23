@@ -29,11 +29,21 @@ msgid "Please enter your email ID"
 msgstr ""
 
 #: app/components/account/contact-info-section.js:26:23
+#: app/components/forms/admin/settings/billing.js:35:23
+#: app/components/forms/admin/settings/billing.js:48:23
+#: app/components/forms/admin/settings/system-form.js:155:23
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
 #: app/components/forms/login-form.js:29:23
 #: app/components/forms/orders/guest-order-form.js:22:23
+#: app/components/forms/orders/order-form.js:91:19
+#: app/components/forms/orders/order-form.js:385:23
+#: app/components/forms/register-form.js:21:23
 #: app/components/forms/reset-password-form.js:26:23
+#: app/components/forms/session-speaker-form.js:198:23
+#: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-msgid "Please enter a valid email ID"
+#: app/components/forms/wizard/basic-details-step.js:340:23
+msgid "Please enter a valid email address"
 msgstr ""
 
 #: app/components/account/contact-info-section.js:35:23
@@ -51,10 +61,19 @@ msgid "Your account has been deleted successfully."
 msgstr ""
 
 #: app/components/account/danger-zone.js:48:26
+#: app/components/account/email-preferences-section.js:18:26
+#: app/components/events/view/export/download-common.js:80:26
 #: app/components/events/view/publish-bar.ts:89:24
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
+#: app/components/forms/login-form.js:70:35
+#: app/components/forms/login-form.js:97:28
+#: app/components/forms/reset-password-form.js:117:41
 #: app/components/modals/session-notify-modal.js:69:24
+#: app/components/notification-dropdown.js:35:26
 #: app/components/unverified-user-message.js:37:28
+#: app/components/widgets/forms/image-upload.js:45:33
 #: app/controllers/admin/content/events.js:77:26
+#: app/controllers/admin/content/translations.js:23:24
 #: app/controllers/admin/events/list.js:136:26
 #: app/controllers/admin/events/list.js:161:24
 #: app/controllers/admin/events/list.js:183:24
@@ -64,7 +83,9 @@ msgstr ""
 #: app/controllers/admin/users/list.js:137:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
+#: app/controllers/event-invoice/paid.js:23:24
 #: app/controllers/events/list.js:81:24
+#: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/index.js:56:26
 #: app/controllers/events/view/sessions.js:30:26
 #: app/controllers/events/view/sessions/list.js:121:26
@@ -80,6 +101,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/access-codes/list.js:58:26
 #: app/controllers/events/view/tickets/access-codes/list.js:76:26
 #: app/controllers/events/view/tickets/attendees.js:21:26
+#: app/controllers/events/view/tickets/attendees/list.js:72:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:66:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:85:26
 #: app/controllers/events/view/tickets/orders.js:21:26
@@ -87,26 +109,19 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders/list.js:89:26
 #: app/controllers/events/view/tickets/orders/list.js:107:26
 #: app/controllers/events/view/tickets/orders/list.js:132:26
+#: app/controllers/notifications.js:23:26
+#: app/controllers/oauth/callback.js:31:41
+#: app/controllers/public/index.js:88:37
 #: app/controllers/public/session/view.js:29:24
+#: app/controllers/register.js:37:35 app/controllers/register.js:70:37
+#: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
+#: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
 msgstr ""
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
-msgstr ""
-
-#: app/components/account/email-preferences-section.js:18:26
-#: app/components/forms/login-form.js:70:35
-#: app/components/forms/reset-password-form.js:117:41
-#: app/components/notification-dropdown.js:35:26
-#: app/components/widgets/forms/image-upload.js:45:33
-#: app/controllers/notifications.js:23:26
-#: app/controllers/oauth/callback.js:31:41
-#: app/controllers/public/index.js:88:37 app/controllers/register.js:37:35
-#: app/controllers/register.js:70:37 app/mixins/notifications.js:12:28
-#: app/mixins/notifications.js:30:28
-msgid "An unexpected error occurred."
 msgstr ""
 
 #: app/components/account/password-section.js:16:23
@@ -162,13 +177,6 @@ msgstr ""
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
-
-#: app/components/events/view/export/download-common.js:80:26
-#: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/view/export.js:68:26
-msgid "Unexpected error occurred."
 msgstr ""
 
 #: app/components/events/view/export/download-zip.js:17:26
@@ -317,15 +325,6 @@ msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr ""
-
-#: app/components/forms/admin/settings/billing.js:35:23
-#: app/components/forms/admin/settings/billing.js:48:23
-#: app/components/forms/admin/settings/system-form.js:155:23
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
-#: app/components/forms/orders/order-form.js:385:23
-#: app/components/forms/register-form.js:21:23
-msgid "Please enter a valid email address"
 msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:44:23
@@ -540,13 +539,6 @@ msgstr ""
 msgid "Please enter the recipient E-mail"
 msgstr ""
 
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
-#: app/components/forms/login-form.js:97:28
-#: app/controllers/events/view/tickets/attendees/list.js:72:26
-#: app/mixins/event-wizard.js:173:28 app/services/auth-manager.js:148:28
-msgid "An unexpected error has occurred"
-msgstr ""
-
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
 msgstr ""
@@ -634,13 +626,6 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:87:19
 msgid "Please enter your email"
-msgstr ""
-
-#: app/components/forms/orders/order-form.js:91:19
-#: app/components/forms/session-speaker-form.js:198:23
-#: app/components/forms/session-speaker-form.js:212:23
-#: app/components/forms/wizard/basic-details-step.js:340:23
-msgid "Please enter a valid email"
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:100:19
@@ -755,6 +740,11 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:439:23
 msgid "Please specify your choice of payment method"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:479:23
+#: app/components/forms/session-speaker-form.js:390:23
+msgid "Please enter {{field}}"
 msgstr ""
 
 #: app/components/forms/register-form.js:30:23
@@ -6951,357 +6941,3 @@ msgstr ""
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
 msgstr ""
-
-#~ msgid "Message"
-#~ msgstr "信息"
-
-#~ msgid "Started"
-#~ msgstr "开始"
-
-#~ msgid "Sitemap"
-#~ msgstr "网站地图"
-
-#~ msgid "Locations"
-#~ msgstr "地点"
-
-#~ msgid "Support"
-#~ msgstr "支援"
-
-#~ msgid "Github"
-#~ msgstr "GitHub"
-
-#~ msgid "Youtube"
-#~ msgstr "YouTube"
-
-#~ msgid "Start Date"
-#~ msgstr "开始日期"
-
-#~ msgid "End Date"
-#~ msgstr "结束日期"
-
-#~ msgid "Roles"
-#~ msgstr "角色"
-
-#~ msgid "Track"
-#~ msgstr "轨道"
-
-#~ msgid "Date of Submission"
-#~ msgstr "呈交日期"
-
-#~ msgid "Submission Date"
-#~ msgstr "呈交日期"
-
-#~ msgid "Email Sent"
-#~ msgstr "电邮已发送"
-
-#~ msgid "Order"
-#~ msgstr "订购"
-
-#~ msgid "Google"
-#~ msgstr "谷歌"
-
-#~ msgid "Mark All as Read"
-#~ msgstr "标记为已读"
-
-#~ msgid "We are not able to understand what you require"
-#~ msgstr "我们无法了解您的需求"
-
-#~ msgid "Access denied"
-#~ msgstr "进入被拒绝"
-
-#~ msgid "Sorry, but you don't have permission access to this page."
-#~ msgstr "很抱歉，您没有此网页的存取权限。"
-
-#~ msgid "You got"
-#~ msgstr "你有"
-
-#~ msgid "Sorry but we couldn't find this page since the page you are looking for does not exist."
-#~ msgstr "你在寻找的页面不存在。"
-
-#~ msgid "We seem to be having some issues on our side."
-#~ msgstr "很抱歉，网页出了故障。"
-
-#~ msgid "No upcoming events available at this time"
-#~ msgstr "目前没有即将举行的活动"
-
-#~ msgid "No call for speakers open at this time"
-#~ msgstr "此时没有人呼吁演讲者"
-
-#~ msgid "Account Management"
-#~ msgstr "账户管理"
-
-#~ msgid "Sessions loading"
-#~ msgstr "会话加载"
-
-#~ msgid "All the timings are in"
-#~ msgstr "所有的时间都在"
-
-#~ msgid "Confirm Email"
-#~ msgstr "确认电子邮件地址"
-
-#~ msgid "Contact the organizer"
-#~ msgstr "联络主办方"
-
-#~ msgid "Your Order"
-#~ msgstr "您的订单"
-
-#~ msgid "Please complete registration within 10:00 minutes"
-#~ msgstr "请在十分中内完成报名"
-
-#~ msgid "First"
-#~ msgstr "第一"
-
-#~ msgid "name"
-#~ msgstr "名称"
-
-#~ msgid "Order now"
-#~ msgstr "马上订购"
-
-#~ msgid "Processing"
-#~ msgstr "处理"
-
-#~ msgid "No tickets selected."
-#~ msgstr "没有选择的门票。"
-
-#~ msgid "Date and Time"
-#~ msgstr "日期与时间"
-
-#~ msgid "The images should be no larger than 10MB"
-#~ msgstr "照片不应该超过10MB"
-
-#~ msgid "Drafts"
-#~ msgstr "草稿"
-
-#~ msgid "Close"
-#~ msgstr "关"
-
-#~ msgid "Sent to"
-#~ msgstr "发送给"
-
-#~ msgid "All Accepted"
-#~ msgstr "全部被接受"
-
-#~ msgid "All Rejected"
-#~ msgstr "全部被拒绝"
-
-#~ msgid "Date of Event"
-#~ msgstr "活动日期"
-
-#~ msgid "Width"
-#~ msgstr "宽度"
-
-#~ msgid "Height"
-#~ msgstr "高度"
-
-#~ msgid "Quality"
-#~ msgstr "品质"
-
-#~ msgid "Previous Imports"
-#~ msgstr "以前的输入"
-
-#~ msgid "Are you sure you would like to delete this event"
-#~ msgstr "您确定要删除此活动吗"
-
-#~ msgid "Confirm Delete"
-#~ msgstr "确认删除"
-
-#~ msgid "Co-organizer"
-#~ msgstr "联合组织者"
-
-#~ msgid "Update Role"
-#~ msgstr "更新角色"
-
-#~ msgid "Manage Roles"
-#~ msgstr "管理角色"
-
-#~ msgid "User (Email)"
-#~ msgstr "用户 (电子邮件)"
-
-#~ msgid "accepted"
-#~ msgstr "接受"
-
-#~ msgid "invited"
-#~ msgstr "邀请"
-
-#~ msgid "Invitation Link"
-#~ msgstr "邀请链接"
-
-#~ msgid "User email"
-#~ msgstr "用户电子邮件"
-
-#~ msgid "Choose"
-#~ msgstr "选择"
-
-#~ msgid "Event Sponsors"
-#~ msgstr "事件赞助商"
-
-#~ msgid "Add Sponsor"
-#~ msgstr "加赞助商"
-
-#~ msgid "Export and Download Event as zip"
-#~ msgstr "导出和下载事件为ZIP"
-
-#~ msgid "Select which media files you want in the zip"
-#~ msgstr "在ZIP中选择所需的媒体文件"
-
-#~ msgid "Started by"
-#~ msgstr "开始"
-
-#~ msgid "datetime"
-#~ msgstr "时间"
-
-#~ msgid "You can make a"
-#~ msgstr "你可以做一个"
-
-#~ msgid "request to the following endpoint to access the selected information"
-#~ msgstr "请求以下端点访问所选信息"
-
-#~ msgid "In order to use this feature activate"
-#~ msgstr "为了使用此功能激活"
-
-#~ msgid "Sessions and Speakers"
-#~ msgstr "会议和演讲者"
-
-#~ msgid "for the event"
-#~ msgstr "为事件"
-
-#~ msgid "Please"
-#~ msgstr "请"
-
-#~ msgid "General Info"
-#~ msgstr "基本信息"
-
-#~ msgid "Event ID"
-#~ msgstr "事件ID"
-
-#~ msgid "Event Url"
-#~ msgstr "事件网址"
-
-#~ msgid "Event Start Time"
-#~ msgstr "事件开始时间"
-
-#~ msgid "Event End Time"
-#~ msgstr "活动结束时间"
-
-#~ msgid "Event Session Types"
-#~ msgstr "活动会话类型"
-
-#~ msgid "Event Links and Social media"
-#~ msgstr "活动链接和社交媒体"
-
-#~ msgid "'Do you want to edit this record?'"
-#~ msgstr "您是否要修改这个记录?'"
-
-#~ msgid "Permissions List"
-#~ msgstr "权限列表"
-
-#~ msgid "Co-Organizer"
-#~ msgstr "协办单位"
-
-#~ msgid "Error loading sessions"
-#~ msgstr "加载会话时出错"
-
-#~ msgid "No Unscheduled sessions"
-#~ msgstr "不定期的会议"
-
-#~ msgid "Schedule last published on"
-#~ msgstr "最后发表的时间表"
-
-#~ msgid "Clear Overlaps"
-#~ msgstr "清除重叠"
-
-#~ msgid "Add New Microlocation"
-#~ msgstr "添加新微定位"
-
-#~ msgid "Export as"
-#~ msgstr "导出为"
-
-#~ msgid "Long Abstract"
-#~ msgstr "长摘要"
-
-#~ msgid "Update Session"
-#~ msgstr "更新会话"
-
-#~ msgid "New Microlocation"
-#~ msgstr "新微定位"
-
-#~ msgid "Floor"
-#~ msgstr "楼"
-
-#~ msgid "Latitude"
-#~ msgstr "纬度"
-
-#~ msgid "Longitude"
-#~ msgstr "经度"
-
-#~ msgid "Add Microlocation"
-#~ msgstr "添加微分配"
-
-#~ msgid "Media"
-#~ msgstr "媒体"
-
-#~ msgid "Slide"
-#~ msgstr "幻灯片"
-
-#~ msgid "Session Invitation"
-#~ msgstr "会议邀请"
-
-#~ msgid "Invitation Pag"
-#~ msgstr "邀请页"
-
-#~ msgid "You have been invited for session"
-#~ msgstr "您已被邀请为会话"
-
-#~ msgid "Accept"
-#~ msgstr "接受"
-
-#~ msgid "Reject"
-#~ msgstr "拒绝"
-
-#~ msgid "Select Avatar"
-#~ msgstr "选择头像"
-
-#~ msgid "Avatar size must be less than 1MB."
-#~ msgstr "阿凡达大小必须小于 1 MB。"
-
-#~ msgid "Crop your image"
-#~ msgstr "裁剪你的图片"
-
-#~ msgid "Done"
-#~ msgstr "完毕"
-
-#~ msgid "selected"
-#~ msgstr "选择"
-
-#~ msgid "Invite Speakers"
-#~ msgstr "邀请仪长"
-
-#~ msgid "checked"
-#~ msgstr "检查了"
-
-#~ msgid "Donation"
-#~ msgstr "捐款"
-
-#~ msgid "example"
-#~ msgstr "例如"
-
-#~ msgid "Create Password"
-#~ msgstr "制定密码"
-
-#~ msgid "Email Confirmation"
-#~ msgstr "确认电邮"
-
-#~ msgid "Lost your password"
-#~ msgstr "失去密码"
-
-#~ msgid "Already a member"
-#~ msgstr "已经是用户"
-
-#~ msgid "Log in"
-#~ msgstr "登录"
-
-#~ msgid "Details about User"
-#~ msgstr "用户资料"
-
-#~ msgid "Logged in as"
-#~ msgstr "登录为"

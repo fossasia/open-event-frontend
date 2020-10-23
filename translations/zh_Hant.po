@@ -28,11 +28,21 @@ msgid "Please enter your email ID"
 msgstr ""
 
 #: app/components/account/contact-info-section.js:26:23
+#: app/components/forms/admin/settings/billing.js:35:23
+#: app/components/forms/admin/settings/billing.js:48:23
+#: app/components/forms/admin/settings/system-form.js:155:23
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
 #: app/components/forms/login-form.js:29:23
 #: app/components/forms/orders/guest-order-form.js:22:23
+#: app/components/forms/orders/order-form.js:91:19
+#: app/components/forms/orders/order-form.js:385:23
+#: app/components/forms/register-form.js:21:23
 #: app/components/forms/reset-password-form.js:26:23
+#: app/components/forms/session-speaker-form.js:198:23
+#: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-msgid "Please enter a valid email ID"
+#: app/components/forms/wizard/basic-details-step.js:340:23
+msgid "Please enter a valid email address"
 msgstr ""
 
 #: app/components/account/contact-info-section.js:35:23
@@ -50,10 +60,19 @@ msgid "Your account has been deleted successfully."
 msgstr ""
 
 #: app/components/account/danger-zone.js:48:26
+#: app/components/account/email-preferences-section.js:18:26
+#: app/components/events/view/export/download-common.js:80:26
 #: app/components/events/view/publish-bar.ts:89:24
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
+#: app/components/forms/login-form.js:70:35
+#: app/components/forms/login-form.js:97:28
+#: app/components/forms/reset-password-form.js:117:41
 #: app/components/modals/session-notify-modal.js:69:24
+#: app/components/notification-dropdown.js:35:26
 #: app/components/unverified-user-message.js:37:28
+#: app/components/widgets/forms/image-upload.js:45:33
 #: app/controllers/admin/content/events.js:77:26
+#: app/controllers/admin/content/translations.js:23:24
 #: app/controllers/admin/events/list.js:136:26
 #: app/controllers/admin/events/list.js:161:24
 #: app/controllers/admin/events/list.js:183:24
@@ -63,7 +82,9 @@ msgstr ""
 #: app/controllers/admin/users/list.js:137:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
+#: app/controllers/event-invoice/paid.js:23:24
 #: app/controllers/events/list.js:81:24
+#: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/index.js:56:26
 #: app/controllers/events/view/sessions.js:30:26
 #: app/controllers/events/view/sessions/list.js:121:26
@@ -79,6 +100,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/access-codes/list.js:58:26
 #: app/controllers/events/view/tickets/access-codes/list.js:76:26
 #: app/controllers/events/view/tickets/attendees.js:21:26
+#: app/controllers/events/view/tickets/attendees/list.js:72:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:66:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:85:26
 #: app/controllers/events/view/tickets/orders.js:21:26
@@ -86,26 +108,19 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders/list.js:89:26
 #: app/controllers/events/view/tickets/orders/list.js:107:26
 #: app/controllers/events/view/tickets/orders/list.js:132:26
+#: app/controllers/notifications.js:23:26
+#: app/controllers/oauth/callback.js:31:41
+#: app/controllers/public/index.js:88:37
 #: app/controllers/public/session/view.js:29:24
+#: app/controllers/register.js:37:35 app/controllers/register.js:70:37
+#: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
+#: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
 msgstr ""
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
-msgstr ""
-
-#: app/components/account/email-preferences-section.js:18:26
-#: app/components/forms/login-form.js:70:35
-#: app/components/forms/reset-password-form.js:117:41
-#: app/components/notification-dropdown.js:35:26
-#: app/components/widgets/forms/image-upload.js:45:33
-#: app/controllers/notifications.js:23:26
-#: app/controllers/oauth/callback.js:31:41
-#: app/controllers/public/index.js:88:37 app/controllers/register.js:37:35
-#: app/controllers/register.js:70:37 app/mixins/notifications.js:12:28
-#: app/mixins/notifications.js:30:28
-msgid "An unexpected error occurred."
 msgstr ""
 
 #: app/components/account/password-section.js:16:23
@@ -161,13 +176,6 @@ msgstr ""
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
-
-#: app/components/events/view/export/download-common.js:80:26
-#: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/view/export.js:68:26
-msgid "Unexpected error occurred."
 msgstr ""
 
 #: app/components/events/view/export/download-zip.js:17:26
@@ -316,15 +324,6 @@ msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr ""
-
-#: app/components/forms/admin/settings/billing.js:35:23
-#: app/components/forms/admin/settings/billing.js:48:23
-#: app/components/forms/admin/settings/system-form.js:155:23
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
-#: app/components/forms/orders/order-form.js:385:23
-#: app/components/forms/register-form.js:21:23
-msgid "Please enter a valid email address"
 msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:44:23
@@ -539,13 +538,6 @@ msgstr ""
 msgid "Please enter the recipient E-mail"
 msgstr ""
 
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
-#: app/components/forms/login-form.js:97:28
-#: app/controllers/events/view/tickets/attendees/list.js:72:26
-#: app/mixins/event-wizard.js:173:28 app/services/auth-manager.js:148:28
-msgid "An unexpected error has occurred"
-msgstr ""
-
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
 msgstr ""
@@ -633,13 +625,6 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:87:19
 msgid "Please enter your email"
-msgstr ""
-
-#: app/components/forms/orders/order-form.js:91:19
-#: app/components/forms/session-speaker-form.js:198:23
-#: app/components/forms/session-speaker-form.js:212:23
-#: app/components/forms/wizard/basic-details-step.js:340:23
-msgid "Please enter a valid email"
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:100:19
@@ -754,6 +739,11 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:439:23
 msgid "Please specify your choice of payment method"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:479:23
+#: app/components/forms/session-speaker-form.js:390:23
+msgid "Please enter {{field}}"
 msgstr ""
 
 #: app/components/forms/register-form.js:30:23
@@ -6952,513 +6942,3 @@ msgstr ""
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
 msgstr ""
-
-#~ msgid "Message"
-#~ msgstr "訊息"
-
-#~ msgid "Started"
-#~ msgstr "已開始"
-
-#~ msgid "Sitemap"
-#~ msgstr "網站地圖"
-
-#~ msgid "Locations"
-#~ msgstr "位置"
-
-#~ msgid "Support"
-#~ msgstr "支持"
-
-#~ msgid "Github"
-#~ msgstr "Github"
-
-#~ msgid "Youtube"
-#~ msgstr "Youtube"
-
-#~ msgid "Stripe"
-#~ msgstr "Stripe"
-
-#~ msgid "Organizer Description"
-#~ msgstr "主辦者描述說明"
-
-#~ msgid "Ticket URL"
-#~ msgstr "票券網址"
-
-#~ msgid "Check In"
-#~ msgstr "報到"
-
-#~ msgid "Undo"
-#~ msgstr "取消動作"
-
-#~ msgid "Roles"
-#~ msgstr "身份"
-
-#~ msgid "Track"
-#~ msgstr "追蹤"
-
-#~ msgid "Action"
-#~ msgstr "動作"
-
-#~ msgid "Redeem Discount Code"
-#~ msgstr "兌換折扣碼"
-
-#~ msgid "Submission Date"
-#~ msgstr "提交日期"
-
-#~ msgid "Email Sent"
-#~ msgstr "電子郵件已寄送"
-
-#~ msgid "Accessible Ticket"
-#~ msgstr "可取用的票券"
-
-#~ msgid "Validity"
-#~ msgstr "有效性"
-
-#~ msgid "Item Total"
-#~ msgstr "項目小計"
-
-#~ msgid "Free Order"
-#~ msgstr "免費訂購"
-
-#~ msgid "Order"
-#~ msgstr "下訂"
-
-#~ msgid "Ticket Price"
-#~ msgstr "票券價格"
-
-#~ msgid "Discount Per Ticket"
-#~ msgstr "每票券折扣"
-
-#~ msgid "Total Amount"
-#~ msgstr "總數量"
-
-#~ msgid "Google"
-#~ msgstr "Google"
-
-#~ msgid "Mark All as Read"
-#~ msgstr "全部標記為已讀"
-
-#~ msgid "We are not able to understand what you require"
-#~ msgstr "我們不能理解你所需要的"
-
-#~ msgid "We don't seem to speak a common language. If you're facing this issue frequently, drop in an email at our support address so that we can see what's the issue."
-#~ msgstr "我們似乎不會說一個共同的語言。如果您經常遇到此問題，請在我們的支持地址發送電子郵件，以便我們了解問題所在。"
-
-#~ msgid "Access denied"
-#~ msgstr "拒絕訪問"
-
-#~ msgid "Sorry, but you don't have permission access to this page."
-#~ msgstr "很抱歉，您沒有此網頁的存取權限。"
-
-#~ msgid "You got"
-#~ msgstr "您有"
-
-#~ msgid "Sorry but we couldn't find this page since the page you are looking for does not exist."
-#~ msgstr "抱歉，我們找不到此網頁，因為您正在尋找的網頁不存在。"
-
-#~ msgid "We seem to be having some issues on our side."
-#~ msgstr "我們似乎在我們身邊有一些問題。"
-
-#~ msgid "Inconvenience is regretted. We'll fix this as soon as possible."
-#~ msgstr "後悔給您帶來不便。我們會盡快解決這個問題。"
-
-#~ msgid "No upcoming events available at this time"
-#~ msgstr "目前沒有即將舉行的活動"
-
-#~ msgid "No call for speakers open at this time"
-#~ msgstr "目前沒有徵集講者"
-
-#~ msgid "Sessions loading"
-#~ msgstr "議程載入中"
-
-#~ msgid "All the timings are in"
-#~ msgstr "所有時間點都在"
-
-#~ msgid "Your Order"
-#~ msgstr "您的訂單"
-
-#~ msgid "the"
-#~ msgstr "這"
-
-#~ msgid "Order now"
-#~ msgstr "立刻下訂"
-
-#~ msgid "Processing"
-#~ msgstr "處理中"
-
-#~ msgid "Card Nam"
-#~ msgstr "卡名"
-
-#~ msgid "Payment Due"
-#~ msgstr "付款到期"
-
-#~ msgid "No tickets selected."
-#~ msgstr "沒有票券被選取。"
-
-#~ msgid "Discount Applied by "
-#~ msgstr "折扣能用在 "
-
-#~ msgid "Order total"
-#~ msgstr "訂單總計"
-
-#~ msgid "Drafts"
-#~ msgstr "草稿"
-
-#~ msgid "Close"
-#~ msgstr "關閉"
-
-#~ msgid "Not Active"
-#~ msgstr "未啟用"
-
-#~ msgid "Save Discount"
-#~ msgstr "儲存折扣"
-
-#~ msgid "Previous Imports"
-#~ msgstr "先前的匯入"
-
-#~ msgid "Are you sure you would like to delete this event"
-#~ msgstr "您確定要刪除此活動"
-
-#~ msgid "Confirm Delete"
-#~ msgstr "確認刪除"
-
-#~ msgid "Co-organizer"
-#~ msgstr "協辦者"
-
-#~ msgid "Update Role"
-#~ msgstr "更新身份"
-
-#~ msgid "Manage Roles"
-#~ msgstr "管理身份"
-
-#~ msgid "User (Email)"
-#~ msgstr "使用者（電子郵件）"
-
-#~ msgid "accepted"
-#~ msgstr "已接受"
-
-#~ msgid "invited"
-#~ msgstr "已邀請"
-
-#~ msgid "Invitation Link"
-#~ msgstr "邀請連結"
-
-#~ msgid "User email"
-#~ msgstr "使用者電子郵件"
-
-#~ msgid "Choose"
-#~ msgstr "選擇"
-
-#~ msgid "Event Sponsors"
-#~ msgstr "活動贊助商"
-
-#~ msgid "Add Sponsor"
-#~ msgstr "加入贊助商"
-
-#~ msgid "Export and Download Event as zip"
-#~ msgstr "以 zip 檔匯出並下載活動行程"
-
-#~ msgid "Select which media files you want in the zip"
-#~ msgstr "選取您要在 zip 中放入哪些媒體檔案"
-
-#~ msgid "Started by"
-#~ msgstr "開始於"
-
-#~ msgid "datetime"
-#~ msgstr "日期時間"
-
-#~ msgid "You can make a"
-#~ msgstr "您可以"
-
-#~ msgid "request to the following endpoint to access the selected information"
-#~ msgstr "請求下列端點存取選取的資訊"
-
-#~ msgid "In order to use this feature activate"
-#~ msgstr "為了使用此功能欲啟用"
-
-#~ msgid "Sessions and Speakers"
-#~ msgstr "議程和講者"
-
-#~ msgid "for the event"
-#~ msgstr "（該活動）"
-
-#~ msgid "Please"
-#~ msgstr "請"
-
-#~ msgid "General Info"
-#~ msgstr "一般資訊"
-
-#~ msgid "Event ID"
-#~ msgstr "活動 ID"
-
-#~ msgid "Event Url"
-#~ msgstr "活動 URL"
-
-#~ msgid "Event Start Time"
-#~ msgstr "活動開始時間"
-
-#~ msgid "Event End Time"
-#~ msgstr "活動結束時間"
-
-#~ msgid "Event Session Types"
-#~ msgstr "活動議程類型"
-
-#~ msgid "Event Links and Social media"
-#~ msgstr "活動連結與社交媒體"
-
-#~ msgid "'Do you want to edit this record?'"
-#~ msgstr "「您想要編輯這項紀錄嗎？」"
-
-#~ msgid "Permissions List"
-#~ msgstr "權限列表"
-
-#~ msgid "Co-Organizer"
-#~ msgstr "協辦者"
-
-#~ msgid "Error loading sessions"
-#~ msgstr "議程載入錯誤"
-
-#~ msgid "No Unscheduled sessions"
-#~ msgstr "無尚未規劃時間的議程"
-
-#~ msgid "Schedule last published on"
-#~ msgstr "上次時間表發佈時間"
-
-#~ msgid "Clear Overlaps"
-#~ msgstr "清除重疊"
-
-#, fuzzy
-#~ msgid "Add New Microlocation"
-#~ msgstr "加入新的微定位"
-
-#~ msgid "Export as"
-#~ msgstr "匯出為"
-
-#~ msgid "Long Abstract"
-#~ msgstr "長篇摘要"
-
-#~ msgid "Update Session"
-#~ msgstr "更新議程"
-
-#, fuzzy
-#~ msgid "New Microlocation"
-#~ msgstr "新微觀區"
-
-#~ msgid "Floor"
-#~ msgstr "樓層"
-
-#~ msgid "Latitude"
-#~ msgstr "緯度"
-
-#~ msgid "Longitude"
-#~ msgstr "經度"
-
-#, fuzzy
-#~ msgid "Add Microlocation"
-#~ msgstr "增加微觀區"
-
-#~ msgid "Media"
-#~ msgstr "媒體"
-
-#~ msgid "Slide"
-#~ msgstr "投影片"
-
-#~ msgid "Session Invitation"
-#~ msgstr "議程邀請"
-
-#~ msgid "Invitation Pag"
-#~ msgstr "邀請頁面"
-
-#~ msgid "You have been invited for session"
-#~ msgstr "您已被邀請參與議程"
-
-#~ msgid "Accept"
-#~ msgstr "接受"
-
-#~ msgid "Reject"
-#~ msgstr "拒絕"
-
-#~ msgid "Select Avatar"
-#~ msgstr "選取頭像"
-
-#~ msgid "Avatar size must be less than 1MB."
-#~ msgstr "頭像大小必須小於 1MB。"
-
-#~ msgid "Crop your image"
-#~ msgstr "裁切您的影像"
-
-#~ msgid "Done"
-#~ msgstr "完成"
-
-#~ msgid "Modify Speakers"
-#~ msgstr "修改講者"
-
-#~ msgid "selected"
-#~ msgstr "已選取"
-
-#~ msgid "Submit Session"
-#~ msgstr "提交議程"
-
-#~ msgid "Invite Speakers"
-#~ msgstr "邀請講者"
-
-#~ msgid "Save as Draft"
-#~ msgstr "儲存為草稿"
-
-#~ msgid "Featured Speaker"
-#~ msgstr "主打講者"
-
-#~ msgid "checked"
-#~ msgstr "已核選"
-
-#~ msgid "Save Speaker"
-#~ msgstr "儲存講者"
-
-#~ msgid "Create an Access Code"
-#~ msgstr "創建取用金鑰"
-
-#~ msgid "Number of access tickets"
-#~ msgstr "取用票卷的數量"
-
-#~ msgid "Select Ticket(s) applied to the access code"
-#~ msgstr "選擇具備取用金鑰的票券"
-
-#~ msgid "Select all Tickets Type"
-#~ msgstr "選擇所有票券類型"
-
-#~ msgid "Show other options"
-#~ msgstr "顯示其他選項"
-
-#~ msgid "Set the min. and max. quantity allowed to purchase per order (optional)"
-#~ msgstr "設定每次下訂的最小和最大數量限制（選填）"
-
-#~ msgid "Validity period (optional)"
-#~ msgstr "有效期限（選填）"
-
-#~ msgid "Save Access"
-#~ msgstr "儲存取用紀錄"
-
-#~ msgid "Payment Type"
-#~ msgstr "支付類型"
-
-#~ msgid "Select payment type"
-#~ msgstr "選取支付類型"
-
-#~ msgid "Telegraphic Transfer (TT) / Bank Transfer"
-#~ msgstr "電匯 / 銀行轉帳"
-
-#~ msgid "Onsite / Cash"
-#~ msgstr "線上付款 / 現金"
-
-#~ msgid "Number of discount tickets"
-#~ msgstr "折扣票券數量"
-
-#~ msgid "Qty"
-#~ msgstr "數量"
-
-#~ msgid "Buyer / Registration Contact"
-#~ msgstr "買家 / 註冊聯絡方式"
-
-#~ msgid "Orders Summary"
-#~ msgstr "訂單摘要"
-
-#~ msgid "by order status"
-#~ msgstr "依據訂單狀態"
-
-#~ msgid "Enter Address"
-#~ msgstr "輸入地址"
-
-#~ msgid "Reset Location"
-#~ msgstr "重設地址"
-
-#~ msgid "Organizer Information"
-#~ msgstr "主辦者資訊"
-
-#~ msgid "Organizer name"
-#~ msgstr "主辦者名稱"
-
-#~ msgid "Use Ticketing System"
-#~ msgstr "使用票券系統"
-
-#~ msgid "Ticket Details"
-#~ msgstr "票券細節"
-
-#~ msgid "Donation"
-#~ msgstr "捐款"
-
-#~ msgid "Add Ticket URL"
-#~ msgstr "加入票券網址"
-
-#~ msgid "Enter Discount Code"
-#~ msgstr "輸入折扣碼"
-
-#~ msgid "Apply Discount"
-#~ msgstr "套用折扣"
-
-#~ msgid "Code applied !"
-#~ msgstr "折扣碼已套用！"
-
-#~ msgid "Add Payment details"
-#~ msgstr "加入支付細節"
-
-#~ msgid "Choose Country"
-#~ msgstr "選擇國家"
-
-#~ msgid "Choose a country for your payment"
-#~ msgstr "為您的支付選擇國家"
-
-#~ msgid "Choose Currency"
-#~ msgstr "選擇貨幣"
-
-#~ msgid "Please select a currency"
-#~ msgstr "請選擇一種貨幣"
-
-#~ msgid "Choose Payment Methods"
-#~ msgstr "選擇支付管道"
-
-#~ msgid "Online Payments"
-#~ msgstr "線上支付"
-
-#~ msgid "YES, accept payment through PayPal "
-#~ msgstr "是的，接受用 PayPal 支付 "
-
-#~ msgid "Paypal accepts credit card, debit card and PayPal payments. To learn how it works click"
-#~ msgstr "PayPal 接受信用卡、金融卡和 PayPal 支付。若要深入瞭解其細節請點按"
-
-#~ msgid "here."
-#~ msgstr "這裡。"
-
-#~ msgid "Don't have a PayPal account?"
-#~ msgstr "還沒有 PayPal 帳號？"
-
-#~ msgid "Create a free PayPal merchant account."
-#~ msgstr "建立免費的 PayPal 銷售帳號。"
-
-#~ msgid "Stripe accepts Visa, Master and Amex. To learn how it works click"
-#~ msgstr "Stripe 接受 Visa、Master 和 Amex 卡。若要瞭解細節請點按"
-
-#~ msgid "Find out more about Stripe"
-#~ msgstr "深入瞭解 Stripe"
-
-#~ msgid "Use Stripe for payments"
-#~ msgstr "使用 Stripe 作支付"
-
-#~ msgid "The stripe account"
-#~ msgstr "Stripe 帳號"
-
-#~ msgid "has been connected."
-#~ msgstr "已經連結。"
-
-#~ msgid "Click to De-link the account."
-#~ msgstr "點按可取消帳號連結。"
-
-#~ msgid "Enter your PayPal account name and payment details instructions to ticket buyers"
-#~ msgstr "輸入你的 PayPal 帳戶名稱以及給購票者的付款詳細說明"
-
-#~ msgid "example"
-#~ msgstr "範例"
-
-#~ msgid "Enter your bank details and instructions to ticket buyers"
-#~ msgstr "輸入你的詳細銀行資訊以及給購票者的說明"
-
-#~ msgid "YES, accept payment at the event(on site)"
-#~ msgstr "是的，接受付款方式為現場付款"

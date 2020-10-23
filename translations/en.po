@@ -26,12 +26,22 @@ msgid "Please enter your email ID"
 msgstr "Please enter your email ID"
 
 #: app/components/account/contact-info-section.js:26:23
+#: app/components/forms/admin/settings/billing.js:35:23
+#: app/components/forms/admin/settings/billing.js:48:23
+#: app/components/forms/admin/settings/system-form.js:155:23
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
 #: app/components/forms/login-form.js:29:23
 #: app/components/forms/orders/guest-order-form.js:22:23
+#: app/components/forms/orders/order-form.js:91:19
+#: app/components/forms/orders/order-form.js:385:23
+#: app/components/forms/register-form.js:21:23
 #: app/components/forms/reset-password-form.js:26:23
+#: app/components/forms/session-speaker-form.js:198:23
+#: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-msgid "Please enter a valid email ID"
-msgstr "Please enter a valid email ID"
+#: app/components/forms/wizard/basic-details-step.js:340:23
+msgid "Please enter a valid email address"
+msgstr "Please enter a valid email address"
 
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
@@ -48,10 +58,19 @@ msgid "Your account has been deleted successfully."
 msgstr "Your account has been deleted successfully."
 
 #: app/components/account/danger-zone.js:48:26
+#: app/components/account/email-preferences-section.js:18:26
+#: app/components/events/view/export/download-common.js:80:26
 #: app/components/events/view/publish-bar.ts:89:24
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
+#: app/components/forms/login-form.js:70:35
+#: app/components/forms/login-form.js:97:28
+#: app/components/forms/reset-password-form.js:117:41
 #: app/components/modals/session-notify-modal.js:69:24
+#: app/components/notification-dropdown.js:35:26
 #: app/components/unverified-user-message.js:37:28
+#: app/components/widgets/forms/image-upload.js:45:33
 #: app/controllers/admin/content/events.js:77:26
+#: app/controllers/admin/content/translations.js:23:24
 #: app/controllers/admin/events/list.js:136:26
 #: app/controllers/admin/events/list.js:161:24
 #: app/controllers/admin/events/list.js:183:24
@@ -61,7 +80,9 @@ msgstr "Your account has been deleted successfully."
 #: app/controllers/admin/users/list.js:137:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
+#: app/controllers/event-invoice/paid.js:23:24
 #: app/controllers/events/list.js:81:24
+#: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/index.js:56:26
 #: app/controllers/events/view/sessions.js:30:26
 #: app/controllers/events/view/sessions/list.js:121:26
@@ -77,6 +98,7 @@ msgstr "Your account has been deleted successfully."
 #: app/controllers/events/view/tickets/access-codes/list.js:58:26
 #: app/controllers/events/view/tickets/access-codes/list.js:76:26
 #: app/controllers/events/view/tickets/attendees.js:21:26
+#: app/controllers/events/view/tickets/attendees/list.js:72:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:66:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:85:26
 #: app/controllers/events/view/tickets/orders.js:21:26
@@ -84,7 +106,13 @@ msgstr "Your account has been deleted successfully."
 #: app/controllers/events/view/tickets/orders/list.js:89:26
 #: app/controllers/events/view/tickets/orders/list.js:107:26
 #: app/controllers/events/view/tickets/orders/list.js:132:26
+#: app/controllers/notifications.js:23:26
+#: app/controllers/oauth/callback.js:31:41
+#: app/controllers/public/index.js:88:37
 #: app/controllers/public/session/view.js:29:24
+#: app/controllers/register.js:37:35 app/controllers/register.js:70:37
+#: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
+#: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
 msgstr "An unexpected error has occurred."
@@ -92,19 +120,6 @@ msgstr "An unexpected error has occurred."
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
 msgstr "Email notifications updated successfully"
-
-#: app/components/account/email-preferences-section.js:18:26
-#: app/components/forms/login-form.js:70:35
-#: app/components/forms/reset-password-form.js:117:41
-#: app/components/notification-dropdown.js:35:26
-#: app/components/widgets/forms/image-upload.js:45:33
-#: app/controllers/notifications.js:23:26
-#: app/controllers/oauth/callback.js:31:41
-#: app/controllers/public/index.js:88:37 app/controllers/register.js:37:35
-#: app/controllers/register.js:70:37 app/mixins/notifications.js:12:28
-#: app/mixins/notifications.js:30:28
-msgid "An unexpected error occurred."
-msgstr "An unexpected error occurred."
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
@@ -160,13 +175,6 @@ msgstr "Task is going on."
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
 msgstr "Task failed."
-
-#: app/components/events/view/export/download-common.js:80:26
-#: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/view/export.js:68:26
-msgid "Unexpected error occurred."
-msgstr "Unexpected error occurred."
 
 #: app/components/events/view/export/download-zip.js:17:26
 msgid "Exported Event Downloaded successfully."
@@ -315,15 +323,6 @@ msgstr "Please enter a valid mobile number."
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
 msgstr "Please enter the email"
-
-#: app/components/forms/admin/settings/billing.js:35:23
-#: app/components/forms/admin/settings/billing.js:48:23
-#: app/components/forms/admin/settings/system-form.js:155:23
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
-#: app/components/forms/orders/order-form.js:385:23
-#: app/components/forms/register-form.js:21:23
-msgid "Please enter a valid email address"
-msgstr "Please enter a valid email address"
 
 #: app/components/forms/admin/settings/billing.js:44:23
 msgid "Please enter the billing paypal email invoice money will be transferred to"
@@ -537,13 +536,6 @@ msgstr "Please enter the token for Sendgrid"
 msgid "Please enter the recipient E-mail"
 msgstr "Please enter the recipient E-mail"
 
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
-#: app/components/forms/login-form.js:97:28
-#: app/controllers/events/view/tickets/attendees/list.js:72:26
-#: app/mixins/event-wizard.js:173:28 app/services/auth-manager.js:148:28
-msgid "An unexpected error has occurred"
-msgstr "An unexpected error has occurred"
-
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
 msgstr "Existing items need to be completed before new items can be added."
@@ -632,13 +624,6 @@ msgstr "Please enter your last name"
 #: app/components/forms/orders/order-form.js:87:19
 msgid "Please enter your email"
 msgstr "Please enter your email"
-
-#: app/components/forms/orders/order-form.js:91:19
-#: app/components/forms/session-speaker-form.js:198:23
-#: app/components/forms/session-speaker-form.js:212:23
-#: app/components/forms/wizard/basic-details-step.js:340:23
-msgid "Please enter a valid email"
-msgstr "Please enter a valid email"
 
 #: app/components/forms/orders/order-form.js:100:19
 #: app/components/forms/session-speaker-form.js:318:23
@@ -753,6 +738,11 @@ msgstr "Please enter your zip code"
 #: app/components/forms/orders/order-form.js:439:23
 msgid "Please specify your choice of payment method"
 msgstr "Please specify your choice of payment method"
+
+#: app/components/forms/orders/order-form.js:479:23
+#: app/components/forms/session-speaker-form.js:390:23
+msgid "Please enter {{field}}"
+msgstr "Please enter {{field}}"
 
 #: app/components/forms/register-form.js:30:23
 msgid "Please enter a password"
@@ -6958,921 +6948,3 @@ msgstr "Next week"
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
 msgstr "Custom dates"
-
-#~ msgid "Download Event as"
-#~ msgstr "Download Event as"
-
-#~ msgid "Once the event is live and the schedule is published,"
-#~ msgstr "Once the event is live and the schedule is published,"
-
-#~ msgid "version of the schedule will be available at:"
-#~ msgstr "version of the schedule will be available at:"
-
-#~ msgid "Alternatively, you can download the"
-#~ msgstr "Alternatively, you can download the"
-
-#~ msgid "Please enter a valid twitter url"
-#~ msgstr "Please enter a valid twitter url"
-
-#~ msgid "Please enter a valid facebook url"
-#~ msgstr "Please enter a valid facebook url"
-
-#~ msgid "Please enter a valid google plus url"
-#~ msgstr "Please enter a valid google plus url"
-
-#~ msgid "Please enter a valid youtube url"
-#~ msgstr "Please enter a valid youtube url"
-
-#~ msgid "Please enter a valid github url"
-#~ msgstr "Please enter a valid github url"
-
-#~ msgid "Please enter a valid  email address"
-#~ msgstr "Please enter a valid  email address"
-
-#~ msgid "Please enter the username for SMTP"
-#~ msgstr "Please enter the username for SMTP"
-
-#~ msgid "Please enter the password for SMTP"
-#~ msgstr "Please enter the password for SMTP"
-
-#~ msgid "Please enter the application secret key"
-#~ msgstr "Please enter the application secret key"
-
-#~ msgid "Your application secret key must have at least {ruleValue} characters"
-#~ msgstr "Your application secret key must have at least {ruleValue} characters"
-
-#~ msgid "Please enter a valid registration time limit between 1 to 60 minutes."
-#~ msgstr "Please enter a valid registration time limit between 1 to 60 minutes."
-
-#~ msgid "Please enter a valid github profile url"
-#~ msgstr "Please enter a valid github profile url"
-
-#~ msgid "Please enter github link"
-#~ msgstr "Please enter github link"
-
-#~ msgid "Please enter your city "
-#~ msgstr "Please enter your city "
-
-#~ msgid "Please specify your choice of payment method "
-#~ msgstr "Please specify your choice of payment method "
-
-#~ msgid "Please enter linkedin link"
-#~ msgstr "Please enter linkedin link"
-
-#~ msgid "Please enter a valid linkedin profile url"
-#~ msgstr "Please enter a valid linkedin profile url"
-
-#~ msgid "Please select the Privacy"
-#~ msgstr "Please select the Privacy"
-
-#~ msgid "Please enter a valid email address  for user"
-#~ msgstr "Please enter a valid email address  for user"
-
-#~ msgid "Please enter your phone"
-#~ msgstr "Please enter your phone"
-
-#~ msgid "Your event must have a location before it can be published."
-#~ msgstr "Your event must have a location before it can be published."
-
-#~ msgid "Oops something went wrong1. Please try again"
-#~ msgstr "Oops something went wrong1. Please try again"
-
-#~ msgid "Oops something went wrong2. Please try again"
-#~ msgstr "Oops something went wrong2. Please try again"
-
-#~ msgid "Oops something went wrong4. Please try again"
-#~ msgstr "Oops something went wrong4. Please try again"
-
-#~ msgid "Session has been accepted and speaker has been notified via email."
-#~ msgstr "Session has been accepted and speaker has been notified via email."
-
-#~ msgid "Session has been accepted"
-#~ msgstr "Session has been accepted"
-
-#~ msgid "Session has been confirmed and speaker has been notified via email."
-#~ msgstr "Session has been confirmed and speaker has been notified via email."
-
-#~ msgid "Session has been confirmed"
-#~ msgstr "Session has been confirmed"
-
-#~ msgid "Session has been rejected and speaker has been notified via email."
-#~ msgstr "Session has been rejected and speaker has been notified via email."
-
-#~ msgid "Session has been rejected"
-#~ msgstr "Session has been rejected"
-
-#~ msgid "An unexpected error has occured. Discount code cannot be created."
-#~ msgstr "An unexpected error has occured. Discount code cannot be created."
-
-#~ msgid "Attendee CheckedIn status modified successfully."
-#~ msgstr "Attendee CheckedIn status modified successfully."
-
-#~ msgid "An unexpected error has occured"
-#~ msgstr "An unexpected error has occured"
-
-#~ msgid "Proposal has been deleted successfully."
-#~ msgstr "Proposal has been deleted successfully."
-
-#~ msgid "Modules"
-#~ msgstr "Modules"
-
-#~ msgid "Fees"
-#~ msgstr "Fees"
-
-#~ msgid "Saved"
-#~ msgstr "Saved"
-
-#~ msgid "Order Form"
-#~ msgstr "Order Form"
-
-#~ msgid "All sessions"
-#~ msgstr "All sessions"
-
-#~ msgid "Today's Sessions"
-#~ msgstr "Today's Sessions"
-
-#~ msgid "Week's Sessions"
-#~ msgstr "Week's Sessions"
-
-#~ msgid "Month's Sessions"
-#~ msgstr "Month's Sessions"
-
-#~ msgid "Contact Info"
-#~ msgstr "Contact Info"
-
-#~ msgid "Bengali/Bangla"
-#~ msgstr "Bengali/Bangla"
-
-#~ msgid "Chinese (Simplified)"
-#~ msgstr "Chinese (Simplified)"
-
-#~ msgid "Chinese (Traditional)"
-#~ msgstr "Chinese (Traditional)"
-
-#~ msgid "English"
-#~ msgstr "English"
-
-#~ msgid "French"
-#~ msgstr "French"
-
-#~ msgid "German"
-#~ msgstr "German"
-
-#~ msgid "Indonesian"
-#~ msgstr "Indonesian"
-
-#~ msgid "Korean"
-#~ msgstr "Korean"
-
-#~ msgid "Polish"
-#~ msgstr "Polish"
-
-#~ msgid "Spanish"
-#~ msgstr "Spanish"
-
-#~ msgid "Thai"
-#~ msgstr "Thai"
-
-#~ msgid "Vietnamese"
-#~ msgstr "Vietnamese"
-
-#~ msgid "Hindi"
-#~ msgstr "Hindi"
-
-#~ msgid "Japanese"
-#~ msgstr "Japanese"
-
-#~ msgid "Russian"
-#~ msgstr "Russian"
-
-#~ msgid "In last 7 days "
-#~ msgstr "In last 7 days "
-
-#~ msgid "In last 1 month "
-#~ msgstr "In last 1 month "
-
-#~ msgid "Ticketing"
-#~ msgstr "Ticketing"
-
-#~ msgid "Payments"
-#~ msgstr "Payments"
-
-#~ msgid "Donations"
-#~ msgstr "Donations"
-
-#~ msgid "service.name"
-#~ msgstr "service.name"
-
-#~ msgid "Completed Orders "
-#~ msgstr "Completed Orders "
-
-#~ msgid "Pending Orders "
-#~ msgstr "Pending Orders "
-
-#~ msgid "Fee Summary"
-#~ msgstr "Fee Summary"
-
-#~ msgid "Saved Events"
-#~ msgstr "Saved Events"
-
-#~ msgid "has caused an error. "
-#~ msgstr "has caused an error. "
-
-#~ msgid "Previous Events"
-#~ msgstr "Previous Events"
-
-#~ msgid "Message"
-#~ msgstr "Message"
-
-#~ msgid "Started"
-#~ msgstr "Started"
-
-#~ msgid "Check your event here"
-#~ msgstr "Check your event here"
-
-#~ msgid "8 days ago"
-#~ msgstr "8 days ago"
-
-#~ msgid " version of the schedule will be available at:"
-#~ msgstr " version of the schedule will be available at:"
-
-#~ msgid " here"
-#~ msgstr " here"
-
-#~ msgid "Download "
-#~ msgstr "Download "
-
-#~ msgid "(view revisions)"
-#~ msgstr "(view revisions)"
-
-#~ msgid "No Session Type present. "
-#~ msgstr "No Session Type present. "
-
-#~ msgid "No social links present. "
-#~ msgstr "No social links present. "
-
-#~ msgid "Manage roles"
-#~ msgstr "Manage roles"
-
-#~ msgid "Sitemap"
-#~ msgstr "Sitemap"
-
-#~ msgid "Locations"
-#~ msgstr "Locations"
-
-#~ msgid "Nearby Events"
-#~ msgstr "Nearby Events"
-
-#~ msgid "Connect with us"
-#~ msgstr "Connect with us"
-
-#~ msgid "Support"
-#~ msgstr "Support"
-
-#~ msgid "Github"
-#~ msgstr "Github"
-
-#~ msgid "Youtube"
-#~ msgstr "Youtube"
-
-#~ msgid "Google +"
-#~ msgstr "Google +"
-
-#~ msgid "Are you sure you would like to delete this page?"
-#~ msgstr "Are you sure you would like to delete this page?"
-
-#~ msgid "Choose a searching option to be used in the backend"
-#~ msgstr "Choose a searching option to be used in the backend"
-
-#~ msgid "Flask Filtering"
-#~ msgstr "Flask Filtering"
-
-#~ msgid "Elastic Search (Coming Soon)"
-#~ msgstr "Elastic Search (Coming Soon)"
-
-#~ msgid "App secret key"
-#~ msgstr "App secret key"
-
-#~ msgid "Secret key for the application. Recommended is a random string minimum 20 characters in length."
-#~ msgstr "Secret key for the application. Recommended is a random string minimum 20 characters in length."
-
-#~ msgid "Add Fee Settings for the event"
-#~ msgstr "Add Fee Settings for the event"
-
-#~ msgid "Are you sure you would like to remove this ticket?"
-#~ msgstr "Are you sure you would like to remove this ticket?"
-
-#~ msgid "Amount (US$)"
-#~ msgstr "Amount (US$)"
-
-#~ msgid "Registration Options"
-#~ msgstr "Registration Options"
-
-#~ msgid "REGISTRATION TIME LIMIT"
-#~ msgstr "REGISTRATION TIME LIMIT"
-
-#~ msgid "Login with Facebook"
-#~ msgstr "Login with Facebook"
-
-#~ msgid "Ticket Holder "
-#~ msgstr "Ticket Holder "
-
-#~ msgid " -for- "
-#~ msgstr " -for- "
-
-#~ msgid "Stripe"
-#~ msgstr "Stripe"
-
-#~ msgid "Please complete registration within "
-#~ msgstr "Please complete registration within "
-
-#~ msgid "After "
-#~ msgstr "After "
-
-#~ msgid "password"
-#~ msgstr "password"
-
-#~ msgid "Details of the user"
-#~ msgstr "Details of the user"
-
-#~ msgid "Select Event Image"
-#~ msgstr "Select Event Image"
-
-#~ msgid "Add organizer information"
-#~ msgstr "Add organizer information"
-
-#~ msgid "Organizer Name"
-#~ msgstr "Organizer Name"
-
-#~ msgid "Organizer Description"
-#~ msgstr "Organizer Description"
-
-#~ msgid "Use ticketing system"
-#~ msgstr "Use ticketing system"
-
-#~ msgid "You don't have any tickets added. Add one of your choice."
-#~ msgstr "You don't have any tickets added. Add one of your choice."
-
-#~ msgid "Ticket URL"
-#~ msgstr "Ticket URL"
-
-#~ msgid "Paypal accepts credit card, debit card and PayPal payments. To learn how it works "
-#~ msgstr "Paypal accepts credit card, debit card and PayPal payments. To learn how it works "
-
-#~ msgid "Stripe accepts Visa, Master and Amex. Find out more about Stripe "
-#~ msgstr "Stripe accepts Visa, Master and Amex. Find out more about Stripe "
-
-#~ msgid "You have linked your Stripe account successfully. Click Here to Disconnect you account."
-#~ msgstr "You have linked your Stripe account successfully. Click Here to Disconnect you account."
-
-#~ msgid "YES, accept payment by Telegraphic Transfer(TT) / Bank Transfer "
-#~ msgstr "YES, accept payment by Telegraphic Transfer(TT) / Bank Transfer "
-
-#~ msgid "YES, accept payment at the event (on site) "
-#~ msgstr "YES, accept payment at the event (on site) "
-
-#~ msgid "Forward"
-#~ msgstr "Forward"
-
-#~ msgid "Save draft"
-#~ msgstr "Save draft"
-
-#~ msgid "Session, Microlocations, Session Types"
-#~ msgstr "Session, Microlocations, Session Types"
-
-#~ msgid "Collect Speaker Details"
-#~ msgstr "Collect Speaker Details"
-
-#~ msgid "Collect Session Details"
-#~ msgstr "Collect Session Details"
-
-#~ msgid "Submit Proposal"
-#~ msgstr "Submit Proposal"
-
-#~ msgid "Existing Sessions"
-#~ msgstr "Existing Sessions"
-
-#~ msgid "Edit Session - "
-#~ msgstr "Edit Session - "
-
-#~ msgid "No existing sessions"
-#~ msgstr "No existing sessions"
-
-#~ msgid "Add Session Details"
-#~ msgstr "Add Session Details"
-
-#~ msgid "For Cover Photos : 300x150px (2:1 ratio) image. For Avatar Photos : 150x150px (1:1 ratio) image."
-#~ msgstr "For Cover Photos : 300x150px (2:1 ratio) image. For Avatar Photos : 150x150px (1:1 ratio) image."
-
-#~ msgid "Are you sure you would like to delete this proposal?"
-#~ msgstr "Are you sure you would like to delete this proposal?"
-
-#~ msgid "Deleting the proposal will delete all the data associated with it."
-#~ msgstr "Deleting the proposal will delete all the data associated with it."
-
-#~ msgid "Proceeding forward will delete the proposal titled:"
-#~ msgstr "Proceeding forward will delete the proposal titled:"
-
-#~ msgid "Delete Proposal"
-#~ msgstr "Delete Proposal"
-
-#~ msgid "Tax Invoices are sent to your attendees when you select this feature. Enter your registered business company name and address to be included on the tax invoice."
-#~ msgstr "Tax Invoices are sent to your attendees when you select this feature. Enter your registered business company name and address to be included on the tax invoice."
-
-#~ msgid "Order Total"
-#~ msgstr "Order Total"
-
-#~ msgid "Your order expired because you did not complete regsitration in time."
-#~ msgstr "Your order expired because you did not complete regsitration in time."
-
-#~ msgid "Please click on event link given right to order your tickets again."
-#~ msgstr "Please click on event link given right to order your tickets again."
-
-#~ msgid "Organizer "
-#~ msgstr "Organizer "
-
-#~ msgid "About "
-#~ msgstr "About "
-
-#~ msgid "Sales Ends"
-#~ msgstr "Sales Ends"
-
-#~ msgid "Successfully linked with Facebook"
-#~ msgstr "Successfully linked with Facebook"
-
-#~ msgid "Email Updates are "
-#~ msgstr "Email Updates are "
-
-#~ msgid " - Organizer"
-#~ msgstr " - Organizer"
-
-#~ msgid " - Co organizer"
-#~ msgstr " - Co organizer"
-
-#~ msgid " - Track Organizer"
-#~ msgstr " - Track Organizer"
-
-#~ msgid " - Registrar"
-#~ msgstr " - Registrar"
-
-#~ msgid " - Moderator"
-#~ msgstr " - Moderator"
-
-#~ msgid "With email"
-#~ msgstr "With email"
-
-#~ msgid "Without email"
-#~ msgstr "Without email"
-
-#~ msgid "Check In"
-#~ msgstr "Check In"
-
-#~ msgid "%"
-#~ msgstr "%"
-
-#~ msgid "US$ "
-#~ msgstr "US$ "
-
-#~ msgid "Cofirmation mail has been sent again successfully!"
-#~ msgstr "Cofirmation mail has been sent again successfully!"
-
-#~ msgid "Your account is unverified. Please verify by clicking on the confirmation link that has been emailed to you."
-#~ msgstr "Your account is unverified. Please verify by clicking on the confirmation link that has been emailed to you."
-
-#~ msgid "Are you sure want to remove this slide?"
-#~ msgstr "Are you sure want to remove this slide?"
-
-#~ msgid "No larger than"
-#~ msgstr "No larger than"
-
-#~ msgid "Bold"
-#~ msgstr "Bold"
-
-#~ msgid "Italic"
-#~ msgstr "Italic"
-
-#~ msgid "Underline"
-#~ msgstr "Underline"
-
-#~ msgid "Undo"
-#~ msgstr "Undo"
-
-#~ msgid "Redo"
-#~ msgstr "Redo"
-
-#~ msgid "This is a"
-#~ msgstr "This is a"
-
-#~ msgid "Ticket"
-#~ msgstr "Ticket"
-
-#~ msgid "Ticket would still be available for sale to Organizers."
-#~ msgstr "Ticket would still be available for sale to Organizers."
-
-#~ msgid "Absorb Fees"
-#~ msgstr "Absorb Fees"
-
-#~ msgid "If unchecked fees will be passed on to the buyer."
-#~ msgstr "If unchecked fees will be passed on to the buyer."
-
-#~ msgid "Ticket Code Group"
-#~ msgstr "Ticket Code Group"
-
-#~ msgid "Add Code Groups"
-#~ msgstr "Add Code Groups"
-
-#~ msgid "comma separated groups"
-#~ msgstr "comma separated groups"
-
-#~ msgid "Please click "
-#~ msgstr "Please click "
-
-#~ msgid " to activate this module."
-#~ msgstr " to activate this module."
-
-#~ msgid "Sales(US $)"
-#~ msgstr "Sales(US $)"
-
-#~ msgid "Edit Speaker- "
-#~ msgstr "Edit Speaker- "
-
-#~ msgid "From "
-#~ msgstr "From "
-
-#~ msgid " to "
-#~ msgstr " to "
-
-#~ msgid "action.buttonTitle"
-#~ msgstr "action.buttonTitle"
-
-#~ msgid "Order tickets"
-#~ msgstr "Order tickets"
-
-#~ msgid "You will be taken to "
-#~ msgstr "You will be taken to "
-
-#~ msgid " to complete the purchase of tickets"
-#~ msgstr " to complete the purchase of tickets"
-
-#~ msgid "Week"
-#~ msgstr "Week"
-
-#~ msgid "Month"
-#~ msgstr "Month"
-
-#~ msgid "error"
-#~ msgstr "error"
-
-#~ msgid "Please enter the sadnbox username"
-#~ msgstr "Please enter the sadnbox username"
-
-#~ msgid "Please enter the sandbox password"
-#~ msgstr "Please enter the sandbox password"
-
-#~ msgid "Please enter the sandbox signature"
-#~ msgstr "Please enter the sandbox signature"
-
-#~ msgid "Please enter the live username"
-#~ msgstr "Please enter the live username"
-
-#~ msgid "Please enter the live password"
-#~ msgstr "Please enter the live password"
-
-#~ msgid "Please enter the live signature"
-#~ msgstr "Please enter the live signature"
-
-#~ msgid "Please enter a valid email address for super admin"
-#~ msgstr "Please enter a valid email address for super admin"
-
-#~ msgid "Please enter your name "
-#~ msgstr "Please enter your name "
-
-#~ msgid "Please enter your family name "
-#~ msgstr "Please enter your family name "
-
-#~ msgid "en"
-#~ msgstr "en"
-
-#~ msgid "Public URL"
-#~ msgstr "Public URL"
-
-#~ msgid "Start Date"
-#~ msgstr "Start Date"
-
-#~ msgid "End Date"
-#~ msgstr "End Date"
-
-#~ msgid "Roles"
-#~ msgstr "Roles"
-
-#~ msgid "draft"
-#~ msgstr "draft"
-
-#~ msgid "Recipient"
-#~ msgstr "Recipient"
-
-#~ msgid "Trigger"
-#~ msgstr "Trigger"
-
-#~ msgid "Email Message"
-#~ msgstr "Email Message"
-
-#~ msgid "Notification Message"
-#~ msgstr "Notification Message"
-
-#~ msgid "Sent At"
-#~ msgstr "Sent At"
-
-#~ msgid "Mail"
-#~ msgstr "Mail"
-
-#~ msgid "Notification"
-#~ msgstr "Notification"
-
-#~ msgid "User Control"
-#~ msgstr "User Control"
-
-#~ msgid "Track"
-#~ msgstr "Track"
-
-#~ msgid "Speaker"
-#~ msgstr "Speaker"
-
-#~ msgid "Microlocation"
-#~ msgstr "Microlocation"
-
-#~ msgid "Publish event (make event live)"
-#~ msgstr "Publish event (make event live)"
-
-#~ msgid "Account Creation is necessary."
-#~ msgstr "Account Creation is necessary."
-
-#~ msgid "Actor"
-#~ msgstr "Actor"
-
-#~ msgid "Time"
-#~ msgstr "Time"
-
-#~ msgid "Action"
-#~ msgstr "Action"
-
-#~ msgid "For"
-#~ msgstr "For"
-
-#~ msgid "Invoice#"
-#~ msgstr "Invoice#"
-
-#~ msgid "Dated"
-#~ msgstr "Dated"
-
-#~ msgid "Amount"
-#~ msgstr "Amount"
-
-#~ msgid "Sent To"
-#~ msgstr "Sent To"
-
-#~ msgid "Date of Submission"
-#~ msgstr "Date of Submission"
-
-#~ msgid "User Links"
-#~ msgstr "User Links"
-
-#~ msgid "Member Since"
-#~ msgstr "Member Since"
-
-#~ msgid "Last Access"
-#~ msgstr "Last Access"
-
-#~ msgid "Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical)"
-#~ msgstr "Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical)"
-
-#~ msgid "type"
-#~ msgstr "type"
-
-#~ msgid "User e-mail"
-#~ msgstr "User e-mail"
-
-#~ msgid "Follow us on"
-#~ msgstr "Follow us on"
-
-#~ msgid "Sandbox username"
-#~ msgstr "Sandbox username"
-
-#~ msgid "Sandbox password"
-#~ msgstr "Sandbox password"
-
-#~ msgid "Sandbox signature"
-#~ msgstr "Sandbox signature"
-
-#~ msgid "Live username"
-#~ msgstr "Live username"
-
-#~ msgid "Live password"
-#~ msgstr "Live password"
-
-#~ msgid "Live signature"
-#~ msgstr "Live signature"
-
-#~ msgid "Super Admin Email ID"
-#~ msgstr "Super Admin Email ID"
-
-#~ msgid "The email ID of the super admin user created during initial deployment."
-#~ msgstr "The email ID of the super admin user created during initial deployment."
-
-#~ msgid "Tokens"
-#~ msgstr "Tokens"
-
-#~ msgid "Consumer secret"
-#~ msgstr "Consumer secret"
-
-#~ msgid "List of supported currencies"
-#~ msgstr "List of supported currencies"
-
-#~ msgid "Login with Twitter"
-#~ msgstr "Login with Twitter"
-
-#~ msgid "Login with Google Plus"
-#~ msgstr "Login with Google Plus"
-
-#~ msgid "Please complete registration within 10:00 minutes."
-#~ msgstr "Please complete registration within 10:00 minutes."
-
-#~ msgid "After 10:00 minutes, the reservation we're holding will be released to others."
-#~ msgstr "After 10:00 minutes, the reservation we're holding will be released to others."
-
-#~ msgid "Same as Ticket Buyer"
-#~ msgstr "Same as Ticket Buyer"
-
-#~ msgid "Pay Via"
-#~ msgstr "Pay Via"
-
-#~ msgid "By clicking \"Pay Now\", I acknowledge that I have read and agree with the Open Event terms of services and privacy policy."
-#~ msgstr "By clicking \"Pay Now\", I acknowledge that I have read and agree with the Open Event terms of services and privacy policy."
-
-#~ msgid "Redeem Discount Code"
-#~ msgstr "Redeem Discount Code"
-
-#~ msgid "Discount code"
-#~ msgstr "Discount code"
-
-#~ msgid "Redeem"
-#~ msgstr "Redeem"
-
-#~ msgid "Code Applied"
-#~ msgstr "Code Applied"
-
-#~ msgid "Discount of"
-#~ msgstr "Discount of"
-
-#~ msgid "over a period of"
-#~ msgstr "over a period of"
-
-#~ msgid "month(s)"
-#~ msgstr "month(s)"
-
-#~ msgid "Are you sure you wish to remove the discount applied ?"
-#~ msgstr "Are you sure you wish to remove the discount applied ?"
-
-#~ msgid "turn off"
-#~ msgstr "turn off"
-
-#~ msgid "turn on"
-#~ msgstr "turn on"
-
-#~ msgid "Search Events..."
-#~ msgstr "Search Events..."
-
-#~ msgid "Student/In"
-#~ msgstr "Student/In"
-
-#~ msgid "Call for Speakers Open until"
-#~ msgstr "Call for Speakers Open until"
-
-#~ msgid "facebook.com/"
-#~ msgstr "facebook.com/"
-
-#~ msgid "Connect"
-#~ msgstr "Connect"
-
-#~ msgid "twitter.com/"
-#~ msgstr "twitter.com/"
-
-#~ msgid "instagram.com/"
-#~ msgstr "instagram.com/"
-
-#~ msgid "Google+"
-#~ msgstr "Google+"
-
-#~ msgid "plus.google.com/"
-#~ msgstr "plus.google.com/"
-
-#~ msgid "Edit event details"
-#~ msgstr "Edit event details"
-
-#~ msgid "View event details"
-#~ msgstr "View event details"
-
-#~ msgid "Delete event"
-#~ msgstr "Delete event"
-
-#~ msgid "Submission Date"
-#~ msgstr "Submission Date"
-
-#~ msgid "Last Modified"
-#~ msgstr "Last Modified"
-
-#~ msgid "Email Sent"
-#~ msgstr "Email Sent"
-
-#~ msgid "Not Confirmed"
-#~ msgstr "Not Confirmed"
-
-#~ msgid "Browse edit history"
-#~ msgstr "Browse edit history"
-
-#~ msgid "No. of entries"
-#~ msgstr "No. of entries"
-
-#~ msgid "Canceled"
-#~ msgstr "Canceled"
-
-#~ msgid "#"
-#~ msgstr "#"
-
-#~ msgid "Access Code URL"
-#~ msgstr "Access Code URL"
-
-#~ msgid "Accessible Ticket"
-#~ msgstr "Accessible Ticket"
-
-#~ msgid "Validity"
-#~ msgstr "Validity"
-
-#~ msgid "Edit Access Code"
-#~ msgstr "Edit Access Code"
-
-#~ msgid "Delete Access Code"
-#~ msgstr "Delete Access Code"
-
-#~ msgid "Deactivate Access code"
-#~ msgstr "Deactivate Access code"
-
-#~ msgid "Price "
-#~ msgstr "Price "
-
-#~ msgid "Item Total"
-#~ msgstr "Item Total"
-
-#~ msgid "Select Payment Type"
-#~ msgstr "Select Payment Type"
-
-#~ msgid "Telegraphic Transfer(TT)/Bank Transfer"
-#~ msgstr "Telegraphic Transfer(TT)/Bank Transfer"
-
-#~ msgid "Onsite/Cash"
-#~ msgstr "Onsite/Cash"
-
-#~ msgid "Free Order"
-#~ msgstr "Free Order"
-
-#~ msgid "Order"
-#~ msgstr "Order"
-
-#~ msgid "Ticket Price"
-#~ msgstr "Ticket Price"
-
-#~ msgid "Discount code URL"
-#~ msgstr "Discount code URL"
-
-#~ msgid "Discount Per Ticket"
-#~ msgstr "Discount Per Ticket"
-
-#~ msgid "View orders / View attendees"
-#~ msgstr "View orders / View attendees"
-
-#~ msgid "Total Amount"
-#~ msgstr "Total Amount"
-
-#~ msgid "Buyer/Registration Contact "
-#~ msgstr "Buyer/Registration Contact "
-
-#~ msgid "Mark all read"
-#~ msgstr "Mark all read"
-
-#~ msgid "Bengali"
-#~ msgstr "Bengali"
-
-#~ msgid "Oops, the page you're"
-#~ msgstr "Oops, the page you're"
-
-#~ msgid "exisit"
-#~ msgstr "exisit"
-
-#~ msgid "on our servers"
-#~ msgstr "on our servers"
-
-#~ msgid "Street Address Line 1"
-#~ msgstr "Street Address Line 1"
-
-#~ msgid "Street Address Line 2"
-#~ msgstr "Street Address Line 2"

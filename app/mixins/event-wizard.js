@@ -170,7 +170,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
             this.notify.error(this.l10n.tVar(error.detail));
           });
         } else {
-          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         }
       })
       .finally(() => {

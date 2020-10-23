@@ -23,14 +23,22 @@
           {{/if}}
         </div>
       {{else}}
-        <div class="left floated ten wide column">
-          <div class="session-speakers">
-            {{#each @session.speakers as |speaker|}}
-              <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
-            {{/each}}
+        <div class="left floated twelve wide column">
+          <div class="ui grid stackable">
+           <div class="session-speakers">
+              {{#each @session.speakers as |speaker|}}
+               <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+             {{/each}}
+           </div>
+           <div class="left floated nine wide column">
+             {{#each @session.speakers as |speaker|}}
+                {{speaker.name}} ({{speaker.position}}, {{speaker.organisation}})
+                <br>
+              {{/each}}
+            </div>
           </div>
         </div>
-        <div class="right floated six wide column">
+        <div class="right floated four wide column">
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
             <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt @timezone 'hh:mm a / DD-MM-YYYY (z)'}}</div>

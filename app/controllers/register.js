@@ -34,7 +34,7 @@ export default class RegisterController extends Controller {
         } else if (reason?.errors[0]?.status === '422') {
           this.set('errorMessage', this.l10n.t('Invalid email address.'));
         } else {
-          this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+          this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
         }
       })
       .finally(() => {
@@ -67,7 +67,7 @@ export default class RegisterController extends Controller {
           if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.status_code === 401) {
             this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
           } else {
-            this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+            this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
           }
         } else {
           console.warn(reason);

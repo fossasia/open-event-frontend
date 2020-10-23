@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2017-06-29 15:01-0400\n"
-"Last-Translator: fossasia <me@niranjan.io>\n"
-"Language-Team: Hindi\n"
+"PO-Revision-Date: 2020-10-22 20:30+0000\n"
+"Last-Translator: Areeb Jamal <jamal.areeb@gmail.com>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/open-event/"
+"frontend/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.1\n"
 "X-Crowdin-Project: open-event-frontend\n"
 "X-Crowdin-Language: hi\n"
 "X-Crowdin-File: /development/translations/en.po\n"
@@ -22,35 +23,54 @@ msgstr ""
 #: app/components/forms/reset-password-form.js:22:23
 #: app/components/forms/user-profile-form.js:37:23
 msgid "Please enter your email ID"
-msgstr ""
+msgstr "कृपया अपना ईमेल आईडी दर्ज करें"
 
 #: app/components/account/contact-info-section.js:26:23
+#: app/components/forms/admin/settings/billing.js:35:23
+#: app/components/forms/admin/settings/billing.js:48:23
+#: app/components/forms/admin/settings/system-form.js:155:23
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
 #: app/components/forms/login-form.js:29:23
 #: app/components/forms/orders/guest-order-form.js:22:23
+#: app/components/forms/orders/order-form.js:91:19
+#: app/components/forms/orders/order-form.js:385:23
+#: app/components/forms/register-form.js:21:23
 #: app/components/forms/reset-password-form.js:26:23
+#: app/components/forms/session-speaker-form.js:198:23
+#: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-msgid "Please enter a valid email ID"
-msgstr ""
+#: app/components/forms/wizard/basic-details-step.js:340:23
+msgid "Please enter a valid email address"
+msgstr "कृपया एक वैध ई -मेल एड्रेस डालें"
 
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
 msgid "Please enter a phone number."
-msgstr ""
+msgstr "कृपया एक फ़ोन नंबर दर्ज करें।"
 
 #: app/components/account/contact-info-section.js:40:23
 #: app/components/forms/user-payment-info-form.js:87:23
 msgid "Please enter a valid phone number."
-msgstr ""
+msgstr "कृपया एक मान्य फोन नंबर दर्ज करें।"
 
 #: app/components/account/danger-zone.js:42:28
 msgid "Your account has been deleted successfully."
-msgstr ""
+msgstr "आपका खाता सफलतापूर्वक हटा दिया गया है।"
 
 #: app/components/account/danger-zone.js:48:26
+#: app/components/account/email-preferences-section.js:18:26
+#: app/components/events/view/export/download-common.js:80:26
 #: app/components/events/view/publish-bar.ts:89:24
+#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
+#: app/components/forms/login-form.js:70:35
+#: app/components/forms/login-form.js:97:28
+#: app/components/forms/reset-password-form.js:117:41
 #: app/components/modals/session-notify-modal.js:69:24
+#: app/components/notification-dropdown.js:35:26
 #: app/components/unverified-user-message.js:37:28
+#: app/components/widgets/forms/image-upload.js:45:33
 #: app/controllers/admin/content/events.js:77:26
+#: app/controllers/admin/content/translations.js:23:24
 #: app/controllers/admin/events/list.js:136:26
 #: app/controllers/admin/events/list.js:161:24
 #: app/controllers/admin/events/list.js:183:24
@@ -60,7 +80,9 @@ msgstr ""
 #: app/controllers/admin/users/list.js:137:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
+#: app/controllers/event-invoice/paid.js:23:24
 #: app/controllers/events/list.js:81:24
+#: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/index.js:56:26
 #: app/controllers/events/view/sessions.js:30:26
 #: app/controllers/events/view/sessions/list.js:121:26
@@ -76,6 +98,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/access-codes/list.js:58:26
 #: app/controllers/events/view/tickets/access-codes/list.js:76:26
 #: app/controllers/events/view/tickets/attendees.js:21:26
+#: app/controllers/events/view/tickets/attendees/list.js:72:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:66:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:85:26
 #: app/controllers/events/view/tickets/orders.js:21:26
@@ -83,61 +106,54 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders/list.js:89:26
 #: app/controllers/events/view/tickets/orders/list.js:107:26
 #: app/controllers/events/view/tickets/orders/list.js:132:26
+#: app/controllers/notifications.js:23:26
+#: app/controllers/oauth/callback.js:31:41
+#: app/controllers/public/index.js:88:37
 #: app/controllers/public/session/view.js:29:24
+#: app/controllers/register.js:37:35 app/controllers/register.js:70:37
+#: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
+#: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
-msgstr ""
+msgstr "कोई अनपेक्षित त्रुटि हुई है।"
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
-msgstr ""
-
-#: app/components/account/email-preferences-section.js:18:26
-#: app/components/forms/login-form.js:70:35
-#: app/components/forms/reset-password-form.js:117:41
-#: app/components/notification-dropdown.js:35:26
-#: app/components/widgets/forms/image-upload.js:45:33
-#: app/controllers/notifications.js:23:26
-#: app/controllers/oauth/callback.js:31:41
-#: app/controllers/public/index.js:88:37 app/controllers/register.js:37:35
-#: app/controllers/register.js:70:37 app/mixins/notifications.js:12:28
-#: app/mixins/notifications.js:30:28
-msgid "An unexpected error occurred."
-msgstr ""
+msgstr "ईमेल सूचनाएं सफलतापूर्वक अपडेट की गईं"
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
-msgstr ""
+msgstr "कृपया वर्तमान पासवर्ड दर्ज करें"
 
 #: app/components/account/password-section.js:25:23
 msgid "Please enter a new password"
-msgstr ""
+msgstr "कृपया एक नया पासवर्ड दर्ज करें"
 
 #: app/components/account/password-section.js:29:23
 #: app/components/forms/register-form.js:34:23
 #: app/components/forms/reset-password-form.js:40:23
 msgid "Your password must have at least {ruleValue} characters"
-msgstr ""
+msgstr "आपके पासवर्ड में कम से कम {ruleValue} अक्षर होने चाहिए"
 
 #: app/components/account/password-section.js:38:23
 #: app/components/forms/register-form.js:43:23
 #: app/components/forms/reset-password-form.js:50:23
 msgid "Passwords do not match"
-msgstr ""
+msgstr "पासवर्ड मेल नहीं खाते"
 
 #: app/components/events/event-import-section.js:17:23
 #: app/components/forms/admin/content/translation-form.js:17:23
 msgid "Please upload a file"
-msgstr ""
+msgstr "कृपया एक फ़ाइल अपलोड करें"
 
 #: app/components/events/event-import-section.js:22:23
 #: app/components/forms/admin/content/translation-form.js:22:23
 msgid "Please upload a file in suggested format"
-msgstr ""
+msgstr "कृपया सुझाए गए प्रारूप में एक फ़ाइल अपलोड करें"
 
 #: app/components/events/view/export/api-response.js:43:26
 msgid "Could not fetch from the server"
-msgstr ""
+msgstr "सर्वर से नहीं लाया जा सका"
 
 #: app/components/events/view/export/download-common.js:39:32
 #: app/controllers/events/view/sessions.js:45:34
@@ -145,7 +161,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/attendees.js:32:32
 #: app/controllers/events/view/tickets/orders.js:32:32
 msgid "Download Ready"
-msgstr ""
+msgstr "डाउनलोड तैयार"
 
 #: app/components/events/view/export/download-common.js:45:30
 #: app/controllers/events/view/sessions.js:51:32
@@ -153,31 +169,24 @@ msgstr ""
 #: app/controllers/events/view/tickets/attendees.js:35:30
 #: app/controllers/events/view/tickets/orders.js:35:30
 msgid "Task is going on."
-msgstr ""
+msgstr "टास्क चल रहा है।"
 
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
-
-#: app/components/events/view/export/download-common.js:80:26
-#: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/view/export.js:68:26
-msgid "Unexpected error occurred."
-msgstr ""
+msgstr "टास्क फेल हो गया।"
 
 #: app/components/events/view/export/download-zip.js:17:26
 msgid "Exported Event Downloaded successfully."
-msgstr ""
+msgstr "निर्यात की गई घटना सफलतापूर्वक डाउनलोड की गई।"
 
 #: app/components/events/view/overview/manage-roles.js:40:47
 msgid "Role Invite sent successfully"
-msgstr ""
+msgstr "भूमिका आमंत्रण सफलतापूर्वक भेजा गया"
 
 #: app/components/events/view/overview/manage-roles.js:40:94
 msgid "Role Invite updated successfully"
-msgstr ""
+msgstr "भूमिका आमंत्रण सफलतापूर्वक अपडेट किया गया"
 
 #: app/components/events/view/overview/manage-roles.js:46:26
 #: app/components/events/view/overview/manage-roles.js:67:26
@@ -199,11 +208,11 @@ msgstr ""
 #: app/controllers/public/cfs/new-session.js:20:24
 #: app/controllers/public/cfs/new-speaker.js:20:26
 msgid "Oops something went wrong. Please try again"
-msgstr ""
+msgstr "ओह! कुछ गलत हो गया है। कृपया पुन: प्रयास करें"
 
 #: app/components/events/view/overview/manage-roles.js:60:28
 msgid "Role Invite deleted successfully"
-msgstr ""
+msgstr "भूमिका आमंत्रण सफलतापूर्वक हटा दिया गया"
 
 #: app/components/events/view/publish-bar.hbs:8:6
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:2:89
@@ -213,71 +222,73 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-event.hbs:7:22
 #: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:5:22
 msgid "View"
-msgstr ""
+msgstr "देखें"
 
 #: app/components/events/view/publish-bar.hbs:10:6
 msgid "Preview"
-msgstr ""
+msgstr "पूर्वावलोकन"
 
 #: app/components/events/view/publish-bar.hbs:19:6
 msgid "Unpublish"
-msgstr ""
+msgstr "अप्रकाशित"
 
 #: app/components/events/view/publish-bar.hbs:22:6
 msgid "Publish"
-msgstr "प्रकाशित करना"
+msgstr "प्रकाशित"
 
 #: app/components/events/view/publish-bar.ts:57:26
 msgid "Your event must have tickets before it can be published."
-msgstr ""
+msgstr "प्रकाशित होने से पहले आपके ईवेंट में टिकट होना चाहिए।"
 
 #: app/components/events/view/publish-bar.ts:63:26
 msgid "You need to connect to your Stripe account, if you choose Stripe as a payment gateway."
 msgstr ""
+"यदि आप भुगतान गेटवे के रूप में स्ट्राइप चुनते हैं, तो आपको अपने स्ट्राइप खाते"
+" से कनेक्ट करना होगा।"
 
 #: app/components/events/view/publish-bar.ts:76:28
 msgid "Your event has been published successfully."
-msgstr ""
+msgstr "आपका ईवेंट सफलतापूर्वक प्रकाशित हो गया है।"
 
 #: app/components/events/view/publish-bar.ts:81:28
 msgid "Your event has been unpublished."
-msgstr ""
+msgstr "आपकी घटना अप्रकाशित हो गई है।"
 
 #: app/components/forms/admin/content/pages-form.js:17:23
 #: app/components/forms/session-speaker-form.js:185:23
 msgid "Please enter a name"
-msgstr ""
+msgstr "कृपया एक नाम दर्ज करें"
 
 #: app/components/forms/admin/content/pages-form.js:26:23
 #: app/components/forms/session-speaker-form.js:29:23
 msgid "Please enter a title"
-msgstr ""
+msgstr "कृपया एक शीर्षक दर्ज करें"
 
 #: app/components/forms/admin/content/pages-form.js:35:23
 msgid "Please enter the path"
-msgstr ""
+msgstr "कृपया पथ दर्ज करें"
 
 #: app/components/forms/admin/content/pages-form.js:40:23
 msgid "Path should not contain leading slash."
-msgstr ""
+msgstr "पथ में अग्रणी स्लैश नहीं होना चाहिए।"
 
 #: app/components/forms/admin/content/pages-form.js:44:23
 msgid "Path should not contain whitespaces."
-msgstr ""
+msgstr "पथ में सफेद स्थान नहीं होना चाहिए।"
 
 #: app/components/forms/admin/content/pages-form.js:53:23
 msgid "Please select a place"
-msgstr ""
+msgstr "कृपया एक स्थान का चयन करें"
 
 #: app/components/forms/admin/content/pages-form.js:62:23
 #: app/components/forms/session-speaker-form.js:255:23
 msgid "Please enter a position"
-msgstr ""
+msgstr "कृपया एक स्थिति दर्ज करें"
 
 #: app/components/forms/admin/content/pages-form.js:71:23
 #: app/components/forms/session-speaker-form.js:101:23
 msgid "Please enter a language"
-msgstr ""
+msgstr "कृपया एक भाषा दर्ज करें"
 
 #: app/components/forms/admin/content/social-links-form.js:20:23
 #: app/components/forms/orders/order-form.js:238:19
@@ -299,30 +310,21 @@ msgstr ""
 #: app/components/forms/wizard/basic-details-step.js:413:23
 #: app/components/forms/wizard/other-details-step.js:99:23
 msgid "Please enter a valid url"
-msgstr ""
+msgstr "कृपया एक मान्य यूआरएल दर्ज कीजिए"
 
 #: app/components/forms/admin/content/translation-form.js:31:23
 msgid "Please select a language"
-msgstr ""
+msgstr "कृपया एक भाषा चुनें"
 
 #: app/components/forms/admin/settings/billing.js:22:23
 #: app/components/forms/session-speaker-form.js:338:23
 #: app/components/forms/session-speaker-form.js:352:23
 msgid "Please enter a valid mobile number."
-msgstr ""
+msgstr "कृपया एक मान्य मोबाइल नंबर दर्ज करें।"
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr ""
-
-#: app/components/forms/admin/settings/billing.js:35:23
-#: app/components/forms/admin/settings/billing.js:48:23
-#: app/components/forms/admin/settings/system-form.js:155:23
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
-#: app/components/forms/orders/order-form.js:385:23
-#: app/components/forms/register-form.js:21:23
-msgid "Please enter a valid email address"
-msgstr ""
+msgstr "कृपया ईमेल दर्ज करें"
 
 #: app/components/forms/admin/settings/billing.js:44:23
 msgid "Please enter the billing paypal email invoice money will be transferred to"
@@ -330,38 +332,38 @@ msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:57:23
 msgid "Please select the country"
-msgstr ""
+msgstr "कृपया देश का चयन करें"
 
 #: app/components/forms/admin/settings/billing.js:66:23
 msgid "Please enter the company"
-msgstr ""
+msgstr "कृपया कंपनी दर्ज करें"
 
 #: app/components/forms/admin/settings/billing.js:75:23
 msgid "Please enter the Address"
-msgstr ""
+msgstr "कृपया पता दर्ज करें"
 
 #: app/components/forms/admin/settings/billing.js:84:23
 msgid "Please enter the city"
-msgstr ""
+msgstr "कृपया शहर दर्ज करें"
 
 #: app/components/forms/admin/settings/billing.js:94:23
 #: app/components/forms/user-payment-info-form.js:73:23
 msgid "Please enter the zip code"
-msgstr ""
+msgstr "कृपया ज़िप कोड दर्ज करें"
 
 #: app/components/forms/admin/settings/images-form.js:17:23
 #: app/components/forms/admin/settings/images-form.js:44:23
 #: app/components/forms/admin/settings/images-form.js:71:23
 #: app/components/forms/admin/settings/images-form.js:98:23
 msgid "Please enter width"
-msgstr ""
+msgstr "कृपया चौड़ाई दर्ज करें"
 
 #: app/components/forms/admin/settings/images-form.js:26:23
 #: app/components/forms/admin/settings/images-form.js:53:23
 #: app/components/forms/admin/settings/images-form.js:80:23
 #: app/components/forms/admin/settings/images-form.js:107:23
 msgid "Please enter height"
-msgstr ""
+msgstr "कृपया ऊंचाई दर्ज करें"
 
 #: app/components/forms/admin/settings/images-form.js:35:23
 #: app/components/forms/admin/settings/images-form.js:62:23
@@ -370,90 +372,90 @@ msgstr ""
 #: app/components/forms/admin/settings/images-form.js:143:23
 #: app/components/forms/admin/settings/images-form.js:161:23
 msgid "Please enter quality"
-msgstr ""
+msgstr "कृपया गुणवत्ता दर्ज करें"
 
 #: app/components/forms/admin/settings/images-form.js:116:23
 #: app/components/forms/admin/settings/images-form.js:134:23
 #: app/components/forms/admin/settings/images-form.js:152:23
 msgid "Please enter size"
-msgstr ""
+msgstr "कृपया आकार दर्ज करें"
 
 #: app/components/forms/admin/settings/microservices-form.js:19:23
 msgid "Please enter a valid URL for Android app"
-msgstr ""
+msgstr "कृपया Android एप्लिकेशन के लिए एक मान्य URL दर्ज करें"
 
 #: app/components/forms/admin/settings/microservices-form.js:31:23
 msgid "Please enter a valid URL for web app"
-msgstr ""
+msgstr "कृपया वेब एप्लिकेशन के लिए एक मान्य URL दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:18:23
 msgid "Please enter the client ID"
-msgstr ""
+msgstr "कृपया क्लाइंट आईडी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:28:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:66:23
 msgid "Please enter the secret key"
-msgstr ""
+msgstr "कृपया गुप्त कुंजी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:38:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:76:23
 msgid "Please enter the publishable key"
-msgstr ""
+msgstr "कृपया प्रकाशन योग्य कुंजी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:47:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:136:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:196:23
 msgid "Please enter the secret test key"
-msgstr ""
+msgstr "कृपया गुप्त परीक्षण कुंजी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:57:23
 msgid "Please enter the publishable test key"
-msgstr ""
+msgstr "कृपया प्रकाशन योग्य परीक्षण कुंजी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:86:23
 msgid "Please enter the sandbox client id"
-msgstr ""
+msgstr "कृपया सैंडबॉक्स क्लाइंट आईडी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:96:23
 msgid "Please enter the sandbox secret token"
-msgstr ""
+msgstr "कृपया सैंडबॉक्स गुप्त टोकन दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:106:23
 msgid "Please enter the live client token"
-msgstr ""
+msgstr "कृपया लाइव क्लाइंट टोकन दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:116:23
 msgid "Please enter the live secret token"
-msgstr ""
+msgstr "कृपया लाइव सीक्रेट टोकन दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:126:23
 msgid "Please enter the public test key"
-msgstr ""
+msgstr "कृपया सार्वजनिक परीक्षण कुंजी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:146:23
 msgid "Please enter the public live key"
-msgstr ""
+msgstr "कृपया सार्वजनिक लाइव कुंजी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:156:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:176:23
 msgid "Please enter the secret live key"
-msgstr ""
+msgstr "कृपया गुप्त लाइव कुंजी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:166:23
 msgid "Please enter the live merchant ID"
-msgstr ""
+msgstr "कृपया लाइव मर्चेंट आईडी दर्ज करें"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:186:23
 msgid "Please enter the test merchant ID"
-msgstr ""
+msgstr "कृपया टेस्ट मर्चेंट आईडी डालें"
 
 #: app/components/forms/admin/settings/system-form.js:17:23
 msgid "Please enter the App name"
-msgstr ""
+msgstr "कृपया ऐप का नाम डालें"
 
 #: app/components/forms/admin/settings/system-form.js:27:23
 msgid "Please enter a tag line"
-msgstr ""
+msgstr "कृपया एक टैग लाइन दर्ज करें"
 
 #: app/components/forms/admin/settings/system-form.js:37:23
 msgid "Please enter the API Url"
@@ -534,13 +536,6 @@ msgstr ""
 
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:19:23
 msgid "Please enter the recipient E-mail"
-msgstr ""
-
-#: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
-#: app/components/forms/login-form.js:97:28
-#: app/controllers/events/view/tickets/attendees/list.js:72:26
-#: app/mixins/event-wizard.js:173:28 app/services/auth-manager.js:148:28
-msgid "An unexpected error has occurred"
 msgstr ""
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
@@ -630,13 +625,6 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:87:19
 msgid "Please enter your email"
-msgstr ""
-
-#: app/components/forms/orders/order-form.js:91:19
-#: app/components/forms/session-speaker-form.js:198:23
-#: app/components/forms/session-speaker-form.js:212:23
-#: app/components/forms/wizard/basic-details-step.js:340:23
-msgid "Please enter a valid email"
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:100:19
@@ -751,6 +739,11 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:439:23
 msgid "Please specify your choice of payment method"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:479:23
+#: app/components/forms/session-speaker-form.js:390:23
+msgid "Please enter {{field}}"
 msgstr ""
 
 #: app/components/forms/register-form.js:30:23
@@ -1809,7 +1802,7 @@ msgstr ""
 #: app/templates/components/public/side-menu.hbs:50:10
 #: app/templates/components/public/side-menu.hbs:54:10
 msgid "Sponsors"
-msgstr ""
+msgstr "प्रायोजक"
 
 #: app/mixins/event-wizard.js:36:22
 msgid "Advertise your sponsors"
@@ -1838,7 +1831,7 @@ msgstr ""
 #: app/templates/components/nav-bar.hbs:37:65
 #: app/templates/components/side-bar.hbs:21:57
 msgid "Account"
-msgstr ""
+msgstr "खाता"
 
 #: app/routes/account/applications.js:8:11
 #: app/routes/admin/users/view/account/applications.js:8:11
@@ -2047,7 +2040,7 @@ msgstr ""
 #: app/templates/events/view/tickets/index.hbs:133:36
 #: app/templates/events/view/tickets/index.hbs:135:36
 msgid "Sales"
-msgstr ""
+msgstr "बिक्री"
 
 #: app/routes/admin/sales/discounted-events.js:7:11
 msgid "Discounted Events"
@@ -2082,7 +2075,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-roles.hbs:4:38
 #: app/templates/events/view/team/permissions.hbs:6:33
 msgid "Organizer"
-msgstr ""
+msgstr "आयोजक"
 
 #: app/routes/admin/sales/revenue.js:7:11 app/templates/admin/sales.hbs:31:10
 #: app/templates/admin/sales/revenue.hbs:30:14
@@ -2377,7 +2370,7 @@ msgstr ""
 #: app/templates/components/nav-bar.hbs:47:51
 #: app/templates/components/side-bar.hbs:29:47
 msgid "Login"
-msgstr ""
+msgstr "लॉगिन"
 
 #: app/routes/my-tickets/upcoming/index.js:7:11
 #: app/routes/my-tickets/upcoming/list.js:10:15
@@ -2434,7 +2427,7 @@ msgstr ""
 #: app/templates/components/public/call-for-speakers.hbs:3:2
 #: app/templates/components/public/side-menu.hbs:44:8
 msgid "Call for Speakers"
-msgstr ""
+msgstr "वक्ताओं के लिए बुलावा"
 
 #: app/routes/public/cfs/edit-session.js:7:11
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:5:20
@@ -2467,12 +2460,12 @@ msgstr ""
 #: app/templates/components/public/side-menu.hbs:80:8
 #: app/templates/public/coc.hbs:2:2
 msgid "Code of Conduct"
-msgstr ""
+msgstr "आचार संहिता"
 
 #: app/routes/public/schedule.js:9:11
 #: app/templates/components/public/side-menu.hbs:34:8
 msgid "Schedule"
-msgstr ""
+msgstr "अनुसूची"
 
 #: app/routes/register.js:8:11
 #: app/templates/components/forms/register-form.hbs:3:27
@@ -3481,7 +3474,7 @@ msgstr ""
 #: app/templates/components/public/ticket-list.hbs:124:24
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:3:22
 msgid "Total"
-msgstr ""
+msgstr "कुल"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:29:12
 msgid "Available"
@@ -3667,7 +3660,7 @@ msgstr ""
 #: app/templates/components/quick-filter.hbs:38:117
 #: app/templates/components/quick-filter.hbs:44:117
 msgid "Clear Filters"
-msgstr ""
+msgstr "फिल्टर साफ करें"
 
 #: app/templates/components/footer-main.hbs:5:29
 msgid "Use"
@@ -3675,39 +3668,39 @@ msgstr ""
 
 #: app/templates/components/footer-main.hbs:6:102
 msgid "How it Works"
-msgstr ""
+msgstr "यह कैसे काम करता है"
 
 #: app/templates/components/footer-main.hbs:7:54
 #: app/templates/components/nav-bar.hbs:11:24
 #: app/templates/components/side-bar.hbs:28:49
 msgid "Pricing"
-msgstr ""
+msgstr "मूल्य"
 
 #: app/templates/components/footer-main.hbs:8:84
 #: app/templates/components/footer-main.hbs:45:38
 #: app/templates/components/forms/admin/content/social-links-form.hbs:3:11
 msgid "Blog"
-msgstr ""
+msgstr "ब्लॉग"
 
 #: app/templates/components/footer-main.hbs:13:29
 msgid "Plan Events"
-msgstr ""
+msgstr "कार्यक्रम की योजना करें"
 
 #: app/templates/components/footer-main.hbs:15:10
 msgid "Online Registration"
-msgstr ""
+msgstr "ऑनलाइन पंजीकरण"
 
 #: app/templates/components/footer-main.hbs:18:10
 msgid "Sell Event Tickets"
-msgstr ""
+msgstr "कार्यक्रम टिकट बेचें"
 
 #: app/templates/components/footer-main.hbs:21:10
 msgid "Event Management Software"
-msgstr ""
+msgstr "कार्यक्रम प्रबंध सॉफ्टवेयर"
 
 #: app/templates/components/footer-main.hbs:27:29
 msgid "Find Events"
-msgstr ""
+msgstr "कार्यक्रम खोजें"
 
 #: app/templates/components/footer-main.hbs:29:10
 #: app/templates/components/nav-bar.hbs:15:24
@@ -3725,7 +3718,7 @@ msgstr ""
 
 #: app/templates/components/footer-main.hbs:42:29
 msgid "Connect With Us"
-msgstr ""
+msgstr "हमारे साथ जुड़ें"
 
 #: app/templates/components/footer-main.hbs:50:44
 #: app/templates/components/forms/admin/content/social-links-form.hbs:17:11
@@ -3745,16 +3738,16 @@ msgstr "ट्विटर"
 #: app/templates/components/footer-main.hbs:65:40
 #: app/templates/components/forms/admin/content/social-links-form.hbs:49:11
 msgid "GitHub"
-msgstr ""
+msgstr "गिटहब"
 
 #: app/templates/components/footer-main.hbs:70:41
 #: app/templates/components/forms/admin/content/social-links-form.hbs:41:11
 msgid "YouTube"
-msgstr ""
+msgstr "यूट्यूब"
 
 #: app/templates/components/footer-main.hbs:75:47
 msgid "Google Groups"
-msgstr ""
+msgstr "गूगल समूह"
 
 #: app/templates/components/footer-main.hbs:80:41
 #: app/templates/components/forms/admin/content/social-links-form.hbs:57:11
@@ -3764,16 +3757,16 @@ msgstr ""
 #: app/templates/components/footer-main.hbs:85:40
 #: app/templates/components/forms/admin/content/social-links-form.hbs:65:11
 msgid "Gitter"
-msgstr ""
+msgstr "गिटर"
 
 #: app/templates/components/footer-main.hbs:90:42
 #: app/templates/components/forms/admin/content/social-links-form.hbs:69:11
 msgid "Telegram"
-msgstr ""
+msgstr "टेलीग्राम"
 
 #: app/templates/components/footer-main.hbs:100:27
 msgid "Copyright"
-msgstr ""
+msgstr "कॉपीराइट"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:4:75
 msgid "Page Name"
@@ -3947,7 +3940,7 @@ msgstr ""
 #: app/templates/components/public/event-map.hbs:18:6
 #: app/templates/components/widgets/forms/billing-info.hbs:16:40
 msgid "Address"
-msgstr ""
+msgstr "पता"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:76:51
 #: app/templates/components/forms/user-payment-info-form.hbs:44:22
@@ -5161,7 +5154,7 @@ msgstr ""
 #: app/templates/components/public/ticket-list.hbs:8:45
 #: app/templates/components/widgets/forms/ticket-input.hbs:17:22
 msgid "Price"
-msgstr ""
+msgstr "मूल्य"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:188:40
 #: app/templates/components/orders/order-summary.hbs:52:33
@@ -5169,7 +5162,7 @@ msgstr ""
 #: app/templates/components/public/ticket-list.hbs:9:29
 #: app/templates/components/widgets/forms/ticket-input.hbs:53:20
 msgid "Quantity"
-msgstr ""
+msgstr "मात्रा"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:209:12
 msgid "You don't have any tickets added. Please add atleast one ticket to publish your event."
@@ -5352,7 +5345,7 @@ msgstr ""
 #: app/templates/components/forms/wizard/other-details-step.hbs:34:33
 #: app/templates/components/public/ticket-list.hbs:187:12
 msgid "Refund Policy"
-msgstr ""
+msgstr "धन वापसी नीति"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:36:8
 msgid "Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the eventyay platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the eventyay platform."
@@ -5433,7 +5426,7 @@ msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:29
 msgid "Privacy"
-msgstr ""
+msgstr "गोपनीयता"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:173:22
 msgid "Public"
@@ -5949,7 +5942,7 @@ msgstr ""
 #: app/templates/components/orders/order-summary.hbs:63:45
 #: app/templates/components/public/ticket-list.hbs:10:46
 msgid "Subtotal"
-msgstr ""
+msgstr "उप-योग"
 
 #: app/templates/components/orders/order-summary.hbs:61:35
 #: app/templates/components/public/ticket-list.hbs:116:27
@@ -6039,7 +6032,7 @@ msgstr ""
 
 #: app/templates/components/public/event-map.hbs:3:8
 msgid "Getting Here"
-msgstr ""
+msgstr "यहाँ का रास्ता"
 
 #: app/templates/components/public/featured-speaker-list.hbs:1:4
 msgid "Featured Speakers"
@@ -6048,11 +6041,11 @@ msgstr ""
 #: app/templates/components/public/side-menu.hbs:5:8
 #: app/templates/components/public/side-menu.hbs:19:8
 msgid "Info"
-msgstr ""
+msgstr "जानकारी"
 
 #: app/templates/components/public/side-menu.hbs:39:8
 msgid "Calendar"
-msgstr ""
+msgstr "पंचांग"
 
 #: app/templates/components/public/side-menu.hbs:71:8
 #: app/templates/components/public/side-menu.hbs:75:8
@@ -6081,19 +6074,19 @@ msgstr ""
 
 #: app/templates/components/public/ticket-list.hbs:163:57
 msgid "Enter promotional code"
-msgstr ""
+msgstr "प्रचार कोड दर्ज करें"
 
 #: app/templates/components/public/ticket-list.hbs:181:10
 msgid "Order Now"
-msgstr ""
+msgstr "खरीदें"
 
 #: app/templates/components/quick-filter.hbs:5:16
 msgid "Search for events"
-msgstr ""
+msgstr "घटनाओं की खोज करें"
 
 #: app/templates/components/quick-filter.hbs:13:20
 msgid "Search location"
-msgstr ""
+msgstr "स्थान खोजें"
 
 #: app/templates/components/quick-filter.hbs:26:32
 #: app/templates/components/quick-filter.hbs:28:49
@@ -6750,7 +6743,7 @@ msgstr ""
 
 #: app/templates/index.hbs:5:29
 msgid "Featured Events"
-msgstr ""
+msgstr "विशेष कार्यक्रम"
 
 #: app/templates/index.hbs:23:29
 msgid "No Upcoming Events Found"
@@ -6903,7 +6896,7 @@ msgstr ""
 
 #: app/templates/public/index.hbs:74:10
 msgid "Online Event"
-msgstr ""
+msgstr "ऑनलाइन कार्यक्रम"
 
 #: app/templates/public/index.hbs:87:10
 msgid "Location to be announced"
