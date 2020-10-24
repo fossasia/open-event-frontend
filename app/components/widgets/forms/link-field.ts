@@ -13,19 +13,18 @@ export default class LinkField extends Component<Args> {
   value = '';
 
   constructor(owner: unknown, args: Args) {
-    super(owner, args)
+    super(owner, args);
     this.value = this.parseValue();
   }
 
   parseValue(): string {
     const { value } = this.args;
-    if (!value)
-      return '';
+    if (!value) {return ''}
     return this.fixValue(value);
   }
 
   get prefix(): string {
-    return this.args.prefix ?? 'https://'
+    return this.args.prefix ?? 'https://';
   }
 
   get finalValue(): string {

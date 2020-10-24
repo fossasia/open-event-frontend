@@ -12,9 +12,9 @@ import $ from 'jquery';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
-  currentTimezone: moment.tz.guess(),
+  currentTimezone : moment.tz.guess(),
   timezones,
-  testLink: 'https://twitter.com/iamareebjamal',
+  testLink        : 'https://twitter.com/iamareebjamal',
 
   torii: service(),
 
