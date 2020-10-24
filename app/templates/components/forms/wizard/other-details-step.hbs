@@ -2,6 +2,11 @@
   <div class="ui section divider"></div>
   <div class="grouped fields" id="social-links">
     <label>{{t 'Links & Social Media'}}</label>
+    Original: {{this.testLink}}
+    <Widgets::Forms::LinkField
+      @prefix="https://twitter.com/"
+      @value={{this.testLink}}
+      @onChange={{action (mut this.testLink)}} />
     <Widgets::Forms::LinkInput
       @hasLinkName={{true}}
       @fixedName={{true}}
