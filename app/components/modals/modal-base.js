@@ -13,7 +13,6 @@ export default UiModal.extend({
   openObserver: observer('isOpen', function() {
     const $element = $(this.element);
     if (this.isOpen) {
-      console.log(this.defaultOptions);
       $element.modal({...this.defaultOptions}).modal('show');
     } else {
       $element.modal('hide');
