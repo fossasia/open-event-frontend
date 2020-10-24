@@ -195,7 +195,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isPromoted');
       await event.save();
-      this.notify.success(this.l10n.t(`Event ${event.isPromoted ? 'Promoted' : 'unpromoted'} Successfully`),
+      this.notify.success(event.isPromoted ? this.l10n.t('Event promoted successfully') : this.l10n.t('Event unpromoted successfully'),
         {
           id: 'event_detail_changed'
         });

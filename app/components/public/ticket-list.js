@@ -223,7 +223,10 @@ export default Component.extend(FormMixin, {
         rules      : [
           {
             type   : `integer[${donationTicket.minPrice}..${donationTicket.maxPrice}]`,
-            prompt : this.l10n.t(`Please enter a donation amount between ${donationTicket.minPrice} and ${donationTicket.maxPrice}`)
+            prompt : this.l10n.t('Please enter a donation amount between {{minPrice}} and {{maxPrice}}', {
+              minPrice : donationTicket.minPrice,
+              maxPrice : donationTicket.maxPrice
+            })
           }
         ]
       };

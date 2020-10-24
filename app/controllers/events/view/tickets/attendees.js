@@ -34,11 +34,11 @@ export default class AttendeesController extends Controller {
             this.requestLoop(exportJobInfo);
             this.notify.alert(this.l10n.t('Task is going on.'));
           } else {
-            this.notify.error(this.l10n.t(`${mode.toUpperCase()} Export has failed.`));
+            this.notify.error(mode.toUpperCase() + ' ' + this.l10n.t('Export has failed.'));
           }
         })
         .catch(() => {
-          this.notify.error(this.l10n.t(`${mode.toUpperCase()} Export has failed.`));
+          this.notify.error(mode.toUpperCase() + ' ' + this.l10n.t('Export has failed.'));
         })
         .finally(() => {
           this.set('isLoading', false);

@@ -9,7 +9,7 @@
   <div class="ui secondary pointing menu">
     {{#each this.locationMenuItems as |item|}}
       <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
-        {{t item}}
+        {{item}}
       </a>
     {{/each}}
   </div>

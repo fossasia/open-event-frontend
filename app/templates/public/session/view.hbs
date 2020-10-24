@@ -2,7 +2,7 @@
   {{#if this.showEditSection}}
     <div class="ui row mb-8">
       {{#if (not this.model.isLocked)}}
-        <div class="ui {{ this.model.color }} large label">{{t (capitalize this.model.status)}}</div>
+        <div class="ui {{ this.model.color }} large label">{{capitalize this.model.status}}</div>
         <LinkTo
           @route="public.cfs.edit-session"
           @models={{array this.model.event.id this.model.id}}>
