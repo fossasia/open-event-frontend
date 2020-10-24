@@ -13,44 +13,8 @@ export default UiModal.extend({
   openObserver: observer('isOpen', function() {
     const $element = $(this.element);
     if (this.isOpen) {
-      $element.modal({
-        centered       : false,
-        duration       : isTesting ? 0 : 200,
-        dimmerSettings : {
-          dimmerName : `${this.elementId}-modal-dimmer`,
-          variation  : 'inverted'
-        },
-        onHide: () => {
-          this.set('isOpen', false);
-          if (this.onHide) {
-            this.onHide();
-          }
-        },
-        onDeny: () => {
-          if (this.onDeny) {
-            this.onDeny();
-          }
-          return true;
-        },
-        onApprove: () => {
-          if (this.onApprove) {
-            this.onApprove();
-          }
-          return true;
-        },
-  
-        onVisible: () => {
-          this.set('isOpen', true);
-          const $element = $(this.element);
-          $element.modal('refresh');
-          $element.find('[data-content]').popup({
-            inline: true
-          });
-          if (this.onVisible) {
-            this.onVisible();
-          }
-        }
-      }).modal('show');
+      console.log(this.defaultOptions);
+      $element.modal({...this.defaultOptions}).modal('show');
     } else {
       $element.modal('hide');
     }
@@ -84,8 +48,8 @@ export default UiModal.extend({
   willInitSemantic(settings) {
     this._super(...arguments);
 
-    const defaultOptions = {
-      detachable     : false,
+    this.defaultOptions = {
+      centered       : false,
       duration       : isTesting ? 0 : 200,
       dimmerSettings : {
         dimmerName : `${this.elementId}-modal-dimmer`,
@@ -123,50 +87,13 @@ export default UiModal.extend({
       }
     };
 
-    const options = this.options ? merge(defaultOptions, this.options) : defaultOptions;
+    const options = this.options ? merge(this.defaultOptions, this.options) : this.defaultOptions;
     assign(settings, options);
   },
 
   didInitSemantic() {
     if (this.isOpen) {
-      $(this.element).modal({
-        centered       : false,
-        duration       : isTesting ? 0 : 200,
-        dimmerSettings : {
-          dimmerName : `${this.elementId}-modal-dimmer`,
-          variation  : 'inverted'
-        },
-        onHide: () => {
-          this.set('isOpen', false);
-          if (this.onHide) {
-            this.onHide();
-          }
-        },
-        onDeny: () => {
-          if (this.onDeny) {
-            this.onDeny();
-          }
-          return true;
-        },
-        onApprove: () => {
-          if (this.onApprove) {
-            this.onApprove();
-          }
-          return true;
-        },
-  
-        onVisible: () => {
-          this.set('isOpen', true);
-          const $element = $(this.element);
-          $element.modal('refresh');
-          $element.find('[data-content]').popup({
-            inline: true
-          });
-          if (this.onVisible) {
-            this.onVisible();
-          }
-        }
-      }).modal('show');
+      $(this.element).modal({...this.defaultOptions}).modal('show');
     }
   }
 });
