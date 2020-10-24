@@ -13,7 +13,7 @@ export default UiModal.extend({
   openObserver: observer('isOpen', function() {
     const $element = $(this.element);
     if (this.isOpen) {
-      $element.modal({...this.defaultOptions}).modal('show');
+      $element.modal(this.defaultOptions).modal('show');
     } else {
       $element.modal('hide');
     }
@@ -92,7 +92,7 @@ export default UiModal.extend({
 
   didInitSemantic() {
     if (this.isOpen) {
-      $(this.element).modal({...this.defaultOptions}).modal('show');
+      $(this.element).modal(this.defaultOptions).modal('show');
     }
   }
 });
