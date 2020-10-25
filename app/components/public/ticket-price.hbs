@@ -1,0 +1,13 @@
+{{#if (eq @place "price")}}
+    {{#if (eq @ticket 0.00) }}
+        {{"Free"}}
+    {{else}}
+        {{currency-symbol this.eventCurrency}} {{format-money @ticket}}
+    {{/if}}
+{{else}}
+    {{#if (eq @ticket 0.00)}}
+        {{"Free"}}
+    {{else}}
+        {{currency-symbol this.eventCurrency}} {{format-money @subtotal}}
+    {{/if}}
+{{/if}}

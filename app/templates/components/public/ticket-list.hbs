@@ -49,7 +49,7 @@
                 </div>
               {{else}}
                 <div class="{{if ticket.discount 'strike text'}}">
-                  {{currency-symbol this.eventCurrency}} {{format-money ticket.price}}
+                <Public::TicketPrice @place ={{"price"}} @ticket = {{ticket.price}} />
                 </div>
                 {{#if ticket.discount}}
                   <div>
@@ -96,7 +96,7 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              {{currency-symbol this.eventCurrency}} {{format-money ticket.subTotal}}
+             <Public::TicketPrice @place ={{"Subtotal"}} @ticket = {{ticket.price}} @subtotal ={{ticket.subTotal}}/>
             </td>
           </tr>
         {{/unless}}
@@ -121,20 +121,13 @@
                     <td>{{currency-symbol this.eventCurrency}} {{this.orderAmount.tax.amount}}</td>
                   </tr>
                 {{/if}}
-                <tr><td>{{t 'Total'}}</td>
-                  {{#if this.amountEditable}}
-                    <td>{{currency-symbol this.eventCurrency}}</td> <td><Input @value={{this.overridenAmount}} placeholder="Total" /></td>
-                  {{else}}
-                    <td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td>
-                  {{/if}}
-                </tr>
+                <tr><td>{{t 'Total'}}</td><td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td></tr>
               </tbody>
             </table>
         </td>
       </tr>
     </tfoot>
   </table>
-  {{#unless this.amountEditable}}
   <div class="ui grid">
     {{#if this.enterPromotionalCode}}
       <div class="ui row">
@@ -172,7 +165,6 @@
       </div>
     {{/if}}
   </div>
-  {{/unless}}
   <div class="ui grid">
     <div class="ui row stackable grid">
       <div class="ui no padding thirteen wide computer twelve wide tablet column right aligned floated payment icons">
