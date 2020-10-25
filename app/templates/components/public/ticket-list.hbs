@@ -121,13 +121,20 @@
                     <td>{{currency-symbol this.eventCurrency}} {{this.orderAmount.tax.amount}}</td>
                   </tr>
                 {{/if}}
-                <tr><td>{{t 'Total'}}</td><td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td></tr>
+                <tr><td>{{t 'Total'}}</td>
+                  {{#if this.amountEditable}}
+                    <td>{{currency-symbol this.eventCurrency}}</td> <td><Input @value={{this.overridenAmount}} placeholder="Total" /></td>
+                  {{else}}
+                    <td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td>
+                  {{/if}}
+                </tr>
               </tbody>
             </table>
         </td>
       </tr>
     </tfoot>
   </table>
+  {{#unless this.amountEditable}}
   <div class="ui grid">
     {{#if this.enterPromotionalCode}}
       <div class="ui row">
@@ -165,6 +172,7 @@
       </div>
     {{/if}}
   </div>
+  {{/unless}}
   <div class="ui grid">
     <div class="ui row stackable grid">
       <div class="ui no padding thirteen wide computer twelve wide tablet column right aligned floated payment icons">
