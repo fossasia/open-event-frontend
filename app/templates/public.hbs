@@ -77,7 +77,8 @@
               {{/each}}
             </div>
           {{/if}}
-          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
+          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} @eventname={{this.model.name}} @eventlocation={{this.headerLocation}}
+		 @eventtime={{this.model.startsAt}} @eventtimeends={{this.model.endsAt}} @eventimezone={{this.model.timezone}}/>
         {{/if}}
       </div>
     </div>
