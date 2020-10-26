@@ -1,6 +1,6 @@
 <div class="ui list">
-  <div style="margin-bottom:4px;"><li>{{header-date @eventtime}} {{@eventtimezone}} To <span>{{header-date @eventtimeends}} {{@eventtimezone}}</span></li>
-  <a href="https://calendar.google.com/calendar/u/0/r/eventedit?dates={{gmt-time @eventtime}}/{{gmt-time @eventtimeends}}&text={{@eventname}}&location={{@eventlocation}}&sf=true">Add To Calender</a>
+  <div style="margin-bottom:6px;"><li>{{header-date @eventtime}} {{@eventtimezone}} To <span>{{header-date @eventtimeends}} {{@eventtimezone}}</span></li>
+  <a href={{this.calender}}>Add To Calender</a>
   </div>
   {{#if this.externalUrl}}
     <div class="item">
