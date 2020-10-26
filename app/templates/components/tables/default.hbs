@@ -4,7 +4,7 @@
       <Tables::Utilities::PageSizeInput
         @pageSize={{this.pageSize}} />
     </div>
-    {{#if (not this.notShowSearchBox)}}
+    {{#if (not this.hideSearchBox)}}
       <div class="eight wide right aligned column">
         <Tables::Utilities::SearchBox
           @searchQuery={{this.searchQuery}}
