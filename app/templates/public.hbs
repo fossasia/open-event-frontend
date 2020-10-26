@@ -77,7 +77,8 @@
               {{/each}}
             </div>
           {{/if}}
-          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
+          <Public::AddToCalender @event={{this.model}} @eventlocation={{this.headerLocation}}/>
+          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
         {{/if}}
       </div>
     </div>
