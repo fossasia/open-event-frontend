@@ -89,9 +89,9 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 4
     };
     // add condition for default sorting the table by date
-    if(!params.sort_by){
-    params.sort_by = 'starts-at';
-    params.sort_dir = 'DSC';
+    if (!params.sort_by) {
+      params.sort_by = 'starts-at';
+      params.sort_dir = 'DSC';
     }
     queryString = this.applySortFilters(queryString, params);
     return this.asArray(this.authManager.currentUser.query('events', queryString));

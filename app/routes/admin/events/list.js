@@ -124,8 +124,11 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[size]'   : params.per_page || 10,
       'page[number]' : params.page || 1
     };
-    params.sort_by = 'starts-at';
-    params.sort_dir = 'DSC';
+    // add condition for default sorting the table by date
+    if (!params.sort_by) {
+      params.sort_by = 'starts-at';
+      params.sort_dir = 'DSC';
+    }
     queryString = this.applySortFilters(queryString, params);
     return  this.asArray(this.store.query('event', queryString));
   }
