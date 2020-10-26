@@ -4,11 +4,13 @@
       <Tables::Utilities::PageSizeInput
         @pageSize={{this.pageSize}} />
     </div>
-    <div class="eight wide right aligned column">
-      <Tables::Utilities::SearchBox
-        @searchQuery={{this.searchQuery}}
-        @filterOptions={{this.filterOptions}} />
-    </div>
+    {{#if (not this.notShowSearchBox)}}
+      <div class="eight wide right aligned column">
+        <Tables::Utilities::SearchBox
+          @searchQuery={{this.searchQuery}}
+          @filterOptions={{this.filterOptions}} />
+      </div>
+    {{/if}}
   </div>
   <div class="row">
     <EmberTable as |t|>
