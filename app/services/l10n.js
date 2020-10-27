@@ -14,8 +14,8 @@ export default class L10nService extends L10n {
   @computed(function() {
     return {
       'bn'      : 'বাংলা',
-      'zh_Hans' : '中文（简体）',
-      'zh_Hant' : '中文（繁體）',
+      'zh_Hans' : '中文（简体)',
+      'zh_Hant' : '中文（繁體)',
       'de'      : 'Deutsch',
       'en'      : 'English',
       'es'      : 'Español',
@@ -27,8 +27,8 @@ export default class L10nService extends L10n {
       'pl'      : 'Polski',
       'ru'      : 'Русский',
       'th'      : 'ไทย',
-      'vi'      : 'Tiếng Việt',
-      };
+      'vi'      : 'Tiếng Việt'
+    };
   })
   availableLocales;
 
