@@ -125,7 +125,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 1
     };
     // add condition for default sorting the table by date
-    if (!params.sort_by) {
+    if (!params.sort_by && !params.sort_dir) {
       params.sort_by = 'starts-at';
       params.sort_dir = 'DSC';
     }
