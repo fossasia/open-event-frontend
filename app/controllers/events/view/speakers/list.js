@@ -90,9 +90,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  viewSpeaker(speaker_id, event) {
-    const event_id = event.router.location.location.pathname.split('/')[2];
-    this.transitionToRoute('public.speaker.view', event_id, speaker_id);
+  viewSpeaker(speaker_id) {
+    const speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: false });
+    this.transitionToRoute('public.speaker.view', speaker.event.get('id'), speaker_id);
   }
 
   @action
