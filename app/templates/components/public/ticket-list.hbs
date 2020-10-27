@@ -49,11 +49,11 @@
                 </div>
               {{else}}
                 <div class="{{if ticket.discount 'strike text'}}">
-                  {{#if (eq ticket.type 'free')}}
-                    {{t "Free"}}
-                  {{else}}
-                    {{currency-symbol this.eventCurrency}} {{format-money ticket.price}}
-                  {{/if}}
+                  <Orders::TicketPrice
+                    @ticket-type={{ticket.type}}
+                    @display-symbol={{currency-symbol this.eventCurrency}}
+                    @display-price={{format-money ticket.price}}
+                  />
                 </div>
                 {{#if ticket.discount}}
                   <div>
@@ -100,11 +100,11 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              {{#if (eq ticket.type 'free')}}
-                {{t "Free"}}
-              {{else}}
-                {{currency-symbol this.eventCurrency}} {{format-money ticket.subTotal}}
-              {{/if}}
+              <Orders::TicketPrice
+                @ticket-type={{ticket.type}}
+                @display-symbol={{currency-symbol this.eventCurrency}}
+                @display-price={{format-money ticket.subTotal}}
+              />
             </td>
           </tr>
         {{/unless}}

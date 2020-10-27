@@ -89,11 +89,11 @@
                 </div>
               </td>
               <td>
-                {{#if (eq ticket.type 'free')}}
-                    {{t "Free"}}
-                  {{else}}
-                    {{currency-symbol this.eventCurrency}} {{format-money ticket.price}}
-                  {{/if}}
+                <Orders::TicketPrice
+                  @ticket-type={{ticket.type}}
+                  @display-symbol={{currency-symbol this.eventCurrency}}
+                  @display-price={{format-money ticket.price}}
+                />
               </td>
               {{#if this.data.discountCode}}
                 <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
@@ -113,11 +113,11 @@
                 </td>
               {{/if}}
               <td>
-                {{#if (eq ticket.type 'free')}}
-                  {{t "Free"}}
-                {{else}}
-                  {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
-                {{/if}}
+                <Orders::TicketPrice
+                  @ticket-type={{ticket.type}}
+                  @display-symbol={{currency-symbol this.eventCurrency}}
+                  @display-price={{format-money (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
+                />
               </td>
             {{/if}}
               
