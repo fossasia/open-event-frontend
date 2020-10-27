@@ -5,7 +5,7 @@ export default class AddToCalender extends Component {
   params = this.args.event;
 
   get timezone() {
-    return `GMT${moment.tz("Asia/Kolkata").format('Z')}`;  
+    return `GMT${moment.tz(this.params.timezone).format('Z')}`;  
   }
 
   get calender() {
