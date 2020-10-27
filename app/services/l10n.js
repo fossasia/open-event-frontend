@@ -18,7 +18,6 @@ export default class L10nService extends L10n {
       'en'      : 'English',
       'es'      : 'Español',
       'fr'      : 'Français',
-      'ko'      : '한국어',
       'hi'      : 'हिंदी',
       'id'      : 'Bahasa Indonesia',
       'ja'      : '日本語',
@@ -28,6 +27,7 @@ export default class L10nService extends L10n {
       'vi'      : 'Tiếng Việt',
       'zh_Hans' : '中文（简体)',
       'zh_Hant' : '中文（繁體)',
+      'ko'      : '한국어'
     };
   })
   availableLocales;
