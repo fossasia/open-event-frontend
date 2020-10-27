@@ -14,20 +14,20 @@ export default class L10nService extends L10n {
   @computed(function() {
     return {
       'bn'      : 'বাংলা',
-      'zh_Hans' : '中文（简体)',
-      'zh_Hant' : '中文（繁體)',
       'de'      : 'Deutsch',
       'en'      : 'English',
       'es'      : 'Español',
       'fr'      : 'Français',
+      'ko'      : '한국어',
       'hi'      : 'हिंदी',
       'id'      : 'Bahasa Indonesia',
       'ja'      : '日本語',
-      'ko'      : '한국어',
       'pl'      : 'Polski',
       'ru'      : 'Русский',
       'th'      : 'ไทย',
-      'vi'      : 'Tiếng Việt'
+      'vi'      : 'Tiếng Việt',
+      'zh_Hans' : '中文（简体)',
+      'zh_Hant' : '中文（繁體)',
     };
   })
   availableLocales;
