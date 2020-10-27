@@ -1,6 +1,6 @@
 <div class="ui list basic segment">
   <div class="content">
-    <li>{{general-date @event.startsAt}} To {{general-date @event.endsAt}}</li>
+    <li>{{calender-date this.params.startsAt}} To {{calender-date this.params.endsAt}} {{this.timezone}}</li>
     <i class="calendar alternate outline icon"></i><a href={{this.calender}}>Add To Calender</a>
   </div>
 </div>
