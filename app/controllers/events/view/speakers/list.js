@@ -15,7 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Name',
         valuePath       : 'name',
-        extraValuePaths : ['id'],
+        extraValuePaths : ['id', 'event'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/speakers/cell-buttons',
@@ -90,9 +90,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  viewSpeaker(speaker_id) {
-    const speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: false });
-    this.transitionToRoute('public.speaker.view', speaker.event.get('id'), speaker_id);
+  viewSpeaker(speaker_id, event_id) {
+    this.transitionToRoute('public.speaker.view', event_id, speaker_id);
   }
 
   @action
