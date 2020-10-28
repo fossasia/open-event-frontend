@@ -202,8 +202,6 @@ msgstr ""
 #: app/controllers/events/view/sessions/edit.js:55:28
 #: app/controllers/events/view/speakers/create.js:28:24
 #: app/controllers/events/view/speakers/edit.js:18:26
-#: app/controllers/events/view/tickets/add-order.js:92:28
-#: app/controllers/events/view/tickets/add-order.js:98:24
 #: app/controllers/orders/new.js:47:39 app/controllers/orders/new.js:58:24
 #: app/controllers/public/cfs/edit-session.js:20:26
 #: app/controllers/public/cfs/edit-speaker.js:20:26
@@ -653,7 +651,7 @@ msgstr ""
 #: app/components/forms/orders/order-form.js:145:19
 #: app/components/forms/orders/order-form.js:394:23
 #: app/components/forms/wizard/basic-details-step.js:391:23
-#: app/components/modals/tax-info-modal.js:114:23
+#: app/components/modals/tax-info-modal.js:111:23
 msgid "Please select your country"
 msgstr ""
 
@@ -1186,7 +1184,7 @@ msgstr ""
 #: app/templates/components/modals/paytm-payment-options.hbs:27:4
 #: app/templates/components/modals/proposal-withdraw-modal.hbs:16:4
 #: app/templates/components/modals/publish-unpublish-modal.hbs:26:3
-#: app/templates/components/modals/tax-info-modal.hbs:88:4
+#: app/templates/components/modals/tax-info-modal.hbs:89:4
 #: app/templates/components/modals/user-delete-modal.hbs:19:4
 msgid "Cancel"
 msgstr ""
@@ -1275,39 +1273,39 @@ msgstr ""
 msgid "Email scheduled to be sent successfully"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:28:23
+#: app/components/modals/tax-info-modal.js:25:23
 msgid "Please give a name"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:37:23
+#: app/components/modals/tax-info-modal.js:34:23
 msgid "Please tell us your tax rate (in %)"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:41:23
+#: app/components/modals/tax-info-modal.js:38:23
 msgid "Please give a valid tax rate"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:50:23
+#: app/components/modals/tax-info-modal.js:47:23
 msgid "Please give us your tax ID"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:61:23
+#: app/components/modals/tax-info-modal.js:58:23
 msgid "Please give us your company name"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:72:23
+#: app/components/modals/tax-info-modal.js:69:23
 msgid "Please give us your address"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:83:23
+#: app/components/modals/tax-info-modal.js:80:23
 msgid "Please give a city"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:94:23
+#: app/components/modals/tax-info-modal.js:91:23
 msgid "Please give a state"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:105:23
+#: app/components/modals/tax-info-modal.js:102:23
 msgid "Please provide a zip code"
 msgstr ""
 
@@ -1320,21 +1318,21 @@ msgstr ""
 msgid "You need to add your speaker details first before submitting a session"
 msgstr ""
 
-#: app/components/public/session-item.hbs:58:16
+#: app/components/public/session-item.hbs:66:16
 #: app/templates/components/forms/events/view/edit-session.hbs:15:11
 msgid "Slides"
 msgstr ""
 
-#: app/components/public/session-item.hbs:69:16
+#: app/components/public/session-item.hbs:77:16
 #: app/templates/components/events/view/export/download-zip.hbs:16:39
 msgid "Video"
 msgstr ""
 
-#: app/components/public/ticket-list.js:226:21
+#: app/components/public/ticket-list.js:243:21
 msgid "Please enter a donation amount between {{minPrice}} and {{maxPrice}}"
 msgstr ""
 
-#: app/components/public/ticket-list.js:247:23
+#: app/components/public/ticket-list.js:264:23
 msgid "Please enter the promotional Code"
 msgstr ""
 
@@ -1644,8 +1642,9 @@ msgstr ""
 msgid "Access Code has been updated successfully."
 msgstr ""
 
-#: app/controllers/events/view/tickets/add-order.js:87:30
-msgid "Order details saved. Please fill further details within 10 minutes."
+#: app/controllers/events/view/tickets/add-order.js:23:28
+#: app/controllers/public/index.js:121:28
+msgid "Order details saved. Please fill further details within {{time}} minutes."
 msgstr ""
 
 #: app/controllers/events/view/tickets/attendees.js:37:57
@@ -1746,10 +1745,6 @@ msgstr ""
 
 #: app/controllers/public/cfs/edit-session.js:12:28
 msgid "Session details have been saved"
-msgstr ""
-
-#: app/controllers/public/index.js:121:28
-msgid "Order details saved. Please fill further details within {{time}} minutes."
 msgstr ""
 
 #: app/controllers/public/session/view.js:23:26
@@ -3923,14 +3918,14 @@ msgstr ""
 #: app/templates/components/forms/user-payment-info-form.hbs:70:32
 #: app/templates/components/forms/wizard/basic-details-step.hbs:283:34
 #: app/templates/components/forms/wizard/basic-details-step.hbs:295:38
-#: app/templates/components/modals/tax-info-modal.hbs:11:34
+#: app/templates/components/modals/tax-info-modal.hbs:12:34
 #: app/templates/components/widgets/forms/billing-info.hbs:43:26
 #: app/templates/components/widgets/forms/billing-info.hbs:53:30
 msgid "Select country"
 msgstr ""
 
 #: app/templates/components/forms/admin/settings/billing.hbs:65:37
-#: app/templates/components/modals/tax-info-modal.hbs:31:30
+#: app/templates/components/modals/tax-info-modal.hbs:32:30
 msgid "Tax ID"
 msgstr ""
 
@@ -3944,7 +3939,7 @@ msgstr ""
 
 #: app/templates/components/forms/admin/settings/billing.hbs:76:51
 #: app/templates/components/forms/user-payment-info-form.hbs:44:22
-#: app/templates/components/modals/tax-info-modal.hbs:55:13
+#: app/templates/components/modals/tax-info-modal.hbs:56:13
 #: app/templates/components/widgets/forms/billing-info.hbs:22:37
 #: app/templates/components/widgets/forms/location-input.hbs:23:22
 msgid "City"
@@ -3952,7 +3947,7 @@ msgstr ""
 
 #: app/templates/components/forms/admin/settings/billing.hbs:80:35
 #: app/templates/components/forms/user-payment-info-form.hbs:51:23
-#: app/templates/components/modals/tax-info-modal.hbs:59:13
+#: app/templates/components/modals/tax-info-modal.hbs:60:13
 #: app/templates/components/widgets/forms/location-input.hbs:30:22
 msgid "State"
 msgstr ""
@@ -4822,7 +4817,6 @@ msgid "Sign In"
 msgstr ""
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:30:6
-#: app/templates/events/view/tickets/add-order.hbs:24:10
 msgid "Continue"
 msgstr ""
 
@@ -5343,7 +5337,7 @@ msgid "Website"
 msgstr ""
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:34:33
-#: app/templates/components/public/ticket-list.hbs:187:12
+#: app/templates/components/public/ticket-list.hbs:195:12
 msgid "Refund Policy"
 msgstr ""
 
@@ -5789,65 +5783,65 @@ msgstr ""
 msgid "Okay"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:2:2
+#: app/templates/components/modals/tax-info-modal.hbs:3:2
 msgid "Add tax information"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:7:30
+#: app/templates/components/modals/tax-info-modal.hbs:8:30
 msgid "Choose country"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:23:30
+#: app/templates/components/modals/tax-info-modal.hbs:24:30
 msgid "Tax name"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:27:30
+#: app/templates/components/modals/tax-info-modal.hbs:28:30
 msgid "Tax rate"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:35:13
+#: app/templates/components/modals/tax-info-modal.hbs:36:13
 msgid "Tax Invoices"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:39:18
+#: app/templates/components/modals/tax-info-modal.hbs:40:18
 msgid "Send tax invoice to attendees"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:41:12
+#: app/templates/components/modals/tax-info-modal.hbs:42:12
 msgid ""
 "Tax Invoices are sent to your attendees when you select this feature.\n"
 "Enter your registered business company name and address to be included on the tax invoice."
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:48:13
+#: app/templates/components/modals/tax-info-modal.hbs:49:13
 msgid "Registered Company"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:52:13
+#: app/templates/components/modals/tax-info-modal.hbs:53:13
 msgid "Business Address"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:63:13
+#: app/templates/components/modals/tax-info-modal.hbs:64:13
 msgid "Zipcode"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:67:13
+#: app/templates/components/modals/tax-info-modal.hbs:68:13
 msgid "Text for invoice footer (optional)"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:70:27
+#: app/templates/components/modals/tax-info-modal.hbs:71:27
 msgid "Add or Include Tax Fee"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:74:31
+#: app/templates/components/modals/tax-info-modal.hbs:75:31
 msgid "Add tax as separate fee on top of the price"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:80:35
+#: app/templates/components/modals/tax-info-modal.hbs:81:35
 msgid "Include tax in ticket price"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:91:4
+#: app/templates/components/modals/tax-info-modal.hbs:92:4
 msgid "Update tax information"
 msgstr ""
 
@@ -5958,7 +5952,6 @@ msgid "N/A"
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:135:16
-#: app/templates/events/view/tickets/add-order.hbs:18:30
 msgid "Grand Total"
 msgstr ""
 
@@ -6068,15 +6061,15 @@ msgstr ""
 msgid "Sub-Total"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:141:28
+#: app/templates/components/public/ticket-list.hbs:148:28
 msgid "Promotional Code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:163:57
+#: app/templates/components/public/ticket-list.hbs:170:57
 msgid "Enter promotional code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:181:10
+#: app/templates/components/public/ticket-list.hbs:189:10
 msgid "Order Now"
 msgstr ""
 
@@ -6132,7 +6125,6 @@ msgid "Session Not Yet Scheduled"
 msgstr ""
 
 #: app/templates/components/tables/utilities/page-size-input.hbs:2:2
-#: app/templates/components/ui-table-select.hbs:1:0
 msgid "Show"
 msgstr ""
 
@@ -6141,18 +6133,14 @@ msgid "entries per page"
 msgstr ""
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:2
-#: app/templates/components/ui-table/simple-pagination.hbs:3:4
 msgid "Showing"
 msgstr ""
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:40
-#: app/templates/components/ui-table/simple-pagination.hbs:3:61
 msgid "of"
 msgstr ""
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:80
-#: app/templates/components/ui-table-select.hbs:16:0
-#: app/templates/components/ui-table/simple-pagination.hbs:3:104
 msgid "entries"
 msgstr ""
 
