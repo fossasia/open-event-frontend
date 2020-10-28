@@ -2,18 +2,16 @@ import Component from '@glimmer/component';
 import moment from 'moment';
 
 export default class AddToCalender extends Component {
-  params = this.args.event;
 
-  get gmt() {
-    return `GMT${moment.tz(this.params.timezone).format('Z')}`;
+  get timezone() {
+    return moment.tz(this.args.event.timezone).format('Z');
   }
 
-  get calender() {
-    const startparams = this.params.startsAt;
-    const endparams = this.params.endsAt;
-    const starttime = moment(startparams).tz(this.params.timezone).utc().format('YYYYMMDD[T]HHmmSS[Z]');
-    const endtime = moment(endparams).tz(this.params.timezone).utc().format('YYYYMMDD[T]HHmmSS[Z]');
-    return `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${starttime}/${endtime}&text=${this.params.name}&location=${this.args.eventlocation}&sf=true`;
+  get calendarUrl() {
+    const { event } = this.args;
+    const startTime = moment(event.startsAt).tz(event.timezone).utc().format('YYYYMMDD[T]HHmmSS[Z]');
+    const endTime = moment(event.endsAt).tz(event.timezone).utc().format('YYYYMMDD[T]HHmmSS[Z]');
+    return `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startTime}/${endTime}&text=${event.name}&location=${this.args.location}&sf=true`;
   }
 
 }

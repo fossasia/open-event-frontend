@@ -1,6 +1,6 @@
 <div class="ui list basic segment">
   <div class="content">
-    <li>{{general-date this.params.startsAt this.params.timezone "dddd, MMMM DD, YYYY h:mm A"}} To {{general-date this.params.endsAt this.params.timezone "dddd, MMMM DD, YYYY h:mm A"}} {{this.gmt}}</li>
-    <i class="calendar alternate outline icon"></i><a href={{this.calender}}>Add To Calender </a>
+    <li>{{general-date @event.startsAt @event.timezone "dddd, MMMM DD, YYYY h:mm A"}} To {{general-date @event.endsAt @event.timezone "dddd, MMMM DD, YYYY h:mm A"}} {{this.timezone}}</li>
+    <i class="calendar alternate outline icon"></i><a href={{this.calendarUrl}} target="_blank" rel="noreferrer nofollow">{{t 'Add to Google Calendar'}}</a>
   </div>
 </div>
