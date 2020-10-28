@@ -45,6 +45,9 @@ Router.map(function() {
     this.route('session', function() {
       this.route('view', { path: '/:session_id' });
     });
+    this.route('speaker', function() {
+      this.route('view', { path: '/:speaker_id' });
+    });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
       this.route('new-speaker');
       this.route('new-session');
