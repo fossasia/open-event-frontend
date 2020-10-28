@@ -10,16 +10,16 @@
 <div class="ui container"></div>
 <div class="ui form {{if this.isLoading 'loading'}}">
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Image"}} @checked={{this.data.image}} @onChange={{action (mut this.data.image)}} />
+    <LegacyCheckbox @label={{t "Image"}} @checked={{this.data.image}} @onChange={{action (mut this.data.image)}}/>
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Video"}} @checked={{this.data.video}} @onChange={{action (mut this.data.video)}} />
+    <LegacyCheckbox @label={{t "Video"}} @checked={{this.data.video}}  @onChange={{action (mut this.data.video)}}/>
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Audio"}} @checked={{this.data.audio}} @onChange={{action (mut this.data.audio)}} />
+    <LegacyCheckbox @label={{t "Audio"}} @checked={{this.data.audio}} @onChange={{action (mut this.data.audio)}}/>
   </div>
   <div class="field">
-    <UiCheckbox @class="toggle" @label={{t "Document"}} @checked={{this.data.document}} @onChange={{action (mut this.data.document)}} />
+    <LegacyCheckbox @label={{t "Document"}} @checked={{this.data.document}} @onChange={{action (mut this.data.document)}}/>
   </div>
   <div class="ui basic segment no left padding">
     <button class="ui blue button" {{action this.startGeneration}}>

@@ -8,7 +8,7 @@
   <label>
     {{t 'Enable Google reCAPTCHA'}}
   </label>
-  <UiCheckbox @class="toggle" @checked={{this.settings.isGoogleRecaptchaEnabled}} @onChange={{action (mut this.settings.isGoogleRecaptchaEnabled)}} />
+  <LegacyCheckbox @checked={{this.settings.isGoogleRecaptchaEnabled}} @onChange={{action (mut this.settings.isGoogleRecaptchaEnabled)}}/>
 </div>
 {{#if this.settings.isGoogleRecaptchaEnabled}}
   <h3 class="ui header">
