@@ -217,7 +217,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-buttons.hbs:3:22
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:16:22
 #: app/templates/components/ui-table/cell/cell-event.hbs:7:22
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:5:22
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:4:20
 msgid "View"
 msgstr ""
 
@@ -1095,7 +1095,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:21:22
 #: app/templates/components/ui-table/cell/cell-event.hbs:12:22
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:2:20
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:22
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:7:20
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:2:20
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:2:20
 msgid "Edit"
@@ -1118,7 +1118,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-code-buttons.hbs:8:20
 #: app/templates/components/ui-table/cell/cell-event.hbs:21:22
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:5:20
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:20
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:20
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:16:20
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:16:20
 msgid "Delete"
@@ -1902,7 +1902,7 @@ msgstr ""
 msgid "Social Links"
 msgstr ""
 
-#: app/routes/admin/content/pages.js:7:11 app/routes/pages.js:7:26
+#: app/routes/admin/content/pages.js:7:11 app/routes/pages.js:12:42
 #: app/templates/admin/content.hbs:9:10
 #: app/templates/admin/content/pages.hbs:6:32
 msgid "Pages"
@@ -2415,6 +2415,25 @@ msgstr ""
 msgid "Placed Order"
 msgstr ""
 
+#: app/routes/pages.js:8:12 app/templates/components/footer-main.hbs:103:10
+msgid "Terms"
+msgstr ""
+
+#: app/routes/pages.js:8:34 app/templates/components/footer-main.hbs:104:10
+msgid "Contact"
+msgstr ""
+
+#: app/routes/pages.js:8:58 app/templates/components/footer-main.hbs:105:10
+#: app/templates/components/forms/wizard/other-details-step.hbs:34:33
+#: app/templates/components/public/ticket-list.hbs:195:12
+msgid "Refund Policy"
+msgstr ""
+
+#: app/routes/pages.js:8:88 app/templates/components/footer-main.hbs:106:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:29
+msgid "Privacy"
+msgstr ""
+
 #: app/routes/public/cfs.js:7:11 app/routes/public/cfs/index.js:11:11
 #: app/templates/components/public/call-for-speakers.hbs:3:2
 #: app/templates/components/public/side-menu.hbs:44:8
@@ -2432,6 +2451,7 @@ msgstr ""
 #: app/routes/public/cfs/edit-speaker.js:7:11
 #: app/templates/events/view/speakers/edit.hbs:4:6
 #: app/templates/public/cfs/edit-speaker.hbs:4:6
+#: app/templates/public/speaker/view.hbs:8:83
 msgid "Edit Speaker"
 msgstr ""
 
@@ -5333,11 +5353,6 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: app/templates/components/forms/wizard/other-details-step.hbs:34:33
-#: app/templates/components/public/ticket-list.hbs:195:12
-msgid "Refund Policy"
-msgstr ""
-
 #: app/templates/components/forms/wizard/other-details-step.hbs:36:8
 msgid "Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the eventyay platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the eventyay platform."
 msgstr ""
@@ -5415,10 +5430,6 @@ msgstr ""
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:29
-msgid "Privacy"
-msgstr ""
-
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:173:22
 msgid "Public"
 msgstr "El público"
@@ -5436,7 +5447,7 @@ msgid "Do not display this publicly. Proposals can be submitted only using the p
 msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:193:8
-msgid "Customize registration form"
+msgid "Customize submission forms"
 msgstr ""
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:26:8
@@ -6279,7 +6290,7 @@ msgstr ""
 msgid "Lock Session"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:60
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:60
 msgid "Are you sure you would like to delete this Speaker?"
 msgstr ""
 
