@@ -4,8 +4,8 @@ import moment from 'moment';
 export default class AddToCalender extends Component {
   params = this.args.event;
 
-  get timezone() {
-    return `GMT${moment.tz(this.params.timezone).format('Z')}`;  
+  get gmt() {
+    return `GMT${moment.tz(this.params.timezone).format('Z')}`;
   }
 
   get calender() {
