@@ -10,16 +10,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath : 'name'
       },
       {
-        name          : 'Video room URL',
-        valuePath     : 'videoStream.url',
+        name      : 'Video room URL',
+        valuePath : 'videoStream.url'
       },
       {
         name      : 'Pin',
         valuePath : 'videoStream.password'
       },
       {
-        name          : 'Additional information',
-        valuePath     : 'videoStream.additionalInformation',
+        name      : 'Additional information',
+        valuePath : 'videoStream.additionalInformation'
       }
     ];
   }
