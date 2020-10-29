@@ -38,7 +38,11 @@
   {{/unless}}
 <div class="ui hidden divider"></div>
 {{#if this.isNewSession}}
-  <p>{{t 'No session have been submitted'}}</p>
+  {{#if this.authManager.currentUser.isVerified}}
+    <p> {{t 'No sessions have been submitted'}} </p>
+  {{else}}
+    <p>{{t 'Login to show your submitted sessions'}}</p>
+  {{/if}}
 {{/if}}
 {{#if this.data.speakersCall.isOpen}}
   {{#if this.isNewSpeaker}}
