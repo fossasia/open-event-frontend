@@ -2,6 +2,8 @@ import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
+import moment from 'moment';
+import $ from 'jquery';
 
 @classic
 export default class L10nService extends L10n {
@@ -38,7 +40,7 @@ export default class L10nService extends L10n {
 
   switchLanguage(locale) {
     this.setLocale(locale);
-    this.cookies.write(this.localStorageKey, locale);
+    this.cookies.write(this.localStorageKey, locale, { path: '/' });
     if (!this.fastboot.isFastBoot) {
       location.reload();
     }
@@ -48,12 +50,18 @@ export default class L10nService extends L10n {
     super.init(...arguments);
     const currentLocale = this.cookies.read(this.localStorageKey);
     const detectedLocale = this.detectLocale();
+
+    let locale = 'en';
     if (currentLocale) {
-      this.setLocale(currentLocale);
+      locale = currentLocale;
     } else if (detectedLocale) {
-      this.setLocale(detectedLocale);
-    } else {
-      this.setLocale('en');
+      locale = detectedLocale;
+    }
+
+    this.setLocale(locale);
+    if (locale !== 'en') {
+      $.getScript(`/assets/moment-locales/${currentLocale}.js`);
+      moment.locale(currentLocale);
     }
   }
 }
