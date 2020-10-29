@@ -1,0 +1,15 @@
+<div class="ui list basic segment m-0 pb-0">
+  <div class="item">
+    <i class="clock alternate outline icon pt-1"></i>
+    <div class="content">
+      {{#if this.isSingleDay}}
+        {{general-date @event.startsAt @event.timezone "dddd, MMMM DD, YYYY"}}<br>{{general-date @event.startsAt @event.timezone "h:mm A"}} {{t 'to'}} {{general-date @event.endsAt @event.timezone "h:mm A"}} 
+      {{else}}
+        {{general-date @event.startsAt @event.timezone "dddd, MMMM DD, YYYY h:mm A"}} {{t 'to'}} {{general-date @event.endsAt @event.timezone "dddd, MMMM DD, YYYY h:mm A"}} 
+      {{/if}}
+      ({{this.timezone}})
+      <br>
+      <a href={{this.calendarUrl}} target="_blank" rel="noreferrer nofollow">{{t 'Add to Google Calendar'}}</a>
+    </div>
+  </div>
+</div>
