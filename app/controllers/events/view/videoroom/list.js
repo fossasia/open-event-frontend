@@ -7,34 +7,19 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     return [
       {
         name      : 'Microlocation',
-        valuePath : 'microlocation.name'
+        valuePath : 'name'
       },
       {
         name          : 'Video room URL',
-        valuePath     : 'id',
-        cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url'
+        valuePath     : 'videoStream.url',
       },
       {
         name      : 'Pin',
-        valuePath : ''
+        valuePath : 'videoStream.password'
       },
       {
         name          : 'Additional information',
-        valuePath     : 'id',
-        cellComponent : 'ui-table/cell/events/view/videoroom/cell-additional-info'
-      },
-      {
-        name      : 'Access',
-        valuePath : ''
-      },
-      {
-        name      : 'Stream',
-        valuePath : ''
-      },
-      {
-        name          : 'Additional information Stream',
-        valuePath     : 'id',
-        cellComponent : 'ui-table/cell/events/view/videoroom/cell-additional-info'
+        valuePath     : 'videoStream.additionalInformation',
       }
     ];
   }

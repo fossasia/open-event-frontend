@@ -43,20 +43,6 @@
     <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>All logged in users</label></div></div>
     <div class="field"><div class="ui checkbox"><Input @type="checkbox"/> <label>Public (no restriction)</label></div></div>
   </div>
-  <div class="field">
-    <label>{{t 'Stream'}}</label>
-    <Input
-      @type="text"
-      @name="pin_codes"
-      @value={{this.data.code}} />
-  </div>
-
-  <div class="grouped inline fields">
-    <label>{{t 'Additional Information Stream'}}</label>
-    <Widgets::Forms::RichTextEditor
-      @textareaId="description_again"
-      @value={{this.data.event.description}} />
-  </div>
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
 </form>

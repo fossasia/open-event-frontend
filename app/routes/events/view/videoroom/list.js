@@ -27,14 +27,14 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
-      include        : 'session-type,track,microlocation',
+      include        : 'video-stream',
       filter         : filterOptions,
       'page[size]'   : params.per_page || 25,
       'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);
 
-    const sessionsPromise = this.asArray(store.query('sessions', queryString));
+    const sessionsPromise = this.asArray(store.query('microlocations', queryString));
 
     const [sessions] = await Promise.all([sessionsPromise]);
 
