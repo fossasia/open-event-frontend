@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
 import moment from 'moment';
-import $ from 'jquery';
+import { getScript } from 'open-event-frontend/utils/loader';
 
 @classic
 export default class L10nService extends L10n {
@@ -60,8 +60,10 @@ export default class L10nService extends L10n {
 
     this.setLocale(locale);
     if (locale !== 'en') {
-      $.getScript(`/assets/moment-locales/${currentLocale}.js`);
-      moment.locale(currentLocale);
+      getScript(`/assets/moment-locales/${currentLocale}.js`)
+        .then(() => {
+          moment.locale(currentLocale);
+        });
     }
   }
 }

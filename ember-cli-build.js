@@ -45,7 +45,7 @@ module.exports = function(defaults) {
     fingerprint: {
       enabled          : env === 'production',
       generateAssetMap : true,
-      exclude          : ['package.json'],
+      exclude          : ['package.json', 'assets/moment-locales'],
       extensions       : ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg', 'json']
     },
     sourcemaps: {
