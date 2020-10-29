@@ -1,0 +1,20 @@
+<div class="ui container">
+  {{#if this.showEditSection}}
+  <div class="ui row mb-8">
+    <LinkTo
+      @route="public.cfs.edit-speaker"
+      @models={{array this.model.event.id this.model.id}}>
+      <button
+        class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker'}}</button>
+      {{#if this.device.isMobile}}
+        <div class="ui hidden fitted divider"></div>
+      {{/if}}
+    </LinkTo>
+  </div>
+  {{/if}}
+  <div class="ui row">
+    <Public::SpeakerItem
+      @speaker={{this.model}}
+    />
+  </div>
+</div>
