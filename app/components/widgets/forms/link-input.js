@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import { classNameBindings } from '@ember-decorators/component';
-import { observes } from '@ember-decorators/object';
+import { computed } from '@ember-decorators/object';
 import Component from '@ember/component';
 import '@ember/object';
 import { socialPlatforms } from 'open-event-frontend/utils/computed-helpers';
@@ -21,7 +21,7 @@ export default class LinkInput extends Component {
   protocol = 'https://';
   address = '';
 
-  @observes('segmentedLink.{address,protocol}')
+  @computed('segmentedLink.{address,protocol}')
   segmentedLinkObserver() {
     this.setProperties({
       protocol : this.segmentedLink.protocol,
@@ -29,7 +29,7 @@ export default class LinkInput extends Component {
     });
   }
 
-  @observes('protocol', 'address')
+  @computed('protocol', 'address')
   protocolAddressObserver() {
     const link = this.linkName?.toLowerCase();
 
@@ -52,7 +52,7 @@ export default class LinkInput extends Component {
     });
   }
 
-  @observes('linkName')
+  @computed('linkName')
   linkNameObserver() {
     const link = this.linkName;
     if (socialPlatforms.includes(link)) {
