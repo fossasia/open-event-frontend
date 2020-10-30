@@ -13,6 +13,7 @@ export default class SessionNotifyModal extends ModalBase {
   @tracked saving = false;
   @tracked subject = '';
   @tracked message = '';
+  @tracked speakers = null;
 
   constructor() {
     super(...arguments);
@@ -40,6 +41,11 @@ export default class SessionNotifyModal extends ModalBase {
       mailPromise = this.loader.load('/sessions/mails');
     }
     this.mails = await mailPromise;
+    const session = this.store.peekRecord('session', this.sessionId, { backgroundReload: false });
+    this.speakers = session.speakers.map(speaker => Object({
+    name : speaker.name,
+    email : speaker.email
+    }));
   }
 
   @action
