@@ -66,9 +66,7 @@
   {{/if}}
   <div class="location" id="getting-here">
     {{#if this.model.event.locationName}}
-      <Public::EventMap
-        @event={{this.model.event}}
-        @mapConfig={{this.model.mapConfig}} />
+      <Public::EventMap @event={{this.model.event}} />
     {{/if}}
     {{#if this.model.event.online}}
       <h2>{{t 'Online Event'}}</h2>
