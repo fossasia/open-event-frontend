@@ -42,10 +42,7 @@ export default class SessionNotifyModal extends ModalBase {
     }
     this.mails = await mailPromise;
     const session = this.store.peekRecord('session', this.sessionId, { backgroundReload: false });
-    this.speakers = session.speakers.map(speaker => Object({
-    name : speaker.name,
-    email : speaker.email
-    }));
+    this.speakers = session.speakers.map(speaker => `${speaker.name} ${speaker.email}`).join(', ');
   }
 
   @action

@@ -11,24 +11,12 @@
   {{#if this.mail}}
     <form class="ui form">
       <div class="field">
-        <label>Speaker's Name</label>
-        {{#each this.speakers as |speaker|}}
-          {{#if speaker.name}}
-            <div class="ui label">
-              {{speaker.name}}
-            </div>
-          {{/if}}
-        {{/each}}
-      </div>
-      <div class="field">
-        <label>Speaker's Email</label>
-        {{#each this.speakers as |speaker|}}
-          {{#if speaker.email}}
-            <div class="ui label">
-              {{speaker.email}}
-            </div>
-          {{/if}}
-        {{/each}}
+        <label>Name and Email</label>
+        <Input
+          type="text"
+          name="name and email"
+          @value={{this.speakers}} 
+          disabled />
       </div>
       <div class="field">
         <label>CC</label>
@@ -36,7 +24,7 @@
           type="text"
           name="cc"
           @value={{this.cc}} />
-      </div>
+      </div>     
       <div class="field">
         <label>Subject</label>
         <Input
