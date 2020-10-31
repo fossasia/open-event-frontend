@@ -14,7 +14,11 @@ export default class SessionNotifyModal extends ModalBase {
   @tracked subject = '';
   @tracked message = '';
   @tracked cc = '';
-  speakerEmails = '';
+  
+  speakerEmails =  computed(function(){
+    const session = this.store.peekRecord('session', this.sessionId, { backgroundReload: false });
+    return session.speakers.map(speaker => `${speaker.name} ${speaker.email}`).join(', ');
+  })
 
   constructor() {
     super(...arguments);
