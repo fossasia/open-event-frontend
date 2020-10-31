@@ -11,7 +11,7 @@ export default class EventMap extends Component {
 
     @tracked
     lng = this.event.longitude;
-    
+
     @tracked
     zoom = 4;
 
