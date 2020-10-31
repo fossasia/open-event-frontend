@@ -6,13 +6,8 @@ import { tracked } from '@glimmer/tracking';
 @classic
 @classNames('ui', 'stackable', 'grid')
 export default class EventMap extends Component {
-    @tracked
     lat = this.event.latitude;
-
-    @tracked
     lng = this.event.longitude;
-
-    @tracked
     zoom = 4;
 
     @tracked
