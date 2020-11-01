@@ -50,10 +50,9 @@
               {{else}}
                 <div class="{{if ticket.discount 'strike text'}}">
                   <Orders::TicketPrice
-                    @ticket-type={{ticket.type}}
-                    @display-symbol={{currency-symbol this.eventCurrency}}
-                    @display-price={{format-money ticket.price}}
-                  />
+                    @ticket={{ticket}}
+                    @display='price' 
+                    @eventCurrency={{this.eventCurrency}} />
                 </div>
                 {{#if ticket.discount}}
                   <div>
@@ -101,10 +100,9 @@
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
               <Orders::TicketPrice
-                @ticket-type={{ticket.type}}
-                @display-symbol={{currency-symbol this.eventCurrency}}
-                @display-price={{format-money ticket.subTotal}}
-              />
+                @ticket={{ticket}}
+                @display='subTotal'
+                @eventCurrency={{this.eventCurrency}} />
             </td>
           </tr>
         {{/unless}}
