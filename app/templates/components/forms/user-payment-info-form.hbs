@@ -7,19 +7,31 @@
   </h5>
   <div class="field">
     <label for="company">{{t 'Company'}}</label>
-    <Input @type="text" @id="company" @value={{this.userBillingInfo.company}} />
+    <Input
+      @type="text"
+      @id="company"
+      @value={{this.userBillingInfo.company}} />
   </div>
   <div class="field">
     <label for="contactName">{{t 'Contact Name'}}</label>
-    <Input @type="text" @id="contactName" @value={{this.userBillingInfo.billingContactName}} />
+    <Input
+      @type="text"
+      @id="contactName"
+      @value={{this.userBillingInfo.billingContactName}} />
   </div>
   <div class="field">
     <label for="phone">{{t 'Phone'}}</label>
-    <Input @type="text" @id="phone" @value={{this.userBillingInfo.billingPhone}} />
+    <Input
+      @type="text"
+      @id="phone"
+      @value={{this.userBillingInfo.billingPhone}} />
   </div>
   <div class="field">
     <label for="address">{{t 'Address'}}</label>
-    <Textarea @rows="2" @id="address" @value={{this.userBillingInfo.billingAddress}} />
+    <Textarea
+      @rows="2"
+      @id="address"
+      @value={{this.userBillingInfo.billingAddress}} />
     </div>
   <div class="field">
     <label for="zip">{{t 'Zip Code'}}</label>
@@ -80,3 +92,4 @@
     {{t 'Submit'}}
   </button>
 </form>
+
