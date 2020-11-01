@@ -27,11 +27,31 @@ export default class AddToCalender extends Component<Args> {
     return this.startsAt.isSame(this.endsAt, 'day');
   }
 
-  get calendarUrl(): string {
+  get googleUrl(): string {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYYMMDD[T]HHmmSS[Z]');
     const endTime = this.endsAt.utc().format('YYYYMMDD[T]HHmmSS[Z]');
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${startTime}/${endTime}&text=${event.name}&location=${this.args.location}&ctz=${event.timezone}&details=${event.description}`;
+  }
+
+  get yahooUrl(): string {
+    const { event } = this.args;
+    const startTime = this.startsAt.format('YYYYMMDD[T]HHmmSS');
+    const endTime = this.endsAt.format('YYYYMMDD[T]HHmmSS');
+    return `https://calendar.yahoo.com/?v=60&title=${event.name}&st=${startTime}&et=${endTime}&desc=${event.description}&in_loc=${this.args.location}`;
+  }
+
+  get outlookUrl(): string {
+    const { event } = this.args;
+    const startTime = this.startsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
+    const endTime = this.endsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
+    return `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=Holly%27s%208th%20Birthday%21&startdt=${startTime}&enddt=${endTime}&body=${event.description}&location=${this.args.location}`;
+  }
+
+  get calendarUrls() {
+    const calendars = [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'Outlook', url: this.outlookUrl }, { name: 'Yahoo Calendar', url: this.yahooUrl }];
+    return calendars;
+
   }
 
 }

@@ -9,7 +9,16 @@
       {{/if}}
       ({{this.timezone}})
       <br>
-      <a href={{this.calendarUrl}} target="_blank" rel="noreferrer nofollow">{{t 'Add to Google Calendar'}}</a>
+      {{#ui-dropdown class="pointing"}}
+	<a href="#">{{t 'Add to Google Calendar'}}</a>
+	<div class="menu">
+	  {{#each this.calendarUrls as |calendar|}}
+	    <a href={{calendar.url}} class="item">
+	      {{calendar.name}}
+	    </a>
+	  {{/each}}
+	</div>
+      {{/ui-dropdown}}
     </div>
   </div>
 </div>
