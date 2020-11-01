@@ -91,7 +91,8 @@
               <td>
                 <Orders::TicketPrice
                   @ticket={{ticket}}
-                  @currency={{this.eventCurrency}} />
+                  @currency={{this.eventCurrency}}
+                  @amount={{ticket.price}} />
               </td>
               {{#if this.data.discountCode}}
                 <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
