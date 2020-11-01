@@ -91,8 +91,7 @@
               <td>
                 <Orders::TicketPrice
                   @ticket={{ticket}}
-                  @display='price'
-                  @eventCurrency={{this.eventCurrency}} />
+                  @currency={{this.eventCurrency}} />
               </td>
               {{#if this.data.discountCode}}
                 <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
@@ -114,9 +113,8 @@
               <td>
                 <Orders::TicketPrice
                   @ticket={{ticket}}
-                  @display='order-subTotal'
-                  @eventCurrency={{this.eventCurrency}}
-                  @attendees={{this.data.attendees}} />
+                  @currency={{this.eventCurrency}}
+                  @amount={{mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees)}} />
               </td>
             {{/if}}
               

@@ -1,11 +1,5 @@
 {{#if (eq @ticket.type 'free')}}
     {{t "Free"}}
 {{else}}
-    {{#if (eq @display 'price')}}
-        {{currency-symbol @eventCurrency}} {{format-money @ticket.price}}
-    {{else if (eq @display 'subTotal')}}
-        {{currency-symbol @eventCurrency}} {{format-money @ticket.subTotal}}
-    {{else if (eq @display 'order-subTotal')}}
-        {{currency-symbol @eventCurrency}} {{format-money (mult (sub @ticket.price @ticket.discount) (ticket-attendees @attendees @ticket.attendees))}}
-    {{/if}}
+    {{currency-symbol @currency}} {{format-money (or @amount @ticket.price)}}
 {{/if}}
