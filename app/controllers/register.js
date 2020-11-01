@@ -25,7 +25,7 @@ export default class RegisterController extends Controller {
         if (this.inviteToken) {
           this.send('loginExistingUser', user.get('email'), password, this.inviteToken, this.event);
         } else {
-          this.transitionToRoute('login');
+          this.loginExistingUser(user.get('email'), password, this.inviteToken, this.event);
         }
       })
       .catch(reason => {
@@ -52,7 +52,7 @@ export default class RegisterController extends Controller {
     const authenticator = 'authenticator:jwt';
     this.session
       .authenticate(authenticator, credentials)
-      .then(async() => {
+      .then(async () => {
         const tokenPayload = this.authManager.getTokenPayload();
         if (tokenPayload) {
           this.set('session.skipRedirectOnInvalidation', true);
