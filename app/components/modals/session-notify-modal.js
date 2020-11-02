@@ -3,7 +3,6 @@ import { action, computed } from '@ember/object';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import track from 'open-event-frontend/models/track';
 
 let mailPromise = null;
 
@@ -15,7 +14,6 @@ export default class SessionNotifyModal extends ModalBase {
   @tracked subject = '';
   @tracked message = '';
   @tracked cc = '';
-  // speakerEmails = '';
   
   constructor() {
     super(...arguments);
@@ -34,9 +32,6 @@ export default class SessionNotifyModal extends ModalBase {
 
     this.subject = mail.subject;
     this.message = mail.message.replace(/<br\/>/g, '\n'); // Convert line breaks to newlines for display
-
-    // const session = this.store.peekRecord('session', this.sessionId, { backgroundReload: false });
-    // this.speakerEmails = session.speakers.map(speaker => `${speaker.name} ${speaker.email}`).join(', ');
 
     return mail;
   }
