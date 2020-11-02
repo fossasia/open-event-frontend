@@ -10,9 +10,11 @@
         @route="pricing" class="item"
         @activeClass="">{{t 'Pricing'}}</LinkTo>
     {{/if}}
+    {{#if currentRoute}}
       <LinkTo
         @route="explore" class="item"
         @activeClass="">{{t 'Browse Events'}}</LinkTo>
+    {{/if}}
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown
           @unreadNotifications={{this.unreadNotifications}} />
@@ -46,7 +48,7 @@
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (not-eq this.routing.currentRouteName 'create')}}
+      {{#if (and (not-eq this.routing.currentRouteName 'create') currentRoute)}}
         <LinkTo
           @route="create" class="item ui blue text">
           <div>

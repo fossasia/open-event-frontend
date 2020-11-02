@@ -1,9 +1,14 @@
 import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 
 @classic
 export default class NavBar extends Component {
+  @computed('session.currentRouteName')
+  get currentRoute() {
+    return !(String(this.session.currentRouteName).includes("public"));
+  }
+
   @action
   logout() {
     this.authManager.logout();
