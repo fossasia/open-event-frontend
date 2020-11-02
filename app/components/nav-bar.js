@@ -6,7 +6,7 @@ import Component from '@ember/component';
 export default class NavBar extends Component {
   @computed('session.currentRouteName')
   get currentRoute() {
-    return !(String(this.session.currentRouteName).includes("public"));
+    return !(String(this.session.currentRouteName).includes('public'));
   }
 
   @action
