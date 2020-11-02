@@ -49,10 +49,7 @@
                 </div>
               {{else}}
                 <div class="{{if ticket.discount 'strike text'}}">
-                  <Orders::TicketPrice
-                    @ticket={{ticket}}
-                    @currency={{this.eventCurrency}}
-                    @amount={{ticket.price}} />
+                  {{currency-symbol this.eventCurrency}} {{format-money ticket.price}}
                 </div>
                 {{#if ticket.discount}}
                   <div>
@@ -99,10 +96,7 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              <Orders::TicketPrice
-                @ticket={{ticket}}
-                @currency={{this.eventCurrency}}
-                @amount={{ticket.subTotal}} />
+              {{currency-symbol this.eventCurrency}} {{format-money ticket.subTotal}}
             </td>
           </tr>
         {{/unless}}
@@ -131,12 +125,7 @@
                   {{#if this.amountEditable}}
                     <td>{{currency-symbol this.eventCurrency}}</td> <td><Input @value={{this.overridenAmount}} placeholder="Total" /></td>
                   {{else}}
-                    <td>
-                      {{#if this.orderAmount.total}}
-                      {{currency-symbol this.eventCurrency}} 
-                      {{/if}}
-                      {{format-money this.orderAmount.total}}
-                    </td>
+                    <td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td>
                   {{/if}}
                 </tr>
               </tbody>
