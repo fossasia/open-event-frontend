@@ -1,0 +1,5 @@
+{{#if (eq @ticket.type 'free')}}
+    {{t "Free"}}
+{{else}}
+    {{currency-symbol @currency}} {{format-money @amount}}
+{{/if}}
