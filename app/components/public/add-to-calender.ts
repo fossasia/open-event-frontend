@@ -45,10 +45,10 @@ export default class AddToCalender extends Component<Args> {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
     const endTime = this.endsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
-    return `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=Holly%27s%208th%20Birthday%21&startdt=${startTime}&enddt=${endTime}&body=${event.description}&location=${this.args.location}`;
+    return `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${event.description}&location=${this.args.location}`;
   }
 
-  get calendarUrls() {
+  get calendarUrls(): { name: string; url: string; }[] {
     const calendars = [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'Outlook', url: this.outlookUrl }, { name: 'Yahoo Calendar', url: this.yahooUrl }];
     return calendars;
 
