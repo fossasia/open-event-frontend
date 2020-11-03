@@ -42,7 +42,7 @@
         {{outlet}}
       </div>
       <div class="three wide column">
-        {{#if (not-eq this.session.currentRouteName 'public.cfs.new-speaker')}}
+        {{#if this.displaySideMenu}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
             <div class="ui basic segment">
               <h4>
