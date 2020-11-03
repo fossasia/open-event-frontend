@@ -4,7 +4,7 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
   get columns() {
-     [
+    return [
       {
         name          : 'Logo',
         valuePath     : 'logoUrl',
@@ -15,6 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'name',
         headerComponent : 'tables/headers/sort',
         isSortable      : true
+
       },
       {
         name          : 'Type',
@@ -28,4 +29,5 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
+
 }
