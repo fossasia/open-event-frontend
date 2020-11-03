@@ -49,7 +49,7 @@ export default class AddToCalender extends Component<Args> {
   }
 
   get calendarUrls(): { name: string; url: string; }[] {
-    const calendars = [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'Outlook', url: this.outlookUrl }, { name: 'Yahoo Calendar', url: this.yahooUrl }];
+    const calendars = [{ name: 'Google Calendar', url: this.googleUrl },{ name: 'iCal', url: this.args.event.icalUrl }, { name: 'Outlook', url: this.outlookUrl }, { name: 'Yahoo Calendar', url: this.yahooUrl }];
     return calendars;
 
   }
