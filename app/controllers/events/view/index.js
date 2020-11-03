@@ -4,7 +4,7 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
   get columns() {
-    return [
+     [
       {
         name          : 'Logo',
         valuePath     : 'logoUrl',
@@ -15,7 +15,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'name',
         headerComponent : 'tables/headers/sort',
         isSortable      : true
-
       },
       {
         name          : 'Type',
@@ -26,16 +25,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : 'Level',
         valuePath     : 'level',
         cellComponent : 'ui-table/cell/cell-sponsor-sanitize'
-      },
-      {
-        name          : 'Options',
-        valuePath     : 'id',
-        cellComponent : 'ui-table/cell/cell-sponsor-options',
-        actions       : {
-          editSponsor   : this.editSponsor.bind(this),
-          deleteSponsor : this.deleteSponsor.bind(this)
-        }
       }
     ];
   }
-
+}
