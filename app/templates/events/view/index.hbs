@@ -2,11 +2,6 @@
   <div class="row">
     <div class="eight wide column">
       <Events::View::Overview::EventSetupChecklist @data={{this.model}} />
-      <Events::View::Overview::ManageRoles @data={{this.model}} @showLink={{true}} />
-      <Events::View::Overview::EventApps />
-    </div>
-    <div class="eight wide column">
-      <Events::View::Overview::GeneralInfo @data={{this.model}} />
       <Events::View::Overview::EventSponsors
         @data={{this.model.sponsors}}
         @columns={{this.columns}}
@@ -16,7 +11,12 @@
         @sort_by={{this.sort_by}}
         @sort_dir={{this.sort_dir}}
         @filterOptions={{this.filterOptions}} />
+      <Events::View::Overview::EventApps />
+    </div>
+    <div class="eight wide column">
+      <Events::View::Overview::GeneralInfo @data={{this.model}} />
       <Events::View::Overview::EventTickets @data={{this.model}} />
+      <Events::View::Overview::ManageRoles @data={{this.model}} @showLink={{true}} />
     </div>
   </div>
 </div>
