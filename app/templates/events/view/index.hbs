@@ -6,9 +6,6 @@
     <Events::View::Overview::GeneralInfo @data={{this.model}} />
   </div>
   <div class="eight wide column">
-    <Events::View::Overview::ManageRoles @data={{this.model}} @showLink={{true}} />
-  </div>
-  <div class="eight wide column">
     <Events::View::Overview::EventSponsors
       @data={{this.model.sponsors}}
       @columns={{this.columns}}
@@ -20,9 +17,12 @@
       @filterOptions={{this.filterOptions}} />
   </div>
   <div class="eight wide column">
+    <Events::View::Overview::EventTickets @data={{this.model}} />
+  </div>
+  <div class="eight wide column">
     <Events::View::Overview::EventApps />
   </div>
   <div class="eight wide column">
-    <Events::View::Overview::EventTickets @data={{this.model}} />
+    <Events::View::Overview::ManageRoles @data={{this.model}} @showLink={{true}} />
   </div>
 </div>
