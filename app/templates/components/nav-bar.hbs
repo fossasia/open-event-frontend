@@ -5,12 +5,12 @@
       <h3>{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
-    {{#if (not this.session.isAuthenticated)}}
+    {{#if (and (not this.session.isAuthenticated) this.isEventPageRoute)}}
       <LinkTo
         @route="pricing" class="item"
         @activeClass="">{{t 'Pricing'}}</LinkTo>
     {{/if}}
-    {{#if currentRoute}}
+    {{#if this.isEventPageRoute}}
       <LinkTo
         @route="explore" class="item"
         @activeClass="">{{t 'Browse Events'}}</LinkTo>
@@ -48,7 +48,7 @@
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (and (not-eq this.routing.currentRouteName 'create') currentRoute)}}
+      {{#if (and (not-eq this.routing.currentRouteName 'create') this.isEventPageRoute)}}
         <LinkTo
           @route="create" class="item ui blue text">
           <div>
