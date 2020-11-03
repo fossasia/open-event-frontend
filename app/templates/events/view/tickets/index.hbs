@@ -4,7 +4,7 @@
   </div>
   <div class="ui {{if this.device.isMobile 'horizontal'}} three statistics">
     <div class="statistic"><div class="value">{{this.totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{this.totalAmount}}</div><div class="label">{{t 'Sales'}}({{currency-symbol this.model.eventDetail.paymentCurrency}})</div></div>
+    <div class="statistic"><div class="value">{{this.totalAmount}}</div><div class="label">{{t 'Sales'}}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}}</div></div>
     <div class="statistic"><div class="value">{{this.totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
@@ -22,7 +22,7 @@
         <th>{{t 'Order Status'}}</th>
         <th class="right aligned">{{t 'Total Tickets'}}</th>
         <th class="right aligned">{{t 'Total Orders'}}</th>
-        <th class="right aligned">{{t 'Total Sales' }}({{currency-symbol this.model.eventDetail.paymentCurrency}}) </th>
+        <th class="right aligned">{{t 'Total Sales' }}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}} </th>
         <th>{{t 'View Reports'}}</th>
       </tr>
       <tr>
@@ -144,15 +144,15 @@
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol this.model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.completed ticket.price}}</td>
+          <td class="right aligned">{{#if (mult ticket.orderStatistics.tickets.completed ticket.price)}}{{currency-symbol this.model.eventDetail.paymentCurrency}}{{/if}} {{mult ticket.orderStatistics.tickets.completed ticket.price}}</td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol this.model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.placed ticket.price}}</td>
+          <td class="right aligned">{{#if (mult ticket.orderStatistics.tickets.placed ticket.price)}}{{currency-symbol this.model.eventDetail.paymentCurrency}}{{/if}} {{mult ticket.orderStatistics.tickets.placed ticket.price}}</td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
           {{/unless}}
-          <td class="right aligned">{{currency-symbol this.model.eventDetail.paymentCurrency}} {{mult ticket.orderStatistics.tickets.pending ticket.price}}</td>
+          <td class="right aligned">{{#if (mult ticket.orderStatistics.tickets.pending ticket.price)}}{{currency-symbol this.model.eventDetail.paymentCurrency}}{{/if}} {{mult ticket.orderStatistics.tickets.pending ticket.price}}</td>
         </tr>
       {{/each}}
     </tbody>
