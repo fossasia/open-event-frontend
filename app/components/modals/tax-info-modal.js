@@ -6,7 +6,7 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { orderBy } from 'lodash-es';
 
 export default ModalBase.extend(FormMixin, {
-  isSmall : false,
+  isSmall: false,
 
   autoScrollToErrors   : true,
   isTaxIncludedInPrice : 'include',

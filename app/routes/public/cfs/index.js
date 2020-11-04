@@ -11,11 +11,18 @@ export default class IndexRoute extends Route {
     return this.l10n.t('Call for Speakers');
   }
 
+  getHash(routeInfo) {
+    if (!routeInfo) {return null}
+    const hash = (routeInfo.params['public.cfs'] || routeInfo.params)?.speaker_call_hash;
+    if (hash) {return hash}
+    return this.getHash(routeInfo.parent);
+  }
+
   async beforeModel(transition) {
     // We don't want to process or transition in fastboot mode
     // Since this is only an intermediate page
     if (this.fastboot.isFastBoot) {return}
-    const hash = transition.to.params['public.cfs'] ? transition.to.params['public.cfs'].speaker_call_hash : null;
+    const hash = this.getHash(transition.to);
     const eventDetails = this.modelFor('public');
     const speakersCall = await eventDetails.get('speakersCall');
     /*

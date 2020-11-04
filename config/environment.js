@@ -34,9 +34,8 @@ module.exports = function(environment) {
     },
 
     moment: {
-      includeTimezone: 'subset'
-      /* ,
-           localeOutputPath : 'assets/moment-locales'*/
+      includeTimezone  : 'subset',
+      localeOutputPath : 'assets/moment-locales'
     },
 
     pace: {

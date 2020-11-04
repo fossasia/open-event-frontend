@@ -20,7 +20,9 @@ export default class AddOrderController extends Controller {
       const { orderInput } = this;
       try {
         const order = await this.loader.post('/orders/create-order', orderInput);
-        this.notify.success(this.l10n.t(`Order details saved. Please fill further details within ${this.settings.orderExpiryTime} minutes.`));
+        this.notify.success(this.l10n.t('Order details saved. Please fill further details within {{time}} minutes.', {
+          time: this.settings.orderExpiryTime
+        }));
         this.transitionToRoute('orders.new', order.data.attributes.identifier);
       } catch (e) {
         console.error('Error while saving order', e);
