@@ -1,6 +1,8 @@
 import Component from '@glimmer/component';
 import moment, { Moment } from 'moment';
 import Event from 'open-event-frontend/models/event';
+import { inject as service } from '@ember/service';
+
 
 interface Args {
   event: Event,
@@ -8,6 +10,8 @@ interface Args {
 }
 
 export default class AddToCalender extends Component<Args> {
+
+  @service loader: any;
 
   get timezone(): string {
     return moment.tz(this.args.event.timezone).format('z');
@@ -48,10 +52,13 @@ export default class AddToCalender extends Component<Args> {
     return `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${event.description}&location=${this.args.location}`;
   }
 
-  get calendarUrls(): { name: string; url: string; }[] {
-    const calendars = [{ name: 'Google Calendar', url: this.googleUrl },{ name: 'iCal', url: this.args.event.icalUrl }, { name: 'Outlook', url: this.outlookUrl }, { name: 'Yahoo Calendar', url: this.yahooUrl }];
-    return calendars;
+  get iCalUrl(): string {
+    const host = this.loader.host();
+    return host + '/v1/events/' + this.args.event.identifier + '.ics?download';
+  }
 
+  get calendarUrls(): { name: string; url: string; }[] {
+    return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }];
   }
 
 }
