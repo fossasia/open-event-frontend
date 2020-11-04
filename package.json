@@ -17,7 +17,10 @@
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:js": "eslint --cache --fix app ember-cli-build.js testem.js tests config",
     "lint:scss": "sass-lint -c .sass-lint.yml --verbose",
-    "lint:hbs": "ember-template-lint --fix ."
+    "lint:hbs": "ember-template-lint --fix .",
+    "l10n:extract": "node scripts/l10n.js extract",
+    "l10n:update": "node scripts/l10n.js update",
+    "l10n:generate": "node scripts/l10n.js extract"
   },
   "pre-commit": {
     "run": [

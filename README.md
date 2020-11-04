@@ -35,6 +35,12 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 **Note**: Please follow [installation steps](/docs/installation/local.md#steps) listed above carefully before running 
 
+Unfortunately, no one reads the note above, so please just run the following commands when setting up for the first time:
+-   `yarn`
+-   `cp .env.example .env`
+-   `yarn l10n:generate`
+
+Running:
 -   `yarn start`
 -   Visit your app at [http://localhost:4200](http://localhost:4200).
 
