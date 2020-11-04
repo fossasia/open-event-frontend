@@ -16,12 +16,12 @@ export default class IndexController extends Controller {
   }
 
   @action
-  async createNewUserViaEmail(email) {
+  async createNewUserViaEmail(email, password) {
     this.set('isLoading', true);
     const newUser = this.store.createRecord('user', {
       email,
-      'password'               : (Math.random() * 10).toString(16),
-      'wasRegisteredWithOrder' : true
+      password,
+      'wasRegisteredWithOrder': true
     });
     newUser.save()
       .then(() => {
