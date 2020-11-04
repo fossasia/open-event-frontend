@@ -24,7 +24,7 @@ install: yarn
 
 script:
   - touch .env
-  - node scripts/l10n.js generate
+  - yarn l10n:generate
   - yarn lint
   - COVERAGE=true yarn test
   - ROOT_URL=open-event-frontend ember build -prod
