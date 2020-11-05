@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <td>{{t 'Sales (amount)'}}</td>
-        <td>{{currency-symbol this.data.event.paymentCurrency this.sales}} {{format-money this.sales}}</td>
+        <td><CurrencyAmount @currency={{currency-symbol this.data.event.paymentCurrency}} @amount={{format-money this.sales}}/></td>
       </tr>
     </tbody>
   </table>
