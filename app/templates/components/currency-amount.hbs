@@ -1,9 +1,4 @@
 {{#if (gt @amount 0)}}
     {{currency-symbol @currency}}
 {{/if}}
-
-{{#if (eq @format false)}}
-    {{@amount}}
-{{else}} 
-    {{format-money @amount}}
-{{/if}}
+{{format-money @amount}}
