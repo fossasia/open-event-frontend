@@ -7,12 +7,11 @@ module('Integration | Component | currency-amount', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{currency-amount}}`);
+    await render(hbs`<CurrencyAmount @amount={{14}} @currency={{'INR'}}/>`);
+    assert.equal(this.element.textContent.trim(), '₹ 14.00');
 
-    assert.equal(this.element.textContent.trim(), '');
-
+    await render(hbs`<CurrencyAmount @amount={{0}} @currency={{'INR'}}/>`);
+    assert.equal(this.element.textContent.trim(), '0.00');
   });
 });
