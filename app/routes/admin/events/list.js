@@ -122,13 +122,9 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       include        : 'owner,organizers,coorganizers,track-organizers,registrars,moderators',
       filter         : filterOptions,
       'page[size]'   : params.per_page || 10,
-      'page[number]' : params.page || 1
+      'page[number]' : params.page || 1,
+      sort           : params.sort_by || 'starts-at'
     };
-    // add condition for default sorting the table by date
-    if (!params.sort_by || !params.sort_dir) {
-      params.sort_by = 'starts-at';
-      params.sort_dir = 'DSC';
-    }
     queryString = this.applySortFilters(queryString, params);
     return  this.asArray(this.store.query('event', queryString));
   }
