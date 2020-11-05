@@ -1,5 +1,5 @@
 {{! This will be automatically rendered if any model fetch fails }}
-<div class="ui container">
+<div class = "ui container">
   {{#if (eq this.model.errors.0.status 404)}}
     <Errors::NotFound />
   {{else if (eq this.model.errors.0.status 403)}}

@@ -1,9 +1,9 @@
-<div class="content">
-  <div class="header">{{t 'Tickets'}}</div>
+<div class = "content">
+  <div class = "header">{{t 'Tickets'}}</div>
 </div>
-<div class="content">
-  <h4 class="ui header">{{t 'Summary'}}</h4>
-  <table class="ui very basic compact unstackable table">
+<div class = "content">
+  <h4 class = "ui header">{{t 'Summary'}}</h4>
+  <table class = "ui very basic compact unstackable table">
     <tbody>
       <tr>
         <td>{{t 'Total tickets sold'}}</td>
@@ -19,8 +19,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 class="ui header">{{t 'Details'}}</h4>
-  <table class="ui very basic compact unstackable table">
+  <h4 class = "ui header">{{t 'Details'}}</h4>
+  <table class = "ui very basic compact unstackable table">
     <thead>
       <tr>
         <th>{{t 'Type'}}</th>
@@ -38,7 +38,7 @@
           <td>{{sub ticket.quantity (add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed)}}</td>
         </tr>
       {{else}}
-        <div class="ui basic segment">
+        <div class = "ui basic segment">
           {{t 'There are no tickets for this event'}}
         </div>
       {{/each}}

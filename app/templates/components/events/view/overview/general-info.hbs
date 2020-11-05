@@ -1,17 +1,17 @@
-<div class="content">
-  <div class="header">{{t 'Overview'}}</div>
+<div class = "content">
+  <div class = "header">{{t 'Overview'}}</div>
 </div>
-<div class="content">
-  <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
+<div class = "content">
+  <div class = "ui {{if this.device.isMobile 'small' 'medium'}} header">
     {{#if (eq this.data.event.state 'published')}}
-      {{t 'Your event is live at'}} <a href="{{this.data.event.url}}" rel="noopener noreferrer">{{this.data.event.url}}</a>
+      {{t 'Your event is live at'}} <a href = "{{this.data.event.url}}" rel = "noopener noreferrer">{{this.data.event.url}}</a>
     {{else}}
       {{t 'Your event is not live yet. Make it live now'}}
     {{/if}}
   </div>
 </div>
-<div class="content">
-  <table class="ui very basic table">
+<div class = "content">
+  <table class = "ui very basic table">
     <tbody>
       <tr>
         <td><strong>{{t 'Location'}}</strong></td>
@@ -19,7 +19,7 @@
           {{#if this.data.event.locationName}}
             {{this.data.event.locationName}}
           {{else}}
-            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
+            <a href = "{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
           {{/if}}
         </td>
       </tr>
@@ -39,7 +39,7 @@
               {{if (not-eq index 0) ','}} {{sessionType.name}}
             {{~/each}}
           {{else}}
-            {{t 'No Session Type present. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+            {{t 'No Session Type present. '}} <a href = "{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add.'}}</a>
           {{/if}}
         </td>
       </tr>
@@ -48,10 +48,10 @@
         <td>
           {{#if this.data.socialLinks}}
             {{#each this.data.socialLinks as |socialLink index|~}}
-              {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
+              {{if (not-eq index 0) ','}} <a href = "{{socialLink.link}}" target = "_blank" rel = "noopener noreferrer">{{socialLink.name}}</a>
             {{~/each}}
           {{else}}
-            {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.basic-details'}}#social-links">{{t 'Click here to add'}}</a>
+            {{t 'No social links present. '}} <a href = "{{href-to 'events.view.edit.basic-details'}}#social-links">{{t 'Click here to add.'}}</a>
           {{/if}}
         </td>
       </tr>
