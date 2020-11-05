@@ -1,24 +1,29 @@
-<div class="content">
+<div class="content d-flex" style="align-items: center;">
+  <div class="header">{{t 'Event sponsors'}}</div>
   <LinkTo
   @route="events.view.edit.sponsors"
-  @tagName="button" class="ui right floated blue button">
+  @tagName="button" class="ui right floated blue button item ml-auto">
     {{t 'Edit'}}
   </LinkTo>
-  <div class="header">{{t 'Event sponsors'}}</div>
 </div>
-<div class="content" style="width:94%;margin-left:3%;">
-  <Tables::Default
-    @columns={{this.columns}}
-    @rows={{this.data.data}}
-    @currentPage={{this.page}}
-    @pageSize={{this.per_page}}
-    @searchQuery={{this.search}}
-    @hideSearchBox={{true}}
-    @sortBy={{this.sort_by}}
-    @sortDir={{this.sort_dir}}
-    @metaData={{this.data.meta}}
-    @filterOptions={{this.filterOptions}}
-    @widthConstraint="eq-container"
-    @resizeMode="fluid"
-    @fillMode="equal-column" />
+
+<div class="content">
+  <div class="ui centered grid">
+    <div class="fifteen wide column">
+      <Tables::Default
+        @columns={{this.columns}}
+        @rows={{this.data.data}}
+        @currentPage={{this.page}}
+        @pageSize={{this.per_page}}
+        @searchQuery={{this.search}}
+        @notShowSearchBox={{true}}
+        @sortBy={{this.sort_by}}
+        @sortDir={{this.sort_dir}}
+        @metaData={{this.data.meta}}
+        @filterOptions={{this.filterOptions}}
+        @widthConstraint="eq-container"
+        @resizeMode="fluid"
+        @fillMode="equal-column" />
+    </div>
+  </div>
 </div>
