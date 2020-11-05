@@ -74,17 +74,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   async deleteSpeaker(speaker_id) {
     this.set('isLoading', true);
     const speaker =  this.store.peekRecord('speaker', speaker_id, { backgroundReload: true });
-    speaker.destroyRecord()
-      .then(() => {
-        this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
-        this.refreshModel.bind(this)();
-      }) 
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
+    try {
+      await speaker.destroyRecord();
+      this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
+      this.refreshModel.bind(this)();
+    } catch (e) {
+      console.warn(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+    }
+    this.set('isLoading', false);
   }
 
   @action
