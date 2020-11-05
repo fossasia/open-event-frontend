@@ -21,7 +21,7 @@ msgstr ""
 
 #: app/components/account/contact-info-section.js:22:23
 #: app/components/forms/login-form.js:25:23
-#: app/components/forms/orders/guest-order-form.js:18:23
+#: app/components/forms/orders/guest-order-form.js:24:23
 #: app/components/forms/reset-password-form.js:22:23
 #: app/components/forms/user-profile-form.js:37:23
 msgid "Please enter your email ID"
@@ -33,7 +33,7 @@ msgstr ""
 #: app/components/forms/admin/settings/system-form.js:155:23
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
 #: app/components/forms/login-form.js:29:23
-#: app/components/forms/orders/guest-order-form.js:22:23
+#: app/components/forms/orders/guest-order-form.js:28:23
 #: app/components/forms/orders/order-form.js:91:19
 #: app/components/forms/orders/order-form.js:385:23
 #: app/components/forms/register-form.js:21:23
@@ -132,12 +132,14 @@ msgid "Please enter a new password"
 msgstr ""
 
 #: app/components/account/password-section.js:29:23
+#: app/components/forms/orders/guest-order-form.js:42:23
 #: app/components/forms/register-form.js:34:23
 #: app/components/forms/reset-password-form.js:40:23
 msgid "Your password must have at least {ruleValue} characters"
 msgstr ""
 
 #: app/components/account/password-section.js:38:23
+#: app/components/forms/orders/guest-order-form.js:52:23
 #: app/components/forms/register-form.js:43:23
 #: app/components/forms/reset-password-form.js:50:23
 msgid "Passwords do not match"
@@ -220,7 +222,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-buttons.hbs:3:22
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:16:22
 #: app/templates/components/ui-table/cell/cell-event.hbs:7:22
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:5:22
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:4:20
 msgid "View"
 msgstr ""
 
@@ -607,7 +609,7 @@ msgid "Please select atleast 1 ticket."
 msgstr ""
 
 #: app/components/forms/login-form.js:38:23
-#: app/components/forms/orders/guest-order-form.js:31:23
+#: app/components/forms/orders/guest-order-form.js:38:23
 msgid "Please enter your password"
 msgstr ""
 
@@ -1098,7 +1100,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:21:22
 #: app/templates/components/ui-table/cell/cell-event.hbs:12:22
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:2:20
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:22
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:7:20
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:2:20
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:2:20
 msgid "Edit"
@@ -1121,7 +1123,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-code-buttons.hbs:8:20
 #: app/templates/components/ui-table/cell/cell-event.hbs:21:22
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:5:20
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:20
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:20
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:16:20
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:16:20
 msgid "Delete"
@@ -1312,6 +1314,15 @@ msgstr ""
 #: app/components/notification-dropdown.js:29:28
 #: app/mixins/notifications.js:9:30
 msgid "Marked as Read successfully"
+msgstr ""
+
+#: app/components/public/add-to-calender.hbs:6:140
+#: app/components/public/add-to-calender.hbs:8:86
+msgid "to"
+msgstr ""
+
+#: app/components/public/add-to-calender.hbs:13:8
+msgid "Add to Calendar"
 msgstr ""
 
 #: app/components/public/call-for-speakers.js:26:24
@@ -1793,6 +1804,7 @@ msgstr ""
 #: app/routes/events/view/edit/sponsors.js:8:11
 #: app/templates/components/events/view/export/api-response.hbs:25:39
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:58:12
+#: app/templates/components/events/view/overview/event-sponsors.hbs:7:22
 #: app/templates/components/forms/wizard/sponsors-step.hbs:14:16
 #: app/templates/components/public/side-menu.hbs:50:10
 #: app/templates/components/public/side-menu.hbs:54:10
@@ -1823,7 +1835,7 @@ msgstr ""
 
 #: app/routes/account.js:7:11 app/routes/admin/users/view/account.js:8:11
 #: app/templates/admin/users/view/account.hbs:2:24
-#: app/templates/components/nav-bar.hbs:37:65
+#: app/templates/components/nav-bar.hbs:39:65
 #: app/templates/components/side-bar.hbs:21:57
 msgid "Account"
 msgstr ""
@@ -1854,7 +1866,7 @@ msgstr ""
 #: app/routes/notifications/all.js:10:15
 #: app/templates/account/billing/invoices.hbs:6:10
 #: app/templates/admin/sessions.hbs:6:10
-#: app/templates/components/events/view/overview/general-info.hbs:73:12
+#: app/templates/components/events/view/overview/general-info.hbs:62:12
 #: app/templates/components/public/session-filter.hbs:3:4
 #: app/templates/events/view/sessions.hbs:8:14
 #: app/templates/events/view/speakers.hbs:8:14
@@ -1883,6 +1895,7 @@ msgstr ""
 #: app/routes/account/password.js:8:11 app/templates/account.hbs:12:8
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:74:6
 #: app/templates/components/forms/login-form.hbs:28:120
+#: app/templates/components/forms/orders/guest-order-form.hbs:31:45
 #: app/templates/components/forms/register-form.hbs:21:122
 #: app/templates/components/forms/reset-password-form.hbs:23:102
 msgid "Password"
@@ -1905,7 +1918,7 @@ msgstr ""
 msgid "Social Links"
 msgstr ""
 
-#: app/routes/admin/content/pages.js:7:11 app/routes/pages.js:7:26
+#: app/routes/admin/content/pages.js:7:11 app/routes/pages.js:12:42
 #: app/templates/admin/content.hbs:9:10
 #: app/templates/admin/content/pages.hbs:6:32
 msgid "Pages"
@@ -2043,6 +2056,7 @@ msgstr ""
 
 #: app/routes/admin/sales/index.js:10:11
 #: app/routes/events/view/tickets/index.js:7:11
+#: app/templates/components/events/view/overview/general-info.hbs:2:22
 #: app/templates/events/view.hbs:26:10
 #: app/templates/events/view/tickets.hbs:6:10
 msgid "Overview"
@@ -2050,7 +2064,7 @@ msgstr ""
 
 #: app/routes/admin/sales/locations.js:7:11
 #: app/templates/admin/sales/locations.hbs:10:28
-#: app/templates/components/events/view/overview/general-info.hbs:28:20
+#: app/templates/components/events/view/overview/general-info.hbs:17:20
 #: app/templates/components/forms/wizard/basic-details-step.hbs:18:78
 msgid "Location"
 msgstr "位置"
@@ -2176,7 +2190,7 @@ msgstr ""
 
 #: app/routes/admin/users/view/tickets.js:8:11 app/routes/my-tickets.js:8:11
 #: app/templates/admin/users/view/tickets.hbs:2:24
-#: app/templates/components/nav-bar.hbs:33:60
+#: app/templates/components/nav-bar.hbs:35:60
 #: app/templates/components/side-bar.hbs:17:52
 msgid "My Tickets"
 msgstr "我的門票"
@@ -2214,8 +2228,8 @@ msgstr "講者"
 #: app/routes/events/view/speakers/list.js:8:15
 #: app/routes/events/view/tickets/attendees/list.js:10:15
 #: app/routes/events/view/tickets/orders/list.js:10:15
-#: app/templates/components/events/view/overview/general-info.hbs:75:14
-#: app/templates/components/events/view/overview/general-info.hbs:89:14
+#: app/templates/components/events/view/overview/general-info.hbs:64:14
+#: app/templates/components/events/view/overview/general-info.hbs:78:14
 #: app/templates/components/orders/order-summary.hbs:28:10
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:6:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:6:22
@@ -2229,8 +2243,8 @@ msgstr "待定中"
 
 #: app/routes/events/view/speakers/list.js:10:15
 #: app/templates/admin/index.hbs:21:12
-#: app/templates/components/events/view/overview/general-info.hbs:74:14
-#: app/templates/components/events/view/overview/general-info.hbs:88:14
+#: app/templates/components/events/view/overview/general-info.hbs:63:14
+#: app/templates/components/events/view/overview/general-info.hbs:77:14
 #: app/templates/components/events/view/overview/manage-roles.hbs:13:105
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:4:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:4:22
@@ -2241,8 +2255,8 @@ msgstr "已接受"
 
 #: app/routes/events/view/speakers/list.js:12:15
 #: app/templates/admin/index.hbs:41:12
-#: app/templates/components/events/view/overview/general-info.hbs:76:14
-#: app/templates/components/events/view/overview/general-info.hbs:90:14
+#: app/templates/components/events/view/overview/general-info.hbs:65:14
+#: app/templates/components/events/view/overview/general-info.hbs:79:14
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:7:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:7:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:7:22
@@ -2294,7 +2308,7 @@ msgstr ""
 #: app/routes/events/view/tickets/attendees/list.js:12:15
 #: app/routes/events/view/tickets/discount-codes/list.js:13:15
 #: app/routes/events/view/tickets/orders/list.js:12:15
-#: app/templates/components/orders/order-summary.hbs:151:8
+#: app/templates/components/orders/order-summary.hbs:159:8
 #: app/templates/components/ui-table/cell/cell-label.hbs:3:37
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-status.hbs:3:37
 #: app/templates/events/view/tickets/access-codes.hbs:28:12
@@ -2326,7 +2340,7 @@ msgstr "放置"
 
 #: app/routes/events/view/tickets/attendees/list.js:14:15
 #: app/routes/events/view/tickets/orders/list.js:14:15
-#: app/templates/components/orders/order-summary.hbs:165:8
+#: app/templates/components/orders/order-summary.hbs:173:8
 #: app/templates/events/view/tickets/attendees.hbs:69:10
 #: app/templates/events/view/tickets/index.hbs:30:16
 #: app/templates/events/view/tickets/orders.hbs:69:10
@@ -2362,7 +2376,7 @@ msgstr ""
 #: app/routes/login.js:8:11 app/templates/components/forms/login-form.hbs:5:31
 #: app/templates/components/forms/login-form.hbs:39:16
 #: app/templates/components/modals/login-signup-modal.hbs:12:8
-#: app/templates/components/nav-bar.hbs:47:51
+#: app/templates/components/nav-bar.hbs:49:51
 #: app/templates/components/side-bar.hbs:29:47
 msgid "Login"
 msgstr ""
@@ -2418,6 +2432,25 @@ msgstr ""
 msgid "Placed Order"
 msgstr ""
 
+#: app/routes/pages.js:8:12 app/templates/components/footer-main.hbs:103:10
+msgid "Terms"
+msgstr ""
+
+#: app/routes/pages.js:8:34 app/templates/components/footer-main.hbs:104:10
+msgid "Contact"
+msgstr ""
+
+#: app/routes/pages.js:8:58 app/templates/components/footer-main.hbs:105:10
+#: app/templates/components/forms/wizard/other-details-step.hbs:34:33
+#: app/templates/components/public/ticket-list.hbs:201:12
+msgid "Refund Policy"
+msgstr ""
+
+#: app/routes/pages.js:8:88 app/templates/components/footer-main.hbs:106:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:29
+msgid "Privacy"
+msgstr ""
+
 #: app/routes/public/cfs.js:7:11 app/routes/public/cfs/index.js:11:11
 #: app/templates/components/public/call-for-speakers.hbs:3:2
 #: app/templates/components/public/side-menu.hbs:44:8
@@ -2435,10 +2468,11 @@ msgstr "編輯議程"
 #: app/routes/public/cfs/edit-speaker.js:7:11
 #: app/templates/events/view/speakers/edit.hbs:4:6
 #: app/templates/public/cfs/edit-speaker.hbs:4:6
+#: app/templates/public/speaker/view.hbs:8:83
 msgid "Edit Speaker"
 msgstr ""
 
-#: app/routes/public/cfs/index.js:29:24
+#: app/routes/public/cfs/index.js:36:24
 msgid "Call For Speakers has not been issued yet."
 msgstr ""
 
@@ -2463,6 +2497,7 @@ msgid "Schedule"
 msgstr ""
 
 #: app/routes/register.js:8:11
+#: app/templates/components/forms/orders/guest-order-form.hbs:39:6
 #: app/templates/components/forms/register-form.hbs:3:27
 #: app/templates/components/forms/register-form.hbs:42:10
 msgid "Register"
@@ -2511,7 +2546,7 @@ msgstr ""
 
 #: app/templates/admin.hbs:5:8
 #: app/templates/admin/permissions/system-roles.hbs:27:10
-#: app/templates/components/nav-bar.hbs:39:57
+#: app/templates/components/nav-bar.hbs:41:57
 #: app/templates/components/side-bar.hbs:23:49
 #: app/templates/components/ui-table/cell/admin/users/cell-system-roles.hbs:9:6
 msgid "Admin"
@@ -2749,7 +2784,6 @@ msgid "Anonymous User"
 msgstr ""
 
 #: app/templates/admin/reports/kubernetes-server-logs.hbs:2:2
-#: app/templates/components/events/view/overview/general-info.hbs:20:12
 msgid "Coming Soon"
 msgstr ""
 
@@ -2880,7 +2914,7 @@ msgid "Profile Info"
 msgstr ""
 
 #: app/templates/admin/users/view/sessions.hbs:2:24
-#: app/templates/components/nav-bar.hbs:34:61
+#: app/templates/components/nav-bar.hbs:36:61
 #: app/templates/components/side-bar.hbs:18:53
 #: app/templates/my-sessions.hbs:3:24
 msgid "My Sessions"
@@ -3387,7 +3421,7 @@ msgid "Generate Web App"
 msgstr "生成 Web App"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:2:22
-msgid "Event setup checklist"
+msgid "Event Checklist"
 msgstr ""
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:15:14
@@ -3439,10 +3473,6 @@ msgstr ""
 msgid "Add Sponsors"
 msgstr ""
 
-#: app/templates/components/events/view/overview/event-sponsors.hbs:7:22
-msgid "Event sponsors"
-msgstr ""
-
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 msgid "Summary"
 msgstr ""
@@ -3468,7 +3498,7 @@ msgid "Sold"
 msgstr ""
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:28:12
-#: app/templates/components/public/ticket-list.hbs:124:24
+#: app/templates/components/public/ticket-list.hbs:130:24
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:3:22
 msgid "Total"
 msgstr "總計"
@@ -3481,10 +3511,6 @@ msgstr ""
 msgid "There are no tickets for this event"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:2:22
-msgid "General info"
-msgstr ""
-
 #: app/templates/components/events/view/overview/general-info.hbs:7:6
 msgid "Your event is live at"
 msgstr ""
@@ -3493,49 +3519,45 @@ msgstr ""
 msgid "Your event is not live yet. Make it live now"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:17:20
-msgid "No. of Revisions"
-msgstr ""
-
-#: app/templates/components/events/view/overview/general-info.hbs:33:67
+#: app/templates/components/events/view/overview/general-info.hbs:22:67
 msgid "Click to add location."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:38:20
+#: app/templates/components/events/view/overview/general-info.hbs:27:20
 msgid "Start time"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:42:20
+#: app/templates/components/events/view/overview/general-info.hbs:31:20
 msgid "End time"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:46:20
+#: app/templates/components/events/view/overview/general-info.hbs:35:20
 msgid "Session types"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:53:12
+#: app/templates/components/events/view/overview/general-info.hbs:42:12
 msgid "No Session Type present."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:53:105
-#: app/templates/components/events/view/overview/general-info.hbs:65:114
+#: app/templates/components/events/view/overview/general-info.hbs:42:105
+#: app/templates/components/events/view/overview/general-info.hbs:54:114
 msgid "Click here to add"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:58:20
+#: app/templates/components/events/view/overview/general-info.hbs:47:20
 msgid "Links and Social Media"
 msgstr "連結和社交媒體"
 
-#: app/templates/components/events/view/overview/general-info.hbs:65:12
+#: app/templates/components/events/view/overview/general-info.hbs:54:12
 msgid "No social links present."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:70:20
+#: app/templates/components/events/view/overview/general-info.hbs:59:20
 msgid "No. of Speakers"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:77:14
-#: app/templates/components/events/view/overview/general-info.hbs:91:14
+#: app/templates/components/events/view/overview/general-info.hbs:66:14
+#: app/templates/components/events/view/overview/general-info.hbs:80:14
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:5:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:5:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:5:22
@@ -3543,26 +3565,26 @@ msgstr ""
 msgid "Confirmed"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:79:12
-#: app/templates/components/events/view/overview/general-info.hbs:93:12
+#: app/templates/components/events/view/overview/general-info.hbs:68:12
+#: app/templates/components/events/view/overview/general-info.hbs:82:12
 msgid "Sessions and Speakers not enabled."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:84:20
+#: app/templates/components/events/view/overview/general-info.hbs:73:20
 msgid "No. of Sessions"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:87:12
+#: app/templates/components/events/view/overview/general-info.hbs:76:12
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:3:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:3:22
 msgid "Submitted"
 msgstr "已提交"
 
-#: app/templates/components/events/view/overview/general-info.hbs:98:20
+#: app/templates/components/events/view/overview/general-info.hbs:87:20
 msgid "No. of Sponsors"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:99:81
+#: app/templates/components/events/view/overview/general-info.hbs:88:81
 msgid "No Sponsor added yet."
 msgstr ""
 
@@ -3641,6 +3663,7 @@ msgstr "門票類型"
 
 #: app/templates/components/explore/side-bar.hbs:134:23
 #: app/templates/components/order-card.hbs:41:12
+#: app/templates/components/orders/ticket-price.hbs:2:4
 msgid "Free"
 msgstr ""
 
@@ -3700,7 +3723,7 @@ msgid "Find Events"
 msgstr ""
 
 #: app/templates/components/footer-main.hbs:29:10
-#: app/templates/components/nav-bar.hbs:15:24
+#: app/templates/components/nav-bar.hbs:16:24
 #: app/templates/components/side-bar.hbs:4:20
 msgid "Browse Events"
 msgstr "瀏覽活動"
@@ -4802,7 +4825,7 @@ msgstr ""
 msgid "Please enter your email address to continue."
 msgstr ""
 
-#: app/templates/components/forms/orders/guest-order-form.hbs:10:104
+#: app/templates/components/forms/orders/guest-order-form.hbs:10:102
 msgid "Email Address"
 msgstr ""
 
@@ -4818,7 +4841,16 @@ msgstr ""
 msgid "Sign In"
 msgstr ""
 
-#: app/templates/components/forms/orders/guest-order-form.hbs:30:6
+#: app/templates/components/forms/orders/guest-order-form.hbs:29:31
+msgid "Please set up a password to continue."
+msgstr ""
+
+#: app/templates/components/forms/orders/guest-order-form.hbs:35:52
+#: app/templates/components/forms/reset-password-form.hbs:33:113
+msgid "Confirm Password"
+msgstr ""
+
+#: app/templates/components/forms/orders/guest-order-form.hbs:43:6
 msgid "Continue"
 msgstr "繼續"
 
@@ -4939,10 +4971,6 @@ msgstr ""
 
 #: app/templates/components/forms/reset-password-form.hbs:5:31
 msgid "Forgot Password"
-msgstr ""
-
-#: app/templates/components/forms/reset-password-form.hbs:33:113
-msgid "Confirm Password"
 msgstr ""
 
 #: app/templates/components/forms/session-speaker-form.hbs:5:8
@@ -5338,11 +5366,6 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: app/templates/components/forms/wizard/other-details-step.hbs:34:33
-#: app/templates/components/public/ticket-list.hbs:195:12
-msgid "Refund Policy"
-msgstr ""
-
 #: app/templates/components/forms/wizard/other-details-step.hbs:36:8
 msgid "Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the eventyay platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the eventyay platform."
 msgstr ""
@@ -5420,10 +5443,6 @@ msgstr ""
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:29
-msgid "Privacy"
-msgstr ""
-
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:173:22
 msgid "Public"
 msgstr "公開"
@@ -5441,7 +5460,7 @@ msgid "Do not display this publicly. Proposals can be submitted only using the p
 msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:193:8
-msgid "Customize registration form"
+msgid "Customize submission forms"
 msgstr ""
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:26:8
@@ -5859,18 +5878,18 @@ msgstr ""
 msgid "Please enter your Email ID to confirm that you want to delete the account"
 msgstr ""
 
-#: app/templates/components/nav-bar.hbs:35:68
+#: app/templates/components/nav-bar.hbs:37:68
 #: app/templates/components/side-bar.hbs:19:60
 msgid "Manage Events"
 msgstr "管理活動"
 
-#: app/templates/components/nav-bar.hbs:42:91
+#: app/templates/components/nav-bar.hbs:44:91
 #: app/templates/components/side-bar.hbs:26:62
 msgid "Logout"
 msgstr "登出"
 
-#: app/templates/components/nav-bar.hbs:53:12
-#: app/templates/components/nav-bar.hbs:77:10
+#: app/templates/components/nav-bar.hbs:55:12
+#: app/templates/components/nav-bar.hbs:79:10
 #: app/templates/components/welcome-header.hbs:4:4
 #: app/templates/pricing.hbs:176:10
 msgid "Create Event"
@@ -5941,35 +5960,35 @@ msgid "Subtotal"
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:61:35
-#: app/templates/components/public/ticket-list.hbs:116:27
+#: app/templates/components/public/ticket-list.hbs:122:27
 msgid "Tax"
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:99:20
+#: app/templates/components/orders/order-summary.hbs:104:20
 msgid "The price is inclusive of all taxes."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:104:22
+#: app/templates/components/orders/order-summary.hbs:109:22
 msgid "N/A"
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:135:16
+#: app/templates/components/orders/order-summary.hbs:143:16
 msgid "Grand Total"
 msgstr "總計"
 
-#: app/templates/components/orders/order-summary.hbs:154:8
+#: app/templates/components/orders/order-summary.hbs:162:8
 msgid "Your order expired because you did not complete registration in time."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:156:8
+#: app/templates/components/orders/order-summary.hbs:164:8
 msgid "Please click on event link given on the right to order your tickets again."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:168:8
+#: app/templates/components/orders/order-summary.hbs:176:8
 msgid "Your order has been cancelled due to some unavoidable circumstances."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:170:8
+#: app/templates/components/orders/order-summary.hbs:178:8
 msgid "Please contact the event organizer for further details."
 msgstr ""
 
@@ -6005,19 +6024,23 @@ msgstr ""
 msgid "Submitted Sessions"
 msgstr "已提交的議程"
 
-#: app/templates/components/public/call-for-speakers.hbs:41:5
-msgid "No session have been submitted"
+#: app/templates/components/public/call-for-speakers.hbs:42:7
+msgid "You have not submitted any sessions."
 msgstr ""
 
-#: app/templates/components/public/call-for-speakers.hbs:46:6
+#: app/templates/components/public/call-for-speakers.hbs:44:7
+msgid "You need to login to submit and view sessions."
+msgstr ""
+
+#: app/templates/components/public/call-for-speakers.hbs:50:6
 msgid "Add Speaker Details"
 msgstr ""
 
-#: app/templates/components/public/call-for-speakers.hbs:52:76
+#: app/templates/components/public/call-for-speakers.hbs:56:76
 msgid "Edit Speaker Details"
 msgstr ""
 
-#: app/templates/components/public/call-for-speakers.hbs:58:4
+#: app/templates/components/public/call-for-speakers.hbs:62:4
 msgid "Add New Session"
 msgstr ""
 
@@ -6048,30 +6071,30 @@ msgid "Getting here"
 msgstr ""
 
 #: app/templates/components/public/social-links.hbs:6:79
-msgid "External event URL"
+msgid "Event Site"
 msgstr ""
 
 #: app/templates/components/public/ticket-list.hbs:43:54
 msgid "Enter Donation"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:64:22
+#: app/templates/components/public/ticket-list.hbs:67:22
 msgid "includes"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:113:26
+#: app/templates/components/public/ticket-list.hbs:119:26
 msgid "Sub-Total"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:148:28
+#: app/templates/components/public/ticket-list.hbs:154:28
 msgid "Promotional Code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:170:57
+#: app/templates/components/public/ticket-list.hbs:176:57
 msgid "Enter promotional code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:189:10
+#: app/templates/components/public/ticket-list.hbs:195:10
 msgid "Order Now"
 msgstr "立刻下訂"
 
@@ -6284,7 +6307,7 @@ msgstr ""
 msgid "Lock Session"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:60
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:60
 msgid "Are you sure you would like to delete this Speaker?"
 msgstr ""
 

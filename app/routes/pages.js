@@ -3,8 +3,13 @@ import Route from '@ember/routing/route';
 
 @classic
 export default class PagesRoute extends Route {
+  // Enumerate possible page names for extraction for localization
+  pages() {
+    return [this.l10n.t('Terms'), this.l10n.t('Contact'), this.l10n.t('Refund Policy'), this.l10n.t('Privacy')];
+  }
+
   titleToken(model) {
-    return model?.name || this.l10n.t('Pages');
+    return this.l10n.tVar(model?.name) || this.l10n.t('Pages');
   }
 
   model(params) {
