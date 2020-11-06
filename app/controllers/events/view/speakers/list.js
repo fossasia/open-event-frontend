@@ -78,7 +78,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await speaker.destroyRecord();
       this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
     } catch (e) {
-      console.warn(e);
+      console.error('Error while deleting speaker', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
     this.set('isLoading', false);
@@ -102,7 +102,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await speaker.save();
       this.notify.success(this.l10n.t('Speaker details modified successfully'));
     } catch (e) {
-      console.warn(e);
+      console.error('Error while updating speaker', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
   }
