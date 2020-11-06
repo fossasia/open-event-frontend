@@ -33,7 +33,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ## Running / Development
 
-[![Open Event Frontened](https://github.com/fossasia/open-event-frontend/blob/development/docs/images/Frontend_Branding.png)](https://asciinema.org/a/370458?speed=5&autoplay=1)
+[![asciicast](docs/images/Asci.png)](https://asciinema.org/a/370458?speed=5&autoplay=1)
 
 Click on above image to see installation video
 
