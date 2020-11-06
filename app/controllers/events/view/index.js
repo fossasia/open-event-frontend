@@ -52,7 +52,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while deleting sponsor', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'),
           {
             id: 'spons_deleted_error'

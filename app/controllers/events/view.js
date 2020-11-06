@@ -14,7 +14,8 @@ export default class extends Controller {
             id: 'event_copy_succ'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while copying event', e);
         this.notify.error(this.l10n.t('Copying of event failed'),
           {
             id: 'event_copy_fail'
