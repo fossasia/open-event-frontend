@@ -21,7 +21,7 @@ export default class OrderFormController extends Controller {
         this.notify.success(this.l10n.t('Your Attendee form has been saved'));
       })
       .catch(e => {
-        console.error(e);
+        console.error('Error while savind attendee form', e);
         this.notify.error(e.errors[0].detail);
       })
       .finally(() => {

@@ -29,4 +29,3 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
-}
