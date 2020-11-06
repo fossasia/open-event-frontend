@@ -56,7 +56,7 @@ export default class RegisterController extends Controller {
             await this.store.findRecord('user', tokenPayload.identity)
           );
         }
-        if(token != null) {
+        if (token) {
           this.transitionToRoute('public.role-invites', eventId, { queryParams: { token } });
         } else {
           this.transitionToRoute('/');
