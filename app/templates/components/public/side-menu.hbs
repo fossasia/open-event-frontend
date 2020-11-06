@@ -1,11 +1,11 @@
 {{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') (not-eq this.session.currentRouteName 'public.cfs.new-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
   <div class="ui fluid vertical {{unless this.device.isMobile 'pointing'}} menu">
     {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
+      <a href='#info'  class='item active scroll'>
         {{t 'Info'}}
       </a>
       {{#if this.event.tickets.length}}
-        <a href='#tickets' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#tickets'  class='item scroll'>
           {{t 'Tickets'}}
         </a>
       {{/if}}
@@ -46,7 +46,7 @@
     {{/if}}
     {{#if this.event.isSponsorsEnabled}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#sponsor' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#sponsor'  class='item scroll'>
           {{t 'Sponsors'}}
         </a>
       {{else}}
@@ -57,7 +57,7 @@
     {{/if}}
     {{#if this.event.hasOwnerInfo}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#owner'  class='item scroll'>
           {{t 'Organizer'}}
         </a>
       {{else}}

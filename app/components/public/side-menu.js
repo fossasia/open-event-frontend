@@ -44,9 +44,11 @@ export default class SideMenu extends Component {
     }];
     this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
   }
+  didRender(){
+    this.scrollToTarget();
+  }
 
-  @action
-  scrollToTarget() {
+  scrollToTarget(){
     document.querySelectorAll('.scroll').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
