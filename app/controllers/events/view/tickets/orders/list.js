@@ -67,7 +67,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.notify.success(this.l10n.t('Order has been marked completed successfully.'));
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while completing order', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       })
       .finally(() => {
@@ -85,7 +86,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.refreshModel.bind(this)();
       })
       .catch(e => {
-        console.warn(e);
+        console.error('Error while deleting order', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       })
       .finally(() => {
@@ -103,7 +104,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.notify.success(this.l10n.t('Order has been cancelled successfully.'));
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while cancelling order', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       })
       .finally(() => {
@@ -124,6 +126,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await this.loader.post('orders/resend-email', payload);
       this.notify.success(this.l10n.t('Email confirmation has been sent to attendees successfully'));
     } catch (error) {
+      console.error('Error while sending confirmation mail to attendee');
       if (error.status && error.status === 429) {
         this.notify.error(this.l10n.t('Only 5 resend actions are allowed in a minute'));
       } else if (error.status && error.status === 422) {
