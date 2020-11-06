@@ -71,6 +71,7 @@ export default class extends Controller {
           });
       })
       .catch(reason => {
+        console('Error while scheduling', reason);
         this.set('error', reason);
         this.notify.error(`Error: ${reason}`);
       });
