@@ -22,8 +22,8 @@ export default class RegisterController extends Controller {
     this.model.save()
       .then(user => {
         this.set('session.newUser', user.get('email'));
-          this.send('loginExistingUser', user.get('email'), password, this.inviteToken, this.event);
-          this.transitionToRoute('/');
+        this.send('loginExistingUser', user.get('email'), password, this.inviteToken, this.event);
+        this.transitionToRoute('/');
       })
       .catch(reason => {
         if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 409) {
@@ -57,7 +57,7 @@ export default class RegisterController extends Controller {
             await this.store.findRecord('user', tokenPayload.identity)
           );
         }
-        if(token != null) {
+        if (token != null) {
           this.transitionToRoute('public.role-invites', eventId, { queryParams: { token } });
         }
       })
