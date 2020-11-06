@@ -37,4 +37,20 @@ export default class PublicController extends Controller {
   toggleMenu() {
     this.toggleProperty('isMenuOpen');
   }
+
+  @action
+  goToLink(section) {
+      this.transitionToRoute('public.index');
+      setTimeout(function(){       
+            document.querySelector(`#${section}`).scrollIntoView({
+              behavior: 'smooth'
+            }) 
+            document.querySelectorAll('.scroll').forEach(node => {
+              node.classList.remove('active');
+            });
+            document.querySelector(`[href='#${section}']`).classList.add('active');
+          }
+        , 2000);
+    } 
+
 }
