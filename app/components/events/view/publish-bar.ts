@@ -9,7 +9,8 @@ interface Event extends DS.Model { // eslint-disable-line ember-suave/no-direct-
   identifier: string | null,
   state: string,
   name: string | null,
-  tickets: any[]
+  tickets: any[],
+  isStripeConnectionValid: boolean
 }
 
 interface EventsViewPublishBarArgs {
@@ -56,6 +57,12 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
         this.notify.error(this.l10n.t('Your event must have tickets before it can be published.'),
           {
             id: 'event_tickets'
+          });
+        return;
+      } else if (!event.isStripeConnectionValid) {
+        this.notify.error(this.l10n.t('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.'),
+          {
+            id: 'event_stripe'
           });
         return;
       }

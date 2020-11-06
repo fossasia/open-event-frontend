@@ -40,7 +40,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
 
   isInvalid(statusCode) {
     if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403 && statusCode !== 409) {
-      this.notify.error('An unexpected error occurred.', {
+      this.notify.error('An unexpected error has occurred.', {
         closeAfter : 5000,
         id         : 'serve_error'
       });

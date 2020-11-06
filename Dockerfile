@@ -13,7 +13,7 @@ ARG api_host
 ARG google_api_key
 ENV API_HOST=$api_host
 ENV GOOGLE_API_KEY=$google_api_key
-RUN node scripts/l10n.js generate && \
+RUN yarn l10n:generate && \
     touch .env && \
     JOBS=1 yarn build -prod
 
@@ -26,7 +26,7 @@ WORKDIR /fastboot
 
 COPY --from=builder /app/dist/ dist/
 
-RUN apk add --no-cache ca-certificates && \
+RUN apk add --no-cache ca-certificates nginx && \
     cp dist/package.json . && \
     yarn install && \
     yarn add fastboot-app-server dotenv lodash && \
@@ -36,6 +36,10 @@ RUN apk add --no-cache ca-certificates && \
 COPY scripts/* ./scripts/
 COPY config/environment.js ./config/
 
+RUN rm /etc/nginx/conf.d/default.conf
+COPY config/nginx.conf /etc/nginx/conf.d
+RUN mkdir -p /run/nginx
+
 EXPOSE 4000
 
-CMD ["node", "./scripts/fastboot-server.js"]
+CMD ["sh", "scripts/container_start.sh"]

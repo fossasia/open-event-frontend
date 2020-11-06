@@ -1,13 +1,19 @@
 import Route from '@ember/routing/route';
-import moment from 'moment';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import { action } from '@ember/object';
 import { capitalize } from 'lodash-es';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
+  queryParams = {
+    ...this.queryParams,
+    user_id: {
+      refreshModel: true
+    }
+  }
+
   titleToken() {
     if (['paid', 'due', 'refunding', 'refunded'].includes(this.params.invoice_status)) {
-      return this.l10n.t(capitalize(this.params.invoice_status));
+      return capitalize(this.params.invoice_status);
     } else {
       return this.l10n.t('All');
     }
@@ -25,23 +31,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           val  : params.invoice_status
         }
       ];
-    } else if (params.invoice_status === 'upcoming') {
-      filterOptions = [
-        {
-          and: [
-            {
-              name : 'deleted-at',
-              op   : 'eq',
-              val  : null
-            },
-            {
-              name : 'issued-at',
-              op   : 'ge',
-              val  : moment().subtract(30, 'days').toISOString()
-            }
-          ]
-        }
-      ];
     }
 
 
@@ -55,8 +44,9 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
 
     queryString = this.applySortFilters(queryString, params);
+    const user = params.user_id ? await this.store.findRecord('user', params.user_id) : this.authManager.currentUser;
     return {
-      eventInvoices: await this.asArray(this.authManager.currentUser.query('eventInvoices', queryString)),
+      eventInvoices: await this.asArray(user.query('eventInvoices', queryString)),
       params
 
     };

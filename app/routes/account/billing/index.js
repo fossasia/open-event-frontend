@@ -8,6 +8,6 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
 
   beforeModel() {
     super.beforeModel(...arguments);
-    this.replaceWith('account.billing.payment-info');
+    this.replaceWith('account.billing.invoices');
   }
 }

@@ -15,7 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Name',
         valuePath       : 'name',
-        extraValuePaths : ['id'],
+        extraValuePaths : ['id', 'event'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/speakers/cell-buttons',
@@ -78,7 +78,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await speaker.destroyRecord();
       this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
     } catch (e) {
-      console.warn(e);
+      console.error('Error while deleting speaker', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
     this.set('isLoading', false);
@@ -90,8 +90,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  viewSpeaker(id) {
-    this.transitionToRoute('events.view.speakers.edit', id);
+  viewSpeaker(speaker) {
+    this.transitionToRoute('public.speaker.view', speaker.event.get('identifier'), speaker.id);
   }
 
   @action
@@ -102,7 +102,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await speaker.save();
       this.notify.success(this.l10n.t('Speaker details modified successfully'));
     } catch (e) {
-      console.warn(e);
+      console.error('Error while updating speaker', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
   }

@@ -14,7 +14,7 @@
 
   <UiDropdown class="labeled icon button mb-2">
     <i class="sort amount down icon"></i>
-    <span class="default text">{{t (if (eq this.sort 'title') 'By Title' 'By Time')}}</span>
+    <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
     <div class="menu">
       <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='title'}} class="item">{{t 'By Title'}}</LinkTo>
       <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>

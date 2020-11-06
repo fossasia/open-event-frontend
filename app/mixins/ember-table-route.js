@@ -20,20 +20,30 @@ export default Mixin.create({
     }
   },
 
-  applySearchFilters(options, params, searchField) {
-    searchField = kebabCase(searchField);
-    if (params.search) {
-      options.pushObject({
-        name : searchField,
-        op   : 'ilike',
-        val  : `%${params.search}%`
-      });
-    } else {
-      options.removeObject({
-        name : searchField,
-        op   : 'ilike',
-        val  : `%${params.search}%`
-      });
+  applySearchFilters(options, params, searchFields) {
+    if (!Array.isArray(searchFields)) {
+      searchFields = [searchFields];
+    }
+    let filters = options;
+    if (searchFields.length > 1) {
+      filters = [];
+      options.pushObject({ or: filters });
+    }
+    for (let searchField of searchFields) {
+      searchField = kebabCase(searchField);
+      if (params.search) {
+        filters.pushObject({
+          name : searchField,
+          op   : 'ilike',
+          val  : `%${params.search}%`
+        });
+      } else {
+        filters.removeObject({
+          name : searchField,
+          op   : 'ilike',
+          val  : `%${params.search}%`
+        });
+      }
     }
     return options;
   },

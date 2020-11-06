@@ -195,7 +195,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email')
+              prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
         },
@@ -209,7 +209,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email')
+              prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
         },
@@ -387,7 +387,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter ' + field.name)
+              prompt : this.l10n.t('Please enter {{field}}', { field: field.name })
             }
           ]
         };

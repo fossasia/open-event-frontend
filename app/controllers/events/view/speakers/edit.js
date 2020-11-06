@@ -7,14 +7,15 @@ export default class extends Controller {
     this.set('isLoading', true);
     const { speaker } = this.model;
     if (speaker.isEmailOverridden) {
-      speaker.set('email', this.authManager.currentUser.email);
+      speaker.set('email', null);
     }
     speaker.save()
       .then(() => {
         this.notify.success(this.l10n.t('Speaker details have been saved'));
         this.transitionToRoute('events.view.speakers');
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while saving speaker details', e);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       })
       .finally(() => {

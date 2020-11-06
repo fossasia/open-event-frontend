@@ -20,7 +20,7 @@ export default class NotificationsController extends Controller {
           });
       })
       .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error occurred.'),
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
           {
             id: 'mark_read_error'
           });

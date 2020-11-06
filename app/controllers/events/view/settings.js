@@ -19,7 +19,8 @@ export default class extends Controller {
             id: 'event_deleted_succ'
           });
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while deleting event', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'),
           {
             id: 'event_deleted_error'
@@ -71,7 +72,8 @@ export default class extends Controller {
       });
       this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
     } catch (error) {
-      this.notify.error(this.l10n.t(error.message));
+      console.error('Error while sending role Invite', error, error.message);
+      this.notify.error(error.message);
     }
 
     this.set('isLoading', false);

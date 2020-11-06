@@ -9,7 +9,7 @@ function getSentryServer(dsn, withProtocol = true) {
 
 
 module.exports = function(environment) {
-  let ENV = {
+  const ENV = {
     appName                  : process.env.APP_NAME || 'Open Event',
     modulePrefix             : 'open-event-frontend',
     environment,
@@ -28,25 +28,14 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || 'https://open-event-api-dev.herokuapp.com',
-      apiNamespace : process.env.API_NAMESPACE || 'v1'
+      apiHost      : process.env.API_HOST || (environment === 'production' ? 'https://api.eventyay.com' : 'https://open-event-api-dev.herokuapp.com'),
+      apiNamespace : process.env.API_NAMESPACE || 'v1',
+      version      : process.env.npm_package_version
     },
 
-    metricsAdapters: [{
-      name         : 'GoogleAnalytics',
-      environments : ['production'],
-      config       : {
-        id          : process.env.GOOGLE_ANALYTICS_PROPERTY_ID || 'UA-XXXX-Y',
-        debug       : environment === 'development',
-        trace       : environment === 'development',
-        sendHitTask : environment !== 'development'
-      }
-    }],
-
     moment: {
-      includeTimezone: 'subset'
-      /* ,
-           localeOutputPath : 'assets/moment-locales'*/
+      includeTimezone  : 'subset',
+      localeOutputPath : 'assets/moment-locales'
     },
 
     pace: {
@@ -55,10 +44,11 @@ module.exports = function(environment) {
     },
 
     sentry: {
-      dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
-      debug       : !!process.env.SENTRY_DSN,
-      development : !process.env.SENTRY_DSN,
-      tracesSampleRate: process.env.SENTRY_TRACE_SAMPLE_RATE || 0.01,
+      dsn              : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
+      debug            : !!process.env.SENTRY_DSN,
+      development      : !process.env.SENTRY_DSN,
+      release          : (process.env.SENTRY_PROJECT_NAME || 'eventyay-frontend') + '@' + process.env.npm_package_version,
+      tracesSampleRate : process.env.SENTRY_TRACE_SAMPLE_RATE || 0.1
     },
 
     emberFullCalendar: {
@@ -86,11 +76,11 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    refreshAccessTokens : false,
-    serverTokenEndpoint : `${ENV.APP.apiHost}/auth/session`,
-    tokenPropertyName : 'access_token',
-    authorizationPrefix : 'JWT ',
-    authorizationHeaderName: 'Authorization'
+    refreshAccessTokens     : false,
+    serverTokenEndpoint     : `${ENV.APP.apiHost}/auth/session`,
+    tokenPropertyName       : 'access_token',
+    authorizationPrefix     : 'JWT ',
+    authorizationHeaderName : 'Authorization'
   };
 
   ENV['g-map'] = {
@@ -132,6 +122,19 @@ module.exports = function(environment) {
       ENV.locationType = 'hash';
       ENV.rootURL = `/${process.env.REPO_SLUG || 'open-event-frontend'}`;
     }
+  }
+
+  if (process.env.GOOGLE_ANALYTICS_PROPERTY_ID) {
+    ENV.metricsAdapters = [{
+      name         : 'GoogleAnalytics',
+      environments : ['production'],
+      config       : {
+        id          : process.env.GOOGLE_ANALYTICS_PROPERTY_ID || 'UA-XXXX-Y',
+        debug       : environment === 'development',
+        trace       : environment === 'development',
+        sendHitTask : environment !== 'development'
+      }
+    }];
   }
 
   return ENV;

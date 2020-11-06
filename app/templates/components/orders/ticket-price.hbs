@@ -1,0 +1,5 @@
+{{#if (eq @ticket.type 'free')}}
+    {{t "Free"}}
+{{else}}
+  <CurrencyAmount @currency={{@currency}} @amount={{@amount}}/>
+{{/if}}

@@ -34,11 +34,11 @@
           {{#each notification.notificationActions as |action|}}
             {{#if action.buttonRoute}}
               <LinkTo @route={{action.buttonRoute}} @model={{action.subjectId}} @tagName="button" class="ui blue button">
-                {{t action.buttonTitle}}
+                {{action.buttonTitle}}
               </LinkTo>
             {{else}}
               <a href={{action.link}} class="ui blue button">
-                {{t action.buttonTitle}}
+                {{action.buttonTitle}}
               </a>
             {{/if}}
           {{/each}}
