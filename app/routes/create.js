@@ -3,7 +3,7 @@ import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 @classic
-export default class CreateRoute extends Route.extend(EventWizardMixin ){
+export default class CreateRoute extends Route.extend( EventWizardMixin ){
   titleToken() {
     return this.l10n.t('Create an Event');
   }
