@@ -1,16 +1,24 @@
 <div class="ui container">
-  <UnverifiedUserMessage />
-  {{#if this.model.event.name}}
-    <h2 class="weight-300">{{t 'Creating'}} <span class="weight-500">{{this.model.event.name}}</span></h2>
-  {{else}}
-    <h2 class="weight-300">{{t 'Create an Event'}}</h2>
+  {{#if this.session.isAuthenticated}}
+    <UnverifiedUserMessage />
+    {{#if this.model.event.name}}
+      <h2 class="weight-300">{{t 'Creating'}} <span class="weight-500">{{this.model.event.name}}</span></h2>
+    {{else}}
+      <h2 class="weight-300">{{t 'Create an Event'}}</h2>
+    {{/if}}
+    <div class="ui one column centered stacked grid event wizard">
+      <div class="column mobile hidden">
+        <Widgets::StepsIndicator @steps={{this.model.steps}} @currentStep={{1}} @enableAll={{false}} @disableLinks={{true}} />
+      </div>
+      <div class="column">
+        <Forms::Wizard::BasicDetailsStep @data={{this.model}} @save="save" @move="move" @isCreate={{true}} @isLoading={{this.isLoading}} />
+      </div>
+    </div>
+  {{else }}
+      <div class="ui negative message">
+          <div class="header">
+            Please login to create an event. If you have not registered yet, please create an account first. Thank you!
+          </div>
+      </div>
   {{/if}}
-  <div class="ui one column centered stacked grid event wizard">
-    <div class="column mobile hidden">
-      <Widgets::StepsIndicator @steps={{this.model.steps}} @currentStep={{1}} @enableAll={{false}} @disableLinks={{true}} />
-    </div>
-    <div class="column">
-      <Forms::Wizard::BasicDetailsStep @data={{this.model}} @save="save" @move="move" @isCreate={{true}} @isLoading={{this.isLoading}} />
-    </div>
-  </div>
 </div>
