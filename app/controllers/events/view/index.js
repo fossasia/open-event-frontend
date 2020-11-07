@@ -14,13 +14,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : 'Name',
         valuePath       : 'name',
         headerComponent : 'tables/headers/sort',
-        isSortable      : true
+        isSortable      : true,
+        width           : 150
 
       },
       {
         name          : 'Type',
         valuePath     : 'type',
-        cellComponent : 'ui-table/cell/cell-sponsor-sanitize'
+        cellComponent : 'ui-table/cell/cell-sponsor-sanitize',
+        width         : 150
       },
       {
         name          : 'Level',
