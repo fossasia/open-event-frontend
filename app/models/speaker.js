@@ -34,7 +34,7 @@ export default class Speaker extends ModelBase.extend({
   city               : attr('string'),
   gender             : attr('string'),
   heardFrom          : attr('string'),
-  complexFieldValues : attr(),
+  complexFieldValues : attr({ defaultValue: () => {} }),
 
   segmentedLinkWebsite   : computedSegmentedLink.bind(this)('website'),
   segmentedLinkTwitter   : computedSegmentedLink.bind(this)('twitter'),
@@ -49,12 +49,6 @@ export default class Speaker extends ModelBase.extend({
 
   user     : belongsTo('user'),
   event    : belongsTo('event'),
-  sessions : hasMany('session'),
-
-  ready() {
-    if (!this.complexFieldValues) {
-      this.complexFieldValues = {};
-    }
-  }
+  sessions : hasMany('session')
 
 }) {}

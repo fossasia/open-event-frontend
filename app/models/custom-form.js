@@ -51,7 +51,7 @@ export default ModelBase.extend({
   fieldIdentifier : attr('string'),
   form            : attr('string'),
   type            : attr('string', { defaultValue: 'text' }),
-  name            : attr('string'),
+  _name           : attr('string'),
   isRequired      : attr('boolean', { defaultValue: false }),
   isIncluded      : attr('boolean', { defaultValue: false }),
   isFixed         : attr('boolean', { defaultValue: false }),
@@ -92,11 +92,9 @@ export default ModelBase.extend({
     ageGroup        : 'Age Group'
   },
 
-  ready() {
-    if (!this.name) {
-      this.name = this[this.form][this.fieldIdentifier];
-    }
-  },
+  name: computed('_name', function() {
+    return this._name || this[this.form][this.fieldIdentifier];
+  }),
 
   identifierPath: computed('isComplex', function() {
     return !this.isComplex ? this.fieldIdentifier : 'complexFieldValues.' + this.fieldIdentifier;

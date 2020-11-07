@@ -25,7 +25,7 @@ export default class TabbedNavigation extends Component {
     this.set('item', $('a.active', this.element).text().trim());
   }
 
-  didUpdate() {
+  hasDirtyAttributes() {
     const { isMobile } = this.device;
     if (isMobile) {
       $('a', this.element).addClass('vertical-item');

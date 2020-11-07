@@ -33,7 +33,7 @@ export default class Session extends ModelBase.extend({
   deletedAt          : attr('string'),
   submittedAt        : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
   lastModifiedAt     : attr('string'),
-  complexFieldValues : attr(),
+  complexFieldValues : attr({ defaultValue: () => {} }),
   sessionType        : belongsTo('session-type'),
   microlocation      : belongsTo('microlocation'),
   track              : belongsTo('track'),
@@ -62,12 +62,6 @@ export default class Session extends ModelBase.extend({
   segmentedLinkSlidesUrl : computedSegmentedLink.bind(this)('slidesUrl'),
   segmentedLinkAudioUrl  : computedSegmentedLink.bind(this)('audioUrl'),
   segmentedLinkVideoUrl  : computedSegmentedLink.bind(this)('videoUrl'),
-  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl'),
-
-  ready() {
-    if (!this.complexFieldValues) {
-      this.complexFieldValues = {};
-    }
-  }
+  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl')
 
 }) {}

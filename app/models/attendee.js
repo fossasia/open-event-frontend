@@ -34,7 +34,7 @@ export default ModelBase.extend({
   gender             : attr('string'),
   ageGroup           : attr('string'),
   birthDate          : attr('moment'),
-  complexFieldValues : attr(),
+  complexFieldValues : attr({ defaultValue: () => {} }),
 
   /**
    * Relationships
@@ -42,11 +42,5 @@ export default ModelBase.extend({
   event  : belongsTo('event'),
   order  : belongsTo('order'),
   ticket : belongsTo('ticket'),
-  user   : belongsTo('user'),
-
-  ready() {
-    if (!this.complexFieldValues) {
-      this.complexFieldValues = {};
-    }
-  }
+  user   : belongsTo('user')
 });

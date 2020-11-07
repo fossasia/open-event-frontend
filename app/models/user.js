@@ -97,7 +97,7 @@ export default ModelBase.extend({
   marketerEvents       : hasMany('event'),
   salesAdminEvents     : hasMany('event'),
 
-  didUpdate() {
+  hasDirtyAttributes() {
     this._super(...arguments);
     if (toString(this.id) === toString(this.authManager.currentUser.id)) {
       const user = this.store.peekRecord('user', this.id);
