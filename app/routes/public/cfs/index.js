@@ -33,7 +33,6 @@ export default class IndexRoute extends Route {
      - CFS is private and a valid hash is entered
     */
     if (!speakersCall.announcement) {
-      // this.notify.error(this.l10n.t('Call For Speakers has not been issued yet.'));
       this.transitionTo('public.speakers', eventDetails.identifier);
       return;
     }
