@@ -43,7 +43,7 @@ export default class PublicController extends Controller {
     this.transitionToRoute('public.index');
     setTimeout(function() {
       document.querySelector(`[href='#${section}']`).click();
-    }
-    , 2000);
-    } 
+    }, 2000)
+  }
+
 }
