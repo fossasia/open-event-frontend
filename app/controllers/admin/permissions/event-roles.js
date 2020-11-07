@@ -24,7 +24,7 @@ export default class extends Controller {
       })
       .catch(err => {
         console.error('Error while saving admin event role permissions', err);
-        this.notify.error(this.l10n.t(err),
+        this.notify.error(err,
           {
             id: 'admin_event_error'
           });

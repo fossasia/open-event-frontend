@@ -4,7 +4,7 @@
   @tagName="button" class="ui right floated blue button">
     {{t 'Add Sponsors'}}
   </LinkTo>
-  <div class="header">{{t 'Event sponsors'}}</div>
+  <div class="header">{{t 'Sponsors'}}</div>
 </div>
 <div class="content">
   <Tables::Default
@@ -13,6 +13,7 @@
     @currentPage={{this.page}}
     @pageSize={{this.per_page}}
     @searchQuery={{this.search}}
+    @hideSearchBox={{true}}
     @sortBy={{this.sort_by}}
     @sortDir={{this.sort_dir}}
     @metaData={{this.data.meta}}

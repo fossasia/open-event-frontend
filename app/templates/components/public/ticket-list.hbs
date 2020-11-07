@@ -49,11 +49,14 @@
                 </div>
               {{else}}
                 <div class="{{if ticket.discount 'strike text'}}">
-                  {{currency-symbol this.eventCurrency}} {{format-money ticket.price}}
+                  <Orders::TicketPrice
+                    @ticket={{ticket}}
+                    @currency={{this.eventCurrency}}
+                    @amount={{ticket.price}} />
                 </div>
                 {{#if ticket.discount}}
                   <div>
-                    {{currency-symbol this.eventCurrency}} {{format-money (sub ticket.price ticket.discount)}}
+                    <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.price ticket.discount}}/>
                   </div>
                 {{/if}}
               {{/if}}
@@ -61,11 +64,11 @@
                 <p>
                   {{#if this.taxInfo.isTaxIncludedInPrice}}
                     <small class="ui gray-text small">
-                      {{t 'includes'}} {{currency-symbol this.eventCurrency}} {{format-money ticket.includedTaxAmount}}
+                      {{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.includedTaxAmount}}/>
                     </small>
                   {{else}}
                     <small class="ui gray-text small">
-                      + {{currency-symbol this.eventCurrency}} {{format-money (sub ticket.ticketPriceWithTax ticket.price)}}
+                      + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
                     </small>
                   {{/if}}
                   <span>
@@ -96,7 +99,10 @@
               </div>
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
-              {{currency-symbol this.eventCurrency}} {{format-money ticket.subTotal}}
+              <Orders::TicketPrice
+                @ticket={{ticket}}
+                @currency={{this.eventCurrency}}
+                @amount={{ticket.subTotal}} />
             </td>
           </tr>
         {{/unless}}
@@ -110,7 +116,7 @@
             <table class="ui small" style="float: right;">
               <tbody>
                 {{#if orderAmount.tax}}
-                  <tr><td>{{t 'Sub-Total'}}</td><td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.sub_total}}</td></tr>
+                  <tr><td>{{t 'Sub-Total'}}</td><td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.sub_total}}/></td></tr>
                   <tr>
                     <td>
                       <div>{{t 'Tax'}} ({{this.orderAmount.tax.percent}}% {{this.orderAmount.tax.name}})</div>
@@ -118,16 +124,23 @@
                         <small class="ui gray-text small">Included in Total</small>
                       {{/if}}
                     </td>
-                    <td>{{currency-symbol this.eventCurrency}} {{this.orderAmount.tax.amount}}</td>
+                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.tax.amount}}/></td>
                   </tr>
                 {{/if}}
-                <tr><td>{{t 'Total'}}</td><td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td></tr>
+                <tr><td>{{t 'Total'}}</td>
+                  {{#if this.amountEditable}}
+                    <td>{{#if this.overridenAmount}}{{currency-symbol this.eventCurrency}}{{/if}}</td><td><Input @value={{this.overridenAmount}} placeholder="Total" /></td>
+                  {{else}}
+                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.total}}/></td>
+                  {{/if}}
+                </tr>
               </tbody>
             </table>
         </td>
       </tr>
     </tfoot>
   </table>
+  {{#unless this.amountEditable}}
   <div class="ui grid">
     {{#if this.enterPromotionalCode}}
       <div class="ui row">
@@ -165,6 +178,7 @@
       </div>
     {{/if}}
   </div>
+  {{/unless}}
   <div class="ui grid">
     <div class="ui row stackable grid">
       <div class="ui no padding thirteen wide computer twelve wide tablet column right aligned floated payment icons">

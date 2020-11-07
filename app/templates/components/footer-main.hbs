@@ -98,9 +98,16 @@
     <div class="thirteen wide computer twelve wide tablet column left aligned">
       <div class="ui horizontal inverted small divided link list no top margin">
         <span class="item">{{t 'Copyright'}} &copy; {{moment-format (now) 'YYYY'}}  {{this.settings.appName}} </span>
+        <span class="hidden-item">
+          {{!-- Possible Page Values --}}
+          {{t 'Terms'}}
+          {{t 'Contact'}}
+          {{t 'Refund Policy'}}
+          {{t 'Privacy'}}
+        </span>
         {{#each this.footerPages as |page|}}
           <LinkTo @route="pages" @model={{page.url}} class="item">
-            {{page.name}}
+            {{t-var page.name}}
           </LinkTo>
         {{/each}}
       </div>

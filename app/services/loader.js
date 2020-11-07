@@ -24,6 +24,10 @@ export default Service.extend({
     skipDataTransform : false
   },
 
+  host() {
+    return getOwner(this).lookup(this.defaultConfig.adapter).host;
+  },
+
   getFetchOptions(url, method, data = null, config = {}) {
     config = merge(clone(this.defaultConfig), config);
 

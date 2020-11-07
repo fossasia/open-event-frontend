@@ -9,7 +9,7 @@
             </LinkTo>
             {{#each this.sessionStates as |state|}}
               <LinkTo @route="events.view.sessions.list" @model={{state}} class="item">
-                {{t (capitalize state)}}
+                {{capitalize state}}
               </LinkTo>
             {{/each}}
           </TabbedNavigation>
