@@ -5,6 +5,8 @@ node_js:
 
 env:
   - CXX=g++-4.8 JOBS=1 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - TEST_SUITE=units
+  - TEST_SUITE=integration
 
 cache:
   yarn: true
@@ -28,6 +30,7 @@ script:
   - yarn lint
   - COVERAGE=true yarn test
   - ROOT_URL=open-event-frontend ember build -prod
+  - bundle exec rake test:$TEST_SUITE
   # - bash scripts/test_fastboot.sh # FastBoot is disabled for now
 
 after_success:
