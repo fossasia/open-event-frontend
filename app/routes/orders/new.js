@@ -5,7 +5,7 @@ import Route from '@ember/routing/route';
 export default class NewRoute extends Route {
   titleToken(model) {
     const order = model.order.get('identifier');
-    return this.l10n.t(`New Order -${order}`);
+    return this.l10n.t('New Order') + ' - ' + order;
   }
 
   async model(params) {

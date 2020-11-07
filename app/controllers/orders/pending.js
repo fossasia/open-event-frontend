@@ -59,7 +59,7 @@ export default class PendingController extends Controller {
         });
       window.location.replace(res.link);
     } catch (error) {
-      this.notify.error(this.l10n.t(error.error));
+      this.notify.error(error.error);
     }
   }
 
@@ -73,7 +73,7 @@ export default class PendingController extends Controller {
         'txnToken'         : res.body.txnToken
       });
     } catch (error) {
-      this.notify.error(this.l10n.t(error.error));
+      this.notify.error(error.error);
     }
   }
 
@@ -92,7 +92,7 @@ export default class PendingController extends Controller {
         'isOTPModalOpen'   : true
       });
     } catch (error) {
-      this.notify.error(this.l10n.t(error.error));
+      this.notify.error(error.error);
     }
   }
 
@@ -109,7 +109,7 @@ export default class PendingController extends Controller {
         'isOTPModalOpen': false
       });
     } catch (error) {
-      this.notify.error(this.l10n.t(error.error));
+      this.notify.error(error.error);
     }
   }
 

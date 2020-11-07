@@ -25,7 +25,8 @@ export default class extends Controller {
       .then(exportJobInfo => {
         this.requestLoop(exportJobInfo);
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while exporting', e);
         this.set('isLoading', false);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'),
           {

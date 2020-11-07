@@ -13,7 +13,7 @@ ARG api_host
 ARG google_api_key
 ENV API_HOST=$api_host
 ENV GOOGLE_API_KEY=$google_api_key
-RUN node scripts/l10n.js generate && \
+RUN yarn l10n:generate && \
     touch .env && \
     JOBS=1 yarn build -prod
 

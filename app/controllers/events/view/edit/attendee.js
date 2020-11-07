@@ -20,7 +20,7 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
       );
     } catch (error) {
       console.error('Error while updating attendee', error);
-      this.notify.error(this.l10n.t(error.message),
+      this.notify.error(error.message,
         {
           id: 'attendee_error_serv'
         });
@@ -37,7 +37,7 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
       );
     } catch (error) {
       console.error('Error while moving attendee', error);
-      this.notify.error(this.l10n.t(error.message),
+      this.notify.error(error.message,
         {
           id: 'attendee_move_error'
         });

@@ -15,7 +15,7 @@ export default class EmailPreferencesSection extends Component {
       .catch(e => {
         console.error('Error while updating email notifications.', e);
         emailPreference.rollbackAttributes();
-        this.notify.error(this.l10n.t('An unexpected error occurred.'), {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
           id: 'email_error'
         });
       });
