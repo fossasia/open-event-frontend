@@ -1,10 +1,14 @@
 <div class="six wide field">
   <div class="ui labeled input">
-    <div class="ui labeled input">
-      <div class="ui label">
-        {{this.prefix}}
-      </div>
-      <Input @type="text" value={{this.fixedValue}} {{on "input" this.setValue}} />
+    <div class="ui label">
+      {{this.prefix}}
     </div>
+    <Input 
+      {{did-update this.prefixUpdated @prefix}}
+      @id={{@inputId}}
+      @type="text"
+      value={{this.fixedValue}}
+      {{on "input" this.setValue}} />
+    {{yield}}
   </div>
 </div>

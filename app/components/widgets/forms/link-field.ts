@@ -17,6 +17,10 @@ export default class LinkField extends Component<Args> {
     this.value = this.parseValue();
   }
 
+  /**
+   * Parse the value passed in props and seprate the prefix and
+   * set the rest as tracked value
+   */
   parseValue(): string {
     const { value } = this.args;
     if (!value) {return ''}
@@ -27,6 +31,9 @@ export default class LinkField extends Component<Args> {
     return this.args.prefix ?? 'https://';
   }
 
+  /**
+   * Final value with prefix to be sent to parent component
+   */
   get finalValue(): string {
     return this.prefix + this.fixedValue;
   }
@@ -35,15 +42,24 @@ export default class LinkField extends Component<Args> {
     return this.fixValue(this.value);
   }
 
+  /**
+   * Separate prefix from value
+   * @param value string URL to be fixed
+   */
   fixValue(value: string): string {
     const splitted = value.split(this.prefix);
     return splitted[1] || splitted[0];
   }
 
   @action
-  setValue(event: any) {
+  setValue(event: any): void {
     const text = event.target.value;
     this.value = this.fixValue(text);
+    this.args.onChange(this.finalValue);
+  }
+
+  @action
+  prefixUpdated(): void {
     this.args.onChange(this.finalValue);
   }
 
