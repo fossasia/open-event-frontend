@@ -77,6 +77,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       await speaker.destroyRecord();
       this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
+      this.refreshModel();
     } catch (e) {
       console.error('Error while deleting speaker', e);
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
