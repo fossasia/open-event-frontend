@@ -8,16 +8,16 @@ interface Args {
 
 export default class SocialLinkField extends Component<Args> {
   @tracked
-  site: string = 'website';
+  site = 'website';
 
   get sites(): SocialMedia[] {
     return [
       {
-        name: 'Website',
-        identifier: 'website'
+        name       : 'Website',
+        identifier : 'website'
       },
       ...socialMediaSites
-    ]
+    ];
   }
 
   get prefix(): string | undefined {

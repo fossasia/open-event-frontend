@@ -14,8 +14,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone : moment.tz.guess(),
   timezones,
-  site: 'twitter',
-  testLink : 'https://twitter.com/iamareebjamal',
+  site            : 'twitter',
+  testLink        : 'https://twitter.com/iamareebjamal',
 
   torii: service(),
 
