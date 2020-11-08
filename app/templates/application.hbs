@@ -12,6 +12,17 @@
 <SideBar>
   <div class="footer-pusher">
     <NavBar @unreadNotifications={{this.unreadNotifications}} />
+    
+     <div class="flash-messages ui container">
+      {{#each flashMessages.queue as |flash|}}
+         <div class="ui negative message">
+           <div class="header"> 
+            <FlashMessage @flash = {{flash}}/>
+            </div>
+          </div>
+      {{/each}}
+     </div>
+
     {{#if (eq this.routing.currentRouteName 'index')}}
       <WelcomeHeader />
     {{/if}}
