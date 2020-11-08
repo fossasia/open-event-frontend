@@ -33,9 +33,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ## Running / Development
 
-[![asciicast](https://asciinema.org/a/370458.png)](https://asciinema.org/a/370458?speed=5&autoplay=1)
-
-Click on above image to see installation video
+[Click to see installation video](https://asciinema.org/a/370458?speed=5&autoplay=1)
 
 **Note**: Please follow [installation steps](/docs/installation/local.md#steps) listed above carefully before running 
 
