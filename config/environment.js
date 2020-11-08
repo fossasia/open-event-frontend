@@ -64,7 +64,11 @@ module.exports = function(environment) {
       hostWhitelist: [/.+/]
     },
 
-    torii: {}
+    torii: {},
+
+    appGenerator: {
+      webHost: process.env.WEB_APP_GENERATOR_HOST || (environment === 'production' ? 'https://open-event-wsgen.herokuapp.com' : 'https://open-event-wsgen-dev.herokuapp.com')
+    }
   };
 
   if (environment === 'production') {
