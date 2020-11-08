@@ -6,9 +6,9 @@ export default class ViewRoute extends Route {
   titleToken(model) {
     const order = model.order.get('identifier');
     if (model.order.status === 'completed') {
-      return this.l10n.t(`Completed Order -${order}`);
+      return this.l10n.t('Completed Order') + ' - ' + order;
     } else if (model.order.status === 'placed') {
-      return this.l10n.t(`Placed Order -${order}`);
+      return this.l10n.t('Placed Order') + ' - ' + order;
     }
   }
 

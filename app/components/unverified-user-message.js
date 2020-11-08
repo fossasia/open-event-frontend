@@ -30,7 +30,7 @@ export default class UnverifiedUserMessage extends Component {
       .catch(error => {
         console.error('Error while sending verification email', error, error.error);
         if (error.error) {
-          this.notify.error(this.l10n.t(error.error), {
+          this.notify.error(error.error, {
             id: 'ver_mail_serv_error'
           });
         } else {

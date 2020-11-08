@@ -19,7 +19,7 @@ export default class DownloadZip extends Component {
       });
     } catch (e) {
       console.error('Error while downloading event zip', e);
-      this.notify.error(this.l10n.t(e), {
+      this.notify.error(e, {
         id: 'err_down'
       });
     }

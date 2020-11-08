@@ -32,7 +32,7 @@ export default class NotificationDropdown extends Component {
       })
       .catch(e => {
         console.error('Error while marking notifications as read.', e);
-        this.notify.error(this.l10n.t('An unexpected error occurred.'), {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
           id: 'not_read_error'
         });
       });
