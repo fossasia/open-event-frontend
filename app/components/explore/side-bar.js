@@ -40,10 +40,14 @@ export default class SideBar extends Component {
 
   @action
   async updateLocation(e) {
-    let location = e.target.getLatLng();
-    const response = this.loader.load(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lng}&format=jsonv2`, {isExternal: true});
-    let [cords] = await Promise.all([response]);
-    this.set('location', cords.address.country);
+    const location = e.target.getLatLng();
+    const response = this.loader.load(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lng}&format=jsonv2`, { isExternal: true });
+    const [cords] = await Promise.all([response]);
+    if(cords.address){
+      this.set('location', cords.address.country);
+    } else {
+      this.set('location', 'singapore');
+    }
   }
 
   @action
