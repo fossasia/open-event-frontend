@@ -12,7 +12,7 @@
       </div>
     {{/if}}
   </div>
-  <div class="row">
+  <div class="ui no bottom padding row">
     <EmberTable as |t|>
       <t.head
         @sortFunction={{null}}
@@ -55,7 +55,7 @@
       </t.body>
     </EmberTable>
   </div>
- <div class="row" style="padding-top: 0%;">
+ <div class="ui no top padding row">
     <Tables::Utilities::Pagination
       @currentPage={{this.currentPage}}
       @pageSize={{this.pageSize}}
