@@ -3,7 +3,7 @@
     <label>
       {{t 'Enable Stripe'}}
     </label>
-    <UiCheckbox
+    <LegacyCheckbox
       @class="toggle"
       @checked={{this.isCheckedStripe}}
       @onChange={{action (mut this.isCheckedStripe)}} />
@@ -127,7 +127,7 @@
     <label>
       {{t 'Enable AliPay'}}
     </label>
-    <UiCheckbox
+    <LegacyCheckbox
       @class="toggle"
       @checked={{this.isCheckedAliPay}}
       @onChange={{action (mut this.isCheckedAliPay)}} />
@@ -168,7 +168,7 @@
     <label>
       {{t 'Enable PayPal'}}
     </label>
-    <UiCheckbox
+    <LegacyCheckbox
       @class="toggle"
       @checked={{this.isCheckedPaypal}}
       @onChange={{action (mut this.isCheckedPaypal)}} />
@@ -265,7 +265,7 @@
     <label>
       {{t 'Enable Omise'}}
     </label>
-    <UiCheckbox
+    <LegacyCheckbox
       @class="toggle"
       @checked={{this.isCheckedOmise}}
       @onChange={{action (mut this.isCheckedOmise)}} />
@@ -361,7 +361,7 @@
     <label>
       {{t 'Enable PayTM'}}
     </label>
-    <UiCheckbox
+    <LegacyCheckbox
       @class="toggle"
       @checked={{this.settings.isPaytmActivated}}
       @onChange={{action (mut this.settings.isPaytmActivated)}} />

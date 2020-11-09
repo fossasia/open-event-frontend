@@ -49,7 +49,7 @@
       {{#each this.holders as |holder index|}}
         {{#if (eq index 0)}}
           <div class="field">
-            <UiCheckbox
+            <LegacyCheckbox
               @label={{t "Ticket holder is the same person as ticket buyer"}}
               @checked={{this.sameAsBuyer}}
               @onChange={{pipe-action (action (mut this.sameAsBuyer)) (action "modifyHolder" holder)}} />
@@ -152,7 +152,7 @@
         </h4>
         {{#unless this.event.isBillingInfoMandatory}}
           <div class="ui center aligned field">
-            <UiCheckbox
+            <LegacyCheckbox
               @label={{t "Enable Billing Information"}}
               @checked={{this.data.isBillingEnabled}}
               @onChange={{action (mut this.data.isBillingEnabled)}} />

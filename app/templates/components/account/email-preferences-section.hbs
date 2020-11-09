@@ -6,7 +6,7 @@
       </h4>
     </div>
     <div class="ui column eight wide right aligned">
-      <UiCheckbox @class="toggle checked" />
+      <LegacyCheckbox @class="toggle checked" />
     </div>
   </div>
   <div class="ui divider"></div>
@@ -42,7 +42,7 @@
           {{t 'New Paper is Submitted to your Event'}}
         </div>
         <div class="ui column eight wide right aligned">
-          <LegacyCheckbox @checked={{$preference.newPaper}} @onChange={{pipe-action (action (mut preference.newPaper)) (action "savePreference" preference)}} />
+          <LegacyCheckbox @checked={{preference.newPaper}} @onChange={{pipe-action (action (mut preference.newPaper)) (action "savePreference" preference)}} />
         </div>
       </div>
       <div class="row">

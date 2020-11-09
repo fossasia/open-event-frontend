@@ -6,7 +6,7 @@
 </div>
 <div class="content">
   <form class="ui {{if this.isLoading 'loading'}} form" id="confirm-delete-form" autocomplete="off" {{action this.deleteUser on='submit' preventDefault=true}}>
-    <UiCheckbox @label={{t "Please tick the box to agree and press DELETE"}} @type="checkbox" @checked={{this.checked}} @onChange={{action (mut this.checked)}} />
+    <LegacyCheckbox @label={{t "Please tick the box to agree and press DELETE"}} @type="checkbox" @checked={{this.checked}} @onChange={{action (mut this.checked)}} />
   </form>
 </div>
 <div class="actions">

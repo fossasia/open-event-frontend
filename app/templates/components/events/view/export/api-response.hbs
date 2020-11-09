@@ -7,7 +7,7 @@
 </div>
 <div class="ui form">
   <div class="field">
-    <UiCheckbox @class="toggle disabled" @label={{t "Basic Event Details"}} @checked={{true}} @onChange={{action "checkboxChange" "basicEventDetails"}} />
+    <LegacyCheckbox @class="toggle disabled" @label={{t "Basic Event Details"}} @checked={{true}} @onChange={{action "checkboxChange" "basicEventDetails"}} />
   </div>
   <div class="field">
     <LegacyCheckbox @checked={{this.toggleSwitches.sessions}} @label={{t "Sessions"}} @onChange={{action "checkboxChange" "sessions"}}/>

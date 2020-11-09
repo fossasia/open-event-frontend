@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="field">
-    <UiCheckbox @label={{t "Standard aspect ratio is 13:5. Tick to maintain aspect ratio."}} @class="checkbox" @name="large_ratio" @checked={{this.image.eventImageSize.fullAspect}} @onChange={{action (mut this.image.eventImageSize.fullAspect)}} />
+    <LegacyCheckbox @label={{t "Standard aspect ratio is 13:5. Tick to maintain aspect ratio."}} @class="checkbox" @name="large_ratio" @checked={{this.image.eventImageSize.fullAspect}} @onChange={{action (mut this.image.eventImageSize.fullAspect)}} />
   </div>
   {{t 'Standard Size of the available area is 1300px X 500px'}}
   <p>{{t 'Found in :'}}</p>
@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="field">
-    <UiCheckbox @label={{t "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."}} @class="checkbox" @name="thumb_ratio" @checked={{this.image.eventImageSize.thumbnailAspect}} @onChange={{action (mut this.image.eventImageSize.thumbnailAspect)}} />
+    <LegacyCheckbox @label={{t "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."}} @class="checkbox" @name="thumb_ratio" @checked={{this.image.eventImageSize.thumbnailAspect}} @onChange={{action (mut this.image.eventImageSize.thumbnailAspect)}} />
   </div>
   {{t 'Standard Size of the available area is 500px X 200px'}}
   <p>{{t 'Found in :'}}</p>
@@ -64,7 +64,7 @@
     </div>
   </div>
   <div class="field">
-    <UiCheckbox @label={{t "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."}} @class="checkbox" @name="icon_ratio" @checked={{this.image.eventImageSize.iconAspect}} @onChange={{action (mut this.image.eventImageSize.iconAspect)}} />
+    <LegacyCheckbox @label={{t "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."}} @class="checkbox" @name="icon_ratio" @checked={{this.image.eventImageSize.iconAspect}} @onChange={{action (mut this.image.eventImageSize.iconAspect)}} />
   </div>
   {{t 'Standard Size of the available area is 75px X 30px'}}
   <h3 class="ui header">{{t 'Logo Size (Event Wizard)'}}</h3>

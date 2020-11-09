@@ -75,7 +75,7 @@
     <div class="inline field">
       <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
       <div class="ui hidden divider"></div>
-      <UiCheckbox
+      <LegacyCheckbox
         @label={{t "Select all Ticket types"}}
         @name="all_ticket_types"
         @value="tickets"
@@ -89,7 +89,7 @@
   {{/if}}
   <div class="ui list field">
     {{#each this.eventTickets as |ticket|}}
-      <UiCheckbox
+      <LegacyCheckbox
         @name="ticket_name"
         @label={{ticket.name}}
         @checked={{ticket.isChecked}}
@@ -99,7 +99,7 @@
   </div>
   <div>
     <div class="inline field">
-      <UiCheckbox
+      <LegacyCheckbox
         @label={{t "Show more options"}}
         @class="toggle"
         @checked={{this.showMoreOptions}}

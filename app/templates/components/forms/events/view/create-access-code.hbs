@@ -38,7 +38,7 @@
     <div class="inline field">
       <label class="required">{{t 'Select Tickets applied to the access code'}}</label>
       <div class="ui hidden divider"></div>
-      <UiCheckbox
+      <LegacyCheckbox
         @label={{t "Select all Ticket types"}}
         @name="all_ticket_types"
         @value="tickets"
@@ -52,7 +52,7 @@
   {{/if}}
   <div class="ui list">
     {{#each this.hiddenTickets as |ticket|}}
-      <UiCheckbox
+      <LegacyCheckbox
         @label={{ticket.name}}
         @checked={{ticket.isChecked}}
         @onChange={{action "updateTicketsSelection" ticket}} />
@@ -61,7 +61,7 @@
   </div>
   <div>
     <div class="inline field">
-      <UiCheckbox
+      <LegacyCheckbox
         @class="toggle"
         @label={{t "Show more options"}}
         @checked={{this.showMoreOptions}}

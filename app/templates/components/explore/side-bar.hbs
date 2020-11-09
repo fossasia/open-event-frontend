@@ -19,7 +19,7 @@
           <div class="grouped fields">
             {{#each this.dateRanges as |dateRange|}}
               <div class="field">
-                <UiCheckbox
+                <LegacyCheckbox
                   @label={{dateRange.name}}
                   @class="ui checkbox"
                   @checked={{if (eq this.dateType dateRange.key) "active"}}
@@ -78,7 +78,7 @@
               <div class="grouped fields">
                 {{#each Category.subTopics as |subCategory|}}
                   <div class="field inner item">
-                    <UiCheckbox
+                    <LegacyCheckbox
                       @label={{subCategory.name}}
                       @class="ui checkbox"
                       @checked={{if (eq this.sub_category subCategory.slug) "active"}}
@@ -99,7 +99,7 @@
         {{t 'Event Type' }}
       </span>
       <div class="content menu">
-        <UiCheckbox
+        <LegacyCheckbox
           @label={{t "All Types"}}
           @class="ui checkbox"
           @checked={{if this.showAllTypes "active"}}
@@ -108,7 +108,7 @@
           <div class="grouped fields">
             {{#each this.model.eventTypes as |eventType|}}
               <div class="field">
-                <UiCheckbox
+                <LegacyCheckbox
                   @label={{eventType.name}}
                   @class="ui checkbox"
                   @checked={{if (eq this.event_type eventType.name) "active"}}
@@ -130,14 +130,14 @@
         <div class="ui form">
           <div class="grouped fields">
             <div class="field">
-              <UiCheckbox
+              <LegacyCheckbox
                 @label={{t "Free"}}
                 @class="ui checkbox"
                 @checked={{if (eq this.ticket_type "free") true}}
                 @onChange={{action "selectTicketType" "free"}} />
             </div>
             <div class="field">
-              <UiCheckbox
+              <LegacyCheckbox
                 @label={{t "Paid"}}
                 @class="ui checkbox"
                 @checked={{if (eq this.ticket_type "paid") true}}
@@ -159,13 +159,13 @@
       <div class="ui form">
         <div class="grouped fields">
           <div class="field">
-            <UiCheckbox
+            <LegacyCheckbox
               @label={{t "Open"}}
               @checked={{if (eq this.cfs "open") "active"}}
               @onChange={{action "selectEventCfs" "open"}} />
           </div>
           <div class="field">
-            <UiCheckbox
+            <LegacyCheckbox
               @label={{t "Closed"}}
               @class="ui checkbox"
               @checked={{if (eq this.cfs "closed") "active"}}

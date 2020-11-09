@@ -50,7 +50,7 @@
           {{field.type}}
         </td>
         <td class="center aligned">
-          <UiCheckbox
+          <LegacyCheckbox
             @class="slider"
             @checked={{field.isIncluded}}
             @disabled={{field.isFixed}}
@@ -58,7 +58,7 @@
             @label={{if this.device.isMobile (t "Include")}} />
         </td>
         <td class="center aligned">
-          <UiCheckbox
+          <LegacyCheckbox
             @class="slider"
             @checked={{field.isRequired}}
             @disabled={{field.isFixed}}

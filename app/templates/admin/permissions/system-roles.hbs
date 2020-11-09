@@ -93,9 +93,9 @@
                 {{userPermission.description}}
               </div>
             </td>
-            <td><UiCheckbox @label={{t "Unverified User"}} @checked={{userPermission.unverifiedUser}} @onChange={{action (mut userPermission.unverifiedUser)}} /></td>
+            <td><LegacyCheckbox @label={{t "Unverified User"}} @checked={{userPermission.unverifiedUser}} @onChange={{action (mut userPermission.unverifiedUser)}} /></td>
             <td>
-              <UiCheckbox @label={{t "Anonymous User"}} @disabled={{true}} />
+              <LegacyCheckbox @label={{t "Anonymous User"}} @disabled={{true}} />
               <p>
                 Account creation is necessary.
               </p>

@@ -22,7 +22,7 @@
           {{#each this.panelPermissions as |permission|}}
             <div class="five wide column">
               <div class="item" data-value={{permission}}>
-                <UiCheckbox @label={{concat permission.panelName " panel"}} @checked={{permission.isChecked}} @onChange={{action "toggleCheckbox" permission}} />
+                <LegacyCheckbox @label={{concat permission.panelName " panel"}} @checked={{permission.isChecked}} @onChange={{action "toggleCheckbox" permission}} />
               </div>
             </div>
           {{/each}}

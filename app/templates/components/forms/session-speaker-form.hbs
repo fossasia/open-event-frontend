@@ -129,7 +129,7 @@
       Or
     </div>
     <div class="field">
-      <UiCheckbox
+      <LegacyCheckbox
         @class="toggle"
         @label="Add a new speaker"
         @checked={{this.addNewSpeaker}}
@@ -147,7 +147,7 @@
                   @textareaId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
               {{else if (eq field.fieldIdentifier 'email')}}
                 {{#if (or this.isUserOwnerOrAdmin this.isUserOrganiser)}}
-                  <UiCheckbox
+                  <LegacyCheckbox
                     @label={{t "Do not require email for this speaker."}}
                     @checked={{this.data.speaker.isEmailOverridden}}
                     @onChange={{action (mut this.data.speaker.isEmailOverridden)}} />
@@ -265,7 +265,7 @@
                 @textareaId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
             {{else if (eq field.fieldIdentifier 'email')}}
               {{#if (or this.isUserOwnerOrAdmin this.isUserOrganiser)}}
-                <UiCheckbox
+                <LegacyCheckbox
                   @label={{t "Do not require email for this speaker."}}
                   @checked={{this.data.speaker.isEmailOverridden}}
                   @onChange={{action (mut this.data.speaker.isEmailOverridden)}} />
@@ -401,7 +401,7 @@
       Or
     </div>
     <div class="field">
-      <UiCheckbox
+      <LegacyCheckbox
         @name="sessionDetails"
         @class="toggle"
         @checked={{this.newSessionSelected}}
