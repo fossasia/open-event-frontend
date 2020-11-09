@@ -43,7 +43,7 @@ export default class SideBar extends Component {
     const location = e.target.getLatLng();
     const response = this.loader.load(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lng}&format=jsonv2`, { isExternal: true });
     const [cords] = await Promise.all([response]);
-    if(cords.address){
+    if (cords.address) {
       this.set('location', cords.address.country);
     } else {
       this.set('location', 'singapore');
