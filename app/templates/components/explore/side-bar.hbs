@@ -3,7 +3,6 @@
   <layers.marker @location={{array this.model.lat this.model.lng}} @draggable={{true}} @onDragend={{action "updateLocation"}} as |marker|>
     <marker.popup>
       {{this.location}}
-      {{this.latitude}}
     </marker.popup>
   </layers.marker>
 </LeafletMap>
