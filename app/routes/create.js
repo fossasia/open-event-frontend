@@ -2,17 +2,24 @@ import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, EventWizardMixin) {
+  
+  @service
+  session;
+
   titleToken() {
     return this.l10n.t('Create an Event');
   }
 
   async beforeModel() {
     if (!this.session.isAuthenticated) {
-      this.get('flashMessages').danger('Please login to create an event. If you have not registered yet, please create an account first. Thank you!', {
-        preventDuplicates: true
+      this.flashMessages.add({
+        message : 'Please login to create an event. If you have not registered yet, please create an account first. Thank you!',
+        type    : 'negative',
+        preventDuplicates: true,
       });
     }
     super.beforeModel(...arguments);

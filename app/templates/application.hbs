@@ -15,8 +15,8 @@
     
      <div class="flash-messages ui container">
       {{#each flashMessages.queue as |flash|}}
-         <div class="ui negative message">
-           <div class="header"> 
+         <div class="ui {{flash.type}} message">
+           <div class="header">
             <FlashMessage @flash = {{flash}}/>
             </div>
           </div>
