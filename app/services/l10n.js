@@ -2,6 +2,8 @@ import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
+import moment from 'moment';
+import { getScript } from 'open-event-frontend/utils/loader';
 
 @classic
 export default class L10nService extends L10n {
@@ -14,20 +16,20 @@ export default class L10nService extends L10n {
   @computed(function() {
     return {
       'bn'      : 'বাংলা',
-      'zh_Hans' : '中文 (简化版)',
-      'zh_Hant' : '中文 (傳統的)',
+      'de'      : 'Deutsch',
       'en'      : 'English',
-      'fr'      : 'français',
-      'de'      : 'Deutsche',
-      'id'      : 'bahasa Indonesia',
-      'ko'      : '한국어',
-      'pl'      : 'Polskie',
       'es'      : 'Español',
+      'fr'      : 'Français',
+      'hi'      : 'हिंदी',
+      'id'      : 'Bahasa Indonesia',
+      'ja'      : '日本語',
+      'pl'      : 'Polski',
+      'ru'      : 'Русский',
       'th'      : 'ไทย',
       'vi'      : 'Tiếng Việt',
-      'hi'      : 'हिंदी',
-      'ja'      : '日本語',
-      'ru'      : 'русский'
+      'zh_Hans' : '中文（简体)',
+      'zh_Hant' : '中文（繁體)',
+      'ko'      : '한국어'
     };
   })
   availableLocales;
@@ -38,7 +40,7 @@ export default class L10nService extends L10n {
 
   switchLanguage(locale) {
     this.setLocale(locale);
-    this.cookies.write(this.localStorageKey, locale);
+    this.cookies.write(this.localStorageKey, locale, { path: '/' });
     if (!this.fastboot.isFastBoot) {
       location.reload();
     }
@@ -48,12 +50,20 @@ export default class L10nService extends L10n {
     super.init(...arguments);
     const currentLocale = this.cookies.read(this.localStorageKey);
     const detectedLocale = this.detectLocale();
+
+    let locale = 'en';
     if (currentLocale) {
-      this.setLocale(currentLocale);
+      locale = currentLocale;
     } else if (detectedLocale) {
-      this.setLocale(detectedLocale);
-    } else {
-      this.setLocale('en');
+      locale = detectedLocale;
+    }
+
+    this.setLocale(locale);
+    if (locale !== 'en') {
+      getScript(`/assets/moment-locales/${locale}.js`)
+        .then(() => {
+          moment.locale(locale);
+        });
     }
   }
 }

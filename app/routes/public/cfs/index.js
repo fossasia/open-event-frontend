@@ -11,11 +11,18 @@ export default class IndexRoute extends Route {
     return this.l10n.t('Call for Speakers');
   }
 
+  getHash(routeInfo) {
+    if (!routeInfo) {return null}
+    const hash = (routeInfo.params['public.cfs'] || routeInfo.params)?.speaker_call_hash;
+    if (hash) {return hash}
+    return this.getHash(routeInfo.parent);
+  }
+
   async beforeModel(transition) {
     // We don't want to process or transition in fastboot mode
     // Since this is only an intermediate page
     if (this.fastboot.isFastBoot) {return}
-    const hash = transition.to.params['public.cfs'] ? transition.to.params['public.cfs'].speaker_call_hash : null;
+    const hash = this.getHash(transition.to);
     const eventDetails = this.modelFor('public');
     const speakersCall = await eventDetails.get('speakersCall');
     /*
@@ -26,8 +33,7 @@ export default class IndexRoute extends Route {
      - CFS is private and a valid hash is entered
     */
     if (!speakersCall.announcement) {
-      this.notify.error(this.l10n.t('Call For Speakers has not been issued yet.'));
-      this.transitionTo('public', eventDetails.identifier);
+      this.transitionTo('public.speakers', eventDetails.identifier);
       return;
     }
     if (!((speakersCall.privacy === 'public' && (!hash || speakersCall.hash === hash)) || (speakersCall.privacy === 'private' && hash === speakersCall.hash))) {
