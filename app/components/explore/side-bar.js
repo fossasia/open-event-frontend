@@ -16,8 +16,6 @@ export default class SideBar extends Component {
   customEndDate = null;
   @tracked showFilters = false;
   isMapVisible = true;
-  lat = 27.00;
-  lng = 79.00;
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs')
   get hideClearFilters() {

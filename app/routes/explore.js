@@ -181,10 +181,17 @@ export default class ExploreRoute extends Route {
   }
 
   async model(params) {
+    const response =  this.loader.load(`https://nominatim.openstreetmap.org/search?q=${params.location}&format=jsonv2&addressdetails=1`, { isExternal: true });
+    let [cords] = await Promise.all([response]);
+    if (cords.length < 1) {
+      cords = [{ lat: '20', lon: '79' }];
+    }
     return {
       eventTypes     : await this.store.findAll('event-type'),
       eventTopics    : await this.store.findAll('event-topic', { include: 'event-sub-topics' }),
-      filteredEvents : await this._loadEvents(params)
+      filteredEvents : await this._loadEvents(params),
+      lat            : cords[0].lat,
+      lng            : cords[0].lon
     };
   }
 
