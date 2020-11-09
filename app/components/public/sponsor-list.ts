@@ -2,24 +2,32 @@ import { computed } from '@ember/object';
 import Component from '@glimmer/component';
 import { orderBy, groupBy } from 'lodash-es';
 
-export default class SponsorList extends Component {
+interface Sponsor { level: number, type: string }
 
-  getDistinctLevels(sponsors) {
+interface Args {
+  sponsors: Sponsor[]
+}
+
+interface GroupedSponsors { [key: string]: { sponsors: Sponsor[], columns: string } }
+
+export default class SponsorList extends Component<Args> {
+
+  getDistinctLevels(sponsors: Sponsor[]): number[] {
     const levels = new Set(sponsors.toArray().map(sponsor => sponsor.level).filter(level => level != null));
     return [...levels].sort((a, b) => a - b);
   }
 
   @computed('sponsors.[]')
-  get distinctLevels() {
+  get distinctLevels(): number[] {
     return this.getDistinctLevels(this.args.sponsors);
   }
 
-  inferColumns(key, sponsors) {
+  inferColumns(sponsors: Sponsor[]): string {
     const levels = this.distinctLevels;
     const groupLevels = this.getDistinctLevels(sponsors);
 
     const groupLevel = groupLevels.pop();
-    if (groupLevel !== null || groupLevel !== undefined) {
+    if (groupLevel !== null && groupLevel !== undefined) {
       const index = levels.indexOf(groupLevel);
       const columns = ['three', 'four', 'five', 'six', 'seven'];
       return columns[Math.min(index, columns.length - 1)];
@@ -29,20 +37,20 @@ export default class SponsorList extends Component {
   }
 
   @computed('sponsors.[]')
-  get sponsorsGrouped() {
+  get sponsorsGrouped(): GroupedSponsors {
     const grouped = groupBy(
       orderBy(
         this.args.sponsors.toArray(),
-        sponsor => sponsor.get('level')
+        sponsor => sponsor.level
       ),
-      sponsor => sponsor.get('type')
+      sponsor => sponsor.type
     );
 
-    const finalGrouped = {};
+    const finalGrouped: GroupedSponsors = {};
     for (const [key, sponsors] of Object.entries(grouped)) {
       finalGrouped[key] = {
         sponsors,
-        columns: this.inferColumns(key, sponsors)
+        columns: this.inferColumns(sponsors)
       };
     }
     return finalGrouped;
