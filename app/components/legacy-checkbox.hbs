@@ -1,18 +1,16 @@
-{{#if @class "toggle"}}
-  <div class="legacy-checkbox" >
-    <XToggle
-      @theme='ios'
-      @variant='light'
-      @value={{@checked}}
-      @onToggle={{@onChange}}
-      @class="legacy-checkbox-switch"
-    />
+<div class="legacy-checkbox" >
+  <XToggle
+    @theme='ios'
+    @variant='light'
+    @value={{@checked}}
+    @onToggle={{@onChange}}
+    @class="legacy-checkbox-switch"
+  />
 
-    {{#if @label}}
-      <span class="legacy-checkbox-label" >
-        {{@label}}
-      </span>
-    {{/if}}
+  {{#if @label}}
+    <span class="legacy-checkbox-label" >
+      {{@label}}
+    </span>
+  {{/if}}
 
-  </div>
-{{/if}}
+</div>
