@@ -1,4 +1,4 @@
-FROM node:12-alpine as builder
+FROM node:14-alpine as builder
 
 WORKDIR /app
 
@@ -13,14 +13,14 @@ ARG api_host
 ARG google_api_key
 ENV API_HOST=$api_host
 ENV GOOGLE_API_KEY=$google_api_key
-RUN node scripts/l10n.js generate && \
+RUN yarn l10n:generate && \
     touch .env && \
     JOBS=1 yarn build -prod
 
 ##
 ##
 
-FROM node:12-alpine
+FROM node:14-alpine
 
 WORKDIR /fastboot
 
