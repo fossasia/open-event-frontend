@@ -13,7 +13,7 @@ module('Integration | Component | widgets/forms/social-link-field', function(hoo
   test('it renders', async function(assert) {
     await render(hbs`{{widgets/forms/social-link-field}}`);
 
-    let content = this.element.textContent?.trim();
+    const content = this.element.textContent?.trim();
     assertContains(assert, content, 'Website');
     assertContains(assert, content, 'Twitter');
     assertContains(assert, content, 'Google Groups');
