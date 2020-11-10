@@ -38,7 +38,7 @@ export default class LinkField extends Component<Args> {
     return this.prefix + this.fixedValue;
   }
 
-  get fixedValue() {
+  get fixedValue(): string {
     return this.fixValue(this.value);
   }
 
@@ -52,7 +52,7 @@ export default class LinkField extends Component<Args> {
   }
 
   @action
-  setValue(event: any): void {
+  setValue(event: { target: HTMLInputElement }): void {
     const text = event.target.value;
     this.value = this.fixValue(text);
     this.args.onChange(this.finalValue);

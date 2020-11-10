@@ -5,22 +5,6 @@
       <label>{{t 'Links & Social Media'}}</label>
     </div>
 
-    Original: {{this.testLink}}
-    <Widgets::Forms::SocialLinkField
-      @site={{this.site}}
-      @onSiteChange={{action (mut this.site)}}
-      @value={{this.testLink}}
-      @onChange={{action (mut this.testLink)}}>
-      <div class="ui icon buttons ml-2">
-        <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action "removeItem" socialLink "socialLinks"}} @position="top center">
-          <i class="minus icon"></i>
-        </UiPopup>
-        <UiPopup @content={{t "Add social link"}} @class="ui icon blue button" @click={{action "addItem" "socialLinks" "social-link"}} @position="top center">
-          <i class="plus icon"></i>
-        </UiPopup>
-      </div>
-    </Widgets::Forms::SocialLinkField>
-
     <h4>
       {{t 'Social Media'}}
       <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button" @click={{action "addItem" "socialLinks" "social-link"}} @position="top center">
@@ -51,6 +35,7 @@
 
     {{#each this.customLinks as |socialLink|}}
       <Widgets::Forms::SocialLinkField
+        @custom={{true}}
         @site={{socialLink.name}}
         @onSiteChange={{action (mut socialLink.name)}}
         @value={{socialLink.link}}

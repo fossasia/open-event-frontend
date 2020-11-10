@@ -5,25 +5,19 @@ import { orderBy, find } from 'lodash-es';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { inject as service } from '@ember/service';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
-  currentTimezone : moment.tz.guess(),
+  currentTimezone: moment.tz.guess(),
   timezones,
-  site            : 'twitter',
-  testLink        : 'https://twitter.com/iamareebjamal',
-
-  torii: service(),
 
   deletedTickets: [],
 
   licenses: computed(function() {
     return orderBy(licenses, 'name');
   }),
-
 
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
     return this.data.event.socialLinks.filterBy('isDeleted', false);
