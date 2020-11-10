@@ -8,7 +8,7 @@ import { isTesting } from 'open-event-frontend/utils/testing';
 export default UiModal.extend({
   tagName           : 'div',
   classNames        : ['centered-modal'],
-  classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large', 'reduceWidth'],
+  classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
 
   openObserver: observer('isOpen', function() {
     const $element = $(this.element);
