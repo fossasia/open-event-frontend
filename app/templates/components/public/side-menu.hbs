@@ -1,11 +1,11 @@
 {{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') (not-eq this.session.currentRouteName 'public.cfs.new-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
   <div class="ui fluid vertical {{unless this.device.isMobile 'pointing'}} menu">
     {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#info'  class='item active scroll'>
+      <a href='#info' class='item active scroll'>
         {{t 'Info'}}
       </a>
       {{#if this.event.tickets.length}}
-        <a href='#tickets'  class='item scroll'>
+        <a href='#tickets' class='item scroll'>
           {{t 'Tickets'}}
         </a>
       {{/if}}
@@ -15,11 +15,11 @@
         </LinkTo>
       {{/if}}
     {{else}}
-      <a class="item" {{action this.goToLink 'info'}}>
+      <a class="item" href="{{href-to 'public.index'}}" {{action this.goToLink 'info'}}>
         {{t 'Info'}}
       </a>
       {{#if this.event.tickets.length}}
-        <a class="item" {{action this.goToLink 'tickets'}}>
+        <a class="item" href="{{href-to 'public.index'}}#tickets" {{action this.goToLink 'tickets'}}>
           {{t 'Tickets'}}
         </a>
       {{/if}}
@@ -46,22 +46,22 @@
     {{/if}}
     {{#if this.event.isSponsorsEnabled}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#sponsor'  class='item scroll'>
+        <a href='#sponsor' class='item scroll'>
           {{t 'Sponsors'}}
         </a>
       {{else}}
-        <a class="item" {{action this.goToLink 'sponsor'}}>
+        <a class="item" href="{{href-to 'public.index'}}#sponsor" {{action this.goToLink 'sponsor'}}>
           {{t 'Sponsors'}}
         </a>
       {{/if}}
     {{/if}}
     {{#if this.event.hasOwnerInfo}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#owner'  class='item scroll'>
+        <a href='#owner' class='item scroll'>
           {{t 'Organizer'}}
         </a>
       {{else}}
-        <a class="item" {{action this.goToLink 'owner'}}>
+        <a class="item" href="{{href-to 'public.index'}}#owner" {{action this.goToLink 'owner'}}>
           {{t 'Organizer'}}
         </a>
       {{/if}}
@@ -71,7 +71,7 @@
         {{t 'Getting here'}}
       </a>
     {{else}}
-      <a class="item" {{action this.goToLink 'getting-here'}}>
+      <a class="item" href="{{href-to 'public.index'}}#getting-here" {{action this.goToLink 'getting-here'}}>
         {{t 'Getting here'}}
       </a>
     {{/if}}
