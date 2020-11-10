@@ -4,7 +4,7 @@ import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
 import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
-import { socialMediaIdentifiers } from 'open-event-frontend/utils/dictionary/social-media';
+import { socialMediaIdentifiers, socialMediaMap } from 'open-event-frontend/utils/dictionary/social-media';
 
 export default ModelBase.extend({
   name       : attr('string'),
@@ -34,6 +34,10 @@ export default ModelBase.extend({
 
   isSocial: computed('isCustom', function() {
     return !this.isCustom;
+  }),
+
+  displayName: computed('normalizedName', function() {
+    return socialMediaMap[this.normalizedName]?.name ?? this.name;
   }),
 
   segmentedLink: computedSegmentedLink.bind(this)('link')
