@@ -19,14 +19,7 @@
         @data={{this.model.order}}
         @event={{this.model.event}}
         @eventCurrency={{this.model.order.event.paymentCurrency}} />
-    </div>
-    <div class="mobile hidden six wide column">
-      <Orders::EventInfo
-        @data={{this.model.order}} />
-    </div>
-  </div>
-  <div class="row">
-    <div class="column right aligned">
+      <br/>
       <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
         {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
         <i class="ticket alternate icon"></i>
@@ -37,23 +30,19 @@
         <i class="download icon"></i>
         {{t 'Download Invoice'}}
       </button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="ten wide column">
+      <br/><br/>
       <Forms::Orders::AttendeeList
         @save="save"
         @data={{this.model.order}}
         @fields={{this.model.form}}
         @event={{this.model.event}} />
     </div>
-    <div class="six wide column">
-      <div class="row">
-        <div class="mobile hidden row">
-          <Orders::TicketHolder
+    <div class="mobile hidden six wide column">
+      <Orders::EventInfo
+        @data={{this.model.order}} />
+      <br/>
+      <Orders::TicketHolder
             @data={{this.model.order}} />
-        </div>
-      </div>
     </div>
   </div>
 </div>
