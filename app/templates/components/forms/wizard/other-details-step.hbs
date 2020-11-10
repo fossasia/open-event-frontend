@@ -7,7 +7,7 @@
 
     <h4>
       {{t 'Social Media'}}
-      <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button" @click={{action "addItem" "socialLinks" "social-link"}} @position="top center">
+      <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button ml-2" style="margin-left: 1rem !important;" @click={{action "addItem" "socialLinks" "social-link"}} @position="top center">
         <i class="plus icon"></i>
       </UiPopup>
     </h4>
@@ -18,7 +18,7 @@
         @onSiteChange={{action (mut socialLink.name)}}
         @value={{socialLink.link}}
         @onChange={{action (mut socialLink.link)}}>
-        <div class="ui icon buttons ml-2">
+        <div class="ui icon buttons">
           <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action "removeItem" socialLink "socialLinks"}} @position="top center">
             <i class="minus icon"></i>
           </UiPopup>
@@ -28,7 +28,7 @@
 
     <h4>
       {{t 'Extra Links'}}
-      <UiPopup @content={{t "Add custom link"}} @class="ui compact icon blue circular button" @click={{action "addItem" "customLink" "social-link"}} @position="top center">
+      <UiPopup @content={{t "Add custom link"}} @class="ui compact icon blue circular button" style="margin-left: 1rem !important;" @click={{action "addItem" "customLink" "social-link"}} @position="top center">
         <i class="plus icon"></i>
       </UiPopup>
     </h4>
@@ -40,7 +40,7 @@
         @onSiteChange={{action (mut socialLink.name)}}
         @value={{socialLink.link}}
         @onChange={{action (mut socialLink.link)}}>
-        <div class="ui icon buttons ml-2">
+        <div class="ui icon buttons">
           <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action "removeItem" socialLink "socialLinks"}} @position="top center">
             <i class="minus icon"></i>
           </UiPopup>
