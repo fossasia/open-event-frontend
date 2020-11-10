@@ -28,6 +28,7 @@
     </button>
   {{else if this.showPasswordForm}}
     <div class="ui text muted">{{t 'Please set up a password to continue.'}}</div>
+    <div class="ui divider hidden"></div>
     <div class="field">
       <label class="required" for="password">{{t 'Password'}}</label>
       <Input @type="password" @name="password" @value={{this.password}} />
