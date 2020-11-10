@@ -20,29 +20,32 @@
         @event={{this.model.event}}
         @eventCurrency={{this.model.order.event.paymentCurrency}} />
       <br/>
-      <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
-        {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
-        <i class="ticket alternate icon"></i>
-        {{t 'Download Tickets'}}
-      </button>
-      <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
-        class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
-        <i class="download icon"></i>
-        {{t 'Download Invoice'}}
-      </button>
-      <br/><br/>
       <Forms::Orders::AttendeeList
         @save="save"
         @data={{this.model.order}}
         @fields={{this.model.form}}
         @event={{this.model.event}} />
     </div>
-    <div class="mobile hidden six wide column">
+    <div class="six wide column">
       <Orders::EventInfo
         @data={{this.model.order}} />
       <br/>
+      <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
+        {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
+        <i class="ticket alternate icon"></i>
+        {{t 'Download Tickets'}}
+      </button>
+      {{#if this.device.isMobile}}
+        <br/>
+      {{/if}}
+      <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
+        class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
+        <i class="download icon"></i>
+        {{t 'Download Invoice'}}
+      </button>
+      <br/><br/>
       <Orders::TicketHolder
-            @data={{this.model.order}} />
+        @data={{this.model.order}} />
     </div>
   </div>
 </div>
