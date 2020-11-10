@@ -9,6 +9,6 @@ import ENV from 'open-event-frontend/config/environment';
 export default class EventApps extends Component {
   @computed('eventId')
   get webAppGeneratorUrl() {
-    return `${ENV.webAppGenerator}/?email=${this.authManager.currentUser.email}&apiendpoint=${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/${this.eventId}`;
+    return `${ENV.webAppGenerator}/?email=${this.authManager.currentUser.email}&api=${ENV.APP.apiHost}/${ENV.APP.apiNamespace}/events/${this.eventId}`;
   }
 }
