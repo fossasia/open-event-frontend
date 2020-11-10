@@ -3,7 +3,8 @@ import { computed } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
-import { computedSegmentedLink, socialPlatforms } from 'open-event-frontend/utils/computed-helpers';
+import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
+import { socialMediaIdentifiers, socialMediaMap } from 'open-event-frontend/utils/dictionary/social-media';
 
 export default ModelBase.extend({
   name       : attr('string'),
@@ -19,15 +20,24 @@ export default ModelBase.extend({
     // https://github.com/fossasia/open-event-frontend/issues/4777
 
     const normalizedName = this.name?.trim().toLowerCase();
-    if (!socialPlatforms.includes(normalizedName)) {
+    if (!socialMediaIdentifiers.includes(normalizedName)) {
       return 'globe';
     }
     return normalizedName;
   }),
 
-  isTwitter : equal('normalizedName', 'twitter'),
-  isCustom  : computed('normalizedName', function() {
-    return !socialPlatforms.includes(this.normalizedName);
+  isTwitter: equal('normalizedName', 'twitter'),
+
+  isCustom: computed('normalizedName', function() {
+    return !socialMediaIdentifiers.includes(this.normalizedName);
+  }),
+
+  isSocial: computed('isCustom', function() {
+    return !this.isCustom;
+  }),
+
+  displayName: computed('normalizedName', function() {
+    return socialMediaMap[this.normalizedName]?.name ?? this.name;
   }),
 
   segmentedLink: computedSegmentedLink.bind(this)('link')
