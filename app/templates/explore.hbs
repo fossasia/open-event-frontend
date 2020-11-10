@@ -25,13 +25,13 @@
       {{/if}}
       {{#if this.filters.start_date}}
         <div class="ui mini label">
-          {{moment-format this.filters.start_date 'ddd, MMM DD'}}
+          {{moment-format this.filters.start_date 'dddd, D MMMM, YYYY h:mm A'}}
           <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
       {{#if this.filters.end_date}}
         <div class="ui mini label">
-          {{moment-format this.filters.end_date 'ddd, MMM DD'}}
+          {{moment-format this.filters.end_date 'dddd, D MMMM, YYYY h:mm A'}}
           <a href="#" role="button" {{action 'clearFilter' 'end_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}

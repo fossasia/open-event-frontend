@@ -54,7 +54,7 @@ get columns() {
       isSortable      : true,
       cellComponent   : 'ui-table/cell/cell-simple-date',
       options         : {
-        dateFormat: 'MMMM DD, YYYY - HH:mm A'
+        dateFormat: 'D MMM, YYYY h:mm A'
       }
     }
 
