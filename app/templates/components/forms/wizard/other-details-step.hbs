@@ -47,20 +47,6 @@
         </div>
       </Widgets::Forms::SocialLinkField>
     {{/each}}
-{{!-- 
-    {{#each this.socialLinks as |socialLink|}}
-      <Widgets::Forms::LinkInput
-        @hasLinkName={{true}}
-        @linkName={{socialLink.name}}
-        @isSocialLink={{true}}
-        @isCustomLink={{socialLink.isCustom}}
-        @inputId={{socialLink.identifier}}
-        @segmentedLink={{socialLink.segmentedLink}}
-        @isChild={{true}}
-        @addItem={{action "addItem" "socialLinks" "social-link"}}
-        @addCustomLink={{action "addItem" "customLink" "social-link"}}
-        @removeItem={{action "removeItem" socialLink "socialLinks"}} />
-    {{/each}} --}}
   </div>
   
   <div class="ui section divider"></div>
