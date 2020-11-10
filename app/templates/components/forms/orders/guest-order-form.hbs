@@ -1,4 +1,4 @@
-<form class="ui {{if this.isLoading 'loading' }} form" {{action 'submit' on='submit'}}>
+<form class="ui {{if this.isLoading 'loading' }} form centered" {{action 'submit' on='submit'}}>
   {{#if this.errorMessage}}
     <div class="ui negative message">
       <p>{{this.errorMessage}}</p>
@@ -15,6 +15,7 @@
   </div>
   {{#if this.userExists}}
     <div class="ui text muted">{{t 'You have previously registered with this email address.'}}</div>
+    <div class="ui divider hidden"></div>
     <div class="field">
       <label class="required" for="password">{{t 'Please enter your password to continue.'}}</label>
       <Input @type="password" @name="password" @value={{this.password}} />
