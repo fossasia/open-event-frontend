@@ -68,9 +68,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : 'Member Since',
         valuePath       : 'createdAt',
-        cellComponent   : 'ui-table/cell/admin/users/cell-created-at',
+        cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        headerComponent : 'tables/headers/sort',
+        options         : {
+          dateFormat: 'D MMM, YYYY h:mm A'
+        }
       },
       {
         name            : 'Last Accessed',
