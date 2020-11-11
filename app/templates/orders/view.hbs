@@ -30,20 +30,22 @@
       <Orders::EventInfo
         @data={{this.model.order}} />
       <br/>
-      <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
-        {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
-        <i class="ticket alternate icon"></i>
-        {{t 'Download Tickets'}}
-      </button>
-      {{#if this.device.isMobile}}
-        <br/>
-      {{/if}}
-      <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
-        class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
-        <i class="download icon"></i>
-        {{t 'Download Invoice'}}
-      </button>
-      <br/><br/>
+      <div class="{{if (eq this.device.isMobile false) 'display-flex'}}">
+        <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
+          {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
+          <i class="ticket alternate icon"></i>
+          {{t 'Download Tickets'}}
+        </button>
+        {{#if this.device.isMobile}}
+          <br/>
+        {{/if}}
+        <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
+          class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
+          <i class="download icon"></i>
+          {{t 'Download Invoice'}}
+        </button>
+      </div>
+      <br/>
       <Orders::TicketHolder
         @data={{this.model.order}} />
     </div>
