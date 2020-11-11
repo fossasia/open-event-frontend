@@ -1,6 +1,8 @@
-<div class="ui grid">
-  <div class="three wide column"></div>
-  <div class="ten wide column">
+<div class="ui {{if this.device.isMobile 'center aligned container' 'grid'}}">
+  {{#if (eq this.device.isMobile false)}}
+    <div class="three wide column"></div>
+  {{/if}}
+  <div class="{{if (eq this.device.isMobile false) 'ten wide column'}}">
     <div class="ui stackable inverted divided grid">
       <div class="four wide column">
         <div class="ui left aligned container inverted link list">
@@ -126,5 +128,7 @@
       </div>
     </div>
   </div>
-  <div class="three wide column"></div>
+  {{#if (eq this.device.isMobile false)}}
+    <div class="three wide column"></div>
+  {{/if}}
 </div>
