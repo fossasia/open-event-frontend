@@ -224,7 +224,7 @@ export default class IndexRoute extends Route {
           op   : 'ne',
           val  : ''
         }
-      },
+      }
     ];
 
     return hash({
