@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-
+import { sortBy } from 'lodash-es';
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   fixedFields: computed('data.customForms.@each', function() {
@@ -10,7 +10,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   editableFields: computed('data.customForms.@each', function() {
-    const fields = this.data.customForms.sort((a, b) => (a.isComplex > b.isComplex) ? 1 : ((b.isComplex > a.isComplex) ? -1 : 0));
+    const fields = sortBy(this.data.customForms, ['isComplex', 'name']);
     return fields?.filter(field => !field.isFixed);
   }),
 
