@@ -2,7 +2,7 @@
   {{#if (not-eq key 'null')}}
     <h4 class="ui header">{{key}}</h4>
   {{/if}}
-  <div class="ui {{sponsorsGroup.columns}} column stackable grid">
+  <div class="ui three column stackable grid">
     {{#each sponsorsGroup.sponsors as |sponsor|}}
       <Public::SponsorItem @sponsor={{sponsor}} />
     {{/each}}
