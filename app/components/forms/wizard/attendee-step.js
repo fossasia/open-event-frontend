@@ -10,8 +10,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   editableFields: computed('data.customForms.@each', function() {
-    const fields = sortBy(this.data.customForms, ['isComplex', 'name']);
-    return fields?.filter(field => !field.isFixed);
+    const filteredFields = this.data.customForms?.filter(field => !field.isFixed);
+    const fields = sortBy(filteredFields, ['isComplex', 'name']);
+    return fields;
   }),
 
   showEditColumn: computed('editableFields.@each', function() {
