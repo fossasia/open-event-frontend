@@ -61,9 +61,6 @@
 </div>
 <div class="mobile only row">
   <div class="ui navbar tiny menu">
-    <a href="#" class="menu item open sidebar">
-      <i class="large content icon"></i>
-    </a>
     <LinkTo
       @route="index" class="item" @activeClass="">
       <div class="ui header small text">{{this.settings.appName}}</div>
@@ -73,12 +70,19 @@
         <NotificationDropdown
           @notifications={{this.notifications}} />
       {{/if}}
-      <LinkTo
-        @route="create" class="item ui blue button-text small text">
-        <div>
-          {{t 'Create Event'}}
-        </div>
-      </LinkTo>
+      {{#if this.session.isAuthenticated}}
+        <LinkTo
+          @route="create" class="item ui blue button-text small text">
+          <div>
+            {{t 'Create Event'}}
+          </div>
+        </LinkTo>
+      {{else}}
+        <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+      {{/if}}
     </div>
+    <a href="#" class="menu item open sidebar">
+      <i class="large content icon"></i>
+    </a>
   </div>
 </div>
