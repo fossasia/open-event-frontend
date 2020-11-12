@@ -119,6 +119,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   tax                 : belongsTo('tax'),
   copyright           : belongsTo('event-copyright'),
   sessionTypes        : hasMany('session-type'),
+  breakTypes        : hasMany('break-type'),
   user                : belongsTo('user', { inverse: 'events' }),
 
   customForms     : hasMany('custom-form'),

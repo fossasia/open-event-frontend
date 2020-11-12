@@ -118,7 +118,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
 
       const bulkPromises = [];
 
-      for (const property of ['tracks', 'sessionTypes', 'microlocations', 'customForms']) {
+      for (const property of ['tracks', 'sessionTypes', 'breakTypes', 'microlocations', 'customForms']) {
         const items = data[property];
         for (const item of items ? items.toArray() : []) {
           bulkPromises.push(event.get('isSessionsSpeakersEnabled') ? item.save() : item.destroyRecord());

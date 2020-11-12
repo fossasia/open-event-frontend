@@ -125,6 +125,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   sessionTypes: computed('data.sessionTypes.@each.isDeleted', function() {
     return this.data.sessionTypes.filterBy('isDeleted', false);
   }),
+  
+  breakTypes: computed('data.breakTypes.@each.isDeleted', function() {
+    return this.data.breakTypes.filterBy('isDeleted', false);
+  }),
 
   hasCallForSpeaker: computed('data.speakersCall.announcement', function() {
     return !!this.data.speakersCall.announcement;
@@ -165,6 +169,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
       this.data.event.sessionTypes.addObject(this.store.createRecord('session-type'));
     }
 
+    if (this.data.event.breakTypes && !this.data.event.breakTypes.length) {
+      this.data.event.breakTypes.addObject(this.store.createRecord('break-type'));
+    }
+
     if (this.data.event.tracks && !this.data.event.tracks.length) {
       this.data.event.tracks.addObject(this.store.createRecord('track'));
     }
@@ -179,6 +187,9 @@ export default Component.extend(EventWizardMixin, FormMixin, {
       switch (type) {
         case 'sessionType':
           this.data.sessionTypes.addObject(this.store.createRecord('session-type'));
+          break;
+        case 'breakType':
+          this.data.breakTypes.addObject(this.store.createRecord('break-type'));
           break;
         case 'track':
           this.data.tracks.addObject(this.store.createRecord('track'));

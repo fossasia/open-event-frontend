@@ -19,7 +19,7 @@ export default class SessionsSpeakersController extends Controller.extend(EventW
   save() {
     this.saveEventDataAndRedirectTo(
       'events.view.index',
-      ['tracks', 'sessionTypes', 'microlocations', 'customForms', 'tickets']
+      ['tracks', 'sessionTypes', 'breakTypes', 'microlocations', 'customForms', 'tickets']
     );
   }
 
@@ -27,7 +27,7 @@ export default class SessionsSpeakersController extends Controller.extend(EventW
   move(direction) {
     this.saveEventDataAndRedirectTo(
       direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.sponsors',
-      ['tracks', 'sessionTypes', 'microlocations', 'customForms', 'tickets']
+      ['tracks', 'sessionTypes', 'breakTypes', 'microlocations', 'customForms', 'tickets']
     );
   }
 }
