@@ -230,6 +230,15 @@ export default Component.extend(FormMixin, {
     if (this.code) {
       this.send('togglePromotionalCode', this.code);
     }
+    if (this.tickets.length === 1) {
+      let preSelect = this.tickets[0].minOrder;
+      if (!this.tickets[0].minOrder) {
+        preSelect = 1;
+      }
+      this.tickets[0].set('orderQuantity', preSelect);
+      this.order.tickets.addObject(this.tickets[0]);
+      this.send('updateOrderAmount');
+    }
   },
   donationTicketsValidation: computed('donationTickets.@each.id', 'donationTickets.@each.minPrice', 'donationTickets.@each.maxPrice', function() {
     const validationRules = {};
