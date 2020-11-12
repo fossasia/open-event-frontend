@@ -14,10 +14,10 @@
       </span>
     {{/if}}
     {{#if (eq this.record.status 'completed')}}
-      {{moment-format this.record.completedAt 'D MMM, YYYY h:mm A'}}
+      {{moment-format this.record.completedAt 'D MMM, YYYY h:mm A (z)'}}
       {{moment-from-now this.record.completedAt}}
     {{else}}
-      {{moment-format this.record.createdAt 'D MMM, YYYY h:mm A'}}
+      {{moment-format this.record.createdAt 'D MMM, YYYY h:mm A (z)'}}
       {{moment-from-now this.record.createdAt}}
     {{/if}}
   </div>

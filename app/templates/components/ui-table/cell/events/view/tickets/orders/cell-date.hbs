@@ -1,9 +1,9 @@
 {{#if this.record}}
   <div>
-    {{moment-format this.record 'D MMM, YYYY h:mm A'}}
+    {{moment-format this.record 'D MMM, YYYY h:mm A (z)'}}
   </div>
 {{else}}
   <div>
-    {{moment-format this.extraRecords.createdAt 'D MMM, YYYY h:mm A'}}
+    {{moment-format this.extraRecords.createdAt 'D MMM, YYYY h:mm A (z)'}}
   </div>
 {{/if}}

@@ -15,7 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-general',
         options         : {
-          dateFormat: 'D MMM, YYYY h:mm A'
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
         }
       },
       {
