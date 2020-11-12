@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { action, observer } from '@ember/object';
+import { action } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
