@@ -15,7 +15,7 @@ export default UiModal.extend({
     if (this.isOpen) {
       $element.modal(this.defaultOptions).modal('show');
     } else {
-      if(this.unloadRecord){
+      if (this.unloadRecord) {
         this.unloadRecord();
       }
       $element.modal('hide');
