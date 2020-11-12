@@ -15,5 +15,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   showEditColumn: computed('editableFields.@each', function() {
     return this.editableFields?.some(field => field.isComplex);
-  })
+  }),
+
+  actions: {
+  	removeField(field): void {
+			this.data.customForms.removeObject(field);
+		}
+  }
 });

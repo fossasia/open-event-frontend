@@ -71,8 +71,7 @@
               <button class="ui compact icon positive circular button" data-tooltip="{{t 'Edit'}}" {{action  @updateField field}}>
                 <i class="pencil icon"></i>
               </button>
-              {{!-- Hiding till implemented --}}
-              <button class="ui compact icon negative circular button hidden-item" data-tooltip="{{t 'Delete'}}">
+              <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{action  @removeField field}}>
                 <i class="trash icon"></i>
               </button>
             {{/if}}
