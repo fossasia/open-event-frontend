@@ -7,7 +7,7 @@ export default class Microlocation extends ModelBase.extend({
   floor     : attr('number'),
   latitude  : attr('number'),
   longitude : attr('number'),
-  position  : attr('number', {defaultValue: 0}),
+  position  : attr('number', { defaultValue: 0}),
 
   sessions    : hasMany('session'),
   event       : belongsTo('event'),
