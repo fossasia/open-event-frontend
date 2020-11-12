@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
+import { action, observer } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
 
@@ -7,9 +7,6 @@ import ModalBase from 'open-event-frontend/components/modals/modal-base';
 export default class AddUserRoleModal extends ModalBase.extend(FormMixin) {
   isSmall = true;
   autoScrollToErrors = false;
-  options = {
-    closable: false
-  };
 
   @action
   addRole() {
