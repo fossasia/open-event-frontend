@@ -7,6 +7,9 @@ import ModalBase from 'open-event-frontend/components/modals/modal-base';
 export default class AddUserRoleModal extends ModalBase.extend(FormMixin) {
   isSmall = true;
   autoScrollToErrors = false;
+  options = {
+    closable: false
+  };
 
   @action
   addRole() {
@@ -17,13 +20,10 @@ export default class AddUserRoleModal extends ModalBase.extend(FormMixin) {
 
   @action
   close() {
-    this.set('isOpen', false);
-  }
-
-  unloadRecord() {
     if (!this.currentInvite.get('id')) {
       this.currentInvite.unloadRecord();
     }
+    this.set('isOpen', false);
   }
 
   getValidationRules() {
