@@ -27,7 +27,14 @@ export default class IndexController extends Controller {
 
   @computed('filteredEvents.[]')
   get upcomingEvents() {
-    return this.filteredEvents?.filter(event => !event.isPromoted);
+    return this.filteredEvents?.filter(event => {
+      let publicTicketAvailable=false;
+      event.get('tickets').map(x => {
+        if(!x.isHidden) {
+          return (publicTicketAvailable = true);
+        }
+      }); 
+    {return (!event.isPromoted && publicTicketAvailable) }});
   }
 
   @action
