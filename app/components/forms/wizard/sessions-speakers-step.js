@@ -195,7 +195,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
       }));
     },
     resetCFS() {
-      this.set('data.speakersCall.announcement', '');
+      this.set('data.speakersCall.announcement', null);
     },
     onChange() {
       this.onValid(() => {});
