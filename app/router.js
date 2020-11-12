@@ -110,7 +110,7 @@ Router.map(function() {
       });
       this.route('videoroom', function() {
         this.route('list', { path: '/:status' });
-        this.route('edit', { path: '/:session_id/edit' });
+        this.route('edit', { path: '/:stream_id/edit' });
         this.route('create');
       });
       this.route('scheduler');

@@ -52,8 +52,24 @@ export default Component.extend(FormMixin, {
 
   actions: {
     submit() {
-      this.onValid(() => {
-        this.save();
+      this.onValid(async() => {
+        try {
+          this.loading = true;
+          await this.data.stream.save();
+          this.notify.success(this.l10n.t('Your stream has been saved'),
+            {
+              id: 'stream_save'
+            });
+          this.router.transitionTo('events.view.videoroom', this.data.event.id);
+        } catch (e) {
+          console.error('Error while saving session', e);
+          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
+            {
+              id: 'stream_save_error'
+            });
+        } finally {
+          this.loading = false;
+        }
       });
     }
   }
