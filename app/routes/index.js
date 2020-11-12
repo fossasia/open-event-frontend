@@ -222,7 +222,7 @@ export default class IndexRoute extends Route {
         val  : {
           name : 'announcement',
           op   : 'ne',
-          val  : ''
+          val  : null
         }
       }
     ];
