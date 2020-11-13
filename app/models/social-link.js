@@ -13,7 +13,11 @@ export default ModelBase.extend({
 
   event: belongsTo('event'),
 
-  normalizedName: computed('name', function() {
+  normalizedName: computed('site', function() {
+    return this.site === 'website' ? 'globa' : this.site;
+  }),
+
+  site: computed('name', function() {
     // Even though name is required for social links and is non-nullable
     // and non-null name is being sent from API, for some reason, for certain events,
     // this throws an error, so we check first if name exists
@@ -21,7 +25,7 @@ export default ModelBase.extend({
 
     const normalizedName = this.name?.trim().toLowerCase();
     if (!socialMediaIdentifiers.includes(normalizedName)) {
-      return 'globe';
+      return 'website';
     }
     return normalizedName;
   }),

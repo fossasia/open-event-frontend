@@ -31,3 +31,8 @@ export const socialMediaMap: SocialMediaMap = socialMediaIdentifiers.reduce((obj
   obj[identifier] = socialMediaSites[index];
   return obj;
 }, {});
+
+export const socialMediaExtraPrefixes = Object.values(socialMediaMap).reduce((obj: { [key: string]: string}, media: SocialMedia) => {
+  obj[media.prefix ?? media.identifier] = `https://www.${media.identifier}.com/`;
+  return obj;
+}, {});
