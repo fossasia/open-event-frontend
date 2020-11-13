@@ -278,13 +278,23 @@
         <i class="ticket icon"></i>
         {{t 'Acknowledgement'}}
       </h4>
-      <p>
+       {{#if this.isPaidOrder}}
+        <p>
         {{t
-          'By clicking "Pay Now", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event.'}}
+          'By clicking "Proceed to Checkout", I acknowledge that I have read and that I agree with the '}} <a href='https://eventyay.com/terms'>terms of services</a>{{t ' and ' }}<a href='https://eventyay.com/privacy-policy'>privacy policy</a> {{ ' on this website.'}}
       </p>
       <div class="center aligned">
         <button type="submit" class="ui teal submit button">{{t 'Proceed to Checkout'}}</button>
       </div>
+      {{else}}
+      <p>
+        {{t
+          'By clicking "Order Now", I acknowledge that I have read and that I agree with the '}} <a href='https://eventyay.com/terms'>terms of services</a>{{t ' and ' }}<a href='https://eventyay.com/privacy-policy'>privacy policy</a> {{ ' on this website.'}}
+      </p>
+      <div class="center aligned">
+        <button type="submit" class="ui teal submit button">{{t 'Order Now'}}</button>
+      </div>
+      {{/if}}
     </div>
   </div>
 </form>
