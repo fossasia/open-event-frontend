@@ -36,7 +36,7 @@
     {{#each this.customLinks as |socialLink|}}
       <Widgets::Forms::SocialLinkField
         @custom={{true}}
-        @site={{socialLink.site}}
+        @site={{socialLink.name}}
         @onSiteChange={{action (mut socialLink.name)}}
         @value={{socialLink.link}}
         @onChange={{action (mut socialLink.link)}}>
