@@ -1,13 +1,20 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { action } from '@ember/object';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
   get columns() {
     return [
       {
-        name      : 'Microlocation',
-        valuePath : 'name'
+        name            : 'Microlocation',
+        valuePath       : 'name',
+        extraValuePaths : ['id', 'videoStream'],
+        cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-title',
+        width           : 70,
+        actions         : {
+          delete: this.delete.bind(this)
+        }
       },
       {
         name      : 'Video room URL',
@@ -15,12 +22,33 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name      : 'Pin',
-        valuePath : 'videoStream.password'
+        valuePath : 'videoStream.password',
+        width     : 20
       },
       {
         name      : 'Additional information',
         valuePath : 'videoStream.additionalInformation'
       }
     ];
+  }
+
+  @action
+  async delete(id) {
+    this.set('isLoading', true);
+    const stream = await this.store.peekRecord('video-stream', id, { backgroundReload: false });
+    try {
+      await stream.destroyRecord();
+      this.notify.success(this.l10n.t('{{item}} has been deleted successfully.', { item: this.l10n.t('Video Stream') }),
+        {
+          id: 'stream_del'
+        });
+      this.refreshModel();
+    } catch (e) {
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'stream_err'
+        });
+    }
+    this.set('isLoading', false);
   }
 }

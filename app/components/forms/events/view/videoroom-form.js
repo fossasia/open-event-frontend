@@ -70,7 +70,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   async addJitsi() {
     const { event } = this.data;
     const { id, name } = this.data.stream;
-    const identifier = [event.identifier, 'stream', name?.toLowerCase(), id ?? this.randomIdentifier].filter(Boolean).join('-');
+    const identifier = [event.identifier, 'stream', name?.replace(/[^a-z0-9\.]/gi, '')?.toLowerCase(), id ?? this.randomIdentifier].filter(Boolean).join('-');
 
     this.data.stream.set('url', 'https://meet.jit.si/eventyay/' + identifier);
 
