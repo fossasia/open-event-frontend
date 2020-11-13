@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { socialMediaExtraPrefixes } from 'open-event-frontend/utils/dictionary/social-media';
 
 interface Args {
   prefix: string | undefined,
@@ -48,6 +49,13 @@ export default class LinkField extends Component<Args> {
    */
   fixValue(value: string): string {
     const splitted = value.split(this.prefix);
+    if (!splitted[1]) {
+      const extraPrefix = socialMediaExtraPrefixes[this.prefix];
+      const extraSplit = value.split(extraPrefix);
+      if (extraSplit[1]) {
+        return extraSplit[1];
+      }
+    }
     return splitted[1] || splitted[0];
   }
 
@@ -60,6 +68,12 @@ export default class LinkField extends Component<Args> {
 
   @action
   prefixUpdated(): void {
+    this.args.onChange(this.finalValue);
+  }
+
+  @action
+  valueUpdated(): void {
+    this.value = this.parseValue();
     this.args.onChange(this.finalValue);
   }
 
