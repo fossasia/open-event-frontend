@@ -14,7 +14,7 @@ export default ModelBase.extend({
   event: belongsTo('event'),
 
   normalizedName: computed('site', function() {
-    return this.site === 'website' ? 'globa' : this.site;
+    return this.site === 'website' ? 'globe' : this.site;
   }),
 
   site: computed('name', function() {
