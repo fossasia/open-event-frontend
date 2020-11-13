@@ -88,19 +88,12 @@
                     @id={{concat ticket.id "_quantity"}}
                     @value={{ticket.orderQuantity}} />
                   <i class="dropdown icon"></i>
-                  <div class="default text">{{if (eq this.tickets.length 1) (if (gt ticket.minOrder 1) ticket.minOrder 1) 0}}</div>
+                  <div class="default text">{{if (eq this.tickets.length 1) (max ticket.minOrder 1) 0}}</div>
                   <div class="menu">
-                  {{#if (eq this.tickets.length 1)}}
-                    <div class="item" data-value="{{map-value mapper ticket.minOrder}}">{{ticket.minOrder}}</div>
-                    {{#each (range (add ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
-                      <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
-                    {{/each}}
-                  {{else}}
                     <div class="item" data-value="{{map-value mapper 0}}">0</div>
-                    {{#each (range ticket.minOrder (add ticket.maxOrder 1)) as |count|}}
+                    {{#each (range (max ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
                       <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
                     {{/each}}                  
-                  {{/if}}
                   </div>
                 </UiDropdown>
               </div>
