@@ -62,8 +62,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   generateMeetingInformation(phoneNumbers, pin) {
-    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nPIN: ${pin}\n\n` + 
-    Object.entries(phoneNumbers).map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`).join('')
+    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nPIN: ${pin}\n\n`
+    + Object.entries(phoneNumbers).map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`).join('');
   }
 
   @action
