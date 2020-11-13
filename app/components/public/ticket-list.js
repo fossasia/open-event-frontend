@@ -99,21 +99,6 @@ export default Component.extend(FormMixin, {
     return input;
   }),
 
-  didInsertElement() {
-    this.data.forEach(ticket => {
-      ticket.set('discount', 0);
-    });
-    if (this.code) {
-      this.send('togglePromotionalCode', this.code);
-    }
-    if (this.tickets.length === 1) {
-      const preSelect = Math.max(this.tickets[0].minOrder, 1);
-      this.tickets[0].set('orderQuantity', preSelect);
-      this.order.tickets.addObject(this.tickets[0]);
-      this.send('updateOrderAmount');
-    }
-  },
-
   actions: {
     async togglePromotionalCode(queryParam) {
       this.toggleProperty('enterPromotionalCode');
@@ -238,7 +223,20 @@ export default Component.extend(FormMixin, {
       debounce(this, () => this.send('updateOrderAmount'), this.tickets, 250);
     }
   },
-
+  didInsertElement() {
+    this.data.forEach(ticket => {
+      ticket.set('discount', 0);
+    });
+    if (this.tickets.length === 1) {
+      const preSelect = Math.max(this.tickets[0].minOrder, 1);
+      this.tickets[0].set('orderQuantity', preSelect);
+      this.order.tickets.addObject(this.tickets[0]);
+      this.send('updateOrderAmount');
+    }
+    if (this.code) {
+      this.send('togglePromotionalCode', this.code);
+    }
+  },
   donationTicketsValidation: computed('donationTickets.@each.id', 'donationTickets.@each.minPrice', 'donationTickets.@each.maxPrice', function() {
     const validationRules = {};
     for (const donationTicket of this.donationTickets) {
