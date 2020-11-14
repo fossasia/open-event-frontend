@@ -215,6 +215,15 @@ export default class IndexRoute extends Route {
           op   : 'ge',
           val  : params.start_date
         }
+      },
+      {
+        name : 'speakers-call',
+        op   : 'has',
+        val  : {
+          name : 'announcement',
+          op   : 'ne',
+          val  : null
+        }
       }
     ];
 

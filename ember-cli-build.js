@@ -6,6 +6,7 @@ const targets = require('./config/targets');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const env = process.env.EMBER_ENV || 'development';
+const isProd = env === 'production';
 
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
@@ -14,7 +15,7 @@ module.exports = function(defaults) {
     },
     storeConfigInMeta : true,
     sassOptions       : {
-      sourceMapEmbed: true
+      sourceMapEmbed: !isProd
     },
     SemanticUI: {
       source: {
@@ -28,7 +29,7 @@ module.exports = function(defaults) {
       overrideBrowserslist : targets.browsers,
       enabled              : true,
       cascade              : false,
-      sourcemap            : true
+      sourcemap            : !isProd
     },
     minifyHTML: {
       enabled   : false,
@@ -40,10 +41,10 @@ module.exports = function(defaults) {
         require.resolve('ember-auto-import/babel-plugin')
       ],
       targets,
-      sourceMaps: 'inline'
+      sourceMaps: true
     },
     fingerprint: {
-      enabled          : env === 'production',
+      enabled          : isProd,
       generateAssetMap : true,
       exclude          : [
         'package.json',
