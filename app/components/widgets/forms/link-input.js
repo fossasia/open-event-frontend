@@ -3,7 +3,7 @@ import { classNameBindings } from '@ember-decorators/component';
 import { observes } from '@ember-decorators/object';
 import Component from '@ember/component';
 import '@ember/object';
-import { socialPlatforms } from 'open-event-frontend/utils/computed-helpers';
+import { socialMediaIdentifiers } from 'open-event-frontend/utils/dictionary/social-media';
 
 @classic
 @classNameBindings(
@@ -43,7 +43,7 @@ export default class LinkInput extends Component {
     if (add.includes('www.')) {
       add = add.substring(add.indexOf('.') + 1);
     }
-    if (socialPlatforms.includes(link)) {
+    if (socialMediaIdentifiers.includes(link)) {
       proto = `https://${link}.com/`;
     }
     this.set('segmentedLink', {
@@ -55,7 +55,7 @@ export default class LinkInput extends Component {
   @observes('linkName')
   linkNameObserver() {
     const link = this.linkName;
-    if (socialPlatforms.includes(link)) {
+    if (socialMediaIdentifiers.includes(link)) {
       this.set('segmentedLink', {
         protocol : `https://${link}.com/`,
         address  : ''
