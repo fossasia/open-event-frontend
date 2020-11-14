@@ -2,13 +2,14 @@
 # Areeb Jamal <jamalareeb@gmail.com>, 2020.
 # nautilusx <mail.ka@mailbox.org>, 2020.
 # J. Lavoie <j.lavoie@net-c.ca>, 2020.
+# Mario Behling <mb@mariobehling.de>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2020-11-14 12:28+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2020-11-14 22:24+0000\n"
+"Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
 "Language: de\n"
@@ -184,7 +185,7 @@ msgstr "Aufgabe fehlgeschlagen."
 
 #: app/components/events/view/export/download-zip.js:17:26
 msgid "Exported Event Downloaded successfully."
-msgstr "Exportiertes Ereignis erfolgreich heruntergeladen."
+msgstr "Exportierte Veranstaltung erfolgreich heruntergeladen."
 
 #: app/components/events/view/overview/manage-roles.js:40:47
 msgid "Role Invite sent successfully"
@@ -424,7 +425,7 @@ msgstr "Bitte geben Sie den geheimen Sandbox-Token ein"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:106:23
 msgid "Please enter the live client token"
-msgstr "Bitte geben Sie das Live-Client-Token ein"
+msgstr "Bitte geben Sie den Live-Client-Token ein"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:116:23
 msgid "Please enter the live secret token"
@@ -436,12 +437,12 @@ msgstr "Bitte geben Sie den öffentlichen Testschlüssel ein"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:146:23
 msgid "Please enter the public live key"
-msgstr "Bitte geben Sie den öffentlichen Live-Schlüssel ein"
+msgstr "Bitte geben Sie den Public Live Key ein"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:156:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:176:23
 msgid "Please enter the secret live key"
-msgstr "Bitte geben Sie den geheimen Live-Schlüssel ein"
+msgstr "Bitte geben Sie den Secret Live Key ein"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:166:23
 msgid "Please enter the live merchant ID"
@@ -964,7 +965,7 @@ msgstr "Die Mindestbestellmenge sollte nicht größer als die Höchstbestellmeng
 
 #: app/components/forms/wizard/basic-details-step.js:285:23
 msgid "Maximum tickets per order required"
-msgstr "Maximal erforderliche Tickets pro Bestellung erforderlich"
+msgstr "Maximale Anzahl von Tickets pro Bestellung erforderlich"
 
 #: app/components/forms/wizard/basic-details-step.js:293:23
 msgid "Maximum tickets per order should be greater than 0"
@@ -1145,11 +1146,11 @@ msgstr "Bitte geben Sie einen privaten Link ein"
 
 #: app/components/forms/wizard/sessions-speakers-step.js:62:23
 msgid "CFS start time should be before than event start time"
-msgstr "Die CFS-Startzeit sollte vor der Ereignisstartzeit liegen"
+msgstr "Die CfS-Startzeit sollte vor der Veranstaltungsstartzeit liegen"
 
 #: app/components/forms/wizard/sessions-speakers-step.js:75:23
 msgid "CFS end time should be before than event start time"
-msgstr "Die CFS-Endzeit sollte vor der Ereignisstartzeit liegen"
+msgstr "Die CfS-Endzeit muss vor der Veranstaltungstartzeit liegen"
 
 #: app/components/forms/wizard/sessions-speakers-step.js:104:23
 msgid "Please enter name for microlocation"
@@ -1169,7 +1170,7 @@ msgstr "Bitte laden Sie das Sponsorenlogo hoch."
 
 #: app/components/forms/wizard/sponsors-step.js:45:26
 msgid "Please fill the required fields for existing sponsor items"
-msgstr "Bitte füllen Sie die erforderlichen Felder für vorhandene Sponsorenartikel aus"
+msgstr "Bitte füllen Sie die erforderlichen Felder für vorhandene Sponsoren aus"
 
 #: app/components/forms/wizard/wizard-footer.hbs:5:8
 #: app/components/modals/session-notify-modal.hbs:47:4
@@ -1235,7 +1236,7 @@ msgstr "Bitte geben Sie einen Themennamen ein"
 
 #: app/components/modals/admin/content/new-event-type-modal.js:26:23
 msgid "Please enter a event type"
-msgstr "Bitte geben Sie einen Ereignistyp ein"
+msgstr "Bitte geben Sie einen Veranstaltungstypen ein."
 
 #: app/components/modals/change-image-modal.js:15:30
 msgid "Placeholder has been saved successfully."
@@ -1405,11 +1406,13 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten. Unterthemen nicht geladen."
 
 #: app/controllers/admin/content/events.js:44:28
 msgid "This Event Property has been deleted successfully."
-msgstr "Diese Ereigniseigenschaft wurde erfolgreich gelöscht."
+msgstr "Diese Veranstaltungseigenschaft wurde erfolgreich gelöscht."
 
 #: app/controllers/admin/content/events.js:51:26
 msgid "An unexpected error has occurred. Event Type was not deleted."
-msgstr "Ein unerwarteter Fehler ist aufgetreten. Der Ereignistyp wurde nicht gelöscht."
+msgstr ""
+"Ein unerwarteter Fehler ist aufgetreten. Der Veranstaltungstyp wurde nicht "
+"gelöscht."
 
 #: app/controllers/admin/content/events.js:68:28
 msgid "{{item}} has been added successfully."
@@ -1444,16 +1447,16 @@ msgstr "Übersetzungen Zip erfolgreich generiert."
 #: app/controllers/events/list.js:74:26
 #: app/controllers/events/view/settings.js:17:28
 msgid "Event has been deleted successfully."
-msgstr "Ereignis wurde erfolgreich gelöscht."
+msgstr "Die Veranstaltung wurde erfolgreich gelöscht."
 
 #: app/controllers/admin/events/list.js:155:26
 #: app/controllers/admin/users/view/events/list.js:97:26
 msgid "Event has been restored successfully."
-msgstr "Ereignis wurde erfolgreich wiederhergestellt."
+msgstr "Die Veranstaltung wurde erfolgreich wiederhergestellt."
 
 #: app/controllers/admin/events/list.js:176:26
 msgid "Event details modified successfully"
-msgstr "Ereignisdetails erfolgreich geändert"
+msgstr "Veranstaltungsdetails erfolgreich geändert"
 
 #: app/controllers/admin/events/list.js:198:45
 msgid "Event promoted successfully"
@@ -1461,7 +1464,7 @@ msgstr "Veranstaltung erfolgreich beworben"
 
 #: app/controllers/admin/events/list.js:198:90
 msgid "Event unpromoted successfully"
-msgstr "Ereignis ohne Promotion erfolgreich"
+msgstr "Veranstaltung erfolgreich in den Draft-Modus gesetzt"
 
 #: app/controllers/admin/messages.js:12:26
 msgid "Changes have been saved successfully"
@@ -1469,7 +1472,8 @@ msgstr "Änderungen wurden erfolgreich gespeichert"
 
 #: app/controllers/admin/permissions/event-roles.js:20:28
 msgid "Admin Event role permissions have been saved successfully."
-msgstr "Die Berechtigungen für Administratorereignisrollen wurden erfolgreich gespeichert."
+msgstr ""
+"Berechtigungen für Administratorer der Veranstaltung wurden gespeichert."
 
 #: app/controllers/admin/permissions/system-roles.js:35:28
 msgid "System role has been deleted successfully."
@@ -1555,24 +1559,24 @@ msgstr "Hier ist Ihre Eventrechnung"
 
 #: app/controllers/events/view.js:12:28
 msgid "Event copied successfully"
-msgstr "Ereignis erfolgreich kopiert"
+msgstr "Veranstaltung erfolgreich kopiert"
 
 #: app/controllers/events/view.js:19:26
 msgid "Copying of event failed"
-msgstr "Kopieren des Ereignisses fehlgeschlagen"
+msgstr "Kopieren der Veranstaltung fehlgeschlagen"
 
 #: app/controllers/events/view/export.js:25:32
 msgid "Event exported."
-msgstr "Ereignis exportiert."
+msgstr "Veranstaltung wurde exportiert."
 
 #: app/controllers/events/view/export.js:32:30
 msgid "Event export is going on."
-msgstr "Der Ereignisexport wird fortgesetzt."
+msgstr "Der Export der Veranstaltung läuft momentan."
 
 #: app/controllers/events/view/export.js:38:30
 #: app/controllers/events/view/export.js:46:28
 msgid "Event export failed."
-msgstr "Ereignisexport fehlgeschlagen."
+msgstr "Der Export der Veranstaltung ist fehlgeschlagen."
 
 #: app/controllers/events/view/index.js:49:28
 msgid "Sponsor has been deleted successfully."
@@ -1624,15 +1628,15 @@ msgstr "Eigentümerrolle Einladung erfolgreich gesendet."
 #: app/controllers/public/cfs/edit-speaker.js:12:28
 #: app/controllers/public/cfs/new-speaker.js:12:28
 msgid "Speaker details have been saved"
-msgstr "Lautsprecherdetails wurden gespeichert"
+msgstr "Referentendetails wurden gespeichert"
 
 #: app/controllers/events/view/speakers/list.js:79:26
 msgid "Speaker has been deleted successfully."
-msgstr "Der Lautsprecher wurde erfolgreich gelöscht."
+msgstr "Referent wurde gelöscht."
 
 #: app/controllers/events/view/speakers/list.js:103:26
 msgid "Speaker details modified successfully"
-msgstr "Lautsprecherdetails erfolgreich geändert"
+msgstr "Referentendetails erfolgreich geändert"
 
 #: app/controllers/events/view/tickets/access-codes/create.js:11:28
 msgid "Access code has been successfully created."
@@ -1959,7 +1963,7 @@ msgstr "Importieren"
 #: app/templates/admin/index.hbs:62:12
 #: app/templates/admin/users/view/events.hbs:6:10 app/templates/events.hbs:7:10
 msgid "Live"
-msgstr "Wohnen"
+msgstr "Live"
 
 #: app/routes/admin/events/list.js:13:15 app/routes/events/list.js:12:15
 #: app/templates/admin/index.hbs:31:12 app/templates/admin/index.hbs:72:12
@@ -1995,7 +1999,7 @@ msgstr "Nachrichten"
 #: app/templates/events/view/team.hbs:9:10
 #: app/templates/events/view/team/permissions.hbs:4:33
 msgid "Permissions"
-msgstr "Berechtigung"
+msgstr "Berechtigungen"
 
 #: app/routes/admin/permissions/event-roles.js:7:11
 #: app/templates/admin/index.hbs:164:10 app/templates/admin/permissions.hbs:7:6
@@ -2199,7 +2203,7 @@ msgstr "Meine Tickets"
 
 #: app/routes/create.js:9:11 app/templates/create.hbs:6:27
 msgid "Create an Event"
-msgstr "Erstellen Sie ein Ereignis"
+msgstr "Erstellen Sie eine Veranstaltung"
 
 #: app/routes/events/view/edit.js:9:11
 msgid "Edit Event"
@@ -2472,7 +2476,7 @@ msgstr "Sitzung bearbeiten"
 #: app/templates/public/cfs/edit-speaker.hbs:4:6
 #: app/templates/public/speaker/view.hbs:8:83
 msgid "Edit Speaker"
-msgstr "Lautsprecher bearbeiten"
+msgstr "Referent bearbeiten"
 
 #: app/routes/public/cfs/index.js:36:24
 msgid "Call For Speakers has not been issued yet."
@@ -2560,7 +2564,7 @@ msgstr "Veranstaltungstyp"
 
 #: app/templates/admin/content/events.hbs:38:51
 msgid "Are you sure you would like to delete this event type?"
-msgstr "Möchten Sie diesen Ereignistyp wirklich löschen?"
+msgstr "Möchten Sie diesen Veranstaltungstypen wirklich löschen?"
 
 #: app/templates/admin/content/events.hbs:56:14
 msgid "Event Topics"
@@ -2572,7 +2576,7 @@ msgstr "Möchten Sie dieses Veranstaltungsthema wirklich löschen?"
 
 #: app/templates/admin/content/events.hbs:104:14
 msgid "Event Subtopics"
-msgstr "Ereignis-Unterthemen"
+msgstr "Veranstaltungsunterthemen"
 
 #: app/templates/admin/content/events.hbs:115:17
 #: app/templates/components/forms/wizard/basic-details-step.hbs:602:11
@@ -2583,11 +2587,11 @@ msgstr "Veranstaltungsthema"
 #: app/templates/admin/content/events.hbs:120:38
 #: app/templates/components/forms/wizard/basic-details-step.hbs:607:19
 msgid "Select Event Topic"
-msgstr "Wählen Sie Ereignisthema"
+msgstr "Wählen Sie ein Veranstaltungsthema"
 
 #: app/templates/admin/content/events.hbs:149:53
 msgid "Are you sure you would like to delete this event sub topic?"
-msgstr "Möchten Sie dieses Unterthema für Ereignisse wirklich löschen?"
+msgstr "Dieses Veranstaltungsunterthema wirklich löschen?"
 
 #: app/templates/admin/content/pages.hbs:9:105
 msgid "Create Page"
@@ -2723,7 +2727,7 @@ msgstr "Anzahl der Teilnehmer"
 
 #: app/templates/admin/permissions/event-roles.hbs:11:10
 msgid "Event Role/Service"
-msgstr "Ereignisrolle / Service"
+msgstr "Veranstaltungsrolle / Service"
 
 #: app/templates/admin/permissions/event-roles.hbs:26:33
 msgid "Read"
@@ -2740,7 +2744,7 @@ msgstr "Podiumsberechtigungen"
 
 #: app/templates/admin/permissions/system-roles.hbs:19:12
 msgid "System Role"
-msgstr "Systemfunktionen"
+msgstr "Systemrolle"
 
 #: app/templates/admin/permissions/system-roles.hbs:20:12
 #: app/templates/components/modals/add-system-role-modal.hbs:18:8
@@ -2772,7 +2776,7 @@ msgstr "Benutzerberechtigungen"
 
 #: app/templates/admin/permissions/system-roles.hbs:82:14
 msgid "Permission"
-msgstr "Berechtigungen"
+msgstr "Berechtigung"
 
 #: app/templates/admin/permissions/system-roles.hbs:83:14
 #: app/templates/admin/permissions/system-roles.hbs:96:35
@@ -2799,7 +2803,7 @@ msgstr "Nachrichten"
 
 #: app/templates/admin/sales.hbs:16:10
 msgid "By Events"
-msgstr "Nach Ereignissen"
+msgstr "Nach Veranstaltungen"
 
 #: app/templates/admin/sales.hbs:19:10
 msgid "By Organizer"
@@ -2945,7 +2949,7 @@ msgstr "Zukünftige Veranstaltungen"
 #: app/templates/admin/users/view/tickets.hbs:11:12
 #: app/templates/my-tickets.hbs:12:10
 msgid "Past Events"
-msgstr "Vergangene Ereignisse"
+msgstr "Vergangene Veranstaltungen"
 
 #: app/templates/admin/users/view/tickets/list.hbs:8:38
 msgid "No tickets found for this user"
@@ -2977,7 +2981,9 @@ msgstr "Mehr wissen"
 
 #: app/templates/attendee-app.hbs:61:12
 msgid "Check all event related information on the go and get all relevant details about the speakers"
-msgstr "Überprüfen Sie unterwegs alle ereignisbezogenen Informationen und erhalten Sie alle relevanten Details zu den Referenten"
+msgstr ""
+"Überprüfen Sie alle veranstaltungsbezogenen Informationen und erhalten Sie "
+"alle Details zu Referenten"
 
 #: app/templates/attendee-app.hbs:67:12
 msgid "Manage More"
@@ -3057,9 +3063,12 @@ msgid ""
 "Before you can delete your account you must transfer the ownership of your event(s) to another organizer or cancel your event(s). \n"
 "If you have ticket orders stored in the system, please cancel your orders first too."
 msgstr ""
-"Ihr Konto kann derzeit nicht gelöscht werden, da aktive Ereignisse und / oder Bestellungen damit verknüpft sind.\n"
-"Bevor Sie Ihr Konto löschen können, müssen Sie das Eigentum an Ihren Veranstaltungen auf einen anderen Veranstalter übertragen oder Ihre Veranstaltungen stornieren.\n"
-"Wenn Sie Ticketbestellungen im System gespeichert haben, stornieren Sie bitte auch zuerst Ihre Bestellungen."
+"Ihr Konto kann derzeit nicht gelöscht werden, da aktive Veranstaltungen und /"
+" oder Bestellungen damit verknüpft sind.\n"
+"Bevor Sie Ihr Konto löschen können, müssen Sie Ihre Veranstaltungen auf "
+"einen anderen Veranstalter übertragen oder Ihre Veranstaltungen stornieren.\n"
+"Wenn Sie Ticketbestellungen im System gespeichert haben, stornieren Sie "
+"bitte auch zuerst Ihre Bestellungen."
 
 #: app/templates/components/account/email-preferences-section.hbs:5:8
 msgid "Email Updates are"
@@ -3087,11 +3096,11 @@ msgstr "Änderung des Sitzungsplans in Ihrer Veranstaltung"
 
 #: app/templates/components/account/email-preferences-section.hbs:58:10
 msgid "Reminder for Next Event"
-msgstr "Erinnerung für das nächste Ereignis"
+msgstr "Erinnerung für die nächste Veranstaltung"
 
 #: app/templates/components/account/email-preferences-section.hbs:67:34
 msgid "No events have been created by the user"
-msgstr "Der Benutzer hat keine Ereignisse erstellt"
+msgstr "Vom Nutzer wurden keine Veranstaltungen erstellt"
 
 #: app/templates/components/account/password-section.hbs:4:6
 #: app/templates/components/account/password-section.hbs:7:102
@@ -3345,7 +3354,7 @@ msgstr "Veranstaltung laden"
 
 #: app/templates/components/events/imports-history-section.hbs:2:33
 msgid "Imported Events"
-msgstr "Importierte Ereignisse"
+msgstr "Importierte Veranstaltungen"
 
 #: app/templates/components/events/view/export/api-response.hbs:3:4
 msgid "Access event information via REST API"
@@ -3380,7 +3389,7 @@ msgstr "Antwort"
 
 #: app/templates/components/events/view/export/download-common.hbs:3:4
 msgid "Download Event as {{file}}"
-msgstr "Ereignis als {{file}} herunterladen"
+msgstr "Veranstaltungen als {{file}} herunterladen"
 
 #: app/templates/components/events/view/export/download-common.hbs:6:4
 msgid "Once the event is live and the schedule is published, {{file}} version of the schedule will be available at:"
@@ -3428,7 +3437,7 @@ msgstr "Web-App erstellen"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:2:22
 msgid "Event Checklist"
-msgstr "Ereignis-Checkliste"
+msgstr "Checkliste für die Veranstaltung"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:15:14
 msgid "Basic information including title, date, venue, ticketing"
@@ -3519,11 +3528,11 @@ msgstr "Es gibt keine Tickets für diese Veranstaltung"
 
 #: app/templates/components/events/view/overview/general-info.hbs:7:6
 msgid "Your event is live at"
-msgstr "Ihre Veranstaltung ist live bei"
+msgstr "Ihre Veranstaltung ist öffentlich erreichbar unter"
 
 #: app/templates/components/events/view/overview/general-info.hbs:9:6
 msgid "Your event is not live yet. Make it live now"
-msgstr "Ihre Veranstaltung ist noch nicht live. Mach es jetzt live"
+msgstr "Die Veranstaltung ist noch nicht veröffentlicht. Jetzt veröffentlichen."
 
 #: app/templates/components/events/view/overview/general-info.hbs:22:67
 msgid "Click to add location."
@@ -3710,7 +3719,7 @@ msgstr "Artikel"
 
 #: app/templates/components/footer-main.hbs:13:29
 msgid "Plan Events"
-msgstr "Ereignisse planen"
+msgstr "Veranstaltungen planen"
 
 #: app/templates/components/footer-main.hbs:15:10
 msgid "Online Registration"
@@ -4042,7 +4051,9 @@ msgstr "Größe der Miniaturansichten"
 #: app/templates/components/forms/admin/settings/images-form.hbs:42:23
 #: app/templates/components/forms/admin/settings/images-form.hbs:67:23
 msgid "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."
-msgstr "Das Standardseitenverhältnis ist 13:5. Aktivieren Sie dieses Kontrollkästchen, um das Seitenverhältnis beizubehalten."
+msgstr ""
+"Das Standardseitenverhältnis ist 5:2. Aktivieren Sie dieses "
+"Kontrollkästchen, um das Seitenverhältnis beizubehalten."
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:44:2
 #: app/templates/components/forms/admin/settings/images-form.hbs:81:2
@@ -4055,7 +4066,7 @@ msgstr "Veranstaltungsbilder der Startseite"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:48:22
 msgid "My Session Page Event Images"
-msgstr "Veranstaltungsbilder meiner Sitzungsseite"
+msgstr "Meine Sitzungsseite Veranstaltungsbilder"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:49:22
 msgid "My Ticket Page Event Images"
@@ -4072,7 +4083,7 @@ msgstr "Die Standardgröße des verfügbaren Bereichs beträgt 75 x 30 Pixel"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:70:24
 msgid "Logo Size (Event Wizard)"
-msgstr "Logo-Größe (Ereignis-Assistent)"
+msgstr "Logo-Größe (Veranstaltungs-Assistent)"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:83:24
 msgid "Profile/Speaker Images"
@@ -4114,7 +4125,7 @@ msgstr "Obere Leiste - Rechte Ecke"
 
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:3:4
 msgid "Android App Generator"
-msgstr "Android App Generator"
+msgstr "Android-App-Generator"
 
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:7:6
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:16:6
@@ -4184,7 +4195,7 @@ msgstr "Dieser publizierbare Schlüssel wird für den Testmodus verwendet"
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:325:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:421:15
 msgid "Live mode - Used during production"
-msgstr "Live-Modus - Wird während der Produktion verwendet"
+msgstr "Live-Modus - Wird während \"Production\" verwendet"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:86:10
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:13:4
@@ -4295,7 +4306,7 @@ msgstr "Dieser geheime Schlüssel wird im Testmodus verwendet"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:334:10
 msgid "Omise Live Public Key"
-msgstr "Omise Live öffentlicher Schlüssel"
+msgstr "Omise Live Public Key"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:338:21
 msgid "This public key will be used during live (production) mode"
@@ -4303,7 +4314,7 @@ msgstr "Dieser öffentliche Schlüssel wird im Live-Modus (Produktionsmodus) ver
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:347:10
 msgid "Omise Live Secret Key"
-msgstr "Omise Live Geheimschlüssel"
+msgstr "Omise Live Secret Key"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:351:21
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:447:21
@@ -4615,7 +4626,7 @@ msgstr "Geheimnis"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:3:4
 msgid "Add Fee Settings for the event invoices"
-msgstr "Fügen Sie Gebühreneinstellungen für die Ereignisrechnungen hinzu"
+msgstr "Bitte Gebühreneinstellungen für Veranstaltungsrechnungen hinzufügen"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:7:6
 msgid "Global Settings"
@@ -5008,15 +5019,15 @@ msgstr "Referenten-Details"
 
 #: app/templates/components/forms/session-speaker-form.hbs:104:6
 msgid "Choose from existing speaker(s)"
-msgstr "Wählen Sie aus vorhandenen Lautsprechern"
+msgstr "Wählen Sie aus vorhandenen Referenten aus"
 
 #: app/templates/components/forms/session-speaker-form.hbs:112:8
 msgid "Select Speakers"
-msgstr "Wählen Sie Lautsprecher"
+msgstr "Referenten auswählen"
 
 #: app/templates/components/forms/session-speaker-form.hbs:126:44
 msgid "No speaker exists. Add a new speaker."
-msgstr "Es ist kein Sprecher vorhanden. Fügen Sie einen neuen Lautsprecher hinzu."
+msgstr "Es ist kein Referent vorhanden. Neuen Referenten hinzufügen."
 
 #: app/templates/components/forms/session-speaker-form.hbs:151:27
 #: app/templates/components/forms/session-speaker-form.hbs:269:25
@@ -5026,7 +5037,7 @@ msgstr "Für diesen Redner ist keine E-Mail erforderlich."
 #: app/templates/components/forms/session-speaker-form.hbs:182:23
 #: app/templates/components/forms/session-speaker-form.hbs:300:21
 msgid "Speaker Image"
-msgstr "Lautsprecherbild"
+msgstr "Referentenbild"
 
 #: app/templates/components/forms/session-speaker-form.hbs:188:26
 #: app/templates/components/forms/session-speaker-form.hbs:306:24
@@ -5076,7 +5087,7 @@ msgstr "Nachname"
 
 #: app/templates/components/forms/user-profile-form.hbs:41:29
 msgid "Bio"
-msgstr "Bio"
+msgstr "Biographie"
 
 #: app/templates/components/forms/user-profile-form.hbs:61:8
 msgid "Update Changes"
@@ -5112,7 +5123,7 @@ msgstr "Zu sammelnde Informationen"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:26:21
 msgid "Location is required to make this event live"
-msgstr "Der Ort ist erforderlich, um diese Veranstaltung live zu schalten"
+msgstr "Der Ort ist erforderlich, um die Veranstaltung zu veröffentlichen"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:33:34
 msgid "Show map on event page"
@@ -5351,7 +5362,7 @@ msgstr "Rechnungsinformationen vom Ticketkäufer anfordern"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:596:19
 msgid "Select Event Type"
-msgstr "Wählen Sie den Ereignistyp"
+msgstr "Veranstaltungstyp Wählen"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:613:11
 msgid "Event Sub-topic"
@@ -5359,7 +5370,7 @@ msgstr "Unterpunkt der Veranstaltung"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:618:19
 msgid "Select Event Sub-Topic"
-msgstr "Wählen Sie das Unterthema Ereignis"
+msgstr "Unterthema der Veranstaltung wählen"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:4:11
 msgid "Links & Social Media"
@@ -5379,11 +5390,11 @@ msgstr "Datenschutzerklärung anzeigen"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:52:18
 msgid "Public event"
-msgstr "Öffentliches Ereignis"
+msgstr "Öffentliche Veranstaltung"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:53:10
 msgid "list this event on this site and search engines"
-msgstr "Listen Sie dieses Ereignis auf dieser Website und in Suchmaschinen auf"
+msgstr "Diese Veranstaltung auf dieser Website und in Suchmaschinen listen"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:61:18
 msgid "Private event"
@@ -5444,7 +5455,10 @@ msgstr "Privater Link"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:164:10
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
-msgstr "Teilen Sie diesen Link, um jederzeit eine private Einreichung unabhängig von offenem / geschlossenem Call for Speakers zu erhalten. (Der Link ist aktiv, sobald das Ereignis gespeichert wurde.)"
+msgstr ""
+"Teilen Sie diesen Link, um jederzeit eine private Einreichung unabhängig von "
+"offenem / geschlossenem Call for Speakers zu erhalten. (Der Link ist aktiv, "
+"sobald die Veranstaltung gespeichert wurde.)"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:173:22
 msgid "Public"
@@ -5523,23 +5537,23 @@ msgstr "Wählen Sie eine Rolle"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:2:2
 msgid "Add New Event Sub Topic"
-msgstr "Neues Ereignis-Unterthema hinzufügen"
+msgstr "Neues Unterthema für Veranstaltung hinzufügen"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:13:8
 msgid "New Event Sub Topic"
-msgstr "Neues Ereignis-Unterthema"
+msgstr "Neues Unterthema für Veranstaltungen"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:15:96
 msgid "Enter New Event Sub Topic"
-msgstr "Geben Sie das Unterthema Neues Ereignis ein"
+msgstr "Neues Unterthema für Veranstaltungen eingeben"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:24:4
 msgid "Add Event Sub Topic"
-msgstr "Ereignis-Unterthema hinzufügen"
+msgstr "Unterthema für Veranstaltungen hinzufügen"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:2:2
 msgid "Add New Event Topic"
-msgstr "Neues Ereignisthema hinzufügen"
+msgstr "Neues Veranstaltungsthema hinzufügen"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:8:8
 msgid "New Event Topic"
@@ -5547,27 +5561,27 @@ msgstr "Neues Veranstaltungsthema"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:10:73
 msgid "Enter New Event Topic"
-msgstr "Neues Ereignisthema eingeben"
+msgstr "Neues Veranstaltungsthema eingeben"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:19:4
 msgid "Add Event Topic"
-msgstr "Ereignisthema hinzufügen"
+msgstr "Veranstaltungsthema hinzufügen"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:2:2
 msgid "Add New Event Type"
-msgstr "Neuen Ereignistyp hinzufügen"
+msgstr "Neuen Veranstaltungstypen hinzufügen"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:8:8
 msgid "New Event Type"
-msgstr "Neuer Ereignistyp"
+msgstr "Neuer Veranstaltungstyp"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:10:72
 msgid "Enter New Event Type"
-msgstr "Geben Sie den neuen Ereignistyp ein"
+msgstr "Geben Sie den neuen Veranstaltungstypen ein"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:19:4
 msgid "Add Event Type"
-msgstr "Ereignistyp hinzufügen"
+msgstr "Veranstaltungstyp hinzufügen"
 
 #: app/templates/components/modals/change-image-modal.hbs:3:2
 msgid "Update image"
@@ -5599,11 +5613,15 @@ msgstr "Herkunftsinformationen"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:2:2
 msgid "You are transferring this event. This action cannot be undone."
-msgstr "Sie übertragen dieses Ereignis. Diese Aktion kann nicht rückgängig gemacht werden."
+msgstr ""
+"Diese Veranstaltung auf ein anderes Konto übertragen. Diese Aktion kann "
+"nicht rückgängig gemacht werden."
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:4:4
 msgid "All the event rights will be transferred to another user"
-msgstr "Alle Ereignisrechte werden auf einen anderen Benutzer übertragen"
+msgstr ""
+"Alle Veranstaltungsrechte werden auf ein anderes Konto / einen anderen "
+"Benutzer übertragen"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:16:25
 msgid "Please tick the box to agree and press TRANSFER"
@@ -5715,11 +5733,15 @@ msgstr "Sind Sie sicher, dass Sie diese Veranstaltung übertragen möchten?"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:4:4
 msgid "Transferring the event to another user will lead to you losing all the owner rights."
-msgstr "Wenn Sie das Ereignis auf einen anderen Benutzer übertragen, verlieren Sie alle Eigentümerrechte."
+msgstr ""
+"Wenn Sie die Veranstaltung auf ein anderes Konto / einen anderen Benutzer "
+"übertragen, verlieren Sie alle Eigentümerrechte."
 
 #: app/templates/components/modals/event-transfer-modal.hbs:11:8
 msgid "Please enter the event-name to confirm that you want to transfer the event"
-msgstr "Bitte geben Sie den Ereignisnamen ein, um zu bestätigen, dass Sie das Ereignis übertragen möchten"
+msgstr ""
+"Bitte geben Sie den Veranstaltungnamen ein, um zu bestätigen, dass Sie das "
+"Ereignis übertragen möchten"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:22:4
 #: app/templates/components/modals/paytm-payment-options.hbs:30:4
@@ -5783,7 +5805,7 @@ msgstr "Sind Sie sicher?"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:6:2
 msgid "Incomplete event details"
-msgstr "Unvollständige Ereignisdetails"
+msgstr "Unvollständige Veranstaltungsdetails"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:11:7
 msgid "This will unpublish your event. It will not be accessible to the public on the Internet anymore if you continue. The data of the event will still be available on your dashboard, but tickets, call for speakers or any other features will no longer be available online. Do you want to unpublish your event now?"
@@ -5900,7 +5922,7 @@ msgstr "Abmelden"
 #: app/templates/components/welcome-header.hbs:4:4
 #: app/templates/pricing.hbs:176:10
 msgid "Create Event"
-msgstr "Ereignis erstellen"
+msgstr "Veranstaltung erstellen"
 
 #: app/templates/components/notification-dropdown.hbs:14:45
 msgid "Mark all as Read"
@@ -6041,11 +6063,11 @@ msgstr "Sie müssen sich anmelden, um Sitzungen zu senden und anzuzeigen."
 
 #: app/templates/components/public/call-for-speakers.hbs:50:6
 msgid "Add Speaker Details"
-msgstr "Lautsprecherdetails hinzufügen"
+msgstr "Referentendetails hinzufügen"
 
 #: app/templates/components/public/call-for-speakers.hbs:56:76
 msgid "Edit Speaker Details"
-msgstr "Lautsprecherdetails bearbeiten"
+msgstr "Referentendetails bearbeiten"
 
 #: app/templates/components/public/call-for-speakers.hbs:62:4
 msgid "Add New Session"
@@ -6079,7 +6101,7 @@ msgstr "Anfahrtsbeschreibung"
 
 #: app/templates/components/public/social-links.hbs:6:79
 msgid "Event Site"
-msgstr "Ereignisort"
+msgstr "Veranstaltungsort"
 
 #: app/templates/components/public/ticket-list.hbs:43:54
 msgid "Enter Donation"
@@ -6107,7 +6129,7 @@ msgstr "Jetzt bestellen"
 
 #: app/templates/components/quick-filter.hbs:5:16
 msgid "Search for events"
-msgstr "Suche nach Ereignissen"
+msgstr "Suche nach Veranstaltungen"
 
 #: app/templates/components/quick-filter.hbs:13:20
 msgid "Search location"
@@ -6194,7 +6216,9 @@ msgstr "Möchten Sie diese Veranstaltung wirklich löschen?"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:3:4
 msgid "User has administrative privileges, he has privileges of the following roles for all the events:"
-msgstr "Der Benutzer verfügt über Administratorrechte und für alle Ereignisse über die folgenden Rollen:"
+msgstr ""
+"Der Benutzer verfügt über Administratorrechte und für folgende Rollen über "
+"alle Veranstaltungen:"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:5:46
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:32:133
@@ -6248,7 +6272,7 @@ msgstr "Keine Daten verfügbar."
 
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:11:22
 msgid "Event Dashboard"
-msgstr "Ereignis-Dashboard"
+msgstr "Veranstaltungs-Dashboard"
 
 #: app/templates/components/ui-table/cell/cell-roles.hbs:7:38
 msgid "Co-organizers"
@@ -6316,7 +6340,7 @@ msgstr "Sitzung sperren"
 
 #: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:60
 msgid "Are you sure you would like to delete this Speaker?"
-msgstr "Sind Sie sicher, dass Sie diesen Lautsprecher löschen möchten?"
+msgstr "Sind Sie sicher, dass Sie diesen Referenten löschen möchten?"
 
 #: app/templates/components/ui-table/cell/events/view/speakers/speaker-mobile.hbs:4:2
 msgid "Not Provided"
@@ -6609,7 +6633,7 @@ msgstr "Sie verlieren alle Eigentümerrechte, sobald der andere Benutzer die Ein
 
 #: app/templates/events/view/settings.hbs:15:10
 msgid "Transfer Event"
-msgstr "Ereignis übertragen"
+msgstr "Veranstaltung übertragen"
 
 #: app/templates/events/view/settings.hbs:21:10
 msgid "Delete this event"
@@ -6617,7 +6641,9 @@ msgstr "Diesen Termin löschen"
 
 #: app/templates/events/view/settings.hbs:24:10
 msgid "Once you delete an event, you will lose all the data related to this event."
-msgstr "Sobald Sie ein Ereignis löschen, verlieren Sie alle Daten zu diesem Ereignis."
+msgstr ""
+"Wenn Sie eine Veranstaltung löschen, verlieren Sie alle Daten zu dieser "
+"Veranstaltung."
 
 #: app/templates/events/view/speakers.hbs:28:14
 msgid "Add Speaker"
@@ -6625,7 +6651,7 @@ msgstr "Referent hinzufügen"
 
 #: app/templates/events/view/speakers/create.hbs:3:4
 msgid "Create a Speaker"
-msgstr "Erstellen Sie einen Lautsprecher"
+msgstr "Erstellen Sie einen Referenten"
 
 #: app/templates/events/view/tickets.hbs:15:10
 #: app/templates/events/view/tickets/discount-codes.hbs:6:97
@@ -6759,7 +6785,7 @@ msgstr "Bestellungen anzeigen"
 
 #: app/templates/explore.hbs:55:38
 msgid "No events found for selected filters"
-msgstr "Für ausgewählte Filter wurden keine Ereignisse gefunden"
+msgstr "Für ausgewählte Filter wurden keine Veranstaltungen gefunden"
 
 #: app/templates/index.hbs:5:29
 msgid "Featured Events"
@@ -6767,11 +6793,11 @@ msgstr "Ausgewählte Veranstaltungen"
 
 #: app/templates/index.hbs:23:29
 msgid "No Upcoming Events Found"
-msgstr "Keine bevorstehenden Ereignisse gefunden"
+msgstr "Keine bevorstehenden Veranstaltungen gefunden"
 
 #: app/templates/index.hbs:36:85
 msgid "Show more calls for speakers"
-msgstr "Weitere Anrufe für Lautsprecher anzeigen"
+msgstr "Weitere Call for Speakers anzeigen"
 
 #: app/templates/my-tickets.hbs:5:8
 msgid "My tickets"
@@ -6852,7 +6878,9 @@ msgstr "Effizient verwalten"
 
 #: app/templates/organizer-app.hbs:70:12
 msgid "Get Order, Event, Sales Statistics with Orga App on the go."
-msgstr "Holen Sie sich mit der Orga App unterwegs Auftrags-, Ereignis- und Verkaufsstatistiken."
+msgstr ""
+"Mit der Organisations-App erhalten Sie Auftrags- und Verkaufsstatistiken zu "
+"Ihren Veranstaltungen."
 
 #: app/templates/organizer-app.hbs:76:12
 msgid "Ticket and Event"
@@ -6932,7 +6960,7 @@ msgstr "Sitzungsvorschlag bearbeiten"
 
 #: app/templates/public/session/view.hbs:22:89
 msgid "Edit Speaker-"
-msgstr "Lautsprecher bearbeiten-"
+msgstr "Referenten bearbeiten-"
 
 #: app/templates/public/sessions.hbs:17:59
 #: app/templates/public/sessions.hbs:19:119
