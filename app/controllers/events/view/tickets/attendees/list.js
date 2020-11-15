@@ -68,7 +68,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.notify.success(message);
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while attendee checking IN/OUT', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
   }
