@@ -19,9 +19,14 @@ a.link-item {
 }
 
 
-// Using this to stylise the switch component
+// Using this to stylize the switch component
 .legacy-checkbox {
   display: flex;
+
+  &-checkbox {
+    margin: 10px 0 0 10px;
+    padding: 10px;
+  }
 
   &-label {
     margin-left: 20px;
