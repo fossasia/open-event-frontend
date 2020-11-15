@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2020-11-15 10:36+0000\n"
+"PO-Revision-Date: 2020-11-15 11:10+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
@@ -255,7 +255,9 @@ msgstr "Ihre Veranstaltung wurde erfolgreich veröffentlicht."
 
 #: app/components/events/view/publish-bar.ts:81:28
 msgid "Your event has been unpublished."
-msgstr "Ihre Veranstaltung wurde nicht veröffentlicht."
+msgstr ""
+"Die Veröffentlichung der Veranstaltung wurde aufgehoben. Die Veranstaltung "
+"ist nicht öffentlich sichtbar."
 
 #: app/components/forms/admin/content/pages-form.js:17:23
 #: app/components/forms/session-speaker-form.js:185:23
@@ -2302,7 +2304,7 @@ msgstr "Tickets"
 
 #: app/routes/events/view/tickets/access-codes.js:7:11
 msgid "Access codes"
-msgstr "Zugangsdaten"
+msgstr "Zugangscodes"
 
 #: app/routes/events/view/tickets/access-codes/create.js:9:11
 #: app/routes/events/view/tickets/discount-codes/create.js:7:11
@@ -4672,7 +4674,7 @@ msgstr "Neue hinzufügen"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:3:28
 msgid "Access Code"
-msgstr "Zugangsdaten"
+msgstr "Zugangscode"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:10:28
 msgid "Number of Access Tickets"
@@ -4685,7 +4687,7 @@ msgstr "Status"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:39:30
 msgid "Select Tickets applied to the access code"
-msgstr "Wählen Sie Tickets, die auf den Zugangscode angewendet werden"
+msgstr "Wählen Sie Tickets, die auf den Zugangscode angewendet werden sollen"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:42:15
 #: app/templates/components/forms/events/view/create-discount-code.hbs:79:15
@@ -5822,7 +5824,13 @@ msgstr "Unvollständige Veranstaltungsdetails"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:11:7
 msgid "This will unpublish your event. It will not be accessible to the public on the Internet anymore if you continue. The data of the event will still be available on your dashboard, but tickets, call for speakers or any other features will no longer be available online. Do you want to unpublish your event now?"
-msgstr "Dadurch wird Ihre Veranstaltung nicht mehr veröffentlicht. Wenn Sie fortfahren, ist es im Internet nicht mehr für die Öffentlichkeit zugänglich. Die Daten der Veranstaltung sind weiterhin in Ihrem Dashboard verfügbar, Tickets, Call-for-Speaker oder andere Funktionen sind jedoch online nicht mehr verfügbar. Möchten Sie Ihre Veranstaltung jetzt veröffentlichen?"
+msgstr ""
+"Dies wird die Veröffentlichung der Veranstaltung aufheben. Wenn Sie "
+"fortfahren, ist die Veranstaltung nicht mehr für die Öffentlichkeit "
+"zugänglich. Die Daten der Veranstaltung sind weiterhin im Veranstaltungs-"
+"Dashboard verfügbar, Tickets, Call-for-Speaker oder andere Funktionen sind "
+"jedoch online nicht mehr öffentlich verfügbar. Die Veröffentlichung der "
+"Veranstaltung jetzt aufheben?"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:14:6
 msgid "This will publish the event and the event will be visible on the Internet. Please confirm you want to publish your event."
@@ -5834,7 +5842,7 @@ msgstr "Sie müssen Ihrer Veranstaltung weitere Details wie Ort und Tickets hinz
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:23:3
 msgid "Yes, Unpublish it"
-msgstr "Ja, Unpublish es"
+msgstr "Ja, Veröffentlichung aufheben"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:34:4
 msgid "Cancel, Do Not Publish it Now"
@@ -6550,7 +6558,9 @@ msgstr "Ticket auf der Seite „Public Events” ausblenden"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:111:37
 msgid "To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code."
-msgstr "Um versteckte Tickets zu verkaufen, müssen Sie unter Event Dashboard> Registerkarte Tickets> Zugangscode einen Zugangscode einrichten."
+msgstr ""
+"Um versteckte Tickets zu verkaufen, müssen Sie unter Event Dashboard > "
+"Registerkarte Tickets > Zugangscode einen Zugangscode einrichten."
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:123:14
 msgid "Tickets Absorb Fees"
@@ -6604,7 +6614,7 @@ msgstr "Bearbeiten"
 
 #: app/templates/events/view/scheduler.hbs:5:111
 msgid "Unpublish Schedule"
-msgstr "Unveröffentlichter Zeitplan"
+msgstr "Veröffentlichung des Plans aufheben"
 
 #: app/templates/events/view/scheduler.hbs:7:110
 msgid "Publish Schedule"
@@ -6677,7 +6687,7 @@ msgstr "Rabattcodes"
 #: app/templates/events/view/tickets.hbs:18:10
 #: app/templates/events/view/tickets/access-codes.hbs:7:97
 msgid "Access Codes"
-msgstr "Zugangsdaten"
+msgstr "Zugangscodes"
 
 #: app/templates/events/view/tickets.hbs:21:10
 msgid "Add order"
@@ -6686,11 +6696,11 @@ msgstr "Bestellung hinzufügen"
 #: app/templates/events/view/tickets/access-codes.hbs:11:10
 #: app/templates/events/view/tickets/access-codes/create.hbs:3:33
 msgid "Create an access code"
-msgstr "Zugangsdaten erstellen"
+msgstr "Zugangscode erstellen"
 
 #: app/templates/events/view/tickets/access-codes/edit.hbs:3:33
 msgid "Edit an access code"
-msgstr "Bearbeiten Sie einen Zugangscode"
+msgstr "Zugangscode Bearbeiten"
 
 #: app/templates/events/view/tickets/attendees.hbs:5:8
 msgid "View Attendees"
