@@ -281,7 +281,7 @@
        {{#if this.isPaidOrder}}
         <p>
         {{t
-          'By clicking "Proceed to Checkout", I acknowledge that I have read and that I agree with the '}} <a href='https://eventyay.com/terms'>terms of services</a>{{t ' and ' }}<a href='https://eventyay.com/privacy-policy'>privacy policy</a> {{ ' on this website.'}}
+          'By clicking "Proceed to Checkout", I acknowledge that I have read and that I agree with the '}} <LinkTo class="item" @route="pages" @model={{page.url}}>terms of services</LinkTo>{{t ' and ' }}<LinkTo class="item" @route="pages" @model={{page.url}}>privacy policy</LinkTo> {{ ' on this website.'}}
       </p>
       <div class="center aligned">
         <button type="submit" class="ui teal submit button">{{t 'Proceed to Checkout'}}</button>
@@ -289,7 +289,7 @@
       {{else}}
       <p>
         {{t
-          'By clicking "Order Now", I acknowledge that I have read and that I agree with the '}} <a href='https://eventyay.com/terms'>terms of services</a>{{t ' and ' }}<a href='https://eventyay.com/privacy-policy'>privacy policy</a> {{ ' on this website.'}}
+          'By clicking "Order Now", I acknowledge that I have read and that I agree with the '}} <LinkTo class="item" @route="pages" @model={{page.url}}>terms of services</LinkTo>{{t ' and ' }}<LinkTo class="item" @route="pages" @model={{page.url}}>privacy policy</LinkTo> {{ ' on this website.'}}
       </p>
       <div class="center aligned">
         <button type="submit" class="ui teal submit button">{{t 'Order Now'}}</button>
