@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2020-11-15 11:10+0000\n"
+"PO-Revision-Date: 2020-11-15 11:34+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
@@ -865,7 +865,7 @@ msgstr "Bitte geben Sie Ihre Rechnungsstadt ein"
 
 #: app/components/forms/user-payment-info-form.js:106:28
 msgid "Your billing details has been updated"
-msgstr "Ihre Rechnungsdaten wurden aktualisiert"
+msgstr "Rechnungsdaten wurden aktualisiert"
 
 #: app/components/forms/user-payment-info-form.js:112:26
 #: app/components/forms/user-profile-form.js:73:30
@@ -1007,15 +1007,15 @@ msgstr "Bitte füllen Sie Ihre Paypal-E-Mail für die Zahlung von Tickets."
 
 #: app/components/forms/wizard/basic-details-step.js:353:23
 msgid "Please fill the details for payment of tickets."
-msgstr "Bitte geben Sie die Details für die Zahlung der Tickets ein."
+msgstr "Bitte Details für die Zahlung der Tickets eingeben."
 
 #: app/components/forms/wizard/basic-details-step.js:362:23
 msgid "Please fill the bank details for payment of tickets."
-msgstr "Bitte geben Sie die Bankdaten für die Zahlung der Tickets ein."
+msgstr "Bitte Bankdaten für die Zahlung der Tickets eingeben."
 
 #: app/components/forms/wizard/basic-details-step.js:371:23
 msgid "Please fill the cheque details for payment of tickets."
-msgstr "Bitte füllen Sie die Scheckdetails für die Zahlung der Tickets."
+msgstr "Bitte Scheckdetails für die Zahlung der Tickets eingeben."
 
 #: app/components/forms/wizard/basic-details-step.js:434:51
 msgid "Please try again"
@@ -1332,7 +1332,8 @@ msgstr "Zum Kalender hinzufügen"
 
 #: app/components/public/call-for-speakers.js:26:24
 msgid "You need to add your speaker details first before submitting a session"
-msgstr "Sie müssen zuerst Ihre Sprecherdetails hinzufügen, bevor Sie eine Sitzung einreichen"
+msgstr ""
+"Bitte zuerst Sprecherdetails hinzufügen, bevor Sie eine Sitzung einreichen"
 
 #: app/components/public/session-item.hbs:66:16
 #: app/templates/components/forms/events/view/edit-session.hbs:15:11
@@ -1434,11 +1435,13 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten. Soziale Links nicht gespeichert
 
 #: app/controllers/admin/content/pages.js:30:28
 msgid "Page details have been saved successfully."
-msgstr "Seitendetails wurden erfolgreich gespeichert."
+msgstr "Details wurden gespeichert."
 
 #: app/controllers/admin/content/pages.js:37:26
 msgid "An unexpected error has occurred. Page Details not saved."
-msgstr "Ein unerwarteter Fehler ist aufgetreten. Seitendetails nicht gespeichert."
+msgstr ""
+"Ein unerwarteter Fehler ist aufgetreten. Seitendetails wurden nicht "
+"gespeichert."
 
 #: app/controllers/admin/content/translations.js:17:26
 msgid "Translations Zip generated successfully."
@@ -1458,7 +1461,7 @@ msgstr "Die Veranstaltung wurde erfolgreich wiederhergestellt."
 
 #: app/controllers/admin/events/list.js:176:26
 msgid "Event details modified successfully"
-msgstr "Veranstaltungsdetails erfolgreich geändert"
+msgstr "Veranstaltungsdetails wurden geändert"
 
 #: app/controllers/admin/events/list.js:198:45
 msgid "Event promoted successfully"
@@ -1664,7 +1667,9 @@ msgstr "Der Zugangscode wurde erfolgreich aktualisiert."
 #: app/controllers/events/view/tickets/add-order.js:23:28
 #: app/controllers/public/index.js:121:28
 msgid "Order details saved. Please fill further details within {{time}} minutes."
-msgstr "Bestelldaten gespeichert. Bitte füllen Sie weitere Details innerhalb von {{time}} Minuten aus."
+msgstr ""
+"Bestelldaten gespeichert. Bitte weitere Details innerhalb von {{time}} "
+"Minuten ausfüllen."
 
 #: app/controllers/events/view/tickets/attendees.js:38:57
 #: app/controllers/events/view/tickets/attendees.js:43:55
@@ -1740,11 +1745,11 @@ msgstr "Anmeldeinformationen waren falsch."
 
 #: app/controllers/orders/new.js:31:32
 msgid "Order details saved. Please fill the payment details"
-msgstr "Bestelldaten gespeichert. Bitte geben Sie die Zahlungsdetails ein"
+msgstr "Bestelldaten gespeichert. Bitte Zahlungsdetails eingeben"
 
 #: app/controllers/orders/new.js:37:32
 msgid "Order details saved. Your order is successful"
-msgstr "Bestelldaten gespeichert. Ihre Bestellung ist erfolgreich"
+msgstr "Bestelldaten gespeichert. Die Bestellung war erfolgreich"
 
 #: app/controllers/orders/pending.js:56:26
 msgid "Payment has succeeded"
@@ -1786,7 +1791,7 @@ msgstr "Allgemeine Informationen"
 
 #: app/mixins/event-wizard.js:18:22
 msgid "Tell about your event"
-msgstr "Erzählen Sie von Ihrer Veranstaltung"
+msgstr "Alles Wichtige über die Veranstaltung"
 
 #: app/mixins/event-wizard.js:23:22
 #: app/templates/components/forms/admin/settings/billing.hbs:88:44
@@ -1795,7 +1800,7 @@ msgstr "Weitere Infos"
 
 #: app/mixins/event-wizard.js:24:22
 msgid "Extra details about your event"
-msgstr "Zusätzliche Details zu Ihrer Veranstaltung"
+msgstr "Zusätzliche Details zur Veranstaltung"
 
 #: app/mixins/event-wizard.js:29:22
 #: app/routes/events/view/edit/attendee.js:8:11
@@ -1821,7 +1826,7 @@ msgstr "Unterstützer"
 
 #: app/mixins/event-wizard.js:36:22
 msgid "Advertise your sponsors"
-msgstr "Werben Sie für Ihre Sponsoren"
+msgstr "Werben für Sponsoren"
 
 #: app/mixins/event-wizard.js:41:22
 #: app/routes/events/view/edit/sessions-speakers.js:9:11
@@ -1831,7 +1836,7 @@ msgstr "Sitzungen & Referenten"
 
 #: app/mixins/event-wizard.js:42:22
 msgid "Expand your event"
-msgstr "Erweitern Sie Ihre Veranstaltung"
+msgstr "Konferenzen managen"
 
 #: app/mixins/event-wizard.js:163:28
 msgid "Your event has been saved"
@@ -3471,7 +3476,7 @@ msgstr "Sitzung, Tracks und Mikrostandorte"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:75:14
 msgid "Tracks details and colors, session lengths, room locations"
-msgstr "Verfolgt Details und Farben, Sitzungslängen und Raumpositionen"
+msgstr "Trackdetails und Farben, Sitzungslängen und Raumverortung"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:88:12
 msgid "Call For Speakers"
@@ -5333,8 +5338,8 @@ msgstr "JA, Zahlung per Scheck akzeptieren"
 #: app/templates/components/forms/wizard/basic-details-step.hbs:476:12
 msgid "Enter you account name and other required details/instructions to ticket buyers"
 msgstr ""
-"Geben Sie einen Kontonamen und andere erforderliche Details / Anweisungen "
-"für Ticketkäufer ein"
+"Kontonamen und andere erforderliche Details sowie Anweisungen für "
+"Ticketkäufer eingeben"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:493:12
 msgid "YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer"
@@ -5342,7 +5347,9 @@ msgstr "JA, Zahlung per Telegrafieüberweisung (TT) / Banküberweisung akzeptier
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:501:12
 msgid "Enter your bank details and other required details/instructions to ticket buyers"
-msgstr "Geben Sie Ihre Bankdaten und andere erforderliche Daten / Anweisungen für Ticketkäufer ein"
+msgstr ""
+"Bankdaten und andere erforderliche Daten sowie Anweisungen für Ticketkäufer "
+"eingeben"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:517:12
 msgid "YES, accept payment at the event (on site)"
@@ -5350,7 +5357,9 @@ msgstr "JA, Zahlung direkt (vor Ort) auf der Veranstaltung akzeptieren"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:525:12
 msgid "Enter your payment instructions and other required details/instructions to ticket buyers"
-msgstr "Geben Sie Ihre Zahlungsanweisungen und andere erforderliche Details / Anweisungen für Ticketkäufer ein"
+msgstr ""
+"Zahlungsanweisungen und andere erforderliche Details sowie Anweisungen für "
+"Ticketkäufer eingeben"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:539:16
 msgid "Tax Information"
@@ -5838,7 +5847,9 @@ msgstr "Dadurch wird die Veranstaltung veröffentlicht und die Veranstaltung wir
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:16:6
 msgid "You need to add more details such as location and tickets to your event in order to publish it."
-msgstr "Sie müssen Ihrer Veranstaltung weitere Details wie Ort und Tickets hinzufügen, um sie zu veröffentlichen."
+msgstr ""
+"Bitte weitere Veranstaltungsdetails wie Ort und Tickets hinzufügen, um die "
+"Veranstaltung veröffentlichen zu können."
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:23:3
 msgid "Yes, Unpublish it"
@@ -5986,7 +5997,7 @@ msgstr "Ihre Bestellung wurde erfolgreich aufgegeben."
 
 #: app/templates/components/orders/order-summary.hbs:19:10
 msgid "Find all the details related to your order below."
-msgstr "Nachfolgend finden Sie alle Details zu Ihrer Bestellung."
+msgstr "Details zu Ihrer Bestellung nachfolgend."
 
 #: app/templates/components/orders/order-summary.hbs:31:10
 msgid "Your order has been placed successfully."
@@ -6051,7 +6062,7 @@ msgstr "Bezahlt über"
 
 #: app/templates/components/orders/ticket-holder.hbs:91:12
 msgid "Cheque Details"
-msgstr "Überprüfen Sie die Details"
+msgstr "Details Überprüfen"
 
 #: app/templates/components/orders/ticket-holder.hbs:99:12
 msgid "Onsite Instructions"
