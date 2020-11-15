@@ -22,7 +22,10 @@
       <strong>{{t 'Organized By'}}:</strong> {{this.data.event.ownerName}}
     {{/if}}
   </div>
-  <div class="ui padded segment">
-    <a href="{{this.data.event.url}}">{{t 'Go to event'}}</a>
-  </div>
+  {{#if (eq this.data.status 'completed')}}
+    <div class="ui padded segment">
+      <i class="globe icon"></i>
+      <a href="{{this.data.event.url}}">{{t 'Go to event page'}}</a>
+    </div>
+  {{/if}}
 </div>
