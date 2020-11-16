@@ -9,6 +9,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
   sort_dir = 'ASC';
 
+  per_page = 50;
+
   @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 
   get columns() {
