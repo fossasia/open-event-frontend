@@ -1,12 +1,10 @@
 import Component from '@glimmer/component';
 
-
 interface CustomForm { isComplex: boolean }
 
 interface Args {
-  fields: CustomForm[],
-  updateField: (field: CustomForm) => void
-}
+  fields: CustomForm[]
+ }
 
 export default class CustomFormTable extends Component<Args> {
   get editColumn(): boolean {
