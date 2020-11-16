@@ -91,7 +91,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
-  submit() {
+  submit(event) {
+    event.preventDefault();
     this.onValid(async() => {
       try {
         this.loading = true;
