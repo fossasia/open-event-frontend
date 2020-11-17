@@ -1,6 +1,10 @@
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+dayjs.extend(utc);
+dayjs.extend(timezone);
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
@@ -11,7 +15,7 @@ import {
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 import { groupBy } from 'lodash-es';
 
-const detectedTimezone = moment.tz.guess();
+const detectedTimezone = dayjs.tz.guess();
 
 export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
@@ -29,8 +33,8 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   identifier             : attr('string', { readOnly: true }),
   name                   : attr('string'),
   description            : attr('string'),
-  startsAt               : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
-  endsAt                 : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
+  startsAt               : attr('dayjs', { defaultValue: () => dayjs.tz(detectedTimezone).add(1, 'months').startOf('day') }),
+  endsAt                 : attr('dayjs', { defaultValue: () => dayjs.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
   timezone               : attr('string', { defaultValue: detectedTimezone }),
   locationName           : attr('string'),
   searchableLocationName : attr('string'),
@@ -71,7 +75,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   refundPolicy    : attr('string'),
 
 
-  schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),
+  schedulePublishedOn: attr('dayjs', { defaultValue: () => dayjs(0) }),
 
   hasOwnerInfo: attr('boolean',  { defaultValue: false }),
 
@@ -93,8 +97,8 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   liveStreamUrl : attr('string'),
   webinarUrl    : attr('string'),
 
-  createdAt : attr('moment', { readOnly: true }),
-  deletedAt : attr('moment'),
+  createdAt : attr('dayjs', { readOnly: true }),
+  deletedAt : attr('dayjs'),
 
   /**
    * Relationships

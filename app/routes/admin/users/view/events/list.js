@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
@@ -26,19 +26,19 @@ export default class extends Route.extend(EmberTableRouteMixin) {
                 {
                   name : 'starts-at',
                   op   : 'ge',
-                  val  : moment().toISOString()
+                  val  : dayjs().toISOString()
                 },
                 {
                   and: [
                     {
                       name : 'starts-at',
                       op   : 'le',
-                      val  : moment().toISOString()
+                      val  : dayjs().toISOString()
                     },
                     {
                       name : 'ends-at',
                       op   : 'gt',
-                      val  : moment().toISOString()
+                      val  : dayjs().toISOString()
                     }
                   ]
                 }
@@ -59,7 +59,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
             {
               name : 'ends-at',
               op   : 'lt',
-              val  : moment().toISOString()
+              val  : dayjs().toISOString()
             },
             {
               name : 'state',

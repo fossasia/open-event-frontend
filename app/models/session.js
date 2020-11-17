@@ -1,18 +1,22 @@
 import attr from 'ember-data/attr';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 import { computed } from '@ember/object';
 import { stateColorMap } from 'open-event-frontend/utils/dictionary/sessions';
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
-const detectedTimezone = moment.tz.guess();
+const detectedTimezone = dayjs.tz.guess();
 
 export default class Session extends ModelBase.extend({
   title         : attr('string'),
   subtitle      : attr('string'),
-  startsAt      : attr('moment', { defaultValue: () => null }),
-  endsAt        : attr('moment', { defaultValue: () => null }),
+  startsAt      : attr('dayjs', { defaultValue: () => null }),
+  endsAt        : attr('dayjs', { defaultValue: () => null }),
   shortAbstract : attr('string'),
   longAbstract  : attr('string'),
   language      : attr('string'),
@@ -31,7 +35,7 @@ export default class Session extends ModelBase.extend({
 
   createdAt          : attr('string'),
   deletedAt          : attr('string'),
-  submittedAt        : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
+  submittedAt        : attr('dayjs', { defaultValue: () => dayjs.tz(detectedTimezone) }),
   lastModifiedAt     : attr('string'),
   complexFieldValues : attr(),
   sessionType        : belongsTo('session-type'),

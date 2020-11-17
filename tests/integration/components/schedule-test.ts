@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import Object from '@ember/object';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { patchFullCalendar } from 'open-event-frontend/utils/patches/fullcalendar';
 import 'qunit-dom';
 
@@ -13,15 +13,15 @@ module('Integration | Component | schedule', function(hooks) {
   test('it renders', async function(assert) {
     patchFullCalendar();
     this.set('sessions', [Object.create({
-      startsAt      : moment(),
-      endsAt        : moment(),
+      startsAt      : dayjs(),
+      endsAt        : dayjs(),
       title         : 'Test Session',
       speakers      : [{ name: 'Areeb Jamal' }],
       microlocation : Object.create({ id: 123 }),
       track         : Object.create({ color: '#334422' })
     })]);
     this.set('rooms', [{ id: 123, name: 'Main Hall' }, { id: 234, name: 'Conference Room' }]);
-    this.set('event', Object.create({ timezone: 'Asia/Kolkata', startsAt: moment(), endsAt: moment() }));
+    this.set('event', Object.create({ timezone: 'Asia/Kolkata', startsAt: dayjs(), endsAt: dayjs() }));
     await render(hbs`{{schedule event=event sessions=sessions rooms=rooms}}`);
 
     assert.dom(this.element).includesText('Test Session | Areeb Jamal');

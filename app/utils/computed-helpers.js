@@ -1,9 +1,13 @@
 import { computed } from '@ember/object';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import { values } from 'lodash-es';
 import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 import { socialMediaIdentifiers } from './dictionary/social-media';
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 
 /**
@@ -61,20 +65,20 @@ export const computedSegmentedLink = function(property) {
 export const computedDateTimeSplit = function(property, segmentFormat, endProperty) {
   return computed(property, {
     get() {
-      let momentDate = moment(this.get(property));
+      let momentDate = dayjs(this.get(property));
       if (this.constructor.modelName === 'event') {
         momentDate = momentDate.tz(this.timezone);
       }
       return momentDate.format(getFormat(segmentFormat));
     },
     set(key, value) {
-      let newDate = moment(value, getFormat(segmentFormat));
+      let newDate = dayjs(value, getFormat(segmentFormat));
       if (this.constructor.modelName === 'event') {
         newDate = newDate.tz(this.timezone, true);
       }
       let oldDate = newDate;
       if (this.get(property)) {
-        oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
+        oldDate = dayjs(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
         if (this.constructor.modelName === 'event') {
           oldDate = oldDate.tz(this.timezone, true);
         }

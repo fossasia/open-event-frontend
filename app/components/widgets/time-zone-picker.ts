@@ -1,6 +1,9 @@
 import Component from '@glimmer/component';
-import moment from 'moment';
-import 'moment-timezone';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+dayjs.extend(utc);
+dayjs.extend(timezone);
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 
 interface Args {
@@ -10,7 +13,7 @@ interface Args {
 }
 
 export default class TimeZonePicker extends Component<Args> {
-  localTimezone = moment.tz.guess();
+  localTimezone = dayjs.tz.guess();
 
   get timezones(): string[] {
     return timezones.filter(item => ![this.localTimezone, this.args.eventTimezone].includes(item));

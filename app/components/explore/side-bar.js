@@ -1,17 +1,18 @@
 import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
 import { computed, action } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';
-
+dayjs.extend(isoWeek);
 @classic
 export default class SideBar extends Component {
 
   classNames = ['ui', 'fluid', 'explore', 'vertical', 'menu'];
 
-  customStartDate = moment().toISOString();
+  customStartDate = dayjs().toISOString();
 
   customEndDate = null;
   @tracked showFilters = false;
@@ -65,7 +66,7 @@ export default class SideBar extends Component {
 
   @action
   dateValidate(date) {
-    if (moment(date).isAfter(this.customEndDate)) {
+    if (dayjs(date).isAfter(this.customEndDate)) {
       this.set('customEndDate', date);
     }
     this.send('selectDateFilter', 'custom_dates');
@@ -95,33 +96,33 @@ export default class SideBar extends Component {
           break;
 
         case 'today':
-          newStartDate = moment().toISOString();
-          newEndDate = moment().toISOString();
+          newStartDate = dayjs().toISOString();
+          newEndDate = dayjs().toISOString();
           break;
 
         case 'tomorrow':
-          newStartDate = moment().add(1, 'day').toISOString();
+          newStartDate = dayjs().add(1, 'day').toISOString();
           newEndDate = newStartDate;
           break;
 
         case 'this_week':
-          newStartDate = moment().startOf('week').toISOString();
-          newEndDate = moment().endOf('week').toISOString();
+          newStartDate = dayjs().startOf('week').toISOString();
+          newEndDate = dayjs().endOf('week').toISOString();
           break;
 
         case 'this_weekend':
-          newStartDate = moment().isoWeekday('Friday').toISOString();
-          newEndDate = moment().isoWeekday('Sunday').toISOString();
+          newStartDate = dayjs().isoWeekday('Friday').toISOString();
+          newEndDate = dayjs().isoWeekday('Sunday').toISOString();
           break;
 
         case 'next_week':
-          newStartDate = moment().isoWeekday('Monday').add(1, 'week').toISOString();
-          newEndDate = moment().isoWeekday('Sunday').add(1, 'week').toISOString();
+          newStartDate = dayjs().isoWeekday('Monday').add(1, 'week').toISOString();
+          newEndDate = dayjs().isoWeekday('Sunday').add(1, 'week').toISOString();
           break;
 
         case 'this_month':
-          newStartDate = moment().startOf('month').toISOString();
-          newEndDate = moment().endOf('month').toISOString();
+          newStartDate = dayjs().startOf('month').toISOString();
+          newEndDate = dayjs().endOf('month').toISOString();
           break;
 
         default:

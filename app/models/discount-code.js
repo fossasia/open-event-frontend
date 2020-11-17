@@ -1,7 +1,7 @@
 import attr from 'ember-data/attr';
 import { computed } from '@ember/object';
 import ModelBase from 'open-event-frontend/models/base';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 
@@ -21,12 +21,12 @@ export default ModelBase.extend({
   ticketsNumber : attr('number'), // For form (1) this holds the max. times this can be used for events
   minQuantity   : attr('number', { defaultValue: 0 }), // Not of any significance for form (1)
   maxQuantity   : attr('number'), // For form (1) this holds the number of months this code is valid for events
-  validFrom     : attr('moment', { defaultValue: () => moment().startOf('day') }),
+  validFrom     : attr('dayjs', { defaultValue: () => dayjs().startOf('day') }),
   discountUrl   : attr('string'),
-  validTill     : attr('moment', { defaultValue: () => moment().add(1, 'months').startOf('day') }),
+  validTill     : attr('dayjs', { defaultValue: () => dayjs().add(1, 'months').startOf('day') }),
   usedFor       : attr('string'),
   isActive      : attr('boolean', { defaultValue: true }),
-  createdAt     : attr('moment'),
+  createdAt     : attr('dayjs'),
 
   tickets   : hasMany('ticket'),
   orders    : hasMany('order'),
