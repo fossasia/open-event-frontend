@@ -202,7 +202,7 @@ export default Component.extend(FormMixin, {
     };
 
     const companyValidation = {
-      rules      : [
+      rules: [
         {
           type   : 'empty',
           prompt : this.l10n.t('Please enter your company')
