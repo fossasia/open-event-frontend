@@ -35,7 +35,7 @@
           </div>
           <div class="ui center aligned segment basic">
             <div class="ui vertical buttons">
-              <button type="button" class="ui fluid teal submit button register" onclick={{action "submit"}}>
+              <button type="submit" class="ui fluid teal submit button register" onclick={{action "submit"}}>
                 {{t 'Login'}}
               </button>
               <div class="ui center aligned segment basic">
@@ -46,7 +46,7 @@
                 <div class="ui horizontal divider">
                   Or
                 </div>
-                <button type="submit" class="ui facebook button" {{action 'auth' 'facebook'}}>
+                <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
                   <i class="facebook icon"></i>
                   {{t 'Login with Facebook'}}
                 </button>
