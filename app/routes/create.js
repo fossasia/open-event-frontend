@@ -6,7 +6,7 @@ import { inject as service } from '@ember/service';
 
 @classic
 export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, EventWizardMixin) {
-  
+
   @service
   session;
 
@@ -14,18 +14,19 @@ export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, E
     return this.l10n.t('Create an Event');
   }
 
-  async beforeModel() {
+  beforeModel() {
     if (!this.session.isAuthenticated) {
       this.flashMessages.add({
-        message : 'Please login to create an event. If you have not registered yet, please create an account first. Thank you!',
-        type    : 'negative',
-        preventDuplicates: true,
+        message           : 'Please login to create an event. If you have not registered yet, please create an account first. Thank you!',
+        type              : 'negative',
+        preventDuplicates : true
       });
     }
     super.beforeModel(...arguments);
   }
 
   async model() {
+
     return {
       event: this.store.createRecord('event', {
         socialLinks         : [],
