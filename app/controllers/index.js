@@ -30,6 +30,11 @@ export default class IndexController extends Controller {
     return this.filteredEvents?.filter(event => !event.isPromoted);
   }
 
+  @computed('model.callForSpeakersEvents') 
+  get cfsEvent() {
+    return this.model.callForSpeakersEvents.slice(0,12);
+  }
+
   @action
   shareEvent(event) {
     this.set('eventToShare', event);
