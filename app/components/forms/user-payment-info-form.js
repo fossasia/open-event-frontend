@@ -2,10 +2,9 @@ import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { validPhoneNumber } from 'open-event-frontend/utils/validators';
-import { pick, orderBy, filter } from 'lodash-es';
+import { pick, orderBy } from 'lodash-es';
 import { action } from '@ember/object';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { paymentCountries } from 'open-event-frontend/utils/dictionary/payment';
 
 @classic
 export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
@@ -95,10 +94,6 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
 
   get countries() {
     return orderBy(countries, 'name');
-  }
-
-  get paymentCountries() {
-    return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
   }
 
   @action

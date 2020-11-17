@@ -70,7 +70,7 @@
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select country'}}</div>
       <div class="menu">
-        {{#each this.paymentCountries as |country|}}
+        {{#each this.countries as |country|}}
           <div class="item" data-value="{{country.name}}">
             <i class="{{lowercase country.code}} flag"></i>
             {{country.name}}
