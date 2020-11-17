@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+import { hash } from 'rsvp';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
@@ -23,7 +24,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const searchField = 'title';
     let filterOptions = [];
 
-    const store = this.modelFor('events.view');
+    const event = this.modelFor('events.view');
 
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
@@ -34,13 +35,11 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
     queryString = this.applySortFilters(queryString, params);
 
-    const sessionsPromise = this.asArray(store.query('microlocations', queryString));
-
-    const [sessions] = await Promise.all([sessionsPromise]);
-
-    return {
-      sessions
-    };
+    const rooms = this.asArray(event.query('microlocations', queryString));
+    return hash({
+      event,
+      rooms
+    });
   }
 
   @action

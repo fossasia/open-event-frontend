@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
@@ -11,6 +11,17 @@ import { allSettled } from 'rsvp';
 export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked jitsiButtonLoading = false;
   @tracked loading = false;
+
+  @computed('data.stream.rooms.[]')
+  get room() {
+    return this.data.stream.rooms.toArray()[0];
+  }
+
+  @action
+  setRoom(room) {
+    this.data.stream.rooms = [room];
+    this.data.stream.name = room.name;
+  }
 
   getValidationRules() {
     window.$.fn.form.settings.rules.checkVideoRoomsLength = () => {
