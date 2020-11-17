@@ -36,7 +36,7 @@ if (!config.sentry.dsn.includes('dummy')) {
     ...config.sentry
   });
 
-  Sentry.configureScope(function(scope) {
+  Sentry.configureScope(function (scope) {
     function addAdapterError(error: any, event: Sentry.Event) {
       if (error?.isAdapterError) {
         event.extra = {
@@ -58,7 +58,7 @@ if (!config.sentry.dsn.includes('dummy')) {
       }
     }
 
-    scope.addEventProcessor(function(event: Sentry.Event, hints: Sentry.EventHint) {
+    scope.addEventProcessor(function (event: Sentry.Event, hints: Sentry.EventHint) {
       addAdapterError(hints.originalException, event);
 
       const args: any[] = event.extra?.arguments as any[] || [];

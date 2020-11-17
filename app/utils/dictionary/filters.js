@@ -1,4 +1,4 @@
-export const getDateRanges = function() {
+export const getDateRanges = function () {
   return [
     {
       name : this.l10n.t('All Dates'),

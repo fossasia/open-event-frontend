@@ -9,7 +9,7 @@ export default stripeConnect.extend({
 
   clientId: ENV.environment === 'development' || ENV.environment === 'test' ? alias('settings.stripeTestClientId') : alias('settings.stripeClientId'),
 
-  redirectUri: configurable('redirectUri', function() {
+  redirectUri: configurable('redirectUri', function () {
     return `${window.location.origin}/torii/redirect.html`;
   })
 });

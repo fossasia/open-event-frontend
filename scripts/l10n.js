@@ -15,7 +15,7 @@ function runEmberCommand() {
     outputStream : process.stdout,
     errorStream  : process.stderr
   });
-  promise.then(function() {
+  promise.then(function () {
     console.log('task completed');
   }).catch(e => {
     console.log('task failed');
@@ -32,7 +32,7 @@ function extractStrings() {
 }
 
 function mergeUpdatedTranslation() {
-  async.eachSeries(translationFiles, function(fileName, callback) {
+  async.eachSeries(translationFiles, function (fileName, callback) {
     runEmberCommand('l10n:extract', '-g', '-l', fileName.split('.')[0]).then(() => {
       callback();
     }).catch(console.error);
@@ -40,7 +40,7 @@ function mergeUpdatedTranslation() {
 }
 
 function generateTranslationJsonFiles() {
-  async.eachSeries(translationFiles, function(fileName, callback) {
+  async.eachSeries(translationFiles, function (fileName, callback) {
     runEmberCommand('l10n:convert', '-l', fileName.split('.')[0]).then(() => {
       callback();
     }).catch(console.error);
