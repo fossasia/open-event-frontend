@@ -60,9 +60,9 @@ export default class L10nService extends L10n {
 
     this.setLocale(locale);
     if (locale !== 'en') {
-      getScript(`/assets/moment-locales/${currentLocale}.js`)
+      getScript(`/assets/moment-locales/${locale}.js`)
         .then(() => {
-          moment.locale(currentLocale);
+          moment.locale(locale);
         });
     }
   }
