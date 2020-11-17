@@ -15,9 +15,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-order'
       },
       {
-        name      : 'Ticket Name',
-        width     : 110,
-        valuePath : 'ticket.name'
+        name            : 'Ticket Name',
+        width           : 100,
+        valuePath       : 'ticket.name'
+      },
+      {
+        name            : 'Date And Time',
+        valuePath       : 'order',
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-date',
+        width           : 120,
+        dateFormat      : 'MMMM DD, YYYY - HH:mm A',
       },
       {
         name            : 'Ticket Price',
@@ -27,19 +34,19 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price'
       },
       {
-        name      : 'First Name',
-        valuePath : 'firstname',
-        width     : 100
+        name            : 'First Name',
+        valuePath       : 'firstname',
+        width           : 100
       },
       {
-        name      : 'Last Name',
-        valuePath : 'lastname',
-        width     : 90
+        name            : 'Last Name',
+        valuePath       : 'lastname',
+        width           : 90
       },
       {
-        name      : 'Email',
-        valuePath : 'email',
-        width     : 160
+        name            : 'Email',
+        valuePath       : 'email',
+        width           : 160
       },
       {
         name            : 'Actions',
@@ -68,7 +75,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.notify.success(message);
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while attendee checking IN/OUT', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
   }
