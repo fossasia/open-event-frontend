@@ -3,7 +3,12 @@
     {{this.record}}
   </a>
   <span class="weight-400">
-    {{t 'by'}} {{if this.extraRecords.user.firstName this.extraRecords.user.firstName (t 'Name not provided')}}
+    {{t 'by'}}
+    {{#if this.extraRecords.user.firstName}}
+      {{this.extraRecords.user.firstName}} {{if this.extraRecords.user.lastName this.extraRecords.user.lastName}}
+    {{else}} 
+      (t 'Name not provided')}}
+    {{/if}}
   </span>
   <div class="ui basic mini {{order-color this.extraRecords.status}} label">
     {{this.extraRecords.status}}
@@ -14,13 +19,6 @@
         {{t 'Payment via'}} {{this.extraRecords.paidVia}}
       </span>
     {{/if}}
-    <span class="muted text">
-      {{#if this.extraRecords.completedAt}}
-        {{moment-format this.extraRecords.completedAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now this.extraRecords.completedAt}}
-      {{else}}
-        {{moment-format this.extraRecords.createdAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now this.extraRecords.createdAt}}
-      {{/if}}
-    </span>
   </div>
 </div>
 <div class="ui horizontal compact basic buttons">
