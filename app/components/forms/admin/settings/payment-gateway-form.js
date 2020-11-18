@@ -253,7 +253,7 @@ export default Component.extend(FormMixin, {
             'omiseLiveSecret' : null
           });
         }
-        this.sendAction('save');
+        this.save();
       });
     }
   }
