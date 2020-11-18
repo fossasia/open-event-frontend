@@ -20,9 +20,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath : 'ticket.name'
       },
       {
-        name      : 'Date and Time',
-        width     : 140,
-        valuePath : 'order',
+        name          : 'Date and Time',
+        width         : 140,
+        valuePath     : 'order',
         cellComponent : 'ui-table/cell/events/view/tickets/attendees/cell-date'
       },
       {
