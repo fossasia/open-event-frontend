@@ -163,7 +163,7 @@ export default Component.extend(FormMixin, {
     },
     submit(data) {
       this.onValid(() => {
-        this.sendAction('save', data);
+        this.save(data);
       });
     },
     copiedText() {

@@ -499,7 +499,7 @@ export default Component.extend(FormMixin, {
         const currentUser = this.data.user;
         currentUser.set('firstName', this.buyerFirstName);
         currentUser.set('lastName', this.buyerLastName);
-        this.sendAction('save', data);
+        this.save(data);
       });
     },
     modifyHolder(holder) {
