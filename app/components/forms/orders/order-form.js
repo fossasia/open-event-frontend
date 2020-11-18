@@ -8,11 +8,12 @@ import moment from 'moment';
 import { groupBy, orderBy } from 'lodash-es';
 import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
-  validGithubProfileUrlPattern
+  validGithubProfileUrlPattern, validEmail
 } from 'open-event-frontend/utils/validators';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
+
 
 export default Component.extend(FormMixin, {
   router: service(),
@@ -87,7 +88,8 @@ export default Component.extend(FormMixin, {
           prompt : this.l10n.t('Please enter your email')
         },
         {
-          type   : 'email',
+          type   : 'regExp',
+          value  : validEmail,
           prompt : this.l10n.t('Please enter a valid email address')
         }
       ]
@@ -380,7 +382,8 @@ export default Component.extend(FormMixin, {
           identifier : 'email',
           rules      : [
             {
-              type   : 'email',
+              type   : 'regExp',
+              value  : validEmail,
               prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
