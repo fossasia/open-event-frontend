@@ -206,6 +206,7 @@ Router.map(function() {
       this.route('payment-gateway');
       this.route('ticket-fees');
       this.route('billing');
+      this.route('frontpage');
     });
     this.route('content', function() {
       this.route('social-links');
