@@ -1,18 +1,20 @@
 # Areeb Jamal <jamal.areeb@gmail.com>, 2020.
+# J. Lavoie <j.lavoie@net-c.ca>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2020-11-06 04:11+0000\n"
-"Last-Translator: Areeb Jamal <jamal.areeb@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/open-event/frontend/fr/>\n"
+"PO-Revision-Date: 2020-11-14 12:28+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/open-event/"
+"frontend/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.4-dev\n"
 "X-Crowdin-Project: open-event-frontend\n"
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: /development/translations/en.po\n"
@@ -25,7 +27,7 @@ msgstr ""
 #: app/components/forms/reset-password-form.js:22:23
 #: app/components/forms/user-profile-form.js:37:23
 msgid "Please enter your email ID"
-msgstr "Merci de saisir votre ID email"
+msgstr "Merci de saisir votre ID de courriel"
 
 #: app/components/account/contact-info-section.js:26:23
 #: app/components/forms/admin/settings/billing.js:35:23
@@ -43,11 +45,10 @@ msgstr "Merci de saisir votre ID email"
 #: app/components/forms/user-profile-form.js:41:23
 #: app/components/forms/wizard/basic-details-step.js:340:23
 msgid "Please enter a valid email address"
-msgstr "Merci de renseigner une adresse email valide"
+msgstr "Merci de renseigner une adresse courriel valide"
 
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
-#, fuzzy
 msgid "Please enter a phone number."
 msgstr "Veuillez entrer un numéro de téléphone."
 
@@ -57,7 +58,6 @@ msgid "Please enter a valid phone number."
 msgstr "Veuillez entrer un numéro de téléphone valide."
 
 #: app/components/account/danger-zone.js:42:28
-#, fuzzy
 msgid "Your account has been deleted successfully."
 msgstr "Votre compte a été supprimé avec succès."
 
@@ -123,7 +123,7 @@ msgstr "Une erreur inattendue s'est produite."
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
-msgstr "Les notifications emails sont mises à jour"
+msgstr "Les notifications courriel sont mises à jour"
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
@@ -183,9 +183,8 @@ msgid "Task failed."
 msgstr "L'opération a échoué."
 
 #: app/components/events/view/export/download-zip.js:17:26
-#, fuzzy
 msgid "Exported Event Downloaded successfully."
-msgstr "Evénement exporté Téléchargé avec succès."
+msgstr "Évènement exporté téléchargé avec succès."
 
 #: app/components/events/view/overview/manage-roles.js:40:47
 msgid "Role Invite sent successfully"
@@ -242,9 +241,8 @@ msgid "Publish"
 msgstr "Publier"
 
 #: app/components/events/view/publish-bar.ts:57:26
-#, fuzzy
 msgid "Your event must have tickets before it can be published."
-msgstr "Votre événement doit disposer de billets avant de pouvoir être publié."
+msgstr "Votre évènement doit avoir des billets avant de pouvoir être publié."
 
 #: app/components/events/view/publish-bar.ts:63:26
 #, fuzzy
@@ -253,7 +251,7 @@ msgstr "Vous devez vous connecter à votre compte Stripe, si vous choisissez Str
 
 #: app/components/events/view/publish-bar.ts:76:28
 msgid "Your event has been published successfully."
-msgstr "Votre évènement a été publié."
+msgstr "Votre évènement a été publié avec succès."
 
 #: app/components/events/view/publish-bar.ts:81:28
 msgid "Your event has been unpublished."
@@ -330,14 +328,14 @@ msgid "Please enter a valid mobile number."
 msgstr "Veuillez saisir un numéro de téléphone portable valide."
 
 #: app/components/forms/admin/settings/billing.js:31:23
-#, fuzzy
 msgid "Please enter the email"
-msgstr "Veuillez saisir l'adresse électronique"
+msgstr "Veuillez saisir l'adresse courriel"
 
 #: app/components/forms/admin/settings/billing.js:44:23
-#, fuzzy
 msgid "Please enter the billing paypal email invoice money will be transferred to"
-msgstr "Veuillez entrer le courriel de facturation paypal ; l'argent de la facture sera transféré à"
+msgstr ""
+"Veuillez entrer le courriel de facturation paypal ; l'argent de la facture "
+"sera transféré à"
 
 #: app/components/forms/admin/settings/billing.js:57:23
 #, fuzzy
@@ -532,7 +530,7 @@ msgstr "Veuillez entrer la clé secrète reCAPTCHA"
 
 #: app/components/forms/admin/settings/system-form.js:151:23
 msgid "Please enter the from email"
-msgstr "Merci de saisir l'email de l'émetteur"
+msgstr "Merci de saisir le courriel de l'émetteur"
 
 #: app/components/forms/admin/settings/system-form.js:165:23
 msgid "Please enter name for from email"
@@ -563,9 +561,8 @@ msgid "Please enter the token for Sendgrid"
 msgstr "Merci de saisir le jeton pour SendGrid"
 
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:19:23
-#, fuzzy
 msgid "Please enter the recipient E-mail"
-msgstr "Veuillez indiquer l'adresse électronique du destinataire"
+msgstr "Veuillez indiquer l'adresse courriel du destinataire"
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
@@ -655,7 +652,7 @@ msgstr "Merci de saisir votre prénom"
 
 #: app/components/forms/orders/order-form.js:87:19
 msgid "Please enter your email"
-msgstr "Merci de saisir votre email"
+msgstr "Merci de saisir votre courriel"
 
 #: app/components/forms/orders/order-form.js:100:19
 #: app/components/forms/session-speaker-form.js:318:23
@@ -801,11 +798,12 @@ msgstr "Le lien de réinitialisation du mot de passe n'est pas valide ou est dé
 
 #: app/components/forms/reset-password-form.js:106:34
 msgid "Please go to the link sent to your email to reset your password"
-msgstr "Merci d'utiliser le lien de réinitialisation qui a été envoyé par email"
+msgstr ""
+"Merci d'utiliser le lien de réinitialisation qui a été envoyé par courriel"
 
 #: app/components/forms/reset-password-form.js:114:41
 msgid "No account is registered with this email address."
-msgstr "Il n'y a pas de compte enregistré avec cette adresse email."
+msgstr "Il n'y a pas de compte enregistré avec cette adresse courriel."
 
 #: app/components/forms/session-speaker-form.js:38:23
 msgid "Please enter a subtitle"
@@ -844,7 +842,7 @@ msgstr "Merci de saisir une url"
 #: app/components/forms/session-speaker-form.js:194:23
 #: app/components/forms/session-speaker-form.js:208:23
 msgid "Please enter an email"
-msgstr "Merci de saisir un email"
+msgstr "Merci de saisir un courriel"
 
 #: app/components/forms/session-speaker-form.js:221:23
 msgid "Please select an image"
@@ -1047,7 +1045,7 @@ msgstr "La valeur maximale ne peut être inférieure à la minimale"
 
 #: app/components/forms/wizard/basic-details-step.js:344:23
 msgid "Please fill your paypal email for payment of tickets."
-msgstr "Merci de saisir votre email paypal pour le paiement de ces billets."
+msgstr "Merci de saisir votre courriel Paypal pour le paiement de ces billets."
 
 #: app/components/forms/wizard/basic-details-step.js:353:23
 msgid "Please fill the details for payment of tickets."
@@ -1194,14 +1192,15 @@ msgid "Please enter a Private link"
 msgstr "Merci de saisir un lien privé"
 
 #: app/components/forms/wizard/sessions-speakers-step.js:62:23
-#, fuzzy
 msgid "CFS start time should be before than event start time"
-msgstr "L'heure de début du CFS doit être antérieure à l'heure de début de l'événement"
+msgstr ""
+"L'heure de début du CFS doit être antérieure à l'heure de début de "
+"l'évènement"
 
 #: app/components/forms/wizard/sessions-speakers-step.js:75:23
-#, fuzzy
 msgid "CFS end time should be before than event start time"
-msgstr "L'heure de fin du CFS doit être antérieure à l'heure de début de l'événement"
+msgstr ""
+"L'heure de fin du CFS doit être antérieure à l'heure de début de l'évènement"
 
 #: app/components/forms/wizard/sessions-speakers-step.js:104:23
 #, fuzzy
@@ -1272,12 +1271,11 @@ msgstr "Merci de saisir un nom de rôle"
 
 #: app/components/modals/add-user-role-modal.js:38:23
 msgid "Please enter an email for user"
-msgstr "Merci de saisir un email pour cet utilisateur"
+msgstr "Merci de saisir un courriel pour cet utilisateur"
 
 #: app/components/modals/add-user-role-modal.js:42:23
-#, fuzzy
 msgid "Please enter a valid email address for user"
-msgstr "Merci de saisir une adresse email valide pour cet utilisateur"
+msgstr "Merci de saisir une adresse courriel valide pour cet utilisateur"
 
 #: app/components/modals/add-user-role-modal.js:51:23
 msgid "Please select a role"
@@ -1304,14 +1302,12 @@ msgid "An unexpected error has occurred. Placeholder not saved."
 msgstr "Une erreur inattendue s'est produite. L'emplacement n'a pas été sauvegardé."
 
 #: app/components/modals/confirm-event-transfer-modal.js:31:23
-#, fuzzy
 msgid "Please enter an email for new organizer"
 msgstr "Veuillez entrer un courriel pour le nouvel organisateur"
 
 #: app/components/modals/confirm-event-transfer-modal.js:35:23
-#, fuzzy
 msgid "Please enter a valid email address for new organizer"
-msgstr "Veuillez entrer une adresse électronique valide pour le nouvel organisateur"
+msgstr "Veuillez entrer une adresse courriel valide pour le nouvel organisateur"
 
 #: app/components/modals/paytm-otp.js:20:23
 #, fuzzy
@@ -1339,9 +1335,8 @@ msgid "Notify"
 msgstr "Annoncer"
 
 #: app/components/modals/session-notify-modal.js:63:26
-#, fuzzy
 msgid "Email scheduled to be sent successfully"
-msgstr "Envoi du courrier électronique prévu avec succès"
+msgstr "Envoi du courriel planifié avec succès"
 
 #: app/components/modals/tax-info-modal.js:25:23
 msgid "Please give a name"
@@ -1421,11 +1416,13 @@ msgstr "Merci de saisir le code promotionnel"
 
 #: app/components/unverified-user-message.hbs:9:12
 msgid "Confirmation mail has been sent again successfully!"
-msgstr "Le mail de confirmation a été envoyé de nouveau !"
+msgstr "Le courriel de confirmation a été envoyé de nouveau !"
 
 #: app/components/unverified-user-message.hbs:14:14
 msgid "To make your event live, please verify your account by clicking on the confirmation link that has been emailed to you."
-msgstr "Pour mettre en ligne votre évènement, merci de vérifier votre compte en cliquant sur le lien de confirmation que vous avez reçu par email."
+msgstr ""
+"Pour mettre en ligne votre évènement, merci de vérifier votre compte en "
+"cliquant sur le lien de confirmation que vous avez reçu par courriel."
 
 #: app/components/unverified-user-message.hbs:16:14
 #, fuzzy
@@ -1433,21 +1430,22 @@ msgid "Your account is unverified."
 msgstr "Votre compte n'est pas vérifié."
 
 #: app/components/unverified-user-message.hbs:16:68
-#, fuzzy
 msgid "Please verify by clicking on the confirmation link that has been emailed to you."
-msgstr "Veuillez vérifier en cliquant sur le lien de confirmation qui vous a été envoyé par e-mail."
+msgstr ""
+"Veuillez vérifier en cliquant sur le lien de confirmation qui vous a été "
+"envoyé par courriel."
 
 #: app/components/unverified-user-message.hbs:19:13
 msgid "Did not get the email?"
-msgstr "Pas reçu d'email ?"
+msgstr "Vous n'avez pas reçu de courriel ?"
 
 #: app/components/unverified-user-message.hbs:19:98
 msgid "Please click here to resend the confirmation mail."
-msgstr "Merci de cliquer ici pour renvoyer le mail de confirmation."
+msgstr "Merci de cliquer ici pour renvoyer le courriel de confirmation."
 
 #: app/components/unverified-user-message.js:25:28
 msgid "Verification mail sent successfully"
-msgstr "Le mail de vérification a été envoyé"
+msgstr "Le courriel de vérification a été envoyé"
 
 #: app/components/widgets/forms/file-upload.js:30:28
 msgid "File uploaded successfully"
@@ -1484,14 +1482,12 @@ msgid "An unexpected error has occurred. Event Type was not deleted."
 msgstr "Une erreur inattendue s'est produite. Le type d'évènement n'a pas été supprimé."
 
 #: app/controllers/admin/content/events.js:68:28
-#, fuzzy
 msgid "{{item}} has been added successfully."
 msgstr "{{item}} a été ajouté avec succès."
 
 #: app/controllers/admin/content/events.js:77:77
-#, fuzzy
 msgid "{{item}} not saved."
-msgstr "{{item}} non sauvé."
+msgstr "{{item}} non enregistré."
 
 #: app/controllers/admin/content/index.js:11:28
 msgid "Social links have been saved successfully."
@@ -1523,19 +1519,16 @@ msgstr "L'évènement a été supprimé."
 
 #: app/controllers/admin/events/list.js:155:26
 #: app/controllers/admin/users/view/events/list.js:97:26
-#, fuzzy
 msgid "Event has been restored successfully."
-msgstr "L'événement a été rétabli avec succès."
+msgstr "L'évènement a été restauré avec succès."
 
 #: app/controllers/admin/events/list.js:176:26
-#, fuzzy
 msgid "Event details modified successfully"
-msgstr "Les détails de l'événement ont été modifiés avec succès"
+msgstr "Détails de l'évènement modifiés avec succès"
 
 #: app/controllers/admin/events/list.js:198:45
-#, fuzzy
 msgid "Event promoted successfully"
-msgstr "Un événement promu avec succès"
+msgstr "Évènement promu avec succès"
 
 #: app/controllers/admin/events/list.js:198:90
 #, fuzzy
@@ -1631,9 +1624,8 @@ msgid "User has been restored successfully."
 msgstr "L'utilisateur a été restauré avec succès."
 
 #: app/controllers/event-invoice/paid.js:16:26
-#, fuzzy
 msgid "Here is your Event Invoice"
-msgstr "Voici votre facture d'événement"
+msgstr "Voici votre facture d'évènement"
 
 #: app/controllers/events/view.js:12:28
 #, fuzzy
@@ -1641,9 +1633,8 @@ msgid "Event copied successfully"
 msgstr "Evénement copié avec succès"
 
 #: app/controllers/events/view.js:19:26
-#, fuzzy
 msgid "Copying of event failed"
-msgstr "La copie de l'événement a échoué"
+msgstr "La copie de l'évènement a échoué"
 
 #: app/controllers/events/view/export.js:25:32
 msgid "Event exported."
@@ -1811,7 +1802,6 @@ msgid "Order has been cancelled successfully."
 msgstr "La commande est annulée."
 
 #: app/controllers/events/view/tickets/orders/list.js:127:26
-#, fuzzy
 msgid "Email confirmation has been sent to attendees successfully"
 msgstr "Le courriel de confirmation a été envoyé aux participants avec succès"
 
@@ -1871,9 +1861,8 @@ msgid "User already exists."
 msgstr "Cet utilisateur existe déjà."
 
 #: app/controllers/register.js:35:35
-#, fuzzy
 msgid "Invalid email address."
-msgstr "L'adresse e-mail n'est pas valide."
+msgstr "Adresse courriel invalide."
 
 #: app/mixins/event-wizard.js:17:22
 #: app/routes/events/view/edit/basic-details.js:8:11
@@ -1892,9 +1881,8 @@ msgid "Additional Info"
 msgstr "Informations supplémentaires"
 
 #: app/mixins/event-wizard.js:24:22
-#, fuzzy
 msgid "Extra details about your event"
-msgstr "Détails supplémentaires sur votre événement"
+msgstr "Détails supplémentaires sur votre évènement"
 
 #: app/mixins/event-wizard.js:29:22
 #: app/routes/events/view/edit/attendee.js:8:11
@@ -1954,7 +1942,6 @@ msgstr "Compte"
 #: app/routes/admin/users/view/account/applications.js:8:11
 #: app/templates/account.hbs:19:10
 #: app/templates/admin/users/view/account.hbs:13:10
-#, fuzzy
 msgid "Applications"
 msgstr "Applications"
 
@@ -2004,7 +1991,7 @@ msgstr "Zone de danger"
 #: app/routes/account/email-preferences.js:8:11
 #: app/routes/admin/users/view/account/email-preferences.js:8:11
 msgid "Email Preferences"
-msgstr "Préférences email"
+msgstr "Préférences courriel"
 
 #: app/routes/account/password.js:8:11 app/templates/account.hbs:12:8
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:74:6
@@ -2141,11 +2128,11 @@ msgstr "Logs d'activité"
 
 #: app/routes/admin/reports/system-logs/mail-logs.js:6:11
 msgid "Mail Logs"
-msgstr "Logs email"
+msgstr "Journaux des courriels"
 
 #: app/routes/admin/reports/system-logs/notification-logs.js:6:11
 msgid "Notification Logs"
-msgstr "Logs des notifications"
+msgstr "Journaux des notifications"
 
 #: app/routes/admin/sales.js:7:11 app/templates/admin.hbs:11:8
 #: app/templates/admin/sales/discounted-events.hbs:34:14
@@ -2166,7 +2153,7 @@ msgstr "Ventes"
 
 #: app/routes/admin/sales/discounted-events.js:7:11
 msgid "Discounted Events"
-msgstr "Evènements en promotion"
+msgstr "Évènements en promotion"
 
 #: app/routes/admin/sales/index.js:10:11
 #: app/routes/events/view/tickets/index.js:7:11
@@ -2240,7 +2227,6 @@ msgstr "Facturation administrative"
 
 #: app/routes/admin/settings/images.js:8:11
 #: app/templates/admin/settings.hbs:12:10
-#, fuzzy
 msgid "Images"
 msgstr "Images"
 
@@ -2252,7 +2238,6 @@ msgstr "Système"
 
 #: app/routes/admin/settings/microservices.js:8:11
 #: app/templates/admin/settings.hbs:9:10
-#, fuzzy
 msgid "Microservices"
 msgstr "Microservices"
 
@@ -2648,7 +2633,7 @@ msgstr "Facturation"
 #: app/templates/account.hbs:16:10
 #: app/templates/admin/users/view/account.hbs:10:10
 msgid "Email-Preferences"
-msgstr "Préférences email"
+msgstr "Préférences courriel"
 
 #: app/templates/account/billing.hbs:9:10
 #: app/templates/components/forms/user-payment-info-form.hbs:3:4
@@ -2796,7 +2781,7 @@ msgstr "Nombre d'évènements"
 
 #: app/templates/admin/index.hbs:97:10
 msgid "No. of Sent Mails"
-msgstr "Nb d'emails envoyés"
+msgstr "Nb de courriels envoyés"
 
 #: app/templates/admin/index.hbs:102:18
 msgid "In last 24 hours"
@@ -2892,12 +2877,12 @@ msgstr "(Rôle intégré)"
 #: app/templates/admin/permissions/system-roles.hbs:36:10
 #: app/templates/components/ui-table/cell/admin/users/cell-system-roles.hbs:4:6
 msgid "Super Admin"
-msgstr "Super Admin"
+msgstr "Super admin"
 
 #: app/templates/admin/permissions/system-roles.hbs:58:96
 #: app/templates/components/events/view/overview/manage-roles.hbs:45:45
 msgid "Are you sure you would like to delete this role?"
-msgstr "Etes-vous certains de vouloir supprimer ce rôle ?"
+msgstr "Êtes-vous certains de vouloir supprimer ce rôle ?"
 
 #: app/templates/admin/permissions/system-roles.hbs:67:78
 msgid "Add new Role"
@@ -2932,7 +2917,7 @@ msgstr "Activité"
 
 #: app/templates/admin/reports/system-logs.hbs:6:4
 msgid "Mails"
-msgstr "Courriers"
+msgstr "Messages"
 
 #: app/templates/admin/sales.hbs:16:10
 msgid "By Events"
@@ -2970,7 +2955,7 @@ msgstr "Code de remise"
 # Marketer?
 #: app/templates/admin/sales/discounted-events.hbs:17:14
 msgid "Marketer Email"
-msgstr "Email Marketer"
+msgstr "Courriel du marketeur"
 
 #: app/templates/admin/sales/discounted-events.hbs:20:14
 #: app/templates/admin/sales/locations.hbs:11:77
@@ -3097,9 +3082,8 @@ msgid "No tickets found for this user"
 msgstr "Pas de billet trouvé pour cet utilisateur"
 
 #: app/templates/attendee-app.hbs:17:4
-#, fuzzy
 msgid "Open Event Attendee App"
-msgstr "Application pour les participants à l'événement ouvert"
+msgstr "Ouvrir l'application des participants à l'évènement"
 
 #: app/templates/attendee-app.hbs:41:66
 #, fuzzy
@@ -3107,9 +3091,8 @@ msgid "Android Attendee App"
 msgstr "Application Android pour les participants"
 
 #: app/templates/attendee-app.hbs:46:10
-#, fuzzy
 msgid "Get Your Next Experience of Open Event"
-msgstr "Faites votre prochaine expérience d'un événement ouvert"
+msgstr "Obtenez votre prochaine expérience de l'évènement ouvert"
 
 #: app/templates/attendee-app.hbs:51:12
 #, fuzzy
@@ -3117,9 +3100,10 @@ msgid "Get More"
 msgstr "En savoir plus"
 
 #: app/templates/attendee-app.hbs:54:12
-#, fuzzy
 msgid "Check popular events on the go, unique, local, near you just for you"
-msgstr "Consultez les événements populaires en déplacement, uniques, locaux, près de chez vous, juste pour vous"
+msgstr ""
+"Consultez les évènements populaires en déplacement, uniques, locaux, près de "
+"chez vous rien que pour vous"
 
 #: app/templates/attendee-app.hbs:59:34
 #, fuzzy
@@ -3127,9 +3111,10 @@ msgid "Know More"
 msgstr "En savoir plus"
 
 #: app/templates/attendee-app.hbs:61:12
-#, fuzzy
 msgid "Check all event related information on the go and get all relevant details about the speakers"
-msgstr "Consultez toutes les informations relatives à l'événement en cours et obtenez tous les détails pertinents sur les intervenants"
+msgstr ""
+"Consultez toutes les informations relatives à l'évènement en déplacement et "
+"obtenez tous les détails pertinents sur les intervenants"
 
 #: app/templates/attendee-app.hbs:67:12
 #, fuzzy
@@ -3138,7 +3123,9 @@ msgstr "Gérer plus"
 
 #: app/templates/attendee-app.hbs:70:12
 msgid "Manage all you ticket details, event details on the go with your phone"
-msgstr "Gérez tous les détails de vos billets, les détails de l'événement en déplacement avec votre téléphone"
+msgstr ""
+"Gérez tous les détails de vos billets, les détails de l'évènement en "
+"déplacement avec votre téléphone"
 
 #: app/templates/attendee-app.hbs:76:12
 #, fuzzy
@@ -3156,7 +3143,9 @@ msgstr "Partez sans soucis"
 
 #: app/templates/attendee-app.hbs:88:12
 msgid "Pay with your phone, Register for nearby events with your phone, hasslefree, easily and conveniently"
-msgstr "Payez avec votre téléphone , Inscrivez-vous à des événements proches avec votre téléphone, sans soucis, facilement et commodément"
+msgstr ""
+"Payez avec votre téléphone, inscrivez-vous à des évènements proches avec "
+"votre téléphone, sans soucis, facilement et commodément"
 
 #: app/templates/attendee-app.hbs:99:2
 #, fuzzy
@@ -3182,7 +3171,7 @@ msgstr "Se connecter avec Facebook"
 #: app/templates/components/forms/user-profile-form.hbs:47:32
 #: app/templates/components/orders/ticket-holder.hbs:20:8
 msgid "Email"
-msgstr "Email"
+msgstr "Courriel"
 
 #: app/templates/components/account/contact-info-section.hbs:7:28
 #: app/templates/components/event-invoice/billing-info.hbs:14:16
@@ -3211,20 +3200,22 @@ msgstr ""
 "Une fois que vous aurez supprimé ce compte, vous n'aurez plus accès au système."
 
 #: app/templates/components/account/danger-zone.hbs:13:10
-#, fuzzy
 msgid ""
 "Your account currently cannot be deleted as active events and/or orders are associated with it. \n"
 "Before you can delete your account you must transfer the ownership of your event(s) to another organizer or cancel your event(s). \n"
 "If you have ticket orders stored in the system, please cancel your orders first too."
 msgstr ""
-"Votre compte ne peut actuellement pas être supprimé car des événements actifs et/ou des commandes y sont associés.\n"
-"Avant de pouvoir supprimer votre compte, vous devez transférer la propriété de votre (vos) événement(s) à un autre organisateur ou annuler votre (vos) événement(s).\n"
-"Si vous avez des commandes de billets stockées dans le système, veuillez également annuler vos commandes."
+"Votre compte ne peut actuellement pas être supprimé car des évènements "
+"actifs et / ou des commandes y sont associés.\n"
+"Avant de pouvoir supprimer votre compte, vous devez transférer la propriété "
+"de votre (vos) évènement(s) à un autre organisateur ou annuler votre (vos) "
+"évènement(s).\n"
+"Si vous avez des commandes de billets stockées dans le système, veuillez "
+"d'abord annuler vos commandes."
 
 #: app/templates/components/account/email-preferences-section.hbs:5:8
-#, fuzzy
 msgid "Email Updates are"
-msgstr "Les mises à jour Email sont"
+msgstr "Les mises à jour par courriel sont"
 
 #: app/templates/components/account/email-preferences-section.hbs:16:8
 msgid "Updates about events"
@@ -3406,9 +3397,8 @@ msgstr "Adresse de facturation"
 
 #: app/templates/components/event-invoice/event-info.hbs:5:8
 #: app/templates/components/orders/event-info.hbs:6:10
-#, fuzzy
 msgid "Event Information"
-msgstr "Informations sur l'événement"
+msgstr "Informations sur l'évènement"
 
 #: app/templates/components/event-invoice/event-info.hbs:10:27
 #: app/templates/components/orders/event-info.hbs:12:27
@@ -3446,9 +3436,8 @@ msgstr "Détails de la facture"
 #: app/templates/components/event-invoice/invoice-summary.hbs:20:30
 #: app/templates/components/forms/wizard/basic-details-step.hbs:3:39
 #: app/templates/event-invoice/review.hbs:15:24
-#, fuzzy
 msgid "Event Name"
-msgstr "Nom de l’événement"
+msgstr "Nom de l'évènement"
 
 #: app/templates/components/event-invoice/invoice-summary.hbs:21:30
 #: app/templates/event-invoice/review.hbs:18:24
@@ -3525,9 +3514,8 @@ msgid "Import Event"
 msgstr "Importer l'évènement"
 
 #: app/templates/components/events/imports-history-section.hbs:2:33
-#, fuzzy
 msgid "Imported Events"
-msgstr "Événements importés"
+msgstr "Évènements importés"
 
 #: app/templates/components/events/view/export/api-response.hbs:3:4
 msgid "Access event information via REST API"
@@ -3562,13 +3550,14 @@ msgid "Response"
 msgstr "Réponse"
 
 #: app/templates/components/events/view/export/download-common.hbs:3:4
-#, fuzzy
 msgid "Download Event as {{file}}"
-msgstr "Télécharger l'événement sous {{file}}"
+msgstr "Télécharger l'évènement en tant que {{file}}"
 
 #: app/templates/components/events/view/export/download-common.hbs:6:4
 msgid "Once the event is live and the schedule is published, {{file}} version of the schedule will be available at:"
-msgstr "Une fois l'événement en direct et le programme publié, la version {{file}} du programme sera disponible à :"
+msgstr ""
+"Une fois l'évènement en direct et le programme publié, la version {{file}} "
+"du programme sera disponible à :"
 
 #: app/templates/components/events/view/export/download-common.hbs:12:66
 #, fuzzy
@@ -3613,9 +3602,8 @@ msgid "Generate Web App"
 msgstr "Générer la Web App"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:2:22
-#, fuzzy
 msgid "Event Checklist"
-msgstr "Liste de contrôle des événements"
+msgstr "Liste de contrôle de l'évènement"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:15:14
 msgid "Basic information including title, date, venue, ticketing"
@@ -3704,9 +3692,8 @@ msgid "Available"
 msgstr "Disponible"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:42:10
-#, fuzzy
 msgid "There are no tickets for this event"
-msgstr "Il n'y a pas de billets pour cet événement"
+msgstr "Il n'y a pas de billets pour cet évènement"
 
 #: app/templates/components/events/view/overview/general-info.hbs:7:6
 msgid "Your event is live at"
@@ -3804,7 +3791,7 @@ msgstr "Invités"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:20:12
 msgid "User (Email)"
-msgstr "Utilisateur (Email)"
+msgstr "Utilisateur (courriel)"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:21:12
 msgid "Role"
@@ -3872,9 +3859,8 @@ msgid "Free"
 msgstr "Gratuit"
 
 #: app/templates/components/explore/side-bar.hbs:156:6
-#, fuzzy
 msgid "Event Call For Speakers"
-msgstr "Appel aux orateurs pour l'événement"
+msgstr "Appel d'évènement pour les conférenciers"
 
 #: app/templates/components/explore/side-bar.hbs:169:21
 #: app/templates/components/public/call-for-speakers.hbs:10:43
@@ -3911,9 +3897,8 @@ msgid "Blog"
 msgstr "Blog"
 
 #: app/templates/components/footer-main.hbs:13:29
-#, fuzzy
 msgid "Plan Events"
-msgstr "Planifier les événements"
+msgstr "Planifier des évènements"
 
 #: app/templates/components/footer-main.hbs:15:10
 #, fuzzy
@@ -3921,19 +3906,16 @@ msgid "Online Registration"
 msgstr "Enregistrement en ligne"
 
 #: app/templates/components/footer-main.hbs:18:10
-#, fuzzy
 msgid "Sell Event Tickets"
-msgstr "Vendre des billets d'événements"
+msgstr "Vendre des billets d'évènement"
 
 #: app/templates/components/footer-main.hbs:21:10
-#, fuzzy
 msgid "Event Management Software"
-msgstr "Logiciel de gestion d'événements"
+msgstr "Logiciel de gestion d'évènements"
 
 #: app/templates/components/footer-main.hbs:27:29
-#, fuzzy
 msgid "Find Events"
-msgstr "Trouver des événements"
+msgstr "Trouver des évènements"
 
 #: app/templates/components/footer-main.hbs:29:10
 #: app/templates/components/nav-bar.hbs:16:24
@@ -3963,7 +3945,6 @@ msgstr "Facebook"
 
 #: app/templates/components/footer-main.hbs:55:43
 #: app/templates/components/forms/admin/content/social-links-form.hbs:25:11
-#, fuzzy
 msgid "Instagram"
 msgstr "Instagram"
 
@@ -3990,19 +3971,16 @@ msgstr "Groupes Google"
 
 #: app/templates/components/footer-main.hbs:80:41
 #: app/templates/components/forms/admin/content/social-links-form.hbs:57:11
-#, fuzzy
 msgid "Patreon"
 msgstr "Patreon"
 
 #: app/templates/components/footer-main.hbs:85:40
 #: app/templates/components/forms/admin/content/social-links-form.hbs:65:11
-#, fuzzy
 msgid "Gitter"
 msgstr "Gitter"
 
 #: app/templates/components/footer-main.hbs:90:42
 #: app/templates/components/forms/admin/content/social-links-form.hbs:69:11
-#, fuzzy
 msgid "Telegram"
 msgstr "Telegram"
 
@@ -4170,9 +4148,8 @@ msgid "Contact Name"
 msgstr "Contact"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:45:58
-#, fuzzy
 msgid "Paypal Email"
-msgstr "Email Paypal"
+msgstr "Courriel Paypal"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:53:32
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:55:32
@@ -4474,7 +4451,7 @@ msgstr "Activer PayPal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:178:6
 msgid "PayPal Credentials"
-msgstr "PayPal Credentials"
+msgstr "Identifiants PayPal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:189:6
 msgid "PayPal Integration Mode"
@@ -4486,11 +4463,11 @@ msgstr "Mode bac à sable - utilisé pendant la phase de test et de développeme
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:202:10
 msgid "Paypal Sandbox Client Id"
-msgstr "Paypal Sandbox Client Id"
+msgstr "ID Paypal Sandbox Client"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:215:10
 msgid "Paypal Sandbox Secret Token"
-msgstr "Paypal Sandbox Secret Token"
+msgstr "Jeton secret Paypal Sandbox"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:219:21
 #, fuzzy
@@ -4503,7 +4480,7 @@ msgstr "Paypal Client Id"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:251:10
 msgid "Paypal Secret Token"
-msgstr "Paypal Secret Token"
+msgstr "Jeton secret Paypal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:255:21
 #, fuzzy
@@ -4547,9 +4524,8 @@ msgid "This secret key will be used during testing mode"
 msgstr "Cette clé secrète sera utilisée en mode test"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:334:10
-#, fuzzy
 msgid "Omise Live Public Key"
-msgstr "Omise Live Public Key"
+msgstr "Clé publique Omise Live"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:338:21
 #, fuzzy
@@ -4583,9 +4559,8 @@ msgid "PayTM Integration Mode"
 msgstr "Mode d'intégration de PayTM"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:394:10
-#, fuzzy
 msgid "PayTM Test Merchant ID"
-msgstr "PayTM Test Merchant ID"
+msgstr "Identifiant du marchand test PayTM"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:398:21
 #, fuzzy
@@ -4598,9 +4573,8 @@ msgid "PayTM Test Secret Key"
 msgstr "Test PayTM Clé secrète"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:430:10
-#, fuzzy
 msgid "PayTM Live Merchant ID"
-msgstr "PayTM Live Merchant ID"
+msgstr "Identifiant de marchand PayTM Live"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:434:21
 #, fuzzy
@@ -4643,7 +4617,7 @@ msgstr "Nom de ce déploiement. Sera utilisé dans l'ensemble de cette applicati
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:31:6
 msgid "Tagline"
-msgstr "Tagline"
+msgstr "Slogan"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:36:4
 #, fuzzy
@@ -4703,11 +4677,11 @@ msgstr "Clé secrète de Google reCAPTCHA"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:2:2
 msgid "Mail Settings"
-msgstr "Paramètres Mail"
+msgstr "Paramètres courriel"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:6:4
 msgid "From Email"
-msgstr "Depuis eMail"
+msgstr "Depuis le courriel"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:12:4
 msgid "From Name"
@@ -4719,7 +4693,7 @@ msgstr "Frontend Url"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:24:18
 msgid "Disable email"
-msgstr "Désactiver email"
+msgstr "Désactiver le courriel"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:27:18
 msgid "SMTP"
@@ -4774,29 +4748,25 @@ msgid "Sendgrid Token"
 msgstr "Jeton Sendgrid"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings/test-email-form.hbs:5:6
-#, fuzzy
 msgid "Send Test Email"
-msgstr "Envoyer un e-mail de test"
+msgstr "Envoyer un courriel de test"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings/test-email-form.hbs:10:42
-#, fuzzy
 msgid "Recipient E-mail"
-msgstr "E-mail du destinataire"
+msgstr "Destinataire courriel"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings/test-email-form.hbs:12:12
-#, fuzzy
 msgid "Test"
 msgstr "Test"
 
 #: app/templates/components/forms/admin/settings/system/order-expiry-form.hbs:2:2
-#, fuzzy
 msgid "Order Expiry Time"
 msgstr "Délai d'expiration de la commande"
 
 #: app/templates/components/forms/admin/settings/system/order-expiry-form.hbs:4:4
-#, fuzzy
 msgid "Set registration time limit for your order in minutes"
-msgstr "Fixez le délai d'enregistrement de votre commande en minutes"
+msgstr ""
+"Définissez le délai d'enregistrement de votre commande en quelques minutes"
 
 #: app/templates/components/forms/admin/settings/system/order-expiry-form.hbs:8:26
 #, fuzzy
@@ -4906,9 +4876,8 @@ msgid "Secret"
 msgstr "Secret"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:3:4
-#, fuzzy
 msgid "Add Fee Settings for the event invoices"
-msgstr "Ajouter des paramètres de frais pour les factures de l'événement"
+msgstr "Ajouter des paramètres de frais pour les factures d'évènements"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:7:6
 #, fuzzy
@@ -5079,7 +5048,7 @@ msgstr "Vous avez été enregistré. Merci de vous connecter pour continuer."
 #: app/templates/components/forms/login-form.hbs:22:47
 #: app/templates/components/forms/reset-password-form.hbs:43:49
 msgid "Email ID"
-msgstr "Identifiant Email"
+msgstr "Identifiant courriel"
 
 #: app/templates/components/forms/login-form.hbs:42:75
 #: app/templates/components/forms/orders/guest-order-form.hbs:23:107
@@ -5126,15 +5095,15 @@ msgstr "Numéro d'identification fiscale ou d'entreprise"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:7:24
 msgid "Please enter your email address to continue."
-msgstr "Merci de saisir votre adresse email pour continuer."
+msgstr "Merci de saisir votre adresse courriel pour continuer."
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:10:102
 msgid "Email Address"
-msgstr "Adresse email"
+msgstr "Adresse courriel"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:17:31
 msgid "You have previously registered with this email address."
-msgstr "Vous vous êtes déjà enregistré avec cette adresse email."
+msgstr "Vous vous êtes déjà enregistré·e avec cette adresse courriel."
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:19:45
 msgid "Please enter your password to continue."
@@ -5332,9 +5301,8 @@ msgstr "Aucun orateur existant. Ajouter un orateur."
 
 #: app/templates/components/forms/session-speaker-form.hbs:151:27
 #: app/templates/components/forms/session-speaker-form.hbs:269:25
-#, fuzzy
 msgid "Do not require email for this speaker."
-msgstr "Il n'est pas nécessaire d'envoyer un courriel à cet orateur."
+msgstr "Ne nécessite pas de courriel pour ce conférencier."
 
 #: app/templates/components/forms/session-speaker-form.hbs:182:23
 #: app/templates/components/forms/session-speaker-form.hbs:300:21
@@ -5418,9 +5386,14 @@ msgid "Information About Attendee Form"
 msgstr "Formulaire d'information sur les participants"
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:24:8
-#, fuzzy
 msgid "The attendee form by default collects the name and email of an attendee. You also have the option to collect additional information such as contact data, position, organization and more. This information will be available together with the ticket information in a CSV file in the ticket section of your event."
-msgstr "Le formulaire des participants recueille par défaut le nom et l'adresse électronique d'un participant. Vous avez également la possibilité de collecter des informations supplémentaires telles que les coordonnées, le poste, l'organisation et autres. Ces informations seront disponibles avec les informations relatives aux billets dans un fichier CSV dans la section des billets de votre événement."
+msgstr ""
+"Le formulaire de participant recueille par défaut le nom et l'adresse "
+"courriel d'un participant. Vous avez également la possibilité de collecter "
+"des informations supplémentaires telles que les coordonnées, le poste, "
+"l'organisation et autres. Ces informations seront disponibles avec les "
+"informations relatives aux billets dans un fichier CSV dans la section des "
+"billets de votre évènement."
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:32:6
 #, fuzzy
@@ -5460,9 +5433,8 @@ msgid "Event Image"
 msgstr "Image de l'évènement"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:129:14
-#, fuzzy
 msgid "Select Event Header Image"
-msgstr "Sélectionnez l'image de l'en-tête de l'événement"
+msgstr "Sélectionnez l'image d'en-tête d'évènement"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:130:19
 #, fuzzy
@@ -5521,9 +5493,10 @@ msgid "Quantity"
 msgstr "Quantité"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:209:12
-#, fuzzy
 msgid "You don't have any tickets added. Please add atleast one ticket to publish your event."
-msgstr "Vous n'avez pas de billets ajoutés. Veuillez ajouter au moins un billet pour publier votre événement."
+msgstr ""
+"Vous n'avez ajouté aucun billet. Veuillez ajouter au moins un billet pour "
+"publier votre évènement."
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:218:8
 msgid "Free Ticket"
@@ -5864,7 +5837,7 @@ msgstr "Modifier le rôle"
 #: app/templates/components/modals/add-user-role-modal.hbs:8:8
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:11:8
 msgid "User Email"
-msgstr "Email utilisateur"
+msgstr "Courriel de l'utilisateur"
 
 #: app/templates/components/modals/add-user-role-modal.hbs:14:8
 msgid "User role"
@@ -5951,14 +5924,12 @@ msgid "Origin information"
 msgstr "Information sur l'origine"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:2:2
-#, fuzzy
 msgid "You are transferring this event. This action cannot be undone."
-msgstr "Vous transférez cet événement. Cette action ne peut être annulée."
+msgstr "Vous transférez cet évènement. Cette action ne peut pas être annulée."
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:4:4
-#, fuzzy
 msgid "All the event rights will be transferred to another user"
-msgstr "Tous les droits de l'événement seront transférés à un autre utilisateur"
+msgstr "Tous les droits d'évènement seront transférés à un autre utilisateur"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:16:25
 #, fuzzy
@@ -6076,19 +6047,20 @@ msgid "Share this event"
 msgstr "Partager l'évènement"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:2:2
-#, fuzzy
 msgid "Are you sure you would like to transfer this event?"
-msgstr "Êtes-vous sûr de vouloir transférer cet événement ?"
+msgstr "Êtes-vous sûr·e de vouloir transférer cet évènement ?"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:4:4
-#, fuzzy
 msgid "Transferring the event to another user will lead to you losing all the owner rights."
-msgstr "Le transfert de l'événement à un autre utilisateur vous fera perdre tous les droits de propriété."
+msgstr ""
+"Le transfert de l'évènement à un autre utilisateur vous fera perdre tous les "
+"droits de propriétaire."
 
 #: app/templates/components/modals/event-transfer-modal.hbs:11:8
-#, fuzzy
 msgid "Please enter the event-name to confirm that you want to transfer the event"
-msgstr "Veuillez entrer le nom de l'événement pour confirmer que vous souhaitez le transférer"
+msgstr ""
+"Veuillez saisir le nom de l'évènement pour confirmer que vous souhaitez "
+"transférer l'évènement"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:22:4
 #: app/templates/components/modals/paytm-payment-options.hbs:30:4
@@ -6161,24 +6133,29 @@ msgid "Are you sure?"
 msgstr "Êtes-vous sûr(e) ?"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:6:2
-#, fuzzy
 msgid "Incomplete event details"
-msgstr "Détails de l'événement incomplets"
+msgstr "Détails de l'évènement incomplets"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:11:7
-#, fuzzy
 msgid "This will unpublish your event. It will not be accessible to the public on the Internet anymore if you continue. The data of the event will still be available on your dashboard, but tickets, call for speakers or any other features will no longer be available online. Do you want to unpublish your event now?"
-msgstr "Votre événement sera ainsi inédit. Il ne sera plus accessible au public sur Internet si vous continuez. Les données de l'événement seront toujours disponibles sur votre tableau de bord, mais les billets, l'appel aux conférenciers ou tout autre élément ne seront plus disponibles en ligne. Vous souhaitez dépublier votre événement maintenant ?"
+msgstr ""
+"Ceci annulera la publication de votre évènement. Il ne sera plus accessible "
+"au public sur Internet si vous continuez. Les données de l'évènement seront "
+"toujours disponibles sur votre tableau de bord, mais les billets, les appels "
+"à des conférenciers ou toute autre fonctionnalité ne seront plus disponibles "
+"en ligne. Voulez-vous annuler la publication de votre évènement maintenant ?"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:14:6
-#, fuzzy
 msgid "This will publish the event and the event will be visible on the Internet. Please confirm you want to publish your event."
-msgstr "L'événement sera publié et visible sur Internet. Veuillez confirmer que vous souhaitez publier votre événement."
+msgstr ""
+"Ceci publiera l'évènement et l'évènement sera visible sur Internet. Veuillez "
+"confirmer que vous souhaitez publier votre évènement."
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:16:6
-#, fuzzy
 msgid "You need to add more details such as location and tickets to your event in order to publish it."
-msgstr "Vous devez ajouter d'autres détails tels que le lieu et les billets de votre événement afin de le publier."
+msgstr ""
+"Vous devez ajouter plus de détails tels que l'emplacement et les billets "
+"pour votre évènement afin de le publier."
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:23:3
 #, fuzzy
@@ -6265,14 +6242,16 @@ msgid "Are you sure you would like to delete your account?"
 msgstr "Êtes-vous sûr de vouloir supprimer votre compte ?"
 
 #: app/templates/components/modals/user-delete-modal.hbs:4:4
-#, fuzzy
 msgid "Deleting the account will delete all the data associated with it."
-msgstr "La suppression de l’événement supprimera toutes les données qui lui sont associées."
+msgstr ""
+"La suppression de l'évènement supprimera toutes les données qui lui sont "
+"associées."
 
 #: app/templates/components/modals/user-delete-modal.hbs:11:8
-#, fuzzy
 msgid "Please enter your Email ID to confirm that you want to delete the account"
-msgstr "Veuillez saisir votre adresse électronique pour confirmer que vous souhaitez supprimer le compte"
+msgstr ""
+"Veuillez saisir votre adresse courriel pour confirmer que vous souhaitez "
+"supprimer le compte"
 
 #: app/templates/components/nav-bar.hbs:37:68
 #: app/templates/components/side-bar.hbs:19:60
@@ -6383,9 +6362,8 @@ msgid "Your order expired because you did not complete registration in time."
 msgstr "Votre commande a expiré car vous n'avez pas terminé l'enregistrement à temps."
 
 #: app/templates/components/orders/order-summary.hbs:164:8
-#, fuzzy
 msgid "Please click on event link given on the right to order your tickets again."
-msgstr "Veuillez cliquer sur le lien de l'événement indiqué à droite pour commander à nouveau vos billets."
+msgstr "Merci de cliquer sur le lien pour commander vos billets de nouveau."
 
 #: app/templates/components/orders/order-summary.hbs:176:8
 #, fuzzy
@@ -6393,9 +6371,8 @@ msgid "Your order has been cancelled due to some unavoidable circumstances."
 msgstr "Votre commande a été annulée en raison de certaines circonstances inévitables."
 
 #: app/templates/components/orders/order-summary.hbs:178:8
-#, fuzzy
 msgid "Please contact the event organizer for further details."
-msgstr "Veuillez contacter l'organisateur de l'événement pour plus de détails."
+msgstr "Veuillez contacter l'organisateur de l'évènement pour plus de détails."
 
 #: app/templates/components/orders/ticket-holder.hbs:84:12
 #, fuzzy
@@ -6472,10 +6449,9 @@ msgstr "Orateurs"
 #: app/templates/components/public/side-menu.hbs:5:8
 #: app/templates/components/public/side-menu.hbs:19:8
 msgid "Info"
-msgstr "Info"
+msgstr "Infos"
 
 #: app/templates/components/public/side-menu.hbs:39:8
-#, fuzzy
 msgid "Calendar"
 msgstr "Calendrier"
 
@@ -6485,9 +6461,8 @@ msgid "Getting here"
 msgstr "Y aller"
 
 #: app/templates/components/public/social-links.hbs:6:79
-#, fuzzy
 msgid "Event Site"
-msgstr "Site de l'événement"
+msgstr "Site de l'évènement"
 
 #: app/templates/components/public/ticket-list.hbs:43:54
 #, fuzzy
@@ -6590,9 +6565,8 @@ msgid "entries"
 msgstr "entrées"
 
 #: app/templates/components/ui-table/cell/admin/sales/cell-action.hbs:1:20
-#, fuzzy
 msgid "Resend invoice mail"
-msgstr "Renvoyer le courrier de la facture"
+msgstr "Renvoyer le courriel de facturation"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:12:24
 #: app/templates/components/ui-table/cell/admin/users/cell-first-name.hbs:14:24
@@ -6608,9 +6582,10 @@ msgid "Are you sure you would like to delete this user?"
 msgstr "Etes-vous certains de vouloir supprimer cet utilisateur ?"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:3:4
-#, fuzzy
 msgid "User has administrative privileges, he has privileges of the following roles for all the events:"
-msgstr "L'utilisateur a des privilèges administratifs, il a les privilèges des rôles suivants pour tous les événements :"
+msgstr ""
+"L'utilisateur a des privilèges administratifs, il a les privilèges des rôles "
+"suivants pour tous les évènements :"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:5:46
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:32:133
@@ -6670,9 +6645,8 @@ msgid "No dates available."
 msgstr "Pas de dates disponible."
 
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:11:22
-#, fuzzy
 msgid "Event Dashboard"
-msgstr "Tableau de bord des événements"
+msgstr "Tableau de bord des évènements"
 
 #: app/templates/components/ui-table/cell/cell-roles.hbs:7:38
 msgid "Co-organizers"
@@ -6955,9 +6929,10 @@ msgid "Hide Ticket from the Public Events page"
 msgstr "Cacher ce billet sur la page des évènements publique"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:111:37
-#, fuzzy
 msgid "To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code."
-msgstr "Pour vendre des billets cachés, vous devez définir un code d'accès sous Tableau de bord des événements > Onglet Billets > Code d'accès."
+msgstr ""
+"Pour vendre des billets cachés, vous devez configurer un code d'accès sous "
+"Tableau de bord de l'évènement> onglet Billets> Code d'accès."
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:123:14
 #, fuzzy
@@ -7065,18 +7040,18 @@ msgid "You'll lose all the owner rights once the other user accepts the invitati
 msgstr "Vous perdrez tous les droits de propriété une fois que l'autre utilisateur aura accepté l'invitation à la propriété."
 
 #: app/templates/events/view/settings.hbs:15:10
-#, fuzzy
 msgid "Transfer Event"
-msgstr "Evénement de transfert"
+msgstr "Évènement de transfert"
 
 #: app/templates/events/view/settings.hbs:21:10
 msgid "Delete this event"
 msgstr "Supprimer cet évènement"
 
 #: app/templates/events/view/settings.hbs:24:10
-#, fuzzy
 msgid "Once you delete an event, you will lose all the data related to this event."
-msgstr "Lorsque vous supprimez un événement, vous perdez toutes les données relatives à cet événement."
+msgstr ""
+"Une fois que vous supprimez un évènement, vous perdrez toutes les données "
+"liées à cet évènement."
 
 #: app/templates/events/view/speakers.hbs:28:14
 msgid "Add Speaker"
@@ -7286,9 +7261,8 @@ msgid "Download Tickets"
 msgstr "Télécharger Tickets"
 
 #: app/templates/organizer-app.hbs:17:4
-#, fuzzy
 msgid "Open Event Organizer App"
-msgstr "Application pour l'organisation d'événements ouverts"
+msgstr "Ouvrir l'application Event Organizer"
 
 #: app/templates/organizer-app.hbs:41:72
 #, fuzzy
@@ -7296,9 +7270,8 @@ msgid "Organizer Android App"
 msgstr "Organisateur Android App"
 
 #: app/templates/organizer-app.hbs:46:10
-#, fuzzy
 msgid "Make your event success with Orga App"
-msgstr "Faites de votre événement un succès avec Orga App"
+msgstr "Réussissez votre évènement avec l'application Orga"
 
 #: app/templates/organizer-app.hbs:51:12
 #, fuzzy
@@ -7326,19 +7299,20 @@ msgid "Manage Efficiently"
 msgstr "Gérer efficacement"
 
 #: app/templates/organizer-app.hbs:70:12
-#, fuzzy
 msgid "Get Order, Event, Sales Statistics with Orga App on the go."
-msgstr "Obtenez des statistiques sur les commandes, les événements et les ventes grâce à l'application Orga."
+msgstr ""
+"Obtenez des statistiques de commande, d'évènements et de ventes avec "
+"l'application Orga en déplacement."
 
 #: app/templates/organizer-app.hbs:76:12
-#, fuzzy
 msgid "Ticket and Event"
-msgstr "Billets et événements"
+msgstr "Billet et évènement"
 
 #: app/templates/organizer-app.hbs:79:12
-#, fuzzy
 msgid "Manage and Create new Tickets or Events with the power of your touch on your phone"
-msgstr "Gérer et créer de nouveaux billets ou événements grâce à la puissance de votre téléphone"
+msgstr ""
+"Gérez et créez de nouveaux billets ou évènements avec la puissance de votre "
+"contact sur votre téléphone"
 
 #: app/templates/organizer-app.hbs:85:12
 #, fuzzy
@@ -7402,9 +7376,8 @@ msgid "Organized by"
 msgstr "Organisé par"
 
 #: app/templates/public/index.hbs:74:10
-#, fuzzy
 msgid "Online Event"
-msgstr "Événement en ligne"
+msgstr "Évènement en ligne"
 
 #: app/templates/public/index.hbs:87:10
 #, fuzzy
