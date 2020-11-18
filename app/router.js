@@ -108,6 +108,11 @@ Router.map(function() {
         this.route('edit', { path: '/:speaker_id/edit' });
         this.route('create');
       });
+      this.route('videoroom', function() {
+        this.route('list', { path: '/:status' });
+        this.route('edit', { path: '/:stream_id/edit' });
+        this.route('create');
+      });
       this.route('scheduler');
       this.route('team', function() {
         this.route('permissions');
