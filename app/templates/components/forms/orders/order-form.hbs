@@ -61,7 +61,7 @@
         </div>
         {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
-            <form class="field">
+            <div class="field">
               <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
               {{#if (is-input-field field.type) }}
                 {{#if field.isLongText}}
@@ -140,7 +140,7 @@
                   </div>
                 </UiDropdown>
               {{/if}}
-            </form>
+            </div>
           {{/if}}
         {{/each}}
       {{/each}}
