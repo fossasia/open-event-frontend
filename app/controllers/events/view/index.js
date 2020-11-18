@@ -15,7 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'name',
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
-        width           : 150
+        width           : 300
 
       },
       {
@@ -23,11 +23,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath     : 'type',
         cellComponent : 'ui-table/cell/cell-sponsor-sanitize',
         width         : 150
-      },
-      {
-        name          : 'Level',
-        valuePath     : 'level',
-        cellComponent : 'ui-table/cell/cell-sponsor-sanitize'
       }
     ];
   }
