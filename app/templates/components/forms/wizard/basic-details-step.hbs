@@ -6,6 +6,40 @@
       @id="name"
       @value={{this.data.event.name}} />
   </div>
+  <div class="three fields">
+    <div class="field">
+      <PowerSelect
+        @selected={{this.data.event.type}}
+        @allowClear={{true}}
+        @options={{this.data.types}}
+        @placeholder={{t 'Select Event Type'}}
+        @onChange={{action (mut this.data.event.type)}} as |type|>
+          {{type.name}}
+      </PowerSelect>
+    </div>
+    <br/>
+    <div class="field">
+      <PowerSelect
+        @selected={{this.data.event.topic}}
+        @allowClear={{true}}
+        @options={{this.data.topics}}
+        @placeholder={{t 'Select Event Topic'}}
+        @onChange={{action (mut this.data.event.topic)}} as |topic|>
+          {{topic.name}}
+      </PowerSelect>
+    </div>
+    <div class="field">
+      <PowerSelect
+        @selected={{this.data.event.subTopic}}
+        @allowClear={{true}}
+        @options={{this.subTopics}}
+        @placeholder={{t 'Select Event Sub-Topic'}}
+        @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
+          {{subTopic.name}}
+      </PowerSelect>
+    </div>
+  </div>
+  <br>
   <div class="ui secondary pointing menu">
     {{#each this.locationMenuItems as |item|}}
       <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
@@ -586,42 +620,6 @@
       </div>
     </div>
   {{/if}}
-  <div class="ui section divider"></div>
-  <div class="field">
-    <label>{{t 'Event Type'}}</label>
-    <PowerSelect
-      @selected={{this.data.event.type}}
-      @allowClear={{true}}
-      @options={{this.data.types}}
-      @placeholder={{t 'Select Event Type'}}
-      @onChange={{action (mut this.data.event.type)}} as |type|>
-        {{type.name}}
-    </PowerSelect>
-  </div>
-  <div class="field">
-    <label>{{t 'Event Topic'}}</label>
-    <PowerSelect
-      @selected={{this.data.event.topic}}
-      @allowClear={{true}}
-      @options={{this.data.topics}}
-      @placeholder={{t 'Select Event Topic'}}
-      @onChange={{action (mut this.data.event.topic)}} as |topic|>
-        {{topic.name}}
-    </PowerSelect>
-  </div>
-  <div class="field">
-    <label>{{t 'Event Sub-topic'}}</label>
-    <PowerSelect
-      @selected={{this.data.event.subTopic}}
-      @allowClear={{true}}
-      @options={{this.subTopics}}
-      @placeholder={{t 'Select Event Sub-Topic'}}
-      @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
-        {{subTopic.name}}
-    </PowerSelect>
-  </div>
-  <br>
-  
 </form>
 
 <Modals::TaxInfoModal
