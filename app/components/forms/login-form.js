@@ -2,6 +2,8 @@ import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { action } from '@ember/object';
+import { validEmail } from 'open-event-frontend/utils/validators';
+
 
 @classic
 export default class LoginForm extends Component.extend(FormMixin) {
@@ -25,7 +27,8 @@ export default class LoginForm extends Component.extend(FormMixin) {
               prompt : this.l10n.t('Please enter your email ID')
             },
             {
-              type   : 'email',
+              type   : 'regExp',
+              value  : validEmail,
               prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
