@@ -314,6 +314,7 @@
       <h4>{{t 'Add Payment Details'}}</h4>
       <div class="two fields">
       <CountryDropdown
+        @required={{true}}
         @options={{this.paymentCountries}}
         @placeholder={{'Select country'}}
         @val={{this.data.event.paymentCountry}} />

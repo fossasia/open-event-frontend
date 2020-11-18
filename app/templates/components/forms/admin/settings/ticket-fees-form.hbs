@@ -53,6 +53,7 @@
     <div class="ui five column very relaxed grid">
       <div class="ui field three wide column">
         <CountryDropdown
+          @required={{true}}
           @options={{this.paymentCountries}}
           @placeholder={{'Select country'}}
           @val={{ticketFee.country}} />

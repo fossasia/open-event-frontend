@@ -46,6 +46,7 @@
     <Input @type="email" @id="adminBillingPaypalEmail" @value={{this.model.adminBillingPaypalEmail}} />
   </div>
   <CountryDropdown
+    @required={{true}}
     @options={{this.countries}}
     @placeholder={{'Country'}}
     @val={{this.model.adminBillingCountry}} />
