@@ -79,7 +79,7 @@ export default Component.extend(FormMixin, {
   actions: {
     submit(data) {
       this.onValid(() => {
-        this.save(data);
+        this.sendAction('save', data);
       });
     },
     deletePage(data) {
