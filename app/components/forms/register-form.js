@@ -58,7 +58,7 @@ export default Component.extend(FormMixin, {
       this.onValid(() => {
         this.set('errorMessage', null);
         this.set('isLoading', true);
-        this.submit();
+        this.sendAction('submit');
       });
     },
 
