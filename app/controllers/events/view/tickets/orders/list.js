@@ -11,7 +11,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'identifier',
         extraValuePaths : ['user', 'status', 'paidVia', 'completedAt', 'createdAt'],
         cellComponent   : 'ui-table/cell/events/view/tickets/orders/cell-order',
-        width           : 200,
+        width           : 170,
         actions         : {
           completeOrder      : this.completeOrder.bind(this),
           deleteOrder        : this.deleteOrder.bind(this),
@@ -20,7 +20,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Date And Time',
+        name            : 'First Name',
+        valuePath       : 'user.firstName',
+        width           : 50
+      },
+      {
+        name            : 'Last Name',
+        valuePath       : 'user.lastName',
+        width           : 50
+      },
+      {
+        name            : 'Date and Time',
         valuePath       : 'completedAt',
         extraValuePaths : ['createdAt'],
         cellComponent   : 'ui-table/cell/events/view/tickets/orders/cell-date',
@@ -35,7 +45,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['discountCode', 'event'],
         cellComponent   : 'ui-table/cell/events/view/tickets/orders/cell-amount',
         headerComponent : 'tables/headers/sort',
-        width           : 100,
+        width           : 60,
         isSortable      : true
       },
       {
@@ -46,7 +56,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name      : 'Buyer/Registration Contact',
         valuePath : 'user.email',
-        width     : 140
+        width     : 100
 
       }
     ];
