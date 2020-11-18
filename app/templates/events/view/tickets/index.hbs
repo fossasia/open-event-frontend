@@ -4,7 +4,7 @@
   </div>
   <div class="ui {{if this.device.isMobile 'horizontal'}} three statistics">
     <div class="statistic"><div class="value">{{this.totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{round-up this.totalAmount}}</div><div class="label">{{t 'Sales'}}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}}</div></div>
+    <div class="statistic"><div class="value">{{ceil this.totalAmount}}</div><div class="label">{{t 'Sales'}}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}}</div></div>
     <div class="statistic"><div class="value">{{this.totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
@@ -31,7 +31,7 @@
         </LinkTo>
         <td class="right aligned">{{this.model.orderStats.tickets.cancelled}}</td>
         <td class="right aligned">{{this.model.orderStats.orders.cancelled}}</td>
-        <td class="right aligned">{{round-up this.model.orderStats.sales.cancelled}}</td>
+        <td class="right aligned">{{ceil this.model.orderStats.sales.cancelled}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="cancelled">
             {{t 'View orders'}}
@@ -48,7 +48,7 @@
         </LinkTo>
         <td class="right aligned">{{this.model.orderStats.tickets.pending}}</td>
         <td class="right aligned">{{this.model.orderStats.orders.pending}}</td>
-        <td class="right aligned">{{round-up this.model.orderStats.sales.pending}}</td>
+        <td class="right aligned">{{ceil this.model.orderStats.sales.pending}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="pending">
             {{t 'View orders'}}
@@ -65,7 +65,7 @@
         </LinkTo>
         <td class="right aligned">{{this.model.orderStats.tickets.expired}}</td>
         <td class="right aligned">{{this.model.orderStats.orders.expired}}</td>
-        <td class="right aligned">{{round-up this.model.orderStats.sales.expired}}</td>
+        <td class="right aligned">{{ceil this.model.orderStats.sales.expired}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="expired">
             {{t 'View orders'}}
@@ -82,7 +82,7 @@
         </LinkTo>
         <td class="right aligned">{{this.model.orderStats.tickets.placed}}</td>
         <td class="right aligned">{{this.model.orderStats.orders.placed}}</td>
-        <td class="right aligned">{{round-up this.model.orderStats.sales.placed}}</td>
+        <td class="right aligned">{{ceil this.model.orderStats.sales.placed}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.list" @model="placed">
             {{t 'View orders'}}
@@ -99,7 +99,7 @@
         </LinkTo>
         <td class="right aligned">{{this.model.orderStats.tickets.completed}}</td>
         <td class="right aligned">{{this.model.orderStats.orders.completed}}</td>
-        <td class="right aligned">{{round-up this.model.orderStats.sales.completed}}</td>
+        <td class="right aligned">{{ceil this.model.orderStats.sales.completed}}</td>
         <td>
           <LinkTo @route="events.view.tickets.orders.index">
             {{t 'View orders'}}
