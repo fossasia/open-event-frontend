@@ -313,7 +313,7 @@
     <div class="field">
       <h4>{{t 'Add Payment Details'}}</h4>
       <div class="two fields">
-        <div class="field">
+        <form class="field">
           <label class="required">{{t 'Select country'}}</label>
           <UiDropdown
             @class="search selection"
@@ -336,7 +336,7 @@
               {{/each}}
             </div>
           </UiDropdown>
-        </div>
+        </form>
         <div class="field">
           <label class="required">{{t 'Select currency'}}</label>
           <UiDropdown

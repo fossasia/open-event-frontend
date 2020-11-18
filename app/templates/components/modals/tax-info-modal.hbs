@@ -4,7 +4,7 @@
 </div>
 <div class="y-scrollable scrollable-modal content">
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
-    <div class="field">
+    <form class="field">
       <label class="required">{{t 'Choose country'}}</label>
       <UiDropdown @class="search selection" @selected={{this.tax.country}} @forceSelection={{false}} @fullTextSearch={{true}}>
         <Input @type="hidden" @autocomplete="tax-country" @id="tax_country" @value={{this.tax.country}} />
@@ -19,7 +19,7 @@
           {{/each}}
         </div>
       </UiDropdown>
-    </div>
+    </form>
     <div class="field">
       <label class="required">{{t 'Tax name'}}</label>
       <Input @type="text" @id="tax_name" @value={{this.tax.name}} />

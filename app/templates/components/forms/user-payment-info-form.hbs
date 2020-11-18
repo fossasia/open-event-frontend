@@ -54,7 +54,7 @@
       @id="state"
       @value={{this.userBillingInfo.billingState}} />
   </div>
-  <div class="field">
+  <form class="field">
     <label >{{t 'Country'}}</label>
     <UiDropdown
       @class="search selection"
@@ -63,9 +63,9 @@
       @fullTextSearch={{true}}>
       <Input
         @type="hidden"
+        @autocomplete="no"
         @id="country"
-        @value={{this.userBillingInfo.billingCountry}} 
-        @autocomplete="off" />
+        @value={{this.userBillingInfo.billingCountry}} />
       <i class="dropdown icon"></i>
       <div class="default text">{{t 'Select country'}}</div>
       <div class="menu">
@@ -77,7 +77,7 @@
         {{/each}}
       </div>
     </UiDropdown>
-  </div>
+  </form>
   <div class="field">
     <label for="taxID">{{t 'Tax ID or Business ID'}}</label>
     <Input

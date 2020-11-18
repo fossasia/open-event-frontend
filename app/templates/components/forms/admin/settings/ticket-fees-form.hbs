@@ -51,7 +51,7 @@
 
   {{#each this.ticketFees as |ticketFee|}}
     <div class="ui five column very relaxed grid">
-      <div class="ui field three wide column">
+      <form class="ui field three wide column">
         <label class="required">{{t 'Select country'}}</label>
         <UiDropdown
           @class="search selection"
@@ -73,7 +73,7 @@
             {{/each}}
           </div>
         </UiDropdown>
-      </div>
+      </form>
       <div class="ui field four wide column">
         <label class="required">{{t 'Select currency'}}</label>
         <UiDropdown
