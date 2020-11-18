@@ -145,7 +145,7 @@ export default Component.extend(FormMixin, {
     },
     submit(data) {
       this.onValid(() => {
-        this.save(data);
+        this.sendAction('save', data);
       });
     },
     copiedText() {
