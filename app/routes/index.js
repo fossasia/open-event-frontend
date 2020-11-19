@@ -215,6 +215,15 @@ export default class IndexRoute extends Route {
           op   : 'ge',
           val  : params.start_date
         }
+      },
+      {
+        name : 'speakers-call',
+        op   : 'has',
+        val  : {
+          name : 'announcement',
+          op   : 'ne',
+          val  : null
+        }
       }
     ];
 
@@ -229,9 +238,10 @@ export default class IndexRoute extends Route {
         filter  : filterOptions
       }),
       callForSpeakersEvents: this.store.query('event', {
-        sort    : 'starts-at',
-        include : 'event-topic,event-sub-topic,event-type,speakers-call',
-        filter  : callForSpeakersFilter
+        sort         : 'starts-at',
+        include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter       : callForSpeakersFilter,
+        'page[size]' : 12
       })
     });
   }
