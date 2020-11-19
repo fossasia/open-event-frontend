@@ -57,6 +57,7 @@ export default Component.extend(FormMixin, {
       if (diff > 0) {
         this.timer(willExpireAt, orderIdentifier);
       } else {
+        this.data.set('status', 'expired')
         this.data.reload();
         this.router.transitionTo('orders.expired', orderIdentifier);
       }
