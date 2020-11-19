@@ -58,7 +58,7 @@
 
     <div class="field">
       <label class="required">{{t 'Microlocations or Virtual Online Rooms'}}</label>
-      {{#each this.microlocations as |microlocation|}}
+      {{#each this.microlocations as |microlocation index|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
             <Input @type="text" @value={{microlocation.name}} placeholder="Name" />
@@ -71,10 +71,22 @@
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'microlocation'}}>
+              <button class="ui icon primary button" type="button" {{action 'addItem' 'microlocation' this.microlocations.length}}>
                 <i class="plus icon"></i>
               </button>
             </div>
+          </div>
+          <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
+            {{#if (not-eq index 0)}}
+              <button type="button" class="ui button" {{action "moveItem" microlocation "microlocations" "up"}} data-content="Move ticket up">
+                <i class="up arrow icon"></i>
+              </button>
+            {{/if}}
+            {{#if (not-eq microlocation.position (dec this.microlocations.length))}}
+              <button type="button" class="ui button" {{action "moveItem" microlocation "microlocations" "down"}} data-content="Move ticket down">
+                <i class="down arrow icon"></i>
+              </button>
+            {{/if}}
           </div>
         </div>
       {{/each}}

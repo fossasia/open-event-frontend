@@ -139,8 +139,8 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     return grouped;
   }),
 
-  microlocations: computed('data.microlocations.@each.isDeleted', function() {
-    return this.data.event.microlocations.filterBy('isDeleted', false);
+  microlocations: computed('data.microlocations.@each.isDeleted', 'data.microlocations.@each.position', function() {
+    return this.data.event.microlocations.sortBy('position').filterBy('isDeleted', false);
   }),
 
   complexCustomForms: computed('data.customForms.@each.isComplex', function() {
@@ -175,7 +175,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   },
 
   actions: {
-    addItem(type) {
+    addItem(type, position) {
       switch (type) {
         case 'sessionType':
           this.data.sessionTypes.addObject(this.store.createRecord('session-type'));
@@ -184,7 +184,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           this.data.tracks.addObject(this.store.createRecord('track'));
           break;
         case 'microlocation':
-          this.data.microlocations.addObject(this.store.createRecord('microlocation'));
+          this.data.microlocations.addObject(this.store.createRecord('microlocation', {position}));
           break;
       }
     },
@@ -199,6 +199,12 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     },
     onChange() {
       this.onValid(() => {});
+    },
+    moveItem(item, type, direction) {
+      const index = item.get('position');
+      const otherItem = this.data.event.get(type).find(otherItem => otherItem.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
+      otherItem.set('position', index);
+      item.set('position', direction === 'up' ? (index - 1) : (index + 1));
     }
   }
 });
