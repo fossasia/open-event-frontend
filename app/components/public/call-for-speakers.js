@@ -14,12 +14,12 @@ export default class CallForSpeakers extends Component {
       this.router.transitionTo('public.cfs.new-speaker');
     } else {
       this.flashMessages.add({
-        message           : 'You need to login to perform this action.',
+        message           : 'In order to add Speaker details you need to login',
         type              : 'info',
         preventDuplicates : true
       });
       this.router.transitionTo('login');
-      // / this.set('isLoginModalOpen', true);
+      //this.set('isLoginModalOpen', true);
     }
   }
 
