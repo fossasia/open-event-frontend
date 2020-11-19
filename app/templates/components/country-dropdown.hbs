@@ -1,23 +1,23 @@
 <form class="field">
-<label class={{if @required 'required'}}>{{t @placeholder}}</label>
-<UiDropdown
-    @class="search selection"
-    @selected={{@val}}
-    @forceSelection={{false}}
-    @fullTextSearch={{true}}>
+    <label class={{if @required 'required'}}>{{t @placeholder}}</label>
+    <UiDropdown
+        @class="search selection"
+        @selected={{@val}}
+        @forceSelection={{false}}
+        @fullTextSearch={{true}}>
     <Input
-    @type="hidden"
-    @autocomplete="no"
-    @value={{@val}} />
+        @type="hidden"
+        @autocomplete="no"
+        @value={{@val}} />
     <i class="dropdown icon"></i>
     <div class="default text">{{t 'Select country'}}</div>
     <div class="menu">
-    {{#each (if @paymentCountries this.paymentCountries this.countries) as |country|}}
-        <div class="item" data-value="{{country.name}}">
-        <i class="{{lowercase country.code}} flag"></i>
-        {{country.name}}
-        </div>
-    {{/each}}
+        {{#each (if @paymentCountries this.paymentCountries this.countries) as |country|}}
+            <div class="item" data-value="{{country.name}}">
+            <i class="{{lowercase country.code}} flag"></i>
+            {{country.name}}
+            </div>
+        {{/each}}
     </div>
-</UiDropdown>
+    </UiDropdown>
 </form>
