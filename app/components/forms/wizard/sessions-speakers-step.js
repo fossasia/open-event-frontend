@@ -184,7 +184,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           this.data.tracks.addObject(this.store.createRecord('track'));
           break;
         case 'microlocation':
-          this.data.microlocations.addObject(this.store.createRecord('microlocation', {position}));
+          this.data.microlocations.addObject(this.store.createRecord('microlocation', { position }));
           break;
       }
     },
