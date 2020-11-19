@@ -6,7 +6,6 @@
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
     <CountryDropdown
       @required={{true}}
-      @options={{this.countries}}
       @placeholder={{'Choose country'}}
       @val={{this.tax.country}} />
     <div class="field">

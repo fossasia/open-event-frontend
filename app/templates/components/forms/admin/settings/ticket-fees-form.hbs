@@ -54,7 +54,7 @@
       <div class="ui field three wide column">
         <CountryDropdown
           @required={{true}}
-          @options={{this.paymentCountries}}
+          @paymentCountries={{true}}
           @placeholder={{'Select country'}}
           @val={{ticketFee.country}} />
       </div>
