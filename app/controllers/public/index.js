@@ -105,7 +105,12 @@ export default class IndexController extends Controller {
     }
     if (!this.session.isAuthenticated) {
       this.set('userExists', false);
-      this.set('isLoginModalOpen', true);
+      this.flashMessages.add({
+        message           : 'In order to buy tickets you need to login. If you have not registered yet, please create an account first. Thank you!',
+        type              : 'info',
+      });
+      this.transitionToRoute('login');
+      // this.set('isLoginModalOpen', true);
       return;
     }
     this.send('save');
