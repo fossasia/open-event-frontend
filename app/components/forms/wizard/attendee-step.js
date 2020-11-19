@@ -25,3 +25,4 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     }
   }
 });
+

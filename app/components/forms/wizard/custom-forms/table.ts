@@ -3,7 +3,9 @@ import Component from '@glimmer/component';
 interface CustomForm { isComplex: boolean }
 
 interface Args {
-  fields: CustomForm[]
+  fields: CustomForm[],
+  removeField: (field: any) => void,
+  updateField: (field: any) => void
  }
 
 export default class CustomFormTable extends Component<Args> {
