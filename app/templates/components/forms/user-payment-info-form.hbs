@@ -55,9 +55,8 @@
       @value={{this.userBillingInfo.billingState}} />
   </div>
   <CountryDropdown
-    @placeholder={{'Country'}}
-    @val={{this.userBillingInfo.billingCountry}}
-    @id={{'country'}} />
+    @placeholder={{t 'Country'}}
+    @val={{this.userBillingInfo.billingCountry}} />
   <div class="field">
     <label for="taxID">{{t 'Tax ID or Business ID'}}</label>
     <Input

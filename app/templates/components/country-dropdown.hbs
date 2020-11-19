@@ -1,5 +1,5 @@
 <form class="field">
-    <label class={{if @required 'required'}}>{{t @placeholder}}</label>
+    <label class={{if @required 'required'}}>{{@placeholder}}</label>
     <UiDropdown
         @class="search selection"
         @selected={{@val}}
