@@ -53,10 +53,12 @@ export default Component.extend(FormMixin, {
     run.later(() => {
       const currentTime = moment();
       const diff = moment.duration(willExpireAt.diff(currentTime));
-      this.set('getRemainingTime', moment.utc(diff.asMilliseconds()).format('mm:ss'));
       if (diff > 0) {
+        this.set('getRemainingTime', moment.utc(diff.asMilliseconds()).format('mm:ss'));
         this.timer(willExpireAt, orderIdentifier);
       } else {
+        this.set('getRemainingTime', '00:00');
+        this.data.set('status', 'expired');
         this.data.reload();
         this.router.transitionTo('orders.expired', orderIdentifier);
       }
