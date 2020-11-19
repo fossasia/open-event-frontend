@@ -80,6 +80,7 @@ export const validPhoneNumber = new RegExp(
 );
 
 export const validEmail = new RegExp(
+  /* eslint-disable-next-line no-control-regex*/
   '[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'
 );
 
