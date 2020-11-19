@@ -78,12 +78,12 @@
           </div>
           <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
             {{#if (not-eq index 0)}}
-              <button type="button" class="ui button" {{action "moveItem" microlocation "microlocations" "up"}} data-content="Move ticket up">
+              <button type="button" class="ui button" {{action "moveItem" microlocation "microlocations" "up"}} data-content="Move room up">
                 <i class="up arrow icon"></i>
               </button>
             {{/if}}
             {{#if (not-eq microlocation.position (dec this.microlocations.length))}}
-              <button type="button" class="ui button" {{action "moveItem" microlocation "microlocations" "down"}} data-content="Move ticket down">
+              <button type="button" class="ui button" {{action "moveItem" microlocation "microlocations" "down"}} data-content="Move room down">
                 <i class="down arrow icon"></i>
               </button>
             {{/if}}
