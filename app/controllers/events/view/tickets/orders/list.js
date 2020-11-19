@@ -20,14 +20,14 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'First Name',
-        valuePath       : 'user.firstName',
-        width           : 50
+        name      : 'First Name',
+        valuePath : 'user.firstName',
+        width     : 50
       },
       {
-        name            : 'Last Name',
-        valuePath       : 'user.lastName',
-        width           : 50
+        name      : 'Last Name',
+        valuePath : 'user.lastName',
+        width     : 50
       },
       {
         name            : 'Date and Time',
