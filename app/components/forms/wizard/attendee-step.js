@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   actions: {
-    removeField: function (field) {
+    removeField(field) {
       this.data.customForms.removeObject(field);
     }
   }
