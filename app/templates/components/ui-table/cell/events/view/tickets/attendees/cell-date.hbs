@@ -1,0 +1,5 @@
+{{#if (eq @record.status 'completed')}}
+  {{moment-format @record.completedAt 'MMMM DD, YYYY - hh:mm A'}}
+{{else}}
+  {{moment-format @record.createdAt 'MMMM DD, YYYY - hh:mm A'}}
+{{/if}}

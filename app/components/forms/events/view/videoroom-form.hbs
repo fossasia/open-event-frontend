@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="ui grid">
+    <div class="ui left aligned sixteen wide mobile eight wide computer column">
+      <h3 class="ui header">
+        {{t 'Video Channel'}}
+      </h3>
+    </div>
+    <div class="ui right aligned sixteen wide mobile eight wide computer column">
+      <button class='ui labeled icon blue button {{if this.jitsiButtonLoading 'loading' }}' {{action 'addJitsi'}}>
+        <i class="video icon"></i>
+        {{t 'Add Jitsi Room'}}
+      </button>
+    </div>
+  </div>
+</div>
+<br>
+<form class="ui form {{if this.isLoading 'loading'}}">
+  <div class="field">
+    <label class="required">{{t 'Room'}}</label>
+    <input type="hidden" id="rooms">
+    <UiDropdown
+      @class="fluid selection"
+      @selected={{this.room}}
+      @onChange={{action this.setRoom}} as |execute mapper|>
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Rooms'}}
+      </div>
+      <div class="menu">
+        {{#each this.rooms as |room|}}
+          {{#if room.name}}
+            <div data-value="{{map-value mapper room}}" class="item">
+              {{room.name}}
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Video Room URL'}}</label>
+    <Widgets::Forms::LinkField
+      @inputId="url"
+      @value={{this.data.stream.url}}
+      @onChange={{action (mut this.data.stream.url)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Pin'}}</label>
+    <Input
+      @value={{this.data.stream.password}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Additional Information'}}</label>
+    <Textarea
+      @value={{this.data.stream.additionalInformation}} />
+  </div>
+  <div class="ui divider"></div>
+  <div class="grouped fields">
+    <label>{{t 'Access'}}</label>
+    <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Organization Team'}} /></div>
+    <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Speakers'}} /></div>
+    <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Attendees'}} /></div>
+    <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'All logged in users'}} /></div>
+    <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'Public (no restriction)'}} /></div>
+  </div>
+  <div class="ui hidden divider"></div>
+  <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+</form>
