@@ -80,7 +80,7 @@ export const validPhoneNumber = new RegExp(
 );
 
 export const validEmail = new RegExp(
-  /^(([^<>()[\]\\.,;\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  '[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'
 );
 
 export const isValidUrl = str => {
