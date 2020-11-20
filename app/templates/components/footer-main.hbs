@@ -93,6 +93,11 @@
               <i class="telegram icon"></i> {{t 'Telegram'}}
             </a>
           {{/if}}
+          {{#if this.socialLinks.weblateUrl}}
+            <a class="item" href="{{this.socialLinks.weblateUrl}}" target="_blank" rel="noopener noreferrer">
+              <Icons::Weblate /> {{t 'Weblate'}}
+            </a>
+          {{/if}}
         </div>
       </div>
     </div>
