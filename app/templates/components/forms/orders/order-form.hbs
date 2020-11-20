@@ -279,8 +279,8 @@
         {{t 'Acknowledgement'}}
       </h4>
       <p>
-        {{t 'By clicking "{{orderState}}", I acknowledge that I have read and that I agree with the ' 
-        orderState=(if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now"))}}  
+        {{t 'By clicking "{{orderState}}"' orderState=(if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now"))}}
+        {{', I acknowledge that I have read and that I agree with the '}} 
         <a href='/terms'>terms of services</a>{{t ' and ' }}<a href='/privacy'>privacy policy</a> {{t ' on this website.'}}      
       </p>
       <div class="center aligned">
