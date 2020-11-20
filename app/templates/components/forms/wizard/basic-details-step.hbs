@@ -14,7 +14,7 @@
         @options={{this.data.types}}
         @placeholder={{t 'Select Event Type'}}
         @onChange={{action (mut this.data.event.type)}} as |type|>
-          {{type.name}}
+          {{t-var type.name}}
       </PowerSelect>
     </div>
     <br/>
@@ -25,7 +25,7 @@
         @options={{this.data.topics}}
         @placeholder={{t 'Select Event Topic'}}
         @onChange={{action (mut this.data.event.topic)}} as |topic|>
-          {{topic.name}}
+          {{t-var topic.name}}
       </PowerSelect>
     </div>
     <div class="field">
@@ -35,7 +35,7 @@
         @options={{this.subTopics}}
         @placeholder={{t 'Select Event Sub-Topic'}}
         @onChange={{action (mut this.data.event.subTopic)}} as |subTopic|>
-          {{subTopic.name}}
+          {{t-var subTopic.name}}
       </PowerSelect>
     </div>
   </div>
@@ -43,7 +43,7 @@
   <div class="ui secondary pointing menu">
     {{#each this.locationMenuItems as |item|}}
       <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
-        {{item}}
+        {{t-var item}}
       </a>
     {{/each}}
   </div>

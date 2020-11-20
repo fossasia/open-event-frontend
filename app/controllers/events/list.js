@@ -7,7 +7,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'Name',
+        name            : this.l10n.t('Name'),
         valuePath       : 'name',
         width           : 150,
         isSortable      : true,
@@ -19,7 +19,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Date',
+        name            : this.l10n.t('Date'),
         valuePath       : 'startsAt',
         extraValuePaths : ['endsAt', 'timezone'],
         isSortable      : true,
@@ -29,24 +29,24 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
       },
       {
-        name            : 'Roles',
+        name            : this.l10n.t('Roles'),
         valuePath       : 'owner',
         extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
         width           : 180,
         cellComponent   : 'ui-table/cell/cell-roles'
       },
       {
-        name          : 'Sessions',
+        name          : this.l10n.t('Sessions'),
         valuePath     : 'generalStatistics',
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
       },
       {
-        name          : 'Speakers',
+        name          : this.l10n.t('Speakers'),
         valuePath     : 'generalStatistics',
         cellComponent : 'ui-table/cell/cell-speakers-dashboard'
       },
       {
-        name          : 'Public URL',
+        name          : this.l10n.t('Public URL'),
         valuePath     : 'url',
         width         : 250,
         cellComponent : 'ui-table/cell/cell-link'
