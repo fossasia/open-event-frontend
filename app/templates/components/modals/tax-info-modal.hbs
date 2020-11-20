@@ -7,7 +7,8 @@
     <CountryDropdown
       @required={{true}}
       @placeholder={{t 'Choose country'}}
-      @val={{this.tax.country}} />
+      @val={{this.tax.country}}
+      @id="tax_country" />
     <div class="field">
       <label class="required">{{t 'Tax name'}}</label>
       <Input @type="text" @id="tax_name" @value={{this.tax.name}} />

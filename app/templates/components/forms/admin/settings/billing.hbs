@@ -48,7 +48,8 @@
   <CountryDropdown
     @required={{true}}
     @placeholder={{t 'Country'}}
-    @val={{this.model.adminBillingCountry}} />
+    @val={{this.model.adminBillingCountry}}
+    @id="adminBillingCountry" />
   <div class="field">
     <label for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
     <Input @type="text" @id="adminBillingTaxInfo" @value={{this.model.adminBillingTaxInfo}} />
