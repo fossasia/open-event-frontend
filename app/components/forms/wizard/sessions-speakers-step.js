@@ -175,7 +175,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   },
 
   actions: {
-    addItem(type, position) {
+    addItem(type) {
       switch (type) {
         case 'sessionType':
           this.data.sessionTypes.addObject(this.store.createRecord('session-type'));
@@ -183,11 +183,27 @@ export default Component.extend(EventWizardMixin, FormMixin, {
         case 'track':
           this.data.tracks.addObject(this.store.createRecord('track'));
           break;
-        case 'microlocation':
-          this.data.microlocations.addObject(this.store.createRecord('microlocation', { position }));
-          break;
       }
     },
+
+    addRoom(index) {
+      this.microlocations.forEach(room => {
+        const pos = room.get('position');
+        pos > index && room.set('position', pos + 1);
+      });
+      this.data.microlocations.addObject(this.store.createRecord('microlocation', { position: index + 1 }));
+    },
+
+    removeRoom(room, index) {
+      room.deleteRecord();
+      this.data.microlocations.forEach(item => {
+        const pos = item.get('position');
+        if (pos > index) {
+          item.set('position', pos - 1);
+        }
+      });
+    },
+
     addCustomField() {
       this.data.customForms.addObject(this.store.createRecord('customForm', {
         event     : this.data.event,
@@ -200,11 +216,12 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     onChange() {
       this.onValid(() => {});
     },
-    moveItem(item, type, direction) {
-      const index = item.get('position');
-      const otherItem = this.data.event.get(type).find(otherItem => otherItem.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
-      otherItem.set('position', index);
-      item.set('position', direction === 'up' ? (index - 1) : (index + 1));
+    moveRoom(item, direction) {
+      const idx = item.get('position');
+      const otherIdx = direction === 'up' ? (idx - 1) : (idx + 1);
+      const other = this.data.microlocations.find(item => item.get('position') === otherIdx);
+      other.set('position', idx);
+      item.set('position', otherIdx);
     }
   }
 });
