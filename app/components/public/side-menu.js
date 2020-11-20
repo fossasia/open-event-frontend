@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import moment from 'moment';
 import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
@@ -45,24 +45,16 @@ export default class SideMenu extends Component {
     this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
   }
 
-  didRender() {
-    this.scrollToTarget();
-  }
-
-  scrollToTarget() {
-    document.querySelectorAll('.scroll').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+  @action
+  scrollToTarget(section) {
+        document.querySelector(`#${section}`).scrollIntoView({
           behavior: 'smooth'
         });
 
         document.querySelectorAll('.scroll').forEach(node => {
           node.classList.remove('active');
         });
-        e.target.classList.add('active');
-      });
-    });
+        document.querySelector(`[href='#${section}']`).classList.add('active');
   }
 
   @computed('event.schedulePublishedOn')

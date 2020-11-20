@@ -38,12 +38,4 @@ export default class PublicController extends Controller {
     this.toggleProperty('isMenuOpen');
   }
 
-  @action
-  goToLink(section) {
-    this.transitionToRoute('public.index');
-    setTimeout(function() {
-      document.querySelector(`[href='#${section}']`).click();
-    }, 2000);
-  }
-
 }
