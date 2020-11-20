@@ -62,6 +62,11 @@
         </a>
       {{else}}
         <a class="item" href="{{href-to 'public.index'}}#owner" {{action this.goToLink 'owner'}}>
+        <a href='#organizer' {{action "scrollToTarget"}} class='item scroll'>
+          {{t 'Organizer'}}
+        </a>
+      {{else}}
+        <a class="item" href="{{href-to 'public.index'}}#organizer">
           {{t 'Organizer'}}
         </a>
       {{/if}}
