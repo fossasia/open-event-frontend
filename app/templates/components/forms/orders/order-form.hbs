@@ -278,23 +278,14 @@
         <i class="ticket icon"></i>
         {{t 'Acknowledgement'}}
       </h4>
-       {{#if this.isPaidOrder}}
-        <p>
-        {{t
-          'By clicking "Proceed to Checkout", I acknowledge that I have read and that I agree with the '}} <a href='https://eventyay.com/terms'>terms of services</a>{{t ' and ' }}<a href='https://eventyay.com/privacy-policy'>privacy policy</a> {{ ' on this website.'}}
-      </p>
-      <div class="center aligned">
-        <button type="submit" class="ui teal submit button">{{t 'Proceed to Checkout'}}</button>
-      </div>
-      {{else}}
       <p>
-        {{t
-          'By clicking "Order Now", I acknowledge that I have read and that I agree with the '}} <a href='https://eventyay.com/terms'>terms of services</a>{{t ' and ' }}<a href='https://eventyay.com/privacy-policy'>privacy policy</a> {{ ' on this website.'}}
-      </p>
+        {{t 'By clicking'}}{{#if this.isPaidOrder}} {{t ' "Proceed to Checkout"'}} {{else}} {{t ' "Order Now"'}}{{/if}} 
+          {{t ', I acknowledge that I have read and that I agree with the '}} 
+           <a href='/terms'>terms of services</a>{{t ' and ' }}<a href='/privacy'>privacy policy</a> {{t ' on this website.'}}      
+         </p>
       <div class="center aligned">
-        <button type="submit" class="ui teal submit button">{{t 'Order Now'}}</button>
+        <button type="submit" class="ui teal submit button">{{#if this.isPaidOrder}} {{t "Proceed to Checkout"}} {{else}} {{t "Order Now"}}{{/if}}</button>
       </div>
-      {{/if}}
-    </div>
+     </div>
   </div>
 </form>
