@@ -37,5 +37,4 @@ export default class PublicController extends Controller {
   toggleMenu() {
     this.toggleProperty('isMenuOpen');
   }
-
 }
