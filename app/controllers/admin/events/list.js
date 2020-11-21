@@ -11,7 +11,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
    get columns() {
      return [
        {
-         name            : 'Name',
+         name            : this.l10n.t('Name'),
          valuePath       : 'name',
          extraValuePaths : ['logoUrl', 'identifier', 'deletedAt', 'name'],
          isSortable      : true,
@@ -28,7 +28,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          }
        },
        {
-         name            : 'Starts At',
+         name            : this.l10n.t('Starts At'),
          valuePath       : 'startsAt',
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
@@ -37,7 +37,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width           : 75
        },
        {
-         name            : 'Ends At',
+         name            : this.l10n.t('Ends At'),
          valuePath       : 'endsAt',
          isSortable      : true,
          extraValuePaths : ['timezone'],
@@ -46,40 +46,40 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width           : 75
        },
        {
-         name            : 'State',
+         name            : this.l10n.t('State'),
          valuePath       : 'state',
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
          width           : 80
        },
        {
-         name            : 'Roles',
+         name            : this.l10n.t('Roles'),
          valuePath       : 'owner',
          extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
          cellComponent   : 'ui-table/cell/cell-roles',
          width           : 185
        },
        {
-         name          : 'Sessions',
+         name          : this.l10n.t('Sessions'),
          valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-sessions',
          width         : 90
 
        },
        {
-         name          : 'Speakers',
+         name          : this.l10n.t('Speakers'),
          valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-speakers-dashboard',
          width         : 90
        },
        {
-         name          : 'Public URL',
+         name          : this.l10n.t('Public URL'),
          valuePath     : 'url',
          cellComponent : 'ui-table/cell/cell-link',
          width         : 220
        },
        {
-         name            : 'Featured Event',
+         name            : this.l10n.t('Featured Event'),
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isFeatured'],
@@ -91,7 +91,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          }
        },
        {
-         name            : 'Promoted Event',
+         name            : this.l10n.t('Promoted Event'),
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isPromoted'],
