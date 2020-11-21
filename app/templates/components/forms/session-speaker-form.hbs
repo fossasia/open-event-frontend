@@ -138,7 +138,7 @@
     {{#if this.addNewSpeaker}}
       {{#each this.allFields.speaker as |field|}}
         {{#if field.isIncluded}}
-          <div class="field">
+          <form class="field">
             <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
             {{#if (is-input-field field.type) }}
               {{#if field.isLongText}}
@@ -242,7 +242,7 @@
                 </UiDropdown>
               {{/if}}
             {{/if}}
-          </div>
+          </form>
         {{/if}}
       {{/each}}
     {{/if}}
@@ -256,7 +256,7 @@
     {{/if}}
     {{#each this.allFields.speaker as |field|}}
       {{#if field.isIncluded}}
-        <div class="field">
+        <form class="field">
           <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
           {{#if (is-input-field field.type) }}
             {{#if field.isLongText}}
@@ -364,7 +364,7 @@
               </UiDropdown>
             {{/if}}
           {{/if}}
-        </div>
+        </form>
       {{/if}}
     {{/each}}
   {{/if}}

@@ -135,7 +135,9 @@ config.overrides.push({
   env: config.env,
   rules: {
     ...config.rules,
-    '@typescript-eslint/no-explicit-any': 'off'
+    "@typescript-eslint/no-unused-vars": ["error"],
+    '@typescript-eslint/no-explicit-any': 'off',
+    'semi': 'off'
   },
   globals: config.globals
 })

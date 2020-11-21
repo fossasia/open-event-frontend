@@ -2,9 +2,6 @@
   <a class="main content" href="{{href-to 'orders.view' this.record}}">
     {{this.record}}
   </a>
-  <span class="weight-400">
-    {{t 'by'}} {{if this.extraRecords.user.firstName this.extraRecords.user.firstName (t 'Name not provided')}}
-  </span>
   <div class="ui basic mini {{order-color this.extraRecords.status}} label">
     {{this.extraRecords.status}}
   </div>
