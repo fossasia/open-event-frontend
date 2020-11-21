@@ -57,9 +57,9 @@
         </div>
         <div class="six wide field">
           <label>{{t 'URL'}}</label>
-          <Widgets::Forms::LinkInput
-            @segmentedLink={{sponsor.segmentedLink}}
-            @name="url" />
+          <Widgets::Forms::LinkField
+            @value={{sponsor.url}}
+            @onChange={{action (mut sponsor.url)}} />
         </div>
       </div>
       <div class="fields">
