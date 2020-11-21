@@ -100,6 +100,6 @@ export default ModelBase.extend({
   adminBillingPaypalEmail    : attr('string'),
   isGoogleRecaptchaEnabled   : attr('boolean', { defaultValue: false }),
   googleRecaptchaSite        : attr('string'),
-  googleRecaptchaSecret      : attr('string'),
+  googleRecaptchaSecret      : attr('string')
 
 });

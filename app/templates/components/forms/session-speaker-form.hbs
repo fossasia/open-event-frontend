@@ -16,6 +16,7 @@
                 @textareaId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
             {{else}}
               {{#if field.isUrlField}}
+              {{!-- This is left to refactor --}}
                 <Widgets::Forms::LinkInput
                   @fixedName={{true}}
                   @linkName={{field.name}}
@@ -160,13 +161,10 @@
                 {{/if}}
               {{else}}
                 {{#if field.isUrlField}}
-                  <Widgets::Forms::LinkInput
-                    @fixedName={{true}}
-                    @linkName={{field.name}}
-                    @isSocialLink={{true}}
+                  <Widgets::Forms::LinkField
                     @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
-                    @segmentedLink={{get this.data.speaker field.segmentedLinkName}}
-                    @canRemoveItem={{false}} />
+                    @value={{get this.data.speaker field.identifierPath}}
+                    @onChange={{action (mut (get this.data.speaker field.identifierPath))}} />
                 {{else}}
                   <Input
                     @type={{field.type}}
@@ -278,13 +276,10 @@
               {{/if}}
             {{else}}
               {{#if field.isUrlField}}
-                <Widgets::Forms::LinkInput
-                  @fixedName={{true}}
-                  @linkName={{field.name}}
-                  @isSocialLink={{true}}
+                <Widgets::Forms::LinkField
                   @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
-                  @segmentedLink={{get this.data.speaker field.segmentedLinkName}}
-                  @canRemoveItem={{false}} />
+                  @value={{get this.data.speaker field.identifierPath}}
+                  @onChange={{action (mut (get this.data.speaker field.identifierPath))}} />
               {{else}}
                 <Input
                   @type={{field.type}}
