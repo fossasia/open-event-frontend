@@ -42,21 +42,21 @@
             <a href="#"
               class="link item {{if (eq this.category this.event.topic.name) 'active'}}"
               {{action 'selectCategory' this.event.topic.name}}>
-              {{this.tags.[0]}}
+              {{t-var this.tags.[0]}}
             </a>
             <a href="#"
               class="link item {{if (eq this.eventType this.event.type.name) 'active'}}"
               {{action 'selectEventType' this.event.type.name}}>
-              {{this.tags.[1]}}
+              {{t-var this.tags.[1]}}
             </a>
             <a href="#"
               class="link item {{if (eq this.subCategory this.event.subTopic.slug) 'active'}}"
               {{action 'selectCategory' this.event.topic.name this.event.subTopic.slug}}>
-              {{this.tags.[2]}}
+              {{t-var this.tags.[2]}}
             </a>
           {{else}}
             {{#each this.tags as |tag|}}
-              <a href="#">{{tag}}</a>
+              <a href="#">{{t-var tag}}</a>
             {{/each}}
           {{/if}}
         {{/if}}

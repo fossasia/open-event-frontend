@@ -18,7 +18,7 @@
     </div>
     <div class="ui padded segment">
       <h4 class="ui horizontal divider header">
-        <i class="ticket icon"></i>
+        <i class="dollar icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
       <div class="field {{if this.buyerHasFirstName 'disabled'}}">
@@ -61,7 +61,7 @@
         </div>
         {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
-            <div class="field">
+            <form class="field">
               <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
               {{#if (is-input-field field.type) }}
                 {{#if field.isLongText}}
@@ -140,14 +140,14 @@
                   </div>
                 </UiDropdown>
               {{/if}}
-            </div>
+            </form>
           {{/if}}
         {{/each}}
       {{/each}}
 
       {{#if this.isPaidOrder}}
         <h4 class="ui horizontal divider header">
-          <i class="ticket icon"></i>
+          <i class="money bill alternate icon"></i>
           {{t 'Billing Information'}}
         </h4>
         {{#unless this.event.isBillingInfoMandatory}}
@@ -164,7 +164,7 @@
             @event={{this.event}} />
         {{/if}}
         <h4 class="ui horizontal divider header">
-          <i class="ticket icon"></i>
+          <i class="dollar sign icon"></i>
           {{t 'Payment Method'}}
         </h4>
         <div class="field">
@@ -275,7 +275,7 @@
               @readonly="" />          {{/if}}        </div>
       {{/if}}
       <h4 class="ui horizontal divider header">
-        <i class="ticket icon"></i>
+        <i class="tasks icon"></i>
         {{t 'Acknowledgement'}}
       </h4>
       <p>
