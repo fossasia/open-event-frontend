@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { inject as service  } from '@ember/service';
 import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { merge, values, isEmpty } from 'lodash-es';
