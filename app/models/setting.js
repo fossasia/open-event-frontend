@@ -1,5 +1,6 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
+import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
 
 export default ModelBase.extend({
 
@@ -100,6 +101,22 @@ export default ModelBase.extend({
   adminBillingPaypalEmail    : attr('string'),
   isGoogleRecaptchaEnabled   : attr('boolean', { defaultValue: false }),
   googleRecaptchaSite        : attr('string'),
-  googleRecaptchaSecret      : attr('string')
+  googleRecaptchaSecret      : attr('string'),
 
+  /**
+   * Computed properties
+   */
+
+  segmentedSupportUrl    : computedSegmentedLink.bind(this)('supportUrl'),
+  segmentedFacebookUrl   : computedSegmentedLink.bind(this)('facebookUrl'),
+  segmentedInstagramUrl  : computedSegmentedLink.bind(this)('instagramUrl'),
+  segmentedPatreonUrl    : computedSegmentedLink.bind(this)('patreonUrl'),
+  segmentedTwitterUrl    : computedSegmentedLink.bind(this)('twitterUrl'),
+  segmentedGoogleUrl     : computedSegmentedLink.bind(this)('googleUrl'),
+  segmentedYoutubeUrl    : computedSegmentedLink.bind(this)('youtubeUrl'),
+  segmentedGithubUrl     : computedSegmentedLink.bind(this)('githubUrl'),
+  segmentedAndroidAppUrl : computedSegmentedLink.bind(this)('androidAppUrl'),
+  segmentedWebAppUrl     : computedSegmentedLink.bind(this)('webAppUrl'),
+  segmentedFrontendUrl   : computedSegmentedLink.bind(this)('frontendUrl'),
+  segmentedStaticDomain  : computedSegmentedLink.bind(this)('staticDomain')
 });

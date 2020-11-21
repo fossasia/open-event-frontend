@@ -118,6 +118,10 @@ export default ModelBase.extend({
     && (['website', 'twitter', 'github', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
   }),
 
+  segmentedLinkName: computed('fieldIdentifier', function() {
+    return `segmentedLink${this.fieldIdentifier.charAt(0).toUpperCase()  + this.fieldIdentifier.slice(1)}`;
+  }),
+
   isRequiredObserver: observer('isRequired', function() {
     if (!this.isIncluded && this.isRequired) {
       this.set('isIncluded', true);

@@ -161,8 +161,9 @@
                 {{/if}}
               {{else}}
                 {{#if field.isUrlField}}
-                  <Widgets::Forms::LinkField
+                  <Widgets::Forms::SocialLinkField
                     @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+                    @site={{field.fieldIdentifier}}
                     @value={{get this.data.speaker field.identifierPath}}
                     @onChange={{action (mut (get this.data.speaker field.identifierPath))}} />
                 {{else}}
@@ -276,8 +277,9 @@
               {{/if}}
             {{else}}
               {{#if field.isUrlField}}
-                <Widgets::Forms::LinkField
+                <Widgets::Forms::SocialLinkField
                   @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+                  @site={{field.fieldIdentifier}}
                   @value={{get this.data.speaker field.identifierPath}}
                   @onChange={{action (mut (get this.data.speaker field.identifierPath))}} />
               {{else}}
