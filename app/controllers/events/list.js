@@ -3,7 +3,10 @@ import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  sort_by = 'starts-at';
 
+  sort_dir = 'DSC';
+  
   get columns() {
     return [
       {
