@@ -48,7 +48,7 @@
         <td>
           {{#if this.data.socialLinks}}
             {{#each this.data.socialLinks as |socialLink index|~}}
-              {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.name}}</a>
+              {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.displayName}}</a>
             {{~/each}}
           {{else}}
             {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.basic-details'}}#social-links">{{t 'Click here to add'}}</a>

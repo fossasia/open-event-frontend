@@ -14,8 +14,11 @@ export default UiModal.extend({
     const $element = $(this.element);
     if (this.isOpen) {
       $element.modal(this.defaultOptions).modal('show');
+      this.onOpen?.();
     } else {
+      this.close();
       $element.modal('hide');
+      this.onClose?.();
     }
   }),
 
