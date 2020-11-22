@@ -36,12 +36,12 @@
   <div class="sixteen wide column right aligned">
     {{#if @event.identifier}}
       {{#if (eq @event.state 'draft')}}
-        <p>This event is currently not published. It is in draft mode and it is not visible publicly.</p>
+        <p>{{t 'This event is currently not published. It is in draft mode and it is not visible publicly.'}}</p>
       {{else}}
-        <p>This event is published. Any changes you make will appear on your live event.</p>
+        <p>{{t 'This event is published. Any changes you make will appear on your live event.'}}</p>
       {{/if}}
     {{else}}
-      <p>You can preview the event after you have saved it as a draft. You can publish the event after filling in the required fields.</p>
+      <p>{{t 'You can preview the event after you have saved it as a draft. You can publish the event after filling in the required fields.'}}</p>
     {{/if}}
   </div>
 </div>

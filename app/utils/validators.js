@@ -79,6 +79,11 @@ export const validPhoneNumber = new RegExp(
   '^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$'
 );
 
+export const validEmail = new RegExp(
+  /* eslint-disable-next-line no-control-regex*/
+  '[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'
+);
+
 export const isValidUrl = str => {
   return validUrlPattern.test(str);
 };

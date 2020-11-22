@@ -97,7 +97,8 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
   }
 
   @action
-  submit() {
+  submit(e) {
+    e.preventDefault();
     this.onValid(async() => {
       this.set('isLoading', true);
       try {
