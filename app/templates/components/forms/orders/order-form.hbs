@@ -282,8 +282,8 @@
         <GetText
           @message = {{t 'By clicking "{{orderState}}", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website.' 
           orderState=(if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now"))}} as |text placeholder|>
-          {{~#if (eq placeholder 'terms')}}<a href="/terms">terms of services</a>{{~/if~}}
-          {{~#if (eq placeholder 'privacy')}}<a href="/privacy">privacy policy</a>{{~/if~}}
+          {{~#if (eq placeholder 'terms')}}<a href="/terms">{{t 'terms of services'}}</a>{{~/if~}}
+          {{~#if (eq placeholder 'privacy')}}<a href="/privacy">{{t 'privacy policy'}}</a>{{~/if~}}
         </GetText>
       </p>
       <div class="center aligned">
