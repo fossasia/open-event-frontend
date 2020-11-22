@@ -144,7 +144,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     sortedRooms.forEach((room, idx) => {
       room.set('position', idx);
     });
-    
+
     return sortedRooms;
   }),
 
