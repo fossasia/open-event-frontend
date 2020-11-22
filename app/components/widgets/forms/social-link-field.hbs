@@ -1,5 +1,5 @@
-<div class="{{if @addLinks 'fields'}}">
-  {{#if @addLinks}}
+<div class="{{if @fixed '' 'fields'}}">
+  {{#if (not @fixed)}}
   <div class="three wide field">
     <div class="ui labeled input">
         {{#if @custom}}

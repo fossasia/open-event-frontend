@@ -14,7 +14,6 @@
 
     {{#each this.socialMediaLinks as |socialLink|}}
       <Widgets::Forms::SocialLinkField
-        @addLinks={{true}}
         @site={{socialLink.site}}
         @onSiteChange={{action (mut socialLink.name)}}
         @value={{socialLink.link}}

@@ -16,14 +16,12 @@
                 @textareaId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
             {{else}}
               {{#if field.isUrlField}}
-              {{!-- This is left to refactor --}}
-                <Widgets::Forms::LinkInput
-                  @fixedName={{true}}
-                  @linkName={{field.name}}
-                  @isSocialLink={{true}}
+                <Widgets::Forms::SocialLinkField
+                  @fixed={{true}}
                   @inputId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
-                  @segmentedLink={{get this.data.session field.segmentedLinkName}}
-                  @canRemoveItem={{false}} />
+                  @site={{field.fieldIdentifier}}
+                  @value={{get this.data.session field.identifierPath}}
+                  @onChange={{action (mut (get this.data.session field.identifierPath))}} />
               {{else}}
                 <Input
                   @type={{field.type}}
@@ -162,6 +160,7 @@
               {{else}}
                 {{#if field.isUrlField}}
                   <Widgets::Forms::SocialLinkField
+                    @fixed={{true}}
                     @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
                     @site={{field.fieldIdentifier}}
                     @value={{get this.data.speaker field.identifierPath}}
@@ -278,6 +277,7 @@
             {{else}}
               {{#if field.isUrlField}}
                 <Widgets::Forms::SocialLinkField
+                  @fixed={{true}}
                   @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
                   @site={{field.fieldIdentifier}}
                   @value={{get this.data.speaker field.identifierPath}}
