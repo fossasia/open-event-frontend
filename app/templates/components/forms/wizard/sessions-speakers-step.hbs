@@ -88,7 +88,7 @@
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              <Widgets::Forms::TimePicker @value={{sessionType.length}} @placeholder="H:MM" @icon={{false}} />
+              <Widgets::Forms::TimePicker @value={{sessionType.length}} @placeholder="h:mm" @icon={{false}} />
               {{#if (gt this.sessionTypes.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' sessionType}}>
                   <i class="minus icon"></i>
@@ -130,7 +130,7 @@
       <div class="fields">
         <div class="five wide field">
           <label class="required" for="start_date">{{t 'Starts'}}</label>
-          <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="D MMM, YYYY"  @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtDate}} />
+          <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="MM/DD/YYYY"  @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtDate}} />
         </div>
         <div class="two wide field">
           <label for="start_time">&nbsp;</label>
@@ -138,7 +138,7 @@
         </div>
         <div class="five wide field">
           <label class="required" for="end_date">{{t 'Ends'}}</label>
-          <Widgets::Forms::DatePicker @type="text" @name="end_date" @placeholder="D MMM, YYYY" @rangePosition="end" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtDate}} />
+          <Widgets::Forms::DatePicker @type="text" @name="end_date" @placeholder="MM/DD/YYYY" @rangePosition="end" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtDate}} />
         </div>
         <div class="two wide field">
           <label for="end_time">&nbsp;</label>
