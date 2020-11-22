@@ -211,8 +211,7 @@
         <Forms::Wizard::CustomForms::Table
           @headerText="Collect Speaker Details"
           @fields={{this.customForm.speaker}}
-          @updateField={{action (mut this.speakerField)}} 
-          @removeField={{action "removeField"}} />
+          @updateField={{action (mut this.speakerField)}} />
 
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}
@@ -226,8 +225,7 @@
         <Forms::Wizard::CustomForms::Table
           @headerText="Collect Session Details"
           @fields={{this.customForm.session}}
-          @updateField={{action (mut this.sessionField)}}
-          @removeField={{action "removeField"}}/>
+          @updateField={{action (mut this.sessionField)}} />
 
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}
