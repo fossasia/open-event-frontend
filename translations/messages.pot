@@ -73,17 +73,17 @@ msgstr ""
 #: app/components/widgets/forms/image-upload.js:44:26
 #: app/controllers/admin/content/events.js:77:26
 #: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/admin/events/list.js:136:26
-#: app/controllers/admin/events/list.js:161:24
-#: app/controllers/admin/events/list.js:183:24
-#: app/controllers/admin/events/list.js:204:24
+#: app/controllers/admin/events/list.js:139:26
+#: app/controllers/admin/events/list.js:164:24
+#: app/controllers/admin/events/list.js:186:24
+#: app/controllers/admin/events/list.js:207:24
 #: app/controllers/admin/sessions/list.js:86:24
 #: app/controllers/admin/users/list.js:109:24
 #: app/controllers/admin/users/list.js:140:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
 #: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/list.js:81:24
+#: app/controllers/events/list.js:84:24
 #: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/sessions.js:31:26
 #: app/controllers/events/view/sessions/list.js:121:26
@@ -103,10 +103,9 @@ msgstr ""
 #: app/controllers/events/view/tickets/discount-codes/list.js:67:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:86:26
 #: app/controllers/events/view/tickets/orders.js:22:26
-#: app/controllers/events/view/tickets/orders/list.js:82:26
+#: app/controllers/events/view/tickets/orders/list.js:81:26
 #: app/controllers/events/view/tickets/orders/list.js:100:26
-#: app/controllers/events/view/tickets/orders/list.js:119:26
-#: app/controllers/events/view/tickets/orders/list.js:145:26
+#: app/controllers/events/view/tickets/orders/list.js:126:26
 #: app/controllers/events/view/videoroom/list.js:48:24
 #: app/controllers/notifications.js:23:26
 #: app/controllers/oauth/callback.js:31:41
@@ -654,9 +653,9 @@ msgid "Organization Team"
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:61:87
-#: app/controllers/admin/events/list.js:70:25
+#: app/controllers/admin/events/list.js:73:25
 #: app/controllers/admin/sessions/list.js:26:24
-#: app/controllers/events/list.js:44:24
+#: app/controllers/events/list.js:47:24
 #: app/controllers/events/view/sessions/list.js:41:24
 #: app/routes/events/view/speakers.js:7:11
 #: app/templates/components/events/view/export/api-response.hbs:22:39
@@ -1318,9 +1317,9 @@ msgid "Add Room"
 msgstr ""
 
 #: app/components/modals/add-room-modal.hbs:8:8
-#: app/controllers/admin/events/list.js:14:27
+#: app/controllers/admin/events/list.js:17:27
 #: app/controllers/admin/users/list.js:17:26
-#: app/controllers/events/list.js:10:26
+#: app/controllers/events/list.js:13:26
 #: app/controllers/events/view/speakers/list.js:16:26
 #: app/templates/components/event-invoice/payee-info.hbs:8:8
 #: app/templates/components/forms/admin/content/pages-form.hbs:3:28
@@ -1575,17 +1574,17 @@ msgstr ""
 msgid "Translations Zip generated successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:31:27
+#: app/controllers/admin/events/list.js:34:27
 #: app/controllers/admin/sessions/list.js:41:26
 msgid "Starts At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:40:27
+#: app/controllers/admin/events/list.js:43:27
 #: app/controllers/admin/sessions/list.js:51:26
 msgid "Ends At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:49:27
+#: app/controllers/admin/events/list.js:52:27
 #: app/controllers/admin/sessions/list.js:19:26
 #: app/controllers/events/view/sessions/list.js:12:26
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
@@ -1595,13 +1594,13 @@ msgstr ""
 msgid "State"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:56:27
-#: app/controllers/events/list.js:32:26
+#: app/controllers/admin/events/list.js:59:27
+#: app/controllers/events/list.js:35:26
 msgid "Roles"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:63:25
-#: app/controllers/events/list.js:39:24 app/routes/admin/sessions.js:8:11
+#: app/controllers/admin/events/list.js:66:25
+#: app/controllers/events/list.js:42:24 app/routes/admin/sessions.js:8:11
 #: app/routes/events/view/sessions.js:7:11 app/routes/public/sessions.js:23:11
 #: app/templates/admin.hbs:14:8 app/templates/admin/index.hbs:13:10
 #: app/templates/components/events/view/export/api-response.hbs:13:39
@@ -1611,40 +1610,40 @@ msgstr ""
 msgid "Sessions"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:76:25
-#: app/controllers/events/list.js:49:24
+#: app/controllers/admin/events/list.js:79:25
+#: app/controllers/events/list.js:52:24
 msgid "Public URL"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:82:27
+#: app/controllers/admin/events/list.js:85:27
 msgid "Featured Event"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:94:27
+#: app/controllers/admin/events/list.js:97:27
 msgid "Promoted Event"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:124:26
+#: app/controllers/admin/events/list.js:127:26
 #: app/controllers/admin/users/view/events/list.js:79:26
-#: app/controllers/events/list.js:74:26
+#: app/controllers/events/list.js:77:26
 #: app/controllers/events/view/settings.js:17:28
 msgid "Event has been deleted successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:155:26
+#: app/controllers/admin/events/list.js:158:26
 #: app/controllers/admin/users/view/events/list.js:97:26
 msgid "Event has been restored successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:176:26
+#: app/controllers/admin/events/list.js:179:26
 msgid "Event details modified successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:198:45
+#: app/controllers/admin/events/list.js:201:45
 msgid "Event promoted successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:198:90
+#: app/controllers/admin/events/list.js:201:90
 msgid "Event unpromoted successfully"
 msgstr ""
 
@@ -1971,7 +1970,7 @@ msgstr ""
 msgid "Here is your Event Invoice"
 msgstr ""
 
-#: app/controllers/events/list.js:22:26
+#: app/controllers/events/list.js:25:26
 #: app/templates/components/explore/side-bar.hbs:15:8
 msgid "Date"
 msgstr ""
@@ -2172,23 +2171,19 @@ msgstr ""
 msgid "Your Attendee form has been saved"
 msgstr ""
 
-#: app/controllers/events/view/tickets/orders/list.js:77:28
+#: app/controllers/events/view/tickets/orders/list.js:76:28
 msgid "Order has been marked completed successfully."
 msgstr ""
 
 #: app/controllers/events/view/tickets/orders/list.js:95:28
-msgid "Order has been deleted successfully."
-msgstr ""
-
-#: app/controllers/events/view/tickets/orders/list.js:114:28
 msgid "Order has been cancelled successfully."
 msgstr ""
 
-#: app/controllers/events/view/tickets/orders/list.js:137:26
+#: app/controllers/events/view/tickets/orders/list.js:118:26
 msgid "Email confirmation has been sent to attendees successfully"
 msgstr ""
 
-#: app/controllers/events/view/tickets/orders/list.js:141:26
+#: app/controllers/events/view/tickets/orders/list.js:122:26
 msgid "Only 5 resend actions are allowed in a minute"
 msgstr ""
 
@@ -2637,6 +2632,7 @@ msgid "Export"
 msgstr ""
 
 #: app/routes/events/view/scheduler.js:6:11 app/templates/events/view.hbs:32:10
+#: app/templates/pricing.hbs:134:24
 msgid "Scheduler"
 msgstr ""
 
@@ -4059,6 +4055,7 @@ msgstr ""
 #: app/templates/components/explore/side-bar.hbs:134:23
 #: app/templates/components/order-card.hbs:41:12
 #: app/templates/components/orders/ticket-price.hbs:2:4
+#: app/templates/pricing.hbs:178:58
 msgid "Free"
 msgstr ""
 
@@ -4087,7 +4084,7 @@ msgstr ""
 
 #: app/templates/components/footer-main.hbs:11:56
 #: app/templates/components/nav-bar.hbs:11:24
-#: app/templates/components/side-bar.hbs:28:49
+#: app/templates/components/side-bar.hbs:28:49 app/templates/pricing.hbs:8:35
 msgid "Pricing"
 msgstr ""
 
@@ -5312,12 +5309,27 @@ msgstr ""
 msgid "Acknowledgement"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:282:8
-msgid "By clicking \"Pay Now\", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event."
+#: app/templates/components/forms/orders/order-form.hbs:283:21
+msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:286:60
+#: app/templates/components/forms/orders/order-form.hbs:284:42
+#: app/templates/components/forms/orders/order-form.hbs:290:82
 msgid "Proceed to Checkout"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:284:68
+#: app/templates/components/forms/orders/order-form.hbs:290:108
+#: app/templates/components/public/ticket-list.hbs:195:10
+msgid "Order Now"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:285:60
+msgid "terms of services"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:286:64
+msgid "privacy policy"
 msgstr ""
 
 #: app/templates/components/forms/register-form.hbs:32:130
@@ -5544,6 +5556,7 @@ msgstr ""
 #: app/templates/components/orders/order-summary.hbs:55:34
 #: app/templates/components/public/ticket-list.hbs:8:45
 #: app/templates/components/widgets/forms/ticket-input.hbs:17:22
+#: app/templates/pricing.hbs:172:43
 msgid "Price"
 msgstr ""
 
@@ -5795,7 +5808,7 @@ msgid "Enable Call For Speakers"
 msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:123:10
-#: app/templates/index.hbs:26:29
+#: app/templates/index.hbs:26:29 app/templates/pricing.hbs:97:24
 msgid "Call for speakers"
 msgstr ""
 
@@ -5835,7 +5848,7 @@ msgstr ""
 msgid "Collect Speaker Details"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:214:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:216:22
 msgid "Collect Session Details"
 msgstr ""
 
@@ -6479,10 +6492,6 @@ msgstr ""
 msgid "Enter promotional code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:195:10
-msgid "Order Now"
-msgstr ""
-
 #: app/templates/components/quick-filter.hbs:5:16
 msgid "Search for events"
 msgstr ""
@@ -6756,15 +6765,7 @@ msgstr ""
 msgid "Are you sure you would like to cancel this Order?"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:28:22
-msgid "Delete order"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:28:68
-msgid "Are you sure you would like to delete this Order?"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:32:20
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:27:20
 msgid "Resend order confirmation"
 msgstr ""
 
@@ -7257,12 +7258,180 @@ msgstr ""
 msgid "Please Check-Out our Attendee App"
 msgstr ""
 
+#: app/templates/pricing.hbs:17:8
+msgid "Sign up for our Early Access plan!"
+msgstr ""
+
 #: app/templates/pricing.hbs:23:35
 msgid "Features"
 msgstr ""
 
 #: app/templates/pricing.hbs:24:35
 msgid "Early Access Plan"
+msgstr ""
+
+#: app/templates/pricing.hbs:29:24
+msgid "Basics"
+msgstr ""
+
+#: app/templates/pricing.hbs:30:12
+msgid "Fee per paid tickets"
+msgstr ""
+
+#: app/templates/pricing.hbs:34:12
+msgid "Fee per free tickets"
+msgstr ""
+
+#: app/templates/pricing.hbs:35:12
+msgid "No fee"
+msgstr ""
+
+#: app/templates/pricing.hbs:38:24
+msgid "Ticket Sales"
+msgstr ""
+
+#: app/templates/pricing.hbs:39:12
+msgid "Public event listings"
+msgstr ""
+
+#: app/templates/pricing.hbs:43:12
+msgid "Private (unlisted) events"
+msgstr ""
+
+#: app/templates/pricing.hbs:47:12
+msgid "Unlimited events"
+msgstr ""
+
+#: app/templates/pricing.hbs:51:12
+msgid "Attendee form"
+msgstr ""
+
+#: app/templates/pricing.hbs:55:12
+msgid "Custom attendee form question"
+msgstr ""
+
+#: app/templates/pricing.hbs:59:12
+msgid "Digital or printed tickets"
+msgstr ""
+
+#: app/templates/pricing.hbs:63:12
+msgid "Donation tickets"
+msgstr ""
+
+#: app/templates/pricing.hbs:67:24
+msgid "Payments"
+msgstr ""
+
+#: app/templates/pricing.hbs:68:12
+msgid "Secure payment processing"
+msgstr ""
+
+#: app/templates/pricing.hbs:72:12
+msgid "Accepting all major credit cards"
+msgstr ""
+
+#: app/templates/pricing.hbs:76:12
+msgid "All major currencies"
+msgstr ""
+
+#: app/templates/pricing.hbs:80:12
+msgid "payment processor"
+msgstr ""
+
+#: app/templates/pricing.hbs:84:24
+msgid "Tracking & Optimising"
+msgstr ""
+
+#: app/templates/pricing.hbs:85:12
+msgid "Sales/RSVP summary dashboard"
+msgstr ""
+
+#: app/templates/pricing.hbs:89:12
+msgid "Detailed analytics by ticket type"
+msgstr ""
+
+#: app/templates/pricing.hbs:93:12
+msgid "Detailed exports of all data"
+msgstr ""
+
+#: app/templates/pricing.hbs:98:12
+msgid "Submissions"
+msgstr ""
+
+#: app/templates/pricing.hbs:99:12
+msgid "Up to 200"
+msgstr ""
+
+#: app/templates/pricing.hbs:102:12
+msgid "Speakers form"
+msgstr ""
+
+#: app/templates/pricing.hbs:106:12
+msgid "Custom speakers form questions"
+msgstr ""
+
+#: app/templates/pricing.hbs:110:12
+msgid "Session form"
+msgstr ""
+
+#: app/templates/pricing.hbs:114:12
+msgid "Custom session form questions"
+msgstr ""
+
+#: app/templates/pricing.hbs:118:12
+msgid "API access"
+msgstr ""
+
+#: app/templates/pricing.hbs:122:12
+msgid "Submission management"
+msgstr ""
+
+#: app/templates/pricing.hbs:126:12
+msgid "\"LOCK\" submission"
+msgstr ""
+
+#: app/templates/pricing.hbs:130:12
+msgid "Rating process"
+msgstr ""
+
+#: app/templates/pricing.hbs:135:12
+msgid "Organizer scheduler access"
+msgstr ""
+
+#: app/templates/pricing.hbs:139:12
+msgid "Create schedule"
+msgstr ""
+
+#: app/templates/pricing.hbs:143:12
+msgid "Public schedule pages"
+msgstr ""
+
+#: app/templates/pricing.hbs:147:24
+msgid "Promotion"
+msgstr ""
+
+#: app/templates/pricing.hbs:148:12
+msgid "Public listing on website"
+msgstr ""
+
+#: app/templates/pricing.hbs:152:12
+msgid "Search engine listing"
+msgstr ""
+
+#: app/templates/pricing.hbs:156:12
+msgid "Sponsor listing on public event page"
+msgstr ""
+
+#: app/templates/pricing.hbs:160:12
+msgid "Attendee social sharing tools"
+msgstr ""
+
+#: app/templates/pricing.hbs:164:12
+msgid "Abandoned order emails"
+msgstr ""
+
+#: app/templates/pricing.hbs:168:12
+msgid "Discount and access codes"
 msgstr ""
 
 #: app/templates/public.hbs:50:122
