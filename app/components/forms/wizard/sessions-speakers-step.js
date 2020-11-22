@@ -213,6 +213,9 @@ export default Component.extend(EventWizardMixin, FormMixin, {
         isComplex : true
       }));
     },
+    removeField(field) {
+      this.data.customForms.removeObject(field);
+    },
     resetCFS() {
       this.set('data.speakersCall.announcement', null);
     },
