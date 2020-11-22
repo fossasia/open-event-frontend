@@ -59,11 +59,6 @@ export default class Session extends ModelBase.extend({
   endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
-  // segmentedLinkSlidesUrl : computedSegmentedLink.bind(this)('slidesUrl'),
-  // segmentedLinkAudioUrl  : computedSegmentedLink.bind(this)('audioUrl'),
-  // segmentedLinkVideoUrl  : computedSegmentedLink.bind(this)('videoUrl'),
-  // segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl'),
-
   ready() {
     if (!this.complexFieldValues) {
       this.complexFieldValues = {};

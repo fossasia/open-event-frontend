@@ -1,7 +1,7 @@
 <div class="{{if @fixed '' 'fields'}}">
-  {{#if (not @fixed)}}
-  <div class="three wide field">
-    <div class="ui labeled input">
+  {{#unless @fixed}}
+    <div class="three wide field">
+      <div class="ui labeled input">
         {{#if @custom}}
           <Input @type="text" value={{@site}} {{on 'input' (action @onSiteChange value="target.value")}} />
         {{else}}
@@ -15,14 +15,14 @@
             </div>
           </UiDropdown>
         {{/if}}
+      </div>
     </div>
-  </div>
-  {{/if}}
+  {{/unless}}
   <Widgets::Forms::LinkField
     @prefix={{this.prefix}}
     @value={{@value}}
     @onChange={{@onChange}}
     @inputId={{@inputId}}>
       {{yield}}
-    </Widgets::Forms::LinkField>
+  </Widgets::Forms::LinkField>
 </div>
