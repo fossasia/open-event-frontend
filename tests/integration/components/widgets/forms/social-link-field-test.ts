@@ -11,13 +11,12 @@ module('Integration | Component | widgets/forms/social-link-field', function(hoo
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{widgets/forms/social-link-field site='facebook'}}`);
-    assertContains(assert, this.element.textContent?.trim(), 'https://facebook.com/');
+    await render(hbs`{{widgets/forms/social-link-field}}`);
 
-    await render(hbs`{{widgets/forms/social-link-field site='twitter'}}`);
-    assertContains(assert, this.element.textContent?.trim(), 'https://twitter.com/');
-
-    await render(hbs`{{widgets/forms/social-link-field site='website'}}`);
-    assertContains(assert, this.element.textContent?.trim(), 'https://');
+    const content = this.element.textContent?.trim();
+    assertContains(assert, content, 'Website');
+    assertContains(assert, content, 'Twitter');
+    assertContains(assert, content, 'Google Groups');
+    assertContains(assert, content, 'https://');
   });
 });
