@@ -261,9 +261,6 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       } else {
         this.get(`data.event.${type}`).pushObject(this.store.createRecord(model));
       }
-    },
-    removeItem(item) {
-      item.deleteRecord();
     }
   }
 });
