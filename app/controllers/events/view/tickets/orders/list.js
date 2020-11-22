@@ -14,7 +14,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         width           : 170,
         actions         : {
           completeOrder      : this.completeOrder.bind(this),
-          deleteOrder        : this.deleteOrder.bind(this),
           cancelOrder        : this.cancelOrder.bind(this),
           resendConfirmation : this.resendConfirmation.bind(this)
         }
@@ -79,24 +78,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       })
       .catch(e => {
         console.error('Error while completing order', e);
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-  }
-
-  @action
-  deleteOrder(order_id) {
-    this.set('isLoading', true);
-    const order = this.store.peekRecord('order', order_id, { backgroundReload: false });
-    order.destroyRecord()
-      .then(() => {
-        this.notify.success(this.l10n.t('Order has been deleted successfully.'));
-        this.refreshModel.bind(this)();
-      })
-      .catch(e => {
-        console.error('Error while deleting order', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       })
       .finally(() => {
