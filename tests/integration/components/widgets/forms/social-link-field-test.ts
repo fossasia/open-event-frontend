@@ -17,7 +17,7 @@ module('Integration | Component | widgets/forms/social-link-field', function(hoo
     await render(hbs`{{widgets/forms/social-link-field site='twitter'}}`);
     assertContains(assert, this.element.textContent?.trim(), 'https://twitter.com/');
 
-    await render(hbs`{{widgets/forms/social-link-field site='instagram'}}`);
-    assertContains(assert, this.element.textContent?.trim(), 'https://instagram.com/');
+    await render(hbs`{{widgets/forms/social-link-field site='website'}}`);
+    assertContains(assert, this.element.textContent?.trim(), 'https://');
   });
 });
