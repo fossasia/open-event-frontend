@@ -140,7 +140,12 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   }),
 
   microlocations: computed('data.microlocations.@each.isDeleted', 'data.microlocations.@each.position', function() {
-    return this.data.event.microlocations.sortBy('position').filterBy('isDeleted', false);
+    const sortedRooms = this.data.event.microlocations.sortBy('position').filterBy('isDeleted', false);
+    sortedRooms.forEach((room, idx) => {
+      room.set('position', idx);
+    });
+    
+    return sortedRooms;
   }),
 
   complexCustomForms: computed('data.customForms.@each.isComplex', function() {
@@ -191,16 +196,14 @@ export default Component.extend(EventWizardMixin, FormMixin, {
         const pos = room.get('position');
         pos > index && room.set('position', pos + 1);
       });
-      this.data.microlocations.addObject(this.store.createRecord('microlocation', { position: index + 1 }));
+      this.data.event.microlocations.addObject(this.store.createRecord('microlocation', { position: index + 1 }));
     },
 
     removeRoom(room, index) {
       room.deleteRecord();
-      this.data.microlocations.forEach(item => {
+      this.microlocations.forEach(item => {
         const pos = item.get('position');
-        if (pos > index) {
-          item.set('position', pos - 1);
-        }
+        pos > index && item.set('position', pos - 1);
       });
     },
 
@@ -219,7 +222,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     moveRoom(item, direction) {
       const idx = item.get('position');
       const otherIdx = direction === 'up' ? (idx - 1) : (idx + 1);
-      const other = this.data.microlocations.find(item => item.get('position') === otherIdx);
+      const other = this.microlocations.find(item => item.get('position') === otherIdx);
       other.set('position', idx);
       item.set('position', otherIdx);
     }
