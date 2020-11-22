@@ -70,18 +70,7 @@
             @name="description" />
         </div>
         <div class="sponsors-step eight wide computer eight wide tablet field {{if this.device.isMobile 'less padding'}}">
-          {{!-- <Widgets::Forms::ImageUpload
-            @imageUrl={{sponsor.logoUrl}}
-            @needsCropper={{true}}
-            @label={{t "Logo"}}
-            @id="logo_sponsor_image"
-            @icon="image"
-            @hint={{t "Select Logo"}}
-            @imageText={{t "Header Image"}}
-            @isHeaderImage={{true}}
-            @maxSizeInKb={{10000}} /> --}}
           <Widgets::Forms::ImageUpload
-            @needsCropper={{true}}
             @label={{t "Logo"}}
             @imageUrl={{sponsor.logoUrl}}
             @icon="image"
