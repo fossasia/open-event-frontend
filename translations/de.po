@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2020-11-18 09:19+0000\n"
+"PO-Revision-Date: 2020-11-22 19:56+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/open-event/frontend/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/open-event/"
+"frontend/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -617,28 +618,28 @@ msgstr "Bitte wählen Sie mindestens 1 Ticket."
 
 #: app/components/forms/events/view/videoroom-form.hbs:5:8
 msgid "Video Channel"
-msgstr ""
+msgstr "Videokanal"
 
 #: app/components/forms/events/view/videoroom-form.hbs:11:8
 msgid "Add Jitsi Room"
-msgstr ""
+msgstr "Jitsiraum hinzufügen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:19:28
 #: app/components/modals/add-room-modal.js:17:14
 msgid "Room"
-msgstr ""
+msgstr "Raum"
 
 #: app/components/forms/events/view/videoroom-form.hbs:27:8
 msgid "Select Rooms"
-msgstr ""
+msgstr "Raum auswählen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:41:28
 msgid "Video Room URL"
-msgstr ""
+msgstr "Videroraum-URL"
 
 #: app/components/forms/events/view/videoroom-form.hbs:48:11
 msgid "Pin"
-msgstr ""
+msgstr "Pin"
 
 #: app/components/forms/events/view/videoroom-form.hbs:53:11
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:28:12
@@ -650,11 +651,11 @@ msgstr "zusätzliche Informationen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:59:11
 msgid "Access"
-msgstr ""
+msgstr "Zugang"
 
 #: app/components/forms/events/view/videoroom-form.hbs:60:87
 msgid "Organization Team"
-msgstr ""
+msgstr "Organisationsteam"
 
 #: app/components/forms/events/view/videoroom-form.hbs:61:87
 #: app/controllers/admin/events/list.js:70:25
@@ -678,11 +679,11 @@ msgstr "Teilnehmer"
 
 #: app/components/forms/events/view/videoroom-form.hbs:63:69
 msgid "All logged in users"
-msgstr ""
+msgstr "Alle angemeldeten Benutzer"
 
 #: app/components/forms/events/view/videoroom-form.hbs:64:69
 msgid "Public (no restriction)"
-msgstr ""
+msgstr "Öffentlich (keine Einschränkung)"
 
 #: app/components/forms/events/view/videoroom-form.hbs:67:68
 #: app/components/forms/wizard/custom-form-input.hbs:20:104
@@ -716,11 +717,11 @@ msgstr "Bitte geben Sie eine URL ein"
 
 #: app/components/forms/events/view/videoroom-form.js:61:23
 msgid "Please select a room"
-msgstr ""
+msgstr "Raum auswählen"
 
 #: app/components/forms/events/view/videoroom-form.js:111:28
 msgid "Your stream has been saved"
-msgstr ""
+msgstr "Stream gespeichert"
 
 #: app/components/forms/login-form.js:38:23
 #: app/components/forms/orders/guest-order-form.js:38:23
@@ -1305,20 +1306,27 @@ msgstr "Als Entwurf speichern"
 #: app/components/forms/wizard/wizard-footer.hbs:39:11
 msgid "This event is currently not published. It is in draft mode and it is not visible publicly."
 msgstr ""
+"Diese Veranstaltung ist derzeit nicht veröffentlicht. Sie befindet sich im "
+"Entwurfsmodus und ist nicht öffentlich sichtbar."
 
 #: app/components/forms/wizard/wizard-footer.hbs:41:11
 msgid "This event is published. Any changes you make will appear on your live event."
 msgstr ""
+"Diese Veranstaltung ist veröffentlicht. Alle Änderungen, die Sie vornehmen, "
+"werden in Ihrem Live-Event angezeigt."
 
 #: app/components/forms/wizard/wizard-footer.hbs:44:9
 msgid "You can preview the event after you have saved it as a draft. You can publish the event after filling in the required fields."
 msgstr ""
+"Sie können eine Vorschau der Veranstaltung anzeigen, nachdem den Entwurf "
+"gespeichert haben. Sie können die Veranstaltung veröffentlichen, nachdem Sie "
+"die erforderlichen Felder ausgefüllt haben."
 
 #: app/components/modals/add-room-modal.hbs:2:2
 #: app/components/modals/add-room-modal.hbs:25:4
 #: app/templates/events/view/videoroom/list.hbs:11:8
 msgid "Add Room"
-msgstr ""
+msgstr "Raum hinzufügen"
 
 #: app/components/modals/add-room-modal.hbs:8:8
 #: app/controllers/admin/events/list.js:14:27
@@ -1336,11 +1344,11 @@ msgstr "Name"
 
 #: app/components/modals/add-room-modal.hbs:14:8
 msgid "Floor"
-msgstr ""
+msgstr "Stockwerk"
 
 #: app/components/modals/add-room-modal.js:16:26
 msgid "{{item}} has been created successfully"
-msgstr ""
+msgstr "{{item}} wurde erstellt."
 
 #: app/components/modals/add-system-role-modal.js:42:23
 msgid "Please enter a role name"
@@ -1494,11 +1502,14 @@ msgstr "Um Ihre Veranstaltung live zu schalten, überprüfen Sie bitte Ihr Konto
 
 #: app/components/unverified-user-message.hbs:16:14
 msgid "Your account functionality is limited."
-msgstr ""
+msgstr "Ihre Kontofunktionalität ist eingeschränkt."
 
 #: app/components/unverified-user-message.hbs:16:79
 msgid "To get full access to all features you need to verify your email by clicking on the confirmation link that has been emailed to you."
 msgstr ""
+"Um vollen Zugriff auf alle Funktionen zu erhalten, müssen Sie Ihre E-Mail-"
+"Adresse verifizieren, indem Sie auf den Bestätigungslink klicken, der Ihnen "
+"per E-Mail zugesandt wurde."
 
 #: app/components/unverified-user-message.hbs:19:13
 msgid "Did not get the email?"
@@ -1581,12 +1592,12 @@ msgstr "Übersetzungen Zip erfolgreich generiert."
 #: app/controllers/admin/events/list.js:31:27
 #: app/controllers/admin/sessions/list.js:41:26
 msgid "Starts At"
-msgstr ""
+msgstr "Beginnt"
 
 #: app/controllers/admin/events/list.js:40:27
 #: app/controllers/admin/sessions/list.js:51:26
 msgid "Ends At"
-msgstr ""
+msgstr "Endet"
 
 #: app/controllers/admin/events/list.js:49:27
 #: app/controllers/admin/sessions/list.js:19:26
@@ -1601,7 +1612,7 @@ msgstr "Zustand"
 #: app/controllers/admin/events/list.js:56:27
 #: app/controllers/events/list.js:32:26
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 #: app/controllers/admin/events/list.js:63:25
 #: app/controllers/events/list.js:39:24 app/routes/admin/sessions.js:8:11
@@ -1617,15 +1628,15 @@ msgstr "Sitzungen"
 #: app/controllers/admin/events/list.js:76:25
 #: app/controllers/events/list.js:49:24
 msgid "Public URL"
-msgstr ""
+msgstr "Öffentliche URL"
 
 #: app/controllers/admin/events/list.js:82:27
 msgid "Featured Event"
-msgstr ""
+msgstr "Feature-Veranstaltung"
 
 #: app/controllers/admin/events/list.js:94:27
 msgid "Promoted Event"
-msgstr ""
+msgstr "Hervorgehobene Veranstaltung"
 
 #: app/controllers/admin/events/list.js:124:26
 #: app/controllers/admin/users/view/events/list.js:79:26
@@ -1657,23 +1668,23 @@ msgstr "Änderungen wurden erfolgreich gespeichert"
 
 #: app/controllers/admin/messages/list.js:14:24
 msgid "Recipients"
-msgstr ""
+msgstr "Empfänger"
 
 #: app/controllers/admin/messages/list.js:20:18
 msgid "Trigger"
-msgstr ""
+msgstr "Auslöser"
 
 #: app/controllers/admin/messages/list.js:24:18
 msgid "Email Message"
-msgstr ""
+msgstr "E-mail-Nachricht"
 
 #: app/controllers/admin/messages/list.js:35:24
 msgid "Notification Message"
-msgstr ""
+msgstr "Benachrichtigungen"
 
 #: app/controllers/admin/messages/list.js:51:24
 msgid "Time/Date Sent Out"
-msgstr ""
+msgstr "Uhrzeit / Datum gesendet"
 
 #: app/controllers/admin/permissions/event-roles.js:20:28
 msgid "Admin Event role permissions have been saved successfully."
@@ -1709,13 +1720,13 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten. Benutzerberechtigungen nicht ge
 
 #: app/controllers/admin/reports/system-logs/activity-logs.js:13:26
 msgid "Actor"
-msgstr ""
+msgstr "Auslöser"
 
 #: app/controllers/admin/reports/system-logs/activity-logs.js:19:26
 #: app/controllers/admin/reports/system-logs/mail-logs.js:19:26
 #: app/controllers/admin/reports/system-logs/notification-logs.js:17:26
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
 
 #: app/controllers/admin/reports/system-logs/mail-logs.js:13:26
 #: app/templates/components/event-invoice/billing-info.hbs:30:16
@@ -1728,11 +1739,11 @@ msgstr "An"
 #: app/controllers/admin/reports/system-logs/mail-logs.js:32:26
 #: app/controllers/admin/reports/system-logs/notification-logs.js:28:24
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
 #: app/controllers/admin/reports/system-logs/notification-logs.js:12:24
 msgid "For"
-msgstr ""
+msgstr "Für"
 
 #: app/controllers/admin/sales/index.js:13:24 app/routes/admin/events.js:7:11
 #: app/routes/admin/users/view/events.js:8:11 app/routes/events.js:8:11
@@ -1827,7 +1838,7 @@ msgstr "Ausstehende Bestellungen"
 
 #: app/controllers/admin/sales/invoices.js:9:26
 msgid "Invoice #"
-msgstr ""
+msgstr "Rechnung #"
 
 #: app/controllers/admin/sales/invoices.js:17:26
 #: app/templates/components/forms/admin/content/pages-form.hbs:25:45
@@ -1836,7 +1847,7 @@ msgstr "Veranstaltung"
 
 #: app/controllers/admin/sales/invoices.js:23:26
 msgid "Invoice Date"
-msgstr ""
+msgstr "Rechnungsdatum"
 
 #: app/controllers/admin/sales/invoices.js:34:24
 #: app/templates/event-invoice/review.hbs:21:24
@@ -1845,11 +1856,11 @@ msgstr "Fälligkeitsdatum"
 
 #: app/controllers/admin/sales/invoices.js:43:26
 msgid "Amount"
-msgstr ""
+msgstr "Betrag"
 
 #: app/controllers/admin/sales/invoices.js:51:24
 msgid "Sent To"
-msgstr ""
+msgstr "Gesendet an"
 
 #: app/controllers/admin/sales/invoices.js:56:26
 #: app/controllers/admin/users/list.js:42:24
@@ -1860,7 +1871,7 @@ msgstr "Status"
 
 #: app/controllers/admin/sales/invoices.js:62:26
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: app/controllers/admin/sessions/list.js:9:20
 #: app/templates/components/event-invoice/invoice-summary.hbs:20:30
@@ -1878,7 +1889,7 @@ msgstr "Titel"
 
 #: app/controllers/admin/sessions/list.js:31:26
 msgid "Submitted At"
-msgstr ""
+msgstr "Eingereicht bei"
 
 #: app/controllers/admin/sessions/list.js:80:26
 #: app/controllers/events/view/sessions/list.js:114:28
@@ -1952,15 +1963,15 @@ msgstr "Veranstaltungsfunktionen"
 
 #: app/controllers/admin/users/list.js:64:24
 msgid "User Links"
-msgstr ""
+msgstr "Benutzerlinks"
 
 #: app/controllers/admin/users/list.js:69:26
 msgid "Member Since"
-msgstr ""
+msgstr "Mitglied seit"
 
 #: app/controllers/admin/users/list.js:79:26
 msgid "Last Accessed"
-msgstr ""
+msgstr "Zuletzt aufgerufen"
 
 #: app/controllers/admin/users/list.js:102:26
 msgid "User has been deleted successfully."
@@ -2018,19 +2029,19 @@ msgstr "Ihre Sitzung wurde gespeichert"
 
 #: app/controllers/events/view/sessions/list.js:47:26
 msgid "Rating"
-msgstr ""
+msgstr "Bewertung"
 
 #: app/controllers/events/view/sessions/list.js:61:20
 msgid "Track"
-msgstr ""
+msgstr "Track"
 
 #: app/controllers/events/view/sessions/list.js:71:24
 msgid "Submission Date"
-msgstr ""
+msgstr "Einreichungstermin"
 
 #: app/controllers/events/view/sessions/list.js:80:24
 msgid "Last Modified"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 #: app/controllers/events/view/sessions/list.js:96:26
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-lock-session.hbs:6:20
@@ -2077,7 +2088,7 @@ msgstr "Position"
 
 #: app/controllers/events/view/speakers/list.js:37:26
 msgid "Organization"
-msgstr ""
+msgstr "Organisation"
 
 #: app/controllers/events/view/speakers/list.js:51:24
 #: app/templates/components/account/contact-info-section.hbs:7:28
@@ -2096,7 +2107,7 @@ msgstr "Eingereichte Sitzungen"
 
 #: app/controllers/events/view/speakers/list.js:62:26
 msgid "Feature"
-msgstr ""
+msgstr "Feature"
 
 #: app/controllers/events/view/speakers/list.js:79:26
 msgid "Speaker has been deleted successfully."
@@ -2197,11 +2208,11 @@ msgstr "In einer Minute sind nur 5 Aktionen zum erneuten Senden zulässig"
 
 #: app/controllers/events/view/videoroom/list.js:42:26
 msgid "{{item}} has been deleted successfully."
-msgstr ""
+msgstr "{{item}} wurde gelöscht."
 
 #: app/controllers/events/view/videoroom/list.js:42:89
 msgid "Video Stream"
-msgstr ""
+msgstr "Videostream"
 
 #: app/controllers/notifications.js:17:28
 msgid "All notifications marked read successfully"
@@ -2764,15 +2775,15 @@ msgstr "Bestellungen"
 
 #: app/routes/events/view/videoroom.js:7:11
 msgid "Microlocation"
-msgstr ""
+msgstr "Mikrolokation"
 
 #: app/routes/events/view/videoroom/create.js:13:11
 msgid "Create Video Room"
-msgstr ""
+msgstr "Videoraum erstellen"
 
 #: app/routes/events/view/videoroom/list.js:8:11
 msgid "Video Rooms"
-msgstr ""
+msgstr "Videoraum"
 
 #: app/routes/explore.js:9:11
 msgid "Explore"
@@ -3268,75 +3279,91 @@ msgstr "Zahlungssysteme"
 
 #: app/templates/admin/settings.hbs:27:10
 msgid "Front Page"
-msgstr ""
+msgstr "Startseite"
 
 #: app/templates/admin/settings/frontpage.hbs:10:49
 msgid "Any event that is switched to Featured Event by admins is listed here."
 msgstr ""
+"Jede Veranstaltung, die von Administratoren auf empfohlene (Featured) "
+"Veranstaltung umgeschaltet wird, wird hier aufgelistet."
 
 #: app/templates/admin/settings/frontpage.hbs:24:49
 msgid "up to 21 events should be listed here."
-msgstr ""
+msgstr "Bis zu 21 Veranstaltungen werden hier aufgelistet."
 
 #: app/templates/admin/settings/frontpage.hbs:29:49
 msgid "admins have the option to move any event without restrictions to the top of this line by switching events to Promoted Events in the event admin panel"
 msgstr ""
+"Administratoren haben die Möglichkeit, jedes Ereignis ohne Einschränkungen "
+"an den Anfang dieser Zeile zu verschieben, indem sie Veranstaltungen im "
+"Veranstaltungswaltungsbereich auf Empfohlene (Feature) Veranstaltungen "
+"umschalten"
 
 #: app/templates/admin/settings/frontpage.hbs:34:49
 msgid "promoted events should always show up on the top of Upcoming Events"
-msgstr ""
+msgstr "hervorgehobene Veranstlatungen werden oben in der Kategorie angezeigt"
 
 #: app/templates/admin/settings/frontpage.hbs:39:49
 msgid "The event should have location or online link and a date"
 msgstr ""
+"Die Veranstaltung sollte einen Ort oder einen Online-Link und ein Datum haben"
 
 #: app/templates/admin/settings/frontpage.hbs:44:49
 msgid "The event should have Tickets."
-msgstr ""
+msgstr "Die Veranstaltung sollte Tickets haben."
 
 #: app/templates/admin/settings/frontpage.hbs:49:49
 msgid "Do not show an event on start page if it does not have any public ticket."
 msgstr ""
+"Zeigen Sie eine Veranstaltung nicht auf der Startseite an, wenn sie kein "
+"öffentliches Ticket hat."
 
 #: app/templates/admin/settings/frontpage.hbs:54:49
 msgid "If the sales time of the ticket is passed then event should not show on the start page."
 msgstr ""
+"Wenn die Verkaufszeit des Tickets abgelaufen ist, wird die Veranstaltung "
+"nicht auf der Startseite angezeigt."
 
 #: app/templates/admin/settings/frontpage.hbs:59:47
 msgid "Do not show an event on start page if it all tickets are sold or only hidden ticket remain."
 msgstr ""
+"Veranstaltungen werden nicht auf der Startseite angezeigt, wenn alle Tickets "
+"verkauft sind oder nur noch versteckte Tickets übrig sind."
 
 #: app/templates/admin/settings/frontpage.hbs:64:49
 msgid "The event should have an Image."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Bild haben."
 
 #: app/templates/admin/settings/frontpage.hbs:69:49
 msgid "The event should have an logo."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Logo haben."
 
 #: app/templates/admin/settings/frontpage.hbs:74:49
 msgid "The event should have an Event Topic."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Veranstaltungsthema haben."
 
 #: app/templates/admin/settings/frontpage.hbs:79:49
 msgid "The event should have an Event Sub Topic."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Veranstaltungsunterthema haben."
 
 #: app/templates/admin/settings/frontpage.hbs:84:49
 msgid "The event should have a twitter link."
-msgstr ""
+msgstr "Die Veranstaltung sollte einen Twitter-Link haben."
 
 #: app/templates/admin/settings/frontpage.hbs:98:49
 msgid "Up to 12 events would be listed here and there is a more link below to show more events on the cfs page if there are more events."
 msgstr ""
+"Bis zu 12 Ereignisse werden hier aufgelistet und es gibt unten einen "
+"weiteren Link, um mehr Ereignisse auf der cfs-Seite anzuzeigen, wenn es mehr "
+"Ereignisse gibt."
 
 #: app/templates/admin/settings/frontpage.hbs:103:49
 msgid "Events listed here have a Call For Speaker."
-msgstr ""
+msgstr "Die hier aufgeführten Veranstaltungen haben einen Call For Speaker."
 
 #: app/templates/admin/settings/frontpage.hbs:108:49
 msgid "Requirements of Upcoming Events."
-msgstr ""
+msgstr "Anforderungen für bevorstehende Veranstaltungen."
 
 #: app/templates/admin/users.hbs:7:12
 msgid "All Users"
@@ -3877,7 +3904,7 @@ msgstr "Passen Sie die Registrierungsformulare für Sitzungen und Sprecher an"
 
 #: app/templates/components/events/view/overview/event-sponsors.hbs:2:22
 msgid "Event sponsors"
-msgstr ""
+msgstr "Veranstaltungsponsoren"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 msgid "Summary"
@@ -4188,7 +4215,7 @@ msgstr "Telegram"
 #: app/templates/components/footer-main.hbs:98:33
 #: app/templates/components/forms/admin/content/social-links-form.hbs:73:11
 msgid "Weblate"
-msgstr ""
+msgstr "Weblate"
 
 #: app/templates/components/footer-main.hbs:108:29
 msgid "Copyright"
@@ -5726,7 +5753,7 @@ msgstr "Links & Soziale Medien"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:9:6
 msgid "Social Media"
-msgstr ""
+msgstr "Soziale Medien"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:10:24
 msgid "Add social link"
@@ -5734,7 +5761,7 @@ msgstr "Fügen Sie einen sozialen Link hinzu"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:30:6
 msgid "Extra Links"
-msgstr ""
+msgstr "Zusätzliche Links"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:31:24
 msgid "Add custom link"
@@ -5839,11 +5866,11 @@ msgstr "Anmeldeformulare anpassen"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:200:22
 msgid "Collect Speaker Details"
-msgstr ""
+msgstr "Referentendetails sammeln"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:214:22
 msgid "Collect Session Details"
-msgstr ""
+msgstr "Sitzungsdetails sammeln"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:26:8
 msgid "Sponsor"
@@ -6303,7 +6330,7 @@ msgstr "am"
 
 #: app/templates/components/orders/event-info.hbs:17:16
 msgid "Event taking place online and at"
-msgstr ""
+msgstr "Die Veranstaltung findet online statt und"
 
 #: app/templates/components/orders/event-info.hbs:19:16
 #: app/templates/public/index.hbs:74:10
@@ -6312,11 +6339,11 @@ msgstr "Online-Veranstaltung"
 
 #: app/templates/components/orders/event-info.hbs:24:14
 msgid "Location or online event details to be announced"
-msgstr ""
+msgstr "Details zu Ort oder Online-Veranstaltung werden noch bekannt gegeben."
 
 #: app/templates/components/orders/event-info.hbs:38:40
 msgid "Go to event page"
-msgstr ""
+msgstr "Zur Veranstaltungsseite"
 
 #: app/templates/components/orders/order-summary.hbs:7:12
 msgid "Success"
@@ -6657,12 +6684,12 @@ msgstr "Moderatoren"
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:8:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:8:22
 msgid "Withdrawn"
-msgstr ""
+msgstr "Zurückgezogen"
 
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:9:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:9:22
 msgid "Canceled"
-msgstr ""
+msgstr "Abgesagt"
 
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:12:2
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:10:2
@@ -6780,11 +6807,11 @@ msgstr "Auftragsbestätigung erneut versenden"
 
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-title.hbs:6:26
 msgid "Add Video Channel"
-msgstr ""
+msgstr "Videokanal hinzufügen"
 
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-title.hbs:16:64
 msgid "Are you sure you would like to delete this stream?"
-msgstr ""
+msgstr "Diesen Stream wirklich löschen?"
 
 #: app/templates/components/welcome-header.hbs:2:30
 msgid "The simplest way to create events."
@@ -7140,15 +7167,15 @@ msgstr "Bestellungen anzeigen"
 
 #: app/templates/events/view/videoroom/list.hbs:3:4
 msgid "This feature is still in alpha stage"
-msgstr ""
+msgstr "Diese Funktion befindet sich noch im Alpha-Stadium."
 
 #: app/templates/events/view/videoroom/list.hbs:5:2
 msgid "Please use with care."
-msgstr ""
+msgstr "Bitte mit Vorsicht verwenden."
 
 #: app/templates/events/view/videoroom/list.hbs:5:32
 msgid "Thank You."
-msgstr ""
+msgstr "Danke"
 
 #: app/templates/explore.hbs:55:38
 msgid "No events found for selected filters"
