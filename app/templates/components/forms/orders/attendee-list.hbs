@@ -16,19 +16,21 @@
           </div>
           {{# each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
-              <div class="field">
-                <h4 class="weight-300">
-                  {{field.name}}
-                </h4>
-                {{#if (is-input-field field.type) }}
-                  <span>{{get holder field.fieldIdentifier}}</span>
-                {{else if (eq field.type 'select')}}
-                  <span>{{get holder field.fieldIdentifier}}</span>
-                {{/if}}
-                {{#if field.isComplex}}
-                  <span>{{get holder.complexFieldValues field.fieldIdentifier}}</span>
-                {{/if}}
-              </div>
+              {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
+                <div class="field">
+                    <h4 class="weight-300">
+                      {{field.name}}
+                    </h4>
+                    {{#if (is-input-field field.type) }}
+                      <span>{{get holder field.fieldIdentifier}}</span>
+                    {{else if (eq field.type 'select')}}
+                      <span>{{get holder field.fieldIdentifier}}</span>
+                    {{/if}}
+                    {{#if field.isComplex}}
+                      <span>{{get holder.complexFieldValues field.fieldIdentifier}}</span>
+                    {{/if}}
+                </div>
+              {{/if}}
             {{/if}}
           {{/each}}
           <div class="ui divider"></div>

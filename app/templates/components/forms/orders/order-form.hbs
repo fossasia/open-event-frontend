@@ -61,86 +61,88 @@
         </div>
         {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
-            <form class="field">
-              <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
-              {{#if (is-input-field field.type) }}
-                {{#if field.isLongText}}
-                  <Widgets::Forms::RichTextEditor
-                    @value={{mut (get holder field.fieldIdentifier)}}
-                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-
-                {{else}}
-                  {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
-                    <Input
-                      @type={{field.type}}
-                      @value={{mut (get holder field.identifierPath)}}
-                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                      @readonly="" />
-                  {{else}}
-                    <Input
-                      @type={{field.type}}
-                      @value={{mut (get holder field.identifierPath)}}
+            {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
+              <form class="field">
+                <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+                {{#if (is-input-field field.type) }}
+                  {{#if field.isLongText}}
+                    <Widgets::Forms::RichTextEditor
+                      @value={{mut (get holder field.fieldIdentifier)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+
+                  {{else}}
+                    {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
+                      <Input
+                        @type={{field.type}}
+                        @value={{mut (get holder field.identifierPath)}}
+                        @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
+                        @readonly="" />
+                    {{else}}
+                      <Input
+                        @type={{field.type}}
+                        @value={{mut (get holder field.identifierPath)}}
+                        @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    {{/if}}
                   {{/if}}
+                {{else if (eq field.fieldIdentifier 'gender')}}
+                  <UiDropdown
+                    @class="search selection"
+                    @selected={{get holder field.fieldIdentifier}}
+                    @onChange={{action (mut holder.gender)}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your gender'}}</div>
+                    <div class="menu">
+                      {{#each this.genders as |gender|}}
+                        <div class="item" data-value="{{map-value mapper gender.name}}">
+                          {{gender.name}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                {{else if (eq field.fieldIdentifier 'country')}}
+                  <UiDropdown
+                    @class="search selection"
+                    @selected={{get holder field.fieldIdentifier}}
+                    @onChange={{action (mut holder.country)}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @autocomplete="no"
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your country'}}</div>
+                    <div class="menu">
+                      {{#each this.countries as |country|}}
+                        <div class="item" data-value="{{map-value mapper country.name}}">
+                          <i class="{{lowercase country.code}} flag"></i>
+                          {{country.name}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                {{else if (eq field.fieldIdentifier 'ageGroup')}}
+                  <UiDropdown
+                    @class="search selection"
+                    @selected={{get holder field.fieldIdentifier}}
+                    @onChange={{action (mut holder.ageGroup)}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your age group'}}</div>
+                    <div class="menu">
+                      {{#each this.ageGroups as |ageGroup|}}
+                        <div class="item" data-value="{{map-value mapper ageGroup.age}}">
+                          {{ageGroup.age}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
                 {{/if}}
-              {{else if (eq field.fieldIdentifier 'gender')}}
-                <UiDropdown
-                  @class="search selection"
-                  @selected={{get holder field.fieldIdentifier}}
-                  @onChange={{action (mut holder.gender)}} as |execute mapper|>
-                  <Input
-                    @type="hidden"
-                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-                  <i class="dropdown icon"></i>
-                  <div class="default text">{{t 'Select your gender'}}</div>
-                  <div class="menu">
-                    {{#each this.genders as |gender|}}
-                      <div class="item" data-value="{{map-value mapper gender.name}}">
-                        {{gender.name}}
-                      </div>
-                    {{/each}}
-                  </div>
-                </UiDropdown>
-              {{else if (eq field.fieldIdentifier 'country')}}
-                <UiDropdown
-                  @class="search selection"
-                  @selected={{get holder field.fieldIdentifier}}
-                  @onChange={{action (mut holder.country)}} as |execute mapper|>
-                  <Input
-                    @type="hidden"
-                    @autocomplete="no"
-                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-                  <i class="dropdown icon"></i>
-                  <div class="default text">{{t 'Select your country'}}</div>
-                  <div class="menu">
-                    {{#each this.countries as |country|}}
-                      <div class="item" data-value="{{map-value mapper country.name}}">
-                        <i class="{{lowercase country.code}} flag"></i>
-                        {{country.name}}
-                      </div>
-                    {{/each}}
-                  </div>
-                </UiDropdown>
-              {{else if (eq field.fieldIdentifier 'ageGroup')}}
-                <UiDropdown
-                  @class="search selection"
-                  @selected={{get holder field.fieldIdentifier}}
-                  @onChange={{action (mut holder.ageGroup)}} as |execute mapper|>
-                  <Input
-                    @type="hidden"
-                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-                  <i class="dropdown icon"></i>
-                  <div class="default text">{{t 'Select your age group'}}</div>
-                  <div class="menu">
-                    {{#each this.ageGroups as |ageGroup|}}
-                      <div class="item" data-value="{{map-value mapper ageGroup.age}}">
-                        {{ageGroup.age}}
-                      </div>
-                    {{/each}}
-                  </div>
-                </UiDropdown>
-              {{/if}}
-            </form>
+              </form>
+            {{/if}}
           {{/if}}
         {{/each}}
       {{/each}}
