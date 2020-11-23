@@ -3,10 +3,14 @@
     <div class="ui">
       <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
-        {{#unless @hideSessionLink}}
-          {{!-- template-lint-disable no-nested-interactive  --}}
-          <a href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css float='right' color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
-        {{/unless}}
+        <span style={{css float='right' color=(text-color @session.track.color 'grey' 'lightgrey')}}>
+          {{#if @session.microlocation.videoStream}}
+            <a role="button" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream}}" target="blank" rel="noreferrer nofollower"><i class="video icon"></i></a>
+          {{/if}}
+          {{#unless @hideSessionLink}}
+            <a role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}"><i class="share icon"></i></a>
+          {{/unless}}
+        </span>
         <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
           {{@session.sessionType.name}}
         </div>
