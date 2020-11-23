@@ -383,7 +383,8 @@ export default Component.extend(FormMixin, {
 
     const addCustomFieldRules = form => {
       this.allFields[form].filter(field => field.isComplex && field.isRequired).forEach(field => {
-        validationRules.fields[`${form}_${field.fieldIdentifier}_required`] = {
+        validationRules.fields[field.name] = {
+          identifier: `${form}_${field.fieldIdentifier}_required`,
           rules: [
             {
               type   : 'empty',
