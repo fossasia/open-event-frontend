@@ -16,9 +16,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   revertChanges: observer('data.event.isTicketFormEnabled', function() {
-    if(!this.data.event.isTicketFormEnabled){
+    if (!this.data.event.isTicketFormEnabled) {
       this.editableFields.forEach(field => field.set('isRequired', false))
-    }
+    };
   }),
 
   showEditColumn: computed('editableFields.@each', function() {
