@@ -69,7 +69,6 @@
                     <Widgets::Forms::RichTextEditor
                       @value={{mut (get holder field.fieldIdentifier)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-
                   {{else}}
                     {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
                       <Input
