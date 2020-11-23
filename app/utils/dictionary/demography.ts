@@ -1,8 +1,13 @@
+export interface Country {
+  name: string;
+  code: string;
+}
+
 /**
  * Using a lean list of countries instead of an external dependency.
  * All the libraries have a lot of extra data which is of no use to us at this point and unnecessarily takes up more space.
  */
-export const countries = [
+export const countries: Country[] = [
   {
     name : 'Andorra',
     code : 'AD'
