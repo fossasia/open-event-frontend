@@ -229,19 +229,21 @@ export default class IndexRoute extends Route {
 
     return hash({
       filteredEvents: this.store.query('event', {
-        upcoming : true,
-        include  : 'event-topic,event-sub-topic,event-type,speakers-call'
+        upcoming     : true,
+        include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+        'page[size]' : 12
       }),
       featuredEvents: this.store.query('event', {
-        sort    : 'starts-at',
-        include : 'event-topic,event-sub-topic,event-type,speakers-call',
-        filter  : filterOptions
+        sort         : 'starts-at',
+        include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter       : filterOptions,
+        'page[size]' : 6
       }),
       callForSpeakersEvents: this.store.query('event', {
         sort         : 'starts-at',
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter       : callForSpeakersFilter,
-        'page[size]' : 12
+        'page[size]' : 6
       })
     });
   }
