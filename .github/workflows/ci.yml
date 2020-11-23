@@ -18,9 +18,10 @@ jobs:
       with:
         node-version: 14.x
     - run: yarn
+    - run: touch .env
     - run: yarn l10n:generate
     - run: yarn lint
     - run: COVERAGE=true yarn test
-    - run: ROOT_URL=open-event-frontend ember build -prod
+    - run: ROOT_URL=open-event-frontend yarn build -prod
     - name: Code Coverage
       uses: codecov/codecov-action@v1
