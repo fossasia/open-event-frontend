@@ -41,8 +41,8 @@
               <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
             {{/if}}
             <div class="divider"></div>
-            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i
-                  class="ui right floated large signout sign out icon"></i></span></a>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><div class="d-flex space-between">{{t 'Logout'}}<i
+                  class="ui sign out icon"></i></div></a>
           </div>
         </UiDropdown>
       {{else}}
