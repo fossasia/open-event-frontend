@@ -29,9 +29,9 @@ jobs:
           ${{ runner.os }}-yarn
     - run: yarn
     - run: touch .env
-    - run: yarn l10n:generate
-    - run: yarn lint
-    - run: COVERAGE=true yarn test
-    - run: ROOT_URL=open-event-frontend yarn build -prod
-    - name: Code Coverage
-      uses: codecov/codecov-action@v1
+#     - run: yarn l10n:generate
+#     - run: yarn lint
+#     - run: COVERAGE=true yarn test
+#     - run: ROOT_URL=open-event-frontend yarn build -prod
+#     - name: Code Coverage
+#       uses: codecov/codecov-action@v1
