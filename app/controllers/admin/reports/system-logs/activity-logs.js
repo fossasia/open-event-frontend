@@ -10,13 +10,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'Actor',
+        name            : this.l10n.t('Actor'),
         valuePath       : 'actor',
         headerComponent : 'tables/headers/sort',
         isSortable      : true
       },
       {
-        name            : 'Time',
+        name            : this.l10n.t('Time'),
         valuePath       : 'time',
         cellComponent   : 'ui-table/cell/admin/reports/system-logs/activity-logs/cell-time',
         headerComponent : 'tables/headers/sort',
@@ -24,7 +24,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
       },
       {
-        name      : 'Actions',
+        name      : this.l10n.t('Actions'),
         valuePath : 'action'
       }];
   }
