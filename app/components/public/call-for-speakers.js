@@ -18,8 +18,7 @@ export default class CallForSpeakers extends Component {
         type              : 'info',
         preventDuplicates : true
       });
-      this.router.transitionTo('login');
-      // this.set('isLoginModalOpen', true);
+      this.set('isLoginModalOpen', true);
     }
   }
 

@@ -110,8 +110,7 @@ export default class IndexController extends Controller {
         type              : 'info',
         preventDuplicates : true
       });
-      this.transitionToRoute('login');
-      // this.set('isLoginModalOpen', true);
+      this.set('isLoginModalOpen', true);
       return;
     }
     this.send('save');

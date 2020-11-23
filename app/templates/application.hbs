@@ -12,17 +12,6 @@
 <SideBar>
   <div class="footer-pusher">
     <NavBar @unreadNotifications={{this.unreadNotifications}} />
-    
-     <div class="flash-messages ui container">
-      {{#each flashMessages.queue as |flash|}}
-         <div class="ui {{flash.type}} message">
-           <div class="header">
-            <FlashMessage @flash = {{flash}}/>
-            </div>
-          </div>
-      {{/each}}
-     </div>
-
     {{#if (eq this.routing.currentRouteName 'index')}}
       <WelcomeHeader />
     {{/if}}
@@ -30,8 +19,6 @@
          class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
-
-    
     <FooterMain @socialLinks={{this.model.socialLinks}} />
 
   </div>
