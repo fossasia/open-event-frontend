@@ -30,6 +30,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-yarn
     - run: yarn
+      if: steps.yarn-cache.outputs.cache-hit != 'true'
     - run: touch .env
 #     - run: yarn l10n:generate
 #     - run: yarn lint
