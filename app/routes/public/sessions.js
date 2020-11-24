@@ -96,6 +96,12 @@ export default class SessionsRoute extends Route {
       });
     }
 
+    const isFiltering = (
+        params.room === null && 
+        params.track === null && 
+        params.data === null
+      ) ? false : true;
+
     return {
       event   : eventDetails,
       session : await this.infinity.model('session', {
@@ -106,7 +112,8 @@ export default class SessionsRoute extends Route {
         startingPage : 1,
         perPageParam : 'page[size]',
         pageParam    : 'page[number]'
-      })
+      }),
+      isFiltering
     };
   }
 }
