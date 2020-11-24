@@ -93,3 +93,10 @@ jobs:
           # no restore-keys here, so we only accept this exact version
       - run: yarn l10n:generate
       - run: ROOT_URL=open-event-frontend yarn build -prod
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/development' && github.event_name == 'push'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
