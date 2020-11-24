@@ -5,7 +5,7 @@ module('Unit | Route | public/stream/view', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let route = this.owner.lookup('route:public/stream/view');
+    const route = this.owner.lookup('route:public/stream/view');
     assert.ok(route);
   });
 });

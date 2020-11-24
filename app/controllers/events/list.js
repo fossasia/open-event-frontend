@@ -6,7 +6,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'starts-at';
 
   sort_dir = 'DSC';
-  
+
   get columns() {
     return [
       {

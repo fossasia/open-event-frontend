@@ -97,7 +97,7 @@ export default class SessionsRoute extends Route {
         startingPage : 1,
         perPageParam : 'page[size]',
         pageParam    : 'page[number]',
-        store: eventDetails
+        store        : eventDetails
       })
     };
   }
