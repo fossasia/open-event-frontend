@@ -26,7 +26,7 @@ export default class SessionsController extends Controller {
       });
     }
   }
-  
+
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
   get allDates() {
     const arr = [];
