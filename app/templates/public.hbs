@@ -29,12 +29,12 @@
               <i class="content icon"></i>
             </button>
             {{#if this.isMenuOpen}}
-              <Public::SideMenu @class="toggle menu" @event={{this.model}} />
+              <Public::SideMenu @class="toggle menu" @event={{this.model}} @goTo={{action 'goTo'}} />
             {{/if}}
           {{/if}}
         {{else}}
           <div class="ui fluid side-menu">
-            <Public::SideMenu @event={{this.model}} />
+            <Public::SideMenu @event={{this.model}} @goTo={{action 'goTo'}} />
           </div>
         {{/if}}
       </div>

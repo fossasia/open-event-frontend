@@ -7,6 +7,9 @@ import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class SideMenu extends Component {
+
+  activeSection = null;
+
   @tracked
   showSpeakers = false;
 
@@ -45,16 +48,29 @@ export default class SideMenu extends Component {
     this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
   }
 
+  didRender() {
+    const target = document.querySelector(`[href='#${this.activeSection}']`);
+    if (target) {
+      target.click();
+    }
+  }
+
+  @action
+  goToSection(section) {
+    this.sendAction('goTo');
+    this.set('activeSection', section);
+  }
+
   @action
   scrollToTarget(section) {
-        document.querySelector(`#${section}`).scrollIntoView({
-          behavior: 'smooth'
-        });
-
-        document.querySelectorAll('.scroll').forEach(node => {
-          node.classList.remove('active');
-        });
-        document.querySelector(`[href='#${section}']`).classList.add('active');
+    document.querySelector(`#${section}`).scrollIntoView({
+      behavior: 'smooth'
+    });
+    this.set('activeSection', null);
+    document.querySelectorAll('.scroll').forEach(node => {
+      node.classList.remove('active');
+    });
+    document.querySelector(`[href='#${section}']`).classList.add('active');
   }
 
   @computed('event.schedulePublishedOn')
