@@ -89,6 +89,12 @@
         </div>
       </div>
     {{/if}}
+
+    {{#if @session.microlocation.videoStream.additionalInformation}}
+      <p style="white-space: pre-line;">
+        {{@session.microlocation.videoStream.additionalInformation}}
+      </p>
+    {{/if}}
     
     {{#each @session.speakers as |speaker|}}
       <img alt="speaker" class="ui tiny avatar image mt-8" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
