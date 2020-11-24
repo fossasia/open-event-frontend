@@ -34,11 +34,6 @@ export default class PublicController extends Controller {
   }
 
   @action
-  goTo() {
-    this.transitionToRoute('public.index');
-  }
-
-  @action
   toggleMenu() {
     this.toggleProperty('isMenuOpen');
   }

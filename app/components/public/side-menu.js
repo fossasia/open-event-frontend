@@ -49,15 +49,18 @@ export default class SideMenu extends Component {
   }
 
   didRender() {
+    if (!this.activeSection) { return }
     const target = document.querySelector(`[href='#${this.activeSection}']`);
     if (target) {
-      target.click();
+      // Delay click to give time to render
+      setTimeout(() => {
+        target.click();
+      }, 0);
     }
   }
 
   @action
   goToSection(section) {
-    this.sendAction('goTo');
     this.set('activeSection', section);
   }
 
