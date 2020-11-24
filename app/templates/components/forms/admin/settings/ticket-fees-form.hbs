@@ -52,27 +52,11 @@
   {{#each this.ticketFees as |ticketFee|}}
     <div class="ui five column very relaxed grid">
       <div class="ui field three wide column">
-        <label class="required">{{t 'Select country'}}</label>
-        <UiDropdown
-          @class="search selection"
-          @selected={{ticketFee.country}}
-          @forceSelection={{false}}
-          @fullTextSearch={{true}}>
-          <Input
-            @type="hidden"
-            @autocomplete="no"
-            @value={{ticketFee.country}} />
-          <i class="dropdown icon"></i>
-          <div class="default text">{{t 'Select country'}}</div>
-          <div class="menu">
-            {{#each this.paymentCountries as |paymentCountry|}}
-              <div class="item" data-value="{{paymentCountry.name}}">
-                <i class="{{lowercase paymentCountry.code}} flag"></i>
-                {{paymentCountry.name}}
-              </div>
-            {{/each}}
-          </div>
-        </UiDropdown>
+        <CountryDropdown
+          @required={{true}}
+          @paymentCountries={{true}}
+          @placeholder={{t 'Select country'}}
+          @val={{ticketFee.country}} />
       </div>
       <div class="ui field four wide column">
         <label class="required">{{t 'Select currency'}}</label>
