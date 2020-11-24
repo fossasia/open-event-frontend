@@ -24,11 +24,6 @@
       <i class="delete icon"></i>
     </UiPopup>
   {{/if}}
-  {{#if (can-modify-order this.record)}}
-    <UiPopup @content={{t "Delete order"}} @click={{action (confirm (t "Are you sure you would like to delete this Order?") (action this.props.actions.deleteOrder this.record))}} @class="ui icon button" @position="top center">
-      <i class="trash icon"></i>
-    </UiPopup>
-  {{/if}}
   <UiPopup @content={{t "Resend order confirmation"}} @click={{action this.props.actions.resendConfirmation this.record}} @class="ui icon button" @position="top center">
     <i class="mail outline icon"></i>
   </UiPopup>
