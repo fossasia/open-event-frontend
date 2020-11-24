@@ -38,7 +38,7 @@
       <tr class="{{if field.isIncluded 'positive'}}">
         <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
           <label class="{{if field.isFixed 'required'}}">
-            {{field.name}}
+            {{t-var field.name}}
             {{#if field.isComplex}}
               <div class="ui icon d-inline" data-tooltip="Custom Field">
                 <i class="info icon"></i>
@@ -47,7 +47,7 @@
           </label>
         </td>
         <td class="center aligned">
-          {{field.type}}
+          {{t-var field.type}}
         </td>
         <td class="center aligned">
           <UiCheckbox
