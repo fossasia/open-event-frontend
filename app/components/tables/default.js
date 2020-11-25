@@ -5,8 +5,6 @@ import Component from '@ember/component';
 export default class Tables extends Component {
 
     didRender() {
-        if (this.rendered) {
-            this.rendered();
-        }
+        this.rendered?.();
     }
 }
