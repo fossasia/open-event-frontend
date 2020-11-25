@@ -13,7 +13,13 @@
           <div class="inline field">
             <i class="user icon"></i>
             <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+             <button class="ui right floated button {{if this.device.isMobile 'fluid'}} button"
+          {{action this.downloadTicketForAttendee @event.name holder.order.id holder.id }}>
+            <i class="ticket icon"></i>
+            {{t 'Download Ticket'}}
+          </button>
           </div>
+         
           {{# each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
               <div class="field">
