@@ -5,7 +5,7 @@
       <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
         <span style={{css float='right'}}>
-          {{#if @session.microlocation.videoStream}}
+          {{#if @session.microlocation.hasVideoStream}}
             <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
               <i class="icon video"></i>
               {{t 'Join Video'}}
@@ -90,7 +90,7 @@
       </div>
     {{/if}}
 
-    {{#if @session.microlocation.videoStream}}
+    {{#if @session.microlocation.hasVideoStream}}
       <p style="white-space: pre-line;">
         <a class="mt-2" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
         {{#if @session.microlocation.videoStream.password}}

@@ -12,7 +12,13 @@ export default class Microlocation extends ModelBase.extend({
   sessions    : hasMany('session'),
   event       : belongsTo('event'),
   videoStream : belongsTo('video-stream')
-}) {}
+}) {
+
+  get hasVideoStream(): boolean {
+    return this.belongsTo('videoStream').value() != null;
+  }
+
+}
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
 declare module 'ember-data/types/registries/model' {
