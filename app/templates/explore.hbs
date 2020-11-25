@@ -1,8 +1,8 @@
 <div class="ui stackable grid">
-  <div class="four wide column">
+  <div class="three wide column">
     <Explore::SideBar @model={{this.model}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
   </div>
-  <div class="twelve wide column">
+  <div class="thirteen wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
     <div class="ui labels">
       {{#if this.filters.category}}
