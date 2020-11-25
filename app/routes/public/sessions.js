@@ -87,7 +87,7 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    const isFiltering = (params.room === null && params.track === null && params.data === null) ? false : true;
+    const isFiltering = params.room || params.track || params.date;
 
     return {
       event   : eventDetails,
