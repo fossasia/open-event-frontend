@@ -11,17 +11,17 @@ sort_dir = 'ASC';
 get columns() {
   return [
     {
-      name            : 'Recipients',
+      name            : this.l10n.t('Recipients'),
       valuePath       : 'recipient',
       headerComponent : 'tables/headers/sort',
       isSortable      : true
     },
     {
-      name      : 'Trigger',
+      name      : this.l10n.t('Trigger'),
       valuePath : 'action'
     },
     {
-      name      : 'Email Message',
+      name      : this.l10n.t('Email Message'),
       valuePath : 'emailMessage',
 
       cellComponent   : 'ui-table/cell/cell-title-message',
@@ -32,7 +32,7 @@ get columns() {
       }
     },
     {
-      name            : 'Notification Message',
+      name            : this.l10n.t('Notification Message'),
       valuePath       : 'notificationMessage',
       cellComponent   : 'ui-table/cell/cell-title-message',
       extraValuePaths : ['notificationTitle'],
@@ -42,13 +42,13 @@ get columns() {
       }
     },
     {
-      name            : 'Options',
+      name            : this.l10n.t('Options'),
       valuePath       : 'option',
       extraValuePaths : ['mailStatus', 'notificationStatus', 'userControlStatus'],
       cellComponent   : 'ui-table/cell/admin/messages/cell-options'
     },
     {
-      name            : 'Time/Date Sent Out',
+      name            : this.l10n.t('Time/Date Sent Out'),
       valuePath       : 'sentAt',
       headerComponent : 'tables/headers/sort',
       isSortable      : true,

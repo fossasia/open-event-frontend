@@ -197,9 +197,11 @@
     <div class="ui two column stackable grid">
       <div class="column">
         <Forms::Wizard::CustomForms::Table
-          @headerText="Collect Speaker Details"
+          @headerText={{t "Collect Speaker Details"}}
           @fields={{this.customForm.speaker}}
-          @updateField={{action (mut this.speakerField)}} />
+          @updateField={{action (mut this.speakerField)}} 
+          @removeField={{action "removeField"}}
+        />
 
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}
@@ -211,9 +213,11 @@
       </div>
       <div class="column">
         <Forms::Wizard::CustomForms::Table
-          @headerText="Collect Session Details"
+          @headerText={{t "Collect Session Details"}}
           @fields={{this.customForm.session}}
-          @updateField={{action (mut this.sessionField)}} />
+          @updateField={{action (mut this.sessionField)}} 
+          @removeField={{action "removeField"}}
+        />
 
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}

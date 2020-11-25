@@ -3,9 +3,8 @@ import moment from 'moment';
 import { values } from 'lodash-es';
 import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
+import { socialMediaIdentifiers } from './dictionary/social-media';
 
-// Social Platforms
-export const socialPlatforms = ['twitter', 'facebook', 'instagram', 'linkedin', 'youtube', 'github', 'gitlab', 'patreon', 'vimeo', 'flicker', 'groups.google', 'vk', 'xing', 'weibo'];
 
 /**
  * Get/set a splitted URL from/to a string URL field
@@ -26,7 +25,7 @@ export const computedSegmentedLink = function(property) {
       }
       // check if the input url is a social url or not
       const splittedDomain = splitted[1].split('.com/');
-      const isSocialUrl = socialPlatforms.includes(splittedDomain[0]);
+      const isSocialUrl = socialMediaIdentifiers.includes(splittedDomain[0]);
       if (isSocialUrl) {
         return {
           protocol : `${splitted[0]}://${splittedDomain[0]}.com/`,
