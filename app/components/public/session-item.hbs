@@ -6,10 +6,10 @@
         {{@session.title}}
         <span style={{css float='right'}}>
           {{#if @session.microlocation.videoStream}}
-            <a role="button" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream}}" target="_blank"
-              style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} rel="noopener" {{action this.goToStream}}>
-              <i class="video icon"></i>
-            </a>
+            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+              <i class="icon video"></i>
+              {{t 'Join Video'}}
+            </button>
           {{/if}}
           {{#unless @hideSessionLink}}
             <a role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
@@ -90,8 +90,26 @@
       </div>
     {{/if}}
 
-    {{#if @session.microlocation.videoStream.additionalInformation}}
+    {{#if @session.microlocation.videoStream}}
       <p style="white-space: pre-line;">
+        <a class="mt-2" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
+        {{#if @session.microlocation.videoStream.password}}
+          <div class="d-flex items-center">
+            <span>{{t 'Password'}}: </span>
+            <UiPopup @on="click" @content={{t "Copied to clipboard"}} @position="bottom right" style="white-space: normal;">
+              <CopyButton @clipboardText={{@session.microlocation.videoStream.password}} class="ui basic segments">
+                <div class="ui left labeled button">
+                  <div class="ui basic label">
+                    {{@session.microlocation.videoStream.password}}
+                  </div>
+                  <div class="ui icon button">
+                    <i class="copy icon"></i>
+                  </div>
+                </div>
+              </CopyButton>
+            </UiPopup>
+          </div>
+        {{/if}}
         {{@session.microlocation.videoStream.additionalInformation}}
       </p>
     {{/if}}
