@@ -79,25 +79,6 @@
     {{/each}}
   </div>
   <div>
-    <div>{{t 'Set the min and max quantity allowed to purchase per order (Optional)'}}</div>
-    <div class="{{unless this.device.isMobile 'fields'}}">
-      <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-        <label>{{t 'Min'}}</label>
-        <Input
-          @type="number"
-          @name="min_order"
-          @min="0"
-          @value={{this.data.minQuantity}} />
-      </div>
-      <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-        <label>{{t 'Max'}}</label>
-        <Input
-          @type="number"
-          @name="max_order"
-          @min="0"
-          @value={{this.data.maxQuantity}} />
-      </div>
-    </div>
     <div class="field">
       <label>{{t 'Discount valid from'}}</label>
         <div class="{{if this.device.isMobile 'grouped'}} fields">
