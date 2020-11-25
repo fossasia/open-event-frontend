@@ -1,16 +1,17 @@
 import Helper from '@ember/component/helper';
 import moment from 'moment';
 
+const locales12Hours = new Set(['en', 'bn', 'hi', 'id', 'ja', 'run', 'th', 'vi', 'ko']);
+
 export function headerDate(params) {
   const timezone = params[1] ? params[1] : moment.tz.guess();
 
-  const locals = ['en', 'bn', 'hi', 'id', 'ja', 'run', 'th', 'vi', 'ko'];
   const local = moment(params[0]).tz(timezone).locale();
 
-  let format = 'dddd, MMMM Do YYYY, h:mm A';
+  let format = 'dddd, MMMM Do YYYY, hh:mm A';
 
-  if (!locals.includes(local)) {
-    format = format.replaceAll('h', 'H');
+  if (!locales12Hours.has(local)) {
+    format = format.replace('hh', 'HH');
     format = format.replace(' A', '');
   }
 
