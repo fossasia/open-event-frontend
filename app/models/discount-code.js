@@ -32,7 +32,7 @@ export default ModelBase.extend({
   isExpired : computed('validTill', function() {
     return new Date() > new Date(this.validTill);
   }),
-  maxQuantity : computed('ticketsNumber', function() {
+  maxQuantity: computed('ticketsNumber', function() {
     return this.ticketsNumber;
   }),
   event: belongsTo('event', {
