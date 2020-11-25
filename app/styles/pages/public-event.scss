@@ -114,14 +114,75 @@
           }
         }
 
+               /*********/
+
+        @media (max-width: 412px) {
+          .info {
+            .logo {
+              height: 30px;
+              max-width: 260px;
+              padding-bottom: 4px;
+            }
+
+            .event.name {
+              font-size: 1.4rem;
+            }
+
+            .event.time {
+              font-size: 1.05rem;
+              padding-bottom: 3px;
+            }
+
+            .event.time.ends {
+              font-size: 1.05rem;
+            }
+
+            .event.location {
+              font-size: 0.9rem;
+              padding: 4px;
+            }
+          }
+        }
+        @media (max-width: 550px) and (min-width: 413px) {
+          .info {
+            .logo {
+              height: 50px;
+              max-width: 260px;
+              padding-bottom: 2px;
+            }
+
+            .event.name {
+              font-size: 1.8rem;
+              padding-bottom: 3px;
+            }
+
+            .event.time {
+              font-size: 1rem;
+              padding: 5px 0;
+            }
+
+            .event.time.ends {
+              font-size: 1rem;
+            }
+
+            .event.location {
+              font-size: 1.15rem;
+            }
+          }
+        }
+
+        /***********/
+
         @media (max-width: 550px) {
           .info {
             bottom: 5%;
+            padding: 2px 12px;
           }
         }
       }
     }
   }
+
 
   div.lead.small {
     &:not(.with) {
