@@ -45,6 +45,9 @@ Router.map(function() {
     this.route('session', function() {
       this.route('view', { path: '/:session_id' });
     });
+    this.route('stream', function() {
+      this.route('view', { path: '/:stream_id' });
+    });
     this.route('speaker', function() {
       this.route('view', { path: '/:speaker_id' });
     });
