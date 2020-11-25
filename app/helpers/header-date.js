@@ -8,10 +8,10 @@ export function headerDate(params) {
 
   const local = moment(params[0]).tz(timezone).locale();
 
-  let format = 'dddd, MMMM Do YYYY, hh:mm A';
+  let format = 'dddd, MMMM Do YYYY, h:mm A';
 
   if (!locales12Hours.has(local)) {
-    format = format.replace('hh', 'HH');
+    format = format.replace('h', 'HH');
     format = format.replace(' A', '');
   }
 
