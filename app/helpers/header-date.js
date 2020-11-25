@@ -8,9 +8,9 @@ export function headerDate(params) {
 
   if (moment(params[0]).tz(timezone).format('A') === 'AM' || moment(params[0]).tz(timezone).format('A') === 'PM') {
     format = format.replaceAll('h', 'H');
-    format = format.replace('A', '');
+    format = format.replace(' A', '');
   }
-  
+
   return `${moment(params[0]).tz(timezone).format(format)} (${moment.tz(params[0], timezone).zoneAbbr()})`;
 }
 

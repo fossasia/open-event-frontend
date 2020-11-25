@@ -13,8 +13,8 @@ export function generalDate(params) {
 
   if (changeTo24) {
     format = format.replaceAll('h', 'H');
-    format = format.replace('A', '');
-    format = format.replace('a', '');
+    format = format.replace(' A', '');
+    format = format.replace(' a', '');
   }
   return moment(params[0]).tz(timezone).format(format);
 }
