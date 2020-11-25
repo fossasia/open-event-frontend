@@ -98,7 +98,7 @@ export default class SessionsRoute extends Route {
         perPage      : 6,
         startingPage : 1,
         perPageParam : 'page[size]',
-        pageParam    : 'page[number]'
+        pageParam    : 'page[number]',
         store        : eventDetails
       }),
       isFiltering
