@@ -98,35 +98,43 @@
           @value={{this.data.maxQuantity}} />
       </div>
     </div>
-    <div class="fields">
-      <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-        <label>{{t 'Discount valid from'}}</label>
-        <Widgets::Forms::DatePicker
-          @name="start_date"
-          @value={{this.data.validFromDate}}
-          @rangePosition="start"
-          @onChange={{action "onChange"}} />
-        <div class="ui hidden divider"></div>
-        <Widgets::Forms::TimePicker
-          @name="start_time"
-          @value={{this.data.validFromTime}}
-          @onChange={{action "onChange"}} />
-      </div>
-      <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-        <label>{{t 'Discount expires on'}}</label>
-        <Widgets::Forms::DatePicker
-          @type="text"
-          @name="end_date"
-          @value={{this.data.validTillDate}}
-          @rangePosition="end"
-          @onChange={{action "onChange"}} />
-        <div class="ui hidden divider"></div>
-        <Widgets::Forms::TimePicker
-          @type="text"
-          @name="end_time"
-          @value={{this.data.validTillTime}}
-          @onChange={{action "onChange"}} />
-      </div>
+    <div class="field">
+      <label>{{t 'Discount valid from'}}</label>
+        <div class="{{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
+              @name="start_date"
+              @value={{this.data.validFromDate}}
+              @rangePosition="start"
+              @onChange={{action "onChange"}} />
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
+              @name="start_time"
+              @value={{this.data.validFromTime}}
+              @onChange={{action "onChange"}} />
+          </div>
+        </div>
+    </div>
+    <div class="field">
+      <label>{{t 'Discount expires on'}}</label>
+        <div class="{{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
+              @type="text"
+              @name="end_date"
+              @value={{this.data.validTillDate}}
+              @rangePosition="end"
+              @onChange={{action "onChange"}} />
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
+              @type="text"
+              @name="end_time"
+              @value={{this.data.validTillTime}}
+              @onChange={{action "onChange"}} />
+          </div>
+        </div>
     </div>
     <div class="field">
       <label>{{t 'Discount Link'}}</label>
