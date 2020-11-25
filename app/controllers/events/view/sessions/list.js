@@ -1,10 +1,37 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { mapBy } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import $ from 'jquery';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
+
+  @computed('model.sessions.data')
+  get sessions() {
+    const len = this.model.sessions.data.length;
+    this.model.sessions.data.forEach((item, idx) => {
+      if (len >= 4 && idx >= len - 2) {
+        item.set('dir', 'upward');
+      }
+      else if (len > 2) {
+        if (idx == len - 1) {
+          item.set('dir', 'upward');
+        }
+        else if (idx < 2) {
+          item.set('dir', 'downward');
+        }
+        else {
+          item.set('dir', 'auto');
+        }
+      }
+      else {
+        item.set('dir', 'downward');
+      }
+    });
+    
+    return this.model.sessions.data;
+  }
 
   get columns() {
     return [
@@ -15,7 +42,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         width           : 75,
         valuePath       : 'state',
         isSortable      : true,
-        extraValuePaths : ['id', 'status'],
+        extraValuePaths : ['id', 'status', 'dir'],
         options         : {
           sessionStateMap: this.model.sessionStateMap
         },
@@ -103,6 +130,24 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       }
     ];
+  }
+
+  @action
+  tableRendered() {
+    let margin = 0;
+    const len = this.model.sessions.data.length;
+
+    if (len > 0 && len <= 2) {
+      margin = 150;
+    }
+    else if (len <= 3) {
+      margin = 50;
+    }
+    else {
+      margin = 0;
+    }
+
+    $('.ember-table table').css('margin-bottom', margin);    
   }
 
   @action
