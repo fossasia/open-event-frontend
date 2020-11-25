@@ -15,7 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         item.set('dir', 'upward');
       }
       else if (len > 2) {
-        if (idx == len - 1) {
+        if (idx === len - 1) {
           item.set('dir', 'upward');
         }
         else if (idx < 2) {
