@@ -7,6 +7,9 @@ import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class SideMenu extends Component {
+
+  activeSection = null;
+
   @tracked
   showSpeakers = false;
 
@@ -45,21 +48,32 @@ export default class SideMenu extends Component {
     this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
   }
 
-  @action
-  scrollToTarget() {
-    document.querySelectorAll('.scroll').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+  didRender() {
+    if (!this.activeSection) { return }
+    const target = document.querySelector(`[href='#${this.activeSection}']`);
+    if (target) {
+      // Delay click to give time to render
+      setTimeout(() => {
+        target.click();
+      }, 0);
+    }
+  }
 
-        document.querySelectorAll('.scroll').forEach(node => {
-          node.classList.remove('active');
-        });
-        e.target.classList.add('active');
-      });
+  @action
+  goToSection(section) {
+    this.set('activeSection', section);
+  }
+
+  @action
+  scrollToTarget(section) {
+    document.querySelector(`#${section}`).scrollIntoView({
+      behavior: 'smooth'
     });
+    this.set('activeSection', null);
+    document.querySelectorAll('.scroll').forEach(node => {
+      node.classList.remove('active');
+    });
+    document.querySelector(`[href='#${section}']`).classList.add('active');
   }
 
   @computed('event.schedulePublishedOn')

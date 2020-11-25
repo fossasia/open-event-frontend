@@ -25,4 +25,9 @@ export default class SessionItem extends Component {
       this.hideImage = false;
     }
   }
+
+  @action
+  goToStream() {
+    window.open(`/e/${this.args.event?.identifier ?? this.args.session.get('event.identifier')}/stream/${this.args.session.get('microlocation.videoStream.id')}`, '_blank');
+  }
 }

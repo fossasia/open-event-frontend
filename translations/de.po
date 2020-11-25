@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2020-11-18 09:19+0000\n"
+"PO-Revision-Date: 2020-11-23 06:36+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/open-event/frontend/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/open-event/"
+"frontend/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,17 +77,17 @@ msgstr "Ihr Konto wurde erfolgreich gelöscht."
 #: app/components/widgets/forms/image-upload.js:44:26
 #: app/controllers/admin/content/events.js:77:26
 #: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/admin/events/list.js:136:26
-#: app/controllers/admin/events/list.js:161:24
-#: app/controllers/admin/events/list.js:183:24
-#: app/controllers/admin/events/list.js:204:24
+#: app/controllers/admin/events/list.js:139:26
+#: app/controllers/admin/events/list.js:164:24
+#: app/controllers/admin/events/list.js:186:24
+#: app/controllers/admin/events/list.js:207:24
 #: app/controllers/admin/sessions/list.js:86:24
 #: app/controllers/admin/users/list.js:109:24
 #: app/controllers/admin/users/list.js:140:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
 #: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/list.js:81:24
+#: app/controllers/events/list.js:84:24
 #: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/sessions.js:31:26
 #: app/controllers/events/view/sessions/list.js:121:26
@@ -106,10 +107,9 @@ msgstr "Ihr Konto wurde erfolgreich gelöscht."
 #: app/controllers/events/view/tickets/discount-codes/list.js:67:26
 #: app/controllers/events/view/tickets/discount-codes/list.js:86:26
 #: app/controllers/events/view/tickets/orders.js:22:26
-#: app/controllers/events/view/tickets/orders/list.js:82:26
+#: app/controllers/events/view/tickets/orders/list.js:81:26
 #: app/controllers/events/view/tickets/orders/list.js:100:26
-#: app/controllers/events/view/tickets/orders/list.js:119:26
-#: app/controllers/events/view/tickets/orders/list.js:145:26
+#: app/controllers/events/view/tickets/orders/list.js:126:26
 #: app/controllers/events/view/videoroom/list.js:48:24
 #: app/controllers/notifications.js:23:26
 #: app/controllers/oauth/callback.js:31:41
@@ -617,28 +617,28 @@ msgstr "Bitte wählen Sie mindestens 1 Ticket."
 
 #: app/components/forms/events/view/videoroom-form.hbs:5:8
 msgid "Video Channel"
-msgstr ""
+msgstr "Videokanal"
 
 #: app/components/forms/events/view/videoroom-form.hbs:11:8
 msgid "Add Jitsi Room"
-msgstr ""
+msgstr "Jitsiraum hinzufügen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:19:28
 #: app/components/modals/add-room-modal.js:17:14
 msgid "Room"
-msgstr ""
+msgstr "Raum"
 
 #: app/components/forms/events/view/videoroom-form.hbs:27:8
 msgid "Select Rooms"
-msgstr ""
+msgstr "Raum auswählen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:41:28
 msgid "Video Room URL"
-msgstr ""
+msgstr "Videroraum-URL"
 
 #: app/components/forms/events/view/videoroom-form.hbs:48:11
 msgid "Pin"
-msgstr ""
+msgstr "Pin"
 
 #: app/components/forms/events/view/videoroom-form.hbs:53:11
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:28:12
@@ -650,16 +650,16 @@ msgstr "zusätzliche Informationen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:59:11
 msgid "Access"
-msgstr ""
+msgstr "Zugang"
 
 #: app/components/forms/events/view/videoroom-form.hbs:60:87
 msgid "Organization Team"
-msgstr ""
+msgstr "Organisationsteam"
 
 #: app/components/forms/events/view/videoroom-form.hbs:61:87
-#: app/controllers/admin/events/list.js:70:25
+#: app/controllers/admin/events/list.js:73:25
 #: app/controllers/admin/sessions/list.js:26:24
-#: app/controllers/events/list.js:44:24
+#: app/controllers/events/list.js:47:24
 #: app/controllers/events/view/sessions/list.js:41:24
 #: app/routes/events/view/speakers.js:7:11
 #: app/templates/components/events/view/export/api-response.hbs:22:39
@@ -678,11 +678,11 @@ msgstr "Teilnehmer"
 
 #: app/components/forms/events/view/videoroom-form.hbs:63:69
 msgid "All logged in users"
-msgstr ""
+msgstr "Alle angemeldeten Benutzer"
 
 #: app/components/forms/events/view/videoroom-form.hbs:64:69
 msgid "Public (no restriction)"
-msgstr ""
+msgstr "Öffentlich (keine Einschränkung)"
 
 #: app/components/forms/events/view/videoroom-form.hbs:67:68
 #: app/components/forms/wizard/custom-form-input.hbs:20:104
@@ -716,11 +716,11 @@ msgstr "Bitte geben Sie eine URL ein"
 
 #: app/components/forms/events/view/videoroom-form.js:61:23
 msgid "Please select a room"
-msgstr ""
+msgstr "Raum auswählen"
 
 #: app/components/forms/events/view/videoroom-form.js:111:28
 msgid "Your stream has been saved"
-msgstr ""
+msgstr "Stream gespeichert"
 
 #: app/components/forms/login-form.js:38:23
 #: app/components/forms/orders/guest-order-form.js:38:23
@@ -1304,26 +1304,26 @@ msgstr "Als Entwurf speichern"
 
 #: app/components/forms/wizard/wizard-footer.hbs:39:11
 msgid "This event is currently not published. It is in draft mode and it is not visible publicly."
-msgstr ""
+msgstr "Diese Veranstaltung ist derzeit nicht veröffentlicht. Sie befindet sich im Entwurfsmodus und ist nicht öffentlich sichtbar."
 
 #: app/components/forms/wizard/wizard-footer.hbs:41:11
 msgid "This event is published. Any changes you make will appear on your live event."
-msgstr ""
+msgstr "Diese Veranstaltung ist veröffentlicht. Alle Änderungen, die Sie vornehmen, werden in Ihrem Live-Event angezeigt."
 
 #: app/components/forms/wizard/wizard-footer.hbs:44:9
 msgid "You can preview the event after you have saved it as a draft. You can publish the event after filling in the required fields."
-msgstr ""
+msgstr "Sie können eine Vorschau der Veranstaltung anzeigen, nachdem den Entwurf gespeichert haben. Sie können die Veranstaltung veröffentlichen, nachdem Sie die erforderlichen Felder ausgefüllt haben."
 
 #: app/components/modals/add-room-modal.hbs:2:2
 #: app/components/modals/add-room-modal.hbs:25:4
 #: app/templates/events/view/videoroom/list.hbs:11:8
 msgid "Add Room"
-msgstr ""
+msgstr "Raum hinzufügen"
 
 #: app/components/modals/add-room-modal.hbs:8:8
-#: app/controllers/admin/events/list.js:14:27
+#: app/controllers/admin/events/list.js:17:27
 #: app/controllers/admin/users/list.js:17:26
-#: app/controllers/events/list.js:10:26
+#: app/controllers/events/list.js:13:26
 #: app/controllers/events/view/speakers/list.js:16:26
 #: app/templates/components/event-invoice/payee-info.hbs:8:8
 #: app/templates/components/forms/admin/content/pages-form.hbs:3:28
@@ -1336,11 +1336,11 @@ msgstr "Name"
 
 #: app/components/modals/add-room-modal.hbs:14:8
 msgid "Floor"
-msgstr ""
+msgstr "Stockwerk"
 
 #: app/components/modals/add-room-modal.js:16:26
 msgid "{{item}} has been created successfully"
-msgstr ""
+msgstr "{{item}} wurde erstellt."
 
 #: app/components/modals/add-system-role-modal.js:42:23
 msgid "Please enter a role name"
@@ -1494,11 +1494,11 @@ msgstr "Um Ihre Veranstaltung live zu schalten, überprüfen Sie bitte Ihr Konto
 
 #: app/components/unverified-user-message.hbs:16:14
 msgid "Your account functionality is limited."
-msgstr ""
+msgstr "Ihre Kontofunktionalität ist eingeschränkt."
 
 #: app/components/unverified-user-message.hbs:16:79
 msgid "To get full access to all features you need to verify your email by clicking on the confirmation link that has been emailed to you."
-msgstr ""
+msgstr "Um vollen Zugriff auf alle Funktionen zu erhalten, müssen Sie Ihre E-Mail-Adresse verifizieren, indem Sie auf den Bestätigungslink klicken, der Ihnen per E-Mail zugesandt wurde."
 
 #: app/components/unverified-user-message.hbs:19:13
 msgid "Did not get the email?"
@@ -1578,17 +1578,17 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten. Seitendetails wurden nicht gesp
 msgid "Translations Zip generated successfully."
 msgstr "Übersetzungen Zip erfolgreich generiert."
 
-#: app/controllers/admin/events/list.js:31:27
+#: app/controllers/admin/events/list.js:34:27
 #: app/controllers/admin/sessions/list.js:41:26
 msgid "Starts At"
-msgstr ""
+msgstr "Beginnt"
 
-#: app/controllers/admin/events/list.js:40:27
+#: app/controllers/admin/events/list.js:43:27
 #: app/controllers/admin/sessions/list.js:51:26
 msgid "Ends At"
-msgstr ""
+msgstr "Endet"
 
-#: app/controllers/admin/events/list.js:49:27
+#: app/controllers/admin/events/list.js:52:27
 #: app/controllers/admin/sessions/list.js:19:26
 #: app/controllers/events/view/sessions/list.js:12:26
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
@@ -1598,13 +1598,13 @@ msgstr ""
 msgid "State"
 msgstr "Zustand"
 
-#: app/controllers/admin/events/list.js:56:27
-#: app/controllers/events/list.js:32:26
+#: app/controllers/admin/events/list.js:59:27
+#: app/controllers/events/list.js:35:26
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
-#: app/controllers/admin/events/list.js:63:25
-#: app/controllers/events/list.js:39:24 app/routes/admin/sessions.js:8:11
+#: app/controllers/admin/events/list.js:66:25
+#: app/controllers/events/list.js:42:24 app/routes/admin/sessions.js:8:11
 #: app/routes/events/view/sessions.js:7:11 app/routes/public/sessions.js:23:11
 #: app/templates/admin.hbs:14:8 app/templates/admin/index.hbs:13:10
 #: app/templates/components/events/view/export/api-response.hbs:13:39
@@ -1614,40 +1614,40 @@ msgstr ""
 msgid "Sessions"
 msgstr "Sitzungen"
 
-#: app/controllers/admin/events/list.js:76:25
-#: app/controllers/events/list.js:49:24
+#: app/controllers/admin/events/list.js:79:25
+#: app/controllers/events/list.js:52:24
 msgid "Public URL"
-msgstr ""
+msgstr "Öffentliche URL"
 
-#: app/controllers/admin/events/list.js:82:27
+#: app/controllers/admin/events/list.js:85:27
 msgid "Featured Event"
-msgstr ""
+msgstr "Feature-Veranstaltung"
 
-#: app/controllers/admin/events/list.js:94:27
+#: app/controllers/admin/events/list.js:97:27
 msgid "Promoted Event"
-msgstr ""
+msgstr "Hervorgehobene Veranstaltung"
 
-#: app/controllers/admin/events/list.js:124:26
+#: app/controllers/admin/events/list.js:127:26
 #: app/controllers/admin/users/view/events/list.js:79:26
-#: app/controllers/events/list.js:74:26
+#: app/controllers/events/list.js:77:26
 #: app/controllers/events/view/settings.js:17:28
 msgid "Event has been deleted successfully."
 msgstr "Die Veranstaltung wurde erfolgreich gelöscht."
 
-#: app/controllers/admin/events/list.js:155:26
+#: app/controllers/admin/events/list.js:158:26
 #: app/controllers/admin/users/view/events/list.js:97:26
 msgid "Event has been restored successfully."
 msgstr "Die Veranstaltung wurde erfolgreich wiederhergestellt."
 
-#: app/controllers/admin/events/list.js:176:26
+#: app/controllers/admin/events/list.js:179:26
 msgid "Event details modified successfully"
 msgstr "Veranstaltungsdetails wurden geändert"
 
-#: app/controllers/admin/events/list.js:198:45
+#: app/controllers/admin/events/list.js:201:45
 msgid "Event promoted successfully"
 msgstr "Veranstaltung erfolgreich beworben"
 
-#: app/controllers/admin/events/list.js:198:90
+#: app/controllers/admin/events/list.js:201:90
 msgid "Event unpromoted successfully"
 msgstr "Veranstaltung erfolgreich in den Draft-Modus gesetzt"
 
@@ -1657,23 +1657,23 @@ msgstr "Änderungen wurden erfolgreich gespeichert"
 
 #: app/controllers/admin/messages/list.js:14:24
 msgid "Recipients"
-msgstr ""
+msgstr "Empfänger"
 
 #: app/controllers/admin/messages/list.js:20:18
 msgid "Trigger"
-msgstr ""
+msgstr "Auslöser"
 
 #: app/controllers/admin/messages/list.js:24:18
 msgid "Email Message"
-msgstr ""
+msgstr "E-mail-Nachricht"
 
 #: app/controllers/admin/messages/list.js:35:24
 msgid "Notification Message"
-msgstr ""
+msgstr "Benachrichtigungen"
 
 #: app/controllers/admin/messages/list.js:51:24
 msgid "Time/Date Sent Out"
-msgstr ""
+msgstr "Uhrzeit / Datum gesendet"
 
 #: app/controllers/admin/permissions/event-roles.js:20:28
 msgid "Admin Event role permissions have been saved successfully."
@@ -1709,13 +1709,13 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten. Benutzerberechtigungen nicht ge
 
 #: app/controllers/admin/reports/system-logs/activity-logs.js:13:26
 msgid "Actor"
-msgstr ""
+msgstr "Auslöser"
 
 #: app/controllers/admin/reports/system-logs/activity-logs.js:19:26
 #: app/controllers/admin/reports/system-logs/mail-logs.js:19:26
 #: app/controllers/admin/reports/system-logs/notification-logs.js:17:26
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
 
 #: app/controllers/admin/reports/system-logs/mail-logs.js:13:26
 #: app/templates/components/event-invoice/billing-info.hbs:30:16
@@ -1728,11 +1728,11 @@ msgstr "An"
 #: app/controllers/admin/reports/system-logs/mail-logs.js:32:26
 #: app/controllers/admin/reports/system-logs/notification-logs.js:28:24
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
 #: app/controllers/admin/reports/system-logs/notification-logs.js:12:24
 msgid "For"
-msgstr ""
+msgstr "Für"
 
 #: app/controllers/admin/sales/index.js:13:24 app/routes/admin/events.js:7:11
 #: app/routes/admin/users/view/events.js:8:11 app/routes/events.js:8:11
@@ -1827,7 +1827,7 @@ msgstr "Ausstehende Bestellungen"
 
 #: app/controllers/admin/sales/invoices.js:9:26
 msgid "Invoice #"
-msgstr ""
+msgstr "Rechnung #"
 
 #: app/controllers/admin/sales/invoices.js:17:26
 #: app/templates/components/forms/admin/content/pages-form.hbs:25:45
@@ -1836,7 +1836,7 @@ msgstr "Veranstaltung"
 
 #: app/controllers/admin/sales/invoices.js:23:26
 msgid "Invoice Date"
-msgstr ""
+msgstr "Rechnungsdatum"
 
 #: app/controllers/admin/sales/invoices.js:34:24
 #: app/templates/event-invoice/review.hbs:21:24
@@ -1845,11 +1845,11 @@ msgstr "Fälligkeitsdatum"
 
 #: app/controllers/admin/sales/invoices.js:43:26
 msgid "Amount"
-msgstr ""
+msgstr "Betrag"
 
 #: app/controllers/admin/sales/invoices.js:51:24
 msgid "Sent To"
-msgstr ""
+msgstr "Gesendet an"
 
 #: app/controllers/admin/sales/invoices.js:56:26
 #: app/controllers/admin/users/list.js:42:24
@@ -1860,7 +1860,7 @@ msgstr "Status"
 
 #: app/controllers/admin/sales/invoices.js:62:26
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: app/controllers/admin/sessions/list.js:9:20
 #: app/templates/components/event-invoice/invoice-summary.hbs:20:30
@@ -1878,7 +1878,7 @@ msgstr "Titel"
 
 #: app/controllers/admin/sessions/list.js:31:26
 msgid "Submitted At"
-msgstr ""
+msgstr "Eingereicht bei"
 
 #: app/controllers/admin/sessions/list.js:80:26
 #: app/controllers/events/view/sessions/list.js:114:28
@@ -1952,15 +1952,15 @@ msgstr "Veranstaltungsfunktionen"
 
 #: app/controllers/admin/users/list.js:64:24
 msgid "User Links"
-msgstr ""
+msgstr "Benutzerlinks"
 
 #: app/controllers/admin/users/list.js:69:26
 msgid "Member Since"
-msgstr ""
+msgstr "Mitglied seit"
 
 #: app/controllers/admin/users/list.js:79:26
 msgid "Last Accessed"
-msgstr ""
+msgstr "Zuletzt aufgerufen"
 
 #: app/controllers/admin/users/list.js:102:26
 msgid "User has been deleted successfully."
@@ -1974,7 +1974,7 @@ msgstr "Benutzer wurde erfolgreich wiederhergestellt."
 msgid "Here is your Event Invoice"
 msgstr "Hier ist Ihre Eventrechnung"
 
-#: app/controllers/events/list.js:22:26
+#: app/controllers/events/list.js:25:26
 #: app/templates/components/explore/side-bar.hbs:15:8
 msgid "Date"
 msgstr "Datum"
@@ -2018,19 +2018,19 @@ msgstr "Ihre Sitzung wurde gespeichert"
 
 #: app/controllers/events/view/sessions/list.js:47:26
 msgid "Rating"
-msgstr ""
+msgstr "Bewertung"
 
 #: app/controllers/events/view/sessions/list.js:61:20
 msgid "Track"
-msgstr ""
+msgstr "Track"
 
 #: app/controllers/events/view/sessions/list.js:71:24
 msgid "Submission Date"
-msgstr ""
+msgstr "Einreichungstermin"
 
 #: app/controllers/events/view/sessions/list.js:80:24
 msgid "Last Modified"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 #: app/controllers/events/view/sessions/list.js:96:26
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-lock-session.hbs:6:20
@@ -2077,7 +2077,7 @@ msgstr "Position"
 
 #: app/controllers/events/view/speakers/list.js:37:26
 msgid "Organization"
-msgstr ""
+msgstr "Organisation"
 
 #: app/controllers/events/view/speakers/list.js:51:24
 #: app/templates/components/account/contact-info-section.hbs:7:28
@@ -2096,7 +2096,7 @@ msgstr "Eingereichte Sitzungen"
 
 #: app/controllers/events/view/speakers/list.js:62:26
 msgid "Feature"
-msgstr ""
+msgstr "Feature"
 
 #: app/controllers/events/view/speakers/list.js:79:26
 msgid "Speaker has been deleted successfully."
@@ -2175,33 +2175,29 @@ msgstr "Der Rabattcode wurde erfolgreich aktualisiert."
 msgid "Your Attendee form has been saved"
 msgstr "Ihr Teilnehmerformular wurde gespeichert"
 
-#: app/controllers/events/view/tickets/orders/list.js:77:28
+#: app/controllers/events/view/tickets/orders/list.js:76:28
 msgid "Order has been marked completed successfully."
 msgstr "Bestellung wurde als erfolgreich abgeschlossen markiert."
 
 #: app/controllers/events/view/tickets/orders/list.js:95:28
-msgid "Order has been deleted successfully."
-msgstr "Bestellung wurde erfolgreich gelöscht."
-
-#: app/controllers/events/view/tickets/orders/list.js:114:28
 msgid "Order has been cancelled successfully."
 msgstr "Bestellung wurde erfolgreich storniert."
 
-#: app/controllers/events/view/tickets/orders/list.js:137:26
+#: app/controllers/events/view/tickets/orders/list.js:118:26
 msgid "Email confirmation has been sent to attendees successfully"
 msgstr "Die E-Mail-Bestätigung wurde erfolgreich an die Teilnehmer gesendet"
 
-#: app/controllers/events/view/tickets/orders/list.js:141:26
+#: app/controllers/events/view/tickets/orders/list.js:122:26
 msgid "Only 5 resend actions are allowed in a minute"
 msgstr "In einer Minute sind nur 5 Aktionen zum erneuten Senden zulässig"
 
 #: app/controllers/events/view/videoroom/list.js:42:26
 msgid "{{item}} has been deleted successfully."
-msgstr ""
+msgstr "{{item}} wurde gelöscht."
 
 #: app/controllers/events/view/videoroom/list.js:42:89
 msgid "Video Stream"
-msgstr ""
+msgstr "Videostream"
 
 #: app/controllers/notifications.js:17:28
 msgid "All notifications marked read successfully"
@@ -2640,6 +2636,7 @@ msgid "Export"
 msgstr "Exportieren"
 
 #: app/routes/events/view/scheduler.js:6:11 app/templates/events/view.hbs:32:10
+#: app/templates/pricing.hbs:134:24
 msgid "Scheduler"
 msgstr "Planer"
 
@@ -2764,15 +2761,15 @@ msgstr "Bestellungen"
 
 #: app/routes/events/view/videoroom.js:7:11
 msgid "Microlocation"
-msgstr ""
+msgstr "Mikrolokation"
 
 #: app/routes/events/view/videoroom/create.js:13:11
 msgid "Create Video Room"
-msgstr ""
+msgstr "Videoraum erstellen"
 
 #: app/routes/events/view/videoroom/list.js:8:11
 msgid "Video Rooms"
-msgstr ""
+msgstr "Videoraum"
 
 #: app/routes/explore.js:9:11
 msgid "Explore"
@@ -2891,7 +2888,7 @@ msgstr "Neuer Sprecher"
 #: app/templates/components/public/side-menu.hbs:80:8
 #: app/templates/public/coc.hbs:2:2
 msgid "Code of Conduct"
-msgstr "Verhaltensrichtlinien"
+msgstr "Verhaltenskodex"
 
 #: app/routes/public/schedule.js:9:11
 #: app/templates/components/public/side-menu.hbs:34:8
@@ -3268,75 +3265,75 @@ msgstr "Zahlungssysteme"
 
 #: app/templates/admin/settings.hbs:27:10
 msgid "Front Page"
-msgstr ""
+msgstr "Startseite"
 
 #: app/templates/admin/settings/frontpage.hbs:10:49
 msgid "Any event that is switched to Featured Event by admins is listed here."
-msgstr ""
+msgstr "Jede Veranstaltung, die von Administratoren auf empfohlene (Featured) Veranstaltung umgeschaltet wird, wird hier aufgelistet."
 
 #: app/templates/admin/settings/frontpage.hbs:24:49
 msgid "up to 21 events should be listed here."
-msgstr ""
+msgstr "Bis zu 21 Veranstaltungen werden hier aufgelistet."
 
 #: app/templates/admin/settings/frontpage.hbs:29:49
 msgid "admins have the option to move any event without restrictions to the top of this line by switching events to Promoted Events in the event admin panel"
-msgstr ""
+msgstr "Administratoren haben die Möglichkeit, jedes Ereignis ohne Einschränkungen an den Anfang dieser Zeile zu verschieben, indem sie Veranstaltungen im Veranstaltungswaltungsbereich auf Empfohlene (Feature) Veranstaltungen umschalten"
 
 #: app/templates/admin/settings/frontpage.hbs:34:49
 msgid "promoted events should always show up on the top of Upcoming Events"
-msgstr ""
+msgstr "hervorgehobene Veranstlatungen werden oben in der Kategorie angezeigt"
 
 #: app/templates/admin/settings/frontpage.hbs:39:49
 msgid "The event should have location or online link and a date"
-msgstr ""
+msgstr "Die Veranstaltung sollte einen Ort oder einen Online-Link und ein Datum haben"
 
 #: app/templates/admin/settings/frontpage.hbs:44:49
 msgid "The event should have Tickets."
-msgstr ""
+msgstr "Die Veranstaltung sollte Tickets haben."
 
 #: app/templates/admin/settings/frontpage.hbs:49:49
 msgid "Do not show an event on start page if it does not have any public ticket."
-msgstr ""
+msgstr "Zeigen Sie eine Veranstaltung nicht auf der Startseite an, wenn sie kein öffentliches Ticket hat."
 
 #: app/templates/admin/settings/frontpage.hbs:54:49
 msgid "If the sales time of the ticket is passed then event should not show on the start page."
-msgstr ""
+msgstr "Wenn die Verkaufszeit des Tickets abgelaufen ist, wird die Veranstaltung nicht auf der Startseite angezeigt."
 
 #: app/templates/admin/settings/frontpage.hbs:59:47
 msgid "Do not show an event on start page if it all tickets are sold or only hidden ticket remain."
-msgstr ""
+msgstr "Veranstaltungen werden nicht auf der Startseite angezeigt, wenn alle Tickets verkauft sind oder nur noch versteckte Tickets übrig sind."
 
 #: app/templates/admin/settings/frontpage.hbs:64:49
 msgid "The event should have an Image."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Bild haben."
 
 #: app/templates/admin/settings/frontpage.hbs:69:49
 msgid "The event should have an logo."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Logo haben."
 
 #: app/templates/admin/settings/frontpage.hbs:74:49
 msgid "The event should have an Event Topic."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Veranstaltungsthema haben."
 
 #: app/templates/admin/settings/frontpage.hbs:79:49
 msgid "The event should have an Event Sub Topic."
-msgstr ""
+msgstr "Die Veranstaltung muss ein Veranstaltungsunterthema haben."
 
 #: app/templates/admin/settings/frontpage.hbs:84:49
 msgid "The event should have a twitter link."
-msgstr ""
+msgstr "Die Veranstaltung sollte einen Twitter-Link haben."
 
 #: app/templates/admin/settings/frontpage.hbs:98:49
 msgid "Up to 12 events would be listed here and there is a more link below to show more events on the cfs page if there are more events."
-msgstr ""
+msgstr "Bis zu 12 Ereignisse werden hier aufgelistet und es gibt unten einen weiteren Link, um mehr Ereignisse auf der cfs-Seite anzuzeigen, wenn es mehr Ereignisse gibt."
 
 #: app/templates/admin/settings/frontpage.hbs:103:49
 msgid "Events listed here have a Call For Speaker."
-msgstr ""
+msgstr "Die hier aufgeführten Veranstaltungen haben einen Call For Speaker."
 
 #: app/templates/admin/settings/frontpage.hbs:108:49
 msgid "Requirements of Upcoming Events."
-msgstr ""
+msgstr "Anforderungen für bevorstehende Veranstaltungen."
 
 #: app/templates/admin/users.hbs:7:12
 msgid "All Users"
@@ -3877,7 +3874,7 @@ msgstr "Passen Sie die Registrierungsformulare für Sitzungen und Sprecher an"
 
 #: app/templates/components/events/view/overview/event-sponsors.hbs:2:22
 msgid "Event sponsors"
-msgstr ""
+msgstr "Veranstaltungsponsoren"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 msgid "Summary"
@@ -4065,6 +4062,7 @@ msgstr "Tickettyp"
 #: app/templates/components/explore/side-bar.hbs:134:23
 #: app/templates/components/order-card.hbs:41:12
 #: app/templates/components/orders/ticket-price.hbs:2:4
+#: app/templates/pricing.hbs:178:58
 msgid "Free"
 msgstr "Kostenlos"
 
@@ -4093,7 +4091,7 @@ msgstr "Wie es funktioniert"
 
 #: app/templates/components/footer-main.hbs:11:56
 #: app/templates/components/nav-bar.hbs:11:24
-#: app/templates/components/side-bar.hbs:28:49
+#: app/templates/components/side-bar.hbs:28:49 app/templates/pricing.hbs:8:35
 msgid "Pricing"
 msgstr "Preise"
 
@@ -4188,7 +4186,7 @@ msgstr "Telegram"
 #: app/templates/components/footer-main.hbs:98:33
 #: app/templates/components/forms/admin/content/social-links-form.hbs:73:11
 msgid "Weblate"
-msgstr ""
+msgstr "Weblate"
 
 #: app/templates/components/footer-main.hbs:108:29
 msgid "Copyright"
@@ -5318,13 +5316,31 @@ msgstr "Vor Ort"
 msgid "Acknowledgement"
 msgstr "Bestätigung"
 
-#: app/templates/components/forms/orders/order-form.hbs:282:8
-msgid "By clicking \"Pay Now\", I acknowledge that I have read and that I agree with all the terms of services and privacy policy of Open Event."
-msgstr "Durch Klicken auf \"Jetzt bezahlen\" bestätige ich, dass ich alle Nutzungsbedingungen und Datenschutzbestimmungen von Open Event gelesen habe und damit einverstanden bin."
+#: app/templates/components/forms/orders/order-form.hbs:283:21
+msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
+msgstr ""
+"Durch Klicken auf \"{{orderState}}\" bestätige ich, dass ich die allgemeinen "
+"{{terms}} und {{privacy}} auf dieser Website gelesen habe und damit "
+"einverstanden bin."
 
-#: app/templates/components/forms/orders/order-form.hbs:286:60
+#: app/templates/components/forms/orders/order-form.hbs:284:42
+#: app/templates/components/forms/orders/order-form.hbs:290:82
 msgid "Proceed to Checkout"
 msgstr "Zur Kasse"
+
+#: app/templates/components/forms/orders/order-form.hbs:284:68
+#: app/templates/components/forms/orders/order-form.hbs:290:108
+#: app/templates/components/public/ticket-list.hbs:195:10
+msgid "Order Now"
+msgstr "Jetzt bestellen"
+
+#: app/templates/components/forms/orders/order-form.hbs:285:60
+msgid "terms of services"
+msgstr "Nutzungsbedingungen"
+
+#: app/templates/components/forms/orders/order-form.hbs:286:64
+msgid "privacy policy"
+msgstr "Datenschutz"
 
 #: app/templates/components/forms/register-form.hbs:32:130
 msgid "Re-enter Password"
@@ -5550,6 +5566,7 @@ msgstr "Ticketname"
 #: app/templates/components/orders/order-summary.hbs:55:34
 #: app/templates/components/public/ticket-list.hbs:8:45
 #: app/templates/components/widgets/forms/ticket-input.hbs:17:22
+#: app/templates/pricing.hbs:172:43
 msgid "Price"
 msgstr "Preis"
 
@@ -5727,7 +5744,7 @@ msgstr "Links & Soziale Medien"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:9:6
 msgid "Social Media"
-msgstr ""
+msgstr "Soziale Medien"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:10:24
 #: app/templates/components/widgets/forms/link-input.hbs:58:30
@@ -5736,7 +5753,7 @@ msgstr "Fügen Sie einen sozialen Link hinzu"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:30:6
 msgid "Extra Links"
-msgstr ""
+msgstr "Zusätzliche Links"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:31:24
 #: app/templates/components/widgets/forms/link-input.hbs:55:30
@@ -5804,7 +5821,7 @@ msgid "Enable Call For Speakers"
 msgstr "Aktivieren Sie Call For Speakers"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:123:10
-#: app/templates/index.hbs:26:29
+#: app/templates/index.hbs:26:29 app/templates/pricing.hbs:97:24
 msgid "Call for speakers"
 msgstr "Aufruf für Vortragende"
 
@@ -5842,11 +5859,11 @@ msgstr "Anmeldeformulare anpassen"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:200:22
 msgid "Collect Speaker Details"
-msgstr ""
+msgstr "Referentendetails sammeln"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:214:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:216:22
 msgid "Collect Session Details"
-msgstr ""
+msgstr "Sitzungsdetails sammeln"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:26:8
 msgid "Sponsor"
@@ -6306,7 +6323,7 @@ msgstr "am"
 
 #: app/templates/components/orders/event-info.hbs:17:16
 msgid "Event taking place online and at"
-msgstr ""
+msgstr "Die Veranstaltung findet online statt und"
 
 #: app/templates/components/orders/event-info.hbs:19:16
 #: app/templates/public/index.hbs:74:10
@@ -6315,11 +6332,11 @@ msgstr "Online-Veranstaltung"
 
 #: app/templates/components/orders/event-info.hbs:24:14
 msgid "Location or online event details to be announced"
-msgstr ""
+msgstr "Details zu Ort oder Online-Veranstaltung werden noch bekannt gegeben."
 
 #: app/templates/components/orders/event-info.hbs:38:40
 msgid "Go to event page"
-msgstr ""
+msgstr "Zur Veranstaltungsseite"
 
 #: app/templates/components/orders/order-summary.hbs:7:12
 msgid "Success"
@@ -6448,7 +6465,7 @@ msgstr "Diese Veranstaltung ist lizenziert unter"
 
 #: app/templates/components/public/event-map.hbs:4:10
 msgid "Getting Here"
-msgstr "Anfahrtsbeschreibung"
+msgstr "Zugang"
 
 #: app/templates/components/public/featured-speaker-list.hbs:1:4
 msgid "Featured Speakers"
@@ -6466,7 +6483,7 @@ msgstr "Kalender"
 #: app/templates/components/public/side-menu.hbs:71:8
 #: app/templates/components/public/side-menu.hbs:75:8
 msgid "Getting here"
-msgstr "Anfahrtsbeschreibung"
+msgstr "Zugang"
 
 #: app/templates/components/public/social-links.hbs:6:79
 msgid "Event Site"
@@ -6491,10 +6508,6 @@ msgstr "Angebotscode"
 #: app/templates/components/public/ticket-list.hbs:176:57
 msgid "Enter promotional code"
 msgstr "Aktionscode eingeben"
-
-#: app/templates/components/public/ticket-list.hbs:195:10
-msgid "Order Now"
-msgstr "Jetzt bestellen"
 
 #: app/templates/components/quick-filter.hbs:5:16
 msgid "Search for events"
@@ -6660,12 +6673,12 @@ msgstr "Moderatoren"
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:8:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:8:22
 msgid "Withdrawn"
-msgstr ""
+msgstr "Zurückgezogen"
 
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:9:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:9:22
 msgid "Canceled"
-msgstr ""
+msgstr "Abgesagt"
 
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:12:2
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:10:2
@@ -6769,25 +6782,17 @@ msgstr "Bestellung stornieren"
 msgid "Are you sure you would like to cancel this Order?"
 msgstr "Sind Sie sicher, dass Sie diese Bestellung stornieren möchten?"
 
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:28:22
-msgid "Delete order"
-msgstr "Bestellung löschen"
-
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:28:68
-msgid "Are you sure you would like to delete this Order?"
-msgstr "Diese Bestellung wirklich löschen?"
-
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:32:20
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:27:20
 msgid "Resend order confirmation"
 msgstr "Auftragsbestätigung erneut versenden"
 
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-title.hbs:6:26
 msgid "Add Video Channel"
-msgstr ""
+msgstr "Videokanal hinzufügen"
 
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-title.hbs:16:64
 msgid "Are you sure you would like to delete this stream?"
-msgstr ""
+msgstr "Diesen Stream wirklich löschen?"
 
 #: app/templates/components/welcome-header.hbs:2:30
 msgid "The simplest way to create events."
@@ -7143,15 +7148,15 @@ msgstr "Bestellungen anzeigen"
 
 #: app/templates/events/view/videoroom/list.hbs:3:4
 msgid "This feature is still in alpha stage"
-msgstr ""
+msgstr "Diese Funktion befindet sich noch im Alpha-Stadium."
 
 #: app/templates/events/view/videoroom/list.hbs:5:2
 msgid "Please use with care."
-msgstr ""
+msgstr "Bitte mit Vorsicht verwenden."
 
 #: app/templates/events/view/videoroom/list.hbs:5:32
 msgid "Thank You."
-msgstr ""
+msgstr "Danke"
 
 #: app/templates/explore.hbs:55:38
 msgid "No events found for selected filters"
@@ -7270,6 +7275,10 @@ msgstr "Erhalten Sie eine Push-Benachrichtigung über neue Teilnehmer oder Ticke
 msgid "Please Check-Out our Attendee App"
 msgstr "Bitte schauen Sie sich unsere Teilnehmer-App an"
 
+#: app/templates/pricing.hbs:17:8
+msgid "Sign up for our Early Access plan!"
+msgstr "Für den Early Access-Plan anmelden!"
+
 #: app/templates/pricing.hbs:23:35
 msgid "Features"
 msgstr "Funktionen"
@@ -7277,6 +7286,170 @@ msgstr "Funktionen"
 #: app/templates/pricing.hbs:24:35
 msgid "Early Access Plan"
 msgstr "Plan für frühen Zugang"
+
+#: app/templates/pricing.hbs:29:24
+msgid "Basics"
+msgstr "Grundlagen"
+
+#: app/templates/pricing.hbs:30:12
+msgid "Fee per paid tickets"
+msgstr "Gebühr für bezahlte Tickets"
+
+#: app/templates/pricing.hbs:34:12
+msgid "Fee per free tickets"
+msgstr "Gebühr für kostenlose Tickets"
+
+#: app/templates/pricing.hbs:35:12
+msgid "No fee"
+msgstr "Keine Gebühr"
+
+#: app/templates/pricing.hbs:38:24
+msgid "Ticket Sales"
+msgstr "Ticketverkauf"
+
+#: app/templates/pricing.hbs:39:12
+msgid "Public event listings"
+msgstr "Veranstaltung öffentlich gelistet"
+
+#: app/templates/pricing.hbs:43:12
+msgid "Private (unlisted) events"
+msgstr "Private Veranstaltungen nicht öfffentlich gelistet"
+
+#: app/templates/pricing.hbs:47:12
+msgid "Unlimited events"
+msgstr "Unbegrenzte Anzahl von Veranstaltungen"
+
+#: app/templates/pricing.hbs:51:12
+msgid "Attendee form"
+msgstr "Teilnehmerformular"
+
+#: app/templates/pricing.hbs:55:12
+msgid "Custom attendee form question"
+msgstr "Benutzerdefinierte Teilnehmerformularfrage"
+
+#: app/templates/pricing.hbs:59:12
+msgid "Digital or printed tickets"
+msgstr "Digitale oder gedruckte Tickets"
+
+#: app/templates/pricing.hbs:63:12
+msgid "Donation tickets"
+msgstr "Spendentickets"
+
+#: app/templates/pricing.hbs:67:24
+msgid "Payments"
+msgstr "Zahlungsabwicklung"
+
+#: app/templates/pricing.hbs:68:12
+msgid "Secure payment processing"
+msgstr "Sichere Zahlungsabwicklung"
+
+#: app/templates/pricing.hbs:72:12
+msgid "Accepting all major credit cards"
+msgstr "Alle gängigen Kreditkarten"
+
+#: app/templates/pricing.hbs:76:12
+msgid "All major currencies"
+msgstr "Alle wichtigen Währungen"
+
+#: app/templates/pricing.hbs:80:12
+msgid "payment processor"
+msgstr "Zahlungsabwickler"
+
+#: app/templates/pricing.hbs:84:24
+msgid "Tracking & Optimising"
+msgstr "Tracking & Optimierung"
+
+#: app/templates/pricing.hbs:85:12
+msgid "Sales/RSVP summary dashboard"
+msgstr "Dashboard für Ticket- und Verkaufsübersicht und Details"
+
+#: app/templates/pricing.hbs:89:12
+msgid "Detailed analytics by ticket type"
+msgstr "Detaillierte Analysen nach Ticketart"
+
+#: app/templates/pricing.hbs:93:12
+msgid "Detailed exports of all data"
+msgstr "Exporte aller Daten"
+
+#: app/templates/pricing.hbs:98:12
+msgid "Submissions"
+msgstr "Einreichungen"
+
+#: app/templates/pricing.hbs:99:12
+msgid "Up to 200"
+msgstr "Bis zu 200"
+
+#: app/templates/pricing.hbs:102:12
+msgid "Speakers form"
+msgstr "Referentenformular"
+
+#: app/templates/pricing.hbs:106:12
+msgid "Custom speakers form questions"
+msgstr "Benutzerdefinierte Fragen im Referentenformular"
+
+#: app/templates/pricing.hbs:110:12
+msgid "Session form"
+msgstr "Sitzungsformular"
+
+#: app/templates/pricing.hbs:114:12
+msgid "Custom session form questions"
+msgstr "Benutzerdefinierte in Sitzungsformularen"
+
+#: app/templates/pricing.hbs:118:12
+msgid "API access"
+msgstr "API-Zugang"
+
+#: app/templates/pricing.hbs:122:12
+msgid "Submission management"
+msgstr "Einreichungsmanagement"
+
+#: app/templates/pricing.hbs:126:12
+msgid "\"LOCK\" submission"
+msgstr "Änderungen an Einreichungen sperren"
+
+#: app/templates/pricing.hbs:130:12
+msgid "Rating process"
+msgstr "Bewertungsprozess"
+
+#: app/templates/pricing.hbs:135:12
+msgid "Organizer scheduler access"
+msgstr "Organisatorzugriff auf Veranstaltungsplan"
+
+#: app/templates/pricing.hbs:139:12
+msgid "Create schedule"
+msgstr "Veranstaltungsplan erstellen"
+
+#: app/templates/pricing.hbs:143:12
+msgid "Public schedule pages"
+msgstr "Öffentliche Seiten des Veranstaltungsplans"
+
+#: app/templates/pricing.hbs:147:24
+msgid "Promotion"
+msgstr "Beförderung"
+
+#: app/templates/pricing.hbs:148:12
+msgid "Public listing on website"
+msgstr "Öffentliche Auflistung auf der Website"
+
+#: app/templates/pricing.hbs:152:12
+msgid "Search engine listing"
+msgstr "Auflistung in Suchmaschinen"
+
+#: app/templates/pricing.hbs:156:12
+msgid "Sponsor listing on public event page"
+msgstr "Sponsorenliste öffentlicher Veranstaltungsseite"
+
+#: app/templates/pricing.hbs:160:12
+msgid "Attendee social sharing tools"
+msgstr "Teilnehmerwerkzeuge um Veranstaltung in sozialen Medien zu teilen"
+
+#: app/templates/pricing.hbs:164:12
+msgid "Abandoned order emails"
+msgstr "E-Mails für abgebrochene Bestellungen"
+
+#: app/templates/pricing.hbs:168:12
+msgid "Discount and access codes"
+msgstr "Rabatt- und Zugangscodes"
 
 #: app/templates/public.hbs:50:122
 msgid "Clear Track Filter"
