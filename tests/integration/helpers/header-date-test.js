@@ -11,6 +11,6 @@ module('Integration | Helper | header date', function(hooks) {
     this.set('inputMomentValue', moment('2019-05-01T03:30:00+09:00'));
     this.set('inputTimezoneValue', 'Japan');
     await render(hbs`{{header-date inputMomentValue inputTimezoneValue}}`);
-    assert.equal(this.element.innerHTML.trim(), 'Wednesday, May 1st 2019, 3:30 (JST)');
+    assert.equal(this.element.innerHTML.trim(), 'Wednesday, May 1st 2019, 3:30 AM (JST)');
   });
 });
