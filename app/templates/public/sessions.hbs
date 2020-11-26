@@ -50,15 +50,19 @@
     <table class="ui very basic table">
       <thead class="full-width">
         <tr>
-          <th class="two wide"></th>
-          <th></th>
+          <th class="two wide" style="border: none;"></th>
+          <th style="border: none;"></th>
         </tr>
       </thead>
       <tbody>
         {{#each this.model.session as |session|}}
           <tr>
-            <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="color:grey;">{{general-date session.startsAt this.timezone 'HH:mm (z)'}}</td>
-            <td>
+            <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
+              <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}" style="color: rgba(0, 0, 0, 0.7);">
+                {{general-date session.startsAt this.timezone 'h:mm A (z)'}}
+              </h4>
+            </td>
+            <td style="border-top: none; border-left: 1px solid lightgrey">
               <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} />
             </td>
           </tr>
