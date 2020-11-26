@@ -34,7 +34,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         options         : {
-          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+          dateFormat: 'D MMM, YYYY h:mm A'
         }
       },
       {
@@ -44,7 +44,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         options         : {
-          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+          dateFormat: 'D MMM, YYYY h:mm A'
         }
       },
       {

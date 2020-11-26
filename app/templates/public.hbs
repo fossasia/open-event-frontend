@@ -9,9 +9,9 @@
             <img src="{{this.model.logoUrl}}" class="logo mr-8" />
           {{/if}}
           <div>
-            <h4 class="event time">{{header-date this.model.startsAt this.model.timezone}}</h4>
+            <h4 class="event time">{{general-date this.model.startsAt this.model.timezone 'dddd, D MMMM, YYYY h:mm A (z)'}}</h4>
             {{#if this.displayEndDate}}
-              <h5 class="event time ends">{{t 'To'}} {{header-date this.model.endsAt this.model.timezone}}</h5>
+              <h5 class="event time ends">{{t 'To'}} {{general-date this.model.endsAt this.model.timezone 'dddd, D MMMM, YYYY h:mm A (z)'}}</h5>
             {{/if}}
             <h1 class="event name">{{this.model.name}}</h1>
             <h4 class="event location"><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
