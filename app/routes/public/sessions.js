@@ -29,15 +29,6 @@ export default class SessionsRoute extends Route {
       {
         and: [
           {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
-          },
-          {
             or: [
               {
                 name : 'state',
@@ -96,17 +87,21 @@ export default class SessionsRoute extends Route {
       });
     }
 
+    const isFiltering = params.room || params.track || params.date;
+
     return {
       event   : eventDetails,
-      session : await this.infinity.model('session', {
-        include      : 'track,speakers,session-type,microlocation',
+      session : await this.infinity.model('sessions', {
+        include      : 'track,speakers,session-type,microlocation.video-stream',
         filter       : filterOptions,
         sort         : params.sort || 'starts-at',
         perPage      : 6,
         startingPage : 1,
         perPageParam : 'page[size]',
-        pageParam    : 'page[number]'
-      })
+        pageParam    : 'page[number]',
+        store        : eventDetails
+      }),
+      isFiltering
     };
   }
 }

@@ -74,6 +74,7 @@ export default ModelBase.extend({
   supportUrl                 : attr('string'),
   facebookUrl                : attr('string'),
   instagramUrl               : attr('string'),
+  weblateUrl                 : attr('string'),
   patreonUrl                 : attr('string'),
   gitterUrl                  : attr('string'),
   telegramUrl                : attr('string'),

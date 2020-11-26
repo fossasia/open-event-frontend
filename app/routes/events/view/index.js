@@ -12,10 +12,10 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     let queryString = {
       filter         : filterOptions,
       'page[size]'   : params.per_page || 10,
-      'page[number]' : params.per_page || 1
+      'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);
-    const sponsorsPromise = this.asArray(eventDetails.query('sponsors', {}, queryString));
+    const sponsorsPromise = this.asArray(eventDetails.query('sponsors', queryString));
     const roleInvitesPromise = eventDetails.query('roleInvites', {});
     const sessionTypesPromise = eventDetails.query('sessionTypes', {});
     const socialLinksPromise = eventDetails.query('socialLinks', {});

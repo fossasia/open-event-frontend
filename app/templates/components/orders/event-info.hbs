@@ -12,7 +12,17 @@
     <h3 class="weight-400">{{t 'When & Where'}}</h3>
   </div>
   <div class="ui padded segment">
-    <strong>{{t 'At'}} {{this.data.event.locationName}}</strong>
+    {{#if this.data.event.online}}
+      {{#if this.data.event.locationName}}
+        <strong>{{t 'Event taking place online and at'}} {{this.data.event.locationName}}</strong>
+      {{else}}
+        <strong>{{t 'Online Event'}}</strong>
+      {{/if}}
+    {{else if this.data.event.locationName}}
+      <strong>{{t 'At'}} {{this.data.event.locationName}}</strong>
+    {{else}}
+      <strong>{{t 'Location or online event details to be announced'}}</strong>
+    {{/if}}
     <br>
     <strong>{{t 'From'}}:</strong> {{header-date this.data.event.startsAt}}
     <br>
@@ -22,7 +32,10 @@
       <strong>{{t 'Organized By'}}:</strong> {{this.data.event.ownerName}}
     {{/if}}
   </div>
-  <div class="ui padded segment">
-    <a href="{{this.data.event.url}}">{{t 'Go to event'}}</a>
-  </div>
+  {{#if (eq this.data.status 'completed')}}
+    <div class="ui padded segment">
+      <i class="globe icon"></i>
+      <a href="{{this.data.event.url}}">{{t 'Go to event page'}}</a>
+    </div>
+  {{/if}}
 </div>
