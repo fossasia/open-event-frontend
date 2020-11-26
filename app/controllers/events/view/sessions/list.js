@@ -13,8 +13,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     this.model.sessions.data.forEach((item, idx) => {
       if (len >= 4 && idx >= len - 2) {
         item.set('dir', 'upward');
-      }
-      else if (len > 2) {
+      } else if (len > 2) {
         if (idx === len - 1) {
           item.set('dir', 'upward');
         }
@@ -29,7 +28,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         item.set('dir', 'downward');
       }
     });
-    
+
     return this.model.sessions.data;
   }
 
