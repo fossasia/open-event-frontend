@@ -1,30 +1,51 @@
 <form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}} novalidate>
   <div class="ui section divider"></div>
   <div class="grouped fields" id="social-links">
-    <label>{{t 'Links & Social Media'}}</label>
-    <Widgets::Forms::LinkInput
-      @hasLinkName={{true}}
-      @fixedName={{true}}
-      @linkName={{t "Website"}}
-      @inputId="external_event_url"
-      @segmentedLink={{this.data.event.segmentedExternalEventUrl}}
-      @isChild={{unless this.data.event.socialLinks true}}
-      @canRemoveItem={{false}}
-      @addCustomLink={{action "addItem" "customLink" "social-link"}}
-      @addItem={{action "addItem" "socialLinks" "social-link"}} />
+    <div class="ui header">
+      <label>{{t 'Links & Social Media'}}</label>
+    </div>
 
-    {{#each this.socialLinks as |socialLink|}}
-      <Widgets::Forms::LinkInput
-        @hasLinkName={{true}}
-        @linkName={{socialLink.name}}
-        @isSocialLink={{true}}
-        @isCustomLink={{socialLink.isCustom}}
-        @inputId={{socialLink.identifier}}
-        @segmentedLink={{socialLink.segmentedLink}}
-        @isChild={{true}}
-        @addItem={{action "addItem" "socialLinks" "social-link"}}
-        @addCustomLink={{action "addItem" "customLink" "social-link"}}
-        @removeItem={{action "removeItem" socialLink "socialLinks"}} />
+    <h4>
+      {{t 'Social Media'}}
+      <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button ml-2" style="margin-left: 1rem !important;" @click={{action "addItem" "socialLinks" "social-link"}} @position="top center">
+        <i class="plus icon"></i>
+      </UiPopup>
+    </h4>
+
+    {{#each this.socialMediaLinks as |socialLink|}}
+      <Widgets::Forms::SocialLinkField
+        @site={{socialLink.site}}
+        @onSiteChange={{action (mut socialLink.name)}}
+        @value={{socialLink.link}}
+        @onChange={{action (mut socialLink.link)}}>
+        <div class="ui icon buttons">
+          <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action "removeItem" socialLink "socialLinks"}} @position="top center">
+            <i class="minus icon"></i>
+          </UiPopup>
+        </div>
+      </Widgets::Forms::SocialLinkField>
+    {{/each}}
+
+    <h4>
+      {{t 'Extra Links'}}
+      <UiPopup @content={{t "Add custom link"}} @class="ui compact icon blue circular button" style="margin-left: 1rem !important;" @click={{action "addItem" "customLink" "social-link"}} @position="top center">
+        <i class="plus icon"></i>
+      </UiPopup>
+    </h4>
+
+    {{#each this.customLinks as |socialLink|}}
+      <Widgets::Forms::SocialLinkField
+        @custom={{true}}
+        @site={{socialLink.name}}
+        @onSiteChange={{action (mut socialLink.name)}}
+        @value={{socialLink.link}}
+        @onChange={{action (mut socialLink.link)}}>
+        <div class="ui icon buttons">
+          <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action "removeItem" socialLink "socialLinks"}} @position="top center">
+            <i class="minus icon"></i>
+          </UiPopup>
+        </div>
+      </Widgets::Forms::SocialLinkField>
     {{/each}}
   </div>
   
