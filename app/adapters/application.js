@@ -65,7 +65,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
       if (request.data.public) {delete request.headers[ENV['ember-simple-auth-token'].authorizationHeaderName]}
 
       if (ENV.noCache === 'true') {
-        request.data.no_cache = true;
+        request.data.nocache = true;
       }
     }
 
