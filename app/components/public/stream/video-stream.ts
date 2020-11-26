@@ -69,6 +69,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
     (this.app as HTMLElement).innerHTML = '';
     const api = new window.JitsiMeetExternalAPI(domain, options);
 
+    api.executeCommand('subject', stream.name);
+
     if (stream.password) {
       api.addEventListener('participantRoleChanged', (event: any) => {
         if (event.role === 'moderator') {

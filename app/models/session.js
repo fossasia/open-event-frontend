@@ -2,7 +2,7 @@ import attr from 'ember-data/attr';
 import moment from 'moment';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
-import { computedDateTimeSplit, computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
+import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import { computed } from '@ember/object';
 import { stateColorMap } from 'open-event-frontend/utils/dictionary/sessions';
 
@@ -58,11 +58,6 @@ export default class Session extends ModelBase.extend({
   startAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
   endsAtDate  : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime  : computedDateTimeSplit.bind(this)('endsAt', 'time'),
-
-  segmentedLinkSlidesUrl : computedSegmentedLink.bind(this)('slidesUrl'),
-  segmentedLinkAudioUrl  : computedSegmentedLink.bind(this)('audioUrl'),
-  segmentedLinkVideoUrl  : computedSegmentedLink.bind(this)('videoUrl'),
-  segmentedLinkSignUpUrl : computedSegmentedLink.bind(this)('signUpUrl'),
 
   ready() {
     if (!this.complexFieldValues) {
