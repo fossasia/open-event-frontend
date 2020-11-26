@@ -40,7 +40,15 @@
            </div>
            <div class="left floated nine wide column">
              {{#each @session.speakers as |speaker|}}
-                {{speaker.name}} ({{speaker.position}}, {{speaker.organisation}})
+                {{speaker.name}}(
+                  {{#if speaker.position}}
+                      {{speaker.position}}
+                      {{#if speaker.organisation}}               
+                      , {{speaker.organisation}}
+                      {{/if}}
+                    {{else}}
+                   {{speaker.organisation}}
+                  {{/if}})
                 <br>
               {{/each}}
             </div>
