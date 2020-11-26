@@ -46,11 +46,28 @@
 {{/if}}
 
 <div class="mt-8">
-  {{#each this.model.session as |session|}}
-    <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} />
+  {{#if this.model.session}}
+    <table class="ui very basic table">
+      <thead class="full-width">
+        <tr>
+          <th class="two wide"></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.model.session as |session|}}
+          <tr>
+            <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="color:grey;">{{general-date session.startsAt this.timezone 'HH:mm (z)'}}</td>
+            <td>
+              <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} />
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
-  {{/each}}
+  {{/if}}    
   <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
