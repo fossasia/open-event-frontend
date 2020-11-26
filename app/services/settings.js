@@ -26,7 +26,7 @@ export default Service.extend({
    * @private
    */
   async _loadSettings() {
-    const settingsModel = await this.cache.queryRecord('settings', 'setting', {});
+    const settingsModel = await this.cache.queryRecord('settings', 'setting', { public: true });
     this.store.modelFor('setting').eachAttribute(attributeName => {
       this.set(attributeName, settingsModel.get(attributeName));
     });

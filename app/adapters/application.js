@@ -57,6 +57,21 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
     return this._super(store, type, query);
   },
 
+  ajaxOptions(url, type, options) {
+    const request = this._super(...arguments);
+
+    // The requests with public=true will not be authorized
+    if (type === 'GET') {
+      if (request.data.public) {delete request.headers[ENV['ember-simple-auth-token'].authorizationHeaderName]}
+
+      if (ENV.noCache === 'true') {
+        request.data.no_cache = true;
+      }
+    }
+
+    return request;
+  },
+
   /**
    This method is called for every response that the adapter receives from the
    API. If the response has a 401 status code it invalidates the session (see
