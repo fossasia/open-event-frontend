@@ -141,7 +141,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       margin = 0;
     }
 
-    $('.ember-table table').css('margin-bottom', margin);    
+    $('.ember-table table').css('margin-bottom', margin);
   }
 
   @action
