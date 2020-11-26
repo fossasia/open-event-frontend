@@ -94,6 +94,12 @@ export default class Cache extends Service.extend({
     return this.store.peekAll(model);
   }
 
+  async findRecord(key: string, model: string, id: string | number, options: any | null): Promise<any> {
+    const saved = await this.cacheData(key, () => this.store.findRecord(model, id, options));
+    if (saved) {return saved;}
+    return this.store.peekRecord(model, id);
+  }
+
   async queryRecord(key: string, model: string, options: any | null): Promise<any> {
     const saved = await this.cacheData(key, () => this.store.queryRecord(model, { cache: true, ...options }));
     if (saved) {return saved;}
