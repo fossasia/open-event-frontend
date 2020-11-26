@@ -57,7 +57,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
     return this._super(store, type, query);
   },
 
-  ajaxOptions(url, type, options) {
+  ajaxOptions(url, type) {
     const request = this._super(...arguments);
 
     // The requests with public=true will not be authorized
