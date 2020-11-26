@@ -71,20 +71,20 @@
     </div>
   {{/if}}
   {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Mixed'))}}
-    <Widgets::Forms::LinkInput
-      @hasLinkName={{true}}
-      @fixedName={{true}}
-      @linkName={{t "Live Stream URL"}}
-      @inputId="live_stream_url"
-      @segmentedLink={{this.data.event.segmentedLiveStreamUrl}}
-      @canRemoveItem={{false}} />
-    <Widgets::Forms::LinkInput
-      @hasLinkName={{true}}
-      @fixedName={{true}}
-      @linkName={{t "Webinar URL"}}
-      @inputId="webinar_url"
-      @segmentedLink={{this.data.event.segmentedWebinarUrl}}
-      @canRemoveItem={{false}} />
+    <div class="{{unless this.device.isMobile 'six wide'}} field">
+      <label>{{t "Live Stream URL"}}</label>
+      <Widgets::Forms::LinkField
+        @inputId="live_stream_url"
+        @value={{this.data.event.liveStreamUrl}}
+        @onChange={{action (mut this.data.event.liveStreamUrl)}} />
+    </div>
+    <div class="{{unless this.device.isMobile 'six wide'}} field">
+      <label>{{t "Webinar URL"}}</label>
+      <Widgets::Forms::LinkField
+        @inputId="webinar_url"
+        @value={{this.data.event.webinarUrl}}
+        @onChange={{action (mut this.data.event.webinarUrl)}} />
+    </div>
   {{/if}}
  <br>
   <div class="fields">

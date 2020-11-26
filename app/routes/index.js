@@ -231,18 +231,24 @@ export default class IndexRoute extends Route {
       filteredEvents: this.store.query('event', {
         upcoming     : true,
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+        cache        : true,
+        public       : true,
         'page[size]' : 12
       }),
       featuredEvents: this.store.query('event', {
         sort         : 'starts-at',
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter       : filterOptions,
+        cache        : true,
+        public       : true,
         'page[size]' : 6
       }),
       callForSpeakersEvents: this.store.query('event', {
         sort         : 'starts-at',
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter       : callForSpeakersFilter,
+        cache        : true,
+        public       : true,
         'page[size]' : 6
       })
     });
