@@ -16,15 +16,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       } else if (len > 2) {
         if (idx === len - 1) {
           item.set('dir', 'upward');
-        }
-        else if (idx < 2) {
+        } else if (idx < 2) {
           item.set('dir', 'downward');
-        }
-        else {
+        } else {
           item.set('dir', 'auto');
         }
-      }
-      else {
+      } else {
         item.set('dir', 'downward');
       }
     });
@@ -138,11 +135,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     if (len > 0 && len <= 2) {
       margin = 150;
-    }
-    else if (len <= 3) {
+    } else if (len <= 3) {
       margin = 50;
-    }
-    else {
+    } else {
       margin = 0;
     }
 
