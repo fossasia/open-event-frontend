@@ -18,6 +18,11 @@ export default class extends Controller {
     return false;
   }
 
+  @computed('model.microlocations')
+  get microlocations() {
+    return this.model.microlocations.sortBy('position');
+  }
+
   @computed('model.unscheduled', 'filter')
   get unscheduledSessions() {
     if (!this.filter || !this.model.unscheduled) {return this.model.unscheduled}
@@ -71,6 +76,7 @@ export default class extends Controller {
           });
       })
       .catch(reason => {
+        console('Error while scheduling', reason);
         this.set('error', reason);
         this.notify.error(`Error: ${reason}`);
       });

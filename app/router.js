@@ -45,6 +45,9 @@ Router.map(function() {
     this.route('session', function() {
       this.route('view', { path: '/:session_id' });
     });
+    this.route('stream', function() {
+      this.route('view', { path: '/:stream_id' });
+    });
     this.route('speaker', function() {
       this.route('view', { path: '/:speaker_id' });
     });
@@ -106,6 +109,11 @@ Router.map(function() {
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
         this.route('edit', { path: '/:speaker_id/edit' });
+        this.route('create');
+      });
+      this.route('videoroom', function() {
+        this.route('list', { path: '/:status' });
+        this.route('edit', { path: '/:stream_id/edit' });
         this.route('create');
       });
       this.route('scheduler');
@@ -201,6 +209,7 @@ Router.map(function() {
       this.route('payment-gateway');
       this.route('ticket-fees');
       this.route('billing');
+      this.route('frontpage');
     });
     this.route('content', function() {
       this.route('social-links');
