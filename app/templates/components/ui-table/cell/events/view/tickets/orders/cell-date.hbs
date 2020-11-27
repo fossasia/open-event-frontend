@@ -1,9 +1,9 @@
 {{#if this.record}}
   <div>
-    {{general-date this.record '' 'MMMM DD, YYYY - hh:mm A'}}
+    {{general-date this.record '' 'D MMM, YYYY h:mm A'}}
   </div>
 {{else}}
   <div>
-    {{general-date this.extraRecords.createdAt '' 'MMMM DD, YYYY - hh:mm A'}}
+    {{general-date this.extraRecords.createdAt '' 'D MMM, YYYY h:mm A'}}
   </div>
 {{/if}}
