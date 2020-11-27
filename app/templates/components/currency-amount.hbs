@@ -1,1 +1,17 @@
-{{#if (gt @amount 0)}}{{currency-symbol @currency}}{{/if}} {{format-money @amount}}
+{{#if (eq @ticket.type 'donation')}}
+    {{#if (eq @state 'completed')}}
+        {{#if (gt @ticket.orderStatistics.sales.completed 0)}}{{currency-symbol @currency}}{{/if}} {{format-money @ticket.orderStatistics.sales.completed}}
+    {{else if (eq @state 'placed')}}
+        {{#if (gt @ticket.orderStatistics.sales.placed 0)}}{{currency-symbol @currency}}{{/if}} {{format-money @ticket.orderStatistics.sales.placed}}
+    {{else if (eq @state 'pending')}}
+        {{#if (gt @ticket.orderStatistics.sales.pending 0)}}{{currency-symbol @currency}}{{/if}} {{format-money @ticket.orderStatistics.sales.pending}}
+    {{/if}}
+{{else}}
+    {{#if (eq @state 'completed')}}
+        {{#if (gt (mult @ticket.orderStatistics.tickets.completed @ticket.price) 0)}}{{currency-symbol @currency}}{{/if}} {{format-money (mult @ticket.orderStatistics.tickets.completed @ticket.price) }}
+    {{else if (eq @state 'placed')}}
+        {{#if (gt (mult @ticket.orderStatistics.tickets.placed @ticket.price) 0)}}{{currency-symbol @currency}}{{/if}} {{format-money (mult @ticket.orderStatistics.tickets.placed @ticket.price) }}
+    {{else if (eq @state 'pending')}}
+        {{#if (gt (mult @ticket.orderStatistics.tickets.pending @ticket.price) 0)}}{{currency-symbol @currency}}{{/if}} {{format-money (mult @ticket.orderStatistics.tickets.pending @ticket.price) }}
+    {{/if}}
+{{/if}}

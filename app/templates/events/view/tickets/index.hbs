@@ -144,15 +144,18 @@
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.completed ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @ticket={{ticket}} @state='completed' />
+          </td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.placed ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @ticket={{ticket}} @state='placed' />
+          </td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.pending ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @ticket={{ticket}} @state='pending' />
+          </td>
         </tr>
       {{/each}}
     </tbody>
