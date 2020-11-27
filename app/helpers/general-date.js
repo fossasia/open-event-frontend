@@ -8,7 +8,7 @@ export function generalDate(params) {
 
   const local = moment(params[0]).tz(timezone).locale();
 
-  let format = params[2] || 'dddd, D MMMM, YYYY h:mm A (z)';
+  let format = params[2] || 'h:mm A, MMMM Do YYYY (z)';
 
   if (!locales12Hours.has(local)) {
     format = format.replaceAll('h', 'H');
