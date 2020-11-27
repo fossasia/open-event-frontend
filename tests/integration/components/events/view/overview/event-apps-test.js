@@ -13,6 +13,6 @@ module('Integration | Component | events/view/overview/event apps', function(hoo
     this.set('authManager', authManager);
     this.set('eventId', 'e123');
     await render(hbs`{{events/view/overview/event-apps authManager=authManager eventId=eventId}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Apps'));
+    assert.ok(this.element.innerHTML.trim().includes('Website'));
   });
 });
