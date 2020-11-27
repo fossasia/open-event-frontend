@@ -4,7 +4,9 @@
   </div>
   <div class="ui {{if this.device.isMobile 'horizontal'}} three statistics">
     <div class="statistic"><div class="value">{{this.totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{#if (eq this.totalAmount 0)}}{{t '0.00'}}{{else}}{{round this.totalAmount decimals=2}}{{/if}}</div><div class="label">{{t 'Sales'}}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}}</div></div>
+    <div class="statistic"><div class="value">
+      {{this.totalAmount}}
+      </div><div class="label">{{t 'Sales'}}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}}</div></div>
     <div class="statistic"><div class="value">{{this.totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
