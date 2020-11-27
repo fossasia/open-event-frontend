@@ -1,7 +1,7 @@
 <div class="flash-messages m-2">
     {{#each flashMessages.queue as |flash|}}
       <div class="ui {{flash.type}} message">
-       <div class="header">
+       <div>
            <FlashMessage @flash = {{flash}}/>
         </div>
       </div>
