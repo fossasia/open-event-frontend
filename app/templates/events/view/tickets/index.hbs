@@ -4,7 +4,7 @@
   </div>
   <div class="ui {{if this.device.isMobile 'horizontal'}} three statistics">
     <div class="statistic"><div class="value">{{this.totalOrders}}</div><div class="label">{{t 'Orders'}}</div></div>
-    <div class="statistic"><div class="value">{{round this.totalAmount decimals=2}}</div><div class="label">{{t 'Sales'}}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}}</div></div>
+    <div class="statistic"><div class="value">{{if this.totalAmount (round this.totalAmount decimals=2) '0.00'}}</div><div class="label">{{t 'Sales'}}{{#if this.totalAmount}}({{currency-symbol this.model.eventDetail.paymentCurrency}}){{/if}}</div></div>
     <div class="statistic"><div class="value">{{this.totalSales}}</div><div class="label">{{t 'Tickets sold'}}</div></div>
   </div>
 </div>
@@ -144,15 +144,15 @@
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.completed ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{ticket.orderStatistics.sales.completed}}/></td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.placed ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{ticket.orderStatistics.sales.placed}}/></td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.pending ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{ticket.orderStatistics.sales.pending}}/></td>
         </tr>
       {{/each}}
     </tbody>
