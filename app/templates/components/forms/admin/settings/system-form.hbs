@@ -42,7 +42,10 @@
     <label>
       {{t 'API Url'}}
     </label>
-    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedStaticDomain}} @inputId="api_url" />
+    <Widgets::Forms::LinkField
+      @inputId="api_url"
+      @value={{this.settings.staticDomain}}
+      @onChange={{action (mut this.settings.staticDomain)}} />
   </div>
   <div class="ui hidden divider"></div>
   <h3 class="ui header">

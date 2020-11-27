@@ -1,20 +1,24 @@
-{{#if this.event.isMapShown}}
-  <div class="eight wide column event-map">
-    <h1>{{t 'Getting Here'}}</h1>
-    {{#if (eq this.mapConfig.display 'embed') }}
-      <iframe title="Map" class="g-map" src="https://maps.google.com/maps?q={{this.event.locationName}}&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no"></iframe>
-    {{else}}
-      <GMap @markersFitMode="live" @lat={{37.744}} @lng={{-122.4367}} @address={{this.event.locationName}} @zoom={{2}} @class="google-maps" as |context|>
-        {{#g-map-address-marker context address=this.event.locationName as |markerContext|}}
-          {{#g-map-infowindow markerContext}}
-            {{this.event.locationName}}
-          {{/g-map-infowindow}}
-        {{/g-map-address-marker}}
-      </GMap>
-    {{/if}}
+<div class="ui stackable grid">
+  {{#if @event.isMapShown}}
+    <div class="eight wide column event-map">
+      <h1>{{t 'Getting Here'}}</h1>
+      {{#if (and @event.latitude @event.longitude)}}
+        <LeafletMap @lat={{@event.latitude}} @lng={{@event.longitude}} @zoom={{15}} as |layers|>
+          <layers.tile @url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
+          <layers.marker @location={{array @event.latitude @event.longitude}} as |marker|>
+            <marker.popup>
+              <h3>{{@event.name}}</h3>
+              {{@event.locationName}}
+            </marker.popup>
+          </layers.marker>
+        </LeafletMap>
+      {{else}}
+        <iframe title="Map" class="g-map" src="https://maps.google.com/maps?q={{@event.locationName}}&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no"></iframe>
+      {{/if}}
+    </div>
+  {{/if}}
+  <div class="{{if @event.isMapShown 'eight' 'sixteen'}} wide column address">
+    <h1>{{t 'Address'}}</h1>
+    <p>{{@event.locationName}}</p>
   </div>
-{{/if}}
-<div class="{{if this.event.isMapShown 'eight' 'sixteen'}} wide column address">
-  <h1>{{t 'Address'}}</h1>
-  <p>{{this.event.locationName}}</p>
 </div>

@@ -49,7 +49,7 @@ export default class AddToCalender extends Component<Args> {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
     const endTime = this.endsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
-    return `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${event.description}&location=${this.args.location}`;
+    return `https://outlook.live.com/calendar/0/deeplink/compose?subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${(event.description).substring(0, 1000)}&location=${this.args.location}`;
   }
 
   get iCalUrl(): string {
@@ -58,7 +58,7 @@ export default class AddToCalender extends Component<Args> {
   }
 
   get calendarUrls(): { name: string; url: string; }[] {
-    return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }];
+    return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }, { name: 'Yahoo', url: this.yahooUrl }, { name: 'Outlook', url: this.outlookUrl }];
   }
 
 }

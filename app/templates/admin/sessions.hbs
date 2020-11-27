@@ -7,7 +7,7 @@
         </LinkTo>
         {{#each this.model.sessionStates as |state|}}
           <LinkTo @route="admin.sessions.list" @model={{state}} class="item">
-            {{capitalize state}}
+            {{t-var (capitalize state)}}
           </LinkTo>
         {{/each}}
         <LinkTo @route="admin.sessions.list" @model="deleted" class="item">
