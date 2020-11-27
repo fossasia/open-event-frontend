@@ -53,15 +53,15 @@
           {{/if}}
         </div>
       {{/if}}
-
-      <div class="row">
-        <div class="column session-description">
-          {{sanitize @session.shortAbstract}}
-        </div>
-      </div>
     </div>
   </div>
   <div class="content pt-0 p-4 rounded-t-none {{if @expanded 'active'}}" style={{css background-color='white' border-radius='0.2rem'}}>
+    <div class="ui pt-4 row">
+      <div class="column session-description">
+        {{sanitize @session.shortAbstract}}
+      </div>
+    </div>
+    <div class="ui divider"></div>
     {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
       <div class="row p-4">
         <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>
