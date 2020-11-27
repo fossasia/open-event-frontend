@@ -5,7 +5,7 @@ const locales12Hours = new Set(['en', 'bn', 'hi', 'id', 'ja', 'run', 'th', 'vi',
 
 export function generalDate(params) {
   const timezone = params[1] || moment.tz.guess();
-
+  const reg = new RegExp('[+-]?[0-9]+');
   const local = moment(params[0]).tz(timezone).locale();
 
   let format = params[2] || 'h:mm A, MMMM Do YYYY (z)';
@@ -15,7 +15,15 @@ export function generalDate(params) {
     format = format.replace(' A', '');
     format = format.replace(' a', '');
   }
-  return moment(params[0]).tz(timezone).format(format);
+
+  let dateTime = moment(params[0]).tz(timezone).format(format);
+  const z = moment(params[0]).tz(timezone).format('z');
+
+  if (reg.test(z)) {
+    dateTime = dateTime.replace(z, timezone);
+  }
+
+  return dateTime;
 }
 
 export default Helper.helper(generalDate);
