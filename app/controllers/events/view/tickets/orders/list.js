@@ -11,22 +11,31 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'identifier',
         extraValuePaths : ['user', 'status', 'paidVia', 'completedAt', 'createdAt'],
         cellComponent   : 'ui-table/cell/events/view/tickets/orders/cell-order',
-        width           : 200,
+        width           : 170,
         actions         : {
           completeOrder      : this.completeOrder.bind(this),
-          deleteOrder        : this.deleteOrder.bind(this),
           cancelOrder        : this.cancelOrder.bind(this),
           resendConfirmation : this.resendConfirmation.bind(this)
         }
       },
       {
-        name            : 'Date And Time',
+        name      : 'First Name',
+        valuePath : 'user.firstName',
+        width     : 50
+      },
+      {
+        name      : 'Last Name',
+        valuePath : 'user.lastName',
+        width     : 50
+      },
+      {
+        name            : 'Date and Time',
         valuePath       : 'completedAt',
         extraValuePaths : ['createdAt'],
         cellComponent   : 'ui-table/cell/events/view/tickets/orders/cell-date',
         headerComponent : 'tables/headers/sort',
         width           : 100,
-        dateFormat      : 'MMMM DD, YYYY - HH:mm A',
+        dateFormat      : 'D MMM, YYYY h:mm A (z)',
         isSortable      : true
       },
       {
@@ -35,7 +44,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['discountCode', 'event'],
         cellComponent   : 'ui-table/cell/events/view/tickets/orders/cell-amount',
         headerComponent : 'tables/headers/sort',
-        width           : 100,
+        width           : 60,
         isSortable      : true
       },
       {
@@ -46,7 +55,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name      : 'Buyer/Registration Contact',
         valuePath : 'user.email',
-        width     : 140
+        width     : 100
 
       }
     ];
@@ -69,24 +78,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       })
       .catch(e => {
         console.error('Error while completing order', e);
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-  }
-
-  @action
-  deleteOrder(order_id) {
-    this.set('isLoading', true);
-    const order = this.store.peekRecord('order', order_id, { backgroundReload: false });
-    order.destroyRecord()
-      .then(() => {
-        this.notify.success(this.l10n.t('Order has been deleted successfully.'));
-        this.refreshModel.bind(this)();
-      })
-      .catch(e => {
-        console.error('Error while deleting order', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       })
       .finally(() => {

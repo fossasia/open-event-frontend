@@ -1,6 +1,8 @@
-<div class="ui grid">
-  <div class="three wide column"></div>
-  <div class="ten wide column">
+<div class="ui {{if this.device.isMobile 'center aligned container' 'grid'}} mb-8">
+  {{#if (eq this.device.isMobile false)}}
+    <div class="three wide column"></div>
+  {{/if}}
+  <div class="{{if (eq this.device.isMobile false) 'ten wide column'}}">
     <div class="ui stackable inverted divided grid">
       <div class="four wide column">
         <div class="ui left aligned container inverted link list">
@@ -91,6 +93,11 @@
               <i class="telegram icon"></i> {{t 'Telegram'}}
             </a>
           {{/if}}
+          {{#if this.socialLinks.weblateUrl}}
+            <a class="item" href="{{this.socialLinks.weblateUrl}}" target="_blank" rel="noopener noreferrer">
+              <Icons::Weblate /> {{t 'Weblate'}}
+            </a>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -126,5 +133,7 @@
       </div>
     </div>
   </div>
-  <div class="three wide column"></div>
+  {{#if (eq this.device.isMobile false)}}
+    <div class="three wide column"></div>
+  {{/if}}
 </div>

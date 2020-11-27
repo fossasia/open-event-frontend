@@ -6,49 +6,49 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name      : 'Event Name',
+        name      : this.l10n.t('Event Name'),
         valuePath : 'event.name'
       },
       {
-        name            : 'Title',
+        name            : this.l10n.t('Title'),
         valuePath       : 'title',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name            : 'State',
+        name            : this.l10n.t('State'),
         valuePath       : 'state',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-state',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name          : 'Speakers',
+        name          : this.l10n.t('Speakers'),
         valuePath     : 'speakers',
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : 'Submitted At',
+        name            : this.l10n.t('Submitted At'),
         valuePath       : 'submittedAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         options         : {
-          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+          dateFormat: 'D MMM, YYYY h:mm A'
         }
       },
       {
-        name            : 'Starts At',
+        name            : this.l10n.t('Starts At'),
         valuePath       : 'startsAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         options         : {
-          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+          dateFormat: 'D MMM, YYYY h:mm A'
         }
       },
       {
-        name            : 'Ends At',
+        name            : this.l10n.t('Ends At'),
         valuePath       : 'endsAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
@@ -58,7 +58,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Actions',
+        name            : this.l10n.t('Actions'),
         cellComponent   : 'ui-table/cell/cell-simple-buttons',
         valuePath       : 'id',
         extraValuePaths : ['event'],
