@@ -144,18 +144,17 @@
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.completed ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{ticket.orderStatistics.sales.completed}}/></td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.placed}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.placed ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{ticket.orderStatistics.sales.placed}}/></td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.pending}}</td>
           {{/unless}}
-          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{mult ticket.orderStatistics.tickets.pending ticket.price}}/></td>
+          <td class="right aligned"><CurrencyAmount @currency={{this.model.eventDetail.paymentCurrency}} @amount={{ticket.orderStatistics.sales.pending}}/></td>
         </tr>
       {{/each}}
     </tbody>
   </table>
 </div>
-

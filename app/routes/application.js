@@ -59,11 +59,8 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
       }
     }
 
-    const pages = this.cache.findAll('page');
-
     return hash({
       notifications,
-      pages,
       cookiePolicy     : this.settings.cookiePolicy,
       cookiePolicyLink : this.settings.cookiePolicyLink,
       socialLinks      : this.settings
