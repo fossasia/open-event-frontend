@@ -1,6 +1,6 @@
 {{!-- template-lint-disable no-nested-interactive  --}}
 <UiAccordion class="segment p-0" style={{css background-color=@session.track.color border-color='lightgray'}}>
-  <div class="title p-4" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
+  <div class="title p-4 pr-1" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
     <div class="ui">
       <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
@@ -33,15 +33,19 @@
         <div class="left floated twelve wide column">
           <div class="speaker-card">
               {{#each @session.speakers as |speaker|}}
-                <div class="pr-4 pb-2">
+                <div class="d-flex pr-4 pb-2">
                   <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
-                  {{speaker.name}} ({{speaker.position}}, {{speaker.organisation}})
-                </div>  
-             {{/each}}
+                  <div class="">
+                    {{speaker.name}}
+                    <br/>
+                    <div style="font-size: 75%;">({{speaker.position}}, {{speaker.organisation}})</div>
+                  </div> 
+                </div>
+              {{/each}}
           </div>
         </div>
         <div class="right floated four wide column">
-          <div><i class="train icon"></i>{{@session.track.name}}</div>
+          <div class="d-flex"><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
             <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
@@ -50,7 +54,7 @@
       {{/if}}
     </div>
   </div>
-  <div class="content pt-0 p-4 rounded-t-none {{if @expanded 'active'}}" style={{css background-color='white' border-radius='0.2rem'}}>
+  <div class="content pt-0 p-4 pr-1 rounded-t-none {{if @expanded 'active'}}" style={{css background-color='white' border-radius='0.2rem'}}>
     <div class="ui pt-4 row">
       <div class="column session-description">
         {{sanitize @session.shortAbstract}}
