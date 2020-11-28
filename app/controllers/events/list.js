@@ -39,6 +39,14 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/cell-roles'
       },
       {
+        name            : this.l10n.t('Tickets'),
+        width           : 130,
+        valuePath       : 'tickets',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-tickets' 
+      },
+      {
         name          : this.l10n.t('Sessions'),
         valuePath     : 'generalStatistics',
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
