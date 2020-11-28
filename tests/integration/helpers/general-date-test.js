@@ -10,7 +10,7 @@ module('Integration | Helper | general date', function(hooks) {
   test('it renders', async function(assert) {
     this.set('inputMomentValue', moment('2019-05-01T03:30:00+09:00'));
     this.set('inputTimezoneValue', 'Japan');
-    await render(hbs`{{general-date inputMomentValue inputTimezoneValue}}`);
+    await render(hbs`{{general-date inputMomentValue tz=inputTimezoneValue}}`);
     assert.equal(this.element.innerHTML.trim(), '3:30 AM, May 1st 2019 (JST)');
   });
 });
