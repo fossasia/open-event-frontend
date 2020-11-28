@@ -6,7 +6,7 @@ import { socialMediaExtraPrefixes } from 'open-event-frontend/utils/dictionary/s
 interface Args {
   prefix: string | undefined,
   value: string | undefined,
-  onChange: (text: string) => void
+  onChange: (text: string | null) => void
 }
 
 export default class LinkField extends Component<Args> {
@@ -66,7 +66,7 @@ export default class LinkField extends Component<Args> {
     if (this.value) {
       this.args.onChange(this.finalValue);
     } else {
-      this.args.onChange('https://anysampleurl.com');
+      this.args.onChange(null);
     }
   }
 
