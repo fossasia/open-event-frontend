@@ -27,7 +27,7 @@
         <div class="left floated twelve wide column">
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt @timezone}} - {{general-date @session.endsAt @timezone}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt tz=@timezone}} - {{general-date @session.endsAt tz=@timezone}}</div>
           {{/if}}
         </div>
       {{else}}
@@ -49,7 +49,7 @@
         <div class="right floated four wide column">
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt @timezone 'D MMM, YYYY h:mm A (z)'}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{/if}}

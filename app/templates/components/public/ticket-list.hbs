@@ -28,7 +28,7 @@
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
               <div>
-                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt @event.timezone 'dddd, D MMMM, YYYY h:mm A (z)'}}</small>
+                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'dddd, D MMMM, YYYY h:mm A (z)' tz=@event.timezone}}</small>
               </div>
             </td>
             <td></td>
