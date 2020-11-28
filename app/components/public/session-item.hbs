@@ -19,7 +19,6 @@
           {{@session.sessionType.name}}
         </div>
       </h3>
-      <div class="ui row">{{@session.track.name}}</div>
     </div>
     <br>
     <div class="ui grid stackable">
@@ -32,21 +31,17 @@
         </div>
       {{else}}
         <div class="left floated twelve wide column">
-          <div class="ui grid stackable">
-           <div class="session-speakers">
+          <div class="speaker-card">
               {{#each @session.speakers as |speaker|}}
-               <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                <div class="pr-4 pb-2">
+                  <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                  {{speaker.name}} ({{speaker.position}}, {{speaker.organisation}})
+                </div>  
              {{/each}}
-           </div>
-           <div class="left floated nine wide column">
-             {{#each @session.speakers as |speaker|}}
-                {{speaker.name}} ({{speaker.position}}, {{speaker.organisation}})
-                <br>
-              {{/each}}
-            </div>
           </div>
         </div>
         <div class="right floated four wide column">
+          <div><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
             <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
