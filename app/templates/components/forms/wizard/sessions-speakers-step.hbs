@@ -58,7 +58,7 @@
 
     <div class="field">
       <label class="required">{{t 'Microlocations or Virtual Online Rooms'}}</label>
-      {{#each this.microlocations as |microlocation|}}
+      {{#each this.microlocations as |microlocation index|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
             <Input @type="text" @value={{microlocation.name}} placeholder="Name" />
@@ -67,14 +67,26 @@
             <div class="ui action input fluid">
               <Input @type="number" @value={{microlocation.floor}} placeholder="Floor" />
               {{#if (gt this.microlocations.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' microlocation}}>
+                <button class="ui icon red button" type="button" {{action 'removeRoom' microlocation index}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'microlocation'}}>
+              <button class="ui icon primary button" type="button" {{action 'addRoom' index}}>
                 <i class="plus icon"></i>
               </button>
             </div>
+          </div>
+          <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
+            {{#if (not-eq index 0)}}
+              <button type="button" class="ui button" {{action "moveRoom" microlocation "up"}} data-content="Move room up">
+                <i class="up arrow icon"></i>
+              </button>
+            {{/if}}
+            {{#if (not-eq microlocation.position (dec this.microlocations.length))}}
+              <button type="button" class="ui button" {{action "moveRoom" microlocation "down"}} data-content="Move room down">
+                <i class="down arrow icon"></i>
+              </button>
+            {{/if}}
           </div>
         </div>
       {{/each}}
@@ -197,9 +209,11 @@
     <div class="ui two column stackable grid">
       <div class="column">
         <Forms::Wizard::CustomForms::Table
-          @headerText="Collect Speaker Details"
+          @headerText={{t "Collect Speaker Details"}}
           @fields={{this.customForm.speaker}}
-          @updateField={{action (mut this.speakerField)}} />
+          @updateField={{action (mut this.speakerField)}} 
+          @removeField={{action "removeField"}}
+        />
 
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}
@@ -211,9 +225,11 @@
       </div>
       <div class="column">
         <Forms::Wizard::CustomForms::Table
-          @headerText="Collect Session Details"
+          @headerText={{t "Collect Session Details"}}
           @fields={{this.customForm.session}}
-          @updateField={{action (mut this.sessionField)}} />
+          @updateField={{action (mut this.sessionField)}} 
+          @removeField={{action "removeField"}}
+        />
 
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}

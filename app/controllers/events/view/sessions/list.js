@@ -9,7 +9,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'State',
+        name            : this.l10n.t('State'),
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         width           : 75,
@@ -24,7 +24,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Title',
+        name            : this.l10n.t('Title'),
         valuePath       : 'title',
         width           : 230,
         extraValuePaths : ['id', 'event', 'isLocked'],
@@ -38,13 +38,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : 'Speakers',
+        name          : this.l10n.t('Speakers'),
         width         : 70,
         valuePath     : 'speakers',
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : 'Rating',
+        name            : this.l10n.t('Rating'),
         width           : 60,
         valuePath       : 'id',
         extraValuePaths : ['feedbacks'],
@@ -58,42 +58,42 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : 'Track',
+        name      : this.l10n.t('Track'),
         width     : 80,
         valuePath : 'track.name'
       },
       {
-        name      : 'Type',
+        name      : this.l10n.t('Type'),
         width     : 70,
         valuePath : 'sessionType.name'
       },
       {
-        name          : 'Submission Date',
+        name          : this.l10n.t('Submission Date'),
         width         : 90,
         valuePath     : 'submittedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm'
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
         }
       },
       {
-        name          : 'Last Modified',
+        name          : this.l10n.t('Last Modified'),
         width         : 90,
         valuePath     : 'lastModifiedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm'
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
         }
       },
       {
-        name            : 'Notify',
+        name            : this.l10n.t('Notify'),
         valuePath       : 'id',
         width           : 40,
         extraValuePaths : ['status'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-notify'
       },
       {
-        name            : 'Lock Session',
+        name            : this.l10n.t('Lock Session'),
         valuePath       : 'id',
         width           : 40,
         extraValuePaths : ['isLocked'],
