@@ -10,8 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
 "PO-Revision-Date: 2020-11-23 06:36+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/open-event/"
-"frontend/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/open-event/frontend/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -90,12 +89,12 @@ msgstr "Ihr Konto wurde erfolgreich gelöscht."
 #: app/controllers/events/list.js:84:24
 #: app/controllers/events/view/export.js:68:26
 #: app/controllers/events/view/sessions.js:31:26
-#: app/controllers/events/view/sessions/list.js:121:26
-#: app/controllers/events/view/sessions/list.js:160:24
-#: app/controllers/events/view/sessions/list.js:187:24
-#: app/controllers/events/view/sessions/list.js:209:28
-#: app/controllers/events/view/sessions/list.js:227:28
-#: app/controllers/events/view/sessions/list.js:257:26
+#: app/controllers/events/view/sessions/list.js:160:26
+#: app/controllers/events/view/sessions/list.js:199:24
+#: app/controllers/events/view/sessions/list.js:226:24
+#: app/controllers/events/view/sessions/list.js:248:28
+#: app/controllers/events/view/sessions/list.js:266:28
+#: app/controllers/events/view/sessions/list.js:296:26
 #: app/controllers/events/view/settings.js:24:26
 #: app/controllers/events/view/speakers.js:20:26
 #: app/controllers/events/view/speakers/list.js:83:24
@@ -110,7 +109,7 @@ msgstr "Ihr Konto wurde erfolgreich gelöscht."
 #: app/controllers/events/view/tickets/orders/list.js:81:26
 #: app/controllers/events/view/tickets/orders/list.js:100:26
 #: app/controllers/events/view/tickets/orders/list.js:126:26
-#: app/controllers/events/view/videoroom/list.js:48:24
+#: app/controllers/events/view/videoroom/list.js:54:24
 #: app/controllers/notifications.js:23:26
 #: app/controllers/oauth/callback.js:31:41
 #: app/controllers/public/index.js:88:37
@@ -637,6 +636,7 @@ msgid "Video Room URL"
 msgstr "Videroraum-URL"
 
 #: app/components/forms/events/view/videoroom-form.hbs:48:11
+#: app/controllers/events/view/videoroom/list.js:31:20
 msgid "Pin"
 msgstr "Pin"
 
@@ -660,7 +660,7 @@ msgstr "Organisationsteam"
 #: app/controllers/admin/events/list.js:73:25
 #: app/controllers/admin/sessions/list.js:26:24
 #: app/controllers/events/list.js:47:24
-#: app/controllers/events/view/sessions/list.js:41:24
+#: app/controllers/events/view/sessions/list.js:64:24
 #: app/routes/events/view/speakers.js:7:11
 #: app/templates/components/events/view/export/api-response.hbs:22:39
 #: app/templates/components/public/side-menu.hbs:14:10
@@ -692,16 +692,16 @@ msgstr "Öffentlich (keine Einschränkung)"
 #: app/templates/admin/permissions/system-roles.hbs:109:8
 #: app/templates/components/account/contact-info-section.hbs:10:47
 #: app/templates/components/account/password-section.hbs:42:4
-#: app/templates/components/forms/admin/content/social-links-form.hbs:76:47
+#: app/templates/components/forms/admin/content/social-links-form.hbs:84:47
 #: app/templates/components/forms/admin/settings/analytics-form.hbs:19:4
 #: app/templates/components/forms/admin/settings/billing.hbs:80:61
 #: app/templates/components/forms/admin/settings/images-form.hbs:133:61
-#: app/templates/components/forms/admin/settings/microservices-form.hbs:21:4
+#: app/templates/components/forms/admin/settings/microservices-form.hbs:27:4
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:457:4
-#: app/templates/components/forms/admin/settings/system-form.hbs:75:4
+#: app/templates/components/forms/admin/settings/system-form.hbs:78:4
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:145:4
 #: app/templates/components/forms/events/view/create-access-code.hbs:140:68
-#: app/templates/components/forms/events/view/create-discount-code.hbs:178:4
+#: app/templates/components/forms/events/view/create-discount-code.hbs:139:4
 #: app/templates/components/modals/edit-user-modal.hbs:21:4
 #: app/templates/components/modals/room-info-modal.hbs:14:63
 msgid "Save"
@@ -726,6 +726,10 @@ msgstr "Stream gespeichert"
 #: app/components/forms/orders/guest-order-form.js:38:23
 msgid "Please enter your password"
 msgstr "Bitte Passwort eingeben"
+
+#: app/components/forms/orders/attendee-list.js:37:28
+msgid "Here is your ticket"
+msgstr ""
 
 #: app/components/forms/orders/order-form.js:74:19
 #: app/components/forms/orders/order-form.js:370:23
@@ -1149,7 +1153,7 @@ msgid "Option"
 msgstr "Option"
 
 #: app/components/forms/wizard/custom-forms/table.hbs:20:10
-#: app/controllers/events/view/sessions/list.js:66:20
+#: app/controllers/events/view/sessions/list.js:89:20
 #: app/templates/components/events/view/overview/event-tickets.hbs:26:12
 #: app/templates/components/forms/wizard/sponsors-step.hbs:52:17
 #: app/templates/components/public/ticket-list.hbs:6:12
@@ -1403,7 +1407,7 @@ msgid "Notify Speakers"
 msgstr "Sprecher benachrichtigen"
 
 #: app/components/modals/session-notify-modal.hbs:44:4
-#: app/controllers/events/view/sessions/list.js:89:26
+#: app/controllers/events/view/sessions/list.js:112:26
 msgid "Notify"
 msgstr "Benachrichtigen"
 
@@ -1452,8 +1456,8 @@ msgstr "Bitte geben Sie eine Postleitzahl an"
 msgid "Marked as Read successfully"
 msgstr "Als erfolgreich gelesen markiert"
 
-#: app/components/public/add-to-calender.hbs:6:140
-#: app/components/public/add-to-calender.hbs:8:86
+#: app/components/public/add-to-calender.hbs:6:145
+#: app/components/public/add-to-calender.hbs:8:88
 msgid "to"
 msgstr "bis"
 
@@ -1461,20 +1465,42 @@ msgstr "bis"
 msgid "Add to Calendar"
 msgstr "Zum Kalender hinzufügen"
 
-#: app/components/public/call-for-speakers.js:26:24
+#: app/components/public/call-for-speakers.js:31:24
 msgid "You need to add your speaker details first before submitting a session"
 msgstr "Bitte zuerst Sprecherdetails hinzufügen, bevor Sie eine Sitzung einreichen"
 
-#: app/components/public/session-item.hbs:66:16
+#: app/components/public/session-item.hbs:11:14
+msgid "Join Video"
+msgstr ""
+
+#: app/components/public/session-item.hbs:73:16
 #: app/templates/components/forms/events/view/edit-session.hbs:15:11
 msgid "Slides"
 msgstr "Folien"
 
-#: app/components/public/session-item.hbs:77:16
+#: app/components/public/session-item.hbs:84:16
 #: app/templates/components/events/view/export/download-zip.hbs:16:39
 #: app/templates/events/view.hbs:44:10
 msgid "Video"
 msgstr "Video"
+
+#: app/components/public/session-item.hbs:94:223
+msgid "Join Video Channel"
+msgstr ""
+
+#: app/components/public/session-item.hbs:97:18
+#: app/routes/account/password.js:8:11 app/templates/account.hbs:12:8
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:77:6
+#: app/templates/components/forms/login-form.hbs:37:120
+#: app/templates/components/forms/orders/guest-order-form.hbs:33:45
+#: app/templates/components/forms/register-form.hbs:21:122
+#: app/templates/components/forms/reset-password-form.hbs:23:102
+msgid "Password"
+msgstr "Passwort"
+
+#: app/components/public/session-item.hbs:98:42
+msgid "Copied to clipboard"
+msgstr ""
 
 #: app/components/public/ticket-list.js:249:21
 msgid "Please enter a donation amount between {{minPrice}} and {{maxPrice}}"
@@ -1590,7 +1616,7 @@ msgstr "Endet"
 
 #: app/controllers/admin/events/list.js:52:27
 #: app/controllers/admin/sessions/list.js:19:26
-#: app/controllers/events/view/sessions/list.js:12:26
+#: app/controllers/events/view/sessions/list.js:35:26
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
 #: app/templates/components/forms/user-payment-info-form.hbs:51:23
 #: app/templates/components/modals/tax-info-modal.hbs:49:13
@@ -1610,7 +1636,7 @@ msgstr "Rollen"
 #: app/templates/components/events/view/export/api-response.hbs:13:39
 #: app/templates/components/public/speaker-item.hbs:44:8
 #: app/templates/components/ui-table/cell/admin/users/cell-user-links.hbs:3:94
-#: app/templates/events/view.hbs:35:10 app/templates/public/sessions.hbs:1:22
+#: app/templates/events/view.hbs:35:10 app/templates/public/sessions.hbs:1:43
 msgid "Sessions"
 msgstr "Sitzungen"
 
@@ -1802,7 +1828,7 @@ msgstr "Tickets"
 #: app/templates/admin/sales/organizers.hbs:28:14
 #: app/templates/admin/sales/organizers.hbs:34:14
 #: app/templates/admin/sales/organizers.hbs:40:14
-#: app/templates/events/view/tickets/index.hbs:7:108
+#: app/templates/events/view/tickets/index.hbs:7:170
 #: app/templates/events/view/tickets/index.hbs:131:36
 #: app/templates/events/view/tickets/index.hbs:133:36
 #: app/templates/events/view/tickets/index.hbs:135:36
@@ -1854,7 +1880,6 @@ msgstr "Gesendet an"
 #: app/controllers/admin/sales/invoices.js:56:26
 #: app/controllers/admin/users/list.js:42:24
 #: app/templates/components/forms/events/view/create-access-code.hbs:19:28
-#: app/templates/components/forms/events/view/create-discount-code.hbs:56:28
 msgid "Status"
 msgstr "Status"
 
@@ -1870,7 +1895,7 @@ msgid "Event Name"
 msgstr "Name der Veranstaltung"
 
 #: app/controllers/admin/sessions/list.js:13:26
-#: app/controllers/events/view/sessions/list.js:27:26
+#: app/controllers/events/view/sessions/list.js:50:26
 #: app/templates/components/forms/admin/content/pages-form.hbs:7:28
 #: app/templates/components/forms/events/view/edit-session.hbs:3:11
 msgid "Title"
@@ -1881,7 +1906,7 @@ msgid "Submitted At"
 msgstr "Eingereicht bei"
 
 #: app/controllers/admin/sessions/list.js:80:26
-#: app/controllers/events/view/sessions/list.js:114:28
+#: app/controllers/events/view/sessions/list.js:153:28
 msgid "Session has been deleted successfully."
 msgstr "Sitzung wurde erfolgreich gelöscht."
 
@@ -2016,46 +2041,46 @@ msgstr "CSV-Export ist fehlgeschlagen."
 msgid "Your session has been saved"
 msgstr "Ihre Sitzung wurde gespeichert"
 
-#: app/controllers/events/view/sessions/list.js:47:26
+#: app/controllers/events/view/sessions/list.js:70:26
 msgid "Rating"
 msgstr "Bewertung"
 
-#: app/controllers/events/view/sessions/list.js:61:20
+#: app/controllers/events/view/sessions/list.js:84:20
 msgid "Track"
 msgstr "Track"
 
-#: app/controllers/events/view/sessions/list.js:71:24
+#: app/controllers/events/view/sessions/list.js:94:24
 msgid "Submission Date"
 msgstr "Einreichungstermin"
 
-#: app/controllers/events/view/sessions/list.js:80:24
+#: app/controllers/events/view/sessions/list.js:103:24
 msgid "Last Modified"
 msgstr "Zuletzt geändert"
 
-#: app/controllers/events/view/sessions/list.js:96:26
+#: app/controllers/events/view/sessions/list.js:119:26
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-lock-session.hbs:6:20
 msgid "Lock Session"
 msgstr "Sitzung sperren"
 
-#: app/controllers/events/view/sessions/list.js:147:31
+#: app/controllers/events/view/sessions/list.js:186:31
 msgid "locked"
 msgstr "gesperrt"
 
-#: app/controllers/events/view/sessions/list.js:147:55
+#: app/controllers/events/view/sessions/list.js:186:55
 msgid "unlocked"
 msgstr "freigeschaltet"
 
-#: app/controllers/events/view/sessions/list.js:150:26
-#: app/controllers/events/view/sessions/list.js:178:26
+#: app/controllers/events/view/sessions/list.js:189:26
+#: app/controllers/events/view/sessions/list.js:217:26
 msgid "Session has been {{action}} successfully."
 msgstr "Die Sitzung wurde erfolgreich {{action}}."
 
-#: app/controllers/events/view/sessions/list.js:202:30
-#: app/controllers/events/view/sessions/list.js:220:30
+#: app/controllers/events/view/sessions/list.js:241:30
+#: app/controllers/events/view/sessions/list.js:259:30
 msgid "Session feedback has been updated successfully."
 msgstr "Das Sitzungsfeedback wurde erfolgreich aktualisiert."
 
-#: app/controllers/events/view/sessions/list.js:250:28
+#: app/controllers/events/view/sessions/list.js:289:28
 msgid "Session feedback has been created successfully."
 msgstr "Sitzungsfeedback wurde erfolgreich erstellt."
 
@@ -2128,7 +2153,7 @@ msgid "Access Code has been updated successfully."
 msgstr "Der Zugangscode wurde erfolgreich aktualisiert."
 
 #: app/controllers/events/view/tickets/add-order.js:23:28
-#: app/controllers/public/index.js:121:28
+#: app/controllers/public/index.js:126:28
 msgid "Order details saved. Please fill further details within {{time}} minutes."
 msgstr "Bestelldaten gespeichert. Bitte weitere Details innerhalb von {{time}} Minuten ausfüllen."
 
@@ -2191,11 +2216,28 @@ msgstr "Die E-Mail-Bestätigung wurde erfolgreich an die Teilnehmer gesendet"
 msgid "Only 5 resend actions are allowed in a minute"
 msgstr "In einer Minute sind nur 5 Aktionen zum erneuten Senden zulässig"
 
-#: app/controllers/events/view/videoroom/list.js:42:26
+#: app/controllers/events/view/videoroom/list.js:11:26
+#: app/routes/events/view/videoroom.js:7:11
+msgid "Microlocation"
+msgstr "Mikrolokation"
+
+#: app/controllers/events/view/videoroom/list.js:21:20
+msgid "Video room URL"
+msgstr ""
+
+#: app/controllers/events/view/videoroom/list.js:25:26
+msgid "Link"
+msgstr ""
+
+#: app/controllers/events/view/videoroom/list.js:36:20
+msgid "Additional information"
+msgstr ""
+
+#: app/controllers/events/view/videoroom/list.js:48:26
 msgid "{{item}} has been deleted successfully."
 msgstr "{{item}} wurde gelöscht."
 
-#: app/controllers/events/view/videoroom/list.js:42:89
+#: app/controllers/events/view/videoroom/list.js:48:89
 msgid "Video Stream"
 msgstr "Videostream"
 
@@ -2282,6 +2324,7 @@ msgstr "Teilnehmer kennenlernen"
 #: app/routes/events/view/edit/sponsors.js:8:11
 #: app/templates/components/events/view/export/api-response.hbs:25:39
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:58:12
+#: app/templates/components/events/view/overview/event-sponsors.hbs:2:22
 #: app/templates/components/forms/wizard/sponsors-step.hbs:14:16
 #: app/templates/components/public/side-menu.hbs:50:10
 #: app/templates/components/public/side-menu.hbs:54:10
@@ -2368,15 +2411,6 @@ msgstr "Gefahrenzone"
 #: app/routes/admin/users/view/account/email-preferences.js:8:11
 msgid "Email Preferences"
 msgstr "E-Mail-Einstellungen"
-
-#: app/routes/account/password.js:8:11 app/templates/account.hbs:12:8
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:74:6
-#: app/templates/components/forms/login-form.hbs:28:120
-#: app/templates/components/forms/orders/guest-order-form.hbs:33:45
-#: app/templates/components/forms/register-form.hbs:21:122
-#: app/templates/components/forms/reset-password-form.hbs:23:102
-msgid "Password"
-msgstr "Passwort"
 
 #: app/routes/account/profile.js:9:11 app/templates/account.hbs:6:8
 msgid "Profile"
@@ -2583,7 +2617,6 @@ msgstr "Benutzer"
 #: app/routes/events/view/tickets/access-codes/list.js:9:15
 #: app/routes/events/view/tickets/discount-codes/list.js:9:15
 #: app/templates/components/forms/events/view/create-access-code.hbs:24:15
-#: app/templates/components/forms/events/view/create-discount-code.hbs:60:15
 #: app/templates/components/ui-table/cell/admin/users/cell-status.hbs:2:30
 #: app/templates/components/ui-table/cell/cell-label.hbs:6:41
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-status.hbs:6:41
@@ -2595,7 +2628,6 @@ msgstr "Aktiv"
 #: app/routes/admin/users/list.js:15:15
 #: app/routes/events/view/tickets/access-codes/list.js:11:15
 #: app/routes/events/view/tickets/discount-codes/list.js:11:15
-#: app/templates/components/forms/events/view/create-discount-code.hbs:68:15
 #: app/templates/components/ui-table/cell/admin/users/cell-status.hbs:4:31
 #: app/templates/components/ui-table/cell/cell-label.hbs:8:42
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-status.hbs:8:42
@@ -2623,7 +2655,7 @@ msgstr "Anstehend"
 msgid "My Tickets"
 msgstr "Meine Tickets"
 
-#: app/routes/create.js:9:11 app/templates/create.hbs:6:27
+#: app/routes/create.js:14:11 app/templates/create.hbs:6:27
 msgid "Create an Event"
 msgstr "Erstellen Sie eine Veranstaltung"
 
@@ -2759,10 +2791,6 @@ msgstr "Rabattcodes"
 msgid "Orders"
 msgstr "Bestellungen"
 
-#: app/routes/events/view/videoroom.js:7:11
-msgid "Microlocation"
-msgstr "Mikrolokation"
-
 #: app/routes/events/view/videoroom/create.js:13:11
 msgid "Create Video Room"
 msgstr "Videoraum erstellen"
@@ -2775,9 +2803,9 @@ msgstr "Videoraum"
 msgid "Explore"
 msgstr "Erkunden"
 
-#: app/routes/login.js:8:11 app/templates/components/forms/login-form.hbs:5:31
-#: app/templates/components/forms/login-form.hbs:39:16
-#: app/templates/components/modals/login-signup-modal.hbs:12:8
+#: app/routes/login.js:8:11 app/templates/components/forms/login-form.hbs:14:31
+#: app/templates/components/forms/login-form.hbs:48:16
+#: app/templates/components/modals/login-signup-modal.hbs:21:8
 #: app/templates/components/nav-bar.hbs:49:51
 #: app/templates/components/nav-bar.hbs:82:51
 #: app/templates/components/side-bar.hbs:29:47
@@ -2795,6 +2823,7 @@ msgstr "Abgeschlossen"
 #: app/routes/my-tickets/upcoming/list.js:12:15
 #: app/templates/components/explore/side-bar.hbs:163:21
 #: app/templates/components/public/call-for-speakers.hbs:5:45
+#: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-url.hbs:2:145
 msgid "Open"
 msgstr "Geöffnet"
 
@@ -2850,7 +2879,7 @@ msgid "Refund Policy"
 msgstr "Rückgaberecht"
 
 #: app/routes/pages.js:8:88 app/templates/components/footer-main.hbs:114:12
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:29
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:180:29
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -3627,7 +3656,7 @@ msgstr "Von"
 
 #: app/templates/components/event-invoice/billing-info.hbs:11:16
 #: app/templates/components/forms/admin/settings/billing.hbs:58:47
-#: app/templates/components/forms/orders/attendee-list.hbs:47:18
+#: app/templates/components/forms/orders/attendee-list.hbs:53:18
 #: app/templates/components/forms/user-payment-info-form.hbs:9:25
 #: app/templates/components/widgets/forms/billing-info.hbs:2:40
 msgid "Company"
@@ -3771,7 +3800,7 @@ msgid "You can make a GET request to the following endpoint to access the select
 msgstr "Sie können eine GET-Anforderung an den folgenden Endpunkt senden, um auf die ausgewählten Informationen zuzugreifen"
 
 #: app/templates/components/events/view/export/api-response.hbs:34:30
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:156:40
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:40
 #: app/templates/components/modals/event-share-modal.hbs:27:17
 msgid "Link copied to clipboard"
 msgstr "Link in die Zwischenablage kopiert"
@@ -3817,16 +3846,40 @@ msgid "Start"
 msgstr "Starten"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:2:22
-msgid "Apps"
-msgstr "Anwendungen"
+msgid "Website Generator"
+msgstr ""
 
-#: app/templates/components/events/view/overview/event-apps.hbs:7:32
-msgid "Generate Android App"
-msgstr "Android App erstellen"
+#: app/templates/components/events/view/overview/event-apps.hbs:6:4
+msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
+msgstr ""
 
-#: app/templates/components/events/view/overview/event-apps.hbs:10:104
-msgid "Generate Web App"
-msgstr "Web-App erstellen"
+#: app/templates/components/events/view/overview/event-apps.hbs:7:4
+msgid "Simply use the website generator."
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-apps.hbs:8:4
+msgid "It transfers the data of the event via an API to our website tool and creates a website for you."
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-apps.hbs:9:4
+msgid "You can download the entire site as a zip file and upload it to your own web hosting service."
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-apps.hbs:10:4
+msgid "No database set up or framework required."
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-apps.hbs:11:4
+msgid "This feature is still in Alpha stage, but is already used actively by a number of events."
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-apps.hbs:12:4
+msgid "If you press the below button a tab will open where your website is generated."
+msgstr ""
+
+#: app/templates/components/events/view/overview/event-apps.hbs:15:140
+msgid "Create Website"
+msgstr ""
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:2:22
 msgid "Event Checklist"
@@ -3871,10 +3924,6 @@ msgstr "Anpassung der Sitzungs- und Sprecherformulare"
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:105:14
 msgid "Customize the session and speaker registration forms"
 msgstr "Passen Sie die Registrierungsformulare für Sitzungen und Sprecher an"
-
-#: app/templates/components/events/view/overview/event-sponsors.hbs:2:22
-msgid "Event sponsors"
-msgstr "Veranstaltungsponsoren"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 msgid "Summary"
@@ -4025,14 +4074,14 @@ msgstr "Adresse eingeben"
 
 #: app/templates/components/explore/side-bar.hbs:33:65
 #: app/templates/components/forms/wizard/basic-details-step.hbs:92:47
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:132:51
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:144:51
 #: app/templates/components/widgets/forms/ticket-input.hbs:131:58
 msgid "Starts"
 msgstr "Beginnt"
 
 #: app/templates/components/explore/side-bar.hbs:41:63
 #: app/templates/components/forms/wizard/basic-details-step.hbs:110:45
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:140:49
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:152:49
 #: app/templates/components/widgets/forms/ticket-input.hbs:149:56
 msgid "Ends"
 msgstr "Endet"
@@ -4140,27 +4189,27 @@ msgid "Connect With Us"
 msgstr "Mit uns Verbinden"
 
 #: app/templates/components/footer-main.hbs:53:46
-#: app/templates/components/forms/admin/content/social-links-form.hbs:17:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:19:11
 msgid "Facebook"
 msgstr "Facebook"
 
 #: app/templates/components/footer-main.hbs:58:45
-#: app/templates/components/forms/admin/content/social-links-form.hbs:25:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:28:11
 msgid "Instagram"
 msgstr "Instagram"
 
 #: app/templates/components/footer-main.hbs:63:43
-#: app/templates/components/forms/admin/content/social-links-form.hbs:9:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:10:11
 msgid "Twitter"
 msgstr "Twitter"
 
 #: app/templates/components/footer-main.hbs:68:42
-#: app/templates/components/forms/admin/content/social-links-form.hbs:49:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:55:11
 msgid "GitHub"
 msgstr "GitHub"
 
 #: app/templates/components/footer-main.hbs:73:43
-#: app/templates/components/forms/admin/content/social-links-form.hbs:41:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:46:11
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -4169,22 +4218,22 @@ msgid "Google Groups"
 msgstr "Google Groups"
 
 #: app/templates/components/footer-main.hbs:83:43
-#: app/templates/components/forms/admin/content/social-links-form.hbs:57:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:64:11
 msgid "Patreon"
 msgstr "Patreon"
 
 #: app/templates/components/footer-main.hbs:88:42
-#: app/templates/components/forms/admin/content/social-links-form.hbs:65:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:73:11
 msgid "Gitter"
 msgstr "Gitter"
 
 #: app/templates/components/footer-main.hbs:93:44
-#: app/templates/components/forms/admin/content/social-links-form.hbs:69:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:77:11
 msgid "Telegram"
 msgstr "Telegram"
 
 #: app/templates/components/footer-main.hbs:98:33
-#: app/templates/components/forms/admin/content/social-links-form.hbs:73:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:81:11
 msgid "Weblate"
 msgstr "Weblate"
 
@@ -4230,7 +4279,7 @@ msgstr "Fußzeile"
 msgid "Select Language"
 msgstr "Sprache wählen"
 
-#: app/templates/components/forms/admin/content/social-links-form.hbs:33:11
+#: app/templates/components/forms/admin/content/social-links-form.hbs:37:11
 msgid "Google Group"
 msgstr "Google Group"
 
@@ -4249,7 +4298,7 @@ msgstr "Google Analytics"
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:277:8
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:373:8
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:17:6
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:83:5
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:86:5
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:4:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:29:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:54:4
@@ -4266,7 +4315,7 @@ msgstr "Siehe"
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:279:10
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:375:10
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:19:8
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:85:6
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:88:6
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:6:6
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:31:6
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:56:6
@@ -4333,7 +4382,7 @@ msgid "Tax ID"
 msgstr "Steuer-ID"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:62:54
-#: app/templates/components/forms/orders/attendee-list.hbs:58:18
+#: app/templates/components/forms/orders/attendee-list.hbs:64:18
 #: app/templates/components/forms/user-payment-info-form.hbs:30:25
 #: app/templates/components/public/event-map.hbs:21:8
 #: app/templates/components/widgets/forms/billing-info.hbs:16:40
@@ -4482,11 +4531,11 @@ msgid "Android App Generator"
 msgstr "Android-App-Generator"
 
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:7:6
-#: app/templates/components/forms/admin/settings/microservices-form.hbs:16:6
+#: app/templates/components/forms/admin/settings/microservices-form.hbs:19:6
 msgid "API Server"
 msgstr "API-Server"
 
-#: app/templates/components/forms/admin/settings/microservices-form.hbs:12:4
+#: app/templates/components/forms/admin/settings/microservices-form.hbs:15:4
 msgid "Web App Generator"
 msgstr "Webanwendungs-Generator"
 
@@ -4756,12 +4805,12 @@ msgstr "Die URL der API, die dieses Frontend als Backend verwendet."
 msgid "API Url"
 msgstr "API-URL"
 
-#: app/templates/components/forms/admin/settings/system-form.hbs:49:4
-#: app/templates/components/forms/admin/settings/system-form.hbs:58:11
+#: app/templates/components/forms/admin/settings/system-form.hbs:52:4
+#: app/templates/components/forms/admin/settings/system-form.hbs:61:11
 msgid "Cookie Policy"
 msgstr "Cookie-Richtlinien"
 
-#: app/templates/components/forms/admin/settings/system-form.hbs:53:6
+#: app/templates/components/forms/admin/settings/system-form.hbs:56:6
 msgid "Cookie Policy URL"
 msgstr "URL der Cookie-Richtlinie"
 
@@ -4805,59 +4854,59 @@ msgstr "Von Name"
 msgid "Frontend Url"
 msgstr "Frontend Url"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:24:18
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:27:18
 msgid "Disable email"
 msgstr "E-Mail deaktivieren"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:27:18
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:30:18
 msgid "SMTP"
 msgstr "SMTP"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:32:6
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:35:6
 msgid "Host"
 msgstr "Host"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:38:6
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:41:6
 msgid "Port"
 msgstr "Port"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:43:11
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:46:11
 msgid "Encryption"
 msgstr "Verschlüsselung"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:47:8
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:50:8
 msgid "Choose Encryption type"
 msgstr "Wählen Sie Verschlüsselungstyp"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:52:10
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:55:10
 msgid "TLS"
 msgstr "TLS"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:55:10
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:58:10
 msgid "TLS (optional)"
 msgstr "TLS (wahlweise)"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:58:10
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:61:10
 msgid "SSL"
 msgstr "SSL"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:61:10
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:64:10
 msgid "No Encryption"
 msgstr "Keine Verschlüsselung"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:68:6
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:71:6
 msgid "Username"
 msgstr "Benutzername"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:81:18
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:84:18
 msgid "Sendgrid API"
 msgstr "SendGrid-API"
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:87:4
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:90:4
 msgid "on how to get this token."
 msgstr "wie Sie diesen Token erhalten."
 
-#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:93:6
+#: app/templates/components/forms/admin/settings/system/mail-settings.hbs:96:6
 msgid "Sendgrid Token"
 msgstr "SendGrid-Token"
 
@@ -5032,7 +5081,7 @@ msgid "Select Tickets applied to the access code"
 msgstr "Wählen Sie Tickets, die auf den Zugangscode angewendet werden sollen"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:42:15
-#: app/templates/components/forms/events/view/create-discount-code.hbs:79:15
+#: app/templates/components/forms/events/view/create-discount-code.hbs:60:15
 msgid "Select all Ticket types"
 msgstr "Wählen Sie alle Ticketarten aus"
 
@@ -5041,23 +5090,19 @@ msgid "No hidden tickets available for this event to select from"
 msgstr "Für diese Veranstaltung stehen keine versteckten Tickets zur Auswahl"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:66:15
-#: app/templates/components/forms/events/view/create-discount-code.hbs:103:15
 msgid "Show more options"
 msgstr "Weitere Optionen anzeigen"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:71:6
-#: app/templates/components/forms/events/view/create-discount-code.hbs:109:11
 msgid "Set the min and max quantity allowed to purchase per order (Optional)"
 msgstr "Mindest- und Höchstmenge festlegen, die pro Bestellung gekauft werden darf (Optional)"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:74:17
-#: app/templates/components/forms/events/view/create-discount-code.hbs:112:17
 #: app/templates/components/widgets/forms/ticket-input.hbs:27:24
 msgid "Min"
 msgstr "Mindest"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:85:17
-#: app/templates/components/forms/events/view/create-discount-code.hbs:120:17
 #: app/templates/components/widgets/forms/ticket-input.hbs:35:24
 msgid "Max"
 msgstr "Höchst"
@@ -5067,12 +5112,10 @@ msgid "Validity Period (Optional)"
 msgstr "Gültigkeitsdauer (Optional)"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:97:17
-#: app/templates/components/forms/events/view/create-discount-code.hbs:130:17
 msgid "Valid from"
 msgstr "Gültig ab"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:109:17
-#: app/templates/components/forms/events/view/create-discount-code.hbs:143:17
 msgid "Expires on"
 msgstr "Verfällt am"
 
@@ -5081,8 +5124,8 @@ msgid "Access Link"
 msgstr "Zugangslink"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:131:10
-#: app/templates/components/forms/events/view/create-discount-code.hbs:168:10
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:159:14
+#: app/templates/components/forms/events/view/create-discount-code.hbs:129:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:171:14
 #: app/templates/components/modals/event-share-modal.hbs:33:10
 msgid "Copy"
 msgstr "Kopieren"
@@ -5099,15 +5142,23 @@ msgstr "Prozent (%)"
 msgid "Number of Discount Tickets"
 msgstr "Anzahl der ermäßigten Tickets"
 
-#: app/templates/components/forms/events/view/create-discount-code.hbs:76:30
+#: app/templates/components/forms/events/view/create-discount-code.hbs:57:30
 msgid "Select Ticket(s) applied to the discount code"
 msgstr "Tickets auswählen, auf die der Rabattcode angewendet werden soll"
 
-#: app/templates/components/forms/events/view/create-discount-code.hbs:87:13
+#: app/templates/components/forms/events/view/create-discount-code.hbs:68:13
 msgid "No event tickets to select from"
 msgstr "Keine Veranstaltungstickets zur Auswahl"
 
-#: app/templates/components/forms/events/view/create-discount-code.hbs:160:13
+#: app/templates/components/forms/events/view/create-discount-code.hbs:83:13
+msgid "Discount valid from"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-discount-code.hbs:101:13
+msgid "Discount expires on"
+msgstr ""
+
+#: app/templates/components/forms/events/view/create-discount-code.hbs:121:13
 msgid "Discount Link"
 msgstr "Rabatt-Link"
 
@@ -5120,14 +5171,14 @@ msgid "Comments"
 msgstr "Kommentare"
 
 #: app/templates/components/forms/events/view/edit-session.hbs:16:76
-#: app/templates/components/forms/session-speaker-form.hbs:46:21
-#: app/templates/components/forms/session-speaker-form.hbs:440:23
+#: app/templates/components/forms/session-speaker-form.hbs:45:21
+#: app/templates/components/forms/session-speaker-form.hbs:437:23
 msgid "File"
 msgstr "Datei"
 
 #: app/templates/components/forms/events/view/edit-session.hbs:16:108
-#: app/templates/components/forms/session-speaker-form.hbs:49:20
-#: app/templates/components/forms/session-speaker-form.hbs:443:22
+#: app/templates/components/forms/session-speaker-form.hbs:48:20
+#: app/templates/components/forms/session-speaker-form.hbs:440:22
 msgid "Select a file"
 msgstr "Wähle eine Datei"
 
@@ -5135,21 +5186,21 @@ msgstr "Wähle eine Datei"
 msgid "Save Session"
 msgstr "Sitzung speichern"
 
-#: app/templates/components/forms/login-form.hbs:16:17
+#: app/templates/components/forms/login-form.hbs:25:17
 msgid "You have been registered successfully. Please login to continue."
 msgstr "Sie wurden erfolgreich registriert. Bitte einloggen zum Fortfahren."
 
-#: app/templates/components/forms/login-form.hbs:22:47
+#: app/templates/components/forms/login-form.hbs:31:47
 #: app/templates/components/forms/reset-password-form.hbs:43:49
 msgid "Email ID"
 msgstr "E-Mail-ID"
 
-#: app/templates/components/forms/login-form.hbs:42:75
+#: app/templates/components/forms/login-form.hbs:51:75
 #: app/templates/components/forms/orders/guest-order-form.hbs:24:107
 msgid "Forgot your password ?"
 msgstr "Passwort Vergessen?"
 
-#: app/templates/components/forms/login-form.hbs:59:10
+#: app/templates/components/forms/login-form.hbs:68:10
 #: app/templates/components/forms/reset-password-form.hbs:54:73
 msgid "New to site? Create Account"
 msgstr "Neu auf der Website? Konto erstellen"
@@ -5173,12 +5224,16 @@ msgstr "Ticketinhaber"
 msgid "-for-"
 msgstr "-zum-"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:41:12
+#: app/templates/components/forms/orders/attendee-list.hbs:19:12
+msgid "Download Ticket"
+msgstr ""
+
+#: app/templates/components/forms/orders/attendee-list.hbs:47:12
 #: app/templates/components/forms/orders/order-form.hbs:151:10
 msgid "Billing Information"
 msgstr "Zahlungsinformationen"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:51:18
+#: app/templates/components/forms/orders/attendee-list.hbs:57:18
 #: app/templates/components/forms/user-payment-info-form.hbs:62:23
 #: app/templates/components/widgets/forms/billing-info.hbs:9:48
 msgid "Tax ID or Business ID"
@@ -5255,8 +5310,8 @@ msgid "Ticket holder is the same person as ticket buyer"
 msgstr "Der Ticketinhaber ist dieselbe Person wie der Ticketkäufer"
 
 #: app/templates/components/forms/orders/order-form.hbs:95:44
-#: app/templates/components/forms/session-speaker-form.hbs:220:44
-#: app/templates/components/forms/session-speaker-form.hbs:342:42
+#: app/templates/components/forms/session-speaker-form.hbs:218:44
+#: app/templates/components/forms/session-speaker-form.hbs:339:42
 msgid "Select your gender"
 msgstr "Geschlecht auswählen"
 
@@ -5318,10 +5373,7 @@ msgstr "Bestätigung"
 
 #: app/templates/components/forms/orders/order-form.hbs:283:21
 msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
-msgstr ""
-"Durch Klicken auf \"{{orderState}}\" bestätige ich, dass ich die allgemeinen "
-"{{terms}} und {{privacy}} auf dieser Website gelesen habe und damit "
-"einverstanden bin."
+msgstr "Durch Klicken auf \"{{orderState}}\" bestätige ich, dass ich die allgemeinen {{terms}} und {{privacy}} auf dieser Website gelesen habe und damit einverstanden bin."
 
 #: app/templates/components/forms/orders/order-form.hbs:284:42
 #: app/templates/components/forms/orders/order-form.hbs:290:82
@@ -5355,79 +5407,79 @@ msgid "Forgot Password"
 msgstr "Passwort vergessen"
 
 #: app/templates/components/forms/session-speaker-form.hbs:5:8
-#: app/templates/components/forms/session-speaker-form.hbs:374:6
+#: app/templates/components/forms/session-speaker-form.hbs:371:6
 msgid "Session details"
 msgstr "Sitzungsdetails"
 
-#: app/templates/components/forms/session-speaker-form.hbs:37:21
-#: app/templates/components/forms/session-speaker-form.hbs:431:23
+#: app/templates/components/forms/session-speaker-form.hbs:36:21
+#: app/templates/components/forms/session-speaker-form.hbs:428:23
 #: app/templates/components/forms/wizard/basic-details-step.hbs:175:15
 #: app/templates/components/forms/wizard/basic-details-step.hbs:179:19
 #: app/templates/components/forms/wizard/sponsors-step.hbs:74:19
 msgid "Logo"
 msgstr "Logo"
 
-#: app/templates/components/forms/session-speaker-form.hbs:40:20
-#: app/templates/components/forms/session-speaker-form.hbs:186:22
-#: app/templates/components/forms/session-speaker-form.hbs:304:20
-#: app/templates/components/forms/session-speaker-form.hbs:434:22
+#: app/templates/components/forms/session-speaker-form.hbs:39:20
+#: app/templates/components/forms/session-speaker-form.hbs:184:22
+#: app/templates/components/forms/session-speaker-form.hbs:301:20
+#: app/templates/components/forms/session-speaker-form.hbs:431:22
 msgid "Select an image"
 msgstr "Wählen Sie ein Bild aus"
 
-#: app/templates/components/forms/session-speaker-form.hbs:64:42
-#: app/templates/components/forms/session-speaker-form.hbs:458:44
+#: app/templates/components/forms/session-speaker-form.hbs:63:42
+#: app/templates/components/forms/session-speaker-form.hbs:455:44
 msgid "Select"
 msgstr "Auswählen"
 
-#: app/templates/components/forms/session-speaker-form.hbs:101:6
-#: app/templates/components/forms/session-speaker-form.hbs:254:8
+#: app/templates/components/forms/session-speaker-form.hbs:100:6
+#: app/templates/components/forms/session-speaker-form.hbs:252:8
 msgid "Speaker details"
 msgstr "Referenten-Details"
 
-#: app/templates/components/forms/session-speaker-form.hbs:104:6
+#: app/templates/components/forms/session-speaker-form.hbs:103:6
 msgid "Choose from existing speaker(s)"
 msgstr "Wählen Sie aus vorhandenen Referenten aus"
 
-#: app/templates/components/forms/session-speaker-form.hbs:112:8
+#: app/templates/components/forms/session-speaker-form.hbs:111:8
 msgid "Select Speakers"
 msgstr "Referenten auswählen"
 
-#: app/templates/components/forms/session-speaker-form.hbs:126:44
+#: app/templates/components/forms/session-speaker-form.hbs:125:44
 msgid "No speaker exists. Add a new speaker."
 msgstr "Es ist kein Referent vorhanden. Neuen Referenten hinzufügen."
 
-#: app/templates/components/forms/session-speaker-form.hbs:151:27
-#: app/templates/components/forms/session-speaker-form.hbs:269:25
+#: app/templates/components/forms/session-speaker-form.hbs:150:27
+#: app/templates/components/forms/session-speaker-form.hbs:267:25
 msgid "Do not require email for this speaker."
 msgstr "Für diesen Redner ist keine E-Mail erforderlich."
 
-#: app/templates/components/forms/session-speaker-form.hbs:182:23
-#: app/templates/components/forms/session-speaker-form.hbs:300:21
+#: app/templates/components/forms/session-speaker-form.hbs:180:23
+#: app/templates/components/forms/session-speaker-form.hbs:297:21
 msgid "Speaker Image"
 msgstr "Referentenbild"
 
-#: app/templates/components/forms/session-speaker-form.hbs:188:26
-#: app/templates/components/forms/session-speaker-form.hbs:306:24
+#: app/templates/components/forms/session-speaker-form.hbs:186:26
+#: app/templates/components/forms/session-speaker-form.hbs:303:24
 msgid "We recommend using a 1:1 ratio image"
 msgstr "Wir empfehlen die Verwendung eines Bilds im Verhältnis 1: 1"
 
-#: app/templates/components/forms/session-speaker-form.hbs:377:6
+#: app/templates/components/forms/session-speaker-form.hbs:374:6
 msgid "Choose from an existing session"
 msgstr "Wählen Sie aus einer vorhandenen Sitzung"
 
-#: app/templates/components/forms/session-speaker-form.hbs:385:8
+#: app/templates/components/forms/session-speaker-form.hbs:382:8
 msgid "Select Session"
 msgstr "Wählen Sie Sitzung"
 
-#: app/templates/components/forms/session-speaker-form.hbs:398:44
+#: app/templates/components/forms/session-speaker-form.hbs:395:44
 msgid "No session exists. Add a new session proposal."
 msgstr "Es ist keine Sitzung vorhanden. Fügen Sie einen neuen Sitzungsvorschlag hinzu."
 
-#: app/templates/components/forms/session-speaker-form.hbs:408:15
+#: app/templates/components/forms/session-speaker-form.hbs:405:15
 msgid "Add a new Proposal"
 msgstr "Fügen Sie einen neuen Vorschlag hinzu"
 
-#: app/templates/components/forms/session-speaker-form.hbs:492:4
+#: app/templates/components/forms/session-speaker-form.hbs:489:4
 #: app/templates/components/forms/user-payment-info-form.hbs:77:4
 msgid "Submit"
 msgstr "Absenden"
@@ -5504,16 +5556,16 @@ msgstr "Der Ort ist erforderlich, um die Veranstaltung zu veröffentlichen"
 msgid "Show map on event page"
 msgstr "Landkarte auf der Veranstaltungsseite anzeigen"
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:77:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:75:13
 msgid "Live Stream URL"
 msgstr "Live-Stream-URL"
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:84:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:82:13
 msgid "Webinar URL"
 msgstr "Webinar-URL"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:129:45
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:148:49
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:160:49
 #: app/templates/components/widgets/forms/ticket-input.hbs:167:56
 msgid "Timezone"
 msgstr "Zeitzone"
@@ -5809,56 +5861,56 @@ msgstr "Dies ist ein Test"
 msgid "Microlocations or Virtual Online Rooms"
 msgstr "Mikrostandorte oder virtuelle Online-Räume"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:83:30
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:95:30
 msgid "Session Types"
 msgstr "Sitzungsarten"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:116:42
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:128:42
 msgid "Enable Call For Speakers"
 msgstr "Aktivieren Sie Call For Speakers"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:123:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:135:10
 #: app/templates/index.hbs:26:29 app/templates/pricing.hbs:97:24
 msgid "Call for speakers"
 msgstr "Aufruf für Vortragende"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:127:15
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:139:15
 msgid "Announcement"
 msgstr "Ankündigung"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:153:15
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:165:15
 msgid "Private Link"
 msgstr "Privater Link"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:164:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:176:10
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
 msgstr "Teilen Sie diesen Link, um jederzeit eine private Einreichung unabhängig von offenem / geschlossenem Call for Speakers zu erhalten. (Der Link ist aktiv, sobald die Veranstaltung gespeichert wurde.)"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:173:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:185:22
 msgid "Public"
 msgstr "Öffentlich"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:174:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:186:14
 msgid "Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published."
 msgstr "Öffentlich anzeigen. Jeder kann innerhalb der gewählten Fristen, sobald die Veranstaltung veröffentlicht ist, einen Vorschlag einreichen."
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:182:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:194:22
 msgid "Private"
 msgstr "Privat"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:183:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:195:14
 msgid "Do not display this publicly. Proposals can be submitted only using the private link."
 msgstr "Nicht öffentlich anzeigen. Vorschläge können nur über den privaten Link eingereicht werden."
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:193:8
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:205:8
 msgid "Customize submission forms"
 msgstr "Anmeldeformulare anpassen"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:200:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:212:22
 msgid "Collect Speaker Details"
 msgstr "Referentendetails sammeln"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:216:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:228:22
 msgid "Collect Session Details"
 msgstr "Sitzungsdetails sammeln"
 
@@ -6123,15 +6175,15 @@ msgstr "Um zu bestätigen, dass das Ereignis übertragen werden soll, jetzt bitt
 msgid "Proceed"
 msgstr "Weiter"
 
-#: app/templates/components/modals/login-signup-modal.hbs:4:4
+#: app/templates/components/modals/login-signup-modal.hbs:13:4
 msgid "Login or Signup"
 msgstr "Anmelden oder Registrieren"
 
-#: app/templates/components/modals/login-signup-modal.hbs:7:26
+#: app/templates/components/modals/login-signup-modal.hbs:16:26
 msgid "Please Login or Signup before you can submit a proposal."
 msgstr "Bitte melden Sie sich an oder registrieren Sie sich, bevor Sie einen Vorschlag einreichen können."
 
-#: app/templates/components/modals/login-signup-modal.hbs:17:8
+#: app/templates/components/modals/login-signup-modal.hbs:26:8
 msgid "Signup"
 msgstr "Registrierung"
 
@@ -6286,7 +6338,7 @@ msgstr "Bitte geben Sie Ihre E-Mail-ID ein, um zu bestätigen, dass Sie das Kont
 msgid "Manage Events"
 msgstr "Veranstaltungen verwalten"
 
-#: app/templates/components/nav-bar.hbs:44:91
+#: app/templates/components/nav-bar.hbs:44:105
 #: app/templates/components/side-bar.hbs:26:62
 msgid "Logout"
 msgstr "Abmelden"
@@ -6469,7 +6521,7 @@ msgid "Featured Speakers"
 msgstr "Empfohlene Referenten"
 
 #: app/templates/components/public/side-menu.hbs:5:8
-#: app/templates/components/public/side-menu.hbs:19:8
+#: app/templates/components/public/side-menu.hbs:19:10
 msgid "Info"
 msgstr "Infos"
 
@@ -6763,23 +6815,23 @@ msgstr "Möchten Sie diesen Rabattcode wirklich aktivieren?"
 msgid "Are you sure you would like to delete this Discount Code?"
 msgstr "Diesen Rabattcode wirklich löschen?"
 
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:18:22
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:25:22
 msgid "Mark Completed"
 msgstr "Markierung abgeschlossen"
 
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:18:70
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:25:70
 msgid "Are you sure you would like to mark this Order as completed?"
 msgstr "Sind Sie sicher, dass Sie diese Bestellung als abgeschlossen markieren möchten?"
 
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:23:22
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:30:22
 msgid "Cancel order"
 msgstr "Bestellung stornieren"
 
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:23:68
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:30:68
 msgid "Are you sure you would like to cancel this Order?"
 msgstr "Sind Sie sicher, dass Sie diese Bestellung stornieren möchten?"
 
-#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:27:20
+#: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:34:20
 msgid "Resend order confirmation"
 msgstr "Auftragsbestätigung erneut versenden"
 
@@ -6932,7 +6984,7 @@ msgstr "Erstelle"
 
 #: app/templates/event-invoice/paid.hbs:24:8
 #: app/templates/event-invoice/review.hbs:30:18
-#: app/templates/orders/view.hbs:42:10
+#: app/templates/orders/view.hbs:43:10
 msgid "Download Invoice"
 msgstr "Rechnung herunterladen"
 
@@ -7212,7 +7264,7 @@ msgstr "Bezahlen Sie mit PayTM"
 msgid "Pay with AliPay"
 msgstr "Zahlen Sie mit AliPay"
 
-#: app/templates/orders/view.hbs:37:10
+#: app/templates/orders/view.hbs:38:10
 msgid "Download Tickets"
 msgstr "Tickets herunterladen"
 
@@ -7507,7 +7559,7 @@ msgid "By Time"
 msgstr "Zum Zeitpunkt"
 
 #: app/templates/public/sessions.hbs:38:36
-#: app/templates/public/sessions.hbs:52:36
+#: app/templates/public/sessions.hbs:73:36
 msgid "No Sessions exist for this time period"
 msgstr "Für diesen Zeitraum sind keine Sitzungen vorhanden"
 
