@@ -11,6 +11,13 @@
         {{t 'Payment via'}} {{this.extraRecords.paidVia}}
       </span>
     {{/if}}
+    <span class="muted text">
+      {{#if this.extraRecords.completedAt}}
+        {{general-date this.extraRecords.completedAt '' 'D MMM, YYYY h:mm A'}} {{moment-from-now this.extraRecords.completedAt}}
+      {{else}}
+        {{general-date this.extraRecords.createdAt '' 'D MMM, YYYY h:mm A'}} {{moment-from-now this.extraRecords.createdAt}}
+      {{/if}}
+    </span>
   </div>
 </div>
 <div class="ui horizontal compact basic buttons">
