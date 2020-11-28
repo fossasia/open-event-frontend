@@ -91,7 +91,7 @@
 
     {{#if @session.microlocation.hasVideoStream}}
       <p style="white-space: pre-line;">
-        <a class="mt-2" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
+        <a class="mt-2" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream.slugName @session.microlocation.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
         {{#if @session.microlocation.videoStream.password}}
           <div class="d-flex items-center">
             <span>{{t 'Password'}}: </span>
