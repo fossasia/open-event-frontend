@@ -63,7 +63,11 @@ export default class LinkField extends Component<Args> {
   setValue(event: { target: HTMLInputElement }): void {
     const text = event.target.value;
     this.value = this.fixValue(text);
-    this.args.onChange(this.finalValue);
+    if(this.value) {
+      this.args.onChange(this.finalValue);
+    } else {
+      this.args.onChange("https://anysampleurl.com");
+    }
   }
 
   @action
