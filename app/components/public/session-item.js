@@ -1,9 +1,11 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 
 export default class SessionItem extends Component {
-  hideImage = false;
+  @tracked
+  hideImage = this.args.expanded;
 
   get youtubeLink() {
     return extractYoutubeUrl(this.args.session.videoUrl);
