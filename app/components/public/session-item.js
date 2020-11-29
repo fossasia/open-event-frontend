@@ -1,4 +1,3 @@
-
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
@@ -7,7 +6,7 @@ import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 
 export default class SessionItem extends Component {
   @service router;
-  
+
   @tracked
   hideImage = this.args.expanded;
 
