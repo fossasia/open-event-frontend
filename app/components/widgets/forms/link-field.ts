@@ -35,7 +35,8 @@ export default class LinkField extends Component<Args> {
   /**
    * Final value with prefix to be sent to parent component
    */
-  get finalValue(): string {
+  get finalValue(): string | null {
+    if(!this.fixedValue) return null;
     return this.prefix + this.fixedValue;
   }
 
