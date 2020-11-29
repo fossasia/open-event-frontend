@@ -69,7 +69,7 @@
     </div>
     {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
       <div class="row p-4">
-        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>   
+        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>
           {{#if (or this.pdfLink this.pptLink)}}
             <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ @session.slidesUrl }}&embedded=true"></iframe>
           {{/if}}
