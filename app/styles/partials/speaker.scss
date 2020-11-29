@@ -35,7 +35,19 @@
   margin-bottom: 10px;
 }
 
-.speaker-card {
+.speaker-flex {
   display: flex;
   flex-wrap: wrap;
+}
+
+.speaker-card {
+  display: flex;
+  max-width: 230px;
+  padding-bottom: 1rem !important;
+  padding-right: .5rem !important;
+}
+
+.speaker-details {
+  font-size: .9rem;
+  opacity: .8;
 }
