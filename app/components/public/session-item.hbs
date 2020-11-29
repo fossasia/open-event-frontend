@@ -8,7 +8,7 @@
           {{#if @session.slidesUrl}}
             <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
               <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
-              {{t (if this.slidesUploaded 'Download Slides' 'Link to Slides')}}
+              {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
             </button>
           {{/if}}
           {{#if @session.microlocation.hasVideoStream}}
@@ -33,7 +33,7 @@
         <div class="left floated twelve wide column">
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt tz=@timezone}} - {{general-date @session.endsAt tz=@timezone}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{else}}
@@ -46,7 +46,7 @@
            </div>
            <div class="left floated nine wide column">
              {{#each @session.speakers as |speaker|}}
-                {{speaker.name}} {{#if (or speaker.position speaker.positionOrganisation)}}({{speaker.positionOrganisation}}){{/if}}
+                {{speaker.name}} {{#if speaker.positionOrganisation}}({{speaker.positionOrganisation}}){{/if}}
                 <br>
               {{/each}}
             </div>
@@ -67,9 +67,13 @@
         {{sanitize @session.shortAbstract}}
       </div>
     </div>
-    {{#if (and @expanded @session.videoUrl)}}
+    {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
       <div class="row p-4">
         <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>   
+          {{#if (or this.pdfLink this.pptLink)}}
+            <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ @session.slidesUrl }}&embedded=true"></iframe>
+          {{/if}}
+          
           {{#if this.youtubeLink}}
             <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
           {{else if @session.videoUrl}}
