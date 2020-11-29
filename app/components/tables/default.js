@@ -4,4 +4,7 @@ import Component from '@ember/component';
 @classic
 export default class Tables extends Component {
 
+  didRender() {
+    this.rendered?.();
+  }
 }

@@ -1,21 +1,44 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { mapBy } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import $ from 'jquery';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
 
+  @computed('model.sessions.data')
+  get sessions() {
+    const len = this.model.sessions.data.length;
+    this.model.sessions.data.forEach((item, idx) => {
+      if (len >= 4 && idx >= len - 2) {
+        item.set('dir', 'upward');
+      } else if (len > 2) {
+        if (idx === len - 1) {
+          item.set('dir', 'upward');
+        } else if (idx < 2) {
+          item.set('dir', 'downward');
+        } else {
+          item.set('dir', 'auto');
+        }
+      } else {
+        item.set('dir', 'downward');
+      }
+    });
+
+    return this.model.sessions.data;
+  }
+
   get columns() {
     return [
       {
-        name            : 'State',
+        name            : this.l10n.t('State'),
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         width           : 75,
         valuePath       : 'state',
         isSortable      : true,
-        extraValuePaths : ['id', 'status'],
+        extraValuePaths : ['id', 'status', 'dir'],
         options         : {
           sessionStateMap: this.model.sessionStateMap
         },
@@ -24,7 +47,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Title',
+        name            : this.l10n.t('Title'),
         valuePath       : 'title',
         width           : 230,
         extraValuePaths : ['id', 'event', 'isLocked'],
@@ -38,13 +61,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : 'Speakers',
+        name          : this.l10n.t('Speakers'),
         width         : 70,
         valuePath     : 'speakers',
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : 'Rating',
+        name            : this.l10n.t('Rating'),
         width           : 60,
         valuePath       : 'id',
         extraValuePaths : ['feedbacks'],
@@ -58,42 +81,42 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : 'Track',
+        name      : this.l10n.t('Track'),
         width     : 80,
         valuePath : 'track.name'
       },
       {
-        name      : 'Type',
+        name      : this.l10n.t('Type'),
         width     : 70,
         valuePath : 'sessionType.name'
       },
       {
-        name          : 'Submission Date',
+        name          : this.l10n.t('Submission Date'),
         width         : 90,
         valuePath     : 'submittedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm'
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
         }
       },
       {
-        name          : 'Last Modified',
+        name          : this.l10n.t('Last Modified'),
         width         : 90,
         valuePath     : 'lastModifiedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm'
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
         }
       },
       {
-        name            : 'Notify',
+        name            : this.l10n.t('Notify'),
         valuePath       : 'id',
         width           : 40,
         extraValuePaths : ['status'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-notify'
       },
       {
-        name            : 'Lock Session',
+        name            : this.l10n.t('Lock Session'),
         valuePath       : 'id',
         width           : 40,
         extraValuePaths : ['isLocked'],
@@ -103,6 +126,22 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       }
     ];
+  }
+
+  @action
+  tableRendered() {
+    let margin = 0;
+    const len = this.model.sessions.data.length;
+
+    if (len > 0 && len <= 2) {
+      margin = 150;
+    } else if (len <= 3) {
+      margin = 50;
+    } else {
+      margin = 0;
+    }
+
+    $('.ember-table table').css('margin-bottom', margin);
   }
 
   @action
