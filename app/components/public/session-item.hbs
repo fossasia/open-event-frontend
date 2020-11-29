@@ -5,6 +5,12 @@
       <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
         <span style={{css float='right'}}>
+          {{#if @session.slidesUrl}}
+            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
+              <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
+              {{t (if this.slidesUploaded 'Download Slides' 'Link to Slides')}}
+            </button>
+          {{/if}}
           {{#if @session.microlocation.hasVideoStream}}
             <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
               <i class="icon video"></i>
@@ -61,20 +67,9 @@
         {{sanitize @session.shortAbstract}}
       </div>
     </div>
-    {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
+    {{#if (and @expanded @session.videoUrl)}}
       <div class="row p-4">
-        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>
-          {{#if (or this.pdfLink this.pptLink)}}
-            <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ @session.slidesUrl }}&embedded=true"></iframe>
-          {{else if @session.slidesUrl}}
-            <a class="mb-2" href={{ @session.slidesUrl }} target="_blank" rel="noopener noreferrer">
-              <button class="ui labeled icon button">
-                <i class="file powerpoint icon"></i>
-                {{t 'Slides'}}
-              </button>
-            </a>
-          {{/if}}
-          
+        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>   
           {{#if this.youtubeLink}}
             <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
           {{else if @session.videoUrl}}
