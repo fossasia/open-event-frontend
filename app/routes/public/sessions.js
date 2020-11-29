@@ -94,18 +94,18 @@ export default class SessionsRoute extends Route {
       filterOptions.push({
         or: [
           {
-          name : 'title',
-          op   : 'ilike',
-          val  : `%${params.search}%`
+            name : 'title',
+            op   : 'ilike',
+            val  : `%${params.search}%`
           },
           {
             name : 'track',
-            op : 'has',
-            val: {
-              name: 'name',
+            op   : 'has',
+            val  : {
+              name : 'name',
               op   : 'ilike',
               val  : `%${params.search}%`
-            } 
+            }
           },
           {
             name : 'microlocation',
