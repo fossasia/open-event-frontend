@@ -7,7 +7,8 @@ import $ from 'jquery';
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort'];
+  queryParams = ['sort', 'search'];
+  search = null;
   sort = 'starts-at';
   isTrackVisible = false;
   timezone = null;
