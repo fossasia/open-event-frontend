@@ -115,12 +115,21 @@ export default class SessionsRoute extends Route {
               op   : 'ilike',
               val  : `%${params.search}%`
             }
+          },
+          {
+            name : 'speakers',
+            op   : 'any',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
           }
         ]
       });
     }
 
-    const isFiltering = params.room || params.track || params.date;
+    const isFiltering = params.room || params.track || params.date || params.search;
 
     return {
       event   : eventDetails,

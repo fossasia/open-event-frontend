@@ -12,16 +12,10 @@
     @eventTimezone={{this.model.event.timezone}}
     @timezone={{this.timezone}} />
 
-  <div class="item">
-    <div class="ui icon input">
-      <Input
-        @name="search"
-        @value={{this.search}}
-        @type="text"
-        @placeholder={{t "Search..."}} />
-      <i class="search icon"></i>
-    </div>
-  </div>
+  <Tables::Utilities::SearchBox
+    @searchQuery={{this.search}}
+    @size="large"
+  />&nbsp;
 
   <UiDropdown class="labeled icon button mb-2">
     <i class="sort amount down icon"></i>
