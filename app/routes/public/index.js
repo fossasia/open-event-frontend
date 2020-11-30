@@ -44,7 +44,7 @@ export default class IndexRoute extends Route {
       include      : 'sessions.track',
       'page[size]' : 0
     });
-    const sponsorsPromise = event.get('sponsors');
+    const sponsorsPromise = event.query('sponsors', { 'page[size]' : 0 });
     const taxPromise = event.get('tax');
 
     const [tickets, featuredSpeakers, sponsors, tax] = (await allSettled([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]))
