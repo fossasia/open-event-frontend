@@ -27,7 +27,7 @@
       </SmartOverflow>
       <div class="meta">
         <span class="date">
-          {{general-date this.order.event.startsAt 'dddd, D MMMM, YYYY h:mm A (z)' tz=this.order.event.timezone}}
+          {{general-date this.order.event.startsAt ft='date-time-tz-long' tz=this.order.event.timezone}}
         </span>
       </div>
       <SmartOverflow @class="description">
@@ -46,7 +46,7 @@
         </span>
         <span>#{{this.order.identifier}}</span>
         {{#if this.order.completedAt}}
-          <span>{{t 'on'}} {{general-date this.order.completedAt 'D MMM, YYYY h:mm A'}}</span>
+          <span>{{t 'on'}} {{general-date this.order.completedAt ft='date-time-short'}}</span>
         {{/if}}
       </span>
     </div>

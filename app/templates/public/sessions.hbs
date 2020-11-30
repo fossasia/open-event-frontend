@@ -3,7 +3,7 @@
 <div class="d-flex wrap">
   <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=null}} class="ui button mb-2">{{t 'All'}}</LinkTo>
   {{#each this.allDates as |date|}}
-    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'D MMM, YYYY'}}</LinkTo>
+    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date ft='date-short'}}</LinkTo>
   {{/each}}
 
   <Widgets::TimeZonePicker
