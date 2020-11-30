@@ -9,23 +9,23 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name          : 'For',
+        name          : this.l10n.t('For'),
         valuePath     : 'user',
         cellComponent : 'ui-table/cell/admin/reports/system-logs/notification-logs/cell-for'
       },
       {
-        name            : 'Time',
+        name            : this.l10n.t('Time'),
         valuePath       : 'receivedAt',
         cellComponent   : 'ui-table/cell/admin/reports/system-logs/notification-logs/cell-time',
         headerComponent : 'tables/headers/sort',
         isSortable      : true
       },
       {
-        name      : 'Actions',
+        name      : this.l10n.t('Actions'),
         valuePath : 'title'
       },
       {
-        name          : 'Message',
+        name          : this.l10n.t('Message'),
         valuePath     : 'message',
         cellComponent : 'ui-table/cell/admin/reports/system-logs/notification-logs/cell-sanitize'
       }

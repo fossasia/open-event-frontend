@@ -3,9 +3,9 @@
     <i class="clock alternate outline icon pt-1"></i>
     <div class="content">
       {{#if this.isSingleDay}}
-        {{general-date @event.startsAt @event.timezone "dddd, MMMM DD, YYYY"}}<br>{{general-date @event.startsAt @event.timezone "h:mm A"}} {{t 'to'}} {{general-date @event.endsAt @event.timezone "h:mm A"}} 
+        {{general-date @event.startsAt "dddd, D MMMM, YYYY" tz=@event.timezone}}<br>{{general-date @event.startsAt "h:mm A" tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt "h:mm A" tz=@event.timezone}} 
       {{else}}
-        {{general-date @event.startsAt @event.timezone "dddd, MMMM DD, YYYY h:mm A"}} {{t 'to'}} {{general-date @event.endsAt @event.timezone "dddd, MMMM DD, YYYY h:mm A"}} 
+        {{general-date @event.startsAt "dddd, D MMMM, YYYY h:mm A" tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt "dddd, D MMMM, YYYY h:mm A" tz=@event.timezone}} 
       {{/if}}
       ({{this.timezone}})
       <br>

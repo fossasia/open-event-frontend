@@ -18,9 +18,9 @@ export default ModelBase.extend({
   code          : attr('string'),
   type          : attr('string', { defaultValue: 'amount' }),
   value         : attr('number'),
-  ticketsNumber : attr('number'), // For form (1) this holds the max. times this can be used for events
+  ticketsNumber : attr('number', { defaultValue: 10 }), // For form (1) this holds the max. times this can be used for events
   minQuantity   : attr('number', { defaultValue: 0 }), // Not of any significance for form (1)
-  maxQuantity   : attr('number'), // For form (1) this holds the number of months this code is valid for events
+  maxQuantity   : attr('number', { defaultValue: 100000 }),
   validFrom     : attr('moment', { defaultValue: () => moment().startOf('day') }),
   discountUrl   : attr('string'),
   validTill     : attr('moment', { defaultValue: () => moment().add(1, 'months').startOf('day') }),
