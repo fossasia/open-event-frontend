@@ -2,7 +2,7 @@
   <div class="row">
     <div class="eight wide column">
       <Events::View::Overview::EventSetupChecklist @data={{this.model}} />
-      {{#if this.showSponsors}}
+      {{#if this.model.event.isSponsorsEnabled}}
         <Events::View::Overview::EventSponsors
           @data={{this.model.sponsors}}
           @columns={{this.columns}}

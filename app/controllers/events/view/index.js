@@ -3,10 +3,6 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
-  get showSponsors() {
-    return this.model.event.isSponsorsEnabled;
-  }
-
   get columns() {
     return [
       {
