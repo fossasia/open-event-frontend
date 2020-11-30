@@ -2,6 +2,15 @@
   {{#if (isSubstring "checkbox" @class)}}
     <Input @class="legacy-checkbox-checkbox" @type="checkbox" @checked={{@checked}} @click={{@onChange}} />
 
+  {{else if (eq true @disabled)}}
+    <XToggle
+      @theme='ios'
+      @variant='light'
+      @value={{true}}
+      @onToggle={{true}}
+      @class="legacy-checkbox-switch disabled"
+    />
+
   {{else if (eq @type "checkbox")}}
     <Input @class="legacy-checkbox-checkbox" @type="checkbox" @checked={{@checked}} @click={{@onChange}} />
 
@@ -11,7 +20,7 @@
       @variant='light'
       @value={{@checked}}
       @onToggle={{@onChange}}
-      @class="legacy-checkbox-switch"
+      @class={{"legacy-checkbox-switch" @class}}
     />
   {{/if}}
 
