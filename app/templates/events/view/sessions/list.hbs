@@ -1,7 +1,7 @@
 <div class="sixteen wide column">
   <Tables::Default
     @columns={{this.columns}}
-    @rows={{this.sessions}}
+    @rows={{this.model.sessions.data}}
     @feedbacks={{this.model.feedbacks}}
     @currentPage={{this.page}}
     @pageSize={{this.per_page}}
@@ -12,6 +12,5 @@
     @filterOptions={{this.filterOptions}}
     @widthConstraint="eq-container"
     @resizeMode="fluid"
-    @rendered={{action "tableRendered"}}
     @fillMode="equal-column" />
 </div>
