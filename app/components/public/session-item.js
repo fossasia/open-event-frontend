@@ -1,9 +1,14 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 
 export default class SessionItem extends Component {
-  hideImage = false;
+  @service router;
+
+  @tracked
+  hideImage = this.args.expanded;
 
   get youtubeLink() {
     return extractYoutubeUrl(this.args.session.videoUrl);
@@ -18,6 +23,11 @@ export default class SessionItem extends Component {
     return slidesUrl?.indexOf('.pptx') > -1 || slidesUrl?.indexOf('.ppt') > -1;
   }
 
+  get slidesUploaded() {
+    const url = this.args.session.slidesUrl;
+    return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
+  }
+
   @action
   hideSpeakerImage() {
     this.hideImage = !this.hideImage;
@@ -27,7 +37,13 @@ export default class SessionItem extends Component {
   }
 
   @action
+  goToSlides() {
+    window.open(this.args.session.slidesUrl, '_blank');
+  }
+
+  @action
   goToStream() {
-    window.open(`/e/${this.args.event?.identifier ?? this.args.session.get('event.identifier')}/stream/${this.args.session.get('microlocation.videoStream.id')}`, '_blank');
+    const url = this.router.urlFor('public.stream.view', this.args.event?.identifier ?? this.args.session.get('event.identifier'), this.args.session.get('microlocation.videoStream.slugName'), this.args.session.get('microlocation.videoStream.id'));
+    window.open(url, '_blank');
   }
 }
