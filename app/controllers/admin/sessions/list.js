@@ -32,30 +32,21 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'submittedAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort',
-        options         : {
-          dateFormat: 'D MMM, YYYY h:mm A'
-        }
+        headerComponent : 'tables/headers/sort'
       },
       {
         name            : this.l10n.t('Starts At'),
         valuePath       : 'startsAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort',
-        options         : {
-          dateFormat: 'D MMM, YYYY h:mm A'
-        }
+        headerComponent : 'tables/headers/sort'
       },
       {
         name            : this.l10n.t('Ends At'),
         valuePath       : 'endsAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort',
-        options         : {
-          dateFormat: 'D MMM, YYYY h:mm A'
-        }
+        headerComponent : 'tables/headers/sort'
       },
       {
         name            : this.l10n.t('Actions'),

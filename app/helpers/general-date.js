@@ -6,7 +6,8 @@ const dateFormats = {
   'date-time-tz-long'  : 'dddd, D MMMM, YYYY h:mm A (z)',
   'date-time-short'    : 'D MMM, YYYY h:mm A',
   'date-time-tz-short' : 'D MMM, YYYY h:mm A (z)',
-  'date-short'         : 'D MMM, YYYY'
+  'date-short'         : 'D MMM, YYYY',
+  'time-tz-short'      : 'h:mm A (z)'
 };
 
 const locales12Hours = new Set(['en', 'bn', 'hi', 'id', 'ja', 'run', 'th', 'vi', 'ko']);
