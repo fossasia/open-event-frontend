@@ -60,7 +60,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
         displayName : this.authManager.currentUser.fullName
       },
       configOverwrite: {
-        prejoinPageEnabled: false
+        prejoinPageEnabled  : false,
+        startWithAudioMuted : true,
+        startWithVideoMuted : true
       },
       interfaceConfigOverwrite: {
         HIDE_INVITE_MORE_HEADER: true

@@ -20,7 +20,7 @@
       <div class="meta">
         <span class="time">
           {{#if this.session.startsAt}}
-            {{moment-format this.session.startsAt 'D MMM, YYYY h:mm A'}}
+            {{general-date this.session.startsAt 'D MMM, YYYY h:mm A'}}
           {{else}}
             {{t 'Session Not Yet Scheduled'}}
           {{/if}}
