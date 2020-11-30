@@ -10,10 +10,10 @@
       </span>
     {{/if}}
     {{#if (eq this.record.status 'completed')}}
-      {{general-date this.record.completedAt ft='date-time-short'}}
+      {{general-date this.record.completedAt 'date-time-short'}}
       {{moment-from-now this.record.completedAt}}
     {{else}}
-      {{general-date this.record.createdAt ft='date-time-short'}}
+      {{general-date this.record.createdAt 'date-time-short'}}
       {{moment-from-now this.record.createdAt}}
     {{/if}}
   </div>

@@ -49,7 +49,7 @@
         <div class="right floated four wide column">
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt ft='date-time-tz-short' tz=@timezone}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{/if}}

@@ -25,13 +25,13 @@
       {{/if}}
       {{#if this.filters.start_date}}
         <div class="ui mini label">
-          {{general-date this.filters.start_date ft='date-short'}}
+          {{general-date this.filters.start_date 'date-short'}}
           <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
       {{#if this.filters.end_date}}
         <div class="ui mini label">
-          {{general-date this.filters.end_date ft='date-short'}}
+          {{general-date this.filters.end_date 'date-short'}}
           <a href="#" role="button" {{action 'clearFilter' 'end_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
