@@ -34,8 +34,8 @@
         <div class="d-flex space-between">
           <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
           {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
-          <i class="ticket alternate icon"></i>
-          {{t 'Download Tickets'}}
+          <i class="download icon"></i>
+          {{t 'All Tickets'}}
           </button>
           <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
           class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
