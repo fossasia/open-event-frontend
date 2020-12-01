@@ -20,11 +20,10 @@ export default class SessionsController extends Controller {
 
   @action
   sessionChanged() {
-    if (this.model.isFiltering) {
+      this.set('preserveScrollPosition', true);
       $('html,body').animate({
         scrollTop: $('#session-heading').offset()?.top
       });
-    }
   }
 
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
