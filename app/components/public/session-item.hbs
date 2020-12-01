@@ -2,27 +2,33 @@
 <UiAccordion class="segment p-0" style={{css background-color=@session.track.color border-color='lightgray'}}>
   <div class="title p-4 pr-1" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
     <div class="ui">
-      <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
-        {{@session.title}}
-        <span style={{css float='right'}}>
+      <h3 class="ui header d-flex space-between" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
+        <div>
+          {{@session.title}}
+          <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
+            {{@session.sessionType.name}}
+          </div>
+        </div>
+        <div class="d-flex">
           {{#if @session.slidesUrl}}
-            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
-              <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
-              {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
-            </button>
+            <div style="white-space: nowrap;">
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
+                <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
+                {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
+              </button>
+            </div>
           {{/if}}
           {{#if @session.microlocation.hasVideoStream}}
-            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
-              <i class="icon video"></i>
-              {{t 'Join Video'}}
-            </button>
+            <div style="white-space: nowrap;">
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+                <i class="icon video"></i>
+                {{t 'Join Video'}}
+              </button>
+            </div>
           {{/if}}
           {{#unless @hideSessionLink}}
             <a role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
           {{/unless}}
-        </span>
-        <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
-          {{@session.sessionType.name}}
         </div>
       </h3>
     </div>
