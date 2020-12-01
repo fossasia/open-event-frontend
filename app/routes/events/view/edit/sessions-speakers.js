@@ -15,18 +15,18 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
     const microlocationsPromise = data.event.get('microlocations');
     const sessionTypesPromise = data.event.get('sessionTypes');
     const speakersCallPromise = new RSVP.Promise(resolve => {
-        data.event
-          .get('speakersCall')
-          .then(relationshipRecord => {
-            resolve(relationshipRecord);
-          })
-          .catch(() => {
-            const record = this.store.createRecord('speakers-call', {
-              event: data.event
-            });
-            resolve(record);
+      data.event
+        .get('speakersCall')
+        .then(relationshipRecord => {
+          resolve(relationshipRecord);
+        })
+        .catch(() => {
+          const record = this.store.createRecord('speakers-call', {
+            event: data.event
           });
-      });
+          resolve(record);
+        });
+    });
     // Only get session/speaker custom forms.
     const customFormFilterOptions = [{
       or: [
