@@ -20,10 +20,10 @@ export default class SessionsController extends Controller {
 
   @action
   sessionChanged() {
-      this.set('preserveScrollPosition', true);
-      $('html,body').animate({
-        scrollTop: $('#session-heading').offset()?.top
-      });
+    this.set('preserveScrollPosition', true);
+    $('html,body').animate({
+      scrollTop: $('#session-heading').offset()?.top
+    });
   }
 
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
