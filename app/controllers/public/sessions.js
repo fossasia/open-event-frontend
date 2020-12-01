@@ -2,7 +2,6 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
-import $ from 'jquery';
 
 @classic
 export default class SessionsController extends Controller {
