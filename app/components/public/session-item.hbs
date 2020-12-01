@@ -5,6 +5,12 @@
       <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
         <span style={{css float='right'}}>
+          {{#if @session.slidesUrl}}
+            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
+              <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
+              {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
+            </button>
+          {{/if}}
           {{#if @session.microlocation.hasVideoStream}}
             <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
               <i class="icon video"></i>
@@ -26,7 +32,7 @@
         <div class="left floated twelve wide column">
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt tz=@timezone}} - {{general-date @session.endsAt tz=@timezone}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{else}}
@@ -37,9 +43,10 @@
                   <div><img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}"></div>
                   <div class="ml-2">
                     {{speaker.name}}
-                    <div class="speaker-details">{{speaker.position}}, {{speaker.organisation}}</div>
+                    {{#if speaker.positionOrganisation}}<div class="speaker-details">({{speaker.positionOrganisation}})</div>{{/if}}
                   </div> 
                 </div>
+
               {{/each}}
           </div>
         </div>
@@ -116,6 +123,8 @@
       <p>
         <br>
         {{speaker.name}}
+        <br>
+        {{speaker.positionOrganisation}}
         <br>
         {{#if speaker.shortBiography}}
           {{sanitize speaker.shortBiography}}
