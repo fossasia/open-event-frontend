@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-import { allSettled } from 'rsvp';
+import  RSVP, { allSettled } from 'rsvp';
 
 @classic
 export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin) {
@@ -14,7 +14,19 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
     const tracksPromise = data.event.get('tracks');
     const microlocationsPromise = data.event.get('microlocations');
     const sessionTypesPromise = data.event.get('sessionTypes');
-    const speakersCallPromise = this.getOrCreate(data.event, 'speakersCall', 'speakers-call');
+    const speakersCallPromise = new RSVP.Promise(resolve => {
+        data.event
+          .get('speakersCall')
+          .then(relationshipRecord => {
+            resolve(relationshipRecord);
+          })
+          .catch(() => {
+            const record = this.store.createRecord('speakers-call', {
+              event: data.event
+            });
+            resolve(record);
+          });
+      });
     // Only get session/speaker custom forms.
     const customFormFilterOptions = [{
       or: [
