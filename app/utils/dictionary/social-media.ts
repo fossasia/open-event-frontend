@@ -27,6 +27,19 @@ export const socialMediaSites: SocialMedia[] = socialMediaIdentifiers.map((ident
 
 export interface SocialMediaMap { [key: string]: SocialMedia }
 
+export const buttonColor: { [key: string]: string } = {
+  'github'        : 'black',
+  'gitlab'        : 'orange',
+  'gitter'        : 'pink',
+  'telegram'      : 'blue',
+  'patreon'       : 'red',
+  'vimeo'         : 'teal',
+  'flickr'        : 'blue',
+  'xing'          : 'teal',
+  'weibo'         : 'red',
+  'google groups' : 'blue'
+};
+
 export const socialMediaMap: SocialMediaMap = socialMediaIdentifiers.reduce((obj: SocialMediaMap, identifier, index) => {
   obj[identifier] = socialMediaSites[index];
   return obj;
