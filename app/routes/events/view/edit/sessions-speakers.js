@@ -48,12 +48,12 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
   }
 
   async getOrCreateCFS(event) {
-  try {
-    return await event.get('speakersCall');
-  } catch {
-    return this.store.createRecord('speakers-call', {
+    try {
+      return await event.get('speakersCall');
+    } catch {
+      return this.store.createRecord('speakers-call', {
         event
       });
-  }
+    }
   }
 }
