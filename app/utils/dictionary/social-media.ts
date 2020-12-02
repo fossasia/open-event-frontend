@@ -28,15 +28,15 @@ export const socialMediaSites: SocialMedia[] = socialMediaIdentifiers.map((ident
 export interface SocialMediaMap { [key: string]: SocialMedia }
 
 export const buttonColor: { [key: string]: string } = {
-  'github'        : 'black',
-  'gitlab'        : 'orange',
-  'gitter'        : 'pink',
-  'telegram'      : 'blue',
-  'patreon'       : 'red',
-  'vimeo'         : 'teal',
-  'flickr'        : 'blue',
-  'xing'          : 'teal',
-  'weibo'         : 'red',
+  github          : 'black',
+  gitlab          : 'orange',
+  gitter          : 'pink',
+  telegram        : 'blue',
+  patreon         : 'red',
+  vimeo           : 'teal',
+  flickr          : 'blue',
+  xing            : 'teal',
+  weibo           : 'red',
   'google groups' : 'blue'
 };
 
