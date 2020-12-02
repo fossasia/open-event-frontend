@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-import  RSVP, { allSettled } from 'rsvp';
+import { allSettled } from 'rsvp';
 
 @classic
 export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin) {
@@ -48,19 +48,12 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
   }
 
   async getOrCreateCFS(event) {
-    const cfs = await new RSVP.Promise(resolve => {
-      event
-        .get('speakersCall')
-        .then(relationshipRecord => {
-          resolve(relationshipRecord);
-        })
-        .catch(() => {
-          const record = this.store.createRecord('speakers-call', {
-            event
-          });
-          resolve(record);
-        });
-    });
-    return cfs;
+  try {
+    return await event.get('speakersCall');
+  } catch {
+    return this.store.createRecord('speakers-call', {
+        event
+      });
+  }
   }
 }
