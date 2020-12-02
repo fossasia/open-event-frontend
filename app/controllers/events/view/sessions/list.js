@@ -94,13 +94,19 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : this.l10n.t('Submission Date'),
         width         : 90,
         valuePath     : 'submittedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date'
+        cellComponent : 'ui-table/cell/cell-simple-date',
+        options       : {
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
+        }
       },
       {
         name          : this.l10n.t('Last Modified'),
         width         : 90,
         valuePath     : 'lastModifiedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date'
+        cellComponent : 'ui-table/cell/cell-simple-date',
+        options       : {
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
+        }
       },
       {
         name            : this.l10n.t('Notify'),
