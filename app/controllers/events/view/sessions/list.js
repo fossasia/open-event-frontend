@@ -73,7 +73,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath     : 'submittedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm'
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
         }
       },
       {
@@ -82,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath     : 'lastModifiedAt',
         cellComponent : 'ui-table/cell/cell-simple-date',
         options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm'
+          dateFormat: 'D MMM, YYYY h:mm A (z)'
         }
       },
       {

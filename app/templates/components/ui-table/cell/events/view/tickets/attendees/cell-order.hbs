@@ -9,5 +9,12 @@
         {{t 'Payment via'}} {{this.record.paidVia}}
       </span>
     {{/if}}
+    {{#if (eq this.record.status 'completed')}}
+      {{general-date this.record.completedAt 'D MMM, YYYY h:mm A'}}
+      {{moment-from-now this.record.completedAt}}
+    {{else}}
+      {{general-date this.record.createdAt 'D MMM, YYYY h:mm A'}}
+      {{moment-from-now this.record.createdAt}}
+    {{/if}}
   </div>
 </div>

@@ -28,7 +28,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/cell-date',
         options         : {
           timezone   : 'UTC',
-          dateFormat : 'MMMM DD, YYYY'
+          dateFormat : 'D MMM, YYYY'
         }
       },
       {
@@ -37,7 +37,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-date',
         options       : {
           timezone   : 'UTC',
-          dateFormat : 'MMMM DD, YYYY'
+          dateFormat : 'D MMM, YYYY'
         }
       },
       {
