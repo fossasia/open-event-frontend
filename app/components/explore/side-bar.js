@@ -94,6 +94,10 @@ export default class SideBar extends Component {
         case 'all_dates':
           break;
 
+        case 'past':
+          newEndDate = moment().add(-1, 'day').toISOString();
+          break;
+
         case 'today':
           newStartDate = moment().toISOString();
           newEndDate = moment().toISOString();

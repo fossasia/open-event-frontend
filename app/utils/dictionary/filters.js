@@ -5,6 +5,10 @@ export const getDateRanges = function() {
       key  : 'all_dates'
     },
     {
+      name : this.l10n.t('Past'),
+      key  : 'past'
+    },
+    {
       name : this.l10n.t('Today'),
       key  : 'today'
     },
