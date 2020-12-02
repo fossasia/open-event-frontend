@@ -45,7 +45,7 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if this.model.event.isSponsorsEnabled}}
+  {{#if (and this.model.event.isSponsorsEnabled this.model.sponsors)}}
     <h2 class="ui header" id="sponsor">
       {{t 'Supported By'}}
     </h2>
