@@ -7,7 +7,7 @@
   <div class="row print">
     <div class="column">
       <div class="ui small gray-text">
-        {{header-date this.model.order.event.startsAt}} - {{header-date this.model.order.event.endsAt}}
+        {{general-date this.model.order.event.startsAt 'dddd, D MMMM, YYYY h:mm A'}} - {{general-date this.model.order.event.endsAt 'dddd, D MMMM, YYYY h:mm A'}}
         <br>
         {{this.model.order.event.locationName}}
       </div>
@@ -30,19 +30,21 @@
       <Orders::EventInfo
         @data={{this.model.order}} />
       <br/>
-      <div class="d-flex space-between">
-        <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
+      {{#if (eq this.model.order.user.id  this.authManager.currentUser.id)}}
+        <div class="d-flex space-between">
+          <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
           {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
           <i class="ticket alternate icon"></i>
           {{t 'Download Tickets'}}
-        </button>
-        <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
+          </button>
+          <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
           class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
           <i class="file alternate icon"></i>
           {{t 'Download Invoice'}}
-        </button>
-      </div>
-      <br/>
+          </button>
+        </div>
+        <br/>
+      {{/if}}
       <Orders::TicketHolder
         @data={{this.model.order}} />
     </div>

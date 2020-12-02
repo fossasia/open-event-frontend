@@ -82,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         options         : {
-          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+          dateFormat: 'D MMM, YYYY h:mm A'
         }
       }
     ];

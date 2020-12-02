@@ -55,6 +55,8 @@ module.exports = function(environment) {
       includeScheduler: true
     },
 
+    noCache: process.env.NO_CACHE || 'false',
+
     ifa: {
       enabled : false,
       inline  : false
