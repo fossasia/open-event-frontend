@@ -1,10 +1,10 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { add } from 'lodash-es';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'starts-at';
-
   sort_dir = 'DSC';
 
   get columns() {
@@ -41,7 +41,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Tickets'),
         width           : 130,
-        valuePath       : 'tickets',
+        valuePath       : 'totalsales',
+        extraValuePaths : ['tickets'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-tickets' 
