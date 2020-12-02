@@ -14,7 +14,7 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
     const tracksPromise = data.event.get('tracks');
     const microlocationsPromise = data.event.get('microlocations');
     const sessionTypesPromise = data.event.get('sessionTypes');
-    const speakersCallPromise =  this.getOrCreateCFS(data.event);
+    const speakersCallPromise = this.getOrCreateCFS(data.event);
     // Only get session/speaker custom forms.
     const customFormFilterOptions = [{
       or: [
