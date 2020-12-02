@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { action, computed } from '@ember/object';
+import { computed } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 
