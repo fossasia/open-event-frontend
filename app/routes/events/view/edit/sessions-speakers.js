@@ -14,19 +14,7 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
     const tracksPromise = data.event.get('tracks');
     const microlocationsPromise = data.event.get('microlocations');
     const sessionTypesPromise = data.event.get('sessionTypes');
-    const speakersCallPromise = new RSVP.Promise(async resolve => {
-      await data.event
-        .get('speakersCall')
-        .then(relationshipRecord => {
-          resolve(relationshipRecord);
-        })
-        .catch(async() => {
-          const record = await this.store.createRecord('speakers-call', {
-            event: data.event
-          });
-          resolve(record);
-        });
-    });
+    const speakersCallPromise =  this.getOrCreateCFS(data.event);
     // Only get session/speaker custom forms.
     const customFormFilterOptions = [{
       or: [
@@ -57,5 +45,22 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
       speakersCall,
       customForms
     };
+  }
+
+  async getOrCreateCFS(event) {
+    const cfs = await new RSVP.Promise(resolve => {
+      event
+        .get('speakersCall')
+        .then(relationshipRecord => {
+          resolve(relationshipRecord);
+        })
+        .catch(() => {
+          const record = this.store.createRecord('speakers-call', {
+            event: event
+          });
+          resolve(record);
+        });
+    });
+    return cfs;
   }
 }
