@@ -30,15 +30,15 @@
       <Orders::EventInfo
         @data={{this.model.order}} />
       <br/>
-      {{#if (eq this.model.order.user.id  this.authManager.currentUser.id)}}
-        <div class="d-flex space-between">
-          <button class="ui labeled icon {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
+      {{#if this.showTicketsButton}}
+        <div class="d-flex">
+          <button class="ui labeled icon flex-1 {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
           {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
-          <i class="ticket alternate icon"></i>
-          {{t 'Download Tickets'}}
+          <i class="download icon"></i>
+          {{t 'All Tickets'}}
           </button>
           <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
-          class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
+          class="ui labeled icon blue flex-1 {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
           <i class="file alternate icon"></i>
           {{t 'Download Invoice'}}
           </button>

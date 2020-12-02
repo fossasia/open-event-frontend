@@ -1,12 +1,14 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 
 export default class SessionItem extends Component {
   @service router;
 
-  hideImage = false;
+  @tracked
+  hideImage = this.args.expanded;
 
   get youtubeLink() {
     return extractYoutubeUrl(this.args.session.videoUrl);
@@ -21,12 +23,22 @@ export default class SessionItem extends Component {
     return slidesUrl?.indexOf('.pptx') > -1 || slidesUrl?.indexOf('.ppt') > -1;
   }
 
+  get slidesUploaded() {
+    const url = this.args.session.slidesUrl;
+    return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
+  }
+
   @action
   hideSpeakerImage() {
     this.hideImage = !this.hideImage;
     if (!this.args.session.speakers.length) {
       this.hideImage = false;
     }
+  }
+
+  @action
+  goToSlides() {
+    window.open(this.args.session.slidesUrl, '_blank');
   }
 
   @action

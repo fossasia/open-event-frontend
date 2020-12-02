@@ -5,6 +5,12 @@
       <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
         {{@session.title}}
         <span style={{css float='right'}}>
+          {{#if @session.slidesUrl}}
+            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
+              <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
+              {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
+            </button>
+          {{/if}}
           {{#if @session.microlocation.hasVideoStream}}
             <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
               <i class="icon video"></i>
@@ -27,7 +33,7 @@
         <div class="left floated twelve wide column">
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt tz=@timezone}} - {{general-date @session.endsAt tz=@timezone}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{else}}
@@ -40,7 +46,7 @@
            </div>
            <div class="left floated nine wide column">
              {{#each @session.speakers as |speaker|}}
-                {{speaker.name}} ({{speaker.position}}, {{speaker.organisation}})
+                {{speaker.name}} {{#if speaker.positionOrganisation}}({{speaker.positionOrganisation}}){{/if}}
                 <br>
               {{/each}}
             </div>
@@ -118,6 +124,8 @@
       <p>
         <br>
         {{speaker.name}}
+        <br>
+        {{speaker.positionOrganisation}}
         <br>
         {{#if speaker.shortBiography}}
           {{sanitize speaker.shortBiography}}
