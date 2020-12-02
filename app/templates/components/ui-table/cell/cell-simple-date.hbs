@@ -4,6 +4,6 @@
   </span>
 {{else if this.record}}
   <span>
-    {{general-date this.record 'date-time-short'}}
+    {{general-date this.record (if this.props.options.dateFormat this.props.options.dateFormat 'date-time-short')}}
   </span>
 {{/if}}
