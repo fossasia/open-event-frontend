@@ -10,17 +10,7 @@ export default class SessionsController extends Controller {
   sort = 'starts-at';
   isTrackVisible = false;
   timezone = null;
-
-  constructor(...args) {
-    super(...args);
-
-    this.addObserver('model.session', this, 'sessionChanged');
-  }
-
-  @action
-  sessionChanged() {
-    this.set('preserveScrollPosition', true);
-  }
+  preserveScrollPosition = true;
 
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
   get allDates() {

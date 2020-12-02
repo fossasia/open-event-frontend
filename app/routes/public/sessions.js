@@ -87,8 +87,6 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    const isFiltering = params.room || params.track || params.date;
-
     return {
       event   : eventDetails,
       session : await this.infinity.model('sessions', {
@@ -100,8 +98,7 @@ export default class SessionsRoute extends Route {
         perPageParam : 'page[size]',
         pageParam    : 'page[number]',
         store        : eventDetails
-      }),
-      isFiltering
+      })
     };
   }
 }
