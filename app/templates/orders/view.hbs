@@ -31,14 +31,14 @@
         @data={{this.model.order}} />
       <br/>
       {{#if (eq this.model.order.user.id  this.authManager.currentUser.id)}}
-        <div class="ui padded grid">
-          <button class="ui labeled icon left floated seven wide column {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
+        <div class="d-flex justify-content-stretch">
+          <button class="ui labeled icon flex-grow-1 {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
           {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
           <i class="download icon"></i>
           {{t 'All Tickets'}}
           </button>
           <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
-          class="ui labeled icon blue right floated eight wide column {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
+          class="ui labeled icon blue flex-grow-1 {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
           <i class="file alternate icon"></i>
           {{t 'Download Invoice'}}
           </button>
