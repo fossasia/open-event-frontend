@@ -30,7 +30,7 @@
       <Orders::EventInfo
         @data={{this.model.order}} />
       <br/>
-      {{#if (eq this.model.order.user.id  this.authManager.currentUser.id)}}
+      {{#if this.showTicketsButton}}
         <div class="d-flex">
           <button class="ui labeled icon flex-1 {{if this.isLoadingTickets 'loading'}} {{if this.device.isMobile 'fluid'}} button"
           {{action this.downloadTickets this.model.event.name this.model.order.identifier}}>
