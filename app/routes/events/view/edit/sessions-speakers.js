@@ -56,7 +56,7 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
         })
         .catch(() => {
           const record = this.store.createRecord('speakers-call', {
-            event: event
+            event
           });
           resolve(record);
         });
