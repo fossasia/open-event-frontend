@@ -14,9 +14,12 @@ export default class SessionsSpeakersRoute extends Route.extend(EventWizardMixin
     const tracksPromise = data.event.get('tracks');
     const microlocationsPromise = data.event.get('microlocations');
     const sessionTypesPromise = data.event.get('sessionTypes');
-    const speakersCallPromise = new RSVP.Promise(resolve => {
-      data.event
+    const speakersCallPromise = new RSVP.Promise(async resolve => {
+      await data.event
         .get('speakersCall')
+        .then(relationshipRecord => {
+          resolve(relationshipRecord);
+        })
         .catch(async() => {
           const record = await this.store.createRecord('speakers-call', {
             event: data.event
