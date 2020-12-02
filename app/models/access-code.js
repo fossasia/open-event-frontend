@@ -8,7 +8,7 @@ export default ModelBase.extend({
   code          : attr('string'),
   accessUrl     : attr('string'),
   isActive      : attr('boolean', { defaultValue: false }),
-  ticketsNumber : attr('number',{ defaultValue: 10 }),
+  ticketsNumber : attr('number', { defaultValue: 10 }),
   minQuantity   : attr('number'),
   maxQuantity   : attr('number'),
   validFrom     : attr('moment'),
