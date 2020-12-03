@@ -27,7 +27,8 @@ export function generalDate(params, { tz }) {
 
   let dateTime = moment(params[0]).tz(timezone).format(format);
   const z = moment(params[0]).tz(timezone).format('z');
-
+  const reg = new RegExp('[+-]?[0-9]+');
+  
   if (reg.test(z)) {
     dateTime = dateTime.replace(z, timezone);
   }
