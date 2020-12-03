@@ -28,4 +28,4 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(github.ref, github.head_ref, process.env.GITHUB_REF, process.env.GITHUB_HEAD_REF)
+            console.log(context, github, github.ref, github.head_ref, process.env.GITHUB_REF, process.env.GITHUB_HEAD_REF)
