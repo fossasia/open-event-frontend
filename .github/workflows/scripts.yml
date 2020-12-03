@@ -28,7 +28,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(context.pull_request.repository.fork)
+            console.log(context) // .pull_request.repository.fork
             console.log(process.env.GITHUB_HEAD_REF)
             await github.pulls.createComment({
               owner: context.repo.owner,
