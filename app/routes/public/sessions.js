@@ -16,6 +16,9 @@ export default class SessionsRoute extends Route {
     },
     room: {
       refreshModel: true
+    },
+    search: {
+      refreshModel: true
     }
   };
 
@@ -87,7 +90,44 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    const isFiltering = params.room || params.track || params.date;
+    if (params.search) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'title',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'track',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'microlocation',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'speakers',
+            op   : 'any',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          }
+        ]
+      });
+    }
 
     return {
       event   : eventDetails,
@@ -100,8 +140,7 @@ export default class SessionsRoute extends Route {
         perPageParam : 'page[size]',
         pageParam    : 'page[number]',
         store        : eventDetails
-      }),
-      isFiltering
+      })
     };
   }
 }

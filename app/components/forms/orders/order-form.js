@@ -23,12 +23,12 @@ export default Component.extend(FormMixin, {
   buyer             : readOnly('data.user'),
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
-  holders           : computed('data.attendees', function() {
+  holders           : computed('data.attendees', 'buyer', function() {
     this.data.attendees.forEach((attendee, index) => {
       if (index === 0) {
         attendee.set('firstname', this.buyerFirstName);
         attendee.set('lastname', this.buyerLastName);
-        attendee.set('email', this.buyer.content.email);
+        attendee.set('email', this.buyer.get('email'));
       } else {
         attendee.set('firstname', '');
         attendee.set('lastname', '');
