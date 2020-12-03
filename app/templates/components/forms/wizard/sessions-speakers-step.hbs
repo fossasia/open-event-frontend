@@ -92,7 +92,7 @@
       {{/each}}
     </div>
     <div class="field">
-      <label class="required">{{t 'Session Types'}}</label>
+      <label class="required">{{t 'Session Types (duration, max. duration 24 hours)'}}</label>
       {{#each this.sessionTypes as |sessionType|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
@@ -100,7 +100,7 @@
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              <Widgets::Forms::TimePicker @value={{sessionType.length}} @placeholder="HH:MM" @icon={{false}} />
+              <Widgets::Forms::DurationPicker @value={{sessionType.length}} @placeholder="HH:MM" @icon={{false}} />
               {{#if (gt this.sessionTypes.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' sessionType}}>
                   <i class="minus icon"></i>
