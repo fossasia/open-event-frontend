@@ -23,7 +23,7 @@ jobs:
   branch-check:
     runs-on: ubuntu-latest
 
-    if: github.base_ref == 'development' && contains(github.head_ref, '/development')
+    if: github.base_ref == 'development' && github.head_ref == 'development'
     steps:
       - uses: actions/github-script@v3
         with:
