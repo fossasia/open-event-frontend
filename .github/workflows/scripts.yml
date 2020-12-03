@@ -34,7 +34,7 @@ jobs:
               issue_number: context.issue.number,
               body: "We don't accept pull requests from `development` branch. Please send a pull request from some other branch. Thank You!"
             })
-            await github.issues.update({
+            await github.pulls.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
