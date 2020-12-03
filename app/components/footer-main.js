@@ -27,6 +27,6 @@ export default class FooterMain extends Component {
   }
 
   async didInsertElement() {
-    this.set('pages', sortBy(await this.cache.query('pages', 'page', { public: true }), 'index'));
+    this.set('pages', sortBy((await this.cache.query('pages', 'page', { public: true })).toArray(), 'index'));
   }
 }

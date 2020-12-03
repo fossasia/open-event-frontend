@@ -6,7 +6,7 @@ import { socialMediaExtraPrefixes } from 'open-event-frontend/utils/dictionary/s
 interface Args {
   prefix: string | undefined,
   value: string | undefined,
-  onChange: (text: string) => void
+  onChange: (text: string | null) => void
 }
 
 export default class LinkField extends Component<Args> {
@@ -35,7 +35,8 @@ export default class LinkField extends Component<Args> {
   /**
    * Final value with prefix to be sent to parent component
    */
-  get finalValue(): string {
+  get finalValue(): string | null {
+    if (!this.fixedValue && this.prefix === 'https://') {return null;}
     return this.prefix + this.fixedValue;
   }
 
@@ -63,7 +64,8 @@ export default class LinkField extends Component<Args> {
   setValue(event: { target: HTMLInputElement }): void {
     const text = event.target.value;
     this.value = this.fixValue(text);
-    this.args.onChange(this.finalValue);
+    const finalUrl = this.value ? this.finalValue : null;
+    this.args.onChange(finalUrl);
   }
 
   @action
