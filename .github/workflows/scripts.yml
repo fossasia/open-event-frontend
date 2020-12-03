@@ -30,9 +30,9 @@ jobs:
           script: |
             console.log(context.issue, context.issue.number)
             await github.issues.createComment({
+              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_numer: context.issue.number,
               body: "We don't accept pull requests from `development` branch. Please send a pull request from some other branch. Thank You!"
             })
             
