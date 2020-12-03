@@ -26,8 +26,8 @@
     <tbody>
       <tr>
         <td>{{this.event.name}}</td>
-        <td>{{moment-format this.data.issuedAt 'MM/DD/YYYY'}}</td>
-        <td>{{moment-format this.data.completedAt 'MM/DD/YYYY'}}</td>
+        <td>{{general-date this.data.issuedAt 'date-short'}}</td>
+        <td>{{general-date this.data.completedAt 'date-short'}}</td>
         <td>{{currency-symbol this.eventCurrency}} {{format-money this.data.amount}}</td>
       </tr>
     </tbody>

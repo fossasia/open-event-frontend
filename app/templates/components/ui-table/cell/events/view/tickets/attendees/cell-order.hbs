@@ -1,9 +1,5 @@
 <div class="ui tiny header">
   <LinkTo @route="orders.view" @model={{this.record.identifier}}>{{this.record.identifier}}</LinkTo>
-  <span class="weight-400">
-    {{t 'by'}}
-    {{this.extraRecords.user.email}}
-  </span>
   <div class="ui basic mini {{order-color this.record.status}} label attendees-margin">
     {{this.record.status}}
   </div>
@@ -14,10 +10,10 @@
       </span>
     {{/if}}
     {{#if (eq this.record.status 'completed')}}
-      {{moment-format this.record.completedAt 'MMMM Do YYYY, h:mm A -'}}
+      {{general-date this.record.completedAt 'date-time-short'}}
       {{moment-from-now this.record.completedAt}}
     {{else}}
-      {{moment-format this.record.createdAt 'MMMM Do YYYY, h:mm A -'}}
+      {{general-date this.record.createdAt 'date-time-short'}}
       {{moment-from-now this.record.createdAt}}
     {{/if}}
   </div>

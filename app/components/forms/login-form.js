@@ -44,7 +44,8 @@ export default class LoginForm extends Component.extend(FormMixin) {
   }
 
   @action
-  async submit() {
+  async submit(e) {
+    e.preventDefault();
     this.onValid(async() => {
       const credentials = { username: this.identification, password: this.password };
       const authenticator = 'authenticator:jwt';
