@@ -40,41 +40,40 @@
     {{/each}}
   </div>
   <div>
-      <div class="field">
-          <label>{{t 'Access Valid from'}}</label>
-          <div class="{{if this.device.isMobile 'grouped'}} fields">
-          <div class="{{unless this.device.isMobile 'four wide'}} field">
-            <Widgets::Forms::DatePicker
+    <div class="field">
+      <label>{{t 'Access Valid from'}}</label>
+      <div class="{{if this.device.isMobile 'grouped'}} fields">
+        <div class="{{unless this.device.isMobile 'four wide'}} field">
+          <Widgets::Forms::DatePicker
             @id="start_date"
             @value={{this.data.validFromDate}}
             @rangePosition="start" />
-          </div>
-          <div class="{{unless this.device.isMobile 'four wide'}} field">
-            <Widgets::Forms::TimePicker
+        </div>
+        <div class="{{unless this.device.isMobile 'four wide'}} field">
+          <Widgets::Forms::TimePicker
             @id="start_time"
             @value={{this.data.validFromTime}}
             @rangePosition="start" />
-          </div>
         </div>
+       </div>
       </div>
-      <div class="field">
-        <label>{{t 'Access Expires on'}}</label>
-          <div class="{{if this.device.isMobile 'grouped'}} fields">
-          <div class="{{unless this.device.isMobile 'four wide'}} field">
-            <Widgets::Forms::DatePicker
+    <div class="field">
+       <label>{{t 'Access Expires on'}}</label>
+       <div class="{{if this.device.isMobile 'grouped'}} fields">
+        <div class="{{unless this.device.isMobile 'four wide'}} field">
+          <Widgets::Forms::DatePicker
             @id="end_date"
             @value={{this.data.validTillDate}}
             @rangePosition="end" />
-          </div>
-          <div class="{{unless this.device.isMobile 'four wide'}} field">
-            <Widgets::Forms::TimePicker
+        </div>
+        <div class="{{unless this.device.isMobile 'four wide'}} field">
+          <Widgets::Forms::TimePicker
             @id="end_time"
             @value={{this.data.validTillTime}}
             @rangePosition="end" />
-          </div>
         </div>
       </div>
-
+    </div>
     <div class="field">
       <label>{{t 'Access Link'}}</label>
       <div class="ui action input fluid">
