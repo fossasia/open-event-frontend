@@ -20,7 +20,7 @@ export function generalDate(params, { tz }) {
   let format = (dateFormats[params[1]] || params[1]) || 'h:mm A, MMMM Do YYYY (z)';
 
   if (!locales12Hours.has(local)) {
-    format = format.replaceAll('h', 'H');
+    format = format.replace(/h/g, 'H');
     format = format.replace(' A', '');
     format = format.replace(' a', '');
   }
