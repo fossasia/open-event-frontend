@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action } from '@ember/object'; 
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
@@ -37,6 +37,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
         width           : 180,
         cellComponent   : 'ui-table/cell/cell-roles'
+      },
+      {
+        name            : this.l10n.t('Tickets'),
+        width           : 130,
+        valuePath       : 'totalsales',
+        extraValuePaths : ['tickets'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-tickets'
       },
       {
         name          : this.l10n.t('Sessions'),
