@@ -5,7 +5,7 @@
       {{#if this.isSingleDay}}
         {{general-date @event.startsAt "dddd, D MMMM, YYYY" tz=@event.timezone}}<br>{{general-date @event.startsAt "h:mm A" tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt "h:mm A" tz=@event.timezone}} 
       {{else}}
-        {{general-date @event.startsAt "dddd, D MMMM, YYYY h:mm A" tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt "dddd, D MMMM, YYYY h:mm A" tz=@event.timezone}} 
+        {{general-date @event.startsAt 'date-time-long' tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt 'date-time-long' tz=@event.timezone}} 
       {{/if}}
       ({{this.timezone}})
       <br>

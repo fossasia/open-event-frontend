@@ -1,11 +1,11 @@
 {{#if this.record}}
   {{#if this.extraRecords.endsAt}}
     <div>
-      {{general-date this.record "D MMM, YYYY h:mm A (z)" tz=this.extraRecords.timezone}}
+      {{general-date this.record 'date-time-tz-short' tz=this.extraRecords.timezone}}
     </div>
     (to)
     <div>
-      {{general-date this.record "D MMM, YYYY h:mm A (z)" tz=this.extraRecords.timezone}}
+      {{general-date this.record 'date-time-tz-short' tz=this.extraRecords.timezone}}
     </div>
   {{else}}
     <span>

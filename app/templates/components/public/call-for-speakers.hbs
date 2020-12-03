@@ -4,15 +4,15 @@
   {{#if this.data.speakersCall.isOpen}}
     <a href="#" class="ui basic green label">{{t 'Open'}}</a>
     <div class="sub header">
-      {{t 'Call for Speakers is open until'}} {{general-date this.data.speakersCall.endsAt 'dddd, D MMMM, YYYY h:mm A (z)' tz=this.data.speakersCall.event.timezone}}
+      {{t 'Call for Speakers is open until'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
     </div>
   {{else}}
     <a href="#" class="ui basic red label">{{t 'Closed'}}</a>
     <div class="sub header">
       {{#if this.data.speakersCall.isInFuture}}
-        {{t 'Call for Speakers will open at'}} {{general-date this.data.speakersCall.endsAt 'dddd, D MMMM, YYYY h:mm A (z)' tz=this.data.speakersCall.event.timezone}}
+        {{t 'Call for Speakers will open at'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
       {{else}}
-        {{t 'Call for Speakers was closed at'}} {{general-date this.data.speakersCall.endsAt 'dddd, D MMMM, YYYY h:mm A (z)' tz=this.data.speakersCall.event.timezone}}
+        {{t 'Call for Speakers was closed at'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
       {{/if}}
     </div>
   {{/if}}
