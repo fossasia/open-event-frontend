@@ -12,6 +12,12 @@
     @eventTimezone={{this.model.event.timezone}}
     @timezone={{this.timezone}} />
 
+  <Tables::Utilities::SearchBox
+    class="mb-2 mr-2"
+    @searchQuery={{this.search}}
+    @size="large"
+  />
+
   <UiDropdown class="labeled icon button mb-2">
     <i class="sort amount down icon"></i>
     <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
