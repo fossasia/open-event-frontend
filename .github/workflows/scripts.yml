@@ -28,4 +28,12 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(context, github, github.ref, github.head_ref, process.env.GITHUB_REF, process.env.GITHUB_HEAD_REF)
+            console.log(context.pull_request.repository.fork)
+            console.log(process.env.GITHUB_HEAD_REF)
+            await github.pulls.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_numer: context.issue.number,
+              body: 'We don't accept pull requests from `development` branch. Please send a pull request from some other branch. Thank You!'
+            })
+            
