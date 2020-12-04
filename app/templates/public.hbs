@@ -95,6 +95,11 @@
           {{/if}}
         {{/if}}
       </div>
+      {{#if this.device.isMobile}}
+      <div class="ten wide column">
+        {{outlet}}
+      </div>
+      {{/if}}
     </div>
   </div>
 </div>
