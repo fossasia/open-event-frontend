@@ -27,6 +27,7 @@ export default class extends Controller {
     } catch (e) {
       console.error('Error while saving session', e);
       this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+      this.set('isLoading', false);
     }
   }
 }
