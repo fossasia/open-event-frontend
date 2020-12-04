@@ -59,8 +59,8 @@
         <div class="right floated four wide column">
           <div class="d-flex"><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
-            <div class="d-flex"><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="d-flex"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
+            <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{/if}}

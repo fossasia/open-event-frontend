@@ -13,9 +13,9 @@
     {{/if}}
     <span class="muted text">
       {{#if this.extraRecords.completedAt}}
-        {{general-date this.extraRecords.completedAt 'D MMM, YYYY h:mm A'}} {{moment-from-now this.extraRecords.completedAt}}
+        {{general-date this.extraRecords.completedAt 'date-time-short'}} {{moment-from-now this.extraRecords.completedAt}}
       {{else}}
-        {{general-date this.extraRecords.createdAt 'D MMM, YYYY h:mm A'}} {{moment-from-now this.extraRecords.createdAt}}
+        {{general-date this.extraRecords.createdAt 'date-time-short'}} {{moment-from-now this.extraRecords.createdAt}}
       {{/if}}
     </span>
   </div>
