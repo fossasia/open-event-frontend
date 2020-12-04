@@ -76,7 +76,7 @@ export default class ExploreRoute extends Route {
       filterOptions.push({
         name : 'online',
         op   : 'eq',
-        val  :  params.is_online
+        val  : params.is_online
       });
     }
     if (params.location) {
