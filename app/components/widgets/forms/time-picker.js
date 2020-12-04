@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Component from '@ember/component';
 import { merge } from 'lodash-es';
 import moment from 'moment';
-import { FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
+import { FORM_TIME_FORMAT, FORM_DURATION_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
 export default Component.extend({
 
@@ -13,6 +13,7 @@ export default Component.extend({
 
   today         : true,
   rangePosition : 'none',
+  duration      : false,
   format        : FORM_TIME_FORMAT,
 
   options: {},
@@ -24,6 +25,7 @@ export default Component.extend({
       formatter : {
         time: date => {
           if (!date) {return ''}
+          if (this.duration) {this.format = FORM_DURATION_FORMAT}
           return moment(date).format(this.format);
         }
       }

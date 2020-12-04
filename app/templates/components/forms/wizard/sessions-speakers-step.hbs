@@ -100,7 +100,7 @@
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              <Widgets::Forms::DurationPicker @value={{sessionType.length}} @placeholder="HH:MM" @icon={{false}} />
+              <Widgets::Forms::TimePicker @duration={{true}} @value={{sessionType.length}} @placeholder="HH:MM" @icon={{false}} />
               {{#if (gt this.sessionTypes.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeItem' sessionType}}>
                   <i class="minus icon"></i>
