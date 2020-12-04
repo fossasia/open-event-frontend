@@ -14,7 +14,8 @@ export default class extends Controller {
         this.notify.success(this.l10n.t('Speaker details have been saved'));
         this.transitionToRoute('events.view.speakers');
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while saving speaker details', e);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       })
       .finally(() => {

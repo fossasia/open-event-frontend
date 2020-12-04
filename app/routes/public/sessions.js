@@ -16,6 +16,9 @@ export default class SessionsRoute extends Route {
     },
     room: {
       refreshModel: true
+    },
+    search: {
+      refreshModel: true
     }
   };
 
@@ -28,15 +31,6 @@ export default class SessionsRoute extends Route {
     const filterOptions = [
       {
         and: [
-          {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
-          },
           {
             or: [
               {
@@ -96,16 +90,56 @@ export default class SessionsRoute extends Route {
       });
     }
 
+    if (params.search) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'title',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'track',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'microlocation',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'speakers',
+            op   : 'any',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          }
+        ]
+      });
+    }
+
     return {
       event   : eventDetails,
-      session : await this.infinity.model('session', {
-        include      : 'track,speakers,session-type,microlocation',
+      session : await this.infinity.model('sessions', {
+        include      : 'track,speakers,session-type,microlocation.video-stream',
         filter       : filterOptions,
         sort         : params.sort || 'starts-at',
         perPage      : 6,
         startingPage : 1,
         perPageParam : 'page[size]',
-        pageParam    : 'page[number]'
+        pageParam    : 'page[number]',
+        store        : eventDetails
       })
     };
   }

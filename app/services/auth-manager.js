@@ -19,6 +19,9 @@ export default class AuthManagerService extends Service {
   @service
   bugTracker;
 
+  @service
+  cache;
+
   @computed('session.data.currentUserFallback.id', 'currentUserModel')
   get currentUser() {
     if (this.currentUserModel) {
@@ -64,6 +67,7 @@ export default class AuthManagerService extends Service {
     this.session.invalidate();
     this.set('currentUserModel', null);
     this.session.set('data.currentUserFallback', null);
+    this.cache.clear();
   }
 
   identify() {
