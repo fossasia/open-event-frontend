@@ -92,7 +92,9 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           # no restore-keys here, so we only accept this exact version
       - run: yarn l10n:generate
-      - run: ROOT_URL=open-event-frontend yarn build -prod
+      - run: yarn build -prod
+        env:
+          API_HOST: https://open-event-api-dev.herokuapp.com
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/development' && github.event_name == 'push'
