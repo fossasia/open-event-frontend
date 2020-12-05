@@ -18,9 +18,9 @@ export default class SideBar extends Component {
   isMapVisible = true;
   eventLocationType = null;
 
-  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'has_logo', 'has_image')
+  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'has_logo', 'has_image', 'is_past')
   get hideClearFilters() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.has_logo || this.has_image);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.has_logo || this.has_image || this.is_past);
   }
 
   @computed('category', 'sub_category')
@@ -56,6 +56,11 @@ export default class SideBar extends Component {
       lat,
       lng
     });
+  }
+
+  @action
+  enablePastEvents(val) {
+    this.set('is_past', this.is_past === val ? null : val);
   }
 
   @action
@@ -184,6 +189,7 @@ export default class SideBar extends Component {
       is_online         : null,
       has_logo          : null,
       has_image         : null,
+      is_past           : null,
       eventLocationType : null
     });
   }
