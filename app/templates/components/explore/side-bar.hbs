@@ -234,14 +234,14 @@
           <div class="field">
             <UiCheckbox
               @label={{t "Image"}}
-              @checked={{if (eq this.must_have_image null) "active"}}
+              @checked={{if (eq this.has_image null) "active"}}
               @onChange={{action "selectImages" 'false'}} />
           </div>
           <div class="field">
             <UiCheckbox
               @label={{t "Logo"}}
               @class="ui checkbox"
-              @checked={{if (eq this.must_have_logo null) "active"}}
+              @checked={{if (eq this.has_logo null) "active"}}
               @onChange={{action "selectLogos" 'false'}} />
           </div>
         </div>

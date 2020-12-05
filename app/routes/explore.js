@@ -79,14 +79,14 @@ export default class ExploreRoute extends Route {
         val  : params.is_online
       });
     }
-    if (!params.must_have_image) {
+    if (!params.has_image) {
       filterOptions.push({
         name : 'original-image-url',
         op   : 'ne',
         val  : null
       });
     }
-    if (!params.must_have_logo) {
+    if (!params.has_logo) {
       filterOptions.push({
         name : 'logo-url',
         op   : 'ne',
