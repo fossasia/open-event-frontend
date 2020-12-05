@@ -60,6 +60,9 @@ export default class SideBar extends Component {
 
   @action
   enablePastEvents(val) {
+    this.set('startDate', null);
+    this.set('endDate', null);
+    this.set('dateType', null);
     this.set('is_past', this.is_past === val ? null : val);
   }
 
@@ -152,6 +155,7 @@ export default class SideBar extends Component {
     }
     this.set('startDate', newStartDate);
     this.set('endDate', newEndDate);
+    this.set('is_past', null);
   }
 
   @action

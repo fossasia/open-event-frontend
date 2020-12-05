@@ -180,20 +180,37 @@ export default class ExploreRoute extends Route {
         ]
       });
     } else {
-      filterOptions.push({
-        or: [
-          {
-            name : 'starts-at',
-            op   : 'ge',
-            val  : new Date()
-          },
-          {
-            name : 'ends-at',
-            op   : 'ge',
-            val  : new Date()
-          }
-        ]
-      });
+      if (params.is_past) {
+        filterOptions.push({
+          and: [
+            {
+              name : 'starts-at',
+              op   : 'lt',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'ends-at',
+              op   : 'lt',
+              val  : moment().toISOString()
+            }
+          ]
+        });
+      } else {
+        filterOptions.push({
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : new Date()
+            },
+            {
+              name : 'ends-at',
+              op   : 'ge',
+              val  : new Date()
+            }
+          ]
+        });
+      }
     }
 
     return this.infinity.model('event', {
