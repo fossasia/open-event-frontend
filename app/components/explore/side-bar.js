@@ -16,10 +16,11 @@ export default class SideBar extends Component {
   customEndDate = null;
   @tracked showFilters = false;
   isMapVisible = true;
+  eventLocationType = null;
 
-  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs')
+  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online')
   get hideClearFilters() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online);
   }
 
   @computed('category', 'sub_category')
@@ -45,6 +46,13 @@ export default class SideBar extends Component {
       lat,
       lng
     });
+  }
+
+  @action
+  setLocationType(locationType, val) {
+    this.set('is_online', this.eventLocationType === locationType ? null : val);
+    this.set('eventLocationType', this.eventLocationType === locationType ? null : locationType);
+    this.set('location', null);
   }
 
   @action
@@ -153,15 +161,18 @@ export default class SideBar extends Component {
   @action
   clearFilters() {
     this.setProperties({
-      startDate    : null,
-      endDate      : null,
-      dateType     : null,
-      category     : null,
-      sub_category : null,
-      event_type   : null,
-      location     : null,
-      ticket_type  : null,
-      cfs          : null
+      startDate         : null,
+      endDate           : null,
+      dateType          : null,
+      category          : null,
+      sub_category      : null,
+      event_type        : null,
+      location          : null,
+      ticket_type       : null,
+      cfs               : null,
+      event_name        : null,
+      is_online         : null,
+      eventLocationType : null
     });
   }
 
