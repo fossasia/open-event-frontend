@@ -92,7 +92,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           # no restore-keys here, so we only accept this exact version
       - run: yarn l10n:generate
-      - run: yarn build -prod
+      - run: ROOT_URL=open-event-frontend yarn build -prod
         env:
           API_HOST: https://open-event-api-dev.herokuapp.com
       - name: Deploy
