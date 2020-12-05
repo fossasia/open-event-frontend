@@ -33,10 +33,10 @@ export default class ExploreController extends Controller {
       this.set('is_online', null);
     }
     if (filterType === 'must_have_logo') {
-      this.set('have_logo', null);
+      this.set('must_have_logo', null);
     }
     if (filterType === 'must_have_image') {
-      this.set('have_image', null);
+      this.set('must_have_image', null);
     }
     if (filterType === 'start_date') {
       this.set('startDate', null);
