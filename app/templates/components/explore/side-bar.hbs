@@ -22,21 +22,21 @@
                 @label={{t "Online"}}
                 @class="ui checkbox"
                 @checked={{if (eq this.eventLocationType "online") "active"}}
-                @onChange={{action "setLocationType" "online"}} />
+                @onChange={{action "setLocationType" "online" "true"}} />
             </div>
             <div class="field">
               <UiCheckbox
                 @label={{t "Location"}}
                 @class="ui checkbox"
                 @checked={{if (eq this.eventLocationType "venue") "active"}}
-                @onChange={{action "setLocationType" "venue"}} />
+                @onChange={{action "setLocationType" "venue" "false"}} />
             </div>
             <div class="field">
               <UiCheckbox
                 @label={{t "Mixed"}}
                 @class="ui checkbox"
                 @checked={{if (eq this.eventLocationType "mixed") "active"}}
-                @onChange={{action "setLocationType" "mixed"}} />
+                @onChange={{action "setLocationType" "mixed" "true"}} />
             </div>
             {{#if (or (eq this.eventLocationType "venue") (eq this.eventLocationType "mixed"))}}
                 <div class="explore sub menu">

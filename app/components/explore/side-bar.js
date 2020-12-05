@@ -49,32 +49,9 @@ export default class SideBar extends Component {
   }
 
   @action
-  setLocationType(val) {
-    if (this.is_online === 'true') {
-      if (this.eventLocationType === null) {
-        this.set('is_online', val === 'venue' ? 'false' : 'true');
-      }
-      else {
-        if (this.eventLocationType === val) {
-          this.set('is_online', null);
-        }
-        else if (val === 'venue') {
-          this.set('is_online', 'false');
-        }
-      }
-    }
-    else if (this.is_online === 'false') {
-      if (this.eventLocationType === null) {
-        this.set('is_online', val === 'venue' ? 'false' : 'true');
-      }
-      else {
-        this.set('is_online', this.eventLocationType === val ? null : 'true');
-      }
-    }
-    else {
-      this.set('is_online', val === 'venue' ? 'false' : 'true');
-    }
-    this.set('eventLocationType', this.eventLocationType === val ? null : val);
+  setLocationType(locationType, val) {
+    this.set('is_online', this.eventLocationType === locationType ? null : val);
+    this.set('eventLocationType', this.eventLocationType === locationType ? null : locationType);
     this.set('location', null);
   }
 
