@@ -29,7 +29,7 @@ export default class extends Controller {
       this.transitionToRoute('events.view.speakers', this.model.event.id);
     } catch (e) {
       console.error('Error while saving session', e);
-      this.notify.error(this.l10n.t(this.errorHandler.genericError(e)));
+      this.errorHandler.genericError(e);
     } finally {
       this.set('isLoading', false);
     }
