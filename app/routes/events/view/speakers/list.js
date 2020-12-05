@@ -7,7 +7,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     if (['accepted', 'rejected', 'confirmed', 'withdrawn', 'canceled'].includes(this.params.speakers_status)) {
       return this.l10n.tVar(capitalize(this.params.speakers_status));
     } else {
-      return this.l10n.tVar('All');
+      return this.l10n.t('All');
     }
   }
 
