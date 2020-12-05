@@ -1,5 +1,12 @@
 <div class="ui container">
-  <QuickFilter @eventName={{this.event_name}} @startDate={{this.start_date}} @endDate={{this.end_date}} @location={{this.location}} @filterDate={{this.filterDate}} />
+  <div class="ui action input fluid">
+    <Input
+      @type="text"
+      @key-up={{action "handleKeyPress"}}
+      placeholder={{t "Search for events"}}
+      @value={{this.event_name}} />
+      <button class="ui blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
+  </div>
 
   {{#if this.featuredEvents}}
     <h2 class="main-heading">{{t 'Featured Events'}}</h2>
@@ -9,12 +16,9 @@
       {{/each}}
     </div>
   {{/if}}
-  {{#if this.filteredEvents}}
+  {{#if this.upcomingEvents}}
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each this.promotedEvents as |event|}}
-        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
-      {{/each}}
       {{#each this.upcomingEvents as |event|}}
         <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
       {{/each}}

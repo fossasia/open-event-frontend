@@ -6,133 +6,15 @@ import { hash } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
-  /**
-   * Load filtered events based on the given params
-   *
-   * @param params
-   * @param mode
-   * @return {*}
-   * @private
-   */
-  _loadEvents(params, mode) {
-    const filterOptions = [
+  
+  async model(params) {
+    const featuredEventsFilter = [
       {
-        and:
-        [
-          {
-            name : 'state',
-            op   : 'eq',
-            val  : 'published'
-          },
-          {
-            name : 'privacy',
-            op   : 'eq',
-            val  : 'public'
-          }
-        ]
+        name : 'is-featured',
+        op   : 'eq',
+        val  : true
       }
     ];
-
-    if (params.location) {
-      filterOptions.push({
-        name : 'location_name',
-        op   : 'ilike',
-        val  : `%${params.location}%`
-      });
-    }
-
-    if (params.event_name) {
-      filterOptions.push({
-        name : 'name',
-        op   : 'ilike',
-        val  : `%${params.event_name}%`
-      });
-    }
-
-    if (params.start_date && params.end_date) {
-      filterOptions.push({
-        or:
-          [
-            {
-              and: [
-                {
-                  name : 'starts-at',
-                  op   : 'ge',
-                  val  : params.start_date
-                },
-                {
-                  name : 'starts-at',
-                  op   : 'le',
-                  val  : params.end_date
-                }
-              ]
-            },
-            {
-              and: [
-                {
-                  name : 'ends-at',
-                  op   : 'ge',
-                  val  : params.start_date
-                },
-                {
-                  name : 'ends-at',
-                  op   : 'le',
-                  val  : params.end_date
-                }
-              ]
-            },
-            {
-              and: [
-                {
-                  name : 'starts-at',
-                  op   : 'le',
-                  val  : params.start_date
-                },
-                {
-                  name : 'ends-at',
-                  op   : 'ge',
-                  val  : params.end_date
-                }
-              ]
-            }
-          ]
-      });
-    } else {
-      params.start_date = moment().toISOString();
-      filterOptions.push({
-        or: [
-          {
-            name : 'starts-at',
-            op   : 'ge',
-            val  : params.start_date
-          },
-          {
-            name : 'ends-at',
-            op   : 'ge',
-            val  : params.start_date
-          }
-        ]
-      });
-    }
-    if (mode === 'filterOptions') {
-      return filterOptions;
-    } else {
-      return this.store.query('event', {
-        sort    : 'starts-at',
-        include : 'event-topic,event-sub-topic,event-type,speakers-call',
-        filter  : filterOptions
-      });
-    }
-
-  }
-
-  async model(params) {
-    const filterOptions =  this._loadEvents(params, 'filterOptions');
-    filterOptions[0].and.push({
-      name : 'is-featured',
-      op   : 'eq',
-      val  : true
-    });
 
     const upcomingEventsFilter = [
       {
@@ -180,9 +62,7 @@ export default class IndexRoute extends Route {
       }
     ];
 
-    const callForSpeakersFilter = this._loadEvents(params, 'filterOptions');
-    callForSpeakersFilter[0].and = [
-      ...callForSpeakersFilter[0].and,
+    const callForSpeakersFilter = [
       ...upcomingEventsFilter,
       {
         name : 'is-sessions-speakers-enabled',
@@ -202,18 +82,9 @@ export default class IndexRoute extends Route {
         name : 'speakers-call',
         op   : 'has',
         val  : {
-          name : 'starts-at',
-          op   : 'le',
-          val  : params.start_date
-        }
-      },
-      {
-        name : 'speakers-call',
-        op   : 'has',
-        val  : {
           name : 'ends-at',
           op   : 'ge',
-          val  : params.start_date
+          val  : moment().toISOString()
         }
       },
       {
@@ -228,20 +99,21 @@ export default class IndexRoute extends Route {
     ];
 
     return hash({
-      filteredEvents: this.store.query('event', {
-        upcoming     : true,
-        include      : 'event-topic,event-sub-topic,event-type,speakers-call',
-        cache        : true,
-        public       : true,
-        'page[size]' : 12
-      }),
       featuredEvents: this.store.query('event', {
         sort         : 'starts-at',
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
-        filter       : filterOptions,
+        filter       : featuredEventsFilter,
         cache        : true,
         public       : true,
         'page[size]' : 6
+      }),
+      upcomingEvents: this.store.query('event', {
+        upcoming     : true,
+        include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+        filter       : upcomingEventsFilter,
+        cache        : true,
+        public       : true,
+        'page[size]' : 12
       }),
       callForSpeakersEvents: this.store.query('event', {
         sort         : 'starts-at',
@@ -256,25 +128,10 @@ export default class IndexRoute extends Route {
 
   setupController(controller, model) {
     super.setupController(...arguments);
-    controller.set('filteredEvents', model.filteredEvents);
     controller.set('featuredEvents', model.featuredEvents);
+    controller.set('upcomingEvents', model.upcomingEvents);
+    controller.set('callForSpeakersEvents', model.callForSpeakersEvents);
     this.set('controller', controller);
   }
 
-  @action
-  async queryParamsDidChange(change, params) {
-    if (this.controller) {
-      this.controller.set('filteredEvents', await this._loadEvents(params));
-    }
-  }
-
-  @action
-  loading(transition) {
-    transition.promise.finally(() => {
-      if (this.controller) {
-        this.controller.set('finishedLoading', true);
-      }
-    });
-    return false;
-  }
 }
