@@ -14,7 +14,7 @@ export default class IndexController extends Controller {
 
   @action
   search() {
-    this.transitionToRoute('explore', { queryParams: { event_name: this.event_name }});
+    this.transitionToRoute('explore', { queryParams: { event_name: this.event_name } });
   }
 
   @action

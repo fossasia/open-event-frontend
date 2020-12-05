@@ -1,13 +1,11 @@
 import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import moment from 'moment';
 import { hash } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
-  
-  async model(params) {
+  async model() {
     const featuredEventsFilter = [
       {
         name : 'is-featured',
