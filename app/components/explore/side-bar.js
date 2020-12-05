@@ -18,9 +18,9 @@ export default class SideBar extends Component {
   isMapVisible = true;
   eventLocationType = null;
 
-  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online')
+  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'must_have_logo', 'must_have_images')
   get hideClearFilters() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.must_have_logo || this.must_have_image);
   }
 
   @computed('category', 'sub_category')
@@ -37,6 +37,16 @@ export default class SideBar extends Component {
   @computed('device.isMobile', 'showFilters')
   get showFiltersOnMobile() {
     return (!this.device.isMobile || this.showFilters);
+  }
+
+  @action
+  selectLogos(val) {
+    this.set('must_have_logo', this.must_have_logo === val ? null : val);
+  }
+
+  @action
+  selectImages(val) {
+    this.set('must_have_image', this.must_have_image === val ? null : val);
   }
 
   @action
@@ -172,6 +182,8 @@ export default class SideBar extends Component {
       cfs               : null,
       event_name        : null,
       is_online         : null,
+      must_have_logo    : false,
+      must_have_image   : false,
       eventLocationType : null
     });
   }
