@@ -46,7 +46,9 @@
       <div class="three wide column">
         {{#if this.displaySideMenu}}
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
+          {{#if (or this.model.externalEventUrl this.model.socialLinks)}}
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
+          {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
             <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment">
               <div class="mr-8">
@@ -87,18 +89,27 @@
             </div>
           {{/if}}
           {{#if this.twitterLink}}
-            <div class="item">
-              <div class="twitter content">
-                <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+            {{#unless this.device.isMobile}}
+              <div class="item">
+                <div class="twitter content">
+                  <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                </div>
               </div>
-            </div>
+            {{/unless}}
           {{/if}}
         {{/if}}
       </div>
       {{#if this.device.isMobile}}
-      <div class="ten wide column">
-        {{outlet}}
-      </div>
+        <div class="ten wide column">
+          {{outlet}}
+        </div>
+        {{#if this.twitterLink}}
+          <div class="three wide column item">
+            <div class="twitter content">
+              <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+            </div>
+          </div>
+        {{/if}}
       {{/if}}
     </div>
   </div>
