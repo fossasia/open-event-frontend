@@ -1,7 +1,7 @@
 # Open Event Frontend
 ![Open Event Frontend](docs/images/Frontend_Branding.png)
 
-[![Build Status](https://github.com/fossasia/open-event-frontend/workflows/ci/badge.svg?branch=development)](https://github.com/fossasia/open-event-frontend/actions?query=workflow%3Aci)
+[![Build Status](https://github.com/fossasia/open-event-frontend/workflows/CI/badge.svg?branch=development)](https://github.com/fossasia/open-event-frontend/actions?query=workflow%3Aci)
 [![Netlify](https://img.shields.io/netlify/89d57fdc-826c-400b-af13-c542e9513f62)](https://app.netlify.com/sites/open-event/deploys)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d51cf60fc734d3699fd6eff6054e483)](https://www.codacy.com/app/fossasia/open-event-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fossasia/open-event-frontend&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/fossasia/open-event-frontend/branch/development/graph/badge.svg)](https://codecov.io/gh/fossasia/open-event-frontend)
