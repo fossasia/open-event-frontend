@@ -8,7 +8,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'Microlocation',
+        name            : this.l10n.t('Microlocation'),
         valuePath       : 'name',
         extraValuePaths : ['id', 'videoStream'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-title',
@@ -18,16 +18,22 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : 'Video room URL',
+        name      : this.l10n.t('Video room URL'),
         valuePath : 'videoStream.url'
       },
       {
-        name      : 'Pin',
+        name            : this.l10n.t('Link'),
+        valuePath       : 'videoStream',
+        extraValuePaths : ['event'],
+        cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-url'
+      },
+      {
+        name      : this.l10n.t('Pin'),
         valuePath : 'videoStream.password',
         width     : 20
       },
       {
-        name      : 'Additional information',
+        name      : this.l10n.t('Additional information'),
         valuePath : 'videoStream.additionalInformation'
       }
     ];

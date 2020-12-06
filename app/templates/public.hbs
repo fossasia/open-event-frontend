@@ -9,9 +9,9 @@
             <img src="{{this.model.logoUrl}}" class="logo mr-8" />
           {{/if}}
           <div>
-            <h4 class="event time">{{general-date this.model.startsAt this.model.timezone 'dddd, D MMMM, YYYY h:mm A (z)'}}</h4>
+            <h4 class="event time">{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
             {{#if this.displayEndDate}}
-              <h5 class="event time ends">{{t 'To'}} {{general-date this.model.endsAt this.model.timezone 'dddd, D MMMM, YYYY h:mm A (z)'}}</h5>
+              <h5 class="event time ends">{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
             {{/if}}
             <h1 class="event name">{{this.model.name}}</h1>
             <h4 class="event location"><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
@@ -43,6 +43,8 @@
       </div>
       <div class="three wide column">
         {{#if this.displaySideMenu}}
+          <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
+          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
             <div class="ui basic segment">
               <h4>
@@ -77,8 +79,13 @@
               {{/each}}
             </div>
           {{/if}}
-          <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
-          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
+          {{#if this.twitterLink}}
+            <div class="item">
+              <div class="twitter content">
+                <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+              </div>
+            </div>
+          {{/if}}
         {{/if}}
       </div>
     </div>

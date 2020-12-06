@@ -3,7 +3,7 @@
 <div class="d-flex wrap">
   <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=null}} class="ui button mb-2">{{t 'All'}}</LinkTo>
   {{#each this.allDates as |date|}}
-    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{moment-format date 'D MMM, YYYY'}}</LinkTo>
+    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'date-short'}}</LinkTo>
   {{/each}}
 
   <Widgets::TimeZonePicker
@@ -11,6 +11,12 @@
     @defaultLocal={{this.model.event.online}}
     @eventTimezone={{this.model.event.timezone}}
     @timezone={{this.timezone}} />
+
+  <Tables::Utilities::SearchBox
+    class="mb-2 mr-2"
+    @searchQuery={{this.search}}
+    @size="large"
+  />
 
   <UiDropdown class="labeled icon button mb-2">
     <i class="sort amount down icon"></i>
@@ -27,8 +33,8 @@
   {{#each this.model.session as |session|}}
     <div class="ui grid">
       <div class="three wide column">
-        {{general-date session.startsAt session.event.timezone 'hh:mm a'}} - 
-        {{general-date session.endsAt session.event.timezone 'hh:mm a'}}
+        {{general-date session.startsAt 'hh:mm a' tz=session.event.timezone}} - 
+        {{general-date session.endsAt 'hh:mm a' tz=session.event.timezone}}
       </div>
       <div class="thirteen wide column">
         <Public::TrackItem @session={{session}} />
@@ -46,11 +52,32 @@
 {{/if}}
 
 <div class="mt-8">
-  {{#each this.model.session as |session|}}
-    <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} />
+  {{#if this.model.session}}
+    <table class="ui very basic table">
+      <thead class="full-width">
+        <tr>
+          <th class="two wide" style="border: none;"></th>
+          <th style="border: none;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.model.session as |session|}}
+          <tr>
+            <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
+              <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}" style="color: rgba(0, 0, 0, 0.7);">
+                {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
+              </h4>
+            </td>
+            <td style="border-top: none; border-left: 1px solid lightgrey">
+              <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} />
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
-  {{/each}}
+  {{/if}}    
   <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">

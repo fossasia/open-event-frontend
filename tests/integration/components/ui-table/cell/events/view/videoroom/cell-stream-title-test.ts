@@ -7,8 +7,17 @@ module('Integration | Component | ui-table/cell/events/view/videoroom/cell-strea
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{ui-table/cell/events/view/videoroom/cell-stream-title}}`);
-
-    assert.equal(this.element.textContent?.trim(), '');
+    this.set('record', 'Workshop');
+    this.set('extraRecords', { videoStream: { id: 1 } });
+    this.set('props', { actions: { delete() {} } }); // eslint-disable-line @typescript-eslint/no-empty-function
+    await render(hbs`{{ui-table/cell/events/view/videoroom/cell-stream-title record=record extraRecords=extraRecords props=props}}`);
+    assert.dom(this.element).hasText('Workshop');
+    assert.ok(this.element.querySelector('.edit.icon'));
+    assert.ok(this.element.querySelector('.trash.icon'));
+    assert.notOk(this.element.querySelector('.video.icon'));
+    this.set('extraRecords', { videoStream: {} });
+    assert.notOk(this.element.querySelector('.edit.icon'));
+    assert.notOk(this.element.querySelector('.trash.icon'));
+    assert.ok(this.element.querySelector('.video.icon'));
   });
 });

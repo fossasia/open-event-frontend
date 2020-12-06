@@ -1,31 +1,17 @@
 import classic from 'ember-classic-decorator';
-import { action, computed } from '@ember/object';
+import { computed } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
-import $ from 'jquery';
 
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort'];
+  queryParams = ['sort', 'search'];
+  search = null;
   sort = 'starts-at';
   isTrackVisible = false;
   timezone = null;
-
-  constructor(...args) {
-    super(...args);
-
-    this.addObserver('model.session', this, 'sessionChanged');
-  }
-
-  @action
-  sessionChanged() {
-    if (this.model.isFiltering) {
-      $('html,body').animate({
-        scrollTop: $('#session-heading').offset()?.top
-      });
-    }
-  }
+  preserveScrollPosition = true;
 
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
   get allDates() {

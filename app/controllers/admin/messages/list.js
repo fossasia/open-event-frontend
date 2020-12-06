@@ -52,10 +52,7 @@ get columns() {
       valuePath       : 'sentAt',
       headerComponent : 'tables/headers/sort',
       isSortable      : true,
-      cellComponent   : 'ui-table/cell/cell-simple-date',
-      options         : {
-        dateFormat: 'MMMM DD, YYYY - HH:mm A'
-      }
+      cellComponent   : 'ui-table/cell/cell-simple-date'
     }
 
   ];
