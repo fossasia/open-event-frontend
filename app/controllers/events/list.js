@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object'; 
+import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
