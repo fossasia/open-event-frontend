@@ -39,4 +39,8 @@ export default class EventCard extends Component {
   selectEventType(eventType) {
     this.set('eventType', eventType === this.eventType ? null : eventType);
   }
+
+  isSingleDay() {
+    return this.startsAt.isSame(this.endsAt, 'day');
+  }
 }

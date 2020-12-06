@@ -17,26 +17,37 @@
           @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
       </a>
     {{/unless}}
-    <a class="main content" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
+    <a style="min-height:165px" class="main content" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>
       <div class="meta">
         <span class="date">
-          {{general-date this.event.startsAt 'date-time-long'}}
-          -
-          {{general-date this.event.endsAt 'date-time-long'}}
+          {{#if this.isSingleDay}}
+            {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
+            - 
+            {{general-date this.event.endsAt 'time-tz-short' tz=this.event.timezone}}
+          {{else}}
+            {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
+            -
+            {{general-date this.event.endsAt 'date-time-tz-long' tz=this.event.timezone}}
+          {{/if}}
         </span>
       </div>
-      <SmartOverflow @class="description">
-        {{#if this.event.online}}
-          Online Event
-        {{/if}}
-        {{#if (and this.event.online this.event.shortLocationName)}}
-          and at
-        {{/if}}
-        {{this.event.shortLocationName}}
-      </SmartOverflow>
+      {{#if this.event.online}}
+        <p style="color: #000000AD">
+          <i class="wifi icon"></i>
+          {{t 'Online Event'}}
+        </p>
+      {{/if}}
+      {{#if this.event.shortLocationName}}
+        <p style="color: #000000AD">
+          <i class="map marker alternate icon"></i>
+          <SmartOverflow @class="d-inline description">
+            {{this.event.shortLocationName}}
+          </SmartOverflow>
+        </p>
+      {{/if}}
     </a>
     <div class="extra content small text">
       <span class="right floated">
