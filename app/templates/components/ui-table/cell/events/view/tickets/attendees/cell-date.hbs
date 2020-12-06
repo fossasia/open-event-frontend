@@ -1,5 +1,5 @@
 {{#if (eq @record.status 'completed')}}
-  {{general-date @record.completedAt "D MMM, YYYY h:mm A"}}
+  {{general-date @record.completedAt 'date-time-short'}}
 {{else}}
-  {{general-date @record.createdAt "D MMM, YYYY h:mm A"}}
+  {{general-date @record.createdAt 'date-time-short'}}
 {{/if}}
