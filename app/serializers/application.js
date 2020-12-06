@@ -37,5 +37,5 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
   serialize(snapshot, options) {
     this._options = options;
     return this._super(...arguments);
-  },
+  }
 });
