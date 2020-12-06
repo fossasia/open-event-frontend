@@ -23,10 +23,18 @@
       </SmartOverflow>
       <div class="meta">
         <span class="date">
-          {{general-date this.event.startsAt tz=this.event.timezone}}
+          {{general-date this.event.startsAt 'date-time-long'}}
+          -
+          {{general-date this.event.endsAt 'date-time-long'}}
         </span>
       </div>
       <SmartOverflow @class="description">
+        {{#if this.event.online}}
+          Online Event
+        {{/if}}
+        {{#if (and this.event.online this.event.shortLocationName)}}
+          and at
+        {{/if}}
         {{this.event.shortLocationName}}
       </SmartOverflow>
     </a>
