@@ -21,10 +21,11 @@ function pushToStore(store: DS.Store, data: any): any[] | any {
 function saveToStorage(key: string, value: any | null) {
   if (!value) {return}
   let serialized = null;
+  const options = { includeId: true, includeReadOnly: true };
   if (Array.isArray(value.content)) {
-    serialized = value.map((v: any) => v.serialize({ includeId: true }));
+    serialized = value.map((v: any) => v.serialize(options));
   } else {
-    serialized = value.serialize({ includeId: true });
+    serialized = value.serialize(options);
   }
 
   localStorage.setItem(key, JSON.stringify({
@@ -92,6 +93,12 @@ export default class Cache extends Service.extend({
     const saved = await this.cacheData(model, () => this.store.findAll(model, { cache: true, ...options }));
     if (saved) {return saved;}
     return this.store.peekAll(model);
+  }
+
+  async findRecord(key: string, model: string, id: string | number, options: any | null): Promise<any> {
+    const saved = await this.cacheData(key, () => this.store.findRecord(model, id, options));
+    if (saved) {return saved;}
+    return this.store.peekRecord(model, id);
   }
 
   async queryRecord(key: string, model: string, options: any | null): Promise<any> {
