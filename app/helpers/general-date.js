@@ -1,5 +1,6 @@
 import Helper from '@ember/component/helper';
 import moment from 'moment';
+import { tzAbbr } from 'open-event-frontend/utils/dictionary/tzAbbr';
 
 const dateFormats = {
   'date-time-long'     : 'dddd, D MMMM, YYYY h:mm A',
@@ -25,12 +26,14 @@ export function generalDate(params, { tz }) {
     format = format.replace(' a', '');
   }
 
-  let dateTime = moment(params[0]).tz(timezone).format(format);
-  const z = moment(params[0]).tz(timezone).format('z');
-  const reg = new RegExp('[+-]?[0-9]+');
-  
-  if (reg.test(z)) {
-    dateTime = dateTime.replace(z, timezone);
+  const formatWithoutTz = format.replace(' (z)', '');
+
+  let dateTime = moment(params[0]).tz(timezone).format(formatWithoutTz);
+
+  const timezoneAbbr = tzAbbr[timezone] || moment(params[0]).tz(timezone).format('z');
+
+  if (format.includes('(z)')) {
+    dateTime = dateTime.concat(` (${timezoneAbbr})`);
   }
 
   return dateTime;
