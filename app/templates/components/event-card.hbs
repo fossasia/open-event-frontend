@@ -55,10 +55,21 @@
               {{t-var this.tags.[2]}}
             </a>
           {{else}}
-          {{!-- Changes under progress --}}
-            {{#each this.tags as |tag|}}
-              <a href="#">{{t-var tag}}</a>
-            {{/each}}
+            <a href="#"
+              class="link item"
+              {{action this.goToExplore this.event.topic.name}}>
+              {{t-var this.tags.[0]}}
+            </a>
+            <a href="#"
+              class="link item"
+              {{action this.goToExplore null this.event.type.name}}>
+              {{t-var this.tags.[1]}}
+            </a>
+            <a href="#"
+              class="link item"
+              {{action this.goToExplore this.event.topic.name null this.event.subTopic.slug}}>
+              {{t-var this.tags.[2]}}
+            </a>
           {{/if}}
         {{/if}}
       </span>

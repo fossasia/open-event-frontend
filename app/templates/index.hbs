@@ -5,7 +5,7 @@
     <h2 class="main-heading">{{t 'Featured Events'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.featuredEvents as |event|}}
-        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+        <EventCard @event={{event}} @goToExplore={{action "goToExplore"}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
     </div>
   {{/if}}
@@ -13,10 +13,10 @@
     <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.promotedEvents as |event|}}
-        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+        <EventCard @event={{event}} @goToExplore={{action "goToExplore"}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
       {{#each this.upcomingEvents as |event|}}
-        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+        <EventCard @event={{event}} @goToExplore={{action "goToExplore"}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
     </div>
   {{else}}
@@ -26,7 +26,7 @@
     <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.model.callForSpeakersEvents as |event|}}
-        <EventCard @event={{event}} @isCFS={{true}} @shareEvent={{action "shareEvent"}} />
+        <EventCard @event={{event}} @isCFS={{true}} @goToExplore={{action "goToExplore"}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
     </div>
     <div class="ui hidden divider"></div>
