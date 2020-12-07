@@ -102,7 +102,7 @@ Docker images hosted on [open-event-frontend repository](https://cloud.docker.co
     -   [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
     -   [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
-## Contributions Best Practices
+## Best Practices for Contributions
 
 ### Commits
 
