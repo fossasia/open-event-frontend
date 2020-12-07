@@ -55,19 +55,16 @@
               {{t-var this.tags.[2]}}
             </a>
           {{else}}
-            <a href="#"
-              class="link item"
-              {{action this.goToExplore this.event.topic.name}}>
+            <a href="{{href-to 'explore' (query-params category=this.event.topic.name event_type=null sub_category=null)}}"
+              class="link item">
               {{t-var this.tags.[0]}}
             </a>
-            <a href="#"
-              class="link item"
-              {{action this.goToExplore null this.event.type.name}}>
+            <a href="{{href-to 'explore' (query-params category=null event_type=this.event.type.name sub_category=null)}}"
+              class="link item">
               {{t-var this.tags.[1]}}
             </a>
-            <a href="#"
-              class="link item"
-              {{action this.goToExplore this.event.topic.name null this.event.subTopic.slug}}>
+            <a href="{{href-to 'explore' (query-params category=this.event.topic.name event_type=null sub_category=this.event.subTopic.slug)}}"
+              class="link item">
               {{t-var this.tags.[2]}}
             </a>
           {{/if}}

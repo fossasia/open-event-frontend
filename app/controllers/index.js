@@ -35,11 +35,6 @@ export default class IndexController extends Controller {
     this.set('eventToShare', event);
     this.set('isShareModalOpen', true);
   }
-
-  @action
-  goToExplore(topicName, typeName, subTopicName) {
-    this.transitionToRoute('explore', { queryParams: {category: topicName, event_type: typeName, sub_category: subTopicName }});
-  }
 }
 
 function isEventCfsOpen(event) {
