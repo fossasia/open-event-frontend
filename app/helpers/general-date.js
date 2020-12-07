@@ -4,11 +4,11 @@ import { tzAbbr } from 'open-event-frontend/utils/dictionary/tzAbbr';
 
 const dateFormats = {
   'date-time-long'     : 'dddd, D MMMM, YYYY h:mm A',
-  'date-time-tz-long'  : 'dddd, D MMMM, YYYY h:mm A (z)',
+  'date-time-tz-long'  : 'dddd, D MMMM, YYYY h:mm A',
   'date-time-short'    : 'D MMM, YYYY h:mm A',
-  'date-time-tz-short' : 'D MMM, YYYY h:mm A (z)',
+  'date-time-tz-short' : 'D MMM, YYYY h:mm A',
   'date-short'         : 'D MMM, YYYY',
-  'time-tz-short'      : 'h:mm A (z)'
+  'time-tz-short'      : 'h:mm A'
 };
 
 const locales12Hours = new Set(['en', 'bn', 'hi', 'id', 'ja', 'run', 'th', 'vi', 'ko']);
@@ -18,7 +18,7 @@ export function generalDate(params, { tz }) {
 
   const local = moment(params[0]).tz(timezone).locale();
 
-  let format = (dateFormats[params[1]] || params[1]) || 'h:mm A, MMMM Do YYYY (z)';
+  let format = (dateFormats[params[1]] || params[1]) || 'h:mm A, MMMM Do YYYY';
 
   if (!locales12Hours.has(local)) {
     format = format.replace(/h/g, 'H');
@@ -26,14 +26,12 @@ export function generalDate(params, { tz }) {
     format = format.replace(' a', '');
   }
 
-  const formatWithoutTz = format.replace(' (z)', '');
-
-  let dateTime = moment(params[0]).tz(timezone).format(formatWithoutTz);
+  const dateTime = moment(params[0]).tz(timezone).format(format);
 
   const timezoneAbbr = tzAbbr[timezone] || moment(params[0]).tz(timezone).format('z');
 
-  if (format.includes('(z)')) {
-    dateTime = dateTime.concat(` (${timezoneAbbr})`);
+  if (!params[1] || params[1].includes('tz')) {
+    dateTime.concat(` (${timezoneAbbr})`);
   }
 
   return dateTime;
