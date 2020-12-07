@@ -11,7 +11,7 @@
 {{/if}}
 <SideBar>
   <div class="footer-pusher">
-    <NavBar @unreadNotifications={{this.unreadNotifications}} />
+    <NavBar />
     {{#if (eq this.routing.currentRouteName 'index')}}
       <WelcomeHeader />
     {{/if}}
@@ -19,10 +19,7 @@
          class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
-
-    
-    <FooterMain @eventTypes={{this.model.eventTypes}} @eventLocations={{this.model.eventLocations}} @socialLinks={{this.model.socialLinks}} @footerPages={{this.footerPages}} />
-
+    <FooterMain @socialLinks={{this.model.socialLinks}} />
   </div>
 </SideBar>
 <Modals::ConfirmModal @isOpen={{this.confirm.isOpen}} />

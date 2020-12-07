@@ -5,17 +5,13 @@ import { orderBy, find } from 'lodash-es';
 import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { inject as service } from '@ember/service';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
-import $ from 'jquery';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone: moment.tz.guess(),
   timezones,
-
-  torii: service(),
 
   deletedTickets: [],
 
@@ -23,9 +19,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return orderBy(licenses, 'name');
   }),
 
-
   socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
     return this.data.event.socialLinks.filterBy('isDeleted', false);
+  }),
+
+  socialMediaLinks: computed('socialLinks', function() {
+    return this.socialLinks.filterBy('isSocial', true);
+  }),
+
+  customLinks: computed('socialLinks', function() {
+    return this.socialLinks.filterBy('isCustom', true);
   }),
 
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
@@ -46,49 +49,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     }
   },
 
-  // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
-    $.fn.form.settings.rules.checkMaxMinPrice = () => {
-      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
-    };
-    $.fn.form.settings.rules.checkMaxMinOrder = () => {
-      return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
-    };
-
     const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
       fields : {
-        timezone: {
-          identifier : 'timezone',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Choose a timezone for your event')
-            }
-          ]
-        },
-        startTime: {
-          identifier : 'start_time',
-          depends    : 'start_date',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give a start time')
-            }
-          ]
-        },
-        endTime: {
-          identifier : 'end_time',
-          depends    : 'end_date',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give an end time')
-            }
-          ]
-        },
         externalEventIdentifier: {
           identifier : 'external_event_url',
           optional   : true,

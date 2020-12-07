@@ -11,7 +11,7 @@ export default class IndexController extends Controller {
 
   @computed('model.orderStats.sales.completed', 'model.orderStats.sales.placed')
   get totalAmount() {
-    return this.model.orderStats.sales.completed + this.model.orderStats.sales.placed;
+    return (this.model.orderStats.sales.completed + this.model.orderStats.sales.placed).toFixed(2);
   }
 
   @computed('model.orderStats.orders.completed', 'model.orderStats.orders.placed')

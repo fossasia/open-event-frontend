@@ -1,59 +1,73 @@
+{{!-- template-lint-disable no-nested-interactive  --}}
 <UiAccordion class="segment p-0" style={{css background-color=@session.track.color border-color='lightgray'}}>
-  <div class="title p-4" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
+  <div class="title p-4 pr-1" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
     <div class="ui">
-      <h3 class="ui header" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
-        {{@session.title}}
-        {{#unless @hideSessionLink}}
-          {{!-- template-lint-disable no-nested-interactive  --}}
-          <a href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css float='right' color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
-        {{/unless}}
-        <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
-          {{@session.sessionType.name}}
+      <h3 class="ui header d-flex" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
+        <div>
+          {{@session.title}}
+          <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
+            {{@session.sessionType.name}}
+          </div>
+        </div>
+        <div class="d-flex ml-auto" style="height: fit-content;">
+          {{#if @session.slidesUrl}}
+            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
+              <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
+              {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
+            </button>
+          {{/if}}
+          {{#if @session.microlocation.hasVideoStream}}
+            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+              <i class="icon video"></i>
+              {{t 'Join Video'}}
+            </button>
+          {{/if}}
+          {{#unless @hideSessionLink}}
+            <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
+          {{/unless}}
         </div>
       </h3>
-      <div class="ui row">{{@session.track.name}}</div>
     </div>
     <br>
     <div class="ui grid stackable">
       {{#if this.hideImage}}
         <div class="left floated twelve wide column">
+          <div><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt @timezone}} - {{general-date @session.endsAt @timezone}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{else}}
-        <div class="left floated twelve wide column">
-          <div class="ui grid stackable">
-           <div class="session-speakers">
-              {{#each @session.speakers as |speaker|}}
-               <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
-             {{/each}}
-           </div>
-           <div class="left floated nine wide column">
-             {{#each @session.speakers as |speaker|}}
-                {{speaker.name}} ({{speaker.position}}, {{speaker.organisation}})
-                <br>
-              {{/each}}
-            </div>
+        <div class="left floated eleven wide column">
+          <div class="d-flex wrap">
+            {{#each @session.speakers as |speaker|}}
+              <div class="d-flex items-center speaker-card pr-2 pb-4">
+                <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                <div class="ml-2">
+                  {{speaker.name}}
+                  {{#if speaker.positionOrganisation}}<div class="speaker-details">{{speaker.positionOrganisation}}</div>{{/if}}
+                </div> 
+              </div>
+            {{/each}}
           </div>
         </div>
-        <div class="right floated four wide column">
+        <div class="right floated five wide column">
+          <div><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
-            <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt @timezone 'hh:mm a / DD-MM-YYYY (z)'}}</div>
+            <div><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{/if}}
-
-      <div class="row">
-        <div class="column session-description">
-          {{sanitize @session.shortAbstract}}
-        </div>
-      </div>
     </div>
   </div>
-  <div class="content pt-0 p-4 rounded-t-none {{if @expanded 'active'}}" style={{css background-color='white' border-radius='0.2rem'}}>
+  <div class="content pt-0 p-4 pr-1 rounded-t-none {{if @expanded 'active'}}" style={{css background-color='white' border-radius='0.2rem'}}>
+    <div class="ui pt-4 row">
+      <div class="column session-description">
+        {{sanitize @session.shortAbstract}}
+      </div>
+    </div>
     {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
       <div class="row p-4">
         <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>
@@ -81,12 +95,38 @@
         </div>
       </div>
     {{/if}}
+
+    {{#if @session.microlocation.hasVideoStream}}
+      <p style="white-space: pre-line;">
+        <a class="mt-2" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream.slugName @session.microlocation.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
+        {{#if @session.microlocation.videoStream.password}}
+          <div class="d-flex items-center">
+            <span>{{t 'Password'}}: </span>
+            <UiPopup @on="click" @content={{t "Copied to clipboard"}} @position="bottom right" style="white-space: normal;">
+              <CopyButton @clipboardText={{@session.microlocation.videoStream.password}} class="ui basic segments">
+                <div class="ui left labeled button">
+                  <div class="ui basic label">
+                    {{@session.microlocation.videoStream.password}}
+                  </div>
+                  <div class="ui icon button">
+                    <i class="copy icon"></i>
+                  </div>
+                </div>
+              </CopyButton>
+            </UiPopup>
+          </div>
+        {{/if}}
+        {{@session.microlocation.videoStream.additionalInformation}}
+      </p>
+    {{/if}}
     
     {{#each @session.speakers as |speaker|}}
       <img alt="speaker" class="ui tiny avatar image mt-8" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <p>
         <br>
         {{speaker.name}}
+        <br>
+        {{speaker.positionOrganisation}}
         <br>
         {{#if speaker.shortBiography}}
           {{sanitize speaker.shortBiography}}

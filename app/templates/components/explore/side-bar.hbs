@@ -1,13 +1,59 @@
 <div class="item">
   <div class="ui input">
     <Input
-      @name="location"
-      @value={{this.location}}
+      @name="name"
+      @value={{this.event_name}}
       @type="text"
-      @placeholder={{t "Enter Location"}} />
+      @placeholder={{t "Enter Event Name"}} />
   </div>
 </div>
 {{#if this.showFiltersOnMobile}}
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Event Location Type' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Online"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.eventLocationType "online") "active"}}
+                @onChange={{action "setLocationType" "online" "true"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Location"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.eventLocationType "venue") "active"}}
+                @onChange={{action "setLocationType" "venue" "false"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Mixed"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.eventLocationType "mixed") "active"}}
+                @onChange={{action "setLocationType" "mixed" "true"}} />
+            </div>
+            {{#if (or (eq this.eventLocationType "venue") (eq this.eventLocationType "mixed"))}}
+                <div class="explore sub menu">
+                  <div class="ui input">
+                    <Input
+                      @name="location"
+                      @value={{this.location}}
+                      @type="text"
+                      @placeholder={{t "Enter Location"}} />
+                  </div>
+                </div>
+              {{/if}}
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
   <div class="item">
     <UiAccordion>
       <span class="title">

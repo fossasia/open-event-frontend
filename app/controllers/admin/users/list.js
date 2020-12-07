@@ -14,7 +14,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'Name',
+        name            : this.l10n.t('Name'),
         valuePath       : 'firstName',
         extraValuePaths : ['fullName', 'deletedAt', 'id', 'isSuperAdmin'],
         cellComponent   : 'ui-table/cell/admin/users/cell-first-name',
@@ -32,25 +32,25 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Email',
+        name            : this.l10n.t('Email'),
         valuePath       : 'email',
         width           : 175,
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name          : 'Status',
+        name          : this.l10n.t('Status'),
         valuePath     : 'status',
         cellComponent : 'ui-table/cell/admin/users/cell-status'
       },
       {
-        name            : 'System Roles',
+        name            : this.l10n.t('System Roles'),
         valuePath       : 'isSuperAdmin',
         extraValuePaths : ['isAdmin', 'isVerified'],
         cellComponent   : 'ui-table/cell/admin/users/cell-system-roles'
       },
       {
-        name            : 'Event Roles',
+        name            : this.l10n.t('Event Roles'),
         valuePath       : 'isSuperAdmin',
         width           : 260,
         extraValuePaths : ['isAdmin', 'isUserOwner', 'ownerEvents',
@@ -61,26 +61,23 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent: 'ui-table/cell/admin/users/cell-event-roles'
       },
       {
-        name          : 'User Links',
+        name          : this.l10n.t('User Links'),
         valuePath     : 'id',
         cellComponent : 'ui-table/cell/admin/users/cell-user-links'
       },
       {
-        name            : 'Member Since',
+        name            : this.l10n.t('Member Since'),
         valuePath       : 'createdAt',
-        cellComponent   : 'ui-table/cell/admin/users/cell-created-at',
+        cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name            : 'Last Accessed',
+        name            : this.l10n.t('Last Accessed'),
         valuePath       : 'lastAccessedAt',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
-        cellComponent   : 'ui-table/cell/cell-simple-date',
-        options         : {
-          dateFormat: 'MMMM DD, YYYY - hh:mm A'
-        }
+        cellComponent   : 'ui-table/cell/cell-simple-date'
       }
     ];
   }

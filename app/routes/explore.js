@@ -72,7 +72,13 @@ export default class ExploreRoute extends Route {
         }
       });
     }
-
+    if (params.is_online) {
+      filterOptions.push({
+        name : 'online',
+        op   : 'eq',
+        val  : params.is_online
+      });
+    }
     if (params.location) {
       filterOptions.push({
         name : 'location_name',
@@ -80,6 +86,14 @@ export default class ExploreRoute extends Route {
         val  : `%${params.location}%`
       });
     }
+    if (params.event_name) {
+      filterOptions.push({
+        name : 'name',
+        op   : 'ilike',
+        val  : `%${params.event_name}%`
+      });
+    }
+
     if (params.cfs) {
       filterOptions.push({
         name : 'is_sessions_speakers_enabled',
