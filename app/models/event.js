@@ -167,7 +167,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     }
   }),
 
-  totalsales: computed('orderStatistics', function() {
+  totalSales: computed('orderStatistics', function() {
     return this.get('orderStatistics.tickets.placed') + this.get('orderStatistics.tickets.completed');
   }),
 
