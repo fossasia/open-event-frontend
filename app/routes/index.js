@@ -196,13 +196,6 @@ export default class IndexRoute extends Route {
   }
 
   @action
-  async queryParamsDidChange(change) {
-    if (this.controller) {
-      this.controller.set('filteredEvents', await this._loadEvents());
-    }
-  }
-
-  @action
   loading(transition) {
     transition.promise.finally(() => {
       if (this.controller) {
