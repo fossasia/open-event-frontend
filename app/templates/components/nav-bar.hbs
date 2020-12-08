@@ -16,8 +16,7 @@
         @activeClass="">{{t 'Browse Events'}}</LinkTo>
     {{/if}}
       {{#if this.session.isAuthenticated}}
-        <NotificationDropdown
-          @unreadNotifications={{this.unreadNotifications}} />
+        <NotificationDropdown />
       {{/if}}
       {{#if this.session.isAuthenticated}}
         <UiDropdown
