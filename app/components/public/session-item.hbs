@@ -97,27 +97,7 @@
     {{/if}}
 
     {{#if @session.microlocation.hasVideoStream}}
-      <p style="white-space: pre-line;">
-        <a class="mt-2" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream.slugName @session.microlocation.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
-        {{#if @session.microlocation.videoStream.password}}
-          <div class="d-flex items-center">
-            <span>{{t 'Password'}}: </span>
-            <UiPopup @on="click" @content={{t "Copied to clipboard"}} @position="bottom right" style="white-space: normal;">
-              <CopyButton @clipboardText={{@session.microlocation.videoStream.password}} class="ui basic segments">
-                <div class="ui left labeled button">
-                  <div class="ui basic label">
-                    {{@session.microlocation.videoStream.password}}
-                  </div>
-                  <div class="ui icon button">
-                    <i class="copy icon"></i>
-                  </div>
-                </div>
-              </CopyButton>
-            </UiPopup>
-          </div>
-        {{/if}}
-        {{@session.microlocation.videoStream.additionalInformation}}
-      </p>
+      <Public::Stream::StreamInfo @event={{or @event @session.event}} @videoStream={{@session.microlocation.videoStream}} />
     {{/if}}
     
     {{#each @session.speakers as |speaker|}}

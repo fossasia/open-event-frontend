@@ -72,6 +72,10 @@
     {{/if}}
     {{#if this.model.event.online}}
       <h2>{{t 'Online Event'}}</h2>
+      <Public::Stream::StreamInfo
+        @showButton={{true}}
+        @event={{this.model.event}}
+        @videoStream={{this.model.event.videoStream}} />
       {{#if this.model.event.liveStreamUrl}}
         <div>
           Live Stream: <a href="{{this.model.event.liveStreamUrl}}" target="_blank" rel="noopener noreferrer">{{this.model.event.liveStreamUrl}}</a>
