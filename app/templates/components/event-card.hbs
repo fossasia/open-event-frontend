@@ -17,11 +17,11 @@
           @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
       </a>
     {{/unless}}
-    <a style="min-height:165px" class="main content" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
+    <a class="{{if this.device.isMobile '' 'card-height'}} main content" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>
-      <div class="meta">
+      <div class="meta" style="margin-bottom: 0.5em">
         <span class="date">
           {{#if this.isSingleDay}}
             {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
@@ -41,12 +41,12 @@
         </p>
       {{/if}}
       {{#if this.event.shortLocationName}}
-        <p style="color: #000000AD">
-          <i class="map marker alternate icon"></i>
+          <span style="color: #000000AD">
+            <i class="map marker alternate icon"></i>
+          </span>
           <SmartOverflow @class="d-inline description">
             {{this.event.shortLocationName}}
           </SmartOverflow>
-        </p>
       {{/if}}
     </a>
     <div class="extra content small text">
