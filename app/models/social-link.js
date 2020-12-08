@@ -44,7 +44,7 @@ export default ModelBase.extend({
   }),
 
   buttonColor: computed('normalizedName', function() {
-    return buttonColor[this.normalizedName] ;
+    return buttonColor[this.normalizedName];
   })
 
 });
