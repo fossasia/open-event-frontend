@@ -45,7 +45,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   get eventColumns() {
-    const columns = this.columns;
+    const { columns } = this;
     columns[0].name = this.l10n.t('Event');
 
     return columns;
