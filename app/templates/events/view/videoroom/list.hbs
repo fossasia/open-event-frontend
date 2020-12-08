@@ -7,19 +7,19 @@
 <div class="ui grid">
   <div class="row">
     <div class="right aligned column">
-      {{#if (not this.model.videoStream)}}
+      {{#if (not this.model.event.videoStream)}}
         <LinkTo @route="events.view.videoroom.create" @query={{hash event=true}} class="ml-2">
           <UiPopup @content={{t "Add Video Channel"}} @class="ui circular icon button compact blue" @position="left center">
             <i class="video icon"></i>
           </UiPopup>
         </LinkTo>
       {{else}}
-        <LinkTo @route="events.view.videoroom.edit" @model={{this.model.videoStream.id}} class="ml-2">
+        <LinkTo @route="events.view.videoroom.edit" @model={{this.model.event.videoStream.id}} class="ml-2">
           <UiPopup @content={{t "Edit"}} @class="ui circular icon button compact positive" @position="left center">
             <i class="edit icon"></i>
           </UiPopup>
         </LinkTo>
-        <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this stream?") (action this.delete this.model.videoStream.id))}} @class="ui circular icon button compact negative ml-2" @position="left center">
+        <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this stream?") (action this.delete this.model.event.videoStream.id))}} @class="ui circular icon button compact negative ml-2" @position="left center">
           <i class="trash icon"></i>
         </UiPopup>
       {{/if}}
