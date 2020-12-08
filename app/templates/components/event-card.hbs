@@ -21,7 +21,7 @@
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>
-      <div class="meta" style="margin-bottom: 0.5em">
+      <div class="meta mb-2">
         <span class="date">
           {{#if this.isSingleDay}}
             {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
