@@ -194,34 +194,61 @@
       </div>
     </UiAccordion>
   </div>
-{{/if}}
-<div class="item">
-  <UiAccordion>
-    <span class="title">
-      <i class="dropdown icon"></i>
-      {{t 'Event Call For Speakers' }}
-    </span>
-    <div class="content menu">
-      <div class="ui form">
-        <div class="grouped fields">
-          <div class="field">
-            <UiCheckbox
-              @label={{t "Open"}}
-              @checked={{if (eq this.cfs "open") "active"}}
-              @onChange={{action "selectEventCfs" "open"}} />
-          </div>
-          <div class="field">
-            <UiCheckbox
-              @label={{t "Closed"}}
-              @class="ui checkbox"
-              @checked={{if (eq this.cfs "closed") "active"}}
-              @onChange={{action "selectEventCfs" "closed"}} />
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Call For Speakers' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Open"}}
+                @checked={{if (eq this.cfs "open") "active"}}
+                @onChange={{action "selectEventCfs" "open"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Closed"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.cfs "closed") "active"}}
+                @onChange={{action "selectEventCfs" "closed"}} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </UiAccordion>
-</div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Images' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Image"}}
+                @checked={{if this.has_image "active"}}
+                @onChange={{action "selectImages" "true"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Logo"}}
+                @class="ui checkbox"
+                @checked={{if this.has_logo "active"}}
+                @onChange={{action "selectLogos" "true"}} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+{{/if}}
 <div class="item">
   <button class="ui red button {{if this.hideClearFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
   {{#if this.device.isMobile}}
