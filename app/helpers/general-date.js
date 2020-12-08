@@ -30,7 +30,7 @@ export function generalDate(params, { tz }) {
 
   const timezoneAbbr = tzAbbr[timezone] || moment(params[0]).tz(timezone).format('z');
 
-  if (!params[1] || (params[1] && params[1].includes('tz'))) {
+  if (!params[1] || params[1].includes('tz')) {
     dateTime = dateTime.concat(` (${timezoneAbbr})`);
   }
 
