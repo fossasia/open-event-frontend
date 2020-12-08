@@ -3,11 +3,11 @@
     <i class="clock alternate outline icon pt-1"></i>
     <div class="content">
       {{#if this.isSingleDay}}
-        {{general-date @event.startsAt "dddd, D MMMM, YYYY" tz=@event.timezone}}<br>{{general-date @event.startsAt "h:mm A" tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt "h:mm A" tz=@event.timezone}} 
+        {{general-date @event.startsAt "dddd, D MMMM, YYYY" tz=@event.timezone}}<br>{{general-date @event.startsAt 'time-short' tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt 'time-short' tz=@event.timezone}} 
       {{else}}
         {{general-date @event.startsAt 'date-time-long' tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt 'date-time-long' tz=@event.timezone}} 
       {{/if}}
-      ({{this.timezone}})
+      {{general-date @event.startsAt 'tz' tz=@event.timezone}}
     </div>
     <UiDropdown class="ui floating dropdown button mt-4">
       {{t 'Add to Calendar'}}
