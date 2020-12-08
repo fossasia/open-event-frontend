@@ -72,6 +72,29 @@
     {{/if}}
     {{#if this.model.event.online}}
       <h2>{{t 'Online Event'}}</h2>
+      {{#if this.model.event.videoStream}}
+        <p style="white-space: pre-line;">
+          <a class="mt-2" href="{{href-to 'public.stream.view' this.model.event this.model.event.videoStream.slugName this.model.event.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
+          {{#if this.model.event.videoStream.password}}
+            <div class="d-flex items-center">
+              <span>{{t 'Password'}}: </span>
+              <UiPopup @on="click" @content={{t "Copied to clipboard"}} @position="bottom right" style="white-space: normal;">
+                <CopyButton @clipboardText={{this.model.event.videoStream.password}} class="ui basic segments">
+                  <div class="ui left labeled button">
+                    <div class="ui basic label">
+                      {{this.model.event.videoStream.password}}
+                    </div>
+                    <div class="ui icon button">
+                      <i class="copy icon"></i>
+                    </div>
+                  </div>
+                </CopyButton>
+              </UiPopup>
+            </div>
+          {{/if}}
+          {{this.model.event.videoStream.additionalInformation}}
+        </p>
+      {{/if}}
       {{#if this.model.event.liveStreamUrl}}
         <div>
           Live Stream: <a href="{{this.model.event.liveStreamUrl}}" target="_blank" rel="noopener noreferrer">{{this.model.event.liveStreamUrl}}</a>
