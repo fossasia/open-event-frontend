@@ -26,12 +26,12 @@ export function generalDate(params, { tz }) {
     format = format.replace(' a', '');
   }
 
-  const dateTime = moment(params[0]).tz(timezone).format(format);
+  let dateTime = moment(params[0]).tz(timezone).format(format);
 
   const timezoneAbbr = tzAbbr[timezone] || moment(params[0]).tz(timezone).format('z');
 
-  if (!params[1] || params[1].includes('tz')) {
-    dateTime.concat(` (${timezoneAbbr})`);
+  if (!params[1] || (params[1] && params[1].includes('tz'))) {
+    dateTime = dateTime.concat(` (${timezoneAbbr})`);
   }
 
   return dateTime;
