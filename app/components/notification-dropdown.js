@@ -8,8 +8,28 @@ import Component from '@ember/component';
 @classNames('notification item')
 @tagName('a')
 export default class NotificationDropdown extends Component {
-  didInsertElement() {
+  unreadNotifications = [];
+
+  async didInsertElement() {
     this._super.call(this);
+    if (this.authManager.currentUser) {
+      try {
+        const notifications = await this.authManager.currentUser.query('notifications', {
+          filter: [
+            {
+              name : 'is-read',
+              op   : 'eq',
+              val  : false
+            }
+          ],
+          sort: '-received-at'
+        });
+        this.set('unreadNotifications', notifications);
+      } catch (e) {
+        console.warn(e);
+        this.session.invalidate();
+      }
+    }
     $(this.element).popup({
       popup : '.popup',
       on    : 'click'
