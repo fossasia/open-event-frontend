@@ -48,8 +48,8 @@ export default class IndexRoute extends Route {
       public       : true,
       'page[size]' : 0
     });
-    const sponsorsPromise = event.query('sponsors', { 'page[size]': 0, cache  : true, public : true });
-    const taxPromise = event.get('tax', { cache  : true, public : true });
+    const sponsorsPromise = event.query('sponsors', { 'page[size]': 0, cache: true, public: true });
+    const taxPromise = event.get('tax', { cache: true, public: true });
 
     const [tickets, featuredSpeakers, sponsors, tax] = (await allSettled([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]))
       .map(result => result.value);
