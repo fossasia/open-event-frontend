@@ -8,7 +8,8 @@ const dateFormats = {
   'date-time-short'    : 'D MMM, YYYY h:mm A',
   'date-time-tz-short' : 'D MMM, YYYY h:mm A',
   'date-short'         : 'D MMM, YYYY',
-  'time-tz-short'      : 'h:mm A'
+  'time-tz-short'      : 'h:mm A',
+  'tz'                 : ' '
 };
 
 const locales12Hours = new Set(['en', 'bn', 'hi', 'id', 'ja', 'run', 'th', 'vi', 'ko']);
@@ -31,7 +32,7 @@ export function generalDate(params, { tz }) {
   const timezoneAbbr = tzAbbr[timezone] || moment(params[0]).tz(timezone).format('z');
 
   if (!params[1] || params[1].includes('tz')) {
-    dateTime = dateTime.concat(` (${timezoneAbbr})`);
+    dateTime += ` (${timezoneAbbr})`;
   }
 
   return dateTime;
