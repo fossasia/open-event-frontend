@@ -7,18 +7,17 @@
       {{else}}
         {{general-date @event.startsAt 'date-time-long' tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt 'date-time-long' tz=@event.timezone}} 
       {{/if}}
-      ({{this.timezone}})
-      <br>
-      <UiDropdown class="ui floating dropdown button mt-4">
-        {{t 'Add to Calendar'}}
-        <div class="menu">
-          {{#each this.calendarUrls as |calendar|}}
-            <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-              {{calendar.name}}
-            </a>
-          {{/each}}
-        </div>
-      </UiDropdown>
+      {{general-date @event.startsAt 'tz' tz=@event.timezone}}
     </div>
+    <UiDropdown class="ui floating dropdown button mt-4">
+      {{t 'Add to Calendar'}}
+      <div class="menu">
+        {{#each this.calendarUrls as |calendar|}}
+          <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+            {{calendar.name}}
+          </a>
+        {{/each}}
+      </div>
+    </UiDropdown>
   </div>
 </div>

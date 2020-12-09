@@ -14,7 +14,7 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
   },
 
   serializeAttribute(snapshot, json, key, attribute) {
-    if (attribute.options && attribute.options.readOnly) {
+    if (attribute.options?.readOnly && !this._options?.includeReadOnly) {
       return;
     }
     this._super(...arguments);
@@ -32,5 +32,10 @@ export default JSONAPISerializer.extend(EventRelationMixin, {
       return;
     }
     this._super(...arguments);
+  },
+
+  serialize(snapshot, options) {
+    this._options = options;
+    return this._super(...arguments);
   }
 });

@@ -15,6 +15,15 @@
 </div>
 <div class="sixteen wide column">
   <Tables::Default
+    @columns={{this.eventColumns}}
+    @rows={{this.events}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column"
+    @hideSearchBox={{true}}
+    @hidePagination={{true}}
+    @hidePageSize={{true}} />
+  <Tables::Default
     @columns={{this.columns}}
     @rows={{this.model.rooms.data}}
     @currentPage={{this.page}}
