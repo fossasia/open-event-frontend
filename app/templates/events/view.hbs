@@ -6,12 +6,12 @@
 {{#if (not-includes this.session.currentRouteName 'events.view.edit')}}
   <div class="ui grid stackable">
     <div class="row">
-      <div class="four wide column">
+      <div class="ten wide column">
         <h2 class="ui header">
           {{this.model.name}}
         </h2>
       </div>
-      <div class="twelve wide column {{unless this.device.isMobile 'right aligned'}}">
+      <div class="six wide column {{unless this.device.isMobile 'right aligned'}}">
         <div class="{{ if this.device.isMobile 'ui icon fluid buttons'}}">
           <Events::View::PublishBar @event={{this.model}} @showOnInvalid={{true}} />
         </div>
@@ -39,6 +39,9 @@
         </LinkTo>
         <LinkTo @route="events.view.team" class="item">
           {{t 'Team'}}
+        </LinkTo>
+        <LinkTo @route="events.view.videoroom" class="item">
+          {{t 'Video'}}
         </LinkTo>
         <LinkTo @route="events.view.export" class="item">
           {{t 'Export'}}

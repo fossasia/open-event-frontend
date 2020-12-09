@@ -5,17 +5,18 @@
       <h3>{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
-    {{#if (not this.session.isAuthenticated)}}
+    {{#if (and (not this.session.isAuthenticated) this.isNotEventPageRoute)}}
       <LinkTo
         @route="pricing" class="item"
         @activeClass="">{{t 'Pricing'}}</LinkTo>
     {{/if}}
+    {{#if this.isNotEventPageRoute}}
       <LinkTo
         @route="explore" class="item"
         @activeClass="">{{t 'Browse Events'}}</LinkTo>
+    {{/if}}
       {{#if this.session.isAuthenticated}}
-        <NotificationDropdown
-          @unreadNotifications={{this.unreadNotifications}} />
+        <NotificationDropdown />
       {{/if}}
       {{#if this.session.isAuthenticated}}
         <UiDropdown
@@ -39,14 +40,14 @@
               <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
             {{/if}}
             <div class="divider"></div>
-            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i
-                  class="ui right floated large signout sign out icon"></i></span></a>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><div class="d-flex">{{t 'Logout'}}<i
+                  class="ui sign out icon" style="margin-left: auto !important"></i></div></a>
           </div>
         </UiDropdown>
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (not-eq this.routing.currentRouteName 'create')}}
+      {{#if (and (not-eq this.routing.currentRouteName 'create') this.isNotEventPageRoute)}}
         <LinkTo
           @route="create" class="item ui blue text">
           <div>
@@ -70,13 +71,15 @@
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown
           @notifications={{this.notifications}} />
+        <LinkTo
+          @route="create" class="item ui blue button-text small text">
+          <div>
+            {{t 'Create Event'}}
+          </div>
+        </LinkTo>
+      {{else}}
+        <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      <LinkTo
-        @route="create" class="item ui blue button-text small text">
-        <div>
-          {{t 'Create Event'}}
-        </div>
-      </LinkTo>
     </div>
   </div>
 </div>

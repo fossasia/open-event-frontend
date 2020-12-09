@@ -1,12 +1,12 @@
 # Open Event Frontend
 ![Open Event Frontend](docs/images/Frontend_Branding.png)
 
-[![Build Status](https://travis-ci.org/fossasia/open-event-frontend.svg?branch=development)](https://travis-ci.org/fossasia/open-event-frontend)
+[![Build Status](https://github.com/fossasia/open-event-frontend/workflows/CI/badge.svg?branch=development)](https://github.com/fossasia/open-event-frontend/actions?query=workflow%3Aci)
 [![Netlify](https://img.shields.io/netlify/89d57fdc-826c-400b-af13-c542e9513f62)](https://app.netlify.com/sites/open-event/deploys)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d51cf60fc734d3699fd6eff6054e483)](https://www.codacy.com/app/fossasia/open-event-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fossasia/open-event-frontend&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/fossasia/open-event-frontend/branch/development/graph/badge.svg)](https://codecov.io/gh/fossasia/open-event-frontend)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
+[![Weblate](https://hosted.weblate.org/widgets/open-event/-/frontend/svg-badge.svg)](https://hosted.weblate.org/projects/open-event/frontend/)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
 [![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 [![Twitter Follow](https://img.shields.io/twitter/follow/eventyay.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/eventyay)
@@ -33,8 +33,16 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ## Running / Development
 
+[Click to see installation video](https://asciinema.org/a/370458?speed=5&autoplay=1)
+
 **Note**: Please follow [installation steps](/docs/installation/local.md#steps) listed above carefully before running 
 
+Unfortunately, no one reads the note above, so please just run the following commands when setting up for the first time:
+-   `yarn`
+-   `cp .env.example .env`
+-   `yarn l10n:generate`
+
+Running:
 -   `yarn start`
 -   Visit your app at [http://localhost:4200](http://localhost:4200).
 

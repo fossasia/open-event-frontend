@@ -19,6 +19,9 @@ export default class AuthManagerService extends Service {
   @service
   bugTracker;
 
+  @service
+  cache;
+
   @computed('session.data.currentUserFallback.id', 'currentUserModel')
   get currentUser() {
     if (this.currentUserModel) {
@@ -64,6 +67,7 @@ export default class AuthManagerService extends Service {
     this.session.invalidate();
     this.set('currentUserModel', null);
     this.session.set('data.currentUserFallback', null);
+    this.cache.clear();
   }
 
   identify() {
@@ -139,7 +143,7 @@ export default class AuthManagerService extends Service {
     if (this.session.isAuthenticated) {
       if (this.session.data.currentUserFallback.id) {
         try {
-          const user = await this.store.findRecord('user', this.session.data.currentUserFallback.id);
+          const user = await this.cache.findRecord('user', 'user', this.session.data.currentUserFallback.id);
           this.set('currentUserModel', user);
           this.identify();
         } catch (e) {

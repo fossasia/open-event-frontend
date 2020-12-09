@@ -1,6 +1,6 @@
 {{!-- Removed `Currency Symbol` helper from the `paymentCurrency` since some currency are not getting rendered. Hotfix until a permanent solution found --}}
 <form class="ui form" {{action on='submit' preventDefault=true}}>
-  <table class="ui unstackable very basic compact table" style="margin-bottom: 0">
+  <table class="ui stackable very basic compact table" style="margin-bottom: 0">
     <thead class="full-width">
       <tr>
         <th>{{t 'Type'}}</th>
@@ -28,7 +28,7 @@
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
               <div>
-                <small class="ui gray-text small">Sale ends on {{moment-format ticket.salesEndsAt 'ddd, DD MMMM YY, h:mm A'}}</small>
+                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
               </div>
             </td>
             <td></td>
@@ -56,7 +56,7 @@
                 </div>
                 {{#if ticket.discount}}
                   <div>
-                    {{currency-symbol this.eventCurrency}} {{format-money (sub ticket.price ticket.discount)}}
+                    <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.price ticket.discount}}/>
                   </div>
                 {{/if}}
               {{/if}}
@@ -64,11 +64,11 @@
                 <p>
                   {{#if this.taxInfo.isTaxIncludedInPrice}}
                     <small class="ui gray-text small">
-                      {{t 'includes'}} {{currency-symbol this.eventCurrency}} {{format-money ticket.includedTaxAmount}}
+                      {{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.includedTaxAmount}}/>
                     </small>
                   {{else}}
                     <small class="ui gray-text small">
-                      + {{currency-symbol this.eventCurrency}} {{format-money (sub ticket.ticketPriceWithTax ticket.price)}}
+                      + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
                     </small>
                   {{/if}}
                   <span>
@@ -88,10 +88,10 @@
                     @id={{concat ticket.id "_quantity"}}
                     @value={{ticket.orderQuantity}} />
                   <i class="dropdown icon"></i>
-                  <div class="default text">0</div>
+                  <div class="default text">{{if (eq this.tickets.length 1) (max ticket.minOrder 1) 0}}</div>
                   <div class="menu">
                     <div class="item" data-value="{{map-value mapper 0}}">0</div>
-                    {{#each (range ticket.minOrder (add ticket.maxOrder 1)) as |count|}}
+                    {{#each (range (max ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
                       <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
                     {{/each}}
                   </div>
@@ -116,7 +116,7 @@
             <table class="ui small" style="float: right;">
               <tbody>
                 {{#if orderAmount.tax}}
-                  <tr><td>{{t 'Sub-Total'}}</td><td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.sub_total}}</td></tr>
+                  <tr><td>{{t 'Sub-Total'}}</td><td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.sub_total}}/></td></tr>
                   <tr>
                     <td>
                       <div>{{t 'Tax'}} ({{this.orderAmount.tax.percent}}% {{this.orderAmount.tax.name}})</div>
@@ -124,14 +124,14 @@
                         <small class="ui gray-text small">Included in Total</small>
                       {{/if}}
                     </td>
-                    <td>{{currency-symbol this.eventCurrency}} {{this.orderAmount.tax.amount}}</td>
+                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.tax.amount}}/></td>
                   </tr>
                 {{/if}}
                 <tr><td>{{t 'Total'}}</td>
                   {{#if this.amountEditable}}
-                    <td>{{currency-symbol this.eventCurrency}}</td> <td><Input @value={{this.overridenAmount}} placeholder="Total" /></td>
+                    <td>{{#if this.overridenAmount}}{{currency-symbol this.eventCurrency}}{{/if}}</td><td><Input @value={{this.overridenAmount}} placeholder="Total" /></td>
                   {{else}}
-                    <td>{{currency-symbol this.eventCurrency}} {{format-money this.orderAmount.total}}</td>
+                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.total}}/></td>
                   {{/if}}
                 </tr>
               </tbody>
