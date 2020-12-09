@@ -38,6 +38,7 @@ export default class ExploreController extends Controller {
     }
     if (filterType === 'has_image') {
       this.set('has_image', null);
+    }
     if (filterType === 'is_past') {
       this.set('is_past', null);
     }
