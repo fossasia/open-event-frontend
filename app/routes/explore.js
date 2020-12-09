@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { debounce } from 'lodash-es';
+import moment from 'moment';
 
 @classic
 export default class ExploreRoute extends Route {
