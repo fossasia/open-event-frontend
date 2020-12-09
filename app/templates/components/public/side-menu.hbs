@@ -1,11 +1,11 @@
 {{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') (not-eq this.session.currentRouteName 'public.cfs.new-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
   <div class="ui fluid vertical {{unless this.device.isMobile 'pointing'}} menu">
     {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
+      <a href='#info' {{action "scrollToTarget" 'info'}} class='item active scroll'>
         {{t 'Info'}}
       </a>
       {{#if this.event.tickets.length}}
-        <a href='#tickets' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#tickets' {{action "scrollToTarget" 'tickets'}} class='item scroll'>
           {{t 'Tickets'}}
         </a>
       {{/if}}
@@ -15,13 +15,13 @@
         </LinkTo>
       {{/if}}
     {{else}}
-      <a class="item" href="{{href-to 'public.index'}}">
-        {{t 'Info'}}
-      </a>
+        <LinkTo class="item" @route="public.index" {{action 'goToSection' 'info'}}>
+          {{t 'Info'}}
+        </LinkTo>
       {{#if this.event.tickets.length}}
-        <a class="item" href="{{href-to 'public.index'}}#tickets">
+        <LinkTo class="item" @route="public.index" {{action 'goToSection' 'tickets'}}>
           {{t 'Tickets'}}
-        </a>
+        </LinkTo>
       {{/if}}
       {{#if this.showSpeakers}}
         <LinkTo @route="public.speakers" class="item">
@@ -44,36 +44,36 @@
         {{t 'Call for Speakers'}}
       </LinkTo>
     {{/if}}
-    {{#if this.event.isSponsorsEnabled}}
+    {{#if (and this.event.isSponsorsEnabled this.event.sponsors)}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#sponsor' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#sponsor' {{action "scrollToTarget" 'sponsor'}} class='item scroll'>
           {{t 'Sponsors'}}
         </a>
       {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#sponsor">
+        <LinkTo class="item" @route="public.index" {{action 'goToSection' 'sponsor'}}>
           {{t 'Sponsors'}}
-        </a>
+        </LinkTo>
       {{/if}}
     {{/if}}
     {{#if this.event.hasOwnerInfo}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
+        <a href='#organizer' {{action "scrollToTarget" 'organizer'}} class='item scroll'>
           {{t 'Organizer'}}
         </a>
       {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#owner">
+        <LinkTo class="item" @route="public.index" {{action 'goToSection' 'organizer'}}>
           {{t 'Organizer'}}
-        </a>
+        </LinkTo>
       {{/if}}
     {{/if}}
     {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#getting-here' class='item scroll'>
+      <a href='#getting-here' {{action "scrollToTarget" 'getting-here'}} class='item scroll'>
         {{t 'Getting here'}}
       </a>
     {{else}}
-      <a class="item" href="{{href-to 'public.index'}}#getting-here">
+      <LinkTo class="item" @route="public.index" {{action 'goToSection' 'getting-here'}}>
         {{t 'Getting here'}}
-      </a>
+      </LinkTo>
     {{/if}}
     {{#if this.event.codeOfConduct}}
       <LinkTo @route="public.coc" class="item">

@@ -8,7 +8,7 @@ export default class extends Controller {
     if (this.addNewSpeaker) {
       const newSpeaker = this.model.speaker;
       if (newSpeaker.isEmailOverridden) {
-        newSpeaker.set('email', this.authManager.currentUser.email);
+        newSpeaker.set('email', null);
       }
 
       newSpeaker.save()
@@ -22,7 +22,8 @@ export default class extends Controller {
                 });
               this.transitionToRoute('events.view.sessions', this.model.event.id);
             })
-            .catch(() =>   {
+            .catch(e =>   {
+              console.error('Error while saving session', e);
               this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
                 {
                   id: 'session_crea_some_error'
@@ -32,7 +33,8 @@ export default class extends Controller {
               this.set('isLoading', false);
             });
         })
-        .catch(() =>   {
+        .catch(e =>   {
+          console.error('Error while saving session', e);
           this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
             {
               id: 'error_unexp_session'
@@ -50,7 +52,8 @@ export default class extends Controller {
             });
           this.transitionToRoute('events.view.sessions', this.model.event.id);
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while saving session', e);
           this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
             {
               id: 'session_error_wrong'

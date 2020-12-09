@@ -6,7 +6,10 @@
     <label>
       {{t 'API Server'}}
     </label>
-    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedAndroidAppUrl}} @inputId="android_app" />
+    <Widgets::Forms::LinkField
+      @inputId="android_app"
+      @value={{this.settings.androidAppUrl}}
+      @onChange={{action (mut this.settings.androidAppUrl)}} />
   </div>
   <h3 class="ui header">
     {{t 'Web App Generator'}}
@@ -15,7 +18,10 @@
     <label>
       {{t 'API Server'}}
     </label>
-    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedWebAppUrl}} @inputId="web_app" />
+    <Widgets::Forms::LinkField
+      @inputId="web_app"
+      @value={{this.settings.webAppUrl}}
+      @onChange={{action (mut this.settings.webAppUrl)}} />
   </div>
   <button class="ui teal wide button" type="submit">
     {{t 'Save'}}

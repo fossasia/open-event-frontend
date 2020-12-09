@@ -4,10 +4,7 @@ import moment from 'moment';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
-import {
-  computedDateTimeSplit,
-  computedSegmentedLink
-} from 'open-event-frontend/utils/computed-helpers';
+import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 import { groupBy } from 'lodash-es';
 
@@ -125,6 +122,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
+  videoStream     : belongsTo('video-stream'),
 
   owner           : belongsTo('user', { inverse: null }),
   organizers      : hasMany('user', { inverse: null }),
@@ -157,10 +155,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
-
-  segmentedExternalEventUrl : computedSegmentedLink.bind(this)('externalEventUrl'),
-  segmentedLiveStreamUrl    : computedSegmentedLink.bind(this)('liveStreamUrl'),
-  segmentedWebinarUrl       : computedSegmentedLink.bind(this)('webinarUrl'),
 
   shortLocationName: computed('locationName', function() {
     if (!this.locationName) {

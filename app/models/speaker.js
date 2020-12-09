@@ -1,7 +1,7 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
-import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
+import { computed } from '@ember/object';
 
 export default class Speaker extends ModelBase.extend({
 
@@ -36,13 +36,6 @@ export default class Speaker extends ModelBase.extend({
   heardFrom          : attr('string'),
   complexFieldValues : attr(),
 
-  segmentedLinkWebsite   : computedSegmentedLink.bind(this)('website'),
-  segmentedLinkTwitter   : computedSegmentedLink.bind(this)('twitter'),
-  segmentedLinkGithub    : computedSegmentedLink.bind(this)('github'),
-  segmentedLinkFacebook  : computedSegmentedLink.bind(this)('facebook'),
-  segmentedLinkLinkedin  : computedSegmentedLink.bind(this)('linkedin'),
-  segmentedLinkInstagram : computedSegmentedLink.bind(this)('instagram'),
-
   /**
    * Relationships
    */
@@ -50,6 +43,10 @@ export default class Speaker extends ModelBase.extend({
   user     : belongsTo('user'),
   event    : belongsTo('event'),
   sessions : hasMany('session'),
+
+  positionOrganisation: computed('position', 'organization', function() {
+    return [this.position, this.organisation].filter(Boolean).join(', ');
+  }),
 
   ready() {
     if (!this.complexFieldValues) {

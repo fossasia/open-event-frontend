@@ -15,10 +15,10 @@
                 <strong>{{t 'Event Name'}}:</strong> {{this.model.event.name}}
               </div>
               <div class="item">
-                <strong>{{t 'Date Issued'}}:</strong> {{general-date this.model.issuedAt 'UTC' 'MMMM DD, YYYY'}} 
+                <strong>{{t 'Date Issued'}}:</strong> {{general-date this.model.issuedAt 'date-short' tz='UTC'}} 
               </div>
               <div class="item">
-                <strong>{{t 'Due Date'}}:</strong> {{general-date this.model.dueAt 'UTC' 'MMMM DD, YYYY'}} 
+                <strong>{{t 'Due Date'}}:</strong> {{general-date this.model.dueAt 'date-short' tz='UTC'}} 
               </div>
               <div class="item">
                 <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol this.model.event.paymentCurrency}} {{format-money this.model.amount}}
