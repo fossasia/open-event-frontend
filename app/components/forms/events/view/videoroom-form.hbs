@@ -53,7 +53,8 @@
   </div>
   <div class="field">
     <label>{{t 'Additional Information'}}</label>
-    <Textarea
+    <Widgets::Forms::RichTextEditor
+      @textareaId="additional_info"
       @value={{this.data.stream.additionalInformation}} />
   </div>
   <div class="ui divider"></div>
