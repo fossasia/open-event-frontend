@@ -19,7 +19,7 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
         'page[size]': 0
       }),
       stream: this.store.findRecord('video-stream', params.stream_id, {
-        include: 'rooms'
+        include: 'rooms,event'
       })
     });
   }

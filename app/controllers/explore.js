@@ -4,9 +4,11 @@ import Controller from '@ember/controller';
 
 @classic
 export default class ExploreController extends Controller {
-  queryParams = ['category', 'sub_category', 'event_type', 'start_date', 'end_date', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online'];
+  queryParams = ['category', 'sub_category', 'event_type', 'start_date', 'end_date', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'has_logo', 'has_image'];
   event_name = null;
   is_online = null;
+  has_logo = null;
+  has_image = null;
   category = null;
   sub_category = null;
   event_type = null;
@@ -29,6 +31,12 @@ export default class ExploreController extends Controller {
     }
     if (filterType === 'is_online') {
       this.set('is_online', null);
+    }
+    if (filterType === 'has_logo') {
+      this.set('has_logo', null);
+    }
+    if (filterType === 'has_image') {
+      this.set('has_image', null);
     }
     if (filterType === 'start_date') {
       this.set('startDate', null);
