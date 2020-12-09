@@ -8,6 +8,7 @@ const dateFormats = {
   'date-time-short'    : 'D MMM, YYYY h:mm A',
   'date-time-tz-short' : 'D MMM, YYYY h:mm A',
   'date-short'         : 'D MMM, YYYY',
+  'time-short'         : 'h:mm A',
   'time-tz-short'      : 'h:mm A',
   'tz'                 : ' '
 };
