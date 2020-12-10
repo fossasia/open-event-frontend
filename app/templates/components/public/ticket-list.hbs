@@ -168,7 +168,7 @@
         </div>
       </div>
     {{else}}
-      {{#if (not this.hasOnlyFreeTickets)}}
+      {{#unless this.hasOnlyFreeTickets}}
         <div class="ui row">
           <div class="column right aligned">
             {{#if this.device.isMobile}}
@@ -177,7 +177,7 @@
             <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
           </div>
         </div>
-      {{/if}}
+      {{/unless}}
     {{/if}}
   </div>
   {{/unless}}
