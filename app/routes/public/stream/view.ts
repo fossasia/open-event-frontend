@@ -7,6 +7,6 @@ export default class PublicStreamView extends Route {
   }
 
   model(params: { stream_id: number }): VideoStream {
-    return this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel'});
+    return this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel' });
   }
 }
