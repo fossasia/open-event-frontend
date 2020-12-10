@@ -91,29 +91,6 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    const session = await this.infinity.model('session', {
-      include      : 'track,speakers,session-type,microlocation',
-      filter       : filterOptions,
-      sort         : params.sort || 'starts-at',
-      perPage      : 6,
-      startingPage : 1,
-      perPageParam : 'page[size]',
-      pageParam    : 'page[number]'
-    });
-
-    let groupByDateSessions = groupBy(session.toArray(), s => s.startsAt);
-
-    if (params.sort === 'title') {
-      groupByDateSessions = groupBy(session.toArray(), 'null');
-    }
-
-    const arr = [];
-
-    for (const key in groupByDateSessions) {
-      arr.push({
-        'date'     : key,
-        'sessions' : groupByDateSessions[key]
-
     if (params.search) {
       filterOptions.push({
         or: [
@@ -151,6 +128,31 @@ export default class SessionsRoute extends Route {
           }
         ]
 
+      });
+    }
+
+    const session = await this.infinity.model('session', {
+      include      : 'track,speakers,session-type,microlocation',
+      filter       : filterOptions,
+      sort         : params.sort || 'starts-at',
+      perPage      : 6,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]'
+    });
+
+    let groupByDateSessions = groupBy(session.toArray(), s => s.startsAt);
+
+    if (params.sort === 'title') {
+      groupByDateSessions = groupBy(session.toArray(), 'null');
+    }
+
+    const arr = [];
+
+    for (const key in groupByDateSessions) {
+      arr.push({
+        'date'     : key,
+        'sessions' : groupByDateSessions[key]
       });
     }
 
