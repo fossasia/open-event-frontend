@@ -168,27 +168,31 @@
         </div>
       </div>
     {{else}}
-      <div class="ui row">
-        <div class="column right aligned">
-          {{#if this.device.isMobile}}
-            <div class="ui hidden divider"></div>
-          {{/if}}
-          <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+      {{#if this.hasPaidTickets}}
+        <div class="ui row">
+          <div class="column right aligned">
+            {{#if this.device.isMobile}}
+              <div class="ui hidden divider"></div>
+            {{/if}}
+            <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+          </div>
         </div>
-      </div>
+      {{/if}}
     {{/if}}
   </div>
   {{/unless}}
   <div class="ui grid">
     <div class="ui row stackable grid">
       <div class="ui no padding thirteen wide computer twelve wide tablet column right aligned floated payment icons">
-        <i class="colored cc amex link icon"></i>
-        <i class="colored credit card alternative link icon"></i>
-        <i class="colored cc diners club link icon"></i>
-        <i class="colored cc discover link icon"></i>
-        <i class="colored cc mastercard link icon"></i>
-        <i class="colored cc paypal card link icon"></i>
-        <i class="colored cc visa link icon"></i>
+        {{#unless this.hasOnlyFreeTickets}}
+          <i class="colored cc amex link icon"></i>
+          <i class="colored credit card alternative link icon"></i>
+          <i class="colored cc diners club link icon"></i>
+          <i class="colored cc discover link icon"></i>
+          <i class="colored cc mastercard link icon"></i>
+          <i class="colored cc paypal card link icon"></i>
+          <i class="colored cc visa link icon"></i>
+        {{/unless}}
       </div>
       <div class="ui no padding three wide computer four wide tablet column right aligned floated">
         <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>

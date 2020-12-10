@@ -71,6 +71,14 @@ export default Component.extend(FormMixin, {
     ) > 0;
   }),
 
+  hasPaidTickets: computed('tickets.@each.type', function() {
+    return this.tickets.toArray().filter(ticket => ticket.type === 'paid').length > 0;
+  }),
+
+  hasOnlyFreeTickets: computed('tickets.@each.type', function() {
+    return !this.tickets.toArray().filter(ticket => ticket.type !== 'free').length > 0;
+  }),
+
   donationTickets: computed.filterBy('data', 'type', 'donation'),
 
   isDonationPriceValid: computed('donationTickets.@each.orderQuantity', 'donationTickets.@each.price', function() {
