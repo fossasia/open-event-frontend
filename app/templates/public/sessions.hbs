@@ -56,14 +56,14 @@
   {{#each this.groupByDateSessions as |group|}}
     <h3 class="ui header" style="margin-bottom: -20px; color: rgba(0, 0, 0, 0.7);">{{t-var group.date}}</h3>
     <table class="ui very basic table">
-        {{#unless this.device.isMobile}}
-      <thead class="full-width">
-        <tr>
-          <th class="two wide" style="border: none;"></th>
-          <th style="border: none;"></th>
-        </tr>
-      </thead>
-        {{/unless}}
+      {{#unless this.device.isMobile}}
+        <thead class="full-width">
+          <tr>
+            <th class="two wide" style="border: none;"></th>
+            <th style="border: none;"></th>
+          </tr>
+        </thead>
+      {{/unless}}
       <tbody>
         {{#each group.sessions as |session|}}
           <tr>
