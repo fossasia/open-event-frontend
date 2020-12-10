@@ -126,7 +126,6 @@ export default class SessionsRoute extends Route {
             }
           }
         ]
-
       });
     }
 
