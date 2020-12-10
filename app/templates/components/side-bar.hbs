@@ -1,7 +1,9 @@
 <div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
   <LinkTo
     @route="explore" class="item"
-    @activeClass="">{{t 'Browse Events'}}</LinkTo>
+    @activeClass="">
+    <input type="text" placeholder="Search events">
+    </LinkTo>
   {{#if this.session.isAuthenticated}}
     <div class="item">
       <a href="{{href-to 'account.profile'}}">
