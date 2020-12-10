@@ -77,5 +77,15 @@
     <label for="adminBillingAdditionalInfo">{{t 'Additional Info'}}</label>
     <Input @type="text" @id="adminBillingAdditionalInfo" @value={{this.model.adminBillingAdditionalInfo}} />
   </div>
+  <div class="field">
+    <label for="event_invoice_logo">{{t 'Organisation Logo'}}</label>
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.model.adminBillingLogo}}
+        @label={{t "Logo"}}
+        @id="event_invoice_logo"
+        @icon="image"
+        @hint={{t "Select Organisation Logo"}}
+        @imageText={{t "Logo"}}/>
+  </div>
   <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
 </form>
