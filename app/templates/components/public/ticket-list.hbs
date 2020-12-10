@@ -168,7 +168,7 @@
         </div>
       </div>
     {{else}}
-      {{#if this.hasPaidTickets}}
+      {{#if (not this.hasOnlyFreeTickets)}}
         <div class="ui row">
           <div class="column right aligned">
             {{#if this.device.isMobile}}
