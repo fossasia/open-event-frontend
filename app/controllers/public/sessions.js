@@ -16,7 +16,7 @@ export default class SessionsController extends Controller {
 
   @computed('model.session')
   get groupByDateSessions() {
-    let sessions = groupBy(this.model.session.toArray(), s => s.startsAt);
+    let sessions = groupBy(this.model.session.toArray(), s => moment(s.startsAt).format('dddd, Do MMMM'));
 
     if (this.sort === 'title') {
       sessions = groupBy(this.model.session.toArray(), '');
@@ -25,9 +25,9 @@ export default class SessionsController extends Controller {
     const arr = [];
 
     for (const key in sessions) {
-      let date = moment(key).format('dddd, Do MMMM');
+      let date = key;
 
-      if (date === 'Invalid date') {
+      if (date === 'undefined') {
         date = null;
       }
 
