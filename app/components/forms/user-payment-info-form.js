@@ -10,7 +10,7 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
   didInsertElement() {
     super.didInsertElement(...arguments);
-    this.set('userBillingInfo', pick(this.authManager.currentUser, ['billingContactName', 'billingCity', 'billingPhone', 'company', 'billingTaxInfo', 'billingCountry', 'billingState', 'billingAddress', 'billingZipCode', 'billingAdditionalInfo']));
+    this.set('userBillingInfo', pick(this.authManager.currentUser, ['billingContactName', 'billingCity', 'billingPhone', 'organisation', 'billingTaxInfo', 'billingCountry', 'billingState', 'billingAddress', 'billingZipCode', 'billingAdditionalInfo']));
   }
 
   getValidationRules() {
@@ -29,12 +29,12 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
             }
           ]
         },
-        company: {
-          identifier : 'company',
+        organisation: {
+          identifier : 'organisation',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your company')
+              prompt : this.l10n.t('Please enter your organisation')
             }
           ]
         },

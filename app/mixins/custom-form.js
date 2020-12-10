@@ -380,7 +380,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'company',
+        fieldIdentifier : 'organisation',
         form            : 'attendee',
         type            : 'text',
         isRequired      : false,
