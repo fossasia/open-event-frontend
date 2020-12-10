@@ -71,6 +71,10 @@ export default Component.extend(FormMixin, {
     ) > 0;
   }),
 
+  hasOnlyFreeTickets: computed('tickets.@each.type', function() {
+    return !this.tickets.toArray().filter(ticket => ticket.type !== 'free').length > 0;
+  }),
+
   donationTickets: computed.filterBy('data', 'type', 'donation'),
 
   isDonationPriceValid: computed('donationTickets.@each.orderQuantity', 'donationTickets.@each.price', function() {
@@ -227,6 +231,12 @@ export default Component.extend(FormMixin, {
     this.data.forEach(ticket => {
       ticket.set('discount', 0);
     });
+    if (this.tickets.length === 1) {
+      const preSelect = Math.max(this.tickets[0].minOrder, 1);
+      this.tickets[0].set('orderQuantity', preSelect);
+      this.order.tickets.addObject(this.tickets[0]);
+      this.send('updateOrderAmount');
+    }
     if (this.code) {
       this.send('togglePromotionalCode', this.code);
     }

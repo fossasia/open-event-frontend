@@ -17,6 +17,9 @@ export default class SessionsRoute extends Route {
     },
     room: {
       refreshModel: true
+    },
+    search: {
+      refreshModel: true
     }
   };
 
@@ -29,15 +32,6 @@ export default class SessionsRoute extends Route {
     const filterOptions = [
       {
         and: [
-          {
-            name : 'event',
-            op   : 'has',
-            val  : {
-              name : 'identifier',
-              op   : 'eq',
-              val  : eventDetails.id
-            }
-          },
           {
             or: [
               {
@@ -119,6 +113,44 @@ export default class SessionsRoute extends Route {
       arr.push({
         'date'     : key,
         'sessions' : groupByDateSessions[key]
+
+    if (params.search) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'title',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'track',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'microlocation',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'speakers',
+            op   : 'any',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          }
+        ]
+
       });
     }
 

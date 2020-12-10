@@ -55,6 +55,8 @@ module.exports = function(environment) {
       includeScheduler: true
     },
 
+    noCache: process.env.NO_CACHE || 'false',
+
     ifa: {
       enabled : false,
       inline  : false
@@ -64,7 +66,9 @@ module.exports = function(environment) {
       hostWhitelist: [/.+/]
     },
 
-    torii: {}
+    torii: {},
+
+    webAppGenerator: process.env.WEB_APP_GENERATOR_HOST || (environment === 'production' ? 'https://open-event-wsgen.herokuapp.com' : 'https://open-event-wsgen-dev.herokuapp.com')
   };
 
   if (environment === 'production') {

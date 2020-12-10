@@ -7,6 +7,9 @@ import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class SideMenu extends Component {
+
+  activeSection = null;
+
   @tracked
   showSpeakers = false;
 
@@ -24,7 +27,7 @@ export default class SideMenu extends Component {
   }
 
   async checkSpeakers() {
-    this.showSpeakers = this.showSpeakers || (await this.loader.load(`/events/${this.event.id}/speakers?fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).data.length;
+    this.showSpeakers = this.showSpeakers || (await this.loader.load(`/events/${this.event.id}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).data.length;
   }
 
   async checkSessions() {
@@ -42,24 +45,35 @@ export default class SideMenu extends Component {
         }
       ]
     }];
-    this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
+    this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?cache=true&public=true&fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
+  }
+
+  didRender() {
+    if (!this.activeSection) { return }
+    const target = document.querySelector(`[href='#${this.activeSection}']`);
+    if (target) {
+      // Delay click to give time to render
+      setTimeout(() => {
+        target.click();
+      }, 0);
+    }
   }
 
   @action
-  scrollToTarget() {
-    document.querySelectorAll('.scroll').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+  goToSection(section) {
+    this.set('activeSection', section);
+  }
 
-        document.querySelectorAll('.scroll').forEach(node => {
-          node.classList.remove('active');
-        });
-        e.target.classList.add('active');
-      });
+  @action
+  scrollToTarget(section) {
+    document.querySelector(`#${section}`).scrollIntoView({
+      behavior: 'smooth'
     });
+    this.set('activeSection', null);
+    document.querySelectorAll('.scroll').forEach(node => {
+      node.classList.remove('active');
+    });
+    document.querySelector(`[href='#${section}']`).classList.add('active');
   }
 
   @computed('event.schedulePublishedOn')

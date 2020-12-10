@@ -1,18 +1,20 @@
 <div class="ui grid">
   <div class="ui no bottom padding row">
-    <div class="left aligned eight wide column">
-      <Tables::Utilities::PageSizeInput
-        @pageSize={{this.pageSize}} />
-    </div>
-    {{#if (not this.hideSearchBox)}}
+    {{#unless @hidePageSize}}
+      <div class="left aligned eight wide column">
+        <Tables::Utilities::PageSizeInput
+          @pageSize={{this.pageSize}} />
+      </div>
+    {{/unless}}
+    {{#unless @hideSearchBox}}
       <div class="eight wide right aligned column">
         <Tables::Utilities::SearchBox
           @searchQuery={{this.searchQuery}}
           @filterOptions={{this.filterOptions}} />
       </div>
-    {{/if}}
+    {{/unless}}
   </div>
-  <div class="row">
+  <div class="ui no bottom padding row">
     <EmberTable as |t|>
       <t.head
         @sortFunction={{null}}
@@ -56,10 +58,12 @@
     </EmberTable>
   </div>
 
-  <div class="row">
-    <Tables::Utilities::Pagination
-      @currentPage={{this.currentPage}}
-      @pageSize={{this.pageSize}}
-      @metaData={{this.metaData}} />
-  </div>
+  {{#unless @hidePagination}}
+    <div class="ui no top padding row">
+      <Tables::Utilities::Pagination
+        @currentPage={{this.currentPage}}
+        @pageSize={{this.pageSize}}
+        @metaData={{this.metaData}} />
+    </div>
+  {{/unless}}
 </div>
