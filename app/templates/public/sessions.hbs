@@ -53,6 +53,8 @@
 
 <div class="mt-8">
   {{#if this.model.session}}
+  {{#each this.groupByDateSessions as |group|}}
+    <h2 class="ui header" id="session-heading">{{t-var group.date}}</h2>
     <table class="ui very basic table">
       <thead class="full-width">
         <tr>
@@ -61,7 +63,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each this.model.session as |session|}}
+        {{#each group.sessions as |session|}}
           <tr>
             <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
               <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}" style="color: rgba(0, 0, 0, 0.7);">
@@ -75,6 +77,7 @@
         {{/each}}
       </tbody>
     </table>
+  {{/each}}
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/if}}    

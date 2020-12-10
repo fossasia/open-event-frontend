@@ -1,7 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment';
-import { groupBy } from 'lodash-es';
 
 @classic
 export default class SessionsRoute extends Route {
@@ -131,34 +130,18 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    const session = await this.infinity.model('session', {
-      include      : 'track,speakers,session-type,microlocation',
-      filter       : filterOptions,
-      sort         : params.sort || 'starts-at',
-      perPage      : 6,
-      startingPage : 1,
-      perPageParam : 'page[size]',
-      pageParam    : 'page[number]'
-    });
-
-    let groupByDateSessions = groupBy(session.toArray(), s => s.startsAt);
-
-    if (params.sort === 'title') {
-      groupByDateSessions = groupBy(session.toArray(), 'null');
-    }
-
-    const arr = [];
-
-    for (const key in groupByDateSessions) {
-      arr.push({
-        'date'     : key,
-        'sessions' : groupByDateSessions[key]
-      });
-    }
-
     return {
-      event: eventDetails,
-      session
+      event   : eventDetails,
+      session : await this.infinity.model('sessions', {
+        include      : 'track,speakers,session-type,microlocation.video-stream',
+        filter       : filterOptions,
+        sort         : params.sort || 'starts-at',
+        perPage      : 6,
+        startingPage : 1,
+        perPageParam : 'page[size]',
+        pageParam    : 'page[number]',
+        store        : eventDetails
+      })
     };
   }
 }
