@@ -1,11 +1,5 @@
 <div class="ui container">
   <div class="ui input fluid">
-    <Input
-      @type="text"
-      @key-up={{action "handleKeyPress"}}
-      placeholder={{t "Search for events"}}
-      @value={{this.event_name}} />
-    <button class="ui blue button large" type="button" {{action 'search'}}>{{t 'Search'}}</button>
   </div>
 
   {{#if this.featuredEvents}}
