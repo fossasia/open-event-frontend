@@ -27,6 +27,9 @@ export default class CreateRoute extends Route {
     return {
       event  : eventDetails,
       rooms,
+      channels: this.store.query('video-channel', {
+        'page[size]': 0
+      }),
       stream : await this.store.createRecord('video-stream', {
         name  : room?.name || event?.name,
         rooms : [room].filter(Boolean),

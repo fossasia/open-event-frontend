@@ -9,7 +9,7 @@ import { allSettled } from 'rsvp';
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
-  @tracked jitsiButtonLoading = false;
+  @tracked integrationLoading = false;
   @tracked loading = false;
 
   @computed('data.stream.rooms.[]')
@@ -78,19 +78,20 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
-  async addJitsi() {
+  async addJitsi(channel) {
     const { event } = this.data;
     const { id, name } = this.data.stream;
     const identifier = [event.identifier, 'stream', name?.replace(/[^a-z0-9\.]/gi, '')?.toLowerCase(), id ?? this.randomIdentifier].filter(Boolean).join('-');
 
-    this.data.stream.set('url', 'https://meet.jit.si/eventyay/' + identifier);
+    this.data.stream.set('url', channel.get('url') + '/eventyay/' + identifier);
 
-    this.jitsiButtonLoading = true;
+    this.integrationLoading = true;
 
+    const api = channel.get('apiUrl');
     try {
       const [phoneNumbers, pin] = (await allSettled([
-        this.loader.load(`https://api.jitsi.net/phoneNumberList?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true }),
-        this.loader.load(`https://api.jitsi.net/conferenceMapper?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true })
+        this.loader.load(`${api}/phoneNumberList?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true }),
+        this.loader.load(`${api}/conferenceMapper?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true })
       ])).map(promise => promise.value);
 
       this.data.stream.additionalInformation = this.generateMeetingInformation(phoneNumbers.numbers, pin.id);
@@ -98,7 +99,16 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
 
-    this.jitsiButtonLoading = false;
+    this.integrationLoading = false;
+  }
+
+  @action
+  async addIntegration(channel) {
+    switch (channel.get('provider')) {
+      case 'jitsi':
+        await this.addJitsi(channel);
+        break;
+    }
   }
 
   @action

@@ -6,9 +6,25 @@
       </h3>
     </div>
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
-      <button class='ui labeled icon blue button {{if this.jitsiButtonLoading 'loading' }}' {{action 'addJitsi'}}>
+      <UiDropdown
+        @class="selection"
+        @selected={{this.data.stream.videoChannel}}
+        @onChange={{action (mut this.data.stream.videoChannel)}} as |execute mapper|>
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          {{t 'Select Integration'}}
+        </div>
+        <div class="menu">
+          {{#each this.channels as |channel|}}
+            <div data-value="{{map-value mapper channel}}" class="item">
+              {{channel.name}}
+            </div>
+          {{/each}}
+        </div>
+      </UiDropdown>
+      <button class='ui labeled icon blue button {{if this.integrationLoading 'loading' }} {{unless this.data.stream.videoChannel 'disabled'}}' {{action 'addIntegration' this.data.stream.videoChannel}}>
         <i class="video icon"></i>
-        {{t 'Add Jitsi Room'}}
+        {{t 'Add'}} {{t-var this.data.stream.videoChannel.name}}
       </button>
     </div>
   </div>
