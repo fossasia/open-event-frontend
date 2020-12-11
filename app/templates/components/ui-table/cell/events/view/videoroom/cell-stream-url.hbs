@@ -1,3 +1,9 @@
 {{#if @record}}
-  <a class="mt-2" href="{{href-to 'public.stream.view' (or @extraRecords.identifier @extraRecords.event.identifier) @record.slugName @record}}" target="_blank" rel="noopener">{{t 'Open'}}</a>
+    <a 
+      href="{{href-to 'public.stream.view' (or @extraRecords.identifier @extraRecords.event.identifier) @record.slugName @record}}" 
+      target="_blank" rel="noopener" 
+      class="ui black right labeled icon copy button linkify" >
+      <i class="copy icon"></i>
+        {{t 'Open'}}
+    </a>
 {{/if}}
