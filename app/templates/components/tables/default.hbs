@@ -15,7 +15,7 @@
     {{/unless}}
   </div>
   <div class="ui no bottom padding row">
-    <EmberTable as |t|>
+    <EmberTable @tableColor={{@color}} as |t|>
       <t.head
         @sortFunction={{null}}
         @columns={{this.columns}}
