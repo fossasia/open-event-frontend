@@ -10,6 +10,8 @@ export default class SideMenu extends Component {
 
   activeSection = null;
 
+  menuSection = 'Info';
+
   @tracked
   showSpeakers = false;
 
@@ -79,5 +81,19 @@ export default class SideMenu extends Component {
   @computed('event.schedulePublishedOn')
   get isSchedulePublished() {
     return this.event.schedulePublishedOn && this.event.schedulePublishedOn.toISOString() !== moment(0).toISOString();
+  }
+
+  @action
+  toggleMenu() {
+    this.toggleProperty('isMenuOpen');
+  }
+
+  @action
+  setActiveSection(section) {
+    const { isMobile } = this.device;
+    if (isMobile) {
+      this.set('menuSection', section);
+      this.toggleProperty('isMenuOpen');
+    }
   }
 }
