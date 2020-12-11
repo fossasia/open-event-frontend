@@ -18,19 +18,19 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : this.l10n.t('Video room URL'),
+        name      : this.l10n.t('Video Source URL'),
         valuePath : 'videoStream.url'
       },
       {
-        name            : this.l10n.t('Link'),
+        name            : this.l10n.t('Join Video'),
         valuePath       : 'videoStream',
         extraValuePaths : ['identifier', 'event'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-url'
       },
       {
-        name      : this.l10n.t('Pin'),
-        valuePath : 'videoStream.password',
-        width     : 20
+        name      : this.l10n.t('Room Password'),
+        width     : 50,
+        valuePath : 'videoStream.password'
       },
       {
         name      : this.l10n.t('Additional information'),
