@@ -217,7 +217,7 @@ export default class ExploreRoute extends Route {
     return this.infinity.model('event', {
       include      : 'event-topic,event-sub-topic,event-type',
       filter       : filterOptions,
-      sort         : 'starts-at',
+      sort         : params.is_past ? '-starts-at' : 'starts-at',
       perPage      : 6,
       startingPage : 1,
       perPageParam : 'page[size]',
