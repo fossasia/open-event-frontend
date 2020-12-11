@@ -1,0 +1,16 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Additional Information'}}
+</div>
+<div class="content">
+<form class="ui form">
+  <div class="field" style="width:100%">
+  	<label>{{t 'Additional Information'}}</label>
+      <Widgets::Forms::RichTextEditor/>
+	</div>
+</form>
+</div>
+<div class="actions">
+  <button class="ui green button" {{action (mut this.isOpen)}}>{{t 'Save'}}</button>
+  <button class="ui button" {{action (mut this.isOpen)}}>{{t 'Cancel'}}</button>
+</div>

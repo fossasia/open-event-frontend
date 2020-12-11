@@ -16,8 +16,7 @@
         @activeClass="">{{t 'Browse Events'}}</LinkTo>
     {{/if}}
       {{#if this.session.isAuthenticated}}
-        <NotificationDropdown
-          @unreadNotifications={{this.unreadNotifications}} />
+        <NotificationDropdown />
       {{/if}}
       {{#if this.session.isAuthenticated}}
         <UiDropdown
@@ -41,8 +40,8 @@
               <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
             {{/if}}
             <div class="divider"></div>
-            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i
-                  class="ui right floated large signout sign out icon"></i></span></a>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><div class="d-flex">{{t 'Logout'}}<i
+                  class="ui sign out icon" style="margin-left: auto !important"></i></div></a>
           </div>
         </UiDropdown>
       {{else}}
@@ -72,13 +71,15 @@
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown
           @notifications={{this.notifications}} />
+        <LinkTo
+          @route="create" class="item ui blue button-text small text">
+          <div>
+            {{t 'Create Event'}}
+          </div>
+        </LinkTo>
+      {{else}}
+        <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      <LinkTo
-        @route="create" class="item ui blue button-text small text">
-        <div>
-          {{t 'Create Event'}}
-        </div>
-      </LinkTo>
     </div>
   </div>
 </div>

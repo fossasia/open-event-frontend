@@ -1,5 +1,5 @@
 <span>
-  {{moment-format this.record 'MMMM DD, YYYY - h:mm A'}}
+  {{general-date this.record 'date-time-short'}}
   <br>To<br>
-  {{moment-format this.extraRecords.validTill 'MMMM DD, YYYY - h:mm A'}}
+  {{general-date this.extraRecords.validTill 'date-time-short'}}
 </span>
