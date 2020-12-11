@@ -4,15 +4,6 @@
   </div>
   {{t 'Please use with care.'}} {{t 'Thank You.'}}
 </div>
-<div class="ui grid">
-  <div class="row">
-    <div class="right aligned column">
-      <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
-        {{t 'Add Room'}}
-      </button>
-    </div>
-  </div>
-</div>
 <div class="sixteen wide column">
   <Tables::Default
     @columns={{this.eventColumns}}
@@ -23,6 +14,15 @@
     @hideSearchBox={{true}}
     @hidePagination={{true}}
     @hidePageSize={{true}} />
+  <div class="ui grid">
+    <div class="row">
+      <div class="right aligned column">
+        <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
+          {{t 'Add Room'}}
+        </button>
+      </div>
+    </div>
+  </div>
   <Tables::Default
     @columns={{this.columns}}
     @rows={{this.model.rooms.data}}
