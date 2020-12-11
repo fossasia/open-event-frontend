@@ -1,0 +1,106 @@
+<div class="content">
+  <div class="header">{{t 'Sessions And Speakers'}}</div>
+</div>
+<div class="content">
+  <h4 class="ui header">{{t 'Summary'}}</h4>
+  <table class="ui very basic compact unstackable table">
+    <tbody>
+      <tr>
+        <td>{{t 'Session Types'}}</td>
+        <td>
+          {{#if this.data.sessionTypes}}
+            {{#each this.data.sessionTypes as |sessionType index|~}}
+              {{if (not-eq index 0) ','}} {{sessionType.name}}
+            {{~/each}}
+          {{else}}
+            {{t 'No Session Type present. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td>{{t 'Tracks'}}</td>
+        <td>
+          {{#if this.data.tracks}}
+            {{#each this.data.tracks as |tracks index|~}}
+              {{if (not-eq index 0) ','}} {{tracks.name}}
+            {{~/each}}
+          {{else}}
+            {{t 'No Track Present. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td>{{t 'Microlocations'}}</td>
+        <td>
+          {{#if this.data.microlocations}}
+            {{#each this.data.microlocations as |microlocations index|~}}
+              {{if (not-eq index 0) ','}} {{microlocations.name}}
+            {{~/each}}
+          {{else}}
+            {{t 'No Microlocations Present. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td>{{t 'SpeakersCall'}}</td>
+        <td>
+          {{#if this.data.speakersCall}}
+            <strong>{{t 'Start Time'}}:</strong> {{general-date this.data.speakersCall.startsAt tz=this.data.event.timezone}}
+            <br>
+            <strong>{{t 'End Time'}}:</strong> {{general-date this.data.speakersCall.endsAt tz=this.data.event.timezone}}
+          {{else}}
+            {{t 'SpeakersCall not enabled. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td>{{t 'No. of Speakers'}}</td>
+        <td>
+          {{#if this.data.event.isSessionsSpeakersEnabled}}
+            {{this.data.statistics.speakers}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td>{{t 'No. of Sessions'}}</td>
+        <td>
+          {{#if this.data.event.isSessionsSpeakersEnabled}}
+            {{this.data.statistics.sessions}}
+          {{else}}
+            {{t 'Sessions and Speakers not enabled.'}}
+          {{/if}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 class="ui header">{{t 'Details'}}</h4>
+  <table class="ui very basic compact unstackable table">
+    <thead>
+      <tr>
+        <th>{{t 'Type'}}</th>
+        <th>{{t 'Accepted'}}</th>
+        <th>{{t 'Pending'}}</th>
+        <th>{{t 'Rejected'}}</th>
+        <th>{{t 'Confirmed'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>{{t 'Speakers'}}</td>
+          <td>{{this.data.statistics.speakersAccepted}}</td>
+          <td>{{this.data.statistics.speakersPending}}</td>
+          <td>{{this.data.statistics.speakersRejected}}</td>
+          <td>{{this.data.statistics.speakersConfirmed}}</td>
+        </tr>
+        <tr>
+          <td>{{t 'Sessions'}}</td>
+          <td>{{this.data.statistics.sessionsAccepted}}</td>
+          <td>{{this.data.statistics.sessionsPending}}</td>
+          <td>{{this.data.statistics.sessionsRejected}}</td>
+          <td>{{this.data.statistics.sessionsConfirmed}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>

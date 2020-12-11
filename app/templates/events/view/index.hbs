@@ -13,6 +13,7 @@
           @sort_dir={{this.sort_dir}}
           @filterOptions={{this.filterOptions}} />
         {{/if}}
+      <Events::View::Overview::SpeakerSession @data={{this.model}} />
       <Events::View::Overview::EventApps @eventId={{this.model.event.id}} />
     </div>
     <div class="eight wide column">
