@@ -121,14 +121,14 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       for (const property of ['tracks', 'sessionTypes', 'microlocations', 'customForms']) {
         const items = data[property];
         for (const item of items ? items.toArray() : []) {
-          bulkPromises.push(event.get('isSessionsSpeakersEnabled') ? item.save() : item.destroyRecord());
+          bulkPromises.push(item.save());
         }
       }
 
       for (const property of ['sponsors']) {
         const items = data[property];
         for (const item of items ? items.toArray() : []) {
-          bulkPromises.push(event.get('isSponsorsEnabled') ? item.save() : item.destroyRecord());
+          bulkPromises.push(item.save());
         }
       }
 
@@ -251,7 +251,8 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       if (type === 'socialLinks') {
         this.get(`data.event.${type}`).pushObject(this.store.createRecord(model, {
           identifier : v1(),
-          isCustom   : false
+          isCustom   : false,
+          name       : 'Website'
         }));
       } else if (type === 'customLink') {
         this.get('data.event.socialLinks').pushObject(this.store.createRecord(model, {

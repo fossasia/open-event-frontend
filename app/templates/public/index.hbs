@@ -45,7 +45,7 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if this.model.sponsors}}
+  {{#if (and this.model.event.isSponsorsEnabled this.model.sponsors)}}
     <h2 class="ui header" id="sponsor">
       {{t 'Supported By'}}
     </h2>
@@ -58,7 +58,7 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if this.model.event.hasOwnerInfo}}
-    <h2 class="ui header" id="owner">
+    <h2 class="ui header" id="organizer">
       {{t 'Organized  by'}} {{this.model.event.ownerName}}
     </h2>
     {{sanitize this.model.event.ownerDescription}}
@@ -72,6 +72,10 @@
     {{/if}}
     {{#if this.model.event.online}}
       <h2>{{t 'Online Event'}}</h2>
+      <Public::Stream::StreamInfo
+        @showButton={{true}}
+        @event={{this.model.event}}
+        @videoStream={{this.model.event.videoStream}} />
       {{#if this.model.event.liveStreamUrl}}
         <div>
           Live Stream: <a href="{{this.model.event.liveStreamUrl}}" target="_blank" rel="noopener noreferrer">{{this.model.event.liveStreamUrl}}</a>
