@@ -19,7 +19,7 @@ export default ModelBase.extend({
   email              : attr('string'),
   jobTitle           : attr('string'),
   phone              : attr('string'),
-  organisation       : attr('string'),
+  company            : attr('string'),
   taxBusinessInfo    : attr('string'),
   billingAddress     : attr('string'),
   homeAddress        : attr('string'),

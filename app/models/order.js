@@ -8,7 +8,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
    * attributes
    */
   amount           : attr('number'),
-  organisation     : attr('string'),
+  company          : attr('string'),
   taxBusinessInfo  : attr('string'),
   address          : attr('string'),
   city             : attr('string'),

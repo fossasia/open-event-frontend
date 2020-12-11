@@ -54,7 +54,7 @@ export default ModelBase.extend({
   billingContactName    : attr('string'),
   billingPhone          : attr('string'),
   billingCountry        : attr('string'),
-  organisation          : attr('string'),
+  company               : attr('string'),
   billingAddress        : attr('string'),
   billingCity           : attr('string'),
   billingZipCode        : attr('string'),

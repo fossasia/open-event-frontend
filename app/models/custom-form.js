@@ -80,7 +80,7 @@ export default ModelBase.extend({
     billingAddress  : 'Billing Address',
     homeAddress     : 'Home Address',
     shippingAddress : 'Shipping Address',
-    organisation    : 'Organisation',
+    company         : 'Organisation',
     workAddress     : 'Work Address',
     workPhone       : 'Work Phone',
     website         : 'Website',
