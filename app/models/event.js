@@ -168,6 +168,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     }
   }),
 
+  totalSales: computed('orderStatistics', function() {
+    return this.get('orderStatistics.tickets.placed') + this.get('orderStatistics.tickets.completed');
+  }),
+
   url: computed('identifier', function() {
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
     return origin + this.router.urlFor('public', this.id);

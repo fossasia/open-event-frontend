@@ -3,6 +3,7 @@ import { classNames } from '@ember-decorators/component';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import { forOwn } from 'lodash-es';
+import moment from 'moment';
 import { pascalCase } from 'open-event-frontend/utils/string';
 
 @classic
@@ -38,5 +39,10 @@ export default class EventCard extends Component {
   @action
   selectEventType(eventType) {
     this.set('eventType', eventType === this.eventType ? null : eventType);
+  }
+
+  @computed('event.startsAt', 'event.endsAt')
+  get isSingleDay() {
+    return moment(this.event.startsAt).isSame(this.event.endsAt, 'day');
   }
 }
