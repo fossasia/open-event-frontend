@@ -2,11 +2,11 @@
   <div class="header">{{t 'Sessions And Speakers'}}</div>
 </div>
 <div class="content">
-  <h4 class="ui header">{{t 'Summary'}}</h4>
+  <h3 class="ui header">{{t 'Summary'}}</h3>
   <table class="ui very basic compact unstackable table">
     <tbody>
       <tr>
-        <td>{{t 'Session Types'}}</td>
+        <td><strong>{{t 'Session Types'}}</strong> </td>
         <td>
           {{#if this.data.sessionTypes}}
             {{#each this.data.sessionTypes as |sessionType index|~}}
@@ -18,7 +18,7 @@
         </td>
       </tr>
       <tr>
-        <td>{{t 'Tracks'}}</td>
+        <td><strong>{{t 'Tracks'}}</strong></td>
         <td>
           {{#if this.data.tracks}}
             {{#each this.data.tracks as |tracks index|~}}
@@ -30,7 +30,7 @@
         </td>
       </tr>
       <tr>
-        <td>{{t 'Microlocations'}}</td>
+        <td><strong>{{t 'Microlocations'}}</strong></td>
         <td>
           {{#if this.data.microlocations}}
             {{#each this.data.microlocations as |microlocations index|~}}
@@ -42,19 +42,19 @@
         </td>
       </tr>
       <tr>
-        <td>{{t 'SpeakersCall'}}</td>
+        <td><strong>{{t 'Call for Speakers'}}</strong> </td>
         <td>
           {{#if this.data.speakersCall}}
             <strong>{{t 'Start Time'}}:</strong> {{general-date this.data.speakersCall.startsAt tz=this.data.event.timezone}}
             <br>
             <strong>{{t 'End Time'}}:</strong> {{general-date this.data.speakersCall.endsAt tz=this.data.event.timezone}}
           {{else}}
-            {{t 'SpeakersCall not enabled. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
+            {{t 'Call for Speakers not enabled. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
           {{/if}}
         </td>
       </tr>
       <tr>
-        <td>{{t 'No. of Speakers'}}</td>
+        <td><strong>{{t 'No. of Speakers'}}</strong></td>
         <td>
           {{#if this.data.event.isSessionsSpeakersEnabled}}
             {{this.data.statistics.speakers}}
@@ -64,7 +64,7 @@
         </td>
       </tr>
       <tr>
-        <td>{{t 'No. of Sessions'}}</td>
+        <td><strong>{{t 'No. of Sessions'}}</strong></td>
         <td>
           {{#if this.data.event.isSessionsSpeakersEnabled}}
             {{this.data.statistics.sessions}}
