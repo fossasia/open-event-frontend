@@ -2,23 +2,29 @@
   <div class="ui fluid vertical {{unless this.device.isMobile 'pointing'}} menu">
     {{#if this.device.isMobile}}
       <div class="item active">
-        {{this.menuSection}}
+        <span>
+          {{this.activeMenuItem}}
+        </span>
         <i {{action 'toggleMenu'}} class="dropdown icon"></i>
       </div>
     {{/if}}
     {{#if (or (not this.device.isMobile) (and this.device.isMobile this.isMenuOpen))}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#info' {{action "scrollToTarget" 'info'}} {{action "setActiveSection" 'Info'}} class='item scroll'>
+        <a href='#info' {{action "scrollToTarget" 'info' 'Info'}} class='item scroll'>
           <div>
             <i class="info icon"></i>
-            {{t 'Info'}}
+            <span>
+              {{t 'Info'}}
+            </span>
           </div>
         </a>
         {{#if this.event.tickets.length}}
-          <a href='#tickets' {{action "scrollToTarget" 'tickets'}} {{action "setActiveSection" 'Tickets'}} class='item scroll'>
+          <a href='#tickets' {{action "scrollToTarget" 'tickets' 'Tickets'}} class='item scroll'>
             <div>
               <i class="ticket icon"></i>
-              {{t 'Tickets'}}
+              <span>
+                {{t 'Tickets'}}
+              </span>
             </div>
           </a>
         {{/if}}
@@ -26,22 +32,28 @@
           <LinkTo @route="public.speakers" {{action "setActiveSection" 'Speakers'}} class="item">
             <div>
               <i class="bullhorn icon"></i>
-              {{t 'Speakers'}}
+              <span>
+                {{t 'Speakers'}}
+              </span>
             </div>
           </LinkTo>
         {{/if}}
       {{else}}
-          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'info'}} {{action "setActiveSection" 'Info'}}>
+          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'info' 'Info'}}>
             <div>
               <i class="info icon"></i>
-              {{t 'Info'}}
+              <span>
+                {{t 'Info'}}
+              </span>
             </div>
           </LinkTo>
         {{#if this.event.tickets.length}}
-          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'tickets'}} {{action "setActiveSection" 'Tickets'}}>
+          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'tickets' 'Tickets'}}>
             <div>
               <i class="ticket icon"></i>
-              {{t 'Tickets'}}
+              <span>
+                {{t 'Tickets'}}
+              </span>
             </div>
           </LinkTo>
         {{/if}}
@@ -49,7 +61,9 @@
           <LinkTo @route="public.speakers" class="item" {{action "setActiveSection" 'Speakers'}}>
             <div>
               <i class="bullhorn icon"></i>
-              {{t 'Speakers'}}
+              <span>
+                {{t 'Speakers'}}
+              </span>
             </div>
           </LinkTo>
         {{/if}}
@@ -58,7 +72,9 @@
         <LinkTo @route="public.sessions" class="item" {{action "setActiveSection" 'Schedule'}}>
           <div>
             <i class="book icon"></i>
+            <span>
             {{t 'Schedule'}}
+            </span>
           </div>
         </LinkTo>
       {{/if}}
@@ -66,7 +82,9 @@
         <LinkTo @route="public.schedule" class="item" {{action "setActiveSection" 'Calendar'}}>
           <div>
             <i class="calendar icon"></i>
+            <span>
             {{t 'Calendar'}}
+            </span>
           </div>
         </LinkTo>
       {{/if}}  
@@ -74,56 +92,70 @@
         <LinkTo @route="public.cfs" class="item" {{action "setActiveSection" 'Call for Speakers'}}>
           <div>
             <i class="bullhorn icon"></i>
+            <span>
             {{t 'Call for Speakers'}}
+            </span>
           </div>
         </LinkTo>
       {{/if}}
       {{#if (and this.event.isSponsorsEnabled this.event.sponsors)}}
         {{#if (eq this.session.currentRouteName 'public.index')}}
-          <a href='#sponsor' {{action "scrollToTarget" 'sponsor'}} {{action "setActiveSection" 'Sponsors'}} class='item scroll'>
+          <a href='#sponsor' {{action "scrollToTarget" 'sponsor' 'Sponsors'}} class='item scroll'>
             <div>
               <i class="dollar icon"></i>
-              {{t 'Sponsors'}}
+              <span>
+                {{t 'Sponsors'}}
+              </span>
             </div>
           </a>
         {{else}}
-          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'sponsor'}} {{action "setActiveSection" 'Sponsors'}}>
+          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'sponsor' 'Sponsors'}}>
             <div>
               <i class="dollar icon"></i>
-              {{t 'Sponsors'}}
+              <span>
+                {{t 'Sponsors'}}
+              </span>
             </div>
           </LinkTo>
         {{/if}}
       {{/if}}
       {{#if this.event.hasOwnerInfo}}
         {{#if (eq this.session.currentRouteName 'public.index')}}
-          <a href='#organizer' {{action "scrollToTarget" 'organizer'}} {{action "setActiveSection" 'Organizer'}} class='item scroll'>
+          <a href='#organizer' {{action "scrollToTarget" 'organizer' 'Organizer'}} class='item scroll'>
             <div>
               <i class="users icon"></i>
-              {{t 'Organizer'}}
+              <span>
+                {{t 'Organizer'}}
+              </span>
             </div>
           </a>
         {{else}}
-          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'organizer'}} {{action "setActiveSection" 'Organizer'}}>
+          <LinkTo class="item" @route="public.index" {{action 'goToSection' 'organizer' 'Organizer'}}>
             <div>
               <i class="users icon"></i>
-              {{t 'Organizer'}}
+              <span>
+                {{t 'Organizer'}}
+              </span>
             </div>
           </LinkTo>
         {{/if}}
       {{/if}}
       {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#getting-here' {{action "scrollToTarget" 'getting-here'}} {{action "setActiveSection" 'Getting here'}} class='item scroll'>
+        <a href='#getting-here' {{action "scrollToTarget" 'getting-here' 'Getting here'}} class='item scroll'>
           <div>
             <i class="map marker alternate icon"></i>
+            <span>
             {{t 'Getting here'}}
+            </span>
           </div>
         </a>
       {{else}}
-        <LinkTo class="item" @route="public.index" {{action 'goToSection' 'getting-here'}} {{action "setActiveSection" 'Getting here'}}>
+        <LinkTo class="item" @route="public.index" {{action 'goToSection' 'getting-here' 'Getting here'}}>
           <div>
             <i class="map marker alternate icon"></i>
+            <span>
             {{t 'Getting here'}}
+            </span>
           </div>
         </LinkTo>
       {{/if}}
@@ -131,7 +163,9 @@
         <LinkTo @route="public.coc" class="item" {{action "setActiveSection" 'Code of Conduct'}}>
           <div>
             <i class="book icon"></i>
+            <span>
             {{t 'Code of Conduct'}}
+            </span>
           </div>
         </LinkTo>
       {{/if}}

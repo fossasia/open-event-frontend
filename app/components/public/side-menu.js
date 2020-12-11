@@ -10,7 +10,7 @@ export default class SideMenu extends Component {
 
   activeSection = null;
 
-  menuSection = 'Info';
+  activeMenuItem = 'Info';
 
   @tracked
   showSpeakers = false;
@@ -62,20 +62,21 @@ export default class SideMenu extends Component {
   }
 
   @action
-  goToSection(section) {
+  goToSection(section, menuOption) {
+    this.set('activeMenuItem', menuOption);
     this.set('activeSection', section);
   }
 
   @action
-  scrollToTarget(section) {
+  scrollToTarget(section, menuOption) {
+    this.set('activeMenuItem', menuOption);
     document.querySelector(`#${section}`).scrollIntoView({
       behavior: 'smooth'
-    });
+    }, this.toggleProperty('isMenuOpen'));
     this.set('activeSection', null);
     document.querySelectorAll('.scroll').forEach(node => {
       node.classList.remove('active');
     });
-    document.querySelector(`[href='#${section}']`).classList.add('active');
   }
 
   @computed('event.schedulePublishedOn')
@@ -89,11 +90,11 @@ export default class SideMenu extends Component {
   }
 
   @action
-  setActiveSection(section) {
+  setActiveSection(menuOption) {
     const { isMobile } = this.device;
     if (isMobile) {
-      this.set('menuSection', section);
       this.toggleProperty('isMenuOpen');
+      this.set('activeMenuItem', menuOption);
     }
   }
 }
