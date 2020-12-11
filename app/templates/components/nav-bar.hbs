@@ -10,10 +10,14 @@
         @route="pricing" class="item"
         @activeClass="">{{t 'Pricing'}}</LinkTo>
     {{/if}}
-    {{#if this.isNotEventPageRoute}}
-      <LinkTo
-        @route="explore" class="item"
-        @activeClass="">{{t 'Browse Events'}}</LinkTo>
+    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
+      <div class="ui input item">
+        <Input
+        @type="text"
+        @key-up={{ "handleKeyPress"}}
+        placeholder={{t "Search for events"}}
+        @value={{this.event_name}} />
+      </div>
     {{/if}}
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown

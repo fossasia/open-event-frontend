@@ -11,7 +11,7 @@
 {{/if}}
 <SideBar>
   <div class="footer-pusher">
-    <NavBar @unreadNotifications={{this.unreadNotifications}} />
+    <NavBar @search={{action 'search'}} @event_name={{this.event_name}}/>
     {{#if (eq this.routing.currentRouteName 'index')}}
       <WelcomeHeader />
     {{/if}}
