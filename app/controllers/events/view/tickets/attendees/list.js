@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import moment from 'moment';
 
-
+// Start
 export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
