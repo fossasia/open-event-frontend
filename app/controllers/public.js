@@ -5,6 +5,11 @@ import moment from 'moment';
 
 @classic
 export default class PublicController extends Controller {
+  @computed('model.socialLinks')
+  get twitterLink() {
+    return this.model.socialLinks.findBy('isTwitter', true);
+  }
+
   @computed('session.currentRouteName')
   get smallLead() {
     return this.session.currentRouteName && this.session.currentRouteName !== 'public.index';

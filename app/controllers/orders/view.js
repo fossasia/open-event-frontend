@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
@@ -10,6 +10,11 @@ export default class ViewController extends Controller {
 
   @service
   printThis;
+
+  @computed('model.order.user', 'authManager.currentUser')
+  get showTicketsButton() {
+    return this.model.order.get('user.id') === this.authManager.currentUser.id || this.authManager.currentUser.isAdmin;
+  }
 
   @action
   downloadInvoice(eventName, orderId) {

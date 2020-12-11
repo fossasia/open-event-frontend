@@ -23,9 +23,6 @@ export default class ApplicationController extends Controller {
   @filterBy('model.notifications', 'isRead', false)
   unreadNotifications;
 
-  @filterBy('model.pages', 'place', 'footer')
-  footerPages;
-
   getCookieSeen(write) {
     const cookieName = 'seen-cookie-message';
     const cookie = this.cookies.read(cookieName);

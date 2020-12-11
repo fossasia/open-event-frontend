@@ -1,0 +1,3 @@
+{{#if @record}}
+  <a class="mt-2" href="{{href-to 'public.stream.view' (or @extraRecords.identifier @extraRecords.event.identifier) @record.slugName @record}}" target="_blank" rel="noopener">{{t 'Open'}}</a>
+{{/if}}
