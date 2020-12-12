@@ -5,19 +5,16 @@
       <h3>{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
+    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
+      <div class="search-bar d-flex items-center space-between m-2 p-2">
+        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder="Search Events" />
+        <i class="search icon"></i>
+      </div>
+    {{/if}}
     {{#if (and (not this.session.isAuthenticated) this.isNotEventPageRoute)}}
       <LinkTo
         @route="pricing" class="item"
         @activeClass="">{{t 'Pricing'}}</LinkTo>
-    {{/if}}
-    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
-      <div class="ui input item">
-        <Input
-        @type="text"
-        @key-up={{ "handleKeyPress"}}
-        placeholder={{t "Search for events"}}
-        @value={{this.event_name}} />
-      </div>
     {{/if}}
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown />

@@ -13,3 +13,26 @@
     width: 100%;
   }
 }
+
+.search-bar {
+
+  background-color: rgb(238, 238, 238);
+  border-radius: .5rem;
+
+  input[type='text'] {
+    background-color: rgb(238, 238, 238);
+    border: 0;
+    outline: 0;
+    transition: width .2s ease-in-out;
+    width: 200px;
+
+    &:focus {
+      width: 400px;
+    }
+
+  }
+
+  i {
+    margin-bottom: .5rem;
+  }
+}
