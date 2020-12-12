@@ -1,8 +1,7 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
 
 export default class CellStreamUrl extends Component {
-    @computed
+  @computed
   get host() {
     return window.location.host;
   }
