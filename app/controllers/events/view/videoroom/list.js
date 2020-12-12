@@ -12,7 +12,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'name',
         extraValuePaths : ['id', 'videoStream', 'constructor'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-title',
-        width           : 80,
+        width           : 40,
         actions         : {
           delete: this.delete.bind(this)
         }
@@ -21,19 +21,18 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : this.l10n.t('Video Source URL'),
         valuePath     : 'videoStream.url',
         cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url',
-        width         : 70
+        width         : 60
 
       },
       {
         name            : this.l10n.t('Join Video'),
-        width           : 30,
         valuePath       : 'videoStream',
         extraValuePaths : ['identifier', 'event'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-url'
       },
       {
         name      : this.l10n.t('Room Password'),
-        width     : 50,
+        width     : 40,
         valuePath : 'videoStream.password'
       },
       {

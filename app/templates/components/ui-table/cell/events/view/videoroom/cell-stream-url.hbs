@@ -1,9 +1,19 @@
 {{#if @record}}
+  <div class="ui action input fluid">
+    <input type="text" name="private_link" value={{concat this.host '/e/' (or @extraRecords.identifier @extraRecords.event.identifier) '/' @record.slugName '/' @record.id}} placeholder={{concat this.host '/e/' (or @extraRecords.identifier @extraRecords.event.identifier) '/' @record.slugName '/' @record.id}} readonly>
+    <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
+      <CopyButton @clipboardText={{concat this.host '/e/' (or @extraRecords.identifier @extraRecords.event.identifier) '/' @record.slugName '/' @record.id}} @class="ui black right labeled icon copy button">
+        <i class="copy icon"></i>
+        {{t 'Copy'}}
+      </CopyButton>
+    </UiPopup>
     <a 
+      id="stream_url"
       href="{{href-to 'public.stream.view' (or @extraRecords.identifier @extraRecords.event.identifier) @record.slugName @record}}" 
       target="_blank" rel="noopener" 
-      class="ui black right labeled icon copy button linkify" >
-      <i class="copy icon"></i>
+      class="ui blue right labeled icon copy button" style="border-radius: 0.28571429rem;">
+      <i class="linkify icon"></i>
         {{t 'Open'}}
     </a>
+  </div> 
 {{/if}}
