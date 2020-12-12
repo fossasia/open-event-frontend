@@ -8,6 +8,6 @@ module('Integration | Component | nav bar', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{nav-bar}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Search for events'));
+    assert.ok(this.element.innerHTML.trim().includes('Search Events'));
   });
 });
