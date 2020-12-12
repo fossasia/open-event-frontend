@@ -9,7 +9,7 @@
     {{/if}}
   </div>
 {{/if}}
-<SideBar>
+<SideBar @search={{action 'search'}} @event_name={{this.event_name}}>
   <div class="footer-pusher">
     <NavBar @search={{action 'search'}} @event_name={{this.event_name}}/>
 

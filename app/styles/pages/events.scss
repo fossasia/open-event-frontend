@@ -16,23 +16,24 @@
 
 .search-bar {
 
-  background-color: rgb(238, 238, 238);
+  background-color: #fafafa;
   border-radius: .5rem;
 
   input[type='text'] {
-    background-color: rgb(238, 238, 238);
+    background-color: #fafafa;
     border: 0;
     outline: 0;
     transition: width .2s ease-in-out;
-    width: 200px;
+    width: 140px;
 
     &:focus {
-      width: 400px;
+      width: 200px;
     }
 
   }
 
   i {
+    cursor: pointer;
     margin-bottom: .5rem;
   }
 }
