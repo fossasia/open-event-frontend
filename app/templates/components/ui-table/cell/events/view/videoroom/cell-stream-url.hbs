@@ -1,8 +1,8 @@
 {{#if @record}}
   <div class="ui action input fluid">
-    <input type="text" name="private_link" value={{concat this.host '/e/' (or @extraRecords.identifier @extraRecords.event.identifier) '/video/' @record.slugName '/' @record.id}} placeholder={{concat this.host '/e/' (or @extraRecords.identifier @extraRecords.event.identifier) '/video/' @record.slugName '/' @record.id}} readonly>
+    <input type="text" name="private_link" value={{this.streamUrl}} placeholder={{this.streamUrl}} readonly>
     <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
-      <CopyButton @clipboardText={{concat this.host '/e/' (or @extraRecords.identifier @extraRecords.event.identifier) '/video/' @record.slugName '/' @record.id}} @class="ui black right labeled icon copy button">
+      <CopyButton @clipboardText={{this.streamUrl}} @class="ui black right labeled icon copy button">
         <i class="copy icon"></i>
         {{t 'Copy'}}
       </CopyButton>
