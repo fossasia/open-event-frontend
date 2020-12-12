@@ -45,9 +45,9 @@
         <td><strong>{{t 'Call for Speakers'}}</strong> </td>
         <td>
           {{#if this.data.speakersCall}}
-            {{t 'Start Time'}}: {{general-date this.data.speakersCall.startsAt tz=this.data.event.timezone}}
+            {{t 'Start Time'}}: {{general-date this.data.speakersCall.startsAt 'date-time-tz-long' tz=this.data.event.timezone}}
             <br>
-            {{t 'End Time'}}: {{general-date this.data.speakersCall.endsAt tz=this.data.event.timezone}}
+            {{t 'End Time'}}: {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.event.timezone}}
           {{else}}
             {{t 'Call for Speakers not enabled. '}} <a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'Click here to add'}}</a>
           {{/if}}
