@@ -77,6 +77,7 @@ export default class SideMenu extends Component {
     document.querySelectorAll('.scroll').forEach(node => {
       node.classList.remove('active');
     });
+    document.querySelector(`[href='#${section}']`).classList.add('active');
   }
 
   @computed('event.schedulePublishedOn')
