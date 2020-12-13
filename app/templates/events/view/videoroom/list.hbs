@@ -1,4 +1,4 @@
-<div class="ui warning message">
+<div class="ui warning message mt-4 mb-8 ml--4 mr--4">
   <div class="header">
     {{t 'This feature is still in alpha stage'}}
   </div>
@@ -27,6 +27,7 @@
       </div>
     </div>
   <Tables::Default
+    @color='blue'
     @columns={{this.columns}}
     @rows={{this.model.rooms.data}}
     @currentPage={{this.page}}
