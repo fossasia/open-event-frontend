@@ -71,13 +71,13 @@
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <i class="search icon" style="cursor: auto;"></i>
       <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder="Search Events" />
-      <div role="button" {{action 'toggleSearchBar'}}>
+      <div role="button" {{action "toggleSearchBar"}}>
         <i class="close icon" ></i>
       </div>
     </div>
     <div class="right menu nav-bar">
       {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
-        <div role="button" class="item ui" {{action 'toggleSearchBar'}}>
+        <div role="button" class="item ui" {{action "toggleSearchBar"}}>
           <i class="search icon"></i>
         </div>
       {{/if}}
