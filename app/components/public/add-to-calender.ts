@@ -13,10 +13,6 @@ export default class AddToCalender extends Component<Args> {
 
   @service loader: any;
 
-  get timezone(): string {
-    return moment.tz(this.args.event.timezone).format('z');
-  }
-
   get startsAt(): Moment {
     const { event } = this.args;
     return moment(event.startsAt).tz(event.timezone);

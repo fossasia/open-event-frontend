@@ -1,4 +1,4 @@
-<div class="{{if this.isWide 'event wide ui grid row'}}">
+<div class="{{if this.isWide 'event wide ui grid row'}}" style="height: 100%;">
   {{#if this.isWide}}
     {{#unless this.device.isMobile}}
       <div class="ui card rounded-r-none three wide computer six wide tablet column">
@@ -9,7 +9,7 @@
       </div>
     {{/unless}}
   {{/if}}
-  <div
+  <div style="height: 100%;"
     class="ui card {{this.eventClass}}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
@@ -21,14 +21,33 @@
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>
-      <div class="meta">
+      <div class="meta mb-2">
         <span class="date">
-          {{general-date this.event.startsAt tz=this.event.timezone}}
+          {{#if this.isSingleDay}}
+            {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
+            - 
+            {{general-date this.event.endsAt 'time-tz-short' tz=this.event.timezone}}
+          {{else}}
+            {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
+            -
+            {{general-date this.event.endsAt 'date-time-tz-long' tz=this.event.timezone}}
+          {{/if}}
         </span>
       </div>
-      <SmartOverflow @class="description">
-        {{this.event.shortLocationName}}
-      </SmartOverflow>
+      {{#if this.event.online}}
+        <p style="color: #000000AD">
+          <i class="wifi icon"></i>
+          {{t 'Online Event'}}
+        </p>
+      {{/if}}
+      {{#if this.event.shortLocationName}}
+          <span style="color: #000000AD">
+            <i class="map marker alternate icon"></i>
+          </span>
+          <SmartOverflow @class="d-inline description">
+            {{this.event.shortLocationName}}
+          </SmartOverflow>
+      {{/if}}
     </a>
     <div class="extra content small text">
       <span class="right floated">
@@ -55,9 +74,18 @@
               {{t-var this.tags.[2]}}
             </a>
           {{else}}
-            {{#each this.tags as |tag|}}
-              <a href="#">{{t-var tag}}</a>
-            {{/each}}
+            <a href="{{href-to 'explore' (query-params category=this.event.topic.name event_type=null sub_category=null)}}"
+              class="link item">
+              {{t-var this.tags.[0]}}
+            </a>
+            <a href="{{href-to 'explore' (query-params category=null event_type=this.event.type.name sub_category=null)}}"
+              class="link item">
+              {{t-var this.tags.[1]}}
+            </a>
+            <a href="{{href-to 'explore' (query-params category=this.event.topic.name event_type=null sub_category=this.event.subTopic.slug)}}"
+              class="link item">
+              {{t-var this.tags.[2]}}
+            </a>
           {{/if}}
         {{/if}}
       </span>

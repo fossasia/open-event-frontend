@@ -19,6 +19,12 @@
             <LinkTo @route="events.view.speakers.list" @model="rejected" class="item">
               {{t 'Rejected'}}
             </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="withdrawn" class="item">
+              {{t 'Withdrawn'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="canceled" class="item">
+              {{t 'Canceled'}}
+            </LinkTo>
           </TabbedNavigation>
         </div>
         <div class="ten wide right aligned column">
