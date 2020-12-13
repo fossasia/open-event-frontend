@@ -96,6 +96,11 @@
                 </div>
               {{/if}}
             {{/each}}
+            <UiCheckbox
+              @label={{t "Past"}}
+              @class="ui checkbox"
+              @checked={{if (eq this.is_past "true") true}}
+              @onChange={{action "enablePastEvents" "true"}} />
           </div>
         </div>
       </div>

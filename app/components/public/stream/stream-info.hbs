@@ -7,7 +7,7 @@
     {{/if}}
     {{#if @videoStream.password}}
       <div class="d-flex items-center">
-        <span>{{t 'Password'}}: </span>
+        <span>{{t 'Room Password'}}: </span>
         <UiPopup @on="click" @content={{t "Copied to clipboard"}} @position="bottom right" style="white-space: normal;">
           <CopyButton @clipboardText={{@videoStream.password}} class="ui basic segments">
             <div class="ui left labeled button">
