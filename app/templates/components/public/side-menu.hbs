@@ -2,11 +2,7 @@
   {{#if this.device.isMobile}}
     <UiDropdown class="ui selection dropdown fluid vertical" @selected={{this.activeMenuSection}}>
       <div class="default text">
-        {{#if this.activeMenuSection}}
-          {{this.activeMenuSection}}
-        {{else}}
-          {{t 'Select section'}}
-        {{/if}}
+          {{this.activeMenu}}
       </div>
       <i class="dropdown icon"></i>
       <div style="max-height: none !important;" class="menu">

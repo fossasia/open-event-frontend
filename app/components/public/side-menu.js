@@ -84,4 +84,22 @@ export default class SideMenu extends Component {
   get isSchedulePublished() {
     return this.event.schedulePublishedOn && this.event.schedulePublishedOn.toISOString() !== moment(0).toISOString();
   }
+
+  @computed('session.currentRouteName')
+  get activeMenu() {
+    const { currentRouteName } = this.session;
+    if (currentRouteName === 'public.index') {
+      return 'Info';
+    } else if (currentRouteName === 'public.sessions') {
+      return 'Schedule';
+    } else if (currentRouteName === 'public.schedule') {
+      return 'Calendar';
+    } else if (currentRouteName === 'public.speakers') {
+      return 'Speakers';
+    } else if (currentRouteName === 'public.cfs.index') {
+      return 'Call for Speakers';
+    } else {
+      return 'Select section';
+    }
+  }
 }
