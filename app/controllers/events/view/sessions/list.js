@@ -2,8 +2,11 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { mapBy } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  @service errorHandler;
+  
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
 
   get columns() {
