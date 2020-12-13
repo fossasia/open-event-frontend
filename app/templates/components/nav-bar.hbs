@@ -76,12 +76,12 @@
       </div>
     </div>
     <div class="right menu nav-bar">
+      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
+        <div role="button" class="item ui" {{action 'toggleSearchBar'}}>
+          <i class="search icon"></i>
+        </div>
+      {{/if}}
       {{#if this.session.isAuthenticated}}
-        {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
-          <div role="button" class="item ui" {{action 'toggleSearchBar'}}>
-            <i class="search icon"></i>
-          </div>
-        {{/if}}
         <NotificationDropdown
           @notifications={{this.notifications}} />
         <LinkTo
