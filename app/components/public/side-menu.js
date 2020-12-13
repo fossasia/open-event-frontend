@@ -98,6 +98,8 @@ export default class SideMenu extends Component {
       return 'Speakers';
     } else if (currentRouteName === 'public.cfs.index') {
       return 'Call for Speakers';
+    } else if (currentRouteName === 'public.coc') {
+      return 'Code of Conduct';
     } else {
       return 'Select section';
     }
