@@ -13,7 +13,7 @@ module.exports = function(environment) {
     appName                  : process.env.APP_NAME || 'Open Event',
     modulePrefix             : 'open-event-frontend',
     environment,
-    rootURL                  : process.env.ROOT_URL || '/',
+    rootURL                  : process.env.ROOT_URL || 'open-event-frontend',
     locationType             : 'router-scroll',
     historySupportMiddleware : true,
     EmberENV                 : {
