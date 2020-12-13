@@ -111,7 +111,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch((e) => {
+      .catch(e => {
         this.errorHandler.handleError(e);
       })
       .finally(() => {
@@ -190,7 +190,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch((e) => {
+        .catch(e => {
           this.errorHandler.handleError(e);
         })
         .finally(() => {
@@ -205,7 +205,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch((e) => {
+        .catch(e => {
           this.errorHandler.handleError(e);
         })
         .finally(() => {
@@ -232,7 +232,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch((e) => {
+      .catch(e => {
         this.errorHandler.handleError(e);
       })
       .finally(() => {
