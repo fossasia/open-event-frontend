@@ -36,4 +36,27 @@
     cursor: pointer;
     margin-bottom: .5rem;
   }
+
+  &-mobile {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-52%);
+    z-index: -1;
+    width: 20%;
+    transition: all .2s ease-in-out;
+
+    input[type='text'] {
+      width: 100%;
+
+      &:focus {
+        width: 100%;
+      }
+    }
+
+  }
+}
+
+.show-bar {
+  z-index: 1;
+  width: 80%;
 }
