@@ -1,9 +1,20 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
 <div class="mobile hidden row">
   <div class="ui menu">
     <LinkTo
       @route="index" class="header item" @activeClass="">
       <h3>{{this.settings.appName}}</h3>
     </LinkTo>
+    <div class="ui container" style="max-width: 400px;">
+      <div class="ui input" style="padding: 10px; margin-left: 160px; min-width: 900px;">
+        <button type="submit" style="color: white; border-color: white;"><i class="fa fa-search" style="color: lightgray;"></i></button>
+        <Input
+          @name="name"
+          @value={{this.event_name}}
+          @type="text"
+          @placeholder={{t "Search Events"}} />  
+      </div>
+    </div>
     <div class="right menu nav-bar">
     {{#if (and (not this.session.isAuthenticated) this.isNotEventPageRoute)}}
       <LinkTo
