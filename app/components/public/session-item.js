@@ -37,7 +37,7 @@ export default class SessionItem extends Component {
   get sessionEnded() {
     const sessionEndDate =  moment.tz(this.args.session.endsAt, this.args.timezone);
     const now = moment.tz(this.args.timezone);
-    return moment(now).isSameOrBefore(sessionEndDate);
+    return moment(sessionEndDate).isSameOrBefore(now);
   }
 
   @action

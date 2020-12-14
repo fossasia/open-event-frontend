@@ -17,17 +17,17 @@
             </button>
           {{/if}}
           {{#if this.sessionEnded}}
-            {{#if @session.microlocation.hasVideoStream}}
-              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
-                <i class="icon video"></i>
-                {{t 'Join Video'}}
-              </button>
-            {{/if}}
-          {{else}}
             {{#if @session.videoUrl}}
               <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToVideo}}>
                 <i class="icon video"></i>
                 {{t 'Watch Video'}}
+              </button>
+            {{/if}}      
+          {{else}}
+            {{#if @session.microlocation.hasVideoStream}}
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+                <i class="icon video"></i>
+                {{t 'Join Video'}}
               </button>
             {{/if}}
           {{/if}}
