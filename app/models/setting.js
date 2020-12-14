@@ -98,6 +98,7 @@ export default ModelBase.extend({
   adminBillingZip            : attr('string'),
   adminBillingAdditionalInfo : attr('string'),
   adminBillingPaypalEmail    : attr('string'),
+  adminBillingLogo           : attr('string'),
   isGoogleRecaptchaEnabled   : attr('boolean', { defaultValue: false }),
   googleRecaptchaSite        : attr('string'),
   googleRecaptchaSecret      : attr('string')
