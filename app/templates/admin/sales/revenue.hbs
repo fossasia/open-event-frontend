@@ -13,7 +13,7 @@
               {{t 'Events'}}
             </th>
             <th rowspan="2">
-              {{t 'Event Date '}}
+              {{t 'Event Date'}}
             </th>
             <th colspan="3" class="ui green inverted segment center aligned">
               {{t 'Completed Orders'}}
@@ -38,7 +38,7 @@
                 {{order.name}}
               </td>
               <td>
-                {{moment-format order.eventDate 'MM/DD/YYYY'}} 
+                {{general-date order.eventDate 'date-short'}} 
               </td>
               <td class="right aligned">
                 {{order.ticketCount}}

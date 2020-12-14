@@ -79,7 +79,7 @@
       </div>
     {{/each}}
     <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
-    {{general-date this.session.startsAt this.session.event.timezone}} - {{general-date this.session.endsAt this.session.event.timezone}}<br/>
+    {{general-date this.session.startsAt tz=this.session.event.timezone}} - {{general-date this.session.endsAt tz=this.session.event.timezone}}<br/>
     {{this.session.track.name}}
   </div>
 </UiAccordion>
