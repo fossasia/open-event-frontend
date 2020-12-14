@@ -77,7 +77,39 @@ export default class ExploreRoute extends Route {
       filterOptions.push({
         name : 'online',
         op   : 'eq',
-        val  : params.is_online
+        val  : false
+      });
+    }
+    if (params.is_location) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'location_name',
+            op   : 'eq',
+            val  : null
+          },
+          {
+            name : 'online',
+            op   : 'ne',
+            val  : false
+          }
+        ]
+      });
+    }
+    if (params.is_mixed) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'online',
+            op   : 'eq',
+            val  : false
+          },
+          {
+            name : 'location_name',
+            op   : 'eq',
+            val  : null
+          }
+        ]
       });
     }
     if (params.has_image) {
