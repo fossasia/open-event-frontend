@@ -19,7 +19,10 @@ interface Args {
 export default class PublicStreamVideoStream extends Component<Args> {
 
   @service
-  authManager!: AuthManagerService
+  authManager!: AuthManagerService;
+
+  @service
+  loader!: any;
 
   app: HTMLElement | null = null
 
@@ -37,6 +40,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
 
     if (provider === 'jitsi') {
       await this.setupJitsi(stream);
+    } else if (provider === 'bbb') {
+      const { url } = await this.loader.load(`/video-streams/${stream.id}/join`);
+      location.href = url;
     } else {
       location.href = stream.url;
     }

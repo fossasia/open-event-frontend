@@ -55,18 +55,20 @@
       </UiDropdown>
     </div>
   {{/unless}}
-  <div class="field">
-    <label class="required">{{t 'Video Room URL'}}</label>
-    <Widgets::Forms::LinkField
-      @inputId="url"
-      @value={{this.data.stream.url}}
-      @onChange={{action (mut this.data.stream.url)}} />
-  </div>
-  <div class="field">
-    <label>{{t 'Pin'}}</label>
-    <Input
-      @value={{this.data.stream.password}} />
-  </div>
+  {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">{{t 'Video Room URL'}}</label>
+      <Widgets::Forms::LinkField
+        @inputId="url"
+        @value={{this.data.stream.url}}
+        @onChange={{action (mut this.data.stream.url)}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Pin'}}</label>
+      <Input
+        @value={{this.data.stream.password}} />
+    </div>
+  {{/if}}
   <div class="field">
     <label>{{t 'Additional Information'}}</label>
     <Textarea

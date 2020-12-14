@@ -77,11 +77,15 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     + Object.entries(phoneNumbers).map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`).join('');
   }
 
-  @action
-  async addJitsi(channel) {
+  get streamIdentifier() {
     const { event } = this.data;
     const { id, name } = this.data.stream;
-    const identifier = [event.identifier, 'stream', name?.replace(/[^a-z0-9\.]/gi, '')?.toLowerCase(), id ?? this.randomIdentifier].filter(Boolean).join('-');
+    return [event.identifier, 'stream', name?.replace(/[^a-z0-9\.]/gi, '')?.toLowerCase(), id ?? this.randomIdentifier].filter(Boolean).join('-');
+  }
+
+  @action
+  async addJitsi(channel) {
+    const identifier = this.streamIdentifier;
 
     this.data.stream.set('url', channel.get('url') + '/eventyay/' + identifier);
 
@@ -102,11 +106,18 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.integrationLoading = false;
   }
 
+  addBigBlueButton(channel) {
+    this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+  }
+
   @action
   async addIntegration(channel) {
     switch (channel.get('provider')) {
       case 'jitsi':
         await this.addJitsi(channel);
+        break;
+      case 'bbb':
+        this.addBigBlueButton(channel);
         break;
     }
   }
