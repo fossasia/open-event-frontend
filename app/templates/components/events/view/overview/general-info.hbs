@@ -25,11 +25,11 @@
       </tr>
       <tr>
         <td><strong>{{t 'Start time'}}</strong></td>
-        <td>{{general-date this.data.event.startsAt tz=this.data.event.timezone}}</td>
+        <td>{{general-date this.data.event.startsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'End time'}}</strong></td>
-        <td>{{general-date this.data.event.endsAt tz=this.data.event.timezone}}</td>
+        <td>{{general-date this.data.event.endsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
       </tr>
       <tr>
         <td><strong>{{t 'Session types'}}</strong></td>

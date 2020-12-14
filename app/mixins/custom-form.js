@@ -52,7 +52,7 @@ export default Mixin.create(MutableArray, {
         type            : 'select',
         isRequired      : true,
         isIncluded      : true,
-        isFixed         : true,
+        isFixed         : false,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
