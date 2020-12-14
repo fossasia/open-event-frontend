@@ -9,11 +9,6 @@ export default class NavBar extends Component {
     return !(String(this.session.currentRouteName).includes('public'));
   }
 
-  @computed('session.currentRouteName')
-  get isNotExplorePageRoute() {
-    return !(String(this.session.currentRouteName).includes('explore'));
-  }
-
   @action
   handleKeyPress() {
     if (event.code === 'Enter') {
