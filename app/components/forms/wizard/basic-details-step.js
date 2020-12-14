@@ -464,9 +464,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     updateSalesEndDate(eventStartDate) {
       eventStartDate = moment(new Date(eventStartDate));
       this.data.event.tickets.forEach(ticket => {
-        if (moment(eventStartDate).isBefore(ticket.get('salesEndsAt'))) {
+        // if (moment(eventStartDate).isBefore(ticket.get('salesEndsAt'))) {
           ticket.set('salesEndsAt', moment(eventStartDate, 'MM/DD/YYYY').toDate());
-        }
+        // }
       });
     },
 
