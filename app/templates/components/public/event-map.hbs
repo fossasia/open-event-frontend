@@ -4,7 +4,7 @@
       <h1>{{t 'Getting Here'}}</h1>
       {{#if (and @event.latitude @event.longitude)}}
         <LeafletMap @lat={{@event.latitude}} @lng={{@event.longitude}} @zoom={{15}} as |layers|>
-          <layers.tile @url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
+          <layers.tile @url={{this.mapTile}} @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
           <layers.marker @location={{array @event.latitude @event.longitude}} as |marker|>
             <marker.popup>
               <h3>{{@event.name}}</h3>

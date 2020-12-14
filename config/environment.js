@@ -16,6 +16,7 @@ module.exports = function(environment) {
     rootURL                  : process.env.ROOT_URL || '/',
     locationType             : 'router-scroll',
     historySupportMiddleware : true,
+    mapboxToken              : process.env.MAPBOX_ACCESS_TOKEN,
     EmberENV                 : {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
