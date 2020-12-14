@@ -9,11 +9,12 @@
     {{/if}}
   </div>
 {{/if}}
-<SideBar>
+<SideBar @search={{action 'search'}} @event_name={{this.event_name}}>
   <div class="footer-pusher">
-    <NavBar />
+    <NavBar @search={{action 'search'}} @event_name={{this.event_name}}/>
+
     {{#if (eq this.routing.currentRouteName 'index')}}
-      <WelcomeHeader />
+      <WelcomeHeader @class={{'mb-4'}}/>
     {{/if}}
     <div id="main-container"
          class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
