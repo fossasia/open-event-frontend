@@ -25,7 +25,7 @@
       <div class="three wide column" id="public-event-content">
         {{#if this.device.isMobile}}
           {{#if this.displaySideMenu}}
-              <Public::SideMenu @class="toggle menu" @event={{this.model}} />
+              <Public::SideMenu @event={{this.model}} />
           {{/if}}
         {{else}}
           <div class="ui fluid side-menu">
