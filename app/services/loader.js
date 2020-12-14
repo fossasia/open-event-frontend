@@ -37,13 +37,12 @@ export default Service.extend({
     data = data || config.data || null;
 
     if (!config.isExternal) {
-      if (!url.startsWith('http')) {
-        if (!url.startsWith('/')) {
-          url = `/${url}`;
-        }
-        url = config.withoutPrefix ? `${adapter.host}${url}` : `${adapter.urlPrefix()}${url}`;
+      if (!url.startsWith('/')) {
+        url = `/${url}`;
       }
+      url = config.withoutPrefix ? `${adapter.host}${url}` : `${adapter.urlPrefix()}${url}`;
     }
+
     fetchOptions.headers = config.replaceHeaders ? config.header : merge(fetchOptions.headers, config.headers);
     fetchOptions.method = method;
 
