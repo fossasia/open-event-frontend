@@ -64,6 +64,7 @@ const config = {
     ],
     'no-console': ["error", { allow: ["warn", "error"] }],
     'prefer-template': 'off',
+    'prefer-rest-params': 'off',
     'camelcase': 'off',
     'eqeqeq': ['error', 'smart'],
     "prefer-const": ["error", {

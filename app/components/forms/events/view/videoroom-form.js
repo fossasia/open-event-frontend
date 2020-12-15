@@ -73,7 +73,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   generateMeetingInformation(phoneNumbers, pin) {
-    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nPIN: ${pin}\n\n`
+    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nRoom Password: ${pin}\n\n`
     + Object.entries(phoneNumbers).map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`).join('');
   }
 
@@ -115,7 +115,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.router.transitionTo('events.view.videoroom', this.data.event.id);
       } catch (e) {
         console.error('Error while saving session', e);
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
+        const message = e.errors?.[0]?.detail ?? this.l10n.t('Oops something went wrong. Please try again');
+        this.notify.error(message,
           {
             id: 'stream_save_error'
           });

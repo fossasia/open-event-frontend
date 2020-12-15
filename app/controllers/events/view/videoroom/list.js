@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   per_page = 25;
@@ -10,33 +10,48 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Microlocation'),
         valuePath       : 'name',
-        extraValuePaths : ['id', 'videoStream'],
+        extraValuePaths : ['id', 'videoStream', 'constructor'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-title',
-        width           : 70,
+        width           : 40,
         actions         : {
           delete: this.delete.bind(this)
         }
       },
       {
-        name      : this.l10n.t('Video room URL'),
-        valuePath : 'videoStream.url'
+        name          : this.l10n.t('Video Source URL'),
+        valuePath     : 'videoStream.url',
+        cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url',
+        width         : 60
+
       },
       {
-        name            : this.l10n.t('Link'),
+        name            : this.l10n.t('Join Video'),
         valuePath       : 'videoStream',
-        extraValuePaths : ['event'],
+        extraValuePaths : ['identifier', 'event'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-url'
       },
       {
-        name      : this.l10n.t('Pin'),
-        valuePath : 'videoStream.password',
-        width     : 20
+        name      : this.l10n.t('Room Password'),
+        width     : 40,
+        valuePath : 'videoStream.password'
       },
       {
         name      : this.l10n.t('Additional information'),
         valuePath : 'videoStream.additionalInformation'
       }
     ];
+  }
+
+  @computed('model.event')
+  get events() {
+    return [this.model.event];
+  }
+
+  get eventColumns() {
+    const { columns } = this;
+    columns[0].name = this.l10n.t('Event');
+
+    return columns;
   }
 
   @action
