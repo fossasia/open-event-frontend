@@ -7,12 +7,12 @@
   {{/each}}
 
   <Widgets::TimeZonePicker
-    class="mb-2 ml-1"
+    class="mb-2 ml-1 mr-1"
     @defaultLocal={{this.model.event.online}}
     @eventTimezone={{this.model.event.timezone}}
     @timezone={{this.timezone}} />
 
-  <UiDropdown class="labeled icon button mb-2">
+  <UiDropdown class="labeled icon button mb-2 ml-1">
     <i class="sort amount down icon"></i>
     <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
     <div class="menu">
