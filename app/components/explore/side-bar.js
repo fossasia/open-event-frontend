@@ -11,6 +11,8 @@ export default class SideBar extends Component {
 
   classNames = ['ui', 'fluid', 'explore', 'vertical', 'menu'];
 
+  placeAutocomplete = ['mirzapur India', 'sydney cricket ground Australia', 'london Europe', 'the greate briten England', 'Newzland', 'Lords England']; // will update after api implementation, testing for ui
+
   customStartDate = moment().toISOString();
 
   customEndDate = null;
@@ -60,6 +62,11 @@ export default class SideBar extends Component {
     } else {
       this.set('location', 'singapore');
     }
+  }
+
+  @action
+  setAutocomplete(place) {
+    this.set('location', place);
   }
 
   @action

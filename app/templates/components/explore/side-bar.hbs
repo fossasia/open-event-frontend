@@ -55,6 +55,13 @@
                       @type="text"
                       @placeholder={{t "Enter Location"}} />
                   </div>
+                  <div class="menu">
+                    {{#each this.placeAutocomplete as |place|}}
+                      <div class="item"  role="button" {{action "setAutocomplete" place}}>
+                        <i class="map alternate marker icon"></i> {{place}}
+                      </div>
+                    {{/each}}
+                  </div>
                 </div>
               {{/if}}
           </div>
