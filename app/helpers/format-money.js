@@ -23,7 +23,7 @@ export default Helper.extend({
 
   compute(params) {
     const x = new Intl.NumberFormat().resolvedOptions().locale;
-    let currentLocale = 'de';
+    let currentLocale = 'en';
     if (x === 'en-US') {
       currentLocale = this.l10n.getLocale();
     }
