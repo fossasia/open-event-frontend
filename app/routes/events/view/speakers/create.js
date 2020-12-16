@@ -23,8 +23,7 @@ export default class CreateRoute extends Route {
         'page[size]': 0
       }),
       speaker: await this.store.createRecord('speaker', {
-        event : eventDetails,
-        user  : this.authManager.currentUser
+        user: this.authManager.currentUser
       }),
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})
