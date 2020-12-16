@@ -73,14 +73,14 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   generateMeetingInformation(phoneNumbers, pin) {
-    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nRoom Password: ${pin}\n\n`
+    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nTelephone PIN: ${pin}\n\n`
     + Object.entries(phoneNumbers).map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`).join('');
   }
 
   get streamIdentifier() {
     const { event } = this.data;
-    const { id, name } = this.data.stream;
-    return [event.identifier, 'stream', name?.replace(/[^a-z0-9\.]/gi, '')?.toLowerCase(), id ?? this.randomIdentifier].filter(Boolean).join('-');
+    const { id } = this.data.stream;
+    return [event.identifier, 'stream', id ?? this.randomIdentifier].filter(Boolean).join('-');
   }
 
   @action

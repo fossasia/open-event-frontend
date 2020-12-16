@@ -57,7 +57,7 @@
   {{/unless}}
   {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
-      <label class="required">{{t 'Video Room URL'}}</label>
+      <label class="required">{{t 'Video Source URL'}}</label>
       <Widgets::Forms::LinkField
         @inputId="url"
         @value={{this.data.stream.url}}
