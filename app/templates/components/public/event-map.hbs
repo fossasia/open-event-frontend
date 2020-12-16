@@ -3,9 +3,9 @@
     <div class="eight wide column event-map">
       <h1>{{t 'Getting Here'}}</h1>
       {{#if (and @event.latitude @event.longitude)}}
-        <LeafletMap @lat={{@event.latitude}} @lng={{@event.longitude}} @zoom={{15}} as |layers|>
+        <LeafletMap @lat={{this.latitude}} @lng={{this.longitude}} @zoom={{15}} as |layers|>
           <layers.tile @url={{this.mapTile}} @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
-          <layers.marker @location={{array @event.latitude @event.longitude}} as |marker|>
+          <layers.marker @location={{array this.latitude this.longitude}} as |marker|>
             <marker.popup>
               <h3>{{@event.name}}</h3>
               {{@event.locationName}}
