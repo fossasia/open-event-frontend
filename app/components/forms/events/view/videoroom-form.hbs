@@ -9,7 +9,7 @@
       <UiDropdown
         @class="selection"
         @selected={{this.data.stream.videoChannel}}
-        @onChange={{action (mut this.data.stream.videoChannel)}} as |execute mapper|>
+        @onChange={{action (confirm (t "Selecting other integration will reset the data in current item. Do you want to proceed?") (action this.setChannel))}} as |execute mapper|>
         <i class="dropdown icon"></i>
         <div class="default text">
           {{t 'Select Integration'}}
@@ -20,12 +20,11 @@
               {{channel.name}}
             </div>
           {{/each}}
+          <div data-value="{{map-value mapper null}}" class="item">
+            {{t 'Custom'}}
+          </div>
         </div>
       </UiDropdown>
-      <button class='ui labeled icon blue button {{if this.integrationLoading 'loading' }} {{unless this.data.stream.videoChannel 'disabled'}}' {{action 'addIntegration' this.data.stream.videoChannel}}>
-        <i class="video icon"></i>
-        {{t 'Add'}} {{t-var this.data.stream.videoChannel.name}}
-      </button>
     </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ export default class CellStreamUrl extends Component {
 
   get link() {
     const { record, extraRecords } = this.args;
-    return this.router.urlFor('public.stream.view', extraRecords.identifier || extraRecords.event.get('identifier'), record.get('slugName'), record.get('id'))
+    return this.router.urlFor('public.stream.view', extraRecords.identifier || extraRecords.event.get('identifier'), record.get('slugName'), record.get('id'));
   }
 
   get streamUrl() {
