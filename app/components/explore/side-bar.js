@@ -11,7 +11,7 @@ export default class SideBar extends Component {
 
   classNames = ['ui', 'fluid', 'explore', 'vertical', 'menu'];
 
-  placeAutocomplete = ['mirzapur India', 'sydney cricket ground Australia', 'london Europe', 'the greate briten England', 'Newzland', 'Lords England']; // will update after api implementation, testing for ui
+  placeAutocomplete = ["mirzapur India", "sydney cricket ground Australia", "london Europe", "the greate briten England", "Newzland", "cool"];
 
   customStartDate = moment().toISOString();
 
@@ -23,6 +23,16 @@ export default class SideBar extends Component {
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'has_logo', 'has_image', 'is_past')
   get hideClearFilters() {
     return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.has_logo || this.has_image || this.is_past);
+  }
+
+  @computed('model')
+  get latitude() {
+    return this.model?.lat ? this.model.lat : 20;
+  }
+
+  @computed('model')
+  get longitude() {
+    return this.model?.lon ? this.model.lon : 80;
   }
 
   @computed('category', 'sub_category')
@@ -57,7 +67,7 @@ export default class SideBar extends Component {
     const response = this.loader.load(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lng}&format=jsonv2`, { isExternal: true });
     const [cords] = await Promise.all([response]);
     if (cords.address) {
-      const locationUpdated = cords.address?.state ? cords.address.state : cords.address.country;
+      let locationUpdated = cords.address?.state ? cords.address.state : cords.address.country;
       this.set('location', locationUpdated);
     } else {
       this.set('location', 'singapore');
