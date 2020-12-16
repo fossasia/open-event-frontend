@@ -1,14 +1,17 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember/object';
+import { action, computed, getProperties } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { allSettled } from 'rsvp';
+import { inject as service } from '@ember/service';
 
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
+  @service confirm;
+
   @tracked integrationLoading = false;
   @tracked loading = false;
 
@@ -124,6 +127,15 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async setChannel(channel) {
+    const { url, additionalInformation } = getProperties(this.data.stream, ['url', 'additionalInformation']);
+    if (url || additionalInformation) {
+      try {
+        await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form.Do you want to proceed?'));
+      } catch {
+        return;
+      }
+    }
+
     this.data.stream.set('videoChannel', channel);
     this.data.stream.set('url', null);
     this.data.stream.set('additionalInformation', null);

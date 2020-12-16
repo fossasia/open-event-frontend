@@ -7,10 +7,10 @@
     </div>
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
       <UiDropdown
-        @class="ui floating labeled icon dropdown button"
+        @class="ui floating labeled icon dropdown blue button"
         @selected={{this.data.stream.videoChannel}}
-        @onChange={{action (confirm (t "Selecting other integration will reset the data in current item. Do you want to proceed?") (action this.setChannel))}} as |execute mapper|>
-        <i class="dropdown icon"></i>
+        @onChange={{action this.setChannel}} as |execute mapper|>
+        <i class="video icon"></i>
         <div class="default text">
           {{t 'Add Video'}}
         </div>
