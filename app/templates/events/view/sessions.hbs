@@ -2,7 +2,7 @@
   <div class="ui grid stackable">
     {{#if this.onSessionRoute}}
       <div class="row">
-        <div class="eight wide column">
+        <div class="sixteen wide column">
           <TabbedNavigation @isNonPointing={{true}}>
             <LinkTo @route="events.view.sessions.list" @model="all" class="item">
               {{t 'All'}}
@@ -14,7 +14,7 @@
             {{/each}}
           </TabbedNavigation>
         </div>
-        <div class="eight wide right aligned column">
+        <div class="sixteen wide right aligned column">
           <div class="ui labeled input">
             <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
             <LinkTo @route="events.view.sessions.create" class="ui blue button right floated">
