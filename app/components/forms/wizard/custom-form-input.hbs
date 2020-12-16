@@ -6,16 +6,36 @@
   </span>
 </div>
 <div {{did-update this.updated @field}} class="ui action input" style="width: inherit;">
-  <Input type="text" placeholder="Field Name" @value={{this.name}} />
+  <Input type="text" id="shortField" placeholder="Field Name" @value={{this.name}} style="display: none;" />
+  <Textarea cols="60" rows="1" id="paraField" style="width: 100%; overflow: hidden; display: block;" placeholder="Field Name" oninput="auto_height(this)" @value={{this.name}}></Textarea>
   <UiDropdown class="ui selection dropdown" @selected={{this.type}} @onChange={{action (mut this.type)}}>
     <div class="default text">
       {{ this.type }}
     </div>
     <i class="dropdown icon"></i>
     <div class="menu">
-      <div class="item" data-value="text">Text</div>
-      <div class="item" data-value="number">Number</div>
+      <div class="item" data-value="text" id="sh-ansBtn">Short Answer</div>
+      <div class="item" data-value="text" id="paraBtn">Paragraph</div>
+      <div class="item" data-value="number" id="numBtn">Number</div>
     </div>
   </UiDropdown>
   <button class="ui button" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>{{if @field (t 'Save') (t 'Add')}}</button>
 </div>
+
+<script>
+  function auto_height(elem) { 
+    elem.style.height = "1px";
+    elem.style.height = (elem.scrollHeight)+"px"; };
+
+  document.getElementById("sh-ansBtn").onclick = function () {
+  document.getElementById("shortField").style.display = "block";
+  document.getElementById("paraField").style.display = "none"; };
+
+  document.getElementById("paraBtn").onclick = function () {
+  document.getElementById("shortField").style.display = "none";
+  document.getElementById("paraField").style.display = "block"; };
+
+  document.getElementById("numBtn").onclick = function () {
+  document.getElementById("shortField").style.display = "block";
+  document.getElementById("paraField").style.display = "none"; };
+</script>
