@@ -10,13 +10,13 @@ export default class IndexController extends Controller.extend(AdminSalesMixin, 
 get columns() {
   return [
     {
-      name            : 'Events',
+      name            : this.l10n.t('Events'),
       valuePath       : 'name',
       isSortable      : true,
       headerComponent : 'tables/headers/sort'
     },
     {
-      name            : 'Event Date',
+      name            : this.l10n.t('Event Date'),
       valuePath       : 'startsAt',
       isSortable      : true,
       headerComponent : 'tables/headers/sort',
@@ -24,17 +24,17 @@ get columns() {
       cellComponent   : 'ui-table/cell/cell-simple-date'
     },
     {
-      name            : 'Completed Orders',
+      name            : this.l10n.t('Completed Orders'),
       headerComponent : 'tables/headers/sort',
       color           : 'green',
       subcolumns      : [
         {
-          name      : 'Tickets',
+          name      : this.l10n.t('Tickets'),
           valuePath : 'sales.completed.ticket_count',
           width     : 30
         },
         {
-          name            : 'Sales',
+          name            : this.l10n.t('Sales'),
           valuePath       : 'sales.completed.sales_total',
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
@@ -42,17 +42,17 @@ get columns() {
       ]
     },
     {
-      name            : 'Placed Orders',
+      name            : this.l10n.t('Placed Orders'),
       color           : 'blue',
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : 'Tickets',
+          name      : this.l10n.t('Tickets'),
           valuePath : 'sales.placed.ticket_count',
           width     : 30
         },
         {
-          name            : 'Sales',
+          name            : this.l10n.t('Sales'),
           valuePath       : 'sales.placed.sales_total',
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
@@ -60,17 +60,17 @@ get columns() {
       ]
     },
     {
-      name            : 'Pending Orders',
+      name            : this.l10n.t('Pending Orders'),
       color           : 'yellow',
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : 'Tickets',
+          name      : this.l10n.t('Tickets'),
           valuePath : 'sales.pending.ticket_count',
           width     : 30
         },
         {
-          name            : 'Sales',
+          name            : this.l10n.t('Sales'),
           valuePath       : 'sales.pending.sales_total',
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'

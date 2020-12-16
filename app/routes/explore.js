@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { debounce } from 'lodash-es';
+import moment from 'moment';
 
 @classic
 export default class ExploreRoute extends Route {
@@ -72,7 +73,27 @@ export default class ExploreRoute extends Route {
         }
       });
     }
-
+    if (params.is_online) {
+      filterOptions.push({
+        name : 'online',
+        op   : 'eq',
+        val  : params.is_online
+      });
+    }
+    if (params.has_image) {
+      filterOptions.push({
+        name : 'original-image-url',
+        op   : 'ne',
+        val  : null
+      });
+    }
+    if (params.has_logo) {
+      filterOptions.push({
+        name : 'logo-url',
+        op   : 'ne',
+        val  : null
+      });
+    }
     if (params.location) {
       filterOptions.push({
         name : 'location_name',
@@ -80,6 +101,14 @@ export default class ExploreRoute extends Route {
         val  : `%${params.location}%`
       });
     }
+    if (params.event_name) {
+      filterOptions.push({
+        name : 'name',
+        op   : 'ilike',
+        val  : `%${params.event_name}%`
+      });
+    }
+
     if (params.cfs) {
       filterOptions.push({
         name : 'is_sessions_speakers_enabled',
@@ -151,6 +180,21 @@ export default class ExploreRoute extends Route {
           }
         ]
       });
+    } else if (params.is_past) {
+      filterOptions.push({
+        and: [
+          {
+            name : 'starts-at',
+            op   : 'lt',
+            val  : moment().toISOString()
+          },
+          {
+            name : 'ends-at',
+            op   : 'lt',
+            val  : moment().toISOString()
+          }
+        ]
+      });
     } else {
       filterOptions.push({
         or: [
@@ -171,7 +215,7 @@ export default class ExploreRoute extends Route {
     return this.infinity.model('event', {
       include      : 'event-topic,event-sub-topic,event-type',
       filter       : filterOptions,
-      sort         : 'starts-at',
+      sort         : params.is_past ? '-starts-at' : 'starts-at',
       perPage      : 6,
       startingPage : 1,
       perPageParam : 'page[size]',
@@ -204,5 +248,10 @@ export default class ExploreRoute extends Route {
   @action
   queryParamsDidChange(change, params) {
     this.debouncedFilterChange(params);
+  }
+
+  resetController(controller) {
+    super.resetController(...arguments);
+    controller.clearAllFilters();
   }
 }

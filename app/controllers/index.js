@@ -5,13 +5,6 @@ import moment from 'moment';
 
 @classic
 export default class IndexController extends Controller {
-  queryParams = ['event_name', 'start_date', 'end_date', 'location'];
-  start_date = null;
-  end_date = null;
-  location = null;
-  event_name = null;
-  filterDate = null;
-
   @computed('filteredEvents.[]', 'featuredEvents.[]')
   get callForSpeakersEvents() {
     const filteredEventsCfs = this.filteredEvents.filter(isEventCfsOpen);
@@ -28,6 +21,18 @@ export default class IndexController extends Controller {
   @computed('filteredEvents.[]')
   get upcomingEvents() {
     return this.filteredEvents?.filter(event => !event.isPromoted);
+  }
+
+  @action
+  handleKeyPress() {
+    if (event.code === 'Enter') {
+      this.send('search');
+    }
+  }
+
+  @action
+  search() {
+    this.transitionToRoute('explore', { queryParams: { event_name: this.event_name } });
   }
 
   @action

@@ -6,10 +6,12 @@ import moment from 'moment';
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort'];
+  queryParams = ['sort', 'search'];
+  search = null;
   sort = 'starts-at';
   isTrackVisible = false;
   timezone = null;
+  preserveScrollPosition = true;
 
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
   get allDates() {
