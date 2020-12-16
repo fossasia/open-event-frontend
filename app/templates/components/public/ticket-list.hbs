@@ -4,9 +4,11 @@
 
   {{#if device.isMobile}}
     <table class="ui unstackable very basic compact table" style="margin-bottom: 0">
+      <thead></thead>
     {{#each this.tickets as |ticket|}}
       {{#unless ticket.isHidden}}
       {{!-- ticket disc --}}
+      <tbody>
             <tr>
             <th>{{t 'Type'}}</th>
             <td>
@@ -112,7 +114,7 @@
             </td>
           </tr>
 
-
+      </tbody>
       {{/unless}}
     {{/each}}
           <tfoot class="full-width">
