@@ -121,6 +121,15 @@
                       {{/each}}
                     </div>
                   </UiDropdown>
+                {{else if (eq field.type 'checkbox')}}
+                  <UiCheckbox
+                          @checked={{false}}
+                          @selected={{get holder field.fieldIdentifier}} >
+                    <Input
+                            @type="hidden"
+                            @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                  </UiCheckbox>
+
                 {{else if (eq field.fieldIdentifier 'ageGroup')}}
                   <UiDropdown
                     @class="search selection"
@@ -281,7 +290,7 @@
       </h4>
       <p>
         <GetText
-          @message = {{t 'By clicking "{{orderState}}", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website.' 
+          @message = {{t 'By clicking "{{orderState}}", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website.'
           orderState=(if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now"))}} as |text placeholder|>
           {{~#if (eq placeholder 'terms')}}<a href="/terms">{{t 'terms of services'}}</a>{{~/if~}}
           {{~#if (eq placeholder 'privacy')}}<a href="/privacy">{{t 'privacy policy'}}</a>{{~/if~}}
