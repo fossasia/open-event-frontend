@@ -67,4 +67,23 @@ export default class ExploreController extends Controller {
       this.set('cfs', null);
     }
   }
+
+  @action
+  clearAllFilters() {
+    this.setProperties({
+      event_name   : null,
+      category     : null,
+      sub_category : null,
+      event_type   : null,
+      start_date   : null,
+      end_date     : null,
+      location     : null,
+      ticket_type  : null,
+      cfs          : null,
+      is_online    : null,
+      has_image    : null,
+      has_logo     : null,
+      is_past      : null
+    });
+  }
 }

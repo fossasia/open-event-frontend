@@ -249,4 +249,9 @@ export default class ExploreRoute extends Route {
   queryParamsDidChange(change, params) {
     this.debouncedFilterChange(params);
   }
+
+  resetController(controller) {
+    super.resetController(...arguments);
+    controller.clearAllFilters();
+  }
 }
