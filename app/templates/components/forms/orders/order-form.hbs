@@ -129,7 +129,6 @@
                             @type="hidden"
                             @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   </UiCheckbox>
-
                 {{else if (eq field.fieldIdentifier 'ageGroup')}}
                   <UiDropdown
                     @class="search selection"
