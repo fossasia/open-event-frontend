@@ -128,8 +128,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.data.stream.set('url', null);
     this.data.stream.set('additionalInformation', null);
 
-    if (channel)
-      await this.addIntegration(channel);
+    if (channel) {await this.addIntegration(channel)}
   }
 
   @action
