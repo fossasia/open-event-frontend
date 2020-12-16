@@ -27,7 +27,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   actions: {
     removeField(field) {
-      // this.data.customForms.removeObject(field);
       field.deleteRecord();
     }
   }
