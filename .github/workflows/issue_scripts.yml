@@ -8,7 +8,7 @@ jobs:
   assign-check:
     runs-on: ubuntu-latest
 
-    if: contains(github.event.comment.body, 'please assign')
+    if: contains(github.event.comment.body, 'please assign') || contains(github.event.comment.body, 'assign me')
     steps:
       - uses: actions/github-script@v3
         with:
