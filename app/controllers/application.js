@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import { filterBy } from '@ember/object/computed';
 import Controller from '@ember/controller';
 import moment from 'moment';
+import { tracked } from '@glimmer/tracking';
 
 
 @classic
@@ -17,11 +18,10 @@ export default class ApplicationController extends Controller {
   @service
   fastboot;
 
+  @tracked event_name = null;
+
   @filterBy('model.notifications', 'isRead', false)
   unreadNotifications;
-
-  @filterBy('model.pages', 'place', 'footer')
-  footerPages;
 
   getCookieSeen(write) {
     const cookieName = 'seen-cookie-message';
@@ -49,5 +49,11 @@ export default class ApplicationController extends Controller {
   hideCookieMessage() {
     this.getCookieSeen(true);
     this.showCookie = false;
+  }
+
+  @action
+  search() {
+    this.transitionToRoute('explore', { queryParams: { event_name: this.event_name } });
+    this.event_name = null;
   }
 }

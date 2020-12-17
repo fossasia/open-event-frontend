@@ -1,4 +1,4 @@
-<form class="ui form" {{action 'submit' on='submit'}}> 
+<form class="ui form"> 
   <h3 class="ui header">
     {{t 'Invoice Handling'}}
   </h3>
@@ -45,22 +45,11 @@
     <label class="required" for="adminBillingPaypalEmail">{{t 'Paypal Email'}}</label>
     <Input @type="email" @id="adminBillingPaypalEmail" @value={{this.model.adminBillingPaypalEmail}} />
   </div>
-  <div class="field">
-    <label class="required">{{t 'Country'}}</label>
-    <UiDropdown @class="search selection" @selected={{this.model.adminBillingCountry}} @forceSelection={{false}} @fullTextSearch={{true}}>
-      <Input @type="hidden" @autocomplete="no" @id="adminBillingCountry" @value={{this.model.adminBillingCountry}} />
-      <i class="dropdown icon"></i>
-      <div class="default text">{{t 'Select country'}}</div>
-      <div class="menu">
-        {{#each this.countries as |country|}}
-          <div class="item" data-value="{{country.name}}">
-            <i class="{{lowercase country.code}} flag"></i>
-            {{country.name}}
-          </div>
-        {{/each}}
-      </div>
-    </UiDropdown>
-  </div>
+  <CountryDropdown
+    @required={{true}}
+    @placeholder={{t 'Country'}}
+    @val={{this.model.adminBillingCountry}}
+    @id="adminBillingCountry" />
   <div class="field">
     <label for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
     <Input @type="text" @id="adminBillingTaxInfo" @value={{this.model.adminBillingTaxInfo}} />
@@ -87,6 +76,17 @@
   <div class="field">
     <label for="adminBillingAdditionalInfo">{{t 'Additional Info'}}</label>
     <Input @type="text" @id="adminBillingAdditionalInfo" @value={{this.model.adminBillingAdditionalInfo}} />
+  </div>
+  <div class="field">
+    <label for="event_invoice_logo">{{t 'Organisation Logo'}}</label>
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.model.adminBillingLogo}}
+        @label={{t "Logo"}}
+        @id="event_invoice_logo"
+        @icon="image"
+        @hint={{t "Select Organisation Logo"}}
+        @imageText={{t "Logo"}}
+        @maxSizeInKb={{1000}} />
   </div>
   <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
 </form>

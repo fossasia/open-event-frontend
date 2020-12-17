@@ -3,6 +3,7 @@ import { classNames } from '@ember-decorators/component';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import { forOwn } from 'lodash-es';
+import moment from 'moment';
 import { pascalCase } from 'open-event-frontend/utils/string';
 
 @classic
@@ -33,10 +34,43 @@ export default class EventCard extends Component {
   selectCategory(category, subCategory) {
     this.set('category', (category === this.category && !subCategory) ? null : category);
     this.set('subCategory', (!subCategory || subCategory === this.subCategory) ? null : subCategory);
+    this.set('is_online', null);
+    this.setProperties({
+      eventName  : null,
+      eventType  : null,
+      startDate  : null,
+      endDate    : null,
+      location   : null,
+      ticketType : null,
+      cfs        : null,
+      isOnline   : null,
+      hasImage   : null,
+      hasLogo    : null,
+      isPast     : null
+    });
   }
 
   @action
   selectEventType(eventType) {
     this.set('eventType', eventType === this.eventType ? null : eventType);
+    this.setProperties({
+      eventName   : null,
+      category    : null,
+      subCategory : null,
+      startDate   : null,
+      endDate     : null,
+      location    : null,
+      ticketType  : null,
+      cfs         : null,
+      isOnline    : null,
+      hasImage    : null,
+      hasLogo     : null,
+      isPast      : null
+    });
+  }
+
+  @computed('event.startsAt', 'event.endsAt')
+  get isSingleDay() {
+    return moment(this.event.startsAt).isSame(this.event.endsAt, 'day');
   }
 }

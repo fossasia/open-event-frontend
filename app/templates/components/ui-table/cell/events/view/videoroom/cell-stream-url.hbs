@@ -1,0 +1,10 @@
+{{#if @record}}
+  <div class="d-flex items-center">
+    <a class="truncate" href={{this.link}} target="_blank" rel="noopener">{{this.streamUrl}}</a>
+    <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right" class="ml-auto">
+      <CopyButton @clipboardText={{this.streamUrl}} @class="ui black icon button">
+        <i class="copy icon"></i>
+      </CopyButton>
+    </UiPopup>
+  </div> 
+{{/if}}

@@ -1,13 +1,59 @@
 <div class="item">
   <div class="ui input">
     <Input
-      @name="location"
-      @value={{this.location}}
+      @name="name"
+      @value={{this.event_name}}
       @type="text"
-      @placeholder={{t "Enter Location"}} />
+      @placeholder={{t "Enter Event Name"}} />
   </div>
 </div>
 {{#if this.showFiltersOnMobile}}
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Event Location Type' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Online"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.eventLocationType "online") "active"}}
+                @onChange={{action "setLocationType" "online" "true"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Location"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.eventLocationType "venue") "active"}}
+                @onChange={{action "setLocationType" "venue" "false"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Mixed"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.eventLocationType "mixed") "active"}}
+                @onChange={{action "setLocationType" "mixed" "true"}} />
+            </div>
+            {{#if (or (eq this.eventLocationType "venue") (eq this.eventLocationType "mixed"))}}
+                <div class="explore sub menu">
+                  <div class="ui input">
+                    <Input
+                      @name="location"
+                      @value={{this.location}}
+                      @type="text"
+                      @placeholder={{t "Enter Location"}} />
+                  </div>
+                </div>
+              {{/if}}
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
   <div class="item">
     <UiAccordion>
       <span class="title">
@@ -50,6 +96,11 @@
                 </div>
               {{/if}}
             {{/each}}
+            <UiCheckbox
+              @label={{t "Past"}}
+              @class="ui checkbox"
+              @checked={{if (eq this.is_past "true") true}}
+              @onChange={{action "enablePastEvents" "true"}} />
           </div>
         </div>
       </div>
@@ -148,34 +199,61 @@
       </div>
     </UiAccordion>
   </div>
-{{/if}}
-<div class="item">
-  <UiAccordion>
-    <span class="title">
-      <i class="dropdown icon"></i>
-      {{t 'Event Call For Speakers' }}
-    </span>
-    <div class="content menu">
-      <div class="ui form">
-        <div class="grouped fields">
-          <div class="field">
-            <UiCheckbox
-              @label={{t "Open"}}
-              @checked={{if (eq this.cfs "open") "active"}}
-              @onChange={{action "selectEventCfs" "open"}} />
-          </div>
-          <div class="field">
-            <UiCheckbox
-              @label={{t "Closed"}}
-              @class="ui checkbox"
-              @checked={{if (eq this.cfs "closed") "active"}}
-              @onChange={{action "selectEventCfs" "closed"}} />
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Call For Speakers' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Open"}}
+                @checked={{if (eq this.cfs "open") "active"}}
+                @onChange={{action "selectEventCfs" "open"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Closed"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.cfs "closed") "active"}}
+                @onChange={{action "selectEventCfs" "closed"}} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </UiAccordion>
-</div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Images' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Image"}}
+                @checked={{if this.has_image "active"}}
+                @onChange={{action "selectImages" "true"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Logo"}}
+                @class="ui checkbox"
+                @checked={{if this.has_logo "active"}}
+                @onChange={{action "selectLogos" "true"}} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+{{/if}}
 <div class="item">
   <button class="ui red button {{if this.hideClearFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
   {{#if this.device.isMobile}}
