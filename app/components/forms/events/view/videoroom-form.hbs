@@ -6,10 +6,25 @@
       </h3>
     </div>
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
-      <button class='ui labeled icon blue button {{if this.jitsiButtonLoading 'loading' }}' {{action 'addJitsi'}}>
+      <UiDropdown
+        @class="ui floating labeled icon dropdown blue button"
+        @selected={{this.data.stream.videoChannel}}
+        @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
-        {{t 'Add Jitsi Room'}}
-      </button>
+        <div class="default text">
+          {{t 'Add Video'}}
+        </div>
+        <div class="menu">
+          {{#each (sort-by 'id' this.channels) as |channel|}}
+            <div data-value="{{map-value mapper channel}}" class="item">
+              {{channel.name}}
+            </div>
+          {{/each}}
+          <div data-value="{{map-value mapper null}}" class="item">
+            {{t 'Custom'}}
+          </div>
+        </div>
+      </UiDropdown>
     </div>
   </div>
 </div>
@@ -39,18 +54,20 @@
       </UiDropdown>
     </div>
   {{/unless}}
-  <div class="field">
-    <label class="required">{{t 'Video Room URL'}}</label>
-    <Widgets::Forms::LinkField
-      @inputId="url"
-      @value={{this.data.stream.url}}
-      @onChange={{action (mut this.data.stream.url)}} />
-  </div>
-  <div class="field">
-    <label>{{t 'Room Password'}}</label>
-    <Input
-      @value={{this.data.stream.password}} />
-  </div>
+  {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">{{t 'Video Source URL'}}</label>
+      <Widgets::Forms::LinkField
+        @inputId="url"
+        @value={{this.data.stream.url}}
+        @onChange={{action (mut this.data.stream.url)}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Room Password'}}</label>
+      <Input
+        @value={{this.data.stream.password}} />
+    </div>
+  {{/if}}
   <div class="field">
     <label>{{t 'Additional Information'}}</label>
     <Textarea
