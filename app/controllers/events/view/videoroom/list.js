@@ -19,7 +19,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : this.l10n.t('Video Source URL'),
-        valuePath     : 'videoStream.url',
+        valuePath     : 'videoStream',
         cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url',
         width         : 60
       },
