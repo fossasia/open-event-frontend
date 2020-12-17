@@ -1,15 +1,18 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember/object';
+import { action, computed, getProperties } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { allSettled } from 'rsvp';
+import { inject as service } from '@ember/service';
 
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
-  @tracked jitsiButtonLoading = false;
+  @service confirm;
+
+  @tracked integrationLoading = false;
   @tracked loading = false;
 
   @computed('data.stream.rooms.[]')
@@ -73,24 +76,29 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   generateMeetingInformation(phoneNumbers, pin) {
-    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nPIN: ${pin}\n\n`
+    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nTelephone PIN: ${pin}\n\n`
     + Object.entries(phoneNumbers).map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`).join('');
   }
 
-  @action
-  async addJitsi() {
+  get streamIdentifier() {
     const { event } = this.data;
-    const { id, name } = this.data.stream;
-    const identifier = [event.identifier, 'stream', name?.replace(/[^a-z0-9\.]/gi, '')?.toLowerCase(), id ?? this.randomIdentifier].filter(Boolean).join('-');
+    const { id } = this.data.stream;
+    return [event.identifier, 'stream', id ?? this.randomIdentifier].filter(Boolean).join('-');
+  }
 
-    this.data.stream.set('url', 'https://meet.jit.si/eventyay/' + identifier);
+  @action
+  async addJitsi(channel) {
+    const identifier = this.streamIdentifier;
 
-    this.jitsiButtonLoading = true;
+    this.data.stream.set('url', channel.get('url') + '/eventyay/' + identifier);
 
+    this.integrationLoading = true;
+
+    const api = channel.get('apiUrl');
     try {
       const [phoneNumbers, pin] = (await allSettled([
-        this.loader.load(`https://api.jitsi.net/phoneNumberList?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true }),
-        this.loader.load(`https://api.jitsi.net/conferenceMapper?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true })
+        this.loader.load(`${api}/phoneNumberList?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true }),
+        this.loader.load(`${api}/conferenceMapper?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true })
       ])).map(promise => promise.value);
 
       this.data.stream.additionalInformation = this.generateMeetingInformation(phoneNumbers.numbers, pin.id);
@@ -98,7 +106,41 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
 
-    this.jitsiButtonLoading = false;
+    this.integrationLoading = false;
+  }
+
+  addBigBlueButton(channel) {
+    this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+  }
+
+  @action
+  async addIntegration(channel) {
+    switch (channel.get('provider')) {
+      case 'jitsi':
+        await this.addJitsi(channel);
+        break;
+      case 'bbb':
+        this.addBigBlueButton(channel);
+        break;
+    }
+  }
+
+  @action
+  async setChannel(channel) {
+    const { url, additionalInformation } = getProperties(this.data.stream, ['url', 'additionalInformation']);
+    if (url || additionalInformation) {
+      try {
+        await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form. Do you want to proceed?'));
+      } catch {
+        return;
+      }
+    }
+
+    this.data.stream.set('videoChannel', channel);
+    this.data.stream.set('url', null);
+    this.data.stream.set('additionalInformation', null);
+
+    if (channel) {await this.addIntegration(channel)}
   }
 
   @action
@@ -115,7 +157,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.router.transitionTo('events.view.videoroom', this.data.event.id);
       } catch (e) {
         console.error('Error while saving session', e);
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
+        const message = e.errors?.[0]?.detail ?? this.l10n.t('Oops something went wrong. Please try again');
+        this.notify.error(message,
           {
             id: 'stream_save_error'
           });

@@ -6,6 +6,7 @@ export default class extends Controller {
   async save(sessionDetails) {
     try {
       this.set('isLoading', true);
+      this.model.speaker.event = this.model.event;
       if (!sessionDetails) {
         await this.model.session.save();
       }
@@ -27,6 +28,8 @@ export default class extends Controller {
     } catch (e) {
       console.error('Error while saving session', e);
       this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+    } finally {
+      this.set('isLoading', false);
     }
   }
 }

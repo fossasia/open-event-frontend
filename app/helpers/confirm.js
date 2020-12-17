@@ -8,21 +8,22 @@ export default Helper.extend({
   confirm: service(),
 
   compute(params) {
-    return () => {
+    const { confirm } = this;
+    return function() {
       if (params.length >= 6) {
-        this.confirm.prompt('Are You Sure?', { 'denyText': params[2], 'approveText': params[3], 'denyColor': params[4], 'approveColor': params[5], 'extra': params[0] })
+        confirm.prompt('Are You Sure?', { 'denyText': params[2], 'approveText': params[3], 'denyColor': params[4], 'approveColor': params[5], 'extra': params[0] })
           .then(() => {
-            params[1]();
+            params[1](...arguments);
           });
       } else if (params.length >= 2) {
-        this.confirm.prompt(params[0])
+        confirm.prompt(params[0])
           .then(() => {
-            params[1]();
+            params[1](...arguments);
           });
       } else {
-        this.confirm.prompt()
+        confirm.prompt()
           .then(() => {
-            params[0]();
+            params[0](...arguments);
           });
       }
     };

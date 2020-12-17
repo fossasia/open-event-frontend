@@ -122,6 +122,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
+  videoStream     : belongsTo('video-stream'),
 
   owner           : belongsTo('user', { inverse: null }),
   organizers      : hasMany('user', { inverse: null }),
@@ -165,6 +166,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     } else {
       return splitLocations.splice(1, splitLocations.length).join();
     }
+  }),
+
+  totalSales: computed('orderStatistics', function() {
+    return this.get('orderStatistics.tickets.placed') + this.get('orderStatistics.tickets.completed');
   }),
 
   url: computed('identifier', function() {

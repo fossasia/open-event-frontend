@@ -40,27 +40,7 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
   }
 
   async model() {
-    let notifications = Promise.resolve([]);
-    if (this.session.isAuthenticated) {
-      try {
-        notifications = this.authManager.currentUser.query('notifications', {
-          filter: [
-            {
-              name : 'is-read',
-              op   : 'eq',
-              val  : false
-            }
-          ],
-          sort: '-received-at'
-        });
-      } catch (e) {
-        console.warn(e);
-        this.session.invalidate();
-      }
-    }
-
     return hash({
-      notifications,
       cookiePolicy     : this.settings.cookiePolicy,
       cookiePolicyLink : this.settings.cookiePolicyLink,
       socialLinks      : this.settings
