@@ -25,9 +25,14 @@ export default class CreateRoute extends Route {
     const room = params.room ? await this.store.findRecord('microlocation', params.room) : null;
     const event = params.event && !params.room ? eventDetails : null;
     return {
-      event  : eventDetails,
+      event    : eventDetails,
       rooms,
-      stream : await this.store.createRecord('video-stream', {
+      channels : this.store.query('video-channel', {
+        'page[size]' : 0,
+        public       : true,
+        cache        : true
+      }),
+      stream: await this.store.createRecord('video-stream', {
         name  : room?.name || event?.name,
         rooms : [room].filter(Boolean),
         event
