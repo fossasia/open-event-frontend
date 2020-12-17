@@ -4,7 +4,7 @@ import Route from '@ember/routing/route';
 @classic
 export default class OptionsRoute extends Route {
   titleToken() {
-    return this.l10n.t('Danger Zone');
+    return this.l10n.t('Options');
   }
 
   beforeModel() {
