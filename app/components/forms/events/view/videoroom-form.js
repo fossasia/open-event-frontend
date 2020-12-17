@@ -130,7 +130,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     const { url, additionalInformation } = getProperties(this.data.stream, ['url', 'additionalInformation']);
     if (url || additionalInformation) {
       try {
-        await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form.Do you want to proceed?'));
+        await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form. Do you want to proceed?'));
       } catch {
         return;
       }
