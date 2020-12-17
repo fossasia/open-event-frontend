@@ -89,6 +89,8 @@ export default class ExploreController extends Controller {
       ticket_type  : null,
       cfs          : null,
       is_online    : null,
+      is_location  : null,
+      is_mixed     : null,
       has_image    : null,
       has_logo     : null,
       is_past      : null
