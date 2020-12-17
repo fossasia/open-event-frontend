@@ -68,17 +68,65 @@ export default class SideBar extends Component {
 
   @action
   setOnline() {
-    this.set('is_online', this.is_online === null ? 'false' : null);
+    if (this.is_online === null && this.is_location === null && this.is_mixed === null) {
+      this.setProperties({
+        is_location : 'true',
+        is_mixed    : 'true'
+      });
+    } else if (this.is_location !== null && this.is_mixed !== null) {
+      this.setProperties({
+        is_online   : null,
+        is_location : null,
+        is_mixed    : null
+      });
+    } else {
+      this.set('is_online', this.is_online === null ? 'true' : null);
+    }
+    if (this.is_online && this.is_location === null && this.is_mixed === null) {
+      this.set('location', null);
+    }
   }
 
   @action
   setLocation() {
-    this.set('is_location', this.is_location === null ? 'false' : null);
+    if (this.is_online === null && this.is_location === null && this.is_mixed === null) {
+      this.setProperties({
+        is_online : 'true',
+        is_mixed  : 'true'
+      });
+    } else if (this.is_online !== null && this.is_mixed !== null) {
+      this.setProperties({
+        is_online   : null,
+        is_location : null,
+        is_mixed    : null
+      });
+    } else {
+      this.set('is_location', this.is_location === null ? 'true' : null);
+    }
+    if (this.is_online && this.is_location === null && this.is_mixed === null) {
+      this.set('location', null);
+    }
   }
 
   @action
   setMixed() {
-    this.set('is_mixed', this.is_mixed === null ? 'false' : null);
+    if (this.is_online === null && this.is_location === null && this.is_mixed === null) {
+      this.setProperties({
+        is_online   : 'true',
+        is_location : 'true'
+      });
+    } else if (this.is_location !== null && this.is_online !== null) {
+      this.setProperties({
+        is_online   : null,
+        is_location : null,
+        is_mixed    : null
+      });
+    } else {
+      this.set('is_mixed', this.is_mixed === null ? 'true' : null);
+    }
+    if (this.is_online && this.is_location === null && this.is_mixed === null) {
+      this.set('location', null);
+    }
   }
 
   @action

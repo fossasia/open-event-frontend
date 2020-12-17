@@ -21,24 +21,24 @@
               <UiCheckbox
                 @label={{t "Online"}}
                 @class="ui checkbox"
-                @checked={{if (eq this.is_online null) "active"}}
+                @checked={{if (or this.is_online (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
                 @onChange={{action "setOnline"}} />
             </div>
             <div class="field">
               <UiCheckbox
                 @label={{t "Location"}}
                 @class="ui checkbox"
-                @checked={{if (eq this.is_location null) "active"}}
+                @checked={{if (or this.is_location (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
                 @onChange={{action "setLocation"}} />
             </div>
             <div class="field">
               <UiCheckbox
                 @label={{t "Mixed"}}
                 @class="ui checkbox"
-                @checked={{if (eq this.is_mixed null) "active"}}
+                @checked={{if (or this.is_mixed (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
                 @onChange={{action "setMixed"}} />
             </div>
-            {{#if (or (eq this.is_location null) (eq this.is_mixed null))}}
+            {{#if (or this.is_location this.is_mixed (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null)))}}
                 <div class="explore sub menu">
                   <div class="ui input">
                     <Input

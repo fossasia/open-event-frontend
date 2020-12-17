@@ -73,52 +73,203 @@ export default class ExploreRoute extends Route {
         }
       });
     }
-    if (params.is_online) {
+    if (params.is_online && params.is_location && params.is_mixed) {
       filterOptions.push({
         or: [
           {
+            and: [
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : true
+              },
+              {
+                name : 'location_name',
+                op   : 'eq',
+                val  : null
+              }
+            ]
+          },
+          {
+            and: [
+              {
+                name : 'location_name',
+                op   : params.location ? 'ilike' : 'ne',
+                val  : params.location ? `%${params.location}%` : null
+              },
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : false
+              }
+            ]
+          },
+          {
+            and: [
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : true
+              },
+              {
+                name : 'location_name',
+                op   : params.location ? 'ilike' : 'ne',
+                val  : params.location ? `%${params.location}%` : null
+              }
+            ]
+          }
+        ]
+      });
+    } else if (params.is_online && params.is_location) {
+      filterOptions.push({
+        or: [
+          {
+            and: [
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : true
+              },
+              {
+                name : 'location_name',
+                op   : 'eq',
+                val  : null
+              }
+            ]
+          },
+          {
+            and: [
+              {
+                name : 'location_name',
+                op   : params.location ? 'ilike' : 'ne',
+                val  : params.location ? `%${params.location}%` : null
+              },
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : false
+              }
+            ]
+          }
+        ]
+      });
+    } else if (params.is_online && params.is_mixed) {
+      filterOptions.push({
+        or: [
+          {
+            and: [
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : true
+              },
+              {
+                name : 'location_name',
+                op   : 'eq',
+                val  : null
+              }
+            ]
+          },
+          {
+            and: [
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : true
+              },
+              {
+                name : 'location_name',
+                op   : params.location ? 'ilike' : 'ne',
+                val  : params.location ? `%${params.location}%` : null
+              }
+            ]
+          }
+        ]
+      });
+    } else if (params.is_location && params.is_mixed) {
+      filterOptions.push({
+        or: [
+          {
+            and: [
+              {
+                name : 'location_name',
+                op   : params.location ? 'ilike' : 'ne',
+                val  : params.location ? `%${params.location}%` : null
+              },
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : false
+              }
+            ]
+          },
+          {
+            and: [
+              {
+                name : 'online',
+                op   : 'eq',
+                val  : true
+              },
+              {
+                name : 'location_name',
+                op   : params.location ? 'ilike' : 'ne',
+                val  : params.location ? `%${params.location}%` : null
+              }
+            ]
+          }
+        ]
+      });
+    } else if (params.is_online) {
+      filterOptions.push({
+        and: [
+          {
             name : 'online',
             op   : 'eq',
-            val  : false
+            val  : true
           },
           {
             name : 'location_name',
-            op   : 'ne',
+            op   : 'eq',
             val  : null
           }
         ]
       });
-    }
-    if (params.is_location) {
+    } else if (params.is_location) {
       filterOptions.push({
-        or: [
+        and: [
           {
             name : 'location_name',
-            op   : 'eq',
-            val  : null
+            op   : params.location ? 'ilike' : 'ne',
+            val  : params.location ? `%${params.location}%` : null
           },
           {
             name : 'online',
-            op   : 'ne',
+            op   : 'eq',
             val  : false
           }
         ]
       });
-    }
-    if (params.is_mixed) {
+    } else if (params.is_mixed) {
       filterOptions.push({
-        or: [
+        and: [
           {
             name : 'online',
             op   : 'eq',
-            val  : false
+            val  : true
           },
           {
             name : 'location_name',
-            op   : 'eq',
-            val  : null
+            op   : params.location ? 'ilike' : 'ne',
+            val  : params.location ? `%${params.location}%` : null
           }
         ]
+      });
+    }
+    if (params.location && params.is_online === null && params.is_location === null && params.is_mixed === null) {
+      filterOptions.push({
+        name : 'location_name',
+        op   : 'ilike',
+        val  : `%${params.location}%`
       });
     }
     if (params.has_image) {
@@ -133,13 +284,6 @@ export default class ExploreRoute extends Route {
         name : 'logo-url',
         op   : 'ne',
         val  : null
-      });
-    }
-    if (params.location) {
-      filterOptions.push({
-        name : 'location_name',
-        op   : 'ilike',
-        val  : `%${params.location}%`
       });
     }
     if (params.event_name) {
