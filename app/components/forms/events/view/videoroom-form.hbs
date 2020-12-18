@@ -33,25 +33,7 @@
   {{#unless this.data.stream.event}}
     <div class="field">
       <label class="required">{{t 'Room'}}</label>
-      <input type="hidden" id="rooms">
-      <UiDropdown
-        @class="fluid selection"
-        @selected={{this.room}}
-        @onChange={{action this.setRoom}} as |execute mapper|>
-        <i class="dropdown icon"></i>
-        <div class="default text">
-          {{t 'Select Rooms'}}
-        </div>
-        <div class="menu">
-          {{#each this.rooms as |room|}}
-            {{#if room.name}}
-              <div data-value="{{map-value mapper room}}" class="item">
-                {{room.name}}
-              </div>
-            {{/if}}
-          {{/each}}
-        </div>
-      </UiDropdown>
+      <input id="rooms" value={{this.room.name}} readonly>
     </div>
   {{/unless}}
   {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
