@@ -1,6 +1,5 @@
-import { computed } from '@ember/object';
-import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import Component from '@glimmer/component';
 
 const locales = {
   'de'      : 'de-DE',
@@ -12,13 +11,12 @@ export default class CurrencyAmount extends Component {
 
     @service l10n;
 
-    @computed('amount', 'currency')
     get modifiedAmount() {
       const resolvedLocale = new Intl.NumberFormat().resolvedOptions().locale;
       let currentLocale = 'en';
       if (resolvedLocale === 'en-US') {
         currentLocale = this.l10n.getLocale();
       }
-      return (this.amount)?.toLocaleString(locales[currentLocale] ?? resolvedLocale, { style: 'currency', currency: this.currency, minimumFractionDigits: 2 });
+      return (this.args.amount)?.toLocaleString(locales[currentLocale] ?? resolvedLocale, { style: 'currency', currency: this.args.currency, minimumFractionDigits: 2 });
     }
 }
