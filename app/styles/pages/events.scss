@@ -63,17 +63,19 @@
 }
 
 .explore-bar {
-  left: 230px;
-  position: absolute;
-  right: 300px;
-  top: 3px;
-  width: auto;
+  width: 60vw;
+  margin-right: 5vw;
+  margin-left: 5vw;
+
+  @media (max-width: 1190px) {
+    width: 40vw !important;
+  }
 
   input[type='text'] {
-    width: 100%;
+    width: auto;
 
     &:focus {
-      width: 100%;
+      width: auto;
     }
   }
 }
