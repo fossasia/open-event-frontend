@@ -29,10 +29,55 @@
                 column.headerComponent
                 sorts=this.sorts column=column sortBy=this.sortBy sortDir=this.sortDir
               }}
-                {{column.name}}
+              {{column.name}}
               {{/component}}
             {{else}}
-              {{column.name}}
+            {{#if (eq column.name "Microlocation")}}
+            <div>
+            <span class="inline-display">  {{column.name}}</span>
+            <span class="inline-display">
+            <UiPopup @content={{ "You need to add rooms into the wizard first before they show up here."}}>
+            <i class="info icon"></i>
+            </UiPopup>
+            </span>
+            </div>
+            {{/if}}
+             {{#if (eq column.name "Video Source URL")}}
+             <div>
+              <span class="inline-display">{{column.name}}</span>
+              <span class="inline-display"> <UiPopup @content={{ "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."}} @position="left center">
+            <i class="info icon"></i>
+            </UiPopup></span>
+            </div>
+            {{/if}}
+            {{#if (eq column.name "Join Video")}}
+             <div>
+            <span class="inline-display"> {{column.name}}</span>
+            <span class="inline-display"> <UiPopup @content={{ "You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links.You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links."}} @position="left center">
+            <i class="info icon"></i>
+            </UiPopup></span>
+            </div>
+            {{/if}}
+            {{#if (eq column.name "Room Password")}}
+             <div>
+              <span class="inline-display">{{column.name}}</span>
+               <span class="inline-display">
+             <UiPopup @content={{ "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."}} @position="left center">
+            <i class="info icon"></i>
+            </UiPopup> </span>
+            </div>
+            {{/if}}
+             {{#if (eq column.name "Additional information")}}
+            <div>
+             <span class="inline-display"> {{column.name}}</span>
+             <span class="inline-display"> <UiPopup @content={{ "Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."}} @position="left center">
+            <i class="info icon"></i>
+            </UiPopup></span>
+            </div>
+            {{/if}}
+             {{#if (eq column.name "Event")}}
+             {{column.name}}
+            {{/if}}
             {{/if}}
           </r.cell>
         </h.row>
