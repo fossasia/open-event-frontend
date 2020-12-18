@@ -39,12 +39,6 @@
   }
 
   &-mobile {
-    left: 50%;
-    position: absolute;
-    transform: translateX(-52%);
-    transition: all .2s ease-in-out;
-    width: 20%;
-    z-index: -1;
 
     input[type='text'] {
       width: 100%;
@@ -57,15 +51,26 @@
   }
 }
 
+.mobile-bar{
+  position: absolute !important;
+  width: 20%;
+  z-index: -1;
+  transition: all .1s;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: white;
+
+}
+
 .show-bar {
-  width: 80%;
+  width: 100%;
   z-index: 1;
 }
 
 .explore-bar {
-  width: 60vw;
-  margin-right: 5vw;
   margin-left: 5vw;
+  margin-right: 5vw;
+  width: 60vw;
 
   @media (max-width: 1190px) {
     width: 40vw !important;

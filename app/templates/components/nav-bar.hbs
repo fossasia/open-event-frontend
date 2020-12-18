@@ -68,11 +68,13 @@
       @route="index" class="item" @activeClass="">
       <div class="ui header small text">{{this.settings.appName}}</div>
     </LinkTo>
-    <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
-      <i class="search icon" style="cursor: auto;"></i>
-      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder="Search Events" />
-      <div role="button" {{action "toggleSearchBar"}}>
-        <i class="close icon" ></i>
+    <div id="mobile-bar" class="mobile-bar">
+      <div  class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
+        <i class="search icon" style="cursor: auto;"></i>
+        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder="Search Events" />
+        <div role="button" {{action "toggleSearchBar"}}>
+          <i class="close icon" ></i>
+        </div>
       </div>
     </div>
     <div class="right menu nav-bar">
