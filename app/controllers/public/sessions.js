@@ -16,28 +16,20 @@ export default class SessionsController extends Controller {
 
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
-    let sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
+    let sessions;
 
     if (this.sort === 'title') {
       sessions = groupBy(this.model.session.toArray(), '');
+    } else {
+      sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
     }
 
-    const arr = [];
-
-    for (const key in sessions) {
-      let date = key;
-
-      if (date === 'undefined') {
-        date = null;
+    return Object.entries(sessions).map(groupedSessions => (
+      {
+        'date'     : groupedSessions[0] === 'undefined' ? null : groupedSessions[0],
+        'sessions' : groupedSessions[1]
       }
-
-      arr.push({
-        date,
-        'sessions': sessions[key]
-      });
-    }
-
-    return arr;
+    ));
   }
 
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
