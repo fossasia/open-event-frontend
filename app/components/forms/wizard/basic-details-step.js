@@ -534,8 +534,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     openVideoRoomModal() {
       if (!this.data.event.get('videoSteam')) {
         const stream = this.store.createRecord('videoStream', {
-          event: this.data.event,
-          rooms: []
+          event : this.data.event,
+          rooms : []
         });
         this.set('data.event.videoStream', stream);
       }

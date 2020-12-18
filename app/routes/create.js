@@ -36,24 +36,24 @@ export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, E
         stripeAuthorization : this.store.createRecord('stripe-authorization')
       }),
       types: this.store.query('event-type', {
-        sort: 'name',
+        sort         : 'name',
         'page[size]' : 0,
         public       : true,
         cache        : true
       }),
       topics: this.store.query('event-topic', {
-        sort    : 'name',
-        include : 'event-sub-topics',
+        sort         : 'name',
+        include      : 'event-sub-topics',
         'page[size]' : 0,
         public       : true,
         cache        : true
       }),
-      channels : this.store.query('video-channel', {
+      channels: this.store.query('video-channel', {
         'page[size]' : 0,
         public       : true,
         cache        : true
       }),
-      steps: this.getSteps(),
+      steps: this.getSteps()
     });
   }
 }

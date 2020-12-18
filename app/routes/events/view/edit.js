@@ -29,20 +29,20 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin, Eve
     return hash({
       event : this.modelFor('events.view'),
       steps : this.getSteps(),
-      types: this.store.query('event-type', {
-        sort: 'name',
+      types : this.store.query('event-type', {
+        sort         : 'name',
         'page[size]' : 0,
         public       : true,
         cache        : true
       }),
       topics: this.store.query('event-topic', {
-        sort    : 'name',
-        include : 'event-sub-topics',
+        sort         : 'name',
+        include      : 'event-sub-topics',
         'page[size]' : 0,
         public       : true,
         cache        : true
       }),
-      channels : this.store.query('video-channel', {
+      channels: this.store.query('video-channel', {
         'page[size]' : 0,
         public       : true,
         cache        : true
