@@ -1,7 +1,3 @@
-{{!-- <div class="explore-bar d-flex items-center space-between m-2 p-2">
-  <Input @class="prompt" @type="text" @value={{this.event_name}} placeholder="Search Events" />
-  <i class="search icon"></i>
-</div> --}}
 <div class="ui stackable grid">
   <div class="three wide column">
     <Explore::SideBar @model={{this.model}} @clearQueryParams={{this.clearAllFilters}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @event_name={{this.event_name}} @is_past={{this.is_past}} @is_online={{this.is_online}} @has_logo={{this.has_logo}} @has_image={{this.has_image}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
