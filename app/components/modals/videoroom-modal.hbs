@@ -1,0 +1,13 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Add Video Stream'}}
+</div>
+<div class="y-scrollable scrollable-modal content">
+  <Forms::Events::View::VideoroomForm
+    @stream={{@stream}}
+    @event={{@stream.event}}
+    @channels={{@channels}} />
+</div>
+<div class="actions">
+  <button class="ui button" {{action (mut this.isOpen)}}>{{t 'Cancel'}}</button>
+</div>

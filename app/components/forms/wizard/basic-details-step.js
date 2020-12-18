@@ -531,6 +531,18 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
     },
 
+    openVideoRoomModal() {
+      if (!this.data.event.get('videoSteam')) {
+        const stream = this.store.createRecord('videoStream', {
+          event: this.data.event,
+          rooms: []
+        });
+        this.set('data.event.videoStream', stream);
+      }
+
+      this.set('isVideoroomModalOpen', true);
+    },
+
     // leaving these comments.. because someday we might want the time validation to change it's values according to its start counterpart, removed it for now because it sort of broke the UI.
     // updateDates() {
     //   const { startsAtDate, endsAtDate, startsAtTime, endsAtTime, timezone } = this.get('data.event');

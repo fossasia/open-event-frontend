@@ -8,7 +8,7 @@
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
       <UiDropdown
         @class="ui floating labeled icon dropdown blue button"
-        @selected={{this.data.stream.videoChannel}}
+        @selected={{this.stream.videoChannel}}
         @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
         <div class="default text">
@@ -30,7 +30,7 @@
 </div>
 <br>
 <form class="ui form {{if this.isLoading 'loading'}}">
-  {{#unless this.data.stream.event}}
+  {{#unless this.stream.event}}
     <div class="field">
       <label class="required">{{t 'Room'}}</label>
       <input type="hidden" id="rooms">
@@ -54,24 +54,24 @@
       </UiDropdown>
     </div>
   {{/unless}}
-  {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
+  {{#if (not-eq this.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label class="required">{{t 'Video Source URL'}}</label>
       <Widgets::Forms::LinkField
         @inputId="url"
-        @value={{this.data.stream.url}}
-        @onChange={{action (mut this.data.stream.url)}} />
+        @value={{this.stream.url}}
+        @onChange={{action (mut this.stream.url)}} />
     </div>
     <div class="field">
       <label>{{t 'Room Password'}}</label>
       <Input
-        @value={{this.data.stream.password}} />
+        @value={{this.stream.password}} />
     </div>
   {{/if}}
   <div class="field">
     <label>{{t 'Additional Information'}}</label>
     <Textarea
-      @value={{this.data.stream.additionalInformation}} />
+      @value={{this.stream.additionalInformation}} />
   </div>
   <div class="ui divider"></div>
   <div class="grouped fields">

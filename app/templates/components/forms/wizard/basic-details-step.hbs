@@ -78,12 +78,11 @@
         @value={{this.data.event.liveStreamUrl}}
         @onChange={{action (mut this.data.event.liveStreamUrl)}} />
     </div>
-    <div class="{{unless this.device.isMobile 'six wide'}} field">
-      <label>{{t "Webinar URL"}}</label>
-      <Widgets::Forms::LinkField
-        @inputId="webinar_url"
-        @value={{this.data.event.webinarUrl}}
-        @onChange={{action (mut this.data.event.webinarUrl)}} />
+    <div class="field">
+      <button type="button" class="ui right labeled icon button" {{action 'openVideoRoomModal'}}>
+        <i class="video icon"></i>
+        {{if this.data.event.videoStream (t 'Edit Video Room') (t 'Add Video Room')}}
+      </button>
     </div>
   {{/if}}
  <br>
@@ -611,6 +610,14 @@
   @tax={{this.data.event.tax}}
   @hasTaxInfo={{this.data.event.isTaxEnabled}} 
 />
+
+{{#if this.data.event.videoStream}}
+  <Modals::VideoroomModal
+    @isOpen={{this.isVideoroomModalOpen}}
+    @stream={{this.data.event.videoStream}}
+    @channels={{this.data.channels}} 
+  />
+{{/if}}
 
 <Forms::Wizard::WizardFooter
   @event={{this.data.event}}

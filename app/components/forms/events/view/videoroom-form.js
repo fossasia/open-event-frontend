@@ -15,20 +15,20 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked integrationLoading = false;
   @tracked loading = false;
 
-  @computed('data.stream.rooms.[]')
+  @computed('stream.rooms.[]')
   get room() {
-    return this.data.stream.rooms.toArray()[0];
+    return this.stream.rooms.toArray()[0];
   }
 
   @action
   setRoom(room) {
-    this.data.stream.rooms = [room];
-    this.data.stream.name = room.name;
+    this.stream.rooms = [room];
+    this.stream.name = room.name;
   }
 
   getValidationRules() {
     window.$.fn.form.settings.rules.checkVideoRoomsLength = () => {
-      return this.data.stream.rooms.length > 0;
+      return this.stream.rooms.length > 0;
     };
     const validationRules = {
       inline : true,
@@ -81,8 +81,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   get streamIdentifier() {
-    const { event } = this.data;
-    const { id } = this.data.stream;
+    const { event } = this;
+    const { id } = this.stream;
     return [event.identifier, 'stream', id ?? this.randomIdentifier].filter(Boolean).join('-');
   }
 
@@ -90,7 +90,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   async addJitsi(channel) {
     const identifier = this.streamIdentifier;
 
-    this.data.stream.set('url', channel.get('url') + '/eventyay/' + identifier);
+    this.stream.set('url', channel.get('url') + '/eventyay/' + identifier);
 
     this.integrationLoading = true;
 
@@ -101,7 +101,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.loader.load(`${api}/conferenceMapper?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true })
       ])).map(promise => promise.value);
 
-      this.data.stream.additionalInformation = this.generateMeetingInformation(phoneNumbers.numbers, pin.id);
+      this.stream.additionalInformation = this.generateMeetingInformation(phoneNumbers.numbers, pin.id);
     } catch (e) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
@@ -110,7 +110,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   addBigBlueButton(channel) {
-    this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+    this.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
   }
 
   @action
@@ -127,7 +127,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async setChannel(channel) {
-    const { url, additionalInformation } = getProperties(this.data.stream, ['url', 'additionalInformation']);
+    const { url, additionalInformation } = getProperties(this.stream, ['url', 'additionalInformation']);
     if (url || additionalInformation) {
       try {
         await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form. Do you want to proceed?'));
@@ -136,9 +136,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       }
     }
 
-    this.data.stream.set('videoChannel', channel);
-    this.data.stream.set('url', null);
-    this.data.stream.set('additionalInformation', null);
+    this.stream.set('videoChannel', channel);
+    this.stream.set('url', null);
+    this.stream.set('additionalInformation', null);
 
     if (channel) {await this.addIntegration(channel)}
   }
@@ -149,12 +149,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.onValid(async() => {
       try {
         this.loading = true;
-        await this.data.stream.save();
+        await this.stream.save();
         this.notify.success(this.l10n.t('Your stream has been saved'),
           {
             id: 'stream_save'
           });
-        this.router.transitionTo('events.view.videoroom', this.data.event.id);
+        this.router.transitionTo('events.view.videoroom', this.event.id);
       } catch (e) {
         console.error('Error while saving session', e);
         const message = e.errors?.[0]?.detail ?? this.l10n.t('Oops something went wrong. Please try again');
