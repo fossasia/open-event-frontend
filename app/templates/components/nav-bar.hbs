@@ -5,8 +5,8 @@
       <h3>{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
-    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
-      <div class="search-bar d-flex items-center space-between m-2 p-2">
+    {{#if this.isNotEventPageRoute}}
+      <div class="{{if (not this.isNotExplorePageRoute) "explore-bar"}} search-bar d-flex items-center space-between m-2 p-2">
         <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder="Search Events" />
         <i class="search icon"></i>
       </div>
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="right menu nav-bar">
-      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
+      {{#if this.isNotEventPageRoute}}
         <div role="button" class="item ui" {{action "toggleSearchBar"}}>
           <i class="search icon"></i>
         </div>

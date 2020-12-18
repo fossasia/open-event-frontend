@@ -63,41 +63,17 @@
 }
 
 .explore-bar {
-  background-color: #fafafa;
-  border-radius: .5rem;
-  color: #808080;
   left: 230px;
   position: absolute;
   right: 300px;
-  top: 1px;
+  top: 3px;
   width: auto;
-  @media (max-width: 767px) {
-    font-size: 85%;
-    padding: .15rem !important;
-    padding-left: .5rem !important;
-    right: 65px;
-  }
-
-  @media (max-width: 510px) {
-    left: 140px;
-
-    i {
-      display: none;
-    }
-  }
 
   input[type='text'] {
-    background-color: #fafafa;
-    border: 0;
-    outline: 0;
     width: 100%;
 
     &:focus {
       width: 100%;
     }
-  }
-
-  i {
-    margin-bottom: .5rem;
   }
 }
