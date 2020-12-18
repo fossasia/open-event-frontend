@@ -14,7 +14,7 @@ export default class SessionsController extends Controller {
   timezone = null;
   preserveScrollPosition = true;
 
-  @computed('model.session')
+  @computed('model.session.@each')
   get groupByDateSessions() {
     let sessions = groupBy(this.model.session.toArray(), s => moment(s.startsAt).format('dddd, Do MMMM'));
 
