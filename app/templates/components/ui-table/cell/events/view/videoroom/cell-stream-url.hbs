@@ -9,9 +9,10 @@
     <a 
       id="stream_url"
       href="{{href-to 'public.stream.view' (or @extraRecords.identifier @extraRecords.event.identifier) @record.slugName @record}}" 
-      target="_blank" rel="noopener" 
-      class="ui blue icon button" style="border-radius: 0.28571429rem;">
-      <i class="share icon"></i>
+      target="_blank" rel="noopener">
+      <div  class="ui blue icon button ml-auto">
+        <i class="share icon" ></i>
+      </div>
     </a>
   </div> 
 {{/if}}
