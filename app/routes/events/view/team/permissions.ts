@@ -82,7 +82,7 @@ export default class EventsViewTeamPermissions extends Route.extend({
           organizer : true
         },
         {
-          title     : 'Create view codes',
+          title     : this.l10n.t('Create view codes'),
           owner     : true,
           organizer : true
         },
@@ -150,7 +150,7 @@ export default class EventsViewTeamPermissions extends Route.extend({
           organizer : true
         },
         {
-          title     : 'View session submissions',
+          title     : this.l10n.t('View session submissions'),
           owner     : true,
           organizer : true
         },
