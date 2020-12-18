@@ -1,10 +1,17 @@
 {{#if @record}}
-  <div class="d-flex items-center">
-    <a class="truncate link-item" href={{this.link}} target="_blank" rel="noopener">{{this.streamUrl}}</a>
+  <div class="ui action input">
+    <input class="truncate" type="text" value={{this.streamUrl}} placeholder={{this.streamUrl}} readonly>
     <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right" class="ml-auto">
       <CopyButton @clipboardText={{this.streamUrl}} @class="ui grey icon button">
         <i class="copy icon"></i>
       </CopyButton>
     </UiPopup>
+    <a 
+      id="stream_url"
+      href="{{href-to 'public.stream.view' (or @extraRecords.identifier @extraRecords.event.identifier) @record.slugName @record}}" 
+      target="_blank" rel="noopener" 
+      class="ui blue icon button" style="border-radius: 0.28571429rem;">
+      <i class="linkify icon"></i>
+    </a>
   </div> 
 {{/if}}
