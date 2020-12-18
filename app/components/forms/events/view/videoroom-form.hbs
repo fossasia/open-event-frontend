@@ -56,13 +56,15 @@
   {{/unless}}
   {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
+      <span class="d-inline-block">
       <label class="required">{{t 'Video Source URL'}}
-        <span class="d-inline-block"> 
-          <UiPopup @content={{t "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."}} >
-          <i class="info icon"></i>
+      </label>
+      </span>
+      <span class="d-inline-block"> 
+          <UiPopup @content={{t "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."}} @variation="basic" >
+           <i class="info circle icon icon-color"></i>
           </UiPopup>
        </span>
-      </label>
       <Widgets::Forms::LinkField
         @inputId="url"
         @value={{this.data.stream.url}}
@@ -71,8 +73,8 @@
     <div class="field">
       <label>{{t 'Room Password'}}
         <span class="d-inline-block">
-         <UiPopup @content={{t "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."}} >
-          <i class="info icon"></i>
+         <UiPopup @content={{t "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."}}  @variation="basic" >
+          <i class="info circle icon icon-color"></i>
          </UiPopup> 
        </span>
       </label>
@@ -83,8 +85,8 @@
   <div class="field">
       <label>{{t 'Additional Information'}}
         <span class="d-inline-block">
-         <UiPopup @content={{t "Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."}}>
-         <i class="info icon"></i>
+         <UiPopup @content={{t "Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."}}  @variation="basic">
+          <i class="info circle icon icon-color"></i>
          </UiPopup>
         </span>
       </label>
