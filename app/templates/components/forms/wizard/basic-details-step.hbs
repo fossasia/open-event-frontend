@@ -42,7 +42,7 @@
   <br>
   <div class="ui secondary pointing menu">
     {{#each this.locationMenuItems as |item|}}
-      <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
+      <a role="button" href="javascript:void();" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
         {{t-var item}}
       </a>
     {{/each}}
