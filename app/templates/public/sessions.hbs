@@ -54,7 +54,7 @@
 <div class="mt-8">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
-    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">{{t group.date}}</h3>
+    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">{{group.date}}</h3>
     <table class="ui very basic table">
       <thead class="full-width">
         <tr>
@@ -66,7 +66,7 @@
         {{#each group.sessions as |session|}}
           <tr>
             <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
-              <h4 class="ui header {{unless this.device.isMobile 'pt-4'}} text muted">
+              <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}">
                 {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
               </h4>
             </td>
