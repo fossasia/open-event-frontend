@@ -5,18 +5,23 @@
         {{t "Video Channel"}}
       </h3>
     </div>
-    <div class="ui right aligned sixteen wide mobile eight wide computer column">
-      <UiDropdown @class="ui floating labeled icon dropdown blue button" @selected={{this.data.stream.videoChannel}}
-        @onChange={{action this.setChannel}} as |execute mapper|>
+    <div
+      class="ui right aligned sixteen wide mobile eight wide computer column"
+    >
+      <UiDropdown
+        @class="ui floating labeled icon dropdown blue button"
+        @selected={{this.data.stream.videoChannel}}
+        @onChange={{action this.setChannel}} as |execute mapper|
+      >
         <i class="video icon"></i>
         <div class="default text">
           {{t "Add Video"}}
         </div>
         <div class="menu">
           {{#each (sort-by "id" this.channels) as |channel|}}
-          <div data-value="{{map-value mapper channel}}" class="item">
-            {{channel.name}}
-          </div>
+            <div data-value="{{map-value mapper channel}}" class="item">
+              {{channel.name}}
+            </div>
           {{/each}}
           <div data-value="{{map-value mapper null}}" class="item">
             {{t "Custom"}}
@@ -29,72 +34,88 @@
 <br />
 <form class="ui form {{if this.isLoading "loading"}}">
   {{#unless this.data.stream.event}}
-  <div class="field">
-    <label class="required">
-      {{t "Room"}}
-    </label>
-    <input type="hidden" id="rooms" />
-    <UiDropdown @class="fluid selection" @selected={{this.room}} @onChange={{action this.setRoom}} as |execute mapper|>
-      <i class="dropdown icon"></i>
-      <div class="default text">
-        {{t "Select Rooms"}}
-      </div>
-      <div class="menu">
-        {{#each this.rooms as |room|}}
-        {{#if room.name}}
-        <div data-value="{{map-value mapper room}}" class="item">
-          {{room.name}}
+    <div class="field">
+      <label class="required">
+        {{t "Room"}}
+      </label>
+      <input type="hidden" id="rooms" />
+      <UiDropdown
+        @class="fluid selection"
+        @selected={{this.room}}
+        @onChange={{action this.setRoom}} as |execute mapper|
+      >
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          {{t "Select Rooms"}}
         </div>
-        {{/if}}
-        {{/each}}
-      </div>
-    </UiDropdown>
-  </div>
+        <div class="menu">
+          {{#each this.rooms as |room|}}
+            {{#if room.name}}
+              <div data-value="{{map-value mapper room}}" class="item">
+                {{room.name}}
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </UiDropdown>
+    </div>
   {{/unless}}
   {{#if (not-eq this.data.stream.videoChannel.provider "bbb")}}
-  <div class="field">
-    <span class="d-inline-block">
-      <label class="required">
-        {{t "Video Source URL"}}
-      </label>
-    </span>
-    <span class="d-inline-block">
-      <UiPopup @content={{t
-            "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."
-          }} @variation="basic">
-        <i class="info circle icon grey"></i>
-      </UiPopup>
-    </span>
-    <Widgets::Forms::LinkField @inputId="url" @value={{this.data.stream.url}}
-      @onChange={{action (mut this.data.stream.url)}} />
-  </div>
-  <div class="field">
-    <label>
-      {{t "Room Password"}}
+    <div class="field">
       <span class="d-inline-block">
-        <UiPopup @content={{t
-              "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."
-            }} @variation="basic">
+        <label class="required">
+          {{t "Video Source URL"}}
+        </label>
+      </span>
+      <span class="d-inline-block">
+        <UiPopup
+          @content={{t
+            "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."
+          }}
+          @variation="basic"
+        >
           <i class="info circle icon grey"></i>
         </UiPopup>
       </span>
-    </label>
-    <Input @value={{this.data.stream.password}} />
-  </div>
+      <Widgets::Forms::LinkField
+        @inputId="url"
+        @value={{this.data.stream.url}}
+        @onChange={{action (mut this.data.stream.url)}}
+      />
+    </div>
+    <div class="field">
+      <label>
+        {{t "Room Password"}}
+        <span class="d-inline-block">
+          <UiPopup
+            @content={{t
+              "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."
+            }}
+            @variation="basic"
+          >
+            <i class="info circle icon grey"></i>
+          </UiPopup>
+        </span>
+      </label>
+      <Input @value={{this.data.stream.password}} />
+    </div>
   {{/if}}
   <div class="field">
     <label>
       {{t "Additional Information"}}
       <span class="d-inline-block">
-        <UiPopup @content={{t
+        <UiPopup
+          @content={{t
             "Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."
-          }} @variation="basic">
+          }}
+          @variation="basic"
+        >
           <i class="info circle icon grey"></i>
         </UiPopup>
       </span>
     </label>
     <Textarea @value={{this.data.stream.additionalInformation}} />
-    </div>
+  </div>
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>
