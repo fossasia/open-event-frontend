@@ -2,15 +2,15 @@
   <div class="ui no bottom padding row items-center">
     {{#unless @hidePageSize}}
       <div class="left aligned eight wide column">
-        <Tables::Utilities::PageSizeInput @pageSize={{this.pageSize}} />
+        <Tables::Utilities::PageSizeInput
+          @pageSize={{this.pageSize}} />
       </div>
     {{/unless}}
     {{#unless @hideSearchBox}}
       <div class="eight wide right aligned column">
         <Tables::Utilities::SearchBox
           @searchQuery={{this.searchQuery}}
-          @filterOptions={{this.filterOptions}}
-        />
+          @filterOptions={{this.filterOptions}} />
       </div>
     {{/unless}}
   </div>
@@ -21,117 +21,83 @@
         @columns={{this.columns}}
         @enableReorder={{true}}
         @sorts={{this.sorts}}
-        @onUpdateSorts={{action (mut this.sorts)}} as |h|
-      >
+        @onUpdateSorts={{action (mut this.sorts)}} as |h|>
         <h.row as |r|>
           <r.cell as |column|>
             {{#if column.headerComponent}}
               {{#component
                 column.headerComponent
-                sorts=this.sorts
-                column=column
-                sortBy=this.sortBy
-                sortDir=this.sortDir
+                sorts=this.sorts column=column sortBy=this.sortBy sortDir=this.sortDir
               }}
-                {{column.name}}
+              {{column.name}}
               {{/component}}
             {{else}}
-              {{#if (eq column.name "Microlocation")}}
-                <div>
-                  <span class="d-inline-block">
-                    {{column.name}}
-                  </span>
-                  <span class="d-inline-block">
-                    <UiPopup
-                      @content={{"You need to add rooms into the wizard first before they show up here."
-                      }}
-                      @variation="basic"
-                    >
-                      <i class="info circle icon grey"></i>
-                    </UiPopup>
-                  </span>
-                </div>
-              {{/if}}
-              {{#if (eq column.name "Video Source URL")}}
-                <div>
-                  <span class="d-inline-block">
-                    {{column.name}}
-                  </span>
-                  <span class="d-inline-block">
-                    <UiPopup
-                      @content={{"This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."
-                      }}
-                      @variation="basic"
-                    >
-                      <i class="info circle icon grey"></i>
-                    </UiPopup>
-                  </span>
-                </div>
-              {{/if}}
-              {{#if (eq column.name "Join Video")}}
-                <div>
-                  <span class="d-inline-block">
-                    {{column.name}}
-                  </span>
-                  <span class="d-inline-block">
-                    <UiPopup
-                      @content={{"You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links.You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links."
-                      }}
-                      @variation="basic"
-                    >
-                      <i class="info circle icon grey"></i>
-                    </UiPopup>
-                  </span>
-                </div>
-              {{/if}}
-              {{#if (eq column.name "Room Password")}}
-                <div>
-                  <span class="d-inline-block">
-                    {{column.name}}
-                  </span>
-                  <span class="d-inline-block">
-                    <UiPopup
-                      @content={{"The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."
-                      }}
-                      @variation="basic"
-                    >
-                      <i class="info circle icon grey"></i>
-                    </UiPopup>
-                  </span>
-                </div>
-              {{/if}}
-              {{#if (eq column.name "Additional information")}}
-                <div>
-                  <span class="d-inline-block">
-                    {{column.name}}
-                  </span>
-                  <span class="d-inline-block">
-                    <UiPopup
-                      @content={{"Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."
-                      }}
-                      @variation="basic"
-                    >
-                      <i class="info circle icon grey"></i>
-                    </UiPopup>
-                  </span>
-                </div>
-              {{/if}}
-              {{#if (eq column.name "Event")}}
-                {{column.name}}
-              {{/if}}
+            {{#if (eq column.name "Microlocation")}}
+            <div>
+              <span class="d-inline-block">  {{column.name}}</span>
+                <span class="d-inline-block">
+                  <UiPopup @content={{ "You need to add rooms into the wizard first before they show up here."}}  @variation="basic">
+                  <i class="info circle icon grey"></i>
+                  </UiPopup>
+                </span>
+            </div>
+            {{/if}}
+             {{#if (eq column.name "Video Source URL")}}
+            <div>
+              <span class="d-inline-block">{{column.name}}</span>
+               <span class="d-inline-block"> 
+                 <UiPopup @content={{ "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."}}  @variation="basic">
+                 <i class="info circle icon grey"></i>
+                 </UiPopup>
+               </span>
+            </div>
+            {{/if}}
+            {{#if (eq column.name "Join Video")}}
+            <div>
+              <span class="d-inline-block"> {{column.name}}</span>
+               <span class="d-inline-block"> 
+                 <UiPopup @content={{ "You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links.You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links."}}  @variation="basic">
+                 <i class="info circle icon grey"></i>
+                 </UiPopup>
+               </span>
+            </div>
+            {{/if}}
+            {{#if (eq column.name "Room Password")}}
+            <div>
+             <span class="d-inline-block">{{column.name}}</span>
+              <span class="d-inline-block">
+                <UiPopup @content={{ "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."}}  @variation="basic">
+                <i class="info circle icon grey"></i>
+                </UiPopup> 
+              </span>
+            </div>
+            {{/if}}
+             {{#if (eq column.name "Additional information")}}
+             <div>
+               <span class="d-inline-block"> {{column.name}}</span>
+                <span class="d-inline-block"> 
+                 <UiPopup @content={{ "Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."}} @variation="basic">
+                 <i class="info circle icon grey"></i>
+                 </UiPopup>
+               </span>
+            </div>
+            {{/if}}
+             {{#if (eq column.name "Event")}}
+             {{column.name}}
+            {{/if}}
             {{/if}}
           </r.cell>
         </h.row>
       </t.head>
-      <t.body @rows={{this.rows}} as |b|>
+      <t.body
+        @rows={{this.rows}} as |b|>
         <b.row as |r|>
           <r.cell as |cell column row|>
             {{#if column.cellComponent}}
-              {{#component
-                column.cellComponent
-                record=(get row column.valuePath)
-                extraRecords=(get-properties row column.extraValuePaths)
-                props=(hash options=column.options actions=column.actions)
+              {{#component column.cellComponent
+                           record=(get row column.valuePath)
+                           extraRecords=(get-properties row column.extraValuePaths)
+                           props=(hash options=column.options actions=column.actions)
               }}
                 {{cell}}
               {{/component}}
@@ -143,13 +109,13 @@
       </t.body>
     </EmberTable>
   </div>
+
   {{#unless @hidePagination}}
     <div class="ui no top padding row">
       <Tables::Utilities::Pagination
         @currentPage={{this.currentPage}}
         @pageSize={{this.pageSize}}
-        @metaData={{this.metaData}}
-      />
+        @metaData={{this.metaData}} />
     </div>
   {{/unless}}
 </div>
