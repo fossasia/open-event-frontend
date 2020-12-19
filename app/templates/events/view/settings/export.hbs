@@ -1,5 +1,5 @@
 <div class="ui stackable very relaxed container grid">
-  <div class="six wide column">
+  <div class="eight wide column">
     <Events::View::Export::DownloadZip @startGeneration={{action "startGeneration"}} @isDownloadDisabled={{this.isDownloadDisabled}} @eventExportStatus={{this.eventExportStatus}} @eventDownloadUrl={{this.eventDownloadUrl}} @data={{this.data}} @isLoading={{this.isLoading}} />
     <div class="ui divider"></div>
     <Events::View::Export::DownloadCommon @downloadType="Pentabarf XML" @downloadUrl="pentabarf.xml" @model={{this.model}} />
@@ -8,7 +8,7 @@
     <div class="ui divider"></div>
     <Events::View::Export::DownloadCommon @downloadType="iCalendar XML (xCal)" @downloadUrl="calendar.xcs" @model={{this.model}} />
   </div>
-  <div class="six wide column">
+  <div class="eight wide column">
     <Events::View::Export::ApiResponse @eventId={{this.model.id}} />
   </div>
 </div>
