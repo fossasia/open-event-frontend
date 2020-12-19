@@ -9,6 +9,38 @@
       {{/if}}
       {{general-date @event.startsAt 'tz' tz=@event.timezone}}
     </div>
+
+    {{#if this.Session}}
+    <div class="ui grid">
+      <div class="four column row">
+        <div class="coloum">
+          <UiDropdown class="ui floating dropdown button mt-4">
+            {{t 'Add Events'}}
+            <div class="menu">
+              {{#each this.calendarUrls as |calendar|}}
+                <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+                  {{calendar.name}}
+                </a>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+
+        <div class="coloum">
+            <UiDropdown class="ui floating dropdown button mt-4">
+              {{t 'Add Sessions'}}
+              <div class="menu">
+                {{#each this.SessioncalendarUrls as |calendar|}}
+                  <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+                    {{calendar.name}}
+                  </a>
+                {{/each}}
+              </div>
+            </UiDropdown>
+        </div>
+      </div>
+    </div>
+    {{else}}
     <UiDropdown class="ui floating dropdown button mt-4">
       {{t 'Add to Calendar'}}
       <div class="menu">
@@ -19,5 +51,6 @@
         {{/each}}
       </div>
     </UiDropdown>
+    {{/if}}
   </div>
 </div>

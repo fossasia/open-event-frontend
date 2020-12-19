@@ -27,6 +27,10 @@ export default class AddToCalender extends Component<Args> {
     return this.startsAt.isSame(this.endsAt, 'day');
   }
 
+  get Session(): boolean {
+    return this.args.event.sessions;
+  }
+
   get googleUrl(): string {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYYMMDD[T]HHmmSS[Z]');
@@ -45,6 +49,7 @@ export default class AddToCalender extends Component<Args> {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
     const endTime = this.endsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
+    
     return `https://outlook.live.com/calendar/0/deeplink/compose?subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${(event.description).substring(0, 1000)}&location=${this.args.location}`;
   }
 
@@ -56,5 +61,13 @@ export default class AddToCalender extends Component<Args> {
   get calendarUrls(): { name: string; url: string; }[] {
     return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }, { name: 'Yahoo', url: this.yahooUrl }, { name: 'Outlook', url: this.outlookUrl }];
   }
+  
+  get SessioniCalUrl(): string {
+    const host = this.loader.host();
+    return host + '/v1/events/' + this.args.event.identifier + '.ics?include_sessions';
+  }
 
+  get SessioncalendarUrls(): { name: string; url: string; }[] {
+    return [{ name: 'iCal', url: this.SessioniCalUrl }];
+  }
 }
