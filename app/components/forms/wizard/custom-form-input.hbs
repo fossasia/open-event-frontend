@@ -13,8 +13,8 @@
     </div>
     <i class="dropdown icon"></i>
     <div class="menu">
-      <div class="item" data-value="text">Text</div>
-      <div class="item" data-value="number">Number</div>
+      <div class="item" data-value="text">{{t "Text"}}</div>
+      <div class="item" data-value="number">{{t "Number"}}</div>
     </div>
   </UiDropdown>
   <button class="ui button" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>{{if @field (t 'Save') (t 'Add')}}</button>
