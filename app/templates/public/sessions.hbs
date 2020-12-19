@@ -54,7 +54,7 @@
 <div class="mt-8">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
-    <h3 class="ui header" style="margin-bottom: -20px; color: rgba(0, 0, 0, 0.7);">{{t-var group.date}}</h3>
+    <h3 class="ui header mb--4 text muted">{{t group.date}}</h3>
     <table class="ui very basic table">
       {{#unless this.device.isMobile}}
         <thead class="full-width">
