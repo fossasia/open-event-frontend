@@ -79,6 +79,12 @@ module.exports = function(environment) {
     authorizer: 'authorizer:jwt'
   };
 
+  ENV['ember-h-captcha'] = {
+    jsUrl: 'https://hcaptcha.com/1/api.js', // default
+    sitekey: '4d94db5b-d3fd-407b-a574-e6ba0af9b73c',
+    hl: 'en',
+  };
+
   ENV['ember-simple-auth-token'] = {
     refreshAccessTokens     : false,
     serverTokenEndpoint     : `${ENV.APP.apiHost}/auth/session`,

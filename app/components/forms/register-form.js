@@ -6,6 +6,7 @@ export default Component.extend(FormMixin, {
   email     : '',
   password  : '',
   isLoading : false,
+  captcha   : false,
 
   getValidationRules() {
     return {
@@ -60,6 +61,14 @@ export default Component.extend(FormMixin, {
         this.set('isLoading', true);
         this.sendAction('submit');
       });
+    },
+
+    captchaSuccess() {
+      this.set('captcha', true);
+    },
+
+    onCaptchaExpired() {
+      this.set('captcha', false);
     },
 
     showSignupPassword() {
