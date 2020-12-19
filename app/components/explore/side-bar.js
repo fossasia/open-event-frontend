@@ -183,19 +183,9 @@ export default class SideBar extends Component {
       startDate         : null,
       endDate           : null,
       dateType          : null,
-      category          : null,
-      sub_category      : null,
-      event_type        : null,
-      location          : null,
-      ticket_type       : null,
-      cfs               : null,
-      event_name        : null,
-      is_online         : null,
-      has_logo          : null,
-      has_image         : null,
-      is_past           : null,
       eventLocationType : null
     });
+    this.clearQueryParams();
   }
 
   @action

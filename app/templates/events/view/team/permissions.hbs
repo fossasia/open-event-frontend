@@ -10,9 +10,9 @@
     {{#each this.model.permissions as |permission|}}
       <tr>
         {{#if permission.header}}
-          <td colspan="3" class="left aligned" style="background-color: rgba(0, 0, 0, 0.05);">{{permission.title}}</td>
+          <td colspan="3" class="left aligned" style="background-color: rgba(0, 0, 0, 0.05);">{{t-var permission.title}}</td>
         {{else}}
-          <td class="left aligned">{{permission.title}}</td>
+          <td class="left aligned">{{t-var permission.title}}</td>
           <td>
             {{#if permission.owner}}
               <i class="check icon"></i>
