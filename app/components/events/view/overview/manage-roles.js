@@ -54,7 +54,6 @@ export default class ManageRoles extends Component {
 
   @action
   async resendInvite(invite) {
-    // {{debugger}}
     console.log(invite.id);
     await this.loader.load('/role-invites/'+invite.id+'/resend-invite');
   }
