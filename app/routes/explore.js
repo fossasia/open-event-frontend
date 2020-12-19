@@ -17,6 +17,7 @@ export default class ExploreRoute extends Route {
    * @return {*}
    * @private
    */
+
   _loadEvents(params) {
     const filterOptions = [
       {
@@ -25,6 +26,48 @@ export default class ExploreRoute extends Route {
         val  : 'published'
       }
     ];
+    const onlineFilter = {
+      and: [
+        {
+          name : 'online',
+          op   : 'eq',
+          val  : true
+        },
+        {
+          name : 'location_name',
+          op   : 'eq',
+          val  : null
+        }
+      ]
+    };
+    const locationFilter = {
+      and: [
+        {
+          name : 'location_name',
+          op   : params.location ? 'ilike' : 'ne',
+          val  : params.location ? `%${params.location}%` : null
+        },
+        {
+          name : 'online',
+          op   : 'eq',
+          val  : false
+        }
+      ]
+    };
+    const mixedFilter = {
+      and: [
+        {
+          name : 'online',
+          op   : 'eq',
+          val  : true
+        },
+        {
+          name : 'location_name',
+          op   : params.location ? 'ilike' : 'ne',
+          val  : params.location ? `%${params.location}%` : null
+        }
+      ]
+    };
 
     if (params.category) {
       filterOptions.push({
@@ -73,204 +116,36 @@ export default class ExploreRoute extends Route {
         }
       });
     }
-    if (params.is_online && params.is_location && params.is_mixed) {
-      filterOptions.push({
-        or: [
-          {
-            and: [
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : true
-              },
-              {
-                name : 'location_name',
-                op   : 'eq',
-                val  : null
-              }
-            ]
-          },
-          {
-            and: [
-              {
-                name : 'location_name',
-                op   : params.location ? 'ilike' : 'ne',
-                val  : params.location ? `%${params.location}%` : null
-              },
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : false
-              }
-            ]
-          },
-          {
-            and: [
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : true
-              },
-              {
-                name : 'location_name',
-                op   : params.location ? 'ilike' : 'ne',
-                val  : params.location ? `%${params.location}%` : null
-              }
-            ]
-          }
-        ]
-      });
-    } else if (params.is_online && params.is_location) {
-      filterOptions.push({
-        or: [
-          {
-            and: [
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : true
-              },
-              {
-                name : 'location_name',
-                op   : 'eq',
-                val  : null
-              }
-            ]
-          },
-          {
-            and: [
-              {
-                name : 'location_name',
-                op   : params.location ? 'ilike' : 'ne',
-                val  : params.location ? `%${params.location}%` : null
-              },
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : false
-              }
-            ]
-          }
-        ]
-      });
-    } else if (params.is_online && params.is_mixed) {
-      filterOptions.push({
-        or: [
-          {
-            and: [
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : true
-              },
-              {
-                name : 'location_name',
-                op   : 'eq',
-                val  : null
-              }
-            ]
-          },
-          {
-            and: [
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : true
-              },
-              {
-                name : 'location_name',
-                op   : params.location ? 'ilike' : 'ne',
-                val  : params.location ? `%${params.location}%` : null
-              }
-            ]
-          }
-        ]
-      });
-    } else if (params.is_location && params.is_mixed) {
-      filterOptions.push({
-        or: [
-          {
-            and: [
-              {
-                name : 'location_name',
-                op   : params.location ? 'ilike' : 'ne',
-                val  : params.location ? `%${params.location}%` : null
-              },
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : false
-              }
-            ]
-          },
-          {
-            and: [
-              {
-                name : 'online',
-                op   : 'eq',
-                val  : true
-              },
-              {
-                name : 'location_name',
-                op   : params.location ? 'ilike' : 'ne',
-                val  : params.location ? `%${params.location}%` : null
-              }
-            ]
-          }
-        ]
-      });
-    } else if (params.is_online) {
-      filterOptions.push({
-        and: [
-          {
-            name : 'online',
-            op   : 'eq',
-            val  : true
-          },
-          {
-            name : 'location_name',
-            op   : 'eq',
-            val  : null
-          }
-        ]
-      });
-    } else if (params.is_location) {
-      filterOptions.push({
-        and: [
-          {
-            name : 'location_name',
-            op   : params.location ? 'ilike' : 'ne',
-            val  : params.location ? `%${params.location}%` : null
-          },
-          {
-            name : 'online',
-            op   : 'eq',
-            val  : false
-          }
-        ]
-      });
-    } else if (params.is_mixed) {
-      filterOptions.push({
-        and: [
-          {
-            name : 'online',
-            op   : 'eq',
-            val  : true
-          },
-          {
-            name : 'location_name',
-            op   : params.location ? 'ilike' : 'ne',
-            val  : params.location ? `%${params.location}%` : null
-          }
-        ]
-      });
-    }
-    if (params.location && params.is_online === null && params.is_location === null && params.is_mixed === null) {
-      filterOptions.push({
-        name : 'location_name',
-        op   : 'ilike',
-        val  : `%${params.location}%`
-      });
+    if (params.is_online || params.is_location || params.is_mixed || params.location) {
+      if (params.is_online && params.is_location && params.is_mixed) {
+        filterOptions.push({
+          or: [onlineFilter, locationFilter, mixedFilter]
+        });
+      } else if (params.is_online && params.is_location) {
+        filterOptions.push({
+          or: [onlineFilter, locationFilter]
+        });
+      } else if (params.is_online && params.is_mixed) {
+        filterOptions.push({
+          or: [onlineFilter, mixedFilter]
+        });
+      } else if (params.is_location && params.is_mixed) {
+        filterOptions.push({
+          or: [locationFilter, mixedFilter]
+        });
+      } else if (params.is_online) {
+        filterOptions.push(onlineFilter);
+      } else if (params.is_location) {
+        filterOptions.push(locationFilter);
+      } else if (params.is_mixed) {
+        filterOptions.push(mixedFilter);
+      } else {
+        filterOptions.push({
+          name : 'location_name',
+          op   : 'ilike',
+          val  : `%${params.location}%`
+        });
+      }
     }
     if (params.has_image) {
       filterOptions.push({

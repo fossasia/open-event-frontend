@@ -16,6 +16,19 @@ export default class SideBar extends Component {
   customEndDate = null;
   @tracked showFilters = false;
   isMapVisible = true;
+  setLocationFilter() {
+    if (this.is_online && this.is_location === null && this.is_mixed === null) {
+      this.set('location', null);
+    }
+  }
+
+  setAllSettingFilter() {
+    this.setProperties({
+      is_online   : null,
+      is_location : null,
+      is_mixed    : null
+    });
+  }
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
   get hideDefaultFilters() {
@@ -73,17 +86,11 @@ export default class SideBar extends Component {
         is_mixed    : 'true'
       });
     } else if (this.is_location !== null && this.is_mixed !== null) {
-      this.setProperties({
-        is_online   : null,
-        is_location : null,
-        is_mixed    : null
-      });
+      this.setAllSettingFilter();
     } else {
       this.set('is_online', this.is_online === null ? 'true' : null);
     }
-    if (this.is_online && this.is_location === null && this.is_mixed === null) {
-      this.set('location', null);
-    }
+    this.setLocationFilter();
   }
 
   @action
@@ -94,17 +101,11 @@ export default class SideBar extends Component {
         is_mixed  : 'true'
       });
     } else if (this.is_online !== null && this.is_mixed !== null) {
-      this.setProperties({
-        is_online   : null,
-        is_location : null,
-        is_mixed    : null
-      });
+      this.setAllSettingFilter();
     } else {
       this.set('is_location', this.is_location === null ? 'true' : null);
     }
-    if (this.is_online && this.is_location === null && this.is_mixed === null) {
-      this.set('location', null);
-    }
+    this.setLocationFilter();
   }
 
   @action
@@ -115,17 +116,11 @@ export default class SideBar extends Component {
         is_location : 'true'
       });
     } else if (this.is_location !== null && this.is_online !== null) {
-      this.setProperties({
-        is_online   : null,
-        is_location : null,
-        is_mixed    : null
-      });
+      this.setAllSettingFilter();
     } else {
       this.set('is_mixed', this.is_mixed === null ? 'true' : null);
     }
-    if (this.is_online && this.is_location === null && this.is_mixed === null) {
-      this.set('location', null);
-    }
+    this.setLocationFilter();
   }
 
   @action
