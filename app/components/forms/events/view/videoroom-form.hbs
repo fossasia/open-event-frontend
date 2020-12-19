@@ -57,44 +57,53 @@
   {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <span class="d-inline-block">
-        <label class="required">{{t 'Video Source URL'}}
-        </label>
+      <label class="required">{{t 'Video Source URL'}}</label>
       </span>
       <span class="d-inline-block">
         <UiPopup
-          @content={{t "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."}}
+          @content={{t
+            "This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com."
+          }}
           @variation="basic">
           <i class="info circle icon grey"></i>
         </UiPopup>
       </span>
-      <Widgets::Forms::LinkField @inputId="url" @value={{this.data.stream.url}}
+      <Widgets::Forms::LinkField
+        @inputId="url"
+        @value={{this.data.stream.url}}
         @onChange={{action (mut this.data.stream.url)}} />
     </div>
     <div class="field">
       <label>{{t 'Room Password'}}
         <span class="d-inline-block">
           <UiPopup
-            @content={{t "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."}}
+            @content={{t
+              "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."
+            }}
             @variation="basic">
             <i class="info circle icon grey"></i>
           </UiPopup>
         </span>
       </label>
-      <Input @value={{this.data.stream.password}} />
+      <Input
+        @value={{this.data.stream.password}} />
     </div>
   {{/if}}
   <div class="field">
     <label>{{t 'Additional Information'}}
-      <span class="d-inline-block">
+       <span class="d-inline-block">
         <UiPopup
-          @content={{t "Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."}}
+          @content={{t
+            "Additional Information fields can be used to share information such as phone access, PINs and other video room specific information."
+          }}
           @variation="basic">
           <i class="info circle icon grey"></i>
         </UiPopup>
       </span>
     </label>
-    <Textarea @value={{this.data.stream.additionalInformation}} />
-    </div>
+    <Textarea
+      @value={{this.data.stream.additionalInformation}} />
+  </div>
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>
