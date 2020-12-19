@@ -1,13 +1,18 @@
-import Model, { attr, hasMany } from '@ember-data/model';
+import { attr, hasMany, belongsTo } from '@ember-data/model';
+import ModelBase from 'open-event-frontend/models/base';
 import { slugify } from 'open-event-frontend/utils/text';
+import Event from './event';
 import Microlocation from './microlocation';
+import VideoChannel from './video-channel';
 
-export default class VideoStream extends Model {
+export default class VideoStream extends ModelBase.extend() {
   @attr() name!: string;
   @attr() url!: string;
   @attr() password!: string;
   @attr() additionalInformation!: string;
   @hasMany('microlocation') rooms!: Microlocation[];
+  @belongsTo('event') event!: Event;
+  @belongsTo('video-channel') videoChannel!: VideoChannel;
 
   get slugName(): string {
     return slugify(this.name);

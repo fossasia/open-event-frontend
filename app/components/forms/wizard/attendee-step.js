@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { computed, observer } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy } from 'lodash-es';
@@ -15,13 +15,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return fields;
   }),
 
+  revertChanges: observer('data.event.isTicketFormEnabled', function() {
+    if (!this.data.event.isTicketFormEnabled) {
+      this.editableFields.forEach(field => field.set('isRequired', false));
+    }
+  }),
+
   showEditColumn: computed('editableFields.@each', function() {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
   actions: {
     removeField(field) {
-      this.data.customForms.removeObject(field);
+      field.deleteRecord();
     }
   }
 });

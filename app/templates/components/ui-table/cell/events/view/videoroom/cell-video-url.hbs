@@ -1,0 +1,9 @@
+{{#if @record.url}}
+  <div class="truncate">
+    {{#if (eq @record.videoChannel.provider 'bbb')}}
+      {{t 'Auto-Generated'}}
+    {{else}}
+      <a href="{{@record.url}}">{{@record.url}}</a>
+    {{/if}}
+  </div>
+{{/if}}
