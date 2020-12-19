@@ -20,11 +20,10 @@
   <br/>
   {{#each this.socialLinks as |socialLink|}}
     {{#if (eq socialLink.normalizedName 'globe')}}
-      <div class="item">
-        <i class="fitted {{socialLink.normalizedName}} disabled icon"></i>
-        <div class="content">
-          <a href="{{socialLink.link}}" target="_blank" rel="noopener nofollow">{{socialLink.displayName}}</a>
-        </div>
+       <div class="m-1">
+        <a href="{{socialLink.link}}" class="ui icon small blue button" target="_blank" rel="noopener nofollow">
+          <div style="font-size: .8rem;">{{socialLink.displayName}}</div>
+        </a>
       </div>
     {{/if}}
   {{/each}}
