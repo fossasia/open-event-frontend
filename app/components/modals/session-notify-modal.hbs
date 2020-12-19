@@ -11,14 +11,14 @@
   {{#if this.mail}}
     <form class="ui form">
       <div class="field">
-        <label>Subject</label>
+        <label>{{t "Subject"}}</label>
         <Input
           type="text"
           name="subject"
           @value={{this.subject}} />
       </div>
       <div class="field">
-        <label>Message</label>
+        <label>{{t "Message"}}</label>
         <Textarea
           name="message"
           @rows="15"

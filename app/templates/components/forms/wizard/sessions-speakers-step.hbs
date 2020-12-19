@@ -31,7 +31,7 @@
       {{#each this.tracks as |track|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
-            <Input @type="text" @name="track" @value={{track.name}} placeholder="Name" />
+            <Input @type="text" @name="track" @value={{track.name}} placeholder={{t "Name"}} />
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <Widgets::Forms::ColorPicker @value={{track.color}} @fontColor={{track.fontColor}}>
@@ -61,11 +61,11 @@
       {{#each this.microlocations as |microlocation index|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
-            <Input @type="text" @value={{microlocation.name}} placeholder="Name" />
+            <Input @type="text" @value={{microlocation.name}} placeholder={{t "Name"}} />
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              <Input @type="number" @value={{microlocation.floor}} placeholder="Floor" />
+              <Input @type="number" @value={{microlocation.floor}} placeholder={{t "Floor"}} />
               {{#if (gt this.microlocations.length 1)}}
                 <button class="ui icon red button" type="button" {{action 'removeRoom' microlocation index}}>
                   <i class="minus icon"></i>
@@ -96,7 +96,7 @@
       {{#each this.sessionTypes as |sessionType|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
-            <Input @type="text" @name="session" @value={{sessionType.name}} placeholder="Name" />
+            <Input @type="text" @name="session" @value={{sessionType.name}} placeholder={{t "Name"}} />
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">

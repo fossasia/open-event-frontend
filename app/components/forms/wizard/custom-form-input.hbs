@@ -6,7 +6,7 @@
   </span>
 </div>
 <div {{did-update this.updated @field}} class="ui action input" style="width: inherit;">
-  <Input type="text" placeholder="Field Name" @value={{this.name}} />
+  <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}} />
   <UiDropdown class="ui selection dropdown" @selected={{this.type}} @onChange={{action (mut this.type)}}>
     <div class="default text">
       {{ this.type }}
