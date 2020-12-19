@@ -8,6 +8,8 @@ export default Component.extend(FormMixin, {
   password       : '',
   isLoading      : false,
   router         : service(),
+  captcha        : false,
+
   getValidationRules() {
     return {
       inline : true,
@@ -63,6 +65,14 @@ export default Component.extend(FormMixin, {
 
     showConfirmPassword() {
       this.toggleProperty('showConfirmPass');
+    },
+
+    captchaSuccess() {
+      this.set('captcha', true);
+    },
+
+    onCaptchaExpired() {
+      this.set('captcha', false);
     },
 
     submit() {
