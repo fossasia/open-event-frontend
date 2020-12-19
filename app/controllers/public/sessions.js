@@ -24,10 +24,10 @@ export default class SessionsController extends Controller {
       sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
     }
 
-    return Object.entries(sessions).map(groupedSessions => (
+    return Object.entries(sessions).map(([date, sessions]) => (
       {
-        'date'     : groupedSessions[0] === 'undefined' ? null : groupedSessions[0],
-        'sessions' : groupedSessions[1]
+        date: date === 'undefined' ? null : date,
+        sessions
       }
     ));
   }
