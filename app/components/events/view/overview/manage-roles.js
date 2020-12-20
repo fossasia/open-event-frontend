@@ -53,17 +53,31 @@ export default class ManageRoles extends Component {
   }
 
   @action
-  async resendInvite(invite) {
-    try {
-      await this.loader.post('/role-invites/' + invite.id + '/resend-invite');
-      this.notify.success(this.l10n.t('Invite resent successfully'),
-        {
-          id: 'resend_invite_succ'
-        });
-    } catch (error) {
-      console.log(error);
-      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
-    }
+  resendInvite(invite) {
+    this.set('isLoading', true);
+    this.loader
+      .post('/role-invites/' + invite.id + '/resend-invite')
+      .then(res => {
+        if (res.success) {
+          this.notify.success(this.l10n.t('Invite resent successfully'),
+            {
+              id: 'resend_invite_succ'
+            });
+        } else {
+          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+        }
+      })
+      .catch(error => {
+        console.error('Error while resending invite', error);
+        if (error.status === 403) {
+          this.notify.error(this.l10n.t('You are not allowed to resend invite. Only organizers can resend invite.'));
+        } else {
+          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+        }
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
   }
 
   @action
