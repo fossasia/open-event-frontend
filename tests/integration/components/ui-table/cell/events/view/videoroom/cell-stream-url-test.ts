@@ -7,6 +7,10 @@ import EmberObject from '@ember/object';
 module('Integration | Component | ui-table/cell/events/view/videoroom/cell-stream-url', function(hooks) {
   setupRenderingTest(hooks);
 
+  hooks.beforeEach(function() {
+    this.owner.lookup('router:main').setupRouter();
+  })
+
   test('it renders', async function(assert) {
     const record = EmberObject.create({ id: 23, name: 'Main Hall', slugName: 'main-hall' })
     const extraRecords = EmberObject.create({ identifier: 45, event: { identifier: 'abcd' } });

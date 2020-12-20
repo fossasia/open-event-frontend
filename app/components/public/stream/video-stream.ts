@@ -19,7 +19,10 @@ interface Args {
 export default class PublicStreamVideoStream extends Component<Args> {
 
   @service
-  authManager!: AuthManagerService
+  authManager!: AuthManagerService;
+
+  @service
+  loader!: any;
 
   app: HTMLElement | null = null
 
@@ -27,30 +30,33 @@ export default class PublicStreamVideoStream extends Component<Args> {
     return parsedUrl.pathname.slice(1); // drop leading slash
   }
 
-  isJitsi(parsedUrl: UrlParser): boolean {
-    return parsedUrl.host.endsWith('jit.si');
-  }
-
   @action
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
-
-    const parsedUrl = new UrlParser(stream.url, true);
+    const provider = stream.get('videoChannel.provider');
 
     this.app = (document.querySelector('.ember-application') as HTMLElement);
     this.app.innerHTML = '<div class="ui active centered inline loader"></div>';
 
-    if (this.isJitsi(parsedUrl)) {
-      await this.setupJitsi(stream, parsedUrl);
+    if (provider === 'jitsi') {
+      await this.setupJitsi(stream);
+    } else if (provider === 'bbb') {
+      const { url } = await this.loader.load(`/video-streams/${stream.id}/join`);
+      location.href = url;
     } else {
       location.href = stream.url;
     }
   }
 
-  async setupJitsi(stream: VideoStream, parsedUrl: UrlParser): Promise<void> {
+  async setupJitsi(stream: VideoStream): Promise<void> {
     const app = (document.querySelector('.ember-application') as HTMLElement);
     app.innerHTML = '<div class="ui active centered inline loader"></div>';
-    await getScript(parsedUrl.origin + '/external_api.js');
+
+    const channel = await stream.videoChannel;
+
+    await getScript(channel.url + '/external_api.js');
+
+    const parsedUrl = new UrlParser(stream.url, true);
     const domain = parsedUrl.host;
     const options = {
       roomName   : this.getRoomName(parsedUrl),
