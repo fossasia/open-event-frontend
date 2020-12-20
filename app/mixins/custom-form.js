@@ -10,7 +10,7 @@ export default Mixin.create(MutableArray, {
         form            : 'session',
         type            : 'text',
         isRequired      : true,
-        isPublic        :true,
+        isPublic        : true,
         isIncluded      : true,
         isFixed         : true,
         event           : parent
@@ -20,7 +20,7 @@ export default Mixin.create(MutableArray, {
         form            : 'session',
         type            : 'text',
         isRequired      : false,
-        isPublic        :false,
+        isPublic        : false,
         isIncluded      : false,
         event           : parent
       }),
@@ -29,7 +29,7 @@ export default Mixin.create(MutableArray, {
         form            : 'session',
         type            : 'text',
         isRequired      : false,
-        isPublic        :true,
+        isPublic        : true,
         isIncluded      : true,
         event           : parent
       }),
@@ -38,7 +38,7 @@ export default Mixin.create(MutableArray, {
         form            : 'session',
         type            : 'text',
         isRequired      : false,
-        isPublic        :false,
+        isPublic        : false,
         isIncluded      : false,
         event           : parent
       }),
@@ -275,7 +275,7 @@ export default Mixin.create(MutableArray, {
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
-        isPublic        :false,
+        isPublic        : false,
         isIncluded      : false,
         event           : parent
       }),
@@ -284,7 +284,7 @@ export default Mixin.create(MutableArray, {
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
-        isPublic        :false,
+        isPublic        : false,
         isIncluded      : false,
         event           : parent
       }),
@@ -294,7 +294,7 @@ export default Mixin.create(MutableArray, {
         type            : 'text',
         isRequired      : false,
         isIncluded      : false,
-        isPublic        :false,
+        isPublic        : false,
         event           : parent
       }),
       this.store.createRecord('custom-form', {
@@ -302,7 +302,7 @@ export default Mixin.create(MutableArray, {
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
-        isPublic        :false,
+        isPublic        : false,
         isIncluded      : false,
         event           : parent
       })
