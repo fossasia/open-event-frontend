@@ -30,12 +30,10 @@
 </div>
 <br>
 <form class="ui form {{if this.isLoading 'loading'}}">
-  {{#unless this.data.stream.event}}
-    <div class="field">
-      <label class="required">{{t 'Room'}}</label>
-      <input id="rooms" value={{this.room.name}} readonly>
-    </div>
-  {{/unless}}
+  <div class="field">
+    <label class="required">{{t 'Room'}}</label>
+    <input id="rooms" value={{if this.data.stream.event 'Event Video Room' this.room.name}} readonly>
+  </div>
   {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label class="required">{{t 'Video Source URL'}}</label>
