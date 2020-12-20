@@ -117,28 +117,20 @@ export default class ExploreRoute extends Route {
       });
     }
     if (params.is_online || params.is_location || params.is_mixed || params.location) {
-      if (params.is_online && params.is_location && params.is_mixed) {
+      let filterArray = [];
+      if (params.is_online) {
+        filterArray.push(onlineFilter);
+      }
+      if (params.is_location) {
+        filterArray.push(locationFilter);
+      }
+      if (params.is_mixed) {
+        filterArray.push(mixedFilter);
+      }
+      if (filterArray.length) {
         filterOptions.push({
-          or: [onlineFilter, locationFilter, mixedFilter]
+          or: filterArray
         });
-      } else if (params.is_online && params.is_location) {
-        filterOptions.push({
-          or: [onlineFilter, locationFilter]
-        });
-      } else if (params.is_online && params.is_mixed) {
-        filterOptions.push({
-          or: [onlineFilter, mixedFilter]
-        });
-      } else if (params.is_location && params.is_mixed) {
-        filterOptions.push({
-          or: [locationFilter, mixedFilter]
-        });
-      } else if (params.is_online) {
-        filterOptions.push(onlineFilter);
-      } else if (params.is_location) {
-        filterOptions.push(locationFilter);
-      } else if (params.is_mixed) {
-        filterOptions.push(mixedFilter);
       } else {
         filterOptions.push({
           name : 'location_name',
