@@ -117,7 +117,7 @@ export default class ExploreRoute extends Route {
       });
     }
     if (params.is_online || params.is_location || params.is_mixed || params.location) {
-      let filterArray = [];
+      const filterArray = [];
       if (params.is_online) {
         filterArray.push(onlineFilter);
       }
