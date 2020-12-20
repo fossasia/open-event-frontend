@@ -16,10 +16,9 @@ export default class SessionsController extends Controller {
   @computed('model.event.startsAt', 'model.event.endsAt', 'timezone')
   get allDates() {
     const arr = [];
-    const difference = (this.model.event.endsAt).diff(this.model.event.startsAt, 'days');
-    for (let i = 0; i <= Math.abs(difference); i++) {
-      arr.push(moment.tz(this.model.event.startsAt, this.timezone).add(i, 'days').toISOString());
-    }
+    this.model.event.sessions.toArray().forEach(Dates => {
+      arr.push(moment.tz(Dates.startsAt, this.timezone).toISOString());
+    });
     return arr;
   }
 }
