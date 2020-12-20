@@ -16,19 +16,6 @@ export default class SideBar extends Component {
   customEndDate = null;
   @tracked showFilters = false;
   isMapVisible = true;
-  setLocationFilter() {
-    if (this.is_online && this.is_location === null && this.is_mixed === null) {
-      this.set('location', null);
-    }
-  }
-
-  setAllSettingFilter() {
-    this.setProperties({
-      is_online   : null,
-      is_location : null,
-      is_mixed    : null
-    });
-  }
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
   get hideDefaultFilters() {
@@ -79,48 +66,24 @@ export default class SideBar extends Component {
   }
 
   @action
-  setOnline() {
+  setSettingFilter(filter) {
     if (this.is_online === null && this.is_location === null && this.is_mixed === null) {
       this.setProperties({
         is_location : 'true',
-        is_mixed    : 'true'
+        is_mixed    : 'true',
+        is_online   : 'true'
       });
-    } else if (this.is_location !== null && this.is_mixed !== null) {
-      this.setAllSettingFilter();
-    } else {
+    }
+    if (filter === 'is_online') {
       this.set('is_online', this.is_online === null ? 'true' : null);
-    }
-    this.setLocationFilter();
-  }
-
-  @action
-  setLocation() {
-    if (this.is_online === null && this.is_location === null && this.is_mixed === null) {
-      this.setProperties({
-        is_online : 'true',
-        is_mixed  : 'true'
-      });
-    } else if (this.is_online !== null && this.is_mixed !== null) {
-      this.setAllSettingFilter();
-    } else {
+    } else if (filter === 'is_location') {
       this.set('is_location', this.is_location === null ? 'true' : null);
-    }
-    this.setLocationFilter();
-  }
-
-  @action
-  setMixed() {
-    if (this.is_online === null && this.is_location === null && this.is_mixed === null) {
-      this.setProperties({
-        is_online   : 'true',
-        is_location : 'true'
-      });
-    } else if (this.is_location !== null && this.is_online !== null) {
-      this.setAllSettingFilter();
     } else {
       this.set('is_mixed', this.is_mixed === null ? 'true' : null);
     }
-    this.setLocationFilter();
+    if (this.is_online && this.is_location === null && this.is_mixed === null) {
+      this.set('location', null);
+    }
   }
 
   @action
