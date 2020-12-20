@@ -32,8 +32,14 @@
 <form class="ui form {{if this.isLoading 'loading'}}">
   <div class="field">
     <label class="required">{{t 'Room'}}</label>
-    <input id="rooms" value={{if this.data.stream.event 'Event Video Room' this.room.name}} readonly>
+    <input value={{if this.data.stream.event 'Event Video Room' this.room.name}} readonly>
   </div>
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">{{t 'Video Source'}}</label>
+      <input value='Auto-Generated Big Blue Button Video Room' readonly> 
+    </div>
+  {{/if}}
   {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label class="required">{{t 'Video Source URL'}}</label>
