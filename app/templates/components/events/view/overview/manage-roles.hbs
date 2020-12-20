@@ -53,13 +53,15 @@
                     <i class="trash icon"></i>
                   </UiPopup>
                 {{/if}}
-                <UiPopup
-                  @content={{t "Resend invite"}}
-                  @click={{action resendInvite roleInvite}}
-                  @class="ui icon button"
-                  @position="top center">
-                  <i class="mail outline icon"></i>
-                </UiPopup>
+                {{#if (eq this.roleType 'pending')}}
+                  <UiPopup
+                    @content={{t "Resend invite"}}
+                    @click={{action "resendInvite" roleInvite}}
+                    @class="ui icon button"
+                    @position="top center">
+                    <i class="mail outline icon"></i>
+                  </UiPopup>
+                {{/if}}
               </div>
             </td>
           {{/if}}
