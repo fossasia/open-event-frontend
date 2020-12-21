@@ -115,7 +115,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.refreshModel.bind(this)();
       })
       .catch(e => {
-        this.errorHandler.handleError(e);
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -151,7 +151,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } catch (e) {
       session.set('isLocked', isLocked);
       console.error('Error while changing session lock in organizer session list', e);
-      this.errorHandler.handleError(e);
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }
@@ -174,7 +174,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.refreshModel.bind(this)();
     } catch (e) {
       session.set('state', oldState);
-      this.errorHandler.handleError(e);
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }
@@ -194,7 +194,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           this.refreshModel.bind(this)();
         })
         .catch(e => {
-          this.errorHandler.handleError(e);
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -209,7 +209,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           this.refreshModel.bind(this)();
         })
         .catch(e => {
-          this.errorHandler.handleError(e);
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -236,7 +236,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.refreshModel.bind(this)();
       })
       .catch(e => {
-        this.errorHandler.handleError(e);
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);

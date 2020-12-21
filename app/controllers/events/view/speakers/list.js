@@ -82,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.refreshModel();
     } catch (e) {
       console.error('Error while deleting speaker', e);
-      this.errorHandler.handleError(e);
+      this.errorHandler.handle(e);
     }
     this.set('isLoading', false);
   }
@@ -106,7 +106,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.notify.success(this.l10n.t('Speaker details modified successfully'));
     } catch (e) {
       console.error('Error while updating speaker', e);
-      this.errorHandler.handleError(e);
+      this.errorHandler.handle(e);
     }
   }
 }

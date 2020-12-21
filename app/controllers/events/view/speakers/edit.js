@@ -20,7 +20,7 @@ export default class extends Controller {
       })
       .catch(e => {
         console.error('Error while saving speaker details', e);
-        this.errorHandler.handleError(e);
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);

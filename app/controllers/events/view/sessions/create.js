@@ -28,7 +28,7 @@ export default class extends Controller {
             })
             .catch(e =>   {
               console.error('Error while saving session', e);
-              this.errorHandler.handleError(e);
+              this.errorHandler.handle(e);
             })
             .finally(() => {
               this.set('isLoading', false);
@@ -36,7 +36,7 @@ export default class extends Controller {
         })
         .catch(e =>   {
           console.error('Error while saving session', e);
-          this.errorHandler.handleError(e);
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -52,7 +52,7 @@ export default class extends Controller {
         })
         .catch(e => {
           console.error('Error while saving session', e);
-          this.errorHandler.handleError(e);
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
