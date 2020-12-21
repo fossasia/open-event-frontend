@@ -12,9 +12,9 @@
 
     {{#if @event.sessions}}
     <div class="ui grid">
-      <div class="sixteen column row ml-2">
+      <div class="sixteen column row">
         <div class="coloum">
-          <UiDropdown class="ui floating dropdown button mt-4 ml-2 p-2">
+          <UiDropdown class="ui floating dropdown button mt-4">
             <i class="calendar icon"></i>
             {{t 'Add Event'}}
             <div class="menu">
@@ -26,19 +26,18 @@
             </div>
           </UiDropdown>
         </div>
-
         <div class="coloum">
-            <UiDropdown class="ui floating dropdown button mt-4 p-2">
-              <i class="calendar icon"></i>
-              {{t 'Add Sessions'}}
+          <UiDropdown class="ui floating dropdown button mt-4">
+            <i class="calendar icon"></i>
+            {{t 'Add Sessions'}}
               <div class="menu">
                 {{#each this.SessioncalendarUrls as |calendar|}}
                   <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-                    {{calendar.name}}
+                  {{calendar.name}}
                   </a>
-                {{/each}}
+                  {{/each}}
               </div>
-            </UiDropdown>
+          </UiDropdown>
         </div>
       </div>
     </div>
@@ -55,5 +54,5 @@
       </UiDropdown>
     {{/if}}
   </div>
-  <hr>
+
 </div>
