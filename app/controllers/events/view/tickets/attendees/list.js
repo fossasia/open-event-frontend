@@ -19,8 +19,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         width           : 80,
         valuePath       : 'ticket.name',
         headerComponent : 'tables/headers/sort',
-        isSortable      : true,
-        toKebabCase     : false
+        isSortable      : true
       },
       {
         name            : 'Date and Time',
@@ -29,8 +28,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['order'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-date',
         headerComponent : 'tables/headers/sort',
-        isSortable      : true,
-        toKebabCase     : false
+        isSortable      : true
       },
       {
         name            : 'Ticket Price',
@@ -39,8 +37,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         extraValuePaths : ['event', 'discountCode'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price',
         headerComponent : 'tables/headers/sort',
-        isSortable      : true,
-        toKebabCase     : false
+        isSortable      : true
       },
       {
         name      : 'First Name',

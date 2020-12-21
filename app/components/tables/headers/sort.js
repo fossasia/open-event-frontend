@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { kebabCase } from 'lodash-es';
+import { kebabCase } from 'open-event-frontend/utils/text';
 
 @classic
 export default class Sort extends Component {
@@ -23,7 +23,7 @@ export default class Sort extends Component {
     super.didInsertElement(...arguments);
     if (this.sorts && this.sorts[0] && this.sorts[0].valuePath === this.column.valuePath) {
       this.setProperties({
-        sortBy  : this.column.toKebabCase === false ? this.sorts[0].valuePath : kebabCase(this.sorts[0].valuePath), // Ensures field names are server compatible with sort
+        sortBy  : kebabCase(this.sorts[0].valuePath), // Ensures field names are server compatible with sort
         sortDir : this.sorts[0].isAscending ? 'ASC' : 'DSC'
       });
 
