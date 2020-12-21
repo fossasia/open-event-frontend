@@ -6,7 +6,7 @@ import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   @service errorHandler;
-  
+
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
 
   get columns() {
