@@ -56,14 +56,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
               prompt : this.l10n.t('Please enter a valid url')
             }
           ]
-        },
-        rooms: {
-          rules: [
-            {
-              type   : 'checkVideoRoomsLength',
-              prompt : this.l10n.t('Please select a room')
-            }
-          ]
         }
       }
     };
