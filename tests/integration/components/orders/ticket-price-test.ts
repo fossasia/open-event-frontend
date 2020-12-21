@@ -14,9 +14,9 @@ module('Integration | Component | orders/ticket price', function(hooks) {
     assert.equal(this.element.textContent?.trim(), 'Free');
 
     this.set('ticket', { type: 'paid' });
-    assert.equal(this.element.textContent?.trim(), '$ 53.43');
+    assert.equal(this.element.textContent?.trim(), '$53.43');
 
     this.set('currency', 'GBP');
-    assert.equal(this.element.textContent?.trim(), '£ 53.43');
+    assert.equal(this.element.textContent?.trim(), '£53.43');
   });
 });

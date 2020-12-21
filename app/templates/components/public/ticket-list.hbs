@@ -129,7 +129,7 @@
                 {{/if}}
                 <tr><td>{{t 'Total'}}</td>
                   {{#if this.amountEditable}}
-                    <td>{{#if this.overridenAmount}}{{currency-symbol this.eventCurrency}}{{/if}}</td><td><Input @value={{this.overridenAmount}} placeholder="Total" /></td>
+                    <td>{{#if this.overridenAmount}}{{currency-symbol this.eventCurrency}}{{/if}}</td><td><Input @value={{this.overridenAmount}} placeholder={{t "Total"}} /></td>
                   {{else}}
                     <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.total}}/></td>
                   {{/if}}

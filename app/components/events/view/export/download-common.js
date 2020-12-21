@@ -25,7 +25,7 @@ export default class DownloadCommon extends Component {
 
   @computed
   get displayUrl() {
-    return this.get(`model.${  this.fileFormat  }Url`) !== null ? this.get(`model.${  this.fileFormat  }Url`) : 'Please publish to generate the link';
+    return this.get(`model.${  this.fileFormat  }Url`) !== null ? this.get(`model.${  this.fileFormat  }Url`) : this.l10n.t('Please publish to generate the link');
   }
 
   requestLoop(exportJobInfo) {

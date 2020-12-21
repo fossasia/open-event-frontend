@@ -8,7 +8,7 @@ export default class DownloadZip extends Component {
   async exportEventDownload(eventDownloadUrl) {
     this.set('isLoading', true);
     try {
-      const res = await this.loader.downloadFile(`${eventDownloadUrl}`);
+      const res = await this.loader.downloadFile(eventDownloadUrl, null, { isExternal: true });
       const anchor = document.createElement('a');
       anchor.style.display = 'none';
       anchor.href = URL.createObjectURL(new Blob([res], { type: 'octet/stream' }));
