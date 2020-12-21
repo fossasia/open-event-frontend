@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
 import ENV from 'open-event-frontend/config/environment';
-import { computed } from '@ember/object';
 
 export default Component.extend(FormMixin, {
 
@@ -11,6 +10,7 @@ export default Component.extend(FormMixin, {
   isLoading      : false,
   router         : service(),
   captcha        : false,
+  showHcaptcha   : !!ENV.hcaptchaKey,
 
   getValidationRules() {
     return {
@@ -58,11 +58,6 @@ export default Component.extend(FormMixin, {
       }
     };
   },
-
-  showHcaptcha: computed(function() {
-    return ENV.hcaptchaKey === null || ENV.hcaptchaKey === undefined ? false : true;
-  }),
-
 
   actions: {
 
