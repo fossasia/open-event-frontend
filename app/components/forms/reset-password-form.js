@@ -67,14 +67,6 @@ export default Component.extend(FormMixin, {
       this.toggleProperty('showConfirmPass');
     },
 
-    captchaSuccess() {
-      this.set('captcha', true);
-    },
-
-    onCaptchaExpired() {
-      this.set('captcha', false);
-    },
-
     submit() {
       this.onValid(() => {
         let payload = {};

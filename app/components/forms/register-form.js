@@ -63,14 +63,6 @@ export default Component.extend(FormMixin, {
       });
     },
 
-    captchaSuccess() {
-      this.set('captcha', true);
-    },
-
-    onCaptchaExpired() {
-      this.set('captcha', false);
-    },
-
     showSignupPassword() {
       this.toggleProperty('showSignupPass');
     },
