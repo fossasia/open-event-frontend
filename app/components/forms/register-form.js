@@ -56,7 +56,7 @@ export default Component.extend(FormMixin, {
     }
   },
 
-  showHcaptcha: computed(function(){
+  showHcaptcha: computed(function() {
     return ENV.hcaptchaKey === null || ENV.hcaptchaKey === undefined ? true : true;
   }),
 
