@@ -23,7 +23,7 @@ export default class Sort extends Component {
     super.didInsertElement(...arguments);
     if (this.sorts && this.sorts[0] && this.sorts[0].valuePath === this.column.valuePath) {
       this.setProperties({
-        sortBy  : kebabCase(this.sorts[0].valuePath), // Ensures field names are server compatible with sort
+        sortBy  : this.column.toKebabCase === false ? this.sorts[0].valuePath : kebabCase(this.sorts[0].valuePath), // Ensures field names are server compatible with sort
         sortDir : this.sorts[0].isAscending ? 'ASC' : 'DSC'
       });
 
