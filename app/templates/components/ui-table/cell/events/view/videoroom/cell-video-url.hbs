@@ -1,9 +1,9 @@
 {{#if @record.url}}
-  <div class="truncate">
+  <div>
     {{#if (eq @record.videoChannel.provider 'bbb')}}
       {{t 'Auto-Generated'}}
     {{else}}
-    <div class="ui input">
+    <div class="ui input" style="width: 100%;">
       <input class="truncate" type="text" value={{@record.url}} placeholder={{@record.url}} readonly>
     </div>
     {{/if}}
