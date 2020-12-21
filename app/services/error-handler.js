@@ -8,14 +8,18 @@ export default class ErrorHandlerService extends Service {
 
 handle(error) {
   const errorStatus =  (error?.errors?.[0]?.status) ? parseInt(error?.errors?.[0]?.status) : error;
+  const errorMsg = error?.errors?.[0]?.detail ? error?.errors?.[0]?.detail : error;
   switch (errorStatus) {
     case 403:
+      this.notify.error(this.l10n.tVar(errorMsg));
       this.notify.error(this.l10n.t('You are not authorized to access the page.'));
       break;
     case 429:
+      this.notify.error(this.l10n.tVar(errorMsg));
       this.notify.error(this.l10n.t('There are too many requests. Please try after sometime.'));
       break;
     case 401:
+      this.notify.error(this.l10n.tVar(errorMsg));
       this.notify.error(this.l10n.t('User must be User must be logged in to perform this action.'));
       break;
     default:
