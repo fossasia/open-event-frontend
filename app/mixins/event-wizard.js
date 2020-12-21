@@ -241,7 +241,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       this.onValid(() => {
         const allTicketsDeleted = this.allTicketsDeleted(this.data.event.tickets, this.deletedTickets);
         if (allTicketsDeleted) {
-          this.notify.error('Tickets are required for publishing/published event');
+          this.notify.error(this.l10n.t('Tickets are required for publishing/published event'));
         }
         callback(!allTicketsDeleted);
       });
@@ -291,7 +291,7 @@ function preSaveActions() {
   }
 
   if (!this.data.event.isStripeConnectionValid) {
-    this.notify.error('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.');
+    this.notify.error(this.l10n.t('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.'));
   }
 
   return this.data.event.isStripeConnectionValid;

@@ -34,7 +34,7 @@ export default class PublicController extends Controller {
     } else if (this.model.locationName) {
       return this.model.locationName;
     } else {
-      return 'Location to be announced';
+      return this.l10n.t('Location to be announced');
     }
   }
 
