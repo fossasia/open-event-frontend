@@ -191,7 +191,7 @@ export default class SideBar extends Component {
   }
 
   @action
-  defaultFilters() {
+  clearFilters() {
     this.setProperties({
       startDate : null,
       endDate   : null,

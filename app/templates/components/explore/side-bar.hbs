@@ -255,7 +255,7 @@
   </div>
 {{/if}}
 <div class="item">
-  <button class="ui red button {{if this.hideDefaultFilters 'disabled'}}" {{action 'defaultFilters'}}>{{t 'Default Filters'}}</button>
+  <button class="ui red button {{if this.hideDefaultFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Default Filters'}}</button>
   {{#if this.device.isMobile}}
     <button class="ui blue button" {{action 'toggleFilters'}}>{{if this.showFiltersOnMobile 'Hide Filters' 'Show Filters'}}</button>
   {{/if}}
