@@ -49,6 +49,11 @@
           <span>{{t 'on'}} {{general-date this.order.completedAt 'date-time-short'}}</span>
         {{/if}}
       </span>
+      <div class="right floated author">
+        <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui compact red mini right icon button" @position="top center">
+          {{t 'cancel'}}<i class="close icon"></i>
+        </UiPopup>
+      </div>
     </div>
   </div>
 </div>
