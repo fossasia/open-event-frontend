@@ -16,6 +16,7 @@ module.exports = function(environment) {
     rootURL                  : process.env.ROOT_URL || '/',
     locationType             : 'router-scroll',
     historySupportMiddleware : true,
+    hcaptchaKey              : process.env.HCAPTCHA_SITE_KEY,
     EmberENV                 : {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

@@ -1,5 +1,7 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
+import ENV from 'open-event-frontend/config/environment';
+import { computed } from '@ember/object';
 
 export default Component.extend(FormMixin, {
 
@@ -53,6 +55,10 @@ export default Component.extend(FormMixin, {
       this.data.set('email', this.inviteEmail);
     }
   },
+
+  showHcaptcha: computed(function(){
+    return ENV.hcaptchaKey === null || ENV.hcaptchaKey === undefined ? true : true;
+  }),
 
   actions: {
     submit() {
