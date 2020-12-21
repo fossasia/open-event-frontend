@@ -56,7 +56,7 @@ export default class ManageRoles extends Component {
   async resendInvite(invite) {
     this.set('isLoading', true);
     try {
-      const res = await this.loader.post('/role-invites/' + invite.id + '/resend-invite')
+      const res = await this.loader.post('/role-invites/' + invite.id + '/resend-invite');
       if (res.success) {
         this.notify.success(this.l10n.t('Invite resent successfully'),
           {
