@@ -34,7 +34,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'ticket.price',
         width           : 90,
         extraValuePaths : ['event', 'discountCode'],
-        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price'
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        toKebabCase     : false
       },
       {
         name      : 'First Name',
