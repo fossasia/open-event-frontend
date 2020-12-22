@@ -6,11 +6,11 @@ import { action } from '@ember/object';
 @classic
 export default class LoginForm extends Component.extend(FormMixin) {
 
-  identification = '';
-  password       = '';
-  isLoading      = false;
-  counter = 0;
-  captcha = false;
+  identification   = '';
+  password         = '';
+  isLoading        = false;
+  counter          = 0;
+  captcha          = false;
   captchaValidated = false;
 
   getValidationRules() {
@@ -47,8 +47,8 @@ export default class LoginForm extends Component.extend(FormMixin) {
 
   @action
   async submit(e) {
-    this.set('counter', this.counter + 1)
-    if(this.counter > 1) {
+    this.set('counter', this.counter + 1);
+    if (this.counter > 1) {
       this.set('captcha', true);
     }
     e.preventDefault();
