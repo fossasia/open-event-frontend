@@ -29,11 +29,6 @@ export default class SessionItem extends Component {
     return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
   }
 
-  get videoUploaded() {
-    const url = this.args.session.videoUrl;
-    return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
-  }
-
   get sessionEnded() {
     const sessionEndDate =  moment.tz(this.args.session.endsAt, this.args.timezone);
     const now = moment.tz(this.args.timezone);
