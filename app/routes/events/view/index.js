@@ -16,7 +16,9 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
     queryString = this.applySortFilters(queryString, params);
     const sponsorsPromise = this.asArray(eventDetails.query('sponsors', queryString));
-    const roleInvitesPromise = eventDetails.query('roleInvites', {});
+    const roleInvitesPromise = eventDetails.query('roleInvites', {
+      include: 'role'
+    });
     const sessionTypesPromise = eventDetails.query('sessionTypes', {});
     const tracksPromise = eventDetails.query('tracks', {});
     const microlocationsPromise = eventDetails.query('microlocations', {});
