@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { action, computed } from '@ember/object';
+import { computed } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 
@@ -36,10 +36,5 @@ export default class PublicController extends Controller {
     } else {
       return this.l10n.t('Location to be announced');
     }
-  }
-
-  @action
-  toggleMenu() {
-    this.toggleProperty('isMenuOpen');
   }
 }
