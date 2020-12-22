@@ -10,49 +10,42 @@
       {{general-date @event.startsAt 'tz' tz=@event.timezone}}
     </div>
 
-    {{#if @event.sessions}}
-      <div class="ui grid">
-        <div class="sixteen column row">
-          <div class="coloum">
-            <UiDropdown class="ui floating dropdown button mt-4">
+    <div class="ui grid">
+      <div class="sixteen column row">
+        <div class="coloum">
+          <UiDropdown class="ui floating dropdown button mt-4">
+            {{#if @event.sessions}}
               <i class="calendar icon"></i>
               {{t 'Add Event'}}
-              <div class="menu">
-                {{#each this.calendarUrls as |calendar|}}
-                  <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-                    {{calendar.name}}
-                  </a>
-                {{/each}}
-              </div>
-            </UiDropdown>
-          </div>
-          <div class="coloum">
-            <UiDropdown class="ui floating dropdown button mt-4">
-              <i class="calendar icon"></i>
-              {{t 'Add Sessions'}}
-              <div class="menu">
-                {{#each this.SessioncalendarUrls as |calendar|}}
-                  <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-                    {{calendar.name}}
-                  </a>
-                {{/each}}
-              </div>
-            </UiDropdown>
-          </div>
+            {{else}}
+              {{t 'Add to Calendar'}}
+            {{/if}}
+            <div class="menu">
+              {{#each this.calendarUrls as |calendar|}}
+                 <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+                  {{calendar.name}}
+                </a>
+              {{/each}}
+            </div>
+          </UiDropdown>
         </div>
+        {{#if @event.sessions}}
+        <div class="coloum">
+          <UiDropdown class="ui floating dropdown button mt-4">
+            <i class="calendar icon"></i>
+            {{t 'Add Sessions'}}
+            <div class="menu">
+              {{#each this.SessioncalendarUrls as |calendar|}}
+                <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+                  {{calendar.name}}
+                </a>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+        {{/if}}
       </div>
-    {{else}}
-      <UiDropdown class="ui floating dropdown button mt-4">
-        {{t 'Add to Calendar'}}
-        <div class="menu">
-          {{#each this.calendarUrls as |calendar|}}
-            <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-              {{calendar.name}}
-            </a>
-          {{/each}}
-        </div>
-      </UiDropdown>
-    {{/if}}
+    </div>
   </div>
 
 </div>
