@@ -18,7 +18,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Time'),
         valuePath       : 'time',
-        cellComponent   : 'ui-table/cell/admin/reports/system-logs/activity-logs/cell-time',
+        cellComponent   : 'ui-table/cell/admin/reports/system-logs/mail-logs/cell-time',
         headerComponent : 'tables/headers/sort',
         isSortable      : true
       },
