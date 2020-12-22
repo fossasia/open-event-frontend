@@ -16,10 +16,10 @@ export default class SideBar extends Component {
   }
 
   @action
-  handleKeyPress() {
+  handleKeyPress(eventName) {
     if (event.code === 'Enter') {
       this.set('sidebarVisible', false);
-      this.sendAction('search');
+      this.sendAction('search', eventName);
     }
   }
 

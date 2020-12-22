@@ -4,6 +4,11 @@ import Component from '@ember/component';
 
 @classic
 export default class NavBar extends Component {
+  @computed('routing.router.currentRoute.queryParams')
+  get eventName() {
+    return this.routing.router.currentRoute.queryParams.event_name;
+  }
+
   @computed('session.currentRouteName')
   get isNotEventPageRoute() {
     return !(String(this.session.currentRouteName).includes('public'));
@@ -15,9 +20,9 @@ export default class NavBar extends Component {
   }
 
   @action
-  handleKeyPress() {
+  handleKeyPress(eventName) {
     if (event.code === 'Enter') {
-      this.sendAction('search');
+      this.sendAction('search', eventName);
       document.querySelector('#mobile-bar').classList.remove('show-bar');
     }
   }

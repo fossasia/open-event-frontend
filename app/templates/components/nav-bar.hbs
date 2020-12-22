@@ -7,7 +7,7 @@
     <div class="right menu nav-bar">
     {{#if this.isNotEventPageRoute}}
       <div class="{{if (not this.isNotExplorePageRoute) "explore-bar"}} search-bar d-flex items-center space-between m-2 p-2">
-        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder="Search Events" />
+        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress" target.value}} @value={{if this.isNotExplorePageRoute '' this.eventName}} placeholder="Search Events" />
         <i class="search icon"></i>
       </div>
     {{/if}}
@@ -71,7 +71,7 @@
     <div id="mobile-bar" class="mobile-bar">
       <div  class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
         <i class="search icon" style="cursor: auto;"></i>
-        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder="Search Events" />
+        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress" target.value}} @value={{if this.isNotExplorePageRoute '' this.eventName}} placeholder="Search Events" />
         <div role="button" {{action "toggleSearchBar"}}>
           <i class="close icon" ></i>
         </div>
