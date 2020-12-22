@@ -188,4 +188,11 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     return this.canPayByStripe && this.get('stripeAuthorization.stripePublishableKey');
   })
 
-}) {}
+}) {
+
+  @computed('videoStream')
+  get() {
+    return this.belongsTo('videoStream').value();
+  }
+
+}

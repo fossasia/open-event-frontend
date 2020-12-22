@@ -17,6 +17,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @computed('stream.rooms.[]')
   get room() {
+    if (!this.stream?.rooms) {return null}
     return this.stream.rooms.toArray()[0];
   }
 
@@ -83,7 +84,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   get streamIdentifier() {
     const { event } = this;
     const { id } = this.stream;
-    return [event.identifier, 'stream', id ?? this.randomIdentifier].filter(Boolean).join('-');
+    return [event.get('identifier'), 'stream', id ?? this.randomIdentifier].filter(Boolean).join('-');
   }
 
   @action

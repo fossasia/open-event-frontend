@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { later } from '@ember/runloop';
+import { next, later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
 import { orderBy, filter, find } from 'lodash-es';
@@ -532,8 +532,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
 
     openVideoRoomModal() {
-      if (!this.data.event.get('videoSteam')) {
-        const stream = this.store.createRecord('videoStream', {
+      this.set('isVideoroomModalOpen', false);
+      if (!this.data.event.video) {
+        const stream = this.store.createRecord('video-stream', {
           event : this.data.event,
           rooms : []
         });
