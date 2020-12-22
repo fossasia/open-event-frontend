@@ -28,7 +28,7 @@
       {{#each this.roleInvites as |roleInvite|}}
         <tr>
           <td>{{roleInvite.email}}</td>
-          <td>{{roleInvite.roleName}}</td>
+          <td>{{roleInvite.role.titleName}}</td>
           {{#if @editable}}
             <td>
               <div class="ui horizontal compact basic buttons">
