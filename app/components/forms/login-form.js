@@ -11,7 +11,6 @@ export default class LoginForm extends Component.extend(FormMixin) {
   password         = '';
   isLoading        = false;
   counter          = 0;
-  captcha          = false;
   captchaValidated = false;
   showHcaptcha     = !!ENV.hcaptchaKey;
 
@@ -49,10 +48,6 @@ export default class LoginForm extends Component.extend(FormMixin) {
 
   @action
   async submit(e) {
-    this.set('counter', this.counter + 1);
-    if (this.counter > 1) {
-      this.set('captcha', true);
-    }
     e.preventDefault();
     this.onValid(async() => {
       const credentials = { username: this.identification, password: this.password };
@@ -68,9 +63,9 @@ export default class LoginForm extends Component.extend(FormMixin) {
           this.authManager.persistCurrentUser(
             await this.store.findRecord('user', tokenPayload.identity)
           );
-
         }
       } catch (e) {
+        this.set('counter', this.counter + 1);
         if (e.json && e.json.error) {
           console.warn('Error while authentication', e);
           this.set('errorMessage', this.l10n.tVar(e.json.error));
