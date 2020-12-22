@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { action } from '@ember/object';
+import ENV from 'open-event-frontend/config/environment';
 
 @classic
 export default class LoginForm extends Component.extend(FormMixin) {
@@ -12,6 +13,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
   counter          = 0;
   captcha          = false;
   captchaValidated = false;
+  showHcaptcha     = !!ENV.hcaptchaKey;
 
   getValidationRules() {
     return {

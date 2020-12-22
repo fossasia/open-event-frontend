@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="ui center aligned segment basic">
-            {{#if this.captcha}}
+            {{#if (and this.captcha this.showHcaptcha)}}
             <HCaptcha @onSuccess={{action (mut this.captchaValidated)}} @onExpired={{action (mut this.captchaValidated)}}/>
             {{/if}}
             <div class="ui vertical buttons">
