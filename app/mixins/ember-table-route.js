@@ -1,5 +1,5 @@
 import Mixin from '@ember/object/mixin';
-import { kebabCase } from 'lodash-es';
+import { kebabCase } from 'open-event-frontend/utils/text';
 
 export default Mixin.create({
   queryParams: {

@@ -12,24 +12,24 @@
               <UiCheckbox
                 @label={{t "Online"}}
                 @class="ui checkbox"
-                @checked={{if (eq this.eventLocationType "online") "active"}}
-                @onChange={{action "setLocationType" "online" "true"}} />
+                @checked={{if (or this.is_online (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
+                @onChange={{action "setSettingFilter" "is_online"}} />
             </div>
             <div class="field">
               <UiCheckbox
                 @label={{t "Location"}}
                 @class="ui checkbox"
-                @checked={{if (eq this.eventLocationType "venue") "active"}}
-                @onChange={{action "setLocationType" "venue" "false"}} />
+                @checked={{if (or this.is_location (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
+                @onChange={{action "setSettingFilter" "is_location"}} />
             </div>
             <div class="field">
               <UiCheckbox
                 @label={{t "Mixed"}}
                 @class="ui checkbox"
-                @checked={{if (eq this.eventLocationType "mixed") "active"}}
-                @onChange={{action "setLocationType" "mixed" "true"}} />
+                @checked={{if (or this.is_mixed (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
+                @onChange={{action "setSettingFilter" "is_mixed"}} />
             </div>
-            {{#if (or (eq this.eventLocationType "venue") (eq this.eventLocationType "mixed"))}}
+            {{#if (or this.is_location this.is_mixed (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null)))}}
                 <div class="explore sub menu">
                   <div class="ui input">
                     <Input
@@ -246,7 +246,7 @@
   </div>
 {{/if}}
 <div class="item">
-  <button class="ui red button {{if this.hideClearFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Clear Filters'}}</button>
+  <button class="ui red button {{if this.hideDefaultFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Default Filters'}}</button>
   {{#if this.device.isMobile}}
     <button class="ui blue button" {{action 'toggleFilters'}}>{{if this.showFiltersOnMobile 'Hide Filters' 'Show Filters'}}</button>
   {{/if}}
