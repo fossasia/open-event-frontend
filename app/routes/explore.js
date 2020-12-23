@@ -24,6 +24,11 @@ export default class ExploreRoute extends Route {
         name : 'state',
         op   : 'eq',
         val  : 'published'
+      },
+      {
+        name : 'privacy',
+        op   : 'eq',
+        val  : 'public'
       }
     ];
     const onlineFilter = {
