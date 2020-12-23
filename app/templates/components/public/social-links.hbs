@@ -16,14 +16,16 @@
         </div>
       {{/if}}
     {{/each}}
-    {{#each this.socialLinks as |socialLink|}}
-      {{#if (eq socialLink.normalizedName 'globe')}}
-       <div class="m-1">
+  {{#each this.socialLinks as |socialLink|}}
+    {{#if (eq socialLink.normalizedName 'globe')}}
+      <div class="m-1">
+        <UiPopup @content={{t socialLink.displayName}}>
         <a href="{{socialLink.link}}" class="ui icon small blue button" target="_blank" rel="noopener nofollow">
-          <div class="extra-link truncate" style="font-size: .8rem;">{{socialLink.displayName}}</div>
+          <div  class="extra-link truncate" style="font-size: .8rem;">{{socialLink.displayName}}</div>
         </a>
-      </div>      
-      {{/if}}
-    {{/each}}
+        </UiPopup>
+      </div>
+    {{/if}}
+  {{/each}}
   </div>
 </div>
