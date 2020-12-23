@@ -11,8 +11,6 @@ export default class SideBar extends Component {
 
   classNames = ['ui', 'fluid', 'explore', 'vertical', 'menu'];
 
-  placeAutocomplete = ['mirzapur India', 'sydney cricket ground Australia', 'london Europe', 'the greate briten England', 'Newzland', 'cool'];
-
   customStartDate = moment().toISOString();
 
   customEndDate = null;

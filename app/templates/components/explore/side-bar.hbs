@@ -56,9 +56,9 @@
                       @placeholder={{t "Enter Location"}} />
                   </div>
                   <div class="menu">
-                    {{#each this.placeAutocomplete as |place|}}
-                      <div class="item"  role="button" {{action "setAutocomplete" place}}>
-                        <i class="map alternate marker icon"></i> {{place}}
+                    {{#each this.model.places as |place|}}
+                      <div class="item"  role="button" {{action "setAutocomplete" place.display_name}}>
+                        <i class="map alternate marker icon"></i> {{place.display_name}}
                       </div>
                     {{/each}}
                   </div>
