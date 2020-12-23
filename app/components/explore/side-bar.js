@@ -16,11 +16,10 @@ export default class SideBar extends Component {
   customEndDate = null;
   @tracked showFilters = false;
   isMapVisible = true;
-  eventLocationType = null;
 
-  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'has_logo', 'has_image', 'is_past')
-  get hideClearFilters() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.has_logo || this.has_image || this.is_past);
+  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
+  get hideDefaultFilters() {
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.is_location || this.is_mixed || this.has_logo || this.has_image || this.is_past);
   }
 
   @computed('model')
@@ -95,10 +94,24 @@ export default class SideBar extends Component {
   }
 
   @action
-  setLocationType(locationType, val) {
-    this.set('is_online', this.eventLocationType === locationType ? null : val);
-    this.set('eventLocationType', this.eventLocationType === locationType ? null : locationType);
-    this.set('location', null);
+  setSettingFilter(filter) {
+    if (this.is_online === null && this.is_location === null && this.is_mixed === null) {
+      this.setProperties({
+        is_location : 'true',
+        is_mixed    : 'true',
+        is_online   : 'true'
+      });
+    }
+    if (filter === 'is_online') {
+      this.set('is_online', this.is_online === null ? 'true' : null);
+    } else if (filter === 'is_location') {
+      this.set('is_location', this.is_location === null ? 'true' : null);
+    } else {
+      this.set('is_mixed', this.is_mixed === null ? 'true' : null);
+    }
+    if (this.is_online && this.is_location === null && this.is_mixed === null) {
+      this.set('location', null);
+    }
   }
 
   @action
@@ -208,22 +221,11 @@ export default class SideBar extends Component {
   @action
   clearFilters() {
     this.setProperties({
-      startDate         : null,
-      endDate           : null,
-      dateType          : null,
-      category          : null,
-      sub_category      : null,
-      event_type        : null,
-      location          : null,
-      ticket_type       : null,
-      cfs               : null,
-      event_name        : null,
-      is_online         : null,
-      has_logo          : null,
-      has_image         : null,
-      is_past           : null,
-      eventLocationType : null
+      startDate : null,
+      endDate   : null,
+      dateType  : null
     });
+    this.clearQueryParams();
   }
 
   @action

@@ -28,7 +28,7 @@
       {{#each this.roleInvites as |roleInvite|}}
         <tr>
           <td>{{roleInvite.email}}</td>
-          <td>{{roleInvite.roleName}}</td>
+          <td>{{roleInvite.role.titleName}}</td>
           {{#if @editable}}
             <td>
               <div class="ui horizontal compact basic buttons">
@@ -51,6 +51,15 @@
                     @class="ui icon button"
                     @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
                     <i class="trash icon"></i>
+                  </UiPopup>
+                {{/if}}
+                {{#if (eq this.roleType 'pending')}}
+                  <UiPopup
+                    @content={{t "Resend invite"}}
+                    @click={{action "resendInvite" roleInvite}}
+                    @class="ui icon button"
+                    @position="top center">
+                    <i class="mail outline icon"></i>
                   </UiPopup>
                 {{/if}}
               </div>

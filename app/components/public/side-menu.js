@@ -2,13 +2,13 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import moment from 'moment';
+import { tagName } from '@ember-decorators/component';
 import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
 import { tracked } from '@glimmer/tracking';
 
 @classic
+@tagName('')
 export default class SideMenu extends Component {
-
-  activeSection = null;
 
   @tracked
   showSpeakers = false;
@@ -62,6 +62,7 @@ export default class SideMenu extends Component {
   @action
   goToSection(section) {
     this.set('activeSection', section);
+    this.set('activeMenuSection', section);
   }
 
   @action
@@ -69,6 +70,7 @@ export default class SideMenu extends Component {
     document.querySelector(`#${section}`).scrollIntoView({
       behavior: 'smooth'
     });
+    this.set('activeMenuSection', section);
     this.set('activeSection', null);
     document.querySelectorAll('.scroll').forEach(node => {
       node.classList.remove('active');

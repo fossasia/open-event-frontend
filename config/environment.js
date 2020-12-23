@@ -17,6 +17,8 @@ module.exports = function(environment) {
     locationType             : 'router-scroll',
     historySupportMiddleware : true,
     mapboxToken              : process.env.MAPBOX_ACCESS_TOKEN,
+    hcaptchaKey              : process.env.HCAPTCHA_SITE_KEY,
+
     EmberENV                 : {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -78,6 +80,12 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:jwt'
+  };
+
+  ENV['ember-h-captcha'] = {
+    jsUrl   : 'https://hcaptcha.com/1/api.js', // default
+    sitekey : process.env.HCAPTCHA_SITE_KEY,
+    hl      : 'en'
   };
 
   ENV['ember-simple-auth-token'] = {

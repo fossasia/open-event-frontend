@@ -1,7 +1,8 @@
 <div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
-  <LinkTo
-    @route="explore" class="item"
-    @activeClass="">{{t 'Browse Events'}}</LinkTo>
+    <div class="search-bar d-flex items-center space-between m-2 p-2">
+      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+      <i class="search icon"></i>
+    </div>
   {{#if this.session.isAuthenticated}}
     <div class="item">
       <a href="{{href-to 'account.profile'}}">

@@ -172,7 +172,7 @@ export default Component.extend(FormMixin, {
       }
       if (this.invalidPromotionalCode) {
         this.set('promotionalCodeApplied', false);
-        this.notify.error('This Promotional Code is not valid', {
+        this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
           id: 'prom_inval'
         });
       } else {
