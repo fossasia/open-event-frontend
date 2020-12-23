@@ -1,7 +1,50 @@
 {{#if this.handle}}
-  <a class="twitter-timeline" href="{{this.normalizedUrl}}" target="_blank" rel="noopener nofollow" data-height="500">
-    <i class="twitter icon"></i>
-    {{t 'Tweets by'}} @{{handle}}
-  </a>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  {{#unless this.device.isMobile}}
+    <a
+      class="twitter-timeline"
+      href="{{this.normalizedUrl}}"
+      target="_blank"
+      rel="noopener nofollow"
+      data-height="500"
+    >
+      <i class="twitter icon"></i>
+      {{t "Tweets by"}}
+      @
+      {{handle}}
+    </a>
+    <script
+      async
+      src="https://platform.twitter.com/widgets.js"
+      charset="utf-8"
+    ></script>
+  {{/unless}}
+  {{#if this.device.isMobile}}
+    <UiAccordion>
+      <div class="title">
+        <i class="dropdown icon"></i>
+        <span>
+          Recent Tweets
+        </span>
+      </div>
+      <div class="content">
+        <a
+          class="twitter-timeline"
+          href="{{this.normalizedUrl}}"
+          target="_blank"
+          rel="noopener nofollow"
+          data-height="500"
+        >
+          <i class="twitter icon"></i>
+          {{t "Tweets by"}}
+          @
+          {{handle}}
+        </a>
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+      </div>
+    </UiAccordion>
+  {{/if}}
 {{/if}}
