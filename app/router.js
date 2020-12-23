@@ -79,8 +79,10 @@ Router.map(function() {
         this.route('sessions-speakers');
         this.route('attendee');
       });
-      this.route('export');
-      this.route('settings');
+      this.route('settings', function() {
+        this.route('export');
+        this.route('options');
+      });
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
