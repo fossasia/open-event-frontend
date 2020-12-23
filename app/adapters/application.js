@@ -25,6 +25,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
 
   notify  : service(),
   session : service(),
+  l10n    : service(),
 
   headers: computed('session.data.authenticated', function() {
     const headers = {
