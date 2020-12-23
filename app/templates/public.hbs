@@ -50,7 +50,15 @@
           {{#if (and this.device.isMobile this.twitterLink)}}
               <div class="item">
                 <div class="twitter content">
-                  <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                  <UiAccordion>
+                    <div class="title" >
+                      <i class="dropdown icon"></i>
+                      <span>Recent tweets</span>
+                    </div>
+                    <div class="content" >
+                      <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                    </div>
+                  </UiAccordion>
                 </div>
               </div>
           {{/if}}
