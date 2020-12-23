@@ -2,11 +2,8 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { mapBy } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
-import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  @service errorHandler;
-
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
 
   get columns() {
@@ -29,7 +26,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Title'),
         valuePath       : 'title',
-        width           : 230,
+        width           : 120,
         extraValuePaths : ['id', 'event', 'isLocked'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
@@ -47,8 +44,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : this.l10n.t('Rating'),
-        width           : 60,
+        name            : this.l10n.t('Rate Session'),
+        width           : 80,
         valuePath       : 'id',
         extraValuePaths : ['feedbacks'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
@@ -61,8 +58,20 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
+        name          : 'Avg Rating',
+        valuePath     : 'feedbacks',
+        width         : 60,
+        cellComponent : 'ui-table/cell/events/view/sessions/cell-avg-rating'
+      },
+      {
+        name      : this.l10n.t('No. Of People Rated'),
+        width     : 70,
+        valuePath : 'feedbacks.length',
+        textAlign : 'center'
+      },
+      {
         name      : this.l10n.t('Track'),
-        width     : 80,
+        width     : 70,
         valuePath : 'track.name'
       },
       {
@@ -114,8 +123,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch(e => {
-        this.errorHandler.handle(e);
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_unex_del'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -151,7 +163,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } catch (e) {
       session.set('isLocked', isLocked);
       console.error('Error while changing session lock in organizer session list', e);
-      this.errorHandler.handle(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'session_unexpected_lock'
+        });
     } finally {
       this.set('isLoading', false);
     }
@@ -174,7 +189,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.refreshModel.bind(this)();
     } catch (e) {
       session.set('state', oldState);
-      this.errorHandler.handle(e);
+      console.error('Error while changing session state in organizer session list', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+        id: 'session_state_unexpected'
+      });
     } finally {
       this.set('isLoading', false);
     }
@@ -193,8 +211,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch(e => {
-          this.errorHandler.handle(e);
+        .catch(() => {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'session_feedback_error'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -208,8 +229,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch(e => {
-          this.errorHandler.handle(e);
+        .catch(() => {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+            {
+              id: 'session_feed_error'
+            });
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -235,8 +259,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch(e => {
-        this.errorHandler.handle(e);
+      .catch(() => {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'session_feed_error_created'
+          });
       })
       .finally(() => {
         this.set('isLoading', false);
