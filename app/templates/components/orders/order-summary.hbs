@@ -36,7 +36,7 @@
     </div>
   {{/if}}
   <div class="ui secondary segment">
-    <h3 class="weight-400 muted text">{{t 'Order Summary'}}</h3>
+    <h3 class="weight-400">{{t 'Order Summary'}}</h3>
   </div>
   {{#if (and (or (eq this.session.currentRouteName 'orders.new') (eq this.session.currentRouteName 'orders.view') (eq this.session.currentRouteName 'orders.pending')) (not-eq this.data.status 'cancelled'))}}
     <table class="ui very basic unstackable table order-summary center aligned">
