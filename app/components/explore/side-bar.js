@@ -15,6 +15,8 @@ export default class SideBar extends Component {
 
   customEndDate = null;
   @tracked showFilters = false;
+
+  suggestions = null;
   isMapVisible = true;
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
@@ -56,6 +58,13 @@ export default class SideBar extends Component {
   @action
   selectImages(val) {
     this.set('has_image', this.has_image === val ? null : val);
+  }
+
+  @action
+  async suggestionsTrigger(location) {
+    const response = this.loader.load(`https://nominatim.openstreetmap.org/search?q=${location}&format=jsonv2&addressdetails=1`, { isExternal: true });
+    const [cords] = await Promise.all([response]);
+    this.set('suggestions', cords);
   }
 
   @action

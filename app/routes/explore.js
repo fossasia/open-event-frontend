@@ -18,14 +18,6 @@ export default class ExploreRoute extends Route {
    * @private
    */
 
-  _autoComplete(params) {
-    let loc = 'Singapore';
-    if (params.location) {
-      loc = this.loader.load(`https://nominatim.openstreetmap.org/search?q=${params.location}&format=jsonv2&addressdetails=1`, { isExternal: true });
-    }
-    return loc;
-  }
-
   _loadEvents(params) {
     // const loc = this.loader.load(`https://nominatim.openstreetmap.org/search?q=${params.location}&format=jsonv2&addressdetails=1`, { isExternal: true });
     const filterOptions = [
@@ -299,8 +291,7 @@ export default class ExploreRoute extends Route {
       eventTopics    : await this.store.findAll('event-topic', { include: 'event-sub-topics' }),
       filteredEvents : await this._loadEvents(params),
       lat            : cords[0].lat,
-      lng            : cords[0].lon,
-      places         : await this._autoComplete(params)
+      lng            : cords[0].lon
     };
   }
 

@@ -53,10 +53,11 @@
                       @name="location"
                       @value={{this.location}}
                       @type="text"
-                      @placeholder={{t "Enter Location"}} />
+                      @placeholder={{t "Enter Location"}} 
+                      oninput={{action 'suggestionsTrigger' this.location}}/>
                   </div>
                   <div class="menu">
-                    {{#each this.model.places as |place|}}
+                    {{#each this.suggestions as |place|}}
                       <div class="item"  role="button" {{action "setAutocomplete" place.display_name}}>
                         <i class="map alternate marker icon"></i> {{place.display_name}}
                       </div>

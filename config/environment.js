@@ -19,7 +19,7 @@ module.exports = function(environment) {
     mapboxToken              : process.env.MAPBOX_ACCESS_TOKEN,
     hcaptchaKey              : process.env.HCAPTCHA_SITE_KEY,
 
-    EmberENV                 : {
+    EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
