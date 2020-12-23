@@ -45,7 +45,6 @@ export default class AddToCalender extends Component<Args> {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
     const endTime = this.endsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
-
     return `https://outlook.live.com/calendar/0/deeplink/compose?subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${(event.description).substring(0, 1000)}&location=${this.args.location}`;
   }
 

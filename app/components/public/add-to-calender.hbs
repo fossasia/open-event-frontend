@@ -10,28 +10,27 @@
       {{general-date @event.startsAt 'tz' tz=@event.timezone}}
     </div>
 
-    <div class="ui grid">
-      <div class="sixteen column row">
-        <div class="coloum">
-          <UiDropdown class="ui floating dropdown button mt-4">
-            {{#if @event.sessions}}
-              <i class="calendar icon"></i>
-              {{t 'Add Event'}}
-            {{else}}
-              {{t 'Add to Calendar'}}
-            {{/if}}
-            <div class="menu">
-              {{#each this.calendarUrls as |calendar|}}
-                 <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-                  {{calendar.name}}
-                </a>
-              {{/each}}
-            </div>
-          </UiDropdown>
-        </div>
-        {{#if @event.sessions}}
-        <div class="coloum">
-          <UiDropdown class="ui floating dropdown button mt-4">
+    <div class="ui grid mt-4">
+      <div class="eight wide column p-1">
+        <UiDropdown class="ui floating fluid dropdown button mb-2">
+          {{#if @event.sessions}}
+            <i class="calendar icon"></i>
+            {{t 'Add Event'}}
+          {{else}}
+            {{t 'Add to Calendar'}}
+          {{/if}}
+          <div class="menu">
+            {{#each this.calendarUrls as |calendar|}}
+              <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+                {{calendar.name}}
+              </a>
+            {{/each}}
+          </div>
+        </UiDropdown>
+      </div>
+      <div class="eight wide column p-1">
+        {{#if @event.sessions}}    
+          <UiDropdown class="ui floating fluid dropdown button mb-2">
             <i class="calendar icon"></i>
             {{t 'Add Sessions'}}
             <div class="menu">
@@ -42,7 +41,6 @@
               {{/each}}
             </div>
           </UiDropdown>
-        </div>
         {{/if}}
       </div>
     </div>
