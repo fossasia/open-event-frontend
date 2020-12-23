@@ -69,8 +69,4 @@ export default class EventCard extends Component {
     });
   }
 
-  @computed('event.startsAt', 'event.endsAt')
-  get isSingleDay() {
-    return moment(this.event.startsAt).isSame(this.event.endsAt, 'day');
-  }
 }

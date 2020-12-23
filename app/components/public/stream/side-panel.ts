@@ -3,6 +3,8 @@ import VideoStream from 'open-event-frontend/models/video-stream';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import Event from 'open-event-frontend/models/event';
+import { inject as service } from '@ember/service';
+import { slugify } from 'open-event-frontend/utils/text';
 
 interface Args {
   videoStream: VideoStream,
@@ -10,11 +12,33 @@ interface Args {
 }
 
 export default class PublicStreamSidePanel extends Component<Args> {
+  @service loader: any;
+
   @tracked shown = false;
   @tracked loading = true;
+  @tracked streams: VideoStream[] = [];
+
+  addStream(stream: VideoStream | null) {
+    if (!stream) {return;}
+    if (this.streams.map(stream => stream.id).any(id => id === stream.id)) {return;}
+    this.streams.push(stream);
+  }
 
   @action
   async setup(): Promise<void> {
-    console.log('>>>>>>>', this.args.videoStream, this.args.event)
+    this.addStream(this.args.videoStream);
+    this.addStream(this.args.event.belongsTo('videoStream').value())
+
+    try {
+      const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name`);
+      rooms.included?.map((stream: any) => ({ id: stream.id, name: stream.attributes.name, slugName: slugify(stream.attributes.name) })).forEach((stream: any) => {
+        this.addStream(stream)
+      });
+    } catch (e) {
+      console.error('Error while loading rooms in video stream', e);
+    } finally {
+      this.loading = false;
+    }
+
   }
 }

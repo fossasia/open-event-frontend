@@ -2,12 +2,35 @@
   <i class="arrow right icon"></i>
 </button>
 {{#if this.shown}}
-  <div style="width: 250px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
-    <i class="black close icon" style="float: right; margin: .5rem" {{action (mut this.shown) false}}></i>
+  <div class="d-flex flex-column p-4"
+    style="width: 300px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
+    <i class="close icon ml-auto" {{action (mut this.shown) false}}></i>
 
-    <div>{{@event.name}}</div>
+    <div class="ui header inverted">
+      <span>{{@event.name}}</span>
+      <a href={{href-to 'public' @event}} target="_blank" class="ml-2" rel="noopener">
+        <i class="icon inverted external link"></i>
+      </a>
+    </div>
+    <Public::EventDateTime @event={{@event}} />
 
-    <div>Videos:</div>
+    <a class="ui labeled icon button mt-4 mb-2 w-fit self-center" href={{href-to 'public.sessions' @event}} target="_blank" rel="noopener">
+      <i class="calendar icon"></i>
+      {{t 'Schedule'}}
+    </a>
+
+    <div class="y-scrollable p-2">
+      {{#each this.streams as |stream|}}
+        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} target="_blank" rel="noopener">
+          <div class="ui card d-flex flex-column items-center p-4" style="background-color: #333; margin: 0.5rem 0; color: white">
+            <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(random 'bisque' 'aqua' 'aquamarine' 'cadetblue' 'chartreuse' 'coral' 'chocolate' 'crimson' 'cyan' 'darkcyan')}}>
+              {{truncate (uppercase stream.name) 1 false}}
+            </div>
+            {{stream.name}}
+          </div>
+        </a>
+      {{/each}}
+    </div>
 
     {{#if this.loading}}
       <div class="ui active centered inline loader"></div>
