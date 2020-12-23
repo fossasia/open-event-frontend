@@ -17,7 +17,7 @@ export default class CurrencyAmount extends Component {
       if (resolvedLocale === 'en-US') {
         currentLocale = this.l10n.getLocale();
       }
-      if (this.args.amount <= 0) {
+      if (!this.args.amount || !this.args.currency || this.args.amount <= 0) {
         return '0.00';
       }
       return (this.args.amount)?.toLocaleString(locales[currentLocale] ?? resolvedLocale, { style: 'currency', currency: this.args.currency, minimumFractionDigits: 2 });

@@ -68,10 +68,14 @@ export default class Schedule extends Component<ScheduleArgs> {
     return this.args.sessions.map(session => {
       const speakerNames = session.speakers.map((speaker: Speaker) => speaker.name).join(', ');
       const color = session.track.get('color');
+      let sessionEndTime = session.endsAt.tz(this.timezone).format();
+      if (session.endsAt.tz(this.timezone).format() > this.args.event.endsAt.tz(this.timezone).format()) {
+        sessionEndTime = this.args.event.endsAt.tz(this.timezone).format();
+      }
       return {
         title      : `${session.title} | ${speakerNames}`,
         start      : session.startsAt.tz(this.timezone).format(),
-        end        : session.endsAt.tz(this.timezone).format(),
+        end        : sessionEndTime,
         resourceId : session.microlocation.get('id'),
         color,
         textColor  : getTextColor(color),

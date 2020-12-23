@@ -17,6 +17,7 @@ export default class ExploreRoute extends Route {
    * @return {*}
    * @private
    */
+
   _loadEvents(params) {
     const filterOptions = [
       {
@@ -25,6 +26,48 @@ export default class ExploreRoute extends Route {
         val  : 'published'
       }
     ];
+    const onlineFilter = {
+      and: [
+        {
+          name : 'online',
+          op   : 'eq',
+          val  : true
+        },
+        {
+          name : 'location_name',
+          op   : 'eq',
+          val  : null
+        }
+      ]
+    };
+    const locationFilter = {
+      and: [
+        {
+          name : 'location_name',
+          op   : params.location ? 'ilike' : 'ne',
+          val  : params.location ? `%${params.location}%` : null
+        },
+        {
+          name : 'online',
+          op   : 'eq',
+          val  : false
+        }
+      ]
+    };
+    const mixedFilter = {
+      and: [
+        {
+          name : 'online',
+          op   : 'eq',
+          val  : true
+        },
+        {
+          name : 'location_name',
+          op   : params.location ? 'ilike' : 'ne',
+          val  : params.location ? `%${params.location}%` : null
+        }
+      ]
+    };
 
     if (params.category) {
       filterOptions.push({
@@ -73,12 +116,28 @@ export default class ExploreRoute extends Route {
         }
       });
     }
-    if (params.is_online) {
-      filterOptions.push({
-        name : 'online',
-        op   : 'eq',
-        val  : params.is_online
-      });
+    if (params.is_online || params.is_location || params.is_mixed || params.location) {
+      const filterArray = [];
+      if (params.is_online) {
+        filterArray.push(onlineFilter);
+      }
+      if (params.is_location) {
+        filterArray.push(locationFilter);
+      }
+      if (params.is_mixed) {
+        filterArray.push(mixedFilter);
+      }
+      if (filterArray.length) {
+        filterOptions.push({
+          or: filterArray
+        });
+      } else {
+        filterOptions.push({
+          name : 'location_name',
+          op   : 'ilike',
+          val  : `%${params.location}%`
+        });
+      }
     }
     if (params.has_image) {
       filterOptions.push({
@@ -92,13 +151,6 @@ export default class ExploreRoute extends Route {
         name : 'logo-url',
         op   : 'ne',
         val  : null
-      });
-    }
-    if (params.location) {
-      filterOptions.push({
-        name : 'location_name',
-        op   : 'ilike',
-        val  : `%${params.location}%`
       });
     }
     if (params.event_name) {
