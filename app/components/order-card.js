@@ -18,9 +18,9 @@ export default class OrderCard extends Component {
   }
 
   @action
-  cancelOrder(order_id) {
+  async cancelOrder(order_id) {
     this.set('isLoading', true);
-    const order = this.store.peekRecord('order', order_id, { backgroundReload: false });
+    const order = await this.store.peekRecord('order', order_id, { backgroundReload: false });
     order.set('status', 'cancelled');
     order.save()
       .then(() => {
