@@ -7,20 +7,23 @@
     </div>
   {{/unless}}
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
-    <a class="main content" href="{{href-to 'orders.view' this.order.identifier}}">
+    <div class="main content">
       <div class="right floated author">
-        <div class="ui {{order-color this.order.status}} large label">
+        <a class="ui {{order-color this.order.status}} large label" href="{{href-to 'orders.view' this.order.identifier}}">
           {{this.order.status}}
-        </div>
+        </a>
         {{#if this.isUserCheckedIn}}
-          <div class="ui green large label">
+          <a class="ui green large label" href="{{href-to 'orders.view' this.order.identifier}}">
             {{t 'Checked In'}}
-          </div>
+          </a>
         {{else}}
-          <div class="ui red large label">
+          <a class="ui red large label" href="{{href-to 'orders.view' this.order.identifier}}">
             {{t 'Not Checked In'}}
-          </div>
+          </a>
         {{/if}}
+        <UiPopup @content={{t "Cancel Ticket"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui red large label button" @position="top center">
+          {{t 'Cancel Ticket'}}
+        </UiPopup>
       </div>
       <SmartOverflow @class="header">
         {{this.order.event.name}}
@@ -33,7 +36,7 @@
       <SmartOverflow @class="description">
         {{this.order.event.shortLocationName}}
       </SmartOverflow>
-    </a>
+    </div>
     <div class="extra content small text">
       <span>
         <span>
@@ -49,11 +52,6 @@
           <span>{{t 'on'}} {{general-date this.order.completedAt 'date-time-short'}}</span>
         {{/if}}
       </span>
-      <div class="right floated author">
-        <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui compact red mini right icon button" @position="top center">
-          {{t 'cancel'}}<i class="close icon"></i>
-        </UiPopup>
-      </div>
     </div>
   </div>
 </div>
