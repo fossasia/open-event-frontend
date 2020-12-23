@@ -1,0 +1,16 @@
+<button {{did-insert this.setup}} class="ui icon button" style="position: absolute; top: 0; margin: 10px" {{action (mut this.shown) true}}>
+  <i class="arrow right icon"></i>
+</button>
+{{#if this.shown}}
+  <div style="width: 250px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
+    <i class="black close icon" style="float: right; margin: .5rem" {{action (mut this.shown) false}}></i>
+
+    <div>{{@event.name}}</div>
+
+    <div>Videos:</div>
+
+    {{#if this.loading}}
+      <div class="ui active centered inline loader"></div>
+    {{/if}}
+  </div>
+{{/if}}

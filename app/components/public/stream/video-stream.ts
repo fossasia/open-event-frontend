@@ -5,6 +5,7 @@ import VideoStream from 'open-event-frontend/models/video-stream';
 import { getScript } from 'open-event-frontend/utils/loader';
 import AuthManagerService from 'open-event-frontend/services/auth-manager';
 import UrlParser from 'url-parse';
+import { tracked } from '@glimmer/tracking';
 
 declare global {
   interface Window {
@@ -24,7 +25,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @service
   loader!: any;
 
-  app: HTMLElement | null = null
+  @tracked
+  loading = true;
 
   getRoomName(parsedUrl: UrlParser): string {
     return parsedUrl.pathname.slice(1); // drop leading slash
@@ -34,9 +36,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
     const provider = stream.get('videoChannel.provider');
-
-    this.app = (document.querySelector('.ember-application') as HTMLElement);
-    this.app.innerHTML = '<div class="ui active centered inline loader"></div>';
 
     if (provider === 'jitsi') {
       await this.setupJitsi(stream);
@@ -49,8 +48,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   }
 
   async setupJitsi(stream: VideoStream): Promise<void> {
-    const app = (document.querySelector('.ember-application') as HTMLElement);
-    app.innerHTML = '<div class="ui active centered inline loader"></div>';
 
     const channel = await stream.videoChannel;
 
@@ -60,7 +57,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
     const domain = parsedUrl.host;
     const options = {
       roomName   : this.getRoomName(parsedUrl),
-      parentNode : document.querySelector('.ember-application'),
+      parentNode : document.getElementById('video-root'),
       userInfo   : {
         email       : this.authManager.currentUser.email,
         displayName : this.authManager.currentUser.fullName
@@ -74,7 +71,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
         HIDE_INVITE_MORE_HEADER: true
       }
     };
-    (this.app as HTMLElement).innerHTML = '';
+    this.loading = false;
     const api = new window.JitsiMeetExternalAPI(domain, options);
 
     api.executeCommand('subject', stream.name);
