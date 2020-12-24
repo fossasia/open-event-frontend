@@ -28,8 +28,7 @@ export default class OrderCard extends Component {
     } catch(e) {
         console.error('Error while cancelling order', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-      }
-      finally {
+    } finally {
         this.set('isLoading', false);
       }
   }
