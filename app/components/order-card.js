@@ -22,17 +22,16 @@ export default class OrderCard extends Component {
     this.set('isLoading', true);
     const order = await this.store.peekRecord('order', order_id, { backgroundReload: false });
     order.set('status', 'cancelled');
-    order.save()
-      .then(() => {
-        this.notify.success(this.l10n.t('Order has been cancelled successfully.'));
-      })
-      .catch(e => {
+    try {
+      order.save();
+      this.notify.success(this.l10n.t('Order has been cancelled successfully.'));
+    } catch(e) {
         console.error('Error while cancelling order', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
-      })
-      .finally(() => {
+      }
+      finally {
         this.set('isLoading', false);
-      });
+      }
   }
 
 }
