@@ -15,27 +15,19 @@ export default class ManageRoles extends Component {
   }
 
   @action
-  openAddUserRoleModal(invite) {
-    if (invite) {
-      this.set('currentInvite', invite);
-      this.set('isNewInvite', false);
-    } else {
-      const currentInvite = this.data.roleInvites.createRecord({});
-      this.set('currentInvite', currentInvite);
-      this.set('isNewInvite', true);
-    }
+  openAddUserRoleModal() {
+    const currentInvite = this.data.roleInvites.createRecord({});
+    this.set('currentInvite', currentInvite);
     this.set('isAddUserRoleModalOpen', true);
   }
 
   @action
-  updateUserRoles() {
+  addUserRoles() {
     this.set('isLoading', true);
     this.currentInvite.set('roleName', this.currentInvite.get('role.name'));
     this.currentInvite.save()
       .then(() => {
-        if (this.isNewInvite) {
-          this.data.roleInvites.addObject(this.currentInvite);
-        }
+        this.data.roleInvites.addObject(this.currentInvite);
         this.set('isAddUserRoleModalOpen', false);
         this.notify.success(this.isNewInvite ? this.l10n.t('Role Invite sent successfully') : this.l10n.t('Role Invite updated successfully'), {
           id: 'man_role'
