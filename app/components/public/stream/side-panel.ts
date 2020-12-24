@@ -18,7 +18,17 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked loading = true;
   @tracked streams: VideoStream[] = [];
 
-  colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse', 'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan'];
+  colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
+            'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
+            'blueviolet', 'burlywood', 'cornflowerblue', 'darkblue',
+            'darkgoldenrod', 'darkgreen', 'darkmagenta', 'darkorchid',
+            'darkorange', 'darkred', 'darksalmon', 'darkseagreen',
+            'darkslateblue', 'darkslategray', 'darkviolet',
+            'darkturquoise', 'deeppink', 'deepskyblue', 'dimgray',
+            'dodgerblue', 'forestgreen', 'fuchsia', 'gold', 'goldenrod',
+            'green', 'hotpink', 'indianred', 'indigo', 'lawngreen',
+            'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
+            'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
   addStream(stream: VideoStream | null): void {
     if (!stream) {return;}
