@@ -72,6 +72,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
       }
     };
     this.loading = false;
+    document.getElementById('video-root')!.innerHTML = ''; // eslint-disable-line @typescript-eslint/no-non-null-assertion
     const api = new window.JitsiMeetExternalAPI(domain, options);
 
     api.executeCommand('subject', stream.name);

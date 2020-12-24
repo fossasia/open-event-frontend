@@ -4,12 +4,17 @@ import { hash } from 'rsvp';
 
 export default class PublicStreamView extends Route {
 
-  renderTemplate() {
+  renderTemplate(): void {
     this.render('public/stream/view', { into: 'root' });
   }
 
-  titleToken(model: VideoStream): string {
-    return model.name;
+  titleToken(model: { stream: VideoStream}): string {
+    setTimeout(() => {
+      if (window?.document) {
+        window.document.title = model.stream.name;
+      }
+    }, 0);
+    return model.stream.name;
   }
 
   model(params: { stream_id: number }): Promise<any> {

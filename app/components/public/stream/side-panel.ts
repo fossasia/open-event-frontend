@@ -18,7 +18,9 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked loading = true;
   @tracked streams: VideoStream[] = [];
 
-  addStream(stream: VideoStream | null) {
+  colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse', 'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan'];
+
+  addStream(stream: VideoStream | null): void {
     if (!stream) {return;}
     if (this.streams.map(stream => stream.id).any(id => id === stream.id)) {return;}
     this.streams.push(stream);

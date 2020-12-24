@@ -1,4 +1,4 @@
-<div id="video-root" {{did-insert this.setup}} style="width: 100%; height: 100%;">
+<div id="video-root" {{did-insert this.setup}} {{did-update this.setup @videoStream}} style="width: 100%; height: 100%;">
   {{#if this.loading}}
     <div class="ui active centered inline loader"></div>
   {{/if}}

@@ -4,7 +4,7 @@
 {{#if this.shown}}
   <div class="d-flex flex-column p-4"
     style="width: 300px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
-    <i class="close icon ml-auto" {{action (mut this.shown) false}}></i>
+    <i role="button" class="close icon ml-auto" {{action (mut this.shown) false}}></i>
 
     <div class="ui header inverted">
       <span>{{@event.name}}</span>
@@ -21,12 +21,12 @@
 
     <div class="y-scrollable p-2">
       {{#each this.streams as |stream|}}
-        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} target="_blank" rel="noopener">
-          <div class="ui card d-flex flex-column items-center p-4" style="background-color: #333; margin: 0.5rem 0; color: white">
-            <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(random 'bisque' 'aqua' 'aquamarine' 'cadetblue' 'chartreuse' 'coral' 'chocolate' 'crimson' 'cyan' 'darkcyan')}}>
+        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}}>
+          <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2">
+            <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(random this.colors)}}>
               {{truncate (uppercase stream.name) 1 false}}
             </div>
-            {{stream.name}}
+            <div>{{stream.name}}</div>
           </div>
         </a>
       {{/each}}
