@@ -1,10 +1,10 @@
-<button {{did-insert this.setup}} class="ui icon button" style="position: absolute; top: 0; margin: 10px" {{action (mut this.shown) true}}>
-  <i class="arrow right icon"></i>
+<button {{did-insert this.setup}} class="ui icon button" style="position: absolute; top: 50%;" {{action (mut this.shown) true}}>
+  <i class="angle right icon"></i>
 </button>
 {{#if this.shown}}
   <div class="d-flex flex-column p-4"
     style="width: 300px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
-    <i role="button" class="close icon ml-auto" {{action (mut this.shown) false}}></i>
+    <i role="button" class="angle left icon ml-auto" {{action (mut this.shown) false}}></i>
 
     <div class="ui header inverted">
       <span>{{@event.name}}</span>
