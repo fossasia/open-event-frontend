@@ -67,9 +67,9 @@ export default Component.extend(FormMixin, {
         this.set('getRemainingTime', '00:00');
         this.data.set('status', 'expired');
         this.data.reload();
-        if(this.session.currentRouteName === 'orders.new') {
+        if (this.session.currentRouteName === 'orders.new') {
           this.router.transitionTo('orders.expired', orderIdentifier);
-        } 
+        }
       }
     }, 1000);
   },
