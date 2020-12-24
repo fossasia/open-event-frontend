@@ -5,6 +5,8 @@ import moment from 'moment';
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  sort_by = 'order.completed_at';
+  sort_dir = 'ASC';
   get columns() {
     return [
       {
