@@ -23,7 +23,7 @@ export default class OrderCard extends Component {
     const order = await this.store.peekRecord('order', order_id, { backgroundReload: false });
     order.set('status', 'cancelled');
     try {
-      order.save();
+      await order.save();
       this.notify.success(this.l10n.t('Order has been cancelled successfully.'));
     } catch (e) {
       console.error('Error while cancelling order', e);

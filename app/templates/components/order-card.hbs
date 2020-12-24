@@ -7,21 +7,9 @@
     </div>
   {{/unless}}
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
-    <div class="main content">
+    <div class="order card main content">
       <div class="right floated author">
-        <a class="ui {{order-color this.order.status}} large label" href="{{href-to 'orders.view' this.order.identifier}}">
-          {{this.order.status}}
-        </a>
-        {{#if this.isUserCheckedIn}}
-          <a class="ui green large label" href="{{href-to 'orders.view' this.order.identifier}}">
-            {{t 'Checked In'}}
-          </a>
-        {{else}}
-          <a class="ui red large label" href="{{href-to 'orders.view' this.order.identifier}}">
-            {{t 'Not Checked In'}}
-          </a>
-        {{/if}}
-        <UiPopup @content={{t "Cancel Ticket"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui red large label button" @position="top center">
+        <UiPopup @content={{t "Cancel Ticket"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
           {{t 'Cancel Ticket'}}
         </UiPopup>
       </div>
@@ -37,7 +25,7 @@
         {{this.order.event.shortLocationName}}
       </SmartOverflow>
     </div>
-    <div class="extra content small text">
+    
       <span>
         <span>
           {{#if this.isFreeOrder}}
@@ -52,6 +40,21 @@
           <span>{{t 'on'}} {{general-date this.order.completedAt 'date-time-short'}}</span>
         {{/if}}
       </span>
+      <div class="extra content small text">
+      {{#if (not-eq order.status "completed")}}
+          <a class="ui {{order-color this.order.status}} large label" href="{{href-to 'orders.view' this.order.identifier}}">
+            {{this.order.status}}
+          </a>
+        {{/if}}
+        {{#if this.isUserCheckedIn}}
+          <a class="ui green large label" href="{{href-to 'orders.view' this.order.identifier}}">
+            {{t 'Checked In'}}
+          </a>
+        {{else}}
+          <a class="ui light gray large label" href="{{href-to 'orders.view' this.order.identifier}}">
+            {{t 'Not Checked In'}}
+          </a>
+        {{/if}}
     </div>
   </div>
 </div>
