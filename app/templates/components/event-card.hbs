@@ -23,7 +23,7 @@
       </SmartOverflow>
       <div class="meta mb-2">
         <span class="date">
-          {{#if this.isSingleDay}}
+          {{#if this.event.isSingleDay}}
             {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
             - 
             {{general-date this.event.endsAt 'time-tz-short' tz=this.event.timezone}}
