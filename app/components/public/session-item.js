@@ -1,5 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import moment from 'moment';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
@@ -28,6 +29,12 @@ export default class SessionItem extends Component {
     return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
   }
 
+  get sessionEnded() {
+    const sessionEndDate =  moment.tz(this.args.session.endsAt, this.args.timezone);
+    const now = moment.tz(this.args.timezone);
+    return moment(sessionEndDate).isSameOrBefore(now);
+  }
+
   @action
   hideSpeakerImage() {
     this.hideImage = !this.hideImage;
@@ -39,6 +46,11 @@ export default class SessionItem extends Component {
   @action
   goToSlides() {
     window.open(this.args.session.slidesUrl, '_blank');
+  }
+
+  @action
+  goToVideo() {
+    window.open(this.args.session.videoUrl, '_blank');
   }
 
   @action
