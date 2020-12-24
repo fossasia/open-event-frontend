@@ -13,7 +13,7 @@ export default class SessionNotifyModal extends ModalBase {
   @tracked saving = false;
   @tracked subject = '';
   @tracked message = '';
-  @tracked bcc = '';
+  @tracked bccString = '';
 
   constructor() {
     super(...arguments);
@@ -63,8 +63,8 @@ export default class SessionNotifyModal extends ModalBase {
       payload.message = newMessage;
     }
 
-    if (this.bcc) {
-      payload.bcc = this.bcc;
+    if (this.bccString) {
+      payload.bcc = this.bccString.split(', ');
     }
 
     this.saving = true;
