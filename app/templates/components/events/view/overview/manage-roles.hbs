@@ -19,7 +19,7 @@
       <tr>
         <th>{{t 'User (Email)'}}</th>
         <th>{{t 'Role'}}</th>
-        {{#if editable}}
+        {{#if (and @editable  (eq this.roleType 'pending'))}}
           <th>{{t 'Options'}}</th>
         {{/if}}
       </tr>
@@ -29,15 +29,9 @@
         <tr>
           <td>{{roleInvite.email}}</td>
           <td>{{roleInvite.role.titleName}}</td>
-          {{#if @editable}}
+          {{#if (and @editable  (eq this.roleType 'pending'))}}
             <td>
               <div class="ui horizontal compact basic buttons">
-                <UiPopup
-                  @content={{t "Edit"}}
-                  @class="ui icon button"
-                  @click={{action "openAddUserRoleModal" roleInvite}}>
-                  <i class="edit icon"></i>
-                </UiPopup>
                 {{#if (eq this.roleType 'accepted')}}
                   <UiPopup
                     @content={{t "Delete"}}
@@ -79,4 +73,4 @@
   @isLoading={{this.isLoading}}
   @data={{this.data}}
   @isOpen={{this.isAddUserRoleModalOpen}}
-  @updateUserRoles={{action "updateUserRoles"}} />
+  @addUserRoles={{action "addUserRoles"}} />
