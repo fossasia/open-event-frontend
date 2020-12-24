@@ -20,8 +20,8 @@
     {{#if (eq socialLink.normalizedName 'globe')}}
       <div class="m-1">
         <UiPopup @content={{t socialLink.displayName}}>
-          <a href="{{socialLink.link}}" class="ui icon blue big button extra-link" target="_blank" rel="noopener nofollow">
-            <div  class="truncate" style="font-size: .8rem;">{{socialLink.displayName}}</div>
+          <a href="{{socialLink.link}}" class="ui icon blue small button extra-link" target="_blank" rel="noopener nofollow">
+            <div  class="clamp" style="font-size: .8rem;">{{socialLink.displayName}}</div>
           </a>
         </UiPopup>
       </div>
