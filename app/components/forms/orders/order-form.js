@@ -58,6 +58,9 @@ export default Component.extend(FormMixin, {
 
   timer(willExpireAt, orderIdentifier) {
     run.later(() => {
+      if(this.session.currentRouteName !== 'orders.new') {
+        return;
+      }
       const currentTime = moment();
       const diff = moment.duration(willExpireAt.diff(currentTime));
       if (diff > 0) {
@@ -67,9 +70,7 @@ export default Component.extend(FormMixin, {
         this.set('getRemainingTime', '00:00');
         this.data.set('status', 'expired');
         this.data.reload();
-        if (this.session.currentRouteName === 'orders.new') {
-          this.router.transitionTo('orders.expired', orderIdentifier);
-        }
+        this.router.transitionTo('orders.expired', orderIdentifier); 
       }
     }, 1000);
   },
