@@ -25,12 +25,12 @@ export default class OrderCard extends Component {
     try {
       order.save();
       this.notify.success(this.l10n.t('Order has been cancelled successfully.'));
-    } catch(e) {
-        console.error('Error while cancelling order', e);
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+    } catch (e) {
+      console.error('Error while cancelling order', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     } finally {
-        this.set('isLoading', false);
-      }
+      this.set('isLoading', false);
+    }
   }
 
 }
