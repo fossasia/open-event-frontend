@@ -32,12 +32,6 @@
           {{#if @editable}}
             <td>
               <div class="ui horizontal compact basic buttons">
-                <UiPopup
-                  @content={{t "Edit"}}
-                  @class="ui icon button"
-                  @click={{action "openAddUserRoleModal" roleInvite}}>
-                  <i class="edit icon"></i>
-                </UiPopup>
                 {{#if (eq this.roleType 'accepted')}}
                   <UiPopup
                     @content={{t "Delete"}}
