@@ -4,7 +4,9 @@
 {{#if this.shown}}
   <div class="d-flex flex-column p-4"
     style="width: 300px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
-    <i role="button" class="angle left icon ml-auto" {{action (mut this.shown) false}}></i>
+    <button class="ui icon small button ml-auto" {{action (mut this.shown) false}}>  
+    <i class="angle left icon"></i>
+    </button>
 
     <div class="ui header inverted">
       <span>{{@event.name}}</span>
