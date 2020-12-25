@@ -18,23 +18,12 @@
       </SmartOverflow>
       <div class="meta">
         <span class="date">
-          <Public::EventDateTime @event={{@order.event}}/>
+          <Public::EventDateTime @event={{@order.event}}
+          />
         </span>
       </div>
-      {{#if this.order.event.online}}
-        <p style="color: #000000AD">
-          <i class="wifi icon"></i>
-          {{t 'Online Event'}}
-        </p>
-      {{/if}}
-      {{#if this.order.event.shortLocationName}}
-          <span style="color: #000000AD">
-            <i class="map marker alternate icon"></i>
-          </span>
-          <SmartOverflow @class="d-inline description">
-            {{this.order.event.shortLocationName}}
-          </SmartOverflow>
-      {{/if}}
+      <Public::EventVenue @event={{@order.event}}
+      />
     </div>
 
       <span style="margin-left: .8rem">
