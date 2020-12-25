@@ -18,9 +18,15 @@
       </SmartOverflow>
       <div class="meta">
         <span class="date">
-          {{general-date this.order.event.startsAt 'date-time-tz-long' tz=this.order.event.timezone}}
-          -
-          {{general-date this.order.event.endsAt 'date-time-tz-long' tz=this.order.event.timezone}}
+          {{#if this.order.event.isSingleDay}}
+            {{general-date this.order.event.startsAt 'date-time-long' tz=this.order.event.timezone}}
+            -
+            {{general-date this.order.event.endsAt 'time-tz-short' tz=this.order.event.timezone}}
+          {{else}}
+            {{general-date this.order.event.startsAt 'date-time-long' tz=this.order.event.timezone}}
+            -
+            {{general-date this.order.event.endsAt 'date-time-tz-long' tz=this.order.event.timezone}}
+          {{/if}}
         </span>
       </div>
       {{#if this.order.event.online}}
