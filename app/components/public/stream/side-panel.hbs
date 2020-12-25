@@ -1,11 +1,11 @@
-<button {{did-insert this.setup}} class="ui icon small button" style="position: absolute; top: 0; margin-top: 10px; left: -5px" {{action (mut this.shown) true}}>
+<button {{did-insert this.setup}} class="ui icon small button toggle-btn" style="position: absolute; top: 0; margin-top: 10px; left: -5px" {{action (mut this.shown) true}}>
   <i class="angle right icon"></i>
 </button>
 {{#if this.shown}}
   <div class="d-flex flex-column p-4"
     style="width: 300px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
-    <button class="ui icon small button ml-auto" {{action (mut this.shown) false}}>  
-    <i class="angle left icon"></i>
+    <button class="ui icon small button toggle-btn ml-auto" {{action (mut this.shown) false}}>  
+     <i class="angle left icon"></i>
     </button>
 
     <div class="ui header inverted">
