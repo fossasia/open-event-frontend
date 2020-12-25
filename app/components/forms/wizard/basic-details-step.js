@@ -141,7 +141,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
       return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
     };
-
+    window.$.fn.form.settings.rules.checkValidTimeDifference = () => {
+      const STA = document.getElementsByName('start_time')[0].value.split(':');
+      const STIS = (parseInt(STA[0]) + parseInt(STA[1])) * 60;
+      const ETA = document.getElementsByName('end_time')[0].value.split(':');
+      const ETIS = (parseInt(ETA[0]) + parseInt(ETA[1])) * 60;
+      return STIS < ETIS;
+    };
+      
     const validationRules = {
       inline : true,
       delay  : false,
@@ -198,6 +205,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Starting time should be less than ending time')
             }
           ]
         },
@@ -208,6 +219,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Ending time should be greater than starting time')
             }
           ]
         },
