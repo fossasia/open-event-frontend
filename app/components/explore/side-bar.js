@@ -16,7 +16,7 @@ export default class SideBar extends Component {
   customEndDate = null;
   @tracked showFilters = false;
 
-  suggestions = null;
+  @tracked suggestions = [];
   isMapVisible = true;
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
