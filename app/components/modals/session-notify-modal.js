@@ -64,7 +64,7 @@ export default class SessionNotifyModal extends ModalBase {
     }
 
     if (this.bccString) {
-      payload.bcc = this.bccString.split(', ');
+      payload.bcc = this.bccString.replace(/\s/g, '').split(',');
     }
 
     this.saving = true;
