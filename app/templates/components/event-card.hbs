@@ -23,31 +23,10 @@
       </SmartOverflow>
       <div class="meta mb-2">
         <span class="date">
-          {{#if this.isSingleDay}}
-            {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
-            - 
-            {{general-date this.event.endsAt 'time-tz-short' tz=this.event.timezone}}
-          {{else}}
-            {{general-date this.event.startsAt 'date-time-long' tz=this.event.timezone}}
-            -
-            {{general-date this.event.endsAt 'date-time-tz-long' tz=this.event.timezone}}
-          {{/if}}
+          <Public::EventDateTime @event={{@event}} @noBreak={{true}} />
         </span>
       </div>
-      {{#if this.event.online}}
-        <p style="color: #000000AD">
-          <i class="wifi icon"></i>
-          {{t 'Online Event'}}
-        </p>
-      {{/if}}
-      {{#if this.event.shortLocationName}}
-          <span style="color: #000000AD">
-            <i class="map marker alternate icon"></i>
-          </span>
-          <SmartOverflow @class="d-inline description">
-            {{this.event.shortLocationName}}
-          </SmartOverflow>
-      {{/if}}
+      <Public::EventVenue @event={{@event}} />
     </a>
     <div class="extra content small text">
       <span class="right floated">

@@ -5,6 +5,7 @@ import VideoStream from 'open-event-frontend/models/video-stream';
 import { getScript } from 'open-event-frontend/utils/loader';
 import AuthManagerService from 'open-event-frontend/services/auth-manager';
 import UrlParser from 'url-parse';
+import { tracked } from '@glimmer/tracking';
 
 declare global {
   interface Window {
@@ -19,42 +20,44 @@ interface Args {
 export default class PublicStreamVideoStream extends Component<Args> {
 
   @service
-  authManager!: AuthManagerService
+  authManager!: AuthManagerService;
 
-  app: HTMLElement | null = null
+  @service
+  loader!: any;
+
+  @tracked
+  loading = true;
 
   getRoomName(parsedUrl: UrlParser): string {
     return parsedUrl.pathname.slice(1); // drop leading slash
   }
 
-  isJitsi(parsedUrl: UrlParser): boolean {
-    return parsedUrl.host.endsWith('jit.si');
-  }
-
   @action
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
+    const provider = stream.get('videoChannel.provider');
 
-    const parsedUrl = new UrlParser(stream.url, true);
-
-    this.app = (document.querySelector('.ember-application') as HTMLElement);
-    this.app.innerHTML = '<div class="ui active centered inline loader"></div>';
-
-    if (this.isJitsi(parsedUrl)) {
-      await this.setupJitsi(stream, parsedUrl);
+    if (provider === 'jitsi') {
+      await this.setupJitsi(stream);
+    } else if (provider === 'bbb') {
+      const { url } = await this.loader.load(`/video-streams/${stream.id}/join`);
+      location.href = url;
     } else {
       location.href = stream.url;
     }
   }
 
-  async setupJitsi(stream: VideoStream, parsedUrl: UrlParser): Promise<void> {
-    const app = (document.querySelector('.ember-application') as HTMLElement);
-    app.innerHTML = '<div class="ui active centered inline loader"></div>';
-    await getScript(parsedUrl.origin + '/external_api.js');
+  async setupJitsi(stream: VideoStream): Promise<void> {
+
+    const channel = await stream.videoChannel;
+
+    await getScript(channel.url + '/external_api.js');
+
+    const parsedUrl = new UrlParser(stream.url, true);
     const domain = parsedUrl.host;
     const options = {
       roomName   : this.getRoomName(parsedUrl),
-      parentNode : document.querySelector('.ember-application'),
+      parentNode : document.getElementById('video-root'),
       userInfo   : {
         email       : this.authManager.currentUser.email,
         displayName : this.authManager.currentUser.fullName
@@ -68,7 +71,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
         HIDE_INVITE_MORE_HEADER: true
       }
     };
-    (this.app as HTMLElement).innerHTML = '';
+    this.loading = false;
+    document.getElementById('video-root')!.innerHTML = ''; // eslint-disable-line @typescript-eslint/no-non-null-assertion
     const api = new window.JitsiMeetExternalAPI(domain, options);
 
     api.executeCommand('subject', stream.name);

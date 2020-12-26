@@ -11,209 +11,209 @@ export default class EventsViewTeamPermissions extends Route.extend({
     return {
       permissions: [
         {
-          title  : 'Manage Events Page',
+          title  : this.l10n.t('Manage Events Page'),
           header : true
         },
         {
-          title     : 'Show event on manage events page',
+          title     : this.l10n.t('Show event on manage events page'),
           owner     : true,
           organizer : true
         },
         {
-          title  : 'Overview',
+          title  : this.l10n.t('Overview'),
           header : true
         },
         {
-          title     : 'Update/Edit event',
+          title     : this.l10n.t('Update/Edit event'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'View event dashboard',
+          title     : this.l10n.t('View event dashboard'),
           owner     : true,
           organizer : true
         },
         {
-          title  : 'Team',
+          title  : this.l10n.t('Team'),
           header : true
         },
         {
-          title     : 'View team members',
+          title     : this.l10n.t('View team members'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Invite team members',
+          title     : this.l10n.t('Invite team members'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Cancel invitations',
+          title     : this.l10n.t('Cancel invitations'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Delete team members',
+          title     : this.l10n.t('Delete team members'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Manage roles',
+          title     : this.l10n.t('Manage roles'),
           owner     : true,
           organizer : true
         },
         {
-          title  : 'Tickets',
+          title  : this.l10n.t('Tickets'),
           header : true
         },
         {
-          title     : 'View orders and attendees',
+          title     : this.l10n.t('View orders and attendees'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Create discount codes',
+          title     : this.l10n.t('Create discount codes'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Edit discount codes',
+          title     : this.l10n.t('Edit discount codes'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Create view codes',
+          title     : this.l10n.t('Create view codes'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Edit view codes',
+          title     : this.l10n.t('Edit view codes'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Check-in attendees',
+          title     : this.l10n.t('Check-in attendees'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Change attendee check-in status',
+          title     : this.l10n.t('Change attendee check-in status'),
           owner     : true,
           organizer : true
         },
         {
-          title  : 'Scheduler',
+          title  : this.l10n.t('Scheduler'),
           header : true
         },
         {
-          title     : 'View scheduler',
+          title     : this.l10n.t('View scheduler'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Edit schedule',
+          title     : this.l10n.t('Edit schedule'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Publish schedule',
+          title     : this.l10n.t('Publish schedule'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Unpublish schedule',
+          title     : this.l10n.t('Unpublish schedule'),
           owner     : true,
           organizer : true
         },
         {
-          title  : 'Sessions and Speakers',
+          title  : this.l10n.t('Sessions and Speakers'),
           header : true
         },
         {
-          title     : 'View speaker profiles',
+          title     : this.l10n.t('View speaker profiles'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Edit speaker profiles',
+          title     : this.l10n.t('Edit speaker profiles'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Create speaker profiles',
+          title     : this.l10n.t('Create speaker profiles'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Feature speakers',
+          title     : this.l10n.t('Feature speakers'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'View session submissions',
+          title     : this.l10n.t('View session submissions'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Edit session submissions',
+          title     : this.l10n.t('Edit session submissions'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Create sessions',
+          title     : this.l10n.t('Create sessions'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Change session status',
+          title     : this.l10n.t('Change session status'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Notify speakers of status change',
+          title     : this.l10n.t('Notify speakers of status change'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'View ratings',
+          title     : this.l10n.t('View ratings'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Rate session submissions',
+          title     : this.l10n.t('Rate session submissions'),
           owner     : true,
           organizer : true
         },
         {
-          title     : 'Lock/Unlock session submissions',
+          title     : this.l10n.t('Lock/Unlock session submissions'),
           owner     : true,
           organizer : true
         },
         {
-          title  : 'Export',
+          title  : this.l10n.t('Export'),
           header : true
         },
         {
-          title     : 'View Export Info',
+          title     : this.l10n.t('View Export Info'),
           owner     : true,
           organizer : true
         },
         {
-          title  : 'Settings',
+          title  : this.l10n.t('Settings'),
           header : true
         },
         {
-          title     : 'View settings',
+          title     : this.l10n.t('View settings'),
           owner     : true,
           organizer : false
         },
         {
-          title     : 'Delete event',
+          title     : this.l10n.t('Delete event'),
           owner     : true,
           organizer : false
         },
         {
-          title     : 'Transfer ownership',
+          title     : this.l10n.t('Transfer ownership'),
           owner     : true,
           organizer : false
         }

@@ -186,6 +186,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
       return true;
     }
     return this.canPayByStripe && this.get('stripeAuthorization.stripePublishableKey');
+  }),
+
+  isSingleDay: computed('startsAt', 'endsAt', function() {
+    return this.startsAt.isSame(this.endsAt, 'day');
   })
 
 }) {}

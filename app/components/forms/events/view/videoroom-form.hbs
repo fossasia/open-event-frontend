@@ -6,51 +6,54 @@
       </h3>
     </div>
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
-      <button class='ui labeled icon blue button {{if this.jitsiButtonLoading 'loading' }}' {{action 'addJitsi'}}>
+      <UiDropdown
+        @class="ui floating labeled icon dropdown blue button"
+        @selected={{this.data.stream.videoChannel}}
+        @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
-        {{t 'Add Jitsi Room'}}
-      </button>
+        <div class="default text">
+          {{t 'Add Video'}}
+        </div>
+        <div class="menu">
+          {{#each (sort-by 'id' this.channels) as |channel|}}
+            <div data-value="{{map-value mapper channel}}" class="item">
+              {{channel.name}}
+            </div>
+          {{/each}}
+          <div data-value="{{map-value mapper null}}" class="item">
+            {{t 'Custom'}}
+          </div>
+        </div>
+      </UiDropdown>
     </div>
   </div>
 </div>
 <br>
 <form class="ui form {{if this.isLoading 'loading'}}">
-  {{#unless this.data.stream.event}}
+  <div class="field">
+    <label class="required">{{t 'Room'}}</label>
+    <input value={{this.data.stream.name}} readonly>
+  </div>
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
-      <label class="required">{{t 'Room'}}</label>
-      <input type="hidden" id="rooms">
-      <UiDropdown
-        @class="fluid selection"
-        @selected={{this.room}}
-        @onChange={{action this.setRoom}} as |execute mapper|>
-        <i class="dropdown icon"></i>
-        <div class="default text">
-          {{t 'Select Rooms'}}
-        </div>
-        <div class="menu">
-          {{#each this.rooms as |room|}}
-            {{#if room.name}}
-              <div data-value="{{map-value mapper room}}" class="item">
-                {{room.name}}
-              </div>
-            {{/if}}
-          {{/each}}
-        </div>
-      </UiDropdown>
+      <label class="required">{{t 'Video Source'}}</label>
+      <input value='Auto-Generated Big Blue Button Video Room' readonly> 
     </div>
-  {{/unless}}
-  <div class="field">
-    <label class="required">{{t 'Video Room URL'}}</label>
-    <Widgets::Forms::LinkField
-      @inputId="url"
-      @value={{this.data.stream.url}}
-      @onChange={{action (mut this.data.stream.url)}} />
-  </div>
-  <div class="field">
-    <label>{{t 'Room Password'}}</label>
-    <Input
-      @value={{this.data.stream.password}} />
-  </div>
+  {{/if}}
+  {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">{{t 'Video Source URL'}}</label>
+      <Widgets::Forms::LinkField
+        @inputId="url"
+        @value={{this.data.stream.url}}
+        @onChange={{action (mut this.data.stream.url)}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Room Password'}}</label>
+      <Input
+        @value={{this.data.stream.password}} />
+    </div>
+  {{/if}}
   <div class="field">
     <label>{{t 'Additional Information'}}</label>
     <Textarea
