@@ -11,6 +11,21 @@
   {{#if this.mail}}
     <form class="ui form">
       <div class="field">
+        <label>Name and Email</label>
+        <Input
+          type="text"
+          name="name and email"
+          @value={{this.speakerEmails}} 
+          disabled />
+      </div>
+      <div class="field">
+        <label>CC</label>
+        <Input
+          type="text"
+          name="cc"
+          @value={{this.bccString}} />
+      </div>     
+      <div class="field">
         <label>{{t "Subject"}}</label>
         <Input
           type="text"
