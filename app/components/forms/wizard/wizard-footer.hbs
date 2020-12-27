@@ -1,11 +1,11 @@
 <div class="ui grid">
   <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
     {{#if @event.identifier}}
-      <LinkTo @route="events.view.index" @model={{@event.identifier}} class="ui red button right labeled icon small right aligned {{if this.isUserUnverified 'disabled'}} button">
+      <LinkTo @route="events.view.index" @model={{@event.identifier}} class="ui red button right labeled icon small right aligned mt-4{{if this.isUserUnverified 'disabled'}} button">
         {{t 'Cancel'}} <i class="close icon"></i>
       </LinkTo>
     {{else}}
-      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small {{if this.isUserUnverified 'disabled'}}">
+      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small{{if this.isUserUnverified 'disabled'}}">
         {{t 'Discard'}} <i class="close icon"></i>
       </LinkTo>
     {{/if}}
@@ -16,13 +16,13 @@
       </button>
     {{/if}}
     {{#if (not @last)}}
-      <button class="ui button right labeled icon small {{if @loading 'disabled'}} right aligned" type="button" {{action @move 'forwards'}}>
+      <button class="ui button right labeled icon small {{if @loading 'disabled'}} right aligned mt-4" type="button" {{action @move 'forwards'}}>
         {{t 'Next'}}
         <i class="right chevron icon"></i>
       </button>
     {{/if}}
     {{#if (eq @event.state 'draft')}}
-      <button class="ui blue button right labeled icon small right aligned {{if @loading 'disabled'}}" type="button" {{action @onSaveDraft}}>
+      <button class="ui blue button right labeled icon small right aligned mt-4{{if @loading 'disabled'}}" type="button" {{action @onSaveDraft}}>
         {{t 'Save as draft'}} <i class="save icon"></i>
       </button>
     {{else}}
@@ -33,7 +33,7 @@
   </div>
 </div>
 <div class="ui grid">
-  <div class="sixteen wide column right aligned">
+  <div class="sixteen wide column left aligned">
     {{#if @event.identifier}}
       {{#if (eq @event.state 'draft')}}
         <p>{{t 'This event is currently not published. It is in draft mode and it is not visible publicly.'}}</p>
