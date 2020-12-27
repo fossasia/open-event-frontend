@@ -1,7 +1,7 @@
 <div class="ui list">
   <div class="social-links">
     {{#if this.externalUrl}}
-      <div class="m-1">
+      <div class="mr-1" >
         <a href="{{this.externalUrl}}" class="ui icon small blue button" target="_blank" rel="noopener nofollow">
           <div style="font-size: .8rem;">{{t 'Event'}}<br/>{{t 'Site'}}</div>
         </a>
@@ -9,7 +9,7 @@
     {{/if}}
     {{#each this.socialLinks as |socialLink|}}
       {{#if (not-eq socialLink.normalizedName 'globe')}}
-        <div class="m-1">
+        <div class="mr-1" >
           <a href="{{socialLink.link}}" class="ui icon {{socialLink.normalizedName}} {{socialLink.buttonColor}} big button">
             <i class="ui inverted {{socialLink.normalizedName}} icon"></i>
           </a>
