@@ -1,11 +1,11 @@
 <div class="ui grid">
   <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
     {{#if @event.identifier}}
-      <LinkTo @route="events.view.index" @model={{@event.identifier}} class="ui red button right labeled icon small right aligned mt-4{{if this.isUserUnverified 'disabled'}} button">
+      <LinkTo @route="events.view.index" @model={{@event.identifier}} class="ui red button right labeled icon small right aligned mt-4 {{if this.isUserUnverified 'disabled'}} button">
         {{t 'Cancel'}} <i class="close icon"></i>
       </LinkTo>
     {{else}}
-      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small{{if this.isUserUnverified 'disabled'}}">
+      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small {{if this.isUserUnverified 'disabled'}}">
         {{t 'Discard'}} <i class="close icon"></i>
       </LinkTo>
     {{/if}}
@@ -22,7 +22,7 @@
       </button>
     {{/if}}
     {{#if (eq @event.state 'draft')}}
-      <button class="ui blue button right labeled icon small right aligned mt-4{{if @loading 'disabled'}}" type="button" {{action @onSaveDraft}}>
+      <button class="ui blue button right labeled icon small right aligned mt-4 {{if @loading 'disabled'}}" type="button" {{action @onSaveDraft}}>
         {{t 'Save as draft'}} <i class="save icon"></i>
       </button>
     {{else}}
