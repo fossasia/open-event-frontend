@@ -5,7 +5,7 @@
         {{t 'Cancel'}} <i class="close icon"></i>
       </LinkTo>
     {{else}}
-      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small {{if this.isUserUnverified 'disabled'}}">
+      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small mt-4 {{if this.isUserUnverified 'disabled'}}">
         {{t 'Discard'}} <i class="close icon"></i>
       </LinkTo>
     {{/if}}

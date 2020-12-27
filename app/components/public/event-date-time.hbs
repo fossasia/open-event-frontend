@@ -1,0 +1,10 @@
+{{#if @event.isSingleDay}}
+  {{general-date @event.startsAt "dddd, D MMMM, YYYY" tz=@event.timezone}}
+  {{#unless @noBreak}}
+    <br>
+  {{/unless}}
+  {{general-date @event.startsAt 'time-short' tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt 'time-short' tz=@event.timezone}} 
+{{else}}
+  {{general-date @event.startsAt 'date-time-long' tz=@event.timezone}} {{t 'to'}} {{general-date @event.endsAt 'date-time-long' tz=@event.timezone}} 
+{{/if}}
+{{general-date @event.startsAt 'tz' tz=@event.timezone}}
