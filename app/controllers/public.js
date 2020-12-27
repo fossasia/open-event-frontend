@@ -28,7 +28,7 @@ export default class PublicController extends Controller {
   @computed('model.locationName', 'model.online')
   get headerLocation() {
     if (this.model.locationName && this.model.online) {
-      return this.l10n.t('In-Person Event and Online Event') + this.model.locationName;
+      return this.l10n.t('In-Person Event and Online Event') + ' ' + this.model.locationName;
     } else if (this.model.online) {
       return this.l10n.t('Online Event');
     } else if (this.model.locationName) {
