@@ -5,27 +5,32 @@
   {{#each this.allDates as |date|}}
     <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'date-short'}}</LinkTo>
   {{/each}}
+  <div class="d-flex">
+    <div id="session-search" class="d-flex" >
+      <Widgets::TimeZonePicker
+        class="mb-2 ml-auto mr-2"
+        style="min-width: 10px;"
+        @defaultLocal={{this.model.event.online}}
+        @eventTimezone={{this.model.event.timezone}}
+        @timezone={{this.timezone}} />
 
-  <Widgets::TimeZonePicker
-    class="mb-2 ml-auto mr-2"
-    @defaultLocal={{this.model.event.online}}
-    @eventTimezone={{this.model.event.timezone}}
-    @timezone={{this.timezone}} />
+      <UiDropdown class="labeled icon button mb-2">
+        <i class="sort amount down icon"></i>
+        <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
+        <div class="menu">
+          <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='title'}} class="item">{{t 'By Title'}}</LinkTo>
+          <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>
+        </div>
+      </UiDropdown>
+    </div>
 
   <Tables::Utilities::SearchBox
     class="mb-2 mr-2"
     @searchQuery={{this.search}}
     @size="large"
   />
+  </div>
 
-  <UiDropdown class="labeled icon button mb-2">
-    <i class="sort amount down icon"></i>
-    <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
-    <div class="menu">
-      <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='title'}} class="item">{{t 'By Title'}}</LinkTo>
-      <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>
-    </div>
-  </UiDropdown>
 </div>
 
 {{!-- To be enabled and developed on later --}}
