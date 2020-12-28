@@ -257,12 +257,7 @@ export default class ExploreRoute extends Route {
         and: [
           {
             name : 'starts-at',
-            op   : 'lt',
-            val  : moment().toISOString()
-          },
-          {
-            name : 'ends-at',
-            op   : 'lt',
+            op   : 'ge',
             val  : moment().toISOString()
           }
         ]
