@@ -11,12 +11,12 @@ export default class OrderCard extends Component {
     return amount === null || isEqual(amount, 0);
   }
 
-  @computed('order.attendees', 'order.tickets', 'order')
+  @computed('order.attendees')
   get attendeesNumber() {
     return this.order.attendees.length;
   }
 
-  @computed('order.attendees', 'order.tickets', 'order')
+  @computed('order.attendees', 'order')
   get isUserCheckedIn() {
     const checkedInUser = this.order.attendees.filterBy('email', this.authManager.currentUser.email).filterBy('isCheckedIn', true);
     return checkedInUser.length !== 0;
