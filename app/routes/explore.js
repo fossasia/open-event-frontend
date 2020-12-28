@@ -254,13 +254,11 @@ export default class ExploreRoute extends Route {
       });
     } else if (params.is_upcoming) {
       filterOptions.push({
-        and: [
           {
             name : 'starts-at',
             op   : 'ge',
             val  : moment().toISOString()
           }
-        ]
       });
     } else {
       filterOptions.push({
