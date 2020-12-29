@@ -3,18 +3,18 @@ import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import moment from 'moment';
 import { tagName } from '@ember-decorators/component';
-import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
 import { tracked } from '@glimmer/tracking';
+import { hasSpeakers, hasSessions } from 'open-event-frontend/utils/event';
 
 @classic
 @tagName('')
 export default class SideMenu extends Component {
 
   @tracked
-  showSpeakers = false;
+  showSpeakers = null;
 
   @tracked
-  showSessions = false;
+  showSessions = null;
 
   async didInsertElement() {
     super.didInsertElement(...arguments);
@@ -27,25 +27,11 @@ export default class SideMenu extends Component {
   }
 
   async checkSpeakers() {
-    this.showSpeakers = this.showSpeakers || (await this.loader.load(`/events/${this.event.id}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).data.length;
+    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.event);
   }
 
   async checkSessions() {
-    const filters = [{
-      or: [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'accepted'
-        }
-      ]
-    }];
-    this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?cache=true&public=true&fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
+    this.showSessions = this.showSessions ?? await hasSessions(this.loader, this.event);
   }
 
   didRender() {

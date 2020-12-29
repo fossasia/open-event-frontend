@@ -36,4 +36,8 @@ export default class SessionsController extends Controller {
     }
     return arr;
   }
+
+  get side_panel() {
+    return this.router.currentRoute.parent.queryParams.side_panel;
+  }
 }
