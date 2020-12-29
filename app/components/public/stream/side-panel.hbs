@@ -1,9 +1,8 @@
-<button {{did-insert this.setup}} class="ui icon button" style="position: absolute; top: 0; margin: 10px" {{action (mut this.shown) true}}>
+<button {{did-insert this.setup}} class="ui icon button stream-side-panel-button m-2" {{action (mut this.shown) true}}>
   <i class="arrow right icon"></i>
 </button>
 {{#if this.shown}}
-  <div class="d-flex flex-column p-4"
-    style="width: 300px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
+  <div class="d-flex flex-column p-4 stream-side-panel">
     <i role="button" class="close icon ml-auto" {{action (mut this.shown) false}}></i>
 
     <div class="ui header inverted">
@@ -14,10 +13,12 @@
     </div>
     <Public::EventDateTime @event={{@event}} />
 
-    <a class="ui labeled icon button mt-4 mb-2 w-fit self-center" href={{href-to 'public.sessions' @event}} target="_blank" rel="noopener">
-      <i class="calendar icon"></i>
-      {{t 'Schedule'}}
-    </a>
+    {{#unless @hideSchedule}}
+      <a class="ui labeled icon button mt-4 mb-2 w-fit self-center" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+        <i class="calendar icon"></i>
+        {{t 'Schedule'}}
+      </a>
+    {{/unless}}
 
     <div class="y-scrollable p-2">
       {{#each this.streams as |stream|}}

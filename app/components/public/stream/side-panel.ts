@@ -8,7 +8,8 @@ import { slugify } from 'open-event-frontend/utils/text';
 
 interface Args {
   videoStream: VideoStream,
-  event: Event
+  event: Event,
+  shown: boolean
 }
 
 export default class PublicStreamSidePanel extends Component<Args> {
@@ -38,6 +39,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
   @action
   async setup(): Promise<void> {
+    this.shown = this.args.shown;
     this.addStream(this.args.videoStream);
     this.addStream(this.args.event.belongsTo('videoStream').value())
 
@@ -50,6 +52,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
       console.error('Error while loading rooms in video stream', e);
     } finally {
       this.loading = false;
+      this.streams = [...this.streams];
     }
 
   }
