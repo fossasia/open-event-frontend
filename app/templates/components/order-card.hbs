@@ -9,13 +9,15 @@
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
     <div class="order card main content">
       <div class="right floated author">
-        <div class="ui green large label">{{this.attendeesCount}}{{t " X Attendee"}}</div>
+        {{#each-in attendeesCount as |name count|}}
+          <div class="ui green large label">{{count}} {{t 'x'}} {{name}}</div>
+        {{/each-in}}
         <UiPopup @content={{t "Cancel Ticket"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
           {{t 'Cancel Ticket'}}
         </UiPopup>
       </div>
       <SmartOverflow @class="header">
-        <a class="gray-text" href="{{this.order.event.url}}" rel="noopener noreferrer">{{this.order.event.name}}</a>
+        <a style="color: #555;" href="{{this.order.event.url}}" rel="noopener noreferrer">{{this.order.event.name}}</a>
       </SmartOverflow>
       <div class="meta">
         <span class="date">
