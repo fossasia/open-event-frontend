@@ -39,7 +39,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
   @action
   async setup(): Promise<void> {
-    this.shown = this.args.shown;
+    this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
     this.addStream(this.args.videoStream);
     this.addStream(this.args.event.belongsTo('videoStream').value())
 
