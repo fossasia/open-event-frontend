@@ -16,7 +16,7 @@ export default class OrderCard extends Component {
     return this.order.attendees.length;
   }
 
-  @computed('order.attendees', 'order')
+  @computed('order.attendees')
   get isUserCheckedIn() {
     const checkedInUser = this.order.attendees.filterBy('email', this.authManager.currentUser.email).filterBy('isCheckedIn', true);
     return checkedInUser.length !== 0;
