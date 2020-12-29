@@ -4,9 +4,11 @@
 {{#if this.shown}}
   <div class="d-flex flex-column p-4"
     style="width: 300px; height: 100%; position: absolute; top: 0; background-color: #555; color: white;" >
+    <div class="ml-auto set-margin" >
     <button class="ui icon small button toggle-btn ml-auto" {{action (mut this.shown) false}}>  
      <i class="angle left icon"></i>
     </button>
+    </div>
 
     <div class="ui header inverted">
       <span>{{@event.name}}</span>
