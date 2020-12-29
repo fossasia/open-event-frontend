@@ -13,9 +13,9 @@ export default class OrderCard extends Component {
 
   @computed('order.attendees', 'order.tickets')
   get attendeesCount() {
-    let tickets = {};
-    if(this.order.status !== 'canceled') {
-      for(let x of this.order.tickets.toArray()) {
+    const tickets = {};
+    if (this.order.status !== 'canceled') {
+      for (const x of this.order.tickets.toArray()) {
         tickets[x.name] = tickets[x.name] ? tickets[x.name] + 1 : 1;
       }
     }
