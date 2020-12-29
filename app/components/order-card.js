@@ -12,7 +12,7 @@ export default class OrderCard extends Component {
   }
 
   @computed('order.attendees')
-  get attendeesNumber() {
+  get attendeesCount() {
     return this.order.attendees.length;
   }
 
