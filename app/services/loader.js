@@ -9,9 +9,9 @@ import fetch from 'fetch';
 import { clone, assign, merge, pick, isString } from 'lodash-es';
 const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
 
-export default Service.extend({
+export default class Loader extends Service {
 
-  defaultConfig: {
+  defaultConfig = {
     data              : null,
     headers           : {},
     adapter           : 'adapter:application',
@@ -22,11 +22,11 @@ export default Service.extend({
     withoutPrefix     : false,
     replaceHeaders    : false,
     skipDataTransform : false
-  },
+  }
 
   host() {
     return getOwner(this).lookup(this.defaultConfig.adapter).host;
-  },
+  }
 
   getFetchOptions(url, method, data = null, config = {}) {
     config = merge(clone(this.defaultConfig), config);
@@ -78,7 +78,7 @@ export default Service.extend({
     return {
       url, fetchOptions
     };
-  },
+  }
 
   async makePromise(urlPath, method, data = null, config = {}) {
 
@@ -111,27 +111,27 @@ export default Service.extend({
       throw errorResponse;
     }
     return parsedResponse;
-  },
+  }
 
   load(url, config = {}) {
     return this.makePromise(url, 'GET', null, config);
-  },
+  }
 
   post(url, data = null, config = {}) {
     return this.makePromise(url, 'POST', data, config);
-  },
+  }
 
   put(url, data = null, config = {}) {
     return this.makePromise(url, 'PUT', data, config);
-  },
+  }
 
   patch(url, data = null, config = {}) {
     return this.makePromise(url, 'PATCH', data, config);
-  },
+  }
 
   delete(url, config = {}) {
     return this.makePromise(url, 'DELETE', null, config);
-  },
+  }
 
   uploadFile(urlPath, source, onProgressUpdate = null, config = {}, method = 'POST') {
     return new Promise((resolve, reject) => {
@@ -174,7 +174,8 @@ export default Service.extend({
       if (xhr.upload && onProgressUpdate) {xhr.upload.onprogress = onProgressUpdate}
       xhr.send(fetchOptions.body);
     });
-  },
+  }
+
   downloadFile(urlPath,  onProgressUpdate = null, config = {}, method = 'GET') {
     return new Promise((resolve, reject) => {
       const { url, fetchOptions } = this.getFetchOptions(urlPath, method, null, config);
@@ -200,4 +201,4 @@ export default Service.extend({
       xhr.send(null);
     });
   }
-});
+}

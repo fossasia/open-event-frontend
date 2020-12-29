@@ -7,18 +7,27 @@
 
     <div class="ui header inverted">
       <span>{{@event.name}}</span>
-      <a href={{href-to 'public' @event}} target="_blank" class="ml-2" rel="noopener">
+      <a href={{href-to 'public' @event (query-params side_panel='true')}} class="ml-2">
         <i class="icon inverted external link"></i>
       </a>
     </div>
     <Public::EventDateTime @event={{@event}} />
+    
+    <div class="d-flex mt-4 mb-2 w-fit self-center">
+      {{#if this.showSessions}}
+        <a class="ui labeled icon button" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+          <i class="calendar icon"></i>
+          {{t 'Schedule'}}
+        </a>
+      {{/if}}
 
-    {{#unless @hideSchedule}}
-      <a class="ui labeled icon button mt-4 mb-2 w-fit self-center" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
-        <i class="calendar icon"></i>
-        {{t 'Schedule'}}
-      </a>
-    {{/unless}}
+      {{#if this.showSpeakers}}
+        <a class="ui labeled icon button" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
+          <i class="bullhorn icon"></i>
+          {{t 'Speakers'}}
+        </a>
+      {{/if}}
+    </div>
 
     <div class="y-scrollable p-2">
       {{#each this.streams as |stream|}}
