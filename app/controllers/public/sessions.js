@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 import { groupBy } from 'lodash-es';
@@ -13,6 +13,7 @@ export default class SessionsController extends Controller {
   isTrackVisible = false;
   timezone = null;
   preserveScrollPosition = true;
+  isShowSessions=true;
 
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
@@ -40,4 +41,10 @@ export default class SessionsController extends Controller {
   get side_panel() {
     return this.router.currentRoute.parent.queryParams.side_panel;
   }
+  
+  @action
+  showSession() {
+    this.toggleProperty('isShowSessions');
+  }
+
 }

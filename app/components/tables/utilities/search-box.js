@@ -19,7 +19,7 @@ export default class SearchBox extends Component {
 
   @action
   showSessionFields() {
-    document.querySelector('#session-search').classList.toggle('show-div');
+    this.sendAction('showSession');
   }
 
 }

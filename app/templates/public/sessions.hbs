@@ -6,7 +6,7 @@
     <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'date-short'}}</LinkTo>
   {{/each}}
   <div class="d-flex">
-    <div id="session-search" class="d-flex" >
+    <div class={{if this.isShowSessions "d-flex" "show-div" }}>
       <Widgets::TimeZonePicker
         class="mb-2 ml-auto mr-2"
         style="min-width: 10px;"
@@ -28,6 +28,7 @@
     class="mb-2 mr-2"
     @searchQuery={{this.search}}
     @size="large"
+    @showSession={{action "showSession"}}
   />
   </div>
 
