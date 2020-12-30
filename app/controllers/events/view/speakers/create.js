@@ -1,7 +1,10 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller {
+  @service errorHandler;
+
   @action
   async save(sessionDetails) {
     try {
@@ -27,7 +30,7 @@ export default class extends Controller {
       this.transitionToRoute('events.view.speakers', this.model.event.id);
     } catch (e) {
       console.error('Error while saving session', e);
-      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }

@@ -1,5 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import moment from 'moment';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
@@ -28,6 +29,12 @@ export default class SessionItem extends Component {
     return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
   }
 
+  get sessionEnded() {
+    const sessionEndDate =  moment.tz(this.args.session.endsAt, this.args.timezone);
+    const now = moment.tz(this.args.timezone);
+    return moment(sessionEndDate).isSameOrBefore(now);
+  }
+
   @action
   hideSpeakerImage() {
     this.hideImage = !this.hideImage;
@@ -42,8 +49,17 @@ export default class SessionItem extends Component {
   }
 
   @action
+  goToVideo() {
+    window.open(this.args.session.videoUrl, '_blank');
+  }
+
+  @action
   goToStream() {
     const url = this.router.urlFor('public.stream.view', this.args.event?.identifier ?? this.args.session.get('event.identifier'), this.args.session.get('microlocation.videoStream.slugName'), this.args.session.get('microlocation.videoStream.id'));
-    window.open(url, '_blank');
+    if (this.args.sameTab) {
+      location.href = url;
+    } else {
+      window.open(url, '_blank');
+    }
   }
 }
