@@ -13,6 +13,8 @@ export default Component.extend({
     country : ''
   },
 
+  suggestions : [],
+
   combinedAddress: computed('address.{venue,line,city,state,zipCode,country}', function() {
     return values(this.address).join(' ').trim();
   }),
@@ -43,6 +45,14 @@ export default Component.extend({
           lng  : 0
         });
       }
+    },
+    setAutocomplete(place) {
+      this.set('placeName', place);
+    },
+    async suggestionsTrigger(location) {
+      const response = this.loader.load(`https://nominatim.openstreetmap.org/search?q=${location}&format=jsonv2&addressdetails=1`, { isExternal: true });
+      const [cords] = await Promise.all([response]);
+      this.set('suggestions', cords);
     },
     onLocationChangeHandler(lat, lng) {
       this.setProperties({
