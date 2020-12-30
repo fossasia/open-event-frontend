@@ -43,7 +43,7 @@
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
           {{#if this.model.videoStream}}
             <div class="ui basic segment m-0 pt-0">
-              <Public::Stream::JoinVideo @event={{this.model}} @videoStream={{this.model.videoStream}} />
+              <Public::Stream::JoinVideo @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} />
             </div>
           {{/if}}
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
@@ -120,3 +120,7 @@
     </div>
   </div>
 </div>
+
+{{#if this.side_panel}}
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} />  
+{{/if}}

@@ -56,6 +56,10 @@ export default class SessionItem extends Component {
   @action
   goToStream() {
     const url = this.router.urlFor('public.stream.view', this.args.event?.identifier ?? this.args.session.get('event.identifier'), this.args.session.get('microlocation.videoStream.slugName'), this.args.session.get('microlocation.videoStream.id'));
-    window.open(url, '_blank');
+    if (this.args.sameTab) {
+      location.href = url;
+    } else {
+      window.open(url, '_blank');
+    }
   }
 }
