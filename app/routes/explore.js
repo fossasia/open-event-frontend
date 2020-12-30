@@ -19,7 +19,6 @@ export default class ExploreRoute extends Route {
    */
 
   _loadEvents(params) {
-    // const loc = this.loader.load(`https://nominatim.openstreetmap.org/search?q=${params.location}&format=jsonv2&addressdetails=1`, { isExternal: true });
     const filterOptions = [
       {
         name : 'state',
