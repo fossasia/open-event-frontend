@@ -80,8 +80,7 @@
     {{#each this.suggestions as |place|}}
       <div class="item mb-2"  role="button" {{action "setAutocomplete" place.display_name}}>
         <i class="map alternate marker icon"></i> {{place.display_name}}
-      </div>
-      
+      </div>    
     {{/each}}
   </div>
 {{/if}}

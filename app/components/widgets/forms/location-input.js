@@ -13,7 +13,7 @@ export default Component.extend({
     country : ''
   },
 
-  suggestions : [],
+  suggestions: [],
 
   combinedAddress: computed('address.{venue,line,city,state,zipCode,country}', function() {
     return values(this.address).join(' ').trim();
