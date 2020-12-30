@@ -140,11 +140,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
       return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
-    };
+    }; 
     $.fn.form.settings.rules.checkValidTimeDifference = () => {
-      return moment($("[name=start_time]")[0].value , 'HH:mm').isBefore(moment($("[name=end_time]")[0].value, 'HH:mm'));
+      return moment($('[name=start_time]')[0].value , 'HH:mm').isBefore(moment($('[name=end_time]')[0].value, 'HH:mm'));
     };
-      
     const validationRules = {
       inline : true,
       delay  : false,
