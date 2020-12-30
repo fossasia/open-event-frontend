@@ -41,7 +41,7 @@ export default class SessionsController extends Controller {
   get side_panel() {
     return this.router.currentRoute.parent.queryParams.side_panel;
   }
-  
+
   @action
   showSession() {
     this.toggleProperty('isShowSessions');
