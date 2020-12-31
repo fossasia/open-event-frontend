@@ -32,7 +32,7 @@
     <div class="y-scrollable p-2">
       {{#each this.streams as |stream|}}
         <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}}>
-          <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2">
+          <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2 {{if (eq @videoStream stream) 'active'}}">
             <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(random this.colors)}}>
               {{truncate (uppercase stream.name) 1 false}}
             </div>
