@@ -13,11 +13,10 @@ export default class OrderCard extends Component {
 
   @computed('order.attendees')
   get allTickets() {
-    let Tickets = [];
-    this.order?.attendees?.map(attendee => 
-      { if(attendee?.ticket?.get('name'))
-        Tickets.push(attendee?.ticket)
-      });
+    const Tickets = [];
+    this.order?.attendees?.map(attendee => {
+      if (attendee?.ticket?.get('name')) {Tickets.push(attendee?.ticket)}
+    });
     return Tickets;
   }
 
