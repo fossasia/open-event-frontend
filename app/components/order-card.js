@@ -12,15 +12,6 @@ export default class OrderCard extends Component {
   }
 
   @computed('order.attendees')
-  get allTickets() {
-    const Tickets = [];
-    this.order?.attendees?.map(attendee => {
-      if (attendee?.ticket?.get('name')) {Tickets.push(attendee?.ticket)}
-    });
-    return Tickets;
-  }
-
-  @computed('order.attendees')
   get isUserCheckedIn() {
     const checkedInUser = this.order.attendees.filterBy('email', this.authManager.currentUser.email).filterBy('isCheckedIn', true);
     return checkedInUser.length !== 0;
