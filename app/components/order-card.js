@@ -11,17 +11,6 @@ export default class OrderCard extends Component {
     return amount === null || isEqual(amount, 0);
   }
 
-  @computed('order.attendees', 'order.tickets')
-  get attendeesCount() {
-    const tickets = {};
-    if (this.order.status !== 'canceled') {
-      for (const x of this.order.tickets.toArray()) {
-        tickets[x.name] = tickets[x.name] ? tickets[x.name] + 1 : 1;
-      }
-    }
-    return tickets;
-  }
-
   @computed('order.attendees')
   get isUserCheckedIn() {
     const checkedInUser = this.order.attendees.filterBy('email', this.authManager.currentUser.email).filterBy('isCheckedIn', true);
