@@ -58,6 +58,9 @@ export default Component.extend(FormMixin, {
 
   timer(willExpireAt, orderIdentifier) {
     run.later(() => {
+      if (this.session.currentRouteName !== 'orders.new') {
+        return;
+      }
       const currentTime = moment();
       const diff = moment.duration(willExpireAt.diff(currentTime));
       if (diff > 0) {

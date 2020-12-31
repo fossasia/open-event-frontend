@@ -1,0 +1,49 @@
+<button {{did-insert this.setup}} class="ui icon button stream-side-panel-button m-2" {{action (mut this.shown) true}}>
+  <i class="arrow right icon"></i>
+</button>
+{{#if this.shown}}
+  <div class="d-flex flex-column p-4 stream-side-panel">
+    <i role="button" class="close icon ml-auto" {{action (mut this.shown) false}}></i>
+
+    <div class="ui header inverted">
+      <span>{{@event.name}}</span>
+      <a href={{href-to 'public' @event (query-params side_panel='true')}} class="ml-2">
+        <i class="icon inverted external link"></i>
+      </a>
+    </div>
+    <Public::EventDateTime @event={{@event}} />
+    
+    <div class="d-flex mt-4 mb-2 w-fit self-center">
+      {{#if this.showSessions}}
+        <a class="ui labeled icon button" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+          <i class="calendar icon"></i>
+          {{t 'Schedule'}}
+        </a>
+      {{/if}}
+
+      {{#if this.showSpeakers}}
+        <a class="ui labeled icon button" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
+          <i class="bullhorn icon"></i>
+          {{t 'Speakers'}}
+        </a>
+      {{/if}}
+    </div>
+
+    <div class="y-scrollable p-2">
+      {{#each this.streams as |stream|}}
+        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}}>
+          <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2">
+            <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(random this.colors)}}>
+              {{truncate (uppercase stream.name) 1 false}}
+            </div>
+            <div>{{stream.name}}</div>
+          </div>
+        </a>
+      {{/each}}
+    </div>
+
+    {{#if this.loading}}
+      <div class="ui active centered inline loader"></div>
+    {{/if}}
+  </div>
+{{/if}}

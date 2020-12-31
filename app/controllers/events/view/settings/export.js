@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
 import { action } from '@ember/object';
 
-export default class extends Controller {
+export default class ExportController extends Controller {
   eventDownloadUrl   = '';
   eventExportStatus  = 'Event export not yet started.';
   isDownloadDisabled = true;

@@ -2,14 +2,17 @@ import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { action } from '@ember/object';
+import ENV from 'open-event-frontend/config/environment';
 
 @classic
 export default class LoginForm extends Component.extend(FormMixin) {
 
-  identification = '';
-  password       = '';
-  isLoading      = false;
-
+  identification   = '';
+  password         = '';
+  isLoading        = false;
+  counter          = 0;
+  captchaValidated = false;
+  showHcaptcha     = !!ENV.hcaptchaKey;
 
   getValidationRules() {
     return {
@@ -60,9 +63,9 @@ export default class LoginForm extends Component.extend(FormMixin) {
           this.authManager.persistCurrentUser(
             await this.store.findRecord('user', tokenPayload.identity)
           );
-
         }
       } catch (e) {
+        this.set('counter', this.counter + 1);
         if (e.json && e.json.error) {
           console.warn('Error while authentication', e);
           this.set('errorMessage', this.l10n.tVar(e.json.error));
