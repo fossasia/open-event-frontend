@@ -12,10 +12,11 @@ export default class OrderCard extends Component {
   }
 
   @computed('order.attendees')
-  get allAttendees() {
-    return this.order.attendees.toArray();
+  get allTickets() {
+    let Tickets = [];
+    this.order?.attendees?.map(attendee => Tickets.push(attendee?.ticket));
+    return Tickets;
   }
-
 
   @computed('order.attendees')
   get isUserCheckedIn() {
