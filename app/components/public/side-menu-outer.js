@@ -13,19 +13,19 @@ export default class SideMenuOuter extends Component {
   get activeMenu() {
     const { currentRouteName } = this.session;
     if (currentRouteName === 'public.index' || currentRouteName === 'index') {
-      return 'Info';
+      return this.l10n.t('Info');
     } else if (currentRouteName === 'public.sessions') {
-      return 'Schedule';
+      return this.l10n.t('Schedule');
     } else if (currentRouteName === 'public.schedule') {
-      return 'Calendar';
+      return this.l10n.t('Calendar');
     } else if (currentRouteName === 'public.speakers') {
-      return 'Speakers';
+      return this.l10n.t('Speakers');
     } else if (currentRouteName === 'public.cfs.index') {
-      return 'Call for Speakers';
+      return this.l10n.t('Call for Speakers');
     } else if (currentRouteName === 'public.coc') {
-      return 'Code of Conduct';
+      return this.l10n.t('Code of Conduct');
     } else {
-      return 'Select section';
+      return this.l10n.t('Select section');
     }
   }
 }
