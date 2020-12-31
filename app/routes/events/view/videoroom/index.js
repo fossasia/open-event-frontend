@@ -5,6 +5,6 @@ import Route from '@ember/routing/route';
 export default class IndexRoute extends Route {
   beforeModel() {
     super.beforeModel(...arguments);
-    this.transitionTo('events.view.videoroom.list', 'all');
+    this.transitionTo('events.view.video.list', 'all');
   }
 }

@@ -40,7 +40,7 @@
         <LinkTo @route="events.view.team" class="item">
           {{t 'Team'}}
         </LinkTo>
-        <LinkTo @route="events.view.videoroom" class="item">
+        <LinkTo @route="events.view.video" class="item">
           {{t 'Video'}}
         </LinkTo>
         {{#if (or this.authManager.currentUser.isAnAdmin (eq this.model.owner.email this.authManager.currentUser.email))}}

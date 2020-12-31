@@ -10,6 +10,7 @@ export default class VerifyController extends Controller {
   isLoading = false;
 
   verify(tokenVal) {
+    var self = this;
     this.set('isLoading', true);
     const payload = {
       data: {
@@ -20,6 +21,8 @@ export default class VerifyController extends Controller {
       .post('auth/verify-email', payload)
       .then(() => {
         this.set('success', true);
+
+        self.transitionTo('login');
       })
       .catch(reason => {
         this.set('error', reason);
