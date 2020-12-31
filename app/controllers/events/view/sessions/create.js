@@ -1,7 +1,11 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller {
+
+  @service errorHandler;
+
   @action
   async save() {
     await this.model.session.save();
@@ -24,10 +28,7 @@ export default class extends Controller {
             })
             .catch(e =>   {
               console.error('Error while saving session', e);
-              this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
-                {
-                  id: 'session_crea_some_error'
-                });
+              this.errorHandler.handle(e);
             })
             .finally(() => {
               this.set('isLoading', false);
@@ -35,10 +36,7 @@ export default class extends Controller {
         })
         .catch(e =>   {
           console.error('Error while saving session', e);
-          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
-            {
-              id: 'error_unexp_session'
-            });
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -54,10 +52,7 @@ export default class extends Controller {
         })
         .catch(e => {
           console.error('Error while saving session', e);
-          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
-            {
-              id: 'session_error_wrong'
-            });
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);

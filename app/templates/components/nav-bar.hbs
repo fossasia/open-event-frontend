@@ -5,15 +5,16 @@
       <h3>{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
+    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
+      <div class="search-bar d-flex items-center space-between m-2 p-2">
+        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+        <i class="search icon"></i>
+      </div>
+    {{/if}}
     {{#if (and (not this.session.isAuthenticated) this.isNotEventPageRoute)}}
       <LinkTo
         @route="pricing" class="item"
         @activeClass="">{{t 'Pricing'}}</LinkTo>
-    {{/if}}
-    {{#if this.isNotEventPageRoute}}
-      <LinkTo
-        @route="explore" class="item"
-        @activeClass="">{{t 'Browse Events'}}</LinkTo>
     {{/if}}
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown />
@@ -67,7 +68,19 @@
       @route="index" class="item" @activeClass="">
       <div class="ui header small text">{{this.settings.appName}}</div>
     </LinkTo>
+    <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
+      <i class="search icon" style="cursor: auto;"></i>
+      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+      <div role="button" {{action "toggleSearchBar"}}>
+        <i class="close icon" ></i>
+      </div>
+    </div>
     <div class="right menu nav-bar">
+      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
+        <div role="button" class="item ui" {{action "toggleSearchBar"}}>
+          <i class="search icon"></i>
+        </div>
+      {{/if}}
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown
           @notifications={{this.notifications}} />

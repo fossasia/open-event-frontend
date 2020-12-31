@@ -1,4 +1,4 @@
-<div class="{{if this.isWide 'event wide ui grid row'}}">
+<div class="{{if this.isWide 'event wide ui grid row'}}" style="height: 100%;">
   {{#if this.isWide}}
     {{#unless this.device.isMobile}}
       <div class="ui card rounded-r-none three wide computer six wide tablet column">
@@ -9,7 +9,7 @@
       </div>
     {{/unless}}
   {{/if}}
-  <div
+  <div style="height: 100%;"
     class="ui card {{this.eventClass}}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
@@ -21,14 +21,12 @@
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>
-      <div class="meta">
+      <div class="meta mb-2">
         <span class="date">
-          {{general-date this.event.startsAt tz=this.event.timezone}}
+          <Public::EventDateTime @event={{@event}} @noBreak={{true}} />
         </span>
       </div>
-      <SmartOverflow @class="description">
-        {{this.event.shortLocationName}}
-      </SmartOverflow>
+      <Public::EventVenue @event={{@event}} />
     </a>
     <div class="extra content small text">
       <span class="right floated">
