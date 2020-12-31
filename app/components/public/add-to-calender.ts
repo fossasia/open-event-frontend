@@ -23,10 +23,6 @@ export default class AddToCalender extends Component<Args> {
     return moment(event.endsAt).tz(event.timezone);
   }
 
-  get isSingleDay(): boolean {
-    return this.startsAt.isSame(this.endsAt, 'day');
-  }
-
   get googleUrl(): string {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYYMMDD[T]HHmmSS[Z]');
