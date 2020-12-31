@@ -33,7 +33,7 @@
   </div>
 </div>
 <div class="ui grid">
-  <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
+  <div class="sixteen wide column {{unless this.device.isMobile 'left aligned'}}">
     {{#if @event.identifier}}
       {{#if (eq @event.state 'draft')}}
         <p>{{t 'This event is currently not published. It is in draft mode and it is not visible publicly.'}}</p>
