@@ -3,7 +3,7 @@
     {{#if @showButton}}
       <Public::Stream::JoinVideo @event={{@event}} @videoStream={{@videoStream}} />
     {{else}}
-      <a class="mt-2" href="{{href-to 'public.stream.view' @event @videoStream.slugName @videoStream}}" target="{{if (or (eq @videoStream.videoChannel.provider 'bbb') (eq @videoStream.videoChannel.provider 'jitsi')) '' '_blank'}}" rel="noopener">{{t 'Join Video Channel'}}</a>
+      <a class="mt-2" href="{{href-to 'public.stream.view' @event @videoStream.slugName @videoStream}}" target="{{if @videoStream.videoChannel.isInternalStream '' '_blank'}}" rel="noopener">{{t 'Join Video Channel'}}</a>
     {{/if}}
     {{#if @videoStream.password}}
       <div class="d-flex items-center">
