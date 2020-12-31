@@ -6,7 +6,7 @@ import { FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time
 
 export default Component.extend({
 
-  classNames        : ['ui', 'calendar', 'time', 'picker', 'input', 'fluid', 'field', 'd-initial'],
+  classNames        : ['ui', 'calendar', 'time', 'picker', 'input', 'fluid', 'field', 'flex-column'],
   classNameBindings : ['icon:left', 'icon'],
 
   icon: true,
