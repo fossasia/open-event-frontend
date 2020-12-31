@@ -12,4 +12,10 @@ export default class PublicRoute extends Route {
       include: 'social-links,event-copyright,speakers-call,tax,owner,organizers,video-stream'
     });
   }
+
+  resetController(controller, isExiting) {
+    if (isExiting) {
+      controller.set('side_panel', null);
+    }
+  }
 }
