@@ -1,5 +1,5 @@
 <div class="ui grid">
-  <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}}">
+  <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}}">
     {{#if @event.identifier}}
       <LinkTo @route="events.view.index" @model={{@event.identifier}} class="ui red button right labeled icon small right aligned mt-4 {{if this.isUserUnverified 'disabled'}} button">
         {{t 'Cancel'}} <i class="close icon"></i>
@@ -10,7 +10,7 @@
       </LinkTo>
     {{/if}}
     {{#if (not @first)}}
-      <button class="ui left labeled small icon button {{if this.isLoading 'disabled'}}" type="button" {{action @move 'backwards'}}>
+      <button class="ui left labeled small icon button {{if @isLoading 'disabled'}}" type="button" {{action @move 'backwards'}}>
         {{t 'Previous'}}
         <i class="left chevron icon"></i>
       </button>
@@ -33,7 +33,7 @@
   </div>
 </div>
 <div class="ui grid">
-  <div class="sixteen wide column {{unless this.device.isMobile 'left aligned'}}">
+  <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}}">
     {{#if @event.identifier}}
       {{#if (eq @event.state 'draft')}}
         <p>{{t 'This event is currently not published. It is in draft mode and it is not visible publicly.'}}</p>
@@ -47,7 +47,7 @@
 </div>
 <div class="ui divider"></div>
 <div class="ui grid">
-  <div class="sixteen wide column {{unless this.device.isMobile 'right aligned'}} {{if this.isUserUnverified 'disabled'}}">
+  <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}} {{if this.isUserUnverified 'disabled'}}">
     <Events::View::PublishBar @event={{@event}} @hideOnInvalid={{true}} @onSaved={{@onSaved}} @onValidate={{@onValidate}} />  
   </div>
 </div>
