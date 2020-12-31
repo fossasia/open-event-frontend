@@ -63,7 +63,7 @@ export default class Billing extends Component.extend(FormMixin) {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the company')
+              prompt : this.l10n.t('Please enter the organisation')
             }
           ]
         },
