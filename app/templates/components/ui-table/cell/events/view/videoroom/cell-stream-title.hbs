@@ -1,6 +1,6 @@
-<div class="d-flex">
+<div class="ml-auto">
   {{@record}}
-  <div class="ml-auto">
+  <div class="d-flex">
     {{#if (not @extraRecords.videoStream.id)}}
       <LinkTo @route="events.view.videoroom.create" @query={{if (eq @extraRecords.constructor.modelName 'event') (hash event=true) (hash room=@extraRecords.id)}} class="ml-2">
         <UiPopup @content={{t "Add Video Channel"}} @class="ui circular icon button compact blue" @position="left center">
@@ -17,5 +17,5 @@
         <i class="trash icon"></i>
       </UiPopup>
     {{/if}}
-  </div>
-</div>
+  </div> 
+ </div>
