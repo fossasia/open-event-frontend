@@ -69,6 +69,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
       this.loading = false;
       this.streams = [...this.streams];
     }
+  }
 
+  @action
+  reOrderStreams() {
+    console.log('>>>>>>>>>>>>', this.args.videoStream, this.streams)
   }
 }

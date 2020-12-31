@@ -1,4 +1,4 @@
-<button {{did-insert this.setup}} class="ui icon button stream-side-panel-button m-2" {{action (mut this.shown) true}}>
+<button {{did-insert this.setup}} {{did-update this.reOrderStreams @videoStream}} class="ui icon button stream-side-panel-button m-2" {{action (mut this.shown) true}}>
   <i class="arrow right icon"></i>
 </button>
 {{#if this.shown}}
