@@ -5,6 +5,10 @@ import moment from 'moment';
 
 @classic
 export default class PublicController extends Controller {
+  queryParams = ['side_panel'];
+
+  side_panel = null;
+
   @computed('model.socialLinks')
   get twitterLink() {
     return this.model.socialLinks.findBy('isTwitter', true);
@@ -28,9 +32,9 @@ export default class PublicController extends Controller {
   @computed('model.locationName', 'model.online')
   get headerLocation() {
     if (this.model.locationName && this.model.online) {
-      return `In-Person Event and Online Event ${this.model.locationName}`;
+      return this.l10n.t('In-Person Event and Online Event') + ' ' + this.model.locationName;
     } else if (this.model.online) {
-      return 'Online Event';
+      return this.l10n.t('Online Event');
     } else if (this.model.locationName) {
       return this.model.locationName;
     } else {
