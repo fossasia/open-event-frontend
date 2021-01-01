@@ -17,7 +17,7 @@ export default class NavBar extends Component {
   @action
   handleKeyPress() {
     if (event.code === 'Enter') {
-      this.sendAction('search');
+      this.search();
       document.querySelector('#mobile-bar').classList.remove('show-bar');
     }
   }

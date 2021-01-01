@@ -219,7 +219,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         const valid = preSaveActions.call(this);
         if (valid) {
           this.set('data.event.state', 'draft');
-          this.sendAction('save');
+          this.save();
         }
       });
     },
@@ -227,14 +227,14 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       this.onValid(() => {
         const valid = preSaveActions.call(this);
         if (valid) {
-          this.sendAction('save', this.data);
+          this.save(this.data);
         }
       });
     },
     move(direction) {
       this.onValid(() => {
         preSaveActions.call(this);
-        this.sendAction('move', direction, this.data);
+        this.move(direction, this.data);
       });
     },
     onValidate(callback) {
