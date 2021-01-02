@@ -1,13 +1,14 @@
 import classic from 'ember-classic-decorator';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 
 @classic
 export default class PublicController extends Controller {
-  queryParams = ['side_panel'];
+  queryParams = ['side_panel', 'video_dialog'];
 
   side_panel = null;
+  video_dialog = null;
 
   @computed('model.socialLinks')
   get twitterLink() {
@@ -39,6 +40,13 @@ export default class PublicController extends Controller {
       return this.model.locationName;
     } else {
       return this.l10n.t('Location to be announced');
+    }
+  }
+
+  @action
+  toLogin() {
+    if (!this.authManager.currentUser) {
+      this.transitionToRoute('login');
     }
   }
 }
