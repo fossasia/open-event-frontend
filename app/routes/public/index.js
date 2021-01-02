@@ -75,6 +75,10 @@ export default class IndexRoute extends Route {
 
   afterModel(model) {
     set(this, 'headData.description', model.event.description);
+    set(this, 'headData.hasStructuredData', true);
+    set(this, 'headData.eventStructuredData',
+      JSON.stringify(this.generateStructuredData(model.event))
+    );
   }
 
   resetController(controller) {
@@ -83,5 +87,36 @@ export default class IndexRoute extends Route {
     if (!model.id) {
       model.unloadRecord();
     }
+    set(this, 'headData.hasStructuredData', false);
+    set(this, 'headData.eventStructuredData', null);
+  }
+
+  generateStructuredData(event) {
+    const eventJsonLd = {
+      '@context'    : 'https://schema.org',
+      '@type'       : 'Event',
+      'eventStatus' : 'https://schema.org/EventScheduled'
+    };
+
+    eventJsonLd.name = event.name;
+    eventJsonLd.startDate = event.startsAt._i;
+    eventJsonLd.endDate = event.endsAt._i;
+    eventJsonLd.description = event.description;
+    eventJsonLd.image = event.thumbnailImageUrl;
+    eventJsonLd.url = event.externalEventUrl;
+
+    if (event.online) {
+      eventJsonLd.location = {
+        '@type' : 'VirtualLocation',
+        'url'   : event.webinarUrl
+      };
+    } else {
+      eventJsonLd.location = {
+        '@type'         : 'PostalAddress',
+        'streetAddress' : event.locationName
+      };
+    }
+
+    return eventJsonLd;
   }
 }

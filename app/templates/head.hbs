@@ -12,3 +12,10 @@
 {{else}}
   <meta property="og:description" content="The front end for the Open Event Server where event organisers can create and manage their event.">
 {{/if}}
+
+
+{{#if this.model.hasStructuredData}}
+  <script type="application/ld+json">
+    {{this.model.eventStructuredData}}
+  </script>
+{{/if}}
