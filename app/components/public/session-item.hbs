@@ -48,7 +48,7 @@
           {{/if}}
         </div>
       {{else}}
-        <div class="left floated eleven wide column">
+        <div class="left floated eleven wide column" style="padding-bottom: 0 !important;" >
           <div class="d-flex wrap">
             {{#each @session.speakers as |speaker|}}
               <div class="d-flex items-center speaker-card pr-2 pb-4">
@@ -61,7 +61,7 @@
             {{/each}}
           </div>
         </div>
-        <div class="right floated five wide column">
+        <div class="right floated five wide column" style="padding-top: 0.25rem !important" >
           <div><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
             <div><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
