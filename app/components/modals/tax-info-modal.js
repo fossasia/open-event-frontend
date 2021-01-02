@@ -55,7 +55,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your company name')
+              prompt : this.l10n.t('Please give us your organisation name')
             }
           ]
         },

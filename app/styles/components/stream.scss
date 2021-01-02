@@ -14,4 +14,29 @@
   color: #fff;
   margin: .5rem 0;
   text-align: center;
+
+  &:hover {
+    background-color: #444 !important;
+  }
+
+  &.active {
+    background-color: #666 !important;
+  }
+}
+
+.stream-side-panel-button {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.stream-side-panel {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #555;
+  color: #fff;
+  z-index: 1;
 }
