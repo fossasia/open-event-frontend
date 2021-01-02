@@ -5,6 +5,10 @@ import moment from 'moment';
 
 @classic
 export default class PublicController extends Controller {
+  queryParams = ['side_panel'];
+
+  side_panel = null;
+
   @computed('model.socialLinks')
   get twitterLink() {
     return this.model.socialLinks.findBy('isTwitter', true);

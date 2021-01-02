@@ -11,7 +11,8 @@
     @event={{this.model.event}}
     @sessions={{this.model.sessions}}
     @rooms={{this.model.microlocations}} 
-    @height="auto"/>
+    @height="auto"
+    @isPublic={{true}}/>
 {{else}}
   <div class="ui disabled header">{{t 'Schedule for the event is currently unavailable'}}</div>
 {{/if}}

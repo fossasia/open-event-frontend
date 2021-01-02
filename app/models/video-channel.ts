@@ -6,6 +6,10 @@ export default class VideoChannel extends ModelBase.extend() {
   @attr() provider!: string;
   @attr() url!: string;
   @attr() apiUrl!: string;
+
+  get isInternalStream(): boolean {
+    return (this.provider === 'jitsi' || this.provider === 'bbb');
+  }
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
