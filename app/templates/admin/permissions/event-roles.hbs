@@ -27,7 +27,7 @@
               <br>
               <LegacyCheckbox @class="ui checkbox" @label={{t "Update"}} @checked={{permission.canUpdate}} @onChange={{action (mut permission.canUpdate)}} />
               <br>
-              <LegacyCheckbox @label={{t "Delete"}} @checked={{permission.canDelete}} @onChange={{action (mut permission.canDelete)}} />
+              <LegacyCheckbox @class="ui checkbox" @label={{t "Delete"}} @checked={{permission.canDelete}} @onChange={{action (mut permission.canDelete)}} />
             </td>
           {{/if}}
         {{/each}}
