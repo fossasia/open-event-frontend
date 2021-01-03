@@ -16,6 +16,6 @@ module('Integration | Component | side bar', function(hooks) {
         <div class="main-container">Search text</div>
       {{/side-bar}}
     `);
-    assert.ok(this.element.textContent.trim().includes('Browse Events'));
+    assert.ok(this.element.textContent.trim().includes('Search text'));
   });
 });

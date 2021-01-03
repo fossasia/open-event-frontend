@@ -18,8 +18,11 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
       rooms : eventDetails.query('microlocations', {
         'page[size]': 0
       }),
+      channels: this.store.query('video-channel', {
+        'page[size]': 0
+      }),
       stream: this.store.findRecord('video-stream', params.stream_id, {
-        include: 'rooms'
+        include: 'rooms,event,video-channel'
       })
     });
   }

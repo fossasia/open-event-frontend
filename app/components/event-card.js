@@ -33,10 +33,39 @@ export default class EventCard extends Component {
   selectCategory(category, subCategory) {
     this.set('category', (category === this.category && !subCategory) ? null : category);
     this.set('subCategory', (!subCategory || subCategory === this.subCategory) ? null : subCategory);
+    this.set('is_online', null);
+    this.setProperties({
+      eventName  : null,
+      eventType  : null,
+      startDate  : null,
+      endDate    : null,
+      location   : null,
+      ticketType : null,
+      cfs        : null,
+      isOnline   : null,
+      hasImage   : null,
+      hasLogo    : null,
+      isPast     : null
+    });
   }
 
   @action
   selectEventType(eventType) {
     this.set('eventType', eventType === this.eventType ? null : eventType);
+    this.setProperties({
+      eventName   : null,
+      category    : null,
+      subCategory : null,
+      startDate   : null,
+      endDate     : null,
+      location    : null,
+      ticketType  : null,
+      cfs         : null,
+      isOnline    : null,
+      hasImage    : null,
+      hasLogo     : null,
+      isPast      : null
+    });
   }
+
 }

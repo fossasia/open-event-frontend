@@ -2,8 +2,11 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { mapBy } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  @service errorHandler;
+
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
 
   get columns() {
@@ -71,19 +74,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : this.l10n.t('Submission Date'),
         width         : 90,
         valuePath     : 'submittedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        options       : {
-          dateFormat: 'D MMM, YYYY h:mm A (z)'
-        }
+        cellComponent : 'ui-table/cell/cell-simple-date'
       },
       {
         name          : this.l10n.t('Last Modified'),
         width         : 90,
         valuePath     : 'lastModifiedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        options       : {
-          dateFormat: 'D MMM, YYYY h:mm A (z)'
-        }
+        cellComponent : 'ui-table/cell/cell-simple-date'
       },
       {
         name            : this.l10n.t('Notify'),
@@ -117,11 +114,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_unex_del'
-          });
+      .catch(e => {
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -157,10 +151,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     } catch (e) {
       session.set('isLocked', isLocked);
       console.error('Error while changing session lock in organizer session list', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'session_unexpected_lock'
-        });
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }
@@ -183,10 +174,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.refreshModel.bind(this)();
     } catch (e) {
       session.set('state', oldState);
-      console.error('Error while changing session state in organizer session list', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
-        id: 'session_state_unexpected'
-      });
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }
@@ -205,11 +193,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-            {
-              id: 'session_feedback_error'
-            });
+        .catch(e => {
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -223,11 +208,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-            {
-              id: 'session_feed_error'
-            });
+        .catch(e => {
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -253,11 +235,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_feed_error_created'
-          });
+      .catch(e => {
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);

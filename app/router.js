@@ -79,8 +79,10 @@ Router.map(function() {
         this.route('sessions-speakers');
         this.route('attendee');
       });
-      this.route('export');
-      this.route('settings');
+      this.route('settings', function() {
+        this.route('export');
+        this.route('options');
+      });
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
@@ -111,7 +113,7 @@ Router.map(function() {
         this.route('edit', { path: '/:speaker_id/edit' });
         this.route('create');
       });
-      this.route('videoroom', function() {
+      this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });
         this.route('edit', { path: '/:stream_id/edit' });
         this.route('create');

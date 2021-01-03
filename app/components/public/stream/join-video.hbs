@@ -1,0 +1,8 @@
+ <a class="ui basic {{text-color @color 'basic' 'inverted'}} button no-wrap"
+  style={{css color=(text-color @color 'grey' 'lightgrey')}}
+  href="{{href-to 'public.stream.view' @event @videoStream.slugName @videoStream}}"
+  target="{{if (or @videoStream.videoChannel.isInternalStream @sameTab) '' '_blank'}}"
+  rel="noopener">
+  <i class="icon video"></i>
+  {{t 'Join Video'}}
+</a>

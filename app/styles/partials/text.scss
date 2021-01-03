@@ -11,9 +11,15 @@
 }
 
 .gray-text {
-  color: #808080;
+  color: #555 !important;
 }
 
 .strike.text {
   text-decoration: line-through;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

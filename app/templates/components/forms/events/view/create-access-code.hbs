@@ -28,7 +28,7 @@
     <div class="field">
       <UiRadio
         @name="status"
-        @label="Inactive"
+        @label={{t "Inactive"}}
         @value="false"
         @current={{this.data.isActive}}
         @onChange={{action (mut this.data.isActive)}} />

@@ -23,11 +23,17 @@ export default Component.extend(FormMixin, {
   buyer             : readOnly('data.user'),
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
-  holders           : computed('data.attendees', function() {
-    this.data.attendees.forEach(attendee => {
-      attendee.set('firstname', '');
-      attendee.set('lastname', '');
-      attendee.set('email', '');
+  holders           : computed('data.attendees', 'buyer', function() {
+    this.data.attendees.forEach((attendee, index) => {
+      if (index === 0) {
+        attendee.set('firstname', this.buyerFirstName);
+        attendee.set('lastname', this.buyerLastName);
+        attendee.set('email', this.buyer.get('email'));
+      } else {
+        attendee.set('firstname', '');
+        attendee.set('lastname', '');
+        attendee.set('email', '');
+      }
     });
     return this.data.attendees;
   }),
@@ -38,7 +44,7 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer: false,
+  sameAsBuyer: true,
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
     return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
@@ -52,6 +58,9 @@ export default Component.extend(FormMixin, {
 
   timer(willExpireAt, orderIdentifier) {
     run.later(() => {
+      if (this.session.currentRouteName !== 'orders.new') {
+        return;
+      }
       const currentTime = moment();
       const diff = moment.duration(willExpireAt.diff(currentTime));
       if (diff > 0) {
@@ -209,7 +218,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter your company')
+          prompt : this.l10n.t('Please enter your organisation')
         }
       ]
     };
@@ -491,7 +500,9 @@ export default Component.extend(FormMixin, {
   },
 
   allFields: computed('fields', function() {
-    return groupBy(this.fields.toArray(), field => field.get('form'));
+    const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['isComplex', 'name']);
+    return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
   genders   : orderBy(genders, 'name'),

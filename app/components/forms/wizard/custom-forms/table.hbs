@@ -25,6 +25,9 @@
         <th class="center aligned">
           {{t 'Require'}}
         </th>
+        <th class="center aligned">
+          {{t 'Show Public'}}
+        </th>
         {{#if this.editColumn}}
           <th class="center aligned">
             {{t 'Actions'}}
@@ -64,6 +67,13 @@
             @disabled={{field.isFixed}}
             @onChange={{action (mut field.isRequired)}}
             @label={{if this.device.isMobile (t "Require")}} />
+        </td>
+        <td class="center aligned">
+          <UiCheckbox
+            @class="slider"
+            @checked={{field.isPublic}}
+            @onChange={{action (mut field.isPublic)}}
+            @label={{if this.device.isMobile (t "Public")}} />
         </td>
         {{#if this.editColumn}}
           <td class="center aligned">

@@ -1,10 +1,20 @@
 import classic from 'ember-classic-decorator';
-import { action, computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 
 @classic
 export default class PublicController extends Controller {
+  queryParams = ['side_panel', 'video_dialog'];
+
+  side_panel = null;
+  video_dialog = null;
+
+  @computed('model.socialLinks')
+  get twitterLink() {
+    return this.model.socialLinks.findBy('isTwitter', true);
+  }
+
   @computed('session.currentRouteName')
   get smallLead() {
     return this.session.currentRouteName && this.session.currentRouteName !== 'public.index';
@@ -23,18 +33,20 @@ export default class PublicController extends Controller {
   @computed('model.locationName', 'model.online')
   get headerLocation() {
     if (this.model.locationName && this.model.online) {
-      return `In-Person Event and Online Event ${this.model.locationName}`;
+      return this.l10n.t('In-Person Event and Online Event') + ' ' + this.model.locationName;
     } else if (this.model.online) {
-      return 'Online Event';
+      return this.l10n.t('Online Event');
     } else if (this.model.locationName) {
       return this.model.locationName;
     } else {
-      return 'Location to be announced';
+      return this.l10n.t('Location to be announced');
     }
   }
 
   @action
-  toggleMenu() {
-    this.toggleProperty('isMenuOpen');
+  toLogin() {
+    if (!this.authManager.currentUser) {
+      this.transitionToRoute('login');
+    }
   }
 }

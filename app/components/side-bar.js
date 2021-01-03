@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import $ from 'jquery';
 import Component from '@ember/component';
+import { action } from '@ember/object';
 
 @classic
 export default class SideBar extends Component {
@@ -12,6 +13,14 @@ export default class SideBar extends Component {
 
   hideSidebar() {
     this.set('sidebarVisible', false);
+  }
+
+  @action
+  handleKeyPress() {
+    if (event.code === 'Enter') {
+      this.set('sidebarVisible', false);
+      this.sendAction('search');
+    }
   }
 
   didInsertElement() {

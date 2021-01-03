@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
-import { socialMediaIdentifiers, socialMediaMap } from 'open-event-frontend/utils/dictionary/social-media';
+import { socialMediaIdentifiers, socialMediaMap, buttonColor } from 'open-event-frontend/utils/dictionary/social-media';
 
 export default ModelBase.extend({
   name       : attr('string'),
@@ -41,6 +41,10 @@ export default ModelBase.extend({
 
   displayName: computed('normalizedName', function() {
     return socialMediaMap[this.normalizedName]?.name ?? this.name;
+  }),
+
+  buttonColor: computed('normalizedName', function() {
+    return buttonColor[this.normalizedName];
   })
 
 });
