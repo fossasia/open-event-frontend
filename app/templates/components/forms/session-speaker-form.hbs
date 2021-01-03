@@ -147,6 +147,7 @@
               {{else if (eq field.fieldIdentifier 'email')}}
                 {{#if (or this.isUserOwnerOrAdmin this.isUserOrganiser)}}
                   <LegacyCheckbox
+                    @class="ui checkbox"
                     @label={{t "Do not require email for this speaker."}}
                     @checked={{this.data.speaker.isEmailOverridden}}
                     @onChange={{action (mut this.data.speaker.isEmailOverridden)}} />
@@ -264,6 +265,7 @@
             {{else if (eq field.fieldIdentifier 'email')}}
               {{#if (or this.isUserOwnerOrAdmin this.isUserOrganiser)}}
                 <LegacyCheckbox
+                  @class="ui checkbox"
                   @label={{t "Do not require email for this speaker."}}
                   @checked={{this.data.speaker.isEmailOverridden}}
                   @onChange={{action (mut this.data.speaker.isEmailOverridden)}} />

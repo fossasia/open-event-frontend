@@ -58,6 +58,7 @@
       <div class="ui hidden divider"></div>
       <LegacyCheckbox
         @label={{t "Select all Ticket types"}}
+        @class="ui checkbox"
         @name="all_ticket_types"
         @value="tickets"
         @checked={{this.allTicketTypesChecked}}
@@ -71,6 +72,7 @@
   <div class="ui list field">
     {{#each this.eventTickets as |ticket|}}
       <LegacyCheckbox
+        @class="ui checkbox"
         @name="ticket_name"
         @label={{ticket.name}}
         @checked={{ticket.isChecked}}
