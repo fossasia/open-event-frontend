@@ -48,7 +48,7 @@
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (and (not-eq this.routing.currentRouteName 'create') this.isNotEventPageRoute)}}
+      {{#if (and this.isNotWizardPageRoute this.isNotEventPageRoute)}}
         <LinkTo
           @route="create" class="item ui blue text">
           <div>
