@@ -47,7 +47,7 @@ export default Mixin.create(MutableArray, {
         form            : 'session',
         type            : 'text',
         isRequired      : false,
-        isPublic        : false,
+        isPublic        : true,
         isIncluded      : true,
         event           : parent
       }),
@@ -149,7 +149,7 @@ export default Mixin.create(MutableArray, {
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,
-        isPublic        : false,
+        isPublic        : true,
         isIncluded      : true,
         event           : parent
       }),
