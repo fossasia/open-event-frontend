@@ -69,7 +69,7 @@
             @label={{if this.device.isMobile (t "Require")}} />
         </td>
         <td class="center aligned">
-          <UiCheckbox
+          <LegacyCheckbox
             @class="slider"
             @checked={{field.isPublic}}
             @onChange={{action (mut field.isPublic)}}

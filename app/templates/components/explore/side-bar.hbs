@@ -217,7 +217,6 @@
             <div class="field">
               <LegacyCheckbox
                 @label={{t "Closed"}}
-                @class="ui checkbox"
                 @checked={{if (eq this.cfs "closed") "active"}}
                 @onChange={{action "selectEventCfs" "closed"}} />
             </div>
