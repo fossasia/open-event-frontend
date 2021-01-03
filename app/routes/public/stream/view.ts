@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import VideoStream from 'open-event-frontend/models/video-stream';
 import { hash } from 'rsvp';
+import { action }  from '@ember/object';
 
 export default class PublicStreamView extends Route {
 
@@ -23,5 +24,14 @@ export default class PublicStreamView extends Route {
       event,
       stream: this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel', reload: true })
     });
+  }
+
+  @action
+  error(error: any, transition: any): void | boolean {
+    if (error.isAdapterError && error.errors?.[0]?.status === 404) {
+      this.transitionTo('public', transition.resolvedModels.public, { queryParams: { video_dialog: true } });
+    } else {
+      return true;
+    }
   }
 }
