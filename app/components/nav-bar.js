@@ -14,6 +14,11 @@ export default class NavBar extends Component {
     return !(String(this.session.currentRouteName).includes('explore'));
   }
 
+  @computed('session.currentRouteName')
+  get isNotWizardPageRoute() {
+    return !(String(this.session.currentRouteName).includes('create') || String(this.session.currentRouteName).includes('edit'));
+  }
+
   @action
   handleKeyPress() {
     if (event.code === 'Enter') {
