@@ -22,7 +22,7 @@
                 {{#if (eq ticket.type 'donation')}}
                   <UiPopup
                     @tagName="i"
-                    @class="info icon"
+                    @class="small info circle icon"
                     @content={{concat "Donation value should be between " ticket.minPrice " " this.eventCurrency " and " ticket.maxPrice " " this.eventCurrency}} />
                 {{/if}}
               </div>
@@ -208,7 +208,7 @@
         <div class="ui hidden divider"></div>
         {{#if this.event.refundPolicy}}
           <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
-            <i class="info icon"></i>
+            <i class="small info circle icon"></i>
             {{t 'Refund Policy'}}
           </UiPopup>
         {{/if}}
