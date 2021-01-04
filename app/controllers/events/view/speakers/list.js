@@ -88,13 +88,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  editSpeaker(speaker) {
-    this.transitionToRoute('events.view.speaker.edit', speaker.event.get('identifier'), speaker.id);
+  editSpeaker(event_id, speaker_id) {
+    this.transitionToRoute('events.view.speaker.edit', event_id, speaker_id);
   }
 
   @action
-  viewSpeaker(speaker) {
-    this.transitionToRoute('events.view.speaker.view', speaker.event.get('identifier'), speaker.id);
+  viewSpeaker(event_id, speaker_id) {
+    this.transitionToRoute('events.view.speaker.view', event_id, speaker_id);
   }
 
   @action

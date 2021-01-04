@@ -9,8 +9,7 @@ export default class ViewRoute extends Route {
 
   model(params) {
     return this.store.findRecord('speaker', params.speaker_id, {
-      include : 'sessions,event',
-      reload  : true
+      include: 'sessions,event'
     });
   }
 }
