@@ -12,7 +12,7 @@
       </p>
     </div>
   </div>
-  <div class="ui vertical fluid menu content padded">
+  <div class="ui vertical fluid menu content padded {{if @preExpanded 'active'}}">
     <div class="item" style={{css user-select='text'}}>
       <p class="word-break">
         {{#if this.speaker.shortBiography}}
