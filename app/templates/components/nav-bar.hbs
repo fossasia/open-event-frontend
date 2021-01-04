@@ -48,7 +48,7 @@
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (and (not-eq this.routing.currentRouteName 'create') this.isNotEventPageRoute)}}
+      {{#if (and this.isNotWizardPageRoute this.isNotEventPageRoute)}}
         <LinkTo
           @route="create" class="item ui blue text">
           <div>
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="right menu nav-bar">
-      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute)}}
+      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
         <div role="button" class="item ui" {{action "toggleSearchBar"}}>
           <i class="search icon"></i>
         </div>
@@ -84,12 +84,14 @@
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown
           @notifications={{this.notifications}} />
-        <LinkTo
-          @route="create" class="item ui blue button-text small text">
-          <div>
-            {{t 'Create Event'}}
-          </div>
-        </LinkTo>
+          {{#if this.isNotWizardPageRoute}}
+            <LinkTo
+             @route="create" class="item ui blue button-text small text">
+              <div>
+                {{t 'Create Event'}}
+              </div>
+            </LinkTo>
+          {{/if}}
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
