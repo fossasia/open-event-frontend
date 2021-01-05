@@ -51,7 +51,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           ]
         }
       ];
-    } else if (params.discount_status === 'expired') {
+    } else if (params.access_status === 'expired') {
       filterOptions = [
         {
           name : 'valid_till',
