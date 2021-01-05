@@ -61,10 +61,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
     try {
       const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
       rooms.included?.map((stream: any) => ({
-        id: stream.id,
-        name: stream.attributes.name,
-        slugName: slugify(stream.attributes.name),
-        hash: stringHashCode(stream.attributes.name + stream.id) 
+        id       : stream.id,
+        name     : stream.attributes.name,
+        slugName : slugify(stream.attributes.name),
+        hash     : stringHashCode(stream.attributes.name + stream.id)
       })).forEach((stream: any) => {
         this.addStream(stream)
       });
