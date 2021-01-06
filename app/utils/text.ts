@@ -24,3 +24,10 @@ export const kebabCase = (string: string): string => {
     .replace(/[\s_]+/g, '-')                // replace all spaces and low dash
     .toLowerCase()                          // convert to lower case
 }
+
+export const stringHashCode = (str: string): number => {
+  let hash = 0
+  for (let i = 0; i < str.length; ++i) {hash = (Math.imul(31, hash) + str.charCodeAt(i)) | 0}
+
+  return hash
+}

@@ -10,6 +10,12 @@ export default class NavBar extends Component {
   }
 
   @computed('session.currentRouteName')
+  get isNotWizardPageRoute() {
+    return !(String(this.session.currentRouteName).includes('edit'))
+    && String(this.session.currentRouteName) !== 'create';
+  }
+
+  @computed('session.currentRouteName')
   get isNotExplorePageRoute() {
     return !(String(this.session.currentRouteName).includes('explore'));
   }
