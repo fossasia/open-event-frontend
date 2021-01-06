@@ -146,34 +146,9 @@ export default class SessionsRoute extends Route {
   }
 
   async getSchedules(event) {
-    const scheduledFilterOptions = [
-      {
-        and: [
-          {
-            name : 'starts-at',
-            op   : 'ne',
-            val  : null
-          },
-          {
-            or: [
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'accepted'
-              },
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
-              }
-            ]
-          }
-        ]
-      }
-    ];
 
     const sessions = await event.query('sessions', {
-      filter       : scheduledFilterOptions,
+      'fields[session]'       : 'starts-at',
       'page[size]' : 0
     });
 
