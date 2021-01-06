@@ -140,7 +140,43 @@ export default class SessionsRoute extends Route {
         perPageParam : 'page[size]',
         pageParam    : 'page[number]',
         store        : eventDetails
-      })
+      }),
+      schedules: await this.getSchedules(eventDetails)
     };
+  }
+
+  async getSchedules(event) {
+    const scheduledFilterOptions = [
+      {
+        and: [
+          {
+            name : 'starts-at',
+            op   : 'ne',
+            val  : null
+          },
+          {
+            or: [
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'accepted'
+              },
+              {
+                name : 'state',
+                op   : 'eq',
+                val  : 'confirmed'
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    const sessions = await event.query('sessions', {
+      filter       : scheduledFilterOptions,
+      'page[size]' : 0
+    });
+
+    return sessions;
   }
 }
