@@ -27,14 +27,14 @@ export default class SessionsController extends Controller {
 
   @computed('model.schedules', 'timezone')
   get allDates() {
-    let arr = [];
+    const arr = [];
     const sessions = groupBy(this.model.schedules.toArray());
 
     Object.values(sessions).forEach(el => {
-        arr.push(moment.tz(el[0].startsAt, this.timezone).toISOString());   
+      arr.push(moment.tz(el[0].startsAt, this.timezone).toISOString());
     });
 
-    let arrSet = new Set();
+    const arrSet = new Set();
 
     arr.forEach(el => {
       el = el.split('T')[0];
@@ -45,8 +45,8 @@ export default class SessionsController extends Controller {
         }
       }
       arrSet.add(el);
-    })
-    
+    });
+
     return Array.from(arrSet).sort();
   }
 
