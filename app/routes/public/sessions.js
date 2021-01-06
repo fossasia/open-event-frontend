@@ -148,8 +148,8 @@ export default class SessionsRoute extends Route {
   async getSchedules(event) {
 
     const sessions = await event.query('sessions', {
-      'fields[session]'       : 'starts-at',
-      'page[size]' : 0
+      'fields[session]' : 'starts-at',
+      'page[size]'      : 0
     });
 
     return sessions;
