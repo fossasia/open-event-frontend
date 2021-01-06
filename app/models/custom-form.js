@@ -53,6 +53,7 @@ export default ModelBase.extend({
   type            : attr('string', { defaultValue: 'text' }),
   name            : attr('string'),
   isRequired      : attr('boolean', { defaultValue: false }),
+  isPublic        : attr('boolean', { defaultValue: false }),
   isIncluded      : attr('boolean', { defaultValue: false }),
   isFixed         : attr('boolean', { defaultValue: false }),
   isComplex       : attr('boolean', { defaultValue: false }),
