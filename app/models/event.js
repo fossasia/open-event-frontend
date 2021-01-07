@@ -190,6 +190,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   isSingleDay: computed('startsAt', 'endsAt', function() {
     return this.startsAt.isSame(this.endsAt, 'day');
+  }),
+
+  isSchedulePublished: computed('schedulePublishedOn', function() {
+    return this.schedulePublishedOn && this.schedulePublishedOn.toISOString() !== moment(0).toISOString();
   })
 
 }) {}

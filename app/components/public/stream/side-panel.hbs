@@ -16,7 +16,7 @@
     <Public::EventDateTime @event={{@event}} />
     
     <div class="d-flex mt-4 mb-2 w-fit self-center">
-      {{#if this.showSessions}}
+      {{#if (and @event.isSchedulePublished this.showSessions)}}
         <a class="ui labeled icon button" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <i class="calendar icon"></i>
           {{t 'Schedule'}}
