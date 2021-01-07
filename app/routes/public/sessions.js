@@ -151,6 +151,11 @@ export default class SessionsRoute extends Route {
       {
         and: [
           {
+            name : 'starts-at',
+            op   : 'ne',
+            val  : null
+          },
+          {
             or: [
               {
                 name : 'state',
@@ -170,7 +175,6 @@ export default class SessionsRoute extends Route {
 
     const sessions = await event.query('sessions', {
       filter            : scheduledFilterOptions,
-      'fields[session]' : 'starts-at',
       'page[size]'      : 0
     });
 
