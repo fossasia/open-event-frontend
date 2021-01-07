@@ -1,7 +1,7 @@
 <div class="ui grid">
   <div class="row">
     <div class="sixteen wide mobile three wide computer column">
-      {{#if this.isSchedulePublished}}
+      {{#if this.model.event.isSchedulePublished}}
         <button class="ui orange {{if this.isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Unpublish Schedule'}}</button>
       {{else}}
         <button class="ui green {{if this.isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Publish Schedule'}}</button>

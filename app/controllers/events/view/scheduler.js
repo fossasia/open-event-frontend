@@ -9,15 +9,6 @@ export default class extends Controller {
   @tracked filter = '';
   isLoading = false;
 
-  @computed('model.event.schedulePublishedOn')
-  get isSchedulePublished() {
-    const schedulePublishStatus = this.model.event.schedulePublishedOn;
-    if (schedulePublishStatus != null) {
-      return schedulePublishStatus.toISOString() !== moment(0).toISOString();
-    }
-    return false;
-  }
-
   @computed('model.microlocations')
   get microlocations() {
     return this.model.microlocations.sortBy('position');
@@ -119,9 +110,9 @@ export default class extends Controller {
   @action
   async togglePublishState() {
     this.set('isLoading', true);
-    const stat = this.isSchedulePublished ? 'unpublished' : 'published';
-    const publishedAt = this.isSchedulePublished ? moment(0) : moment();
     const { event } = this.model;
+    const stat = event.isSchedulePublished ? 'unpublished' : 'published';
+    const publishedAt = event.isSchedulePublished ? moment(0) : moment();
     event.set('schedulePublishedOn', publishedAt);
     try {
       await event.save();
