@@ -174,8 +174,8 @@ export default class SessionsRoute extends Route {
     ];
 
     const sessions = await event.query('sessions', {
-      filter            : scheduledFilterOptions,
-      'page[size]'      : 0
+      filter       : scheduledFilterOptions,
+      'page[size]' : 0
     });
 
     return sessions;
