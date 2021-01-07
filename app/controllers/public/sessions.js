@@ -37,9 +37,9 @@ export default class SessionsController extends Controller {
     const arrSet = new Set();
 
     arr.forEach(el => {
-      el = el.split('T')[0];
+      el = moment(el).utc().format('YYYY-MM-DD');
       for (let j = 0; j < arr.length; j++) {
-        if (el === arr[j].split('T')[0]) {
+        if (el === moment(arr[j]).utc().format('YYYY-MM-DD')) {
           el = arr[j];
           break;
         }
