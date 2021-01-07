@@ -142,7 +142,7 @@ export default class SessionsRoute extends Route {
         pageParam    : 'page[number]',
         store        : eventDetails
       }),
-      schedules:  this.getSchedules(eventDetails)
+      schedules: this.getSchedules(eventDetails)
     });
   }
 
