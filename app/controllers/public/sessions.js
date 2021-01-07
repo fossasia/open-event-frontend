@@ -25,10 +25,10 @@ export default class SessionsController extends Controller {
     return Object.entries(sessions).map(([date, sessions]) => ({ date: date === 'undefined' ? null : date, sessions }));
   }
 
-  @computed('model.schedules', 'timezone')
+  @computed('model.dates', 'timezone')
   get allDates() {
     const arr = [];
-    const sessions = groupBy(this.model.schedules.toArray());
+    const sessions = groupBy(this.model.dates.toArray());
 
     Object.values(sessions).forEach(el => {
       arr.push(moment.tz(el[0].startsAt, this.timezone).toISOString());

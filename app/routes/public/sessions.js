@@ -142,11 +142,11 @@ export default class SessionsRoute extends Route {
         pageParam    : 'page[number]',
         store        : eventDetails
       }),
-      schedules: this.getSchedules(eventDetails)
+      dates: this.getDates(eventDetails)
     });
   }
 
-  async getSchedules(event) {
+  async getDates(event) {
 
     const scheduledFilterOptions = [
       {
