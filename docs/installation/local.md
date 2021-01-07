@@ -1,5 +1,5 @@
 # Local
-* [For Windows-10 Users:- Use WSL(Windows Subsystem for Linux)](https://fireship.io/lessons/windows-10-for-web-dev/)**
+* [For Windows-10 Users:- Use WSL(Windows Subsystem for Linux)](https://fireship.io/lessons/windows-10-for-web-dev/)
 
 Follow these steps to set up the project locally.
 ## Dependencies
