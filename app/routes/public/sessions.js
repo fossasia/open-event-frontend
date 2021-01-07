@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment';
+import { hash } from 'rsvp';
 
 @classic
 export default class SessionsRoute extends Route {
@@ -129,7 +130,7 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    return {
+    return hash({
       event   : eventDetails,
       session : await this.infinity.model('sessions', {
         include      : 'track,speakers,session-type,microlocation.video-stream',
@@ -141,8 +142,8 @@ export default class SessionsRoute extends Route {
         pageParam    : 'page[number]',
         store        : eventDetails
       }),
-      schedules: await this.getSchedules(eventDetails)
-    };
+      schedules:  this.getSchedules(eventDetails)
+    });
   }
 
   async getSchedules(event) {
