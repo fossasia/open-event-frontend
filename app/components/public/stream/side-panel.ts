@@ -35,6 +35,30 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
+  sessionFilter = {
+    name : 'sessions',
+    op   : 'any',
+    val  : {
+      or: [
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'confirmed'
+        },
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'confirmed'
+        },
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'accepted'
+        }
+      ]
+    }
+  }
+
   async checkSpeakers(): Promise<void> {
     this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.args.event);
   }
@@ -58,22 +82,24 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.checkSessions();
     this.checkSpeakers();
 
-    try {
-      const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
-      rooms.included?.map((stream: any) => ({
-        id       : stream.id,
-        name     : stream.attributes.name,
-        slugName : slugify(stream.attributes.name),
-        hash     : stringHashCode(stream.attributes.name + stream.id)
-      })).forEach((stream: any) => {
-        this.addStream(stream)
-      });
-    } catch (e) {
-      console.error('Error while loading rooms in video stream', e);
-    } finally {
-      this.loading = false;
-      this.streams = [...this.streams];
+    if (this.args.event.isSchedulePublished) {
+      try {
+        const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?filter=[${JSON.stringify(this.sessionFilter)}]&include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
+        rooms.included?.map((stream: any) => ({
+          id       : stream.id,
+          name     : stream.attributes.name,
+          slugName : slugify(stream.attributes.name),
+          hash     : stringHashCode(stream.attributes.name + stream.id)
+        })).forEach((stream: any) => {
+          this.addStream(stream)
+        });
+      } catch (e) {
+        console.error('Error while loading rooms in video stream', e);
+      }
     }
+
+    this.loading = false;
+    this.streams = [...this.streams];
   }
 
   @action
