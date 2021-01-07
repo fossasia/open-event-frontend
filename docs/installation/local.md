@@ -4,7 +4,7 @@ Follow these steps to set up the project locally.
 You will need the following things properly installed on your computer.
 
 * **[Git](https://git-scm.com/)**
-* **[Node.js 12.x LTS](https://nodejs.org/)**
+* **[Node.js 14.x LTS](https://nodejs.org/)**
 * **[Yarn](https://yarnpkg.com/en/docs/install)**
 
 It is also recommended to have [watchman](https://facebook.github.io/watchman/docs/install) installed to speed up the `file-watcher/auto-build` service of the ember build server.
