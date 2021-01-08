@@ -15,6 +15,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   }
 
   async model(params) {
+    this.set('params', params);
     let filterOptions = [];
     const searchField = 'code';
     if (params.access_status === 'active') {
@@ -51,7 +52,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           ]
         }
       ];
-    } else if (params.discount_status === 'expired') {
+    } else if (params.access_status === 'expired') {
       filterOptions = [
         {
           name : 'valid_till',
