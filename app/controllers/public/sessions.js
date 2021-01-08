@@ -27,15 +27,14 @@ export default class SessionsController extends Controller {
 
   @computed('model.dates', 'timezone')
   get allDates() {
-    let arr = [];
+    const arr = [];
     const sessions = groupBy(this.model.dates.toArray());
 
     Object.values(sessions).forEach(el => {
       arr.push(moment.tz(el[0].startsAt, this.timezone).toISOString());
     });
 
-    arr = arr.sort().filter((el, i) => moment(el).utc().format('YYYY-MM-DD') !== moment(arr[i + 1]).utc().format('YYYY-MM-DD')).map(el => el);
-    return arr;
+    return arr.sort().filter((el, i) => moment(el).utc().format('YYYY-MM-DD') !== moment(arr[i + 1]).utc().format('YYYY-MM-DD')).map(el => el);
   }
 
   get side_panel() {
