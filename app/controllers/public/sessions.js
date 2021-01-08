@@ -32,16 +32,14 @@ export default class SessionsController extends Controller {
     this.model.dates.toArray().forEach(el => {
       arr.push(moment.tz(el.startsAt, this.timezone).toISOString());
     });
-
+    
     const uniqueDates = new Set();
 
-    arr.sort().forEach((el, i) => {
-      if (moment(el).utc().format('YYYY-MM-DD') !== moment(arr[i + 1]).utc().format('YYYY-MM-DD')) {
-        uniqueDates.add(el);
-      }
-    });
-
-    return [...uniqueDates];
+    arr.sort().forEach(el => {
+      uniqueDates.add(moment(el).format('YYYY-MM-DD'));
+    })
+    
+    return [...uniqueDates]
   }
 
   get side_panel() {
