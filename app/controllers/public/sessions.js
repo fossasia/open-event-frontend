@@ -28,11 +28,11 @@ export default class SessionsController extends Controller {
   @computed('model.dates', 'timezone')
   get allDates() {
 
-    const arr = this.model.dates.toArray().map(el => moment.tz(el.startsAt, this.timezone).toISOString());
+    const arr = this.model.dates.toArray().sort().map(el => moment.tz(el.startsAt, this.timezone).toISOString());
 
     const uniqueDates = new Set();
 
-    arr.sort().forEach(el => {
+    arr.forEach(el => {
       uniqueDates.add(moment(el).format('YYYY-MM-DD'));
     });
 
