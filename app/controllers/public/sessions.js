@@ -28,7 +28,7 @@ export default class SessionsController extends Controller {
   @computed('model.dates', 'timezone')
   get allDates() {
 
-    const arr = this.model.dates.toArray().sort().map(el => moment.tz(el.startsAt, this.timezone).toISOString());
+    const arr = this.model.dates.toArray().map(el => moment.tz(el.startsAt, this.timezone).toISOString()).sort();
 
     const uniqueDates = new Set();
 
