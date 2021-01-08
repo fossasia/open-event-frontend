@@ -153,9 +153,6 @@ Router.map(function() {
     this.route('all', { path: '/:notification_state' });
   });
   this.route('admin', function() {
-    this.route('messages', function() {
-      this.route('list');
-    });
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });
       this.route('import');
