@@ -32,7 +32,7 @@ export default class SessionsController extends Controller {
     this.model.dates.toArray().forEach(el => {
       arr.push(moment.tz(el.startsAt, this.timezone).toISOString());
     });
-    
+
     const uniqueDates = new Set();
 
     arr.sort().forEach((el, i) => {
