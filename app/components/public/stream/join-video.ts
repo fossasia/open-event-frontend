@@ -27,7 +27,7 @@ export default class JoinVideo extends Component<Args> {
 
   async setup(): Promise<void> {
     const streamStatus = await this.loader.load(`/events/${this.args.event.id}/has-streams`);
-    const {exists, can_access} = streamStatus;
+    const { exists, can_access } = streamStatus;
     this.hasStreams = exists;
     this.canAccess = can_access;
   }
