@@ -17,4 +17,9 @@
         @fillMode="equal-column" />
     </div>
   </div>
+  <div class="row">
+		<div class="sixteen wide {{if this.device.isMobile 'center aligned'}} column">
+		  <button class="ui blue button left floated {{if this.isLoading 'loading'}}" {{action 'save'}}>{{t 'Save'}}</button>
+		</div>
+	</div>
 </div>
