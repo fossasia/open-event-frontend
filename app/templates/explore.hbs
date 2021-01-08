@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   <div class="three wide column">
-    <Explore::SideBar @model={{this.model}} @clearQueryParams={{this.clearAllFilters}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @event_name={{this.event_name}} @is_past={{this.is_past}} @is_online={{this.is_online}} @is_location={{this.is_location}} @is_mixed={{this.is_mixed}} @has_logo={{this.has_logo}} @has_image={{this.has_image}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
+    <Explore::SideBar @model={{this.model}} @clearQueryParams={{this.clearAllFilters}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @event_name={{this.event_name}} @is_upcoming={{this.is_upcoming}} @is_past={{this.is_past}} @is_online={{this.is_online}} @is_location={{this.is_location}} @is_mixed={{this.is_mixed}} @has_logo={{this.has_logo}} @has_image={{this.has_image}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
   </div>
   <div class="thirteen wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
@@ -23,7 +23,7 @@
           <a href="#" role="button" {{action 'clearFilter' 'event_type'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if this.filters.start_date}}
+      {{#if (and this.filters.start_date (not-eq this.filters.start_date "all_date"))}}
         <div class="ui mini label">
           {{general-date this.filters.start_date 'date-short'}}
           <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>

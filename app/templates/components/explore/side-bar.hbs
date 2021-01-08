@@ -96,6 +96,13 @@
                 </div>
               {{/if}}
             {{/each}}
+            <div class="field">
+              <UiCheckbox
+                @label={{t "All Upcoming"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.is_upcoming "true") true}}
+                @onChange={{action "enableUpcomingEvents" "true"}} />
+            </div>
             <UiCheckbox
               @label={{t "Past"}}
               @class="ui checkbox"
