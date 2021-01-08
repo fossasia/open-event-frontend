@@ -53,7 +53,7 @@ get columns() {
     }
 
   ];
-};
+}
 
 @action
 save() {
