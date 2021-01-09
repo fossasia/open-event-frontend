@@ -82,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width         : 220
        },
        {
-         name            : this.l10n.t('Featured'),
+         name            : this.l10n.t('Featured Event'),
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isFeatured'],
@@ -94,7 +94,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          }
        },
        {
-         name            : this.l10n.t('Promoted'),
+         name            : this.l10n.t('Promoted Event'),
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isPromoted'],
@@ -106,17 +106,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          }
        },
        {
-         name            : this.l10n.t('Not on FrontPage'),
-         valuePath       : 'id',
-         isSortable      : true,
-         extraValuePaths : ['noFront'],
-         cellComponent   : 'ui-table/cell/admin/events/event-no-front',
-         headerComponent : 'tables/headers/sort',
-         width           : 80,
-         actions         : {
-           toggleFront: this.toggleFront.bind(this)
-         }
-       }
+        name            : this.l10n.t('Not on FrontPage'),
+        valuePath       : 'id',
+        isSortable      : true,
+        extraValuePaths : ['isDemoted'],
+        cellComponent   : 'ui-table/cell/admin/events/event-no-front',
+        headerComponent : 'tables/headers/sort',
+        width           : 80,
+        actions         : {
+          toggleDemoted : this.toggleDemoted.bind(this)
+        }
+      }
      ];
    }
 
@@ -187,7 +187,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
-      event.setProperties({ noFront: false });
+      event.setProperties({isDemoted: false});
       await event.save();
       this.notify.success(this.l10n.t('Event details modified successfully'),
         {
@@ -205,12 +205,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  async toggleFront(event_id) {
+  async toggleDemoted(event_id) {
     this.set('isLoading', true);
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
-      event.toggleProperty('noFront');
-      event.setProperties({ isFeatured: false, isPromoted: false });
+      event.toggleProperty('isDemoted');
+      event.setProperties({isFeatured: false, isPromoted: false});
       await event.save();
       this.notify.success(this.l10n.t('Event details modified successfully'),
         {
@@ -233,7 +233,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isPromoted');
-      event.setProperties({ noFront: false });
+      event.setProperties({isDemoted: false});
       await event.save();
       this.notify.success(event.isPromoted ? this.l10n.t('Event promoted successfully') : this.l10n.t('Event unpromoted successfully'),
         {
