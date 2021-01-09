@@ -14,7 +14,9 @@
         <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
       {{/each}}
       {{#each this.upcomingEvents as |event|}}
-        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+        {{#if (not event.noFront)}}
+          <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+        {{/if}}
       {{/each}}
     </div>
   {{else}}

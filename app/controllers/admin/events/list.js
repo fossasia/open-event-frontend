@@ -104,7 +104,19 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          actions         : {
            togglePromoted: this.togglePromoted.bind(this)
          }
-       }
+       },
+       {
+        name            : this.l10n.t('Not on FrontPage'),
+        valuePath       : 'id',
+        isSortable      : true,
+        extraValuePaths : ['noFront'],
+        cellComponent   : 'ui-table/cell/admin/events/event-no-front',
+        headerComponent : 'tables/headers/sort',
+        width           : 80,
+        actions         : {
+          toggleFront   : this.toggleFront.bind(this)
+        }
+      }
      ];
    }
 
@@ -175,6 +187,30 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
+      event.setProperties({'noFront': false});
+      await event.save();
+      this.notify.success(this.l10n.t('Event details modified successfully'),
+        {
+          id: 'event_detail_changed'
+        });
+
+    } catch (e) {
+      console.error('Error while toggling featured event', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'event_det_error'
+        });
+    }
+    this.set('isLoading', false);
+  }
+
+  @action
+  async toggleFront(event_id) {
+    this.set('isLoading', true);
+    try {
+      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
+      event.toggleProperty('noFront');
+      event.setProperties({'isFeatured': false, isPromoted: false});
       await event.save();
       this.notify.success(this.l10n.t('Event details modified successfully'),
         {
@@ -197,6 +233,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isPromoted');
+      event.setProperties({'noFront': false});
       await event.save();
       this.notify.success(event.isPromoted ? this.l10n.t('Event promoted successfully') : this.l10n.t('Event unpromoted successfully'),
         {
