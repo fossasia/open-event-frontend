@@ -264,7 +264,7 @@ export default class ExploreRoute extends Route {
           },
           {
             name : 'ends-at',
-            op   : 'gt',
+            op   : 'lt',
             val  : moment().toISOString()
           }
         ]
