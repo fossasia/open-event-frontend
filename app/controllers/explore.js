@@ -98,7 +98,7 @@ export default class ExploreController extends Controller {
       has_image    : null,
       has_logo     : null,
       is_past      : null,
-      is_upcoming  : null,
+      is_upcoming  : null
     });
   }
 }

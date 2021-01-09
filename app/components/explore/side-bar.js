@@ -62,7 +62,7 @@ export default class SideBar extends Component {
     this.set('startDate', null);
     this.set('endDate', null);
     this.set('dateType', null);
-    this.set('is_upcoming',null);
+    this.set('is_upcoming', null);
     this.set('is_past', this.is_past === val ? null : val);
   }
 
@@ -71,7 +71,7 @@ export default class SideBar extends Component {
     this.set('startDate', null);
     this.set('endDate', null);
     this.set('dateType', null);
-    this.set('is_past',null);
+    this.set('is_past', null);
     this.set('is_upcoming', this.is_upcoming === val ? null : val);
   }
 
