@@ -45,7 +45,7 @@ export default Component.extend(FormMixin, {
   actions: {
     onChange() {
       if (this.onChange) {
-        this.onChange();
+        this.sendAction('onChange');
       }
     }
   }
