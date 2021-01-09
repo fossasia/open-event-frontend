@@ -33,7 +33,7 @@ export default class SessionsController extends Controller {
     this.model.dates.toArray().map(el => moment.tz(el.startsAt, this.timezone).toISOString()).sort().forEach(el => {
       uniqueDates.add(moment(el).format('YYYY-MM-DD'));
     });
-  
+
     return [...uniqueDates];
   }
 
