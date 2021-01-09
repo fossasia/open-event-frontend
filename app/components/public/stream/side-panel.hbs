@@ -16,7 +16,7 @@
     <Public::EventDateTime @event={{@event}} />
     
     <div class="d-flex mt-4 mb-2 w-fit self-center">
-      {{#if this.showSessions}}
+      {{#if (and @event.isSchedulePublished this.showSessions)}}
         <a class="ui labeled icon button" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <i class="calendar icon"></i>
           {{t 'Schedule'}}
@@ -35,7 +35,7 @@
       {{#each this.streams as |stream|}}
         <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}}>
           <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2 {{if (eq @videoStream stream) 'active'}}">
-            <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(random this.colors)}}>
+            <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>
               {{truncate (uppercase stream.name) 1 false}}
             </div>
             <div>{{stream.name}}</div>

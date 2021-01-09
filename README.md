@@ -16,8 +16,8 @@ The front end for the **Open Event Server**
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 **API Documentation:**
--   Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
--   A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
+-   Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)).
+-   A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://api.eventyay.com](http://api.eventyay.com)
 
 ## Communication
 
@@ -73,7 +73,7 @@ It consumes the API exposed by master branch deployment of open event server, ho
 #### Development branch
 
 The **development** branch of open-event-frontend gets deployed at [https://open-event-frontend.now.sh/](https://open-event-frontend.now.sh/)
-It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com](https://open-event-api-dev.herokuapp.com)
+It consumes the API exposed by development branch of open event server, hosted at [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)
 
 ### Release Cycle
 
