@@ -187,7 +187,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
-      event.setProperties({ 'noFront': false });
+      event.setProperties({ noFront: false });
       await event.save();
       this.notify.success(this.l10n.t('Event details modified successfully'),
         {
@@ -233,7 +233,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isPromoted');
-      event.setProperties({ 'noFront': false });
+      event.setProperties({ noFront: false });
       await event.save();
       this.notify.success(event.isPromoted ? this.l10n.t('Event promoted successfully') : this.l10n.t('Event unpromoted successfully'),
         {
