@@ -82,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width         : 220
        },
        {
-         name            : this.l10n.t('Featured Event'),
+         name            : this.l10n.t('Featured'),
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isFeatured'],
@@ -94,7 +94,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          }
        },
        {
-         name            : this.l10n.t('Promoted Event'),
+         name            : this.l10n.t('Promoted'),
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isPromoted'],
