@@ -18,11 +18,13 @@ export default class SessionsController extends Controller {
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
+ 
     if (this.sort === 'title') {
       sessions = groupBy(this.model.session.toArray(), '');
     } else {
       sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
     }
+
     return Object.entries(sessions).map(([date, sessions]) => ({ date: date === 'undefined' ? null : date, sessions }));
   }
 
