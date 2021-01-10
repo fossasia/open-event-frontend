@@ -55,9 +55,4 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     }
   },
 
-  didInsertElement() {
-    if (this.data.sponsors && !this.data.sponsors.length) {
-      this.data.sponsors.addObject(this.store.createRecord('sponsor'));
-    }
-  }
 });
