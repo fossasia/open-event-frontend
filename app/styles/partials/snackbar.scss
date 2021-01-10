@@ -1,7 +1,7 @@
 .paper-snackbar {
   align-items: center;
   background-color: #323232;
-  bottom: 0;
+  bottom: -100px;
   color: #fff;
   display: flex;
   font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -36,7 +36,6 @@
 @media (min-width: 640px) {
   .paper-snackbar {
     border-radius: 2px;
-    bottom: -100px;
     display: inline-flex;
     margin: 24px;
     max-width: 568px;
