@@ -1,10 +1,6 @@
 export const getDateRanges = function() {
   return [
     {
-      name : this.l10n.t('All Dates'),
-      key  : 'all_dates'
-    },
-    {
       name : this.l10n.t('Today'),
       key  : 'today'
     },
@@ -31,6 +27,10 @@ export const getDateRanges = function() {
     {
       name : this.l10n.t('Custom dates'),
       key  : 'custom_dates'
+    },
+    {
+      name : this.l10n.t('All Dates'),
+      key  : 'all_dates'
     }
   ];
 };

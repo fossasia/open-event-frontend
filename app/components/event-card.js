@@ -45,7 +45,8 @@ export default class EventCard extends Component {
       isOnline   : null,
       hasImage   : null,
       hasLogo    : null,
-      isPast     : null
+      isPast     : null,
+      isUpcoming : null
     });
   }
 
@@ -64,7 +65,8 @@ export default class EventCard extends Component {
       isOnline    : null,
       hasImage    : null,
       hasLogo     : null,
-      isPast      : null
+      isPast      : null,
+      isUpcoming  : null
     });
   }
 

@@ -63,6 +63,13 @@
       <div class="content menu">
         <div class="ui form">
           <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "All Upcoming"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.is_upcoming "true") true}}
+                @onChange={{action "enableUpcomingEvents" "true"}} />
+            </div>
             {{#each this.dateRanges as |dateRange|}}
               <div class="field">
                 <UiCheckbox
@@ -95,14 +102,7 @@
                   </div>
                 </div>
               {{/if}}
-            {{/each}}
-            <div class="field">
-              <UiCheckbox
-                @label={{t "All Upcoming"}}
-                @class="ui checkbox"
-                @checked={{if (eq this.is_upcoming "true") true}}
-                @onChange={{action "enableUpcomingEvents" "true"}} />
-            </div>
+            {{/each}}            
             <UiCheckbox
               @label={{t "Past"}}
               @class="ui checkbox"

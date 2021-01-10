@@ -73,6 +73,7 @@ export default class ExploreRoute extends Route {
         }
       ]
     };
+    
 
     if (params.category) {
       filterOptions.push({
