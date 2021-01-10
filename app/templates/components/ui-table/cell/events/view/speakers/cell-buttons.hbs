@@ -1,10 +1,10 @@
 {{this.record}}
 <br><br>
 <div class="ui horizontal compact basic buttons">
-  <UiPopup @content={{t "View"}} @class="ui icon button" @click={{action this.props.actions.viewSpeaker this.extraRecords.event.id this.extraRecords.id}} @position="left center">
+  <UiPopup @content={{t "View"}} @class="ui icon button" @click={{action this.props.actions.viewSpeaker this.extraRecords.id}} @position="left center">
     <i class="unhide icon"></i>		
   </UiPopup>
-  <UiPopup @content={{t "Edit"}} @class="ui icon button" @click={{action this.props.actions.editSpeaker this.extraRecords.event.id this.extraRecords.id}} @position="left center">
+  <UiPopup @content={{t "Edit"}} @class="ui icon button" @click={{action this.props.actions.editSpeaker this.extraRecords.id}} @position="left center">
     <i class="edit icon"></i>
   </UiPopup>
   <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this Speaker?") (action this.props.actions.deleteSpeaker this.extraRecords.id))}} @class="ui icon button" @position="left center">
