@@ -1,7 +1,7 @@
 <form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
 
-  <div class="ui centered grid">
-    <div class="column">
+  <div class="ui grid">
+    <div class="eight wide column">
       <div class="ui {{if this.data.event.isSponsorsEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class=" field">
@@ -12,6 +12,24 @@
               <label class="weight-300" style="font-size: large">
                 {{if this.data.event.isSponsorsEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sponsors'}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="eight wide column">
+      <div class="ui {{if this.data.event.isExhibitorssEnabled 'basic'}} segment">
+        <div class="center aligned text">
+          <div class=" field">
+            <div class="ui slider checkbox">
+              <Input
+                @type="checkbox"
+                @checked={{this.data.event.isExhibitorsEnabled}} />
+              <label class="weight-300" style="font-size: large">
+                {{if this.data.event.isExhibitorsEnabled (t 'Turn off') (t 'Turn on')}}
+                {{t 'Exhibitors'}}
               </label>
             </div>
           </div>
