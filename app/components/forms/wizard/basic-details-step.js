@@ -136,7 +136,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
     $.fn.form.settings.rules.checkMaxMinPrice = () => {
-      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
+      return parseInt($('.ui.form').form('get value', 'min_price'), 10) <= parseInt($('.ui.form').form('get value', 'max_price'), 10);
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
       return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
