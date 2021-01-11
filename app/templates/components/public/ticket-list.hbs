@@ -16,7 +16,7 @@
       {{#each this.tickets as |ticket|}}
         {{#unless ticket.isHidden}}
           <tr>
-            <td>
+            <td class="verticle-align-baseline">
               <div class="ui small">
                 {{ticket.name}}
                 {{#if (eq ticket.type 'donation')}}
@@ -34,7 +34,7 @@
               </div>
             </td>
             <td></td>
-            <td id="{{ticket.id}}_price">
+            <td id="{{ticket.id}}_price" class="verticle-align-baseline">
               {{#if (eq ticket.type 'donation') }}
                 <div class="field m-0">
                   <div class="ui labeled input">
@@ -79,7 +79,7 @@
                 </p>
               {{/if}}
             </td>
-            <td>
+            <td class="verticle-align-baseline">
               <div class="field">
                 <UiDropdown
                   @class="compact selection"
@@ -100,7 +100,7 @@
                 </UiDropdown>
               </div>
             </td>
-            <td id='{{ticket.id}}_subtotal' class="ui right aligned">
+            <td id='{{ticket.id}}_subtotal' class="ui right aligned verticle-align-baseline">
               {{#if this.device.isMobile}}
                 <span class="ui gray-text">{{t 'Subtotal :' }}</span>
               {{/if}}
