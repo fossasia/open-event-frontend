@@ -30,6 +30,13 @@
         <Orders::EventInfo
           @data={{this.model.order}} />
         <br/>
+        {{#if this.model.order.event.hasOwnerInfo}}
+          <div class="mobile hidden row">
+            <Orders::OrganizerInfo
+              @data={{this.model.order}} />
+          </div>
+        {{/if}}
+        <br/>
         <div>
           {{#if this.isStripe}}
             <StripeCheckout

@@ -34,7 +34,7 @@
           @data={{this.model.order}}
           @showBanner={{false}} />
         <br/>
-        {{#if this.model.order.event.ownerName}}
+        {{#if this.model.order.event.hasOwnerInfo}}
           <div class="mobile hidden row">
             <Orders::OrganizerInfo
               @data={{this.model.order}} />
