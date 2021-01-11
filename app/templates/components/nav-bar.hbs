@@ -2,7 +2,7 @@
   <div class="ui menu">
     <LinkTo
       @route="index" class="header item" @activeClass="">
-      <h3>{{this.settings.appName}}</h3>
+      <h3 class="nav-bar-title" >{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
     {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
