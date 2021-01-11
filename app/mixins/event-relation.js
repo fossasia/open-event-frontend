@@ -9,7 +9,7 @@ export default Mixin.create({
     try {
       const event = snapshot.belongsTo('event');
       if (event) {
-        const originalId = event.attributes().originalId;
+        const { originalId } = event.attributes();
         // ID may have been already replaced and originalId may be undefined
         // Overriding valid ID with undefined
         if (originalId) {
@@ -26,7 +26,7 @@ export default Mixin.create({
       if (snapshot.hasMany('events') && snapshot.hasMany('events').length > 0) {
         for (let i = 0; i < snapshot.hasMany('events').length; i++) {
           const event = snapshot.hasMany('events')[i];
-          const originalId = event.attributes().originalId;
+          const { originalId } = event.attributes();
           if (originalId) {
             event.id = originalId;
           }
