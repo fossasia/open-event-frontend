@@ -124,6 +124,11 @@ export default class IndexRoute extends Route {
         val  : true
       },
       {
+        name : 'is-demoted',
+        op   : 'eq',
+        val  : false
+      },
+      {
         name : 'speakers-call',
         op   : 'has',
         val  : {
