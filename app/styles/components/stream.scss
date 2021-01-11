@@ -1,3 +1,9 @@
+.video-root {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
 .stream-preview-letter {
   align-items: center;
   align-self: center;
@@ -26,8 +32,15 @@
 
 .stream-side-panel-button {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 1rem;
+  left: -.4rem;
+  width: 35px;
+
+  &.right {
+    position: absolute;
+    right: -.4rem;
+    left: unset;
+  }
 }
 
 .stream-side-panel {
@@ -38,5 +51,6 @@
   left: 0;
   background-color: #555;
   color: #fff;
+  overflow: hidden;
   z-index: 1;
 }
