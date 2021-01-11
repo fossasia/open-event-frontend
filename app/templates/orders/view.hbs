@@ -45,6 +45,11 @@
         </div>
         <br/>
       {{/if}}
+      {{#if this.model.event.hasOwnerInfo	}}
+        <Orders::OrganizerInfo
+           @data={{this.model.order}} />
+        <br/>
+      {{/if}}
       <Orders::TicketHolder
         @data={{this.model.order}} />
     </div>
