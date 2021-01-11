@@ -41,7 +41,7 @@
           <span>{{t 'on'}} {{general-date this.order.completedAt 'date-time-short'}}</span>
         {{/if}}
       </div>
-      <div class="extra content small text">
+      <div class="extra content small text pt-2">
       {{#if (not-eq order.status "completed")}}
           <a class="ui {{order-color this.order.status}} large label" href="{{href-to 'orders.view' this.order.identifier}}">
             {{this.order.status}}
