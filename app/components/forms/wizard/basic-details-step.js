@@ -494,8 +494,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     moveTicket(ticket, direction) {
       const index = ticket.get('position');
       const otherTicket = this.data.event.tickets.find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
-      otherTicket.set('position', index);
-      ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
+      otherTicket?.set('position', index);
+      ticket?.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
 
     openTaxModal(isNewTax) {
