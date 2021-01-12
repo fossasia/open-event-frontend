@@ -34,9 +34,9 @@
           @data={{this.model.order}}
           @showBanner={{false}} />
         <br/>
-        {{#if this.model.companyDetails}}
+        {{#if this.model.taxDetails}}
           <Orders::CompanyInfo
-            @data={{this.model.companyDetails}} />
+            @data={{this.model.taxDetails}} />
           <br/>
         {{/if}}
         {{#if this.model.order.event.ownerName}}

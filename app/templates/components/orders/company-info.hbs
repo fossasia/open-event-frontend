@@ -21,27 +21,20 @@
       <strong>{{t 'City'}}:</strong> {{this.data.city}}
       <br>
      {{/if}}
+     {{#if this.data.zip}}
+      <strong>{{t 'Zip Code'}}:</strong> {{this.data.zip}}
+      <br>
+     {{/if}}
+     {{#if this.data.name}}
+      <strong>{{t 'Tax Name'}}:</strong> {{this.data.name}}
+      <br>
+     {{/if}}
+     {{#if this.data.rate}}
+      <strong>{{t 'Tax Rate'}}:</strong> {{this.data.rate}}%
+      <br>
+     {{/if}}
      {{#if this.data.state}}
       <strong>{{t 'State'}}:</strong> {{this.data.state}}
      {{/if}}
  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
