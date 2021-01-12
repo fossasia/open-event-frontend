@@ -25,7 +25,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
            hasRestorePrivileges: this.hasRestorePrivileges
          },
          actions: {
-           openDeleteEventModal : this.openDeleteEventModal.bind(this),
            deleteEvent          : this.deleteEvent.bind(this),
            restoreEvent         : this.restoreEvent.bind(this)
          }
@@ -121,20 +120,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
    }
 
   @action
-   openDeleteEventModal(id, name) {
-     this.setProperties({
-       isEventDeleteModalOpen : true,
-       confirmName            : '',
-       eventName              : name,
-       eventId                : id
-     });
-   }
-
-  @action
-  async deleteEvent() {
+  async deleteEvent(id) {
     this.set('isLoading', true);
     try {
-      const event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
+      const event =  this.store.peekRecord('event', id, { backgroundReload: false });
       await event.destroyRecord();
       this.notify.success(this.l10n.t('Event has been deleted successfully.'),
         {
@@ -156,7 +145,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     }
     this.setProperties({
       isLoading              : false,
-      isEventDeleteModalOpen : false
     });
   }
 
