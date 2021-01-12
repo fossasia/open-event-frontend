@@ -2,17 +2,35 @@
   <div class="header">{{t 'Overview'}}</div>
 </div>
 <div class="content">
-  <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
-    {{#if (eq this.data.event.state 'published')}}
-      {{t 'Your event is live at'}} <a href="{{this.data.event.url}}" rel="noopener noreferrer">{{this.data.event.url}}</a>
-    {{else}}
-      {{t 'Your event is not live yet. Make it live now'}}
-    {{/if}}
-  </div>
-</div>
-<div class="content">
   <table class="ui very basic table">
     <tbody>
+      {{#if (eq this.data.event.state 'published')}}
+      <tr>
+        <td><strong> {{t 'Your event is live at'}}</strong></td>
+        <td>
+          <div class="ui action input {{if this.device.isMobile 'small' 'medium'}}"  style="width: 100%; height: 36px">  
+            <input class="truncate" style="flex: 1 0 !important" type="text" value={{this.data.event.url}} placeholder={{this.data.event.url}} readonly>
+            <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
+              <CopyButton @clipboardText={{this.data.event.url}} @class="ui grey icon button rounded-none m-0">
+                <i class="copy icon"></i>
+              </CopyButton>
+            </UiPopup>
+            <a 
+              id="stream_url"
+              href={{this.data.event.url}}
+              target="_blank" rel="noopener">
+              <div  class="ui blue icon button ml-auto rounded-l-none m-0">
+                <i class="share icon" ></i>
+              </div>
+            </a>
+          </div>
+        </td>
+        </tr>
+      {{else}}
+        <tr> 
+           <td><strong>{{t 'Your event is not live yet. Make it live now'}}</strong></td>
+        </tr>
+      {{/if}}  
       <tr>
         <td><strong>{{t 'Location'}}</strong></td>
         <td>
