@@ -103,7 +103,7 @@ export default class Billing extends Component.extend(FormMixin) {
   submit(e) {
     e.preventDefault();
     this.onValid(() => {
-      this.sendAction('save');
+      this.save();
     });
   }
 }
