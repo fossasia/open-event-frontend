@@ -45,9 +45,9 @@
         </div>
         <br/>
       {{/if}}
-      {{#if this.model.event.hasOwnerInfo	}}
-        <Orders::OrganizerInfo
-           @data={{this.model.order}} />
+      {{#if this.model.companyDetails}}
+        <Orders::CompanyInfo
+          @data={{this.model.companyDetails}} />
         <br/>
       {{/if}}
       <Orders::TicketHolder

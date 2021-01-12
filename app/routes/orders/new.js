@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { allSettled } from 'rsvp';
 
 @classic
 export default class NewRoute extends Route {
@@ -29,10 +30,20 @@ export default class NewRoute extends Route {
     });
 
     const eventDetails = await order.query('event', { include: 'tax' });
+
+    let companyDetailsPromise;
+    let companyDetails;
+
+    if (eventDetails.isTaxEnabled) {
+      companyDetailsPromise = order.event.get('tax', { cache: true, public: true });
+      [companyDetails] = (await allSettled([companyDetailsPromise])).map(result => result.value);
+    }
+
     return {
       order,
       event : eventDetails,
       tickets,
+      companyDetails,
       form  : await eventDetails.query('customForms', {
         filter: [
           {
