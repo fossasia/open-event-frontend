@@ -75,7 +75,7 @@
                 <UiCheckbox
                   @label={{dateRange.name}}
                   @class="ui checkbox"
-                  @checked={{if (eq this.dateType dateRange.key) "active"}}
+                  @checked={{if (or (and (not-eq dateRange.key 'all_dates') (not-eq dateRange.key 'custom_dates') (eq this.is_upcoming "true")) (eq this.dateType dateRange.key)) "active"}}
                   @onChange={{action "selectDateFilter" dateRange.key}} />
               </div>
               {{#if (and (eq dateRange.key 'custom_dates') (eq this.dateType 'custom_dates'))}}
