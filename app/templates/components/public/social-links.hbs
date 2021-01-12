@@ -16,15 +16,16 @@
         </div>
       {{/if}}
     {{/each}}
-  </div>
   {{#each this.socialLinks as |socialLink|}}
     {{#if (eq socialLink.normalizedName 'globe')}}
-      <div class="item">
-        <i class="fitted {{socialLink.normalizedName}} disabled icon"></i>
-        <div class="content">
-          <a href="{{socialLink.link}}" target="_blank" rel="noopener nofollow">{{socialLink.displayName}}</a>
-        </div>
+      <div class="m-1">
+        <UiPopup @content={{t socialLink.displayName}}>
+          <a href="{{socialLink.link}}" class="ui icon blue small button extra-link d-flex items-center content-center" target="_blank" rel="noopener nofollow">
+            <div  class="clamp" style="font-size: .8rem;">{{socialLink.displayName}}</div>
+          </a>
+        </UiPopup>
       </div>
     {{/if}}
   {{/each}}
+  </div>
 </div>
