@@ -20,9 +20,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
+  locationMenuItems: [this.l10n.t('Venue'), this.l10n.t('Online'), this.l10n.t('Mixed'), this.l10n.t('To be announced')],
 
-  selectedLocationType: 'Venue',
+  selectedLocationType: this.l10n.t('Venue'),
 
   deletedTickets: [],
 
@@ -30,19 +30,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this._super(...arguments);
     if (this.data.event.online) {
       if (this.data.event.locationName) {
-        this.selectedLocationType = 'Mixed';
+        this.selectedLocationType = this.l10n.t('Mixed');
       } else {
-        this.selectedLocationType = 'Online';
+        this.selectedLocationType = this.l10n.t('Online');
       }
     } else if (this.data.event.locationName) {
-      this.selectedLocationType = 'Venue';
+      this.selectedLocationType = this.l10n.t('Venue');
     } else {
-      this.selectedLocationType = 'To be announced';
+      this.selectedLocationType = this.l10n.t('To be announced');
     }
   },
 
   isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
+    return [this.l10n.t('Venue'), this.l10n.t('Mixed')].includes(this.selectedLocationType);
   }),
 
   countries: computed(function() {
