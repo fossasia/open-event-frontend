@@ -12,7 +12,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Name'),
         valuePath       : 'name',
-        width           : 150,
+        width           : 180,
         isSortable      : true,
         extraValuePaths : ['identifier', 'logoUrl'],
         headerComponent : 'tables/headers/sort',
@@ -26,7 +26,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'startsAt',
         extraValuePaths : ['endsAt', 'timezone'],
         isSortable      : true,
-        width           : 180,
+        width           : 200,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
 
@@ -40,7 +40,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : this.l10n.t('Tickets'),
-        width           : 130,
+        width           : 150,
         valuePath       : 'tickets',
         extraValuePaths : ['totalSales'],
         cellComponent   : 'ui-table/cell/cell-tickets'
