@@ -2,21 +2,22 @@
 # Areeb Jamal <jamalareeb@gmail.com>, 2020.
 # nautilusx <mail.ka@mailbox.org>, 2020.
 # J. Lavoie <j.lavoie@net-c.ca>, 2020.
-# Mario Behling <mb@mariobehling.de>, 2020.
+# Mario Behling <mb@mariobehling.de>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2020-11-23 06:36+0000\n"
+"PO-Revision-Date: 2021-01-12 20:07+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/open-event/frontend/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/open-event/"
+"frontend/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 "X-Crowdin-Project: open-event-frontend\n"
 "X-Crowdin-Language: de\n"
 "X-Crowdin-File: /development/translations/en.po\n"
@@ -72,6 +73,7 @@ msgstr ""
 #: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
 #: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
 #: app/templates/components/errors/generic-error.hbs:2:51
+#, fuzzy
 msgid "An unexpected error has occurred."
 msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
@@ -81,7 +83,7 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten."
 #: app/components/forms/reset-password-form.js:26:23
 #: app/components/forms/user-profile-form.js:37:23
 msgid "Please enter your email ID"
-msgstr "Bitte geben Sie Ihre E-Mail-ID ein"
+msgstr "Bitte E-Mail-ID eingeben"
 
 #: app/components/account/contact-info-section.js:26:23
 #: app/components/forms/admin/settings/billing.js:35:23
@@ -99,21 +101,21 @@ msgstr "Bitte geben Sie Ihre E-Mail-ID ein"
 #: app/components/forms/user-profile-form.js:41:23
 #: app/components/forms/wizard/basic-details-step.js:350:23
 msgid "Please enter a valid email address"
-msgstr "Bitte geben Sie eine gültigen E-Mail-Adresse ein"
+msgstr "Bitte gültige E-Mail-Adresse eingeben"
 
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
 msgid "Please enter a phone number."
-msgstr "Bitte geben Sie eine Telefonnummer ein."
+msgstr "Bitte Telefonnummer eingeben."
 
 #: app/components/account/contact-info-section.js:40:23
 #: app/components/forms/user-payment-info-form.js:87:23
 msgid "Please enter a valid phone number."
-msgstr "Bitte geben Sie eine gültige Telefonnummer ein."
+msgstr "Bitte gültige Telefonnummer eingeben."
 
 #: app/components/account/danger-zone.js:42:28
 msgid "Your account has been deleted successfully."
-msgstr "Ihr Konto wurde erfolgreich gelöscht."
+msgstr "Konto wurde erfolgreich gelöscht."
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
@@ -121,35 +123,35 @@ msgstr "E-Mail-Benachrichtigungen wurden erfolgreich aktualisiert"
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
-msgstr "Bitte geben Sie das aktuelle Passwort ein"
+msgstr "Bitte atuelles Passwort eingeben"
 
 #: app/components/account/password-section.js:25:23
 msgid "Please enter a new password"
-msgstr "Bitte gib ein neues Passwort ein"
+msgstr "Bitte neues Passwort eingeben"
 
 #: app/components/account/password-section.js:29:23
 #: app/components/forms/orders/guest-order-form.js:42:23
 #: app/components/forms/register-form.js:37:23
 #: app/components/forms/reset-password-form.js:44:23
 msgid "Your password must have at least {ruleValue} characters"
-msgstr "Ihr Passwort muss mindestens {ruleValue} Zeichen enthalten"
+msgstr "Passwort muss mindestens {ruleValue} Zeichen enthalten"
 
 #: app/components/account/password-section.js:38:23
 #: app/components/forms/orders/guest-order-form.js:52:23
 #: app/components/forms/register-form.js:46:23
 #: app/components/forms/reset-password-form.js:54:23
 msgid "Passwords do not match"
-msgstr "Die Passwörter stimmen nicht überein"
+msgstr "Passwörter stimmen nicht überein"
 
 #: app/components/events/event-import-section.js:17:23
 #: app/components/forms/admin/content/translation-form.js:17:23
 msgid "Please upload a file"
-msgstr "Lade bitte eine Datei hoch"
+msgstr "Bitte eine Datei hochladen"
 
 #: app/components/events/event-import-section.js:22:23
 #: app/components/forms/admin/content/translation-form.js:22:23
 msgid "Please upload a file in suggested format"
-msgstr "Lade bitte eine Datei im vorgeschlagenen Format hoch"
+msgstr "Bitte eine Datei im passenden Format hochladen"
 
 #: app/components/events/view/export/api-response.js:43:26
 msgid "Could not fetch from the server"
@@ -157,7 +159,7 @@ msgstr "Keine Antwort vom Server erhalten"
 
 #: app/components/events/view/export/download-common.js:28:112
 msgid "Please publish to generate the link"
-msgstr ""
+msgstr "Bitte veröffentlichen, um den Link zu generieren"
 
 #: app/components/events/view/export/download-common.js:39:32
 #: app/controllers/events/view/sessions.js:46:34
@@ -173,7 +175,7 @@ msgstr "Download steht bereit"
 #: app/controllers/events/view/tickets/attendees.js:36:30
 #: app/controllers/events/view/tickets/orders.js:36:30
 msgid "Task is going on."
-msgstr "Arbeit im Gange."
+msgstr "Vorgang läuft."
 
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
@@ -205,11 +207,11 @@ msgstr "Rolleneinladung erfolgreich aktualisiert"
 #: app/controllers/public/cfs/new-session.js:20:24
 #: app/controllers/public/cfs/new-speaker.js:20:26
 msgid "Oops something went wrong. Please try again"
-msgstr "Ups, da ist wohl etwas schief gelaufen. Versuche es bitte noch einmal"
+msgstr "Ups, da ist wohl etwas schief gelaufen. Bitte noch einmal versuchen"
 
 #: app/components/events/view/overview/manage-roles.js:53:28
 msgid "Invite resent successfully"
-msgstr ""
+msgstr "Einladung erfolgreich versendet"
 
 #: app/components/events/view/overview/manage-roles.js:73:28
 msgid "Role Invite deleted successfully"
@@ -339,7 +341,7 @@ msgstr "Bitte wählen Sie das Land aus"
 
 #: app/components/forms/admin/settings/billing.js:66:23
 msgid "Please enter the organisation"
-msgstr ""
+msgstr "Bitte Organisation eingeben"
 
 #: app/components/forms/admin/settings/billing.js:75:23
 msgid "Please enter the Address"
@@ -617,11 +619,11 @@ msgstr "Videokanal"
 
 #: app/components/forms/events/view/videoroom-form.hbs:15:10
 msgid "Add Video"
-msgstr ""
+msgstr "Video hinzufügen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:24:12
 msgid "Custom"
-msgstr ""
+msgstr "Benutzerdefiniert"
 
 #: app/components/forms/events/view/videoroom-form.hbs:34:28
 #: app/components/modals/add-room-modal.js:17:14
@@ -630,18 +632,18 @@ msgstr "Raum"
 
 #: app/components/forms/events/view/videoroom-form.hbs:39:30
 msgid "Video Source"
-msgstr ""
+msgstr "Videoquelle"
 
 #: app/components/forms/events/view/videoroom-form.hbs:46:8
 #: app/controllers/events/view/videoroom/list.js:22:24
 msgid "Video Source URL"
-msgstr ""
+msgstr "Videoquellen-URL"
 
 #: app/components/forms/events/view/videoroom-form.hbs:59:8
 #: app/components/public/stream/stream-info.hbs:10:14
 #: app/controllers/events/view/videoroom/list.js:37:21
 msgid "Room Password"
-msgstr ""
+msgstr "Raumkennwort"
 
 #: app/components/forms/events/view/videoroom-form.hbs:71:6
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:28:12
@@ -723,6 +725,8 @@ msgstr "Bitte geben Sie eine URL ein"
 #: app/components/forms/events/view/videoroom-form.js:125:34
 msgid "Selecting another video integration will reset the data in the form. Do you want to proceed?"
 msgstr ""
+"Durch Auswahl einer anderen Videointegration werden die Daten im Formular "
+"zurückgesetzt. Jetzt fortfahren?"
 
 #: app/components/forms/events/view/videoroom-form.js:145:28
 msgid "Your stream has been saved"
@@ -735,7 +739,7 @@ msgstr "Bitte Passwort eingeben"
 
 #: app/components/forms/orders/attendee-list.js:37:28
 msgid "Here is your ticket"
-msgstr ""
+msgstr "Hier ist das Ticket"
 
 #: app/components/forms/orders/order-form.js:83:19
 #: app/components/forms/orders/order-form.js:379:23
@@ -809,8 +813,9 @@ msgstr "Bitte geben Sie Ihre Lieferadresse ein"
 
 #: app/components/forms/orders/order-form.js:221:19
 #: app/components/forms/user-payment-info-form.js:37:23
+#, fuzzy
 msgid "Please enter your organisation"
-msgstr ""
+msgstr "Bitte Organisation eingeben"
 
 #: app/components/forms/orders/order-form.js:230:19
 msgid "Please enter your work address"
@@ -1031,7 +1036,7 @@ msgstr "Bitte geben Sie eine Startzeit an"
 
 #: app/components/forms/wizard/basic-details-step.js:206:23
 msgid "Starting time should be lesser than the ending time"
-msgstr ""
+msgstr "Die Startzeit muss vor der Endzeit liegen"
 
 #: app/components/forms/wizard/basic-details-step.js:216:23
 #: app/components/forms/wizard/sessions-speakers-step.js:95:23
@@ -1040,7 +1045,7 @@ msgstr "Bitte geben Sie eine Endzeit an"
 
 #: app/components/forms/wizard/basic-details-step.js:220:23
 msgid "Ending time should be greater than the starting time"
-msgstr ""
+msgstr "Die Endzeit muss nach der Startzeit liegen"
 
 #: app/components/forms/wizard/basic-details-step.js:229:23
 msgid "Please give your ticket a name"
@@ -1153,15 +1158,15 @@ msgstr "Benutzerdefiniertes Formularfeld hinzufügen"
 
 #: app/components/forms/wizard/custom-form-input.hbs:9:33
 msgid "Field Name"
-msgstr ""
+msgstr "Feldname"
 
 #: app/components/forms/wizard/custom-form-input.hbs:16:42
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: app/components/forms/wizard/custom-form-input.hbs:17:44
 msgid "Number"
-msgstr ""
+msgstr "Anzahl"
 
 #: app/components/forms/wizard/custom-form-input.hbs:20:115
 msgid "Add"
@@ -1192,7 +1197,7 @@ msgstr "Typ"
 #: app/components/forms/wizard/custom-forms/table.hbs:23:10
 #: app/components/forms/wizard/custom-forms/table.hbs:61:45
 msgid "Include"
-msgstr "Einschließen"
+msgstr "Hinzufügen"
 
 #: app/components/forms/wizard/custom-forms/table.hbs:26:10
 #: app/components/forms/wizard/custom-forms/table.hbs:69:45
@@ -1201,7 +1206,7 @@ msgstr "Erforderlich"
 
 #: app/components/forms/wizard/custom-forms/table.hbs:29:10
 msgid "Show Public"
-msgstr ""
+msgstr "Öffentlich anzeigen"
 
 #: app/components/forms/wizard/custom-forms/table.hbs:33:12
 #: app/controllers/admin/reports/system-logs/activity-logs.js:27:20
@@ -1449,7 +1454,7 @@ msgstr "Sprecher benachrichtigen"
 
 #: app/components/modals/session-notify-modal.hbs:29:15
 msgid "Subject"
-msgstr ""
+msgstr "Thema"
 
 #: app/components/modals/session-notify-modal.hbs:36:15
 #: app/controllers/admin/reports/system-logs/mail-logs.js:32:26
@@ -1484,7 +1489,7 @@ msgstr "Bitte geben Sie uns Ihren Steuerausweis"
 
 #: app/components/modals/tax-info-modal.js:58:23
 msgid "Please give us your organisation name"
-msgstr ""
+msgstr "Bitte Namen der Organisation eingeben"
 
 #: app/components/modals/tax-info-modal.js:69:23
 msgid "Please give us your address"
@@ -1533,21 +1538,21 @@ msgstr "Online-Veranstaltung"
 
 #: app/components/public/session-item.hbs:16:39
 msgid "Download Slides"
-msgstr ""
+msgstr "Slides herunterladen"
 
 #: app/components/public/session-item.hbs:16:61
 msgid "Link to Slides"
-msgstr ""
+msgstr "Link zu Slides"
 
 #: app/components/public/session-item.hbs:23:16
 msgid "Watch Video"
-msgstr ""
+msgstr "Video ansehen"
 
 #: app/components/public/session-item.hbs:30:16
 #: app/components/public/stream/join-video.hbs:7:2
 #: app/controllers/events/view/videoroom/list.js:29:26
 msgid "Join Video"
-msgstr ""
+msgstr "Video beitreten"
 
 #: app/components/public/session-item.hbs:89:16
 #: app/templates/components/forms/events/view/edit-session.hbs:15:11
@@ -1595,19 +1600,19 @@ msgstr "Verhaltenskodex"
 
 #: app/components/public/side-menu-outer.js:28:13
 msgid "Select section"
-msgstr ""
+msgstr "Abschnitt auswählen"
 
 #: app/components/public/stream/stream-info.hbs:6:190
 msgid "Join Video Channel"
-msgstr ""
+msgstr "Videokanal beitreten"
 
 #: app/components/public/stream/stream-info.hbs:11:38
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "In die Zwischenablage kopiert"
 
 #: app/components/public/ticket-list.js:175:26
 msgid "This Promotional Code is not valid"
-msgstr ""
+msgstr "Dieser Aktionscode ist ungültig"
 
 #: app/components/public/ticket-list.js:253:21
 msgid "Please enter a donation amount between {{minPrice}} and {{maxPrice}}"
@@ -1660,7 +1665,7 @@ msgstr "Website"
 
 #: app/components/widgets/time-zone-picker.hbs:19:6
 msgid "Other Timezones"
-msgstr ""
+msgstr "Andere Zeitzonen"
 
 #: app/controllers/account/password.js:18:28
 msgid "Password updated successfully"
@@ -2125,11 +2130,11 @@ msgstr "Kopieren der Veranstaltung fehlgeschlagen"
 
 #: app/controllers/events/view/scheduler.js:31:24
 msgid "Start time or End time not present"
-msgstr ""
+msgstr "Startzeit oder Endzeit nicht vorhanden"
 
 #: app/controllers/events/view/scheduler.js:64:28
 msgid "Changes have been made successfully"
-msgstr ""
+msgstr "Änderungen wurden erfolgreich gespeichert"
 
 #: app/controllers/events/view/sessions.js:57:32
 #: app/controllers/events/view/sessions.js:64:30
@@ -2338,7 +2343,7 @@ msgstr "Mikrolokation"
 
 #: app/controllers/events/view/videoroom/list.js:43:21
 msgid "Additional information"
-msgstr ""
+msgstr "Zusätzliche Informationen"
 
 #: app/controllers/events/view/videoroom/list.js:69:26
 msgid "{{item}} has been deleted successfully."
@@ -2383,7 +2388,7 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
 #: app/controllers/public.js:36:13
 msgid "In-Person Event and Online Event"
-msgstr ""
+msgstr "Vor-Ort-Veranstaltungen und Online-Veranstaltungen"
 
 #: app/controllers/public.js:42:13 app/templates/public/index.hbs:91:10
 msgid "Location to be announced"
@@ -2466,7 +2471,7 @@ msgstr "Ihre Veranstaltung wurde gespeichert"
 
 #: app/mixins/event-wizard.js:244:28
 msgid "Tickets are required for publishing/published event"
-msgstr ""
+msgstr "Tickets sind für die Veröffentlichung erforderlich"
 
 #: app/mixins/notifications.js:26:30
 msgid "Marked all as Read successfully"
@@ -2824,152 +2829,153 @@ msgstr "Team"
 
 #: app/routes/events/view/team/permissions.ts:14:19
 msgid "Manage Events Page"
-msgstr ""
+msgstr "Veranstaltungsseite verwalten"
 
 #: app/routes/events/view/team/permissions.ts:18:22
 msgid "Show event on manage events page"
-msgstr ""
+msgstr "Veranstaltung auf der Seite \"Veranstaltung verwalten\" anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:27:22
 msgid "Update/Edit event"
-msgstr ""
+msgstr "Veranstaltung bearbeiten"
 
 #: app/routes/events/view/team/permissions.ts:32:22
 msgid "View event dashboard"
-msgstr ""
+msgstr "Veranstaltungs-Dashboard anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:41:22
+#, fuzzy
 msgid "View team members"
-msgstr ""
+msgstr "Teammitglieder anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:46:22
 msgid "Invite team members"
-msgstr ""
+msgstr "Teammitglieder einladen"
 
 #: app/routes/events/view/team/permissions.ts:51:22
 msgid "Cancel invitations"
-msgstr ""
+msgstr "Einladungen annullieren"
 
 #: app/routes/events/view/team/permissions.ts:56:22
 msgid "Delete team members"
-msgstr ""
+msgstr "Teammitglieder löschen"
 
 #: app/routes/events/view/team/permissions.ts:61:22
 msgid "Manage roles"
-msgstr ""
+msgstr "Rollen verwalten"
 
 #: app/routes/events/view/team/permissions.ts:70:22
 msgid "View orders and attendees"
-msgstr ""
+msgstr "Bestellungen und Teilnehmer anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:75:22
 msgid "Create discount codes"
-msgstr ""
+msgstr "Rabattcodes erstellen"
 
 #: app/routes/events/view/team/permissions.ts:80:22
 msgid "Edit discount codes"
-msgstr ""
+msgstr "Rabattcodes bearbeiten"
 
 #: app/routes/events/view/team/permissions.ts:85:22
 msgid "Create view codes"
-msgstr ""
+msgstr "Erstellen von Ansichtscodes"
 
 #: app/routes/events/view/team/permissions.ts:90:22
 msgid "Edit view codes"
-msgstr ""
+msgstr "Bearbeiten von Ansichtscodes"
 
 #: app/routes/events/view/team/permissions.ts:95:22
 msgid "Check-in attendees"
-msgstr ""
+msgstr "Teilnehmer einchecken"
 
 #: app/routes/events/view/team/permissions.ts:100:22
 msgid "Change attendee check-in status"
-msgstr ""
+msgstr "Check-in-Status von Teilnehmern ändern"
 
 #: app/routes/events/view/team/permissions.ts:109:22
 msgid "View scheduler"
-msgstr ""
+msgstr "Planer anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:114:22
 msgid "Edit schedule"
-msgstr ""
+msgstr "Zeitplan bearbeiten"
 
 #: app/routes/events/view/team/permissions.ts:119:22
 msgid "Publish schedule"
-msgstr ""
+msgstr "Zeitplan veröffentlichen"
 
 #: app/routes/events/view/team/permissions.ts:124:22
 msgid "Unpublish schedule"
-msgstr ""
+msgstr "Veröffentlichung des Zeitplans aufheben"
 
 #: app/routes/events/view/team/permissions.ts:129:19
 #: app/templates/components/events/view/overview/speaker-session.hbs:2:22
 msgid "Sessions and Speakers"
-msgstr ""
+msgstr "Sitzungen und Referenten"
 
 #: app/routes/events/view/team/permissions.ts:133:22
 msgid "View speaker profiles"
-msgstr ""
+msgstr "Referentenprofile anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:138:22
 msgid "Edit speaker profiles"
-msgstr ""
+msgstr "Referentenprofile bearbeiten"
 
 #: app/routes/events/view/team/permissions.ts:143:22
 msgid "Create speaker profiles"
-msgstr ""
+msgstr "Referentenprofile erstellen"
 
 #: app/routes/events/view/team/permissions.ts:148:22
 msgid "Feature speakers"
-msgstr ""
+msgstr "Empfohlene Referenten"
 
 #: app/routes/events/view/team/permissions.ts:153:22
 msgid "View session submissions"
-msgstr ""
+msgstr "Einreichungen anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:158:22
 msgid "Edit session submissions"
-msgstr ""
+msgstr "Einreichungen bearbeiten"
 
 #: app/routes/events/view/team/permissions.ts:163:22
 msgid "Create sessions"
-msgstr ""
+msgstr "Sitzung erstellen"
 
 #: app/routes/events/view/team/permissions.ts:168:22
 msgid "Change session status"
-msgstr ""
+msgstr "Status der Einreichung ändern"
 
 #: app/routes/events/view/team/permissions.ts:173:22
 msgid "Notify speakers of status change"
-msgstr ""
+msgstr "Referenten über Statusänderungen benachrichtigen"
 
 #: app/routes/events/view/team/permissions.ts:178:22
 msgid "View ratings"
-msgstr ""
+msgstr "Bewertungen anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:183:22
 msgid "Rate session submissions"
-msgstr ""
+msgstr "Einreichungen bewerten"
 
 #: app/routes/events/view/team/permissions.ts:188:22
 msgid "Lock/Unlock session submissions"
-msgstr ""
+msgstr "Einreichungen Sperren/Entsperren"
 
 #: app/routes/events/view/team/permissions.ts:197:22
 msgid "View Export Info"
-msgstr ""
+msgstr "Exportinformationen anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:206:22
 msgid "View settings"
-msgstr ""
+msgstr "Einstellungen anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:211:22
 msgid "Delete event"
-msgstr ""
+msgstr "Veranstaltung löschen"
 
 #: app/routes/events/view/team/permissions.ts:216:22
 msgid "Transfer ownership"
-msgstr ""
+msgstr "Veranstaltung übertragen"
 
 #: app/routes/events/view/tickets/access-codes.js:7:11
 msgid "Access codes"
@@ -3188,11 +3194,11 @@ msgstr "Bestätigen"
 
 #: app/services/error-handler.js:17:26
 msgid "There are too many requests. Please try after sometime."
-msgstr ""
+msgstr "Es gibt zu viele Anfragen. Bitte später noch einmal versuchen."
 
 #: app/services/error-handler.js:20:26
 msgid "User must be User must be logged in to perform this action."
-msgstr ""
+msgstr "Benutzer muss angemeldet sein, um diese Aktion ausführen zu können."
 
 #: app/templates/account.hbs:9:8 app/templates/admin/settings.hbs:24:10
 msgid "Billing"
@@ -3697,7 +3703,7 @@ msgstr "Für diesen Benutzer wurden keine Tickets gefunden"
 
 #: app/templates/application.hbs:8:51
 msgid "Click here for more information"
-msgstr ""
+msgstr "Für weitere Informationen hier klicken"
 
 #: app/templates/attendee-app.hbs:17:4
 msgid "Open Event Attendee App"
@@ -3762,12 +3768,14 @@ msgstr "Hier"
 #: app/templates/attendee-app.hbs:104:2 app/templates/organizer-app.hbs:104:2
 #: app/templates/pages.hbs:19:2
 msgid "Still have questions?"
-msgstr ""
+msgstr "Weitere Fragen?"
 
 #: app/templates/attendee-app.hbs:104:72 app/templates/organizer-app.hbs:104:72
 #: app/templates/pages.hbs:19:72
 msgid "Visit our FAQ to find answers."
 msgstr ""
+"Um weitere Antworten zu erhalten, haben wir hier eine Liste mit häufig "
+"gestellten Fragen eingerichtet."
 
 #: app/templates/components/account/application-section.hbs:1:4
 msgid "Connect with Facebook"
@@ -3949,7 +3957,7 @@ msgstr "Von"
 #: app/templates/components/forms/user-payment-info-form.hbs:9:25
 #: app/templates/components/widgets/forms/billing-info.hbs:2:40
 msgid "Organisation"
-msgstr ""
+msgstr "Organisation"
 
 #: app/templates/components/event-invoice/billing-info.hbs:20:16
 #: app/templates/components/event-invoice/billing-info.hbs:42:16
@@ -4140,39 +4148,51 @@ msgstr "Starten"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:2:22
 msgid "Website Generator"
-msgstr ""
+msgstr "Website-Generator"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
 msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
 msgstr ""
+"Eine eigene Event-Website mit allen Details, Sponsorenlisten, Referenten und "
+"Sitzungen, sowie den gesamten Zeitplan erstellen?"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:7:4
 msgid "Simply use the website generator."
-msgstr ""
+msgstr "Einfach den Website-Generator verwenden."
 
 #: app/templates/components/events/view/overview/event-apps.hbs:8:4
 msgid "It transfers the data of the event via an API to our website tool and creates a website for you."
 msgstr ""
+"Er überträgt die Daten der Veranstaltung über eine API an unser Website-Tool "
+"und erstellt eine Website für die Veranstaltung."
 
 #: app/templates/components/events/view/overview/event-apps.hbs:9:4
 msgid "You can download the entire site as a zip file and upload it to your own web hosting service."
 msgstr ""
+"Der Generator erstellt die gesamte Website als Zip-Datei zum Herunterladen. "
+"Diese kann dann auf dem eigenen Website-Dienst gehostet werden."
 
 #: app/templates/components/events/view/overview/event-apps.hbs:10:4
 msgid "No database set up or framework required."
 msgstr ""
+"Es ist keine Datenbankeinrichtung oder ein Conten-Management-System "
+"erforderlich."
 
 #: app/templates/components/events/view/overview/event-apps.hbs:11:4
 msgid "This feature is still in Alpha stage, but is already used actively by a number of events."
 msgstr ""
+"Diese Funktion befindet sich noch in der Alpha-Phase, wird jedoch bereits "
+"von einer Reihe von Veranstaltungen aktiv genutzt."
 
 #: app/templates/components/events/view/overview/event-apps.hbs:12:4
 msgid "If you press the below button a tab will open where your website is generated."
 msgstr ""
+"Bei Betätigung der folgenden Taste, öffnet sich ein Browsertab, wo die "
+"Website generiert wird."
 
 #: app/templates/components/events/view/overview/event-apps.hbs:15:140
 msgid "Create Website"
-msgstr ""
+msgstr "Website erstellen"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:2:22
 msgid "Event Checklist"
@@ -4330,7 +4350,7 @@ msgstr "Möchten Sie diese Einladung wirklich abbrechen?"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:52:29
 msgid "Resend invite"
-msgstr ""
+msgstr "Einladung erneut versenden"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:65:10
 msgid "No records to show"
@@ -4347,11 +4367,11 @@ msgstr "Kein Sitzungstyp vorhanden."
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:28:12
 msgid "No Track Present."
-msgstr ""
+msgstr "Kein Thementrack vorhanden."
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:40:12
 msgid "No Microlocations Present."
-msgstr ""
+msgstr "Keine Microlokationen vorhanden."
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:48:12
 #: app/templates/components/modals/event-revision.hbs:29:30
@@ -4364,8 +4384,9 @@ msgid "End Time"
 msgstr "Endzeit"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:52:12
+#, fuzzy
 msgid "Call for Speakers not enabled."
-msgstr ""
+msgstr "Call for Speakers nicht aktiviert."
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:57:20
 msgid "No. of Speakers"
@@ -4384,7 +4405,7 @@ msgstr "Anzahl der Sitzungen"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:83:12
 msgid "States"
-msgstr ""
+msgstr "Staaten"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:94:14
 #: app/templates/components/events/view/overview/speaker-session.hbs:108:14
@@ -4403,19 +4424,19 @@ msgstr "Übermittelt"
 
 #: app/templates/components/explore/side-bar.hbs:7:19
 msgid "Enter Event Name"
-msgstr ""
+msgstr "Veranstaltungsnamen eingeben"
 
 #: app/templates/components/explore/side-bar.hbs:15:8
 msgid "Setting"
-msgstr ""
+msgstr "Einstellung"
 
 #: app/templates/components/explore/side-bar.hbs:22:23
 msgid "Online"
-msgstr ""
+msgstr "Online"
 
 #: app/templates/components/explore/side-bar.hbs:36:23
 msgid "Mixed"
-msgstr ""
+msgstr "Mix"
 
 #: app/templates/components/explore/side-bar.hbs:48:35
 msgid "Enter Location"
@@ -4481,7 +4502,7 @@ msgstr "Logo"
 
 #: app/templates/components/explore/side-bar.hbs:258:100
 msgid "Default Filters"
-msgstr ""
+msgstr "Standardfilter"
 
 #: app/templates/components/footer-main.hbs:9:31
 msgid "Use"
@@ -4751,11 +4772,11 @@ msgstr "Stadt"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:81:36
 msgid "Organisation Logo"
-msgstr ""
+msgstr "Organisationslogo"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:87:14
 msgid "Select Organisation Logo"
-msgstr ""
+msgstr "Organisationslogo auswählen"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:2:24
 msgid "Event Images"
@@ -4786,7 +4807,7 @@ msgstr "Höhe (in px)"
 #: app/templates/components/forms/admin/settings/images-form.hbs:107:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:123:13
 msgid "Quality (in %)"
-msgstr "Qualität (in%)"
+msgstr "Qualität (in %)"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:19:23
 msgid "Standard aspect ratio is 13:5. Tick to maintain aspect ratio."
@@ -4806,7 +4827,7 @@ msgstr "Gefunden in :"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:24:22
 msgid "Background Header Image in Public Event Page"
-msgstr "Hintergrundkopfzeilenbild in der öffentlichen Veranstaltungsseite"
+msgstr "Hintergrundtitelbild auf der öffentlichen Veranstaltungsseite"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:26:24
 #: app/templates/components/forms/admin/settings/images-form.hbs:84:24
@@ -5180,35 +5201,38 @@ msgstr "Captcha-Optionen"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:8:21
 msgid "Page"
-msgstr ""
+msgstr "Seite"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:9:16
 msgid "Functionality"
-msgstr ""
+msgstr "Funktionalität"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:13:18
 msgid "User Register Page"
-msgstr ""
+msgstr "Registrierungsseite"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:14:18
+#, fuzzy
 msgid "HCaptcha is enabled if new user is creating account."
-msgstr ""
+msgstr "HCaptcha ist aktiviert, wenn ein neuer Benutzer ein Konto erstellt."
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:17:18
 msgid "Login Page"
-msgstr ""
+msgstr "Loginseite"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:18:18
 msgid "HCaptcha is enabled if user try to login more than 2 times with wrong credentials."
 msgstr ""
+"HCaptcha ist aktiviert, wenn benutzerischer Benutzer versucht, sich mehr als "
+"2 Mal mit falschen Anmeldeinformationen anzumelden."
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:21:18
 msgid "Forgot Password page"
-msgstr ""
+msgstr "Seite für Vergessenes Passwort"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:22:18
 msgid "HCaptcha is always enabled."
-msgstr ""
+msgstr "HCaptcha ist immer aktiviert."
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:29:4
 msgid "Captcha settings for sensitive actions in app."
@@ -5544,11 +5568,11 @@ msgstr "Keine Veranstaltungstickets zur Auswahl"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:83:13
 msgid "Discount valid from"
-msgstr ""
+msgstr "Rabatt gültig ab"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:101:13
 msgid "Discount expires on"
-msgstr ""
+msgstr "Rabatt läuft ab am"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:121:13
 msgid "Discount Link"
@@ -5616,7 +5640,7 @@ msgstr "-zum-"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:19:12
 msgid "Download Ticket"
-msgstr ""
+msgstr "Ticket herunterladen"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:49:12
 #: app/templates/components/forms/orders/order-form.hbs:152:10
@@ -5828,7 +5852,7 @@ msgstr "Es ist kein Referent vorhanden. Neuen Referenten hinzufügen."
 
 #: app/templates/components/forms/session-speaker-form.hbs:48:15
 msgid "Add a new speaker"
-msgstr ""
+msgstr "Neuen Referenten hinzufügen"
 
 #: app/templates/components/forms/session-speaker-form.hbs:79:6
 msgid "Choose from an existing session"
@@ -5955,11 +5979,11 @@ msgstr "Veranstaltungsbilder"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:165:14
 msgid "Select Event Header Image"
-msgstr "Wählen Sie Event Header Image"
+msgstr "Wählen Sie das Titelbild der Veranstaltung"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:166:19
 msgid "Header Image"
-msgstr "Header-Bild"
+msgstr "Titelbild"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:169:18
 msgid "We recommend using at least a 2160x1080px (2:1 ratio) image"
@@ -6151,7 +6175,7 @@ msgstr "Steuerinformation"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:564:18
 msgid "Organisation Name"
-msgstr ""
+msgstr "Name der Organisation"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:580:16
 #: app/templates/components/forms/wizard/other-details-step.hbs:22:28
@@ -6656,10 +6680,14 @@ msgid ""
 "Tax Invoices are sent to your attendees when you select this feature.\n"
 "Enter your registered business organisation name and address to be included on the tax invoice."
 msgstr ""
+"Steuerrechnungen werden an Teilnehmer gesendet, wenn diese Funktion "
+"ausgewählt wird.\n"
+"Bitte Namen und Adresse der registrierten Organisation eingeben, die in die "
+"Steuerrechnung aufgenommen werden soll."
 
 #: app/templates/components/modals/tax-info-modal.hbs:38:13
 msgid "Registered Organisation"
-msgstr ""
+msgstr "Eingetragene Organisation"
 
 #: app/templates/components/modals/tax-info-modal.hbs:42:13
 msgid "Business Address"
@@ -6675,7 +6703,7 @@ msgstr "Text für Rechnungsfußzeile (optional)"
 
 #: app/templates/components/modals/tax-info-modal.hbs:60:27
 msgid "Add or Include Tax Fee"
-msgstr "Steuergebühr hinzufügen oder einschließen"
+msgstr "Steuer als zusätzliche oder einschliessliche Kosten behandeln"
 
 #: app/templates/components/modals/tax-info-modal.hbs:64:31
 msgid "Add tax as separate fee on top of the price"
@@ -6705,7 +6733,7 @@ msgstr "Bitte geben Sie Ihre E-Mail-ID ein, um zu bestätigen, dass Sie das Kont
 #: app/templates/components/nav-bar.hbs:73:110
 #: app/templates/components/side-bar.hbs:3:110
 msgid "Search Events"
-msgstr ""
+msgstr "Veranstaltungen suchen"
 
 #: app/templates/components/nav-bar.hbs:37:68
 #: app/templates/components/side-bar.hbs:20:60
@@ -6739,11 +6767,11 @@ msgstr "Keine neuen Nachrichten"
 #: app/templates/components/order-card.hbs:15:26
 #: app/templates/components/order-card.hbs:16:10
 msgid "Cancel Ticket"
-msgstr ""
+msgstr "Ticket stornieren"
 
 #: app/templates/components/order-card.hbs:15:73
 msgid "Are you sure you would like to cancel this ticket?"
-msgstr ""
+msgstr "Dieses Ticket wirklich stornieren?"
 
 #: app/templates/components/order-card.hbs:37:10
 msgid "order"
@@ -6905,7 +6933,7 @@ msgstr "Zugang"
 
 #: app/templates/components/public/social-links.hbs:6:59
 msgid "Site"
-msgstr ""
+msgstr "Website"
 
 #: app/templates/components/public/ticket-list.hbs:45:54
 msgid "Enter Donation"
@@ -6917,7 +6945,7 @@ msgstr "beinhaltet"
 
 #: app/templates/components/public/ticket-list.hbs:105:43
 msgid "Subtotal :"
-msgstr ""
+msgstr "Zwischensumme:"
 
 #: app/templates/components/public/ticket-list.hbs:126:26
 msgid "Sub-Total"
@@ -6925,7 +6953,7 @@ msgstr "Zwischensumme"
 
 #: app/templates/components/public/ticket-list.hbs:131:58
 msgid "Included in Total"
-msgstr ""
+msgstr "Im Gesamtbetrag enthalten"
 
 #: app/templates/components/public/ticket-list.hbs:161:28
 msgid "Promotional Code"
@@ -6962,7 +6990,7 @@ msgstr "Einträge"
 #: app/templates/components/tables/utilities/search-box.hbs:2:128
 #: app/templates/events/view/scheduler.hbs:10:39
 msgid "Search"
-msgstr ""
+msgstr "Suche"
 
 #: app/templates/components/ui-table/cell/admin/sales/cell-action.hbs:1:20
 msgid "Resend invoice mail"
@@ -7178,7 +7206,7 @@ msgstr "Diesen Stream wirklich löschen?"
 
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-video-url.hbs:4:6
 msgid "Auto-Generated"
-msgstr ""
+msgstr "Automatisch generiert"
 
 #: app/templates/components/welcome-header.hbs:2:30
 msgid "The simplest way to create events."
@@ -7190,7 +7218,7 @@ msgstr "Bundesland"
 
 #: app/templates/components/widgets/forms/color-picker.hbs:1:49
 msgid "Hex value or pick"
-msgstr ""
+msgstr "Hex-Wert oder auswählen"
 
 #: app/templates/components/widgets/forms/file-upload.hbs:7:8
 msgid "Remove file"
@@ -7550,11 +7578,11 @@ msgstr "Danke"
 
 #: app/templates/events/view/videoroom/list.hbs:8:29
 msgid "Event Video Room"
-msgstr ""
+msgstr "Videoraum der Veranstaltung"
 
 #: app/templates/events/view/videoroom/list.hbs:21:27
 msgid "Microlocation Video Rooms"
-msgstr ""
+msgstr "Microlokation der Video-Räume"
 
 #: app/templates/explore.hbs:55:38
 msgid "No events found for selected filters"
@@ -7615,7 +7643,7 @@ msgstr "Zahlen Sie mit AliPay"
 
 #: app/templates/orders/view.hbs:38:10
 msgid "All Tickets"
-msgstr ""
+msgstr "Alle Tickets"
 
 #: app/templates/organizer-app.hbs:17:4
 msgid "Open Event Organizer App"
@@ -7863,11 +7891,12 @@ msgstr "Raumfilter löschen"
 
 #: app/templates/public.hbs:131:12
 msgid "Login or Buy Tickets"
-msgstr ""
+msgstr "Anmelden oder Tickets kaufen"
 
 #: app/templates/public.hbs:133:4
 msgid "You need to login or get a ticket for this event before you can join it online."
 msgstr ""
+"Teilnahme an der Veranstaltung nur möglich nach Anmeldung oder Ticketerwerb."
 
 #: app/templates/public/cfs/new-session.hbs:4:6
 msgid "Session Details"
@@ -7919,14 +7948,16 @@ msgstr "Für diesen Zeitraum sind keine Sitzungen vorhanden"
 #: app/templates/verify.hbs:3:7
 msgid "Thank you, your email has been verified successfully! You now have full access to all features."
 msgstr ""
+"Vielen Dank, die E-Mail wurde erfolgreich verifiziert! Jetzt besteht voller "
+"Zugriff auf alle Funktionen des Systems."
 
 #: app/templates/verify.hbs:3:154
 msgid "Please login to continue."
-msgstr ""
+msgstr "Bitte einloggen zum Fortfahren."
 
 #: app/templates/verify.hbs:7:7
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: app/utils/dictionary/filters.js:4:13
 msgid "All Dates"
