@@ -1,0 +1,47 @@
+<div class="ui segments">
+  {{#if this.showBanner}}
+    <div class="ui green inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          {{t 'Company Information'}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="ui padded segment">
+     {{#if this.data.registeredCompany}}
+      <strong>{{t 'Company Name'}}:</strong> {{this.data.registeredCompany}}
+      <br>
+     {{/if}}
+     {{#if this.data.address}}
+      <strong>{{t 'Address'}}:</strong> {{this.data.address}}
+      <br>
+     {{/if}}
+     {{#if this.data.city}}
+      <strong>{{t 'City'}}:</strong> {{this.data.city}}
+      <br>
+     {{/if}}
+     {{#if this.data.state}}
+      <strong>{{t 'State'}}:</strong> {{this.data.state}}
+     {{/if}}
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
