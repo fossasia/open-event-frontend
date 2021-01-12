@@ -18,7 +18,7 @@
       <i class="undo icon"></i>
     </UiPopup>
   {{else}}
-    <UiPopup @content={{t "Delete"}} @click={{action this.props.actions.openDeleteEventModal this.extraRecords.identifier this.record}} @class="ui icon button" @position="left center">
+    <UiPopup @content={{t "Delete"}} @click={{action this.props.actions.deleteEvent this.extraRecords.identifier}} @class="ui icon button" @position="left center">
       <i class="trash icon"></i>
     </UiPopup>
   {{/if}}

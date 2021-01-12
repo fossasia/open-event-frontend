@@ -25,9 +25,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
            hasRestorePrivileges: this.hasRestorePrivileges
          },
          actions: {
-           openDeleteEventModal : this.openDeleteEventModal.bind(this),
-           deleteEvent          : this.deleteEvent.bind(this),
-           restoreEvent         : this.restoreEvent.bind(this)
+           deleteEvent  : this.deleteEvent.bind(this),
+           restoreEvent : this.restoreEvent.bind(this)
          }
        },
        {
@@ -121,44 +120,33 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
    }
 
   @action
-   openDeleteEventModal(id, name) {
+   async deleteEvent(id) {
+     this.set('isLoading', true);
+     try {
+       const event =  this.store.peekRecord('event', id, { backgroundReload: false });
+       await event.destroyRecord();
+       this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+         {
+           id: 'event_del_succ'
+         });
+       this.refreshModel.bind(this)();
+     } catch (e) {
+       console.error('Error while deleting event', e);
+       if (e.errors?.[0]?.detail) {
+         this.notify.error(this.l10n.tVar(e.errors[0].detail), {
+           id: 'event_delete_server_error'
+         });
+       } else {
+         this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+           {
+             id: 'event_delete_unknown_error'
+           });
+       }
+     }
      this.setProperties({
-       isEventDeleteModalOpen : true,
-       confirmName            : '',
-       eventName              : name,
-       eventId                : id
+       isLoading: false
      });
    }
-
-  @action
-  async deleteEvent() {
-    this.set('isLoading', true);
-    try {
-      const event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
-      await event.destroyRecord();
-      this.notify.success(this.l10n.t('Event has been deleted successfully.'),
-        {
-          id: 'event_del_succ'
-        });
-      this.refreshModel.bind(this)();
-    } catch (e) {
-      console.error('Error while deleting event', e);
-      if (e.errors?.[0]?.detail) {
-        this.notify.error(this.l10n.tVar(e.errors[0].detail), {
-          id: 'event_delete_server_error'
-        });
-      } else {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'event_delete_unknown_error'
-          });
-      }
-    }
-    this.setProperties({
-      isLoading              : false,
-      isEventDeleteModalOpen : false
-    });
-  }
 
   @action
   async restoreEvent(event_id) {
