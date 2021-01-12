@@ -1,5 +1,5 @@
 <div class="ui action input" style="width: 100%; height: 36px">
-  <input class="truncate" style="flex: 1 0 !important" type="text" value={{@url}} placeholder={{@url}} readonly>
+  <input class="truncate" style={{html-safe (concat "flex: 1 0 !important;" @extraStyles)}} type="text" value={{@url}} placeholder={{@url}} readonly>
   <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
     <CopyButton @clipboardText={{@url}} @class="ui grey icon button rounded-none m-0">
       <i class="copy icon"></i>

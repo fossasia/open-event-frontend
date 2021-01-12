@@ -2,53 +2,66 @@
   <div class="header">{{t 'Overview'}}</div>
 </div>
 <div class="content">
-  <table class="ui very basic table">
-    <tbody>
-      <tr>
-        {{#if (eq this.data.event.state 'published')}}
-            <td><strong> {{t 'Your event is live at'}}</strong></td>
-            <td>
-              <UrlBox @url={{this.data.event.url}} />
-            </td>
-        {{else}}
-            <td><strong>{{t 'Your event is not live yet. Make it live now'}}</strong></td>
-        {{/if}}  
-      </tr>
-      <tr>
-        <td><strong>{{t 'Location'}}</strong></td>
-        <td>
-          {{#if this.data.event.locationName}}
-            {{this.data.event.locationName}}
-          {{else}}
-            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td><strong>{{t 'Start time'}}</strong></td>
-        <td>{{general-date this.data.event.startsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
-      </tr>
-      <tr>
-        <td><strong>{{t 'End time'}}</strong></td>
-        <td>{{general-date this.data.event.endsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
-      </tr>
-      <tr>
-        <td><strong>{{t 'Links and Social Media'}}</strong></td>
-        <td>
-          {{#if this.data.socialLinks}}
-            {{#each this.data.socialLinks as |socialLink index|~}}
-              {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.displayName}}</a>
-            {{~/each}}
-          {{else}}
-            {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.other-details'}}#social-links">{{t 'Click here to add'}}</a>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td><strong>{{t 'No. of Sponsors'}}</strong></td>
-        <td>{{if this.data.event.isSponsorsEnabled this.data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
-      </tr>
-    </tbody>
-  </table>
+  {{#if (eq this.data.event.state 'published')}}
+    <table class="ui very basic table" style="table-layout: fixed;">
+      <tbody>
+        <tr>
+          <td style="width: max-content;">
+             <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
+                {{t 'Your event is live at'}}
+             </div>
+          </td>
+          <td>
+              <UrlBox @url={{this.data.event.url}} @extraStyles='font-weight:bold; color:#4183c4; {{if this.device.isMobile 'font-size: small;' 'font-size: large;'}}' />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    {{else}}
+      <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
+          {{t 'Your event is not live yet. Make it live now'}}
+      </div>
+    {{/if}}
+</div>
+<div class="content">
+  <table class="ui very basic table compact unstackable">
+      <tbody>
+        <tr>
+          <td><strong>{{t 'Location'}}</strong></td>
+          <td>
+            {{#if this.data.event.locationName}}
+              {{this.data.event.locationName}}
+            {{else}}
+              <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td><strong>{{t 'Start time'}}</strong></td>
+          <td>{{general-date this.data.event.startsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
+        </tr>
+        <tr>
+          <td><strong>{{t 'End time'}}</strong></td>
+          <td>{{general-date this.data.event.endsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
+        </tr>
+        <tr>
+          <td><strong>{{t 'Links and Social Media'}}</strong></td>
+          <td>
+            {{#if this.data.socialLinks}}
+              {{#each this.data.socialLinks as |socialLink index|~}}
+                {{if (not-eq index 0) ','}} <a href="{{socialLink.link}}" target="_blank" rel="noopener noreferrer">{{socialLink.displayName}}</a>
+              {{~/each}}
+            {{else}}
+              {{t 'No social links present. '}} <a href="{{href-to 'events.view.edit.other-details'}}#social-links">{{t 'Click here to add'}}</a>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td><strong>{{t 'No. of Sponsors'}}</strong></td>
+          <td>{{if this.data.event.isSponsorsEnabled this.data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>
 <Modals::EventRevision @isOpen={{this.isEventRevisionModalOpen}} />
+
