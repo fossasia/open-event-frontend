@@ -21,8 +21,8 @@ export default class ViewRoute extends Route {
     });
     const eventDetails = await order.query('event', { include: 'tax' });
 
-    let companyDetailsPromise;
-    let companyDetails;
+    let companyDetailsPromise,
+        companyDetails;
 
     if (eventDetails.isTaxEnabled) {
       companyDetailsPromise = order.event.get('tax', { cache: true, public: true });
@@ -31,7 +31,7 @@ export default class ViewRoute extends Route {
 
     return {
       order,
-      event: eventDetails,
+      event : eventDetails,
       companyDetails,
       form  : await eventDetails.query('customForms', {
         'page[size]' : 50,

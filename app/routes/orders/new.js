@@ -31,8 +31,8 @@ export default class NewRoute extends Route {
 
     const eventDetails = await order.query('event', { include: 'tax' });
 
-    let companyDetailsPromise;
-    let companyDetails;
+    let companyDetailsPromise,
+        companyDetails;
 
     if (eventDetails.isTaxEnabled) {
       companyDetailsPromise = order.event.get('tax', { cache: true, public: true });
