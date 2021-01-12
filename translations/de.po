@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-01-12 20:07+0000\n"
+"PO-Revision-Date: 2021-01-12 23:20+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
@@ -73,7 +73,6 @@ msgstr ""
 #: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
 #: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
 #: app/templates/components/errors/generic-error.hbs:2:51
-#, fuzzy
 msgid "An unexpected error has occurred."
 msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
@@ -241,12 +240,16 @@ msgstr "Veröffentlichen"
 
 #: app/components/events/view/publish-bar.ts:57:26
 msgid "Your event must have tickets before it can be published."
-msgstr "Ihre Veranstaltung muss über Tickets verfügen, bevor sie veröffentlicht werden kann."
+msgstr ""
+"Die Veranstaltung muss über Tickets verfügen, bevor sie veröffentlicht "
+"werden kann."
 
 #: app/components/events/view/publish-bar.ts:63:26
 #: app/mixins/event-wizard.js:294:22
 msgid "You need to connect to your Stripe account, if you choose Stripe as a payment gateway."
-msgstr "Sie müssen eine Verbindung zu Ihrem Stripe-Konto herstellen, wenn Sie Stripe als Zahlungsgateway auswählen."
+msgstr ""
+"Um Stripe als Zahlungsgateway auszuwählen, bitte Verbindung zu einem Stripe-"
+"Konto herstellen."
 
 #: app/components/events/view/publish-bar.ts:76:28
 msgid "Your event has been published successfully."
@@ -319,25 +322,27 @@ msgstr "Gib bitte eine gültige URL an"
 
 #: app/components/forms/admin/content/translation-form.js:31:23
 msgid "Please select a language"
-msgstr "Bitte wählen Sie eine Sprache"
+msgstr "Bitte Sprache auswählen"
 
 #: app/components/forms/admin/settings/billing.js:22:23
 #: app/components/forms/session-speaker-form.js:338:23
 #: app/components/forms/session-speaker-form.js:352:23
 msgid "Please enter a valid mobile number."
-msgstr "Bitte geben Sie eine gültige Handynummer ein."
+msgstr "Bitte geben eine gültige Handynummer eingeben."
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr "Bitte geben Sie die E-Mail ein"
+msgstr "Bitte E-Mail eingeben"
 
 #: app/components/forms/admin/settings/billing.js:44:23
 msgid "Please enter the billing paypal email invoice money will be transferred to"
-msgstr "Bitte geben Sie die Abrechnung ein. Paypal E-Mail Rechnung Geld wird an überwiesen"
+msgstr ""
+"Bitte Rechnungs-E-Mail für Paypal eingeben, damit das Geld überwiesen werden "
+"kann"
 
 #: app/components/forms/admin/settings/billing.js:57:23
 msgid "Please select the country"
-msgstr "Bitte wählen Sie das Land aus"
+msgstr "Bitte Land auswählen"
 
 #: app/components/forms/admin/settings/billing.js:66:23
 msgid "Please enter the organisation"
@@ -345,16 +350,16 @@ msgstr "Bitte Organisation eingeben"
 
 #: app/components/forms/admin/settings/billing.js:75:23
 msgid "Please enter the Address"
-msgstr "Bitte geben Sie die Adresse ein"
+msgstr "Bitte Adresse eingeben"
 
 #: app/components/forms/admin/settings/billing.js:84:23
 msgid "Please enter the city"
-msgstr "Bitte betreten Sie die Stadt"
+msgstr "Bitte Stadt eingeben"
 
 #: app/components/forms/admin/settings/billing.js:94:23
 #: app/components/forms/user-payment-info-form.js:73:23
 msgid "Please enter the zip code"
-msgstr "Bitte geben Sie die Postleitzahl ein"
+msgstr "Bitte Postleitzahl eingeben"
 
 #: app/components/forms/admin/settings/images-form.js:17:23
 #: app/components/forms/admin/settings/images-form.js:44:23
@@ -377,7 +382,7 @@ msgstr "Bitte Höhe eingeben"
 #: app/components/forms/admin/settings/images-form.js:143:23
 #: app/components/forms/admin/settings/images-form.js:161:23
 msgid "Please enter quality"
-msgstr "Bitte geben Sie Qualität ein"
+msgstr "Bitte Qualitätsinfo eingeben"
 
 #: app/components/forms/admin/settings/images-form.js:116:23
 #: app/components/forms/admin/settings/images-form.js:134:23
@@ -387,72 +392,72 @@ msgstr "Bitte Größe eingeben"
 
 #: app/components/forms/admin/settings/microservices-form.js:19:23
 msgid "Please enter a valid URL for Android app"
-msgstr "Bitte geben Sie eine gültige URL für die Android App ein"
+msgstr "Bitte eine gültige URL für die Android-App eingeben"
 
 #: app/components/forms/admin/settings/microservices-form.js:31:23
 msgid "Please enter a valid URL for web app"
-msgstr "Bitte geben Sie eine gültige URL für die Web-App ein"
+msgstr "Bitte eine gültige URL für die Web-App eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:18:23
 msgid "Please enter the client ID"
-msgstr "Bitte geben Sie die Kunden-ID ein"
+msgstr "Bitte Client-ID eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:28:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:66:23
 msgid "Please enter the secret key"
-msgstr "Bitte geben Sie den geheimen Schlüssel ein"
+msgstr "Bitte den geheimen Schlüssel eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:38:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:76:23
 msgid "Please enter the publishable key"
-msgstr "Bitte geben Sie den publizierbaren Schlüssel ein"
+msgstr "Bitte den publizierbaren Schlüssel eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:47:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:136:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:196:23
 msgid "Please enter the secret test key"
-msgstr "Bitte geben Sie den geheimen Testschlüssel ein"
+msgstr "Bitte geben den geheimen Testschlüssel eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:57:23
 msgid "Please enter the publishable test key"
-msgstr "Bitte geben Sie den publizierbaren Testschlüssel ein"
+msgstr "Bitte geben den publizierbaren Testschlüssel eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:86:23
 msgid "Please enter the sandbox client id"
-msgstr "Bitte geben Sie die Sandbox-Client-ID ein"
+msgstr "Bitte die Sandbox-Client-ID eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:96:23
 msgid "Please enter the sandbox secret token"
-msgstr "Bitte geben Sie den geheimen Sandbox-Token ein"
+msgstr "Bitte den geheimen Sandbox-Token eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:106:23
 msgid "Please enter the live client token"
-msgstr "Bitte geben Sie den Live-Client-Token ein"
+msgstr "Bitte geben den Live-Client-Token eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:116:23
 msgid "Please enter the live secret token"
-msgstr "Bitte geben Sie den Live Secret Token ein"
+msgstr "Bitte den Live Secret Token eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:126:23
 msgid "Please enter the public test key"
-msgstr "Bitte geben Sie den öffentlichen Testschlüssel ein"
+msgstr "Bitte den öffentlichen Testschlüssel eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:146:23
 msgid "Please enter the public live key"
-msgstr "Bitte geben Sie den Public Live Key ein"
+msgstr "Bitte den Public Live Key eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:156:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:176:23
 msgid "Please enter the secret live key"
-msgstr "Bitte geben Sie den Secret Live Key ein"
+msgstr "Bitte den Secret Live Key eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:166:23
 msgid "Please enter the live merchant ID"
-msgstr "Bitte geben Sie die Live-Händler-ID ein"
+msgstr "Bitte die Live-Händler-ID eingeben"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:186:23
 msgid "Please enter the test merchant ID"
-msgstr "Bitte geben Sie die Test-Händler-ID ein"
+msgstr "Bitte die Test-Händler-ID eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:17:23
 msgid "Please enter the App name"
@@ -460,88 +465,88 @@ msgstr "Bitte App-Namen eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:27:23
 msgid "Please enter a tag line"
-msgstr "Bitte geben Sie eine Tag-Zeile ein"
+msgstr "Bitte eine Tagline eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:37:23
 msgid "Please enter the API Url"
-msgstr "Bitte geben Sie die API-URL ein"
+msgstr "Bitte die API-URL eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:42:23
 msgid "Please enter a valid URL for the API"
-msgstr "Bitte geben Sie eine gültige URL für die API ein"
+msgstr "Bitte eine gültige URL für die API eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:52:23
 #: app/components/forms/admin/settings/system-form.js:92:23
 msgid "Please enter the Bucket name"
-msgstr "Bitte geben Sie den Namen des Buckets ein"
+msgstr "Bitte den Namen des Buckets eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:62:23
 msgid "Please enter the access key"
-msgstr "Bitte geben Sie den Zugangsschlüssel ein"
+msgstr "Bitte den Zugangsschlüssel eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:72:23
 msgid "Please enter the access secret"
-msgstr "Bitte geben Sie das Zugangsgeheimnis ein"
+msgstr "Bitte das Zugangsgeheimnis (Access Secret) eingegeben"
 
 #: app/components/forms/admin/settings/system-form.js:82:23
 msgid "Please select a region"
-msgstr "Bitte wählen Sie eine Region aus"
+msgstr "Bitte eine Region auswählen"
 
 #: app/components/forms/admin/settings/system-form.js:102:23
 msgid "Please enter the key"
-msgstr "Bitte geben Sie den Schlüssel ein"
+msgstr "Bitte den Schlüssel eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:112:23
 msgid "Please enter the secret"
-msgstr "Bitte geben Sie das Geheimnis ein"
+msgstr "Bitte das Geheimnis eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:122:23
 msgid "Please enter the reCAPTCHA site key"
-msgstr "Bitte geben Sie den reCAPTCHA-Site-Schlüssel ein"
+msgstr "Bitte den reCAPTCHA-Site-Key eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:132:23
 msgid "Please enter a Expiry Time for Order"
-msgstr "Bitte geben Sie eine Ablaufzeit für die Bestellung ein"
+msgstr "Bitte eine Ablaufzeit für Bestellungen eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:141:23
 msgid "Please enter the reCAPTCHA secret key"
-msgstr "Bitte geben Sie den geheimen Schlüssel reCAPTCHA ein"
+msgstr "Bitte den geheimen reCAPTCHA-Key eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:151:23
 msgid "Please enter the from email"
-msgstr "Bitte geben Sie die von E-Mail ein"
+msgstr "Bitte Sender-E-Mail (Von) eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:165:23
 msgid "Please enter name for from email"
-msgstr "Bitte geben Sie den Namen für per E-Mail ein"
+msgstr "Bitte den Namen für Sender-E-Mail (Von/From) eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:175:23
 msgid "Please enter the Frontend Url"
-msgstr "Bitte geben Sie die Frontend-URL ein"
+msgstr "Bitte die Frontend-URL eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:180:23
 msgid "Please enter a valid URL for Frontend"
-msgstr "Bitte geben Sie eine gültige URL für Frontend ein"
+msgstr "Bitte eine gültige URL für das Frontend eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:190:23
 msgid "Please enter the SMTP host"
-msgstr "Bitte geben Sie den SMTP-Host ein"
+msgstr "Bitte den SMTP-Host eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:200:23
 msgid "Please enter the SMTP port number"
-msgstr "Bitte geben Sie die SMTP-Portnummer ein"
+msgstr "Bitte die SMTP-Portnummer eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:204:23
 msgid "Please enter a valid port number"
-msgstr "Bitte geben Sie eine gültige Portnummer ein"
+msgstr "Bitte eine gültige Portnummer eingeben"
 
 #: app/components/forms/admin/settings/system-form.js:214:23
 msgid "Please enter the token for Sendgrid"
-msgstr "Bitte geben Sie den Token für Sendgrid ein"
+msgstr "Bitte den Token für Sendgrid eingeben"
 
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:19:23
 msgid "Please enter the recipient E-mail"
-msgstr "Bitte geben Sie die Empfänger-E-Mail ein"
+msgstr "Bitte die Empfänger-E-Mail eingeben"
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
@@ -553,20 +558,20 @@ msgstr "Gebühreneinstellung erfolgreich gelöscht"
 
 #: app/components/forms/events/view/create-access-code.js:25:23
 msgid "Please enter access code"
-msgstr "Bitte geben Sie den Zugangscode ein"
+msgstr "Bitte den Zugangscode eingeben"
 
 #: app/components/forms/events/view/create-access-code.js:38:23
 msgid "Please enter number of tickets"
-msgstr "Bitte geben Sie die Anzahl der Tickets ein"
+msgstr "Bitte die Anzahl der Tickets eingeben"
 
 #: app/components/forms/events/view/create-access-code.js:42:23
 msgid "Please enter proper number of tickets"
-msgstr "Bitte geben Sie die richtige Anzahl an Tickets ein"
+msgstr "Bitte die richtige Anzahl an Tickets eingeben"
 
 #: app/components/forms/events/view/create-access-code.js:52:23
 #: app/components/forms/events/view/create-access-code.js:66:23
 msgid "Please enter the proper number"
-msgstr "Bitte geben Sie die richtige Nummer ein"
+msgstr "Bitte die richtige Anzahl eingeben"
 
 #: app/components/forms/events/view/create-access-code.js:56:23
 #: app/components/forms/events/view/create-discount-code.js:81:23
@@ -586,32 +591,32 @@ msgstr "Der Maximalwert sollte nicht größer als die Anzahl der Tickets sein"
 #: app/components/forms/events/view/create-access-code.js:84:23
 #: app/components/forms/events/view/create-access-code.js:94:23
 msgid "Please enter the proper date"
-msgstr "Bitte geben Sie das richtige Datum ein"
+msgstr "Bitte das richtige Datum eingeben"
 
 #: app/components/forms/events/view/create-discount-code.js:36:23
 msgid "Please enter a discount code"
-msgstr "Bitte geben Sie einen Rabattcode ein"
+msgstr "Bitte einen Rabattcode eingeben"
 
 #: app/components/forms/events/view/create-discount-code.js:49:23
 msgid "Please enter the number of tickets"
-msgstr "Bitte geben Sie die Anzahl der Tickets ein"
+msgstr "Bitte die Anzahl der Tickets eingeben"
 
 #: app/components/forms/events/view/create-discount-code.js:58:23
 msgid "Please enter the discount amount"
-msgstr "Bitte geben Sie den Rabattbetrag ein"
+msgstr "Bitte den Rabattbetrag eingeben"
 
 #: app/components/forms/events/view/create-discount-code.js:67:23
 msgid "Please enter the discount percentage"
-msgstr "Bitte geben Sie den Rabattprozentsatz ein"
+msgstr "Bitte einen Rabattprozentsatz eingeben"
 
 #: app/components/forms/events/view/create-discount-code.js:77:23
 #: app/components/forms/events/view/create-discount-code.js:91:23
 msgid "Please enter a valid integer"
-msgstr "Bitte geben Sie eine gültige ganze Zahl ein"
+msgstr "Bitte eine gültige ganze Zahl eingeben"
 
 #: app/components/forms/events/view/create-discount-code.js:108:23
 msgid "Please select atleast 1 ticket."
-msgstr "Bitte wählen Sie mindestens 1 Ticket."
+msgstr "Bitte mindestens 1 Ticket auswählen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:5:8
 msgid "Video Channel"
@@ -720,7 +725,7 @@ msgstr "Speichern"
 #: app/components/forms/session-speaker-form.js:135:23
 #: app/components/forms/session-speaker-form.js:160:23
 msgid "Please enter a url"
-msgstr "Bitte geben Sie eine URL ein"
+msgstr "Bitte eine URL eingeben"
 
 #: app/components/forms/events/view/videoroom-form.js:125:34
 msgid "Selecting another video integration will reset the data in the form. Do you want to proceed?"
@@ -753,101 +758,100 @@ msgstr "Bitte Nachnamen eingeben"
 
 #: app/components/forms/orders/order-form.js:99:19
 msgid "Please enter your email"
-msgstr "Bitte geben Sie ihre E-Mail-Adresse ein"
+msgstr "Bitte E-Mail-Adresse des Kontos eingeben"
 
 #: app/components/forms/orders/order-form.js:113:19
 #: app/components/forms/session-speaker-form.js:318:23
 msgid "Please select a gender"
-msgstr "Bitte wählen Sie ein Geschlecht"
+msgstr "Bitte eigenes Geschlecht auswählen"
 
 #: app/components/forms/orders/order-form.js:122:19
 msgid "Please select your age group"
-msgstr "Bitte wählen Sie Ihre Altersgruppe"
+msgstr "Bitte eigene Altersgruppe auswählen"
 
 #: app/components/forms/orders/order-form.js:131:19
 #: app/components/forms/orders/order-form.js:425:23
 msgid "Please enter your address"
-msgstr "Bitte geben Sie Ihre Adresse ein"
+msgstr "Bitte eigene Adresse eintragen"
 
 #: app/components/forms/orders/order-form.js:140:19
 #: app/components/forms/orders/order-form.js:434:23
 msgid "Please enter your city"
-msgstr "Bitte geben Sie Ihre Stadt ein"
+msgstr "Bitte eigene Stadt eingeben"
 
 #: app/components/forms/orders/order-form.js:149:19
 msgid "Please enter your state"
-msgstr "Bitte geben Sie Ihren Staat ein"
+msgstr "Bitte Bundesland eingeben"
 
 #: app/components/forms/orders/order-form.js:158:19
 #: app/components/forms/orders/order-form.js:407:23
 #: app/components/forms/wizard/basic-details-step.js:401:23
 #: app/components/modals/tax-info-modal.js:111:23
 msgid "Please select your country"
-msgstr "Bitte wählen Sie Ihr Land"
+msgstr "Bitte das Land eingeben"
 
 #: app/components/forms/orders/order-form.js:167:19
 msgid "Please enter your job title"
-msgstr "Bitte geben Sie Ihre Berufsbezeichnung ein"
+msgstr "Bitte Berufsbezeichnung eintragen"
 
 #: app/components/forms/orders/order-form.js:176:19
 #: app/components/forms/session-speaker-form.js:347:23
 msgid "Please enter a mobile number"
-msgstr "Bitte geben Sie eine Handynummer ein"
+msgstr "Bitte Handynummer eintragen"
 
 #: app/components/forms/orders/order-form.js:185:19
 msgid "Please enter your tax business info"
-msgstr "Bitte geben Sie Ihre Steuergeschäftsdaten ein"
+msgstr "Bitte die Steuergeschäftsdaten eingeben"
 
 #: app/components/forms/orders/order-form.js:194:19
 #: app/components/forms/user-payment-info-form.js:55:23
 msgid "Please enter your billing address"
-msgstr "Bitte geben Sie Ihre Rechnungsadresse ein"
+msgstr "Bitte Rechnungsadresse eingeben"
 
 #: app/components/forms/orders/order-form.js:203:19
 msgid "Please enter your home address"
-msgstr "Bitte geben Sie Ihre Privatadresse ein"
+msgstr "Bitte Privatadresse eingeben"
 
 #: app/components/forms/orders/order-form.js:212:19
 msgid "Please enter your shipping address"
-msgstr "Bitte geben Sie Ihre Lieferadresse ein"
+msgstr "Bitte Lieferadresse eingeben"
 
 #: app/components/forms/orders/order-form.js:221:19
 #: app/components/forms/user-payment-info-form.js:37:23
-#, fuzzy
 msgid "Please enter your organisation"
 msgstr "Bitte Organisation eingeben"
 
 #: app/components/forms/orders/order-form.js:230:19
 msgid "Please enter your work address"
-msgstr "Bitte geben Sie Ihre Arbeitsadresse ein"
+msgstr "Bitte Firmenadresse eingeben"
 
 #: app/components/forms/orders/order-form.js:239:19
 msgid "Please enter your work phone"
-msgstr "Bitte geben Sie Ihr Arbeitstelefon ein"
+msgstr "Bitte Arbeitstelefon eingeben"
 
 #: app/components/forms/orders/order-form.js:259:19
 #: app/components/forms/orders/order-form.js:284:19
 #: app/components/forms/session-speaker-form.js:361:23
 msgid "Please enter url of website"
-msgstr "Bitte geben Sie die URL der Website ein"
+msgstr "Bitte die URL der Website eingeben"
 
 #: app/components/forms/orders/order-form.js:300:19
 #: app/components/forms/orders/order-form.js:314:19
 msgid "Please enter a valid twitter profile url"
-msgstr "Bitte geben Sie eine gültige Twitter-Profil-URL ein"
+msgstr "Bitte eine gültige Twitter-Profil-URL eingeben"
 
 #: app/components/forms/orders/order-form.js:309:19
 msgid "Please enter twitter link"
-msgstr "Bitte geben Sie den Twitter-Link ein"
+msgstr "Bitte einen Twitter-Link eingeben"
 
 #: app/components/forms/orders/order-form.js:325:19
 #: app/components/forms/orders/order-form.js:339:19
 msgid "Please enter a valid facebook account url"
-msgstr "Bitte geben Sie eine gültige Facebook-Konto-URL ein"
+msgstr "Bitte eine gültige Facebook-Konto-URL eingeben"
 
 #: app/components/forms/orders/order-form.js:334:19
 msgid "Please enter facebook link"
-msgstr "Bitte geben Sie den Facebook-Link ein"
+msgstr "Bitte den Facebook-Link eingeben"
 
 #: app/components/forms/orders/order-form.js:350:19
 #: app/components/forms/orders/order-form.js:364:19
@@ -2158,7 +2162,7 @@ msgstr "Bewertung"
 
 #: app/controllers/events/view/sessions/list.js:64:20
 msgid "Track"
-msgstr "Track"
+msgstr "Thementrack"
 
 #: app/controllers/events/view/sessions/list.js:74:24
 msgid "Submission Date"
@@ -2779,7 +2783,7 @@ msgstr "Inaktiv"
 
 #: app/routes/admin/users/view/sessions.js:8:11 app/routes/my-sessions.js:8:11
 msgid "My sessions"
-msgstr "Meine Sitzungen"
+msgstr "Meine Einreichungen"
 
 #: app/routes/admin/users/view/sessions/list.js:11:15
 #: app/routes/admin/users/view/tickets/index.js:7:11
@@ -2844,7 +2848,6 @@ msgid "View event dashboard"
 msgstr "Veranstaltungs-Dashboard anzeigen"
 
 #: app/routes/events/view/team/permissions.ts:41:22
-#, fuzzy
 msgid "View team members"
 msgstr "Teammitglieder anzeigen"
 
@@ -3340,7 +3343,7 @@ msgstr "Version 1.0.0-alpha.10"
 
 #: app/templates/admin/index.hbs:17:10
 msgid "Number of Sessions"
-msgstr "Anzahl der Sitzungen"
+msgstr "Anzahl der Einreichungen"
 
 #: app/templates/admin/index.hbs:21:12
 #: app/templates/components/events/view/overview/manage-roles.hbs:13:105
@@ -3670,12 +3673,12 @@ msgstr "Profil Information"
 #: app/templates/components/side-bar.hbs:19:53
 #: app/templates/my-sessions.hbs:3:24
 msgid "My Sessions"
-msgstr "Meine Sitzungen"
+msgstr "Meine Einreichungen"
 
 #: app/templates/admin/users/view/sessions.hbs:8:12
 #: app/templates/my-sessions.hbs:9:12
 msgid "Upcoming Sessions"
-msgstr "Kommende Sitzungen"
+msgstr "Bevorstehende Sitzungen"
 
 #: app/templates/admin/users/view/sessions.hbs:11:12
 #: app/templates/my-sessions.hbs:12:12
@@ -4086,7 +4089,7 @@ msgstr "Grundlegende Veranstaltungsdetails"
 #: app/templates/components/events/view/export/api-response.hbs:16:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:33:20
 msgid "Microlocations"
-msgstr "Nahzonenortungen"
+msgstr "Mikrolokationen"
 
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
@@ -4237,7 +4240,7 @@ msgstr "Anpassung der Sitzungs- und Sprecherformulare"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:105:14
 msgid "Customize the session and speaker registration forms"
-msgstr "Passen Sie die Registrierungsformulare für Sitzungen und Sprecher an"
+msgstr "Formulare für Einreichungen und Referenten anpassen"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 #: app/templates/components/events/view/overview/speaker-session.hbs:5:24
@@ -4354,7 +4357,7 @@ msgstr "Einladung erneut versenden"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:65:10
 msgid "No records to show"
-msgstr "Keine Aufzeichnungen zu zeigen"
+msgstr "Keine Eintragungen vorhanden"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:95:30
@@ -4384,7 +4387,6 @@ msgid "End Time"
 msgstr "Endzeit"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:52:12
-#, fuzzy
 msgid "Call for Speakers not enabled."
 msgstr "Call for Speakers nicht aktiviert."
 
@@ -4397,11 +4399,11 @@ msgstr "Anzahl der Sprecher"
 #: app/templates/components/events/view/overview/speaker-session.hbs:96:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:110:12
 msgid "Sessions and Speakers not enabled."
-msgstr "Sitzungen und Sprecher nicht aktiviert."
+msgstr "Einreichungen und Referenten nicht aktiviert."
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:67:20
 msgid "No. of Sessions"
-msgstr "Anzahl der Sitzungen"
+msgstr "Anzahl der Einreichungen"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:83:12
 msgid "States"
@@ -5212,7 +5214,6 @@ msgid "User Register Page"
 msgstr "Registrierungsseite"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:14:18
-#, fuzzy
 msgid "HCaptcha is enabled if new user is creating account."
 msgstr "HCaptcha ist aktiviert, wenn ein neuer Benutzer ein Konto erstellt."
 
@@ -5992,11 +5993,11 @@ msgstr "Wir empfehlen die Verwendung von mindestens 2160 x 1080 Pixel (Verhältn
 #: app/templates/components/forms/wizard/basic-details-step.hbs:178:14
 #: app/templates/components/forms/wizard/sponsors-step.hbs:77:18
 msgid "Select Logo"
-msgstr "Wählen Sie Logo"
+msgstr "Logo auswählen"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:191:41
 msgid "Add Organizer or Group Information"
-msgstr "Fügen Sie Organisator- oder Gruppeninformationen hinzu"
+msgstr "Organisator- oder Gruppeninformationen hinzufügen"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:197:30
 msgid "Organizer or Group Name"
@@ -6147,7 +6148,7 @@ msgstr "Offline-Zahlungen"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:487:12
 msgid "YES, accept payment by Cheque"
-msgstr "JA, Zahlung per Scheck akzeptieren"
+msgstr "Ja, Zahlung per Scheck akzeptieren"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:494:12
 msgid "Enter you account name and other required details/instructions to ticket buyers"
@@ -6254,7 +6255,7 @@ msgstr "Wählen Sie Lizenz"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:26:8
 msgid "Sessions, Microlocations, Session Types"
-msgstr "Sitzung, Nahzonenortungen, Sitzungsarten"
+msgstr "Sitzung, Mikrolokationen, Sitzungsarten"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:51:53
 msgid "Preview Text"
@@ -6266,7 +6267,7 @@ msgstr "Mikrostandorte oder virtuelle Online-Räume"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:128:42
 msgid "Enable Call For Speakers"
-msgstr "Aktivieren Sie Call For Speakers"
+msgstr "Call For Speakers für Einreichungen aktivieren"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:135:10
 #: app/templates/index.hbs:24:34 app/templates/pricing.hbs:97:24
@@ -6896,11 +6897,11 @@ msgstr "Call for Speakers wurde um geschlossen"
 
 #: app/templates/components/public/call-for-speakers.hbs:42:7
 msgid "You have not submitted any sessions."
-msgstr "Sie haben keine Sitzungen eingereicht."
+msgstr "Es wurden keine Sitzungen eingereicht."
 
 #: app/templates/components/public/call-for-speakers.hbs:44:7
 msgid "You need to login to submit and view sessions."
-msgstr "Sie müssen sich anmelden, um Sitzungen zu senden und anzuzeigen."
+msgstr "Bitte anmelden, um Vorschläge einzureichen und anzuzeigen."
 
 #: app/templates/components/public/call-for-speakers.hbs:50:6
 msgid "Add Speaker Details"
@@ -6977,7 +6978,7 @@ msgstr "Einträge pro Seite"
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:2
 msgid "Showing"
-msgstr "Zeigend"
+msgstr "Anzeige"
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:40
 msgid "of"
@@ -6994,7 +6995,7 @@ msgstr "Suche"
 
 #: app/templates/components/ui-table/cell/admin/sales/cell-action.hbs:1:20
 msgid "Resend invoice mail"
-msgstr "Rechnungs-E-Mail erneut senden"
+msgstr "Rechnungs-E-Mail erneut versenden"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:12:24
 #: app/templates/components/ui-table/cell/admin/users/cell-first-name.hbs:14:24
@@ -7093,7 +7094,7 @@ msgstr "Abgesagt"
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:12:2
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:10:2
 msgid "No Session Information Added Yet"
-msgstr "Es wurden noch keine Sitzungsinformationen hinzugefügt"
+msgstr "Noch keine Informationen hinzugefügt"
 
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:2:20
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:4:20
@@ -7379,7 +7380,7 @@ msgstr "Zeitplan veröffentlichen"
 
 #: app/templates/events/view/scheduler.hbs:13:28
 msgid "Unscheduled Sessions"
-msgstr "Außerplanmäßige Sitzungen"
+msgstr "Noch nicht geplante Sitzungen"
 
 #: app/templates/events/view/sessions.hbs:19:109
 #: app/templates/events/view/speakers.hbs:32:109
