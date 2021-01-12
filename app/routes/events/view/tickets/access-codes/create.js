@@ -12,7 +12,6 @@ export default class CreateRoute extends Route {
   async model() {
     return RSVP.hash({
       accessCode: this.store.createRecord('access-code', {
-        event         : this.modelFor('events.view'),
         tickets       : [],
         marketer      : this.authManager.currentUser,
         validFromDate : moment(),
@@ -22,7 +21,8 @@ export default class CreateRoute extends Route {
         minQuantity   : 1,
         maxQuantity   : 1
       }),
-      tickets: this.modelFor('events.view').query('tickets', {})
+      tickets : this.modelFor('events.view').query('tickets', {}),
+      event   : this.modelFor('events.view')
     });
   }
 

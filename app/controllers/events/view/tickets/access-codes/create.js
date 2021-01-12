@@ -6,6 +6,7 @@ import Controller from '@ember/controller';
 export default class CreateController extends Controller {
   @action
   save(accessCode) {
+    this.model.accessCode.event = this.model.event;
     accessCode.save()
       .then(() => {
         this.notify.success(this.l10n.t('Access code has been successfully created.'));

@@ -6,6 +6,7 @@ import Controller from '@ember/controller';
 export default class CreateController extends Controller {
   @action
   saveCode(discountCode) {
+    this.model.discountCode.event = this.model.event;
     discountCode.save()
       .then(() => {
         this.notify.success(this.l10n.t('Discount code has been successfully created.'));

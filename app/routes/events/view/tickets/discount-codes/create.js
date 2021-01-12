@@ -12,7 +12,6 @@ export default class CreateRoute extends Route {
     const event = this.modelFor('events.view');
     return {
       discountCode: this.store.createRecord('discount-code', {
-        event,
         tickets  : [],
         usedFor  : 'ticket',
         marketer : this.authManager.currentUser
