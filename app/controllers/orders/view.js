@@ -11,7 +11,7 @@ export default class ViewController extends Controller {
   @service
   printThis;
 
-  @computed('model.order', 'authManager.currentUser')
+  @computed('model.order.user', 'authManager.currentUser')
   get showTicketsButton() {
     return this.model.order.get('user.id') === this.authManager.currentUser.id || this.authManager.currentUser.isAdmin;
   }
@@ -38,8 +38,8 @@ export default class ViewController extends Controller {
         console.warn(e);
         const selector = '.print';
         const options = {
-          header: 'Order Invoice',
-          printDelay: 800
+          header     : 'Order Invoice',
+          printDelay : 800
         };
         this.printThis.print(selector, options);
       })
