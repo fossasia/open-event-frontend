@@ -12,7 +12,7 @@ export default ModelBase.extend({
 
   email                  : attr('string'),
   password               : attr('string'),
-  isVerified             : attr('boolean', { readOnly: true }),
+  isVerified             : attr('boolean'),
   isSuperAdmin           : attr('boolean', { readOnly: true }),
   isAdmin                : attr('boolean'),
   isUserOwner            : attr('boolean'),

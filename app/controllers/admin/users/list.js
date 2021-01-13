@@ -87,7 +87,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/users/cell-user-verify',
         actions         : {
-          toggleVerify  : this.toggleVerify.bind(this)
+          toggleVerify: this.toggleVerify.bind(this)
         }
       }
     ];
