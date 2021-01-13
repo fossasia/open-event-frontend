@@ -21,7 +21,6 @@
             </td>
           </tr>
         {{/if}}
-
         {{#if this.data.address}}
           <tr>
             <td>
@@ -33,19 +32,18 @@
             
           </tr>
         {{/if}}
-
-        <tr>
-          <td>
-             <strong>{{t 'Country'}}:</strong>
-          </td>
-          <td>
-             {{this.data.country}}
-          </td>
-        </tr>
-
+        {{#if this.data.country}}
+          <tr>
+            <td>
+              <strong>{{t 'Country'}}:</strong>
+            </td>
+            <td>
+              {{this.data.country}}
+            </td>
+          </tr>
+        {{/if}}
         {{#if this.data.state}}
           <tr>
-            
             <td>
               <strong>{{t 'State'}}:</strong>
             </td>
@@ -54,7 +52,6 @@
             </td>
           </tr>
         {{/if}}
-
         {{#if this.data.city}}
           <tr>
             <td>
@@ -65,7 +62,6 @@
             </td>
           </tr>
         {{/if}}
-
         {{#if this.data.zip}}
           <tr>
             <td>
@@ -76,36 +72,37 @@
             </td>
           </tr>
         {{/if}}
-
-        <tr>
-          <td>
-             <strong>{{t 'Tax Name'}}:</strong>
-          </td>
-          <td>
-             {{this.data.name}}
-          </td>
-        </tr>
-
-         <tr>
-          <td>
-             <strong>{{t 'Tax Id'}}:</strong>
-          </td>
-          <td>
-             {{this.data.taxId}}
-          </td>
-        </tr>
-
-         <tr>
-          <td>
-             <strong>{{t 'Tax Rate'}}:</strong>
-          </td>
-          <td>
-             {{this.data.rate}}%
-          </td>
-        </tr>
-
+        {{#if this.data.name}}
+          <tr>
+            <td>
+              <strong>{{t 'Tax Name'}}:</strong>
+            </td>
+            <td>
+              {{this.data.name}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if this.data.taxId}}
+          <tr>
+            <td>
+              <strong>{{t 'Tax Id'}}:</strong>
+            </td>
+            <td>
+              {{this.data.taxId}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if this.data.rate}}
+          <tr>
+            <td>
+              <strong>{{t 'Tax Rate'}}:</strong>
+            </td>
+            <td>
+              {{this.data.rate}}%
+            </td>
+          </tr>
+        {{/if}}
       </tbody>
     </table>
-          
  </div>
 </div>
