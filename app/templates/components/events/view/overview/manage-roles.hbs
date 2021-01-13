@@ -55,13 +55,12 @@
           {{t 'No records to show'}}
         </div>
       {{/each}}
-      {{/if}}
-      {{#if (eq this.roleType 'accepted')}}
+      {{else}}
       {{#each this.data.usersEventsRoles as |eventRole|}}
         <tr>
           <td>{{eventRole.user.email}}</td>
           <td>{{eventRole.role.titleName}}</td>
-          {{#if (and @editable  (not-eq eventRole.role.titleName 'Owner'))}}
+          {{#if (and @editable  (not-eq eventRole.role.name 'owner'))}}
             <td>
               <div class="ui horizontal compact basic buttons">
                   <UiPopup
