@@ -9,32 +9,103 @@
     </div>
   {{/if}}
   <div class="ui padded segment">
-     {{#if this.data.registeredCompany}}
-      <strong>{{t 'Company Name'}}:</strong> {{this.data.registeredCompany}}
-      <br>
-     {{/if}}
-     {{#if this.data.address}}
-      <strong>{{t 'Address'}}:</strong> {{this.data.address}}
-      <br>
-     {{/if}}
-     {{#if this.data.city}}
-      <strong>{{t 'City'}}:</strong> {{this.data.city}}
-      <br>
-     {{/if}}
-     {{#if this.data.zip}}
-      <strong>{{t 'Zip Code'}}:</strong> {{this.data.zip}}
-      <br>
-     {{/if}}
-     {{#if this.data.name}}
-      <strong>{{t 'Tax Name'}}:</strong> {{this.data.name}}
-      <br>
-     {{/if}}
-     {{#if this.data.rate}}
-      <strong>{{t 'Tax Rate'}}:</strong> {{this.data.rate}}%
-      <br>
-     {{/if}}
-     {{#if this.data.state}}
-      <strong>{{t 'State'}}:</strong> {{this.data.state}}
-     {{/if}}
+    <table class="ui very basic compact unstackable table company-info">
+      <tbody>
+        {{#if this.data.registeredCompany}}
+          <tr>
+            <td>
+              <strong>{{t 'Name'}}:</strong>
+            </td>
+            <td>
+              {{this.data.registeredCompany}}
+            </td>
+          </tr>
+        {{/if}}
+
+        {{#if this.data.address}}
+          <tr>
+            <td>
+              <strong>{{t 'Address'}}:</strong>
+            </td>
+            <td>
+              {{this.data.address}}
+            </td>
+            
+          </tr>
+        {{/if}}
+
+        <tr>
+          <td>
+             <strong>{{t 'Country'}}:</strong>
+          </td>
+          <td>
+             {{this.data.country}}
+          </td>
+        </tr>
+
+        {{#if this.data.state}}
+          <tr>
+            
+            <td>
+              <strong>{{t 'State'}}:</strong>
+            </td>
+            <td>
+              {{this.data.state}}
+            </td>
+          </tr>
+        {{/if}}
+
+        {{#if this.data.city}}
+          <tr>
+            <td>
+              <strong>{{t 'City'}}:</strong>
+            </td>
+            <td>
+              {{this.data.city}}
+            </td>
+          </tr>
+        {{/if}}
+
+        {{#if this.data.zip}}
+          <tr>
+            <td>
+              <strong>{{t 'ZIP Code'}}:</strong>
+            </td>
+            <td>
+              {{this.data.zip}}
+            </td>
+          </tr>
+        {{/if}}
+
+        <tr>
+          <td>
+             <strong>{{t 'Tax Name'}}:</strong>
+          </td>
+          <td>
+             {{this.data.name}}
+          </td>
+        </tr>
+
+         <tr>
+          <td>
+             <strong>{{t 'Tax Id'}}:</strong>
+          </td>
+          <td>
+             {{this.data.taxId}}
+          </td>
+        </tr>
+
+         <tr>
+          <td>
+             <strong>{{t 'Tax Rate'}}:</strong>
+          </td>
+          <td>
+             {{this.data.rate}}%
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+          
  </div>
 </div>
