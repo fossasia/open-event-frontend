@@ -34,10 +34,11 @@ msgstr ""
 #: app/components/widgets/forms/image-upload.js:44:26
 #: app/controllers/admin/content/events.js:77:26
 #: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/admin/events/list.js:139:26
+#: app/controllers/admin/events/list.js:140:27
 #: app/controllers/admin/events/list.js:164:24
-#: app/controllers/admin/events/list.js:186:24
-#: app/controllers/admin/events/list.js:207:24
+#: app/controllers/admin/events/list.js:187:24
+#: app/controllers/admin/events/list.js:210:24
+#: app/controllers/admin/events/list.js:232:24
 #: app/controllers/admin/sessions/list.js:77:24
 #: app/controllers/admin/users/list.js:103:24
 #: app/controllers/admin/users/list.js:134:24
@@ -634,7 +635,7 @@ msgid "Video Source URL"
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:59:8
-#: app/components/public/stream/stream-info.hbs:10:14
+#: app/components/public/stream/stream-info.hbs:9:12
 #: app/controllers/events/view/videoroom/list.js:37:21
 msgid "Room Password"
 msgstr ""
@@ -658,7 +659,7 @@ msgstr ""
 #: app/components/forms/events/view/videoroom-form.hbs:84:87
 #: app/components/public/side-menu-outer.js:22:13
 #: app/components/public/stream/side-panel.hbs:29:10
-#: app/controllers/admin/events/list.js:73:25
+#: app/controllers/admin/events/list.js:72:25
 #: app/controllers/admin/sessions/list.js:26:24
 #: app/controllers/events/list.js:54:24
 #: app/controllers/events/view/sessions/list.js:44:24
@@ -668,7 +669,7 @@ msgstr ""
 #: app/templates/components/public/side-menu.hbs:12:91
 #: app/templates/components/public/side-menu.hbs:26:91
 #: app/templates/components/public/speaker-list.hbs:1:22
-#: app/templates/events/view.hbs:38:10
+#: app/templates/events/view.hbs:32:10
 msgid "Speakers"
 msgstr ""
 
@@ -689,7 +690,7 @@ msgstr ""
 #: app/components/forms/events/view/videoroom-form.hbs:90:68
 #: app/components/forms/wizard/custom-form-input.hbs:20:104
 #: app/components/forms/wizard/wizard-footer.hbs:30:8
-#: app/templates/admin/messages.hbs:5:100
+#: app/templates/admin/messages.hbs:22:98
 #: app/templates/admin/permissions/event-roles.hbs:39:78
 #: app/templates/admin/permissions/system-roles.hbs:109:8
 #: app/templates/components/account/contact-info-section.hbs:10:47
@@ -702,11 +703,36 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:457:4
 #: app/templates/components/forms/admin/settings/system-form.hbs:78:4
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:145:4
-#: app/templates/components/forms/events/view/create-access-code.hbs:140:68
+#: app/templates/components/forms/events/view/create-access-code.hbs:95:68
 #: app/templates/components/forms/events/view/create-discount-code.hbs:139:4
 #: app/templates/components/modals/edit-user-modal.hbs:21:4
 #: app/templates/components/modals/room-info-modal.hbs:14:63
 msgid "Save"
+msgstr ""
+
+#: app/components/forms/events/view/videoroom-form.hbs:92:8
+#: app/components/forms/wizard/wizard-footer.hbs:5:8
+#: app/components/modals/add-room-modal.hbs:22:4
+#: app/components/modals/session-notify-modal.hbs:62:4
+#: app/templates/components/forms/admin/content/pages-form.hbs:50:55
+#: app/templates/components/modals/add-system-role-modal.hbs:36:4
+#: app/templates/components/modals/add-user-role-modal.hbs:37:4
+#: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:21:4
+#: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:16:4
+#: app/templates/components/modals/admin/content/new-event-type-modal.hbs:16:4
+#: app/templates/components/modals/change-image-modal.hbs:45:63
+#: app/templates/components/modals/confirm-event-transfer-modal.hbs:22:4
+#: app/templates/components/modals/confirm-user-delete-modal.hbs:14:4
+#: app/templates/components/modals/event-delete-modal.hbs:19:4
+#: app/templates/components/modals/event-transfer-modal.hbs:19:4
+#: app/templates/components/modals/paytm-otp.hbs:15:4
+#: app/templates/components/modals/paytm-payment-options.hbs:27:4
+#: app/templates/components/modals/proposal-withdraw-modal.hbs:16:4
+#: app/templates/components/modals/publish-unpublish-modal.hbs:26:3
+#: app/templates/components/modals/room-info-modal.hbs:15:57
+#: app/templates/components/modals/tax-info-modal.hbs:78:4
+#: app/templates/components/modals/user-delete-modal.hbs:19:4
+msgid "Cancel"
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.js:51:23
@@ -1164,7 +1190,7 @@ msgid "Add"
 msgstr ""
 
 #: app/components/forms/wizard/custom-forms/table.hbs:13:10
-#: app/controllers/admin/messages/list.js:45:24
+#: app/controllers/admin/messages.js:42:24
 #: app/routes/events/view/settings/options.js:7:11
 #: app/templates/components/events/view/overview/manage-roles.hbs:23:14
 #: app/templates/components/forms/wizard/basic-details-step.hbs:227:23
@@ -1297,30 +1323,6 @@ msgstr ""
 
 #: app/components/forms/wizard/sponsors-step.js:45:26
 msgid "Please fill the required fields for existing sponsor items"
-msgstr ""
-
-#: app/components/forms/wizard/wizard-footer.hbs:5:8
-#: app/components/modals/add-room-modal.hbs:22:4
-#: app/components/modals/session-notify-modal.hbs:62:4
-#: app/templates/components/forms/admin/content/pages-form.hbs:50:55
-#: app/templates/components/modals/add-system-role-modal.hbs:36:4
-#: app/templates/components/modals/add-user-role-modal.hbs:37:4
-#: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:21:4
-#: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:16:4
-#: app/templates/components/modals/admin/content/new-event-type-modal.hbs:16:4
-#: app/templates/components/modals/change-image-modal.hbs:45:63
-#: app/templates/components/modals/confirm-event-transfer-modal.hbs:22:4
-#: app/templates/components/modals/confirm-user-delete-modal.hbs:14:4
-#: app/templates/components/modals/event-delete-modal.hbs:19:4
-#: app/templates/components/modals/event-transfer-modal.hbs:19:4
-#: app/templates/components/modals/paytm-otp.hbs:15:4
-#: app/templates/components/modals/paytm-payment-options.hbs:27:4
-#: app/templates/components/modals/proposal-withdraw-modal.hbs:16:4
-#: app/templates/components/modals/publish-unpublish-modal.hbs:26:3
-#: app/templates/components/modals/room-info-modal.hbs:15:57
-#: app/templates/components/modals/tax-info-modal.hbs:78:4
-#: app/templates/components/modals/user-delete-modal.hbs:19:4
-msgid "Cancel"
 msgstr ""
 
 #: app/components/forms/wizard/wizard-footer.hbs:9:8
@@ -1540,7 +1542,7 @@ msgid "Watch Video"
 msgstr ""
 
 #: app/components/public/session-item.hbs:30:16
-#: app/components/public/stream/join-video.hbs:7:2
+#: app/components/public/stream/join-video.hbs:10:8
 #: app/controllers/events/view/videoroom/list.js:29:26
 msgid "Join Video"
 msgstr ""
@@ -1552,7 +1554,7 @@ msgstr ""
 
 #: app/components/public/session-item.hbs:100:16
 #: app/templates/components/events/view/export/download-zip.hbs:16:39
-#: app/templates/events/view.hbs:44:10
+#: app/templates/events/view.hbs:41:10
 msgid "Video"
 msgstr ""
 
@@ -1593,11 +1595,24 @@ msgstr ""
 msgid "Select section"
 msgstr ""
 
-#: app/components/public/stream/stream-info.hbs:6:190
+#: app/components/public/stream/join-video.hbs:16:8
+msgid "Join Event"
+msgstr ""
+
+#: app/components/public/stream/join-video.ts:39:26
+#: app/templates/public.hbs:133:4
+msgid "You need to login or get a ticket for this event before you can join it online."
+msgstr ""
+
+#: app/components/public/stream/join-video.ts:39:153
+msgid "OK"
+msgstr ""
+
+#: app/components/public/stream/stream-info.hbs:4:186
 msgid "Join Video Channel"
 msgstr ""
 
-#: app/components/public/stream/stream-info.hbs:11:38
+#: app/components/public/stream/stream-info.hbs:10:36
 msgid "Copied to clipboard"
 msgstr ""
 
@@ -1711,17 +1726,17 @@ msgstr ""
 msgid "Translations Zip generated successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:34:27
+#: app/controllers/admin/events/list.js:33:27
 #: app/controllers/admin/sessions/list.js:38:26
 msgid "Starts At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:43:27
+#: app/controllers/admin/events/list.js:42:27
 #: app/controllers/admin/sessions/list.js:45:26
 msgid "Ends At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:52:27
+#: app/controllers/admin/events/list.js:51:27
 #: app/controllers/admin/sessions/list.js:19:26
 #: app/controllers/events/view/sessions/list.js:15:26
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
@@ -1731,12 +1746,12 @@ msgstr ""
 msgid "State"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:59:27
+#: app/controllers/admin/events/list.js:58:27
 #: app/controllers/events/list.js:35:26
 msgid "Roles"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:66:25
+#: app/controllers/admin/events/list.js:65:25
 #: app/controllers/events/list.js:49:24 app/routes/admin/sessions.js:8:11
 #: app/routes/events/view/sessions.js:7:11 app/routes/public/sessions.js:26:11
 #: app/templates/admin.hbs:14:8 app/templates/admin/index.hbs:13:10
@@ -1748,20 +1763,24 @@ msgstr ""
 msgid "Sessions"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:79:25
+#: app/controllers/admin/events/list.js:78:25
 #: app/controllers/events/list.js:59:24
 msgid "Public URL"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:85:27
-msgid "Featured Event"
+#: app/controllers/admin/events/list.js:84:27
+msgid "Featured"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:97:27
-msgid "Promoted Event"
+#: app/controllers/admin/events/list.js:96:27
+msgid "Promoted"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:127:26
+#: app/controllers/admin/events/list.js:108:27
+msgid "Not on FrontPage"
+msgstr ""
+
+#: app/controllers/admin/events/list.js:128:27
 #: app/controllers/admin/users/view/events/list.js:79:26
 #: app/controllers/events/list.js:84:26
 #: app/controllers/events/view/settings/options.js:17:28
@@ -1773,40 +1792,41 @@ msgstr ""
 msgid "Event has been restored successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:179:26
+#: app/controllers/admin/events/list.js:180:26
+#: app/controllers/admin/events/list.js:203:26
 msgid "Event details modified successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:201:45
+#: app/controllers/admin/events/list.js:226:45
 msgid "Event promoted successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:201:90
+#: app/controllers/admin/events/list.js:226:90
 msgid "Event unpromoted successfully"
 msgstr ""
 
-#: app/controllers/admin/messages.js:12:26
-msgid "Changes have been saved successfully"
-msgstr ""
-
-#: app/controllers/admin/messages/list.js:14:24
+#: app/controllers/admin/messages.js:13:18
 msgid "Recipients"
 msgstr ""
 
-#: app/controllers/admin/messages/list.js:20:18
+#: app/controllers/admin/messages.js:17:18
 msgid "Trigger"
 msgstr ""
 
-#: app/controllers/admin/messages/list.js:24:18
+#: app/controllers/admin/messages.js:21:18
 msgid "Email Message"
 msgstr ""
 
-#: app/controllers/admin/messages/list.js:35:24
+#: app/controllers/admin/messages.js:32:24
 msgid "Notification Message"
 msgstr ""
 
-#: app/controllers/admin/messages/list.js:51:24
+#: app/controllers/admin/messages.js:48:24
 msgid "Time/Date Sent Out"
+msgstr ""
+
+#: app/controllers/admin/messages.js:65:24
+msgid "Changes have been saved successfully"
 msgstr ""
 
 #: app/controllers/admin/permissions/event-roles.js:20:28
@@ -1855,7 +1875,7 @@ msgstr ""
 #: app/templates/components/event-invoice/billing-info.hbs:30:16
 #: app/templates/components/event-invoice/event-info.hbs:17:12
 #: app/templates/components/orders/event-info.hbs:29:12
-#: app/templates/public.hbs:14:42
+#: app/templates/public.hbs:16:42
 msgid "To"
 msgstr ""
 
@@ -1986,7 +2006,6 @@ msgstr ""
 
 #: app/controllers/admin/sales/invoices.js:56:26
 #: app/controllers/admin/users/list.js:42:24
-#: app/templates/components/forms/events/view/create-access-code.hbs:19:28
 msgid "Status"
 msgstr ""
 
@@ -2138,7 +2157,6 @@ msgstr ""
 #: app/controllers/events/view/sessions/create.js:47:30
 #: app/controllers/events/view/sessions/edit.js:23:34
 #: app/controllers/events/view/sessions/edit.js:48:30
-#: app/controllers/events/view/speakers/create.js:29:26
 #: app/controllers/public/cfs/new-session.js:13:26
 msgid "Your session has been saved"
 msgstr ""
@@ -2201,6 +2219,10 @@ msgstr ""
 
 #: app/controllers/events/view/settings/options.js:73:26
 msgid "Owner Role Invite sent successfully."
+msgstr ""
+
+#: app/controllers/events/view/speakers/create.js:30:26
+msgid "Your speaker has been saved"
 msgstr ""
 
 #: app/controllers/events/view/speakers/edit.js:18:28
@@ -2610,7 +2632,7 @@ msgstr ""
 msgid "Deleted"
 msgstr ""
 
-#: app/routes/admin/messages.js:7:11 app/templates/admin.hbs:23:8
+#: app/routes/admin/messages.js:6:11 app/templates/admin.hbs:23:8
 #: app/templates/admin/index.hbs:93:10
 msgid "Messages"
 msgstr ""
@@ -2747,7 +2769,6 @@ msgstr ""
 #: app/routes/admin/users/list.js:11:15
 #: app/routes/events/view/tickets/access-codes/list.js:9:15
 #: app/routes/events/view/tickets/discount-codes/list.js:9:15
-#: app/templates/components/forms/events/view/create-access-code.hbs:24:15
 #: app/templates/components/ui-table/cell/admin/users/cell-status.hbs:2:30
 #: app/templates/components/ui-table/cell/cell-label.hbs:6:41
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-status.hbs:6:41
@@ -2759,7 +2780,6 @@ msgstr ""
 #: app/routes/admin/users/list.js:15:15
 #: app/routes/events/view/tickets/access-codes/list.js:11:15
 #: app/routes/events/view/tickets/discount-codes/list.js:11:15
-#: app/templates/components/forms/events/view/create-access-code.hbs:31:15
 #: app/templates/components/ui-table/cell/admin/users/cell-status.hbs:4:31
 #: app/templates/components/ui-table/cell/cell-label.hbs:8:42
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-status.hbs:8:42
@@ -2797,7 +2817,7 @@ msgstr ""
 
 #: app/routes/events/view/scheduler.js:6:11
 #: app/routes/events/view/team/permissions.ts:105:19
-#: app/templates/events/view.hbs:32:10 app/templates/pricing.hbs:134:24
+#: app/templates/events/view.hbs:38:10 app/templates/pricing.hbs:134:24
 msgid "Scheduler"
 msgstr ""
 
@@ -2814,7 +2834,7 @@ msgstr ""
 
 #: app/routes/events/view/team.ts:7:11
 #: app/routes/events/view/team/permissions.ts:37:19
-#: app/templates/events/view.hbs:41:10 app/templates/events/view/team.hbs:6:10
+#: app/templates/events/view.hbs:44:10 app/templates/events/view/team.hbs:6:10
 msgid "Team"
 msgstr ""
 
@@ -3835,7 +3855,7 @@ msgstr ""
 msgid "Repeat Password"
 msgstr ""
 
-#: app/templates/components/country-dropdown.hbs:14:30
+#: app/templates/components/country-dropdown.hbs:15:30
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:58:23
 #: app/templates/components/forms/wizard/basic-details-step.hbs:321:21
 #: app/templates/components/widgets/forms/billing-info.hbs:43:26
@@ -4087,6 +4107,7 @@ msgstr ""
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:40
 #: app/templates/components/modals/event-share-modal.hbs:27:17
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-url.hbs:4:34
+#: app/templates/components/url-box.hbs:3:32
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -5461,54 +5482,32 @@ msgstr ""
 msgid "Number of Access Tickets"
 msgstr ""
 
-#: app/templates/components/forms/events/view/create-access-code.hbs:39:30
-msgid "Select Tickets applied to the access code"
+#: app/templates/components/forms/events/view/create-access-code.hbs:19:30
+msgid "Select Ticket(s) applied to the access code"
 msgstr ""
 
-#: app/templates/components/forms/events/view/create-access-code.hbs:42:15
+#: app/templates/components/forms/events/view/create-access-code.hbs:22:15
 #: app/templates/components/forms/events/view/create-discount-code.hbs:60:15
 msgid "Select all Ticket types"
 msgstr ""
 
-#: app/templates/components/forms/events/view/create-access-code.hbs:50:13
+#: app/templates/components/forms/events/view/create-access-code.hbs:30:13
 msgid "No hidden tickets available for this event to select from"
 msgstr ""
 
-#: app/templates/components/forms/events/view/create-access-code.hbs:66:15
-msgid "Show more options"
+#: app/templates/components/forms/events/view/create-access-code.hbs:44:15
+msgid "Access valid from"
 msgstr ""
 
-#: app/templates/components/forms/events/view/create-access-code.hbs:71:6
-msgid "Set the min and max quantity allowed to purchase per order (Optional)"
+#: app/templates/components/forms/events/view/create-access-code.hbs:61:15
+msgid "Access expires on"
 msgstr ""
 
-#: app/templates/components/forms/events/view/create-access-code.hbs:74:17
-#: app/templates/components/widgets/forms/ticket-input.hbs:27:24
-msgid "Min"
-msgstr ""
-
-#: app/templates/components/forms/events/view/create-access-code.hbs:85:17
-#: app/templates/components/widgets/forms/ticket-input.hbs:35:24
-msgid "Max"
-msgstr ""
-
-#: app/templates/components/forms/events/view/create-access-code.hbs:94:6
-msgid "Validity Period (Optional)"
-msgstr ""
-
-#: app/templates/components/forms/events/view/create-access-code.hbs:97:17
-msgid "Valid from"
-msgstr ""
-
-#: app/templates/components/forms/events/view/create-access-code.hbs:109:17
-msgid "Expires on"
-msgstr ""
-
-#: app/templates/components/forms/events/view/create-access-code.hbs:123:13
+#: app/templates/components/forms/events/view/create-access-code.hbs:78:13
 msgid "Access Link"
 msgstr ""
 
-#: app/templates/components/forms/events/view/create-access-code.hbs:131:10
+#: app/templates/components/forms/events/view/create-access-code.hbs:86:10
 #: app/templates/components/forms/events/view/create-discount-code.hbs:129:10
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:171:14
 #: app/templates/components/modals/event-share-modal.hbs:33:10
@@ -6229,7 +6228,7 @@ msgstr ""
 msgid "Preview Text"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:60:30
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:60:13
 msgid "Microlocations or Virtual Online Rooms"
 msgstr ""
 
@@ -6427,13 +6426,13 @@ msgstr ""
 msgid "Are you sure ?"
 msgstr ""
 
-#: app/templates/components/modals/confirm-modal.hbs:11:69
+#: app/templates/components/modals/confirm-modal.hbs:12:71
 #: app/templates/components/modals/edit-user-modal.hbs:10:40
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
 msgid "No"
 msgstr ""
 
-#: app/templates/components/modals/confirm-modal.hbs:14:75
+#: app/templates/components/modals/confirm-modal.hbs:16:75
 #: app/templates/components/modals/edit-user-modal.hbs:11:40
 #: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
@@ -7172,8 +7171,8 @@ msgid "Auto-Generated"
 msgstr ""
 
 #: app/templates/components/welcome-header.hbs:2:30
-msgid "The simplest way to create events."
-msgstr "Cara termudah untuk membuat acara."
+msgid "The open source event solution for virtual and in-person events."
+msgstr ""
 
 #: app/templates/components/widgets/forms/billing-info.hbs:29:21
 msgid "State/Province"
@@ -7260,6 +7259,14 @@ msgstr ""
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:17:84
 msgid "Insert Link"
+msgstr ""
+
+#: app/templates/components/widgets/forms/ticket-input.hbs:27:24
+msgid "Min"
+msgstr ""
+
+#: app/templates/components/widgets/forms/ticket-input.hbs:35:24
+msgid "Max"
 msgstr ""
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:43:10
@@ -7412,8 +7419,11 @@ msgid "Add order"
 msgstr ""
 
 #: app/templates/events/view/tickets/access-codes.hbs:11:10
-#: app/templates/events/view/tickets/access-codes/create.hbs:3:33
 msgid "Create an access code"
+msgstr ""
+
+#: app/templates/events/view/tickets/access-codes/create.hbs:3:33
+msgid "Create a New Access code"
 msgstr ""
 
 #: app/templates/events/view/tickets/access-codes/edit.hbs:3:33
@@ -7856,10 +7866,6 @@ msgstr ""
 msgid "Login or Buy Tickets"
 msgstr ""
 
-#: app/templates/public.hbs:133:4
-msgid "You need to login or get a ticket for this event before you can join it online."
-msgstr ""
-
 #: app/templates/public/cfs/new-session.hbs:4:6
 msgid "Session Details"
 msgstr ""
@@ -7950,3 +7956,6 @@ msgstr "Bulan ini"
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
 msgstr ""
+
+#~ msgid "The simplest way to create events."
+#~ msgstr "Cara termudah untuk membuat acara."
