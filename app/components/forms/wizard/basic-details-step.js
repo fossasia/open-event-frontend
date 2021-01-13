@@ -145,7 +145,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       return !($('[name=start_date]')[0].value === $('[name=end_date]')[0].value && moment($('[name=start_time]')[0].value, 'HH:mm').isSameOrAfter(moment($('[name=end_time]')[0].value, 'HH:mm')));
     };
     $.fn.form.settings.rules.checkDateDifference = () => {
-      return moment($('[name=end_date]')[0].value,"MM-DD-YYYY").diff(moment($('[name=start_date]')[0].value,"MM-DD-YYYY"),'days')<=20;
+      return moment($('[name=end_date]')[0].value,"MM-DD-YYYY").diff(moment($('[name=start_date]')[0].value,"MM-DD-YYYY"),'days') <= 20;
     };
 
     const validationRules = {
