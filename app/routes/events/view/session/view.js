@@ -18,6 +18,6 @@ export default class ViewRoute extends Route.extend(AuthenticatedRouteMixin) {
         'page[size]' : 0,
         sort         : 'id'
       })
-    }
+    };
   }
 }
