@@ -1,0 +1,16 @@
+<div class="ui action input" style="width: 100%; height: 36px">
+  <input class="truncate" style="flex: 1 0 !important" type="text" value={{@url}} placeholder={{@url}} readonly>
+  <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
+    <CopyButton @clipboardText={{@url}} @class="ui grey icon button rounded-none m-0">
+      <i class="copy icon"></i>
+    </CopyButton>
+  </UiPopup>
+  <a 
+    id="public_url"
+    href="{{@url}}" 
+    target="_blank" rel="noopener">
+    <div  class="ui blue icon button ml-auto rounded-l-none m-0">
+      <i class="share icon" ></i>
+    </div>
+  </a>
+</div>
