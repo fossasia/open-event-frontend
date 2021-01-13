@@ -78,6 +78,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-simple-date'
+      },
+      {
+        name            : this.l10n.t('Verify'),
+        valuePath       : 'isVerified',
+        extraValuePaths : ['id'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/admin/users/cell-user-verify',
+        actions         : {
+          toggleVerify  : this.toggleVerify.bind(this)
+        }
       }
     ];
   }
@@ -85,6 +96,29 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   moveToUserDetails(id) {
     this.transitionToRoute('admin.users.view', id);
+  }
+
+  @action
+  async toggleVerify(user_id) {
+    this.set('isLoading', true);
+    try {
+      const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
+      user.toggleProperty('isVerified');
+      await user.save();
+      this.notify.success(this.l10n.t('User verifiation state changed successfully.'),
+        {
+          id: 'user_verf_succ'
+        });
+
+    } catch (e) {
+      console.error('Error while verifying user', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_verf_error'
+        });
+    }
+
+    this.set('isLoading', false);
   }
 
   @action
