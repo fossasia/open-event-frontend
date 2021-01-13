@@ -4,44 +4,44 @@ import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export const SPEAKER_FORM_FIELDS = {
-  name                : 'Name',
-  email               : 'Email',
-  position            : 'Position',
-  organisation        : 'Organisation',
-  address             : 'Address',
-  city                : 'City',
-  country             : 'Country',
-  mobile              : 'Mobile',
-  gender              : 'Gender',
-  shortBiography      : 'Short Biography',
-  longBiography       : 'Long Biography',
-  speakingExperience  : 'Speaking Experience',
-  photoUrl            : 'Photo',
-  website             : 'Website',
+  name                : this.l10n.t('Name'),
+  email               : this.l10n.t('Email'),
+  position            : this.l10n.t('Position'),
+  organisation        : this.l10n.t('Organisation'),
+  address             : this.l10n.t('Address'),
+  city                : this.l10n.t('City'),
+  country             : this.l10n.t('Country'),
+  mobile              : this.l10n.t('Mobile'),
+  gender              : this.l10n.t('Gender'),
+  shortBiography      : this.l10n.t('Short Biography'),
+  longBiography       : this.l10n.t('Long Biography'),
+  speakingExperience  : this.l10n.t('Speaking Experience'),
+  photoUrl            : this.l10n.t('Photo'),
+  website             : this.l10n.t('Website'),
   github              : 'GitHub',
   facebook            : 'Facebook',
   twitter             : 'Twitter',
   instagram           : 'Instagram',
   linkedin            : 'Linkedin',
-  heardFrom           : 'Heard From',
-  sponsorshipRequired : 'Sponsorship Required'
+  heardFrom           : this.l10n.t('Heard From'),
+  sponsorshipRequired : this.l10n.t('Sponsorship Required')
 };
 
 export const SPEAKER_FORM_ORDER = Object.keys(SPEAKER_FORM_FIELDS);
 
 export const SESSION_FORM_FIELDS = {
-  title         : 'Title',
-  subtitle      : 'Subtitle',
-  track         : 'Track',
-  sessionType   : 'Session Type',
-  shortAbstract : 'Short Abstract',
-  longAbstract  : 'Long Abstract',
-  language      : 'Language',
-  level         : 'Level',
-  slidesUrl     : 'Slides',
-  videoUrl      : 'Video',
-  audioUrl      : 'Audio',
-  comments      : 'Comments'
+  title         : this.l10n.t('Title'),
+  subtitle      : this.l10n.t('Subtitle'),
+  track         : this.l10n.t('Track'),
+  sessionType   : this.l10n.t('Session Type'),
+  shortAbstract : this.l10n.t('Short Abstract'),
+  longAbstract  : this.l10n.t('Long Abstract'),
+  language      : this.l10n.t('Language'),
+  level         : this.l10n.t('Level'),
+  slidesUrl     : this.l10n.t('Slides'),
+  videoUrl      : this.l10n.t('Video'),
+  audioUrl      : this.l10n.t('Audio'),
+  comments      : this.l10n.t('Comments')
 };
 
 export const SESSION_FORM_ORDER = Object.keys(SESSION_FORM_FIELDS);
