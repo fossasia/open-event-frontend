@@ -1,15 +1,23 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 @classic
-export default class ViewRoute extends Route {
+export default class ViewRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
-    return model.title;
+    return model.session.title;
   }
 
-  model(params) {
-    return this.store.findRecord('session', params.session_id, {
-      include: 'session-type,speakers,track,event'
-    });
+  async model(params) {
+    const eventDetails = this.modelFor('events.view');
+    return {
+      session: this.store.findRecord('session', params.session_id, {
+        include: 'session-type,speakers,track,event'
+      }),
+      form: await eventDetails.query('customForms', {
+        'page[size]' : 0,
+        sort         : 'id'
+      })
+    }
   }
 }

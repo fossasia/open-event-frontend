@@ -1,0 +1,38 @@
+<div class="ui grid">
+    {{#each @fields as |field|}}
+        {{#if field.isIncluded}}
+            {{#if (or (get @session field.fieldIdentifier) (get @session.complexFieldValues field.fieldIdentifier))}}
+                <label class="{{if field.isRequired 'required'}} weight-600 column three wide" for="name">{{field.name}}</label>
+                <div class="column thirteen wide">
+                    {{#if field.isLongText}}
+                        {{sanitize (get @session field.fieldIdentifier)}}
+                    {{else if (eq field.fieldIdentifier 'language')}}
+                        {{@session.language}}
+                    {{else if (eq field.fieldIdentifier 'track')}}
+                        {{@session.track.name}}
+                    {{else if (eq field.fieldIdentifier 'sessionType')}}
+                        {{@session.sessionType.name}}
+                    {{else if (or (eq field.fieldIdentifier 'audioUrl') (eq field.fieldIdentifier 'videoUrl') (eq field.fieldIdentifier 'slidesUrl'))}}
+                        <a class="truncate" href={{get @session field.fieldIdentifier}} target="_blank" rel="noopener">{{get @session field.fieldIdentifier}}</a>
+                    {{else if (get @session.complexFieldValues field.fieldIdentifier)}}
+                        {{get @session.complexFieldValues field.fieldIdentifier}}
+                    {{else}}
+                        {{get @session field.fieldIdentifier}}
+                    {{/if}}
+                </div>
+            {{/if}}
+        {{/if}}
+    {{/each}}
+    {{#if @session.microlocation}}
+        <div class="weight-600 column three wide">{{t 'Microlocation'}}</div>
+        <div class="column thirteen wide">{{@session.microlocation.name}}</div>
+    {{/if}}
+    {{#if @session.averageRating}}
+        <div class="weight-600 column three wide">{{t 'Average Rating'}}</div>
+        <div class="column thirteen wide">{{@session.averageRating}}</div>
+    {{/if}}
+    {{#if @session.isLocked}}
+        <div class="weight-600 column three wide">{{t 'Locked'}}</div>
+        <div class="column thirteen wide">{{@session.isLocked}}</div>
+    {{/if}}
+</div>
