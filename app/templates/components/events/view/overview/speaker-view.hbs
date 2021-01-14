@@ -1,6 +1,6 @@
 <div class="ui grid">
     {{#each @fields as |field|}}
-        {{#if (and field.isIncluded (not-eq field.fieldIdentifier 'photoUrl'))}}
+        {{#if (and field.isIncluded (not-eq field.type 'image'))}}
             <div class="column four wide">
                 <div class="d-flex space-between">
                     <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{field.name}}</label> 
