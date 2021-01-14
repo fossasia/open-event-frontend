@@ -9,94 +9,93 @@
   <div class="ui padded segment">
     <table class="ui very basic compact unstackable table company-info">
       <tbody>
-        {{#if this.data.registeredCompany}}
+        {{#if @tax.registeredCompany}}
           <tr>
             <td>
               <strong>{{t 'Name'}}:</strong>
             </td>
             <td>
-              {{this.data.registeredCompany}}
+              {{@tax.registeredCompany}}
             </td>
           </tr>
         {{/if}}
-        {{#if this.data.address}}
+        {{#if @tax.address}}
           <tr>
             <td>
               <strong>{{t 'Address'}}:</strong>
             </td>
             <td>
-              {{this.data.address}}
+              {{@tax.address}}
             </td>
-            
           </tr>
         {{/if}}
-        {{#if this.data.country}}
+        {{#if @tax.country}}
           <tr>
             <td>
               <strong>{{t 'Country'}}:</strong>
             </td>
             <td>
-              {{this.data.country}}
+              {{@tax.country}}
             </td>
           </tr>
         {{/if}}
-        {{#if this.data.state}}
+        {{#if @tax.state}}
           <tr>
             <td>
               <strong>{{t 'State'}}:</strong>
             </td>
             <td>
-              {{this.data.state}}
+              {{@tax.state}}
             </td>
           </tr>
         {{/if}}
-        {{#if this.data.city}}
+        {{#if @tax.city}}
           <tr>
             <td>
               <strong>{{t 'City'}}:</strong>
             </td>
             <td>
-              {{this.data.city}}
+              {{@tax.city}}
             </td>
           </tr>
         {{/if}}
-        {{#if this.data.zip}}
+        {{#if @tax.zip}}
           <tr>
             <td>
               <strong>{{t 'ZIP Code'}}:</strong>
             </td>
             <td>
-              {{this.data.zip}}
+              {{@tax.zip}}
             </td>
           </tr>
         {{/if}}
-        {{#if this.data.name}}
+        {{#if @tax.name}}
           <tr>
             <td>
               <strong>{{t 'Tax Name'}}:</strong>
             </td>
             <td>
-              {{this.data.name}}
+              {{@tax.name}}
             </td>
           </tr>
         {{/if}}
-        {{#if this.data.taxId}}
+        {{#if @tax.taxId}}
           <tr>
             <td>
               <strong>{{t 'Tax ID'}}:</strong>
             </td>
             <td>
-              {{this.data.taxId}}
+              {{@tax.taxId}}
             </td>
           </tr>
         {{/if}}
-        {{#if this.data.rate}}
+        {{#if @tax.rate}}
           <tr>
             <td>
               <strong>{{t 'Tax Rate'}}:</strong>
             </td>
             <td>
-              {{this.data.rate}}%
+              {{@tax.rate}}%
             </td>
           </tr>
         {{/if}}
