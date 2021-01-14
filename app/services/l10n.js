@@ -41,13 +41,19 @@ export default class L10nService extends L10n {
   switchLanguage(locale) {
     this.setLocale(locale);
     this.cookies.write(this.localStorageKey, locale, { path: '/' });
-    if (!this.fastboot.isFastBoot) {
-      location.reload();
-    }
+  }
+
+  detectQueryLang() {
+    const params = new URLSearchParams(location.search);
+    const locale = params.get('lang');
+    if (!locale || !Object.keys(this.availableLocales).includes(locale))
+      return;
+    this.switchLanguage(locale);
   }
 
   init() {
     super.init(...arguments);
+    this.detectQueryLang();
     const currentLocale = this.cookies.read(this.localStorageKey);
     const detectedLocale = this.detectLocale();
 
