@@ -41,7 +41,7 @@ export default class L10nService extends L10n {
   switchLanguage(locale, skipRefresh) {
     this.setLocale(locale);
     this.cookies.write(this.localStorageKey, locale, { path: '/' });
-    if (!this.fastboot.isFastBoot && skipRefresh) {
+    if (!this.fastboot.isFastBoot && !skipRefresh) {
       location.reload();
     }
   }
