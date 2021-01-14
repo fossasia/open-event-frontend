@@ -46,8 +46,7 @@ export default class L10nService extends L10n {
   detectQueryLang() {
     const params = new URLSearchParams(location.search);
     const locale = params.get('lang');
-    if (!locale || !Object.keys(this.availableLocales).includes(locale))
-      return;
+    if (!locale || !Object.keys(this.availableLocales).includes(locale)) {return}
     this.switchLanguage(locale);
   }
 
