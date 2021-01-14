@@ -8,9 +8,8 @@
     </button>
     
     <div class="ui header inverted mt-4">
-      <span>{{@event.name}}</span>
       <a href={{href-to 'public' @event (query-params side_panel='true')}} class="ml-2">
-        <i class="icon inverted external link"></i>
+        <span class="text-white">{{@event.name}}</span>
       </a>
     </div>
     <Public::EventDateTime @event={{@event}} />
