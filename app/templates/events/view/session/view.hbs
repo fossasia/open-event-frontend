@@ -3,6 +3,7 @@
     <h2 class="ui header center aligned">
       {{t 'View Session'}}
     </h2>
+    <div class="ui divider"></div>
   </div>
   <div class="column three wide">
     <div class="ui {{ this.model.session.color }} large label">{{capitalize this.model.session.status}}</div>
@@ -15,14 +16,8 @@
         {{t 'Not yet scheduled'}}
       {{/if}}
     </div>
-    {{#if this.model.session.isLocked}}
-      <div class="ui {{ this.model.session.color }} large label">{{t 'Locked'}}</div>
-    {{/if}}
   </div>
   <div class="column four wide">
-    {{#if (not-eq this.model.session.state 'withdrawn')}}
-      <button type="button" class="ui red button" {{action "withdrawnSession" this.model.session.id}}>{{t 'Withdrawn'}}</button>
-    {{/if}}
     <LinkTo
       @route="events.view.session.edit"
       @models={{array this.model.session.event.id this.model.session.id}}>
@@ -40,6 +35,6 @@
   @fields={{this.allFields}}
   @session={{this.model.session}} />
 <div class="ui grid container">
-  <div class="weight-600 column three wide">{{t 'Speakers:'}}</div>
+  <div class="weight-600 column three wide">{{t 'Speakers'}}</div>
   <div class="column thirteen wide">{{this.allSpeakers}}</div>
 </div>

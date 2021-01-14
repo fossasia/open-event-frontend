@@ -3,6 +3,7 @@
     <h2 class="ui header center aligned">
       {{t 'View Speaker'}}
     </h2>
+    <div class="ui divider"></div>
   </div>
   <div class="column sixteen wide">
     <LinkTo
@@ -13,16 +14,16 @@
     </LinkTo>
   </div>
   <div class="featured-speaker">
-    <img alt="speaker" class="ui rounded image" src="{{if this.model.speaker.thumbnailImageUrl this.speaker.thumbnailImageUrl (if this.speaker.photoUrl this.speaker.photoUrl '/images/placeholders/avatar.png')}}">
+    <img alt="speaker" class="ui rounded image" src="{{if this.model.speaker.thumbnailImageUrl this.model.speaker.thumbnailImageUrl (if this.model.speaker.photoUrl this.model.speaker.photoUrl '/images/placeholders/avatar.png')}}">
   </div>
   <div class="column sixteen wide">
     <h3 class="ui header">
-      {{t 'speaker details'}}
+      {{t 'Speaker details'}}
     </h3>
   </div>
   <Events::View::Overview::SpeakerView
     @fields={{this.allFields}}
     @speaker={{this.model.speaker}} />
-  <div class="weight-600 column four wide">{{t 'Sessions:'}}</div>
+  <div class="weight-600 column four wide">{{t 'Sessions'}}</div>
   <div class="column twelve wide">{{this.allSessions}}</div>
 </div>
