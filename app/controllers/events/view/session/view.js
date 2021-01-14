@@ -4,8 +4,11 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { groupBy } from 'lodash-es';
 import { computed, action } from '@ember/object';
 import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
+import { inject as service } from '@ember/service';
+
 
 export default class extends Controller.extend(FormMixin) {
+  @service errorHandler;
 
   @computed('model.form')
   get allFields() {
@@ -14,21 +17,26 @@ export default class extends Controller.extend(FormMixin) {
     return fields;
   }
 
+  @computed('model.session')
+  get allSpeakers() {
+    return this.model.session.get('speakers').map(speaker => speaker.name).join(', ');
+  }
+
   @action
-  async WithdrawnSession() {
-    const oldState = this.model.session.state;
-    this.model.session.set('state', 'withdrawn');
+  async withdrawnSession(session_id) {
+    const session =  this.store.peekRecord('session', session_id);
+    const oldState = session.state;
+    session.set('state', 'withdrawn');
     this.set('isLoading', true);
 
     try {
-      await this.model.session.save();
+      await session.save();
       this.notify.success(this.l10n.t('Session has been withdrawn successfully.'), {
         id: 'session_state'
       });
-      this.refreshModel.bind(this)();
     } catch (e) {
-      this.model.session.set('state', oldState);
-      // this.errorHandler.handle(e);
+      session.set('state', oldState);
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }

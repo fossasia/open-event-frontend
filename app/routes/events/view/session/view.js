@@ -5,7 +5,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 @classic
 export default class ViewRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
-    return model.session.title;
+    return model.session.get('title');
   }
 
   async model(params) {

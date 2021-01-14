@@ -20,7 +20,9 @@
     {{/if}}
   </div>
   <div class="column four wide">
-    <button type="button" class="ui red button" {{action "withdrawnSession"}}>{{t 'Withdrawn'}}</button>
+    {{#if (not-eq this.model.session.state 'withdrawn')}}
+      <button type="button" class="ui red button" {{action "withdrawnSession" this.model.session.id}}>{{t 'Withdrawn'}}</button>
+    {{/if}}
     <LinkTo
       @route="events.view.session.edit"
       @models={{array this.model.session.event.id this.model.session.id}}>
@@ -39,9 +41,5 @@
   @session={{this.model.session}} />
 <div class="ui grid container">
   <div class="weight-600 column three wide">{{t 'Speakers:'}}</div>
-  <div class="column thirteen wide">
-    {{#each this.model.session.speakers as |speaker|}}
-      {{speaker.name}}
-    {{/each}}
-  </div>
+  <div class="column thirteen wide">{{this.allSpeakers}}</div>
 </div>

@@ -1,22 +1,27 @@
 <div class="ui grid">
     {{#each @fields as |field|}}
         {{#if field.isIncluded}}
-            {{#if (or (get @speaker field.fieldIdentifier) (get @speaker.complexFieldValues field.fieldIdentifier))}}
-                <label class="{{if field.isRequired 'required'}} weight-600 column three wide" for="name">{{field.name}}</label>
-                <div class="column thirteen wide">
-                    {{#if field.isLongText}}
-                        {{sanitize (get @speaker field.fieldIdentifier)}}
-                    {{else if (eq field.fieldIdentifier 'gender')}}
-                        {{@speaker.gender}}
-                    {{else if (or (eq field.fieldIdentifier 'website') (eq field.fieldIdentifier 'github') (eq field.fieldIdentifier 'facebook') (eq field.fieldIdentifier 'twitter') (eq field.fieldIdentifier 'instagram') (eq field.fieldIdentifier 'linkedin') (eq field.fieldIdentifier 'photoUrl'))}}
-                        <a class="truncate" href={{get @speaker field.fieldIdentifier}} target="_blank" rel="noopener">{{get @speaker field.fieldIdentifier}}</a>
-                    {{else if (get @speaker.complexFieldValues field.fieldIdentifier)}}
-                        {{get @speaker.complexFieldValues field.fieldIdentifier}}
-                    {{else}}
-                        {{get @speaker field.fieldIdentifier}}
-                    {{/if}}
-                </div>
-            {{/if}}
+            <div class="column four wide">
+                <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{field.name}}</label> 
+                {{#if field.isPublic}}
+                    <div class="ui green horizontal label">Public</div>
+                {{else}}
+                    <div class="ui red horizontal label">Private</div>
+                {{/if}}
+            </div> 
+            <div class="column twelve wide">
+                {{#if field.isLongText}}
+                    {{sanitize (get @speaker field.fieldIdentifier)}}
+                {{else if (eq field.fieldIdentifier 'gender')}}
+                    {{@speaker.gender}}
+                {{else if (or (eq field.fieldIdentifier 'website') (eq field.fieldIdentifier 'github') (eq field.fieldIdentifier 'facebook') (eq field.fieldIdentifier 'twitter') (eq field.fieldIdentifier 'instagram') (eq field.fieldIdentifier 'linkedin') (eq field.fieldIdentifier 'photoUrl'))}}
+                    <a class="truncate" href={{get @speaker field.fieldIdentifier}} target="_blank" rel="noopener">{{get @speaker field.fieldIdentifier}}</a>
+                {{else if (get @speaker.complexFieldValues field.fieldIdentifier)}}
+                    {{get @speaker.complexFieldValues field.fieldIdentifier}}
+                {{else}}
+                    {{get @speaker field.fieldIdentifier}}
+                {{/if}}
+            </div>
         {{/if}}
     {{/each}}
 </div>
