@@ -78,6 +78,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-simple-date'
+      },
+      {
+        name            : this.l10n.t('Mark Spam'),
+        valuePath       : 'id',
+        extraValuePaths : ['isBlocked'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/admin/users/cell-mark-spam',
+        actions         : {
+           toggleSpam   : this.toggleSpam.bind(this)
+         }
       }
     ];
   }
@@ -85,6 +96,29 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   moveToUserDetails(id) {
     this.transitionToRoute('admin.users.view', id);
+  }
+
+  @action
+  async toggleSpam(user_id) {
+    this.set('isLoading', true);
+    try {
+      const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
+      user.toggleProperty('isBlocked');
+      await user.save();
+      this.notify.success(this.l10n.t('User has been marked as Spam successfully.'),
+        {
+          id: 'user_spam_succ'
+        });
+
+    } catch (e) {
+      console.error('Error while marking user as spam', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_spam_error'
+        });
+    }
+
+    this.set('isLoading', false);
   }
 
   @action
