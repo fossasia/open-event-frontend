@@ -87,8 +87,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/users/cell-mark-spam',
         actions         : {
-           toggleSpam   : this.toggleSpam.bind(this)
-         }
+          toggleSpam: this.toggleSpam.bind(this)
+        }
       }
     ];
   }
