@@ -1,13 +1,11 @@
 <div class="ui segments">
-  {{#if this.showBanner}}
-    <div class="ui green inverted segment center aligned">
-      <div class="ui inverted mini statistic horizontal">
-        <div class="value">
-          {{t 'Company Information'}}
-        </div>
+  <div class="ui green inverted segment center aligned">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Company Information'}}
       </div>
     </div>
-  {{/if}}
+  </div>
   <div class="ui padded segment">
     <table class="ui very basic compact unstackable table company-info">
       <tbody>
@@ -85,7 +83,7 @@
         {{#if this.data.taxId}}
           <tr>
             <td>
-              <strong>{{t 'Tax Id'}}:</strong>
+              <strong>{{t 'Tax ID'}}:</strong>
             </td>
             <td>
               {{this.data.taxId}}
