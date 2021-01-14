@@ -1260,18 +1260,17 @@
     jquery "^3.4.1"
     resolve "^1.11.1"
 
-"@ember/optional-features@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-0.7.0.tgz#f65a858007020ddfb8342f586112750c32abd2d9"
-  integrity sha512-qLXvL/Kq/COb43oQmCrKx7Fy8k1XJDI2RlgbCnZHH26AGVgJT/sZugx1A2AIxKdamtl/Mi+rQSjGIuscSjqjDw==
+"@ember/optional-features@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-1.3.0.tgz#d7da860417b85a56cec88419f30da5ee1dde2756"
+  integrity sha512-Lrfojy4xKwTX+J4EAylmxZY2TO6bQtP4Lg5C8/z2priVqiT0X5fVB1+4WQCJbRBetctO1lMDnqjmhWCVKB8bmQ==
   dependencies:
-    chalk "^2.3.0"
-    co "^4.6.0"
-    ember-cli-version-checker "^2.1.0"
-    glob "^7.1.2"
-    inquirer "^3.3.0"
+    chalk "^3.0.0"
+    ember-cli-version-checker "^3.1.3"
+    glob "^7.1.6"
+    inquirer "^7.0.1"
     mkdirp "^0.5.1"
-    silent-error "^1.1.0"
+    silent-error "^1.1.1"
     util.promisify "^1.0.0"
 
 "@ember/optional-features@^2.0.0":
@@ -2697,7 +2696,7 @@ ansi-escapes@^1.1.0:
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
   integrity sha1-06ioOzGapneTZisT52HHkRQiMG4=
 
-ansi-escapes@^3.0.0, ansi-escapes@^3.2.0:
+ansi-escapes@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
 
@@ -5052,11 +5051,6 @@ chalk@^4.0.0, chalk@^4.1.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
-
-chardet@^0.4.0:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
-  integrity sha1-tUc7M9yXxCTl2Y3IfVXU2KKci/I=
 
 chardet@^0.7.0:
   version "0.7.0"
@@ -8778,15 +8772,6 @@ extend@~3.0.0, extend@~3.0.2:
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
 
-external-editor@^2.0.4:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/external-editor/-/external-editor-2.2.0.tgz#045511cfd8d133f3846673d1047c154e214ad3d5"
-  integrity sha512-bSn6gvGxKt+b7+6TKEv1ZycHleA7aHhRHyAqJyp5pbUFuYYNIzpZnQDk7AsYckyWdEnTeAnay0aCy2aV6iTk9A==
-  dependencies:
-    chardet "^0.4.0"
-    iconv-lite "^0.4.17"
-    tmp "^0.0.33"
-
 external-editor@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/external-editor/-/external-editor-3.0.3.tgz#5866db29a97826dbe4bf3afd24070ead9ea43a27"
@@ -10241,7 +10226,7 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.24, iconv-lite@^0.4.5:
+iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.5:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
   dependencies:
@@ -10388,26 +10373,6 @@ inquirer@^0.12.0:
     strip-ansi "^3.0.0"
     through "^2.3.6"
 
-inquirer@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-3.3.0.tgz#9dd2f2ad765dcab1ff0443b491442a20ba227dc9"
-  integrity sha512-h+xtnyk4EwKvFWHrUYsWErEVR+igKtLdchu+o0Z1RL7VU/jVMFbYir2bp6bAj8efFNxWqHX0dIss6fJQ+/+qeQ==
-  dependencies:
-    ansi-escapes "^3.0.0"
-    chalk "^2.0.0"
-    cli-cursor "^2.1.0"
-    cli-width "^2.0.0"
-    external-editor "^2.0.4"
-    figures "^2.0.0"
-    lodash "^4.3.0"
-    mute-stream "0.0.7"
-    run-async "^2.2.0"
-    rx-lite "^4.0.8"
-    rx-lite-aggregates "^4.0.8"
-    string-width "^2.1.0"
-    strip-ansi "^4.0.0"
-    through "^2.3.6"
-
 inquirer@^6:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.2.2.tgz#46941176f65c9eb20804627149b743a218f25406"
@@ -10426,7 +10391,7 @@ inquirer@^6:
     strip-ansi "^5.0.0"
     through "^2.3.6"
 
-inquirer@^7.0.4, inquirer@^7.3.3:
+inquirer@^7.0.1, inquirer@^7.0.4, inquirer@^7.3.3:
   version "7.3.3"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.3.3.tgz#04d176b2af04afc157a83fd7c100e98ee0aad003"
   integrity sha512-JG3eIAj5V9CwcGvuOmoo6LB9kbAYT8HXffUl6memuszlwDC/qvFAJw49XJ5NROSFNPxp3iQg1GqkFhaY/CR0IA==
@@ -14470,18 +14435,6 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rx-lite-aggregates@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/rx-lite-aggregates/-/rx-lite-aggregates-4.0.8.tgz#753b87a89a11c95467c4ac1626c4efc4e05c67be"
-  integrity sha1-dTuHqJoRyVRnxKwWJsTvxOBcZ74=
-  dependencies:
-    rx-lite "*"
-
-rx-lite@*, rx-lite@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
-  integrity sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=
-
 rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
@@ -14649,13 +14602,13 @@ semantic-ui-css@^2.2.14:
   dependencies:
     jquery x.*
 
-semantic-ui-ember@3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/semantic-ui-ember/-/semantic-ui-ember-3.0.4.tgz#496a58cd4034e0a171e4f5adb9f01ff3397c05b3"
-  integrity sha512-81iJNqdTsjg7R5xJvtpYOJ9IhFfoIHCWJSqHk14ykvnytUdHwG4dNK5Xa4fY08G7f5gVn3d39Il71k5y0mzXtQ==
+semantic-ui-ember@3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/semantic-ui-ember/-/semantic-ui-ember-3.0.5.tgz#ef420de623dc9cdf8fb8809bd1ea08daf17a356a"
+  integrity sha512-q0li6ouKa9eRkaQyiFG44RVDIeuFKregx0B1d7wUXcY1bMdIWWOzaZnAdSJLJgXFRTV9O9T3ZSokkQJ4hwZqug==
   dependencies:
     "@ember/jquery" "^0.6.0"
-    "@ember/optional-features" "^0.7.0"
+    "@ember/optional-features" "^1.3.0"
     ember-cli-babel "^7.4.0"
     ember-cli-htmlbars "^2.0.3"
     ember-promise-utils "^0.1.1"
