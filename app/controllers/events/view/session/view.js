@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { groupBy } from 'lodash-es';
-import { computed} from '@ember/object';
+import { computed } from '@ember/object';
 import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
 
 
