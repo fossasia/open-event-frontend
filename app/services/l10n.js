@@ -38,16 +38,19 @@ export default class L10nService extends L10n {
   autoInitialize = false;
   jsonPath = '/assets/locales';
 
-  switchLanguage(locale) {
+  switchLanguage(locale, skipRefresh) {
     this.setLocale(locale);
     this.cookies.write(this.localStorageKey, locale, { path: '/' });
+    if (!this.fastboot.isFastBoot && skipRefresh) {
+      location.reload();
+    }
   }
 
   detectQueryLang() {
     const params = new URLSearchParams(location.search);
     const locale = params.get('lang');
     if (!locale || !Object.keys(this.availableLocales).includes(locale)) {return}
-    this.switchLanguage(locale);
+    this.switchLanguage(locale, true);
   }
 
   init() {
