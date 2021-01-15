@@ -25,8 +25,8 @@ export default class ViewRoute extends Route {
     return hash({
       order,
       event      : eventDetails,
-      taxDetails : eventDetails.isTaxEnabled && eventDetails.get('tax', { cache: true, public: true }) || undefined,
-      form       : await eventDetails.query('customForms', {
+      taxDetails : eventDetails.isTaxEnabled && eventDetails.get('tax', { cache: true, public: true }),
+      form       : eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
       })
