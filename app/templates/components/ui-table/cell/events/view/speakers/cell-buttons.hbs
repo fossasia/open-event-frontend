@@ -1,4 +1,6 @@
-{{this.record}}
+<LinkTo @route="public.speaker.view" @model={{this.extraRecords.identifier}}>
+  <p>{{this.record}}</p>
+</LinkTo>
 <br><br>
 <div class="ui horizontal compact basic buttons">
   <UiPopup @content={{t "View"}} @class="ui icon button" @click={{action this.props.actions.viewSpeaker this.extraRecords}} @position="left center">
