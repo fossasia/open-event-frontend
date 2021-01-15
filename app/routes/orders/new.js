@@ -35,7 +35,7 @@ export default class NewRoute extends Route {
       order,
       event      : eventDetails,
       tickets,
-      taxDetails : eventDetails.isTaxEnabled ? eventDetails.get('tax', { cache: true, public: true }) : undefined,
+      taxDetails : eventDetails.isTaxEnabled && eventDetails.get('tax', { cache: true, public: true }) || undefined,
       form       : await eventDetails.query('customForms', {
         filter: [
           {
