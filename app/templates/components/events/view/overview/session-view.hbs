@@ -1,0 +1,54 @@
+<div class="ui grid container">
+    {{#each @fields as |field|}}
+        {{#if field.isIncluded}}
+            <div class="column three wide">
+                <div class="d-flex space-between">
+                   <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{t-var field.name}}</label> 
+                    {{#if field.isPublic}}
+                        <div class="ui green horizontal label">{{t 'Public'}}</div>
+                    {{else}}
+                        <div class="ui red horizontal label">{{t 'Private'}}</div>
+                    {{/if}} 
+                </div>
+            </div>     
+            {{#if field.isLongText}}
+                <div class="column thirteen wide">{{sanitize (get @session field.fieldIdentifier)}}</div>
+            {{else if (eq field.fieldIdentifier 'language')}}
+                <div class="column thirteen wide">{{@session.language}}</div>
+            {{else if (eq field.fieldIdentifier 'track')}}
+                <div class="column thirteen wide">{{@session.track.name}}</div>
+            {{else if (eq field.fieldIdentifier 'sessionType')}}
+                <div class="column thirteen wide">{{@session.sessionType.name}}</div>
+                <div class="column three wide">
+                    <div class="d-flex space-between">
+                        <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{t 'Duration'}}</label> 
+                        {{#if field.isPublic}}
+                            <div class="ui green horizontal label">{{t 'Public'}}</div>
+                        {{else}}
+                            <div class="ui red horizontal label">{{t 'Private'}}</div>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="column thirteen wide">{{@session.sessionType.length}}</div>
+            {{else if (or (eq field.fieldIdentifier 'audioUrl') (eq field.fieldIdentifier 'videoUrl') (eq field.fieldIdentifier 'slidesUrl'))}}
+                <div class="column thirteen wide"><a class="truncate" href={{get @session field.fieldIdentifier}} target="_blank" rel="noopener">{{get @session field.fieldIdentifier}}</a></div>
+            {{else if (get @session.complexFieldValues field.fieldIdentifier)}}
+                <div class="column thirteen wide">{{get @session.complexFieldValues field.fieldIdentifier}}</div>
+            {{else}}
+                <div class="column thirteen wide">{{get @session field.fieldIdentifier}}</div>
+            {{/if}}
+        {{/if}}
+    {{/each}}
+    {{#if @session.microlocation}}
+        <div class="weight-600 column three wide">{{t 'Microlocation'}}</div>
+        <div class="column thirteen wide">{{@session.microlocation.name}}</div>
+    {{/if}}
+    {{#if @session.averageRating}}
+        <div class="weight-600 column three wide">{{t 'Average Rating'}}</div>
+        <div class="column thirteen wide">{{@session.averageRating}}</div>
+    {{/if}}
+    {{#if @session.isLocked}}
+        <div class="weight-600 column three wide">{{t 'Locked'}}</div>
+        <div class="column thirteen wide">{{@session.isLocked}}</div>
+    {{/if}}
+</div>

@@ -123,13 +123,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  editSession(session_id, event_id) {
-    this.transitionToRoute('events.view.sessions.edit', event_id, session_id);
+  editSession(id) {
+    this.transitionToRoute('events.view.session.edit', id);
   }
 
   @action
-  viewSession(session_id, event_id) {
-    this.transitionToRoute('public.session.view', event_id, session_id);
+  viewSession(id) {
+    this.transitionToRoute('events.view.session.view', id);
   }
 
   @action
