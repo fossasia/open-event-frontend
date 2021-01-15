@@ -1,6 +1,6 @@
 <div class="ui grid">
     {{#each @fields as |field|}}
-        {{#if (and field.isIncluded (not-eq field.type 'image'))}}
+        {{#if field.isIncluded}}
             <div class="column four wide">
                 <div class="d-flex space-between">
                     <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{field.name}}</label> 
@@ -12,11 +12,15 @@
                 </div>
             </div> 
             <div class="column twelve wide">
-                {{#if field.isLongText}}
+                {{#if (eq field.type 'image')}}
+                    <div class="ui card">
+                        <img alt="speaker" class="ui rounded image" src="{{if @speaker.thumbnailImageUrl @speaker.thumbnailImageUrl (if @speaker.photoUrl @speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                    </div>
+                {{else if field.isLongText}}
                     {{sanitize (get @speaker field.fieldIdentifier)}}
                 {{else if (eq field.fieldIdentifier 'gender')}}
                     {{@speaker.gender}}
-                {{else if (or (eq field.fieldIdentifier 'website') (eq field.fieldIdentifier 'github') (eq field.fieldIdentifier 'facebook') (eq field.fieldIdentifier 'twitter') (eq field.fieldIdentifier 'instagram') (eq field.fieldIdentifier 'linkedin') (eq field.fieldIdentifier 'photoUrl'))}}
+                {{else if (or (eq field.fieldIdentifier 'website') (eq field.fieldIdentifier 'github') (eq field.fieldIdentifier 'facebook') (eq field.fieldIdentifier 'twitter') (eq field.fieldIdentifier 'instagram') (eq field.fieldIdentifier 'linkedin'))}}
                     <a class="truncate" href={{get @speaker field.fieldIdentifier}} target="_blank" rel="noopener">{{get @speaker field.fieldIdentifier}}</a>
                 {{else if (get @speaker.complexFieldValues field.fieldIdentifier)}}
                     {{get @speaker.complexFieldValues field.fieldIdentifier}}
