@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 @classic
 export default class NewRoute extends Route {
@@ -29,11 +30,13 @@ export default class NewRoute extends Route {
     });
 
     const eventDetails = await order.query('event', { include: 'tax' });
-    return {
+
+    return hash({
       order,
-      event : eventDetails,
+      event      : eventDetails,
       tickets,
-      form  : await eventDetails.query('customForms', {
+      taxDetails : eventDetails.isTaxEnabled && eventDetails.get('tax', { cache: true, public: true }),
+      form       : eventDetails.query('customForms', {
         filter: [
           {
             name : 'form',
@@ -44,7 +47,7 @@ export default class NewRoute extends Route {
         'page[size]' : 0,
         sort         : 'id'
       })
-    };
+    });
   }
 
   afterModel(model) {
