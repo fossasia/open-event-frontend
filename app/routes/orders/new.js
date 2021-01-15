@@ -35,7 +35,7 @@ export default class NewRoute extends Route {
       order,
       event      : eventDetails,
       tickets,
-      taxDetails : eventDetails.get('tax', { cache: true, public: true }),
+      taxDetails : order.event.get('tax', { cache: true, public: true }),
       form       : eventDetails.query('customForms', {
         filter: [
           {
