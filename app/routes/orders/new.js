@@ -1,12 +1,11 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-import { hash } from 'rsvp';
 
 @classic
 export default class NewRoute extends Route {
   titleToken(model) {
     const order = model.order.get('identifier');
-    return this.l10n.t('New Order') + ' - ' + order;
+    return this.l10n.t(`New Order -${order}`);
   }
 
   async model(params) {
@@ -30,13 +29,11 @@ export default class NewRoute extends Route {
     });
 
     const eventDetails = await order.query('event', { include: 'tax' });
-
-    return hash({
+    return {
       order,
-      event      : eventDetails,
+      event : eventDetails,
       tickets,
-      taxDetails : eventDetails.get('tax', { cache: true, public: true }),
-      form       : eventDetails.query('customForms', {
+      form  : await eventDetails.query('customForms', {
         filter: [
           {
             name : 'form',
@@ -47,7 +44,7 @@ export default class NewRoute extends Route {
         'page[size]' : 0,
         sort         : 'id'
       })
-    });
+    };
   }
 
   afterModel(model) {

@@ -9,6 +9,7 @@ module('Integration | Component | ui table/cell/events/view/tickets/orders/cell 
 
   const props = {
     actions: {
+      deleteOrder        : () => {},
       cancelOrder        : () => {},
       resendConfirmation : () => {},
       completeOrder      : () => {}

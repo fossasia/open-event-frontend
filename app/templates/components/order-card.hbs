@@ -7,27 +7,35 @@
     </div>
   {{/unless}}
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
-    <div class="order card main content">
+    <a class="main content" href="{{href-to 'orders.view' this.order.identifier}}">
       <div class="right floated author">
-        {{#each-in (group-by 'name' (map-by 'ticket' this.order.attendees)) as |name tickets|}}
-          <div class="ui green large label">{{tickets.length}} x {{name}}</div>
-        {{/each-in}}
-        <UiPopup @content={{t "Cancel Ticket"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
-          {{t 'Cancel Ticket'}}
-        </UiPopup>
+        <div class="ui {{order-color this.order.status}} large label">
+          {{this.order.status}}
+        </div>
+        {{#if this.isUserCheckedIn}}
+          <div class="ui green large label">
+            {{t 'Checked In'}}
+          </div>
+        {{else}}
+          <div class="ui red large label">
+            {{t 'Not Checked In'}}
+          </div>
+        {{/if}}
       </div>
       <SmartOverflow @class="header">
-        <a class="gray-text" href="{{this.order.event.url}}" rel="noopener noreferrer">{{this.order.event.name}}</a>
+        {{this.order.event.name}}
       </SmartOverflow>
       <div class="meta">
         <span class="date">
-          <Public::EventDateTime @event={{@order.event}} @noBreak={{true}} />
+          {{moment-format this.order.event.startsAt 'ddd, DD MMMM YYYY, h:mm A'}}
         </span>
       </div>
-      <Public::EventVenue @event={{@order.event}} />
-    </div>
-
-      <span class="ml-2">
+      <SmartOverflow @class="description">
+        {{this.order.event.shortLocationName}}
+      </SmartOverflow>
+    </a>
+    <div class="extra content small text">
+      <span>
         <span>
           {{#if this.isFreeOrder}}
             {{t 'Free'}}
@@ -36,26 +44,11 @@
           {{/if}}
           {{t 'order'}}
         </span>
-        <LinkTo @route="orders.view" @model={{this.order.identifier}}>#{{this.order.identifier}}</LinkTo>
+        <span>#{{this.order.identifier}}</span>
         {{#if this.order.completedAt}}
-          <span>{{t 'on'}} {{general-date this.order.completedAt 'date-time-short'}}</span>
+          <span>{{t 'on'}} {{moment-format this.order.completedAt 'MMMM DD, YYYY h:mm A'}}</span>
         {{/if}}
       </span>
-      <div class="extra content small text">
-      {{#if (not-eq order.status "completed")}}
-          <a class="ui {{order-color this.order.status}} large label" href="{{href-to 'orders.view' this.order.identifier}}">
-            {{this.order.status}}
-          </a>
-        {{/if}}
-        {{#if this.isUserCheckedIn}}
-          <a class="ui green large label" href="{{href-to 'orders.view' this.order.identifier}}">
-            {{t 'Checked In'}}
-          </a>
-        {{else}}
-          <a class="ui light gray large label" href="{{href-to 'orders.view' this.order.identifier}}">
-            {{t 'Not Checked In'}}
-          </a>
-        {{/if}}
     </div>
   </div>
 </div>

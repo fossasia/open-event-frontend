@@ -2,22 +2,15 @@
   <div class="ui menu">
     <LinkTo
       @route="index" class="header item" @activeClass="">
-      <h3 class="nav-bar-title" >{{this.settings.appName}}</h3>
+      <h3>{{this.settings.appName}}</h3>
     </LinkTo>
     <div class="right menu nav-bar">
-    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
-      <div class="search-bar d-flex items-center space-between m-2 p-2">
-        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
-        <i class="search icon"></i>
-      </div>
-    {{/if}}
-    {{#if (and (not this.session.isAuthenticated) this.isNotEventPageRoute)}}
       <LinkTo
-        @route="pricing" class="item"
-        @activeClass="">{{t 'Pricing'}}</LinkTo>
-    {{/if}}
+        @route="explore" class="item"
+        @activeClass="">{{t 'Browse Events'}}</LinkTo>
       {{#if this.session.isAuthenticated}}
-        <NotificationDropdown />
+        <NotificationDropdown
+          @unreadNotifications={{this.unreadNotifications}} />
       {{/if}}
       {{#if this.session.isAuthenticated}}
         <UiDropdown
@@ -41,14 +34,14 @@
               <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
             {{/if}}
             <div class="divider"></div>
-            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><div class="d-flex">{{t 'Logout'}}<i
-                  class="ui sign out icon" style="margin-left: auto !important"></i></div></a>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><span>{{t 'Logout'}}<i
+                  class="ui right floated large signout sign out icon"></i></span></a>
           </div>
         </UiDropdown>
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
-      {{#if (and this.isNotWizardPageRoute this.isNotEventPageRoute)}}
+      {{#if (not-eq this.routing.currentRouteName 'create')}}
         <LinkTo
           @route="create" class="item ui blue text">
           <div>
@@ -68,33 +61,17 @@
       @route="index" class="item" @activeClass="">
       <div class="ui header small text">{{this.settings.appName}}</div>
     </LinkTo>
-    <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
-      <i class="search icon" style="cursor: auto;"></i>
-      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
-      <div role="button" {{action "toggleSearchBar"}}>
-        <i class="close icon" ></i>
-      </div>
-    </div>
     <div class="right menu nav-bar">
-      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
-        <div role="button" class="item ui" {{action "toggleSearchBar"}}>
-          <i class="search icon"></i>
-        </div>
-      {{/if}}
       {{#if this.session.isAuthenticated}}
         <NotificationDropdown
           @notifications={{this.notifications}} />
-          {{#if this.isNotWizardPageRoute}}
-            <LinkTo
-             @route="create" class="item ui blue button-text small text">
-              <div>
-                {{t 'Create Event'}}
-              </div>
-            </LinkTo>
-          {{/if}}
-      {{else}}
-        <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
+      <LinkTo
+        @route="create" class="item ui blue button-text small text">
+        <div>
+          {{t 'Create Event'}}
+        </div>
+      </LinkTo>
     </div>
   </div>
 </div>

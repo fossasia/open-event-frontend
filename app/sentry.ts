@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { CaptureConsole, Dedupe, Ember } from '@sentry/integrations';
 import config from 'open-event-frontend/config/environment';
-import { Integrations } from '@sentry/tracing';
+import { Integrations as ApmIntegrations } from '@sentry/apm';
 
 if (!config.sentry.dsn.includes('dummy')) {
 
@@ -12,7 +12,7 @@ if (!config.sentry.dsn.includes('dummy')) {
       new CaptureConsole({
         levels: ['error']
       }),
-      new Integrations.BrowserTracing()
+      new ApmIntegrations.Tracing()
     ],
     beforeSend(event: Sentry.Event) {
       const exception = event.exception?.values?.[0];
@@ -38,7 +38,7 @@ if (!config.sentry.dsn.includes('dummy')) {
 
   Sentry.configureScope(function(scope) {
     function addAdapterError(error: any, event: Sentry.Event) {
-      if (error?.isAdapterError) {
+      if (error.isAdapterError) {
         event.extra = {
           ...event.extra,
           adapter_errors      : error.errors,
@@ -47,7 +47,6 @@ if (!config.sentry.dsn.includes('dummy')) {
       }
 
       try {
-        if (!event) {return}
         // Try to store JSON of error for diagnosing bugs
         event.extra = {
           ...event.extra,
@@ -61,7 +60,7 @@ if (!config.sentry.dsn.includes('dummy')) {
     scope.addEventProcessor(function(event: Sentry.Event, hints: Sentry.EventHint) {
       addAdapterError(hints.originalException, event);
 
-      const args: any[] = event.extra?.arguments as any[] || [];
+      const args: any[] = event.extra?.arguments || [];
       for (const arg of args) {
         addAdapterError(arg, event);
       }

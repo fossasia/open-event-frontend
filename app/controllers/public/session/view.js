@@ -1,12 +1,11 @@
 import Controller from '@ember/controller';
 import { action, computed } from '@ember/object';
-import moment from 'moment';
 
 export default class extends Controller {
 
-  @computed('session.isAuthenticated', 'authManager.currentUser.email', 'authManager.currentUser.isAdmin', 'model.speakers', 'model.endsAt')
+  @computed('authManager.currentUser.email', 'authManager.currentUser.isAdmin', 'model.speakers')
   get showEditSection() {
-    return this.session.isAuthenticated && (this.authManager.currentUser.isAdmin || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email)) &&  (this.model.endsAt ? (this.model.endsAt).isAfter(moment()) : true);
+    return this.authManager.currentUser.isAdmin || this.model.speakers.map(speaker => speaker.email).includes(this.authManager.currentUser.email);
   }
 
   @action

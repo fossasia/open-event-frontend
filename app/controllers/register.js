@@ -22,15 +22,17 @@ export default class RegisterController extends Controller {
     this.model.save()
       .then(user => {
         this.set('session.newUser', user.get('email'));
-        this.send('loginExistingUser', user.get('email'), password, this.inviteToken, this.event);
+        if (this.inviteToken) {
+          this.send('loginExistingUser', user.get('email'), password, this.inviteToken, this.event);
+        } else {
+          this.transitionToRoute('login');
+        }
       })
       .catch(reason => {
         if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 409) {
           this.set('errorMessage', this.l10n.t('User already exists.'));
-        } else if (reason?.errors[0]?.status === '422') {
-          this.set('errorMessage', this.l10n.t('Invalid email address.'));
         } else {
-          this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
+          this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
         }
       })
       .finally(() => {
@@ -56,18 +58,14 @@ export default class RegisterController extends Controller {
             await this.store.findRecord('user', tokenPayload.identity)
           );
         }
-        if (token) {
-          this.transitionToRoute('public.role-invites', eventId, { queryParams: { token } });
-        } else {
-          this.transitionToRoute('/');
-        }
+        this.transitionToRoute('public.role-invites', eventId, { queryParams: { token } });
       })
       .catch(reason => {
         if (!(this.isDestroyed || this.isDestroying)) {
           if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.status_code === 401) {
             this.set('errorMessage', this.l10n.t('Your credentials were incorrect.'));
           } else {
-            this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
+            this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
           }
         } else {
           console.warn(reason);

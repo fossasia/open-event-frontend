@@ -17,31 +17,11 @@ export default class TicketFeesForm extends Component {
     return orderBy(paymentCurrencies, 'name');
   }
 
-  @computed('model.[]')
-  get ticketFees() {
-    return this.model.filter(fees => fees.country !== 'global');
-  }
-
-  getGlobalFee() {
-    return this.model.filter(fees => fees.country === 'global')[0];
-  }
-
-  @computed('model')
-  get globalFees() {
-    const globalFee = this.getGlobalFee();
-    if (globalFee) {return globalFee}
-    const globalFeeItem = this.store.createRecord('ticket-fee', {
-      country: 'global'
-    });
-    this.model.toArray().addObject(globalFeeItem);
-    return globalFeeItem;
-  }
-
   @action
   addNewTicket() {
     const settings = this.model;
     const incorrect_settings = settings.filter(function(setting) {
-      return (!setting.get('country'));
+      return (!setting.get('currency') || !setting.get('country'));
     });
     if (incorrect_settings.length > 0) {
       this.notify.error(this.l10n.t('Existing items need to be completed before new items can be added.'), {
@@ -49,7 +29,7 @@ export default class TicketFeesForm extends Component {
       });
       this.set('isLoading', false);
     } else {
-      this.model.addObject(this.store.createRecord('ticket-fee', {
+      this.model.toArray().addObject(this.store.createRecord('ticket-fee', {
         maximumFee : 0.0,
         serviceFee : 0.0
       }));

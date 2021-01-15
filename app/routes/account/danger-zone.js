@@ -9,18 +9,10 @@ export default class DangerZoneRoute extends Route.extend(AuthenticatedRouteMixi
   }
 
   async model() {
+
     const user = this.authManager.currentUser;
-
-    const filter = [{
-      or: ['completed', 'placed', 'pending', 'initializing'].map(val => ({
-        name : 'status',
-        op   : 'eq',
-        val
-      }))
-    }];
-
     const events = await user.query('events', {});
-    const orders = await user.query('orders', { filter });
+    const orders = await user.query('orders', {});
 
     return {
       user,

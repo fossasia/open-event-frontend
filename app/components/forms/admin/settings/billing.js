@@ -12,9 +12,17 @@ export default class Billing extends Component.extend(FormMixin) {
       delay  : false,
       on     : 'blur',
       fields : {
+        adminBillingContactName: {
+          identifier : 'adminBillingContactName',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the Contact name')
+            }
+          ]
+        },
         adminBillingPhone: {
           identifier : 'adminBillingPhone',
-          optional   : true,
           rules      : [
             {
               type   : 'regExp',
@@ -36,19 +44,6 @@ export default class Billing extends Component.extend(FormMixin) {
             }
           ]
         },
-        adminBillingPaypalEmail: {
-          identifier : 'adminBillingPaypalEmail',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter the billing paypal email invoice money will be transferred to')
-            },
-            {
-              type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email address')
-            }
-          ]
-        },
         adminBillingCountry: {
           identifier : 'adminBillingCountry',
           rules      : [
@@ -58,12 +53,22 @@ export default class Billing extends Component.extend(FormMixin) {
             }
           ]
         },
+
+        adminBillingTaxInfo: {
+          identifier : 'adminBillingTaxInfo',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter the tax id')
+            }
+          ]
+        },
         adminCompany: {
           identifier : 'adminCompany',
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the organisation')
+              prompt : this.l10n.t('Please enter the company')
             }
           ]
         },
@@ -100,8 +105,7 @@ export default class Billing extends Component.extend(FormMixin) {
   }
 
   @action
-  submit(e) {
-    e.preventDefault();
+  submit() {
     this.onValid(() => {
       this.save();
     });

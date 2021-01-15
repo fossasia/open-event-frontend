@@ -1,4 +1,4 @@
-<div class="{{if this.isWide 'event wide ui grid row'}}" style="height: 100%;">
+<div class="{{if this.isWide 'event wide ui grid row'}}">
   {{#if this.isWide}}
     {{#unless this.device.isMobile}}
       <div class="ui card rounded-r-none three wide computer six wide tablet column">
@@ -9,7 +9,7 @@
       </div>
     {{/unless}}
   {{/if}}
-  <div style="height: 100%;"
+  <div
     class="ui card {{this.eventClass}}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.identifier}}">
@@ -21,18 +21,20 @@
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>
-      <div class="meta mb-2">
+      <div class="meta">
         <span class="date">
-          <Public::EventDateTime @event={{@event}} @noBreak={{true}} />
+          {{general-date this.event.startsAt this.event.timezone}}
         </span>
       </div>
-      <Public::EventVenue @event={{@event}} />
+      <SmartOverflow @class="description">
+        {{this.event.shortLocationName}}
+      </SmartOverflow>
     </a>
     <div class="extra content small text">
       <span class="right floated">
         <i role="button" class="share alternate link icon" {{action this.shareEvent this.event}}></i>
       </span>
-      <span class="hashtags">
+      <span>
         {{#if hasBlock}}
           {{yield}}
         {{else}}
@@ -40,31 +42,22 @@
             <a href="#"
               class="link item {{if (eq this.category this.event.topic.name) 'active'}}"
               {{action 'selectCategory' this.event.topic.name}}>
-              {{t-var this.tags.[0]}}
+              {{this.tags.[0]}}
             </a>
             <a href="#"
               class="link item {{if (eq this.eventType this.event.type.name) 'active'}}"
               {{action 'selectEventType' this.event.type.name}}>
-              {{t-var this.tags.[1]}}
+              {{this.tags.[1]}}
             </a>
             <a href="#"
               class="link item {{if (eq this.subCategory this.event.subTopic.slug) 'active'}}"
               {{action 'selectCategory' this.event.topic.name this.event.subTopic.slug}}>
-              {{t-var this.tags.[2]}}
+              {{this.tags.[2]}}
             </a>
           {{else}}
-            <a href="{{href-to 'explore' (query-params category=this.event.topic.name event_type=null sub_category=null)}}"
-              class="link item">
-              {{t-var this.tags.[0]}}
-            </a>
-            <a href="{{href-to 'explore' (query-params category=null event_type=this.event.type.name sub_category=null)}}"
-              class="link item">
-              {{t-var this.tags.[1]}}
-            </a>
-            <a href="{{href-to 'explore' (query-params category=this.event.topic.name event_type=null sub_category=this.event.subTopic.slug)}}"
-              class="link item">
-              {{t-var this.tags.[2]}}
-            </a>
+            {{#each this.tags as |tag|}}
+              <a href="#">{{tag}}</a>
+            {{/each}}
           {{/if}}
         {{/if}}
       </span>

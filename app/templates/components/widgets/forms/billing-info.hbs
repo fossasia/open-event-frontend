@@ -1,5 +1,5 @@
 <div class="field">
-  <label class="required" for="company">{{t 'Organisation'}}</label>
+  <label class="required" for="company">{{t 'Company'}}</label>
   <Input
     @type="text"
     @id="company"
@@ -39,7 +39,7 @@
 @id="zip_code"
 @value={{this.data.zipcode}} />
 </div>
-<form class="field">
+<div class="field">
   <label class="required">{{t 'Select country'}}</label>
   <UiDropdown
 @class="search selection"
@@ -61,4 +61,4 @@
       {{/each}}
     </div>
   </UiDropdown>
-</form>
+</div>

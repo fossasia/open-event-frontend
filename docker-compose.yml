@@ -8,6 +8,6 @@ services:
       - .env
     environment:
       INJECT_ENV: 'true'
-      FASTBOOT_DISABLED: 'true'
+      FASTBOOT_DISABLED: 'false'
     ports:
       - 4200:4000

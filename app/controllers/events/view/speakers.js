@@ -14,8 +14,7 @@ export default class extends Controller {
       .then(exportJobInfo => {
         this.requestLoop(exportJobInfo);
       })
-      .catch(e => {
-        console.error('Error while exporting', e);
+      .catch(() => {
         this.set('isLoading', false);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
@@ -36,8 +35,7 @@ export default class extends Controller {
             this.notify.error(this.l10n.t('CSV Export has failed.'));
           }
         })
-        .catch(e => {
-          console.error('Error while exporting CSV', e);
+        .catch(() => {
           this.notify.error(this.l10n.t('CSV Export has failed.'));
         })
         .finally(() => {

@@ -34,7 +34,7 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your organisation')
+              prompt : this.l10n.t('Please enter your company')
             }
           ]
         },
@@ -97,8 +97,7 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
   }
 
   @action
-  submit(e) {
-    e.preventDefault();
+  submit() {
     this.onValid(async() => {
       this.set('isLoading', true);
       try {

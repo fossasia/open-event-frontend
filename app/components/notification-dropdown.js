@@ -8,28 +8,8 @@ import Component from '@ember/component';
 @classNames('notification item')
 @tagName('a')
 export default class NotificationDropdown extends Component {
-  unreadNotifications = [];
-
-  async didInsertElement() {
+  didInsertElement() {
     this._super.call(this);
-    if (this.authManager.currentUser) {
-      try {
-        const notifications = await this.authManager.currentUser.query('notifications', {
-          filter: [
-            {
-              name : 'is-read',
-              op   : 'eq',
-              val  : false
-            }
-          ],
-          sort: '-received-at'
-        });
-        this.set('unreadNotifications', notifications);
-      } catch (e) {
-        console.warn(e);
-        this.session.invalidate();
-      }
-    }
     $(this.element).popup({
       popup : '.popup',
       on    : 'click'
@@ -52,7 +32,7 @@ export default class NotificationDropdown extends Component {
       })
       .catch(e => {
         console.error('Error while marking notifications as read.', e);
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+        this.notify.error(this.l10n.t('An unexpected error occurred.'), {
           id: 'not_read_error'
         });
       });
