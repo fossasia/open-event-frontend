@@ -10,9 +10,4 @@ export default class SimpleModal extends ModalBase {
     this.action();
   }
 
-  @action
-  performCancel() {
-    this.close();
-    this.cancel();
-  }
 }
