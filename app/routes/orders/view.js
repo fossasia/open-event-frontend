@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-import { hash } from 'rsvp';
+
 
 @classic
 export default class ViewRoute extends Route {
@@ -21,15 +21,21 @@ export default class ViewRoute extends Route {
     });
     const eventDetails = await order.query('event', { include: 'tax' });
 
-    return hash({
+    let taxDetails;
+
+    if (eventDetails.isTaxEnabled) {
+      taxDetails = await eventDetails.get('tax', { cache: true, public: true });
+    }
+
+    return {
       order,
       event      : eventDetails,
-      taxDetails : eventDetails.get('tax', { cache: true, public: true }),
-      form       : eventDetails.query('customForms', {
+      taxDetails,
+      form       : await eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
       })
-    });
+    };
   }
 
   afterModel(model) {
