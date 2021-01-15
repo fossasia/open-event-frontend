@@ -33,10 +33,10 @@ export default class NewRoute extends Route {
 
     return hash({
       order,
-      event : eventDetails,
+      event      : eventDetails,
       tickets,
       taxDetails : eventDetails.isTaxEnabled ? eventDetails.get('tax', { cache: true, public: true }) : undefined,
-      form  : await eventDetails.query('customForms', {
+      form       : await eventDetails.query('customForms', {
         filter: [
           {
             name : 'form',
