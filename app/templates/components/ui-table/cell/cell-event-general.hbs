@@ -1,7 +1,12 @@
-<div class="ui header weight-400">
-  <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{this.record}}
-</div>
-<div class="ui horizontal large basic buttons">
+<LinkTo @route="events.view" @model={{this.extraRecords.identifier}}>
+  <div class="ui header">
+    <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image">
+  </div>
+  <p class="ui header weight-400">
+    {{this.record}}
+  </p>
+</LinkTo>
+<div class="ui horizontal attendees-margin large basic buttons">
   <LinkTo @route="events.view" @model={{this.extraRecords.identifier}}>
     <UiPopup @content={{t "Event Dashboard"}} @class="ui icon button" @position="top center">
       <i class="tasks icon"></i>

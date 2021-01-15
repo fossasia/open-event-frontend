@@ -1,139 +1,181 @@
-<div class="ui thirteen column center aligned container">
+<div class="public-event ui relaxed grid">
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}" style = "height:200px">
+    <Widgets::SafeImage class="background" @src="/images/landing.jpg" />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          <div>
+            <h1 class="event name">{{t 'Pricing'}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui thirteen column center aligned container mt-8">
+  <div class="ui raised padded segment">
+    <h3>{{t 'Sign up for our Early Access plan!'}}</h3>
+  </div>
   <table class="ui center aligned stackable celled structured table">
     <thead>
       <tr>
         <th></th>
         <th class="center aligned">{{t 'Features'}}</th>
-        <th class="center aligned">{{t 'Availability'}}</th>
+        <th class="center aligned">{{t 'Early Access Plan'}}</th>
       </tr>
     </thead>
     <tbody>
       <tr class="center aligned">
-        <td rowspan="2">Basics</td>
-        <td>Fee per paid Tickets </td>
-        <td> 2% </td> 
+        <td rowspan="2">{{t 'Basics'}}</td>
+        <td>{{t 'Fee per paid tickets'}}</td>
+        <td>3%</td> 
       </tr>
       <tr class="center aligned">
-        <td> Fee per free Tickets </td>
-        <td> No fee </td> 
+        <td>{{t 'Fee per free tickets'}}</td>
+        <td>{{t 'No fee'}}</td> 
       </tr>
       <tr class="center aligned">
-        <td rowspan="7">Ticket Sales</td>
-        <td>Private event listing</td>
+        <td rowspan="7">{{t 'Ticket Sales'}}</td>
+        <td>{{t 'Public event listings'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Private (unlisted ) event </td>
+        <td>{{t 'Private (unlisted) events'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Unlimited Events</td>
+        <td>{{t 'Unlimited events'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Attendee form</td>
+        <td>{{t 'Attendee form'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Custom attendee form question</td>
-        <td><i class="cross icon"></i></td>
-      </tr>
-      <tr class="center aligned">
-        <td>Digital or printed tickets</td>
+        <td>{{t 'Custom attendee form question'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Donation tickets</td>
+        <td>{{t 'Digital or printed tickets'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td rowspan="4">Payments</td>
-        <td>Secure payment processing</td>
+        <td>{{t 'Donation tickets'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Accepted all major credit cards</td>
+        <td rowspan="4">{{t 'Payments'}}</td>
+        <td>{{t 'Secure payment processing'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>All major currencies</td>
+        <td>{{t 'Accepting all major credit cards'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>payment processor</td>
+        <td>{{t 'All major currencies'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td>{{t 'payment processor'}}</td>
         <td>Paypal, Stripe</td>
       </tr>
       <tr class="center aligned">
-        <td rowspan="3">Tracking & Optimising</td>
-        <td>Sales/RSVP summary dashboard</td>
+        <td rowspan="3">{{t 'Tracking & Optimising'}}</td>
+        <td>{{t 'Sales/RSVP summary dashboard'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Detailed analytics by ticket type</td>
+        <td>{{t 'Detailed analytics by ticket type'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Detailed exports of all data </td>
+        <td>{{t 'Detailed exports of all data'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td rowspan="9">Call for speakers</td>
-        <td>Submissions</td>
-        <td>Up to 100</td>
+        <td rowspan="9">{{t 'Call for speakers'}}</td>
+        <td>{{t 'Submissions'}}</td>
+        <td>{{t 'Up to 200'}}</td>
       </tr>
       <tr class="center aligned">
-        <td>Speaker form</td>
+        <td>{{t 'Speakers form'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Custom speaker form question</td>
-        <td></td>
-      </tr>
-      <tr class="center aligned">
-        <td>Session form</td>
+        <td>{{t 'Custom speakers form questions'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>"LOCK" submission</td>
+        <td>{{t 'Session form'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Rating Process</td>
+        <td>{{t 'Custom session form questions'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Custom Session questions</td>
-        <td></td>
-      </tr>
-      <tr class="center aligned">
-        <td>API access </td>
+        <td>{{t 'API access'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Submission Management</td>
+        <td>{{t 'Submission management'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td rowspan="3">Scheduler</td>
-        <td>Organizer Schedule access</td>
+        <td>{{t '"LOCK" submission'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Create Schedule</td>
+        <td>{{t 'Rating process'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td>Public Schedule pages</td>
+        <td rowspan="3">{{t 'Scheduler'}}</td>
+        <td>{{t 'Organizer scheduler access'}}</td>
         <td><i class="check icon"></i></td>
       </tr>
       <tr class="center aligned">
-        <td rowspan="3"> PRICE </td>
+        <td>{{t 'Create schedule'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td>{{t 'Public schedule pages'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td rowspan="6">{{t 'Promotion'}}</td>
+        <td>{{t 'Public listing on website'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td>{{t 'Search engine listing'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td>{{t 'Sponsor listing on public event page'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td>{{t 'Attendee social sharing tools'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td>{{t 'Abandoned order emails'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td>{{t 'Discount and access codes'}}</td>
+        <td><i class="check icon"></i></td>
+      </tr>
+      <tr class="center aligned">
+        <td rowspan="3" class="upper-case">{{t 'Price'}}</td>
         <td rowspan="3"></td>
         <td rowspan="3">
         <LinkTo @route="create" class="ui blue button">
           {{t 'Create Event'}}
         </LinkTo>
-        <h3><i class="dollar icon"></i> FREE</h3></td>
+        <h3 class="upper-case"><i class="dollar icon"></i>{{t 'Free'}}</h3></td>
       </tr>
     </tbody>
   </table>

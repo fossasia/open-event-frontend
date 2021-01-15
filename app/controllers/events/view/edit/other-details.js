@@ -22,7 +22,7 @@ export default class OtherDetailsController extends Controller.extend(EventWizar
       );
     } catch (error) {
       console.error('Error while moving attendee', error);
-      this.notify.error(this.l10n.t(error.message),
+      this.notify.error(error.message,
         {
           id: 'attendee_move_error'
         });

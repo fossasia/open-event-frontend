@@ -22,11 +22,7 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
         filter       : filterOptions,
         sort         : 'id',
         'page[size]' : 50
-      })).toArray().filter(field => field.form === 'attendee'),
-      newFormField: {
-        name : '',
-        type : 'text'
-      }
+      })).toArray().filter(field => field.form === 'attendee')
     };
 
     return data;

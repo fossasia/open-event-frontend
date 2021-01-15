@@ -1,15 +1,13 @@
 import Route from '@ember/routing/route';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+import { capitalize } from 'lodash-es';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.params.speakers_status) {
-      case 'pending':
-        return this.l10n.t('Pending');
-      case 'accepted':
-        return this.l10n.t('Accepted');
-      case 'rejected':
-        return this.l10n.t('Rejected');
+    if (['accepted', 'rejected', 'confirmed', 'withdrawn', 'canceled'].includes(this.params.speakers_status)) {
+      return this.l10n.tVar(capitalize(this.params.speakers_status));
+    } else {
+      return this.l10n.t('All');
     }
   }
 
@@ -28,7 +26,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this.set('params', params);
     const searchField = 'name';
     let filterOptions = [];
-    if (params.speakers_status === 'pending') {
+    if (params.speakers_status && params.speakers_status !== 'all') {
       filterOptions = [
         {
           name : 'sessions',
@@ -36,43 +34,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           val  : {
             name : 'state',
             op   : 'eq',
-            val  : 'pending'
-          }
-        }
-      ];
-    } else if (params.speakers_status === 'accepted') {
-      filterOptions = [
-        {
-          name : 'sessions',
-          op   : 'any',
-          val  : {
-            name : 'state',
-            op   : 'eq',
-            val  : 'accepted'
-          }
-        }
-      ];
-    } else if (params.speakers_status === 'rejected') {
-      filterOptions = [
-        {
-          name : 'sessions',
-          op   : 'any',
-          val  : {
-            name : 'state',
-            op   : 'eq',
-            val  : 'rejected'
-          }
-        }
-      ];
-    } else if (params.speakers_status === 'confirmed') {
-      filterOptions = [
-        {
-          name : 'sessions',
-          op   : 'any',
-          val  : {
-            name : 'state',
-            op   : 'eq',
-            val  : 'confirmed'
+            val  : params.speakers_status
           }
         }
       ];

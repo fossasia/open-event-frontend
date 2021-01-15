@@ -12,10 +12,4 @@
     @widthConstraint="eq-container"
     @resizeMode="fluid"
     @fillMode="equal-column" />
-  <Modals::EventDeleteModal
-    @isLoading={{this.isLoading}}
-    @isOpen={{this.isEventDeleteModalOpen}}
-    @confirmName={{this.confirmName}}
-    @eventName={{this.eventName}}
-    @deleteEvent={{action "deleteEvent"}} />
 </div>

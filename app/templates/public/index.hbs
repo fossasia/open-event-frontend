@@ -45,7 +45,7 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if this.model.sponsors}}
+  {{#if (and this.model.event.isSponsorsEnabled this.model.sponsors)}}
     <h2 class="ui header" id="sponsor">
       {{t 'Supported By'}}
     </h2>
@@ -58,16 +58,38 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if this.model.event.hasOwnerInfo}}
-    <h2 class="ui header" id="owner">
+    <h2 class="ui header" id="organizer">
       {{t 'Organized  by'}} {{this.model.event.ownerName}}
     </h2>
     {{sanitize this.model.event.ownerDescription}}
     <div class="ui hidden divider"></div>
   {{/if}}
   <div class="location" id="getting-here">
-    <Public::EventMap
-      @event={{this.model.event}}
-      @mapConfig={{this.model.mapConfig}} />
+    {{#if this.model.event.locationName}}
+      <Public::EventMap
+        @event={{this.model.event}}
+        @mapConfig={{this.model.mapConfig}} />
+    {{/if}}
+    {{#if this.model.event.online}}
+      <h2>{{t 'Online Event'}}</h2>
+      <Public::Stream::StreamInfo
+        @showButton={{true}}
+        @event={{this.model.event}}
+        @videoStream={{this.model.event.videoStream}} />
+      {{#if this.model.event.liveStreamUrl}}
+        <div class="mt-4">
+          Live Stream: <a href="{{this.model.event.liveStreamUrl}}" target="_blank" rel="noopener noreferrer">{{this.model.event.liveStreamUrl}}</a>
+        </div>
+      {{/if}}
+      {{#if this.model.event.webinarUrl}}
+        <div class="mt-4">
+          Webinar: <a href="{{this.model.event.webinarUrl}}" target="_blank" rel="noopener noreferrer">{{this.model.event.webinarUrl}}</a>
+        </div>
+      {{/if}}
+    {{/if}}
+    {{#if (not (or this.model.event.online this.model.event.locationName))}}
+      <h2>{{t 'Location to be announced'}}</h2>
+    {{/if}}
   </div>
   <div class="ui hidden divider"></div>
   {{#if this.model.event.copyright}}

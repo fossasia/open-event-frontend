@@ -8,7 +8,7 @@
     <div class="row">
       <div class="column">
         <div class="ui small gray-text">
-          {{header-date this.model.order.event.startsAt}} - {{header-date this.model.order.event.endsAt}}
+          {{general-date this.model.order.event.startsAt 'date-time-long'}} - {{general-date this.model.order.event.endsAt 'date-time-long'}}
           <br>
           {{this.model.order.event.locationName}}
         </div>
@@ -21,15 +21,7 @@
           @tickets={{this.model.tickets}}
           @event={{this.model.event}}
           @eventCurrency={{this.model.order.event.paymentCurrency}} />
-      </div>
-      <div class="mobile hidden six wide column">
-        <Orders::EventInfo
-          @data={{this.model.order}}
-          @showBanner={{false}} />
-      </div>
-    </div>
-    <div class="row">
-      <div class="ten wide column">
+        <br/>
         <Forms::Orders::OrderForm
           @save="save"
           @data={{this.model.order}}
@@ -38,6 +30,15 @@
           @settings={{this.settings}} />
       </div>
       <div class="six wide column">
+        <Orders::EventInfo
+          @data={{this.model.order}}
+          @showBanner={{false}} />
+        <br/>
+        {{#if this.model.taxDetails}}
+          <Orders::CompanyInfo
+            @tax={{this.model.taxDetails}} />
+          <br/>
+        {{/if}}
         {{#if this.model.order.event.ownerName}}
           <div class="mobile hidden row">
             <Orders::OrganizerInfo

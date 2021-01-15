@@ -2,7 +2,7 @@
 <div class="header">
   {{t 'Notify Speakers'}}
 </div>
-<div class="content">
+<div class="content y-scrollable" style="height:400px">
   {{#if this.loading}}
     <div class="ui active inverted dimmer">
       <div class="ui text loader"></div>
@@ -11,14 +11,29 @@
   {{#if this.mail}}
     <form class="ui form">
       <div class="field">
-        <label>Subject</label>
+        <label>Name and Email</label>
+        <Input
+          type="text"
+          name="name and email"
+          @value={{this.speakerEmails}} 
+          disabled />
+      </div>
+      <div class="field">
+        <label>CC</label>
+        <Input
+          type="text"
+          name="cc"
+          @value={{this.bccString}} />
+      </div>     
+      <div class="field">
+        <label>{{t "Subject"}}</label>
         <Input
           type="text"
           name="subject"
           @value={{this.subject}} />
       </div>
       <div class="field">
-        <label>Message</label>
+        <label>{{t "Message"}}</label>
         <Textarea
           name="message"
           @rows="15"

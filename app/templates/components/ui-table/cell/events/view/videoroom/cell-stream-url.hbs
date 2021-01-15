@@ -1,0 +1,18 @@
+{{#if @record}}
+  <div class="ui action input" style="width: 100%; height: 36px">
+    <input class="truncate" style="flex: 1 0 !important" type="text" value={{this.streamUrl}} placeholder={{this.streamUrl}} readonly>
+    <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
+      <CopyButton @clipboardText={{this.streamUrl}} @class="ui grey icon button rounded-none m-0">
+        <i class="copy icon"></i>
+      </CopyButton>
+    </UiPopup>
+    <a 
+      id="stream_url"
+      href="{{href-to 'public.stream.view' (or @extraRecords.identifier @extraRecords.event.identifier) @record.slugName @record}}" 
+      target="_blank" rel="noopener">
+      <div  class="ui blue icon button ml-auto rounded-l-none m-0">
+        <i class="share icon" ></i>
+      </div>
+    </a>
+  </div>
+{{/if}}

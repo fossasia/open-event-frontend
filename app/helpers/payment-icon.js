@@ -3,11 +3,11 @@ import { helper } from '@ember/component/helper';
 export function paymentIcon(params) {
   switch (params[0]) {
     case 'Visa':
-      return 'big visa icon';
+      return 'big cc visa icon';
     case 'MasterCard':
-      return 'big mastercard icon';
+      return 'big cc mastercard icon';
     case 'American Express':
-      return 'big amex icon';
+      return 'big cc amex icon';
     default:
       return false;
   }

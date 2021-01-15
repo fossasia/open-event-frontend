@@ -1,0 +1,18 @@
+<div class="ui list basic segment m-0 pb-0">
+  <div class="item">
+    <i class="clock alternate outline icon pt-1"></i>
+    <div class="content">
+      <Public::EventDateTime @event={{@event}} />
+    </div>
+    <UiDropdown class="ui floating dropdown button mt-4">
+      {{t 'Add to Calendar'}}
+      <div class="menu">
+        {{#each this.calendarUrls as |calendar|}}
+          <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+            {{calendar.name}}
+          </a>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+</div>

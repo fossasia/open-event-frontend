@@ -1,0 +1,47 @@
+<div class="ui warning message mt-4 mb-8 ml--4 mr--4">
+  <div class="header">
+    {{t 'This feature is still in alpha stage'}}
+  </div>
+  {{t 'Please use with care.'}} {{t 'Thank You.'}}
+</div>
+<div class="sixteen wide column">
+  <h2 class="ui header mb-0">{{t 'Event Video Room'}}</h2>
+  <Tables::Default
+    @color='green'
+    @columns={{this.eventColumns}}
+    @rows={{this.events}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column"
+    @hideSearchBox={{true}}
+    @hidePagination={{true}}
+    @hidePageSize={{true}} />
+  <div class="ui grid space-between items-center mt-4 mb-4">
+      <div>
+        <h2 class="header">{{t 'Microlocation Video Rooms'}}</h2>
+      </div>
+      <div>
+        <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
+          {{t 'Add Room'}}
+        </button>
+      </div>
+    </div>
+  <Tables::Default
+    @color='blue'
+    @columns={{this.columns}}
+    @rows={{this.model.rooms.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.model.rooms.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
+</div>
+<Modals::AddRoomModal
+  @event={{this.model.event}}
+  @isOpen={{this.isRoomModalOpen}}
+  @onAdded={{action this.refreshModel}} />

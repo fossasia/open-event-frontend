@@ -5,6 +5,8 @@ import moment from 'moment';
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  sort_by = 'order.completed_at';
+  sort_dir = 'ASC';
   get columns() {
     return [
       {
@@ -15,16 +17,29 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-order'
       },
       {
-        name      : 'Ticket Name',
-        width     : 110,
-        valuePath : 'ticket.name'
+        name            : 'Ticket Name',
+        width           : 80,
+        valuePath       : 'ticket.name',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
+      },
+      {
+        name            : 'Date and Time',
+        width           : 140,
+        valuePath       : 'order.completed_at',
+        extraValuePaths : ['order'],
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-date',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
       },
       {
         name            : 'Ticket Price',
+        width           : 90,
         valuePath       : 'ticket.price',
-        width           : 100,
         extraValuePaths : ['event', 'discountCode'],
-        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price'
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
       },
       {
         name      : 'First Name',
@@ -39,12 +54,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name      : 'Email',
         valuePath : 'email',
-        width     : 160
+        width     : 120
       },
       {
         name            : 'Actions',
         valuePath       : 'id',
-        width           : 130,
+        width           : 90,
         extraValuePaths : ['order', 'isCheckedIn'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-action',
         actions         : {
@@ -64,11 +79,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     }
     attendee.save()
       .then(savedAttendee => {
-        this.notify.success(this.l10n.t(`Attendee ${savedAttendee.isCheckedIn ? 'Checked-In' : 'Checked-Out'} Successfully`));
+        const message = savedAttendee.isCheckedIn ? this.l10n.t('Attendee Checked-In Successfully') : this.l10n.t('Attendee Checked-Out Successfully');
+        this.notify.success(message);
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred'));
+      .catch(e => {
+        console.error('Error while attendee checking IN/OUT', e);
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
   }
 }

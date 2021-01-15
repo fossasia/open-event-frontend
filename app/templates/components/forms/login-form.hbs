@@ -1,6 +1,15 @@
-<div class="ui stackable {{unless this.noSocial 'three' 'one'}} column doubling centered grid">
+<div class="ui stackable {{unless this.noSocial 'three' 'one'}} column doubling centered grid mt-4">
+  <div class="flash-messages ui container">
+    {{#each flashMessages.queue as |flash|}}
+        <div class="ui {{flash.type}} message">
+         <div>
+           <FlashMessage @flash = {{flash}}/>
+          </div>
+        </div>
+    {{/each}}
+  </div>
   <div class="column">
-    <form class="ui large form" autocomplete="off" {{action 'submit' on='submit'}}>
+    <form class="ui large form" autocomplete="off">
       <div class="ui aligned segment basic no margin no padding">
         <h3 class="weight-400">{{t 'Login'}}</h3>
       </div>
@@ -34,8 +43,11 @@
             </div>
           </div>
           <div class="ui center aligned segment basic">
+            {{#if (and (gt this.counter 1) this.showHcaptcha)}}
+              <HCaptcha @onSuccess={{action (mut this.captchaValidated)}} @onExpired={{action (mut this.captchaValidated)}}/>
+            {{/if}}
             <div class="ui vertical buttons">
-              <button type="submit" class="ui fluid teal submit button register">
+              <button type="submit" class="ui fluid teal submit button register {{if (and (and (gt this.counter 1) (not this.captchaValidated)) this.showHcaptcha) 'disabled'}}">
                 {{t 'Login'}}
               </button>
               <div class="ui center aligned segment basic">

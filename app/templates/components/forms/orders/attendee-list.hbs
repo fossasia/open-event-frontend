@@ -13,22 +13,30 @@
           <div class="inline field">
             <i class="user icon"></i>
             <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+             <button class="ui right floated button {{if this.device.isMobile 'fluid'}} button"
+          {{action this.downloadTicketForAttendee @event.name holder.order.id holder.id }}>
+            <i class="ticket icon"></i>
+            {{t 'Download Ticket'}}
+          </button>
           </div>
+         
           {{# each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
-              <div class="field">
-                <h4 class="weight-300">
-                  {{field.name}}
-                </h4>
-                {{#if (is-input-field field.type) }}
-                  <span>{{get holder field.fieldIdentifier}}</span>
-                {{else if (eq field.type 'select')}}
-                  <span>{{get holder field.fieldIdentifier}}</span>
-                {{/if}}
-                {{#if field.isComplex}}
-                  <span>{{get holder.complexFieldValues field.fieldIdentifier}}</span>
-                {{/if}}
-              </div>
+              {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
+                <div class="field">
+                    <h4 class="weight-300">
+                      {{field.name}}
+                    </h4>
+                    {{#if (is-input-field field.type) }}
+                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
+                    {{else if (eq field.type 'select')}}
+                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
+                    {{/if}}
+                    {{#if field.isComplex}}
+                      <span class="word-break">{{get holder.complexFieldValues field.fieldIdentifier}}</span>
+                    {{/if}}
+                </div>
+              {{/if}}
             {{/if}}
           {{/each}}
           <div class="ui divider"></div>
@@ -44,7 +52,7 @@
             <div class="row">
               <div class="column">
                 <h4 class="weight-300">
-                  {{t 'Company '}}
+                  {{t 'Organisation'}}
                 </h4>
                 <p>{{this.data.company}}</p>
                 <h4 class="weight-300">
@@ -55,10 +63,10 @@
 
               <div class="column">
                 <h4 class="weight-300">
-                  {{t 'Address '}}
+                  {{t 'Address'}}
                 </h4>
                 <div class="ui list">
-                  <div class="item">
+                  <div class="item word-break">
                     {{this.data.address}}
                   </div>
                   <div class="item">

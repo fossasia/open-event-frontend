@@ -1,24 +1,14 @@
+<i class="black close icon"></i>
 <div class="header">
   {{t 'Add tax information'}}
 </div>
 <div class="y-scrollable scrollable-modal content">
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
-    <div class="field">
-      <label class="required">{{t 'Choose country'}}</label>
-      <UiDropdown @class="search selection" @selected={{this.tax.country}} @forceSelection={{false}} @fullTextSearch={{true}}>
-        <Input @type="hidden" @autocomplete="no" @id="tax_country" @value={{this.tax.country}} />
-        <i class="dropdown icon"></i>
-        <div class="default text">{{t 'Select country'}}</div>
-        <div class="menu">
-          {{#each this.countries as |country|}}
-            <div class="item" data-value="{{country.name}}">
-              <i class="{{lowercase country.code}} flag"></i>
-              {{country.name}}
-            </div>
-          {{/each}}
-        </div>
-      </UiDropdown>
-    </div>
+    <CountryDropdown
+      @required={{true}}
+      @placeholder={{t 'Choose country'}}
+      @val={{this.tax.country}}
+      @id="tax_country" />
     <div class="field">
       <label class="required">{{t 'Tax name'}}</label>
       <Input @type="text" @id="tax_name" @value={{this.tax.name}} />
@@ -39,13 +29,13 @@
           <strong>{{t 'Send tax invoice to attendees'}} : </strong>
           <span class="text muted">
             {{t 'Tax Invoices are sent to your attendees when you select this feature.
-            Enter your registered business company name and address to be included on the tax invoice.'}}
+            Enter your registered business organisation name and address to be included on the tax invoice.'}}
           </span>
         </label>
       </div>
     </div>
     <div class="field">
-      <label>{{t 'Registered Company'}}</label>
+      <label>{{t 'Registered Organisation'}}</label>
       <Input @type="text" @id="tax_invoice_company" @value={{this.tax.registeredCompany}} />
     </div>
     <div class="field">

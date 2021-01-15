@@ -1,6 +1,16 @@
+<TabbedNavigation>
+  <LinkTo @route="admin.sales.index" class="item">
+    {{t 'Orders'}}
+  </LinkTo>
+  <LinkTo @route="admin.sales.invoices" class="item">
+    {{t 'Invoices'}}
+  </LinkTo>
+</TabbedNavigation>
+<br>
 <div class="ui stackable grid">
   <div class="row">
     <div class="three wide column">
+      {{#if (not-eq this.session.currentRouteName 'admin.sales.invoices')}}
       <TabbedNavigation @isVertical={{true}}>
         <LinkTo @route="admin.sales.index" class="item">
           {{t 'By Events'}}
@@ -20,13 +30,17 @@
         <LinkTo @route="admin.sales.revenue" class="item">
           {{t 'Revenue'}}
         </LinkTo>
-        <LinkTo @route="admin.sales.invoices" class="item">
-          {{t 'Invoices'}}
-        </LinkTo>
       </TabbedNavigation>
+      {{/if}}
     </div>
-    <div class="thirteen wide column">
-      {{outlet}}
-    </div>
+    {{#if (not-eq this.session.currentRouteName 'admin.sales.invoices')}}
+      <div class="thirteen wide column">
+        {{outlet}}
+      </div>
+    {{else}}
+      <div class="sixteen wide column">
+        {{outlet}}
+      </div>
+    {{/if}}
   </div>
 </div>

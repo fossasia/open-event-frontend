@@ -25,7 +25,7 @@ export default class DownloadCommon extends Component {
 
   @computed
   get displayUrl() {
-    return this.get(`model.${  this.fileFormat  }Url`) !== null ? this.get(`model.${  this.fileFormat  }Url`) : 'Please publish to generate the link';
+    return this.get(`model.${  this.fileFormat  }Url`) !== null ? this.get(`model.${  this.fileFormat  }Url`) : this.l10n.t('Please publish to generate the link');
   }
 
   requestLoop(exportJobInfo) {
@@ -77,7 +77,7 @@ export default class DownloadCommon extends Component {
       .catch(e => {
         console.error('Error while starting exporting job', e);
         this.set('isLoading', false);
-        this.notify.error(this.l10n.t('Unexpected error occurred.'), {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
           id: 'unexpected_down_error'
         });
       });

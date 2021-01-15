@@ -6,15 +6,19 @@
       <div class="ui container">
         <div class="ui info d-flex">
           {{#if this.model.logoUrl}}
-            <img src="{{this.model.logoUrl}}" class="logo mr-8" />
+            <LinkTo @route="public">
+              <img src="{{this.model.logoUrl}}" class="logo mr-8" />
+            </LinkTo>
           {{/if}}
           <div>
-            <h4 class="event time">{{header-date this.model.startsAt this.model.timezone}}</h4>
+            <h4 class="event time">{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
             {{#if this.displayEndDate}}
-              <h5 class="event time ends">{{t 'To'}} {{header-date this.model.endsAt this.model.timezone}}</h5>
+              <h5 class="event time ends">{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
             {{/if}}
-            <h1 class="event name">{{this.model.name}}</h1>
-            <h4 class="event location"><i class="icon map marker alternate"></i>{{this.model.locationName}}</h4>
+            <LinkTo @route="public">
+              <h1 class="event name text-white">{{this.model.name}}</h1>
+            </LinkTo>
+            <h4 class="event location"><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
           </div>
         </div>
       </div>
@@ -25,26 +29,44 @@
       <div class="three wide column" id="public-event-content">
         {{#if this.device.isMobile}}
           {{#if this.displaySideMenu}}
-            <button {{action 'toggleMenu'}} class="ui basic icon button mobile only">
-              <i class="content icon"></i>
-            </button>
-            {{#if this.isMenuOpen}}
-              <Public::SideMenu @class="toggle menu" @event={{this.model}} />
-            {{/if}}
+            <Public::SideMenuOuter @event={{this.model}} />
           {{/if}}
         {{else}}
           <div class="ui fluid side-menu">
-            <Public::SideMenu @event={{this.model}} />
+            <Public::SideMenuOuter @event={{this.model}} />
           </div>
         {{/if}}
       </div>
+      {{#unless this.device.isMobile}}
       <div class="ten wide column">
         {{outlet}}
       </div>
+      {{/unless}}
       <div class="three wide column">
-        {{#if (not-eq this.session.currentRouteName 'public.cfs.new-speaker')}}
+        {{#if this.displaySideMenu}}
+          <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
+          <Public::Stream::JoinVideo @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 pt-0" />
+          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
+          {{#if (and this.device.isMobile this.twitterLink)}}
+              <div class="item">
+                <div class="twitter content">
+                  <UiAccordion>
+                    <div class="title pl-4" >
+                      <i class="dropdown icon"></i>
+                      <span>
+                        Recent tweets
+                      </span>
+                    </div>
+                    <div class="content" >
+                      <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                    </div>
+                  </UiAccordion>
+                </div>
+              </div>
+          {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
-            <div class="ui basic segment">
+            <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment">
+              <div class="mr-8">
               <h4>
                 {{t 'Tracks'}}
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}} data-tooltip="{{t 'Clear Track Filter'}}">
@@ -60,6 +82,9 @@
                   <i class="circle icon" style={{css color=track.color}}></i> {{track.name}}
                 </LinkTo>
               {{/each}}
+              </div>
+              <br>
+              <div>
               <h4>
                 {{t 'Rooms'}}
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash room=null}} data-tooltip="{{t 'Clear Room Filter'}}">
@@ -75,11 +100,36 @@
                   <i class="circle icon"></i> {{room.name}}
                 </LinkTo>
               {{/each}}
+              </div>
             </div>
           {{/if}}
-          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}} />
+          {{#if (and (not this.device.isMobile) this.twitterLink)}}
+              <div class="item">
+                <div class="twitter content">
+                  <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                </div>
+              </div>
+          {{/if}}
         {{/if}}
       </div>
+      {{#if this.device.isMobile}}
+        <div class="ten wide column">
+          {{outlet}}
+        </div>
+      {{/if}}
     </div>
   </div>
 </div>
+
+{{#if this.side_panel}}
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} />  
+{{/if}}
+
+{{#if this.video_dialog}}
+  <Modals::SimpleModal
+    @isOpen={{true}}
+    @header={{t 'Login or Buy Tickets'}}
+    @action={{this.toLogin}}>
+    {{t 'You need to login or get a ticket for this event before you can join it online.'}}
+  </Modals::SimpleModal>
+{{/if}}

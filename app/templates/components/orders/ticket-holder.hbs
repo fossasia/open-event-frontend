@@ -5,11 +5,11 @@
     </div>
     <div class="ui padded segment">
       <h4 class="ui horizontal divider header">
-        <i class="ticket icon"></i>
+        <i class="dollar icon"></i>
         {{t 'Ticket Buyer'}}
       </h4>
       <h4 class="weight-300">
-        {{t 'Name '}}
+        {{t 'Name'}}
       </h4>
       <span>
         {{this.buyer.firstName}} {{this.buyer.lastName}}
@@ -17,9 +17,9 @@
       <div class="ui divider"></div>
 
       <h4 class="weight-300">
-        {{t 'Email '}}
+        {{t 'Email'}}
       </h4>
-      <span>
+      <span class="word-break">
         {{this.buyer.email}}
       </span>
       {{#if (not-eq this.data.paymentMode 'free')}}
@@ -81,7 +81,7 @@
           {{/if}}
         {{else}}
           <h4 class="weight-300">
-            {{t 'Paid via '}}
+            {{t 'Paid via'}}
           </h4>
           {{capitalize this.data.paymentMode}}
         {{/if}}
@@ -96,7 +96,7 @@
         {{else if (eq this.data.paymentMode 'onsite')}}
           <div class="ui divider"></div>
           <h2 class="weight-300">
-            {{t 'Onsite Instructions '}}
+            {{t 'Onsite Instructions'}}
           </h2>
           <span>
             {{this.data.event.onsiteDetails}}
@@ -104,7 +104,7 @@
         {{else if (eq this.data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
           <h2 class="weight-300">
-            {{t 'Bank Details '}}
+            {{t 'Bank Details'}}
           </h2>
           <span>
             {{this.data.event.bankDetails}}

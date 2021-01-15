@@ -10,3 +10,22 @@
   position: absolute;
   top: 0;
 }
+
+@media (min-width: 600px) {
+  .slide-iframe,
+  .video-iframe {
+    height: 370px;
+  }
+}
+
+@media (max-width: 600px) {
+  .slide-iframe,
+  .video-iframe {
+    height: 250px;
+  }
+}
+
+.slide-iframe,
+.video-iframe {
+  max-width: 670px;
+}

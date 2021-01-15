@@ -9,13 +9,9 @@ export default class extends Controller {
   @tracked filter = '';
   isLoading = false;
 
-  @computed('model.event.schedulePublishedOn')
-  get isSchedulePublished() {
-    const schedulePublishStatus = this.model.event.schedulePublishedOn;
-    if (schedulePublishStatus != null) {
-      return schedulePublishStatus.toISOString() !== moment(0).toISOString();
-    }
-    return false;
+  @computed('model.microlocations')
+  get microlocations() {
+    return this.model.microlocations.sortBy('position');
   }
 
   @computed('model.unscheduled', 'filter')
@@ -32,7 +28,7 @@ export default class extends Controller {
       // If either one of start or end is missing, then return and throw an error
       // Either both should be present or none
 
-      this.notify.error('Start time or End time not present');
+      this.notify.error(this.l10n.t('Start time or End time not present'));
       return;
     }
 
@@ -65,12 +61,13 @@ export default class extends Controller {
     return this.loader
       .patch(`sessions/${sessionId}`, JSON.stringify(payload), config)
       .then(() => {
-        this.notify.success('Changes have been made successfully',
+        this.notify.success(this.l10n.t('Changes have been made successfully'),
           {
             id: 'schedu_change'
           });
       })
       .catch(reason => {
+        console('Error while scheduling', reason);
         this.set('error', reason);
         this.notify.error(`Error: ${reason}`);
       });
@@ -113,9 +110,9 @@ export default class extends Controller {
   @action
   async togglePublishState() {
     this.set('isLoading', true);
-    const stat = this.isSchedulePublished ? 'unpublished' : 'published';
-    const publishedAt = this.isSchedulePublished ? moment(0) : moment();
     const { event } = this.model;
+    const stat = event.isSchedulePublished ? 'unpublished' : 'published';
+    const publishedAt = event.isSchedulePublished ? moment(0) : moment();
     event.set('schedulePublishedOn', publishedAt);
     try {
       await event.save();

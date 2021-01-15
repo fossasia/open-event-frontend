@@ -1,0 +1,5 @@
+{{#if (eq @extraRecords.order.status 'completed')}}
+  {{general-date @extraRecords.order.completedAt 'date-time-short'}}
+{{else}}
+  {{general-date @extraRecords.order.createdAt 'date-time-short'}}
+{{/if}}

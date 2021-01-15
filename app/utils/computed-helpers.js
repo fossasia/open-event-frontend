@@ -1,42 +1,6 @@
 import { computed } from '@ember/object';
 import moment from 'moment';
-import { values } from 'lodash-es';
-import { isValidUrl } from 'open-event-frontend/utils/validators';
 import { FORM_DATE_FORMAT, FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
-
-/**
- * Get/set a splitted URL from/to a string URL field
- *
- * @param property The string URL field
- * @returns {*}
- */
-export const computedSegmentedLink = function(property) {
-  return computed(property, {
-    get() {
-      const splitted = this.get(property) ? this.get(property).split('://') : [];
-      if (!splitted || splitted.length === 0 || (splitted.length === 1 && splitted[0].includes('http'))) {
-        return {
-          protocol : 'https://',
-          address  : ''
-        };
-      }
-      const socialUrl = splitted[1].split('/');
-      return {
-        protocol : `${splitted[0]}://${socialUrl[0]}/`,
-        address  : socialUrl[1]
-      };
-    },
-    set(key, value) {
-      const finalLink = values(value).join('');
-      if (finalLink && isValidUrl(finalLink.trim())) {
-        this.set(property, finalLink.trim());
-      } else {
-        this.set(property, null);
-      }
-      return value;
-    }
-  });
-};
 
 /**
  * Get, set split date time from/to a Full datetime object

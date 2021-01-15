@@ -8,11 +8,12 @@ import moment from 'moment';
 import { groupBy, orderBy } from 'lodash-es';
 import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
-  validGithubProfileUrlPattern
+  validGithubProfileUrlPattern, validEmail
 } from 'open-event-frontend/utils/validators';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
+
 
 export default Component.extend(FormMixin, {
   router: service(),
@@ -22,11 +23,17 @@ export default Component.extend(FormMixin, {
   buyer             : readOnly('data.user'),
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
-  holders           : computed('data.attendees', function() {
-    this.data.attendees.forEach(attendee => {
-      attendee.set('firstname', '');
-      attendee.set('lastname', '');
-      attendee.set('email', '');
+  holders           : computed('data.attendees', 'buyer', function() {
+    this.data.attendees.forEach((attendee, index) => {
+      if (index === 0) {
+        attendee.set('firstname', this.buyerFirstName);
+        attendee.set('lastname', this.buyerLastName);
+        attendee.set('email', this.buyer.get('email'));
+      } else {
+        attendee.set('firstname', '');
+        attendee.set('lastname', '');
+        attendee.set('email', '');
+      }
     });
     return this.data.attendees;
   }),
@@ -37,7 +44,7 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer: false,
+  sameAsBuyer: true,
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
     return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
@@ -51,12 +58,17 @@ export default Component.extend(FormMixin, {
 
   timer(willExpireAt, orderIdentifier) {
     run.later(() => {
+      if (this.session.currentRouteName !== 'orders.new') {
+        return;
+      }
       const currentTime = moment();
       const diff = moment.duration(willExpireAt.diff(currentTime));
-      this.set('getRemainingTime', moment.utc(diff.asMilliseconds()).format('mm:ss'));
       if (diff > 0) {
+        this.set('getRemainingTime', moment.utc(diff.asMilliseconds()).format('mm:ss'));
         this.timer(willExpireAt, orderIdentifier);
       } else {
+        this.set('getRemainingTime', '00:00');
+        this.data.set('status', 'expired');
         this.data.reload();
         this.router.transitionTo('orders.expired', orderIdentifier);
       }
@@ -87,8 +99,9 @@ export default Component.extend(FormMixin, {
           prompt : this.l10n.t('Please enter your email')
         },
         {
-          type   : 'email',
-          prompt : this.l10n.t('Please enter a valid email')
+          type   : 'regExp',
+          value  : validEmail,
+          prompt : this.l10n.t('Please enter a valid email address')
         }
       ]
     };
@@ -202,11 +215,10 @@ export default Component.extend(FormMixin, {
     };
 
     const companyValidation = {
-      identifier : 'company',
-      rules      : [
+      rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter your company')
+          prompt : this.l10n.t('Please enter your organisation')
         }
       ]
     };
@@ -381,7 +393,8 @@ export default Component.extend(FormMixin, {
           identifier : 'email',
           rules      : [
             {
-              type   : 'email',
+              type   : 'regExp',
+              value  : validEmail,
               prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
@@ -418,7 +431,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your city ')
+              prompt : this.l10n.t('Please enter your city')
             }
           ]
         },
@@ -476,7 +489,7 @@ export default Component.extend(FormMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter ' + field.name)
+              prompt : this.l10n.t('Please enter {{field}}', { field: field.name })
             }
           ]
         };
@@ -487,7 +500,9 @@ export default Component.extend(FormMixin, {
   },
 
   allFields: computed('fields', function() {
-    return groupBy(this.fields.toArray(), field => field.get('form'));
+    const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['isComplex', 'name']);
+    return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
   genders   : orderBy(genders, 'name'),

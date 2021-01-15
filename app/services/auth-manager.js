@@ -145,7 +145,7 @@ export default class AuthManagerService extends Service {
         } catch (e) {
           console.warn(e);
           this.session.invalidate();
-          this.notify.error(this.l10n.t('An unexpected error has occurred'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         }
 
       } else {
