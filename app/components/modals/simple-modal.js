@@ -13,6 +13,6 @@ export default class SimpleModal extends ModalBase {
   @action
   performCancel() {
     this.close();
-    this.router.transitionTo('public', { queryParams: { video_dialog: null } });
+    this.cancel();
   }
 }

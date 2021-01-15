@@ -49,4 +49,9 @@ export default class PublicController extends Controller {
       this.transitionToRoute('login');
     }
   }
+
+  @action
+  cancel() {
+    this.router.transitionTo('public', { queryParams: { video_dialog: null } });
+  }
 }

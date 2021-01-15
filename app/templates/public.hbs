@@ -129,7 +129,8 @@
   <Modals::SimpleModal
     @isOpen={{true}}
     @header={{t 'Login or Buy Tickets'}}
-    @action={{this.toLogin}}>
+    @action={{this.toLogin}}
+    @cancel={{this.cancel}}>
     {{t 'You need to login or get a ticket for this event before you can join it online.'}}
   </Modals::SimpleModal>
 {{/if}}
