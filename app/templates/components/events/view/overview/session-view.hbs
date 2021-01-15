@@ -5,9 +5,9 @@
                 <div class="d-flex space-between">
                    <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{t-var field.name}}</label> 
                     {{#if field.isPublic}}
-                        <div class="ui green horizontal label">Public</div>
+                        <div class="ui green horizontal label">{{t 'Public'}}</div>
                     {{else}}
-                        <div class="ui red horizontal label">Private</div>
+                        <div class="ui red horizontal label">{{t 'Private'}}</div>
                     {{/if}} 
                 </div>
             </div>     
@@ -23,9 +23,9 @@
                     <div class="d-flex space-between">
                         <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{t 'Duration'}}</label> 
                         {{#if field.isPublic}}
-                            <div class="ui green horizontal label">Public</div>
+                            <div class="ui green horizontal label">{{t 'Public'}}</div>
                         {{else}}
-                            <div class="ui red horizontal label">Private</div>
+                            <div class="ui red horizontal label">{{t 'Private'}}</div>
                         {{/if}}
                     </div>
                 </div>
