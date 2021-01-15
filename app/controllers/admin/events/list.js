@@ -5,16 +5,13 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  sort_by = 'starts-at';
-
-  sort_dir = 'DSC';
 
    @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 
    get columns() {
      return [
        {
-         name            : this.l10n.t('Name'),
+         name            : 'Name',
          valuePath       : 'name',
          extraValuePaths : ['logoUrl', 'identifier', 'deletedAt', 'name'],
          isSortable      : true,
@@ -25,12 +22,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
            hasRestorePrivileges: this.hasRestorePrivileges
          },
          actions: {
-           deleteEvent  : this.deleteEvent.bind(this),
-           restoreEvent : this.restoreEvent.bind(this)
+           openDeleteEventModal : this.openDeleteEventModal.bind(this),
+           deleteEvent          : this.deleteEvent.bind(this),
+           restoreEvent         : this.restoreEvent.bind(this)
          }
        },
        {
-         name            : this.l10n.t('Starts At'),
+         name            : 'Starts At',
          valuePath       : 'startsAt',
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
@@ -39,7 +37,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width           : 75
        },
        {
-         name            : this.l10n.t('Ends At'),
+         name            : 'Ends At',
          valuePath       : 'endsAt',
          isSortable      : true,
          extraValuePaths : ['timezone'],
@@ -48,40 +46,40 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width           : 75
        },
        {
-         name            : this.l10n.t('State'),
+         name            : 'State',
          valuePath       : 'state',
          isSortable      : true,
          headerComponent : 'tables/headers/sort',
          width           : 80
        },
        {
-         name            : this.l10n.t('Roles'),
+         name            : 'Roles',
          valuePath       : 'owner',
          extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
          cellComponent   : 'ui-table/cell/cell-roles',
          width           : 185
        },
        {
-         name          : this.l10n.t('Sessions'),
+         name          : 'Sessions',
          valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-sessions',
          width         : 90
 
        },
        {
-         name          : this.l10n.t('Speakers'),
+         name          : 'Speakers',
          valuePath     : 'generalStatistics',
          cellComponent : 'ui-table/cell/cell-speakers-dashboard',
          width         : 90
        },
        {
-         name          : this.l10n.t('Public URL'),
+         name          : 'Public URL',
          valuePath     : 'url',
          cellComponent : 'ui-table/cell/cell-link',
          width         : 220
        },
        {
-         name            : this.l10n.t('Featured'),
+         name            : 'Featured Event',
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isFeatured'],
@@ -93,7 +91,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          }
        },
        {
-         name            : this.l10n.t('Promoted'),
+         name            : 'Promoted Event',
          valuePath       : 'id',
          isSortable      : true,
          extraValuePaths : ['isPromoted'],
@@ -103,50 +101,49 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          actions         : {
            togglePromoted: this.togglePromoted.bind(this)
          }
-       },
-       {
-         name            : this.l10n.t('Not on FrontPage'),
-         valuePath       : 'id',
-         isSortable      : true,
-         extraValuePaths : ['isDemoted'],
-         cellComponent   : 'ui-table/cell/admin/events/event-no-front',
-         headerComponent : 'tables/headers/sort',
-         width           : 80,
-         actions         : {
-           toggleDemoted: this.toggleDemoted.bind(this)
-         }
        }
      ];
    }
 
   @action
-   async deleteEvent(id) {
-     this.set('isLoading', true);
-     try {
-       const event =  this.store.peekRecord('event', id, { backgroundReload: false });
-       await event.destroyRecord();
-       this.notify.success(this.l10n.t('Event has been deleted successfully.'),
-         {
-           id: 'event_del_succ'
-         });
-       this.refreshModel.bind(this)();
-     } catch (e) {
-       console.error('Error while deleting event', e);
-       if (e.errors?.[0]?.detail) {
-         this.notify.error(this.l10n.tVar(e.errors[0].detail), {
-           id: 'event_delete_server_error'
-         });
-       } else {
-         this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-           {
-             id: 'event_delete_unknown_error'
-           });
-       }
-     }
+   openDeleteEventModal(id, name) {
      this.setProperties({
-       isLoading: false
+       isEventDeleteModalOpen : true,
+       confirmName            : '',
+       eventName              : name,
+       eventId                : id
      });
    }
+
+  @action
+  async deleteEvent() {
+    this.set('isLoading', true);
+    try {
+      const event =  this.store.peekRecord('event', this.eventId, { backgroundReload: false });
+      await event.destroyRecord();
+      this.notify.success(this.l10n.t('Event has been deleted successfully.'),
+        {
+          id: 'event_del_succ'
+        });
+      this.refreshModel.bind(this)();
+    } catch (e) {
+      console.error('Error while deleting event', e);
+      if (e.errors?.[0]?.detail) {
+        this.notify.error(this.l10n.tVar(e.errors[0].detail), {
+          id: 'event_delete_server_error'
+        });
+      } else {
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'event_delete_unknown_error'
+          });
+      }
+    }
+    this.setProperties({
+      isLoading              : false,
+      isEventDeleteModalOpen : false
+    });
+  }
 
   @action
   async restoreEvent(event_id) {
@@ -175,30 +172,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isFeatured');
-      event.setProperties({ isDemoted: false });
-      await event.save();
-      this.notify.success(this.l10n.t('Event details modified successfully'),
-        {
-          id: 'event_detail_changed'
-        });
-
-    } catch (e) {
-      console.error('Error while toggling featured event', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'event_det_error'
-        });
-    }
-    this.set('isLoading', false);
-  }
-
-  @action
-  async toggleDemoted(event_id) {
-    this.set('isLoading', true);
-    try {
-      const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
-      event.toggleProperty('isDemoted');
-      event.setProperties({ isFeatured: false, isPromoted: false });
       await event.save();
       this.notify.success(this.l10n.t('Event details modified successfully'),
         {
@@ -221,9 +194,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       const event =  this.store.peekRecord('event', event_id, { backgroundReload: false });
       event.toggleProperty('isPromoted');
-      event.setProperties({ isDemoted: false });
       await event.save();
-      this.notify.success(event.isPromoted ? this.l10n.t('Event promoted successfully') : this.l10n.t('Event unpromoted successfully'),
+      this.notify.success(this.l10n.t(`Event ${event.isPromoted ? 'Promoted' : 'unpromoted'} Successfully`),
         {
           id: 'event_detail_changed'
         });

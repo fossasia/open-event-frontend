@@ -4,7 +4,6 @@ import 'moment-timezone';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 
 interface Args {
-  defaultLocal: boolean,
   eventTimezone: string,
   timezone: string
 }

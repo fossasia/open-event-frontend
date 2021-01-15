@@ -24,7 +24,7 @@ class Router extends RouterScroll {
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
       const page = this.url;
-      const title = this.get('currentRouteName') ?? 'unknown';
+      const title = this.getWithDefault('currentRouteName', 'unknown');
       this.metrics.trackPage({ page, title });
       this.set('session.currentRouteName', title);
     });
@@ -44,12 +44,6 @@ Router.map(function() {
     this.route('sessions', { path: '/schedule' });
     this.route('session', function() {
       this.route('view', { path: '/:session_id' });
-    });
-    this.route('stream', { path: '/video/:video_name' }, function() {
-      this.route('view', { path: '/:stream_id' });
-    });
-    this.route('speaker', function() {
-      this.route('view', { path: '/:speaker_id' });
     });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
       this.route('new-speaker');
@@ -79,10 +73,8 @@ Router.map(function() {
         this.route('sessions-speakers');
         this.route('attendee');
       });
-      this.route('settings', function() {
-        this.route('export');
-        this.route('options');
-      });
+      this.route('export');
+      this.route('settings');
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
@@ -113,15 +105,7 @@ Router.map(function() {
         this.route('edit', { path: '/:speaker_id/edit' });
         this.route('create');
       });
-      this.route('videoroom', { path: '/video' }, function() {
-        this.route('list', { path: '/:status' });
-        this.route('edit', { path: '/:stream_id/edit' });
-        this.route('create');
-      });
       this.route('scheduler');
-      this.route('team', function() {
-        this.route('permissions');
-      });
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
@@ -153,6 +137,9 @@ Router.map(function() {
     this.route('all', { path: '/:notification_state' });
   });
   this.route('admin', function() {
+    this.route('messages', function() {
+      this.route('list');
+    });
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });
       this.route('import');
@@ -208,7 +195,6 @@ Router.map(function() {
       this.route('payment-gateway');
       this.route('ticket-fees');
       this.route('billing');
-      this.route('frontpage');
     });
     this.route('content', function() {
       this.route('social-links');

@@ -1,13 +1,12 @@
-export interface Country {
-  name: string;
-  code: string;
-}
-
 /**
  * Using a lean list of countries instead of an external dependency.
  * All the libraries have a lot of extra data which is of no use to us at this point and unnecessarily takes up more space.
  */
-export const countries: Country[] = [
+export const countries = [
+  {
+    name : 'Ascension Island',
+    code : 'AC'
+  },
   {
     name : 'Andorra',
     code : 'AD'
@@ -29,12 +28,20 @@ export const countries: Country[] = [
     code : 'AI'
   },
   {
+    name : 'French Afar and Issas',
+    code : 'AI'
+  },
+  {
     name : 'Albania',
     code : 'AL'
   },
   {
     name : 'Armenia',
     code : 'AM'
+  },
+  {
+    name : 'Netherlands Antilles',
+    code : 'AN'
   },
   {
     name : 'Angola',
@@ -65,7 +72,7 @@ export const countries: Country[] = [
     code : 'AW'
   },
   {
-    name : 'Åland',
+    name : 'Åland Islands',
     code : 'AX'
   },
   {
@@ -73,7 +80,7 @@ export const countries: Country[] = [
     code : 'AZ'
   },
   {
-    name : 'Bosnia and Herzegovina',
+    name : 'Bosnia & Herzegovina',
     code : 'BA'
   },
   {
@@ -117,7 +124,7 @@ export const countries: Country[] = [
     code : 'BM'
   },
   {
-    name : 'Brunei',
+    name : 'Brunei Darussalam',
     code : 'BN'
   },
   {
@@ -125,7 +132,11 @@ export const countries: Country[] = [
     code : 'BO'
   },
   {
-    name : 'Bonaire',
+    name : 'Bonaire, Saint Eustatius And Saba',
+    code : 'BQ'
+  },
+  {
+    name : 'British Antarctic Territory',
     code : 'BQ'
   },
   {
@@ -141,6 +152,10 @@ export const countries: Country[] = [
     code : 'BT'
   },
   {
+    name : 'Burma',
+    code : 'BU'
+  },
+  {
     name : 'Bouvet Island',
     code : 'BV'
   },
@@ -153,6 +168,10 @@ export const countries: Country[] = [
     code : 'BY'
   },
   {
+    name : 'Byelorussian SSR',
+    code : 'BY'
+  },
+  {
     name : 'Belize',
     code : 'BZ'
   },
@@ -161,7 +180,7 @@ export const countries: Country[] = [
     code : 'CA'
   },
   {
-    name : 'Cocos [Keeling] Islands',
+    name : 'Cocos (Keeling) Islands',
     code : 'CC'
   },
   {
@@ -173,7 +192,7 @@ export const countries: Country[] = [
     code : 'CF'
   },
   {
-    name : 'Republic Of the Congo',
+    name : 'Republic Of Congo',
     code : 'CG'
   },
   {
@@ -181,7 +200,7 @@ export const countries: Country[] = [
     code : 'CH'
   },
   {
-    name : 'Ivory Coast',
+    name : 'Côte d\'Ivoire',
     code : 'CI'
   },
   {
@@ -205,15 +224,31 @@ export const countries: Country[] = [
     code : 'CO'
   },
   {
+    name : 'Clipperton Island',
+    code : 'CP'
+  },
+  {
     name : 'Costa Rica',
     code : 'CR'
+  },
+  {
+    name : 'Czechoslovakia',
+    code : 'CS'
+  },
+  {
+    name : 'Serbia and Montenegro',
+    code : 'CS'
+  },
+  {
+    name : 'Canton and Enderbury Islands',
+    code : 'CT'
   },
   {
     name : 'Cuba',
     code : 'CU'
   },
   {
-    name : 'Cape Verde',
+    name : 'Cabo Verde',
     code : 'CV'
   },
   {
@@ -233,8 +268,16 @@ export const countries: Country[] = [
     code : 'CZ'
   },
   {
+    name : 'German Democratic Republic',
+    code : 'DD'
+  },
+  {
     name : 'Germany',
     code : 'DE'
+  },
+  {
+    name : 'Diego Garcia',
+    code : 'DG'
   },
   {
     name : 'Djibouti',
@@ -253,8 +296,16 @@ export const countries: Country[] = [
     code : 'DO'
   },
   {
+    name : 'Dahomey',
+    code : 'DY'
+  },
+  {
     name : 'Algeria',
     code : 'DZ'
+  },
+  {
+    name : 'Ceuta, Mulilla',
+    code : 'EA'
   },
   {
     name : 'Ecuador',
@@ -285,6 +336,10 @@ export const countries: Country[] = [
     code : 'ET'
   },
   {
+    name : 'European Union',
+    code : 'EU'
+  },
+  {
     name : 'Finland',
     code : 'FI'
   },
@@ -297,12 +352,16 @@ export const countries: Country[] = [
     code : 'FK'
   },
   {
-    name : 'Micronesia',
+    name : 'Federated States Of Micronesia',
     code : 'FM'
   },
   {
     name : 'Faroe Islands',
     code : 'FO'
+  },
+  {
+    name : 'French Southern and Antarctic Territories',
+    code : 'FQ'
   },
   {
     name : 'France',
@@ -322,6 +381,10 @@ export const countries: Country[] = [
   },
   {
     name : 'Georgia',
+    code : 'GE'
+  },
+  {
+    name : 'Gilbert and Ellice Islands',
     code : 'GE'
   },
   {
@@ -365,7 +428,7 @@ export const countries: Country[] = [
     code : 'GR'
   },
   {
-    name : 'South Georgia and The South Sandwich Islands',
+    name : 'South Georgia And The South Sandwich Islands',
     code : 'GS'
   },
   {
@@ -377,7 +440,7 @@ export const countries: Country[] = [
     code : 'GU'
   },
   {
-    name : 'Guinea-Bissau',
+    name : 'Guinea-bissau',
     code : 'GW'
   },
   {
@@ -409,6 +472,14 @@ export const countries: Country[] = [
     code : 'HU'
   },
   {
+    name : 'Upper Volta',
+    code : 'HV'
+  },
+  {
+    name : 'Canary Islands',
+    code : 'IC'
+  },
+  {
     name : 'Indonesia',
     code : 'ID'
   },
@@ -421,7 +492,7 @@ export const countries: Country[] = [
     code : 'IL'
   },
   {
-    name : 'Isle of Man',
+    name : 'Isle Of Man',
     code : 'IM'
   },
   {
@@ -463,6 +534,10 @@ export const countries: Country[] = [
   {
     name : 'Japan',
     code : 'JP'
+  },
+  {
+    name : 'Johnston Island',
+    code : 'JT'
   },
   {
     name : 'Kenya',
@@ -509,7 +584,7 @@ export const countries: Country[] = [
     code : 'KZ'
   },
   {
-    name : 'Laos',
+    name : 'Lao People\'s Democratic Republic',
     code : 'LA'
   },
   {
@@ -581,7 +656,11 @@ export const countries: Country[] = [
     code : 'MH'
   },
   {
-    name : 'North Macedonia',
+    name : 'Midway Islands',
+    code : 'MI'
+  },
+  {
+    name : 'Macedonia (The Former Yugoslav Republic Of Macedonia)',
     code : 'MK'
   },
   {
@@ -665,6 +744,10 @@ export const countries: Country[] = [
     code : 'NG'
   },
   {
+    name : 'New Hebrides',
+    code : 'NH'
+  },
+  {
     name : 'Nicaragua',
     code : 'NI'
   },
@@ -679,6 +762,10 @@ export const countries: Country[] = [
   {
     name : 'Nepal',
     code : 'NP'
+  },
+  {
+    name : 'Dronning Maud Land',
+    code : 'NQ'
   },
   {
     name : 'Nauru',
@@ -699,6 +786,10 @@ export const countries: Country[] = [
   {
     name : 'Panama',
     code : 'PA'
+  },
+  {
+    name : 'Trust Territory of the Pacific Islands',
+    code : 'PC'
   },
   {
     name : 'Peru',
@@ -729,7 +820,7 @@ export const countries: Country[] = [
     code : 'PM'
   },
   {
-    name : 'Pitcairn Islands',
+    name : 'Pitcairn',
     code : 'PN'
   },
   {
@@ -737,12 +828,16 @@ export const countries: Country[] = [
     code : 'PR'
   },
   {
-    name : 'Palestinian',
+    name : 'Palestinian Territory, Occupied',
     code : 'PS'
   },
   {
     name : 'Portugal',
     code : 'PT'
+  },
+  {
+    name : 'U.S. Miscellaneous Pacific Islands',
+    code : 'PU'
   },
   {
     name : 'Palau',
@@ -753,12 +848,20 @@ export const countries: Country[] = [
     code : 'PY'
   },
   {
+    name : 'Panama Canal Zone',
+    code : 'PZ'
+  },
+  {
     name : 'Qatar',
     code : 'QA'
   },
   {
     name : 'Reunion',
     code : 'RE'
+  },
+  {
+    name : 'Southern Rhodesia',
+    code : 'RH'
   },
   {
     name : 'Romania',
@@ -769,7 +872,7 @@ export const countries: Country[] = [
     code : 'RS'
   },
   {
-    name : 'Russian',
+    name : 'Russian Federation',
     code : 'RU'
   },
   {
@@ -801,7 +904,7 @@ export const countries: Country[] = [
     code : 'SG'
   },
   {
-    name : 'Saint Helena',
+    name : 'Saint Helena, Ascension And Tristan Da Cunha',
     code : 'SH'
   },
   {
@@ -814,6 +917,10 @@ export const countries: Country[] = [
   },
   {
     name : 'Slovakia',
+    code : 'SK'
+  },
+  {
+    name : 'Sikkim',
     code : 'SK'
   },
   {
@@ -845,6 +952,10 @@ export const countries: Country[] = [
     code : 'ST'
   },
   {
+    name : 'USSR',
+    code : 'SU'
+  },
+  {
     name : 'El Salvador',
     code : 'SV'
   },
@@ -853,12 +964,16 @@ export const countries: Country[] = [
     code : 'SX'
   },
   {
-    name : 'Syria',
+    name : 'Syrian Arab Republic',
     code : 'SY'
   },
   {
     name : 'Swaziland',
     code : 'SZ'
+  },
+  {
+    name : 'Tristan de Cunha',
+    code : 'TA'
   },
   {
     name : 'Turks And Caicos Islands',
@@ -889,7 +1004,7 @@ export const countries: Country[] = [
     code : 'TK'
   },
   {
-    name : 'East Timor',
+    name : 'Timor-Leste',
     code : 'TL'
   },
   {
@@ -903,6 +1018,10 @@ export const countries: Country[] = [
   {
     name : 'Tonga',
     code : 'TO'
+  },
+  {
+    name : 'East Timor',
+    code : 'TP'
   },
   {
     name : 'Turkey',
@@ -949,7 +1068,7 @@ export const countries: Country[] = [
     code : 'UZ'
   },
   {
-    name : 'Vatican City',
+    name : 'Vatican City State',
     code : 'VA'
   },
   {
@@ -961,15 +1080,15 @@ export const countries: Country[] = [
     code : 'VE'
   },
   {
-    name : 'British Virgin Islands',
+    name : 'Virgin Islands (British)',
     code : 'VG'
   },
   {
-    name : 'U.S. Virgin Islands',
+    name : 'Virgin Islands (US)',
     code : 'VI'
   },
   {
-    name : 'Vietnam',
+    name : 'Viet Nam',
     code : 'VN'
   },
   {
@@ -981,6 +1100,10 @@ export const countries: Country[] = [
     code : 'WF'
   },
   {
+    name : 'Wake Island',
+    code : 'WK'
+  },
+  {
     name : 'Samoa',
     code : 'WS'
   },
@@ -990,11 +1113,15 @@ export const countries: Country[] = [
   },
   {
     name : 'Yemen',
-    code : 'YE'
+    code : 'YD'
   },
   {
     name : 'Mayotte',
     code : 'YT'
+  },
+  {
+    name : 'Yugoslavia',
+    code : 'YU'
   },
   {
     name : 'South Africa',
@@ -1003,6 +1130,10 @@ export const countries: Country[] = [
   {
     name : 'Zambia',
     code : 'ZM'
+  },
+  {
+    name : 'Zaire',
+    code : 'ZR'
   },
   {
     name : 'Zimbabwe',

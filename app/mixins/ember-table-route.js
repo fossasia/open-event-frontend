@@ -1,5 +1,5 @@
 import Mixin from '@ember/object/mixin';
-import { kebabCase } from 'open-event-frontend/utils/text';
+import { kebabCase } from 'lodash-es';
 
 export default Mixin.create({
   queryParams: {
@@ -20,30 +20,20 @@ export default Mixin.create({
     }
   },
 
-  applySearchFilters(options, params, searchFields) {
-    if (!Array.isArray(searchFields)) {
-      searchFields = [searchFields];
-    }
-    let filters = options;
-    if (searchFields.length > 1) {
-      filters = [];
-      options.pushObject({ or: filters });
-    }
-    for (let searchField of searchFields) {
-      searchField = kebabCase(searchField);
-      if (params.search) {
-        filters.pushObject({
-          name : searchField,
-          op   : 'ilike',
-          val  : `%${params.search}%`
-        });
-      } else {
-        filters.removeObject({
-          name : searchField,
-          op   : 'ilike',
-          val  : `%${params.search}%`
-        });
-      }
+  applySearchFilters(options, params, searchField) {
+    searchField = kebabCase(searchField);
+    if (params.search) {
+      options.pushObject({
+        name : searchField,
+        op   : 'ilike',
+        val  : `%${params.search}%`
+      });
+    } else {
+      options.removeObject({
+        name : searchField,
+        op   : 'ilike',
+        val  : `%${params.search}%`
+      });
     }
     return options;
   },

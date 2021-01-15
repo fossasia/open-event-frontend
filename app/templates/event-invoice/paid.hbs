@@ -18,11 +18,11 @@
   </div>
   <div class="row">
     <div class="column right aligned">
-      <a href="{{ this.model.invoicePdfUrl }}" target="_blank" rel="noopener"
+      <button {{action 'downloadEventInvoice' this.model.event.name this.model.identifier }}
         class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} button">
-        <i class="download icon"></i>
-        {{t 'Download Invoice'}}
-      </a>
+        <i class="print alternate icon"></i>
+        {{t 'Print Invoice'}}
+      </button>
     </div>
   </div>
   <div class="row">

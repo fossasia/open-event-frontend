@@ -1,21 +1,19 @@
 import Route from '@ember/routing/route';
+import moment from 'moment';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import { action } from '@ember/object';
-import { capitalize } from 'lodash-es';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
-  queryParams = {
-    ...this.queryParams,
-    user_id: {
-      refreshModel: true
-    }
-  }
-
   titleToken() {
-    if (['paid', 'due', 'refunding', 'refunded'].includes(this.params.invoice_status)) {
-      return capitalize(this.params.invoice_status);
-    } else {
-      return this.l10n.t('All');
+    switch (this.params.invoice_status) {
+      case 'paid':
+        return this.l10n.t('Paid');
+      case 'due':
+        return this.l10n.t('Due');
+      case 'upcoming':
+        return this.l10n.t('Upcoming');
+      case 'all':
+        return this.l10n.t('All');
     }
   }
 
@@ -23,12 +21,29 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this.set('params', params);
     const searchField = 'status';
     let filterOptions = [];
-    if (['paid', 'due', 'refunding', 'refunded'].includes(params.invoice_status)) {
+    if (params.invoice_status === 'paid' || params.invoice_status === 'due') {
       filterOptions = [
         {
           name : 'status',
           op   : 'eq',
           val  : params.invoice_status
+        }
+      ];
+    } else if (params.invoice_status === 'upcoming') {
+      filterOptions = [
+        {
+          and: [
+            {
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
+            },
+            {
+              name : 'created-at',
+              op   : 'ge',
+              val  : moment().subtract(30, 'days').toISOString()
+            }
+          ]
         }
       ];
     }
@@ -44,9 +59,8 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
 
     queryString = this.applySortFilters(queryString, params);
-    const user = params.user_id ? await this.store.findRecord('user', params.user_id) : this.authManager.currentUser;
     return {
-      eventInvoices: await this.asArray(user.query('eventInvoices', queryString)),
+      eventInvoices: await this.asArray(this.store.query('event-invoice', queryString)),
       params
 
     };

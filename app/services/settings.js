@@ -3,7 +3,6 @@ import { observer } from '@ember/object';
 
 export default Service.extend({
 
-  cache       : service(),
   store       : service(),
   session     : service(),
   authManager : service(),
@@ -26,7 +25,7 @@ export default Service.extend({
    * @private
    */
   async _loadSettings() {
-    const settingsModel = await this.cache.queryRecord('settings', 'setting', { public: true });
+    const settingsModel = await this.store.queryRecord('setting', {});
     this.store.modelFor('setting').eachAttribute(attributeName => {
       this.set(attributeName, settingsModel.get(attributeName));
     });

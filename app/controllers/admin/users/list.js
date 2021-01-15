@@ -5,18 +5,14 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  sort_by = 'created-at';
-
-  sort_dir = 'ASC';
-
   @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 
   get columns() {
     return [
       {
-        name            : this.l10n.t('Name'),
+        name            : 'Name',
         valuePath       : 'firstName',
-        extraValuePaths : ['fullName', 'deletedAt', 'id', 'isSuperAdmin'],
+        extraValuePaths : ['deletedAt', 'id', 'isSuperAdmin'],
         cellComponent   : 'ui-table/cell/admin/users/cell-first-name',
         width           : 155,
         isSortable      : true,
@@ -32,25 +28,25 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : this.l10n.t('Email'),
+        name            : 'Email',
         valuePath       : 'email',
         width           : 175,
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name          : this.l10n.t('Status'),
+        name          : 'Status',
         valuePath     : 'status',
         cellComponent : 'ui-table/cell/admin/users/cell-status'
       },
       {
-        name            : this.l10n.t('System Roles'),
+        name            : 'System Roles',
         valuePath       : 'isSuperAdmin',
         extraValuePaths : ['isAdmin', 'isVerified'],
         cellComponent   : 'ui-table/cell/admin/users/cell-system-roles'
       },
       {
-        name            : this.l10n.t('Event Roles'),
+        name            : 'Event Roles',
         valuePath       : 'isSuperAdmin',
         width           : 260,
         extraValuePaths : ['isAdmin', 'isUserOwner', 'ownerEvents',
@@ -61,23 +57,26 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent: 'ui-table/cell/admin/users/cell-event-roles'
       },
       {
-        name          : this.l10n.t('User Links'),
+        name          : 'User Links',
         valuePath     : 'id',
         cellComponent : 'ui-table/cell/admin/users/cell-user-links'
       },
       {
-        name            : this.l10n.t('Member Since'),
+        name            : 'Member Since',
         valuePath       : 'createdAt',
-        cellComponent   : 'ui-table/cell/cell-simple-date',
+        cellComponent   : 'ui-table/cell/admin/users/cell-created-at',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name            : this.l10n.t('Last Accessed'),
+        name            : 'Last Accessed',
         valuePath       : 'lastAccessedAt',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
-        cellComponent   : 'ui-table/cell/cell-simple-date'
+        cellComponent   : 'ui-table/cell/cell-simple-date',
+        options         : {
+          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+        }
       }
     ];
   }

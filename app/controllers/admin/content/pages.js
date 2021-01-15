@@ -4,9 +4,9 @@ import { action } from '@ember/object';
 
 export default class extends Controller {
 
-  @filterBy('model', 'place', 'footer') footerPages;
+  footerPages = filterBy('model', 'place', 'footer');
 
-  @filterBy('model', 'place', 'event') eventPages;
+  eventPages = filterBy('model', 'place', 'event');
 
   @action
   updateCurrentPage(page, type) {

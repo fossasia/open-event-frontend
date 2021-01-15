@@ -53,7 +53,7 @@ export default class ScheduleRoute extends Route {
     ];
 
     const sessions = await event.query('sessions', {
-      include      : 'speakers,microlocation,track,microlocation.video-stream',
+      include      : 'speakers,microlocation,track',
       filter       : scheduledFilterOptions,
       'page[size]' : 0
     });

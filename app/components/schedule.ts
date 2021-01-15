@@ -8,12 +8,9 @@ import moment from 'moment';
 import $ from 'jquery';
 import { isTesting } from 'open-event-frontend/utils/testing';
 import { getTextColor } from 'open-event-frontend/utils/color';
-import { tracked } from '@glimmer/tracking';
-import { next } from '@ember/runloop';
 
 interface ScheduleArgs {
   timezone: string | undefined,
-  isPublic: boolean | undefined,
   event: Event,
   sessions: Session[],
   rooms: Microlocation[]
@@ -23,11 +20,8 @@ export default class Schedule extends Component<ScheduleArgs> {
   header = {
     left   : 'prev,next',
     center : 'title',
-    right  : 'agendaDay,timelineThreeDays,agendaWeek'
+    right  : 'timelineDay,agendaDay,timelineThreeDays,agendaWeek'
   }
-
-  @tracked
-  render = true;
 
   get validRange() { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
     const { event } = this.args;
@@ -69,14 +63,10 @@ export default class Schedule extends Component<ScheduleArgs> {
     return this.args.sessions.map(session => {
       const speakerNames = session.speakers.map((speaker: Speaker) => speaker.name).join(', ');
       const color = session.track.get('color');
-      let sessionEndTime = session.endsAt.tz(this.timezone).format();
-      if (session.endsAt.tz(this.timezone).format() > this.args.event.endsAt.tz(this.timezone).format()) {
-        sessionEndTime = this.args.event.endsAt.tz(this.timezone).format();
-      }
       return {
         title      : `${session.title} | ${speakerNames}`,
         start      : session.startsAt.tz(this.timezone).format(),
-        end        : sessionEndTime,
+        end        : session.endsAt.tz(this.timezone).format(),
         resourceId : session.microlocation.get('id'),
         color,
         textColor  : getTextColor(color),
@@ -125,18 +115,8 @@ export default class Schedule extends Component<ScheduleArgs> {
    */
   adjustMinTime(view: FullCalendarView, calendar: JQuery<HTMLElement>): void {
     if (isTesting || !(view.type === 'agendaDay' || view.type === 'timelineDay')) {return}
-    let min_time = '24:00:00';
-    if (this.args.isPublic === true) {
-      this.args.sessions.map(x => {
-        const z = String(x.startsAt.format('HH:mm:ss'));
-        if (min_time > z) {
-          min_time = z;
-        }
-      });
-    } else {
-      min_time = '0:00:00';
-    }
-    let minTime = min_time;
+
+    let minTime = '0:00:00';
     let maxTime = '24:00:00';
     if (view.start.isSame(this.args.event.startsAt, 'day')) {
       ({ minTime } = this);
@@ -160,16 +140,6 @@ export default class Schedule extends Component<ScheduleArgs> {
     const calendar = $('.full-calendar');
     this.adjustColumnWidth(view, calendar);
     this.adjustMinTime(view, calendar);
-  }
-
-  @action
-  timezoneUpdated(): void {
-    // Workaround to rerender calendar as updating it dynamically
-    // is not possible
-    this.render = false;
-    next(this, () => {
-      this.render = true;
-    });
   }
 }
 

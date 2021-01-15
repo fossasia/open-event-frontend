@@ -25,7 +25,6 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
 
   notify  : service(),
   session : service(),
-  l10n    : service(),
 
   headers: computed('session.data.authenticated', function() {
     const headers = {
@@ -41,7 +40,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
 
   isInvalid(statusCode) {
     if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403 && statusCode !== 409) {
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+      this.notify.error('An unexpected error occurred.', {
         closeAfter : 5000,
         id         : 'serve_error'
       });
@@ -56,21 +55,6 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
   queryRecord(store, type, query) {
     query = fixFilterQuery(query);
     return this._super(store, type, query);
-  },
-
-  ajaxOptions(url, type) {
-    const request = this._super(...arguments);
-
-    // The requests with public=true will not be authorized
-    if (type === 'GET') {
-      if (request.data.public) {delete request.headers[ENV['ember-simple-auth-token'].authorizationHeaderName]}
-
-      if (ENV.noCache === 'true') {
-        request.data.nocache = true;
-      }
-    }
-
-    return request;
   },
 
   /**

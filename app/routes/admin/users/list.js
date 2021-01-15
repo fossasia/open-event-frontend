@@ -27,6 +27,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
+    const searchField = 'firstName';
     if (params.users_status === 'active') {
       filterOptions = [
         {
@@ -79,7 +80,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         }
       ];
     }
-    filterOptions = this.applySearchFilters(filterOptions, params, ['firstName', 'lastName', 'email']);
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
 
     let queryString = {
       include        : 'events',
