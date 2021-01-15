@@ -20,6 +20,11 @@
         @event={{this.model.event}}
         @eventCurrency={{this.model.order.event.paymentCurrency}} />
       <br/>
+      {{#if this.model.event.afterOrderMessage}}
+        <Orders::AfterOrderMessage
+          @event={{this.model.event}} />
+        <br/>
+      {{/if}}
       <Forms::Orders::AttendeeList
         @save="save"
         @data={{this.model.order}}
