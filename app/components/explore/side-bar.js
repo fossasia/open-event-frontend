@@ -17,10 +17,6 @@ export default class SideBar extends Component {
   @tracked showFilters = false;
   isMapVisible = true;
 
-  didInsertElement() {
-    this.set('is_upcoming', true);
-  }
-
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past', 'is_upcoming')
   get hideDefaultFilters() {
     return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.is_location || this.is_mixed || this.has_logo || this.has_image || this.is_past || this.is_upcoming);

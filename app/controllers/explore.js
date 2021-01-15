@@ -10,7 +10,7 @@ export default class ExploreController extends Controller {
   is_location = null;
   is_mixed = null;
   is_past = null;
-  is_upcoming = null;
+  is_upcoming = 'true';
   has_logo = null;
   has_image = null;
   category = null;
@@ -21,6 +21,7 @@ export default class ExploreController extends Controller {
   location = null;
   ticket_type = null;
   cfs = null;
+  
 
   @action
   shareEvent(event) {
