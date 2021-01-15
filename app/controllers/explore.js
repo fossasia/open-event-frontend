@@ -10,7 +10,7 @@ export default class ExploreController extends Controller {
   is_location = null;
   is_mixed = null;
   is_past = null;
-  is_upcoming = 'true';
+  is_upcoming = null;
   has_logo = null;
   has_image = null;
   category = null;
