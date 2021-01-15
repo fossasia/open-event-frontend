@@ -4,7 +4,7 @@ import Route from '@ember/routing/route';
 import moment from 'moment';
 import { set } from '@ember/object';
 import ENV from 'open-event-frontend/config/environment';
-import { allSettled } from 'rsvp';
+import { hash } from 'rsvp';
 import { SPEAKERS_FILTER } from './speakers';
 
 @classic
@@ -14,53 +14,85 @@ export default class IndexRoute extends Route {
 
   async model() {
     const event = this.modelFor('public');
-    const ticketsPromise = event.query('tickets', {
-      filter: [
-        {
-          and: [
-            {
-              name : 'sales-starts-at',
-              op   : 'le',
-              val  : moment().toISOString()
-            },
-            {
-              name : 'sales-ends-at',
-              op   : 'ge',
-              val  : moment().toISOString()
-            }
-          ]
-        }
-      ],
-      cache  : true,
-      public : true
-    });
-    const featuredSpeakersPromise = event.query('speakers', {
-      filter: [
-        {
-          name : 'is-featured',
-          op   : 'eq',
-          val  : 'true'
-        },
-        ...SPEAKERS_FILTER
-      ],
-      include      : 'sessions.track',
-      cache        : true,
-      public       : true,
-      'page[size]' : 0
-    });
-    const sponsorsPromise = event.query('sponsors', { 'page[size]': 0, cache: true, public: true });
-    const taxPromise = event.get('tax', { cache: true, public: true });
+    // const ticketsPromise = event.query('tickets', {
+    //   filter: [
+    //     {
+    //       and: [
+    //         {
+    //           name : 'sales-starts-at',
+    //           op   : 'le',
+    //           val  : moment().toISOString()
+    //         },
+    //         {
+    //           name : 'sales-ends-at',
+    //           op   : 'ge',
+    //           val  : moment().toISOString()
+    //         }
+    //       ]
+    //     }
+    //   ],
+    //   cache  : true,
+    //   public : true
+    // });
+    // const featuredSpeakersPromise = event.query('speakers', {
+    //   filter: [
+    //     {
+    //       name : 'is-featured',
+    //       op   : 'eq',
+    //       val  : 'true'
+    //     },
+    //     ...SPEAKERS_FILTER
+    //   ],
+    //   include      : 'sessions.track',
+    //   cache        : true,
+    //   public       : true,
+    //   'page[size]' : 0
+    // });
+    // const sponsorsPromise = event.query('sponsors', { 'page[size]': 0, cache: true, public: true });
+    // const taxPromise = event.get('tax', { cache: true, public: true });
 
-    const [tickets, featuredSpeakers, sponsors, tax] = (await allSettled([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]))
-      .map(result => result.value);
+    // const [tickets, featuredSpeakers, sponsors, tax] = (await allSettled([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]))
+    //   .map(result => result.value);
 
-    return {
+    return hash({
       event,
-      tickets,
-      featuredSpeakers,
+      tickets : event.query('tickets', {
+        filter: [
+          {
+            and: [
+              {
+                name : 'sales-starts-at',
+                op   : 'le',
+                val  : moment().toISOString()
+              },
+              {
+                name : 'sales-ends-at',
+                op   : 'ge',
+                val  : moment().toISOString()
+              }
+            ]
+          }
+        ],
+        cache  : true,
+        public : true
+      }),
+      featuredSpeakers: event.query('speakers', {
+        filter: [
+          {
+            name : 'is-featured',
+            op   : 'eq',
+            val  : 'true'
+          },
+          ...SPEAKERS_FILTER
+        ],
+        include      : 'sessions.track',
+        cache        : true,
+        public       : true,
+        'page[size]' : 0
+      }),
 
-      sponsors,
-      tax,
+      sponsors: event.query('sponsors', { 'page[size]': 0, cache: true, public: true }),
+      tax : event.get('tax', { cache: true, public: true }),
       order: this.store.createRecord('order', {
         event,
         user    : this.authManager.currentUser,
@@ -70,7 +102,7 @@ export default class IndexRoute extends Route {
       attendees: [],
 
       mapConfig: ENV.APP.mapConfig
-    };
+    });
   }
 
   afterModel(model) {
