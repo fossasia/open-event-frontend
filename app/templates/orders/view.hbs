@@ -45,6 +45,11 @@
         </div>
         <br/>
       {{/if}}
+      {{#if this.model.taxDetails}}
+        <Orders::CompanyInfo
+          @tax={{this.model.taxDetails}} />
+        <br/>
+      {{/if}}
       <Orders::TicketHolder
         @data={{this.model.order}} />
     </div>

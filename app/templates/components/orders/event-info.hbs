@@ -32,7 +32,7 @@
       <strong>{{t 'Organized By'}}:</strong> {{this.data.event.ownerName}}
     {{/if}}
   </div>
-  {{#if (or (eq this.data.status 'expired') (eq this.data.status 'completed'))}}
+  {{#if (or (eq this.data.status 'expired') (eq this.data.status 'completed') (eq this.data.status 'placed'))}}
     <div class="ui padded segment">
       <i class="globe icon"></i>
       <a href="{{this.data.event.url}}">{{t 'Go to event page'}}</a>
