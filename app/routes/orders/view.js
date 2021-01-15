@@ -29,9 +29,9 @@ export default class ViewRoute extends Route {
 
     return {
       order,
-      event      : eventDetails,
+      event : eventDetails,
       taxDetails,
-      form       : await eventDetails.query('customForms', {
+      form  : await eventDetails.query('customForms', {
         'page[size]' : 50,
         sort         : 'id'
       })
