@@ -16,7 +16,7 @@ export default class extends Controller {
     speaker.save()
       .then(() => {
         this.notify.success(this.l10n.t('Speaker details have been saved'));
-        this.transitionToRoute('events.view.speakers');
+        this.transitionToRoute('events.view.speaker.view', this.model.speaker.id);
       })
       .catch(e => {
         console.error('Error while saving speaker details', e);
