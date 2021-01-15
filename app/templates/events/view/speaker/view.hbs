@@ -1,0 +1,26 @@
+<div class="ui grid container">
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'View Speaker'}}
+    </h2>
+    <div class="ui divider"></div>
+  </div>
+  <div class="column sixteen wide">
+    <LinkTo
+      @route="events.view.speaker.edit"
+      @models={{array this.model.speaker.event.id this.model.speaker.id}}>
+      <button
+        class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit speaker'}}</button>
+    </LinkTo>
+  </div>
+  <div class="column sixteen wide">
+    <h3 class="ui header">
+      {{t 'Speaker details'}}
+    </h3>
+  </div>
+  <Events::View::Overview::SpeakerView
+    @fields={{this.allFields}}
+    @speaker={{this.model.speaker}} />
+  <div class="weight-600 column three wide">{{t 'Sessions'}}</div>
+  <div class="column thirteen wide">{{this.allSessions}}</div>
+</div>
