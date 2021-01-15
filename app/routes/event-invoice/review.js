@@ -1,18 +1,15 @@
 import Route from '@ember/routing/route';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default class extends Route.extend(AuthenticatedRouteMixin) {
+export default class extends Route {
   titleToken(model) {
     return this.l10n.tVar(`Review Event Invoice - ${model.get('identifier')}`);
   }
 
-  async model(params) {
-    const model = await this.store.findRecord('event-invoice', params.invoice_identifier, {
+  model(params) {
+    return this.store.findRecord('event-invoice', params.invoice_identifier, {
       include : 'event,user',
       reload  : true
     });
-    await model.reload();
-    return model;
   }
 
   afterModel(model) {

@@ -50,7 +50,7 @@ export default class PastRoute extends Route {
     );
 
     return this.infinity.model('orders', {
-      include      : 'event,attendees.ticket',
+      include      : 'event',
       filter       : filterOptions,
       perPage      : 10,
       startingPage : 1,

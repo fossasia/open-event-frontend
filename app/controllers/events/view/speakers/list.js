@@ -1,11 +1,9 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
-import { inject as service } from '@ember/service';
+
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-  @service errorHandler;
-
   get columns() {
     return [
       {
@@ -15,9 +13,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/speakers/speaker-logo'
       },
       {
-        name            : this.l10n.t('Name'),
+        name            : 'Name',
         valuePath       : 'name',
-        extraValuePaths : ['id', 'event'],
+        extraValuePaths : ['id'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/speakers/cell-buttons',
@@ -29,39 +27,39 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : this.l10n.t('Position'),
+        name            : 'Position',
         valuePath       : 'position',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         width           : 150
       },
       {
-        name            : this.l10n.t('Organization'),
+        name            : 'Organization',
         valuePath       : 'organisation',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         width           : 150
       },
       {
-        name            : this.l10n.t('Email'),
+        name            : 'Email',
         valuePath       : 'email',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         width           : 150
       },
       {
-        name          : this.l10n.t('Phone'),
+        name          : 'Phone',
         valuePath     : 'mobile',
         cellComponent : 'ui-table/cell/events/view/speakers/speaker-mobile'
       },
       {
-        name          : this.l10n.t('Submitted Sessions'),
+        name          : 'Submitted Sessions',
         valuePath     : 'sessions',
         cellComponent : 'ui-table/cell/events/view/speakers/cell-simple-sessions',
         width         : 250
       },
       {
-        name            : this.l10n.t('Feature'),
+        name            : 'Feature',
         valuePath       : 'id',
         extraValuePaths : ['isFeatured'],
         cellComponent   : 'ui-table/cell/events/view/speakers/cell-is-featured',
@@ -79,10 +77,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     try {
       await speaker.destroyRecord();
       this.notify.success(this.l10n.t('Speaker has been deleted successfully.'));
-      this.refreshModel();
     } catch (e) {
-      console.error('Error while deleting speaker', e);
-      this.errorHandler.handle(e);
+      console.warn(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
     this.set('isLoading', false);
   }
@@ -93,8 +90,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  viewSpeaker(speaker) {
-    this.transitionToRoute('public.speaker.view', speaker.event.get('identifier'), speaker.id);
+  viewSpeaker(id) {
+    this.transitionToRoute('events.view.speakers.edit', id);
   }
 
   @action
@@ -105,8 +102,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       await speaker.save();
       this.notify.success(this.l10n.t('Speaker details modified successfully'));
     } catch (e) {
-      console.error('Error while updating speaker', e);
-      this.errorHandler.handle(e);
+      console.warn(e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
   }
 }

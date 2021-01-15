@@ -6,7 +6,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
     const sessionTitle = model.session.title;
-    return sessionTitle.concat(' - Edit');
+    return this.l10n.t(sessionTitle.concat('-Edit'));
   }
 
   async model(params) {

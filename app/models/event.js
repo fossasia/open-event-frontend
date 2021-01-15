@@ -4,7 +4,10 @@ import moment from 'moment';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
-import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
+import {
+  computedDateTimeSplit,
+  computedSegmentedLink
+} from 'open-event-frontend/utils/computed-helpers';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 import { groupBy } from 'lodash-es';
 
@@ -47,7 +50,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
   isPromoted                : attr('boolean', { defaultValue: false }),
-  isDemoted                 : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
@@ -66,7 +68,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   chequeDetails   : attr('string'),
   bankDetails     : attr('string'),
   onsiteDetails   : attr('string'),
-  refundPolicy    : attr('string'),
 
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),
@@ -86,10 +87,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   pentabarfUrl : attr('string', { readOnly: true }),
   xcalUrl      : attr('string', { readOnly: true }),
   icalUrl      : attr('string', { readOnly: true }),
-
-  online        : attr('boolean', { defaultValue: false }),
-  liveStreamUrl : attr('string'),
-  webinarUrl    : attr('string'),
 
   createdAt : attr('moment', { readOnly: true }),
   deletedAt : attr('moment'),
@@ -123,7 +120,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
-  videoStream     : belongsTo('video-stream'),
 
   owner           : belongsTo('user', { inverse: null }),
   organizers      : hasMany('user', { inverse: null }),
@@ -157,6 +153,8 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
+  segmentedExternalEventUrl: computedSegmentedLink.bind(this)('externalEventUrl'),
+
   shortLocationName: computed('locationName', function() {
     if (!this.locationName) {
       return '';
@@ -169,10 +167,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     }
   }),
 
-  totalSales: computed('orderStatistics', function() {
-    return this.get('orderStatistics.tickets.placed') + this.get('orderStatistics.tickets.completed');
-  }),
-
   url: computed('identifier', function() {
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
     return origin + this.router.urlFor('public', this.id);
@@ -180,21 +174,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   sessionsByState: computed('sessions', function() {
     return groupBy(this.sessions.toArray(), 'data.state');
-  }),
-
-  isStripeConnectionValid: computed('canPayByStripe', 'stripeAuthorization.stripePublishableKey', function() {
-    if (!this.canPayByStripe) {
-      return true;
-    }
-    return this.canPayByStripe && this.get('stripeAuthorization.stripePublishableKey');
-  }),
-
-  isSingleDay: computed('startsAt', 'endsAt', function() {
-    return this.startsAt.isSame(this.endsAt, 'day');
-  }),
-
-  isSchedulePublished: computed('schedulePublishedOn', function() {
-    return this.schedulePublishedOn && this.schedulePublishedOn.toISOString() !== moment(0).toISOString();
   })
 
 }) {}

@@ -13,7 +13,7 @@ export default class extends Controller {
         });
     } catch (error) {
       console.error('Error while updating contact info', error);
-      this.notify.error(error.message,
+      this.notify.error(this.l10n.t(error.message),
         {
           id: 'cont_upd_error'
         });

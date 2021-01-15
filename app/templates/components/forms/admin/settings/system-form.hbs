@@ -42,26 +42,7 @@
     <label>
       {{t 'API Url'}}
     </label>
-    <Widgets::Forms::LinkField
-      @inputId="api_url"
-      @value={{this.settings.staticDomain}}
-      @onChange={{action (mut this.settings.staticDomain)}} />
-  </div>
-  <div class="ui hidden divider"></div>
-  <h3 class="ui header">
-    {{t 'Cookie Policy'}}
-  </h3>
-  <div class="field">
-    <label>
-      {{t 'Cookie Policy URL'}}
-    </label>
-    <Input type="url" @value={{this.settings.cookiePolicyLink}} />
-  </div>
-  <div class="field">
-    <label>{{t 'Cookie Policy'}}</label>
-    <Textarea
-      @rows="3"
-      @value={{this.settings.cookiePolicy}} />
+    <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedStaticDomain}} @inputId="api_url" />
   </div>
   <div class="ui hidden divider"></div>
   <Forms::Admin::Settings::System::SocialMediaToken @settings={{this.settings}} />

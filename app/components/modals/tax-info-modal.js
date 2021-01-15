@@ -6,7 +6,10 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { orderBy } from 'lodash-es';
 
 export default ModalBase.extend(FormMixin, {
-  isSmall: false,
+  isSmall : false,
+  options : {
+    closable: false
+  },
 
   autoScrollToErrors   : true,
   isTaxIncludedInPrice : 'include',
@@ -55,7 +58,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your organisation name')
+              prompt : this.l10n.t('Please give us your company name')
             }
           ]
         },

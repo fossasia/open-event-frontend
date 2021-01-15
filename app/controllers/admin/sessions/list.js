@@ -6,50 +6,59 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name      : this.l10n.t('Event Name'),
+        name      : 'Event Name',
         valuePath : 'event.name'
       },
       {
-        name            : this.l10n.t('Title'),
+        name            : 'Title',
         valuePath       : 'title',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name            : this.l10n.t('State'),
+        name            : 'State',
         valuePath       : 'state',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-state',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name          : this.l10n.t('Speakers'),
+        name          : 'Speakers',
         valuePath     : 'speakers',
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : this.l10n.t('Submitted At'),
+        name            : 'Submitted At',
         valuePath       : 'submittedAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        headerComponent : 'tables/headers/sort',
+        options         : {
+          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+        }
       },
       {
-        name            : this.l10n.t('Starts At'),
+        name            : 'Starts At',
         valuePath       : 'startsAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        headerComponent : 'tables/headers/sort',
+        options         : {
+          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+        }
       },
       {
-        name            : this.l10n.t('Ends At'),
+        name            : 'Ends At',
         valuePath       : 'endsAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        headerComponent : 'tables/headers/sort',
+        options         : {
+          dateFormat: 'MMMM DD, YYYY - hh:mm A'
+        }
       },
       {
-        name            : this.l10n.t('Actions'),
+        name            : 'Actions',
         cellComponent   : 'ui-table/cell/cell-simple-buttons',
         valuePath       : 'id',
         extraValuePaths : ['event'],

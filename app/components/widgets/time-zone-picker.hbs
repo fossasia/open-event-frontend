@@ -1,7 +1,7 @@
 <UiDropdown
   ...attributes
   class="search selection"
-  @selected={{if @defaultLocal this.localTimezone @eventTimezone}}
+  @selected={{@eventTimezone}}
   @forceSelection={{false}}
   @fullTextSearch={{true}}>
   <Input
@@ -16,7 +16,7 @@
     <div class="divider"></div>
     <div class="header">
       <i class="time icon"></i>
-      {{t "Other Timezones"}}
+      Other Timezones
     </div>
     {{#each this.timezones as |timezone|}}
       <div class="item" data-value="{{timezone}}">{{timezone}}</div>

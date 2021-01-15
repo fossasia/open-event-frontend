@@ -21,7 +21,6 @@ export default Component.extend({
       'ol'     : 1,
       'li'     : 1,
       'ul'     : 1,
-      'br'     : 1,
       'a'      : {
         'check_attributes': {
           'href': 'url'
@@ -35,7 +34,7 @@ export default Component.extend({
   },
 
   valueObserver: observer('value', function() {
-    if (this.editor && this.editor.getValue() !== this.value) {
+    if (this.editor && this.value !== this._value) {
       this.editor.setValue(this.value);
     }
   }),

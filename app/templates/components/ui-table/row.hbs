@@ -1,0 +1,34 @@
+<tr class="{{if (exists-in this._selectedItems this.record) 'selected-row'}}">
+  {{#each this.processedColumns as |column|}}
+    {{#if column.isVisible}}
+      <td class={{column.className}}>
+        {{#if column.routeName}}
+          <LinkTo @route={{column.routeName}} @model={{this.record.id}}>
+            {{#if column.propertyName}}
+              {{get this.record column.propertyName}}
+            {{else}}
+              {{this.record.id}}
+            {{/if}}
+          </LinkTo>
+        {{else}}
+          {{#if column.template}}
+            {{partial column.template}}
+          {{else}}
+            {{#if column.component}}
+              {{component column.component data=this.data record=this.record column=column table=this}}
+            {{else}}
+              {{sanitize (get this.record column.propertyName)}}
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      </td>
+    {{/if}}
+  {{/each}}
+</tr>
+{{#if (exists-in this._expandedRowIndexes this.index)}}
+  <tr class="expandRow {{concat 'expand-' this.index}} {{if (exists-in this._selectedItems this.record) 'selected-expand'}}">
+    <td colspan="{{this.visibleProcessedColumns.length}}">
+      {{partial this.expandedRowTemplate}}
+    </td>
+  </tr>
+{{/if}}

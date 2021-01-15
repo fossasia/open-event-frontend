@@ -7,14 +7,8 @@ export default Mixin.create({
 
   serializeBelongsTo(snapshot, json, relationship) {
     try {
-      const event = snapshot.belongsTo('event');
-      if (event) {
-        const { originalId } = event.attributes();
-        // ID may have been already replaced and originalId may be undefined
-        // Overriding valid ID with undefined
-        if (originalId) {
-          event.id = originalId;
-        }
+      if (snapshot.belongsTo('event')) {
+        snapshot.belongsTo('event').id = snapshot.belongsTo('event').attributes().originalId;
       }
     } catch (ignored) { /** ignore errors as some models won't be having event relationship **/ }
 
@@ -25,11 +19,7 @@ export default Mixin.create({
     try {
       if (snapshot.hasMany('events') && snapshot.hasMany('events').length > 0) {
         for (let i = 0; i < snapshot.hasMany('events').length; i++) {
-          const event = snapshot.hasMany('events')[i];
-          const { originalId } = event.attributes();
-          if (originalId) {
-            event.id = originalId;
-          }
+          snapshot.hasMany('events')[i].id = snapshot.hasMany('events')[i].attributes().originalId;
         }
       }
     } catch (ignored) { /** ignore errors as some models won't be having event relationship **/ }

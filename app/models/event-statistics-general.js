@@ -11,8 +11,6 @@ export default ModelBase.extend({
   sessionsSubmitted : attr('number'),
   sessionsRejected  : attr('number'),
   sessionsConfirmed : attr('number'),
-  sessionsWithdrawn : attr('number'),
-  sessionsCanceled  : attr('number'),
   identifier        : attr('string'),
   sessionsAccepted  : attr('number'),
   sessionsDraft     : attr('number'),
@@ -20,7 +18,5 @@ export default ModelBase.extend({
   speakersConfirmed : attr('number'),
   speakersPending   : attr('number'),
   speakersRejected  : attr('number'),
-  speakersWithdrawn : attr('number'),
-  speakersCanceled  : attr('number'),
   event             : belongsTo('event')
 });

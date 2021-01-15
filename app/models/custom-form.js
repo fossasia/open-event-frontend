@@ -53,7 +53,6 @@ export default ModelBase.extend({
   type            : attr('string', { defaultValue: 'text' }),
   name            : attr('string'),
   isRequired      : attr('boolean', { defaultValue: false }),
-  isPublic        : attr('boolean', { defaultValue: false }),
   isIncluded      : attr('boolean', { defaultValue: false }),
   isFixed         : attr('boolean', { defaultValue: false }),
   isComplex       : attr('boolean', { defaultValue: false }),
@@ -81,7 +80,7 @@ export default ModelBase.extend({
     billingAddress  : 'Billing Address',
     homeAddress     : 'Home Address',
     shippingAddress : 'Shipping Address',
-    company         : 'Organisation',
+    company         : 'Company',
     workAddress     : 'Work Address',
     workPhone       : 'Work Phone',
     website         : 'Website',
@@ -117,6 +116,10 @@ export default ModelBase.extend({
   isUrlField: computed('type', 'fieldIdentifier', function() {
     return this.type === 'text'
     && (['website', 'twitter', 'github', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
+  }),
+
+  segmentedLinkName: computed('fieldIdentifier', function() {
+    return `segmentedLink${this.fieldIdentifier.charAt(0).toUpperCase()  + this.fieldIdentifier.slice(1)}`;
   }),
 
   isRequiredObserver: observer('isRequired', function() {

@@ -16,8 +16,7 @@ export default class OrdersController extends Controller {
       .then(exportJobInfo => {
         this.requestLoop(exportJobInfo, mode);
       })
-      .catch(e => {
-        console.error('Error while exporting', e);
+      .catch(() => {
         this.set(`isLoading${mode}`, false);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
@@ -35,12 +34,11 @@ export default class OrdersController extends Controller {
             this.requestLoop(exportJobInfo);
             this.notify.alert(this.l10n.t('Task is going on.'));
           } else {
-            this.notify.error(mode.toUpperCase() + ' ' + this.l10n.t('Export has failed.'));
+            this.notify.error(this.l10n.t(`${mode.toUpperCase()} Export has failed.`));
           }
         })
-        .catch(e => {
-          console.error('Error while exporting', e);
-          this.notify.error(mode.toUpperCase() + ' ' + this.l10n.t('Export has failed.'));
+        .catch(() => {
+          this.notify.error(this.l10n.t(`${mode.toUpperCase()} Export has failed.`));
         })
         .finally(() => {
           this.set('isLoading', false);

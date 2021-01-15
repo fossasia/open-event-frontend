@@ -20,30 +20,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
-
-  selectedLocationType: 'Venue',
-
   deletedTickets: [],
-
-  init() {
-    this._super(...arguments);
-    if (this.data.event.online) {
-      if (this.data.event.locationName) {
-        this.selectedLocationType = 'Mixed';
-      } else {
-        this.selectedLocationType = 'Online';
-      }
-    } else if (this.data.event.locationName) {
-      this.selectedLocationType = 'Venue';
-    } else {
-      this.selectedLocationType = 'To be announced';
-    }
-  },
-
-  isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
-  }),
 
   countries: computed(function() {
     return orderBy(countries, 'name');
@@ -82,7 +59,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
-    return !this.authManager?.currentUser?.isVerified;
+    return !this.authManager.currentUser.isVerified;
   }),
 
   subTopics: computed('data.event.topic', function() {
@@ -110,19 +87,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
   }),
 
-  timezoneObserver: observer('data.event.timezone', function() {
-    const { event } = this.data;
-    const { oldTimezone } = this;
-    this.oldTimezone = this.data.event.timezone;
-    if (!oldTimezone || !this.oldTimezone || oldTimezone === this.oldTimezone) {return}
-    if (event.startsAt) {
-      event.startsAt = moment.tz(event.startsAt.clone().tz(oldTimezone).format('YYYY-MM-DDTHH:mm:ss.SSS'), moment.ISO_8601, this.data.event.timezone);
-    }
-    if (event.endsAt) {
-      event.endsAt = moment.tz(event.endsAt.clone().tz(oldTimezone).format('YYYY-MM-DDTHH:mm:ss.SSS'), moment.ISO_8601, this.data.event.timezone);
-    }
-  }),
-
   discountCodeObserver: observer('data.event.discountCode', function() {
     this.getForm().form('remove prompt', 'discount_code');
   }),
@@ -136,18 +100,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
     $.fn.form.settings.rules.checkMaxMinPrice = () => {
-      return parseInt($('.ui.form').form('get value', 'min_price'), 10) <= parseInt($('.ui.form').form('get value', 'max_price'), 10);
+      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
-      return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
+      return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
     };
-    $.fn.form.settings.rules.checkValidTimeDifference = () => {
-      return !($('[name=start_date]')[0].value === $('[name=end_date]')[0].value && moment($('[name=start_time]')[0].value, 'HH:mm').isSameOrAfter(moment($('[name=end_time]')[0].value, 'HH:mm')));
-    };
+
     const validationRules = {
       inline : true,
       delay  : false,
-      on     : 'change',
+      on     : 'blur',
       fields : {
         name: {
           identifier : 'name',
@@ -155,6 +117,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give your event a name')
+            }
+          ]
+        },
+        location: {
+          identifier : 'location',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Location is required to save an event')
             }
           ]
         },
@@ -200,10 +171,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
-            },
-            {
-              type   : 'checkValidTimeDifference',
-              prompt : this.l10n.t('Starting time should be lesser than the ending time')
             }
           ]
         },
@@ -214,10 +181,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
-            },
-            {
-              type   : 'checkValidTimeDifference',
-              prompt : this.l10n.t('Ending time should be greater than the starting time')
             }
           ]
         },
@@ -347,7 +310,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email address')
+              prompt : this.l10n.t('Please enter a valid email')
             },
             {
               type   : 'empty',
@@ -401,28 +364,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please select your country')
             }
           ]
-        },
-        liveStreamUrl: {
-          identifier : 'live_stream_url',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
-        webinarUrl: {
-          identifier : 'webinar_url',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
         }
       }
     };
@@ -441,7 +382,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         })
         .catch(error => {
           console.error('Error while setting stripe authorization in event', error);
-          this.notify.error(error.message + '. ' + this.l10n.t('Please try again'), {
+          this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
             id: 'basic_detail_err'
           });
         });

@@ -1,26 +1,21 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
 
 export default class extends Controller {
-
-  @service errorHandler;
-
   @action
   save() {
     this.set('isLoading', true);
     const { speaker } = this.model;
     if (speaker.isEmailOverridden) {
-      speaker.set('email', null);
+      speaker.set('email', this.authManager.currentUser.email);
     }
     speaker.save()
       .then(() => {
         this.notify.success(this.l10n.t('Speaker details have been saved'));
         this.transitionToRoute('events.view.speakers');
       })
-      .catch(e => {
-        console.error('Error while saving speaker details', e);
-        this.errorHandler.handle(e);
+      .catch(() => {
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
       })
       .finally(() => {
         this.set('isLoading', false);
