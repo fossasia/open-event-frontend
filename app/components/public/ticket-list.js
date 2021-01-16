@@ -16,16 +16,19 @@ export default Component.extend(FormMixin, {
 
   init() {
     this._super(...arguments);
-    this.loader.load(`/events/${this.event.id}/tickets/availability`)
+    this.loader.load(`/events/${this.event?.id}/tickets/availability`)
       .then(ticketAvailabilities => {
         ticketAvailabilities.forEach(t => {
           this.data.forEach(ticket => {
-            if (ticket.id && t.id && +ticket.id === t.id) {
+            if (+ticket?.id === t?.id) {
               ticket.set('remaining', t.available);
               ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), t.available));
             }
           });
         });
+      })
+      .catch(e => {
+        console.error('Error while fetching ticket availabilities', e);
       });
   },
 
