@@ -80,7 +80,7 @@
               {{/if}}
             </td>
             <td>
-              {{#if (lte ticket.available 0)}}
+              {{#if (lte ticket.remaining 0)}}
                 <span class="ui basic small text red label w-content-button">{{t 'Sold Out'}}</span>
               {{else}}
                 <div class="field">

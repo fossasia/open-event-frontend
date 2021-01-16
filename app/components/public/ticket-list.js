@@ -11,9 +11,23 @@ export default Component.extend(FormMixin, {
 
   promotionalCodeApplied: false,
 
-  orderAmount          : null,
-  amountOverride       : null,
-  ticketAvailabilities : null,
+  orderAmount    : null,
+  amountOverride : null,
+
+  init() {
+    this._super(...arguments);
+    this.loader.load(`/events/${this.event.id}/tickets/availability`)
+      .then(ticketAvailabilities => {
+        ticketAvailabilities.forEach(t => {
+          this.data.forEach(ticket => {
+            if (+ticket.id === t.id) {
+              ticket.set('remaining', t.available);
+              ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), t.available));
+            }
+          });
+        });
+      });
+  },
 
   overridenAmount: computed('orderAmount', 'amountOverride', {
     get() {
@@ -228,15 +242,7 @@ export default Component.extend(FormMixin, {
       debounce(this, () => this.send('updateOrderAmount'), this.tickets, 250);
     }
   },
-  async didInsertElement() {
-    this.set('ticketAvailabilities', await this.loader.load(`/events/${this.event.id}/tickets/availability`));
-    this.ticketAvailabilities.forEach(t => {
-      this.data.forEach(ticket => {
-        if (+ticket.id === t.id) {
-          ticket.set('available', t.available);
-        }
-      });
-    });
+  didInsertElement() {
     this.data.forEach(ticket => {
       ticket.set('discount', 0);
     });
