@@ -14,12 +14,18 @@
   <table class="ui very basic table">
     <tbody>
       <tr>
-        <td><strong>{{t 'Location'}}</strong></td>
+        <td><strong>{{t 'Setting'}}</strong></td>
         <td>
-          {{#if this.data.event.locationName}}
-            {{this.data.event.locationName}}
-          {{else}}
+          {{#if this.data.event.online}}
+            {{#if this.data.event.locationName}}
+              {{t 'Online and in-person event at '}}{{this.data.event.locationName}}
+            {{else}}
+              {{t 'Online event'}}
+            {{/if}}
+          {{else if this.data.event.locationName}}
             <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
+          {{else}}
+            {{t 'To be announced.'}}
           {{/if}}
         </td>
       </tr>
