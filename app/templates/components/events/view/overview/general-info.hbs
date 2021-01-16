@@ -3,17 +3,17 @@
 </div>
 <div class="content">
   {{#if (eq this.data.event.state 'published')}}
-   <div style="display: grid;align-items: baseline;grid-column-gap: 10px;grid-template-columns: repeat(auto-fit, minmax(220px,max-content));">
+   <div class="general-info live-navigator"> 
       <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
         {{t 'Your event is live at'}}
       </div>
-      <UrlBox @url={{this.data.event.url}} @extraStyles='font-weight:bold; color:#4183c4; {{if this.device.isMobile 'font-size: small;' 'font-size: medium;'}}'/>
-    </div>
+      <UrlBox @url={{this.data.event.url}} @extraStyles="color:#4183C4;font-weight:bold;{{if this.device.isMobile 'font-size:small;' 'font-size:medium;'}}"/>
+   </div>
     {{else}}
       <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
           {{t 'Your event is not live yet. Make it live now'}}
       </div>
-    {{/if}}
+   {{/if}}
 </div>
 <div class="content">
   <table class="ui very basic table compact unstackable">

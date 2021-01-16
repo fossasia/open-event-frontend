@@ -1,0 +1,13 @@
+.general-info {
+  &.live-navigator {
+    display: grid;
+    align-items: baseline;
+    grid-column-gap: 10px;
+    grid-template-columns: max-content auto;
+
+    @media screen and (max-width: 1041px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
