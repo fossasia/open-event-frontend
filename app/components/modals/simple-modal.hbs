@@ -13,14 +13,7 @@
       {{t-var (or @actionName 'OK')}}
     </button>
   {{/if}}
-  {{#if @cancel}}
     <button type="button" class="ui button" {{action 'close'}} {{action @cancel}}>
     {{t-var (or @cancelName 'Cancel')}}
   </button>
-  {{/if}}
-  {{#unless @cancel}}
-  <button type="button" class="ui button" {{action 'close'}}>
-    {{t-var (or @cancelName 'Cancel')}}
-  </button>
-  {{/unless}}
 </div>
