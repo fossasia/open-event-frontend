@@ -33,7 +33,7 @@
             </div>
             <div class="field">
               <UiCheckbox
-                @label={{t "Mixed"}}
+                @label={{t "Hybrid"}}
                 @class="ui checkbox"
                 @checked={{if (or this.is_mixed (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
                 @onChange={{action "setSettingFilter" "is_mixed"}} />

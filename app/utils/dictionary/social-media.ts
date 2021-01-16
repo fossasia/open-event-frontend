@@ -1,4 +1,4 @@
-export const socialMediaNames = ['Twitter', 'Facebook', 'Instagram', 'Linkedin', 'YouTube', 'GitHub', 'GitLab', 'Gitter', 'Telegram', 'Patreon', 'Vimeo', 'Flickr', 'Google Groups', 'VK', 'Xing', 'Weibo'];
+export const socialMediaNames = ['Facebook', 'Flickr', 'GitHub', 'GitLab', 'Gitter', 'Google Groups', 'Instagram', 'Linkedin', 'Patreon', 'Telegram', 'Twitter', 'Vimeo', 'VK', 'Weibo', 'Xing', 'YouTube'];
 
 const identifierOverrides: { [key: string]: string } = {
   'Google Groups': 'groups.google'
