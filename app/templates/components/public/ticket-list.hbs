@@ -80,7 +80,9 @@
               {{/if}}
             </td>
             <td>
-              {{#if (sub ticket.quantity (add ticket.orderStatistics.tickets.placed ticket.orderStatistics.tickets.completed))}}
+              {{#if (lte ticket.available 0)}}
+                <span class="ui basic small text red label w-content-button">{{t 'Sold Out'}}</span>
+              {{else}}
                 <div class="field">
                   <UiDropdown
                     @class="compact selection"
@@ -100,8 +102,6 @@
                     </div>
                   </UiDropdown>
                 </div>
-              {{else}}
-                <span class="ui basic small text red label w-content-button">{{t 'Sold Out'}}</span>
               {{/if}}
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
