@@ -3,11 +3,11 @@
 </LinkTo>
 <br><br>
 <div class="ui horizontal compact basic buttons">
-  <UiPopup @content={{t "View Session"}} @class="ui icon button" @click={{action this.props.actions.viewSession this.extraRecords.id this.extraRecords.event.id}} @position="left center">
+  <UiPopup @content={{t "View Session"}} @class="ui icon button" @click={{action this.props.actions.viewSession this.extraRecords.id}} @position="left center">
     <i class="unhide icon"></i>		
   </UiPopup>
   {{#if (not this.extraRecords.isLocked)}}
-    <UiPopup @content={{t "Edit Session"}} @class="ui icon button" @click={{action this.props.actions.editSession this.extraRecords.id this.extraRecords.event.id}} @position="left center">
+    <UiPopup @content={{t "Edit Session"}} @class="ui icon button" @click={{action this.props.actions.editSession this.extraRecords.id}} @position="left center">
       <i class="edit icon"></i>
     </UiPopup>
   {{/if}}

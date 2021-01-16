@@ -86,6 +86,9 @@ Router.map(function() {
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
+      });
+      this.route('session', function() {
+        this.route('view', { path: '/:session_id' });
         this.route('edit', { path: '/:session_id/edit' });
       });
       this.route('tickets', function() {
@@ -110,8 +113,11 @@ Router.map(function() {
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
-        this.route('edit', { path: '/:speaker_id/edit' });
         this.route('create');
+      });
+      this.route('speaker', function() {
+        this.route('view', { path: '/:speaker_id' });
+        this.route('edit', { path: '/:speaker_id/edit' });
       });
       this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });

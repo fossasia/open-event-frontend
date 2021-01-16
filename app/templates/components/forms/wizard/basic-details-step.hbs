@@ -605,6 +605,11 @@
       </div>
     </div>
   {{/if}}
+  <div class="field">
+    <label for="description">{{t 'After Order Message'}}</label>
+    <Textarea
+      @value={{this.data.event.afterOrderMessage}} />
+  </div>
 </form>
 
 <Modals::TaxInfoModal
