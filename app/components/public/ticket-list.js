@@ -232,7 +232,7 @@ export default Component.extend(FormMixin, {
     try {
       const ticketAvailabilities = await this.loader.load(`/events/${this.event?.id}/tickets/availability`);
       for (const t of ticketAvailabilities) {
-        for (const ticket of this.data) {
+        for (const ticket of this.data.toArray()) {
           if (+ticket?.id === t?.id) {
             ticket.set('remaining', t.available);
             ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), t.available));
