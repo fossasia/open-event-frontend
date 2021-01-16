@@ -42,7 +42,7 @@
   <br>
   <div class="ui secondary pointing menu">
     {{#each this.locationMenuItems as |item|}}
-      <a role="button" href="#" class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
+      <a role="button" href={{null}} class="{{if (eq item this.selectedLocationType) 'active'}} item" onclick={{action (mut this.selectedLocationType) item}}>
         {{t-var item}}
       </a>
     {{/each}}
@@ -561,7 +561,7 @@
               <div class="header">{{this.data.event.tax.name}}</div>
               {{#if this.data.event.tax.shouldSendInvoice}}
                 <div class="description">
-                  {{t 'Company Name '}}{{this.data.event.tax.registeredCompany}}
+                  {{t 'Organisation Name '}}{{this.data.event.tax.registeredCompany}}
                 </div>
               {{/if}}
               <div class="description">
@@ -601,9 +601,15 @@
             </label>
           </div>
         </div>
+      <div class="ui hidden divider"></div>
       </div>
     </div>
   {{/if}}
+  <div class="field">
+    <label for="description">{{t 'After Order Message'}}</label>
+    <Textarea
+      @value={{this.data.event.afterOrderMessage}} />
+  </div>
 </form>
 
 <Modals::TaxInfoModal
@@ -616,6 +622,7 @@
   @event={{this.data.event}}
   @loading={{this.loading}}
   @first={{true}}
+  @device={{this.device}}
   @onSaved={{action 'saveForm'}}
   @onSaveDraft={{action 'saveDraft'}}
   @move={{action 'move'}}

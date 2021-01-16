@@ -55,7 +55,7 @@
     <Input @type="text" @id="adminBillingTaxInfo" @value={{this.model.adminBillingTaxInfo}} />
   </div>  
   <div class="field">
-    <label class="required" for="adminCompany">{{t 'Company'}}</label>
+    <label class="required" for="adminCompany">{{t 'Organisation'}}</label>
     <Input @type="text" @id="adminCompany" @value={{this.model.adminCompany}} />
   </div>
   <div class="field">
@@ -76,6 +76,17 @@
   <div class="field">
     <label for="adminBillingAdditionalInfo">{{t 'Additional Info'}}</label>
     <Input @type="text" @id="adminBillingAdditionalInfo" @value={{this.model.adminBillingAdditionalInfo}} />
+  </div>
+  <div class="field">
+    <label for="event_invoice_logo">{{t 'Organisation Logo'}}</label>
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.model.adminBillingLogo}}
+        @label={{t "Logo"}}
+        @id="event_invoice_logo"
+        @icon="image"
+        @hint={{t "Select Organisation Logo"}}
+        @imageText={{t "Logo"}}
+        @maxSizeInKb={{1000}} />
   </div>
   <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
 </form>

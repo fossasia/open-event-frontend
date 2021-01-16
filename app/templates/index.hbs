@@ -1,8 +1,6 @@
 <div class="ui container">
-  <QuickFilter @eventName={{this.event_name}} @startDate={{this.start_date}} @endDate={{this.end_date}} @location={{this.location}} @filterDate={{this.filterDate}} />
-
   {{#if this.featuredEvents}}
-    <h2 class="main-heading">{{t 'Featured Events'}}</h2>
+    <h2 class="main-heading mb-4">{{t 'Featured Events'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.featuredEvents as |event|}}
         <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
@@ -10,7 +8,7 @@
     </div>
   {{/if}}
   {{#if this.filteredEvents}}
-    <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
+    <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.promotedEvents as |event|}}
         <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
@@ -20,10 +18,10 @@
       {{/each}}
     </div>
   {{else}}
-    <h2 class="main-heading">{{t 'No Upcoming Events Found'}}</h2>
+    <h2 class="main-heading mb-4">{{t 'No Upcoming Events Found'}}</h2>
   {{/if}}
   {{#if this.model.callForSpeakersEvents}}
-    <h2 class="main-heading">{{t 'Call for speakers'}}</h2>
+    <h2 class="main-heading mb-4">{{t 'Call for speakers'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.model.callForSpeakersEvents as |event|}}
         <EventCard @event={{event}} @isCFS={{true}} @shareEvent={{action "shareEvent"}} />

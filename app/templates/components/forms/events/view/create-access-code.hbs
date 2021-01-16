@@ -11,32 +11,12 @@
     <Input
       @type="number"
       @name="number_of_access_tickets"
-      placeholder="0"
-      @min={{0}}
-      @value={{this.data.ticketsNumber}} />
-  </div>
-  <div class="grouped inline fields">
-    <label class="required">{{t 'Status'}}</label>
-    <div class="field">
-      <UiRadio
-        @current={{this.data.isActive}}
-        @name="status"
-        @label={{t "Active"}}
-        @value="true"
-        @onChange={{action (mut this.data.isActive)}} />
-    </div>
-    <div class="field">
-      <UiRadio
-        @name="status"
-        @label="Inactive"
-        @value="false"
-        @current={{this.data.isActive}}
-        @onChange={{action (mut this.data.isActive)}} />
-    </div>
+      @value={{this.data.ticketsNumber}} 
+      @min="0" />
   </div>
   {{#if this.hiddenTickets}}
     <div class="inline field">
-      <label class="required">{{t 'Select Tickets applied to the access code'}}</label>
+      <label class="required">{{t 'Select Ticket(s) applied to the access code'}}</label>
       <div class="ui hidden divider"></div>
       <UiCheckbox
         @label={{t "Select all Ticket types"}}
@@ -50,7 +30,7 @@
       <label>{{t 'No hidden tickets available for this event to select from'}}</label>
     </div>
   {{/if}}
-  <div class="ui list">
+  <div class="ui list field">
     {{#each this.hiddenTickets as |ticket|}}
       <UiCheckbox
         @label={{ticket.name}}
@@ -60,65 +40,40 @@
     {{/each}}
   </div>
   <div>
-    <div class="inline field">
-      <UiCheckbox
-        @class="toggle"
-        @label={{t "Show more options"}}
-        @checked={{this.showMoreOptions}}
-        @onChange={{action (mut this.showMoreOptions)}} />
-    </div>
-    {{#if this.showMoreOptions}}
-      {{t 'Set the min and max quantity allowed to purchase per order (Optional)'}}
-      <div class="{{unless this.device.isMobile 'fields'}}">
-        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-          <label>{{t 'Min'}}</label>
-          <Input
-            @type="number"
-            @name="min"
-            @min={{0}}
-            @value={{this.data.minQuantity}} />
-        </div>
-        {{#if this.device.isMobile}}
-          <div class="ui hidden divider"></div>
-        {{/if}}
-        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-          <label>{{t 'Max'}}</label>
-          <Input
-            @type="number"
-            @name="max"
-            @min={{0}}
-            @value={{this.data.maxQuantity}} />
-        </div>
-      </div>
-      <div class="ui hidden divider"></div>
-      {{t 'Validity Period (Optional)'}}
-      <div class="fields">
-        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-          <label>{{t 'Valid from'}}</label>
-          <Widgets::Forms::DatePicker
+      <div class="field">
+        <label>{{t 'Access valid from'}}</label>
+        <div class="wide field {{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
             @id="start_date"
             @value={{this.data.validFromDate}}
             @rangePosition="start" />
-          <div class="ui hidden divider"></div>
-          <Widgets::Forms::TimePicker
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
             @id="start_time"
             @value={{this.data.validFromTime}}
             @rangePosition="start" />
+          </div>
         </div>
-        <div class="wide field {{if this.device.isMobile 'sixteen' 'five'}}">
-          <label>{{t 'Expires on'}}</label>
-          <Widgets::Forms::DatePicker
+      </div>
+      <div class='field'>
+        <label>{{t 'Access expires on'}}</label>
+        <div class="wide field {{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
             @id="end_date"
             @value={{this.data.validTillDate}}
             @rangePosition="end" />
-          <div class="ui hidden divider"></div>
-          <Widgets::Forms::TimePicker
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
             @id="end_time"
             @value={{this.data.validTillTime}}
             @rangePosition="end" />
+          </div>
         </div>
       </div>
-    {{/if}}
     <div class="field">
       <label>{{t 'Access Link'}}</label>
       <div class="ui action input fluid">

@@ -16,11 +16,20 @@
               {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
             </button>
           {{/if}}
-          {{#if @session.microlocation.hasVideoStream}}
-            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
-              <i class="icon video"></i>
-              {{t 'Join Video'}}
-            </button>
+          {{#if this.sessionEnded}}
+            {{#if @session.videoUrl}}
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToVideo}}>
+                <i class="icon video"></i>
+                {{t 'Watch Video'}}
+              </button>
+            {{/if}}      
+          {{else}}
+            {{#if @session.microlocation.hasVideoStream}}
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+                <i class="icon video"></i>
+                {{t 'Join Video'}}
+              </button>
+            {{/if}}
           {{/if}}
           {{#unless @hideSessionLink}}
             <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
@@ -35,11 +44,11 @@
           <div><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
             <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'D MMM, YYYY h:mm A (z)' tz=@timezone}}</div>
+            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}</div>
           {{/if}}
         </div>
       {{else}}
-        <div class="left floated eleven wide column">
+        <div class="left floated eleven wide column" style="padding-bottom: 0 !important;">
           <div class="d-flex wrap">
             {{#each @session.speakers as |speaker|}}
               <div class="d-flex items-center speaker-card pr-2 pb-4">
@@ -52,7 +61,7 @@
             {{/each}}
           </div>
         </div>
-        <div class="right floated five wide column">
+        <div class="right floated five wide column" style="padding-top: .25rem !important;" >
           <div><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
             <div><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
@@ -97,27 +106,7 @@
     {{/if}}
 
     {{#if @session.microlocation.hasVideoStream}}
-      <p style="white-space: pre-line;">
-        <a class="mt-2" href="{{href-to 'public.stream.view' (or @event.identifier @session.event.identifier) @session.microlocation.videoStream.slugName @session.microlocation.videoStream}}" target="_blank" rel="noopener">{{t 'Join Video Channel'}}</a>
-        {{#if @session.microlocation.videoStream.password}}
-          <div class="d-flex items-center">
-            <span>{{t 'Password'}}: </span>
-            <UiPopup @on="click" @content={{t "Copied to clipboard"}} @position="bottom right" style="white-space: normal;">
-              <CopyButton @clipboardText={{@session.microlocation.videoStream.password}} class="ui basic segments">
-                <div class="ui left labeled button">
-                  <div class="ui basic label">
-                    {{@session.microlocation.videoStream.password}}
-                  </div>
-                  <div class="ui icon button">
-                    <i class="copy icon"></i>
-                  </div>
-                </div>
-              </CopyButton>
-            </UiPopup>
-          </div>
-        {{/if}}
-        {{@session.microlocation.videoStream.additionalInformation}}
-      </p>
+      <Public::Stream::StreamInfo @event={{or @event @session.event}} @videoStream={{@session.microlocation.videoStream}} />
     {{/if}}
     
     {{#each @session.speakers as |speaker|}}

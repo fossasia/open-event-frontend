@@ -58,6 +58,9 @@ export default Component.extend(FormMixin, {
 
   timer(willExpireAt, orderIdentifier) {
     run.later(() => {
+      if (this.session.currentRouteName !== 'orders.new') {
+        return;
+      }
       const currentTime = moment();
       const diff = moment.duration(willExpireAt.diff(currentTime));
       if (diff > 0) {
@@ -215,7 +218,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter your company')
+          prompt : this.l10n.t('Please enter your organisation')
         }
       ]
     };
@@ -497,7 +500,9 @@ export default Component.extend(FormMixin, {
   },
 
   allFields: computed('fields', function() {
-    return groupBy(this.fields.toArray(), field => field.get('form'));
+    const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['isComplex', 'name']);
+    return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
   genders   : orderBy(genders, 'name'),

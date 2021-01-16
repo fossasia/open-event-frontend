@@ -26,6 +26,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   identifier             : attr('string', { readOnly: true }),
   name                   : attr('string'),
   description            : attr('string'),
+  afterOrderMessage      : attr('string'),
   startsAt               : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
   endsAt                 : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
   timezone               : attr('string', { defaultValue: detectedTimezone }),
@@ -47,6 +48,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
   isPromoted                : attr('boolean', { defaultValue: false }),
+  isDemoted                 : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
@@ -122,6 +124,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
+  videoStream     : belongsTo('video-stream'),
 
   owner           : belongsTo('user', { inverse: null }),
   organizers      : hasMany('user', { inverse: null }),
@@ -167,6 +170,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     }
   }),
 
+  totalSales: computed('orderStatistics', function() {
+    return this.get('orderStatistics.tickets.placed') + this.get('orderStatistics.tickets.completed');
+  }),
+
   url: computed('identifier', function() {
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
     return origin + this.router.urlFor('public', this.id);
@@ -181,6 +188,14 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
       return true;
     }
     return this.canPayByStripe && this.get('stripeAuthorization.stripePublishableKey');
+  }),
+
+  isSingleDay: computed('startsAt', 'endsAt', function() {
+    return this.startsAt.isSame(this.endsAt, 'day');
+  }),
+
+  isSchedulePublished: computed('schedulePublishedOn', function() {
+    return this.schedulePublishedOn && this.schedulePublishedOn.toISOString() !== moment(0).toISOString();
   })
 
 }) {}

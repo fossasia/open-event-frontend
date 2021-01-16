@@ -1,20 +1,19 @@
 import classic from 'ember-classic-decorator';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import Component from '@ember/component';
-import moment from 'moment';
-import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
+import { tagName } from '@ember-decorators/component';
 import { tracked } from '@glimmer/tracking';
+import { hasSpeakers, hasSessions } from 'open-event-frontend/utils/event';
 
 @classic
+@tagName('')
 export default class SideMenu extends Component {
 
-  activeSection = null;
+  @tracked
+  showSpeakers = null;
 
   @tracked
-  showSpeakers = false;
-
-  @tracked
-  showSessions = false;
+  showSessions = null;
 
   async didInsertElement() {
     super.didInsertElement(...arguments);
@@ -27,25 +26,11 @@ export default class SideMenu extends Component {
   }
 
   async checkSpeakers() {
-    this.showSpeakers = this.showSpeakers || (await this.loader.load(`/events/${this.event.id}/speakers?fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).data.length;
+    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.event);
   }
 
   async checkSessions() {
-    const filters = [{
-      or: [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'accepted'
-        }
-      ]
-    }];
-    this.showSessions = this.showSessions || (await this.loader.load(`/events/${this.event.id}/sessions?fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
+    this.showSessions = this.showSessions ?? await hasSessions(this.loader, this.event);
   }
 
   didRender() {
@@ -62,6 +47,7 @@ export default class SideMenu extends Component {
   @action
   goToSection(section) {
     this.set('activeSection', section);
+    this.set('activeMenuSection', section);
   }
 
   @action
@@ -69,15 +55,11 @@ export default class SideMenu extends Component {
     document.querySelector(`#${section}`).scrollIntoView({
       behavior: 'smooth'
     });
+    this.set('activeMenuSection', section);
     this.set('activeSection', null);
     document.querySelectorAll('.scroll').forEach(node => {
       node.classList.remove('active');
     });
     document.querySelector(`[href='#${section}']`).classList.add('active');
-  }
-
-  @computed('event.schedulePublishedOn')
-  get isSchedulePublished() {
-    return this.event.schedulePublishedOn && this.event.schedulePublishedOn.toISOString() !== moment(0).toISOString();
   }
 }

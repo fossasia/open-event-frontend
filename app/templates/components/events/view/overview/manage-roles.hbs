@@ -19,7 +19,7 @@
       <tr>
         <th>{{t 'User (Email)'}}</th>
         <th>{{t 'Role'}}</th>
-        {{#if editable}}
+        {{#if (and @editable  (eq this.roleType 'pending'))}}
           <th>{{t 'Options'}}</th>
         {{/if}}
       </tr>
@@ -28,16 +28,10 @@
       {{#each this.roleInvites as |roleInvite|}}
         <tr>
           <td>{{roleInvite.email}}</td>
-          <td>{{roleInvite.roleName}}</td>
-          {{#if @editable}}
+          <td>{{t-var roleInvite.role.titleName}}</td>
+          {{#if (and @editable  (eq this.roleType 'pending'))}}
             <td>
               <div class="ui horizontal compact basic buttons">
-                <UiPopup
-                  @content={{t "Edit"}}
-                  @class="ui icon button"
-                  @click={{action "openAddUserRoleModal" roleInvite}}>
-                  <i class="edit icon"></i>
-                </UiPopup>
                 {{#if (eq this.roleType 'accepted')}}
                   <UiPopup
                     @content={{t "Delete"}}
@@ -51,6 +45,15 @@
                     @class="ui icon button"
                     @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
                     <i class="trash icon"></i>
+                  </UiPopup>
+                {{/if}}
+                {{#if (eq this.roleType 'pending')}}
+                  <UiPopup
+                    @content={{t "Resend invite"}}
+                    @click={{action "resendInvite" roleInvite}}
+                    @class="ui icon button"
+                    @position="top center">
+                    <i class="mail outline icon"></i>
                   </UiPopup>
                 {{/if}}
               </div>
@@ -70,4 +73,4 @@
   @isLoading={{this.isLoading}}
   @data={{this.data}}
   @isOpen={{this.isAddUserRoleModalOpen}}
-  @updateUserRoles={{action "updateUserRoles"}} />
+  @addUserRoles={{action "addUserRoles"}} />

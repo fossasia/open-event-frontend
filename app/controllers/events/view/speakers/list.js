@@ -1,9 +1,11 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
-
+import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  @service errorHandler;
+
   get columns() {
     return [
       {
@@ -80,19 +82,19 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.refreshModel();
     } catch (e) {
       console.error('Error while deleting speaker', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.errorHandler.handle(e);
     }
     this.set('isLoading', false);
   }
 
   @action
   editSpeaker(id) {
-    this.transitionToRoute('events.view.speakers.edit', id);
+    this.transitionToRoute('events.view.speaker.edit', id);
   }
 
   @action
-  viewSpeaker(speaker) {
-    this.transitionToRoute('public.speaker.view', speaker.event.get('identifier'), speaker.id);
+  viewSpeaker(id) {
+    this.transitionToRoute('events.view.speaker.view', id);
   }
 
   @action
@@ -104,7 +106,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.notify.success(this.l10n.t('Speaker details modified successfully'));
     } catch (e) {
       console.error('Error while updating speaker', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+      this.errorHandler.handle(e);
     }
   }
 }

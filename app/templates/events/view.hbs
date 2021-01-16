@@ -1,4 +1,4 @@
-{{#if (and (or (eq this.session.currentRouteName 'events.view.index') (eq this.session.currentRouteName 'events.view.export')) (gt this.unverified-user-message.length 0))}} 
+{{#if (and (or (eq this.session.currentRouteName 'events.view.index') (eq this.session.currentRouteName 'events.view.settings.export')) (gt this.unverified-user-message.length 0))}} 
   {{#if (eq this.model.state 'draft')}}
     <UnverifiedUserMessage />
   {{/if}}
@@ -28,23 +28,20 @@
         <LinkTo @route="events.view.tickets" class="item">
           {{t 'Tickets'}}
         </LinkTo>
-        <LinkTo @route="events.view.scheduler" class="item">
-          {{t 'Scheduler'}}
+        <LinkTo @route="events.view.speakers" class="item">
+          {{t 'Speakers'}}
         </LinkTo>
         <LinkTo @route="events.view.sessions" class="item">
           {{t 'Sessions'}}
         </LinkTo>
-        <LinkTo @route="events.view.speakers" class="item">
-          {{t 'Speakers'}}
-        </LinkTo>
-        <LinkTo @route="events.view.team" class="item">
-          {{t 'Team'}}
+        <LinkTo @route="events.view.scheduler" class="item">
+          {{t 'Scheduler'}}
         </LinkTo>
         <LinkTo @route="events.view.videoroom" class="item">
           {{t 'Video'}}
         </LinkTo>
-        <LinkTo @route="events.view.export" class="item">
-          {{t 'Export'}}
+        <LinkTo @route="events.view.team" class="item">
+          {{t 'Team'}}
         </LinkTo>
         {{#if (or this.authManager.currentUser.isAnAdmin (eq this.model.owner.email this.authManager.currentUser.email))}}
           <LinkTo @route="events.view.settings" class="item">

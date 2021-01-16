@@ -6,10 +6,25 @@
       </h3>
     </div>
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
-      <button class='ui labeled icon blue button {{if this.jitsiButtonLoading 'loading' }}' {{action 'addJitsi'}}>
+      <UiDropdown
+        @class="ui floating labeled icon dropdown blue button"
+        @selected={{this.data.stream.videoChannel}}
+        @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
-        {{t 'Add Jitsi Room'}}
-      </button>
+        <div class="default text">
+          {{t 'Add Video'}}
+        </div>
+        <div class="menu">
+          {{#each (sort-by 'id' this.channels) as |channel|}}
+            <div data-value="{{map-value mapper channel}}" class="item">
+              {{channel.name}}
+            </div>
+          {{/each}}
+          <div data-value="{{map-value mapper null}}" class="item">
+            {{t 'Custom'}}
+          </div>
+        </div>
+      </UiDropdown>
     </div>
   </div>
 </div>
@@ -17,40 +32,48 @@
 <form class="ui form {{if this.isLoading 'loading'}}">
   <div class="field">
     <label class="required">{{t 'Room'}}</label>
-    <input type="hidden" id="rooms">
-    <UiDropdown
-      @class="fluid selection"
-      @selected={{this.room}}
-      @onChange={{action this.setRoom}} as |execute mapper|>
-      <i class="dropdown icon"></i>
-      <div class="default text">
-        {{t 'Select Rooms'}}
-      </div>
-      <div class="menu">
-        {{#each this.rooms as |room|}}
-          {{#if room.name}}
-            <div data-value="{{map-value mapper room}}" class="item">
-              {{room.name}}
-            </div>
-          {{/if}}
-        {{/each}}
-      </div>
-    </UiDropdown>
+    <input value={{this.data.stream.name}} readonly>
   </div>
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">{{t 'Video Source'}}</label>
+      <input value='Auto-Generated Big Blue Button Video Room' readonly> 
+    </div>
+  {{/if}}
+  {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">
+        {{t 'Video Source URL'}}
+        <UiPopup
+          @tagName="i"
+          @class="info circle icon"
+          @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com.'}} />
+      </label>
+      <Widgets::Forms::LinkField
+        @inputId="url"
+        @value={{this.data.stream.url}}
+        @onChange={{action (mut this.data.stream.url)}} />
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Room Password'}}
+        <UiPopup
+          @tagName="i"
+          @class="info circle icon"
+          @content={{'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'}} />
+        </label>
+      <Input
+        @value={{this.data.stream.password}} />
+    </div>
+  {{/if}}
   <div class="field">
-    <label class="required">{{t 'Video Room URL'}}</label>
-    <Widgets::Forms::LinkField
-      @inputId="url"
-      @value={{this.data.stream.url}}
-      @onChange={{action (mut this.data.stream.url)}} />
-  </div>
-  <div class="field">
-    <label>{{t 'Pin'}}</label>
-    <Input
-      @value={{this.data.stream.password}} />
-  </div>
-  <div class="field">
-    <label>{{t 'Additional Information'}}</label>
+    <label>
+      {{t 'Additional Information'}}
+      <UiPopup
+          @tagName="i"
+          @class="info circle icon"
+          @content={{'Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.'}} />
+    </label>
     <Textarea
       @value={{this.data.stream.additionalInformation}} />
   </div>
@@ -65,4 +88,7 @@
   </div>
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+  <LinkTo @route="events.view.videoroom.index" class="ui red button">
+        {{t 'Cancel'}}
+  </LinkTo>
 </form>

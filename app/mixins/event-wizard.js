@@ -121,14 +121,14 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       for (const property of ['tracks', 'sessionTypes', 'microlocations', 'customForms']) {
         const items = data[property];
         for (const item of items ? items.toArray() : []) {
-          bulkPromises.push(event.get('isSessionsSpeakersEnabled') ? item.save() : item.destroyRecord());
+          bulkPromises.push(item.save());
         }
       }
 
       for (const property of ['sponsors']) {
         const items = data[property];
         for (const item of items ? items.toArray() : []) {
-          bulkPromises.push(event.get('isSponsorsEnabled') ? item.save() : item.destroyRecord());
+          bulkPromises.push(item.save());
         }
       }
 
@@ -241,7 +241,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       this.onValid(() => {
         const allTicketsDeleted = this.allTicketsDeleted(this.data.event.tickets, this.deletedTickets);
         if (allTicketsDeleted) {
-          this.notify.error('Tickets are required for publishing/published event');
+          this.notify.error(this.l10n.t('Tickets are required for publishing/published event'));
         }
         callback(!allTicketsDeleted);
       });
@@ -291,7 +291,7 @@ function preSaveActions() {
   }
 
   if (!this.data.event.isStripeConnectionValid) {
-    this.notify.error('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.');
+    this.notify.error(this.l10n.t('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.'));
   }
 
   return this.data.event.isStripeConnectionValid;

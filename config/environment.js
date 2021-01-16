@@ -16,6 +16,7 @@ module.exports = function(environment) {
     rootURL                  : process.env.ROOT_URL || '/',
     locationType             : 'router-scroll',
     historySupportMiddleware : true,
+    hcaptchaKey              : process.env.HCAPTCHA_SITE_KEY,
     EmberENV                 : {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -28,7 +29,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || (environment === 'production' ? 'https://api.eventyay.com' : 'https://open-event-api-dev.herokuapp.com'),
+      apiHost      : process.env.API_HOST || (environment === 'production' ? 'https://api.eventyay.com' : 'https://open-event.dokku.fossasia.org'),
       apiNamespace : process.env.API_NAMESPACE || 'v1',
       version      : process.env.npm_package_version
     },
@@ -77,6 +78,12 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:jwt'
+  };
+
+  ENV['ember-h-captcha'] = {
+    jsUrl   : 'https://hcaptcha.com/1/api.js', // default
+    sitekey : process.env.HCAPTCHA_SITE_KEY,
+    hl      : 'en'
   };
 
   ENV['ember-simple-auth-token'] = {

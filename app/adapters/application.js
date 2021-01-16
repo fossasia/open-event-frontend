@@ -25,6 +25,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
 
   notify  : service(),
   session : service(),
+  l10n    : service(),
 
   headers: computed('session.data.authenticated', function() {
     const headers = {
@@ -40,7 +41,7 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
 
   isInvalid(statusCode) {
     if (statusCode !== 404 && statusCode !== 422 && statusCode !== 403 && statusCode !== 409) {
-      this.notify.error('An unexpected error has occurred.', {
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
         closeAfter : 5000,
         id         : 'serve_error'
       });

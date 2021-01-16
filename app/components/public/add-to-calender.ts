@@ -13,10 +13,6 @@ export default class AddToCalender extends Component<Args> {
 
   @service loader: any;
 
-  get timezone(): string {
-    return moment.tz(this.args.event.timezone).format('z');
-  }
-
   get startsAt(): Moment {
     const { event } = this.args;
     return moment(event.startsAt).tz(event.timezone);
@@ -25,10 +21,6 @@ export default class AddToCalender extends Component<Args> {
   get endsAt(): Moment {
     const { event } = this.args;
     return moment(event.endsAt).tz(event.timezone);
-  }
-
-  get isSingleDay(): boolean {
-    return this.startsAt.isSame(this.endsAt, 'day');
   }
 
   get googleUrl(): string {

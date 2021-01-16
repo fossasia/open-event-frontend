@@ -71,6 +71,10 @@ export default Component.extend(FormMixin, {
     ) > 0;
   }),
 
+  hasOnlyFreeTickets: computed('tickets.@each.type', function() {
+    return !this.tickets.toArray().filter(ticket => ticket.type !== 'free').length > 0;
+  }),
+
   donationTickets: computed.filterBy('data', 'type', 'donation'),
 
   isDonationPriceValid: computed('donationTickets.@each.orderQuantity', 'donationTickets.@each.price', function() {
@@ -168,7 +172,7 @@ export default Component.extend(FormMixin, {
       }
       if (this.invalidPromotionalCode) {
         this.set('promotionalCodeApplied', false);
-        this.notify.error('This Promotional Code is not valid', {
+        this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
           id: 'prom_inval'
         });
       } else {
