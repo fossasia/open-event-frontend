@@ -51,7 +51,7 @@ export default class PublicController extends Controller {
   }
 
   @action
-  cancel() {
+  closeVideoDialog() {
     this.router.transitionTo('public', { queryParams: { video_dialog: null } });
   }
 }
