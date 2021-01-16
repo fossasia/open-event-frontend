@@ -234,7 +234,7 @@
               @isExpanded={{if this.data.event.id false true}}
               @timezone={{this.data.event.timezone}}
               @canMoveUp={{not-eq index 0}}
-              @canMoveDown={{not-eq ticket.position (dec this.data.event.tickets.length)}}
+              @canMoveDown={{not-eq ticket.position (dec this.totalTickets)}}
               @moveTicketUp={{action "moveTicket" ticket "up"}}
               @moveTicketDown={{action "moveTicket" ticket "down"}}
               @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}

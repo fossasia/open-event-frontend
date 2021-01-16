@@ -45,6 +45,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return ['Venue', 'Mixed'].includes(this.selectedLocationType);
   }),
 
+  totalTickets: computed('data.event.tickets', function() {
+    return this.data.event.tickets.length;
+  }),
+
   countries: computed(function() {
     return orderBy(countries, 'name');
   }),
@@ -487,6 +491,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
+      this.totalTickets = this.totalTickets - 1;
       this.deletedTickets.push(deleteTicket);
       deleteTicket.deleteRecord();
     },
