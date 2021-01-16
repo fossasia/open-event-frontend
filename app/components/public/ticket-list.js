@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, {
       .then(ticketAvailabilities => {
         ticketAvailabilities.forEach(t => {
           this.data.forEach(ticket => {
-            if (+ticket.id === t.id) {
+            if (ticket.id && t.id && +ticket.id === t.id) {
               ticket.set('remaining', t.available);
               ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), t.available));
             }
