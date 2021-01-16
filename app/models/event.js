@@ -26,6 +26,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   identifier             : attr('string', { readOnly: true }),
   name                   : attr('string'),
   description            : attr('string'),
+  afterOrderMessage      : attr('string'),
   startsAt               : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
   endsAt                 : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
   timezone               : attr('string', { defaultValue: detectedTimezone }),
