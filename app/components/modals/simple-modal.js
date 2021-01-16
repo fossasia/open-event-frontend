@@ -13,8 +13,6 @@ export default class SimpleModal extends ModalBase {
   @action
   performCancel() {
     this.close();
-    this.cancel?.()
+    this.cancel?.();
   }
-
-
 }
