@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
+  locationMenuItems: ['Venue', 'Online', 'Hybrid', 'To be announced'],
 
   selectedLocationType: 'Venue',
 
@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this._super(...arguments);
     if (this.data.event.online) {
       if (this.data.event.locationName) {
-        this.selectedLocationType = 'Mixed';
+        this.selectedLocationType = 'Hybrid';
       } else {
         this.selectedLocationType = 'Online';
       }
@@ -42,7 +42,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
+    return ['Venue', 'Hybrid'].includes(this.selectedLocationType);
   }),
 
   countries: computed(function() {

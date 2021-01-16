@@ -33,12 +33,12 @@
             </div>
             <div class="field">
               <UiCheckbox
-                @label={{t "Mixed"}}
+                @label={{t "Hybrid"}}
                 @class="ui checkbox"
-                @checked={{if (eq this.eventLocationType "mixed") "active"}}
-                @onChange={{action "setLocationType" "mixed" "true"}} />
+                @checked={{if (eq this.eventLocationType "hybrid") "active"}}
+                @onChange={{action "setLocationType" "hybrid" "true"}} />
             </div>
-            {{#if (or (eq this.eventLocationType "venue") (eq this.eventLocationType "mixed"))}}
+            {{#if (or (eq this.eventLocationType "venue") (eq this.eventLocationType "hybrid"))}}
                 <div class="explore sub menu">
                   <div class="ui input">
                     <Input
