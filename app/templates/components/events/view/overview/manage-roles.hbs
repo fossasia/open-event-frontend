@@ -1,13 +1,13 @@
 <div class="content d-flex" style="align-items: center;">
   <div class="header">{{t 'Team Members'}}</div>
-    {{#if @editable}}
-      <button class="ui blue button ml-auto" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
-    {{/if}}
-    {{#if @showLink}}
-      <LinkTo @route="events.view.team.index" class="item ml-auto">
-        <button class="ui blue button">{{t 'Edit'}}</button>
-      </LinkTo>
-    {{/if}}
+  {{#if @editable}}
+    <button class="ui blue button ml-auto" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
+  {{/if}}
+  {{#if @showLink}}
+    <LinkTo @route="events.view.team.index" class="item ml-auto">
+      <button class="ui blue button">{{t 'Edit'}}</button>
+    </LinkTo>
+  {{/if}}
 </div>
 <div class="content">
   <button class="ui {{if (eq this.roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
