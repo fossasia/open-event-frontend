@@ -28,12 +28,12 @@
                       {{field.name}}
                     </h4>
                     {{#if (is-input-field field.type) }}
-                      <span>{{get holder field.fieldIdentifier}}</span>
+                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
                     {{else if (eq field.type 'select')}}
-                      <span>{{get holder field.fieldIdentifier}}</span>
+                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
                     {{/if}}
                     {{#if field.isComplex}}
-                      <span>{{get holder.complexFieldValues field.fieldIdentifier}}</span>
+                      <span class="word-break">{{get holder.complexFieldValues field.fieldIdentifier}}</span>
                     {{/if}}
                 </div>
               {{/if}}
@@ -52,7 +52,7 @@
             <div class="row">
               <div class="column">
                 <h4 class="weight-300">
-                  {{t 'Company'}}
+                  {{t 'Organisation'}}
                 </h4>
                 <p>{{this.data.company}}</p>
                 <h4 class="weight-300">
@@ -66,7 +66,7 @@
                   {{t 'Address'}}
                 </h4>
                 <div class="ui list">
-                  <div class="item">
+                  <div class="item word-break">
                     {{this.data.address}}
                   </div>
                   <div class="item">

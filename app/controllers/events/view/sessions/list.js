@@ -15,7 +15,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : this.l10n.t('State'),
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
-        width           : 75,
+        width           : 90,
         valuePath       : 'state',
         isSortable      : true,
         extraValuePaths : ['id', 'status'],
@@ -29,7 +29,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Title'),
         valuePath       : 'title',
-        width           : 230,
+        width           : 180,
         extraValuePaths : ['id', 'event', 'isLocked'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
@@ -42,7 +42,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : this.l10n.t('Speakers'),
-        width         : 70,
+        width         : 120,
         valuePath     : 'speakers',
         cellComponent : 'ui-table/cell/cell-speakers'
       },
@@ -72,13 +72,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : this.l10n.t('Submission Date'),
-        width         : 90,
+        width         : 100,
         valuePath     : 'submittedAt',
         cellComponent : 'ui-table/cell/cell-simple-date'
       },
       {
         name          : this.l10n.t('Last Modified'),
-        width         : 90,
+        width         : 100,
         valuePath     : 'lastModifiedAt',
         cellComponent : 'ui-table/cell/cell-simple-date'
       },
@@ -92,7 +92,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Lock Session'),
         valuePath       : 'id',
-        width           : 40,
+        width           : 70,
         extraValuePaths : ['isLocked'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-lock-session',
         actions         : {
@@ -123,13 +123,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  editSession(session_id, event_id) {
-    this.transitionToRoute('events.view.sessions.edit', event_id, session_id);
+  editSession(id) {
+    this.transitionToRoute('events.view.session.edit', id);
   }
 
   @action
-  viewSession(session_id, event_id) {
-    this.transitionToRoute('public.session.view', event_id, session_id);
+  viewSession(id) {
+    this.transitionToRoute('events.view.session.view', id);
   }
 
   @action

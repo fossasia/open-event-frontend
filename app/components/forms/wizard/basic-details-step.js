@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
+  locationMenuItems: ['Venue', 'Online', 'Hybrid', 'To be announced'],
 
   selectedLocationType: 'Venue',
 
@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this._super(...arguments);
     if (this.data.event.online) {
       if (this.data.event.locationName) {
-        this.selectedLocationType = 'Mixed';
+        this.selectedLocationType = 'Hybrid';
       } else {
         this.selectedLocationType = 'Online';
       }
@@ -42,7 +42,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
+    return ['Venue', 'Hybrid'].includes(this.selectedLocationType);
   }),
 
   countries: computed(function() {
@@ -136,10 +136,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
     $.fn.form.settings.rules.checkMaxMinPrice = () => {
-      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
+      return parseInt($('.ui.form').form('get value', 'min_price'), 10) <= parseInt($('.ui.form').form('get value', 'max_price'), 10);
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
       return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
+    };
+    $.fn.form.settings.rules.checkValidTimeDifference = () => {
+      return !($('[name=start_date]')[0].value === $('[name=end_date]')[0].value && moment($('[name=start_time]')[0].value, 'HH:mm').isSameOrAfter(moment($('[name=end_time]')[0].value, 'HH:mm')));
+    };
+    $.fn.form.settings.rules.checkDateDifference = () => {
+      return moment($('[name=end_date]')[0].value, 'MM-DD-YYYY').diff(moment($('[name=start_date]')[0].value, 'MM-DD-YYYY'), 'days') <= 20;
     };
 
     const validationRules = {
@@ -188,6 +194,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid end date')
+            },
+            {
+              type   : 'checkDateDifference',
+              prompt : this.l10n.t('Event duration can not be more than 20 days')
             }
           ]
         },
@@ -198,6 +208,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Starting time should be lesser than the ending time')
             }
           ]
         },
@@ -208,6 +222,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Ending time should be greater than the starting time')
             }
           ]
         },

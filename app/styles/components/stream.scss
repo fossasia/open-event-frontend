@@ -1,3 +1,9 @@
+.video-root {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
 .stream-preview-letter {
   align-items: center;
   align-self: center;
@@ -14,12 +20,28 @@
   color: #fff;
   margin: .5rem 0;
   text-align: center;
+
+  &:hover {
+    background-color: #444 !important;
+  }
+
+  &.active {
+    background-color: #666 !important;
+  }
 }
 
 .stream-side-panel-button {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 3px;
+  left: -.4rem;
+  width: 32px;
+  height: 50px;
+
+  &.right {
+    position: absolute;
+    right: -.4rem;
+    left: unset;
+  }
 }
 
 .stream-side-panel {
@@ -28,6 +50,9 @@
   position: fixed;
   top: 0;
   left: 0;
+  padding-top: 0 !important;
   background-color: #555;
   color: #fff;
+  overflow: hidden;
+  z-index: 1;
 }

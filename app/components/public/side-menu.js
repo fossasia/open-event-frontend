@@ -1,7 +1,6 @@
 import classic from 'ember-classic-decorator';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import Component from '@ember/component';
-import moment from 'moment';
 import { tagName } from '@ember-decorators/component';
 import { tracked } from '@glimmer/tracking';
 import { hasSpeakers, hasSessions } from 'open-event-frontend/utils/event';
@@ -62,10 +61,5 @@ export default class SideMenu extends Component {
       node.classList.remove('active');
     });
     document.querySelector(`[href='#${section}']`).classList.add('active');
-  }
-
-  @computed('event.schedulePublishedOn')
-  get isSchedulePublished() {
-    return this.event.schedulePublishedOn && this.event.schedulePublishedOn.toISOString() !== moment(0).toISOString();
   }
 }

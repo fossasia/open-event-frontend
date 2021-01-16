@@ -86,6 +86,9 @@ Router.map(function() {
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
+      });
+      this.route('session', function() {
+        this.route('view', { path: '/:session_id' });
         this.route('edit', { path: '/:session_id/edit' });
       });
       this.route('tickets', function() {
@@ -110,10 +113,13 @@ Router.map(function() {
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
-        this.route('edit', { path: '/:speaker_id/edit' });
         this.route('create');
       });
-      this.route('videoroom', function() {
+      this.route('speaker', function() {
+        this.route('view', { path: '/:speaker_id' });
+        this.route('edit', { path: '/:speaker_id/edit' });
+      });
+      this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });
         this.route('edit', { path: '/:stream_id/edit' });
         this.route('create');
@@ -153,9 +159,6 @@ Router.map(function() {
     this.route('all', { path: '/:notification_state' });
   });
   this.route('admin', function() {
-    this.route('messages', function() {
-      this.route('list');
-    });
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });
       this.route('import');
