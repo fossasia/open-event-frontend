@@ -45,7 +45,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return ['Venue', 'Mixed'].includes(this.selectedLocationType);
   }),
 
-  totalTickets: computed('data.event.tickets', function() {
+  totalTickets: computed('data.event.tickets.[]', function() {
     return this.data.event.tickets.length;
   }),
 
