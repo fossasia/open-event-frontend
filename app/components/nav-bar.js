@@ -29,8 +29,27 @@ export default class NavBar extends Component {
   }
 
   @action
+  searchOnClick() {
+    this.sendAction('search');
+    document.querySelector('#mobile-bar').classList.remove('show-bar');
+  }
+
+  @action
   toggleSearchBar() {
     document.querySelector('#mobile-bar').classList.toggle('show-bar');
+  }
+
+  @action
+  showMobileSearchBar() {
+    document.querySelector('#mobile-bar').classList.add('show-bar');
+    document.getElementById('mobileSearchBar').focus();
+  }
+
+  @action
+  removeMobileSearchBar() {
+    document.getElementById('main-container').addEventListener('click', () => {
+      document.querySelector('#mobile-bar').classList.remove('show-bar');
+    });
   }
 
   @action
