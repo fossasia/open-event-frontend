@@ -80,7 +80,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
-        name            : this.l10n.t('Verify'),
+        name            : this.l10n.t('Verified'),
         valuePath       : 'isVerified',
         extraValuePaths : ['id'],
         isSortable      : true,
