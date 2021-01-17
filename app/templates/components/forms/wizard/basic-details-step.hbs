@@ -601,6 +601,7 @@
             </label>
           </div>
         </div>
+      <div class="ui hidden divider"></div>
       </div>
     </div>
   {{/if}}
@@ -616,6 +617,7 @@
   @event={{this.data.event}}
   @loading={{this.loading}}
   @first={{true}}
+  @device={{this.device}}
   @onSaved={{action 'saveForm'}}
   @onSaveDraft={{action 'saveDraft'}}
   @move={{action 'move'}}
