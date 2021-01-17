@@ -34,7 +34,7 @@ export default Component.extend({
   actions: {
     onChange() {
       if (this.onChange) {
-        this.sendAction('onChange', this.value);
+        this.onChange(this.value);
       }
     }
   }
