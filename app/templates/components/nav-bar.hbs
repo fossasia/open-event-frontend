@@ -74,7 +74,7 @@
     </div>
     <div class="right menu nav-bar">
       {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
-        <div role="button" class="item ui" {{action "removeMobileSearchBar"}} {{action "showMobileSearchBar"}} >
+        <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
           <i class="search icon"></i>
         </div>
       {{/if}}

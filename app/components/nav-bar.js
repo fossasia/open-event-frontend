@@ -40,15 +40,12 @@ export default class NavBar extends Component {
   }
 
   @action
-  showMobileSearchBar() {
-    document.querySelector('#mobile-bar').classList.add('show-bar');
+  toggleMobileSearchBar() {
+    const mobileBar = document.querySelector('#mobile-bar');
+    mobileBar.classList.add('show-bar');
     document.getElementById('mobileSearchBar').focus();
-  }
-
-  @action
-  removeMobileSearchBar() {
     document.getElementById('main-container').addEventListener('click', () => {
-      document.querySelector('#mobile-bar').classList.remove('show-bar');
+      mobileBar.classList.remove('show-bar');
     });
   }
 
