@@ -36,7 +36,7 @@ export default class JoinVideo extends Component<Args> {
     if (this.canAccess) {
       this.router.transitionTo('public', this.args.event, { queryParams: { side_panel: true } })
     } else {
-      this.confirm.prompt(this.l10n.t('You need to login or get a ticket for this event before you can join it online.'), { hideDeny: true, approveText: this.l10n.t('OK') });
+      this.router.transitionTo('public', this.args.event, { queryParams: { video_dialog: true } })
     }
   }
 }

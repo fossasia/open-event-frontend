@@ -20,7 +20,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   torii: service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
+  locationMenuItems: ['Venue', 'Online', 'Hybrid', 'To be announced'],
 
   selectedLocationType: 'Venue',
 
@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this._super(...arguments);
     if (this.data.event.online) {
       if (this.data.event.locationName) {
-        this.selectedLocationType = 'Mixed';
+        this.selectedLocationType = 'Hybrid';
       } else {
         this.selectedLocationType = 'Online';
       }
@@ -42,7 +42,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
+    return ['Venue', 'Hybrid'].includes(this.selectedLocationType);
   }),
 
   countries: computed(function() {
@@ -144,6 +144,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     $.fn.form.settings.rules.checkValidTimeDifference = () => {
       return !($('[name=start_date]')[0].value === $('[name=end_date]')[0].value && moment($('[name=start_time]')[0].value, 'HH:mm').isSameOrAfter(moment($('[name=end_time]')[0].value, 'HH:mm')));
     };
+    $.fn.form.settings.rules.checkDateDifference = () => {
+      return moment($('[name=end_date]')[0].value, 'MM-DD-YYYY').diff(moment($('[name=start_date]')[0].value, 'MM-DD-YYYY'), 'days') <= 20;
+    };
+
     const validationRules = {
       inline : true,
       delay  : false,
@@ -190,6 +194,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid end date')
+            },
+            {
+              type   : 'checkDateDifference',
+              prompt : this.l10n.t('Event duration can not be more than 20 days')
             }
           ]
         },
