@@ -1,6 +1,6 @@
 <div class="legacy-checkbox" >
   {{#if (isSubstring "checkbox" @class)}}
-    <Input @class="legacy-checkbox-checkbox" @type="checkbox" @checked={{@checked}} @click={{@onChange}} />
+    <Input @class="legacy-checkbox-checkbox" @type="checkbox" @checked={{@checked}} @click={{@onChange}} @disabled={{@disabled}} />
 
   {{else if (eq true @disabled)}}
     <XToggle
