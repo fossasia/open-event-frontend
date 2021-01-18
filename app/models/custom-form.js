@@ -89,6 +89,8 @@ export default ModelBase.extend({
     twitter         : 'Twitter',
     facebook        : 'Facebook',
     github          : 'GitHub',
+    instagram       : 'Instagram',
+    linkedin        : 'LinkedIn',
     gender          : 'Gender',
     ageGroup        : 'Age Group'
   },
