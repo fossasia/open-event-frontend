@@ -488,6 +488,24 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'instagram',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'linkedin',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'github',
         form            : 'attendee',
         type            : 'text',
