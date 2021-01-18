@@ -238,7 +238,7 @@
               @moveTicketUp={{action "moveTicket" ticket "up"}}
               @moveTicketDown={{action "moveTicket" ticket "down"}}
               @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}
-              @ishidden = {{false}} />
+              @ishidden = {{ticket.isHidden}} />
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">
@@ -495,8 +495,8 @@
           </label>
           <Textarea
             @id="cheque_details"
-            @value={{this.data.event.chequeDetails}} 
-          /> 
+            @value={{this.data.event.chequeDetails}}
+          />
         </div>
       {{/if}}
 
@@ -505,7 +505,7 @@
           <Input
             @type="checkbox"
             @id="payment_by_bank"
-            @checked={{this.data.event.canPayByBank}} 
+            @checked={{this.data.event.canPayByBank}}
           />
           <label for="payment_by_bank">
             {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer '}}
@@ -520,7 +520,7 @@
           </label>
           <Textarea
             @id="bank_details"
-            @value={{this.data.event.bankDetails}} 
+            @value={{this.data.event.bankDetails}}
           />
         </div>
       {{/if}}
@@ -544,7 +544,7 @@
           </label>
           <Textarea
             @id="on_site_details"
-            @value={{this.data.event.onsiteDetails}} 
+            @value={{this.data.event.onsiteDetails}}
           />
         </div>
       {{/if}}
@@ -593,7 +593,7 @@
             <Input
               @type="checkbox"
               @id="billing_info_mandatory"
-              @checked={{this.data.event.isBillingInfoMandatory}} 
+              @checked={{this.data.event.isBillingInfoMandatory}}
             />
             <label for="billing_info">
               <strong>{{t 'Billing Info'}}:</strong>
@@ -615,7 +615,7 @@
 <Modals::TaxInfoModal
   @isOpen={{this.taxModalIsOpen}}
   @tax={{this.data.event.tax}}
-  @hasTaxInfo={{this.data.event.isTaxEnabled}} 
+  @hasTaxInfo={{this.data.event.isTaxEnabled}}
 />
 
 <Forms::Wizard::WizardFooter
