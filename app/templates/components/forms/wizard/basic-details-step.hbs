@@ -47,7 +47,7 @@
       </a>
     {{/each}}
   </div>
-  {{#if (or (eq this.selectedLocationType 'Venue') (eq this.selectedLocationType 'Mixed'))}}
+  {{#if (or (eq this.selectedLocationType 'Venue') (eq this.selectedLocationType 'Hybrid'))}}
     <div class="field">
       <label class="{{if this.isLocationRequired 'required'}}" for="location">{{t 'Location'}}</label>
       <Widgets::Forms::LocationInput
@@ -70,7 +70,7 @@
       </Widgets::Forms::LocationInput>
     </div>
   {{/if}}
-  {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Mixed'))}}
+  {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Hybrid'))}}
     <div class="{{unless this.device.isMobile 'six wide'}} field">
       <label>{{t "Live Stream URL"}}</label>
       <Widgets::Forms::LinkField
@@ -605,6 +605,11 @@
       </div>
     </div>
   {{/if}}
+  <div class="field">
+    <label for="description">{{t 'After Order Message'}}</label>
+    <Textarea
+      @value={{this.data.event.afterOrderMessage}} />
+  </div>
 </form>
 
 <Modals::TaxInfoModal

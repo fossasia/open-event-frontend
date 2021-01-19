@@ -24,7 +24,7 @@ export default class extends Controller {
                 {
                   id: 'session_edit_save'
                 });
-              this.transitionToRoute('events.view.sessions', this.model.event.id);
+              this.transitionToRoute('events.view.session.view', this.model.event.id, this.model.session.id);
             })
             .catch(e =>   {
               console.error('Error while saving session', e);
@@ -49,7 +49,7 @@ export default class extends Controller {
             {
               id: 'session_saved'
             });
-          this.transitionToRoute('events.view.sessions', this.model.event.id);
+          this.transitionToRoute('events.view.session.view', this.model.event.id, this.model.session.id);
         })
         .catch(e => {
           console.error('Error while saving session', e);
