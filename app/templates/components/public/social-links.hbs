@@ -1,26 +1,26 @@
-<div class="ui list">
-  <div class="social-links">
+<div class="ui equal width  grid ">
+  <div class="social-links customclass  row">
     {{#if this.externalUrl}}
-      <div class="mr-1" >
-        <a href="{{this.externalUrl}}" class="ui icon small blue button" target="_blank" rel="noopener nofollow">
+      <div  class="column" >
+        <a href="{{this.externalUrl}}" class="ui icon blue button textbutton" target="_blank" rel="noopener nofollow">
           <div style="font-size: .8rem;">{{t 'Event'}}<br/>{{t 'Site'}}</div>
         </a>
       </div>
     {{/if}}
     {{#each this.socialLinks as |socialLink|}}
       {{#if (not-eq socialLink.normalizedName 'globe')}}
-        <div class="mr-1" >
-          <a href="{{socialLink.link}}" class="ui icon {{socialLink.normalizedName}} {{socialLink.buttonColor}} big button">
+        <div  class="column" >
+          <a href="{{socialLink.link}}" class="ui textbutton icon {{socialLink.normalizedName}} {{socialLink.buttonColor}} center button">
             <i class="ui inverted {{socialLink.normalizedName}} icon"></i>
           </a>
-        </div>
+        </div> 
       {{/if}}
     {{/each}}
   {{#each this.socialLinks as |socialLink|}}
     {{#if (eq socialLink.normalizedName 'globe')}}
-      <div class="m-1">
+      <div class="column">
         <UiPopup @content={{t-var socialLink.displayName}}>
-          <a href="{{socialLink.link}}" class="ui icon blue small button extra-link d-flex items-center content-center" target="_blank" rel="noopener nofollow">
+          <a href="{{socialLink.link}}" class="ui icon blue  button extra-link d-flex items-center content-center textbutton" target="_blank" rel="noopener nofollow">
             <div  class="clamp" style="font-size: .8rem;">{{socialLink.displayName}}</div>
           </a>
         </UiPopup>
