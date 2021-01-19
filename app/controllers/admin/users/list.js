@@ -116,7 +116,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       user.toggleProperty('isBlocked');
       await user.save();
-      this.notify.success(this.l10n.t('User has been marked as Spam successfully.'),
+      this.notify.success(user.isBlocked ? this.l10n.t('User has been marked as Spam successfully.') : this.l10n.t('User has been marked as Not Spam successfully.'),
         {
           id: 'user_spam_succ'
         });
