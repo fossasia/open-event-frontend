@@ -119,6 +119,16 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const acceptReceiveEmailsValidation = {
+      rules: [
+        {
+          type   : 'checked',
+          value  : false,
+          prompt : this.l10n.t('You need to agree to the condition of the organizer to receive emails in order to continue the order process')
+        }
+      ]
+    };
+
     const addressValidation = {
       rules: [
         {
@@ -457,6 +467,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`gender_required_${  index}`] = genderValidation;
       validationRules.fields[`ageGroup_required_${  index}`] = ageGroupValidation;
       validationRules.fields[`address_required_${  index}`] = addressValidation;
+      validationRules.fields[`acceptReceiveEmails_required_${  index}`] = acceptReceiveEmailsValidation;
       validationRules.fields[`city_required_${  index}`] = cityValidation;
       validationRules.fields[`state_required_${  index}`] = stateValidation;
       validationRules.fields[`country_required_${  index}`] = countryValidation;
