@@ -1,12 +1,10 @@
+import { tn } from '../text';
+
 export interface License {
   name: string,
   link: string,
   imageSrc: string,
   logoUrl: string | null
-}
-
-const tn = {
-  t: (str: string) => str
 }
 
 export const licenses: License[] = [

@@ -1,10 +1,8 @@
+import { tn } from '../text';
+
 export interface Country {
   name: string;
   code: string;
-}
-
-const tn = {
-  t: (str: string) => str
 }
 
 /**

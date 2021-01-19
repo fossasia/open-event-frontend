@@ -12,6 +12,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import ENV from 'open-event-frontend/config/environment';
 import $ from 'jquery';
+import { tn } from 'open-event-frontend/utils/text';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
@@ -21,7 +22,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   torii : service(),
   tn    : service(),
 
-  locationMenuItems: [this.tn.t('Venue'), this.tn.t('Online'), this.tn.t('Hybrid'), this.tn.t('To be announced')],
+  locationMenuItems: [tn.t('Venue'), tn.t('Online'), tn.t('Hybrid'), tn.t('To be announced')],
 
   selectedLocationType: 'Venue',
 
