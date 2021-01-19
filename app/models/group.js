@@ -5,11 +5,11 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default ModelBase.extend({
 
-  name:  attr('string'),
-  createdAt : attr('moment', { readOnly: true }),
+  name       : attr('string'),
+  createdAt  : attr('moment', { readOnly: true }),
   modifiedAt : attr('moment'),
   /**
    * Relationships
    */
-  user                : belongsTo('user'),
+  user       : belongsTo('user')
 });
