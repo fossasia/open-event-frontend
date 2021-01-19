@@ -27,7 +27,7 @@ export default class PublicStreamView extends Route {
   }
 
   @action
-  error(error: any, transition: any): void | boolean {
+  error(error: {isAdapterError: boolean, errors: any[]}, transition: any): void | boolean { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
     if (error.isAdapterError && error.errors?.[0]?.status === 404) {
       this.transitionTo('public', transition.resolvedModels.public, { queryParams: { video_dialog: true } });
     } else {

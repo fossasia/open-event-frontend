@@ -12,15 +12,17 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import ENV from 'open-event-frontend/config/environment';
 import $ from 'jquery';
+import { tn } from 'open-event-frontend/utils/text';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone: moment.tz.guess(),
   timezones,
 
-  torii: service(),
+  torii : service(),
+  tn    : service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
+  locationMenuItems: [tn.t('Venue'), tn.t('Online'), tn.t('Hybrid'), tn.t('To be announced')],
 
   selectedLocationType: 'Venue',
 
@@ -30,7 +32,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this._super(...arguments);
     if (this.data.event.online) {
       if (this.data.event.locationName) {
-        this.selectedLocationType = 'Mixed';
+        this.selectedLocationType = 'Hybrid';
       } else {
         this.selectedLocationType = 'Online';
       }
@@ -42,7 +44,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
+    return ['Venue', 'Hybrid'].includes(this.selectedLocationType);
   }),
 
   countries: computed(function() {

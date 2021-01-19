@@ -284,7 +284,7 @@ function preSaveActions() {
   this.data.event.deletedTickets = this.deletedTickets;
 
   if (this.selectedLocationType) {
-    this.set('data.event.online', ['Online', 'Mixed'].includes(this.selectedLocationType));
+    this.set('data.event.online', ['Online', 'Hybrid'].includes(this.selectedLocationType));
     if (['Online', 'To be announced'].includes(this.selectedLocationType)) {
       this.set('data.event.locationName', null);
     }

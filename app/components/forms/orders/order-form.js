@@ -16,7 +16,8 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 
 
 export default Component.extend(FormMixin, {
-  router: service(),
+  router             : service(),
+  autoScrollToErrors : false,
 
   buyerFirstName    : oneWay('buyerHasFirstName'),
   buyerLastName     : oneWay('buyerHasLastName'),
