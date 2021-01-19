@@ -74,7 +74,7 @@
             {{#each this.paymentCurrencies as |paymentCurrency|}}
               <div class="item" data-value="{{paymentCurrency.code}}">
                 {{paymentCurrency.code}} -
-                {{paymentCurrency.name}}
+                {{t-var paymentCurrency.name}}
                 ({{paymentCurrency.symbol}})
               </div>
             {{/each}}

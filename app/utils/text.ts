@@ -31,3 +31,7 @@ export const stringHashCode = (str: string): number => {
 
   return hash
 }
+
+export const tn = {
+  t: (str: string): string => str
+}

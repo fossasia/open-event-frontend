@@ -12,15 +12,17 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import ENV from 'open-event-frontend/config/environment';
 import $ from 'jquery';
+import { tn } from 'open-event-frontend/utils/text';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone: moment.tz.guess(),
   timezones,
 
-  torii: service(),
+  torii : service(),
+  tn    : service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Hybrid', 'To be announced'],
+  locationMenuItems: [tn.t('Venue'), tn.t('Online'), tn.t('Hybrid'), tn.t('To be announced')],
 
   selectedLocationType: 'Venue',
 
