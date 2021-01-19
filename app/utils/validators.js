@@ -72,7 +72,7 @@ export const validGithubProfileUrlPattern = new RegExp(
 
 export const validInstagramProfileUrlPattern = new RegExp(
   '^(https?:\\/\\/)' // compulsory protocol
-  + '?(?:www.)?(instagram\\.com\\/([a-zA-Z0-9_.]+)$'
+  + '?(?:www.)?(instagram|instagr.am\\.com\\/([a-zA-Z0-9_.]+)$'
 );
 
 export const validLinkedinProfileUrlPattern = new RegExp(
