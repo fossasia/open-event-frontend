@@ -95,7 +95,7 @@ msgstr "Please enter your email ID"
 #: app/components/forms/session-speaker-form.js:198:23
 #: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-#: app/components/forms/wizard/basic-details-step.js:358:23
+#: app/components/forms/wizard/basic-details-step.js:359:23
 msgid "Please enter a valid email address"
 msgstr "Please enter a valid email address"
 
@@ -311,9 +311,9 @@ msgstr "Please enter a language"
 #: app/components/forms/session-speaker-form.js:237:23
 #: app/components/forms/session-speaker-form.js:366:23
 #: app/components/forms/session-speaker-form.js:377:23
-#: app/components/forms/wizard/basic-details-step.js:400:23
-#: app/components/forms/wizard/basic-details-step.js:420:23
-#: app/components/forms/wizard/basic-details-step.js:431:23
+#: app/components/forms/wizard/basic-details-step.js:401:23
+#: app/components/forms/wizard/basic-details-step.js:421:23
+#: app/components/forms/wizard/basic-details-step.js:432:23
 #: app/components/forms/wizard/other-details-step.js:65:23
 msgid "Please enter a valid url"
 msgstr "Please enter a valid url"
@@ -805,7 +805,7 @@ msgstr "Please enter your state"
 
 #: app/components/forms/orders/order-form.js:159:19
 #: app/components/forms/orders/order-form.js:408:23
-#: app/components/forms/wizard/basic-details-step.js:409:23
+#: app/components/forms/wizard/basic-details-step.js:410:23
 #: app/components/modals/tax-info-modal.js:111:23
 msgid "Please select your country"
 msgstr "Please select your country"
@@ -1027,156 +1027,174 @@ msgstr "Please enter a valid phone number"
 msgid "Your profile has been updated"
 msgstr "Your profile has been updated"
 
-#: app/components/forms/wizard/basic-details-step.js:161:23
+#: app/components/forms/wizard/basic-details-step.js:24:22
+msgid "Venue"
+msgstr "Venue"
+
+#: app/components/forms/wizard/basic-details-step.js:24:42
+#: app/templates/components/explore/side-bar.hbs:22:23
+msgid "Online"
+msgstr "Online"
+
+#: app/components/forms/wizard/basic-details-step.js:24:63
+#: app/templates/components/explore/side-bar.hbs:36:23
+msgid "Hybrid"
+msgstr "Hybrid"
+
+#: app/components/forms/wizard/basic-details-step.js:24:84
+msgid "To be announced"
+msgstr "To be announced"
+
+#: app/components/forms/wizard/basic-details-step.js:162:23
 msgid "Please give your event a name"
 msgstr "Please give your event a name"
 
-#: app/components/forms/wizard/basic-details-step.js:170:23
+#: app/components/forms/wizard/basic-details-step.js:171:23
 msgid "Choose a timezone for your event"
 msgstr "Choose a timezone for your event"
 
-#: app/components/forms/wizard/basic-details-step.js:179:23
+#: app/components/forms/wizard/basic-details-step.js:180:23
 #: app/components/forms/wizard/sessions-speakers-step.js:58:23
 msgid "Please tell us when your event starts"
 msgstr "Please tell us when your event starts"
 
-#: app/components/forms/wizard/basic-details-step.js:183:23
+#: app/components/forms/wizard/basic-details-step.js:184:23
 msgid "Please give a valid start date"
 msgstr "Please give a valid start date"
 
-#: app/components/forms/wizard/basic-details-step.js:192:23
+#: app/components/forms/wizard/basic-details-step.js:193:23
 #: app/components/forms/wizard/sessions-speakers-step.js:71:23
 msgid "Please tell us when your event ends"
 msgstr "Please tell us when your event ends"
 
-#: app/components/forms/wizard/basic-details-step.js:196:23
+#: app/components/forms/wizard/basic-details-step.js:197:23
 msgid "Please give a valid end date"
 msgstr "Please give a valid end date"
 
-#: app/components/forms/wizard/basic-details-step.js:200:23
+#: app/components/forms/wizard/basic-details-step.js:201:23
 msgid "Event duration can not be more than 20 days"
 msgstr "Event duration can not be more than 20 days"
 
-#: app/components/forms/wizard/basic-details-step.js:210:23
+#: app/components/forms/wizard/basic-details-step.js:211:23
 #: app/components/forms/wizard/sessions-speakers-step.js:85:23
 msgid "Please give a start time"
 msgstr "Please give a start time"
 
-#: app/components/forms/wizard/basic-details-step.js:214:23
+#: app/components/forms/wizard/basic-details-step.js:215:23
 msgid "Starting time should be lesser than the ending time"
 msgstr "Starting time should be lesser than the ending time"
 
-#: app/components/forms/wizard/basic-details-step.js:224:23
+#: app/components/forms/wizard/basic-details-step.js:225:23
 #: app/components/forms/wizard/sessions-speakers-step.js:95:23
 msgid "Please give an end time"
 msgstr "Please give an end time"
 
-#: app/components/forms/wizard/basic-details-step.js:228:23
+#: app/components/forms/wizard/basic-details-step.js:229:23
 msgid "Ending time should be greater than the starting time"
 msgstr "Ending time should be greater than the starting time"
 
-#: app/components/forms/wizard/basic-details-step.js:237:23
+#: app/components/forms/wizard/basic-details-step.js:238:23
 msgid "Please give your ticket a name"
 msgstr "Please give your ticket a name"
 
-#: app/components/forms/wizard/basic-details-step.js:247:23
+#: app/components/forms/wizard/basic-details-step.js:248:23
 msgid "Ticket description shouldn't contain more than {ruleValue} characters"
 msgstr "Ticket description shouldn't contain more than {ruleValue} characters"
 
-#: app/components/forms/wizard/basic-details-step.js:256:23
+#: app/components/forms/wizard/basic-details-step.js:257:23
 msgid "Please give your ticket a price"
 msgstr "Please give your ticket a price"
 
-#: app/components/forms/wizard/basic-details-step.js:260:23
+#: app/components/forms/wizard/basic-details-step.js:261:23
 msgid "Please give a proper price for you ticket"
 msgstr "Please give a proper price for you ticket"
 
-#: app/components/forms/wizard/basic-details-step.js:264:23
+#: app/components/forms/wizard/basic-details-step.js:265:23
 msgid "Ticket price should be greater than 0"
 msgstr "Ticket price should be greater than 0"
 
-#: app/components/forms/wizard/basic-details-step.js:273:23
+#: app/components/forms/wizard/basic-details-step.js:274:23
 msgid "Please specify how many tickets of this type are available"
 msgstr "Please specify how many tickets of this type are available"
 
-#: app/components/forms/wizard/basic-details-step.js:277:23
+#: app/components/forms/wizard/basic-details-step.js:278:23
 msgid "Please give a proper quantity for you ticket"
 msgstr "Please give a proper quantity for you ticket"
 
-#: app/components/forms/wizard/basic-details-step.js:286:23
+#: app/components/forms/wizard/basic-details-step.js:287:23
 msgid "Minimum tickets per order required"
 msgstr "Minimum tickets per order required"
 
-#: app/components/forms/wizard/basic-details-step.js:290:23
-#: app/components/forms/wizard/basic-details-step.js:307:23
+#: app/components/forms/wizard/basic-details-step.js:291:23
+#: app/components/forms/wizard/basic-details-step.js:308:23
 msgid "Invalid number"
 msgstr "Invalid number"
 
-#: app/components/forms/wizard/basic-details-step.js:294:23
+#: app/components/forms/wizard/basic-details-step.js:295:23
 msgid "Minimum order should not be greater than maximum"
 msgstr "Minimum order should not be greater than maximum"
 
-#: app/components/forms/wizard/basic-details-step.js:303:23
+#: app/components/forms/wizard/basic-details-step.js:304:23
 msgid "Maximum tickets per order required"
 msgstr "Maximum tickets per order required"
 
-#: app/components/forms/wizard/basic-details-step.js:311:23
+#: app/components/forms/wizard/basic-details-step.js:312:23
 msgid "Maximum tickets per order should be greater than 0"
 msgstr "Maximum tickets per order should be greater than 0"
 
-#: app/components/forms/wizard/basic-details-step.js:315:23
+#: app/components/forms/wizard/basic-details-step.js:316:23
 msgid "Maximum order should not be less than minimum"
 msgstr "Maximum order should not be less than minimum"
 
-#: app/components/forms/wizard/basic-details-step.js:324:23
+#: app/components/forms/wizard/basic-details-step.js:325:23
 msgid "Minimum price for donation tickets required"
 msgstr "Minimum price for donation tickets required"
 
-#: app/components/forms/wizard/basic-details-step.js:328:23
+#: app/components/forms/wizard/basic-details-step.js:329:23
 msgid "Minimum price needs to be greater than zero"
 msgstr "Minimum price needs to be greater than zero"
 
-#: app/components/forms/wizard/basic-details-step.js:332:23
+#: app/components/forms/wizard/basic-details-step.js:333:23
 msgid "Minimum price should not be greater than maximum"
 msgstr "Minimum price should not be greater than maximum"
 
-#: app/components/forms/wizard/basic-details-step.js:341:23
+#: app/components/forms/wizard/basic-details-step.js:342:23
 msgid "Maximum price for donation tickets required"
 msgstr "Maximum price for donation tickets required"
 
-#: app/components/forms/wizard/basic-details-step.js:345:23
+#: app/components/forms/wizard/basic-details-step.js:346:23
 msgid "Maximum price needs to be greater than zero"
 msgstr "Maximum price needs to be greater than zero"
 
-#: app/components/forms/wizard/basic-details-step.js:349:23
+#: app/components/forms/wizard/basic-details-step.js:350:23
 msgid "Maximum price should not be less than minimum"
 msgstr "Maximum price should not be less than minimum"
 
-#: app/components/forms/wizard/basic-details-step.js:362:23
+#: app/components/forms/wizard/basic-details-step.js:363:23
 msgid "Please fill your paypal email for payment of tickets."
 msgstr "Please fill your paypal email for payment of tickets."
 
-#: app/components/forms/wizard/basic-details-step.js:371:23
+#: app/components/forms/wizard/basic-details-step.js:372:23
 msgid "Please fill the details for payment of tickets."
 msgstr "Please fill the details for payment of tickets."
 
-#: app/components/forms/wizard/basic-details-step.js:380:23
+#: app/components/forms/wizard/basic-details-step.js:381:23
 msgid "Please fill the bank details for payment of tickets."
 msgstr "Please fill the bank details for payment of tickets."
 
-#: app/components/forms/wizard/basic-details-step.js:389:23
+#: app/components/forms/wizard/basic-details-step.js:390:23
 msgid "Please fill the cheque details for payment of tickets."
 msgstr "Please fill the cheque details for payment of tickets."
 
-#: app/components/forms/wizard/basic-details-step.js:452:51
+#: app/components/forms/wizard/basic-details-step.js:453:51
 msgid "Please try again"
 msgstr "Please try again"
 
-#: app/components/forms/wizard/basic-details-step.js:461:30
+#: app/components/forms/wizard/basic-details-step.js:462:30
 msgid "Stripe disconnected successfully"
 msgstr "Stripe disconnected successfully"
 
-#: app/components/forms/wizard/basic-details-step.js:530:61
+#: app/components/forms/wizard/basic-details-step.js:531:61
 msgid "This discount code is invalid. Please try again."
 msgstr "This discount code is invalid. Please try again."
 
@@ -4467,14 +4485,6 @@ msgstr "Enter Event Name"
 #: app/templates/components/explore/side-bar.hbs:15:8
 msgid "Setting"
 msgstr "Setting"
-
-#: app/templates/components/explore/side-bar.hbs:22:23
-msgid "Online"
-msgstr "Online"
-
-#: app/templates/components/explore/side-bar.hbs:36:23
-msgid "Hybrid"
-msgstr "Hybrid"
 
 #: app/templates/components/explore/side-bar.hbs:48:35
 msgid "Enter Location"
@@ -8031,6 +8041,1006 @@ msgstr "Please login to continue."
 msgid "Error"
 msgstr "Error"
 
+#: app/utils/dictionary/demography.ts:16:10
+msgid "Andorra"
+msgstr "Andorra"
+
+#: app/utils/dictionary/demography.ts:20:10
+msgid "United Arab Emirates"
+msgstr "United Arab Emirates"
+
+#: app/utils/dictionary/demography.ts:24:10
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: app/utils/dictionary/demography.ts:28:10
+msgid "Antigua And Barbuda"
+msgstr "Antigua And Barbuda"
+
+#: app/utils/dictionary/demography.ts:32:10
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: app/utils/dictionary/demography.ts:36:10
+msgid "Albania"
+msgstr "Albania"
+
+#: app/utils/dictionary/demography.ts:40:10
+msgid "Armenia"
+msgstr "Armenia"
+
+#: app/utils/dictionary/demography.ts:44:10
+msgid "Angola"
+msgstr "Angola"
+
+#: app/utils/dictionary/demography.ts:48:10
+msgid "Antarctica"
+msgstr "Antarctica"
+
+#: app/utils/dictionary/demography.ts:52:10
+msgid "Argentina"
+msgstr "Argentina"
+
+#: app/utils/dictionary/demography.ts:56:10
+msgid "American Samoa"
+msgstr "American Samoa"
+
+#: app/utils/dictionary/demography.ts:60:10
+msgid "Austria"
+msgstr "Austria"
+
+#: app/utils/dictionary/demography.ts:64:10
+msgid "Australia"
+msgstr "Australia"
+
+#: app/utils/dictionary/demography.ts:68:10
+msgid "Aruba"
+msgstr "Aruba"
+
+#: app/utils/dictionary/demography.ts:72:10
+msgid "Åland"
+msgstr "Åland"
+
+#: app/utils/dictionary/demography.ts:76:10
+msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+#: app/utils/dictionary/demography.ts:80:10
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnia and Herzegovina"
+
+#: app/utils/dictionary/demography.ts:84:10
+msgid "Barbados"
+msgstr "Barbados"
+
+#: app/utils/dictionary/demography.ts:88:10
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+#: app/utils/dictionary/demography.ts:92:10
+msgid "Belgium"
+msgstr "Belgium"
+
+#: app/utils/dictionary/demography.ts:96:10
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: app/utils/dictionary/demography.ts:100:10
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+#: app/utils/dictionary/demography.ts:104:10
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: app/utils/dictionary/demography.ts:108:10
+msgid "Burundi"
+msgstr "Burundi"
+
+#: app/utils/dictionary/demography.ts:112:10
+msgid "Benin"
+msgstr "Benin"
+
+#: app/utils/dictionary/demography.ts:116:10
+msgid "Saint Barthélemy"
+msgstr "Saint Barthélemy"
+
+#: app/utils/dictionary/demography.ts:120:10
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: app/utils/dictionary/demography.ts:124:10
+msgid "Brunei"
+msgstr "Brunei"
+
+#: app/utils/dictionary/demography.ts:128:10
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#: app/utils/dictionary/demography.ts:132:10
+msgid "Bonaire"
+msgstr "Bonaire"
+
+#: app/utils/dictionary/demography.ts:136:10
+msgid "Brazil"
+msgstr "Brazil"
+
+#: app/utils/dictionary/demography.ts:140:10
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: app/utils/dictionary/demography.ts:144:10
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: app/utils/dictionary/demography.ts:148:10
+msgid "Bouvet Island"
+msgstr "Bouvet Island"
+
+#: app/utils/dictionary/demography.ts:152:10
+msgid "Botswana"
+msgstr "Botswana"
+
+#: app/utils/dictionary/demography.ts:156:10
+msgid "Belarus"
+msgstr "Belarus"
+
+#: app/utils/dictionary/demography.ts:160:10
+msgid "Belize"
+msgstr "Belize"
+
+#: app/utils/dictionary/demography.ts:164:10
+msgid "Canada"
+msgstr "Canada"
+
+#: app/utils/dictionary/demography.ts:168:10
+msgid "Cocos [Keeling] Islands"
+msgstr "Cocos [Keeling] Islands"
+
+#: app/utils/dictionary/demography.ts:172:10
+msgid "Democratic Republic Of Congo"
+msgstr "Democratic Republic Of Congo"
+
+#: app/utils/dictionary/demography.ts:176:10
+msgid "Central African Republic"
+msgstr "Central African Republic"
+
+#: app/utils/dictionary/demography.ts:180:10
+msgid "Republic Of the Congo"
+msgstr "Republic Of the Congo"
+
+#: app/utils/dictionary/demography.ts:184:10
+msgid "Switzerland"
+msgstr "Switzerland"
+
+#: app/utils/dictionary/demography.ts:188:10
+msgid "Ivory Coast"
+msgstr "Ivory Coast"
+
+#: app/utils/dictionary/demography.ts:192:10
+msgid "Cook Islands"
+msgstr "Cook Islands"
+
+#: app/utils/dictionary/demography.ts:196:10
+msgid "Chile"
+msgstr "Chile"
+
+#: app/utils/dictionary/demography.ts:200:10
+msgid "Cameroon"
+msgstr "Cameroon"
+
+#: app/utils/dictionary/demography.ts:204:10
+msgid "China"
+msgstr "China"
+
+#: app/utils/dictionary/demography.ts:208:10
+msgid "Colombia"
+msgstr "Colombia"
+
+#: app/utils/dictionary/demography.ts:212:10
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: app/utils/dictionary/demography.ts:216:10
+msgid "Cuba"
+msgstr "Cuba"
+
+#: app/utils/dictionary/demography.ts:220:10
+msgid "Cape Verde"
+msgstr "Cape Verde"
+
+#: app/utils/dictionary/demography.ts:224:10
+msgid "Curacao"
+msgstr "Curacao"
+
+#: app/utils/dictionary/demography.ts:228:10
+msgid "Christmas Island"
+msgstr "Christmas Island"
+
+#: app/utils/dictionary/demography.ts:232:10
+msgid "Cyprus"
+msgstr "Cyprus"
+
+#: app/utils/dictionary/demography.ts:236:10
+msgid "Czech Republic"
+msgstr "Czech Republic"
+
+#: app/utils/dictionary/demography.ts:240:10
+msgid "Germany"
+msgstr "Germany"
+
+#: app/utils/dictionary/demography.ts:244:10
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: app/utils/dictionary/demography.ts:248:10
+msgid "Denmark"
+msgstr "Denmark"
+
+#: app/utils/dictionary/demography.ts:252:10
+msgid "Dominica"
+msgstr "Dominica"
+
+#: app/utils/dictionary/demography.ts:256:10
+msgid "Dominican Republic"
+msgstr "Dominican Republic"
+
+#: app/utils/dictionary/demography.ts:260:10
+msgid "Algeria"
+msgstr "Algeria"
+
+#: app/utils/dictionary/demography.ts:264:10
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: app/utils/dictionary/demography.ts:268:10
+msgid "Estonia"
+msgstr "Estonia"
+
+#: app/utils/dictionary/demography.ts:272:10
+msgid "Egypt"
+msgstr "Egypt"
+
+#: app/utils/dictionary/demography.ts:276:10
+msgid "Western Sahara"
+msgstr "Western Sahara"
+
+#: app/utils/dictionary/demography.ts:280:10
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: app/utils/dictionary/demography.ts:284:10
+msgid "Spain"
+msgstr "Spain"
+
+#: app/utils/dictionary/demography.ts:288:10
+msgid "Ethiopia"
+msgstr "Ethiopia"
+
+#: app/utils/dictionary/demography.ts:292:10
+msgid "Finland"
+msgstr "Finland"
+
+#: app/utils/dictionary/demography.ts:296:10
+msgid "Fiji"
+msgstr "Fiji"
+
+#: app/utils/dictionary/demography.ts:300:10
+msgid "Falkland Islands"
+msgstr "Falkland Islands"
+
+#: app/utils/dictionary/demography.ts:304:10
+msgid "Micronesia"
+msgstr "Micronesia"
+
+#: app/utils/dictionary/demography.ts:308:10
+msgid "Faroe Islands"
+msgstr "Faroe Islands"
+
+#: app/utils/dictionary/demography.ts:312:10
+msgid "France"
+msgstr "France"
+
+#: app/utils/dictionary/demography.ts:316:10
+msgid "Gabon"
+msgstr "Gabon"
+
+#: app/utils/dictionary/demography.ts:320:10
+msgid "United Kingdom"
+msgstr "United Kingdom"
+
+#: app/utils/dictionary/demography.ts:324:10
+msgid "Grenada"
+msgstr "Grenada"
+
+#: app/utils/dictionary/demography.ts:328:10
+msgid "Georgia"
+msgstr "Georgia"
+
+#: app/utils/dictionary/demography.ts:332:10
+msgid "French Guiana"
+msgstr "French Guiana"
+
+#: app/utils/dictionary/demography.ts:336:10
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: app/utils/dictionary/demography.ts:340:10
+msgid "Ghana"
+msgstr "Ghana"
+
+#: app/utils/dictionary/demography.ts:344:10
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: app/utils/dictionary/demography.ts:348:10
+msgid "Greenland"
+msgstr "Greenland"
+
+#: app/utils/dictionary/demography.ts:352:10
+msgid "Gambia"
+msgstr "Gambia"
+
+#: app/utils/dictionary/demography.ts:356:10
+msgid "Guinea"
+msgstr "Guinea"
+
+#: app/utils/dictionary/demography.ts:360:10
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: app/utils/dictionary/demography.ts:364:10
+msgid "Equatorial Guinea"
+msgstr "Equatorial Guinea"
+
+#: app/utils/dictionary/demography.ts:368:10
+msgid "Greece"
+msgstr "Greece"
+
+#: app/utils/dictionary/demography.ts:372:10
+msgid "South Georgia and The South Sandwich Islands"
+msgstr "South Georgia and The South Sandwich Islands"
+
+#: app/utils/dictionary/demography.ts:376:10
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: app/utils/dictionary/demography.ts:380:10
+msgid "Guam"
+msgstr "Guam"
+
+#: app/utils/dictionary/demography.ts:384:10
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: app/utils/dictionary/demography.ts:388:10
+msgid "Guyana"
+msgstr "Guyana"
+
+#: app/utils/dictionary/demography.ts:392:10
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: app/utils/dictionary/demography.ts:396:10
+msgid "Heard Island And McDonald Islands"
+msgstr "Heard Island And McDonald Islands"
+
+#: app/utils/dictionary/demography.ts:400:10
+msgid "Honduras"
+msgstr "Honduras"
+
+#: app/utils/dictionary/demography.ts:404:10
+msgid "Croatia"
+msgstr "Croatia"
+
+#: app/utils/dictionary/demography.ts:408:10
+msgid "Haiti"
+msgstr "Haiti"
+
+#: app/utils/dictionary/demography.ts:412:10
+msgid "Hungary"
+msgstr "Hungary"
+
+#: app/utils/dictionary/demography.ts:416:10
+msgid "Indonesia"
+msgstr "Indonesia"
+
+#: app/utils/dictionary/demography.ts:420:10
+msgid "Ireland"
+msgstr "Ireland"
+
+#: app/utils/dictionary/demography.ts:424:10
+msgid "Israel"
+msgstr "Israel"
+
+#: app/utils/dictionary/demography.ts:428:10
+msgid "Isle of Man"
+msgstr "Isle of Man"
+
+#: app/utils/dictionary/demography.ts:432:10
+msgid "India"
+msgstr "India"
+
+#: app/utils/dictionary/demography.ts:436:10
+msgid "British Indian Ocean Territory"
+msgstr "British Indian Ocean Territory"
+
+#: app/utils/dictionary/demography.ts:440:10
+msgid "Iraq"
+msgstr "Iraq"
+
+#: app/utils/dictionary/demography.ts:444:10
+msgid "Iran"
+msgstr "Iran"
+
+#: app/utils/dictionary/demography.ts:448:10
+msgid "Iceland"
+msgstr "Iceland"
+
+#: app/utils/dictionary/demography.ts:452:10
+msgid "Italy"
+msgstr "Italy"
+
+#: app/utils/dictionary/demography.ts:456:10
+msgid "Jersey"
+msgstr "Jersey"
+
+#: app/utils/dictionary/demography.ts:460:10
+msgid "Jamaica"
+msgstr "Jamaica"
+
+#: app/utils/dictionary/demography.ts:464:10
+msgid "Jordan"
+msgstr "Jordan"
+
+#: app/utils/dictionary/demography.ts:468:10
+msgid "Japan"
+msgstr "Japan"
+
+#: app/utils/dictionary/demography.ts:472:10
+msgid "Kenya"
+msgstr "Kenya"
+
+#: app/utils/dictionary/demography.ts:476:10
+msgid "Kyrgyzstan"
+msgstr "Kyrgyzstan"
+
+#: app/utils/dictionary/demography.ts:480:10
+msgid "Cambodia"
+msgstr "Cambodia"
+
+#: app/utils/dictionary/demography.ts:484:10
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: app/utils/dictionary/demography.ts:488:10
+msgid "Comoros"
+msgstr "Comoros"
+
+#: app/utils/dictionary/demography.ts:492:10
+msgid "Saint Kitts And Nevis"
+msgstr "Saint Kitts And Nevis"
+
+#: app/utils/dictionary/demography.ts:496:10
+msgid "North Korea"
+msgstr "North Korea"
+
+#: app/utils/dictionary/demography.ts:500:10
+msgid "South Korea"
+msgstr "South Korea"
+
+#: app/utils/dictionary/demography.ts:504:10
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: app/utils/dictionary/demography.ts:508:10
+msgid "Cayman Islands"
+msgstr "Cayman Islands"
+
+#: app/utils/dictionary/demography.ts:512:10
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+#: app/utils/dictionary/demography.ts:516:10
+msgid "Laos"
+msgstr "Laos"
+
+#: app/utils/dictionary/demography.ts:520:10
+msgid "Lebanon"
+msgstr "Lebanon"
+
+#: app/utils/dictionary/demography.ts:524:10
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#: app/utils/dictionary/demography.ts:528:10
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: app/utils/dictionary/demography.ts:532:10
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: app/utils/dictionary/demography.ts:536:10
+msgid "Liberia"
+msgstr "Liberia"
+
+#: app/utils/dictionary/demography.ts:540:10
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: app/utils/dictionary/demography.ts:544:10
+msgid "Lithuania"
+msgstr "Lithuania"
+
+#: app/utils/dictionary/demography.ts:548:10
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#: app/utils/dictionary/demography.ts:552:10
+msgid "Latvia"
+msgstr "Latvia"
+
+#: app/utils/dictionary/demography.ts:556:10
+msgid "Libya"
+msgstr "Libya"
+
+#: app/utils/dictionary/demography.ts:560:10
+msgid "Morocco"
+msgstr "Morocco"
+
+#: app/utils/dictionary/demography.ts:564:10
+msgid "Monaco"
+msgstr "Monaco"
+
+#: app/utils/dictionary/demography.ts:568:10
+msgid "Moldova"
+msgstr "Moldova"
+
+#: app/utils/dictionary/demography.ts:572:10
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: app/utils/dictionary/demography.ts:576:10
+msgid "Saint Martin"
+msgstr "Saint Martin"
+
+#: app/utils/dictionary/demography.ts:580:10
+msgid "Madagascar"
+msgstr "Madagascar"
+
+#: app/utils/dictionary/demography.ts:584:10
+msgid "Marshall Islands"
+msgstr "Marshall Islands"
+
+#: app/utils/dictionary/demography.ts:588:10
+msgid "North Macedonia"
+msgstr "North Macedonia"
+
+#: app/utils/dictionary/demography.ts:592:10
+msgid "Mali"
+msgstr "Mali"
+
+#: app/utils/dictionary/demography.ts:596:10
+msgid "Myanmar"
+msgstr "Myanmar"
+
+#: app/utils/dictionary/demography.ts:600:10
+msgid "Mongolia"
+msgstr "Mongolia"
+
+#: app/utils/dictionary/demography.ts:604:10
+msgid "Macao"
+msgstr "Macao"
+
+#: app/utils/dictionary/demography.ts:608:10
+msgid "Northern Mariana Islands"
+msgstr "Northern Mariana Islands"
+
+#: app/utils/dictionary/demography.ts:612:10
+msgid "Martinique"
+msgstr "Martinique"
+
+#: app/utils/dictionary/demography.ts:616:10
+msgid "Mauritania"
+msgstr "Mauritania"
+
+#: app/utils/dictionary/demography.ts:620:10
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: app/utils/dictionary/demography.ts:624:10
+msgid "Malta"
+msgstr "Malta"
+
+#: app/utils/dictionary/demography.ts:628:10
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: app/utils/dictionary/demography.ts:632:10
+msgid "Maldives"
+msgstr "Maldives"
+
+#: app/utils/dictionary/demography.ts:636:10
+msgid "Malawi"
+msgstr "Malawi"
+
+#: app/utils/dictionary/demography.ts:640:10
+msgid "Mexico"
+msgstr "Mexico"
+
+#: app/utils/dictionary/demography.ts:644:10
+msgid "Malaysia"
+msgstr "Malaysia"
+
+#: app/utils/dictionary/demography.ts:648:10
+msgid "Mozambique"
+msgstr "Mozambique"
+
+#: app/utils/dictionary/demography.ts:652:10
+msgid "Namibia"
+msgstr "Namibia"
+
+#: app/utils/dictionary/demography.ts:656:10
+msgid "New Caledonia"
+msgstr "New Caledonia"
+
+#: app/utils/dictionary/demography.ts:660:10
+msgid "Niger"
+msgstr "Niger"
+
+#: app/utils/dictionary/demography.ts:664:10
+msgid "Norfolk Island"
+msgstr "Norfolk Island"
+
+#: app/utils/dictionary/demography.ts:668:10
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: app/utils/dictionary/demography.ts:672:10
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: app/utils/dictionary/demography.ts:676:10
+msgid "Netherlands"
+msgstr "Netherlands"
+
+#: app/utils/dictionary/demography.ts:680:10
+msgid "Norway"
+msgstr "Norway"
+
+#: app/utils/dictionary/demography.ts:684:10
+msgid "Nepal"
+msgstr "Nepal"
+
+#: app/utils/dictionary/demography.ts:688:10
+msgid "Nauru"
+msgstr "Nauru"
+
+#: app/utils/dictionary/demography.ts:692:10
+msgid "Niue"
+msgstr "Niue"
+
+#: app/utils/dictionary/demography.ts:696:10
+msgid "New Zealand"
+msgstr "New Zealand"
+
+#: app/utils/dictionary/demography.ts:700:10
+msgid "Oman"
+msgstr "Oman"
+
+#: app/utils/dictionary/demography.ts:704:10
+msgid "Panama"
+msgstr "Panama"
+
+#: app/utils/dictionary/demography.ts:708:10
+msgid "Peru"
+msgstr "Peru"
+
+#: app/utils/dictionary/demography.ts:712:10
+msgid "French Polynesia"
+msgstr "French Polynesia"
+
+#: app/utils/dictionary/demography.ts:716:10
+msgid "Papua New Guinea"
+msgstr "Papua New Guinea"
+
+#: app/utils/dictionary/demography.ts:720:10
+msgid "Philippines"
+msgstr "Philippines"
+
+#: app/utils/dictionary/demography.ts:724:10
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: app/utils/dictionary/demography.ts:728:10
+msgid "Poland"
+msgstr "Poland"
+
+#: app/utils/dictionary/demography.ts:732:10
+msgid "Saint Pierre And Miquelon"
+msgstr "Saint Pierre And Miquelon"
+
+#: app/utils/dictionary/demography.ts:736:10
+msgid "Pitcairn Islands"
+msgstr "Pitcairn Islands"
+
+#: app/utils/dictionary/demography.ts:740:10
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#: app/utils/dictionary/demography.ts:744:10
+msgid "Palestinian"
+msgstr "Palestinian"
+
+#: app/utils/dictionary/demography.ts:748:10
+msgid "Portugal"
+msgstr "Portugal"
+
+#: app/utils/dictionary/demography.ts:752:10
+msgid "Palau"
+msgstr "Palau"
+
+#: app/utils/dictionary/demography.ts:756:10
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: app/utils/dictionary/demography.ts:760:10
+msgid "Qatar"
+msgstr "Qatar"
+
+#: app/utils/dictionary/demography.ts:764:10
+msgid "Reunion"
+msgstr "Reunion"
+
+#: app/utils/dictionary/demography.ts:768:10
+msgid "Romania"
+msgstr "Romania"
+
+#: app/utils/dictionary/demography.ts:772:10
+msgid "Serbia"
+msgstr "Serbia"
+
+#: app/utils/dictionary/demography.ts:776:10
+msgid "Russian"
+msgstr "Russian"
+
+#: app/utils/dictionary/demography.ts:780:10
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: app/utils/dictionary/demography.ts:784:10
+msgid "Saudi Arabia"
+msgstr "Saudi Arabia"
+
+#: app/utils/dictionary/demography.ts:788:10
+msgid "Solomon Islands"
+msgstr "Solomon Islands"
+
+#: app/utils/dictionary/demography.ts:792:10
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#: app/utils/dictionary/demography.ts:796:10
+msgid "Sudan"
+msgstr "Sudan"
+
+#: app/utils/dictionary/demography.ts:800:10
+msgid "Sweden"
+msgstr "Sweden"
+
+#: app/utils/dictionary/demography.ts:804:10
+msgid "Singapore"
+msgstr "Singapore"
+
+#: app/utils/dictionary/demography.ts:808:10
+msgid "Saint Helena"
+msgstr "Saint Helena"
+
+#: app/utils/dictionary/demography.ts:812:10
+msgid "Slovenia"
+msgstr "Slovenia"
+
+#: app/utils/dictionary/demography.ts:816:10
+msgid "Svalbard And Jan Mayen"
+msgstr "Svalbard And Jan Mayen"
+
+#: app/utils/dictionary/demography.ts:820:10
+msgid "Slovakia"
+msgstr "Slovakia"
+
+#: app/utils/dictionary/demography.ts:824:10
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: app/utils/dictionary/demography.ts:828:10
+msgid "San Marino"
+msgstr "San Marino"
+
+#: app/utils/dictionary/demography.ts:832:10
+msgid "Senegal"
+msgstr "Senegal"
+
+#: app/utils/dictionary/demography.ts:836:10
+msgid "Somalia"
+msgstr "Somalia"
+
+#: app/utils/dictionary/demography.ts:840:10
+msgid "Suriname"
+msgstr "Suriname"
+
+#: app/utils/dictionary/demography.ts:844:10
+msgid "South Sudan"
+msgstr "South Sudan"
+
+#: app/utils/dictionary/demography.ts:848:10
+msgid "Sao Tome and Principe"
+msgstr "Sao Tome and Principe"
+
+#: app/utils/dictionary/demography.ts:852:10
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: app/utils/dictionary/demography.ts:856:10
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#: app/utils/dictionary/demography.ts:860:10
+msgid "Syria"
+msgstr "Syria"
+
+#: app/utils/dictionary/demography.ts:864:10
+msgid "Swaziland"
+msgstr "Swaziland"
+
+#: app/utils/dictionary/demography.ts:868:10
+msgid "Turks And Caicos Islands"
+msgstr "Turks And Caicos Islands"
+
+#: app/utils/dictionary/demography.ts:872:10
+msgid "Chad"
+msgstr "Chad"
+
+#: app/utils/dictionary/demography.ts:876:10
+msgid "French Southern Territories"
+msgstr "French Southern Territories"
+
+#: app/utils/dictionary/demography.ts:880:10
+msgid "Togo"
+msgstr "Togo"
+
+#: app/utils/dictionary/demography.ts:884:10
+msgid "Thailand"
+msgstr "Thailand"
+
+#: app/utils/dictionary/demography.ts:888:10
+msgid "Tajikistan"
+msgstr "Tajikistan"
+
+#: app/utils/dictionary/demography.ts:892:10
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: app/utils/dictionary/demography.ts:896:10
+msgid "East Timor"
+msgstr "East Timor"
+
+#: app/utils/dictionary/demography.ts:900:10
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: app/utils/dictionary/demography.ts:904:10
+msgid "Tunisia"
+msgstr "Tunisia"
+
+#: app/utils/dictionary/demography.ts:908:10
+msgid "Tonga"
+msgstr "Tonga"
+
+#: app/utils/dictionary/demography.ts:912:10
+msgid "Turkey"
+msgstr "Turkey"
+
+#: app/utils/dictionary/demography.ts:916:10
+msgid "Trinidad And Tobago"
+msgstr "Trinidad And Tobago"
+
+#: app/utils/dictionary/demography.ts:920:10
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: app/utils/dictionary/demography.ts:924:10
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: app/utils/dictionary/demography.ts:928:10
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: app/utils/dictionary/demography.ts:932:10
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: app/utils/dictionary/demography.ts:936:10
+msgid "Uganda"
+msgstr "Uganda"
+
+#: app/utils/dictionary/demography.ts:940:10
+msgid "United States Minor Outlying Islands"
+msgstr "United States Minor Outlying Islands"
+
+#: app/utils/dictionary/demography.ts:944:10
+msgid "United States"
+msgstr "United States"
+
+#: app/utils/dictionary/demography.ts:948:10
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: app/utils/dictionary/demography.ts:952:10
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: app/utils/dictionary/demography.ts:956:10
+msgid "Vatican City"
+msgstr "Vatican City"
+
+#: app/utils/dictionary/demography.ts:960:10
+msgid "Saint Vincent And The Grenadines"
+msgstr "Saint Vincent And The Grenadines"
+
+#: app/utils/dictionary/demography.ts:964:10
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: app/utils/dictionary/demography.ts:968:10
+msgid "British Virgin Islands"
+msgstr "British Virgin Islands"
+
+#: app/utils/dictionary/demography.ts:972:10
+msgid "U.S. Virgin Islands"
+msgstr "U.S. Virgin Islands"
+
+#: app/utils/dictionary/demography.ts:976:10
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: app/utils/dictionary/demography.ts:980:10
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: app/utils/dictionary/demography.ts:984:10
+msgid "Wallis And Futuna"
+msgstr "Wallis And Futuna"
+
+#: app/utils/dictionary/demography.ts:988:10
+msgid "Samoa"
+msgstr "Samoa"
+
+#: app/utils/dictionary/demography.ts:992:10
+msgid "Kosovo"
+msgstr "Kosovo"
+
+#: app/utils/dictionary/demography.ts:996:10
+msgid "Yemen"
+msgstr "Yemen"
+
+#: app/utils/dictionary/demography.ts:1000:10
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: app/utils/dictionary/demography.ts:1004:10
+msgid "South Africa"
+msgstr "South Africa"
+
+#: app/utils/dictionary/demography.ts:1008:10
+msgid "Zambia"
+msgstr "Zambia"
+
+#: app/utils/dictionary/demography.ts:1012:10
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
 #: app/utils/dictionary/filters.js:4:13
 msgid "All Dates"
 msgstr "All Dates"
@@ -8062,6 +9072,42 @@ msgstr "This Month"
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
 msgstr "Custom dates"
+
+#: app/utils/dictionary/licenses.ts:14:15
+msgid "Attribution-NonCommercial-NoDerivs"
+msgstr "Attribution-NonCommercial-NoDerivs"
+
+#: app/utils/dictionary/licenses.ts:20:15
+msgid "Attribution-NonCommercial"
+msgstr "Attribution-NonCommercial"
+
+#: app/utils/dictionary/licenses.ts:26:15
+msgid "Public Domain Dedication (CC0)"
+msgstr "Public Domain Dedication (CC0)"
+
+#: app/utils/dictionary/licenses.ts:32:15
+msgid "Attribution"
+msgstr "Attribution"
+
+#: app/utils/dictionary/licenses.ts:38:15
+msgid "All rights reserved"
+msgstr "All rights reserved"
+
+#: app/utils/dictionary/licenses.ts:44:15
+msgid "Attribution-NoDerivs"
+msgstr "Attribution-NoDerivs"
+
+#: app/utils/dictionary/licenses.ts:50:15
+msgid "Public Domain Work"
+msgstr "Public Domain Work"
+
+#: app/utils/dictionary/licenses.ts:56:15
+msgid "Attribution-NonCommercial-ShareAlike"
+msgstr "Attribution-NonCommercial-ShareAlike"
+
+#: app/utils/dictionary/licenses.ts:62:15
+msgid "Attribution-ShareAlike"
+msgstr "Attribution-ShareAlike"
 
 #~ msgid "OK"
 #~ msgstr "OK"

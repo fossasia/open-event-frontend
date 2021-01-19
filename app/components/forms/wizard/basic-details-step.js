@@ -18,9 +18,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   currentTimezone: moment.tz.guess(),
   timezones,
 
-  torii: service(),
+  torii : service(),
+  tn    : service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Hybrid', 'To be announced'],
+  locationMenuItems: [this.tn.t('Venue'), this.tn.t('Online'), this.tn.t('Hybrid'), this.tn.t('To be announced')],
 
   selectedLocationType: 'Venue',
 
