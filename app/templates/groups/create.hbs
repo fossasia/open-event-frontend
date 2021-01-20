@@ -3,14 +3,14 @@
     {{t 'Create a Group'}}
   </h2>
   <div class="ui container">
-        <br>
-        <form class="ui form {{if this.isLoading 'loading'}}">
-        <div class="field">
-            <label class="required">{{t 'Group name'}}</label>
-            <input value={{this.model.group.name}}>
-        </div>
-        <div class="ui hidden divider"></div>
-        <button type="submit" class="ui teal submit button" name="submit" onclick="{{action 'save'}}">{{t 'Save'}}</button>
-        </form>
-        </div>
+    <br>
+    <form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+    <div class="field">
+        <label class="required">{{t 'Group name'}}</label>
+        <input value="{{this.GroupName}}">
+    </div>
+    <div class="ui hidden divider"></div>
+    <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    </form>
+    </div>
 </div>
