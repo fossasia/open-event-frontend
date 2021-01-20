@@ -6,7 +6,7 @@ export default class extends Controller {
 
   @service errorHandler;
 
-  GroupName = '';
+  GroupName ='';
 
   @action
   async submit() {
@@ -14,7 +14,7 @@ export default class extends Controller {
       this.loading = true;
       const myGroup = this.store.createRecord('group', {
         user : this.authManager.currentUser,
-        name : 'Be the alpha'
+        name : this.GroupName
       });
       await myGroup.save();
       this.notify.success(this.l10n.t('Your group has been saved'),
@@ -23,7 +23,7 @@ export default class extends Controller {
         });
       this.router.transitionTo('groups.list');
     } catch (e) {
-      console.error('Error while saving session', e);
+      console.error('Error while saving group', e);
       const message = e.errors?.[0]?.detail ?? this.l10n.t('Oops something went wrong. Please try again');
       this.notify.error(message,
         {
@@ -31,6 +31,7 @@ export default class extends Controller {
         });
     } finally {
       this.loading = false;
+      this.set('GroupName', '');
     }
   }
 }

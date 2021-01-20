@@ -7,7 +7,11 @@
     <form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
     <div class="field">
         <label class="required">{{t 'Group name'}}</label>
-        <input value="{{this.GroupName}}">
+       <Input
+          @type="text"
+          @name="name"
+          @value={{this.GroupName}}
+          placeholder={{t "Name"}} required/>
     </div>
     <div class="ui hidden divider"></div>
     <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
