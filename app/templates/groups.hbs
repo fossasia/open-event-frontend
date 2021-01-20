@@ -1,0 +1,18 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <h1>
+        {{t 'My Groups'}}
+      </h1>
+      <TabbedNavigation>
+        <LinkTo @route="groups.list" class="item">
+          {{t 'Groups'}}
+        </LinkTo>
+        <LinkTo @route="groups.create" class="item">
+          {{t 'Create'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  {{outlet}}
+</div>

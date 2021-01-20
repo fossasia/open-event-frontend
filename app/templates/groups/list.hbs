@@ -1,0 +1,18 @@
+<LinkTo @route="groups.create" class="ui orange button icon small mt-4">
+{{t 'Create'}}
+</LinkTo>
+<div class="sixteen wide column">
+  <Tables::Default
+  @columns={{this.columns}}
+  @rows={{this.model}}
+  @currentPage={{this.page}}
+  @pageSize={{this.per_page}}
+  @searchQuery={{this.search}}
+  @sortBy={{this.sort_by}}
+  @sortDir={{this.sort_dir}}
+  @metaData={{this.model.meta}}
+  @filterOptions={{this.filterOptions}}
+  @widthConstraint="eq-container"
+  @resizeMode="fluid"
+  @fillMode="equal-column" />
+</div>
