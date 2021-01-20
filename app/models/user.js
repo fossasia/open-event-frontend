@@ -81,7 +81,7 @@ export default ModelBase.extend({
   notifications        : hasMany('notification'),
   orders               : hasMany('order'),
   events               : hasMany('event', { inverse: 'user' }),
-  groups               : hasMany('group', { inverse: 'user' }),
+  groups               : hasMany('group'),
   sessions             : hasMany('session'),
   feedbacks            : hasMany('feedback'),
   eventInvoices        : hasMany('event-invoice'),

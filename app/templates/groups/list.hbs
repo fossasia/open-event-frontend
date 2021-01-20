@@ -1,10 +1,10 @@
 <LinkTo @route="groups.create" class="ui orange button icon small mt-4">
 {{t 'Create'}}
 </LinkTo>
-<div class="sixteen wide column">
-  <Tables::Default
+
+<Tables::Default
   @columns={{this.columns}}
-  @rows={{this.model}}
+  @rows={{this.model.data}}
   @currentPage={{this.page}}
   @pageSize={{this.per_page}}
   @searchQuery={{this.search}}
@@ -15,4 +15,3 @@
   @widthConstraint="eq-container"
   @resizeMode="fluid"
   @fillMode="equal-column" />
-</div>
