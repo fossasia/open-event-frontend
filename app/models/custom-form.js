@@ -94,7 +94,7 @@ export default ModelBase.extend({
     gender               : 'Gender',
     acceptReceiveEmails  : 'Accept Receive Emails',
     acceptVideoRecording : 'Photo & video & text consent',
-    acceptShareDetails   : 'Accepted to share details with sponsors',
+    acceptShareDetails   : 'Accept to share details with sponsors',
     ageGroup             : 'Age Group'
   },
 
