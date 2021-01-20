@@ -35,6 +35,8 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       if (segmentFormat === 'time') {
         oldDate.hour(newDate.hour());
         oldDate.minute(newDate.minute());
+        oldDate.second(newDate.second());
+        oldDate.millisecond(newDate.millisecond());
       } else if (segmentFormat === 'date') {
         oldDate.date(newDate.date());
         oldDate.month(newDate.month());
