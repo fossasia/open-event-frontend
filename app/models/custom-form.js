@@ -92,9 +92,9 @@ export default ModelBase.extend({
     instagram            : 'Instagram',
     linkedin             : 'LinkedIn',
     gender               : 'Gender',
-    acceptReceiveEmails  : 'Accept Receive Emails',
+    acceptReceiveEmails  : 'Email consent',
     acceptVideoRecording : 'Photo & video & text consent',
-    acceptShareDetails   : 'Accept to share details with sponsors',
+    acceptShareDetails   : 'Partner contact consent',
     ageGroup             : 'Age Group'
   },
 
