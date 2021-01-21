@@ -31,6 +31,8 @@ export default ModelBase.extend({
   twitter            : attr('string'),
   facebook           : attr('string'),
   github             : attr('string'),
+  instagram          : attr('string'),
+  linkedin           : attr('string'),
   gender             : attr('string'),
   ageGroup           : attr('string'),
   birthDate          : attr('moment'),

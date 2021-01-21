@@ -70,6 +70,11 @@ export const validGithubProfileUrlPattern = new RegExp(
   + '?(?:www.)?github\\.com\\/([a-zA-Z0-9_]+)([-]?)([a-zA-Z0-9_]+)$'
 );
 
+export const validInstagramProfileUrlPattern = new RegExp(
+  '^(https?:\\/\\/)' // compulsory protocol
+  + '?(?:www.)?(instagram.com|instagr.am)\/([a-zA-Z0-9_.]+)$'
+);
+
 export const validLinkedinProfileUrlPattern = new RegExp(
   '^(https?:\\/\\/)' // compulsory protocol
   + '?(?:www.)?(linkedin\\.com\\/)((([\\w]{2,3})?)|([^\\/]+\\/(([\\w|\\d-&#?=])+\\/?){1,}))$'

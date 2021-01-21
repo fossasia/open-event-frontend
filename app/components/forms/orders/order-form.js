@@ -8,7 +8,7 @@ import moment from 'moment';
 import { groupBy, orderBy } from 'lodash-es';
 import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
-  validGithubProfileUrlPattern, validEmail
+  validGithubProfileUrlPattern, validInstagramProfileUrlPattern, validLinkedinProfileUrlPattern, validEmail
 } from 'open-event-frontend/utils/validators';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
@@ -16,7 +16,7 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 
 
 export default Component.extend(FormMixin, {
-  router: service(),
+  router             : service(),
   autoScrollToErrors : false,
 
   buyerFirstName    : oneWay('buyerHasFirstName'),
@@ -25,16 +25,10 @@ export default Component.extend(FormMixin, {
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
   holders           : computed('data.attendees', 'buyer', function() {
-    this.data.attendees.forEach((attendee, index) => {
-      if (index === 0) {
-        attendee.set('firstname', this.buyerFirstName);
-        attendee.set('lastname', this.buyerLastName);
-        attendee.set('email', this.buyer.get('email'));
-      } else {
-        attendee.set('firstname', '');
-        attendee.set('lastname', '');
-        attendee.set('email', '');
-      }
+    this.data.attendees.forEach(attendee => {
+      attendee.set('firstname', '');
+      attendee.set('lastname', '');
+      attendee.set('email', '');
     });
     return this.data.attendees;
   }),
@@ -45,7 +39,7 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer: true,
+  sameAsBuyer: false,
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
     return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
@@ -367,6 +361,56 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const instagramValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : validInstagramProfileUrlPattern,
+          prompt : this.l10n.t('Please enter a valid instagram account url')
+        }
+      ]
+    };
+
+    const instagramRequiredValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter instagram link')
+        },
+        {
+          type   : 'regExp',
+          value  : validInstagramProfileUrlPattern,
+          prompt : this.l10n.t('Please enter a valid instagram account url')
+        }
+      ]
+    };
+
+    const linkedinValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : validLinkedinProfileUrlPattern,
+          prompt : this.l10n.t('Please enter a valid linkedin account url')
+        }
+      ]
+    };
+
+    const linkedinRequiredValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter linkedin link')
+        },
+        {
+          type   : 'regExp',
+          value  : validLinkedinProfileUrlPattern,
+          prompt : this.l10n.t('Please enter a valid linkedin account url')
+        }
+      ]
+    };
+
     const validationRules = {
       inline : true,
       delay  : false,
@@ -485,6 +529,10 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`facebook_required_${  index}`] = facebookRequiredValidation;
       validationRules.fields[`github_${  index}`] = githubValidation;
       validationRules.fields[`github_required_${  index}`] = githubRequiredValidation;
+      validationRules.fields[`instagram_${  index}`] = instagramValidation;
+      validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
+      validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
+      validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
         validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
           rules: [
