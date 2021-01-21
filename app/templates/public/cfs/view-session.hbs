@@ -17,10 +17,12 @@
     </h2>
     <div class="ui divider"></div>
   </div>
-  <div class="column two wide">
+  <div class="column eight wide">
+  <div class="ui grid">
+  <div class="column three wide">
     <div class="ui {{ this.model.session.color }} large label">{{capitalize this.model.session.status}}</div>
   </div>
-  <div class="column six wide">
+  <div class="column thirteen wide">
     <div class="ui {{ this.model.session.color }} large label">
       {{#if this.model.session.startsAt}}
         {{t 'Timing:'}} {{general-date this.model.session.startsAt 'date-time-tz-short' tz=this.model.session.event.timezone}} {{t ' - '}} {{general-date this.model.session.endsAt 'date-time-tz-short' tz=this.model.session.event.timezone}}
@@ -28,6 +30,8 @@
         {{t 'Not yet scheduled'}}
       {{/if}}
     </div>
+  </div>
+  </div>
   </div>
   <div class="column eight wide">
     <div class="d-flex wrap" style="justify-content: flex-end;">
