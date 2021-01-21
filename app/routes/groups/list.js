@@ -9,15 +9,15 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
-    const searchField = 'name';
-    const filterOptions = this.applySearchFilters([], params, searchField);
-    let queryString = {
-      filter         : filterOptions,
-      'page[size]'   : params.per_page || 10,
-      'page[number]' : params.page || 4
-    };
-    queryString = this.applySortFilters(queryString, params);
-    return this.asArray(this.authManager.currentUser.query('groups', queryString));
+    const filterOptions = [];
+    return this.infinity.model('groups', {
+      filter       : filterOptions,
+      perPage      : 10,
+      startingPage : 1,
+      perPageParam : 'page[size]',
+      pageParam    : 'page[number]',
+      store        : this.authManager.currentUser
+    });
   }
 
   @action
