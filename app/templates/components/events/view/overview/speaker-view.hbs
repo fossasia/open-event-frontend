@@ -2,7 +2,7 @@
     {{#each @fields as |field|}}
         {{#if field.isIncluded}}
             <div class="column four wide">
-                <div class="d-flex space-between">
+                <div class="d-flex space-between" style="align-items: flex-start">
                     <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{t-var field.name}}</label> 
                     {{#if field.isPublic}}
                         <div class="ui green horizontal label">{{t 'Public'}}</div>
