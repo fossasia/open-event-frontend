@@ -65,8 +65,8 @@ Router.map(function() {
     this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
-    this.route('role-invites');
   });
+  this.route('role-invites');
   this.route('pricing');
   this.route('create');
   this.route('not-found');
