@@ -59,6 +59,7 @@ Router.map(function() {
       this.route('new-speaker');
       this.route('new-session');
       this.route('view-speaker', { path: '/speaker/:speaker_id' });
+      this.route('view-session', { path: '/session/:session_id' });
       this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
       this.route('edit-session', { path: '/session/:session_id/edit' });
     });
