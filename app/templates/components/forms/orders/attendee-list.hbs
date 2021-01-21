@@ -33,6 +33,14 @@
                       <span class="word-break">{{get holder field.fieldIdentifier}}</span>
                     {{else if (eq field.type 'select')}}
                       <span class="word-break">{{get holder field.fieldIdentifier}}</span>
+                    {{else if (eq field.type 'checkbox')}}
+                      <span class="word-break">
+                        {{#if (get holder field.fieldIdentifier)}}
+                          {{t 'Yes'}}
+                        {{else}}
+                          {{t 'No'}}
+                        {{/if}}
+                      </span>
                     {{/if}}
                     {{#if field.isComplex}}
                       <span class="word-break">{{get holder.complexFieldValues field.fieldIdentifier}}</span>
