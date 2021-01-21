@@ -155,7 +155,7 @@
                     @onChange={{action (mut holder.acceptShareDetails)}}/> 
                  {{else if (eq field.fieldIdentifier 'acceptVideoRecording')}}              
                   <UiCheckbox
-                    @label={{t "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels"}}
+                    @label={{t "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."}}
                     @checked={{true}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
                     @onChange={{action (mut holder.acceptVideoRecording)}}/> 

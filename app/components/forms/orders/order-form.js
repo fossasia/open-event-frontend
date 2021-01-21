@@ -124,7 +124,7 @@ export default Component.extend(FormMixin, {
         {
           type   : 'checked',
           value  : false,
-          prompt : this.l10n.t('You need to agree to the condition of the organizer to receive emails in order to continue the order process')
+          prompt : this.l10n.t('You need to agree to the condition of the organizer to receive emails in order to continue the order process.')
         }
       ]
     };
@@ -134,7 +134,7 @@ export default Component.extend(FormMixin, {
         {
           type   : 'checked',
           value  : false,
-          prompt : this.l10n.t('In order to complete the order process you need to agree to the Photo & video & text consent')
+          prompt : this.l10n.t('In order to complete the order process you need to agree to the photo & video & text consent.')
         }
       ]
     };
@@ -144,7 +144,7 @@ export default Component.extend(FormMixin, {
         {
           type   : 'checked',
           value  : false,
-          prompt : this.l10n.t('You need to agree to the condition of the organizer to share information among event partners in order to continue the order process. Such a requirement could be necessary in order to provide the event services')
+          prompt : this.l10n.t('You need to agree to the condition of the organizer to share information among event partners in order to continue the order process. Such a requirement could be necessary in order to provide the event services.')
         }
       ]
     };
