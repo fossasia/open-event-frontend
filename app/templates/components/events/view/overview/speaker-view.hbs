@@ -1,8 +1,8 @@
 <div class="ui grid">
     {{#each @fields as |field|}}
         {{#if field.isIncluded}}
-            <div class="column three wide">
-                <div class="d-flex space-between">
+            <div class="column four wide">
+                <div class="d-flex space-between" style="align-items: flex-start">
                     <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{t-var field.name}}</label> 
                     {{#if field.isPublic}}
                         <div class="ui green horizontal label">{{t 'Public'}}</div>
@@ -11,7 +11,7 @@
                     {{/if}}
                 </div>
             </div> 
-            <div class="column thirteen wide">
+            <div class="column twelve wide">
                 {{#if (eq field.type 'image')}}
                     <div class="ui card">
                         <img alt="speaker" class="ui rounded image" src="{{if @speaker.thumbnailImageUrl @speaker.thumbnailImageUrl (if @speaker.photoUrl @speaker.photoUrl '/images/placeholders/avatar.png')}}">
