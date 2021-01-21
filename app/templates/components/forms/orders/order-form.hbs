@@ -141,14 +141,12 @@
                   </UiDropdown>
                  {{else if (eq field.fieldIdentifier 'acceptReceiveEmails')}}              
                   <UiCheckbox
-                    @class="toggle"
                     @label={{t "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"}}
                     @checked={{true}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
                     @onChange={{action (mut holder.acceptReceiveEmails)}}/> 
                  {{else if (eq field.fieldIdentifier 'acceptShareDetails')}}              
                   <UiCheckbox
-                    @class="toggle"
                     @label={{t "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"}}
                     @checked={{true}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
