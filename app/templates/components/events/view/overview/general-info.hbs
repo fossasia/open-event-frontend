@@ -1,17 +1,28 @@
 <div class="content">
   <div class="header">{{t 'Overview'}}</div>
 </div>
-<div class="content">
-  <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
-    {{#if (eq this.data.event.state 'published')}}
-      {{t 'Your event is live at'}} <a href="{{this.data.event.url}}" rel="noopener noreferrer">{{this.data.event.url}}</a>
-    {{else}}
-      {{t 'Your event is not live yet. Make it live now'}}
-    {{/if}}
+
+{{#if (eq this.data.event.state 'published')}}
+  <div class="content" style="padding: .5em .5em;">
+    <div class="public-url d-flex wrap">
+      <div class="public-url--text ui {{if this.device.isMobile 'small' 'medium'}} header">
+        {{t 'Your event is live at'}}
+      </div>
+      <div class="public-url--box">
+        <UrlBox @url={{this.data.event.url}} />
+      </div>
+    </div>
   </div>
-</div>
+  {{else}}
+  <div class="content">
+    <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
+      {{t 'Your event is not live yet. Make it live now'}}
+    </div>
+  </div>
+{{/if}}
+
 <div class="content">
-  <table class="ui very basic table">
+  <table class="ui very basic table compact unstackable">
     <tbody>
       <tr>
         <td><strong>{{t 'Location'}}</strong></td>
@@ -51,3 +62,5 @@
   </table>
 </div>
 <Modals::EventRevision @isOpen={{this.isEventRevisionModalOpen}} />
+
+{{!-- @extraStyles="color:#4183C4;font-weight:bold;{{if this.device.isMobile 'font-size:small;' 'font-size:medium;'}}" --}}
