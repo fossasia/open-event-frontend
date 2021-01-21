@@ -18,11 +18,8 @@
     <div class="ui divider"></div>
   </div>
   <div class="column eight wide">
-  <div class="ui grid">
-  <div class="column three wide">
+  <div class="d-flex wrap space-between">
     <div class="ui {{ this.model.session.color }} large label">{{capitalize this.model.session.status}}</div>
-  </div>
-  <div class="column thirteen wide">
     <div class="ui {{ this.model.session.color }} large label">
       {{#if this.model.session.startsAt}}
         {{t 'Timing:'}} {{general-date this.model.session.startsAt 'date-time-tz-short' tz=this.model.session.event.timezone}} {{t ' - '}} {{general-date this.model.session.endsAt 'date-time-tz-short' tz=this.model.session.event.timezone}}
@@ -30,7 +27,6 @@
         {{t 'Not yet scheduled'}}
       {{/if}}
     </div>
-  </div>
   </div>
   </div>
   <div class="column eight wide">
@@ -76,8 +72,8 @@
   @fields={{this.allFields}}
   @session={{this.model.session}} />
 <div class="ui grid container">
-  <div class="weight-600 column four wide">{{t 'Speakers'}}</div>
-  <div class="column twelve wide">{{this.allSpeakers}}</div>
+  <div class="weight-600 column five wide">{{t 'Speakers'}}</div>
+  <div class="column eleven wide">{{this.allSpeakers}}</div>
 </div>
 
 <Modals::ProposalWithdrawModal
