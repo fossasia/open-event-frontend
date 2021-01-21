@@ -32,9 +32,11 @@
             <Public::SideMenuOuter @event={{this.model}} />
           {{/if}}
         {{else}}
-          <div class="ui fluid side-menu">
-            <Public::SideMenuOuter @event={{this.model}} />
-          </div>
+          {{#if this.displaySideMenu}}
+            <div class="ui fluid side-menu">
+              <Public::SideMenuOuter @event={{this.model}} />
+            </div>
+          {{/if}}
         {{/if}}
       </div>
       {{#unless this.device.isMobile}}
