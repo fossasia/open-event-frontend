@@ -25,6 +25,7 @@ export default class NavBar extends Component {
     if (event.keyCode === 13 || event.which === 13) {
       this.search();
       document.querySelector('#mobile-bar').classList.remove('show-bar');
+      document.getElementById('mobileSearchBar').blur();
     }
   }
 
