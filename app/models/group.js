@@ -1,6 +1,6 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
-import { belongsTo } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
 
 export default ModelBase.extend({
@@ -11,5 +11,6 @@ export default ModelBase.extend({
   /**
    * Relationships
    */
-  user       : belongsTo('user')
+  user       : belongsTo('user'),
+  events     : hasMany('event')
 });

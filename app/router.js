@@ -143,6 +143,7 @@ Router.map(function() {
   this.route('groups', function() {
     this.route('list');
     this.route('create');
+    this.route('edit', { path: '/:group_id/edit' });
   });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {

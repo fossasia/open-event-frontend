@@ -22,12 +22,7 @@ export default class extends Controller {
   async submit() {
     try {
       this.loading = true;
-      const myGroup = this.store.createRecord('group', {
-        user   : this.authManager.currentUser,
-        name   : this.groupName,
-        events : this.groupEvents
-      });
-      await myGroup.save();
+      await this.model.group.save();
       this.notify.success(this.l10n.t('Your group has been saved'),
         {
           id: 'group_save'

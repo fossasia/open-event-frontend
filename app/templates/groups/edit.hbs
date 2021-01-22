@@ -1,31 +1,20 @@
 <div class="column sixteen wide">
   <h2 class="ui header center aligned">
-    {{t 'Create a Group'}}
+    Editing {{this.model.group.name}}
   </h2>
   <div class="ui container">
     <br>
     <form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
     <div class="field">
-        <label class="required">{{t 'Group name'}}</label>
+        <label class="required">{{t 'Name'}}</label>
        <Input
           @type="text"
           @name="name"
-          @value={{this.groupName}}
+          @value={{this.model.group.name}}
           placeholder={{t "Name"}} required/>
     </div>
     <div class="ui hidden divider"></div>
     <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
     </form>
     </div>
-</div>
-
-<div class="ui container mb-4">
-  {{#if this.filteredEvents}}
-    <h2 class="main-heading mb-4">{{t 'My Events'}}</h2>
-    <div class="ui stackable three column grid">
-      {{#each this.filteredEvents as |event|}}
-        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
-      {{/each}}
-    </div>
-  {{/if}}
 </div>
