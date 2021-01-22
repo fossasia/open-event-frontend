@@ -17,7 +17,7 @@ export default class EditUserModal extends ModalBase {
       const response = await this.loader.post(`/events/${this.event.id}/contact-organizer`, payload);
       if (!response?.success) {throw response}
       this.notify.success(this.l10n.t('Organizer contacted successfully'), {
-        id: 'conatct_organizer_succ'
+        id: 'contact_organizer_succ'
       });
       this.close();
     } catch (e) {
