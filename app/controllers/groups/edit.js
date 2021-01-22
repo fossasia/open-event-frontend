@@ -16,6 +16,16 @@ export default class extends Controller {
   }
 
   @action
+  addNewEvent(event) {
+    this.model.group.events.push(event);
+  }
+
+  @action
+  removeEvent() {
+    (this.model.group.events).toArray().pop();
+  }
+
+  @action
   shareEvent() {}
 
   @action

@@ -18,3 +18,24 @@
     </form>
     </div>
 </div>
+<div class="ui container mb-4">
+  {{#if this.model.group.events}}
+    <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each this.model.group.events as |event|}}
+        {{event.name}} <button class="ui red icon circular compact button"><i class="trash icon"></i></button>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<div class="ui container mb-4">
+  {{#if this.model.filteredEvents}}
+    <h2 class="main-heading mb-4">{{t 'All Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each this.model.filteredEvents as |event|}}
+        <button class="ui green small button" {{action 'addNewEvent' event}}>{{event.name}} </button>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
