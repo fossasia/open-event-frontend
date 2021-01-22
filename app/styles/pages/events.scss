@@ -40,11 +40,8 @@
   }
 
   &-mobile {
-    left: 50%;
     position: absolute;
-    transform: translateX(-52%);
-    transition: width .2s ease-in-out;
-    width: 20%;
+    backface-visibility: hidden;
     z-index: -1;
 
     input {
@@ -60,7 +57,26 @@
   }
 }
 
+@keyframes anima {
+  0% {
+    right: 11%;
+    width: 35%;
+    transform: none;
+  }
+
+  99% {
+    right: 11%;
+    transform: none;
+  }
+
+  100% {
+    right: 50%;
+    transform: translateX(48%);
+    width: 77%;
+  }
+}
+
 .show-bar {
-  width: 80%;
   z-index: 1;
+  animation: anima .2s ease-in-out 1 both;
 }
