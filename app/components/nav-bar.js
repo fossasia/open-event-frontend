@@ -22,7 +22,7 @@ export default class NavBar extends Component {
 
   @action
   handleKeyPress() {
-    if (event.code === 'Enter') {
+    if (event.keyCode === 13 || event.which === 13) {
       this.search();
       document.querySelector('#mobile-bar').classList.remove('show-bar');
     }
