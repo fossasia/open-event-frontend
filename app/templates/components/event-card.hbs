@@ -39,7 +39,7 @@
           {{#if this.filterByTags}}
             <a href="#"
               class="link item {{if (eq this.category this.event.topic.name) 'active'}}"
-              {{action 's<button class="fluid ui button">Fits container</button>electCategory' this.event.topic.name}}>
+              {{action 'selectCategory' this.event.topic.name}}>
               {{t-var this.tags.[0]}}
             </a>
             <a href="#"
