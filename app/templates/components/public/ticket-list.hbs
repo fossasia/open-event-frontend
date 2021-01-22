@@ -218,6 +218,12 @@
         {{/if}}
       </div>
     </div>
+    <div class="column sixteen wide right floated">
+      <button class="ui mini labeled blue icon right floated button" {{action this.openContactOrganizerModal}}>
+        <i class="envelope icon"></i>
+        {{t 'Contact Organizer'}}
+      </button>
+    </div>
   </div>
 </form>
 
@@ -228,4 +234,7 @@
   @loginExistingUser={{this.loginExistingUser}}
   @userExists={{this.userExists}}
   @errorMessage={{this.errorMessage}} />
-  
+
+<Modals::ContactOrganizer
+  @event={{this.event}}
+  @isOpen={{this.isContactOrganizerModalOpen}} />

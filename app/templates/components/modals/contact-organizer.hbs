@@ -1,0 +1,23 @@
+<i class="black close icon"></i>
+<div class="header">
+    {{t 'Contact the Organizer'}}
+</div>
+<div class="ui basic {{if this.isLoading 'loading'}} segment">
+    <div class="ui content">
+        <div class="ui form">
+            <h4 class="ui header">{{t 'Message'}}</h4>
+            <div class="field">
+                <Textarea @value={{this.message}} />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="actions">
+    <div class="ui red deny button">
+        {{t 'close'}}
+    </div>
+    <div class="ui positive right labeled icon button" {{action 'contactOrganizer'}}>
+        {{t 'Contact'}}
+        <i class="checkmark icon"></i>
+    </div>
+</div>
