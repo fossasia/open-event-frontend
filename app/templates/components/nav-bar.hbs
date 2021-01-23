@@ -69,29 +69,28 @@
       <div class="ui header small text">{{this.settings.appName}}</div>
     </LinkTo>
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
-      <i class="search icon" style="cursor: auto;"></i>
-      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
-      <div role="button" {{action "toggleSearchBar"}}>
-        <i class="close icon" ></i>
-      </div>
+      <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+      <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
     </div>
     <div class="right menu nav-bar">
+      {{#if this.session.isAuthenticated}}
+        <NotificationDropdown
+          @notifications={{this.notifications}} />
+      {{/if}}
       {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
-        <div role="button" class="item ui" {{action "toggleSearchBar"}}>
+        <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
           <i class="search icon"></i>
         </div>
       {{/if}}
       {{#if this.session.isAuthenticated}}
-        <NotificationDropdown
-          @notifications={{this.notifications}} />
-          {{#if this.isNotWizardPageRoute}}
-            <LinkTo
-             @route="create" class="item ui blue button-text small text">
-              <div>
-                {{t 'Create Event'}}
-              </div>
-            </LinkTo>
-          {{/if}}
+        {{#if this.isNotWizardPageRoute}}
+          <LinkTo
+            @route="create" class="item ui blue button-text small text">
+            <div>
+              {{t 'Create Event'}}
+            </div>
+          </LinkTo>
+        {{/if}}
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}
