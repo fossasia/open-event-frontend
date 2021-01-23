@@ -11,7 +11,7 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
 
   async model(params) {
     return {
-      filteredEvents: this.authManager.currentUser.query('events', {
+      filteredEvents: await this.authManager.currentUser.query('events', {
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         'page[size]' : 25
       }),

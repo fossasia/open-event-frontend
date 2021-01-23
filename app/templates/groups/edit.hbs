@@ -23,7 +23,10 @@
     <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.model.group.events as |event|}}
-        {{event.name}} <button class="ui red icon circular compact button"><i class="trash icon"></i></button>
+        <button class="ui red right labeled icon button" {{action 'removeEvent' event}}>
+          <i class="trash icon"></i>
+          {{event.name}}
+        </button>
       {{/each}}
     </div>
   {{/if}}
@@ -34,7 +37,8 @@
     <h2 class="main-heading mb-4">{{t 'All Events'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.model.filteredEvents as |event|}}
-        <button class="ui green small button" {{action 'addNewEvent' event}}>{{event.name}} </button>
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @addToGroup={{true}} @addEvent={{action "addNewEvent"}}/>
+        
       {{/each}}
     </div>
   {{/if}}
