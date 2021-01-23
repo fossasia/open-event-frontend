@@ -1,7 +1,14 @@
 {{#each this.fields as |field|}}
   {{#if field.isIncluded}}
     <form class="field">
-      <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+      <div class="inline field">
+        <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+        {{#if field.isPublic}}
+          <div class="ui green horizontal label">{{t 'Public'}}</div>
+        {{else}}
+          <div class="ui red horizontal label">{{t 'Private'}}</div>
+        {{/if}}
+      </div>
       {{#if (is-input-field field.type) }}
         {{#if field.isLongText}}
           <Widgets::Forms::RichTextEditor
