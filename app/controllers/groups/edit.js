@@ -17,7 +17,6 @@ export default class extends Controller {
 
   @action
   async removeEvent(event) {
-    alert('I am the alpha');
     this.model.group.events.filter(x => x !== event);
     await this.model.group.save();
   }
