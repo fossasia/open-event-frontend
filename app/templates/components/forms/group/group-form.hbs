@@ -1,0 +1,40 @@
+<div class="column sixteen wide center aligned mb-4">
+  <h2 class="ui header center aligned">
+    {{t 'Create a Group'}}
+  </h2>
+</div>
+
+<form class="ui form {{if this.isLoading 'loading'}}" >
+  <div class="field">
+    <label class="required">{{t 'Group name'}}</label>
+    <Input
+        @type="text"
+        @name="name"
+        @value={{@data.group.name}}
+        placeholder={{t "Name"}} required/>
+  </div>
+<div class="ui hidden divider"></div>
+<button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+</form>
+
+<div class="ui container mb-4">
+  {{#if @data.group.events}}
+    <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each @data.group.events as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{true}} @removeEvent={{action "removeEvent"}} />
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<div class="ui container mb-4">
+  {{#if @data.filteredEvents}}
+    <h2 class="main-heading mb-4">{{t 'All Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each @data.filteredEvents as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
