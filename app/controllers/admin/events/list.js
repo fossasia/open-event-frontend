@@ -54,10 +54,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width           : 80
        },
        {
-         name            : this.l10n.t('Roles'),
-         valuePath       : 'roles',
-         cellComponent   : 'ui-table/cell/cell-roles',
-         width           : 185
+         name          : this.l10n.t('Roles'),
+         valuePath     : 'roles',
+         cellComponent : 'ui-table/cell/cell-roles',
+         width         : 185
        },
        {
          name          : this.l10n.t('Sessions'),

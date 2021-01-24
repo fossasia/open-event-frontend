@@ -30,10 +30,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
       },
       {
-        name            : this.l10n.t('Roles'),
-        valuePath       : 'roles',
-        width           : 180,
-        cellComponent   : 'ui-table/cell/cell-roles'
+        name          : this.l10n.t('Roles'),
+        valuePath     : 'roles',
+        width         : 180,
+        cellComponent : 'ui-table/cell/cell-roles'
       },
       {
         name            : this.l10n.t('Tickets'),
