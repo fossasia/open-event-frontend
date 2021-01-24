@@ -5,8 +5,6 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'starts-at';
 
-  sort_dir = 'DSC';
-
   get columns() {
     return [
       {
@@ -32,11 +30,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
       },
       {
-        name            : this.l10n.t('Roles'),
-        valuePath       : 'owner',
-        extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
-        width           : 180,
-        cellComponent   : 'ui-table/cell/cell-roles'
+        name          : this.l10n.t('Roles'),
+        valuePath     : 'roles',
+        width         : 180,
+        cellComponent : 'ui-table/cell/cell-roles'
       },
       {
         name            : this.l10n.t('Tickets'),
