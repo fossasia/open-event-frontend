@@ -15,7 +15,7 @@ export default class AddToCalender extends Component<Args> {
 
   get description(): string {
     const { event } = this.args;
-    let desc = `Join the event at ${event.url} \n `;
+    let desc = `Join the event at <a href = "${event.url}">${event.url}</a> \n `;
     if (event.description) {
       desc = desc + `<section>
                         <h3>Event Description </h3>\n
