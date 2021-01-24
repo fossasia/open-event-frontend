@@ -24,7 +24,7 @@
     <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.model.group.events as |event|}}
-        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @addToGroup={{false}} />
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{true}} @removeEvent={{action "removeEvent"}} />
       {{/each}}
     </div>
   {{/if}}

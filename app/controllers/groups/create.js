@@ -12,6 +12,13 @@ export default class extends Controller {
   }
 
   @action
+  removeEvent(event) {
+    let groupEvents = this.model.group.events.toArray();
+    groupEvents = groupEvents.filter(x => x !== event);
+    this.model.group.set('events', groupEvents);
+  }
+
+  @action
   shareEvent() {}
 
   @action
