@@ -12,7 +12,7 @@ export default class extends Controller {
 
   @action
   addEvent(event) {
-    if(!this.groupEvents.includes(event)){
+    if (!this.groupEvents.includes(event)) {
       this.groupEvents.push(event);
     }
   }
