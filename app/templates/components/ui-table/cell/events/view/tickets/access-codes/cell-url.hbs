@@ -1,4 +1,4 @@
-<div class="ui action input" style="width: 100%; height: 36px">
+<div class="ui action input public-url d-flex wrap">
   <input class="truncate" style="flex: 1 0 !important" type="text" value={{this.record}} placeholder={{this.record}} readonly>
   <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
     <CopyButton @clipboardText={{this.record}} @class="ui grey icon button rounded-none m-0">
