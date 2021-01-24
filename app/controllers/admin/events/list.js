@@ -55,8 +55,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
        },
        {
          name            : this.l10n.t('Roles'),
-         valuePath       : 'owner',
-         extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
+         valuePath       : 'roles',
          cellComponent   : 'ui-table/cell/cell-roles',
          width           : 185
        },
