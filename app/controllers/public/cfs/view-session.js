@@ -17,7 +17,7 @@ export default class extends Controller.extend(FormMixin) {
 
   @computed('model.session')
   get allSpeakers() {
-    return this.model.session.get('speakers').map(speaker => speaker.name).join(', ');
+    return this.model.session.get('speakers');
   }
 
   @action

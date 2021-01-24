@@ -1,4 +1,4 @@
-<div class="ui grid container">
+<div class="ui grid container mb-4">
   <div class="column sixteen wide">
     <LinkTo
       @route="my-sessions">
@@ -34,5 +34,12 @@
     @fields={{this.allFields}}
     @speaker={{this.model.speaker}} />
   <div class="weight-600 column four wide">{{t 'Sessions'}}</div>
-  <div class="column twelve wide">{{this.allSessions}}</div>
+  <div class="column twelve wide">
+    {{#each this.allSessions as |session|}}
+      <LinkTo
+        @route="public.cfs.view-session"
+        @models={{array this.model.speaker.event.id session.id}}>{{session.title}}
+      </LinkTo>
+    {{/each}}
+  </div>
 </div>

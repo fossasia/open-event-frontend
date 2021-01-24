@@ -71,9 +71,16 @@
 <Events::View::Overview::SessionView
   @fields={{this.allFields}}
   @session={{this.model.session}} />
-<div class="ui grid container">
+<div class="ui grid container mb-4">
   <div class="weight-600 column five wide">{{t 'Speakers'}}</div>
-  <div class="column eleven wide">{{this.allSpeakers}}</div>
+    <div class="column eleven wide">
+    {{#each this.allSpeakers as |speaker|}}
+      <LinkTo
+        @route="public.cfs.view-speaker"
+        @models={{array this.model.session.event.id speaker.id}}>{{speaker.name}}
+      </LinkTo>
+    {{/each}}
+  </div>
 </div>
 
 <Modals::ProposalWithdrawModal
