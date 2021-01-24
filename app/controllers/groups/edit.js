@@ -8,6 +8,8 @@ export default class extends Controller {
 
   groupEvents = [];
 
+  deletedEvents = [];
+
   @action
   addNewEvent(event) {
     if (!this.groupEvents.includes(event)) {
@@ -16,9 +18,10 @@ export default class extends Controller {
   }
 
   @action
-  async removeEvent(event) {
-    this.model.group.events.filter(x => x !== event);
-    await this.model.group.save();
+  removeEvent(event) {
+    if (!this.deletedEvents.includes(event)) {
+      this.deletedEvents.push(event);
+    }
   }
 
   @action
@@ -28,7 +31,9 @@ export default class extends Controller {
   async submit() {
     try {
       this.loading = true;
-      this.model.group.set('events', this.groupEvents.concat(this.model.group.events.toArray()));
+      let valid = this.groupEvents.concat(this.model.group.events.toArray());
+      valid = valid.filter(x => !this.deletedEvents.includes(x));
+      this.model.group.set('events', valid);
       await this.model.group.save();
       this.notify.success(this.l10n.t('Your group has been saved'),
         {
