@@ -35,10 +35,11 @@
     @speaker={{this.model.speaker}} />
   <div class="weight-600 column four wide">{{t 'Sessions'}}</div>
   <div class="column twelve wide">
-    {{#each this.allSessions as |session|}}
+    {{#each this.model.speaker.sessions as |session|}}
       <LinkTo
         @route="public.cfs.view-session"
-        @models={{array this.model.speaker.event.id session.id}}>{{session.title}}
+        @models={{array this.model.speaker.event.id session.id}}>
+	<div>{{session.title}}</div>
       </LinkTo>
     {{/each}}
   </div>
