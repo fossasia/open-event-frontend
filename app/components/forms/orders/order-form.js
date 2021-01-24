@@ -29,6 +29,9 @@ export default Component.extend(FormMixin, {
       attendee.set('firstname', '');
       attendee.set('lastname', '');
       attendee.set('email', '');
+      attendee.set('acceptVideoRecording', true);
+      attendee.set('acceptShareDetails', true);
+      attendee.set('acceptReceiveEmails', true);
     });
     return this.data.attendees;
   }),
@@ -115,6 +118,36 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.l10n.t('Please select your age group')
+        }
+      ]
+    };
+
+    const acceptReceiveEmailsValidation = {
+      rules: [
+        {
+          type   : 'checked',
+          value  : false,
+          prompt : this.l10n.t('You need to agree to the condition of the organizer to receive emails in order to continue the order process.')
+        }
+      ]
+    };
+
+    const acceptVideoRecordingValidation = {
+      rules: [
+        {
+          type   : 'checked',
+          value  : false,
+          prompt : this.l10n.t('In order to complete the order process you need to agree to the photo & video & text consent.')
+        }
+      ]
+    };
+
+    const acceptShareDetailsValidation = {
+      rules: [
+        {
+          type   : 'checked',
+          value  : false,
+          prompt : this.l10n.t('You need to agree to the condition of the organizer to share information among event partners in order to continue the order process. Such a requirement could be necessary in order to provide the event services.')
         }
       ]
     };
@@ -507,6 +540,9 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`gender_required_${  index}`] = genderValidation;
       validationRules.fields[`ageGroup_required_${  index}`] = ageGroupValidation;
       validationRules.fields[`address_required_${  index}`] = addressValidation;
+      validationRules.fields[`acceptReceiveEmails_required_${  index}`] = acceptReceiveEmailsValidation;
+      validationRules.fields[`acceptVideoRecording_required_${  index}`] = acceptVideoRecordingValidation;
+      validationRules.fields[`acceptShareDetails_required_${  index}`] = acceptShareDetailsValidation;
       validationRules.fields[`city_required_${  index}`] = cityValidation;
       validationRules.fields[`state_required_${  index}`] = stateValidation;
       validationRules.fields[`country_required_${  index}`] = countryValidation;
