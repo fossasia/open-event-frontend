@@ -10,7 +10,7 @@
        <Input
           @type="text"
           @name="name"
-          @value={{this.groupName}}
+          @value={{this.model.group.name}}
           placeholder={{t "Name"}} required/>
     </div>
     <div class="ui hidden divider"></div>
@@ -20,10 +20,21 @@
 </div>
 
 <div class="ui container mb-4">
-  {{#if this.filteredEvents}}
-    <h2 class="main-heading mb-4">{{t 'My Events'}}</h2>
+  {{#if this.model.group.events}}
+    <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
     <div class="ui stackable three column grid">
-      {{#each this.filteredEvents as |event|}}
+      {{#each this.model.group.events as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @addToGroup={{false}} />
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<div class="ui container mb-4">
+  {{#if this.model.filteredEvents}}
+    <h2 class="main-heading mb-4">{{t 'All Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each this.model.filteredEvents as |event|}}
         <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
       {{/each}}
     </div>

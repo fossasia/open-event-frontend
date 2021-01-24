@@ -6,15 +6,11 @@ export default class extends Controller {
 
   @service errorHandler;
 
-  groupEvents = [];
-
   deletedEvents = [];
 
   @action
   addNewEvent(event) {
-    if (!this.groupEvents.includes(event)) {
-      this.groupEvents.push(event);
-    }
+    this.model.group.set('events', [event].concat(this.model.group.events.toArray()));
   }
 
   @action
@@ -31,7 +27,7 @@ export default class extends Controller {
   async submit() {
     try {
       this.loading = true;
-      let valid = this.groupEvents.concat(this.model.group.events.toArray());
+      let valid = this.model.group.events.toArray();
       valid = valid.filter(x => !this.deletedEvents.includes(x));
       this.model.group.set('events', valid);
       await this.model.group.save();

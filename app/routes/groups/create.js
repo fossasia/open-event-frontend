@@ -1,19 +1,22 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
-import { hash } from 'rsvp';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 @classic
-export default class GroupRoute extends Route {
+export default class GroupRoute extends Route.extend(AuthenticatedRouteMixin) {
 
   async model() {
-    return hash({
-      filteredEvents: this.authManager.currentUser.query('events', {
+    return {
+      filteredEvents: await this.authManager.currentUser.query('events', {
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
-        cache        : true,
         'page[size]' : 25
+      }),
+      group: this.store.createRecord('group', {
+        user   : this.authManager.currentUser
       })
-    });
+    }
+    
   }
 
   setupController(controller, model) {

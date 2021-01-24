@@ -6,15 +6,9 @@ export default class extends Controller {
 
   @service errorHandler;
 
-  groupName ='';
-
-  groupEvents = [];
-
   @action
   addEvent(event) {
-    if (!this.groupEvents.includes(event)) {
-      this.groupEvents.push(event);
-    }
+    this.model.group.set('events', [event].concat(this.model.group.events.toArray()));
   }
 
   @action
@@ -24,12 +18,7 @@ export default class extends Controller {
   async submit() {
     try {
       this.loading = true;
-      const myGroup = this.store.createRecord('group', {
-        user   : this.authManager.currentUser,
-        name   : this.groupName,
-        events : this.groupEvents
-      });
-      await myGroup.save();
+      await this.model.group.save();
       this.notify.success(this.l10n.t('Your group has been saved'),
         {
           id: 'group_save'
