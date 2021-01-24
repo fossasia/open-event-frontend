@@ -4,7 +4,7 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default ModelBase.extend({
 
-  speakers          : attr('number'),
+  speakers          : attr(''),
   sessions          : attr('number'),
   sessionsPending   : attr('number'),
   sponsors          : attr('number'),
@@ -16,11 +16,5 @@ export default ModelBase.extend({
   identifier        : attr('string'),
   sessionsAccepted  : attr('number'),
   sessionsDraft     : attr('number'),
-  speakersAccepted  : attr('number'),
-  speakersConfirmed : attr('number'),
-  speakersPending   : attr('number'),
-  speakersRejected  : attr('number'),
-  speakersWithdrawn : attr('number'),
-  speakersCanceled  : attr('number'),
   event             : belongsTo('event')
 });

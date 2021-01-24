@@ -7,7 +7,7 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'created-at';
 
-  sort_dir = 'ASC';
+  sort_dir = 'DSC';
 
   @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 

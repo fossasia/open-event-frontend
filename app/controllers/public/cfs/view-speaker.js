@@ -14,5 +14,3 @@ export default class extends Controller.extend(FormMixin) {
     const fields = sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER);
     return fields;
   }
-
-}
