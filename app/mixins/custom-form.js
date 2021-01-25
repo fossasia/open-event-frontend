@@ -335,6 +335,33 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'acceptReceiveEmails',
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'acceptVideoRecording',
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : true,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'acceptShareDetails',
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'address',
         form            : 'attendee',
         type            : 'text',
@@ -489,6 +516,24 @@ export default Mixin.create(MutableArray, {
       }),
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'github',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'instagram',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'linkedin',
         form            : 'attendee',
         type            : 'text',
         isRequired      : false,

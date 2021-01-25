@@ -66,7 +66,7 @@ export default class ManageRoles extends Component {
   }
 
   @action
-  deleteUserRole(invite) {
+  deleteUserRoleInvite(invite) {
     this.set('isLoading', true);
     invite.destroyRecord()
       .then(() => {
@@ -77,6 +77,27 @@ export default class ManageRoles extends Component {
       })
       .catch(e => {
         console.error('Error while deleting role invite', e);
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
+          id: 'err_man_role'
+        });
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+  }
+
+  @action
+  deleteUserRole(eventRole) {
+    this.set('isLoading', true);
+    eventRole.destroyRecord()
+      .then(() => {
+        this.notify.success(this.l10n.t('Role deleted successfully'), {
+          id: 'del_role_succ'
+        });
+        this.data.usersEventsRoles.removeObject(eventRole);
+      })
+      .catch(e => {
+        console.error('Error while deleting role', e);
         this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
           id: 'err_man_role'
         });

@@ -12,8 +12,9 @@ export default ModelBase.extend({
 
   email                  : attr('string'),
   password               : attr('string'),
-  isVerified             : attr('boolean', { readOnly: true }),
+  isVerified             : attr('boolean'),
   isSuperAdmin           : attr('boolean', { readOnly: true }),
+  isBlocked              : attr('boolean'),
   isAdmin                : attr('boolean'),
   isUserOwner            : attr('boolean'),
   isUserOrganizer        : attr('boolean'),
@@ -88,14 +89,14 @@ export default ModelBase.extend({
   speakers             : hasMany('speaker'),
   discountCodes        : hasMany('discount-code'),
   accessCodes          : hasMany('access-code'),
-  ownerEvents          : hasMany('event'),
-  organizerEvents      : hasMany('event'),
-  coorganizerEvents    : hasMany('event'),
-  trackOrganizerEvents : hasMany('event'),
-  registrarEvents      : hasMany('event'),
-  moderatorEvents      : hasMany('event'),
-  marketerEvents       : hasMany('event'),
-  salesAdminEvents     : hasMany('event'),
+  ownerEvents          : hasMany('event', { readOnly: true }),
+  organizerEvents      : hasMany('event', { readOnly: true }),
+  coorganizerEvents    : hasMany('event', { readOnly: true }),
+  trackOrganizerEvents : hasMany('event', { readOnly: true }),
+  registrarEvents      : hasMany('event', { readOnly: true }),
+  moderatorEvents      : hasMany('event', { readOnly: true }),
+  marketerEvents       : hasMany('event', { readOnly: true }),
+  salesAdminEvents     : hasMany('event', { readOnly: true }),
 
   didUpdate() {
     this._super(...arguments);
