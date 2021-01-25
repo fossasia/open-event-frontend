@@ -17,11 +17,11 @@
               <i class="edit icon"></i>
           </UiPopup>
         </LinkTo>
-        <button class="ml-2 ui circular icon button compact red" {{action (confirm (t "Are you sure you would like to delete this group?") (action this.deleteGroup this.group.id))}}><i class="trash icon"></i></button>
+        <button class="ml-2 ui circular icon button compact red" {{action (confirm (t "Are you sure you would like to delete this group?") (action @deleteGroup @group.id))}}><i class="trash icon"></i></button>
       </div>
       <div class="meta">
         <span class="time">
-            {{general-date this.group.modifieddAt 'date-time-short'}}
+            {{general-date @group.modifieddAt 'date-time-short'}}
         </span>
         <br>
         {{#each @group.events as |event|}}

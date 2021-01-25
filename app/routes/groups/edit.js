@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { hash } from 'rsvp';
 
 @classic
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
@@ -9,15 +10,15 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
     return groupTitle.concat(' - Edit');
   }
 
-  async model(params) {
-    return {
-      filteredEvents: await this.authManager.currentUser.query('events', {
+  model(params) {
+    return hash({
+      filteredEvents: this.authManager.currentUser.query('events', {
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         'page[size]' : 25
       }),
-      group: await this.store.findRecord('group', params.group_id, {
+      group: this.store.findRecord('group', params.group_id, {
         include: 'events'
       })
-    };
+    });
   }
 }

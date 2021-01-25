@@ -13,16 +13,10 @@ export default class GroupRoute extends Route.extend(AuthenticatedRouteMixin) {
         'page[size]' : 25
       }),
       group: this.store.createRecord('group', {
-        user: this.authManager.currentUser
+        events: []
       })
     };
 
-  }
-
-  setupController(controller, model) {
-    super.setupController(...arguments);
-    controller.set('filteredEvents', model.filteredEvents);
-    this.set('controller', controller);
   }
 
   @action

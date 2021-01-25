@@ -1,19 +1,41 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import classic from 'ember-classic-decorator';
+import FormMixin from 'open-event-frontend/mixins/form';
 
-export default class GroupForm extends Component {
+@classic
+export default class GroupForm extends Component.extend(FormMixin) {
 
   @service errorHandler;
 
+  getValidationRules() {
+    return {
+      inline : true,
+      delay  : false,
+      on     : 'blur',
+
+      fields: {
+        name: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter a name')
+            }
+          ]
+        }
+      }
+    };
+  }
+
   @action
   addEvent(event) {
-    this.data.group.events.pushObject(event);
+    this.group.events.pushObject(event);
   }
 
   @action
   removeEvent(event) {
-    this.data.group.events.removeObject(event);
+    this.group.events.removeObject(event);
   }
 
   @action
@@ -22,20 +44,21 @@ export default class GroupForm extends Component {
   @action
   submit(event) {
     event.preventDefault();
-    try {
-      this.loading = true;
-      this.data.group.save();
-      this.notify.success(this.l10n.t('Your group has been saved'),
-        {
-          id: 'group_save'
-        });
-      this.router.transitionTo('groups.list');
-    } catch (e) {
-      console.error('Error while saving group', e);
-      this.errorHandler.handle(e);
-    } finally {
-      this.loading = false;
-    }
+    this.onValid(async() => {
+      try {
+        this.loading = true;
+        await this.group.save();
+        this.notify.success(this.l10n.t('Your group has been saved'),
+          {
+            id: 'group_save'
+          });
+        this.router.transitionTo('groups.list');
+      } catch (e) {
+        console.error('Error while saving group', e);
+        this.errorHandler.handle(e);
+      } finally {
+        this.loading = false;
+      }
+    });
   }
 }
-
