@@ -26,6 +26,7 @@ msgstr ""
 #: app/components/forms/login-form.js:74:35
 #: app/components/forms/login-form.js:101:28
 #: app/components/forms/reset-password-form.js:121:41
+#: app/components/modals/contact-organizer.js:46:28
 #: app/components/modals/session-notify-modal.js:80:24
 #: app/components/notification-dropdown.js:55:26
 #: app/components/order-card.js:30:24
@@ -33,19 +34,20 @@ msgstr ""
 #: app/components/widgets/forms/image-upload.js:44:26
 #: app/controllers/admin/content/events.js:77:26
 #: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/admin/events/list.js:140:27
-#: app/controllers/admin/events/list.js:164:24
-#: app/controllers/admin/events/list.js:187:24
-#: app/controllers/admin/events/list.js:210:24
-#: app/controllers/admin/events/list.js:232:24
+#: app/controllers/admin/events/list.js:138:27
+#: app/controllers/admin/events/list.js:162:24
+#: app/controllers/admin/events/list.js:185:24
+#: app/controllers/admin/events/list.js:208:24
+#: app/controllers/admin/events/list.js:230:24
 #: app/controllers/admin/sessions/list.js:77:24
-#: app/controllers/admin/users/list.js:115:24
-#: app/controllers/admin/users/list.js:137:24
-#: app/controllers/admin/users/list.js:168:24
+#: app/controllers/admin/users/list.js:126:24
+#: app/controllers/admin/users/list.js:149:24
+#: app/controllers/admin/users/list.js:171:24
+#: app/controllers/admin/users/list.js:202:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
 #: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/list.js:91:24
+#: app/controllers/events/list.js:88:24
 #: app/controllers/events/view/sessions.js:31:26
 #: app/controllers/events/view/settings/export.js:68:26
 #: app/controllers/events/view/settings/options.js:24:26
@@ -61,9 +63,10 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders/list.js:104:26
 #: app/controllers/events/view/tickets/orders/list.js:130:26
 #: app/controllers/events/view/videoroom/list.js:75:24
-#: app/controllers/notifications.js:23:26
+#: app/controllers/groups/list.js:19:24 app/controllers/notifications.js:23:26
 #: app/controllers/oauth/callback.js:31:41
-#: app/controllers/public/index.js:88:37
+#: app/controllers/public/cfs/view-session.js:43:24
+#: app/controllers/public/index.js:89:37
 #: app/controllers/public/session/view.js:30:24
 #: app/controllers/register.js:33:35 app/controllers/register.js:70:37
 #: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
@@ -87,14 +90,14 @@ msgstr ""
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
 #: app/components/forms/login-form.js:32:23
 #: app/components/forms/orders/guest-order-form.js:28:23
-#: app/components/forms/orders/order-form.js:105:19
-#: app/components/forms/orders/order-form.js:399:23
+#: app/components/forms/orders/order-form.js:102:19
+#: app/components/forms/orders/order-form.js:476:23
 #: app/components/forms/register-form.js:24:23
 #: app/components/forms/reset-password-form.js:30:23
 #: app/components/forms/session-speaker-form.js:198:23
 #: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-#: app/components/forms/wizard/basic-details-step.js:359:23
+#: app/components/forms/wizard/basic-details-step.js:364:23
 msgid "Please enter a valid email address"
 msgstr ""
 
@@ -258,6 +261,7 @@ msgstr ""
 
 #: app/components/forms/admin/content/pages-form.js:17:23
 #: app/components/forms/events/view/videoroom-form.js:43:23
+#: app/components/forms/group/group-form.js:23:23
 #: app/components/forms/session-speaker-form.js:185:23
 #: app/components/modals/add-room-modal.js:46:23
 msgid "Please enter a name"
@@ -296,10 +300,10 @@ msgstr ""
 
 #: app/components/forms/admin/content/social-links-form.js:20:23
 #: app/components/forms/events/view/videoroom-form.js:56:23
-#: app/components/forms/orders/order-form.js:251:19
-#: app/components/forms/orders/order-form.js:265:19
-#: app/components/forms/orders/order-form.js:276:19
-#: app/components/forms/orders/order-form.js:290:19
+#: app/components/forms/orders/order-form.js:278:19
+#: app/components/forms/orders/order-form.js:292:19
+#: app/components/forms/orders/order-form.js:303:19
+#: app/components/forms/orders/order-form.js:317:19
 #: app/components/forms/session-speaker-form.js:115:23
 #: app/components/forms/session-speaker-form.js:126:23
 #: app/components/forms/session-speaker-form.js:140:23
@@ -310,9 +314,9 @@ msgstr ""
 #: app/components/forms/session-speaker-form.js:237:23
 #: app/components/forms/session-speaker-form.js:366:23
 #: app/components/forms/session-speaker-form.js:377:23
-#: app/components/forms/wizard/basic-details-step.js:401:23
-#: app/components/forms/wizard/basic-details-step.js:421:23
-#: app/components/forms/wizard/basic-details-step.js:432:23
+#: app/components/forms/wizard/basic-details-step.js:406:23
+#: app/components/forms/wizard/basic-details-step.js:426:23
+#: app/components/forms/wizard/basic-details-step.js:437:23
 #: app/components/forms/wizard/other-details-step.js:65:23
 msgid "Please enter a valid url"
 msgstr ""
@@ -663,10 +667,10 @@ msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:84:87
 #: app/components/public/side-menu-outer.js:22:13
-#: app/components/public/stream/side-panel.hbs:29:10
-#: app/controllers/admin/events/list.js:72:25
+#: app/components/public/stream/side-panel.hbs:28:10
+#: app/controllers/admin/events/list.js:70:25
 #: app/controllers/admin/sessions/list.js:26:24
-#: app/controllers/events/list.js:54:24
+#: app/controllers/events/list.js:51:24
 #: app/controllers/events/view/sessions/list.js:44:24
 #: app/routes/events/view/speakers.js:7:11
 #: app/templates/components/events/view/export/api-response.hbs:22:39
@@ -676,6 +680,7 @@ msgstr ""
 #: app/templates/components/public/speaker-list.hbs:1:22
 #: app/templates/events/view.hbs:32:10
 #: app/templates/events/view/session/view.hbs:38:44
+#: app/templates/public/cfs/view-session.hbs:75:43
 msgid "Speakers"
 msgstr "El Altavoz"
 
@@ -711,6 +716,7 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:145:4
 #: app/templates/components/forms/events/view/create-access-code.hbs:95:68
 #: app/templates/components/forms/events/view/create-discount-code.hbs:139:4
+#: app/templates/components/forms/group/group-form.hbs:21:70
 #: app/templates/components/modals/edit-user-modal.hbs:21:4
 #: app/templates/components/modals/room-info-modal.hbs:14:63
 msgid "Save"
@@ -729,6 +735,7 @@ msgstr ""
 #: app/templates/components/modals/change-image-modal.hbs:45:63
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:22:4
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:14:4
+#: app/templates/components/modals/contact-organizer.hbs:42:16
 #: app/templates/components/modals/event-delete-modal.hbs:19:4
 #: app/templates/components/modals/event-transfer-modal.hbs:19:4
 #: app/templates/components/modals/paytm-otp.hbs:15:4
@@ -756,6 +763,10 @@ msgstr ""
 msgid "Your stream has been saved"
 msgstr ""
 
+#: app/components/forms/group/group-form.js:56:28
+msgid "Your group has been saved"
+msgstr ""
+
 #: app/components/forms/login-form.js:41:23
 #: app/components/forms/orders/guest-order-form.js:38:23
 msgid "Please enter your password"
@@ -765,135 +776,165 @@ msgstr ""
 msgid "Here is your ticket"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:84:19
-#: app/components/forms/orders/order-form.js:380:23
+#: app/components/forms/orders/order-form.js:81:19
+#: app/components/forms/orders/order-form.js:457:23
 msgid "Please enter your first name"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:92:19
-#: app/components/forms/orders/order-form.js:389:23
+#: app/components/forms/orders/order-form.js:89:19
+#: app/components/forms/orders/order-form.js:466:23
 msgid "Please enter your last name"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:100:19
+#: app/components/forms/orders/order-form.js:97:19
 msgid "Please enter your email"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:114:19
+#: app/components/forms/orders/order-form.js:111:19
 #: app/components/forms/session-speaker-form.js:318:23
 msgid "Please select a gender"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:123:19
+#: app/components/forms/orders/order-form.js:120:19
 msgid "Please select your age group"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:132:19
-#: app/components/forms/orders/order-form.js:426:23
-msgid "Please enter your address"
+#: app/components/forms/orders/order-form.js:130:19
+msgid "You need to agree to the condition of the organizer to receive emails in order to continue the order process."
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:141:19
-#: app/components/forms/orders/order-form.js:435:23
-msgid "Please enter your city"
+#: app/components/forms/orders/order-form.js:140:19
+msgid "In order to complete the order process you need to agree to the photo & video & text consent."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:150:19
-msgid "Please enter your state"
+msgid "You need to agree to the condition of the organizer to share information among event partners in order to continue the order process. Such a requirement could be necessary in order to provide the event services."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:159:19
-#: app/components/forms/orders/order-form.js:408:23
-#: app/components/forms/wizard/basic-details-step.js:410:23
+#: app/components/forms/orders/order-form.js:503:23
+msgid "Please enter your address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:168:19
+#: app/components/forms/orders/order-form.js:512:23
+msgid "Please enter your city"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:177:19
+msgid "Please enter your state"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:186:19
+#: app/components/forms/orders/order-form.js:485:23
+#: app/components/forms/wizard/basic-details-step.js:415:23
 #: app/components/modals/tax-info-modal.js:111:23
 msgid "Please select your country"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:168:19
+#: app/components/forms/orders/order-form.js:195:19
 msgid "Please enter your job title"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:177:19
+#: app/components/forms/orders/order-form.js:204:19
 #: app/components/forms/session-speaker-form.js:347:23
 msgid "Please enter a mobile number"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:186:19
+#: app/components/forms/orders/order-form.js:213:19
 msgid "Please enter your tax business info"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:195:19
+#: app/components/forms/orders/order-form.js:222:19
 #: app/components/forms/user-payment-info-form.js:55:23
 msgid "Please enter your billing address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:204:19
+#: app/components/forms/orders/order-form.js:231:19
 msgid "Please enter your home address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:213:19
+#: app/components/forms/orders/order-form.js:240:19
 msgid "Please enter your shipping address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:222:19
+#: app/components/forms/orders/order-form.js:249:19
 #: app/components/forms/user-payment-info-form.js:37:23
 msgid "Please enter your organisation"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:231:19
+#: app/components/forms/orders/order-form.js:258:19
 msgid "Please enter your work address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:240:19
+#: app/components/forms/orders/order-form.js:267:19
 msgid "Please enter your work phone"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:260:19
-#: app/components/forms/orders/order-form.js:285:19
+#: app/components/forms/orders/order-form.js:287:19
+#: app/components/forms/orders/order-form.js:312:19
 #: app/components/forms/session-speaker-form.js:361:23
 msgid "Please enter url of website"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:301:19
-#: app/components/forms/orders/order-form.js:315:19
+#: app/components/forms/orders/order-form.js:328:19
+#: app/components/forms/orders/order-form.js:342:19
 msgid "Please enter a valid twitter profile url"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:310:19
+#: app/components/forms/orders/order-form.js:337:19
 msgid "Please enter twitter link"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:326:19
-#: app/components/forms/orders/order-form.js:340:19
+#: app/components/forms/orders/order-form.js:353:19
+#: app/components/forms/orders/order-form.js:367:19
 msgid "Please enter a valid facebook account url"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:335:19
+#: app/components/forms/orders/order-form.js:362:19
 msgid "Please enter facebook link"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:351:19
-#: app/components/forms/orders/order-form.js:365:19
+#: app/components/forms/orders/order-form.js:378:19
+#: app/components/forms/orders/order-form.js:392:19
 msgid "Please enter a valid GitHub profile url"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:360:19
+#: app/components/forms/orders/order-form.js:387:19
 msgid "Please enter GitHub link"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:417:23
+#: app/components/forms/orders/order-form.js:403:19
+#: app/components/forms/orders/order-form.js:417:19
+msgid "Please enter a valid instagram account url"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:412:19
+msgid "Please enter instagram link"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:428:19
+#: app/components/forms/orders/order-form.js:442:19
+msgid "Please enter a valid linkedin account url"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:437:19
+msgid "Please enter linkedin link"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:494:23
 msgid "Please enter your Tax ID or Business ID"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:444:23
+#: app/components/forms/orders/order-form.js:521:23
 msgid "Please enter your zip code"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:453:23
+#: app/components/forms/orders/order-form.js:530:23
 msgid "Please specify your choice of payment method"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:493:23
+#: app/components/forms/orders/order-form.js:577:23
 #: app/components/forms/session-speaker-form.js:390:23
 msgid "Please enter {{field}}"
 msgstr ""
@@ -1026,174 +1067,174 @@ msgstr ""
 msgid "Your profile has been updated"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:24:22
+#: app/components/forms/wizard/basic-details-step.js:25:22
 msgid "Venue"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:24:42
+#: app/components/forms/wizard/basic-details-step.js:25:37
 #: app/templates/components/explore/side-bar.hbs:22:23
 msgid "Online"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:24:63
+#: app/components/forms/wizard/basic-details-step.js:25:53
 #: app/templates/components/explore/side-bar.hbs:36:23
 msgid "Hybrid"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:24:84
+#: app/components/forms/wizard/basic-details-step.js:25:69
 msgid "To be announced"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:162:23
+#: app/components/forms/wizard/basic-details-step.js:167:23
 msgid "Please give your event a name"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:171:23
+#: app/components/forms/wizard/basic-details-step.js:176:23
 msgid "Choose a timezone for your event"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:180:23
+#: app/components/forms/wizard/basic-details-step.js:185:23
 #: app/components/forms/wizard/sessions-speakers-step.js:58:23
 msgid "Please tell us when your event starts"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:184:23
+#: app/components/forms/wizard/basic-details-step.js:189:23
 msgid "Please give a valid start date"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:193:23
+#: app/components/forms/wizard/basic-details-step.js:198:23
 #: app/components/forms/wizard/sessions-speakers-step.js:71:23
 msgid "Please tell us when your event ends"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:197:23
+#: app/components/forms/wizard/basic-details-step.js:202:23
 msgid "Please give a valid end date"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:201:23
+#: app/components/forms/wizard/basic-details-step.js:206:23
 msgid "Event duration can not be more than 20 days"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:211:23
+#: app/components/forms/wizard/basic-details-step.js:216:23
 #: app/components/forms/wizard/sessions-speakers-step.js:85:23
 msgid "Please give a start time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:215:23
+#: app/components/forms/wizard/basic-details-step.js:220:23
 msgid "Starting time should be lesser than the ending time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:225:23
+#: app/components/forms/wizard/basic-details-step.js:230:23
 #: app/components/forms/wizard/sessions-speakers-step.js:95:23
 msgid "Please give an end time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:229:23
+#: app/components/forms/wizard/basic-details-step.js:234:23
 msgid "Ending time should be greater than the starting time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:238:23
+#: app/components/forms/wizard/basic-details-step.js:243:23
 msgid "Please give your ticket a name"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:248:23
+#: app/components/forms/wizard/basic-details-step.js:253:23
 msgid "Ticket description shouldn't contain more than {ruleValue} characters"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:257:23
+#: app/components/forms/wizard/basic-details-step.js:262:23
 msgid "Please give your ticket a price"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:261:23
+#: app/components/forms/wizard/basic-details-step.js:266:23
 msgid "Please give a proper price for you ticket"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:265:23
+#: app/components/forms/wizard/basic-details-step.js:270:23
 msgid "Ticket price should be greater than 0"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:274:23
+#: app/components/forms/wizard/basic-details-step.js:279:23
 msgid "Please specify how many tickets of this type are available"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:278:23
+#: app/components/forms/wizard/basic-details-step.js:283:23
 msgid "Please give a proper quantity for you ticket"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:287:23
+#: app/components/forms/wizard/basic-details-step.js:292:23
 msgid "Minimum tickets per order required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:291:23
-#: app/components/forms/wizard/basic-details-step.js:308:23
+#: app/components/forms/wizard/basic-details-step.js:296:23
+#: app/components/forms/wizard/basic-details-step.js:313:23
 msgid "Invalid number"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:295:23
+#: app/components/forms/wizard/basic-details-step.js:300:23
 msgid "Minimum order should not be greater than maximum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:304:23
+#: app/components/forms/wizard/basic-details-step.js:309:23
 msgid "Maximum tickets per order required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:312:23
+#: app/components/forms/wizard/basic-details-step.js:317:23
 msgid "Maximum tickets per order should be greater than 0"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:316:23
+#: app/components/forms/wizard/basic-details-step.js:321:23
 msgid "Maximum order should not be less than minimum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:325:23
+#: app/components/forms/wizard/basic-details-step.js:330:23
 msgid "Minimum price for donation tickets required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:329:23
+#: app/components/forms/wizard/basic-details-step.js:334:23
 msgid "Minimum price needs to be greater than zero"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:333:23
+#: app/components/forms/wizard/basic-details-step.js:338:23
 msgid "Minimum price should not be greater than maximum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:342:23
+#: app/components/forms/wizard/basic-details-step.js:347:23
 msgid "Maximum price for donation tickets required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:346:23
+#: app/components/forms/wizard/basic-details-step.js:351:23
 msgid "Maximum price needs to be greater than zero"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:350:23
+#: app/components/forms/wizard/basic-details-step.js:355:23
 msgid "Maximum price should not be less than minimum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:363:23
+#: app/components/forms/wizard/basic-details-step.js:368:23
 msgid "Please fill your paypal email for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:372:23
+#: app/components/forms/wizard/basic-details-step.js:377:23
 msgid "Please fill the details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:381:23
+#: app/components/forms/wizard/basic-details-step.js:386:23
 msgid "Please fill the bank details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:390:23
+#: app/components/forms/wizard/basic-details-step.js:395:23
 msgid "Please fill the cheque details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:453:51
+#: app/components/forms/wizard/basic-details-step.js:458:51
 msgid "Please try again"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:462:30
+#: app/components/forms/wizard/basic-details-step.js:467:30
 msgid "Stripe disconnected successfully"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:531:61
+#: app/components/forms/wizard/basic-details-step.js:535:61
 msgid "This discount code is invalid. Please try again."
 msgstr ""
 
@@ -1278,6 +1319,7 @@ msgstr "El público"
 #: app/templates/components/events/view/overview/event-sponsors.hbs:6:4
 #: app/templates/components/events/view/overview/manage-roles.hbs:8:37
 #: app/templates/components/forms/wizard/basic-details-step.hbs:575:16
+#: app/templates/components/group-card.hbs:16:28
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:7:24
 #: app/templates/components/ui-table/cell/admin/users/cell-first-name.hbs:9:24
 #: app/templates/components/ui-table/cell/cell-buttons.hbs:8:22
@@ -1391,12 +1433,13 @@ msgid "Add Room"
 msgstr ""
 
 #: app/components/modals/add-room-modal.hbs:8:8
-#: app/controllers/admin/events/list.js:17:27
+#: app/controllers/admin/events/list.js:16:27
 #: app/controllers/admin/users/list.js:17:26
-#: app/controllers/events/list.js:13:26
+#: app/controllers/events/list.js:11:26
 #: app/controllers/events/view/speakers/list.js:18:26
 #: app/templates/components/event-invoice/payee-info.hbs:8:8
 #: app/templates/components/forms/admin/content/pages-form.hbs:3:28
+#: app/templates/components/forms/group/group-form.hbs:18:20
 #: app/templates/components/forms/user-profile-form.hbs:27:43
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:34:80
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:64:74
@@ -1461,6 +1504,14 @@ msgstr ""
 msgid "Please enter a valid email address for new organizer"
 msgstr ""
 
+#: app/components/modals/contact-organizer.js:24:23
+msgid "Please enter message"
+msgstr ""
+
+#: app/components/modals/contact-organizer.js:40:30
+msgid "Organizer contacted successfully"
+msgstr ""
+
 #: app/components/modals/paytm-otp.js:20:23
 msgid "Please enter the OTP"
 msgstr ""
@@ -1484,6 +1535,7 @@ msgstr ""
 #: app/components/modals/session-notify-modal.hbs:36:15
 #: app/controllers/admin/reports/system-logs/mail-logs.js:32:26
 #: app/controllers/admin/reports/system-logs/notification-logs.js:28:24
+#: app/templates/components/modals/contact-organizer.hbs:34:38
 msgid "Message"
 msgstr ""
 
@@ -1557,7 +1609,7 @@ msgstr ""
 
 #: app/components/public/event-venue.hbs:4:4 app/controllers/public.js:38:13
 #: app/templates/components/orders/event-info.hbs:19:16
-#: app/templates/public/index.hbs:74:10
+#: app/templates/public/index.hbs:76:10
 msgid "Online Event"
 msgstr ""
 
@@ -1597,7 +1649,7 @@ msgid "Info"
 msgstr ""
 
 #: app/components/public/side-menu-outer.js:18:13
-#: app/components/public/stream/side-panel.hbs:22:10
+#: app/components/public/stream/side-panel.hbs:21:10
 #: app/routes/public/schedule.js:9:11
 #: app/templates/components/public/side-menu.hbs:32:85
 msgid "Schedule"
@@ -1613,6 +1665,8 @@ msgstr ""
 #: app/templates/components/events/view/overview/speaker-session.hbs:45:20
 #: app/templates/components/public/call-for-speakers.hbs:3:2
 #: app/templates/components/public/side-menu.hbs:42:89
+#: app/templates/public/cfs/view-session.hbs:11:89
+#: app/templates/public/cfs/view-speaker.hbs:11:89
 msgid "Call for Speakers"
 msgstr "Llamado para Oradores"
 
@@ -1749,17 +1803,17 @@ msgstr ""
 msgid "Translations Zip generated successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:33:27
+#: app/controllers/admin/events/list.js:32:27
 #: app/controllers/admin/sessions/list.js:38:26
 msgid "Starts At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:42:27
+#: app/controllers/admin/events/list.js:41:27
 #: app/controllers/admin/sessions/list.js:45:26
 msgid "Ends At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:51:27
+#: app/controllers/admin/events/list.js:50:27
 #: app/controllers/admin/sessions/list.js:19:26
 #: app/controllers/events/view/sessions/list.js:15:26
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
@@ -1770,13 +1824,13 @@ msgstr ""
 msgid "State"
 msgstr "Estado"
 
-#: app/controllers/admin/events/list.js:58:27
-#: app/controllers/events/list.js:35:26
+#: app/controllers/admin/events/list.js:57:25
+#: app/controllers/events/list.js:33:24
 msgid "Roles"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:65:25
-#: app/controllers/events/list.js:49:24 app/routes/admin/sessions.js:8:11
+#: app/controllers/admin/events/list.js:63:25
+#: app/controllers/events/list.js:46:24 app/routes/admin/sessions.js:8:11
 #: app/routes/events/view/sessions.js:7:11 app/routes/public/sessions.js:26:11
 #: app/templates/admin.hbs:14:8 app/templates/admin/index.hbs:13:10
 #: app/templates/components/events/view/export/api-response.hbs:13:39
@@ -1785,49 +1839,50 @@ msgstr ""
 #: app/templates/components/ui-table/cell/admin/users/cell-user-links.hbs:3:94
 #: app/templates/events/view.hbs:35:10
 #: app/templates/events/view/speaker/view.hbs:24:44
+#: app/templates/public/cfs/view-speaker.hbs:36:43
 #: app/templates/public/sessions.hbs:1:43
 msgid "Sessions"
 msgstr "la sesión"
 
-#: app/controllers/admin/events/list.js:78:25
-#: app/controllers/events/list.js:59:24
+#: app/controllers/admin/events/list.js:76:25
+#: app/controllers/events/list.js:56:24
 msgid "Public URL"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:84:27
+#: app/controllers/admin/events/list.js:82:27
 msgid "Featured"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:96:27
+#: app/controllers/admin/events/list.js:94:27
 msgid "Promoted"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:108:27
+#: app/controllers/admin/events/list.js:106:27
 msgid "Not on FrontPage"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:128:27
+#: app/controllers/admin/events/list.js:126:27
 #: app/controllers/admin/users/view/events/list.js:79:26
-#: app/controllers/events/list.js:84:26
+#: app/controllers/events/list.js:81:26
 #: app/controllers/events/view/settings/options.js:17:28
 msgid "Event has been deleted successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:158:26
+#: app/controllers/admin/events/list.js:156:26
 #: app/controllers/admin/users/view/events/list.js:97:26
 msgid "Event has been restored successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:180:26
-#: app/controllers/admin/events/list.js:203:26
+#: app/controllers/admin/events/list.js:178:26
+#: app/controllers/admin/events/list.js:201:26
 msgid "Event details modified successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:226:45
+#: app/controllers/admin/events/list.js:224:45
 msgid "Event promoted successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:226:90
+#: app/controllers/admin/events/list.js:224:90
 msgid "Event unpromoted successfully"
 msgstr ""
 
@@ -1900,6 +1955,7 @@ msgstr ""
 #: app/controllers/admin/reports/system-logs/mail-logs.js:13:26
 #: app/templates/components/event-invoice/billing-info.hbs:30:16
 #: app/templates/components/event-invoice/event-info.hbs:17:12
+#: app/templates/components/modals/contact-organizer.hbs:26:23
 #: app/templates/components/orders/event-info.hbs:29:12
 #: app/templates/public.hbs:16:42
 msgid "To"
@@ -1939,7 +1995,7 @@ msgstr ""
 #: app/controllers/admin/sales/index.js:32:22
 #: app/controllers/admin/sales/index.js:50:22
 #: app/controllers/admin/sales/index.js:68:22
-#: app/controllers/events/list.js:42:26
+#: app/controllers/events/list.js:39:26
 #: app/routes/events/view/team/permissions.ts:66:19
 #: app/routes/events/view/tickets.js:7:11
 #: app/templates/admin/sales/discounted-events.hbs:31:14
@@ -2140,18 +2196,30 @@ msgid "Last Accessed"
 msgstr ""
 
 #: app/controllers/admin/users/list.js:83:26
+msgid "Mark Spam"
+msgstr ""
+
+#: app/controllers/admin/users/list.js:94:26
 msgid "Verified"
 msgstr ""
 
-#: app/controllers/admin/users/list.js:108:26
+#: app/controllers/admin/users/list.js:119:43
+msgid "User has been marked as Spam successfully."
+msgstr ""
+
+#: app/controllers/admin/users/list.js:119:103
+msgid "User has been marked as Not Spam successfully."
+msgstr ""
+
+#: app/controllers/admin/users/list.js:142:26
 msgid "User verifiation state changed successfully."
 msgstr ""
 
-#: app/controllers/admin/users/list.js:130:26
+#: app/controllers/admin/users/list.js:164:26
 msgid "User has been deleted successfully."
 msgstr ""
 
-#: app/controllers/admin/users/list.js:162:26
+#: app/controllers/admin/users/list.js:196:26
 msgid "User has been restored successfully."
 msgstr ""
 
@@ -2159,7 +2227,7 @@ msgstr ""
 msgid "Here is your Event Invoice"
 msgstr ""
 
-#: app/controllers/events/list.js:25:26
+#: app/controllers/events/list.js:23:26
 #: app/templates/components/explore/side-bar.hbs:61:8
 msgid "Date"
 msgstr "Cita"
@@ -2324,7 +2392,7 @@ msgid "Access Code has been updated successfully."
 msgstr ""
 
 #: app/controllers/events/view/tickets/add-order.js:23:28
-#: app/controllers/public/index.js:126:28
+#: app/controllers/public/index.js:132:28
 msgid "Order details saved. Please fill further details within {{time}} minutes."
 msgstr ""
 
@@ -2385,7 +2453,7 @@ msgstr ""
 
 #: app/controllers/events/view/videoroom/list.js:11:26
 #: app/routes/events/view/videoroom.js:7:11
-#: app/templates/components/events/view/overview/session-view.hbs:43:50
+#: app/templates/components/events/view/overview/session-view.hbs:43:49
 msgid "Microlocation"
 msgstr ""
 
@@ -2401,12 +2469,16 @@ msgstr ""
 msgid "Video Stream"
 msgstr ""
 
+#: app/controllers/groups/list.js:12:26
+msgid "Group has been deleted successfully."
+msgstr ""
+
 #: app/controllers/notifications.js:17:28
 msgid "All notifications marked read successfully"
 msgstr ""
 
 #: app/controllers/oauth/callback.js:29:41
-#: app/controllers/public/index.js:86:37 app/controllers/register.js:68:37
+#: app/controllers/public/index.js:87:37 app/controllers/register.js:68:37
 msgid "Your credentials were incorrect."
 msgstr ""
 
@@ -2438,7 +2510,7 @@ msgstr ""
 msgid "Online and In-Person Event at"
 msgstr ""
 
-#: app/controllers/public.js:42:13 app/templates/public/index.hbs:91:10
+#: app/controllers/public.js:42:13 app/templates/public/index.hbs:93:10
 msgid "Location to be announced"
 msgstr ""
 
@@ -2446,6 +2518,7 @@ msgstr ""
 msgid "Session details have been saved"
 msgstr ""
 
+#: app/controllers/public/cfs/view-session.js:36:26
 #: app/controllers/public/session/view.js:24:26
 msgid "Proposal has been withdrawn successfully."
 msgstr ""
@@ -2527,7 +2600,7 @@ msgstr ""
 
 #: app/routes/account.js:7:11 app/routes/admin/users/view/account.js:8:11
 #: app/templates/admin/users/view/account.hbs:2:24
-#: app/templates/components/nav-bar.hbs:39:65
+#: app/templates/components/nav-bar.hbs:40:65
 #: app/templates/components/side-bar.hbs:22:57
 msgid "Account"
 msgstr ""
@@ -2720,7 +2793,7 @@ msgstr ""
 
 #: app/routes/admin/sales/locations.js:7:11
 #: app/templates/admin/sales/locations.hbs:10:28
-#: app/templates/components/events/view/overview/general-info.hbs:17:20
+#: app/templates/components/events/view/overview/general-info.hbs:28:20
 #: app/templates/components/explore/side-bar.hbs:29:23
 #: app/templates/components/forms/wizard/basic-details-step.hbs:52:78
 msgid "Location"
@@ -2739,7 +2812,6 @@ msgstr ""
 #: app/templates/components/public/side-menu.hbs:63:86
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:8:47
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:39:134
-#: app/templates/components/ui-table/cell/cell-roles.hbs:4:49
 #: app/templates/events/view/team/permissions.hbs:6:33
 msgid "Organizer"
 msgstr ""
@@ -3119,10 +3191,19 @@ msgstr ""
 msgid "Explore"
 msgstr ""
 
+#: app/routes/groups.js:8:11 app/templates/groups/list.hbs:15:8
+msgid "My Groups"
+msgstr ""
+
+#: app/routes/groups/list.js:7:11 app/templates/components/nav-bar.hbs:37:61
+#: app/templates/groups/list.hbs:5:8
+msgid "Groups"
+msgstr ""
+
 #: app/routes/login.js:8:11 app/templates/components/forms/login-form.hbs:14:31
 #: app/templates/components/forms/login-form.hbs:51:16
 #: app/templates/components/modals/login-signup-modal.hbs:21:8
-#: app/templates/components/nav-bar.hbs:49:51
+#: app/templates/components/nav-bar.hbs:50:51
 #: app/templates/components/nav-bar.hbs:96:51
 #: app/templates/components/side-bar.hbs:30:47
 msgid "Login"
@@ -3189,7 +3270,7 @@ msgstr ""
 
 #: app/routes/pages.js:12:58 app/templates/components/footer-main.hbs:113:12
 #: app/templates/components/forms/wizard/other-details-step.hbs:55:33
-#: app/templates/components/public/ticket-list.hbs:216:12
+#: app/templates/components/public/ticket-list.hbs:218:10
 msgid "Refund Policy"
 msgstr ""
 
@@ -3204,12 +3285,15 @@ msgstr ""
 #: app/templates/events/view/session/edit.hbs:4:6
 #: app/templates/events/view/session/view.hbs:25:83
 #: app/templates/public/cfs/edit-session.hbs:4:6
+#: app/templates/public/cfs/view-session.hbs:58:69
 msgid "Edit Session"
 msgstr ""
 
 #: app/routes/public/cfs/edit-speaker.js:7:11
 #: app/templates/events/view/speaker/edit.hbs:4:6
 #: app/templates/public/cfs/edit-speaker.hbs:4:6
+#: app/templates/public/cfs/view-session.hbs:47:73
+#: app/templates/public/cfs/view-speaker.hbs:25:83
 #: app/templates/public/speaker/view.hbs:8:83
 msgid "Edit Speaker"
 msgstr ""
@@ -3220,6 +3304,20 @@ msgstr ""
 
 #: app/routes/public/cfs/new-speaker.js:7:11
 msgid "New Speaker"
+msgstr ""
+
+#: app/routes/public/cfs/view-session.js:7:11
+#: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:2:20
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:4:20
+#: app/templates/events/view/session/view.hbs:4:6
+#: app/templates/public/cfs/view-session.hbs:16:6
+msgid "View Session"
+msgstr ""
+
+#: app/routes/public/cfs/view-speaker.js:7:11
+#: app/templates/events/view/speaker/view.hbs:4:6
+#: app/templates/public/cfs/view-speaker.hbs:16:6
+msgid "View Speaker"
 msgstr ""
 
 #: app/routes/register.js:8:11
@@ -3280,7 +3378,7 @@ msgstr ""
 
 #: app/templates/admin.hbs:5:8
 #: app/templates/admin/permissions/system-roles.hbs:27:10
-#: app/templates/components/nav-bar.hbs:41:57
+#: app/templates/components/nav-bar.hbs:42:57
 #: app/templates/components/side-bar.hbs:24:49
 #: app/templates/components/ui-table/cell/admin/users/cell-system-roles.hbs:9:6
 msgid "Admin"
@@ -3373,6 +3471,7 @@ msgid "All Past"
 msgstr ""
 
 #: app/templates/admin/events.hbs:15:10
+#: app/templates/components/forms/group/group-form.hbs:36:38
 msgid "All Events"
 msgstr ""
 
@@ -3715,6 +3814,8 @@ msgstr ""
 #: app/templates/components/nav-bar.hbs:36:61
 #: app/templates/components/side-bar.hbs:19:53
 #: app/templates/my-sessions.hbs:3:24
+#: app/templates/public/cfs/view-session.hbs:6:62
+#: app/templates/public/cfs/view-speaker.hbs:6:62
 msgid "My Sessions"
 msgstr "Mis Sesiones"
 
@@ -3745,6 +3846,10 @@ msgstr ""
 
 #: app/templates/admin/users/view/tickets/list.hbs:8:38
 msgid "No tickets found for this user"
+msgstr ""
+
+#: app/templates/application.hbs:6:4
+msgid "This website, and certain approved third parties, use functional and analytical cookies (or similar technologies) to provide account functionalities and provide you with a customized experience. By closing this banner or by continuing to use the site, you agree with the usage. For more information please review our privacy policy and terms and conditions."
 msgstr ""
 
 #: app/templates/application.hbs:8:51
@@ -3988,13 +4093,14 @@ msgstr ""
 
 #: app/templates/components/event-invoice/billing-info.hbs:8:16
 #: app/templates/components/event-invoice/event-info.hbs:15:12
+#: app/templates/components/modals/contact-organizer.hbs:18:23
 #: app/templates/components/orders/event-info.hbs:27:12
 msgid "From"
 msgstr ""
 
 #: app/templates/components/event-invoice/billing-info.hbs:11:16
 #: app/templates/components/forms/admin/settings/billing.hbs:58:47
-#: app/templates/components/forms/orders/attendee-list.hbs:55:18
+#: app/templates/components/forms/orders/attendee-list.hbs:65:18
 #: app/templates/components/forms/user-payment-info-form.hbs:9:25
 #: app/templates/components/widgets/forms/billing-info.hbs:2:40
 msgid "Organisation"
@@ -4132,7 +4238,7 @@ msgstr ""
 
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
-#: app/templates/public.hbs:71:16
+#: app/templates/public.hbs:73:16
 msgid "Tracks"
 msgstr ""
 
@@ -4311,35 +4417,35 @@ msgstr ""
 msgid "There are no tickets for this event"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:7:6
+#: app/templates/components/events/view/overview/general-info.hbs:9:8
 msgid "Your event is live at"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:9:6
+#: app/templates/components/events/view/overview/general-info.hbs:19:6
 msgid "Your event is not live yet. Make it live now"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:22:67
+#: app/templates/components/events/view/overview/general-info.hbs:33:67
 msgid "Click to add location."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:27:20
+#: app/templates/components/events/view/overview/general-info.hbs:38:20
 msgid "Start time"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:31:20
+#: app/templates/components/events/view/overview/general-info.hbs:42:20
 msgid "End time"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:35:20
+#: app/templates/components/events/view/overview/general-info.hbs:46:20
 msgid "Links and Social Media"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:42:12
+#: app/templates/components/events/view/overview/general-info.hbs:53:12
 msgid "No social links present."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:42:114
+#: app/templates/components/events/view/overview/general-info.hbs:53:114
 #: app/templates/components/events/view/overview/speaker-session.hbs:16:105
 #: app/templates/components/events/view/overview/speaker-session.hbs:28:98
 #: app/templates/components/events/view/overview/speaker-session.hbs:40:107
@@ -4347,11 +4453,11 @@ msgstr ""
 msgid "Click here to add"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:47:20
+#: app/templates/components/events/view/overview/general-info.hbs:58:20
 msgid "No. of Sponsors"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:48:81
+#: app/templates/components/events/view/overview/general-info.hbs:59:81
 msgid "No Sponsor added yet."
 msgstr ""
 
@@ -4398,11 +4504,11 @@ msgstr ""
 msgid "Duration"
 msgstr ""
 
-#: app/templates/components/events/view/overview/session-view.hbs:47:50
+#: app/templates/components/events/view/overview/session-view.hbs:47:49
 msgid "Average Rating"
 msgstr ""
 
-#: app/templates/components/events/view/overview/session-view.hbs:51:50
+#: app/templates/components/events/view/overview/session-view.hbs:51:49
 msgid "Locked"
 msgstr ""
 
@@ -4546,7 +4652,7 @@ msgid "Default Filters"
 msgstr ""
 
 #: app/templates/components/footer-main.hbs:9:31
-msgid "Use"
+msgid "Use {{app}}"
 msgstr ""
 
 #: app/templates/components/footer-main.hbs:10:104
@@ -4797,7 +4903,7 @@ msgid "Tax ID"
 msgstr ""
 
 #: app/templates/components/forms/admin/settings/billing.hbs:62:54
-#: app/templates/components/forms/orders/attendee-list.hbs:66:18
+#: app/templates/components/forms/orders/attendee-list.hbs:76:18
 #: app/templates/components/forms/user-payment-info-form.hbs:30:25
 #: app/templates/components/orders/company-info.hbs:25:22
 #: app/templates/components/public/event-map.hbs:21:8
@@ -5619,6 +5725,22 @@ msgstr ""
 msgid "Save Session"
 msgstr ""
 
+#: app/templates/components/forms/group/group-form.hbs:5:8
+msgid "Edit Group"
+msgstr ""
+
+#: app/templates/components/forms/group/group-form.hbs:7:8
+msgid "Create a Group"
+msgstr ""
+
+#: app/templates/components/forms/group/group-form.hbs:14:30
+msgid "Group name"
+msgstr ""
+
+#: app/templates/components/forms/group/group-form.hbs:25:38
+msgid "Group Events"
+msgstr ""
+
 #: app/templates/components/forms/login-form.hbs:25:17
 msgid "You have been registered successfully. Please login to continue."
 msgstr ""
@@ -5657,16 +5779,31 @@ msgstr ""
 msgid "-for-"
 msgstr ""
 
-#: app/templates/components/forms/orders/attendee-list.hbs:19:12
+#: app/templates/components/forms/orders/attendee-list.hbs:20:16
 msgid "Download Ticket"
 msgstr ""
 
-#: app/templates/components/forms/orders/attendee-list.hbs:49:12
-#: app/templates/components/forms/orders/order-form.hbs:152:10
+#: app/templates/components/forms/orders/attendee-list.hbs:39:26
+#: app/templates/components/modals/confirm-modal.hbs:16:75
+#: app/templates/components/modals/edit-user-modal.hbs:11:40
+#: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
+msgid "Yes"
+msgstr ""
+
+#: app/templates/components/forms/orders/attendee-list.hbs:41:26
+#: app/templates/components/modals/confirm-modal.hbs:12:71
+#: app/templates/components/modals/edit-user-modal.hbs:10:40
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
+msgid "No"
+msgstr ""
+
+#: app/templates/components/forms/orders/attendee-list.hbs:59:12
+#: app/templates/components/forms/orders/order-form.hbs:170:10
 msgid "Billing Information"
 msgstr ""
 
-#: app/templates/components/forms/orders/attendee-list.hbs:59:18
+#: app/templates/components/forms/orders/attendee-list.hbs:69:18
 #: app/templates/components/forms/user-payment-info-form.hbs:62:23
 #: app/templates/components/widgets/forms/billing-info.hbs:9:48
 msgid "Tax ID or Business ID"
@@ -5755,74 +5892,86 @@ msgstr ""
 msgid "Select your age group"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:157:21
+#: app/templates/components/forms/orders/order-form.hbs:144:27
+msgid "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:150:27
+msgid "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:156:27
+msgid "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:175:21
 msgid "Enable Billing Information"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:169:10
+#: app/templates/components/forms/orders/order-form.hbs:187:10
 msgid "Payment Method"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:172:53
+#: app/templates/components/forms/orders/order-form.hbs:190:53
 msgid "Please choose your payment method"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:178:25
+#: app/templates/components/forms/orders/order-form.hbs:196:25
 msgid "Credit Card"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:191:25
+#: app/templates/components/forms/orders/order-form.hbs:209:25
 msgid "Paypal"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:202:25
+#: app/templates/components/forms/orders/order-form.hbs:220:25
 msgid "Paytm"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:213:25
+#: app/templates/components/forms/orders/order-form.hbs:231:25
 msgid "Omise"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:225:25
+#: app/templates/components/forms/orders/order-form.hbs:243:25
 msgid "AliPay"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:237:25
+#: app/templates/components/forms/orders/order-form.hbs:255:25
 msgid "Cheque"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:247:25
+#: app/templates/components/forms/orders/order-form.hbs:265:25
 msgid "Bank"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:257:25
+#: app/templates/components/forms/orders/order-form.hbs:275:25
 msgid "Onsite"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:280:8
+#: app/templates/components/forms/orders/order-form.hbs:298:8
 msgid "Acknowledgement"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:284:21
+#: app/templates/components/forms/orders/order-form.hbs:302:21
 msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:285:42
-#: app/templates/components/forms/orders/order-form.hbs:291:82
+#: app/templates/components/forms/orders/order-form.hbs:303:42
+#: app/templates/components/forms/orders/order-form.hbs:309:82
 msgid "Proceed to Checkout"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:285:68
-#: app/templates/components/forms/orders/order-form.hbs:291:108
+#: app/templates/components/forms/orders/order-form.hbs:303:68
+#: app/templates/components/forms/orders/order-form.hbs:309:108
 #: app/templates/components/public/ticket-list.hbs:210:10
 msgid "Order Now"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:286:60
+#: app/templates/components/forms/orders/order-form.hbs:304:60
 msgid "terms of services"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:287:64
+#: app/templates/components/forms/orders/order-form.hbs:305:64
 msgid "privacy policy"
 msgstr ""
 
@@ -5850,12 +5999,14 @@ msgstr ""
 #: app/templates/components/forms/session-speaker-form.hbs:5:8
 #: app/templates/components/forms/session-speaker-form.hbs:76:6
 #: app/templates/events/view/session/view.hbs:30:6
+#: app/templates/public/cfs/view-session.hbs:67:6
 msgid "Session details"
 msgstr ""
 
 #: app/templates/components/forms/session-speaker-form.hbs:15:6
 #: app/templates/components/forms/session-speaker-form.hbs:64:8
 #: app/templates/events/view/speaker/view.hbs:18:6
+#: app/templates/public/cfs/view-speaker.hbs:30:6
 msgid "Speaker details"
 msgstr ""
 
@@ -6482,19 +6633,6 @@ msgstr ""
 msgid "Are you sure ?"
 msgstr ""
 
-#: app/templates/components/modals/confirm-modal.hbs:12:71
-#: app/templates/components/modals/edit-user-modal.hbs:10:40
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
-msgid "No"
-msgstr ""
-
-#: app/templates/components/modals/confirm-modal.hbs:16:75
-#: app/templates/components/modals/edit-user-modal.hbs:11:40
-#: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
-msgid "Yes"
-msgstr ""
-
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:2:2
 msgid "You are deleting this account. This action cannot be undone."
 msgstr ""
@@ -6505,6 +6643,34 @@ msgstr ""
 
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:9:23
 msgid "Please tick the box to agree and press DELETE"
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:3:4
+msgid "Contact the Organizer"
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:8:12
+msgid "Your message was sent to the organizers of this event."
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:9:12
+msgid "You should receive a copy of the message to your email inbox."
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:10:12
+msgid "The organizers will contact you by email."
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:13:12
+msgid "Close"
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:30:26
+msgid "Event Organizer"
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:38:16
+msgid "Send Email"
 msgstr ""
 
 #: app/templates/components/modals/cropper-modal.hbs:3:2
@@ -6748,23 +6914,23 @@ msgid "Please enter your Email ID to confirm that you want to delete the account
 msgstr ""
 
 #: app/templates/components/nav-bar.hbs:10:112
-#: app/templates/components/nav-bar.hbs:73:110
+#: app/templates/components/nav-bar.hbs:73:131
 #: app/templates/components/side-bar.hbs:3:110
 msgid "Search Events"
 msgstr ""
 
-#: app/templates/components/nav-bar.hbs:37:68
+#: app/templates/components/nav-bar.hbs:38:68
 #: app/templates/components/side-bar.hbs:20:60
 msgid "Manage Events"
 msgstr "Administrar Eventos"
 
-#: app/templates/components/nav-bar.hbs:44:105
+#: app/templates/components/nav-bar.hbs:45:105
 #: app/templates/components/side-bar.hbs:27:62
 msgid "Logout"
 msgstr "Salir"
 
-#: app/templates/components/nav-bar.hbs:55:12
-#: app/templates/components/nav-bar.hbs:91:16
+#: app/templates/components/nav-bar.hbs:56:12
+#: app/templates/components/nav-bar.hbs:91:14
 #: app/templates/components/welcome-header.hbs:4:4
 #: app/templates/pricing.hbs:176:10
 msgid "Create Event"
@@ -6848,11 +7014,11 @@ msgid "Find all the details related to your order below."
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:31:10
-msgid "Your order has been placed successfully."
+msgid "Your order has been placed."
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:33:10
-msgid "You can pay for your order to get tickets."
+msgid "Please pay for your tickets to complete the order now."
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:39:27
@@ -7005,6 +7171,10 @@ msgstr ""
 msgid "Enter promotional code"
 msgstr ""
 
+#: app/templates/components/public/ticket-list.hbs:225:12
+msgid "Contact Organizer"
+msgstr ""
+
 #: app/templates/components/session-card.hbs:25:12
 msgid "Session Not Yet Scheduled"
 msgstr ""
@@ -7056,7 +7226,6 @@ msgstr ""
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:5:46
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:32:133
-#: app/templates/components/ui-table/cell/cell-roles.hbs:2:54
 #: app/templates/events/view/team/permissions.hbs:5:33
 msgid "Owner"
 msgstr ""
@@ -7104,22 +7273,6 @@ msgstr ""
 msgid "Event Dashboard"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/cell-roles.hbs:7:49
-msgid "Co-organizers"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/cell-roles.hbs:10:49
-msgid "Track-organizers"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/cell-roles.hbs:13:49
-msgid "Registrars"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/cell-roles.hbs:16:49
-msgid "Moderators"
-msgstr ""
-
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:8:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:8:22
 #: app/templates/events/view/speakers.hbs:23:14
@@ -7135,12 +7288,6 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:12:2
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:10:2
 msgid "No Session Information Added Yet"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:2:20
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:4:20
-#: app/templates/events/view/session/view.hbs:4:6
-msgid "View Session"
 msgstr ""
 
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:8:20
@@ -7433,14 +7580,17 @@ msgid "Unscheduled Sessions"
 msgstr ""
 
 #: app/templates/events/view/session/view.hbs:14:8
+#: app/templates/public/cfs/view-session.hbs:25:8
 msgid "Timing:"
 msgstr ""
 
 #: app/templates/events/view/session/view.hbs:14:127
+#: app/templates/public/cfs/view-session.hbs:25:127
 msgid "-"
 msgstr ""
 
 #: app/templates/events/view/session/view.hbs:16:8
+#: app/templates/public/cfs/view-session.hbs:27:8
 msgid "Not yet scheduled"
 msgstr ""
 
@@ -7487,10 +7637,6 @@ msgstr ""
 
 #: app/templates/events/view/settings/options.hbs:29:10
 msgid "Once you delete an event, you will lose all the data related to this event."
-msgstr ""
-
-#: app/templates/events/view/speaker/view.hbs:4:6
-msgid "View Speaker"
 msgstr ""
 
 #: app/templates/events/view/speaker/view.hbs:13:83
@@ -7660,6 +7806,14 @@ msgstr ""
 
 #: app/templates/explore.hbs:55:38
 msgid "No events found for selected filters"
+msgstr ""
+
+#: app/templates/groups/list.hbs:9:10
+msgid "Create Group"
+msgstr ""
+
+#: app/templates/groups/list.hbs:26:38
+msgid "No groups found for the events"
 msgstr ""
 
 #: app/templates/index.hbs:3:34
@@ -7951,23 +8105,23 @@ msgstr ""
 msgid "Discount and access codes"
 msgstr ""
 
-#: app/templates/public.hbs:72:122
+#: app/templates/public.hbs:74:122
 msgid "Clear Track Filter"
 msgstr ""
 
-#: app/templates/public.hbs:89:16
+#: app/templates/public.hbs:91:16
 msgid "Rooms"
 msgstr ""
 
-#: app/templates/public.hbs:90:121
+#: app/templates/public.hbs:92:121
 msgid "Clear Room Filter"
 msgstr ""
 
-#: app/templates/public.hbs:131:12
+#: app/templates/public.hbs:133:12
 msgid "Login or Buy Tickets"
 msgstr ""
 
-#: app/templates/public.hbs:134:4
+#: app/templates/public.hbs:136:4
 msgid "You need to login or get a ticket for this event before you can join it online."
 msgstr ""
 
@@ -7979,15 +8133,19 @@ msgstr ""
 msgid "Speaker Details"
 msgstr ""
 
-#: app/templates/public/index.hbs:34:75
+#: app/templates/public/cfs/view-session.hbs:36:49
+msgid "Withdraw"
+msgstr ""
+
+#: app/templates/public/index.hbs:36:75
 msgid "To place a ticket order:"
 msgstr ""
 
-#: app/templates/public/index.hbs:50:6
+#: app/templates/public/index.hbs:52:6
 msgid "Supported By"
 msgstr ""
 
-#: app/templates/public/index.hbs:62:6
+#: app/templates/public/index.hbs:64:6
 msgid "Organized by"
 msgstr ""
 
@@ -8030,1003 +8188,1003 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:16:11
+#: app/utils/dictionary/demography.ts:14:11
 msgid "Andorra"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:20:11
+#: app/utils/dictionary/demography.ts:18:11
 msgid "United Arab Emirates"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:24:11
+#: app/utils/dictionary/demography.ts:22:11
 msgid "Afghanistan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:28:11
+#: app/utils/dictionary/demography.ts:26:11
 msgid "Antigua And Barbuda"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:32:11
+#: app/utils/dictionary/demography.ts:30:11
 msgid "Anguilla"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:36:11
+#: app/utils/dictionary/demography.ts:34:11
 msgid "Albania"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:40:11
+#: app/utils/dictionary/demography.ts:38:11
 msgid "Armenia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:44:11
+#: app/utils/dictionary/demography.ts:42:11
 msgid "Angola"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:48:11
+#: app/utils/dictionary/demography.ts:46:11
 msgid "Antarctica"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:52:11
+#: app/utils/dictionary/demography.ts:50:11
 msgid "Argentina"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:56:11
+#: app/utils/dictionary/demography.ts:54:11
 msgid "American Samoa"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:60:11
+#: app/utils/dictionary/demography.ts:58:11
 msgid "Austria"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:64:11
+#: app/utils/dictionary/demography.ts:62:11
 msgid "Australia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:68:11
+#: app/utils/dictionary/demography.ts:66:11
 msgid "Aruba"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:72:11
+#: app/utils/dictionary/demography.ts:70:11
 msgid "Åland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:76:11
+#: app/utils/dictionary/demography.ts:74:11
 msgid "Azerbaijan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:80:11
+#: app/utils/dictionary/demography.ts:78:11
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:84:11
+#: app/utils/dictionary/demography.ts:82:11
 msgid "Barbados"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:88:11
+#: app/utils/dictionary/demography.ts:86:11
 msgid "Bangladesh"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:92:11
+#: app/utils/dictionary/demography.ts:90:11
 msgid "Belgium"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:96:11
+#: app/utils/dictionary/demography.ts:94:11
 msgid "Burkina Faso"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:100:11
+#: app/utils/dictionary/demography.ts:98:11
 msgid "Bulgaria"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:104:11
+#: app/utils/dictionary/demography.ts:102:11
 msgid "Bahrain"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:108:11
+#: app/utils/dictionary/demography.ts:106:11
 msgid "Burundi"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:112:11
+#: app/utils/dictionary/demography.ts:110:11
 msgid "Benin"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:116:11
+#: app/utils/dictionary/demography.ts:114:11
 msgid "Saint Barthélemy"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:120:11
+#: app/utils/dictionary/demography.ts:118:11
 msgid "Bermuda"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:124:11
+#: app/utils/dictionary/demography.ts:122:11
 msgid "Brunei"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:128:11
+#: app/utils/dictionary/demography.ts:126:11
 msgid "Bolivia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:132:11
+#: app/utils/dictionary/demography.ts:130:11
 msgid "Bonaire"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:136:11
+#: app/utils/dictionary/demography.ts:134:11
 msgid "Brazil"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:140:11
+#: app/utils/dictionary/demography.ts:138:11
 msgid "Bahamas"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:144:11
+#: app/utils/dictionary/demography.ts:142:11
 msgid "Bhutan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:148:11
+#: app/utils/dictionary/demography.ts:146:11
 msgid "Bouvet Island"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:152:11
+#: app/utils/dictionary/demography.ts:150:11
 msgid "Botswana"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:156:11
+#: app/utils/dictionary/demography.ts:154:11
 msgid "Belarus"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:160:11
+#: app/utils/dictionary/demography.ts:158:11
 msgid "Belize"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:164:11
+#: app/utils/dictionary/demography.ts:162:11
 msgid "Canada"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:168:11
+#: app/utils/dictionary/demography.ts:166:11
 msgid "Cocos [Keeling] Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:172:11
+#: app/utils/dictionary/demography.ts:170:11
 msgid "Democratic Republic Of Congo"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:176:11
+#: app/utils/dictionary/demography.ts:174:11
 msgid "Central African Republic"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:180:11
+#: app/utils/dictionary/demography.ts:178:11
 msgid "Republic Of the Congo"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:184:11
+#: app/utils/dictionary/demography.ts:182:11
 msgid "Switzerland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:188:11
+#: app/utils/dictionary/demography.ts:186:11
 msgid "Ivory Coast"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:192:11
+#: app/utils/dictionary/demography.ts:190:11
 msgid "Cook Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:196:11
+#: app/utils/dictionary/demography.ts:194:11
 msgid "Chile"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:200:11
+#: app/utils/dictionary/demography.ts:198:11
 msgid "Cameroon"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:204:11
+#: app/utils/dictionary/demography.ts:202:11
 msgid "China"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:208:11
+#: app/utils/dictionary/demography.ts:206:11
 msgid "Colombia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:212:11
+#: app/utils/dictionary/demography.ts:210:11
 msgid "Costa Rica"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:216:11
+#: app/utils/dictionary/demography.ts:214:11
 msgid "Cuba"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:220:11
+#: app/utils/dictionary/demography.ts:218:11
 msgid "Cape Verde"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:224:11
+#: app/utils/dictionary/demography.ts:222:11
 msgid "Curacao"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:228:11
+#: app/utils/dictionary/demography.ts:226:11
 msgid "Christmas Island"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:232:11
+#: app/utils/dictionary/demography.ts:230:11
 msgid "Cyprus"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:236:11
+#: app/utils/dictionary/demography.ts:234:11
 msgid "Czech Republic"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:240:11
+#: app/utils/dictionary/demography.ts:238:11
 msgid "Germany"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:244:11
+#: app/utils/dictionary/demography.ts:242:11
 msgid "Djibouti"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:248:11
+#: app/utils/dictionary/demography.ts:246:11
 msgid "Denmark"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:252:11
+#: app/utils/dictionary/demography.ts:250:11
 msgid "Dominica"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:256:11
+#: app/utils/dictionary/demography.ts:254:11
 msgid "Dominican Republic"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:260:11
+#: app/utils/dictionary/demography.ts:258:11
 msgid "Algeria"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:264:11
+#: app/utils/dictionary/demography.ts:262:11
 msgid "Ecuador"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:268:11
+#: app/utils/dictionary/demography.ts:266:11
 msgid "Estonia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:272:11
+#: app/utils/dictionary/demography.ts:270:11
 msgid "Egypt"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:276:11
+#: app/utils/dictionary/demography.ts:274:11
 msgid "Western Sahara"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:280:11
+#: app/utils/dictionary/demography.ts:278:11
 msgid "Eritrea"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:284:11
+#: app/utils/dictionary/demography.ts:282:11
 msgid "Spain"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:288:11
+#: app/utils/dictionary/demography.ts:286:11
 msgid "Ethiopia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:292:11
+#: app/utils/dictionary/demography.ts:290:11
 msgid "Finland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:296:11
+#: app/utils/dictionary/demography.ts:294:11
 msgid "Fiji"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:300:11
+#: app/utils/dictionary/demography.ts:298:11
 msgid "Falkland Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:304:11
+#: app/utils/dictionary/demography.ts:302:11
 msgid "Micronesia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:308:11
+#: app/utils/dictionary/demography.ts:306:11
 msgid "Faroe Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:312:11
+#: app/utils/dictionary/demography.ts:310:11
 msgid "France"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:316:11
+#: app/utils/dictionary/demography.ts:314:11
 msgid "Gabon"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:320:11
+#: app/utils/dictionary/demography.ts:318:11
 msgid "United Kingdom"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:324:11
+#: app/utils/dictionary/demography.ts:322:11
 msgid "Grenada"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:328:11
+#: app/utils/dictionary/demography.ts:326:11
 msgid "Georgia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:332:11
+#: app/utils/dictionary/demography.ts:330:11
 msgid "French Guiana"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:336:11
+#: app/utils/dictionary/demography.ts:334:11
 msgid "Guernsey"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:340:11
+#: app/utils/dictionary/demography.ts:338:11
 msgid "Ghana"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:344:11
+#: app/utils/dictionary/demography.ts:342:11
 msgid "Gibraltar"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:348:11
+#: app/utils/dictionary/demography.ts:346:11
 msgid "Greenland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:352:11
+#: app/utils/dictionary/demography.ts:350:11
 msgid "Gambia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:356:11
+#: app/utils/dictionary/demography.ts:354:11
 msgid "Guinea"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:360:11
+#: app/utils/dictionary/demography.ts:358:11
 msgid "Guadeloupe"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:364:11
+#: app/utils/dictionary/demography.ts:362:11
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:368:11
+#: app/utils/dictionary/demography.ts:366:11
 msgid "Greece"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:372:11
+#: app/utils/dictionary/demography.ts:370:11
 msgid "South Georgia and The South Sandwich Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:376:11
+#: app/utils/dictionary/demography.ts:374:11
 msgid "Guatemala"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:380:11
+#: app/utils/dictionary/demography.ts:378:11
 msgid "Guam"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:384:11
+#: app/utils/dictionary/demography.ts:382:11
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:388:11
+#: app/utils/dictionary/demography.ts:386:11
 msgid "Guyana"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:392:11
+#: app/utils/dictionary/demography.ts:390:11
 msgid "Hong Kong"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:396:11
+#: app/utils/dictionary/demography.ts:394:11
 msgid "Heard Island And McDonald Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:400:11
+#: app/utils/dictionary/demography.ts:398:11
 msgid "Honduras"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:404:11
+#: app/utils/dictionary/demography.ts:402:11
 msgid "Croatia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:408:11
+#: app/utils/dictionary/demography.ts:406:11
 msgid "Haiti"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:412:11
+#: app/utils/dictionary/demography.ts:410:11
 msgid "Hungary"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:416:11
+#: app/utils/dictionary/demography.ts:414:11
 msgid "Indonesia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:420:11
+#: app/utils/dictionary/demography.ts:418:11
 msgid "Ireland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:424:11
+#: app/utils/dictionary/demography.ts:422:11
 msgid "Israel"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:428:11
+#: app/utils/dictionary/demography.ts:426:11
 msgid "Isle of Man"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:432:11
+#: app/utils/dictionary/demography.ts:430:11
 msgid "India"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:436:11
+#: app/utils/dictionary/demography.ts:434:11
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:440:11
+#: app/utils/dictionary/demography.ts:438:11
 msgid "Iraq"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:444:11
+#: app/utils/dictionary/demography.ts:442:11
 msgid "Iran"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:448:11
+#: app/utils/dictionary/demography.ts:446:11
 msgid "Iceland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:452:11
+#: app/utils/dictionary/demography.ts:450:11
 msgid "Italy"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:456:11
+#: app/utils/dictionary/demography.ts:454:11
 msgid "Jersey"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:460:11
+#: app/utils/dictionary/demography.ts:458:11
 msgid "Jamaica"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:464:11
+#: app/utils/dictionary/demography.ts:462:11
 msgid "Jordan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:468:11
+#: app/utils/dictionary/demography.ts:466:11
 msgid "Japan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:472:11
+#: app/utils/dictionary/demography.ts:470:11
 msgid "Kenya"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:476:11
+#: app/utils/dictionary/demography.ts:474:11
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:480:11
+#: app/utils/dictionary/demography.ts:478:11
 msgid "Cambodia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:484:11
+#: app/utils/dictionary/demography.ts:482:11
 msgid "Kiribati"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:488:11
+#: app/utils/dictionary/demography.ts:486:11
 msgid "Comoros"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:492:11
+#: app/utils/dictionary/demography.ts:490:11
 msgid "Saint Kitts And Nevis"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:496:11
+#: app/utils/dictionary/demography.ts:494:11
 msgid "North Korea"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:500:11
+#: app/utils/dictionary/demography.ts:498:11
 msgid "South Korea"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:504:11
+#: app/utils/dictionary/demography.ts:502:11
 msgid "Kuwait"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:508:11
+#: app/utils/dictionary/demography.ts:506:11
 msgid "Cayman Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:512:11
+#: app/utils/dictionary/demography.ts:510:11
 msgid "Kazakhstan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:516:11
+#: app/utils/dictionary/demography.ts:514:11
 msgid "Laos"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:520:11
+#: app/utils/dictionary/demography.ts:518:11
 msgid "Lebanon"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:524:11
+#: app/utils/dictionary/demography.ts:522:11
 msgid "Saint Lucia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:528:11
+#: app/utils/dictionary/demography.ts:526:11
 msgid "Liechtenstein"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:532:11
+#: app/utils/dictionary/demography.ts:530:11
 msgid "Sri Lanka"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:536:11
+#: app/utils/dictionary/demography.ts:534:11
 msgid "Liberia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:540:11
+#: app/utils/dictionary/demography.ts:538:11
 msgid "Lesotho"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:544:11
+#: app/utils/dictionary/demography.ts:542:11
 msgid "Lithuania"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:548:11
+#: app/utils/dictionary/demography.ts:546:11
 msgid "Luxembourg"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:552:11
+#: app/utils/dictionary/demography.ts:550:11
 msgid "Latvia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:556:11
+#: app/utils/dictionary/demography.ts:554:11
 msgid "Libya"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:560:11
+#: app/utils/dictionary/demography.ts:558:11
 msgid "Morocco"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:564:11
+#: app/utils/dictionary/demography.ts:562:11
 msgid "Monaco"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:568:11
+#: app/utils/dictionary/demography.ts:566:11
 msgid "Moldova"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:572:11
+#: app/utils/dictionary/demography.ts:570:11
 msgid "Montenegro"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:576:11
+#: app/utils/dictionary/demography.ts:574:11
 msgid "Saint Martin"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:580:11
+#: app/utils/dictionary/demography.ts:578:11
 msgid "Madagascar"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:584:11
+#: app/utils/dictionary/demography.ts:582:11
 msgid "Marshall Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:588:11
+#: app/utils/dictionary/demography.ts:586:11
 msgid "North Macedonia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:592:11
+#: app/utils/dictionary/demography.ts:590:11
 msgid "Mali"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:596:11
+#: app/utils/dictionary/demography.ts:594:11
 msgid "Myanmar"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:600:11
+#: app/utils/dictionary/demography.ts:598:11
 msgid "Mongolia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:604:11
+#: app/utils/dictionary/demography.ts:602:11
 msgid "Macao"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:608:11
+#: app/utils/dictionary/demography.ts:606:11
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:612:11
+#: app/utils/dictionary/demography.ts:610:11
 msgid "Martinique"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:616:11
+#: app/utils/dictionary/demography.ts:614:11
 msgid "Mauritania"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:620:11
+#: app/utils/dictionary/demography.ts:618:11
 msgid "Montserrat"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:624:11
+#: app/utils/dictionary/demography.ts:622:11
 msgid "Malta"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:628:11
+#: app/utils/dictionary/demography.ts:626:11
 msgid "Mauritius"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:632:11
+#: app/utils/dictionary/demography.ts:630:11
 msgid "Maldives"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:636:11
+#: app/utils/dictionary/demography.ts:634:11
 msgid "Malawi"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:640:11
+#: app/utils/dictionary/demography.ts:638:11
 msgid "Mexico"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:644:11
+#: app/utils/dictionary/demography.ts:642:11
 msgid "Malaysia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:648:11
+#: app/utils/dictionary/demography.ts:646:11
 msgid "Mozambique"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:652:11
+#: app/utils/dictionary/demography.ts:650:11
 msgid "Namibia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:656:11
+#: app/utils/dictionary/demography.ts:654:11
 msgid "New Caledonia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:660:11
+#: app/utils/dictionary/demography.ts:658:11
 msgid "Niger"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:664:11
+#: app/utils/dictionary/demography.ts:662:11
 msgid "Norfolk Island"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:668:11
+#: app/utils/dictionary/demography.ts:666:11
 msgid "Nigeria"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:672:11
+#: app/utils/dictionary/demography.ts:670:11
 msgid "Nicaragua"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:676:11
+#: app/utils/dictionary/demography.ts:674:11
 msgid "Netherlands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:680:11
+#: app/utils/dictionary/demography.ts:678:11
 msgid "Norway"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:684:11
+#: app/utils/dictionary/demography.ts:682:11
 msgid "Nepal"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:688:11
+#: app/utils/dictionary/demography.ts:686:11
 msgid "Nauru"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:692:11
+#: app/utils/dictionary/demography.ts:690:11
 msgid "Niue"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:696:11
+#: app/utils/dictionary/demography.ts:694:11
 msgid "New Zealand"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:700:11
+#: app/utils/dictionary/demography.ts:698:11
 msgid "Oman"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:704:11
+#: app/utils/dictionary/demography.ts:702:11
 msgid "Panama"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:708:11
+#: app/utils/dictionary/demography.ts:706:11
 msgid "Peru"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:712:11
+#: app/utils/dictionary/demography.ts:710:11
 msgid "French Polynesia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:716:11
+#: app/utils/dictionary/demography.ts:714:11
 msgid "Papua New Guinea"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:720:11
+#: app/utils/dictionary/demography.ts:718:11
 msgid "Philippines"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:724:11
+#: app/utils/dictionary/demography.ts:722:11
 msgid "Pakistan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:728:11
+#: app/utils/dictionary/demography.ts:726:11
 msgid "Poland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:732:11
+#: app/utils/dictionary/demography.ts:730:11
 msgid "Saint Pierre And Miquelon"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:736:11
+#: app/utils/dictionary/demography.ts:734:11
 msgid "Pitcairn Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:740:11
+#: app/utils/dictionary/demography.ts:738:11
 msgid "Puerto Rico"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:744:11
+#: app/utils/dictionary/demography.ts:742:11
 msgid "Palestinian"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:748:11
+#: app/utils/dictionary/demography.ts:746:11
 msgid "Portugal"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:752:11
+#: app/utils/dictionary/demography.ts:750:11
 msgid "Palau"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:756:11
+#: app/utils/dictionary/demography.ts:754:11
 msgid "Paraguay"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:760:11
+#: app/utils/dictionary/demography.ts:758:11
 msgid "Qatar"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:764:11
+#: app/utils/dictionary/demography.ts:762:11
 msgid "Reunion"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:768:11
+#: app/utils/dictionary/demography.ts:766:11
 msgid "Romania"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:772:11
+#: app/utils/dictionary/demography.ts:770:11
 msgid "Serbia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:776:11
+#: app/utils/dictionary/demography.ts:774:11
 msgid "Russian"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:780:11
+#: app/utils/dictionary/demography.ts:778:11
 msgid "Rwanda"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:784:11
+#: app/utils/dictionary/demography.ts:782:11
 msgid "Saudi Arabia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:788:11
+#: app/utils/dictionary/demography.ts:786:11
 msgid "Solomon Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:792:11
+#: app/utils/dictionary/demography.ts:790:11
 msgid "Seychelles"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:796:11
+#: app/utils/dictionary/demography.ts:794:11
 msgid "Sudan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:800:11
+#: app/utils/dictionary/demography.ts:798:11
 msgid "Sweden"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:804:11
+#: app/utils/dictionary/demography.ts:802:11
 msgid "Singapore"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:808:11
+#: app/utils/dictionary/demography.ts:806:11
 msgid "Saint Helena"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:812:11
+#: app/utils/dictionary/demography.ts:810:11
 msgid "Slovenia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:816:11
+#: app/utils/dictionary/demography.ts:814:11
 msgid "Svalbard And Jan Mayen"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:820:11
+#: app/utils/dictionary/demography.ts:818:11
 msgid "Slovakia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:824:11
+#: app/utils/dictionary/demography.ts:822:11
 msgid "Sierra Leone"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:828:11
+#: app/utils/dictionary/demography.ts:826:11
 msgid "San Marino"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:832:11
+#: app/utils/dictionary/demography.ts:830:11
 msgid "Senegal"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:836:11
+#: app/utils/dictionary/demography.ts:834:11
 msgid "Somalia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:840:11
+#: app/utils/dictionary/demography.ts:838:11
 msgid "Suriname"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:844:11
+#: app/utils/dictionary/demography.ts:842:11
 msgid "South Sudan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:848:11
+#: app/utils/dictionary/demography.ts:846:11
 msgid "Sao Tome and Principe"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:852:11
+#: app/utils/dictionary/demography.ts:850:11
 msgid "El Salvador"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:856:11
+#: app/utils/dictionary/demography.ts:854:11
 msgid "Sint Maarten"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:860:11
+#: app/utils/dictionary/demography.ts:858:11
 msgid "Syria"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:864:11
+#: app/utils/dictionary/demography.ts:862:11
 msgid "Swaziland"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:868:11
+#: app/utils/dictionary/demography.ts:866:11
 msgid "Turks And Caicos Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:872:11
+#: app/utils/dictionary/demography.ts:870:11
 msgid "Chad"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:876:11
+#: app/utils/dictionary/demography.ts:874:11
 msgid "French Southern Territories"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:880:11
+#: app/utils/dictionary/demography.ts:878:11
 msgid "Togo"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:884:11
+#: app/utils/dictionary/demography.ts:882:11
 msgid "Thailand"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:888:11
+#: app/utils/dictionary/demography.ts:886:11
 msgid "Tajikistan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:892:11
+#: app/utils/dictionary/demography.ts:890:11
 msgid "Tokelau"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:896:11
+#: app/utils/dictionary/demography.ts:894:11
 msgid "East Timor"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:900:11
+#: app/utils/dictionary/demography.ts:898:11
 msgid "Turkmenistan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:904:11
+#: app/utils/dictionary/demography.ts:902:11
 msgid "Tunisia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:908:11
+#: app/utils/dictionary/demography.ts:906:11
 msgid "Tonga"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:912:11
+#: app/utils/dictionary/demography.ts:910:11
 msgid "Turkey"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:916:11
+#: app/utils/dictionary/demography.ts:914:11
 msgid "Trinidad And Tobago"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:920:11
+#: app/utils/dictionary/demography.ts:918:11
 msgid "Tuvalu"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:924:11
+#: app/utils/dictionary/demography.ts:922:11
 msgid "Taiwan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:928:11
+#: app/utils/dictionary/demography.ts:926:11
 msgid "Tanzania"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:932:11
+#: app/utils/dictionary/demography.ts:930:11
 msgid "Ukraine"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:936:11
+#: app/utils/dictionary/demography.ts:934:11
 msgid "Uganda"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:940:11
+#: app/utils/dictionary/demography.ts:938:11
 msgid "United States Minor Outlying Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:944:11
+#: app/utils/dictionary/demography.ts:942:11
 msgid "United States"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:948:11
+#: app/utils/dictionary/demography.ts:946:11
 msgid "Uruguay"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:952:11
+#: app/utils/dictionary/demography.ts:950:11
 msgid "Uzbekistan"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:956:11
+#: app/utils/dictionary/demography.ts:954:11
 msgid "Vatican City"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:960:11
+#: app/utils/dictionary/demography.ts:958:11
 msgid "Saint Vincent And The Grenadines"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:964:11
+#: app/utils/dictionary/demography.ts:962:11
 msgid "Venezuela"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:968:11
+#: app/utils/dictionary/demography.ts:966:11
 msgid "British Virgin Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:972:11
+#: app/utils/dictionary/demography.ts:970:11
 msgid "U.S. Virgin Islands"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:976:11
+#: app/utils/dictionary/demography.ts:974:11
 msgid "Vietnam"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:980:11
+#: app/utils/dictionary/demography.ts:978:11
 msgid "Vanuatu"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:984:11
+#: app/utils/dictionary/demography.ts:982:11
 msgid "Wallis And Futuna"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:988:11
+#: app/utils/dictionary/demography.ts:986:11
 msgid "Samoa"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:992:11
+#: app/utils/dictionary/demography.ts:990:11
 msgid "Kosovo"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:996:11
+#: app/utils/dictionary/demography.ts:994:11
 msgid "Yemen"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:1000:11
+#: app/utils/dictionary/demography.ts:998:11
 msgid "Mayotte"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:1004:11
+#: app/utils/dictionary/demography.ts:1002:11
 msgid "South Africa"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:1008:11
+#: app/utils/dictionary/demography.ts:1006:11
 msgid "Zambia"
 msgstr ""
 
-#: app/utils/dictionary/demography.ts:1012:11
+#: app/utils/dictionary/demography.ts:1010:11
 msgid "Zimbabwe"
 msgstr ""
 
@@ -9062,139 +9220,139 @@ msgstr "Este Mes"
 msgid "Custom dates"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:14:15
+#: app/utils/dictionary/licenses.ts:12:15
 msgid "Attribution-NonCommercial-NoDerivs"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:20:15
+#: app/utils/dictionary/licenses.ts:18:15
 msgid "Attribution-NonCommercial"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:26:15
+#: app/utils/dictionary/licenses.ts:24:15
 msgid "Public Domain Dedication (CC0)"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:32:15
+#: app/utils/dictionary/licenses.ts:30:15
 msgid "Attribution"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:38:15
+#: app/utils/dictionary/licenses.ts:36:15
 msgid "All rights reserved"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:44:15
+#: app/utils/dictionary/licenses.ts:42:15
 msgid "Attribution-NoDerivs"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:50:15
+#: app/utils/dictionary/licenses.ts:48:15
 msgid "Public Domain Work"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:56:15
+#: app/utils/dictionary/licenses.ts:54:15
 msgid "Attribution-NonCommercial-ShareAlike"
 msgstr ""
 
-#: app/utils/dictionary/licenses.ts:62:15
+#: app/utils/dictionary/licenses.ts:60:15
 msgid "Attribution-ShareAlike"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:23:10
+#: app/utils/dictionary/payment.ts:21:13
 msgid "Polish zloty"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:33:10
+#: app/utils/dictionary/payment.ts:31:13
 msgid "New Zealand dollar"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:43:10
+#: app/utils/dictionary/payment.ts:41:13
 msgid "Indian rupee"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:53:10
+#: app/utils/dictionary/payment.ts:51:13
 msgid "Brazilian real"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:63:10
+#: app/utils/dictionary/payment.ts:61:13
 msgid "Singapore dollar"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:73:10
+#: app/utils/dictionary/payment.ts:71:13
 msgid "Canadian dollar"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:83:10
+#: app/utils/dictionary/payment.ts:81:13
 msgid "Hong Kong dollar"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:93:10
+#: app/utils/dictionary/payment.ts:91:13
 msgid "Czech koruna"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:103:10
+#: app/utils/dictionary/payment.ts:101:13
 msgid "Danish krone"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:113:10
+#: app/utils/dictionary/payment.ts:111:13
 msgid "Norwegian krone"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:123:10
+#: app/utils/dictionary/payment.ts:121:13
 msgid "Swedish krona"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:133:10
+#: app/utils/dictionary/payment.ts:131:13
 msgid "New Taiwan dollar"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:143:10
+#: app/utils/dictionary/payment.ts:141:13
 msgid "United States dollar"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:153:10
+#: app/utils/dictionary/payment.ts:151:13
 msgid "Hungarian forint"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:163:10
+#: app/utils/dictionary/payment.ts:161:13
 msgid "Japanese yen"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:173:10
+#: app/utils/dictionary/payment.ts:171:13
 msgid "Israeli new sheqel"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:183:10
+#: app/utils/dictionary/payment.ts:181:13
 msgid "European Euro"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:193:10
+#: app/utils/dictionary/payment.ts:191:13
 msgid "Mexican peso"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:203:10
+#: app/utils/dictionary/payment.ts:201:13
 msgid "Philippine peso"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:213:10
+#: app/utils/dictionary/payment.ts:211:13
 msgid "Australian dollar"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:223:10
+#: app/utils/dictionary/payment.ts:221:13
 msgid "British pound"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:233:10
+#: app/utils/dictionary/payment.ts:231:13
 msgid "Thai baht"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:243:10
+#: app/utils/dictionary/payment.ts:241:13
 msgid "Russian ruble"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:253:10
+#: app/utils/dictionary/payment.ts:251:13
 msgid "Malaysian ringgit"
 msgstr ""
 
-#: app/utils/dictionary/payment.ts:263:10
+#: app/utils/dictionary/payment.ts:261:13
 msgid "Swiss franc"
 msgstr ""
 
