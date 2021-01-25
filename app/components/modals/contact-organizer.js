@@ -1,8 +1,15 @@
 import ModalBase from 'open-event-frontend/components/modals/modal-base';
+import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 
 export default ModalBase.extend(FormMixin, {
-  message: '',
+  message  : '',
+  mailSent : false,
+
+  from: computed('currentUser', function() {
+    return this.currentUser.fullName + ' <' + this.currentUser.email + '>';
+  }),
+
   getValidationRules() {
     return {
       inline : true,
@@ -33,7 +40,7 @@ export default ModalBase.extend(FormMixin, {
           this.notify.success(this.l10n.t('Organizer contacted successfully'), {
             id: 'contact_organizer_succ'
           });
-          this.close();
+          this.set('mailSent', true);
         } catch (e) {
           console.error('Error while contacting organizer', e);
           this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
@@ -45,6 +52,7 @@ export default ModalBase.extend(FormMixin, {
     close() {
       this.set('isOpen', false);
       this.set('message', '');
+      this.set('mailSent', false);
     }
   }
 });

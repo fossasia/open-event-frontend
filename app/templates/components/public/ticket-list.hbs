@@ -213,13 +213,13 @@
     </div>
     <div class="column sixteen wide right floated">
       {{#if this.event.refundPolicy}}
-        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon right floated button ">
+        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon right floated button">
           <i class="info icon"></i>
           {{t 'Refund Policy'}}
         </UiPopup>
       {{/if}}
       {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
-        <div style="padding-right: 10rem !important;">
+        <div>
           <button class="ui mini labeled blue icon right floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
             <i class="envelope icon"></i>
             {{t 'Contact Organizer'}}
@@ -240,4 +240,5 @@
 
 <Modals::ContactOrganizer
   @event={{this.event}}
-  @isOpen={{this.isContactOrganizerModalOpen}} />
+  @isOpen={{this.isContactOrganizerModalOpen}}
+  @currentUser={{this.authManager.currentUser}} />
