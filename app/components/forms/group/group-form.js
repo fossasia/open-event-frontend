@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
@@ -36,6 +36,11 @@ export default class GroupForm extends Component.extend(FormMixin) {
   @action
   removeEvent(event) {
     this.group.events.removeObject(event);
+  }
+
+  @computed('events.[]', 'group.events.[]')
+  get remainingEvents() {
+    return this.events.toArray().filter(event => !this.group.events.toArray().includes(event))
   }
 
   @action

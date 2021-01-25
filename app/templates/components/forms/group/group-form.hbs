@@ -18,6 +18,7 @@
         placeholder={{t "Name"}}
         @value={{@group.name}} />
     </div>
+    <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
     <div class="ui hidden divider"></div>
     <div class="mb-4">
       {{#if @group.events}}
@@ -31,15 +32,14 @@
     </div>
 
     <div class="mb-4">
-      {{#if @events}}
+      {{#if this.remainingEvents}}
         <h2 class="main-heading mb-4">{{t 'All Events'}}</h2>
         <div class="ui stackable three column grid">
-          {{#each @events as |event|}}
+          {{#each this.remainingEvents as |event|}}
             <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
           {{/each}}
         </div>
       {{/if}}
     </div>
-    <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
   </form>
 </div>
