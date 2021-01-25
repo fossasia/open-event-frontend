@@ -6,8 +6,8 @@ export default ModalBase.extend(FormMixin, {
   message  : '',
   mailSent : false,
 
-  from: computed('currentUser', function() {
-    return this.currentUser.fullName + ' <' + this.currentUser.email + '>';
+  from: computed('authManager.currentUser', function() {
+    return this.authManager.currentUser.fullName + ' <' + this.authManager.currentUser.email + '>';
   }),
 
   getValidationRules() {

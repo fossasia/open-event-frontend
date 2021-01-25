@@ -238,7 +238,9 @@
   @userExists={{this.userExists}}
   @errorMessage={{this.errorMessage}} />
 
-<Modals::ContactOrganizer
-  @event={{this.event}}
-  @isOpen={{this.isContactOrganizerModalOpen}}
-  @currentUser={{this.authManager.currentUser}} />
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.event}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}
+
