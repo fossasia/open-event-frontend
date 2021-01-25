@@ -8,7 +8,7 @@ import Loader from 'open-event-frontend/services/loader';
 
 interface Args {
   videoStream: VideoStream;
-  event: Event,
+  event: Event
 }
 
 export default class JoinVideo extends Component<Args> {
