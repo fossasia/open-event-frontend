@@ -59,6 +59,13 @@
       </div>
       <div class='field'>
         <label>{{t 'Access expires on'}}</label>
+        <div class="inline field">
+          <UiCheckbox
+            @label={{t "When sales ends"}}
+            @checked={{this.data.whenSalesEnds}}
+            @onChange={{action "updateEndDate"}} />
+        </div>
+        {{#if (not this.data.whenSalesEnds)}}
         <div class="wide field {{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <Widgets::Forms::DatePicker
@@ -73,6 +80,7 @@
             @rangePosition="end" />
           </div>
         </div>
+        {{/if}}
       </div>
     <div class="field">
       <label>{{t 'Access Link'}}</label>

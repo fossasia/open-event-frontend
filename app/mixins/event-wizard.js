@@ -90,6 +90,13 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         return ticket.save();
       }));
 
+      await Promise.all((data.accessCodes ? data.accessCodes.toArray() : []).map(code => {
+        if(code.whenSalesEnd) {
+          code.set('validTillDate', event.endsAtDate);
+          return code.save();
+        }
+      }));
+
       await Promise.all((data.socialLinks ? data.socialLinks.toArray() : []).map(socialLink => socialLink.save()));
 
       if (data.copyright && data.copyright.get('licence')) {

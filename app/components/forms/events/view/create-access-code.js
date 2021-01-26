@@ -130,6 +130,10 @@ export default Component.extend(FormMixin, {
         ticket.set('isChecked', allTicketTypesChecked);
       });
     },
+    updateEndDate() {
+      this.data.set('whenSalesEnds', !this.data.whenSalesEnds);
+      this.data.set('validTill', this.data.event.get('endsAt'));
+    },
     updateTicketsSelection(ticket) {
       if (!ticket.get('isChecked')) {
         this.data.tickets.pushObject(ticket);
