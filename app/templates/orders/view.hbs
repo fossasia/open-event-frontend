@@ -30,6 +30,9 @@
         @data={{this.model.order}}
         @fields={{this.model.form}}
         @event={{this.model.event}} />
+      <Forms::Orders::CancelOrder
+        @cancelOrder={{action 'cancelOrder'}}
+        @order={{this.model.order}} />
     </div>
     <div class="six wide column">
       <Orders::EventInfo
