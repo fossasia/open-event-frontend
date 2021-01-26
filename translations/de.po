@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-01-21 15:37+0000\n"
+"PO-Revision-Date: 2021-01-26 07:07+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/open-event/frontend/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/open-event/"
+"frontend/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -770,7 +771,7 @@ msgstr "Stream gespeichert"
 
 #: app/components/forms/group/group-form.js:56:28
 msgid "Your group has been saved"
-msgstr ""
+msgstr "Die Gruppe wurde gespeichert"
 
 #: app/components/forms/login-form.js:41:23
 #: app/components/forms/orders/guest-order-form.js:38:23
@@ -807,14 +808,22 @@ msgstr "Bitte eigene Altersgruppe auswählen"
 #: app/components/forms/orders/order-form.js:130:19
 msgid "You need to agree to the condition of the organizer to receive emails in order to continue the order process."
 msgstr ""
+"Um den Bestellvorgang fortzusetzen, bitte der Bedingung des Veranstalters "
+"zustimmen, E-Mails zu erhalten."
 
 #: app/components/forms/orders/order-form.js:140:19
 msgid "In order to complete the order process you need to agree to the photo & video & text consent."
 msgstr ""
+"Um den Bestellvorgang abzuschließen, bitte der Nutzungserlaubnis von Foto & "
+"Video & Text zustimmen."
 
 #: app/components/forms/orders/order-form.js:150:19
 msgid "You need to agree to the condition of the organizer to share information among event partners in order to continue the order process. Such a requirement could be necessary in order to provide the event services."
 msgstr ""
+"Um den Bestellvorgang fortzusetzen, bitte der Bedingung des Veranstalters "
+"zustimmen, Informationen mit Veranstaltungspartnern auszutauschen. Eine "
+"solche Bedingung kann notwendig sein, um Veranstaltungsleistungen zu "
+"erbringen."
 
 #: app/components/forms/orders/order-form.js:159:19
 #: app/components/forms/orders/order-form.js:503:23
@@ -912,20 +921,21 @@ msgstr "Bitte GitHub-Link eingeben"
 #: app/components/forms/orders/order-form.js:403:19
 #: app/components/forms/orders/order-form.js:417:19
 msgid "Please enter a valid instagram account url"
-msgstr ""
+msgstr "Bitte eine gültige Instagram-Konto-URL eingeben."
 
 #: app/components/forms/orders/order-form.js:412:19
+#, fuzzy
 msgid "Please enter instagram link"
-msgstr ""
+msgstr "Bitte Instagram-Link eingeben"
 
 #: app/components/forms/orders/order-form.js:428:19
 #: app/components/forms/orders/order-form.js:442:19
 msgid "Please enter a valid linkedin account url"
-msgstr ""
+msgstr "Bitte eine gültige LinkedIn-Konto-URL eingeben."
 
 #: app/components/forms/orders/order-form.js:437:19
 msgid "Please enter linkedin link"
-msgstr ""
+msgstr "Bitte einen Link für LinkedIn eingeben"
 
 #: app/components/forms/orders/order-form.js:494:23
 msgid "Please enter your Tax ID or Business ID"
@@ -1510,12 +1520,14 @@ msgid "Please enter a valid email address for new organizer"
 msgstr "Bitte geben Sie eine gültige E-Mail-Adresse für den neuen Veranstalter ein"
 
 #: app/components/modals/contact-organizer.js:24:23
+#, fuzzy
 msgid "Please enter message"
-msgstr ""
+msgstr "Bitte Nachricht eingeben"
 
 #: app/components/modals/contact-organizer.js:40:30
+#, fuzzy
 msgid "Organizer contacted successfully"
-msgstr ""
+msgstr "Organisator erfolgreich kontaktiert"
 
 #: app/components/modals/paytm-otp.js:20:23
 msgid "Please enter the OTP"
@@ -2202,7 +2214,7 @@ msgstr "Zuletzt aufgerufen"
 
 #: app/controllers/admin/users/list.js:83:26
 msgid "Mark Spam"
-msgstr ""
+msgstr "Spam markieren"
 
 #: app/controllers/admin/users/list.js:94:26
 msgid "Verified"
@@ -2210,11 +2222,11 @@ msgstr "Verifiziert"
 
 #: app/controllers/admin/users/list.js:119:43
 msgid "User has been marked as Spam successfully."
-msgstr ""
+msgstr "Der Benutzer wurde erfolgreich als Spam markiert."
 
 #: app/controllers/admin/users/list.js:119:103
 msgid "User has been marked as Not Spam successfully."
-msgstr ""
+msgstr "Der Benutzer wurde als Nicht-Spam markiert."
 
 #: app/controllers/admin/users/list.js:142:26
 msgid "User verifiation state changed successfully."
@@ -2476,7 +2488,7 @@ msgstr "Videostream"
 
 #: app/controllers/groups/list.js:12:26
 msgid "Group has been deleted successfully."
-msgstr ""
+msgstr "Die Gruppe wurde gelöscht."
 
 #: app/controllers/notifications.js:17:28
 msgid "All notifications marked read successfully"
@@ -3198,12 +3210,12 @@ msgstr "Erkunden"
 
 #: app/routes/groups.js:8:11 app/templates/groups/list.hbs:15:8
 msgid "My Groups"
-msgstr ""
+msgstr "Meine Gruppen"
 
 #: app/routes/groups/list.js:7:11 app/templates/components/nav-bar.hbs:37:61
 #: app/templates/groups/list.hbs:5:8
 msgid "Groups"
-msgstr ""
+msgstr "Gruppen"
 
 #: app/routes/login.js:8:11 app/templates/components/forms/login-form.hbs:14:31
 #: app/templates/components/forms/login-form.hbs:51:16
@@ -3856,6 +3868,12 @@ msgstr "Für diesen Benutzer wurden keine Tickets gefunden"
 #: app/templates/application.hbs:6:4
 msgid "This website, and certain approved third parties, use functional and analytical cookies (or similar technologies) to provide account functionalities and provide you with a customized experience. By closing this banner or by continuing to use the site, you agree with the usage. For more information please review our privacy policy and terms and conditions."
 msgstr ""
+"Diese Website und bestimmte zugelassene Drittanbieter verwenden funktionale "
+"und analytische Cookies (oder ähnliche Technologien), um Kontofunktionen "
+"bereitzustellen und Ihnen ein individuelles Erlebnis zu bieten. Indem Sie "
+"dieses Banner schließen oder die Website weiter nutzen, erklären Sie sich "
+"mit der Nutzung einverstanden. Für weitere Informationen lesen Sie bitte "
+"unsere Datenschutzrichtlinien und Nutzungsbedingungen."
 
 #: app/templates/application.hbs:8:51
 msgid "Click here for more information"
@@ -4661,7 +4679,7 @@ msgstr "Standardfilter"
 
 #: app/templates/components/footer-main.hbs:9:31
 msgid "Use {{app}}"
-msgstr ""
+msgstr "{{app}} benutzen"
 
 #: app/templates/components/footer-main.hbs:10:104
 msgid "How it Works"
@@ -5735,19 +5753,19 @@ msgstr "Sitzung speichern"
 
 #: app/templates/components/forms/group/group-form.hbs:5:8
 msgid "Edit Group"
-msgstr ""
+msgstr "Gruppe bearbeiten"
 
 #: app/templates/components/forms/group/group-form.hbs:7:8
 msgid "Create a Group"
-msgstr ""
+msgstr "Gruppe erstellen"
 
 #: app/templates/components/forms/group/group-form.hbs:14:30
 msgid "Group name"
-msgstr ""
+msgstr "Name der Gruppe"
 
 #: app/templates/components/forms/group/group-form.hbs:25:38
 msgid "Group Events"
-msgstr ""
+msgstr "Veranstaltungen der Gruppe"
 
 #: app/templates/components/forms/login-form.hbs:25:17
 msgid "You have been registered successfully. Please login to continue."
@@ -5903,14 +5921,30 @@ msgstr "Altersgruppe auswählen"
 #: app/templates/components/forms/orders/order-form.hbs:144:27
 msgid "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"
 msgstr ""
+"Wir möchten Ihnen auch nach der Veranstaltung Informationen per E-Mail "
+"zukommen lassen, z. B. durch persönliche E-Mails unseres Teams, Newsletter "
+"oder andere elektronische Mitteilungen. Sie können jederzeit von dieser "
+"Vereinbarung zurücktreten. Sind Sie damit einverstanden, elektronische Post "
+"zu erhalten?"
 
 #: app/templates/components/forms/orders/order-form.hbs:150:27
 msgid "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"
 msgstr ""
+"Wir möchten Informationen mit den Veranstaltungspartnern austauschen, um "
+"Ihnen das bestmögliche Veranstaltungserlebnis zu bieten und es den Partnern "
+"zu ermöglichen, Sie nach der Veranstaltung durch elektronische Kommunikation "
+"mit zusätzlichen Informationen zu kontaktieren. Sie können jederzeit von "
+"dieser Vereinbarung zurücktreten. Sind Sie damit einverstanden, dass Ihre "
+"Daten an Veranstaltungspartner weitergegeben werden und Sie elektronische "
+"Post erhalten?"
 
 #: app/templates/components/forms/orders/order-form.hbs:156:27
 msgid "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
 msgstr ""
+"Ich bin damit einverstanden, dass der Veranstalter Foto-, Video- und/oder "
+"Audioaufnahmen von mir oder meinem Profil und auch von mir in den Chats "
+"erstellte Texte machen darf, die auf den Webseiten und/oder Social Media "
+"Kanälen des Veranstalters veröffentlicht werden können."
 
 #: app/templates/components/forms/orders/order-form.hbs:175:21
 msgid "Enable Billing Information"
@@ -6656,32 +6690,37 @@ msgid "Please tick the box to agree and press DELETE"
 msgstr "Bitte kreuzen Sie das Kästchen an, um zuzustimmen, und drücken Sie LÖSCHEN"
 
 #: app/templates/components/modals/contact-organizer.hbs:3:4
+#, fuzzy
 msgid "Contact the Organizer"
-msgstr ""
+msgstr "Veranstalter kontaktieren"
 
 #: app/templates/components/modals/contact-organizer.hbs:8:12
 msgid "Your message was sent to the organizers of this event."
-msgstr ""
+msgstr "Die Nachricht wurde an die Organisatoren dieser Veranstaltung gesendet."
 
 #: app/templates/components/modals/contact-organizer.hbs:9:12
 msgid "You should receive a copy of the message to your email inbox."
 msgstr ""
+"In den kommenden Minuten sollten Sie eine Kopie der Nachricht in Ihrem E"
+"-Mail-Posteingang erhalten."
 
 #: app/templates/components/modals/contact-organizer.hbs:10:12
+#, fuzzy
 msgid "The organizers will contact you by email."
 msgstr ""
+"Die Organisatoren werden Sich per E-Mail mit Ihnen in Verbindung setzen."
 
 #: app/templates/components/modals/contact-organizer.hbs:13:12
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: app/templates/components/modals/contact-organizer.hbs:30:26
 msgid "Event Organizer"
-msgstr ""
+msgstr "Organisator der Veranstaltung"
 
 #: app/templates/components/modals/contact-organizer.hbs:38:16
 msgid "Send Email"
-msgstr ""
+msgstr "E-Mail senden"
 
 #: app/templates/components/modals/cropper-modal.hbs:3:2
 msgid "Crop Image"
@@ -7027,11 +7066,11 @@ msgstr "Details zur Bestellung nachfolgend."
 
 #: app/templates/components/orders/order-summary.hbs:31:10
 msgid "Your order has been placed."
-msgstr ""
+msgstr "Ihre Bestellung wurde aufgegeben."
 
 #: app/templates/components/orders/order-summary.hbs:33:10
 msgid "Please pay for your tickets to complete the order now."
-msgstr ""
+msgstr "Bitte jetzt die Tickets bezahlen, um die Bestellung abzuschließen."
 
 #: app/templates/components/orders/order-summary.hbs:39:27
 #: app/templates/events/view/tickets/index.hbs:14:4
@@ -7076,11 +7115,11 @@ msgstr "Bitte auf den Link auf der rechten Seite klicken, um erneut Tickets zu b
 
 #: app/templates/components/orders/order-summary.hbs:176:8
 msgid "Your order has been cancelled due to some unavoidable circumstances."
-msgstr "Die Bestellung wurde aufgrund unvermeidbarer Umstände storniert."
+msgstr "Die Bestellung wurde storniert."
 
 #: app/templates/components/orders/order-summary.hbs:178:8
 msgid "Please contact the event organizer for further details."
-msgstr "Bitte kontaktieren Sie den Veranstalter für weitere Details."
+msgstr "Bei Fragen bitte kontaktieren Sie den Veranstalter für weitere Details."
 
 #: app/templates/components/orders/ticket-holder.hbs:84:12
 msgid "Paid via"
@@ -7185,7 +7224,7 @@ msgstr "Rabattcode eingeben"
 
 #: app/templates/components/public/ticket-list.hbs:225:12
 msgid "Contact Organizer"
-msgstr ""
+msgstr "Veranstalter kontaktieren"
 
 #: app/templates/components/session-card.hbs:25:12
 msgid "Session Not Yet Scheduled"
@@ -7822,11 +7861,11 @@ msgstr "Für ausgewählte Filter wurden keine Veranstaltungen gefunden"
 
 #: app/templates/groups/list.hbs:9:10
 msgid "Create Group"
-msgstr ""
+msgstr "Gruppe erstellen"
 
 #: app/templates/groups/list.hbs:26:38
 msgid "No groups found for the events"
-msgstr ""
+msgstr "Es wurden keine Gruppen für die Veranstaltung gefunden."
 
 #: app/templates/index.hbs:3:34
 msgid "Featured Events"
@@ -8147,7 +8186,7 @@ msgstr "Referenten-Details"
 
 #: app/templates/public/cfs/view-session.hbs:36:49
 msgid "Withdraw"
-msgstr ""
+msgstr "Zurückziehen"
 
 #: app/templates/public/index.hbs:36:75
 msgid "To place a ticket order:"
@@ -9234,19 +9273,19 @@ msgstr "Benutzerdefinierte Termine"
 
 #: app/utils/dictionary/licenses.ts:12:15
 msgid "Attribution-NonCommercial-NoDerivs"
-msgstr ""
+msgstr "Namensnennung-Nichtkommerziell-NoDerivs"
 
 #: app/utils/dictionary/licenses.ts:18:15
 msgid "Attribution-NonCommercial"
-msgstr ""
+msgstr "Namensnennung-Nicht-Kommerziell"
 
 #: app/utils/dictionary/licenses.ts:24:15
 msgid "Public Domain Dedication (CC0)"
-msgstr ""
+msgstr "Gemeingut (CC0)"
 
 #: app/utils/dictionary/licenses.ts:30:15
 msgid "Attribution"
-msgstr ""
+msgstr "Namensnennung"
 
 #: app/utils/dictionary/licenses.ts:36:15
 msgid "All rights reserved"
@@ -9254,19 +9293,21 @@ msgstr "Alle Rechte vorbehalten"
 
 #: app/utils/dictionary/licenses.ts:42:15
 msgid "Attribution-NoDerivs"
-msgstr ""
+msgstr "Namensnennung-NoDerivs"
 
 #: app/utils/dictionary/licenses.ts:48:15
 msgid "Public Domain Work"
-msgstr ""
+msgstr "Gemeinfrei"
 
 #: app/utils/dictionary/licenses.ts:54:15
 msgid "Attribution-NonCommercial-ShareAlike"
 msgstr ""
+"Namensnennung-Keine kommerzielle Nutzung-Weitergabe unter gleichen "
+"Bedingungen"
 
 #: app/utils/dictionary/licenses.ts:60:15
 msgid "Attribution-ShareAlike"
-msgstr ""
+msgstr "Namensnennung-Weitergabe unter gleichen Bedingungen"
 
 #: app/utils/dictionary/payment.ts:21:13
 msgid "Polish zloty"
