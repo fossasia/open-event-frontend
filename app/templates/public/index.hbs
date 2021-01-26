@@ -24,7 +24,9 @@
             @currentEventIdentifier={{this.model.event.identifier}}
             @createNewUserViaEmail={{action "createNewUserViaEmail"}}
             @loginExistingUser={{action "loginExistingUser"}}
+            @openContactOrganizerModal={{action "openContactOrganizerModal"}}
             @isLoginModalOpen={{this.isLoginModalOpen}}
+            @isContactOrganizerModalOpen={{this.isContactOrganizerModalOpen}}
             @placeOrder={{action "placeOrder"}}
             @isLoading={{this.isLoading}}
             @userExists={{this.userExists}}
@@ -77,12 +79,12 @@
         @event={{this.model.event}}
         @videoStream={{this.model.event.videoStream}} />
       {{#if this.model.event.liveStreamUrl}}
-        <div>
+        <div class="mt-4">
           Live Stream: <a href="{{this.model.event.liveStreamUrl}}" target="_blank" rel="noopener noreferrer">{{this.model.event.liveStreamUrl}}</a>
         </div>
       {{/if}}
       {{#if this.model.event.webinarUrl}}
-        <div>
+        <div class="mt-4">
           Webinar: <a href="{{this.model.event.webinarUrl}}" target="_blank" rel="noopener noreferrer">{{this.model.event.webinarUrl}}</a>
         </div>
       {{/if}}

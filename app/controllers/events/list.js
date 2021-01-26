@@ -5,14 +5,12 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'starts-at';
 
-  sort_dir = 'DSC';
-
   get columns() {
     return [
       {
         name            : this.l10n.t('Name'),
         valuePath       : 'name',
-        width           : 150,
+        width           : 180,
         isSortable      : true,
         extraValuePaths : ['identifier', 'logoUrl'],
         headerComponent : 'tables/headers/sort',
@@ -26,21 +24,20 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'startsAt',
         extraValuePaths : ['endsAt', 'timezone'],
         isSortable      : true,
-        width           : 180,
+        width           : 220,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
 
       },
       {
-        name            : this.l10n.t('Roles'),
-        valuePath       : 'owner',
-        extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
-        width           : 180,
-        cellComponent   : 'ui-table/cell/cell-roles'
+        name          : this.l10n.t('Roles'),
+        valuePath     : 'roles',
+        width         : 180,
+        cellComponent : 'ui-table/cell/cell-roles'
       },
       {
         name            : this.l10n.t('Tickets'),
-        width           : 130,
+        width           : 180,
         valuePath       : 'tickets',
         extraValuePaths : ['totalSales'],
         cellComponent   : 'ui-table/cell/cell-tickets'
@@ -58,7 +55,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : this.l10n.t('Public URL'),
         valuePath     : 'url',
-        width         : 250,
+        width         : 220,
         cellComponent : 'ui-table/cell/cell-link'
       }
     ];

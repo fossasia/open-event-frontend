@@ -80,25 +80,29 @@
               {{/if}}
             </td>
             <td>
-              <div class="field">
-                <UiDropdown
-                  @class="compact selection"
-                  @forceSelection={{false}}
-                  @onChange={{action "updateOrder" ticket}} as |execute mapper|>
-                  <Input
-                    @type="hidden"
-                    @id={{concat ticket.id "_quantity"}}
-                    @value={{ticket.orderQuantity}} />
-                  <i class="dropdown icon"></i>
-                  <div class="default text">{{if (eq this.tickets.length 1) (max ticket.minOrder 1) 0}}</div>
-                  <div class="menu">
-                    <div class="item" data-value="{{map-value mapper 0}}">0</div>
-                    {{#each (range (max ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
-                      <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
-                    {{/each}}
-                  </div>
-                </UiDropdown>
-              </div>
+              {{#if (lte ticket.remaining 0)}}
+                <span class="ui basic small text red label w-content-button">{{t 'Sold Out'}}</span>
+              {{else}}
+                <div class="field">
+                  <UiDropdown
+                    @class="compact selection"
+                    @forceSelection={{false}}
+                    @onChange={{action "updateOrder" ticket}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @id={{concat ticket.id "_quantity"}}
+                      @value={{ticket.orderQuantity}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{if (eq this.tickets.length 1) (max ticket.minOrder 1) 0}}</div>
+                    <div class="menu">
+                      <div class="item" data-value="{{map-value mapper 0}}">0</div>
+                      {{#each (range (max ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
+                        <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                </div>
+              {{/if}}
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
               {{#if this.device.isMobile}}
@@ -205,14 +209,21 @@
         <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>
           {{t 'Order Now'}}
         </button>
-        <div class="ui hidden divider"></div>
-        {{#if this.event.refundPolicy}}
-          <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
-            <i class="small info circle icon"></i>
-            {{t 'Refund Policy'}}
-          </UiPopup>
-        {{/if}}
-      </div>
+    <div class="column sixteen wide right floated">
+      {{#if this.event.refundPolicy}}
+        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon right floated button">
+          <i class="small info circle icon"></i>
+          {{t 'Refund Policy'}}
+        </UiPopup>
+      {{/if}}
+      {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+        <div>
+          <button class="ui mini labeled blue icon right floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+            <i class="envelope icon"></i>
+            {{t 'Contact Organizer'}}
+          </button>
+        </div>
+      {{/if}}
     </div>
   </div>
 </form>
@@ -224,4 +235,10 @@
   @loginExistingUser={{this.loginExistingUser}}
   @userExists={{this.userExists}}
   @errorMessage={{this.errorMessage}} />
-  
+
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.event}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}
+

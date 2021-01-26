@@ -7,7 +7,7 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'created-at';
 
-  sort_dir = 'ASC';
+  sort_dir = 'DSC';
 
   @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 
@@ -78,6 +78,28 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-simple-date'
+      },
+      {
+        name            : this.l10n.t('Mark Spam'),
+        valuePath       : 'id',
+        extraValuePaths : ['isBlocked'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/admin/users/cell-mark-spam',
+        actions         : {
+          toggleSpam: this.toggleSpam.bind(this)
+        }
+      },
+      {
+        name            : this.l10n.t('Verified'),
+        valuePath       : 'isVerified',
+        extraValuePaths : ['id'],
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/admin/users/cell-user-verify',
+        actions         : {
+          toggleVerify: this.toggleVerify.bind(this)
+        }
       }
     ];
   }
@@ -85,6 +107,52 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   moveToUserDetails(id) {
     this.transitionToRoute('admin.users.view', id);
+  }
+
+  @action
+  async toggleSpam(user_id) {
+    this.set('isLoading', true);
+    try {
+      const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
+      user.toggleProperty('isBlocked');
+      await user.save();
+      this.notify.success(user.isBlocked ? this.l10n.t('User has been marked as Spam successfully.') : this.l10n.t('User has been marked as Not Spam successfully.'),
+        {
+          id: 'user_spam_succ'
+        });
+
+    } catch (e) {
+      console.error('Error while marking user as spam', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_spam_error'
+        });
+    }
+
+    this.set('isLoading', false);
+  }
+
+  @action
+  async toggleVerify(user_id) {
+    this.set('isLoading', true);
+    try {
+      const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
+      user.toggleProperty('isVerified');
+      await user.save();
+      this.notify.success(this.l10n.t('User verifiation state changed successfully.'),
+        {
+          id: 'user_verf_succ'
+        });
+
+    } catch (e) {
+      console.error('Error while verifying user', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'user_verf_error'
+        });
+    }
+
+    this.set('isLoading', false);
   }
 
   @action

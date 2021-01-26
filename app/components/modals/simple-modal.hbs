@@ -13,7 +13,7 @@
       {{t-var (or @actionName 'OK')}}
     </button>
   {{/if}}
-  <button type="button" class="ui button" {{action 'close'}}>
+  <button type="button" class="ui button" {{action this.performCancel}}>
     {{t-var (or @cancelName 'Cancel')}}
   </button>
 </div>
