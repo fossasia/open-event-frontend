@@ -69,6 +69,8 @@ jobs:
           # no restore-keys here, so we only accept this exact version
       - run: yarn l10n:generate
       - run: COVERAGE=true yarn test
+        env:
+          API_HOST: https://open-event.dokku.fossasia.org
       - name: Code Coverage
         uses: codecov/codecov-action@v1
 
@@ -91,10 +93,12 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           # no restore-keys here, so we only accept this exact version
+      - run: yarn l10n:extract
+      - run: yarn l10n:update
       - run: yarn l10n:generate
       - run: ROOT_URL=open-event-frontend yarn build -prod
         env:
-          API_HOST: https://open-event-api-dev.herokuapp.com
+          API_HOST: https://open-event.dokku.fossasia.org
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/development' && github.event_name == 'push'

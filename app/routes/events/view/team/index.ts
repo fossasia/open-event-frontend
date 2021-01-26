@@ -9,8 +9,13 @@ export default class EventsViewTeamIndex extends Route.extend({
     const event = this.modelFor('events.view') as DS.Store;
     return hash({
       event,
-      roleInvites : event.query('roleInvites', {}),
-      roles       : this.store.findAll('role')
+      roleInvites: event.query('roleInvites', {
+        include: 'role'
+      }),
+      usersEventsRoles: event.query('roles', {
+        include: 'user,role'
+      }),
+      roles: this.store.findAll('role')
     });
   }
 }

@@ -4,14 +4,31 @@ import $ from 'jquery';
 import { getErrorMessage } from 'open-event-frontend/utils/errors';
 import { buildUrl } from 'open-event-frontend/utils/url';
 import httpStatus from 'http-status';
-import { objectToFormData } from 'object-to-formdata';
+import { serialize } from 'object-to-formdata';
 import fetch from 'fetch';
 import { clone, assign, merge, pick, isString } from 'lodash-es';
+
 const bodyAllowedIn = ['PATCH', 'POST', 'PUT'];
 
-export default Service.extend({
+interface Config {
+  adapter?: any;
+  isExternal?: boolean;
+  data?: any;
+  withoutPrefix?: boolean;
+  replaceHeaders?: boolean;
+  header?: string;
+  headers?: string[];
+  skipDataTransform?: boolean;
+  isFormData?: boolean;
+  isFile?: boolean;
+  queryParams?: { [key:string]: any };
+  authToken?: string;
+  fileName?: string;
+}
 
-  defaultConfig: {
+export default class Loader extends Service {
+
+  defaultConfig = {
     data              : null,
     headers           : {},
     adapter           : 'adapter:application',
@@ -22,13 +39,13 @@ export default Service.extend({
     withoutPrefix     : false,
     replaceHeaders    : false,
     skipDataTransform : false
-  },
+  }
 
-  host() {
+  host(): string {
     return getOwner(this).lookup(this.defaultConfig.adapter).host;
-  },
+  }
 
-  getFetchOptions(url, method, data = null, config = {}) {
+  getFetchOptions(url: string, method: string, data: any = null, config: Config = {}): { url: string, fetchOptions: { [key: string]: any } } {
     config = merge(clone(this.defaultConfig), config);
 
     const adapter = getOwner(this).lookup(config.adapter);
@@ -52,7 +69,7 @@ export default Service.extend({
           fetchOptions.body = data;
         } else {
           if (config.isFormData) {
-            fetchOptions.body = objectToFormData(data);
+            fetchOptions.body = serialize(data);
           } else if (config.isFile) {
             delete fetchOptions.headers['Content-Type'];
             fetchOptions.body = data;
@@ -78,9 +95,9 @@ export default Service.extend({
     return {
       url, fetchOptions
     };
-  },
+  }
 
-  async makePromise(urlPath, method, data = null, config = {}) {
+  async makePromise(urlPath: string, method: string, data = null, config: Config = {}): Promise<any> {
 
     const { url, fetchOptions } = this.getFetchOptions(urlPath, method, data, config);
 
@@ -98,7 +115,7 @@ export default Service.extend({
 
     if (!response.ok) {
       const defaultMessage = httpStatus[response.status];
-      const errorResponse = pick(response, ['status', 'ok', 'statusText', 'headers', 'url']);
+      const errorResponse: any = pick(response, ['status', 'ok', 'statusText', 'headers', 'url']);
       errorResponse.statusText = defaultMessage;
       errorResponse.response = parsedResponse;
       errorResponse.errorMessage = isString(parsedResponse) ? parsedResponse
@@ -111,29 +128,29 @@ export default Service.extend({
       throw errorResponse;
     }
     return parsedResponse;
-  },
+  }
 
-  load(url, config = {}) {
+  load(url: string, config: Config = {}): Promise<any> {
     return this.makePromise(url, 'GET', null, config);
-  },
+  }
 
-  post(url, data = null, config = {}) {
+  post(url: string, data = null, config: Config = {}): Promise<any> {
     return this.makePromise(url, 'POST', data, config);
-  },
+  }
 
-  put(url, data = null, config = {}) {
+  put(url: string, data = null, config: Config = {}): Promise<any> {
     return this.makePromise(url, 'PUT', data, config);
-  },
+  }
 
-  patch(url, data = null, config = {}) {
+  patch(url: string, data = null, config = {}): Promise<any> {
     return this.makePromise(url, 'PATCH', data, config);
-  },
+  }
 
-  delete(url, config = {}) {
+  delete(url: string, config = {}): Promise<any> {
     return this.makePromise(url, 'DELETE', null, config);
-  },
+  }
 
-  uploadFile(urlPath, source, onProgressUpdate = null, config = {}, method = 'POST') {
+  uploadFile(urlPath: string, source: File | Blob | any, onProgressUpdate = null, config: Config = {}, method = 'POST'): Promise<any> {
     return new Promise((resolve, reject) => {
       if (
         !((window.File && source instanceof window.File)
@@ -157,7 +174,9 @@ export default Service.extend({
       }
 
       const formData = new FormData();
-      formData.append(config.fileName, source);
+      if (config.fileName) {
+        formData.append(config.fileName, source);
+      }
       config.skipDataTransform = true;
 
       const { url, fetchOptions } = this.getFetchOptions(urlPath, method, formData, config);
@@ -169,13 +188,14 @@ export default Service.extend({
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }
-      xhr.onload = e => resolve(e.target.responseText);
+      xhr.onload = (e: any) => resolve(e.target.responseText);
       xhr.onerror = reject;
       if (xhr.upload && onProgressUpdate) {xhr.upload.onprogress = onProgressUpdate}
       xhr.send(fetchOptions.body);
     });
-  },
-  downloadFile(urlPath,  onProgressUpdate = null, config = {}, method = 'GET') {
+  }
+
+  downloadFile(urlPath: string,  onProgressUpdate = null, config: Config = {}, method = 'GET'): Promise<any> {
     return new Promise((resolve, reject) => {
       const { url, fetchOptions } = this.getFetchOptions(urlPath, method, null, config);
       const xhr = new XMLHttpRequest();
@@ -188,7 +208,7 @@ export default Service.extend({
           xhr.setRequestHeader(k, fetchOptions.headers[k]);
         }
       }
-      xhr.onload =  e => {
+      xhr.onload =  (e: any) => {
         if (e.target.response) {
           resolve(e.target.response);
         } else {
@@ -200,4 +220,11 @@ export default Service.extend({
       xhr.send(null);
     });
   }
-});
+}
+
+// DO NOT DELETE: this is how TypeScript knows how to look up your services.
+declare module '@ember/service' {
+  interface Registry {
+    'loader': Loader;
+  }
+}

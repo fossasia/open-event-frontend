@@ -16,11 +16,20 @@
               {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
             </button>
           {{/if}}
-          {{#if @session.microlocation.hasVideoStream}}
-            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
-              <i class="icon video"></i>
-              {{t 'Join Video'}}
-            </button>
+          {{#if this.sessionEnded}}
+            {{#if @session.videoUrl}}
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToVideo}}>
+                <i class="icon video"></i>
+                {{t 'Watch Video'}}
+              </button>
+            {{/if}}      
+          {{else}}
+            {{#if @session.microlocation.hasVideoStream}}
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+                <i class="icon video"></i>
+                {{t 'Join Video'}}
+              </button>
+            {{/if}}
           {{/if}}
           {{#unless @hideSessionLink}}
             <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
@@ -39,7 +48,7 @@
           {{/if}}
         </div>
       {{else}}
-        <div class="left floated eleven wide column">
+        <div class="left floated eleven wide column" style="padding-bottom: 0 !important;">
           <div class="d-flex wrap">
             {{#each @session.speakers as |speaker|}}
               <div class="d-flex items-center speaker-card pr-2 pb-4">
@@ -52,7 +61,7 @@
             {{/each}}
           </div>
         </div>
-        <div class="right floated five wide column">
+        <div class="right floated five wide column" style="padding-top: .25rem !important;" >
           <div><i class="train icon"></i>{{@session.track.name}}</div>
           {{#if @session.startsAt}}
             <div><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>

@@ -1,0 +1,19 @@
+<i class="black close icon"></i>
+{{#if @header}}
+  <div class="header">
+    {{t-var @header}}
+  </div>
+{{/if}}
+<div class="content">
+  {{yield}}
+</div>
+<div class="actions">
+  {{#if @action}}
+    <button type="button" class="ui green button" {{action this.performAction}}>
+      {{t-var (or @actionName 'OK')}}
+    </button>
+  {{/if}}
+  <button type="button" class="ui button" {{action this.performCancel}}>
+    {{t-var (or @cancelName 'Cancel')}}
+  </button>
+</div>

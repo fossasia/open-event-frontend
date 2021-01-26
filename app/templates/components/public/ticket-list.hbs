@@ -2,13 +2,15 @@
 <form class="ui form" {{action on='submit' preventDefault=true}}>
   <table class="ui stackable very basic compact table" style="margin-bottom: 0">
     <thead class="full-width">
-      <tr>
-        <th>{{t 'Type'}}</th>
-        <th class="three wide"></th>
-        <th class="ui four wide single line">{{t 'Price'}}</th>
-        <th class="one wide">{{t 'Quantity'}}</th>
-        <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
-      </tr>
+      {{#unless this.device.isMobile}}
+        <tr>
+          <th>{{t 'Type'}}</th>
+          <th class="three wide"></th>
+          <th class="ui four wide single line">{{t 'Price'}}</th>
+          <th class="one wide">{{t 'Quantity'}}</th>
+          <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
+        </tr>
+      {{/unless}}
     </thead>
     <tbody>
       {{#each this.tickets as |ticket|}}
@@ -78,27 +80,34 @@
               {{/if}}
             </td>
             <td>
-              <div class="field">
-                <UiDropdown
-                  @class="compact selection"
-                  @forceSelection={{false}}
-                  @onChange={{action "updateOrder" ticket}} as |execute mapper|>
-                  <Input
-                    @type="hidden"
-                    @id={{concat ticket.id "_quantity"}}
-                    @value={{ticket.orderQuantity}} />
-                  <i class="dropdown icon"></i>
-                  <div class="default text">{{if (eq this.tickets.length 1) (max ticket.minOrder 1) 0}}</div>
-                  <div class="menu">
-                    <div class="item" data-value="{{map-value mapper 0}}">0</div>
-                    {{#each (range (max ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
-                      <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
-                    {{/each}}
-                  </div>
-                </UiDropdown>
-              </div>
+              {{#if (lte ticket.remaining 0)}}
+                <span class="ui basic small text red label w-content-button">{{t 'Sold Out'}}</span>
+              {{else}}
+                <div class="field">
+                  <UiDropdown
+                    @class="compact selection"
+                    @forceSelection={{false}}
+                    @onChange={{action "updateOrder" ticket}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @id={{concat ticket.id "_quantity"}}
+                      @value={{ticket.orderQuantity}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{if (eq this.tickets.length 1) (max ticket.minOrder 1) 0}}</div>
+                    <div class="menu">
+                      <div class="item" data-value="{{map-value mapper 0}}">0</div>
+                      {{#each (range (max ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
+                        <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                </div>
+              {{/if}}
             </td>
             <td id='{{ticket.id}}_subtotal' class="ui right aligned">
+              {{#if this.device.isMobile}}
+                <span class="ui gray-text">{{t 'Subtotal :' }}</span>
+              {{/if}}
               <Orders::TicketPrice
                 @ticket={{ticket}}
                 @currency={{this.eventCurrency}}
@@ -110,8 +119,10 @@
     </tbody>
     <tfoot class="full-width">
       <tr>
-        <td></td>
-        <td></td>
+        {{#unless this.device.isMobile}}
+         <td></td>
+         <td></td>
+        {{/unless}}
         <td colspan="3">
             <table class="ui small" style="float: right;">
               <tbody>
@@ -121,7 +132,7 @@
                     <td>
                       <div>{{t 'Tax'}} ({{this.orderAmount.tax.percent}}% {{this.orderAmount.tax.name}})</div>
                       {{#if orderAmount.tax.included}}
-                        <small class="ui gray-text small">Included in Total</small>
+                        <small class="ui gray-text small">{{t 'Included in Total' }}</small>
                       {{/if}}
                     </td>
                     <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.tax.amount}}/></td>
@@ -198,14 +209,23 @@
         <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>
           {{t 'Order Now'}}
         </button>
-        <div class="ui hidden divider"></div>
-        {{#if this.event.refundPolicy}}
-          <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
-            <i class="info icon"></i>
-            {{t 'Refund Policy'}}
-          </UiPopup>
-        {{/if}}
       </div>
+    </div>
+    <div class="column sixteen wide right floated">
+      {{#if this.event.refundPolicy}}
+        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon right floated button">
+          <i class="info icon"></i>
+          {{t 'Refund Policy'}}
+        </UiPopup>
+      {{/if}}
+      {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+        <div>
+          <button class="ui mini labeled blue icon right floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+            <i class="envelope icon"></i>
+            {{t 'Contact Organizer'}}
+          </button>
+        </div>
+      {{/if}}
     </div>
   </div>
 </form>
@@ -217,3 +237,10 @@
   @loginExistingUser={{this.loginExistingUser}}
   @userExists={{this.userExists}}
   @errorMessage={{this.errorMessage}} />
+
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.event}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}
+
