@@ -44,8 +44,8 @@ export default class PublicStreamJitsiStream extends Component<Args> {
         startWithVideoMuted : true
       },
       interfaceConfigOverwrite: {
-        HIDE_INVITE_MORE_HEADER: true,
-        TOOLBAR_BUTTONS: [
+        HIDE_INVITE_MORE_HEADER : true,
+        TOOLBAR_BUTTONS         : [
           'microphone', 'camera', 'closedcaptions', 'desktop', 'security', 'fullscreen',
           'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
           'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
