@@ -19,7 +19,7 @@ export default class SideBar extends Component {
   handleKeyPress() {
     if (event.code === 'Enter') {
       this.set('sidebarVisible', false);
-      this.sendAction('search');
+      this.search();
     }
   }
 

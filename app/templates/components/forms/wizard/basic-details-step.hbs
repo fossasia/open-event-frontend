@@ -47,7 +47,7 @@
       </a>
     {{/each}}
   </div>
-  {{#if (or (eq this.selectedLocationType 'Venue') (eq this.selectedLocationType 'Mixed'))}}
+  {{#if (or (eq this.selectedLocationType 'Venue') (eq this.selectedLocationType 'Hybrid'))}}
     <div class="field">
       <label class="{{if this.isLocationRequired 'required'}}" for="location">{{t 'Location'}}</label>
       <Widgets::Forms::LocationInput
@@ -70,7 +70,7 @@
       </Widgets::Forms::LocationInput>
     </div>
   {{/if}}
-  {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Mixed'))}}
+  {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Hybrid'))}}
     <div class="{{unless this.device.isMobile 'six wide'}} field">
       <label>{{t "Live Stream URL"}}</label>
       <Widgets::Forms::LinkField
@@ -234,11 +234,11 @@
               @isExpanded={{if this.data.event.id false true}}
               @timezone={{this.data.event.timezone}}
               @canMoveUp={{not-eq index 0}}
-              @canMoveDown={{not-eq ticket.position (dec this.data.event.tickets.length)}}
-              @moveTicketUp={{action "moveTicket" ticket "up"}}
-              @moveTicketDown={{action "moveTicket" ticket "down"}}
+              @canMoveDown={{not-eq index (dec this.ticketCount)}}
+              @moveTicketUp={{action "moveTicket" ticket index "up"}}
+              @moveTicketDown={{action "moveTicket" ticket index "down"}}
               @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}
-              @ishidden = {{false}} />
+              @ishidden = {{ticket.isHidden}} />
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">
@@ -338,7 +338,7 @@
               {{#each this.paymentCurrencies as |paymentCurrency|}}
                 <div class="item" data-value="{{paymentCurrency.code}}">
                   {{paymentCurrency.code}} -
-                  {{paymentCurrency.name}}
+                  {{t-var paymentCurrency.name}}
                   ({{paymentCurrency.symbol}})
                 </div>
               {{/each}}
@@ -495,8 +495,8 @@
           </label>
           <Textarea
             @id="cheque_details"
-            @value={{this.data.event.chequeDetails}} 
-          /> 
+            @value={{this.data.event.chequeDetails}}
+          />
         </div>
       {{/if}}
 
@@ -505,7 +505,7 @@
           <Input
             @type="checkbox"
             @id="payment_by_bank"
-            @checked={{this.data.event.canPayByBank}} 
+            @checked={{this.data.event.canPayByBank}}
           />
           <label for="payment_by_bank">
             {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer '}}
@@ -520,7 +520,7 @@
           </label>
           <Textarea
             @id="bank_details"
-            @value={{this.data.event.bankDetails}} 
+            @value={{this.data.event.bankDetails}}
           />
         </div>
       {{/if}}
@@ -544,7 +544,7 @@
           </label>
           <Textarea
             @id="on_site_details"
-            @value={{this.data.event.onsiteDetails}} 
+            @value={{this.data.event.onsiteDetails}}
           />
         </div>
       {{/if}}
@@ -593,7 +593,7 @@
             <Input
               @type="checkbox"
               @id="billing_info_mandatory"
-              @checked={{this.data.event.isBillingInfoMandatory}} 
+              @checked={{this.data.event.isBillingInfoMandatory}}
             />
             <label for="billing_info">
               <strong>{{t 'Billing Info'}}:</strong>
@@ -605,12 +605,17 @@
       </div>
     </div>
   {{/if}}
+  <div class="field">
+    <label for="description">{{t 'After Order Message'}}</label>
+    <Textarea
+      @value={{this.data.event.afterOrderMessage}} />
+  </div>
 </form>
 
 <Modals::TaxInfoModal
   @isOpen={{this.taxModalIsOpen}}
   @tax={{this.data.event.tax}}
-  @hasTaxInfo={{this.data.event.isTaxEnabled}} 
+  @hasTaxInfo={{this.data.event.isTaxEnabled}}
 />
 
 <Forms::Wizard::WizardFooter

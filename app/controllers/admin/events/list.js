@@ -6,7 +6,6 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'starts-at';
-
   sort_dir = 'DSC';
 
    @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
@@ -55,11 +54,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
          width           : 80
        },
        {
-         name            : this.l10n.t('Roles'),
-         valuePath       : 'owner',
-         extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
-         cellComponent   : 'ui-table/cell/cell-roles',
-         width           : 185
+         name          : this.l10n.t('Roles'),
+         valuePath     : 'roles',
+         cellComponent : 'ui-table/cell/cell-roles',
+         width         : 185
        },
        {
          name          : this.l10n.t('Sessions'),

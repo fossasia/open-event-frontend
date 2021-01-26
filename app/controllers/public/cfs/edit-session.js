@@ -13,7 +13,7 @@ export default class EditSessionController extends Controller {
           {
             id: 'session_save'
           });
-        this.transitionToRoute('public.session.view', this.model.event.identifier, this.model.session.id);
+        this.transitionToRoute('public.cfs.view-session', this.model.event.identifier, this.model.session.id);
       })
       .catch(e => {
         console.error('Error while editing session', e);

@@ -32,9 +32,11 @@
             <Public::SideMenuOuter @event={{this.model}} />
           {{/if}}
         {{else}}
-          <div class="ui fluid side-menu">
-            <Public::SideMenuOuter @event={{this.model}} />
-          </div>
+          {{#if this.displaySideMenu}}
+            <div class="ui fluid side-menu">
+              <Public::SideMenuOuter @event={{this.model}} />
+            </div>
+          {{/if}}
         {{/if}}
       </div>
       {{#unless this.device.isMobile}}
@@ -44,8 +46,8 @@
       {{/unless}}
       <div class="three wide column">
         {{#if this.displaySideMenu}}
+          <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 pt-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
-          <Public::Stream::JoinVideo @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 pt-0" />
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
           {{#if (and this.device.isMobile this.twitterLink)}}
               <div class="item">
@@ -129,7 +131,8 @@
   <Modals::SimpleModal
     @isOpen={{true}}
     @header={{t 'Login or Buy Tickets'}}
-    @action={{this.toLogin}}>
+    @action={{this.toLogin}}
+    @cancel={{this.closeVideoDialog}}>
     {{t 'You need to login or get a ticket for this event before you can join it online.'}}
   </Modals::SimpleModal>
 {{/if}}
