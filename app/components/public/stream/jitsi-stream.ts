@@ -44,7 +44,14 @@ export default class PublicStreamJitsiStream extends Component<Args> {
         startWithVideoMuted : true
       },
       interfaceConfigOverwrite: {
-        HIDE_INVITE_MORE_HEADER: true
+        HIDE_INVITE_MORE_HEADER: true,
+        TOOLBAR_BUTTONS: [
+          'microphone', 'camera', 'closedcaptions', 'desktop', 'security', 'fullscreen',
+          'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+          'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+          'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
+          'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone'
+        ]
       }
     };
     const api = new window.JitsiMeetExternalAPI(domain, options);
