@@ -91,7 +91,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       }));
 
       await Promise.all((data.accessCodes ? data.accessCodes.toArray() : []).map(code => {
-        if(code.whenSalesEnd) {
+        if (code.whenSalesEnd) {
           code.set('validTillDate', event.endsAtDate);
           return code.save();
         }
