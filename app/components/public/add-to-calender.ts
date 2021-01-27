@@ -31,6 +31,10 @@ export default class AddToCalender extends Component<Args> {
     return desc;
   }
 
+  get Session(): boolean {
+    return this.args.event.sessions;
+  }
+
   get startsAt(): Moment {
     const { event } = this.args;
     return moment(event.startsAt).tz(event.timezone);

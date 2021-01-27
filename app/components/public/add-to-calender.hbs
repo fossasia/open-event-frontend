@@ -1,20 +1,20 @@
-<div class="ui list basic fluid segment m-0 pb-0">
+<div class="ui list basic segment m-0 pb-0">
   <div class="item">
     <i class="clock alternate outline icon pt-1"></i>
     <div class="content">
       <Public::EventDateTime @event={{@event}} />
     </div>
 
-    <div class="ui two item menu">
-      <div class="item">
-        <UiDropdown class="ui floating fluid dropdown text center aligned">
-          <i class="add to calendar icon"></i>
-          {{#if @event.sessions}}
+    <div class="ui grid mt-4">
+      <div class="eight wide column p-1">
+        <UiDropdown class="ui floating fluid dropdown button mb-2 text center aligned">
+          {{#if this.Session}}
+            <i class="add to calendar icon"></i>
             {{t 'Add Event'}}
           {{else}}
             {{t 'Add to Calendar'}}
           {{/if}}
-          <div class="ui fluid vertical pointing menu">
+          <div class="menu">
             {{#each this.calendarUrls as |calendar|}}
               <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
                 {{calendar.name}}
@@ -23,12 +23,12 @@
           </div>
         </UiDropdown>
       </div>
-      {{#if @event.sessions}} 
-        <div class="item"> 
-          <UiDropdown class="ui floating fluid dropdown text center aligned">
+      <div class="eight wide column p-1">
+        {{#if this.Session}}    
+          <UiDropdown class="ui floating fluid dropdown button mb-2 text center aligned">
             <i class="add to calendar icon"></i>
             {{t 'Add Sessions'}}
-            <div class="ui fluid vertical pointing menu">
+            <div class="menu">
               {{#each this.SessioncalendarUrls as |calendar|}}
                 <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
                   {{calendar.name}}
@@ -36,11 +36,9 @@
               {{/each}}
             </div>
           </UiDropdown>
-        </div>
-      {{/if}}
+        {{/if}}
+      </div>
     </div>
-    
-
   </div>
 
 </div>
