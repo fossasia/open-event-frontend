@@ -30,6 +30,9 @@ export default class ViewController extends Controller {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     } finally {
       this.set('isLoading', false);
+      document.querySelector(`#top`).scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   }
 
