@@ -148,6 +148,11 @@ Router.map(function() {
     });
   });
   this.route('explore');
+  this.route('groups', function() {
+    this.route('list');
+    this.route('create');
+    this.route('edit', { path: '/:group_id/edit' });
+  });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {
       this.route('list', { path: '/:ticket_status' });
