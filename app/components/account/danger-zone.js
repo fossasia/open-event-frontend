@@ -1,12 +1,18 @@
 import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
-
+import moment from 'moment';
 @classic
 export default class DangerZone extends Component {
   @computed('data.events', 'data.orders')
   get isUserDeletable() {
-    if (this.data.events.length || this.data.orders.length) {
+    let validOrder = 0;
+    this.data.orders.map(x => {
+      if (x.get('status') !== 'cancelled' && x.event.get('endsAt') > moment()) {
+        validOrder = validOrder + 1;
+      }
+    });
+    if (this.data.events.length || validOrder) {
       return false;
     }
     return true;
