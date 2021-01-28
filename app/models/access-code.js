@@ -14,9 +14,9 @@ export default ModelBase.extend({
   validFrom     : attr('moment'),
   validTill     : attr('moment'),
 
-  tickets   : hasMany('ticket'),
-  marketer  : belongsTo('user', { inverse: 'accessCodes' }),
-  event: belongsTo('event', {
+  tickets  : hasMany('ticket'),
+  marketer : belongsTo('user', { inverse: 'accessCodes' }),
+  event    : belongsTo('event', {
     inverse: 'accessCodes'
   }), // The event that this access code belongs to
   orders: hasMany('order'),
@@ -24,7 +24,7 @@ export default ModelBase.extend({
   /**
    * Computed properties
    */
-  isExpired : computed('validTill', 'event', function() {
+  isExpired: computed('validTill', 'event', function() {
     return new Date(this.validTill) ? new Date() > new Date(this.validTill) : new Date() > this.event.get('endsAt');
   }),
 
