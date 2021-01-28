@@ -9,7 +9,7 @@ export default class BasicDetailsController extends Controller.extend(EventWizar
   save() {
     this.saveEventDataAndRedirectTo(
       'events.view.index',
-      ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization', 'accessCodes']
+      ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
     );
   }
 
@@ -17,7 +17,7 @@ export default class BasicDetailsController extends Controller.extend(EventWizar
   move() {
     this.saveEventDataAndRedirectTo(
       'events.view.edit.other-details',
-      ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization', 'accessCodes']
+      ['tickets', 'socialLinks', 'copyright', 'tax', 'stripeAuthorization']
     );
   }
 }

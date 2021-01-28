@@ -8,7 +8,6 @@ export default ModelBase.extend({
   code          : attr('string'),
   accessUrl     : attr('string'),
   isActive      : attr('boolean', { defaultValue: true }),
-  whenSalesEnds : attr('boolean', { defaultValue: false }),
   ticketsNumber : attr('number', { defaultValue: 10 }),
   minQuantity   : attr('number', { defaultValue: 0 }),
   maxQuantity   : attr('number', { defaultValue: 10000 }),
@@ -17,9 +16,6 @@ export default ModelBase.extend({
 
   tickets   : hasMany('ticket'),
   marketer  : belongsTo('user', { inverse: 'accessCodes' }),
-  isExpired : computed('validTill', function() {
-    return new Date() > new Date(this.validTill);
-  }),
   event: belongsTo('event', {
     inverse: 'accessCodes'
   }), // The event that this access code belongs to
@@ -28,6 +24,9 @@ export default ModelBase.extend({
   /**
    * Computed properties
    */
+  isExpired : computed('validTill', 'event', function() {
+    return new Date(this.validTill) ? new Date() > new Date(this.validTill) : new Date() > this.event.get('endsAt');
+  }),
 
   validFromDate : computedDateTimeSplit.bind(this)('validFrom', 'date', 'validTill'),
   validFromTime : computedDateTimeSplit.bind(this)('validFrom', 'time', 'validTill'),

@@ -4,6 +4,8 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { later } from '@ember/runloop';
 
 export default Component.extend(FormMixin, {
+  whenSalesEnds : false,
+
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
       return this.data.minQuantity <= this.data.maxQuantity;
@@ -131,8 +133,8 @@ export default Component.extend(FormMixin, {
       });
     },
     updateEndDate() {
-      this.data.set('whenSalesEnds', !this.data.whenSalesEnds);
-      this.data.set('validTill', this.data.event.get('endsAt'));
+      this.set('whenSalesEnds', !this.whenSalesEnds);
+      this.data.set('validTill', null);
     },
     updateTicketsSelection(ticket) {
       if (!ticket.get('isChecked')) {

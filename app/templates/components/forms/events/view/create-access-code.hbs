@@ -65,7 +65,7 @@
             @checked={{this.data.whenSalesEnds}}
             @onChange={{action "updateEndDate"}} />
         </div>
-        {{#if (not this.data.whenSalesEnds)}}
+        {{#if (not this.whenSalesEnds)}}
         <div class="wide field {{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <Widgets::Forms::DatePicker
