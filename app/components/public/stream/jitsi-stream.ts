@@ -23,6 +23,14 @@ export default class PublicStreamJitsiStream extends Component<Args> {
     const stream = this.args.videoStream;
     const channel = await stream.videoChannel;
 
+    const defaultToolbarButtons = [
+      'microphone', 'camera', 'closedcaptions', 'desktop', 'embedmeeting', 'fullscreen',
+      'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+      'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+      'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
+      'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone', 'security'
+    ];
+
     const root = document.getElementById('jitsi-root');
 
     root!.innerHTML = '';  // eslint-disable-line @typescript-eslint/no-non-null-assertion
@@ -45,13 +53,7 @@ export default class PublicStreamJitsiStream extends Component<Args> {
       },
       interfaceConfigOverwrite: {
         HIDE_INVITE_MORE_HEADER : true,
-        TOOLBAR_BUTTONS         : [
-          'microphone', 'camera', 'closedcaptions', 'desktop', 'security', 'fullscreen',
-          'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
-          'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
-          'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
-          'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone'
-        ]
+        TOOLBAR_BUTTONS         : defaultToolbarButtons.filter(el => el !== 'embedmeeting')
       }
     };
     const api = new window.JitsiMeetExternalAPI(domain, options);
