@@ -57,7 +57,7 @@
         <td><strong>{{t 'No. of Speakers'}}</strong></td>
         <td>
           {{#if this.data.event.isSessionsSpeakersEnabled}}
-            {{this.data.statistics.speakers}}
+            {{this.data.statistics.speakers.total}}
           {{else}}
             {{t 'Sessions and Speakers not enabled.'}}
           {{/if}}
