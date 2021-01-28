@@ -1,4 +1,4 @@
-<div class="ui list">
+<div class="ui list pt-4">
   <div class="social-links">
     {{#if this.externalUrl}}
       <div class="mr-1" >
@@ -9,8 +9,8 @@
     {{/if}}
     {{#each this.socialLinks as |socialLink|}}
       {{#if (not-eq socialLink.normalizedName 'globe')}}
-        <div class="mr-1" >
-          <a href="{{socialLink.link}}" class="ui icon {{socialLink.normalizedName}} {{socialLink.buttonColor}} big button">
+        <div class="m-1" >
+          <a href="{{socialLink.link}}" class="ui icon {{socialLink.normalizedName}} {{socialLink.buttonColor}} big button links-icon">
             <i class="ui inverted {{socialLink.normalizedName}} icon"></i>
           </a>
         </div>
@@ -20,7 +20,7 @@
     {{#if (eq socialLink.normalizedName 'globe')}}
       <div class="m-1">
         <UiPopup @content={{t-var socialLink.displayName}}>
-          <a href="{{socialLink.link}}" class="ui icon blue small button extra-link d-flex items-center content-center" target="_blank" rel="noopener nofollow">
+          <a href="{{socialLink.link}}" class="ui icon blue button links-icon d-flex items-center content-center" target="_blank" rel="noopener nofollow">
             <div  class="clamp" style="font-size: .8rem;">{{socialLink.displayName}}</div>
           </a>
         </UiPopup>
