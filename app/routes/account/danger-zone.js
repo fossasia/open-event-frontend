@@ -14,22 +14,22 @@ export default class DangerZoneRoute extends Route.extend(AuthenticatedRouteMixi
 
     const filter = [{
       and: [
-      {
-      or: ['completed', 'placed', 'pending', 'initializing'].map(val => ({
-        name : 'status',
-        op   : 'eq',
-        val
-      }))
-    },
-    {
-      name : 'event',
-      op   : 'has',
-      val  : {
-        name : 'ends-at',
-        op   : 'ge',
-        val  : moment()
-      }
-    }]
+        {
+          or: ['completed', 'placed', 'pending', 'initializing'].map(val => ({
+            name : 'status',
+            op   : 'eq',
+            val
+          }))
+        },
+        {
+          name : 'event',
+          op   : 'has',
+          val  : {
+            name : 'ends-at',
+            op   : 'ge',
+            val  : moment()
+          }
+        }]
     }];
 
     const events = await user.query('events', {});
