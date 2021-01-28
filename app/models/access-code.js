@@ -25,7 +25,7 @@ export default ModelBase.extend({
    * Computed properties
    */
   isExpired: computed('validTill', 'event', function() {
-    return new Date(this.validTill) ? new Date() > new Date(this.validTill) : new Date() > this.event.get('endsAt');
+    return this.validTill ? new Date() > new Date(this.validTill) : new Date() > this.event.get('endsAt');
   }),
 
   validFromDate : computedDateTimeSplit.bind(this)('validFrom', 'date', 'validTill'),

@@ -62,7 +62,7 @@
         <div class="inline field">
           <UiCheckbox
             @label={{t "When sales ends"}}
-            @checked={{this.data.whenSalesEnds}}
+            @checked={{this.whenSalesEnds}}
             @onChange={{action "updateEndDate"}} />
         </div>
         {{#if (not this.whenSalesEnds)}}
