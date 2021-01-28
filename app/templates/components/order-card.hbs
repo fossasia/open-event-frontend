@@ -12,7 +12,7 @@
         {{#each-in (group-by 'name' (map-by 'ticket' this.order.attendees)) as |name tickets|}}
           <div class="ui green large label">{{tickets.length}} x {{name}}</div>
         {{/each-in}}
-        {{#if (not @noCanelTicket)}}
+        {{#if (not @restrictTicketCancellation)}}
           <UiPopup @content={{t "Cancel Ticket"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
             {{t 'Cancel Ticket'}}
           </UiPopup>
