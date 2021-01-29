@@ -5690,6 +5690,13 @@ debug@~3.1.0:
   dependencies:
     ms "2.0.0"
 
+debug@~4.1.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
+  integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
+  dependencies:
+    ms "^2.1.1"
+
 decamelize@^1.1.1, decamelize@^1.1.2, decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
@@ -6054,10 +6061,10 @@ ember-auto-import@^1.10.1, ember-auto-import@^1.5.2, ember-auto-import@^1.5.3:
     walk-sync "^0.3.3"
     webpack "^4.43.0"
 
-ember-basic-dropdown@^3.0.11:
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/ember-basic-dropdown/-/ember-basic-dropdown-3.0.11.tgz#d74e931381595678bede7adea91631db3a269aaa"
-  integrity sha512-J6PFb+BGD7Md43ZJo8N2c/y0sgcoG3O1/m488XxVbb20UpIRlGXjw9Zwm8cd2f7xhSefNXsbVWyQHEkl4iXzDg==
+ember-basic-dropdown@^3.0.12:
+  version "3.0.12"
+  resolved "https://registry.yarnpkg.com/ember-basic-dropdown/-/ember-basic-dropdown-3.0.12.tgz#dc9eb1098cec6e1af27402c62cc3c3402e6d5824"
+  integrity sha512-W67UtAWaANCEwwHYTiagfLRlAcn6dC6f0NO0DpJRIZK9iflBzV6nSIkbCuN1lwf6JFRbEGoFj2bV+io0maMCsg==
   dependencies:
     "@ember/render-modifiers" "^1.0.2"
     "@glimmer/component" "^1.0.1"
@@ -6067,6 +6074,7 @@ ember-basic-dropdown@^3.0.11:
     ember-cli-typescript "^3.1.2"
     ember-element-helper "^0.2.0"
     ember-maybe-in-element "^2.0.1"
+    ember-style-modifier "^0.6.0"
     ember-truth-helpers "^2.1.0 || ^3.0.0"
 
 ember-cache-primitive-polyfill@^1.0.0:
@@ -7406,6 +7414,18 @@ ember-modifier@^1.0.2:
     ember-cli-string-utils "^1.1.0"
     ember-modifier-manager-polyfill "^1.2.0"
 
+ember-modifier@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ember-modifier/-/ember-modifier-2.1.1.tgz#aa3a12e2d6cf1622f774f3f1eab4880982a43fa9"
+  integrity sha512-g9mcpFWgw5lgNU40YNf0USNWqoGTJ+EqjDQKjm7556gaRNDeGnLylFKqx9O3opwLHEt6ZODnRDy9U0S5YEMREg==
+  dependencies:
+    ember-cli-babel "^7.22.1"
+    ember-cli-normalize-entity-name "^1.0.0"
+    ember-cli-string-utils "^1.1.0"
+    ember-cli-typescript "^3.1.3"
+    ember-destroyable-polyfill "^2.0.2"
+    ember-modifier-manager-polyfill "^1.2.0"
+
 ember-moment@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/ember-moment/-/ember-moment-8.0.1.tgz#3a11929efeb7fb6bc5c1cc2c9e4c43bd9c500f80"
@@ -7431,15 +7451,15 @@ ember-notify@^6.0.0:
     ember-cli-babel "^7.7.3"
     ember-cli-htmlbars "^3.0.1"
 
-ember-power-select@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-4.1.0.tgz#0897ae56ed96835b2393452b3303126407d468b7"
-  integrity sha512-HJQDQq8riUUtrfrN69yRIOCx8hsLPGmA6/pAn8BOnmL+N+86It8d/xRpXrZBQw/Dw9cnj9EQp2Vqi0PhPBBhGg==
+ember-power-select@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-4.1.2.tgz#f19306db7612b440861f23b12a35e4484d3a4203"
+  integrity sha512-Bhr3Gfq1emXbs82+trjiqt2K8tUIZMJ82ZJ5yaKgEsptLGrI/3pZ43PP8ziZEjN/Kfor/H0bfL+JP+5oWh612g==
   dependencies:
     "@glimmer/component" "^1.0.2"
     "@glimmer/tracking" "^1.0.2"
     ember-assign-helper "^0.3.0"
-    ember-basic-dropdown "^3.0.11"
+    ember-basic-dropdown "^3.0.12"
     ember-cli-babel "^7.22.1"
     ember-cli-htmlbars "^5.3.1"
     ember-cli-typescript "^3.1.4"
@@ -7618,6 +7638,14 @@ ember-source@3.20.3:
     resolve "^1.17.0"
     semver "^6.1.1"
     silent-error "^1.1.1"
+
+ember-style-modifier@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/ember-style-modifier/-/ember-style-modifier-0.6.0.tgz#cc5e58db7f6d6662028a7b4e3cf63cf25ba59a8f"
+  integrity sha512-KqW4vyR80l/GMJsuFV+WLqTmGjXKLpoQ/HAmno+oMDrMt13p/5ImrvarQ6lFgXttFnLCxl6YpMY4YX27p1G54g==
+  dependencies:
+    ember-cli-babel "^7.21.0"
+    ember-modifier "^2.1.0"
 
 ember-table@^2.2.3:
   version "2.2.3"
@@ -9955,7 +9983,7 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.5:
+iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
   dependencies:
