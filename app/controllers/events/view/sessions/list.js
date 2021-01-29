@@ -63,16 +63,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : this.l10n.t('Average Rating'),
-        width           : 90,
-        valuePath       : 'averageRating',
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating-details',
+        name          : this.l10n.t('Average Rating'),
+        width         : 90,
+        valuePath     : 'averageRating',
+        cellComponent : 'ui-table/cell/events/view/sessions/cell-rating-details'
       },
       {
-        name            : this.l10n.t('No. of ratings'),
-        width           : 90,
-        valuePath       : 'feedbacks.length',
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating-details',
+        name          : this.l10n.t('No. of ratings'),
+        width         : 90,
+        valuePath     : 'feedbacks.length',
+        cellComponent : 'ui-table/cell/events/view/sessions/cell-rating-details'
       },
       {
         name      : this.l10n.t('Track'),
