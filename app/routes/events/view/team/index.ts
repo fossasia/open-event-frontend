@@ -12,6 +12,9 @@ export default class EventsViewTeamIndex extends Route.extend({
       roleInvites: event.query('roleInvites', {
         include: 'role'
       }),
+      usersEventsRoles: event.query('roles', {
+        include: 'user,role'
+      }),
       roles: this.store.findAll('role')
     });
   }

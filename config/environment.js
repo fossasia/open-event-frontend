@@ -31,7 +31,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || (environment === 'production' ? 'https://api.eventyay.com' : 'https://open-event-api-dev.herokuapp.com'),
+      apiHost      : process.env.API_HOST || (environment === 'production' ? 'https://api.eventyay.com' : 'https://open-event.dokku.fossasia.org'),
       apiNamespace : process.env.API_NAMESPACE || 'v1',
       version      : process.env.npm_package_version
     },

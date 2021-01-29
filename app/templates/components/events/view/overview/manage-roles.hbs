@@ -19,52 +19,62 @@
       <tr>
         <th>{{t 'User (Email)'}}</th>
         <th>{{t 'Role'}}</th>
-        {{#if (and @editable  (eq this.roleType 'pending'))}}
+        {{#if @editable}}
           <th>{{t 'Options'}}</th>
         {{/if}}
       </tr>
     </thead>
     <tbody>
-      {{#each this.roleInvites as |roleInvite|}}
-        <tr>
-          <td>{{roleInvite.email}}</td>
-          <td>{{roleInvite.role.titleName}}</td>
-          {{#if (and @editable  (eq this.roleType 'pending'))}}
-            <td>
-              <div class="ui horizontal compact basic buttons">
-                {{#if (eq this.roleType 'accepted')}}
-                  <UiPopup
-                    @content={{t "Delete"}}
-                    @class="ui icon button"
-                    @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" roleInvite))}}>
-                    <i class="trash icon"></i>
-                  </UiPopup>
-                {{else}}
-                  <UiPopup
-                    @content={{t "Delete"}}
-                    @class="ui icon button"
-                    @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
-                    <i class="trash icon"></i>
-                  </UiPopup>
-                {{/if}}
-                {{#if (eq this.roleType 'pending')}}
-                  <UiPopup
-                    @content={{t "Resend invite"}}
-                    @click={{action "resendInvite" roleInvite}}
-                    @class="ui icon button"
-                    @position="top center">
-                    <i class="mail outline icon"></i>
-                  </UiPopup>
-                {{/if}}
-              </div>
-            </td>
-          {{/if}}
-        </tr>
+      {{#if (eq this.roleType 'pending')}}
+        {{#each this.roleInvites as |roleInvite|}}
+          <tr>
+            <td>{{roleInvite.email}}</td>
+            <td>{{t-var roleInvite.role.titleName}}</td>
+            {{#if (and @editable  (eq this.roleType 'pending'))}}
+              <td>
+                <div class="ui horizontal compact basic buttons">
+                    <UiPopup
+                      @content={{t "Delete"}}
+                      @class="ui icon button"
+                      @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
+                      <i class="trash icon"></i>
+                    </UiPopup>
+                    <UiPopup
+                      @content={{t "Resend invite"}}
+                      @click={{action "resendInvite" roleInvite}}
+                      @class="ui icon button"
+                      @position="top center">
+                      <i class="mail outline icon"></i>
+                    </UiPopup>
+                </div>
+              </td>
+            {{/if}}
+          </tr>
+        {{else}}
+          <div class="ui basic segment">
+            {{t 'No records to show'}}
+          </div>
+        {{/each}}
       {{else}}
-        <div class="ui basic segment">
-          {{t 'No records to show'}}
-        </div>
-      {{/each}}
+        {{#each this.data.usersEventsRoles as |eventRole|}}
+          <tr>
+            <td>{{eventRole.user.email}}</td>
+            <td>{{eventRole.role.titleName}}</td>
+            {{#if (and @editable  (not-eq eventRole.role.name 'owner'))}}
+              <td>
+                <div class="ui horizontal compact basic buttons">
+                    <UiPopup
+                      @content={{t "Delete"}}
+                      @class="ui icon button"
+                      @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" eventRole))}}>
+                      <i class="trash icon"></i>
+                    </UiPopup>
+                </div>
+              </td>
+            {{/if}}
+          </tr>
+        {{/each}}
+      {{/if}}
     </tbody>
   </table>
 </div>

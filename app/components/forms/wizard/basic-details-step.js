@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
-import { orderBy, filter, find } from 'lodash-es';
+import { orderBy, filter, find, difference } from 'lodash-es';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
@@ -12,15 +12,17 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import ENV from 'open-event-frontend/config/environment';
 import $ from 'jquery';
+import { tn } from 'open-event-frontend/utils/text';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone: moment.tz.guess(),
   timezones,
 
-  torii: service(),
+  torii : service(),
+  tn    : service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Mixed', 'To be announced'],
+  locationMenuItems: [tn.t('Venue'), tn.t('Online'), tn.t('Hybrid'), tn.t('To be announced')],
 
   selectedLocationType: 'Venue',
 
@@ -30,7 +32,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this._super(...arguments);
     if (this.data.event.online) {
       if (this.data.event.locationName) {
-        this.selectedLocationType = 'Mixed';
+        this.selectedLocationType = 'Hybrid';
       } else {
         this.selectedLocationType = 'Online';
       }
@@ -42,7 +44,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Mixed'].includes(this.selectedLocationType);
+    return ['Venue', 'Hybrid'].includes(this.selectedLocationType);
   }),
 
   countries: computed(function() {
@@ -110,6 +112,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
   }),
 
+  ticketCount: computed('data.event.tickets.[]', 'deletedTickets.[]', function() {
+    return difference(this.data.event.tickets.toArray(), this.deletedTickets).length;
+  }),
+
   timezoneObserver: observer('data.event.timezone', function() {
     const { event } = this.data;
     const { oldTimezone } = this;
@@ -136,10 +142,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
     $.fn.form.settings.rules.checkMaxMinPrice = () => {
-      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
+      return parseInt($('.ui.form').form('get value', 'min_price'), 10) <= parseInt($('.ui.form').form('get value', 'max_price'), 10);
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
       return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
+    };
+    $.fn.form.settings.rules.checkValidTimeDifference = () => {
+      return !($('[name=start_date]')[0].value === $('[name=end_date]')[0].value && moment($('[name=start_time]')[0].value, 'HH:mm').isSameOrAfter(moment($('[name=end_time]')[0].value, 'HH:mm')));
+    };
+    $.fn.form.settings.rules.checkDateDifference = () => {
+      return moment($('[name=end_date]')[0].value, 'MM-DD-YYYY').diff(moment($('[name=start_date]')[0].value, 'MM-DD-YYYY'), 'days') <= 20;
     };
 
     const validationRules = {
@@ -188,6 +200,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid end date')
+            },
+            {
+              type   : 'checkDateDifference',
+              prompt : this.l10n.t('Event duration can not be more than 20 days')
             }
           ]
         },
@@ -198,6 +214,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Starting time should be lesser than the ending time')
             }
           ]
         },
@@ -208,6 +228,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Ending time should be greater than the starting time')
             }
           ]
         },
@@ -477,12 +501,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
-      this.deletedTickets.push(deleteTicket);
+      this.set('deletedTickets', [...this.deletedTickets, deleteTicket]);
       deleteTicket.deleteRecord();
     },
 
-    moveTicket(ticket, direction) {
-      const index = ticket.get('position');
+    moveTicket(ticket, index, direction) {
       const otherTicket = this.data.event.tickets.find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
       otherTicket.set('position', index);
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));

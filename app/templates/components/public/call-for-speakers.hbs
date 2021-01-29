@@ -27,7 +27,7 @@
         {{#each this.data.userSession as |session|}}
           {{#if session.id}}
             <div class="item">
-              <LinkTo @route="public.cfs.edit-session" @model={{session.id}}>
+              <LinkTo @route="public.cfs.view-session" @model={{session.id}}>
                 <a href="#" class="ui very tiny basic blue button">{{session.title}}</a>
               </LinkTo>
             </div>

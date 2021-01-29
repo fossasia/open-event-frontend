@@ -14,7 +14,6 @@ export default class RoleInvitesRoute extends Route {
     // Since this is only an intermediate page
     if (this.fastboot.isFastBoot) {return}
     const { token } = transition.to.queryParams;
-    const originalEventId = transition.resolvedModels.public.originalId;
     const payload = {
       data: { token }
     };
@@ -25,7 +24,7 @@ export default class RoleInvitesRoute extends Route {
 
       if (this.authManager.currentUser.email === user.email) {
         const invite = await this.loader.post('/role_invites/accept-invite', payload);
-        return this.transitionTo('events.view', invite.event);
+        return this.transitionTo('events.view', invite.event_identifier);
       }
 
       this.set('session.skipRedirectOnInvalidation', true);
@@ -33,7 +32,6 @@ export default class RoleInvitesRoute extends Route {
     }
     this.set('redirectionParams',  {
       queryParams: {
-        event       : originalEventId,
         inviteToken : token,
         inviteEmail : user.email
       }
