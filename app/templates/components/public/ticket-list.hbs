@@ -209,14 +209,23 @@
         <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>
           {{t 'Order Now'}}
         </button>
-        <div class="ui hidden divider"></div>
-        {{#if this.event.refundPolicy}}
-          <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
-            <i class="info icon"></i>
-            {{t 'Refund Policy'}}
-          </UiPopup>
-        {{/if}}
       </div>
+    </div>
+    <div class="column sixteen wide right floated">
+      {{#if this.event.refundPolicy}}
+        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon right floated button">
+          <i class="info icon"></i>
+          {{t 'Refund Policy'}}
+        </UiPopup>
+      {{/if}}
+      {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+        <div>
+          <button class="ui mini labeled blue icon right floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+            <i class="envelope icon"></i>
+            {{t 'Contact Organizer'}}
+          </button>
+        </div>
+      {{/if}}
     </div>
   </div>
 </form>
@@ -228,4 +237,10 @@
   @loginExistingUser={{this.loginExistingUser}}
   @userExists={{this.userExists}}
   @errorMessage={{this.errorMessage}} />
-  
+
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.event}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}
+
