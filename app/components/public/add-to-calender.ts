@@ -18,8 +18,7 @@ export default class AddToCalender extends Component<Args> {
   @tracked
   showSessions : any;
 
-  
-  
+
   get description(): string {
     const { event } = this.args;
     let desc = `Join the event at <a href = "${event.url}">${event.url}</a> \n `;
@@ -39,7 +38,7 @@ export default class AddToCalender extends Component<Args> {
   }
 
   constructor(owner:null, args:Args) {
-    super(owner , args);
+    super(owner, args);
     this.checkSessions();
   }
 
