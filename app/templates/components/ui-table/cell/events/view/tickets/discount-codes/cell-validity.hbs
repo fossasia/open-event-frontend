@@ -1,3 +1,7 @@
 <span>
-	{{general-date this.record 'date-time-short'}}
+  {{#if this.extraRecords.validTill}}
+    {{general-date this.record 'date-time-short'}}
+  {{else}}
+    {{t 'When sales ends'}}
+  {{/if}}
 </span>

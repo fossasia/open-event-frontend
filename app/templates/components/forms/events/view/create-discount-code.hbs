@@ -99,23 +99,31 @@
     </div>
     <div class="field">
       <label>{{t 'Discount expires on'}}</label>
-        <div class="{{if this.device.isMobile 'grouped'}} fields">
-          <div class="{{unless this.device.isMobile 'four wide'}} field">
-            <Widgets::Forms::DatePicker
-              @type="text"
-              @name="end_date"
-              @value={{this.data.validTillDate}}
-              @rangePosition="end"
-              @onChange={{action "onChange"}} />
-          </div>
-          <div class="{{unless this.device.isMobile 'four wide'}} field">
-            <Widgets::Forms::TimePicker
-              @type="text"
-              @name="end_time"
-              @value={{this.data.validTillTime}}
-              @onChange={{action "onChange"}} />
-          </div>
+        <div class="inline field">
+          <UiCheckbox
+            @label={{t "When sales ends"}}
+            @checked={{this.whenSalesEnds}}
+            @onChange={{action "updateEndDate"}} />
         </div>
+        {{#if (not this.whenSalesEnds)}}
+          <div class="{{if this.device.isMobile 'grouped'}} fields">
+            <div class="{{unless this.device.isMobile 'four wide'}} field">
+              <Widgets::Forms::DatePicker
+                @type="text"
+                @name="end_date"
+                @value={{this.data.validTillDate}}
+                @rangePosition="end"
+                @onChange={{action "onChange"}} />
+            </div>
+            <div class="{{unless this.device.isMobile 'four wide'}} field">
+              <Widgets::Forms::TimePicker
+                @type="text"
+                @name="end_time"
+                @value={{this.data.validTillTime}}
+                @onChange={{action "onChange"}} />
+            </div>
+          </div>
+        {{/if}}
     </div>
     <div class="field">
       <label>{{t 'Discount Link'}}</label>

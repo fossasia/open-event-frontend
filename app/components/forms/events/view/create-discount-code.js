@@ -4,6 +4,9 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { later } from '@ember/runloop';
 import { currencySymbol } from 'open-event-frontend/helpers/currency-symbol';
 export default Component.extend(FormMixin, {
+
+  whenSalesEnds: false,
+  
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
       return this.data.minQuantity <= this.data.maxQuantity;
@@ -160,6 +163,10 @@ export default Component.extend(FormMixin, {
         ticket.set('isChecked', false);
         this.set('allTicketTypesChecked', false);
       }
+    },
+    updateEndDate() {
+      this.set('whenSalesEnds', !this.whenSalesEnds);
+      this.data.set('validTill', null);
     },
     submit(data) {
       this.onValid(() => {
