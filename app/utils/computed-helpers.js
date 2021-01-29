@@ -13,30 +13,23 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
   return computed(property, {
     get() {
       let momentDate = moment(this.get(property));
-      if (this.constructor.modelName === 'event') {
-        momentDate = momentDate.tz(this.timezone);
-      }
-      if (this.constructor.modelName === 'speakers-call' || this.constructor.modelName === 'ticket') {
-        momentDate = momentDate.tz(this.event.get('timezone'));
+      let newTimezone = getTimezone(this);
+      if (newTimezone) {
+        momentDate = momentDate.tz(newTimezone);
       }
       return momentDate.format(getFormat(segmentFormat));
     },
     set(key, value) {
       let newDate = moment(value, getFormat(segmentFormat));
-      if (this.constructor.modelName === 'event') {
-        newDate = newDate.tz(this.timezone, true);
-      }
-      if (this.constructor.modelName === 'speakers-call' || this.constructor.modelName === 'ticket') {
-        newDate = newDate.tz(this.event.get('timezone'), true);
+      let newTimezone = getTimezone(this);
+      if (newTimezone) {
+        newDate = newDate.tz(newTimezone, true);
       }
       let oldDate = newDate;
       if (this.get(property)) {
         oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
-        if (this.constructor.modelName === 'event') {
-          oldDate = oldDate.tz(this.timezone, true);
-        }
-        if (this.constructor.modelName === 'speakers-call' || this.constructor.modelName === 'ticket') {
-          oldDate = oldDate.tz(this.event.get('timezone'), true);
+        if (newTimezone) {
+          oldDate = oldDate.tz(newTimezone, true);
         }
       } else {
         oldDate = newDate;
@@ -66,4 +59,19 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
 
 function getFormat(segmentFormat) {
   return segmentFormat === 'time' ? FORM_TIME_FORMAT : (segmentFormat === 'date' ? FORM_DATE_FORMAT : segmentFormat);
+}
+
+function getTimezone(model) {
+  switch (model.constructor.modelName) {
+    case 'event':
+      return model.timezone;
+      break;
+    case 'ticket':
+    case 'speakers-call':
+      return model.event.get('timezone');
+      break;
+    default:
+      return null;
+      break;
+  }
 }
