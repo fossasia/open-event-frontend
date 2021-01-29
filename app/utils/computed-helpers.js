@@ -65,13 +65,10 @@ function getTimezone(model) {
   switch (model.constructor.modelName) {
     case 'event':
       return model.timezone;
-      break;
     case 'ticket':
     case 'speakers-call':
       return model.event.get('timezone');
-      break;
     default:
       return null;
-      break;
   }
 }
