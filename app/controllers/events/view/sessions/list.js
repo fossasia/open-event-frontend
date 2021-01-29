@@ -52,7 +52,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : this.l10n.t('Rating / Average Rating / No. of ratings'),
         width           : 160,
         valuePath       : 'id',
-        extraValuePaths : ['averageRating','feedbacks'],
+        extraValuePaths : ['averageRating', 'feedbacks'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
         options         : {
           ratedSessions: this.ratedSessions
