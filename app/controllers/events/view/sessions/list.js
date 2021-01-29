@@ -49,10 +49,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : this.l10n.t('Rating'),
-        width           : 60,
+        name            : this.l10n.t('Rating / Average Rating / No. of ratings'),
+        width           : 160,
         valuePath       : 'id',
-        extraValuePaths : ['feedbacks'],
+        extraValuePaths : ['averageRating','feedbacks'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
         options         : {
           ratedSessions: this.ratedSessions
@@ -61,12 +61,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           updateRating : this.updateRating.bind(this),
           addRating    : this.addRating.bind(this)
         }
-      },
-      {
-        name            : this.l10n.t('Average Rating / No. of ratings'),
-        width           : 120,
-        extraValuePaths : ['averageRating', 'feedbacks'],
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating-details'
       },
       {
         name      : this.l10n.t('Track'),
