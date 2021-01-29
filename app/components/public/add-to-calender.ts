@@ -2,6 +2,8 @@ import Component from '@glimmer/component';
 import moment, { Moment } from 'moment';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+import { hasSessions } from 'open-event-frontend/utils/event';
 
 
 interface Args {
@@ -13,6 +15,11 @@ export default class AddToCalender extends Component<Args> {
 
   @service loader: any;
 
+  @tracked
+  showSessions : any;
+
+  
+  
   get description(): string {
     const { event } = this.args;
     let desc = `Join the event at <a href = "${event.url}">${event.url}</a> \n `;
@@ -31,8 +38,18 @@ export default class AddToCalender extends Component<Args> {
     return desc;
   }
 
-  get Session(): boolean {
-    return this.args.event.sessions;
+  constructor(owner:null, args:Args) {
+    super(owner , args);
+    this.checkSessions();
+  }
+
+  async checkSessions() {
+    const { event } = this.args;
+    this.showSessions = this.showSessions ?? await hasSessions(this.loader, event);
+  }
+
+  get isSessionPublished(): boolean {
+    return this.args.event.isSchedulePublished;
   }
 
   get startsAt(): Moment {
