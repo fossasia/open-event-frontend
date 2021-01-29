@@ -6,7 +6,7 @@ import { currencySymbol } from 'open-event-frontend/helpers/currency-symbol';
 export default Component.extend(FormMixin, {
 
   whenSalesEnds: false,
-  
+
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
       return this.data.minQuantity <= this.data.maxQuantity;

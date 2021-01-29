@@ -28,9 +28,9 @@ export default ModelBase.extend({
   isActive      : attr('boolean', { defaultValue: true }),
   createdAt     : attr('moment'),
 
-  tickets   : hasMany('ticket'),
-  orders    : hasMany('order'),
-  event: belongsTo('event', {
+  tickets : hasMany('ticket'),
+  orders  : hasMany('order'),
+  event   : belongsTo('event', {
     inverse: 'discountCodes'
   }), // The event that this discount code belongs to [Form (2)]
   events: hasMany('event', {
@@ -38,7 +38,7 @@ export default ModelBase.extend({
   }), // The events that this discount code has been applied to [Form (1)]
   marketer: belongsTo('user'),
 
-  isExpired : computed('validTill','event', function() {
+  isExpired: computed('validTill', 'event', function() {
     return this.validTill ? new Date() > new Date(this.validTill) : new Date() > this.event.get('endsAt');
   }),
   validFromDate : computedDateTimeSplit.bind(this)('validFrom', 'date', 'validTill'),
