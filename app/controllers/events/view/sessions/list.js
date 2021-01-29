@@ -71,6 +71,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : this.l10n.t('No. of ratings'),
+        width           : 90,
         valuePath       : 'feedbacks.length',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
