@@ -5,8 +5,6 @@ import { later } from '@ember/runloop';
 import { currencySymbol } from 'open-event-frontend/helpers/currency-symbol';
 export default Component.extend(FormMixin, {
 
-  whenSalesEnds: false,
-
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
       return this.data.minQuantity <= this.data.maxQuantity;
@@ -121,6 +119,10 @@ export default Component.extend(FormMixin, {
     const link = origin + this.router.urlFor('public', params['events.view'].event_id, { queryParams: { code: this.data.code } });
     this.set('data.discountUrl', link);
     return link;
+  }),
+
+  whenSalesEnds: computed('data.validTill', function() {
+    return this.data.validTill ? false : true;
   }),
 
   amountLabel: computed('event.paymentCurrency', function() {

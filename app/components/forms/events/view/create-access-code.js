@@ -4,7 +4,6 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { later } from '@ember/runloop';
 
 export default Component.extend(FormMixin, {
-  whenSalesEnds: false,
 
   getValidationRules() {
     window.$.fn.form.settings.rules.checkMaxMin = () => {
@@ -115,6 +114,9 @@ export default Component.extend(FormMixin, {
       return true;
     }
     return false;
+  }),
+  whenSalesEnds: computed('data.validTill', function() {
+    return this.data.validTill ? false : true;
   }),
 
   isLinkSuccess: false,
