@@ -24,7 +24,7 @@ export default class PublicStreamJitsiStream extends Component<Args> {
     const channel = await stream.videoChannel;
 
     const defaultToolbarButtons = [
-      'microphone', 'camera', 'closedcaptions', 'desktop', 'embedmeeting', 'fullscreen',
+      'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
       'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
       'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
       'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
@@ -53,7 +53,7 @@ export default class PublicStreamJitsiStream extends Component<Args> {
       },
       interfaceConfigOverwrite: {
         HIDE_INVITE_MORE_HEADER : true,
-        TOOLBAR_BUTTONS         : defaultToolbarButtons.filter(el => el !== 'embedmeeting')
+        TOOLBAR_BUTTONS         : defaultToolbarButtons
       }
     };
     const api = new window.JitsiMeetExternalAPI(domain, options);
