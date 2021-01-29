@@ -16,7 +16,7 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       if (this.constructor.modelName === 'event') {
         momentDate = momentDate.tz(this.timezone);
       }
-      if (this.constructor.modelName === 'speakers-call') {
+      if (this.constructor.modelName === 'speakers-call' || this.constructor.modelName === 'ticket') {
         momentDate = momentDate.tz(this.event.get('timezone'));
       }
       return momentDate.format(getFormat(segmentFormat));
@@ -26,7 +26,7 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       if (this.constructor.modelName === 'event') {
         newDate = newDate.tz(this.timezone, true);
       }
-      if (this.constructor.modelName === 'speakers-call') {
+      if (this.constructor.modelName === 'speakers-call' || this.constructor.modelName === 'ticket') {
         newDate = newDate.tz(this.event.get('timezone'), true);
       }
       let oldDate = newDate;
@@ -35,7 +35,7 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
         if (this.constructor.modelName === 'event') {
           oldDate = oldDate.tz(this.timezone, true);
         }
-        if (this.constructor.modelName === 'speakers-call') {
+        if (this.constructor.modelName === 'speakers-call' || this.constructor.modelName === 'ticket') {
           oldDate = oldDate.tz(this.event.get('timezone'), true);
         }
       } else {
