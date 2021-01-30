@@ -33,9 +33,9 @@
           {{/if}}
         {{else}}
           {{#if this.displaySideMenu}}
-            {{#ui-sticky context='#public-event-content' observeChanges=true}}
+            {{#UiSticky context='#public-event-content' observeChanges=true}}
               <Public::SideMenuOuter @event={{this.model}} />
-            {{/ui-sticky}}
+            {{/UiSticky}}
           {{/if}}
         {{/if}}
       </div>
