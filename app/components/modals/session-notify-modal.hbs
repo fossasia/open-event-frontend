@@ -12,13 +12,13 @@
     <form class="ui form">
       <div class="field">
         <label>Name and Email</label>
-        <Input
+        <span  class="ltbrac"> &lt;</span>
+          <Input
           type="text"
           name="name and email"
-          <span> < </span>
-          @value={{this.speakerEmails}} 
-          <span> > </span>
+          @value={{this.speakerEmails}}
           disabled />
+        <span class="gtbrac">&gt;</span>
       </div>
       <div class="field">
         <label>CC</label>
