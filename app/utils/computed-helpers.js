@@ -13,23 +13,23 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
   return computed(property, {
     get() {
       let momentDate = moment(this.get(property));
-      let newTimezone = getTimezone(this);
-      if (newTimezone) {
-        momentDate = momentDate.tz(newTimezone);
+      const timezone = getTimezone(this);
+      if (timezone) {
+        momentDate = momentDate.tz(timezone);
       }
       return momentDate.format(getFormat(segmentFormat));
     },
     set(key, value) {
       let newDate = moment(value, getFormat(segmentFormat));
-      let newTimezone = getTimezone(this);
-      if (newTimezone) {
-        newDate = newDate.tz(newTimezone, true);
+      const timezone = getTimezone(this);
+      if (timezone) {
+        newDate = newDate.tz(timezone, true);
       }
       let oldDate = newDate;
       if (this.get(property)) {
         oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
-        if (newTimezone) {
-          oldDate = oldDate.tz(newTimezone, true);
+        if (timezone) {
+          oldDate = oldDate.tz(timezone, true);
         }
       } else {
         oldDate = newDate;
@@ -62,13 +62,10 @@ function getFormat(segmentFormat) {
 }
 
 function getTimezone(model) {
-  switch (model.constructor.modelName) {
-    case 'event':
-      return model.timezone;
-    case 'ticket':
-    case 'speakers-call':
-      return model.event.get('timezone');
-    default:
-      return null;
+  if (model.timezone) {
+    return model.timezone;
+  }
+  if ('event' in model) {
+    return model.event.get('timezone');
   }
 }
