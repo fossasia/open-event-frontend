@@ -1,0 +1,7 @@
+<form class="ui form"
+  {{did-insert this.setupForm @rules}}
+  {{did-update this.setupForm @rules}}
+  {{action this.submit on='submit' preventDefault=true}}
+  ...attributes>
+  {{yield}}
+</form>

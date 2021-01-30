@@ -4,9 +4,9 @@
         <h2 class="header">{{t 'Exhibitors'}}</h2>
       </div>
       <div>
-        <button class="ui blue button">
+        <LinkTo @route="events.view.exhibitors.create" class="ui blue button">
           {{t 'Add Exhibitor'}}
-        </button>
+        </LinkTo>
       </div>
     </div>
   <Tables::Default

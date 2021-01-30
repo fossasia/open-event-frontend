@@ -1,0 +1,17 @@
+<Forms::Form @rules={{this.rules}} class="{{if this.isLoading 'loading'}}">
+  <div class="field">
+    <label class="required">{{t 'Name'}}</label>
+    <input id="name" value={{@exhibitor.name}}>
+  </div>
+  <div class="field">
+    <label class="required">
+      {{t 'URL'}}
+    </label>
+    <Widgets::Forms::LinkField
+      @inputId="url"
+      @value={{@exhibitor.url}}
+      @onChange={{action (mut @exhibitor.url)}} />
+  </div>
+  <div class="ui hidden divider"></div>
+  <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+</Forms::Form>
