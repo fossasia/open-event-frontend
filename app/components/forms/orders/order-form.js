@@ -29,6 +29,9 @@ export default Component.extend(FormMixin, {
       attendee.set('firstname', '');
       attendee.set('lastname', '');
       attendee.set('email', '');
+      attendee.set('acceptVideoRecording', true);
+      attendee.set('acceptShareDetails', true);
+      attendee.set('acceptReceiveEmails', true);
     });
     return this.data.attendees;
   }),
