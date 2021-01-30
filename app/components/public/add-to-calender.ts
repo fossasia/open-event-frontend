@@ -96,7 +96,7 @@ export default class AddToCalender extends Component<Args> {
     return host + '/v1/events/' + this.args.event.identifier + '.ics?include_sessions';
   }
 
-  get SessioncalendarUrls(): { name: string; url: string; }[] {
+  get sessionCalendarUrls(): { name: string; url: string; }[] {
     return [{ name: 'iCal', url: this.SessioniCalUrl }];
   }
 }
