@@ -227,7 +227,26 @@ export default Component.extend(FormMixin, {
       debounce(this, () => this.send('updateOrderAmount'), this.tickets, 250);
     }
   },
+
+  async loadTicketAvailability() {
+    try {
+      const ticketAvailabilities = await this.loader.load(`/events/${this.event?.get('id')}/tickets/availability`);
+      for (const t of ticketAvailabilities) {
+        for (const ticket of this.data.toArray()) {
+          if (+ticket?.id === t?.id) {
+            ticket.set('remaining', t.available);
+            ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), t.available));
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error while fetching ticket availabilities', e);
+    }
+  },
+
   didInsertElement() {
+    this._super(...arguments);
+    this.loadTicketAvailability();
     this.data.forEach(ticket => {
       ticket.set('discount', 0);
     });

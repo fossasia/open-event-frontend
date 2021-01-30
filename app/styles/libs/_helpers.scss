@@ -60,7 +60,7 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
 }
 
 .d-flex {
-  display: flex;
+  display: flex !important;
 }
 
 .wrap,
@@ -104,6 +104,44 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
   white-space: nowrap;
 }
 
+.pre-line {
+  white-space: pre-line;
+}
+
+.extra-link {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.clamp {
+  line-height: 1.2rem;
+  height: 2.4rem;
+  box-sizing: content-box;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
+.content-center {
+  justify-content: center;
+}
+
 .w-fit {
   width: fit-content;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.social-link-button {
+  width: 50px;
+  height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.w-full {
+  width: 100% !important;
 }

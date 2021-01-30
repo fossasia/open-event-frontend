@@ -13,21 +13,23 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
   return computed(property, {
     get() {
       let momentDate = moment(this.get(property));
-      if (this.constructor.modelName === 'event') {
-        momentDate = momentDate.tz(this.timezone);
+      const timezone = getTimezone(this);
+      if (timezone) {
+        momentDate = momentDate.tz(timezone);
       }
       return momentDate.format(getFormat(segmentFormat));
     },
     set(key, value) {
       let newDate = moment(value, getFormat(segmentFormat));
-      if (this.constructor.modelName === 'event') {
-        newDate = newDate.tz(this.timezone, true);
+      const timezone = getTimezone(this);
+      if (timezone) {
+        newDate = newDate.tz(timezone, true);
       }
       let oldDate = newDate;
       if (this.get(property)) {
         oldDate = moment(this.get(property), segmentFormat === 'date' ? FORM_DATE_FORMAT : FORM_TIME_FORMAT);
-        if (this.constructor.modelName === 'event') {
-          oldDate = oldDate.tz(this.timezone, true);
+        if (timezone) {
+          oldDate = oldDate.tz(timezone, true);
         }
       } else {
         oldDate = newDate;
@@ -35,6 +37,8 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
       if (segmentFormat === 'time') {
         oldDate.hour(newDate.hour());
         oldDate.minute(newDate.minute());
+        oldDate.second(newDate.second());
+        oldDate.millisecond(newDate.millisecond());
       } else if (segmentFormat === 'date') {
         oldDate.date(newDate.date());
         oldDate.month(newDate.month());
@@ -55,4 +59,13 @@ export const computedDateTimeSplit = function(property, segmentFormat, endProper
 
 function getFormat(segmentFormat) {
   return segmentFormat === 'time' ? FORM_TIME_FORMAT : (segmentFormat === 'date' ? FORM_DATE_FORMAT : segmentFormat);
+}
+
+function getTimezone(model) {
+  if (model.timezone) {
+    return model.timezone;
+  }
+  if ('event' in model) {
+    return model.event.get('timezone');
+  }
 }

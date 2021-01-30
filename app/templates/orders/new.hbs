@@ -34,6 +34,11 @@
           @data={{this.model.order}}
           @showBanner={{false}} />
         <br/>
+        {{#if this.model.taxDetails}}
+          <Orders::CompanyInfo
+            @tax={{this.model.taxDetails}} />
+          <br/>
+        {{/if}}
         {{#if this.model.order.event.ownerName}}
           <div class="mobile hidden row">
             <Orders::OrganizerInfo

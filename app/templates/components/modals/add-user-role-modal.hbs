@@ -23,7 +23,7 @@
           {{#each this.data.roles as |role|}}
             {{#if (eq role.name 'organizer')}}
               <div class="item" data-value="{{map-value mapper role}}">
-                {{role.name}}
+                {{t-var role.name}}
               </div>
             {{/if}}
           {{/each}}
@@ -37,7 +37,7 @@
     {{t 'Cancel'}}
   </button>
   <button type="submit" form="add-user-role-form" class="ui green right labeled icon button">
-    {{t 'Add Role'}}
+    {{t 'Add Team Member'}}
     <i class="checkmark icon"></i>
   </button>
 </div>

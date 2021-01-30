@@ -32,14 +32,16 @@
 
 .stream-side-panel-button {
   position: fixed;
-  top: 1rem;
+  top: 4.25rem;
   left: -.4rem;
-  width: 35px;
+  width: 32px;
+  height: 50px;
 
   &.right {
     position: absolute;
     right: -.4rem;
     left: unset;
+    top: 4.25rem;
   }
 }
 
@@ -49,6 +51,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  padding-top: 0 !important;
   background-color: #555;
   color: #fff;
   overflow: hidden;

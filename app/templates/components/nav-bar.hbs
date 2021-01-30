@@ -34,6 +34,7 @@
           <div class="menu profile-dropdown-menu">
             <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
             <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
+            <a href="{{href-to 'groups.list'}}" class="item">{{t 'Groups'}}</a>
             <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
             <div class="divider"></div>
             <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>
@@ -69,29 +70,28 @@
       <div class="ui header small text">{{this.settings.appName}}</div>
     </LinkTo>
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
-      <i class="search icon" style="cursor: auto;"></i>
-      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
-      <div role="button" {{action "toggleSearchBar"}}>
-        <i class="close icon" ></i>
-      </div>
+      <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+      <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
     </div>
     <div class="right menu nav-bar">
+      {{#if this.session.isAuthenticated}}
+        <NotificationDropdown
+          @notifications={{this.notifications}} />
+      {{/if}}
       {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
-        <div role="button" class="item ui" {{action "toggleSearchBar"}}>
+        <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
           <i class="search icon"></i>
         </div>
       {{/if}}
       {{#if this.session.isAuthenticated}}
-        <NotificationDropdown
-          @notifications={{this.notifications}} />
-          {{#if this.isNotWizardPageRoute}}
-            <LinkTo
-             @route="create" class="item ui blue button-text small text">
-              <div>
-                {{t 'Create Event'}}
-              </div>
-            </LinkTo>
-          {{/if}}
+        {{#if this.isNotWizardPageRoute}}
+          <LinkTo
+            @route="create" class="item ui blue button-text small text">
+            <div>
+              {{t 'Create Event'}}
+            </div>
+          </LinkTo>
+        {{/if}}
       {{else}}
         <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
       {{/if}}

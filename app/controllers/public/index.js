@@ -8,6 +8,7 @@ export default class IndexController extends Controller {
   queryParams = ['code'];
   code = null;
   isLoginModalOpen = false;
+  isContactOrganizerModalOpen = false;
   userExists = false;
 
   @computed('model.event.description')
@@ -114,6 +115,11 @@ export default class IndexController extends Controller {
       return;
     }
     this.send('save');
+  }
+
+  @action
+  openContactOrganizerModal() {
+    this.set('isContactOrganizerModalOpen', true);
   }
 
   @action

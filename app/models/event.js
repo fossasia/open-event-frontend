@@ -26,6 +26,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   identifier             : attr('string', { readOnly: true }),
   name                   : attr('string'),
   description            : attr('string'),
+  afterOrderMessage      : attr('string'),
   startsAt               : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
   endsAt                 : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
   timezone               : attr('string', { defaultValue: detectedTimezone }),
@@ -47,6 +48,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
   isPromoted                : attr('boolean', { defaultValue: false }),
+  isDemoted                 : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
@@ -130,6 +132,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   trackOrganizers : hasMany('user', { inverse: null }),
   registrars      : hasMany('user', { inverse: null }),
   moderators      : hasMany('user', { inverse: null }),
+  roles           : hasMany('users-events-role'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

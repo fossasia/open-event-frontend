@@ -16,4 +16,13 @@ export default class SpeakerItem extends Component {
     const currentSpeaker = this.speaker;
     return (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience);
   }
+
+  @computed
+  get sessionRoute() {
+    if (this.session.currentRouteName === 'events.view.speaker.view') {
+      return 'events.view.session.view';
+    } else {
+      return 'public.session.view';
+    }
+  }
 }
