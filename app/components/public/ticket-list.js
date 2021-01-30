@@ -230,7 +230,7 @@ export default Component.extend(FormMixin, {
 
   async loadTicketAvailability() {
     try {
-      const ticketAvailabilities = await this.loader.load(`/events/${this.event?.id}/tickets/availability`);
+      const ticketAvailabilities = await this.loader.load(`/events/${this.event?.get('id')}/tickets/availability`);
       for (const t of ticketAvailabilities) {
         for (const ticket of this.data.toArray()) {
           if (+ticket?.id === t?.id) {

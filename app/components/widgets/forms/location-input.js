@@ -13,6 +13,8 @@ export default Component.extend({
     country : ''
   },
 
+  suggestions: [],
+
   combinedAddress: computed('address.{venue,line,city,state,zipCode,country}', function() {
     return values(this.address).join(' ').trim();
   }),
@@ -44,12 +46,33 @@ export default Component.extend({
         });
       }
     },
+    setAutocomplete(place) {
+      this.set('placeName', place);
+    },
+    async suggestionsTrigger(location) {
+      const response = this.loader.load(`https://nominatim.openstreetmap.org/search?q=${location}&format=jsonv2&addressdetails=1`, { isExternal: true });
+      const [cords] = await Promise.all([response]);
+      this.set('suggestions', cords);
+    },
     onLocationChangeHandler(lat, lng) {
       this.setProperties({
         zoom: 17,
         lat,
         lng
       });
+    },
+    async updateLocation(e) {
+      const location = e.target.getLatLng();
+      const response = this.loader.load(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lng}&format=jsonv2`, { isExternal: true });
+      const [cords] = await Promise.all([response]);
+      const state = cords?.address?.state ? cords.address.state : cords?.address?.county;
+      const city = cords?.address.city ? cords.address.city : cords?.address?.state_district;
+      if (cords.address) {
+        this.set('address.country', cords?.address?.country);
+        this.set('address.state', state);
+        this.set('address.venue', cords?.display_name);
+        this.set('address.city', city);
+      }
     },
     placeChanged(place) {
       const addressComponents = place.address_components;
