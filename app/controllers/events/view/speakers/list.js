@@ -11,7 +11,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : ' ',
         valuePath       : 'thumbnailImageUrl',
-        extraValuePaths : ['photoUrl'],
+        extraValuePaths : ['id', 'event', 'photoUrl'],
         cellComponent   : 'ui-table/cell/events/view/speakers/speaker-logo'
       },
       {
