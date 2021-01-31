@@ -15,9 +15,7 @@ export default class AddToCalender extends Component<Args> {
 
   @service loader: any;
 
-  @tracked
-  showSessions : any;
-
+  @tracked showSessions : any;
 
   get description(): string {
     const { event } = this.args;
@@ -37,7 +35,7 @@ export default class AddToCalender extends Component<Args> {
     return desc;
   }
 
-  constructor(owner:null, args:Args) {
+  constructor(owner: null, args: Args) {
     super(owner, args);
     this.checkSessions();
   }
@@ -91,12 +89,12 @@ export default class AddToCalender extends Component<Args> {
     return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }, { name: 'Yahoo', url: this.yahooUrl }, { name: 'Outlook', url: this.outlookUrl }];
   }
 
-  get SessioniCalUrl(): string {
+  get sessioniCalUrl(): string {
     const host = this.loader.host();
     return host + '/v1/events/' + this.args.event.identifier + '.ics?include_sessions';
   }
 
   get sessionCalendarUrls(): { name: string; url: string; }[] {
-    return [{ name: 'iCal', url: this.SessioniCalUrl }];
+    return [{ name: 'iCal', url: this.sessioniCalUrl }];
   }
 }
