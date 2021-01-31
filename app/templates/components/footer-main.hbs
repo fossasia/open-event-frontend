@@ -123,7 +123,7 @@
       <div class="three wide computer four wide tablet column right aligned">
         <UiDropdown @class="floating labeled grey search icon mini button" @selected={{this.currentLocale}} @forceSelection={{false}} @onChange={{action "switchLanguage"}}>
           <i class="world icon"></i>
-          <span class="text">English</span>
+          <span class="text">{{t 'English'}}</span>
           <div class="ui language menu">
             {{#each-in this.l10n.availableLocales as |key value|}}
               <div class="item" data-value="{{key}}">{{value}}</div>
