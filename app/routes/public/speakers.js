@@ -47,12 +47,15 @@ export default class SpeakersRoute extends Route {
       event    : eventDetails,
       speakers : await this.infinity.model('speakers', {
         filter       : SPEAKERS_FILTER,
-        perPage      : 21,
+        perPage      : 9,
         startingPage : 1,
         perPageParam : 'page[size]',
         pageParam    : 'page[number]',
         store        : eventDetails,
-        include      : 'sessions.track'
+        include      : 'sessions.track',
+        cache: true,
+        public: true,
+        infinityCache: 36000
       })
     };
 
