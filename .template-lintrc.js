@@ -8,7 +8,7 @@ module.exports = {
       ignoredTags: ['label'] // Allow label tag inside a or any other interactive element
     },
     'link-rel-noopener': true,
-    'no-curly-component-invocation': true,
+    'no-curly-component-invocation': {allow:['ui-sticky']},
     // TODO: Remove and fix
     'require-button-type': false,
     'no-partial': false,
