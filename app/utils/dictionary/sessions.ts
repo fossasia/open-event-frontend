@@ -1,6 +1,6 @@
 export const stateColorMap = {
   draft     : 'grey',
-  accepted  : 'teal',
+  accepted  : 'yellow',
   confirmed : 'green',
   pending   : 'yellow',
   rejected  : 'red',
