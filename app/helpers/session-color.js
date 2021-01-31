@@ -3,7 +3,7 @@ import Helper from '@ember/component/helper';
 export function sessionColor(params) {
   switch (params[0]) {
     case 'accepted':
-      return 'teal';
+      return 'yellow';
     case 'pending':
       return 'yellow';
     case 'confirmed':

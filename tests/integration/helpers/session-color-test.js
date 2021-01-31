@@ -13,7 +13,7 @@ module('Integration | Helper | session-color', function(hooks) {
 
     this.set('inputState', 'accepted');
     await render(hbs`{{session-color inputState}}`);
-    assert.equal(this.element.textContent.trim(), 'teal');
+    assert.equal(this.element.textContent.trim(), 'yellow');
 
     this.set('inputState', 'pending');
     await render(hbs`{{session-color inputState}}`);
