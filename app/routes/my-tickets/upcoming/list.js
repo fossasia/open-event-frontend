@@ -97,6 +97,7 @@ export default class ListRoute extends Route {
       filter       : filterOptions,
       perPage      : 10,
       startingPage : 1,
+      sort         : 'event.starts-at',
       perPageParam : 'page[size]',
       pageParam    : 'page[number]',
       store        : this.authManager.currentUser
