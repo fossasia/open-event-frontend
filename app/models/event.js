@@ -104,6 +104,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   location            : belongsTo('event-location'),
   sessions            : hasMany('session'),
   sponsors            : hasMany('sponsor'),
+  exhibitors          : hasMany('exhibitor'),
   microlocations      : hasMany('microlocation'),
   tracks              : hasMany('track'),
   tickets             : hasMany('ticket'),

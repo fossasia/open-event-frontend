@@ -130,6 +130,11 @@ Router.map(function() {
       this.route('team', function() {
         this.route('permissions');
       });
+      this.route('exhibitors', function() {
+        this.route('list');
+        this.route('create');
+        this.route('edit', { path: '/:exhibitor_id/edit' });
+      });
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
