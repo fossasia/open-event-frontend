@@ -1803,13 +1803,13 @@
     "@sentry/utils" "6.0.3"
     tslib "^1.9.3"
 
-"@sentry/integrations@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.0.3.tgz#d28385e4165f591457fe478e927ef4eed1e787b4"
-  integrity sha512-SE/rQ+ttfoC6FlHDibB4e9lV95j78YkjQ6PvYNUe+zGkGIretCJREqgaS+W3qTNYvOdbUViuiiqtdfyvW9nM2g==
+"@sentry/integrations@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.0.4.tgz#20820b97a38fd53d1dc571c73e5decbcd2fded82"
+  integrity sha512-Z55rzkGZefFQ/cvHvddMzMnmOb6RotOMXghRy0bm++SIcnYmHnbnecMLNZtZ/49yMi4ZOsfFuuf4h4E4uxzJ4Q==
   dependencies:
-    "@sentry/types" "6.0.3"
-    "@sentry/utils" "6.0.3"
+    "@sentry/types" "6.0.4"
+    "@sentry/utils" "6.0.4"
     localforage "^1.8.1"
     tslib "^1.9.3"
 
@@ -1838,12 +1838,25 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.0.3.tgz#a1ef6d6b2ac2a9201e3e4a894db6ecf7ceb5b27c"
   integrity sha512-266aBQbk9AGedhG2dzXshWbn23LYLElXqlI74DLku48UrU2v7TGKdyik/8/nfOfquCoRSp0GFGYHbItwU124XQ==
 
+"@sentry/types@6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.0.4.tgz#762949dc4ba25f4071c405f67ddc28c84b6dc08f"
+  integrity sha512-VqmnhJPpPmsu4gMzSZw8UHgYlP1QSikMZ5X6E3q6zwmbWu+2oniQHD6xGB6PXv6uTo5zg2NseQEiWnEjJRUYWw==
+
 "@sentry/utils@6.0.3":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.0.3.tgz#114d9faa47f76416c3e140711465e76d2129dba8"
   integrity sha512-lvuBFvZHYs1zYwI8dkC8Z8ryb0aYnwPFUl1rbZiMwJpYI2Dgl1jpqqZWv9luux2rSRYOMid74uGedV708rvEgA==
   dependencies:
     "@sentry/types" "6.0.3"
+    tslib "^1.9.3"
+
+"@sentry/utils@6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.0.4.tgz#92ed5c114c633b8b59ae6fae70bd8bbfc88e302f"
+  integrity sha512-UOAz5p5IIntmIcmX04Cjk7l7+EwnuBn2S/rhNN92I1vDCaL010OmUZOHGHJExoXBE75zVh/LDssAPQTKXo0F+g==
+  dependencies:
+    "@sentry/types" "6.0.4"
     tslib "^1.9.3"
 
 "@simple-dom/document@^1.4.0":
