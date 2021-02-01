@@ -1,0 +1,44 @@
+<div>
+    <div class="ui">
+        <div class="featured-speaker">
+            <img alt="exhibitor" class="ui rounded image" src="{{if this.model.bannerUrl this.model.bannerUrl '/images/placeholders/Other.png'}}">
+        </div>
+        <h3 class="ui centered header no margin">
+            <img class="ui small image" src="{{or this.model.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo">
+            {{this.model.name}}
+        </h3>
+        <br/>
+        {{#if this.model.description}}
+            <p>
+                {{sanitize this.model.description}}
+            </p>
+        {{/if}}
+        {{#if (or this.model.slidesUrl this.model.videoUrl)}}
+            <div class="p-4">
+                <div style={{css display='flex' align-items='center' flex-direction='column'}}>
+                    {{#if (or this.pdfLink this.pptLink)}}
+                        <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ this.model.slidesUrl }}&embedded=true"></iframe>
+                    {{else if this.model.slidesUrl}}
+                        <a class="mb-2" href={{ this.model.slidesUrl }} target="_blank" rel="noopener noreferrer">
+                            <button class="ui labeled icon button">
+                                <i class="file powerpoint icon"></i>
+                                {{t 'Slides'}}
+                            </button>
+                        </a>
+                    {{/if}}
+          
+                    {{#if this.youtubeLink}}
+                        <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
+                    {{else if this.model.videoUrl}}
+                        <a class="mb-2" href={{ this.model.videoUrl }} target="_blank" rel="noopener noreferrer">
+                            <button class="ui labeled icon button">
+                                <i class="video icon"></i>
+                                {{t 'Video'}}
+                            </button>
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>

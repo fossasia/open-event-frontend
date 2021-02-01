@@ -1,7 +1,9 @@
 <div class="ui stackable grid container three column">
   {{#each this.model.exhibitors as |exhibitor|}}
     <div class="column speaker-column">
-      <Public::ExhibitorItem @exhibitor={{exhibitor}} />
+      <a href="{{href-to 'public.exhibitor.view' exhibitor.id}}">
+        <Public::ExhibitorItem @exhibitor={{exhibitor}} />
+      </a>
     </div>
   {{/each}}
   <div class="sixteen wide column">

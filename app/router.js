@@ -67,6 +67,9 @@ Router.map(function() {
     this.route('coc');
     this.route('speakers');
     this.route('exhibitors');
+    this.route('exhibitor', function() {
+      this.route('view', { path: '/:exhibitor_id' });
+    });
   });
   this.route('role-invites');
   this.route('pricing');
