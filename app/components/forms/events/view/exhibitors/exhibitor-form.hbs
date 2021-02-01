@@ -1,0 +1,75 @@
+<div class="ui container">
+  <div class="sixteen wide column">
+    <Forms::Form
+      @rules={{this.rules}}
+      @onValid={{this.save}}
+      class="{{if this.isLoading 'loading'}}">
+      <div class="field">
+        <label class="required">{{t 'Name'}}</label>
+        <Input type="text" name="name" @value={{@exhibitor.name}} />
+      </div>
+      <div class="field">
+        <label class="required">
+          {{t 'URL'}}
+        </label>
+        <Widgets::Forms::LinkField
+          name="url"
+          @value={{@exhibitor.url}}
+          @onChange={{action (mut @exhibitor.url)}} />
+      </div>
+      <div class="field">
+        <label>{{t 'Description'}}</label>
+        <Widgets::Forms::RichTextEditor
+          @value={{@exhibitor.description}}
+          @name="description" />
+      </div>
+      <div class="fields">
+        <div class="fifteen wide field">
+          <Widgets::Forms::ImageUpload
+            @label={{t "Banner"}}
+            @imageUrl={{@exhibitor.bannerUrl}}
+            @icon="camera"
+            @hint={{t "Select Banner"}}
+            @needsCropper={{true}}
+            @isHeaderImage={{true}}
+            @maxSizeInKb={{10000}}
+            @aspectRatio={{array 2 1}}
+            @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
+            @requiresDivider={{true}} />
+        </div>
+        <div class="five wide field">
+          <Widgets::Forms::ImageUpload
+            @label={{t "Logo"}}
+            @imageUrl={{@exhibitor.logoUrl}}
+            @icon="image"
+            @name="logoUrl"
+            @hint={{t "Select Logo"}}
+            @maxSizeInKb={{1000}} />
+        </div>
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Video URL'}}
+        </label>
+        <Widgets::Forms::LinkField
+          name="videoUrl"
+          @value={{@exhibitor.videoUrl}}
+          @onChange={{action (mut @exhibitor.videoUrl)}} />
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Slides URL'}}
+        </label>
+        <Widgets::Forms::FileUpload
+          @fileUrl={{@exhibitor.slidesUrl}}
+          @label={{t "Slides"}}
+          @id="slidesUrl"
+          @icon="file"
+          @hint={{t "Select a file"}}
+          @maxSizeInKb={{10000}} />
+      </div>
+      <div class="ui hidden divider"></div>
+      <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    </Forms::Form>
+  </div>
+</div>
