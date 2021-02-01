@@ -11,7 +11,8 @@
         @disabled={{@disabled}}
         @type="text"
         value={{this.fixedValue}}
-        {{on "input" this.setValue}} />
+        {{on "input" this.setValue}}
+        ...attributes />
     </div>
     {{yield}}
   </div>
