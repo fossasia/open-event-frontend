@@ -21,9 +21,7 @@
                 {{else if (eq field.fieldIdentifier 'gender')}}
                     {{@speaker.gender}}
                 {{else if (or (eq field.fieldIdentifier 'website') (eq field.fieldIdentifier 'github') (eq field.fieldIdentifier 'facebook') (eq field.fieldIdentifier 'twitter') (eq field.fieldIdentifier 'instagram') (eq field.fieldIdentifier 'linkedin'))}}
-                    {{#if (and (not-eq (get @speaker field.fieldIdentifier) 'https://github.com/') (not-eq (get @speaker field.fieldIdentifier) 'https://facebook.com/') (not-eq (get @speaker field.fieldIdentifier) 'https://instagram.com/') (not-eq (get @speaker field.fieldIdentifier) 'https://twitter.com/') (not-eq (get @speaker field.fieldIdentifier) 'https://linkedin.com/'))}}
-                        <a class="truncate" href={{get @speaker field.fieldIdentifier}} target="_blank" rel="noopener">{{get @speaker field.fieldIdentifier}}</a>
-                    {{/if}}
+                    <a class="truncate" href={{get @speaker field.fieldIdentifier}} target="_blank" rel="noopener">{{get @speaker field.fieldIdentifier}}</a>
                 {{else if (get @speaker.complexFieldValues field.fieldIdentifier)}}
                     {{get @speaker.complexFieldValues field.fieldIdentifier}}
                 {{else}}
