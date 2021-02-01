@@ -17,9 +17,4 @@ export default class SearchBox extends Component {
     debounce(this, this.setSearchQueryLazily, value, this.debouncePeriod);
   }
 
-  @action
-  showSessionFields() {
-    this.sendAction('showSession');
-  }
-
 }

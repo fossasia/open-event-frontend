@@ -1,4 +1,4 @@
 <div class="ui {{if (eq @size "large") '' 'small'}} icon input search-box">
-  <Input  class="{{ if (and this.device.isMobile (eq this.session.currentRouteName 'public.sessions')) "expand-bar" "" }}" @type="text" @value={{readonly this.searchQuery}} @keyUp={{action 'setSearchQuery' value="target.value"}} onfocus={{ if (and this.device.isMobile (eq this.session.currentRouteName 'public.sessions')) (action "showSessionFields")}} @focus-out={{if (and this.device.isMobile (eq this.session.currentRouteName 'public.sessions')) (action "showSessionFields")}} placeholder="{{t "Search"}} ..." />
+  <Input  class="{{ if (and this.device.isMobile (eq this.session.currentRouteName 'public.sessions')) "expand-bar" "" }}" @type="text" @value={{readonly this.searchQuery}} @keyUp={{action 'setSearchQuery' value="target.value"}} onfocus={{ if (and this.device.isMobile (eq this.session.currentRouteName 'public.sessions')) (action @showSession)}} @focus-out={{if (and this.device.isMobile (eq this.session.currentRouteName 'public.sessions')) (action @showSession)}} placeholder="{{t "Search"}} ..." />
   <i class="search icon"></i>
 </div>
