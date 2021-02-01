@@ -25,6 +25,9 @@
             <LinkTo @route="events.view.speakers.list" @model="canceled" class="item">
               {{t 'Canceled'}}
             </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="without_session" class="item">
+              {{t 'Without Session'}}
+            </LinkTo>
           </TabbedNavigation>
         </div>
         <div class="{{if this.device.isTablet 'sixteen' 'four'}} wide right aligned column">
