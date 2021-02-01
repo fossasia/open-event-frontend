@@ -6,6 +6,10 @@ export async function hasSpeakers(loader: Loader, event: Event): Promise<number>
   return (await loader.load(`/events/${event.id}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).data.length;
 }
 
+export async function hasExhibitors(loader: Loader, event: Event): Promise<number> {
+  return (await loader.load(`/events/${event.id}/exhibitors?page[size]=1`)).data.length;
+}
+
 export async function hasSessions(loader: Loader, event: Event): Promise<number> {
   const filters = [{
     or: [

@@ -27,6 +27,11 @@
     </LinkTo>
   {{/if}}
 {{/if}}
+{{#if this.showExhibitors}}
+  <LinkTo @route="public.exhibitors" class="item">
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}}"></i>{{t 'Exhibitors'}}</div>
+  </LinkTo>
+{{/if}}
 {{#if (and this.event.isSchedulePublished this.showSessions)}}
   <LinkTo @route="public.sessions" class="item">
     <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} book icon"></i>{{t 'Schedule'}}</div>
