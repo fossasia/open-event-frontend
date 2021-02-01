@@ -1,13 +1,14 @@
 import Helper from '@ember/component/helper';
+import { stateColorMap } from 'open-event-frontend/utils/dictionary/sessions';
 
 export function sessionColor(params) {
   switch (params[0]) {
     case 'accepted':
-      return 'yellow';
+      return `${stateColorMap['accepted']}`;
     case 'pending':
-      return 'yellow';
+      return `${stateColorMap['pending']}`;
     case 'confirmed':
-      return 'green';
+      return `${stateColorMap['confirmed']}`;
     default:
       return 'red';
   }
