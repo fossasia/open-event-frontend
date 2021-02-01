@@ -16,5 +16,6 @@ export default ModelBase.extend({
   identifier        : attr('string'),
   sessionsAccepted  : attr('number'),
   sessionsDraft     : attr('number'),
+  speakerWithoutSession: attr('number'),
   event             : belongsTo('event')
 });
