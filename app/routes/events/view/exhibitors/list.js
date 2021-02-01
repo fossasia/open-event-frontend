@@ -1,7 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
-import Event from 'open-event-frontend/models/event';
 import { action } from '@ember/object';
 import { hash } from 'rsvp';
 
@@ -11,7 +9,7 @@ export default class ExhibitorsListRoute extends Route.extend(EmberTableRouteMix
     return this.l10n.t('Exhibitors');
   }
 
-  beforeModel(transition) {
+  beforeModel() {
     super.beforeModel(...arguments);
     const event = this.modelFor('events.view');
     const { currentUser } = this.authManager;

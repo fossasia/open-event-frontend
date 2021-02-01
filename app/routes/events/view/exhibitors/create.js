@@ -6,7 +6,7 @@ export default class ExhibitorsCreateRoute extends Route {
     return this.l10n.t('Create Exhibitor');
   }
 
-  async model(params) {
+  async model() {
     const event = this.modelFor('events.view');
     return {
       event,

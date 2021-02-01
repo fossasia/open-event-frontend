@@ -1,16 +1,67 @@
-<Forms::Form @rules={{this.rules}} class="{{if this.isLoading 'loading'}}">
+<Forms::Form
+  @rules={{this.rules}}
+  @onValid={{this.save}}
+  class="{{if this.isLoading 'loading'}}">
   <div class="field">
     <label class="required">{{t 'Name'}}</label>
-    <input id="name" value={{@exhibitor.name}}>
+    <Input type="text" name="name" @value={{@exhibitor.name}} />
   </div>
   <div class="field">
     <label class="required">
       {{t 'URL'}}
     </label>
     <Widgets::Forms::LinkField
-      @inputId="url"
+      name="url"
       @value={{@exhibitor.url}}
       @onChange={{action (mut @exhibitor.url)}} />
+  </div>
+  <div class="fields">
+    <div class="five wide computer eight wide tablet field">
+      <label>{{t 'Description'}}</label>
+      <Widgets::Forms::RichTextEditor
+        @value={{@exhibitor.description}}
+        @name="description" />
+    </div>
+    <div class="eight wide computer eight wide tablet field {{if this.device.isMobile 'less padding'}}" style="margin-top: 50px;">
+      <Widgets::Forms::ImageUpload
+        @label={{t "Logo"}}
+        @imageUrl={{@exhibitor.logoUrl}}
+        @icon="image"
+        @name="logoUrl"
+        @hint={{t "Select Logo"}}
+        @maxSizeInKb={{1000}} />
+    </div>
+  </div>
+  <div class="field">
+     <Widgets::Forms::ImageUpload
+      @label={{t "Banner"}}
+      @imageUrl={{@exhibitor.bannerUrl}}
+      @icon="camera"
+      @hint={{t "Select Banner"}}
+      @needsCropper={{true}}
+      @isHeaderImage={{true}}
+      @maxSizeInKb={{10000}}
+      @aspectRatio={{array 2 1}}
+      @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
+      @requiresDivider={{true}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Video URL'}}
+    </label>
+    <Widgets::Forms::LinkField
+      name="videoUrl"
+      @value={{@exhibitor.videoUrl}}
+      @onChange={{action (mut @exhibitor.viddeoUrl)}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Slides URL'}}
+    </label>
+    <Widgets::Forms::LinkField
+      name="slidesUrl"
+      @value={{@exhibitor.slidesUrl}}
+      @onChange={{action (mut @exhibitor.slidesUrl)}} />
   </div>
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>

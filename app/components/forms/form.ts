@@ -6,17 +6,29 @@ import { debounce } from '@ember/runloop';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 import { merge } from 'lodash-es';
 
+
+export interface Rules {
+  inline: boolean;
+  delay: boolean;
+  on: string;
+  fields: {
+    [key:string]: Field
+  }
+}
+
+export interface Field {
+  optional?: boolean;
+  rules: Rule[]
+}
+
+export interface Rule {
+  type: string;
+  prompt: string;
+  value?: string | RegExp;
+}
+
 interface Args {
-  rules: {
-    fields: {
-      [key: string]: {
-        rules: {
-          type: string;
-          prompt: string;
-        }[]
-      }
-    }[]
-  },
+  rules: Rules,
   onValid?: (() => void),
   onSubmit?: (() => void)
 }
@@ -77,7 +89,7 @@ export default class FormComponent extends Component<Args> {
     }, 400);
   }
 
-  @action submit() {
+  @action submit(): void {
     this.args.onSubmit?.();
     this.form.form('validate form');
     if (this.form.form('is valid')) {
