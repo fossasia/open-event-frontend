@@ -58,10 +58,13 @@
     <label>
       {{t 'Slides URL'}}
     </label>
-    <Widgets::Forms::LinkField
-      name="slidesUrl"
-      @value={{@exhibitor.slidesUrl}}
-      @onChange={{action (mut @exhibitor.slidesUrl)}} />
+    <Widgets::Forms::FileUpload
+      @fileUrl={{@exhibitor.slidesUrl}}
+      @label={{t "Slides"}}
+      @id="slidesUrl"
+      @icon="file"
+      @hint={{t "Select a file"}}
+      @maxSizeInKb={{10000}} />
   </div>
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
