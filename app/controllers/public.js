@@ -20,14 +20,15 @@ export default class PublicController extends Controller {
     return this.session.currentRouteName && this.session.currentRouteName !== 'public.index';
   }
 
-  @computed('model.startsAtDate', 'model.endsAtDate')
+  @computed('model.startsAt', 'model.endsAt')
   get displayEndDate() {
-    return !moment(this.model.startsAtDate).isSame(this.model.endsAtDate, 'minute');
+    return !moment.tz(this.model.startsAt, this.model.timezone)
+      .isSame(moment.tz(this.model.endsAt, this.model.timezone), 'date');
   }
 
   @computed('session.currentRouteName')
   get displaySideMenu() {
-    return this.session.currentRouteName && this.session.currentRouteName !== 'public.cfs.new-session' && this.session.currentRouteName !== 'public.cfs.new-speaker' && this.session.currentRouteName !== 'public.cfs.edit-speaker' && this.session.currentRouteName !== 'public.cfs.edit-session';
+    return this.session.currentRouteName && this.session.currentRouteName !== 'public.cfs.new-session' && this.session.currentRouteName !== 'public.cfs.new-speaker' && this.session.currentRouteName !== 'public.cfs.edit-speaker' && this.session.currentRouteName !== 'public.cfs.edit-session' && this.session.currentRouteName !== 'public.cfs.view-speaker' && this.session.currentRouteName !== 'public.cfs.view-session';
   }
 
   @computed('model.locationName', 'model.online')

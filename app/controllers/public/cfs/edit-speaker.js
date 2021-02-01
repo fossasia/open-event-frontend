@@ -13,7 +13,7 @@ export default class EditSpeakerController extends Controller {
           {
             id: 'speaker_det_save'
           });
-        this.transitionToRoute('public.cfs.index');
+        this.transitionToRoute('public.cfs.view-speaker', this.model.event.identifier, this.model.speaker.id);
       })
       .catch(e => {
         console.error('Error while editing speaker', e);

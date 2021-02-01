@@ -8,14 +8,13 @@
     </button>
     
     <div class="ui header inverted mt-4">
-      <span>{{@event.name}}</span>
-      <a href={{href-to 'public' @event (query-params side_panel='true')}} class="ml-2">
-        <i class="icon inverted external link"></i>
+      <a href={{href-to 'public' @event (query-params side_panel='true')}}>
+        <p class="text-white">{{@event.name}}</p>
       </a>
     </div>
     <Public::EventDateTime @event={{@event}} />
     
-    <div class="d-flex mt-4 mb-2 w-fit self-center">
+    <div class="d-flex mt-4 mb-2 w-full space-between">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
         <a class="ui labeled icon button" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <i class="calendar icon"></i>
@@ -31,7 +30,7 @@
       {{/if}}
     </div>
 
-    <div class="y-scrollable p-2">
+    <div class="y-scrollable pb-2 pt-2 pr-01 pl-01">
       {{#each this.streams as |stream|}}
         <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}}>
           <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2 {{if (eq @videoStream stream) 'active'}}">

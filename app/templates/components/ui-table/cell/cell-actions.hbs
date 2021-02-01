@@ -1,0 +1,17 @@
+<LinkTo @route="{{@props.options.route}}" @model={{@extraRecords.id}} @class="light-gray-link">{{@record}}</LinkTo>
+<br><br>
+<div class="ui horizontal compact basic buttons">
+  {{#each @props.options.actions as |act|}}
+    {{#if act.route}}
+      <LinkTo @route="{{act.route}}" @model={{@extraRecords.id}} class="ui icon button">
+        <UiPopup @content={{act.text}} @position="left center">
+          <i class="{{act.icon}} icon"></i>		
+        </UiPopup>
+      </LinkTo>
+    {{else}}
+      <UiPopup @content={{act.text}} @click={{action act.method @extraRecords.id}} class="ui icon button" @position="left center">
+        <i class="{{act.icon}} icon"></i>		
+      </UiPopup>
+    {{/if}}
+  {{/each}}
+</div>

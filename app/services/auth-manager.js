@@ -117,6 +117,9 @@ export default class AuthManagerService extends Service {
     }
 
     const userId = data.id;
+    if (!userId) {
+      return null;
+    }
     delete data.id;
     data = mapKeys(data, (value, key) => camelize(key));
     if (!data.email) {

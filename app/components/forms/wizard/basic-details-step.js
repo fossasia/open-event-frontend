@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
-import { orderBy, filter, find } from 'lodash-es';
+import { orderBy, filter, find, difference } from 'lodash-es';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
@@ -12,15 +12,17 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import ENV from 'open-event-frontend/config/environment';
 import $ from 'jquery';
+import { tn } from 'open-event-frontend/utils/text';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone: moment.tz.guess(),
   timezones,
 
-  torii: service(),
+  torii : service(),
+  tn    : service(),
 
-  locationMenuItems: ['Venue', 'Online', 'Hybrid', 'To be announced'],
+  locationMenuItems: [tn.t('Venue'), tn.t('Online'), tn.t('Hybrid'), tn.t('To be announced')],
 
   selectedLocationType: 'Venue',
 
@@ -108,6 +110,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   hasPaidTickets: computed('data.event.tickets.@each.type', function() {
     return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
+  }),
+
+  ticketCount: computed('data.event.tickets.[]', 'deletedTickets.[]', function() {
+    return difference(this.data.event.tickets.toArray(), this.deletedTickets).length;
   }),
 
   timezoneObserver: observer('data.event.timezone', function() {
@@ -495,12 +501,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
-      this.deletedTickets.push(deleteTicket);
+      this.set('deletedTickets', [...this.deletedTickets, deleteTicket]);
       deleteTicket.deleteRecord();
     },
 
-    moveTicket(ticket, direction) {
-      const index = ticket.get('position');
+    moveTicket(ticket, index, direction) {
       const otherTicket = this.data.event.tickets.find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
       otherTicket.set('position', index);
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
