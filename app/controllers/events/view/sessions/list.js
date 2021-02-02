@@ -63,34 +63,34 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : this.l10n.t('Track'),
-        width     : 80,
+        name            : this.l10n.t('Track'),
+        width           : 80,
         headerComponent : 'tables/headers/sort',
-        isSortable: true,
-        valuePath : 'track.name'
+        isSortable      : true,
+        valuePath       : 'track.name'
       },
       {
-        name      : this.l10n.t('Type'),
-        width     : 70,
+        name            : this.l10n.t('Type'),
+        width           : 70,
         headerComponent : 'tables/headers/sort',
-        isSortable: true,
-        valuePath : 'sessionType.name'
+        isSortable      : true,
+        valuePath       : 'sessionType.name'
       },
       {
-        name          : this.l10n.t('Submission Date'),
-        width         : 100,
-        valuePath     : 'submittedAt',
+        name            : this.l10n.t('Submission Date'),
+        width           : 100,
+        valuePath       : 'submittedAt',
         headerComponent : 'tables/headers/sort',
-        isSortable: true,
-        cellComponent : 'ui-table/cell/cell-simple-date'
+        isSortable      : true,
+        cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
-        name          : this.l10n.t('Last Modified'),
-        width         : 100,
-        valuePath     : 'lastModifiedAt',
+        name            : this.l10n.t('Last Modified'),
+        width           : 100,
+        valuePath       : 'lastModifiedAt',
         headerComponent : 'tables/headers/sort',
-        isSortable: true,
-        cellComponent : 'ui-table/cell/cell-simple-date'
+        isSortable      : true,
+        cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
         name            : this.l10n.t('Notify'),
