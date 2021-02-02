@@ -7,7 +7,7 @@ export default class extends Controller {
     const settings = this.model;
     settings.save()
       .then(() => {
-        this.notify.success(this.l10n.t('Settings have been saved successfully.'),
+        this.notify.success(this.l10n.t('Social media settings have been saved successfully.'),
           {
             id: 'setting_index_save'
           });
