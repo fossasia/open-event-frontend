@@ -86,8 +86,7 @@
             @onChange={{action (mut this.data.speaker.gender)}} as |execute mapper|>
             <Input
               @type="hidden"
-              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
-              @value={{this.data.speaker.gender}} />
+              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select your gender'}}</div>
             <div class="menu">
