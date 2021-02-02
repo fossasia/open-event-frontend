@@ -223,6 +223,7 @@ Router.map(function() {
       this.route('microservices');
       this.route('images');
       this.route('analytics');
+      this.route('social-media');
       this.route('payment-gateway');
       this.route('ticket-fees');
       this.route('billing');
