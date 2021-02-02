@@ -19,7 +19,7 @@ module('Integration | Component | widgets/forms/link-field', function(hooks) {
     this.set('prefix', 'https://twitter.com/');
 
     assert.equal(this.element.textContent?.trim(), 'https://twitter.com/');
-    assert.equal(link, 'https://twitter.com/');
+    assert.equal(link, null);
   });
 
   test('it renders on prefix switch', async function(assert) {
