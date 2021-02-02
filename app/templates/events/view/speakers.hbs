@@ -33,6 +33,9 @@
         <div class="{{if this.device.isTablet 'sixteen' 'four'}} wide right aligned column">
           <div class="ui labeled input">
             <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export'}}>{{t 'Export as CSV'}}</button>
+            <LinkTo @route="events.view.speakers.reorder" class="ui blue button right floated">
+              {{t 'Reorder Speakers'}}
+            </LinkTo>
             <LinkTo @route="events.view.speakers.create" class="ui blue button right floated">
               {{t 'Add Speaker'}}
             </LinkTo>

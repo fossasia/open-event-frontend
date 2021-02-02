@@ -116,6 +116,7 @@ Router.map(function() {
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
         this.route('create');
+        this.route('reorder');
       });
       this.route('speaker', function() {
         this.route('view', { path: '/:speaker_id' });
