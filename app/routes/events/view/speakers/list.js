@@ -4,8 +4,10 @@ import { capitalize } from 'lodash-es';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    if (['accepted', 'rejected', 'confirmed', 'withdrawn', 'canceled', 'without_session'].includes(this.params.speakers_status)) {
+    if (['accepted', 'rejected', 'confirmed', 'withdrawn', 'canceled'].includes(this.params.speakers_status)) {
       return this.l10n.tVar(capitalize(this.params.speakers_status));
+    } else if (this.params.speakers_status === 'without_session') {
+      return this.l10n.t('Without Session');
     } else {
       return this.l10n.t('All');
     }
