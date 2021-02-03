@@ -3,39 +3,28 @@ import Route from '@ember/routing/route';
 
 export const SPEAKERS_FILTER = [
   {
-    and: [
-      {
-        name : 'sessions',
-        op   : 'any',
-        val  : {
+    name : 'sessions',
+    op   : 'any',
+    val  : {
+      and: [
+        {
           name : 'deleted-at',
           op   : 'eq',
           val  : null
+        },
+        {
+          or: [{
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
+          }, {
+            name : 'state',
+            op   : 'eq',
+            val  : 'confirmed'
+          }]
         }
-      },
-      {
-        or: [
-          {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'accepted'
-            }
-          },
-          {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'confirmed'
-            }
-          }
-        ]
-      }
-    ]
+      ]
+    }
   }
 ];
 
@@ -46,13 +35,17 @@ export default class SpeakersRoute extends Route {
     return {
       event    : eventDetails,
       speakers : await this.infinity.model('speakers', {
-        filter       : SPEAKERS_FILTER,
-        perPage      : 21,
-        startingPage : 1,
-        perPageParam : 'page[size]',
-        pageParam    : 'page[number]',
-        store        : eventDetails,
-        include      : 'sessions.track'
+        filter        : SPEAKERS_FILTER,
+        perPage       : 9,
+        startingPage  : 1,
+        perPageParam  : 'page[size]',
+        pageParam     : 'page[number]',
+        store         : eventDetails,
+        include       : 'sessions.track',
+        sort          : 'order',
+        cache         : true,
+        public        : true,
+        infinityCache : 36000
       })
     };
 

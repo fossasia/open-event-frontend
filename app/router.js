@@ -116,6 +116,7 @@ Router.map(function() {
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
         this.route('create');
+        this.route('reorder');
       });
       this.route('speaker', function() {
         this.route('view', { path: '/:speaker_id' });
@@ -129,6 +130,11 @@ Router.map(function() {
       this.route('scheduler');
       this.route('team', function() {
         this.route('permissions');
+      });
+      this.route('exhibitors', function() {
+        this.route('list');
+        this.route('create');
+        this.route('edit', { path: '/:exhibitor_id/edit' });
       });
     });
     this.route('list', { path: '/:event_state' });
