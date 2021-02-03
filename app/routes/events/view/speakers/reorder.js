@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
+import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
 
 export default class SpeakersReorderRoute extends Route {
   titleToken() {
@@ -11,28 +12,8 @@ export default class SpeakersReorderRoute extends Route {
     const speakers = event.query('speakers', {
       sort         : 'order',
       'page[size]' : 0,
-      cache        : true,
       public       : true,
-      filter       : [
-        {
-          name : 'sessions',
-          op   : 'any',
-          val  : {
-            or: [
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'accepted'
-              },
-              {
-                name : 'state',
-                op   : 'eq',
-                val  : 'confirmed'
-              }
-            ]
-          }
-        }
-      ]
+      filter       : SPEAKERS_FILTER
     });
     return hash({
       event,
