@@ -50,7 +50,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : this.l10n.t('Rating / Average Rating (No. of ratings)'),
-        width: 160,
+        width           : 160,
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
         valuePath       : 'averageRating',
@@ -65,11 +65,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : this.l10n.t('Track'),
-        width: 80,
+        name            : this.l10n.t('Track'),
+        width           : 80,
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
-        valuePath : 'track.name'
+        valuePath       : 'track.name'
       },
       {
         name            : this.l10n.t('Type'),
