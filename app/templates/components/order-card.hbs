@@ -7,7 +7,7 @@
     </div>
   {{/unless}}
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
-    <div class="main content">
+    <div class="{{unless this.device.isMobile 'order card'}} content">
       <div class="right floated author">
         {{#each-in (group-by 'name' (map-by 'ticket' this.order.attendees)) as |name tickets|}}
           <div class="ui green large label">{{tickets.length}} x {{name}}</div>
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-      <div class="pl-4 pt-1">
+      <div class="pl-4">
         <span>
           {{#if this.isFreeOrder}}
             {{t 'Free'}}
