@@ -1,12 +1,14 @@
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 export default class SpeakersReorderRoute extends Route {
   titleToken() {
     return this.l10n.t('Reorder Speakers');
   }
 
-  async model() {
-    return this.modelFor('events.view').query('speakers', {
+  model() {
+    const event = this.modelFor('events.view');
+    const speakers = event.query('speakers', {
       sort         : 'order',
       'page[size]' : 0,
       cache        : true,
@@ -31,6 +33,10 @@ export default class SpeakersReorderRoute extends Route {
           }
         }
       ]
+    });
+    return hash({
+      event,
+      speakers
     });
   }
 }

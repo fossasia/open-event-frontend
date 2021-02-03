@@ -53,6 +53,7 @@ export default class SpeakersRoute extends Route {
         pageParam     : 'page[number]',
         store         : eventDetails,
         include       : 'sessions.track',
+        sort: 'order',
         cache         : true,
         public        : true,
         infinityCache : 36000
