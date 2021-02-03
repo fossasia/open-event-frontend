@@ -1,6 +1,6 @@
 <div class="d-flex">
   <div class="flex-grow-1">
-    {{#if (includes this.props.options.ratedSessions this.record)}}
+    {{#if (includes this.props.options.ratedSessions this.extraRecords.id)}}
       {{#each this.extraRecords.feedbacks as |feedback|}}
         {{#if (eq feedback.user.email this.authManager.currentUser.email)}}
           <UiRating
@@ -16,11 +16,11 @@
         @initialRating={{0}}
         @rating={{this.rating}}
         @maxRating={{5}}
-        @onRate={{pipe-action (action (mut this.rating)) (action this.props.actions.addRating this.rating this.record)}}
+        @onRate={{pipe-action (action (mut this.rating)) (action this.props.actions.addRating this.rating this.extraRecords.id)}}
         @clearable={{true}} />
     {{/if}}
   </div>
-  <div class="text center aligned flex-grow-1">
-     {{this.extraRecords.averageRating}} / {{this.extraRecords.feedbacks.length}} 
+  <div class="flex-grow-1" style="text-align: left;">
+     {{this.record}} ({{this.extraRecords.feedbacks.length}}) 
   </div>
 </div>

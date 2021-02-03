@@ -49,10 +49,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : this.l10n.t('Rating / Average Rating / No. of ratings'),
-        width           : 160,
-        valuePath       : 'id',
-        extraValuePaths : ['averageRating', 'feedbacks'],
+        name            : this.l10n.t('Rating / Average Rating (No. of ratings)'),
+        width: 160,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'averageRating',
+        extraValuePaths : ['id', 'feedbacks'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
         options         : {
           ratedSessions: this.ratedSessions
@@ -64,7 +66,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name      : this.l10n.t('Track'),
-        width     : 80,
+        width: 80,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
         valuePath : 'track.name'
       },
       {
