@@ -43,7 +43,7 @@ export default class IndexRoute extends Route {
         },
         ...SPEAKERS_FILTER
       ],
-      sort: 'order',
+      sort         : 'order',
       include      : 'sessions.track',
       cache        : true,
       public       : true,
