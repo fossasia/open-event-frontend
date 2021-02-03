@@ -1,26 +1,22 @@
-<div class="d-flex">
-  <div class="flex-grow-1">
-    {{#if (includes this.props.options.ratedSessions this.extraRecords.id)}}
-      {{#each this.extraRecords.feedbacks as |feedback|}}
-        {{#if (eq feedback.user.email this.authManager.currentUser.email)}}
-          <UiRating
-            @initialRating={{feedback.rating}}
-            @rating={{feedback.rating}}
-            @maxRating={{5}}
-            @onRate={{pipe-action (action (mut feedback.rating)) (action this.props.actions.updateRating feedback.rating feedback)}}
-            @clearable={{true}} />
-        {{/if}}
-      {{/each}}
-    {{else}}
+{{#if (includes this.props.options.ratedSessions this.extraRecords.id)}}
+  {{#each this.extraRecords.feedbacks as |feedback|}}
+    {{#if (eq feedback.user.email this.authManager.currentUser.email)}}
       <UiRating
-        @initialRating={{0}}
-        @rating={{this.rating}}
+        @initialRating={{feedback.rating}}
+        @rating={{feedback.rating}}
         @maxRating={{5}}
-        @onRate={{pipe-action (action (mut this.rating)) (action this.props.actions.addRating this.rating this.extraRecords.id)}}
+        @onRate={{pipe-action (action (mut feedback.rating)) (action this.props.actions.updateRating feedback.rating feedback)}}
         @clearable={{true}} />
     {{/if}}
-  </div>
-  <div class="flex-grow-1" style="text-align: left;">
-     {{this.record}} ({{this.extraRecords.feedbacks.length}}) 
-  </div>
+  {{/each}}
+{{else}}
+  <UiRating
+    @initialRating={{0}}
+    @rating={{this.rating}}
+    @maxRating={{5}}
+    @onRate={{pipe-action (action (mut this.rating)) (action this.props.actions.addRating this.rating this.extraRecords.id)}}
+    @clearable={{true}} />
+{{/if}}
+<div class="mb-4" style="text-align: center;">
+ {{this.record}} ({{this.extraRecords.feedbacks.length}})
 </div>

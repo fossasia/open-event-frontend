@@ -49,8 +49,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : this.l10n.t('Rating / Average Rating (No. of ratings)'),
-        width           : 160,
+        name            : this.l10n.t('Rating'),
+        width           : 60,
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
         valuePath       : 'averageRating',
