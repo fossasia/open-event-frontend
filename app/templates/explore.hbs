@@ -49,7 +49,7 @@
       {{/if}}
     </div>
     {{#each this.filteredEvents as |event|}}
-      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}}  @category={{this.category}} @subCategory={{this.sub_category}} @eventType={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @eventName={{this.event_name}} @isPast={{this.is_past}} @isOnline={{this.is_online}} @hasLogo={{this.has_logo}} @hasImage={{this.has_image}} @location={{this.location}} @ticketType={{this.ticket_type}} @cfs={{this.cfs}} @shareEvent={{action "shareEvent"}} />      <div class="ui hidden divider"></div>
+      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}} @category={{this.category}} @subCategory={{this.sub_category}} @eventType={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @eventName={{this.event_name}} @isPast={{this.is_past}} @isOnline={{this.is_online}} @hasLogo={{this.has_logo}} @hasImage={{this.has_image}} @location={{this.location}} @ticketType={{this.ticket_type}} @cfs={{this.cfs}} @shareEvent={{action "shareEvent"}} />      <div class="ui hidden divider"></div>
       <div class="ui hidden divider"></div>
     {{else}}
       <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
