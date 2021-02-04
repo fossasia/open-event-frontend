@@ -1,8 +1,13 @@
 .footer-pusher {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   min-height: 100vh;
+}
+
+#main-container {  // sass-lint:disable-line no-ids
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0;
 }
 
 .main-container {
@@ -20,6 +25,7 @@
 }
 
 footer {
+  overflow-x: hidden;
   padding-bottom: 30px !important;
   padding-top: 30px !important;
 
