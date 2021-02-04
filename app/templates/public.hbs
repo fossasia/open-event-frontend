@@ -44,7 +44,7 @@
         {{outlet}}
       </div>
       {{/unless}}
-      <div class="three wide column" style="overflow-x: hidden;">
+      <div class="three wide column rightside-menu">
         {{#if this.displaySideMenu}}
           <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 pt-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
