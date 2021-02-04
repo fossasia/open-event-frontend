@@ -1,0 +1,44 @@
+<div class="column sixteen wide">
+  <h2 class="ui header center aligned">
+    {{t 'Reorder Speakers'}}
+  </h2>
+  <div class="ui container">
+    <UiCheckbox
+      @class="toggle mb-8 ml-4"
+      @checked={{this.useSwap}}
+      @onChange={{action (mut this.useSwap)}}
+      @label={{t "Swap Places"}} />
+
+
+    <button class="ui primary button right floated mr-4" {{action this.save}}>{{t "Save"}}</button>
+    <button class="ui negative button right floated" {{action (confirm (t 'This will reset the order of all speakers to default unordered list. Continue?') this.reset)}}>{{t "Reset"}}</button>
+    
+    <SortableObjects
+      @sortableObjectList={{this.model.speakers}}
+      @overrideClass="ui stackable grid container four column"
+      @sortEndAction={{action this.sortEndAction}}
+      @enableSort={{true}}
+      @useSwap={{this.useSwap}}>
+      {{#each this.model.speakers as |speaker|}}
+        <DraggableObject @content={{speaker}} @overrideClass="column" @isSortable={{true}}>
+          <div class="ui card pointer">
+            <div class="image">
+              <img src="{{speaker.image}}">
+            </div>
+            <div class="content">
+              <div class="header">
+                <span>{{speaker.name}}</span>
+                {{#if speaker.isFeatured}}
+                  <i class="right floated star icon"></i>
+                {{/if}}
+              </div>
+              <div class="meta">
+                <span>{{speaker.positionOrganisation}}</span>
+              </div>
+            </div>
+          </div>
+        </DraggableObject>
+      {{/each}}
+    </SortableObjects>
+  </div>
+</div>
