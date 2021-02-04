@@ -1,11 +1,11 @@
-<LeafletMap @lat={{this.latitude}} @lng={{this.longitude}} @zoom={{15}} as |layers|>
+{{!-- <LeafletMap @lat={{this.latitude}} @lng={{this.longitude}} @zoom={{15}} as |layers|>
   <layers.tile @url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
   <layers.marker @location={{array this.latitude this.longitude}} @draggable={{true}} @onDragend={{action "updateLocation"}} as |marker|>
     <marker.popup>
       {{this.location}}
     </marker.popup>
   </layers.marker>
-</LeafletMap>
+</LeafletMap> --}}
 <div class="item">
   <div class="ui input">
     <Input

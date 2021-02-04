@@ -1,9 +1,12 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class EditSpeakerController extends Controller {
+  @service errorHandler;
+
   @action
   save() {
     this.set('isLoading', true);
@@ -17,10 +20,7 @@ export default class EditSpeakerController extends Controller {
       })
       .catch(e => {
         console.error('Error while editing speaker', e);
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
-          {
-            id: 'some_error'
-          });
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);
