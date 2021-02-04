@@ -46,7 +46,6 @@ export default class EventCard extends Component {
       hasImage   : null,
       hasLogo    : null,
       isPast     : null,
-      isUpcoming : null
     });
   }
 
@@ -66,7 +65,6 @@ export default class EventCard extends Component {
       hasImage    : null,
       hasLogo     : null,
       isPast      : null,
-      isUpcoming  : null
     });
   }
 

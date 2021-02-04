@@ -4,13 +4,12 @@ import Controller from '@ember/controller';
 
 @classic
 export default class ExploreController extends Controller {
-  queryParams = ['category', 'sub_category', 'event_type', 'start_date', 'end_date', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past', 'is_upcoming'];
+  queryParams = ['category', 'sub_category', 'event_type', 'start_date', 'end_date', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past'];
   event_name = null;
   is_online = null;
   is_location = null;
   is_mixed = null;
   is_past = null;
-  is_upcoming = null;
   has_logo = null;
   has_image = null;
   category = null;
@@ -22,7 +21,6 @@ export default class ExploreController extends Controller {
   ticket_type = null;
   cfs = null;
   
-
   @action
   shareEvent(event) {
     this.set('eventToShare', event);
@@ -51,9 +49,6 @@ export default class ExploreController extends Controller {
     }
     if (filterType === 'is_past') {
       this.set('is_past', null);
-    }
-    if (filterType === 'is_upcoming') {
-      this.set('is_upcoming', null);
     }
     if (filterType === 'start_date') {
       this.set('startDate', null);
@@ -99,7 +94,6 @@ export default class ExploreController extends Controller {
       has_image    : null,
       has_logo     : null,
       is_past      : null,
-      is_upcoming  : null
     });
   }
 }

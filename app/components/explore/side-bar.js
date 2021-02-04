@@ -19,9 +19,9 @@ export default class SideBar extends Component {
   @tracked suggestions = [];
   isMapVisible = true;
 
-  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past', 'is_upcoming')
+  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
   get hideDefaultFilters() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.is_location || this.is_mixed || this.has_logo || this.has_image || this.is_past || this.is_upcoming);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.is_location || this.is_mixed || this.has_logo || this.has_image || this.is_past);
   }
 
   @computed('model')
@@ -99,17 +99,7 @@ export default class SideBar extends Component {
     this.set('startDate', null);
     this.set('endDate', null);
     this.set('dateType', null);
-    this.set('is_upcoming', null);
     this.set('is_past', this.is_past === val ? null : val);
-  }
-
-  @action
-  enableUpcomingEvents(val) {
-    this.set('startDate', null);
-    this.set('endDate', null);
-    this.set('dateType', null);
-    this.set('is_past', null);
-    this.set('is_upcoming', this.is_upcoming === val ? null : val);
   }
 
   @action
@@ -217,7 +207,6 @@ export default class SideBar extends Component {
     this.set('startDate', newStartDate);
     this.set('endDate', newEndDate);
     this.set('is_past', null);
-    this.set('is_upcoming', null);
   }
 
   @action
