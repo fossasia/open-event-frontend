@@ -20,7 +20,7 @@ export default class ExploreController extends Controller {
   location = null;
   ticket_type = null;
   cfs = null;
-  
+
   @action
   shareEvent(event) {
     this.set('eventToShare', event);
@@ -93,7 +93,7 @@ export default class ExploreController extends Controller {
       is_mixed     : null,
       has_image    : null,
       has_logo     : null,
-      is_past      : null,
+      is_past      : null
     });
   }
 }

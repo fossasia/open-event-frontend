@@ -31,6 +31,6 @@ export const getDateRanges = function() {
     {
       name : this.l10n.t('Custom dates'),
       key  : 'custom_dates'
-    },
+    }
   ];
 };
