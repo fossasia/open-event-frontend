@@ -31,8 +31,8 @@ export default class NewSessionRoute extends Route {
         sort         : 'id',
         'page[size]' : 0
       }),
-      session: sessionDetails,
-      speaker: speakers,
+      session      : sessionDetails,
+      speaker      : speakers,
       tracks       : await eventDetails.query('tracks', {}),
       sessionTypes : await eventDetails.query('sessionTypes', {})
     };
