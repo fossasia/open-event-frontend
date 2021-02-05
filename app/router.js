@@ -220,6 +220,7 @@ Router.map(function() {
     });
     this.route('messages');
     this.route('settings', function() {
+      this.route('social-media');
       this.route('microlocations');
       this.route('microservices');
       this.route('images');
