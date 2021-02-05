@@ -18,12 +18,12 @@ export default ModelBase.extend({
 
   event: belongsTo('event'),
 
-  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
-  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
-  softEndsAtDate   : computedDateTimeSplit.bind(this)('softEndsAt', 'date'),
-  softEndsAtTime   : computedDateTimeSplit.bind(this)('softEndsAt', 'time'),
-  endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
-  endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
+  startsAtDate   : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
+  startsAtTime   : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
+  softEndsAtDate : computedDateTimeSplit.bind(this)('softEndsAt', 'date'),
+  softEndsAtTime : computedDateTimeSplit.bind(this)('softEndsAt', 'time'),
+  endsAtDate     : computedDateTimeSplit.bind(this)('endsAt', 'date'),
+  endsAtTime     : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
   isOpen: computed('startsAt', 'endsAt', function() {
     return moment().isAfter(this.startsAt) && moment().isBefore(this.endsAt);
