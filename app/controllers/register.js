@@ -17,7 +17,7 @@ export default class RegisterController extends Controller {
   }
 
   @action
-  async createUser() {
+  createUser() {
     const { password } = this.model;
     this.model.save()
       .then(async user => {
