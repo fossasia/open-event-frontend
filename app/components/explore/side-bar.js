@@ -168,6 +168,7 @@ export default class SideBar extends Component {
           break;
 
         case 'all_dates':
+          newStartDate = 'all_date';
           break;
 
         case 'today':
