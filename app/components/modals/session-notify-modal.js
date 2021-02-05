@@ -42,6 +42,18 @@ export default class SessionNotifyModal extends ModalBase {
     return session.speakers.map(speaker => `${speaker.name} <${speaker.email}>`).join(', ');
   }
 
+  @computed('sessionId')
+  get organizersEmails() {
+    const session = this.store.peekRecord('session', this.sessionId);
+    const owner = session.event.get('owner');
+    const organizers = session.event.get('organizers');
+    const ownerEmail = owner.get('fullName') + " <" + owner.get('email') + ">";
+    return [...new Set(
+      session.event.get('organizers').map(organizer => `${organizer.fullName} <${organizer.email}>`), 
+      session.event.get('coorganizers').map(coorganizer => `${coorganizer.fullName} <${coorganizer.email}>`)
+    )].concat(ownerEmail).join(', ');
+  }
+
   async initialize() {
     if (!mailPromise) {
       mailPromise = this.loader.load('/sessions/mails');
