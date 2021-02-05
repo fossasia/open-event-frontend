@@ -1,7 +1,12 @@
+@media screen and (max-width: 768px) {
+  .footer-pusher {
+    overflow-x: hidden;
+  }
+}
+
 .footer-pusher {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   min-height: 100vh;
 }
 
@@ -20,6 +25,7 @@
 }
 
 footer {
+  overflow-x: hidden;
   padding-bottom: 30px !important;
   padding-top: 30px !important;
 

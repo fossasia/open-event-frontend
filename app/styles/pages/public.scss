@@ -3,6 +3,10 @@
   overflow: hidden !important;
 }
 
+.rightside-menu {
+  overflow-x: hidden;
+}
+
 .side-menu {
   position: sticky;
   top: 14px;
@@ -11,4 +15,10 @@
 .social-links {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .public-container {
+    padding: 0 .8rem;
+  }
 }
