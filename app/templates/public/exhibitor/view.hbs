@@ -20,10 +20,10 @@
                         <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ this.model.slidesUrl }}&embedded=true"></iframe>
                     {{else if this.model.slidesUrl}}
                         <a class="mb-2" href={{ this.model.slidesUrl }} target="_blank" rel="noopener noreferrer">
-                            <button class="ui labeled icon button">
+                            <div class="ui labeled icon button">
                                 <i class="file powerpoint icon"></i>
                                 {{t 'Slides'}}
-                            </button>
+                            </div>
                         </a>
                     {{/if}}
           
@@ -31,10 +31,10 @@
                         <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
                     {{else if this.model.videoUrl}}
                         <a class="mb-2" href={{ this.model.videoUrl }} target="_blank" rel="noopener noreferrer">
-                            <button class="ui labeled icon button">
+                            <div class="ui labeled icon button">
                                 <i class="video icon"></i>
                                 {{t 'Video'}}
-                            </button>
+                            </div>
                         </a>
                     {{/if}}
                 </div>
