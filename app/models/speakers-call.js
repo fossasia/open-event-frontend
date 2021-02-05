@@ -11,6 +11,7 @@ const detectedTimezone = moment.tz.guess();
 export default ModelBase.extend({
   announcement : attr('string'),
   startsAt     : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).subtract(3, 'days').startOf('day') }),
+  softEndsAt   : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).subtract(3, 'days').startOf('day') }),
   endsAt       : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).subtract(2, 'days').startOf('day') }),
   privacy      : attr('string', { defaultValue: 'public' }),
   hash         : attr('string', { defaultValue: v4() }),
@@ -19,6 +20,8 @@ export default ModelBase.extend({
 
   startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
   startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
+  softEndsAtDate   : computedDateTimeSplit.bind(this)('softEndsAt', 'date'),
+  softEndsAtTime   : computedDateTimeSplit.bind(this)('softEndsAt', 'time'),
   endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
   endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 

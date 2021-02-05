@@ -4,7 +4,7 @@
   {{#if this.data.speakersCall.isOpen}}
     <a href="#" class="ui basic green label">{{t 'Open'}}</a>
     <div class="sub header">
-      {{t 'Call for Speakers is open until'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+      {{t 'The soft closing date for submissions is '}} {{general-date this.data.speakersCall.softEndsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}.{{t 'The final closing date of the Call for Speakers is '}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
     </div>
   {{else}}
     <a href="#" class="ui basic red label">{{t 'Closed'}}</a>
