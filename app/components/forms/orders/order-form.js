@@ -586,7 +586,7 @@ export default Component.extend(FormMixin, {
 
   allFields: computed('fields', function() {
     const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
-    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['isComplex', 'name']);
+    const customFields =  this.fields.toArray()?.filter(field => !field.isFixed);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
