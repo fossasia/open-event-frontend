@@ -223,20 +223,37 @@ export default class ExploreRoute extends Route {
           ]
       });
     } else if (params.start_date) {
-      filterOptions.push({
-        or: [
-          {
-            name : 'starts-at',
-            op   : 'ge',
-            val  : params.start_date
-          },
-          {
-            name : 'ends-at',
-            op   : 'ge',
-            val  : params.start_date
-          }
-        ]
-      });
+      if (params.start_date === 'all_date') {
+        filterOptions.push({
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'le',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'ends-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            }
+          ]
+        });
+      } else {
+        filterOptions.push({
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : params.start_date
+            },
+            {
+              name : 'ends-at',
+              op   : 'ge',
+              val  : params.start_date
+            }
+          ]
+        });
+      }
     } else if (params.is_past) {
       filterOptions.push({
         and: [
@@ -272,7 +289,7 @@ export default class ExploreRoute extends Route {
     return this.infinity.model('event', {
       include      : 'event-topic,event-sub-topic,event-type',
       filter       : filterOptions,
-      sort         : params.is_past ? '-starts-at' : 'starts-at',
+      sort         : params.is_past || (params.start_date === 'all_date') ? '-starts-at' : 'starts-at',
       perPage      : 6,
       startingPage : 1,
       perPageParam : 'page[size]',
@@ -282,10 +299,20 @@ export default class ExploreRoute extends Route {
   }
 
   async model(params) {
+
+    const response =  this.loader.load(`https://nominatim.openstreetmap.org/search?q=${params.location}&format=jsonv2&addressdetails=1`, { isExternal: true });
+    let [cords] = await Promise.all([response]);
+
+    if (cords.length < 1) {
+      cords = [{ lat: '20', lon: '79' }];
+    }
+
     return {
       eventTypes     : await this.store.findAll('event-type'),
       eventTopics    : await this.store.findAll('event-topic', { include: 'event-sub-topics' }),
-      filteredEvents : await this._loadEvents(params)
+      filteredEvents : await this._loadEvents(params),
+      lat            : cords[0].lat,
+      lng            : cords[0].lon
     };
   }
 

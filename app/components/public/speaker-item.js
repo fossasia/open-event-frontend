@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 import Component from '@ember/component';
 
 @classic
-@classNames('four wide  speaker column')
+@classNames('speaker column')
 export default class SpeakerItem extends Component {
   @computed
   get socialLinks() {
