@@ -68,7 +68,7 @@ export default Component.extend({
           while (description.substr(0, x).endsWith('<br>')) {
             x = x - 4;
           }
-          this.setProperties({ _value: description.substr(0, x), value:description.substr(0, x) });
+          this.setProperties({ _value: description.substr(0, x), value: description.substr(0, x) });
         }, 200);
       };
 
