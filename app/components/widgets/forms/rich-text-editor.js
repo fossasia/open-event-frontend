@@ -63,7 +63,12 @@ export default Component.extend({
       const updateValue = () => {
         debounce(this, () => {
           const value = this.editor.getValue();
-          this.setProperties({ _value: value, value });
+          const description = String(value);
+          let x = description.length;
+          while (description.substr(0, x).endsWith('<br>')) {
+            x = x - 4;
+          }
+          this.setProperties({ _value: description.substr(0, x), value:description.substr(0, x) });
         }, 200);
       };
 

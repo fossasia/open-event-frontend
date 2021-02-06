@@ -13,12 +13,7 @@ export default class IndexController extends Controller {
 
   @computed('model.event.description')
   get htmlSafeDescription() {
-    const description = String(this.model.event.description);
-    let x = description.length;
-    while (description.substr(0, x).endsWith('<br>')) {
-      x = x - 4;
-    }
-    return htmlSafe(description.substr(0, x));
+    return htmlSafe(this.model.event.description);
   }
 
   @action
