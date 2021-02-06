@@ -1531,6 +1531,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fullcalendar/core@~4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-4.4.2.tgz#864abe98cce4497a163c01a8fc30389f15d3d4e1"
+  integrity sha512-vq7KQGuAJ1ieFG5tUqwxwUwmXYtblFOTjHaLAVHo6iEPB52mS7DS45VJfkhaQmX4+5/+BHRpg82G1qkuAINwtg==
+
 "@glimmer/component@^1.0.1", "@glimmer/component@^1.0.2", "@glimmer/component@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@glimmer/component/-/component-1.0.3.tgz#38c26fc4855fd7ad0e0816d18d80d32c578e5140"
@@ -6536,7 +6541,7 @@ ember-cli-htmlbars@5.3.1, ember-cli-htmlbars@^5.0.0, ember-cli-htmlbars@^5.1.2, 
     strip-bom "^4.0.0"
     walk-sync "^2.2.0"
 
-ember-cli-htmlbars@^2.0.1, ember-cli-htmlbars@^2.0.3:
+ember-cli-htmlbars@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-2.0.3.tgz#e116e1500dba12f29c94b05b9ec90f52cb8bb042"
   dependencies:
@@ -7224,19 +7229,20 @@ ember-fn-helper-polyfill@^1.0.2:
     ember-cli-babel "^7.7.3"
     ember-cli-version-checker "^3.1.3"
 
-ember-fullcalendar@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/ember-fullcalendar/-/ember-fullcalendar-1.8.0.tgz#264da8513da5d0db355dcad713111c72d50cc0b9"
-  integrity sha512-cGhbuR7FUrQz1+Pmkm5kLtp/lD0IhRc8d2kSm58+XVfV2325fjXBa+1c/Kcv9Av94MwwSUczu3SFMq1xiTWECA==
+ember-fullcalendar@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-fullcalendar/-/ember-fullcalendar-2.0.0.tgz#750b353322bdf448a14c8b751252a122e0de35bd"
+  integrity sha512-nVbsUvxx0CDO2YsxoMY755s5s2FoqRZ9pl23dzdDjIx8GuDjoneb8SNtDqBLq2HvJKVswYWyQdh3Znp/hKqgyg==
   dependencies:
-    ember-cli-babel "^6.7.2"
-    ember-cli-htmlbars "^2.0.1"
+    "@fullcalendar/core" "~4.4.2"
+    ember-auto-import "^1.5.3"
+    ember-cli-babel "^7.18.0"
+    ember-cli-htmlbars "^3.1.0"
     ember-cli-moment-shim "3.5.0"
     ember-cli-node-assets "0.2.2"
-    ember-invoke-action "^1.4.0"
-    fastboot-transform "^0.1.2"
-    fullcalendar "^3.6.0"
-    fullcalendar-scheduler "^1.8.0"
+    ember-invoke-action "^1.5.0"
+    fast-deep-equal "^2.0.1"
+    fastboot-transform "^0.1.3"
 
 ember-get-config@^0.2.4:
   version "0.2.4"
@@ -7318,7 +7324,7 @@ ember-inflector@^3.0.1:
   dependencies:
     ember-cli-babel "^6.6.0"
 
-ember-invoke-action@^1.4.0, ember-invoke-action@^1.5.1:
+ember-invoke-action@^1.5.0, ember-invoke-action@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ember-invoke-action/-/ember-invoke-action-1.5.1.tgz#b6cad51ee729fc227cdbdba83b2b5486f0fa5834"
   dependencies:
@@ -9321,21 +9327,6 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.12:
     mkdirp ">=0.5 0"
     rimraf "2"
 
-fullcalendar-scheduler@^1.8.0:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/fullcalendar-scheduler/-/fullcalendar-scheduler-1.9.4.tgz#15acc98aa0f2b80330b1e93cc768343404827b92"
-  dependencies:
-    fullcalendar "~3.9.0"
-    jquery "2 - 3"
-    moment "^2.20.1"
-
-fullcalendar@^3.6.0, fullcalendar@~3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/fullcalendar/-/fullcalendar-3.9.0.tgz#b608a9989f3416f0b1d526c6bdfeeaf2ac79eda5"
-  dependencies:
-    jquery "2 - 3"
-    moment "^2.20.1"
-
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
@@ -10646,7 +10637,7 @@ jquery-deferred@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/jquery-deferred/-/jquery-deferred-0.3.1.tgz#596eca1caaff54f61b110962b23cafea74c35355"
 
-"jquery@2 - 3", jquery@>=1.11, jquery@^3.2.1, jquery@^3.4.1, jquery@^3.5.0, jquery@x.*:
+jquery@>=1.11, jquery@^3.2.1, jquery@^3.4.1, jquery@^3.5.0, jquery@x.*:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
   integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
@@ -11963,7 +11954,7 @@ moment@*:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
   integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
 
-"moment@>= 2.9.0", moment@^2.18.1, moment@^2.19.3, moment@^2.20.1:
+"moment@>= 2.9.0", moment@^2.18.1, moment@^2.19.3:
   version "2.22.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.0.tgz#7921ade01017dd45186e7fee5f424f0b8663a730"
 
