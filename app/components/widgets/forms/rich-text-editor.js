@@ -64,9 +64,7 @@ export default Component.extend({
         debounce(this, () => {
           const value = this.editor.getValue();
           let description = String(value);
-          while (description.endsWith('<br>')) {
-            description = description.replace(/<br>$/, '');
-          }
+          description = description.replace(/(<br>)*$/g, '');
           this.setProperties({ _value: description, value: description });
         }, 200);
       };
