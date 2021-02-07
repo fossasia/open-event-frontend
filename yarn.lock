@@ -1829,15 +1829,6 @@
     "@sentry/utils" "6.1.0"
     tslib "^1.9.3"
 
-"@sentry/hub@6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.0.4.tgz#b13eac8fe4d4822dc4f997a415e9cfe8cc52fbd9"
-  integrity sha512-gutuxH8M3CdElSbwqNq9G29MiNuGsPESB22w4k4wx+pc632bi6w0v53+BLjGO6wh2EMfHVWptgAYmojEk5yKQg==
-  dependencies:
-    "@sentry/types" "6.0.4"
-    "@sentry/utils" "6.0.4"
-    tslib "^1.9.3"
-
 "@sentry/hub@6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.1.0.tgz#fb22734c91c9d68564737996bf28b7e032e3d8ee"
@@ -1857,15 +1848,6 @@
     localforage "^1.8.1"
     tslib "^1.9.3"
 
-"@sentry/minimal@6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-6.0.4.tgz#5a08ac6b0899fa5db409b1a5b888740f769cb6a5"
-  integrity sha512-COL0tjznrCaatOPH2eGgT1Y9vUUKJw+W0srCn5V1dHgRu3t00rGFXrcyOXQmHfEWmBaagt9lXEJCFaN7yMucVQ==
-  dependencies:
-    "@sentry/hub" "6.0.4"
-    "@sentry/types" "6.0.4"
-    tslib "^1.9.3"
-
 "@sentry/minimal@6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-6.1.0.tgz#b3abf76d93b95477a3c1029db810818bdc56845f"
@@ -1875,34 +1857,21 @@
     "@sentry/types" "6.1.0"
     tslib "^1.9.3"
 
-"@sentry/tracing@^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.0.4.tgz#5a45d42b24956ac38f8c906f1054a5342ada5c8f"
-  integrity sha512-/da81kbkpiA17kAVjW8ZdpASwgsdYUXZg3jdOfbV07HK/6aFkfOF8/sHKMjVG2Iy4oaRel/F7l6/wf+XlKbBMw==
+"@sentry/tracing@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.1.0.tgz#cefabd0e4794fefb6a0a17478a8f09b2f1f3d889"
+  integrity sha512-s6a4Ra3hHn4awiNz4fOEK6TCV2w2iLcxdppijcYEB7S/1rJpmqZgHWDicqufbOmVMOLmyKLEQ7w+pZq3TR3WgQ==
   dependencies:
-    "@sentry/hub" "6.0.4"
-    "@sentry/minimal" "6.0.4"
-    "@sentry/types" "6.0.4"
-    "@sentry/utils" "6.0.4"
+    "@sentry/hub" "6.1.0"
+    "@sentry/minimal" "6.1.0"
+    "@sentry/types" "6.1.0"
+    "@sentry/utils" "6.1.0"
     tslib "^1.9.3"
-
-"@sentry/types@6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.0.4.tgz#762949dc4ba25f4071c405f67ddc28c84b6dc08f"
-  integrity sha512-VqmnhJPpPmsu4gMzSZw8UHgYlP1QSikMZ5X6E3q6zwmbWu+2oniQHD6xGB6PXv6uTo5zg2NseQEiWnEjJRUYWw==
 
 "@sentry/types@6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.1.0.tgz#5f9379229423ca1325acf6709e95687180f67132"
   integrity sha512-kIaN52Fw5K+2mKRaHE2YluJ+F/qMGSUzZXIFDNdC6OUMXQ4TM8gZTrITXs8CLDm7cK8iCqFCtzKOjKK6KyOKAg==
-
-"@sentry/utils@6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.0.4.tgz#92ed5c114c633b8b59ae6fae70bd8bbfc88e302f"
-  integrity sha512-UOAz5p5IIntmIcmX04Cjk7l7+EwnuBn2S/rhNN92I1vDCaL010OmUZOHGHJExoXBE75zVh/LDssAPQTKXo0F+g==
-  dependencies:
-    "@sentry/types" "6.0.4"
-    tslib "^1.9.3"
 
 "@sentry/utils@6.1.0":
   version "6.1.0"
@@ -7283,14 +7252,14 @@ ember-getowner-polyfill@2.2.0, "ember-getowner-polyfill@^1.1.0 || ^2.0.0", ember
     ember-cli-version-checker "^2.1.0"
     ember-factory-for-polyfill "^1.3.1"
 
-ember-h-captcha@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/ember-h-captcha/-/ember-h-captcha-2.0.6.tgz#ea528f0656d1e6ceceb0f7f2e69f36fb59a3a310"
-  integrity sha512-iKjYNtK4QINiDuQUvOWxDrkFszb9J4Sw/NLDpniVLQgLKkaIGNQZoCf7sJIF6Nol3na2esFXA+SItxCFDLPOAg==
+ember-h-captcha@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/ember-h-captcha/-/ember-h-captcha-2.0.8.tgz#6b0552e17b9fcbdc8b7b6fedb41c2f9341c1d6a1"
+  integrity sha512-eYZ6jZv8bvCFJEBUSN20cKN77gT3TWhvlIQteW2fGgvCC0UPgmEEA+/4VcB6KOOX/ej6z4+JZ8fVozwnwNsTQQ==
   dependencies:
     "@ember/render-modifiers" "^1.0.2"
     ember-cached-decorator-polyfill "^0.1.0"
-    ember-cli-babel "^7.23.0"
+    ember-cli-babel "^7.23.1"
     ember-cli-htmlbars "^5.3.1"
 
 ember-href-to@4.1.0:
@@ -12904,10 +12873,10 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-paypal-checkout@^4.0.323:
-  version "4.0.323"
-  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.323.tgz#a39386b1d9e0f158bd00f28cdce178c4c0399898"
-  integrity sha512-YRfUk7Wcg9uGIl+MPn85/Y58l8tCWQ2VW5anaw8LzxkvKP0FQh2f1HUCKUki9K+MZj3vWf874aQc19FyYGns0w==
+paypal-checkout@^4.0.325:
+  version "4.0.325"
+  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.325.tgz#565151f76d0820cad14ddc26b8bd0de98517e948"
+  integrity sha512-9IwfJ5AVWZt8WQypbI5VaIQAMR1vQLtqGQk0hOqAgg1PlDc9pnmvS1+Xr7MAs+9QXHtoM9pyXFUENgE+/sFN1A==
   dependencies:
     "@paypal/sdk-constants" "^1.0.64"
     Base64 "^1.0.0"
