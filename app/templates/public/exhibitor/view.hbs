@@ -13,6 +13,13 @@
                 {{sanitize this.model.description}}
             </p>
         {{/if}}
+        <br/>
+        <div class="social-icons d-flex" style="justify-content: center;">
+            {{#each this.model.socialLinks as |socialLink|}}
+                <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} big icon"></i></a>
+            {{/each}}
+        </div>
+        <br/>
         {{#if (or this.model.slidesUrl this.model.videoUrl)}}
             <div class="p-4">
                 <div style={{css display='flex' align-items='center' flex-direction='column'}}>
