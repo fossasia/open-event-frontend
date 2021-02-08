@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import Exhibitor from 'open-event-frontend/models/exhibitor';
+import Exhibitor, { SocialLink } from 'open-event-frontend/models/exhibitor';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { inject as service } from '@ember/service';
 import { Rules } from 'open-event-frontend/components/forms/form';
@@ -32,6 +32,14 @@ export default class ExhibitorForm extends Component<Args> {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please enter a name')
+            }
+          ]
+        },
+        status: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please choose a status')
             }
           ]
         },
@@ -78,6 +86,19 @@ export default class ExhibitorForm extends Component<Args> {
         }
       }
     };
+  }
+
+  @action addSocialLink(): void {
+    const { exhibitor } = this.args;
+    if (!exhibitor.socialLinks) {
+      exhibitor.socialLinks = [];
+    }
+    exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '' }];
+  }
+
+  @action removeSocialLink(link: SocialLink): void {
+    const { exhibitor } = this.args;
+    exhibitor.socialLinks = exhibitor.socialLinks.filter(sl => sl !== link);
   }
 
   @action async save(): Promise<void> {
