@@ -63,15 +63,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             }
           ]
         },
-        softEndDate: {
-          identifier : 'soft_end_date',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event soft ends')
-            }
-          ]
-        },
         endDate: {
           identifier : 'end_date',
           rules      : [
@@ -92,16 +83,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
-            }
-          ]
-        },
-        softEndTime: {
-          identifier : 'soft_end_time',
-          depends    : 'soft_end_date',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give a soft end time')
             }
           ]
         },
