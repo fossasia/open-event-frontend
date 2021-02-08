@@ -75,7 +75,7 @@ export default class SessionsController extends Controller {
       }
     ];
 
-    const sessions = await this.model.event.query('sessions', {
+    const sessions = await this.model.event.query('dateSessions', {
       filter            : scheduledFilterOptions,
       cache             : true,
       public            : true,
