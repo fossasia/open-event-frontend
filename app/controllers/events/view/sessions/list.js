@@ -5,6 +5,8 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  sort_by = '-submitted-at';
+
   @service errorHandler;
 
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
@@ -61,26 +63,34 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : this.l10n.t('Track'),
-        width     : 80,
-        valuePath : 'track.name'
+        name            : this.l10n.t('Track'),
+        width           : 80,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'track.name'
       },
       {
-        name      : this.l10n.t('Type'),
-        width     : 70,
-        valuePath : 'sessionType.name'
+        name            : this.l10n.t('Type'),
+        width           : 70,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'sessionType.name'
       },
       {
-        name          : this.l10n.t('Submission Date'),
-        width         : 100,
-        valuePath     : 'submittedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date'
+        name            : this.l10n.t('Submission Date'),
+        width           : 100,
+        valuePath       : 'submittedAt',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
-        name          : this.l10n.t('Last Modified'),
-        width         : 100,
-        valuePath     : 'lastModifiedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date'
+        name            : this.l10n.t('Last Modified'),
+        width           : 100,
+        valuePath       : 'lastModifiedAt',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
         name            : this.l10n.t('Notify'),

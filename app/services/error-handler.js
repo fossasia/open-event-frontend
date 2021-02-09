@@ -6,9 +6,23 @@ export default class ErrorHandlerService extends Service {
 
   @service l10n;
 
+  extractError(error) {
+    const errorData = error?.errors?.[0];
+    let errorMsg = errorData?.detail;
+    if (!errorMsg) {
+      return errorMsg;
+    }
+    const pointer = errorData?.source?.pointer;
+    if (pointer && pointer.includes('/data/attributes/')) {
+      errorMsg = pointer + ': ' + errorMsg;
+    }
+
+    return errorMsg;
+  }
+
   handle(error) {
     const errorStatus =  (error?.errors?.[0]?.status) ? parseInt(error?.errors?.[0]?.status) : error;
-    const errorMsg = error?.errors?.[0]?.detail ?? 'Oops something went wrong. Please try again.';
+    const errorMsg = this.extractError(error) ?? 'Oops something went wrong. Please try again.';
     switch (errorStatus) {
       case 403:
         this.notify.error(this.l10n.tVar(errorMsg));
