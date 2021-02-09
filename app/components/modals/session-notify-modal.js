@@ -9,12 +9,12 @@ let mailPromise = null;
 @classic
 export default class SessionNotifyModal extends ModalBase {
   @service loader;
+  @service settings;
   @tracked mails = null;
   @tracked saving = false;
   @tracked subject = '';
   @tracked message = '';
   @tracked bccString = '';
-  @tracked settings = this.modelFor('events.view.sessions.list').settings;
 
   constructor() {
     super(...arguments);
