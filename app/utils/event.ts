@@ -7,7 +7,13 @@ export async function hasSpeakers(loader: Loader, event: Event): Promise<number>
 }
 
 export async function hasExhibitors(loader: Loader, event: Event): Promise<number> {
-  return (await loader.load(`/events/${event.id}/exhibitors?page[size]=1`)).data.length;
+  const exhibitorFilter = [{
+      name : 'status',
+      op   : 'eq',
+      val  : 'accepted'
+    }
+  ];
+  return (await loader.load(`/events/${event.id}/exhibitors?page[size]=1&filter=${JSON.stringify(exhibitorFilter)}`)).data.length;
 }
 
 export async function hasSessions(loader: Loader, event: Event): Promise<number> {

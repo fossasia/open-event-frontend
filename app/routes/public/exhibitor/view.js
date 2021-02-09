@@ -10,4 +10,11 @@ export default class ViewRoute extends Route {
   model(params) {
     return this.store.findRecord('exhibitor', params.exhibitor_id);
   }
+
+  afterModel(model) {
+    super.afterModel(...arguments);
+    if (model.status !== 'accepted') {
+      this.transitionTo('not-found');
+    }
+  }
 }

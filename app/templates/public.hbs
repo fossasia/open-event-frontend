@@ -45,7 +45,7 @@
       </div>
       {{/unless}}
       <div class="three wide column">
-        {{#if this.displaySideMenu}}
+        {{#if (and this.displaySideMenu (not-eq this.session.currentRouteName 'public.exhibitor.view'))}}
           <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>

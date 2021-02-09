@@ -3,10 +3,10 @@
         <div class="featured-speaker">
             <img alt="exhibitor" class="ui rounded image" src="{{if this.model.bannerUrl this.model.bannerUrl '/images/placeholders/Other.png'}}">
         </div>
-        <h3 class="ui centered header no margin">
-            <img class="ui small image" src="{{or this.model.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo">
+        <h1 class="ui centered header no margin">
+            <img class="ui small image m-0 mb-1" src="{{or this.model.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo">
             {{this.model.name}}
-        </h3>
+        </h1>
         <br/>
         {{#if this.model.description}}
             <p>
@@ -16,7 +16,13 @@
         <br/>
         <div class="social-icons d-flex" style="justify-content: center;">
             {{#each this.model.socialLinks as |socialLink|}}
-                <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} big icon"></i></a>
+                {{#if (eq socialLink.name 'website')}}
+                    <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
+                {{else if (eq socialLink.name 'groups.google')}}
+                    <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+                {{else}}
+                    <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} big icon"></i></a>
+                {{/if}}
             {{/each}}
         </div>
         <br/>
@@ -24,7 +30,8 @@
             <div class="p-4">
                 <div style={{css display='flex' align-items='center' flex-direction='column'}}>
                     {{#if (or this.pdfLink this.pptLink)}}
-                        <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ this.model.slidesUrl }}&embedded=true"></iframe>
+                        <h3 class="ui centered header no margin">{{t 'Exhibitor Slides'}}</h3>
+                        <iframe title="session-slides" class="slide-iframe mb-2" width="100%" style="max-width: 1200px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.model.slidesUrl }}&embedded=true"></iframe>
                     {{else if this.model.slidesUrl}}
                         <a class="mb-2" href={{ this.model.slidesUrl }} target="_blank" rel="noopener noreferrer">
                             <div class="ui labeled icon button">
@@ -33,9 +40,10 @@
                             </div>
                         </a>
                     {{/if}}
-          
+                    <br/>
                     {{#if this.youtubeLink}}
-                        <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
+                        <h3 class="ui centered header no margin">{{t 'Exhibitor Video'}}</h3>
+                        <iframe title="youtube-session-video" class="video-iframe" width="100%" style="max-width: 1200px;" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
                     {{else if this.model.videoUrl}}
                         <a class="mb-2" href={{ this.model.videoUrl }} target="_blank" rel="noopener noreferrer">
                             <div class="ui labeled icon button">
