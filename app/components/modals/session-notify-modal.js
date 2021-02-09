@@ -14,6 +14,7 @@ export default class SessionNotifyModal extends ModalBase {
   @tracked subject = '';
   @tracked message = '';
   @tracked bccString = '';
+  @tracked settings = this.modelFor('events.view.sessions.list').settings;
 
   constructor() {
     super(...arguments);
@@ -40,6 +41,11 @@ export default class SessionNotifyModal extends ModalBase {
   get speakerEmails() {
     const session = this.store.peekRecord('session', this.sessionId);
     return session.speakers.map(speaker => `${speaker.name} <${speaker.email}>`).join(', ');
+  }
+
+  @computed('settings')
+  get mailFrom() {
+    return this.settings.appName + ' submission system';
   }
 
   @computed('sessionId')
