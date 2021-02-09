@@ -1,5 +1,5 @@
 <UnverifiedUserMessage />
-<div class="public-event ui relaxed grid">
+<div class="public-event ui relaxed grid mt-0 pt-0">
   <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
     <Widgets::SafeImage class="background" @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
     <div class="content">
@@ -46,7 +46,7 @@
       {{/unless}}
       <div class="three wide column">
         {{#if this.displaySideMenu}}
-          <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 pt-0" />
+          <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
           <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
           {{#if (and this.device.isMobile this.twitterLink)}}
@@ -67,7 +67,7 @@
               </div>
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
-            <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment">
+            <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment m-0 pt-0">
               <div class="mr-8">
               <h4>
                 {{t 'Tracks'}}

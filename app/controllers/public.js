@@ -20,9 +20,10 @@ export default class PublicController extends Controller {
     return this.session.currentRouteName && this.session.currentRouteName !== 'public.index';
   }
 
-  @computed('model.startsAtDate', 'model.endsAtDate')
+  @computed('model.startsAt', 'model.endsAt')
   get displayEndDate() {
-    return !moment(this.model.startsAtDate).isSame(this.model.endsAtDate, 'minute');
+    return !moment.tz(this.model.startsAt, this.model.timezone)
+      .isSame(moment.tz(this.model.endsAt, this.model.timezone), 'date');
   }
 
   @computed('session.currentRouteName')

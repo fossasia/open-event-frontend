@@ -15,11 +15,23 @@ export default class SideBar extends Component {
 
   customEndDate = null;
   @tracked showFilters = false;
+
+  @tracked suggestions = [];
   isMapVisible = true;
 
   @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'event_name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
   get hideDefaultFilters() {
     return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.event_name || this.is_online || this.is_location || this.is_mixed || this.has_logo || this.has_image || this.is_past);
+  }
+
+  @computed('model')
+  get latitude() {
+    return this.model?.lat ? this.model.lat : 20;
+  }
+
+  @computed('model')
+  get longitude() {
+    return this.model?.lon ? this.model.lon : 80;
   }
 
   @computed('category', 'sub_category')
@@ -46,6 +58,31 @@ export default class SideBar extends Component {
   @action
   selectImages(val) {
     this.set('has_image', this.has_image === val ? null : val);
+  }
+
+  @action
+  async suggestionsTrigger(location) {
+    const response = this.loader.load(`https://nominatim.openstreetmap.org/search?q=${location}&format=jsonv2&addressdetails=1`, { isExternal: true });
+    const [cords] = await Promise.all([response]);
+    this.set('suggestions', cords);
+  }
+
+  @action
+  async updateLocation(e) {
+    const location = e.target.getLatLng();
+    const response = this.loader.load(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lng}&format=jsonv2`, { isExternal: true });
+    const [cords] = await Promise.all([response]);
+    if (cords.address) {
+      const locationUpdated = cords.address?.state ? cords.address.state : cords.address.country;
+      this.set('location', locationUpdated);
+    } else {
+      this.set('location', 'singapore');
+    }
+  }
+
+  @action
+  setAutocomplete(place) {
+    this.set('location', place);
   }
 
   @action
@@ -131,6 +168,7 @@ export default class SideBar extends Component {
           break;
 
         case 'all_dates':
+          newStartDate = 'all_date';
           break;
 
         case 'today':

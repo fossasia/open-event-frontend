@@ -23,7 +23,7 @@
           <a href="#" role="button" {{action 'clearFilter' 'event_type'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if this.filters.start_date}}
+      {{#if (and this.filters.start_date (not-eq this.filters.start_date "all_date"))}}
         <div class="ui mini label">
           {{general-date this.filters.start_date 'date-short'}}
           <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>

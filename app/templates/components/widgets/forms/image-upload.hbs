@@ -62,11 +62,11 @@
     @id={{this.inputIdGenerated}}
     class="styled input"
     @accept="image/*"
-    @name="image_upload"
+    @name={{or @name 'image_upload'}}
     @change={{action "fileSelected"}} />
   <label for="{{this.inputIdGenerated}}">
     <div class="ui center aligned piled upload segment text muted">
-      <i class="big {{icon}} icon"></i>
+      <i class="big {{@icon}} icon"></i>
       <br><br>
       {{this.hint}}<br>
       {{#if this.allowDragDrop}}
