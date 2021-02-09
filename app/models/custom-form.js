@@ -41,6 +41,13 @@ export const SESSION_FORM_FIELDS = {
   slidesUrl     : 'Slides',
   videoUrl      : 'Video',
   audioUrl      : 'Audio',
+  website       : 'Website',
+  github        : 'GitHub',
+  facebook      : 'Facebook',
+  twitter       : 'Twitter',
+  instagram     : 'Instagram',
+  linkedin      : 'Linkedin',
+  gitlab        : 'Gitlab',
   comments      : 'Comments'
 };
 
@@ -121,7 +128,7 @@ export default ModelBase.extend({
 
   isUrlField: computed('type', 'fieldIdentifier', function() {
     return this.type === 'text'
-    && (['website', 'twitter', 'github', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
+    && (['website', 'twitter', 'github', 'gitlab', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
   }),
 
   isRequiredObserver: observer('isRequired', function() {

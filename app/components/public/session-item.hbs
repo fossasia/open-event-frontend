@@ -76,6 +76,23 @@
       <div class="column session-description">
         {{sanitize @session.shortAbstract}}
       </div>
+      <div class="mt-4 social-icons">
+           {{#if @session.facebook}}
+            <a href={{@session.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>Facebook</a>
+           {{/if}}
+           {{#if @session.linkedin}}
+            <a href={{@session.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>LinkedIn</a>
+           {{/if}}
+           {{#if @session.twitter}}
+            <a href={{@session.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>Twitter</a>
+           {{/if}}
+           {{#if @session.github}}
+            <a href={{@session.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>GitHub</a>
+           {{/if}}
+            {{#if @session.gitlab}}
+            <a href={{@session.gitlab}} target="_blank" rel="noopener noreferrer"><i class="gitlab icon"></i>Gitlab</a>
+           {{/if}}
+         </div>
     </div>
     {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
       <div class="row p-4">
