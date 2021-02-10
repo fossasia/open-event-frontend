@@ -77,6 +77,9 @@
         {{sanitize @session.shortAbstract}}
       </div>
       <div class="mt-4 social-icons">
+        {{#if @session.website}}
+          <a href={{@session.website}} target="_blank" rel="noopener noreferrer"><i class="external alternate icon"></i>{{t 'Website'}}</a>
+        {{/if}}
         {{#if @session.facebook}}
           <a href={{@session.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>{{t 'Facebook'}}</a>
         {{/if}}
