@@ -25,6 +25,12 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   iframeUrl = '';
 
+  @tracked
+  youtubeId = '';
+
+  @tracked
+  vimeoId = '';
+
   @action
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
@@ -34,6 +40,19 @@ export default class PublicStreamVideoStream extends Component<Args> {
     this.iframeUrl = '';
 
     if (provider === 'jitsi') {
+      this.loading = false;
+    } else if (provider === 'youtube') {
+      const match = stream.url.split('v=');
+      if (match[1]) {
+        this.youtubeId = match[1];
+      }
+      this.loading = false;
+    } else if (provider === 'vimeo') {
+      const regExp = /https:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/;
+      const match = stream.url.match(regExp);
+      if (match) {
+        this.vimeoId = match[2];
+      }
       this.loading = false;
     } else if (provider === 'bbb') {
       const { url } = await this.loader.load(`/video-streams/${stream.id}/join`);
