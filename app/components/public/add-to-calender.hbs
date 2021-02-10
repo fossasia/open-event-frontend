@@ -4,9 +4,11 @@
     <div class="content">
       <Public::EventDateTime @event={{@event}} />
     </div>
+  </div>
+  <div class="item ml-4">
     <div class="ui grid mt-4">
-      <div class="eight wide column p-1">
-        <UiDropdown class="ui floating fluid dropdown button mb-2 text center aligned">
+      <div class="seven wide column p-0">
+        <UiDropdown class="ui floating fluid dropdown p-3 button mb-2 text center aligned" style="font-size: .8rem;">
           {{#if (and this.isSessionPublished this.showSessions)}}
             <i class="add to calendar icon"></i>
             {{t 'Add Event'}}
@@ -22,9 +24,9 @@
           </div>
         </UiDropdown>
       </div>
-      <div class="eight wide column p-1">
+      <div class="right floated eight wide column p-0">
         {{#if (and this.isSessionPublished this.showSessions)}}    
-          <UiDropdown class="ui floating fluid dropdown button mb-2 text center aligned">
+          <UiDropdown class="ui floating fluid dropdown p-3 button mb-2 text center aligned no-wrap" style="font-size: .8rem;">
             <i class="add to calendar icon"></i>
             {{t 'Add Sessions'}}
             <div class="menu">

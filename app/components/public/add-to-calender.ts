@@ -89,9 +89,9 @@ export default class AddToCalender extends Component<Args> {
     return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }, { name: 'Yahoo', url: this.yahooUrl }, { name: 'Outlook', url: this.outlookUrl }];
   }
 
-  get sessiongoogleUrl(): string {
+  get sessionGoogleUrl(): string {
     const { event } = this.args;
-    return "https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/" + event.identifier + ".ics?include_sessions";
+    return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + '.ics?include_sessions';
   }
 
   get sessioniCalUrl(): string {
@@ -100,6 +100,6 @@ export default class AddToCalender extends Component<Args> {
   }
 
   get sessionCalendarUrls(): { name: string; url: string; }[] {
-    return [{ name: 'Google Calendar', url: this.sessiongoogleUrl },{ name: 'iCal', url: this.sessioniCalUrl },];
+    return [{ name: 'Google Calendar', url: this.sessionGoogleUrl }, { name: 'iCal', url: this.sessioniCalUrl }];
   }
 }
