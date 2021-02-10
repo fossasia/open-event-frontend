@@ -77,15 +77,14 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     const settingsPromise = this.store.queryRecord('setting', {});
 
-    const [feedbacks, sessions, sessionStateMap, settings] = await Promise.all([feedbacksPromise, sessionsPromise, sessionStatesMapPromise, settingsPromise]);
+    const [feedbacks, sessions, sessionStateMap] = await Promise.all([feedbacksPromise, sessionsPromise, sessionStatesMapPromise]);
 
     sessionStateMapCached = sessionStateMap;
 
     return {
       sessions,
       feedbacks,
-      sessionStateMap,
-      settings
+      sessionStateMap
     };
   }
 
