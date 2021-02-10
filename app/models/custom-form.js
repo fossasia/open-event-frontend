@@ -47,7 +47,7 @@ export const SESSION_FORM_FIELDS = {
   twitter       : 'Twitter',
   instagram     : 'Instagram',
   linkedin      : 'Linkedin',
-  gitlab        : 'Gitlab',
+  gitlab        : 'GitLab',
   comments      : 'Comments'
 };
 
