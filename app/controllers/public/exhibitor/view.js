@@ -23,10 +23,10 @@ export default class extends Controller {
   @computed('model.socailLinks')
   get links() {
     return this.model.socialLinks.map(socialLink => {
-      let newLink = {};
-      newLink['name'] = socialLink.name;
-      newLink['link'] = socialLink.link;
-      newLink['color'] = buttonColor[socialLink.name];
+      const newLink = {};
+      newLink.name = socialLink.name;
+      newLink.link = socialLink.link;
+      newLink.color = buttonColor[socialLink.name];
       return newLink;
     });
   }
