@@ -45,26 +45,28 @@
       </div>
       {{/unless}}
       <div class="three wide column">
-        {{#if (and this.displaySideMenu (not-eq this.session.currentRouteName 'public.exhibitor.view'))}}
+        {{#if this.displaySideMenu}}
           <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
-          <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
-          {{#if (and this.device.isMobile this.twitterLink)}}
-              <div class="item">
-                <div class="twitter content">
-                  <UiAccordion>
-                    <div class="title pl-4" >
-                      <i class="dropdown icon"></i>
-                      <span>
-                        Recent tweets
-                      </span>
-                    </div>
-                    <div class="content" >
-                      <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
-                    </div>
-                  </UiAccordion>
+          {{#if (not-eq this.session.currentRouteName 'public.exhibitor.view')}}
+            <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
+            {{#if (and this.device.isMobile this.twitterLink)}}
+                <div class="item">
+                  <div class="twitter content">
+                    <UiAccordion>
+                      <div class="title pl-4" >
+                        <i class="dropdown icon"></i>
+                        <span>
+                          Recent tweets
+                        </span>
+                      </div>
+                      <div class="content" >
+                        <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                      </div>
+                    </UiAccordion>
+                  </div>
                 </div>
-              </div>
+            {{/if}}
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
             <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment m-0 pt-0">
@@ -105,7 +107,7 @@
               </div>
             </div>
           {{/if}}
-          {{#if (and (not this.device.isMobile) this.twitterLink)}}
+          {{#if (and (not this.device.isMobile) this.twitterLink (not-eq this.session.currentRouteName 'public.exhibitor.view'))}}
               <div class="item">
                 <div class="twitter content">
                   <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
