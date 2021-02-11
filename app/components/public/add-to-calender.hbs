@@ -5,16 +5,24 @@
       <Public::EventDateTime @event={{@event}} />
     </div>
   </div>
-  <div class="item ml-4">
-    <div class="ui grid mt-4">
-      <div class="seven wide column p-0">
-        <UiDropdown class="ui floating fluid dropdown p-3 button mb-2 text center aligned" style="font-size: .8rem;">
-          {{#if (and this.isSessionPublished this.showSessions)}}
+
+  {{#if (not (and this.isSessionPublished this.showSessions))}}
+    <UiDropdown class="ui floating dropdown button mt-4">
+      {{t 'Add to Calendar'}}
+      <div class="menu">
+        {{#each this.calendarUrls as |calendar|}}
+          <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+            {{calendar.name}}
+          </a>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  {{else}}
+    <div class="ui list mt-2">
+      <div class="inline d-flex">
+        <UiDropdown class="ui floating dropdown button w-full mb-2 no-wrap text center aligned" style="font-size: .9rem;">
             <i class="add to calendar icon"></i>
             {{t 'Add Event'}}
-          {{else}}
-            {{t 'Add to Calendar'}}
-          {{/if}}
           <div class="menu">
             {{#each this.calendarUrls as |calendar|}}
               <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
@@ -22,24 +30,20 @@
               </a>
             {{/each}}
           </div>
+        </UiDropdown>   
+        <UiDropdown class="ui floating dropdown button w-full mb-2 no-wrap text center aligned" style="font-size: .9rem;">
+          <i class="add to calendar icon"></i>
+            {{t 'Add Sessions'}}
+          <div class="menu">
+            {{#each this.sessionCalendarUrls as |calendar|}}
+              <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+                {{calendar.name}}
+              </a>
+            {{/each}}
+          </div>
         </UiDropdown>
       </div>
-      <div class="right floated eight wide column p-0">
-        {{#if (and this.isSessionPublished this.showSessions)}}    
-          <UiDropdown class="ui floating fluid dropdown p-3 button mb-2 text center aligned no-wrap" style="font-size: .8rem;">
-            <i class="add to calendar icon"></i>
-            {{t 'Add Sessions'}}
-            <div class="menu">
-              {{#each this.sessionCalendarUrls as |calendar|}}
-                <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-                  {{calendar.name}}
-                </a>
-              {{/each}}
-            </div>
-          </UiDropdown>
-        {{/if}}
-      </div>
     </div>
-  </div>
+  {{/if}}
 
 </div>
