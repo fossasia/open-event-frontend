@@ -49,10 +49,24 @@
           @class="info circle icon"
           @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com.'}} />
       </label>
-      <Widgets::Forms::LinkField
-        @inputId="url"
-        @value={{this.data.stream.url}}
-        @onChange={{action (mut this.data.stream.url)}} />
+      {{#if (eq this.data.stream.videoChannel.provider 'youtube')}}
+        <Widgets::Forms::SocialLinkField
+          @fixed={{true}}
+          @site="youtube"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
+      {{else if (eq this.data.stream.videoChannel.provider 'vimeo')}}
+        <Widgets::Forms::SocialLinkField
+          @fixed={{true}}
+          @site="vimeo"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
+      {{else}}
+        <Widgets::Forms::LinkField
+          @inputId="url"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
+      {{/if}}
     </div>
     <div class="field">
       <label>
