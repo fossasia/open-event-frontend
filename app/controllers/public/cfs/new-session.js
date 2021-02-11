@@ -7,6 +7,7 @@ export default class NewSessionController extends Controller {
   async save(speakerDetails) {
     this.set('isLoading', true);
     try {
+      await this.model.session.save();
       speakerDetails.sessions.pushObject(this.model.session);
       await this.model.session.save();
       this.notify.success(this.l10n.t('Your session has been saved'),
