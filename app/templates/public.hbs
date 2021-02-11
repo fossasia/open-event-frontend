@@ -68,7 +68,7 @@
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
             <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment m-0 pt-0">
-              <div class="mr-8">
+              <div class="mr-8 pt-2">
                 <h4 class="d-flex">
                   <LinkTo
                     class="rounded-default link-item {{if (eq this.params.mySpeakerSession true) 'active'}}"
@@ -82,7 +82,7 @@
                   </LinkTo>      
                 </h4>
               </div>
-              <div class="mr-8 mt-8">
+              <div class="mr-8 mt-4 pt-2">
               <h4>
                 {{t 'Tracks'}}
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}} data-tooltip="{{t 'Clear Track Filter'}}">
