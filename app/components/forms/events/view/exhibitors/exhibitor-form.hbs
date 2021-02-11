@@ -9,6 +9,10 @@
         <Input type="text" name="name" @value={{@exhibitor.name}} />
       </div>
       <div class="field">
+        <label>{{t 'Contact Information'}}</label>
+        <Input type="text" name="contact" @value={{@exhibitor.contact}} />
+      </div>
+      <div class="field">
         <label class="required">{{t 'Status'}}</label>
         <UiDropdown
           @class="search selection"
