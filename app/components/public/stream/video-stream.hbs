@@ -10,7 +10,7 @@
   {{/if}}
   {{#if (eq @videoStream.videoChannel.provider 'youtube')}}
     <div class="ui segment mt-4 {{if device.isMobile '' 'stream'}}">
-      <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" type="text/html" src="http://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+      <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" type="text/html" src="http://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1" gesture="media" allow="encrypted-media" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
     </div>
   {{/if}}
   {{#if (eq @videoStream.videoChannel.provider 'vimeo')}}
