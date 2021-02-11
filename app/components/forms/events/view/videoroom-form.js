@@ -106,6 +106,16 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  async addYoutube() {
+    this.data.stream.set('url', 'watch?v=');
+  }
+
+  @action
+  async addVimeo() {
+    this.data.stream.set('url', '');
+  }
+
+  @action
   async addIntegration(channel) {
     switch (channel.get('provider')) {
       case 'jitsi':
@@ -113,6 +123,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         break;
       case 'bbb':
         this.addBigBlueButton(channel);
+        break;
+      case 'youtube':
+        this.addYoutube();
+        break;
+      case 'vimeo':
+        this.addVimeo();
         break;
     }
   }
