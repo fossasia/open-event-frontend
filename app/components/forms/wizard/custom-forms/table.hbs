@@ -37,7 +37,13 @@
     </tr>
   </thead>
   <tbody>
+    <SortableObjects
+      @sortableObjectList={{@fields}}
+      @sortEndAction={{action this.sortEndAction @fields}}
+      @enableSort={{true}}
+      >
     {{#each @fields as |field|}}
+     <DraggableObject @content={{field}} @isSortable={{true}}>
       <tr class="{{if field.isIncluded 'positive'}}">
         <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
           <label class="{{if field.isFixed 'required'}}">
@@ -47,7 +53,7 @@
                 <i class="info icon"></i>
               </div>
             {{/if}}
-          </label>
+            </label>
         </td>
         <td class="center aligned">
           {{t-var field.type}}
@@ -88,6 +94,8 @@
           </td>
         {{/if}}
       </tr>
+     </DraggableObject>
     {{/each}}
+    </SortableObjects>
   </tbody>
 </table>

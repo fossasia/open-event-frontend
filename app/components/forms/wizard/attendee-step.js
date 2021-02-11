@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { computed, observer } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
+
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   fixedFields: computed('data.customForms.@each', function() {
