@@ -43,8 +43,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
       this.loading = false;
     } else if (provider === 'youtube') {
       const match = stream.url.split('v=');
-      if (match[1]) {
-        this.youtubeId = match[1];
+      if (id) {
+        this.youtubeId = id;
       }
       this.loading = false;
     } else if (provider === 'vimeo') {
