@@ -8,7 +8,7 @@ export default class VideoChannel extends ModelBase.extend() {
   @attr() apiUrl!: string;
 
   get isInternalStream(): boolean {
-    return (this.provider === 'jitsi' || this.provider === 'bbb');
+    return (this.provider === 'jitsi' || this.provider === 'bbb' || this.provider === 'youtube' || this.provider === 'vimeo');
   }
 }
 
