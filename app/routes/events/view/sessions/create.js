@@ -13,7 +13,7 @@ export default class CreateRoute extends Route {
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
         'page[size]' : 0,
-        sort         : 'id'
+        sort         : 'position'
       }),
       speakers: await eventDetails.query('speakers', {
         include      : 'sessions',
