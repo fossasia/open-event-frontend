@@ -76,6 +76,7 @@
                       @route="public.sessions"
                       @models={{array this.model.id}}
                       @query={{hash mySpeakerSession=true}}>
+                      <i class="bullhorn grey icon"></i>
                       {{t 'My Speaker Session'}}
                     </LinkTo>
                     <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash mySpeakerSession=null}} data-tooltip="{{t 'Clear My Speaker Session Filter'}}">
