@@ -43,6 +43,69 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'website',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'facebook',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'twitter',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'github',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'gitlab',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'linkedin',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'instagram',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'comments',
         form            : 'session',
         type            : 'text',
