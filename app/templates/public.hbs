@@ -48,7 +48,7 @@
         {{#if this.displaySideMenu}}
           <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
-          {{#if (not-eq this.session.currentRouteName 'public.exhibitor.view')}}
+          {{#if (not-eq this.session.currentRouteName 'public.exhibition.view')}}
             <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
             {{#if (and this.device.isMobile this.twitterLink)}}
                 <div class="item">
@@ -107,7 +107,7 @@
               </div>
             </div>
           {{/if}}
-          {{#if (and (not this.device.isMobile) this.twitterLink (not-eq this.session.currentRouteName 'public.exhibitor.view'))}}
+          {{#if (and (not this.device.isMobile) this.twitterLink (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
               <div class="item">
                 <div class="twitter content">
                   <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
