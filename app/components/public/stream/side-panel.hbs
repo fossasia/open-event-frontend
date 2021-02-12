@@ -12,7 +12,10 @@
         <p class="text-white">{{@event.name}}</p>
       </a>
     </div>
-    <Public::EventDateTime @event={{@event}} />
+    <div class="date-side-panel">
+      <Public::EventDateTime @event={{@event}} />
+    </div>
+    
     
     <div class="d-flex mt-4 mb-2 w-full space-between">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
