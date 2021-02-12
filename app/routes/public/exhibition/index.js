@@ -13,9 +13,17 @@ export default class ExhibitionRoute extends Route {
 
   async model() {
     const eventDetails = this.modelFor('public');
+    const filterOptions = [
+      {
+        name : 'status',
+        op   : 'eq',
+        val  : 'accepted'
+      }
+    ];
     return {
       event      : eventDetails,
       exhibitors : await this.infinity.model('exhibitors', {
+        filter        : filterOptions,
         perPage       : 9,
         startingPage  : 1,
         perPageParam  : 'page[size]',
