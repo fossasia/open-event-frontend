@@ -1,47 +1,47 @@
-<SortableObjects
-@sortableObjectList={{@fields}}
-@sortEndAction={{action this.sortEndAction @fields}}
-@enableSort={{true}}
->
-  <table class="ui selectable celled table">
-    <thead>
-      {{#if @headerText}}
-        <tr>
-          <th colspan="{{if this.editColumn '5' '4'}}" class="text center aligned">
-            {{@headerText}}
-          </th>
-        </tr>
-      {{/if}}
+<table class="ui selectable celled table">
+  <thead>
+    {{#if @headerText}}
       <tr>
-        {{#if this.device.isMobile}}
-          <th class="center aligned">
-            {{t 'Options'}}
-          </th>
-        {{else}}
-          <th class="right aligned">
-            {{t 'Option'}}
-          </th>
-          <th class="center aligned">
-            {{t 'Type'}}
-          </th>
-          <th class="center aligned">
-            {{t 'Include'}}
-          </th>
-          <th class="center aligned">
-            {{t 'Require'}}
-          </th>
-          <th class="center aligned">
-            {{t 'Show Public'}}
-          </th>
-          {{#if this.editColumn}}
-            <th class="center aligned">
-              {{t 'Actions'}}
-            </th>
-          {{/if}}
-        {{/if}}
+        <th colspan="{{if this.editColumn '5' '4'}}" class="text center aligned">
+          {{@headerText}}
+        </th>
       </tr>
-    </thead>
-    <tbody>
+    {{/if}}
+    <tr>
+      {{#if this.device.isMobile}}
+        <th class="center aligned">
+          {{t 'Options'}}
+        </th>
+      {{else}}
+        <th class="right aligned">
+          {{t 'Option'}}
+        </th>
+        <th class="center aligned">
+          {{t 'Type'}}
+        </th>
+        <th class="center aligned">
+          {{t 'Include'}}
+        </th>
+        <th class="center aligned">
+          {{t 'Require'}}
+        </th>
+        <th class="center aligned">
+          {{t 'Show Public'}}
+        </th>
+        {{#if this.editColumn}}
+          <th class="center aligned">
+            {{t 'Actions'}}
+          </th>
+        {{/if}}
+      {{/if}}
+    </tr>
+  </thead>
+  <tbody>
+    <SortableObjects
+    @sortableObjectList={{@fields}}
+    @sortEndAction={{action this.sortEndAction @fields}}
+    @enableSort={{true}}
+    >
       {{#each @fields as |field|}}
         <tr class="{{if field.isIncluded 'positive'}}">
           <DraggableObject @content={{field}} @isSortable={{true}}>
@@ -96,6 +96,6 @@
           </DraggableObject>
         </tr>
       {{/each}}
-    </tbody>
-  </table>
-</SortableObjects>
+    </SortableObjects>
+  </tbody>
+</table>
