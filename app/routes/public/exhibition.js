@@ -3,7 +3,7 @@ import Route from '@ember/routing/route';
 import { hasExhibitors } from 'open-event-frontend/utils/event';
 
 @classic
-export default class ExhibitorsRoute extends Route {
+export default class ExhibitionRoute extends Route {
   async beforeModel() {
     const eventDetails = this.modelFor('public');
     if (!(await hasExhibitors(this.loader, eventDetails))) {

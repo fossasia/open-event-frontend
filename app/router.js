@@ -66,7 +66,7 @@ Router.map(function() {
     this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
-    this.route('exhibitors');
+    this.route('exhibition');
     this.route('exhibitor', function() {
       this.route('view', { path: '/:exhibitor_id' });
     });
