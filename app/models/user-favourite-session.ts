@@ -1,4 +1,4 @@
-import { attr, belongsTo } from '@ember-data/model';
+import { belongsTo } from '@ember-data/model';
 import ModelBase from 'open-event-frontend/models/base';
 import Session from './session';
 import User from './user';

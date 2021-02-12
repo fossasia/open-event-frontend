@@ -7,6 +7,7 @@ import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 
 export default class SessionItem extends Component {
   @service router;
+  @service store;
 
   @tracked
   hideImage = this.args.expanded;
@@ -61,6 +62,19 @@ export default class SessionItem extends Component {
       location.href = url;
     } else {
       window.open(url, '_blank');
+    }
+  }
+
+  @action
+  async favourite() {
+    const { session } = this.args;
+    if (session.favourite) {
+      await session.favourite.destroyRecord();
+    } else {
+      const fav = await this.store.createRecord('user-favourite-session', {
+        session
+      });
+      await fav.save();
     }
   }
 }
