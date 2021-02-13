@@ -8,6 +8,9 @@ import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 export default class SessionItem extends Component {
   @service router;
   @service store;
+  @service authManager;
+  @service confirm;
+  @service l10n;
 
   @tracked
   hideImage = this.args.expanded;
@@ -67,9 +70,22 @@ export default class SessionItem extends Component {
 
   @action
   async favourite() {
+    if (!this.authManager.currentUser) {
+      try {
+        await this.confirm.prompt(this.l10n.t('Please login to favourite this session'));
+        this.router.transitionTo('login');
+      } catch (e) {
+        if (e) {
+          console.error(e);
+        }
+      }
+      return;
+    }
+
     const { session } = this.args;
-    if (session.favourite) {
-      await session.favourite.destroyRecord();
+    const favourite = session.belongsTo('favourite').value();
+    if (favourite) {
+      await favourite.destroyRecord();
     } else {
       const fav = await this.store.createRecord('user-favourite-session', {
         session
