@@ -30,14 +30,15 @@
         {{#if (and this.model.contact this.contactExhibitor)}}
             <div class="ui center aligned text">
                 {{#if this.checkEmail}}
-                    <a target="_blank" href="mailto:{{this.contactExhibitor}}" class="ui red button" rel="noopener">{{t 'Contact Exhibitor'}}</a>
+                    <a target="_blank" href="mailto:{{this.model.contact}}" class="ui red button" rel="noopener">{{t 'Contact Exhibitor'}}</a>
                 {{else if this.checkUrl}}
-                    <a target="_blank" href="{{this.contactExhibitor}}" class="ui red button" rel="noopener">{{t 'Contact Exhibitor'}}</a>
+                    <a target="_blank" href="{{this.model.contact}}" class="ui red button" rel="noopener">{{t 'Contact Exhibitor'}}</a>
                 {{else}}
                     <p>{{t 'Contact Exhibitor'}}: {{this.model.contact}}</p>
                 {{/if}}
             </div>
         {{/if}}
+        <br/><br/>
         {{#if (or this.model.slidesUrl this.model.videoUrl)}}
             <div class="p-4">
                 <div style={{css display='flex' align-items='center' flex-direction='column'}}>
