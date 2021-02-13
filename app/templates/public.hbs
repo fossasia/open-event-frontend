@@ -67,25 +67,25 @@
               </div>
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
+            {{#if this.session.isAuthenticated}}
+              <div class="ui basic segment m-0 pt-0">
+                <h4 class="d-flex">
+                  <LinkTo
+                    class="rounded-default link-item {{if (eq this.params.mySpeakerSession true) 'active'}}"
+                    @route="public.sessions"
+                    @models={{array this.model.id}}
+                    @query={{hash mySpeakerSession=true}}>
+                    <i class="bullhorn grey icon"></i>
+                    {{t 'My Speaker Session'}}
+                  </LinkTo>
+                  <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash mySpeakerSession=null}} data-tooltip="{{t 'Clear My Speaker Session Filter'}}">
+                    <i class="minus circle icon" style={{css color='#555'}}></i>
+                  </LinkTo>      
+                </h4>
+              </div>
+            {{/if}}
             <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment m-0 pt-0">
-              {{#if this.session.isAuthenticated}}
-                <div class="mr-8 mb-4 pt-2">
-                  <h4 class="d-flex">
-                    <LinkTo
-                      class="rounded-default link-item {{if (eq this.params.mySpeakerSession true) 'active'}}"
-                      @route="public.sessions"
-                      @models={{array this.model.id}}
-                      @query={{hash mySpeakerSession=true}}>
-                      <i class="bullhorn grey icon"></i>
-                      {{t 'My Speaker Session'}}
-                    </LinkTo>
-                    <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash mySpeakerSession=null}} data-tooltip="{{t 'Clear My Speaker Session Filter'}}">
-                      <i class="minus circle icon" style={{css color='#555'}}></i>
-                    </LinkTo>      
-                  </h4>
-                </div>
-              {{/if}}
-              <div class="mr-8 pt-2">
+              <div class="mr-8">
               <h4>
                 {{t 'Tracks'}}
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}} data-tooltip="{{t 'Clear Track Filter'}}">
@@ -103,7 +103,7 @@
               {{/each}}
               </div>
               <br>
-              <div class="pt-2">
+              <div>
               <h4>
                 {{t 'Rooms'}}
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash room=null}} data-tooltip="{{t 'Clear Room Filter'}}">
