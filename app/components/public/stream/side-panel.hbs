@@ -17,18 +17,25 @@
     </div>
     
     
-    <div class="d-flex mt-4 pt-2 mb-4 pb-2 w-full space-between">
+    <div class="d-flex mt-4 pt-2 mb-4 pb-2 w-full space-between wrap">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
-        <a class="ui labeled icon button" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon button mt-4" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <i class="calendar icon"></i>
           {{t 'Schedule'}}
         </a>
       {{/if}}
 
       {{#if this.showSpeakers}}
-        <a class="ui labeled icon button" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon button mt-4" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
           <i class="bullhorn icon"></i>
           {{t 'Speakers'}}
+        </a>
+      {{/if}}
+
+      {{#if this.showExhibitors}}
+        <a class="ui labeled icon button mt-4" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
+          <i class="image icon"></i>
+          {{t 'Exhibition'}}
         </a>
       {{/if}}
     </div>
