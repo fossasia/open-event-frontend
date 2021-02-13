@@ -150,7 +150,7 @@
         </div>
         <div class="five wide field">
           <label for="soft_end_date">{{t 'Soft Ends'}}</label>
-          <Widgets::Forms::DatePicker @type="text" @name="soft_end_date" @placeholder="MM/DD/YYYY" @onChange={{action "onChange"}} @value={{this.data.speakersCall.softEndsAtDate}} />
+          <Widgets::Forms::DatePicker @type="text" @name="soft_end_date" @rangePosition="end" @placeholder="MM/DD/YYYY" @onChange={{action "onChange"}} @value={{this.data.speakersCall.softEndsAtDate}} />
         </div>
         <div class="two wide field">
           <label for="soft_end_time">&nbsp;</label>
