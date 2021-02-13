@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 import { buttonColor } from 'open-event-frontend/utils/dictionary/social-media';
+import { validEmail, isValidUrl } from 'open-event-frontend/utils/validators';
 
 export default class extends Controller {
   @computed('model.videoUrl')
@@ -20,7 +21,7 @@ export default class extends Controller {
     return slidesUrl?.indexOf('.pptx') > -1 || slidesUrl?.indexOf('.ppt') > -1;
   }
 
-  @computed('model.socailLinks')
+  @computed('model.socialLinks')
   get links() {
     return this.model.socialLinks.map(socialLink => {
       const newLink = {};
@@ -29,5 +30,20 @@ export default class extends Controller {
       newLink.color = buttonColor[socialLink.name];
       return newLink;
     });
+  }
+
+  @computed('model.contact')
+  get checkEmail() {
+    return validEmail.test(this.model.contact);
+  }
+
+  @computed('model.contact')
+  get checkUrl() {
+    return isValidUrl(this.model.contact);
+  }
+
+  @computed('model')
+  get contactExhibitor() {
+    return this.session.isAuthenticated;
   }
 }

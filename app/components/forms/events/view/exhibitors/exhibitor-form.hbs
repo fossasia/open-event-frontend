@@ -13,27 +13,6 @@
         <Input type="text" name="contact" @value={{@exhibitor.contact}} />
       </div>
       <div class="field">
-        <label class="required">{{t 'Status'}}</label>
-        <UiDropdown
-          @class="search selection"
-          @selected={{@exhibitor.status}}
-          @onChange={{action (mut @exhibitor.status)}}>
-          <Input
-            @type="hidden"
-            @id="status" />
-          <i class="dropdown icon"></i>
-          <div class="default text">{{t 'Status'}}</div>
-          <div class="menu">
-             <div class="item" data-value="pending">
-                {{t 'Pending'}}
-              </div>
-              <div class="item" data-value="accepted">
-                {{t 'Accepted'}}
-              </div>
-          </div>
-        </UiDropdown>
-      </div>
-      <div class="field">
         <label class="required">
           {{t 'URL'}}
         </label>

@@ -35,14 +35,6 @@ export default class ExhibitorForm extends Component<Args> {
             }
           ]
         },
-        status: {
-          rules: [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please choose a status')
-            }
-          ]
-        },
         url: {
           rules: [
             {
@@ -90,6 +82,7 @@ export default class ExhibitorForm extends Component<Args> {
 
   @action addSocialLink(): void {
     const { exhibitor } = this.args;
+    console.error(exhibitor);
     if (!exhibitor.socialLinks) {
       exhibitor.socialLinks = [];
     }
