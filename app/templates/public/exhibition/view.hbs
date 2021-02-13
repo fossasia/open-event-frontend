@@ -27,7 +27,7 @@
             {{/each}}
         </div>
         <br/><br/>
-        {{#if this.contactExhibitor}}
+        {{#if (and this.model.contact this.contactExhibitor)}}
             <div class="ui center aligned text">
                 {{#if this.checkEmail}}
                     <a target="_blank" href="mailto:{{this.contactExhibitor}}" class="ui red button" rel="noopener">{{t 'Contact Exhibitor'}}</a>
