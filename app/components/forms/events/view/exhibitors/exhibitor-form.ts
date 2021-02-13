@@ -82,7 +82,6 @@ export default class ExhibitorForm extends Component<Args> {
 
   @action addSocialLink(): void {
     const { exhibitor } = this.args;
-    console.error(exhibitor);
     if (!exhibitor.socialLinks) {
       exhibitor.socialLinks = [];
     }
