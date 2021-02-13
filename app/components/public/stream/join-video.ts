@@ -34,9 +34,9 @@ export default class JoinVideo extends Component<Args> {
 
   openPanel(): void {
     if (this.canAccess) {
-      if(this.router.currentRoute.name === 'public.sessions') {
+      if (this.router.currentRoute.name === 'public.sessions') {
         this.router.transitionTo('public', this.args.event);
-      }else {
+      } else {
         this.router.transitionTo('public', this.args.event, { queryParams: { side_panel: true } });
       }
     } else {
