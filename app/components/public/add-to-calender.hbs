@@ -6,9 +6,10 @@
     </div>
   </div>
 
-  {{#if (not (and this.isSessionPublished this.showSessions))}}
-    <UiDropdown class="ui floating dropdown button mt-4">
-      {{t 'Add to Calendar'}}
+  <div class="inline d-flex mt-4">
+    <UiDropdown class="ui floating dropdown button w-full text center aligned">
+        <i class="add to calendar icon"></i>
+        {{t 'Add Event'}}
       <div class="menu">
         {{#each this.calendarUrls as |calendar|}}
           <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
@@ -17,33 +18,18 @@
         {{/each}}
       </div>
     </UiDropdown>
-  {{else}}
-    <div class="ui list mt-2">
-      <div class="inline d-flex">
-        <UiDropdown class="ui floating dropdown button w-full mb-2 no-wrap text center aligned" style="font-size: .9rem;">
-            <i class="add to calendar icon"></i>
-            {{t 'Add Event'}}
-          <div class="menu">
-            {{#each this.calendarUrls as |calendar|}}
-              <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-                {{calendar.name}}
-              </a>
-            {{/each}}
-          </div>
-        </UiDropdown>   
-        <UiDropdown class="ui floating dropdown button w-full mb-2 no-wrap text center aligned" style="font-size: .9rem;">
-          <i class="add to calendar icon"></i>
-            {{t 'Add Sessions'}}
-          <div class="menu">
-            {{#each this.sessionCalendarUrls as |calendar|}}
-              <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-                {{calendar.name}}
-              </a>
-            {{/each}}
-          </div>
-        </UiDropdown>
-      </div>
-    </div>
-  {{/if}}
-
+    {{#if (and @event.isSchedulePublished this.showSessions)}}
+      <UiDropdown class="ui floating dropdown button w-full text center aligned">
+        <i class="add to calendar icon"></i>
+          {{t 'Add Sessions'}}
+        <div class="menu">
+          {{#each this.sessionCalendarUrls as |calendar|}}
+            <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+              {{calendar.name}}
+            </a>
+          {{/each}}
+        </div>
+      </UiDropdown>
+    {{/if}}
+  </div>
 </div>

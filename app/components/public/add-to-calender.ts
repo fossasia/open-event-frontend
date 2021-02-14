@@ -45,10 +45,6 @@ export default class AddToCalender extends Component<Args> {
     this.showSessions = this.showSessions ?? await hasSessions(this.loader, event);
   }
 
-  get isSessionPublished(): boolean {
-    return this.args.event.isSchedulePublished;
-  }
-
   get startsAt(): Moment {
     const { event } = this.args;
     return moment(event.startsAt).tz(event.timezone);
