@@ -81,16 +81,16 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    if(params.mySchedule) {
+    if (params.mySchedule) {
       filterOptions.push({
-        name: 'favourites',
-        op : 'any',
+        name : 'favourites',
+        op   : 'any',
         val  : {
           name : 'user',
           op   : 'has',
-          val:{
-            name: 'email',
-            op: 'eq',
+          val  : {
+            name : 'email',
+            op   : 'eq',
             val  : this.authManager.currentUser.email
           }
         }

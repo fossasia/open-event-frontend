@@ -72,11 +72,15 @@
             <div class="ui basic segment m-0 pt-0">
               <h4 class="d-flex">
                 <LinkTo
-                  class="rounded-default link-item {{if (eq this.params.mySchedule true) 'active'}}"
+                  class="rounded-default link-item"
                   @route="public.sessions"
                   @models={{array this.model.id}}
                   @query={{hash mySchedule=true}}>
-                  <i class="red heart icon"></i>
+                  {{#if (eq this.params.mySchedule true)}}
+                    <i class="red heart icon"></i>
+                  {{else}}
+                    <i class="red outline heart icon"></i>
+                  {{/if}}
                   {{t 'My Schedule'}}
                 </LinkTo>
                 <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash mySchedule=null}} data-tooltip="{{t 'Clear My Schedule filter'}}">
