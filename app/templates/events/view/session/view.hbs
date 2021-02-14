@@ -34,7 +34,15 @@
 <Events::View::Overview::SessionView
   @fields={{this.allFields}}
   @session={{this.model.session}} />
-<div class="ui grid container">
-  <div class="weight-600 column three wide">{{t 'Speakers'}}</div>
-  <div class="column thirteen wide">{{this.allSpeakers}}</div>
+<div class="ui grid container mb-4">
+  <div class="weight-600 column five wide">{{t 'Speakers'}}</div>
+    <div class="column eleven wide">
+      {{#each this.model.session.speakers as |speaker|}}
+        <LinkTo
+          @route="public.cfs.view-speaker"
+          @models={{array this.model.session.event.id speaker.id}}>
+          <div>{{speaker.name}}</div>
+        </LinkTo>
+      {{/each}}
+    </div>
 </div>

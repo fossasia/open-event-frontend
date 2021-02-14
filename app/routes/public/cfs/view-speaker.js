@@ -28,10 +28,4 @@ export default class EditSessionRoute extends Route {
     };
   }
 
-  afterModel(model) {
-    super.afterModel(...arguments);
-    if (!(this.session.isAuthenticated && (this.authManager.currentUser.isAdmin || this.authManager.currentUser.get('email') === model.speaker.get('email')))) {
-      this.transitionTo('not-found');
-    }
-  }
 }
