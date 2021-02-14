@@ -28,9 +28,36 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
-    const searchField = 'title';
     let filterOptions = [];
-
+    if (params.search) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'title',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'track',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'speakers',
+            op   : 'any',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          }
+        ]
+      });
+    }
     if (SESSION_STATES.includes(params.session_status)) {
       filterOptions = [
         {
@@ -62,7 +89,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
     const feedbacksPromise = this.authManager.currentUser.query('feedbacks', queryObject);
 
-    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
       include        : 'speakers,feedbacks,session-type,track',
       filter         : filterOptions,
