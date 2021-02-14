@@ -68,6 +68,23 @@
                 </div>
             {{/if}}
           {{/if}}
+          {{#if this.session.isAuthenticated}}
+            <div class="ui basic segment m-0 pt-0">
+              <h4 class="d-flex">
+                <LinkTo
+                  class="rounded-default link-item {{if (eq this.params.mySchedule true) 'active'}}"
+                  @route="public.sessions"
+                  @models={{array this.model.id}}
+                  @query={{hash mySchedule=true}}>
+                  <i class="red heart icon"></i>
+                  {{t 'My Schedule'}}
+                </LinkTo>
+                <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash mySchedule=null}} data-tooltip="{{t 'Clear My Schedule filter'}}">
+                  <i class="minus circle icon" style={{css color='#555'}}></i>
+                </LinkTo>      
+              </h4>
+            </div>
+          {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions')}}
             <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment m-0 pt-0">
               <div class="mr-8">

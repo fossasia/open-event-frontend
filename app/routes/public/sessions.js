@@ -19,6 +19,9 @@ export default class SessionsRoute extends Route {
     },
     search: {
       refreshModel: true
+    },
+    mySchedule: {
+      refreshModel: true
     }
   };
 
@@ -74,6 +77,22 @@ export default class SessionsRoute extends Route {
           name : 'name',
           op   : 'eq',
           val  : params.track
+        }
+      });
+    }
+
+    if(params.mySchedule) {
+      filterOptions.push({
+        name: 'favourites',
+        op : 'any',
+        val  : {
+          name : 'user',
+          op   : 'has',
+          val:{
+            name: 'email',
+            op: 'eq',
+            val  : this.authManager.currentUser.email
+          }
         }
       });
     }
