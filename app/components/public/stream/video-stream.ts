@@ -42,7 +42,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
     if (provider === 'jitsi') {
       this.loading = false;
     } else if (provider === 'youtube') {
-      const [,id] = stream.url.split('v=');
+      const [, id] = stream.url.split('v=');
       if (id) {
         this.youtubeId = id;
       }
