@@ -41,27 +41,6 @@
       </div>
       {{#unless this.device.isMobile}}
         <div class="ten wide column">     
-          {{#if (eq this.session.currentRouteName 'public.sessions')}}
-            <div class="d-flex" style="align-items: center;">
-              <h1 class="ui header" id="session-heading">{{t 'Schedule'}}</h1>
-                {{#if this.session.isAuthenticated}}
-                  <LinkTo
-                    class="rounded-default link-item ui right floated ml-auto mr-4 {{if (eq this.params.mySchedule null) 'active'}}"
-                    @route="public.sessions"
-                    @models={{array this.model.id}}
-                    @query={{hash mySchedule=null}}>
-                    <h4>{{t 'Public Schedule'}}</h4>
-                  </LinkTo>
-                  <LinkTo
-                    class="rounded-default link-item ui right floated {{if (eq this.params.mySchedule true) 'active'}}"
-                    @route="public.sessions"
-                    @models={{array this.model.id}}
-                    @query={{hash mySchedule=true}}>
-                    <h4>{{t 'My Schedule'}}</h4>
-                  </LinkTo>
-                {{/if}}
-            </div>
-          {{/if}}
           {{outlet}}
         </div>
       {{/unless}}

@@ -20,7 +20,7 @@ export default class SessionsRoute extends Route {
     search: {
       refreshModel: true
     },
-    mySchedule: {
+    my_schedule: {
       refreshModel: true
     }
   };
@@ -81,7 +81,7 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    if (params.mySchedule) {
+    if (params.my_schedule) {
       filterOptions.push({
         name : 'favourites',
         op   : 'any',

@@ -7,7 +7,7 @@ import { groupBy } from 'lodash-es';
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort', 'search', 'date'];
+  queryParams = ['sort', 'search', 'date', 'my_schedule'];
   search = null;
   sort = 'starts-at';
   date = null;
@@ -15,11 +15,11 @@ export default class SessionsController extends Controller {
   timezone = null;
   dates = null;
   preserveScrollPosition = true;
+  my_schedule=null;
 
-  @computed('model.session.@each', 'timezone')
+  @computed('model.session.@each', 'timezone', 'session.currentRouteName')
   get groupByDateSessions() {
     let sessions;
-
     if (this.sort === 'title') {
       sessions = groupBy(this.model.session.toArray(), '');
     } else {
