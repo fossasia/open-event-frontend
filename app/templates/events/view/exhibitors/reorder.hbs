@@ -11,7 +11,7 @@
 
 
     <button class="ui primary button right floated mr-4" {{action this.save}}>{{t "Save"}}</button>
-    <button class="ui negative button right floated" {{action (confirm (t 'This will reset the order of all speakers to default unordered list. Continue?') this.reset)}}>{{t "Reset"}}</button>
+    <button class="ui negative button right floated" {{action (confirm (t 'This will reset the order of all exhibitors to default unordered list. Continue?') this.reset)}}>{{t "Reset"}}</button>
 
     <SortableObjects
       @sortableObjectList={{this.model.exhibitors}}
