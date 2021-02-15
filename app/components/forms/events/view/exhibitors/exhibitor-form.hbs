@@ -9,8 +9,15 @@
         <Input type="text" name="name" @value={{@exhibitor.name}} />
       </div>
       <div class="field">
-        <label>{{t 'Contact Information'}}</label>
-        <Input type="text" name="contact" @value={{@exhibitor.contact}} />
+        <label>{{t 'Contact Email'}}</label>
+        <Input type="text" name="contactEmail" @value={{@exhibitor.contactEmail}} />
+      </div>
+      <div class="field">
+        <label>{{t 'Contact URL'}}</label>
+        <Widgets::Forms::LinkField
+          name="contactLink"
+          @value={{@exhibitor.contactLink}}
+          @onChange={{action (mut @exhibitor.contactLink)}} />
       </div>
       <div class="field">
         <label class="required">

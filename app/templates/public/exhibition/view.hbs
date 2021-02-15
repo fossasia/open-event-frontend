@@ -27,16 +27,15 @@
             {{/each}}
         </div>
         <br/><br/>
-        {{#if (and this.model.contact this.contactExhibitor)}}
-            <div class="ui center aligned text">
-                {{#if this.checkEmail}}
-                    <a target="_blank" href="mailto:{{this.model.contact}}" class="ui red button" rel="noopener">{{t 'Contact Exhibitor'}}</a>
-                {{else if this.checkUrl}}
-                    <a target="_blank" href="{{this.model.contact}}" class="ui red button" rel="noopener">{{t 'Contact Exhibitor'}}</a>
-                {{else}}
-                    <p>{{t 'Contact Exhibitor'}}: {{this.model.contact}}</p>
-                {{/if}}
-            </div>
+        {{#if this.contactExhibitor}}
+        <div class="d-flex flex-grow-1 content-center">
+            {{#if this.model.contactEmail}}
+                <a target="_blank" href="mailto:{{this.model.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+            {{/if}}
+            {{#if this.model.contactLink}}
+                <a target="_blank" href="{{this.model.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+            {{/if}}
+        </div>
         {{/if}}
         <br/><br/>
         {{#if (or this.model.slidesUrl this.model.videoUrl)}}

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import Exhibitor, { SocialLink } from 'open-event-frontend/models/exhibitor';
-import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
+import { protocolLessValidUrlPattern, validEmail } from 'open-event-frontend/utils/validators';
 import { inject as service } from '@ember/service';
 import { Rules } from 'open-event-frontend/components/forms/form';
 import { action } from '@ember/object';
@@ -45,6 +45,24 @@ export default class ExhibitorForm extends Component<Args> {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        },
+        contactEmail: {
+          rules: [
+            {
+              type   : 'regExp',
+              value  : validEmail,
+              prompt : this.l10n.t('Please enter a valid email address')
+            }
+          ]
+        },
+        contactLink: {
+          rules: [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid contact link')
             }
           ]
         },
