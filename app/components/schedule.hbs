@@ -1,3 +1,8 @@
+<div class="d-flex wrap flex-end mt-4 mb-4">
+  <LinkTo @route="public.sessions" class="ui button">
+    {{t 'List View'}}
+  </LinkTo>
+</div>
 {{#if this.render}}
   <FullCalendar
     {{did-update this.timezoneUpdated @timezone}}
