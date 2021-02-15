@@ -89,9 +89,9 @@ export default class SessionsRoute extends Route {
           name : 'user',
           op   : 'has',
           val  : {
-            name : 'email',
+            name : 'id',
             op   : 'eq',
-            val  : this.authManager.currentUser.email
+            val  : this.authManager.currentUser.id
           }
         }
       });
