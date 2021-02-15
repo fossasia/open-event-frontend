@@ -24,6 +24,7 @@ export default class ExhibitionRoute extends Route {
       event      : eventDetails,
       exhibitors : await this.infinity.model('exhibitors', {
         filter        : filterOptions,
+        sort          : 'order',
         perPage       : 9,
         startingPage  : 1,
         perPageParam  : 'page[size]',
