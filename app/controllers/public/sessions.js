@@ -17,7 +17,7 @@ export default class SessionsController extends Controller {
   preserveScrollPosition = true;
   my_schedule=null;
 
-  @computed('model.session.@each', 'timezone', 'session.currentRouteName')
+  @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
     if (this.sort === 'title') {
