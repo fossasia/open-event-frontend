@@ -8,29 +8,36 @@
     </button>
     
     <div class="ui header inverted mt-4">
-      <a href={{href-to 'public' @event (query-params side_panel='true')}} class="ml-2">
-        <span class="text-white">{{@event.name}}</span>
+      <a href={{href-to 'public' @event (query-params side_panel='true')}}>
+        <p class="text-white">{{@event.name}}</p>
       </a>
     </div>
     <Public::EventDateTime @event={{@event}} />
     
-    <div class="d-flex mt-4 mb-2 w-fit self-center">
+    <div class="d-flex mt-2 mb-2 w-full space-between wrap">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
-        <a class="ui labeled icon button" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon button mt-4" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <i class="calendar icon"></i>
           {{t 'Schedule'}}
         </a>
       {{/if}}
 
       {{#if this.showSpeakers}}
-        <a class="ui labeled icon button" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon button mt-4" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
           <i class="bullhorn icon"></i>
           {{t 'Speakers'}}
         </a>
       {{/if}}
+
+      {{#if this.showExhibitors}}
+        <a class="ui labeled icon button mt-4" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
+          <i class="image icon"></i>
+          {{t 'Exhibition'}}
+        </a>
+      {{/if}}
     </div>
 
-    <div class="y-scrollable p-2">
+    <div class="y-scrollable pb-2 pt-2 pr-01 pl-01">
       {{#each this.streams as |stream|}}
         <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}}>
           <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2 {{if (eq @videoStream stream) 'active'}}">

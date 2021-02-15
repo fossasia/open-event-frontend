@@ -6,12 +6,14 @@ import { inject as service } from '@ember/service';
 export default class extends Controller.extend(EmberTableControllerMixin) {
   @service errorHandler;
 
+  sort_by = 'order';
+
   get columns() {
     return [
       {
         name            : ' ',
         valuePath       : 'thumbnailImageUrl',
-        extraValuePaths : ['photoUrl'],
+        extraValuePaths : ['id', 'event', 'photoUrl'],
         cellComponent   : 'ui-table/cell/events/view/speakers/speaker-logo'
       },
       {

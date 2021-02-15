@@ -132,7 +132,7 @@ export default class SessionsRoute extends Route {
     return {
       event   : eventDetails,
       session : await this.infinity.model('sessions', {
-        include      : 'track,speakers,session-type,microlocation.video-stream',
+        include      : 'track,speakers,session-type,favourite,microlocation.video-stream',
         filter       : filterOptions,
         sort         : params.sort || 'starts-at',
         perPage      : 6,
