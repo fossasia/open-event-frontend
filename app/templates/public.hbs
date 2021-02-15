@@ -33,9 +33,11 @@
           {{/if}}
         {{else}}
           {{#if this.displaySideMenu}}
+          <UiSticky>
             <div class="ui fluid side-menu">
               <Public::SideMenuOuter @event={{this.model}} />
             </div>
+          </UiSticky>  
           {{/if}}
         {{/if}}
       </div>
