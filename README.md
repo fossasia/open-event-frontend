@@ -81,12 +81,28 @@ Stable versions will be released periodically, starting from version 1.0.0 when 
 
 ### Docker Hub Images
 Docker images hosted on [open-event-frontend repository](https://cloud.docker.com/u/eventyay/repository/docker/eventyay/open-event-frontend) under eventyay organisation on docker hub are updated for each push on master and development branch. Separate tags for each version release are also maintained. They are as follows:
-
-| Branch/Release  | Image                                    |
-| --------------- | ---------------------------------------- |
-| Master          | eventyay/open-event-frontend:latest      |
-| Development     | eventyay/open-event-frontend:development | 
-| Version(vx.y.z) | eventyay/open-event-frontend:vx.y.z      |
+<br/>
+<br/>
+<table align="center">
+  <tr>
+    <th>Branch/Release</th>
+    <th>Image</th>
+  </tr>
+  <tr>
+    <td>Master</td>
+    <td>eventyay/open-event-frontend:latest</td>
+  </tr>
+  <tr>
+    <td>Development</td>
+    <td>eventyay/open-event-frontend:development</td>
+  </tr>
+  <tr>
+    <td>Version(vx.y.z)</td>
+    <td>eventyay/open-event-frontend:vx.y.z</td>
+  </tr>
+</table>
+<br/>
+<br/>
 
 ## Further Reading / Useful Links
 
