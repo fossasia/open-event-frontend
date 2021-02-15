@@ -27,6 +27,13 @@
             {{/each}}
         </div>
         <br/><br/>
+        {{#each this.links as |socialLink|}}
+            {{#if (eq socialLink.name 'twitter')}}
+                <div class="twitter content">
+                    <Widgets::TwitterTimeline @handleOrProfile={{socialLink.link}} />
+                </div>
+            {{/if}}
+        {{/each}}
         {{#if (or this.model.slidesUrl this.model.videoUrl)}}
             <div class="p-4">
                 <div style={{css display='flex' align-items='center' flex-direction='column'}}>
