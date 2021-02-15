@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
-import { groupBy } from 'lodash-es';
+import { groupBy, sortBy } from 'lodash-es';
 import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
 import { SPEAKER_FORM_ORDER, SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
 import moment from 'moment';
@@ -133,8 +133,8 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   customForm: computed('data.customForms.[]', function() {
     const grouped = groupBy(this.data.customForms.toArray(), customForm => customForm.get('form'));
 
-    grouped.speaker = sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER);
-    grouped.session = sortCustomFormFields(grouped.session, SESSION_FORM_ORDER);
+    grouped.speaker = sortBy(sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER), ['position']);
+    grouped.session = sortBy(sortCustomFormFields(grouped.session, SESSION_FORM_ORDER), ['position']);
 
     return grouped;
   }),
