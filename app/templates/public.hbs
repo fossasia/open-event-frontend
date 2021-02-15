@@ -1,5 +1,5 @@
 <UnverifiedUserMessage />
-<div class="public-event public-container ui relaxed grid mt-0 pt-0">
+<div class="public-event ui relaxed grid mt-0 pt-0">
   <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
     <Widgets::SafeImage class="background" @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
     <div class="content">
@@ -44,7 +44,7 @@
         {{outlet}}
       </div>
       {{/unless}}
-      <div class="three wide column rightside-menu">
+      <div class="three wide column">
         {{#if this.displaySideMenu}}
           <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
