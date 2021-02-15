@@ -82,7 +82,7 @@ export default class AddToCalender extends Component<Args> {
   }
 
   get calendarUrls(): { name: string; url: string; }[] {
-    return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }, { name: 'Yahoo', url: this.yahooUrl }, { name: 'Outlook', url: this.outlookUrl }];
+    return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }, { name: 'Yahoo', url: this.yahooUrl }, { name: 'Outlook', url: this.outlookUrl }, { name:'My Schedule' }];
   }
 
   get sessionGoogleUrl(): string {
