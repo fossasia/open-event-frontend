@@ -19,6 +19,9 @@ export default class SessionsRoute extends Route {
     },
     search: {
       refreshModel: true
+    },
+    my_schedule: {
+      refreshModel: true
     }
   };
 
@@ -78,6 +81,22 @@ export default class SessionsRoute extends Route {
       });
     }
 
+    if (params.my_schedule) {
+      filterOptions.push({
+        name : 'favourites',
+        op   : 'any',
+        val  : {
+          name : 'user',
+          op   : 'has',
+          val  : {
+            name : 'id',
+            op   : 'eq',
+            val  : this.authManager.currentUser.id
+          }
+        }
+      });
+    }
+
     if (params.room) {
       filterOptions.push({
         name : 'microlocation',
@@ -132,7 +151,7 @@ export default class SessionsRoute extends Route {
     return {
       event   : eventDetails,
       session : await this.infinity.model('sessions', {
-        include      : 'track,speakers,session-type,microlocation.video-stream',
+        include      : 'track,speakers,session-type,favourite,microlocation.video-stream',
         filter       : filterOptions,
         sort         : params.sort || 'starts-at',
         perPage      : 6,
