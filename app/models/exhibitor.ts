@@ -15,6 +15,7 @@ export default class Exhibitor extends ModelBase.extend() {
   @attr() bannerUrl!: string;
   @attr() videoUrl!: string;
   @attr() slidesUrl!: string;
+  @attr() position!: number;
   @attr() socialLinks!: SocialLink[]
 
   @belongsTo('event') event!: Event;
