@@ -20,13 +20,13 @@ export default class AddToCalendarModal extends ModalBase {
 
     @computed('calendarUrls')
     get calendars() {
-      return this.calendarUrls.map(calendar => {
-      const newCalendar = {};
-      newCalendar.name = calendar.name;
-      newCalendar.url = calendar.url;
-      newCalendar.icon = this.calendarIcons[calendar.name];
-      newCalendar.color = this.calendarColors[calendar.name];
-      return newCalendar;
-      });
+        return this.calendarUrls.map(calendar => {
+        const newCalendar = {};
+        newCalendar.name = calendar.name;
+        newCalendar.url = calendar.url;
+        newCalendar.icon = this.calendarIcons[calendar.name];
+        newCalendar.color = this.calendarColors[calendar.name];
+        return newCalendar;
+        });
     }
 }
