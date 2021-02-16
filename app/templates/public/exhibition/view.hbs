@@ -39,10 +39,18 @@
         </div>
         {{/if}}
         <br/><br/>
+        {{#each this.links as |socialLink|}}
+            {{#if (eq socialLink.name 'twitter')}}
+                <div class="p-4 twitter content">
+                    <Widgets::TwitterTimeline @handleOrProfile={{socialLink.link}} />
+                </div>
+            {{/if}}
+        {{/each}}
         {{#if (or this.model.slidesUrl this.model.videoUrl)}}
             <div class="p-4">
                 <div style={{css display='flex' align-items='center' flex-direction='column'}}>
                     {{#if (or this.pdfLink this.pptLink)}}
+                        <br/>
                         <h2 class="ui centered header no margin">{{t 'Exhibitor Slides'}}</h2><br/>
                         <iframe title="session-slides" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.model.slidesUrl }}&embedded=true"></iframe>
                     {{else if this.model.slidesUrl}}

@@ -17,6 +17,7 @@ export default class Exhibitor extends ModelBase.extend() {
   @attr() slidesUrl!: string;
   @attr() contactEmail!: string;
   @attr() contactLink!: string;
+  @attr() position!: number;
   @attr() socialLinks!: SocialLink[]
 
   @belongsTo('event') event!: Event;
