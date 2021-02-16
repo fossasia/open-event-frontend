@@ -53,6 +53,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
       },
       {
         name      : this.l10n.t('Description'),
+        width     : 210,
         valuePath : 'description'
       },
       {

@@ -49,7 +49,8 @@ export default class ExhibitorForm extends Component<Args> {
           ]
         },
         contactEmail: {
-          rules: [
+          optional : true,
+          rules    : [
             {
               type   : 'regExp',
               value  : validEmail,
@@ -58,7 +59,8 @@ export default class ExhibitorForm extends Component<Args> {
           ]
         },
         contactLink: {
-          rules: [
+          optional : true,
+          rules    : [
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
