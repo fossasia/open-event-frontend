@@ -17,7 +17,7 @@ export default class AddToCalender extends Component<Args> {
 
   @tracked showSessions : any;
 
-  @tracked isAddToCalendarModalOpen : boolean = false;
+  @tracked isAddToCalendarModalOpen = false;
 
   @tracked modalUrls : { name: string; url: string; }[] = [];
 
@@ -44,7 +44,7 @@ export default class AddToCalender extends Component<Args> {
     this.checkSessions();
   }
 
-  openAddToCalendarModal(Urls: { name: string; url: string; }[]) {
+  openAddToCalendarModal(Urls: { name: string; url: string; }[]): void {
     this.isAddToCalendarModalOpen = true;
     this.modalUrls = Urls;
   }

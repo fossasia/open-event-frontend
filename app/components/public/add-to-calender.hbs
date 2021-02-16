@@ -11,9 +11,9 @@
         <i class="add to calendar icon"></i>
         {{t 'Add To Calendar'}}
       <div class="menu">
-        <a {{action 'openAddToCalendarModal' this.calendarUrls}} class="ui item inverted button">{{t 'Add Event'}}</a>
+        <button {{action 'openAddToCalendarModal' this.calendarUrls}} class="ui item inverted fluid button">{{t 'Add Event'}}</button>
         {{#if (and @event.isSchedulePublished this.showSessions)}}
-          <a {{action 'openAddToCalendarModal' this.sessionCalendarUrls}} class="ui item inverted button">{{t 'Add Sessions'}}</a>
+          <button {{action 'openAddToCalendarModal' this.sessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add Sessions'}}</button>
         {{/if}}
       </div>
     </UiDropdown>
