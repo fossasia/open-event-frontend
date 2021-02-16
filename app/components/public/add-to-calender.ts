@@ -40,7 +40,7 @@ export default class AddToCalender extends Component<Args> {
     this.checkSessions();
   }
 
-  async checkSessions() {
+  async checkSessions(): Promise<void> {
     const { event } = this.args;
     this.showSessions = this.showSessions ?? await hasSessions(this.loader, event);
   }

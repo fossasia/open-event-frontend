@@ -25,7 +25,7 @@ export default class EditSessionRoute extends Route.extend(AuthenticatedRouteMix
   afterModel(model) {
     super.afterModel(...arguments);
     const user = this.authManager.currentUser;
-    if (!(model.event.hasAccess(user) || user.email == model.speaker.get('email'))) {
+    if (!(model.event.hasAccess(user) || user.email === model.speaker.get('email'))) {
       this.transitionTo('not-found');
     }
   }
