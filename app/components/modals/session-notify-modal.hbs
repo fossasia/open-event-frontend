@@ -11,12 +11,29 @@
   {{#if this.mail}}
     <form class="ui form">
       <div class="field">
-        <label>Name and Email</label>
+        <label>{{t 'From'}}</label>
         <Input
           type="text"
-          name="name and email"
+          name="from"
+          @value={{this.mailFrom}} 
+          disabled />
+      </div>
+      <div class="field">
+        <label>{{t 'To'}}</label>
+        <Input
+          type="text"
+          name="to"
           @value={{this.speakerEmails}} 
           disabled />
+      </div>
+      <div class="field">
+        <label>{{t 'Reply-to'}}</label>
+        <Input
+          type="text"
+          name="reply to"
+          class="truncate"
+          @value={{this.ownerEmail}} 
+          readonly />
       </div>
       <div class="field">
         <label>CC</label>
@@ -41,7 +58,7 @@
       </div>
     </form>
     <p class="m-2">
-      You can use these identifiers as placeholders for actual details sent in the email:
+      {{t 'You can use these identifiers as placeholders for actual details sent in the email'}}:
       <div class="ui bulleted list">
         <div class="item"><code>{session_name}</code> - Name of the Session</div>
         <div class="item"><code>{session_link}</code> - Link of the Session</div>
@@ -51,6 +68,10 @@
         <div class="item"><code>{app_name}</code> - Name of the App (Site)</div>
         <div class="item"><code>{frontend_link}</code> - Link of the Frontend Site</div>
       </div>
+    </p>
+    <br/>
+    <p>
+      {{t 'A copy of this email will be send to all organizers of this event'}}.
     </p>
   {{/if}}
 </div>

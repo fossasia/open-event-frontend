@@ -1,11 +1,15 @@
-<div class="ui list basic segment mt-3 mb-0 pb-0">
+<div class="ui list basic segment m-0 pb-0">
   <div class="item mt-1">
     <i class="clock alternate outline icon pt-1"></i>
     <div class="content">
       <Public::EventDateTime @event={{@event}} />
     </div>
-    <UiDropdown class="ui floating dropdown button mt-4">
-      {{t 'Add to Calendar'}}
+  </div>
+
+  <div class="inline d-flex mt-4">
+    <UiDropdown class="ui floating dropdown button w-full text center aligned">
+        <i class="add to calendar icon"></i>
+        {{t 'Add Event'}}
       <div class="menu">
         {{#each this.calendarUrls as |calendar|}}
           <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
@@ -14,5 +18,18 @@
         {{/each}}
       </div>
     </UiDropdown>
+    {{#if (and @event.isSchedulePublished this.showSessions)}}
+      <UiDropdown class="ui floating dropdown button w-full text center aligned">
+        <i class="add to calendar icon"></i>
+          {{t 'Add Sessions'}}
+        <div class="menu">
+          {{#each this.sessionCalendarUrls as |calendar|}}
+            <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
+              {{calendar.name}}
+            </a>
+          {{/each}}
+        </div>
+      </UiDropdown>
+    {{/if}}
   </div>
 </div>

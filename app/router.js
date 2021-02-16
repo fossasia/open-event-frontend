@@ -66,6 +66,9 @@ Router.map(function() {
     this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
+    this.route('exhibition', function() {
+      this.route('view', { path: '/:exhibitor_id' });
+    });
   });
   this.route('role-invites');
   this.route('pricing');
@@ -135,6 +138,7 @@ Router.map(function() {
         this.route('list');
         this.route('create');
         this.route('edit', { path: '/:exhibitor_id/edit' });
+        this.route('reorder');
       });
     });
     this.route('list', { path: '/:event_state' });

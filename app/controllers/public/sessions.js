@@ -7,18 +7,19 @@ import { groupBy } from 'lodash-es';
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort', 'search'];
+  queryParams = ['sort', 'search', 'date', 'my_schedule'];
   search = null;
   sort = 'starts-at';
+  date = null;
   isTrackVisible = false;
   timezone = null;
   dates = null;
   preserveScrollPosition = true;
+  my_schedule=null;
 
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
-
     if (this.sort === 'title') {
       sessions = groupBy(this.model.session.toArray(), '');
     } else {
@@ -31,7 +32,7 @@ export default class SessionsController extends Controller {
   @computed('model.event.startsAt', 'model.event.endsAt', 'dates', 'timezone')
   get allDates() {
     if (this.dates) {
-      const uniqueDates = new Set(this.dates.toArray()
+      const uniqueDates = new Set(this.dates
         .map(date => moment.tz(date.startsAt, this.timezone).toISOString())
         .sort()
         .map(date => moment(date).format('YYYY-MM-DD')));
@@ -83,7 +84,7 @@ export default class SessionsController extends Controller {
       'page[size]'      : 0
     });
 
-    this.set('dates', sessions);
+    this.set('dates', sessions.toArray());
   }
 
   get side_panel() {

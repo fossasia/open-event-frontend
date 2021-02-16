@@ -31,6 +31,9 @@
               </button>
             {{/if}}
           {{/if}}
+          <div class="self-center" role="button" {{action this.favourite}}>
+            <i class="star {{unless @session.favourite 'outline'}} icon"></i>
+          </div>
           {{#unless @hideSessionLink}}
             <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
           {{/unless}}
@@ -76,6 +79,26 @@
       <div class="column session-description">
         {{sanitize @session.shortAbstract}}
       </div>
+      <div class="mt-4 social-icons">
+        {{#if @session.website}}
+          <a href={{@session.website}} target="_blank" rel="noopener noreferrer"><i class="external alternate icon"></i>{{t 'Website'}}</a>
+        {{/if}}
+        {{#if @session.facebook}}
+          <a href={{@session.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>{{t 'Facebook'}}</a>
+        {{/if}}
+        {{#if @session.linkedin}}
+          <a href={{@session.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>{{t 'LinkedIn'}}</a>
+        {{/if}}
+        {{#if @session.twitter}}
+          <a href={{@session.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>{{t 'Twitter'}}</a>
+        {{/if}}
+        {{#if @session.github}}
+          <a href={{@session.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>{{t 'GitHub'}}</a>
+        {{/if}}
+        {{#if @session.gitlab}}
+          <a href={{@session.gitlab}} target="_blank" rel="noopener noreferrer"><i class="gitlab icon"></i>{{t 'GitLab'}}</a>
+        {{/if}}
+         </div>
     </div>
     {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
       <div class="row p-4">
@@ -127,16 +150,16 @@
       </p>
       <div class="social-icons">
         {{#if speaker.facebook}}
-          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>Facebook</a>
+          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>{{t 'Facebook'}}</a>
         {{/if}}
         {{#if speaker.linkedin}}
-          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>Linkedin</a>
+          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>{{t 'Linkedin'}}</a>
         {{/if}}
         {{#if speaker.twitter}}
-          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>Twitter</a>
+          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>{{t 'Twitter'}}</a>
         {{/if}}
         {{#if speaker.github}}
-          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>GitHub</a>
+          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>{{t 'GitHub'}}</a>
         {{/if}}
       </div>
     {{/each}}
