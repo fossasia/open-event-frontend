@@ -6,30 +6,18 @@
     </div>
   </div>
 
-  <div class="inline d-flex mt-4">
+  <div class="mt-4">
     <UiDropdown class="ui floating dropdown button w-full text center aligned">
         <i class="add to calendar icon"></i>
-        {{t 'Add Event'}}
+        {{t 'Add To Calendar'}}
       <div class="menu">
-        {{#each this.calendarUrls as |calendar|}}
-          <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-            {{calendar.name}}
-          </a>
-        {{/each}}
+        <a {{action 'openAddToCalendarModal' this.calendarUrls}} class="ui item inverted button">{{t 'Add Event'}}</a>
+        {{#if (and @event.isSchedulePublished this.showSessions)}}
+          <a {{action 'openAddToCalendarModal' this.sessionCalendarUrls}} class="ui item inverted button">{{t 'Add Sessions'}}</a>
+        {{/if}}
       </div>
     </UiDropdown>
-    {{#if (and @event.isSchedulePublished this.showSessions)}}
-      <UiDropdown class="ui floating dropdown button w-full text center aligned">
-        <i class="add to calendar icon"></i>
-          {{t 'Add Sessions'}}
-        <div class="menu">
-          {{#each this.sessionCalendarUrls as |calendar|}}
-            <a href={{calendar.url}} class="item" target="_blank" rel="noreferrer nofollow">
-              {{calendar.name}}
-            </a>
-          {{/each}}
-        </div>
-      </UiDropdown>
-    {{/if}}
   </div>
 </div>
+
+<Modals::AddToCalendar @isOpen={{this.isAddToCalendarModalOpen}} @calendarUrls={{this.modalUrls}}/>
