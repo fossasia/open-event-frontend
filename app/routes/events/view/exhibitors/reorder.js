@@ -9,7 +9,7 @@ export default class ExhibitorsReorderRoute extends Route {
   model() {
     const event = this.modelFor('events.view');
     const exhibitors = event.query('exhibitors', {
-      sort         : 'order',
+      sort         : 'position',
       'page[size]' : 0,
       public       : true
     });

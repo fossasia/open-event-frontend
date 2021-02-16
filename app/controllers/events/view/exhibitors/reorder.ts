@@ -15,7 +15,7 @@ export default class ExhibitorsReorderController extends Controller {
 
   @action sortEndAction(): void {
     this.model.exhibitors.forEach((exhibitor: Exhibitor, index: number) => {
-      exhibitor.order = index;
+      exhibitor.position = index;
     });
   }
 
@@ -31,7 +31,7 @@ export default class ExhibitorsReorderController extends Controller {
   }
 
   @action async save(): Promise<void> {
-    const data = this.model.exhibitors.map((exhibitor: Exhibitor) => ({ exhibitor: exhibitor.id, order: exhibitor.order }));
+    const data = this.model.exhibitors.map((exhibitor: Exhibitor) => ({ exhibitor: exhibitor.id, position: exhibitor.position }));
     const res = await this.loader.post(`/events/${this.model.event.id}/reorder-exhibitors`, data);
     if (res.success) {
       this.notify.success(this.l10n.t('Exhibitors order set successfully'));
