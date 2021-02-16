@@ -27,6 +27,18 @@
             {{/each}}
         </div>
         <br/><br/>
+        {{#if this.contactExhibitor}}
+        <br/><br/>
+        <div class="d-flex flex-grow-1 content-center">
+            {{#if this.model.contactEmail}}
+                <a target="_blank" href="mailto:{{this.model.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+            {{/if}}
+            {{#if this.model.contactLink}}
+                <a target="_blank" href="{{this.model.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+            {{/if}}
+        </div>
+        {{/if}}
+        <br/><br/>
         {{#each this.links as |socialLink|}}
             {{#if (eq socialLink.name 'twitter')}}
                 <div class="p-4 twitter content">
