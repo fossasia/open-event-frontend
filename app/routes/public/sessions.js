@@ -20,7 +20,7 @@ export default class SessionsRoute extends Route {
     search: {
       refreshModel: true
     },
-    mySpeakerSession: {
+    my_speaker_sessions: {
       refreshModel: true
     },
     my_schedule: {
@@ -151,7 +151,7 @@ export default class SessionsRoute extends Route {
       });
     }
 
-    if (params.mySpeakerSession) {
+    if (params.my_speaker_sessions) {
       filterOptions.push({
         name : 'speakers',
         op   : 'any',

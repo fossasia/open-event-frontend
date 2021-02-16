@@ -73,14 +73,14 @@
               <div class="ui basic segment m-0 pt-0">
                 <h4 class="d-flex">
                   <LinkTo
-                    class="rounded-default link-item {{if (eq this.params.mySpeakerSession true) 'active'}}"
+                    class="rounded-default link-item {{if (eq this.params.my_speaker_sessions true) 'active'}}"
                     @route="public.sessions"
                     @models={{array this.model.id}}
-                    @query={{hash mySpeakerSession=true}}>
+                    @query={{hash my_speaker_sessions=true}}>
                     <i class="bullhorn grey icon"></i>
                     {{t 'My Speaker Session'}}
                   </LinkTo>
-                  <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash mySpeakerSession=null}} data-tooltip="{{t 'Clear My Speaker Session Filter'}}">
+                  <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash my_speaker_sessions=null}} data-tooltip="{{t 'Clear My Speaker Session Filter'}}">
                     <i class="minus circle icon" style={{css color='#555'}}></i>
                   </LinkTo>      
                 </h4>
