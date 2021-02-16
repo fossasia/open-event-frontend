@@ -22,6 +22,9 @@ export default class SessionsRoute extends Route {
     },
     mySpeakerSession: {
       refreshModel: true
+    },
+    my_schedule: {
+      refreshModel: true
     }
   };
 
@@ -77,6 +80,22 @@ export default class SessionsRoute extends Route {
           name : 'name',
           op   : 'eq',
           val  : params.track
+        }
+      });
+    }
+
+    if (params.my_schedule) {
+      filterOptions.push({
+        name : 'favourites',
+        op   : 'any',
+        val  : {
+          name : 'user',
+          op   : 'has',
+          val  : {
+            name : 'id',
+            op   : 'eq',
+            val  : this.authManager.currentUser.id
+          }
         }
       });
     }
