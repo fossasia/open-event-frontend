@@ -44,9 +44,9 @@ export default class AddToCalender extends Component<Args> {
     this.checkSessions();
   }
 
-  openAddToCalendarModal(Urls: { name: string; url: string; }[]): void {
+  openAddToCalendarModal(calendarUrls: { name: string; url: string; }[]): void {
     this.isAddToCalendarModalOpen = true;
-    this.modalUrls = Urls;
+    this.modalUrls = calendarUrls;
   }
 
   async checkSessions() {
