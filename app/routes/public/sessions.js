@@ -20,6 +20,9 @@ export default class SessionsRoute extends Route {
     search: {
       refreshModel: true
     },
+    my_speaker_sessions: {
+      refreshModel: true
+    },
     my_schedule: {
       refreshModel: true
     }
@@ -145,6 +148,18 @@ export default class SessionsRoute extends Route {
             }
           }
         ]
+      });
+    }
+
+    if (params.my_speaker_sessions) {
+      filterOptions.push({
+        name : 'speakers',
+        op   : 'any',
+        val  : {
+          name : 'email',
+          op   : 'eq',
+          val  : this.authManager.currentUser.email
+        }
       });
     }
 
