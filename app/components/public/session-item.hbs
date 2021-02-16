@@ -31,7 +31,7 @@
               </button>
             {{/if}}
           {{/if}}
-          <div class="self-center" role="button" {{action this.favourite}}>
+          <div class="self-center" role="button" onclick={{prevent-bubbling (action this.favourite)}}>
             <i class="star {{unless @session.favourite 'outline'}} icon"></i>
           </div>
           {{#unless @hideSessionLink}}
