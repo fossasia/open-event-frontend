@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import Component from '@ember/component';
 import { tagName } from '@ember-decorators/component';
 import { tracked } from '@glimmer/tracking';
-import { hasSpeakers, hasSessions } from 'open-event-frontend/utils/event';
+import { hasSpeakers, hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
 
 @classic
 @tagName('')
@@ -11,6 +11,9 @@ export default class SideMenu extends Component {
 
   @tracked
   showSpeakers = null;
+
+  @tracked
+  showExhibitors = null;
 
   @tracked
   showSessions = null;
@@ -23,10 +26,15 @@ export default class SideMenu extends Component {
 
     this.checkSpeakers();
     this.checkSessions();
+    this.checkExhibitors();
   }
 
   async checkSpeakers() {
     this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.event);
+  }
+
+  async checkExhibitors() {
+    this.showExhibitors = this.showExhibitors ?? await hasExhibitors(this.loader, this.event);
   }
 
   async checkSessions() {

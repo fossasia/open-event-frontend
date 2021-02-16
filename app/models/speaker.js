@@ -34,6 +34,7 @@ export default class Speaker extends ModelBase.extend({
   city               : attr('string'),
   gender             : attr('string'),
   heardFrom          : attr('string'),
+  order              : attr('number'),
   complexFieldValues : attr(),
 
   /**
@@ -54,4 +55,10 @@ export default class Speaker extends ModelBase.extend({
     }
   }
 
-}) {}
+}) {
+
+  get image() {
+    return this.thumbnailImageUrl || this.photoUrl || '/images/placeholders/avatar.png';
+  }
+
+}

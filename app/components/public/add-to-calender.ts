@@ -2,6 +2,8 @@ import Component from '@glimmer/component';
 import moment, { Moment } from 'moment';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+import { hasSessions } from 'open-event-frontend/utils/event';
 
 
 interface Args {
@@ -12,6 +14,12 @@ interface Args {
 export default class AddToCalender extends Component<Args> {
 
   @service loader: any;
+
+  @tracked showSessions : any;
+
+  @tracked isAddToCalendarModalOpen = false;
+
+  @tracked modalUrls : { name: string; url: string; }[] = [];
 
   get description(): string {
     const { event } = this.args;
@@ -29,6 +37,21 @@ export default class AddToCalender extends Component<Args> {
                       </section>`;
     }
     return desc;
+  }
+
+  constructor(owner: null, args: Args) {
+    super(owner, args);
+    this.checkSessions();
+  }
+
+  openAddToCalendarModal(calendarUrls: { name: string; url: string; }[]): void {
+    this.isAddToCalendarModalOpen = true;
+    this.modalUrls = calendarUrls;
+  }
+
+  async checkSessions() {
+    const { event } = this.args;
+    this.showSessions = this.showSessions ?? await hasSessions(this.loader, event);
   }
 
   get startsAt(): Moment {
@@ -71,4 +94,17 @@ export default class AddToCalender extends Component<Args> {
     return [{ name: 'Google Calendar', url: this.googleUrl }, { name: 'iCal', url: this.iCalUrl }, { name: 'Yahoo', url: this.yahooUrl }, { name: 'Outlook', url: this.outlookUrl }];
   }
 
+  get sessionGoogleUrl(): string {
+    const { event } = this.args;
+    return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + '.ics?include_sessions';
+  }
+
+  get sessioniCalUrl(): string {
+    const host = this.loader.host();
+    return host + '/v1/events/' + this.args.event.identifier + '.ics?include_sessions';
+  }
+
+  get sessionCalendarUrls(): { name: string; url: string; }[] {
+    return [{ name: 'Google Calendar', url: this.sessionGoogleUrl }, { name: 'iCal', url: this.sessioniCalUrl }];
+  }
 }
