@@ -200,4 +200,12 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
     return this.schedulePublishedOn && this.schedulePublishedOn.toISOString() !== moment(0).toISOString();
   })
 
-}) {}
+}) {
+
+  hasAccess(currentUser) {
+    return currentUser && (currentUser.isAnAdmin || currentUser.email === this.owner.get('email')
+        || this.organizers.includes(currentUser)
+        || this.coorganizers.includes(currentUser));
+  }
+
+}
