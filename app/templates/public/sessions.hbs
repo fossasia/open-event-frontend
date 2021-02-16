@@ -2,19 +2,26 @@
   <h1 class="ui header" id="session-heading">{{t 'Schedule'}}</h1>
     {{#if this.session.isAuthenticated}}
       <LinkTo
-        class="rounded-default link-item ui right floated p-1 ml-auto mr-4 {{if (not this.my_schedule) 'active'}} mb-4"
+        class="rounded-default link-item ui right floated p-1 ml-auto mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}} mb-4"
         @route="public.sessions"
         @models={{array this.model.event.id}}
-        @query={{hash my_schedule=null}}>
+        @query={{hash my_schedule=null my_speaker_sessions=null}}>
         <h4>{{t 'Public Schedule'}}</h4>
       </LinkTo>
       <LinkTo
-        class="rounded-default link-item ui right floated p-1 mb-4 {{if this.my_schedule 'active'}}"
+        class="rounded-default link-item ui right floated p-1 mb-4 mr-4 {{if this.my_schedule 'active'}}"
         @route="public.sessions"
         @models={{array this.model.event.id}}
-        @query={{hash my_schedule=true}}>
+        @query={{hash my_schedule=true my_speaker_sessions=null}}>
         <h4>{{t 'My Schedule'}}</h4>
       </LinkTo>
+      <LinkTo
+        class="rounded-default link-item ui right floated p-1 mb-4 {{if (eq this.params.my_speaker_sessions true) 'active'}}"
+        @route="public.sessions"
+        @models={{array this.model.event.id}}
+        @query={{hash my_speaker_sessions=true my_schedule=null}}>
+        <h4>{{t 'My Speaker Session'}}</h4>
+      </LinkTo> 
     {{/if}}
 </div>
 <div class="d-flex wrap">
