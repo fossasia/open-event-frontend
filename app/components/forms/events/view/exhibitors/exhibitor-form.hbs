@@ -79,6 +79,11 @@
           @hint={{t "Select a file"}}
           @maxSizeInKb={{10000}} />
       </div>
+        <UiCheckbox 
+          @class="toggle mt-2 mb-2 weight-600"
+          @label={{t "Enable Video Room"}}
+          @checked={{@exhibitor.enableVideoRoom}}
+          @onChange={{action (mut @exhibitor.enableVideoRoom)}} />
       <h4>
         {{t 'Social Media'}}
         <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button ml-2" style="margin-left: 1rem !important;" @click={{action this.addSocialLink}} @position="top center">
