@@ -138,6 +138,7 @@ Router.map(function() {
         this.route('list');
         this.route('create');
         this.route('edit', { path: '/:exhibitor_id/edit' });
+        this.route('reorder');
       });
     });
     this.route('list', { path: '/:event_state' });

@@ -10,6 +10,26 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
   get columns() {
     return [
       {
+        name            : this.l10n.t('State'),
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
+        width           : 90,
+        valuePath       : 'status',
+        isSortable      : true,
+        extraValuePaths : ['id', 'status'],
+        options         : {
+          sessionStateMap: {
+            organizer: {
+              accepted : { pending: true },
+              pending  : { accepted: true }
+            }
+          }
+        },
+        actions: {
+          changeState: this.changeState.bind(this)
+        }
+      },
+      {
         name          : this.l10n.t('Logo'),
         valuePath     : 'logoUrl',
         cellComponent : 'ui-table/cell/cell-image'
@@ -32,27 +52,8 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
         }
       },
       {
-        name            : this.l10n.t('Status'),
-        headerComponent : 'tables/headers/sort',
-        cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
-        width           : 90,
-        valuePath       : 'status',
-        isSortable      : true,
-        extraValuePaths : ['id', 'status'],
-        options         : {
-          sessionStateMap: {
-            organizer: {
-              accepted : { pending: true },
-              pending  : { accepted: true }
-            }
-          }
-        },
-        actions: {
-          changeState: this.changeState.bind(this)
-        }
-      },
-      {
         name      : this.l10n.t('Description'),
+        width     : 210,
         valuePath : 'description'
       },
       {

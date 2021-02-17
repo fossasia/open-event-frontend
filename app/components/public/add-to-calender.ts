@@ -17,6 +17,10 @@ export default class AddToCalender extends Component<Args> {
 
   @tracked showSessions : any;
 
+  @tracked isAddToCalendarModalOpen = false;
+
+  @tracked modalUrls : { name: string; url: string; }[] = [];
+
   get description(): string {
     const { event } = this.args;
     let desc = `Join the event at <a href = "${event.url}">${event.url}</a> \n `;
@@ -38,6 +42,11 @@ export default class AddToCalender extends Component<Args> {
   constructor(owner: null, args: Args) {
     super(owner, args);
     this.checkSessions();
+  }
+
+  openAddToCalendarModal(calendarUrls: { name: string; url: string; }[]): void {
+    this.isAddToCalendarModalOpen = true;
+    this.modalUrls = calendarUrls;
   }
 
   async checkSessions(): Promise<void> {

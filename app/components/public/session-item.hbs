@@ -25,13 +25,13 @@
             {{/if}}      
           {{else}}
             {{#if @session.microlocation.hasVideoStream}}
-              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} onclick={{prevent-bubbling (action this.goToStream)}}>
                 <i class="icon video"></i>
                 {{t 'Join Video'}}
               </button>
             {{/if}}
           {{/if}}
-          <div class="self-center" role="button" {{action this.favourite}}>
+          <div class="self-center" role="button" onclick={{prevent-bubbling (action this.favourite)}}>
             <i class="star {{unless @session.favourite 'outline'}} icon"></i>
           </div>
           {{#unless @hideSessionLink}}
