@@ -21,6 +21,10 @@
                     <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
                 {{else if (eq socialLink.name 'groups.google')}}
                     <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+                {{else if socialLink.is_custom}}
+                    <UiPopup @content={{t-var socialLink.name}}>
+                        <a href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i class="external alternate icon"></i></a>
+                    </UiPopup>
                 {{else}}
                     <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
                 {{/if}}
