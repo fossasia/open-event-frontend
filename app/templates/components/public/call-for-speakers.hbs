@@ -50,20 +50,20 @@
     <p>{{t 'You need to login to submit and view sessions.'}}</p>
   {{/if}}
 {{/if}}
+{{#if (and this.data.speakersCall.isOpen this.isNewSpeaker)}}
+  <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
+    {{t 'Add Speaker Details'}}
+  </button>
+{{else}}
+  {{#each this.data.userSpeaker as |speaker|}}
+    {{#if speaker.id}}
+      <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}}>
+        <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
+      </LinkTo>
+    {{/if}}
+  {{/each}}
+{{/if}}
 {{#if this.data.speakersCall.isOpen}}
-  {{#if this.isNewSpeaker}}
-    <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
-      {{t 'Add Speaker Details'}}
-    </button>
-  {{else}}
-    {{#each this.data.userSpeaker as |speaker|}}
-      {{#if speaker.id}}
-        <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}}>
-          <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
-        </LinkTo>
-      {{/if}}
-    {{/each}}
-  {{/if}}
   <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSession'}}>
     {{t 'Add New Session'}}
   </button>

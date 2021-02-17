@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-02-02 13:41+0000\n"
+"PO-Revision-Date: 2021-02-16 23:50+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 "X-Crowdin-Project: open-event-frontend\n"
 "X-Crowdin-Language: de\n"
 "X-Crowdin-File: /development/translations/en.po\n"
@@ -963,7 +963,8 @@ msgstr "Bitte ein neues Passwort eingeben"
 
 #: app/components/forms/reset-password-form.js:85:34
 msgid "Your password has been reset successfully. Please log in to continue"
-msgstr "Ihr Passwort wurde erfolgreich zurückgesetzt. bitte einloggen zum Fortfahren"
+msgstr ""
+"Ihr Passwort wurde erfolgreich zurückgesetzt. Bitte einloggen zum Fortfahren"
 
 #: app/components/forms/reset-password-form.js:92:39
 msgid "Password reset link is either invalid or used already"
@@ -1836,7 +1837,7 @@ msgstr "Endet"
 #: app/templates/components/orders/company-info.hbs:45:22
 #: app/templates/components/widgets/forms/location-input.hbs:30:22
 msgid "State"
-msgstr "Zustand"
+msgstr "Bundesland oder Region"
 
 #: app/controllers/admin/events/list.js:57:25
 #: app/controllers/events/list.js:33:24
@@ -2463,7 +2464,7 @@ msgstr "Die E-Mail-Bestätigung wurde erfolgreich an die Teilnehmer gesendet"
 
 #: app/controllers/events/view/tickets/orders/list.js:126:26
 msgid "Only 5 resend actions are allowed in a minute"
-msgstr "In einer Minute sind nur 5 Aktionen zum erneuten Senden zulässig"
+msgstr "Pro Minute sind maximal fünf Anforderungen zum erneuten Senden zulässig"
 
 #: app/controllers/events/view/videoroom/list.js:11:26
 #: app/routes/events/view/videoroom.js:7:11
@@ -3058,7 +3059,7 @@ msgstr "Referentenprofile erstellen"
 
 #: app/routes/events/view/team/permissions.ts:148:22
 msgid "Feature speakers"
-msgstr "Empfohlene Referenten"
+msgstr "Wichtige Referenten"
 
 #: app/routes/events/view/team/permissions.ts:153:22
 msgid "View session submissions"
@@ -4228,7 +4229,7 @@ msgstr "Ablaufdatum"
 
 #: app/templates/components/events/event-import-section.hbs:4:42
 msgid "Select event source file to import"
-msgstr "Wähle Veranstaltungsquelldatei zum Laden"
+msgstr "Wähle Veranstaltungsdatei zum Importieren"
 
 #: app/templates/components/events/event-import-section.hbs:9:11
 msgid "Supported formats:"
@@ -5394,7 +5395,9 @@ msgstr "Loginseite"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:18:18
 msgid "HCaptcha is enabled if user try to login more than 2 times with wrong credentials."
-msgstr "HCaptcha ist aktiviert, wenn benutzerischer Benutzer versucht, sich mehr als 2 Mal mit falschen Anmeldeinformationen anzumelden."
+msgstr ""
+"HCaptcha ist aktiviert, wenn ein Benutzer versucht, sich mehr als 2 Mal mit "
+"falschen Anmeldeinformationen anzumelden."
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:21:18
 msgid "Forgot Password page"
@@ -5766,7 +5769,7 @@ msgstr "Veranstaltungen der Gruppe"
 
 #: app/templates/components/forms/login-form.hbs:25:17
 msgid "You have been registered successfully. Please login to continue."
-msgstr "Sie wurden erfolgreich registriert. Bitte einloggen zum Fortfahren."
+msgstr "Sie wurden erfolgreich registriert. Bitte Einloggen zum Fortfahren."
 
 #: app/templates/components/forms/login-form.hbs:31:47
 #: app/templates/components/forms/reset-password-form.hbs:43:49
@@ -7174,7 +7177,7 @@ msgstr "Zugang"
 
 #: app/templates/components/public/featured-speaker-list.hbs:1:4
 msgid "Featured Speakers"
-msgstr "Empfohlene Referenten"
+msgstr "Wichtige Referenten"
 
 #: app/templates/components/public/side-menu.hbs:69:101
 #: app/templates/components/public/side-menu.hbs:73:101
@@ -8157,7 +8160,7 @@ msgstr "Trackfilter löschen"
 
 #: app/templates/public.hbs:91:16
 msgid "Rooms"
-msgstr "Zimmer"
+msgstr "Räume"
 
 #: app/templates/public.hbs:92:121
 msgid "Clear Room Filter"
@@ -8215,7 +8218,7 @@ msgstr "Nach Titel"
 #: app/templates/public/sessions.hbs:23:74
 #: app/templates/public/sessions.hbs:26:123
 msgid "By Time"
-msgstr "Zum Zeitpunkt"
+msgstr "Nach Zeit"
 
 #: app/templates/public/sessions.hbs:44:36
 #: app/templates/public/sessions.hbs:82:36
@@ -8228,7 +8231,7 @@ msgstr "Vielen Dank, die E-Mail wurde erfolgreich verifiziert! Jetzt besteht vol
 
 #: app/templates/verify.hbs:3:154
 msgid "Please login to continue."
-msgstr "Bitte einloggen zum Fortfahren."
+msgstr "Bitte Einloggen zum Fortfahren."
 
 #: app/templates/verify.hbs:7:7
 msgid "Error"

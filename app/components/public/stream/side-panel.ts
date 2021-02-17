@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
 import { slugify, stringHashCode } from 'open-event-frontend/utils/text';
-import { hasSessions, hasSpeakers } from 'open-event-frontend/utils/event';
+import { hasSessions, hasSpeakers, hasExhibitors } from 'open-event-frontend/utils/event';
 import Loader from 'open-event-frontend/services/loader';
 
 interface Args {
@@ -22,6 +22,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked streams: VideoStream[] = [];
   @tracked showSessions: number | null = null;
   @tracked showSpeakers: number | null = null;
+  @tracked showExhibitors: number | null = null;
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -67,6 +68,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.showSessions = this.showSessions ?? await hasSessions(this.loader, this.args.event);
   }
 
+  async checkExhibitors(): Promise<void> {
+    this.showExhibitors = this.showExhibitors ?? await hasExhibitors(this.loader, this.args.event);
+  }
+
   addStream(stream: VideoStream | null): void {
     if (!stream) {return;}
     if (this.streams.map(stream => stream.id).any(id => id === stream.id)) {return;}
@@ -81,6 +86,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     this.checkSessions();
     this.checkSpeakers();
+    this.checkExhibitors();
 
     if (this.args.event.isSchedulePublished) {
       try {
