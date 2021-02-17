@@ -67,8 +67,8 @@
       </thead>
       <tbody>
         {{#each this.tickets as |ticket|}}
-          {{#each-in (group-by 'name' (map-by 'ticket' this.data.attendees)) as |name tickets|}}
-            {{#if (eq ticket.name name)}}
+          {{#each-in (group-by 'id' (map-by 'ticket' this.data.attendees)) as |id tickets|}}
+            {{#if (eq ticket.id id)}}
               <tr>
                 {{#if (eq this.data.amount 0)}}
                   <td>
