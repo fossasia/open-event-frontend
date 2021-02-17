@@ -67,60 +67,66 @@
       </thead>
       <tbody>
         {{#each this.tickets as |ticket|}}
-          <tr>
-            {{#if (eq this.data.amount 0)}}
-          	   <td>
-                <div class="ui small">
-                  {{ticket.name}}
-                </div>
-              </td>
-              {{#if this.data.discountCode}}
-                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.price}}</td>
-                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
-                <td>
-                  {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees))}}
-                </td>
-              {{/if}}
-              <td>{{ticket-attendees this.data.attendees ticket.attendees}}</td>
-            {{else}}
-              <td>
-                <div class="ui small">
-                  {{ticket.name}}
-                </div>
-              </td>
-              <td>
-                <Orders::TicketPrice
-                  @ticket={{ticket}}
-                  @currency={{this.eventCurrency}}
-                  @amount={{ticket.price}} />
-              </td>
-              {{#if this.data.discountCode}}
-                <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
-              {{/if}}
-              <td>{{ticket-attendees this.data.attendees ticket.attendees}}</td>
-              {{#if this.event.tax}}
-                <td>
-                  {{#if this.event.tax.isTaxIncludedInPrice}}
-                    {{t 'The price is inclusive of all taxes.'}}
-                  {{else}}
-                    {{#if ticket.price}}
-                      {{this.event.tax.rate}}%
-                    {{else}}
-                      {{t 'N/A'}}
-                    {{/if}}
+          {{#each-in (group-by 'id' (map-by 'ticket' this.data.attendees)) as |id tickets|}}
+            {{#if (eq ticket.id id)}}
+              <tr>
+                {{#if (eq this.data.amount 0)}}
+                  <td>
+                    <div class="ui small">
+                      {{ticket.name}}
+                    </div>
+                  </td>
+                  {{#if this.data.discountCode}}
+                    <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.price}}</td>
+                    <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
+                    <td>
+                      {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) tickets.length)}}
+                    </td>
                   {{/if}}
-                </td>
-              {{/if}}
-              <td>
-                <Orders::TicketPrice
-                  @ticket={{ticket}}
-                  @currency={{this.eventCurrency}}
-                  @amount={{mult (sub ticket.price ticket.discount) (ticket-attendees this.data.attendees ticket.attendees)}} />
-              </td>
+                  <td>
+                    {{tickets.length}}
+                  </td>
+                {{else}}
+                  <td>
+                    <div class="ui small">
+                      {{ticket.name}}
+                    </div>
+                  </td>
+                  <td>
+                    <Orders::TicketPrice
+                      @ticket={{ticket}}
+                      @currency={{this.eventCurrency}}
+                      @amount={{ticket.price}} />
+                  </td>
+                  {{#if this.data.discountCode}}
+                    <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
+                  {{/if}}
+                  <td>
+                    {{tickets.length}}
+                  </td>
+                  {{#if this.event.tax}}
+                    <td>
+                      {{#if this.event.tax.isTaxIncludedInPrice}}
+                        {{t 'The price is inclusive of all taxes.'}}
+                      {{else}}
+                        {{#if ticket.price}}
+                          {{this.event.tax.rate}}%
+                        {{else}}
+                          {{t 'N/A'}}
+                        {{/if}}
+                      {{/if}}
+                    </td>
+                  {{/if}}
+                  <td>
+                    <Orders::TicketPrice
+                      @ticket={{ticket}}
+                      @currency={{this.eventCurrency}}
+                      @amount={{mult (sub ticket.price ticket.discount) tickets.length}} />      
+                  </td>
+                {{/if}}   
+              </tr>
             {{/if}}
-              
-              
-          </tr>
+          {{/each-in}}
         {{/each}}
       </tbody>
       {{#if (gt this.data.amount 0)}}
