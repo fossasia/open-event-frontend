@@ -1,24 +1,6 @@
 <form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}}>
 
-  <div class="ui centered grid">
-    <div class="column">
-      <div class="ui {{if this.data.event.isSessionsSpeakersEnabled 'basic'}} segment">
-        <div class="center aligned text">
-          <div class="field">
-            <div class="ui slider checkbox">
-              <Input @type="checkbox" @checked={{this.data.event.isSessionsSpeakersEnabled}} />
-              <label class="weight-300" style="font-size: large">
-                {{if this.data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
-                {{t 'Sessions & Speakers'}}
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {{#if this.data.event.isSessionsSpeakersEnabled}}
+  {{#if this.data.event}}
     <br>
     <h3 class="ui dividing header">
       <i class="ordered list icon"></i>
@@ -122,7 +104,7 @@
         <Input
           @type="checkbox"
           @checked={{this.hasCallForSpeaker}}
-          @id="add_call_for_speaker" 
+          @id="add_call_for_speaker"
           {{action "resetCFS" on="change"}}
           />
         <label for="add_call_for_speaker">{{t 'Enable Call For Speakers'}}</label>
@@ -211,7 +193,7 @@
         <Forms::Wizard::CustomForms::Table
           @headerText={{t "Collect Speaker Details"}}
           @fields={{this.customForm.speaker}}
-          @updateField={{action (mut this.speakerField)}} 
+          @updateField={{action (mut this.speakerField)}}
           @removeField={{action "removeField"}}
         />
 
@@ -227,7 +209,7 @@
         <Forms::Wizard::CustomForms::Table
           @headerText={{t "Collect Session Details"}}
           @fields={{this.customForm.session}}
-          @updateField={{action (mut this.sessionField)}} 
+          @updateField={{action (mut this.sessionField)}}
           @removeField={{action "removeField"}}
         />
 
@@ -294,4 +276,4 @@
   @onSaved={{action 'saveForm'}}
   @onSaveDraft={{action 'saveDraft'}}
   @move={{action 'move'}} />
-  
+
