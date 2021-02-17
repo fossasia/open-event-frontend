@@ -4,6 +4,22 @@
   </div>
   {{t 'Please use with care.'}} {{t 'Thank You.'}}
 </div>
+<div class="ui {{if this.model.event.isVideoRoomEnabled 'basic'}} segment ">
+  <div class="center aligned text">
+    <div class=" field">
+      <div class="ui slider checkbox" {{action (mut this.isFeatureModalOpen) true}}>
+        <Input
+          @type="checkbox"
+          @checked={{this.model.event.isVideoRoomEnabled}} />
+        <label class="weight-300" style="font-size: large">
+        {{if this.model.event.isVideoRoomEnabled (t 'Turn off') (t 'Turn on')}}
+        {{t 'Video Room'}}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+{{#if this.model.event.isVideoRoomEnabled }}
 <div class="sixteen wide column">
   <h2 class="ui header mb-0">{{t 'Event Video Room'}}</h2>
   <Tables::Default
@@ -41,7 +57,13 @@
     @resizeMode="fluid"
     @fillMode="equal-column" />
 </div>
+{{/if}}
 <Modals::AddRoomModal
   @event={{this.model.event}}
   @isOpen={{this.isRoomModalOpen}}
   @onAdded={{action this.refreshModel}} />
+
+<Modals::VideoRoomEnabledFeature
+  @toggleRoomFeature = {{action 'toggleRoomFeature'}}
+  @isEnabled={{this.model.event.isVideoRoomEnabled}}
+  @isOpen={{this.isFeatureModalOpen}}/>

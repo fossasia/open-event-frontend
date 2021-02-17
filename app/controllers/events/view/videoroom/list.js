@@ -1,8 +1,28 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import { action, computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+
+  @tracked isFeatureModalOpen = false;
+
+  @action
+  openModal() {
+    this.isFeatureModalOpen = false;
+  }
+
+  @action
+  toggleRoomFeature() {
+   if(this.model.event.isVideoRoomEnabled) {
+      this.model.event.isVideoRoomEnabled = false;
+     }
+   else
+     { this.model.event.isVideoRoomEnabled = true;
+      }
+   this.save();
+  }
+
   per_page = 25;
 
   get columns() {
@@ -78,5 +98,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
     }
     this.set('isLoading', false);
+  }
+
+  save() {
+    this.saveEventDataAndRedirectTo(
+      'events.view.videoroom',
+      ['event']
+    );
+    this.isFeatureModalOpen = false;
   }
 }
