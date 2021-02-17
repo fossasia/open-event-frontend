@@ -31,7 +31,14 @@ export default class SessionsController extends Controller {
 
   @computed('model.event.startsAt', 'model.event.endsAt', 'dates', 'timezone')
   get allDates() {
-    if (!this.dates) {
+    if (this.dates) {
+      const uniqueDates = new Set(this.dates
+        .map(date => moment.tz(date.startsAt, this.timezone).toISOString())
+        .sort()
+        .map(date => moment(date).format('YYYY-MM-DD')));
+
+      return [...uniqueDates];
+    } else {
       this.loadDates();
       const arr = [];
       const difference = (this.model.event.endsAt).diff(this.model.event.startsAt, 'days');
@@ -39,13 +46,6 @@ export default class SessionsController extends Controller {
         arr.push(moment.tz(this.model.event.startsAt, this.timezone).add(i, 'days').toISOString());
       }
       return arr;
-    } else {
-      const uniqueDates = new Set(this.dates
-        .map(date => moment.tz(date.startsAt, this.timezone).toISOString())
-        .sort()
-        .map(date => moment(date).format('YYYY-MM-DD')));
-
-      return [...uniqueDates];
     }
   }
 
