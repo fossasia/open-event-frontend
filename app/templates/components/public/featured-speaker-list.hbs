@@ -3,11 +3,4 @@
   {{#each this.speakers as |speaker|}}
     <Public::SpeakerItem @speaker={{speaker}} @timezone={{@timezone}} @class="column" @isFeatured={{true}} />
   {{/each}}
-  <div class="ui container">
-    <div class="ui centered grid">
-      <div class="row">
-        <LinkTo @route="public.speakers" class="ui blue button">{{t 'More Speakers'}}</LinkTo>
-      </div>
-    </div>
-  </div>
 </div>
