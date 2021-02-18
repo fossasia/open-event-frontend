@@ -9,7 +9,7 @@
     <div class="tickets" id="tickets">
       <div class="ui segments ticket-list">
         <div class="ui segment">
-          <h2 class="ui header mt-8">{{t 'Tickets'}}</h2>
+          <h2 class="ui header">{{t 'Tickets'}}</h2>
         </div>
         <div class="ui segment">
           <Public::TicketList
@@ -42,7 +42,7 @@
     <div class="featured-speakers" id="speakers">
       <div class="row">
         <Public::FeaturedSpeakerList
-          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} @event={{this.model.event}} />
+          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
