@@ -25,6 +25,7 @@ export default class extends Controller {
       const newLink = {};
       newLink.name = socialLink.name;
       newLink.link = socialLink.link;
+      newLink.is_custom = socialLink.is_custom;
       newLink.color = buttonColor[socialLink.name];
       return newLink;
     });
