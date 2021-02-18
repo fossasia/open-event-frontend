@@ -53,10 +53,10 @@
                            extraRecords=(get-properties row column.extraValuePaths)
                            props=(hash options=column.options actions=column.actions)
               }}
-                {{cell}}
+                {{sanitize cell}}
               {{/component}}
             {{else}}
-              {{cell}}
+              {{sanitize cell}}
             {{/if}}
           </r.cell>
         </b.row>
