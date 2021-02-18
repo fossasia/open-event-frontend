@@ -1,4 +1,4 @@
-<h2 class="mt-8">{{t 'Featured Speakers'}}</h2>
+<h2 class="mt-16">{{t 'Featured Speakers'}}</h2>
 <div class="speaker-list ui three column grid">
   {{#each this.speakers as |speaker|}}
     <Public::SpeakerItem @speaker={{speaker}} @timezone={{@timezone}} @class="column" @isFeatured={{true}} />

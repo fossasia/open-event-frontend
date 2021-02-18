@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   {{#if @event.isMapShown}}
-    <div class="eight wide column event-map mt-8">
+    <div class="eight wide column event-map mt-16">
       <h2>{{t 'Getting Here'}}</h2>
       {{#if (and @event.latitude @event.longitude)}}
         <LeafletMap @lat={{this.latitude}} @lng={{this.longitude}} @zoom={{15}} as |layers|>
@@ -17,7 +17,7 @@
       {{/if}}
     </div>
   {{/if}}
-  <div class="{{if @event.isMapShown 'eight' 'sixteen'}} wide column address mt-8">
+  <div class="{{if @event.isMapShown 'eight' 'sixteen'}} wide column address mt-16">
     <h2>{{t 'Address'}}</h2>
     <p>{{@event.locationName}}</p>
   </div>
