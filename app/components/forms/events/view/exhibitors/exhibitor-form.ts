@@ -100,12 +100,16 @@ export default class ExhibitorForm extends Component<Args> {
     };
   }
 
-  @action addSocialLink(): void {
+  @action addSocialLink(type: string): void {
     const { exhibitor } = this.args;
     if (!exhibitor.socialLinks) {
       exhibitor.socialLinks = [];
     }
-    exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '' }];
+    if (type === 'customLink') {
+      exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '', is_custom: true }];
+    } else {
+      exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '', is_custom: false }];
+    }
   }
 
   @action removeSocialLink(link: SocialLink): void {
