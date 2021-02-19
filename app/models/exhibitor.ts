@@ -4,6 +4,7 @@ import { attr, belongsTo } from '@ember-data/model';
 export interface SocialLink {
   name: string;
   link: string;
+  is_custom: boolean;
 }
 
 export default class Exhibitor extends ModelBase.extend() {
