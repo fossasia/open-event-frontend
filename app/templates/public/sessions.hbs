@@ -33,7 +33,7 @@
   <Widgets::TimeZonePicker
     class="mb-2 ml-auto mr-2"
     @defaultLocal={{this.model.event.online}}
-    @eventTimezone={{if this.timezone this.timezone this.model.event.timezone}}
+    @eventTimezone={{this.model.event.timezone}}
     @timezone={{this.timezone}} />
 
   <Tables::Utilities::SearchBox
