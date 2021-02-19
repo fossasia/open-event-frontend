@@ -34,8 +34,13 @@ export default class IndexRoute extends Route {
       cache  : true,
       public : true
     });
-    const speakersPromise = event.query('speakers', {
+    const featuredSpeakersPromise = event.query('speakers', {
       filter: [
+        {
+          name : 'is-featured',
+          op   : 'eq',
+          val  : 'true'
+        },
         ...SPEAKERS_FILTER
       ],
       sort         : 'order',
@@ -47,13 +52,13 @@ export default class IndexRoute extends Route {
     const sponsorsPromise = event.query('sponsors', { 'page[size]': 0, cache: true, public: true });
     const taxPromise = event.get('tax', { cache: true, public: true });
 
-    const [tickets, speakers, sponsors, tax] = (await allSettled([ticketsPromise, speakersPromise, sponsorsPromise, taxPromise]))
+    const [tickets, featuredSpeakers, sponsors, tax] = (await allSettled([ticketsPromise, featuredSpeakersPromise, sponsorsPromise, taxPromise]))
       .map(result => result.value);
 
     return {
       event,
       tickets,
-      speakers,
+      featuredSpeakers,
 
       sponsors,
       tax,

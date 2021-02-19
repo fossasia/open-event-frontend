@@ -38,20 +38,11 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if this.featuredSpeakers}}
+  {{#if this.model.featuredSpeakers}}
     <div class="featured-speakers" id="speakers">
       <div class="row">
         <Public::FeaturedSpeakerList
-          @speakers={{this.featuredSpeakers}} @timezone={{this.model.event.timezone}} />
-        {{#if (gt (sub this.model.speakers.length this.featuredSpeakers.length) 0)}}
-          <div class="ui container">
-            <div class="ui centered grid">
-              <div class="row">
-                <LinkTo @route="public.speakers" class="ui blue button">{{t 'More Speakers'}}</LinkTo>
-              </div>
-            </div>
-          </div>
-        {{/if}}
+          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} @event={{this.model.event}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>

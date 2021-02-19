@@ -11,11 +11,6 @@ export default class IndexController extends Controller {
   isContactOrganizerModalOpen = false;
   userExists = false;
 
-  @computed('model.speakers')
-  get featuredSpeakers() {
-    return this.model.speakers.filter(speaker => speaker.isFeatured);
-  }
-
   @computed('model.event.description')
   get htmlSafeDescription() {
     return htmlSafe(this.model.event.description);
