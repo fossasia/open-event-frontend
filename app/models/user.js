@@ -6,7 +6,7 @@ import ModelBase from 'open-event-frontend/models/base';
 import { hasMany } from 'ember-data/relationships';
 import { toString } from 'lodash-es';
 
-export default ModelBase.extend({
+export default class User extends ModelBase.extend({
 
   authManager: service(),
 
@@ -110,4 +110,4 @@ export default ModelBase.extend({
   fullName: computed('firstName', 'lastName', function() {
     return [this.firstName, this.lastName].filter(Boolean).join(' ');
   })
-});
+}) {}

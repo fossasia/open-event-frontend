@@ -41,6 +41,8 @@
                           {{t 'No'}}
                         {{/if}}
                       </span>
+                    {{else}}
+                      <span class="word-break">{{sanitize (get holder field.fieldIdentifier)}}</span>
                     {{/if}}
                     {{#if field.isComplex}}
                       <span class="word-break">{{get holder.complexFieldValues field.fieldIdentifier}}</span>
