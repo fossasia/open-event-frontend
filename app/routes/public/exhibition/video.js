@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 @classic
 export default class VideoRoute extends Route {
   titleToken(model) {
@@ -17,19 +18,16 @@ export default class VideoRoute extends Route {
 
   async model(params) {
     const event = this.modelFor('public');
-    const exhibitor = this.store.findRecord('exhibitor', params.exhibitor_id, {
-      include : 'event',
-      reload  : true
-    });
+    const exhibitor = this.store.findRecord('exhibitor', params.exhibitor_id);
     const stream = this.store.createRecord('video-stream', {
       name  : exhibitor.name,
       event : await event
     });
 
-    return {
+    return hash({
       exhibitor : await exhibitor,
       event     : await event,
       stream    : await stream
-    };
+    });
   }
 }
