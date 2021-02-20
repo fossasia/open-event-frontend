@@ -162,6 +162,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
           {
             id: 'stream_save'
           });
+        for (const moderator of this.data.stream.moderators.toArray()) {
+          await moderator.save();
+        }
         this.router.transitionTo('events.view.videoroom', this.data.event.id);
       } catch (e) {
         console.error('Error while saving session', e);

@@ -12,9 +12,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this._super(...arguments);
     const event = this.modelFor('events.view');
     const { currentUser } = this.authManager;
-    if (!(currentUser.isAnAdmin || currentUser.email === event.owner.get('email') || event.organizers.includes(currentUser)
-      || event.coorganizers.includes(currentUser) || event.trackOrganizers.includes(currentUser)
-      || event.registrars.includes(currentUser) || event.moderators.includes(currentUser))) {
+    if (!event.hasAccess(currentUser)) {
       this.transitionTo('public', event.id);
     }
   }
@@ -28,7 +26,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
-      include        : 'video-stream.video-channel',
+      include        : 'video-stream.video-channel,video-stream.moderators',
       filter         : filterOptions,
       'page[size]'   : params.per_page || 25,
       'page[number]' : params.page || 1
