@@ -85,7 +85,13 @@
 <div class="mt-8">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
-    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">{{group.date}}</h3>
+    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">
+      {{#if (not-eq group.date "Invalid date")}}
+        {{group.date}}
+      {{else}}
+        {{t 'Not yet scheduled'}}
+      {{/if}}
+    </h3>
     <table class="ui very basic table">
       <thead class="full-width">
         <tr>
@@ -98,7 +104,11 @@
           <tr>
             <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
               <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}">
-                {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
+                {{#if session.startsAt}}
+                  {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
+                {{else}}
+                  {{t 'Not yet scheduled'}}
+                {{/if}}
               </h4>
             </td>
             <td style="border-top: none; border-left: 1px solid lightgrey">
