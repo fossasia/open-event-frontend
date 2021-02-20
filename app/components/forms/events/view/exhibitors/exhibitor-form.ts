@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import Exhibitor, { SocialLink } from 'open-event-frontend/models/exhibitor';
-import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
+import { protocolLessValidUrlPattern, validEmail } from 'open-event-frontend/utils/validators';
 import { inject as service } from '@ember/service';
 import { Rules } from 'open-event-frontend/components/forms/form';
 import { action } from '@ember/object';
@@ -35,14 +35,6 @@ export default class ExhibitorForm extends Component<Args> {
             }
           ]
         },
-        status: {
-          rules: [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please choose a status')
-            }
-          ]
-        },
         url: {
           rules: [
             {
@@ -53,6 +45,26 @@ export default class ExhibitorForm extends Component<Args> {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        },
+        contactEmail: {
+          optional : true,
+          rules    : [
+            {
+              type   : 'regExp',
+              value  : validEmail,
+              prompt : this.l10n.t('Please enter a valid email address')
+            }
+          ]
+        },
+        contactLink: {
+          optional : true,
+          rules    : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid contact link')
             }
           ]
         },
@@ -88,12 +100,16 @@ export default class ExhibitorForm extends Component<Args> {
     };
   }
 
-  @action addSocialLink(): void {
+  @action addSocialLink(type: string): void {
     const { exhibitor } = this.args;
     if (!exhibitor.socialLinks) {
       exhibitor.socialLinks = [];
     }
-    exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '' }];
+    if (type === 'customLink') {
+      exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '', is_custom: true }];
+    } else {
+      exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '', is_custom: false }];
+    }
   }
 
   @action removeSocialLink(link: SocialLink): void {

@@ -72,7 +72,7 @@ export default class SessionItem extends Component {
   async favourite() {
     if (!this.authManager.currentUser) {
       try {
-        await this.confirm.prompt(this.l10n.t('Please login to favourite this session'));
+        await this.confirm.prompt(this.l10n.t('Please login to add a session to your personal schedule.'));
         this.router.transitionTo('login');
       } catch (e) {
         if (e) {
