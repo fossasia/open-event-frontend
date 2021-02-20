@@ -104,6 +104,21 @@
                   <i class="circle icon"></i> {{room.name}}
                 </LinkTo>
               {{/each}}
+              <UiDropdown @class="mt-4 fluid selection" >
+                <div class="default">
+                  {{t 'Select Session Type'}}
+                </div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  {{#each this.model.sessionTypes as |sessionType|}}
+                    <UiCheckbox 
+                    @class="item"
+                    @label={{sessionType.name}}
+                    @checked={{if (eq this.activeSession sessionType.name) "active"}}
+                    @onChange={{action this.transition sessionType}}/>
+                  {{/each}}
+                </div>
+              </UiDropdown> 
               </div>
             </div>
           {{/if}}

@@ -17,6 +17,9 @@ export default class SessionsRoute extends Route {
     room: {
       refreshModel: true
     },
+    sessionType: {
+      refreshModel: true
+    },
     search: {
       refreshModel: true
     },
@@ -80,6 +83,18 @@ export default class SessionsRoute extends Route {
           name : 'name',
           op   : 'eq',
           val  : params.track
+        }
+      });
+    }
+
+    if (params.sessionType) {
+      filterOptions.push({
+        name : 'session-type',
+        op   : 'has',
+        val  : {
+          name : 'name',
+          op   : 'eq',
+          val  : params.sessionType
         }
       });
     }
