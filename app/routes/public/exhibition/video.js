@@ -17,7 +17,7 @@ export default class VideoRoute extends Route {
   }
 
   async model(params) {
-    const event = await this.modelFor('public');
+    const event = this.modelFor('public');
     const exhibitor = await this.store.findRecord('exhibitor', params.exhibitor_id);
     const stream = this.store.createRecord('video-stream', {
       name  : exhibitor.name,
