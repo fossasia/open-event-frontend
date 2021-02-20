@@ -1,4 +1,4 @@
-<div class="ui stackable grid container three column">
+<div class="ui grid container {{if this.device.isMobile 'one' 'three'}} column">
   {{#each this.model.speakers as |speaker|}}
     <div class="column speaker-column">
       <Public::SpeakerItem @event={{this.model.event}} @speaker={{speaker}} @timezone={{this.model.event.timezone}} />
