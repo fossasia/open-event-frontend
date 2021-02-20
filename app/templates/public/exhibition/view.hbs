@@ -43,10 +43,12 @@
         </div>
         {{/if}}
         {{#if this.model.enableVideoRoom}}
-            <div class="d-flex mt-4 content-center">
-            <LinkTo @route="public.exhibition.video" @model={{this.model.id}} class="ui blue button">
+            <br/><br/>
+            <div class="d-flex mt-8 flex-column items-center content-center">
+            <h2>{{t 'Meet Us In Our Exhibitor Video Room'}}</h2>
+            <button {{action this.openVideo}} class="ui blue button mt-4">
                {{t 'Join Exhibitor Video'}}
-             </LinkTo>
+             </button>
             </div>
         {{/if}}
         <br/><br/>

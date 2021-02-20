@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 import { buttonColor } from 'open-event-frontend/utils/dictionary/social-media';
 export default class extends Controller {
@@ -34,5 +34,14 @@ export default class extends Controller {
   @computed('model')
   get contactExhibitor() {
     return this.session.isAuthenticated;
+  }
+
+  @action
+  openVideo() {
+    if (this.session.isAuthenticated) {
+      this.router.transitionTo('public.exhibition.video', this.model.id, { queryParams: { side_panel: true } });
+    } else {
+      this.router.transitionTo('public.exhibition.view', this.model.id, { queryParams: { video_dialog: true } });
+    }
   }
 }
