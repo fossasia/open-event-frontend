@@ -4,21 +4,15 @@
 </div>
 <div class="content">
  
-		{{#unless this.isEnabled}}
-                        <p>{{t 'If you switch off the feature, video rooms will no longer be available for ticket holders. Data you entered will no longer be visible for your attendees and speakers. Fees for ticket holders you might have paid already will not be refunded. Do you really want to switch off this video feature?'}}</p>
+		{{#if this.isEnabled}}
+			 <p>{{t 'The video room feature is available free of charge for events with up to 25 tickets. For events with more than 25 ticket registrations a one-time charge of 2 USD (or 2 Euro for Euro events) will be added per ticket. This fee will be charged monthly for any new registrations only. It is non-refundable in case ticket holders cancel their registration or if the feature is switched off at a later time. By activating this feature you agree to pay the one-time fee per ticket. Do you want to activate this feature now and agree to pay the additional ticket fee per ticket if the number of your tickets is above 25 tickets?'}}</p>
+                       
 		{{else}}
-			<p>{{t 'The video room feature is available free of charge for events with up to 25 tickets. For events with more than 25 ticket registrations a one-time charge of 2 USD (or 2 Euro for Euro events) will be added per ticket. This fee will be charged monthly for any new registrations only. It is non-refundable in case ticket holders cancel their registration or if the feature is switched off at a later time. By activating this feature you agree to pay the one-time fee per ticket. Do you want to activate this feature now and agree to pay the additional ticket fee per ticket if the number of your tickets is above 25 tickets?'}}</p>
-		{{/unless}}
+			 <p>{{t 'If you switch off the feature, video rooms will no longer be available for ticket holders. Data you entered will no longer be visible for your attendees and speakers. Fees for ticket holders you might have paid already will not be refunded. Do you really want to switch off this video feature?'}}</p>   
+		{{/if}}
 </div>
 <div class="actions">
-	{{#unless this.isEnabled}}
-			<button type="button" class="ui red button" {{action this.toggleRoomFeature}}>
-				{{t 'Switch off'}}
-			</button>
-			<button type="button" class="ui button" {{action this.closeModal}}>
-				{{t 'Continue using video rooms'}}
-			</button>
-	{{else}}
+	{{#if this.isEnabled}}
 		<button type="button" class="ui green button right labeled icon button" {{action this.toggleRoomFeature}}>
 			{{t 'Yes - activate video rooms now. I agree to pay the fees.'}}
                          <i class="checkmark icon"></i>
@@ -26,5 +20,13 @@
 		<button type="button" class="ui button" {{action this.closeModal}}>
 			{{t 'No, do not activate it.'}}
                 </button>
-	{{/unless}}
+
+	{{else}}
+			<button type="button" class="ui red button" {{action this.toggleRoomFeature}}>
+				{{t 'Switch off'}}
+			</button>
+			<button type="button" class="ui button" {{action this.closeModal}}>
+				{{t 'Continue using video rooms'}}
+			</button>
+	{{/if}}
 </div>
