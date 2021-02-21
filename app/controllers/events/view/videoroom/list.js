@@ -2,25 +2,40 @@ import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import { action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import $ from 'jquery';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
   @tracked isFeatureModalOpen = false;
-
+  @tracked isLoading = false;
+ 
   @action
   openModal() {
-    this.isFeatureModalOpen = false;
+  this.isFeatureModalOpen = true;
   }
 
   @action
-  toggleRoomFeature() {
+  closeModal() {
+   this.isFeatureModalOpen = false
    if(this.model.event.isVideoRoomEnabled) {
-      this.model.event.isVideoRoomEnabled = false;
-     }
-   else
-     { this.model.event.isVideoRoomEnabled = true;
+      this.model.event.isVideoRoomEnabled = false; }
+   else {
+      this.model.event.isVideoRoomEnabled = true; }
+  }
+
+  @action
+  async toggleRoomFeature() {
+   this.isFeatureModalOpen = false;
+   this.isLoading = true;
+   try {
+     await this.model.event.save();
+   }
+   catch (e)
+      { console.error('Error while Enabling TheRoom', e);
       }
-   this.save();
+   finally {
+      this.isLoading = false;
+    }
   }
 
   per_page = 25;
@@ -98,13 +113,5 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
     }
     this.set('isLoading', false);
-  }
-
-  save() {
-    this.saveEventDataAndRedirectTo(
-      'events.view.videoroom',
-      ['event']
-    );
-    this.isFeatureModalOpen = false;
   }
 }

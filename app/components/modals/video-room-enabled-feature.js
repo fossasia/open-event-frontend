@@ -10,4 +10,5 @@ export default class VideoRoomEnabledFeature extends ModalBase {
     this.set('isOpen', false);
   }
 
+
 }

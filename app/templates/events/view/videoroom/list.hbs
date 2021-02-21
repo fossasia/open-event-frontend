@@ -7,10 +7,11 @@
 <div class="ui {{if this.model.event.isVideoRoomEnabled 'basic'}} segment ">
   <div class="center aligned text">
     <div class=" field">
-      <div class="ui slider checkbox" {{action (mut this.isFeatureModalOpen) true}}>
+      <div class="ui slider checkbox">
         <Input
           @type="checkbox"
-          @checked={{this.model.event.isVideoRoomEnabled}} />
+          @checked= {{this.model.event.isVideoRoomEnabled}}
+          {{on 'change' this.openModal}}/>
         <label class="weight-300" style="font-size: large">
         {{if this.model.event.isVideoRoomEnabled (t 'Turn off') (t 'Turn on')}}
         {{t 'Video Room'}}
@@ -19,6 +20,7 @@
     </div>
   </div>
 </div>
+{{#unless this.isFeatureModalOpen}}
 {{#if this.model.event.isVideoRoomEnabled }}
 <div class="sixteen wide column">
   <h2 class="ui header mb-0">{{t 'Event Video Room'}}</h2>
@@ -58,6 +60,8 @@
     @fillMode="equal-column" />
 </div>
 {{/if}}
+{{/unless}}
+
 <Modals::AddRoomModal
   @event={{this.model.event}}
   @isOpen={{this.isRoomModalOpen}}
@@ -65,5 +69,7 @@
 
 <Modals::VideoRoomEnabledFeature
   @toggleRoomFeature = {{action 'toggleRoomFeature'}}
+  @closeModal = {{action 'closeModal'}}
   @isEnabled={{this.model.event.isVideoRoomEnabled}}
-  @isOpen={{this.isFeatureModalOpen}}/>
+  @isOpen={{this.isFeatureModalOpen}}
+  @onClose={{action 'closeModal'}}/>
