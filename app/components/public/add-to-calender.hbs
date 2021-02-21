@@ -14,7 +14,9 @@
         <button {{action 'openAddToCalendarModal' this.calendarUrls}} class="ui item inverted fluid button">{{t 'Add Event'}}</button>
         {{#if (and @event.isSchedulePublished this.showSessions)}}
           <button {{action 'openAddToCalendarModal' this.sessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add Sessions'}}</button>
-          <button {{action 'openAddToCalendarModal' this.mySessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add My Schedule'}}</button>
+          {{#if this.session.isAuthenticated}}
+            <button {{action 'openAddToCalendarModal' this.mySessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add My Schedule'}}</button>
+          {{/if}}
         {{/if}}
       </div>
     </UiDropdown>
