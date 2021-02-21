@@ -105,7 +105,7 @@ export default class AddToCalender extends Component<Args> {
 
   get mySessionGoogleUrl(): string {
     const { event } = this.args;
-    return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + '.ics?include_sessions&my_schedule&user_id=' + this.authManager.currentUser.id;
+    return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + encodeURIComponent('.ics?include_sessions&my_schedule&user_id=') + this.authManager.currentUser.id;
   }
 
   get mySessioniCalUrl(): string {
