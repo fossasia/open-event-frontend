@@ -4,6 +4,7 @@ import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { hasSessions } from 'open-event-frontend/utils/event';
+import AuthManagerService from 'open-event-frontend/services/auth-manager';
 
 
 interface Args {
@@ -14,6 +15,9 @@ interface Args {
 export default class AddToCalender extends Component<Args> {
 
   @service loader: any;
+
+  @service
+  authManager!: AuthManagerService;
 
   @tracked showSessions : any;
 
@@ -99,6 +103,16 @@ export default class AddToCalender extends Component<Args> {
     return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + '.ics?include_sessions';
   }
 
+  get mySessionGoogleUrl(): string {
+    const { event } = this.args;
+    return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + encodeURIComponent('.ics?include_sessions&my_schedule&user_id=') + this.authManager.currentUser.id;
+  }
+
+  get mySessioniCalUrl(): string {
+    const host = this.loader.host();
+    return host + '/v1/events/' + this.args.event.identifier + '.ics?include_sessions&my_schedule&user_id=' + this.authManager.currentUser.id;
+  }
+
   get sessioniCalUrl(): string {
     const host = this.loader.host();
     return host + '/v1/events/' + this.args.event.identifier + '.ics?include_sessions';
@@ -106,5 +120,9 @@ export default class AddToCalender extends Component<Args> {
 
   get sessionCalendarUrls(): { name: string; url: string; }[] {
     return [{ name: 'Google Calendar', url: this.sessionGoogleUrl }, { name: 'iCal', url: this.sessioniCalUrl }];
+  }
+
+  get mySessionCalendarUrls(): { name: string; url: string; }[] {
+    return [{ name: 'Google Calendar', url: this.mySessionGoogleUrl }, { name: 'iCal', url: this.mySessioniCalUrl }];
   }
 }
