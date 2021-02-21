@@ -2,7 +2,6 @@ import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import { action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import $ from 'jquery';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
