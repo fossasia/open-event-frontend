@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
+import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class PublicController extends Controller {
@@ -9,6 +10,8 @@ export default class PublicController extends Controller {
 
   side_panel = null;
   video_dialog = null;
+
+  @tracked showPanel = true;
 
   @computed('model.socialLinks')
   get twitterLink() {
@@ -49,6 +52,11 @@ export default class PublicController extends Controller {
     if (!this.authManager.currentUser) {
       this.transitionToRoute('login');
     }
+  }
+
+  @action
+  showSidePanel() {
+    this.set('showPanel', false);
   }
 
   @action

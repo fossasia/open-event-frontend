@@ -46,7 +46,8 @@
       {{/unless}}
       <div class="three wide column">
         {{#if this.displaySideMenu}}
-          <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} class="ui basic segment m-0 p-0" />
+          <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} @showSidePanel={{action "showSidePanel"}} class="ui basic segment m-0 p-0" />
+          {{this.showPanel}}
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
           {{#if (not-eq this.session.currentRouteName 'public.exhibition.view')}}
             <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
@@ -126,7 +127,7 @@
 </div>
 
 {{#if this.side_panel}}
-  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} />  
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{this.showPanel}} />  
 {{/if}}
 
 {{#if this.video_dialog}}
