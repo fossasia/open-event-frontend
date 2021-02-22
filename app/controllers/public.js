@@ -56,7 +56,7 @@ export default class PublicController extends Controller {
 
   @action
   showSidePanel() {
-    this.set('showPanel', false);
+    this.set('showPanel', true);
   }
 
   @action
