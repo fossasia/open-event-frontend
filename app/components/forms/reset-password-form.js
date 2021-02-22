@@ -11,6 +11,7 @@ export default Component.extend(FormMixin, {
   router         : service(),
   captcha        : false,
   showHcaptcha   : !!ENV.hcaptchaKey,
+  captchaRendered: false,
 
   getValidationRules() {
     return {

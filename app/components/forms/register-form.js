@@ -9,6 +9,7 @@ export default Component.extend(FormMixin, {
   isLoading    : false,
   captcha      : false,
   showHcaptcha : !!ENV.hcaptchaKey,
+  captchaRendered: false,
 
   getValidationRules() {
     return {
