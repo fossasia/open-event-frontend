@@ -1,11 +1,3 @@
-<div class="d-flex items-center wrap mb-4">
-  <h1 class="no margin ui header" id="session-heading">{{t 'Schedule'}}</h1>
-  <div class="ml-4">
-    <LinkTo @route="public.sessions" class="ui button">
-      {{t 'List View'}}
-    </LinkTo>
-  </div>
-</div>
 {{#if this.render}}
   <FullCalendar
     {{did-update this.timezoneUpdated @timezone}}
