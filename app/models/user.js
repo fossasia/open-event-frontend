@@ -15,6 +15,7 @@ export default class User extends ModelBase.extend({
   isVerified             : attr('boolean'),
   isSuperAdmin           : attr('boolean', { readOnly: true }),
   isBlocked              : attr('boolean'),
+  isProfilePublic        : attr('boolean'),
   isAdmin                : attr('boolean'),
   isUserOwner            : attr('boolean'),
   isUserOrganizer        : attr('boolean'),
@@ -26,10 +27,11 @@ export default class User extends ModelBase.extend({
   isMarketer             : attr('boolean'),
   wasRegisteredWithOrder : attr('boolean'),
 
-  firstName : attr('string'),
-  lastName  : attr('string'),
-  details   : attr('string'),
-  contact   : attr('string'),
+  firstName  : attr('string'),
+  lastName   : attr('string'),
+  publicName : attr('string'),
+  details    : attr('string'),
+  contact    : attr('string'),
 
   avatarUrl         : attr('string'),
   iconImageUrl      : attr('string'),
