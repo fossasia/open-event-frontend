@@ -55,7 +55,7 @@ export default class PublicController extends Controller {
   async showSidePanel() {
     await this.set('side_panel', null);
     await this.set('side_panel', true);
-    
+
   }
 
   @action
