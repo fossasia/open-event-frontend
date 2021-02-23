@@ -1,5 +1,12 @@
-<div class="d-flex pt-4" style="align-items: center;">
-  <h1 class="ui header" id="session-heading">{{t 'Schedule'}}</h1>
+<div class="{{if this.device.isMobile 'mt--8'}} d-flex" style="align-items: center;">
+  <div class="d-flex wrap mb-4 items-center">
+    <h1 class="m-0 mr-4 ui header" id="session-heading">{{t 'Schedule'}}</h1>
+    <div>
+      <LinkTo @route="public.schedule" class="ui button">
+        {{t 'Calendar View'}}
+      </LinkTo>
+    </div>
+  </div>
     {{#if this.session.isAuthenticated}}
       <LinkTo
         class="rounded-default link-item ui right floated p-1 ml-auto mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}} mb-4"

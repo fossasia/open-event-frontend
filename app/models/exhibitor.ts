@@ -14,6 +14,7 @@ export default class Exhibitor extends ModelBase.extend() {
   @attr({ defaultValue: 'pending' }) status!: string;
   @attr() logoUrl!: string;
   @attr() bannerUrl!: string;
+  @attr() thumbnailImageUrl!: string;
   @attr() videoUrl!: string;
   @attr() slidesUrl!: string;
   @attr() contactEmail!: string;
@@ -22,6 +23,11 @@ export default class Exhibitor extends ModelBase.extend() {
   @attr() socialLinks!: SocialLink[]
 
   @belongsTo('event') event!: Event;
+
+  get image() {
+    return this.thumbnailImageUrl || this.bannerUrl || '/images/placeholders/Other.jpg';
+  }
+
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
