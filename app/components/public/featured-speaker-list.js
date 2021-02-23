@@ -1,13 +1,12 @@
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { tracked } from '@glimmer/tracking';
-import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
+import { hasSpeakers } from 'open-event-frontend/utils/event';
 
 @classic
 export default class FeaturedSpeakerList extends Component {
 
-    @tracked
-    allSpeakers = null;
+    @tracked allSpeakers = null;
 
     async didInsertElement() {
       super.didInsertElement(...arguments);
@@ -15,7 +14,6 @@ export default class FeaturedSpeakerList extends Component {
     }
 
     async countSpeakers() {
-      this.allSpeakers = (await this.loader.load(`/events/${this.event.id}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).meta.count;
+      this.allSpeakers = this.allSpeakers ?? await hasSpeakers(this.loader, this.event, true);
     }
-
 }

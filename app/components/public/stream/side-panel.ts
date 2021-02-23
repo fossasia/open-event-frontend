@@ -61,7 +61,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   }
 
   async checkSpeakers(): Promise<void> {
-    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.args.event);
+    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.args.event, false);
   }
 
   async checkSessions(): Promise<void> {
