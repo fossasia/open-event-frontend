@@ -1,6 +1,6 @@
 <div class="ui grid">
   <div class="row">
-    <div class="sixteen wide mobile three wide computer column">
+    <div class="sixteen wide mobile three wide computer column unscheduled-navbar">
       {{#if this.model.event.isSchedulePublished}}
         <button class="ui orange {{if this.isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Unpublish Schedule'}}</button>
       {{else}}
@@ -10,8 +10,8 @@
         <Input type="text" placeholder={{t "Search"}} @value={{this.filter}} />
         <i class="search icon"></i>
       </div>
-      <h3 class="ui header">{{t 'Unscheduled Sessions'}}</h3>
-      <div class="ui raised segments" style="overflow: auto; height: 750px">
+      <h3 class="ui header">{{t 'Not Yet Sessions'}}</h3>
+      <div class="ui raised segments" style="overflow: auto; height: 100%">
         {{#each this.unscheduledSessions as |session|}}
           {{#if (or (eq session.state 'accepted') (eq session.state 'confirmed'))}}
             <Scheduler::UnscheduledSession @session={{session}} />
