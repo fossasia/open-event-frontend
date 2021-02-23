@@ -14,6 +14,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @tracked integrationLoading = false;
   @tracked loading = false;
+  @tracked autoplay = false;
 
   @computed('data.stream.rooms.[]')
   get room() {
@@ -143,7 +144,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         return;
       }
     }
-
+    this.data.stream.set('extra', {'autoplay': false});
     this.data.stream.set('videoChannel', channel);
     this.data.stream.set('url', null);
     this.data.stream.set('additionalInformation', null);

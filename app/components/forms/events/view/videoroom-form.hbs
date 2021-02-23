@@ -50,12 +50,24 @@
           @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com.'}} />
       </label>
       {{#if (eq this.data.stream.videoChannel.provider 'youtube')}}
+        <div class="field"> 
+          <UiCheckbox
+            @checked={{this.data.stream.extra.autoplay}}
+            @onChange={{action (mut this.data.stream.extra.autoplay)}}
+            @label={{t "AutoPlay"}} />
+        </div>
         <Widgets::Forms::SocialLinkField
           @fixed={{true}}
           @site="youtube"
           @value={{this.data.stream.url}}
           @onChange={{action (mut this.data.stream.url)}} />
       {{else if (eq this.data.stream.videoChannel.provider 'vimeo')}}
+        <div class="field"> 
+          <UiCheckbox
+            @checked={{this.data.stream.extra.autoplay}}
+            @onChange={{action (mut this.data.stream.extra.autoplay)}}
+            @label={{t "AutoPlay"}} />
+        </div>
         <Widgets::Forms::SocialLinkField
           @fixed={{true}}
           @site="vimeo"
