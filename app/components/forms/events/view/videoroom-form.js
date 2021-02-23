@@ -14,7 +14,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @tracked integrationLoading = false;
   @tracked loading = false;
-  
+
   @computed('data.stream.rooms.[]')
   get room() {
     return this.data.stream.rooms.toArray()[0];
