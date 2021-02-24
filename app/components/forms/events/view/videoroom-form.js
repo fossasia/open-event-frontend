@@ -143,8 +143,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         return;
       }
     }
-    if (this.data.stream?.videoChannel.provider === 'youtube' || this.data.stream?.videoChannel.provider === 'vimeo') {
-      this.data.stream.set('extra', { 'autoplay': false });
+    if (this.data.stream.videoChannel.get('provider') !== 'bbb') {
+      this.data.stream.set('extra', { 'autoplay': true });
     }
     this.data.stream.set('videoChannel', channel);
     this.data.stream.set('url', null);
@@ -177,4 +177,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       }
     });
   }
+
+  async didInsertElement() {
+    if(this.data.stream.extra === null && this.data.stream.videoChannel.get('provider') !== 'bbb') {
+      await this.data.stream.set('extra', {"autoplay": true});
+    }
+  }
+
 }
