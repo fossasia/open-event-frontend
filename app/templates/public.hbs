@@ -114,8 +114,8 @@
                     <UiCheckbox 
                     @class="item"
                     @label={{sessionType.name}}
-                    @checked={{if (eq this.activeSession sessionType.name) "active"}}
-                    @onChange={{action this.transition sessionType}}/>
+                    @checked={{if (includes this.activeSession sessionType.name) "active"}}
+                    @onChange={{action this.transition sessionType.name}}/>
                   {{/each}}
                 </div>
               </UiDropdown> 

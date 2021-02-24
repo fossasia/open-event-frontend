@@ -88,13 +88,16 @@ export default class SessionsRoute extends Route {
     }
 
     if (params.sessionType) {
+      const sessions = params.sessionType.split(',');
       filterOptions.push({
         name : 'session-type',
         op   : 'has',
         val  : {
-          name : 'name',
-          op   : 'eq',
-          val  : params.sessionType
+          or: sessions.map(val => ({
+            name : 'name',
+            op   : 'eq',
+            val
+          }))
         }
       });
     }

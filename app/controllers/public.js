@@ -11,7 +11,7 @@ export default class PublicController extends Controller {
   side_panel = null;
   video_dialog = null;
 
-  @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType : null;
+  @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
 
   @computed('model.socialLinks')
   get twitterLink() {
@@ -55,14 +55,13 @@ export default class PublicController extends Controller {
   }
 
   @action
-  transition(sessionType) {
-    if (this.activeSession === sessionType.name) {
-      this.set('activeSession', null);
-      this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': null  } });
+  transition(name) {
+    if (this.activeSession.includes(name)) {
+      this.activeSession = this.activeSession.filter(session => session !== name);
     } else {
-      this.set('activeSession', sessionType.name);
-      this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': sessionType.name } });
+      this.activeSession.push(name);
     }
+    this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': this.activeSession } });
   }
 
   @action
