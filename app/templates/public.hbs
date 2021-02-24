@@ -33,7 +33,7 @@
           {{/if}}
         {{else}}
           {{#if this.displaySideMenu}}
-          <UiSticky @offset={{10}} @refresh={{true}}>
+          <UiSticky @offset={{10}} {{action "refresh"}}>
             <div class="ui fluid side-menu">
               <Public::SideMenuOuter @event={{this.model}} />
             </div>
