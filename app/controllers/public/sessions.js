@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 import { groupBy } from 'lodash-es';
@@ -16,7 +16,8 @@ export default class SessionsController extends Controller {
   dates = null;
   preserveScrollPosition = true;
   my_schedule=null;
-
+  needToSetDate=Boolean(new URLSearchParams(location.search).get('date')) ? false : true;
+  
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
@@ -36,6 +37,11 @@ export default class SessionsController extends Controller {
         .map(date => moment.tz(date.startsAt, this.timezone).toISOString())
         .sort()
         .map(date => moment(date).format('YYYY-MM-DD')));
+
+      if(moment().isSameOrAfter(this.model.event.startsAt) && moment().isSameOrBefore(this.model.event.endsAt) && [...uniqueDates].includes(moment().format('YYYY-MM-DD')) && this.needToSetDate) {
+        this.set('date', moment(moment.tz(moment(), this.model.event.timezone).toISOString()).format('YYYY-MM-DD'));
+        this.set('needToSetDate', false);
+      }
 
       return [...uniqueDates];
     } else {
