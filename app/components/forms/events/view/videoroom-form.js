@@ -143,7 +143,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         return;
       }
     }
-    if(this.data.stream?.videoChannel.provider === 'youtube' || this.data.stream?.videoChannel.provider === 'vimeo') {
+    if (this.data.stream?.videoChannel.provider === 'youtube' || this.data.stream?.videoChannel.provider === 'vimeo') {
       this.data.stream.set('extra', { 'autoplay': false });
     }
     this.data.stream.set('videoChannel', channel);
