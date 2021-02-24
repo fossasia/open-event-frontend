@@ -4,11 +4,12 @@ import VideoStream from 'open-event-frontend/models/video-stream';
 import { tracked } from '@glimmer/tracking';
 import Event from 'open-event-frontend/models/event';
 import Loader from 'open-event-frontend/services/loader';
-
+import { action } from '@ember/object';
 
 interface Args {
   videoStream: VideoStream;
-  event: Event
+  event: Event;
+  showSidePanel: () => void
 }
 
 export default class JoinVideo extends Component<Args> {
@@ -32,8 +33,10 @@ export default class JoinVideo extends Component<Args> {
     this.canAccess = can_access;
   }
 
+  @action
   openPanel(): void {
     if (this.canAccess) {
+      this.args.showSidePanel?.();
       this.router.transitionTo('public', this.args.event, { queryParams: { side_panel: true } })
     } else {
       this.router.transitionTo('public', this.args.event, { queryParams: { video_dialog: true } })
