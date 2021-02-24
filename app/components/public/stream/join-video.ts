@@ -17,6 +17,7 @@ export default class JoinVideo extends Component<Args> {
   @service loader!: Loader;
   @service confirm: any;
   @service l10n: any;
+  @service session : any;
 
   @tracked hasStreams = false;
   @tracked canAccess = false;
@@ -37,9 +38,9 @@ export default class JoinVideo extends Component<Args> {
   openPanel(): void {
     if (this.canAccess) {
       this.args.showSidePanel?.();
-      this.router.transitionTo('public', this.args.event, { queryParams: { side_panel: true } })
+      this.router.transitionTo(this.session.currentRouteName, this.args.event, { queryParams: { side_panel: true } });
     } else {
-      this.router.transitionTo('public', this.args.event, { queryParams: { video_dialog: true } })
+      this.router.transitionTo(this.session.currentRouteName, this.args.event, { queryParams: { video_dialog: true } });
     }
   }
 }
