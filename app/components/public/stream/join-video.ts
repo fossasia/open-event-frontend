@@ -36,7 +36,7 @@ export default class JoinVideo extends Component<Args> {
   @action
   openPanel(): void {
     if (this.canAccess) {
-      this.args.showSidePanel();
+      this.args.showSidePanel?.();
       this.router.transitionTo('public', this.args.event, { queryParams: { side_panel: true } })
     } else {
       this.router.transitionTo('public', this.args.event, { queryParams: { video_dialog: true } })
