@@ -48,7 +48,8 @@ export default class Session extends ModelBase.extend({
   feedbacks          : hasMany('feedback'),
   event              : belongsTo('event'), // temporary
   creator            : belongsTo('user'),
-  favourite          : belongsTo('user-favourite-session'),
+  favourite          : belongsTo('user-favourite-session', { inverse: null }),
+  favourites         : hasMany('user-favourite-session'),
 
   status: computed('state', 'deletedAt', function() {
     if (this.deletedAt !== null) {
