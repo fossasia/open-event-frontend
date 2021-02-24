@@ -64,6 +64,11 @@ export default class PublicController extends Controller {
     this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': this.activeSession } });
   }
 
+  async showSidePanel() {
+    await this.set('side_panel', null);
+    await this.set('side_panel', true);
+  }
+
   @action
   closeVideoDialog() {
     this.router.transitionTo('public', { queryParams: { video_dialog: null } });
