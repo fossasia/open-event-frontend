@@ -36,7 +36,7 @@ export default class CreateRoute extends Route {
         name  : room?.name || event?.name,
         rooms : [room].filter(Boolean),
         event,
-        extra : { 'autoplay': false }
+        extra : { 'autoplay': true }
       })
     };
   }
