@@ -179,8 +179,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   async didInsertElement() {
-    if(this.data.stream.extra === null && this.data.stream.videoChannel.get('provider') !== 'bbb') {
-      await this.data.stream.set('extra', {"autoplay": true});
+    if (this.data.stream.extra === null && this.data.stream.videoChannel.get('provider') !== 'bbb') {
+      await this.data.stream.set('extra', { 'autoplay': true });
     }
   }
 
