@@ -18,7 +18,7 @@
           <tr>
             <td>
               <div class="ui small">
-                {{ticket.name}}
+                <p class="ui no padding header small" style="font-weight: normal;">{{ticket.name}}</p>
                 {{#if (eq ticket.type 'donation')}}
                   <UiPopup
                     @tagName="i"
@@ -27,10 +27,10 @@
                 {{/if}}
               </div>
               {{#if ticket.isDescriptionVisible}}
-                <small class="ui gray-text tiny">{{ticket.description}}</small>
+                <small class="ui header gray-text small" style="font-weight: normal;">{{ticket.description}}</small>
               {{/if}}
               <div>
-                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
+                <small class="ui header gray-text small" style="font-weight: normal;">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
               </div>
             </td>
             <td></td>
