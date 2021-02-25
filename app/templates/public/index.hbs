@@ -1,7 +1,7 @@
 <div class="event">
   {{#if this.model.event.description}}
     <div class="description" id="info">
-      <p class="ui small header" style="font-weight: normal;">
+      <p class="ui small header fw-n">
         {{sanitize this.model.event.description}}
       </p>
     </div>
@@ -65,7 +65,7 @@
     <h2 class="ui header" id="organizer">
       {{t 'Organized  by'}} {{this.model.event.ownerName}}
     </h2>
-    <p class="ui small header" style="font-weight: normal;">
+    <p class="ui small header fw-n">
       {{sanitize this.model.event.ownerDescription}}
     </p>
     <div class="ui hidden divider"></div>
