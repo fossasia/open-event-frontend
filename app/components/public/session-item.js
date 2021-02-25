@@ -15,6 +15,8 @@ export default class SessionItem extends Component {
   @tracked
   hideImage = this.args.expanded;
 
+  @tracked favSession = this.args.session.belongsTo('favourite').value();
+
   get youtubeLink() {
     return extractYoutubeUrl(this.args.session.videoUrl);
   }
@@ -86,11 +88,13 @@ export default class SessionItem extends Component {
     const favourite = session.belongsTo('favourite').value();
     if (favourite) {
       await favourite.destroyRecord();
+      this.favSession = false;
     } else {
       const fav = await this.store.createRecord('user-favourite-session', {
         session
       });
       await fav.save();
+      this.favSession = true;
     }
   }
 }
