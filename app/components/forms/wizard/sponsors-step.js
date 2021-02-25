@@ -52,12 +52,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
     removeSponsor(sponsor) {
       sponsor.deleteRecord();
-    }
-  },
-
-  didInsertElement() {
-    if (this.data.sponsors && !this.data.sponsors.length) {
-      this.data.sponsors.addObject(this.store.createRecord('sponsor'));
+    },
+    toggleSponsors() {
+      if (this.data.sponsors && !this.data.sponsors.length) {
+        this.data.event.isSponsorsEnabled = true;
+        this.data.sponsors.addObject(this.store.createRecord('sponsor'));
+      } else {
+        this.data.event.isSponsorsEnabled = false;
+        this.data.sponsors.clear();
+      }
     }
   }
 });
