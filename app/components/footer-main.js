@@ -31,7 +31,7 @@ export default class FooterMain extends Component {
   }
 
   @action
-  scrollTop(){
+  scrollTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }

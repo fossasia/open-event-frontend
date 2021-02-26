@@ -4,15 +4,11 @@
 
 <!-- Add the issue number that is fixed by this PR (In the form Fixes #123) -->
 
-Fixes #6595
+Fixes #
 
 #### Short description of what this resolves:
-Button added in the footer component to scroll to the top of the page.
-
 
 #### Changes proposed in this pull request:
--Button added in footer-main.hbs with action scrollTop
--Function scrollTop implemented in footer-main.js
 
 #### Checklist
 
