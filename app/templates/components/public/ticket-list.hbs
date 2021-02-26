@@ -27,10 +27,10 @@
                 {{/if}}
               </div>
               {{#if ticket.isDescriptionVisible}}
-                <small class="ui header gray-text small fw-n">{{ticket.description}}</small>
+                <small class="ui gray-text small">{{ticket.description}}</small>
               {{/if}}
               <div>
-                <small class="ui header gray-text small fw-n">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
+                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
               </div>
             </td>
             <td></td>

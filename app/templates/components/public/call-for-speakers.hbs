@@ -39,9 +39,9 @@
 <div class="ui hidden divider"></div>
 {{#if this.isNewSession}}
   {{#if this.authManager.currentUser}}
-    <p>{{t 'You have not submitted any sessions.'}}</p>
+    <p class="ui header small fw-n">{{t 'You have not submitted any sessions.'}}</p>
   {{else}}
-    <p>{{t 'You need to login to submit and view sessions.'}}</p>
+    <p class="ui header small fw-n">{{t 'You need to login to submit and view sessions.'}}</p>
   {{/if}}
 {{/if}}
 {{#if (and this.data.speakersCall.isOpen this.isNewSpeaker)}}
