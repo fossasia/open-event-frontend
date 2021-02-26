@@ -139,7 +139,7 @@
     <tbody>
       {{#each this.model.tickets as |ticket|}}
         <tr>
-          <td>{{ticket.name}}</td>
+          <td><p class="ui header small fw-n">{{ticket.name}}</p></td>
           <td>{{ticket.quantity}}</td>
           {{#unless this.device.isMobile}}
             <td class="right aligned">{{ticket.orderStatistics.tickets.completed}}</td>

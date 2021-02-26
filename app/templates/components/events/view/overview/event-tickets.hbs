@@ -6,15 +6,15 @@
   <table class="ui very basic compact unstackable table">
     <tbody>
       <tr>
-        <td>{{t 'Total tickets sold'}}</td>
+        <td><p class="ui small header fw-n">{{t 'Total tickets sold'}}</p></td>
         <td>{{tickets}}</td>
       </tr>
       <tr>
-        <td>{{t 'No. of orders'}}</td>
+        <td><p class="ui small header fw-n">{{t 'No. of orders'}}</p></td>
         <td>{{this.orders}}</td>
       </tr>
       <tr>
-        <td>{{t 'Sales (amount)'}}</td>
+        <td><p class="ui small header fw-n">{{t 'Sales (amount)'}}</p></td>
         <td><CurrencyAmount @currency={{this.data.event.paymentCurrency}} @amount={{this.sales}}/></td>
       </tr>
     </tbody>
@@ -32,14 +32,14 @@
     <tbody>
       {{#each this.data.tickets as |ticket|}}
         <tr>
-          <td>{{ticket.name}}</td>
-          <td>{{add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed}}</td>
-          <td>{{ticket.quantity}}</td>
-          <td>{{sub ticket.quantity (add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed)}}</td>
+          <td><p class="ui small header fw-n">{{ticket.name}}</p></td>
+          <td><p class="ui small header fw-n">{{add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed}}</p></td>
+          <td><p class="ui small header fw-n">{{ticket.quantity}}</p></td>
+          <td><p class="ui small header fw-n">{{sub ticket.quantity (add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed)}}</p></td>
         </tr>
       {{else}}
         <div class="ui basic segment">
-          {{t 'There are no tickets for this event'}}
+         <p class="ui small header fw-n">{{t 'There are no tickets for this event'}}</p>
         </div>
       {{/each}}
     </tbody>

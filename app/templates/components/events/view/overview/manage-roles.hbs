@@ -28,8 +28,8 @@
       {{#if (eq this.roleType 'pending')}}
         {{#each this.roleInvites as |roleInvite|}}
           <tr>
-            <td>{{roleInvite.email}}</td>
-            <td>{{t-var roleInvite.role.titleName}}</td>
+            <td><p class="ui small header fw-n">{{roleInvite.email}}</p></td>
+            <td><p class="ui small header fw-n">{{t-var roleInvite.role.titleName}}</p></td>
             {{#if (and @editable  (eq this.roleType 'pending'))}}
               <td>
                 <div class="ui horizontal compact basic buttons">

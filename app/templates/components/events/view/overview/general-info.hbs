@@ -25,7 +25,7 @@
   <table class="ui very basic table compact unstackable">
     <tbody>
       <tr>
-        <td><strong>{{t 'Location'}}</strong></td>
+        <td><p class="ui small header">{{t 'Location'}}</p></td>
         <td>
           {{#if this.data.event.locationName}}
             {{this.data.event.locationName}}
@@ -35,15 +35,15 @@
         </td>
       </tr>
       <tr>
-        <td><strong>{{t 'Start time'}}</strong></td>
+        <td><p class="ui small header">{{t 'Start time'}}</p></td>
         <td>{{general-date this.data.event.startsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
       </tr>
       <tr>
-        <td><strong>{{t 'End time'}}</strong></td>
+        <td><p class="ui small header">{{t 'End time'}}</p></td>
         <td>{{general-date this.data.event.endsAt 'date-time-tz-long' tz=this.data.event.timezone}}</td>
       </tr>
       <tr>
-        <td><strong>{{t 'Links and Social Media'}}</strong></td>
+        <td><p class="ui small header">{{t 'Links and Social Media'}}</p></td>
         <td>
           {{#if this.data.socialLinks}}
             {{#each this.data.socialLinks as |socialLink index|~}}
@@ -55,7 +55,7 @@
         </td>
       </tr>
       <tr>
-        <td><strong>{{t 'No. of Sponsors'}}</strong></td>
+        <td><p class="ui small header">{{t 'No. of Sponsors'}}</p></td>
         <td>{{if this.data.event.isSponsorsEnabled this.data.statistics.sponsors (t 'No Sponsor added yet.')}}</td>
       </tr>
     </tbody>
