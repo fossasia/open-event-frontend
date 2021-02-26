@@ -120,6 +120,7 @@
           {{/each}}
         </div>
       </div>
+      
       <div class="three wide computer four wide tablet column right aligned">
         <UiDropdown @class="floating labeled grey search icon mini button" @selected={{this.currentLocale}} @forceSelection={{false}} @onChange={{action "switchLanguage"}}>
           <i class="world icon"></i>
@@ -130,6 +131,10 @@
             {{/each-in}}
           </div>
         </UiDropdown>
+        
+      </div>
+      <div class="three wide computer four wide tablet column right aligned" style="margin-left:630px">
+        <button style="background-color: grey;color:white" {{action "scrollTop"}} >Scroll back to top</button>
       </div>
     </div>
   </div>

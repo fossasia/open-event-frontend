@@ -26,7 +26,14 @@ export default class FooterMain extends Component {
     this.l10n.switchLanguage(locale);
   }
 
+  @action
+  scrollTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
   async didInsertElement() {
     this.set('pages', sortBy((await this.cache.query('pages', 'page', { public: true })).toArray(), 'index'));
   }
+
 }
