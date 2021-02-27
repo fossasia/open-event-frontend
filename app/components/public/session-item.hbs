@@ -31,9 +31,11 @@
               </button>
             {{/if}}
           {{/if}}
-          <div class="pl-2 self-center" role="button" onclick={{prevent-bubbling (action this.favourite)}}>
-            <i class="ui {{if @session.isFavourite 'check' 'outline'}} circle icon"></i>
-          </div>
+          {{#if @showFavButton}}
+            <div class="pl-2 self-center" role="button" onclick={{prevent-bubbling (action this.favourite)}}>
+              <i class="ui {{if @session.favourite 'check' 'outline'}} circle icon"></i>
+            </div>
+          {{/if}}
           {{#unless @hideSessionLink}}
             <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
           {{/unless}}
