@@ -17,42 +17,39 @@
       </button>
     </div>
     
-    <div class="d-flex mt-2 mb-2 w-full space-between wrap">
+    <div class="ui inverted vertical fluid menu">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
-        <a class="ui labeled icon button mt-4" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+        <a class="ui labeled fluid item" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <i class="calendar icon"></i>
           {{t 'Schedule'}}
         </a>
       {{/if}}
 
       {{#if this.showSpeakers}}
-        <a class="ui labeled icon button mt-4" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon item" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
           <i class="bullhorn icon"></i>
           {{t 'Speakers'}}
         </a>
       {{/if}}
 
       {{#if this.showExhibitors}}
-        <a class="ui labeled icon button mt-4" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon item" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
           <i class="image icon"></i>
           {{t 'Exhibition'}}
         </a>
       {{/if}}
+      <div class="item">
+        {{t 'Video Rooms'}}
+        <div class="menu">
+          {{#each this.streams as |stream|}}
+            <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="item mt-1 ml-2">
+              <p style="float: left;"><i class="video icon"></i>{{stream.name}}</p>
+            </a>
+            <br>
+          {{/each}}
+        </div>
+      </div>
     </div>
-
-    <div class="y-scrollable pb-2 pt-2 pr-01 pl-01">
-      {{#each this.streams as |stream|}}
-        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}}>
-          <div class="ui card d-flex flex-column items-center stream-preview-card p-4 mb-2 {{if (eq @videoStream stream) 'active'}}">
-            <div class="stream-preview-letter" style={{css border-radius='100px !important' background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>
-              {{truncate (uppercase stream.name) 1 false}}
-            </div>
-            <div>{{stream.name}}</div>
-          </div>
-        </a>
-      {{/each}}
-    </div>
-
     {{#if this.loading}}
       <div class="ui active centered inline loader"></div>
     {{/if}}
