@@ -1,4 +1,4 @@
-<div class="ui stackable grid container three column">
+<div class="ui grid container {{if this.device.isMobile 'one' 'three'}} column">
   {{#each this.model.exhibitors as |exhibitor|}}
     <div class="column speaker-column">
       <a href="{{href-to 'public.exhibition.view' exhibitor.id}}">

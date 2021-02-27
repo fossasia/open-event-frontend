@@ -1,0 +1,10 @@
+<div class="ui header">
+  <img
+    class="ui tiny avatar image mr-2 mb-2"
+    src={{or this.model.user.thumbnailImageUrl this.model.user.avatarUrl '/images/placeholders/avatar.png'}} />
+  {{this.model.user.resolvedName}}'s {{t 'schedule'}}
+</div>
+
+{{#each this.model.sessions as |session|}}
+  <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.model.event.timezone}} />
+{{/each}}

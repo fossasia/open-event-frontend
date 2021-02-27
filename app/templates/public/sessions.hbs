@@ -1,5 +1,12 @@
-<div class="d-flex pt-4" style="align-items: center;">
-  <h1 class="ui header" id="session-heading">{{t 'Schedule'}}</h1>
+<div class="{{if this.device.isMobile 'mt--8'}} d-flex" style="align-items: center;">
+  <div class="d-flex wrap mb-4 items-center">
+    <h1 class="m-0 mr-4 ui header" id="session-heading">{{t 'Schedule'}}</h1>
+    <div>
+      <LinkTo @route="public.schedule" class="ui button">
+        {{t 'Calendar View'}}
+      </LinkTo>
+    </div>
+  </div>
     {{#if this.session.isAuthenticated}}
       <LinkTo
         class="rounded-default link-item ui right floated p-1 ml-auto mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}} mb-4"
@@ -42,7 +49,7 @@
     @size="large"
   />
 
-  <UiDropdown class="labeled icon button mb-2">
+  <UiDropdown class="labeled icon button mb-2 mr-2">
     <i class="sort amount down icon"></i>
     <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
     <div class="menu">
@@ -50,6 +57,10 @@
       <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>
     </div>
   </UiDropdown>
+
+  <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at' date=null search=null track=null room=null my_speaker_sessions=null my_schedule=null}} class="ui icon button mb-2">
+    <i><Icons::ClearFilter /></i>
+  </LinkTo>
 </div>
 
 {{!-- To be enabled and developed on later --}}
@@ -78,7 +89,13 @@
 <div class="mt-8">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
-    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">{{group.date}}</h3>
+    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">
+      {{#if (not-eq group.date "Invalid date")}}
+        {{group.date}}
+      {{else}}
+        {{t 'Not yet scheduled'}}
+      {{/if}}
+    </h3>
     <table class="ui very basic table">
       <thead class="full-width">
         <tr>
@@ -91,11 +108,15 @@
           <tr>
             <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
               <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}">
-                {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
+                {{#if session.startsAt}}
+                  {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
+                {{else}}
+                  {{t 'Not yet scheduled'}}
+                {{/if}}
               </h4>
             </td>
             <td style="border-top: none; border-left: 1px solid lightgrey">
-              <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} @sameTab={{this.side_panel}} />
+              <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} @showFavButton={{true}} @sameTab={{this.side_panel}} />
             </td>
           </tr>
         {{/each}}
