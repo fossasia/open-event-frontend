@@ -8,7 +8,8 @@ import { toString } from 'lodash-es';
 
 export default class User extends ModelBase.extend({
 
-  authManager: service(),
+  authManager : service(),
+  l10n        : service(),
 
   email                  : attr('string'),
   password               : attr('string'),
@@ -92,6 +93,7 @@ export default class User extends ModelBase.extend({
   speakers             : hasMany('speaker'),
   discountCodes        : hasMany('discount-code'),
   accessCodes          : hasMany('access-code'),
+  favourites           : hasMany('user-favourite-session'),
   ownerEvents          : hasMany('event', { readOnly: true }),
   organizerEvents      : hasMany('event', { readOnly: true }),
   coorganizerEvents    : hasMany('event', { readOnly: true }),
@@ -111,5 +113,9 @@ export default class User extends ModelBase.extend({
 
   fullName: computed('firstName', 'lastName', function() {
     return [this.firstName, this.lastName].filter(Boolean).join(' ');
+  }),
+
+  resolvedName: computed('publicName', 'fullName', function() {
+    return this.publicName || this.fullName || this.l10n.t('Anonymous User');
   })
 }) {}
