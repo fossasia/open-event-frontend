@@ -14,7 +14,7 @@ export default class PublicSessionsUserView extends Route.extend() {
   }
 
   titleToken(model: Model): string {
-    return model.user.resolvedName + '\'s Schedule'
+    return model.user.get('resolvedName') + '\'s Schedule'
   }
 
   async model(params: { user_id: string }): Promise<Model> {
@@ -27,12 +27,12 @@ export default class PublicSessionsUserView extends Route.extend() {
       'page[size]' : 0
     });
     if (favs.toArray() && !user) {
-      user = favs.toArray()[0].user;
+      user = favs.toArray()[0].user; // eslint-disable-line prefer-destructuring
     }
 
     const sessions = [];
     for (const fav of favs.toArray()) {
-      sessions.push(await fav.session);
+      sessions.push(await fav.session); // eslint-disable-line no-await-in-loop
     }
 
     return {

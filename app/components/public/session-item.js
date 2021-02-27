@@ -84,7 +84,7 @@ export default class SessionItem extends Component {
 
     const { session } = this.args;
     const favourite = session.belongsTo('favourite').value();
-    if (favourite) {
+    if (session.isFavourite) {
       await favourite.destroyRecord();
     } else {
       const fav = await this.store.createRecord('user-favourite-session', {
