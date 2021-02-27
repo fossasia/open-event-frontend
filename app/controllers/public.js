@@ -55,15 +55,21 @@ export default class PublicController extends Controller {
   }
 
   @action
+  removeActiveSession() {
+    this.activeSession = [];
+  }
+
+  @action
   transition(name) {
     if (this.activeSession.includes(name)) {
       this.activeSession = this.activeSession.filter(session => session !== name);
     } else {
-      this.activeSession.push(name);
+      this.activeSession = [...this.activeSession, name];
     }
     this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': this.activeSession } });
   }
 
+  @action
   async showSidePanel() {
     await this.set('side_panel', null);
     await this.set('side_panel', true);
