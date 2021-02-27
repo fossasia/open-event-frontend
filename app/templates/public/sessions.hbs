@@ -37,7 +37,7 @@
     <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'date-short'}}</LinkTo>
   {{/each}}
 
-  <div style="justify-content: flex-end;" class="d-flex wrap ml-auto">
+  <div class="d-flex content-end wrap ml-auto">
 
   <Widgets::TimeZonePicker
     class="mb-2 mr-2"
