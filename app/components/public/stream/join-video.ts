@@ -36,11 +36,15 @@ export default class JoinVideo extends Component<Args> {
 
   @action
   openPanel(): void {
+    let currentRoute  = this.router.currentRoute.name;
+    if(currentRoute === 'public.session.view') {
+      currentRoute = 'public';
+    }
     if (this.canAccess) {
       this.args.showSidePanel?.();
-      this.router.transitionTo(this.session.currentRouteName, this.args.event, { queryParams: { side_panel: true } });
+      this.router.transitionTo(currentRoute, this.args.event, { queryParams: { side_panel: true } });
     } else {
-      this.router.transitionTo(this.session.currentRouteName, this.args.event, { queryParams: { video_dialog: true } });
+      this.router.transitionTo(currentRoute, this.args.event, { queryParams: { video_dialog: true } });
     }
   }
 }
