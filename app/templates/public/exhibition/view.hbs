@@ -53,6 +53,18 @@
         {{#if (or this.model.slidesUrl this.model.videoUrl)}}
             <div class="p-4">
                 <div style={{css display='flex' align-items='center' flex-direction='column'}}>
+                    {{#if this.youtubeLink}}
+                        <h2 class="ui centered header no margin">{{t 'Exhibitor Video'}}</h2><br/>
+                        <iframe title="youtube-session-video" class="video-iframe" width="100%" style="max-width: 1200px; height: 610px;" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
+                    {{else if this.model.videoUrl}}
+                        <a class="mb-2" href={{ this.model.videoUrl }} target="_blank" rel="noopener noreferrer">
+                            <div class="ui labeled icon button">
+                                <i class="video icon"></i>
+                                {{t 'Video'}}
+                            </div>
+                        </a>
+                    {{/if}}
+                    <br/><br/>
                     {{#if (or this.pdfLink this.pptLink)}}
                         <br/>
                         <h2 class="ui centered header no margin">{{t 'Exhibitor Slides'}}</h2><br/>
@@ -62,18 +74,6 @@
                             <div class="ui labeled icon button">
                                 <i class="file powerpoint icon"></i>
                                 {{t 'Slides'}}
-                            </div>
-                        </a>
-                    {{/if}}
-                    <br/><br/>
-                    {{#if this.youtubeLink}}
-                        <h2 class="ui centered header no margin">{{t 'Exhibitor Video'}}</h2><br/>
-                        <iframe title="youtube-session-video" class="video-iframe" width="100%" style="max-width: 1200px; height: 610px;" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
-                    {{else if this.model.videoUrl}}
-                        <a class="mb-2" href={{ this.model.videoUrl }} target="_blank" rel="noopener noreferrer">
-                            <div class="ui labeled icon button">
-                                <i class="video icon"></i>
-                                {{t 'Video'}}
                             </div>
                         </a>
                     {{/if}}
