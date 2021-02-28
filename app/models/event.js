@@ -127,13 +127,14 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   roleInvites     : hasMany('role-invite'),
   videoStream     : belongsTo('video-stream'),
 
-  owner           : belongsTo('user', { inverse: null }),
-  organizers      : hasMany('user', { inverse: null }),
-  coorganizers    : hasMany('user', { inverse: null }),
-  trackOrganizers : hasMany('user', { inverse: null }),
-  registrars      : hasMany('user', { inverse: null }),
-  moderators      : hasMany('user', { inverse: null }),
-  roles           : hasMany('users-events-role'),
+  owner             : belongsTo('user', { inverse: null }),
+  organizers        : hasMany('user', { inverse: null }),
+  coorganizers      : hasMany('user', { inverse: null }),
+  trackOrganizers   : hasMany('user', { inverse: null }),
+  registrars        : hasMany('user', { inverse: null }),
+  moderators        : hasMany('user', { inverse: null }),
+  roles             : hasMany('users-events-role'),
+  sessionFavourites : hasMany('user-favourite-session'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

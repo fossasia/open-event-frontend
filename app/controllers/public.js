@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
+import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class PublicController extends Controller {
@@ -9,6 +10,8 @@ export default class PublicController extends Controller {
 
   side_panel = null;
   video_dialog = null;
+
+  @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
 
   @computed('model.socialLinks')
   get twitterLink() {
@@ -49,6 +52,21 @@ export default class PublicController extends Controller {
     if (!this.authManager.currentUser) {
       this.transitionToRoute('login');
     }
+  }
+
+  @action
+  removeActiveSession() {
+    this.activeSession = [];
+  }
+
+  @action
+  transition(name) {
+    if (this.activeSession.includes(name)) {
+      this.activeSession = this.activeSession.filter(session => session !== name);
+    } else {
+      this.activeSession = [...this.activeSession, name];
+    }
+    this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': this.activeSession } });
   }
 
   @action
