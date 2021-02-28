@@ -145,9 +145,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         return;
       }
     }
-    if (this.data.stream.videoChannel.get('provider') !== 'bbb') {
-      this.data.stream.set('extra', { 'autoplay': true });
-    }
     this.data.stream.set('videoChannel', channel);
     this.data.stream.set('url', null);
     this.data.stream.set('additionalInformation', null);
