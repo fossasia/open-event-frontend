@@ -20,6 +20,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     return this.data.stream.rooms.toArray()[0];
   }
 
+  @computed('data.stream')
+  get roomName() {
+    return this.data.stream.rooms.toArray()[0]?.name || this.data.stream.name;
+  }
+
   @action
   setRoom(room) {
     this.data.stream.rooms = [room];
