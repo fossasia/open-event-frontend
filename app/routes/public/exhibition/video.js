@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
+import { inject as service } from '@ember/service';
 
 export default class VideoRoute extends Route {
+  @service event;
+
   titleToken(model) {
     setTimeout(() => {
       if (window?.document) {
@@ -31,7 +34,20 @@ export default class VideoRoute extends Route {
 
     return hash({
       event,
+      exhibitor,
       stream
     });
+  }
+
+  async afterModel(model) {
+    super.afterModel(...arguments);
+    if (!model.exhibitor.enableVideoRoom) {
+      this.transitionTo('public.exhibition.view', model.event.id, model.exhibitor.id);
+    }
+
+    const { can_access } = await this.event.hasStreams(model.event.id);
+    if (!can_access) {
+      this.transitionTo('public', model.event, { queryParams: { video_dialog: true } });
+    }
   }
 }
