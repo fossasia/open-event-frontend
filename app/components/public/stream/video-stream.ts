@@ -31,9 +31,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   vimeoId = '';
 
-  @tracked
-  autoplay = false;
-
   @action
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
@@ -49,18 +46,12 @@ export default class PublicStreamVideoStream extends Component<Args> {
       if (id) {
         this.youtubeId = id;
       }
-      if (stream.extra?.autoplay) {
-        this.autoplay = true;
-      }
       this.loading = false;
     } else if (provider === 'vimeo') {
       const regExp = /https:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/;
       const match = stream.url.match(regExp);
       if (match) {
         this.vimeoId = match[2];
-      }
-      if (stream.extra?.autoplay) {
-        this.autoplay = true;
       }
       this.loading = false;
     } else if (provider === 'bbb') {

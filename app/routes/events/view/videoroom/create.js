@@ -35,8 +35,7 @@ export default class CreateRoute extends Route {
       stream: await this.store.createRecord('video-stream', {
         name  : room?.name || event?.name,
         rooms : [room].filter(Boolean),
-        event,
-        extra : { 'autoplay': true }
+        event
       })
     };
   }
