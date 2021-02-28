@@ -21,7 +21,7 @@ export default class extends Controller {
 
   @computed('model.socialLinks')
   get links() {
-    return this.model.socialLinks.map(socialLink => {
+    return this.model.socialLinks?.map(socialLink => {
       const newLink = {};
       newLink.name = socialLink.name;
       newLink.link = socialLink.link;

@@ -1,8 +1,5 @@
-<div class="video-root">
-    <div id="jitsi-root" style="width: 100%; height: 100%;">
-        <iframe allow="camera; microphone; display-capture" src="https://meet.jit.si/eventyay/{{ this.model.event.id }}-{{ this.model.exhibitor.id }}" title="jitsi" name="jitsiConferenceFrame0" id="jitsiConferenceFrame0" allowfullscreen="true" style="height: 100%; width: 100%; border: 0px;">
-        </iframe>
-    </div> 
+<div id="video-root" class="video-root">
+  <Public::Stream::JitsiStream @videoStream={{this.model.stream}} />
 </div>
 
-<Public::Stream::SidePanel @event={{this.model.event}} @videoStream={{this.model.stream}} />
+<Public::Stream::SidePanel @event={{this.model.event}} />

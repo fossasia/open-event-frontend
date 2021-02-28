@@ -1,7 +1,6 @@
-import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
-@classic
+
 export default class VideoRoute extends Route {
   titleToken(model) {
     setTimeout(() => {
@@ -19,15 +18,20 @@ export default class VideoRoute extends Route {
   async model(params) {
     const event = this.modelFor('public');
     const exhibitor = await this.store.findRecord('exhibitor', params.exhibitor_id);
+
+    const channel = (await this.store.query('video-channel', { 
+      filter: [{ name: 'provider', op: 'eq', val: 'jitsi' }]
+    })).toArray()[0];
+
     const stream = this.store.createRecord('video-stream', {
-      name  : exhibitor.name,
-      event : await event
+      name: exhibitor.name,
+      url: channel.get('url') + '/eventyay/exhibitor-' + exhibitor.id,
+      videoChannel: channel
     });
 
     return hash({
-      exhibitor,
-      event  : await event,
-      stream : await stream
+      event,
+      stream
     });
   }
 }
