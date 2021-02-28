@@ -112,11 +112,13 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async addYoutube() {
+    this.data.stream.set('extra', { 'autoplay': true });
     this.data.stream.set('url', 'watch?v=');
   }
 
   @action
   async addVimeo() {
+    this.data.stream.set('extra', { 'autoplay': true });
     this.data.stream.set('url', '');
   }
 
@@ -180,4 +182,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       }
     });
   }
+
+  didInsertElement() {
+    if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
+      this.data.stream.set('extra', { 'autoplay': true });
+    }
+  }
+
 }

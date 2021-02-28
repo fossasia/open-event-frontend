@@ -91,6 +91,17 @@
     <Textarea
       @value={{this.data.stream.additionalInformation}} />
   </div>
+  {{#if (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo'))}}
+    <div class="field">
+      <label for="public_name">
+          {{t 'Autoplay'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.autoplay}}
+        @onChange={{action (mut this.data.stream.extra.autoplay)}} />
+    </div>
+  {{/if}}
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>
