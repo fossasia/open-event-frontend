@@ -19,14 +19,14 @@ export default class VideoRoute extends Route {
     const event = this.modelFor('public');
     const exhibitor = await this.store.findRecord('exhibitor', params.exhibitor_id);
 
-    const channel = (await this.store.query('video-channel', { 
+    const channel = (await this.store.query('video-channel', {
       filter: [{ name: 'provider', op: 'eq', val: 'jitsi' }]
     })).toArray()[0];
 
     const stream = this.store.createRecord('video-stream', {
-      name: exhibitor.name,
-      url: channel.get('url') + '/eventyay/exhibitor-' + exhibitor.id,
-      videoChannel: channel
+      name         : exhibitor.name,
+      url          : channel.get('url') + '/eventyay/exhibitor-' + exhibitor.id,
+      videoChannel : channel
     });
 
     return hash({
