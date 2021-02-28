@@ -57,6 +57,7 @@ export default class PublicController extends Controller {
       document.querySelectorAll('.scroll').forEach(node => {
         node.classList.remove('active');
       });
+      this.transitionToRoute(this.session.currentRouteName, { queryParams: { video_dialog: null } });
     }
   }
 
