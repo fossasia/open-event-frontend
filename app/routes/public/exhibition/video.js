@@ -47,7 +47,7 @@ export default class VideoRoute extends Route {
 
     const { can_access } = await this.event.hasStreams(model.event.id);
     if (!can_access) {
-      this.transitionTo('public', model.event, { queryParams: { video_dialog: true } });
+      this.transitionTo('public.exhibition.view', model.event.id, model.exhibitor.id, { queryParams: { video_dialog: true } });
     }
   }
 }
