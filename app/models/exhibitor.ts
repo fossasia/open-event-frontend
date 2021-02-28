@@ -24,7 +24,7 @@ export default class Exhibitor extends ModelBase.extend() {
 
   @belongsTo('event') event!: Event;
 
-  get image() {
+  get image(): string {
     return this.thumbnailImageUrl || this.bannerUrl || '/images/placeholders/Other.jpg';
   }
 
