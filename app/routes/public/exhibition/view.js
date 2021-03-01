@@ -12,6 +12,9 @@ export default class ViewRoute extends Route {
     const event = this.modelFor('public');
     return hash({
       event,
+      exhibitors: event.query('exhibitors', {
+        sort: 'position'
+      }),
       exhibitor: this.store.findRecord('exhibitor', params.exhibitor_id)
     });
   }

@@ -6,6 +6,7 @@ import { inject as service } from '@ember/service';
 
 export default class extends Controller {
   @service event;
+  preserveScrollPosition = true;
 
   @computed('model.exhibitor.videoUrl')
   get youtubeLink() {
@@ -38,6 +39,19 @@ export default class extends Controller {
   @computed('model.exhibitor')
   get contactExhibitor() {
     return this.session.isAuthenticated;
+  }
+
+  @action
+  changeExhibitor(flag) {
+    let nextPos = this.model.exhibitor.position + flag;
+    if (nextPos < 0) {
+      nextPos = this.model.exhibitors.toArray().length - 1;
+    }
+    if (nextPos === (this.model.exhibitors.toArray().length)) {
+      nextPos = 0;
+    }
+    const nextExhibitor = this.model.exhibitors.toArray().filter(exh => exh.position === nextPos);
+    this.router.transitionTo('public.exhibition.view', nextExhibitor[0].id);
   }
 
   @action

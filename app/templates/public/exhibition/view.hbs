@@ -1,4 +1,14 @@
 <div>
+    <div class="d-flex space-between wrap mb-8">
+        <button class="ui primary basic button mr-2" {{action "changeExhibitor" -1}}>
+            <i class="left chevron icon"></i>
+            {{t 'Prev'}}
+        </button>
+        <button class="ui primary basic button ml-2" {{action "changeExhibitor" 1}}>
+            {{t 'Next'}}
+            <i class="right chevron icon"></i>
+        </button>
+    </div>
     <div class="ui">
         <div class="featured-speaker">
             <img alt="exhibitor" class="ui rounded image" src="{{if this.model.exhibitor.bannerUrl this.model.exhibitor.bannerUrl '/images/placeholders/Other.jpg'}}">
