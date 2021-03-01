@@ -17,6 +17,19 @@ export default class SessionsController extends Controller {
   preserveScrollPosition = true;
   my_schedule=null;
 
+  @computed('sort')
+  get sortTitle() {
+    switch (this.sort) {
+      case 'title':
+        return 'By Title';
+      case null:
+      case 'starts-at':
+        return 'By Time';
+      default:
+        return 'By Popularity';
+    }
+  }
+
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
