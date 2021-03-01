@@ -41,9 +41,17 @@ Router.map(function() {
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions-index', { path: '/sessions' });
-    this.route('sessions', { path: '/schedule' });
+    this.route('sessions', { path: '/schedule' }, function() {
+      this.route('user', function() {
+        this.route('view', { path: '/:user_id' });
+      });
+    });
     this.route('session', function() {
-      this.route('view', { path: '/:session_id' });
+      this.route('view', { path: '/:session_id' }, function() {
+        this.route('user', function() {
+          this.route('view', { path: '/:user_id' });
+        });
+      });
     });
     this.route('stream', { path: '/video/:video_name' }, function() {
       this.route('view', { path: '/:stream_id' });
@@ -68,6 +76,7 @@ Router.map(function() {
     this.route('speakers');
     this.route('exhibition', function() {
       this.route('view', { path: '/:exhibitor_id' });
+      this.route('video', { path: '/:exhibitor_id/video' });
     });
   });
   this.route('role-invites');

@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import Event from 'open-event-frontend/models/event';
 import Loader from 'open-event-frontend/services/loader';
 import { action } from '@ember/object';
+import EventService from 'open-event-frontend/services/event';
 
 interface Args {
   videoStream: VideoStream;
@@ -18,6 +19,7 @@ export default class JoinVideo extends Component<Args> {
   @service confirm: any;
   @service l10n: any;
   @service session : any;
+  @service declare event: EventService;
 
   @tracked hasStreams = false;
   @tracked canAccess = false;
@@ -28,7 +30,7 @@ export default class JoinVideo extends Component<Args> {
   }
 
   async setup(): Promise<void> {
-    const streamStatus = await this.loader.load(`/events/${this.args.event.id}/has-streams`);
+    const streamStatus = await this.event.hasStreams(this.args.event.id);
     const { exists, can_access } = streamStatus;
     this.hasStreams = exists;
     this.canAccess = can_access;
