@@ -2,12 +2,8 @@ import Event from 'open-event-frontend/models/event';
 import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
 import Loader from 'open-event-frontend/services/loader';
 
-export async function hasSpeakers(loader: Loader, event: Event, needCount: boolean): Promise<number> {
-  if (needCount) {
-    return (await loader.load(`/events/${event.id}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).meta.count;
-  } else {
-    return (await loader.load(`/events/${event.id}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).data.length;
-  }
+export async function hasSpeakers(loader: Loader, event: Event): Promise<number> {
+  return (await loader.load(`/events/${event.id}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`)).meta.count;
 }
 
 export async function hasExhibitors(loader: Loader, event: Event): Promise<number> {

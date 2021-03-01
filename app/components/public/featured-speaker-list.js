@@ -14,6 +14,6 @@ export default class FeaturedSpeakerList extends Component {
     }
 
     async countSpeakers() {
-      this.allSpeakers = this.allSpeakers ?? await hasSpeakers(this.loader, this.event, true);
+      this.allSpeakers = this.allSpeakers ?? await hasSpeakers(this.loader, this.event);
     }
 }

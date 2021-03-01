@@ -30,7 +30,7 @@ export default class SideMenu extends Component {
   }
 
   async checkSpeakers() {
-    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.event, false);
+    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.event);
   }
 
   async checkExhibitors() {
