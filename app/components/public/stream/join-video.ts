@@ -39,7 +39,7 @@ export default class JoinVideo extends Component<Args> {
   @action
   openPanel(): void {
     let currentRoute  = this.router.currentRoute.name;
-    if (currentRoute === 'public.session.view' || currentRoute === 'public.exhibition.view') {
+    if (currentRoute === 'public.session.view.index' || currentRoute === 'public.exhibition.view') {
       currentRoute = 'public';
     }
     if (this.canAccess) {
