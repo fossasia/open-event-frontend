@@ -42,36 +42,7 @@ export default class SpeakersRoute extends Route {
 
   async model(params) {
     const eventDetails = this.modelFor('public');
-    const filterOptions = [
-      {
-        and: [
-          {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              and: [
-                {
-                  name : 'deleted-at',
-                  op   : 'eq',
-                  val  : null
-                },
-                {
-                  or: [{
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'accepted'
-                  }, {
-                    name : 'state',
-                    op   : 'eq',
-                    val  : 'confirmed'
-                  }]
-                }
-              ]
-            }
-          }
-        ]
-      }
-    ];
+    const filterOptions = [...SPEAKERS_FILTER];
 
     if (params.search) {
       filterOptions.push({
