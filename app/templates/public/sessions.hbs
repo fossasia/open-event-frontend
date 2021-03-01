@@ -52,10 +52,19 @@
 
     <UiDropdown class="labeled icon button mb-2 mr-2">
       <i class="sort amount down icon"></i>
-      <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
+      <span class="default text">
+        {{#if (eq this.sort 'title')}}
+          {{t 'By Title'}} 
+        {{else if (eq this.sort 'favourite-count')}}
+          {{t 'By Popularity'}}
+        {{else}} 
+          {{t 'By Time'}}
+        {{/if}}
+      </span>
       <div class="menu">
         <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='title'}} class="item">{{t 'By Title'}}</LinkTo>
         <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>
+        <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='favourite-count'}} class="item">{{t 'By Popularity'}}</LinkTo>
       </div>
     </UiDropdown>
 

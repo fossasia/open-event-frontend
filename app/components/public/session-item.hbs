@@ -36,6 +36,11 @@
               <i class="ui {{if @session.favourite 'check' 'outline'}} circle icon"></i>
             </div>
           {{/if}}
+          {{#if @session.favouriteCount}}
+            <span class="ui horizontal label smaller text mt-2 mb-2 mr-4">{{@session.favouriteCount}}</span>
+          {{else}}
+            <span class="ui horizontal label smaller text mt-2 mb-2 mr-4">0</span>
+          {{/if}}
           {{#unless @hideSessionLink}}
             <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
           {{/unless}}
