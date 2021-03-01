@@ -13,7 +13,9 @@
       @defaultLocal={{this.model.event.online}}
       @eventTimezone={{this.model.event.timezone}}
       @timezone={{this.timezone}} />
+    <button class="ui icon button mb-2 ml-2" {{action 'fullScreen'}}><i class="expand large icon"></i></button>
   </div>
+  <div id="fullscreen">
   <Schedule
     @timezone={{this.timezone}}
     @event={{this.model.event}}
@@ -21,6 +23,7 @@
     @rooms={{this.model.microlocations}} 
     @height="auto"
     @isPublic={{true}}/>
+  </div>
 {{else}}
   <div class="ui disabled header">{{t 'Schedule for the event is currently unavailable'}}</div>
 {{/if}}
