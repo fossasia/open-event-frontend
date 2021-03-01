@@ -17,33 +17,33 @@
       </button>
     </div>
     
-    <div class="ui inverted vertical fluid menu">
+    <div class="ui vertical fluid menu" style="background-color: #555;">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
         <a class="ui labeled fluid item" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
-          <i class="calendar icon"></i>
-          {{t 'Schedule'}}
+          <span style="color: white;"><i class="calendar icon"></i>
+          {{t 'Schedule'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showSpeakers}}
         <a class="ui labeled icon item" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
-          <i class="bullhorn icon"></i>
-          {{t 'Speakers'}}
+          <span style="color: white;"><i class="bullhorn icon"></i>
+          {{t 'Speakers'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showExhibitors}}
         <a class="ui labeled icon item" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
-          <i class="image icon"></i>
-          {{t 'Exhibition'}}
+          <span style="color: white;"><i class="image icon"></i>
+          {{t 'Exhibition'}}</span>
         </a>
       {{/if}}
       <div class="item">
-        {{t 'Video Rooms'}}
+        <span style="color: white;font-size: 17px">{{t 'Video Rooms'}}</span>
         <div class="menu">
           {{#each this.streams as |stream|}}
             <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="item mt-1 ml-2">
-              <p style="float: left;"><i class="video icon"></i>{{stream.name}}</p>
+              <p style="float: left; color: white;font-size: 13px;"><i class="video icon"></i>{{stream.name}}</p>
             </a>
             <br>
           {{/each}}
