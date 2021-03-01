@@ -32,6 +32,23 @@ footer {
   min-height: 400px !important;
 }
 
+.mybtn {
+  position: fixed;
+  bottom: 100px;
+  right: 70px;
+  height: 30px;
+  width: 50px;
+  z-index: 99;
+  font-size: 25px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 70;
+}
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
   .main-container {
     margin: $page-top-margin 0;
