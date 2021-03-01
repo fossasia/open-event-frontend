@@ -5,10 +5,10 @@ import { action } from '@ember/object';
 export default class ScheduleController extends Controller {
 
     @action
-    fullScreen() {
-        let calendar = document.getElementById("fullscreen");
-        if (!document.fullscreenElement) {
-            calendar.requestFullscreen();
-        }
+  fullScreen() {
+    const calendar = document.getElementById('fullscreen');
+    if (!document.fullscreenElement) {
+      calendar.requestFullscreen();
     }
+  }
 }
