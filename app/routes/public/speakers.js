@@ -46,9 +46,23 @@ export default class SpeakersRoute extends Route {
 
     if (params.search) {
       filterOptions.push({
-        name : 'name',
-        op   : 'ilike',
-        val  : `%${params.search}%`
+        or: [
+          {
+            name : 'name',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'organisation',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'position',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          }
+        ]
       });
     }
     return {
