@@ -124,7 +124,7 @@ export default class Schedule extends Component<ScheduleArgs> {
    * @param calendar Calendar JQuery element
    */
   adjustMinTime(view: FullCalendarView, calendar: JQuery<HTMLElement>): void {
-    if (isTesting || !(view.type === 'agendaDay' || view.type === 'timelineDay' || view.type === 'timelineThreeDays')) {return}
+    if (isTesting || !(view.type === 'timelineDay' || view.type === 'timelineThreeDays')) {return}
     let min_time = '24:00:00';
     if (this.args.isPublic === true) {
       this.args.sessions.map(x => {
