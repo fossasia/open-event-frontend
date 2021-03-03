@@ -18,12 +18,11 @@ export default class ViewRoute extends Route {
   }
 
   async afterModel(model) {
-    const event = this.modelFor('public');
     super.afterModel(...arguments);
     if (model.exhibitor.status !== 'accepted') {
       this.transitionTo('not-found');
     }
-    const exhibitors = await event.query('exhibitors', {
+    const exhibitors = await model.event.query('exhibitors', {
       sort         : 'position',
       'page[size]' : 0
     })
