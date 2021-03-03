@@ -3,6 +3,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 @classic
 export default class ScheduleController extends Controller {
+  preserveScrollPosition = true;
 
   @action
   fullScreen() {
