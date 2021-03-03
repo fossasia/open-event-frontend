@@ -124,7 +124,7 @@ export default class Schedule extends Component<ScheduleArgs> {
    * @param calendar Calendar JQuery element
    */
   adjustMinTime(view: FullCalendarView, calendar: JQuery<HTMLElement>): void {
-    if (isTesting || !(view.type === 'agendaDay' || view.type === 'timelineDay')) {return}
+    if (isTesting || !(view.type === 'agendaDay' || view.type === 'timelineDay' || view.type === 'timelineThreeDays')) {return}
     let min_time = '24:00:00';
     if (this.args.isPublic === true) {
       this.args.sessions.map(x => {
@@ -138,12 +138,6 @@ export default class Schedule extends Component<ScheduleArgs> {
     }
     let minTime = min_time;
     let maxTime = '24:00:00';
-    if (view.start.isSame(this.args.event.startsAt, 'day')) {
-      ({ minTime } = this);
-    }
-    if (view.start.isSame(this.args.event.endsAt, 'day')) {
-      ({ maxTime } = this);
-    }
 
     // To prevent infinite render loop
     if (minTime !== view.options.minTime) {
