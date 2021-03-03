@@ -9,7 +9,7 @@ import { hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
 @classic
 @tagName('')
 export default class SideMenu extends Component {
-  @service("event") eventService;
+  @service('event') eventService;
 
   @tracked
   showSpeakers = null;
