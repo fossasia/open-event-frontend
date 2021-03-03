@@ -33,9 +33,4 @@ export default class ViewRoute extends Route {
       exhibitors
     };
   }
-
-  setupController(controller, model) {
-    super.setupController(...arguments);
-    set(controller, 'model.exhibitors', model.exhibitors.toArray());
-  }
 }
