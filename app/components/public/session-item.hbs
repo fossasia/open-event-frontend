@@ -117,7 +117,7 @@
           {{/if}}
           
           {{#if this.youtubeLink}}
-            <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
+            <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}?enablejsapi=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
           {{else if @session.videoUrl}}
             <a class="mb-2" href={{ @session.videoUrl }} target="_blank" rel="noopener noreferrer">
               <button class="ui labeled icon button">
@@ -162,6 +162,9 @@
         {{/if}}
         {{#if speaker.github}}
           <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>{{t 'GitHub'}}</a>
+        {{/if}}
+        {{#if speaker.website}}
+          <a href={{speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i>{{t 'Website'}}</a>
         {{/if}}
       </div>
     {{/each}}
