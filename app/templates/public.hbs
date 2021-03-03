@@ -33,8 +33,8 @@
           {{/if}}
         {{else}}
           {{#if this.displaySideMenu}}
-          <UiSticky class="side-menu" @offset={{10}} @context={{'#event-detail'}} @observeChanges={{true}}>
-            <div class="ui fluid">
+          <UiSticky @offset={{10}} @context={{'#public-event-content'}} @observeChanges={{true}}>
+            <div class="ui fluid side-menu">
               <Public::SideMenuOuter @event={{this.model}} />
             </div>
           </UiSticky> 
@@ -42,7 +42,7 @@
         {{/if}}
       </div>
       {{#unless this.device.isMobile}}
-        <div class="ten wide column" id="event-detail">
+        <div class="ten wide column">
           {{outlet}}
         </div>
       {{/unless}}
