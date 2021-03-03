@@ -136,8 +136,8 @@ export default class Schedule extends Component<ScheduleArgs> {
     } else {
       min_time = '0:00:00';
     }
-    let minTime = min_time;
-    let maxTime = '24:00:00';
+    const minTime = min_time;
+    const maxTime = '24:00:00';
 
     // To prevent infinite render loop
     if (minTime !== view.options.minTime) {
