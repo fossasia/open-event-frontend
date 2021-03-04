@@ -16,8 +16,7 @@
         <i class="angle left icon pr-2"></i>
       </button>
     </div>
-    
-    <div class="ui vertical fluid menu borderless" style="background-color: #555;border:none;box-shadow: none;">
+    <div class="ui vertical fluid menu borderless ml--4 stream-side-menu">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
         <a class="ui labeled fluid item" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <span style="color: white;"><i class="calendar icon"></i>
@@ -49,6 +48,13 @@
           {{/each}}
         </div>
       </div>
+    </div>
+    <div class="ui vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
+      {{#each this.streams as |stream|}}
+        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="item">
+          <p style="color: white;"> <span class="stream-preview-letter" style={{css border-radius='50% !important' background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>{{stream.name}}</p>
+        </a>
+      {{/each}}
     </div>
     {{#if this.loading}}
       <div class="ui active centered inline loader"></div>
