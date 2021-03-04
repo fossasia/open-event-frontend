@@ -28,7 +28,7 @@ export default class ViewSessionRoute extends Route.extend(AuthenticatedRouteMix
     super.afterModel(...arguments);
     const user = this.authManager.currentUser;
     const speakersEmail = model.session.speakers.map(speaker => speaker.email?.toLowerCase());
-    if (!(model.event.hasAccess(user) || speakersEmail.includes(user.email.toLowerCase()))) {
+    if (!(model.event.hasAccess(user) || speakersEmail.includes(user.email?.toLowerCase()))) {
       this.transitionTo('not-found');
     }
   }
