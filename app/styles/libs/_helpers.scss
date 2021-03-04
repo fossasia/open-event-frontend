@@ -140,11 +140,15 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
 }
 
 .social-link-button {
-  width: 48px;
-  height: 48px;
+  width: 48.66px;
+  height: 48.66px;
   max-width: 50px;
   max-height: 50px;
-  margin:0 !important;
+  margin-right: 2px !important;
+
+  &:nth-child(5n) {
+    margin-right: 0 !important;
+  }
 }
 
 .w-full {
@@ -162,4 +166,3 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
 .w-90 {
   min-width: 90px !important;
 }
-
