@@ -30,7 +30,7 @@
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
               <div>
-                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
+                <small class="ui gray-text small">{{t 'Sale ends on'}} {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
               </div>
             </td>
             <td></td>
