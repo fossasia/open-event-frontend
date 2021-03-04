@@ -5,8 +5,9 @@ import { action } from '@ember/object';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
 import { slugify, stringHashCode } from 'open-event-frontend/utils/text';
-import { hasSessions, hasSpeakers, hasExhibitors } from 'open-event-frontend/utils/event';
+import { hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
 import Loader from 'open-event-frontend/services/loader';
+import EventService from 'open-event-frontend/services/event';
 
 interface Args {
   videoStream: VideoStream,
@@ -16,6 +17,7 @@ interface Args {
 
 export default class PublicStreamSidePanel extends Component<Args> {
   @service loader!: Loader;
+  @service declare event: EventService;
 
   @tracked shown = false;
   @tracked loading = true;
@@ -61,7 +63,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   }
 
   async checkSpeakers(): Promise<void> {
-    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.args.event);
+    this.showSpeakers = this.showSpeakers ?? await this.event.hasSpeakers(this.args.event.id);
   }
 
   async checkSessions(): Promise<void> {

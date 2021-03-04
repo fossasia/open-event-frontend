@@ -6,10 +6,10 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if (or this.model.event.ticketUrl this.model.tickets)}}
-    <div class="tickets" id="tickets">
+    <div class="tickets mt-16" id="tickets">
       <div class="ui segments ticket-list">
         <div class="ui segment">
-          <h3 class="ui header">{{t 'Tickets'}}</h3>
+          <h2 class="ui header">{{t 'Tickets'}}</h2>
         </div>
         <div class="ui segment">
           <Public::TicketList
@@ -42,13 +42,13 @@
     <div class="featured-speakers" id="speakers">
       <div class="row">
         <Public::FeaturedSpeakerList
-          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} />
+          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} @event={{this.model.event}} />
       </div>
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if (and this.model.event.isSponsorsEnabled this.model.sponsors)}}
-    <h2 class="ui header" id="sponsor">
+    <h2 class="ui header mt-16" id="sponsor">
       {{t 'Supported By'}}
     </h2>
     <div class="sponsors">
@@ -60,7 +60,7 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if this.model.event.hasOwnerInfo}}
-    <h2 class="ui header" id="organizer">
+    <h2 class="ui header mt-16" id="organizer">
       {{t 'Organized  by'}} {{this.model.event.ownerName}}
     </h2>
     {{sanitize this.model.event.ownerDescription}}
@@ -73,7 +73,7 @@
         @mapConfig={{this.model.mapConfig}} />
     {{/if}}
     {{#if this.model.event.online}}
-      <h2>{{t 'Online Event'}}</h2>
+      <h2 class="mt-16">{{t 'Online Event'}}</h2>
       <Public::Stream::StreamInfo
         @showButton={{true}}
         @event={{this.model.event}}
@@ -90,7 +90,7 @@
       {{/if}}
     {{/if}}
     {{#if (not (or this.model.event.online this.model.event.locationName))}}
-      <h2>{{t 'Location to be announced'}}</h2>
+      <h2 class="mt-16">{{t 'Location to be announced'}}</h2>
     {{/if}}
   </div>
   <div class="ui hidden divider"></div>
