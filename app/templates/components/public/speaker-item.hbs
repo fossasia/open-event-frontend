@@ -42,7 +42,7 @@
           {{/if}}
         </div>
       {{/if}}
-      {{#if this.speaker.event.isSchedulePublished}}
+      {{#if (or this.speaker.event.isSchedulePublished this.event.isSchedulePublished)}}
         <div class="ui divider"></div>
         <h3 class="ui header">
           {{t 'Sessions'}}
