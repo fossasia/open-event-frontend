@@ -5,7 +5,6 @@
       {{#unless this.device.isMobile}}
         <tr>
           <th>{{t 'Type'}}</th>
-          <th class="three wide"></th>
           <th class="ui four wide single line">{{t 'Price'}}</th>
           <th class="one wide">{{t 'Quantity'}}</th>
           <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
@@ -33,7 +32,6 @@
                 <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
               </div>
             </td>
-            <td></td>
             <td id="{{ticket.id}}_price">
               {{#if (eq ticket.type 'donation') }}
                 <div class="field m-0">
