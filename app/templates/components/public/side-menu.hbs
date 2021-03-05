@@ -26,7 +26,7 @@
   </LinkTo>
 {{/if}}
 {{#if this.showSpeakers}}
-  <LinkTo @route="public.speakers" class="item">
+  <LinkTo @route="public.speakers" @query={{hash search=null}} class="item">
     <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} bullhorn icon"></i>{{t 'Speakers'}}</div>
   </LinkTo>
 {{/if}}
