@@ -7,6 +7,7 @@ import VideoChannel from './video-channel';
 
 export interface Extra {
   autoplay: boolean;
+  loop: boolean;
 }
 
 

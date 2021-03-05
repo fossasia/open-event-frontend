@@ -43,6 +43,7 @@ export default class Session extends ModelBase.extend({
   deletedAt          : attr('string'),
   submittedAt        : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
   lastModifiedAt     : attr('string'),
+  favouriteCount     : attr('number'),
   complexFieldValues : attr(),
   sessionType        : belongsTo('session-type'),
   microlocation      : belongsTo('microlocation'),
