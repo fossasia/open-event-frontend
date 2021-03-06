@@ -125,7 +125,7 @@ export default class ExhibitorForm extends Component<Args> {
   @action async save(): Promise<void> {
     try {
       this.loading = true;
-      //this.args.exhibitor.sessions = this.args.sessions;
+      // this.args.exhibitor.sessions = this.args.sessions;
       await this.args.exhibitor.save();
       this.router.transitionTo('events.view.exhibitors', this.args.event.id);
       this.notify.success(this.l10n.t('Your exhibitor has been saved'),
