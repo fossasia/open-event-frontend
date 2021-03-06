@@ -10,8 +10,12 @@ export default class ExhibitorsCreateRoute extends Route {
     const event = this.modelFor('events.view');
     return {
       event,
+      sessions: await event.query('sessions', {
+        'page[size]': 0
+      }),
       exhibitor: await this.store.createRecord('exhibitor', {
-        event
+        event,
+        sessions: []
       })
     };
   }

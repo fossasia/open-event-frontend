@@ -14,6 +14,11 @@
                 {{sanitize this.model.exhibitor.description}}
             </p>
         {{/if}}
+        <br/>
+        <h2>{{t 'Exhibitor Sessions'}}</h2>
+        {{#each this.model.exhibitor.sessions as |session|}}
+            <a href="#" class="ui blue basic compact button">{{session.title}}</a>
+        {{/each}}
         <br/><br/>
         <div class="social-icons d-flex" style="justify-content: center;">
             {{#each this.links as |socialLink|}}

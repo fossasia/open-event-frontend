@@ -9,7 +9,12 @@ export default class ExhibitorsEditRoute extends Route {
     const event = this.modelFor('events.view');
     return {
       event,
-      exhibitor: await this.store.findRecord('exhibitor', params.exhibitor_id)
+      sessions: await event.query('sessions', {
+        'page[size]': 0
+      }),
+      exhibitor: await this.store.findRecord('exhibitor', params.exhibitor_id, {
+        include: 'sessions'
+      })
     };
   }
 }
