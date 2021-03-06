@@ -21,12 +21,12 @@
 {{/if}}
 
 {{#if (and this.event.isSchedulePublished this.showSessions)}}
-  <LinkTo @route="public.sessions" class="item">
+  <LinkTo @route="public.sessions" @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} class="item">
     <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} book icon"></i>{{t 'Schedule'}}</div>
   </LinkTo>
 {{/if}}
 {{#if this.showSpeakers}}
-  <LinkTo @route="public.speakers" class="item">
+  <LinkTo @route="public.speakers" @query={{hash search=null}} class="item">
     <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} bullhorn icon"></i>{{t 'Speakers'}}</div>
   </LinkTo>
 {{/if}}
