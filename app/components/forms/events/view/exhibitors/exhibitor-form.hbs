@@ -63,7 +63,7 @@
           {{t 'Add a related exhibitor session'}}
         </label>
         <UiDropdown
-        @class="fluid multiple selection"
+        @class="fluid multiple search selection"
         @selected={{@sessionsDetails}}
         @onChange={{action (mut @sessionsDetails)}} as |execute mapper|>
         <i class="dropdown icon"></i>
