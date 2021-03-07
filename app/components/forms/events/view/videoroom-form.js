@@ -14,6 +14,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @tracked integrationLoading = false;
   @tracked loading = false;
+  @tracked moderatorEmail = '';
 
   @computed('data.stream.rooms.[]')
   get room() {
@@ -54,6 +55,19 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        },
+        email: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter a email')
+            },
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid email')
             }
           ]
         }
@@ -152,7 +166,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
-  submit(event) {
+  async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
       try {
@@ -175,6 +189,28 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
           });
       } finally {
         this.loading = false;
+      }
+    });
+  }
+
+  @action
+  async addModerator() {
+    this.onValid(async() => {
+      const existingModeratorsEmail = this.data.stream.moderators.map( videoStreamModerator => videoStreamModerator.email);
+      if (!existingModeratorsEmail.includes(this.moderatorEmail)) {
+        try {
+          const videoStreamModerator = await this.store.createRecord('video-stream-moderator', {
+            'email'        : this.moderatorEmail,
+            'video-stream' : this.data.stream
+          });
+          await this.data.stream.moderators.pushObject(videoStreamModerator);
+          this.set('moderatorEmail', '');
+        } catch (error) {
+          console.error('Error while adding moderator', error);
+        }
+      } else {
+        this.set('moderatorEmail', '');
+        videoStreamModerator.unload();
       }
     });
   }
