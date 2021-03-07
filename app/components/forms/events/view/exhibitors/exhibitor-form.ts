@@ -11,8 +11,7 @@ import Session from 'open-event-frontend/models/session';
 interface Args {
   exhibitor: Exhibitor,
   event: Event,
-  sessions: Session[],
-  sessionsDetails: Session[]
+  sessions: Session[]
 }
 
 export default class ExhibitorForm extends Component<Args> {
@@ -20,8 +19,6 @@ export default class ExhibitorForm extends Component<Args> {
   @service router: any;
   @service notify: any;
   @service errorHandler: any;
-
-  @tracked sessionsDetails = this.args.sessionsDetails;
 
   @tracked loading = false;
 
@@ -125,7 +122,6 @@ export default class ExhibitorForm extends Component<Args> {
   @action async save(): Promise<void> {
     try {
       this.loading = true;
-      // this.args.exhibitor.sessions = this.args.sessions;
       await this.args.exhibitor.save();
       this.router.transitionTo('events.view.exhibitors', this.args.event.id);
       this.notify.success(this.l10n.t('Your exhibitor has been saved'),

@@ -64,8 +64,8 @@
         </label>
         <UiDropdown
         @class="fluid multiple selection"
-        @selected={{this.sessionsDetails}}
-        @onChange={{action (mut this.sessionssDetails)}} as |execute mapper|>
+        @selected={{@sessionsDetails}}
+        @onChange={{action (mut @sessionsDetails)}} as |execute mapper|>
         <i class="dropdown icon"></i>
         <div class="default text">
           {{t 'Select Sessions'}}
