@@ -66,10 +66,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         email: {
           rules: [
             {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter a email')
-            },
-            {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid email')
@@ -202,6 +198,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async addModerator() {
+    if (this.moderatorEmail === '') {
+      return;
+    }
     this.onValid(async() => {
       const existingModeratorsEmail = this.data.stream.moderators.map( videoStreamModerator => videoStreamModerator.email);
       if (!existingModeratorsEmail.includes(this.moderatorEmail)) {
