@@ -18,7 +18,7 @@
             <br/>
             <h2>{{t 'Exhibitor Sessions'}}</h2>
             {{#each this.model.exhibitor.sessions as |session|}}
-                <a class="ui basic blue button" href="{{href-to 'public.session.view' (or this.model.event.identifier session.event.identifier) session.id}}" style={{css color=(text-color session.track.color 'grey' 'lightgrey')}}>{{session.title}}</a>
+                <a class="ui basic blue button" href="{{href-to 'public.session.view' (or this.model.event.identifier session.event.identifier) session.id}}">{{session.title}}</a>
             {{/each}}
         {{/if}}
         <br/><br/>
