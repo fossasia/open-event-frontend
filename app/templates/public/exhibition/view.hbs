@@ -14,11 +14,13 @@
                 {{sanitize this.model.exhibitor.description}}
             </p>
         {{/if}}
-        <br/>
-        <h2>{{t 'Exhibitor Sessions'}}</h2>
-        {{#each this.model.exhibitor.sessions as |session|}}
-            <a href="#" class="ui blue basic compact button">{{session.title}}</a>
-        {{/each}}
+        {{#if this.model.exhibitor.sessions}}
+            <br/>
+            <h2>{{t 'Exhibitor Sessions'}}</h2>
+            {{#each this.model.exhibitor.sessions as |session|}}
+                <a class="ui basic blue button" href="{{href-to 'public.session.view' (or this.model.event.identifier session.event.identifier) session.id}}" style={{css color=(text-color session.track.color 'grey' 'lightgrey')}}>{{session.title}}</a>
+            {{/each}}
+        {{/if}}
         <br/><br/>
         <div class="social-icons d-flex" style="justify-content: center;">
             {{#each this.links as |socialLink|}}
