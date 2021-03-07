@@ -6,12 +6,10 @@ import { Rules } from 'open-event-frontend/components/forms/form';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import Event from 'open-event-frontend/models/event';
-import Session from 'open-event-frontend/models/session';
 
 interface Args {
   exhibitor: Exhibitor,
-  event: Event,
-  sessions: Session[]
+  event: Event
 }
 
 export default class ExhibitorForm extends Component<Args> {
