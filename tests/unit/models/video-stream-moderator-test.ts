@@ -7,8 +7,8 @@ module('Unit | Model | video stream moderator', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let store = this.owner.lookup('service:store');
-    let model = run(() => store.createRecord('video-stream-moderator', {}));
+    const store = this.owner.lookup('service:store');
+    const model = run(() => store.createRecord('video-stream-moderator', {}));
     assert.ok(model);
   });
 });
