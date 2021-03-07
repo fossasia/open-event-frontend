@@ -12,6 +12,15 @@ interface Args {
 export default class TimeZonePicker extends Component<Args> {
   localTimezone = moment.tz.guess();
 
+  get defaultTimezone(): string {
+    if (this.args.timezone) {
+      return this.args.timezone;
+    } else if (this.args.defaultLocal) {
+      return this.localTimezone;
+    }
+    return this.args.eventTimezone;
+  }
+
   get timezones(): string[] {
     return timezones.filter(item => ![this.localTimezone, this.args.eventTimezone].includes(item));
   }

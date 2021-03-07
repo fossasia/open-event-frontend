@@ -21,6 +21,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     return this.data.stream.rooms.toArray()[0];
   }
 
+  @computed('data.stream')
+  get roomName() {
+    return this.data.stream.rooms.toArray()[0]?.name || this.data.stream.name;
+  }
+
   @action
   setRoom(room) {
     this.data.stream.rooms = [room];
@@ -121,11 +126,13 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async addYoutube() {
+    this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
     this.data.stream.set('url', 'watch?v=');
   }
 
   @action
   async addVimeo() {
+    this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
     this.data.stream.set('url', '');
   }
 
@@ -213,5 +220,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         videoStreamModerator.unload();
       }
     });
+  }
+
+  didInsertElement() {
+    if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
+      this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    }
   }
 }

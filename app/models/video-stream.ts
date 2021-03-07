@@ -6,11 +6,19 @@ import Microlocation from './microlocation';
 import VideoChannel from './video-channel';
 import VideoStreamModerator from './video-stream-moderator';
 
+export interface Extra {
+  autoplay: boolean;
+  loop: boolean;
+}
+
+
 export default class VideoStream extends ModelBase.extend() {
   @attr() name!: string;
   @attr() url!: string;
   @attr() password!: string;
   @attr() additionalInformation!: string;
+  @attr() extra!: Extra;
+
   @hasMany('microlocation') rooms!: Microlocation[];
   @belongsTo('event') event!: Event;
   @belongsTo('video-channel') videoChannel!: VideoChannel;
