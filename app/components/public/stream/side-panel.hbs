@@ -51,7 +51,7 @@
     </div>
     <div class="ui vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
       {{#each this.streams as |stream|}}
-        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="item">
+        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream stream) 'active'}} item">
           <p style="color: white;"> <span class="stream-preview-letter" style={{css border-radius='50% !important' background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>{{stream.name}}</p>
         </a>
       {{/each}}
