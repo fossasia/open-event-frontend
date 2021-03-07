@@ -101,6 +101,21 @@
     <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'Public (no restriction)'}} /></div>
   </div>
   <div class="ui divider"></div>
+  <div class="ui header">{{t 'Add Moderators'}}</div>
+  <div class="ui attached grid field">
+    <div class="input fifteen wide column p-0">
+      <Input
+        @type="email"
+        @id="email"
+        @value={{this.moderatorEmail}}
+        placeholder={{t 'Add Email of Moderators'}} />
+    </div>
+    <div class="one wide column p-0">
+      <button class="ui blue fluid button" type="button" {{action this.addModerator}}>
+        {{t 'Add'}}
+      </button>
+    </div>
+  </div>
   <div class="ui header">{{t 'Moderators'}}</div>
   <UiDropdown
     @class="fluid multiple selection"
