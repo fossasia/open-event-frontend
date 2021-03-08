@@ -18,21 +18,21 @@
     </div>
     <div class="ui vertical fluid menu borderless ml--4 stream-side-menu">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
-        <a class="ui labeled fluid item" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+        <a class="ui labeled fluid item {{if (eq @currentRoute 'public.sessions.index') 'video-active'}}" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <span style="color: white;"><i class="calendar icon"></i>
           {{t 'Schedule'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showSpeakers}}
-        <a class="ui labeled icon item" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.speakers') 'video-active'}}" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
           <span style="color: white;"><i class="bullhorn icon"></i>
           {{t 'Speakers'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showExhibitors}}
-        <a class="ui labeled icon item" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.exhibition.index') 'video-active'}}" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
           <span style="color: white;"><i class="image icon"></i>
           {{t 'Exhibition'}}</span>
         </a>
