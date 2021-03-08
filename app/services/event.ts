@@ -1,5 +1,6 @@
 import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { SPEAKERS_FILTER } from 'open-event-frontend/routes/public/speakers';
 import AuthManagerService from './auth-manager';
 import Loader from './loader';
 
@@ -20,6 +21,25 @@ export default class EventService extends Service {
 
     return streamStatus;
   }
+
+  @tracked speakersMetaPromiseMap = new Map<string, Promise<any>>();
+
+  getSpeakersMeta(eventId: string): Promise<any> {
+    const promise = this.speakersMetaPromiseMap.get(eventId);
+    if (promise) {
+      return promise
+    }
+
+    const speakersMetaPromise = this.loader.load(`/events/${eventId}/speakers?cache=true&public=true&fields[speaker]=id&page[size]=1&filter=${JSON.stringify(SPEAKERS_FILTER)}`);
+    this.speakersMetaPromiseMap.set(eventId, speakersMetaPromise);
+
+    return speakersMetaPromise;
+  }
+
+  async hasSpeakers(eventId: string): Promise<number> {
+    return (await this.getSpeakersMeta(eventId)).data.length;
+  }
+
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your services.
