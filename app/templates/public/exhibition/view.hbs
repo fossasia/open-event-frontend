@@ -54,8 +54,8 @@
         {{#if this.model.exhibitor.sessions}}
             <br/><br/>
             <div class="d-flex mt-8 flex-column items-center content-center"><h2>{{t 'Related Sessions'}}</h2></div>
-            {{#each this.model.exhibitor.sessions as |session|}}
-                <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.model.event.timezone}} @showFavButton={{true}} />
+            {{#each this.exhibitorSessions as |session|}}
+                <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.model.event.timezone}} />
             {{/each}}
         {{/if}}
         <br/><br/>

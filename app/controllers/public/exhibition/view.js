@@ -12,6 +12,11 @@ export default class extends Controller {
     return extractYoutubeUrl(this.model.exhibitor.videoUrl);
   }
 
+  @computed('model.exhibitor.sessions')
+  get exhibitorSessions() {
+    return this.model.exhibitor.sessions.sortBy('startsAt');
+  }
+
   @computed('model.exhibitor.slidesUrl')
   get pdfLink() {
     return this.model.exhibitor.slidesUrl?.indexOf('.pdf') > -1;
