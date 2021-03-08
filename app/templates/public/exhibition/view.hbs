@@ -13,8 +13,8 @@
             <p>
                 {{sanitize this.model.exhibitor.description}}
             </p>
+            <br/><br/>
         {{/if}}
-        <br/><br/>
         <div class="social-icons d-flex" style="justify-content: center;">
             {{#each this.links as |socialLink|}}
                 {{#if (eq socialLink.name 'website')}}
@@ -30,7 +30,7 @@
                 {{/if}}
             {{/each}}
         </div>
-        <br/><br/>
+
         {{#if this.contactExhibitor}}
         <br/><br/>
         <div class="d-flex flex-grow-1 content-center">
@@ -50,6 +50,13 @@
                {{t 'Join Exhibitor Video'}}
              </button>
             </div>
+        {{/if}}
+        {{#if this.model.exhibitor.sessions}}
+            <br/><br/>
+            <div class="d-flex mt-8 flex-column items-center content-center"><h2>{{t 'Related Sessions'}}</h2></div>
+            {{#each this.exhibitorSessions as |session|}}
+                <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.model.event.timezone}} />
+            {{/each}}
         {{/if}}
         <br/><br/>
         {{#each this.links as |socialLink|}}
