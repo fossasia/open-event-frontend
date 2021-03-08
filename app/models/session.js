@@ -54,6 +54,7 @@ export default class Session extends ModelBase.extend({
   creator            : belongsTo('user'),
   favourite          : belongsTo('user-favourite-session', { inverse: 'session' }),
   favourites         : hasMany('user-favourite-session'),
+  exhibitors         : hasMany('exhibitor'),
 
   status: computed('state', 'deletedAt', function() {
     if (this.deletedAt !== null) {
