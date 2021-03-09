@@ -80,7 +80,7 @@ export default class ExhibitorItem extends Component {
   }
 
   async didRender() {
-    super.didInsertElement(...arguments);
+    super.didRender(...arguments);
     this.data.exhibitors =  await this.data.event.query('exhibitors', {
       sort         : 'position',
       'page[size]' : 0,
