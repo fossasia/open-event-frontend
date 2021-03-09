@@ -14,7 +14,7 @@ export default class IndexRoute extends Route {
    * @return {*}
    * @private
    */
-  _loadEvents(mode) {
+  _loadEvents(mode, featured) {
     const filterOptions = [
       {
         and:
@@ -33,19 +33,24 @@ export default class IndexRoute extends Route {
       }
     ];
 
+    const dateFilters = [
+      {
+        name : 'ends-at',
+        op   : 'ge',
+        val  : moment().toISOString()
+      }
+    ];
+
+    if (!featured) {
+      dateFilters.push({
+        name : 'starts-at',
+        op   : 'ge',
+        val  : moment().toISOString()
+      });
+    }
+
     filterOptions.push({
-      or: [
-        {
-          name : 'starts-at',
-          op   : 'ge',
-          val  : moment().toISOString()
-        },
-        {
-          name : 'ends-at',
-          op   : 'ge',
-          val  : moment().toISOString()
-        }
-      ]
+      or: dateFilters
     });
 
     if (mode === 'filterOptions') {
@@ -61,8 +66,8 @@ export default class IndexRoute extends Route {
   }
 
   async model() {
-    const filterOptions =  this._loadEvents('filterOptions');
-    filterOptions[0].and.push({
+    const featuredOptions =  this._loadEvents('filterOptions', true);
+    featuredOptions[0].and.push({
       name : 'is-featured',
       op   : 'eq',
       val  : true
@@ -177,7 +182,7 @@ export default class IndexRoute extends Route {
       featuredEvents: this.store.query('event', {
         sort         : 'starts-at',
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
-        filter       : filterOptions,
+        filter       : featuredOptions,
         cache        : true,
         public       : true,
         'page[size]' : 6
