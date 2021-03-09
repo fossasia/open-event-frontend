@@ -6283,7 +6283,7 @@ ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.10.0, 
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.1.3, ember-cli-babel@^7.10.0, ember-cli-babel@^7.11.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.12.0, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.17.2, ember-cli-babel@^7.18.0, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.2, ember-cli-babel@^7.20.5, ember-cli-babel@^7.21.0, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.4.0, ember-cli-babel@^7.5.0, ember-cli-babel@^7.7.3, ember-cli-babel@^7.8.0:
+"ember-cli-babel@^6.6.0 || ^7.0.0", ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.1.3, ember-cli-babel@^7.10.0, ember-cli-babel@^7.11.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.12.0, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.17.2, ember-cli-babel@^7.18.0, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.2, ember-cli-babel@^7.20.5, ember-cli-babel@^7.21.0, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.4.0, ember-cli-babel@^7.5.0, ember-cli-babel@^7.7.3, ember-cli-babel@^7.8.0:
   version "7.23.1"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.23.1.tgz#d1517228ede08a5d4b045c78a7429728e956b30b"
   integrity sha512-qYggmt3hRs6QJ6cRkww3ahMpyP8IEV2KFrIRO/Z6hu9MkE/8Y28Xd5NjQl6fPV3oLoG0vwuHzhNe3Jr7Wec8zw==
@@ -7695,14 +7695,13 @@ ember-runtime-enumerable-includes-polyfill@^2.1.0:
     ember-cli-babel "^6.9.0"
     ember-cli-version-checker "^2.1.0"
 
-ember-simple-auth-token@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/ember-simple-auth-token/-/ember-simple-auth-token-5.2.1.tgz#dae69fb31cb7a3f8222a56b0ae9ca1385ea34fde"
-  integrity sha512-P8sPJejbmr9hlhFqG+zphEnoue62oBEnOI9Q72AnRHvwCswRDJmG407YXCjvF+hfQTELo9oUBIrGu5nk86LMsA==
+ember-simple-auth-token@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/ember-simple-auth-token/-/ember-simple-auth-token-5.2.2.tgz#859163de5836f682203500fea4d66f235c3794dc"
+  integrity sha512-srHlsLssjpMsaA2bWkNwJ7vINJN+Xt2SVCFGyL1vRgcBtq6gn0I+8sddo2AatcRzrHu0xEbesWsjN15HBvXuPw==
   dependencies:
-    ember-cli-babel "^6.6.0"
+    ember-cli-babel "^6.6.0 || ^7.0.0"
     ember-fetch "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
-    ember-get-config "^0.2.4"
     ember-simple-auth "^1.6.0 || ^2.0.0 || ^3.0.0"
 
 "ember-simple-auth@^1.6.0 || ^2.0.0 || ^3.0.0", ember-simple-auth@^3.1.0:
