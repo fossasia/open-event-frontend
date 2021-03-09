@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
+import { set } from '@ember/object';
 
 @classic
 export default class ViewRoute extends Route {
@@ -16,10 +17,20 @@ export default class ViewRoute extends Route {
     });
   }
 
-  afterModel(model) {
+  async afterModel(model) {
     super.afterModel(...arguments);
     if (model.exhibitor.status !== 'accepted') {
       this.transitionTo('not-found');
     }
+    const exhibitors = await model.event.query('exhibitors', {
+      sort         : 'position',
+      'page[size]' : 0
+    });
+    if (exhibitors) {
+      set(model, 'exhibitors', exhibitors);
+    }
+    return {
+      exhibitors
+    };
   }
 }

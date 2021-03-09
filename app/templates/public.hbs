@@ -93,9 +93,11 @@
                 </LinkTo>
               </h4>
               {{#each this.model.microlocations as |room|}}
-                <p class="p-1 mb-1" role="button" {{action 'applyFilter' room.name 'room'}}>
-                  {{room.name}}
-                </p>
+                {{#if (not room.hiddenInScheduler)}}
+                  <p class="p-1 mb-1" role="button" {{action 'applyFilter' room.name 'room'}}>
+                    {{room.name}}
+                  </p>
+                {{/if}}
               {{/each}}
               <h4>
                 {{t 'Session Types'}}
