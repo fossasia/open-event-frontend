@@ -48,7 +48,7 @@
     <br>
     <div class="ui grid stackable">
       {{#if this.hideImage}}
-        <div role="button" onclick={{prevent-bubbling}} class="left floated twelve wide column">
+        <div class="left floated twelve wide column">
           <div>
             <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name)}}">
               <i class="train icon"></i>{{@session.track.name}}
@@ -81,7 +81,7 @@
             {{/each}}
           </div>
         </div>
-        <div role="button" onclick={{prevent-bubbling}} class="right floated five wide column" style="padding-top: .25rem !important;" >
+        <div class="right floated five wide column" style="padding-top: .25rem !important;" >
           <div>
             <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name)}}">
               <i class="train icon"></i>{{@session.track.name}}
