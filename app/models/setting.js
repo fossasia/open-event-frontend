@@ -81,6 +81,8 @@ export default ModelBase.extend({
   androidAppUrl              : attr('string'),
   frontendUrl                : attr('string'),
   webAppUrl                  : attr('string'),
+  rocketChatUrl                  : attr('string'),
+  rocketChatRegistrationSecret                  : attr('string'),
   staticDomain               : attr('string'),
   cookiePolicy               : attr('string'),
   cookiePolicyLink           : attr('string'),
