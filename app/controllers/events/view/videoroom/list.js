@@ -19,6 +19,12 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
+        name       : this.l10n.t('Video Room Name'),
+        valuePath  : 'videoStream.name',
+        helperInfo : 'This column shows the video room name that will be visible to the users on the event page if the original name is changed.',
+        width      : 70
+      },
+      {
         name          : this.l10n.t('Video Source URL'),
         valuePath     : 'videoStream',
         helperInfo    : 'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com.',
