@@ -60,6 +60,29 @@
       </div>
       <div class="field">
         <label>
+          {{t 'Add a related exhibitor session'}}
+        </label>
+        <UiDropdown
+        @class="fluid multiple search selection"
+        @selected={{@sessionsDetails}}
+        @onChange={{action (mut @sessionsDetails)}} as |execute mapper|>
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          {{t 'Select Sessions'}}
+        </div>
+        <div class="menu">
+          {{#each @sessions as |session|}}
+            {{#if session.title}}
+              <div data-value="{{map-value mapper session}}" class="item">
+                {{session.title}}
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </UiDropdown>
+    </div>
+      <div class="field">
+        <label>
           {{t 'Video URL'}}
         </label>
         <Widgets::Forms::LinkField
