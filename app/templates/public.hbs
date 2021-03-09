@@ -96,13 +96,15 @@
                 </LinkTo>
               </h4>
               {{#each this.model.microlocations as |room|}}
-                <LinkTo
-                  class="p-1 mb-1 rounded-default link-item {{if (eq this.params.room room.name) 'active'}}"
-                  @route="public.sessions" 
-                  @models={{array this.model.id}}
-                  @query={{hash room=room.name}}>
-                  {{room.name}}
-                </LinkTo>
+                {{#if (not room.hiddenInScheduler)}}
+                  <LinkTo
+                    class="p-1 mb-1 rounded-default link-item {{if (eq this.params.room room.name) 'active'}}"
+                    @route="public.sessions" 
+                    @models={{array this.model.id}}
+                    @query={{hash room=room.name}}>
+                    {{room.name}}
+                  </LinkTo>
+                {{/if}}
               {{/each}}
               <h4>
                 {{t 'Session Types'}}
