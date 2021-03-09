@@ -42,7 +42,7 @@ export default class extends Controller {
 
   @computed('model.exhibitor')
   get contactExhibitor() {
-    return this.session.isAuthenticated;
+    return this.session.isAuthenticated && (this.model.exhibitor.contactEmail || this.model.exhibitor.contactLink);
   }
 
   @action
