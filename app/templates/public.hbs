@@ -152,7 +152,7 @@
 </div>
 
 {{#if this.side_panel}}
-  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} />  
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @currentRoute={{this.session.currentRouteName}} />  
 {{/if}}
 
 {{#if this.video_dialog}}
