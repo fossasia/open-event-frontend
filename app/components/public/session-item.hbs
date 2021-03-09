@@ -50,18 +50,18 @@
       {{#if this.hideImage}}
         <div class="left floated twelve wide column">
           <div>
-            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name)}}">
+            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
               <i class="train icon"></i>{{@session.track.name}}
             </a>
           </div>
           {{#if @session.startsAt}}
             <div>
-              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name)}}">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
                 <i class="icon map marker alternate"></i>{{@session.microlocation.name}}
               </a>
             </div>
             <div class="small text">
-              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD"))}}">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
                 <i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
               </a>
             </div>
@@ -83,18 +83,18 @@
         </div>
         <div class="right floated five wide column" style="padding-top: .25rem !important;" >
           <div>
-            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name)}}">
+            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
               <i class="train icon"></i>{{@session.track.name}}
             </a>
           </div>
           {{#if @session.startsAt}}
             <div>
-              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name)}}">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
                 <i class="icon map marker alternate"></i>{{@session.microlocation.name}}
               </a>
             </div>
             <div class="small text">
-              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD"))}}">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
                 <i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
               </a>
             </div>
