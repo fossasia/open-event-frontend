@@ -55,6 +55,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get eventColumns() {
     const { columns } = this;
     columns[0].name = this.l10n.t('Event');
+    columns[0].valuePath = 'videoStream.name';
     columns[0].helperInfo = null;
 
     return columns;
