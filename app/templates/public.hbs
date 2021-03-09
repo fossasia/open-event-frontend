@@ -106,19 +106,17 @@
                   {{room.name}}
                 </LinkTo>
               {{/each}}
-              {{#if this.activeSession}}
-                <h4>
-                  {{t 'Session Types'}}
-                  <LinkTo @route="public.sessions" {{action this.removeActiveSession}} @models={{array this.model.id}} @query={{hash sessionType=null}} data-tooltip="{{t 'Clear Session Type Filter'}}">
-                    <Icons::ClearFilter />
-                  </LinkTo>
-                </h4>
-                {{#each this.activeSession as |session|}}
-                  <span class="p-1 mb-1 rounded-default">
-                    {{session}}
-                  </span>
-                {{/each}}
-              {{/if}}
+              <h4>
+                {{t 'Session Types'}}
+                <LinkTo @route="public.sessions" {{action this.removeActiveSession}} @models={{array this.model.id}} @query={{hash sessionType=null}} data-tooltip="{{t 'Clear Session Type Filter'}}">
+                  <Icons::ClearFilter />
+                </LinkTo>
+              </h4>
+              {{#each this.activeSession as |session|}}
+                <span class="p-1 mb-1 rounded-default">
+                  {{session}}
+                </span>
+              {{/each}}
               <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
                 <div class="default">
                   {{t 'Select Session Type'}}
@@ -156,7 +154,7 @@
 </div>
 
 {{#if this.side_panel}}
-  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} />  
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @currentRoute={{this.session.currentRouteName}} />  
 {{/if}}
 
 {{#if this.video_dialog}}

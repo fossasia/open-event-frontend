@@ -26,4 +26,9 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
       })
     });
   }
+
+  resetController(controller) {
+    super.resetController(...arguments);
+    controller.model.stream.rollbackAttributes();
+  }
 }

@@ -72,6 +72,25 @@
   <div class="ui hidden divider"></div>
   <Forms::Admin::Settings::System::OrderExpiryForm @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Rocket Chat Integration'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Rocket Chat URL'}}
+    </label>
+    <Widgets::Forms::LinkField
+      @inputId="rocket_chat_url"
+      @value={{this.settings.rocketChatUrl}}
+      @onChange={{action (mut this.settings.rocketChatUrl)}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Registration Secret'}}
+    </label>
+    <Input @type="text" @value={{this.settings.rocketChatRegistrationSecret}} />
+  </div>
+  <div class="ui hidden divider"></div>
   <button class="ui teal wide button" type="submit">
     {{t 'Save'}}
   </button>
