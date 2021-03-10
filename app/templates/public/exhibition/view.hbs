@@ -4,10 +4,10 @@
             <img alt="exhibitor" class="ui rounded image" src="{{if this.model.exhibitor.bannerUrl this.model.exhibitor.bannerUrl '/images/placeholders/Other.jpg'}}">
         </div>
         <br/>
-        <h1 class="ui centered header no margin">
-            <img class="ui small image m-0 mb-1" src="{{or this.model.exhibitor.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo" style="height:30px; width:auto; object-fit:contain;">
-            {{this.model.exhibitor.name}}
-        </h1>
+        <div class="d-flex items-center content-center">
+            <img class="ui small image m-0 mb-1" src="{{or this.model.exhibitor.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo" style="height:60px; width:auto; object-fit:contain;">
+            <h1 style="margin-top:0px; padding-top:0px;">{{this.model.exhibitor.name}}</h1>
+        </div>
         <br/>
         {{#if this.model.exhibitor.description}}
             <p>
