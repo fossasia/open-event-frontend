@@ -23,6 +23,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked shown = false;
   @tracked loading = true;
   @tracked streams: VideoStream[] = [];
+  @tracked eventStream: VideoStream | null = null;
   @tracked showSessions: number | null = null;
   @tracked showSpeakers: number | null = null;
   @tracked showExhibitors: number | null = null;
@@ -58,11 +59,16 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.streams.push(stream);
   }
 
+  get chatStream(): VideoStream | null {
+    return this.eventStream || this.args.videoStream;
+  }
+
   @action
   async setup(): Promise<void> {
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
     this.addStream(this.args.videoStream);
-    this.addStream(this.args.event.belongsTo('videoStream').value());
+    this.eventStream = this.args.event.belongsTo('videoStream').value();
+    this.addStream(this.eventStream);
 
     this.checkSessions();
     this.checkSpeakers();
