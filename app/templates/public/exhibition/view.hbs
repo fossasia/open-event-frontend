@@ -1,9 +1,29 @@
 <div>
+    <div class="d-flex space-between wrap {{if this.device.isMobile 'mb-4 mt--8' 'mb-8'}}">
+        <button class="ui primary basic button mr-2" {{action "changeExhibitor" -1}}>
+            <i class="left chevron icon"></i>
+            {{t 'Previous'}}
+        </button>
+        <button class="ui primary basic button ml-2" {{action "changeExhibitor" 1}}>
+            {{t 'Next'}}
+            <i class="right chevron icon"></i>
+        </button>
+    </div>
     <div class="ui">
         <div class="featured-speaker">
             <img alt="exhibitor" class="ui rounded image" src="{{if this.model.exhibitor.bannerUrl this.model.exhibitor.bannerUrl '/images/placeholders/Other.jpg'}}">
         </div>
         <br/>
+       
+        {{#if this.model.exhibitor.enableVideoRoom}}
+            <div class="content d-flex p-2" style="align-items: center;background-color: #555; color:white;margin-top:-10px">
+            <div class="header"> {{t 'Meet Us In Our Exhibitor Video Room'}}</div>
+                <button {{action this.openVideo}} class="ui blue button ml-auto">
+                {{t 'Join Exhibitor Video Room'}}
+                </button>
+            </div>
+        {{/if}}
+        <br/><br/>
         <div class="d-flex items-center content-center">
             <img class="ui small image m-0 mb-1" src="{{or this.model.exhibitor.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo" style="height:60px; width:auto; object-fit:contain;">
             <h1 style="margin-top:0px; padding-top:0px;">{{this.model.exhibitor.name}}</h1>
@@ -13,8 +33,8 @@
             <p>
                 {{sanitize this.model.exhibitor.description}}
             </p>
+            <br/><br/>
         {{/if}}
-        <br/><br/>
         <div class="social-icons d-flex" style="justify-content: center;">
             {{#each this.links as |socialLink|}}
                 {{#if (eq socialLink.name 'website')}}
@@ -30,10 +50,11 @@
                 {{/if}}
             {{/each}}
         </div>
-        <br/><br/>
+
         {{#if this.contactExhibitor}}
         <br/><br/>
-        <div class="d-flex flex-grow-1 content-center">
+        <div class="d-flex content-center flex-column items-center">
+            <h2>{{t 'Get in touch'}}</h2>
             {{#if this.model.exhibitor.contactEmail}}
                 <a target="_blank" href="mailto:{{this.model.exhibitor.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
             {{/if}}
@@ -42,14 +63,12 @@
             {{/if}}
         </div>
         {{/if}}
-        {{#if this.model.exhibitor.enableVideoRoom}}
+        {{#if this.model.exhibitor.sessions}}
             <br/><br/>
-            <div class="d-flex mt-8 flex-column items-center content-center">
-            <h2>{{t 'Meet Us In Our Exhibitor Video Room'}}</h2>
-            <button {{action this.openVideo}} class="ui blue button mt-4">
-               {{t 'Join Exhibitor Video'}}
-             </button>
-            </div>
+            <div class="d-flex mt-8 flex-column items-center content-center"><h2>{{t 'Related Sessions'}}</h2></div>
+            {{#each this.exhibitorSessions as |session|}}
+                <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.model.event.timezone}} />
+            {{/each}}
         {{/if}}
         <br/><br/>
         {{#each this.links as |socialLink|}}

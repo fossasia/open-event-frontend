@@ -1,5 +1,6 @@
 import ModelBase from 'open-event-frontend/models/base';
-import { attr, belongsTo } from '@ember-data/model';
+import { attr, belongsTo, hasMany } from '@ember-data/model';
+import Session from './session';
 
 export interface SocialLink {
   name: string;
@@ -24,6 +25,7 @@ export default class Exhibitor extends ModelBase.extend() {
   @attr() socialLinks!: SocialLink[]
 
   @belongsTo('event') event!: Event;
+  @hasMany('session') sessions!: Session[];
 
   get image(): string {
     return this.thumbnailImageUrl || this.bannerUrl || '/images/placeholders/Other.jpg';

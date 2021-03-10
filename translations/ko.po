@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-03-06 05:50+0000\n"
+"PO-Revision-Date: 2021-03-07 18:14+0000\n"
 "Last-Translator: Youngbin Han <sukso96100@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/open-event/"
 "frontend/ko/>\n"
@@ -119,7 +119,7 @@ msgstr "계정이 성공적으로 삭제되었습니다."
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
-msgstr "이메일 알림이 성공적으로 업데이트되었습니다"
+msgstr "이메일 알림이 성공적으로 업데이트 되었습니다"
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
@@ -296,7 +296,7 @@ msgstr "장소를 선택해 주세요"
 #: app/components/forms/admin/content/pages-form.js:62:23
 #: app/components/forms/session-speaker-form.js:255:23
 msgid "Please enter a position"
-msgstr ""
+msgstr "직책(직위)를 입력해 주세요"
 
 #: app/components/forms/admin/content/pages-form.js:71:23
 #: app/components/forms/session-speaker-form.js:101:23
@@ -541,15 +541,15 @@ msgstr "SMTP 호스트를 입력하세요"
 
 #: app/components/forms/admin/settings/system-form.js:200:23
 msgid "Please enter the SMTP port number"
-msgstr ""
+msgstr "SMTP 포트 번호를 입력하세요"
 
 #: app/components/forms/admin/settings/system-form.js:204:23
 msgid "Please enter a valid port number"
-msgstr ""
+msgstr "유효한 포트 번호를 입력하세요"
 
 #: app/components/forms/admin/settings/system-form.js:214:23
 msgid "Please enter the token for Sendgrid"
-msgstr ""
+msgstr "Sendgrid 토큰을 입력하세요"
 
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:19:23
 msgid "Please enter the recipient E-mail"
@@ -1183,7 +1183,7 @@ msgstr ""
 
 #: app/components/forms/session-speaker-form.js:291:23
 msgid "Please enter short biography"
-msgstr ""
+msgstr "간단한 자기소개를 입력해 주세요"
 
 #: app/components/forms/session-speaker-form.js:300:23
 msgid "Please enter speaking experience"
@@ -1793,7 +1793,7 @@ msgstr ""
 
 #: app/components/public/add-to-calender.hbs:18:121
 msgid "Add My Schedule"
-msgstr ""
+msgstr "내 일정 추가"
 
 #: app/components/public/call-for-speakers.js:31:24
 msgid "You need to add your speaker details first before submitting a session"
@@ -1903,7 +1903,7 @@ msgstr ""
 #: app/templates/public/schedule.hbs:4:56
 #: app/templates/public/sessions.hbs:3:56
 msgid "Schedule"
-msgstr ""
+msgstr "일정"
 
 #: app/components/public/side-menu-outer.js:20:13
 #: app/templates/components/public/side-menu.hbs:35:89
@@ -2603,7 +2603,7 @@ msgstr ""
 #: app/controllers/public/cfs/edit-speaker.js:15:28
 #: app/controllers/public/cfs/new-speaker.js:12:28
 msgid "Speaker details have been saved"
-msgstr ""
+msgstr "연사 상세 정보가 저장되었습니다"
 
 #: app/controllers/events/view/speakers/create.js:30:26
 msgid "Your speaker has been saved"
@@ -2614,7 +2614,7 @@ msgstr ""
 #: app/templates/components/forms/admin/content/pages-form.hbs:31:28
 #: app/templates/components/forms/admin/content/pages-form.hbs:32:93
 msgid "Position"
-msgstr ""
+msgstr "직책(직위)"
 
 #: app/controllers/events/view/speakers/list.js:41:26
 msgid "Organization"
@@ -2646,7 +2646,7 @@ msgstr ""
 
 #: app/controllers/events/view/speakers/list.js:108:26
 msgid "Speaker details modified successfully"
-msgstr ""
+msgstr "연사 상세 정보가 수정되었습니다"
 
 #: app/controllers/events/view/speakers/reorder.ts:25:26
 msgid "Speaker order reset successfully"
@@ -2832,7 +2832,7 @@ msgstr ""
 #: app/routes/events/view/edit/basic-details.js:8:11
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:13:12
 msgid "Basic Details"
-msgstr ""
+msgstr "기본 정보"
 
 #: app/mixins/event-wizard.js:18:22
 msgid "Tell about your event"
@@ -2877,7 +2877,7 @@ msgstr ""
 #: app/routes/events/view/edit/sessions-speakers.js:9:11
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:12:16
 msgid "Sessions & Speakers"
-msgstr "세션 및 발표자"
+msgstr "세션 및 연사"
 
 #: app/mixins/event-wizard.js:42:22
 msgid "Expand your event"
@@ -2944,7 +2944,7 @@ msgstr ""
 
 #: app/models/custom-form.js:17:24
 msgid "Short Biography"
-msgstr ""
+msgstr "간단한 자기소개"
 
 #: app/models/custom-form.js:18:24
 msgid "Long Biography"
@@ -2956,7 +2956,7 @@ msgstr ""
 
 #: app/models/custom-form.js:20:24
 msgid "Photo"
-msgstr ""
+msgstr "사진"
 
 #: app/models/custom-form.js:25:24 app/models/custom-form.js:49:18
 #: app/models/custom-form.js:97:27
@@ -3512,24 +3512,24 @@ msgstr ""
 
 #: app/routes/events/view/team/permissions.ts:109:22
 msgid "View scheduler"
-msgstr ""
+msgstr "스케줄러 보기"
 
 #: app/routes/events/view/team/permissions.ts:114:22
 msgid "Edit schedule"
-msgstr ""
+msgstr "일정 수정"
 
 #: app/routes/events/view/team/permissions.ts:119:22
 msgid "Publish schedule"
-msgstr ""
+msgstr "일정 게시"
 
 #: app/routes/events/view/team/permissions.ts:124:22
 msgid "Unpublish schedule"
-msgstr ""
+msgstr "일정 게시 취소"
 
 #: app/routes/events/view/team/permissions.ts:129:19
 #: app/templates/components/events/view/overview/speaker-session.hbs:2:22
 msgid "Sessions and Speakers"
-msgstr ""
+msgstr "세션 및 연사"
 
 #: app/routes/events/view/team/permissions.ts:133:22
 msgid "View speaker profiles"
@@ -4764,7 +4764,7 @@ msgstr ""
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
 msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
-msgstr ""
+msgstr "모든 상세정보, 후원사 목록, 연사 및 세션과 전체 일정이 포함된 전용 이벤트 웹사이트를 원하시나요?"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:7:4
 msgid "Simply use the website generator."
@@ -5018,7 +5018,7 @@ msgstr ""
 #: app/templates/components/events/view/overview/speaker-session.hbs:97:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:111:12
 msgid "Sessions and Speakers not enabled."
-msgstr ""
+msgstr "세션 및 연사 기능이 꺼져 있습니다."
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:67:20
 msgid "No. of Sessions"
@@ -6300,6 +6300,8 @@ msgstr ""
 #: app/templates/components/forms/orders/order-form.hbs:163:27
 msgid "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
 msgstr ""
+"나는 이벤트 주최측의 웹사이트나 소셜 미디어 채널에 게시 될 수 있는 나의 사진, 영상, 음성 녹음, 내 프로필, 채팅에서 입력한 "
+"텍스트 등을 이벤트 주최측에서 가져가는 것을 허가하는 데 동의합니다."
 
 #: app/templates/components/forms/orders/order-form.hbs:182:21
 msgid "Enable Billing Information"
@@ -7959,11 +7961,11 @@ msgstr ""
 
 #: app/templates/events/view/scheduler.hbs:5:111
 msgid "Unpublish Schedule"
-msgstr ""
+msgstr "일정 게시 취소"
 
 #: app/templates/events/view/scheduler.hbs:7:110
 msgid "Publish Schedule"
-msgstr ""
+msgstr "일정 게시"
 
 #: app/templates/events/view/scheduler.hbs:13:28
 msgid "Unscheduled Sessions"
@@ -7999,7 +8001,7 @@ msgstr ""
 #: app/templates/events/view/sessions.hbs:33:30
 #: app/templates/events/view/speakers.hbs:52:30
 msgid "In order to use this feature please activate \"Sessions and Speakers\" for the event."
-msgstr ""
+msgstr "이 기능을 사용하려면 이벤트의 \"세션 및 연사\" 기능을 켜세요."
 
 #: app/templates/events/view/sessions.hbs:34:30
 #: app/templates/events/view/speakers.hbs:53:30
@@ -8463,11 +8465,11 @@ msgstr ""
 
 #: app/templates/pricing.hbs:139:12
 msgid "Create schedule"
-msgstr ""
+msgstr "일정 생성"
 
 #: app/templates/pricing.hbs:143:12
 msgid "Public schedule pages"
-msgstr ""
+msgstr "일정 페이지 게시"
 
 #: app/templates/pricing.hbs:147:24
 msgid "Promotion"
@@ -8571,11 +8573,11 @@ msgstr ""
 
 #: app/templates/public/schedule.hbs:28:34
 msgid "Schedule for the event is currently unavailable"
-msgstr ""
+msgstr "현재 이벤트에 대한 일정을 이용할 수 없습니다"
 
 #: app/templates/public/session/view/user/view.hbs:5:37
 msgid "schedule"
-msgstr ""
+msgstr "일정"
 
 #: app/templates/public/sessions.hbs:6:8
 msgid "Calendar View"
@@ -8583,11 +8585,11 @@ msgstr ""
 
 #: app/templates/public/sessions.hbs:16:12
 msgid "Public Schedule"
-msgstr ""
+msgstr "공개 일정"
 
 #: app/templates/public/sessions.hbs:23:12
 msgid "My Schedule"
-msgstr ""
+msgstr "내 일정"
 
 #: app/templates/public/sessions.hbs:30:12
 msgid "My Speaker Sessions"

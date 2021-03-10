@@ -32,7 +32,8 @@
 <form class="ui form {{if this.isLoading 'loading'}}">
   <div class="field">
     <label class="required">{{t 'Room'}}</label>
-    <input value={{this.roomName}} readonly>
+    <Input
+      @value={{this.data.stream.name}} />
   </div>
   {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
