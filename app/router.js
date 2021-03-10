@@ -80,6 +80,7 @@ Router.map(function() {
       this.route('view', { path: '/:exhibitor_id' });
       this.route('video', { path: '/:exhibitor_id/video' });
     });
+    this.route('chat');
   });
   this.route('role-invites');
   this.route('pricing');

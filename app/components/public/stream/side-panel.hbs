@@ -38,8 +38,8 @@
         </a>
       {{/if}}
 
-      {{#if (and this.showChat this.chatStream)}}
-        <a class="ui labeled icon item {{if (eq @currentRoute 'public.stream.view.chat') 'video-active'}}" href={{href-to 'public.stream.view.chat' @event this.chatStream.slugName this.chatStream.id (query-params side_panel='true')}}>
+      {{#if this.showChat}}
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.chat') 'video-active'}}" href={{href-to 'public.chat' @event (query-params side_panel='true')}}>
           <span><i class="comment icon"></i>
           {{t 'Chat'}}</span>
         </a>
