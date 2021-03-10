@@ -66,7 +66,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @action
   async setup(): Promise<void> {
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
-    this.addStream(this.args.videoStream);
     this.eventStream = this.args.event.belongsTo('videoStream').value();
     this.addStream(this.eventStream);
 
@@ -93,15 +92,5 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     this.loading = false;
     this.streams = [...this.streams];
-  }
-
-  @action
-  reOrderStreams(): void {
-    const streams = [...this.streams];
-    this.streams = [];
-    this.addStream(this.args.videoStream);
-    for (const stream of streams) {
-      this.addStream(stream);
-    }
   }
 }

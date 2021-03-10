@@ -1,4 +1,4 @@
-<button {{did-insert this.setup}} {{did-update this.reOrderStreams @videoStream}} class="ui icon button stream-side-panel-button" {{action (mut this.shown) true}}>
+<button {{did-insert this.setup}} class="ui icon button stream-side-panel-button" {{action (mut this.shown) true}}>
   <i class="angle right icon"></i>
 </button>
 {{#if this.shown}}
@@ -52,7 +52,7 @@
     </div>
     <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
       {{#each this.streams as |stream|}}
-        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream stream) 'video-active'}} item stream-item d-flex items-center">
+        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
           <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
           <span class="ml-2">{{stream.name}}</span>
         </a>
