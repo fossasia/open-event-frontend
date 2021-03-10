@@ -18,6 +18,7 @@ interface Args {
 export default class PublicStreamSidePanel extends Component<Args> {
   @service loader!: Loader;
   @service declare event: EventService;
+  @service declare settings: any;
 
   @tracked shown = false;
   @tracked loading = true;
@@ -25,6 +26,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showSessions: number | null = null;
   @tracked showSpeakers: number | null = null;
   @tracked showExhibitors: number | null = null;
+  @tracked showChat = false;
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -59,12 +61,12 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @action
   async setup(): Promise<void> {
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
-    this.addStream(this.args.videoStream);
     this.addStream(this.args.event.belongsTo('videoStream').value());
 
     this.checkSessions();
     this.checkSpeakers();
     this.checkExhibitors();
+    this.showChat = this.settings.rocketChatUrl;
 
     if (this.args.event.isSchedulePublished) {
       try {
@@ -84,15 +86,5 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     this.loading = false;
     this.streams = [...this.streams];
-  }
-
-  @action
-  reOrderStreams(): void {
-    const streams = [...this.streams];
-    this.streams = [];
-    this.addStream(this.args.videoStream);
-    for (const stream of streams) {
-      this.addStream(stream);
-    }
   }
 }

@@ -54,7 +54,9 @@ Router.map(function() {
       });
     });
     this.route('stream', { path: '/video/:video_name' }, function() {
-      this.route('view', { path: '/:stream_id' });
+      this.route('view', { path: '/:stream_id' }, function() {
+        this.route('chat');
+      });
     });
     this.route('speaker', function() {
       this.route('view', { path: '/:speaker_id' });
@@ -78,6 +80,7 @@ Router.map(function() {
       this.route('view', { path: '/:exhibitor_id' });
       this.route('video', { path: '/:exhibitor_id/video' });
     });
+    this.route('chat');
   });
   this.route('role-invites');
   this.route('pricing');
