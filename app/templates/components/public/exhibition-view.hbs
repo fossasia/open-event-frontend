@@ -1,14 +1,16 @@
-<div>
-    <div class="d-flex space-between wrap {{if this.device.isMobile 'mb-4 mt--8' 'mb-8'}}">
-        <button class="ui primary basic button mr-2" {{action "changeExhibitor" -1}}>
-            <i class="left chevron icon"></i>
-            {{t 'Previous'}}
-        </button>
-        <button class="ui primary basic button ml-2" {{action "changeExhibitor" 1}}>
-            {{t 'Next'}}
-            <i class="right chevron icon"></i>
-        </button>
-    </div>
+<div {{did-insert this.initialise}}>
+    {{#if this.exhibitorsLoaded}}
+        <div class="d-flex space-between wrap {{if this.device.isMobile 'mb-4 mt--8' 'mb-8'}}">
+            <button class="ui primary basic button mr-2" {{action "changeExhibitor" -1}}>
+                <i class="left chevron icon"></i>
+                {{t 'Previous'}}
+            </button>
+            <button class="ui primary basic button ml-2" {{action "changeExhibitor" 1}}>
+                {{t 'Next'}}
+                <i class="right chevron icon"></i>
+            </button>
+        </div>
+    {{/if}}
     <div class="ui">
         <div class="featured-speaker">
             <img alt="exhibitor" class="ui rounded image" src="{{if this.data.exhibitor.bannerUrl this.data.exhibitor.bannerUrl '/images/placeholders/Other.jpg'}}">

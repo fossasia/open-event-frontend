@@ -5,12 +5,13 @@ import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 import { buttonColor } from 'open-event-frontend/utils/dictionary/social-media';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
-import { resolve } from 'rsvp';
+
+let exhibitors = [];
 
 @classic
-export default class ExhibitorView extends Component {
+export default class ExhibitionView extends Component {
   @service event;
-  preserveScrollPosition = true;
+  exhibitorsLoaded = false;
 
   @computed('data.exhibitor.videoUrl')
   get youtubeLink() {
@@ -54,22 +55,22 @@ export default class ExhibitorView extends Component {
   changeExhibitor(flag) {
     let nextPos = this.data.exhibitor.position + flag;
     if (nextPos < 0) {
-      nextPos = this.data.exhibitors.toArray().length - 1;
+      nextPos = exhibitors.toArray().length - 1;
     }
-    if (nextPos === (this.data.exhibitors.toArray().length)) {
+    if (nextPos === (exhibitors.toArray().length)) {
       nextPos = 0;
     }
-    const nextExhibitor = this.data.exhibitors.toArray().filter(exh => exh.position === nextPos);
+    const nextExhibitor = exhibitors.toArray().filter(exh => exh.position === nextPos);
     if (isEmpty(nextExhibitor)) {
-      const currentExhibitor = this.data.exhibitors.toArray().filter(exh => exh.id === this.data.exhibitor.id);
-      let nextIndex = this.data.exhibitors.toArray().indexOf(currentExhibitor[0]) + flag;
+      const currentExhibitor = exhibitors.toArray().filter(exh => exh.id === this.data.exhibitor.id);
+      let nextIndex = exhibitors.toArray().indexOf(currentExhibitor[0]) + flag;
       if (nextIndex < 0) {
-        nextIndex = this.data.exhibitors.toArray().length - 1;
+        nextIndex = exhibitors.toArray().length - 1;
       }
-      if (nextIndex === (this.data.exhibitors.toArray().length)) {
+      if (nextIndex === (exhibitors.toArray().length)) {
         nextIndex = 0;
       }
-      this.router.transitionTo('public.exhibition.view', this.data.exhibitors.toArray()[nextIndex].id);
+      this.router.transitionTo('public.exhibition.view', exhibitors.toArray()[nextIndex].id);
     } else {
       this.router.transitionTo('public.exhibition.view', nextExhibitor[0].id);
     }
@@ -85,9 +86,17 @@ export default class ExhibitorView extends Component {
     }
   }
 
-  async didRender() {
-    super.didRender(...arguments);
-    this.data.exhibitors =  await resolve(this.data.exhibitors);
+  @action
+  async initialise() {
+    if (!exhibitors.length) {
+      exhibitors =  await this.data.event.query('exhibitors', {
+        sort         : 'position',
+        'page[size]' : 0,
+        cache        : true,
+        public       : true
+      });
+    }
+    this.set('exhibitorsLoaded', true);
   }
 }
 
