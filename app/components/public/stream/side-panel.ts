@@ -38,30 +38,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
-  sessionFilter = {
-    name : 'sessions',
-    op   : 'any',
-    val  : {
-      or: [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'accepted'
-        }
-      ]
-    }
-  }
-
   async checkSpeakers(): Promise<void> {
     this.showSpeakers = this.showSpeakers ?? await this.event.hasSpeakers(this.args.event.id);
   }
@@ -92,7 +68,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     if (this.args.event.isSchedulePublished) {
       try {
-        const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?filter=[${JSON.stringify(this.sessionFilter)}]&include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
+        const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
         rooms.included?.map((stream: any) => ({
           id       : stream.id,
           name     : stream.attributes.name,
