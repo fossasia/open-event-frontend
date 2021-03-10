@@ -110,6 +110,7 @@ export default class AuthManagerService extends Service {
 
     const userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
+    userData.details = null;
     this.session.set('data.currentUserFallback', userData);
   }
 
@@ -142,7 +143,7 @@ export default class AuthManagerService extends Service {
 
   async initialize() {
     if (this.session.isAuthenticated) {
-      if (this.session.data.currentUserFallback.id) {
+      if (this.session.data.currentUserFallback?.id) {
         try {
           const user = await this.store.findRecord('user', this.session.data.currentUserFallback.id);
           this.set('currentUserModel', user);
