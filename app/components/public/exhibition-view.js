@@ -5,15 +5,21 @@ import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 import { buttonColor } from 'open-event-frontend/utils/dictionary/social-media';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
-
+import { resolve } from 'rsvp';
 
 @classic
-export default class ExhibitorItem extends Component {
+export default class ExhibitorView extends Component {
   @service event;
   preserveScrollPosition = true;
+
   @computed('data.exhibitor.videoUrl')
   get youtubeLink() {
     return extractYoutubeUrl(this.data.exhibitor.videoUrl);
+  }
+
+  @computed('data.exhibitor.sessions')
+  get exhibitorSessions() {
+    return this.data.exhibitor.sessions.sortBy('startsAt');
   }
 
   @computed('data.exhibitor.slidesUrl')
@@ -41,7 +47,7 @@ export default class ExhibitorItem extends Component {
 
   @computed('data.exhibitor')
   get contactExhibitor() {
-    return this.session.isAuthenticated;
+    return this.session.isAuthenticated && (this.data.exhibitor.contactEmail || this.data.exhibitor.contactLink);
   }
 
   @action
@@ -81,11 +87,7 @@ export default class ExhibitorItem extends Component {
 
   async didRender() {
     super.didRender(...arguments);
-    this.data.exhibitors =  await this.data.event.query('exhibitors', {
-      sort         : 'position',
-      'page[size]' : 0,
-      cache        : true,
-      public       : true
-    });
+    this.data.exhibitors =  await resolve(this.data.exhibitors);
   }
 }
+
