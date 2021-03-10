@@ -78,7 +78,7 @@
                 </LinkTo>
               </h4>
               {{#each this.model.tracks as |track|}} 
-                <p role="button" class="p-1 mb-1" {{action 'applyFilter' track.name 'track'}}>
+                <p role="button" class="p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) "active"}}" {{action 'applyFilter' track.name 'track'}}>
                   <i class="circle icon" style={{css color=track.color}}></i> 
                   {{track.name}}
                 </p>
@@ -94,7 +94,7 @@
               </h4>
               {{#each this.model.microlocations as |room|}}
                 {{#if (not room.hiddenInScheduler)}}
-                  <p class="p-1 mb-1" role="button" {{action 'applyFilter' room.name 'room'}}>
+                  <p class="p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) "active"}}" role="button" {{action 'applyFilter' room.name 'room'}}>
                     {{room.name}}
                   </p>
                 {{/if}}
