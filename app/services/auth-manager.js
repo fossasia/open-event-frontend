@@ -60,10 +60,8 @@ export default class AuthManagerService extends Service {
     return null;
   }
 
-  logout(skipInvalidate) {
-    if (!skipInvalidate) {
-      this.session.invalidate();
-    }
+  logout() {
+    this.session.invalidate();
     this.set('currentUserModel', null);
     this.session.set('data.currentUserFallback', null);
   }
@@ -149,15 +147,15 @@ export default class AuthManagerService extends Service {
           this.identify();
         } catch (e) {
           console.warn(e);
-          this.logout();
+          this.session.invalidate();
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         }
+
       } else {
         this.identifyStranger();
-        this.logout();
       }
     } else {
       this.identifyStranger();
-      this.logout(true);
     }
   }
 }
