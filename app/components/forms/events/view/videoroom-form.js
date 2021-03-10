@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
-import { allSettled } from 'rsvp';
+import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
 
 
@@ -15,6 +15,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked integrationLoading = false;
   @tracked loading = false;
   @tracked moderatorEmail = '';
+  @tracked deletedModerators = [];
 
   @computed('data.stream.rooms.[]')
   get room() {
@@ -64,7 +65,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
           ]
         },
         email: {
-          rules: [
+          optional : true,
+          rules    : [
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
@@ -175,13 +177,17 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       try {
         this.loading = true;
         await this.data.stream.save();
+        const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
+          return moderator.save();
+        });
+        const deleteModerators = this.deletedModerators.map(moderator => {
+          return moderator.destroyRecord();
+        });
+        await all([...saveModerators, ...deleteModerators]);
         this.notify.success(this.l10n.t('Your stream has been saved'),
           {
             id: 'stream_save'
           });
-        for (const moderator of this.data.stream.moderators.toArray()) {
-          await moderator.save();
-        }
         this.router.transitionTo('events.view.videoroom', this.data.event.id);
       } catch (e) {
         console.error('Error while saving session', e);
@@ -197,28 +203,27 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
-  async addModerator() {
+  addModerator() {
     if (this.moderatorEmail === '') {
       return;
     }
-    this.onValid(async() => {
-      const existingModeratorsEmail = this.data.stream.moderators.map( videoStreamModerator => videoStreamModerator.email);
-      if (!existingModeratorsEmail.includes(this.moderatorEmail)) {
-        try {
-          const videoStreamModerator = await this.store.createRecord('video-stream-moderator', {
-            'email'        : this.moderatorEmail,
-            'video-stream' : this.data.stream
-          });
-          await this.data.stream.moderators.pushObject(videoStreamModerator);
-          this.set('moderatorEmail', '');
-        } catch (error) {
-          console.error('Error while adding moderator', error);
-        }
-      } else {
-        this.set('moderatorEmail', '');
-        videoStreamModerator.unload();
+    this.onValid(() => {
+      const existingEmails = this.data.stream.moderators.map(moderator => moderator.email);
+      if (!existingEmails.includes(this.moderatorEmail)) {
+        const moderator = this.store.createRecord('video-stream-moderator', {
+          email       : this.moderatorEmail,
+          videoStream : this.data.stream
+        });
+        this.data.stream.moderators.pushObject(moderator);
       }
+      this.moderatorEmail = '';
     });
+  }
+
+  @action
+  deleteModerator(moderator) {
+    this.deletedModerators.push(moderator);
+    this.data.stream.moderators.removeObject(moderator);
   }
 
   didInsertElement() {
