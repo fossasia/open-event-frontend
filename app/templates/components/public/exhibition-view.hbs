@@ -53,14 +53,18 @@
 
         {{#if this.contactExhibitor}}
         <br/><br/>
-        <div class="d-flex content-center flex-column items-center">
+        <div class="d-flex content-center mt-8 flex-column items-center">
             <h2>{{t 'Get in touch'}}</h2>
-            {{#if this.data.exhibitor.contactEmail}}
-                <a target="_blank" href="mailto:{{this.data.exhibitor.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
-            {{/if}}
-            {{#if this.data.exhibitor.contactLink}}
-                <a target="_blank" href="{{this.data.exhibitor.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
-            {{/if}}
+            <div>
+                {{#if (and this.data.exhibitor.contactEmail this.data.exhibitor.contactLink)}}
+                    <a target="_blank" href="mailto:{{this.data.exhibitor.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+                    <a target="_blank" href="{{this.data.exhibitor.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+                {{else if this.data.exhibitor.contactEmail}}
+                        <a target="_blank" href="mailto:{{this.data.exhibitor.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+                {{else if this.data.exhibitor.contactLink}}
+                        <a target="_blank" href="{{this.data.exhibitor.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+                {{/if}}
+            </div>
         </div>
         {{/if}}
         {{#if this.data.exhibitor.sessions}}
