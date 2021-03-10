@@ -18,6 +18,7 @@ interface Args {
 export default class PublicStreamSidePanel extends Component<Args> {
   @service loader!: Loader;
   @service declare event: EventService;
+  @service declare settings: any;
 
   @tracked shown = false;
   @tracked loading = true;
@@ -25,6 +26,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showSessions: number | null = null;
   @tracked showSpeakers: number | null = null;
   @tracked showExhibitors: number | null = null;
+  @tracked showChat = false;
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -65,6 +67,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.checkSessions();
     this.checkSpeakers();
     this.checkExhibitors();
+    this.showChat = this.settings.rocketChatUrl;
 
     if (this.args.event.isSchedulePublished) {
       try {

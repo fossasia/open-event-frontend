@@ -37,6 +37,14 @@
           {{t 'Exhibition'}}</span>
         </a>
       {{/if}}
+
+      {{#if (and this.showChat @videoStream)}}
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.stream.view.chat') 'video-active'}}" href={{href-to 'public.stream.view.chat' @event @videoStream.slugName @videoStream.id (query-params side_panel='true')}}>
+          <span><i class="image icon"></i>
+          {{t 'Chat'}}</span>
+        </a>
+      {{/if}}
+
       <div class="item">
         <span><i class="video icon"></i>
         {{t 'Video Rooms'}}</span>
