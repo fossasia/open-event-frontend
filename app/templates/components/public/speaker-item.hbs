@@ -37,9 +37,12 @@
           {{#if this.speaker.github}}
             <a href={{this.speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
           {{/if}}
+          {{#if this.speaker.website}}
+            <a href={{this.speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i></a>
+          {{/if}}
         </div>
       {{/if}}
-      {{#if this.speaker.event.isSchedulePublished}}
+      {{#if (or this.event.isSchedulePublished this.speaker.event.isSchedulePublished)}}
         <div class="ui divider"></div>
         <h3 class="ui header">
           {{t 'Sessions'}}
