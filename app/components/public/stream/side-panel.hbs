@@ -16,7 +16,7 @@
         <i class="angle left icon pr-2"></i>
       </button>
     </div>
-    <div class="ui inverted vertical fluid menu borderless stream-side-menu">
+    <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="flex-shrink: 0;">
       {{#if (and @event.isSchedulePublished this.showSessions)}}
         <a class="ui labeled fluid item {{if (eq @currentRoute 'public.sessions.index') 'video-active'}}" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <span><i class="calendar icon"></i>
