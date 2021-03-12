@@ -6,6 +6,8 @@ import Loader from 'open-event-frontend/services/loader';
 export default class PublicStreamViewChat extends Route {
   @service declare l10n: any;
   @service declare loader: Loader;
+  @service router: any;
+  @service confirm: any;
 
   titleToken(): string {
     return this.l10n.t('Chat')
@@ -13,6 +15,21 @@ export default class PublicStreamViewChat extends Route {
 
   renderTemplate(): void {
     this.render('public/chat', { into: 'root' });
+  }
+
+  async beforeModel(): Promise<void> {
+    try {
+      const message = 'Please confirm you understand and agree to the conditions of using the chat! '
+        + 'If you join the event chat your profile name and image will be visible to other attendees. Other event attendees can also contact you directly. '
+        + 'You may change your chat name and chat profile picture by going to account settings on the chat page on the top left. '
+        + 'You need to minimize the side panel to access it. '
+        + 'The feature integration is still in Alpha stage and currently your profile on the eventyay account page and on the chat are not linked and can be independently edited. '
+        + 'When you change the chat settings you may receive additional email confirmations. '
+        + 'Do you want to use the chat now?'
+      await this.confirm.prompt(this.l10n.t(message));
+    } catch {
+      this.router.transitionTo('public');
+    }
   }
 
   async model(): Promise<{event: Event, success: boolean, token: string}> {
