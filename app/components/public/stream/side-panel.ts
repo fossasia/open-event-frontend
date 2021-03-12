@@ -19,7 +19,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @service loader!: Loader;
   @service declare event: EventService;
   @service declare settings: any;
-  @service declare router: any;
 
   @tracked shown = false;
   @tracked loading = true;
@@ -28,7 +27,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showSpeakers: number | null = null;
   @tracked showExhibitors: number | null = null;
   @tracked showChat = false;
-  @tracked isChatModalOpen = false;
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -88,23 +86,5 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     this.loading = false;
     this.streams = [...this.streams];
-  }
-
-  @action
-  openChatModal(): void {
-    if (this.router.currentRoute.name === 'public.chat') {
-      return;
-    }
-    this.isChatModalOpen = true;
-  }
-
-  @action
-  closeChatModal(): void {
-    this.isChatModalOpen = false;
-  }
-
-  @action
-  openChat(): void {
-    this.router.transitionTo('public.chat', { queryParams: { side_panel: true } });
   }
 }

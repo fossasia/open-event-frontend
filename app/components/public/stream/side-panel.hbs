@@ -39,10 +39,10 @@
       {{/if}}
 
       {{#if this.showChat}}
-        <button class="ui labeled icon fluid button item chat-button {{if (eq @currentRoute 'public.chat') 'video-active'}}" {{action this.openChatModal}} style="padding-left: 1.2em !important;" >
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.chat') 'video-active'}}" href={{href-to 'public.chat' @event (query-params side_panel='true')}}>
           <span><i class="comment icon"></i>
           {{t 'Chat'}}</span>
-        </button>
+        </a>
       {{/if}}
 
       <div class="item">
@@ -63,17 +63,3 @@
     {{/if}}
   </div>
 {{/if}}
-
-<Modals::SimpleModal
-  @isOpen={{this.isChatModalOpen}}
-  @header={{t 'Confirm Action'}}
-  @action={{this.openChat}}
-  @actionName='Confirm'
-  @cancel={{this.closeChatModal}}>
-      {{ t 'If you confirm the dialog, your profile name will be visible to other people in the public chat'}}. 
-      {{ t 'You may change your username and profile picture by going to account settings on the chat page'}}
-      {{ t 'on top left corner. The profile on'}}
-      {{this.settings.appName}}
-      {{ t 'and chat page are not linked and can be independently edited. You may receive some emails from'}}
-      {{ t 'the chat application to confirm your email'}}.
-</Modals::SimpleModal>
