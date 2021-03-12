@@ -46,6 +46,11 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath  : 'videoStream.password'
       },
       {
+        name          : this.l10n.t('Moderators'),
+        valuePath     : 'videoStream.moderators',
+        cellComponent : 'ui-table/cell/events/view/videoroom/cell-email'
+      },
+      {
         name       : this.l10n.t('Additional information'),
         helperInfo : 'Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.',
         valuePath  : 'videoStream.additionalInformation'
