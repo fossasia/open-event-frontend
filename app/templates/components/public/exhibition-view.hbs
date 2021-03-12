@@ -24,8 +24,10 @@
             </div>
         {{/if}}
         <br/><br/>
+        <div class="d-flex" style="justify-content: center;">
+            <img class="ui rounded small image m-0 mb-1" src="{{or this.data.exhibitor.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo">
+        </div>
         <h1 class="ui centered header no margin">
-            <img class="ui small image m-0 mb-1" src="{{or this.data.exhibitor.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo">
             {{this.data.exhibitor.name}}
         </h1>
         <br/>
