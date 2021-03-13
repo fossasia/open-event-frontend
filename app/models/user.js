@@ -66,6 +66,8 @@ export default class User extends ModelBase.extend({
   billingAdditionalInfo : attr('string'),
   billingState          : attr('string'),
 
+  isRocketChatRegistered: attr('boolean', { readOnly: true }),
+
   status: computed('lastAccessedAt', 'deletedAt', function() {
     if (this.deletedAt == null) {
       if (this.lastAccessedAt == null) {

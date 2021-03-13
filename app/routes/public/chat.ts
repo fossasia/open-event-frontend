@@ -10,6 +10,7 @@ export default class PublicStreamViewChat extends Route {
   @service router: any;
   @service confirm: any;
   @service session : any;
+  @service authManager: any;
 
   titleToken(): string {
     return this.l10n.t('Chat')
@@ -20,15 +21,18 @@ export default class PublicStreamViewChat extends Route {
   }
 
   async beforeModel(): Promise<void> {
+    if (this.authManager.currentUser?.isRocketChatRegistered) {
+      return;
+    }
     try {
-      const heading = 'Please confirm you understand and agree to the conditions of using the chat!'
+      const heading = this.l10n.t('Please confirm that you understand and agree to the conditions of using the chat!');
 
-      const content =  'If you join the event chat your profile name and image will be visible to other attendees. Other event attendees can also contact you directly.<br/><br/>'
-        + 'You may change your chat name and chat profile picture by going to account settings on the chat page on the top left. '
-        + 'You need to minimize the side panel to access it. '
-        + 'The feature integration is still in Alpha stage and currently your profile on the eventyay account page and on the chat are not linked and can be independently edited. '
-        + 'When you change the chat settings you may receive additional email confirmations.<br/><br/>'
-        + 'Do you want to use the chat now?'
+      const content =  this.l10n.t('If you join the event chat, your profile name and image will be visible to other attendees. Other event attendees can also contact you directly.') + '<br/><br/>'
+        + this.l10n.t('You may change your chat name and chat profile picture by going to account settings on the chat page on the top left.') + ' '
+        + this.l10n.t('You need to minimize the side panel to access it.') + ' '
+        + this.l10n.t('The feature integration is still in Alpha stage and currently your profile on the eventyay account page and on the chat are not linked and can be independently edited.') + ' '
+        + this.l10n.t('When you change the chat settings you may receive additional email confirmations.') + '<br/><br/>'
+        + this.l10n.t('Do you want to use the chat now?');
 
       const options = {
         denyText     : 'Cancel',
