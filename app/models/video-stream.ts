@@ -4,15 +4,25 @@ import { slugify, stringHashCode } from 'open-event-frontend/utils/text';
 import Event from './event';
 import Microlocation from './microlocation';
 import VideoChannel from './video-channel';
+import VideoStreamModerator from './video-stream-moderator';
+
+export interface Extra {
+  autoplay: boolean;
+  loop: boolean;
+}
+
 
 export default class VideoStream extends ModelBase.extend() {
   @attr() name!: string;
   @attr() url!: string;
   @attr() password!: string;
   @attr() additionalInformation!: string;
+  @attr() extra!: Extra;
+
   @hasMany('microlocation') rooms!: Microlocation[];
   @belongsTo('event') event!: Event;
   @belongsTo('video-channel') videoChannel!: VideoChannel;
+  @hasMany('video-stream-moderator') moderators!: VideoStreamModerator;
 
   get slugName(): string {
     return slugify(this.name);

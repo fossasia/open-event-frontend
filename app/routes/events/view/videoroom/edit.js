@@ -22,8 +22,13 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
         'page[size]': 0
       }),
       stream: this.store.findRecord('video-stream', params.stream_id, {
-        include: 'rooms,event,video-channel'
+        include: 'rooms,event,video-channel,moderators'
       })
     });
+  }
+
+  resetController(controller) {
+    super.resetController(...arguments);
+    controller.model.stream.rollbackAttributes();
   }
 }
