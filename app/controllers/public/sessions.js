@@ -16,7 +16,6 @@ export default class SessionsController extends Controller {
   dates = null;
   preserveScrollPosition = true;
   my_schedule=null;
-  isDateFilterActive=Boolean(new URLSearchParams(location.search).get('date'));
 
   @computed('sort')
   get sortTitle() {
@@ -50,11 +49,6 @@ export default class SessionsController extends Controller {
         .map(date => moment.tz(date.startsAt, this.timezone).toISOString())
         .sort()
         .map(date => moment(date).format('YYYY-MM-DD')));
-
-      if (moment().isSameOrAfter(this.model.event.startsAt) && moment().isSameOrBefore(this.model.event.endsAt) && [...uniqueDates].includes(moment().format('YYYY-MM-DD')) && !this.isDateFilterActive) {
-        this.set('date', moment(moment.tz(moment(), this.model.event.timezone).toISOString()).format('YYYY-MM-DD'));
-        this.set('isDateFilterActive', true);
-      }
 
       return [...uniqueDates];
     } else {
