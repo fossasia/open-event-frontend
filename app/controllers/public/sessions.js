@@ -40,7 +40,7 @@ export default class SessionsController extends Controller {
 
       if (moment().isSameOrAfter(this.model.event.startsAt) && moment().isSameOrBefore(this.model.event.endsAt) && [...uniqueDates].includes(moment().format('YYYY-MM-DD')) && !this.isDateFilterActive) {
         this.set('date', moment(moment.tz(moment(), this.model.event.timezone).toISOString()).format('YYYY-MM-DD'));
-        this.set('needToSetDate', false);
+        this.set('isDateFilterActive', true);
       }
 
       return [...uniqueDates];
