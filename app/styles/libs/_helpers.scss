@@ -144,6 +144,7 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
   height: 50px;
   max-width: 50px;
   max-height: 50px;
+  margin-right: 0 !important;
 }
 
 .w-full {
@@ -171,13 +172,10 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
 }
 
 .social-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 
   &::after {
     content: '';
-    flex: auto;
+    flex-basis: 105px;
   }
 }
 
