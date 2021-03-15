@@ -127,6 +127,9 @@
         {{#if @session.gitlab}}
           <a href={{@session.gitlab}} target="_blank" rel="noopener noreferrer"><i class="gitlab icon"></i>{{t 'GitLab'}}</a>
         {{/if}}
+        {{#if @session.mastodon}}
+          <a href={{@session.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
+        {{/if}}
          </div>
     </div>
     {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
@@ -192,6 +195,9 @@
         {{/if}}
         {{#if speaker.website}}
           <a href={{speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i>{{t 'Website'}}</a>
+        {{/if}}
+        {{#if speaker.mastodon}}
+          <a href={{speaker.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
         {{/if}}
       </div>
     {{/each}}
