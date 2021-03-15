@@ -106,7 +106,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'mastadon',
+        fieldIdentifier : 'mastodon',
         form            : 'session',
         type            : 'text',
         isRequired      : false,
@@ -379,7 +379,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'mastadon',
+        fieldIdentifier : 'mastodon',
         form            : 'speaker',
         type            : 'text',
         isRequired      : false,

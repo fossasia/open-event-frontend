@@ -23,7 +23,7 @@ export const SPEAKER_FORM_FIELDS = {
   facebook            : tn.t('Facebook'),
   twitter             : tn.t('Twitter'),
   instagram           : tn.t('Instagram'),
-  mastadon            : tn.t('Mastodon'),
+  mastodon            : tn.t('Mastodon'),
   linkedin            : tn.t('Linkedin'),
   heardFrom           : tn.t('Heard From'),
   sponsorshipRequired : tn.t('Sponsorship Required')
@@ -50,7 +50,7 @@ export const SESSION_FORM_FIELDS = {
   instagram     : tn.t('Instagram'),
   linkedin      : tn.t('Linkedin'),
   gitlab        : tn.t('GitLab'),
-  mastadon      : tn.t('Mastodon'),
+  mastodon      : tn.t('Mastodon'),
   comments      : tn.t('Comments')
 };
 
@@ -98,7 +98,7 @@ export default ModelBase.extend({
     github               : tn.t('GitHub'),
     instagram            : tn.t('Instagram'),
     linkedin             : tn.t('LinkedIn'),
-    mastadon             : tn.t('Mastodon'),
+    mastodon             : tn.t('Mastodon'),
     gender               : tn.t('Gender'),
     acceptReceiveEmails  : tn.t('Email consent'),
     acceptVideoRecording : tn.t('Photo & video & text consent'),
