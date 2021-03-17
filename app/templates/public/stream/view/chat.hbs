@@ -1,0 +1,8 @@
+{{#if this.model.token}}
+  <Public::Stream::Chat @token={{this.model.token}} />
+{{/if}}
+{{#if (not this.model.success)}}
+  <h3>Unable to login to chat. Please contact the administrator</h3>
+{{/if}}
+
+<Public::Stream::SidePanel @event={{this.model.event}} @videoStream={{this.model.stream}} @currentRoute={{this.session.currentRouteName}} />

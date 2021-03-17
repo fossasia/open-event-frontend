@@ -51,6 +51,13 @@ export default class PublicController extends Controller {
   toLogin() {
     if (!this.authManager.currentUser) {
       this.transitionToRoute('login');
+    } else {
+      const el = document.querySelector('#tickets');
+      window.scroll({ top: el?.getBoundingClientRect().top, left: 0, behavior: 'smooth' });
+      document.querySelectorAll('.scroll').forEach(node => {
+        node.classList.remove('active');
+      });
+      this.transitionToRoute(this.session.currentRouteName, { queryParams: { video_dialog: null } });
     }
   }
 
