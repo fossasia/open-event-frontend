@@ -6,9 +6,15 @@ import Microlocation from './microlocation';
 import VideoChannel from './video-channel';
 import VideoStreamModerator from './video-stream-moderator';
 
+export interface Options {
+  record: boolean;
+  autoStartMeeting: boolean;
+  muteOnStart: boolean;
+}
 export interface Extra {
   autoplay: boolean;
   loop: boolean;
+  options: Options;
 }
 
 

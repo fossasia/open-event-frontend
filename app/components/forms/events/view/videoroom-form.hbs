@@ -112,6 +112,35 @@
         @onChange={{action (mut this.data.stream.extra.loop)}} />
     </div>
   {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label>
+          {{t 'Record'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.options.record}}
+        @onChange={{action (mut this.data.stream.extra.options.record)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Auto Start Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.options.autoStartRecording}}
+        @onChange={{action (mut this.data.stream.extra.options.autoStartRecording)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.options.muteOnStart}}
+        @onChange={{action (mut this.data.stream.extra.options.muteOnStart)}} />
+    </div>
+  {{/if}}
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>

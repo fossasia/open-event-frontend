@@ -115,6 +115,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   addBigBlueButton(channel) {
     this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+    this.data.stream.set('extra', { 'options': { 'record': true, 'autoStartRecording': true, 'muteOnStart': true } });
   }
 
   @action
