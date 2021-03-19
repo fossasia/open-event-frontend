@@ -115,7 +115,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   addBigBlueButton(channel) {
     this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
-    this.data.stream.set('extra', { 'options': { 'record': true, 'autoStartRecording': true, 'muteOnStart': true } });
+    this.data.stream.set('extra', { 'options': { 'record': true, 'autoStartRecording': false, 'muteOnStart': true } });
   }
 
   @action
@@ -224,7 +224,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   didInsertElement() {
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
-      this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+      this.data.stream.set('extra', { 'options': { 'record': true, 'autoStartRecording': false, 'muteOnStart': true } });
+    }
+    if (this.data.stream.extra.options === undefined && this.data.stream.videoChannel.get('provider') === 'bbb') {
+      this.data.stream.set('extra', { 'options': { 'record': true, 'autoStartRecording': false, 'muteOnStart': true } });
     }
   }
 }
