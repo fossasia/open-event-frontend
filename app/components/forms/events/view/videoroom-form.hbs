@@ -134,7 +134,7 @@
       {{t 'Add'}}
     </button>
   </div>
-  {{#if (and this.recordings (eq this.data.stream.videoChannel.provider 'bbb'))}}
+  {{#if this.videoRecordings}}
     <div class="ui hidden divider"></div>
       <div class="mt-2">
         <p class="weight-600">{{t 'BBB Recordings'}}</p>
