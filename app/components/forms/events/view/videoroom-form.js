@@ -224,9 +224,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   didInsertElement() {
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
-      this.data.stream.set('extra', { 'options': { 'record': true, 'autoStartRecording': false, 'muteOnStart': true } });
+      this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
     }
-    if (this.data.stream.extra.options === undefined && this.data.stream.videoChannel.get('provider') === 'bbb') {
+    if (!this.data.stream.extra.options && this.data.stream.videoChannel.get('provider') === 'bbb') {
       this.data.stream.set('extra', { 'options': { 'record': true, 'autoStartRecording': false, 'muteOnStart': true } });
     }
   }
