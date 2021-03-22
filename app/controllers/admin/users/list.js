@@ -108,8 +108,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         width           : 200,
         cellComponent   : 'ui-table/cell/admin/users/cell-user-actions',
         actions         : {
-          sendVerificationMail: this.sendVerificationMail.bind(this),
-          resetPasswordMail: this.resetPasswordMail.bind(this)
+          sendVerificationMail : this.sendVerificationMail.bind(this),
+          resetPasswordMail    : this.resetPasswordMail.bind(this)
         }
       }
     ];
@@ -224,7 +224,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   sendVerificationMail(email) {
     const payload = {
       'data': {
-        'email': email
+        email
       }
     };
     this.loader
@@ -252,7 +252,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   resetPasswordMail(email) {
     const payload = {
       'data': {
-        'email': email
+        email
       }
     };
     this.loader
@@ -270,6 +270,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           console.error('Error while submitting reset password', reason);
           this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
         }
-      })
+      });
   }
 }
