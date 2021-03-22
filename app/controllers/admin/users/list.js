@@ -100,6 +100,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         actions         : {
           toggleVerify: this.toggleVerify.bind(this)
         }
+      },
+      {
+        name            : this.l10n.t('Actions'),
+        valuePath       : 'isVerified',
+        extraValuePaths : ['email'],
+        width           : 200,
+        cellComponent   : 'ui-table/cell/admin/users/cell-user-actions',
+        actions         : {
+          sendVerificationMail: this.sendVerificationMail.bind(this),
+          resetPasswordMail: this.resetPasswordMail.bind(this)
+        }
       }
     ];
   }
@@ -207,5 +218,58 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     }
 
     this.set('isLoading', false);
+  }
+
+  @action
+  sendVerificationMail(email) {
+    const payload = {
+      'data': {
+        'email': email
+      }
+    };
+    this.loader
+      .post('/auth/resend-verification-email', payload)
+      .then(() => {
+        this.notify.success(this.l10n.t('Verification mail sent successfully'), {
+          id: 'ver_mail_succ'
+        });
+      })
+      .catch(error => {
+        console.error('Error while sending verification email', error, error.error);
+        if (error.error) {
+          this.notify.error(error.error, {
+            id: 'ver_mail_serv_error'
+          });
+        } else {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
+            id: 'ver_mail_serv'
+          });
+        }
+      });
+  }
+
+  @action
+  resetPasswordMail(email) {
+    const payload = {
+      'data': {
+        'email': email
+      }
+    };
+    this.loader
+      .post('auth/reset-password', payload)
+      .then(() => {
+        this.notify.success(this.l10n.t('Password Reset Email is successfully sent.'), {
+          id: 'reset_link_sent'
+        });
+      })
+      .catch(reason => {
+        if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 404) {
+          console.warn('Reset Password: No user account found', reason);
+          this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
+        } else {
+          console.error('Error while submitting reset password', reason);
+          this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
+        }
+      })
   }
 }
