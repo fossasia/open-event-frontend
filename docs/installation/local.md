@@ -6,7 +6,7 @@ You will need the following things properly installed on your computer.
 * **[Git](https://git-scm.com/)**
 * **[Node.js 14.x LTS](https://nodejs.org/)**
 * **[Yarn](https://yarnpkg.com/en/docs/install)**
-* 
+ 
 ## Steps
 * `git clone <repository-url>` this repository
 * `cd open-event-frontend`
