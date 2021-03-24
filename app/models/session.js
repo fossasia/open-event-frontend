@@ -35,6 +35,7 @@ export default class Session extends ModelBase.extend({
   signupUrl     : attr('string'),
   sendEmail     : attr('boolean'),
   averageRating : attr('number'),
+  mastodon      : attr('string'),
 
   isLocked   : attr('boolean', { defaultValue: false }),
   isMailSent : attr('boolean', { defaultValue: false }),
