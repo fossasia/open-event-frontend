@@ -78,13 +78,10 @@
                 </LinkTo>
               </h4>
               {{#each this.model.tracks as |track|}} 
-                <LinkTo
-                  class="p-1 mb-1 rounded-default link-item {{if (eq this.params.track track.name) 'active'}}"
-                  @route="public.sessions"
-                  @models={{array this.model.id}}
-                  @query={{hash track=track.name}}>
-                  <i class="circle icon" style={{css color=track.color}}></i> {{track.name}}
-                </LinkTo>
+                <p role="button" class="p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) "active"}}" {{action 'applyFilter' track.name 'track'}}>
+                  <i class="circle icon" style={{css color=track.color}}></i> 
+                  {{track.name}}
+                </p>
               {{/each}}
               </div>
               <br>
@@ -97,13 +94,9 @@
               </h4>
               {{#each this.model.microlocations as |room|}}
                 {{#if (not room.hiddenInScheduler)}}
-                  <LinkTo
-                    class="p-1 mb-1 rounded-default link-item {{if (eq this.params.room room.name) 'active'}}"
-                    @route="public.sessions" 
-                    @models={{array this.model.id}}
-                    @query={{hash room=room.name}}>
+                  <p class="p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) "active"}}" role="button" {{action 'applyFilter' room.name 'room'}}>
                     {{room.name}}
-                  </LinkTo>
+                  </p>
                 {{/if}}
               {{/each}}
               <h4>
@@ -128,7 +121,7 @@
                     @class="item"
                     @label={{sessionType.name}}
                     @checked={{if (includes this.activeSession sessionType.name) "active"}}
-                    @onChange={{action this.transition sessionType.name}}/>
+                    @onChange={{action this.sessionFilter sessionType.name}}/>
                   {{/each}}
                 </div>
               </UiDropdown> 
