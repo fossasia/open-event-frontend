@@ -256,7 +256,7 @@ Router.map(function() {
       this.route('events');
     });
     this.route('groups', function() {
-      this.route('list', { path: '/:group_status' })
+      this.route('list', { path: '/:group_status' });
     });
   });
   this.route('orders', function() {

@@ -1,0 +1,16 @@
+<span>{{@record}}</span>
+<div class="ui hidden divider"></div>
+<div class="ui horizontal compact basic buttons">
+  <UiPopup @tagName="a"  @content={{t "View"}} @class="ui icon button">
+    <i class="unhide icon"></i>
+  </UiPopup>
+      <UiPopup @content={{t "Edit"}}  @class="ui icon button">
+        <i class="edit icon"></i>
+      </UiPopup>
+      <UiPopup @content={{t "Restore"}}  @class="ui icon button" @position="left center">
+        <i class="undo icon"></i>
+      </UiPopup>
+      <UiPopup @content={{t "Delete"}} @class="ui icon button">
+        <i class="trash icon"></i>
+      </UiPopup>
+</div>
