@@ -14,7 +14,7 @@ export interface Options {
 export interface Extra {
   autoplay: boolean;
   loop: boolean;
-  options: Options;
+  bbb_options: Options;
 }
 
 

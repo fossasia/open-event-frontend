@@ -119,8 +119,8 @@
       </label>
       <UiCheckbox
         class="toggle"
-        @checked={{this.data.stream.extra.options.record}}
-        @onChange={{action (mut this.data.stream.extra.options.record)}} />
+        @checked={{this.data.stream.extra.bbb_options.record}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.record)}} />
     </div>
     <div class="field">
       <label>
@@ -128,8 +128,8 @@
       </label>
       <UiCheckbox
         class="toggle"
-        @checked={{this.data.stream.extra.options.autoStartRecording}}
-        @onChange={{action (mut this.data.stream.extra.options.autoStartRecording)}} />
+        @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.autoStartRecording)}} />
     </div>
     <div class="field">
       <label>
@@ -137,8 +137,8 @@
       </label>
       <UiCheckbox
         class="toggle"
-        @checked={{this.data.stream.extra.options.muteOnStart}}
-        @onChange={{action (mut this.data.stream.extra.options.muteOnStart)}} />
+        @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.muteOnStart)}} />
     </div>
   {{/if}}
   <div class="ui divider"></div>
