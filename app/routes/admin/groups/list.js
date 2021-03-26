@@ -72,18 +72,18 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     // }
 
     // filterOptions = this.applySearchFilters(filterOptions, params, searchField);
-    // let queryString = {
-    //   get_trashed    : true,
-    //   include        : 'user,events',
+    let queryString = {
+      get_trashed    : true,
+      include        : 'user,events',
     // filter         : filterOptions,
-    // 'page[size]'   : params.per_page || 10,
-    // 'page[number]' : params.page || 1
-    // };
-    // queryString = this.applySortFilters(queryString, params);
-    // return  this.asArray(this.store.query('group', queryString));
-    const response = await fetch('/api/fakeData.json');
-    const parsed = await response.json();
-    return parsed;
+      'page[size]'   : params.per_page || 10,
+      'page[number]' : params.page || 1
+    };
+    queryString = this.applySortFilters(queryString, params);
+    return  this.asArray(this.store.query('group', queryString));
+    // const response = await fetch('/api/fakeData.json');
+    // const parsed = await response.json();
+    // return parsed;
   }
 
   @action

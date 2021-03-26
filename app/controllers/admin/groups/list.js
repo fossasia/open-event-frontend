@@ -12,16 +12,23 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name      : this.l10n.t('Owner'),
-        valuePath : 'user'
+        valuePath : 'user',
+        cellComponent : 'ui-table/cell/admin/groups/cell-group-owner'
       },
       {
         name      : this.l10n.t('Number of Events'),
-        valuePath : 'events'
+        valuePath : 'events',
+        cellComponent : 'ui-table/cell/admin/groups/cell-group-events'
       },
       {
         name      : this.l10n.t('Created'),
+        valuePath : 'createdAt',
+        cellComponent : 'ui-table/cell/admin/groups/cell-group-created'
+      },
+      {
+        name      : this.l10n.t('Public URL'),
         valuePath : 'createdAt'
-      }
+      },
     ];
   }
 }
