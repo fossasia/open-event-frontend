@@ -13,6 +13,10 @@ export default class PublicController extends Controller {
 
   @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
 
+  @tracked activeRoom = this.router.currentRoute.queryParams.room ? this.router.currentRoute.queryParams.room.split(',') : [];
+
+  @tracked activeTrack = this.router.currentRoute.queryParams.track ? this.router.currentRoute.queryParams.track.split(',') : [];
+
   @computed('model.socialLinks')
   get twitterLink() {
     return this.model.socialLinks.findBy('isTwitter', true);
@@ -51,6 +55,13 @@ export default class PublicController extends Controller {
   toLogin() {
     if (!this.authManager.currentUser) {
       this.transitionToRoute('login');
+    } else {
+      const el = document.querySelector('#tickets');
+      window.scroll({ top: el?.getBoundingClientRect().top, left: 0, behavior: 'smooth' });
+      document.querySelectorAll('.scroll').forEach(node => {
+        node.classList.remove('active');
+      });
+      this.transitionToRoute(this.session.currentRouteName, { queryParams: { video_dialog: null } });
     }
   }
 
@@ -60,13 +71,33 @@ export default class PublicController extends Controller {
   }
 
   @action
-  transition(name) {
+  sessionFilter(name) {
     if (this.activeSession.includes(name)) {
       this.activeSession = this.activeSession.filter(session => session !== name);
     } else {
       this.activeSession = [...this.activeSession, name];
     }
     this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': this.activeSession } });
+  }
+
+  @action
+  applyFilter(value, filterType) {
+    value = value + ':';
+    if (filterType === 'room') {
+      if (this.activeRoom.includes(value)) {
+        this.activeRoom = this.activeRoom.filter(room => room !== value);
+      } else {
+        this.activeRoom = [...this.activeRoom, value];
+      }
+      this.router.transitionTo('public.sessions', { queryParams: { 'room': this.activeRoom } });
+    } else {
+      if (this.activeTrack.includes(value)) {
+        this.activeTrack = this.activeTrack.filter(track => track !== value);
+      } else {
+        this.activeTrack = [...this.activeTrack, value];
+      }
+      this.router.transitionTo('public.sessions', { queryParams: { 'track': this.activeTrack } });
+    }
   }
 
   @action

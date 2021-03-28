@@ -32,7 +32,8 @@
 <form class="ui form {{if this.isLoading 'loading'}}">
   <div class="field">
     <label class="required">{{t 'Room'}}</label>
-    <input value={{this.roomName}} readonly>
+    <Input
+      @value={{this.data.stream.name}} />
   </div>
   {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
@@ -101,6 +102,44 @@
         @checked={{this.data.stream.extra.autoplay}}
         @onChange={{action (mut this.data.stream.extra.autoplay)}} />
     </div>
+    <div class="field">
+      <label for="public_name">
+          {{t 'Loop'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.loop}}
+        @onChange={{action (mut this.data.stream.extra.loop)}} />
+    </div>
+  {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label>
+          {{t 'Record'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.record}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.record)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Auto Start Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.autoStartRecording)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.muteOnStart)}} />
+    </div>
   {{/if}}
   <div class="ui divider"></div>
   <div class="grouped fields">
@@ -111,9 +150,41 @@
     <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'All logged in users'}} /></div>
     <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'Public (no restriction)'}} /></div>
   </div>
+  <div class="ui divider"></div>
+  <div class="ui header">{{t 'Moderators'}}</div>
+  <div class="ui action input">
+    <Input
+      @type="email"
+      @id="email"
+      @value={{this.moderatorEmail}}
+      placeholder={{t 'Add Email of Moderators'}} />
+    <button class="ui blue right labeled icon button" style="font-size: 1rem;" type="button" {{action this.addModerator}}>
+      <i class="add icon"></i>
+      {{t 'Add'}}
+    </button>
+  </div>
+  {{#if this.videoRecordings}}
+    <div class="ui hidden divider"></div>
+      <div class="mt-2">
+        <p class="weight-600">{{t 'BBB Recordings'}}</p>
+        <div>
+          {{#each this.videoRecordings as |recording|}}
+            <a target="_blank" href={{recording}} rel="noopener">{{recording}}</a>
+            <br />
+          {{/each}}
+        </div>
+    </div>
+  {{/if}}
+  <div class="mt-2">
+    {{#each this.data.stream.moderators as |moderator|}}
+      <span class="ui label transition visible" style="display: inline-block !important;">{{moderator.email}}
+        <i role="button" class="delete icon" {{action this.deleteModerator moderator}}></i>
+      </span>
+    {{/each}}
+  </div>
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
   <LinkTo @route="events.view.videoroom.index" class="ui red button">
-        {{t 'Cancel'}}
+    {{t 'Cancel'}}
   </LinkTo>
 </form>

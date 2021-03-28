@@ -35,6 +35,7 @@ export default class Session extends ModelBase.extend({
   signupUrl     : attr('string'),
   sendEmail     : attr('boolean'),
   averageRating : attr('number'),
+  mastodon      : attr('string'),
 
   isLocked   : attr('boolean', { defaultValue: false }),
   isMailSent : attr('boolean', { defaultValue: false }),
@@ -43,6 +44,7 @@ export default class Session extends ModelBase.extend({
   deletedAt          : attr('string'),
   submittedAt        : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
   lastModifiedAt     : attr('string'),
+  favouriteCount     : attr('number'),
   complexFieldValues : attr(),
   sessionType        : belongsTo('session-type'),
   microlocation      : belongsTo('microlocation'),
@@ -53,6 +55,7 @@ export default class Session extends ModelBase.extend({
   creator            : belongsTo('user'),
   favourite          : belongsTo('user-favourite-session', { inverse: 'session' }),
   favourites         : hasMany('user-favourite-session'),
+  exhibitors         : hasMany('exhibitor'),
 
   status: computed('state', 'deletedAt', function() {
     if (this.deletedAt !== null) {
