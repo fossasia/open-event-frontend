@@ -99,9 +99,11 @@
                 <h4 class="weight-300">
                   {{t 'Profile Image'}}  // 
                 </h4>
+                {{#if this.data.profileImage==undefined}}
                 
                 {{gravatar-image email=this.data.email
                 defaultImage='mp'}}
+                {{/if}}
               
 
               </div>
