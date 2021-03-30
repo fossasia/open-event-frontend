@@ -4,11 +4,14 @@ import { assign } from '@ember/polyfills';
 import { Promise } from 'rsvp';
 import { isEmpty } from '@ember/utils';
 import ENV from 'open-event-frontend/config/environment';
+import { inject as service } from '@ember/service';
 
 export default JWT.extend({
   init() {
     this._super(...arguments);
   },
+
+  session: service(),
 
   handleAuthResponse(response, oldRefreshToken = null) {
     const token = get(response, this.tokenPropertyName);
@@ -47,6 +50,7 @@ export default JWT.extend({
 
   refreshAccessToken(token) {
     this.headers[ENV['ember-simple-auth-token'].authorizationHeaderName] = ENV['ember-simple-auth-token'].authorizationPrefix + token;
+    this.headers['X-CSRF-Token'] = this.session.data.authenticated.tokenData.csrf;
 
     const data = this.makeRefreshData(token);
     return this.makeRequest(this.serverTokenRefreshEndpoint, data, this.headers).then(response => {

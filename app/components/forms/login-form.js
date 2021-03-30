@@ -15,6 +15,11 @@ export default class LoginForm extends Component.extend(FormMixin) {
   showHcaptcha     = !!ENV.hcaptchaKey;
   rememberMe       = false;
 
+  set setSessionCookie(rememberMe) {
+    const expirationTime = rememberMe ? (365 * 24 * 60 * 60) : (1 * 24 * 60 * 60);
+    this.set('session.store.cookieExpirationTime', expirationTime);
+  }
+
   getValidationRules() {
     return {
       inline : true,
@@ -66,6 +71,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
             await this.store.findRecord('user', tokenPayload.identity)
           );
         }
+        this.set('setSessionCookie', this.rememberMe);
       } catch (e) {
         this.set('counter', this.counter + 1);
         if (e.json && e.json.error) {
