@@ -19,13 +19,13 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this.set('params', params);
     let filterOptions = [];
     const searchField = 'name';
-    if (params.group_status === "live") {
+    if (params.group_status === 'live') {
       filterOptions = [
-            {
-              name : 'deleted-at',
-              op   : 'eq',
-              val  : null
-            },
+        {
+          name : 'deleted-at',
+          op   : 'eq',
+          val  : null
+        }
       ];
     } else if (params.group_status === 'deleted') {
       filterOptions = [
@@ -36,7 +36,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         }
       ];
     } else {
-    filterOptions = [];
+      filterOptions = [];
     }
     let queryString = {
       get_trashed    : true,

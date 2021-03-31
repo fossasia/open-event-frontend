@@ -12,7 +12,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         width           : 155,
         cellComponent   : 'ui-table/cell/admin/groups/cell-group-name',
         actions         : {
-          deleteGroup        : this.deleteGroup.bind(this)
+          deleteGroup: this.deleteGroup.bind(this)
         }
       },
       {
@@ -26,9 +26,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/admin/groups/cell-group-events'
       },
       {
-        name            : this.l10n.t('Created At'),
-        valuePath       : 'createdAt',
-        cellComponent   : 'ui-table/cell/admin/groups/cell-group-created'
+        name          : this.l10n.t('Created At'),
+        valuePath     : 'createdAt',
+        cellComponent : 'ui-table/cell/admin/groups/cell-group-created'
       },
       {
         name          : this.l10n.t('Public URL'),
