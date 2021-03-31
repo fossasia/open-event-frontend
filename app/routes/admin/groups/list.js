@@ -15,75 +15,38 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     }
   }
 
-  async model(params) {
+  model(params) {
     this.set('params', params);
-    // let filterOptions = [];
-    // const searchField = 'name';
-    // if (params.group_status === 'live') {
-    // filterOptions = [
-    //   {
-    //     and: [
-    //       {
-    //         name : 'deleted-at',
-    //         op   : 'eq',
-    //         val  : null
-    //       },
-    //       {
-    //         name : 'name',
-    //         op   : 'eq',
-    //         val  : 'published'
-    //       },
-    //       {
-    //         or: [
-    //           {
-    //             name : 'starts-at',
-    //             op   : 'ge',
-    //             val  : moment().toISOString()
-    //           },
-    //           {
-    //             and: [
-    //               {
-    //                 name : 'starts-at',
-    //                 op   : 'le',
-    //                 val  : moment().toISOString()
-    //               },
-    //               {
-    //                 name : 'ends-at',
-    //                 op   : 'gt',
-    //                 val  : moment().toISOString()
-    //               }
-    //             ]
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   }
-    // ];
-    // } else if (params.events_status === 'deleted') {
-    // filterOptions = [
-    //     {
-    //       name : 'deleted-at',
-    //       op   : 'ne',
-    //       val  : null
-    //     }
-    //   ];
-    // } else {
-    //   filterOptions = [];
-    // }
-
-    // filterOptions = this.applySearchFilters(filterOptions, params, searchField);
+    let filterOptions = [];
+    const searchField = 'name';
+    if (params.group_status === "live") {
+      filterOptions = [
+            {
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
+            },
+      ];
+    } else if (params.group_status === 'deleted') {
+      filterOptions = [
+        {
+          name : 'deleted-at',
+          op   : 'ne',
+          val  : null
+        }
+      ];
+    } else {
+    filterOptions = [];
+    }
     let queryString = {
       get_trashed    : true,
       include        : 'user,events',
-    // filter         : filterOptions,
+      filter         : filterOptions,
       'page[size]'   : params.per_page || 10,
       'page[number]' : params.page || 1
     };
-    queryString = this.applySortFilters(queryString, params);
+    queryString = this.applySortFilters(queryString, params, searchField);
     return  this.asArray(this.store.query('group', queryString));
-    // const response = await fetch('/api/fakeData.json');
-    // const parsed = await response.json();
-    // return parsed;
   }
 
   @action

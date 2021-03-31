@@ -6,7 +6,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 export default ModelBase.extend({
 
   name       : attr('string'),
-  createdAt  : attr('moment', { readOnly: true }),
+  createdAt  : attr('moment'),
   modifiedAt : attr('moment'),
   /**
    * Relationships
