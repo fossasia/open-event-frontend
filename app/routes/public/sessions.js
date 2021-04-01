@@ -87,13 +87,16 @@ export default class SessionsRoute extends Route {
     }
 
     if (params.track) {
+      const tracks = params.track.split(':');
       filterOptions.push({
         name : 'track',
         op   : 'has',
         val  : {
-          name : 'name',
-          op   : 'eq',
-          val  : params.track
+          or: tracks.map(val => ({
+            name : 'name',
+            op   : 'eq',
+            val  : val.charAt(0) === ',' ? val.substring(1) : val
+          }))
         }
       });
     }
@@ -130,13 +133,16 @@ export default class SessionsRoute extends Route {
     }
 
     if (params.room) {
+      const rooms = params.room.split(':');
       filterOptions.push({
         name : 'microlocation',
         op   : 'has',
         val  : {
-          name : 'name',
-          op   : 'eq',
-          val  : params.room
+          or: rooms.map(val => ({
+            name : 'name',
+            op   : 'eq',
+            val  : val.charAt(0) === ',' ? val.substring(1) : val
+          }))
         }
       });
     }

@@ -66,7 +66,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.checkSessions();
     this.checkSpeakers();
     this.checkExhibitors();
-    this.showChat = this.settings.rocketChatUrl;
+    this.showChat = this.args.event.isChatEnabled && this.settings.rocketChatUrl;
 
     if (this.args.event.isSchedulePublished) {
       try {
