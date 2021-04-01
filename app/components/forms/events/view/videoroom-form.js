@@ -8,6 +8,8 @@ import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
 
 
+const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
+
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
   @service confirm;
@@ -16,6 +18,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked loading = false;
   @tracked moderatorEmail = '';
   @tracked deletedModerators = [];
+  @tracked videoRecordings = [];
 
   @computed('data.stream.rooms.[]')
   get room() {
@@ -115,6 +118,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   addBigBlueButton(channel) {
     this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+    this.data.stream.set('extra', { bbb_options });
   }
 
   @action
@@ -221,9 +225,28 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.data.stream.moderators.removeObject(moderator);
   }
 
+  async loadRecordings() {
+    try {
+      const result = [];
+      const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
+      recordings.result.response.recordings.recording.forEach(rec => {
+        result.push(rec.playback.format.url);
+      });
+      this.videoRecordings = [...result];
+    } catch (e) {
+      console.error('Error while getting recordings f', e);
+    }
+  }
+
   didInsertElement() {
+    if (this.data.stream.videoChannel.get('provider') === 'bbb') {
+      this.loadRecordings();
+    }
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
       this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    }
+    if (!this.data.stream.extra.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
+      this.data.stream.set('extra', { bbb_options });
     }
   }
 }

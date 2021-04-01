@@ -112,6 +112,35 @@
         @onChange={{action (mut this.data.stream.extra.loop)}} />
     </div>
   {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label>
+          {{t 'Record'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.record}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.record)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Auto Start Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.autoStartRecording)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.muteOnStart)}} />
+    </div>
+  {{/if}}
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>
@@ -134,6 +163,18 @@
       {{t 'Add'}}
     </button>
   </div>
+  {{#if this.videoRecordings}}
+    <div class="ui hidden divider"></div>
+      <div class="mt-2">
+        <p class="weight-600">{{t 'BBB Recordings'}}</p>
+        <div>
+          {{#each this.videoRecordings as |recording|}}
+            <a target="_blank" href={{recording}} rel="noopener">{{recording}}</a>
+            <br />
+          {{/each}}
+        </div>
+    </div>
+  {{/if}}
   <div class="mt-2">
     {{#each this.data.stream.moderators as |moderator|}}
       <span class="ui label transition visible" style="display: inline-block !important;">{{moderator.email}}

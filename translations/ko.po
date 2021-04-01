@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-03-11 08:02+0000\n"
+"PO-Revision-Date: 2021-03-14 14:02+0000\n"
 "Last-Translator: Youngbin Han <sukso96100@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/open-event/"
 "frontend/ko/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: app/components/events/view/export/download-common.js:80:26
 #: app/components/events/view/publish-bar.ts:89:24
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
-#: app/components/forms/events/view/videoroom-form.js:103:24
+#: app/components/forms/events/view/videoroom-form.js:110:24
 #: app/components/forms/login-form.js:74:35
 #: app/components/forms/login-form.js:101:28
 #: app/components/forms/reset-password-form.js:121:41
@@ -64,14 +64,13 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders/list.js:85:26
 #: app/controllers/events/view/tickets/orders/list.js:104:26
 #: app/controllers/events/view/tickets/orders/list.js:130:26
-#: app/controllers/events/view/videoroom/list.js:75:24
+#: app/controllers/events/view/videoroom/list.js:86:24
 #: app/controllers/groups/list.js:19:24 app/controllers/notifications.js:23:26
 #: app/controllers/oauth/callback.js:31:41 app/controllers/orders/view.js:30:24
 #: app/controllers/public/cfs/view-session.js:43:24
 #: app/controllers/public/index.js:89:37 app/controllers/register.js:34:35
 #: app/controllers/register.js:71:37 app/mixins/event-wizard.js:173:28
 #: app/mixins/notifications.js:12:28 app/mixins/notifications.js:30:28
-#: app/services/auth-manager.js:151:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
 msgstr "예상치 못한 오류가 발생했습니다."
@@ -200,7 +199,7 @@ msgstr "역할 초대가 성공적으로 업데이트 되었습니다"
 #: app/components/events/view/overview/manage-roles.js:80:26
 #: app/components/events/view/overview/manage-roles.js:101:26
 #: app/components/forms/admin/settings/ticket-fees-form.js:70:26
-#: app/components/forms/events/view/videoroom-form.js:175:49
+#: app/components/forms/events/view/videoroom-form.js:189:49
 #: app/components/widgets/forms/file-upload.js:36:26
 #: app/controllers/events/view/exhibitors/reorder.ts:29:24
 #: app/controllers/events/view/exhibitors/reorder.ts:40:24
@@ -265,7 +264,7 @@ msgstr "이벤트가 게시 취소되었습니다."
 
 #: app/components/forms/admin/content/pages-form.js:17:23
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:34:23
-#: app/components/forms/events/view/videoroom-form.js:48:23
+#: app/components/forms/events/view/videoroom-form.js:45:23
 #: app/components/forms/group/group-form.js:23:23
 #: app/components/forms/session-speaker-form.js:185:23
 #: app/components/modals/add-room-modal.js:46:23
@@ -307,7 +306,7 @@ msgstr "언어를 입력하세요"
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:47:23
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:85:23
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:95:23
-#: app/components/forms/events/view/videoroom-form.js:61:23
+#: app/components/forms/events/view/videoroom-form.js:58:23
 #: app/components/forms/orders/order-form.js:278:19
 #: app/components/forms/orders/order-form.js:292:19
 #: app/components/forms/orders/order-form.js:303:19
@@ -361,7 +360,7 @@ msgstr "주소를 입력하세요"
 
 #: app/components/forms/admin/settings/billing.js:84:23
 msgid "Please enter the city"
-msgstr "도시를 입력하세요"
+msgstr "시/군/구를 입력하세요"
 
 #: app/components/forms/admin/settings/billing.js:94:23
 #: app/components/forms/user-payment-info-form.js:73:23
@@ -553,42 +552,42 @@ msgstr "Sendgrid 토큰을 입력하세요"
 
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:19:23
 msgid "Please enter the recipient E-mail"
-msgstr ""
+msgstr "수신자 이메일 주소를 입력하세요"
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
-msgstr ""
+msgstr "새 항목을 추가하기 전 기존 항목을 먼저 완료해야 합니다."
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:64:28
 msgid "Fee setting deleted successfully"
-msgstr ""
+msgstr "수수료 설정이 성공적으로 제거되었습니다"
 
 #: app/components/forms/events/view/create-access-code.js:25:23
 msgid "Please enter access code"
-msgstr ""
+msgstr "접근 코드를 입력하세요"
 
 #: app/components/forms/events/view/create-access-code.js:38:23
 msgid "Please enter number of tickets"
-msgstr ""
+msgstr "티켓 수량을 입력하세요"
 
 #: app/components/forms/events/view/create-access-code.js:42:23
 msgid "Please enter proper number of tickets"
-msgstr ""
+msgstr "적절한 티켓 수량을 입력하세요"
 
 #: app/components/forms/events/view/create-access-code.js:52:23
 #: app/components/forms/events/view/create-access-code.js:66:23
 msgid "Please enter the proper number"
-msgstr ""
+msgstr "적절한 숫자를 입력하세요"
 
 #: app/components/forms/events/view/create-access-code.js:56:23
 #: app/components/forms/events/view/create-discount-code.js:81:23
 msgid "Minimum value should not be greater than maximum"
-msgstr ""
+msgstr "최소값은 최대값보다 작아야 합니다"
 
 #: app/components/forms/events/view/create-access-code.js:70:23
 #: app/components/forms/events/view/create-discount-code.js:95:23
 msgid "Maximum value should not be less than minimum"
-msgstr ""
+msgstr "최대값은 최소값보다 커야 합니다"
 
 #: app/components/forms/events/view/create-access-code.js:74:23
 #: app/components/forms/events/view/create-discount-code.js:99:23
@@ -602,28 +601,28 @@ msgstr ""
 
 #: app/components/forms/events/view/create-discount-code.js:36:23
 msgid "Please enter a discount code"
-msgstr ""
+msgstr "할인 코드를 입력하세요"
 
 #: app/components/forms/events/view/create-discount-code.js:49:23
 msgid "Please enter the number of tickets"
-msgstr ""
+msgstr "티켓 수량을 입력하세요"
 
 #: app/components/forms/events/view/create-discount-code.js:58:23
 msgid "Please enter the discount amount"
-msgstr ""
+msgstr "할인 금액을 입력하세요"
 
 #: app/components/forms/events/view/create-discount-code.js:67:23
 msgid "Please enter the discount percentage"
-msgstr ""
+msgstr "할인율을 입력하세요"
 
 #: app/components/forms/events/view/create-discount-code.js:77:23
 #: app/components/forms/events/view/create-discount-code.js:91:23
 msgid "Please enter a valid integer"
-msgstr ""
+msgstr "유효한 정수값을 입력하세요"
 
 #: app/components/forms/events/view/create-discount-code.js:108:23
 msgid "Please select atleast 1 ticket."
-msgstr ""
+msgstr "적어도 1개 이상의 티켓을 선택하세요."
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:8:32
 #: app/components/modals/add-room-modal.hbs:8:8
@@ -639,7 +638,7 @@ msgstr ""
 #: app/templates/components/forms/user-profile-form.hbs:32:43
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:34:80
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:64:74
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:99:88
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:105:88
 #: app/templates/components/forms/wizard/sponsors-step.hbs:38:34
 #: app/templates/components/modals/add-system-role-modal.hbs:12:8
 #: app/templates/components/orders/company-info.hbs:15:22
@@ -649,17 +648,17 @@ msgstr "이름"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:12:15
 msgid "Contact Email"
-msgstr ""
+msgstr "연락 이메일"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:16:15
 msgid "Contact URL"
-msgstr ""
+msgstr "연락 URL"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:24:10
 #: app/controllers/events/view/exhibitors/list.js:60:24
 #: app/templates/components/forms/wizard/sponsors-step.hbs:60:17
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:32:15
 #: app/controllers/events/view/exhibitors/list.js:55:20
@@ -667,7 +666,7 @@ msgstr ""
 #: app/templates/components/forms/wizard/basic-details-step.hbs:151:29
 #: app/templates/components/forms/wizard/sponsors-step.hbs:68:17
 msgid "Description"
-msgstr ""
+msgstr "설명"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:40:19
 msgid "Banner"
@@ -698,67 +697,75 @@ msgstr "로고"
 #: app/templates/components/forms/wizard/basic-details-step.hbs:178:14
 #: app/templates/components/forms/wizard/sponsors-step.hbs:78:18
 msgid "Select Logo"
-msgstr ""
+msgstr "로고 선택"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:63:10
+msgid "Add a related exhibitor session"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:71:10
+msgid "Select Sessions"
+msgstr "세션 선택"
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:86:10
 msgid "Video URL"
-msgstr ""
+msgstr "비디오 URL"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:72:10
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:95:10
 msgid "Slides URL"
-msgstr ""
+msgstr "슬라이드 URL"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:76:17
-#: app/components/public/session-item.hbs:114:16
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:99:17
+#: app/components/public/session-item.hbs:141:16
 #: app/models/custom-form.js:42:18
 #: app/templates/components/forms/events/view/edit-session.hbs:15:11
-#: app/templates/public/exhibition/view.hbs:85:32
+#: app/templates/public/exhibition/view.hbs:106:32
 msgid "Slides"
-msgstr ""
+msgstr "슬라이드"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:79:16
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:102:16
 #: app/templates/components/forms/events/view/edit-session.hbs:16:108
 #: app/templates/components/forms/session-section.hbs:48:16
 msgid "Select a file"
-msgstr ""
+msgstr "파일 선택"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:84:17
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:107:17
 msgid "Enable Video Room"
 msgstr ""
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:88:8
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:111:8
 #: app/routes/admin/settings/social-media.js:6:11
 #: app/templates/admin/settings.hbs:9:10
 #: app/templates/components/forms/wizard/other-details-step.hbs:9:6
 msgid "Social Media"
-msgstr ""
+msgstr "소셜미디어"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:89:26
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:112:26
 #: app/templates/components/forms/wizard/other-details-step.hbs:10:24
 msgid "Add social link"
 msgstr ""
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:101:32
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:123:32
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:124:32
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:146:32
 #: app/templates/components/forms/wizard/basic-details-step.hbs:580:16
 #: app/templates/components/forms/wizard/other-details-step.hbs:22:28
 #: app/templates/components/forms/wizard/other-details-step.hbs:44:28
 #: app/templates/components/forms/wizard/sponsors-step.hbs:31:12
 msgid "Remove"
-msgstr ""
+msgstr "삭제"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:109:8
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:132:8
 #: app/templates/components/forms/wizard/other-details-step.hbs:30:6
 msgid "Extra Links"
-msgstr ""
+msgstr "추가 링크"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:110:26
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:133:26
 #: app/templates/components/forms/wizard/other-details-step.hbs:31:24
 msgid "Add custom link"
-msgstr ""
+msgstr "사용자 정의 링크 추가"
 
-#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:131:72
-#: app/components/forms/events/view/videoroom-form.hbs:124:68
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:154:72
+#: app/components/forms/events/view/videoroom-form.hbs:145:68
 #: app/components/forms/wizard/custom-form-input.hbs:21:104
 #: app/components/forms/wizard/wizard-footer.hbs:30:8
 #: app/templates/admin/messages.hbs:22:98
@@ -773,7 +780,7 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/images-form.hbs:133:61
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:27:4
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:457:4
-#: app/templates/components/forms/admin/settings/system-form.hbs:76:4
+#: app/templates/components/forms/admin/settings/system-form.hbs:95:4
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:145:4
 #: app/templates/components/forms/events/view/create-access-code.hbs:95:68
 #: app/templates/components/forms/events/view/create-discount-code.hbs:139:4
@@ -783,19 +790,19 @@ msgstr ""
 #: app/templates/events/view/exhibitors/reorder.hbs:13:78
 #: app/templates/events/view/speakers/reorder.hbs:13:78
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:42:23
-#: app/components/forms/events/view/videoroom-form.js:56:23
+#: app/components/forms/events/view/videoroom-form.js:53:23
 #: app/components/forms/session-speaker-form.js:110:23
 #: app/components/forms/session-speaker-form.js:135:23
 #: app/components/forms/session-speaker-form.js:160:23
 msgid "Please enter a url"
-msgstr ""
+msgstr "URL을 입력하세요"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:67:23
 msgid "Please enter a valid contact link"
-msgstr ""
+msgstr "유효한 연락 URL을 입력하세요"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:75:23
 msgid "Please upload exhibitor's logo."
@@ -807,11 +814,11 @@ msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:5:8
 msgid "Video Channel"
-msgstr ""
+msgstr "비디오 채널"
 
 #: app/components/forms/events/view/videoroom-form.hbs:15:10
 msgid "Add Video"
-msgstr ""
+msgstr "비디오 추가"
 
 #: app/components/forms/events/view/videoroom-form.hbs:24:12
 msgid "Custom"
@@ -822,22 +829,22 @@ msgstr ""
 msgid "Room"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:39:30
+#: app/components/forms/events/view/videoroom-form.hbs:40:30
 msgid "Video Source"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:46:8
-#: app/controllers/events/view/videoroom/list.js:22:24
+#: app/components/forms/events/view/videoroom-form.hbs:47:8
+#: app/controllers/events/view/videoroom/list.js:28:24
 msgid "Video Source URL"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:73:8
+#: app/components/forms/events/view/videoroom-form.hbs:74:8
 #: app/components/public/stream/stream-info.hbs:11:12
-#: app/controllers/events/view/videoroom/list.js:37:21
+#: app/controllers/events/view/videoroom/list.js:43:21
 msgid "Room Password"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:85:6
+#: app/components/forms/events/view/videoroom-form.hbs:86:6
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:28:12
 #: app/templates/components/forms/user-payment-info-form.hbs:69:32
 #: app/templates/components/modals/room-info-modal.hbs:3:2
@@ -845,25 +852,25 @@ msgstr ""
 msgid "Additional Information"
 msgstr "추가 정보"
 
-#: app/components/forms/events/view/videoroom-form.hbs:97:10
+#: app/components/forms/events/view/videoroom-form.hbs:98:10
 msgid "Autoplay"
-msgstr ""
+msgstr "자동 재생"
 
-#: app/components/forms/events/view/videoroom-form.hbs:106:10
+#: app/components/forms/events/view/videoroom-form.hbs:107:10
 msgid "Loop"
-msgstr ""
+msgstr "반복"
 
-#: app/components/forms/events/view/videoroom-form.hbs:116:11
+#: app/components/forms/events/view/videoroom-form.hbs:117:11
 msgid "Access"
-msgstr ""
+msgstr "접근"
 
-#: app/components/forms/events/view/videoroom-form.hbs:117:87
+#: app/components/forms/events/view/videoroom-form.hbs:118:87
 msgid "Organization Team"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:118:87
+#: app/components/forms/events/view/videoroom-form.hbs:119:87
 #: app/components/public/side-menu-outer.js:22:13
-#: app/components/public/stream/side-panel.hbs:31:10
+#: app/components/public/stream/side-panel.hbs:30:10
 #: app/controllers/admin/events/list.js:70:25
 #: app/controllers/admin/sessions/list.js:26:24
 #: app/controllers/events/list.js:51:24
@@ -879,24 +886,38 @@ msgstr ""
 msgid "Speakers"
 msgstr "연사"
 
-#: app/components/forms/events/view/videoroom-form.hbs:119:87
+#: app/components/forms/events/view/videoroom-form.hbs:120:87
 #: app/routes/events/view/tickets/attendees.js:7:11
 #: app/templates/events/view/tickets.hbs:12:10
 #: app/templates/public/session/view.hbs:10:27
 msgid "Attendees"
 msgstr "참석자"
 
-#: app/components/forms/events/view/videoroom-form.hbs:120:69
-msgid "All logged in users"
-msgstr ""
-
 #: app/components/forms/events/view/videoroom-form.hbs:121:69
-msgid "Public (no restriction)"
-msgstr ""
+msgid "All logged in users"
+msgstr "로그인 된 모든 사용자"
 
-#: app/components/forms/events/view/videoroom-form.hbs:126:8
+#: app/components/forms/events/view/videoroom-form.hbs:122:69
+msgid "Public (no restriction)"
+msgstr "공개 (제한 없음)"
+
+#: app/components/forms/events/view/videoroom-form.hbs:125:25
+#: app/controllers/events/view/videoroom/list.js:49:24
+msgid "Moderators"
+msgstr "중재자"
+
+#: app/components/forms/events/view/videoroom-form.hbs:131:18
+msgid "Add Email of Moderators"
+msgstr "중재자 이메일 추가"
+
+#: app/components/forms/events/view/videoroom-form.hbs:134:6
+#: app/components/forms/wizard/custom-form-input.hbs:21:115
+msgid "Add"
+msgstr "추가"
+
+#: app/components/forms/events/view/videoroom-form.hbs:147:4
 #: app/components/forms/wizard/wizard-footer.hbs:5:8
-#: app/components/modals/add-room-modal.hbs:22:4
+#: app/components/modals/add-room-modal.hbs:31:4
 #: app/components/modals/session-notify-modal.hbs:83:4
 #: app/templates/components/forms/admin/content/pages-form.hbs:50:55
 #: app/templates/components/modals/add-system-role-modal.hbs:36:4
@@ -920,17 +941,21 @@ msgstr ""
 msgid "Cancel"
 msgstr "취소"
 
-#: app/components/forms/events/view/videoroom-form.js:148:34
-msgid "Selecting another video integration will reset the data in the form. Do you want to proceed?"
-msgstr ""
+#: app/components/forms/events/view/videoroom-form.js:68:23
+msgid "Please enter a valid email"
+msgstr "유효한 이메일을 입력하세요"
 
-#: app/components/forms/events/view/videoroom-form.js:168:28
+#: app/components/forms/events/view/videoroom-form.js:155:34
+msgid "Selecting another video integration will reset the data in the form. Do you want to proceed?"
+msgstr "다른 비디오 연동을 선택하면 양식의 데이터가 초기화 됩니다. 계속하시겠어요?"
+
+#: app/components/forms/events/view/videoroom-form.js:182:28
 msgid "Your stream has been saved"
-msgstr ""
+msgstr "스트림이 저장되었습니다"
 
 #: app/components/forms/group/group-form.js:56:28
 msgid "Your group has been saved"
-msgstr ""
+msgstr "그룹이 저장되었습니다"
 
 #: app/components/forms/login-form.js:41:23
 #: app/components/forms/orders/guest-order-form.js:38:23
@@ -944,25 +969,25 @@ msgstr ""
 #: app/components/forms/orders/order-form.js:81:19
 #: app/components/forms/orders/order-form.js:457:23
 msgid "Please enter your first name"
-msgstr ""
+msgstr "이름을 입력하세요"
 
 #: app/components/forms/orders/order-form.js:89:19
 #: app/components/forms/orders/order-form.js:466:23
 msgid "Please enter your last name"
-msgstr ""
+msgstr "성을 입력하세요"
 
 #: app/components/forms/orders/order-form.js:97:19
 msgid "Please enter your email"
-msgstr ""
+msgstr "이메일을 입력하세요"
 
 #: app/components/forms/orders/order-form.js:111:19
 #: app/components/forms/session-speaker-form.js:318:23
 msgid "Please select a gender"
-msgstr ""
+msgstr "성별을 선택하세요"
 
 #: app/components/forms/orders/order-form.js:120:19
 msgid "Please select your age group"
-msgstr ""
+msgstr "연령대를 선택하세요"
 
 #: app/components/forms/orders/order-form.js:130:19
 msgid "You need to agree to the condition of the organizer to receive emails in order to continue the order process."
@@ -984,27 +1009,27 @@ msgstr "주소를 입력하세요"
 #: app/components/forms/orders/order-form.js:168:19
 #: app/components/forms/orders/order-form.js:512:23
 msgid "Please enter your city"
-msgstr ""
+msgstr "시/군/구를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:177:19
 msgid "Please enter your state"
-msgstr ""
+msgstr "시/도 를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:186:19
 #: app/components/forms/orders/order-form.js:485:23
 #: app/components/forms/wizard/basic-details-step.js:415:23
 #: app/components/modals/tax-info-modal.js:111:23
 msgid "Please select your country"
-msgstr ""
+msgstr "국가를 선택하세요"
 
 #: app/components/forms/orders/order-form.js:195:19
 msgid "Please enter your job title"
-msgstr ""
+msgstr "직책을 입력하세요"
 
 #: app/components/forms/orders/order-form.js:204:19
 #: app/components/forms/session-speaker-form.js:347:23
 msgid "Please enter a mobile number"
-msgstr ""
+msgstr "휴대전화 번호를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:213:19
 msgid "Please enter your tax business info"
@@ -1034,31 +1059,31 @@ msgstr "직장 주소를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:267:19
 msgid "Please enter your work phone"
-msgstr ""
+msgstr "직장 전화번호를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:287:19
 #: app/components/forms/orders/order-form.js:312:19
 #: app/components/forms/session-speaker-form.js:361:23
 msgid "Please enter url of website"
-msgstr ""
+msgstr "웹사이트 URL을 입력하세요"
 
 #: app/components/forms/orders/order-form.js:328:19
 #: app/components/forms/orders/order-form.js:342:19
 msgid "Please enter a valid twitter profile url"
-msgstr ""
+msgstr "유효한 트위터 URL을 입력하세요"
 
 #: app/components/forms/orders/order-form.js:337:19
 msgid "Please enter twitter link"
-msgstr ""
+msgstr "트위터 링크를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:353:19
 #: app/components/forms/orders/order-form.js:367:19
 msgid "Please enter a valid facebook account url"
-msgstr ""
+msgstr "유효한 페이스북 계정 URL을 입력하세요"
 
 #: app/components/forms/orders/order-form.js:362:19
 msgid "Please enter facebook link"
-msgstr ""
+msgstr "페이스북 링크를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:378:19
 #: app/components/forms/orders/order-form.js:392:19
@@ -1093,7 +1118,7 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:521:23
 msgid "Please enter your zip code"
-msgstr ""
+msgstr "우편번호를 입력하세요"
 
 #: app/components/forms/orders/order-form.js:530:23
 msgid "Please specify your choice of payment method"
@@ -1146,7 +1171,7 @@ msgstr ""
 
 #: app/components/forms/session-speaker-form.js:74:23
 msgid "Please select a track"
-msgstr ""
+msgstr "트랙을 선택하세요"
 
 #: app/components/forms/session-speaker-form.js:83:23
 msgid "Please select a session type"
@@ -1208,7 +1233,7 @@ msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:64:23
 msgid "Please enter your billing city"
-msgstr ""
+msgstr "청구지 주소 시/군/구를 입력하세요"
 
 #: app/components/forms/user-payment-info-form.js:107:28
 msgid "Your billing details has been updated"
@@ -1423,10 +1448,6 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: app/components/forms/wizard/custom-form-input.hbs:21:115
-msgid "Add"
-msgstr ""
-
 #: app/components/forms/wizard/custom-forms/table.hbs:18:10
 #: app/controllers/admin/messages.js:42:24
 #: app/routes/events/view/settings/options.js:7:11
@@ -1478,7 +1499,7 @@ msgstr ""
 #: app/templates/components/events/view/overview/speaker-view.hbs:8:63
 #: app/templates/components/forms/session-section.hbs:7:53
 #: app/templates/components/forms/speaker-section.hbs:7:53
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:185:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:191:22
 msgid "Public"
 msgstr "공개"
 
@@ -1576,10 +1597,12 @@ msgid "Discard"
 msgstr ""
 
 #: app/components/forms/wizard/wizard-footer.hbs:14:8
+#: app/templates/public/exhibition/view.hbs:5:12
 msgid "Previous"
 msgstr ""
 
 #: app/components/forms/wizard/wizard-footer.hbs:20:8
+#: app/templates/public/exhibition/view.hbs:8:12
 msgid "Next"
 msgstr ""
 
@@ -1600,7 +1623,7 @@ msgid "You can preview the event after you have saved it as a draft. You can pub
 msgstr ""
 
 #: app/components/modals/add-room-modal.hbs:2:2
-#: app/components/modals/add-room-modal.hbs:25:4
+#: app/components/modals/add-room-modal.hbs:34:4
 #: app/templates/events/view/videoroom/list.hbs:25:10
 msgid "Add Room"
 msgstr ""
@@ -1608,6 +1631,10 @@ msgstr ""
 #: app/components/modals/add-room-modal.hbs:14:8
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:68:79
 msgid "Floor"
+msgstr ""
+
+#: app/components/modals/add-room-modal.hbs:20:8
+msgid "Hidden In Scheduler"
 msgstr ""
 
 #: app/components/modals/add-room-modal.js:16:26
@@ -1766,7 +1793,7 @@ msgstr ""
 
 #: app/components/modals/tax-info-modal.js:102:23
 msgid "Please provide a zip code"
-msgstr ""
+msgstr "우편번호를 입력하세요"
 
 #: app/components/notification-dropdown.js:49:28
 #: app/mixins/notifications.js:9:30
@@ -1806,7 +1833,7 @@ msgstr ""
 
 #: app/components/public/event-venue.hbs:4:4 app/controllers/public.js:42:13
 #: app/templates/components/orders/event-info.hbs:19:16
-#: app/templates/public/index.hbs:76:10
+#: app/templates/public/index.hbs:76:24
 msgid "Online Event"
 msgstr "온라인 이벤트"
 
@@ -1824,20 +1851,20 @@ msgstr ""
 
 #: app/components/public/session-item.hbs:30:16
 #: app/components/public/stream/join-video.hbs:10:8
-#: app/controllers/events/view/videoroom/list.js:29:26
+#: app/controllers/events/view/videoroom/list.js:35:26
 msgid "Join Video"
 msgstr "비디오 참여"
 
-#: app/components/public/session-item.hbs:86:120
-#: app/components/public/session-item.hbs:167:106
+#: app/components/public/session-item.hbs:113:120
+#: app/components/public/session-item.hbs:194:106
 #: app/components/widgets/forms/social-link-field.ts:19:12
 #: app/models/custom-form.js:21:24 app/models/custom-form.js:45:18
 #: app/models/custom-form.js:92:27
 msgid "Website"
 msgstr ""
 
-#: app/components/public/session-item.hbs:89:113
-#: app/components/public/session-item.hbs:155:112
+#: app/components/public/session-item.hbs:116:113
+#: app/components/public/session-item.hbs:182:112
 #: app/models/custom-form.js:23:24 app/models/custom-form.js:47:18
 #: app/models/custom-form.js:95:27
 #: app/templates/components/footer-main.hbs:53:46
@@ -1845,13 +1872,13 @@ msgstr ""
 msgid "Facebook"
 msgstr "페이스북"
 
-#: app/components/public/session-item.hbs:92:113
+#: app/components/public/session-item.hbs:119:113
 #: app/models/custom-form.js:98:27
 msgid "LinkedIn"
 msgstr ""
 
-#: app/components/public/session-item.hbs:95:109
-#: app/components/public/session-item.hbs:161:108
+#: app/components/public/session-item.hbs:122:109
+#: app/components/public/session-item.hbs:188:108
 #: app/models/custom-form.js:24:24 app/models/custom-form.js:48:18
 #: app/models/custom-form.js:94:27
 #: app/templates/components/footer-main.hbs:63:43
@@ -1859,8 +1886,8 @@ msgstr ""
 msgid "Twitter"
 msgstr "트위터"
 
-#: app/components/public/session-item.hbs:98:107
-#: app/components/public/session-item.hbs:164:106
+#: app/components/public/session-item.hbs:125:107
+#: app/components/public/session-item.hbs:191:106
 #: app/models/custom-form.js:22:24 app/models/custom-form.js:46:18
 #: app/models/custom-form.js:96:27
 #: app/templates/components/footer-main.hbs:68:42
@@ -1868,25 +1895,25 @@ msgstr "트위터"
 msgid "GitHub"
 msgstr ""
 
-#: app/components/public/session-item.hbs:101:107
+#: app/components/public/session-item.hbs:128:107
 #: app/models/custom-form.js:51:18
 msgid "GitLab"
 msgstr ""
 
-#: app/components/public/session-item.hbs:125:16
+#: app/components/public/session-item.hbs:152:16
 #: app/models/custom-form.js:43:18
 #: app/templates/components/events/view/export/download-zip.hbs:16:39
 #: app/templates/events/view.hbs:41:10
-#: app/templates/public/exhibition/view.hbs:72:32
+#: app/templates/public/exhibition/view.hbs:93:32
 msgid "Video"
 msgstr "비디오"
 
-#: app/components/public/session-item.hbs:158:112
+#: app/components/public/session-item.hbs:185:112
 #: app/models/custom-form.js:26:24 app/models/custom-form.js:50:18
 msgid "Linkedin"
 msgstr ""
 
-#: app/components/public/session-item.js:75:34
+#: app/components/public/session-item.js:76:34
 msgid "Please login to add a session to your personal schedule."
 msgstr "개인 일정에 세션을 추가하려면 로그인 하세요."
 
@@ -1897,7 +1924,7 @@ msgid "Info"
 msgstr ""
 
 #: app/components/public/side-menu-outer.js:18:13
-#: app/components/public/stream/side-panel.hbs:24:10
+#: app/components/public/stream/side-panel.hbs:23:10
 #: app/routes/public/schedule.js:9:11
 #: app/templates/components/public/side-menu.hbs:25:85
 #: app/templates/public/schedule.hbs:4:56
@@ -1935,9 +1962,19 @@ msgstr ""
 msgid "Join Live Event"
 msgstr "라이브 이벤트 참여"
 
-#: app/components/public/stream/side-panel.hbs:38:10
+#: app/components/public/stream/side-panel.hbs:37:10
 #: app/templates/components/public/side-menu.hbs:51:86
 msgid "Exhibition"
+msgstr ""
+
+#: app/components/public/stream/side-panel.hbs:44:10
+#: app/routes/public/chat.ts:16:11 app/routes/public/stream/view/chat.ts:12:11
+msgid "Chat"
+msgstr "채팅"
+
+#: app/components/public/stream/side-panel.hbs:50:8
+#: app/routes/events/view/videoroom/list.js:8:11
+msgid "Video Rooms"
 msgstr ""
 
 #: app/components/public/stream/stream-info.hbs:5:188
@@ -2075,7 +2112,7 @@ msgstr ""
 #: app/templates/components/orders/company-info.hbs:45:22
 #: app/templates/components/widgets/forms/location-input.hbs:30:22
 msgid "State"
-msgstr "상태"
+msgstr "시/도"
 
 #: app/controllers/admin/events/list.js:57:25
 #: app/controllers/events/list.js:33:24
@@ -2306,7 +2343,7 @@ msgid "Invoice #"
 msgstr ""
 
 #: app/controllers/admin/sales/invoices.js:17:26
-#: app/controllers/events/view/videoroom/list.js:57:22
+#: app/controllers/events/view/videoroom/list.js:68:22
 #: app/templates/components/forms/admin/content/pages-form.hbs:25:45
 #: app/templates/components/public/social-links.hbs:6:41
 msgid "Event"
@@ -2416,7 +2453,8 @@ msgstr ""
 #: app/templates/components/forms/register-form.hbs:15:57
 #: app/templates/components/forms/user-profile-form.hbs:65:32
 #: app/templates/components/orders/ticket-holder.hbs:20:8
-#: app/templates/public/exhibition/view.hbs:38:129
+#: app/templates/public/exhibition/view.hbs:58:133
+#: app/templates/public/exhibition/view.hbs:61:137
 msgid "Email"
 msgstr ""
 
@@ -2743,15 +2781,19 @@ msgstr ""
 msgid "Microlocation"
 msgstr ""
 
-#: app/controllers/events/view/videoroom/list.js:43:21
+#: app/controllers/events/view/videoroom/list.js:22:21
+msgid "Video Room Name"
+msgstr ""
+
+#: app/controllers/events/view/videoroom/list.js:54:21
 msgid "Additional information"
 msgstr "추가 정보"
 
-#: app/controllers/events/view/videoroom/list.js:69:26
+#: app/controllers/events/view/videoroom/list.js:80:26
 msgid "{{item}} has been deleted successfully."
 msgstr ""
 
-#: app/controllers/events/view/videoroom/list.js:69:89
+#: app/controllers/events/view/videoroom/list.js:80:89
 msgid "Video Stream"
 msgstr ""
 
@@ -2796,7 +2838,7 @@ msgstr ""
 msgid "Online and In-Person Event at"
 msgstr "온라인 및 오프라인 이벤트 진행 장소"
 
-#: app/controllers/public.js:46:13 app/templates/public/index.hbs:93:10
+#: app/controllers/public.js:46:13 app/templates/public/index.hbs:93:24
 msgid "Location to be announced"
 msgstr ""
 
@@ -2922,7 +2964,7 @@ msgstr "주소"
 #: app/templates/components/widgets/forms/billing-info.hbs:22:37
 #: app/templates/components/widgets/forms/location-input.hbs:23:22
 msgid "City"
-msgstr ""
+msgstr "도시(시/군/구)"
 
 #: app/models/custom-form.js:14:24 app/models/custom-form.js:86:27
 #: app/templates/components/event-invoice/billing-info.hbs:23:16
@@ -3061,7 +3103,7 @@ msgstr ""
 msgid "Age Group"
 msgstr ""
 
-#: app/models/user.js:119:47
+#: app/models/user.js:121:47
 #: app/templates/admin/permissions/system-roles.hbs:84:14
 #: app/templates/admin/permissions/system-roles.hbs:98:33
 msgid "Anonymous User"
@@ -3444,7 +3486,7 @@ msgstr ""
 #: app/routes/events/view/team/permissions.ts:37:19
 #: app/templates/events/view.hbs:47:10 app/templates/events/view/team.hbs:6:10
 msgid "Team"
-msgstr ""
+msgstr "팀"
 
 #: app/routes/events/view/team/permissions.ts:14:19
 msgid "Manage Events Page"
@@ -3684,10 +3726,6 @@ msgstr ""
 msgid "Create Video Room"
 msgstr ""
 
-#: app/routes/events/view/videoroom/list.js:8:11
-msgid "Video Rooms"
-msgstr ""
-
 #: app/routes/explore.js:10:11
 msgid "Explore"
 msgstr ""
@@ -3766,18 +3804,19 @@ msgid "Terms"
 msgstr ""
 
 #: app/routes/pages.js:12:34 app/templates/components/footer-main.hbs:112:12
-#: app/templates/public/exhibition/view.hbs:41:121
+#: app/templates/public/exhibition/view.hbs:59:125
+#: app/templates/public/exhibition/view.hbs:63:129
 msgid "Contact"
 msgstr ""
 
 #: app/routes/pages.js:12:58 app/templates/components/footer-main.hbs:113:12
 #: app/templates/components/forms/wizard/other-details-step.hbs:55:33
-#: app/templates/components/public/ticket-list.hbs:218:10
+#: app/templates/components/public/ticket-list.hbs:216:10
 msgid "Refund Policy"
 msgstr "환불 정책"
 
 #: app/routes/pages.js:12:88 app/templates/components/footer-main.hbs:114:12
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:180:29
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:186:29
 msgid "Privacy"
 msgstr ""
 
@@ -3820,6 +3859,36 @@ msgstr ""
 #: app/templates/events/view/speaker/view.hbs:4:6
 #: app/templates/public/cfs/view-speaker.hbs:16:6
 msgid "View Speaker"
+msgstr ""
+
+#: app/routes/public/chat.ts:28:22
+msgid "Please confirm that you understand and agree to the conditions of using the chat!"
+msgstr ""
+
+#: app/routes/public/chat.ts:30:23
+msgid "If you join the event chat, your profile name and image will be visible to other attendees. Other event attendees can also contact you directly."
+msgstr ""
+"채팅에 참여하면, 회원님의 프로필 사진과 이름을 다른 참석자가 볼 수 있게 됩니다. 다른 이벤트 참석자가 개별적으로 연락 할 수도 "
+"있습니다."
+
+#: app/routes/public/chat.ts:31:10
+msgid "You may change your chat name and chat profile picture by going to account settings on the chat page on the top left."
+msgstr "채팅 페이지 좌측 상단의 계정 설정에서 채팅 이름과 프로필 사진을 변경하실 수 있습니다."
+
+#: app/routes/public/chat.ts:32:10
+msgid "You need to minimize the side panel to access it."
+msgstr ""
+
+#: app/routes/public/chat.ts:33:10
+msgid "The feature integration is still in Alpha stage and currently your profile on the eventyay account page and on the chat are not linked and can be independently edited."
+msgstr ""
+
+#: app/routes/public/chat.ts:34:10
+msgid "When you change the chat settings you may receive additional email confirmations."
+msgstr ""
+
+#: app/routes/public/chat.ts:35:10
+msgid "Do you want to use the chat now?"
 msgstr ""
 
 #: app/routes/register.js:8:11
@@ -3872,11 +3941,11 @@ msgstr ""
 
 #: app/templates/account/billing/invoices.hbs:15:10
 msgid "Refunding"
-msgstr ""
+msgstr "환불 진행중"
 
 #: app/templates/account/billing/invoices.hbs:18:10
 msgid "Refunded"
-msgstr ""
+msgstr "환불 완료"
 
 #: app/templates/admin.hbs:5:8
 #: app/templates/admin/permissions/system-roles.hbs:27:10
@@ -4589,7 +4658,7 @@ msgstr ""
 #: app/templates/components/widgets/forms/billing-info.hbs:36:40
 #: app/templates/components/widgets/forms/location-input.hbs:37:22
 msgid "Zip Code"
-msgstr ""
+msgstr "우편번호"
 
 #: app/templates/components/event-invoice/billing-info.hbs:39:16
 msgid "Billing Address"
@@ -4714,7 +4783,7 @@ msgid "You can make a GET request to the following endpoint to access the select
 msgstr ""
 
 #: app/templates/components/events/view/export/api-response.hbs:34:30
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:40
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:174:40
 #: app/templates/components/modals/event-share-modal.hbs:27:17
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-url.hbs:4:34
 #: app/templates/components/url-box.hbs:3:32
@@ -4866,8 +4935,8 @@ msgid "Sold"
 msgstr ""
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:28:12
-#: app/templates/components/public/ticket-list.hbs:141:24
-#: app/templates/components/public/ticket-list.hbs:143:157
+#: app/templates/components/public/ticket-list.hbs:139:24
+#: app/templates/components/public/ticket-list.hbs:141:157
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:3:22
 msgid "Total"
 msgstr ""
@@ -4961,7 +5030,7 @@ msgstr ""
 #: app/templates/components/events/view/overview/speaker-view.hbs:10:61
 #: app/templates/components/forms/session-section.hbs:9:51
 #: app/templates/components/forms/speaker-section.hbs:9:51
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:194:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:200:22
 msgid "Private"
 msgstr ""
 
@@ -4978,8 +5047,8 @@ msgid "Locked"
 msgstr ""
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:95:30
-#: app/templates/public.hbs:109:18
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
+#: app/templates/public.hbs:110:16
 msgid "Session Types"
 msgstr ""
 
@@ -5057,14 +5126,14 @@ msgstr ""
 
 #: app/templates/components/explore/side-bar.hbs:95:65
 #: app/templates/components/forms/wizard/basic-details-step.hbs:92:47
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:144:51
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:150:51
 #: app/templates/components/widgets/forms/ticket-input.hbs:131:58
 msgid "Starts"
 msgstr ""
 
 #: app/templates/components/explore/side-bar.hbs:103:63
 #: app/templates/components/forms/wizard/basic-details-step.hbs:110:45
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:152:49
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:158:49
 #: app/templates/components/widgets/forms/ticket-input.hbs:149:56
 msgid "Ends"
 msgstr ""
@@ -5751,6 +5820,18 @@ msgstr ""
 msgid "Cookie Policy URL"
 msgstr ""
 
+#: app/templates/components/forms/admin/settings/system-form.hbs:76:4
+msgid "Rocket Chat Integration"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system-form.hbs:80:6
+msgid "Rocket Chat URL"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system-form.hbs:89:6
+msgid "Registration Secret"
+msgstr ""
+
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:3:2
 msgid "Captcha Options"
 msgstr ""
@@ -6072,7 +6153,7 @@ msgstr ""
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:86:10
 #: app/templates/components/forms/events/view/create-discount-code.hbs:129:10
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:171:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:177:14
 #: app/templates/components/modals/event-share-modal.hbs:33:10
 msgid "Copy"
 msgstr "복사"
@@ -6299,9 +6380,7 @@ msgstr ""
 
 #: app/templates/components/forms/orders/order-form.hbs:163:27
 msgid "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
-msgstr ""
-"나는 이벤트 주최측의 웹사이트나 소셜 미디어 채널에 게시 될 수 있는 나의 사진, 영상, 음성 녹음, 내 프로필, 채팅에서 입력한 "
-"텍스트 등을 이벤트 주최측에서 가져가는 것을 허가하는 데 동의합니다."
+msgstr "나는 이벤트 주최측의 웹사이트나 소셜 미디어 채널에 게시 될 수 있는 나의 사진, 영상, 음성 녹음, 내 프로필, 채팅에서 입력한 텍스트 등을 이벤트 주최측에서 가져가는 것을 허가하는 데 동의합니다."
 
 #: app/templates/components/forms/orders/order-form.hbs:182:21
 msgid "Enable Billing Information"
@@ -6362,7 +6441,7 @@ msgstr ""
 
 #: app/templates/components/forms/orders/order-form.hbs:310:68
 #: app/templates/components/forms/orders/order-form.hbs:316:108
-#: app/templates/components/public/ticket-list.hbs:210:10
+#: app/templates/components/public/ticket-list.hbs:208:10
 msgid "Order Now"
 msgstr "지금 주문"
 
@@ -6552,7 +6631,7 @@ msgid "Webinar URL"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:129:45
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:160:49
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:166:49
 #: app/templates/components/widgets/forms/ticket-input.hbs:167:56
 msgid "Timezone"
 msgstr ""
@@ -6594,7 +6673,7 @@ msgstr ""
 #: app/templates/components/forms/wizard/basic-details-step.hbs:221:40
 #: app/templates/components/orders/order-summary.hbs:48:35
 #: app/templates/components/orders/order-summary.hbs:55:34
-#: app/templates/components/public/ticket-list.hbs:9:47
+#: app/templates/components/public/ticket-list.hbs:8:47
 #: app/templates/components/widgets/forms/ticket-input.hbs:17:22
 #: app/templates/pricing.hbs:172:43
 msgid "Price"
@@ -6603,10 +6682,10 @@ msgstr ""
 #: app/templates/components/forms/wizard/basic-details-step.hbs:224:40
 #: app/templates/components/orders/order-summary.hbs:52:33
 #: app/templates/components/orders/order-summary.hbs:59:34
-#: app/templates/components/public/ticket-list.hbs:10:31
+#: app/templates/components/public/ticket-list.hbs:9:31
 #: app/templates/components/widgets/forms/ticket-input.hbs:53:20
 msgid "Quantity"
-msgstr ""
+msgstr "수량"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:245:12
 msgid "You don't have any tickets added. Please add atleast one ticket to publish your event."
@@ -6771,6 +6850,8 @@ msgstr ""
 #: app/templates/components/forms/wizard/other-details-step.hbs:57:8
 msgid "Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the eventyay platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the eventyay platform."
 msgstr ""
+"환불은 주최자에 의해 결제 서비스 제공자를 통해 진행됩니다. 참석자에 대한 환불은 eventyay 플랫폼에서 진행할 수 없습니다. 결제 "
+"서비스 제공자로 이동하여, 환불을 진행하신 후 eventyay 플랫폼에서 티켓을 환불 된 것으로 표시해 주세요."
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:68:25
 msgid "Listing Privacy"
@@ -6820,46 +6901,44 @@ msgstr ""
 msgid "Microlocations or Virtual Online Rooms"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:128:42
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:134:42
 msgid "Enable Call For Speakers"
 msgstr "발표 제안 받기"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:135:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:141:10
 #: app/templates/index.hbs:24:34 app/templates/pricing.hbs:97:24
 msgid "Call for speakers"
 msgstr "발표 제안"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:139:15
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:145:15
 msgid "Announcement"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:165:15
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:171:15
 msgid "Private Link"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:176:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:182:10
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
-msgstr ""
-"발표 제안 받는 중인지 여부와 상관 없이 비공개로 언제든 발표 제안을 받으려면 이 링크를 공유하세요. (이벤트를 저장하면 링크가 활성화 "
-"됩니다)"
+msgstr "발표 제안 받는 중인지 여부와 상관 없이 비공개로 언제든 발표 제안을 받으려면 이 링크를 공유하세요. (이벤트를 저장하면 링크가 활성화 됩니다)"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:186:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:192:14
 msgid "Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published."
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:195:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:201:14
 msgid "Do not display this publicly. Proposals can be submitted only using the private link."
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:205:8
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:211:8
 msgid "Customize submission forms"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:212:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:218:22
 msgid "Collect Speaker Details"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:228:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:234:22
 msgid "Collect Session Details"
 msgstr ""
 
@@ -7260,7 +7339,7 @@ msgstr "사업체 주소"
 
 #: app/templates/components/modals/tax-info-modal.hbs:53:13
 msgid "Zipcode"
-msgstr ""
+msgstr "우편번호"
 
 #: app/templates/components/modals/tax-info-modal.hbs:57:13
 msgid "Text for invoice footer (optional)"
@@ -7348,7 +7427,7 @@ msgstr ""
 
 #: app/templates/components/orders/after-order-message.hbs:5:10
 msgid "Organizer Message"
-msgstr ""
+msgstr "주최자 메시지"
 
 #: app/templates/components/orders/company-info.hbs:5:8
 msgid "Company Information"
@@ -7356,7 +7435,7 @@ msgstr ""
 
 #: app/templates/components/orders/company-info.hbs:65:22
 msgid "ZIP Code"
-msgstr ""
+msgstr "우편번호"
 
 #: app/templates/components/orders/company-info.hbs:75:22
 msgid "Tax Name"
@@ -7405,7 +7484,7 @@ msgstr "주문을 완료하려면 티켓 값을 지불하세요."
 #: app/templates/components/orders/order-summary.hbs:39:27
 #: app/templates/events/view/tickets/index.hbs:14:4
 msgid "Order Summary"
-msgstr ""
+msgstr "주문 요약"
 
 #: app/templates/components/orders/order-summary.hbs:49:36
 #: app/templates/components/orders/order-summary.hbs:57:46
@@ -7414,12 +7493,12 @@ msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:50:46
 #: app/templates/components/orders/order-summary.hbs:63:45
-#: app/templates/components/public/ticket-list.hbs:11:48
+#: app/templates/components/public/ticket-list.hbs:10:48
 msgid "Subtotal"
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:61:35
-#: app/templates/components/public/ticket-list.hbs:133:27
+#: app/templates/components/public/ticket-list.hbs:131:27
 msgid "Tax"
 msgstr ""
 
@@ -7507,8 +7586,12 @@ msgstr ""
 msgid "Getting Here"
 msgstr "위치 안내"
 
-#: app/templates/components/public/featured-speaker-list.hbs:1:4
+#: app/templates/components/public/featured-speaker-list.hbs:1:18
 msgid "Featured Speakers"
+msgstr "주요 연사"
+
+#: app/templates/components/public/featured-speaker-list.hbs:10:66
+msgid "More Speakers"
 msgstr ""
 
 #: app/templates/components/public/side-menu.hbs:72:101
@@ -7520,43 +7603,43 @@ msgstr "위치 안내"
 msgid "Site"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:33:50
+#: app/templates/components/public/ticket-list.hbs:32:50
 msgid "Sale ends on"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:45:54
+#: app/templates/components/public/ticket-list.hbs:43:54
 msgid "Enter Donation"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:69:22
+#: app/templates/components/public/ticket-list.hbs:67:22
 msgid "includes"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:84:77
+#: app/templates/components/public/ticket-list.hbs:82:77
 msgid "Sold Out"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:109:43
+#: app/templates/components/public/ticket-list.hbs:107:43
 msgid "Subtotal :"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:130:26
+#: app/templates/components/public/ticket-list.hbs:128:26
 msgid "Sub-Total"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:135:58
+#: app/templates/components/public/ticket-list.hbs:133:58
 msgid "Included in Total"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:165:28
+#: app/templates/components/public/ticket-list.hbs:163:28
 msgid "Promotional Code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:188:59
+#: app/templates/components/public/ticket-list.hbs:186:59
 msgid "Enter promotional code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:225:12
+#: app/templates/components/public/ticket-list.hbs:223:12
 msgid "Contact Organizer"
 msgstr ""
 
@@ -7789,7 +7872,7 @@ msgstr "온라인과 오프라인 이벤트를 위한 오픈소스 이벤트 솔
 
 #: app/templates/components/widgets/forms/billing-info.hbs:29:21
 msgid "State/Province"
-msgstr ""
+msgstr "시/도"
 
 #: app/templates/components/widgets/forms/color-picker.hbs:1:49
 msgid "Hex value or pick"
@@ -7985,8 +8068,8 @@ msgstr ""
 
 #: app/templates/events/view/session/view.hbs:16:8
 #: app/templates/public/cfs/view-session.hbs:27:8
-#: app/templates/public/sessions.hbs:98:8
-#: app/templates/public/sessions.hbs:116:18
+#: app/templates/public/sessions.hbs:99:8
+#: app/templates/public/sessions.hbs:117:18
 msgid "Not yet scheduled"
 msgstr ""
 
@@ -8214,7 +8297,7 @@ msgstr ""
 
 #: app/templates/index.hbs:3:34
 msgid "Featured Events"
-msgstr ""
+msgstr "주요 이벤트"
 
 #: app/templates/index.hbs:21:34
 msgid "No Upcoming Events Found"
@@ -8513,7 +8596,7 @@ msgstr ""
 msgid "Clear Room Filter"
 msgstr ""
 
-#: app/templates/public.hbs:110:166
+#: app/templates/public.hbs:111:164
 msgid "Clear Session Type Filter"
 msgstr ""
 
@@ -8541,19 +8624,27 @@ msgstr ""
 msgid "Withdraw"
 msgstr ""
 
-#: app/templates/public/exhibition/view.hbs:48:16
+#: app/templates/public/exhibition/view.hbs:18:33
 msgid "Meet Us In Our Exhibitor Video Room"
 msgstr ""
 
-#: app/templates/public/exhibition/view.hbs:50:15
-msgid "Join Exhibitor Video"
+#: app/templates/public/exhibition/view.hbs:20:16
+msgid "Join Exhibitor Video Room"
 msgstr ""
 
-#: app/templates/public/exhibition/view.hbs:66:65
+#: app/templates/public/exhibition/view.hbs:55:16
+msgid "Get in touch"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:70:81
+msgid "Related Sessions"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:87:65
 msgid "Exhibitor Video"
 msgstr ""
 
-#: app/templates/public/exhibition/view.hbs:79:65
+#: app/templates/public/exhibition/view.hbs:100:65
 msgid "Exhibitor Slides"
 msgstr ""
 
@@ -8597,18 +8688,24 @@ msgstr "내 일정"
 msgid "My Speaker Sessions"
 msgstr ""
 
-#: app/templates/public/sessions.hbs:55:61
 #: app/templates/public/sessions.hbs:57:121
 msgid "By Title"
 msgstr ""
 
-#: app/templates/public/sessions.hbs:55:76
 #: app/templates/public/sessions.hbs:58:125
 msgid "By Time"
 msgstr ""
 
-#: app/templates/public/sessions.hbs:81:36
-#: app/templates/public/sessions.hbs:129:36
+#: app/templates/public/sessions.hbs:59:132
+msgid "By Popularity"
+msgstr ""
+
+#: app/templates/public/sessions.hbs:63:224
+msgid "Clear All Filters"
+msgstr ""
+
+#: app/templates/public/sessions.hbs:82:36
+#: app/templates/public/sessions.hbs:130:36
 msgid "No Sessions exist for this time period"
 msgstr ""
 
@@ -9554,7 +9651,7 @@ msgstr ""
 
 #: app/utils/dictionary/demography.ts:942:11
 msgid "United States"
-msgstr ""
+msgstr "미국"
 
 #: app/utils/dictionary/demography.ts:946:11
 msgid "Uruguay"
@@ -9566,7 +9663,7 @@ msgstr ""
 
 #: app/utils/dictionary/demography.ts:954:11
 msgid "Vatican City"
-msgstr ""
+msgstr "바티칸 시국"
 
 #: app/utils/dictionary/demography.ts:958:11
 msgid "Saint Vincent And The Grenadines"
@@ -9742,7 +9839,7 @@ msgstr ""
 
 #: app/utils/dictionary/payment.ts:141:13
 msgid "United States dollar"
-msgstr ""
+msgstr "미국 달러"
 
 #: app/utils/dictionary/payment.ts:151:13
 msgid "Hungarian forint"
