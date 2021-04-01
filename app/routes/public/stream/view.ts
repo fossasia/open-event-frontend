@@ -23,7 +23,7 @@ export default class PublicStreamView extends Route {
     return model.stream.name;
   }
 
-  async model(params: { stream_id: number,success: boolean, token: string }): Promise<any> {
+  async model(params: { stream_id: number, success: boolean, token: string }): Promise<any> {
     const event = this.modelFor('public') as Event;
     const { success, token } = await this.loader.load(`/events/${event.id}/chat-token`);
 
