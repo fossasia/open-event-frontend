@@ -150,7 +150,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       user.toggleProperty('isVerified');
       await user.save();
-      this.notify.success(this.l10n.t('User verifiation state changed successfully.'),
+      this.notify.success(this.l10n.t('User verification state changed successfully.'),
         {
           id: 'user_verf_succ'
         });
