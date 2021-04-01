@@ -6,11 +6,10 @@ import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class PublicController extends Controller {
-  queryParams = ['side_panel', 'video_dialog', 'layout'];
+  queryParams = ['side_panel', 'video_dialog'];
 
   side_panel = null;
   video_dialog = null;
-  layout = null;
 
   @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
 
