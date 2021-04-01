@@ -14,10 +14,7 @@
       </button>
     </div>
     <div style="height: 100%;">
-      <Public::Stream::Chat @token={{@token}} />
+      <Public::Stream::Chat @token={{@token}} @embedded={{true}}/>
     </div>
-    {{#if this.loading}}
-      <div class="ui active centered inline loader"></div>
-    {{/if}}
   </div>
 {{/if}}

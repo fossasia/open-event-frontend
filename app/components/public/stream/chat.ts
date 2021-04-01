@@ -4,7 +4,8 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object'
 
 interface Args {
-  token: string
+  token: string,
+  embedded: Boolean
 }
 
 export default class PublicStreamChat extends Component<Args> {
@@ -13,6 +14,10 @@ export default class PublicStreamChat extends Component<Args> {
 
   @action
   init(): void {
-    this.iframeUrl = this.settings.rocketChatUrl + '/channel/general?resumeToken=' + this.args.token
-  }
+    if(this.args.embedded) {
+      this.iframeUrl = this.settings.rocketChatUrl + '/channel/general?resumeToken=' + this.args.token + '&layout=embedded'
+    } else {
+      this.iframeUrl = this.settings.rocketChatUrl + '/channel/general?resumeToken=' + this.args.token
+    }
+}
 }
