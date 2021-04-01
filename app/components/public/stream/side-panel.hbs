@@ -39,7 +39,7 @@
       {{/if}}
 
       {{#if this.showChat}}
-        <a class="ui labeled icon item {{if (eq @currentRoute 'public.chat') 'video-active'}}" href={{href-to 'public.chat' @event (query-params side_panel='true')}}>
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.chat') 'video-active'}}" href={{href-to 'public.chat' @event (query-params side_panel='true' layout='embedded')}}>
           <span><i class="comment icon"></i>
           {{t 'Chat'}}</span>
         </a>

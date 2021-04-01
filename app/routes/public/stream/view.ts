@@ -2,8 +2,13 @@ import Route from '@ember/routing/route';
 import VideoStream from 'open-event-frontend/models/video-stream';
 import { hash } from 'rsvp';
 import { action }  from '@ember/object';
+import { inject as service } from '@ember/service'
+import Loader from 'open-event-frontend/services/loader';
+import Event from 'open-event-frontend/models/event';
+
 
 export default class PublicStreamView extends Route {
+  @service declare loader: Loader;
 
   renderTemplate(): void {
     this.render('public/stream/view', { into: 'root' });
@@ -18,11 +23,15 @@ export default class PublicStreamView extends Route {
     return model.stream.name;
   }
 
-  model(params: { stream_id: number }): Promise<any> {
-    const event = this.modelFor('public');
+  async model(params: { stream_id: number,success: boolean, token: string }): Promise<any> {
+    const event = this.modelFor('public') as Event;
+    const { success, token } = await this.loader.load(`/events/${event.id}/chat-token`);
+
     return hash({
       event,
-      stream: this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel', reload: true })
+      stream: this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel', reload: true }),
+      success,
+      token
     });
   }
 
