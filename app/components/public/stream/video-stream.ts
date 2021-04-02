@@ -34,7 +34,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
   vimeoId = '';
 
   @computed()
-  get isRocketChatEnabled(): Boolean {
+  get isRocketChatEnabled(): boolean {
     return this.authManager.currentUser?.isRocketChatRegistered;
   }
 
