@@ -19,6 +19,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @service
   loader!: any;
 
+  @service authManager: any;
+
   @tracked
   loading = true;
 

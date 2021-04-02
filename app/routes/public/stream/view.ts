@@ -9,6 +9,12 @@ import Event from 'open-event-frontend/models/event';
 
 export default class PublicStreamView extends Route {
   @service declare loader: Loader;
+  @service declare l10n: any;
+  @service router: any;
+  @service confirm: any;
+  @service session : any;
+  @service authManager: any;
+
 
   renderTemplate(): void {
     this.render('public/stream/view', { into: 'root' });
