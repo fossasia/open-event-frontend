@@ -1,9 +1,9 @@
-<div class="row">
-  <h2 class="ui header column">{{t 'Tickets Summary'}}</h2>
-</div>
 <div class="ui grid stackable">
   <div class="row">
-    <div class="sixteen wide column right aligned">
+    <div class="six wide column left aligned">
+      <h2 class="ui header column">{{t 'Tickets Summary'}}</h2>
+    </div>
+    <div class="ten wide column right aligned">
       <UiDropdown class="labeled icon button mb-2 mr-2">
         <i class="sort amount down icon"></i>
         <span class="default text">{{t 'Live'}}</span>
@@ -14,9 +14,6 @@
         </div>
       </UiDropdown>
     </div>
-  </div>
-  <div class="row">
-    {{outlet}}
   </div>
 </div>
 

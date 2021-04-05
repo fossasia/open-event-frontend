@@ -193,7 +193,6 @@ Router.map(function() {
       this.route('list', { path: '/:events_status' });
       this.route('import');
     });
-
     this.route('sales', function() {
       this.route('index', { path: '/:event_status' });
       this.route('organizers');
