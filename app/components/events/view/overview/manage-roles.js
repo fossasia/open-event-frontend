@@ -3,11 +3,14 @@ import classic from 'ember-classic-decorator';
 import { classNames } from '@ember-decorators/component';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 
 @classic
 @classNames('ui', 'fluid', 'card')
 export default class ManageRoles extends Component {
   @tracked roleType = 'accepted';
+
+  @service errorHandler;
 
   @computed('data.roleInvites.@each', 'roleType')
   get roleInvites() {
@@ -35,9 +38,7 @@ export default class ManageRoles extends Component {
       })
       .catch(e => {
         console.error('Error while updating role invite', e);
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
-          id: 'man_role_err'
-        });
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);
