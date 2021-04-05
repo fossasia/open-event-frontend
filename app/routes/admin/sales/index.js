@@ -39,15 +39,15 @@ export default class IndexRoute  extends Route.extend(EmberTableRouteMixin) {
                 }
               ]
             }
-      ]
-      }
+          ]
+        }
       ];
     } else if (params.event_status === 'past') {
       filterOptions = [
         {
-              name : 'ends-at',
-              op   : 'lt',
-              val  : moment().toISOString()
+          name : 'ends-at',
+          op   : 'lt',
+          val  : moment().toISOString()
         }
       ];
     } else {
