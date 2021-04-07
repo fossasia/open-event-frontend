@@ -40,7 +40,7 @@ export default class GroupForm extends Component.extend(FormMixin) {
 
   @computed('events.[]', 'group.events.[]')
   get remainingEvents() {
-    return this.events.toArray().filter(event => (!this.group.events.toArray().includes(event) && event.hasOwnerAccess(this.authManager.currentUser.email)));
+    return this.events.toArray().filter(event => (!this.group.events.toArray().includes(event) && event.hasOwnerAccess(this.authManager.currentUser)));
   }
 
   @action
