@@ -93,7 +93,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   liveStreamUrl : attr('string'),
   webinarUrl    : attr('string'),
 
-  chatRoomName  : attr('string'),
+  chatRoomName: attr('string'),
 
   createdAt : attr('moment', { readOnly: true }),
   deletedAt : attr('moment'),
