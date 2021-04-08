@@ -15,7 +15,6 @@ export default class PublicStreamChat extends Component<Args> {
 
   @action
   init(): void {
-    const roomName = this.args.event.name + this.args.event.identifier;
-    this.iframeUrl = this.settings.rocketChatUrl + `/group/${roomName}?resumeToken=${this.args.token}`
+    this.iframeUrl = this.settings.rocketChatUrl + `/group/${this.args.event.chatRoomName}?resumeToken=${this.args.token}`
   }
 }
