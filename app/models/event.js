@@ -211,6 +211,6 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   }
 
   hasOwnerAccess(currentUser) {
-    return currentUser && (currentUser.isAnAdmin || currentUser.email === this.owner.get('email'));
+    return currentUser && currentUser.id === this.owner.get('id');
   }
 }
