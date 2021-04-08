@@ -194,6 +194,7 @@ Router.map(function() {
       this.route('import');
     });
     this.route('sales', function() {
+      this.route('index', { path: '/:event_status' });
       this.route('organizers');
       this.route('marketer');
       this.route('locations');
