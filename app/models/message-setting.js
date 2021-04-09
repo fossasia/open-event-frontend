@@ -7,13 +7,8 @@ export default ModelBase.extend({
    * Attributes
    */
   action              : attr('string'),
-  mailStatus          : attr('boolean'),
-  notificationStatus  : attr('boolean'),
-  userControlStatus   : attr('boolean'),
+  enabled          : attr('boolean'),
   emailMessage        : attr('string'),
   recipient           : attr('string'),
-  emailSubject        : attr('string'),
-  notificationTitle   : attr('string'),
-  notificationMessage : attr('string'),
-  sentAt              : attr('string')
+  emailSubject        : attr('string')
 });

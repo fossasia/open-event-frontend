@@ -1,12 +1,1 @@
-<div class='ui checkbox'>
-  <Input @type="checkbox" @name="mail_status" @checked={{this.extraRecords.mailStatus}} />
-  <label>Mail</label>
-</div>
-<div class='ui checkbox'>
-  <Input @type="checkbox" @name="notification_status" @checked={{this.extraRecords.notificationStatus}} />
-  <label>Notification</label>
-</div>
-<div class='ui checkbox'>
-  <Input @type="checkbox" @name="user_control_status" @checked={{this.extraRecords.userControlStatus}} />
-  <label>User Control</label>
-</div>
+<UiCheckbox @class="toggle" @checked={{this.record}} @onChange={{action (mut this.record)}} />
