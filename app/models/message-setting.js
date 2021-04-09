@@ -6,9 +6,9 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
-  action              : attr('string'),
-  enabled          : attr('boolean'),
-  emailMessage        : attr('string'),
-  recipient           : attr('string'),
-  emailSubject        : attr('string')
+  action       : attr('string'),
+  enabled      : attr('boolean'),
+  emailMessage : attr('string'),
+  recipient    : attr('string'),
+  emailSubject : attr('string')
 });

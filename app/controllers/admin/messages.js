@@ -13,12 +13,12 @@ get columns() {
     {
       name      : this.l10n.t('Recipients'),
       valuePath : 'recipient',
-      width: 40
+      width     : 40
     },
     {
       name      : this.l10n.t('Trigger'),
       valuePath : 'action',
-      width: 40
+      width     : 40
     },
     {
       name      : this.l10n.t('Email Message'),
@@ -32,10 +32,10 @@ get columns() {
       }
     },
     {
-      name            : this.l10n.t('Enabled'),
-      valuePath       : 'enabled',
-      cellComponent   : 'ui-table/cell/admin/messages/cell-options',
-      width: 20
+      name          : this.l10n.t('Enabled'),
+      valuePath     : 'enabled',
+      cellComponent : 'ui-table/cell/admin/messages/cell-options',
+      width         : 20
     }
 
   ];
