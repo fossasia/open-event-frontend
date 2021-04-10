@@ -1,3 +1,6 @@
+{{#if this.authManager.currentUser.isRocketChatRegistered}}
+  <Public::Stream::ChatPanel @token={{this.model.token}} @event={{this.model.event}}/>
+{{/if}}
 <Tables::Utilities::SearchBox
   class="mb-2 mr-2"
   @searchQuery={{this.search}}

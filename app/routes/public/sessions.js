@@ -197,8 +197,10 @@ export default class SessionsRoute extends Route {
         }
       });
     }
-
+    const { success, token } = await this.loader.load(`/events/${eventDetails.id}/chat-token`);
     return {
+      success,
+      token,
       event   : eventDetails,
       session : await this.infinity.model('sessions', {
         include      : 'track,speakers,session-type,favourite,microlocation.video-stream',
