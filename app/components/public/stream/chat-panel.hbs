@@ -7,7 +7,7 @@
        <i class="close large black icon pr-2 chat-side-panel-button" role="button" {{action (mut this.shown) false}}></i>
     </div>
     <div style="height: 100%;">
-      <Public::Stream::Chat @token={{@token}} @embedded={{true}}/>
+      <Public::Stream::Chat @token={{@token}} @embedded={{true}} @event={{@event}}/>
     </div>
   </div>
 {{/if}}
