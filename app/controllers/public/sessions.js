@@ -34,7 +34,7 @@ export default class SessionsController extends Controller {
   get groupByDateSessions() {
     let sessions;
     if (this.sort !== 'starts-at') {
-      sessions = groupBy(this.model.session.toArray(), '');
+      sessions = groupBy([...new Set(this.model.session.toArray())], '');
     } else {
       sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
     }
