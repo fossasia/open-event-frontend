@@ -1,4 +1,4 @@
- <div class="ui chat-stream-side-panel-button right">
+ <div {{did-insert this.setup}} class="ui chat-stream-side-panel-button right">
   <i class="rocketchat large icon p-4"  style="color: white;width: 55px;height:55px;border-radius:50%;background-color:#555" {{action (mut this.shown) true}} role="button"></i>
 </div>
 {{#if this.shown}}
@@ -7,7 +7,7 @@
        <i class="close large black icon pr-2 chat-side-panel-button" role="button" {{action (mut this.shown) false}}></i>
     </div>
     <div style="height: 100%;">
-      <Public::Stream::Chat @token={{@token}} @embedded={{true}} @event={{@event}}/>
+      <Public::Stream::Chat @token={{this.token}} @embedded={{true}} @event={{@event}}/>
     </div>
   </div>
 {{/if}}

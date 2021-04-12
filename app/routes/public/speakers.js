@@ -65,10 +65,7 @@ export default class SpeakersRoute extends Route {
         ]
       });
     }
-    const { success, token } = await this.loader.load(`/events/${eventDetails.id}/chat-token`);
     return {
-      success,
-      token,
       event    : eventDetails,
       speakers : await this.infinity.model('speakers', {
         filter       : filterOptions,

@@ -31,13 +31,10 @@ export default class PublicStreamView extends Route {
 
   async model(params: { stream_id: number, success: boolean, token: string }): Promise<any> {
     const event = this.modelFor('public') as Event;
-    const { success, token } = await this.loader.load(`/events/${event.id}/chat-token`);
 
     return hash({
       event,
       stream: this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel', reload: true }),
-      success,
-      token
     });
   }
 

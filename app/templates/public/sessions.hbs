@@ -1,5 +1,5 @@
 {{#if this.authManager.currentUser.isRocketChatRegistered}}
-  <Public::Stream::ChatPanel @token={{this.model.token}} @event={{this.model.event}}/>
+  <Public::Stream::ChatPanel @event={{this.model.event}}/>
 {{/if}}
 <div class="{{if this.device.isMobile 'mt--8'}} d-flex" style="align-items: center;">
   <div class="d-flex wrap mb-4 items-center">

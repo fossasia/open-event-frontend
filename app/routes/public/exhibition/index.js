@@ -20,10 +20,7 @@ export default class ExhibitionRoute extends Route {
         val  : 'accepted'
       }
     ];
-    const { success, token } = await this.loader.load(`/events/${eventDetails.id}/chat-token`);
     return {
-      success,
-      token,
       event      : eventDetails,
       exhibitors : await this.infinity.model('exhibitors', {
         filter        : filterOptions,
