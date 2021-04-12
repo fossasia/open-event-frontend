@@ -133,6 +133,13 @@
       </div>
     </div>
   </div>
+
+  <div>
+    <button id="scrollToTop" {{action "scrollToTop"}} title="Go to Top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+  </div>
+
   {{#if (eq this.device.isMobile false)}}
     <div class="three wide column"></div>
   {{/if}}
