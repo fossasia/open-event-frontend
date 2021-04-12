@@ -3,7 +3,6 @@ import VideoStream from 'open-event-frontend/models/video-stream';
 import { hash } from 'rsvp';
 import { action }  from '@ember/object';
 
-
 export default class PublicStreamView extends Route {
 
   renderTemplate(): void {
@@ -19,7 +18,7 @@ export default class PublicStreamView extends Route {
     return model.stream.name;
   }
 
-  async model(params: { stream_id: number }): Promise<any> {
+  model(params: { stream_id: number }): Promise<any> {
     const event = this.modelFor('public');
     return hash({
       event,

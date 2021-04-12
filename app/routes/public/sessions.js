@@ -197,6 +197,7 @@ export default class SessionsRoute extends Route {
         }
       });
     }
+    
     return {
       event   : eventDetails,
       session : await this.infinity.model('sessions', {
