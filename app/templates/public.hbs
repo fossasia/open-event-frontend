@@ -149,7 +149,9 @@
 {{#if this.side_panel}}
   <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @currentRoute={{this.session.currentRouteName}} />  
 {{/if}}
-
+{{#if this.model.isChatEnabled}}
+  <Public::Stream::ChatPanel @event={{this.model}}/>
+{{/if}}
 {{#if this.video_dialog}}
   <Modals::SimpleModal
     @isOpen={{true}}
