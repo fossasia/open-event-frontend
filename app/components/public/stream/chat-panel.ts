@@ -32,7 +32,7 @@ export default class PublicStreamChatPanel extends Component<Args> {
 
   @action
   async showChatPanel(): Promise<void> {
-    if(this.authManager.currentUser?.isRocketChatRegistered) {
+    if (this.authManager.currentUser?.isRocketChatRegistered) {
       this.shown = true;
       return;
     }
