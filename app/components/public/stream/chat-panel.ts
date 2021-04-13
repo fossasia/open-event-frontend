@@ -12,7 +12,6 @@ export default class PublicStreamChatPanel extends Component<Args> {
 
   @service declare l10n: any;
   @service declare loader: Loader;
-  @service router: any;
   @service confirm: any;
   @service session : any;
   @service authManager: any;
