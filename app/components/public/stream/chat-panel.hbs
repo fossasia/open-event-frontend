@@ -1,7 +1,5 @@
 <div {{did-insert this.setup}} class="ui chat-stream-side-panel-button right">
-  {{#if this.hasStreams}}
-    <i class="rocketchat large icon p-4"  style="color: white;width: 55px;height:55px;border-radius:50%;background-color:#555" {{action "showChatPanel"}} role="button"></i>
-  {{/if}}
+  <i class="rocketchat large icon p-4"  style="color: white;width: 55px;height:55px;border-radius:50%;background-color:#555" {{action "showChatPanel"}} role="button"></i>
 </div>
 {{#if this.shown}}
   <div class="d-flex chat-side-panel" style="flex-direction: column-reverse">
