@@ -137,6 +137,7 @@ Router.map(function() {
         this.route('view', { path: '/:speaker_id' });
         this.route('edit', { path: '/:speaker_id/edit' });
       });
+      this.route('chat');
       this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });
         this.route('edit', { path: '/:stream_id/edit' });
@@ -193,6 +194,7 @@ Router.map(function() {
       this.route('import');
     });
     this.route('sales', function() {
+      this.route('index', { path: '/:event_status' });
       this.route('organizers');
       this.route('marketer');
       this.route('locations');

@@ -23,6 +23,7 @@ export const SPEAKER_FORM_FIELDS = {
   facebook            : tn.t('Facebook'),
   twitter             : tn.t('Twitter'),
   instagram           : tn.t('Instagram'),
+  mastodon            : tn.t('Mastodon'),
   linkedin            : tn.t('Linkedin'),
   heardFrom           : tn.t('Heard From'),
   sponsorshipRequired : tn.t('Sponsorship Required')
@@ -49,6 +50,7 @@ export const SESSION_FORM_FIELDS = {
   instagram     : tn.t('Instagram'),
   linkedin      : tn.t('Linkedin'),
   gitlab        : tn.t('GitLab'),
+  mastodon      : tn.t('Mastodon'),
   comments      : tn.t('Comments')
 };
 
@@ -96,6 +98,7 @@ export default ModelBase.extend({
     github               : tn.t('GitHub'),
     instagram            : tn.t('Instagram'),
     linkedin             : tn.t('LinkedIn'),
+    mastodon             : tn.t('Mastodon'),
     gender               : tn.t('Gender'),
     acceptReceiveEmails  : tn.t('Email consent'),
     acceptVideoRecording : tn.t('Photo & video & text consent'),
@@ -126,7 +129,7 @@ export default ModelBase.extend({
 
   isUrlField: computed('type', 'fieldIdentifier', function() {
     return this.type === 'text'
-    && (['website', 'twitter', 'github', 'gitlab', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
+    && (['website', 'twitter', 'github', 'gitlab', 'mastodon', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
   }),
 
   isRequiredObserver: observer('isRequired', function() {

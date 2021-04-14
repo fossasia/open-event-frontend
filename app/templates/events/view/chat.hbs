@@ -1,0 +1,29 @@
+<div class="sixteen wide column">
+    <div class="ui centered grid">
+    <div class="column">
+      <div class="ui segment">
+        <div class="center aligned text">
+          <div class=" field">
+            <div class="d-flex" style="justify-content: center;">
+              <UiCheckbox
+                @class="ui slider"
+                @checked={{if this.model.isChatEnabled 'active'}}
+                @onChange={{action 'toggleChat'}} />
+              <label class="weight-300" style="font-size: large">
+                {{if this.model.isChatEnabled (t 'Turn off') (t 'Turn on')}}
+                {{t 'Event Chat'}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sixteen wide column">
+        {{#if this.model.isChatEnabled}}
+          <h4 class="centered text">{{t 'Chat is currently enabled for this event. Users can access a chat channel for this event.'}}</h4>
+        {{else}}
+          <h4 class="centered text">{{t 'Chat is currently not enabled for this event. Users cannot access chat for this event.'}}</h4>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
