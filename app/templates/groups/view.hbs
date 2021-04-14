@@ -1,0 +1,19 @@
+<table class="ui very basic unstackable table mt-4">
+  <thead>
+    <tr>
+      <th>{{t 'User (Email)'}}</th>
+      <th>{{t 'Role'}}</th>
+      {{#if @editable}}
+        <th>{{t 'Options'}}</th>
+      {{/if}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model.usersGroupsRoles.roles as |eventRole|}}
+      <tr>
+        <td>{{eventRole.user.email}}</td>
+        <td>{{eventRole.role.titleName}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
