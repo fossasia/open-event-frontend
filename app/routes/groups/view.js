@@ -7,7 +7,7 @@ export default class ViewRoute extends Route {
   async model(params) {
     return {
       usersGroupsRoles: await this.store.findRecord('group', params.group_id, {
-        include: 'events,roles'
+        include: 'events'
       })
     };
   }
