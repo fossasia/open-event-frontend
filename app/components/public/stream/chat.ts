@@ -16,10 +16,6 @@ export default class PublicStreamChat extends Component<Args> {
 
   @action
   init(): void {
-    if (this.args.embedded) {
-      this.iframeUrl = this.settings.rocketChatUrl + `/group/${this.args.event.chatRoomName}?resumeToken=${this.args.token}&layout=embedded`
-    } else {
-      this.iframeUrl = this.settings.rocketChatUrl + `/group/${this.args.event.chatRoomName}?resumeToken=${this.args.token}`
-    }
+    this.iframeUrl = this.settings.rocketChatUrl + `/group/${this.args.event.chatRoomName}?resumeToken=${this.args.token}` + (this.args.embedded ? '&layout=embedded' : '');
   }
 }
