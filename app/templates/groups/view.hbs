@@ -1,12 +1,15 @@
-<div class="ui thirteen column center aligned container mt-8">
+<div class="ui sixteen wide column container mt-4">
+<div class="content d-flex" style="align-items: center;">
+  <div class="header">{{t 'Team Members'}}</div>
+  <button class="ui blue button ml-auto" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
+</div>
+
 <table class="ui left aligned stackable table">
   <thead>
     <tr>
       <th>{{t 'User (Email)'}}</th>
       <th>{{t 'Role'}}</th>
-      {{#if @editable}}
-        <th>{{t 'Options'}}</th>
-      {{/if}}
+      <th>{{t 'Status'}}</th>
     </tr>
   </thead>
   <tbody>
@@ -14,8 +17,19 @@
       <tr>
         <td>{{roleDetail.email}}</td>
         <td>{{roleDetail.role.titleName}}</td>
+        {{#if roleDetail.accepted}}
+          <td>{{t 'Accepted'}}</td>
+        {{else}}
+          <td>{{t 'Pending'}}</td>
+        {{/if}}
       </tr>
     {{/each}}
   </tbody>
 </table>
 </div>
+<Modals::AddUserRoleModal
+  @currentInvite={{this.currentInvite}}
+  @isLoading={{this.isLoading}}
+  @data={{this.model}}
+  @isOpen={{this.isAddUserRoleModalOpen}}
+  @addUserRoles={{action "addUserRoles"}} />
