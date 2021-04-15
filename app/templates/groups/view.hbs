@@ -9,10 +9,10 @@
     </tr>
   </thead>
   <tbody>
-    {{#each this.model.group.events as |eventDetail|}}
+    {{#each this.model.group.roles as |roleDetail|}}
       <tr>
-        <td>{{eventDetail.name}}</td>
-        <td>{{eventDetail.name}}</td>
+        <td>{{roleDetail.user.email}}</td>
+        <td>{{roleDetail.role.titleName}}</td>
       </tr>
     {{/each}}
   </tbody>

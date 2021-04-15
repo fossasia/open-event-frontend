@@ -7,7 +7,7 @@ export default class ViewRoute extends Route {
   async model(params) {
     // How to query role-invites here. And roles to be include with group
     const group = await this.store.findRecord('group', params.group_id, {
-      include: 'events'
+      include: 'events,roles'
     });
     return {
       group
