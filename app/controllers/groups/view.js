@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
-import {action} from '@ember/object';
+import { action } from '@ember/object';
 export default class extends Controller {
-    
+
   @action
   openAddUserRoleModal() {
     const currentInvite = this.model.group.roles.createRecord({});

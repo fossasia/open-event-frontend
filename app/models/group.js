@@ -13,5 +13,5 @@ export default ModelBase.extend({
    */
   user       : belongsTo('user'),
   events     : hasMany('event'),
-  roles      : hasMany('users-groups-role'),
+  roles      : hasMany('users-groups-role')
 });

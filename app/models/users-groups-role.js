@@ -3,9 +3,9 @@ import { belongsTo } from 'ember-data/relationships';
 import attr from 'ember-data/attr';
 
 export default ModelBase.extend({
-  email : attr('string'),
-  accepted: attr('boolean'),
-  group : belongsTo('group'),
-  role  : belongsTo('role'),
-  user  : belongsTo('user')
+  email    : attr('string'),
+  accepted : attr('boolean'),
+  group    : belongsTo('group'),
+  role     : belongsTo('role'),
+  user     : belongsTo('user')
 });
