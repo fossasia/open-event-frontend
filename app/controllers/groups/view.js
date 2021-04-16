@@ -12,7 +12,6 @@ export default class extends Controller {
   @action
   addUserRoles() {
     this.set('isLoading', true);
-    this.currentInvite.role.set('name', 'organizer');
     this.currentInvite.save()
       .then(() => {
         this.set('isLoading', false);

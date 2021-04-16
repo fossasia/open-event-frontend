@@ -10,7 +10,8 @@ export default class ViewRoute extends Route {
       include: 'events,roles'
     });
     return {
-      group
+      group,
+      roles: await this.store.findAll('role')
     };
   }
 }
