@@ -229,7 +229,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     try {
       const result = [];
       const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
-      recordings.result.response.recordings.recording.forEach(rec => {
+      recordings.result.response.recordings?.recording.forEach(rec => {
         result.push(rec.playback.format.url);
       });
       this.videoRecordings = [...result];
