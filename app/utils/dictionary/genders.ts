@@ -7,5 +7,11 @@ export const genders = [
   },
   {
     name: 'Other'
+  },
+  {
+    name: 'Prefer not to share'
+  },
+  {
+    name: ' Diverse / Non-binary'
   }
 ];
