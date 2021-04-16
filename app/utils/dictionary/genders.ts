@@ -13,5 +13,5 @@ export const genders = [
   },
   {
     name: 'Prefer not to share'
-  },
+  }
 ];
