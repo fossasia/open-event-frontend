@@ -1,7 +1,8 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import VideoStream from 'open-event-frontend/models/video-stream';
+import Event from 'open-event-frontend/models/event';
 import { tracked } from '@glimmer/tracking';
 
 declare global {
@@ -11,13 +12,16 @@ declare global {
 }
 
 interface Args {
-  videoStream: VideoStream
+  videoStream: VideoStream,
+  event: Event
 }
 
 export default class PublicStreamVideoStream extends Component<Args> {
 
   @service
   loader!: any;
+
+  @service authManager: any;
 
   @tracked
   loading = true;
@@ -30,6 +34,11 @@ export default class PublicStreamVideoStream extends Component<Args> {
 
   @tracked
   vimeoId = '';
+
+  @computed()
+  get isRocketChatEnabled(): boolean {
+    return this.authManager.currentUser?.isRocketChatRegistered && this.args.event.isChatEnabled;
+  }
 
   @action
   async setup(): Promise<void> {

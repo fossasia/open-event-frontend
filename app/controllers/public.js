@@ -3,9 +3,12 @@ import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class PublicController extends Controller {
+  @service event;
+
   queryParams = ['side_panel', 'video_dialog'];
 
   side_panel = null;
@@ -16,6 +19,9 @@ export default class PublicController extends Controller {
   @tracked activeRoom = this.router.currentRoute.queryParams.room ? this.router.currentRoute.queryParams.room.split(',') : [];
 
   @tracked activeTrack = this.router.currentRoute.queryParams.track ? this.router.currentRoute.queryParams.track.split(',') : [];
+
+  @tracked hasStreams = null;
+  @tracked canAccess = null;
 
   @computed('model.socialLinks')
   get twitterLink() {
@@ -109,5 +115,13 @@ export default class PublicController extends Controller {
   @action
   closeVideoDialog() {
     this.router.transitionTo('public', { queryParams: { video_dialog: null } });
+  }
+
+  @action
+  async setup() {
+    const streamStatus = await this.event.hasStreams(this.model.id);
+    const { exists, can_access } = streamStatus;
+    this.hasStreams = exists;
+    this.canAccess = can_access;
   }
 }
