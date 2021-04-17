@@ -62,11 +62,6 @@
           @site="vimeo"
           @value={{this.data.stream.url}}
           @onChange={{action (mut this.data.stream.url)}} />
-      {{else if (eq this.data.stream.videoChannel.provider '3cx')}}
-        <Widgets::Forms::LinkField
-          @inputId="url"
-          @value={{this.data.stream.url}}
-          @onChange={{action (mut this.data.stream.url)}} />
       {{else}}
         <Widgets::Forms::LinkField
           @inputId="url"

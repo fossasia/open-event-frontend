@@ -33,7 +33,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
   youtubeId = '';
 
   @tracked
-  cxUrl = '';
+  iframeTitle = '';
 
   @tracked
   vimeoId = '';
@@ -54,7 +54,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
     if (provider === 'jitsi') {
       this.loading = false;
     } else if (provider === '3cx') {
-      this.cxUrl = stream.url;
+      this.iframeUrl = stream.url;
+      this.iframeTitle = '3cx Live Stream'
       this.loading = false;
     } else if (provider === 'youtube') {
       const [, id] = stream.url.split('v=');
@@ -79,6 +80,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
         // Same origin and can be loaded in an iframe
         this.loading = false;
         this.iframeUrl = url;
+        this.iframeTitle = 'BBB'
       } else {
         location.href = url;
       }
