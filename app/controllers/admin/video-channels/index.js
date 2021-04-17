@@ -13,11 +13,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       return [
         {
           name      : this.l10n.t('Name'),
-          valuePath : 'name'
+          valuePath : 'name',
+          width     : 50
         },
         {
           name      : this.l10n.t('Provider'),
-          valuePath : 'provider'
+          valuePath : 'provider',
+          width     : 50
         },
         {
           name      : this.l10n.t('URL'),
@@ -26,6 +28,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         {
           name      : this.l10n.t('Api URL'),
           valuePath : 'apiUrl'
+        },
+        {
+          name      : this.l10n.t('Api Key'),
+          valuePath : 'apiKey'
         },
         {
           name          : this.l10n.t('Actions'),

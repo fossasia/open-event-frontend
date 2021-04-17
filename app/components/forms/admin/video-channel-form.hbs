@@ -12,7 +12,7 @@
       </div>
       <div class="field">
         <label class="required">{{t 'Provider'}}</label>
-        <Input type="text" name="name" @value={{@videoChannel.provider}} />
+        <Input type="text" name="provider" @value={{@videoChannel.provider}} />
       </div>
       <div class="field">
         <label class="required">{{t 'URL'}}</label>
@@ -29,6 +29,10 @@
           @value={{@videoChannel.apiUrl}}
           @onChange={{action (mut @videoChannel.apiUrl)}} 
           />
+      </div>
+      <div class="field">
+        <label class="required">{{t 'Api Key'}}</label>
+        <Input type="text" name="apiKey" @value={{@videoChannel.apiKey}} />
       </div>
       <div class="ui hidden divider"></div>
       <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
