@@ -259,7 +259,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         participants : rec.participants,
         startTime    : moment(Number(rec.startTime)).format('dddd, D MMMM, YYYY h:mm A'),
         endTime      : moment(Number(rec.endTime)).format('dddd, D MMMM, YYYY h:mm A'),
-        size         : moment.duration(Number(rec.size)).humanize(),
+        size         : moment.duration(Number(rec.endTime) - Number(rec.startTime)).humanize(),
         url          : rec.playback.format.url
       }));
     } catch (e) {
