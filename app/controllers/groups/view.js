@@ -14,7 +14,6 @@ export default class extends Controller {
     this.set('isLoading', true);
     this.currentInvite.save()
       .then(() => {
-        this.set('isLoading', false);
         this.set('isAddUserRoleModalOpen', false);
         this.notify.success(this.isNewInvite ? this.l10n.t('Role Invite sent successfully') : this.l10n.t('Role Invite updated successfully'), {
           id: 'man_role'
