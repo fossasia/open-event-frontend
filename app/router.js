@@ -83,6 +83,7 @@ Router.map(function() {
     this.route('chat');
   });
   this.route('role-invites');
+  this.route('group-invites');
   this.route('pricing');
   this.route('create');
   this.route('not-found');
