@@ -18,17 +18,17 @@ export default class GruopInvitesRoute extends Route {
       data: { token }
     };
 
-    const invite = await this.loader.post('/users-groups-roles/accept-invite', payload);
+  
     if (this.session.isAuthenticated) {
-      return this.transitionTo('groups.list');
-    }
-    this.set('redirectionParams',  {
-      queryParams: {
-        inviteToken : token,
-        inviteEmail : invite.email
+        const invite = await this.loader.post('/users-groups-roles/accept-invite', payload);
+        this.set('redirectionParams',  {
+          queryParams: {
+            inviteToken : token,
+            inviteEmail : invite.email
+          }
+        });
+        return this.transitionTo('groups.list');
       }
-    });
-
   }
 
   afterModel() {
