@@ -262,13 +262,21 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   async loadRecordings() {
     try {
       const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
-      this.videoRecordings = recordings.result.response.recordings?.recording.map(rec => ({
-        participants : rec.participants,
-        startTime    : moment(Number(rec.startTime)).format('dddd, D MMMM, YYYY h:mm A'),
-        endTime      : moment(Number(rec.endTime)).format('dddd, D MMMM, YYYY h:mm A'),
-        size         : moment.duration(Number(rec.endTime) - Number(rec.startTime)).humanize(),
-        url          : rec.playback.format.url
-      }));
+      if (recordings.result.response.recordings) {
+        let recordingsArray = [];
+        if (Array.isArray(recordings.result.response.recordings.recording)) {
+          recordingsArray = recordings.result.response.recordings.recording;
+        } else {
+          recordingsArray.push(recordings.result.response.recordings.recording);
+        }
+        this.videoRecordings = recordingsArray.map(rec => ({
+          participants : rec.participants,
+          startTime    : moment(Number(rec.startTime)).format('dddd, D MMMM, YYYY h:mm A'),
+          endTime      : moment(Number(rec.endTime)).format('dddd, D MMMM, YYYY h:mm A'),
+          size         : moment.duration(Number(rec.endTime) - Number(rec.startTime)).humanize(),
+          url          : rec.playback.format.url
+        }));
+      }
     } catch (e) {
       console.error('Error while getting recordings f', e);
     }
