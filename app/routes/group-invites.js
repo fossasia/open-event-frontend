@@ -1,9 +1,10 @@
 import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 @classic
-export default class GruopInvitesRoute extends Route {
+export default class GruopInvitesRoute extends Route.extend(AuthenticatedRouteMixin) {
   @service
   fastboot;
 
@@ -27,7 +28,7 @@ export default class GruopInvitesRoute extends Route {
           inviteEmail : invite.email
         }
       });
-      return this.transitionTo('groups.list');
+      return this.transitionTo('groups.view', invite.group);
     }
   }
 
