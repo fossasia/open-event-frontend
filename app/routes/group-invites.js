@@ -24,7 +24,7 @@ export default class GruopInvitesRoute extends Route.extend(AuthenticatedRouteMi
     }
     this.set('redirectionParams',  {
       queryParams: {
-        inviteToken : token,
+        inviteToken: token
       }
     });
   }
