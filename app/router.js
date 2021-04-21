@@ -83,6 +83,7 @@ Router.map(function() {
     this.route('chat');
   });
   this.route('role-invites');
+  this.route('group-invites');
   this.route('pricing');
   this.route('create');
   this.route('not-found');
@@ -174,6 +175,7 @@ Router.map(function() {
   this.route('groups', function() {
     this.route('list');
     this.route('create');
+    this.route('view', { path: '/:group_id' });
     this.route('edit', { path: '/:group_id/edit' });
   });
   this.route('my-tickets', function() {
