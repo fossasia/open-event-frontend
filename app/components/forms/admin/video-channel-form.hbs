@@ -1,0 +1,41 @@
+<div class="ui container">
+    <h3 class="ui header">
+      {{t 'Video channel details'}}
+    </h3>
+  <div class="sixteen wide column">
+    <Forms::Form
+      @onValid={{this.save}}
+      class="{{if this.isLoading 'loading'}}">
+      <div class="field">
+        <label class="required">{{t 'Name'}}</label>
+        <Input type="text" name="name" @value={{@videoChannel.name}} />
+      </div>
+      <div class="field">
+        <label class="required">{{t 'Provider'}}</label>
+        <Input type="text" name="provider" @value={{@videoChannel.provider}} />
+      </div>
+      <div class="field">
+        <label class="required">{{t 'URL'}}</label>
+        <Widgets::Forms::LinkField
+          @inputId="url"
+          @value={{@videoChannel.url}}
+          @onChange={{action (mut @videoChannel.url)}} 
+          />
+      </div>
+      <div class="field">
+        <label class="required">{{t 'Api URL'}}</label>
+        <Widgets::Forms::LinkField
+          @inputId="apiUrl"
+          @value={{@videoChannel.apiUrl}}
+          @onChange={{action (mut @videoChannel.apiUrl)}} 
+          />
+      </div>
+      <div class="field">
+        <label class="required">{{t 'Api Key'}}</label>
+        <Input type="text" name="apiKey" @value={{@videoChannel.apiKey}} />
+      </div>
+      <div class="ui hidden divider"></div>
+      <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    </Forms::Form>
+  </div>
+</div>
