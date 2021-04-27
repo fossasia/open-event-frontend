@@ -1,3 +1,9 @@
+<div class="ui warning message mb-8 mr--4">
+  <div class="header">
+    {{t 'This feature is still in alpha stage'}}
+  </div>
+  {{t 'Please use with care.'}} {{t 'Thank You.'}}
+</div>
 <div class="ui grid stackable">
   <div class="eight wide column">
     <Events::View::Export::DownloadZip @startGeneration={{action "startGeneration"}} @isDownloadDisabled={{this.isDownloadDisabled}} @eventExportStatus={{this.eventExportStatus}} @eventDownloadUrl={{this.eventDownloadUrl}} @data={{this.data}} @isLoading={{this.isLoading}} />

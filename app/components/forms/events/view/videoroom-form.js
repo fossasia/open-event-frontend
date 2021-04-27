@@ -6,7 +6,10 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
+import moment from 'moment';
 
+
+const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
@@ -16,6 +19,33 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked loading = false;
   @tracked moderatorEmail = '';
   @tracked deletedModerators = [];
+  @tracked videoRecordings = [];
+
+  get recordingColumns() {
+    return [
+      {
+        name      : this.l10n.t('Number of Participants'),
+        valuePath : 'participants'
+      },
+      {
+        name      : this.l10n.t('Start time'),
+        valuePath : 'startTime'
+      },
+      {
+        name      : this.l10n.t('End time'),
+        valuePath : 'endTime'
+      },
+      {
+        name      : this.l10n.t('Duration'),
+        valuePath : 'size'
+      },
+      {
+        name          : this.l10n.t('View'),
+        valuePath     : 'url',
+        cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-recording'
+      }
+    ];
+  }
 
   @computed('data.stream.rooms.[]')
   get room() {
@@ -115,6 +145,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   addBigBlueButton(channel) {
     this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+    this.data.stream.set('extra', { bbb_options });
+  }
+
+  add3cx() {
+    this.data.stream.set('url', '');
   }
 
   @action
@@ -134,6 +169,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     switch (channel.get('provider')) {
       case 'jitsi':
         await this.addJitsi(channel);
+        break;
+      case '3cx':
+        await this.add3cx();
         break;
       case 'bbb':
         this.addBigBlueButton(channel);
@@ -221,9 +259,30 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.data.stream.moderators.removeObject(moderator);
   }
 
+  async loadRecordings() {
+    try {
+      const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
+      this.videoRecordings = recordings.result.response.recordings?.recording.map(rec => ({
+        participants : rec.participants,
+        startTime    : moment(Number(rec.startTime)).format('dddd, D MMMM, YYYY h:mm A'),
+        endTime      : moment(Number(rec.endTime)).format('dddd, D MMMM, YYYY h:mm A'),
+        size         : moment.duration(Number(rec.endTime) - Number(rec.startTime)).humanize(),
+        url          : rec.playback.format.url
+      }));
+    } catch (e) {
+      console.error('Error while getting recordings f', e);
+    }
+  }
+
   didInsertElement() {
+    if (this.data.stream.videoChannel.get('provider') === 'bbb') {
+      this.loadRecordings();
+    }
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
       this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    }
+    if (!this.data.stream.extra?.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
+      this.data.stream.set('extra', { bbb_options });
     }
   }
 }

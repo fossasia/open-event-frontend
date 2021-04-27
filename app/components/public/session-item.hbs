@@ -51,18 +51,27 @@
         <div class="left floated twelve wide column">
           <div>
             <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
-              <i class="train icon"></i>{{@session.track.name}}
+              <i class="train icon pr-2"></i>{{@session.track.name}}
             </a>
           </div>
           {{#if @session.startsAt}}
             <div>
               <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
-                <i class="icon map marker alternate"></i>{{@session.microlocation.name}}
+                <i class="icon map marker alternate pr-2"></i>{{@session.microlocation.name}}
               </a>
             </div>
+          {{/if}}
+          {{#if @session.language}}
+            <div>
+              <div class="color-inherit">
+                <i class="icon language alternate pr-2"></i>{{@session.language}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if @session.startsAt}}
             <div class="small text">
               <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
-                <i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
+                <i class="wait icon pr-2"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
               </a>
             </div>
           {{/if}}
@@ -84,18 +93,27 @@
         <div class="right floated five wide column" style="padding-top: .25rem !important;" >
           <div>
             <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
-              <i class="train icon"></i>{{@session.track.name}}
+              <i class="train icon pr-2"></i>{{@session.track.name}}
             </a>
           </div>
           {{#if @session.startsAt}}
             <div>
               <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
-                <i class="icon map marker alternate"></i>{{@session.microlocation.name}}
+                <i class="icon map marker alternate pr-2"></i>{{@session.microlocation.name}}
               </a>
             </div>
+          {{/if}}
+          {{#if @session.language}}
+            <div>
+              <div class="color-inherit">
+                <i class="icon language alternate pr-2"></i>{{@session.language}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if @session.startsAt}}
             <div class="small text">
               <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
-                <i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
+                <i class="wait icon pr-2"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
               </a>
             </div>
           {{/if}}
@@ -126,6 +144,9 @@
         {{/if}}
         {{#if @session.gitlab}}
           <a href={{@session.gitlab}} target="_blank" rel="noopener noreferrer"><i class="gitlab icon"></i>{{t 'GitLab'}}</a>
+        {{/if}}
+        {{#if @session.mastodon}}
+          <a href={{@session.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
         {{/if}}
          </div>
     </div>
@@ -192,6 +213,9 @@
         {{/if}}
         {{#if speaker.website}}
           <a href={{speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i>{{t 'Website'}}</a>
+        {{/if}}
+        {{#if speaker.mastodon}}
+          <a href={{speaker.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
         {{/if}}
       </div>
     {{/each}}

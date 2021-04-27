@@ -112,6 +112,35 @@
         @onChange={{action (mut this.data.stream.extra.loop)}} />
     </div>
   {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label>
+          {{t 'Record'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.record}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.record)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Auto Start Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.autoStartRecording)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.muteOnStart)}} />
+    </div>
+  {{/if}}
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>
@@ -141,6 +170,21 @@
       </span>
     {{/each}}
   </div>
+
+  {{#if this.videoRecordings}}
+    <div class="ui header">{{t 'BBB Recordings'}}</div>
+    <Tables::Default
+      @color='green'
+      @columns={{this.recordingColumns}}
+      @rows={{this.videoRecordings}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column"
+      @hideSearchBox={{true}}
+      @hidePagination={{true}}
+      @hidePageSize={{true}} />
+  {{/if}}
+
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
   <LinkTo @route="events.view.videoroom.index" class="ui red button">

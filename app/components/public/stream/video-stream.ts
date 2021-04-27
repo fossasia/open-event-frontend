@@ -1,7 +1,8 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import VideoStream from 'open-event-frontend/models/video-stream';
+import Event from 'open-event-frontend/models/event';
 import { tracked } from '@glimmer/tracking';
 
 declare global {
@@ -11,13 +12,16 @@ declare global {
 }
 
 interface Args {
-  videoStream: VideoStream
+  videoStream: VideoStream,
+  event: Event
 }
 
 export default class PublicStreamVideoStream extends Component<Args> {
 
   @service
   loader!: any;
+
+  @service authManager: any;
 
   @tracked
   loading = true;
@@ -29,7 +33,15 @@ export default class PublicStreamVideoStream extends Component<Args> {
   youtubeId = '';
 
   @tracked
+  iframeTitle = '';
+
+  @tracked
   vimeoId = '';
+
+  @computed()
+  get isRocketChatEnabled(): boolean {
+    return this.authManager.currentUser?.isRocketChatRegistered && this.args.event.isChatEnabled;
+  }
 
   @action
   async setup(): Promise<void> {
@@ -40,6 +52,10 @@ export default class PublicStreamVideoStream extends Component<Args> {
     this.iframeUrl = '';
 
     if (provider === 'jitsi') {
+      this.loading = false;
+    } else if (provider === '3cx') {
+      this.iframeUrl = stream.url;
+      this.iframeTitle = '3cx Live Stream'
       this.loading = false;
     } else if (provider === 'youtube') {
       const [, id] = stream.url.split('v=');
@@ -64,6 +80,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
         // Same origin and can be loaded in an iframe
         this.loading = false;
         this.iframeUrl = url;
+        this.iframeTitle = 'BBB'
       } else {
         location.href = url;
       }

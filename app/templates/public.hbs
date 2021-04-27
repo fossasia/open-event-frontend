@@ -1,5 +1,5 @@
 <UnverifiedUserMessage />
-<div class="public-event ui relaxed grid mt-0 pt-0">
+<div class="public-event ui relaxed grid mt-0 pt-0" {{did-insert this.setup}}>
   <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
     <Widgets::SafeImage class="background" @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
     <div class="content">
@@ -46,7 +46,15 @@
       {{/unless}}
       <div class="three wide column">
         {{#if this.displaySideMenu}}
-          <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} @showSidePanel={{action "showSidePanel"}} class="ui basic segment m-0 p-0" />
+          <Public::Stream::JoinVideo
+            @showVideo={{false}}
+            @event={{this.model}}
+            @videoStream={{this.model.videoStream}}
+            @canAccess={{this.canAccess}}
+            @hasStreams={{this.hasStreams}}
+            @sameTab={{this.side_panel}}
+            @showSidePanel={{action "showSidePanel"}}
+            class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
           {{#if (not-eq this.session.currentRouteName 'public.exhibition.view')}}
             <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
@@ -78,13 +86,10 @@
                 </LinkTo>
               </h4>
               {{#each this.model.tracks as |track|}} 
-                <LinkTo
-                  class="p-1 mb-1 rounded-default link-item {{if (eq this.params.track track.name) 'active'}}"
-                  @route="public.sessions"
-                  @models={{array this.model.id}}
-                  @query={{hash track=track.name}}>
-                  <i class="circle icon" style={{css color=track.color}}></i> {{track.name}}
-                </LinkTo>
+                <p role="button" class="p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) "active"}}" {{action 'applyFilter' track.name 'track'}}>
+                  <i class="circle icon" style={{css color=track.color}}></i> 
+                  {{track.name}}
+                </p>
               {{/each}}
               </div>
               <br>
@@ -97,13 +102,9 @@
               </h4>
               {{#each this.model.microlocations as |room|}}
                 {{#if (not room.hiddenInScheduler)}}
-                  <LinkTo
-                    class="p-1 mb-1 rounded-default link-item {{if (eq this.params.room room.name) 'active'}}"
-                    @route="public.sessions" 
-                    @models={{array this.model.id}}
-                    @query={{hash room=room.name}}>
+                  <p class="p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) "active"}}" role="button" {{action 'applyFilter' room.name 'room'}}>
                     {{room.name}}
-                  </LinkTo>
+                  </p>
                 {{/if}}
               {{/each}}
               <h4>
@@ -128,7 +129,7 @@
                     @class="item"
                     @label={{sessionType.name}}
                     @checked={{if (includes this.activeSession sessionType.name) "active"}}
-                    @onChange={{action this.transition sessionType.name}}/>
+                    @onChange={{action this.sessionFilter sessionType.name}}/>
                   {{/each}}
                 </div>
               </UiDropdown> 
@@ -156,7 +157,9 @@
 {{#if this.side_panel}}
   <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @currentRoute={{this.session.currentRouteName}} />  
 {{/if}}
-
+{{#if (and this.model.isChatEnabled this.canAccess)}}
+  <Public::Stream::ChatPanel @event={{this.model}} />
+{{/if}}
 {{#if this.video_dialog}}
   <Modals::SimpleModal
     @isOpen={{true}}
