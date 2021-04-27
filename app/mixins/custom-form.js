@@ -145,7 +145,7 @@ export default Mixin.create(MutableArray, {
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'level',
         form            : 'session',
-        type            : 'text',
+        type            : 'select',
         isRequired      : false,
         isIncluded      : false,
         isPublic        : true,
