@@ -27,7 +27,7 @@ export default class FooterMain extends Component {
   }
 
   @action
-  scrollToTop(){
+  scrollToTop() { 
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
