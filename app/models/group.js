@@ -13,7 +13,7 @@ export default ModelBase.extend({
   name       : attr('string'),
   createdAt  : attr('moment', { readOnly: true }),
   modifiedAt : attr('moment'),
-  deletedAt : attr('moment'),
+  deletedAt  : attr('moment'),
   /**
    * Relationships
    */

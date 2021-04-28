@@ -22,16 +22,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : this.l10n.t('Owner'),
-        valuePath     : 'user.email',
+        name      : this.l10n.t('Owner'),
+        valuePath : 'user.email'
       },
       {
-        name          : this.l10n.t('Number of Events'),
-        valuePath     : 'events.length',
+        name      : this.l10n.t('Number of Events'),
+        valuePath : 'events.length'
       },
       {
-        name          : this.l10n.t('Created At'),
-        valuePath     : 'createdAt',
+        name            : this.l10n.t('Created At'),
+        valuePath       : 'createdAt',
         cellComponent   : 'ui-table/cell/cell-simple-date',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
