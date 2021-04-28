@@ -4,6 +4,6 @@ export default class CellVideoUrl extends Component {
 
   get link() {
     const { record } = this.args;
-    return record.get('url').replace(/^https?\:\/\//, "");
+    return record.get('url').replace(/^https?\:\/\//, '');
   }
 }
