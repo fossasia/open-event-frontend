@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    switch (this.router.currentRoute.attributes.group_status) {
+    switch (this.params.group_status) {
       case 'live':
         return this.l10n.t('Live');
       case 'deleted':

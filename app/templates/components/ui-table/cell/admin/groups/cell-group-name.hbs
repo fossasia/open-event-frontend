@@ -6,7 +6,9 @@
       <i class="edit icon"></i>
     </UiPopup>
   </LinkTo>
-  <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action @props.actions.deleteGroup @extraRecords.id}}>
-    <i class="trash icon"></i>
-  </UiPopup>
+  {{#if (not @extraRecords.deletedAt)}}
+    <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action @props.actions.deleteGroup @extraRecords.id}}>
+      <i class="trash icon"></i>
+    </UiPopup>
+  {{/if}}
 </div>

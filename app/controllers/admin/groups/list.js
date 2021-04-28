@@ -1,15 +1,21 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+
+  @service errorHandler;
+
   get columns() {
     return [
       {
         name            : this.l10n.t('Group Name'),
         valuePath       : 'name',
-        extraValuePaths : ['id'],
+        extraValuePaths : ['id', 'deletedAt'],
         width           : 155,
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/groups/cell-group-name',
         actions         : {
           deleteGroup: this.deleteGroup.bind(this)
@@ -17,23 +23,23 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : this.l10n.t('Owner'),
-        valuePath     : 'user',
-        cellComponent : 'ui-table/cell/admin/groups/cell-group-owner'
+        valuePath     : 'user.email',
       },
       {
         name          : this.l10n.t('Number of Events'),
-        valuePath     : 'events',
-        cellComponent : 'ui-table/cell/admin/groups/cell-group-events'
+        valuePath     : 'events.length',
       },
       {
         name          : this.l10n.t('Created At'),
         valuePath     : 'createdAt',
-        cellComponent : 'ui-table/cell/admin/groups/cell-group-created'
+        cellComponent   : 'ui-table/cell/cell-simple-date',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
         name          : this.l10n.t('Public URL'),
-        valuePath     : 'events',
-        cellComponent : 'ui-table/cell/admin/groups/cell-public-url'
+        valuePath     : 'url',
+        cellComponent : 'ui-table/cell/cell-link'
       }
     ];
   }
@@ -50,10 +56,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       this.send('refreshRoute');
     } catch (e) {
       console.error('Error while deleting event', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'grp_del_unex'
-        });
+      this.errorHandler.handle(e);
     }
   }
 
