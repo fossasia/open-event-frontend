@@ -31,7 +31,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.13.15.tgz#7e8eea42d0b64fda2b375b22d06c605222e848f4"
   integrity sha512-ltnibHKR1VnrU4ymHyQ/CXtNXI6yZC0oJThyW78Hft8XndANwi+9H+UIklBDraIjFEJzw8wmcM427oDd9KS5wA==
 
-"@babel/core@^7.0.0", "@babel/core@^7.1.6", "@babel/core@^7.12.0", "@babel/core@^7.12.10", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.3.4", "@babel/core@^7.7.5", "@babel/core@^7.8.7":
+"@babel/core@^7.0.0", "@babel/core@^7.1.6", "@babel/core@^7.12.0", "@babel/core@^7.12.10", "@babel/core@^7.12.3", "@babel/core@^7.13.10", "@babel/core@^7.13.16", "@babel/core@^7.3.4", "@babel/core@^7.7.5", "@babel/core@^7.8.7":
   version "7.13.16"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.13.16.tgz#7756ab24396cc9675f1c3fcd5b79fcce192ea96a"
   integrity sha512-sXHpixBiWWFti0AV2Zq7avpTasr6sIAu7Y396c608541qAU2ui4a193m0KSQmfPSKFZLnQ3cvlKDOm3XkuXm3Q==
@@ -6895,13 +6895,15 @@ ember-cli-shims@^1.2.0:
     ember-rfc176-data "^0.3.1"
     silent-error "^1.0.1"
 
-ember-cli-string-helpers@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-string-helpers/-/ember-cli-string-helpers-5.0.0.tgz#b1e08ec3ca1c9a457f9fd9aafff60b5939fbf91d"
-  integrity sha512-PodD3Uf7BkOXIu95E6cWEC0ERroTiUOAwOr828Vb+fPFtV7WYNSC27C9Ds1ggCyyRqnXmpS0JSqCTN1gPZfkWQ==
+ember-cli-string-helpers@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/ember-cli-string-helpers/-/ember-cli-string-helpers-6.0.1.tgz#6690b23b5cd60cc3ab86ce78125a2f9bd0f1cd41"
+  integrity sha512-91Po3HRroSI60zm9QUpnt6DXNB3rNBKFAmCptDD758gZyjfDMXtu1ZWWixB7EQXQaMy8bVq+2ZvQIPkclieJPw==
   dependencies:
+    "@babel/core" "^7.13.10"
     broccoli-funnel "^3.0.3"
     ember-cli-babel "^7.7.3"
+    resolve "^1.20.0"
 
 ember-cli-string-utils@^1.0.0, ember-cli-string-utils@^1.1.0:
   version "1.1.0"
