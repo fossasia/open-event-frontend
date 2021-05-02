@@ -226,9 +226,9 @@ Router.map(function() {
       });
       this.route('list', { path: '/:users_status' });
     });
-    this.route('video-channels', function() {
+    this.route('video', function() {
       this.route('create');
-      this.route('edit', { path: '/:videoChannel_id/edit' });
+      this.route('edit', { path: '/:video_id/edit' });
     });
     this.route('permissions', function() {
       this.route('event-roles');
