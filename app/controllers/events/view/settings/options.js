@@ -73,7 +73,11 @@ export default class OptionsController extends Controller {
       this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
     } catch (error) {
       console.error('Error while sending role Invite', error, error.message);
-      this.notify.error(error.message);
+      if (error.errors[0]?.status === 409) {
+        this.notify.error(error.errors[0]?.detail);
+      } else {
+        this.notify.error(error.message);
+      }
     }
 
     this.set('isLoading', false);
