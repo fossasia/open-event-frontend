@@ -5,10 +5,20 @@
 {{else}}
   <meta name="description" content="The front end for the Open Event Server where event organisers can create and manage their event.">
 {{/if}}
+{{#if this.model.openGraphImage}}
+  <meta name="image" content={{this.model.openGraphImage}}>
+{{else}}
+  <meta name="image" content="https://eventyay.com/favicon.ico">
+{{/if}}
 
 <meta property="og:title" content={{this.model.title}}>
 {{#if this.model.description}}
   <meta property="og:description" content={{this.model.description}}>
 {{else}}
   <meta property="og:description" content="The front end for the Open Event Server where event organisers can create and manage their event.">
+{{/if}}
+{{#if this.model.openGraphImage}}
+  <meta property="og:image" content={{this.model.openGraphImage}}>
+{{else}}
+  <meta property="og:image" content="https://eventyay.com/favicon.ico">
 {{/if}}
