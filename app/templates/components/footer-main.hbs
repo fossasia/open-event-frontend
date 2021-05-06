@@ -105,7 +105,8 @@
     <div class="ui stackable grid">
       <div class="thirteen wide computer twelve wide tablet column left aligned">
         <div class="ui horizontal inverted small divided link list no top margin">
-          <span class="item">{{t 'Copyright'}} &copy; {{general-date (now) 'YYYY'}}  {{this.settings.appName}} </span>
+          <span class="item">Made with <i class="red heart icon"></i> By- Areeb Jamal & Team</span>
+          <span class="item">&copy; {{general-date (now) 'YYYY'}}  {{this.settings.appName}} </span>
           <span class="hidden-item">
             {{!-- Possible Page Values --}}
             {{t 'Terms'}}
@@ -131,9 +132,6 @@
           </div>
         </UiDropdown>
       </div>
-    </div>
-    <div class="ui horizontal inverted centered text mt-4">
-          <span class="item">Made with <i class="red heart icon"></i> By- Areeb Jamal & Team</span>
     </div>
   </div>
   {{#if (eq this.device.isMobile false)}}
