@@ -4,7 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default class extends Route.extend(AuthenticatedRouteMixin) {
   titleToken() {
     return this.l10n.t('Billing Info');
-  }// use an alternative
+  }
 
   beforeModel() {
     super.beforeModel(...arguments);
