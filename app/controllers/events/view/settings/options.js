@@ -1,7 +1,9 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-
+import { inject as service } from '@ember/service';
 export default class OptionsController extends Controller {
+
+  @service errorHandler;
 
   @action
   openDeleteEventModal() {
@@ -73,7 +75,7 @@ export default class OptionsController extends Controller {
       this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
     } catch (error) {
       console.error('Error while sending role Invite', error, error.message);
-      this.notify.error(error.message);
+      this.errorHandler.handle(error);
     }
 
     this.set('isLoading', false);
