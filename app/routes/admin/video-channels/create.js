@@ -7,7 +7,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   }
 
   async model() {
-    const videoChannel = await this.store.createRecord('video-channel', {});
+    const videoChannel = await this.store.createRecord('Video', {});
 
     return videoChannel;
   }

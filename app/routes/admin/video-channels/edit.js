@@ -6,6 +6,6 @@ export default class ExhibitorsEditRoute extends Route {
   }
 
   async model(params) {
-    return this.store.findRecord('video-channel', params.videoChannel_id, {});
+    return this.store.findRecord('Video', params.videoChannel_id, {});
   }
 }

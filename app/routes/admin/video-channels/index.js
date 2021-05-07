@@ -12,6 +12,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);
-    return this.asArray(this.store.query('video-channel', queryString));
+    return this.asArray(this.store.query('Video', queryString));
   }
 }
