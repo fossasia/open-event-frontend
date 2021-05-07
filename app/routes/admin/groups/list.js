@@ -37,6 +37,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     } else {
       filterOptions = [];
     }
+    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
       get_trashed    : true,
       include        : 'user,events',
