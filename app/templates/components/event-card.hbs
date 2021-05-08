@@ -9,7 +9,7 @@
       </div>
     {{/unless}}
   {{/if}}
-  <div class="ui card {{this.eventClass}} {{if this.isWide 'h-auto' 'h-100'}}">
+  <div class="ui card {{this.eventClass}} {{if this.isWide 'height h-auto' 'height h-100'}}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
         <Widgets::SafeImage
