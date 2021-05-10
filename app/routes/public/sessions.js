@@ -30,6 +30,9 @@ export default class SessionsRoute extends Route {
     },
     my_schedule: {
       refreshModel: true
+    },
+    level: {
+      refreshModel: true
     }
   };
 
@@ -113,6 +116,17 @@ export default class SessionsRoute extends Route {
             val
           }))
         }
+      });
+    }
+
+    if (params.level) {
+      const levels = params.level.split(',');
+      filterOptions.push({
+        or: levels.map(val => ({
+          name : 'level',
+          op   : 'eq',
+          val
+        }))
       });
     }
 

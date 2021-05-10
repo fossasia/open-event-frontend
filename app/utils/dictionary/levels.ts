@@ -1,14 +1,18 @@
 export const levels = [
   {
-    name: 'Beginner'
+    name     : 'Beginner',
+    position : 1
   },
   {
-    name: 'Intermediate'
+    name     : 'Intermediate',
+    position : 2
   },
   {
-    name: 'Advanced'
+    name     : 'Advanced',
+    position : 3
   },
   {
-    name: 'Expert'
+    name     : 'Expert',
+    position : 4
   }
 ];

@@ -6,5 +6,5 @@ import { levels } from 'open-event-frontend/utils/dictionary/levels';
 
 export default Component.extend(FormMixin, {
   languages : orderBy(languages, 'name'),
-  levels    : orderBy(levels, 'name')
+  levels    : orderBy(levels, 'position')
 });
