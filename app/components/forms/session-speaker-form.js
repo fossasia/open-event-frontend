@@ -407,7 +407,7 @@ export default Component.extend(FormMixin, {
 
   genders: orderBy(genders, 'name'),
 
-  levels: orderBy(levels, 'name'),
+  levels: orderBy(levels, 'position'),
 
   allFields: computed('fields', function() {
     const grouped = groupBy(this.fields.toArray(), field => field.get('form'));
