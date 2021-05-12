@@ -167,10 +167,13 @@
               {{#unless this.promotionalCodeApplied}}
                 <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
                   <i class="checkmark icon"></i>
+              {{t 'Apply Code'}}
                 </div>
               {{/unless}}
               <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
                 <i class="remove icon"></i>
+              {{t 'Remove Code'}}
+
               </div>
             </div>
           </div>
