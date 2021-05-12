@@ -64,6 +64,16 @@
             <div class="row">
               <div class="column">
                 <h4 class="weight-300">
+                  {{t 'Profile Image'}}
+                </h4>
+                {{#if this.data.profileImage==undefined}}
+                {{gravatar-image email=this.data.email}}
+                {{/if}}
+                {{else}}
+                <p>{{this.data.profileImage}}</p>
+              </div>
+              <div class="column">
+                <h4 class="weight-300">
                   {{t 'Organisation'}}
                 </h4>
                 <p>{{this.data.company}}</p>
