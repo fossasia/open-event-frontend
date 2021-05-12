@@ -165,11 +165,11 @@
                 @key-up={{action "handleKeyPress"}}
                 @id="promotionalCode" />
               {{#unless this.promotionalCodeApplied}}
-                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
-                  <i class="checkmark icon"></i>
+                <div role="button" style="height: 46px" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
+                {{t 'Apply Code'}}
                 </div>
               {{/unless}}
-              <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
+              <div role="button" class="ui black icon button" style="height: 46px" {{action 'togglePromotionalCode'}}>
                 <i class="remove icon"></i>
               </div>
             </div>
