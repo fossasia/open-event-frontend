@@ -166,7 +166,7 @@
                 @id="promotionalCode" />
               {{#unless this.promotionalCodeApplied}}
                 <div role="button" style="height: 46px" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
-                {{t 'Apply Code'}}
+                {{t 'Apply code'}}
                 </div>
               {{/unless}}
               <div role="button" class="ui black icon button" style="height: 46px" {{action 'togglePromotionalCode'}}>
@@ -241,4 +241,3 @@
     @event={{this.event}}
     @isOpen={{this.isContactOrganizerModalOpen}} />
 {{/if}}
-
