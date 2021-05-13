@@ -11,6 +11,9 @@
     <div class="ui grid">
       <div class="column sixteen wide">
         <Input @type="url" @change={{action "fileSelected" "url"}} />
+        <span class="text muted">
+          ({{t 'Slides uploaded here are not integrated in the video system. For video conferences please upload your slides into the video session directly as well.'}})
+        </span>
       </div>
       <span>{{t 'Or'}}</span>
       <div class="column sixteen wide">
