@@ -148,6 +148,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.data.stream.set('extra', { bbb_options });
   }
 
+  add3cx() {
+    this.data.stream.set('url', '');
+  }
+
   @action
   async addYoutube() {
     this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
@@ -165,6 +169,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     switch (channel.get('provider')) {
       case 'jitsi':
         await this.addJitsi(channel);
+        break;
+      case '3cx':
+        await this.add3cx();
         break;
       case 'bbb':
         this.addBigBlueButton(channel);
