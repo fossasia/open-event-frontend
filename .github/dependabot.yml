@@ -1,0 +1,104 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "21:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: ember-data
+    versions:
+    - "> 3.14.1, < 4"
+  - dependency-name: ember-data
+    versions:
+    - ">= 3.15.a, < 3.16"
+  - dependency-name: ember-data
+    versions:
+    - ">= 3.16.a, < 3.17"
+  - dependency-name: ember-models-table
+    versions:
+    - "> 3.0.0, < 4"
+  - dependency-name: ember-source
+    versions:
+    - "> 3.16.1, < 3.17"
+  - dependency-name: ember-source
+    versions:
+    - ">= 3.17.a, < 3.18"
+  - dependency-name: ember-source
+    versions:
+    - "> 3.20.3, < 4"
+  - dependency-name: object-to-formdata
+    versions:
+    - "> 3.0.4, < 3.1"
+  - dependency-name: "@sentry/browser"
+    versions:
+    - 6.2.4
+    - 6.3.1
+    - 6.3.2
+    - 6.3.3
+  - dependency-name: "@sentry/tracing"
+    versions:
+    - 6.3.0
+    - 6.3.3
+  - dependency-name: "@sentry/integrations"
+    versions:
+    - 6.3.1
+    - 6.3.2
+    - 6.3.3
+  - dependency-name: mini-css-extract-plugin
+    versions:
+    - 1.5.0
+  - dependency-name: ember-h-captcha
+    versions:
+    - 2.0.13
+    - 2.0.22
+    - 2.0.31
+    - 2.0.33
+  - dependency-name: eslint-plugin-ember
+    versions:
+    - 10.4.0
+  - dependency-name: ember-qunit
+    versions:
+    - 5.1.3
+    - 5.1.4
+  - dependency-name: ember-router-scroll
+    versions:
+    - 4.0.2
+    - 4.0.3
+  - dependency-name: ember-auto-import
+    versions:
+    - 1.11.0
+  - dependency-name: ember-template-lint
+    versions:
+    - 3.0.0
+    - 3.0.1
+    - 3.1.0
+    - 3.1.1
+    - 3.2.0
+  - dependency-name: ember-cli-babel
+    versions:
+    - 7.24.0
+    - 7.25.0
+    - 7.26.0
+  - dependency-name: ember-table
+    versions:
+    - 3.0.0
+    - 3.0.1
+  - dependency-name: moment-timezone
+    versions:
+    - 0.5.33
+  - dependency-name: ember-fullcalendar
+    versions:
+    - 2.0.0
+  - dependency-name: paypal-checkout
+    versions:
+    - 4.0.324
+    - 4.0.325
+  - dependency-name: "@typescript-eslint/parser"
+    versions:
+    - 4.16.0
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.13.0
+    - 7.13.1
