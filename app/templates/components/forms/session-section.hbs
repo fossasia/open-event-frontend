@@ -46,7 +46,7 @@
           @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
           @icon="file"
           @hint={{t "Select a file"}}
-          @maxSizeInKb={{10000}} />
+          @maxSizeInKb={{30000}} />
       {{/if}}
       {{#if (eq field.type 'select')}}
         {{#if (eq field.fieldIdentifier 'language')}}
@@ -92,4 +92,8 @@
         {{/if}}
       </div>
     {{/if}}
+{{else}}
+  <div class="sixteen wide column">
+    <h3 class="centered text">{{t 'Please enable session/speaker form to create a session/speaker.'}}</h3>
+  </div>
 {{/each}}

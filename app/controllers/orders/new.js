@@ -1,9 +1,12 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
 @classic
 export default class NewController extends Controller {
+  @service errorHandler;
+
   isLoading = false;
 
   @action
@@ -44,10 +47,7 @@ export default class NewController extends Controller {
         .catch(e => {
           console.error('Error while saving new order', e);
           order.set('status', 'initializing');
-          this.notify.error(e + ': ' + this.l10n.t('Oops something went wrong. Please try again'),
-            {
-              id: 'order_stat_error'
-            });
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -55,10 +55,7 @@ export default class NewController extends Controller {
     } catch (e) {
       this.set('isLoading', false);
       console.error('Error while in saving new order', e);
-      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
-        {
-          id: 'some_error'
-        });
+      this.errorHandler.handle(e);
     }
   }
 }

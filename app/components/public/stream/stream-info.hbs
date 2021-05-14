@@ -1,7 +1,12 @@
 {{#if @showButton}}
-  <Public::Stream::JoinVideo @showVideo={{true}} @event={{@event}} @videoStream={{@videoStream}} />
+  <Public::Stream::JoinVideo
+    @showVideo={{true}}
+    @event={{@event}}
+    @videoStream={{@videoStream}} />
 {{else if @videoStream}}
-  <a class="mt-2" href="{{href-to 'public.stream.view' @event @videoStream.slugName @videoStream}}" target="{{if @videoStream.videoChannel.isInternalStream '' '_blank'}}" rel="noopener">{{t 'Join Video Channel'}}</a>
+  <div>
+    <a class="mt-2" href="{{href-to 'public.stream.view' @event @videoStream.slugName @videoStream}}" target="{{if @videoStream.videoChannel.isInternalStream '' '_blank'}}" rel="noopener">{{t 'Join Video Channel'}}</a>
+  </div>
 {{/if}}
 {{#if @videoStream}}
   {{#if @videoStream.password}}

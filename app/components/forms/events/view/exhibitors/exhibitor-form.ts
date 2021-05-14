@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
-import Exhibitor from 'open-event-frontend/models/exhibitor';
-import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
+import Exhibitor, { SocialLink } from 'open-event-frontend/models/exhibitor';
+import { protocolLessValidUrlPattern, validEmail } from 'open-event-frontend/utils/validators';
 import { inject as service } from '@ember/service';
 import { Rules } from 'open-event-frontend/components/forms/form';
 import { action } from '@ember/object';
@@ -48,6 +48,26 @@ export default class ExhibitorForm extends Component<Args> {
             }
           ]
         },
+        contactEmail: {
+          optional : true,
+          rules    : [
+            {
+              type   : 'regExp',
+              value  : validEmail,
+              prompt : this.l10n.t('Please enter a valid email address')
+            }
+          ]
+        },
+        contactLink: {
+          optional : true,
+          rules    : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid contact link')
+            }
+          ]
+        },
         logoUrl: {
           rules: [
             {
@@ -78,6 +98,23 @@ export default class ExhibitorForm extends Component<Args> {
         }
       }
     };
+  }
+
+  @action addSocialLink(type: string): void {
+    const { exhibitor } = this.args;
+    if (!exhibitor.socialLinks) {
+      exhibitor.socialLinks = [];
+    }
+    if (type === 'customLink') {
+      exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '', is_custom: true }];
+    } else {
+      exhibitor.socialLinks = [...exhibitor.socialLinks, { name: '', link: '', is_custom: false }];
+    }
+  }
+
+  @action removeSocialLink(link: SocialLink): void {
+    const { exhibitor } = this.args;
+    exhibitor.socialLinks = exhibitor.socialLinks.filter(sl => sl !== link);
   }
 
   @action async save(): Promise<void> {

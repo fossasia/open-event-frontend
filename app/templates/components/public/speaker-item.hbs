@@ -2,7 +2,7 @@
   <div class="title">
     <div class="ui">
       <div class="featured-speaker">
-        <img alt="speaker" class="ui rounded image" src="{{if this.speaker.thumbnailImageUrl this.speaker.thumbnailImageUrl (if this.speaker.photoUrl this.speaker.photoUrl '/images/placeholders/avatar.png')}}">
+        <img alt="speaker" class="ui rounded image" src="{{speaker.image}}">
       </div>
       <h3 class="ui centered header no margin">
         {{this.speaker.name}}
@@ -37,36 +37,41 @@
           {{#if this.speaker.github}}
             <a href={{this.speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
           {{/if}}
-        </div>
-        <div class="ui divider"></div>
-      {{/if}}
-      <h3 class="ui header">
-        {{t 'Sessions'}}
-      </h3>
-      {{#each this.speaker.sessions as |session|}}
-        {{#if (and (eq session.deletedAt null) (or (eq session.state 'confirmed') (eq session.state 'accepted')))}}
-          {{#if session.startsAt}}
-            <p>
-              <strong>
-                {{general-date session.startsAt tz=@timezone}}
-              </strong>
-            </p>
+          {{#if this.speaker.website}}
+            <a href={{this.speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i></a>
           {{/if}}
-          <a href="{{href-to this.sessionRoute this.speaker.event session.id}}">
-            <div class="ui fluid rounded-default p-4" style={{css color=(text-color session.track.color) background-color=session.track.color}}>
-              <div style={{css opacity=0.9}}>
-                {{#if (and session.startsAt session.endsAt)}}
-                  <strong>{{general-date session.startsAt 'HH:mm' tz=@timezone}} - {{general-date session.endsAt 'hh:mm' tz=@timezone}}</strong>
-                {{/if}}
-                <h3 class="m-0" style={{css user-select='text'}}>
-                  {{session.title}}
-                </h3>
+        </div>
+      {{/if}}
+      {{#if (or this.event.isSchedulePublished this.speaker.event.isSchedulePublished)}}
+        <div class="ui divider"></div>
+        <h3 class="ui header">
+          {{t 'Sessions'}}
+        </h3>
+        {{#each this.speaker.sessions as |session|}}
+          {{#if (and (eq session.deletedAt null) (or (eq session.state 'confirmed') (eq session.state 'accepted')))}}
+            {{#if session.startsAt}}
+              <p>
+                <strong>
+                  {{general-date session.startsAt tz=@timezone}}
+                </strong>
+              </p>
+            {{/if}}
+            <a href="{{href-to this.sessionRoute (or @event @speaker.event) session.id}}">
+              <div class="ui fluid rounded-default p-4" style={{css color=(text-color session.track.color) background-color=session.track.color}}>
+                <div style={{css opacity=0.9}}>
+                  {{#if (and session.startsAt session.endsAt)}}
+                    <strong>{{general-date session.startsAt 'HH:mm' tz=@timezone}} - {{general-date session.endsAt 'hh:mm' tz=@timezone}}</strong>
+                  {{/if}}
+                  <h3 class="m-0" style={{css user-select='text'}}>
+                    {{session.title}}
+                  </h3>
+                </div>
               </div>
-            </div>
-          </a>
-        <br>
-        {{/if}}
-      {{/each}}
+            </a>
+            <br/>
+          {{/if}}
+        {{/each}}
+      {{/if}}
     </div>
   </div>
 </UiAccordion>

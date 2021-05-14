@@ -6,15 +6,17 @@ import ModelBase from 'open-event-frontend/models/base';
 import { hasMany } from 'ember-data/relationships';
 import { toString } from 'lodash-es';
 
-export default ModelBase.extend({
+export default class User extends ModelBase.extend({
 
-  authManager: service(),
+  authManager : service(),
+  l10n        : service(),
 
   email                  : attr('string'),
   password               : attr('string'),
   isVerified             : attr('boolean'),
   isSuperAdmin           : attr('boolean', { readOnly: true }),
   isBlocked              : attr('boolean'),
+  isProfilePublic        : attr('boolean'),
   isAdmin                : attr('boolean'),
   isUserOwner            : attr('boolean'),
   isUserOrganizer        : attr('boolean'),
@@ -26,10 +28,11 @@ export default ModelBase.extend({
   isMarketer             : attr('boolean'),
   wasRegisteredWithOrder : attr('boolean'),
 
-  firstName : attr('string'),
-  lastName  : attr('string'),
-  details   : attr('string'),
-  contact   : attr('string'),
+  firstName  : attr('string'),
+  lastName   : attr('string'),
+  publicName : attr('string'),
+  details    : attr('string'),
+  contact    : attr('string'),
 
   avatarUrl         : attr('string'),
   iconImageUrl      : attr('string'),
@@ -63,6 +66,8 @@ export default ModelBase.extend({
   billingAdditionalInfo : attr('string'),
   billingState          : attr('string'),
 
+  isRocketChatRegistered: attr('boolean', { readOnly: true }),
+
   status: computed('lastAccessedAt', 'deletedAt', function() {
     if (this.deletedAt == null) {
       if (this.lastAccessedAt == null) {
@@ -90,6 +95,7 @@ export default ModelBase.extend({
   speakers             : hasMany('speaker'),
   discountCodes        : hasMany('discount-code'),
   accessCodes          : hasMany('access-code'),
+  favourites           : hasMany('user-favourite-session'),
   ownerEvents          : hasMany('event', { readOnly: true }),
   organizerEvents      : hasMany('event', { readOnly: true }),
   coorganizerEvents    : hasMany('event', { readOnly: true }),
@@ -109,5 +115,9 @@ export default ModelBase.extend({
 
   fullName: computed('firstName', 'lastName', function() {
     return [this.firstName, this.lastName].filter(Boolean).join(' ');
+  }),
+
+  resolvedName: computed('publicName', 'fullName', function() {
+    return this.publicName || this.fullName || this.l10n.t('Anonymous User');
   })
-});
+}) {}

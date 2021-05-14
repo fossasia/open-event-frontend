@@ -1,4 +1,4 @@
-{{#if (or @videoStream this.hasStreams)}}
+{{#if (or @videoStream @hasStreams)}}
   <div ...attributes>
     {{#if (and @showVideo @videoStream)}}
       <a class="ui basic {{text-color @color 'basic' 'inverted'}} button no-wrap"
@@ -10,10 +10,10 @@
         {{t 'Join Video'}}
       </a>
     {{/if}}
-    {{#if this.hasStreams}}
+    {{#if @hasStreams}}
       <button class="{{unless @showVideo 'w-full primary' 'basic'}} ui button no-wrap" {{action this.openPanel}}>
         <i class="icon calendar"></i>
-        {{t 'Join Event'}}
+        {{t 'Join Live Event'}}
       </button>
     {{/if}}
   </div>

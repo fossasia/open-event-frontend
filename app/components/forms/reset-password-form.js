@@ -5,12 +5,13 @@ import ENV from 'open-event-frontend/config/environment';
 
 export default Component.extend(FormMixin, {
 
-  identification : '',
-  password       : '',
-  isLoading      : false,
-  router         : service(),
-  captcha        : false,
-  showHcaptcha   : !!ENV.hcaptchaKey,
+  identification  : '',
+  password        : '',
+  isLoading       : false,
+  router          : service(),
+  captcha         : false,
+  showHcaptcha    : !!ENV.hcaptchaKey,
+  captchaRendered : false,
 
   getValidationRules() {
     return {

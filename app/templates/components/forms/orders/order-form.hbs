@@ -40,6 +40,8 @@
         <Input
           @type="text"
           @name="email"
+          readonly
+          disabled
           @value={{this.buyer.email}} />
       </div>
       <h4 class="ui horizontal divider header">
@@ -64,6 +66,11 @@
             {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
               <div class="field">
                 <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+                {{#if (eq field.type 'paragraph')}}
+                  <Widgets::Forms::RichTextEditor
+                    @value={{mut (get holder field.fieldIdentifier)}}
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                {{/if}}
                 {{#if (is-input-field field.type) }}
                   {{#if field.isLongText}}
                     <Widgets::Forms::RichTextEditor

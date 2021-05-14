@@ -7,7 +7,7 @@
       <LinkTo @route="admin.events" class="item">
         {{t 'Events'}}
       </LinkTo>
-      <LinkTo @route="admin.sales" class="item">
+      <LinkTo @route="admin.sales" @model="live" class="item">
         {{t 'Sales'}}
       </LinkTo>
       <LinkTo @route="admin.sessions" class="item">
@@ -15,6 +15,9 @@
       </LinkTo>
       <LinkTo @route="admin.users" class="item">
         {{t 'Users'}}
+      </LinkTo>
+      <LinkTo @route="admin.video-channels" class="item">
+        {{t 'Video'}}
       </LinkTo>
       <LinkTo @route="admin.permissions" class="item">
         {{t 'Permissions'}}

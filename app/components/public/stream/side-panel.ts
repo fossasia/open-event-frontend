@@ -5,8 +5,9 @@ import { action } from '@ember/object';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
 import { slugify, stringHashCode } from 'open-event-frontend/utils/text';
-import { hasSessions, hasSpeakers } from 'open-event-frontend/utils/event';
+import { hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
 import Loader from 'open-event-frontend/services/loader';
+import EventService from 'open-event-frontend/services/event';
 
 interface Args {
   videoStream: VideoStream,
@@ -16,12 +17,16 @@ interface Args {
 
 export default class PublicStreamSidePanel extends Component<Args> {
   @service loader!: Loader;
+  @service declare event: EventService;
+  @service declare settings: any;
 
   @tracked shown = false;
   @tracked loading = true;
   @tracked streams: VideoStream[] = [];
   @tracked showSessions: number | null = null;
   @tracked showSpeakers: number | null = null;
+  @tracked showExhibitors: number | null = null;
+  @tracked showChat = false;
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -35,36 +40,16 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
-  sessionFilter = {
-    name : 'sessions',
-    op   : 'any',
-    val  : {
-      or: [
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'confirmed'
-        },
-        {
-          name : 'state',
-          op   : 'eq',
-          val  : 'accepted'
-        }
-      ]
-    }
-  }
-
   async checkSpeakers(): Promise<void> {
-    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.args.event);
+    this.showSpeakers = this.showSpeakers ?? await this.event.hasSpeakers(this.args.event.id);
   }
 
   async checkSessions(): Promise<void> {
     this.showSessions = this.showSessions ?? await hasSessions(this.loader, this.args.event);
+  }
+
+  async checkExhibitors(): Promise<void> {
+    this.showExhibitors = this.showExhibitors ?? await hasExhibitors(this.loader, this.args.event);
   }
 
   addStream(stream: VideoStream | null): void {
@@ -76,15 +61,16 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @action
   async setup(): Promise<void> {
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
-    this.addStream(this.args.videoStream);
     this.addStream(this.args.event.belongsTo('videoStream').value());
 
     this.checkSessions();
     this.checkSpeakers();
+    this.checkExhibitors();
+    this.showChat = this.args.event.isChatEnabled && this.settings.rocketChatUrl;
 
     if (this.args.event.isSchedulePublished) {
       try {
-        const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?filter=[${JSON.stringify(this.sessionFilter)}]&include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
+        const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
         rooms.included?.map((stream: any) => ({
           id       : stream.id,
           name     : stream.attributes.name,
@@ -100,15 +86,5 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     this.loading = false;
     this.streams = [...this.streams];
-  }
-
-  @action
-  reOrderStreams(): void {
-    const streams = [...this.streams];
-    this.streams = [];
-    this.addStream(this.args.videoStream);
-    for (const stream of streams) {
-      this.addStream(stream);
-    }
   }
 }
