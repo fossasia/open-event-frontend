@@ -1,0 +1,22 @@
+<div class="ui chat-stream-side-panel-button right">
+  <i class="rocketchat large icon p-4 chat-panel-icon" {{action "showChatPanel"}} role="button"></i>
+</div>
+{{#if this.shown}}
+  <div class="d-flex chat-side-panel" style="flex-direction: column-reverse" {{did-insert this.setup}}>
+    <div class="ml-4">
+       <i class="close large black icon pr-2 chat-side-panel-button" role="button" {{action (mut this.shown) false}}></i>
+    </div>
+    <div style="height: 100%;">
+      {{#if this.loading}}
+        <div class="ui basic loading segment mt-4"></div>
+      {{else}}
+        {{#if (not this.success)}}
+          <h3>Unable to login to chat. Please contact the administrator</h3>
+        {{/if}}
+        {{#if this.token}}
+          <Public::Stream::Chat @token={{this.token}} @embedded={{true}} @event={{@event}} />
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+{{/if}}

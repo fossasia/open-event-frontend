@@ -1,5 +1,5 @@
 import attr from 'ember-data/attr';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import { belongsTo } from 'ember-data/relationships';
 import ModelBase from 'open-event-frontend/models/base';
 
 export default ModelBase.extend({
@@ -11,6 +11,5 @@ export default ModelBase.extend({
   /*
   * Relationships
   */
-  user                : belongsTo('user'),
-  notificationActions : hasMany('notification-action')
+  user: belongsTo('user')
 });

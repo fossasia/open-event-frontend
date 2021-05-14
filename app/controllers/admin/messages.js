@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { allSettled } from 'rsvp';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
 per_page = 100;
@@ -11,11 +12,13 @@ get columns() {
   return [
     {
       name      : this.l10n.t('Recipients'),
-      valuePath : 'recipient'
+      valuePath : 'recipient',
+      width     : 40
     },
     {
       name      : this.l10n.t('Trigger'),
-      valuePath : 'action'
+      valuePath : 'action',
+      width     : 40
     },
     {
       name      : this.l10n.t('Email Message'),
@@ -29,39 +32,21 @@ get columns() {
       }
     },
     {
-      name            : this.l10n.t('Notification Message'),
-      valuePath       : 'notificationMessage',
-      cellComponent   : 'ui-table/cell/cell-title-message',
-      extraValuePaths : ['notificationTitle'],
-      options         : {
-        subject : 'notificationTitle',
-        message : 'notificationMessage'
-      }
-    },
-    {
-      name            : this.l10n.t('Options'),
-      valuePath       : 'option',
-      extraValuePaths : ['mailStatus', 'notificationStatus', 'userControlStatus'],
-      cellComponent   : 'ui-table/cell/admin/messages/cell-options'
-    },
-    {
-      name            : this.l10n.t('Time/Date Sent Out'),
-      valuePath       : 'sentAt',
-      headerComponent : 'tables/headers/sort',
-      isSortable      : true,
-      cellComponent   : 'ui-table/cell/cell-simple-date'
+      name          : this.l10n.t('Enabled'),
+      valuePath     : 'enabled',
+      cellComponent : 'ui-table/cell/admin/messages/cell-options',
+      width         : 20
     }
 
   ];
 }
 
 @action
-save() {
+async save() {
   try {
-    const systemMessages = this.model;
-    Array.from(systemMessages).forEach(systemMessage => {
-      systemMessage.save();
-    });
+    const messages = this.model.data;
+    const toSave = messages.filter(model => Object.keys(model.changedAttributes()).length).map(model => model.save());
+    await allSettled(toSave);
     this.notify.success(this.l10n.t('Changes have been saved successfully'),
       {
         id: 'message_success'

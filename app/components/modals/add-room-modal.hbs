@@ -15,6 +15,15 @@
       </label>
       <Input @type="text" @value={{this.room.floor}} />
     </div>
+    <div class="field">
+      <label>
+        {{t "Hidden In Scheduler"}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.room.hiddenInScheduler}}
+        @onChange={{action (mut this.room.hiddenInScheduler)}} />
+    </div>     
   </form>
 </div>
 <div class="actions">

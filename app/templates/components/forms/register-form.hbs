@@ -38,10 +38,10 @@
         </div>
       </div>
       {{#if this.showHcaptcha}}
-        <HCaptcha @onSuccess={{action (mut this.captcha)}} @onExpired={{action (mut this.captcha)}}/>
+        <HCaptcha @onSuccess={{action (mut this.captcha)}} @onExpired={{action (mut this.captcha)}} @onRender={{action (mut this.captchaRendered)}} />
       {{/if}}
       <div class="ui center aligned segment basic">
-        <button type="submit" class="ui fluid large teal submit button register {{if (and (not this.captcha) this.showHcaptcha) 'disabled'}}">
+        <button type="submit" class="ui fluid large teal submit button register {{if (and (not this.captcha) this.showHcaptcha this.captchaRendered) 'disabled'}}">
           {{t 'Register'}}
         </button>
       </div>
