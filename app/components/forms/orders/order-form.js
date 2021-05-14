@@ -26,7 +26,7 @@ export default Component.extend(FormMixin, {
   buyerHasLastName  : readOnly('data.user.lastName'),
   holders           : computed('data.attendees', 'buyer', function() {
     this.data.attendees.forEach((attendee, index) => {
-      if (index === 0 && this.buyerFirstName!==null && this.buyerLastName!=null) {
+      if (index === 0 && this.buyerFirstName && this.buyerLastName) {
         attendee.set('firstname', this.buyerFirstName);
         attendee.set('lastname', this.buyerLastName);
         attendee.set('email', this.buyer.get('email'));
@@ -45,12 +45,12 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer: function() {
+  sameAsBuyer: computed('data', function() {
     if (!this.data.user.firstName || !this.data.user.lastName) {
       return false;
     }
     return true;
-  },
+  }),
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
     return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
   }),
