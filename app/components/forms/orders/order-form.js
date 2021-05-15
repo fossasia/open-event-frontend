@@ -46,10 +46,7 @@ export default Component.extend(FormMixin, {
     return true;
   }),
   sameAsBuyer: computed('data', function() {
-    if (!this.buyerHasFirstName || !this.buyerHasLastName) {
-      return false;
-    }
-    return true;
+    return (this.buyerHasFirstName && this.buyerHasLastName);
   }),
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
