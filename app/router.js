@@ -41,12 +41,22 @@ Router.map(function() {
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions-index', { path: '/sessions' });
-    this.route('sessions', { path: '/schedule' });
+    this.route('sessions', { path: '/schedule' }, function() {
+      this.route('user', function() {
+        this.route('view', { path: '/:user_id' });
+      });
+    });
     this.route('session', function() {
-      this.route('view', { path: '/:session_id' });
+      this.route('view', { path: '/:session_id' }, function() {
+        this.route('user', function() {
+          this.route('view', { path: '/:user_id' });
+        });
+      });
     });
     this.route('stream', { path: '/video/:video_name' }, function() {
-      this.route('view', { path: '/:stream_id' });
+      this.route('view', { path: '/:stream_id' }, function() {
+        this.route('chat');
+      });
     });
     this.route('speaker', function() {
       this.route('view', { path: '/:speaker_id' });
@@ -58,14 +68,22 @@ Router.map(function() {
     this.route('cfs', function() {
       this.route('new-speaker');
       this.route('new-session');
+      this.route('view-speaker', { path: '/speaker/:speaker_id' });
+      this.route('view-session', { path: '/session/:session_id' });
       this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
       this.route('edit-session', { path: '/session/:session_id/edit' });
     });
     this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
-    this.route('role-invites');
+    this.route('exhibition', function() {
+      this.route('view', { path: '/:exhibitor_id' });
+      this.route('video', { path: '/:exhibitor_id/video' });
+    });
+    this.route('chat');
   });
+  this.route('role-invites');
+  this.route('group-invites');
   this.route('pricing');
   this.route('create');
   this.route('not-found');
@@ -114,11 +132,13 @@ Router.map(function() {
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
         this.route('create');
+        this.route('reorder');
       });
       this.route('speaker', function() {
         this.route('view', { path: '/:speaker_id' });
         this.route('edit', { path: '/:speaker_id/edit' });
       });
+      this.route('chat');
       this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });
         this.route('edit', { path: '/:stream_id/edit' });
@@ -127,6 +147,12 @@ Router.map(function() {
       this.route('scheduler');
       this.route('team', function() {
         this.route('permissions');
+      });
+      this.route('exhibitors', function() {
+        this.route('list');
+        this.route('create');
+        this.route('edit', { path: '/:exhibitor_id/edit' });
+        this.route('reorder');
       });
     });
     this.route('list', { path: '/:event_state' });
@@ -146,6 +172,12 @@ Router.map(function() {
     });
   });
   this.route('explore');
+  this.route('groups', function() {
+    this.route('list');
+    this.route('create');
+    this.route('view', { path: '/:group_id' });
+    this.route('edit', { path: '/:group_id/edit' });
+  });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {
       this.route('list', { path: '/:ticket_status' });
@@ -164,6 +196,7 @@ Router.map(function() {
       this.route('import');
     });
     this.route('sales', function() {
+      this.route('index', { path: '/:event_status' });
       this.route('organizers');
       this.route('marketer');
       this.route('locations');
@@ -193,6 +226,10 @@ Router.map(function() {
       });
       this.route('list', { path: '/:users_status' });
     });
+    this.route('video-channels', function() {
+      this.route('create');
+      this.route('edit', { path: '/:videoChannel_id/edit' });
+    });
     this.route('permissions', function() {
       this.route('event-roles');
       this.route('system-roles');
@@ -207,6 +244,7 @@ Router.map(function() {
     });
     this.route('messages');
     this.route('settings', function() {
+      this.route('social-media');
       this.route('microlocations');
       this.route('microservices');
       this.route('images');

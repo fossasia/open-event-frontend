@@ -5,7 +5,6 @@
       {{#unless this.device.isMobile}}
         <tr>
           <th>{{t 'Type'}}</th>
-          <th class="three wide"></th>
           <th class="ui four wide single line">{{t 'Price'}}</th>
           <th class="one wide">{{t 'Quantity'}}</th>
           <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
@@ -30,10 +29,9 @@
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
               <div>
-                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
+                <small class="ui gray-text small">{{t 'Sale ends on'}} {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
               </div>
             </td>
-            <td></td>
             <td id="{{ticket.id}}_price">
               {{#if (eq ticket.type 'donation') }}
                 <div class="field m-0">
@@ -167,11 +165,11 @@
                 @key-up={{action "handleKeyPress"}}
                 @id="promotionalCode" />
               {{#unless this.promotionalCodeApplied}}
-                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
-                  <i class="checkmark icon"></i>
+                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
+                {{t 'Apply code'}}
                 </div>
               {{/unless}}
-              <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
+              <div role="button" class="ui black icon button p-4" {{action 'togglePromotionalCode'}}>
                 <i class="remove icon"></i>
               </div>
             </div>
@@ -209,14 +207,23 @@
         <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>
           {{t 'Order Now'}}
         </button>
-        <div class="ui hidden divider"></div>
-        {{#if this.event.refundPolicy}}
-          <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon button" @position="right center">
-            <i class="info icon"></i>
-            {{t 'Refund Policy'}}
-          </UiPopup>
-        {{/if}}
       </div>
+    </div>
+    <div class="column sixteen wide right floated">
+      {{#if this.event.refundPolicy}}
+        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon right floated button">
+          <i class="info icon"></i>
+          {{t 'Refund Policy'}}
+        </UiPopup>
+      {{/if}}
+      {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+        <div>
+          <button class="ui mini labeled blue icon right floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+            <i class="envelope icon"></i>
+            {{t 'Contact Organizer'}}
+          </button>
+        </div>
+      {{/if}}
     </div>
   </div>
 </form>
@@ -228,4 +235,9 @@
   @loginExistingUser={{this.loginExistingUser}}
   @userExists={{this.userExists}}
   @errorMessage={{this.errorMessage}} />
-  
+
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.event}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}

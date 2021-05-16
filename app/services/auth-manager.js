@@ -60,8 +60,10 @@ export default class AuthManagerService extends Service {
     return null;
   }
 
-  logout() {
-    this.session.invalidate();
+  logout(skipInvalidate) {
+    if (!skipInvalidate) {
+      this.session.invalidate();
+    }
     this.set('currentUserModel', null);
     this.session.set('data.currentUserFallback', null);
   }
@@ -108,6 +110,7 @@ export default class AuthManagerService extends Service {
 
     const userData = user.serialize(false).data.attributes;
     userData.id = user.get('id');
+    userData.details = null;
     this.session.set('data.currentUserFallback', userData);
   }
 
@@ -117,6 +120,9 @@ export default class AuthManagerService extends Service {
     }
 
     const userId = data.id;
+    if (!userId) {
+      return null;
+    }
     delete data.id;
     data = mapKeys(data, (value, key) => camelize(key));
     if (!data.email) {
@@ -137,22 +143,22 @@ export default class AuthManagerService extends Service {
 
   async initialize() {
     if (this.session.isAuthenticated) {
-      if (this.session.data.currentUserFallback.id) {
+      if (this.session.data.currentUserFallback?.id) {
         try {
           const user = await this.store.findRecord('user', this.session.data.currentUserFallback.id);
           this.set('currentUserModel', user);
           this.identify();
         } catch (e) {
           console.warn(e);
-          this.session.invalidate();
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+          this.logout();
         }
-
       } else {
         this.identifyStranger();
+        this.logout();
       }
     } else {
       this.identifyStranger();
+      this.logout(true);
     }
   }
 }

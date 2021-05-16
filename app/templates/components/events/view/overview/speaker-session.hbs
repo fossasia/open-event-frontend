@@ -57,7 +57,7 @@
         <td><strong>{{t 'No. of Speakers'}}</strong></td>
         <td>
           {{#if this.data.event.isSessionsSpeakersEnabled}}
-            {{this.data.statistics.speakers}}
+            {{this.data.statistics.speakers.total}}
           {{else}}
             {{t 'Sessions and Speakers not enabled.'}}
           {{/if}}
@@ -88,10 +88,11 @@
         <td><strong>{{t 'Speakers'}}</strong></td>
         <td>
           {{#if this.data.event.isSessionsSpeakersEnabled}}
-            {{t 'Accepted'}}: {{this.data.statistics.speakersAccepted}}
-            | {{t 'Pending'}}: {{this.data.statistics.speakersPending}}
-            | {{t 'Rejected'}}: {{this.data.statistics.speakersRejected}}
-            | {{t 'Confirmed'}}: {{this.data.statistics.speakersConfirmed}}
+            {{t 'Accepted'}}: {{this.data.statistics.speakers.accepted}}
+            | {{t 'Pending'}}: {{this.data.statistics.speakers.pending}}
+            | {{t 'Rejected'}}: {{this.data.statistics.speakers.rejected}}
+            | {{t 'Confirmed'}}: {{this.data.statistics.speakers.confirmed}}
+            | {{t 'Without Session'}}: {{this.data.statistics.speakerWithoutSession}}
           {{else}}
             {{t 'Sessions and Speakers not enabled.'}}
           {{/if}}

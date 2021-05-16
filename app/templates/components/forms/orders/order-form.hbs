@@ -40,6 +40,8 @@
         <Input
           @type="text"
           @name="email"
+          readonly
+          disabled
           @value={{this.buyer.email}} />
       </div>
       <h4 class="ui horizontal divider header">
@@ -62,8 +64,13 @@
         {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
             {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
-              <form class="field">
+              <div class="field">
                 <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+                {{#if (eq field.type 'paragraph')}}
+                  <Widgets::Forms::RichTextEditor
+                    @value={{mut (get holder field.fieldIdentifier)}}
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                {{/if}}
                 {{#if (is-input-field field.type) }}
                   {{#if field.isLongText}}
                     <Widgets::Forms::RichTextEditor
@@ -139,8 +146,26 @@
                       {{/each}}
                     </div>
                   </UiDropdown>
+                 {{else if (eq field.fieldIdentifier 'acceptReceiveEmails')}}              
+                  <UiCheckbox
+                    @label={{t "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"}}
+                    @checked={{holder.acceptReceiveEmails}}         
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
+                    @onChange={{action (mut holder.acceptReceiveEmails)}}/> 
+                 {{else if (eq field.fieldIdentifier 'acceptShareDetails')}}              
+                  <UiCheckbox
+                    @label={{t "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"}}
+                    @checked={{holder.acceptShareDetails}}         
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
+                    @onChange={{action (mut holder.acceptShareDetails)}}/> 
+                 {{else if (eq field.fieldIdentifier 'acceptVideoRecording')}}              
+                  <UiCheckbox
+                    @label={{t "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."}}
+                    @checked={{holder.acceptVideoRecording}}         
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
+                    @onChange={{action (mut holder.acceptVideoRecording)}}/> 
                 {{/if}}
-              </form>
+              </div>
             {{/if}}
           {{/if}}
         {{/each}}
@@ -148,7 +173,7 @@
 
       {{#if this.isPaidOrder}}
         <h4 class="ui horizontal divider header">
-          <i class="money bill alternate icon"></i>
+          <i class="address card icon"></i>
           {{t 'Billing Information'}}
         </h4>
         {{#unless this.event.isBillingInfoMandatory}}

@@ -9,6 +9,7 @@ let mailPromise = null;
 @classic
 export default class SessionNotifyModal extends ModalBase {
   @service loader;
+  @service settings;
   @tracked mails = null;
   @tracked saving = false;
   @tracked subject = '';
@@ -39,7 +40,19 @@ export default class SessionNotifyModal extends ModalBase {
   @computed('sessionId')
   get speakerEmails() {
     const session = this.store.peekRecord('session', this.sessionId);
-    return session.speakers.map(speaker => `${speaker.name} ${speaker.email}`).join(', ');
+    return session.speakers.map(speaker => `${speaker.name} <${speaker.email}>`).join(', ');
+  }
+
+  @computed('settings')
+  get mailFrom() {
+    return this.settings.appName + ' submission system';
+  }
+
+  @computed('sessionId')
+  get ownerEmail() {
+    const session = this.store.peekRecord('session', this.sessionId);
+    const owner = session.event.get('owner');
+    return owner.get('fullName') + ' <' + owner.get('email') + '>';
   }
 
   async initialize() {

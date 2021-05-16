@@ -1,0 +1,28 @@
+<div class="sixteen wide column">
+  <div class="ui grid space-between items-center mt-4 mb-4">
+      <div>
+        <h2 class="header">{{t 'Exhibitors'}}</h2>
+      </div>
+      <div>
+        <LinkTo @route="events.view.exhibitors.create" class="ui blue button">
+          {{t 'Add Exhibitor'}}
+        </LinkTo>
+        <LinkTo @route="events.view.exhibitors.reorder" class="ui blue button right floated">
+          {{t 'Reorder Exhibitors'}}
+        </LinkTo>
+      </div>
+    </div>
+  <Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.model.exhibitors.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.model.exhibitors.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
+</div>

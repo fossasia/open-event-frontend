@@ -3,20 +3,22 @@
 # This file is distributed under the same license as the
 # fossasia/open-event-orga-server project.
 # FOSSASIA <open-event@googlegroups.com>, 2016.
-#
+# naofum <naofum@gmail.com>, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version:  v1\n"
+"Project-Id-Version: v1\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2017-03-18 02:59+0000\n"
-"Last-Translator: Yohei Yasukawa <yasulab@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/open-event/organizer-server/ja/>\n"
+"PO-Revision-Date: 2021-03-27 04:29+0000\n"
+"Last-Translator: naofum <naofum@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/open-event/"
+"frontend/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.6-dev\n"
 "Generated-By: Babel 2.3.4\n"
 
 #: app/adapters/application.js:44:24
@@ -25,29 +27,32 @@ msgstr ""
 #: app/components/events/view/export/download-common.js:80:26
 #: app/components/events/view/publish-bar.ts:89:24
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:48:28
-#: app/components/forms/events/view/videoroom-form.js:98:24
+#: app/components/forms/events/view/videoroom-form.js:110:24
 #: app/components/forms/login-form.js:74:35
 #: app/components/forms/login-form.js:101:28
 #: app/components/forms/reset-password-form.js:121:41
-#: app/components/modals/session-notify-modal.js:80:24
+#: app/components/modals/contact-organizer.js:46:28
+#: app/components/modals/session-notify-modal.js:93:24
 #: app/components/notification-dropdown.js:55:26
 #: app/components/order-card.js:30:24
 #: app/components/unverified-user-message.js:37:28
 #: app/components/widgets/forms/image-upload.js:44:26
 #: app/controllers/admin/content/events.js:77:26
 #: app/controllers/admin/content/translations.js:23:24
-#: app/controllers/admin/events/list.js:140:27
-#: app/controllers/admin/events/list.js:164:24
-#: app/controllers/admin/events/list.js:187:24
-#: app/controllers/admin/events/list.js:210:24
-#: app/controllers/admin/events/list.js:232:24
+#: app/controllers/admin/events/list.js:138:27
+#: app/controllers/admin/events/list.js:162:24
+#: app/controllers/admin/events/list.js:185:24
+#: app/controllers/admin/events/list.js:208:24
+#: app/controllers/admin/events/list.js:230:24
 #: app/controllers/admin/sessions/list.js:77:24
-#: app/controllers/admin/users/list.js:103:24
-#: app/controllers/admin/users/list.js:134:24
+#: app/controllers/admin/users/list.js:126:24
+#: app/controllers/admin/users/list.js:149:24
+#: app/controllers/admin/users/list.js:171:24
+#: app/controllers/admin/users/list.js:202:24
 #: app/controllers/admin/users/view/events/list.js:82:24
 #: app/controllers/admin/users/view/events/list.js:100:24
 #: app/controllers/event-invoice/paid.js:23:24
-#: app/controllers/events/list.js:91:24
+#: app/controllers/events/list.js:88:24
 #: app/controllers/events/view/sessions.js:31:26
 #: app/controllers/events/view/settings/export.js:68:26
 #: app/controllers/events/view/settings/options.js:24:26
@@ -62,17 +67,16 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders/list.js:85:26
 #: app/controllers/events/view/tickets/orders/list.js:104:26
 #: app/controllers/events/view/tickets/orders/list.js:130:26
-#: app/controllers/events/view/videoroom/list.js:75:24
-#: app/controllers/notifications.js:23:26
-#: app/controllers/oauth/callback.js:31:41
-#: app/controllers/public/index.js:88:37
-#: app/controllers/public/session/view.js:30:24
-#: app/controllers/register.js:33:35 app/controllers/register.js:70:37
-#: app/mixins/event-wizard.js:173:28 app/mixins/notifications.js:12:28
-#: app/mixins/notifications.js:30:28 app/services/auth-manager.js:148:28
+#: app/controllers/events/view/videoroom/list.js:86:24
+#: app/controllers/groups/list.js:19:24 app/controllers/notifications.js:23:26
+#: app/controllers/oauth/callback.js:31:41 app/controllers/orders/view.js:30:24
+#: app/controllers/public/cfs/view-session.js:43:24
+#: app/controllers/public/index.js:89:37 app/controllers/register.js:34:35
+#: app/controllers/register.js:71:37 app/mixins/event-wizard.js:173:28
+#: app/mixins/notifications.js:12:28 app/mixins/notifications.js:30:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
-msgstr ""
+msgstr "予期しないエラーが発生しました。"
 
 #: app/components/account/contact-info-section.js:22:23
 #: app/components/forms/login-form.js:28:23
@@ -80,83 +84,84 @@ msgstr ""
 #: app/components/forms/reset-password-form.js:26:23
 #: app/components/forms/user-profile-form.js:37:23
 msgid "Please enter your email ID"
-msgstr ""
+msgstr "メール ID を入力してください"
 
 #: app/components/account/contact-info-section.js:26:23
 #: app/components/forms/admin/settings/billing.js:35:23
 #: app/components/forms/admin/settings/billing.js:48:23
 #: app/components/forms/admin/settings/system-form.js:155:23
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:23:23
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:57:23
 #: app/components/forms/login-form.js:32:23
 #: app/components/forms/orders/guest-order-form.js:28:23
-#: app/components/forms/orders/order-form.js:104:19
-#: app/components/forms/orders/order-form.js:398:23
+#: app/components/forms/orders/order-form.js:102:19
+#: app/components/forms/orders/order-form.js:476:23
 #: app/components/forms/register-form.js:24:23
 #: app/components/forms/reset-password-form.js:30:23
 #: app/components/forms/session-speaker-form.js:198:23
 #: app/components/forms/session-speaker-form.js:212:23
 #: app/components/forms/user-profile-form.js:41:23
-#: app/components/forms/wizard/basic-details-step.js:350:23
+#: app/components/forms/wizard/basic-details-step.js:364:23
 msgid "Please enter a valid email address"
-msgstr ""
+msgstr "有効なメールアドレスを入力してください"
 
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
 msgid "Please enter a phone number."
-msgstr ""
+msgstr "電話番号を入力してください。"
 
 #: app/components/account/contact-info-section.js:40:23
 #: app/components/forms/user-payment-info-form.js:87:23
 msgid "Please enter a valid phone number."
-msgstr ""
+msgstr "有効な電話番号を入力して下さい。"
 
 #: app/components/account/danger-zone.js:42:28
 msgid "Your account has been deleted successfully."
-msgstr ""
+msgstr "アカウントは正常に削除されました。"
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
-msgstr ""
+msgstr "メール通知が正常に更新されました"
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
-msgstr ""
+msgstr "現在のパスワードを入力してください"
 
 #: app/components/account/password-section.js:25:23
 msgid "Please enter a new password"
-msgstr ""
+msgstr "新しいパスワードを入力してください"
 
 #: app/components/account/password-section.js:29:23
 #: app/components/forms/orders/guest-order-form.js:42:23
 #: app/components/forms/register-form.js:37:23
 #: app/components/forms/reset-password-form.js:44:23
 msgid "Your password must have at least {ruleValue} characters"
-msgstr ""
+msgstr "パスワードには {ruleValue} 文字以上が必要です"
 
 #: app/components/account/password-section.js:38:23
 #: app/components/forms/orders/guest-order-form.js:52:23
 #: app/components/forms/register-form.js:46:23
 #: app/components/forms/reset-password-form.js:54:23
 msgid "Passwords do not match"
-msgstr ""
+msgstr "パスワードが一致しません"
 
 #: app/components/events/event-import-section.js:17:23
 #: app/components/forms/admin/content/translation-form.js:17:23
 msgid "Please upload a file"
-msgstr ""
+msgstr "ファイルをアップロードしてください"
 
 #: app/components/events/event-import-section.js:22:23
 #: app/components/forms/admin/content/translation-form.js:22:23
 msgid "Please upload a file in suggested format"
-msgstr ""
+msgstr "推奨形式のファイルをアップロードしてください"
 
 #: app/components/events/view/export/api-response.js:43:26
 msgid "Could not fetch from the server"
-msgstr ""
+msgstr "サーバーから取得できませんでした"
 
 #: app/components/events/view/export/download-common.js:28:112
 msgid "Please publish to generate the link"
-msgstr ""
+msgstr "公開してリンクを生成してください"
 
 #: app/components/events/view/export/download-common.js:39:32
 #: app/controllers/events/view/sessions.js:46:34
@@ -164,7 +169,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/attendees.js:33:32
 #: app/controllers/events/view/tickets/orders.js:33:32
 msgid "Download Ready"
-msgstr ""
+msgstr "ダウンロード準備完了"
 
 #: app/components/events/view/export/download-common.js:45:30
 #: app/controllers/events/view/sessions.js:52:32
@@ -172,47 +177,54 @@ msgstr ""
 #: app/controllers/events/view/tickets/attendees.js:36:30
 #: app/controllers/events/view/tickets/orders.js:36:30
 msgid "Task is going on."
-msgstr ""
+msgstr "タスクが進行中です。"
 
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
+msgstr "タスクが失敗しました。"
 
 #: app/components/events/view/export/download-zip.js:17:26
 msgid "Exported Event Downloaded successfully."
-msgstr ""
+msgstr "エクスポートされたイベントが正常にダウンロードされました。"
 
 #: app/components/events/view/overview/manage-roles.js:32:47
 msgid "Role Invite sent successfully"
-msgstr ""
+msgstr "ロールの招待が正常に送信されました"
 
 #: app/components/events/view/overview/manage-roles.js:32:94
 msgid "Role Invite updated successfully"
-msgstr ""
+msgstr "ロールの招待が正常に更新されました"
 
 #: app/components/events/view/overview/manage-roles.js:38:26
 #: app/components/events/view/overview/manage-roles.js:58:26
 #: app/components/events/view/overview/manage-roles.js:62:24
 #: app/components/events/view/overview/manage-roles.js:80:26
+#: app/components/events/view/overview/manage-roles.js:101:26
 #: app/components/forms/admin/settings/ticket-fees-form.js:70:26
-#: app/components/forms/events/view/videoroom-form.js:152:49
+#: app/components/forms/events/view/videoroom-form.js:189:49
 #: app/components/widgets/forms/file-upload.js:36:26
-#: app/controllers/orders/new.js:47:39 app/controllers/orders/new.js:58:24
+#: app/controllers/events/view/exhibitors/reorder.ts:29:24
+#: app/controllers/events/view/exhibitors/reorder.ts:40:24
+#: app/controllers/events/view/speakers/reorder.ts:29:24
+#: app/controllers/events/view/speakers/reorder.ts:40:24
 #: app/controllers/public/cfs/edit-session.js:20:26
-#: app/controllers/public/cfs/edit-speaker.js:20:26
 #: app/controllers/public/cfs/new-session.js:20:24
 #: app/controllers/public/cfs/new-speaker.js:20:26
 msgid "Oops something went wrong. Please try again"
-msgstr ""
+msgstr "何か問題が発生しました。もう一度やり直してください"
 
 #: app/components/events/view/overview/manage-roles.js:53:28
 msgid "Invite resent successfully"
-msgstr ""
+msgstr "招待の再送信が成功しました"
 
 #: app/components/events/view/overview/manage-roles.js:73:28
 msgid "Role Invite deleted successfully"
-msgstr ""
+msgstr "ロールの招待が正常に削除されました"
+
+#: app/components/events/view/overview/manage-roles.js:94:28
+msgid "Role deleted successfully"
+msgstr "ロールが正常に削除されました"
 
 #: app/components/events/view/publish-bar.hbs:8:6
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:2:89
@@ -220,13 +232,13 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-buttons.hbs:3:22
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:16:22
 #: app/templates/components/ui-table/cell/cell-event.hbs:7:22
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:4:20
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:5:22
 msgid "View"
-msgstr ""
+msgstr "表示"
 
 #: app/components/events/view/publish-bar.hbs:10:6
 msgid "Preview"
-msgstr ""
+msgstr "プレビュー"
 
 #: app/components/events/view/publish-bar.hbs:19:6
 msgid "Unpublish"
@@ -238,48 +250,50 @@ msgstr "公開"
 
 #: app/components/events/view/publish-bar.ts:57:26
 msgid "Your event must have tickets before it can be published."
-msgstr ""
+msgstr "公開する前に、イベントにチケットが必要です。"
 
 #: app/components/events/view/publish-bar.ts:63:26
 #: app/mixins/event-wizard.js:294:22
 msgid "You need to connect to your Stripe account, if you choose Stripe as a payment gateway."
-msgstr ""
+msgstr "支払いゲートウェイとしてStripeを選択した場合は、Stripeアカウントに接続する必要があります。"
 
 #: app/components/events/view/publish-bar.ts:76:28
 msgid "Your event has been published successfully."
-msgstr ""
+msgstr "イベントが正常に公開されました。"
 
 #: app/components/events/view/publish-bar.ts:81:28
 msgid "Your event has been unpublished."
-msgstr ""
+msgstr "イベントが非公開です。"
 
 #: app/components/forms/admin/content/pages-form.js:17:23
-#: app/components/forms/events/view/videoroom-form.js:43:23
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:34:23
+#: app/components/forms/events/view/videoroom-form.js:45:23
+#: app/components/forms/group/group-form.js:23:23
 #: app/components/forms/session-speaker-form.js:185:23
 #: app/components/modals/add-room-modal.js:46:23
 msgid "Please enter a name"
-msgstr ""
+msgstr "名前を入力してください"
 
 #: app/components/forms/admin/content/pages-form.js:26:23
 #: app/components/forms/session-speaker-form.js:29:23
 msgid "Please enter a title"
-msgstr ""
+msgstr "タイトルを入力してください"
 
 #: app/components/forms/admin/content/pages-form.js:35:23
 msgid "Please enter the path"
-msgstr ""
+msgstr "パスを入力してください"
 
 #: app/components/forms/admin/content/pages-form.js:40:23
 msgid "Path should not contain leading slash."
-msgstr ""
+msgstr "パスには先頭のスラッシュを含めないようにしてください。"
 
 #: app/components/forms/admin/content/pages-form.js:44:23
 msgid "Path should not contain whitespaces."
-msgstr ""
+msgstr "パスには空白を含めないようにしてください。"
 
 #: app/components/forms/admin/content/pages-form.js:53:23
 msgid "Please select a place"
-msgstr ""
+msgstr "場所を選択してください"
 
 #: app/components/forms/admin/content/pages-form.js:62:23
 #: app/components/forms/session-speaker-form.js:255:23
@@ -292,11 +306,14 @@ msgid "Please enter a language"
 msgstr ""
 
 #: app/components/forms/admin/content/social-links-form.js:20:23
-#: app/components/forms/events/view/videoroom-form.js:56:23
-#: app/components/forms/orders/order-form.js:250:19
-#: app/components/forms/orders/order-form.js:264:19
-#: app/components/forms/orders/order-form.js:275:19
-#: app/components/forms/orders/order-form.js:289:19
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:47:23
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:85:23
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:95:23
+#: app/components/forms/events/view/videoroom-form.js:58:23
+#: app/components/forms/orders/order-form.js:278:19
+#: app/components/forms/orders/order-form.js:292:19
+#: app/components/forms/orders/order-form.js:303:19
+#: app/components/forms/orders/order-form.js:317:19
 #: app/components/forms/session-speaker-form.js:115:23
 #: app/components/forms/session-speaker-form.js:126:23
 #: app/components/forms/session-speaker-form.js:140:23
@@ -307,9 +324,9 @@ msgstr ""
 #: app/components/forms/session-speaker-form.js:237:23
 #: app/components/forms/session-speaker-form.js:366:23
 #: app/components/forms/session-speaker-form.js:377:23
-#: app/components/forms/wizard/basic-details-step.js:392:23
-#: app/components/forms/wizard/basic-details-step.js:412:23
-#: app/components/forms/wizard/basic-details-step.js:423:23
+#: app/components/forms/wizard/basic-details-step.js:406:23
+#: app/components/forms/wizard/basic-details-step.js:426:23
+#: app/components/forms/wizard/basic-details-step.js:437:23
 #: app/components/forms/wizard/other-details-step.js:65:23
 msgid "Please enter a valid url"
 msgstr ""
@@ -610,6 +627,194 @@ msgstr ""
 msgid "Please select atleast 1 ticket."
 msgstr ""
 
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:8:32
+#: app/components/modals/add-room-modal.hbs:8:8
+#: app/controllers/admin/events/list.js:16:27
+#: app/controllers/admin/users/list.js:17:26
+#: app/controllers/events/list.js:11:26
+#: app/controllers/events/view/exhibitors/list.js:38:26
+#: app/controllers/events/view/speakers/list.js:20:26
+#: app/models/custom-form.js:8:24
+#: app/templates/components/event-invoice/payee-info.hbs:8:8
+#: app/templates/components/forms/admin/content/pages-form.hbs:3:28
+#: app/templates/components/forms/group/group-form.hbs:18:20
+#: app/templates/components/forms/user-profile-form.hbs:32:43
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:34:80
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:64:74
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:105:88
+#: app/templates/components/forms/wizard/sponsors-step.hbs:38:34
+#: app/templates/components/modals/add-system-role-modal.hbs:12:8
+#: app/templates/components/orders/company-info.hbs:15:22
+#: app/templates/components/orders/ticket-holder.hbs:12:8
+msgid "Name"
+msgstr "名前"
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:12:15
+msgid "Contact Email"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:16:15
+msgid "Contact URL"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:24:10
+#: app/controllers/events/view/exhibitors/list.js:60:24
+#: app/templates/components/forms/wizard/sponsors-step.hbs:60:17
+msgid "URL"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:32:15
+#: app/controllers/events/view/exhibitors/list.js:55:20
+#: app/templates/components/forms/admin/content/pages-form.hbs:15:11
+#: app/templates/components/forms/wizard/basic-details-step.hbs:151:29
+#: app/templates/components/forms/wizard/sponsors-step.hbs:68:17
+msgid "Description"
+msgstr "説明"
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:40:19
+msgid "Banner"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:43:18
+msgid "Select Banner"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:48:22
+#: app/templates/components/forms/wizard/basic-details-step.hbs:169:18
+msgid "We recommend using at least a 2160x1080px (2:1 ratio) image"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:53:19
+#: app/controllers/events/view/exhibitors/list.js:33:24
+#: app/templates/components/explore/side-bar.hbs:262:23
+#: app/templates/components/forms/admin/settings/billing.hbs:84:15
+#: app/templates/components/forms/admin/settings/billing.hbs:88:19
+#: app/templates/components/forms/session-section.hbs:36:17
+#: app/templates/components/forms/wizard/basic-details-step.hbs:175:15
+#: app/templates/components/forms/wizard/basic-details-step.hbs:179:19
+#: app/templates/components/forms/wizard/sponsors-step.hbs:75:19
+msgid "Logo"
+msgstr "ロゴ"
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:57:18
+#: app/templates/components/forms/wizard/basic-details-step.hbs:178:14
+#: app/templates/components/forms/wizard/sponsors-step.hbs:78:18
+msgid "Select Logo"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:63:10
+msgid "Add a related exhibitor session"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:71:10
+msgid "Select Sessions"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:86:10
+msgid "Video URL"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:95:10
+msgid "Slides URL"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:99:17
+#: app/components/public/session-item.hbs:141:16
+#: app/models/custom-form.js:42:18
+#: app/templates/components/forms/events/view/edit-session.hbs:15:11
+#: app/templates/public/exhibition/view.hbs:106:32
+msgid "Slides"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:102:16
+#: app/templates/components/forms/events/view/edit-session.hbs:16:108
+#: app/templates/components/forms/session-section.hbs:48:16
+msgid "Select a file"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:107:17
+msgid "Enable Video Room"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:111:8
+#: app/routes/admin/settings/social-media.js:6:11
+#: app/templates/admin/settings.hbs:9:10
+#: app/templates/components/forms/wizard/other-details-step.hbs:9:6
+msgid "Social Media"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:112:26
+#: app/templates/components/forms/wizard/other-details-step.hbs:10:24
+msgid "Add social link"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:124:32
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:146:32
+#: app/templates/components/forms/wizard/basic-details-step.hbs:580:16
+#: app/templates/components/forms/wizard/other-details-step.hbs:22:28
+#: app/templates/components/forms/wizard/other-details-step.hbs:44:28
+#: app/templates/components/forms/wizard/sponsors-step.hbs:31:12
+msgid "Remove"
+msgstr "削除"
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:132:8
+#: app/templates/components/forms/wizard/other-details-step.hbs:30:6
+msgid "Extra Links"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:133:26
+#: app/templates/components/forms/wizard/other-details-step.hbs:31:24
+msgid "Add custom link"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:154:72
+#: app/components/forms/events/view/videoroom-form.hbs:145:68
+#: app/components/forms/wizard/custom-form-input.hbs:21:104
+#: app/components/forms/wizard/wizard-footer.hbs:30:8
+#: app/templates/admin/messages.hbs:22:98
+#: app/templates/admin/permissions/event-roles.hbs:39:78
+#: app/templates/admin/permissions/system-roles.hbs:109:8
+#: app/templates/admin/settings/social-media.hbs:4:4
+#: app/templates/components/account/contact-info-section.hbs:10:47
+#: app/templates/components/account/password-section.hbs:42:4
+#: app/templates/components/forms/admin/content/social-links-form.hbs:84:47
+#: app/templates/components/forms/admin/settings/analytics-form.hbs:19:4
+#: app/templates/components/forms/admin/settings/billing.hbs:91:61
+#: app/templates/components/forms/admin/settings/images-form.hbs:133:61
+#: app/templates/components/forms/admin/settings/microservices-form.hbs:27:4
+#: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:457:4
+#: app/templates/components/forms/admin/settings/system-form.hbs:95:4
+#: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:145:4
+#: app/templates/components/forms/events/view/create-access-code.hbs:95:68
+#: app/templates/components/forms/events/view/create-discount-code.hbs:139:4
+#: app/templates/components/forms/group/group-form.hbs:21:70
+#: app/templates/components/modals/edit-user-modal.hbs:21:4
+#: app/templates/components/modals/room-info-modal.hbs:14:63
+#: app/templates/events/view/exhibitors/reorder.hbs:13:78
+#: app/templates/events/view/speakers/reorder.hbs:13:78
+msgid "Save"
+msgstr "保存"
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:42:23
+#: app/components/forms/events/view/videoroom-form.js:53:23
+#: app/components/forms/session-speaker-form.js:110:23
+#: app/components/forms/session-speaker-form.js:135:23
+#: app/components/forms/session-speaker-form.js:160:23
+msgid "Please enter a url"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:67:23
+msgid "Please enter a valid contact link"
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:75:23
+msgid "Please upload exhibitor's logo."
+msgstr ""
+
+#: app/components/forms/events/view/exhibitors/exhibitor-form.ts:125:26
+msgid "Your exhibitor has been saved"
+msgstr ""
+
 #: app/components/forms/events/view/videoroom-form.hbs:5:8
 msgid "Video Channel"
 msgstr ""
@@ -627,22 +832,22 @@ msgstr ""
 msgid "Room"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:39:30
+#: app/components/forms/events/view/videoroom-form.hbs:40:30
 msgid "Video Source"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:46:8
-#: app/controllers/events/view/videoroom/list.js:22:24
+#: app/components/forms/events/view/videoroom-form.hbs:47:8
+#: app/controllers/events/view/videoroom/list.js:28:24
 msgid "Video Source URL"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:59:8
-#: app/components/public/stream/stream-info.hbs:9:12
-#: app/controllers/events/view/videoroom/list.js:37:21
+#: app/components/forms/events/view/videoroom-form.hbs:74:8
+#: app/components/public/stream/stream-info.hbs:11:12
+#: app/controllers/events/view/videoroom/list.js:43:21
 msgid "Room Password"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:71:6
+#: app/components/forms/events/view/videoroom-form.hbs:86:6
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:28:12
 #: app/templates/components/forms/user-payment-info-form.hbs:69:32
 #: app/templates/components/modals/room-info-modal.hbs:3:2
@@ -650,72 +855,73 @@ msgstr ""
 msgid "Additional Information"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:82:11
+#: app/components/forms/events/view/videoroom-form.hbs:98:10
+msgid "Autoplay"
+msgstr ""
+
+#: app/components/forms/events/view/videoroom-form.hbs:107:10
+msgid "Loop"
+msgstr ""
+
+#: app/components/forms/events/view/videoroom-form.hbs:117:11
 msgid "Access"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:83:87
+#: app/components/forms/events/view/videoroom-form.hbs:118:87
 msgid "Organization Team"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:84:87
+#: app/components/forms/events/view/videoroom-form.hbs:119:87
 #: app/components/public/side-menu-outer.js:22:13
-#: app/components/public/stream/side-panel.hbs:29:10
-#: app/controllers/admin/events/list.js:72:25
+#: app/components/public/stream/side-panel.hbs:30:10
+#: app/controllers/admin/events/list.js:70:25
 #: app/controllers/admin/sessions/list.js:26:24
-#: app/controllers/events/list.js:54:24
-#: app/controllers/events/view/sessions/list.js:44:24
-#: app/routes/events/view/speakers.js:7:11
+#: app/controllers/events/list.js:51:24
+#: app/controllers/events/view/sessions/list.js:46:24
+#: app/routes/events/view/speakers.js:7:11 app/routes/public/speakers.js:40:11
 #: app/templates/components/events/view/export/api-response.hbs:22:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:88:20
-#: app/templates/components/public/side-menu.hbs:12:91
-#: app/templates/components/public/side-menu.hbs:26:91
+#: app/templates/components/public/side-menu.hbs:30:89
 #: app/templates/components/public/speaker-list.hbs:1:22
 #: app/templates/events/view.hbs:32:10
+#: app/templates/events/view/session/view.hbs:38:44
+#: app/templates/public/cfs/view-session.hbs:75:43
 msgid "Speakers"
 msgstr "スピーカー"
 
-#: app/components/forms/events/view/videoroom-form.hbs:85:87
+#: app/components/forms/events/view/videoroom-form.hbs:120:87
 #: app/routes/events/view/tickets/attendees.js:7:11
 #: app/templates/events/view/tickets.hbs:12:10
+#: app/templates/public/session/view.hbs:10:27
 msgid "Attendees"
 msgstr "参加者"
 
-#: app/components/forms/events/view/videoroom-form.hbs:86:69
+#: app/components/forms/events/view/videoroom-form.hbs:121:69
 msgid "All logged in users"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:87:69
+#: app/components/forms/events/view/videoroom-form.hbs:122:69
 msgid "Public (no restriction)"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:90:68
-#: app/components/forms/wizard/custom-form-input.hbs:20:104
-#: app/components/forms/wizard/wizard-footer.hbs:30:8
-#: app/templates/admin/messages.hbs:22:98
-#: app/templates/admin/permissions/event-roles.hbs:39:78
-#: app/templates/admin/permissions/system-roles.hbs:109:8
-#: app/templates/components/account/contact-info-section.hbs:10:47
-#: app/templates/components/account/password-section.hbs:42:4
-#: app/templates/components/forms/admin/content/social-links-form.hbs:84:47
-#: app/templates/components/forms/admin/settings/analytics-form.hbs:19:4
-#: app/templates/components/forms/admin/settings/billing.hbs:91:61
-#: app/templates/components/forms/admin/settings/images-form.hbs:133:61
-#: app/templates/components/forms/admin/settings/microservices-form.hbs:27:4
-#: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:457:4
-#: app/templates/components/forms/admin/settings/system-form.hbs:78:4
-#: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:145:4
-#: app/templates/components/forms/events/view/create-access-code.hbs:95:68
-#: app/templates/components/forms/events/view/create-discount-code.hbs:139:4
-#: app/templates/components/modals/edit-user-modal.hbs:21:4
-#: app/templates/components/modals/room-info-modal.hbs:14:63
-msgid "Save"
-msgstr "保存"
+#: app/components/forms/events/view/videoroom-form.hbs:125:25
+#: app/controllers/events/view/videoroom/list.js:49:24
+msgid "Moderators"
+msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.hbs:92:8
+#: app/components/forms/events/view/videoroom-form.hbs:131:18
+msgid "Add Email of Moderators"
+msgstr ""
+
+#: app/components/forms/events/view/videoroom-form.hbs:134:6
+#: app/components/forms/wizard/custom-form-input.hbs:21:115
+msgid "Add"
+msgstr "追加"
+
+#: app/components/forms/events/view/videoroom-form.hbs:147:4
 #: app/components/forms/wizard/wizard-footer.hbs:5:8
-#: app/components/modals/add-room-modal.hbs:22:4
-#: app/components/modals/session-notify-modal.hbs:62:4
+#: app/components/modals/add-room-modal.hbs:31:4
+#: app/components/modals/session-notify-modal.hbs:83:4
 #: app/templates/components/forms/admin/content/pages-form.hbs:50:55
 #: app/templates/components/modals/add-system-role-modal.hbs:36:4
 #: app/templates/components/modals/add-user-role-modal.hbs:37:4
@@ -725,6 +931,7 @@ msgstr "保存"
 #: app/templates/components/modals/change-image-modal.hbs:45:63
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:22:4
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:14:4
+#: app/templates/components/modals/contact-organizer.hbs:42:16
 #: app/templates/components/modals/event-delete-modal.hbs:19:4
 #: app/templates/components/modals/event-transfer-modal.hbs:19:4
 #: app/templates/components/modals/paytm-otp.hbs:15:4
@@ -737,19 +944,20 @@ msgstr "保存"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: app/components/forms/events/view/videoroom-form.js:51:23
-#: app/components/forms/session-speaker-form.js:110:23
-#: app/components/forms/session-speaker-form.js:135:23
-#: app/components/forms/session-speaker-form.js:160:23
-msgid "Please enter a url"
+#: app/components/forms/events/view/videoroom-form.js:68:23
+msgid "Please enter a valid email"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.js:125:34
+#: app/components/forms/events/view/videoroom-form.js:155:34
 msgid "Selecting another video integration will reset the data in the form. Do you want to proceed?"
 msgstr ""
 
-#: app/components/forms/events/view/videoroom-form.js:145:28
+#: app/components/forms/events/view/videoroom-form.js:182:28
 msgid "Your stream has been saved"
+msgstr ""
+
+#: app/components/forms/group/group-form.js:56:28
+msgid "Your group has been saved"
 msgstr ""
 
 #: app/components/forms/login-form.js:41:23
@@ -761,135 +969,165 @@ msgstr ""
 msgid "Here is your ticket"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:83:19
-#: app/components/forms/orders/order-form.js:379:23
+#: app/components/forms/orders/order-form.js:81:19
+#: app/components/forms/orders/order-form.js:457:23
 msgid "Please enter your first name"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:91:19
-#: app/components/forms/orders/order-form.js:388:23
+#: app/components/forms/orders/order-form.js:89:19
+#: app/components/forms/orders/order-form.js:466:23
 msgid "Please enter your last name"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:99:19
+#: app/components/forms/orders/order-form.js:97:19
 msgid "Please enter your email"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:113:19
+#: app/components/forms/orders/order-form.js:111:19
 #: app/components/forms/session-speaker-form.js:318:23
 msgid "Please select a gender"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:122:19
+#: app/components/forms/orders/order-form.js:120:19
 msgid "Please select your age group"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:131:19
-#: app/components/forms/orders/order-form.js:425:23
-msgid "Please enter your address"
+#: app/components/forms/orders/order-form.js:130:19
+msgid "You need to agree to the condition of the organizer to receive emails in order to continue the order process."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:140:19
-#: app/components/forms/orders/order-form.js:434:23
+msgid "In order to complete the order process you need to agree to the photo & video & text consent."
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:150:19
+msgid "You need to agree to the condition of the organizer to share information among event partners in order to continue the order process. Such a requirement could be necessary in order to provide the event services."
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:159:19
+#: app/components/forms/orders/order-form.js:503:23
+msgid "Please enter your address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:168:19
+#: app/components/forms/orders/order-form.js:512:23
 msgid "Please enter your city"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:149:19
+#: app/components/forms/orders/order-form.js:177:19
 msgid "Please enter your state"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:158:19
-#: app/components/forms/orders/order-form.js:407:23
-#: app/components/forms/wizard/basic-details-step.js:401:23
+#: app/components/forms/orders/order-form.js:186:19
+#: app/components/forms/orders/order-form.js:485:23
+#: app/components/forms/wizard/basic-details-step.js:415:23
 #: app/components/modals/tax-info-modal.js:111:23
 msgid "Please select your country"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:167:19
+#: app/components/forms/orders/order-form.js:195:19
 msgid "Please enter your job title"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:176:19
+#: app/components/forms/orders/order-form.js:204:19
 #: app/components/forms/session-speaker-form.js:347:23
 msgid "Please enter a mobile number"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:185:19
+#: app/components/forms/orders/order-form.js:213:19
 msgid "Please enter your tax business info"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:194:19
+#: app/components/forms/orders/order-form.js:222:19
 #: app/components/forms/user-payment-info-form.js:55:23
 msgid "Please enter your billing address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:203:19
+#: app/components/forms/orders/order-form.js:231:19
 msgid "Please enter your home address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:212:19
+#: app/components/forms/orders/order-form.js:240:19
 msgid "Please enter your shipping address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:221:19
+#: app/components/forms/orders/order-form.js:249:19
 #: app/components/forms/user-payment-info-form.js:37:23
 msgid "Please enter your organisation"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:230:19
+#: app/components/forms/orders/order-form.js:258:19
 msgid "Please enter your work address"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:239:19
+#: app/components/forms/orders/order-form.js:267:19
 msgid "Please enter your work phone"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:259:19
-#: app/components/forms/orders/order-form.js:284:19
+#: app/components/forms/orders/order-form.js:287:19
+#: app/components/forms/orders/order-form.js:312:19
 #: app/components/forms/session-speaker-form.js:361:23
 msgid "Please enter url of website"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:300:19
-#: app/components/forms/orders/order-form.js:314:19
+#: app/components/forms/orders/order-form.js:328:19
+#: app/components/forms/orders/order-form.js:342:19
 msgid "Please enter a valid twitter profile url"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:309:19
+#: app/components/forms/orders/order-form.js:337:19
 msgid "Please enter twitter link"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:325:19
-#: app/components/forms/orders/order-form.js:339:19
+#: app/components/forms/orders/order-form.js:353:19
+#: app/components/forms/orders/order-form.js:367:19
 msgid "Please enter a valid facebook account url"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:334:19
+#: app/components/forms/orders/order-form.js:362:19
 msgid "Please enter facebook link"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:350:19
-#: app/components/forms/orders/order-form.js:364:19
+#: app/components/forms/orders/order-form.js:378:19
+#: app/components/forms/orders/order-form.js:392:19
 msgid "Please enter a valid GitHub profile url"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:359:19
+#: app/components/forms/orders/order-form.js:387:19
 msgid "Please enter GitHub link"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:416:23
+#: app/components/forms/orders/order-form.js:403:19
+#: app/components/forms/orders/order-form.js:417:19
+msgid "Please enter a valid instagram account url"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:412:19
+msgid "Please enter instagram link"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:428:19
+#: app/components/forms/orders/order-form.js:442:19
+msgid "Please enter a valid linkedin account url"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:437:19
+msgid "Please enter linkedin link"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:494:23
 msgid "Please enter your Tax ID or Business ID"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:443:23
+#: app/components/forms/orders/order-form.js:521:23
 msgid "Please enter your zip code"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:452:23
+#: app/components/forms/orders/order-form.js:530:23
 msgid "Please specify your choice of payment method"
 msgstr ""
 
-#: app/components/forms/orders/order-form.js:492:23
+#: app/components/forms/orders/order-form.js:577:23
 #: app/components/forms/session-speaker-form.js:390:23
 msgid "Please enter {{field}}"
 msgstr ""
@@ -1022,152 +1260,174 @@ msgstr ""
 msgid "Your profile has been updated"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:157:23
+#: app/components/forms/wizard/basic-details-step.js:25:22
+msgid "Venue"
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:25:37
+#: app/templates/components/explore/side-bar.hbs:30:23
+msgid "Online"
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:25:53
+#: app/templates/components/explore/side-bar.hbs:44:23
+msgid "Hybrid"
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:25:69
+msgid "To be announced"
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:167:23
 msgid "Please give your event a name"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:166:23
+#: app/components/forms/wizard/basic-details-step.js:176:23
 msgid "Choose a timezone for your event"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:175:23
+#: app/components/forms/wizard/basic-details-step.js:185:23
 #: app/components/forms/wizard/sessions-speakers-step.js:58:23
 msgid "Please tell us when your event starts"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:179:23
+#: app/components/forms/wizard/basic-details-step.js:189:23
 msgid "Please give a valid start date"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:188:23
+#: app/components/forms/wizard/basic-details-step.js:198:23
 #: app/components/forms/wizard/sessions-speakers-step.js:71:23
 msgid "Please tell us when your event ends"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:192:23
+#: app/components/forms/wizard/basic-details-step.js:202:23
 msgid "Please give a valid end date"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:202:23
+#: app/components/forms/wizard/basic-details-step.js:206:23
+msgid "Event duration can not be more than 20 days"
+msgstr ""
+
+#: app/components/forms/wizard/basic-details-step.js:216:23
 #: app/components/forms/wizard/sessions-speakers-step.js:85:23
 msgid "Please give a start time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:206:23
+#: app/components/forms/wizard/basic-details-step.js:220:23
 msgid "Starting time should be lesser than the ending time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:216:23
+#: app/components/forms/wizard/basic-details-step.js:230:23
 #: app/components/forms/wizard/sessions-speakers-step.js:95:23
 msgid "Please give an end time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:220:23
+#: app/components/forms/wizard/basic-details-step.js:234:23
 msgid "Ending time should be greater than the starting time"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:229:23
+#: app/components/forms/wizard/basic-details-step.js:243:23
 msgid "Please give your ticket a name"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:239:23
+#: app/components/forms/wizard/basic-details-step.js:253:23
 msgid "Ticket description shouldn't contain more than {ruleValue} characters"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:248:23
+#: app/components/forms/wizard/basic-details-step.js:262:23
 msgid "Please give your ticket a price"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:252:23
+#: app/components/forms/wizard/basic-details-step.js:266:23
 msgid "Please give a proper price for you ticket"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:256:23
+#: app/components/forms/wizard/basic-details-step.js:270:23
 msgid "Ticket price should be greater than 0"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:265:23
+#: app/components/forms/wizard/basic-details-step.js:279:23
 msgid "Please specify how many tickets of this type are available"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:269:23
+#: app/components/forms/wizard/basic-details-step.js:283:23
 msgid "Please give a proper quantity for you ticket"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:278:23
+#: app/components/forms/wizard/basic-details-step.js:292:23
 msgid "Minimum tickets per order required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:282:23
-#: app/components/forms/wizard/basic-details-step.js:299:23
+#: app/components/forms/wizard/basic-details-step.js:296:23
+#: app/components/forms/wizard/basic-details-step.js:313:23
 msgid "Invalid number"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:286:23
+#: app/components/forms/wizard/basic-details-step.js:300:23
 msgid "Minimum order should not be greater than maximum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:295:23
+#: app/components/forms/wizard/basic-details-step.js:309:23
 msgid "Maximum tickets per order required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:303:23
+#: app/components/forms/wizard/basic-details-step.js:317:23
 msgid "Maximum tickets per order should be greater than 0"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:307:23
+#: app/components/forms/wizard/basic-details-step.js:321:23
 msgid "Maximum order should not be less than minimum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:316:23
+#: app/components/forms/wizard/basic-details-step.js:330:23
 msgid "Minimum price for donation tickets required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:320:23
+#: app/components/forms/wizard/basic-details-step.js:334:23
 msgid "Minimum price needs to be greater than zero"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:324:23
+#: app/components/forms/wizard/basic-details-step.js:338:23
 msgid "Minimum price should not be greater than maximum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:333:23
+#: app/components/forms/wizard/basic-details-step.js:347:23
 msgid "Maximum price for donation tickets required"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:337:23
+#: app/components/forms/wizard/basic-details-step.js:351:23
 msgid "Maximum price needs to be greater than zero"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:341:23
+#: app/components/forms/wizard/basic-details-step.js:355:23
 msgid "Maximum price should not be less than minimum"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:354:23
+#: app/components/forms/wizard/basic-details-step.js:368:23
 msgid "Please fill your paypal email for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:363:23
+#: app/components/forms/wizard/basic-details-step.js:377:23
 msgid "Please fill the details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:372:23
+#: app/components/forms/wizard/basic-details-step.js:386:23
 msgid "Please fill the bank details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:381:23
+#: app/components/forms/wizard/basic-details-step.js:395:23
 msgid "Please fill the cheque details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:444:51
+#: app/components/forms/wizard/basic-details-step.js:458:51
 msgid "Please try again"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:453:30
+#: app/components/forms/wizard/basic-details-step.js:467:30
 msgid "Stripe disconnected successfully"
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:522:61
+#: app/components/forms/wizard/basic-details-step.js:535:61
 msgid "This discount code is invalid. Please try again."
 msgstr ""
 
@@ -1180,18 +1440,18 @@ msgid "Field Name"
 msgstr ""
 
 #: app/components/forms/wizard/custom-form-input.hbs:16:42
-msgid "Text"
+msgid "Short Answer"
 msgstr ""
 
-#: app/components/forms/wizard/custom-form-input.hbs:17:44
+#: app/components/forms/wizard/custom-form-input.hbs:17:47
+msgid "Paragraph"
+msgstr ""
+
+#: app/components/forms/wizard/custom-form-input.hbs:18:44
 msgid "Number"
 msgstr ""
 
-#: app/components/forms/wizard/custom-form-input.hbs:20:115
-msgid "Add"
-msgstr "追加"
-
-#: app/components/forms/wizard/custom-forms/table.hbs:13:10
+#: app/components/forms/wizard/custom-forms/table.hbs:18:10
 #: app/controllers/admin/messages.js:42:24
 #: app/routes/events/view/settings/options.js:7:11
 #: app/templates/components/events/view/overview/manage-roles.hbs:23:14
@@ -1200,34 +1460,34 @@ msgstr "追加"
 msgid "Options"
 msgstr "オプション"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:17:10
+#: app/components/forms/wizard/custom-forms/table.hbs:22:10
 msgid "Option"
 msgstr "オプション"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:20:10
-#: app/controllers/events/view/sessions/list.js:69:20
+#: app/components/forms/wizard/custom-forms/table.hbs:25:10
+#: app/controllers/events/view/sessions/list.js:73:26
 #: app/templates/components/events/view/overview/event-tickets.hbs:26:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:82:12
-#: app/templates/components/forms/wizard/sponsors-step.hbs:52:17
+#: app/templates/components/forms/wizard/sponsors-step.hbs:53:17
 #: app/templates/components/public/ticket-list.hbs:7:14
 msgid "Type"
 msgstr "種類"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:23:10
-#: app/components/forms/wizard/custom-forms/table.hbs:61:45
+#: app/components/forms/wizard/custom-forms/table.hbs:28:10
+#: app/components/forms/wizard/custom-forms/table.hbs:66:47
 msgid "Include"
 msgstr "含む"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:26:10
-#: app/components/forms/wizard/custom-forms/table.hbs:69:45
+#: app/components/forms/wizard/custom-forms/table.hbs:31:10
+#: app/components/forms/wizard/custom-forms/table.hbs:74:47
 msgid "Require"
 msgstr "必要"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:29:10
+#: app/components/forms/wizard/custom-forms/table.hbs:34:10
 msgid "Show Public"
 msgstr ""
 
-#: app/components/forms/wizard/custom-forms/table.hbs:33:12
+#: app/components/forms/wizard/custom-forms/table.hbs:38:12
 #: app/controllers/admin/reports/system-logs/activity-logs.js:27:20
 #: app/controllers/admin/reports/system-logs/mail-logs.js:26:26
 #: app/controllers/admin/reports/system-logs/notification-logs.js:24:20
@@ -1236,12 +1496,18 @@ msgstr ""
 msgid "Actions"
 msgstr "アクション"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:76:45
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:185:22
+#: app/components/forms/wizard/custom-forms/table.hbs:81:47
+#: app/templates/components/events/view/overview/session-view.hbs:8:63
+#: app/templates/components/events/view/overview/session-view.hbs:26:67
+#: app/templates/components/events/view/overview/speaker-view.hbs:8:63
+#: app/templates/components/forms/session-section.hbs:7:53
+#: app/templates/components/forms/speaker-section.hbs:7:53
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:191:22
 msgid "Public"
 msgstr "公開"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:81:85
+#: app/components/forms/wizard/custom-forms/table.hbs:86:87
+#: app/controllers/events/view/exhibitors/list.js:45:20
 #: app/templates/admin/content/events.hbs:30:35
 #: app/templates/admin/content/events.hbs:78:35
 #: app/templates/admin/content/events.hbs:141:37
@@ -1249,6 +1515,7 @@ msgstr "公開"
 #: app/templates/components/events/view/overview/event-sponsors.hbs:6:4
 #: app/templates/components/events/view/overview/manage-roles.hbs:8:37
 #: app/templates/components/forms/wizard/basic-details-step.hbs:575:16
+#: app/templates/components/group-card.hbs:16:28
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:7:24
 #: app/templates/components/ui-table/cell/admin/users/cell-first-name.hbs:9:24
 #: app/templates/components/ui-table/cell/cell-buttons.hbs:8:22
@@ -1256,21 +1523,22 @@ msgstr "公開"
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:21:22
 #: app/templates/components/ui-table/cell/cell-event.hbs:12:22
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:2:20
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:7:20
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:22
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:2:20
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:2:20
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-title.hbs:12:26
 msgid "Edit"
 msgstr "編集"
 
-#: app/components/forms/wizard/custom-forms/table.hbs:84:85
+#: app/components/forms/wizard/custom-forms/table.hbs:89:87
+#: app/controllers/events/view/exhibitors/list.js:49:21
 #: app/templates/admin/content/events.hbs:36:35
 #: app/templates/admin/content/events.hbs:84:35
 #: app/templates/admin/content/events.hbs:147:37
 #: app/templates/admin/permissions/event-roles.hbs:30:33
 #: app/templates/admin/permissions/system-roles.hbs:58:32
-#: app/templates/components/events/view/overview/manage-roles.hbs:37:29
-#: app/templates/components/events/view/overview/manage-roles.hbs:44:29
+#: app/templates/components/events/view/overview/manage-roles.hbs:37:31
+#: app/templates/components/events/view/overview/manage-roles.hbs:67:31
 #: app/templates/components/forms/admin/content/pages-form.hbs:52:144
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:129:19
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:17:4
@@ -1280,7 +1548,7 @@ msgstr "編集"
 #: app/templates/components/ui-table/cell/cell-code-buttons.hbs:8:20
 #: app/templates/components/ui-table/cell/cell-event.hbs:21:22
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:5:20
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:20
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:20
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:16:20
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:16:20
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-title.hbs:16:24
@@ -1332,10 +1600,12 @@ msgid "Discard"
 msgstr ""
 
 #: app/components/forms/wizard/wizard-footer.hbs:14:8
+#: app/templates/public/exhibition/view.hbs:5:12
 msgid "Previous"
 msgstr "前"
 
 #: app/components/forms/wizard/wizard-footer.hbs:20:8
+#: app/templates/public/exhibition/view.hbs:8:12
 msgid "Next"
 msgstr ""
 
@@ -1356,31 +1626,18 @@ msgid "You can preview the event after you have saved it as a draft. You can pub
 msgstr ""
 
 #: app/components/modals/add-room-modal.hbs:2:2
-#: app/components/modals/add-room-modal.hbs:25:4
+#: app/components/modals/add-room-modal.hbs:34:4
 #: app/templates/events/view/videoroom/list.hbs:25:10
 msgid "Add Room"
 msgstr ""
 
-#: app/components/modals/add-room-modal.hbs:8:8
-#: app/controllers/admin/events/list.js:17:27
-#: app/controllers/admin/users/list.js:17:26
-#: app/controllers/events/list.js:13:26
-#: app/controllers/events/view/speakers/list.js:18:26
-#: app/templates/components/event-invoice/payee-info.hbs:8:8
-#: app/templates/components/forms/admin/content/pages-form.hbs:3:28
-#: app/templates/components/forms/user-profile-form.hbs:27:43
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:34:80
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:64:74
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:99:88
-#: app/templates/components/forms/wizard/sponsors-step.hbs:37:34
-#: app/templates/components/modals/add-system-role-modal.hbs:12:8
-#: app/templates/components/orders/ticket-holder.hbs:12:8
-msgid "Name"
-msgstr "名前"
-
 #: app/components/modals/add-room-modal.hbs:14:8
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:68:79
 msgid "Floor"
+msgstr ""
+
+#: app/components/modals/add-room-modal.hbs:20:8
+msgid "Hidden In Scheduler"
 msgstr ""
 
 #: app/components/modals/add-room-modal.js:16:26
@@ -1431,6 +1688,14 @@ msgstr ""
 msgid "Please enter a valid email address for new organizer"
 msgstr ""
 
+#: app/components/modals/contact-organizer.js:24:23
+msgid "Please enter message"
+msgstr ""
+
+#: app/components/modals/contact-organizer.js:40:30
+msgid "Organizer contacted successfully"
+msgstr ""
+
 #: app/components/modals/paytm-otp.js:20:23
 msgid "Please enter the OTP"
 msgstr ""
@@ -1447,22 +1712,53 @@ msgstr ""
 msgid "Notify Speakers"
 msgstr ""
 
-#: app/components/modals/session-notify-modal.hbs:29:15
+#: app/components/modals/session-notify-modal.hbs:14:15
+#: app/templates/components/event-invoice/billing-info.hbs:8:16
+#: app/templates/components/event-invoice/event-info.hbs:15:12
+#: app/templates/components/modals/contact-organizer.hbs:18:23
+#: app/templates/components/orders/event-info.hbs:27:12
+msgid "From"
+msgstr ""
+
+#: app/components/modals/session-notify-modal.hbs:22:15
+#: app/controllers/admin/reports/system-logs/mail-logs.js:13:26
+#: app/templates/components/event-invoice/billing-info.hbs:30:16
+#: app/templates/components/event-invoice/event-info.hbs:17:12
+#: app/templates/components/modals/contact-organizer.hbs:26:23
+#: app/templates/components/orders/event-info.hbs:29:12
+#: app/templates/public.hbs:16:42
+msgid "To"
+msgstr "宛先"
+
+#: app/components/modals/session-notify-modal.hbs:30:15
+msgid "Reply-to"
+msgstr ""
+
+#: app/components/modals/session-notify-modal.hbs:46:15
 msgid "Subject"
 msgstr ""
 
-#: app/components/modals/session-notify-modal.hbs:36:15
+#: app/components/modals/session-notify-modal.hbs:53:15
 #: app/controllers/admin/reports/system-logs/mail-logs.js:32:26
 #: app/controllers/admin/reports/system-logs/notification-logs.js:28:24
+#: app/templates/components/modals/contact-organizer.hbs:34:38
 msgid "Message"
 msgstr ""
 
-#: app/components/modals/session-notify-modal.hbs:59:4
-#: app/controllers/events/view/sessions/list.js:86:26
+#: app/components/modals/session-notify-modal.hbs:61:6
+msgid "You can use these identifiers as placeholders for actual details sent in the email"
+msgstr ""
+
+#: app/components/modals/session-notify-modal.hbs:74:6
+msgid "A copy of this email will be send to all organizers of this event"
+msgstr ""
+
+#: app/components/modals/session-notify-modal.hbs:80:4
+#: app/controllers/events/view/sessions/list.js:96:26
 msgid "Notify"
 msgstr ""
 
-#: app/components/modals/session-notify-modal.js:74:26
+#: app/components/modals/session-notify-modal.js:87:26
 msgid "Email scheduled to be sent successfully"
 msgstr ""
 
@@ -1509,11 +1805,24 @@ msgstr ""
 
 #: app/components/order-card.js:27:26
 #: app/controllers/events/view/tickets/orders/list.js:99:28
+#: app/controllers/orders/view.js:27:26
 msgid "Order has been cancelled successfully."
 msgstr ""
 
-#: app/components/public/add-to-calender.hbs:8:6
+#: app/components/public/add-to-calender.hbs:12:8
 msgid "Add to Calendar"
+msgstr ""
+
+#: app/components/public/add-to-calender.hbs:14:108
+msgid "Add Event"
+msgstr ""
+
+#: app/components/public/add-to-calender.hbs:16:117
+msgid "Add Sessions"
+msgstr ""
+
+#: app/components/public/add-to-calender.hbs:18:121
+msgid "Add My Schedule"
 msgstr ""
 
 #: app/components/public/call-for-speakers.js:31:24
@@ -1525,9 +1834,9 @@ msgstr ""
 msgid "to"
 msgstr ""
 
-#: app/components/public/event-venue.hbs:4:4 app/controllers/public.js:38:13
+#: app/components/public/event-venue.hbs:4:4 app/controllers/public.js:42:13
 #: app/templates/components/orders/event-info.hbs:19:16
-#: app/templates/public/index.hbs:74:10
+#: app/templates/public/index.hbs:76:24
 msgid "Online Event"
 msgstr ""
 
@@ -1545,36 +1854,89 @@ msgstr ""
 
 #: app/components/public/session-item.hbs:30:16
 #: app/components/public/stream/join-video.hbs:10:8
-#: app/controllers/events/view/videoroom/list.js:29:26
+#: app/controllers/events/view/videoroom/list.js:35:26
 msgid "Join Video"
 msgstr ""
 
-#: app/components/public/session-item.hbs:89:16
-#: app/templates/components/forms/events/view/edit-session.hbs:15:11
-msgid "Slides"
+#: app/components/public/session-item.hbs:113:120
+#: app/components/public/session-item.hbs:194:106
+#: app/components/widgets/forms/social-link-field.ts:19:12
+#: app/models/custom-form.js:21:24 app/models/custom-form.js:45:18
+#: app/models/custom-form.js:92:27
+msgid "Website"
 msgstr ""
 
-#: app/components/public/session-item.hbs:100:16
+#: app/components/public/session-item.hbs:116:113
+#: app/components/public/session-item.hbs:182:112
+#: app/models/custom-form.js:23:24 app/models/custom-form.js:47:18
+#: app/models/custom-form.js:95:27
+#: app/templates/components/footer-main.hbs:53:46
+#: app/templates/components/forms/admin/content/social-links-form.hbs:19:11
+msgid "Facebook"
+msgstr "Facebook"
+
+#: app/components/public/session-item.hbs:119:113
+#: app/models/custom-form.js:98:27
+msgid "LinkedIn"
+msgstr ""
+
+#: app/components/public/session-item.hbs:122:109
+#: app/components/public/session-item.hbs:188:108
+#: app/models/custom-form.js:24:24 app/models/custom-form.js:48:18
+#: app/models/custom-form.js:94:27
+#: app/templates/components/footer-main.hbs:63:43
+#: app/templates/components/forms/admin/content/social-links-form.hbs:10:11
+msgid "Twitter"
+msgstr "Twitter"
+
+#: app/components/public/session-item.hbs:125:107
+#: app/components/public/session-item.hbs:191:106
+#: app/models/custom-form.js:22:24 app/models/custom-form.js:46:18
+#: app/models/custom-form.js:96:27
+#: app/templates/components/footer-main.hbs:68:42
+#: app/templates/components/forms/admin/content/social-links-form.hbs:55:11
+msgid "GitHub"
+msgstr ""
+
+#: app/components/public/session-item.hbs:128:107
+#: app/models/custom-form.js:51:18
+msgid "GitLab"
+msgstr ""
+
+#: app/components/public/session-item.hbs:152:16
+#: app/models/custom-form.js:43:18
 #: app/templates/components/events/view/export/download-zip.hbs:16:39
 #: app/templates/events/view.hbs:41:10
+#: app/templates/public/exhibition/view.hbs:93:32
 msgid "Video"
 msgstr "ビデオ"
 
+#: app/components/public/session-item.hbs:185:112
+#: app/models/custom-form.js:26:24 app/models/custom-form.js:50:18
+msgid "Linkedin"
+msgstr ""
+
+#: app/components/public/session-item.js:76:34
+msgid "Please login to add a session to your personal schedule."
+msgstr ""
+
 #: app/components/public/side-menu-outer.js:16:13
 #: app/templates/components/public/side-menu.hbs:3:85
-#: app/templates/components/public/side-menu.hbs:17:85
+#: app/templates/components/public/side-menu.hbs:13:85
 msgid "Info"
 msgstr ""
 
 #: app/components/public/side-menu-outer.js:18:13
-#: app/components/public/stream/side-panel.hbs:22:10
+#: app/components/public/stream/side-panel.hbs:23:10
 #: app/routes/public/schedule.js:9:11
-#: app/templates/components/public/side-menu.hbs:32:85
+#: app/templates/components/public/side-menu.hbs:25:85
+#: app/templates/public/schedule.hbs:4:56
+#: app/templates/public/sessions.hbs:3:56
 msgid "Schedule"
 msgstr ""
 
 #: app/components/public/side-menu-outer.js:20:13
-#: app/templates/components/public/side-menu.hbs:37:89
+#: app/templates/components/public/side-menu.hbs:35:89
 msgid "Calendar"
 msgstr ""
 
@@ -1582,13 +1944,15 @@ msgstr ""
 #: app/routes/public/cfs/index.js:11:11
 #: app/templates/components/events/view/overview/speaker-session.hbs:45:20
 #: app/templates/components/public/call-for-speakers.hbs:3:2
-#: app/templates/components/public/side-menu.hbs:42:89
+#: app/templates/components/public/side-menu.hbs:67:89
+#: app/templates/public/cfs/view-session.hbs:11:89
+#: app/templates/public/cfs/view-speaker.hbs:11:89
 msgid "Call for Speakers"
 msgstr "スピーカー募集"
 
 #: app/components/public/side-menu-outer.js:26:13 app/routes/public/coc.js:7:11
 #: app/templates/components/forms/wizard/other-details-step.hbs:102:35
-#: app/templates/components/public/side-menu.hbs:78:85
+#: app/templates/components/public/side-menu.hbs:81:85
 #: app/templates/public/coc.hbs:2:2
 msgid "Code of Conduct"
 msgstr "行動規範"
@@ -1598,23 +1962,29 @@ msgid "Select section"
 msgstr ""
 
 #: app/components/public/stream/join-video.hbs:16:8
-msgid "Join Event"
+msgid "Join Live Event"
 msgstr ""
 
-#: app/components/public/stream/join-video.ts:39:26
-#: app/templates/public.hbs:133:4
-msgid "You need to login or get a ticket for this event before you can join it online."
+#: app/components/public/stream/side-panel.hbs:37:10
+#: app/templates/components/public/side-menu.hbs:51:86
+msgid "Exhibition"
 msgstr ""
 
-#: app/components/public/stream/join-video.ts:39:153
-msgid "OK"
+#: app/components/public/stream/side-panel.hbs:44:10
+#: app/routes/public/chat.ts:16:11 app/routes/public/stream/view/chat.ts:12:11
+msgid "Chat"
 msgstr ""
 
-#: app/components/public/stream/stream-info.hbs:4:186
+#: app/components/public/stream/side-panel.hbs:50:8
+#: app/routes/events/view/videoroom/list.js:8:11
+msgid "Video Rooms"
+msgstr ""
+
+#: app/components/public/stream/stream-info.hbs:5:188
 msgid "Join Video Channel"
 msgstr ""
 
-#: app/components/public/stream/stream-info.hbs:10:36
+#: app/components/public/stream/stream-info.hbs:12:36
 msgid "Copied to clipboard"
 msgstr ""
 
@@ -1622,11 +1992,11 @@ msgstr ""
 msgid "This Promotional Code is not valid"
 msgstr ""
 
-#: app/components/public/ticket-list.js:253:21
+#: app/components/public/ticket-list.js:272:21
 msgid "Please enter a donation amount between {{minPrice}} and {{maxPrice}}"
 msgstr ""
 
-#: app/components/public/ticket-list.js:274:23
+#: app/components/public/ticket-list.js:293:23
 msgid "Please enter the promotional Code"
 msgstr ""
 
@@ -1665,10 +2035,6 @@ msgstr ""
 #: app/components/widgets/forms/file-upload.js:60:24
 #: app/components/widgets/forms/image-upload.js:72:24
 msgid "No FileReader support. Please use a more latest browser"
-msgstr ""
-
-#: app/components/widgets/forms/social-link-field.ts:19:12
-msgid "Website"
 msgstr ""
 
 #: app/components/widgets/time-zone-picker.hbs:19:6
@@ -1728,82 +2094,87 @@ msgstr ""
 msgid "Translations Zip generated successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:33:27
+#: app/controllers/admin/events/list.js:32:27
 #: app/controllers/admin/sessions/list.js:38:26
 msgid "Starts At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:42:27
+#: app/controllers/admin/events/list.js:41:27
 #: app/controllers/admin/sessions/list.js:45:26
 msgid "Ends At"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:51:27
+#: app/controllers/admin/events/list.js:50:27
 #: app/controllers/admin/sessions/list.js:19:26
-#: app/controllers/events/view/sessions/list.js:15:26
+#: app/controllers/events/view/exhibitors/list.js:13:26
+#: app/controllers/events/view/sessions/list.js:17:26
+#: app/models/custom-form.js:85:27
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
 #: app/templates/components/forms/user-payment-info-form.hbs:51:23
 #: app/templates/components/modals/tax-info-modal.hbs:49:13
+#: app/templates/components/orders/company-info.hbs:45:22
 #: app/templates/components/widgets/forms/location-input.hbs:30:22
 msgid "State"
 msgstr "状態"
 
-#: app/controllers/admin/events/list.js:58:27
-#: app/controllers/events/list.js:35:26
+#: app/controllers/admin/events/list.js:57:25
+#: app/controllers/events/list.js:33:24
 msgid "Roles"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:65:25
-#: app/controllers/events/list.js:49:24 app/routes/admin/sessions.js:8:11
-#: app/routes/events/view/sessions.js:7:11 app/routes/public/sessions.js:26:11
+#: app/controllers/admin/events/list.js:63:25
+#: app/controllers/events/list.js:46:24 app/routes/admin/sessions.js:8:11
+#: app/routes/events/view/sessions.js:7:11 app/routes/public/sessions.js:35:11
 #: app/templates/admin.hbs:14:8 app/templates/admin/index.hbs:13:10
 #: app/templates/components/events/view/export/api-response.hbs:13:39
-#: app/templates/components/events/view/overview/speaker-session.hbs:101:20
-#: app/templates/components/public/speaker-item.hbs:44:8
+#: app/templates/components/events/view/overview/speaker-session.hbs:102:20
+#: app/templates/components/public/speaker-item.hbs:48:10
 #: app/templates/components/ui-table/cell/admin/users/cell-user-links.hbs:3:94
-#: app/templates/events/view.hbs:35:10 app/templates/public/sessions.hbs:1:43
+#: app/templates/events/view.hbs:35:10
+#: app/templates/events/view/speaker/view.hbs:24:44
+#: app/templates/public/cfs/view-speaker.hbs:36:43
 msgid "Sessions"
 msgstr "セッション"
 
-#: app/controllers/admin/events/list.js:78:25
-#: app/controllers/events/list.js:59:24
+#: app/controllers/admin/events/list.js:76:25
+#: app/controllers/events/list.js:56:24
 msgid "Public URL"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:84:27
+#: app/controllers/admin/events/list.js:82:27
 msgid "Featured"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:96:27
+#: app/controllers/admin/events/list.js:94:27
 msgid "Promoted"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:108:27
+#: app/controllers/admin/events/list.js:106:27
 msgid "Not on FrontPage"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:128:27
+#: app/controllers/admin/events/list.js:126:27
 #: app/controllers/admin/users/view/events/list.js:79:26
-#: app/controllers/events/list.js:84:26
+#: app/controllers/events/list.js:81:26
 #: app/controllers/events/view/settings/options.js:17:28
 msgid "Event has been deleted successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:158:26
+#: app/controllers/admin/events/list.js:156:26
 #: app/controllers/admin/users/view/events/list.js:97:26
 msgid "Event has been restored successfully."
 msgstr ""
 
-#: app/controllers/admin/events/list.js:180:26
-#: app/controllers/admin/events/list.js:203:26
+#: app/controllers/admin/events/list.js:178:26
+#: app/controllers/admin/events/list.js:201:26
 msgid "Event details modified successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:226:45
+#: app/controllers/admin/events/list.js:224:45
 msgid "Event promoted successfully"
 msgstr ""
 
-#: app/controllers/admin/events/list.js:226:90
+#: app/controllers/admin/events/list.js:224:90
 msgid "Event unpromoted successfully"
 msgstr ""
 
@@ -1873,14 +2244,6 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: app/controllers/admin/reports/system-logs/mail-logs.js:13:26
-#: app/templates/components/event-invoice/billing-info.hbs:30:16
-#: app/templates/components/event-invoice/event-info.hbs:17:12
-#: app/templates/components/orders/event-info.hbs:29:12
-#: app/templates/public.hbs:16:42
-msgid "To"
-msgstr "宛先"
-
 #: app/controllers/admin/reports/system-logs/notification-logs.js:12:24
 msgid "For"
 msgstr ""
@@ -1915,7 +2278,7 @@ msgstr "完了した注文"
 #: app/controllers/admin/sales/index.js:32:22
 #: app/controllers/admin/sales/index.js:50:22
 #: app/controllers/admin/sales/index.js:68:22
-#: app/controllers/events/list.js:42:26
+#: app/controllers/events/list.js:39:26
 #: app/routes/events/view/team/permissions.ts:66:19
 #: app/routes/events/view/tickets.js:7:11
 #: app/templates/admin/sales/discounted-events.hbs:31:14
@@ -1932,7 +2295,7 @@ msgstr "完了した注文"
 #: app/templates/components/events/view/export/api-response.hbs:28:39
 #: app/templates/components/events/view/overview/event-tickets.hbs:2:22
 #: app/templates/components/public/side-menu.hbs:7:89
-#: app/templates/components/public/side-menu.hbs:21:89
+#: app/templates/components/public/side-menu.hbs:17:89
 #: app/templates/components/ui-table/cell/admin/users/cell-user-links.hbs:9:70
 #: app/templates/events/view.hbs:29:10
 #: app/templates/events/view/tickets/index.hbs:130:36
@@ -1983,7 +2346,7 @@ msgid "Invoice #"
 msgstr ""
 
 #: app/controllers/admin/sales/invoices.js:17:26
-#: app/controllers/events/view/videoroom/list.js:57:22
+#: app/controllers/events/view/videoroom/list.js:68:22
 #: app/templates/components/forms/admin/content/pages-form.hbs:25:45
 #: app/templates/components/public/social-links.hbs:6:41
 msgid "Event"
@@ -2023,7 +2386,8 @@ msgid "Event Name"
 msgstr "イベント名"
 
 #: app/controllers/admin/sessions/list.js:13:26
-#: app/controllers/events/view/sessions/list.js:30:26
+#: app/controllers/events/view/sessions/list.js:32:26
+#: app/models/custom-form.js:34:18
 #: app/templates/components/forms/admin/content/pages-form.hbs:7:28
 #: app/templates/components/forms/events/view/edit-session.hbs:3:11
 msgid "Title"
@@ -2034,7 +2398,7 @@ msgid "Submitted At"
 msgstr ""
 
 #: app/controllers/admin/sessions/list.js:71:26
-#: app/controllers/events/view/sessions/list.js:111:28
+#: app/controllers/events/view/sessions/list.js:121:28
 msgid "Session has been deleted successfully."
 msgstr ""
 
@@ -2050,6 +2414,7 @@ msgstr ""
 #: app/controllers/admin/settings/index.js:18:26
 #: app/controllers/admin/settings/microservices.js:18:26
 #: app/controllers/admin/settings/payment-gateway.js:18:26
+#: app/controllers/admin/settings/social-media.js:18:26
 #: app/controllers/admin/settings/ticket-fees.js:28:28
 msgid "An unexpected error has occurred. Settings not saved."
 msgstr ""
@@ -2067,6 +2432,10 @@ msgstr ""
 msgid "An unexpected error has occurred. Image sizes not saved."
 msgstr ""
 
+#: app/controllers/admin/settings/social-media.js:11:28
+msgid "Social media settings have been saved successfully."
+msgstr ""
+
 #: app/controllers/admin/settings/ticket-fees.js:13:24
 msgid "Please fill the required fields."
 msgstr ""
@@ -2076,7 +2445,8 @@ msgid "Ticket Fee settings have been saved successfully."
 msgstr ""
 
 #: app/controllers/admin/users/list.js:35:26
-#: app/controllers/events/view/speakers/list.js:46:26
+#: app/controllers/events/view/speakers/list.js:48:26
+#: app/models/custom-form.js:9:24 app/models/custom-form.js:82:27
 #: app/templates/components/account/contact-info-section.hbs:3:28
 #: app/templates/components/event-invoice/billing-info.hbs:17:16
 #: app/templates/components/event-invoice/billing-info.hbs:36:16
@@ -2084,8 +2454,10 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/billing.hbs:41:52
 #: app/templates/components/forms/orders/order-form.hbs:39:44
 #: app/templates/components/forms/register-form.hbs:15:57
-#: app/templates/components/forms/user-profile-form.hbs:47:32
+#: app/templates/components/forms/user-profile-form.hbs:65:32
 #: app/templates/components/orders/ticket-holder.hbs:20:8
+#: app/templates/public/exhibition/view.hbs:58:133
+#: app/templates/public/exhibition/view.hbs:61:137
 msgid "Email"
 msgstr "メール"
 
@@ -2115,11 +2487,31 @@ msgstr ""
 msgid "Last Accessed"
 msgstr ""
 
-#: app/controllers/admin/users/list.js:96:26
+#: app/controllers/admin/users/list.js:83:26
+msgid "Mark Spam"
+msgstr ""
+
+#: app/controllers/admin/users/list.js:94:26
+msgid "Verified"
+msgstr ""
+
+#: app/controllers/admin/users/list.js:119:43
+msgid "User has been marked as Spam successfully."
+msgstr ""
+
+#: app/controllers/admin/users/list.js:119:103
+msgid "User has been marked as Not Spam successfully."
+msgstr ""
+
+#: app/controllers/admin/users/list.js:142:26
+msgid "User verifiation state changed successfully."
+msgstr ""
+
+#: app/controllers/admin/users/list.js:164:26
 msgid "User has been deleted successfully."
 msgstr ""
 
-#: app/controllers/admin/users/list.js:128:26
+#: app/controllers/admin/users/list.js:196:26
 msgid "User has been restored successfully."
 msgstr ""
 
@@ -2127,8 +2519,8 @@ msgstr ""
 msgid "Here is your Event Invoice"
 msgstr ""
 
-#: app/controllers/events/list.js:25:26
-#: app/templates/components/explore/side-bar.hbs:61:8
+#: app/controllers/events/list.js:23:26
+#: app/templates/components/explore/side-bar.hbs:77:8
 msgid "Date"
 msgstr "日付"
 
@@ -2140,12 +2532,44 @@ msgstr ""
 msgid "Copying of event failed"
 msgstr ""
 
+#: app/controllers/events/view/exhibitors/list.js:75:26
+msgid "{{item}} has been {{action}} successfully."
+msgstr ""
+
+#: app/controllers/events/view/exhibitors/list.js:76:17
+msgid "Exhibitor"
+msgstr ""
+
+#: app/controllers/events/view/exhibitors/list.js:92:32
+msgid "Are you sure you would like to delete this Exhibitor?"
+msgstr ""
+
+#: app/controllers/events/view/exhibitors/list.js:100:26
+msgid "Exhibitor has been deleted successfully."
+msgstr ""
+
+#: app/controllers/events/view/exhibitors/reorder.ts:25:26
+msgid "Exhibitor order reset successfully"
+msgstr ""
+
+#: app/controllers/events/view/exhibitors/reorder.ts:37:26
+msgid "Exhibitors order set successfully"
+msgstr ""
+
 #: app/controllers/events/view/scheduler.js:31:24
 msgid "Start time or End time not present"
 msgstr ""
 
 #: app/controllers/events/view/scheduler.js:64:28
 msgid "Changes have been made successfully"
+msgstr ""
+
+#: app/controllers/events/view/session/edit.js:23:34
+#: app/controllers/events/view/session/edit.js:48:30
+#: app/controllers/events/view/sessions/create.js:23:34
+#: app/controllers/events/view/sessions/create.js:47:30
+#: app/controllers/public/cfs/new-session.js:13:26
+msgid "Your session has been saved"
 msgstr ""
 
 #: app/controllers/events/view/sessions.js:57:32
@@ -2155,54 +2579,47 @@ msgstr ""
 msgid "CSV Export has failed."
 msgstr ""
 
-#: app/controllers/events/view/sessions/create.js:23:34
-#: app/controllers/events/view/sessions/create.js:47:30
-#: app/controllers/events/view/sessions/edit.js:23:34
-#: app/controllers/events/view/sessions/edit.js:48:30
-#: app/controllers/public/cfs/new-session.js:13:26
-msgid "Your session has been saved"
-msgstr ""
-
-#: app/controllers/events/view/sessions/list.js:50:26
+#: app/controllers/events/view/sessions/list.js:52:26
 msgid "Rating"
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:64:20
+#: app/controllers/events/view/sessions/list.js:66:26
+#: app/models/custom-form.js:36:18
 msgid "Track"
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:74:24
+#: app/controllers/events/view/sessions/list.js:80:26
 msgid "Submission Date"
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:80:24
+#: app/controllers/events/view/sessions/list.js:88:26
 msgid "Last Modified"
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:93:26
+#: app/controllers/events/view/sessions/list.js:103:26
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-lock-session.hbs:6:20
 msgid "Lock Session"
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:141:31
+#: app/controllers/events/view/sessions/list.js:151:31
 msgid "locked"
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:141:55
+#: app/controllers/events/view/sessions/list.js:151:55
 msgid "unlocked"
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:144:26
-#: app/controllers/events/view/sessions/list.js:169:26
+#: app/controllers/events/view/sessions/list.js:154:26
+#: app/controllers/events/view/sessions/list.js:179:26
 msgid "Session has been {{action}} successfully."
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:190:30
-#: app/controllers/events/view/sessions/list.js:205:30
+#: app/controllers/events/view/sessions/list.js:200:30
+#: app/controllers/events/view/sessions/list.js:215:30
 msgid "Session feedback has been updated successfully."
 msgstr ""
 
-#: app/controllers/events/view/sessions/list.js:232:28
+#: app/controllers/events/view/sessions/list.js:242:28
 msgid "Session feedback has been created successfully."
 msgstr ""
 
@@ -2223,51 +2640,61 @@ msgstr ""
 msgid "Owner Role Invite sent successfully."
 msgstr ""
 
-#: app/controllers/events/view/speakers/create.js:30:26
-msgid "Your speaker has been saved"
-msgstr ""
-
-#: app/controllers/events/view/speakers/edit.js:18:28
-#: app/controllers/public/cfs/edit-speaker.js:12:28
+#: app/controllers/events/view/speaker/edit.js:18:28
+#: app/controllers/public/cfs/edit-speaker.js:15:28
 #: app/controllers/public/cfs/new-speaker.js:12:28
 msgid "Speaker details have been saved"
 msgstr ""
 
-#: app/controllers/events/view/speakers/list.js:32:26
+#: app/controllers/events/view/speakers/create.js:30:26
+msgid "Your speaker has been saved"
+msgstr ""
+
+#: app/controllers/events/view/speakers/list.js:34:26
+#: app/models/custom-form.js:10:24
 #: app/templates/components/forms/admin/content/pages-form.hbs:31:28
 #: app/templates/components/forms/admin/content/pages-form.hbs:32:93
 msgid "Position"
 msgstr ""
 
-#: app/controllers/events/view/speakers/list.js:39:26
+#: app/controllers/events/view/speakers/list.js:41:26
 msgid "Organization"
 msgstr ""
 
-#: app/controllers/events/view/speakers/list.js:53:24
+#: app/controllers/events/view/speakers/list.js:55:24
+#: app/models/custom-form.js:88:27
 #: app/templates/components/account/contact-info-section.hbs:7:28
 #: app/templates/components/event-invoice/billing-info.hbs:14:16
 #: app/templates/components/event-invoice/billing-info.hbs:33:16
 #: app/templates/components/forms/admin/settings/billing.hbs:37:35
 #: app/templates/components/forms/user-payment-info-form.hbs:23:23
-#: app/templates/components/forms/user-profile-form.hbs:54:31
+#: app/templates/components/forms/user-profile-form.hbs:72:31
 msgid "Phone"
 msgstr "電話"
 
-#: app/controllers/events/view/speakers/list.js:58:24
+#: app/controllers/events/view/speakers/list.js:60:24
 #: app/templates/components/public/call-for-speakers.hbs:23:23
 msgid "Submitted Sessions"
 msgstr "提出済のセッション"
 
-#: app/controllers/events/view/speakers/list.js:64:26
+#: app/controllers/events/view/speakers/list.js:66:26
 msgid "Feature"
 msgstr ""
 
-#: app/controllers/events/view/speakers/list.js:81:26
+#: app/controllers/events/view/speakers/list.js:83:26
 msgid "Speaker has been deleted successfully."
 msgstr ""
 
-#: app/controllers/events/view/speakers/list.js:106:26
+#: app/controllers/events/view/speakers/list.js:108:26
 msgid "Speaker details modified successfully"
+msgstr ""
+
+#: app/controllers/events/view/speakers/reorder.ts:25:26
+msgid "Speaker order reset successfully"
+msgstr ""
+
+#: app/controllers/events/view/speakers/reorder.ts:37:26
+msgid "Speaker order set successfully"
 msgstr ""
 
 #: app/controllers/events/view/tickets/access-codes/create.js:11:28
@@ -2292,7 +2719,7 @@ msgid "Access Code has been updated successfully."
 msgstr ""
 
 #: app/controllers/events/view/tickets/add-order.js:23:28
-#: app/controllers/public/index.js:126:28
+#: app/controllers/public/index.js:132:28
 msgid "Order details saved. Please fill further details within {{time}} minutes."
 msgstr ""
 
@@ -2353,19 +2780,28 @@ msgstr ""
 
 #: app/controllers/events/view/videoroom/list.js:11:26
 #: app/routes/events/view/videoroom.js:7:11
+#: app/templates/components/events/view/overview/session-view.hbs:43:49
 msgid "Microlocation"
 msgstr ""
 
-#: app/controllers/events/view/videoroom/list.js:43:21
+#: app/controllers/events/view/videoroom/list.js:22:21
+msgid "Video Room Name"
+msgstr ""
+
+#: app/controllers/events/view/videoroom/list.js:54:21
 msgid "Additional information"
 msgstr ""
 
-#: app/controllers/events/view/videoroom/list.js:69:26
+#: app/controllers/events/view/videoroom/list.js:80:26
 msgid "{{item}} has been deleted successfully."
 msgstr ""
 
-#: app/controllers/events/view/videoroom/list.js:69:89
+#: app/controllers/events/view/videoroom/list.js:80:89
 msgid "Video Stream"
+msgstr ""
+
+#: app/controllers/groups/list.js:12:26
+msgid "Group has been deleted successfully."
 msgstr ""
 
 #: app/controllers/notifications.js:17:28
@@ -2373,15 +2809,15 @@ msgid "All notifications marked read successfully"
 msgstr ""
 
 #: app/controllers/oauth/callback.js:29:41
-#: app/controllers/public/index.js:86:37 app/controllers/register.js:68:37
+#: app/controllers/public/index.js:87:37 app/controllers/register.js:69:37
 msgid "Your credentials were incorrect."
 msgstr ""
 
-#: app/controllers/orders/new.js:31:32
+#: app/controllers/orders/new.js:34:32
 msgid "Order details saved. Please fill the payment details"
 msgstr ""
 
-#: app/controllers/orders/new.js:37:32
+#: app/controllers/orders/new.js:40:32
 msgid "Order details saved. Your order is successful"
 msgstr ""
 
@@ -2389,23 +2825,23 @@ msgstr ""
 msgid "Payment has succeeded"
 msgstr ""
 
-#: app/controllers/orders/view.js:31:28
+#: app/controllers/orders/view.js:51:28
 msgid "Here is your Order Invoice"
 msgstr ""
 
-#: app/controllers/orders/view.js:62:28
+#: app/controllers/orders/view.js:82:28
 msgid "Here are your tickets"
 msgstr ""
 
-#: app/controllers/orders/view.js:70:26
+#: app/controllers/orders/view.js:90:26
 msgid "An unexpected Error occurred"
 msgstr ""
 
-#: app/controllers/public.js:36:13
-msgid "In-Person Event and Online Event"
+#: app/controllers/public.js:40:13
+msgid "Online and In-Person Event at"
 msgstr ""
 
-#: app/controllers/public.js:42:13 app/templates/public/index.hbs:91:10
+#: app/controllers/public.js:46:13 app/templates/public/index.hbs:93:24
 msgid "Location to be announced"
 msgstr ""
 
@@ -2413,15 +2849,27 @@ msgstr ""
 msgid "Session details have been saved"
 msgstr ""
 
-#: app/controllers/public/session/view.js:24:26
+#: app/controllers/public/cfs/view-session.js:36:26
 msgid "Proposal has been withdrawn successfully."
 msgstr ""
 
-#: app/controllers/register.js:29:35
+#: app/controllers/register.js:25:34
+msgid "Thank you for signing up on eventyay.com."
+msgstr ""
+
+#: app/controllers/register.js:25:123
+msgid "OK"
+msgstr ""
+
+#: app/controllers/register.js:25:149
+msgid "We have sent an email with a verification link to you. Please go to your email account and verify your email to get full access to the system. We are logging you into your newly created account now, but your account functionalities are limited until your email is verified. Please press \"Ok\" to be redirected to the previous page."
+msgstr ""
+
+#: app/controllers/register.js:30:35
 msgid "User already exists."
 msgstr ""
 
-#: app/controllers/register.js:31:35
+#: app/controllers/register.js:32:35
 msgid "Invalid email address."
 msgstr ""
 
@@ -2460,9 +2908,9 @@ msgstr ""
 #: app/templates/components/events/view/export/api-response.hbs:25:39
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:58:12
 #: app/templates/components/events/view/overview/event-sponsors.hbs:2:22
-#: app/templates/components/forms/wizard/sponsors-step.hbs:14:16
-#: app/templates/components/public/side-menu.hbs:48:87
-#: app/templates/components/public/side-menu.hbs:52:89
+#: app/templates/components/forms/wizard/sponsors-step.hbs:15:16
+#: app/templates/components/public/side-menu.hbs:41:87
+#: app/templates/components/public/side-menu.hbs:45:89
 msgid "Sponsors"
 msgstr "スポンサー"
 
@@ -2492,9 +2940,181 @@ msgstr ""
 msgid "Marked all as Read successfully"
 msgstr ""
 
+#: app/models/custom-form.js:11:24 app/models/custom-form.js:90:27
+#: app/templates/components/event-invoice/billing-info.hbs:11:16
+#: app/templates/components/forms/admin/settings/billing.hbs:58:47
+#: app/templates/components/forms/orders/attendee-list.hbs:67:18
+#: app/templates/components/forms/user-payment-info-form.hbs:9:25
+#: app/templates/components/widgets/forms/billing-info.hbs:2:40
+msgid "Organisation"
+msgstr ""
+
+#: app/models/custom-form.js:12:24
+#: app/templates/components/forms/admin/settings/billing.hbs:62:54
+#: app/templates/components/forms/orders/attendee-list.hbs:78:18
+#: app/templates/components/forms/user-payment-info-form.hbs:30:25
+#: app/templates/components/orders/company-info.hbs:25:22
+#: app/templates/components/public/event-map.hbs:21:8
+#: app/templates/components/widgets/forms/billing-info.hbs:16:40
+msgid "Address"
+msgstr "住所"
+
+#: app/models/custom-form.js:13:24 app/models/custom-form.js:84:27
+#: app/templates/components/forms/admin/settings/billing.hbs:65:51
+#: app/templates/components/forms/user-payment-info-form.hbs:44:22
+#: app/templates/components/modals/tax-info-modal.hbs:45:13
+#: app/templates/components/orders/company-info.hbs:55:22
+#: app/templates/components/widgets/forms/billing-info.hbs:22:37
+#: app/templates/components/widgets/forms/location-input.hbs:23:22
+msgid "City"
+msgstr "市区町村"
+
+#: app/models/custom-form.js:14:24 app/models/custom-form.js:86:27
+#: app/templates/components/event-invoice/billing-info.hbs:23:16
+#: app/templates/components/event-invoice/billing-info.hbs:45:16
+#: app/templates/components/forms/admin/settings/billing.hbs:50:17
+#: app/templates/components/forms/user-payment-info-form.hbs:58:17
+#: app/templates/components/orders/company-info.hbs:35:22
+#: app/templates/components/widgets/forms/location-input.hbs:44:22
+msgid "Country"
+msgstr "国"
+
+#: app/models/custom-form.js:15:24
+msgid "Mobile"
+msgstr ""
+
+#: app/models/custom-form.js:16:24 app/models/custom-form.js:99:27
+msgid "Gender"
+msgstr ""
+
+#: app/models/custom-form.js:17:24
+msgid "Short Biography"
+msgstr ""
+
+#: app/models/custom-form.js:18:24
+msgid "Long Biography"
+msgstr ""
+
+#: app/models/custom-form.js:19:24
+msgid "Speaking Experience"
+msgstr ""
+
+#: app/models/custom-form.js:20:24
+msgid "Photo"
+msgstr ""
+
+#: app/models/custom-form.js:25:24 app/models/custom-form.js:49:18
+#: app/models/custom-form.js:97:27
+#: app/templates/components/footer-main.hbs:58:45
+#: app/templates/components/forms/admin/content/social-links-form.hbs:28:11
+msgid "Instagram"
+msgstr ""
+
+#: app/models/custom-form.js:27:24
+msgid "Heard From"
+msgstr ""
+
+#: app/models/custom-form.js:28:24
+msgid "Sponsorship Required"
+msgstr ""
+
+#: app/models/custom-form.js:35:18
+msgid "Subtitle"
+msgstr ""
+
+#: app/models/custom-form.js:37:18
+msgid "Session Type"
+msgstr ""
+
+#: app/models/custom-form.js:38:18
+#: app/templates/components/forms/events/view/edit-session.hbs:7:11
+msgid "Short Abstract"
+msgstr "短い要約"
+
+#: app/models/custom-form.js:39:18
+msgid "Long Abstract"
+msgstr ""
+
+#: app/models/custom-form.js:40:18
+#: app/templates/admin/content/translations.hbs:7:34
+#: app/templates/components/forms/admin/content/pages-form.hbs:35:28
+#: app/templates/components/forms/admin/content/translation-form.hbs:8:32
+msgid "Language"
+msgstr "言語"
+
+#: app/models/custom-form.js:41:18
+#: app/templates/components/forms/wizard/sponsors-step.hbs:45:17
+msgid "Level"
+msgstr "レベル"
+
+#: app/models/custom-form.js:44:18
+#: app/templates/components/events/view/export/download-zip.hbs:19:39
+msgid "Audio"
+msgstr "オーディオ"
+
+#: app/models/custom-form.js:52:18
+#: app/templates/components/forms/events/view/edit-session.hbs:11:11
+msgid "Comments"
+msgstr "コメント"
+
+#: app/models/custom-form.js:80:27
+#: app/templates/components/forms/orders/order-form.hbs:25:48
+msgid "First Name"
+msgstr "名"
+
+#: app/models/custom-form.js:81:27
+#: app/templates/components/forms/orders/order-form.hbs:32:47
+msgid "Last Name"
+msgstr "姓"
+
+#: app/models/custom-form.js:83:27
+msgid "Address (Street, Building, Number etc.)"
+msgstr ""
+
+#: app/models/custom-form.js:87:27
+msgid "Job Title"
+msgstr ""
+
+#: app/models/custom-form.js:89:27
+msgid "Tax Business Info"
+msgstr ""
+
+#: app/models/custom-form.js:91:27
+msgid "Work Phone"
+msgstr ""
+
+#: app/models/custom-form.js:93:27
+#: app/templates/components/footer-main.hbs:12:86
+#: app/templates/components/footer-main.hbs:48:40
+#: app/templates/components/forms/admin/content/social-links-form.hbs:3:11
+msgid "Blog"
+msgstr ""
+
+#: app/models/custom-form.js:100:27
+msgid "Email consent"
+msgstr ""
+
+#: app/models/custom-form.js:101:27
+msgid "Photo & video & text consent"
+msgstr ""
+
+#: app/models/custom-form.js:102:27
+msgid "Partner contact consent"
+msgstr ""
+
+#: app/models/custom-form.js:103:27
+msgid "Age Group"
+msgstr ""
+
+#: app/models/user.js:121:47
+#: app/templates/admin/permissions/system-roles.hbs:84:14
+#: app/templates/admin/permissions/system-roles.hbs:98:33
+msgid "Anonymous User"
+msgstr "匿名ユーザー"
+
 #: app/routes/account.js:7:11 app/routes/admin/users/view/account.js:8:11
 #: app/templates/admin/users/view/account.hbs:2:24
-#: app/templates/components/nav-bar.hbs:39:65
+#: app/templates/components/nav-bar.hbs:40:65
 #: app/templates/components/side-bar.hbs:22:57
 msgid "Account"
 msgstr ""
@@ -2520,7 +3140,7 @@ msgid "Invoices"
 msgstr ""
 
 #: app/routes/account/billing/invoices/list.js:18:13
-#: app/routes/events/view/speakers/list.js:10:13
+#: app/routes/events/view/speakers/list.js:12:13
 #: app/routes/events/view/tickets/attendees/list.js:20:15
 #: app/routes/events/view/tickets/orders/list.js:16:15
 #: app/routes/notifications/all.js:10:15
@@ -2534,7 +3154,7 @@ msgstr ""
 #: app/templates/events/view/tickets/discount-codes.hbs:18:12
 #: app/templates/events/view/tickets/orders.hbs:72:10
 #: app/templates/notifications/all.hbs:8:30
-#: app/templates/public/sessions.hbs:4:122
+#: app/templates/public/sessions.hbs:35:122
 msgid "All"
 msgstr "すべて"
 
@@ -2542,7 +3162,7 @@ msgstr "すべて"
 msgid "Payment Info"
 msgstr ""
 
-#: app/routes/account/danger-zone.js:8:11 app/templates/account.hbs:23:8
+#: app/routes/account/danger-zone.js:9:11 app/templates/account.hbs:23:8
 #: app/templates/events/view/settings/options.hbs:4:8
 msgid "Danger Zone"
 msgstr ""
@@ -2622,7 +3242,7 @@ msgstr "下書き"
 #: app/routes/events/list.js:14:15 app/routes/my-sessions/list.js:13:15
 #: app/routes/my-tickets/past.js:8:11 app/templates/admin/index.hbs:82:12
 #: app/templates/admin/users/view/events.hbs:12:10
-#: app/templates/components/explore/side-bar.hbs:100:21
+#: app/templates/components/explore/side-bar.hbs:116:21
 #: app/templates/events.hbs:13:10
 msgid "Past"
 msgstr "過去"
@@ -2687,8 +3307,8 @@ msgstr ""
 
 #: app/routes/admin/sales/locations.js:7:11
 #: app/templates/admin/sales/locations.hbs:10:28
-#: app/templates/components/events/view/overview/general-info.hbs:17:20
-#: app/templates/components/explore/side-bar.hbs:29:23
+#: app/templates/components/events/view/overview/general-info.hbs:28:20
+#: app/templates/components/explore/side-bar.hbs:37:23
 #: app/templates/components/forms/wizard/basic-details-step.hbs:52:78
 msgid "Location"
 msgstr "場所"
@@ -2702,11 +3322,10 @@ msgstr "マーケティング担当者"
 #: app/routes/admin/sales/organizers.js:7:11
 #: app/templates/admin/sales/organizers.hbs:11:14
 #: app/templates/components/orders/organizer-info.hbs:3:27
-#: app/templates/components/public/side-menu.hbs:59:86
-#: app/templates/components/public/side-menu.hbs:63:86
+#: app/templates/components/public/side-menu.hbs:57:86
+#: app/templates/components/public/side-menu.hbs:61:86
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:8:47
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:39:134
-#: app/templates/components/ui-table/cell/cell-roles.hbs:4:49
 #: app/templates/events/view/team/permissions.hbs:6:33
 msgid "Organizer"
 msgstr "主催者"
@@ -2725,12 +3344,12 @@ msgstr "セッション"
 #: app/routes/admin/users/view/settings.js:8:11
 #: app/routes/events/view/settings.js:7:11
 #: app/routes/events/view/team/permissions.ts:202:19
-#: app/templates/admin.hbs:29:8 app/templates/events/view.hbs:48:12
+#: app/templates/admin.hbs:29:8 app/templates/events/view.hbs:51:12
 msgid "Settings"
 msgstr "設定"
 
 #: app/routes/admin/settings/analytics.js:8:11
-#: app/templates/admin/settings.hbs:15:10
+#: app/templates/admin/settings.hbs:18:10
 msgid "Analytics"
 msgstr "アナリティクス"
 
@@ -2739,8 +3358,8 @@ msgid "Admin Billing"
 msgstr ""
 
 #: app/routes/admin/settings/images.js:8:11
-#: app/templates/admin/settings.hbs:12:10
-#: app/templates/components/explore/side-bar.hbs:233:8
+#: app/templates/admin/settings.hbs:15:10
+#: app/templates/components/explore/side-bar.hbs:249:8
 msgid "Images"
 msgstr "画像"
 
@@ -2750,7 +3369,7 @@ msgid "System"
 msgstr "システム"
 
 #: app/routes/admin/settings/microservices.js:8:11
-#: app/templates/admin/settings.hbs:9:10
+#: app/templates/admin/settings.hbs:12:10
 msgid "Microservices"
 msgstr "マイクロサービス"
 
@@ -2759,7 +3378,7 @@ msgid "Payment Gateway"
 msgstr ""
 
 #: app/routes/admin/settings/ticket-fees.js:8:11
-#: app/templates/admin/settings.hbs:21:10
+#: app/templates/admin/settings.hbs:24:10
 msgid "Ticket Fees"
 msgstr "チケット料金"
 
@@ -2817,6 +3436,26 @@ msgstr ""
 msgid "Edit Event"
 msgstr "イベントを編集"
 
+#: app/routes/events/view/exhibitors/create.js:6:11
+msgid "Create Exhibitor"
+msgstr ""
+
+#: app/routes/events/view/exhibitors/edit.js:5:11
+msgid "Edit Exhibitor"
+msgstr ""
+
+#: app/routes/events/view/exhibitors/list.js:9:11
+#: app/templates/events/view.hbs:44:10
+#: app/templates/events/view/exhibitors/list.hbs:4:27
+msgid "Exhibitors"
+msgstr ""
+
+#: app/routes/events/view/exhibitors/reorder.js:6:11
+#: app/templates/events/view/exhibitors/list.hbs:11:10
+#: app/templates/events/view/exhibitors/reorder.hbs:3:4
+msgid "Reorder Exhibitors"
+msgstr ""
+
 #: app/routes/events/view/scheduler.js:6:11
 #: app/routes/events/view/team/permissions.ts:105:19
 #: app/templates/events/view.hbs:38:10 app/templates/pricing.hbs:134:24
@@ -2834,11 +3473,23 @@ msgstr ""
 msgid "Export"
 msgstr "エクスポート"
 
+#: app/routes/events/view/speakers/list.js:10:13
+#: app/templates/components/events/view/overview/speaker-session.hbs:95:14
+#: app/templates/events/view/speakers.hbs:29:14
+msgid "Without Session"
+msgstr ""
+
+#: app/routes/events/view/speakers/reorder.js:7:11
+#: app/templates/events/view/speakers.hbs:37:14
+#: app/templates/events/view/speakers/reorder.hbs:3:4
+msgid "Reorder Speakers"
+msgstr ""
+
 #: app/routes/events/view/team.ts:7:11
 #: app/routes/events/view/team/permissions.ts:37:19
-#: app/templates/events/view.hbs:44:10 app/templates/events/view/team.hbs:6:10
+#: app/templates/events/view.hbs:47:10 app/templates/events/view/team.hbs:6:10
 msgid "Team"
-msgstr ""
+msgstr "チーム"
 
 #: app/routes/events/view/team/permissions.ts:14:19
 msgid "Manage Events Page"
@@ -3003,7 +3654,7 @@ msgstr ""
 #: app/routes/events/view/tickets/attendees/list.js:12:15
 #: app/routes/events/view/tickets/discount-codes/list.js:13:15
 #: app/routes/events/view/tickets/orders/list.js:12:15
-#: app/templates/components/orders/order-summary.hbs:159:8
+#: app/templates/components/orders/order-summary.hbs:165:8
 #: app/templates/components/ui-table/cell/cell-label.hbs:3:37
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-status.hbs:3:37
 #: app/templates/events/view/tickets/access-codes.hbs:28:12
@@ -3031,7 +3682,7 @@ msgstr "注文済"
 #: app/routes/events/view/tickets/attendees/list.js:10:15
 #: app/routes/events/view/tickets/orders/list.js:10:15
 #: app/templates/components/events/view/overview/speaker-session.hbs:92:14
-#: app/templates/components/events/view/overview/speaker-session.hbs:106:14
+#: app/templates/components/events/view/overview/speaker-session.hbs:107:14
 #: app/templates/components/orders/order-summary.hbs:28:10
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:6:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:6:22
@@ -3045,7 +3696,7 @@ msgstr "保留"
 
 #: app/routes/events/view/tickets/attendees/list.js:14:15
 #: app/routes/events/view/tickets/orders/list.js:14:15
-#: app/templates/components/orders/order-summary.hbs:173:8
+#: app/templates/components/orders/order-summary.hbs:179:8
 #: app/templates/events/view/tickets/attendees.hbs:69:10
 #: app/templates/events/view/tickets/index.hbs:30:16
 #: app/templates/events/view/tickets/orders.hbs:69:10
@@ -3053,13 +3704,13 @@ msgid "Cancelled"
 msgstr "キャンセル"
 
 #: app/routes/events/view/tickets/attendees/list.js:16:15
-#: app/templates/components/order-card.hbs:52:12
+#: app/templates/components/order-card.hbs:56:12
 #: app/templates/events/view/tickets/attendees.hbs:72:10
 msgid "Checked In"
 msgstr "チェックイン"
 
 #: app/routes/events/view/tickets/attendees/list.js:18:15
-#: app/templates/components/order-card.hbs:56:12
+#: app/templates/components/order-card.hbs:60:12
 #: app/templates/events/view/tickets/attendees.hbs:75:10
 msgid "Not Checked In"
 msgstr "チェックインしていません"
@@ -3078,18 +3729,23 @@ msgstr "注文"
 msgid "Create Video Room"
 msgstr ""
 
-#: app/routes/events/view/videoroom/list.js:8:11
-msgid "Video Rooms"
-msgstr ""
-
 #: app/routes/explore.js:10:11
 msgid "Explore"
 msgstr "探索"
 
+#: app/routes/groups.js:8:11 app/templates/groups/list.hbs:15:8
+msgid "My Groups"
+msgstr ""
+
+#: app/routes/groups/list.js:7:11 app/templates/components/nav-bar.hbs:37:61
+#: app/templates/groups/list.hbs:5:8
+msgid "Groups"
+msgstr ""
+
 #: app/routes/login.js:8:11 app/templates/components/forms/login-form.hbs:14:31
 #: app/templates/components/forms/login-form.hbs:51:16
 #: app/templates/components/modals/login-signup-modal.hbs:21:8
-#: app/templates/components/nav-bar.hbs:49:51
+#: app/templates/components/nav-bar.hbs:50:51
 #: app/templates/components/nav-bar.hbs:96:51
 #: app/templates/components/side-bar.hbs:30:47
 msgid "Login"
@@ -3104,7 +3760,7 @@ msgid "Completed"
 msgstr "完了"
 
 #: app/routes/my-tickets/upcoming/list.js:12:15
-#: app/templates/components/explore/side-bar.hbs:213:23
+#: app/templates/components/explore/side-bar.hbs:229:23
 #: app/templates/components/public/call-for-speakers.hbs:5:45
 msgid "Open"
 msgstr "オープン"
@@ -3130,7 +3786,7 @@ msgstr "未読"
 msgid "Expired Order"
 msgstr ""
 
-#: app/routes/orders/new.js:8:11
+#: app/routes/orders/new.js:9:11
 msgid "New Order"
 msgstr ""
 
@@ -3138,11 +3794,11 @@ msgstr ""
 msgid "Pending Order"
 msgstr ""
 
-#: app/routes/orders/view.js:9:13
+#: app/routes/orders/view.js:11:13
 msgid "Completed Order"
 msgstr ""
 
-#: app/routes/orders/view.js:11:13
+#: app/routes/orders/view.js:13:13
 msgid "Placed Order"
 msgstr ""
 
@@ -3151,31 +3807,37 @@ msgid "Terms"
 msgstr ""
 
 #: app/routes/pages.js:12:34 app/templates/components/footer-main.hbs:112:12
+#: app/templates/public/exhibition/view.hbs:59:125
+#: app/templates/public/exhibition/view.hbs:63:129
 msgid "Contact"
 msgstr ""
 
 #: app/routes/pages.js:12:58 app/templates/components/footer-main.hbs:113:12
 #: app/templates/components/forms/wizard/other-details-step.hbs:55:33
-#: app/templates/components/public/ticket-list.hbs:212:12
+#: app/templates/components/public/ticket-list.hbs:216:10
 msgid "Refund Policy"
 msgstr ""
 
 #: app/routes/pages.js:12:88 app/templates/components/footer-main.hbs:114:12
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:180:29
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:186:29
 msgid "Privacy"
 msgstr ""
 
-#: app/routes/public/cfs/edit-session.js:7:11
+#: app/routes/public/cfs/edit-session.js:9:11
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:5:20
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:8:22
-#: app/templates/events/view/sessions/edit.hbs:4:6
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:11:22
+#: app/templates/events/view/session/edit.hbs:4:6
+#: app/templates/events/view/session/view.hbs:25:83
 #: app/templates/public/cfs/edit-session.hbs:4:6
+#: app/templates/public/cfs/view-session.hbs:58:69
 msgid "Edit Session"
 msgstr "セッションを編集"
 
 #: app/routes/public/cfs/edit-speaker.js:7:11
-#: app/templates/events/view/speakers/edit.hbs:4:6
+#: app/templates/events/view/speaker/edit.hbs:4:6
 #: app/templates/public/cfs/edit-speaker.hbs:4:6
+#: app/templates/public/cfs/view-session.hbs:47:73
+#: app/templates/public/cfs/view-speaker.hbs:25:83
 #: app/templates/public/speaker/view.hbs:8:83
 msgid "Edit Speaker"
 msgstr ""
@@ -3186,6 +3848,48 @@ msgstr ""
 
 #: app/routes/public/cfs/new-speaker.js:7:11
 msgid "New Speaker"
+msgstr ""
+
+#: app/routes/public/cfs/view-session.js:8:11
+#: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:2:20
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:5:22
+#: app/templates/events/view/session/view.hbs:4:6
+#: app/templates/public/cfs/view-session.hbs:16:6
+msgid "View Session"
+msgstr ""
+
+#: app/routes/public/cfs/view-speaker.js:8:11
+#: app/templates/events/view/speaker/view.hbs:4:6
+#: app/templates/public/cfs/view-speaker.hbs:16:6
+msgid "View Speaker"
+msgstr ""
+
+#: app/routes/public/chat.ts:28:22
+msgid "Please confirm that you understand and agree to the conditions of using the chat!"
+msgstr ""
+
+#: app/routes/public/chat.ts:30:23
+msgid "If you join the event chat, your profile name and image will be visible to other attendees. Other event attendees can also contact you directly."
+msgstr ""
+
+#: app/routes/public/chat.ts:31:10
+msgid "You may change your chat name and chat profile picture by going to account settings on the chat page on the top left."
+msgstr ""
+
+#: app/routes/public/chat.ts:32:10
+msgid "You need to minimize the side panel to access it."
+msgstr ""
+
+#: app/routes/public/chat.ts:33:10
+msgid "The feature integration is still in Alpha stage and currently your profile on the eventyay account page and on the chat are not linked and can be independently edited."
+msgstr ""
+
+#: app/routes/public/chat.ts:34:10
+msgid "When you change the chat settings you may receive additional email confirmations."
+msgstr ""
+
+#: app/routes/public/chat.ts:35:10
+msgid "Do you want to use the chat now?"
 msgstr ""
 
 #: app/routes/register.js:8:11
@@ -3204,15 +3908,15 @@ msgstr "パスワードをリセット"
 msgid "Verify"
 msgstr ""
 
-#: app/services/error-handler.js:17:26
+#: app/services/error-handler.js:31:26
 msgid "There are too many requests. Please try after sometime."
 msgstr ""
 
-#: app/services/error-handler.js:20:26
+#: app/services/error-handler.js:34:26
 msgid "User must be User must be logged in to perform this action."
 msgstr ""
 
-#: app/templates/account.hbs:9:8 app/templates/admin/settings.hbs:24:10
+#: app/templates/account.hbs:9:8 app/templates/admin/settings.hbs:27:10
 msgid "Billing"
 msgstr ""
 
@@ -3232,7 +3936,7 @@ msgstr ""
 
 #: app/templates/account/billing/invoices.hbs:12:10
 #: app/templates/components/event-invoice/invoice-summary.hbs:5:8
-#: app/templates/components/explore/side-bar.hbs:192:23
+#: app/templates/components/explore/side-bar.hbs:208:23
 msgid "Paid"
 msgstr ""
 
@@ -3246,7 +3950,7 @@ msgstr ""
 
 #: app/templates/admin.hbs:5:8
 #: app/templates/admin/permissions/system-roles.hbs:27:10
-#: app/templates/components/nav-bar.hbs:41:57
+#: app/templates/components/nav-bar.hbs:42:57
 #: app/templates/components/side-bar.hbs:24:49
 #: app/templates/components/ui-table/cell/admin/users/cell-system-roles.hbs:9:6
 msgid "Admin"
@@ -3306,12 +4010,6 @@ msgstr "変更"
 msgid "No images to show"
 msgstr ""
 
-#: app/templates/admin/content/translations.hbs:7:34
-#: app/templates/components/forms/admin/content/pages-form.hbs:35:28
-#: app/templates/components/forms/admin/content/translation-form.hbs:8:32
-msgid "Language"
-msgstr "言語"
-
 #: app/templates/admin/content/translations.hbs:10:77
 msgid "Download .PO files"
 msgstr ".PO ファイルをダウンロード"
@@ -3339,6 +4037,7 @@ msgid "All Past"
 msgstr "すべての過去"
 
 #: app/templates/admin/events.hbs:15:10
+#: app/templates/components/forms/group/group-form.hbs:36:38
 msgid "All Events"
 msgstr "すべてのイベント"
 
@@ -3357,7 +4056,7 @@ msgstr "セッションの数"
 #: app/templates/admin/index.hbs:21:12
 #: app/templates/components/events/view/overview/manage-roles.hbs:13:105
 #: app/templates/components/events/view/overview/speaker-session.hbs:91:12
-#: app/templates/components/events/view/overview/speaker-session.hbs:105:14
+#: app/templates/components/events/view/overview/speaker-session.hbs:106:14
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:4:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:4:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:4:22
@@ -3367,7 +4066,7 @@ msgstr "受付"
 
 #: app/templates/admin/index.hbs:41:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:93:14
-#: app/templates/components/events/view/overview/speaker-session.hbs:107:14
+#: app/templates/components/events/view/overview/speaker-session.hbs:108:14
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:7:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:7:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:7:22
@@ -3476,7 +4175,7 @@ msgid "Super Admin"
 msgstr "Super Admin"
 
 #: app/templates/admin/permissions/system-roles.hbs:58:96
-#: app/templates/components/events/view/overview/manage-roles.hbs:39:45
+#: app/templates/components/events/view/overview/manage-roles.hbs:69:47
 msgid "Are you sure you would like to delete this role?"
 msgstr ""
 
@@ -3497,11 +4196,6 @@ msgstr "アクセス許可"
 #: app/templates/components/ui-table/cell/admin/users/cell-system-roles.hbs:16:6
 msgid "Unverified User"
 msgstr "未確認ユーザー"
-
-#: app/templates/admin/permissions/system-roles.hbs:84:14
-#: app/templates/admin/permissions/system-roles.hbs:98:33
-msgid "Anonymous User"
-msgstr "匿名ユーザー"
 
 #: app/templates/admin/reports/kubernetes-server-logs.hbs:2:2
 msgid "Coming Soon"
@@ -3581,11 +4275,11 @@ msgstr "料金"
 msgid "Max."
 msgstr ""
 
-#: app/templates/admin/settings.hbs:18:10
+#: app/templates/admin/settings.hbs:21:10
 msgid "Payment Gateways"
 msgstr "支払ゲートウェイ"
 
-#: app/templates/admin/settings.hbs:27:10
+#: app/templates/admin/settings.hbs:30:10
 msgid "Front Page"
 msgstr ""
 
@@ -3681,6 +4375,8 @@ msgstr ""
 #: app/templates/components/nav-bar.hbs:36:61
 #: app/templates/components/side-bar.hbs:19:53
 #: app/templates/my-sessions.hbs:3:24
+#: app/templates/public/cfs/view-session.hbs:6:62
+#: app/templates/public/cfs/view-speaker.hbs:6:62
 msgid "My Sessions"
 msgstr "セッション"
 
@@ -3711,6 +4407,10 @@ msgstr ""
 
 #: app/templates/admin/users/view/tickets/list.hbs:8:38
 msgid "No tickets found for this user"
+msgstr ""
+
+#: app/templates/application.hbs:6:4
+msgid "This website, and certain approved third parties, use functional and analytical cookies (or similar technologies) to provide account functionalities and provide you with a customized experience. By closing this banner or by continuing to use the site, you agree with the usage. For more information please review our privacy policy and terms and conditions."
 msgstr ""
 
 #: app/templates/application.hbs:8:51
@@ -3952,20 +4652,6 @@ msgstr ""
 msgid "on our servers."
 msgstr ""
 
-#: app/templates/components/event-invoice/billing-info.hbs:8:16
-#: app/templates/components/event-invoice/event-info.hbs:15:12
-#: app/templates/components/orders/event-info.hbs:27:12
-msgid "From"
-msgstr ""
-
-#: app/templates/components/event-invoice/billing-info.hbs:11:16
-#: app/templates/components/forms/admin/settings/billing.hbs:58:47
-#: app/templates/components/forms/orders/attendee-list.hbs:55:18
-#: app/templates/components/forms/user-payment-info-form.hbs:9:25
-#: app/templates/components/widgets/forms/billing-info.hbs:2:40
-msgid "Organisation"
-msgstr ""
-
 #: app/templates/components/event-invoice/billing-info.hbs:20:16
 #: app/templates/components/event-invoice/billing-info.hbs:42:16
 #: app/templates/components/forms/admin/settings/billing.hbs:73:50
@@ -3974,14 +4660,6 @@ msgstr ""
 #: app/templates/components/widgets/forms/location-input.hbs:37:22
 msgid "Zip Code"
 msgstr "郵便番号"
-
-#: app/templates/components/event-invoice/billing-info.hbs:23:16
-#: app/templates/components/event-invoice/billing-info.hbs:45:16
-#: app/templates/components/forms/admin/settings/billing.hbs:50:17
-#: app/templates/components/forms/user-payment-info-form.hbs:58:17
-#: app/templates/components/widgets/forms/location-input.hbs:44:22
-msgid "Country"
-msgstr "国"
 
 #: app/templates/components/event-invoice/billing-info.hbs:39:16
 msgid "Billing Address"
@@ -4097,7 +4775,7 @@ msgstr "マイクロロケーション"
 
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
-#: app/templates/public.hbs:71:16
+#: app/templates/public.hbs:75:16
 msgid "Tracks"
 msgstr "トラック"
 
@@ -4106,7 +4784,7 @@ msgid "You can make a GET request to the following endpoint to access the select
 msgstr ""
 
 #: app/templates/components/events/view/export/api-response.hbs:34:30
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:168:40
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:174:40
 #: app/templates/components/modals/event-share-modal.hbs:27:17
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-url.hbs:4:34
 #: app/templates/components/url-box.hbs:3:32
@@ -4138,13 +4816,9 @@ msgid "Select the media files you want in the zip"
 msgstr ""
 
 #: app/templates/components/events/view/export/download-zip.hbs:13:39
-#: app/templates/components/explore/side-bar.hbs:240:23
+#: app/templates/components/explore/side-bar.hbs:256:23
 msgid "Image"
 msgstr "画像"
-
-#: app/templates/components/events/view/export/download-zip.hbs:19:39
-msgid "Audio"
-msgstr "オーディオ"
 
 #: app/templates/components/events/view/export/download-zip.hbs:22:39
 msgid "Document"
@@ -4219,7 +4893,7 @@ msgid "Tracks details and colors, session lengths, room locations"
 msgstr ""
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:88:12
-#: app/templates/components/explore/side-bar.hbs:206:8
+#: app/templates/components/explore/side-bar.hbs:222:8
 msgid "Call For Speakers"
 msgstr ""
 
@@ -4262,8 +4936,8 @@ msgid "Sold"
 msgstr ""
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:28:12
-#: app/templates/components/public/ticket-list.hbs:137:24
-#: app/templates/components/public/ticket-list.hbs:139:157
+#: app/templates/components/public/ticket-list.hbs:139:24
+#: app/templates/components/public/ticket-list.hbs:141:157
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:3:22
 msgid "Total"
 msgstr "合計"
@@ -4276,35 +4950,35 @@ msgstr ""
 msgid "There are no tickets for this event"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:7:6
+#: app/templates/components/events/view/overview/general-info.hbs:9:8
 msgid "Your event is live at"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:9:6
+#: app/templates/components/events/view/overview/general-info.hbs:19:6
 msgid "Your event is not live yet. Make it live now"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:22:67
+#: app/templates/components/events/view/overview/general-info.hbs:33:67
 msgid "Click to add location."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:27:20
+#: app/templates/components/events/view/overview/general-info.hbs:38:20
 msgid "Start time"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:31:20
+#: app/templates/components/events/view/overview/general-info.hbs:42:20
 msgid "End time"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:35:20
+#: app/templates/components/events/view/overview/general-info.hbs:46:20
 msgid "Links and Social Media"
 msgstr "リンクとソーシャル メディア"
 
-#: app/templates/components/events/view/overview/general-info.hbs:42:12
+#: app/templates/components/events/view/overview/general-info.hbs:53:12
 msgid "No social links present."
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:42:114
+#: app/templates/components/events/view/overview/general-info.hbs:53:114
 #: app/templates/components/events/view/overview/speaker-session.hbs:16:105
 #: app/templates/components/events/view/overview/speaker-session.hbs:28:98
 #: app/templates/components/events/view/overview/speaker-session.hbs:40:107
@@ -4312,11 +4986,11 @@ msgstr ""
 msgid "Click here to add"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:47:20
+#: app/templates/components/events/view/overview/general-info.hbs:58:20
 msgid "No. of Sponsors"
 msgstr ""
 
-#: app/templates/components/events/view/overview/general-info.hbs:48:81
+#: app/templates/components/events/view/overview/general-info.hbs:59:81
 msgid "No Sponsor added yet."
 msgstr ""
 
@@ -4340,20 +5014,42 @@ msgstr ""
 msgid "Role"
 msgstr "ロール"
 
-#: app/templates/components/events/view/overview/manage-roles.hbs:46:45
+#: app/templates/components/events/view/overview/manage-roles.hbs:39:47
 msgid "Are you sure you would like to cancel this invite?"
 msgstr ""
 
-#: app/templates/components/events/view/overview/manage-roles.hbs:52:29
+#: app/templates/components/events/view/overview/manage-roles.hbs:43:31
 msgid "Resend invite"
 msgstr ""
 
-#: app/templates/components/events/view/overview/manage-roles.hbs:65:10
+#: app/templates/components/events/view/overview/manage-roles.hbs:55:12
 msgid "No records to show"
 msgstr ""
 
+#: app/templates/components/events/view/overview/session-view.hbs:10:61
+#: app/templates/components/events/view/overview/session-view.hbs:28:65
+#: app/templates/components/events/view/overview/speaker-view.hbs:10:61
+#: app/templates/components/forms/session-section.hbs:9:51
+#: app/templates/components/forms/speaker-section.hbs:9:51
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:200:22
+msgid "Private"
+msgstr "プライベート"
+
+#: app/templates/components/events/view/overview/session-view.hbs:24:96
+msgid "Duration"
+msgstr ""
+
+#: app/templates/components/events/view/overview/session-view.hbs:47:49
+msgid "Average Rating"
+msgstr ""
+
+#: app/templates/components/events/view/overview/session-view.hbs:51:49
+msgid "Locked"
+msgstr ""
+
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:95:30
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
+#: app/templates/public.hbs:110:16
 msgid "Session Types"
 msgstr "セッションの種類"
 
@@ -4389,8 +5085,8 @@ msgstr ""
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:62:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:72:12
-#: app/templates/components/events/view/overview/speaker-session.hbs:96:12
-#: app/templates/components/events/view/overview/speaker-session.hbs:110:12
+#: app/templates/components/events/view/overview/speaker-session.hbs:97:12
+#: app/templates/components/events/view/overview/speaker-session.hbs:111:12
 msgid "Sessions and Speakers not enabled."
 msgstr ""
 
@@ -4403,7 +5099,7 @@ msgid "States"
 msgstr ""
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:94:14
-#: app/templates/components/events/view/overview/speaker-session.hbs:108:14
+#: app/templates/components/events/view/overview/speaker-session.hbs:109:14
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:5:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:5:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:5:22
@@ -4411,96 +5107,78 @@ msgstr ""
 msgid "Confirmed"
 msgstr ""
 
-#: app/templates/components/events/view/overview/speaker-session.hbs:104:12
+#: app/templates/components/events/view/overview/speaker-session.hbs:105:12
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:3:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:3:22
 msgid "Submitted"
 msgstr "提出済"
 
-#: app/templates/components/explore/side-bar.hbs:7:19
+#: app/templates/components/explore/side-bar.hbs:15:19
 msgid "Enter Event Name"
 msgstr ""
 
-#: app/templates/components/explore/side-bar.hbs:15:8
+#: app/templates/components/explore/side-bar.hbs:23:8
 msgid "Setting"
 msgstr ""
 
-#: app/templates/components/explore/side-bar.hbs:22:23
-msgid "Online"
-msgstr ""
-
-#: app/templates/components/explore/side-bar.hbs:36:23
-msgid "Mixed"
-msgstr ""
-
-#: app/templates/components/explore/side-bar.hbs:48:35
+#: app/templates/components/explore/side-bar.hbs:56:35
 msgid "Enter Location"
 msgstr ""
 
-#: app/templates/components/explore/side-bar.hbs:79:65
+#: app/templates/components/explore/side-bar.hbs:95:65
 #: app/templates/components/forms/wizard/basic-details-step.hbs:92:47
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:144:51
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:150:51
 #: app/templates/components/widgets/forms/ticket-input.hbs:131:58
 msgid "Starts"
 msgstr "開始"
 
-#: app/templates/components/explore/side-bar.hbs:87:63
+#: app/templates/components/explore/side-bar.hbs:103:63
 #: app/templates/components/forms/wizard/basic-details-step.hbs:110:45
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:152:49
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:158:49
 #: app/templates/components/widgets/forms/ticket-input.hbs:149:56
 msgid "Ends"
 msgstr "終了"
 
-#: app/templates/components/explore/side-bar.hbs:113:8
+#: app/templates/components/explore/side-bar.hbs:129:8
 msgid "Categories"
 msgstr "カテゴリー"
 
-#: app/templates/components/explore/side-bar.hbs:118:10
+#: app/templates/components/explore/side-bar.hbs:134:10
 msgid "All Categories"
 msgstr "すべてのカテゴリー"
 
-#: app/templates/components/explore/side-bar.hbs:150:8
+#: app/templates/components/explore/side-bar.hbs:166:8
 msgid "Event Type"
 msgstr "イベントの種類"
 
-#: app/templates/components/explore/side-bar.hbs:154:17
+#: app/templates/components/explore/side-bar.hbs:170:17
 msgid "All Types"
 msgstr ""
 
-#: app/templates/components/explore/side-bar.hbs:178:8
+#: app/templates/components/explore/side-bar.hbs:194:8
 #: app/templates/components/orders/order-summary.hbs:46:44
 #: app/templates/components/orders/order-summary.hbs:54:34
 msgid "Ticket Type"
 msgstr "チケットの種類"
 
-#: app/templates/components/explore/side-bar.hbs:185:23
-#: app/templates/components/order-card.hbs:33:12
+#: app/templates/components/explore/side-bar.hbs:201:23
+#: app/templates/components/order-card.hbs:37:12
 #: app/templates/components/orders/ticket-price.hbs:2:4
 #: app/templates/pricing.hbs:178:58
 msgid "Free"
 msgstr ""
 
-#: app/templates/components/explore/side-bar.hbs:219:23
+#: app/templates/components/explore/side-bar.hbs:235:23
 #: app/templates/components/public/call-for-speakers.hbs:10:43
 msgid "Closed"
 msgstr "クローズ済"
 
-#: app/templates/components/explore/side-bar.hbs:246:23
-#: app/templates/components/forms/admin/settings/billing.hbs:84:15
-#: app/templates/components/forms/admin/settings/billing.hbs:88:19
-#: app/templates/components/forms/session-section.hbs:29:17
-#: app/templates/components/forms/wizard/basic-details-step.hbs:175:15
-#: app/templates/components/forms/wizard/basic-details-step.hbs:179:19
-#: app/templates/components/forms/wizard/sponsors-step.hbs:74:19
-msgid "Logo"
-msgstr "ロゴ"
-
-#: app/templates/components/explore/side-bar.hbs:258:100
+#: app/templates/components/explore/side-bar.hbs:274:100
 msgid "Default Filters"
 msgstr ""
 
 #: app/templates/components/footer-main.hbs:9:31
-msgid "Use"
+msgid "Use {{app}}"
 msgstr ""
 
 #: app/templates/components/footer-main.hbs:10:104
@@ -4511,12 +5189,6 @@ msgstr ""
 #: app/templates/components/nav-bar.hbs:17:24
 #: app/templates/components/side-bar.hbs:29:49 app/templates/pricing.hbs:8:35
 msgid "Pricing"
-msgstr ""
-
-#: app/templates/components/footer-main.hbs:12:86
-#: app/templates/components/footer-main.hbs:48:40
-#: app/templates/components/forms/admin/content/social-links-form.hbs:3:11
-msgid "Blog"
 msgstr ""
 
 #: app/templates/components/footer-main.hbs:17:31
@@ -4555,26 +5227,6 @@ msgstr ""
 #: app/templates/components/footer-main.hbs:45:31
 msgid "Connect With Us"
 msgstr "お問い合わせ"
-
-#: app/templates/components/footer-main.hbs:53:46
-#: app/templates/components/forms/admin/content/social-links-form.hbs:19:11
-msgid "Facebook"
-msgstr "Facebook"
-
-#: app/templates/components/footer-main.hbs:58:45
-#: app/templates/components/forms/admin/content/social-links-form.hbs:28:11
-msgid "Instagram"
-msgstr ""
-
-#: app/templates/components/footer-main.hbs:63:43
-#: app/templates/components/forms/admin/content/social-links-form.hbs:10:11
-msgid "Twitter"
-msgstr "Twitter"
-
-#: app/templates/components/footer-main.hbs:68:42
-#: app/templates/components/forms/admin/content/social-links-form.hbs:55:11
-msgid "GitHub"
-msgstr ""
 
 #: app/templates/components/footer-main.hbs:73:43
 #: app/templates/components/forms/admin/content/social-links-form.hbs:46:11
@@ -4624,12 +5276,6 @@ msgstr ""
 #: app/templates/components/forms/admin/content/pages-form.hbs:12:73
 msgid "URL for the Page"
 msgstr ""
-
-#: app/templates/components/forms/admin/content/pages-form.hbs:15:11
-#: app/templates/components/forms/wizard/basic-details-step.hbs:151:29
-#: app/templates/components/forms/wizard/sponsors-step.hbs:67:17
-msgid "Description"
-msgstr "説明"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:19:28
 msgid "Place"
@@ -4694,7 +5340,7 @@ msgstr "ご覧ください"
 #: app/templates/components/forms/wizard/basic-details-step.hbs:436:44
 #: app/templates/components/forms/wizard/basic-details-step.hbs:458:92
 #: app/templates/events/view/sessions.hbs:34:110
-#: app/templates/events/view/speakers.hbs:47:110
+#: app/templates/events/view/speakers.hbs:53:110
 msgid "here"
 msgstr "ここ"
 
@@ -4746,24 +5392,9 @@ msgstr ""
 
 #: app/templates/components/forms/admin/settings/billing.hbs:54:37
 #: app/templates/components/modals/tax-info-modal.hbs:21:30
+#: app/templates/components/orders/company-info.hbs:85:22
 msgid "Tax ID"
 msgstr "納税者番号"
-
-#: app/templates/components/forms/admin/settings/billing.hbs:62:54
-#: app/templates/components/forms/orders/attendee-list.hbs:66:18
-#: app/templates/components/forms/user-payment-info-form.hbs:30:25
-#: app/templates/components/public/event-map.hbs:21:8
-#: app/templates/components/widgets/forms/billing-info.hbs:16:40
-msgid "Address"
-msgstr "住所"
-
-#: app/templates/components/forms/admin/settings/billing.hbs:65:51
-#: app/templates/components/forms/user-payment-info-form.hbs:44:22
-#: app/templates/components/modals/tax-info-modal.hbs:45:13
-#: app/templates/components/widgets/forms/billing-info.hbs:22:37
-#: app/templates/components/widgets/forms/location-input.hbs:23:22
-msgid "City"
-msgstr "市区町村"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:81:36
 msgid "Organisation Logo"
@@ -5190,6 +5821,18 @@ msgstr ""
 msgid "Cookie Policy URL"
 msgstr ""
 
+#: app/templates/components/forms/admin/settings/system-form.hbs:76:4
+msgid "Rocket Chat Integration"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system-form.hbs:80:6
+msgid "Rocket Chat URL"
+msgstr ""
+
+#: app/templates/components/forms/admin/settings/system-form.hbs:89:6
+msgid "Registration Secret"
+msgstr ""
+
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:3:2
 msgid "Captcha Options"
 msgstr ""
@@ -5511,7 +6154,7 @@ msgstr "アクセス リンク"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:86:10
 #: app/templates/components/forms/events/view/create-discount-code.hbs:129:10
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:171:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:177:14
 #: app/templates/components/modals/event-share-modal.hbs:33:10
 msgid "Copy"
 msgstr "コピー"
@@ -5548,27 +6191,30 @@ msgstr ""
 msgid "Discount Link"
 msgstr "割引リンク"
 
-#: app/templates/components/forms/events/view/edit-session.hbs:7:11
-msgid "Short Abstract"
-msgstr "短い要約"
-
-#: app/templates/components/forms/events/view/edit-session.hbs:11:11
-msgid "Comments"
-msgstr "コメント"
-
 #: app/templates/components/forms/events/view/edit-session.hbs:16:76
-#: app/templates/components/forms/session-section.hbs:38:17
+#: app/templates/components/forms/session-section.hbs:45:17
 msgid "File"
-msgstr ""
-
-#: app/templates/components/forms/events/view/edit-session.hbs:16:108
-#: app/templates/components/forms/session-section.hbs:41:16
-msgid "Select a file"
 msgstr ""
 
 #: app/templates/components/forms/events/view/edit-session.hbs:19:4
 msgid "Save Session"
 msgstr "セッションを保存"
+
+#: app/templates/components/forms/group/group-form.hbs:5:8
+msgid "Edit Group"
+msgstr ""
+
+#: app/templates/components/forms/group/group-form.hbs:7:8
+msgid "Create a Group"
+msgstr ""
+
+#: app/templates/components/forms/group/group-form.hbs:14:30
+msgid "Group name"
+msgstr ""
+
+#: app/templates/components/forms/group/group-form.hbs:25:38
+msgid "Group Events"
+msgstr ""
 
 #: app/templates/components/forms/login-form.hbs:25:17
 msgid "You have been registered successfully. Please login to continue."
@@ -5594,33 +6240,60 @@ msgid "Attendee Information"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:9:8
-#: app/templates/components/forms/orders/order-form.hbs:47:8
+#: app/templates/components/forms/orders/order-form.hbs:49:8
 msgid "Ticket Holder's Information"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:15:19
-#: app/templates/components/forms/orders/order-form.hbs:60:17
+#: app/templates/components/forms/orders/order-form.hbs:62:17
 msgid "Ticket Holder"
 msgstr "チケット保有者"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:15:41
-#: app/templates/components/forms/orders/order-form.hbs:60:52
+#: app/templates/components/forms/orders/order-form.hbs:62:52
 msgid "-for-"
 msgstr ""
 
-#: app/templates/components/forms/orders/attendee-list.hbs:19:12
+#: app/templates/components/forms/orders/attendee-list.hbs:20:16
 msgid "Download Ticket"
 msgstr ""
 
-#: app/templates/components/forms/orders/attendee-list.hbs:49:12
-#: app/templates/components/forms/orders/order-form.hbs:152:10
+#: app/templates/components/forms/orders/attendee-list.hbs:39:26
+#: app/templates/components/modals/confirm-modal.hbs:16:75
+#: app/templates/components/modals/edit-user-modal.hbs:11:40
+#: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
+msgid "Yes"
+msgstr ""
+
+#: app/templates/components/forms/orders/attendee-list.hbs:41:26
+#: app/templates/components/modals/confirm-modal.hbs:12:71
+#: app/templates/components/modals/edit-user-modal.hbs:10:40
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
+msgid "No"
+msgstr ""
+
+#: app/templates/components/forms/orders/attendee-list.hbs:61:12
+#: app/templates/components/forms/orders/order-form.hbs:177:10
 msgid "Billing Information"
 msgstr "請求情報"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:59:18
+#: app/templates/components/forms/orders/attendee-list.hbs:71:18
 #: app/templates/components/forms/user-payment-info-form.hbs:62:23
 #: app/templates/components/widgets/forms/billing-info.hbs:9:48
 msgid "Tax ID or Business ID"
+msgstr ""
+
+#: app/templates/components/forms/orders/cancel-order.hbs:3:27
+msgid "Ticket cancellation"
+msgstr ""
+
+#: app/templates/components/forms/orders/cancel-order.hbs:6:4
+msgid "You can cancel this order with the button below. This will void all tickets in this order."
+msgstr ""
+
+#: app/templates/components/forms/orders/cancel-order.hbs:8:233
+msgid "Cancel Order"
 msgstr ""
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:7:24
@@ -5681,99 +6354,103 @@ msgstr ""
 msgid "Ticket Buyer"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:25:48
-msgid "First Name"
-msgstr "名"
-
-#: app/templates/components/forms/orders/order-form.hbs:32:47
-msgid "Last Name"
-msgstr "姓"
-
-#: app/templates/components/forms/orders/order-form.hbs:53:21
+#: app/templates/components/forms/orders/order-form.hbs:55:21
 msgid "Ticket holder is the same person as ticket buyer"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:95:46
-#: app/templates/components/forms/speaker-section.hbs:85:38
+#: app/templates/components/forms/orders/order-form.hbs:102:46
+#: app/templates/components/forms/speaker-section.hbs:91:38
 msgid "Select your gender"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:114:46
+#: app/templates/components/forms/orders/order-form.hbs:121:46
 msgid "Select your country"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:133:46
+#: app/templates/components/forms/orders/order-form.hbs:140:46
 msgid "Select your age group"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:157:21
+#: app/templates/components/forms/orders/order-form.hbs:151:27
+msgid "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:157:27
+msgid "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:163:27
+msgid "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
+msgstr ""
+
+#: app/templates/components/forms/orders/order-form.hbs:182:21
 msgid "Enable Billing Information"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:169:10
+#: app/templates/components/forms/orders/order-form.hbs:194:10
 msgid "Payment Method"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:172:53
+#: app/templates/components/forms/orders/order-form.hbs:197:53
 msgid "Please choose your payment method"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:178:25
+#: app/templates/components/forms/orders/order-form.hbs:203:25
 msgid "Credit Card"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:191:25
+#: app/templates/components/forms/orders/order-form.hbs:216:25
 msgid "Paypal"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:202:25
+#: app/templates/components/forms/orders/order-form.hbs:227:25
 msgid "Paytm"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:213:25
+#: app/templates/components/forms/orders/order-form.hbs:238:25
 msgid "Omise"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:225:25
+#: app/templates/components/forms/orders/order-form.hbs:250:25
 msgid "AliPay"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:237:25
+#: app/templates/components/forms/orders/order-form.hbs:262:25
 msgid "Cheque"
 msgstr "小切手"
 
-#: app/templates/components/forms/orders/order-form.hbs:247:25
+#: app/templates/components/forms/orders/order-form.hbs:272:25
 msgid "Bank"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:257:25
+#: app/templates/components/forms/orders/order-form.hbs:282:25
 msgid "Onsite"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:280:8
+#: app/templates/components/forms/orders/order-form.hbs:305:8
 msgid "Acknowledgement"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:284:21
+#: app/templates/components/forms/orders/order-form.hbs:309:21
 msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:285:42
-#: app/templates/components/forms/orders/order-form.hbs:291:82
+#: app/templates/components/forms/orders/order-form.hbs:310:42
+#: app/templates/components/forms/orders/order-form.hbs:316:82
 msgid "Proceed to Checkout"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:285:68
-#: app/templates/components/forms/orders/order-form.hbs:291:108
-#: app/templates/components/public/ticket-list.hbs:206:10
+#: app/templates/components/forms/orders/order-form.hbs:310:68
+#: app/templates/components/forms/orders/order-form.hbs:316:108
+#: app/templates/components/public/ticket-list.hbs:208:10
 msgid "Order Now"
 msgstr "今すぐ注文します"
 
-#: app/templates/components/forms/orders/order-form.hbs:286:60
+#: app/templates/components/forms/orders/order-form.hbs:311:60
 msgid "terms of services"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:287:64
+#: app/templates/components/forms/orders/order-form.hbs:312:64
 msgid "privacy policy"
 msgstr ""
 
@@ -5789,22 +6466,31 @@ msgstr ""
 msgid "Forgot Password"
 msgstr "パスワードをお忘れですか"
 
-#: app/templates/components/forms/session-section.hbs:32:16
-#: app/templates/components/forms/speaker-section.hbs:47:16
+#: app/templates/components/forms/session-section.hbs:39:16
+#: app/templates/components/forms/speaker-section.hbs:54:16
 msgid "Select an image"
 msgstr ""
 
-#: app/templates/components/forms/session-section.hbs:56:38
+#: app/templates/components/forms/session-section.hbs:63:38
 msgid "Select"
 msgstr "選択"
 
+#: app/templates/components/forms/session-section.hbs:97:30
+#: app/templates/components/forms/speaker-section.hbs:120:30
+msgid "Please enable session/speaker form to create a session/speaker."
+msgstr ""
+
 #: app/templates/components/forms/session-speaker-form.hbs:5:8
 #: app/templates/components/forms/session-speaker-form.hbs:76:6
+#: app/templates/events/view/session/view.hbs:30:6
+#: app/templates/public/cfs/view-session.hbs:67:6
 msgid "Session details"
 msgstr ""
 
 #: app/templates/components/forms/session-speaker-form.hbs:15:6
 #: app/templates/components/forms/session-speaker-form.hbs:64:8
+#: app/templates/events/view/speaker/view.hbs:18:6
+#: app/templates/public/cfs/view-speaker.hbs:30:6
 msgid "Speaker details"
 msgstr ""
 
@@ -5845,15 +6531,15 @@ msgstr ""
 msgid "Submit"
 msgstr "提出"
 
-#: app/templates/components/forms/speaker-section.hbs:13:21
+#: app/templates/components/forms/speaker-section.hbs:20:21
 msgid "Do not require email for this speaker."
 msgstr ""
 
-#: app/templates/components/forms/speaker-section.hbs:43:17
+#: app/templates/components/forms/speaker-section.hbs:50:17
 msgid "Speaker Image"
 msgstr ""
 
-#: app/templates/components/forms/speaker-section.hbs:49:20
+#: app/templates/components/forms/speaker-section.hbs:56:20
 msgid "We recommend using a 1:1 ratio image"
 msgstr ""
 
@@ -5873,27 +6559,35 @@ msgstr ""
 msgid "We recommend using at least a 1000x1000px (1:1 ratio) image"
 msgstr ""
 
-#: app/templates/components/forms/user-profile-form.hbs:34:48
+#: app/templates/components/forms/user-profile-form.hbs:39:48
 msgid "Family Name"
 msgstr "姓"
 
-#: app/templates/components/forms/user-profile-form.hbs:41:29
+#: app/templates/components/forms/user-profile-form.hbs:47:10
+msgid "Public Profile Name"
+msgstr ""
+
+#: app/templates/components/forms/user-profile-form.hbs:59:29
 msgid "Bio"
 msgstr ""
 
-#: app/templates/components/forms/user-profile-form.hbs:61:8
+#: app/templates/components/forms/user-profile-form.hbs:80:11
+msgid "Make Profile Public"
+msgstr ""
+
+#: app/templates/components/forms/user-profile-form.hbs:92:8
 msgid "Update Changes"
 msgstr ""
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:13:57
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:11:63
-#: app/templates/components/forms/wizard/sponsors-step.hbs:13:55
+#: app/templates/components/forms/wizard/sponsors-step.hbs:14:47
 msgid "Turn off"
 msgstr ""
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:13:72
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:11:78
-#: app/templates/components/forms/wizard/sponsors-step.hbs:13:70
+#: app/templates/components/forms/wizard/sponsors-step.hbs:14:62
 msgid "Turn on"
 msgstr ""
 
@@ -5938,7 +6632,7 @@ msgid "Webinar URL"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:129:45
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:160:49
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:166:49
 #: app/templates/components/widgets/forms/ticket-input.hbs:167:56
 msgid "Timezone"
 msgstr "タイムゾーン"
@@ -5953,15 +6647,6 @@ msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:166:19
 msgid "Header Image"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.hbs:169:18
-msgid "We recommend using at least a 2160x1080px (2:1 ratio) image"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.hbs:178:14
-#: app/templates/components/forms/wizard/sponsors-step.hbs:77:18
-msgid "Select Logo"
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:191:41
@@ -5989,7 +6674,7 @@ msgstr "チケット名"
 #: app/templates/components/forms/wizard/basic-details-step.hbs:221:40
 #: app/templates/components/orders/order-summary.hbs:48:35
 #: app/templates/components/orders/order-summary.hbs:55:34
-#: app/templates/components/public/ticket-list.hbs:9:47
+#: app/templates/components/public/ticket-list.hbs:8:47
 #: app/templates/components/widgets/forms/ticket-input.hbs:17:22
 #: app/templates/pricing.hbs:172:43
 msgid "Price"
@@ -5998,7 +6683,7 @@ msgstr "価格"
 #: app/templates/components/forms/wizard/basic-details-step.hbs:224:40
 #: app/templates/components/orders/order-summary.hbs:52:33
 #: app/templates/components/orders/order-summary.hbs:59:34
-#: app/templates/components/public/ticket-list.hbs:10:31
+#: app/templates/components/public/ticket-list.hbs:9:31
 #: app/templates/components/widgets/forms/ticket-input.hbs:53:20
 msgid "Quantity"
 msgstr "数量"
@@ -6147,13 +6832,6 @@ msgstr ""
 msgid "Organisation Name"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:580:16
-#: app/templates/components/forms/wizard/other-details-step.hbs:22:28
-#: app/templates/components/forms/wizard/other-details-step.hbs:44:28
-#: app/templates/components/forms/wizard/sponsors-step.hbs:30:12
-msgid "Remove"
-msgstr "削除"
-
 #: app/templates/components/forms/wizard/basic-details-step.hbs:587:12
 msgid "Add Tax Information"
 msgstr ""
@@ -6162,24 +6840,12 @@ msgstr ""
 msgid "Require Billing Information from Ticket Buyer"
 msgstr ""
 
+#: app/templates/components/forms/wizard/basic-details-step.hbs:609:29
+msgid "After Order Message"
+msgstr ""
+
 #: app/templates/components/forms/wizard/other-details-step.hbs:5:13
 msgid "Links & Social Media"
-msgstr ""
-
-#: app/templates/components/forms/wizard/other-details-step.hbs:9:6
-msgid "Social Media"
-msgstr ""
-
-#: app/templates/components/forms/wizard/other-details-step.hbs:10:24
-msgid "Add social link"
-msgstr ""
-
-#: app/templates/components/forms/wizard/other-details-step.hbs:30:6
-msgid "Extra Links"
-msgstr ""
-
-#: app/templates/components/forms/wizard/other-details-step.hbs:31:24
-msgid "Add custom link"
 msgstr ""
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:57:8
@@ -6230,72 +6896,60 @@ msgstr ""
 msgid "Preview Text"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:60:13
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:60:30
 msgid "Microlocations or Virtual Online Rooms"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:128:42
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:134:42
 msgid "Enable Call For Speakers"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:135:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:141:10
 #: app/templates/index.hbs:24:34 app/templates/pricing.hbs:97:24
 msgid "Call for speakers"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:139:15
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:145:15
 msgid "Announcement"
 msgstr "お知らせ"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:165:15
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:171:15
 msgid "Private Link"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:176:10
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:182:10
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:186:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:192:14
 msgid "Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published."
 msgstr "これを公開して表示します。イベントが公開されると、誰でも選択した日付に提案を提出することができます。"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:194:22
-msgid "Private"
-msgstr "プライベート"
-
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:195:14
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:201:14
 msgid "Do not display this publicly. Proposals can be submitted only using the private link."
 msgstr "公開で表示しません。プライベート リンクを使用して提案を提出することができます。"
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:205:8
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:211:8
 msgid "Customize submission forms"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:212:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:218:22
 msgid "Collect Speaker Details"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:228:22
+#: app/templates/components/forms/wizard/sessions-speakers-step.hbs:234:22
 msgid "Collect Session Details"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sponsors-step.hbs:26:8
+#: app/templates/components/forms/wizard/sponsors-step.hbs:27:8
 msgid "Sponsor"
 msgstr "スポンサー"
 
-#: app/templates/components/forms/wizard/sponsors-step.hbs:44:17
-msgid "Level"
-msgstr "レベル"
-
-#: app/templates/components/forms/wizard/sponsors-step.hbs:59:17
-msgid "URL"
-msgstr ""
-
-#: app/templates/components/forms/wizard/sponsors-step.hbs:85:138
+#: app/templates/components/forms/wizard/sponsors-step.hbs:86:138
 msgid "Add another sponsor"
 msgstr ""
 
-#: app/templates/components/forms/wizard/sponsors-step.hbs:85:164
+#: app/templates/components/forms/wizard/sponsors-step.hbs:86:164
 msgid "Add sponsor"
 msgstr ""
 
@@ -6312,14 +6966,21 @@ msgid "Enter Role name"
 msgstr ""
 
 #: app/templates/components/modals/add-system-role-modal.hbs:40:6
-#: app/templates/components/modals/add-user-role-modal.hbs:2:2
 #: app/templates/components/modals/add-user-role-modal.hbs:40:4
-msgid "Add Role"
-msgstr "ロールを追加"
+msgid "Add Team Member"
+msgstr ""
 
 #: app/templates/components/modals/add-system-role-modal.hbs:42:6
-msgid "Edit Role"
-msgstr "ロールを編集"
+msgid "Edit Team Member"
+msgstr ""
+
+#: app/templates/components/modals/add-to-calendar.hbs:3:4
+msgid "Please choose a calendar"
+msgstr ""
+
+#: app/templates/components/modals/add-user-role-modal.hbs:2:2
+msgid "Add Role"
+msgstr "ロールを追加"
 
 #: app/templates/components/modals/add-user-role-modal.hbs:8:8
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:11:8
@@ -6428,19 +7089,6 @@ msgstr ""
 msgid "Are you sure ?"
 msgstr ""
 
-#: app/templates/components/modals/confirm-modal.hbs:12:71
-#: app/templates/components/modals/edit-user-modal.hbs:10:40
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
-msgid "No"
-msgstr ""
-
-#: app/templates/components/modals/confirm-modal.hbs:16:75
-#: app/templates/components/modals/edit-user-modal.hbs:11:40
-#: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
-msgid "Yes"
-msgstr ""
-
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:2:2
 msgid "You are deleting this account. This action cannot be undone."
 msgstr ""
@@ -6453,11 +7101,41 @@ msgstr ""
 msgid "Please tick the box to agree and press DELETE"
 msgstr ""
 
+#: app/templates/components/modals/contact-organizer.hbs:3:4
+msgid "Contact the Organizer"
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:8:12
+msgid "Your message was sent to the organizers of this event."
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:9:12
+msgid "You should receive a copy of the message to your email inbox."
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:10:12
+msgid "The organizers will contact you by email."
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:13:12
+msgid "Close"
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:30:26
+msgid "Event Organizer"
+msgstr ""
+
+#: app/templates/components/modals/contact-organizer.hbs:38:16
+msgid "Send Email"
+msgstr ""
+
 #: app/templates/components/modals/cropper-modal.hbs:3:2
 msgid "Crop Image"
 msgstr ""
 
 #: app/templates/components/modals/cropper-modal.hbs:10:4
+#: app/templates/events/view/exhibitors/reorder.hbs:14:172
+#: app/templates/events/view/speakers/reorder.hbs:14:170
 msgid "Reset"
 msgstr ""
 
@@ -6583,7 +7261,6 @@ msgid "Proceeding forward will withdraw the proposal titled:"
 msgstr ""
 
 #: app/templates/components/modals/proposal-withdraw-modal.hbs:19:4
-#: app/templates/public/session/view.hbs:31:49
 msgid "Withdraw Proposal"
 msgstr "申し込みを撤回"
 
@@ -6694,23 +7371,23 @@ msgid "Please enter your Email ID to confirm that you want to delete the account
 msgstr ""
 
 #: app/templates/components/nav-bar.hbs:10:112
-#: app/templates/components/nav-bar.hbs:73:110
+#: app/templates/components/nav-bar.hbs:73:131
 #: app/templates/components/side-bar.hbs:3:110
 msgid "Search Events"
 msgstr ""
 
-#: app/templates/components/nav-bar.hbs:37:68
+#: app/templates/components/nav-bar.hbs:38:68
 #: app/templates/components/side-bar.hbs:20:60
 msgid "Manage Events"
 msgstr "イベントを管理"
 
-#: app/templates/components/nav-bar.hbs:44:105
+#: app/templates/components/nav-bar.hbs:45:105
 #: app/templates/components/side-bar.hbs:27:62
 msgid "Logout"
 msgstr "ログアウト"
 
-#: app/templates/components/nav-bar.hbs:55:12
-#: app/templates/components/nav-bar.hbs:91:16
+#: app/templates/components/nav-bar.hbs:56:12
+#: app/templates/components/nav-bar.hbs:91:14
 #: app/templates/components/welcome-header.hbs:4:4
 #: app/templates/pricing.hbs:176:10
 msgid "Create Event"
@@ -6728,22 +7405,42 @@ msgstr ""
 msgid "No new notifications"
 msgstr "新しい通知はありません"
 
-#: app/templates/components/order-card.hbs:15:26
-#: app/templates/components/order-card.hbs:16:10
+#: app/templates/components/order-card.hbs:16:28
+#: app/templates/components/order-card.hbs:17:12
 msgid "Cancel Ticket"
 msgstr ""
 
-#: app/templates/components/order-card.hbs:15:73
+#: app/templates/components/order-card.hbs:16:75
 msgid "Are you sure you would like to cancel this ticket?"
 msgstr ""
 
-#: app/templates/components/order-card.hbs:37:10
+#: app/templates/components/order-card.hbs:41:10
 msgid "order"
 msgstr ""
 
-#: app/templates/components/order-card.hbs:41:16
+#: app/templates/components/order-card.hbs:45:16
 msgid "on"
 msgstr "オン"
+
+#: app/templates/components/orders/after-order-message.hbs:5:10
+msgid "Organizer Message"
+msgstr "主催者メッセージ"
+
+#: app/templates/components/orders/company-info.hbs:5:8
+msgid "Company Information"
+msgstr ""
+
+#: app/templates/components/orders/company-info.hbs:65:22
+msgid "ZIP Code"
+msgstr ""
+
+#: app/templates/components/orders/company-info.hbs:75:22
+msgid "Tax Name"
+msgstr ""
+
+#: app/templates/components/orders/company-info.hbs:95:22
+msgid "Tax Rate"
+msgstr ""
 
 #: app/templates/components/orders/event-info.hbs:17:16
 msgid "Event taking place online and at"
@@ -6774,11 +7471,11 @@ msgid "Find all the details related to your order below."
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:31:10
-msgid "Your order has been placed successfully."
+msgid "Your order has been placed."
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:33:10
-msgid "You can pay for your order to get tickets."
+msgid "Please pay for your tickets to complete the order now."
 msgstr ""
 
 #: app/templates/components/orders/order-summary.hbs:39:27
@@ -6793,40 +7490,40 @@ msgstr "割引"
 
 #: app/templates/components/orders/order-summary.hbs:50:46
 #: app/templates/components/orders/order-summary.hbs:63:45
-#: app/templates/components/public/ticket-list.hbs:11:48
+#: app/templates/components/public/ticket-list.hbs:10:48
 msgid "Subtotal"
 msgstr "小計"
 
 #: app/templates/components/orders/order-summary.hbs:61:35
-#: app/templates/components/public/ticket-list.hbs:129:27
+#: app/templates/components/public/ticket-list.hbs:131:27
 msgid "Tax"
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:104:20
+#: app/templates/components/orders/order-summary.hbs:110:24
 msgid "The price is inclusive of all taxes."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:109:22
+#: app/templates/components/orders/order-summary.hbs:115:26
 msgid "N/A"
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:143:16
+#: app/templates/components/orders/order-summary.hbs:149:16
 msgid "Grand Total"
 msgstr "総合計"
 
-#: app/templates/components/orders/order-summary.hbs:162:8
+#: app/templates/components/orders/order-summary.hbs:168:8
 msgid "Your order expired because you did not complete registration in time."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:164:8
+#: app/templates/components/orders/order-summary.hbs:170:8
 msgid "Please click on event link given on the right to order your tickets again."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:176:8
+#: app/templates/components/orders/order-summary.hbs:182:8
 msgid "Your order has been cancelled due to some unavoidable circumstances."
 msgstr ""
 
-#: app/templates/components/orders/order-summary.hbs:178:8
+#: app/templates/components/orders/order-summary.hbs:184:8
 msgid "Please contact the event organizer for further details."
 msgstr ""
 
@@ -6866,11 +7563,11 @@ msgstr ""
 msgid "You need to login to submit and view sessions."
 msgstr ""
 
-#: app/templates/components/public/call-for-speakers.hbs:50:6
+#: app/templates/components/public/call-for-speakers.hbs:49:4
 msgid "Add Speaker Details"
 msgstr ""
 
-#: app/templates/components/public/call-for-speakers.hbs:56:76
+#: app/templates/components/public/call-for-speakers.hbs:55:74
 msgid "Edit Speaker Details"
 msgstr ""
 
@@ -6886,12 +7583,16 @@ msgstr ""
 msgid "Getting Here"
 msgstr "ここで取得"
 
-#: app/templates/components/public/featured-speaker-list.hbs:1:4
+#: app/templates/components/public/featured-speaker-list.hbs:1:18
 msgid "Featured Speakers"
 msgstr ""
 
-#: app/templates/components/public/side-menu.hbs:69:101
-#: app/templates/components/public/side-menu.hbs:73:101
+#: app/templates/components/public/featured-speaker-list.hbs:10:66
+msgid "More Speakers"
+msgstr ""
+
+#: app/templates/components/public/side-menu.hbs:72:101
+#: app/templates/components/public/side-menu.hbs:76:101
 msgid "Getting here"
 msgstr ""
 
@@ -6899,33 +7600,45 @@ msgstr ""
 msgid "Site"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:45:54
+#: app/templates/components/public/ticket-list.hbs:32:50
+msgid "Sale ends on"
+msgstr ""
+
+#: app/templates/components/public/ticket-list.hbs:43:54
 msgid "Enter Donation"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:69:22
+#: app/templates/components/public/ticket-list.hbs:67:22
 msgid "includes"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:105:43
+#: app/templates/components/public/ticket-list.hbs:82:77
+msgid "Sold Out"
+msgstr ""
+
+#: app/templates/components/public/ticket-list.hbs:107:43
 msgid "Subtotal :"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:126:26
+#: app/templates/components/public/ticket-list.hbs:128:26
 msgid "Sub-Total"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:131:58
+#: app/templates/components/public/ticket-list.hbs:133:58
 msgid "Included in Total"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:161:28
+#: app/templates/components/public/ticket-list.hbs:163:28
 msgid "Promotional Code"
 msgstr ""
 
-#: app/templates/components/public/ticket-list.hbs:184:59
+#: app/templates/components/public/ticket-list.hbs:186:59
 msgid "Enter promotional code"
 msgstr "プロモーション コードを入力してください"
+
+#: app/templates/components/public/ticket-list.hbs:223:12
+msgid "Contact Organizer"
+msgstr ""
 
 #: app/templates/components/session-card.hbs:25:12
 msgid "Session Not Yet Scheduled"
@@ -6978,7 +7691,6 @@ msgstr ""
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:5:46
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:32:133
-#: app/templates/components/ui-table/cell/cell-roles.hbs:2:54
 #: app/templates/events/view/team/permissions.hbs:5:33
 msgid "Owner"
 msgstr ""
@@ -7026,22 +7738,6 @@ msgstr ""
 msgid "Event Dashboard"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/cell-roles.hbs:7:49
-msgid "Co-organizers"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/cell-roles.hbs:10:49
-msgid "Track-organizers"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/cell-roles.hbs:13:49
-msgid "Registrars"
-msgstr ""
-
-#: app/templates/components/ui-table/cell/cell-roles.hbs:16:49
-msgid "Moderators"
-msgstr ""
-
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:8:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:8:22
 #: app/templates/events/view/speakers.hbs:23:14
@@ -7059,18 +7755,13 @@ msgstr ""
 msgid "No Session Information Added Yet"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:2:20
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:4:20
-msgid "View Session"
-msgstr ""
-
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:8:20
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:12:20
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:16:20
 msgid "Delete Session"
 msgstr ""
 
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:8:68
-#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:12:68
+#: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:16:68
 msgid "Are you sure you would like to delete this Session?"
 msgstr ""
 
@@ -7098,7 +7789,7 @@ msgstr ""
 msgid "Unlock Session"
 msgstr ""
 
-#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:10:60
+#: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:60
 msgid "Are you sure you would like to delete this Speaker?"
 msgstr ""
 
@@ -7223,7 +7914,7 @@ msgstr ""
 msgid "Reset Map"
 msgstr ""
 
-#: app/templates/components/widgets/forms/location-input.hbs:77:36
+#: app/templates/components/widgets/forms/location-input.hbs:76:36
 msgid "Enter address"
 msgstr ""
 
@@ -7325,7 +8016,7 @@ msgstr ""
 
 #: app/templates/event-invoice/paid.hbs:24:8
 #: app/templates/event-invoice/review.hbs:30:18
-#: app/templates/orders/view.hbs:43:10
+#: app/templates/orders/view.hbs:53:10
 msgid "Download Invoice"
 msgstr "請求書をダウンロード"
 
@@ -7341,6 +8032,15 @@ msgstr ""
 msgid "Editing"
 msgstr ""
 
+#: app/templates/events/view/exhibitors/list.hbs:8:10
+msgid "Add Exhibitor"
+msgstr ""
+
+#: app/templates/events/view/exhibitors/reorder.hbs:10:13
+#: app/templates/events/view/speakers/reorder.hbs:10:13
+msgid "Swap Places"
+msgstr ""
+
 #: app/templates/events/view/scheduler.hbs:5:111
 msgid "Unpublish Schedule"
 msgstr "スケジュールの公開を取り下げ"
@@ -7353,8 +8053,25 @@ msgstr "スケジュールを公開"
 msgid "Unscheduled Sessions"
 msgstr "スケジュールされていないセッション"
 
+#: app/templates/events/view/session/view.hbs:14:8
+#: app/templates/public/cfs/view-session.hbs:25:8
+msgid "Timing:"
+msgstr ""
+
+#: app/templates/events/view/session/view.hbs:14:127
+#: app/templates/public/cfs/view-session.hbs:25:127
+msgid "-"
+msgstr ""
+
+#: app/templates/events/view/session/view.hbs:16:8
+#: app/templates/public/cfs/view-session.hbs:27:8
+#: app/templates/public/sessions.hbs:99:8
+#: app/templates/public/sessions.hbs:117:18
+msgid "Not yet scheduled"
+msgstr ""
+
 #: app/templates/events/view/sessions.hbs:19:109
-#: app/templates/events/view/speakers.hbs:32:109
+#: app/templates/events/view/speakers.hbs:35:109
 msgid "Export as CSV"
 msgstr ""
 
@@ -7364,17 +8081,17 @@ msgid "Create Session"
 msgstr "セッションを作成"
 
 #: app/templates/events/view/sessions.hbs:33:30
-#: app/templates/events/view/speakers.hbs:46:30
+#: app/templates/events/view/speakers.hbs:52:30
 msgid "In order to use this feature please activate \"Sessions and Speakers\" for the event."
 msgstr ""
 
 #: app/templates/events/view/sessions.hbs:34:30
-#: app/templates/events/view/speakers.hbs:47:30
+#: app/templates/events/view/speakers.hbs:53:30
 msgid "Please click"
 msgstr ""
 
 #: app/templates/events/view/sessions.hbs:34:126
-#: app/templates/events/view/speakers.hbs:47:126
+#: app/templates/events/view/speakers.hbs:53:126
 msgid "to activate this module."
 msgstr "このモジュールをアクティブにします。"
 
@@ -7398,7 +8115,11 @@ msgstr ""
 msgid "Once you delete an event, you will lose all the data related to this event."
 msgstr ""
 
-#: app/templates/events/view/speakers.hbs:34:14
+#: app/templates/events/view/speaker/view.hbs:13:83
+msgid "Edit speaker"
+msgstr ""
+
+#: app/templates/events/view/speakers.hbs:40:14
 msgid "Add Speaker"
 msgstr "スピーカーを追加"
 
@@ -7563,6 +8284,14 @@ msgstr ""
 msgid "No events found for selected filters"
 msgstr ""
 
+#: app/templates/groups/list.hbs:9:10
+msgid "Create Group"
+msgstr ""
+
+#: app/templates/groups/list.hbs:26:38
+msgid "No groups found for the events"
+msgstr ""
+
 #: app/templates/index.hbs:3:34
 msgid "Featured Events"
 msgstr ""
@@ -7604,19 +8333,19 @@ msgstr ""
 msgid "No Notifications"
 msgstr ""
 
-#: app/templates/orders/pending.hbs:47:14
+#: app/templates/orders/pending.hbs:52:14
 msgid "Pay Now"
 msgstr ""
 
-#: app/templates/orders/pending.hbs:67:80
+#: app/templates/orders/pending.hbs:72:80
 msgid "Pay with PayTM"
 msgstr ""
 
-#: app/templates/orders/pending.hbs:71:70
+#: app/templates/orders/pending.hbs:76:70
 msgid "Pay with AliPay"
 msgstr ""
 
-#: app/templates/orders/view.hbs:38:10
+#: app/templates/orders/view.hbs:47:12
 msgid "All Tickets"
 msgstr ""
 
@@ -7852,20 +8581,32 @@ msgstr ""
 msgid "Discount and access codes"
 msgstr ""
 
-#: app/templates/public.hbs:72:122
+#: app/templates/public.hbs:76:122
 msgid "Clear Track Filter"
 msgstr ""
 
-#: app/templates/public.hbs:89:16
+#: app/templates/public.hbs:93:16
 msgid "Rooms"
 msgstr ""
 
-#: app/templates/public.hbs:90:121
+#: app/templates/public.hbs:94:121
 msgid "Clear Room Filter"
 msgstr ""
 
-#: app/templates/public.hbs:131:12
+#: app/templates/public.hbs:111:164
+msgid "Clear Session Type Filter"
+msgstr ""
+
+#: app/templates/public.hbs:122:18
+msgid "Select Session Type"
+msgstr ""
+
+#: app/templates/public.hbs:163:12
 msgid "Login or Buy Tickets"
+msgstr ""
+
+#: app/templates/public.hbs:166:4
+msgid "You need to login or get a ticket for this event before you can join it online."
 msgstr ""
 
 #: app/templates/public/cfs/new-session.hbs:4:6
@@ -7876,42 +8617,92 @@ msgstr "セッションの詳細"
 msgid "Speaker Details"
 msgstr "スピーカーの詳細"
 
-#: app/templates/public/index.hbs:34:75
+#: app/templates/public/cfs/view-session.hbs:36:49
+msgid "Withdraw"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:18:33
+msgid "Meet Us In Our Exhibitor Video Room"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:20:16
+msgid "Join Exhibitor Video Room"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:55:16
+msgid "Get in touch"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:70:81
+msgid "Related Sessions"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:87:65
+msgid "Exhibitor Video"
+msgstr ""
+
+#: app/templates/public/exhibition/view.hbs:100:65
+msgid "Exhibitor Slides"
+msgstr ""
+
+#: app/templates/public/index.hbs:36:75
 msgid "To place a ticket order:"
 msgstr ""
 
-#: app/templates/public/index.hbs:50:6
+#: app/templates/public/index.hbs:52:6
 msgid "Supported By"
 msgstr ""
 
-#: app/templates/public/index.hbs:62:6
+#: app/templates/public/index.hbs:64:6
 msgid "Organized by"
 msgstr "主催者"
 
-#: app/templates/public/schedule.hbs:17:34
+#: app/templates/public/schedule.hbs:7:8
+msgid "List View"
+msgstr ""
+
+#: app/templates/public/schedule.hbs:28:34
 msgid "Schedule for the event is currently unavailable"
 msgstr ""
 
-#: app/templates/public/session/view.hbs:10:87
-msgid "Edit Session Proposal"
+#: app/templates/public/session/view/user/view.hbs:5:37
+msgid "schedule"
 msgstr ""
 
-#: app/templates/public/session/view.hbs:22:89
-msgid "Edit Speaker-"
+#: app/templates/public/sessions.hbs:6:8
+msgid "Calendar View"
 msgstr ""
 
-#: app/templates/public/sessions.hbs:23:59
-#: app/templates/public/sessions.hbs:25:119
+#: app/templates/public/sessions.hbs:16:12
+msgid "Public Schedule"
+msgstr ""
+
+#: app/templates/public/sessions.hbs:23:12
+msgid "My Schedule"
+msgstr ""
+
+#: app/templates/public/sessions.hbs:30:12
+msgid "My Speaker Sessions"
+msgstr ""
+
+#: app/templates/public/sessions.hbs:57:121
 msgid "By Title"
 msgstr ""
 
-#: app/templates/public/sessions.hbs:23:74
-#: app/templates/public/sessions.hbs:26:123
+#: app/templates/public/sessions.hbs:58:125
 msgid "By Time"
 msgstr ""
 
-#: app/templates/public/sessions.hbs:44:36
+#: app/templates/public/sessions.hbs:59:132
+msgid "By Popularity"
+msgstr ""
+
+#: app/templates/public/sessions.hbs:63:224
+msgid "Clear All Filters"
+msgstr ""
+
 #: app/templates/public/sessions.hbs:82:36
+#: app/templates/public/sessions.hbs:130:36
 msgid "No Sessions exist for this time period"
 msgstr ""
 
@@ -7925,6 +8716,1006 @@ msgstr ""
 
 #: app/templates/verify.hbs:7:7
 msgid "Error"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:14:11
+msgid "Andorra"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:18:11
+msgid "United Arab Emirates"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:22:11
+msgid "Afghanistan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:26:11
+msgid "Antigua And Barbuda"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:30:11
+msgid "Anguilla"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:34:11
+msgid "Albania"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:38:11
+msgid "Armenia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:42:11
+msgid "Angola"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:46:11
+msgid "Antarctica"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:50:11
+msgid "Argentina"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:54:11
+msgid "American Samoa"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:58:11
+msgid "Austria"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:62:11
+msgid "Australia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:66:11
+msgid "Aruba"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:70:11
+msgid "Åland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:74:11
+msgid "Azerbaijan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:78:11
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:82:11
+msgid "Barbados"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:86:11
+msgid "Bangladesh"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:90:11
+msgid "Belgium"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:94:11
+msgid "Burkina Faso"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:98:11
+msgid "Bulgaria"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:102:11
+msgid "Bahrain"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:106:11
+msgid "Burundi"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:110:11
+msgid "Benin"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:114:11
+msgid "Saint Barthélemy"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:118:11
+msgid "Bermuda"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:122:11
+msgid "Brunei"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:126:11
+msgid "Bolivia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:130:11
+msgid "Bonaire"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:134:11
+msgid "Brazil"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:138:11
+msgid "Bahamas"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:142:11
+msgid "Bhutan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:146:11
+msgid "Bouvet Island"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:150:11
+msgid "Botswana"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:154:11
+msgid "Belarus"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:158:11
+msgid "Belize"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:162:11
+msgid "Canada"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:166:11
+msgid "Cocos [Keeling] Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:170:11
+msgid "Democratic Republic Of Congo"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:174:11
+msgid "Central African Republic"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:178:11
+msgid "Republic Of the Congo"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:182:11
+msgid "Switzerland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:186:11
+msgid "Ivory Coast"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:190:11
+msgid "Cook Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:194:11
+msgid "Chile"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:198:11
+msgid "Cameroon"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:202:11
+msgid "China"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:206:11
+msgid "Colombia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:210:11
+msgid "Costa Rica"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:214:11
+msgid "Cuba"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:218:11
+msgid "Cape Verde"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:222:11
+msgid "Curacao"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:226:11
+msgid "Christmas Island"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:230:11
+msgid "Cyprus"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:234:11
+msgid "Czech Republic"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:238:11
+msgid "Germany"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:242:11
+msgid "Djibouti"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:246:11
+msgid "Denmark"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:250:11
+msgid "Dominica"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:254:11
+msgid "Dominican Republic"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:258:11
+msgid "Algeria"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:262:11
+msgid "Ecuador"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:266:11
+msgid "Estonia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:270:11
+msgid "Egypt"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:274:11
+msgid "Western Sahara"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:278:11
+msgid "Eritrea"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:282:11
+msgid "Spain"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:286:11
+msgid "Ethiopia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:290:11
+msgid "Finland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:294:11
+msgid "Fiji"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:298:11
+msgid "Falkland Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:302:11
+msgid "Micronesia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:306:11
+msgid "Faroe Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:310:11
+msgid "France"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:314:11
+msgid "Gabon"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:318:11
+msgid "United Kingdom"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:322:11
+msgid "Grenada"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:326:11
+msgid "Georgia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:330:11
+msgid "French Guiana"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:334:11
+msgid "Guernsey"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:338:11
+msgid "Ghana"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:342:11
+msgid "Gibraltar"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:346:11
+msgid "Greenland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:350:11
+msgid "Gambia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:354:11
+msgid "Guinea"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:358:11
+msgid "Guadeloupe"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:362:11
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:366:11
+msgid "Greece"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:370:11
+msgid "South Georgia and The South Sandwich Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:374:11
+msgid "Guatemala"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:378:11
+msgid "Guam"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:382:11
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:386:11
+msgid "Guyana"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:390:11
+msgid "Hong Kong"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:394:11
+msgid "Heard Island And McDonald Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:398:11
+msgid "Honduras"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:402:11
+msgid "Croatia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:406:11
+msgid "Haiti"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:410:11
+msgid "Hungary"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:414:11
+msgid "Indonesia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:418:11
+msgid "Ireland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:422:11
+msgid "Israel"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:426:11
+msgid "Isle of Man"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:430:11
+msgid "India"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:434:11
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:438:11
+msgid "Iraq"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:442:11
+msgid "Iran"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:446:11
+msgid "Iceland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:450:11
+msgid "Italy"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:454:11
+msgid "Jersey"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:458:11
+msgid "Jamaica"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:462:11
+msgid "Jordan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:466:11
+msgid "Japan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:470:11
+msgid "Kenya"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:474:11
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:478:11
+msgid "Cambodia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:482:11
+msgid "Kiribati"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:486:11
+msgid "Comoros"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:490:11
+msgid "Saint Kitts And Nevis"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:494:11
+msgid "North Korea"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:498:11
+msgid "South Korea"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:502:11
+msgid "Kuwait"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:506:11
+msgid "Cayman Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:510:11
+msgid "Kazakhstan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:514:11
+msgid "Laos"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:518:11
+msgid "Lebanon"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:522:11
+msgid "Saint Lucia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:526:11
+msgid "Liechtenstein"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:530:11
+msgid "Sri Lanka"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:534:11
+msgid "Liberia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:538:11
+msgid "Lesotho"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:542:11
+msgid "Lithuania"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:546:11
+msgid "Luxembourg"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:550:11
+msgid "Latvia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:554:11
+msgid "Libya"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:558:11
+msgid "Morocco"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:562:11
+msgid "Monaco"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:566:11
+msgid "Moldova"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:570:11
+msgid "Montenegro"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:574:11
+msgid "Saint Martin"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:578:11
+msgid "Madagascar"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:582:11
+msgid "Marshall Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:586:11
+msgid "North Macedonia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:590:11
+msgid "Mali"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:594:11
+msgid "Myanmar"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:598:11
+msgid "Mongolia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:602:11
+msgid "Macao"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:606:11
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:610:11
+msgid "Martinique"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:614:11
+msgid "Mauritania"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:618:11
+msgid "Montserrat"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:622:11
+msgid "Malta"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:626:11
+msgid "Mauritius"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:630:11
+msgid "Maldives"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:634:11
+msgid "Malawi"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:638:11
+msgid "Mexico"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:642:11
+msgid "Malaysia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:646:11
+msgid "Mozambique"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:650:11
+msgid "Namibia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:654:11
+msgid "New Caledonia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:658:11
+msgid "Niger"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:662:11
+msgid "Norfolk Island"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:666:11
+msgid "Nigeria"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:670:11
+msgid "Nicaragua"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:674:11
+msgid "Netherlands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:678:11
+msgid "Norway"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:682:11
+msgid "Nepal"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:686:11
+msgid "Nauru"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:690:11
+msgid "Niue"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:694:11
+msgid "New Zealand"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:698:11
+msgid "Oman"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:702:11
+msgid "Panama"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:706:11
+msgid "Peru"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:710:11
+msgid "French Polynesia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:714:11
+msgid "Papua New Guinea"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:718:11
+msgid "Philippines"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:722:11
+msgid "Pakistan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:726:11
+msgid "Poland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:730:11
+msgid "Saint Pierre And Miquelon"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:734:11
+msgid "Pitcairn Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:738:11
+msgid "Puerto Rico"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:742:11
+msgid "Palestinian"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:746:11
+msgid "Portugal"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:750:11
+msgid "Palau"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:754:11
+msgid "Paraguay"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:758:11
+msgid "Qatar"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:762:11
+msgid "Reunion"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:766:11
+msgid "Romania"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:770:11
+msgid "Serbia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:774:11
+msgid "Russian"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:778:11
+msgid "Rwanda"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:782:11
+msgid "Saudi Arabia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:786:11
+msgid "Solomon Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:790:11
+msgid "Seychelles"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:794:11
+msgid "Sudan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:798:11
+msgid "Sweden"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:802:11
+msgid "Singapore"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:806:11
+msgid "Saint Helena"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:810:11
+msgid "Slovenia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:814:11
+msgid "Svalbard And Jan Mayen"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:818:11
+msgid "Slovakia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:822:11
+msgid "Sierra Leone"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:826:11
+msgid "San Marino"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:830:11
+msgid "Senegal"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:834:11
+msgid "Somalia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:838:11
+msgid "Suriname"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:842:11
+msgid "South Sudan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:846:11
+msgid "Sao Tome and Principe"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:850:11
+msgid "El Salvador"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:854:11
+msgid "Sint Maarten"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:858:11
+msgid "Syria"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:862:11
+msgid "Swaziland"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:866:11
+msgid "Turks And Caicos Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:870:11
+msgid "Chad"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:874:11
+msgid "French Southern Territories"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:878:11
+msgid "Togo"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:882:11
+msgid "Thailand"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:886:11
+msgid "Tajikistan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:890:11
+msgid "Tokelau"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:894:11
+msgid "East Timor"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:898:11
+msgid "Turkmenistan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:902:11
+msgid "Tunisia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:906:11
+msgid "Tonga"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:910:11
+msgid "Turkey"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:914:11
+msgid "Trinidad And Tobago"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:918:11
+msgid "Tuvalu"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:922:11
+msgid "Taiwan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:926:11
+msgid "Tanzania"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:930:11
+msgid "Ukraine"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:934:11
+msgid "Uganda"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:938:11
+msgid "United States Minor Outlying Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:942:11
+msgid "United States"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:946:11
+msgid "Uruguay"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:950:11
+msgid "Uzbekistan"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:954:11
+msgid "Vatican City"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:958:11
+msgid "Saint Vincent And The Grenadines"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:962:11
+msgid "Venezuela"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:966:11
+msgid "British Virgin Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:970:11
+msgid "U.S. Virgin Islands"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:974:11
+msgid "Vietnam"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:978:11
+msgid "Vanuatu"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:982:11
+msgid "Wallis And Futuna"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:986:11
+msgid "Samoa"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:990:11
+msgid "Kosovo"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:994:11
+msgid "Yemen"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:998:11
+msgid "Mayotte"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:1002:11
+msgid "South Africa"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:1006:11
+msgid "Zambia"
+msgstr ""
+
+#: app/utils/dictionary/demography.ts:1010:11
+msgid "Zimbabwe"
 msgstr ""
 
 #: app/utils/dictionary/filters.js:4:13
@@ -7958,6 +9749,145 @@ msgstr "今月"
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
 msgstr ""
+
+#: app/utils/dictionary/licenses.ts:12:15
+msgid "Attribution-NonCommercial-NoDerivs"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:18:15
+msgid "Attribution-NonCommercial"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:24:15
+msgid "Public Domain Dedication (CC0)"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:30:15
+msgid "Attribution"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:36:15
+msgid "All rights reserved"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:42:15
+msgid "Attribution-NoDerivs"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:48:15
+msgid "Public Domain Work"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:54:15
+msgid "Attribution-NonCommercial-ShareAlike"
+msgstr ""
+
+#: app/utils/dictionary/licenses.ts:60:15
+msgid "Attribution-ShareAlike"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:21:13
+msgid "Polish zloty"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:31:13
+msgid "New Zealand dollar"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:41:13
+msgid "Indian rupee"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:51:13
+msgid "Brazilian real"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:61:13
+msgid "Singapore dollar"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:71:13
+msgid "Canadian dollar"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:81:13
+msgid "Hong Kong dollar"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:91:13
+msgid "Czech koruna"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:101:13
+msgid "Danish krone"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:111:13
+msgid "Norwegian krone"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:121:13
+msgid "Swedish krona"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:131:13
+msgid "New Taiwan dollar"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:141:13
+msgid "United States dollar"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:151:13
+msgid "Hungarian forint"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:161:13
+msgid "Japanese yen"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:171:13
+msgid "Israeli new sheqel"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:181:13
+msgid "European Euro"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:191:13
+msgid "Mexican peso"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:201:13
+msgid "Philippine peso"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:211:13
+msgid "Australian dollar"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:221:13
+msgid "British pound"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:231:13
+msgid "Thai baht"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:241:13
+msgid "Russian ruble"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:251:13
+msgid "Malaysian ringgit"
+msgstr ""
+
+#: app/utils/dictionary/payment.ts:261:13
+msgid "Swiss franc"
+msgstr ""
+
+#~ msgid "Edit Role"
+#~ msgstr "ロールを編集"
 
 #~ msgid "Valid from"
 #~ msgstr "有効期限開始"

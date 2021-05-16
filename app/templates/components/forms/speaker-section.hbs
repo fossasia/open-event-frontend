@@ -1,7 +1,14 @@
 {{#each this.fields as |field|}}
   {{#if field.isIncluded}}
     <form class="field">
-      <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+      <div class="inline">
+        <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+        {{#if field.isPublic}}
+          <div class="ui green horizontal label m-1">{{t 'Public'}}</div>
+        {{else}}
+          <div class="ui red horizontal label m-1">{{t 'Private'}}</div>
+        {{/if}}
+      </div>
       {{#if (is-input-field field.type) }}
         {{#if field.isLongText}}
           <Widgets::Forms::RichTextEditor
@@ -79,8 +86,7 @@
             @onChange={{action (mut this.data.speaker.gender)}} as |execute mapper|>
             <Input
               @type="hidden"
-              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
-              @value={{this.data.speaker.gender}} />
+              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select your gender'}}</div>
             <div class="menu">
@@ -109,4 +115,8 @@
       {{/if}}
     </form>
   {{/if}}
+{{else}}
+  <div class="sixteen wide column">
+    <h3 class="centered text">{{t 'Please enable session/speaker form to create a session/speaker.'}}</h3>
+  </div>
 {{/each}}

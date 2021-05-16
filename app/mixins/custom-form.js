@@ -43,6 +43,78 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'website',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'facebook',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'twitter',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'github',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'gitlab',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'linkedin',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : true,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'instagram',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'mastodon',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'comments',
         form            : 'session',
         type            : 'text',
@@ -305,6 +377,15 @@ export default Mixin.create(MutableArray, {
         isPublic        : true,
         isIncluded      : false,
         event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'mastodon',
+        form            : 'speaker',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
       })
     ];
   },
@@ -317,9 +398,27 @@ export default Mixin.create(MutableArray, {
   getCustomAttendeeForm(parent) {
     return [
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'gender',
+        fieldIdentifier : 'jobTitle',
         form            : 'attendee',
-        type            : 'select',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'phone',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'workPhone',
+        form            : 'attendee',
+        type            : 'text',
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
@@ -329,6 +428,33 @@ export default Mixin.create(MutableArray, {
         fieldIdentifier : 'ageGroup',
         form            : 'attendee',
         type            : 'select',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'gender',
+        form            : 'attendee',
+        type            : 'select',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'company',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'taxBusinessInfo',
+        form            : 'attendee',
+        type            : 'text',
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
@@ -371,87 +497,6 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'jobTitle',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'phone',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'taxBusinessInfo',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'billingAddress',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'homeAddress',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'shippingAddress',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'company',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'workAddress',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
-        fieldIdentifier : 'workPhone',
-        form            : 'attendee',
-        type            : 'text',
-        isRequired      : false,
-        isIncluded      : false,
-        isPublic        : false,
-        event           : parent
-      }),
-      this.store.createRecord('custom-form', {
         fieldIdentifier : 'website',
         form            : 'attendee',
         type            : 'text',
@@ -470,7 +515,25 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'linkedin',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'twitter',
+        form            : 'attendee',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'github',
         form            : 'attendee',
         type            : 'text',
         isRequired      : false,
@@ -488,10 +551,37 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        fieldIdentifier : 'github',
+        fieldIdentifier : 'instagram',
         form            : 'attendee',
         type            : 'text',
         isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'acceptReceiveEmails',
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'acceptShareDetails',
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'acceptVideoRecording',
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : true,
         isIncluded      : false,
         isPublic        : false,
         event           : parent

@@ -1,11 +1,11 @@
 <div class="ui stackable grid">
   {{#if @event.isMapShown}}
-    <div class="eight wide column event-map">
-      <h1>{{t 'Getting Here'}}</h1>
+    <div class="eight wide column event-map mt-16">
+      <h2>{{t 'Getting Here'}}</h2>
       {{#if (and @event.latitude @event.longitude)}}
-        <LeafletMap @lat={{@event.latitude}} @lng={{@event.longitude}} @zoom={{15}} as |layers|>
-          <layers.tile @url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
-          <layers.marker @location={{array @event.latitude @event.longitude}} as |marker|>
+        <LeafletMap @lat={{this.latitude}} @lng={{this.longitude}} @zoom={{15}} as |layers|>
+          <layers.tile @url={{this.mapTile}} @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
+          <layers.marker @location={{array this.latitude this.longitude}} as |marker|>
             <marker.popup>
               <h3>{{@event.name}}</h3>
               {{@event.locationName}}
@@ -17,8 +17,8 @@
       {{/if}}
     </div>
   {{/if}}
-  <div class="{{if @event.isMapShown 'eight' 'sixteen'}} wide column address">
-    <h1>{{t 'Address'}}</h1>
+  <div class="{{if @event.isMapShown 'eight' 'sixteen'}} wide column address mt-16">
+    <h2>{{t 'Address'}}</h2>
     <p>{{@event.locationName}}</p>
   </div>
 </div>

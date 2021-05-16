@@ -25,6 +25,7 @@ export default class Speaker extends ModelBase.extend({
   facebook           : attr('string'),
   github             : attr('string'),
   linkedin           : attr('string'),
+  mastodon           : attr('string'),
   instagram          : attr('string'),
   organisation       : attr('string'),
   isFeatured         : attr('boolean', { default: false }),
@@ -34,6 +35,7 @@ export default class Speaker extends ModelBase.extend({
   city               : attr('string'),
   gender             : attr('string'),
   heardFrom          : attr('string'),
+  order              : attr('number'),
   complexFieldValues : attr(),
 
   /**
@@ -54,4 +56,10 @@ export default class Speaker extends ModelBase.extend({
     }
   }
 
-}) {}
+}) {
+
+  get image() {
+    return this.thumbnailImageUrl || this.photoUrl || '/images/placeholders/avatar.png';
+  }
+
+}

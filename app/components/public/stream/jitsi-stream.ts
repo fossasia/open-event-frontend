@@ -23,6 +23,14 @@ export default class PublicStreamJitsiStream extends Component<Args> {
     const stream = this.args.videoStream;
     const channel = await stream.videoChannel;
 
+    const defaultToolbarButtons = [
+      'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
+      'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+      'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+      'videoquality', 'filmstrip', 'feedback', 'stats', 'shortcuts',
+      'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone', 'security'
+    ];
+
     const root = document.getElementById('jitsi-root');
 
     root!.innerHTML = '';  // eslint-disable-line @typescript-eslint/no-non-null-assertion
@@ -44,7 +52,8 @@ export default class PublicStreamJitsiStream extends Component<Args> {
         startWithVideoMuted : true
       },
       interfaceConfigOverwrite: {
-        HIDE_INVITE_MORE_HEADER: true
+        HIDE_INVITE_MORE_HEADER : true,
+        TOOLBAR_BUTTONS         : defaultToolbarButtons
       }
     };
     const api = new window.JitsiMeetExternalAPI(domain, options);

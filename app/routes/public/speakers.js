@@ -3,59 +3,81 @@ import Route from '@ember/routing/route';
 
 export const SPEAKERS_FILTER = [
   {
-    and: [
-      {
-        name : 'sessions',
-        op   : 'any',
-        val  : {
+    name : 'sessions',
+    op   : 'any',
+    val  : {
+      and: [
+        {
           name : 'deleted-at',
           op   : 'eq',
           val  : null
+        },
+        {
+          or: [{
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
+          }, {
+            name : 'state',
+            op   : 'eq',
+            val  : 'confirmed'
+          }]
         }
-      },
-      {
-        or: [
-          {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'accepted'
-            }
-          },
-          {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'confirmed'
-            }
-          }
-        ]
-      }
-    ]
+      ]
+    }
   }
 ];
 
 @classic
 export default class SpeakersRoute extends Route {
-  async model() {
+  queryParams = {
+    search: {
+      refreshModel: true
+    }
+  }
+
+  titleToken() {
+    return this.l10n.t('Speakers');
+  }
+
+  async model(params) {
     const eventDetails = this.modelFor('public');
+    const filterOptions = [...SPEAKERS_FILTER];
+
+    if (params.search) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'name',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'organisation',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'position',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          }
+        ]
+      });
+    }
     return {
       event    : eventDetails,
       speakers : await this.infinity.model('speakers', {
-        filter       : SPEAKERS_FILTER,
-        perPage      : 21,
+        filter       : filterOptions,
+        perPage      : 9,
         startingPage : 1,
         perPageParam : 'page[size]',
         pageParam    : 'page[number]',
         store        : eventDetails,
-        include      : 'sessions.track'
+        include      : 'sessions.track',
+        sort         : 'order',
+        public       : true
       })
     };
-
-
   }
 }

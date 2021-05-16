@@ -4,9 +4,12 @@ import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
-import { allSettled } from 'rsvp';
+import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
+import moment from 'moment';
 
+
+const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
@@ -14,6 +17,35 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @tracked integrationLoading = false;
   @tracked loading = false;
+  @tracked moderatorEmail = '';
+  @tracked deletedModerators = [];
+  @tracked videoRecordings = [];
+
+  get recordingColumns() {
+    return [
+      {
+        name      : this.l10n.t('Number of Participants'),
+        valuePath : 'participants'
+      },
+      {
+        name      : this.l10n.t('Start time'),
+        valuePath : 'startTime'
+      },
+      {
+        name      : this.l10n.t('End time'),
+        valuePath : 'endTime'
+      },
+      {
+        name      : this.l10n.t('Duration'),
+        valuePath : 'size'
+      },
+      {
+        name          : this.l10n.t('View'),
+        valuePath     : 'url',
+        cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-recording'
+      }
+    ];
+  }
 
   @computed('data.stream.rooms.[]')
   get room() {
@@ -54,6 +86,16 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
               prompt : this.l10n.t('Please enter a valid url')
+            }
+          ]
+        },
+        email: {
+          optional : true,
+          rules    : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid email')
             }
           ]
         }
@@ -103,6 +145,23 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   addBigBlueButton(channel) {
     this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+    this.data.stream.set('extra', { bbb_options });
+  }
+
+  add3cx() {
+    this.data.stream.set('url', '');
+  }
+
+  @action
+  async addYoutube() {
+    this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    this.data.stream.set('url', 'watch?v=');
+  }
+
+  @action
+  async addVimeo() {
+    this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    this.data.stream.set('url', '');
   }
 
   @action
@@ -111,8 +170,17 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       case 'jitsi':
         await this.addJitsi(channel);
         break;
+      case '3cx':
+        await this.add3cx();
+        break;
       case 'bbb':
         this.addBigBlueButton(channel);
+        break;
+      case 'youtube':
+        this.addYoutube();
+        break;
+      case 'vimeo':
+        this.addVimeo();
         break;
     }
   }
@@ -136,12 +204,19 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
-  submit(event) {
+  async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
       try {
         this.loading = true;
         await this.data.stream.save();
+        const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
+          return moderator.save();
+        });
+        const deleteModerators = this.deletedModerators.map(moderator => {
+          return moderator.destroyRecord();
+        });
+        await all([...saveModerators, ...deleteModerators]);
         this.notify.success(this.l10n.t('Your stream has been saved'),
           {
             id: 'stream_save'
@@ -158,5 +233,56 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.loading = false;
       }
     });
+  }
+
+  @action
+  addModerator() {
+    if (this.moderatorEmail === '') {
+      return;
+    }
+    this.onValid(() => {
+      const existingEmails = this.data.stream.moderators.map(moderator => moderator.email);
+      if (!existingEmails.includes(this.moderatorEmail)) {
+        const moderator = this.store.createRecord('video-stream-moderator', {
+          email       : this.moderatorEmail,
+          videoStream : this.data.stream
+        });
+        this.data.stream.moderators.pushObject(moderator);
+      }
+      this.moderatorEmail = '';
+    });
+  }
+
+  @action
+  deleteModerator(moderator) {
+    this.deletedModerators.push(moderator);
+    this.data.stream.moderators.removeObject(moderator);
+  }
+
+  async loadRecordings() {
+    try {
+      const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
+      this.videoRecordings = recordings.result.response.recordings?.recording.map(rec => ({
+        participants : rec.participants,
+        startTime    : moment(Number(rec.startTime)).format('dddd, D MMMM, YYYY h:mm A'),
+        endTime      : moment(Number(rec.endTime)).format('dddd, D MMMM, YYYY h:mm A'),
+        size         : moment.duration(Number(rec.endTime) - Number(rec.startTime)).humanize(),
+        url          : rec.playback.format.url
+      }));
+    } catch (e) {
+      console.error('Error while getting recordings f', e);
+    }
+  }
+
+  didInsertElement() {
+    if (this.data.stream.videoChannel.get('provider') === 'bbb') {
+      this.loadRecordings();
+    }
+    if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
+      this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    }
+    if (!this.data.stream.extra?.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
+      this.data.stream.set('extra', { bbb_options });
+    }
   }
 }

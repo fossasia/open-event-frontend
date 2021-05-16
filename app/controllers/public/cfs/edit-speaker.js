@@ -1,9 +1,12 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class EditSpeakerController extends Controller {
+  @service errorHandler;
+
   @action
   save() {
     this.set('isLoading', true);
@@ -13,14 +16,11 @@ export default class EditSpeakerController extends Controller {
           {
             id: 'speaker_det_save'
           });
-        this.transitionToRoute('public.cfs.index');
+        this.transitionToRoute('public.cfs.view-speaker', this.model.event.identifier, this.model.speaker.id);
       })
       .catch(e => {
         console.error('Error while editing speaker', e);
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'),
-          {
-            id: 'some_error'
-          });
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);
