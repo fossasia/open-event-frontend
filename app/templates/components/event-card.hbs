@@ -9,41 +9,25 @@
       </div>
     {{/unless}}
   {{/if}}
-  <div class="ui card {{this.eventClass}} {{if this.isWide 'h-auto' 'h-100'}}">
+  <div class="ui card {{this.eventClass}} {{if this.isWide 'h-auto' 'h-full'}}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
         <Widgets::SafeImage
           @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
       </a>
     {{/unless}}
-
-    {{#if this.isWide}}
-      {{!-- On the search page --}} 
-            <a class="main content {{unless this.device.isMobile 'h-80perc'}}" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
-              <SmartOverflow @class="header">
-                {{this.event.name}}
-              </SmartOverflow>
-              <div class="meta mb-2">
-                <span class="date">
-                  <Public::EventDateTime @event={{@event}} @noBreak={{true}} />
-                </span>
-              </div>
-              <Public::EventVenue @event={{@event}} />
-            </a>
-      {{!-- On the home page --}}
-    {{else}}
-            <a class="main content" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
-              <SmartOverflow @class="header">
-                {{this.event.name}}
-              </SmartOverflow>
-              <div class="meta mb-2">
-                <span class="date">
-                  <Public::EventDateTime @event={{@event}} @noBreak={{true}} />
-                </span>
-              </div>
-              <Public::EventVenue @event={{@event}} />
-            </a>  
-    {{/if}}
+ 
+    <a class="main content {{if this.isWide (unless this.device.isMobile 'h-80perc')}}" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
+      <SmartOverflow @class="header">
+        {{this.event.name}}
+      </SmartOverflow>
+      <div class="meta mb-2">
+        <span class="date">
+          <Public::EventDateTime @event={{@event}} @noBreak={{true}} />
+        </span>
+      </div>
+      <Public::EventVenue @event={{@event}} />
+    </a>
 
     <div class="extra content small text">
       <span class="right floated">
