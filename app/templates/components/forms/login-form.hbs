@@ -34,7 +34,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <Input class="rounded-r-none" @type="{{if this.showPass 'text' 'password'}}" @name="password" placeholder={{t "Password"}} @value={{this.password}} />
+              <Input class="rounded-r-none w-30" @type="{{if this.showPass 'text' 'password'}}" @name="password" placeholder={{t "Password"}} @value={{this.password}} />
               <div class="ui small basic icon buttons rounded-l-none">
                 <button type="button" class="ui button" {{action 'showPassword'}}>
                   <i class="{{if this.showPass 'hide' 'unhide'}} basic icon"></i>
