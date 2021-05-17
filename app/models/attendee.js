@@ -35,7 +35,6 @@ export default ModelBase.extend({
   linkedin             : attr('string'),
   gender               : attr('string'),
   ageGroup             : attr('string'),
-  profileImage         : attr('number'),
   acceptReceiveEmails  : attr('boolean', { defaultValue: true }),
   acceptVideoRecording : attr('boolean', { defaultValue: true }),
   acceptShareDetails   : attr('boolean', { defaultValue: true }),
