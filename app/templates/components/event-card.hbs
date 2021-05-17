@@ -16,7 +16,6 @@
           @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
       </a>
     {{/unless}}
- 
     <a class="main content {{if this.isWide (unless this.device.isMobile 'h-80perc')}}" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
       <SmartOverflow @class="header">
         {{this.event.name}}
@@ -28,7 +27,6 @@
       </div>
       <Public::EventVenue @event={{@event}} />
     </a>
-
     <div class="extra content small text">
       <span class="right floated">
         <i role="button" class="share alternate link icon" {{action this.shareEvent this.event}}></i>
