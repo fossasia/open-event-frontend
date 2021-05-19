@@ -38,7 +38,7 @@
         </div>
       </div>
       {{#if this.showHcaptcha}}
-        <HCaptcha class="w-30" @onSuccess={{action (mut this.captcha)}} @onExpired={{action (mut this.captcha)}} @onRender={{action (mut this.captchaRendered)}} />
+        <HCaptcha @onSuccess={{action (mut this.captcha)}} @onExpired={{action (mut this.captcha)}} @onRender={{action (mut this.captchaRendered)}} />
       {{/if}}
       <div class="ui center aligned segment basic">
         <button type="submit" class="ui fluid large teal submit button register {{if (and (not this.captcha) this.showHcaptcha this.captchaRendered) 'disabled'}}">
