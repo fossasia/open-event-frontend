@@ -63,7 +63,9 @@ export default Component.extend({
       const updateValue = () => {
         debounce(this, () => {
           let value = String(this.editor.getValue()).replace(/(<br>)*$/g, '');
-          value = value + '<br>';
+          if (navigator.userAgent.indexOf('Firefox') !== -1) {
+            value = value + '<br>';
+          }
           let trimmedValue = new String('');
           let i = value.length;
           while (i--) {
