@@ -62,7 +62,15 @@ export default Component.extend({
 
       const updateValue = () => {
         debounce(this, () => {
-          const value = String(this.editor.getValue()).replace(/(\\n|\\r|\\r\\n)|((<br>)*$)/g, '');
+          let value = String(this.editor.getValue()).replace(/(\\n|\\r|\\r\\n)|((<br>)*$)/g, '');
+          let trimmedValue = new String('');
+          let i = value.length;
+          while (i--) {
+            if (value.charCodeAt(i) !== 10) {
+              trimmedValue = (value.charAt(i)) + trimmedValue;
+            }
+          }
+          value = trimmedValue;
           this.setProperties({ _value: value, value });
         }, 200);
       };
