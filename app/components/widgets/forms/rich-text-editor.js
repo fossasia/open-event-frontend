@@ -62,7 +62,7 @@ export default Component.extend({
 
       const updateValue = () => {
         debounce(this, () => {
-          const value = String(this.editor.getValue()).replace(/(<br>)*$/g, '').replace(/(\\n|\\r|\\r\\n)/g, '');
+          const value = String(this.editor.getValue()).replace(/(\\n|\\r|\\r\\n)|((<br>)*$)/g, '');
           this.setProperties({ _value: value, value });
         }, 200);
       };
