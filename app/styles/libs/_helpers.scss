@@ -127,6 +127,10 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
   justify-content: center;
 }
 
+.content-end {
+  justify-content: flex-end !important;
+}
+
 .w-fit {
   width: fit-content;
 }
@@ -145,3 +149,28 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
 .w-full {
   width: 100% !important;
 }
+
+.h-full {
+  height: 100% !important;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.border {
+  border: 1px solid rgb(240, 240, 240);
+}
+
+.w-90 {
+  min-width: 90px !important;
+}
+
+.color-inherit {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+

@@ -10,6 +10,26 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
   get columns() {
     return [
       {
+        name            : this.l10n.t('State'),
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
+        width           : 90,
+        valuePath       : 'status',
+        isSortable      : true,
+        extraValuePaths : ['id', 'status'],
+        options         : {
+          sessionStateMap: {
+            organizer: {
+              accepted : { pending: true },
+              pending  : { accepted: true }
+            }
+          }
+        },
+        actions: {
+          changeState: this.changeState.bind(this)
+        }
+      },
+      {
         name          : this.l10n.t('Logo'),
         valuePath     : 'logoUrl',
         cellComponent : 'ui-table/cell/cell-image'
@@ -33,6 +53,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
       },
       {
         name      : this.l10n.t('Description'),
+        width     : 210,
         valuePath : 'description'
       },
       {
@@ -41,6 +62,29 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
         cellComponent : 'ui-table/cell/cell-url'
       }
     ];
+  }
+
+  @action async changeState(id, state) {
+    const exhibitor =  this.store.peekRecord('exhibitor', id, { backgroundReload: false });
+    const oldState = exhibitor.status;
+    exhibitor.set('status', state);
+    this.set('isLoading', true);
+
+    try {
+      await exhibitor.save();
+      this.notify.success(this.l10n.t('{{item}} has been {{action}} successfully.', {
+        item   : this.l10n.t('Exhibitor'),
+        action : state
+      }), {
+        id: 'exhibitor_state'
+      });
+      this.refreshModel.bind(this)();
+    } catch (e) {
+      exhibitor.set('status', oldState);
+      this.errorHandler.handle(e);
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 
   @action async delete(id) {

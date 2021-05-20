@@ -223,20 +223,37 @@ export default class ExploreRoute extends Route {
           ]
       });
     } else if (params.start_date) {
-      filterOptions.push({
-        or: [
-          {
-            name : 'starts-at',
-            op   : 'ge',
-            val  : params.start_date
-          },
-          {
-            name : 'ends-at',
-            op   : 'ge',
-            val  : params.start_date
-          }
-        ]
-      });
+      if (params.start_date === 'all_date') {
+        filterOptions.push({
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'le',
+              val  : moment().toISOString()
+            },
+            {
+              name : 'ends-at',
+              op   : 'ge',
+              val  : moment().toISOString()
+            }
+          ]
+        });
+      } else {
+        filterOptions.push({
+          or: [
+            {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : params.start_date
+            },
+            {
+              name : 'ends-at',
+              op   : 'ge',
+              val  : params.start_date
+            }
+          ]
+        });
+      }
     } else if (params.is_past) {
       filterOptions.push({
         and: [
@@ -272,7 +289,7 @@ export default class ExploreRoute extends Route {
     return this.infinity.model('event', {
       include      : 'event-topic,event-sub-topic,event-type',
       filter       : filterOptions,
-      sort         : params.is_past ? '-starts-at' : 'starts-at',
+      sort         : params.is_past || (params.start_date === 'all_date') ? '-starts-at' : 'starts-at',
       perPage      : 6,
       startingPage : 1,
       perPageParam : 'page[size]',

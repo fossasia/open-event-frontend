@@ -3,14 +3,19 @@ import { action } from '@ember/object';
 import Component from '@ember/component';
 import { tagName } from '@ember-decorators/component';
 import { tracked } from '@glimmer/tracking';
-import { hasSpeakers, hasSessions } from 'open-event-frontend/utils/event';
+import { inject as service } from '@ember/service';
+import { hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
 
 @classic
 @tagName('')
 export default class SideMenu extends Component {
+  @service('event') eventService;
 
   @tracked
   showSpeakers = null;
+
+  @tracked
+  showExhibitors = null;
 
   @tracked
   showSessions = null;
@@ -23,10 +28,15 @@ export default class SideMenu extends Component {
 
     this.checkSpeakers();
     this.checkSessions();
+    this.checkExhibitors();
   }
 
   async checkSpeakers() {
-    this.showSpeakers = this.showSpeakers ?? await hasSpeakers(this.loader, this.event);
+    this.showSpeakers = this.showSpeakers ?? await this.eventService.hasSpeakers(this.event.id);
+  }
+
+  async checkExhibitors() {
+    this.showExhibitors = this.showExhibitors ?? await hasExhibitors(this.loader, this.event);
   }
 
   async checkSessions() {

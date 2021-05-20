@@ -1,31 +1,69 @@
-<h1 class="ui header" id="session-heading">{{t 'Sessions'}}</h1>
-
+<div class="{{if this.device.isMobile 'mt--8'}} d-flex" style="align-items: center;">
+  <div class="d-flex wrap mb-4 items-center">
+    <h1 class="m-0 mr-4 ui header" id="session-heading">{{t 'Schedule'}}</h1>
+    <div>
+      <LinkTo @route="public.schedule" class="ui button">
+        {{t 'Calendar View'}}
+      </LinkTo>
+    </div>
+  </div>
+    {{#if this.session.isAuthenticated}}
+      <LinkTo
+        class="rounded-default link-item ui right floated p-1 ml-auto mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}} mb-4"
+        @route="public.sessions"
+        @models={{array this.model.event.id}}
+        @query={{hash my_schedule=null my_speaker_sessions=null}}>
+        <h4>{{t 'Public Schedule'}}</h4>
+      </LinkTo>
+      <LinkTo
+        class="rounded-default link-item ui right floated p-1 mb-4 mr-4 {{if this.my_schedule 'active'}}"
+        @route="public.sessions"
+        @models={{array this.model.event.id}}
+        @query={{hash my_schedule=true my_speaker_sessions=null}}>
+        <h4>{{t 'My Schedule'}}</h4>
+      </LinkTo>
+      <LinkTo
+        class="rounded-default link-item ui right floated p-1 mb-4 {{if (eq this.params.my_speaker_sessions true) 'active'}}"
+        @route="public.sessions"
+        @models={{array this.model.event.id}}
+        @query={{hash my_speaker_sessions=true my_schedule=null}}>
+        <h4>{{t 'My Speaker Sessions'}}</h4>
+      </LinkTo> 
+    {{/if}}
+</div>
 <div class="d-flex wrap">
   <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=null}} class="ui button mb-2">{{t 'All'}}</LinkTo>
   {{#each this.allDates as |date|}}
     <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'date-short'}}</LinkTo>
   {{/each}}
 
-  <Widgets::TimeZonePicker
-    class="mb-2 ml-auto mr-2"
-    @defaultLocal={{this.model.event.online}}
-    @eventTimezone={{this.model.event.timezone}}
-    @timezone={{this.timezone}} />
+  <div class="d-flex content-end wrap ml-auto">
+    <Widgets::TimeZonePicker
+      class="mb-2 mr-2 w-90"
+      @defaultLocal={{this.model.event.online}}
+      @eventTimezone={{this.model.event.timezone}}
+      @timezone={{this.timezone}} />
 
-  <Tables::Utilities::SearchBox
-    class="mb-2 mr-2"
-    @searchQuery={{this.search}}
-    @size="large"
-  />
+    <Tables::Utilities::SearchBox
+      class="mb-2 mr-2"
+      @searchQuery={{this.search}}
+      @size="large"
+    />
 
-  <UiDropdown class="labeled icon button mb-2">
-    <i class="sort amount down icon"></i>
-    <span class="default text">{{if (eq this.sort 'title') (t 'By Title') (t 'By Time')}}</span>
-    <div class="menu">
-      <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='title'}} class="item">{{t 'By Title'}}</LinkTo>
-      <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>
-    </div>
-  </UiDropdown>
+    <UiDropdown class="labeled icon button mb-2 mr-2">
+      <i class="sort amount down icon"></i>
+      <span class="default text">{{this.sortTitle}}</span>
+      <div class="menu">
+        <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='title'}} class="item">{{t 'By Title'}}</LinkTo>
+        <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at'}} class="item">{{t 'By Time'}}</LinkTo>
+        <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='-favourite-count'}} class="item">{{t 'By Popularity'}}</LinkTo>
+      </div>
+    </UiDropdown>
+
+    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} data-tooltip="{{t 'Clear All Filters'}}" class="pb-2 pt-2 ui button mb-2">
+      <i><Icons::ClearFilter /></i>
+    </LinkTo>
+  </div>
 </div>
 
 {{!-- To be enabled and developed on later --}}
@@ -43,7 +81,7 @@
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
-  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
+  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{1000}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
       </div>
@@ -54,7 +92,13 @@
 <div class="mt-8">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
-    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">{{group.date}}</h3>
+    <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">
+      {{#if (not-eq group.date "Invalid date")}}
+        {{group.date}}
+      {{else}}
+        {{t 'Not yet scheduled'}}
+      {{/if}}
+    </h3>
     <table class="ui very basic table">
       <thead class="full-width">
         <tr>
@@ -67,11 +111,15 @@
           <tr>
             <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
               <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}">
-                {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
+                {{#if session.startsAt}}
+                  {{general-date session.startsAt 'time-tz-short' tz=this.timezone}}
+                {{else}}
+                  {{t 'Not yet scheduled'}}
+                {{/if}}
               </h4>
             </td>
             <td style="border-top: none; border-left: 1px solid lightgrey">
-              <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} @sameTab={{this.side_panel}} />
+              <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} @showFavButton={{true}} @sameTab={{this.side_panel}} />
             </td>
           </tr>
         {{/each}}
@@ -81,7 +129,7 @@
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/if}}    
-  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
+  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{1000}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
       </div>

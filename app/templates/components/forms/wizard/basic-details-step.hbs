@@ -210,7 +210,7 @@
   <div class="ui section divider"></div>
     <div class="field">
       <label class="required">{{t 'Ticketing System'}}</label>
-      <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}}">
+      <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
         {{#if this.data.event.tickets}}
           <div class="ui stackable celled five column grid ticket-header">
             <div class="row weight-600">
@@ -607,7 +607,8 @@
   {{/if}}
   <div class="field">
     <label for="description">{{t 'After Order Message'}}</label>
-    <Textarea
+    <Widgets::Forms::RichTextEditor
+      @textareaId="after_order_message"
       @value={{this.data.event.afterOrderMessage}} />
   </div>
 </form>

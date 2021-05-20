@@ -14,7 +14,7 @@ export default class SpeakerItem extends Component {
   @computed
   get hasSocialLinks() {
     const currentSpeaker = this.speaker;
-    return (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience);
+    return (currentSpeaker.twitter || currentSpeaker.facebook || currentSpeaker.github || currentSpeaker.linkedin || currentSpeaker.shortBiography || currentSpeaker.longBiography || currentSpeaker.speakingExperience || currentSpeaker.website);
   }
 
   @computed

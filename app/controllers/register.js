@@ -20,8 +20,9 @@ export default class RegisterController extends Controller {
   createUser() {
     const { password } = this.model;
     this.model.save()
-      .then(user => {
+      .then(async user => {
         this.set('session.newUser', user.get('email'));
+        await this.confirm.prompt(this.l10n.t('Thank you for signing up on eventyay.com.'), { hideDeny: true, approveText: this.l10n.t('OK'), extra: this.l10n.t('We have sent an email with a verification link to you. Please go to your email account and verify your email to get full access to the system. We are logging you into your newly created account now, but your account functionalities are limited until your email is verified. Please press "Ok" to be redirected to the previous page.') });
         this.send('loginExistingUser', user.get('email'), password, this.inviteToken, this.event);
       })
       .catch(reason => {

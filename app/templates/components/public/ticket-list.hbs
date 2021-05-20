@@ -5,7 +5,6 @@
       {{#unless this.device.isMobile}}
         <tr>
           <th>{{t 'Type'}}</th>
-          <th class="three wide"></th>
           <th class="ui four wide single line">{{t 'Price'}}</th>
           <th class="one wide">{{t 'Quantity'}}</th>
           <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
@@ -30,10 +29,9 @@
                 <small class="ui gray-text tiny">{{ticket.description}}</small>
               {{/if}}
               <div>
-                <small class="ui gray-text small">Sale ends on {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
+                <small class="ui gray-text small">{{t 'Sale ends on'}} {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
               </div>
             </td>
-            <td></td>
             <td id="{{ticket.id}}_price">
               {{#if (eq ticket.type 'donation') }}
                 <div class="field m-0">
@@ -46,7 +44,7 @@
                       @min={{ticket.minPrice}}
                       @max={{ticket.maxPrice}}
                       @value={{ticket.price}}
-                      @keyUp={{action "onChangeDonation"}} />
+                      @input={{action "onChangeDonation"}} />
                   </div>
                 </div>
               {{else}}
@@ -167,11 +165,11 @@
                 @key-up={{action "handleKeyPress"}}
                 @id="promotionalCode" />
               {{#unless this.promotionalCodeApplied}}
-                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
-                  <i class="checkmark icon"></i>
+                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
+                {{t 'Apply code'}}
                 </div>
               {{/unless}}
-              <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
+              <div role="button" class="ui black icon button p-4" {{action 'togglePromotionalCode'}}>
                 <i class="remove icon"></i>
               </div>
             </div>
@@ -243,4 +241,3 @@
     @event={{this.event}}
     @isOpen={{this.isContactOrganizerModalOpen}} />
 {{/if}}
-

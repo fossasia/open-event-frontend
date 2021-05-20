@@ -7,6 +7,11 @@ import { extractYoutubeUrl } from 'open-event-frontend/utils/url';
 
 export default class SessionItem extends Component {
   @service router;
+  @service store;
+  @service authManager;
+  @service confirm;
+  @service l10n;
+  @service session;
 
   @tracked
   hideImage = this.args.expanded;
@@ -61,6 +66,32 @@ export default class SessionItem extends Component {
       location.href = url;
     } else {
       window.open(url, '_blank');
+    }
+  }
+
+  @action
+  async favourite() {
+    if (!this.session.isAuthenticated) {
+      try {
+        await this.confirm.prompt(this.l10n.t('Please login to add a session to your personal schedule.'));
+        this.router.transitionTo('login');
+      } catch (e) {
+        if (e) {
+          console.error(e);
+        }
+      }
+      return;
+    }
+
+    const { session } = this.args;
+    const favourite = session.belongsTo('favourite').value();
+    if (favourite) {
+      await favourite.destroyRecord();
+    } else {
+      const fav = await this.store.createRecord('user-favourite-session', {
+        session
+      });
+      await fav.save();
     }
   }
 }

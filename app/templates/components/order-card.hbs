@@ -7,7 +7,7 @@
     </div>
   {{/unless}}
   <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
-    <div class="order card main content">
+    <div class="{{unless this.device.isMobile 'order card'}} content">
       <div class="right floated author">
         {{#each-in (group-by 'name' (map-by 'ticket' this.order.attendees)) as |name tickets|}}
           <div class="ui green large label">{{tickets.length}} x {{name}}</div>
@@ -26,10 +26,12 @@
           <Public::EventDateTime @event={{@order.event}} @noBreak={{true}} />
         </span>
       </div>
-      <Public::EventVenue @event={{@order.event}} />
+      <div class="pt-1">
+        <Public::EventVenue @event={{@order.event}} />
+      </div>
     </div>
 
-      <span class="ml-2">
+      <div class="pl-4 pt-2">
         <span>
           {{#if this.isFreeOrder}}
             {{t 'Free'}}
@@ -42,7 +44,7 @@
         {{#if this.order.completedAt}}
           <span>{{t 'on'}} {{general-date this.order.completedAt 'date-time-short'}}</span>
         {{/if}}
-      </span>
+      </div>
       <div class="extra content small text">
       {{#if (not-eq order.status "completed")}}
           <a class="ui {{order-color this.order.status}} large label" href="{{href-to 'orders.view' this.order.identifier}}">

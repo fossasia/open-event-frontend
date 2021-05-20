@@ -7,20 +7,34 @@ import { groupBy } from 'lodash-es';
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort', 'search'];
+  queryParams = ['sort', 'search', 'date', 'my_schedule'];
   search = null;
   sort = 'starts-at';
+  date = null;
   isTrackVisible = false;
   timezone = null;
   dates = null;
   preserveScrollPosition = true;
+  my_schedule=null;
+
+  @computed('sort')
+  get sortTitle() {
+    switch (this.sort) {
+      case 'title':
+        return 'By Title';
+      case null:
+      case 'starts-at':
+        return 'By Time';
+      default:
+        return 'By Popularity';
+    }
+  }
 
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
-
-    if (this.sort === 'title') {
-      sessions = groupBy(this.model.session.toArray(), '');
+    if (this.sort !== 'starts-at') {
+      sessions = groupBy([...new Set(this.model.session.toArray())], '');
     } else {
       sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
     }
@@ -31,7 +45,7 @@ export default class SessionsController extends Controller {
   @computed('model.event.startsAt', 'model.event.endsAt', 'dates', 'timezone')
   get allDates() {
     if (this.dates) {
-      const uniqueDates = new Set(this.dates.toArray()
+      const uniqueDates = new Set(this.dates
         .map(date => moment.tz(date.startsAt, this.timezone).toISOString())
         .sort()
         .map(date => moment(date).format('YYYY-MM-DD')));
@@ -83,7 +97,7 @@ export default class SessionsController extends Controller {
       'page[size]'      : 0
     });
 
-    this.set('dates', sessions);
+    this.set('dates', sessions.toArray());
   }
 
   get side_panel() {

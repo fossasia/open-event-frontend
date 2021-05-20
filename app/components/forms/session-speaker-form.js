@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { groupBy, orderBy } from 'lodash-es';
+import { groupBy, orderBy, sortBy } from 'lodash-es';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validPhoneNumber } from 'open-event-frontend/utils/validators';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
@@ -409,8 +409,8 @@ export default Component.extend(FormMixin, {
   allFields: computed('fields', function() {
     const grouped = groupBy(this.fields.toArray(), field => field.get('form'));
 
-    grouped.speaker = sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER);
-    grouped.session = sortCustomFormFields(grouped.session, SESSION_FORM_ORDER);
+    grouped.speaker = sortBy(sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER), 'position');
+    grouped.session = sortBy(sortCustomFormFields(grouped.session, SESSION_FORM_ORDER), 'position');
 
     return grouped;
   }),

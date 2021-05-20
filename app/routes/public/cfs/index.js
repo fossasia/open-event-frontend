@@ -45,51 +45,24 @@ export default class IndexRoute extends Route {
     const eventDetails = this.modelFor('public');
     const { currentUser } = this.authManager;
     if (this.session.isAuthenticated) {
-      const userSpeaker = await currentUser.query('speakers', {
+      const userSpeaker = await eventDetails.query('speakers', {
         filter: [
           {
-            and: [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'identifier',
-                  op   : 'eq',
-                  val  : eventDetails.id
-                }
-              },
-              {
-                name : 'email',
-                op   : 'eq',
-                val  : currentUser.email
-              }
-            ]
+            name : 'email',
+            op   : 'eq',
+            val  : currentUser.email
           }
-        ]
-      });
-      const userSession = await currentUser.query('sessions', {
+        ] });
+      const userSession = await eventDetails.query('sessions', {
         filter: [
           {
-            and: [
-              {
-                name : 'event',
-                op   : 'has',
-                val  : {
-                  name : 'identifier',
-                  op   : 'eq',
-                  val  : eventDetails.id
-                }
-              },
-              {
-                name : 'speakers',
-                op   : 'any',
-                val  : {
-                  name : 'email',
-                  op   : 'eq',
-                  val  : currentUser.email
-                }
-              }
-            ]
+            name : 'speakers',
+            op   : 'any',
+            val  : {
+              name : 'email',
+              op   : 'eq',
+              val  : currentUser.email
+            }
           }
         ]
       });
