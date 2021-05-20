@@ -25,14 +25,19 @@
             {{/if}}      
           {{else}}
             {{#if @session.microlocation.hasVideoStream}}
-              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToStream}}>
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} onclick={{prevent-bubbling (action this.goToStream)}}>
                 <i class="icon video"></i>
                 {{t 'Join Video'}}
               </button>
             {{/if}}
           {{/if}}
-          <div class="self-center" role="button" {{action this.favourite}}>
-            <i class="star {{unless @session.favourite 'outline'}} icon"></i>
+          {{#if @showFavButton}}
+            <div class="self-center" role="button" style="width: 25px;" onclick={{prevent-bubbling (action this.favourite)}}>
+              <i class="ui {{if @session.favourite 'check' 'outline'}} circle icon"></i>
+            </div>
+          {{/if}}
+          <div class="pr-2 self-center">
+            <div class="ui black circular label">{{@session.favouriteCount}}</div>
           </div>
           {{#unless @hideSessionLink}}
             <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
@@ -44,10 +49,31 @@
     <div class="ui grid stackable">
       {{#if this.hideImage}}
         <div class="left floated twelve wide column">
-          <div><i class="train icon"></i>{{@session.track.name}}</div>
+          <div>
+            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+              <i class="train icon pr-2"></i>{{@session.track.name}}
+            </a>
+          </div>
           {{#if @session.startsAt}}
-            <div class=""><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}</div>
+            <div>
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="icon map marker alternate pr-2"></i>{{@session.microlocation.name}}
+              </a>
+            </div>
+          {{/if}}
+          {{#if @session.language}}
+            <div>
+              <div class="color-inherit">
+                <i class="icon language alternate pr-2"></i>{{@session.language}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if @session.startsAt}}
+            <div class="small text">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="wait icon pr-2"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
+              </a>
+            </div>
           {{/if}}
         </div>
       {{else}}
@@ -65,10 +91,31 @@
           </div>
         </div>
         <div class="right floated five wide column" style="padding-top: .25rem !important;" >
-          <div><i class="train icon"></i>{{@session.track.name}}</div>
+          <div>
+            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+              <i class="train icon pr-2"></i>{{@session.track.name}}
+            </a>
+          </div>
           {{#if @session.startsAt}}
-            <div><i class="icon map marker alternate"></i>{{@session.microlocation.name}}</div>
-            <div class="small text"><i class="wait icon"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}</div>
+            <div>
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="icon map marker alternate pr-2"></i>{{@session.microlocation.name}}
+              </a>
+            </div>
+          {{/if}}
+          {{#if @session.language}}
+            <div>
+              <div class="color-inherit">
+                <i class="icon language alternate pr-2"></i>{{@session.language}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if @session.startsAt}}
+            <div class="small text">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="wait icon pr-2"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
+              </a>
+            </div>
           {{/if}}
         </div>
       {{/if}}
@@ -98,6 +145,9 @@
         {{#if @session.gitlab}}
           <a href={{@session.gitlab}} target="_blank" rel="noopener noreferrer"><i class="gitlab icon"></i>{{t 'GitLab'}}</a>
         {{/if}}
+        {{#if @session.mastodon}}
+          <a href={{@session.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
+        {{/if}}
          </div>
     </div>
     {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
@@ -115,7 +165,7 @@
           {{/if}}
           
           {{#if this.youtubeLink}}
-            <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}" frameborder="0" allowfullscreen></iframe>
+            <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}?enablejsapi=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
           {{else if @session.videoUrl}}
             <a class="mb-2" href={{ @session.videoUrl }} target="_blank" rel="noopener noreferrer">
               <button class="ui labeled icon button">
@@ -160,6 +210,12 @@
         {{/if}}
         {{#if speaker.github}}
           <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>{{t 'GitHub'}}</a>
+        {{/if}}
+        {{#if speaker.website}}
+          <a href={{speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i>{{t 'Website'}}</a>
+        {{/if}}
+        {{#if speaker.mastodon}}
+          <a href={{speaker.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
         {{/if}}
       </div>
     {{/each}}

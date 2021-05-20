@@ -8,7 +8,7 @@ import { sortBy } from 'lodash-es';
 
 @classic
 @tagName('footer')
-@classNames('ui', 'inverted', 'vertical', 'footer', 'segment')
+@classNames('ui', 'inverted', 'vertical', 'footer', 'segment', 'mt-16')
 export default class FooterMain extends Component {
 
   @service cache;

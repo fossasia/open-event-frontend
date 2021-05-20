@@ -50,7 +50,8 @@ module('Integration | Component | public/featured speaker list', function(hooks)
   test('it renders', async function(assert) {
 
     this.set('speakers', speakers);
-    await render(hbs `{{public/featured-speaker-list speakers=speakers}}`);
+    this.set('event', { id: 6 });
+    await render(hbs `{{public/featured-speaker-list speakers=speakers event=event}}`);
     assert.ok(this.element.innerHTML.trim().includes('FOSSASIA'));
   });
 });

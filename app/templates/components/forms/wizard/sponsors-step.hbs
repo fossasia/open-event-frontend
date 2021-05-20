@@ -2,15 +2,16 @@
 
   <div class="ui centered grid">
     <div class="column">
-      <div class="ui {{if this.data.event.isSponsorsEnabled 'basic'}} segment">
+      <div class="ui {{if this.data.sponsors.length 'basic'}} segment">
         <div class="center aligned text">
           <div class=" field">
-            <div class="ui slider checkbox">
-              <Input
-                @type="checkbox"
-                @checked={{this.data.event.isSponsorsEnabled}} />
+            <div class="d-flex" style="justify-content: center;">
+              <UiCheckbox
+                @class="ui slider"
+                @checked={{if this.data.sponsors.length 'active'}}
+                @onChange={{action "toggleSponsors"}} />
               <label class="weight-300" style="font-size: large">
-                {{if this.data.event.isSponsorsEnabled (t 'Turn off') (t 'Turn on')}}
+                {{if this.data.sponsors.length (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sponsors'}}
               </label>
             </div>
@@ -20,7 +21,7 @@
     </div>
   </div>
 
-  {{#if this.data.event.isSponsorsEnabled}}
+  {{#if this.data.sponsors.length}}
     {{#each this.sponsors as |sponsor index|}}
       <h4>
         {{t 'Sponsor'}} #{{inc index}}

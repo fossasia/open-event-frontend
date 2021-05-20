@@ -39,4 +39,11 @@ export default class CreateRoute extends Route {
       })
     };
   }
+
+  resetController(controller) {
+    super.resetController(...arguments);
+    if (!controller.model.stream.id) {
+      controller.model.stream.unloadRecord();
+    }
+  }
 }

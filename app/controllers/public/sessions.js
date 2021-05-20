@@ -17,11 +17,24 @@ export default class SessionsController extends Controller {
   preserveScrollPosition = true;
   my_schedule=null;
 
+  @computed('sort')
+  get sortTitle() {
+    switch (this.sort) {
+      case 'title':
+        return 'By Title';
+      case null:
+      case 'starts-at':
+        return 'By Time';
+      default:
+        return 'By Popularity';
+    }
+  }
+
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
-    if (this.sort === 'title') {
-      sessions = groupBy(this.model.session.toArray(), '');
+    if (this.sort !== 'starts-at') {
+      sessions = groupBy([...new Set(this.model.session.toArray())], '');
     } else {
       sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
     }

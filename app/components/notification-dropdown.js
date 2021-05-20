@@ -22,7 +22,7 @@ export default class NotificationDropdown extends Component {
               val  : false
             }
           ],
-          sort: '-received-at'
+          sort: '-created-at'
         });
         this.set('unreadNotifications', notifications);
       } catch (e) {
