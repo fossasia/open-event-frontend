@@ -5,7 +5,15 @@
   {{t 'Please use with care.'}} {{t 'Thank You.'}}
 </div>
 <div class="sixteen wide column">
-  <h2 class="ui header mb-0">{{t 'Event Video Room'}}</h2>
+  <div class="d-flex flex-row">
+    <h2 class="ui header mb-0">{{t 'Virtual Event Room'}}</h2>
+    <UiPopup
+      @content={{t 'This category is especially suitable for welcome, support, discussion or social video rooms. Virtual event video rooms do not require dedicated sessions and do not need a schedule setup'}}
+      class="m-1"
+    >
+      <i class="info circle icon"></i>
+    </UiPopup>
+  </div>
   <Tables::Default
     @color='green'
     @columns={{this.eventColumns}}
@@ -17,12 +25,18 @@
     @hidePagination={{true}}
     @hidePageSize={{true}} />
   <div class="ui grid space-between items-center mt-4 mb-4">
-      <div>
+      <div class="d-flex flex-row">
         <h2 class="header">{{t 'Microlocation Video Rooms'}}</h2>
+        <UiPopup
+          @content={{t 'Microlocation video rooms are suitable for events with different tracks, rooms and sessions that are listed in a schedule. All microlocations are listed on the event schedule'}}
+          class="m-2"
+        >
+          <i class="info circle icon"></i>
+        </UiPopup>
       </div>
       <div>
         <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
-          {{t 'Add Room'}}
+          {{t 'Add Microlocation'}}
         </button>
       </div>
     </div>
