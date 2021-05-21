@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-03-07 18:14+0000\n"
+"PO-Revision-Date: 2021-05-20 22:23+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/open-event/frontend/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/open-event/"
+"frontend/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.1\n"
+"X-Generator: Weblate 4.7-dev\n"
 "X-Crowdin-Project: open-event-frontend\n"
 "X-Crowdin-Language: de\n"
 "X-Crowdin-File: /development/translations/en.po\n"
@@ -704,11 +705,11 @@ msgstr "Logo auswählen"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:63:10
 msgid "Add a related exhibitor session"
-msgstr ""
+msgstr "Fügen Sie eine verwandte Ausstellersitzung hinzu"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:71:10
 msgid "Select Sessions"
-msgstr ""
+msgstr "Sitzung auswählen"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:86:10
 msgid "Video URL"
@@ -911,7 +912,7 @@ msgstr "Moderatoren"
 
 #: app/components/forms/events/view/videoroom-form.hbs:131:18
 msgid "Add Email of Moderators"
-msgstr ""
+msgstr "E-Mail von Moderatoren hinzufügen"
 
 #: app/components/forms/events/view/videoroom-form.hbs:134:6
 #: app/components/forms/wizard/custom-form-input.hbs:21:115
@@ -946,7 +947,7 @@ msgstr "Abbrechen"
 
 #: app/components/forms/events/view/videoroom-form.js:68:23
 msgid "Please enter a valid email"
-msgstr ""
+msgstr "Bitte eine gültige E-mail Adresse eingeben"
 
 #: app/components/forms/events/view/videoroom-form.js:155:34
 msgid "Selecting another video integration will reset the data in the form. Do you want to proceed?"
@@ -1638,7 +1639,7 @@ msgstr "Stockwerk"
 
 #: app/components/modals/add-room-modal.hbs:20:8
 msgid "Hidden In Scheduler"
-msgstr ""
+msgstr "Im Zeitplan versteckt"
 
 #: app/components/modals/add-room-modal.js:16:26
 msgid "{{item}} has been created successfully"
@@ -1973,7 +1974,7 @@ msgstr "Ausstellung"
 #: app/components/public/stream/side-panel.hbs:44:10
 #: app/routes/public/chat.ts:16:11 app/routes/public/stream/view/chat.ts:12:11
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: app/components/public/stream/side-panel.hbs:50:8
 #: app/routes/events/view/videoroom/list.js:8:11
@@ -2786,7 +2787,7 @@ msgstr "Mikrolokation"
 
 #: app/controllers/events/view/videoroom/list.js:22:21
 msgid "Video Room Name"
-msgstr ""
+msgstr "Name des Videoraums"
 
 #: app/controllers/events/view/videoroom/list.js:54:21
 msgid "Additional information"
@@ -3867,30 +3868,42 @@ msgstr "Referent anzeigen"
 #: app/routes/public/chat.ts:28:22
 msgid "Please confirm that you understand and agree to the conditions of using the chat!"
 msgstr ""
+"Bitte bestätigen Sie, dass Sie die Bedingungen für die Nutzung des Chats "
+"verstehen und diesen zustimmen."
 
 #: app/routes/public/chat.ts:30:23
 msgid "If you join the event chat, your profile name and image will be visible to other attendees. Other event attendees can also contact you directly."
 msgstr ""
+"Mit der Teilnahme am Event-Chat wird der Profilname und das Profilbild für "
+"andere Teilnehmer sichtbar. Veranstaltungsteilnehmer können sich ebenfalls "
+"direkt an Sie wenden."
 
 #: app/routes/public/chat.ts:31:10
 msgid "You may change your chat name and chat profile picture by going to account settings on the chat page on the top left."
 msgstr ""
+"Chat-Namen und Ihr Chat-Profilbild können geändert werden, indem auf der "
+"Chat-Seite oben links die Kontoeinstellungen angepasst werden."
 
 #: app/routes/public/chat.ts:32:10
 msgid "You need to minimize the side panel to access it."
-msgstr ""
+msgstr "Die Seitenleiste muss minimiert werden, um darauf zugreifen zu können."
 
 #: app/routes/public/chat.ts:33:10
 msgid "The feature integration is still in Alpha stage and currently your profile on the eventyay account page and on the chat are not linked and can be independently edited."
 msgstr ""
+"Die Funktionsintegration befindet sich noch im Alpha-Stadium, Derzeit sind "
+"Profil auf der eventyay-Kontoseite und im Chat nicht miteinander verknüpft "
+"und können somit unabhängig voneinander bearbeitet werden."
 
 #: app/routes/public/chat.ts:34:10
 msgid "When you change the chat settings you may receive additional email confirmations."
 msgstr ""
+"Wenn die Chat-Einstellungen geändert werden, erhalten Sie möglicherweise "
+"zusätzliche E-Mail-Bestätigungen."
 
 #: app/routes/public/chat.ts:35:10
 msgid "Do you want to use the chat now?"
-msgstr ""
+msgstr "Den Chat jetzt nutzen?"
 
 #: app/routes/register.js:8:11
 #: app/templates/components/forms/orders/guest-order-form.hbs:41:6
@@ -5825,16 +5838,19 @@ msgid "Cookie Policy URL"
 msgstr "URL der Cookie-Richtlinie"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:76:4
+#, fuzzy
 msgid "Rocket Chat Integration"
-msgstr ""
+msgstr "Rocket-Chat-Integration"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:80:6
+#, fuzzy
 msgid "Rocket Chat URL"
-msgstr ""
+msgstr "Rocket Chat URL"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:89:6
+#, fuzzy
 msgid "Registration Secret"
-msgstr ""
+msgstr "Registrierungsgeheimnis"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:3:2
 msgid "Captcha Options"
@@ -7596,7 +7612,7 @@ msgstr "Wichtige Referenten"
 
 #: app/templates/components/public/featured-speaker-list.hbs:10:66
 msgid "More Speakers"
-msgstr ""
+msgstr "Weitere Referenten"
 
 #: app/templates/components/public/side-menu.hbs:72:101
 #: app/templates/components/public/side-menu.hbs:76:101
@@ -8634,15 +8650,15 @@ msgstr "Treffen Sie uns in unserem Aussteller Videoroom"
 
 #: app/templates/public/exhibition/view.hbs:20:16
 msgid "Join Exhibitor Video Room"
-msgstr ""
+msgstr "Dem Aussteller-Videoraum beitreten"
 
 #: app/templates/public/exhibition/view.hbs:55:16
 msgid "Get in touch"
-msgstr ""
+msgstr "Kontakt aufnehmen"
 
 #: app/templates/public/exhibition/view.hbs:70:81
 msgid "Related Sessions"
-msgstr ""
+msgstr "Verwandte Sitzungen"
 
 #: app/templates/public/exhibition/view.hbs:87:65
 msgid "Exhibitor Video"
@@ -8702,11 +8718,11 @@ msgstr "Nach Zeit"
 
 #: app/templates/public/sessions.hbs:59:132
 msgid "By Popularity"
-msgstr ""
+msgstr "Nach Beliebtheit"
 
 #: app/templates/public/sessions.hbs:63:224
 msgid "Clear All Filters"
-msgstr ""
+msgstr "Alle Filter löschen"
 
 #: app/templates/public/sessions.hbs:82:36
 #: app/templates/public/sessions.hbs:130:36
