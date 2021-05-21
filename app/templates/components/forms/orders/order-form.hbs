@@ -123,7 +123,7 @@
                       {{#each this.countries as |country|}}
                         <div class="item" data-value="{{map-value mapper country.name}}">
                           <i class="{{lowercase country.code}} flag"></i>
-                          {{country.name}}
+                          {{t-var country.name}}
                         </div>
                       {{/each}}
                     </div>
