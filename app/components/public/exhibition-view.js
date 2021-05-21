@@ -87,7 +87,7 @@ export default class ExhibitionView extends Component {
   }
 
   @action
-  refresh() {
+  refreshSlide() {
     document.getElementById('google').src += '';
   }
 
@@ -102,6 +102,7 @@ export default class ExhibitionView extends Component {
       });
     }
     this.set('exhibitorsLoaded', true);
+    this.refreshSlide();
   }
 }
 
