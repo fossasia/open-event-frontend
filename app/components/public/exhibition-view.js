@@ -85,7 +85,7 @@ export default class ExhibitionView extends Component {
       this.router.transitionTo('public.exhibition.view', this.data.exhibitor.id, { queryParams: { video_dialog: true } });
     }
   }
-  
+
   @action
   refresh() {
     document.getElementById('google').src += '';
