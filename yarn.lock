@@ -6247,7 +6247,7 @@ ember-assign-polyfill@~2.4.0:
     ember-cli-babel "^6.6.0"
     ember-cli-version-checker "^2.0.0"
 
-ember-auto-import@^1.10.1, ember-auto-import@^1.11.3, ember-auto-import@^1.5.2, ember-auto-import@^1.5.3:
+ember-auto-import@^1.10.1, ember-auto-import@^1.11.2, ember-auto-import@^1.11.3, ember-auto-import@^1.5.3:
   version "1.11.3"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-1.11.3.tgz#6e3384a7fbb163384a34546f2e902cd297b0e683"
   integrity sha512-ekq/XCvsonESobFU30zjZ0I4XMy2E/2ZILCYWuQ1JdhcCSTYhnXDZcqRW8itUG7kbsPqAHT/XZ1LEZYm3seVwQ==
@@ -7494,27 +7494,27 @@ ember-in-element-polyfill@^1.0.1:
     ember-cli-htmlbars "^5.3.1"
     ember-cli-version-checker "^5.1.2"
 
-ember-in-viewport@~3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/ember-in-viewport/-/ember-in-viewport-3.7.2.tgz#f958a6e635749c91effeaf8818d68919a0be6852"
-  integrity sha512-Jv664t0cPiAMv6SOuQS+JmMfFeLnhGlhK06y5Hytolauwp8XJWDoq44wqQ7+oyCJEhf5bL+sam5tENep6euA9Q==
+ember-in-viewport@~3.10.2:
+  version "3.10.2"
+  resolved "https://registry.yarnpkg.com/ember-in-viewport/-/ember-in-viewport-3.10.2.tgz#78ad3d42ba94354fd05e7adb7a701da351041556"
+  integrity sha512-mOLqknUm+OjPqyYq9BO+h9RIcI3dhebPpfd8jM90/GXVv7jLNz1szq5nk0K0yZT861kY+dEjGLqLGqo1J4pSDQ==
   dependencies:
-    ember-auto-import "^1.5.2"
-    ember-cli-babel "^7.7.3"
-    ember-modifier "^1.0.2"
+    ember-auto-import "^1.11.2"
+    ember-cli-babel "^7.26.3"
+    ember-modifier "^2.1.0"
     fast-deep-equal "^2.0.1"
-    intersection-observer-admin "~0.2.12"
+    intersection-observer-admin "~0.3.2"
     raf-pool "~0.1.4"
 
-ember-infinity@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/ember-infinity/-/ember-infinity-2.2.0.tgz#e2ef5724e7b7d33ae3a311be16ed3cc7ced3826a"
-  integrity sha512-pkaWUfLBAFztiyTK+xfDBEw3l6n403v0ArA3x0BEMLHmMv/y879X5rX9/RPDif1SrT+itcsnKBbV9tagVTfv7w==
+ember-infinity@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/ember-infinity/-/ember-infinity-2.2.1.tgz#2f1b170af4449c17b855af075f3c3d2d7e68d915"
+  integrity sha512-TXzUGclu7tG7wO0jhtFyzsOuCJBBy9457m15hZQZTJWl+CarGx04C43kob7oAqsp21nBrXfi2+C2Ttt2PH21iw==
   dependencies:
     "@ember/render-modifiers" "^1.0.2"
     ember-cli-babel "~7.19.0"
     ember-cli-htmlbars "^4.3.1"
-    ember-in-viewport "~3.7.2"
+    ember-in-viewport "~3.10.2"
 
 ember-inflector@^3.0.1:
   version "3.0.1"
@@ -7642,17 +7642,6 @@ ember-modifier-manager-polyfill@^1.1.0, ember-modifier-manager-polyfill@^1.2.0:
     ember-cli-babel "^7.10.0"
     ember-cli-version-checker "^2.1.2"
     ember-compatibility-helpers "^1.2.0"
-
-ember-modifier@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ember-modifier/-/ember-modifier-1.0.3.tgz#ab18250666aad17c0d9170feb178e954148eb4ed"
-  integrity sha512-vWuFyvdkULUyasvEXxe5lcfuPZV/Uqe+b0IQ1yU+TY1RSJnFdVUu/CVHT8Bu4HUJInqzAihwPMTwty7fypzi5Q==
-  dependencies:
-    ember-cli-babel "^7.11.1"
-    ember-cli-is-package-missing "^1.0.0"
-    ember-cli-normalize-entity-name "^1.0.0"
-    ember-cli-string-utils "^1.1.0"
-    ember-modifier-manager-polyfill "^1.2.0"
 
 ember-modifier@^2.1.0:
   version "2.1.1"
@@ -10456,10 +10445,10 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-intersection-observer-admin@~0.2.12:
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/intersection-observer-admin/-/intersection-observer-admin-0.2.12.tgz#046b208afc8cbf626943d61688d5a779c5831275"
-  integrity sha512-97+A29MV0kp6Xzkb4CxBNxxDU4qldyVFNzvZIiLMYqIZFutT2DJCzE1TEv0hXdmFQfAIY4KhNhL6L1BEEU0J8w==
+intersection-observer-admin@~0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/intersection-observer-admin/-/intersection-observer-admin-0.3.2.tgz#0b6e95ce7272a383e8bbdd47f9ff48de9eab9919"
+  integrity sha512-kJEcF9iVRuI4thXiJd28UzFDgvFHBNUgwkKA4F0bPMmRdzc+1Eq7/J13n2gSgfZ5tsVxb+wJOV7k3DXcsc7D6Q==
 
 invariant@^2.2.2:
   version "2.2.4"
