@@ -102,8 +102,8 @@
                     <br/><br/>
                     {{#if (or this.pdfLink this.pptLink)}}
                         <br/>
-                        <h2 class="ui centered header no margin">{{t 'Exhibitor Slides'}}</h2><br/>
-                        <iframe title="session-slides" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.data.exhibitor.slidesUrl }}&embedded=true"></iframe>
+                        <h2 class="ui centered header no margin">{{t 'Exhibitor Slides'}} <i class="sync icon ml-2" role="button" {{action this.refresh}}></i></h2><br/>
+                        <iframe title="session-slides" id="google" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.data.exhibitor.slidesUrl }}&embedded=true"></iframe>
                     {{else if this.data.exhibitor.slidesUrl}}
                         <a class="mb-2" href={{ this.data.exhibitor.slidesUrl }} target="_blank" rel="noopener noreferrer">
                             <div class="ui labeled icon button">
