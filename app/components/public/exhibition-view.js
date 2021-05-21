@@ -89,7 +89,7 @@ export default class ExhibitionView extends Component {
   @action
   refreshSlide() {
     if (document.getElementById('googleFrame').src) {
-       document.getElementById('googleFrame').src += '';
+      document.getElementById('googleFrame').src += '';
     }
   }
 
