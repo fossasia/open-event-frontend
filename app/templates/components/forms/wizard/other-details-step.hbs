@@ -144,7 +144,7 @@
         <div class="default text">{{t 'Select License'}}</div>
         <div class="menu">
           {{#each this.licenses as |license|}}
-            <div class="item" data-value="{{license.name}}">{{license.name}}</div>
+            <div class="item" data-value="{{license.name}}">{{t-var license.name}}</div>
           {{/each}}
         </div>
       </UiDropdown>
