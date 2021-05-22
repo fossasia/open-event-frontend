@@ -2,7 +2,11 @@
   <div class="title">
     <div class="ui">
       <div class="featured-speaker">
-        <img alt="speaker" class="ui rounded image" src="{{speaker.image}}">
+        <Image
+          @name={{speaker.name}}
+          @classes="ui rounded image"
+          @alt="speaker"
+          @imageUrl={{or speaker.thumbnailImageUrl speaker.photoUrl}} />
       </div>
       <h3 class="ui centered header no margin">
         {{this.speaker.name}}

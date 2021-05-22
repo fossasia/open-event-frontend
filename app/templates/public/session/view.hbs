@@ -13,9 +13,10 @@
         <a href={{if fav.user.isProfilePublic (href-to 'public.sessions.user.view' fav.user.id) '#'}}
           class="pointer"
           data-tooltip={{fav.user.resolvedName}}>
-          <img
-            class="ui tiny avatar image mr-2 mb-2"
-            src={{or fav.user.thumbnailImageUrl fav.user.avatarUrl '/images/placeholders/avatar.png'}} />
+          <Image
+            @name={{fav.user.fullName}}
+            @classes="ui tiny avatar image mr-2 mb-2"
+            @imageUrl={{or fav.user.thumbnailImageUrl fav.user.avatarUrl}} />
         </a>
       {{/each}}
     </div>

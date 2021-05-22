@@ -81,7 +81,11 @@
           <div class="d-flex wrap">
             {{#each @session.speakers as |speaker|}}
               <div class="d-flex items-center speaker-card pr-2 pb-4">
-                <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                <Image
+                  @name={{speaker.name}}
+                  @classes="ui mini avatar image"
+                  @alt="speaker"
+                  @imageUrl={{or speaker.iconImageUrl speaker.photoUrl}} />
                 <div class="ml-2">
                   {{speaker.name}}
                   {{#if speaker.positionOrganisation}}<div class="speaker-details">{{speaker.positionOrganisation}}</div>{{/if}}
@@ -183,7 +187,11 @@
     {{/if}}
     
     {{#each @session.speakers as |speaker|}}
-      <img alt="speaker" class="ui tiny avatar image mt-8" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      <Image
+        @name={{speaker.name}}
+        @classes="ui tiny avatar image mt-8"
+        @alt="speaker"
+        @imageUrl={{or speaker.thumbnailImageUrl speaker.photoUrl}} />
       <p>
         <br>
         {{speaker.name}}
