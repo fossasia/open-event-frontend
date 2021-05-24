@@ -8,8 +8,7 @@
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
       <UiDropdown
         @class="ui floating labeled icon dropdown blue button"
-        @id="videoRoomDropdown"
-        @selected={{this.data.stream.videoChannel}}
+        @selected={{this.previousVideo}}
         @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
         <div class="default text">

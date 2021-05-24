@@ -6,8 +6,8 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
-import $ from 'jquery';
 import moment from 'moment';
+
 
 const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
 
@@ -21,6 +21,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked deletedModerators = [];
   @tracked videoRecordings = [];
   @tracked selectedVideo = '';
+  @tracked previousVideo = '';
 
   get recordingColumns() {
     return [
@@ -167,7 +168,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async addIntegration(channel) {
-    this.selectedVideo = $('#videoRoomDropdown').dropdown('get text');
     switch (channel.get('provider')) {
       case 'jitsi':
         await this.addJitsi(channel);
@@ -194,7 +194,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       try {
         await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form. Do you want to proceed?'));
       } catch {
-        $('#videoRoomDropdown').dropdown('set text', this.selectedVideo);
+        this.previousVideo = this.selectedVideo;
         return;
       }
     }
@@ -278,7 +278,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   didInsertElement() {
-    this.selectedVideo = $('#videoRoomDropdown').dropdown('get text');
     if (this.data.stream.videoChannel.get('provider') === 'bbb') {
       this.loadRecordings();
     }
@@ -288,5 +287,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     if (!this.data.stream.extra?.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
       this.data.stream.set('extra', { bbb_options });
     }
+    this.selectedVideo = this.data.stream.videoChannel;
+    this.previousVideo = this.data.stream.videoChannel;
   }
 }
