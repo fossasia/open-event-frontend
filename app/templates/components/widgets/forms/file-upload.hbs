@@ -1,22 +1,18 @@
 <div class="ui {{if this.uploadingFile 'loading'}} basic segment no padding">
   {{#if this.fileUrl}}
-    <div class="ui action input">
-      <Input @type="url" @readonly="" @value={{this.fileUrl}} />
-      <button class="ui icon red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' this.edit))}}>
+      <button class="ui icon text-center red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' this.edit))}}>
         <i class="remove icon"></i>
         {{t 'Remove file'}}
       </button>
-    </div>
+      <div class="ui action input">
+        <iframe title="session-slides" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.fileUrl }}&embedded=true"></iframe>
+      </div>
   {{else}}
     <div class="ui grid">
       <div class="column sixteen wide">
-        <Input @type="url" @change={{action "fileSelected" "url"}} />
         <span class="text muted">
           ({{t 'Slides uploaded here are not integrated in the video system. For video conferences please upload your slides into the video session directly as well.'}})
         </span>
-      </div>
-      <span>{{t 'Or'}}</span>
-      <div class="column sixteen wide">
         <label for="{{this.inputIdGenerated}}" class="ui icon button">
           <i class="file icon"></i>
           {{this.hint}}
@@ -28,7 +24,7 @@
           {{/if}}
           ({{t 'Not larger than'}} {{this.maxSize}})
         </span>
-      </div>
+    </div>
     </div>
   {{/if}}
 </div>
