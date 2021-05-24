@@ -41,7 +41,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name       : this.l10n.t('Room Password'),
-        width      : 40,
+        width      : 70,
         helperInfo : 'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.',
         valuePath  : 'videoStream.password'
       },

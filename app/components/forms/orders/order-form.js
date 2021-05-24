@@ -25,13 +25,16 @@ export default Component.extend(FormMixin, {
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
   holders           : computed('data.attendees', 'buyer', function() {
-    this.data.attendees.forEach(attendee => {
-      attendee.set('firstname', '');
-      attendee.set('lastname', '');
-      attendee.set('email', '');
-      attendee.set('acceptVideoRecording', true);
-      attendee.set('acceptShareDetails', true);
-      attendee.set('acceptReceiveEmails', true);
+    this.data.attendees.forEach((attendee, index) => {
+      if (index === 0 && this.buyerFirstName && this.buyerLastName) {
+        attendee.set('firstname', this.buyerFirstName);
+        attendee.set('lastname', this.buyerLastName);
+        attendee.set('email', this.buyer.get('email'));
+      } else {
+        attendee.set('firstname', '');
+        attendee.set('lastname', '');
+        attendee.set('email', '');
+      }
     });
     return this.data.attendees;
   }),
@@ -42,7 +45,9 @@ export default Component.extend(FormMixin, {
     }
     return true;
   }),
-  sameAsBuyer: false,
+  sameAsBuyer: computed('data', function() {
+    return (this.buyerHasFirstName && this.buyerHasLastName);
+  }),
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
     return this.event.isBillingInfoMandatory || this.data.isBillingEnabled;
