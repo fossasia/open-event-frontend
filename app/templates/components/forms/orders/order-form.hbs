@@ -65,7 +65,7 @@
           {{#if field.isIncluded}}
             {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
               <div class="field">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
                 {{#if (eq field.type 'paragraph')}}
                   <Widgets::Forms::RichTextEditor
                     @value={{mut (get holder field.fieldIdentifier)}}
