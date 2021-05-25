@@ -88,6 +88,16 @@ export default class PublicController extends Controller {
 
   @action
   applyFilter(value, filterType) {
+    const params = this.router.currentRoute.queryParams;
+    if (!params.track) {
+      this.activeTrack = [];
+    }
+    if (!params.room) {
+      this.activeRoom = [];
+    }
+    if (!params.sessionType) {
+      this.activeSession = [];
+    }
     value = value + ':';
     if (filterType === 'room') {
       if (this.activeRoom.includes(value)) {
