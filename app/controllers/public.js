@@ -77,6 +77,14 @@ export default class PublicController extends Controller {
   }
 
   @action
+  removeActiveClass(name) {
+    const activeEls = document.querySelectorAll(`.${name}.link-item.active`);
+    activeEls.forEach(el => {
+      el.classList.remove('active');
+    });
+  }
+
+  @action
   sessionFilter(name) {
     if (this.activeSession.includes(name)) {
       this.activeSession = this.activeSession.filter(session => session !== name);
