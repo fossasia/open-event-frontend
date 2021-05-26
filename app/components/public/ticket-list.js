@@ -29,8 +29,19 @@ export default Component.extend(FormMixin, {
       && !this.authManager?.currentUser?.isVerified;
   }),
 
+  paidTickets: computed.filterBy('data', 'type', 'paid'),
+
+  hasPaidOrder: computed('paidTickets.@each.orderQuantity', function() {
+    for(const paidTicket of this.paidTickets) {
+      if(paidTicket.orderQuantity > 0) {
+        return true;
+      }
+    }
+    return false;    
+  }),
+
   shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', 'isUnverified', function() {
-    if (this.isUnverified) {return true}
+    if (this.isUnverified && !this.hasPaidOrder) {return true}
     const quantityDonation = sumBy(this.donationTickets.toArray(),
       donationTicket => (donationTicket.orderQuantity || 0));
     if (quantityDonation > 0) {
