@@ -59,7 +59,7 @@
         {{/if}}
         <div class="inline field">
           <i class="user icon"></i>
-          <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+          <label>{{t 'Ticket Holder'}} {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
         </div>
         {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
