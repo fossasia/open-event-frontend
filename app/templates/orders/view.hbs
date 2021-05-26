@@ -49,7 +49,7 @@
           {{/if}}
           <button {{action 'downloadInvoice' this.model.event.name this.model.order.identifier }}
           class="ui labeled icon blue flex-1 {{if this.isLoadingInvoice 'loading'}} {{if this.device.isMobile 'fluid'}} button">
-          <i class="file alternate icon"></i>
+          <i class="download icon"></i>
           {{t 'Download Invoice'}}
           </button>
         </div>
