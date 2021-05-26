@@ -32,12 +32,12 @@ export default Component.extend(FormMixin, {
   paidTickets: computed.filterBy('data', 'type', 'paid'),
 
   hasPaidOrder: computed('paidTickets.@each.orderQuantity', function() {
-    for(const paidTicket of this.paidTickets) {
-      if(paidTicket.orderQuantity > 0) {
+    for (const paidTicket of this.paidTickets) {
+      if (paidTicket.orderQuantity > 0) {
         return true;
       }
     }
-    return false;    
+    return false;
   }),
 
   shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', 'isUnverified', function() {
