@@ -32,7 +32,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
       {
         name          : this.l10n.t('Logo'),
         valuePath     : 'logoUrl',
-        width           : 60,
+        width         : 60,
         cellComponent : 'ui-table/cell/cell-image'
       },
       {
@@ -53,10 +53,10 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
         }
       },
       {
-        name      : this.l10n.t('Description'),
-        width     : 240,
+        name          : this.l10n.t('Description'),
+        width         : 240,
         cellComponent : 'ui-table/cell/cell-sponsor-sanitize',
-        valuePath : 'description'
+        valuePath     : 'description'
       },
       {
         name          : this.l10n.t('URL'),
