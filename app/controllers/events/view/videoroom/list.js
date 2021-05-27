@@ -4,8 +4,7 @@ import { action, computed } from '@ember/object';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   per_page = 25;
-
-  count =0;
+  count = 0;
 
   get columns() {
     return [
