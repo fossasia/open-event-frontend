@@ -6,7 +6,6 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
-import moment from 'moment';
 
 
 const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
@@ -28,16 +27,28 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         valuePath : 'participants'
       },
       {
-        name      : this.l10n.t('Start time'),
-        valuePath : 'startTime'
+        name          : this.l10n.t('Start time'),
+        valuePath     : 'startTime',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'dddd, D MMMM, YYYY h:mm A'
+        }
       },
       {
-        name      : this.l10n.t('End time'),
-        valuePath : 'endTime'
+        name          : this.l10n.t('End time'),
+        valuePath     : 'endTime',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'dddd, D MMMM, YYYY h:mm A'
+        }
       },
       {
-        name      : this.l10n.t('Duration'),
-        valuePath : 'size'
+        name            : this.l10n.t('Duration'),
+        valuePath       : 'endTime',
+        extraValuePaths : ['startTime'],
+        cellComponent   : 'ui-table/cell/cell-duration'
       },
       {
         name          : this.l10n.t('View'),
@@ -261,16 +272,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   async loadRecordings() {
     try {
-      const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
-      this.videoRecordings = recordings.result.response.recordings?.recording.map(rec => ({
-        participants : rec.participants,
-        startTime    : moment(Number(rec.startTime)).format('dddd, D MMMM, YYYY h:mm A'),
-        endTime      : moment(Number(rec.endTime)).format('dddd, D MMMM, YYYY h:mm A'),
-        size         : moment.duration(Number(rec.endTime) - Number(rec.startTime)).humanize(),
-        url          : rec.playback.format.url
-      }));
+      const recordings = await this.data.stream.query('videoRecordings', {
+        'page[size]': 0
+      });
+      this.videoRecordings = recordings.toArray();
     } catch (e) {
-      console.error('Error while getting recordings f', e);
+      console.error('Error while getting recordings', e);
     }
   }
 
