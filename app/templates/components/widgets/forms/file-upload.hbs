@@ -1,11 +1,13 @@
 <div class="ui {{if this.uploadingFile 'loading'}} basic segment no padding">
   {{#if this.fileUrl}}
-      <button class="ui icon text-center red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' this.edit))}}>
-        <i class="remove icon"></i>
-        {{t 'Remove file'}}
-      </button>
       <div class="ui action input">
-        <iframe title="session-slides" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.fileUrl }}&embedded=true"></iframe>
+        <iframe title="session-slides" id="googleFrame" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.fileUrl }}&embedded=true"></iframe>
+      </div>
+      <div class="ui bottom attached mini buttons">
+        <button class="ui icon text-center red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' this.edit))}}>
+          <i class="remove icon"></i>
+          {{t 'Remove file'}}
+        </button>
       </div>
   {{else}}
     <div class="ui grid">

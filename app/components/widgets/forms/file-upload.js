@@ -82,8 +82,16 @@ export default class FileUpload extends Component {
     }
   }
 
+  @action
+  refreshSlide() {
+    if (document.getElementById('googleFrame')) {
+      document.getElementById('googleFrame').src += '';
+    }
+  }
+
   init() {
     super.init(...arguments);
+    this.refreshSlide();
     this.set('selectedFile', this.fileUrl);
     if (this.selectedFile) {
       this.set('needsConfirmation', true);
