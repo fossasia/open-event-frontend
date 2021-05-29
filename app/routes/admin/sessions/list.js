@@ -89,7 +89,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const feedbacksPromise = this.authManager.currentUser.query('feedbacks', {});
     const sessionsPromise = this.asArray(this.store.query('session', queryString));
     const [feedbacks, sessions] = await Promise.all([feedbacksPromise, sessionsPromise]);
-    
     return {
       sessions,
       feedbacks
