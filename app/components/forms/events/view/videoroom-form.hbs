@@ -190,4 +190,15 @@
   <LinkTo @route="events.view.videoroom.index" class="ui red button">
     {{t 'Cancel'}}
   </LinkTo>
+
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="ui grid">
+      <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}}">
+        <br/>
+        <p>{{t 'If any meeting is currently running on this video stream, then the meeting will end in order to apply changes'}}.</p>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+  {{/if}}
+
 </form>
