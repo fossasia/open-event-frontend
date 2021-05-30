@@ -1,4 +1,4 @@
-# Open Event Frontend
+# The Open Event Frontend
 ![Open Event Frontend](docs/images/Frontend_Branding.png)
 
 [![Build Status](https://github.com/fossasia/open-event-frontend/workflows/CI/badge.svg?branch=development)](https://github.com/fossasia/open-event-frontend/actions?query=workflow%3Aci)
@@ -15,15 +15,15 @@ The front end for the **Open Event Server**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-**API Documentation:**
+** The API Documentation:**
 -   Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)).
 -   A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://api.eventyay.com](http://api.eventyay.com)
 
-## Communication
+## the Communication
 
 Please join our [Mailing list](https://groups.google.com/forum/#!forum/open-event) or [chat channel](https://gitter.im/fossasia/open-event-frontend) to get in touch with the developers.
 
-## Installation
+##the  Installation
 
 The Open Event Frontend can be easily deployed on a variety of platforms. Detailed platform specific instructions have been provided below.
 
@@ -31,7 +31,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 2.  [Publish to GitHub Pages](/docs/installation/Publish-to-GitHub-Pages.md)
 3.  [Running in Docker](/docs/installation/docker.md)
 
-## Running / Development
+## the Running / Development
 
 [Click to see installation video](https://asciinema.org/a/370458?speed=5&autoplay=1)
 
@@ -125,3 +125,4 @@ When you file a feature request or when you are submitting a bug report to the [
 This project is currently licensed under the [Apache License version 2.0](LICENSE).
 
 To obtain the software under a different license, Please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
+Thanks for setup
