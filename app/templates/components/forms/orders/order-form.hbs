@@ -40,6 +40,8 @@
         <Input
           @type="text"
           @name="email"
+          readonly
+          disabled
           @value={{this.buyer.email}} />
       </div>
       <h4 class="ui horizontal divider header">
@@ -57,13 +59,18 @@
         {{/if}}
         <div class="inline field">
           <i class="user icon"></i>
-          <label>{{t 'Ticket Holder '}}{{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+          <label>{{t 'Ticket Holder'}} {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
         </div>
         {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
             {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
               <div class="field">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
+                {{#if (eq field.type 'paragraph')}}
+                  <Widgets::Forms::RichTextEditor
+                    @value={{mut (get holder field.fieldIdentifier)}}
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                {{/if}}
                 {{#if (is-input-field field.type) }}
                   {{#if field.isLongText}}
                     <Widgets::Forms::RichTextEditor
@@ -116,7 +123,7 @@
                       {{#each this.countries as |country|}}
                         <div class="item" data-value="{{map-value mapper country.name}}">
                           <i class="{{lowercase country.code}} flag"></i>
-                          {{country.name}}
+                          {{t-var country.name}}
                         </div>
                       {{/each}}
                     </div>

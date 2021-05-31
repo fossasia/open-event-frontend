@@ -25,6 +25,7 @@ export default class Speaker extends ModelBase.extend({
   facebook           : attr('string'),
   github             : attr('string'),
   linkedin           : attr('string'),
+  mastodon           : attr('string'),
   instagram          : attr('string'),
   organisation       : attr('string'),
   isFeatured         : attr('boolean', { default: false }),

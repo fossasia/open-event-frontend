@@ -1,17 +1,11 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 @classic
-export default class EditSessionRoute extends Route {
+export default class ViewSessionRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken() {
     return this.l10n.t('View Session');
-  }
-
-  async beforeModel() {
-    super.beforeModel(...arguments);
-    if (!(this.session.isAuthenticated)) {
-      this.transitionTo('not-found');
-    }
   }
 
   async model(params) {
@@ -26,14 +20,15 @@ export default class EditSessionRoute extends Route {
         'page[size]' : 0,
         sort         : 'id'
       }),
-      session       : sessionDetails,
-      speakersEmail : await sessionDetails.speakers.map(speaker => speaker.email)
+      session: sessionDetails
     };
   }
 
   afterModel(model) {
     super.afterModel(...arguments);
-    if (!(this.session.isAuthenticated && (this.authManager.currentUser.isAdmin || model.speakersEmail.includes(this.authManager.currentUser.email)))) {
+    const user = this.authManager.currentUser;
+    const speakersEmail = model.session.speakers.map(speaker => speaker.email?.toLowerCase());
+    if (!(model.event.hasAccess(user) || speakersEmail.includes(user.email?.toLowerCase()))) {
       this.transitionTo('not-found');
     }
   }

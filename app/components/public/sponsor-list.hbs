@@ -1,6 +1,6 @@
 {{#each-in this.sponsorsGrouped as |key sponsorsGroup|}}
   {{#if (not-eq key 'null')}}
-    <h4 class="ui header">{{key}}</h4>
+    <h3 class="ui header">{{key}}</h3>
   {{/if}}
   <div class="ui three column stackable grid">
     {{#each sponsorsGroup.sponsors as |sponsor|}}

@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 import { groupBy } from 'lodash-es';
@@ -7,7 +7,7 @@ import { groupBy } from 'lodash-es';
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort', 'search', 'date'];
+  queryParams = ['sort', 'search', 'date', 'my_schedule'];
   search = null;
   sort = 'starts-at';
   date = null;
@@ -15,13 +15,26 @@ export default class SessionsController extends Controller {
   timezone = null;
   dates = null;
   preserveScrollPosition = true;
+  my_schedule=null;
+
+  @computed('sort')
+  get sortTitle() {
+    switch (this.sort) {
+      case 'title':
+        return 'By Title';
+      case null:
+      case 'starts-at':
+        return 'By Time';
+      default:
+        return 'By Popularity';
+    }
+  }
 
   @computed('model.session.@each', 'timezone')
   get groupByDateSessions() {
     let sessions;
-
-    if (this.sort === 'title') {
-      sessions = groupBy(this.model.session.toArray(), '');
+    if (this.sort !== 'starts-at') {
+      sessions = groupBy([...new Set(this.model.session.toArray())], '');
     } else {
       sessions = groupBy(this.model.session.toArray(), s => moment.tz(s.startsAt, this.timezone).format('dddd, Do MMMM'));
     }
@@ -47,6 +60,14 @@ export default class SessionsController extends Controller {
       }
       return arr;
     }
+  }
+
+  @action
+  removeActiveClass() {
+    const activeEls = document.querySelectorAll('.filters .link-item.active');
+    activeEls.forEach(el => {
+      el.classList.remove('active');
+    });
   }
 
   async loadDates() {

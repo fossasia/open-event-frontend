@@ -1,0 +1,8 @@
+<div class="ui horizontal compact basic buttons">
+  <UiPopup @content={{t "Edit "}} @class="ui icon button" @click={{action @props.actions.editChannel @record}} @position="left center">
+    <i class="edit icon"></i>
+  </UiPopup>
+  <UiPopup @content={{t "Delete "}} @click={{action (confirm (t "Are you sure you would like to delete this video channel?") (action @props.actions.deleteChannel @record))}} @class="ui icon button" @position="left center">
+    <i class="trash icon"></i>
+  </UiPopup>
+</div>

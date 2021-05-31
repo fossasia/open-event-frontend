@@ -33,8 +33,7 @@ export default class AllRoute extends Route {
     data.notifications = this.infinity.model('notifications', {
       perPage      : 10,
       startingPage : 1,
-      sort         : '-received-at',
-      include      : 'notification-actions',
+      sort         : '-created-at',
       store        : this.authManager.currentUser,
       filter       : filterOptions,
       perPageParam : 'page[size]',

@@ -11,6 +11,7 @@ export default class SessionItem extends Component {
   @service authManager;
   @service confirm;
   @service l10n;
+  @service session;
 
   @tracked
   hideImage = this.args.expanded;
@@ -70,9 +71,9 @@ export default class SessionItem extends Component {
 
   @action
   async favourite() {
-    if (!this.authManager.currentUser) {
+    if (!this.session.isAuthenticated) {
       try {
-        await this.confirm.prompt(this.l10n.t('Please login to favourite this session'));
+        await this.confirm.prompt(this.l10n.t('Please login to add a session to your personal schedule.'));
         this.router.transitionTo('login');
       } catch (e) {
         if (e) {

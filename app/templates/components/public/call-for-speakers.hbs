@@ -4,7 +4,12 @@
   {{#if this.data.speakersCall.isOpen}}
     <a href="#" class="ui basic green label">{{t 'Open'}}</a>
     <div class="sub header">
-      {{t 'Call for Speakers is open until'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+      {{#if this.data.speakersCall.softEndsAt}}
+        {{t 'Call for Speakers will softly closed on'}} {{general-date this.data.speakersCall.softEndsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+        {{t 'and finally closed on'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+      {{else}}
+        {{t 'Call for Speakers will closed on'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+      {{/if}}
     </div>
   {{else}}
     <a href="#" class="ui basic red label">{{t 'Closed'}}</a>
@@ -44,20 +49,20 @@
     <p>{{t 'You need to login to submit and view sessions.'}}</p>
   {{/if}}
 {{/if}}
+{{#if (and this.data.speakersCall.isOpen this.isNewSpeaker)}}
+  <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
+    {{t 'Add Speaker Details'}}
+  </button>
+{{else}}
+  {{#each this.data.userSpeaker as |speaker|}}
+    {{#if speaker.id}}
+      <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}}>
+        <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
+      </LinkTo>
+    {{/if}}
+  {{/each}}
+{{/if}}
 {{#if this.data.speakersCall.isOpen}}
-  {{#if this.isNewSpeaker}}
-    <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
-      {{t 'Add Speaker Details'}}
-    </button>
-  {{else}}
-    {{#each this.data.userSpeaker as |speaker|}}
-      {{#if speaker.id}}
-        <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}}>
-          <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
-        </LinkTo>
-      {{/if}}
-    {{/each}}
-  {{/if}}
   <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSession'}}>
     {{t 'Add New Session'}}
   </button>

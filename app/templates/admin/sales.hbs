@@ -1,5 +1,5 @@
 <TabbedNavigation>
-  <LinkTo @route="admin.sales.index" class="item">
+  <LinkTo @route="admin.sales.index" @model="live" class="item">
     {{t 'Orders'}}
   </LinkTo>
   <LinkTo @route="admin.sales.invoices" class="item">
@@ -12,7 +12,7 @@
     <div class="three wide column">
       {{#if (not-eq this.session.currentRouteName 'admin.sales.invoices')}}
       <TabbedNavigation @isVertical={{true}}>
-        <LinkTo @route="admin.sales.index" class="item">
+        <LinkTo @route="admin.sales.index" @model="live" class="item">
           {{t 'By Events'}}
         </LinkTo>
         <LinkTo @route="admin.sales.organizers" class="item">

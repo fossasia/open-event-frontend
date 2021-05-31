@@ -39,7 +39,7 @@
         {{/if}}
       {{/if}}
       {{#each this.model.session.speakers as |speaker|}}
-        {{#if (eq speaker.email this.authManager.currentUser.email)}}
+        {{#if (eq (lowercase speaker.email) (lowercase this.authManager.currentUser.email))}}
           <LinkTo
             @route="public.cfs.edit-speaker"
             @models={{array this.model.event.id speaker.id}}>

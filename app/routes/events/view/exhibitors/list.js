@@ -22,7 +22,7 @@ export default class ExhibitorsListRoute extends Route.extend(EmberTableRouteMix
 
   async model(params) {
     this.set('params', params);
-    const searchField = 'title';
+    const searchField = 'name';
     let filterOptions = [];
 
     const event = this.modelFor('events.view');

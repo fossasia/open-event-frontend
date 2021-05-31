@@ -49,11 +49,10 @@ export default class SessionNotifyModal extends ModalBase {
   }
 
   @computed('sessionId')
-  get organizersEmails() {
+  get ownerEmail() {
     const session = this.store.peekRecord('session', this.sessionId);
     const owner = session.event.get('owner');
-    const ownerEmail = owner.get('fullName') + ' <' + owner.get('email') + '>';
-    return session.event.get('organizers').map(organizer => `${organizer.fullName} <${organizer.email}>`).concat(ownerEmail).join(', ');
+    return owner.get('fullName') + ' <' + owner.get('email') + '>';
   }
 
   async initialize() {
