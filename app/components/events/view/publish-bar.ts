@@ -86,7 +86,7 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
     } catch (e) {
       console.error('Error while publishing/unpublishing event', e);
       event.state = state;
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+      this.notify.error(this.l10n.t('Please confirm the verification email before creating an event.'),
         {
           id: 'event_publish_error'
         });
