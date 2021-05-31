@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 import { groupBy } from 'lodash-es';
@@ -60,6 +60,14 @@ export default class SessionsController extends Controller {
       }
       return arr;
     }
+  }
+
+  @action
+  removeActiveClass() {
+    const activeEls = document.querySelectorAll('.filters .link-item.active');
+    activeEls.forEach(el => {
+      el.classList.remove('active');
+    });
   }
 
   async loadDates() {
