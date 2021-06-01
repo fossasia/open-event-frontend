@@ -15,11 +15,6 @@ export default class extends Controller.extend(FormMixin) {
     return fields;
   }
 
-  @computed('model.session')
-  get allSpeakers() {
-    return this.model.session.get('speakers').map(speaker => speaker.name).join(', ');
-  }
-
   @action
   openProposalWithdrawModal() {
     this.set('isProposalWithdrawModalOpen', true);

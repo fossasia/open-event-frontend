@@ -1,4 +1,4 @@
-<div class="ui grid container">
+<div class="ui grid container mb-4">
   <div class="column sixteen wide">
     <LinkTo
       @route="my-sessions">
@@ -33,6 +33,17 @@
   <Events::View::Overview::SpeakerView
     @fields={{this.allFields}}
     @speaker={{this.model.speaker}} />
-  <div class="weight-600 column four wide">{{t 'Sessions'}}</div>
-  <div class="column twelve wide">{{this.allSessions}}</div>
+  <div class="ui grid container mb-4">
+  <div class="weight-600 column five wide">{{t 'Sessions'}}</div>
+  <div class="column eleven wide">
+    {{#each this.model.speaker.sessions as |session|}}
+      <LinkTo
+        @route="public.cfs.view-session"
+        @models={{array this.model.speaker.event.id session.id}}>
+        <div>{{session.title}}</div>
+      </LinkTo>
+    {{/each}}
+  </div>
+  </div>
 </div>
+
