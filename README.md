@@ -1,5 +1,6 @@
 # Open Event Frontend
 ![Open Event Frontend](docs/images/Frontend_Branding.png)
+test
 
 [![Build Status](https://github.com/fossasia/open-event-frontend/workflows/CI/badge.svg?branch=development)](https://github.com/fossasia/open-event-frontend/actions?query=workflow%3Aci)
 [![Netlify](https://img.shields.io/netlify/89d57fdc-826c-400b-af13-c542e9513f62)](https://app.netlify.com/sites/open-event/deploys)
