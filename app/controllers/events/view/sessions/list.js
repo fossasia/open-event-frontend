@@ -51,8 +51,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Rating'),
         width           : 60,
-        valuePath       : 'id',
-        extraValuePaths : ['feedbacks'],
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'averageRating',
+        extraValuePaths : ['id', 'feedbacks'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
         options         : {
           ratedSessions: this.ratedSessions
