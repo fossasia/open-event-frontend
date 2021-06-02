@@ -1,8 +1,15 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { inject as service } from '@ember/service';
+import { mapBy } from '@ember/object/computed';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+
+  @service errorHandler;
+
+  @mapBy('model.feedbacks', 'session.id') ratedSessions;
+
   get columns() {
     return [
       {
@@ -26,6 +33,22 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name          : this.l10n.t('Speakers'),
         valuePath     : 'speakers',
         cellComponent : 'ui-table/cell/cell-speakers'
+      },
+      {
+        name            : this.l10n.t('Rating'),
+        width           : 60,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'averageRating',
+        extraValuePaths : ['id', 'feedbacks'],
+        cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
+        options         : {
+          ratedSessions: this.ratedSessions
+        },
+        actions: {
+          updateRating : this.updateRating.bind(this),
+          addRating    : this.addRating.bind(this)
+        }
       },
       {
         name            : this.l10n.t('Submitted At'),
@@ -90,5 +113,68 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   @action
   viewSession(id) {
     this.transitionToRoute('my-sessions.view', id);
+  }
+
+  @action
+  updateRating(rating, feedback) {
+    this.set('isLoading', true);
+    if (rating) {
+      feedback.set('rating', rating);
+      feedback.save()
+        .then(() => {
+          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'),
+            {
+              id: 'session_feedback'
+            });
+          this.refreshModel.bind(this)();
+        })
+        .catch(e => {
+          this.errorHandler.handle(e);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    } else {
+      feedback.destroyRecord()
+        .then(() => {
+          this.notify.success(this.l10n.t('Session feedback has been updated successfully.'),
+            {
+              id: 'session_feed_update'
+            });
+          this.refreshModel.bind(this)();
+        })
+        .catch(e => {
+          this.errorHandler.handle(e);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    }
+  }
+
+  @action
+  addRating(rating, session_id) {
+    const session =  this.store.peekRecord('session', session_id, { backgroundReload: false });
+    this.set('isLoading', true);
+    const feedback = this.store.createRecord('feedback', {
+      rating,
+      session,
+      comment : '',
+      user    : this.authManager.currentUser
+    });
+    feedback.save()
+      .then(() => {
+        this.notify.success(this.l10n.t('Session feedback has been created successfully.'),
+          {
+            id: 'session_feed_created'
+          });
+        this.refreshModel.bind(this)();
+      })
+      .catch(e => {
+        this.errorHandler.handle(e);
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
   }
 }
