@@ -32,6 +32,11 @@ export default Component.extend({
 
   makeRequest() {
     this.set('isLoading', true);
+    if (this.event.state === 'draft') {
+      this.set('json', 'You need to publish event in order to access event information via REST API');
+      this.set('isLoading', false);
+      return;
+    }
     this.loader
       .load(this.displayUrl, { isExternal: true })
       .then(json => {
@@ -39,6 +44,9 @@ export default Component.extend({
         this.set('json', htmlSafe(syntaxHighlight(json)));
       })
       .catch(e => {
+        if (this.isDestroyed) {
+          return;
+        }
         console.error('Error while fetching export JSON from server', e);
         this.notify.error(this.l10n.t('Could not fetch from the server'), {
           id: 'server_fetch_error'
@@ -46,6 +54,9 @@ export default Component.extend({
         this.set('json', 'Could not fetch from the server');
       })
       .finally(() => {
+        if (this.isDestroyed) {
+          return;
+        }
         this.set('isLoading', false);
       });
   },
