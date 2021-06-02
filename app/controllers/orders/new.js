@@ -28,6 +28,9 @@ export default class NewController extends Controller {
       } else {
         order.set('status', 'pending');
       }
+      if (data.event.get('isBillingInfoMandatory')) {
+        order.set('isBillingEnabled', true);
+      }
       await order.save()
         .then(order => {
           if (order.status === 'pending') {

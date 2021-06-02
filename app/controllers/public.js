@@ -77,6 +77,14 @@ export default class PublicController extends Controller {
   }
 
   @action
+  removeActiveClass(name) {
+    const activeEls = document.querySelectorAll(`.${name}.link-item.active`);
+    activeEls.forEach(el => {
+      el.classList.remove('active');
+    });
+  }
+
+  @action
   sessionFilter(name) {
     if (this.activeSession.includes(name)) {
       this.activeSession = this.activeSession.filter(session => session !== name);
@@ -88,6 +96,16 @@ export default class PublicController extends Controller {
 
   @action
   applyFilter(value, filterType) {
+    const params = this.router.currentRoute.queryParams;
+    if (!params.track) {
+      this.activeTrack = [];
+    }
+    if (!params.room) {
+      this.activeRoom = [];
+    }
+    if (!params.sessionType) {
+      this.activeSession = [];
+    }
     value = value + ':';
     if (filterType === 'room') {
       if (this.activeRoom.includes(value)) {
