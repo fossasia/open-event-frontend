@@ -23,6 +23,7 @@ interface EventsViewPublishBarArgs {
 export default class EventsViewPublishBar extends Component<EventsViewPublishBarArgs> {
   @service notify: any;
   @service l10n: any;
+  @service errorHandler: any;
 
   @tracked isModalOpen = false;
   @tracked isLoading = false;
@@ -86,10 +87,7 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
     } catch (e) {
       console.error('Error while publishing/unpublishing event', e);
       event.state = state;
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'event_publish_error'
-        });
+      this.errorHandler.handle(e);
     } finally {
       this.isLoading = false;
     }
