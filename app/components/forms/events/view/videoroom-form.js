@@ -287,7 +287,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     if (!this.data.stream.extra?.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
       this.data.stream.set('extra', { bbb_options });
     }
-    this.selectedVideo = this.data.stream.videoChannel;
-    this.previousVideo = this.data.stream.videoChannel;
+    this.selectedVideo = this.previousVideo = this.data.stream.videoChannel;
   }
 }
