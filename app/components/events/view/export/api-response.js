@@ -32,7 +32,7 @@ export default Component.extend({
 
   makeRequest() {
     this.set('isLoading', true);
-    if (this.event.state === 'draft') {
+    if (this.event?.state === 'draft') {
       this.set('json', 'You need to publish event in order to access event information via REST API');
       this.set('isLoading', false);
       return;
