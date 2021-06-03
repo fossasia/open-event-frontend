@@ -58,6 +58,16 @@
     <Input type="url" @value={{this.settings.cookiePolicyLink}} />
   </div>
   <div class="field">
+    {{t 'Choose language'}}
+    <select id = "myList" onchange = "dropDown()" >  
+      <option> ---Choose language--- </option>
+      <option> English </option>  
+      <option> Hindi </option>
+      <option> French </option>
+      <option> Spanish </option>  
+    </select>  
+  </div>
+  <div class="field">
     <label>{{t 'Cookie Policy'}}</label>
     <Textarea
       @rows="3"
