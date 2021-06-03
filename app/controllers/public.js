@@ -86,7 +86,7 @@ export default class PublicController extends Controller {
   removeActiveSessionLevel() {
     this.activeSessionLevel = [];
   }
-  
+
   removeActiveClass(name) {
     const activeEls = document.querySelectorAll(`.${name}.link-item.active`);
     activeEls.forEach(el => {
