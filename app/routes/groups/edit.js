@@ -11,10 +11,24 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   }
 
   model(params) {
+    const filterOptions = [
+      {
+        name : 'deleted-at',
+        op   : 'eq',
+        val  : null
+      }
+    ];
+
     return hash({
-      filteredEvents: this.authManager.currentUser.query('events', {
+      filteredEvents: this.infinity.model('events', {
+        filter       : filterOptions,
+        perPage      : 25,
+        startingPage : 1,
+        perPageParam : 'page[size]',
+        pageParam    : 'page[number]',
+        store        : this.authManager.currentUser,
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
-        'page[size]' : 25
+        sort         : 'name'
       }),
       group: this.store.findRecord('group', params.group_id, {
         include: 'events'

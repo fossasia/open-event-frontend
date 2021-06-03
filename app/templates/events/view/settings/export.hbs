@@ -15,6 +15,6 @@
     <Events::View::Export::DownloadCommon @downloadType="iCalendar XML (xCal)" @downloadUrl="calendar.xcs" @model={{this.model}} />
   </div>
   <div class="eight wide column">
-    <Events::View::Export::ApiResponse @eventId={{this.model.id}} />
+    <Events::View::Export::ApiResponse @eventId={{this.model.id}} @event={{this.model}} />
   </div>
 </div>

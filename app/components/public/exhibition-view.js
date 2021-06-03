@@ -87,6 +87,13 @@ export default class ExhibitionView extends Component {
   }
 
   @action
+  refreshSlide() {
+    if (document.getElementById('googleFrame')) {
+      document.getElementById('googleFrame').src += '';
+    }
+  }
+
+  @action
   async initialise() {
     if (!exhibitors.length) {
       exhibitors =  await this.data.event.query('exhibitors', {
@@ -97,6 +104,7 @@ export default class ExhibitionView extends Component {
       });
     }
     this.set('exhibitorsLoaded', true);
+    this.refreshSlide();
   }
 }
 
