@@ -9,7 +9,7 @@ import { inject as service } from '@ember/service';
 import moment from 'moment';
 
 
-const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
+const bbb_options = { 'record': true, 'autoStartRecording': false, 'muteOnStart': true };
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
