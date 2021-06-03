@@ -68,11 +68,17 @@
     </select>  
   </div>
   <div class="field">
+  <p> Your selected language is:   
+  <input type = "text" id = "favourite" size = "20" /></p> 
+  </div> 
+  <div class="field">
     <label>{{t 'Cookie Policy'}}</label>
     <Textarea
       @rows="3"
       @value={{this.settings.cookiePolicy}} />
   </div>
+  <p> Your selected tutorial site is:   
+<input type = "text" id = "favourite" size = "20" /></p> 
   <div class="ui hidden divider"></div>
   <Forms::Admin::Settings::System::CaptchaForm @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
