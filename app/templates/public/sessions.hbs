@@ -69,7 +69,7 @@
 {{!-- To be enabled and developed on later --}}
 {{#if this.isTrackVisible}} 
   {{#each this.model.session as |session|}}
-    <div class="{{if this.device.isMobile 'mt--8'}} d-flex" style="align-items: center;">
+    <div class="ui grid">
       <div class="three wide column">
         {{general-date session.startsAt 'hh:mm a' tz=session.event.timezone}} - 
         {{general-date session.endsAt 'hh:mm a' tz=session.event.timezone}}
