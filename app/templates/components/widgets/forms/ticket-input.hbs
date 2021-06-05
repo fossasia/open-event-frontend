@@ -101,10 +101,10 @@
         </div>
       </div>
       <div class="field">
-        <div class="ui checkbox" onClick={{if (not this.ishidden) (confirm 'To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.' (action 'hideTicket') 'Ok' 'Cancel' 'green' 'red')}}>
+        <div class="ui checkbox" onClick={{if (not this.ticket.isHidden) (confirm 'To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.' (action (mut this.ticket.isHidden)) 'Ok' 'Cancel' 'green' 'red')}}>
           <Input
 @type="checkbox"
-@checked={{this.ishidden}}
+@checked={{this.ticket.isHidden}}
 @name="ticket_hidden"/>
           <label for="description_visible">
             {{t 'Hide Ticket from the Public Events page'}}<br>
