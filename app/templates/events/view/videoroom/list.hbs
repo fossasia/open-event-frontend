@@ -26,12 +26,8 @@
   <div class="ui grid space-between items-center mt-4 mb-4">
       <div class="d-flex flex-row">
         <h2 class="header">{{t 'Microlocation Video Rooms'}}</h2>
-        <UiPopup
-          @content={{t 'Microlocation video rooms are suitable for events with different tracks, rooms and sessions that are listed in a schedule. All microlocations are listed on the event schedule.'}}
-          class="m-2" >
-          <i class="info circle icon"></i>
-        </UiPopup>
       </div>
+            <p>{{t 'Microlocation video rooms are suitable for events with different tracks, rooms and sessions that are listed in a schedule. All microlocations are listed on the event schedule. Note: Microlocation rooms require a session in order to be visible to attendees. They are only listed on the video channel list on side panels of online events, if session have been added into the location in the schedule.'}}</p>
       <div>
         <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
           {{t 'Add Microlocation'}}
