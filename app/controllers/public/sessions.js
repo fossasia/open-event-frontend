@@ -7,7 +7,7 @@ import { groupBy } from 'lodash-es';
 @classic
 export default class SessionsController extends Controller {
 
-  queryParams = ['sort', 'search', 'date', 'my_schedule'];
+  queryParams = ['sort', 'search', 'date', 'my_schedule', 'level'];
   search = null;
   sort = 'starts-at';
   date = null;
@@ -16,6 +16,7 @@ export default class SessionsController extends Controller {
   dates = null;
   preserveScrollPosition = true;
   my_schedule=null;
+  level=null;
 
   @computed('sort')
   get sortTitle() {
