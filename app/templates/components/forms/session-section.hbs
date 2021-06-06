@@ -69,6 +69,24 @@
               {{/each}}
                </div>
            </UiDropdown>
+        {{else if (eq field.fieldIdentifier 'level')}}
+          <UiDropdown
+            @class="search selection"
+            @selected={{this.data.session.level}}
+            @onChange={{action (mut this.data.session.level)}} as |execute mapper|>
+            <Input
+              @type="hidden"
+              @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your level'}}</div>
+            <div class="menu">
+              {{#each this.levels as |level|}}
+                <div class="item" data-value="{{map-value mapper level.name}}">
+                  {{level.name}}
+                </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
         {{else}}
           <UiDropdown
                @class="search selection"
