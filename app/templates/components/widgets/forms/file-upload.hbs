@@ -4,7 +4,7 @@
       <Input @type="url" @readonly="" @value={{this.fileUrl}} />
       <button class="ui icon red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' this.edit))}}>
         <i class="remove icon"></i>
-         {{t 'Remove file'}}
+        {{t 'Remove file'}}
       </button>
     </div>
   {{else}}
