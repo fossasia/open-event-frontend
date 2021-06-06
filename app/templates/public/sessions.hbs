@@ -60,7 +60,7 @@
       </div>
     </UiDropdown>
 
-    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} data-tooltip="{{t 'Clear All Filters'}}" class="pb-2 pt-2 ui button mb-2">
+    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} @invokeAction={{action this.removeActiveClass}} data-tooltip="{{t 'Clear All Filters'}}" class="pb-2 pt-2 ui button mb-2">
       <i><Icons::ClearFilter /></i>
     </LinkTo>
   </div>
@@ -81,7 +81,7 @@
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/each}}
-  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
+  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{1000}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
       </div>
@@ -129,7 +129,7 @@
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/if}}    
-  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{300}} @eventDebounce={{50}}>
+  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{1000}} @eventDebounce={{50}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
       </div>

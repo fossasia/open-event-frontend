@@ -237,8 +237,7 @@
               @canMoveDown={{not-eq index (dec this.ticketCount)}}
               @moveTicketUp={{action "moveTicket" ticket index "up"}}
               @moveTicketDown={{action "moveTicket" ticket index "down"}}
-              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}
-              @ishidden = {{ticket.isHidden}} />
+              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">

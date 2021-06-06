@@ -68,25 +68,29 @@ export default class AddToCalender extends Component<Args> {
     return moment(event.endsAt).tz(event.timezone);
   }
 
+  get calendarLocation(): string {
+    return this.args.event.online ? this.args.event.url : this.args.location;
+  }
+
   get googleUrl(): string {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYYMMDD[T]HHmmSS[Z]');
     const endTime = this.endsAt.utc().format('YYYYMMDD[T]HHmmSS[Z]');
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${startTime}/${endTime}&text=${event.name}&location=${this.args.location}&ctz=${event.timezone}&details=${this.description}`;
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${startTime}/${endTime}&text=${event.name}&location=${this.calendarLocation}&ctz=${event.timezone}&details=${this.description}`;
   }
 
   get yahooUrl(): string {
     const { event } = this.args;
     const startTime = this.startsAt.format('YYYYMMDD[T]HHmmSS');
     const endTime = this.endsAt.format('YYYYMMDD[T]HHmmSS');
-    return `https://calendar.yahoo.com/?v=60&title=${event.name}&st=${startTime}&et=${endTime}&desc=${this.description}&in_loc=${this.args.location}`;
+    return `https://calendar.yahoo.com/?v=60&title=${event.name}&st=${startTime}&et=${endTime}&desc=${this.description}&in_loc=${this.calendarLocation}`;
   }
 
   get outlookUrl(): string {
     const { event } = this.args;
     const startTime = this.startsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
     const endTime = this.endsAt.utc().format('YYYY[-]MM[-]DDTHH[:]mm[:]SS[Z]');
-    return `https://outlook.live.com/calendar/0/deeplink/compose?subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${(this.description).substring(0, 1000)}&location=${this.args.location}`;
+    return `https://outlook.live.com/calendar/0/deeplink/compose?subject=${event.name}&startdt=${startTime}&enddt=${endTime}&body=${(this.description).substring(0, 1000)}&location=${this.calendarLocation}`;
   }
 
   get iCalUrl(): string {
