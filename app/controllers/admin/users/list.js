@@ -2,9 +2,11 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { or } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { inject as service } from '@ember/service';
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  @service errorHandler;
   sort_by = 'created-at';
 
   sort_dir = 'DSC';
@@ -234,17 +236,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'ver_mail_succ'
         });
       })
-      .catch(error => {
-        console.error('Error while sending verification email', error, error.error);
-        if (error.error) {
-          this.notify.error(error.error, {
-            id: 'ver_mail_serv_error'
-          });
-        } else {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
-            id: 'ver_mail_serv'
-          });
-        }
+      .catch(e => {
+        console.error('Error while sending verification email', e);
+        this.errorHandler.handle(e);
       });
   }
 
@@ -262,14 +256,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           id: 'reset_link_sent'
         });
       })
-      .catch(reason => {
-        if (reason && Object.prototype.hasOwnProperty.call(reason, 'errors') && reason.errors[0].status === 404) {
-          console.warn('Reset Password: No user account found', reason);
-          this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
-        } else {
-          console.error('Error while submitting reset password', reason);
-          this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
-        }
+      .catch(e => {
+        console.error('Error while sending reset password email', e);
+        this.errorHandler.handle(e);
       });
   }
 }
