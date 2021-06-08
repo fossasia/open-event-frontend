@@ -8,7 +8,7 @@ import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
 
 
-const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
+const bbb_options = { 'record': true, 'autoStartRecording': false, 'muteOnStart': true };
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
@@ -19,6 +19,46 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked moderatorEmail = '';
   @tracked deletedModerators = [];
   @tracked videoRecordings = [];
+  @tracked selectedVideo = '';
+  @tracked previousVideo = '';
+
+  get recordingColumns() {
+    return [
+      {
+        name      : this.l10n.t('Number of Participants'),
+        valuePath : 'participants'
+      },
+      {
+        name          : this.l10n.t('Start time'),
+        valuePath     : 'startTime',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'dddd, D MMMM, YYYY h:mm A'
+        }
+      },
+      {
+        name          : this.l10n.t('End time'),
+        valuePath     : 'endTime',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'dddd, D MMMM, YYYY h:mm A'
+        }
+      },
+      {
+        name            : this.l10n.t('Duration'),
+        valuePath       : 'endTime',
+        extraValuePaths : ['startTime'],
+        cellComponent   : 'ui-table/cell/cell-duration'
+      },
+      {
+        name          : this.l10n.t('View'),
+        valuePath     : 'url',
+        cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-recording'
+      }
+    ];
+  }
 
   @computed('data.stream.rooms.[]')
   get room() {
@@ -121,6 +161,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.data.stream.set('extra', { bbb_options });
   }
 
+  add3cx() {
+    this.data.stream.set('url', '');
+  }
+
   @action
   async addYoutube() {
     this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
@@ -138,6 +182,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     switch (channel.get('provider')) {
       case 'jitsi':
         await this.addJitsi(channel);
+        break;
+      case '3cx':
+        await this.add3cx();
         break;
       case 'bbb':
         this.addBigBlueButton(channel);
@@ -158,6 +205,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       try {
         await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form. Do you want to proceed?'));
       } catch {
+        this.previousVideo = this.selectedVideo;
         return;
       }
     }
@@ -227,14 +275,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   async loadRecordings() {
     try {
-      const result = [];
-      const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
-      recordings.result.response.recordings.recording.forEach(rec => {
-        result.push(rec.playback.format.url);
+      const recordings = await this.data.stream.query('videoRecordings', {
+        'page[size]': 0
       });
-      this.videoRecordings = [...result];
+      this.videoRecordings = recordings.toArray();
     } catch (e) {
-      console.error('Error while getting recordings f', e);
+      console.error('Error while getting recordings', e);
     }
   }
 
@@ -245,8 +291,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
       this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
     }
-    if (!this.data.stream.extra.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
+    if (!this.data.stream.extra?.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
       this.data.stream.set('extra', { bbb_options });
     }
+    this.selectedVideo = this.previousVideo = this.data.stream.videoChannel;
   }
 }

@@ -8,7 +8,7 @@
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
       <UiDropdown
         @class="ui floating labeled icon dropdown blue button"
-        @selected={{this.data.stream.videoChannel}}
+        @selected={{this.previousVideo}}
         @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
         <div class="default text">
@@ -115,7 +115,7 @@
   {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label>
-          {{t 'Record'}}
+          {{t 'Enable Recording'}}
       </label>
       <UiCheckbox
         class="toggle"
@@ -163,18 +163,6 @@
       {{t 'Add'}}
     </button>
   </div>
-  {{#if this.videoRecordings}}
-    <div class="ui hidden divider"></div>
-      <div class="mt-2">
-        <p class="weight-600">{{t 'BBB Recordings'}}</p>
-        <div>
-          {{#each this.videoRecordings as |recording|}}
-            <a target="_blank" href={{recording}} rel="noopener">{{recording}}</a>
-            <br />
-          {{/each}}
-        </div>
-    </div>
-  {{/if}}
   <div class="mt-2">
     {{#each this.data.stream.moderators as |moderator|}}
       <span class="ui label transition visible" style="display: inline-block !important;">{{moderator.email}}
@@ -182,6 +170,21 @@
       </span>
     {{/each}}
   </div>
+  <p>{{t 'Please ask moderators to get a ticket for the event. Moderators can access an event only after getting a ticket.'}}</p>
+  {{#if this.videoRecordings}}
+    <div class="ui header">{{t 'BBB Recordings'}}</div>
+    <Tables::Default
+      @color='green'
+      @columns={{this.recordingColumns}}
+      @rows={{this.videoRecordings}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column"
+      @hideSearchBox={{true}}
+      @hidePagination={{true}}
+      @hidePageSize={{true}} />
+  {{/if}}
+
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
   <LinkTo @route="events.view.videoroom.index" class="ui red button">

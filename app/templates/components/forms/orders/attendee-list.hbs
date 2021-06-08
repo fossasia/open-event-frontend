@@ -27,7 +27,7 @@
               {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
                 <div class="field">
                     <h4 class="weight-300">
-                      {{field.name}}
+                      {{t-var field.name}}
                     </h4>
                     {{#if (is-input-field field.type) }}
                       <span class="word-break">{{get holder field.fieldIdentifier}}</span>

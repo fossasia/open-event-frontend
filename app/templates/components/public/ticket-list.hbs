@@ -44,7 +44,7 @@
                       @min={{ticket.minPrice}}
                       @max={{ticket.maxPrice}}
                       @value={{ticket.price}}
-                      @keyUp={{action "onChangeDonation"}} />
+                      @input={{action "onChangeDonation"}} />
                   </div>
                 </div>
               {{else}}
@@ -165,11 +165,11 @@
                 @key-up={{action "handleKeyPress"}}
                 @id="promotionalCode" />
               {{#unless this.promotionalCodeApplied}}
-                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button" {{action 'applyPromotionalCode'}}>
-                  <i class="checkmark icon"></i>
+                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
+                {{t 'Apply code'}}
                 </div>
               {{/unless}}
-              <div role="button" class="ui black icon button" {{action 'togglePromotionalCode'}}>
+              <div role="button" class="ui black icon button p-4" {{action 'togglePromotionalCode'}}>
                 <i class="remove icon"></i>
               </div>
             </div>
@@ -241,4 +241,3 @@
     @event={{this.event}}
     @isOpen={{this.isContactOrganizerModalOpen}} />
 {{/if}}
-

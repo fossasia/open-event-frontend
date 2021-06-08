@@ -18,6 +18,18 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     $.fn.form.settings.rules.checkEndDateCFS = () => {
       return !(moment($('.ui.form').form('get value', 'end_date')).isAfter(this.data.event.startsAtDate));
     };
+    $.fn.form.settings.rules.checkSoftEndDateAfterCfsStart = () => {
+      return (moment($('.ui.form').form('get value', 'soft_end_date')).isSameOrAfter(this.data.speakersCall.startsAtDate));
+    };
+    $.fn.form.settings.rules.checkSoftEndDateBeforeCfsEnd = () => {
+      return (moment($('.ui.form').form('get value', 'soft_end_date')).isSameOrBefore(this.data.speakersCall.endsAtDate));
+    };
+    $.fn.form.settings.rules.checkSoftEndTimeAfterCfsStart = () => {
+      return (moment($('.ui.form').form('get value', 'soft_end_date') + ' ' + $('.ui.form').form('get value', 'soft_end_time')).isAfter(this.data.speakersCall.startsAt));
+    };
+    $.fn.form.settings.rules.checkSoftEndTimeBeforeCfsEnd = () => {
+      return (moment($('.ui.form').form('get value', 'soft_end_date') + ' ' + $('.ui.form').form('get value', 'soft_end_time')).isBefore(this.data.speakersCall.endsAt));
+    };
     return {
       inline : true,
       delay  : false,
@@ -63,6 +75,23 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             }
           ]
         },
+        softEndsAtDate: {
+          identifier : 'soft_end_date',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give a soft end date')
+            },
+            {
+              type   : 'checkSoftEndDateAfterCfsStart',
+              prompt : this.l10n.t('Soft closing date should be after CFS start date')
+            },
+            {
+              type   : 'checkSoftEndDateBeforeCfsEnd',
+              prompt : this.l10n.t('Soft closing date should be before CFS end date')
+            }
+          ]
+        },
         endDate: {
           identifier : 'end_date',
           rules      : [
@@ -83,6 +112,25 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
+            }
+          ]
+        },
+        softEndsAtTime: {
+          identifier : 'soft_end_time',
+          depends    : 'soft_end_date',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give a soft end time')
+            },
+            {
+              type   : 'checkSoftEndTimeAfterCfsStart',
+              prompt : this.l10n.t('Soft closing time should be after CFS start time')
+            },
+            {
+              type   : 'checkSoftEndTimeBeforeCfsEnd',
+              prompt : this.l10n.t('Soft closing time should be before CFS end time')
             }
           ]
         },
@@ -128,6 +176,10 @@ export default Component.extend(EventWizardMixin, FormMixin, {
 
   hasCallForSpeaker: computed('data.speakersCall.announcement', function() {
     return !!this.data.speakersCall.announcement;
+  }),
+
+  hasSoftClosing: computed('data.speakersCall.softendsAt', function() {
+    return !!this.data.speakersCall.softEndsAt;
   }),
 
   customForm: computed('data.customForms.[]', function() {
@@ -222,6 +274,9 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     },
     resetCFS() {
       this.set('data.speakersCall.announcement', null);
+    },
+    resetSoftClosing() {
+      this.set('data.speakersCall.softEndsAt', null);
     },
     onChange() {
       this.onValid(() => {});

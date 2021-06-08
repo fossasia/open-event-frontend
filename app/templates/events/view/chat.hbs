@@ -17,6 +17,13 @@
           </div>
         </div>
       </div>
+      <div class="sixteen wide column">
+        {{#if this.model.isChatEnabled}}
+          <h4 class="centered text">{{t 'Chat is currently enabled for this event. Users can access a chat channel for this event.'}}</h4>
+        {{else}}
+          <h4 class="centered text">{{t 'Chat is currently not enabled for this event. Users cannot access chat for this event.'}}</h4>
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>

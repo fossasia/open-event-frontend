@@ -1,5 +1,5 @@
 <UnverifiedUserMessage />
-<div class="public-event ui relaxed grid mt-0 pt-0">
+<div class="public-event ui relaxed grid mt-0 pt-0" {{did-insert this.setup}}>
   <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
     <Widgets::SafeImage class="background" @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
     <div class="content">
@@ -46,7 +46,15 @@
       {{/unless}}
       <div class="three wide column">
         {{#if this.displaySideMenu}}
-          <Public::Stream::JoinVideo @showVideo={{false}} @event={{this.model}} @videoStream={{this.model.videoStream}} @sameTab={{this.side_panel}} @showSidePanel={{action "showSidePanel"}} class="ui basic segment m-0 p-0" />
+          <Public::Stream::JoinVideo
+            @showVideo={{false}}
+            @event={{this.model}}
+            @videoStream={{this.model.videoStream}}
+            @canAccess={{this.canAccess}}
+            @hasStreams={{this.hasStreams}}
+            @sameTab={{this.side_panel}}
+            @showSidePanel={{action "showSidePanel"}}
+            class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
           {{#if (not-eq this.session.currentRouteName 'public.exhibition.view')}}
             <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
@@ -69,16 +77,16 @@
             {{/if}}
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions.index')}}
-            <div class="{{if this.device.isMobile 'd-flex'}} ui basic segment m-0 pr-0 pl-0 pt-2">
+            <div class="{{if this.device.isMobile 'd-flex'}} filters ui basic segment m-0 pr-0 pl-0 pt-2">
               <div class="mr-8">
               <h4>
                 {{t 'Tracks'}}
-                <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}} data-tooltip="{{t 'Clear Track Filter'}}">
+                <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash track=null}} data-tooltip="{{t 'Clear Track Filter'}}" @invokeAction={{action this.removeActiveClass 'track'}}>
                   <Icons::ClearFilter />
                 </LinkTo>
               </h4>
               {{#each this.model.tracks as |track|}} 
-                <p role="button" class="p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) "active"}}" {{action 'applyFilter' track.name 'track'}}>
+                <p role="button" class="track p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) "active"}}" {{action 'applyFilter' track.name 'track'}}>
                   <i class="circle icon" style={{css color=track.color}}></i> 
                   {{track.name}}
                 </p>
@@ -88,13 +96,13 @@
               <div>
               <h4>
                 {{t 'Rooms'}}
-                <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash room=null}} data-tooltip="{{t 'Clear Room Filter'}}">
+                <LinkTo @route="public.sessions" @models={{array this.model.id}} @query={{hash room=null}} data-tooltip="{{t 'Clear Room Filter'}}" @invokeAction={{action this.removeActiveClass 'room'}}>
                   <Icons::ClearFilter />
                 </LinkTo>
               </h4>
               {{#each this.model.microlocations as |room|}}
                 {{#if (not room.hiddenInScheduler)}}
-                  <p class="p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) "active"}}" role="button" {{action 'applyFilter' room.name 'room'}}>
+                  <p class="room p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) "active"}}" role="button" {{action 'applyFilter' room.name 'room'}}>
                     {{room.name}}
                   </p>
                 {{/if}}
@@ -124,7 +132,33 @@
                     @onChange={{action this.sessionFilter sessionType.name}}/>
                   {{/each}}
                 </div>
-              </UiDropdown> 
+              </UiDropdown>
+              <h4>
+                {{t 'Session Levels'}}
+                <LinkTo @route="public.sessions" {{action this.removeActiveSessionLevel}} @models={{array this.model.id}} @query={{hash level=null}} data-tooltip="{{t 'Clear Session Level Filter'}}">
+                  <Icons::ClearFilter />
+                </LinkTo>
+              </h4> 
+              {{#each this.activeSessionLevel as |level|}}
+                <span class="p-1 mb-1 rounded-default">
+                  {{level}}
+                </span>
+              {{/each}}
+              <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+                <div class="default">
+                  {{t 'Select Session level'}}
+                </div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  {{#each this.levels as |level|}}
+                    <UiCheckbox 
+                    @class="item"
+                    @label={{level.name}}
+                    @checked={{if (includes this.activeSessionLevel level.name) "active"}}
+                    @onChange={{action this.sessionLevelFilter level.name}}/>
+                  {{/each}}
+                </div>
+              </UiDropdown>
               </div>
             </div>
           {{/if}}
@@ -149,7 +183,9 @@
 {{#if this.side_panel}}
   <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @currentRoute={{this.session.currentRouteName}} />  
 {{/if}}
-
+{{#if (and this.model.isChatEnabled this.canAccess)}}
+  <Public::Stream::ChatPanel @event={{this.model}} />
+{{/if}}
 {{#if this.video_dialog}}
   <Modals::SimpleModal
     @isOpen={{true}}

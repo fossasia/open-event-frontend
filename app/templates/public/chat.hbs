@@ -1,5 +1,5 @@
 {{#if this.model.token}}
-  <Public::Stream::Chat @token={{this.model.token}} />
+  <Public::Stream::Chat @token={{this.model.token}} @event={{this.model.event}} />
 {{/if}}
 {{#if (not this.model.success)}}
   <h3>Unable to login to chat. Please contact the administrator</h3>
