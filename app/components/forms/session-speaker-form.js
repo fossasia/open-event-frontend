@@ -6,6 +6,7 @@ import { compulsoryProtocolValidUrlPattern, protocolLessValidUrlPattern, validPh
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { languages } from 'open-event-frontend/utils/dictionary/languages';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
+import { levels } from 'open-event-frontend/utils/dictionary/levels';
 import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
 import { SPEAKER_FORM_ORDER, SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
 
@@ -405,6 +406,8 @@ export default Component.extend(FormMixin, {
   languages: orderBy(languages, 'name'),
 
   genders: orderBy(genders, 'name'),
+
+  levels: orderBy(levels, 'position'),
 
   allFields: computed('fields', function() {
     const grouped = groupBy(this.fields.toArray(), field => field.get('form'));

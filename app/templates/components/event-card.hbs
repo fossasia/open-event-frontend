@@ -9,15 +9,14 @@
       </div>
     {{/unless}}
   {{/if}}
-  <div style="height: 100%;"
-    class="ui card {{this.eventClass}}">
+  <div class="ui card {{this.eventClass}} {{if this.isWide 'h-auto' 'h-full'}}">
     {{#unless this.isWide}}
       <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
         <Widgets::SafeImage
           @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
       </a>
     {{/unless}}
-    <a class="main content" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
+    <a class="main content {{if this.isWide (unless this.device.isMobile 'h-80perc')}}" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
       <SmartOverflow @class="header">
         {{this.event.name}}
       </SmartOverflow>

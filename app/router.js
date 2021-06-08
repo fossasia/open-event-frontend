@@ -263,6 +263,9 @@ Router.map(function() {
       this.route('translations');
       this.route('events');
     });
+    this.route('groups', function() {
+      this.route('list', { path: '/:group_status' });
+    });
   });
   this.route('orders', function() {
     this.route('new', { path: '/:order_id/new' });
