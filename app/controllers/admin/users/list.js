@@ -136,10 +136,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     } catch (e) {
       console.error('Error while marking user as spam', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_spam_error'
-        });
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
@@ -159,10 +156,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     } catch (e) {
       console.error('Error while verifying user', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_verf_error'
-        });
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
@@ -181,10 +175,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     } catch (e) {
       console.error('Error while deleting user', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_delete_error'
-        });
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
@@ -212,11 +203,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
     } catch (e) {
       console.error('Error while restoring user', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_restore_error'
-        });
-      console.warn(e);
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
