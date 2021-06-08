@@ -127,7 +127,7 @@
                       @currency={{this.eventCurrency}}
                       @amount={{mult (sub ticket.price ticket.discount) tickets.length}} />
                     <small class="ui gray-text small">
-                      + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                       +<CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
                     </small>
                   </td>
                 {{/if}}   
