@@ -4,6 +4,7 @@ import { action, computed } from '@ember/object';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   per_page = 25;
+  count = 0;
 
   get columns() {
     return [
@@ -60,6 +61,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
   @computed('model.event')
   get events() {
+    if (this.count === 1 && !this.model.event?.videoStream?.get('name')) {
+      location = location.href;
+    }
+    this.count = this.count + 1;
     return [this.model.event];
   }
 
