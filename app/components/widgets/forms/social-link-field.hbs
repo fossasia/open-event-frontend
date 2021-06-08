@@ -1,6 +1,6 @@
 <div class="{{unless @fixed 'fields'}}">
   {{#unless @fixed}}
-    <div class="four wide field">
+    <div class="field pr-2">
       <div class="ui labeled input">
         {{#if @custom}}
           <Input @type="text" value={{@site}} {{on 'input' (action @onSiteChange value="target.value")}} />
