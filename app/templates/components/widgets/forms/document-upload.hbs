@@ -1,0 +1,24 @@
+<div class="">
+     <div class="{{if this.device.isTablet 'sixteen' 'four'}} wide right aligned column">
+          <div class="ui labeled input">
+            <button class="ui blue button right-floated" {{action 'documentUpload'}}>{{t 'save documents'}}</button>
+          </div>
+        </div>
+    <h3>
+        {{t 'Event Documents'}}
+        <UiPopup @content={{t "Add More Documents"}} @class="ui compact icon blue circular button ml-2" style="margin-left: 1rem !important;">
+          <i class="plus icon"></i>
+        </UiPopup>
+      </h3>
+      <div class="ui grid stackable">
+      <Input type="text" name="name"  />
+        <Widgets::Forms::FileUpload
+          @fileUrl={{@exhibitor.slidesUrl}}
+          @label={{t "Slide"}}
+          @id="slidesUrl"
+          @icon="file"
+          @hint={{t "Select a file"}}
+          @maxSizeInKb={{10000}} />
+          
+      </div>
+</div>

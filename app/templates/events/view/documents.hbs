@@ -17,17 +17,11 @@
           </div>
         </div>
       </div>
-      <div class="sixteen wide column">
-        {{#if this.model.isDocumentEnabled}}
-          <Widgets::Forms::FileUpload
-            @fileUrl={{@exhibitor.slidesUrl}}
-            @label={{t "Documents"}}
-            @id="Documents"
-            @icon="file"
-            @hint={{t "Select a file"}}
-            @maxSizeInKb={{10000}} />
-        {{/if}}
-      </div>
+      {{#if this.model.isDocumentEnabled}}
+        <div class="sixteen wide column">
+          <Widgets::Forms::DocumentUpload />
+        </div>
+      {{/if}}
     </div>
   </div>
 </div>

@@ -98,6 +98,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   createdAt : attr('moment', { readOnly: true }),
   deletedAt : attr('moment'),
+  // documentLinks: attr('array'),
 
   /**
    * Relationships
