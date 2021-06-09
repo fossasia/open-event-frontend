@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { hash } from 'rsvp';
 
 @classic
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
@@ -11,11 +12,11 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
 
   async model(params) {
     const event = this.modelFor('events.view');
-    return {
-      discountCode : await this.store.findRecord('discount-code', params.discount_code_id, {}),
-      tickets      : await this.modelFor('events.view').query('tickets', {}),
+    return hash({
+      discountCode : this.store.findRecord('discount-code', params.discount_code_id, {}),
+      tickets      : this.modelFor('events.view').query('tickets', {}),
       event
-    };
+    });
   }
 
   async afterModel(model) {

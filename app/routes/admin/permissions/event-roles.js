@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 @classic
 export default class EventRolesRoute extends Route {
@@ -8,10 +9,10 @@ export default class EventRolesRoute extends Route {
   }
 
   async model() {
-    return {
+    return hash({
       roles       : ['Attendee', 'Co-organizer', 'Moderator', 'Organizer', 'Owner', 'Track Organizer', 'Registrar'],
-      services    : await this.store.query('service', {}),
-      permissions : await this.store.query('event-role-permission', { 'page[size]': 35 })
-    };
+      services    : this.store.query('service', {}),
+      permissions : this.store.query('event-role-permission', { 'page[size]': 35 })
+    });
   }
 }
