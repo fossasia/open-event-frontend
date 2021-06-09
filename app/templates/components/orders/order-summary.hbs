@@ -110,11 +110,12 @@
                         {{t 'The price is inclusive of all taxes.'}}
                       {{else}}
                         {{#if ticket.price}}
-                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
-                        <small class="ui gray-text small">
-                          ({{this.event.tax.name}} {{this.event.tax.rate}}%)
-                        </small>
-                    </td>
+                          <td>
+                            <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                            <small class="ui gray-text small">
+                              ({{this.event.tax.name}} {{this.event.tax.rate}}%)
+                            </small>
+                          </td>
                         {{else}}
                           {{t 'N/A'}}
                         {{/if}}
