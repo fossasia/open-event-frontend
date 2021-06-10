@@ -6,12 +6,6 @@ import { tracked } from '@glimmer/tracking';
 export default class extends Controller.extend(EmberTableControllerMixin) {
 
   @tracked isFeatureModalOpen = false;
-  @tracked featureText = false;
-
-  @action
-  closeModal() {
-    this.isFeatureModalOpen = false;
-  }
 
   @action
   toggleModal() {
