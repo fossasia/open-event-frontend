@@ -1,8 +1,33 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import { action, computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+
+  @tracked isFeatureModalOpen = false;
+  @tracked featureText = false;
+
+  @action
+  closeModal() {
+   this.isFeatureModalOpen = false
+  }
+
+  @action
+  toggleModal() {
+    this.isFeatureModalOpen = !this.isFeatureModalOpen;
+  }
+  
+  @action
+  async toggleVideoRoom() {
+    this.set('model.event.isVideoroomEnabled', !this.model.event.isVideoroomEnabled);
+   try {
+     await this.model.event.save();
+   } catch (e) { 
+     console.error('Error while Enabling TheRoom', e);
+    }
+  }
+
   per_page = 25;
   count = 0;
 

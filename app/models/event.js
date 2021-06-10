@@ -45,6 +45,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isMapShown                : attr('boolean', { defaultValue: true }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketFormEnabled       : attr('boolean', { defaultValue: false }),
+  isVideoroomEnabled        : attr('boolean', { defaultValue: false }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
   isPromoted                : attr('boolean', { defaultValue: false }),
