@@ -8,8 +8,9 @@ import VideoStreamModerator from './video-stream-moderator';
 
 export interface Options {
   record: boolean;
-  autoStartMeeting: boolean;
+  autoStartRecording: boolean;
   muteOnStart: boolean;
+  endCurrentMeeting: boolean;
 }
 export interface Extra {
   autoplay: boolean;

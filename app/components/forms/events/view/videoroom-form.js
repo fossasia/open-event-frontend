@@ -7,9 +7,10 @@ import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validator
 import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
 import moment from 'moment';
+import _ from 'lodash-es';
 
 
-const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
+const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true, 'endCurrentMeeting': false };
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
@@ -20,6 +21,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked moderatorEmail = '';
   @tracked deletedModerators = [];
   @tracked videoRecordings = [];
+  @tracked actualBBBExtra = {};
 
   get recordingColumns() {
     return [
@@ -207,6 +209,34 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
+      if (this.data.stream.id && this.data.stream.videoChannel.get('provider') === 'bbb') {
+        if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra.bbb_options))) {
+          try {
+            const heading = this.l10n.t('Do you want to update changes now?');
+            const content =  this.l10n.t('You have changed your video room\'s configurations') + '. '
+              + this.l10n.t('Do you want to update these configurations now') + '?<br><br>'
+              + this.l10n.t('Choosing \"Yes\" will end any ongoing meeting in order to apply new changes') + '. '
+              + this.l10n.t('Users need to rejoin meeting') + '. '
+              + this.l10n.t('Choosing \"No\" will not affect ongoing meeting') + '. '
+              + this.l10n.t('But it may take few minutes after ending of current meeting in order to apply new changes for your next meetings') + '.<br><br>'
+              + this.l10n.t('If there is no ongoing meeting, then it is recommended to choose \"Yes\"') + '.';
+            const options = {
+              denyText     : 'No',
+              denyColor    : 'red',
+              approveText  : 'Yes',
+              approveColor : 'green',
+              extra        : content
+            };
+            await this.confirm.prompt(heading, options);
+            this.data.stream.extra.bbb_options.endCurrentMeeting = true;
+          } catch {
+            this.data.stream.extra.bbb_options.endCurrentMeeting = false;
+          }
+        } else if (this.data.stream.extra.bbb_options.endCurrentMeeting) {
+          this.data.stream.extra.bbb_options.endCurrentMeeting = false;
+        }
+      }
+
       try {
         this.loading = true;
         await this.data.stream.save();
@@ -276,6 +306,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   didInsertElement() {
     if (this.data.stream.videoChannel.get('provider') === 'bbb') {
+      if (this.data.stream.extra?.bbb_options) {
+        this.set('actualBBBExtra', { ...this.data.stream.extra.bbb_options });
+      }
       this.loadRecordings();
     }
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
