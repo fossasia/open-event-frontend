@@ -241,9 +241,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
               extra        : content
             };
             await this.confirm.prompt(heading, options);
-            this.data.stream.extra.bbb_options?.endCurrentMeeting = true;
+            this.data.stream.extra.bbb_options.endCurrentMeeting = true;
           } catch {
-            this.data.stream.extra.bbb_options?.endCurrentMeeting = false;
+            this.data.stream.extra.bbb_options.endCurrentMeeting = false;
           }
         } else if (this.data.stream.extra.bbb_options?.endCurrentMeeting) {
           this.data.stream.extra.bbb_options.endCurrentMeeting = false;
