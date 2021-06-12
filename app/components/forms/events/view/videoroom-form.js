@@ -223,7 +223,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     event.preventDefault();
     this.onValid(async() => {
       if (this.data.stream.id && this.data.stream.videoChannel.get('provider') === 'bbb') {
-        if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra.bbb_options))) {
+        if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
           try {
             const heading = this.l10n.t('Do you want to update changes now?');
             const content =  this.l10n.t('You have changed your video room\'s configurations') + '. '
@@ -241,11 +241,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
               extra        : content
             };
             await this.confirm.prompt(heading, options);
-            this.data.stream.extra.bbb_options.endCurrentMeeting = true;
+            this.data.stream.extra.bbb_options?.endCurrentMeeting = true;
           } catch {
-            this.data.stream.extra.bbb_options.endCurrentMeeting = false;
+            this.data.stream.extra.bbb_options?.endCurrentMeeting = false;
           }
-        } else if (this.data.stream.extra.bbb_options.endCurrentMeeting) {
+        } else if (this.data.stream.extra.bbb_options?.endCurrentMeeting) {
           this.data.stream.extra.bbb_options.endCurrentMeeting = false;
         }
       }
