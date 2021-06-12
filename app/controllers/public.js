@@ -1,9 +1,11 @@
 import classic from 'ember-classic-decorator';
+import { orderBy } from 'lodash-es';
 import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import { levels } from 'open-event-frontend/utils/dictionary/levels';
 
 @classic
 export default class PublicController extends Controller {
@@ -16,12 +18,16 @@ export default class PublicController extends Controller {
 
   @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
 
+  @tracked activeSessionLevel = this.router.currentRoute.queryParams.level ? this.router.currentRoute.queryParams.level.split(',') : [];
+
   @tracked activeRoom = this.router.currentRoute.queryParams.room ? this.router.currentRoute.queryParams.room.split(',') : [];
 
   @tracked activeTrack = this.router.currentRoute.queryParams.track ? this.router.currentRoute.queryParams.track.split(',') : [];
 
   @tracked hasStreams = null;
   @tracked canAccess = null;
+
+  @tracked levels = orderBy(levels, 'position');
 
   @computed('model.socialLinks')
   get twitterLink() {
@@ -77,6 +83,18 @@ export default class PublicController extends Controller {
   }
 
   @action
+  removeActiveSessionLevel() {
+    this.activeSessionLevel = [];
+  }
+
+  removeActiveClass(name) {
+    const activeEls = document.querySelectorAll(`.${name}.link-item.active`);
+    activeEls.forEach(el => {
+      el.classList.remove('active');
+    });
+  }
+
+  @action
   sessionFilter(name) {
     if (this.activeSession.includes(name)) {
       this.activeSession = this.activeSession.filter(session => session !== name);
@@ -87,7 +105,27 @@ export default class PublicController extends Controller {
   }
 
   @action
+  sessionLevelFilter(level) {
+    if (this.activeSessionLevel.includes(level)) {
+      this.activeSessionLevel = this.activeSessionLevel.filter(val => val !== level);
+    } else {
+      this.activeSessionLevel = [...this.activeSessionLevel, level];
+    }
+    this.router.transitionTo('public.sessions', { queryParams: { 'level': this.activeSessionLevel } });
+  }
+
+  @action
   applyFilter(value, filterType) {
+    const params = this.router.currentRoute.queryParams;
+    if (!params.track) {
+      this.activeTrack = [];
+    }
+    if (!params.room) {
+      this.activeRoom = [];
+    }
+    if (!params.sessionType) {
+      this.activeSession = [];
+    }
     value = value + ':';
     if (filterType === 'room') {
       if (this.activeRoom.includes(value)) {

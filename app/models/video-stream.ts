@@ -5,6 +5,7 @@ import Event from './event';
 import Microlocation from './microlocation';
 import VideoChannel from './video-channel';
 import VideoStreamModerator from './video-stream-moderator';
+import VideoRecording from './video-recording';
 
 export interface Options {
   record: boolean;
@@ -27,6 +28,7 @@ export default class VideoStream extends ModelBase.extend() {
   @attr() extra!: Extra;
 
   @hasMany('microlocation') rooms!: Microlocation[];
+  @hasMany('video-recording') videoRecordings!: VideoRecording[];
   @belongsTo('event') event!: Event;
   @belongsTo('video-channel') videoChannel!: VideoChannel;
   @hasMany('video-stream-moderator') moderators!: VideoStreamModerator;
