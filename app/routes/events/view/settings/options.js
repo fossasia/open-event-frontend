@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 @classic
 export default class OptionsRoute extends Route {
@@ -16,10 +17,10 @@ export default class OptionsRoute extends Route {
 
   async model() {
     const eventDetails = this.modelFor('events.view');
-    return {
-      event       : await eventDetails,
-      roleInvites : await eventDetails.query('roleInvites', {}),
-      roles       : await this.store.findAll('role')
-    };
+    return hash({
+      event       : eventDetails,
+      roleInvites : eventDetails.query('roleInvites', {}),
+      roles       : this.store.findAll('role')
+    });
   }
 }
