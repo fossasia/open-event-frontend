@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { hash } from 'rsvp';
 
 @classic
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
@@ -11,25 +12,25 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
 
   async model(params) {
     const eventDetails = this.modelFor('events.view');
-    return {
+    return hash({
       event : eventDetails,
-      form  : await eventDetails.query('customForms', {
+      form  : eventDetails.query('customForms', {
         'page[size]' : 0,
         sort         : 'id'
       }),
-      session: await this.store.findRecord('session', params.session_id, {
+      session: this.store.findRecord('session', params.session_id, {
         include: 'track,session-type,speakers'
       }),
-      tracks       : await eventDetails.query('tracks', {}),
-      sessionTypes : await eventDetails.query('sessionTypes', {}),
-      speakers     : await eventDetails.query('speakers', {
+      tracks       : eventDetails.query('tracks', {}),
+      sessionTypes : eventDetails.query('sessionTypes', {}),
+      speakers     : eventDetails.query('speakers', {
         'page[size]': 0
       }),
-      speaker: await this.store.createRecord('speaker', {
+      speaker: this.store.createRecord('speaker', {
         event : eventDetails,
         user  : this.authManager.currentUser
       })
 
-    };
+    });
   }
 }

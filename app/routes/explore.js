@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { debounce } from 'lodash-es';
 import moment from 'moment';
+import { hash } from 'rsvp';
 
 @classic
 export default class ExploreRoute extends Route {
@@ -307,13 +308,13 @@ export default class ExploreRoute extends Route {
       cords = [{ lat: '20', lon: '79' }];
     }
 
-    return {
-      eventTypes     : await this.store.findAll('event-type'),
-      eventTopics    : await this.store.findAll('event-topic', { include: 'event-sub-topics' }),
-      filteredEvents : await this._loadEvents(params),
+    return hash({
+      eventTypes     : this.store.findAll('event-type'),
+      eventTopics    : this.store.findAll('event-topic', { include: 'event-sub-topics' }),
+      filteredEvents : this._loadEvents(params),
       lat            : cords[0].lat,
       lng            : cords[0].lon
-    };
+    });
   }
 
   setupController(controller, model) {
