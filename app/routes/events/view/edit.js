@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { hash } from 'rsvp';
 
 @classic
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin, EventWizardMixin) {
@@ -25,16 +26,16 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin, Eve
   }
 
   async model() {
-    return {
+    return hash({
       event : this.modelFor('events.view'),
       steps : this.getSteps(),
-      types : await this.store.query('event-type', {
+      types : this.store.query('event-type', {
         sort: 'name'
       }),
-      topics: await this.store.query('event-topic', {
+      topics: this.store.query('event-topic', {
         sort    : 'name',
         include : 'event-sub-topics'
       })
-    };
+    });
   }
 }
